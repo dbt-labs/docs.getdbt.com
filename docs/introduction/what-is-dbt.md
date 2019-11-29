@@ -5,7 +5,7 @@ sidebar_label: What is dbt?
 ---
 dbt (data build tool) enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into tables and views.
 
-Dbt does the `T` in `ELT` (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
+dbt does the `T` in `ELT` (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
 
 The role of dbt within a modern data stack is discussed in more detail [here](https://blog.fishtownanalytics.com/what-exactly-is-dbt-47ba57309068).
 
@@ -16,21 +16,17 @@ To use dbt to transform your data, you need three things:
 
 ### 1. A dbt Project
 A dbt project is a directory of `.sql` and .`yml` files. The directory must contain at a minimum:
-* Models: A <<glossary:model>> is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
+* Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
 * A project file: a `dbt_project.yml` file which configures and defines your dbt project.
 
 Projects also typically contains a number of other resources, including tests, snapshots, and seed files (see [below](doc:introduction#section-what-else-can-dbt-do-)).
 
 If you are starting a project from scratch, see [Create a project](doc:creating-a-project).
 
-Alternatively, if your organization already has a dbt project, see [Use an existing project](doc:use-an-existing-project) .
-[block:callout]
-{
-  "type": "info",
-  "title": "Check out our sample dbt project",
-  "body": "Want to check out a sample project? Have a look at our [Jaffle Shop](https://github.com/fishtown-analytics/jaffle_shop) project on GitHub!"
-}
-[/block]
+Alternatively, if your organization already has a dbt project, see [Use an existing project](doc:use-an-existing-project).
+> **Check out our sample dbt project**
+Want to check out a sample project? Have a look at our [Jaffle Shop](https://github.com/fishtown-analytics/jaffle_shop) project on GitHub!
+
 ### 2. A connection to your data warehouse
 dbt connects to your data warehouse to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [docs](doc:supported-databases)).
 
@@ -40,10 +36,10 @@ When you define your connection, you’ll also be able to specify the target sch
 ### 3. A Command
 A command is an instruction, issued from a command line, to execute dbt.
 
-When you issue a dbt <<glossary:command>>, such as `run`, dbt:
+When you issue a dbt command, such as `run`, dbt:
 1. Determines the order to execute the models in your project in.
-2. Generates the DDL required to build the model, as per the model's <<glossary:materialization>>.
-3. Executes the compiled queries against your data warehouse, using the credentials specified in the <<glossary:target>> defined in your <<glossary:profile>>. Executing these queries creates relations in the target schema in your data warehouse. These relations contain transformed data, ready for analysis.
+2. Generates the DDL required to build the model, as per the model's materialization.
+3. Executes the compiled queries against your data warehouse, using the credentials specified in the target defined in your profile. Executing these queries creates relations in the target schema in your data warehouse. These relations contain transformed data, ready for analysis.
 
 A list of commands can be found in the [Command reference](doc:command-line-interface) section of these docs.
 
@@ -59,18 +55,13 @@ To use the CLI:
 2. [Set up a profile](doc:configure-your-profile) to connect to your data warehouse
 3. Build your dbt project in a code editor, like Atom or VSCode
 4. Execute commands using your terminal
-[block:callout]
-{
-  "type": "info",
-  "body": "If you’re developing your dbt project locally, we recommend checking out [this article](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243) to understand how we set up our computers.",
-  "title": "Developing locally?"
-}
-[/block]
+> If you’re developing your dbt project locally, we recommend checking out [this article](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243) to understand how we set up our computers.
+
 ## What makes dbt so powerful?
 As a dbt user, your main focus will be on writing models (i.e. select queries) that reflect core business logic – there’s no need to write boilerplate code to create tables and views, or to define the order of execution of your models. Instead, dbt handles turning these models into objects in your warehouse for you.
 
 **dbt handles boilerplate code to materialize queries as relations.**
-For each model you create, you can easily configure a <<glossary:materialization>>.
+For each model you create, you can easily configure a materialization.
 
 A materialization represents a build strategy for your select query – the code behind a materialization is robust, boilerplate SQL that wraps your select query in a statement to create a new, or update an existing, relation.
 
@@ -88,48 +79,35 @@ Materializations are discussed further in [Configuring models](doc:configuring-m
 Often when transforming data, it makes sense to do so in a staged approach. dbt provides a mechanism to implement transformations in stages through the [ref](doc:ref) function.
 
 Rather than selecting from existing tables and views in your warehouse, you can select from _another model_, like so:
-[block:code]
-{
-  "codes": [
-    {
-      "code": "select\n  orders.id,\n  orders.status,\n  sum(case when payments.payment_method = 'bank_transfer' then payments.amount else 0 end) as bank_transfer_amount,\n  sum(case when payments.payment_method = 'credit_card' then payments.amount else 0 end) as credit_card_amount,\n  sum(case when payments.payment_method = 'gift_card' then payments.amount else 0 end) as gift_card_amount,\n  sum(amount) as total_amount\n\nfrom {{ ref('base_orders') }} as orders\nleft join {{ ref('base_payments') }} as payments on payments.order_id = orders.id",
-      "language": "sql",
-      "name": "/models/payments.sql"
-    }
-  ]
-}
-[/block]
+```sql
+select
+  orders.id,
+  orders.status,
+  sum(case when payments.payment_method = 'bank_transfer' then payments.amount else 0 end) as bank_transfer_amount,
+  sum(case when payments.payment_method = 'credit_card' then payments.amount else 0 end) as credit_card_amount,
+  sum(case when payments.payment_method = 'gift_card' then payments.amount else 0 end) as gift_card_amount,
+  sum(amount) as total_amount
+
+from {{ ref('base_orders') }} as orders
+
+left join {{ ref('base_payments') }} as payments on payments.order_id = orders.id
+```
+
 When compiled to executable SQL, dbt will replace the model specified in the `ref` function with the relation name.
 
 Importantly, dbt also uses the `ref` function to determine the sequence in which to execute the models – in the above example, `base_orders` and `base_payments` need to be built prior to building the `orders` model.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/2ce8dce-Screen_Shot_2018-09-16_at_11.46.12_AM.png",
-        "Screen Shot 2018-09-16 at 11.46.12 AM.png",
-        1374,
-        504,
-        "#21546a"
-      ],
-      "caption": "A DAG for a simple dbt project"
-    }
-  ]
-}
-[/block]
+![A DAG for a simple dbt project](../assets/simple-dag.png)
+
 dbt builds a directed acyclic graph (DAG) based on the interdepencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
 
 When dbt runs, models are executed in the order specified by the DAG – there’s no need to explicitly define the order of execution of your models. Building models in staged transformations also reduces the need to repeat SQL, as a single transformation (for example, renaming a column) can be shared as a predecessor for a number of downstream models.
 
 For more information see [Ref](doc:ref).
-[block:callout]
-{
-  "type": "info",
-  "title": "Want to see a DAG visualization for your project?",
-  "body": "Check out the [Documentation Website](doc:documentation-website) docs"
-}
-[/block]
+
+> **Want to see a DAG visualization for your project?**
+Check out the [Documentation Website](doc:documentation-website) docs
+
+
 ## What else can dbt do?
 dbt has a number of additional features that make it even more powerful, including:
 
