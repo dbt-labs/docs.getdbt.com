@@ -20,7 +20,13 @@
     "First Category": ["doc2"],
     "Second Category": ["doc3"]
   },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
+  "tutorial": {
+    "Getting started": [
+      "setting-up",
+      "build-your-first-models",
+      "add-tests",
+      "document-your-models",
+      "add-sources"
+    ]
   }
 }
