@@ -26,7 +26,8 @@
       "build-your-first-models",
       "add-tests",
       "document-your-models",
-      "add-sources"
+      "add-sources",
+      "deploy-your-project"
     ]
   }
 }
