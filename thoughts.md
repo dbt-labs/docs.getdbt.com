@@ -26,6 +26,8 @@ I think in the past we tried to anticipate all these questions at once, and I
 got hung up on putting them in a structure that made sense for a side bar, but
 having short articles that answer specific questions is probably _much better
 for search_.
-
+* Similar to above, I also have this instinct to try to anticipate people who
+hit roadblocks. How do they ask for help when they get stuck? How do we list
+some common troubleshooting issues?
 * This style of content is _very_ amenable to videos. I think once we get
 everything written, a series of Loom videos is 100% the next step.
