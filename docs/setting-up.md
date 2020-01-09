@@ -1,7 +1,11 @@
 ---
 title: Setting up
 ---
-This tutorial is geared at first-time users who want detailed instructions on how to go from zero to a dbt Project that follows some of our best practices.
+This tutorial is geared at first-time users who want detailed instructions on
+how to go from zero to a deployed dbt project.
+
+This tutorial is based on a fictional business named `jaffle_shop`, so you'll
+see this name used throughout the project.
 
 In this tutorial, we will be turning the following query into a model built in dbt.
 ```sql
@@ -67,14 +71,28 @@ a free tier. We've created a public dataset (`dbt-tutorial`) that anyone with
 a BigQuery account can query.
 
 You'll need your own BigQuery project for your dbt project.
-1. Go to https://console.cloud.google.com/bigquery -- if you do not have a
+1. Go to https://console.cloud.google.com/bigquery -- if you don't have a
 BigQuery account you will be asked to create one.
 2. Create a new project -- use the default name for the project.
 <img alt="Create a BigQuery project" src="/img/create-bigquery-project.png" class="docImage"/>
 3. Copy and paste the above query into the BigQuery console to validate that you
 can run it.
 
+## Generate BigQuery credentials
+In order to let dbt connect to your warehouse, you'll need generate a keyfile.
+This is analogous to using a database user name and password with most other
+data warehouses.
+1. Go to the credential wizard: https://console.cloud.google.com/apis/credentials/wizard. Ensure that your new project is selected at the top of the screen.
+2. Generate credentials with the following options:
+  * Which API are you using? BigQuery API
+  * Are you planning to use this API with App Enginer or Compute Engine? No, I'm not using them
+  * Service account name: `dbt-user`
+  * Key type: JSON
+3. Download the JSON file and save it in a place you can access
+
+
 ## Create a GitHub repository
+
 1. Go to https://github.com/ and sign up for an account if you don't already have one.
 1. Click on the green **New** button or go to https://github.com/new.
 1. Type a repository name without spaces. For example, `dbt-tutorial`.
@@ -84,13 +102,14 @@ can run it.
 
 ## Choose the way you want to develop
 [reframe as develpoing locally / in the cloud?]
-If you are new to programming, we recommend using **dbt Cloud**.
 
+If you are new to programming, we recommend using **dbt Cloud**.
 
 You may prefer to use the command line interface (**dbt CLI**) to work on your project.
 Please follow the [installation instructions](https://docs.getdbt.com/docs/installation)
 for your operating system.
-If you choseto use the CLI, we recommend learning some basics of your terminal
+
+If you choose to use the CLI, we recommend learning some basics of your terminal
 to help you work more effectively. In particular, it's important to understand
 `cd`, `ls` and `pwd` to be able to navigate through the directory structure of
 your computer easily.
@@ -100,16 +119,15 @@ your computer easily.
 * [gotta do the onboarding flow with Kyle]
 
 ### dbt CLI
-The dbt CLI comes with a command to help you scaffold a dbt project.To create
+The dbt CLI comes with a command to help you scaffold a dbt project. To create
 your dbt project:
 1. Run the `init` command:
 ```bash
-## to-do: should we have a `cd`command here first?
-dbt init dbt-tutorial
+dbt init jaffle-shop
 ```
 2. `cd` into your project:
 ```bash
-cd dbt-tutorial
+cd jaffle-shop
 ```
 You can use `pwd` to confirm that you are in the right spot.
 
@@ -126,8 +144,8 @@ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
 git push -u origin master
 ```
 
-> :information_source: If this is your first time using git, it's worth taking
-some time to understand the basics.
+> ℹ️ If this is your first time using git, it's worth taking some time to
+understand the basics.
 
 ## Connect to BigQuery
 ### dbt Cloud
@@ -135,15 +153,17 @@ This should be part of the onboarding flow :)
 
 ### dbt CLI
 When developing locally, dbt connects to your data warehouse using a `profile`.
-1. Create a file in the `~/.dbt/` directory named `profiles.yml`:
-2. Copy the following into the file:
+1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
+2. Move your BigQuery keyfile into this directory.
+3. Copy the following into the file, updating where indicated.
 ```yaml
-dbt_tutorial:
+jaffle_shop:
   target: dev
   outputs:
     dev:
       type: bigquery
-      method: oauth
+      method: service-account
+      keyfile: /Users/claire/.dbt/graceful-creek-cred.json # replace this with the full path to your keyfile
       project: graceful-creek-264520 # Replace this with your project id
       dataset: dbt_alice # Replace this with dbt_your_name, e.g. dbt_bob
       threads: 1
@@ -151,13 +171,9 @@ dbt_tutorial:
       location: US # Optional, one of US or EU
       priority: interactive
 ```
-3. Update the `profile:` config in your your `dbt_project.yml` file as follows:
+4. Update the `profile:` config in your your `dbt_project.yml` file as follows:
 ```yaml
-profile: 'dbt_tutorial'
-```
-4. Authenticate your Google Account by running the following:
-```bash
-gcloud auth login
+profile: 'jaffle_shop'
 ```
 5. Run the debug command from your project to confirm that you can succesfully
 connect
