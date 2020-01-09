@@ -1,9 +1,5 @@
 ## Thoughts
 ### Working on the Setting up page
-* Would be cool to link out to explanations in little collapsible sections.
-I can imagine someone doing the tutorial once, and then doing it again where
-they have related questions / explanations.
-
 * I think we should make the recommendation "Do this tutorial once, and then
 do it a second time with your _own_ query / data warehouse / credentials"
 * As I'm writing this, I have a instinct to want to explain _everything_. This
