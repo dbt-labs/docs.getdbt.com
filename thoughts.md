@@ -27,3 +27,15 @@ hit roadblocks. How do they ask for help when they get stuck? How do we list
 some common troubleshooting issues?
 * This style of content is _very_ amenable to videos. I think once we get
 everything written, a series of Loom videos is 100% the next step.
+
+### Questions in general
+I think taking a question-based approach to documentation is in fact **the best
+way** for us to indoctrinate people with the viewpoint.
+
+I'd love to think through what this could look like way into the future. Could
+we have a button that allows someone to submit a question at any point in the
+docs? Here's my rough sketch:
+[ insert sketch from iPad ]
+
+### Working on "Build your first models" page:
+* Can we / should we add `git` steps in this tutorial?

@@ -24,9 +24,7 @@
     "Getting started": [
       "setting-up",
       "build-your-first-models",
-      "add-tests",
-      "document-your-models",
-      "add-sources",
+      "test-and-document-your-project",
       "deploy-your-project"
     ]
   }
