@@ -1,6 +1,7 @@
 ---
 title: Create a project
 ---
+Now that we've set up our environment, we can create a project!
 
 The process of creating a project is where the workflow differs the most between
 dbt Cloud and dbt CLI workflows.
@@ -21,13 +22,14 @@ If you were added to an existing account:
   * Connect to BQ
   * Add a repository -- choose managed repository (if you're comfortable with git,
   you can also choose to link to an existing, but bare, repository)
-4. Open Develop tab -- Select `Initialize a project`.
+4. Click the hamburger menu, and then `Develop` to go to the dbt IDE (Integrated
+Development Enviornment). Select `Initialize a project` to create your project
 
 ### Perform your first dbt run
-5. Confirm that you can `dbt run`
+1. In the terminal bar at the bottom of the screen, type in `dbt run` and hit enter
 
 ### Commit your changes
-1. Make your first commit
+1. Click the `commit` button, with a message like "Create a dbt project"
 
 ## dbt CLI
 ### Create a repo
@@ -70,14 +72,12 @@ models:
     ...
 ```
 
-
-
-
 ### Connect to BigQuery
 When developing locally, dbt connects to your data warehouse using a `profile`.
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
-3. Copy the following into the file, updating where indicated.
+3. Copy the following into the file -- make sure you update the values where
+indicated
 ```yaml
 jaffle_shop:
   target: dev
@@ -102,7 +102,7 @@ dbt debug
 Confirm that the last line of the output is `Connection test: OK connection ok`.
 
 ### Perform your first dbt run
-5. Execute the run command to build your first (example) model:
+1. Execute the run command to build your first (example) models:
 ```bash
 dbt run
 ```
@@ -124,13 +124,12 @@ Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
 ```
 
 
-## Commit your changes
-
-5. Link your GitHub repository to your dbt project by running the following
-commands:
+### Commit your changes
+1. Link the GitHub repository you created to your dbt project by running the following
+commands. Make sure you use the correct git URL for your repository.
 ```bash
 git init
-git commit -m "first commit"
+git commit -m "Create a dbt project"
 git remote add origin https://github.com/USERNAME/dbt-tutorial.git
 git push -u origin master
 ```

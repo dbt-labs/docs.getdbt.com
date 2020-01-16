@@ -1,22 +1,30 @@
 ---
 title: Build your first models
 ---
+
 ## Build your first model
 ### dbt Cloud
+1. Ensure you're in the Develop interface. If you're not, click the hamburger menu,
+and then `Develop`.
+2. Create a new file in the `models` directory named `models/customers.sql`.
+3. Paste the query from the [Setting up](docs/setting-up) instructions into the
+file.
+4. Execute `dbt run` in the command prompt at the bottom of the screen. You
+should get a successful run, like so:
+[ to-do: image ]
+5. Switch back to the BigQuery console and check that you can `select` from this
+model.
 
 ### dbt CLI
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](docs/setting-up) instruction into the
+3. Paste the query from the [Setting up](docs/setting-up) instructions into the
 file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 [to-do: image]
 5. Switch back to the BigQuery console and check that you can `select` from this
 model.
 
-* Paste the model into a new file
-* `dbt run` -- do we have different views for this based on whether you are using dbt Cloud / CLI
-* Create a `ref`
 
 ## Change the way your model is materialized
 1. Edit the following in your `dbt_project.yml` file:
@@ -52,7 +60,6 @@ with customers as (
 )
 
 ```
-
 
 4. Execute `dbt run`. Your model, `customers` should be built as a view.
 

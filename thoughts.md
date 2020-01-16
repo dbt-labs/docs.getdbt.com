@@ -39,3 +39,18 @@ docs? Here's my rough sketch:
 
 ### Working on "Build your first models" page:
 * Can we / should we add `git` steps in this tutorial?
+  * In particular:
+    * Switch branches
+    * Open a PR
+  * Managed repos means you can't open a PR
+  * Happy to have a callout that we normally wouldn't merge to master, but this
+  is just the GS tutorial
+
+### Fleshing out the steps
+I think there could almost be two versions of the videos.
+1. Just the screen grab that has no audio (supportive of learners like myself
+who like to see + read things but do not want to sit through someone explaining
+things lol). This would replace the need for a ton of screenshots for each step.
+2. The longer version which has the narration as well.
+
+What's a good interface for that? Who knows 🤷‍

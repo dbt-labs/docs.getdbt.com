@@ -7,3 +7,5 @@ List of to-dos that I need help with:
 * ~ Up next button at bottom of page. Only on tutorials though.
 * ~ setup snowplow on this website (Drew: I've actually never seen Snowplow be
 set up / have no idea what's involved, so I'd love to understand this!)
+* Remove the `docs` part from the URL, e.g. `http://localhost:3000/create-a-project`
+instead of `http://localhost:3000/docs/create-a-project`
