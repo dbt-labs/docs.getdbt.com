@@ -1,25 +1,4 @@
 {
-  "docs": {
-    "Introduction": [
-      "introduction/what-is-dbt",
-      {
-        "type": "subcategory",
-        "label": "Supported databases",
-        "ids": [
-          "introduction/supported-databases/overview",
-          "introduction/supported-databases/postgres",
-          "introduction/supported-databases/redshift",
-          "introduction/supported-databases/snowflake",
-          "introduction/supported-databases/bigquery",
-          "introduction/supported-databases/presto",
-          "introduction/supported-databases/spark",
-          "introduction/supported-databases/microsoft-sql-server"
-        ]
-      }
-    ],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
-  },
   "tutorial": {
     "Getting started": [
       "setting-up",
