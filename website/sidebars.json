@@ -23,6 +23,7 @@
   "tutorial": {
     "Getting started": [
       "setting-up",
+      "create-a-project",
       "build-your-first-models",
       "test-and-document-your-project",
       "deploy-your-project"

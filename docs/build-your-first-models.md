@@ -98,8 +98,8 @@ customer_orders as (
     select
         customer_id,
 
-        min(order_date) as first_order,
-        max(order_date) as most_recent_order,
+        min(order_date) as first_order_date,
+        max(order_date) as most_recent_order_date,
         count(order_id) as number_of_orders
 
     from orders
@@ -115,9 +115,9 @@ final as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
-        customer_orders.first_order,
-        customer_orders.most_recent_order,
-        customer_orders.number_of_orders
+        customer_orders.first_order_date,
+        customer_orders.most_recent_order_date,
+        coalesce(customer_orders.number_of_orders, 0) as number_of_orders
 
     from customers
 
@@ -131,8 +131,10 @@ select * from final
 
 You should see even more models being created.
 
+🎉Congrats! You've just built your first models!
+
 ## Extra exercises
-* Check what happens when you write some bad SQL
+* Check what happens when you write some bad SQL -- can you debug this failure?
 * Try to run only a single model at a time.
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
 `models/staging/stg_customers.sql`).
