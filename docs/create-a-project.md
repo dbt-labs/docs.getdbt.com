@@ -38,18 +38,27 @@ Development Enviornment). Select `Initialize a project` to create your project
 3. Type a repository name without spaces. For example, `dbt-tutorial`.
 4. Click **Create repository** (without `.gitignore` and without a license).
 
-<img alt="Create a GitHub repo" src="/img/create-github-repo.png" class="docImage"/>
+<div class='text-left'>
+    <a href="#" data-featherlight="/img/create-github-repo.png">
+        <img
+            data-toggle="lightbox"
+            width="300px"
+            alt="Create a GitHub repo"
+            src="/img/create-github-repo.png"
+            class="docImage" />
+    </a>
+</div>
 
 ### Create a project
 The dbt CLI comes with a command to help you scaffold a dbt project. To create
 your dbt project:
 1. Run the `init` command:
-```bash
-dbt init jaffle-shop
+```shell-session
+$ dbt init jaffle-shop
 ```
 2. `cd` into your project:
-```bash
-cd jaffle-shop
+```shell-session
+$ cd jaffle-shop
 ```
 You can use `pwd` to confirm that you are in the right spot.
 
@@ -96,18 +105,18 @@ jaffle_shop:
 
 4. Execute the debug command from your project to confirm that you can successfully
 connect
-```bash
-dbt debug
+```shell-session
+$ dbt debug
 ```
 Confirm that the last line of the output is `Connection test: OK connection ok`.
 
 ### Perform your first dbt run
 1. Execute the run command to build your first (example) models:
-```bash
-dbt run
+```shell-session
+$ dbt run
 ```
 You should have an ouput that looks like this:
-```
+```text
 Running with dbt=0.15.0
 Found 1 model, 0 tests, 0 snapshots, 0 analyses, 133 macros, 0 operations, 0 seed files, 0 sources
 
@@ -123,15 +132,20 @@ Completed successfully
 Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
 ```
 
+### Example video
+Use the embed code copied from Loom
+<div style="position: relative; padding-bottom: 56.33802816901409%; height: 0;"><iframe src="https://www.loom.com/embed/4e09aed75d6748918134aa9891388932" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+
 
 ### Commit your changes
 1. Link the GitHub repository you created to your dbt project by running the following
 commands. Make sure you use the correct git URL for your repository.
-```bash
-git init
-git commit -m "Create a dbt project"
-git remote add origin https://github.com/USERNAME/dbt-tutorial.git
-git push -u origin master
+```shell-session
+$ git init
+$ git commit -m "Create a dbt project"
+$ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
+$ git push -u origin master
 ```
 
 > ℹ️ If this is your first time using git, it's worth taking some time to
