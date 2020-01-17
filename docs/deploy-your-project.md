@@ -1,6 +1,10 @@
 ---
 title: Deploy your project
 ---
+CC Notes:
+* Should we title this "Run dbt in production"?
+* Should we mention that this is not the only way to deploy a dbt project?
+
 Now that you've built your project, you'll need to run it regularly on a
 schedule. This is because your source data will be constantly updating as your
 Jaffle Shop has more orders and more customers. If you're building any of your
@@ -20,7 +24,8 @@ models as tables, the data will go stale unless you run your project.
 working on dbt projects, and recommend you do too!
 
 ## Connect dbt Cloud to your repo
-> ℹ️ If you developed your project in dbt Cloud, you can skip this step!
+> ℹ️ This step only applies to folks who use the dbt CLI to develop their
+project. If you developed your project in dbt Cloud, you can skip this step!
 
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your
 organization already has a dbt Cloud account, ask an admin to add you as a
