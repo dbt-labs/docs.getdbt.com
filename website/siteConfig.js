@@ -45,18 +45,20 @@ const siteConfig = {
     {doc: 'setting-up', label: 'Tutorial'},
   ],
 
+  usePrism: ['yaml', 'sql', 'markdown', 'shell-session'],
+
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/small-logo-horizontal-white.png',
-  footerIcon: 'img/favicon.ico',
+  headerIcon: 'img/dbt-logo-full-white.png',
+  footerIcon: 'img/dbt-logo-full-white.png',
   favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#FF694A',
-    secondaryColor: '#171072',
+    primaryColor: '#023644',
+    secondaryColor: '#FF694A',
   },
 
   /* Custom fonts for website */
@@ -76,13 +78,24 @@ const siteConfig = {
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
   copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
 
+  // Pick your favorite: https://highlightjs.org/static/demo/
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: 'default',
+    theme: 'atom-one-dark',
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ['https://buttons.github.io/buttons.js'],
+  scripts: [
+      'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js',
+      'https://buttons.github.io/buttons.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+      'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
+      '/js/code-block-buttons.js',
+  ],
+  stylesheets: [
+      '/css/code-block-buttons.css',
+      'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css',
+  ],
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
