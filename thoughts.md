@@ -54,3 +54,9 @@ things lol). This would replace the need for a ton of screenshots for each step.
 2. The longer version which has the narration as well.
 
 What's a good interface for that? Who knows 🤷‍
+
+## Accessibility
+* How do we get Loom videos close captioned?
+
+## The first version of videos
+* Some of them I didn't cut in the right place

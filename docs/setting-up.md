@@ -1,6 +1,8 @@
 ---
 title: Setting up
 ---
+<iframe width="640" height="400" src="https://www.loom.com/embed/cb99861ab1034f7fab5fa48529e61f85" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 This tutorial is geared at first-time users who want detailed instructions on
 how to go from zero to a deployed dbt project.
 
@@ -74,10 +76,22 @@ a free tier. We've created a public dataset (`dbt-tutorial`) that anyone with
 a BigQuery account can query.
 
 You'll need your own BigQuery project for your dbt project.
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/9b8d852c7e754d978209c3a60b53464e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Go to https://console.cloud.google.com/bigquery -- if you don't have a
 BigQuery account you will be asked to create one.
 2. Create a new project -- you can use the default name for the project.
-<img alt="Create a BigQuery project" src="/img/create-bigquery-project.png" class="docImage"/>
+<div class='text-left'>
+    <a href="#" data-featherlight="/img/create-bigquery-project.png">
+        <img
+            data-toggle="lightbox"
+            width="300px"
+            alt="Create a BigQuery project"
+            src="/img/create-bigquery-project.png"
+            class="docImage" />
+    </a>
+</div>
 3. Copy and paste the above query into the BigQuery console to validate that you
 can run it.
 
@@ -85,6 +99,9 @@ can run it.
 In order to let dbt connect to your warehouse, you'll need generate a keyfile.
 This is analogous to using a database user name and password with most other
 data warehouses.
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/2b5a8ec255bd4dce91374f6941d279e5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected at the top of the screen.
 2. Generate credentials with the following options:
   * Which API are you using? BigQuery API
@@ -92,6 +109,7 @@ data warehouses.
   * Service account name: `dbt-user`
   * Key type: JSON
 3. Download the JSON file and save it in a place you can access
+
 
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:

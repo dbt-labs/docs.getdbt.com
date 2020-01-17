@@ -8,6 +8,10 @@ dbt Cloud and dbt CLI workflows.
 
 ## dbt Cloud
 ### Create a project
+<iframe width="640" height="400" src="https://www.loom.com/embed/05478e5ba2094152b41bc8fdf9f19d9f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/f5f4a51cf92548b4a84d417b37efb86b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your
 organization already has a dbt Cloud account, ask an admin to add you as a
 Developer.
@@ -23,7 +27,7 @@ If you were added to an existing account:
   * Add a repository -- choose managed repository (if you're comfortable with git,
   you can also choose to link to an existing, but bare, repository)
 4. Click the hamburger menu, and then `Develop` to go to the dbt IDE (Integrated
-Development Enviornment). Select `Initialize a project` to create your project
+Development Environment). Select `Initialize a project` to create your project
 
 ### Perform your first dbt run
 1. In the terminal bar at the bottom of the screen, type in `dbt run` and hit enter
@@ -32,7 +36,10 @@ Development Enviornment). Select `Initialize a project` to create your project
 1. Click the `commit` button, with a message like "Create a dbt project"
 
 ## dbt CLI
+
 ### Create a repo
+<iframe width="640" height="400" src="https://www.loom.com/embed/afe148aeab5e4279a2ca310251ea20a6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Go to https://github.com/ and sign up for an account if you don't already have one.
 2. Click on the green **New** button or go to https://github.com/new.
 3. Type a repository name without spaces. For example, `dbt-tutorial`.
@@ -49,7 +56,10 @@ Development Enviornment). Select `Initialize a project` to create your project
     </a>
 </div>
 
+
 ### Create a project
+<iframe width="640" height="400" src="https://www.loom.com/embed/f36152340ccc41e8be517eb295c4d6f1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 The dbt CLI comes with a command to help you scaffold a dbt project. To create
 your dbt project:
 1. Run the `init` command:
@@ -132,13 +142,10 @@ Completed successfully
 Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
 ```
 
-### Example video
-Use the embed code copied from Loom
-<div style="position: relative; padding-bottom: 56.33802816901409%; height: 0;"><iframe src="https://www.loom.com/embed/4e09aed75d6748918134aa9891388932" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
-
 
 ### Commit your changes
+<iframe width="640" height="400" src="https://www.loom.com/embed/a39753e4ce5647b2be4e5331788bab91" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Link the GitHub repository you created to your dbt project by running the following
 commands. Make sure you use the correct git URL for your repository.
 ```shell-session
