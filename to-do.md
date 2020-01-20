@@ -16,6 +16,10 @@ puts it straight on your clipboard without having the code show up on the site?
 - [ ] Update the footer
 - [ ] ~ Video toggles
 - [ ] Update the home page of the docs
+- [ ] ~ Warning react component
+- [ ] ~ Image captions
+- [ ] Make hyperlink colors distinct to font colors
+- [ ] ~ center align images
 
 # Video editing
 - [ ] Cut the "Create a project (dbt Cloud)" video into separate components

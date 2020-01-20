@@ -105,10 +105,10 @@ data warehouses.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected at the top of the screen.
 2. Generate credentials with the following options:
-  * Which API are you using? BigQuery API
-  * Are you planning to use this API with App Enginer or Compute Engine? No, I'm not using them
-  * Service account name: `dbt-user`
-  * Key type: JSON
+    * Which API are you using? BigQuery API
+    * Are you planning to use this API with App Enginer or Compute Engine? No, I'm not using them
+    * Service account name: `dbt-user`
+    * Key type: JSON
 3. Download the JSON file and save it in a place you can access
 
 

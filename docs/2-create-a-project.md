@@ -2,10 +2,11 @@
 title: Create a project
 id: create-a-project
 ---
-Now that we've set up our environment, we can create a project!
+Now that we've set up our environment, and chosen the way we want to develop,
+we can create a dbt project!
 
 The process of creating a project is where the workflow differs the most between
-dbt Cloud and dbt CLI workflows.
+dbt Cloud and dbt CLI workflows -- make sure you follow the right intrsuctions.
 
 ## dbt Cloud
 ### Create a project
@@ -18,14 +19,14 @@ organization already has a dbt Cloud account, ask an admin to add you as a
 Developer.
 2. If you created a new account, a new project should automatically be created.
 If you were added to an existing account:
-  * Click the hamburger menu, then `Account Settings`, then `Projects`.
-  * Name your project "dbt Tutorial", and click `Save`. There's no need to fill
+    * Click the hamburger menu, then `Account Settings`, then `Projects`.
+    * Name your project "dbt Tutorial", and click `Save`. There's no need to fill
   in the other details.
-  * Click the hamburger menu, and then `Home`.
-  * Switch the project in the header bar to your new "dbt Tutorial" project.
+    * Click the hamburger menu, and then `Home`.
+    * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the onboarding flow:
-  * Connect to BQ
-  * Add a repository -- choose managed repository (if you're comfortable with git,
+    * Connect to BQ
+    * Add a repository -- choose managed repository (if you're comfortable with git,
   you can also choose to link to an existing, but bare, repository)
 4. Click the hamburger menu, and then `Develop` to go to the dbt IDE (Integrated
 Development Environment). Select `Initialize a project` to create your project
@@ -94,6 +95,7 @@ models:
 
 ### Connect to BigQuery
 When developing locally, dbt connects to your data warehouse using a `profile`.
+Profiles are stored in a yaml file.
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
 3. Copy the following into the file -- make sure you update the values where
@@ -121,27 +123,34 @@ $ dbt debug
 ```
 Confirm that the last line of the output is `Connection test: OK connection ok`.
 
+<div class='text-left'>
+    <a href="#" data-featherlight="/img/successful-dbt-debug.png">
+        <img
+            data-toggle="lightbox"
+            width="300px"
+            alt="A successful dbt debug command"
+            src="/img/successful-dbt-debug.png"
+            class="docImage" />
+    </a>
+</div>
+
 ### Perform your first dbt run
+We're going to check that our
 1. Execute the run command to build your first (example) models:
 ```shell-session
 $ dbt run
 ```
 You should have an ouput that looks like this:
-```text
-Running with dbt=0.15.0
-Found 1 model, 0 tests, 0 snapshots, 0 analyses, 133 macros, 0 operations, 0 seed files, 0 sources
-
-13:15:28 | Concurrency: 1 threads (target='dev')
-13:15:28 |
-13:15:28 | 1 of 1 START view model dbt_alice.my_first_dbt_model................. [RUN]
-13:15:29 | 1 of 1 OK created view model dbt_alice.my_first_dbt_model............ [CREATE VIEW in 1.39s]
-13:15:29 |
-13:15:29 | Finished running 1 view model in 2.87s.
-
-Completed successfully
-
-Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
-```
+<div class='text-left'>
+    <a href="#" data-featherlight="/img/successful-dbt-run.png">
+        <img
+            data-toggle="lightbox"
+            width="300px"
+            alt="A successful dbt run command"
+            src="/img/successful-dbt-run.png"
+            class="docImage" />
+    </a>
+</div>
 
 
 ### Commit your changes

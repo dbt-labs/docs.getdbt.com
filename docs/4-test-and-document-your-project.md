@@ -3,6 +3,8 @@ title: Test and document your project
 id: test-and-document-your-project
 ---
 ## Add tests
+Adding tests to a project helps validate that your models are working correctly.
+In this section, we're going to add some tests to your dbt project.
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
 ```yaml
@@ -35,8 +37,21 @@ models:
           - not_null
 
 ```
-3. Execute `dbt test`, and confirm that all your tests passed.
-[ to-do: passing image ]
+3. Execute `dbt test`, and confirm that all your tests passed. Here's the
+expected output when using dbt Cloud and the dbt CLI.
+
+[ TO-DO: Add Cloud image ]
+
+<div class='text-left'>
+    <a href="#" data-featherlight="/img/successful-tests.png">
+        <img
+            data-toggle="lightbox"
+            width="300px"
+            alt="Passing tests when using the dbt CLI"
+            src="/img/successful-tests.png"
+            class="docImage" />
+    </a>
+</div>
 
 ### Extra exercises
 * Try writing a test that fails, for example, omit one of the order statuses in
@@ -46,7 +61,12 @@ the failure?
 into a directory, try running the tests for all the models in that directory.
 
 ## Add documentation
-1. Update your `models/schema.yml` file to include some descriptions:
+Adding documentation to your project allows you to describe your models in rich
+detail, and share that information with your team. Here, we're going to add
+some basic documentation to our project.
+
+1. Update your `models/schema.yml` file to include some descriptions, such as
+those below.
 ```yaml
 version: 2
 
@@ -86,9 +106,9 @@ models:
 ```
 2. Execute `dbt docs generate` to generate the documentation for your project.
 3. Execute `dbt docs serve` to launch the documentation in a local website.
+[ To-do ]: Docs flow for this
 
-
-🎉Congrats! You've just built your first dbt project!
+Great work ⭐️! You've just built your first dbt project!
 
 ### Extra exercises
 * Try using a [docs block](https://docs.getdbt.com/docs/documentation#section-docs-blocks)
