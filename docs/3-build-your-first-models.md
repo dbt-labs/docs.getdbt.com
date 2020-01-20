@@ -3,12 +3,17 @@ title: Build your first models
 id: build-your-first-models
 ---
 
+## To-do
+- remake video with debug logs
+
 ## Build your first model
 Now that we're all set up, it's time to get to the fun part -- building models!
 We're going to take the query from the [Setting up](docs/setting-up) instructions,
 and turn it into a model in our dbt project.
 
 ### dbt Cloud
+<iframe width="640" height="400" src="https://www.loom.com/embed/49b4069f4eb7473e9cc23d2e2349d3a3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu,
 and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
@@ -16,11 +21,23 @@ and then `Develop`.
 file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You
 should get a successful run, like so:
-[ to-do: image ]
+<div class='text-left'>
+    <a href="#" data-featherlight="/img/first-model-dbt-cloud.png">
+        <img
+            data-toggle="lightbox"
+            width="300px"
+            alt="A successful run with dbt Cloud"
+            src="/img/first-model-dbt-cloud.png"
+            class="docImage" />
+    </a>
+</div>
+
 5. Switch back to the BigQuery console and check that you can `select` from this
 model.
 
 ### dbt CLI
+<iframe width="640" height="400" src="https://www.loom.com/embed/2ae3e1c6dfab451ab165ce928c5600c0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
 3. Paste the query from the [Setting up](docs/setting-up) instructions into the
@@ -28,12 +45,12 @@ file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <div class='text-left'>
-    <a href="#" data-featherlight="/img/first-model.png">
+    <a href="#" data-featherlight="/img/first-model-cli.png">
         <img
             data-toggle="lightbox"
             width="300px"
             alt="A successful run with the dbt CLI"
-            src="/img/first-model.png"
+            src="/img/first-model-cli.png"
             class="docImage" />
     </a>
 </div>
@@ -46,6 +63,11 @@ model.
 One of the most powerful features of dbt is that you can change the way a model
 is materialized in your warehouse, simply by changing a configuration value.
 Let's see this in action.
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/604c8aaf793f4f2c874022dd59ea965e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/22ebdc914426461ea5c617a415cb4c21" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Edit the following in your `dbt_project.yml` file:
 ```yaml
 models:
@@ -84,7 +106,12 @@ with customers as (
 4. Execute `dbt run`. Your model, `customers` should be built as a view.
 
 ## Delete the example models
-We don't need the sample files that dbt created for us anymore!
+
+We don't need the sample files that dbt created for us anymore! Let's delete them.
+<iframe width="640" height="400" src="https://www.loom.com/embed/b93903ed1cba4e70ac540b12966f6cdf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/db63e6e937594b38bf044c78e720d95d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Delete the `models/example/` directory
 2. Delete the `example:` key from your `dbt_project.yml` file, and any
 configurations that are listed under it
@@ -110,6 +137,10 @@ Often, it's a good idea to clean your data in one place, before doing additional
 transformations downstream. Our query already uses CTEs to this effect, but now
 we're going to experiment with using the [ref](https://docs.getdbt.com/docs/ref)
 function to separate this clean-up into a separate model.
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/548e19fd107d4594b0d588a3d79e8344" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/39eceeedf69641b5aca6f94c4da172a8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the
 `customers` CTE in our original query:
@@ -206,3 +237,7 @@ This can be expressed in a DAG (directed acyclic graph) like so:
 `models/staging/stg_customers.sql`)
     * Try configuring your `staging` models to be views
     * Try to run only the `staging` models
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/40a664884de746b6bb85e775bdf89db9" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/2fc44590f2614a68bea402322c36f56e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
