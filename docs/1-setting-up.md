@@ -1,5 +1,6 @@
 ---
 title: Setting up
+id: setting-up
 ---
 <iframe width="640" height="400" src="https://www.loom.com/embed/cb99861ab1034f7fab5fa48529e61f85" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 

@@ -15,6 +15,7 @@ and copy the SQL" -- is there a way we could have a "Copy SQL" widget that just
 puts it straight on your clipboard without having the code show up on the site?
 - [ ] Update the footer
 - [ ] ~ Video toggles
+- [ ] Update the home page of the docs
 
 # Video editing
 - [ ] Cut the "Create a project (dbt Cloud)" video into separate components

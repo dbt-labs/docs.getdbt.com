@@ -1,5 +1,6 @@
 ---
 title: Create a project
+id: create-a-project
 ---
 Now that we've set up our environment, we can create a project!
 

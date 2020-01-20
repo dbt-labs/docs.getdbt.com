@@ -1,5 +1,6 @@
 ---
 title: Test and document your project
+id: test-and-document-your-project
 ---
 ## Add tests
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
