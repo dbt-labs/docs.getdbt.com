@@ -68,5 +68,5 @@ in a public S3 bucket, and provide some `copy into` / `create stage` statements
 as a first step (the `seed` method means folks have to query the data first)
 
 ## Copy
-* Shoud we be explaining the reason for each step at the top of each section? Should we just go straight to the instructions and rely on the
+* Should we be explaining the reason for each step at the top of each section? Should we just go straight to the instructions and rely on the
 "Related questions" to explain?

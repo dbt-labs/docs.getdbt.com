@@ -3,8 +3,11 @@ title: Build your first models
 id: build-your-first-models
 ---
 
-## To-do
-- remake video with debug logs
+<!---
+To-do:
+- remake Cloud video with debug logs
+- update debug instructions for Cloud
+-->
 
 ## Build your first model
 Now that we're all set up, it's time to get to the fun part -- building models!

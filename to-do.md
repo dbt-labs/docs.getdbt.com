@@ -1,5 +1,6 @@
 # Styles
-List of to-dos that I need help with, roughly priortized
+List of to-dos that I need help with, roughly prioritized
+- [ ] Remove the "next" buttons that don't make sense. Or figure out how to get them to show the right doc
 - [ ] Make hyperlink colors distinct to font colors
 - [ ] Update the home page of the docs
 - [ ] Update the footer
