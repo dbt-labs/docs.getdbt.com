@@ -10,27 +10,9 @@
           "create-a-project-dbt-cli"
         ]
       },
-      {
-        "type": "subcategory",
-        "label": "Build your first models",
-        "ids": [
-          "build-your-first-models"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Test and document your project",
-        "ids": [
-          "test-and-document-your-project"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Deploy your project",
-        "ids":[
-          "deploy-your-project"
-        ]
-      }
+      "build-your-first-models",
+      "test-and-document-your-project",
+      "deploy-your-project"
     ]
   }
 }
