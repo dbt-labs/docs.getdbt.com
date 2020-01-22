@@ -10,6 +10,8 @@ dbt Cloud and dbt CLI workflows -- make sure you follow the right intrsuctions.
 
 ## dbt Cloud
 ### Create a project
+dbt Cloud makes the process of creating a new project (with example models)
+very easy! Once we have a new project, we can start writing our own models.
 <iframe width="640" height="400" src="https://www.loom.com/embed/05478e5ba2094152b41bc8fdf9f19d9f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/f5f4a51cf92548b4a84d417b37efb86b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -32,6 +34,8 @@ If you were added to an existing account:
 Development Environment). Select `Initialize a project` to create your project
 
 ### Perform your first dbt run
+Our sample project has some example models in it. We're going to check that we
+can run them to confirm everything is in order.
 1. In the terminal bar at the bottom of the screen, type in `dbt run` and hit enter
 
 ### Commit your changes
@@ -39,7 +43,7 @@ Development Environment). Select `Initialize a project` to create your project
 
 ## dbt CLI
 
-### Create a repo
+### Create a repository
 <iframe width="640" height="400" src="https://www.loom.com/embed/afe148aeab5e4279a2ca310251ea20a6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Go to https://github.com/ and sign up for an account if you don't already have one.
@@ -134,8 +138,10 @@ Confirm that the last line of the output is `Connection test: OK connection ok`.
     </a>
 </div>
 
+
 ### Perform your first dbt run
-We're going to check that our
+Our sample project has some example models in it. We're going to check that we
+can run them to confirm everything is in order.
 1. Execute the run command to build your first (example) models:
 ```shell-session
 $ dbt run
@@ -154,6 +160,7 @@ You should have an ouput that looks like this:
 
 
 ### Commit your changes
+We need to commit our changes so that our repository has up-to-date code.
 <iframe width="640" height="400" src="https://www.loom.com/embed/a39753e4ce5647b2be4e5331788bab91" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Link the GitHub repository you created to your dbt project by running the following

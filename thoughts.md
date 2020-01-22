@@ -45,6 +45,7 @@ docs? Here's my rough sketch:
   * Managed repos means you can't open a PR
   * Happy to have a callout that we normally wouldn't merge to master, but this
   is just the GS tutorial
+  * **Resolution:** Just call out the git thing
 
 ### Fleshing out the steps
 I think there could almost be two versions of the videos.
@@ -60,3 +61,12 @@ What's a good interface for that? Who knows 🤷‍
 
 ## The first version of videos
 * Some of them I didn't cut in the right place
+
+## Making this multi-warehouse compatible
+* Would love to do this with different warehouses. Maybe we put the files up
+in a public S3 bucket, and provide some `copy into` / `create stage` statements
+as a first step (the `seed` method means folks have to query the data first)
+
+## Copy
+* Shoud we be explaining the reason for each step at the top of each section? Should we just go straight to the instructions and rely on the
+"Related questions" to explain?
