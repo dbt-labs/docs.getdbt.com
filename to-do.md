@@ -5,6 +5,7 @@ List of to-dos that I need help with, roughly priortized
 - [ ] Update the footer
 - [ ] Remove the `docs` part from the URL, e.g. `http://localhost:3000/create-a-project` instead of `http://localhost:3000/docs/create-a-project` (maybe a `getting-started` prefix?)
 
+- [ ] ~ Make sidebar headings a little more consistent
 - [ ] ~ Ability to collapse a snippet
 - [ ] ~ setup snowplow on this website (Drew: I've actually never seen Snowplow be set up / have no idea what's involved, so I'd love to understand this!)
 - [ ] ~ Image captions

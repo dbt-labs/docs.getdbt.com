@@ -2,10 +2,34 @@
   "tutorial": {
     "Getting started": [
       "setting-up",
-      "create-a-project",
-      "build-your-first-models",
-      "test-and-document-your-project",
-      "deploy-your-project"
+      {
+        "type": "subcategory",
+        "label": "Create a project",
+        "ids": [
+          "create-a-project"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Build your first models",
+        "ids": [
+          "build-your-first-models"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Test and document your project",
+        "ids": [
+          "test-and-document-your-project"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Deploy your project",
+        "ids":[
+          "deploy-your-project"
+        ]
+      }
     ]
   }
 }
