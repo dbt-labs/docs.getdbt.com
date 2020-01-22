@@ -6,7 +6,8 @@
         "type": "subcategory",
         "label": "Create a project",
         "ids": [
-          "create-a-project"
+          "create-a-project-dbt-cloud",
+          "create-a-project-dbt-cli"
         ]
       },
       {

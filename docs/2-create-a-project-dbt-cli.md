@@ -1,6 +1,7 @@
 ---
 title: Create a project
-id: create-a-project
+sidebar_label: dbt CLI
+id: create-a-project-dbt-cli
 ---
 Now that we've set up our environment, and chosen the way we want to develop,
 we can create a dbt project!
