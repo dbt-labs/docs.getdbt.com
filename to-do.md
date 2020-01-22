@@ -1,10 +1,12 @@
 # Styles
-List of to-dos that I need help with, roughly priortized
+List of to-dos that I need help with, roughly prioritized
+- [ ] Remove the "next" buttons that don't make sense. Or figure out how to get them to show the right doc
 - [ ] Make hyperlink colors distinct to font colors
 - [ ] Update the home page of the docs
 - [ ] Update the footer
 - [ ] Remove the `docs` part from the URL, e.g. `http://localhost:3000/create-a-project` instead of `http://localhost:3000/docs/create-a-project` (maybe a `getting-started` prefix?)
 
+- [ ] ~ Make sidebar headings a little more consistent
 - [ ] ~ Ability to collapse a snippet
 - [ ] ~ setup snowplow on this website (Drew: I've actually never seen Snowplow be set up / have no idea what's involved, so I'd love to understand this!)
 - [ ] ~ Image captions
