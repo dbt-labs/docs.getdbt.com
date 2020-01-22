@@ -3,13 +3,20 @@ title: Create a project
 sidebar_label: dbt CLI
 id: create-a-project-dbt-cli
 ---
+<!---
+To-do:
+- Include instructions to update the `dbt_project.yml` file
+-->
+
+
+
 Now that we've set up our environment, and chosen the way we want to develop,
 we can create a dbt project!
 
 The process of creating a project is where the workflow differs the most between
 dbt Cloud and dbt CLI workflows — make sure you follow the right instructions.
 
-### Create a repository
+## Create a repository
 <iframe width="640" height="400" src="https://www.loom.com/embed/afe148aeab5e4279a2ca310251ea20a6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Go to https://github.com/ and sign up for an account if you don't already have one.
@@ -29,7 +36,7 @@ dbt Cloud and dbt CLI workflows — make sure you follow the right instructions.
 </div>
 
 
-### Create a project
+## Create a project
 <iframe width="640" height="400" src="https://www.loom.com/embed/f36152340ccc41e8be517eb295c4d6f1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 The dbt CLI comes with a command to help you scaffold a dbt project. To create
@@ -63,7 +70,7 @@ models:
     ...
 ```
 
-### Connect to BigQuery
+## Connect to BigQuery
 When developing locally, dbt connects to your data warehouse using a `profile`.
 Profiles are stored in a yaml file.
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
@@ -105,7 +112,7 @@ Confirm that the last line of the output is `Connection test: OK connection ok`.
 </div>
 
 
-### Perform your first dbt run
+## Perform your first dbt run
 Our sample project has some example models in it. We're going to check that we
 can run them to confirm everything is in order.
 1. Execute the run command to build your first (example) models:
@@ -125,7 +132,7 @@ You should have an ouput that looks like this:
 </div>
 
 
-### Commit your changes
+## Commit your changes
 We need to commit our changes so that our repository has up-to-date code.
 <iframe width="640" height="400" src="https://www.loom.com/embed/a39753e4ce5647b2be4e5331788bab91" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 

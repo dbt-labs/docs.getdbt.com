@@ -3,7 +3,7 @@ title: Create a project
 sidebar_label: dbt Cloud
 id: create-a-project-dbt-cloud
 ---
-### Create a project
+## Create a project
 dbt Cloud makes the process of creating a new project (with example models)
 very easy! Once we have a new project, we can start writing our own models.
 <iframe width="640" height="400" src="https://www.loom.com/embed/05478e5ba2094152b41bc8fdf9f19d9f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -27,10 +27,10 @@ If you were added to an existing account:
 4. Click the hamburger menu, and then `Develop` to go to the dbt IDE (Integrated
 Development Environment). Select `Initialize a project` to create your project
 
-### Perform your first dbt run
+## Perform your first dbt run
 Our sample project has some example models in it. We're going to check that we
 can run them to confirm everything is in order.
 1. In the terminal bar at the bottom of the screen, type in `dbt run` and hit enter
 
-### Commit your changes
+## Commit your changes
 1. Click the `commit` button, with a message like "Create a dbt project"
