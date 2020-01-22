@@ -3,6 +3,12 @@ title: Create a project
 sidebar_label: dbt Cloud
 id: create-a-project-dbt-cloud
 ---
+Now that we've set up our environment, and chosen the way we want to develop,
+we can create a dbt project!
+
+> ℹ️ These are the instructions for developing a project in dbt Cloud. If you're
+using the dbt CLI, follow the instructions [here](docs/create-a-project-dbt-cli).
+
 ## Create a project
 dbt Cloud makes the process of creating a new project (with example models)
 very easy! Once we have a new project, we can start writing our own models.

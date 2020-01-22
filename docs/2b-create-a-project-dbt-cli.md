@@ -13,8 +13,8 @@ To-do:
 Now that we've set up our environment, and chosen the way we want to develop,
 we can create a dbt project!
 
-The process of creating a project is where the workflow differs the most between
-dbt Cloud and dbt CLI workflows — make sure you follow the right instructions.
+> ℹ️ These are the instructions for developing a project using the dbt CLI. If
+you're developing in dbt Cloud, follow the instructions [here](docs/create-a-project-dbt-cloud).
 
 ## Create a repository
 <iframe width="640" height="400" src="https://www.loom.com/embed/afe148aeab5e4279a2ca310251ea20a6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
