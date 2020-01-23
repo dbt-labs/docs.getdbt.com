@@ -10,7 +10,7 @@ To-do:
 -->
 
 ## Build your first model
-Now that we're all set up, it's time to get to the fun part -- building models!
+Now that we're all set up, it's time to get to the fun part — building models!
 We're going to take the query from the [Setting up](docs/setting-up) instructions,
 and turn it into a model in our dbt project.
 
@@ -35,7 +35,7 @@ should get a successful run, like so:
     </a>
 </div>
 
-5. Switch back to the BigQuery console and check that you can `select` from this
+If you switch back to the BigQuery console you'll be able to `select` from this
 model.
 
 ### dbt CLI
@@ -84,9 +84,11 @@ models:
 as` statement.
 >
 > **Pro-tip**: To check out the SQL that dbt is running, you can look in:
-> * The `target/compiled/` directory for compiled `select` statements
-> * The `target/run/` directory for compiled `create` statements
-> * The `logs/dbt.log` file for verbose logging.
+> * dbt Cloud:
+> * dbt CLI:
+>     * The `target/compiled/` directory for compiled `select` statements
+>     * The `target/run/` directory for compiled `create` statements
+>     * The `logs/dbt.log` file for verbose logging.
 
 3. Edit `models/customers.sql` to have the following snippet at the top:
 ```sql
@@ -234,7 +236,7 @@ This can be expressed in a DAG (directed acyclic graph) like so:
 </div>
 
 ### Extra exercises
-* Check what happens when you write some bad SQL -- can you debug this failure?
+* Check what happens when you write some bad SQL — can you debug this failure?
 * Try to run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
 `models/staging/stg_customers.sql`)

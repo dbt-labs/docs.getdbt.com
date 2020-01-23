@@ -34,3 +34,6 @@ puts it straight on your clipboard without having the code show up on the site?
 # Content
 - [ ] Videos for each section
 - [ ] Update copy
+
+# Other
+- [ ] ? [Add search](https://docusaurus.io/docs/en/search)

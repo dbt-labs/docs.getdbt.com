@@ -5,6 +5,9 @@ id: test-and-document-your-project
 ## Add tests
 Adding tests to a project helps validate that your models are working correctly.
 In this section, we're going to add some tests to your dbt project.
+<iframe width="640" height="400" src="https://www.loom.com/embed/86a1e7ed19084810a7903bd31ebd83e0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
 ```yaml
@@ -28,6 +31,12 @@ models:
         tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('customers')
+              field: customer_id
 
   - name: customers
     columns:

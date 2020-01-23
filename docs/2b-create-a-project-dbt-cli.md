@@ -1,17 +1,16 @@
 ---
-title: Create a project
+title: dbt CLI: Create a project
 sidebar_label: dbt CLI
 id: create-a-project-dbt-cli
 ---
 <!---
 To-do:
-- Include instructions to update the `dbt_project.yml` file
+- Redo video
 -->
 
-
-
-Now that we've set up our environment, and chosen the way we want to develop,
-we can create a dbt project!
+Now that we've successfully run our sample query, and chosen the way we want to
+develop, we can create a dbt project! In this step, we'll create a starter project
+with example models, before we build our first models.
 
 > ℹ️ These are the instructions for developing a project using the dbt CLI. If
 you're developing in dbt Cloud, follow the instructions [here](docs/create-a-project-dbt-cloud).
@@ -84,8 +83,8 @@ jaffle_shop:
     dev:
       type: bigquery
       method: service-account
-      keyfile: /Users/claire/.dbt/graceful-creek-cred.json # replace this with the full path to your keyfile
-      project: graceful-creek-264520 # Replace this with your project id
+      keyfile: /Users/claire/.dbt/dbt-user-creds.json # replace this with the full path to your keyfile
+      project: grand-highway-265418 # Replace this with your project id
       dataset: dbt_alice # Replace this with dbt_your_name, e.g. dbt_bob
       threads: 1
       timeout_seconds: 300
