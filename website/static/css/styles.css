@@ -43,3 +43,7 @@ h2.headerTitleWithLogo {
     filter: drop-shadow(1px 4px 10px #aaaaaa33);
     margin: 10px
 }
+
+a {
+  color: #00BBBB;
+}
