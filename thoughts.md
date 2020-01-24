@@ -67,8 +67,12 @@ What's a good interface for that? Who knows 🤷‍
 in a public S3 bucket, and provide some `copy into` / `create stage` statements
 as a first step (the `seed` method means folks have to query the data first)
 
-## Copy
+## Content
 * Should we be explaining the reason for each step at the top of each section?
 Should we just go straight to the instructions and rely on the
 "Related questions" to explain?
 * Do we need more link-outs to guides?
+
+## Analytics
+* Snowplow? Tracking BQ queries to see how many people are actually running the
+queries? We could maybe write code to try to identify test projects in the IDE?
