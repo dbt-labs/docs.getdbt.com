@@ -3,10 +3,6 @@ title: dbt CLI: Create a project
 sidebar_label: dbt CLI
 id: create-a-project-dbt-cli
 ---
-<!---
-To-do:
-- Redo video
--->
 
 Now that we've successfully run our sample query, and chosen the way we want to
 develop, we can create a dbt project! In this step, we'll create a starter project

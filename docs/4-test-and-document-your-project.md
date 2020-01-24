@@ -2,11 +2,12 @@
 title: Test and document your project
 id: test-and-document-your-project
 ---
-## Add tests
+## Add tests to your models
 Adding tests to a project helps validate that your models are working correctly.
 In this section, we're going to add some tests to your dbt project.
 <iframe width="640" height="400" src="https://www.loom.com/embed/86a1e7ed19084810a7903bd31ebd83e0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
+<iframe width="640" height="400" src="https://www.loom.com/embed/61693e928ec94100bef33371aab8296a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
@@ -14,6 +15,13 @@ In this section, we're going to add some tests to your dbt project.
 version: 2
 
 models:
+  - name: customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
   - name: stg_customers
     columns:
       - name: customer_id
@@ -35,44 +43,45 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('customers')
+              to: ref('stg_customers')
               field: customer_id
-
-  - name: customers
-    columns:
-      - name: customer_id
-        tests:
-          - unique
-          - not_null
 
 ```
 3. Execute `dbt test`, and confirm that all your tests passed. Here's the
 expected output when using dbt Cloud and the dbt CLI.
 
-[ TO-DO: Add Cloud image ]
-
 <div class='text-left'>
-    <a href="#" data-featherlight="/img/successful-tests.png">
+    <a href="#" data-featherlight="/img/successful-tests-dbt-cloud.png">
         <img
             data-toggle="lightbox"
             width="300px"
-            alt="Passing tests when using the dbt CLI"
-            src="/img/successful-tests.png"
+            alt="Passing tests when using dbt Cloud"
+            src="/img/successful-tests-dbt-cloud.png"
             class="docImage" />
     </a>
 </div>
 
-### Extra exercises
-* Try writing a test that fails, for example, omit one of the order statuses in
-the `accepted_values` list. What does a failing test look like? Can you debug
-the failure?
-* Try running the tests for one model only. If you grouped your `stg_` models
-into a directory, try running the tests for all the models in that directory.
+<div class='text-left'>
+    <a href="#" data-featherlight="/img/successful-tests-dbt-cli.png">
+        <img
+            data-toggle="lightbox"
+            width="300px"
+            alt="Passing tests when using the dbt CLI"
+            src="/img/successful-tests-dbt-cli.png"
+            class="docImage" />
+    </a>
+</div>
 
-## Add documentation
+
+
+## Document your models
 Adding documentation to your project allows you to describe your models in rich
 detail, and share that information with your team. Here, we're going to add
 some basic documentation to our project.
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/f946321f692747e59bec3b726eccbfd4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/230b30756f674bf7ba38311099070d37" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Update your `models/schema.yml` file to include some descriptions, such as
 those below.
@@ -80,6 +89,17 @@ those below.
 version: 2
 
 models:
+- name: customers
+  description: One record per customer
+  columns:
+    - name: customer_id
+      description: Primary key
+      tests:
+        - unique
+        - not_null
+    - name: first_order_date
+      description: NULL when a customer has not yet placed an order.
+
   - name: stg_customers
     description: This model cleans up customer data
     columns:
@@ -102,23 +122,24 @@ models:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
 
-  - name: customers
-    description: One record per customer
-    columns:
-      - name: customer_id
-        description: Primary key
-        tests:
-          - unique
-          - not_null
-      - name: first_order_date
-        description: NULL when a customer has not yet placed an order.
 ```
-2. Execute `dbt docs generate` to generate the documentation for your project.
-3. Execute `dbt docs serve` to launch the documentation in a local website.
-[ To-do ]: Docs flow for this
 
-Great work ⭐️! You've just built your first dbt project!
+2. [dbt CLI only] Execute `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a json file
+with rich documentation about your project.
+3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
 
-### Extra exercises
+Great work ⭐️! You've just built your first dbt project that's tested and documented!
+
+## Extra exercises
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/384fa15250d44ca3950a06477bc31a89" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/6db6956adbb04f55b6027c461e9b1792" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+* Try writing a test that fails, for example, omit one of the order statuses in
+the `accepted_values` list. What does a failing test look like? Can you debug
+the failure?
+* Try running the tests for one model only. If you grouped your `stg_` models
+into a directory, try running the tests for all the models in that directory.
 * Try using a [docs block](https://docs.getdbt.com/docs/documentation#section-docs-blocks)
-to add a Markdown description to a field.
+to add a Markdown description to a model.
