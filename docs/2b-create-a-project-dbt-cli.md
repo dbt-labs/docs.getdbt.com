@@ -106,6 +106,13 @@ Confirm that the last line of the output is `Connection test: OK connection ok`.
     </a>
 </div>
 
+### FAQs
+* I'm not using BigQuery. [Where can I get a sample profile for my database?](faqs/sample-profiles)
+* [Why is the `profiles.yml` file outside my project?](faqs/separate-profile)
+* [What should I name my profile?](faqs/profile-name)
+* [What should I name my targets?](faqs/target-names)
+* [Can I use environment variables in my profile?](faqs/profile-env-vars)
+
 
 ## Perform your first dbt run
 Our sample project has some example models in it. We're going to check that we
@@ -139,6 +146,7 @@ $ git commit -m "Create a dbt project"
 $ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
 $ git push -u origin master
 ```
+
 
 > ℹ️ If this is your first time using git, it's worth taking some time to
 understand the basics.

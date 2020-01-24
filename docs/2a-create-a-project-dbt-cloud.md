@@ -3,12 +3,6 @@ title: dbt Cloud: Create a project
 sidebar_label: dbt Cloud
 id: create-a-project-dbt-cloud
 ---
-<!---
-To-do:
-- Include instructions to update the `dbt_project.yml` file
-- Redo the video so we don't have two separate sections for the one thing, and
-we have separate steps for the other parts
--->
 Now that we've successfully run our sample query, and chosen the way we want to
 develop, we can create a dbt project! In this step, we'll create a starter project
 with example models, before we build our first models.
