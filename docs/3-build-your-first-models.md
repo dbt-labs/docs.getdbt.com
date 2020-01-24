@@ -3,19 +3,13 @@ title: Build your first models
 id: build-your-first-models
 ---
 
-<!---
-To-do:
-- remake Cloud video with debug logs
-- update debug instructions for Cloud
--->
-
 ## Build your first model
-Now that we're all set up, it's time to get to the fun part -- building models!
+Now that we're all set up, it's time to get to the fun part — building models!
 We're going to take the query from the [Setting up](docs/setting-up) instructions,
 and turn it into a model in our dbt project.
 
 ### dbt Cloud
-<iframe width="640" height="400" src="https://www.loom.com/embed/49b4069f4eb7473e9cc23d2e2349d3a3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe width="640" height="400" src="https://www.loom.com/embed/09919ddb02e44015878c9e93e15fe792" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu,
 and then `Develop`.
@@ -24,6 +18,7 @@ and then `Develop`.
 file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You
 should get a successful run, like so:
+
 <div class='text-left'>
     <a href="#" data-featherlight="/img/first-model-dbt-cloud.png">
         <img
@@ -35,7 +30,7 @@ should get a successful run, like so:
     </a>
 </div>
 
-5. Switch back to the BigQuery console and check that you can `select` from this
+If you switch back to the BigQuery console you'll be able to `select` from this
 model.
 
 ### dbt CLI
@@ -67,7 +62,7 @@ One of the most powerful features of dbt is that you can change the way a model
 is materialized in your warehouse, simply by changing a configuration value.
 Let's see this in action.
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/604c8aaf793f4f2c874022dd59ea965e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe width="640" height="400" src="https://www.loom.com/embed/fbaa9948dccf4f74a17ffc7de1ddf4f2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/22ebdc914426461ea5c617a415cb4c21" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -84,9 +79,12 @@ models:
 as` statement.
 >
 > **Pro-tip**: To check out the SQL that dbt is running, you can look in:
-> * The `target/compiled/` directory for compiled `select` statements
-> * The `target/run/` directory for compiled `create` statements
-> * The `logs/dbt.log` file for verbose logging.
+> * dbt Cloud:
+>     * Within a run, click on a model name, and then select "Details"
+> * dbt CLI:
+>     * The `target/compiled/` directory for compiled `select` statements
+>     * The `target/run/` directory for compiled `create` statements
+>     * The `logs/dbt.log` file for verbose logging.
 
 3. Edit `models/customers.sql` to have the following snippet at the top:
 ```sql
@@ -111,7 +109,7 @@ with customers as (
 ## Delete the example models
 
 We don't need the sample files that dbt created for us anymore! Let's delete them.
-<iframe width="640" height="400" src="https://www.loom.com/embed/b93903ed1cba4e70ac540b12966f6cdf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe width="640" height="400" src="https://www.loom.com/embed/093d46e965994cb6a13e8a98559f6f9f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/db63e6e937594b38bf044c78e720d95d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -141,7 +139,7 @@ transformations downstream. Our query already uses CTEs to this effect, but now
 we're going to experiment with using the [ref](https://docs.getdbt.com/docs/ref)
 function to separate this clean-up into a separate model.
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/548e19fd107d4594b0d588a3d79e8344" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe width="640" height="400" src="https://www.loom.com/embed/cf070e26faa3423e80338e6a918ae9f8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/39eceeedf69641b5aca6f94c4da172a8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -233,14 +231,14 @@ This can be expressed in a DAG (directed acyclic graph) like so:
     </a>
 </div>
 
-### Extra exercises
-* Check what happens when you write some bad SQL -- can you debug this failure?
+## Extra exercises
+* Check what happens when you write some bad SQL — can you debug this failure?
 * Try to run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
 `models/staging/stg_customers.sql`)
     * Try configuring your `staging` models to be views
     * Try to run only the `staging` models
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/40a664884de746b6bb85e775bdf89db9" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe width="640" height="400" src="https://www.loom.com/embed/8e9ff6e496e44347afe7accc44eb6c79" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/2fc44590f2614a68bea402322c36f56e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

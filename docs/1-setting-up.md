@@ -72,17 +72,15 @@ select * from final
 ```
 
 ## Create a BigQuery project
-We will be using BigQuery as our data warehouse in this tutorial since there is
-a free tier. We've created a public dataset (`dbt-tutorial`) that anyone with
-a BigQuery account can query.
-
-You'll need your own BigQuery project for your dbt project.
+We'll be using BigQuery as our data warehouse in this tutorial since anyone with
+a Google Account can access BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
+We've created a public dataset for this tutorial that anyone can `select` from.
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/9b8d852c7e754d978209c3a60b53464e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-1. Go to https://console.cloud.google.com/bigquery -- if you don't have a
-BigQuery account you will be asked to create one.
-2. Create a new project -- you can use the default name for the project.
+1. Go to [the BigQuery console](https://console.cloud.google.com/bigquery) — if
+you don't have a BigQuery account you will be asked to create one.
+2. Create a new project — you can use the default name for the project.
 <div class='text-left'>
     <a href="#" data-featherlight="/img/create-bigquery-project.png">
         <img
@@ -93,7 +91,7 @@ BigQuery account you will be asked to create one.
             class="docImage" />
     </a>
 </div>
-3. Copy and paste the above query into the BigQuery console to validate that you
+3. Copy and paste the above query into the BigQuery console to confirm that you
 can run it.
 
 ## Generate BigQuery credentials
@@ -105,11 +103,13 @@ data warehouses.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected at the top of the screen.
 2. Generate credentials with the following options:
-    * Which API are you using? BigQuery API
-    * Are you planning to use this API with App Enginer or Compute Engine? No, I'm not using them
-    * Service account name: `dbt-user`
-    * Key type: JSON
-3. Download the JSON file and save it in a place you can access
+    * **Which API are you using?** BigQuery API
+    * **Are you planning to use this API with App Engine or Compute Engine?** No
+    * **Service account name:** `dbt-user`
+    * **Role:** BigQuery User
+    * **Key type:** JSON
+3. Download the JSON file and save it in an easy-to-remember spot, with a clear
+filename (e.g. `dbt-user-creds.json`)
 
 
 ## Choose the way you want to develop

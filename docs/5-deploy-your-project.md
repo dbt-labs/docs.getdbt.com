@@ -2,9 +2,6 @@
 title: Deploy your project
 id: deploy-your-project
 ---
-CC Notes:
-* Should we title this "Run dbt in production"?
-* Should we mention that this is not the only way to deploy a dbt project?
 
 As the `jaffle_shop` business gains more customers, and those customers create
 more orders, there will be more records added to your source data. Since the
@@ -20,9 +17,12 @@ First off, we need to commit the changes we made to our project so that our
 repository has our latest code.
 
 ### dbt Cloud
+<iframe width="640" height="400" src="https://www.loom.com/embed/afd55d89abdc4a77b34deaee90da0813" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 1. Click the `commit` button, with a message like "Add customers model"
 
 ### dbt CLI
+<iframe width="640" height="400" src="https://www.loom.com/embed/b07d7efe3f054e3bb357b4bccd805e70" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 1. Add all your changes to git: `git add -a`
 2. Commit your changes: `git commit -m "Add customers models"`
 3. Push your changes to your repository: `git push`
@@ -35,6 +35,8 @@ Connecting dbt Cloud to your repository will allow you to have the latest code
 whenever your dbt project runs.
 > ℹ️ This step only applies to folks who use the dbt CLI to develop their
 project. **If you developed your project in dbt Cloud, you can skip this step!**
+
+<iframe width="640" height="400" src="https://www.loom.com/embed/48abd56ec909405cbc76f4946e930a43" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your
 organization already has a dbt Cloud account, ask an admin to add you as a
@@ -54,14 +56,16 @@ If you were added to an existing account:
 
 
 ## Create a deployment environment
-Deployment environments are ... [HELP]
+<iframe width="640" height="400" src="https://www.loom.com/embed/bb6ea5b628ef4d019f9167f6ddf738cc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 1. Click the hamburger menu, and then `Home`
 2. Under "Deployment Environments" select "create a new one"
 3. Name your deployment environment (e.g. "Production")
 4. Add a target dataset (e.g. "analytics") -- this is the dataset that dbt will
 build into. For other warehouses this is usually named "schema"
 
-## Create & run a job
+### Create & run a job
+_See above video_
+
 Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
 on a schedule.
 
