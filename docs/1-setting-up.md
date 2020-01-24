@@ -5,7 +5,12 @@ id: setting-up
 <iframe width="640" height="400" src="https://www.loom.com/embed/cb99861ab1034f7fab5fa48529e61f85" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 This tutorial is geared at first-time users who want detailed instructions on
-how to go from zero to a deployed dbt project.
+how to go from zero to a deployed dbt project. You'll need a working knowledge
+of SQL in order to do this tutorial.
+
+We recommend you go through this project once from beginning to end. Once you've
+completed it, you should go back through and read some of the FAQs to broaden
+your understanding of dbt.
 
 This tutorial is based on a fictional business named `jaffle_shop`, so you'll
 see this name used throughout the project.
@@ -94,6 +99,10 @@ you don't have a BigQuery account you will be asked to create one.
 3. Copy and paste the above query into the BigQuery console to confirm that you
 can run it.
 
+### FAQs
+* The data in this tutorial is already loaded into BigQuery. [How do I get my
+data into my warehouse?](faqs/loading-data)
+
 ## Generate BigQuery credentials
 In order to let dbt connect to your warehouse, you'll need generate a keyfile.
 This is analogous to using a database user name and password with most other
@@ -111,6 +120,8 @@ data warehouses.
 3. Download the JSON file and save it in an easy-to-remember spot, with a clear
 filename (e.g. `dbt-user-creds.json`)
 
+### FAQs
+* [What privileges does my database user need to use dbt?](faqs/database-privileges)
 
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:

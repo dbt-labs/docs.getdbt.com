@@ -8,9 +8,9 @@ more orders, there will be more records added to your source data. Since the
 `fct_customers` model is materialized as a table, you'll need to periodically
 rebuild your table to ensure that the data stays up-to-date.
 
-This is often referred to as "deploying a project" or "running a project in
-production". In this part of the tutorial, we'll go through how you can deploy
-your project with dbt Cloud.
+This is often referred to as "deploying a project" or "[running a project in
+production](https://docs.getdbt.com/docs/running-dbt-in-production)". In this
+part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
 
 ## Commit your changes
 First off, we need to commit the changes we made to our project so that our
@@ -63,7 +63,7 @@ If you were added to an existing account:
 4. Add a target dataset (e.g. "analytics") -- this is the dataset that dbt will
 build into. For other warehouses this is usually named "schema"
 
-### Create & run a job
+## Create and run a job
 _See above video_
 
 Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
@@ -84,6 +84,8 @@ and doing so could result in using up your BigQuery credit.
 7. Click into the run to see the progress -- once the run is complete, click
 "View Documentation" to see the docs for your project.
 
+### FAQs
+* [What happens if one of my runs fails?](faqs/failed-prod-run)
 
 ## Next steps
 Congratulations 🎉! You've just deployed your first dbt project! Here's a few
@@ -96,8 +98,8 @@ with a query that you frequently run, to build your first models!
 
 ### Learn some best practices
 Now that you've got a working dbt project, read more about some of our [best
-practices](https://docs.getdbt.com/docs/best-practices). There's a ton of tips
-as well as links to further reading.
+practices](https://docs.getdbt.com/docs/best-practices), or go back this tutorial
+and read some of the FAQs.
 
 ### Keep building this project
 Here's some suggested exercises to level-up your dbt skills:

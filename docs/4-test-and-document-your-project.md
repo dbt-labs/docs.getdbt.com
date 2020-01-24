@@ -3,8 +3,10 @@ title: Test and document your project
 id: test-and-document-your-project
 ---
 ## Add tests to your models
-Adding tests to a project helps validate that your models are working correctly.
-In this section, we're going to add some tests to your dbt project.
+Adding [tests](https://docs.getdbt.com/docs/testing) to a project helps validate
+that your models are working correctly. In this section, we're going to add some
+tests to your dbt project.
+
 <iframe width="640" height="400" src="https://www.loom.com/embed/86a1e7ed19084810a7903bd31ebd83e0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/61693e928ec94100bef33371aab8296a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -72,12 +74,20 @@ expected output when using dbt Cloud and the dbt CLI.
     </a>
 </div>
 
-
+### FAQs
+* [What tests are available for me to use in dbt? Can I write my own tests?](faqs/available-tests)
+* [How do I test one model at a time?](faqs/test-one-model)
+* [One of my tests failed, how can I debug it?](faqs/failed-tests)
+* [Do my tests need to be in a file named `schema.yml`?][faqs/schema-yml-name]
+* [Do all my tests go in one file?](faqs/multiple-test-files)
+* [What tests should I add to my project?](faqs/recommended-tests)
+* [When should I run my tests?](faqs/when-to-test)
 
 ## Document your models
-Adding documentation to your project allows you to describe your models in rich
-detail, and share that information with your team. Here, we're going to add
-some basic documentation to our project.
+Adding [documentation](https://docs.getdbt.com/docs/documentation) to your
+project allows you to describe your models in rich detail, and share that
+information with your team. Here, we're going to add some basic documentation to
+our project.
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/f946321f692747e59bec3b726eccbfd4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -128,10 +138,13 @@ models:
 with rich documentation about your project.
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
 
+### FAQs
+* [How do I write long-form explanations in my descriptions?](faqs/long-descriptions)
+* [How do I share my documentation with my team members?](faqs/sharing-documentation)
+
 Great work ⭐️! You've just built your first dbt project that's tested and documented!
 
 ## Extra exercises
-
 <iframe width="640" height="400" src="https://www.loom.com/embed/384fa15250d44ca3950a06477bc31a89" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <iframe width="640" height="400" src="https://www.loom.com/embed/6db6956adbb04f55b6027c461e9b1792" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
