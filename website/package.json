@@ -5,9 +5,15 @@
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.40",
+    "@docusaurus/plugin-ideal-image": "^2.0.0-alpha.40",
     "@docusaurus/preset-classic": "^2.0.0-alpha.40",
     "classnames": "^2.2.6",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "color": "^3.1.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "style-loader": "^1.1.3"
   }
 }

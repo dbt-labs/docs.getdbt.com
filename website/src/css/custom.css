@@ -1,4 +1,5 @@
-:root {
+
+root {
     --ifm-color-primary: #023644;
     --ifm-color-primary-dark: #02313d;
     --ifm-color-primary-darker: #022e3a;
@@ -6,4 +7,46 @@
     --ifm-color-primary-light: #023b4b;
     --ifm-color-primary-lighter: #023e4e;
     --ifm-color-primary-lightest: #034658;
+
+    --ifm-h1-font-size: 2rem;
+    --ifm-h2-font-size: 1.5rem;
+    --ifm-h3-font-size: 1.25rem;
+    --ifm-h4-font-size: 1rem;
+    --ifm-h5-font-size: 0.875rem;
+    --ifm-h6-font-size: 0.85rem;
+}
+
+h1, h2, h3 {
+    font-family: "dbt-brand"
+}
+
+/* Wish we didn't need to do this... */
+h1.docTitle_node_modules-\@docusaurus-theme-classic-src-theme-DocItem- {
+    font-size: 2rem;
+}
+
+nav.navbar,
+div.navbar-sidebar__brand
+{
+    background-color: #033744 !important;
+}
+
+nav.navbar a.navbar__link {
+    color: #c6d2d5!important;
+}
+
+nav.navbar div.navbar__toggle,
+nav.navbar a.navbar__link--active
+{
+    color: white !important;
+    font-weight: bold !important;
+}
+
+nav.navbar div.navbar__inner {
+    margin-left: 10px !important;
+}
+
+.docImage {
+    filter: drop-shadow(1px 4px 10px #aaaaaa33);
+    margin: 10px
 }
