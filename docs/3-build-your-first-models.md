@@ -4,7 +4,7 @@ id: build-your-first-models
 ---
 
 ## Build your first model
-Now that we're all set up, it's time to get to the fun part — building models!
+Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
 We're going to take the query from the [Setting up](docs/setting-up) instructions,
 and turn it into a model in our dbt project.
 
