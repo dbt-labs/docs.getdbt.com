@@ -33,6 +33,7 @@ should get a successful run, like so:
 If you switch back to the BigQuery console you'll be able to `select` from this
 model.
 
+
 ### dbt CLI
 <iframe width="640" height="400" src="https://www.loom.com/embed/2ae3e1c6dfab451ab165ce928c5600c0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -56,6 +57,11 @@ file.
 5. Switch back to the BigQuery console and check that you can `select` from this
 model.
 
+### FAQs
+* [How can I see the SQL that dbt is running?](faqs/checking-logs)
+* [If I rerun dbt, will there be any downtime as models are rebuilt?](faqs/run-downtime)
+* [What happens if the SQL in my query is bad?](faqs/sql-errors)
+
 
 ## Change the way your model is materialized
 One of the most powerful features of dbt is that you can change the way a model
@@ -75,16 +81,9 @@ models:
       materialized: view
 ```
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
-> To do this, dbt had to first run a `drop view` statement, then a `create table
-as` statement.
->
-> **Pro-tip**: To check out the SQL that dbt is running, you can look in:
-> * dbt Cloud:
->     * Within a run, click on a model name, and then select "Details"
-> * dbt CLI:
->     * The `target/compiled/` directory for compiled `select` statements
->     * The `target/run/` directory for compiled `create` statements
->     * The `logs/dbt.log` file for verbose logging.
+> To do this, dbt had to first run a `drop view` statement (or API call on
+BigQuery), then a `create table as` statement.
+
 
 3. Edit `models/customers.sql` to have the following snippet at the top:
 ```sql
@@ -104,7 +103,13 @@ with customers as (
 
 ```
 
-4. Execute `dbt run`. Your model, `customers` should be built as a view.
+4. Execute `dbt run`. Your model, `customers` should be built as a view. You may
+need to run `dbt run --full-refresh` for this to take effect on BigQuery.
+
+### FAQs:
+* [What materializations are available?](faqs/available-materializations)
+* [Which materialization should I use?](faqs/which-materialization)
+* [What other model configurations are there?](faqs/available-configurations)
 
 ## Delete the example models
 
@@ -131,6 +136,10 @@ models:
   jaffle_shop:
     materialized: table
 ```
+
+### FAQs
+* [How do I remove unused models from my data warehouse?](faqs/removing-deleted-models)
+* [I got a "unused model configurations" error message, what does this mean?](faqs/unused-model-configurations)
 
 
 ## Build models on top of other models
@@ -231,8 +240,13 @@ This can be expressed in a DAG (directed acyclic graph) like so:
     </a>
 </div>
 
+### FAQs
+* [How can I run one model at a time?](faqs/run-one-model)
+* [Do model names need to be unique, even if they are in different folders?](faqs/unique-model-names)
+* [How should I structure my project?](faqs/structure-a-project)
+
 ## Extra exercises
-* Check what happens when you write some bad SQL — can you debug this failure?
+* Check what happens when you write some bad SQL -- can you debug this failure?
 * Try to run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
 `models/staging/stg_customers.sql`)
