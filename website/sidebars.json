@@ -3,9 +3,9 @@
     "Getting started": [
       "setting-up",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Create a project",
-        "ids": [
+        "items": [
           "create-a-project-dbt-cloud",
           "create-a-project-dbt-cli"
         ]
