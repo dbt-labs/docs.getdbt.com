@@ -72,7 +72,14 @@ expected output when using dbt Cloud and the dbt CLI.
     </a>
 </div>
 
-
+### FAQs
+* [What tests are available for me to use in dbt? Can I write my own tests?](faqs/available-tests)
+* [How do I test one model at a time?](faqs/test-one-model)
+* [One of my tests failed, how can I debug it?](faqs/failed-tests)
+* [Do my tests need to be in a file named `schema.yml`?][faqs/schema-yml-name]
+* [Do all my tests go in one file?](faqs/multiple-test-files)
+* [What tests should I add to my project?](faqs/recommended-tests)
+* [When should I run my tests?](faqs/when-to-test)
 
 ## Document your models
 Adding documentation to your project allows you to describe your models in rich
@@ -127,6 +134,10 @@ models:
 2. [dbt CLI only] Execute `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a json file
 with rich documentation about your project.
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
+
+### FAQs
+* [How do I write long-form explanations in my descriptions?](faqs/long-descriptions)
+* [How do I share my documentation with my team members?](faqs/sharing-documentation)
 
 Great work ⭐️! You've just built your first dbt project that's tested and documented!
 

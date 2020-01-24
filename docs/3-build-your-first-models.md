@@ -106,7 +106,7 @@ with customers as (
 4. Execute `dbt run`. Your model, `customers` should be built as a view. You may
 need to run `dbt run --full-refresh` for this to take effect on BigQuery.
 
-### FAQs:
+### FAQs
 * [What materializations are available?](faqs/available-materializations)
 * [Which materialization should I use?](faqs/which-materialization)
 * [What other model configurations are there?](faqs/available-configurations)
