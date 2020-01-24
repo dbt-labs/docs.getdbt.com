@@ -20,7 +20,7 @@ module.exports = {
       },
       links: [
         {
-          href: "https://docs.getdbt.com",
+          to: '/docs/introduction',
           label: 'Docs',
           position: 'left',
         },

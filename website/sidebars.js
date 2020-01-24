@@ -1,10 +1,7 @@
 module.exports = {
   docs: {
     'Documentation': [
-      'tutorial/setting-up',
-      'tutorial/setting-up',
-      'tutorial/setting-up',
-      'tutorial/setting-up',
+      'introduction',
     ],
   },
   tutorial: {
