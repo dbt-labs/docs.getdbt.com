@@ -2,7 +2,7 @@
 ### Working on the Setting up page
 * I think we should make the recommendation "Do this tutorial once, and then
 do it a second time with your _own_ query / data warehouse / credentials"
-* As I'm writing this, I have a instinct to want to explain _everything_. This
+* As I'm writing this, I have an instinct to want to explain _everything_. This
 is because I'm a person who wants to understand the why of everything. This is
 in fact how we **onboard people to the viewpoint**. How can we support people
 that have these sort of questions without cluttering up the simplicty of the
@@ -56,11 +56,9 @@ things lol). This would replace the need for a ton of screenshots for each step.
 
 What's a good interface for that? Who knows 🤷‍
 
-## Accessibility
-* How do we get Loom videos close captioned?
-
-## The first version of videos
-* Some of them I didn't cut in the right place
+## Vids
+* How do we get Loom videos close captioned? --> upload to youtube apparently
+* Audio/video is outta sync
 
 ## Making this multi-warehouse compatible
 * Would love to do this with different warehouses. Maybe we put the files up
@@ -74,5 +72,8 @@ Should we just go straight to the instructions and rely on the
 * Do we need more link-outs to guides?
 
 ## Analytics
-* Snowplow? Tracking BQ queries to see how many people are actually running the
-queries? We could maybe write code to try to identify test projects in the IDE?
+* Snowplow?
+* Tracking BQ queries to see how many people are actually running the
+queries? 🙅‍ Not possible as we don't have access to the queries against our
+dataset.
+* We could maybe write code to try to identify test projects in the IDE?
