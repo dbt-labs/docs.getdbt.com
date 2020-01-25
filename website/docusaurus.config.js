@@ -1,7 +1,7 @@
 
 module.exports = {
   baseUrl: '/',
-  favicon: '/src/img/favicon.ico',
+  favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
   title: 'dbt - Documentation',
   url: 'https://docs.getdbt.com',
@@ -9,13 +9,13 @@ module.exports = {
   themeConfig: {
     disableDarkMode: true,
     sidebarCollapsible: true,
-    image: 'src/img/dbt-logo-full-white.png',
+    image: '/img/dbt-logo-full-white.png',
     prism: {
       theme: require('prism-react-renderer/themes/nightOwl'),
     },
     navbar: {
       logo: {
-        src: '/src/img/dbt-logo-full-white.png',
+        src: '/img/dbt-logo-full-white.png',
         alt: 'dbt Logo',
       },
       links: [
@@ -29,13 +29,23 @@ module.exports = {
           label: 'Tutorial',
           position: 'left',
         },
+        {
+          href: 'https://blog.getdbt.com',
+          label: 'Blog',
+          position: 'right',
+        },
+        {
+          href: 'https://github.com/fishtown-analytics/dbt',
+          label: 'GitHub',
+          position: 'right',
+        },
       ],
     },
     footer: {
       style: 'dark',
       logo: {
         alt: 'dbt Logo',
-        src: '/src/img/dbt-logo-full-white.png',
+        src: '/img/dbt-logo-full-white.png',
         href: 'https://www.getdbt.com/',
       },
       copyright: `Copyright © ${new Date().getFullYear()} Fishtown Analytics, Inc.`,
