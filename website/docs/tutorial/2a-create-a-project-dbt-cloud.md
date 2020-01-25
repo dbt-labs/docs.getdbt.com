@@ -3,6 +3,11 @@ title: Create a project
 sidebar_label: dbt Cloud
 id: create-a-project-dbt-cloud
 ---
+
+import LoomVideo from '@site/src/components/loom';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Now that we've set up our environment, and chosen the way we want to develop,
 we can create a dbt project!
 
@@ -12,9 +17,21 @@ using the dbt CLI, follow the instructions [here](docs/create-a-project-dbt-cli)
 ## Create a project
 dbt Cloud makes the process of creating a new project (with example models)
 very easy! Once we have a new project, we can start writing our own models.
-<iframe width="640" height="400" src="https://www.loom.com/embed/05478e5ba2094152b41bc8fdf9f19d9f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/f5f4a51cf92548b4a84d417b37efb86b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<Tabs
+  defaultValue="new"
+  values={[
+    { label: 'I need an account', value: 'new', },
+    { label: 'I have an account', value: 'existing', },
+  ]
+}>
+    <TabItem value="new">
+        <LoomVideo id="05478e5ba2094152b41bc8fdf9f19d9f" />
+    </TabItem>
+    <TabItem value="existing">
+        <LoomVideo id="f5f4a51cf92548b4a84d417b37efb86b" />
+    </TabItem>
+</Tabs>
 
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your
 organization already has a dbt Cloud account, ask an admin to add you as a

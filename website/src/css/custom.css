@@ -50,3 +50,7 @@ nav.navbar div.navbar__inner {
     filter: drop-shadow(1px 4px 10px #aaaaaa33);
     margin: 10px
 }
+
+.featherlight:before {
+    height: 5%;
+}
