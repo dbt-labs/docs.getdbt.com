@@ -1,43 +1,36 @@
 ---
-title: Create a project
+title: 'dbt CLI: Create a project'
 sidebar_label: dbt CLI
 id: create-a-project-dbt-cli
 ---
-<!---
-To-do:
-- Include instructions to update the `dbt_project.yml` file
--->
 
+import Link from '@docusaurus/Link';
+import Alert from '@site/src/components/alert';
+import Lightbox from '@site/src/components/lightbox';
+import LoomVideo from '@site/src/components/loom';
 
+Now that we've successfully run our sample query, and chosen the way we want to
+develop, we can create a dbt project! In this step, we'll create a starter project
+with example models, before we build our first models.
 
-Now that we've set up our environment, and chosen the way we want to develop,
-we can create a dbt project!
-
-> ℹ️ These are the instructions for developing a project using the dbt CLI. If
-you're developing in dbt Cloud, follow the instructions [here](docs/create-a-project-dbt-cloud).
+<Alert type="info">
+These are the instructions for developing a project using the dbt CLI. If
+you're developing in dbt Cloud, follow the instructions <Link to="/docs/tutorial/create-a-project-dbt-cloud">here</Link>.
+</Alert>
 
 ## Create a repository
-<iframe width="640" height="400" src="https://www.loom.com/embed/afe148aeab5e4279a2ca310251ea20a6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="afe148aeab5e4279a2ca310251ea20a6" />
 
 1. Go to https://github.com/ and sign up for an account if you don't already have one.
 2. Click on the green **New** button or go to https://github.com/new.
 3. Type a repository name without spaces. For example, `dbt-tutorial`.
 4. Click **Create repository** (without `.gitignore` and without a license).
 
-<div class='text-left'>
-    <a href="#" data-featherlight="/img/create-github-repo.png">
-        <img
-            data-toggle="lightbox"
-            width="300px"
-            alt="Create a GitHub repo"
-            src="/img/create-github-repo.png"
-            class="docImage" />
-    </a>
-</div>
+<Lightbox src="/img/create-github-repo.png" title="Create a GitHub repo" />
 
 
 ## Create a project
-<iframe width="640" height="400" src="https://www.loom.com/embed/f36152340ccc41e8be517eb295c4d6f1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="f36152340ccc41e8be517eb295c4d6f1" />
 
 The dbt CLI comes with a command to help you scaffold a dbt project. To create
 your dbt project:
@@ -84,8 +77,8 @@ jaffle_shop:
     dev:
       type: bigquery
       method: service-account
-      keyfile: /Users/claire/.dbt/graceful-creek-cred.json # replace this with the full path to your keyfile
-      project: graceful-creek-264520 # Replace this with your project id
+      keyfile: /Users/claire/.dbt/dbt-user-creds.json # replace this with the full path to your keyfile
+      project: grand-highway-265418 # Replace this with your project id
       dataset: dbt_alice # Replace this with dbt_your_name, e.g. dbt_bob
       threads: 1
       timeout_seconds: 300
@@ -100,16 +93,14 @@ $ dbt debug
 ```
 Confirm that the last line of the output is `Connection test: OK connection ok`.
 
-<div class='text-left'>
-    <a href="#" data-featherlight="/img/successful-dbt-debug.png">
-        <img
-            data-toggle="lightbox"
-            width="300px"
-            alt="A successful dbt debug command"
-            src="/img/successful-dbt-debug.png"
-            class="docImage" />
-    </a>
-</div>
+<Lightbox src="/img/successful-dbt-debug.png" title="A successful dbt debug command" />
+
+### FAQs
+* I'm not using BigQuery. [Where can I get a sample profile for my database?](faqs/sample-profiles)
+* [Why is the `profiles.yml` file outside my project?](faqs/separate-profile)
+* [What should I name my profile?](faqs/profile-name)
+* [What should I name my targets?](faqs/target-names)
+* [Can I use environment variables in my profile?](faqs/profile-env-vars)
 
 
 ## Perform your first dbt run
@@ -120,21 +111,12 @@ can run them to confirm everything is in order.
 $ dbt run
 ```
 You should have an ouput that looks like this:
-<div class='text-left'>
-    <a href="#" data-featherlight="/img/successful-dbt-run.png">
-        <img
-            data-toggle="lightbox"
-            width="300px"
-            alt="A successful dbt run command"
-            src="/img/successful-dbt-run.png"
-            class="docImage" />
-    </a>
-</div>
 
+<Lightbox src="/img/successful-dbt-run.png" title="A successful dbt run command" />
 
 ## Commit your changes
 We need to commit our changes so that our repository has up-to-date code.
-<iframe width="640" height="400" src="https://www.loom.com/embed/a39753e4ce5647b2be4e5331788bab91" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="a39753e4ce5647b2be4e5331788bab91" />
 
 1. Link the GitHub repository you created to your dbt project by running the following
 commands. Make sure you use the correct git URL for your repository.
@@ -145,5 +127,7 @@ $ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
 $ git push -u origin master
 ```
 
-> ℹ️ If this is your first time using git, it's worth taking some time to
-understand the basics.
+
+<Alert type="info">
+If this is your first time using git, it's worth taking some time to understand the basics.
+</Alert>

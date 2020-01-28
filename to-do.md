@@ -6,6 +6,7 @@ List of to-dos that I need help with, roughly prioritized
 - [ ] Update the footer
 - [ ] Remove the `docs` part from the URL, e.g. `http://localhost:3000/create-a-project` instead of `http://localhost:3000/docs/create-a-project` (maybe a `getting-started` prefix?)
 
+- [ ] ~ Add "Edit docs" button
 - [ ] ~ Make sidebar headings a little more consistent
 - [ ] ~ Ability to collapse a snippet
 - [ ] ~ setup snowplow on this website (Drew: I've actually never seen Snowplow be set up / have no idea what's involved, so I'd love to understand this!)
@@ -28,9 +29,13 @@ puts it straight on your clipboard without having the code show up on the site?
 
 
 # Video editing
-- [ ] Cut the "Create a project (dbt Cloud)" video into separate components
+- [x] Cut the "Create a project (dbt Cloud)" video into separate components
 - [ ] Download videos from Loom and upload to YouTube for closed captions
 
 # Content
-- [ ] Videos for each section
-- [ ] Update copy
+- [x] Videos for each section
+- [x] Update copy
+
+# Other
+- [ ] ? [Add search](https://docusaurus.io/docs/en/search)
+- [ ] Figure out why the site is slow

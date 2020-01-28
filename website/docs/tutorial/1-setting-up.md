@@ -9,7 +9,12 @@ import Lightbox from '@site/src/components/lightbox';
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
 This tutorial is geared at first-time users who want detailed instructions on
-how to go from zero to a deployed dbt project.
+how to go from zero to a deployed dbt project. You'll need a working knowledge
+of SQL in order to do this tutorial.
+
+We recommend you go through this project once from beginning to end. Once you've
+completed it, you should go back through and read some of the FAQs to broaden
+your understanding of dbt.
 
 This tutorial is based on a fictional business named `jaffle_shop`, so you'll
 see this name used throughout the project.
@@ -76,21 +81,20 @@ select * from final
 ```
 
 ## Create a BigQuery project
-We will be using BigQuery as our data warehouse in this tutorial since there is
-a free tier. We've created a public dataset (`dbt-tutorial`) that anyone with
-a BigQuery account can query.
-
-You'll need your own BigQuery project for your dbt project.
+We'll be using BigQuery as our data warehouse in this tutorial since anyone with
+a Google Account can access BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
+We've created a public dataset for this tutorial that anyone can `select` from.
 
 <LoomVideo id="9b8d852c7e754d978209c3a60b53464e" />
 
 1. Go to https://console.cloud.google.com/bigquery -- if you don't have a
 BigQuery account you will be asked to create one.
 2. Create a new project -- you can use the default name for the project.
-<Lightbox src="/img/create-bigquery-project.png"
-          title="Create a BigQuery project"></Lightbox>
 3. Copy and paste the above query into the BigQuery console to validate that you
-can run it.
+
+### FAQs
+* The data in this tutorial is already loaded into BigQuery. [How do I get my
+data into my warehouse?](faqs/loading-data)
 
 ## Generate BigQuery credentials
 In order to let dbt connect to your warehouse, you'll need generate a keyfile.
@@ -101,15 +105,20 @@ data warehouses.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected at the top of the screen.
 2. Generate credentials with the following options:
-    * Which API are you using? BigQuery API
-    * Are you planning to use this API with App Enginer or Compute Engine? No, I'm not using them
-    * Service account name: `dbt-user`
-    * Key type: JSON
-3. Download the JSON file and save it in a place you can access
+    * **Which API are you using?** BigQuery API
+    * **Are you planning to use this API with App Engine or Compute Engine?** No
+    * **Service account name:** `dbt-user`
+    * **Role:** BigQuery User
+    * **Key type:** JSON
+3. Download the JSON file and save it in an easy-to-remember spot, with a clear
+filename (e.g. `dbt-user-creds.json`)
 
+### FAQs
+* [What privileges does my database user need to use dbt?](faqs/database-privileges)
 
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:
+
 1. Edit files and run projects using the web-based Integrated Development
 Environment (IDE) in **dbt Cloud**.
 2. Edit files locally using a code editor, and run projects using the Command

@@ -3,19 +3,18 @@ title: Build your first models
 id: build-your-first-models
 ---
 
-<!---
-To-do:
-- remake Cloud video with debug logs
-- update debug instructions for Cloud
--->
+import Lightbox from '@site/src/components/lightbox';
+import LoomVideo from '@site/src/components/loom';
+import CloudCore from '@site/src/components/cloudcore';
+import Alert from '@site/src/components/alert';
 
 ## Build your first model
-Now that we're all set up, it's time to get to the fun part -- building models!
+Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
 We're going to take the query from the [Setting up](docs/setting-up) instructions,
 and turn it into a model in our dbt project.
 
 ### dbt Cloud
-<iframe width="640" height="400" src="https://www.loom.com/embed/49b4069f4eb7473e9cc23d2e2349d3a3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="09919ddb02e44015878c9e93e15fe792" />
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu,
 and then `Develop`.
@@ -24,22 +23,16 @@ and then `Develop`.
 file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You
 should get a successful run, like so:
-<div class='text-left'>
-    <a href="#" data-featherlight="/img/first-model-dbt-cloud.png">
-        <img
-            data-toggle="lightbox"
-            width="300px"
-            alt="A successful run with dbt Cloud"
-            src="/img/first-model-dbt-cloud.png"
-            class="docImage" />
-    </a>
-</div>
 
-5. Switch back to the BigQuery console and check that you can `select` from this
+<Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
+
+If you switch back to the BigQuery console you'll be able to `select` from this
 model.
 
+
 ### dbt CLI
-<iframe width="640" height="400" src="https://www.loom.com/embed/2ae3e1c6dfab451ab165ce928c5600c0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<LoomVideo id="2ae3e1c6dfab451ab165ce928c5600c0" />
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
@@ -47,19 +40,15 @@ model.
 file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
-<div class='text-left'>
-    <a href="#" data-featherlight="/img/first-model-cli.png">
-        <img
-            data-toggle="lightbox"
-            width="300px"
-            alt="A successful run with the dbt CLI"
-            src="/img/first-model-cli.png"
-            class="docImage" />
-    </a>
-</div>
+<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
 
 5. Switch back to the BigQuery console and check that you can `select` from this
 model.
+
+### FAQs
+* [How can I see the SQL that dbt is running?](faqs/checking-logs)
+* [If I rerun dbt, will there be any downtime as models are rebuilt?](faqs/run-downtime)
+* [What happens if the SQL in my query is bad?](faqs/sql-errors)
 
 
 ## Change the way your model is materialized
@@ -67,9 +56,10 @@ One of the most powerful features of dbt is that you can change the way a model
 is materialized in your warehouse, simply by changing a configuration value.
 Let's see this in action.
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/604c8aaf793f4f2c874022dd59ea965e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-<iframe width="640" height="400" src="https://www.loom.com/embed/22ebdc914426461ea5c617a415cb4c21" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<CloudCore>
+    <LoomVideo id="fbaa9948dccf4f74a17ffc7de1ddf4f2" />
+    <LoomVideo id="22ebdc914426461ea5c617a415cb4c21" />
+</CloudCore>
 
 1. Edit the following in your `dbt_project.yml` file:
 ```yaml
@@ -80,13 +70,11 @@ models:
       materialized: view
 ```
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
-> To do this, dbt had to first run a `drop view` statement, then a `create table
-as` statement.
->
-> **Pro-tip**: To check out the SQL that dbt is running, you can look in:
-> * The `target/compiled/` directory for compiled `select` statements
-> * The `target/run/` directory for compiled `create` statements
-> * The `logs/dbt.log` file for verbose logging.
+<Alert type="info">
+To do this, dbt had to first run a `drop view` statement
+(or API call on BigQuery), then a `create table as` statement.
+</Alert>
+
 
 3. Edit `models/customers.sql` to have the following snippet at the top:
 ```sql
@@ -106,14 +94,22 @@ with customers as (
 
 ```
 
-4. Execute `dbt run`. Your model, `customers` should be built as a view.
+4. Execute `dbt run`. Your model, `customers` should be built as a view. You may
+need to run `dbt run --full-refresh` for this to take effect on BigQuery.
+
+### FAQs
+* [What materializations are available?](faqs/available-materializations)
+* [Which materialization should I use?](faqs/which-materialization)
+* [What other model configurations are there?](faqs/available-configurations)
 
 ## Delete the example models
 
 We don't need the sample files that dbt created for us anymore! Let's delete them.
-<iframe width="640" height="400" src="https://www.loom.com/embed/b93903ed1cba4e70ac540b12966f6cdf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/db63e6e937594b38bf044c78e720d95d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<CloudCore>
+    <LoomVideo id="093d46e965994cb6a13e8a98559f6f9f" />
+    <LoomVideo id="db63e6e937594b38bf044c78e720d95d" />
+</CloudCore>
 
 1. Delete the `models/example/` directory
 2. Delete the `example:` key from your `dbt_project.yml` file, and any
@@ -134,6 +130,10 @@ models:
     materialized: table
 ```
 
+### FAQs
+* [How do I remove unused models from my data warehouse?](faqs/removing-deleted-models)
+* [I got a "unused model configurations" error message, what does this mean?](faqs/unused-model-configurations)
+
 
 ## Build models on top of other models
 Often, it's a good idea to clean your data in one place, before doing additional
@@ -141,9 +141,10 @@ transformations downstream. Our query already uses CTEs to this effect, but now
 we're going to experiment with using the [ref](https://docs.getdbt.com/docs/ref)
 function to separate this clean-up into a separate model.
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/548e19fd107d4594b0d588a3d79e8344" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-<iframe width="640" height="400" src="https://www.loom.com/embed/39eceeedf69641b5aca6f94c4da172a8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<CloudCore>
+    <LoomVideo id="cf070e26faa3423e80338e6a918ae9f8" />
+    <LoomVideo id="39eceeedf69641b5aca6f94c4da172a8" />
+</CloudCore>
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the
 `customers` CTE in our original query:
@@ -222,18 +223,15 @@ models in -- `customers` depends on `stg_customers` and `stg_orders`, so gets
 built last. There's no need to explicitly define these dependencies.
 
 This can be expressed in a DAG (directed acyclic graph) like so:
-<div class='text-left'>
-    <a href="#" data-featherlight="/img/dbt-dag.png">
-        <img
-            data-toggle="lightbox"
-            width="300px"
-            alt="The DAG for our dbt project"
-            src="/img/dbt-dag.png"
-            class="docImage" />
-    </a>
-</div>
 
-### Extra exercises
+<Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
+
+### FAQs
+* [How can I run one model at a time?](faqs/run-one-model)
+* [Do model names need to be unique, even if they are in different folders?](faqs/unique-model-names)
+* [How should I structure my project?](faqs/structure-a-project)
+
+## Extra exercises
 * Check what happens when you write some bad SQL -- can you debug this failure?
 * Try to run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
@@ -241,6 +239,7 @@ This can be expressed in a DAG (directed acyclic graph) like so:
     * Try configuring your `staging` models to be views
     * Try to run only the `staging` models
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/40a664884de746b6bb85e775bdf89db9" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-<iframe width="640" height="400" src="https://www.loom.com/embed/2fc44590f2614a68bea402322c36f56e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<CloudCore>
+    <LoomVideo id="8e9ff6e496e44347afe7accc44eb6c79" />
+    <LoomVideo id="2fc44590f2614a68bea402322c36f56e" />
+</CloudCore>

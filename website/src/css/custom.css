@@ -25,6 +25,13 @@ h1.docTitle_node_modules-\@docusaurus-theme-classic-src-theme-DocItem- {
     font-size: 2rem;
 }
 
+a.hash-link:link,
+a.hash-link:visited,
+a.hash-link:hover
+{
+    color: black;
+}
+
 nav.navbar,
 div.navbar-sidebar__brand
 {
@@ -46,11 +53,88 @@ nav.navbar div.navbar__inner {
     margin-left: 10px !important;
 }
 
-.docImage {
-    filter: drop-shadow(1px 4px 10px #aaaaaa33);
-    margin: 10px
-}
-
 .featherlight:before {
     height: 5%;
+}
+
+.featherlight-content {
+    max-width: 75% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+/* Shamelessly copy/pasted from our style guide */
+
+.alert{
+    padding:1.5rem 2rem;
+    margin-bottom:1.8rem;
+    border:1px solid transparent;
+    border-radius:4px
+}
+.alert h4{
+    margin-top:0;
+    color:inherit
+}
+.alert .alert-link{
+    font-weight:inherit
+}
+.alert>p,.alert>ul{
+    margin-bottom:0
+}
+.alert>p+p{
+    margin-top:5px
+}
+.alert-dismissable,.alert-dismissible{
+    padding-right:1.5rem 2rem20
+}
+.alert-dismissable .close,.alert-dismissible .close{
+    position:relative;
+    top:-2px;
+    right:-21px;
+    color:inherit
+}
+.alert-success{
+    background-color:#edf7e3;
+    border-color:transparent;
+    color:#48a71c
+}
+.alert-success hr{
+    border-top-color:transparent
+}
+.alert-success .alert-link{
+    color:#357b15
+}
+.alert-info{
+    background-color:#e3f8f8;
+    border-color:transparent;
+    color:#009595
+}
+.alert-info hr{
+    border-top-color:transparent
+}
+.alert-info .alert-link{
+    color:#006262
+}
+.alert-warning{
+    background-color:#ffefdb;
+    border-color:transparent;
+    color:#ff6316
+}
+.alert-warning hr{
+    border-top-color:transparent
+}
+.alert-warning .alert-link{
+    color:#e24b00
+}
+.alert-danger{
+    background-color:#ffe1db;
+    border-color:transparent;
+    color:#ff3c2b
+}
+.alert-danger hr{
+    border-top-color:transparent
+}
+.alert-danger .alert-link{
+    color:#f71400
 }
