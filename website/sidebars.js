@@ -1,8 +1,10 @@
 module.exports = {
   docs: {
-    'Documentation': [
-      'introduction',
-    ],
+    'sources': [
+      'sources/introduction',
+      'sources/guide',
+      'sources/reference'
+    ]
   },
   tutorial: {
     'Getting Started': [
