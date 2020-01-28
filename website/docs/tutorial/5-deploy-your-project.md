@@ -3,6 +3,13 @@ title: Deploy your project
 id: deploy-your-project
 ---
 
+import Alert from '@site/src/components/alert';
+import Lightbox from '@site/src/components/lightbox';
+import LoomVideo from '@site/src/components/loom';
+import Collapsible from '@site/src/components/collapsible';
+import CloudCore from '@site/src/components/cloudcore';
+import FAQ from '@site/src/components/faqs';
+
 As the `jaffle_shop` business gains more customers, and those customers create
 more orders, there will be more records added to your source data. Since the
 `fct_customers` model is materialized as a table, you'll need to periodically
@@ -17,26 +24,31 @@ First off, we need to commit the changes we made to our project so that our
 repository has our latest code.
 
 ### dbt Cloud
-<iframe width="640" height="400" src="https://www.loom.com/embed/afd55d89abdc4a77b34deaee90da0813" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="afd55d89abdc4a77b34deaee90da0813" />
 
 1. Click the `commit` button, with a message like "Add customers model"
 
-### dbt CLI
-<iframe width="640" height="400" src="https://www.loom.com/embed/b07d7efe3f054e3bb357b4bccd805e70" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+### dbt Core
+<LoomVideo id="b07d7efe3f054e3bb357b4bccd805e70" />
+
 1. Add all your changes to git: `git add -a`
 2. Commit your changes: `git commit -m "Add customers models"`
 3. Push your changes to your repository: `git push`
 
-> ℹ️ We just pushed straight to master 😬! We **always** use a git flow when
+<Alert type="warning">
+We just pushed straight to master 😬! We **always** use a git flow when
 working on dbt projects, and recommend you do too!
+</Alert>
 
 ## Connect dbt Cloud to your repository
 Connecting dbt Cloud to your repository will allow you to have the latest code
 whenever your dbt project runs.
-> ℹ️ This step only applies to folks who use the dbt CLI to develop their
+<Alert type="info">
+This step only applies to folks who use the dbt CLI to develop their
 project. **If you developed your project in dbt Cloud, you can skip this step!**
+</Alert>
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/48abd56ec909405cbc76f4946e930a43" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="48abd56ec909405cbc76f4946e930a43" />
 
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your
 organization already has a dbt Cloud account, ask an admin to add you as a
@@ -56,7 +68,8 @@ If you were added to an existing account:
 
 
 ## Create a deployment environment
-<iframe width="640" height="400" src="https://www.loom.com/embed/bb6ea5b628ef4d019f9167f6ddf738cc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="bb6ea5b628ef4d019f9167f6ddf738cc" />
+
 1. Click the hamburger menu, and then `Home`
 2. Under "Deployment Environments" select "create a new one"
 3. Name your deployment environment (e.g. "Production")
@@ -85,7 +98,7 @@ and doing so could result in using up your BigQuery credit.
 "View Documentation" to see the docs for your project.
 
 ### FAQs
-* [What happens if one of my runs fails?](faqs/failed-prod-run)
+<FAQ src="faqs/failed-prod-run" />
 
 ## Next steps
 Congratulations 🎉! You've just deployed your first dbt project! Here's a few

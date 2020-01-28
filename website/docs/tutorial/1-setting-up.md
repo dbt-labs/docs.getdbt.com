@@ -2,7 +2,12 @@
 title: Setting up
 id: setting-up
 ---
-<iframe width="640" height="400" src="https://www.loom.com/embed/cb99861ab1034f7fab5fa48529e61f85" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+import LoomVideo from '@site/src/components/loom';
+import Lightbox from '@site/src/components/lightbox';
+import FAQ from '@site/src/components/faqs';
+
+<LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
 This tutorial is geared at first-time users who want detailed instructions on
 how to go from zero to a deployed dbt project. You'll need a working knowledge
@@ -81,34 +86,22 @@ We'll be using BigQuery as our data warehouse in this tutorial since anyone with
 a Google Account can access BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
 We've created a public dataset for this tutorial that anyone can `select` from.
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/9b8d852c7e754d978209c3a60b53464e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="9b8d852c7e754d978209c3a60b53464e" />
 
-1. Go to [the BigQuery console](https://console.cloud.google.com/bigquery) — if
-you don't have a BigQuery account you will be asked to create one.
-2. Create a new project — you can use the default name for the project.
-<div class='text-left'>
-    <a href="#" data-featherlight="/img/create-bigquery-project.png">
-        <img
-            data-toggle="lightbox"
-            width="300px"
-            alt="Create a BigQuery project"
-            src="/img/create-bigquery-project.png"
-            class="docImage" />
-    </a>
-</div>
-3. Copy and paste the above query into the BigQuery console to confirm that you
-can run it.
+1. Go to https://console.cloud.google.com/bigquery -- if you don't have a
+BigQuery account you will be asked to create one.
+2. Create a new project -- you can use the default name for the project.
+3. Copy and paste the above query into the BigQuery console to validate that you
 
 ### FAQs
-* The data in this tutorial is already loaded into BigQuery. [How do I get my
-data into my warehouse?](faqs/loading-data)
+<FAQ src="faqs/loading-data" />
 
 ## Generate BigQuery credentials
 In order to let dbt connect to your warehouse, you'll need generate a keyfile.
 This is analogous to using a database user name and password with most other
 data warehouses.
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/2b5a8ec255bd4dce91374f6941d279e5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<LoomVideo id="2b5a8ec255bd4dce91374f6941d279e5" />
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected at the top of the screen.
 2. Generate credentials with the following options:
@@ -121,10 +114,11 @@ data warehouses.
 filename (e.g. `dbt-user-creds.json`)
 
 ### FAQs
-* [What privileges does my database user need to use dbt?](faqs/database-privileges)
+<FAQ src="faqs/database-privileges" />
 
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:
+
 1. Edit files and run projects using the web-based Integrated Development
 Environment (IDE) in **dbt Cloud**.
 2. Edit files locally using a code editor, and run projects using the Command

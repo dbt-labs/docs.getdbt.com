@@ -1,16 +1,28 @@
 ---
-title: dbt Cloud: Create a project
+title: 'dbt Cloud: Create a project'
 sidebar_label: dbt Cloud
 id: create-a-project-dbt-cloud
 ---
+
+import Link from '@docusaurus/Link';
+import Alert from '@site/src/components/alert';
+import LoomVideo from '@site/src/components/loom';
+import FAQ from '@site/src/components/faqs';
+
 Now that we've successfully run our sample query, and chosen the way we want to
 develop, we can create a dbt project! In this step, we'll create a starter project
 with example models, before we build our first models.
 
-> ℹ️ These are the instructions for developing a project in dbt Cloud. If you're
-using the dbt CLI, follow the instructions [here](docs/create-a-project-dbt-cli).
+<Alert type="info">
+These are the instructions for developing a project in dbt Cloud. If you're
+using the dbt CLI, follow the instructions <Link to="/docs/tutorial/create-a-project-dbt-cli">here</Link>.
+</Alert>
 
-<iframe width="640" height="400" src="https://www.loom.com/embed/7386840381764d13b1d25f575719e218" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+## Create a project
+dbt Cloud makes the process of creating a new project (with example models)
+very easy! Once we have a new project, we can start writing our own models.
+
+<LoomVideo id="7386840381764d13b1d25f575719e218" />
 
 ## Create the starter project
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your

@@ -1,0 +1,14 @@
+
+:local(.loomFrame) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+:local(.loomWrapper) {
+    position: relative;
+    padding-bottom: 67.9245283018868%;
+    height: 0;
+}
