@@ -62,6 +62,10 @@ module.exports = {
           path: 'docs',
           routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
+
+          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/master/website/',
+          showLastUpdateTime: false,
+          //showLastUpdateAuthor: false,
         }
       },
     ],

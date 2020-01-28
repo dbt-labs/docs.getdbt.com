@@ -5,6 +5,7 @@ id: setting-up
 
 import LoomVideo from '@site/src/components/loom';
 import Lightbox from '@site/src/components/lightbox';
+import FAQ from '@site/src/components/faqs';
 
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
@@ -93,8 +94,7 @@ BigQuery account you will be asked to create one.
 3. Copy and paste the above query into the BigQuery console to validate that you
 
 ### FAQs
-* The data in this tutorial is already loaded into BigQuery. [How do I get my
-data into my warehouse?](faqs/loading-data)
+<FAQ src="faqs/loading-data" />
 
 ## Generate BigQuery credentials
 In order to let dbt connect to your warehouse, you'll need generate a keyfile.
@@ -114,7 +114,7 @@ data warehouses.
 filename (e.g. `dbt-user-creds.json`)
 
 ### FAQs
-* [What privileges does my database user need to use dbt?](faqs/database-privileges)
+<FAQ src="faqs/database-privileges" />
 
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:

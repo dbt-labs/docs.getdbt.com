@@ -85,14 +85,10 @@ nav.navbar div.navbar__inner {
 .alert>p+p{
     margin-top:5px
 }
-.alert-dismissable,.alert-dismissible{
-    padding-right:1.5rem 2rem20
-}
-.alert-dismissable .close,.alert-dismissible .close{
-    position:relative;
-    top:-2px;
-    right:-21px;
-    color:inherit
+.alert-default{
+    background-color:#fafafa;
+    border-color:transparent;
+    color:#222
 }
 .alert-success{
     background-color:#edf7e3;
