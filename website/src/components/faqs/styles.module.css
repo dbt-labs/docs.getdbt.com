@@ -1,4 +1,13 @@
 
+:local(.link) {
+    color: var(--ifm-link-color);
+}
+
+:local(.link:hover) {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 :local(.toggle) {
     background-image: var(--ifm-menu-link-sublist-icon);
     background-size: 2rem 2rem;

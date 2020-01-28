@@ -80,7 +80,7 @@ module.exports = {
     'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
   ],
   stylesheets: [
-    '/src/css/fonts.css',
+    '/css/fonts.css',
     'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css',
   ]
 };

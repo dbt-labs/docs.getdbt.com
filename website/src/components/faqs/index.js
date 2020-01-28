@@ -13,14 +13,14 @@ function FAQ({children, src}) {
 
   return (
       <div>
-          <a href="javascript:void(0)" onClick={toggleOn}>
+          <span className={styles.link} onClick={toggleOn}>
               <span className={styles.toggle}
                     style={{
                         transform: isOn ? null : 'rotateX(180deg)'
                     }}>
               </span>&nbsp;
               <span>{ meta.title }</span>
-          </a>
+          </span>
           <div style={{display: (isOn ? 'block' : 'none')}} className={styles.body}>
               { contents }
           </div>
