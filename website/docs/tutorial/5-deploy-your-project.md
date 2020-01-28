@@ -8,6 +8,7 @@ import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
 import Collapsible from '@site/src/components/collapsible';
 import CloudCore from '@site/src/components/cloudcore';
+import FAQ from '@site/src/components/faqs';
 
 As the `jaffle_shop` business gains more customers, and those customers create
 more orders, there will be more records added to your source data. Since the
@@ -97,7 +98,7 @@ and doing so could result in using up your BigQuery credit.
 "View Documentation" to see the docs for your project.
 
 ### FAQs
-* [What happens if one of my runs fails?](faqs/failed-prod-run)
+<FAQ src="faqs/failed-prod-run" />
 
 ## Next steps
 Congratulations 🎉! You've just deployed your first dbt project! Here's a few

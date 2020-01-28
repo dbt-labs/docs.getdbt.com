@@ -1,0 +1,22 @@
+
+:local(.toggle) {
+    background-image: var(--ifm-menu-link-sublist-icon);
+    background-size: 2rem 2rem;
+    background-position: center;
+    content: ' ';
+    display: inline-block;
+    height: 1.25rem;
+    width: 1.25rem;
+    vertical-align: middle;
+}
+
+:local(.body) {
+    margin-left: 2em;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: #e3f8f8;
+}
+
+:local(.body > p:last-child) {
+    margin-bottom: 0px;
+}

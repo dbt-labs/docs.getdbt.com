@@ -7,6 +7,7 @@ import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
 import CloudCore from '@site/src/components/cloudcore';
 import Alert from '@site/src/components/alert';
+import FAQ from '@site/src/components/faqs';
 
 ## Build your first model
 Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
@@ -46,9 +47,9 @@ file.
 model.
 
 ### FAQs
-* [How can I see the SQL that dbt is running?](faqs/checking-logs)
-* [If I rerun dbt, will there be any downtime as models are rebuilt?](faqs/run-downtime)
-* [What happens if the SQL in my query is bad?](faqs/sql-errors)
+<FAQ src="faqs/checking-logs" />
+<FAQ src="faqs/run-downtime" />
+<FAQ src="faqs/sql-errors" />
 
 
 ## Change the way your model is materialized
@@ -98,9 +99,9 @@ with customers as (
 need to run `dbt run --full-refresh` for this to take effect on BigQuery.
 
 ### FAQs
-* [What materializations are available?](faqs/available-materializations)
-* [Which materialization should I use?](faqs/which-materialization)
-* [What other model configurations are there?](faqs/available-configurations)
+<FAQ src="faqs/available-materializations" />
+<FAQ src="faqs/which-materialization" />
+<FAQ src="faqs/available-configurations" />
 
 ## Delete the example models
 
@@ -131,8 +132,8 @@ models:
 ```
 
 ### FAQs
-* [How do I remove unused models from my data warehouse?](faqs/removing-deleted-models)
-* [I got a "unused model configurations" error message, what does this mean?](faqs/unused-model-configurations)
+<FAQ src="faqs/removing-deleted-models" />
+<FAQ src="faqs/unused-model-configurations" />
 
 
 ## Build models on top of other models
@@ -227,9 +228,9 @@ This can be expressed in a DAG (directed acyclic graph) like so:
 <Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
 
 ### FAQs
-* [How can I run one model at a time?](faqs/run-one-model)
-* [Do model names need to be unique, even if they are in different folders?](faqs/unique-model-names)
-* [How should I structure my project?](faqs/structure-a-project)
+<FAQ src="faqs/run-one-model" />
+<FAQ src="faqs/unique-model-names" />
+<FAQ src="faqs/structure-a-project" />
 
 ## Extra exercises
 * Check what happens when you write some bad SQL -- can you debug this failure?

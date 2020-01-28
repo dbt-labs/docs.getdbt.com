@@ -6,6 +6,7 @@ id: test-and-document-your-project
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
 import CloudCore from '@site/src/components/cloudcore';
+import FAQ from '@site/src/components/faqs';
 
 ## Add tests to your models
 Adding [tests](https://docs.getdbt.com/docs/testing) to a project helps validate
@@ -65,13 +66,14 @@ expected output when using dbt Cloud and the dbt CLI.
 </CloudCore>
 
 ### FAQs
-* [What tests are available for me to use in dbt? Can I write my own tests?](faqs/available-tests)
-* [How do I test one model at a time?](faqs/test-one-model)
-* [One of my tests failed, how can I debug it?](faqs/failed-tests)
-* [Do my tests need to be in a file named `schema.yml`?](faqs/schema-yml-name)
-* [Do all my tests go in one file?](faqs/multiple-test-files)
-* [What tests should I add to my project?](faqs/recommended-tests)
-* [When should I run my tests?](faqs/when-to-test)
+<FAQ src="faqs/structure-a-project" />
+<FAQ src="faqs/available-tests" />
+<FAQ src="faqs/test-one-model" />
+<FAQ src="faqs/failed-tests" />
+<FAQ src="faqs/schema-yml-name" />
+<FAQ src="faqs/multiple-test-files" />
+<FAQ src="faqs/recommended-tests" />
+<FAQ src="faqs/when-to-test" />
 
 ## Document your models
 Adding [documentation](https://docs.getdbt.com/docs/documentation) to your
@@ -130,8 +132,8 @@ with rich documentation about your project.
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
 
 ### FAQs
-* [How do I write long-form explanations in my descriptions?](faqs/long-descriptions)
-* [How do I share my documentation with my team members?](faqs/sharing-documentation)
+<FAQ src="faqs/long-descriptions" />
+<FAQ src="faqs/sharing-documentation" />
 
 Great work ⭐️! You've just built your first dbt project that's tested and documented!
 

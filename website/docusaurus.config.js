@@ -30,6 +30,11 @@ module.exports = {
           position: 'left',
         },
         {
+          to: '/docs/tutorial/faqs/all',
+          label: 'FAQs',
+          position: 'left',
+        },
+        {
           href: 'https://blog.getdbt.com',
           label: 'Blog',
           position: 'right',

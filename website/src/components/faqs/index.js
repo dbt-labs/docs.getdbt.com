@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from './styles.module.css';
 
 function FAQ({children, src}) {
   const file = require('../../../docs/tutorial/' + src + '.md')
@@ -11,14 +12,16 @@ function FAQ({children, src}) {
   }
 
   return (
-      <div style={{ backgroundColor: "#fafafa" }}>
+      <div>
           <a href="javascript:void(0)" onClick={toggleOn}>
-              <span>
-                  { isOn ? '-' : '+' }
-              </span>
+              <span className={styles.toggle}
+                    style={{
+                        transform: isOn ? null : 'rotateX(180deg)'
+                    }}>
+              </span>&nbsp;
               <span>{ meta.title }</span>
           </a>
-          <div style={{ display: (isOn ? 'block' : 'none'), marginLeft: '10px', padding: '10px' }}>
+          <div style={{display: (isOn ? 'block' : 'none')}} className={styles.body}>
               { contents }
           </div>
       </div>

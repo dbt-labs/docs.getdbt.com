@@ -7,6 +7,7 @@ id: create-a-project-dbt-cloud
 import Link from '@docusaurus/Link';
 import Alert from '@site/src/components/alert';
 import LoomVideo from '@site/src/components/loom';
+import FAQ from '@site/src/components/faqs';
 
 Now that we've successfully run our sample query, and chosen the way we want to
 develop, we can create a dbt project! In this step, we'll create a starter project

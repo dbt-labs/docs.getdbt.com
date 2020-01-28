@@ -8,6 +8,7 @@ import Link from '@docusaurus/Link';
 import Alert from '@site/src/components/alert';
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
+import FAQ from '@site/src/components/faqs';
 
 Now that we've successfully run our sample query, and chosen the way we want to
 develop, we can create a dbt project! In this step, we'll create a starter project
@@ -96,11 +97,11 @@ Confirm that the last line of the output is `Connection test: OK connection ok`.
 <Lightbox src="/img/successful-dbt-debug.png" title="A successful dbt debug command" />
 
 ### FAQs
-* I'm not using BigQuery. [Where can I get a sample profile for my database?](faqs/sample-profiles)
-* [Why is the `profiles.yml` file outside my project?](faqs/separate-profile)
-* [What should I name my profile?](faqs/profile-name)
-* [What should I name my targets?](faqs/target-names)
-* [Can I use environment variables in my profile?](faqs/profile-env-vars)
+<FAQ src="faqs/sample-profiles" />
+<FAQ src="faqs/separate-profile" />
+<FAQ src="faqs/profile-name" />
+<FAQ src="faqs/target-names" />
+<FAQ src="faqs/profile-env-vars" />
 
 
 ## Perform your first dbt run

@@ -19,5 +19,5 @@ module.exports = {
       "tutorial/test-and-document-your-project",
       "tutorial/deploy-your-project"
     ]
-  }
+  },
 }
