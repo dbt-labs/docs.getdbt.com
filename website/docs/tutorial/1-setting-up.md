@@ -91,7 +91,7 @@ We're using BigQuery since anyone with a Google Account can use BigQuery, but
 dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
 
 <Alert type="info">
-BigQuery has <a href="/docs/tutorial/create-a-project-dbt-cli">generous free tier</a>. If you 
+BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you 
 have an existing GCP account that has surpassed these tiers on BigQuery, running queries for
 this tutorial will incur a very small (less than a few USD) cost.
 </Alert>

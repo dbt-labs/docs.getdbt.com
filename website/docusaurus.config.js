@@ -25,12 +25,12 @@ module.exports = {
           position: 'left',
         },
         {
-          to: '/docs/tutorial/setting-up',
+          to: '/tutorial/setting-up',
           label: 'Tutorial',
           position: 'left',
         },
         {
-          to: '/docs/tutorial/faqs/all',
+          to: '/tutorial/faqs/all',
           label: 'FAQs',
           position: 'left',
         },
@@ -65,7 +65,7 @@ module.exports = {
         },
         docs: {
           path: 'docs',
-          routeBasePath: 'docs',
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
 
           editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/master/website/',

@@ -11,7 +11,7 @@ import FAQ from '@site/src/components/faqs';
 
 ## Build your first model
 Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
-We're going to take the query from the [Setting up](docs/setting-up) instructions,
+We're going to take the query from the [Setting up](setting-up) instructions,
 and turn it into a model in our dbt project.
 
 ### dbt Cloud
@@ -20,7 +20,7 @@ and turn it into a model in our dbt project.
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu,
 and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](docs/setting-up) instructions into the
+3. Paste the query from the [Setting up](setting-up) instructions into the
 file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You
 should get a successful run, like so:
@@ -37,7 +37,7 @@ model.
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](docs/setting-up) instructions into the
+3. Paste the query from the [Setting up](setting-up) instructions into the
 file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 

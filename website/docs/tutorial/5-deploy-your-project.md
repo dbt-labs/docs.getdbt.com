@@ -62,8 +62,8 @@ project. <strong>If you developed your project in dbt Cloud, you can skip this s
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the onboarding flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](docs/setting-up) page.
-    * Add a repository — choose the GitHub integration, and connect to your `dbt-tutorial` repository that we set up on the [Create a Project](docs/create-a-project-dbt-cli) page.
+    * Connect to BigQuery using the credentials file from the [Setting Up](setting-up) page.
+    * Add a repository — choose the GitHub integration, and connect to your `dbt-tutorial` repository that we set up on the [Create a Project](create-a-project-dbt-cli) page.
 
 
 ## Create a deployment environment

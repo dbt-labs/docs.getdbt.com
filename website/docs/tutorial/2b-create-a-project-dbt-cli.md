@@ -16,7 +16,7 @@ with example models, before we build our own models.
 
 <Alert type="info">
 These are the instructions for developing a project using the dbt CLI. If
-you're developing in dbt Cloud, follow the instructions <Link to="/docs/tutorial/create-a-project-dbt-cloud">here</Link>.
+you're developing in dbt Cloud, follow the instructions <Link to="/tutorial/create-a-project-dbt-cloud">here</Link>.
 </Alert>
 
 ## Create a repository
@@ -25,7 +25,7 @@ tutorial, but you can use any git provider. If you don't yet have a GitHub accou
 [create one now](https://github.com/join).
 <LoomVideo id="afe148aeab5e4279a2ca310251ea20a6" />
 
-1. Create a new GitHub repository [here](ttps://github.com/new) named `dbt-tutorial`.
+1. Create a new GitHub repository [here](https://github.com/new) named `dbt-tutorial`.
 2. Click **Create repository** (without `.gitignore` and without a license).
 
 <Lightbox src="/img/create-github-repo.png" title="Create a GitHub repo" />
@@ -43,7 +43,7 @@ $ dbt --version
 ```
 
 <Alert type="info">
-dbt should have been installed as part of the  <a href="/docs/tutorial/setting-up">Setting Up</a> part of
+dbt should have been installed as part of the  <a href="/tutorial/setting-up">Setting Up</a> part of
 the tutorial. If it was not installed, please follow the <a href="https://docs.getdbt.com/docs/installation">
 installation instructions </a>
 </Alert>
