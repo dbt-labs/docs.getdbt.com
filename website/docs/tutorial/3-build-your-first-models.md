@@ -43,7 +43,7 @@ file.
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
 
-5. Switch back to the BigQuery console and check that you can `select` from this
+If you switch back to the BigQuery console you'll be able to `select` from this
 model.
 
 ### FAQs
@@ -239,8 +239,8 @@ built last. There's no need to explicitly define these dependencies.
 * Run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
 `models/staging/stg_customers.sql`)
-    * Try configuring your `staging` models to be views
-    * Try to run only the `staging` models
+    * Configure your `staging` models to be views
+    * Run only the `staging` models
 
 <CloudCore>
     <LoomVideo id="8e9ff6e496e44347afe7accc44eb6c79" />
