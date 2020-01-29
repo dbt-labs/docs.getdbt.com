@@ -2,11 +2,11 @@
 title: What happens if the SQL in my query is bad?
 ---
 Or:
-## I got a Database Error, what does that mean?
+### I got a Database Error, what does that mean?
 
 If there's a mistake in your SQL, dbt will return the error that your database
 returns.
-```
+```shell-session
 $ dbt run --models customers
 Running with dbt=0.15.0
 Found 3 models, 9 tests, 0 snapshots, 0 analyses, 133 macros, 0 operations, 0 seed files, 0 sources
@@ -28,4 +28,4 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 ```
 
 Any models downstream of this model will also be skipped. Use the error message
-and the compiled SQL to debug any errors.
+and the [compiled SQL](faqs/checking-logs) to debug any errors.

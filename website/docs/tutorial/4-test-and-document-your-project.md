@@ -7,11 +7,12 @@ import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
 import CloudCore from '@site/src/components/cloudcore';
 import FAQ from '@site/src/components/faqs';
+import Alert from '@site/src/components/alert';
+
 
 ## Add tests to your models
 Adding [tests](https://docs.getdbt.com/docs/testing) to a project helps validate
-that your models are working correctly. In this section, we're going to add some
-tests to your dbt project.
+that your models are working correctly. So let's add some tests to our project!
 
 
 <CloudCore>
@@ -57,17 +58,20 @@ models:
               field: customer_id
 
 ```
-3. Execute `dbt test`, and confirm that all your tests passed. Here's the
-expected output when using dbt Cloud and the dbt CLI.
+3. Execute `dbt test`, and confirm that all your tests passed.
 
 <CloudCore>
     <Lightbox src="/img/successful-tests-dbt-cloud.png" title="Passing tests when using dbt Cloud" />
     <Lightbox src="/img/successful-tests-dbt-cli.png" title="Passing tests when using the dbt CLI" />
 </CloudCore>
 
+<Alert type="info">
+When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test.
+Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
+</Alert>
+
 ### FAQs
-<FAQ src="faqs/structure-a-project" />
-<FAQ src="faqs/available-tests" />
+<FAQ src="faqs/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
 <FAQ src="faqs/test-one-model" />
 <FAQ src="faqs/failed-tests" />
 <FAQ src="faqs/schema-yml-name" />
@@ -131,11 +135,16 @@ models:
 with rich documentation about your project.
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
 
+
+<Alert type="success">
+Great work ⭐️! You've just built your first dbt project that's tested and documented!
+</Alert>
+
+
 ### FAQs
 <FAQ src="faqs/long-descriptions" />
 <FAQ src="faqs/sharing-documentation" />
 
-Great work ⭐️! You've just built your first dbt project that's tested and documented!
 
 ## Extra exercises
 
@@ -144,10 +153,10 @@ Great work ⭐️! You've just built your first dbt project that's tested and do
     <LoomVideo id="6db6956adbb04f55b6027c461e9b1792" />
 </CloudCore>
 
-* Try writing a test that fails, for example, omit one of the order statuses in
+* Write a test that fails, for example, omit one of the order statuses in
 the `accepted_values` list. What does a failing test look like? Can you debug
 the failure?
-* Try running the tests for one model only. If you grouped your `stg_` models
+* Run the tests for one model only. If you grouped your `stg_` models
 into a directory, try running the tests for all the models in that directory.
-* Try using a [docs block](https://docs.getdbt.com/docs/documentation#section-docs-blocks)
+* Use a [docs block](https://docs.getdbt.com/docs/documentation#section-docs-blocks)
 to add a Markdown description to a model.

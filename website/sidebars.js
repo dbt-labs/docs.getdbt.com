@@ -9,7 +9,7 @@ module.exports = {
       "tutorial/setting-up",
       {
         type: 'category',
-        label: 'Create a Project',
+        label: 'Create a project',
         items: [
           "tutorial/create-a-project-dbt-cloud",
           "tutorial/create-a-project-dbt-cli"

@@ -11,7 +11,7 @@ import FAQ from '@site/src/components/faqs';
 
 ## Build your first model
 Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
-We're going to take the query from the [Setting up](docs/setting-up) instructions,
+We're going to take the query from the [Setting up](setting-up) instructions,
 and turn it into a model in our dbt project.
 
 ### dbt Cloud
@@ -20,7 +20,7 @@ and turn it into a model in our dbt project.
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu,
 and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](docs/setting-up) instructions into the
+3. Paste the query from the [Setting up](setting-up) instructions into the
 file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You
 should get a successful run, like so:
@@ -37,17 +37,19 @@ model.
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](docs/setting-up) instructions into the
+3. Paste the query from the [Setting up](setting-up) instructions into the
 file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
 
-5. Switch back to the BigQuery console and check that you can `select` from this
+If you switch back to the BigQuery console you'll be able to `select` from this
 model.
 
 ### FAQs
 <FAQ src="faqs/checking-logs" />
+<FAQ src="faqs/which-schema" />
+<FAQ src="faqs/create-a-schema" />
 <FAQ src="faqs/run-downtime" />
 <FAQ src="faqs/sql-errors" />
 
@@ -140,7 +142,10 @@ models:
 Often, it's a good idea to clean your data in one place, before doing additional
 transformations downstream. Our query already uses CTEs to this effect, but now
 we're going to experiment with using the [ref](https://docs.getdbt.com/docs/ref)
-function to separate this clean-up into a separate model.
+function to separate this clean-up into upstream models, like so:
+
+
+<Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
 
 <CloudCore>
     <LoomVideo id="cf070e26faa3423e80338e6a918ae9f8" />
@@ -218,27 +223,24 @@ select * from final
 ```
 4. Execute `dbt run`
 
-This time when dbt ran, it created separate views/tables for `stg_customers`,
-`stg_orders` and `customers`. dbt was able to infer which order to run these
-models in -- `customers` depends on `stg_customers` and `stg_orders`, so gets
+This time when dbt ran, separate views/tables were created for `stg_customers`,
+`stg_orders` and `customers`. dbt was able to infer the order in which to run these
+models in — `customers` depends on `stg_customers` and `stg_orders`, so gets
 built last. There's no need to explicitly define these dependencies.
 
-This can be expressed in a DAG (directed acyclic graph) like so:
-
-<Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
 
 ### FAQs
 <FAQ src="faqs/run-one-model" />
 <FAQ src="faqs/unique-model-names" />
-<FAQ src="faqs/structure-a-project" />
+<FAQ src="faqs/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 ## Extra exercises
-* Check what happens when you write some bad SQL -- can you debug this failure?
-* Try to run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
+* Write some bad SQL to cause an error — can you debug this error?
+* Run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
 `models/staging/stg_customers.sql`)
-    * Try configuring your `staging` models to be views
-    * Try to run only the `staging` models
+    * Configure your `staging` models to be views
+    * Run only the `staging` models
 
 <CloudCore>
     <LoomVideo id="8e9ff6e496e44347afe7accc44eb6c79" />
