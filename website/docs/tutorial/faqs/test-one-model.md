@@ -2,8 +2,7 @@
 title: How do I test one model at a time?
 ---
 
-Running tests on one model looks very similar to running a model. To test one
-mode, use the `--models` flag (or `-m` flag), followed by the name of the model:
+Running tests on one model looks very similar to running a model: use the `--models` flag (or `-m` flag), followed by the name of the model:
 ```
 dbt test --models customers
 ```

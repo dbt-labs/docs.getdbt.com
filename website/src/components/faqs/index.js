@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './styles.module.css';
 
-function FAQ({children, src}) {
+function FAQ({children, src, alt_header=null}) {
   const file = require('../../../docs/tutorial/' + src + '.md')
   const meta = file.metadata;
   const contents = file.default({});
@@ -19,7 +19,7 @@ function FAQ({children, src}) {
                         transform: isOn ? null : 'rotateX(180deg)'
                     }}>
               </span>&nbsp;
-              <span>{ meta.title }</span>
+              <span>{ alt_header || meta.title }</span>
           </span>
           <div style={{display: (isOn ? 'block' : 'none')}} className={styles.body}>
               { contents }

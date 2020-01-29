@@ -1,5 +1,10 @@
 ---
-title: Do my tests need to be in a file named `schema.yml`?
+title: Does my test file need to be named `schema.yml`?
 ---
 No! You can name this file whatever you want (including `whatever_you_want.yml`),
-it just needs to be the right structure.
+so long as:
+* The file is in your `models/` directory
+* The file has `.yml` extension
+* The yaml follows the basic structure.
+
+Check out the [docs](https://docs.getdbt.com/docs/schemayml-files) for more information.

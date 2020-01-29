@@ -6,6 +6,8 @@ id: setting-up
 import LoomVideo from '@site/src/components/loom';
 import Lightbox from '@site/src/components/lightbox';
 import FAQ from '@site/src/components/faqs';
+import Alert from '@site/src/components/alert';
+
 
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
@@ -82,19 +84,34 @@ select * from final
 ```
 
 ## Create a BigQuery project
-We'll be using BigQuery as our data warehouse in this tutorial since anyone with
-a Google Account can access BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
-We've created a public dataset for this tutorial that anyone can `select` from.
+For this tutorial, we've created a public dataset in BigQuery that anyone can `select`
+from.
+
+We're using BigQuery since anyone with a Google Account can use BigQuery, but
+dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
+
+<Alert type="info">
+BigQuery has <a href="/docs/tutorial/create-a-project-dbt-cli">generous free tier</a>. If you 
+have an existing GCP account that has surpassed these tiers on BigQuery, running queries for
+this tutorial will incur a very small (less than a few USD) cost.
+</Alert>
 
 <LoomVideo id="9b8d852c7e754d978209c3a60b53464e" />
 
-1. Go to https://console.cloud.google.com/bigquery -- if you don't have a
-BigQuery account you will be asked to create one.
-2. Create a new project -- you can use the default name for the project.
-3. Copy and paste the above query into the BigQuery console to validate that you
+1. Go to [the BigQuery Console](https://console.cloud.google.com/bigquery) — if you don't have a
+Google Cloud Platform account you will be asked to create one.
+2. Create a new project for this tutorial — if you've just created a BigQuery account, you'll
+be prompted to create a new project straight away. If you already have an existing you can select
+the project drop down in the header bar, and create a new project from there.
+<Lightbox src="/img/create-bigquery-project.png" title="Create a new GCP project" />
+3. Head back to the [the BigQuery Console](https://console.cloud.google.com/bigquery), and ensure
+your new project is selected. Copy and paste the above query into the Query Editor to validate that
+you are able to run it successfully.
+<Lightbox src="/img/successful-bigquery-query.png" title="Ensure you can run the above query" />
+
 
 ### FAQs
-<FAQ src="faqs/loading-data" />
+<FAQ src="faqs/loading-data" alt_header="The data in this tutorial is already loaded into BigQuery. How do I load data into my warehouse?" />
 
 ## Generate BigQuery credentials
 In order to let dbt connect to your warehouse, you'll need generate a keyfile.
@@ -103,15 +120,14 @@ data warehouses.
 
 <LoomVideo id="2b5a8ec255bd4dce91374f6941d279e5" />
 
-1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected at the top of the screen.
+1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
 2. Generate credentials with the following options:
     * **Which API are you using?** BigQuery API
     * **Are you planning to use this API with App Engine or Compute Engine?** No
     * **Service account name:** `dbt-user`
     * **Role:** BigQuery User
     * **Key type:** JSON
-3. Download the JSON file and save it in an easy-to-remember spot, with a clear
-filename (e.g. `dbt-user-creds.json`)
+3. Download the JSON file and save it in an easy-to-remember spot, with a clear filename (e.g. `dbt-user-creds.json`)
 
 ### FAQs
 <FAQ src="faqs/database-privileges" />
@@ -119,10 +135,8 @@ filename (e.g. `dbt-user-creds.json`)
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:
 
-1. Edit files and run projects using the web-based Integrated Development
-Environment (IDE) in **dbt Cloud**.
-2. Edit files locally using a code editor, and run projects using the Command
-Line Interface (**dbt CLI**).
+1. Edit files and run projects using the web-based Integrated Development Environment (IDE) in **dbt Cloud**.
+2. Edit files locally using a code editor, and run projects using the Command Line Interface (**dbt CLI**).
 
 To use the CLI, it's important that you know some basics of your terminal. In
 particular, you should understand `cd`, `ls` and `pwd` to navigate through the
