@@ -1,4 +1,4 @@
-A [docusaurus](https://docusaurus.io/en/) site that powers the dbt Getting Started tutorial
+A [docusaurus](https://docusaurus.io/en/) site that powers the dbt Getting Started tutorial, and maybe one day, the docs too.
 
 To run this yourself:
 1. `brew install node`
