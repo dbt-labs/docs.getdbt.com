@@ -10,9 +10,7 @@ import CloudCore from '@site/src/components/cloudcore';
 import Alert from '@site/src/components/alert';
 import FAQ from '@site/src/components/faqs';
 
-With our starter project setup, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
-
-We're going to take the query from the [Setting up](setting-up) instructions, and turn it into a model in our dbt project.
+With our starter project setup, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)! We're going to take the query from the [Setting up](setting-up) instructions, and turn it into a model in our dbt project.
 
 ## Build your first model
 ### dbt Cloud
