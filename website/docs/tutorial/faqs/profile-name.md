@@ -1,6 +1,4 @@
 ---
 title: What should I name my profile?
 ---
-We typically use a company name for a profile name, and then use targets to
-differentiate between `dev` and `prod`. Check out the docs on [managing environments](https://docs.getdbt.com/docs/managing-environments)
-for more information.
+We typically use a company name for a profile name, and then use targets to differentiate between `dev` and `prod`. Check out the docs on [managing environments](https://docs.getdbt.com/docs/managing-environments) for more information.

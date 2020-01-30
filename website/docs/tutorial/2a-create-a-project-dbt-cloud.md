@@ -2,12 +2,10 @@
 title: 'dbt Cloud: Create a project'
 sidebar_label: dbt Cloud
 id: create-a-project-dbt-cloud
-next_id: build-your-first-models
+description: Now that we're set up, let's create a starter project with example models in dbt Cloud.
 ---
 
-Now that we've successfully run our sample query in BigQuery, and chosen the way we want to
-develop, we can create a dbt project! In this step, we'll create a starter project
-with example models, before we build our own models.
+Now that we've successfully run our sample query in BigQuery, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
 import Link from '@docusaurus/Link';
 import Alert from '@site/src/components/alert';
@@ -23,9 +21,7 @@ using the dbt CLI, follow the instructions <Link to="/tutorial/create-a-project-
 <LoomVideo id="7386840381764d13b1d25f575719e218" />
 
 ## Create the starter project
-1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your
-organization already has a dbt Cloud account, ask an admin to add you as a
-Developer.
+1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
 2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
     * Click the hamburger menu, then `Account Settings`, then `Projects`.
     * Name your project "dbt Tutorial", and click `Save`. There's no need to fill in the other details.
@@ -55,14 +51,11 @@ models:
 ```
 
 ## Perform your first dbt run
-Our sample project has some example models in it. We're going to check that we
-can run them to confirm everything is in order. In the terminal bar at the
-bottom of the screen, type in `dbt run` and hit enter.
+Our sample project has some example models in it. We're going to check that we can run them to confirm everything is in order. In the terminal bar at the bottom of the screen, type in `dbt run` and hit enter.
 
 <Lightbox src="/img/successful-starter-project-run-dbt-cloud.png" title="A successful run of the starter project in dbt Cloud" />
 
 ## Commit your changes
-We need to commit our changes so that our repository has up-to-date code. Click
-the `commit` button, with a message like "Create a starter project"
+We need to commit our changes so that our repository has up-to-date code. Click the `commit` button, with a message like "Create a starter project"
 
 <Lightbox src="/img/first-commit-dbt-cloud.png" title="Commit your changes" />

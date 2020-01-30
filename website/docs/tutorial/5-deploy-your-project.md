@@ -1,7 +1,7 @@
 ---
 title: Deploy your project
 id: deploy-your-project
-description: Learn how to deploy your dbt project into production
+description: In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
 ---
 
 import Alert from '@site/src/components/alert';
@@ -11,18 +11,12 @@ import Collapsible from '@site/src/components/collapsible';
 import CloudCore from '@site/src/components/cloudcore';
 import FAQ from '@site/src/components/faqs';
 
-As the `jaffle_shop` business gains more customers, and those customers create
-more orders, there will be more records added to your source data. Since the
-`fct_customers` model is materialized as a table, you'll need to periodically
-rebuild your table to ensure that the data stays up-to-date.
+As the `jaffle_shop` business gains more customers, and those customers create more orders, there will be more records added to your source data. Since the `customers` model is materialized as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date.
 
-This is often referred to as "deploying a project" or "[running a project in
-production](https://docs.getdbt.com/docs/running-dbt-in-production)". In this
-part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
+This is often referred to as "deploying a project" or "[running a project in production](https://docs.getdbt.com/docs/running-dbt-in-production)". In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
 
 ## Commit your changes
-First off, we need to commit the changes we made to our project so that our
-repository has our latest code.
+First off, we need to commit the changes we made to our project so that our repository has our latest code.
 
 ### dbt Cloud
 <LoomVideo id="afd55d89abdc4a77b34deaee90da0813" />
@@ -37,26 +31,20 @@ Click the `commit` button, with a message like "Add customers model"
 3. Push your changes to your repository: `git push`
 
 <Alert type="warning">
-We just pushed straight to master 😬! We <strong>always</strong> use a git flow when
-working on dbt projects, and recommend you do too!
+We just pushed straight to master 😬! We <strong>always</strong> use a git flow when working on dbt projects, and recommend you do too!
 </Alert>
 
 ## Connect dbt Cloud to your repository
-Connecting dbt Cloud to your repository will allow you to have the latest code
-whenever your dbt project runs.
+Connecting dbt Cloud to your repository will allow you to have the latest code whenever your dbt project runs.
 
 <Alert type="info">
-This step only applies to folks who use the dbt CLI to develop their
-project. <strong>If you developed your project in dbt Cloud, you can skip this step!</strong>
+This step only applies to folks who use the dbt CLI to develop their project. <strong>If you developed your project in dbt Cloud, you can skip this step!</strong>
 </Alert>
 
 <LoomVideo id="48abd56ec909405cbc76f4946e930a43" />
 
-1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your
-  organization already has a dbt Cloud account, ask an admin to add you as a
-  Developer.
-2. If you created a new account, a new project should automatically be created.
-  If you were added to an existing account:
+1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
+2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
     * Click the hamburger menu, then `Account Settings`, then `Projects`.
     * Name your project "dbt Tutorial", and click `Save`. There's no need to fill 
     in the other details.
@@ -78,8 +66,7 @@ project. <strong>If you developed your project in dbt Cloud, you can skip this s
 ## Create and run a job
 _See above video_
 
-Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
-on a schedule.
+Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run on a schedule.
 
 1. After creating your deployment environment, you should be directed to the page for new environment. If not, select the hamburger menu, and then `Jobs`.
 2. Click `New Job` giving it a name (e.g. "Production run"), and linking it to the Environment you just created.
@@ -103,14 +90,10 @@ Congratulations 🎉! You've just deployed your first dbt project!
 Here's a few suggestions to keep learning:
 
 ### Start working on your own project
-Ready to get started with your own project? We recommend doing the tutorial a
-second time to create a new project. You should use your own warehouse, along
-with a query that you frequently run, to build your first models!
+Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!
 
 ### Learn some best practices
-Now that you've got a working dbt project, read more about some of our [best
-practices](https://docs.getdbt.com/docs/best-practices), or go back this tutorial
-and read some of the FAQs.
+Now that you've got a working dbt project, read more about some of our [best practices](https://docs.getdbt.com/docs/best-practices), or go back this tutorial and read some of the FAQs.
 
 ### Keep building this project
 Here's some suggested exercises to level-up your dbt skills:

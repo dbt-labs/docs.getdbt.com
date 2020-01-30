@@ -1,12 +1,8 @@
 ---
 title: Build your first models
 id: build-your-first-models
+description: With our starter project setup, it's time to get to the fun part — building models!
 ---
-
-## Build your first model
-Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
-We're going to take the query from the [Setting up](setting-up) instructions,
-and turn it into a model in our dbt project.
 
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
@@ -14,21 +10,20 @@ import CloudCore from '@site/src/components/cloudcore';
 import Alert from '@site/src/components/alert';
 import FAQ from '@site/src/components/faqs';
 
+With our starter project setup, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)! We're going to take the query from the [Setting up](setting-up) instructions, and turn it into a model in our dbt project.
+
+## Build your first model
 ### dbt Cloud
 <LoomVideo id="09919ddb02e44015878c9e93e15fe792" />
 
-1. Ensure you're in the Develop interface. If you're not, click the hamburger menu,
-and then `Develop`.
+1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](setting-up) instructions into the
-file.
-4. Execute `dbt run` in the command prompt at the bottom of the screen. You
-should get a successful run, like so:
+3. Paste the query from the [Setting up](setting-up) instructions into the file.
+4. Execute `dbt run` in the command prompt at the bottom of the screen. You should get a successful run, like so:
 
 <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
 
-If you switch back to the BigQuery console you'll be able to `select` from this
-model.
+If you switch back to the BigQuery console you'll be able to `select` from this model.
 
 
 ### dbt CLI
@@ -37,14 +32,12 @@ model.
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](setting-up) instructions into the
-file.
+3. Paste the query from the [Setting up](setting-up) instructions into the file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
 
-If you switch back to the BigQuery console you'll be able to `select` from this
-model.
+If you switch back to the BigQuery console you'll be able to `select` from this model.
 
 ### FAQs
 <FAQ src="faqs/checking-logs" />
@@ -55,9 +48,7 @@ model.
 
 
 ## Change the way your model is materialized
-One of the most powerful features of dbt is that you can change the way a model
-is materialized in your warehouse, simply by changing a configuration value.
-Let's see this in action.
+One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value. Let's see this in action.
 
 <CloudCore>
     <LoomVideo id="fbaa9948dccf4f74a17ffc7de1ddf4f2" />
@@ -74,8 +65,7 @@ models:
 ```
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
 <Alert type="info">
-To do this, dbt had to first run a `drop view` statement
-(or API call on BigQuery), then a `create table as` statement.
+To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
 </Alert>
 
 
@@ -97,8 +87,7 @@ with customers as (
 
 ```
 
-4. Execute `dbt run`. Your model, `customers` should be built as a view. You may
-need to run `dbt run --full-refresh` for this to take effect on BigQuery.
+4. Execute `dbt run`. Your model, `customers` should be built as a view. You may need to run `dbt run --full-refresh` for this to take effect on BigQuery.
 
 ### FAQs
 <FAQ src="faqs/available-materializations" />
@@ -115,8 +104,7 @@ We don't need the sample files that dbt created for us anymore! Let's delete the
 </CloudCore>
 
 1. Delete the `models/example/` directory
-2. Delete the `example:` key from your `dbt_project.yml` file, and any
-configurations that are listed under it
+2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it
 
 ```yaml
 # before
@@ -139,10 +127,7 @@ models:
 
 
 ## Build models on top of other models
-Often, it's a good idea to clean your data in one place, before doing additional
-transformations downstream. Our query already uses CTEs to this effect, but now
-we're going to experiment with using the [ref](https://docs.getdbt.com/docs/ref)
-function to separate this clean-up into upstream models, like so:
+Often, it's a good idea to clean your data in one place, before doing additional transformations downstream. Our query already uses CTEs to this effect, but now we're going to experiment with using the [ref](https://docs.getdbt.com/docs/ref) function to separate this clean-up into upstream models, like so:
 
 
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
@@ -152,8 +137,7 @@ function to separate this clean-up into upstream models, like so:
     <LoomVideo id="39eceeedf69641b5aca6f94c4da172a8" />
 </CloudCore>
 
-1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the
-`customers` CTE in our original query:
+1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query:
 ```sql
 select
     id as customer_id,
@@ -162,8 +146,7 @@ select
 
 from `dbt-tutorial`.jaffle_shop.customers
 ```
-2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the
-`orders` CTE in our original query:
+2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query:
 ```sql
 select
     id as order_id,
@@ -223,10 +206,7 @@ select * from final
 ```
 4. Execute `dbt run`
 
-This time when dbt ran, separate views/tables were created for `stg_customers`,
-`stg_orders` and `customers`. dbt was able to infer the order in which to run these
-models in — `customers` depends on `stg_customers` and `stg_orders`, so gets
-built last. There's no need to explicitly define these dependencies.
+This time when dbt ran, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt was able to infer the order in which to run these models in — `customers` depends on `stg_customers` and `stg_orders`, so gets built last. There's no need to explicitly define these dependencies.
 
 
 ### FAQs
@@ -237,8 +217,7 @@ built last. There's no need to explicitly define these dependencies.
 ## Extra exercises
 * Write some bad SQL to cause an error — can you debug this error?
 * Run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
-* Group your models with a `stg_` prefix into a `staging` subdirectory (i.e.
-`models/staging/stg_customers.sql`)
+* Group your models with a `stg_` prefix into a `staging` subdirectory (i.e. `models/staging/stg_customers.sql`)
     * Configure your `staging` models to be views
     * Run only the `staging` models
 
