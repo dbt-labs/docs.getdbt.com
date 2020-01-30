@@ -3,16 +3,16 @@ title: Build your first models
 id: build-your-first-models
 ---
 
+## Build your first model
+Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
+We're going to take the query from the [Setting up](setting-up) instructions,
+and turn it into a model in our dbt project.
+
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
 import CloudCore from '@site/src/components/cloudcore';
 import Alert from '@site/src/components/alert';
 import FAQ from '@site/src/components/faqs';
-
-## Build your first model
-Now that we're all set up, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)!
-We're going to take the query from the [Setting up](setting-up) instructions,
-and turn it into a model in our dbt project.
 
 ### dbt Cloud
 <LoomVideo id="09919ddb02e44015878c9e93e15fe792" />

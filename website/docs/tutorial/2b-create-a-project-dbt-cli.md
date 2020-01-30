@@ -4,15 +4,15 @@ sidebar_label: dbt CLI
 id: create-a-project-dbt-cli
 ---
 
+Now that we've successfully run our sample query in BigQuery, and chosen the way we want to
+develop, we can create a dbt project! In this step, we'll create a starter project
+with example models, before we build our own models.
+
 import Link from '@docusaurus/Link';
 import Alert from '@site/src/components/alert';
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
 import FAQ from '@site/src/components/faqs';
-
-Now that we've successfully run our sample query in BigQuery, and chosen the way we want to
-develop, we can create a dbt project! In this step, we'll create a starter project
-with example models, before we build our own models.
 
 <Alert type="info">
 These are the instructions for developing a project using the dbt CLI. If

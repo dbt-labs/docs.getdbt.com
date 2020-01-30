@@ -1,6 +1,7 @@
 ---
 title: Deploy your project
 id: deploy-your-project
+description: Learn how to deploy your dbt project into production
 ---
 
 import Alert from '@site/src/components/alert';

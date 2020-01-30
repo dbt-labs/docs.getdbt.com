@@ -4,12 +4,12 @@ module.exports = {
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
   title: 'dbt - Documentation',
-  url: 'https://docs.getdbt.com',
+  url: 'https://tutorial.getdbt.com',
 
   themeConfig: {
     disableDarkMode: true,
     sidebarCollapsible: true,
-    image: '/img/dbt-logo-full-white.png',
+    image: '/img/avatar.png',
     prism: {
       theme: require('prism-react-renderer/themes/nightOwl'),
     },
@@ -78,6 +78,7 @@ module.exports = {
   scripts: [
     'https://code.jquery.com/jquery-3.4.1.min.js',
     'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
+    '/js/gtm.js',
   ],
   stylesheets: [
     '/css/fonts.css',
