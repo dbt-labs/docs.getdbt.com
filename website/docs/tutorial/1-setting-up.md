@@ -13,15 +13,11 @@ import Alert from '@site/src/components/alert';
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
 
-We recommend you go through this project once from beginning to end. Once you've
-completed it, you should go back through and read some of the FAQs to broaden
-your understanding of dbt.
+We recommend you go through this project once from beginning to end. Once you've completed it, you should go back through and read some of the FAQs to broaden your understanding of dbt.
 
-This tutorial is based on a fictional business named `jaffle_shop`, so you'll
-see this name used throughout the project.
+This tutorial is based on a fictional business named `jaffle_shop`, so you'll see this name used throughout the project.
 
-In this tutorial, we will be turning the following query into a dbt project that
-is tested, documented, and deployed.
+In this tutorial, we will be turning the following query into a dbt project that is tested, documented, and deployed.
 ```sql
 with customers as (
 
@@ -82,29 +78,20 @@ select * from final
 ```
 
 ## Create a BigQuery project
-For this tutorial, we've created a public dataset in BigQuery that anyone can `select`
-from.
+For this tutorial, we've created a public dataset in BigQuery that anyone can `select` from.
 
-We're using BigQuery since anyone with a Google Account can use BigQuery, but
-dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
+We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
 
 <Alert type="info">
-BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you 
-have an existing GCP account that has surpassed these tiers on BigQuery, running queries for
-this tutorial will incur a very small (less than a few USD) cost.
+BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you have an existing GCP account that has surpassed these tiers on BigQuery, running queries for this tutorial will incur a very small (less than a few USD) cost.
 </Alert>
 
 <LoomVideo id="9b8d852c7e754d978209c3a60b53464e" />
 
-1. Go to [the BigQuery Console](https://console.cloud.google.com/bigquery) — if you don't have a
-Google Cloud Platform account you will be asked to create one.
-2. Create a new project for this tutorial — if you've just created a BigQuery account, you'll
-be prompted to create a new project straight away. If you already have an existing you can select
-the project drop down in the header bar, and create a new project from there.
+1. Go to [the BigQuery Console](https://console.cloud.google.com/bigquery) — if you don't have a Google Cloud Platform account you will be asked to create one.
+2. Create a new project for this tutorial — if you've just created a BigQuery account, you'll be prompted to create a new project straight away. If you already have an existing you can select the project drop down in the header bar, and create a new project from there.
 <Lightbox src="/img/create-bigquery-project.png" title="Create a new GCP project" />
-3. Head back to the [the BigQuery Console](https://console.cloud.google.com/bigquery), and ensure
-your new project is selected. Copy and paste the above query into the Query Editor to validate that
-you are able to run it successfully.
+3. Head back to the [the BigQuery Console](https://console.cloud.google.com/bigquery), and ensure your new project is selected. Copy and paste the above query into the Query Editor to validate that you are able to run it successfully.
 <Lightbox src="/img/successful-bigquery-query.png" title="Ensure you can run the above query" />
 
 
@@ -112,9 +99,7 @@ you are able to run it successfully.
 <FAQ src="faqs/loading-data" alt_header="The data in this tutorial is already loaded into BigQuery. How do I load data into my warehouse?" />
 
 ## Generate BigQuery credentials
-In order to let dbt connect to your warehouse, you'll need generate a keyfile.
-This is analogous to using a database user name and password with most other
-data warehouses.
+In order to let dbt connect to your warehouse, you'll need generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
 
 <LoomVideo id="2b5a8ec255bd4dce91374f6941d279e5" />
 
@@ -136,10 +121,6 @@ There’s two main ways of working with dbt:
 1. Edit files and run projects using the web-based Integrated Development Environment (IDE) in **dbt Cloud**.
 2. Edit files locally using a code editor, and run projects using the Command Line Interface (**dbt CLI**).
 
-To use the CLI, it's important that you know some basics of your terminal. In
-particular, you should understand `cd`, `ls` and `pwd` to navigate through the
-directory structure of your computer easily. As such, if you are new to
-programming, we recommend using **dbt Cloud** for this tutorial.
+To use the CLI, it's important that you know some basics of your terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily. As such, if you are new to programming, we recommend using **dbt Cloud** for this tutorial.
 
-If you wish to use the CLI, please follow the [installation instructions](https://docs.getdbt.com/docs/installation)
-for your operating system.
+If you wish to use the CLI, please follow the [installation instructions](https://docs.getdbt.com/docs/installation) for your operating system.
