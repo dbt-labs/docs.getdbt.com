@@ -3,9 +3,7 @@ title: Setting up
 id: setting-up
 ---
 
-This tutorial is geared at first-time users who want detailed instructions on
-how to go from zero to a deployed dbt project. You'll need a working knowledge
-of SQL in order to do this tutorial.
+This tutorial is geared at first-time users who want detailed instructions on how to go from zero to a deployed dbt project. You'll need a working knowledge of SQL in order to do this tutorial.
 
 import LoomVideo from '@site/src/components/loom';
 import Lightbox from '@site/src/components/lightbox';

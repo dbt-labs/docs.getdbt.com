@@ -1,17 +1,18 @@
 ---
 title: Test and document your project
 id: test-and-document-your-project
+description: Let's test and document our models to build trust in our data.
 ---
-
-## Add tests to your models
-Adding [tests](https://docs.getdbt.com/docs/testing) to a project helps validate
-that your models are working correctly. So let's add some tests to our project!
 
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
 import CloudCore from '@site/src/components/cloudcore';
 import FAQ from '@site/src/components/faqs';
 import Alert from '@site/src/components/alert';
+
+## Add tests to your models
+Adding [tests](https://docs.getdbt.com/docs/testing) to a project helps validate
+that your models are working correctly. So let's add some tests to our project!
 
 <CloudCore>
     <LoomVideo id="86a1e7ed19084810a7903bd31ebd83e0" />

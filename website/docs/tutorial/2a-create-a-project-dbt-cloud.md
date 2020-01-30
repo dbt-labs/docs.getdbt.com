@@ -2,12 +2,10 @@
 title: 'dbt Cloud: Create a project'
 sidebar_label: dbt Cloud
 id: create-a-project-dbt-cloud
-next_id: build-your-first-models
+description: Now that we're set up, let's create a starter project with example models in dbt Cloud.
 ---
 
-Now that we've successfully run our sample query in BigQuery, and chosen the way we want to
-develop, we can create a dbt project! In this step, we'll create a starter project
-with example models, before we build our own models.
+Now that we've successfully run our sample query in BigQuery, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
 import Link from '@docusaurus/Link';
 import Alert from '@site/src/components/alert';

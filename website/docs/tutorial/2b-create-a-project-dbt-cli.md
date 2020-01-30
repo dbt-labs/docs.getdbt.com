@@ -2,6 +2,7 @@
 title: 'dbt CLI: Create a project'
 sidebar_label: dbt CLI
 id: create-a-project-dbt-cli
+description: Now that we're set up, let's create a starter project with example models using the dbt CLI.
 ---
 
 Now that we've successfully run our sample query in BigQuery, and chosen the way we want to
