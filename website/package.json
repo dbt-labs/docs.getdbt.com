@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "docusaurus start",
-    "build": "docusaurus build"
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.40",
