@@ -18,7 +18,7 @@ With our starter project setup, it's time to get to the fun part — building [m
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](setting-up) instructions into the file.
+3. Paste the query from the [Setting up](tutorial/setting-up.md) instructions into the file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You should get a successful run, like so:
 
 <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
@@ -32,7 +32,7 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](setting-up) instructions into the file.
+3. Paste the query from the [Setting up](tutorial/setting-up.md) instructions into the file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
