@@ -1,6 +1,6 @@
 
 :local(.title) {
-    width: 300px;
+    width: 600px;
     text-align: center;
 }
 
@@ -9,6 +9,6 @@
     filter: drop-shadow(1px 4px 10px #aaaaaa33);
     margin: 10px auto;
     display: block;
-    width: 300px;
+    width: 600px;
 }
 

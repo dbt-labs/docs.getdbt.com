@@ -7,27 +7,23 @@ description: Now that we're set up, let's create a starter project with example 
 
 Now that we've successfully run our sample query in Snowflake, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
-import Link from '@docusaurus/Link';
-import Alert from '@site/src/components/alert';
-import LoomVideo from '@site/src/components/loom';
-import FAQ from '@site/src/components/faqs';
-import Lightbox from '@site/src/components/lightbox';
+<Callout type="info">
 
-<Alert type="info">
 These are the instructions for developing a project in dbt Cloud. If you're
-using the dbt CLI, follow the instructions <Link to="/tutorial/create-a-project-dbt-cli">here</Link>.
-</Alert>
+using the dbt CLI, follow the instructions [here](/tutorial/create-a-project-dbt-cli).
 
-<Alert type="warning">
+</Callout>
+
+<Callout type="warning">
 <strong>Learn students:</strong> please make sure you name your project "dbt Learn - [initialsurname]"
-</Alert>
+</Callout>
 
 <LoomVideo id="7386840381764d13b1d25f575719e218" />
 
 ## Create the starter project
-<Alert type="info">
+<Callout type="info">
 You should have received an invitation to dbt Cloud. Please accept the invitation and create an account.
-</Alert>
+</Callout>
 
 1. Login to [dbt Cloud](https://cloud.getdbt.com/login/). If you are also part of another organization's account, ensure you select "dbt Learn" as your account in the header bar.
 2. Create a new project in dbt Cloud:

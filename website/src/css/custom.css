@@ -61,6 +61,13 @@ nav.navbar div.navbar__inner {
     max-width: 75% !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    background: transparent !important
+}
+
+.featherlight-close-icon {
+    background: transparent !important;
+    color: white !important;
+    font-size: 20px !important;
 }
 
 
@@ -144,4 +151,48 @@ nav.navbar div.navbar__inner {
     height: 1.25rem;
     width: 1.25rem;
     vertical-align: middle;
+}
+
+.banner-animation {
+    /*background-color: #013544;*/
+    background-color: #f9fafb;
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.banner-animation svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    max-width: none;
+    max-height: 100vw;
+}
+
+@keyframes march {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.banner-animation svg #lines>* {
+    stroke-dasharray: 4px 6px;
+    stroke-dashoffset: 60;
+
+    -o-animation: march 8s linear infinite forwards;
+    -webkit-animation: march 8s linear infinite forwards;
+    animation: march 8s linear infinite forwards;
+}
+
+.search {
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 20px;
+    border: 0px;
+    outline-width: 0px;
 }

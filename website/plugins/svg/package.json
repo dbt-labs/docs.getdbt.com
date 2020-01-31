@@ -1,0 +1,13 @@
+
+{
+  "name": "svg-docusaurus-loader",
+  "main": "src/index.js",
+  "license": "Apache 2.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": ">=10.9.0"
+  }
+}

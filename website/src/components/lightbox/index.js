@@ -9,7 +9,6 @@ function Lightbox({children, src, title}) {
             <a href="#" data-featherlight={src}>
                 <img
                     data-toggle="lightbox"
-                    width="300px"
                     alt={title}
                     src={src} />
             </a>

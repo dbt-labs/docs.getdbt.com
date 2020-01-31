@@ -30,9 +30,9 @@ files.keys().forEach(function(key, i) {
   );
 });
 
-function FAQList({children}) {
+function FAQList({children, style}) {
   return (
-    <div>
+    <div style={style}>
         {faqs}
     </div>
   );
