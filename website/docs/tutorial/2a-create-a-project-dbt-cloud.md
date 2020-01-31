@@ -28,7 +28,7 @@ using the dbt CLI, follow the instructions <Link to="/tutorial/create-a-project-
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the project setup flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](setting-up) instructions.
+    * Connect to BigQuery using the credentials file from the [Setting Up](tutorial/setting-up.md) instructions.
     * Add a repository — choose managed repository, and name it `dbt-tutorial`. If you're comfortable with git, you can also choose to link to an existing, but bare, repository.
 
 <Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
