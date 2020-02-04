@@ -32,8 +32,7 @@ module.exports = {
         ],
       },
       "learn/build-your-first-models",
-      "learn/test-and-document-your-project",
-      "learn/deploy-your-project"
+      "learn/test-and-document-your-project"
     ]
   },
 }

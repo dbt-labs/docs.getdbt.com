@@ -148,3 +148,28 @@ Great work ⭐️! You've just built your first dbt project that's tested and do
 * Write a test that fails, for example, omit one of the order statuses in the `accepted_values` list. What does a failing test look like? Can you debug the failure?
 * Run the tests for one model only. If you grouped your `stg_` models into a directory, try running the tests for all the models in that directory.
 * Use a [docs block](https://docs.getdbt.com/docs/documentation#section-docs-blocks) to add a Markdown description to a model.
+
+## Commit your changes
+First off, we need to commit the changes we made to our project so that our repository has our latest code.
+
+### dbt Cloud
+<LoomVideo id="afd55d89abdc4a77b34deaee90da0813" />
+
+Click the `commit` button, with a message like "Add customers model"
+
+### dbt CLI
+<LoomVideo id="b07d7efe3f054e3bb357b4bccd805e70" />
+
+1. Add all your changes to git: `git add -a`
+2. Commit your changes: `git commit -m "Add customers models"`
+3. Push your changes to your repository: `git push`
+
+<Alert type="warning">
+We just pushed straight to master 😬! We <strong>always</strong> use a git flow when working on dbt projects, and recommend you do too!
+</Alert>
+
+## Next steps
+
+<Alert type="success">
+Congratulations 🎉! You've just deployed your first dbt project! <strong>Please reply to the email you received with your credentials with a link to your GitHub repository.</strong>
+</Alert>

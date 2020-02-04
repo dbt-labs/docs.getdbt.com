@@ -23,7 +23,7 @@ First off, we need to commit the changes we made to our project so that our repo
 
 Click the `commit` button, with a message like "Add customers model"
 
-### dbt Core
+### dbt CLI
 <LoomVideo id="b07d7efe3f054e3bb357b4bccd805e70" />
 
 1. Add all your changes to git: `git add -a`
@@ -46,7 +46,7 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
 2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
     * Click the hamburger menu, then `Account Settings`, then `Projects`.
-    * Name your project "dbt Tutorial", and click `Save`. There's no need to fill 
+    * Name your project "dbt Tutorial", and click `Save`. There's no need to fill
     in the other details.
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
@@ -84,7 +84,7 @@ Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
 ## Next steps
 
 <Alert type="success">
-Congratulations 🎉! You've just deployed your first dbt project! 
+Congratulations 🎉! You've just deployed your first dbt project!
 </Alert>
 
 Here's a few suggestions to keep learning:
