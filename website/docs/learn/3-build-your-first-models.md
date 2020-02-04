@@ -64,6 +64,7 @@ models:
       materialized: view
 ```
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
+
 <Alert type="info">
 To do this, dbt had to first run a `drop view` statement, then a `create table as` statement.
 </Alert>

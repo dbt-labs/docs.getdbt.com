@@ -18,20 +18,36 @@ These are the instructions for developing a project in dbt Cloud. If you're
 using the dbt CLI, follow the instructions <Link to="/tutorial/create-a-project-dbt-cli">here</Link>.
 </Alert>
 
+<Alert type="warning">
+<strong>Learn students:</strong> please make sure you name your project "dbt Learn - [initialsurname]"
+</Alert>
+
 <LoomVideo id="7386840381764d13b1d25f575719e218" />
 
 ## Create the starter project
-1. Login to dbt Cloud using your supplied credentials [here](https://cloud.getdbt.com/login/). If you are also part of another organization's account, ensure you select "dbt Learn" as your account in the header bar.
+<Alert type="info">
+You should have received an invitation to dbt Cloud. Please accept the invitation and create an account.
+</Alert>
+
+1. Login to [dbt Cloud](https://cloud.getdbt.com/login/). If you are also part of another organization's account, ensure you select "dbt Learn" as your account in the header bar.
 2. Create a new project in dbt Cloud:
     * Click the hamburger menu, then `Account Settings`, then `Projects`.
-    * Name your project "dbt Learn - [initialsurname]" (e.g "dbt Learn - ccarroll"), and click `Save`. There's no need to fill in the other details.
+    * **Name your project "dbt Learn - [initialsurname]"** (e.g "dbt Learn - ccarroll"), and click `Save`. There's no need to fill in the other details.
     * Click the hamburger menu, and then `Home`.
-    * Switch the project in the header bar to your new "dbt Tutorial" project.
+    * Switch the project in the header bar to your new "dbt Learn - [initialsurname]" project. **Do not use another student's project**
 3. Complete the project setup flow:
-    * Connect to Snowflake using the same credentials you used to connect in the [Setting Up](tutorial/setting-up.md) instructions.
+    * Connect to Snowflake using the following:
+        * Account: [provided].us-east-1 (e.g. `pa19123.us-east-1`)
+        * Role (optional): transformer
+        * Database: analytics
+        * Warehouse: transforming
     * Add a repository — choose the Github integration, and link to the repository you set up in the [Setting Up](tutorial/setting-up.md) instructions.
 
 <Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
+
+<Lightbox src="/img/dbt-cloud-snowflake-connection.png" title="dbt Cloud Database Connection" />
+
+<Lightbox src="/img/dbt-cloud-github-integration.png" title="dbt Cloud GitHub Integration" />
 
 4. Go to the `Develop` interface by either:
     * Selecting `Start Developing`, or

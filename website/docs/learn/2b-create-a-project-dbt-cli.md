@@ -74,9 +74,9 @@ jaffle_shop: # this needs to match the profile: in your dbt_project.yml file
     dev:
       type: snowflake
       threads: 4
-      account: [account_id] # supplied to you
+      account: [account_id].us-east-1 # supplied to you, eg. pa19123.us-east-1
       user: [username] # supplied to you
-      password: [password] # supplied to you
+      password: [password] # supplied to you, you should have been asked to reset it when you opened the Snowflake console
       role: transformer
       database: analytics
       warehouse: transforming
@@ -90,7 +90,7 @@ $ dbt debug
 ```
 Confirm that the last line of the output is `Connection test: OK connection ok`.
 
-<Lightbox src="/img/successful-dbt-debug.png" title="A successful dbt debug command" />
+<Lightbox src="/img/successful-dbt-debug-snowflake.png" title="A successful dbt debug command" />
 
 ### FAQs
 <FAQ src="faqs/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
@@ -119,7 +119,7 @@ We need to commit our changes so that our repository has up-to-date code.
 ```shell-session
 $ git init
 $ git commit -m "Create a dbt project"
-$ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
+$ git remote add origin https://github.com/USERNAME/dbt-learn-[initialsurname].git
 $ git push -u origin master
 ```
 

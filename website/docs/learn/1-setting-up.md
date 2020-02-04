@@ -25,7 +25,7 @@ Please note that this tutorial is adapted from the main <a href="https://tutoria
 
 This tutorial is based on a fictional business named `jaffle_shop`, so you'll see this name used throughout the project.
 
-In this tutorial, we will be turning the following query into a dbt project that is tested, documented, and deployed.
+In this tutorial, we will be turning the following query into a dbt project that is tested and documented, ready to be deployed.
 ```sql
 with customers as (
 
@@ -89,7 +89,8 @@ select * from final
 For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
 
 1. Go to the Snowflake Console (link provided in email) and login with your supplied credentials.
-2. Copy and paste the above query into a worksheet to validate that you are able to run it successfully.
+2. Reset your password: all students will be asked to update their password — please use a password manager to store this securely.
+3. Copy and paste the above query into a worksheet to validate that you are able to run it successfully.
 <Lightbox src="/img/successful-snowflake-query.png" title="Ensure you can run the above query" />
 
 
@@ -102,7 +103,7 @@ For dbt Learn, we've created a Snowflake account that you will be added to, but 
 We're going to use [GitHub](https://github.com/) as our git provider for this tutorial, but you can use any git provider. If you don't yet have a GitHub account, [create one now](https://github.com/join).
 <LoomVideo id="afe148aeab5e4279a2ca310251ea20a6" />
 
-1. Create a new GitHub repository [here](https://github.com/new) named `dbt-tutorial`.
+1. Create a new GitHub repository [here](https://github.com/new) named `dbt-learn-[initiallastname]` (e.g. `dbt-learn-ccarroll`).
 2. Click **Create repository** (without `.gitignore` and without a license).
 
 <Lightbox src="/img/create-github-repo.png" title="Create a GitHub repo" />
