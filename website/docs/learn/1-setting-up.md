@@ -9,7 +9,7 @@ import Lightbox from '@site/src/components/lightbox';
 import FAQ from '@site/src/components/faqs';
 import Alert from '@site/src/components/alert';
 
-This tutorial is the required pre-work for dbt Learn. Before beginning this tutorial, please ensure that you been received your email with Snowflake and dbt Cloud credentials from a Learn teacher
+This tutorial is the required pre-work for dbt Learn. Before beginning this tutorial, please ensure that you been received your Snowflake credentials and dbt Cloud invitation by email from a Learn instructor.
 
 If you are **new to dbt**, we recommend you take some time to read through the FAQs, and come armed with any questions you have along the way. If you get completely stuck in this tutorial, please [email us](mailto:learn@getdbt.com) and we'll help unstick you.
 
