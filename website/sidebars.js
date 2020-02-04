@@ -20,4 +20,19 @@ module.exports = {
       "tutorial/deploy-your-project"
     ]
   },
+  learn: {
+    'Getting Started': [
+      "learn/setting-up",
+      {
+        type: 'category',
+        label: 'Create a project',
+        items: [
+          "learn/create-a-project-dbt-cloud",
+          "learn/create-a-project-dbt-cli"
+        ],
+      },
+      "learn/build-your-first-models",
+      "learn/test-and-document-your-project"
+    ]
+  },
 }
