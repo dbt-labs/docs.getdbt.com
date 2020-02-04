@@ -103,7 +103,7 @@ For dbt Learn, we've created a Snowflake account that you will be added to, but 
 We're going to use [GitHub](https://github.com/) as our git provider for this tutorial, but you can use any git provider. If you don't yet have a GitHub account, [create one now](https://github.com/join).
 <LoomVideo id="afe148aeab5e4279a2ca310251ea20a6" />
 
-1. Create a new GitHub repository [here](https://github.com/new) named `dbt-learn-[initiallastname]` (e.g. `dbt-learn-ccarroll`).
+1. Create a new GitHub repository [here](https://github.com/new) named `dbt-learn-[initialsurname]` (e.g. `dbt-learn-ccarroll`).
 2. Click **Create repository** (without `.gitignore` and without a license).
 
 <Lightbox src="/img/create-github-repo.png" title="Create a GitHub repo" />
