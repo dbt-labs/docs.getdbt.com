@@ -1,19 +1,27 @@
 ---
 title: Setting up
 id: setting-up
+description: This tutorial is the required pre-work for dbt Learn.
 ---
-
-This tutorial is geared at first-time users who want detailed instructions on how to go from zero to a deployed dbt project. You'll need a working knowledge of SQL in order to do this tutorial.
 
 import LoomVideo from '@site/src/components/loom';
 import Lightbox from '@site/src/components/lightbox';
 import FAQ from '@site/src/components/faqs';
 import Alert from '@site/src/components/alert';
 
+This tutorial is the required pre-work for dbt Learn. Before beginning this tutorial, please ensure that you been received your email with Snowflake and dbt Cloud credentials from a Learn teacher
+
+If you are **new to dbt**, we recommend you take some time to read through the FAQs, and come armed with any questions you have along the way. If you get completely stuck in this tutorial, please [email us](mailto:learn@getdbt.com) and we'll help unstick you.
+
+If you are already **experienced with dbt**, you still need to complete this tutorial as we'll be building on this project in our lessons.
+
+
+
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
-
-We recommend you go through this project once from beginning to end. Once you've completed it, you should go back through and read some of the FAQs to broaden your understanding of dbt.
+<Alert type="info">
+Please note that this tutorial is adapted from the main <a href="https://tutorial.getdbt.com/tutorial/setting-up/">Getting Started</a> tutorial — there may be some references to BigQuery in various videos, however the same concepts should apply on Snowflake.
+</Alert>
 
 This tutorial is based on a fictional business named `jaffle_shop`, so you'll see this name used throughout the project.
 
@@ -26,7 +34,7 @@ with customers as (
         first_name,
         last_name
 
-    from `dbt-tutorial`.jaffle_shop.customers
+    from raw.jaffle_shop.customers
 
 ),
 
@@ -38,7 +46,7 @@ orders as (
         order_date,
         status
 
-    from `dbt-tutorial`.jaffle_shop.orders
+    from raw.jaffle_shop.orders
 
 ),
 
@@ -77,43 +85,28 @@ final as (
 select * from final
 ```
 
-## Create a BigQuery project
-For this tutorial, we've created a public dataset in BigQuery that anyone can `select` from.
+## Connect to Snowflake
+For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
 
-We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
-
-<Alert type="info">
-BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you have an existing GCP account that has surpassed these tiers on BigQuery, running queries for this tutorial will incur a very small (less than a few USD) cost.
-</Alert>
-
-<LoomVideo id="9b8d852c7e754d978209c3a60b53464e" />
-
-1. Go to [the BigQuery Console](https://console.cloud.google.com/bigquery) — if you don't have a Google Cloud Platform account you will be asked to create one.
-2. Create a new project for this tutorial — if you've just created a BigQuery account, you'll be prompted to create a new project straight away. If you already have an existing you can select the project drop down in the header bar, and create a new project from there.
-<Lightbox src="/img/create-bigquery-project.png" title="Create a new GCP project" />
-3. Head back to the [the BigQuery Console](https://console.cloud.google.com/bigquery), and ensure your new project is selected. Copy and paste the above query into the Query Editor to validate that you are able to run it successfully.
-<Lightbox src="/img/successful-bigquery-query.png" title="Ensure you can run the above query" />
+1. Go to the Snowflake Console (link provided in email) and login with your supplied credentials.
+2. Copy and paste the above query into a worksheet to validate that you are able to run it successfully.
+<Lightbox src="/img/successful-snowflake-query.png" title="Ensure you can run the above query" />
 
 
 ### FAQs
-<FAQ src="faqs/loading-data" alt_header="The data in this tutorial is already loaded into BigQuery. How do I load data into my warehouse?" />
-
-## Generate BigQuery credentials
-In order to let dbt connect to your warehouse, you'll need generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
-
-<LoomVideo id="2b5a8ec255bd4dce91374f6941d279e5" />
-
-1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
-2. Generate credentials with the following options:
-    * **Which API are you using?** BigQuery API
-    * **Are you planning to use this API with App Engine or Compute Engine?** No
-    * **Service account name:** `dbt-user`
-    * **Role:** BigQuery User
-    * **Key type:** JSON
-3. Download the JSON file and save it in an easy-to-remember spot, with a clear filename (e.g. `dbt-user-creds.json`)
-
-### FAQs
+<FAQ src="faqs/loading-data" alt_header="The data in this tutorial is already loaded into Snowflake. How do I load data into my warehouse?" />
 <FAQ src="faqs/database-privileges" />
+
+
+## Create a repository
+We're going to use [GitHub](https://github.com/) as our git provider for this tutorial, but you can use any git provider. If you don't yet have a GitHub account, [create one now](https://github.com/join).
+<LoomVideo id="afe148aeab5e4279a2ca310251ea20a6" />
+
+1. Create a new GitHub repository [here](https://github.com/new) named `dbt-tutorial`.
+2. Click **Create repository** (without `.gitignore` and without a license).
+
+<Lightbox src="/img/create-github-repo.png" title="Create a GitHub repo" />
+
 
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:

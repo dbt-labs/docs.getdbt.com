@@ -5,7 +5,7 @@ id: create-a-project-dbt-cloud
 description: Now that we're set up, let's create a starter project with example models in dbt Cloud.
 ---
 
-Now that we've successfully run our sample query in BigQuery, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
+Now that we've successfully run our sample query in Snowflake, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
 import Link from '@docusaurus/Link';
 import Alert from '@site/src/components/alert';
@@ -21,15 +21,15 @@ using the dbt CLI, follow the instructions <Link to="/tutorial/create-a-project-
 <LoomVideo id="7386840381764d13b1d25f575719e218" />
 
 ## Create the starter project
-1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
-2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
+1. Login to dbt Cloud using your supplied credentials [here](https://cloud.getdbt.com/login/). If you are also part of another organization's account, ensure you select "dbt Learn" as your account in the header bar.
+2. Create a new project in dbt Cloud:
     * Click the hamburger menu, then `Account Settings`, then `Projects`.
-    * Name your project "dbt Tutorial", and click `Save`. There's no need to fill in the other details.
+    * Name your project "dbt Learn - [initialsurname]" (e.g "dbt Learn - ccarroll"), and click `Save`. There's no need to fill in the other details.
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the project setup flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](tutorial/setting-up.md) instructions.
-    * Add a repository — choose managed repository, and name it `dbt-tutorial`. If you're comfortable with git, you can also choose to link to an existing, but bare, repository.
+    * Connect to Snowflake using the same credentials you used to connect in the [Setting Up](tutorial/setting-up.md) instructions.
+    * Add a repository — choose the Github integration, and link to the repository you set up in the [Setting Up](tutorial/setting-up.md) instructions.
 
 <Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
 

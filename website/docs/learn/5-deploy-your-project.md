@@ -43,16 +43,15 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
 
 <LoomVideo id="48abd56ec909405cbc76f4946e930a43" />
 
-1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
-2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
+1. Login to dbt Cloud using your supplied credentials [here](https://cloud.getdbt.com/login/).
+2. Create a new project in dbt Cloud:
     * Click the hamburger menu, then `Account Settings`, then `Projects`.
-    * Name your project "dbt Tutorial", and click `Save`. There's no need to fill 
-    in the other details.
+    * Name your project "dbt Learn - [initialsurname]" (e.g "dbt Learn - ccarroll"), and click `Save`. There's no need to fill in the other details.
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
-3. Complete the onboarding flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](tutorial/setting-up.md) instructions.
-    * Add a repository — choose the GitHub integration, and connect to your `dbt-tutorial` repository that we set up on the [Create a Project](create-a-project-dbt-cli) instructions.
+3. Complete the project setup flow:
+    * Connect to Snowflake using the same credentials you used to connect in the [Setting Up](tutorial/setting-up.md) instructions.
+    * Add a repository — choose the Github integration, and link to the repository you set up in the [Setting Up](tutorial/setting-up.md) instructions.
 
 
 ## Create a deployment environment
@@ -61,7 +60,11 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
 1. Click the hamburger menu, and then `Home`
 2. Under "Deployment Environments" select "Create a new one"
 3. Name your deployment environment (e.g. "Production")
-4. Add a target dataset (e.g. "analytics") -- this is the dataset that dbt will build into. For other warehouses this is usually named "schema"
+4. Add a target schema (e.g. "analytics_[initialsurname]") — this is the schema that dbt will build into.
+
+<Alert type="info">
+We would typically name our deployment schema "analytics" (without a suffix) to tell our users that it's "the good place". For this tutorial, as we have a number of students using the same Snowflake account, we are using suffixes to differentiate between each student's work.
+</Alert>
 
 ## Create and run a job
 _See above video_
@@ -84,10 +87,10 @@ Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
 ## Next steps
 
 <Alert type="success">
-Congratulations 🎉! You've just deployed your first dbt project! 
+Congratulations 🎉! You've just deployed your first dbt project! <strong>Please reply to the email you received with your credentials with a link to your GitHub repository.</strong>
 </Alert>
 
-Here's a few suggestions to keep learning:
+We're very excited to see you at Learn. In the meantime, here's a few suggestions if you want to get a headstart:
 
 ### Start working on your own project
 Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!

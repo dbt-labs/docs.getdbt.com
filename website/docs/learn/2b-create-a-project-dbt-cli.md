@@ -5,7 +5,7 @@ id: create-a-project-dbt-cli
 description: Now that we're set up, let's create a starter project with example models using the dbt CLI.
 ---
 
-Now that we've successfully run our sample query in BigQuery, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
+Now that we've successfully run our sample query in Snowflake, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
 import Link from '@docusaurus/Link';
 import Alert from '@site/src/components/alert';
@@ -16,15 +16,6 @@ import FAQ from '@site/src/components/faqs';
 <Alert type="info">
 These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions <Link to="/tutorial/create-a-project-dbt-cloud">here</Link>.
 </Alert>
-
-## Create a repository
-We're going to use [GitHub](https://github.com/) as our git provider for this tutorial, but you can use any git provider. If you don't yet have a GitHub account, [create one now](https://github.com/join).
-<LoomVideo id="afe148aeab5e4279a2ca310251ea20a6" />
-
-1. Create a new GitHub repository [here](https://github.com/new) named `dbt-tutorial`.
-2. Click **Create repository** (without `.gitignore` and without a license).
-
-<Lightbox src="/img/create-github-repo.png" title="Create a GitHub repo" />
 
 
 ## Create a project
@@ -71,26 +62,26 @@ models:
     ...
 ```
 
-## Connect to BigQuery
+## Connect to Snowflake
 When developing locally, dbt connects to your data warehouse using a [profile](https://docs.getdbt.com/docs/configure-your-profile) — a yaml file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
-2. Move your BigQuery keyfile into this directory.
-3. Copy the following into the file — make sure you update the values where indicated.
+2. Copy the following into the file — make sure you update the values where indicated.
 ```yaml
 jaffle_shop: # this needs to match the profile: in your dbt_project.yml file
   target: dev
   outputs:
     dev:
-      type: bigquery
-      method: service-account
-      keyfile: /Users/claire/.dbt/dbt-user-creds.json # replace this with the full path to your keyfile
-      project: grand-highway-265418 # Replace this with your project id
-      dataset: dbt_alice # Replace this with dbt_your_name, e.g. dbt_bob
-      threads: 1
-      timeout_seconds: 300
-      location: US
-      priority: interactive
+      type: snowflake
+      threads: 4
+      account: [account_id] # supplied to you
+      user: [username] # supplied to you
+      password: [password] # supplied to you
+      role: transformer
+      database: analytics
+      warehouse: transforming
+      schema: dev_[initialsurname] # e.g. dev_ccarroll
+      client_session_keep_alive: False
 ```
 
 4. Execute the debug command from your project to confirm that you can successfully connect
@@ -124,7 +115,7 @@ You should have an ouput that looks like this:
 We need to commit our changes so that our repository has up-to-date code.
 <LoomVideo id="a39753e4ce5647b2be4e5331788bab91" />
 
-1. Link the GitHub repository you created to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
+1. Link the GitHub repository you created in the [Setting Up](tutorial/setting-up.md) instructions to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
 ```shell-session
 $ git init
 $ git commit -m "Create a dbt project"

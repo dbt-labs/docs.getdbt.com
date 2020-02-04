@@ -23,7 +23,7 @@ With our starter project setup, it's time to get to the fun part — building [m
 
 <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
 
-If you switch back to the BigQuery console you'll be able to `select` from this model.
+If you switch back to the Snowflake console you'll be able to `select` from this model.
 
 
 ### dbt CLI
@@ -37,7 +37,7 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
 
-If you switch back to the BigQuery console you'll be able to `select` from this model.
+If you switch back to the Snowflake console you'll be able to `select` from this model.
 
 ### FAQs
 <FAQ src="faqs/checking-logs" />
@@ -65,7 +65,7 @@ models:
 ```
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
 <Alert type="info">
-To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
+To do this, dbt had to first run a `drop view` statement, then a `create table as` statement.
 </Alert>
 
 
@@ -87,7 +87,7 @@ with customers as (
 
 ```
 
-4. Execute `dbt run`. Your model, `customers` should be built as a view. You may need to run `dbt run --full-refresh` for this to take effect on BigQuery.
+4. Execute `dbt run`. Your model, `customers` should be built as a view.
 
 ### FAQs
 <FAQ src="faqs/available-materializations" />
@@ -144,7 +144,7 @@ select
     first_name,
     last_name
 
-from `dbt-tutorial`.jaffle_shop.customers
+from raw.jaffle_shop.customers
 ```
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query:
 ```sql
@@ -154,7 +154,7 @@ select
     order_date,
     status
 
-from `dbt-tutorial`.jaffle_shop.orders
+from raw.jaffle_shop.orders
 ```
 3. Edit the SQL in your `models/customers.sql` file as follows:
 ```sql
