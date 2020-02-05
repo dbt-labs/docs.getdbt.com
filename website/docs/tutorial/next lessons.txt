@@ -1,0 +1,4 @@
+1. Add sources
+2. Use a seed
+3. Use jinja / Add a macro / use a package
+4. Adjust a schema test
