@@ -10,7 +10,7 @@ import CloudCore from '@site/src/components/cloudcore';
 import Alert from '@site/src/components/alert';
 import FAQ from '@site/src/components/faqs';
 
-With our starter project setup, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)! We're going to take the query from the [Setting up](tutorial/1-setting-up.md) instructions, and turn it into a model in our dbt project.
+With our starter project setup, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)! We're going to take the query from the [Setting up](1-setting-up.md) instructions, and turn it into a model in our dbt project.
 
 ## Build your first model
 ### dbt Cloud
@@ -18,7 +18,7 @@ With our starter project setup, it's time to get to the fun part — building [m
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](tutorial/1-setting-up.md) instructions into the file.
+3. Paste the query from the [Setting up](1-setting-up.md) instructions into the file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You should get a successful run, like so:
 
 <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
@@ -32,7 +32,7 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](tutorial/1-setting-up.md) instructions into the file.
+3. Paste the query from the [Setting up](1-setting-up.md) instructions into the file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
