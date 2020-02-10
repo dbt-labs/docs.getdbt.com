@@ -51,7 +51,7 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the onboarding flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](tutorial/setting-up.md) instructions.
+    * Connect to BigQuery using the credentials file from the [Setting Up](1-setting-up.md) instructions.
     * Add a repository — choose the GitHub integration, and connect to your `dbt-tutorial` repository that we set up on the [Create a Project](create-a-project-dbt-cli) instructions.
 
 
@@ -61,7 +61,7 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
 1. Click the hamburger menu, and then `Home`
 2. Under "Deployment Environments" select "Create a new one"
 3. Name your deployment environment (e.g. "Production")
-4. Add a target dataset (e.g. "analytics") -- this is the dataset that dbt will build into. For other warehouses this is usually named "schema"
+4. Add a target dataset (e.g. "analytics") — this is the dataset that dbt will build into. For other warehouses this is usually named "schema"
 
 ## Create and run a job
 _See above video_

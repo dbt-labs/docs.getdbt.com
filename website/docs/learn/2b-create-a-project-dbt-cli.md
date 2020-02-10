@@ -29,7 +29,7 @@ $ dbt --version
 ```
 
 <Alert type="info">
-dbt should have been installed as part of the  <a href="/tutorial/setting-up">Setting Up</a> part of the tutorial. If it was not installed, please follow the <a href="https://docs.getdbt.com/docs/installation"> installation instructions </a>
+dbt should have been installed as part of the  <a href="/learn/setting-up">Setting Up</a> part of the tutorial. If it was not installed, please follow the <a href="https://docs.getdbt.com/docs/installation"> installation instructions </a>
 </Alert>
 
 2. Run the `init` command:
@@ -115,7 +115,7 @@ You should have an ouput that looks like this:
 We need to commit our changes so that our repository has up-to-date code.
 <LoomVideo id="a39753e4ce5647b2be4e5331788bab91" />
 
-1. Link the GitHub repository you created in the [Setting Up](tutorial/setting-up.md) instructions to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
+1. Link the GitHub repository you created in the [Setting Up](1-setting-up.md) instructions to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
 ```shell-session
 $ git init
 $ git commit -m "Create a dbt project"
