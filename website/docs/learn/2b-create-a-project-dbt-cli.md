@@ -7,15 +7,11 @@ description: Now that we're set up, let's create a starter project with example 
 
 Now that we've successfully run our sample query in Snowflake, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
-import Link from '@docusaurus/Link';
-import Alert from '@site/src/components/alert';
-import Lightbox from '@site/src/components/lightbox';
-import LoomVideo from '@site/src/components/loom';
-import FAQ from '@site/src/components/faqs';
+<Callout type="info">
 
-<Alert type="info">
-These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions <Link to="/tutorial/create-a-project-dbt-cloud">here</Link>.
-</Alert>
+These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions [here](/tutorial/create-a-project-dbt-cloud).
+
+</Callout>
 
 
 ## Create a project
@@ -28,9 +24,11 @@ $ dbt --version
 
 ```
 
-<Alert type="info">
+<Callout type="info">
+
 dbt should have been installed as part of the  <a href="/tutorial/setting-up">Setting Up</a> part of the tutorial. If it was not installed, please follow the <a href="https://docs.getdbt.com/docs/installation"> installation instructions </a>
-</Alert>
+
+</Callout>
 
 2. Run the `init` command:
 ```shell-session
@@ -123,6 +121,8 @@ $ git remote add origin https://github.com/USERNAME/dbt-learn-[initialsurname].g
 $ git push -u origin master
 ```
 
-<Alert type="info">
+<Callout type="info">
+
 If this is your first time using git, it's worth taking some time to understand the basics.
-</Alert>
+
+</Callout>

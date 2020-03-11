@@ -4,12 +4,6 @@ id: build-your-first-models
 description: With our starter project setup, it's time to get to the fun part — building models!
 ---
 
-import Lightbox from '@site/src/components/lightbox';
-import LoomVideo from '@site/src/components/loom';
-import CloudCore from '@site/src/components/cloudcore';
-import Alert from '@site/src/components/alert';
-import FAQ from '@site/src/components/faqs';
-
 With our starter project setup, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)! We're going to take the query from the [Setting up](1-setting-up.md) instructions, and turn it into a model in our dbt project.
 
 ## Build your first model
@@ -64,9 +58,9 @@ models:
       materialized: view
 ```
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
-<Alert type="info">
+<Callout type="info">
 To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
-</Alert>
+</Callout>
 
 
 3. Edit `models/customers.sql` to have the following snippet at the top:

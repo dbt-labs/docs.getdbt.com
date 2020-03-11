@@ -1,0 +1,59 @@
+---
+title: "Using databases"
+id: "using-custom-database"
+---
+
+
+<Callout type="info" title="A word on naming">
+
+Different warehouses have different names for "logical databases". The information in this document covers "databases" on Snowflake, Redshift, and Postgres, as well as "projects" on BigQuery.
+
+The values `project` and `database` are interchangeable in BigQuery project configurations.
+
+</Callout>
+
+## Configuring custom databases
+
+The logical database that dbt models are built into can be configured using the `database` model configuration. If this configuration is not supplied to a model, then dbt will use the database configured in the active target from your `profiles.yml` file. If the `database` configuration *is* supplied for a model, then dbt will build the model into the configured  database.
+
+The `database` configuration can be supplied for groups of models in the `dbt_project.yml` file, or for individual models in model SQL files.
+
+### Configuring database overrides in `dbt_project.yml`:
+
+This config changes all models in the `jaffle_shop` project to be built into a database called `jaffle_shop`.
+
+<File name='dbt_project.yml'>
+
+```yaml
+name: jaffle_shop
+
+models:
+  my_project:
+    database: jaffle_shop
+    
+    # For BigQuery users:
+    # project: jaffle_shop
+```
+
+</File>
+
+### Configuring database overrides in a model file
+
+This config changes a specific model to be built into a database called `jaffle_shop`.
+
+<File name='models/my_model.sql'>
+
+```sql
+
+{{ config(database="jaffle_shop") }}
+
+select * from ...
+```
+
+</File>
+
+## Considerations
+
+### BigQuery
+
+When dbt opens a BigQuery connection, it will do so using the `project_id` defined in your active `profiles.yml` target. This `project_id` will be billed for the queries that are executed in the dbt run, even if some models are configured to be built in other projects.

@@ -4,11 +4,6 @@ id: setting-up
 description: This tutorial is the required pre-work for dbt Learn.
 ---
 
-import LoomVideo from '@site/src/components/loom';
-import Lightbox from '@site/src/components/lightbox';
-import FAQ from '@site/src/components/faqs';
-import Alert from '@site/src/components/alert';
-
 This tutorial is the required pre-work for dbt Learn. Before beginning this tutorial, please ensure that you been received your Snowflake credentials and dbt Cloud invitation by email from a Learn instructor.
 
 If you are **new to dbt**, we recommend you take some time to read through the FAQs, and come armed with any questions you have along the way. If you get completely stuck in this tutorial, please [email us](mailto:learn@getdbt.com) and we'll help unstick you.
@@ -19,9 +14,9 @@ If you are already **experienced with dbt**, you still need to complete this tut
 
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
-<Alert type="info">
+<Callout type="info">
 Please note that this tutorial is adapted from the main <a href="https://tutorial.getdbt.com/tutorial/setting-up/">Getting Started</a> tutorial — there may be some references to BigQuery in various videos, however the same concepts should apply on Snowflake.
-</Alert>
+</Callout>
 
 This tutorial is based on a fictional business named `jaffle_shop`, so you'll see this name used throughout the project.
 

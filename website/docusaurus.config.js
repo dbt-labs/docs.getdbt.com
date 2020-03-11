@@ -1,4 +1,6 @@
 
+const path = require('path');
+
 module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
@@ -20,7 +22,7 @@ module.exports = {
       },
       links: [
         {
-          href: 'https://docs.getdbt.com',
+          to: '/docs/introduction',
           label: 'Docs',
           position: 'left',
         },
@@ -47,12 +49,6 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
-      logo: {
-        alt: 'dbt Logo',
-        src: '/img/dbt-logo-full-white.png',
-        href: 'https://www.getdbt.com/',
-      },
       copyright: `Copyright © ${new Date().getFullYear()} Fishtown Analytics, Inc.`,
     },
   },
@@ -74,6 +70,9 @@ module.exports = {
         }
       },
     ],
+  ],
+  plugins: [
+    path.resolve('plugins/svg'),
   ],
   scripts: [
     'https://code.jquery.com/jquery-3.4.1.min.js',

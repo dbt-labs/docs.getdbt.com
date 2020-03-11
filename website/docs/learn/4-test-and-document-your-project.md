@@ -4,12 +4,6 @@ id: test-and-document-your-project
 description: Let's test and document our models to build trust in our data.
 ---
 
-import Lightbox from '@site/src/components/lightbox';
-import LoomVideo from '@site/src/components/loom';
-import CloudCore from '@site/src/components/cloudcore';
-import FAQ from '@site/src/components/faqs';
-import Alert from '@site/src/components/alert';
-
 ## Add tests to your models
 Adding [tests](https://docs.getdbt.com/docs/testing) to a project helps validate that your models are working correctly. So let's add some tests to our project!
 
@@ -63,9 +57,9 @@ models:
     <Lightbox src="/img/successful-tests-dbt-cli.png" title="Passing tests when using the dbt CLI" />
 </CloudCore>
 
-<Alert type="info">
+<Callout type="info">
 When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test. Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
-</Alert>
+</Callout>
 
 ### FAQs
 <FAQ src="faqs/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
@@ -128,9 +122,9 @@ models:
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
 
 
-<Alert type="success">
+<Callout type="success">
 Great work ⭐️! You've just built your first dbt project that's tested and documented!
-</Alert>
+</Callout>
 
 
 ### FAQs
@@ -164,12 +158,12 @@ Click the `commit` button, with a message like "Add customers model"
 2. Commit your changes: `git commit -m "Add customers models"`
 3. Push your changes to your repository: `git push`
 
-<Alert type="warning">
+<Callout type="warning">
 We just pushed straight to master 😬! We <strong>always</strong> use a git flow when working on dbt projects, and recommend you do too!
-</Alert>
+</Callout>
 
 ## Next steps
 
-<Alert type="success">
+<Callout type="success">
 Congratulations 🎉! You've just deployed your first dbt project! <strong>Please reply to the email you received with your credentials with a link to your GitHub repository.</strong>
-</Alert>
+</Callout>
