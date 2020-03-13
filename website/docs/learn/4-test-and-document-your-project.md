@@ -62,13 +62,13 @@ When you run `dbt test`, dbt iterates through your YAML files, and constructs a 
 </Callout>
 
 ### FAQs
-<FAQ src="faqs/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
-<FAQ src="faqs/test-one-model" />
-<FAQ src="faqs/failed-tests" />
-<FAQ src="faqs/schema-yml-name" />
-<FAQ src="faqs/multiple-test-files" />
-<FAQ src="faqs/recommended-tests" />
-<FAQ src="faqs/when-to-test" />
+<FAQ src="available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
+<FAQ src="test-one-model" />
+<FAQ src="failed-tests" />
+<FAQ src="schema-yml-name" />
+<FAQ src="multiple-test-files" />
+<FAQ src="recommended-tests" />
+<FAQ src="when-to-test" />
 
 ## Document your models
 Adding [documentation](https://docs.getdbt.com/docs/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
@@ -128,8 +128,8 @@ Great work ⭐️! You've just built your first dbt project that's tested and do
 
 
 ### FAQs
-<FAQ src="faqs/long-descriptions" />
-<FAQ src="faqs/sharing-documentation" />
+<FAQ src="long-descriptions" />
+<FAQ src="sharing-documentation" />
 
 
 ## Extra exercises

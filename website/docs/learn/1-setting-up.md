@@ -90,8 +90,8 @@ For dbt Learn, we've created a Snowflake account that you will be added to, but 
 
 
 ### FAQs
-<FAQ src="faqs/loading-data" alt_header="The data in this tutorial is already loaded into Snowflake. How do I load data into my warehouse?" />
-<FAQ src="faqs/database-privileges" />
+<FAQ src="loading-data" alt_header="The data in this tutorial is already loaded into Snowflake. How do I load data into my warehouse?" />
+<FAQ src="database-privileges" />
 
 
 ## Create a repository

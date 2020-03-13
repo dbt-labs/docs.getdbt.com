@@ -72,7 +72,7 @@ Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
 7. Click into the run to see the progress — once the run is complete, click "View Documentation" to see the docs for your project.
 
 ### FAQs
-<FAQ src="faqs/failed-prod-run" />
+<FAQ src="failed-prod-run" />
 
 ## Next steps
 

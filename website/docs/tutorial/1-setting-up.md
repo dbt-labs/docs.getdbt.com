@@ -91,7 +91,7 @@ BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free t
 
 
 ### FAQs
-<FAQ src="faqs/loading-data" alt_header="The data in this tutorial is already loaded into BigQuery. How do I load data into my warehouse?" />
+<FAQ src="loading-data" alt_header="The data in this tutorial is already loaded into BigQuery. How do I load data into my warehouse?" />
 
 ## Generate BigQuery credentials
 In order to let dbt connect to your warehouse, you'll need generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
@@ -108,7 +108,7 @@ In order to let dbt connect to your warehouse, you'll need generate a keyfile. T
 3. Download the JSON file and save it in an easy-to-remember spot, with a clear filename (e.g. `dbt-user-creds.json`)
 
 ### FAQs
-<FAQ src="faqs/database-privileges" />
+<FAQ src="database-privileges" />
 
 ## Choose the way you want to develop
 There’s two main ways of working with dbt:

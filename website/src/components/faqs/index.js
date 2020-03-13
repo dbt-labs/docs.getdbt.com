@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from './styles.module.css';
 
 function FAQ({children, src, alt_header=null}) {
-  const file = require('../../../docs/tutorial/' + src + '.md')
+  const file = require('../../../docs/faqs/' + src + '.md')
   const meta = file.metadata;
   const contents = file.default({});
 

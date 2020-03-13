@@ -91,11 +91,11 @@ Confirm that the last line of the output is `Connection test: OK connection ok`.
 <Lightbox src="/img/successful-dbt-debug-snowflake.png" title="A successful dbt debug command" />
 
 ### FAQs
-<FAQ src="faqs/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
-<FAQ src="faqs/separate-profile" />
-<FAQ src="faqs/profile-name" />
-<FAQ src="faqs/target-names" />
-<FAQ src="faqs/profile-env-vars" />
+<FAQ src="sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
+<FAQ src="separate-profile" />
+<FAQ src="profile-name" />
+<FAQ src="target-names" />
+<FAQ src="profile-env-vars" />
 
 
 ## Perform your first dbt run
