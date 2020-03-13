@@ -96,9 +96,9 @@ function Styles() {
 
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>FAQ</h1>
-<pre>{`<FAQ src='faqs/sql-errors' alt_header="a header" />`}</pre>
-                <FAQ src='faqs/sql-errors' />
-                <FAQ src='faqs/sql-errors' alt_header="an overriden header" />
+<pre>{`<FAQ src='sql-errors' alt_header="a header" />`}</pre>
+                <FAQ src='sql-errors' />
+                <FAQ src='sql-errors' alt_header="an overriden header" />
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>
