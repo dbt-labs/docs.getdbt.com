@@ -1,0 +1,22 @@
+
+/* Main search suggestion */
+.algolia-docsearch-suggestion--category-header {
+    background-color: #f9fafb !important;
+    color: black !important;
+
+}
+
+/* Subcategory suggestion */
+.algolia-docsearch-suggestion--subcategory-column {
+    background-color: white !important;
+}
+
+.algolia-docsearch-suggestion--wrapper {
+    background-color: white !important;
+}
+
+.algolia-docsearch-suggestion--highlight {
+
+    background-color: #f4f6f7 !important;
+    color: #3578e5 !important;
+}

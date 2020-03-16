@@ -12,6 +12,15 @@ module.exports = {
     disableDarkMode: true,
     sidebarCollapsible: true,
     image: '/img/avatar.png',
+
+    algolia: {
+      apiKey: '0e9665cbb272719dddc6e7113b4131a5',
+      debug: true,
+      indexName: 'dbt',
+      algoliaOptions: {
+      },
+    },
+
     prism: {
       theme: require('prism-react-renderer/themes/nightOwl'),
     },
@@ -81,6 +90,7 @@ module.exports = {
   ],
   stylesheets: [
     '/css/fonts.css',
+    '/css/search.css',
     'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css',
   ]
 };
