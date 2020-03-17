@@ -1,142 +1,142 @@
-/docs/adapter	/docs/writing-code-in-dbt/jinja-context/adapter
-/docs/analyses	/docs/building-a-dbt-project/analyses
-/docs/api-variable	/docs/writing-code-in-dbt/api-variable
-/docs/archival	/docs/building-a-dbt-project/archival
-/docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts
-/docs/best-practices	/docs/guides/best-practices
-/docs/bigquery-configs	/docs/building-a-dbt-project/building-models/bigquery-configs
-/docs/building-a-new-adapter	/docs/contributing/building-a-new-adapter
-/docs/building-models	/docs/building-a-dbt-project/building-models
-/docs/building-packages	/docs/guides/building-packages
-/docs/centos	/docs/running-a-dbt-project/using-the-command-line-interface/centos
-/docs/clean	/docs/running-a-dbt-project/command-line-interface/clean
-/docs/cloud-configuring-dbt-cloud	/docs/dbt-cloud/cloud-configuring-dbt-cloud
-/docs/cloud-enabling-continuous-integration-with-github	/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github
-/docs/cloud-generating-documentation	/docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation
-/docs/cloud-import-a-project-by-git-url	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url
-/docs/cloud-installing-the-github-application	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application
-/docs/cloud-managing-permissions	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions
-/docs/cloud-overview	/docs/dbt-cloud/cloud-overview
-/docs/cloud-quickstart	/docs/dbt-cloud/cloud-quickstart
-/docs/cloud-seats-and-users	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users
-/docs/cloud-setting-a-custom-target-name	/docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name
-/docs/cloud-snapshotting-source-freshness	/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness
-/docs/cloud-supported-dbt-versions	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions
-/docs/cloud-using-a-custom-cron-schedule	/docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule
-/docs/cloud-using-a-managed-repository	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository
-/docs/cmd-docs	/docs/running-a-dbt-project/command-line-interface/cmd-docs
-/docs/command-line-interface	/docs/running-a-dbt-project/command-line-interface
-/docs/compile	/docs/running-a-dbt-project/command-line-interface/compile
-/docs/config	/docs/writing-code-in-dbt/jinja-context/config
-/docs/configure-your-profile	/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile
-/docs/configuring-incremental-models	/docs/building-a-dbt-project/building-models/configuring-incremental-models
-/docs/configuring-models	/docs/building-a-dbt-project/building-models/configuring-models
-/docs/configuring-query-comments	/docs/building-a-dbt-project/dbt-projects/configuring-query-comments
-/docs/configuring-quoting	/docs/building-a-dbt-project/dbt-projects/configuring-quoting
-/docs/configuring-resources-from-the-project-file	/docs/building-a-dbt-project/dbt-projects/configuring-resources-from-the-project-file
-/docs/connecting-your-database	/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database
-/docs/contributor-license-agreements	/docs/contributing/contributor-license-agreements
-/docs/creating-a-project	/docs/building-a-dbt-project/dbt-projects/creating-a-project
-/docs/creating-new-materializations	/docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations
-/docs/custom-schema-tests	/docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests
-/docs/dbt-api	/docs/running-a-dbt-project/dbt-api
-/docs/dbt-cloud-enterprise	/docs/dbt-cloud/dbt-cloud-enterprise
-/docs/dbt-projects	/docs/building-a-dbt-project/dbt-projects
-/docs/dbt_projectyml-file	/docs/building-a-dbt-project/dbt-projects/dbt_projectyml-file
-/docs/debug	/docs/running-a-dbt-project/command-line-interface/debug
-/docs/debug-method	/docs/writing-code-in-dbt/jinja-context/debug-method
-/docs/deps	/docs/running-a-dbt-project/command-line-interface/deps
-/docs/doc	/docs/writing-code-in-dbt/jinja-context/doc
-/docs/documentation	/docs/building-a-dbt-project/testing-and-documentation/documentation
-/docs/documentation-website	/docs/building-a-dbt-project/testing-and-documentation/documentation-website
-/docs/dont-nest-your-curlies	/docs/building-a-dbt-project/dont-nest-your-curlies
-/docs/enable-and-disable-models	/docs/building-a-dbt-project/building-models/enable-and-disable-models
-/docs/enterprise-permissions	/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions
-/docs/env_var	/docs/writing-code-in-dbt/jinja-context/env_var
-/docs/exceptions	/docs/writing-code-in-dbt/jinja-context/exceptions
-/docs/execute	/docs/writing-code-in-dbt/jinja-context/execute
-/docs/exit-codes	/docs/running-a-dbt-project/command-line-interface/exit-codes
-/docs/flags	/docs/writing-code-in-dbt/jinja-context/flags
-/docs/fromjson	/docs/writing-code-in-dbt/jinja-context/fromjson
-/docs/getting-started-with-jinja	/docs/writing-code-in-dbt/getting-started-with-jinja
-/docs/global-cli-flags	/docs/running-a-dbt-project/command-line-interface/global-cli-flags
-/docs/graph	/docs/writing-code-in-dbt/jinja-context/graph
-/docs/hooks	/docs/building-a-dbt-project/hooks
-/docs/init	/docs/running-a-dbt-project/command-line-interface/init
-/docs/install-from-source	/docs/running-a-dbt-project/using-the-command-line-interface/install-from-source
-/docs/installation	/docs/running-a-dbt-project/using-the-command-line-interface/installation
-/docs/invocation_id	/docs/writing-code-in-dbt/jinja-context/invocation_id
-/docs/jinja-context	/docs/writing-code-in-dbt/jinja-context
-/docs/license	/docs/about/license
-/docs/list	/docs/running-a-dbt-project/command-line-interface/list
-/docs/log	/docs/writing-code-in-dbt/jinja-context/log
-/docs/macos	/docs/running-a-dbt-project/using-the-command-line-interface/macos
-/docs/macros	/docs/writing-code-in-dbt/macros
-/docs/managing-environments	/docs/guides/managing-environments
-/docs/materializations	/docs/building-a-dbt-project/building-models/materializations
-/docs/model-selection-syntax	/docs/running-a-dbt-project/command-line-interface/model-selection-syntax
-/docs/modules	/docs/writing-code-in-dbt/jinja-context/modules
-/docs/on-run-end-context	/docs/writing-code-in-dbt/jinja-context/on-run-end-context
-/docs/package-management	/docs/building-a-dbt-project/package-management
-/docs/profile-bigquery	/docs/supported-databases/profile-bigquery
-/docs/profile-mssql	/docs/supported-databases/profile-mssql
-/docs/profile-postgres	/docs/supported-databases/profile-postgres
-/docs/profile-presto	/docs/supported-databases/profile-presto
-/docs/profile-redshift	/docs/supported-databases/profile-redshift
-/docs/profile-snowflake	/docs/supported-databases/profile-snowflake
-/docs/profile-spark	/docs/supported-databases/profile-spark
-/docs/redshift-configs	/docs/building-a-dbt-project/building-models/redshift-configs
-/docs/redshift-v2	/docs/supported-databases/redshift-v2
-/docs/ref	/docs/writing-code-in-dbt/jinja-context/ref
-/docs/requiring-specific-dbt-versions	/docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions
-/docs/return	/docs/writing-code-in-dbt/jinja-context/return
-/docs/rpc	/docs/running-a-dbt-project/command-line-interface/rpc
-/docs/run	/docs/running-a-dbt-project/command-line-interface/run
-/docs/run-operation	/docs/running-a-dbt-project/command-line-interface/run-operation
-/docs/run_query	/docs/writing-code-in-dbt/jinja-context/run_query
-/docs/run_started_at	/docs/writing-code-in-dbt/jinja-context/run_started_at
-/docs/running-dbt-in-production	/docs/running-a-dbt-project/running-dbt-in-production
-/docs/schema	/docs/writing-code-in-dbt/jinja-context/schema
-/docs/schemas	/docs/writing-code-in-dbt/jinja-context/schemas
-/docs/schemayml-files	/docs/building-a-dbt-project/testing-and-documentation/schemayml-files
-/docs/seed	/docs/running-a-dbt-project/command-line-interface/seed
-/docs/seeds	/docs/building-a-dbt-project/seeds
-/docs/setting-up-enterprise-sso-with-azure-active-directory	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory
-/docs/setting-up-snowflake-sso	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth
-/docs/setting-up-sso-with-google-gsuite	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite
-/docs/setting-up-sso-with-okta	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta
-/docs/slack-rules-of-the-road	/docs/contributing/slack-rules-of-the-road
-/docs/snapshot	/docs/running-a-dbt-project/command-line-interface/snapshot
-/docs/snapshots	/docs/building-a-dbt-project/snapshots
-/docs/snowflake-configs	/docs/building-a-dbt-project/building-models/snowflake-configs
-/docs/source	/docs/running-a-dbt-project/command-line-interface/source
-/docs/statement-blocks	/docs/writing-code-in-dbt/jinja-context/statement-blocks
-/docs/tags	/docs/building-a-dbt-project/building-models/tags
-/docs/target	/docs/writing-code-in-dbt/jinja-context/target
-/docs/test	/docs/running-a-dbt-project/command-line-interface/test
-/docs/testing	/docs/building-a-dbt-project/testing-and-documentation/testing
-/docs/testing-and-documentation	/docs/building-a-dbt-project/testing-and-documentation
-/docs/the-dbt-ide	/docs/dbt-cloud/the-dbt-ide
-/docs/this	/docs/writing-code-in-dbt/jinja-context/this
-/docs/tojson	/docs/writing-code-in-dbt/jinja-context/tojson
-/docs/ubuntu-debian	/docs/running-a-dbt-project/using-the-command-line-interface/ubuntu-debian
-/docs/upgrading-to-0-14-1	/docs/guides/migration-guide/upgrading-to-0-14-1
-/docs/upgrading-to-0-16-0	/docs/guides/migration-guide/upgrading-to-0-16-0
-/docs/upgrading-to-014	/docs/guides/migration-guide/upgrading-to-014
-/docs/use-an-existing-project	/docs/building-a-dbt-project/dbt-projects/use-an-existing-project
-/docs/using-custom-aliases	/docs/building-a-dbt-project/building-models/using-custom-aliases
-/docs/using-custom-database	/docs/building-a-dbt-project/building-models/using-custom-database
-/docs/using-custom-schemas	/docs/building-a-dbt-project/building-models/using-custom-schemas
-/docs/using-dbt-cloud	/docs/dbt-cloud/using-dbt-cloud
-/docs/using-jinja	/docs/writing-code-in-dbt/using-jinja
-/docs/using-operations	/docs/building-a-dbt-project/using-operations
-/docs/using-sources	/docs/building-a-dbt-project/using-sources
-/docs/using-sql-headers	/docs/building-a-dbt-project/building-models/using-sql-headers
-/docs/using-the-command-line-interface	/docs/running-a-dbt-project/using-the-command-line-interface
-/docs/using-the-dbt-ide	/docs/running-a-dbt-project/using-the-dbt-ide
-/docs/using-variables	/docs/building-a-dbt-project/building-models/using-variables
-/docs/var	/docs/writing-code-in-dbt/jinja-context/var
-/docs/version	/docs/running-a-dbt-project/command-line-interface/version
-/docs/videos	/docs/guides/videos
-/docs/viewpoint	/docs/about/viewpoint
-/docs/windows	/docs/running-a-dbt-project/using-the-command-line-interface/windows
+/docs/adapter	/docs/writing-code-in-dbt/jinja-context/adapter	302
+/docs/analyses	/docs/building-a-dbt-project/analyses	302
+/docs/api-variable	/docs/writing-code-in-dbt/api-variable	302
+/docs/archival	/docs/building-a-dbt-project/archival	302
+/docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts	302
+/docs/best-practices	/docs/guides/best-practices	302
+/docs/bigquery-configs	/docs/building-a-dbt-project/building-models/bigquery-configs	302
+/docs/building-a-new-adapter	/docs/contributing/building-a-new-adapter	302
+/docs/building-models	/docs/building-a-dbt-project/building-models	302
+/docs/building-packages	/docs/guides/building-packages	302
+/docs/centos	/docs/running-a-dbt-project/using-the-command-line-interface/centos	302
+/docs/clean	/docs/running-a-dbt-project/command-line-interface/clean	302
+/docs/cloud-configuring-dbt-cloud	/docs/dbt-cloud/cloud-configuring-dbt-cloud	302
+/docs/cloud-enabling-continuous-integration-with-github	/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github	302
+/docs/cloud-generating-documentation	/docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation	302
+/docs/cloud-import-a-project-by-git-url	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url	302
+/docs/cloud-installing-the-github-application	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application	302
+/docs/cloud-managing-permissions	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions	302
+/docs/cloud-overview	/docs/dbt-cloud/cloud-overview	302
+/docs/cloud-quickstart	/docs/dbt-cloud/cloud-quickstart	302
+/docs/cloud-seats-and-users	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users	302
+/docs/cloud-setting-a-custom-target-name	/docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name	302
+/docs/cloud-snapshotting-source-freshness	/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness	302
+/docs/cloud-supported-dbt-versions	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions	302
+/docs/cloud-using-a-custom-cron-schedule	/docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule	302
+/docs/cloud-using-a-managed-repository	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository	302
+/docs/cmd-docs	/docs/running-a-dbt-project/command-line-interface/cmd-docs	302
+/docs/command-line-interface	/docs/running-a-dbt-project/command-line-interface	302
+/docs/compile	/docs/running-a-dbt-project/command-line-interface/compile	302
+/docs/config	/docs/writing-code-in-dbt/jinja-context/config	302
+/docs/configure-your-profile	/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile	302
+/docs/configuring-incremental-models	/docs/building-a-dbt-project/building-models/configuring-incremental-models	302
+/docs/configuring-models	/docs/building-a-dbt-project/building-models/configuring-models	302
+/docs/configuring-query-comments	/docs/building-a-dbt-project/dbt-projects/configuring-query-comments	302
+/docs/configuring-quoting	/docs/building-a-dbt-project/dbt-projects/configuring-quoting	302
+/docs/configuring-resources-from-the-project-file	/docs/building-a-dbt-project/dbt-projects/configuring-resources-from-the-project-file	302
+/docs/connecting-your-database	/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database	302
+/docs/contributor-license-agreements	/docs/contributing/contributor-license-agreements	302
+/docs/creating-a-project	/docs/building-a-dbt-project/dbt-projects/creating-a-project	302
+/docs/creating-new-materializations	/docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations	302
+/docs/custom-schema-tests	/docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests	302
+/docs/dbt-api	/docs/running-a-dbt-project/dbt-api	302
+/docs/dbt-cloud-enterprise	/docs/dbt-cloud/dbt-cloud-enterprise	302
+/docs/dbt-projects	/docs/building-a-dbt-project/dbt-projects	302
+/docs/dbt_projectyml-file	/docs/building-a-dbt-project/dbt-projects/dbt_projectyml-file	302
+/docs/debug	/docs/running-a-dbt-project/command-line-interface/debug	302
+/docs/debug-method	/docs/writing-code-in-dbt/jinja-context/debug-method	302
+/docs/deps	/docs/running-a-dbt-project/command-line-interface/deps	302
+/docs/doc	/docs/writing-code-in-dbt/jinja-context/doc	302
+/docs/documentation	/docs/building-a-dbt-project/testing-and-documentation/documentation	302
+/docs/documentation-website	/docs/building-a-dbt-project/testing-and-documentation/documentation-website	302
+/docs/dont-nest-your-curlies	/docs/building-a-dbt-project/dont-nest-your-curlies	302
+/docs/enable-and-disable-models	/docs/building-a-dbt-project/building-models/enable-and-disable-models	302
+/docs/enterprise-permissions	/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions	302
+/docs/env_var	/docs/writing-code-in-dbt/jinja-context/env_var	302
+/docs/exceptions	/docs/writing-code-in-dbt/jinja-context/exceptions	302
+/docs/execute	/docs/writing-code-in-dbt/jinja-context/execute	302
+/docs/exit-codes	/docs/running-a-dbt-project/command-line-interface/exit-codes	302
+/docs/flags	/docs/writing-code-in-dbt/jinja-context/flags	302
+/docs/fromjson	/docs/writing-code-in-dbt/jinja-context/fromjson	302
+/docs/getting-started-with-jinja	/docs/writing-code-in-dbt/getting-started-with-jinja	302
+/docs/global-cli-flags	/docs/running-a-dbt-project/command-line-interface/global-cli-flags	302
+/docs/graph	/docs/writing-code-in-dbt/jinja-context/graph	302
+/docs/hooks	/docs/building-a-dbt-project/hooks	302
+/docs/init	/docs/running-a-dbt-project/command-line-interface/init	302
+/docs/install-from-source	/docs/running-a-dbt-project/using-the-command-line-interface/install-from-source	302
+/docs/installation	/docs/running-a-dbt-project/using-the-command-line-interface/installation	302
+/docs/invocation_id	/docs/writing-code-in-dbt/jinja-context/invocation_id	302
+/docs/jinja-context	/docs/writing-code-in-dbt/jinja-context	302
+/docs/license	/docs/about/license	302
+/docs/list	/docs/running-a-dbt-project/command-line-interface/list	302
+/docs/log	/docs/writing-code-in-dbt/jinja-context/log	302
+/docs/macos	/docs/running-a-dbt-project/using-the-command-line-interface/macos	302
+/docs/macros	/docs/writing-code-in-dbt/macros	302
+/docs/managing-environments	/docs/guides/managing-environments	302
+/docs/materializations	/docs/building-a-dbt-project/building-models/materializations	302
+/docs/model-selection-syntax	/docs/running-a-dbt-project/command-line-interface/model-selection-syntax	302
+/docs/modules	/docs/writing-code-in-dbt/jinja-context/modules	302
+/docs/on-run-end-context	/docs/writing-code-in-dbt/jinja-context/on-run-end-context	302
+/docs/package-management	/docs/building-a-dbt-project/package-management	302
+/docs/profile-bigquery	/docs/supported-databases/profile-bigquery	302
+/docs/profile-mssql	/docs/supported-databases/profile-mssql	302
+/docs/profile-postgres	/docs/supported-databases/profile-postgres	302
+/docs/profile-presto	/docs/supported-databases/profile-presto	302
+/docs/profile-redshift	/docs/supported-databases/profile-redshift	302
+/docs/profile-snowflake	/docs/supported-databases/profile-snowflake	302
+/docs/profile-spark	/docs/supported-databases/profile-spark	302
+/docs/redshift-configs	/docs/building-a-dbt-project/building-models/redshift-configs	302
+/docs/redshift-v2	/docs/supported-databases/redshift-v2	302
+/docs/ref	/docs/writing-code-in-dbt/jinja-context/ref	302
+/docs/requiring-specific-dbt-versions	/docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions	302
+/docs/return	/docs/writing-code-in-dbt/jinja-context/return	302
+/docs/rpc	/docs/running-a-dbt-project/command-line-interface/rpc	302
+/docs/run	/docs/running-a-dbt-project/command-line-interface/run	302
+/docs/run-operation	/docs/running-a-dbt-project/command-line-interface/run-operation	302
+/docs/run_query	/docs/writing-code-in-dbt/jinja-context/run_query	302
+/docs/run_started_at	/docs/writing-code-in-dbt/jinja-context/run_started_at	302
+/docs/running-dbt-in-production	/docs/running-a-dbt-project/running-dbt-in-production	302
+/docs/schema	/docs/writing-code-in-dbt/jinja-context/schema	302
+/docs/schemas	/docs/writing-code-in-dbt/jinja-context/schemas	302
+/docs/schemayml-files	/docs/building-a-dbt-project/testing-and-documentation/schemayml-files	302
+/docs/seed	/docs/running-a-dbt-project/command-line-interface/seed	302
+/docs/seeds	/docs/building-a-dbt-project/seeds	302
+/docs/setting-up-enterprise-sso-with-azure-active-directory	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory	302
+/docs/setting-up-snowflake-sso	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth	302
+/docs/setting-up-sso-with-google-gsuite	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite	302
+/docs/setting-up-sso-with-okta	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta	302
+/docs/slack-rules-of-the-road	/docs/contributing/slack-rules-of-the-road	302
+/docs/snapshot	/docs/running-a-dbt-project/command-line-interface/snapshot	302
+/docs/snapshots	/docs/building-a-dbt-project/snapshots	302
+/docs/snowflake-configs	/docs/building-a-dbt-project/building-models/snowflake-configs	302
+/docs/source	/docs/running-a-dbt-project/command-line-interface/source	302
+/docs/statement-blocks	/docs/writing-code-in-dbt/jinja-context/statement-blocks	302
+/docs/tags	/docs/building-a-dbt-project/building-models/tags	302
+/docs/target	/docs/writing-code-in-dbt/jinja-context/target	302
+/docs/test	/docs/running-a-dbt-project/command-line-interface/test	302
+/docs/testing	/docs/building-a-dbt-project/testing-and-documentation/testing	302
+/docs/testing-and-documentation	/docs/building-a-dbt-project/testing-and-documentation	302
+/docs/the-dbt-ide	/docs/dbt-cloud/the-dbt-ide	302
+/docs/this	/docs/writing-code-in-dbt/jinja-context/this	302
+/docs/tojson	/docs/writing-code-in-dbt/jinja-context/tojson	302
+/docs/ubuntu-debian	/docs/running-a-dbt-project/using-the-command-line-interface/ubuntu-debian	302
+/docs/upgrading-to-0-14-1	/docs/guides/migration-guide/upgrading-to-0-14-1	302
+/docs/upgrading-to-0-16-0	/docs/guides/migration-guide/upgrading-to-0-16-0	302
+/docs/upgrading-to-014	/docs/guides/migration-guide/upgrading-to-014	302
+/docs/use-an-existing-project	/docs/building-a-dbt-project/dbt-projects/use-an-existing-project	302
+/docs/using-custom-aliases	/docs/building-a-dbt-project/building-models/using-custom-aliases	302
+/docs/using-custom-database	/docs/building-a-dbt-project/building-models/using-custom-database	302
+/docs/using-custom-schemas	/docs/building-a-dbt-project/building-models/using-custom-schemas	302
+/docs/using-dbt-cloud	/docs/dbt-cloud/using-dbt-cloud	302
+/docs/using-jinja	/docs/writing-code-in-dbt/using-jinja	302
+/docs/using-operations	/docs/building-a-dbt-project/using-operations	302
+/docs/using-sources	/docs/building-a-dbt-project/using-sources	302
+/docs/using-sql-headers	/docs/building-a-dbt-project/building-models/using-sql-headers	302
+/docs/using-the-command-line-interface	/docs/running-a-dbt-project/using-the-command-line-interface	302
+/docs/using-the-dbt-ide	/docs/running-a-dbt-project/using-the-dbt-ide	302
+/docs/using-variables	/docs/building-a-dbt-project/building-models/using-variables	302
+/docs/var	/docs/writing-code-in-dbt/jinja-context/var	302
+/docs/version	/docs/running-a-dbt-project/command-line-interface/version	302
+/docs/videos	/docs/guides/videos	302
+/docs/viewpoint	/docs/about/viewpoint	302
+/docs/windows	/docs/running-a-dbt-project/using-the-command-line-interface/windows	302
