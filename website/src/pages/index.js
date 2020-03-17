@@ -77,6 +77,7 @@ function Home() {
                   </div>
                 </div>
             </div>
+            {/*
             <div className="row" style={{"textAlign": "center", "marginTop": "calc(10vh)"}}>
                 <div className="col col--8 col--offset-2">
                   <div className="card item shadow--tl">
@@ -86,6 +87,7 @@ function Home() {
                   </div>
                 </div>
             </div>
+           */}
         </div>
         <div className="banner-animation"  dangerouslySetInnerHTML={getBanner()}></div>
     </Layout>

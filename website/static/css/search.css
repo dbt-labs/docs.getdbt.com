@@ -1,0 +1,30 @@
+
+/* Main search suggestion */
+.algolia-docsearch-suggestion--category-header {
+    background-color: #f9fafb !important;
+    color: black !important;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Subcategory suggestion */
+.algolia-docsearch-suggestion--subcategory-column {
+    background-color: white !important;
+}
+
+.algolia-docsearch-suggestion--wrapper {
+    background-color: white !important;
+}
+
+.algolia-docsearch-suggestion--highlight {
+
+    background-color: #f4f6f7 !important;
+    color: #3578e5 !important;
+}
+
+a.algolia-docsearch-suggestion:hover {
+    text-decoration: none !important;
+}
+
+.algolia-autocomplete .ds-cursor .algolia-docsearch-suggestion--wrapper {
+    box-shadow: inset -2px 0 0 #3578e5 !important;
+}
