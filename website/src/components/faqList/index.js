@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 
 const files = require.context(
-    '../../../docs/tutorial/faqs',
+    '../../../docs/faqs',
     true,
     /\.md$/
 );

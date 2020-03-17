@@ -32,7 +32,7 @@ module.exports = {
           position: 'left',
         },
         {
-          to: '/tutorial/faqs/all',
+          to: '/faqs/all',
           label: 'FAQs',
           position: 'left',
         },

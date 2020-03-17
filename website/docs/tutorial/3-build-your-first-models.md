@@ -34,11 +34,11 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 If you switch back to the BigQuery console you'll be able to `select` from this model.
 
 ### FAQs
-<FAQ src="faqs/checking-logs" />
-<FAQ src="faqs/which-schema" />
-<FAQ src="faqs/create-a-schema" />
-<FAQ src="faqs/run-downtime" />
-<FAQ src="faqs/sql-errors" />
+<FAQ src="checking-logs" />
+<FAQ src="which-schema" />
+<FAQ src="create-a-schema" />
+<FAQ src="run-downtime" />
+<FAQ src="sql-errors" />
 
 
 ## Change the way your model is materialized
@@ -84,9 +84,9 @@ with customers as (
 4. Execute `dbt run`. Your model, `customers` should be built as a view. You may need to run `dbt run --full-refresh` for this to take effect on BigQuery.
 
 ### FAQs
-<FAQ src="faqs/available-materializations" />
-<FAQ src="faqs/which-materialization" />
-<FAQ src="faqs/available-configurations" />
+<FAQ src="available-materializations" />
+<FAQ src="which-materialization" />
+<FAQ src="available-configurations" />
 
 ## Delete the example models
 
@@ -116,8 +116,8 @@ models:
 ```
 
 ### FAQs
-<FAQ src="faqs/removing-deleted-models" />
-<FAQ src="faqs/unused-model-configurations" />
+<FAQ src="removing-deleted-models" />
+<FAQ src="unused-model-configurations" />
 
 
 ## Build models on top of other models
@@ -204,9 +204,9 @@ This time when dbt ran, separate views/tables were created for `stg_customers`, 
 
 
 ### FAQs
-<FAQ src="faqs/run-one-model" />
-<FAQ src="faqs/unique-model-names" />
-<FAQ src="faqs/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ src="run-one-model" />
+<FAQ src="unique-model-names" />
+<FAQ src="structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 ## Extra exercises
 * Write some bad SQL to cause an error — can you debug this error?
