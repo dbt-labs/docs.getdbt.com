@@ -1,4 +1,4 @@
-A [docusaurus](https://docusaurus.io/en/) site that powers the dbt Getting Started tutorial, and maybe one day, the docs too.
+A [docusaurus](https://docusaurus.io/en/) site that powers [docs.getdbt.com](https://docs.getdbt.com/)
 
 To run this yourself:
 1. `brew install node`
@@ -9,4 +9,6 @@ To run this yourself:
 
 
 ## Notes
-* When using markdown links, you can use file paths relative to the current file, or, relative to the `docs` directory. For FAQs, use the file path relative to the `docs` directory (since it may have to be resolved from different paths). For other content, use the relative filepath (less changes required if we rename a directory)
+* When using markdown links, you can use file paths relative to the current file, or, relative to the `website/docs/` directory, e.g. `[my link text](faqs/available-configurations.md)`.
+    * For FAQs: use the file path relative to the `docs` directory (since it may have to be resolved from different paths).
+    * Otherwise: use the relative filepath (less changes required if we rename a directory)
