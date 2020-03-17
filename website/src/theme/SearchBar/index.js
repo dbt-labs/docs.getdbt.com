@@ -37,6 +37,19 @@ const Search = props => {
           appId: algolia.appId,
           apiKey: algolia.apiKey,
           indexName: algolia.indexName,
+          transformData: function(hits) {
+              hits.forEach(function(hit) {
+                  var parser = document.createElement('a');
+                  parser.href = hit.url;
+
+                  if (hit.anchor == "__docusaurus") {
+                      hit.anchor = "";
+                  }
+
+                  const hash = parser.hash.replace("#__docusaurus", "");
+                  hit.url = parser.pathname + parser.search + hash;
+              });
+          },
           debug: !!algolia.debug,
           inputSelector: '#search_input_react',
           algoliaOptions: algolia.algoliaOptions,

@@ -15,7 +15,7 @@ module.exports = {
 
     algolia: {
       apiKey: '0e9665cbb272719dddc6e7113b4131a5',
-      debug: true,
+      //debug: true,
       indexName: 'dbt',
       algoliaOptions: {
       },
