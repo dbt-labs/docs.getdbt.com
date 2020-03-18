@@ -9,8 +9,8 @@ title: Seed configurations
 * [schema](resource-configs/schema.md): string
 * [database](resource-configs/database.md): string
 * [alias](resource-configs/alias.md): string
-* [pre-hook](resource-configs/pre-hook.md): sql-statement
-* [post-hook](resource-configs/post-hook.md): sql-statement
+* [pre-hook](resource-configs/pre-hook.md): sql-statement | [sql-statement]
+* [post-hook](resource-configs/post-hook.md): sql-statement | [sql-statement]
 * [column_types](resource-configs/column_types.md): {column_name: datatype}
 * [tags](resource-configs/tags.md): string | [string]
 
