@@ -139,6 +139,26 @@ create or replace table my_database.my_schema.my_table as (
  alter table my_database.my_schema.my_table cluster by (session_start);"
 ```
 
+It is possible to use functions of fields to cluster by but this must be enclosed in square brackets as below, even if only for a function on one field:
+
+```sql
+
+{{
+  config(
+    materialized='table',
+    cluster_by=['to_date(session_start)', 'left(session_id,1)']
+  )
+}}
+
+select
+  session_id,
+  min(event_time) as session_start,
+  max(event_time) as session_end,
+  count(*) as count_pageviews
+
+from {{ source('snowplow', 'event') }}
+group by 1
+```
 ### Automatic clustering
 
 Automatic clustering is a preview feature in Snowflake (at the time of this writing) and as such, some accounts may have it turned on while others may not. You can use the `automatic_clustering` config to control whether or not automatic clustering is enabled for dbt models. When `automatic_clustering` is set to `true`, dbt will run an `alter table <table name> resume recluster` query after building the target table. This configuration is only required for Snowflake accounts which do not have automatic clustering enabled. For more information, consult the [Snowflake documentation on Manual Reclustering](https://docs.snowflake.net/manuals/user-guide/tables-clustering-manual.html#switching-from-manual-reclustering-to-automatic-clustering).
