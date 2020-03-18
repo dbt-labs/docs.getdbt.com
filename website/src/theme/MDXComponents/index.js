@@ -8,6 +8,8 @@
 import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
 import Heading from '@theme/Heading';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import styles from './styles.module.css';
 
 /*
@@ -58,5 +60,7 @@ export default {
   Lightbox: Lightbox,
   Link: Link,
   LoomVideo: LoomVideo,
+  Tabs: Tabs,
+  TabItem: TabItem,
   YoutubeVideo: YoutubeVideo,
 };

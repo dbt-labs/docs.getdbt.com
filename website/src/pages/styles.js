@@ -18,6 +18,8 @@ import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
 import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import YoutubeVideo from '@site/src/components/youtube';
 
 function Styles() {
@@ -158,6 +160,55 @@ password: hunter2
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>
+            <h1>Tabs</h1>
+<pre>{`
+<Tabs
+  defaultValue="default"
+  values={[
+    { label: 'Default', value: 'default', },
+    { label: 'Snowflake', value: 'snowflake', },
+  ]
+}>
+<TabItem value="default">
+
+\`\`\`sql
+select id from customers
+\`\`\`
+
+</TabItem>
+<TabItem value="snowflake">
+
+\`\`\`sql
+select "ID" from customers
+\`\`\`
+
+</TabItem>
+</Tabs>
+`}</pre>
+<Tabs
+  defaultValue="default"
+  values={[
+    { label: 'Default', value: 'default', },
+    { label: 'Snowflake', value: 'snowflake', },
+  ]
+}>
+<TabItem value="default">
+
+<pre>
+select id from customers
+</pre>
+
+</TabItem>
+<TabItem value="snowflake">
+
+<pre>
+select "ID" from customers
+</pre>
+
+</TabItem>
+</Tabs>
+</div>
+        <div className='section' style={{marginTop: '40px'}}>
                 <h1>YoutubeVideo</h1>
                 <pre>{`<YoutubeVideo id="5yyGT1k2xzY" />`}</pre>
                 <YoutubeVideo id="5yyGT1k2xzY" />
