@@ -47,7 +47,18 @@ select ...
 <File name='dbt_project.yml'>
 
 ```yml
-query-comment: None
+query-comment:
+
+```
+
+</File>
+
+Or:
+<File name='dbt_project.yml'>
+
+```yml
+query-comment: null
+
 ```
 
 </File>
