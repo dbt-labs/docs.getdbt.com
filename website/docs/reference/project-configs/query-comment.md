@@ -27,9 +27,9 @@ The following example injects a comment that reads `/* executed by dbt */` into 
 
 <File name='dbt_project.yml'>
 
-```yaml
-
+```yml
 query-comment: "executed by dbt"
+
 ```
 
 </File>
@@ -54,6 +54,7 @@ query-comment:
 </File>
 
 Or:
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -68,14 +69,9 @@ The following example injects a comment that varies based on the configured `use
 
 <File name='dbt_project.yml'>
 
-```yaml
-
-name: my_project
-version: 1.0.0
-
-...
-
+```yml
 query-comment: "run by {{ target.user }} in dbt"
+
 ```
 
 </File>
@@ -92,7 +88,7 @@ select ...
 
 The `query-comment` config can reference macros in your dbt project.
 
-<File name='macros/comment.sql'>
+<File name='macros/query_comment.sql'>
 
 ```jinja2
 
@@ -105,13 +101,11 @@ The `query-comment` config can reference macros in your dbt project.
 
 </File>
 
-
-
 <File name='dbt_project.yml'>
 
 ```yaml
-
 query-comment: "{{ query_comment() }}"
+
 ```
 
 </File>
