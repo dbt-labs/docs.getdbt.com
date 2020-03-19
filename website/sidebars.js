@@ -13,17 +13,7 @@ module.exports = {
       //"docs/introduction/supported-databases/redshift-v2"
     ],
     "Building a dbt Project": [
-      {
-        type: "category",
-        label: "Projects",
-        items: [
-          "docs/building-a-dbt-project/dbt-projects",
-          "docs/building-a-dbt-project/dbt-projects/creating-a-project",
-          "docs/building-a-dbt-project/dbt-projects/use-an-existing-project",
-          //"docs/building-a-dbt-project/dbt-projects/configuring-resources-from-the-project-file",
-          //"docs/building-a-dbt-project/dbt-projects/dbt_projectyml-file",
-        ],
-      },
+      "docs/building-a-dbt-project/projects",
       {
         type: "category",
         label: "Models",
