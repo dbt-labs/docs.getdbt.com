@@ -40,10 +40,10 @@ clean-targets: [directorypath]
 
 require-dbt-version: version-range
 
-quoting:
+[quoting](project-configs/quoting):
   database: true | false
-  identifier: true | false
   schema: true | false
+  identifier: true | false
 
 models:
   [<model-configs>](model-configs)

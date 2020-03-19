@@ -9,7 +9,7 @@ dbt v0.11.0 adds an auto-generated docs site to your dbt project. To make effect
 ### Translating schema.yml files to the v2 syntax
 
 1. You can find a script that will translate a v1 schema.yml file to the v2 syntax [here](https://discourse.getdbt.com/t/migrating-to-schema-yml-v2/111).
-2. You can upgrade v1 schema.yml files to the v2 syntax manually. 
+2. You can upgrade v1 schema.yml files to the v2 syntax manually.
 
 If you're upgrading to the v2 syntax manually, there are some caveats to be aware of:
 
@@ -67,7 +67,7 @@ models:
 
 ## Default Snowflake Quoting
 
-The default quoting config on Snowflake has changed from being _on_ to being _off_ by default. If you haven't already, you should add a [quoting config](configuring-quoting) to your `dbt_project.yml` file. To use the exact same quoting behavior present in 0.10.2, add this config to your `dbt_project.yml` file:
+The default quoting config on Snowflake has changed from being _on_ to being _off_ by default. If you haven't already, you should add a [quoting config](reference/project-configs/quoting.md) to your `dbt_project.yml` file. To use the exact same quoting behavior present in 0.10.2, add this config to your `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
@@ -75,7 +75,7 @@ The default quoting config on Snowflake has changed from being _on_ to being _of
 quoting:
   schema: true
   identifier: true
-  
+
 ```
 
 </File>

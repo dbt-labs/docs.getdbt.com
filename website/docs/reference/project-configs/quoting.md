@@ -1,13 +1,12 @@
 ---
-title: "Configuring quoting"
-id: "configuring-quoting"
+datatype: boolean # -ish, it's actually a dictionary of bools
+default: true # is this right?
 ---
 
-## Overview
-
-Different databases handle quoting in different ways. Depending on your database and your team's quoting conventions, you may either want to enable or disable quoting for your dbt models.
-
-dbt makes it possible to configure its quoting behavior through a configuration block in the `dbt_project.yml` file. These quoting configurations are used when models are created or `ref`'d. To configure quoting, add the following to your `dbt_project.yml` file:
+## Definition
+Optionally configure whether dbt should quote databases, schemas, and identifiers when:
+* creating relations (tables/views)
+* resolving a `ref` function to a relation reference
 
 <Callout type="info" title="BigQuery Terminology">
 
@@ -15,30 +14,21 @@ Note that for BigQuery quoting configuration, `database` and `schema` should be 
 
 </Callout>
 
+## Default values
+
+[ to-do ]
+
+The default values vary by database.
 
 
-<File name='dbt_project.yml'>
 
-```yaml
+## Recommendations
+* Set quoting explicitly for your project as defaults may change in the future.
 
-# To toggle model quoting, set `database`, `identifier`
-# and `schema` to `true` or `false`.
+### Snowflake
+* Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
 
-quoting:
-  database: true
-  identifier: true
-  schema: true
-
-
-models:
-  ...
-```
-
-</File>
-
-If a `quoting` block is not specified, dbt will use its default quoting behavior which can vary by database. These defaults may change in future releases of dbt. To avoid issues with future releases, you should explicitly configure your desired quoting policy in your `dbt_project.yml` file.
-
-## Snowflake
+#### Explanation:
 
 Whereas most databases will _lowercase_ unquoted identifiers, Snowflake will _uppercase_ unquoted identifiers. If a model name is lowercased _and quoted_, then it cannot be referred to without quotes! Check out the example below for more information.
 
@@ -47,24 +37,24 @@ Whereas most databases will _lowercase_ unquoted identifiers, Snowflake will _up
 ```sql
 /*
     You can run the following queries against your database
-    to build an intution for how quoting works on Snowflake.
+    to build an intuition for how quoting works on Snowflake.
 */
 
 -- This is the output of an example `orders.sql` model with quoting enabled
 create table "analytics"."orders" as (
 
   select 1 as id
-  
+
 );
 
 /*
     These queries WILL NOT work! Since the table above was created with quotes,
     Snowflake created the orders table with a lowercase schema and identifier.
-    
+
     Since unquoted identifiers are automatically uppercased, both of the
     following queries are equivalent, and neither will work correctly.
 */
-    
+
 select * from analytics.orders;
 select * from ANALYTICS.ORDERS;
 
@@ -88,3 +78,13 @@ select * from analytics.orders;
 ```
 
 </File>
+
+
+
+### BigQuery
+??
+
+## Changelog
+* `???`: This parameter was introduced in v0.11.0
+* `v0.11.0`: The default quoting config on Snowflake changed from `true` to `false`
+* Future: the default values may change for each database.
