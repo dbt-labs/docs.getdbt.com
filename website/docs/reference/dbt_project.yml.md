@@ -36,7 +36,7 @@ modules-path: directorypath
 
 clean-targets: [directorypath]
 
-query-comment: string
+[query-comment](project-configs/query-comment): string
 
 require-dbt-version: version-range
 
