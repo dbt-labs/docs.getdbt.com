@@ -139,7 +139,7 @@ create or replace table my_database.my_schema.my_table as (
  alter table my_database.my_schema.my_table cluster by (session_start);"
 ```
 
-It is possible to use functions of fields to cluster by but this must be enclosed in square brackets as below, even if only for a function on one field:
+It is possible to use functions of fields to cluster by, as below:
 
 ```sql
 
