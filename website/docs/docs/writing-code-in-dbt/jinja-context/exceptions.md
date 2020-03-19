@@ -31,7 +31,7 @@ __Example usage__:
 
 ```sql
 {% if number < 0 or number > 100 %}
-  {{ exceptions.warn("Invalid `number`. Got: " ~ number) }}
+  {% do exceptions.warn("Invalid `number`. Got: " ~ number) %}
 {% endif %}
 ```
 
