@@ -22,7 +22,6 @@ module.exports = {
           "docs/building-a-dbt-project/dbt-projects/use-an-existing-project",
           "docs/building-a-dbt-project/dbt-projects/configuring-quoting",
           "docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions",
-          "docs/building-a-dbt-project/dbt-projects/configuring-query-comments",
           //"docs/building-a-dbt-project/dbt-projects/configuring-resources-from-the-project-file",
           //"docs/building-a-dbt-project/dbt-projects/dbt_projectyml-file",
         ],
