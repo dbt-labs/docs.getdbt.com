@@ -10,7 +10,7 @@ Configurable query comments are new in dbt v0.15.0.
 
 </Callout>
 
-dbt injects a SQL comment into the top of the queries that it runs against your database. This comment can be used to attribute SQL statements to specific dbt resources like models and tests. The contents of this comment can be configured in your dbt project. 
+dbt injects a SQL comment into the top of the queries that it runs against your database. This comment can be used to attribute SQL statements to specific dbt resources like models and tests. The contents of this comment can be configured in your dbt project.
 
 ## Default query comments
 
@@ -27,7 +27,7 @@ create view analytics.analytics.orders as (
 
 ## Configuring query comments
 
-You can configure the comment that dbt injects into your query by adding a `query-comment` configuration to your `dbt_project.yml` file. This configuration should return a string that dbt will wrap in  a SQL comment and inject into the header of your query. You can disable query comments by setting the `query-comment` config to `None`.
+You can configure the comment that dbt injects into your query by adding a `query-comment` configuration to your `dbt_project.yml` file. This configuration should return a string that dbt will wrap in  a SQL comment and inject into the header of your query. You can disable query comments by setting the `query-comment` config to `null` or leaving it blank.
 
 ### Static comments
 The following example injects a comment that reads `/* executed by dbt */` into the header of the SQL queries that dbt runs.
