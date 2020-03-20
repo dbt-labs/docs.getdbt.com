@@ -54,8 +54,8 @@ seeds:
 snapshots:
   [<snapshot-configs>](snapshot-configs.md)
 
-[on-run-start](project-configs/on-run-start.md): sql-snippet
-[on-run-end](project-configs/on-run-start.md): sql-snippet
+[on-run-start](project-configs/on-run-start.md): sql-statement
+[on-run-end](project-configs/on-run-start.md): sql-statement
 
 ```
 
