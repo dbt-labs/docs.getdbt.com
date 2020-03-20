@@ -43,7 +43,57 @@ Check out the tutorial on [using Jinja](using-jinja#dynamically-retrieve-the-lis
   {% set query %}
     vacuum table {{ table }}
   {% endset %}
-  
+
+  {% do run_query(query) %}
+{% endmacro %}
+```
+
+</File>
+
+Here's an example of using this (though if you're using `run_query` to return the values of a column, check out the [get_column_values](https://github.com/fishtown-analytics/dbt-utils#get_column_values-source) macro in the dbt-utils package).
+
+<File name='models/my_model.sql'>
+
+```sql
+
+{% set payment_methods_query %}
+select distinct payment_method from app_data.payments
+order by 1
+{% endset %}
+
+{% set results = run_query(payment_methods_query) %}
+
+{% if execute %}
+{# Return the first column #}
+{% set results_list = results.columns[0].values() %}
+{% else %}
+{% set results_list = [] %}
+{% endif %}
+
+select
+order_id,
+{% for payment_method in results_list %}
+sum(case when payment_method = '{{ payment_method }}' then amount end) as {{ payment_method }}_amount,
+{% endfor %}
+sum(amount) as total_amount
+from {{ ref('raw_payments') }}
+group by 1
+
+```
+</File>
+
+
+You can also use `run_query` to perform SQL queries that aren't select statements.
+
+<File name='macros/run_vacuum.sql'>
+
+```sql
+{% macro run_vacuum(table) %}
+
+  {% set query %}
+    vacuum table {{ table }}
+  {% endset %}
+
   {% do run_query(query) %}
 {% endmacro %}
 ```
