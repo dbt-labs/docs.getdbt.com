@@ -77,6 +77,7 @@ module.exports = {
         label: "Jinja Function Reference",
         items: [
           "docs/writing-code-in-dbt/jinja-context/adapter",
+          "docs/writing-code-in-dbt/jinja-context/builtins",
           "docs/writing-code-in-dbt/jinja-context/config",
           "docs/writing-code-in-dbt/jinja-context/debug-method",
           "docs/writing-code-in-dbt/jinja-context/doc",
@@ -85,6 +86,7 @@ module.exports = {
           "docs/writing-code-in-dbt/jinja-context/execute",
           "docs/writing-code-in-dbt/jinja-context/flags",
           "docs/writing-code-in-dbt/jinja-context/fromjson",
+          "docs/writing-code-in-dbt/jinja-context/fromyaml",
           "docs/writing-code-in-dbt/jinja-context/graph",
           "docs/writing-code-in-dbt/jinja-context/invocation_id",
           "docs/writing-code-in-dbt/jinja-context/log",
@@ -98,6 +100,7 @@ module.exports = {
           "docs/writing-code-in-dbt/jinja-context/target",
           "docs/writing-code-in-dbt/jinja-context/this",
           "docs/writing-code-in-dbt/jinja-context/tojson",
+          "docs/writing-code-in-dbt/jinja-context/toyaml",
           "docs/writing-code-in-dbt/jinja-context/var",
           {
             type: "category",

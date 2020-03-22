@@ -72,8 +72,9 @@ select * from {{ ref('country_codes') }}
 
 ```
 
-</File>
+### Running specific seeds
 
+</File>
 
 ## Configuring seeds
 ### Basic configuration
@@ -89,19 +90,18 @@ data-paths: ["data"]
 models:
   your_package_name:
     materialized: view
-    
+
 seeds:
   your_package_name:
     enabled: true
     schema: seed_data
     post-hook: "grant select on {{ this }} to bi_user"
-"
 ```
 
 ### Specify column quoting
 Whether or not seed columns are quoted can be configured with the `quote_columns`  seed config. When `true`, dbt will quote the column names defined in the seed file when building a table for the seed. When `quote_columns` is set to `false`, dbt will _not_ quote the column names defined in the seed file.
 
-As of dbt v0.15.0, the default value for `quote_columns` is **False**, however this may change in a future release. If you're using seed files, it is recommended that you set the `quote_columns` config explicitly to avoid breaking changes in the future. 
+As of dbt v0.15.0, the default value for `quote_columns` is **False**, however this may change in a future release. If you're using seed files, it is recommended that you set the `quote_columns` config explicitly to avoid breaking changes in the future.
 
 The following example show quoting being explicitly enabled for seed columns.
 
@@ -152,14 +152,14 @@ data-paths: ["data"]
 models:
   your_package_name:
     materialized: view
-    
+
 seeds:
   your_package_name:
     enabled: true
     schema: seed_data
     # This configures data/country_codes.csv
     country_codes:
-    
+
       # Override column types
       column_types:
         country_code: varchar(2)

@@ -21,7 +21,7 @@ Example:
 
 on-run-end:
  - "{% for schema in schemas %}grant usage on schema {{ schema }} to db_reader;{% endfor %}"
- 
+
 
 ```
 
@@ -38,7 +38,7 @@ In practice, it might not be a bad idea to put this code into a macro:
     grant usage on {{ schema }} to {{ user }};
   {% endfor %}
 {% endmacro %}
- 
+
 
 ```
 
@@ -52,11 +52,47 @@ In practice, it might not be a bad idea to put this code into a macro:
 
 on-run-end:
  - "{{ grant_usage_to_schemas(schemas, user) }}"
- 
+
 
 ```
 
 </File>
+
+## database_schemas
+
+The `database_schemas` context variable can be used to reference the databases _and_ schemas that dbt has built models into during a run of dbt. This variable is similar to the `schemas` variable, and should be used if a dbt run builds resources into multiple different database.
+
+Example:
+
+<File name='macros/grants.sql'>
+
+```jinja2
+
+{% macro grant_usage_to_schemas(database_schemas, user) %}
+  {% for (database, schema) in database_schemas %}
+    grant usage on {{ database }}.{{ schema }} to {{ user }};
+  {% endfor %}
+{% endmacro %}
+
+
+```
+
+</File>
+
+
+
+<File name='dbt_project.yml'>
+
+```yaml
+
+on-run-end:
+ - "{{ grant_usage_to_schemas(database_schemas, user) }}"
+
+
+```
+
+</File>
+
 
 
 ## Results

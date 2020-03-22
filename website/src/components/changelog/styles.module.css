@@ -1,0 +1,12 @@
+
+:local(.title) {
+    width: 300px;
+    text-align: center;
+}
+
+
+:local(.docImage) {
+    filter: drop-shadow(1px 4px 10px #aaaaaa33);
+    margin: 10px
+}
+

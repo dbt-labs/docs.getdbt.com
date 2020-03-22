@@ -23,7 +23,7 @@ You can use **custom schemas** in dbt to build models in a schema other than you
 
 ## How do I use custom schemas?
 Use the `schema` configuration key to specify a custom schema for a model. As with any configuration, you can either:
-* apply this configuration to a specific model by using a config block within a model, or 
+* apply this configuration to a specific model by using a config block within a model, or
 * apply it to a subdirectory of models by specifying it in your `dbt_project.yml` file
 
 <File name='orders.sql'>
@@ -77,7 +77,7 @@ Under the hood, dbt uses a macro called `generate_schema_name` to determine the 
 
     {%- endif -%}
 
-{%- endmacro %}"
+{%- endmacro %}
 ```
 
 # Advanced custom schema configuration
@@ -147,7 +147,7 @@ Variables defined on the command line (as in, with the [--vars](var) option) *ar
 In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
  - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.
  - **ci**:  A [continuous integration](cloud-enabling-continuous-integration-with-github) environment running on Pull Requests in GitHub, GitLab, etc.
- - **prod**: The production deployment of your dbt project, eg. in dbt Cloud, Airflow, or [similar](running-dbt-in-production) 
+ - **prod**: The production deployment of your dbt project, eg. in dbt Cloud, Airflow, or [similar](running-dbt-in-production)
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.
 

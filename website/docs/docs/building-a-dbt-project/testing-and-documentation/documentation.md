@@ -22,6 +22,12 @@ models:
           tests:
               - unique
               - not_null
+
+        - name: user-id
+          quote: true
+          description: The user who performed the event
+          tests:
+              - not_null
 ```
 
 </File>
@@ -37,7 +43,7 @@ To declare a docs block, use the jinja `docs` tag. Docs blocks must be uniquely 
 ```markdown
 {% docs table_events %}
 
-This table contains clickstream events from the marketing website. 
+This table contains clickstream events from the marketing website.
 
 The events in this table are recorded by [Snowplow](http://github.com/snowplow/snowplow) and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:
  - /
@@ -56,7 +62,7 @@ In the above example, a docs block named `table_events` is defined with some des
 Docs blocks should be placed in files with a `.md` file extension. dbt will look for these files in the `source-paths` and `docs-paths` directories specified in your `dbt_project.yml` file. Typically, it makes sense to place these markdown files near the models they document. Many docs blocks can exist in a single `.md` file.
 
 ### Usage
-To use a docs block, reference it from your schema.yml file with the [doc()](doc) function. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown below: 
+To use a docs block, reference it from your schema.yml file with the [doc()](doc) function. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown below:
 
 <File name='schema.yml'>
 
