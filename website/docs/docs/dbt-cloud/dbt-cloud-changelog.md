@@ -1,0 +1,236 @@
+---
+title: "dbt Cloud - Changelog"
+id: "cloud-changelog"
+sidebar_label: Changelog
+description: "Changelog for the dbt Cloud application"
+---
+
+## 1.0.4 (March 16, 2020)
+
+This release adds two new versions of dbt, adds Snowflake SSO support for Enterprise accounts, and fixes a number of bugs.
+
+### All versions
+
+#### Added
+- Added dbt 0.15.3rc1
+- Added dbt 0.16.0rc2
+- Add support for cloning private deps in the IDE when using deploy key auth.
+- Log user that kicked off manual runs.
+- Enterprise support for authenticating user Snowflake connections using Snowflake single sign-on
+
+#### Fixed
+- Fixed issue loading accounts for a user if they lack permissions for any subset of accounts they have a user license for.
+- Fixed issue with showing blank page for user who is not associated with any accounts.
+- Fixed issue where runs would continue to kick off on a deleted project.
+- Fixed issue where accounts connected to GitHub integrations with SAML protection could not import repositories
+- Improved error messages shown to the user if repos are unauthorized in a GitHub integration when importing a repo
+- Fix colors of buttons in generated emails
+
+### On-Premises
+
+#### Added
+- Added Admin backend UIs for managing user permissions.
+
+-------------
+
+## 1.0.3 (March 1, 2020)
+
+This release contains the building blocks for RBAC, and a number of bugfixes and upgrades.
+
+### All versions
+
+#### Added
+- Add support for a read replica for reading runs from the API.
+- Added groups, group permissions, and user groups.
+- Add email address to email verification screen.
+- Add Enterprise Permissions.
+- Allow account-level access to resources for groups with a permission statement of "all resources" for api backwards compatibility.
+- Add dbt 0.16.0b3
+
+#### Fixed
+- Fix issue with loading projects after switching accounts.
+- Fix broken links to connections from deployment environment settings.
+- Fix a bug with inviting readonly users.
+- Fix a bug where permissions were removed from Enterprise users upon login.
+
+#### Changed
+- Update Django version: 2.2.10
+- Update Django admin panel version
+- Update Social Auth version and the related Django component
+- Update jobs from using account-based resource permissions to project-based resource permissions
+- Update modal that shows when trials are expired; fix copy for past-due accounts in modal
+- Replace formatted string logging with structured logging
+- Move connection and repository settings from account settings to project settings
+- Update project setup flow to be used for creating projects
+- Update develop requests to have a foreign key on projects
+
+### On-Premises
+
+#### Added
+- Accounts created from admin backend will come with a default set of groups
+
+#### Changed
+- Rename "Fishtown Analytics User" to "Superuser"
+
+-------------
+
+## dbt Cloud v1.0.2 (February 20, 2020)
+
+This release contains a number of package upgrades, and a number of bugfixes.
+
+### All versions
+
+#### Added
+- Add request context data to logs
+- Comprehensive logging for git subprocesses
+
+#### Fixed
+- Fix an issue where the "Cancel Run" button does not work
+- Fix warnings regarding mutable resource model defaults for jobs and job notifications
+- Fix bug where users can create multiple connection user credentials through the project setup workflow
+- Update auth for requests against Github's api from using query parameters to using an Authorization header
+- Remove unused threads input from deployment environments
+- Fix issue that prevented user from viewing documentation and data sources
+- Fix issue rendering code editor panel in the IDE when using Safari
+- Fix issue with log levels that caused dbt logs to be too chatty
+
+#### Changed
+- Update Django version: 2.2.10
+- Update Django admin panel version
+- Update Social Auth version and the related Django component
+- Update jobs from using account-based resource permissions to project-based resource permissions
+- Update modal that shows when trials are expired; fix copy for past-due accounts in modal
+- Replace formatted string logging with structured logging
+- Move connection and repository settings from account settings to project settings
+- Update project setup flow to be used for creating projects
+
+#### Removed
+None.
+
+-------------
+
+## dbt Cloud v1.0.1 (February 4, 2020)
+
+This release makes the IDE generally available, and adds two new versions of dbt (0.15.1, 0.15.2).
+
+For on-premises customers, there is a new set of configurations in the configuration console:
+
+SMTP: You can now configure dbt Cloud to send email notifications through your own SMTP server.
+
+RSA Encryption: You can now provide your own RSA keypair for dbt Cloud to use for encryption.
+
+These fields need to be specified for your instance of dbt Cloud to function properly.
+
+### All versions
+
+#### Added
+
+- New Team List page
+- New Team User Detail page
+- New Invite User page
+- New dashboard for Read Only users
+- New dbt version: 0.15.1
+- New dbt version: 0.15.2
+- Ability to rename files in IDE
+- New backend service for project-based resource permissions
+
+#### Fixed
+- Fix an issue where the user has to repeat steps in the onboarding flow
+- Fix issue where user can get stuck in the onboarding flow
+- Fix bug where email notifications could be sent to deleted users
+- Fix UI bug not allowing user to check "Build on pull request?" when creating a job
+- Fix UI bug in header of the Edit User page
+- Fix issue that did not take into account pending invites and license seats when re-sending a user invite.
+- Fix an issue when processing Github webhooks with unconfigured environments
+- Fix console warning presented when updating React state from unmounted component
+- Fix issue where closed tabs would continue to be shown, though the content was removed correctly
+- Fix issue that prevented opening an adjacent tab when a tab was closed
+- Fix issue creating BigQuery connections causing the the account connections list to not load correctly.
+- Fix for locked accounts that have downgraded to the developer plan at trial end
+- Fix for not properly showing server error messages on the user invite page
+
+#### Changed
+- Deployed a number of IDE visual improvements
+- Batch logs up every 5 seconds instead of every second to improve database performance
+- Make `retries` profile configuration for BigQuery connections optional
+- Support `retries` profile configuration for BigQuery connections (new in dbt v0.15.1)
+- Replace Gravatar images with generic person icons in the top navbar
+- Remove deprecated account subscription models
+- Remove external JS dependencies
+
+#### Removed
+- Remove the "read only" role (this is now a "read only" license type)
+- Remove the "standard" license type
+- Remove "beta" tag from dbt IDE
+- Remove unused frontend code (team page/create repository page and related services)
+
+### Self-Service
+
+#### Fixed
+ - Fix for locked accounts that have downgraded to the developer plan at trial end
+
+#### Added
+- New Plans page
+- Add a 14 day free trial
+- Add the ability to provision a new repository via dbt Cloud
+- New Invite Team step for project setup process for trial accounts
+
+#### Changed
+- The "Basic" and "Pro" plans are no longer available. The new "Developer" and "Team" plans are available.
+- Prorations are now charged immediately, instead of applied to the next billing cycle.
+- It is no longer possible to downgrade to a plan that does not support the current number of allocated seats.
+- A "Team" plan that has been cancelled will be locked (closed) at the end of the subscription's period
+
+### On-Premises
+
+#### Added
+- Support custom SMTP settings
+- Support Azure Blob Storage for run logs + artifacts
+- Optionally disable anonymous usage tracking
+
+-------------
+
+## dbt Cloud v0.5.0 (December 19, 2019)
+
+This release preps dbt Cloud for the general IDE release in January. Beta IDE functionality can be turned on by checking "Develop file system" in the Accounts page in the dbt Cloud backend.
+
+### All versions
+
+#### Added
+
+- New dbt version: 0.14.2
+- New dbt version: 0.14.3
+- New dbt version: 0.14.4
+- New dbt version: 0.15.0
+- New API endpoint: v3/projects
+- New API endpoint: v3/credentials
+- New API endpoint: v3/environments
+- New API endpoint: v3/events
+- IDE: Add git workflow UI
+- IDE: Add filesystem management
+- IDE: Hup the server when files change
+- IDE: Display server status and task history
+- Added development and deployment environments and credentials
+- Support `--warn-error` flag in dbt runs
+
+#### Fixed
+
+- Fixed an issue where the run scheduler would hang up when deleting PR schemas
+- Fixed an issue where the webhook processor would mark a webhook as processed without queuing a run
+- Fix a bug where SSH tunnels were not created for the Develop IDE
+- Fix Develop IDE scrolling in Firefox
+- Fix a bug where requests were timed out too aggressively
+- Require company name at signup
+- Fix security issue where IP blacklist could be bypassed using shorthand
+- Do a better job of handling git errors
+- Allow users to delete projects
+
+#### Changed
+
+- Move account picker to sidebar
+- Increase require.js timeout from 7s to 30s
+- Migrate environments to projects
+- Move some UIs into Account Settings
+- Make cron scheduling available on the free tier
+- Apply new styles to IDE
+- Speed up develop

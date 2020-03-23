@@ -231,7 +231,8 @@ module.exports = {
           "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
           "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth"
         ]
-      }
+      },
+      "docs/dbt-cloud/cloud-changelog",
     ],
     About: ["docs/about/license", "docs/about/viewpoint"]
   },
