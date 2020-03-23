@@ -5,6 +5,30 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.0.5 (March 23, 2020)
+
+### All versions
+
+#### Added
+
+- Add support for authenticating Development and Deployment Snowflake credentials using keypair auth
+- Add support for checking out tags, render git output in "clone" run step
+- Add dbt 0.15.3
+- Add dbt 0.16.0
+
+#### Fixed
+
+- Git provider urls now built with correct github account and repository directories.
+- Invalid DateTime Start time in IDE Results Panel KPIs.
+- Fix a race condition causing the Invite User UI to not work properly.
+- Incorrect model build times in IDE.
+
+#### Changed
+
+- Git: ignore `logs/` and `target/` directories in the IDE.
+
+---
+
 ## 1.0.4 (March 16, 2020)
 
 This release adds two new versions of dbt, adds Snowflake SSO support for Enterprise accounts, and fixes a number of bugs.
@@ -12,6 +36,7 @@ This release adds two new versions of dbt, adds Snowflake SSO support for Enterp
 ### All versions
 
 #### Added
+
 - Added dbt 0.15.3rc1
 - Added dbt 0.16.0rc2
 - Add support for cloning private deps in the IDE when using deploy key auth.
@@ -19,6 +44,7 @@ This release adds two new versions of dbt, adds Snowflake SSO support for Enterp
 - Enterprise support for authenticating user Snowflake connections using Snowflake single sign-on
 
 #### Fixed
+
 - Fixed issue loading accounts for a user if they lack permissions for any subset of accounts they have a user license for.
 - Fixed issue with showing blank page for user who is not associated with any accounts.
 - Fixed issue where runs would continue to kick off on a deleted project.
@@ -29,9 +55,10 @@ This release adds two new versions of dbt, adds Snowflake SSO support for Enterp
 ### On-Premises
 
 #### Added
+
 - Added Admin backend UIs for managing user permissions.
 
--------------
+---
 
 ## 1.0.3 (March 1, 2020)
 
@@ -40,6 +67,7 @@ This release contains the building blocks for RBAC, and a number of bugfixes and
 ### All versions
 
 #### Added
+
 - Add support for a read replica for reading runs from the API.
 - Added groups, group permissions, and user groups.
 - Add email address to email verification screen.
@@ -48,12 +76,14 @@ This release contains the building blocks for RBAC, and a number of bugfixes and
 - Add dbt 0.16.0b3
 
 #### Fixed
+
 - Fix issue with loading projects after switching accounts.
 - Fix broken links to connections from deployment environment settings.
 - Fix a bug with inviting readonly users.
 - Fix a bug where permissions were removed from Enterprise users upon login.
 
 #### Changed
+
 - Update Django version: 2.2.10
 - Update Django admin panel version
 - Update Social Auth version and the related Django component
@@ -67,12 +97,14 @@ This release contains the building blocks for RBAC, and a number of bugfixes and
 ### On-Premises
 
 #### Added
+
 - Accounts created from admin backend will come with a default set of groups
 
 #### Changed
+
 - Rename "Fishtown Analytics User" to "Superuser"
 
--------------
+---
 
 ## dbt Cloud v1.0.2 (February 20, 2020)
 
@@ -81,10 +113,12 @@ This release contains a number of package upgrades, and a number of bugfixes.
 ### All versions
 
 #### Added
+
 - Add request context data to logs
 - Comprehensive logging for git subprocesses
 
 #### Fixed
+
 - Fix an issue where the "Cancel Run" button does not work
 - Fix warnings regarding mutable resource model defaults for jobs and job notifications
 - Fix bug where users can create multiple connection user credentials through the project setup workflow
@@ -95,6 +129,7 @@ This release contains a number of package upgrades, and a number of bugfixes.
 - Fix issue with log levels that caused dbt logs to be too chatty
 
 #### Changed
+
 - Update Django version: 2.2.10
 - Update Django admin panel version
 - Update Social Auth version and the related Django component
@@ -105,9 +140,10 @@ This release contains a number of package upgrades, and a number of bugfixes.
 - Update project setup flow to be used for creating projects
 
 #### Removed
+
 None.
 
--------------
+---
 
 ## dbt Cloud v1.0.1 (February 4, 2020)
 
@@ -135,6 +171,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 - New backend service for project-based resource permissions
 
 #### Fixed
+
 - Fix an issue where the user has to repeat steps in the onboarding flow
 - Fix issue where user can get stuck in the onboarding flow
 - Fix bug where email notifications could be sent to deleted users
@@ -150,6 +187,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 - Fix for not properly showing server error messages on the user invite page
 
 #### Changed
+
 - Deployed a number of IDE visual improvements
 - Batch logs up every 5 seconds instead of every second to improve database performance
 - Make `retries` profile configuration for BigQuery connections optional
@@ -159,6 +197,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 - Remove external JS dependencies
 
 #### Removed
+
 - Remove the "read only" role (this is now a "read only" license type)
 - Remove the "standard" license type
 - Remove "beta" tag from dbt IDE
@@ -167,15 +206,18 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 ### Self-Service
 
 #### Fixed
- - Fix for locked accounts that have downgraded to the developer plan at trial end
+
+- Fix for locked accounts that have downgraded to the developer plan at trial end
 
 #### Added
+
 - New Plans page
 - Add a 14 day free trial
 - Add the ability to provision a new repository via dbt Cloud
 - New Invite Team step for project setup process for trial accounts
 
 #### Changed
+
 - The "Basic" and "Pro" plans are no longer available. The new "Developer" and "Team" plans are available.
 - Prorations are now charged immediately, instead of applied to the next billing cycle.
 - It is no longer possible to downgrade to a plan that does not support the current number of allocated seats.
@@ -184,11 +226,12 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 ### On-Premises
 
 #### Added
+
 - Support custom SMTP settings
 - Support Azure Blob Storage for run logs + artifacts
 - Optionally disable anonymous usage tracking
 
--------------
+---
 
 ## dbt Cloud v0.5.0 (December 19, 2019)
 
