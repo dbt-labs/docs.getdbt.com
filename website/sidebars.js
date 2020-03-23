@@ -79,6 +79,7 @@ module.exports = {
           "docs/writing-code-in-dbt/jinja-context/adapter",
           "docs/writing-code-in-dbt/jinja-context/builtins",
           "docs/writing-code-in-dbt/jinja-context/config",
+          "docs/writing-code-in-dbt/jinja-context/dbt_version",
           "docs/writing-code-in-dbt/jinja-context/debug-method",
           "docs/writing-code-in-dbt/jinja-context/doc",
           "docs/writing-code-in-dbt/jinja-context/env_var",
@@ -91,6 +92,7 @@ module.exports = {
           "docs/writing-code-in-dbt/jinja-context/invocation_id",
           "docs/writing-code-in-dbt/jinja-context/log",
           "docs/writing-code-in-dbt/jinja-context/modules",
+          "docs/writing-code-in-dbt/jinja-context/project_name",
           "docs/writing-code-in-dbt/jinja-context/ref",
           "docs/writing-code-in-dbt/jinja-context/return",
           "docs/writing-code-in-dbt/jinja-context/run_query",
@@ -102,14 +104,10 @@ module.exports = {
           "docs/writing-code-in-dbt/jinja-context/tojson",
           "docs/writing-code-in-dbt/jinja-context/toyaml",
           "docs/writing-code-in-dbt/jinja-context/var",
-          {
-            type: "category",
-            label: "on-run-end Context",
-            items: [
-              "docs/writing-code-in-dbt/jinja-context/on-run-end-context",
-              "docs/writing-code-in-dbt/jinja-context/schemas"
-            ]
-          }
+
+          "docs/writing-code-in-dbt/jinja-context/profiles-yml-context",
+          "docs/writing-code-in-dbt/jinja-context/dbt-project-yml-context",
+          "docs/writing-code-in-dbt/jinja-context/on-run-end-context",
         ]
       },
       "docs/writing-code-in-dbt/class-reference",
