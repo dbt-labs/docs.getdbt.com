@@ -10,6 +10,7 @@ import MDXComponents from '@theme/MDXComponents';
 
 import Alert from '@site/src/components/alert';
 import Callout from '@site/src/components/callout';
+import Changelog from '@site/src/components/changelog';
 import CloudCore from '@site/src/components/cloudcore';
 import Collapsible from '@site/src/components/collapsible';
 import FAQList from '@site/src/components/faqList';
@@ -55,6 +56,14 @@ function Styles() {
                 <Callout type='warning' title="warning"><p>This is a callout</p></Callout>
                 <Callout type='danger' title="danger"><p>This is a callout</p></Callout>
                 <Callout type='success' title="success"><p>This is a callout</p></Callout>
+            </div>
+            <div className='section' style={{marginTop: '40px'}}>
+                <h1>Changelog</h1>
+<pre>{`<Changelog>
+    <p>This functionality has changed in dbt v0.16.0</p>
+</Changelog>
+`}</pre>
+                <Changelog>This functionality has changed in dbt v0.16.0</Changelog>
             </div>
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>CloudCore</h1>

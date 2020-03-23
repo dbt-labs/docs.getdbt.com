@@ -17,6 +17,7 @@ import styles from './styles.module.css';
  */
 import Alert from '@site/src/components/alert';
 import Callout from '@site/src/components/callout';
+import Changelog from '@site/src/components/changelog';
 import CloudCore from '@site/src/components/cloudcore';
 import Collapsible from '@site/src/components/collapsible';
 import FAQ from '@site/src/components/faqs';
@@ -52,6 +53,7 @@ export default {
 
   Alert: Alert,
   Callout: Callout,
+  Changelog: Changelog,
   CloudCore: CloudCore,
   Collapsible: Collapsible,
   FAQ: FAQ,

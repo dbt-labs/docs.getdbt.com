@@ -30,7 +30,7 @@ name: jaffle_shop
 models:
   my_project:
     database: jaffle_shop
-    
+
     # For BigQuery users:
     # project: jaffle_shop
 ```
@@ -48,6 +48,39 @@ This config changes a specific model to be built into a database called `jaffle_
 {{ config(database="jaffle_shop") }}
 
 select * from ...
+```
+
+</File>
+
+### generate_database_name
+
+The database name generated for a model is controlled by a macro called `generate_database_name`. This macro can be overridden in a dbt project to change how dbt generates model database names. This macro works similarly to the [generate_schema_name](using-custom-schemas#advanced-custom-schema-configuration) macro.
+
+To override dbt's database name generation, create a macro named `generate_database_name` in your own dbt project. The `generate_database_name` macro accepts two arguments:
+
+1. The custom database supplied in the model config
+2. The node that a custom database is being generated for
+
+The default implementation of `generate_database_name` simply uses the supplied `database` config if one is present, otherwise the database configured in the active `target` is used. This implementation looks like this:
+
+<File name='get_custom_database.sql'>
+
+```jinja2
+{% macro generate_database_name(custom_database_name=none, node=none) -%}
+
+    {%- set default_database = target.database -%}
+    {%- if custom_database_name is none -%}
+
+        {{ default_database }}
+
+    {%- else -%}
+
+        {{ custom_database_name | trim }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+
 ```
 
 </File>

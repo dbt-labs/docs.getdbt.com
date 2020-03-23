@@ -75,12 +75,14 @@ class Column(object):
       char_size: If dtype is a variable width character type, the size of the column, or else None
       numeric_size: If dtype is a fixed precision numeric type, the size of the column, or else None
    """
-    
-    
+
+
 # Example Usage:
 col = Column('name', 'varchar', 255)
 col.is_string() # True
 col.is_numeric() # False
+col.is_number() # False
+col.is_float() # False
 col.string_type() # character varying (255)
 ```
 
@@ -95,8 +97,17 @@ col.string_type() # character varying (255)
 - **data_type**: Returns the data type of the column
 
 ### Instance methods
+
+<Changelog>
+
+ The `is_number` and `is_float` instance methods were added dbt v0.16.0
+
+</Changelog>
+
 - **is_string()**: Returns True if the column is a String type (eg. text, varchar), else False
 - **is_numeric()**: Returns True if the column is a fixed-precision Numeric type (eg. `numeric`), else False
+- **is_number()**: Returns True if the column is a number-y type (eg. `numeric`, `int`, `float`, or similar), else False
+- **is_float()**: Returns True if the column is a float type (eg. `float`, `float64`, or similar), else False
 - **string_size()**: Returns the width of the column if it is a string type, else, an exception is raised
 
 ### Static methods

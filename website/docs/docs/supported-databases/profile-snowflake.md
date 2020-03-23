@@ -18,11 +18,11 @@ my-snowflake-db:
     dev:
       type: snowflake
       account: [account id]
-      
+
       # User/password auth
       user: [username]
       password: [password]
-      
+
       role: [user role]
       database: [database name]
       warehouse: [warehouse name]
@@ -36,7 +36,7 @@ my-snowflake-db:
 
 ### Key Pair Authentication
 
-To use key pair authentication, omit a `password` and instead provide both `private_key_path` and `private_key_passphrase` in your target.
+To use key pair authentication, omit a `password` and instead provide a `private_key_path` and, optionally, a `private_key_passphrase` in your target. **Note:** Versions of dbt before 0.16.0 required that private keys were encrypted and a `private_key_passphrase` was provided. This behavior was changed in dbt v0.16.0.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -49,11 +49,11 @@ my-snowflake-db:
       account: [account id]
       user: [username]
       role: [user role]
-      
+
       # Keypair config
       private_key_path: [path/to/private.key]
-      private_key_passphrase: [passphrase for the private key]
-      
+      private_key_passphrase: [passphrase for the private key, if key is encrypted]
+
       database: [database name]
       warehouse: [warehouse name]
       schema: [dbt schema]
@@ -80,10 +80,10 @@ my-snowflake-db:
       account: [account id]
       user: [username]
       role: [user role]
-      
+
       # SSO config
       authenticator: externalbrowser
-      
+
       database: [database name]
       warehouse: [warehouse name]
       schema: [dbt schema]

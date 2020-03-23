@@ -54,9 +54,9 @@ select * from {{ source('source_1', 'table_1') }}
 
 /*
 	This is compiled to:
-  
+
     select * from "target_database"."source_1"."table_1"
-    
+
 */
 ```
 
@@ -107,7 +107,7 @@ sources:
       database: false
       schema: false
       identifier: false
-      
+
     tables:
       - name: order_item
       - name: order
@@ -131,12 +131,22 @@ sources:
     schema: public
     loader: emr # informational only (free text)
     loaded_at_field: _loaded_at # configure for all sources
-    
+
+    # meta fields are rendered in auto-generated documentation
+    meta:
+      contains_pii: true
+      owner: "@alice"
+
+    # Add tags to this source
+    tags:
+      - ecom
+      - pii
+
     quoting:
       database: false
       schema: false
       identifier: false
-      
+
     tables:
       - name: orders
         identifier: Orders_
@@ -145,16 +155,15 @@ sources:
           - name: id
             tests:
               - unique
-              
+
           - name: price_in_usd
             tests:
               - not_null
-              
+
       - name: Users
         quoting:
           identifier: true # override source defaults
         columns:
-          - name: id
             tests:
               - unique
 ```
@@ -192,11 +201,11 @@ sources:
   - name: snowplow
     database: raw
     loader: emr # optional, informational only
-    
+
     freshness:
       warn_after: {count: 12, period: hour}
       error_after: {count: 24, period: hour}
-    
+
     tables:
       - name: event
         loaded_at_field: collector_tstamp # required for freshness snapshotting
@@ -226,13 +235,13 @@ sources:
   - name: snowplow
     database: raw
     loader: emr
-    
+
     freshness:
       warn_after: {count: 12, period: hour}
       error_after: {count: 24, period: hour}
-      
+
     loaded_at_field: event_time
-    
+
     tables:
       - name: event
 
@@ -243,7 +252,7 @@ sources:
 </File>
 
 ### Filtering sources
-If your source tables are configured to require partition filters, you can use the `filter` config on the `freshness` block to add a filter to the freshness query that dbt runs. You can use the built-in [datetime module](modules) to dynamically generate a freshness filter. This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table. 
+If your source tables are configured to require partition filters, you can use the `filter` config on the `freshness` block to add a filter to the freshness query that dbt runs. You can use the built-in [datetime module](modules) to dynamically generate a freshness filter. This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table.
 
 <File name='models/sources.yml'>
 
@@ -255,16 +264,16 @@ sources:
   - name: snowplow
     database: raw
     loader: emr
-    
+
     freshness:
       warn_after: {count: 12, period: hour}
       error_after: {count: 24, period: hour}
-      
+
       # Filter in the freshness query
       filter: event_time > '2019-01-01'
-      
+
     loaded_at_field: event_time
-    
+
     tables:
       - name: event
 ```

@@ -24,10 +24,30 @@ company-name:
       threads: [1 or more]
       keepalives_idle: 0 # default 0, indicating the system default
       search_path: [optional, override the default postgres search_path]
+      role: [optional, set the role dbt assumes when executing queries]
+      sslmode: [optional, set the sslmode used to connect to the database]
 
 ```
 
 </File>
+
+### Configurations
+
+#### search_path
+
+The `search_path` config controls the Postgres "search path" that dbt configures when opening new connections to the database. By default, the Postgres search path is `"$user, public"`, meaning that unqualified table names will be searched for in the `public` schema, or a schema with the same name as the logged-in user. **Note:** Setting the `search_path` to a custom value is not necessary or recommended for typical usage of dbt.
+
+#### role
+
+<Changelog> Added in v0.16.0 </Changelog>
+
+The `role` config controls the Postgres role that dbt assumes when opening new connections to the database.
+
+#### sslmode
+
+<Changelog> Added in v0.16.0 </Changelog>
+
+The `sslmode` config controls how dbt connectes to Postgres databases using SSL. See [the Postgres docs](https://www.postgresql.org/docs/9.1/libpq-ssl.html) on `sslmode` for usage information. When unset, dbt will connect to databases using the Postgres default, `prefer`, as the `sslmode`.
 
 ### Postgres notes
 
