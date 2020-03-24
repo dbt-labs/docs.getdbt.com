@@ -25,7 +25,7 @@ To modify the timezone of this variable, use the the `pytz` module:
 
 ```sql
 select
-	'{{ run_started_at.astimezone(modules.pytz.timezone("America/New_York"))' as run_started_est
+	'{{ run_started_at.astimezone(modules.pytz.timezone("America/New_York")) }}' as run_started_est
   
 from ...
 ```
