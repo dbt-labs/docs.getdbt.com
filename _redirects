@@ -141,5 +141,12 @@
 /docs/videos	/docs/guides/videos	302
 /docs/viewpoint	/docs/about/viewpoint	302
 /docs/windows	/docs/running-a-dbt-project/using-the-command-line-interface/windows	302
-/reference/	/dbt-cloud/api	302
+/reference/api	/dbt-cloud/api	302
+/reference/using-the-dbt-cloud-api	/dbt-cloud/api	302
+/reference/accounts	/dbt-cloud/api	302
+/reference/connections	/dbt-cloud/api	302
+/reference/environments	/dbt-cloud/api	302
+/reference/jobs	/dbt-cloud/api	302
+/reference/runs	/dbt-cloud/api	302
+/reference/repositories	/dbt-cloud/api	302
 https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
