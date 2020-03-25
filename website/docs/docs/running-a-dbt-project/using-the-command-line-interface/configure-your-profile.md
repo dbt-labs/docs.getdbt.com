@@ -184,7 +184,7 @@ config:
   partial_parse: True
 ```
 
-This value can be overridden using the `--partial-parse` or --no-partial-parse` flags.
+This value can be overridden using the `--partial-parse` or `--no-partial-parse` flags.
 
 ### Using colors in terminal output
 By default, dbt will colorize the output it prints in your terminal. You can turn this off by adding the following to your `profiles.yml` file:
