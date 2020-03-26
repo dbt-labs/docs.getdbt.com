@@ -42,12 +42,9 @@ The rpc server expects requests in the following format:
 </File>
 
 
-[block:api-header]
-{
-  "title": "Built-in Methods"
-}
-[/block]
-## status
+## Built-in Methods
+
+### status
 The `status` method will return the status of the rpc server. This method response includes a high-level, like `ready`, `compiling`, or `error`, as well the set of logs that accumulated during the initial compilation of the project. When the rpc server is in the `compiling` or `error` state, all non-builtin methods of the RPC server will be rejected.
 
 **Example request**
@@ -74,7 +71,7 @@ The `status` method will return the status of the rpc server. This method respon
 }
 ```
 
-## poll
+### poll
 The `poll` endpoint will return the status, logs, and results (if available) for a running or completed  task. The `poll` method requires a `request_token` parameter which indicates the task to poll a response for. The `request_token` is returned in the response of dbt tasks like `compile`, `run` and `test`.
 
 **Parameters**:
@@ -117,7 +114,7 @@ The `poll` endpoint will return the status, logs, and results (if available) for
 ```
 
 
-## ps
+### ps
 The `ps` methods lists running and completed processes executed by the RPC server.
 
 **Parameters**
@@ -162,7 +159,7 @@ The `ps` methods lists running and completed processes executed by the RPC serve
 }
 ```
 
-## kill
+### kill
 
 The `kill` method will terminate a running task. You can find a `task_id` for a running task either in the original response which invoked that task, or in the results of the `ps` method.
 
@@ -177,14 +174,11 @@ The `kill` method will terminate a running task. You can find a `task_id` for a 
     }
 }
 ```
-[block:api-header]
-{
-  "title": "Running dbt projects"
-}
-[/block]
+## Running dbt projects
+
 The following methods make it possible to run dbt projects via the RPC server.
 
-## Running a task with CLI syntax
+### Running a task with CLI syntax
 
 **Parameters:**
  - `cli`: A dbt command (eg. `run --models abc+ --exclude +def`) to run (required)
@@ -205,7 +199,7 @@ The following methods make it possible to run dbt projects via the RPC server.
 }
 ```
 
-## Compile a project
+### Compile a project
 
 **Parameters:** ([docs](compile))
  - `models`: The space-delimited set of models to include in compilation (optional)
@@ -224,7 +218,7 @@ The following methods make it possible to run dbt projects via the RPC server.
 }
 ```
 
-## Run models
+### Run models
 
 **Parameters:**  ([docs](run))
  - `models`: The space-delimited set of models to include in the run (optional)
@@ -243,7 +237,7 @@ The following methods make it possible to run dbt projects via the RPC server.
 }
 ```
 
-## Run tests
+### Run tests
 
 **Parameters:** ([docs](test))
  - `models`: The space-delimited set of models to include in testing (optional)
@@ -266,7 +260,7 @@ The following methods make it possible to run dbt projects via the RPC server.
 }
 ```
 
-## Run seeds
+### Run seeds
 
 **Parameters:** ([docs](seed))
  - `show`: If True, show a sample of the seeded data in the response (optional, default=false)
@@ -283,7 +277,7 @@ The following methods make it possible to run dbt projects via the RPC server.
 }
 ```
 
-## Generate docs 
+### Generate docs
 
 **Parameters:** ([docs](cmd-docs#dbt-docs-generate))
  - `models`: The space-delimited set of models to compile (optional)
@@ -303,12 +297,9 @@ The following methods make it possible to run dbt projects via the RPC server.
         }
 }
 ```
-[block:api-header]
-{
-  "title": "Compiling and running SQL statements"
-}
-[/block]
-## Compiling a query
+## Compiling and running SQL statements
+
+### Compiling a query
 
 This query compiles the sql `select {{ 1 + 1 }} as id` (base64-encoded) against the rpc server:
 
@@ -331,7 +322,7 @@ This query compiles the sql `select {{ 1 + 1 }} as id` (base64-encoded) against 
 
 The resulting response will include a key called `compiled_sql` with a value of `'select 2'`.
 
-## Executing a query
+### Executing a query
 
 This query executes the sql `select {{ 1 + 1 }} as id` (bas64-encoded) against the rpc server:
 
@@ -353,11 +344,9 @@ This query executes the sql `select {{ 1 + 1 }} as id` (bas64-encoded) against t
 </File>
 
 The resulting response will include a key called `table` with a value of `{'column_names': ['?column?'], 'rows': [[2.0]]}`
-[block:api-header]
-{
-  "title": "Reloading the Server"
-}
-[/block]
+
+## Reloading the Server
+
 When the dbt Server starts, it will load the dbt project into memory using the files present on disk at startup. If the files in the dbt project should change (either during development or in a deployment),  the dbt Server can be updated live without cycling the server process. To reload the files present on disk, send a "hangup" signal to the running server process using the Process ID (pid) of the running process.
 
 ### Finding the server PID

@@ -39,7 +39,7 @@ We have provided a migration script in dbt v0.14.0 which accomplishes both of th
 2. rename columns as specified in the table above
 3. generate snapshot blocks for your existing archives in new .sql files
 
-The provided migration script should be run _once_ by a single dbt user. This database user must have sufficient permissions to operate on existing archive tables in the database. 
+The provided migration script should be run _once_ by a single dbt user. This database user must have sufficient permissions to operate on existing archive tables in the database.
 
 ### Running the migration script
 
@@ -115,11 +115,9 @@ alter table archived.orders_archived rename "valid_from" to dbt_valid_from;
 alter table archived.orders_archived rename "valid_to" to dbt_valid_to;
 alter table archived.orders_archived rename "scd_id" to dbt_scd_id;
 ```
-[block:api-header]
-{
-  "title": "Upgrading the generate_schema_name signature"
-}
-[/block]
+
+## Upgrading the generate_schema_name signature
+
 In dbt v0.14.0, the `generate_schema_name` macro signature was changed to accept a second argument, `node`. For more information on the new `node` argument, consulting the documentation for [using custom schemas](using-custom-schemas).
 
 Existing one-argument implementations of `generate_schema_name` macros are still supported, but support for this form of the macro will be dropped in a future release. If you currently have a one-argument version of this macro, you will see a warning when you run your dbt project.
@@ -145,11 +143,8 @@ To upgrade this macro (and suppress this warning), add a second argument, `node`
 </File>
 
 
-[block:api-header]
-{
-  "title": "Non-Destructive runs"
-}
-[/block]
+## Non-Destructive runs
+
 The `--non-destructive` flag was removed from dbt in v0.14.0. This flag existed as a workaround for the lack of late-binding views in Amazon Redshift. With the introduction of the [with no schema binding](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html) clause for Redshift views, non-destructive runs are no longer necessary.
 
 The `--non-destructive` flag was problematic for a few reasons:
@@ -164,11 +159,9 @@ Snowflake, BigQuery, SparkSQL, and Presto users should be unaffected by this cha
 Redshift users should consider using the [bind: false](redshift-configs#late-binding-views) config to instruct dbt to create unbound views.
 
 Postgres users should ensure that they use table or incremental models for relations which are queried by end-users.
-[block:api-header]
-{
-  "title": "Snowflake Incremental Model Changes"
-}
-[/block]
+
+## Snowflake Incremental Model Changes
+
 In dbt v0.14.0, the implementation of `incremental` models on Snowflake has changed. By default, dbt will use a [merge](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) statement to atomically upsert records into a table incrementally. Previous versions of dbt used a two-step `delete+insert` approach to upsert data.
 
 The `merge` statement requires that records participating in the upsert are unique. If these records are not unique, then the statement will fail with a "nondeterministic merge" error. If you see this error after upgrading to 0.14.0, you can resolve it in one of two ways:

@@ -15,7 +15,7 @@ Since dbt packages are just projects intended for general use, the two are creat
 
 ```shell
 # create a package in the project_name/ directory
-dbt init [project_name]"
+dbt init [project_name]
 ```
 
 This will start you off with a couple of key files and directories, namely:
@@ -35,7 +35,7 @@ First, open the `README.md` file and edit the contents to reflect the name of yo
 
 Next, open the `dbt_project.yml` file. You should change a few things here before you begin creating other files in this package.
 
-1. Change the `name` option to be something descriptive for your package. Make sure the name is all lowercase, and only contains the letters `a-z` and `_`. 
+1. Change the `name` option to be something descriptive for your package. Make sure the name is all lowercase, and only contains the letters `a-z` and `_`.
 2. Set the `version` option to be `0.0.1`. This field is currently unused by dbt, but will become significant in the future.
 3. Set the `profile` value to the same value you used for `name` above. This will require you to make a new entry in your `~/.dbt/profiles.yml` file.
 4. Remove any superfluous configurations in the `models:` configuration.
@@ -53,10 +53,10 @@ version: '0.0.1'
 profile: 'mailchimp'
 
 source-paths: ["models"]
-analysis-paths: ["analysis"] 
+analysis-paths: ["analysis"]
 test-paths: ["tests"]
 data-paths: ["data"]
-macro-paths: ["macros"] 
+macro-paths: ["macros"]
 
 target-path: "target"
 clean-targets:
@@ -96,11 +96,9 @@ mailchimp:
 </File>
 
 Once these files are set up, you're ready to begin adding models, tests, macros, and so on, to your package!
-[block:api-header]
-{
-  "title": "Building a dbt Package"
-}
-[/block]
+
+## Building a dbt package
+
 dbt packages can contain any of the dbt constructs that you're already familiar with: models, tests, analyses, macros, and even other dependencies! Since the rest of this website is dedicated to explaining these topics, an in-depth explanation of them will not be given here. Instead, this section will outline some of the best-practices we've encountered to-date while building dozens of open-source packages.
 
 <Callout type="info" title="">
@@ -110,9 +108,11 @@ Have a tip you don't see here? Feel free to suggest an edit!
 </Callout>
 
 **1. Keep it generic**
+
 The code in your package should be specific to a given dataset, topic, or domain. A Mailchimp package should only contain models that transform raw Mailchimp data, for instance.
 
 **2. Use variables to point to raw data**
+
 ETL services often allow users to configure the schema in which their data resides. For that reason, it's a bad idea to hardcode raw data tables (eg. `"mailchimp"."campaigns"`) in your base models. Instead, select from [vars](var) in your base models so end-users can point your package to their source data. You can find an example of variable configuration [here](https://github.com/fishtown-analytics/mailchimp/blob/master/dbt_project.yml#L12). The base model SQL should look something like this:
 
 <File name='models/base/mailchimp_base_campaigns.sql'>
@@ -126,6 +126,7 @@ select * from {{ var('mailchimp:campaigns_table') }}
 </File>
 
 **3. Install upstream packages from dbt Hub**
+
 If your package relies on another package (for example, you use some of the cross-database macros from [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/), see below), we recommend you install the package from [dbt Hub](https://hub.getdbt.com), specifying a version range like so:
 
 <File name='packages.yml'>
@@ -141,35 +142,35 @@ packages:
 When packages are installed from dbt Hub, dbt is able to handle duplicate dependencies – using a range of versions helps prevent version conflicts.
 
 **4. Implement cross-database compatibility**
+
 Many SQL functions are specific to a particular database. For example, the function name and order of arguments to calculate the difference between two dates varies between Redshift, Snowflake and BigQuery, and no similar function exists on Postgres! To help with this, we've made a number of macros that compile to valid SQL snippets on each of our [fully supported databases](supported-databases) – check them out [here](https://github.com/fishtown-analytics/dbt-utils#cross-database). While we generally don't recommend you implement these in a project designed for one warehouse, we do recommend you use them in a package that will be used on multiple data warehouses.
 
 **5. Prefix model names**
+
 Many datasets have a concept of a "user" or "account" or "session". To make sure things are unambiguous in dbt, prefix all of your models with `[package_name]_`. For example, `mailchimp_campaigns.sql` is a good name for a model, whereas `campaigns.sql` is not.
 
 **6. Default to views**
+
 dbt makes it possible for users of your package to override your model materialization settings. In general, default to materializing models as `view`s instead of `table`s. Base models, as always, should be materialized as `ephemeral`.
 
 **7. Test your models**
+
 It's critical that you [test](testing) your models using both schema tests and, when appropriate, custom data tests. This will give your end users confidence that your package is actually working on top of their dataset as intended.
-[block:api-header]
-{
-  "title": "Documenting a dbt package"
-}
-[/block]
+
+## Documenting a dbt package
+
 The better documented your package is, the more likely it is that other people will use it! Good package docs include:
 - An index of important models along with a short description of the model if necessary
 - A picture of the package's dependency graph generated via your project's [documentation website](documentation-website).
 - A list of any `var`s required by the package along with a short description of the variable
 
 An example of good package documentation can be found [here](https://github.com/fishtown-analytics/snowplow).
-[block:api-header]
-{
-  "title": "Releasing a dbt package"
-}
-[/block]
+
+## Releasing a dbt package
+
 To "release" your package, simply push your code to a public GitHub repo. This repo can either belong to your personal GitHub account or the organization that you represent. Once this code is live and public on GitHub, other dbt users can import the package into their own dbt projects. Hooray for open source!
 
-In the future, you may need to update your package. If these changes mutate the interfaces for models, macros, or variables defined in your project, then these are called "breaking changes". 
+In the future, you may need to update your package. If these changes mutate the interfaces for models, macros, or variables defined in your project, then these are called "breaking changes".
 
 Breaking changes are sometimes necessary, but they can be unpleasant for end-users. To avoid headaches here, you should create a [release](https://help.github.com/articles/creating-releases/) in GitHub for each new version of your package. If you do this, then end-users can include a specific version of your package and upgrade to newer version when they're ready.
 
@@ -185,9 +186,7 @@ packages:
 </Callout>
 
 Each release should contain an overview of the changes introduced in the new version. Be sure to call out any changes that break the existing interface!
-[block:api-header]
-{
-  "title": "Promoting Your dbt Package"
-}
-[/block]
+
+## Promoting your dbt package
+
 After releasing your dbt package on GitHub, be sure to let people know about it! The best way to do this is by posting about it on [dbt Discourse](https://discourse.getdbt.com).
