@@ -28,7 +28,7 @@ __Args__:
  - fetch_result (bool): If True, load the results of the statement into the Jinja context
  - auto_begin (bool): If True, open a transaction if one does not exist. If false, do not open a transaction.
 
-Once the statement block has executed, the result set is accessible via the `load_results` function. For the above statement, that would look like:
+Once the statement block has executed, the result set is accessible via the `load_result` function. For the above statement, that would look like:
 
 <File name='load_states.sql'>
 
