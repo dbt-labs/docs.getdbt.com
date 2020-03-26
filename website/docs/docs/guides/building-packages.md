@@ -35,7 +35,7 @@ First, open the `README.md` file and edit the contents to reflect the name of yo
 
 Next, open the `dbt_project.yml` file. You should change a few things here before you begin creating other files in this package.
 
-1. Change the `name` option to be something descriptive for your package. Make sure the name is all lowercase, and only contains the letters `a-z` and `_`. 
+1. Change the `name` option to be something descriptive for your package. Make sure the name is all lowercase, and only contains the letters `a-z` and `_`.
 2. Set the `version` option to be `0.0.1`. This field is currently unused by dbt, but will become significant in the future.
 3. Set the `profile` value to the same value you used for `name` above. This will require you to make a new entry in your `~/.dbt/profiles.yml` file.
 4. Remove any superfluous configurations in the `models:` configuration.
@@ -53,10 +53,10 @@ version: '0.0.1'
 profile: 'mailchimp'
 
 source-paths: ["models"]
-analysis-paths: ["analysis"] 
+analysis-paths: ["analysis"]
 test-paths: ["tests"]
 data-paths: ["data"]
-macro-paths: ["macros"] 
+macro-paths: ["macros"]
 
 target-path: "target"
 clean-targets:
@@ -96,11 +96,9 @@ mailchimp:
 </File>
 
 Once these files are set up, you're ready to begin adding models, tests, macros, and so on, to your package!
-[block:api-header]
-{
-  "title": "Building a dbt Package"
-}
-[/block]
+
+## Building a dbt Package
+
 dbt packages can contain any of the dbt constructs that you're already familiar with: models, tests, analyses, macros, and even other dependencies! Since the rest of this website is dedicated to explaining these topics, an in-depth explanation of them will not be given here. Instead, this section will outline some of the best-practices we've encountered to-date while building dozens of open-source packages.
 
 <Callout type="info" title="">
@@ -151,25 +149,21 @@ dbt makes it possible for users of your package to override your model materiali
 
 **7. Test your models**
 It's critical that you [test](testing) your models using both schema tests and, when appropriate, custom data tests. This will give your end users confidence that your package is actually working on top of their dataset as intended.
-[block:api-header]
-{
-  "title": "Documenting a dbt package"
-}
-[/block]
+
+## Documenting a dbt package
+
 The better documented your package is, the more likely it is that other people will use it! Good package docs include:
 - An index of important models along with a short description of the model if necessary
 - A picture of the package's dependency graph generated via your project's [documentation website](documentation-website).
 - A list of any `var`s required by the package along with a short description of the variable
 
 An example of good package documentation can be found [here](https://github.com/fishtown-analytics/snowplow).
-[block:api-header]
-{
-  "title": "Releasing a dbt package"
-}
-[/block]
+
+## Releasing a dbt package
+
 To "release" your package, simply push your code to a public GitHub repo. This repo can either belong to your personal GitHub account or the organization that you represent. Once this code is live and public on GitHub, other dbt users can import the package into their own dbt projects. Hooray for open source!
 
-In the future, you may need to update your package. If these changes mutate the interfaces for models, macros, or variables defined in your project, then these are called "breaking changes". 
+In the future, you may need to update your package. If these changes mutate the interfaces for models, macros, or variables defined in your project, then these are called "breaking changes".
 
 Breaking changes are sometimes necessary, but they can be unpleasant for end-users. To avoid headaches here, you should create a [release](https://help.github.com/articles/creating-releases/) in GitHub for each new version of your package. If you do this, then end-users can include a specific version of your package and upgrade to newer version when they're ready.
 
@@ -185,9 +179,7 @@ packages:
 </Callout>
 
 Each release should contain an overview of the changes introduced in the new version. Be sure to call out any changes that break the existing interface!
-[block:api-header]
-{
-  "title": "Promoting Your dbt Package"
-}
-[/block]
+
+## Promoting Your dbt Package
+
 After releasing your dbt package on GitHub, be sure to let people know about it! The best way to do this is by posting about it on [dbt Discourse](https://discourse.getdbt.com).
