@@ -160,7 +160,7 @@ Redshift users should consider using the [bind: false](redshift-configs#late-bin
 
 Postgres users should ensure that they use table or incremental models for relations which are queried by end-users.
 
-## Snowflake Incremental Model Changes"
+## Snowflake Incremental Model Changes
 
 In dbt v0.14.0, the implementation of `incremental` models on Snowflake has changed. By default, dbt will use a [merge](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) statement to atomically upsert records into a table incrementally. Previous versions of dbt used a two-step `delete+insert` approach to upsert data.
 
