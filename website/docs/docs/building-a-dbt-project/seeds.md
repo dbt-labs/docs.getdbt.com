@@ -4,15 +4,11 @@ id: "seeds"
 ---
 
 ## Getting started
-Seeds are CSV files in your dbt project (typically in your `data` directory),
-that dbt can load into your data warehouse using the `dbt seed` command.
+Seeds are CSV files in your dbt project (typically in your `data` directory), that dbt can load into your data warehouse using the `dbt seed` command.
 
-Seeds can be referenced in downstream models the same way as referencing models
-— by using the `ref` [function](docs/writing-code-in-dbt/jinja-context/ref.md).
+Seeds can be referenced in downstream models the same way as referencing models — by using the `ref` [function](docs/writing-code-in-dbt/jinja-context/ref.md).
 
-Because these CSV files are located in your dbt repository, they are version
-controlled and code reviewable. Seeds are best suited to static data which
-changes infrequently.
+Because these CSV files are located in your dbt repository, they are version controlled and code reviewable. Seeds are best suited to static data which changes infrequently.
 
 Good use-cases for seeds:
 * A list of mappings of country codes to country names
@@ -38,7 +34,7 @@ GB,United Kingdom
 
 </File>
 
-2. Run the `dbt seed` [command](running-a-dbt-project/command-line-interface/seed.md) — a new table will be created in your warehouse in your target schema, named `country_codes`
+2. Run the `dbt seed` [command](docs/running-a-dbt-project/command-line-interface/seed.md) — a new table will be created in your warehouse in your target schema, named `country_codes`
 ```
 $ dbt seed
 
@@ -67,11 +63,14 @@ select * from {{ ref('country_codes') }}
 
 </File>
 
+## Configuring seeds
+Seeds are configured in your `dbt_project.yml`, check out the [seed configurations](reference/seed-configs.md) docs for a full list of available configurations.
+
 ## Related documentation
 * [Seed configurations](reference/seed-configs.md)
-* The `dbt seed` [command](running-a-dbt-project/command-line-interface/seed.md)
+* The `dbt seed` [command](docs/running-a-dbt-project/command-line-interface/seed.md)
 
-## FAQs:
+## FAQs
 <FAQ src="load-raw-data-with-seed" />
 <FAQ src="configurable-data-path" />
 <FAQ src="full-refresh-seed" />

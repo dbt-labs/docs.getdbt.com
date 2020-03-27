@@ -1,10 +1,7 @@
 ---
-title: The columns of my seed changed, and now I get an error when running `seed`, what do I do?
+title: The columns of my seed changed, and now I get an error when running the `seed` command, what should I do?
 ---
-If you changed the columns of your seed, you may get an `Database Error`:
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+If you changed the columns of your seed, you may get a `Database Error`:
 
 <Tabs
   defaultValue="snowflake"

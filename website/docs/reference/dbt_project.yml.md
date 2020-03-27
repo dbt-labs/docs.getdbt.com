@@ -63,8 +63,8 @@ on-run-end: sql-statement | [sql-statement]
 
 Relevant links:
 * [data-paths](project-configs/data-paths.md)
-* [<model-configs>](model-configs.md)
-* [<seed-configs>](seed-configs.md)
-* [<snapshot-configs>](snapshot-configs.md)
+* [model-configs](model-configs.md)
+* [seed-configs](seed-configs.md)
+* [snapshot-configs](snapshot-configs.md)
 * [on-run-start](project-configs/on-run-start.md)
 * [on-run-end](project-configs/on-run-end.md)
