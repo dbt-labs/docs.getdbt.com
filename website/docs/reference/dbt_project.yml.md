@@ -24,7 +24,7 @@ version: string
 profile: profilename
 
 source-paths: [directorypath]
-[data-paths](project-configs/data-paths.md): [directorypath]
+data-paths: [directorypath]
 test-paths: [directorypath]
 analysis-paths: [directorypath]
 macro-paths: [directorypath]
@@ -46,16 +46,16 @@ quoting:
   schema: true | false
 
 models:
-  [<model-configs>](model-configs.md)
+  <model-configs>
 
 seeds:
-  [<seed-configs>](seed-configs.md)
+  <seed-configs>
 
 snapshots:
-  [<snapshot-configs>](snapshot-configs.md)
+  <snapshot-configs>
 
-[on-run-start](project-configs/on-run-start.md): sql-statement
-[on-run-end](project-configs/on-run-start.md): sql-statement
+on-run-start: sql-statement | [sql-statement]
+on-run-end: sql-statement | [sql-statement]
 
 ```
 
@@ -63,3 +63,8 @@ snapshots:
 
 Relevant links:
 * [data-paths](project-configs/data-paths.md)
+* [<model-configs>](model-configs.md)
+* [<seed-configs>](seed-configs.md)
+* [<snapshot-configs>](snapshot-configs.md)
+* [on-run-start](project-configs/on-run-start.md)
+* [on-run-end](project-configs/on-run-end.md)
