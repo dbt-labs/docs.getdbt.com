@@ -236,7 +236,14 @@ module.exports = {
     ],
     About: ["docs/about/license", "docs/about/viewpoint"]
   },
-
+  reference: {
+    "Configurations": [
+      "reference/dbt_project.yml",
+      "reference/model-configs",
+      "reference/seed-configs",
+      "reference/snapshot-configs"
+    ]
+  },
   tutorial: {
     "Getting Started": [
       "tutorial/setting-up",
