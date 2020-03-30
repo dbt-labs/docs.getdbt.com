@@ -5,6 +5,34 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+---
+
+## dbt Cloud v1.0.6 (March 30, 2020)
+
+This release adds UIs to select group permissions in the project settings UI. It also contains bugfixes for the IDE, PR build schema dropping, and adds support for dissociating Github and Slack integrations via the Admin backend.
+
+### All versions
+
+#### Added
+
+- (Enterprise only) Added ability to create group permissions for specific projects in the project settings UI.
+
+#### Fixed
+
+- Fix empty state for selecting github repositories
+- Fixed an issue with the IDE failing to report an invalid project subdirectory for a dbt project
+- Fix blank loading screen displayed when switching accounts while on account/profile settings page
+- Fix issue preventing schemas from dropping during PR builds
+- Fix issue where whitespace in user's name breaks default schema name
+- Added webhook processing for when a user disassociates github access to their account.
+- Added slack disassociation capability on user integrations page and on backend admin panel (for notifications).
+
+#### Changed
+
+- Declare application store using configureStore from redux-toolkit
+
+---
+
 ## dbt Cloud v1.0.5 (March 23, 2020)
 
 ### All versions
