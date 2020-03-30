@@ -27,7 +27,7 @@ This release adds UIs to select group permissions in the project settings UI. It
 - Added webhook processing for when a user disassociates github access to their account.
 - Added slack disassociation capability on user integrations page and on backend admin panel (for notifications).
 
-## Changed
+#### Changed
 
 - Declare application store using configureStore from redux-toolkit
 
