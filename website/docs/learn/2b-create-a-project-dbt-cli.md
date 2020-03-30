@@ -72,7 +72,7 @@ jaffle_shop: # this needs to match the profile: in your dbt_project.yml file
     dev:
       type: snowflake
       threads: 4
-      account: [account_id].us-east-1 # supplied to you, eg. pa19123.us-east-1
+      account: [account_id] # supplied to you, eg. pa19123 (do not include the `snowflakecomputing.com` part)
       user: [username] # supplied to you
       password: [password] # supplied to you, you should have been asked to reset it when you opened the Snowflake console
       role: transformer
