@@ -66,7 +66,7 @@ Hub packages require a version to be specified – you can find the latest relea
 ```yaml
 packages:
   - package: fishtown-analytics/snowplow
-    version: [">=0.7.0", "<0.8.0"]"
+    version: [">=0.7.0", "<0.8.0"]
 ```
 
 Where possible, we recommend installing packages via dbt Hub, since this allows dbt to handle duplicate dependencies. This is helpful in situations such as:

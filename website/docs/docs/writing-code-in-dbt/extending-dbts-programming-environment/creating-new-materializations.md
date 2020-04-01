@@ -20,7 +20,7 @@ Materialization blocks make it possible for dbt to load custom materializations 
 ```sql
 {% materialization [materialization name], ["specified adapter" | default] %}
 ...
-{% endmaterialization %}"
+{% endmaterialization %}
 ```
 
 Materializations can be given a name, and they can be tied to a specific adapter. dbt will pick the materialization tied to the currently-in-use adapter if one exists, or it will fall back to the `default` adapter. In practice, this looks like:

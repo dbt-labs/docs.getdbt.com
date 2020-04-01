@@ -356,5 +356,5 @@ Schema tests and custom data tests can be run with the `dbt test` command as sho
 ```shell
 dbt test           # run schema + data tests
 dbt test --schema  # run only schema tests
-dbt test --data    # run only data tests"
+dbt test --data    # run only data tests
 ```

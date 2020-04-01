@@ -37,7 +37,7 @@ models:
       base:
         materialized: ephemeral
 
-      ..."
+      ...
 ```
 
 ### 2. Configuring a specific model .sql file
@@ -89,7 +89,7 @@ dbt provides the ability to run arbitrary commands against the database before a
 models:
   project-name:
     pre-hook:       # custom SQL
-    post-hook:      # custom SQL"
+    post-hook:      # custom SQL
 ```
 
 Hooks are extremely powerful, allowing model authors to perform tasks such as inserting records into audit tables, executing `GRANT` statements, and running `VACUUM` commands, among others. To learn more about hooks and see examples, see [our guide on using hooks](hooks).

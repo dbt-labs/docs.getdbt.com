@@ -38,7 +38,7 @@ models:
       base:
         materialized: ephemeral
 
-      ..."
+      ...
 ```
 
 

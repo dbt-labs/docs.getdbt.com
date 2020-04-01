@@ -44,7 +44,7 @@ models:
 seeds:
     project-name:
         pre-hook: "-- some prehook sql here"
-        post-hook: "grant select on {{ this }} to db_reader""
+        post-hook: "grant select on {{ this }} to db_reader"
 ```
 
 Model-level hook configuration applies, like all configuration, to the scope in which it is defined in the model hierarchy. Model hooks can also be configured within a given model as shown below. Note that the `pre-hook` and `post-hook` keywords both contain `-` characters making them invalid identifiers. Instead, use the keys `pre_hook` and `post_hook` to specific hooks inside of a model `config` block:
@@ -73,7 +73,7 @@ The `pre_hook` and `post_hook` aliases are new in dbt v0.12.2. If you're using a
       "grant select on {{ this }} to db_reader"
     ]
   )
-}}"
+}}
 ```
 
 Hooks are extremely powerful, allowing analysts to perform tasks such as inserting records into audit tables, executing `GRANT` statements, and running `VACUUM` commands, among others. 
@@ -89,7 +89,7 @@ models:
 
 seeds:
     project-name:
-        post-hook: "grant select on {{this}} to looker_user""
+        post-hook: "grant select on {{this}} to looker_user"
 ```
 
 Alternately, configure this as a post-run hook:
@@ -97,7 +97,7 @@ Alternately, configure this as a post-run hook:
 ```yaml
 on-run-end:
     - 'grant usage on schema "{{ target.schema }}" to db_reader'
-    - 'grant select on all tables in schema "{{ target.schema }}" to db_reader'"
+    - 'grant select on all tables in schema "{{ target.schema }}" to db_reader'
 ```
 
 ### Using hooks to create an audit table
@@ -108,7 +108,7 @@ Here's an example of how to use hooks to insert records into an audit table for 
 models:
   project-name:
     pre-hook: "insert into _dbt.audit (event_name, event_timestamp, event_schema, event_model) values ( 'starting model deployment', getdate(), '{{this.schema}}', '{{this.name}}')"
-    post-hook: "insert into _dbt.audit (event_name, event_timestamp, event_schema, event_model) values ( 'completed model deployment', getdate(), '{{this.schema}}', '{{this.name}}')""
+    post-hook: "insert into _dbt.audit (event_name, event_timestamp, event_schema, event_model) values ( 'completed model deployment', getdate(), '{{this.schema}}', '{{this.name}}')"
 ```
 
 ### Using hooks to vacuum
@@ -127,7 +127,7 @@ Importantly, Redshift (and Postgres) require that `vacuum` and `analyze` run out
   )
 }}
 
-select ..."
+select ...
 ```
 
 It's possible to use this strategy to perform other database maintenance tasks on dbt models such as `analyze`.
