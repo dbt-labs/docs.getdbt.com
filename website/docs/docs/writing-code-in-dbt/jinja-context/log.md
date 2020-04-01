@@ -18,5 +18,5 @@ Logs a line to either the log file or stdout.
 
 	{{ log("Running some_macro: " ~ arg1 ~ ", " ~ arg2) }}
 
-{% endmacro %}"
+{% endmacro %}
 ```

@@ -35,7 +35,7 @@ dbt-sqlserver:
       user: [username]
       password: [password]
       database: [database]
-      schema: [schema]"
+      schema: [schema]
 ```
 
 

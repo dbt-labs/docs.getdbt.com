@@ -68,7 +68,7 @@ version: 1.0.0
 ...
 
 query-comment: "run by {{ target.user }} in dbt"
-```
+``
 
 </File>
 
@@ -108,7 +108,7 @@ version: 1.0.0
 
 ...
 
-query-comment: "{{ my_comment() }}"
+query-comment: "{{ my_comment() }}
 ```
 
 </File>

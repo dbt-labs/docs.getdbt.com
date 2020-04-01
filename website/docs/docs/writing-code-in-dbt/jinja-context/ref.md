@@ -39,5 +39,5 @@ The `{{ ref }}` function returns a `Relation` object that has the same `table`, 
 There is also a two-argument variant of the `ref` function. With this variant, you can pass both a package name and model name to `ref` to avoid ambiguity. This functionality is not commonly required for typical dbt usage.
 
 ```sql
-select * from {{ ref('package_name', 'model_name') }}"
+select * from {{ ref('package_name', 'model_name') }}
 ```

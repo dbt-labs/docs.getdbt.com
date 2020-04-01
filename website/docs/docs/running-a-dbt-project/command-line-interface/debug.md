@@ -11,5 +11,5 @@ The `--config-dir` option to `dbt debug` will show you where your `.dbt` configu
 $ dbt debug --config-dir
 To view your profiles.yml file, run:
 
-open /Users/alice/.dbt"
+open /Users/alice/.dbt
 ```

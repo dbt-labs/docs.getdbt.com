@@ -261,7 +261,7 @@ order by 1
 
 {{ return(results_list) }}
 
-{% endmacro %}"
+{% endmacro %}
 ```
 
 There's a few tricky pieces in here:

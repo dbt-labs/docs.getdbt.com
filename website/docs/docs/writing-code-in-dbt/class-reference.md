@@ -167,5 +167,4 @@ The execution of a resource in dbt generates a Result object. This object contai
     },
     'required': ['node'],
 }
-"
 ```

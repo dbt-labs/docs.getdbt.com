@@ -108,15 +108,12 @@ In SQL, you don't need to quote the column name when selecting a column. However
 {{ dbt_utils.surrogate_key('id', "'2000-01-01'") }}
 -- e.g. to pass a reserved column name that you need to quote
 {{ dbt_utils.surrogate_key('"name"', 'valid_from') }}
-
-
-"
 ```
 
 Chances are, you're already using this pattern without realizing it! The `ref` function is also a Jinja expression, and is normally passed a string.
 
 ```sql
-select * from {{ ref('users') }}"
+select * from {{ ref('users') }}
 ```
 
 ### Quoting in Jinja + YAML
@@ -136,7 +133,7 @@ models:
     schema: {{ env_var('DBT_SCHEMA') }}
     
     # ✅ This works
-    schema: "{{ env_var('DBT_SCHEMA') }}"
+    schema: "{{ env_var('DBT_SCHEMA') }}
 ```
 
 </File>
@@ -182,7 +179,7 @@ As we saw above, once you're within an expression or statement (i.e. within `{% 
 
 -- ✅ This is the correct way to reference {{ payment_methods }}
 {{ get_payment_method_amounts(payment_methods) }}
-..."
+...
 ```
 
 It may sound silly, but we tend to explain this rule of thumb as "once you're in Jinja-land, there's no need to re-enter it".
@@ -204,7 +201,6 @@ It may sound silly, but we tend to explain this rule of thumb as "once you're in
 {% for payment_methods in payment_methods %}
 ...
 {% endfor %}
-"
 ```
 
 ### Reducing whitespace

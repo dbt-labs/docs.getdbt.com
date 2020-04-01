@@ -136,7 +136,7 @@ create or replace table my_database.my_schema.my_table as (
   
 );
 
- alter table my_database.my_schema.my_table cluster by (session_start);"
+ alter table my_database.my_schema.my_table cluster by (session_start);
 ```
 
 ### Automatic clustering
@@ -174,7 +174,7 @@ models:
       snowflake_warehouse: "EXTRA_LARGE"
       
 snapshots:
-  snowflake_warehouse: "EXTRA_LARGE""
+  snowflake_warehouse: "EXTRA_LARGE"
 ```
 
 ## Copying grants

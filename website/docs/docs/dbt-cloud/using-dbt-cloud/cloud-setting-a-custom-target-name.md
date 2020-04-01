@@ -12,7 +12,7 @@ from a_big_table
 -- limit the amount of data queried in dev
 {% if target.name != 'prod' %}
 where created_at > date_trunc('month', current_date)
-{% endif %}"
+{% endif %}
 ```
 
 To set a custom target name for a job in dbt Cloud, configure the "Target Name" field for you job in the Job Settings page.

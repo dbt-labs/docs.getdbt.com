@@ -45,5 +45,5 @@ ipdb> l 9,12
       9     l_0_debug = resolve('debug')
      10     l_0_source = resolve('source')
      11     pass
-     12     yield '%s\nselect * from %s' % ("
+     12     yield '%s\nselect * from %s' % (
 ```
