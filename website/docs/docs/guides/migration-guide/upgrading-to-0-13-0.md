@@ -13,12 +13,12 @@ Use `{{ target }}` or an [`on-run-end` context variable](on-run-end-context) ins
 ### Adapter methods
 
 A number of materialization-specific adapter methods have changed in breaking ways. If you use these adapter methods in your macros or materializations, you may need to update your code accordingly.
-  - query_for_existing - **removed**, use [get_relation](adapter/#get_relation) instead.
-  - [get_missing_columns](adapter/#get_missing_columns) - changed to take `Relation`s instead of schemas and identifiers
-  - [expand_target_column_types](adapter#expand_target_column_types) - changed to take a `Relation` instead of schema, identifier
-  - [get_relation](adapter/#get_relation) - added a `database` argument
-  - [create_schema](adapter#create_schema) - added a `database` argument
-  - [drop_schema](adapter#drop_schema) - added a `database` argument
+  - query_for_existing - **removed**, use [get_relation](docs/adapter/#get_relation) instead.
+  - [get_missing_columns](docs/adapter/#get_missing_columns) - changed to take `Relation`s instead of schemas and identifiers
+  - [expand_target_column_types](docs/adapter#expand_target_column_types) - changed to take a `Relation` instead of schema, identifier
+  - [get_relation](docs/adapter/#get_relation) - added a `database` argument
+  - [create_schema](docs/adapter#create_schema) - added a `database` argument
+  - [drop_schema](docs/adapter#drop_schema) - added a `database` argument
 
 ## End of support
 
