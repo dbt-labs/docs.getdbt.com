@@ -32,7 +32,7 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 ```yaml
 packages:
   - package: fishtown-analytics/snowplow
-    version: 0.7.
+    version: 0.7.0
     
   - git: "https://github.com/fishtown-analytics/dbt-utils.git"
     revision: 0.1.21
