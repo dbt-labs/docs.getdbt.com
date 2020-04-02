@@ -11,4 +11,4 @@ To run this yourself:
 ## Notes
 * When using markdown links, you can use file paths relative to the current file, or, relative to the `website/docs/` directory, e.g. `[my link text](faqs/available-configurations.md)`.
     * For FAQs: use the file path relative to the `docs` directory (since it may have to be resolved from different paths).
-    * Otherwise: use the relative filepath (less changes required if we rename a directory)
+    * Otherwise: use the relative filepath (fewer changes required if we rename a directory)
