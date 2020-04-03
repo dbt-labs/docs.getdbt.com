@@ -14,8 +14,8 @@ When materializing a model as `table`, you may include several optional configs:
 |---------|----------------------------------------------------|-------------------------|--------------------------|
 | file_format | The file format to use when creating tables (`parquet`, `delta`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`). | Optional | `parquet`|
 | location_root  | The created table uses the specified directory to store its data. The table alias is appended to it. | Optional                | `/mnt/root`              |
-| partition_by  | Partition the created table by the specified columns. A directory is created for each partition. | Optional                | `partition_1`              |
-| clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns. | Optional               | `cluster_1`              |
+| partition_by  | Partition the created table by the specified columns. A directory is created for each partition. | Optional                | `date_day`              |
+| clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns. | Optional               | `country_code`              |
 | buckets  | The number of buckets to create while clustering | Required if `clustered_by` is specified                | `8`              |
 
 ## Incremental Models
@@ -125,7 +125,7 @@ dbt will run an [atomic `merge` statement](https://docs.databricks.com/spark/lat
   defaultValue="source"
   values={[
     { label: 'Source code', value: 'source', },
-    { label: 'Compiled code', value: 'compiled', },
+    { label: 'Run code', value: 'run', },
   ]
 }>
 <TabItem value="source">

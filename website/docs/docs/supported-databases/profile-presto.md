@@ -30,10 +30,10 @@ my-presto-db:
 
 ## Installation and Distribution
 
-dbt's Presto adapter is managed in its own repository, [dbt-presto](https://github.com/fishtown-analytics/dbt-presto). To use the Presto adapter, you must install the `dbt-presto` package in addition to installing `dbt` on your system.
+dbt's Presto adapter is managed in its own repository, [dbt-presto](https://github.com/fishtown-analytics/dbt-presto). To use the Presto adapter, you must install the `dbt-presto` plugin:
 
 ### Using pip
-The following command will install `dbt-presto` as well as `dbt-core`.
+The following command will install the latest version of `dbt-presto` as well as the requisite version of `dbt-core`:
 
 ```
 pip install dbt-presto
@@ -41,7 +41,7 @@ pip install dbt-presto
 
 ## Caveats
 
-### Supported Functionality
+### Unsupported Functionality
 
 Due to the nature of Presto, not all core dbt functionality is supported. The following features of dbt are not implemented on Presto:
 
