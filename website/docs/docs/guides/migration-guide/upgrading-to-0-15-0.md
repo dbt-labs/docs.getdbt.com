@@ -20,7 +20,7 @@ expect this field will now return errors. See the latest
 
 ### Custom materializations
 
-All materializations must now [manage dbt's Relation cache](creating-new-materializations#section-6-update-the-relation-cache).
+All materializations must now [manage dbt's Relation cache](creating-new-materializations#update-the-relation-cache).
 
 ### dbt Server
 
@@ -34,7 +34,7 @@ dbt v0.15.0 removes support for for Python 2.x, [as it will no longer be support
 If you are installing dbt in a Python environment alongside other Python modules,
 please be mindful of the following changes to dbt's Python dependencies:
 
-- Dropped support for networkx 1.x
-- Upgraded werkzeug to 0.15.6
-- Pinned psycopg2 dependency to 2.8.x to prevent segfaults
-- Set a strict upper bound for jsonschema dependency
+- Dropped support for `networkx 1.x`
+- Upgraded `werkzeug` to `0.15.6`
+- Pinned `psycopg2` dependency to `2.8.x` to prevent segfaults
+- Set a strict upper bound for `jsonschema` dependency
