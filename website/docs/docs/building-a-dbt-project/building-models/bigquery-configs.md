@@ -353,13 +353,11 @@ select * from {{ ref('another_model') }}
 
 ## Merge behavior (incremental models)
 
-The `incremental_strategy` config controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
  - `insert_overwrite`
- 
- See also: [configuring incremental strategy](docs/configuring-incremental-models#configuring-incremental-strategy).
 
 ### Performance and cost
 

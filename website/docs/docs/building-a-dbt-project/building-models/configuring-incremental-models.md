@@ -150,13 +150,13 @@ Instead, whenever the logic of your incremental changes, execute a full-refresh 
 
 ## What is an incremental_strategy?
 
-On some adapters, the `incremental_strategy` config controls how dbt builds incremental models.
-The different approaches vary by effectiveness depending on the volume of data and the reliability
-of your `unique_key`.
+On some adapters, an optional `incremental_strategy` config controls the code that dbt uses
+to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
+the reliability of your `unique_key`, or the availability of certain features.
 
-* [Snowflake](docs/snowflake-configs/#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional)
-* [BigQuery]((docs/bigquery-configs/#merge-behavior-incremental-models)): `merge` (default), `insert_overwrite` (optional)
-* Spark: `insert_overwrite` (default), `merge` (optional, Delta-only)
+* [Snowflake](snowflake-configs/#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional)
+* [BigQuery](bigquery-configs/#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
+* [Spark](spark-configs#incremental-models): `insert_overwrite` (default), `merge` (optional, Delta-only)
 
 ### Configuring incremental strategy
 

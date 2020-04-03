@@ -20,11 +20,9 @@ When materializing a model as `table`, you may include several optional configs:
 
 ## Incremental Models
 
-The `incremental_strategy` config controls how dbt builds incremental models, and it can be set to one of two values:
+The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models, and it can be set to one of two values:
  - `insert_overwrite` (default)
  - `merge` (Delta Lake only)
- 
- See also: [configuring incremental strategies](docs/configuring-incremental-models#configuring-incremental-strategies).
 
 ### The `insert_overwrite` strategy
 
@@ -57,11 +55,7 @@ group by 1
 
 ### The `merge` strategy
 
-<Callout type="info" title="New in dbt-spark v0.15.3">
-
-This functionality is new in dbt-spark v0.15.3
-
-</Callout>
+<Callout type="info" title="New in dbt-spark v0.15.3"></Callout>
 
 There are three prerequisites for the `merge` incremental strategy:
 - Delta file format
@@ -93,11 +87,7 @@ group by 1
 
 ## Persisting model descriptions
 
-<Callout type="info" title="New in dbt-spark v0.15.3">
-
-This functionality is new in dbt-spark v0.15.3
-
-</Callout>
+<Callout type="info" title="New in dbt-spark v0.15.3"></Callout>
 
 The `persist_docs` config can be used to persist the dbt `description` supplied for a model to the resulting Spark table or view. The `persist_docs` config is not yet supported for objects other than tables and views.
 
