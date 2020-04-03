@@ -58,7 +58,7 @@ with new_events as (
     select * from {{ ref('events') }}
     
     {% if is_incremental() %}
-    where date_day::date >= date_add(current_date, -1)
+    where date_day >= date_add(current_date, -1)
     {% endif %}
     
 )
@@ -85,7 +85,7 @@ create temporary view spark_incremental__dbt_tmp as
         select * from analytics.events
         
 
-        where date_day::date >= date_add(current_date, -1)
+        where date_day >= date_add(current_date, -1)
 
         
     )
@@ -111,7 +111,9 @@ insert overwrite table analytics.spark_incremental
 ### The `merge` strategy
 
 <Callout type="info" title="New in dbt-spark v0.15.3">
+
 This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark/#installation-and-distribution)
+
 </Callout>
 
 There are three prerequisites for the `merge` incremental strategy:
@@ -145,7 +147,7 @@ with new_events as (
     select * from {{ ref('events') }}
     
     {% if is_incremental() %}
-    where date_day::date >= date_add(current_date, -1)
+    where date_day >= date_add(current_date, -1)
     {% endif %}
     
 )
@@ -172,7 +174,7 @@ create temporary view delta_incremental__dbt_tmp as
         select * from analytics.events
         
 
-        where date_day::date >= date_add(current_date, -1)
+        where date_day >= date_add(current_date, -1)
 
         
     )
@@ -201,7 +203,9 @@ merge into analytics.delta_incremental as DBT_INTERNAL_DEST
 ## Persisting model descriptions
 
 <Callout type="info" title="New in dbt-spark v0.15.3">
+
 This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark/#installation-and-distribution)
+
 </Callout>
 
 The `persist_docs` config can be used to persist the dbt `description` supplied for a model to the resulting Spark table or view. The `persist_docs` config is not yet supported for objects other than tables and views.
