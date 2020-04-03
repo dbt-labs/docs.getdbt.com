@@ -42,40 +42,9 @@ select * from ...
 
 ## Merge behavior (incremental models)
 
-The `incremental_strategy` config controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
+The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`. 
-
-This config can either be specified in specific models, or for all models in your `dbt_project.yml` file:
-
-<File name='dbt_project.yml'>
-
-```yaml
-# Your dbt_project.yml file
-
-models:
-  incremental_strategy: "delete+insert"
-```
-
-</File>
-
-or:
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(
-    materialized='incremental',
-    unique_key='id',
-    incremental_strategy='delete+insert'
-  )
-}}
-
-select ...
-```
-
-</File>
 
 ## Configuring table clustering
 

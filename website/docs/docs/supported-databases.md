@@ -16,7 +16,7 @@ These database plugins are supported by the core dbt maintainers.
 | BigQuery | [Profile Setup](profile-bigquery), [Configuration](bigquery-configs) | ✅Full Support |
 | Snowflake | [Profile Setup](profile-snowflake), [Configuration](snowflake-configs) | ✅ Full Support |
 | Presto | [Profile Setup](profile-presto) | Partial Support |
-| Spark | [Profile Setup](profile-spark) | Partial Support |
+| Spark | [Profile Setup](profile-spark), [Configuration](spark-configs) | Partial Support |
 
 ##  Community Supported dbt Plugins
 

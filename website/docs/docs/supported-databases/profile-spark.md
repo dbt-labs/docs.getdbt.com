@@ -3,7 +3,7 @@ title: "Spark"
 id: "profile-spark"
 ---
 
-## Authentication Methods
+## Connection Methods
 There are two supported connection methods for Spark targets: `http` and `thrift`.
 
 ### thrift
@@ -18,16 +18,16 @@ your_profile_name:
     dev:
       type: spark
       method: thrift
-      schema: analytics
-      host: 127.0.0.1
-      port: 10001
-      user: hadoop
+      schema: [database/schema name]
+      host: [hostname]
+      port: [port]
+      user: [user]
 ```
 
 </File>
 
 ### http
-Use the `http` method if your Spark provider supports connections over HTTP (eg. DataBricks Spark).
+Use the `http` method if your Spark provider supports connections over HTTP (e.g. Databricks).
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -38,58 +38,40 @@ your_profile_name:
     dev:
       type: spark
       method: http
-      schema: analytics
-      host: yourorg.sparkhost.com
-      port: 443
-      token: abc123
-      cluster: 01234-23423-coffeetime
+      schema: [database/schema name]
+      host: [yourorg.sparkhost.com]
+      organization: [org id]    # required if Azure Databricks, exclude if AWS Databricks
+      port: [port]
+      token: [abc123]
+      cluster: [cluster id]
+      connect_timeout: 60   # optional, default 10
+      connect_retries: 5    # optional, default 0
 ```
+
+Databricks interactive clusters can take several minutes to start up. You may 
+include the optional profile configs `connect_timeout` and `connect_retries`,
+and dbt will periodically retry the connection.
 
 </File>
 
 ## Installation and Distribution
 
-dbt's Spark adapter is managed in its own repository, [dbt-spark](https://github.com/fishtown-analytics/dbt-spark). To use the Spark adapter, you must install the `dbt-spark` package in addition to installing `dbt` on your system.
+dbt's Spark adapter is managed in its own repository, [dbt-spark](https://github.com/fishtown-analytics/dbt-spark). To use the Spark adapter, you must install the `dbt-spark` plugin.
 
 ### Using pip
-The following command will install `dbt-spark` as well as `dbt-core`.
+The following command will install the latest version of `dbt-spark` as well as the requisite version of `dbt-core`:
 
 ```
 pip install dbt-spark
 ```
-
-See the [repo](https://github.com/fishtown-analytics/dbt-spark) for the latest information on installing the dbt-spark plugin.
 
 ## Caveats
 
 ### Usage with EMR
 To connect to Spark running on an Amazon EMR cluster, you will need to run `sudo /usr/lib/spark/sbin/start-thriftserver.sh` on the master node of the cluster to start the Thrift server (see [the docs](https://aws.amazon.com/premiumsupport/knowledge-center/jdbc-connection-emr/) for more information). You will also need to connect to port 10001, which will connect to the Spark backend Thrift server; port 10000 will instead connect to a Hive backend, which will not work correctly with dbt.
 
-### Incremental Models
+### Unsupported Functionality
 
-Spark does not natively support `delete`, `update`, or `merge` statements. As such, [incremental models](configuring-incremental-models) are implemented differently than usual in this plugin. To use incremental models, specify a `partition_by` clause in your model config. dbt will use an `insert overwrite` query to overwrite the partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using incremental models.
+Not all core dbt functionality is supported. The following features of dbt are not yet implemented for the Spark plugin:
 
-<File name='spark_incremental.sql'>
-
-```sql
-{{ config(
-    materialized='incremental',
-    partition_by=['date_day'],
-    file_format='parquet'
-) }}
-
-/*
-  Every partition returned by this query will be overwritten
-  when this model runs
-*/
-
-select
-    date_day,
-    count(*) as users
-
-from {{ ref('events') }}
-where date_day::date >= '2019-01-01'
-group by 1
-```
-
-</File>
+1. [Snapshots](snapshots) 

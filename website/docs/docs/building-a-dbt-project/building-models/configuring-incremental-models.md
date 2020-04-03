@@ -147,3 +147,47 @@ If you add a column from your incremental model, and execute a `dbt run`, this c
 Similarly, if you remove a column from your incremental model, and execute a `dbt run`, this column will _not_ be removed from your target table.
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
+
+## What is an incremental_strategy?
+
+On some adapters, an optional `incremental_strategy` config controls the code that dbt uses
+to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
+the reliability of your `unique_key`, or the availability of certain features.
+
+* [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional)
+* [BigQuery](bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
+* [Spark](spark-configs#incremental-models): `insert_overwrite` (default), `merge` (optional, Delta-only)
+
+### Configuring incremental strategy
+
+The `incremental_strategy` config can either be specified in specific models, or
+for all models in your `dbt_project.yml` file:
+
+<File name='dbt_project.yml'>
+
+```yaml
+# Your dbt_project.yml file
+
+models:
+  incremental_strategy: "insert_overwrite"
+```
+
+</File>
+
+or:
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized='incremental',
+    incremental_strategy='insert_overwrite',
+    ...
+  )
+}}
+
+select ...
+```
+
+</File>
