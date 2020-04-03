@@ -112,7 +112,7 @@ insert overwrite table analytics.spark_incremental
 
 <Callout type="info" title="New in dbt-spark v0.15.3">
 
-This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark/#installation-and-distribution)
+This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark#installation-and-distribution)
 
 </Callout>
 
@@ -204,7 +204,7 @@ merge into analytics.delta_incremental as DBT_INTERNAL_DEST
 
 <Callout type="info" title="New in dbt-spark v0.15.3">
 
-This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark/#installation-and-distribution)
+This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark#installation-and-distribution)
 
 </Callout>
 
