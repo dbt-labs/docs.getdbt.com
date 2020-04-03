@@ -179,8 +179,11 @@ module.exports = {
         label: "Migration Guides",
         items: [
           "docs/guides/migration-guide/upgrading-from-0-10-to-0-11",
+          "docs/guides/migration-guide/upgrading-to-0-12-0",
+          "docs/guides/migration-guide/upgrading-to-0-13-0",
           "docs/guides/migration-guide/upgrading-to-014",
           "docs/guides/migration-guide/upgrading-to-0-14-1",
+          "docs/guides/migration-guide/upgrading-to-0-15-0",
           "docs/guides/migration-guide/upgrading-to-0-16-0"
         ]
       },
