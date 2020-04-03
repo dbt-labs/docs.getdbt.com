@@ -46,36 +46,7 @@ The `incremental_strategy` config controls how dbt builds incremental models. By
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`. 
 
-This config can either be specified in specific models, or for all models in your `dbt_project.yml` file:
-
-<File name='dbt_project.yml'>
-
-```yaml
-# Your dbt_project.yml file
-
-models:
-  incremental_strategy: "delete+insert"
-```
-
-</File>
-
-or:
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(
-    materialized='incremental',
-    unique_key='id',
-    incremental_strategy='delete+insert'
-  )
-}}
-
-select ...
-```
-
-</File>
+See also: [configuring incremental strategy](docs/configuring-incremental-models#configuring-incremental-strategy).
 
 ## Configuring table clustering
 

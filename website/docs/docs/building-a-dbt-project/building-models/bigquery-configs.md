@@ -358,6 +358,8 @@ The `incremental_strategy` config controls how dbt builds incremental models. db
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
  - `insert_overwrite`
+ 
+ See also: [configuring incremental strategy](docs/configuring-incremental-models#configuring-incremental-strategy).
 
 ### Performance and cost
 
@@ -390,6 +392,12 @@ This can be slow and costly if the incremental model is transforming very large 
 strategy is selected.
 
 ### The `insert_overwrite` strategy
+
+<Callout type="info" title="New in dbt v0.16.0">
+
+This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](installation)
+
+</Callout>
 
 The `insert_overwrite` strategy generates a merge statement that replaces entire partitions
 in the destination table. **Note:** this configuration requires that the model is configured
@@ -523,37 +531,3 @@ with events as (
 
 ... rest of model ...
 ```
-
-### Configuring incremental strategy
-
-The `incremental_strategy` config can either be specified in specific models, or
-for all models in your `dbt_project.yml` file:
-
-<File name='dbt_project.yml'>
-
-```yaml
-# Your dbt_project.yml file
-
-models:
-  incremental_strategy: "insert_overwrite"
-```
-
-</File>
-
-or:
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(
-    materialized='incremental',
-    incremental_strategy='insert_overwrite',
-    ...
-  )
-}}
-
-select ...
-```
-
-</File>
