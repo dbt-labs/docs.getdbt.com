@@ -15,7 +15,9 @@ my-presto-db:
   outputs:
     dev:
       type: presto
-      method: none # One of {none | kerberos}
+      method: none  # optional, one of {none | ldap | kerberos}
+      user: [user]
+      password: [password]  # required if method is ldap or kerberos
       database: [database name]
       host: [hostname]
       port: [port number]

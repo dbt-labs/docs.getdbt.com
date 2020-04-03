@@ -44,7 +44,8 @@ module.exports = {
           "docs/building-a-dbt-project/building-models/using-sql-headers",
           "docs/building-a-dbt-project/building-models/snowflake-configs",
           "docs/building-a-dbt-project/building-models/redshift-configs",
-          "docs/building-a-dbt-project/building-models/bigquery-configs"
+          "docs/building-a-dbt-project/building-models/bigquery-configs",
+          "docs/building-a-dbt-project/building-models/spark-configs"
         ]
       },
       "docs/building-a-dbt-project/hooks",
