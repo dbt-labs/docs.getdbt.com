@@ -8,10 +8,14 @@ id: "dont-nest-your-curlies"
 **Don't Nest Your Curlies**
 
 > If dbt errors out early
-and your models are building quite poorly
-don't post to the slack
-just take a step back
-and check if you're nesting your curlies.
+>
+> and your models are building quite poorly
+>
+> don't post to the slack
+>
+> just take a step back
+>
+> and check if you're nesting your curlies.
 
 ### Jinja
 
@@ -21,11 +25,11 @@ When writing jinja code in a dbt project, it may be tempting to nest expressions
   {{ dbt_utils.date_spine(
       datepart="day",
       start_date=[ USE JINJA HERE ]
-      ) 
-  }}   
+      )
+  }}
 ```
 
-To nest a jinja expression inside of another jinja expression, simply place the desired code (without curly brackets) directly into the expression. 
+To nest a jinja expression inside of another jinja expression, simply place the desired code (without curly brackets) directly into the expression.
 
 **Correct example**
 Here, the return value of the `var()` context method is supplied as the `start_date` argument to the `date_spine` macro. Great!
@@ -34,8 +38,8 @@ Here, the return value of the `var()` context method is supplied as the `start_d
   {{ dbt_utils.date_spine(
       datepart="day",
       start_date=var('start_date')
-      ) 
-  }}   
+      )
+  }}
 ```
 
 **Incorrect example**
@@ -47,8 +51,8 @@ Here, the return value of the `var()` context method is supplied as the `start_d
   {{ dbt_utils.date_spine(
       datepart="day",
       start_date="{{ var('start_date') }}"
-      ) 
-  }}   
+      )
+  }}
 ```
 
 ### An exception
