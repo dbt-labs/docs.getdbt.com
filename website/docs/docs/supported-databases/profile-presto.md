@@ -48,7 +48,7 @@ Due to the nature of Presto, not all core dbt functionality is supported. The fo
 1. [Snapshots](snapshots) 
 2. [Incremental models](configuring-incremental-models)
 
-If you are interested in helping to add support for this functionality in dbt on Presto, please [open an issue](https://github.com/fishtown-analytics/dbt/issues/new)
+If you are interested in helping to add support for this functionality in dbt on Presto, please [open an issue](https://github.com/fishtown-analytics/dbt-presto/issues/new).
 
 ### Required configuration
 
