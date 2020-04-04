@@ -32,6 +32,19 @@ a.hash-link:hover
     color: black;
 }
 
+pre {
+    font-size: 14px !important;
+}
+
+a.code-link {
+    color: #3578e5 !important;
+    cursor: pointer;
+}
+
+a.code-link:hover {
+    text-decoration: underline;
+}
+
 nav.navbar,
 div.navbar-sidebar__brand
 {
