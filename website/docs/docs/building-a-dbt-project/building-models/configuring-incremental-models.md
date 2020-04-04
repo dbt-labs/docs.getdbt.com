@@ -68,6 +68,24 @@ For more complex incremental models that make use of CTEs, you should consider t
 
 </Callout>
 
+### Strategies for filtering rows in incremental models
+
+There are three common strategies for filtering rows in incremental models. This is not an exhaustive list but describe some of the most common patterns which can be employed individually or in combination with one other:
+
+1. The filter may compare and ID column or primary key in the source data with the current model 9using `{{this}}` to identify new rows. This works very well _append only_ data such as event logs.
+2. The filter may compare a `created` or `modified` date in the source data to either a `max()` value in the existing table (or some offset from it), or to some offset from the `current_timestamp`. This approach identifies any rows which have changed or have been created in some sliding window. This works very well for source data which has reliable timestamps and where old data can be assumed to reliably be static. The approach of intentionally reprocessing even apparently unchanged data within that window managed the risk of potentially _late arriving_ data.
+3. The filter checks some calculated field in the source data which identifies a subset which may be subject to change, such as an `active` flag. This is the most flexible approach, but also the most complex. It can work particularly well so mitigate some of the challenges of managing window functions in incremental models, but has the downside of potentially being less understandable without appropriate documentation.
+
+<Callout type="warning" title="Window functions and incremental models">
+
+When using window functions in a model that is incremental, be aware that when running the incremental updates, that the only rows available to that function will be the ones not already filtered out by any `is_incremental()` macros which are present. Either avoid filtering before a window function, filter in a more selective way or employ some more advanced strategies for approximating your window function using existing data using `{{this}}`.
+
+As an example, a windowed `RANK()` function could be approximated when running incrementally using a `RANK() + (select max(existing_column) from {{this}})` pattern if you know that newly added rows will always be higher in the rank than existing rows.
+
+More advanced strategies such as this introduce extra complexity into your models and so consider whether the performance gains are worth the trade-off in readability, or consider applying appropriate tests to your model to ensure any issues are flagged. For a more in depth look at some of the challenges of incremental models check out [this post on discourse](https://discourse.getdbt.com/t/on-the-limits-of-incrementality/303).
+
+</Callout>
+
 ### Defining a uniqueness constraint (optional)
 `unique_key` is an optional parameter for incremental models that specifies a field which should be unique within your model. If the unique key of existing row in your target table matches a row in your incrementally transformed rows, the existing row will be updated. This ensures that you don't have multiple rows in your target table for a single row in your source data.
 
