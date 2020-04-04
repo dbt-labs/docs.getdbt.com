@@ -35,8 +35,6 @@ function consumeLink(tokens) {
             linkToken.content = link;
 
             let rest = tokens.slice(i + 1);
-            console.log("linkToken", linkToken);
-            console.log("rest", rest);
             return [ [linkToken], rest ];
         }
     };
@@ -51,7 +49,6 @@ export default function squashLinks(lineTokens) {
 
   while (rest.length > 0) {
       let [ consumed, remaining ] = consumeLink(rest);
-      console.log("meep", consumed, remaining)
       rest = remaining;
       squashed = squashed.concat(consumed);
   }
