@@ -29,10 +29,14 @@ test-paths: [directorypath]
 analysis-paths: [directorypath]
 macro-paths: [directorypath]
 snapshot-paths: [directorypath]
+docs-paths: [directorypath]
+modules-path: [directorypath]
 
 target-path: directorypath
 log-path: directorypath
 modules-path: directorypath
+
+project_root: ??
 
 clean-targets: [directorypath]
 
