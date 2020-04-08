@@ -9,7 +9,7 @@ module.exports = {
       "docs/supported-databases/profile-bigquery",
       "docs/supported-databases/profile-presto",
       "docs/supported-databases/profile-spark",
-      "docs/supported-databases/profile-mssql"
+      "docs/supported-databases/profile-mssql",
       //"docs/introduction/supported-databases/redshift-v2"
     ],
     "Building a dbt Project": [
@@ -22,10 +22,10 @@ module.exports = {
           "docs/building-a-dbt-project/dbt-projects/use-an-existing-project",
           "docs/building-a-dbt-project/dbt-projects/configuring-quoting",
           "docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions",
-          "docs/building-a-dbt-project/dbt-projects/configuring-query-comments"
+          "docs/building-a-dbt-project/dbt-projects/configuring-query-comments",
           //"docs/building-a-dbt-project/dbt-projects/configuring-resources-from-the-project-file",
           //"docs/building-a-dbt-project/dbt-projects/dbt_projectyml-file",
-        ]
+        ],
       },
       {
         type: "category",
@@ -45,8 +45,8 @@ module.exports = {
           "docs/building-a-dbt-project/building-models/snowflake-configs",
           "docs/building-a-dbt-project/building-models/redshift-configs",
           "docs/building-a-dbt-project/building-models/bigquery-configs",
-          "docs/building-a-dbt-project/building-models/spark-configs"
-        ]
+          "docs/building-a-dbt-project/building-models/spark-configs",
+        ],
       },
       "docs/building-a-dbt-project/hooks",
       "docs/building-a-dbt-project/seeds",
@@ -60,14 +60,14 @@ module.exports = {
           "docs/building-a-dbt-project/testing-and-documentation/documentation-website",
           "docs/building-a-dbt-project/testing-and-documentation/documentation",
           "docs/building-a-dbt-project/testing-and-documentation/schemayml-files",
-          "docs/building-a-dbt-project/testing-and-documentation/testing"
-        ]
+          "docs/building-a-dbt-project/testing-and-documentation/testing",
+        ],
       },
       //"docs/building-a-dbt-project/dont-nest-your-curlies",
       "docs/building-a-dbt-project/using-sources",
       //"docs/building-a-dbt-project/archival",
       "docs/building-a-dbt-project/using-operations",
-      "docs/building-a-dbt-project/package-management"
+      "docs/building-a-dbt-project/package-management",
     ],
     "Writing Code in dbt": [
       "docs/writing-code-in-dbt/getting-started-with-jinja",
@@ -109,7 +109,7 @@ module.exports = {
           "docs/writing-code-in-dbt/jinja-context/profiles-yml-context",
           "docs/writing-code-in-dbt/jinja-context/dbt-project-yml-context",
           "docs/writing-code-in-dbt/jinja-context/on-run-end-context",
-        ]
+        ],
       },
       "docs/writing-code-in-dbt/class-reference",
       {
@@ -117,9 +117,9 @@ module.exports = {
         label: "Extending dbt's Programming Environment",
         items: [
           "docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations",
-          "docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests"
-        ]
-      }
+          "docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests",
+        ],
+      },
     ],
     "Running a dbt Project": [
       {
@@ -144,8 +144,8 @@ module.exports = {
           "docs/running-a-dbt-project/command-line-interface/source",
           "docs/running-a-dbt-project/command-line-interface/test",
           "docs/running-a-dbt-project/command-line-interface/version",
-          "docs/running-a-dbt-project/command-line-interface/exit-codes"
-        ]
+          "docs/running-a-dbt-project/command-line-interface/exit-codes",
+        ],
       },
       "docs/running-a-dbt-project/using-the-dbt-ide",
       {
@@ -163,13 +163,13 @@ module.exports = {
               "docs/running-a-dbt-project/using-the-command-line-interface/windows",
               "docs/running-a-dbt-project/using-the-command-line-interface/ubuntu-debian",
               "docs/running-a-dbt-project/using-the-command-line-interface/centos",
-              "docs/running-a-dbt-project/using-the-command-line-interface/install-from-source"
-            ]
-          }
-        ]
+              "docs/running-a-dbt-project/using-the-command-line-interface/install-from-source",
+            ],
+          },
+        ],
       },
       "docs/running-a-dbt-project/dbt-api",
-      "docs/running-a-dbt-project/running-dbt-in-production"
+      "docs/running-a-dbt-project/running-dbt-in-production",
     ],
     Guides: [
       "docs/guides/best-practices",
@@ -185,16 +185,16 @@ module.exports = {
           "docs/guides/migration-guide/upgrading-to-014",
           "docs/guides/migration-guide/upgrading-to-0-14-1",
           "docs/guides/migration-guide/upgrading-to-0-15-0",
-          "docs/guides/migration-guide/upgrading-to-0-16-0"
-        ]
+          "docs/guides/migration-guide/upgrading-to-0-16-0",
+        ],
       },
-      "docs/guides/videos"
+      "docs/guides/videos",
       //"docs/guides/database-specific-guides/creating-date-partitioned-tables", // deprecated
     ],
     Contributing: [
       "docs/contributing/contributor-license-agreements",
       "docs/contributing/building-a-new-adapter",
-      "docs/contributing/slack-rules-of-the-road"
+      "docs/contributing/slack-rules-of-the-road",
     ],
     "dbt Cloud": [
       "docs/dbt-cloud/cloud-overview",
@@ -210,8 +210,8 @@ module.exports = {
           "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
           "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions",
           "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users",
-          "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions"
-        ]
+          "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions",
+        ],
       },
       {
         type: "category",
@@ -222,8 +222,8 @@ module.exports = {
           "docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness",
           "docs/dbt-cloud/using-dbt-cloud/artifacts",
           "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
-          "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name"
-        ]
+          "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
+        ],
       },
       {
         type: "category",
@@ -233,20 +233,31 @@ module.exports = {
           "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta",
           "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
           "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
-          "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth"
-        ]
+          "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+        ],
+      },
+      {
+        type: "category",
+        label: "On-Premises",
+        items: [
+          "docs/dbt-cloud/on-premises/index",
+          "docs/dbt-cloud/on-premises/prerequisites",
+          "docs/dbt-cloud/on-premises/system-requirements",
+          "docs/dbt-cloud/on-premises/installation",
+          "docs/dbt-cloud/on-premises/setup",
+        ],
       },
       "docs/dbt-cloud/cloud-changelog",
     ],
-    About: ["docs/about/license", "docs/about/viewpoint"]
+    About: ["docs/about/license", "docs/about/viewpoint"],
   },
   reference: {
-    "Configurations": [
+    Configurations: [
       "reference/dbt_project.yml",
       "reference/model-configs",
       "reference/seed-configs",
-      "reference/snapshot-configs"
-    ]
+      "reference/snapshot-configs",
+    ],
   },
   tutorial: {
     "Getting Started": [
@@ -256,13 +267,13 @@ module.exports = {
         label: "Create a project",
         items: [
           "tutorial/create-a-project-dbt-cloud",
-          "tutorial/create-a-project-dbt-cli"
-        ]
+          "tutorial/create-a-project-dbt-cli",
+        ],
       },
       "tutorial/build-your-first-models",
       "tutorial/test-and-document-your-project",
-      "tutorial/deploy-your-project"
-    ]
+      "tutorial/deploy-your-project",
+    ],
   },
   learn: {
     "Getting Started": [
@@ -272,11 +283,11 @@ module.exports = {
         label: "Create a project",
         items: [
           "learn/create-a-project-dbt-cloud",
-          "learn/create-a-project-dbt-cli"
-        ]
+          "learn/create-a-project-dbt-cli",
+        ],
       },
       "learn/build-your-first-models",
-      "learn/test-and-document-your-project"
-    ]
-  }
+      "learn/test-and-document-your-project",
+    ],
+  },
 };
