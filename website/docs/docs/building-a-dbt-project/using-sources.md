@@ -296,6 +296,9 @@ $ dbt source snapshot-freshness --select snowplow
 
 # Snapshot freshness for a particular source table:
 $ dbt source snapshot-freshness --select snowplow.event
+
+# Snapshot freshness for multiple particular source tables:
+$ dbt source snapshot-freshness --select snowplow.event snowplow.web_page
 ```
 
 See the [sources reference](source) for more information on the `dbt source snapshot-freshness` command.
