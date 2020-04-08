@@ -70,7 +70,7 @@ function expandRelativeLink(href, ignoreInvalid) {
 }
 
 
-function CheckedLink({children, href, ignoreInvalid}) {
+function CheckedLink({children, href, ignoreInvalid, className}) {
   var style = {};
   const {bad, link} = expandRelativeLink(href, ignoreInvalid);
   if (bad) {
@@ -78,7 +78,7 @@ function CheckedLink({children, href, ignoreInvalid}) {
   }
 
   return (
-      <Link style={style} href={link}>{children}</Link>
+      <Link className={className} style={style} href={link}>{children}</Link>
   );
 }
 

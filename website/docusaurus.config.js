@@ -23,6 +23,7 @@ module.exports = {
 
     prism: {
       theme: require('prism-react-renderer/themes/nightOwl'),
+      additionalLanguages: ['bash', 'shell'],
     },
     navbar: {
       logo: {

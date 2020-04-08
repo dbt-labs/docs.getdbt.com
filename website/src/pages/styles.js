@@ -7,6 +7,7 @@ import classnames from 'classnames';
 
 import {MDXProvider} from '@mdx-js/react';
 import MDXComponents from '@theme/MDXComponents';
+import CodeBlock from '@theme/CodeBlock';
 
 import Alert from '@site/src/components/alert';
 import Callout from '@site/src/components/callout';
@@ -33,6 +34,19 @@ function Styles() {
                 so there is no need to import them from Markdown files. Simply add the components
                 inline to use them.
                 </p>
+            </div>
+            <div className='section' style={{marginTop: '40px'}}>
+                <h1>Linked Markdown Code Blocks</h1>
+<pre>{`
+\`\`\`
+[view the license](license)
+\`\`\`
+`}</pre>
+            <CodeBlock>
+\`\`\`
+[view the license](license)
+\`\`\`
+            </CodeBlock>
             </div>
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>Alert</h1>
