@@ -31,7 +31,7 @@ Kotsadm: http://<IP address of instance>:8800
 Login with password (will not be shown again): <password>
 ```
 
-Write down the generated password here. You will need it to log into the admin console. **If you lose this password, you will lose access to the admin console!**
+Record the generated password somewhere safe. You will need it to log into the admin console. **If you lose this password, you will lose access to the admin console!**
 
 ### Installation into an existing Kubernetes cluster
 
