@@ -53,7 +53,7 @@ kubectl kots install dbt-cloud-v1
 
 The installer will immediately prompt you for a namespace to deploy both kotsadm and dbt Cloud into. You can select any namespace you like. All resources (except for a `ClusterRole` for kotsadm) will be installed into the namespace you select.
 
-Next, you will be prompted for a password to use to secure the admin console. Remember this password, you will need it to manage the dbt Cloud appliance. **If you lose this password, you will lose access to the admin console!**
+Next, you will be prompted for a password to use to secure the admin console. Record the generated password somewhere safe, as you will need it to manage the dbt Cloud appliance. **If you lose this password, you will lose access to the admin console!**
 
 After installation is complete, you can serve the admin console on a local machine by running:
 
