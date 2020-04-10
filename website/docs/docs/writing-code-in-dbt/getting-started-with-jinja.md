@@ -133,7 +133,7 @@ models:
     schema: {{ env_var('DBT_SCHEMA') }}
     
     # ✅ This works
-    schema: "{{ env_var('DBT_SCHEMA') }}
+    schema: "{{ env_var('DBT_SCHEMA') }}"
 ```
 
 </File>
