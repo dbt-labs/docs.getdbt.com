@@ -204,7 +204,7 @@ It may sound silly, but we tend to explain this rule of thumb as "once you're in
 ```
 
 ### Reducing whitespace
-As you write Jinja, it's common to format your code to improve the readability of your models This may involve padding various expressions and statements with additional whitespace. When you go to check your compiled code, you then might notice a lot of whitespace!
+As you write Jinja, it's common to format your code to improve the readability of your models. This may involve padding various expressions and statements with additional whitespace. When you go to check your compiled code, you then might notice a lot of whitespace!
 
 Use a minus sign (`-`, e.g. `{{- ... -}}`, `{%- ... %}`, `{#- ... -#}`) at the start or end of a block to strip whitespace before or after (more docs [here](https://jinja.palletsprojects.com/en/2.10.x/templates/#whitespace-control)). Check out the [tutorial on using Jinja](using-jinja#use-whitespace-control-to-tidy-up-compiled-code) for an example.
 
