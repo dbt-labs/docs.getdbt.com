@@ -9,49 +9,71 @@ function isMarkdownLink(string) {
   if (!linkMatch) {
       return null;
   } else {
-      const [ _, text, url ] = linkMatch
-      return (<Link className="code-link" href={url}>{text}</Link>);
+      return {
+          full: linkMatch[0],
+          text: linkMatch[1],
+          url:  linkMatch[2],
+          index: linkMatch.index
+      }
   }
 }
 
-function consumeLink(tokens) {
+function makeToken(content, types) {
+    if (!types) {
+        types = ['text']
+    }
+
+    return {
+        types: types,
+        content: content
+    }
+}
+
+function makeLink(text, url) {
+    const link = <Link className="code-link" href={url}>{text}</Link>;
+    return makeToken(link);
+}
+
+function replaceLinks(line) {
     /*
-     * Accepts a list of tokens
-     * Returns a list with two sets of tokens:
-     *    1) consumed tokens
-     *    2) remaining tokens
+     * Loop until input line is empty!
      */
 
-    let tokenBuffer = [];
-    let stringBuffer = "";
-    let i = 0;
-    for (let i=0; i < tokens.length; i++) {
-        let token = tokens[i];
-        tokenBuffer.push(token);
-        stringBuffer += token.content;
-        let link = isMarkdownLink(stringBuffer);
-        if (link) {
-            let linkToken = tokenBuffer[0];
-            linkToken.content = link;
-
-            let rest = tokens.slice(i + 1);
-            return [ [linkToken], rest ];
+    var tokens = [];
+    let lineBuffer = line;
+    while (lineBuffer.length > 0) {
+        let res = isMarkdownLink(lineBuffer);
+        if (!res) {
+            // only include contents to end of line
+            // if we've already found a link. Otherwise,
+            // we just want to return null and escape below
+            if (tokens.length > 0) {
+                tokens.push(makeToken(lineBuffer));
+            }
+            break;
         }
-    };
 
-    return [ tokenBuffer, [] ]
+        var before = lineBuffer.slice(0, res.index)
+        var after = lineBuffer.slice(res.index + res.full.length)
+        tokens.push(makeToken(before))
+        tokens.push(makeLink(res.text, res.url));
+        lineBuffer = after
+    }
 
+    if (tokens.length == 0) {
+        return null;
+    } else {
+        return tokens
+    }
 }
 
 export default function squashLinks(lineTokens) {
-  let squashed = [];
-  let rest = lineTokens;
+  const asString = lineTokens.map(t => t.content).join("")
+  const linked = replaceLinks(asString)
 
-  while (rest.length > 0) {
-      let [ consumed, remaining ] = consumeLink(rest);
-      rest = remaining;
-      squashed = squashed.concat(consumed);
+  if (linked) {
+      return linked;
+  } else {
+      return lineTokens;
   }
-
-  return squashed;
 }
