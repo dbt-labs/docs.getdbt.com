@@ -11,7 +11,7 @@ The following is a list of all available configurations in the `dbt_project.yml`
 
 <Alert type='info'>
     <h4>YAML syntax</h4>
-    dbt uses YAML in a few different places. If you're new to YAML, it would be worth doing a tutorial to learn how arrays, dictionaries and strings are represented in YAML.
+    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented in YAML.
 </Alert>
 
 <File name='dbt_project.yml'>
@@ -32,13 +32,13 @@ snapshot-paths: [directorypath]
 docs-paths: [directorypath]
 modules-path: [directorypath]
 
-target-path: directorypath
-log-path: directorypath
-modules-path: directorypath
+[target-path](project-configs/target-path): directorypath
+[log-path](project-configs/log-path): directorypath
+[modules-path](project-configs/modules-path): directorypath
 
-project_root: ??
+[project-root](project-configs/project-root): directorypath
 
-clean-targets: [directorypath]
+[clean-targets](project-configs/clean-targets): [directorypath]
 
 [query-comment](project-configs/query-comment): string
 
