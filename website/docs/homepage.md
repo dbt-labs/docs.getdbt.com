@@ -1,4 +1,4 @@
-# dbt documentation
+# dbt Documentation
 
 ## Get started
 
