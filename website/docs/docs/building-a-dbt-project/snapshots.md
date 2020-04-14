@@ -57,15 +57,15 @@ Snapshots are defined in .sql files using `snapshot` blocks. dbt will look for s
           target_database='analytics',
           target_schema='snapshots',
           unique_key='id',
-          
+
           strategy='timestamp',
           updated_at='updated_at',
         )
     }}
-    
+
     -- Pro-Tip: Use sources in snapshots!
     select * from {{ source('ecom', 'orders') }}
-    
+
 {% endsnapshot %}
 ```
 
@@ -102,9 +102,9 @@ The `timestamp` strategy requires the following configurations:
           updated_at='updated_at',
         )
     }}
-    
+
     select * from {{ source('ecom', 'orders') }}
-    
+
 {% endsnapshot %}
 ```
 
@@ -143,9 +143,9 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
           check_cols=['status', 'is_cancelled'],
         )
     }}
-    
+
     select * from {{ source('ecom', 'orders') }}
-    
+
 {% endsnapshot %}
 ```
 
@@ -174,7 +174,7 @@ dbt-wide configs like `tags`, or database-specific node configs are supported in
 | updated_at | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 
 ### Configuring snapshots in dbt_project.yml
-The snapshots in your dbt project can be configured using the `snapshot:` key in your `dbt_project.yml` file. This configuration is analogous to the `models:` config described in the [Projects](dbt-projects) 
+The snapshots in your dbt project can be configured using the `snapshot:` key in your `dbt_project.yml` file. This configuration is analogous to the `models:` config described in the [Projects](projects) 
 documentation.
 
 **Example usage:**
@@ -211,7 +211,7 @@ Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a sep
 ### Snapshot query best practices
 With regards to the specific query to write in your snapshot, we recommend that you:
 * **Snapshot source data.** Your models should then select from these snapshots, treating them like regular data sources. As much as possible, snapshot your source data in its raw form and use downstream models to clean up the data
-* **Ensure your unique key is really unique.** 
+* **Ensure your unique key is really unique.**
 * **Use the `source` function in your query.** This helps when understanding data lineage in your project.
 * **Include as many columns as possible.** In fact, go for `select *` if performance permits! Even if a column doesn't feel useful at the moment, it might be better to snapshot it in case it becomes useful – after all, you won't be able to recreate the column later.
 * **Avoid joins in your snapshot query.** Joins can make it difficult to build a reliable `updated_at` timestamp. Instead, snapshot the two tables separately, and join them in downstream models.
