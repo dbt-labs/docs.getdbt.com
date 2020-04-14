@@ -1,12 +1,12 @@
 ---
 datatype: boolean # -ish, it's actually a dictionary of bools
-default: true # is this right?
+default: true
 ---
 
 ## Definition
 Optionally configure whether dbt should quote databases, schemas, and identifiers when:
 * creating relations (tables/views)
-* resolving a `ref` function to a relation reference
+* resolving a `ref` function to a direct relation reference
 
 <Callout type="info" title="BigQuery Terminology">
 
@@ -14,19 +14,88 @@ Note that for BigQuery quoting configuration, `database` and `schema` should be 
 
 </Callout>
 
+<Changelog>
+
+* `v0.10.1`: This configuration was introduced with a default value of `true` for each adapter.
+* `v0.11.0`: The default quoting config on Snowflake changed from `true` to `false`
+
+</Changelog>
+
 ## Default values
 
-[ to-do ]
-
 The default values vary by database.
+<Tabs
+  defaultValue="default"
+  values={[
+    { label: 'Default', value: 'default', },
+    { label: 'Snowflake', value: 'snowflake', },
+  ]
+}>
+<TabItem value="default">
 
+For most adapters, quoting is set to `true` by default.
+
+This is because creating relations with quoted identifiers does not inhibit the ability to select from them, and quoting allows you to use reserved words as object names (though that should probably be avoided)
+<File name='dbt_project.yml'>
+
+```yml
+quoting:
+  database: true
+  schema: true
+  identifier: true
+
+```
+
+</File>
+</TabItem>
+<TabItem value="snowflake">
+
+On Snowflake, quoting is set to `false` by default.
+
+This is because creating relations with quoted identifiers inhibits your ability to select from the them.
+
+<File name='dbt_project.yml'>
+
+```yml
+quoting:
+  database: false
+  schema: false
+  identifier: false
+
+```
+
+</File>
+
+
+</TabItem>
+
+</Tabs>
+
+## Examples
+Set quoting to `false` for a project:
+<File name='dbt_project.yml'>
+
+```yml
+quoting:
+  database: false
+  schema: false
+  identifier: false
+
+```
+
+dbt will then create relations without quotes:
+
+```sql
+create table analytics.dbt_alice.dim_customers
+```
+
+</File>
 
 
 ## Recommendations
-* Set quoting explicitly for your project as defaults may change in the future.
 
 ### Snowflake
-* Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
+Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
 
 #### Explanation:
 
@@ -81,10 +150,5 @@ select * from analytics.orders;
 
 
 
-### BigQuery
-??
-
-## Changelog
-* `???`: This parameter was introduced in v0.11.0
-* `v0.11.0`: The default quoting config on Snowflake changed from `true` to `false`
-* Future: the default values may change for each database.
+### Other warehouses
+Leave the default values for your warehouse.
