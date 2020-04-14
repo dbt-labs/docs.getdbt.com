@@ -274,7 +274,7 @@ The following macros must be implemented, but you can override their behavior fo
 
 Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create table") in a database-specific way.
 
-To define an "adapter macro", use the `adaper_macro` function as shown [here](https://github.com/fishtown-analytics/dbt/blob/89207155fdb25f7e3a74dd2eebbd8e4c23147cc5/core/dbt/include/global_project/macros/adapters/common.sql#L51).
+To define an "adapter macro", use the `adapter_macro` function as shown [here](https://github.com/fishtown-analytics/dbt/blob/89207155fdb25f7e3a74dd2eebbd8e4c23147cc5/core/dbt/include/global_project/macros/adapters/common.sql#L51).
 
 <File name='adapters.sql'>
 
