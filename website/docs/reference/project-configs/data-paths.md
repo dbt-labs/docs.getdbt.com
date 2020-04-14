@@ -19,17 +19,20 @@ data-paths: ["seeds"]
 </File>
 
 ### Co-locate your models and seeds in the `models` directory
+Note: this works because dbt is looking for different file types for seeds (`.csv` files) and models (`.sql` files).
 
 <File name='dbt_project.yml'>
 
 ```yml
 data-paths: ["models"]
-model-paths: ["models"]
+source-paths: ["models"]
 ```
 
 </File>
 
 ### Split your seeds across two directories
+**Note:** We recommend that you instead use two subdirectories within the `data/` directory to achieve a similar effect.
+
 <File name='dbt_project.yml'>
 
 ```yml

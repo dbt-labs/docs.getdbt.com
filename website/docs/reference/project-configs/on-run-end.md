@@ -43,6 +43,7 @@ on-run-end:
 </File>
 
 ### Grant privileges on all schemas that dbt uses at the end of a run
+This leverages the [schemas](schemas) variable.
 
 <File name='dbt_project.yml'>
 
