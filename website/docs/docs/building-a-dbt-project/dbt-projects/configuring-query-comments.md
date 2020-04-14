@@ -80,6 +80,60 @@ query-comment: "run by {{ target.user }} in dbt"
 select ...
 ```
 
+### Appending comments
+
+<Changelog>New in dbt v0.16.1</Changelog>
+
+By default, query comments will be prepended to the SQL queries that are executed by dbt.
+Alternatively, you can specify that query comments should be _appended_ at the end of the
+queries instead. This can be desirable on databases like Snowflake which [remove leading SQL comments](https://docs.snowflake.com/en/release-notes/2017-04.html#queries-leading-comments-removed-during-execution).
+
+**Example usage:**
+<File name='dbt_project.yml'>
+
+```yaml
+
+name: my_project
+version: 1.0.0
+
+...
+
+query-comment:
+  comment: "run by {{ target.user }} in dbt"
+  append: True
+```
+
+</File>
+
+**Example output:**
+
+```sql
+
+select ...
+
+/* run by drew in dbt */
+;
+```
+
+When supplying the dictionary-formatted configuration for `query-comment`, you may
+omit the `comment` field to use dbt's default query comment.
+
+
+<File name='dbt_project.yml'>
+
+```yaml
+
+name: my_project
+version: 1.0.0
+
+...
+
+query-comment:
+  append: True
+```
+
+</File>
+
 ### Using macros
 
 The `query-comment` config can reference macros in your dbt project.
