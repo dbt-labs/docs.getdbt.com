@@ -64,9 +64,7 @@ function expandRelativeLink(href, ignoreInvalid) {
         hash = ''
     }
 
-    var tmp = document.createElement('a');
-    tmp.href = link;
-    var isExternal = tmp.hostname != window.location.hostname;
+    var isExternal = !!link.match(/https?:/);
 
     var sourceLink = findSource(link);
     if (sourceLink) {
