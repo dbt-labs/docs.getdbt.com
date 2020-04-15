@@ -34,9 +34,11 @@ docsFiles.keys().forEach(function(key, i) {
 });
 
 function findSource(source_href) {
+    var stripped_source_href = source_href.replace(/.md$/, '')
     var found = null;
     for (var source in sources) {
-        if (source.endsWith(source_href)) {
+        var stripped_source = source.replace(/.md$/, '')
+        if (stripped_source.endsWith(stripped_source_href)) {
             found = sources[source];
             break;
         }
@@ -62,6 +64,10 @@ function expandRelativeLink(href, ignoreInvalid) {
         hash = ''
     }
 
+    var tmp = document.createElement('a');
+    tmp.href = link;
+    var isExternal = tmp.hostname != window.location.hostname;
+
     var sourceLink = findSource(link);
     if (sourceLink) {
         return {
@@ -73,7 +79,7 @@ function expandRelativeLink(href, ignoreInvalid) {
             bad: false,
             link: `${slugs[link].permalink}#${hash}`
         }
-    } else if (link.indexOf("/") == -1) {
+    } else if (!isExternal) {
         if (env.DOCS_ENV == 'build' && !ignoreInvalid) {
             throw new Error(`Broken link detected ${href}`)
         } else {

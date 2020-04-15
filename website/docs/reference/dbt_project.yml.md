@@ -10,47 +10,46 @@ The following is a list of all available configurations in the `dbt_project.yml`
 <File name='dbt_project.yml'>
 
 ```yml
-[name](project-configs/name.md): string
+[name](project-configs/name): string
 
-[version](project-configs/version.md): version
+[version](project-configs/version): version
 
-[profile](project-configs/profile.md): profilename
+[profile](project-configs/profile): profilename
 
-[source-paths](project-configs/source-paths.md): [directorypath]
-[data-paths](project-configs/data-paths.md): [directorypath]
-[test-paths](project-configs/test-paths.md): [directorypath]
-[analysis-paths](project-configs/analysis-paths.md): [directorypath]
-[macro-paths](project-configs/macro-paths.md): [directorypath]
-[snapshot-paths](project-configs/snapshot-paths.md): [directorypath]
-[docs-paths](project-configs/docs-paths.md): [directorypath]
+[source-paths](project-configs/source-paths): [directorypath]
+[data-paths](project-configs/data-paths): [directorypath]
+[test-paths](project-configs/test-paths): [directorypath]
+[analysis-paths](project-configs/analysis-paths): [directorypath]
+[macro-paths](project-configs/macro-paths): [directorypath]
+[snapshot-paths](project-configs/snapshot-paths): [directorypath]
+[docs-paths](project-configs/docs-paths): [directorypath]
 
-[modules-path](project-configs/modules-paths.md): directorypath
-[target-path](project-configs/target-path.md): directorypath
-[log-path](project-configs/log-path.md): directorypath
-[modules-path](project-configs/modules-path.md): directorypath
+[target-path](project-configs/target-path): directorypath
+[log-path](project-configs/log-path): directorypath
+[modules-path](project-configs/modules-path): directorypath
 
-[clean-targets](project-configs/clean-targets.md): [directorypath]
+[clean-targets](project-configs/clean-targets): [directorypath]
 
-[query-comment](project-configs/query-comment.md): string
+[query-comment](project-configs/query-comment): string
 
-[require-dbt-version](project-configs/require-dbt-version.md): version-range
+[require-dbt-version](project-configs/require-dbt-version): version-range
 
-[quoting](project-configs/quoting.md):
+[quoting](project-configs/quoting):
   database: true | false
   schema: true | false
   identifier: true | false
 
 models:
-  [<model-configs>](model-configs.md)
+  [<model-configs>](model-configs)
 
 seeds:
-  [<seed-configs>](seed-configs.md)
+  [<seed-configs>](seed-configs)
 
 snapshots:
-  [<snapshot-configs>](snapshot-configs.md)
+  [<snapshot-configs>](snapshot-configs)
 
-[on-run-start](project-configs/on-run-start.md): sql-statement | [sql-statement]
-[on-run-end](project-configs/on-run-end.md): sql-statement | [sql-statement]
+[on-run-start](project-configs/on-run-start): sql-statement | [sql-statement]
+[on-run-end](project-configs/on-run-end): sql-statement | [sql-statement]
 
 ```
 
