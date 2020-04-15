@@ -1,4 +1,4 @@
-Every dbt project needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
+Every [dbt project](projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
 
 The following is a list of all available configurations in the `dbt_project.yml` file.
 
@@ -33,7 +33,7 @@ The following is a list of all available configurations in the `dbt_project.yml`
 
 [query-comment](query-comment): string
 
-[require-dbt-version](require-dbt-version): version-range
+[require-dbt-version](require-dbt-version): version-range | [version-range]
 
 [quoting](quoting):
   database: true | false

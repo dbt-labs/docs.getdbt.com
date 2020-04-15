@@ -2,13 +2,22 @@
 datatype: directorypath
 default_value: modules
 ---
-## Definition
-Optionally specify a custom directoriu where [packages](package-management) are installed when you run the `dbt deps` [command](deps). Note that this directory is usually git-ignored.
+<File name='dbt_project.yml'>
 
-* Default: `modules-path: dbt_modules`
+```yml
+modules-path: directorypath
+```
+
+</File>
+
+## Definition
+Optionally specify a custom directory where [packages](package-management) are installed when you run the `dbt deps` [command](deps). Note that this directory is usually git-ignored.
+
+## Default
+By default, dbt will install packages in the `dbt_modules` directory, i.e. `modules-path: dbt_modules`
 
 ## Examples
-### Use a subdirectory named `packages` instead of `dbt_modules`
+### Install packages in a subdirectory named `packages` instead of `dbt_modules`
 
 <File name='dbt_project.yml'>
 

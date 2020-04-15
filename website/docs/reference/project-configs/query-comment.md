@@ -4,11 +4,39 @@ default: >
   /* {"app": "dbt", "dbt_version": "0.15.0rc2", "profile_name": "debug", "target_name": "dev", "node_id": "model.dbt2.my_model"} */
 ---
 
+<File name='dbt_project.yml'>
+
+```yml
+query-comment: string
+```
+
+</File>
+
+The `query-comment` configuration also accepts a dictionary input, like so:
+
+<File name='dbt_project.yml'>
+
+```yml
+query-comment:
+  comment: string
+  append: true | false
+```
+
+</File>
+
 ## Definition
 A string to inject as a comment in each query that dbt runs against your database. This comment can be used to attribute SQL statements to specific dbt resources like models and tests.
 
 The `query-comment` configuration can also call a macro that returns a string.
 
+<Changelog>
+
+* `v0.15.0`: The `query-comment` configuration was introduced
+* `v0.16.1`: Dictionary syntax introduced to allow comments to be appended
+
+</Changelog>
+
+## Default
 By default, dbt will insert a JSON comment at the top of your query containing the information including the dbt version, profile and target names, and node ids for the resources it runs. For example:
 
 ```sql
@@ -21,46 +49,14 @@ create view analytics.analytics.orders as (
 ```
 
 
-<Changelog>
-
-* `v0.15.0`: The `query-comment` configuration was introduced
-* `v0.16.1`: Dictionary syntax introduced to allow comments to be appended
-
-</Changelog>
 
 
-## Usage
-### String syntax
-
-<File name='dbt_project.yml'>
-
-```yml
-
-query-comment: string
-
-```
-
-</File>
-
-
-### Dictionary syntax
-The `query-comment` configuration also accepts a dictionary input, with the following keys:
+## Using the dictionary syntax
+The dictionary syntax includes two keys:
   * `comment` (optional, see above for default): The string to be injected to a query as a comment.
   * `append` (optional, default=`false`): Whether a comment should be appended (added to the bottom of a query) or not (i.e. added to the top of a comment). By default, comments are added to the top of queries (i.e. `append: false`).
 
 This syntax is useful on databases like Snowflake which [remove leading SQL comments](https://docs.snowflake.com/en/release-notes/2017-04.html#queries-leading-comments-removed-during-execution).
-
-<File name='dbt_project.yml'>
-
-```yml
-
-query-comment:
-  comment: string
-  append: true | false
-
-```
-
-</File>
 
 ## Examples
 

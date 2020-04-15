@@ -2,10 +2,20 @@
 datatype: [directorypath]
 default_value: [data]
 ---
+<File name='dbt_project.yml'>
+
+```yml
+data-paths: [directorypath]
+```
+
+</File>
+
 ## Definition
 Optionally specify a custom list of directories where [seed](docs/building-a-dbt-project.md) files are located.
 
-* Default: `data-paths: ["data"]`
+## Default
+
+By default, dbt expects analyses to be located in the `data` directory, i.e. `data-paths: ["data"]`
 
 ## Examples
 ### Use a subdirectory named `seeds` instead of `data`
@@ -31,7 +41,7 @@ source-paths: ["models"]
 </File>
 
 ### Split your seeds across two directories
-**Note:** We recommend that you instead use two subdirectories within the `data/` directory to achieve a similar effect.
+Note: We recommend that you instead use two subdirectories within the `data/` directory to achieve a similar effect.
 
 <File name='dbt_project.yml'>
 

@@ -2,13 +2,22 @@
 datatype: directorypath
 default_value: logs
 ---
-# Definition
-Optionally specify a custom directory where logs are located.
+<File name='dbt_project.yml'>
 
-* Default: `log-path: logs`
+```yml
+log-paths: directorypath
+```
+
+</File>
+
+# Definition
+Optionally specify a custom directory where dbt will write logs.
+
+## Default
+By default, dbt will write to the `logs` directory, i.e. `log-path: logs`
 
 ## Examples
-### Use a subdirectory named `dbt_logs` instead of `logs`
+### Write logs to a subdirectory named `dbt_logs` instead of `logs`
 
 <File name='dbt_project.yml'>
 

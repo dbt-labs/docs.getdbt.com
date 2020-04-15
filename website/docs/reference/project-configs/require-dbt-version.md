@@ -1,7 +1,15 @@
 ---
-datatype: version-range
+datatype: version-range | [version-range]
 default_value: None
 ---
+<File name='dbt_project.yml'>
+
+```yml
+require-dbt-version: version-range | [version-range]
+```
+
+</File>
+
 ## Definition
 
 Optionally specify a range of dbt versions that a project is compatible with.
@@ -10,12 +18,24 @@ By using this configuration, dbt will throw a helpful error message if a user tr
 
 If this configuration is not specified, no version check will occur.
 
+<Changelog>
+
+* `v0.13.0`: This configuration was introduced
+
+</Changelog>
+
 <Callout type="info" title="YAML Quoting">
 
-This configuration needs to be interpolated by the yaml parser as a string. As such, you should quote the value of the configuration. For example:
-* ✅`require-dbt-version: ">=0.16.0"`
-* ✅`require-dbt-version: '>=0.16.0'`
-* ❌ `require-dbt-version: >=0.16.0`
+This configuration needs to be interpolated by the yaml parser as a string. As such, you should quote the value of the configuration. For example. Also take care to get the spacing correct.
+```yml
+# ✅ These will work
+require-dbt-version: ">=0.16.0"
+require-dbt-version: '>=0.16.0'
+
+# ❌ These will not work
+require-dbt-version: >=0.16.0
+require-dbt-version: ">= 0.16.0"
+```
 
 </Callout>
 
@@ -60,6 +80,18 @@ require-dbt-version: ">=0.16.0,<0.17.0"
 
 </File>
 
+OR
+
+<File name='dbt_project.yml'>
+
+```yml
+require-dbt-version: [">=0.16.0", "<0.17.0"]
+
+```
+
+</File>
+
+
 ## Invalid dbt versions
 
 If the version of dbt used to invoke a project disagrees with the specified `require-dbt-version` in the project or _any_ of the included packages, then dbt will fail immediately with the following error:
@@ -85,7 +117,4 @@ Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 
 ## Recommendations
 * This is a recommended configuration
-* You should pin your required dbt version to a minor release (see above [example](#pin-to-a-minor-version-using-a-range))
-
-## Changelog
-* `v0.13.0`: This configuration was introduced
+* You should pin your required dbt version to a minor release (see above [example](#pin-to-a-minor-dbt-version-using-a-range))

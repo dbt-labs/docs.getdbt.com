@@ -2,6 +2,17 @@
 datatype: boolean # -ish, it's actually a dictionary of bools
 default: true
 ---
+<File name='dbt_project.yml'>
+
+```yml
+quoting:
+  database: true | false
+  schema: true | false
+  identifier: true | false
+
+```
+
+</File>
 
 ## Definition
 Optionally configure whether dbt should quote databases, schemas, and identifiers when:
@@ -21,7 +32,7 @@ Note that for BigQuery quoting configuration, `database` and `schema` should be 
 
 </Changelog>
 
-## Default values
+## Default
 
 The default values vary by database.
 <Tabs

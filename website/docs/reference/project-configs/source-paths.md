@@ -2,10 +2,19 @@
 datatype: [directorypath]
 default_value: [models]
 ---
+<File name='dbt_project.yml'>
+
+```yml
+source-paths: [directorypath]
+```
+
+</File>
+
 ## Definition
 Optionally specify a custom list of directories where [models](building-models) and [sources](using-sources) are located.
 
-* Default: `source-paths: ["models"]`
+## Default
+By default, dbt will search for models and sources in the `models` directory, i.e. `source-paths: ["models"]`
 
 ## Examples
 ### Use a subdirectory named `transformations` instead of `models`

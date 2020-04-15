@@ -1,10 +1,16 @@
 ---
 datatype: string
-required: True
 ---
+<File name='dbt_project.yml'>
+
+```yml
+profile: string
+```
+
+</File>
 
 ## Definition
-The profile this dbt project should use to connect to a data warehouse.
+The profile your dbt project should use to connect to your data warehouse.
 * If you are developing in dbt Cloud: This configuration is optional
 * If you are developing locally: This configuration is required, unless a command-line option (i.e. `--profile`) is supplied.
 

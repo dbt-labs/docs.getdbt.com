@@ -2,10 +2,19 @@
 datatype: [directorypath]
 default_value: [tests]
 ---
+<File name='dbt_project.yml'>
+
+```yml
+test-paths: [directorypath]
+```
+
+</File>
+
 ## Definition
 Optionally specify a custom list of directories where [data tests](testing#custom-data-tests) are located.
 
-* Default: `test-paths: ["tests"]`
+## Default
+By default, dbt will search for data tests in the `tests` directory, i.e. `test-paths: ["tests"]`
 
 ## Examples
 ### Use a subdirectory named `data-tests` instead of `tests`

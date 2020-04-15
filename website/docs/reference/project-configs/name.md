@@ -2,7 +2,18 @@
 datatype: string
 required: True
 ---
+
+<File name='dbt_project.yml'>
+
+```yml
+name: string
+```
+
+</File>
+
 ## Definition
+**Required configuration**
+
 The name of a dbt project. Must be letters, digits and underscores only, and cannot start with a digit.
 
 ## Recommendation
