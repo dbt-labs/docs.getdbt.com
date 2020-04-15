@@ -77,7 +77,7 @@ function expandRelativeLink(href, ignoreInvalid) {
             bad: false,
             link: `${slugs[link].permalink}#${hash}`
         }
-    } else if (!isExternal) {
+    } else if (!isExternal && !href.startsWith('/')) {
         if (env.DOCS_ENV == 'build' && !ignoreInvalid) {
             throw new Error(`Broken link detected ${href}`)
         } else {
