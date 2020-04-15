@@ -24,7 +24,7 @@ The following is a list of all available configurations in the `dbt_project.yml`
 [snapshot-paths](snapshot-paths): [directorypath]
 [docs-paths](docs-paths): [directorypath]
 
-[modules-path](modules-paths): directorypath
+[modules-path](modueles-path): directorypath
 [target-path](target-path): directorypath
 [log-path](log-path): directorypath
 [modules-path](modules-path): directorypath
