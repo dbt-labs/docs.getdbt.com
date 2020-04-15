@@ -1,13 +1,13 @@
 ---
 title: "Installation"
-id: "installation"
+id: "cli-installation"
 ---
 
 We recommend you use one of our OS-specific guides for help with installing dbt. If your OS is not listed, or you prefer to use `pip`, please see the instructions below.
 
 ## OS-specific guides
 - [macOS](macos)
-- [Windows](windows) 
+- [Windows](windows)
 - [Ubuntu / Debian](ubuntu-debian)
 - [CentOS](centos)
 

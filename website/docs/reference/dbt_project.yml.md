@@ -10,32 +10,32 @@ The following is a list of all available configurations in the `dbt_project.yml`
 <File name='dbt_project.yml'>
 
 ```yml
-[name](project-configs/name): string
+[name](name): string
 
-[version](project-configs/version): version
+[version](version-config): version
 
-[profile](project-configs/profile): profilename
+[profile](profile-config): profilename
 
-[source-paths](project-configs/source-paths): [directorypath]
-[data-paths](project-configs/data-paths): [directorypath]
-[test-paths](project-configs/test-paths): [directorypath]
-[analysis-paths](project-configs/analysis-paths): [directorypath]
-[macro-paths](project-configs/macro-paths): [directorypath]
-[snapshot-paths](project-configs/snapshot-paths): [directorypath]
-[docs-paths](project-configs/docs-paths): [directorypath]
+[source-paths](source-paths): [directorypath]
+[data-paths](data-paths): [directorypath]
+[test-paths](test-paths): [directorypath]
+[analysis-paths](analysis-paths): [directorypath]
+[macro-paths](macro-paths): [directorypath]
+[snapshot-paths](snapshot-paths): [directorypath]
+[docs-paths](docs-paths): [directorypath]
 
-[modules-path](project-configs/modules-paths): directorypath
-[target-path](project-configs/target-path): directorypath
-[log-path](project-configs/log-path): directorypath
-[modules-path](project-configs/modules-path): directorypath
+[modules-path](modules-path): directorypath
+[target-path](target-path): directorypath
+[log-path](log-path): directorypath
+[modules-path](modules-path): directorypath
 
-[clean-targets](project-configs/clean-targets): [directorypath]
+[clean-targets](clean-targets): [directorypath]
 
-[query-comment](project-configs/query-comment): string
+[query-comment](query-comment): string
 
-[require-dbt-version](project-configs/require-dbt-version): version-range
+[require-dbt-version](require-dbt-version): version-range
 
-[quoting](project-configs/quoting):
+[quoting](quoting):
   database: true | false
   schema: true | false
   identifier: true | false
@@ -49,8 +49,8 @@ seeds:
 snapshots:
   [<snapshot-configs>](snapshot-configs)
 
-[on-run-start](project-configs/on-run-start): sql-statement | [sql-statement]
-[on-run-end](project-configs/on-run-end): sql-statement | [sql-statement]
+[on-run-start](on-run-start): sql-statement | [sql-statement]
+[on-run-end](on-run-end): sql-statement | [sql-statement]
 
 ```
 

@@ -67,7 +67,7 @@ The `@` operator is similar to `+`, but will also include _the parents of the ch
 <Lightbox src="/img/docs/running-a-dbt-project/command-line-interface/1643e30-Screen_Shot_2019-03-11_at_7.18.20_PM.png" title="@snowplow_web_page_context will select all of the models shown here"/>
 
 ### The "star" operator
-The `*` operator matches all models within a package or directory. 
+The `*` operator matches all models within a package or directory.
 
 ```bash
 dbt run --models snowplow.*      # run all of the models in the snowplow package
@@ -75,7 +75,7 @@ dbt run --models finance.base.*  # run all of the models in models/finance/base
 ```
 
 ### The "tag:" operator
-The `tag:` prefix is used to select models that match a specified [tag](tags) .
+The `tag:` prefix is used to select models that match a specified [tag](tags-guide) .
 
 ```
 dbt run --models tag:nightly    # run all models with the `nightly` tag

@@ -64,7 +64,7 @@ brew link dbt-development
 ```
 
 ## pip
-You can also use pip to install dbt – check out the [main installation documentation](installation) for more information.
+You can also use pip to install dbt – check out the [main installation documentation](cli-installation) for more information.
 
 If you encounter SSL cryptography errors during install, make sure your copy of pip is up-to-date (via [cryptography.io](https://cryptography.io/en/latest/faq/#compiling-cryptography-on-os-x-produces-a-fatal-error-openssl-aes-h-file-not-found-error))
 

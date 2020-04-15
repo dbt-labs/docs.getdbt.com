@@ -1,5 +1,5 @@
 ---
-id: installation
+id: on-prem-installation
 title: Installation
 ---
 

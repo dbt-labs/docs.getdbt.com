@@ -223,7 +223,7 @@ select * from ...
 
 <Callout type="info" title="New in dbt v0.14.0">
 
-This functionality is new in dbt v0.14.0. For upgrading instructions, check out [the docs](installation)
+This functionality is new in dbt v0.14.0. For upgrading instructions, check out [the docs](cli-installation)
 
 </Callout>
 
@@ -393,7 +393,7 @@ strategy is selected.
 
 <Callout type="info" title="New in dbt v0.16.0">
 
-This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](installation)
+This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](cli-installation)
 
 </Callout>
 

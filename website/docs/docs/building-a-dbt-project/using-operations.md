@@ -6,7 +6,7 @@ id: "using-operations"
 
 <Callout type="info" title="New in dbt v0.14.0">
 
-This functionality is new in dbt v0.14.0. For upgrading instructions, check out [the docs](installation).
+This functionality is new in dbt v0.14.0. For upgrading instructions, check out [the docs](cli-installation).
 
 </Callout>
 
@@ -60,7 +60,7 @@ Create a macro in your project. This macro should call a [statement](statement-b
   {% set sql %}
       select 'hello, {{ name }}' as name
   {% endset %}
-    
+
   {% set table = run_query(sql) %}
   {% do table.print_table() %}
 

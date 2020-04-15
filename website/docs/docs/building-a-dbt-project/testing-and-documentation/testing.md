@@ -50,11 +50,11 @@ models:
       - name: id
         tests:
           - not_null
-              
+
       - name: account_id
         tests:
           - not_null
-              
+
       - name: status
         tests:
           - not_null
@@ -85,7 +85,7 @@ models:
 
 This test validates that all of the records in a child table have a corresponding record in a parent table. This property is referred to as "referential integrity".
 
-The following example tests that every person's `account_id` maps back to a valid `account`. 
+The following example tests that every person's `account_id` maps back to a valid `account`.
 
 <File name='schema.yml'>
 
@@ -124,7 +124,7 @@ models:
         tests:
           - accepted_values:
               values: ['active', 'cancelled']
-              
+
       - name: status_id
         tests:
           - accepted_values:
@@ -159,7 +159,7 @@ models:
               to: ref('accounts')
               field: id
               severity: error
-            
+
       - name: status
         tests:
           - not_null
@@ -188,14 +188,14 @@ models:
     tests:
       - unique:
           column_name: "concat(date_day, user_id)"
-      
+
       - not_null:
           column_name: "coalesce(status, new_status)"
-      
+
       - accepted_values:
           column_name: "coalesce(status, new_status)"
           values: ['active', 'cancelled']
-        
+
       - relationships:
           column_name: "coalesce(account_id, parent_account_id)"
           to: ref('accounts')
@@ -225,13 +225,13 @@ with calc as (
             when cookie_id is null then 1
             else 0
         end as cookie_is_null
-  
+
     from {{ ref('events') }}
-  
+
 ),
 
 agg as (
-  
+
     select
         sum(cookie_is_null)::float / nullif(count(*), 0) as pct_null
 
@@ -252,11 +252,11 @@ Another example would be asserting that a particular column on a certain row is 
 
 ```sql
 with data as (
-  
+
   select *
   from {{ ref('payment_items') }}
   where payment_id = 777
-  
+
 ),
 
 validation as (
@@ -302,7 +302,7 @@ A full description of the options for `dbt test` can be found in the [command re
 
 <Callout type="info" title="New in v0.14.0">
 
-Test severity is _new_ in dbt v0.14.0. For upgrading instructions, check out the [installation docs](installation).
+Test severity is _new_ in dbt v0.14.0. For upgrading instructions, check out the [installation docs](cli-installation).
 
 </Callout>
 

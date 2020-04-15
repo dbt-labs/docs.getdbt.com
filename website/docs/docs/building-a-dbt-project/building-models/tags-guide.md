@@ -1,6 +1,6 @@
 ---
 title: "Using tags"
-id: "tags"
+id: "tags-guide"
 ---
 
 ## Overview
@@ -36,7 +36,7 @@ models:
 
     csvs:
       tags: "manual"
-      
+
     events:
       tags: ["events", "hourly"]
       materialized: table
