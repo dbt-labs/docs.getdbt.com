@@ -150,3 +150,9 @@
 /reference/runs	/dbt-cloud/api	302
 /reference/repositories	/dbt-cloud/api	302
 https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
+/docs/building-a-dbt-project/dbt-projects 	/docs/building-a-dbt-project/projects 	302
+/docs/building-a-dbt-project/dbt-projects/creating-a-project	/docs/building-a-dbt-project/projects#creating-a-dbt-project 	302
+/docs/building-a-dbt-project/dbt-projects/use-an-existing-project	/docs/building-a-dbt-project/projects#using-an-existing-project 	302
+/docs/building-a-dbt-project/dbt-projects/configuring-quoting	/reference/project-configs/quoting 	302
+/docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions	/reference/project-configs/require-dbt-version	302
+/docs/building-a-dbt-project/dbt-projects/configuring-query-comments	/reference/project-configs/query-comment	302
