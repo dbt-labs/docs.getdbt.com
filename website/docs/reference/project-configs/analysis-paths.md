@@ -17,13 +17,3 @@ analysis-paths: ["analyses"]
 ```
 
 </File>
-
-### Use a subdirectory named `sample_queries` instead of `analysis`
-
-<File name='dbt_project.yml'>
-
-```yml
-analysis-paths: ["sample_queries"]
-```
-
-</File>
