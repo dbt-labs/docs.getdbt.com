@@ -59,5 +59,5 @@ seeds:
 
 </File>
 
-## Recommendations
-* Use this configuration only when required, i.e. when the type inference is not working as expected. Otherwise you can omit this configuration.
+## Recommendation
+Use this configuration only when required, i.e. when the type inference is not working as expected. Otherwise you can omit this configuration.

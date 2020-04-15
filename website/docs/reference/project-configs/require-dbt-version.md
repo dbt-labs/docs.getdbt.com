@@ -115,6 +115,6 @@ Running with dbt=0.17.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```
 
-## Recommendations
+## Recommendation
 * This is a recommended configuration
 * You should pin your required dbt version to a minor release (see above [example](#pin-to-a-minor-dbt-version-using-a-range))

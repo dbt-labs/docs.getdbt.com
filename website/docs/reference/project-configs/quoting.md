@@ -103,7 +103,7 @@ create table analytics.dbt_alice.dim_customers
 </File>
 
 
-## Recommendations
+## Recommendation
 
 ### Snowflake
 Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.

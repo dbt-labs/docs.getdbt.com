@@ -60,7 +60,7 @@ This syntax is useful on databases like Snowflake which [remove leading SQL comm
 
 ## Examples
 
-### Inject a static comment
+### Prepend a static comment
 The following example injects a comment that reads `/* executed by dbt */` into the header of the SQL queries that dbt runs.
 
 <File name='dbt_project.yml'>
@@ -102,7 +102,7 @@ query-comment: null
 
 </File>
 
-### Inject a dynamic comment
+### Prepend a dynamic comment
 The following example injects a comment that varies based on the configured `user` specified in the active dbt target.
 
 <File name='dbt_project.yml'>

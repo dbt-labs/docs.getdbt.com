@@ -10,7 +10,7 @@ log-paths: directorypath
 
 </File>
 
-# Definition
+## Definition
 Optionally specify a custom directory where dbt will write logs.
 
 ## Default
