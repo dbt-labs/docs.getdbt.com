@@ -55,3 +55,5 @@ snapshots:
 ```
 
 </File>
+
+[link outside of yml](project-configs/quoting)
