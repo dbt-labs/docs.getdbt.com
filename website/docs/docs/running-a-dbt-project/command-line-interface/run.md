@@ -50,3 +50,9 @@ In some cases, dbt will emit warnings rather than errors. These warnings are int
 ```
 $ dbt --warn-error run
 ```
+
+## Running specific models
+
+dbt will also allow you select which specific models you'd like to materialize. This can be useful during special scenarios where you may prefer running a different set of models at various intervals. This can also be helpful when you may want to limit the tables materialized while you develop and test new models.
+
+For more information, see the [Model Selection Syntax Documentation](model-selection-syntax).
