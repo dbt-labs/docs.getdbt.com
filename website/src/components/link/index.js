@@ -9,6 +9,7 @@ const docsFiles = require.context(
 );
 
 var slugs = {};
+var sources = {};
 docsFiles.keys().forEach(function(key, i) {
   var doc = docsFiles(key);
   var meta = doc.metadata;
@@ -29,8 +30,19 @@ docsFiles.keys().forEach(function(key, i) {
   }
 
   slugs[slug] = meta;
+  sources[meta.source] = meta
 });
 
+function findSource(source_href) {
+    var found = null;
+    for (var source in sources) {
+        if (source.endsWith(source_href)) {
+            found = sources[source];
+            break;
+        }
+    }
+    return found;
+}
 
 function expandRelativeLink(href, ignoreInvalid) {
     var env = process ? process.env : {};
@@ -50,7 +62,13 @@ function expandRelativeLink(href, ignoreInvalid) {
         hash = ''
     }
 
-    if (slugs[link]) {
+    var sourceLink = findSource(link);
+    if (sourceLink) {
+        return {
+            bad: false,
+            link: `${sourceLink.permalink}#${hash}`
+        }
+    } else if (slugs[link]) {
         return {
             bad: false,
             link: `${slugs[link].permalink}#${hash}`
