@@ -240,11 +240,11 @@ module.exports = {
   },
   reference: {
     Configurations: [
+      "reference/dbt_project.yml",
       {
         type: "category",
         label: "Project configurations",
         items: [
-          "reference/project-configs/dbt_project.yml",
           "reference/project-configs/analysis-paths",
           "reference/project-configs/clean-targets",
           "reference/project-configs/data-paths",
