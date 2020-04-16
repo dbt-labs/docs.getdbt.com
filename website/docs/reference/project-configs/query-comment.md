@@ -177,7 +177,7 @@ The `query-comment` config can reference macros in your dbt project. Simply crea
 
 ```jinja2
 
-{% macro query_comment(node) %}
+{% macro query_comment() %}
 
   dbt {{ dbt_version }}: running {{ node.unique_id }} for target {{ target.name }}
 
@@ -240,7 +240,7 @@ As above, call this macro as follows:
 <File name='dbt_project.yml'>
 
 ```yaml
-query-comment: "{{ query_comment() }}"
+query-comment: "{{ query_comment(node) }}"
 
 ```
 
