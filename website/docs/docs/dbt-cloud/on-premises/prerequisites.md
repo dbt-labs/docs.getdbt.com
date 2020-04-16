@@ -17,6 +17,8 @@ dbt Cloud uses PostgreSQL as its backend database. The application bundle can pr
 
 Supported versions include 9.6, 10, and 11. The database should be configured with at least 50GB of storage.
 
+dbt Cloud supports authentication to the database by [password authentication](https://www.postgresql.org/docs/12/auth-password.html) only. Other [PostgreSQL authentication methods](https://www.postgresql.org/docs/12/client-authentication.html) are not currently supported.
+
 For major cloud providers, it is recommended to use the PostgreSQL PaaS offered by that cloud provider. These PaaS offerings include monitoring, security, and backups, which should be configured consistent with customer data policies.
 
 The dbt Cloud application can be rolled back at any time by restoring a PostgreSQL backup.
