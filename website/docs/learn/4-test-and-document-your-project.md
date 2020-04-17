@@ -14,6 +14,9 @@ Adding [tests](https://docs.getdbt.com/docs/testing) to a project helps validate
 
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
+
+<File name='models/schema.yml'>
+
 ```yaml
 version: 2
 
@@ -50,6 +53,9 @@ models:
               field: customer_id
 
 ```
+
+</File>
+
 3. Execute `dbt test`, and confirm that all your tests passed.
 
 <CloudCore>
@@ -79,6 +85,9 @@ Adding [documentation](https://docs.getdbt.com/docs/documentation) to your proje
 </CloudCore>
 
 1. Update your `models/schema.yml` file to include some descriptions, such as those below.
+
+<File name='models/schema.yml'>
+
 ```yaml
 version: 2
 
@@ -117,6 +126,8 @@ models:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
 
 ```
+
+</File>
 
 2. [dbt CLI only] Execute `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a json file with rich documentation about your project.
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.

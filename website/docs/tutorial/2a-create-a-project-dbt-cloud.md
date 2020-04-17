@@ -36,6 +36,9 @@ using the dbt CLI, follow the instructions [here](/tutorial/create-a-project-dbt
 <Lightbox src="/img/starter-project-dbt-cloud.png" title="The starter project in dbt Cloud" />
 
 6. Update the following values in the `dbt_project.yml` file:
+
+<File name='dbt_project.yml'>
+
 ```yaml
 name: jaffle_shop # this normally says my_new_package
 
@@ -45,6 +48,8 @@ models:
   jaffle_shop: #this normally says my_new_package. It should match the value for `name:`
     ...
 ```
+
+</File>
 
 ## Perform your first dbt run
 Our sample project has some example models in it. We're going to check that we can run them to confirm everything is in order. In the terminal bar at the bottom of the screen, type in `dbt run` and hit enter.

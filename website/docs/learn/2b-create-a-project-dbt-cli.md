@@ -46,6 +46,9 @@ You can use `pwd` to confirm that you are in the right spot.
 
 
 4. Update the following values in the `dbt_project.yml` file:
+
+<File name='dbt_project.yml'>
+
 ```yaml
 name: jaffle_shop # this normally says my_new_package
 
@@ -60,11 +63,16 @@ models:
     ...
 ```
 
+</File>
+
 ## Connect to Snowflake
 When developing locally, dbt connects to your data warehouse using a [profile](https://docs.getdbt.com/docs/configure-your-profile) — a yaml file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Copy the following into the file — make sure you update the values where indicated.
+
+<File name='profiles.yml'>
+
 ```yaml
 jaffle_shop: # this needs to match the profile: in your dbt_project.yml file
   target: dev
@@ -72,15 +80,17 @@ jaffle_shop: # this needs to match the profile: in your dbt_project.yml file
     dev:
       type: snowflake
       threads: 4
-      account: [account_id] # supplied to you, eg. pa19123 (do not include the `snowflakecomputing.com` part)
-      user: [username] # supplied to you
-      password: [password] # supplied to you, you should have been asked to reset it when you opened the Snowflake console
+      account: <account_id> # supplied to you, eg. pa19123 (do not include the `snowflakecomputing.com` part)
+      user: <username> # supplied to you
+      password: <password> # supplied to you, you should have been asked to reset it when you opened the Snowflake console
       role: transformer
       database: analytics
       warehouse: transforming
-      schema: dev_[initialsurname] # e.g. dev_ccarroll
+      schema: dev_<initialsurname> # e.g. dev_ccarroll
       client_session_keep_alive: False
 ```
+
+</File>
 
 4. Execute the debug command from your project to confirm that you can successfully connect
 ```shell-session
