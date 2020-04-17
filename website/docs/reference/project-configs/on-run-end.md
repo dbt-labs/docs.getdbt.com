@@ -7,13 +7,20 @@ This is a work in progress document.
 
 </Alert>
 
+<File name='dbt_project.yml'>
+
+```yml
+on-run-end: sql-statement
+```
+
+</File>
+
 ## Definition
 A SQL statement (or list of SQL statements) to be run at the end of the following commands:
 - `dbt run`
 - `dbt seed`
 
 `on-run-end` hooks can also call macros that return SQL statements.
-
 
 ## Examples
 ### Grant privileges at the end of a run
@@ -43,6 +50,7 @@ on-run-end:
 </File>
 
 ### Grant privileges on all schemas that dbt uses at the end of a run
+This leverages the [schemas](schemas) variable.
 
 <File name='dbt_project.yml'>
 

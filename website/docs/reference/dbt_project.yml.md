@@ -1,49 +1,44 @@
-
-<Alert type='warning'>
-<h4>Heads up!</h4>
-This is a work in progress document. It has only been completed for seeds.
-
-</Alert>
-
-Every dbt project needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
+Every [dbt project](projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
 
 The following is a list of all available configurations in the `dbt_project.yml` file.
 
 <Alert type='info'>
     <h4>YAML syntax</h4>
-    dbt uses YAML in a few different places. If you're new to YAML, it would be worth doing a tutorial to learn how arrays, dictionaries and strings are represented in YAML.
+    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented in YAML.
 </Alert>
 
 <File name='dbt_project.yml'>
 
 ```yml
-name: string
+[name](name): string
 
-version: string
+[version](version): version
 
-profile: profilename
+[profile](profile): profilename
 
-source-paths: [directorypath]
-[data-paths](project-configs/data-paths): [directorypath]
-test-paths: [directorypath]
-analysis-paths: [directorypath]
-macro-paths: [directorypath]
-snapshot-paths: [directorypath]
+[source-paths](source-paths): [directorypath]
+[data-paths](data-paths): [directorypath]
+[test-paths](test-paths): [directorypath]
+[analysis-paths](analysis-paths): [directorypath]
+[macro-paths](macro-paths): [directorypath]
+[snapshot-paths](snapshot-paths): [directorypath]
+[docs-paths](docs-paths): [directorypath]
 
-target-path: directorypath
-log-path: directorypath
-modules-path: directorypath
+[modules-path](modules-path): directorypath
+[target-path](target-path): directorypath
+[log-path](log-path): directorypath
+[modules-path](modules-path): directorypath
 
-clean-targets: [directorypath]
+[clean-targets](clean-targets): [directorypath]
 
-query-comment: string
+[query-comment](query-comment): string
 
-require-dbt-version: version-range
+[require-dbt-version](require-dbt-version): version-range | [version-range]
 
-quoting:
+[quoting](quoting):
   database: true | false
-  identifier: true | false
   schema: true | false
+  identifier: true | false
 
 models:
   [<model-configs>](model-configs)
@@ -54,8 +49,8 @@ seeds:
 snapshots:
   [<snapshot-configs>](snapshot-configs)
 
-[on-run-start](project-configs/on-run-start): sql-statement | [sql-statement]
-[on-run-end](project-configs/on-run-end): sql-statement | [sql-statement]
+[on-run-start](on-run-start): sql-statement | [sql-statement]
+[on-run-end](on-run-end): sql-statement | [sql-statement]
 
 ```
 

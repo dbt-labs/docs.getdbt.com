@@ -13,20 +13,7 @@ module.exports = {
       //"docs/introduction/supported-databases/redshift-v2"
     ],
     "Building a dbt Project": [
-      {
-        type: "category",
-        label: "Projects",
-        items: [
-          "docs/building-a-dbt-project/dbt-projects",
-          "docs/building-a-dbt-project/dbt-projects/creating-a-project",
-          "docs/building-a-dbt-project/dbt-projects/use-an-existing-project",
-          "docs/building-a-dbt-project/dbt-projects/configuring-quoting",
-          "docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions",
-          "docs/building-a-dbt-project/dbt-projects/configuring-query-comments",
-          //"docs/building-a-dbt-project/dbt-projects/configuring-resources-from-the-project-file",
-          //"docs/building-a-dbt-project/dbt-projects/dbt_projectyml-file",
-        ],
-      },
+      "docs/building-a-dbt-project/projects",
       {
         type: "category",
         label: "Models",
@@ -254,6 +241,31 @@ module.exports = {
   reference: {
     Configurations: [
       "reference/dbt_project.yml",
+      {
+        type: "category",
+        label: "Project configurations",
+        items: [
+          "reference/project-configs/analysis-paths",
+          "reference/project-configs/clean-targets",
+          "reference/project-configs/data-paths",
+          "reference/project-configs/docs-paths",
+          "reference/project-configs/log-path",
+          "reference/project-configs/macro-paths",
+          "reference/project-configs/modules-path",
+          "reference/project-configs/name",
+          "reference/project-configs/on-run-end",
+          "reference/project-configs/on-run-start",
+          "reference/project-configs/profile",
+          "reference/project-configs/query-comment",
+          "reference/project-configs/quoting",
+          "reference/project-configs/require-dbt-version",
+          "reference/project-configs/snapshot-paths",
+          "reference/project-configs/source-paths",
+          "reference/project-configs/target-path",
+          "reference/project-configs/test-paths",
+          "reference/project-configs/version",
+        ],
+      },
       "reference/model-configs",
       "reference/seed-configs",
       "reference/snapshot-configs",

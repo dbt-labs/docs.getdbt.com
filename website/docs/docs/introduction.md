@@ -20,9 +20,7 @@ A dbt project is a directory of `.sql` and .`yml` files. The directory must cont
 
 Projects also typically contains a number of other resources, including tests, snapshots, and seed files (see [below](#what-else-can-dbt-do)).
 
-If you are starting a project from scratch, see [Create a project](creating-a-project).
-
-Alternatively, if your organization already has a dbt project, see [Use an existing project](use-an-existing-project.md) .
+Whether you are starting a project from scratch, or if your organization already has a dbt project, see the docs on [projects](projects) for more information on getting started.
 
 <Callout type="info" title="Check out our sample dbt project">
 
@@ -130,7 +128,7 @@ dbt has a number of additional features that make it even more powerful, includi
 
 
 **Code compiler:**
-In dbt, SQL files can contain Jinja, a lightweight templating language. Using Jinja in SQL provides a way to use control structures (e.g. `if` statements and `for` loops) in your queries. It also enables repeated SQL to be shared through `macros`. 
+In dbt, SQL files can contain Jinja, a lightweight templating language. Using Jinja in SQL provides a way to use control structures (e.g. `if` statements and `for` loops) in your queries. It also enables repeated SQL to be shared through `macros`.
 
 The power of using Jinja in your queries is discussed in [Using Jinja](using-jinja).
 
@@ -138,7 +136,7 @@ The power of using Jinja in your queries is discussed in [Using Jinja](using-jin
 **Documentation:**
 dbt provides a mechanism to write, version-control, and share documentation for your dbt models. Descriptions (in plain text, or markdown) can be written for each model and field.
 
-These descriptions, along with additional implicit information (for example, the model lineage, or the field data type and tests applied), can be generated as a website and shared with your wider team, providing an easily referenceable databook for anyone that interacts with dbt models. 
+These descriptions, along with additional implicit information (for example, the model lineage, or the field data type and tests applied), can be generated as a website and shared with your wider team, providing an easily referenceable databook for anyone that interacts with dbt models.
 
 For more information see [Documentation](documentation).
 
