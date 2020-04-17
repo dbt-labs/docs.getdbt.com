@@ -3,7 +3,7 @@ title: "Projects"
 id: "projects"
 ---
 
-## Related documentation
+## Related reference docs
 * [`dbt_project.yml` configurations](project-configs/dbt_project.yml.md)
 * The `dbt init` [command](running-a-dbt-project/command-line-interface/init.md)
 

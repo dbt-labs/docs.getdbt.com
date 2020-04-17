@@ -14,7 +14,7 @@ The profile your dbt project should use to connect to your data warehouse.
 * If you are developing in dbt Cloud: This configuration is optional
 * If you are developing locally: This configuration is required, unless a command-line option (i.e. `--profile`) is supplied.
 
-## Related documentation
+## Related guides
 * [Connecting to your warehouse](docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile.md)
 
 ## Recommendation
