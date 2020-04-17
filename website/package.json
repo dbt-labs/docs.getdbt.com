@@ -5,10 +5,10 @@
     "swizzle": "docusaurus swizzle"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.40",
-    "@docusaurus/plugin-ideal-image": "^2.0.0-alpha.40",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.40",
-    "@docusaurus/theme-search-algolia": "^2.0.0-alpha.32",
+    "@docusaurus/core": "^2.0.0-alpha.50",
+    "@docusaurus/plugin-ideal-image": "^2.0.0-alpha.50",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.50",
+    "@docusaurus/theme-search-algolia": "^2.0.0-alpha.50",
     "classnames": "^2.2.6",
     "color": "^3.1.2",
     "core-js": "^3.6.4",
