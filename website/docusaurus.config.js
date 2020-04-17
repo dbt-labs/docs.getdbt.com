@@ -37,7 +37,7 @@ module.exports = {
           position: 'left',
         },
         {
-          to: '/project-configs/dbt_project.yml',
+          to: '/reference/dbt_project.yml',
           label: 'Reference',
           position: 'left',
         },
