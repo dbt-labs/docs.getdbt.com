@@ -50,13 +50,20 @@ One of the most powerful features of dbt is that you can change the way a model 
 </CloudCore>
 
 1. Edit the following in your `dbt_project.yml` file:
-```yaml
+
+<File name='dbt_project.yml'>
+
+```yml
 models:
   jaffle_shop:
     materialized: table
     example:
       materialized: view
+
 ```
+
+</File>
+
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
 
 <Callout type="info">
@@ -65,6 +72,9 @@ To do this, dbt had to first run a `drop view` statement, then a `create table a
 
 
 3. Edit `models/customers.sql` to have the following snippet at the top:
+
+<File name='models/customers.sql'>
+
 ```sql
 {{
   config(
@@ -81,6 +91,8 @@ with customers as (
 )
 
 ```
+
+</File>
 
 4. Execute `dbt run`. Your model, `customers` should be built as a view.
 
@@ -101,6 +113,8 @@ We don't need the sample files that dbt created for us anymore! Let's delete the
 1. Delete the `models/example/` directory
 2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it
 
+<File name='dbt_project.yml'>
+
 ```yaml
 # before
 models:
@@ -109,12 +123,18 @@ models:
     example:
       materialized: view
 ```
+</File>
+
+<File name='dbt_project.yml'>
+
 ```yaml
 # after
 models:
   jaffle_shop:
     materialized: table
 ```
+
+</File>
 
 ### FAQs
 <FAQ src="removing-deleted-models" />
@@ -133,6 +153,9 @@ Often, it's a good idea to clean your data in one place, before doing additional
 </CloudCore>
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query:
+
+<File name='models/stg_customers.sql'>
+
 ```sql
 select
     id as customer_id,
@@ -141,7 +164,13 @@ select
 
 from raw.jaffle_shop.customers
 ```
+
+</File>
+
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query:
+
+<File name='models/stg_orders.sql'>
+
 ```sql
 select
     id as order_id,
@@ -151,7 +180,13 @@ select
 
 from raw.jaffle_shop.orders
 ```
+
+</File>
+
 3. Edit the SQL in your `models/customers.sql` file as follows:
+
+<File name='models/customers.sql'>
+
 ```sql
 with customers as (
 
@@ -199,6 +234,9 @@ final as (
 
 select * from final
 ```
+
+</File>
+
 4. Execute `dbt run`
 
 This time when dbt ran, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt was able to infer the order in which to run these models in — `customers` depends on `stg_customers` and `stg_orders`, so gets built last. There's no need to explicitly define these dependencies.
