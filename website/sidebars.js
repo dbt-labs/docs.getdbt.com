@@ -267,11 +267,25 @@ module.exports = {
         ],
       },
       "reference/model-configs",
-      "reference/seed-configs",
-      "reference/snapshot-configs",
       {
         type: "category",
-        label: "Resource configurations",
+        label: "Model configurations",
+        items: [
+          "reference/resource-configs/alias",
+          "reference/resource-configs/column_types",
+          "reference/resource-configs/enabled",
+          "reference/resource-configs/post-hook",
+          "reference/resource-configs/pre-hook",
+          "reference/resource-configs/schema",
+          "reference/resource-configs/tags",
+        ],
+      },
+      "reference/seed-configs",
+      "reference/snapshot-configs",
+
+      {
+        type: "category",
+        label: "Seed configurations",
         items: [
           "reference/resource-configs/alias",
           "reference/resource-configs/column_types",
