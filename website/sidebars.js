@@ -269,6 +269,21 @@ module.exports = {
       "reference/model-configs",
       "reference/seed-configs",
       "reference/snapshot-configs",
+      {
+        type: "category",
+        label: "Resource configurations",
+        items: [
+          "reference/resource-configs/alias",
+          "reference/resource-configs/column_types",
+          "reference/resource-configs/database",
+          "reference/resource-configs/enabled",
+          "reference/resource-configs/post-hook",
+          "reference/resource-configs/pre-hook",
+          "reference/resource-configs/quote_columns",
+          "reference/resource-configs/schema",
+          "reference/resource-configs/tags",
+        ],
+      },
     ],
   },
   tutorial: {
