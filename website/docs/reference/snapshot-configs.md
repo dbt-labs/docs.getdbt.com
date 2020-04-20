@@ -4,25 +4,26 @@ title: Snapshot configurations
 
 ## Available configurations
 ### Snapshot-specific configurations
-* [target_database](resource-configs/target_database.md): string
-* [target_schema](resource-configs/target_schema.md): string (required)
-* [unique_key](resource-configs/unique_key.md): column_name (required)
-* [strategy](resource-configs/strategy.md): timestamp | check (required)
-* [updated_at](resource-configs/updated_at.md): column_name_or_expression (required if strategy == timestamp)
-* [check_cols](resource-configs/check_cols.md): [column_name] | all (required if strategy == check)
+* [target_schema](target_schema): string (required)
+* [target_database](target_database): string
+* [unique_key](unique_key): column_name (required)
+* [strategy](strategy): timestamp | check (required)
+* [updated_at](updated_at): column_name_or_expression (required if strategy == timestamp)
+* [check_cols](check_cols): [column_name] | all (required if strategy == check)
 
 
 ### General configurations
-* [enabled](resource-configs/enabled.md): true | false
-* [tags](resource-configs/tags.md): string | [string]
-* [pre-hook](resource-configs/pre-hook.md): sql-statement | [sql-statement]
-* [post-hook](resource-configs/post-hook.md): sql-statement | [sql-statement]
+* [enabled](enabled): true | false
+* [tags](tags): string | [string]
+* [pre-hook](pre-hook): sql-statement | [sql-statement]
+* [post-hook](post-hook): sql-statement | [sql-statement]
 
 
 ## Configuring snapshots
-Snapshots can be configured:
-* Using a `config` block within a snapshot, OR
-* From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a seed, or directory of seeds, define the resource path as nested dictionary keys.
+Snapshots can be configured in one of two ways:
+
+1. Using a `config` block within a snapshot, or
+2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 
 Snapshot configurations, like model configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project.
 
@@ -41,8 +42,8 @@ snapshots:
 </File>
 
 
-#### Apply the `schema` configuration to all seeds in your project
-To apply a configuration to all seeds in your project only (i.e. _excluding_ any seeds in installed packages), provide your project name as part of the resource path.
+#### Apply the `target_schema` configuration to all snapshots in your project
+To apply a configuration to all snapshots in your project only (i.e. _excluding_ any snapshots in installed packages), provide your project name as part of the resource path.
 
 For a project named `jaffle_shop`:
 
@@ -50,16 +51,16 @@ For a project named `jaffle_shop`:
 
 ```yml
 
-seeds:
+snapshots:
   jaffle_shop:
-    schema: seed_data
+    target_schema: snapshot_data
 ```
 
 </File>
 
-Similarly, you can use the name of an installed package to configure seeds in that package.
+Similarly, you can use the name of an installed package to configure snapshots in that package.
 
-#### Apply the `schema` configuration to one snapshot only
+#### Apply configurations to one snapshot only
 
 We recommend using `config` blocks if you need to apply a configuration to one snapshot only.
 
