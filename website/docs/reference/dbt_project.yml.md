@@ -32,7 +32,7 @@ The following is a list of all available configurations in the `dbt_project.yml`
 
 [query-comment](project-configs/query-comment): string
 
-[require-dbt-version](project-configs/require-dbt-version): version-range
+[require-dbt-version](project-configs/require-dbt-version): version-range | [version-range]
 
 [quoting](project-configs/quoting):
   database: true | false
