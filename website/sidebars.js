@@ -281,8 +281,6 @@ module.exports = {
         ],
       },
       "reference/seed-configs",
-      "reference/snapshot-configs",
-
       {
         type: "category",
         label: "Seed configurations",
@@ -298,6 +296,7 @@ module.exports = {
           "reference/resource-configs/tags",
         ],
       },
+      "reference/snapshot-configs",
     ],
   },
   tutorial: {
