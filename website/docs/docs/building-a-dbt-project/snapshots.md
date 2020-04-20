@@ -32,16 +32,6 @@ This order is now in the "shipped" state, but we've lost the information about w
 
 dbt creates this Snapshot table by copying the structure of your source table, and then adding some helpful metadata fields. The `dbt_valid_from` and `dbt_valid_to` columns indicate the historical state for a given record. The current value for a row is represented with a `null` value for `dbt_valid_to`.
 
-### Snapshot meta-fields
-Snapshot tables will be created as a clone of your source dataset, plus some addition meta-fields.
-
-| Field | Meaning | Usage |
-| ----- | ------- | ----- |
-| dbt_valid_from | The timestamp when this snapshot row was first inserted | This column can be used to order the different "versions" of a record. |
-| dbt_valid_to | The timestamp when this row row became invalidated. | The most recent snapshot record will have `dbt_valid_to` set to `null`. |
-| dbt_scd_id | A unique key generated for each snapshotted record. | This is used internally by dbt |
-| dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
-
 ## Example
 To add a snapshot to your project:
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
@@ -116,7 +106,7 @@ Completed successfully
 Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
 ```
 
-7. Inspect the results by selecting from the table dbt created. After the first run, you should see the results of your query, plus the [snapshot meta fields](#snapshot-meta-fields) as described above.
+7. Inspect the results by selecting from the table dbt created. After the first run, you should see the results of your query, plus the [snapshot meta fields](#snapshot-meta-fields) as described below.
 
 8. Run the `snapshot` command again, and inspect the results. If any records have been updated, the snapshot should reflect this.
 
@@ -241,6 +231,17 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 * Selecting specific columns if the table is wide.
 * Doing light transformation to get data into a reasonable shape, for example, unpacking a JSON blob to flatten your source data into columns.
 
+## Snapshot meta-fields
+Snapshot tables will be created as a clone of your source dataset, plus some addition meta-fields.
+
+| Field | Meaning | Usage |
+| ----- | ------- | ----- |
+| dbt_valid_from | The timestamp when this snapshot row was first inserted | This column can be used to order the different "versions" of a record. |
+| dbt_valid_to | The timestamp when this row row became invalidated. | The most recent snapshot record will have `dbt_valid_to` set to `null`. |
+| dbt_scd_id | A unique key generated for each snapshotted record. | This is used internally by dbt |
+| dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
+
+
 ## FAQs
 
 <FAQ src="run-one-snapshot" />
@@ -248,6 +249,3 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 <FAQ src="snapshot-schema-changes" />
 <FAQ src="snapshot-hooks" />
 <FAQ src="snapshot-target-schema" />
-
-
-## Treat snapshots like sources
