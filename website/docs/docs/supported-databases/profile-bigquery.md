@@ -183,5 +183,6 @@ BigQuery's permission model is dissimilar from more conventional databases like 
 - BigQuery Data Editor
 - BigQuery Job User
 - BigQuery User
+- BigQuery Metadata Viewer
 
 This set of permissions will permit dbt users to read from and create tables and views in a BigQuery project.
