@@ -3,6 +3,10 @@ title: "Snapshots"
 id: "snapshots"
 ---
 
+## Related documentation
+* [Snapshot configurations](reference/snapshot-configs.md)
+* The `dbt snapshot` [command](running-a-dbt-project/command-line-interface/snapshot.md)
+
 ## Overview
 Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, Snapshots, which records changes to a mutable table over time.
 
@@ -174,7 +178,7 @@ dbt-wide configs like `tags`, or database-specific node configs are supported in
 | updated_at | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 
 ### Configuring snapshots in dbt_project.yml
-The snapshots in your dbt project can be configured using the `snapshot:` key in your `dbt_project.yml` file. This configuration is analogous to the `models:` config described in the [Projects](projects) 
+The snapshots in your dbt project can be configured using the `snapshot:` key in your `dbt_project.yml` file. This configuration is analogous to the `models:` config described in the [Projects](projects)
 documentation.
 
 **Example usage:**
