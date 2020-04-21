@@ -8,9 +8,10 @@ id: "snapshots"
 * The `dbt snapshot` [command](docs/running-a-dbt-project/command-line-interface/snapshot.md)
 
 ## Getting started
-Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, Snapshots, which records changes to a mutable table over time.
 
-### What are Snapshots?
+### What are snapshots?
+Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable table over time.
+
 Snapshots implement [type-2 Slowly Changing Dimensions](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) over mutable source tables. These Slowly Changing Dimensions (or SCDs) identify how a row in a table changes over time. Imagine you have an `orders` table where the `status` field can be overwritten as the order is processed.
 
 | order_id | status | updated_at |
@@ -30,7 +31,38 @@ This order is now in the "shipped" state, but we've lost the information about w
 | 1 | pending | 2019-01-01 | 2019-01-01 | 2019-01-02 |
 | 1 | shipped | 2019-01-02 | 2019-01-02 | `null` |
 
-dbt creates this Snapshot table by copying the structure of your source table, and then adding some helpful metadata fields. The `dbt_valid_from` and `dbt_valid_to` columns indicate the historical state for a given record. The current value for a row is represented with a `null` value for `dbt_valid_to`.
+In dbt, snapshots are `select` statements, defined within a snapshot block in a `.sql` file (typically in your `snapshots` directory). You'll also need to configure your snapshot to tell dbt how to detect record changes.
+
+<File name='snapshots/order.sql'>
+
+```sql
+{% snapshot orders_snapshot %}
+
+{{
+    config(
+      target_database='analytics',
+      target_schema='snapshots',
+      unique_key='id',
+
+      strategy='timestamp',
+      updated_at='updated_at',
+    )
+}}
+
+select * from {{ source('jaffle_shop', 'orders') }}
+
+{% endsnapshot %}
+```
+
+</File>
+
+When you run the [`dbt snapshot` command](snapshot):
+* **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null`.
+* **On subsequent runs:** dbt will check which records have changed or if any new records have been created:
+  - The `dbt_valid_to` column will be updated for any existing records that have changed
+  - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null`
+
+Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](ref) function.
 
 ## Example
 To add a snapshot to your project:
@@ -115,7 +147,7 @@ Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
 10. Schedule the `snapshot` command to run regularly — snapshots are only useful if you run them frequently.
 
 
-## How does dbt know which rows have changed?
+## Detecting row changes
 Snapshot "strategies" define how dbt knows if a row has changed. There are two strategies built-in to dbt, but other strategies can be created as macros in dbt projects. While each strategy requires its own configuration, the `unique_key` config is required for _all_ snapshot strategies.
 
 ### Timestamp strategy (recommended)
@@ -209,14 +241,14 @@ A number of other configurations are also supported (e.g. `tags` and `post-hook`
 Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](snapshot-configs) for more information.
 
 
-## Configuration best practices
-### Use the `timestamp` strategy where possible
+### Configuration best practices
+#### Use the `timestamp` strategy where possible
 This strategy handles column additions and deletions better than the `check_cols` strategy.
 
-### Ensure your unique key is really unique
+#### Ensure your unique key is really unique
 The unique key is used by dbt to match rows up, so it's extremely important to make sure this key is actually unique! If you're snapshotting a source, I'd recommend adding a uniqueness test to your source ([example](https://github.com/fishtown-analytics/jaffle_shop/blob/demo/master/models/staging/jaffle_shop/jaffle_shop.yml#L22)).
 
-### Use a `target_schema` that is separate to your analytics schema
+#### Use a `target_schema` that is separate to your analytics schema
 Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a separate schema so end users know they are special. From there, you may want to set different privileges on your snapshots compared to your models, and even run them as a different user (or role, depending on your warehouse) to make it very difficult to drop a snapshot unless you really want to.
 
 ## Snapshot query best practices
@@ -231,21 +263,12 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 * Selecting specific columns if the table is wide.
 * Doing light transformation to get data into a reasonable shape, for example, unpacking a JSON blob to flatten your source data into columns.
 
-## Snapshot meta-fields
-Snapshot tables will be created as a clone of your source dataset, plus some addition meta-fields.
-
-| Field | Meaning | Usage |
-| ----- | ------- | ----- |
-| dbt_valid_from | The timestamp when this snapshot row was first inserted | This column can be used to order the different "versions" of a record. |
-| dbt_valid_to | The timestamp when this row row became invalidated. | The most recent snapshot record will have `dbt_valid_to` set to `null`. |
-| dbt_scd_id | A unique key generated for each snapshotted record. | This is used internally by dbt |
-| dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
 
 
 ## FAQs
-
 <FAQ src="run-one-snapshot" />
 <FAQ src="snapshot-frequency" />
 <FAQ src="snapshot-schema-changes" />
 <FAQ src="snapshot-hooks" />
 <FAQ src="snapshot-target-schema" />
+<FAQ src="configurable-snapshot-path" />
