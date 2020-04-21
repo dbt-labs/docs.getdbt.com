@@ -5,13 +5,19 @@ title: Snapshot configurations
 * [Snapshots](docs/building-a-dbt-project/snapshots.md)
 * The `dbt snapshot` [command](docs/running-a-dbt-project/command-line-interface/snapshot.md)
 
+<!--
+Parts of a snapshot:
+- name
+- query
+-->
+
 ## Available configurations
 ### Snapshot-specific configurations
 * [target_schema](target_schema): string (required)
 * [target_database](target_database): string
-* [unique_key](unique_key): column_name (required)
+* [unique_key](unique_key): column_name_or_expression (required)
 * [strategy](strategy): timestamp | check (required)
-* [updated_at](updated_at): column_name_or_expression (required if strategy == timestamp)
+* [updated_at](updated_at): column_name (required if strategy == timestamp)
 * [check_cols](check_cols): [column_name] | all (required if strategy == check)
 
 

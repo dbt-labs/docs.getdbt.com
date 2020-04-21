@@ -33,7 +33,7 @@ This order is now in the "shipped" state, but we've lost the information about w
 
 In dbt, snapshots are `select` statements, defined within a snapshot block in a `.sql` file (typically in your `snapshots` directory). You'll also need to configure your snapshot to tell dbt how to detect record changes.
 
-<File name='snapshots/order.sql'>
+<File name='snapshots/orders.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -69,7 +69,7 @@ To add a snapshot to your project:
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
 2. Use a `snapshot` block to define the start and end of a snapshot:
 
-<File name='snapshots/order.sql'>
+<File name='snapshots/orders.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -81,7 +81,7 @@ To add a snapshot to your project:
 
 3. Write a `select` statement within the snapshot block (tips for writing a good snapshot query are below). This select statement defines the results that you want to snapshot over time. You can use `sources` and `refs` here.
 
-<File name='snapshots/order.sql'>
+<File name='snapshots/orders.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -97,7 +97,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 5. Add configurations to your snapshot using a `config` block (more details below). You can also configure your snapshot from your `dbt_project.yml` file ([docs](snapshot-configs)).
 
-<File name='snapshots/order.sql'>
+<File name='snapshots/orders.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -157,7 +157,7 @@ The `timestamp` strategy requires the following configurations:
 
 | Config | Description | Example |
 | ------ | ----------- | ------- |
-| updated_at | A column or expression which represents when the source row was last updated | `updated_at` |
+| updated_at | A column which represents when the source row was last updated | `updated_at` |
 
 **Example usage:**
 
@@ -224,7 +224,7 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 </File>
 
 ## Configuring snapshots
-
+### Snapshot configurations
 There are a number of snapshot-specific configurations:
 
 | Config | Description | Required? | Example |
@@ -267,6 +267,7 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 
 ## FAQs
 <FAQ src="run-one-snapshot" />
+<FAQ src="snapshot-hard-deletes" />
 <FAQ src="snapshot-frequency" />
 <FAQ src="snapshot-schema-changes" />
 <FAQ src="snapshot-hooks" />
