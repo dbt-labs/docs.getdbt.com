@@ -49,7 +49,7 @@ In order to perform basic maintenance and license checking, the following outbou
 
 ##### Accessed via HTTPS
 
-- `api.replicated.com`: This endpoint services the license sync check and used to pull down yaml for app upgrades.
+- `api.replicated.com`: This endpoint services the license sync check and is used to pull down yaml files for app upgrades.
 
 ### Optional External Dependencies
 
