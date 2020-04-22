@@ -2,6 +2,9 @@
 title: "Seeds"
 id: "seeds"
 ---
+## Related reference docs
+* [Seed configurations](reference/seed-configs.md)
+* The `dbt seed` [command](docs/running-a-dbt-project/command-line-interface/seed.md)
 
 ## Getting started
 Seeds are CSV files in your dbt project (typically in your `data` directory), that dbt can load into your data warehouse using the `dbt seed` command.
@@ -17,6 +20,7 @@ Good use-cases for seeds:
 
 Poor use-cases of dbt seeds:
 * Loading raw data that has been exported to CSVs
+
 
 ## Example
 To load a seed file in your dbt project:
@@ -66,9 +70,7 @@ select * from {{ ref('country_codes') }}
 ## Configuring seeds
 Seeds are configured in your `dbt_project.yml`, check out the [seed configurations](reference/seed-configs.md) docs for a full list of available configurations.
 
-## Related documentation
-* [Seed configurations](reference/seed-configs.md)
-* The `dbt seed` [command](docs/running-a-dbt-project/command-line-interface/seed.md)
+
 
 ## FAQs
 <FAQ src="load-raw-data-with-seed" />

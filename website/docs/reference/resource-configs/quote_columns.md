@@ -10,6 +10,13 @@ An optional seed configuration, used to determine whether column names in the se
 * When `True`, dbt will quote the column names defined in the seed file when building a table for the seed, preserving casing.
 * (Default) When `False`, dbt will not quote the column names defined in the seed file.
 
+<Changelog>
+
+* `v0.15.0`: Introduced in v0.15.0, with a default of False
+* Future: The default value may change in a future release. If you're using seed files, it is recommended that you set this configuration explicitly to avoid breaking changes in the future.
+
+</Changelog>
+
 ## Usage
 ### Globally quote all seed columns
 
@@ -33,11 +40,6 @@ seeds:
     mappings:
       quote_columns: true
 ```
-
-
-## Changelog
-* v0.15.0: Introduced in v0.15.0, with a default of False
-* Future: The default value may change in a future release. If you're using seed files, it is recommended that you set this configuration explicitly to avoid breaking changes in the future.
 
 ## Recommended configuration
 * Explicitly set this value if using seed files.

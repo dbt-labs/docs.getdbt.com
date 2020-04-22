@@ -3,9 +3,6 @@ title: "Spark specific configurations"
 id: "spark-configs"
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 ## Configuring Spark tables
 
 When materializing a model as `table`, you may include several optional configs:
@@ -54,13 +51,13 @@ To use incremental models, specify a `partition_by` clause in your model config.
 */
 
 with new_events as (
-    
+
     select * from {{ ref('events') }}
-    
+
     {% if is_incremental() %}
     where date_day >= date_add(current_date, -1)
     {% endif %}
-    
+
 )
 
 select
@@ -79,15 +76,15 @@ group by 1
 
 ```sql
 create temporary view spark_incremental__dbt_tmp as
-    
+
     with new_events as (
-        
+
         select * from analytics.events
-        
+
 
         where date_day >= date_add(current_date, -1)
 
-        
+
     )
 
     select
@@ -96,7 +93,7 @@ create temporary view spark_incremental__dbt_tmp as
 
     from events
     group by 1
-    
+
 ;
 
 insert overwrite table analytics.spark_incremental
@@ -143,13 +140,13 @@ dbt will run an [atomic `merge` statement](https://docs.databricks.com/spark/lat
 ) }}
 
 with new_events as (
-    
+
     select * from {{ ref('events') }}
-    
+
     {% if is_incremental() %}
     where date_day >= date_add(current_date, -1)
     {% endif %}
-    
+
 )
 
 select
@@ -168,15 +165,15 @@ group by 1
 
 ```sql
 create temporary view delta_incremental__dbt_tmp as
-    
+
     with new_events as (
-        
+
         select * from analytics.events
-        
+
 
         where date_day >= date_add(current_date, -1)
 
-        
+
     )
 
     select
@@ -185,7 +182,7 @@ create temporary view delta_incremental__dbt_tmp as
 
     from events
     group by 1
-    
+
 ;
 
 merge into analytics.delta_incremental as DBT_INTERNAL_DEST
