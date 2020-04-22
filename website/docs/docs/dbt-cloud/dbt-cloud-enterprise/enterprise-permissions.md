@@ -3,7 +3,7 @@ title: "Enterprise Permissions"
 id: "enterprise-permissions"
 ---
 
-The following permission sets are available for assignment for dbt Cloud Enterprise. Please contact your Account Manager to implement. See [Seats and Users](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users) for more information on user licenses.
+The following permission sets are available for assignment for dbt Cloud Enterprise. Please contact your Account Manager to implement the permissions defined here. See [Seats and Users](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users) for more information on user licenses.
 
 
 ## Project level permission sets
@@ -43,4 +43,3 @@ The following permissions are assigned outside the scope of any particular proje
   - Manage notifications
   - Manage account-wide build artifacts
   - Requires user to have a developer user license 
-
