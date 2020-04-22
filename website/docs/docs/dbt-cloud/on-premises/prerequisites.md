@@ -71,7 +71,7 @@ dbt Cloud can send email notifications when runs finish. You can provide a set o
 
 ### Github
 
-dbt Cloud can integrate with your Github, Github Enterprise, or Github Enterprise Server installation to enable interacting with Github Pull Requests, as well as automatically permissioning your environments via Github's API. To set this up, you will need to be an admin on your Github Enterprise organization.
+dbt Cloud can integrate with your Github, Github Enterprise, or Github Enterprise Server installation to enable interacting with Github Pull Requests, as well as automatically permissioning your environments via Github's API. To set this up, you will need to be an [Owner](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/permission-levels-for-an-organization) on your Github organization.
 
 First, log into Github, and navigate to your organization's settings page. Click **Github Apps** (not OAuth Apps!), and then click **New Github App** to start configuring a new Github app for your dbt Cloud instance.
 

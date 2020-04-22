@@ -29,9 +29,9 @@ During initial installation, the KOTS appliance can be directly downloaded from 
 
 Replicated maintains a list of Replicated-owned IPs for whitelisting purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
 
-#### Application Installation and Upgrades
+#### dbt Cloud Appliance Installation and Upgrades
 
-To install your application and perform updates, some external connections are required. All connections are initiated from inside the network, and can vary depending on the installation method and the application update.
+To install the dbt Cloud appliance or perform updates, some external connections are required. All connections are initiated from inside the network, and can vary depending on the installation method and the application update.
 
 ##### Accessed via HTTPS
 
