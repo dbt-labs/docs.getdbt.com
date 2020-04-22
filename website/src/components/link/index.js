@@ -9,6 +9,7 @@ const docsFiles = require.context(
 );
 
 var slugs = {};
+var sources = {};
 docsFiles.keys().forEach(function(key, i) {
   var doc = docsFiles(key);
   var meta = doc.metadata;
@@ -29,8 +30,21 @@ docsFiles.keys().forEach(function(key, i) {
   }
 
   slugs[slug] = meta;
+  sources[meta.source] = meta
 });
 
+function findSource(source_href) {
+    var stripped_source_href = source_href.replace(/.md$/, '')
+    var found = null;
+    for (var source in sources) {
+        var stripped_source = source.replace(/.md$/, '')
+        if (stripped_source.endsWith(stripped_source_href)) {
+            found = sources[source];
+            break;
+        }
+    }
+    return found;
+}
 
 function expandRelativeLink(href, ignoreInvalid) {
     var env = process ? process.env : {};
@@ -50,12 +64,20 @@ function expandRelativeLink(href, ignoreInvalid) {
         hash = ''
     }
 
-    if (slugs[link]) {
+    var isExternal = !!link.match(/https?:/);
+
+    var sourceLink = findSource(link);
+    if (sourceLink) {
+        return {
+            bad: false,
+            link: `${sourceLink.permalink}#${hash}`
+        }
+    } else if (slugs[link]) {
         return {
             bad: false,
             link: `${slugs[link].permalink}#${hash}`
         }
-    } else if (link.indexOf("/") == -1) {
+    } else if (!isExternal && !href.startsWith('/')) {
         if (env.DOCS_ENV == 'build' && !ignoreInvalid) {
             throw new Error(`Broken link detected ${href}`)
         } else {
