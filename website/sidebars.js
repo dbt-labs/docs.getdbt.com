@@ -228,6 +228,7 @@ module.exports = {
         label: "On-Premises",
         items: [
           "docs/dbt-cloud/on-premises/index",
+          "docs/dbt-cloud/on-premises/architecture",
           "docs/dbt-cloud/on-premises/prerequisites",
           "docs/dbt-cloud/on-premises/system-requirements",
           "docs/dbt-cloud/on-premises/installation",
