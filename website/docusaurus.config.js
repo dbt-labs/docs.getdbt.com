@@ -6,7 +6,7 @@ module.exports = {
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
   title: 'dbt - Documentation',
-  url: 'https://tutorial.getdbt.com',
+  url: 'https://docs.getdbt.com',
 
   themeConfig: {
     disableDarkMode: true,
