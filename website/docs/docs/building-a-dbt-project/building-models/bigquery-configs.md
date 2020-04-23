@@ -48,7 +48,7 @@ The `partition_by` config can be supplied as a dictionary with the following for
 }
 ```
 
-#### Partitioning by a date or timestap
+#### Partitioning by a date or timestamp
 If the `data_type` is specified as `timestamp` or `datetime`, dbt will wrap
 the specfied `field` in a `DATE()` function when configuring table partitioning.
 
