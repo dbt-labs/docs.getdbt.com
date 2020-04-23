@@ -14,17 +14,6 @@ datatype: "[column_name] | all"
 
 </File>
 
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{{ config(
-  strategy="check",
-  updated_at="all"
-) }}
-
-```
-
-</File>
 
 <File name='dbt_project.yml'>
 

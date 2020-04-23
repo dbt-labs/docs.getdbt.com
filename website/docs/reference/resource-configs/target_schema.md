@@ -52,7 +52,7 @@ snapshots:
 ### Use a target-aware schema
 Use the [`{{ target }}` variable](target) to change which schema a snapshot table is built in.
 
-Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on `snapshots` (see above [FAQ](#faqs))
+Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
 
 <File name='dbt_project.yml'>
 
@@ -70,7 +70,7 @@ Leverage the [`generate_schema_name` macro](using-custom-schemas) to build snaps
 
 Notes:
 * This macro is not available when configuring from the `dbt_project.yml` file, so must be configured in a snapshot config block.
-* Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on `snapshots` (see above [FAQ](#faqs))
+* Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
 
 
 <File name='snapshots/orders_snaphot.sql'>

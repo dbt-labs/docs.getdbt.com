@@ -134,9 +134,11 @@ Behind the scenes, snapshot strategies are implemented as macros, named `snapsho
 * [Source code](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/core/dbt/include/global_project/macros/materializations/snapshot/strategies.sql#L66) for the timestamp strategy
 * [Source code](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/core/dbt/include/global_project/macros/materializations/snapshot/strategies.sql#L122) for the check strategy
 
-It's possible to implement your own snapshot strategy by adding a macro with the same naming pattern to your project. For example, you might choose to create a strategy which records hard deletes, named `timestamp_with_deletes`
+It's possible to implement your own snapshot strategy by adding a macro with the same naming pattern to your project. For example, you might choose to create a strategy which records hard deletes, named `timestamp_with_deletes`.
+
 1. Create a macro named `snapshot_timestamp_with_deletes_strategy`. Use the existing code a guide and adjust as needed.
-2. Use this strategy as follows:
+2. Use this strategy via the `strategy` configuration:
+
 <File name='snapshots/<filename>.sql'>
 
 ```jinja2

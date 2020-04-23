@@ -13,19 +13,100 @@ Parts of a snapshot:
 
 ## Available configurations
 ### Snapshot-specific configurations
-* [target_schema](target_schema): string (required)
-* [target_database](target_database): string
-* [unique_key](unique_key): column_name_or_expression (required)
-* [strategy](strategy): timestamp | check (required)
-* [updated_at](updated_at): column_name (required if strategy == timestamp)
-* [check_cols](check_cols): [column_name] | all (required if strategy == check)
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="yaml"
+  values={[
+    { label: 'YAML', value: 'yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+<TabItem value="yaml">
+
+
+```yaml
+[target_schema](target_schema): <string>
+[target_database](target_database): <string>
+[unique_key](unique_key): <column_name_or_expression>
+[strategy](strategy): timestamp | check
+[updated_at](updated_at): <column_name>
+[check_cols](check_cols): [<column_name>] | all
+
+```
+
+</TabItem>
+
+
+<TabItem value="config">
+
+
+
+```jinja
+
+{{ config(
+    [target_schema](target_schema)="<string>",
+    [target_database](target_database)="<string>",
+    [unique_key](unique_key)="<column_name_or_expression>",
+    [strategy](strategy)="timestamp" | "check",
+    [updated_at](updated_at)="<column_name>",
+    [check_cols](check_cols)=["<column_name>"] | "all"
+) }}
+
+```
+
+
+</TabItem>
+
+</Tabs>
 
 
 ### General configurations
-* [enabled](enabled): true | false
-* [tags](tags): string | [string]
-* [pre-hook](pre-hook): sql-statement | [sql-statement]
-* [post-hook](post-hook): sql-statement | [sql-statement]
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="yaml"
+  values={[
+    { label: 'YAML', value: 'yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+<TabItem value="yaml">
+
+
+```yaml
+[enabled](enabled): true | false
+[tags](tags): <string> | [<string>]
+[pre-hook](pre-hook): <sql-statement> | [<sql-statement>]
+[post-hook](post-hook): <sql-statement> | [<sql-statement>]
+
+```
+
+</TabItem>
+
+
+<TabItem value="config">
+
+
+
+```jinja
+
+{{ config(
+    [enabled](enabled)=true | false
+    [tags](tags)="<string>" | ["<string>"]
+    [pre-hook](pre-hook)="<sql-statement>" | ["<sql-statement>"]
+    [post-hook](post-hook)="<sql-statement>" | ["<sql-statement>"]
+) }}
+
+```
+
+
+</TabItem>
+
+</Tabs>
+
+
+
 
 
 ## Configuring snapshots

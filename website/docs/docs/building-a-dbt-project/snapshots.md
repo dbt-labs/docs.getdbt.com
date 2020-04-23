@@ -66,6 +66,7 @@ Snapshots can be referenced in downstream models the same way as referencing mod
 
 ## Example
 To add a snapshot to your project:
+
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
 2. Use a `snapshot` block to define the start and end of a snapshot:
 
@@ -120,7 +121,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 </File>
 
-6. Run the `dbt snapshot` [command](snapshot) — for our example a new table will be created at `analytics.snapshots.orders_snapshot`. Changing the `target_database` configuration, the `target_schema` configuration and the name of the snapshot (as defined in `{% snapshot .. %}`) will change how dbt names this table.
+6. Run the `dbt snapshot` [command](snapshot) — for our example a new table will be created at `analytics.snapshots.orders_snapshot`. You can change the `target_database` configuration, the `target_schema` configuration and the name of the snapshot (as defined in `{% snapshot .. %}`) will change how dbt names this table.
 
 ```
 $ dbt snapshot
@@ -148,7 +149,7 @@ Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
 
 
 ## Detecting row changes
-Snapshot "strategies" define how dbt knows if a row has changed. There are two strategies built-in to dbt, but other strategies can be created as macros in dbt projects. While each strategy requires its own configuration, the `unique_key` config is required for _all_ snapshot strategies.
+Snapshot "strategies" define how dbt knows if a row has changed. There are two strategies built-in to dbt — `timestamp` and `check`.
 
 ### Timestamp strategy (recommended)
 The `timestamp` strategy uses an `updated_at` field to determine if a row has changed. If the configured `updated_at` column for a row is more recent than the last time the snapshot ran, then dbt will invalidate the old record and record the new one. If the timestamps are unchanged, then dbt will not take any action.
@@ -252,12 +253,21 @@ The unique key is used by dbt to match rows up, so it's extremely important to m
 Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a separate schema so end users know they are special. From there, you may want to set different privileges on your snapshots compared to your models, and even run them as a different user (or role, depending on your warehouse) to make it very difficult to drop a snapshot unless you really want to.
 
 ## Snapshot query best practices
-With regards to the specific query to write in your snapshot, we recommend that you:
-* **Snapshot source data.** Your models should then select from these snapshots, treating them like regular data sources. As much as possible, snapshot your source data in its raw form and use downstream models to clean up the data
-* **Use the `source` function in your query.** This helps when understanding data lineage in your project.
-* **Include as many columns as possible.** In fact, go for `select *` if performance permits! Even if a column doesn't feel useful at the moment, it might be better to snapshot it in case it becomes useful – after all, you won't be able to recreate the column later.
-* **Avoid joins in your snapshot query.** Joins can make it difficult to build a reliable `updated_at` timestamp. Instead, snapshot the two tables separately, and join them in downstream models.
-* **Limit the amount of transformation in your query.** If you apply business logic in a snapshot query, and this logic changes in the future, it can be impossible (or, at least, very difficult) to apply the change in logic to your snapshots.
+
+#### Snapshot source data.
+Your models should then select from these snapshots, treating them like regular data sources. As much as possible, snapshot your source data in its raw form and use downstream models to clean up the data
+
+#### Use the `source` function in your query.
+This helps when understanding data lineage in your project.
+
+#### Include as many columns as possible.
+In fact, go for `select *` if performance permits! Even if a column doesn't feel useful at the moment, it might be better to snapshot it in case it becomes useful – after all, you won't be able to recreate the column later.
+
+#### Avoid joins in your snapshot query.
+Joins can make it difficult to build a reliable `updated_at` timestamp. Instead, snapshot the two tables separately, and join them in downstream models.
+
+#### Limit the amount of transformation in your query.
+If you apply business logic in a snapshot query, and this logic changes in the future, it can be impossible (or, at least, very difficult) to apply the change in logic to your snapshots.
 
 Basically – keep your query as simple as possible! Some reasonable exceptions to these recommendations include:
 * Selecting specific columns if the table is wide.

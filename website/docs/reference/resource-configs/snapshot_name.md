@@ -13,13 +13,12 @@
 
 The name of a snapshot, as defined in the `{% snapshot %}` block header. This name is used when selecting from a snapshot using the [`ref` function](ref)
 
-This name must not conflict with any model names.
+This name must not conflict with any other snapshot names, or any model names.
 
-The name does not need to match the file name. As a result, snapshots _can_ have the same filename as a model.
-
+The name does not need to match the file name. As a result, snapshot filenames do not need to be unique.
 
 ## Examples
-### Name a model `order_snapshot`
+### Name a snapshot `order_snapshot`
 
 <File name='snapshots/orders.sql'>
 

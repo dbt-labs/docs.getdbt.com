@@ -28,22 +28,22 @@ snapshots:
 ## Description
 The database that dbt should build a [snapshot](snapshots) table into.
 
-On **BigQuery**, this is analogous to a `project`.
-
-On **Redshift**, cross-database queries are not possible. If you use this parameter, you will receive an error like:
+Notes:
+- The specified database must already exist
+- On **BigQuery**, this is analogous to a `project`.
+- On **Redshift**, cross-database queries are not possible. If you use this parameter, you will receive the following error. As such, **do not use** this parameter on Redshift:
 ```
 Encountered an error:
 Runtime Error
   Cross-db references not allowed in redshift (raw vs analytics)
 ```
-As such, **do not user** this parameter on redshift.
+
 
 ## Default
 By default, dbt will use the [target](target) database associated with your profile/connection.
 
 ## Examples
 ### Build all snapshots in a database named `snapshots`
-Note: This database must already exist.
 
 <File name='dbt_project.yml'>
 
@@ -58,7 +58,7 @@ snapshots:
 ### Use a target-aware database
 Use the [`{{ target }}` variable](target) to change which database a snapshot table is built in.
 
-Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on `snapshots` (see above [FAQ](#faqs))
+Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots.
 
 <File name='dbt_project.yml'>
 
@@ -76,7 +76,7 @@ Leverage the [`generate_database_name` macro](using-custom-database) to build sn
 
 Notes:
 * This macro is not available when configuring from the `dbt_project.yml` file, so must be configured in a snapshot config block.
-* Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on `snapshots` (see above [FAQ](#faqs))
+* Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots.
 
 <File name='snapshots/orders_snaphot.sql'>
 
