@@ -8,15 +8,16 @@ This is a work in progress document.
 
 </Alert>
 
+
 ## Definition
-Apply a tag (or list of tags) to a resource (models, seeds).
+Apply a tag (or list of tags) to a model, seed, or snapshot.
 
 Tags can be used to select resources when running the following commands:
 - `dbt run`
 - `dbt seed`
 
 ## Examples
-### Seeds
+### Apply tags to seeds
 
 <File name='dbt_project.yml'>
 
