@@ -52,6 +52,11 @@ Under **Attribute Statements**, enter the following:
 * **Name format**: Unspecified
 * **Value**: `${user.email}`
 
+Under **Group Attribute Statments**, enter the following:
+
+* **Name**: group
+* **Name format**: Unspecified
+
 Click **Next** to continue.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/51f1bb7-Screen_Shot_2019-04-25_at_6.05.32_PM.png" title="Attribute Statements on the 'SAML Settings' page"/>
