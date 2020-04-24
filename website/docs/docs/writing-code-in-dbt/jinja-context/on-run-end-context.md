@@ -35,7 +35,7 @@ In practice, it might not be a bad idea to put this code into a macro:
 
 {% macro grant_usage_to_schemas(schemas, user) %}
   {% for schema in schemas %}
-    grant usage on {{ schema }} to {{ user }};
+    grant usage on schema {{ schema }} to {{ user }};
   {% endfor %}
 {% endmacro %}
 
@@ -51,7 +51,7 @@ In practice, it might not be a bad idea to put this code into a macro:
 ```yaml
 
 on-run-end:
- - "{{ grant_usage_to_schemas(schemas, user) }}"
+ - "{{ grant_usage_to_schemas(schemas, 'user') }}"
 
 
 ```
