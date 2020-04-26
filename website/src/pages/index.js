@@ -17,77 +17,245 @@ function Home() {
 
   return (
     <Layout permalink="/">
-        <div className="container">
-            <div className="row" style={{"textAlign": "center", "marginTop": "calc(12.5vh)"}}>
+        <div className="container container--fluid home" style={{"padding": "10px 0"}}>
+        	<div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(10vh) auto calc(2vh)"}}>
+        		<div className="col col--8">
+        			 <h1>Get started</h1>
+        			 <p style={{"font-size": "120%"}}>If you’re new to dbt, start here. These resources will get you off to a strong start:</p>
+				</div>
+			</div>
+            <div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(10vh)"}}>
                 <div className="col col--4">
-                  <div className="card">
+                  <div className="card large dark">
                     <div className="card__header">
-                      <h3>Documentation</h3>
+                      <h3>What is dbt?</h3>
                     </div>
-                    <div className="card__body" style={{"textAlign": "left"}}>
+                    <div className="card__body">
                       <p>
-                        View detailed reference documentation and usage guides for dbt.
+                        Some of the very first questions a new user has are covered in this introduction.
                       </p>
                     </div>
                     <div className="card__footer">
                         <Link
-                          className="button button--primary button--block"
+                          className="button button--primary"
                           to="/docs/introduction">
-                          View the documentation
+                          Learn More
                         </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col col--4">
-                  <div className="card" >
+                  <div className="card large dark darker">
                     <div className="card__header">
-                      <h3>Getting Started</h3>
+                      <h3>The Getting Started Tutorial</h3>
                     </div>
-                    <div className="card__body" style={{"textAlign": "left"}}>
+                    <div className="card__body">
                       <p>
-                        Follow along with this tutorial to learn how to build, test, and deploy a new dbt project.
+                       Follow along with this tutorial to learn how to build, test, and deploy a new dbt project.
                       </p>
                     </div>
                     <div className="card__footer">
                         <Link
-                          className="button button--primary button--block"
+                          className="button button--primary"
                           to={useBaseUrl('tutorial/setting-up')}>
-                          Start building
+                          Watch Tutorial
+                        </Link>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div className="container container--fluid home" style={{"background": "#FFF", "padding": "10px 0"}}>
+        	<div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(10vh) auto calc(2vh)"}}>
+        		<div className="col col--8">
+        			 <h2>Build your project</h2>
+        			 <p style={{"font-size": "120%"}}>If you’re getting comfortable with dbt, bookmark these resources! They’ll help you level up quickly.</p>
+				</div>
+			</div>
+            <div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(10vh)"}}>
+                <div className="col col--4">
+                  <div className="card large light">
+                    <div className="card__header">
+                      <h3>Docs</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                        The core concepts of dbt, from models, to sources, to tests. 
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to="/docs/introduction">
+                          Read Up
                         </Link>
                     </div>
                   </div>
                 </div>
                 <div className="col col--4">
-                  <div className="card">
+                  <div className="card large light lighter">
                     <div className="card__header">
-                      <h3>Frequently Asked Questions</h3>
+                      <h3>Reference</h3>
                     </div>
-                    <div className="card__body" style={{"textAlign": "left"}}>
+                    <div className="card__body">
                       <p>
-                        Find answers to commonly asked questions about dbt.
+                       The technical reference for dbt configurations. You’ll want to have a basic understanding of key concepts (see above) to get the most out of this section.
                       </p>
                     </div>
                     <div className="card__footer">
                         <Link
-                          className="button button--primary button--block"
-                          to={useBaseUrl('faqs/all')}>
-                          Check them out
+                          className="button button--primary"
+                          to={useBaseUrl('reference/dbt_project.yml')}>
+                          Browse Reference
+                        </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="col col--4">
+                  <div className="card large light lightest">
+                    <div className="card__header">
+                      <h3>FAQs</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                      	Commonly asked questions about dbt.
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to={useBaseUrl('/faqs/all/')}>
+                          Get Answers
                         </Link>
                     </div>
                   </div>
                 </div>
             </div>
-            {/*
-            <div className="row" style={{"textAlign": "center", "marginTop": "calc(10vh)"}}>
-                <div className="col col--8 col--offset-2">
-                  <div className="card item shadow--tl">
-                    <div className="card__body" style={{"textAlign": "center"}}>
-                        <input className="search" type="text" placeholder="Search the docs..." />
+            <div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(10vh) auto calc(2vh)"}}>
+        		<div className="col col--8">
+        			 <p style={{"font-size": "120%"}}>If you’re a dbt Cloud user, these resources may also be helpful:</p>
+				</div>
+			</div>
+			<div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(10vh)"}}>
+                <div className="col col--4">
+                  <div className="card large light">
+                    <div className="card__header">
+                      <h3>dbt Cloud guides</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                        Guides to help you set up your dbt project in dbt Cloud 
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to="/docs/dbt-cloud/cloud-overview/">
+                          Cloud Overview
+                        </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="col col--4">
+                  <div className="card large light lighter">
+                    <div className="card__header">
+                      <h3>dbt Cloud API</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+					   Technical reference docs for using the dbt Cloud API. These docs assume that you are familiar with working with a REST API.
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to={useBaseUrl('/dbt-cloud/api/')}>
+                          API docs
+                        </Link>
                     </div>
                   </div>
                 </div>
             </div>
-           */}
+        </div>
+        <div className="container container--fluid home" style={{"background": "#f5f6f7", "padding": "10px 0"}}>
+        	<div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(10vh) auto calc(2vh)"}}>
+        		<div className="col col--8">
+        			 <h2>Learn from the community</h2>
+        			 <p style={{"font-size": "120%"}}>Every data team uses dbt to solve different analytics engineering problems. It can be useful to learn how other teams are using dbt with the following resources:</p>
+				</div>
+			</div>
+            <div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(10vh)"}}>
+                <div className="col col--4">
+                  <div className="card large dark">
+                    <div className="card__header">
+                      <h3>Discourse</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                        Common use cases and helpful articles from the community have been published here
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to="https://discourse.getdbt.com/">
+                          Get Advice
+                        </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="col col--4">
+                  <div className="card large dark darker">
+                    <div className="card__header">
+                      <h3>Slack</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                       Where the dbt community hangs out, discusses issues, and troubleshoots problems together 
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to="http://slack.getdbt.com/">
+                          Join us on Slack
+                        </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="col col--4">
+                  <div className="card large dark darkest">
+                    <div className="card__header">
+                      <h3>Example projects</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                       A list of some dbt projects in the wild
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to={useBaseUrl('/faqs/example-projects/')}>
+                          View Projects
+                        </Link>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div className="container container--fluid home" style={{"background": "#FFF", "padding": "10px 0"}}>
+        	<div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(10vh) auto"}}>
+        		<div className="col col--8">
+        			 <h2>Having touble?</h2>
+        			 <p style={{"font-size": "120%"}}>If you&#39;re having trouble, check out our Getting Help FAQ for information on getting support and asking questions in the community.</p>
+        			  <Link
+                          className="button help button--primary"
+                          to={useBaseUrl('/faqs/getting-help/')}>
+                          View FAQs
+                        </Link>
+				</div>
+			</div>
         </div>
         <div className="banner-animation"  dangerouslySetInnerHTML={getBanner()}></div>
     </Layout>
