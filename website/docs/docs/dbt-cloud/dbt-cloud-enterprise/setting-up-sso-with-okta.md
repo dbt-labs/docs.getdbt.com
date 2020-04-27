@@ -56,6 +56,7 @@ Under **Group Attribute Statments**, enter the following:
 
 * **Name**: group
 * **Name format**: Unspecified
+* **Value**: Use the Regex filter and supply `.*` (or an appropriate filter for your dbt Cloud configuration)
 
 Click **Next** to continue.
 
