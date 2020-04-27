@@ -69,6 +69,8 @@ You can apply or roll back these changes at any time by clicking the Deploy and 
 
 ### Github
 
+This setup is only required for Github App usage. 
+
 Log into the dbt Cloud configuration console, navigate to Settings, and check Enable under Github Integration.
 
 Enter the following:
