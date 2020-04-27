@@ -47,7 +47,7 @@ function Home() {
                 <div className="col col--4">
                   <div className="card large dark darker">
                     <div className="card__header">
-                      <h3>The Getting Started Tutorial</h3>
+                      <h3>Getting Started Tutorial</h3>
                     </div>
                     <div className="card__body">
                       <p>
@@ -80,7 +80,7 @@ function Home() {
                     </div>
                     <div className="card__body">
                       <p>
-                        The core concepts of dbt, from models, to sources, to tests. 
+                        The core concepts of dbt, from models, to sources, to tests.
                       </p>
                     </div>
                     <div className="card__footer">
@@ -99,7 +99,7 @@ function Home() {
                     </div>
                     <div className="card__body">
                       <p>
-                       The technical reference for dbt configurations. You’ll want to have a basic understanding of key concepts (see above) to get the most out of this section.
+                       The technical reference for dbt configurations. You’ll need to know the basics of dbt before using this section.
                       </p>
                     </div>
                     <div className="card__footer">
@@ -144,7 +144,7 @@ function Home() {
                     </div>
                     <div className="card__body">
                       <p>
-                        Guides to help you set up your dbt project in dbt Cloud 
+                        Guides to help you set up your dbt project in dbt Cloud
                       </p>
                     </div>
                     <div className="card__footer">
@@ -163,7 +163,7 @@ function Home() {
                     </div>
                     <div className="card__body">
                       <p>
-					   Technical reference docs for using the dbt Cloud API. These docs assume that you are familiar with working with a REST API.
+					   Technical reference docs for using the dbt Cloud API. These docs assume you're familiar with REST APIs.
                       </p>
                     </div>
                     <div className="card__footer">
@@ -211,7 +211,7 @@ function Home() {
                     </div>
                     <div className="card__body">
                       <p>
-                       Where the dbt community hangs out, discusses issues, and troubleshoots problems together 
+                       Where the dbt community hangs out, discusses issues, and troubleshoots problems together
                       </p>
                     </div>
                     <div className="card__footer">
