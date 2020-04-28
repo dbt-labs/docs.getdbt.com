@@ -5,6 +5,66 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.0.8 (April 28, 2020)
+
+This release adds a new version of dbt (0.16.1), fixes a number of IDE bugs, and fixes some dbt Cloud on-premises bugs.
+
+### All versions
+
+#### Added
+
+- Add dbt 0.16.1
+
+#### Fixed
+
+- Fixed IDE filesystem loading to check for directories to ensure that load and write methods are only performed on files.
+- Fixed a bug with generating private keys for connection SSH tunnels.
+- Fixed issue preventing temporary PR schemas from being dropped when PR is closed.
+- Fix issues with IDE tabs not updating query compile and run results.
+- Fix issues with query runtime timer in IDE for compile and run query functions.
+- Fixed what settings are displayed on the account settings page to allign with the user's permissions.
+- Fixed bug with checking user's permissions in frontend when user belonged to more than one project.
+- Fixed bug with access control around environments and file system/git interactions that occurred when using IDE.
+- Fixed a bug with Environments too generously matching repository.
+
+## Changed
+
+- Make the configured base branch in the IDE read-only.
+- Support configuring groups using an account ID in the admin backend.
+- Use gunicorn webserver in IDE.
+- Allow any repository with a Github installation ID to use build-on-PR.
+- Member and Owner Groups are now editable from admin UI.
+
+### On-Premises Only
+
+#### Fixed
+
+- Fixed an issue where account license counts were not set correctly from onprem license file.
+- Fixed an issue where docs would sometimes fail to load due to a server error.
+
+---
+
+## dbt Cloud v1.0.7 (April 13, 2020)
+
+This release rolls out a major change to how permissions are applied in dbt Cloud's API. It also adds some minor bugfixes, and some tooling for improved future QA.
+
+### All versions
+
+#### Added
+
+- Added support to permission connections on a per project basis.
+- Added support to permission credentials on a per project basis.
+- Added support to permission repositories on a per project basis.
+- Smoke tests for account signup, user login and basic project setup
+- Add dbt 0.16.1rc1
+- Non-enterprise users can now add new accounts from the Accounts dropdown.
+
+#### Fixed
+
+- Fix missing migration for credentials.
+- Fixed issue with testing connections with a non-default target name specified in the credentials.
+- Fix issue where Bigquery connections could be created with invalid values for `location`.
+
 ---
 
 ## dbt Cloud v1.0.6 (March 30, 2020)
