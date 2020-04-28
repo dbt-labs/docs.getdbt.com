@@ -27,7 +27,7 @@ This release adds a new version of dbt (0.16.1), fixes a number of IDE bugs, and
 - Fixed bug with access control around environments and file system/git interactions that occurred when using IDE.
 - Fixed a bug with Environments too generously matching repository.
 
-## Changed
+#### Changed
 
 - Make the configured base branch in the IDE read-only.
 - Support configuring groups using an account ID in the admin backend.
