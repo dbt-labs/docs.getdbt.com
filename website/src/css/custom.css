@@ -235,6 +235,7 @@ nav.navbar div.navbar__inner {
 	height: 100%;
 	background: rgba(255,255,255,0.1);
 	content: "";
+	-webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 	clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
 
