@@ -28,7 +28,7 @@
 - name: column_name
   description: The identifier of a column that can be selected from a relation.
 
-- name: column_name_or_expression # this is for like the loaded_at field, but I'll fill it in when we get there
+- name: column_name_or_expression # this is for like the loaded_at field, but I'll fill it in when we get there. Is it bad that this is snake_case whereas others are kebab-case?
 
 - name: datatype
   description: A valid datatype according for a data warehouse, e.g. `varchar`
