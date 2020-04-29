@@ -216,10 +216,26 @@ nav.navbar div.navbar__inner {
 }
 
 .card.large {
+	position: relative;
 	height: 250px;
 	margin-bottom: 20px;
 	padding: 20px;
 	border-radius: 5px !important;
+}
+
+.card.large .card__header, .card.large .card__body, .card.large .card__footer {
+	z-index: 999;
+}
+.card.large:after {
+	position: absolute;
+	z-index: 0;
+	top: 0px;
+	right: -60px;
+	width: 60%;
+	height: 100%;
+	background: rgba(255,255,255,0.1);
+	content: "";
+	clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
 
 .card.dark {
@@ -271,5 +287,13 @@ nav.navbar div.navbar__inner {
 	}
 	.container.container--fluid.home .row {
 		margin: calc(2vh) auto !important;
+	}
+}
+
+@media (max-width: 996px) {
+	.card.large:after {
+		width: 30%;
+		-webkit-clip-path: polygon(0 0, 100% 98%, 100% 0);
+		clip-path: polygon(0 0, 100% 98%, 100% 0);
 	}
 }
