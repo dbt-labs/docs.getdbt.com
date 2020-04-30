@@ -208,7 +208,7 @@ function Home() {
                 <div className="col col--4">
                   <div className="card large dark darker">
                     <div className="card__header">
-                      <h3><i data-icon="slack" data-toggle="tooltip" title="slack" data-placement="right"></i>Slack</h3>
+                      <h3><i data-icon="fishtown"></i>Slack</h3>
                     </div>
                     <div className="card__body">
                       <p>
