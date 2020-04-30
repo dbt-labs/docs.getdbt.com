@@ -62,8 +62,8 @@ from ...
 
 ### View
 When using the `view` materialization, your model is rebuilt as a view on each run, via a `create view as` statement.
-* **Pros:** No additional data is stored, views always on top of source data will have the latest records in them.
-* **Cons:** Views that perform significant transformation, or are stacked on top of other views, are
+* **Pros:** No additional data is stored, views on top of source data will always have the latest records in them.
+* **Cons:** Views that perform significant transformation, or are stacked on top of other views, are slow to query.
 * **Advice:**
     * Generally start with views for your models, and only change to another materialization when you're noticing performance problems.
     * Views are best suited for models that do not do significant transformation, e.g. renaming, recasting columns.
