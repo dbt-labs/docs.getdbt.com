@@ -6,6 +6,21 @@ description: With our starter project setup, it's time to get to the fun part â€
 
 With our starter project setup, it's time to get to the fun part â€” building [models](https://docs.getdbt.com/docs/building-models)! We're going to take the query from the [Setting up](1-setting-up.md) instructions, and turn it into a model in our dbt project.
 
+## Checkout a new git branch
+### dbt Cloud
+1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`. The master branch should now be set to "read only" mode, so you'll need to create a new branch. This is generally good practice anyway.
+2. Click the "create new branch" button, and name your branch `add-customers-model`.
+
+<Lightbox src="/img/checkout-branch-dbt-cloud.png" title="Checkout a new branch" />
+
+
+### dbt CLI
+It's a good idea to check out a new git branch when working on new code.
+
+1. Run `git checkout -b add-customers-model` to create a new branch/
+
+<Lightbox src="/img/checkout-branch-dbt-cli.png" title="Checkout a new branch" />
+
 ## Build your first model
 ### dbt Cloud
 <LoomVideo id="09919ddb02e44015878c9e93e15fe792" />
