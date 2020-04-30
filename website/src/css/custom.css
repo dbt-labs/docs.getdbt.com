@@ -224,7 +224,7 @@ nav.navbar div.navbar__inner {
 }
 
 .card.large .card__header, .card.large .card__body, .card.large .card__footer {
-	z-index: 999;
+	z-index: 9;
 }
 .card.large:after {
 	position: absolute;
@@ -281,6 +281,12 @@ nav.navbar div.navbar__inner {
 	border-color: #033744;
 }
 
+@media (max-width: 996px) {
+	.card.large:after {
+		width: 30%;
+	}
+}
+
 @media screen and (max-width: 700px) {
 	.card.large {
 		height: auto;
@@ -291,10 +297,8 @@ nav.navbar div.navbar__inner {
 	}
 }
 
-@media (max-width: 996px) {
+@media screen and (max-width: 600px) {
 	.card.large:after {
-		width: 30%;
-		-webkit-clip-path: polygon(0 0, 100% 98%, 100% 0);
-		clip-path: polygon(0 0, 100% 98%, 100% 0);
+		width: 50%;
 	}
 }

@@ -16,6 +16,7 @@ function Home() {
   const context = useDocusaurusContext();
 
   return (
+	  
     <Layout permalink="/">
         <div className="container container--fluid home" style={{"padding": "10px 0"}}>
         	<div className="row" style={{"max-width": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
@@ -207,7 +208,7 @@ function Home() {
                 <div className="col col--4">
                   <div className="card large dark darker">
                     <div className="card__header">
-                      <h3>Slack</h3>
+                      <h3><i data-icon="slack" data-toggle="tooltip" title="slack" data-placement="right"></i>Slack</h3>
                     </div>
                     <div className="card__body">
                       <p>
