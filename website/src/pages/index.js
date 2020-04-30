@@ -18,6 +18,10 @@ function Home() {
   return (
     <Layout permalink="/">
         <div className="container">
+            <h1>
+                Test
+                <i data-icon="fishtown"></i>
+            </h1>
             <div className="row" style={{"textAlign": "center", "marginTop": "calc(12.5vh)"}}>
                 <div className="col col--4">
                   <div className="card">
