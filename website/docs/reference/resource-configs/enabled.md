@@ -4,6 +4,94 @@ datatype: boolean
 default_value: true
 ---
 
+<Tabs
+  defaultValue="models"
+  values={[
+    { label: 'Models', value: 'models', },
+    { label: 'Seeds', value: 'seeds', },
+    { label: 'Snapshots', value: 'snapshots', },
+  ]
+}>
+<TabItem value="models">
+
+<File name='models/<modelname>.sql'>
+
+```jinja2
+
+{{ config(
+  enabled=true | false
+) }}
+
+select ...
+
+
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](resource-path):
+    enabled: true | false
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="seeds">
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  [<resource-path>](resource-path):
+    enabled: true | false
+
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="snapshots">
+
+<File name='snapshots/<filename>.sql'>
+
+```jinja2
+{% snapshot [snapshot_name](snapshot_name) %}
+
+{{ config(
+  enabled=true | false
+) }}
+
+select ...
+
+{% endsnapshot %}
+
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](resource-path):
+    enabled: true | false
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
 ## Definition
 An optional configuration for disabling models, seeds, and snapshots.
 

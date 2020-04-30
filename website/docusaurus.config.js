@@ -96,6 +96,7 @@ module.exports = {
   ],
   stylesheets: [
     '/css/fonts.css',
+    '/css/entypo.css',
     '/css/search.css',
     '/css/api.css',
     'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css',

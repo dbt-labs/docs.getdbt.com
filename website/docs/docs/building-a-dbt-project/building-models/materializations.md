@@ -94,7 +94,7 @@ When using the `table` materialization, your model is rebuilt as a table on each
     * Ephemeral models can help keep your data warehouse clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](using-custom-schemas).
 * **Cons:**
     * You cannot select directly from this model.
-    * Over use of the ephemeral materialization can also make queries harder to debug.
+    * Overuse of the ephemeral materialization can also make queries harder to debug.
 * **Advice:** Use the ephemeral materialization for:
     * very light-weight transformations that are early on in your DAG
     * are only used in one or two downstream models, and
