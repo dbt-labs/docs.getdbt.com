@@ -9,20 +9,20 @@ id: "adapter"
 
 The following functions are available:
 
-- [adapter.get_missing_columns](adapter#get_missing_columns)
-- [adapter.expand_target_column_types](adapter#expand_target_column_types)
-- [adapter.get_relation](adapter#get_relation)
-- [adapter.get_columns_in_relation](adapter#get_columns_in_relation)
-- [adapter.create_schema](adapter#create_schema)
-- [adapter.drop_schema](adapter#drop_schema)
-- [adapter.drop_relation](adapter#drop_relation)
-- [adapter.rename_relation](adapter#rename_relation)
+- [adapter.get_missing_columns](#get_missing_columns)
+- [adapter.expand_target_column_types](#expand_target_column_types)
+- [adapter.get_relation](#get_relation)
+- [adapter.get_columns_in_relation](#get_columns_in_relation)
+- [adapter.create_schema](#create_schema)
+- [adapter.drop_schema](#drop_schema)
+- [adapter.drop_relation](#drop_relation)
+- [adapter.rename_relation](#rename_relation)
 
 ### Deprecated adapter functions
 
 The following adapter functions are deprecated, and will be removed in a future release.
-- [adapter.get_columns_in_table](adapter#get_columns_in_table) **(deprecated)** 
-- [adapter.already_exists](adapter#already_exists) **(deprecated)**
+- [adapter.get_columns_in_table](#get_columns_in_table) **(deprecated)**
+- [adapter.already_exists](#already_exists) **(deprecated)**
 
 ## get_missing_columns
 __Args__:
@@ -93,7 +93,7 @@ Returns a [Relation](class-reference#relation) object identified by the `databas
       database="analytics",
       schema="dbt_drew",
       identifier="orders") -%}
-      
+
 {{ log("Source Relation: " ~ source_relation, info=true) }}
 
 ```
@@ -115,7 +115,7 @@ Returns a list of [Columns](class-reference#column) in a table.
 ```sql
 
 {%- set columns = adapter.get_columns_in_relation(this) -%}
-      
+
 {% for column in columns %}
   {{ log("Column: " ~ column, info=true) }}
 {% endfor %}
@@ -200,7 +200,7 @@ Renames a Relation the database.  The `rename_relation` method will rename the s
       database=this.database,
       schema=this.schema,
       identifier=this.identifier) -%}
-      
+
 {%- set backup_relation = adapter.get_relation(
       database=this.database,
       schema=this.schema,
@@ -215,7 +215,7 @@ Renames a Relation the database.  The `rename_relation` method will rename the s
 
 <Callout type="danger" title="Deprecated">
 
-This method is deprecated and will be removed in a future release. Please use [get_columns_in_relation](adapter#get_columns_in_relation) instead.
+This method is deprecated and will be removed in a future release. Please use [get_columns_in_relation](#get_columns_in_relation) instead.
 
 </Callout>
 
@@ -244,7 +244,7 @@ insert into {{ this }} ({{ dest_cols_csv }}) (
 
 <Callout type="danger" title="Deprecated">
 
-This method is deprecated and will be removed in a future release. Please use [get_relation](adapter#get_relation) instead.
+This method is deprecated and will be removed in a future release. Please use [get_relation](#get_relation) instead.
 
 </Callout>
 
