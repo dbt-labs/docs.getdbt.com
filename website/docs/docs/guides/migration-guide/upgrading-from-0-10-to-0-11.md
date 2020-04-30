@@ -4,7 +4,7 @@ id: "upgrading-from-0-10-to-0-11"
 ---
 
 ## Schema.yml v2 syntax
-dbt v0.11.0 adds an auto-generated docs site to your dbt project. To make effective use of the documentation site, you'll need to use the new "version 2" schema.yml syntax. For a full explanation of the version 2 syntax, check out the [schema.yml Files](schemayml-files) section of the documentation.
+dbt v0.11.0 adds an auto-generated docs site to your dbt project. To make effective use of the documentation site, you'll need to use the new "version 2" schema.yml syntax. For a full explanation of the version 2 syntax, check out the [schema.yml Files](declaring-properties) section of the documentation.
 
 ### Translating schema.yml files to the v2 syntax
 

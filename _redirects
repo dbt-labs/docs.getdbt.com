@@ -99,7 +99,7 @@
 /docs/running-dbt-in-production	/docs/running-a-dbt-project/running-dbt-in-production	302
 /docs/schema	/docs/writing-code-in-dbt/jinja-context/schema	302
 /docs/schemas	/docs/writing-code-in-dbt/jinja-context/schemas	302
-/docs/schemayml-files	/docs/building-a-dbt-project/testing-and-documentation/schemayml-files	302
+/docs/schemayml-files	/reference/declaring-properties	302
 /docs/seed	/docs/running-a-dbt-project/command-line-interface/seed	302
 /docs/seeds	/docs/building-a-dbt-project/seeds	302
 /docs/setting-up-enterprise-sso-with-azure-active-directory	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory	302
@@ -156,3 +156,4 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/building-a-dbt-project/dbt-projects/configuring-quoting	/reference/project-configs/quoting 	302
 /docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions	/reference/project-configs/require-dbt-version	302
 /docs/building-a-dbt-project/dbt-projects/configuring-query-comments	/reference/project-configs/query-comment	302
+/docs/building-a-dbt-project/testing-and-documentation/schemayml-files	/reference/declaring-properties	302

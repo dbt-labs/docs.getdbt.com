@@ -6,4 +6,4 @@ No! You can name this file whatever you want (including `whatever_you_want.yml`)
 * The file has `.yml` extension
 * The yaml follows the basic structure.
 
-Check out the [docs](https://docs.getdbt.com/docs/schemayml-files) for more information.
+Check out the [docs](https://docs.getdbt.com/docs/declaring-properties) for more information.

@@ -46,7 +46,6 @@ module.exports = {
           "docs/building-a-dbt-project/testing-and-documentation",
           "docs/building-a-dbt-project/testing-and-documentation/documentation-website",
           "docs/building-a-dbt-project/testing-and-documentation/documentation",
-          "docs/building-a-dbt-project/testing-and-documentation/schemayml-files",
           "docs/building-a-dbt-project/testing-and-documentation/testing",
         ],
       },

@@ -25,7 +25,7 @@ Schema tests are assertions that a model's schema adheres to basic rules: refere
 This guide explains the different types of tests built into dbt and demonstrates how to use them. For information on running tests like these, check out the [dbt test](test) command reference.
 
 ### Writing Schema Tests
-Schema tests are declared in a [schema.yml file](schemayml-files). dbt provides four types of schema tests out of the box. [Custom schema tests](custom-schema-tests) can also be created.
+Schema tests are declared in a [schema.yml file](declaring-properties). dbt provides four types of schema tests out of the box. [Custom schema tests](custom-schema-tests) can also be created.
 
 <Callout type="info" title="Pro Tip">
 
