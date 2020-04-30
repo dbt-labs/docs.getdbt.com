@@ -304,6 +304,15 @@ module.exports = {
         ],
       },
     ],
+    Properties: [
+      "reference/declaring-properties",
+      "reference/model-properties",
+      "reference/source-properties",
+      "reference/seed-properties",
+      "reference/snapshot-properties",
+      "reference/analysis-properties",
+      "reference/macro-properties"
+    ],
   },
   tutorial: {
     "Getting Started": [
