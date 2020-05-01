@@ -4,7 +4,7 @@ The following is a list of all available configurations in the `dbt_project.yml`
 
 <Alert type='info'>
     <h4>YAML syntax</h4>
-    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented in YAML.
+    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
 </Alert>
 
 <File name='dbt_project.yml'>

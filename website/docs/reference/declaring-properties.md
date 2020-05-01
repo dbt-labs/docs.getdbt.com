@@ -27,7 +27,7 @@ You can name these files `whatever_you_want.yml` and nest them arbitrarily deepl
 
 <Alert type='info'>
     <h4>YAML syntax</h4>
-    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented in YAML.
+    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
 </Alert>
 
 ## Example
