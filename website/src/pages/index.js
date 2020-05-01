@@ -21,7 +21,8 @@ function Home() {
         <div className="container container--fluid home" style={{"padding": "10px 0"}}>
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
         		<div className="col col--8">
-        			 <h1>Get started</h1>
+               <h1>dbt documentation</h1>
+        			 <h2>Get started</h2>
         			 <p style={{"fontSize": "120%"}}>If you’re new to dbt, start here. These resources will get you off to a strong start:</p>
 				</div>
 			</div>
@@ -69,7 +70,7 @@ function Home() {
         <div className="container container--fluid home" style={{"background": "#FFF", "padding": "10px 0"}}>
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
         		<div className="col col--8">
-        			 <h1>Build your project</h1>
+        			 <h2>Build your project</h2>
         			 <p style={{"fontSize": "120%"}}>If you’re getting comfortable with dbt, bookmark these resources! They’ll help you level up quickly.</p>
 				</div>
 			</div>
@@ -181,7 +182,7 @@ function Home() {
         <div className="container container--fluid home" style={{"background": "#f5f6f7", "padding": "10px 0"}}>
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
         		<div className="col col--8">
-        			 <h1>Learn from the community</h1>
+        			 <h2>Learn from the community</h2>
         			 <p style={{"fontSize": "120%"}}>Every data team uses dbt to solve different analytics engineering problems. It can be useful to learn how other teams are using dbt with the following resources:</p>
 				</div>
 			</div>
@@ -248,7 +249,7 @@ function Home() {
         <div className="container container--fluid home" style={{"background": "#FFF", "padding": "10px 0"}}>
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
         		<div className="col col--8">
-        			 <h1>Having trouble?</h1>
+        			 <h2>Having trouble?</h2>
         			 <p style={{"fontSize": "120%"}}>If you&#39;re having trouble, check out our Getting Help FAQ for information on getting support and asking questions in the community.</p>
         			  <Link
                           className="button help button--primary"
