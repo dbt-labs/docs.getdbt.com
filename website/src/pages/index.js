@@ -16,12 +16,12 @@ function Home() {
   const context = useDocusaurusContext();
 
   return (
-	  
+
     <Layout permalink="/">
         <div className="container container--fluid home" style={{"padding": "10px 0"}}>
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
         		<div className="col col--8">
-               <h1>dbt documentation</h1>
+               <h1>dbt Documentation</h1>
         			 <h2>Get started</h2>
         			 <p style={{"fontSize": "120%"}}>If you’re new to dbt, start here. These resources will get you off to a strong start:</p>
 				</div>
@@ -60,7 +60,7 @@ function Home() {
                         <Link
                           className="button button--primary"
                           to={useBaseUrl('tutorial/setting-up')}>
-                          Watch Tutorial
+                          Start Tutorial
                         </Link>
                     </div>
                   </div>
@@ -142,7 +142,7 @@ function Home() {
                 <div className="col col--4">
                   <div className="card large light">
                     <div className="card__header">
-                      <h3>dbt Cloud guides</h3>
+                      <h3>dbt Cloud Guides</h3>
                     </div>
                     <div className="card__body">
                       <p>
@@ -172,7 +172,7 @@ function Home() {
                         <Link
                           className="button button--primary"
                           to={useBaseUrl('/dbt-cloud/api/')}>
-                          API docs
+                          API Docs
                         </Link>
                     </div>
                   </div>
@@ -201,7 +201,7 @@ function Home() {
                         <Link
                           className="button button--primary"
                           to="https://discourse.getdbt.com/">
-                          Get Advice
+                          Learn on Discourse
                         </Link>
                     </div>
                   </div>
@@ -228,7 +228,7 @@ function Home() {
                 <div className="col col--4">
                   <div className="card large dark darkest">
                     <div className="card__header">
-                      <h3>Example projects</h3>
+                      <h3>Example Projects</h3>
                     </div>
                     <div className="card__body">
                       <p>
@@ -254,7 +254,7 @@ function Home() {
         			  <Link
                           className="button help button--primary"
                           to={useBaseUrl('/faqs/getting-help/')}>
-                          View FAQs
+                          Get Help
                         </Link>
 				</div>
 			</div>
