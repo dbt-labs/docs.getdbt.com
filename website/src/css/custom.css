@@ -7,7 +7,6 @@ root {
     --ifm-color-primary-light: #023b4b;
     --ifm-color-primary-lighter: #023e4e;
     --ifm-color-primary-lightest: #034658;
-
     --ifm-h1-font-size: 2rem;
     --ifm-h2-font-size: 1.5rem;
     --ifm-h3-font-size: 1.25rem;
@@ -214,4 +213,92 @@ nav.navbar div.navbar__inner {
 .menu__link {
     font-size: 14px !important;
     padding: 2px 0px 2px 10px !important;
+}
+
+.card.large {
+	position: relative;
+	height: 250px;
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 5px !important;
+}
+
+.card.large .card__header, .card.large .card__body, .card.large .card__footer {
+	z-index: 9;
+}
+.card.large:after {
+	position: absolute;
+	z-index: 0;
+	top: 0px;
+	right: -60px;
+	width: 60%;
+	height: 100%;
+	background: rgba(255,255,255,0.1);
+	content: "";
+	-webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+	clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+
+.card.dark {
+	background: #005e7a;
+	color: #FFF;
+}
+
+.card.darker {
+	background: #00475c;
+}
+
+.card.darkest {
+	background: #003645;
+}
+
+.card.light {
+	background: #ffba94;
+	color: #033744;
+}
+
+.card.lighter {
+	background: #ffa376;
+}
+
+.card.lightest {
+	background: #ff845e;
+}
+
+.card.large .button, .button.help {
+	background: #ff845e;
+	border-color: #ff845e;
+}
+
+.card.large .button:hover, .card.large.light .button:hover {
+	background: #FFF;
+	border-color: #FFF;
+	color: #1c1e21;
+}
+
+.card.large.light .button, .button.help:hover {
+	background: #033744;
+	border-color: #033744;
+}
+
+@media (max-width: 996px) {
+	.card.large:after {
+		width: 30%;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.card.large {
+		height: auto;
+		text-align: center;
+	}
+	.container.container--fluid.home .row {
+		margin: calc(2vh) auto !important;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.card.large:after {
+		width: 50%;
+	}
 }
