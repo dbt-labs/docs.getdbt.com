@@ -3,7 +3,7 @@ title: Declaring resource properties
 ---
 
 ## Overview
-While configurations tell dbt _how_ to build something in your warehouse (for example, whether a model should be a table or view, or which SQL to use when running a snapshot), resource properties are used to declare things _about_ your dbt project, or data warehouse.
+While configurations tell dbt _how_ to build something in your warehouse (for example, whether a model should be a table or view, or which SQL to use when running a snapshot), resource properties are used to declare things _about_ your dbt project or data warehouse.
 
 For example, you can use resource properties to:
 * Describe models, snapshots, seed files, and their columns
@@ -12,7 +12,7 @@ For example, you can use resource properties to:
 * Define existing tables contains raw data as [sources](using-sources)
 * Assert the expected "freshness" of this raw data
 
-In dbt, these properties are declared in `.yml` files, in the same path as your resources. There's a few quirks for backwards compatibility reasons:
+In dbt, these properties are declared in `.yml` files, in the same directory as your resources. There's a few quirks for backwards compatibility reasons:
 
 | Resource  | Default directories       | Defined by                   |
 |-----------|---------------------------|------------------------------|
@@ -26,8 +26,8 @@ In dbt, these properties are declared in `.yml` files, in the same path as your 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
 
 <Alert type='info'>
-    <h4>YAML syntax</h4>
-    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
+    <h4>schema.yml files</h4>
+    Previous versions of the docs referred to these as `schema.yml` files — we've moved away from that terminology since the word `schema` is used to mean other things when talking about databases, and people often thought that you _had_ to name these files `schema.yml`.
 </Alert>
 
 ## Example
@@ -102,18 +102,12 @@ You can find an exhaustive list of each property for a resource in the following
 * [Macro Properties](macro-properties)
 
 ## FAQs:
-- Do I need to name these files `schema.yml`?
-- Why do are properties defined separately to configurations?
-- Why version 2?
-- Can I use the `.yaml` file extension?
-- Should I use one file per model, or one file per directory? Should I co-locate my resource properties (i.e. sources and models together)
-
-
-## Usage
-
-### Versioning schema.yml
-
-schema.yml files must specify a version. The only currently supported version for schema.yml files is `version: 2`. This version identifier makes it possible for new dbt functionality to be incorporated into the schema.yml syntax in future releases.
+<FAQ src="schema-yml-name" />
+<FAQ src="resource-yml-name" />
+<FAQ src="multiple-resource-yml-files" />
+<FAQ src="properties-not-in-config" />
+<FAQ src="why-version-2" />
+<FAQ src="yaml-file-extension" />
 
 ## Troubleshooting Common Errors
 
