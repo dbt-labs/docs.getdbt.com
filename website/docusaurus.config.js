@@ -22,7 +22,23 @@ module.exports = {
     },
 
     prism: {
-      theme: require('prism-react-renderer/themes/nightOwl'),
+      theme: (() => {
+          var theme = require('prism-react-renderer/themes/nightOwl');
+          // Add additional rule to nightowl theme in order to change
+          // the color of YAML keys (to be different than values).
+          // There weren't many Prism themes that differentiated
+          // YAML keys and values. See link:
+          // https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
+          theme.styles.push({
+              types: ["atrule"],
+              style: {
+                  // color chosen from the nightowl theme palette
+                  // https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/themes/nightOwl.js#L83
+                  color: "rgb(255, 203, 139)"
+              }
+          });
+          return theme
+      })(),
       additionalLanguages: ['bash', 'shell'],
     },
     navbar: {
