@@ -17,7 +17,7 @@ You can use **custom schemas** in dbt to build models in a schema other than you
 | &lt;target_schema&gt; | None | &lt;target_schema&gt; |
 | analytics | None | analytics |
 | dbt_alice | None | dbt_alice |
-| &lt;target_schema&gt; | &lt;custom_schema&gt; | &lt;target_schema&gt;_&lt;custom_schema&gt; |
+| &lt;target_schema&gt; | &lt;custom_schema&gt; | &lt;target_schema&gt;\_&lt;custom_schema&gt; |
 | analytics | marketing | analytics_marketing |
 | dbt_alice | marketing | dbt_alice_marketing |
 
