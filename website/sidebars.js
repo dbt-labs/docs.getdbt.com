@@ -310,7 +310,14 @@ module.exports = {
       "reference/seed-properties",
       "reference/snapshot-properties",
       "reference/analysis-properties",
-      "reference/macro-properties"
+      "reference/macro-properties",
+      {
+        type: "category",
+        label: "List of general properties",
+        items: [
+          "reference/resource-properties/description",
+        ],
+      },
     ],
   },
   tutorial: {

@@ -9,13 +9,13 @@ version: 2
 
 snapshots:
   - name: <snapshot name>
-    description: "<description>"
+    [description](description): <markdown_string>
     tests:
       - <test>
       - ...
     columns:
       - name: <column name>
-        description: <column description>
+        [description](description): <markdown_string>
         quote: <true|false>
         tags: <tags>
         tests:

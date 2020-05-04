@@ -8,7 +8,7 @@ version: 2
 
 sources:
   - name: <string> # required
-    description: <markdown_string>
+    [description](description): <markdown_string>
     database: <database_name>
     schema: <schema_name>
     loader: <string>
@@ -27,7 +27,7 @@ sources:
 
     tables:
       - name: <string> #required
-        description: <markdown_string>
+        [description](description): <markdown_string>
         identifier: <table_name>
         loaded_at_field: <column_name>
         tests: [<test>]
@@ -41,7 +41,7 @@ sources:
           identifier: true | false
         columns: # this is repeated elsewhere
           - name: <column_name> # required
-            description: <markdown_string>
+            [description](description): <markdown_string>
             quote: true | false
             tests: [<test>]
             tags: [<string>]

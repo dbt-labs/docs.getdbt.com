@@ -9,9 +9,9 @@ version: 2
 
 analyses:
   - name: <analysis_name> # required
-    description: <string>
+    [description](description): <markdown_string>
     columns:
       - name: <column_name>
-        description: <string>
+        [description](description): <markdown_string>
 
 ```

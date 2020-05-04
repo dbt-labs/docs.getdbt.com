@@ -9,11 +9,11 @@ version: 2
 
 macros:
   - name: <macro name>
-    description: <description>
+    [description](description): <markdown_string>
     arguments:
       - name: <arg name>
         type: <arg type>
-        description: <arg description>
+        [description](description): <markdown_string>
       - ...
   - ...
 
