@@ -318,6 +318,13 @@ module.exports = {
           "reference/resource-properties/description",
         ],
       },
+      {
+        type: "category",
+        label: "List of model properties",
+        items: [
+          "reference/resource-properties/docs",
+        ],
+      },
     ],
   },
   tutorial: {

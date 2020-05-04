@@ -10,7 +10,7 @@ version: 2
 models:
   - [name](model_name): <model name>
     [description](description): <markdown_string>
-    docs:
+    [docs](docs):
       show: true | false
     meta: {<dictionary>}
     tests: [<test>]

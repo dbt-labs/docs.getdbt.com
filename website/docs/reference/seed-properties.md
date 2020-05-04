@@ -10,6 +10,8 @@ version: 2
 seeds:
   - name: <string>
     [description](description): <markdown_string>
+    [docs](docs):
+      show: true | false
     tests:
       - <test>
       - ...

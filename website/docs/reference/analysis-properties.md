@@ -10,6 +10,8 @@ version: 2
 analyses:
   - name: <analysis_name> # required
     [description](description): <markdown_string>
+    [docs](docs):
+      show: true | false
     columns:
       - name: <column_name>
         [description](description): <markdown_string>

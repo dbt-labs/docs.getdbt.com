@@ -10,6 +10,8 @@ version: 2
 snapshots:
   - name: <snapshot name>
     [description](description): <markdown_string>
+    [docs](docs):
+      show: true | false
     tests:
       - <test>
       - ...
