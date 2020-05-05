@@ -20,7 +20,8 @@ This is a work in progress document.
 }>
 <TabItem value="models">
 
-**Note:** To tag a model, use the [tag configuration](resource-configs/tags)
+**Note:** To tag a model, use the [tag _configuration_](resource-configs/tags).
+
 <File name='models/schema.yml'>
 
 ```yml
@@ -44,9 +45,9 @@ models:
 
 <TabItem value="sources">
 
-<File name='models/schema.yml'>
-
 Unlike models, seeds, and snapshot, you _can_ tag sources as a property.
+
+<File name='models/schema.yml'>
 
 ```yml
 version: 2
@@ -74,7 +75,7 @@ sources:
 
 <TabItem value="seeds">
 
-**Note:** To tag a model, use the [tag configuration](resource-configs/tags)
+**Note:** To tag a model, use the [tag _configuration_](resource-configs/tags).
 
 <File name='data/schema.yml'>
 
@@ -99,10 +100,9 @@ seeds:
 
 <TabItem value="snapshots">
 
+**Note:** To tag a snapshot, use the [tag _configuration_](resource-configs/tags).
+
 <File name='snapshots/schema.yml'>
-
-**Note:** To tag a snapshot, use the [tag configuration](resource-configs/tags)
-
 
 ```yml
 version: 2
@@ -150,11 +150,26 @@ analyses:
 </Tabs>
 
 
-#### tags
+### Definition
 
-<Changelog> Added in v0.16.0 </Changelog>
+The `tags` _property_ can be used to:
+- set tags for a column
+- set tags on a specific test
+- set tags for a source or source table.
 
-The `tags` field can be used to set tags for a column, or to set tags on a specific test. Example:
+These tags can be used as part of the [resource selection syntax](model-selection-syntax).
+
+Note that you need to use the [tag _configuration_](resource-configs/tags) to apply tags to models, seeds, and snapshots. (Yes, we know this is confusing, and hope to resolve it in a future release!)
+
+<Changelog>
+
+- `v0.16.0`: Added ability to apply tags to columns and tests
+
+</Changelog>
+
+
+## Examples
+### Tag a column and test
 
 ```yml
 models:
@@ -177,7 +192,7 @@ models:
                 - foreign-key
 ```
 
-Tests on column tags can be run using the `tag:` selector:
+Then, use the `tag:` selector to run the tests on a particular column.
 
 ```
 $ dbt test --models tag:pii

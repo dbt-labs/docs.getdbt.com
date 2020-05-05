@@ -2,7 +2,11 @@
 title: Model properties
 ---
 
-Models may be described in the `source-paths` directories configured in your `dbt_project.yml` file.
+Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`source-paths` config](source-paths)).
+
+You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
+
+<File name='models/<filename>.yml'>
 
 ```yml
 version: 2
@@ -10,10 +14,12 @@ version: 2
 models:
   - [name](model_name): <model name>
     [description](description): <markdown_string>
-    [docs](docs):
+    [docs](resource-properties/docs):
       show: true | false
     [meta](meta): {<dictionary>}
-    [tests](tests): [<test>]
+    [tests](tests):
+      - <test>
+      - ... # declare additional tests
     columns:
       - name: <column_name> # required
         [description](description): <markdown_string>
@@ -21,6 +27,16 @@ models:
         [quote](quote): true | false
         [tests](tests):
           - <test>
-        [tags](tags): [<string>]
+          - ... # declare additional tests
+        [tags](resource-properties/tags): [<string>]
+
+      - name: ... # declare properties of additional comments
 
 ```
+
+</File>
+
+<!---
+FAQs
+- Do I need to declare every column for it to render in documentation?
+--->

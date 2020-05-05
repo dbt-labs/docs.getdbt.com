@@ -1,7 +1,18 @@
 ---
 title: Source properties
 ---
-Sources may be described in the `source-paths` directories configured in your `dbt_project.yml` file.
+
+<Alert type='warning'>
+<h4>Heads up!</h4>
+This is a work in progress document.
+
+</Alert>
+
+Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`source-paths` config](source-paths)).
+
+You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
+
+<File name='models/<filename>.yml'>
 
 ```yml
 version: 2
@@ -14,7 +25,7 @@ sources:
     loader: <string>
     loaded_at_field: <column_name>
     [meta](meta): {<dictionary>}
-    [tags](tags): [<string>]
+    [tags](resource-properties/tags): [<string>]
 
     freshness:
       warn_after: {count: 12, period: hour}
@@ -33,20 +44,28 @@ sources:
         loaded_at_field: <column_name>
         [tests](tests):
           - <test>
-        [tags](tags): [<string>]
+          - ... # declare additional tests
+        [tags](resource-properties/tags): [<string>]
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
         quoting:
           identifier: true | false
-        columns: # this is repeated elsewhere
+        columns:
           - name: <column_name> # required
             [description](description): <markdown_string>
             [meta](meta): {<dictionary>}
             [quote](quote): true | false
             [tests](tests):
               - <test>
-            [tags](tags): [<string>]
+              - ... # declare additional tests
+            [tags](resource-properties/tags): [<string>]
+          - name: ... # declare properties of additional columns
 
+      - name: ... # declare properties of additional source tables
+
+  - name: ... # declare properties of additional sources
 
 ```
+
+</File>

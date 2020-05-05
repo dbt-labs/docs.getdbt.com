@@ -26,8 +26,13 @@ In dbt, these properties are declared in `.yml` files, in the same directory as 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
 
 <Alert type='info'>
-    <h4>schema.yml files</h4>
-    Previous versions of the docs referred to these as `schema.yml` files — we've moved away from that terminology since the word `schema` is used to mean other things when talking about databases, and people often thought that you _had_ to name these files `schema.yml`.
+
+#### schema.yml files
+
+Previous versions of the docs referred to these as `schema.yml` files — we've moved away from that terminology since the word `schema` is used to mean other things when talking about databases, and people often thought that you _had_ to name these files `schema.yml`.
+
+(Of course, you're still free to name your files `schema.yml`)
+
 </Alert>
 
 ## Example
@@ -101,7 +106,7 @@ You can find an exhaustive list of each property for a resource in the following
 * [Analysis Properties](analysis-properties)
 * [Macro Properties](macro-properties)
 
-## FAQs:
+## FAQs
 <FAQ src="schema-yml-name" />
 <FAQ src="resource-yml-name" />
 <FAQ src="multiple-resource-yml-files" />
@@ -109,21 +114,21 @@ You can find an exhaustive list of each property for a resource in the following
 <FAQ src="why-version-2" />
 <FAQ src="yaml-file-extension" />
 
-## Troubleshooting Common Errors
+## Troubleshooting common errors
 
 ### Invalid test config given in [model name]
 
-This error occurs when your schema.yml does not conform to the structure expected by dbt. A full error message might look like:
+This error occurs when your `.yml` file does not conform to the structure expected by dbt. A full error message might look like:
 ```
 * Invalid test config given in models/schema.yml near {'namee': 'event', ...}
   Invalid arguments passed to "UnparsedNodeUpdate" instance: 'name' is a required property, Additional properties are not allowed ('namee' was unexpected)
 ```
 
-While verbose, an error like this should help you track down the issue. Here, the `name` field was provided as `namee` by accident. To fix this error, ensure that your schema.yml conforms to the expected structure described in this guide.
+While verbose, an error like this should help you track down the issue. Here, the `name` field was provided as `namee` by accident. To fix this error, ensure that your `.yml` conforms to the expected structure described in this guide.
 
 ### Invalid syntax in your schema.yml file
 
-If your schema.yml file is not valid yaml, then dbt will show you an error like this:
+If your `.yml` file is not valid yaml, then dbt will show you an error like this:
 
 ```
 Runtime Error
@@ -142,4 +147,4 @@ Runtime Error
 
 ```
 
-This error occurred because a semicolon (`;`) was accidentally used instead of a colon (`:`) after the `description` field. To resolve issues like this, find the schema.yml file referenced in the error message and fix any syntax errors present in the file. There are online yaml validators that can be helpful here, but please be mindful of submitting sensitive information to third-party applications!
+This error occurred because a semicolon (`;`) was accidentally used instead of a colon (`:`) after the `description` field. To resolve issues like this, find the `.yml` file referenced in the error message and fix any syntax errors present in the file. There are online yaml validators that can be helpful here, but please be mindful of submitting sensitive information to third-party applications!
