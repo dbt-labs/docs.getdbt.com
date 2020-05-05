@@ -316,13 +316,11 @@ module.exports = {
         label: "List of general properties",
         items: [
           "reference/resource-properties/description",
-        ],
-      },
-      {
-        type: "category",
-        label: "List of model properties",
-        items: [
           "reference/resource-properties/docs",
+          "reference/resource-properties/meta",
+          "reference/resource-properties/quote",
+          "reference/resource-properties/tags",
+          "reference/resource-properties/tests",
         ],
       },
     ],

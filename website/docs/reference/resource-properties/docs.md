@@ -4,10 +4,6 @@ datatype: "{dictionary}"
 default_value: {show: true}
 ---
 
-
-
-
-
 <Tabs
   defaultValue="models"
   values={[

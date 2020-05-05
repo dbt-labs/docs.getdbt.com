@@ -13,16 +13,15 @@ snapshots:
     [meta](meta): {<dictionary>}
     [docs](docs):
       show: true | false
-    tests:
+    [tests](tests):
       - <test>
-      - ...
     columns:
       - name: <column name>
         [description](description): <markdown_string>
         [meta](meta): {<dictionary>}
-        quote: <true|false>
-        tags: <tags>
-        tests:
+        [quote](quote): true | false
+        [tags](tags): [<string>]
+        [tests](tests):
           - <test>
-          - ...
+
 ```

@@ -44,7 +44,7 @@ models:
 version: 2
 
 sources:
-  - name: model_name
+  - name: source_name
     description: markdown_string
 
     tables:

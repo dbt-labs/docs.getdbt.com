@@ -14,7 +14,7 @@ sources:
     loader: <string>
     loaded_at_field: <column_name>
     [meta](meta): {<dictionary>}
-    tags: <string> | [<string>] # check if single value is allowed
+    [tags](tags): [<string>]
 
     freshness:
       warn_after: {count: 12, period: hour}
@@ -31,10 +31,9 @@ sources:
         [meta](meta): {<dictionary>}
         identifier: <table_name>
         loaded_at_field: <column_name>
-        tests: [<test>]
-        tags: []
-        docs: # to check
-          show: true | false
+        [tests](tests):
+          - <test>
+        [tags](tags): [<string>]
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
@@ -44,9 +43,10 @@ sources:
           - name: <column_name> # required
             [description](description): <markdown_string>
             [meta](meta): {<dictionary>}
-            quote: true | false
-            tests: [<test>]
-            tags: [<string>]
+            [quote](quote): true | false
+            [tests](tests):
+              - <test>
+            [tags](tags): [<string>]
 
 
 ```
