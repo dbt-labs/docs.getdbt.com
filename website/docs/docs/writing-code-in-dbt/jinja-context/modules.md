@@ -13,6 +13,8 @@ This variable is a pointer to the Python [datetime](https://docs.python.org/3/li
 ```
 {% set dt = modules.datetime.datetime.now() %}
 ```
+This module will return the current date and time on every Jinja evaluation. For the date and time of the
+start of the run, please see [run_started_at](run_started_at).
 
 ## pytz
 This variable is a pointer to the Python [pytz](https://pypi.org/project/pytz/) module.
