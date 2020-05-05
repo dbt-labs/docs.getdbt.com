@@ -10,6 +10,7 @@ version: 2
 snapshots:
   - name: <snapshot name>
     [description](description): <markdown_string>
+    [meta](meta): {<dictionary>}
     [docs](docs):
       show: true | false
     tests:
@@ -18,6 +19,7 @@ snapshots:
     columns:
       - name: <column name>
         [description](description): <markdown_string>
+        [meta](meta): {<dictionary>}
         quote: <true|false>
         tags: <tags>
         tests:

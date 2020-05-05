@@ -18,6 +18,7 @@ seeds:
     columns:
       - name: <column name>
         [description](description): <markdown_string>
+        [meta](meta): {<dictionary>}
         quote: <true|false>
         tags: <tags>
         tests: [<test>]

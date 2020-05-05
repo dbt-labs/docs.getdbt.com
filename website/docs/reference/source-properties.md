@@ -13,7 +13,7 @@ sources:
     schema: <schema_name>
     loader: <string>
     loaded_at_field: <column_name>
-    meta: { <dictionary> }
+    [meta](meta): {<dictionary>}
     tags: <string> | [<string>] # check if single value is allowed
 
     freshness:
@@ -28,6 +28,7 @@ sources:
     tables:
       - name: <string> #required
         [description](description): <markdown_string>
+        [meta](meta): {<dictionary>}
         identifier: <table_name>
         loaded_at_field: <column_name>
         tests: [<test>]
@@ -42,6 +43,7 @@ sources:
         columns: # this is repeated elsewhere
           - name: <column_name> # required
             [description](description): <markdown_string>
+            [meta](meta): {<dictionary>}
             quote: true | false
             tests: [<test>]
             tags: [<string>]
