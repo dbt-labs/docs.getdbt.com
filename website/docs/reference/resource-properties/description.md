@@ -299,7 +299,7 @@ version: 2
 
 models:
   - name: dim_customers
-    description: "Filtering done based on [stg_stripe__payments](#!/model/model.jaffle_shop.stg_stripe__payments)"
+    description: "Filtering done based on \[stg_stripe__payments](#!/model/model.jaffle_shop.stg_stripe__payments)"
 
     columns:
       - name: customer_id
