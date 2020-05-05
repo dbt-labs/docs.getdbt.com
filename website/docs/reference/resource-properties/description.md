@@ -229,7 +229,7 @@ version: 2
 
 models:
   - name: dim_customers
-    description: "**[Read more](https://www.google.com/)**"
+    description: "**\[Read more](https://www.google.com/)**"
 
     columns:
       - name: customer_id
