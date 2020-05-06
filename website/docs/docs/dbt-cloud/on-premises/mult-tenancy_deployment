@@ -1,6 +1,6 @@
 ---
-id: Mult-Tenancy
-title: Mult-Tenancy
+id: Mult-Tenancy Deployment
+title: Mult-Tenancy Deployment
 ---
 
 ##  Overview
@@ -14,9 +14,9 @@ Account Manager or support (support@getdbt.com).
 For every dbt cloud account with SSO configuration, a new application should be created on the SSO provider. This will assure users of the same IdP organization will be mapped to appropriate dbt Cloud accounts via SSO login. 
 
 #### Please follow the appropriate integration-specific guide for your setup:
-[Azure Active Directory](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory)
-[GSuite](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite)
-[Okta](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta)
+[Azure Active Directory](dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory.md)
+[GSuite](dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite.md)
+[Okta](dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta.md)
 
 #### Key Tips: 
 Rather than naming the application name as `Dbt Cloud`, associate it with the Account so it would be `Dbt Cloud Account_Name` to be specific with what application is associated with which dbt cloud account 
@@ -56,7 +56,7 @@ Here are the steps to onboard users to the new account.
 2. Establish the connections to the data warehouse and git repository.
     a. This needs to be created on the frontend  of dbt Cloud. 
 3. Create the Groups
-    a. If you want to utilize [Enterprise Permissions](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions/), create the groups with the appropriate SSO mappings so that new users will be associated to the appropriate groups once logged in. 
+    a. If you want to utilize [Enterprise Permissions](dbt-cloud/dbt-cloud-enterprise/enterprise-permissions.md), create the groups with the appropriate SSO mappings so that new users will be associated to the appropriate groups once logged in. 
     b. Associate the groups to the appropriate projects.
     c. This needs to be created on the backend of dbt Cloud
 4. Test the IDE (Develop) to assure that the connections are working correctly. 
