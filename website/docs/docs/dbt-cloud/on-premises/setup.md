@@ -67,13 +67,13 @@ A new version of dbt Cloud will appear on the Version History page in your Confi
 
 You can apply or roll back these changes at any time by clicking the Deploy and Rollback buttons on the right side of this screen.
 
-### Github
+### Github Setup
 
 This setup is only required for Github App usage. 
 
-Log into the dbt Cloud configuration console, navigate to Settings, and check Enable under Github Integration.
+1. Log into the dbt Cloud configuration console, navigate to Settings, and check Enable under Github Integration.
 
-Enter the following:
+2. Enter the following:
 
 - Base URL: the base URL of your Github enterprise installation, e.g. github.mycompany.com
 - API URL: the scheme-included API URL of your Github enterprise installation. Usually https://github.mycompany.com/api/v3
@@ -84,4 +84,16 @@ Enter the following:
 - Install URL: right click "Public page" on the "About" page, click "Copy Link Location," and paste in the value here.
 - Private Key PEM: on the "About" page of the newly created Github app, scroll down to the bottom of the page. Under "Private Keys," click "Generate a Private Key." Download the key, then open up the file and paste the contents into this field.
 
-After you save your dbt Cloud configuration, you are ready to manage your Github integration. Your users can log into dbt Cloud, and navigate to Profile > Integrations to start connecting your Github account to dbt Cloud. See https://docs.getdbt.com/docs/cloud-installing-the-github-application for more details on how your users can start using the integration.
+3. Save your dbt Cloud configuration.
+4. Restart the "app" pod to update the configuration values.
+##### To do this on kubernetes 1.15+:
+```
+kubectl rollout restart deployment app
+```
+##### To do this on kubernetes <1.15:
+```
+kubectl patch deployment app -p \
+  "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}"
+```
+
+After these steps, you are ready to manage your Github integration. Your users can log into dbt Cloud, and navigate to Profile > Integrations to start connecting your Github account to dbt Cloud. See [Github](https://docs.getdbt.com/docs/cloud-installing-the-github-application) for more details on how your users can start using the integration.
