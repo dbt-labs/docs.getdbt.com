@@ -51,7 +51,7 @@ at the bottom, the Enterprise login url will be updated.
 #### Helpful Hints
 
  - For Azure AD and GSuite, the unique identifier is the deployment id provided when creating the app.
- - For Okta, the unique identifier is the "Identity Provider Issuer"
+ - For Okta, the unique identifier is the "Identity Provider Issuer" provided after creating the application in Okta.
  - The `login slug` is added to the Enterprise Login URL to create a unique login link for users of this account.
  - **If you aren't sure which values to use, contact your Account Manager.**
  - It is highly recommended that the first users to associate to the account would be the account administrators. If those users are not already setup in the backend, once you provide the SSO login URL, the user will be created. Alternatively a new user can be emailed an invite via the frontend after configuration is completed. 
@@ -118,6 +118,5 @@ should never exceed the total number of seats associated with your license.
 Contact your account manager if additional seats are needed. 
 - The way to track the number of users on an account is via Accounts > Account Name > User Licenses
 - There is no console to provide an overview of seats in all accounts.
-
 
 
