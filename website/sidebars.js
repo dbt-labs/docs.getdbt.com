@@ -233,6 +233,7 @@ module.exports = {
           "docs/dbt-cloud/on-premises/system-requirements",
           "docs/dbt-cloud/on-premises/installation",
           "docs/dbt-cloud/on-premises/setup",
+          "docs/dbt-cloud/on-premises/mult-tenancy",
         ],
       },
       "docs/dbt-cloud/cloud-changelog",
