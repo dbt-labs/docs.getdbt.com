@@ -64,7 +64,7 @@ Here are the steps to onboard users to the new account.
 
 ##### 1. Create the Projects
 
-The dbt cloud administrator will need to create the projects either themselves or invite an AccountAdmin level user to the account to establish the projects necessary for the required environments. 
+The dbt Cloud administrator will need to create the projects either themselves or invite an AccountAdmin level user to the account to establish the projects necessary for the required environments. 
     
 - Remember that it is one data warehouse connection and one git repository per dbt cloud project.
 - This needs to be created on the frontend of dbt Cloud.
@@ -118,7 +118,6 @@ should never exceed the total number of seats associated with your license.
 Contact your account manager if additional seats are needed. 
 - The way to track the number of users on an account is via Accounts > Account Name > User Licenses
 - There is no console to provide an overview of seats in all accounts.
-
 
 
 
