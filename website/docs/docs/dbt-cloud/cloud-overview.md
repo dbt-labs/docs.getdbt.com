@@ -29,9 +29,9 @@ dbt Cloud hosts and authorizes access to dbt project documentation. After enabli
 
 ### Enable Continuous Integration 
 
-<Callout type="info" title="Available on the Basic Tier">
+<Callout type="info" title="Available on the Developer Plan">
 
-Continuous Integration functionality is available to accounts on the Basic Tier or higher.
+Continuous Integration functionality is available to accounts on the Developer Plan or higher.
 
 </Callout>
 
