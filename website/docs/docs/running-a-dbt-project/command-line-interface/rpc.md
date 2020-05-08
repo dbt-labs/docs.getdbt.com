@@ -6,6 +6,10 @@ id: "rpc"
 ### Overview
 The `dbt rpc` command runs a Remote Procedure Call dbt Server. This server can compile and run queries in the context of a dbt project. Additionally, it provides methods that can be used to list and terminate running processes. The rpc server should be run from a directory which contains a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
 
+<Callout type='warning' title="Running on Windows">
+The rpc server is not supported on Windows, due to historic reliability issues. A docker container may be a useful workaround if required.
+</Callout>
+
 **Running the server:**
 ```
 $ dbt rpc
