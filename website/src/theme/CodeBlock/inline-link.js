@@ -3,17 +3,27 @@ import React from 'react';
 import Link from '@site/src/components/link';
 
 function isMarkdownLink(string) {
-  const regex = /\[(.*?)\]\((.*?)\)/
+  const regex = /(?<escape>\\?)\[(?<text>.*?)\]\((?<url>.*?)\)/
   const linkMatch = string.match(regex)
 
   if (!linkMatch) {
       return null;
   } else {
+      var escape = linkMatch.groups.escape == '\\';
+      var full = linkMatch[0];
+      var original_length = full.length;
+
+      if (escape) {
+          full = full.substring(1)
+      }
+
       return {
-          full: linkMatch[0],
-          text: linkMatch[1],
-          url:  linkMatch[2],
-          index: linkMatch.index
+          text: linkMatch.groups.text,
+          url:  linkMatch.groups.url,
+          full: full,
+          index: linkMatch.index,
+          escape: escape,
+          original_length: original_length,
       }
   }
 }
@@ -54,9 +64,13 @@ function replaceLinks(line) {
         }
 
         var before = lineBuffer.slice(0, res.index)
-        var after = lineBuffer.slice(res.index + res.full.length)
+        var after = lineBuffer.slice(res.index + res.original_length)
         tokens.push(makeToken(before))
-        tokens.push(makeLink(res.text, res.url));
+        if (res.escape) {
+            tokens.push(makeToken(res.full));
+        } else {
+            tokens.push(makeLink(res.text, res.url));
+        }
         lineBuffer = after
     }
 

@@ -5,7 +5,7 @@ id: "documentation"
 
 ## Overview
 
-Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them. In the [schema.yml](schemayml-files) section of this guide, a simple paradigm for documenting models and columns was shown. Namely, a model or column can be described by providing a string in the `description` field of a schema.yml file. For reference, that might look something like this:
+Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them. In the [schema.yml](declaring-properties) section of this guide, a simple paradigm for documenting models and columns was shown. Namely, a model or column can be described by providing a string in the `description` field of a schema.yml file. For reference, that might look something like this:
 
 <File name='schema.yml'>
 

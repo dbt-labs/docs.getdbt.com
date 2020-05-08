@@ -4,7 +4,7 @@ title: How do I test and document seeds?
 
 <Changelog>The `seeds:` key is new in 0.16.0. Prior to this, use a `models:` key instead.</Changelog>
 
-To test and document seeds, use a [schema file](docs/building-a-dbt-project/testing-and-documentation/schemayml-files.md) and nest the configurations under a `seeds:` key
+To test and document seeds, use a [schema file](docs/building-a-dbt-project/testing-and-documentation/declaring-properties.md) and nest the configurations under a `seeds:` key
 
 ## Example:
 

@@ -11,11 +11,11 @@ Sources make it possible to name and describe your source data tables. Sources a
 2. testing your assumptions about your source data
 3. calculating the freshness of your source data
 
-Sources can be defined in [schema.yml files](schemayml-files) alongside model definitions. For information about testing sources, check out the docs on [testing](testing) in dbt.
+Sources can be defined in [schema.yml files](declaring-properties) alongside model definitions. For information about testing sources, check out the docs on [testing](testing) in dbt.
 
 ## Defining sources
 
-Sources are defined in `schema.yml` files. If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](schemayml-files) before proceeding. Use a `sources` block to define sources:
+Sources are defined in `schema.yml` files. If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](declaring-properties) before proceeding. Use a `sources` block to define sources:
 
 <File name='schema.yml'>
 
