@@ -17,7 +17,9 @@ function Home() {
 
   return (
 	  
-    <Layout permalink="/">
+    <Layout
+      permalink="/"
+      description="Documentation for dbt (data build tool)">
         <div className="container container--fluid home" style={{"padding": "10px 0"}}>
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
         		<div className="col col--8">
