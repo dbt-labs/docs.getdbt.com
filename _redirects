@@ -141,6 +141,7 @@
 /docs/videos	/docs/guides/videos	302
 /docs/viewpoint	/docs/about/viewpoint	302
 /docs/windows	/docs/running-a-dbt-project/using-the-command-line-interface/windows	302
+/docs/dbt-cloud/cloud-configuring-repositories	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories	302
 /reference/api	/dbt-cloud/api	302
 /reference/using-the-dbt-cloud-api	/dbt-cloud/api	302
 /reference/accounts	/dbt-cloud/api	302
