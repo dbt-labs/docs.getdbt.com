@@ -56,7 +56,7 @@ https://github.com/<org>/<repo>/compare/{{destination}}..{{source}}
 
 ### GitLab
 ```
-https://gitlab.com/<org>/<repo>/-/merge_requests/new?merge_request[source_branch]={{source}}&merge_reques[target_branch]={{destination}}
+https://gitlab.com/<org>/<repo>/-/merge_requests/new?merge_request[source_branch]={{source}}&merge_request[target_branch]={{destination}}
 ```
 
 ### BitBucket
