@@ -69,7 +69,7 @@ You can apply or roll back these changes at any time by clicking the Deploy and 
 
 ### Github Setup
 
-This setup is only required for Github App usage. Please reference the [Prerequisites](https://docs.getdbt.com/docs/dbt-cloud/on-premises/prerequisites/#github) for necessary information. 
+This setup is only required for Github App usage. Please reference the [Prerequisites](dbt-cloud/on-premises/prerequisites#github) for necessary information. 
 
 1. Log into the dbt Cloud configuration console, navigate to Settings, and check Enable under Github Integration.
 
