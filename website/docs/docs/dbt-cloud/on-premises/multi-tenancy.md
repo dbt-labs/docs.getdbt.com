@@ -1,6 +1,6 @@
 ---
 id: multi-tenancy
-title: Mult-Tenancy Deployment
+title: Multi-Tenancy Deployment
 ---
 
 ##  Overview
