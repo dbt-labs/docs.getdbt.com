@@ -41,7 +41,7 @@ You can skip to the Deployment section below to learn more about how dbt Cloud d
 
 Within your dbt Cloud installation, you can create multiple Accounts that can have different user groups assigned to them. To create your first account, navigate to the dbt Cloud backend at `https://<hostname>/backend`. This is an administrative site you can use to manage the dbt Cloud application. You can login with username "superuser" and the Django Superuser Password you entered in the configuration console.
 
-After logging in, you can create a new account and invite members of your team, by doing the following:
+After logging in, you can create a new account by:
 
 - Under Database > Accounts, click + Add
 - Enter a name for the account
