@@ -86,7 +86,7 @@ Enter the following values, replacing `<hostname>` with the hostname of your dbt
 Under Permissions, select the following:
 
 - **Checks**: Read & write
-- **Repository contents**: Read-only
+- **Repository contents**: Read & write
 - **Repository metadata**: Read-only
 - **Pull requests**: Read-only
 - **Commit statuses**: Read & write
