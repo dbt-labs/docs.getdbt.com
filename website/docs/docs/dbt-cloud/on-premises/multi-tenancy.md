@@ -21,7 +21,7 @@ Each dbt Cloud account requires its own SSO application in your identity provide
 - **Name your SSO applications clearly**. Use a descriptive name like `dbt Cloud [Account Name]` to identify different account-specific applications in your identity provider.
 - Be sure to follow the instructions completely in the setup guide for each new application created in your identity provider. 
 
-### Create new dbt Cloud Accounts
+## Create new dbt Cloud Accounts
 To create a new account, navigate to the dbt Cloud backend at `https://<hostname>/backend`. You can login as the `superuser` user to perform the steps below.
 
 After logging in, you can create a new account by:
@@ -58,25 +58,27 @@ After logging in, you can create a new account by:
 
 -----------
 
-### Create dbt Cloud Account Objects
 
-There are two Account-level objects that need to established prior onboarding users to dbt Cloud: projects and groups.    
 
-If you are not going to be utilzing [Role Based Account Control/Enterprise Permissions](dbt-cloud/dbt-cloud-enterprise/enterprise-permissions.md), feel free to skip the instructions below concerning Group Creation. This is because dbt Cloud ships with three core groups: `Owner`, `Member`, and `Everyone`. 
+## Create dbt Cloud Account Objects
+
+Prior to on-boarding users to the new dbt Cloud account, two dbt Cloud Account objects need to be created for each account:  projects and groups.      
+
+If you are not going to be utilzing [Role Based Account Control/Enterprise Permissions](dbt-cloud/dbt-cloud-enterprise/enterprise-permissions.md), feel free to skip the instructions below concerning Group Creation. This is because dbt Cloud ships with [three core groups](dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions.md): `Owner`, `Member`, and `Everyone`.  For every new account, those default groups are automatically generated. The `Everyone` group does not have any permissions associated with it and is the group assigned at default. 
 
 ##### Create the Projects
 
 1. Log in to the frontend of dbt Cloud. You will need the permission set of one of these listed groups: `AccountAdmin`, `Owner`, `Member `
 
-   **To Check Specific User Permissions: go to `Account` > `User Licenses` > `Manage Permissions`**
+   **To Check User Permissions:  go to `Account` > `User Licenses` > `Manage Permissions`**
 
-2. If this is your first project on the account, you will be directed through the `Set Up a New Project` guide. If not, click on the left hamburger dropdown and go into `Account Settings`. From `Projects`, click on `New Project` to access the `Set Up a New Project` guide. 
+2. If this is your first project on the account, you will be directed through the `Set Up a New Project` guide. If not, you will need to navigate to the guide. Click on the left hamburger dropdown and go into `Account Settings`. From `Projects`, click on `New Project`.
 
 3. The guide will assist you with establishing the project including setting up the data warehouse and git repository connections. Each dbt Cloud project may only have one data warehouse connection and git repository. 
 
 4. Establish at least two environments: a deployment environment for your scheduled runs and a development environment for your developers to utilize. 
 
-5. We recommend that the IDE is tested  prior to onboarding users.  In order to do this, you must have your personal development credentials established. Afterwards,  click on the left hamburger dropdown and go into `Develop`.
+5. We recommend that the IDE is tested prior to onboarding users.  In order to do this, you must have your personal development credentials established. Afterwards,  click on the left hamburger dropdown and go into `Develop`. 
 
 ##### Create the RBAC Groups
 
@@ -100,48 +102,49 @@ If you are not going to be utilzing [Role Based Account Control/Enterprise Permi
    2. Select the appropriate `Account`, `Permission Set`, and `Project`. Be sure to click `All Projects` if this permission set is Account wide. 
    3. If you need to change the permission sets of a group, users need to relog in in order to refresh their access.
 
-5. Change the state of the `Owner` and `Member` group to `Deleted`. For the `Member` group, uncheck the `Assign by default`. These two groups have account level permissions and should be not be utilized if you are creating Enterprise Permission groups.
+5. Change the state of the `Owner` and `Member` group to `Deleted`. For the `Member` group, uncheck the `Assign by default`. These two groups have account level permissions and should be not be utilized if you are creating Enterprise Permission on the project level.
 
 6. Provide access to dbt Cloud via the Enterprise Login URL to users.
 
 #### Helpful Hints
 
- - You should configure your groups based on your specific security guidelines. For guidance, our standard configuration consists of these groups 
- - 
- - , here is our recommended configuration:
-    - 
+ - You should configure your groups based on your specific security guidelines. For guidance, our standard configuration consists of these following groups per account: 
+    - One AccountAdmin group
+    - One Developer group per Project
+    - One Stakeholder group per Project
+
+------
 
 
 
 ## Management of dbt Cloud
 
-Here is how the backend and front end management of the dbt Cloud instance will look 
-like:
+Here is a breakdown of where the creation and maintainance of dbt Cloud objects exists:
 
-#### Backend
-##### Creation and Maintenance of:
+### **Backend**
 
-- Accounts 
-- Groups
-    - This is management of the Role Based Access Control groups established 
-    with enterprise permissions.
-- SSO configuration 
+- Accounts
+- Account level Objects 
+  - Groups
+    - This is management of the Role Based Access Control groups.
+  - SSO configuration 
 
-#### Frontend
-##### Creation and Maintenance of:
+### Frontend
 
 - Projects 
+- Project objects 
+  - Connections (git repository & data warehouse)
+  - Jobs
 - Group Membership
-    - Membership of groups can be edited by the AccountAdmin permission set if 
-        SSO Mapping groups are not established on the backend for the group
-- Project level specifics 
+  - Membership of groups can be edited by the AccountAdmin permission set if 
+    SSO Mapping groups are not established on the backend for the group
 
 
 #### Helpful Hints
-- The total number of seats (developer and read-only) utilized in all of your accounts 
-should never exceed the total number of seats associated with your license. 
-Contact your account manager if additional seats are needed. 
-- The way to track the number of users on an account is via Accounts > Account Name > User Licenses
-- There is no console to provide an overview of seats in all accounts.
 
+- The total number of seats (developer and read-only) utilized in all of your accounts 
+  should never exceed the total number of seats associated with your license. 
+  Contact your Account Manager if additional seats are needed. 
+- The way to track the number of users on an account is via `Accounts` > `Account Name` > `User Licenses`
+- There is no console to provide an overview of seats in all accounts.
 
