@@ -3,12 +3,13 @@ title: "Setting up SSO with Okta"
 id: "setting-up-sso-with-okta"
 ---
 
-
 <Callout type="info" title="Enterprise Feature">
 
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
 </Callout>
+
+## Okta SSO
 
 dbt Cloud Enterprise supports single-sign on via Okta (using SAML). Currently supported features include:
 
@@ -19,6 +20,8 @@ dbt Cloud Enterprise supports single-sign on via Okta (using SAML). Currently su
 This guide outlines the setup process for authenticating to dbt Cloud with Okta. After following the steps below, please contact support (support@getdbt.com) to complete the setup process.
 
 ## Configuration
+
+### Create a new application
 
 Log into your Okta account. You'll need administrator access to your Okta organization to follow this guide.
 
@@ -37,6 +40,14 @@ Click **Next** to continue.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/ae2045a-Screen_Shot_2019-04-25_at_6.05.12_PM.png" title="The 'General Settings' page"/>
 
+### Configure SAML Settings
+
+<Callout type="warning" title="Group Attributes">
+
+dbt Cloud uses SAML settings provided by Okta to enforce role-based access control. If the Group Attribute statement shown below is misconfigured, then users may not be permissioned to projects appropriately in dbt Cloud.
+
+</Callout>
+
 On the **SAML Settings** page, enter the following values:
 
 * **Single sign on URL**: `https://auth.getdbt.com/login/callback?connection=<your-deployment-id>`
@@ -54,7 +65,7 @@ Under **Attribute Statements**, enter the following:
 
 Under **Group Attribute Statments**, enter the following:
 
-* **Name**: group
+* **Name**: groups
 * **Name format**: Unspecified
 * **Value**: Use the Regex filter and supply `.*` (or an appropriate filter for your dbt Cloud configuration)
 
@@ -62,7 +73,9 @@ Click **Next** to continue.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/51f1bb7-Screen_Shot_2019-04-25_at_6.05.32_PM.png" title="Attribute Statements on the 'SAML Settings' page"/>
 
-Lastly, select *I'm an Okta customer adding an internal app*, and select *This is an internal app that we have created*. Click **Finish** to finish setting up the app.
+### Finish setup
+
+Select *I'm an Okta customer adding an internal app*, and select *This is an internal app that we have created*. Click **Finish** to finish setting up the app.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/41b00ff-Screen_Shot_2019-04-25_at_6.06.08_PM.png" title="Final Setup"/>
 
