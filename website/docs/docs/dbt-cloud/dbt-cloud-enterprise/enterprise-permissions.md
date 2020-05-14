@@ -12,7 +12,7 @@ See [Seats and Users](cloud-seats-and-users) for more information on user licens
 The following permission sets are available for assignment in dbt Cloud Enterprise accounts.
 
 ### Account Admin
-- **Authority:** Account-wide
+- **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
 Account Admins have unrestricted access to dbt Cloud accounts. Users with Account Admin permissions can:
@@ -24,13 +24,13 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Create, delete, and modify Groups
 - Create, delete, and modify Group Memberships
 - Manage notification settings
-- Manage account-level artifacts
+- Manage account-level [artifacts](dbt-cloud/using-dbt-cloud/artifacts)
 - View and modify Account Settings
 - Use the IDE
 - Run and cancel jobs
 
 ### Admin
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Admins have unrestricted access to _projects_ in dbt Cloud accounts which they are members of.
@@ -45,7 +45,7 @@ Admins can perform the following actions in projects they are assigned to:
 - Run and cancel jobs
 
 ### Git Admin
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Git Admins can perform the following actions in projects they are assigned to:
@@ -56,7 +56,7 @@ Git Admins can perform the following actions in projects they are assigned to:
 - View Jobs
 
 ### Database Admin
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Database Admins can perform the following actions in projects they are assigned to:
@@ -67,7 +67,7 @@ Database Admins can perform the following actions in projects they are assigned 
 - View Jobs
 
 ### Team Admin
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Team Admins can perform the following actions in projects they are assigned to:
@@ -78,7 +78,7 @@ Team Admins can perform the following actions in projects they are assigned to:
 - View Jobs
 
 ### Job Admin
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Job Admins can perform the following actions in projects they are assigned to:
@@ -87,7 +87,7 @@ Job Admins can perform the following actions in projects they are assigned to:
 - View historical runs
 
 ### Job Viewer
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Job Viewers can perform the following actions in projects they are assigned to:
@@ -96,7 +96,7 @@ Job Viewers can perform the following actions in projects they are assigned to:
 - View historical runs
 
 ### Developer
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Developers can perform the following actions in projects they are assigned to:
@@ -106,7 +106,7 @@ Developers can perform the following actions in projects they are assigned to:
 - Kick off runs in deployment environments
 
 ### Analyst
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Analysts can perform the following actions in projects they are assigned to:
@@ -118,7 +118,7 @@ Analysts can perform the following actions in projects they are assigned to:
 
 
 ### Stakeholder
-- **Authority:** Account-wide, or project-scoped
+- **Has permissions on:** Authorized projects
 - **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
