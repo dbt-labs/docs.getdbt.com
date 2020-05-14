@@ -9,7 +9,7 @@ The model materializations you're familiar with, `table`, `view`, and `increment
 
 <Callout type="warning" title="">
 
-This is an advanced feature of dbt. Let us know if you need a hand! We're always happy to  [chat](http://slack.getdbt.com/).
+This is an advanced feature of dbt. Let us know if you need a hand! We're always happy to  [chat](http://community.getdbt.com/).
 
 </Callout>
 

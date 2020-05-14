@@ -218,7 +218,7 @@ function Home() {
                     <div className="card__footer">
                         <Link
                           className="button button--primary"
-                          to="http://slack.getdbt.com/">
+                          to="http://community.getdbt.com/">
                           Join us on Slack
                         </Link>
                     </div>
