@@ -58,6 +58,11 @@ module.exports = {
           position: 'left',
         },
         {
+          to: '/docs/dbt-cloud/cloud-overview',
+          label: 'dbt Cloud',
+          position: 'left',
+        },
+        {
           to: '/tutorial/setting-up',
           label: 'Tutorial',
           position: 'left',
