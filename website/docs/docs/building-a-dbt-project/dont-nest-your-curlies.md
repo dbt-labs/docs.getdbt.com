@@ -9,7 +9,7 @@ id: "dont-nest-your-curlies"
 
 > If dbt errors out early
 >
-> and your models are building quite poorly
+> and your Jinja is making you surly
 >
 > don't post to the slack
 >
