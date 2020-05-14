@@ -241,7 +241,7 @@ agg as (
 
 select *
 from agg
-where pct_null < 0.05
+where pct_null >= 0.05
 ```
 
 </File>
