@@ -45,7 +45,7 @@ First, install the kubectl plugin by running the following command.
 curl https://kots.io/install | bash
 ```
 
-Second, install kubeadm into your cluster by running:
+Second, install kotsadm into your cluster by running:
 
 ```bash
 kubectl kots install dbt-cloud-v1
