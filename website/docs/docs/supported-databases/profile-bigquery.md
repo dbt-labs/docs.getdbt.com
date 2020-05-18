@@ -114,7 +114,10 @@ To connect to BigQuery using the `oauth` method, follow these steps:
 2. Activate the application-default account with
 
 ```shell
-gcloud auth application-default login --scopes=https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/drive.readonly
+gcloud auth application-default login \
+  --scopes=https://www.googleapis.com/auth/userinfo.email,\
+https://www.googleapis.com/auth/cloud-platform,\
+https://www.googleapis.com/auth/drive.readonly
 ```
 
 A browser window should open, and you should be promoted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
@@ -175,6 +178,42 @@ my-profile:
       project: abc-123
       dataset: my_dataset
       location: US # Optional, one of US or EU
+```
+
+### Maximum Bytes Billed
+
+<Changelog>
+
+- New in dbt v0.17.0
+
+</Changelog>
+
+When a `maximum_bytes_billed` value is configured for a BigQuery profile,
+queries executed by dbt will fail if they exceed the configured maximum bytes
+threshhold. This configuration should be supplied as an integer number
+of bytes.
+
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      # If a query would bill more than a gigabyte of data, then
+      # BigQuery will reject the query
+      maximum_bytes_billed: 1000000000
+```
+
+**Example output**
+
+```
+Database Error in model debug_table (models/debug_table.sql)
+  Query exceeded limit for bytes billed: 1000000000. 2000000000 or higher required.
+  compiled SQL at target/run/bq_project/models/debug_table.sql
 ```
 
 ## Required permissions
