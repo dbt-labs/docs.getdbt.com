@@ -64,6 +64,7 @@ module.exports = {
         label: "Jinja Function Reference",
         items: [
           "docs/writing-code-in-dbt/jinja-context/adapter",
+          "docs/writing-code-in-dbt/jinja-context/as_text",
           "docs/writing-code-in-dbt/jinja-context/builtins",
           "docs/writing-code-in-dbt/jinja-context/config",
           "docs/writing-code-in-dbt/jinja-context/dbt_version",
