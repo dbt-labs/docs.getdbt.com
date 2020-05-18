@@ -278,6 +278,7 @@ module.exports = {
           "reference/resource-configs/alias",
           "reference/resource-configs/database",
           "reference/resource-configs/enabled",
+          "reference/resource-configs/persist_docs",
           "reference/resource-configs/post-hook",
           "reference/resource-configs/pre-hook",
           "reference/resource-configs/schema",

@@ -199,41 +199,9 @@ merge into analytics.delta_incremental as DBT_INTERNAL_DEST
 
 ## Persisting model descriptions
 
-<Callout type="info" title="New in dbt-spark v0.15.3">
+Relation-level docs persistence is supported in dbt v0.17.0. For more
+information on configuring docs persistence, see [the docs](resource-configs/persist_docs).
 
-This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark#installation-and-distribution)
-
-</Callout>
-
-The `persist_docs` config can be used to persist the dbt `description` supplied for a model to the resulting Spark table or view. The `persist_docs` config is not yet supported for objects other than tables and views.
-
-The `persist_docs` config can be specified in the `dbt_project.yml` file, or in a specific model.
-
-<File name='dbt_project.yml'>
-
-```yaml
-
-models:
-  # enable docs persistence for all models
-  persist_docs:
-    relation: true
-```
-
-</File>
-
-or:
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(persist_docs={"relation": true})
-}}
-
-select ...
-```
-
-</File>
-
-When the `persist_docs` option is configured appropriately, you'll be able to see your model descriptions
-in the `Comment` field of `describe [table] extended` or `show table extended in [database] like '*'`.
+When the `persist_docs` option is configured appropriately, you'll be able to
+see model descriptions in the `Comment` field of `describe [table] extended`
+or `show table extended in [database] like '*'`.
