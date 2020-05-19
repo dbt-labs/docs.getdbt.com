@@ -48,6 +48,9 @@ seeds:
 snapshots:
   [<snapshot-configs>](snapshot-configs)
 
+sources:
+  [<source-configs>](source-configs)
+
 [on-run-start](project-configs/on-run-start): sql-statement | [sql-statement]
 [on-run-end](project-configs/on-run-end): sql-statement | [sql-statement]
 

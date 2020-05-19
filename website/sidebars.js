@@ -271,6 +271,7 @@ module.exports = {
       },
       "reference/model-configs",
       "reference/seed-configs",
+      "reference/source-configs",
       "reference/snapshot-configs",
       {
         type: "category",
