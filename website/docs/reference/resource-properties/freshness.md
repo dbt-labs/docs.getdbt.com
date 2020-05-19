@@ -1,0 +1,159 @@
+<File name='models/<filename>.yml'>
+
+```yaml
+
+version: 2
+
+sources:
+  - name: <source_name>
+    freshness:
+      warn_after:
+        count: <positive_integer>
+        period: minute | hour | day
+      error_after:
+        count: <positive_integer>
+        period: minute | hour | day
+    loaded_at_field: <column_name_or_expression>
+
+    tables:
+      - name: <table_name>
+        freshness:
+          warn_after:
+            count: <positive_integer>
+            period: minute | hour | day
+          error_after:
+            count: <positive_integer>
+            period: minute | hour | day
+        loaded_at_field: <column_name_or_expression>
+        ...
+```
+
+</File>
+
+## Definition
+A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a table to be considered "fresh".
+
+In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
+
+Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
+
+Freshness blocks are applied hierarchically:
+- a `freshness` and `loaded_at` property added to a source will be applied to all all tables defined in that source
+- a `freshness` and `loaded_at` property added to a source _table_ will override any properties applied to the source.
+
+This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
+
+## loaded_at_field
+(Required)
+
+A column name (or expression) that returns a timestamp indicating freshness.
+
+If using a date field, you may have to cast it to a timestamp:
+```yml
+loaded_at_field: "completed_date::timestamp"
+```
+
+## count
+(Required)
+
+A positive integer for the number of periods where a data source is still considered "fresh".
+
+## period
+(Required)
+
+The time period used in the freshness calculation. One of `minute`, `hour` or `day`
+
+## filter
+(optional)
+
+Add a where clause to the query run by `dbt source snapshot-freshness` in order to limit data scanned.
+
+This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table.
+
+This is particular useful if:
+- You are using BigQuery and your source tables are [partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
+- You are using Snowflake or Spark with large tables, and this results in a performance benefit
+
+Use the SQL of your warehouse to construct a filter (see below example).
+
+<Changelog>
+
+* `v0.15.0`: This property was introduced
+
+</Changelog>
+
+
+## Example
+<File name='models/<filename>.yml'>
+
+```yaml
+
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: raw
+
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+
+    loaded_at_field: _etl_loaded_at
+
+    tables:
+      - name: customers # this will use the freshness defined above
+
+      - name: orders
+        freshness: # make this a little more strict
+          warn_after: {count: 6, period: hour}
+          error_after: {count: 12, period: hour}
+          # Apply a where clause in the freshness query
+          filter: datediff('day', _etl_loaded_at, current_timestamp) < 2
+
+
+      - name: product_skus
+        freshness: {} # do not check freshness for this table
+```
+
+</File>
+
+When running `dbt source snapshot-freshness`, the following query will be run:
+
+<Tabs
+  defaultValue="compiled"
+  values={[
+    { label: 'Compiled SQL', value: 'compiled', },
+    { label: 'Jinja SQL', value: 'jinja', },
+  ]
+}>
+<TabItem value="compiled">
+
+```sql
+select
+  max(_etl_loaded_at) as max_loaded_at,
+  convert_timezone('UTC', current_timestamp()) as snapshotted_at
+from raw.jaffle_shop.orders
+
+where datediff('day', _etl_loaded_at, current_timestamp) < 2
+
+```
+
+</TabItem>
+
+<TabItem value="jinja">
+
+```sql
+select
+  max({{ loaded_at_field }}) as max_loaded_at,
+  {{ current_timestamp() }} as snapshotted_at
+from {{ source }}
+{% if filter %}
+where {{ filter }}
+{% endif %}
+```
+
+_[Source code](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/core/dbt/include/global_project/macros/adapters/common.sql#L294)_
+
+</TabItem>
+
+</Tabs>
