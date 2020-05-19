@@ -10,7 +10,7 @@ The `builtins` variable exists to provide references to builtin dbt context meth
 The `builtins` variable is a dictionary containing the following keys:
 
 - [ref](ref)
-- [source](source)
+- [source](jinja-context/source)
 - [config](config)
 - [execute](execute)
 

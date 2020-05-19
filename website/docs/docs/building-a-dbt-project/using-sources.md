@@ -3,212 +3,155 @@ title: "Sources"
 id: "using-sources"
 ---
 
-## Overview
+## Related reference docs
+* [Source properties](source-properties)
+* [`{{ source() }}` jinja function](jinja-context/source)
+* [`source snapshot-freshness` command](command-line-interface/source)
 
-Sources make it possible to name and describe your source data tables. Sources are useful for
+## Using sources
+Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
+- select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
+- test your assumptions about your source data
+- calculate the freshness of your source data
 
-1. selecting from source tables in your [base models](best-practices#limit-dependencies-on-raw-data)
-2. testing your assumptions about your source data
-3. calculating the freshness of your source data
+### Declaring a source
 
-Sources can be defined in [schema.yml files](declaring-properties) alongside model definitions. For information about testing sources, check out the docs on [testing](testing) in dbt.
+Sources are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under a `sources:` key.
 
-## Defining sources
-
-Sources are defined in `schema.yml` files. If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](declaring-properties) before proceeding. Use a `sources` block to define sources:
-
-<File name='schema.yml'>
+<File name='models/<filename>.yml'>
 
 ```yaml
-
-# This example defines a source called `source_1` containing one table
-# called `table_1`. This is a minimal example of a source definition.
-
 version: 2
 
 sources:
-  - name: source_1
+  - name: jaffle_shop
     tables:
-      - name: table_1
-      - name: table_2
+      - name: orders
+      - name: customers
 
-  - name: source_2
+  - name: stripe
     tables:
-      - name: table_1
+      - name: payments
 ```
 
 </File>
 
-Once a source has been defined, it can be referenced from a model using the [source()](source) function.
+If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](declaring-properties) before proceeding.
 
-<File name='my_model.sql'>
+### Selecting from a source
+
+Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](jinja-context/source).
+
+
+<File name='models/orders.sql'>
 
 ```sql
-/*
-    The source function accepts two arguments:
-      1. The name of the source
-      2. The name of the table in that source
-*/
+select
+  ...
 
-select * from {{ source('source_1', 'table_1') }}
+from {{ source('jaffle_shop', 'orders') }}
 
-/*
-	This is compiled to:
+left join {{ source('jaffle_shop', 'customers') }} using (customer_id)
 
-    select * from "target_database"."source_1"."table_1"
-
-*/
 ```
 
 </File>
 
-## Configuring Sources
+dbt will compile this to the full table name:
 
-### Overriding source database, schema, and identifier
+<File name='target/compiled/jaffle_shop/models/my_model.sql'>
 
-By default, dbt will use the `name` of the specified source and table to construct a table name for the source table. The database, schema, and identifier for any given source can be overridden in the `schema.yml` file. This is useful if your source data table names are unduly long or confusing.
+```sql
 
-<File name='schema.yml'>
+select
+  ...
+
+from raw.jaffle_shop.orders
+
+left join raw.jaffle_shop.customers using (customer_id)
+
+```
+
+</File>
+
+Using the `{{ source () }}` function also creates a dependency between the model and the source table.
+
+<Lightbox src="/img/docs/building-a-dbt-project/sources-dag.png" title="The source function tells dbt a model is dependent on a source "/>
+
+### Testing and documenting sources
+You can also:
+- Add tests to sources
+- Add descriptions to sources, that get rendered as part of your documentation site
+
+These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](testing) and [documentation](documentation)).
+
+<File name='models/<filename>.yml'>
 
 ```yaml
-
-# This source entry describes the table:
-#   "raw"."public"."Orders_"
-#
-# It can be referenced with:
-#  {{ source('ecommerce', 'orders') }}
-
 version: 2
 
 sources:
-  - name: ecommerce
-    database: raw  # Tell dbt to look for the source in the "raw" database
-    schema: public # You wouldn't put your source data in public, would you?
+  - name: jaffle_shop
+    description: This is a replica of the Postgres database used by our app
     tables:
       - name: orders
-        identifier: Orders_ # To alias table names to account for strange casing or naming of tables
-```
-
-</File>
-
-### Overriding quoting
-
-By default, dbt will not quote the database, schema, or identifier for the source tables that you've specified. To force dbt to quote one of these values, use the `quoting:` config. This config can be specified for all tables in a source, or for a specific source table. Quoting configs defined for a specific source table override the quoting configs specified for the top-level source.
-
-<File name='schema.yml'>
-
-```yaml
-version: 2
-
-sources:
-  - name: ecommerce
-    # Set default quoting configs for the `ecommerce` source
-    quoting:
-      database: false
-      schema: false
-      identifier: false
-
-    tables:
-      - name: order_item
-      - name: order
-        # This overrides the `ecommerce` quoting config
-        quoting:
-          identifier: true
-```
-
-</File>
-
-## Complete example
-
-<File name='models/ecommerce/sources.yml'>
-
-```yaml
-version: 2
-
-sources:
-  - name: ecommerce
-    database: raw
-    schema: public
-    loader: emr # informational only (free text)
-    loaded_at_field: _loaded_at # configure for all sources
-
-    # meta fields are rendered in auto-generated documentation
-    meta:
-      contains_pii: true
-      owner: "@alice"
-
-    # Add tags to this source
-    tags:
-      - ecom
-      - pii
-
-    quoting:
-      database: false
-      schema: false
-      identifier: false
-
-    tables:
-      - name: orders
-        identifier: Orders_
-        loaded_at_field: updated_at # override source defaults
+        description: >
+          One record per order. Includes cancelled and deleted orders.
         columns:
           - name: id
+            description: Primary key of the orders table
             tests:
               - unique
-
-          - name: price_in_usd
-            tests:
               - not_null
+          - name: status
+            description: Note that the status can change over time
 
-      - name: Users
-        quoting:
-          identifier: true # override source defaults
-        columns:
-            tests:
-              - unique
+      - name: ...
+
+  - name: ...
 ```
 
 </File>
 
-## Selecting sources
+You can find more details on the available properties for sources in the [reference section](source-properties).
 
-Sources can be "selected" in dbt runs with the `--models` flag. While sources themselves cannot be run, it is frequently useful to run all of the models that depend on a source, eg. after that source has finished loading. Sources can be selected by using the `source:` selector coupled with:
-
-1. the name of the source
-2. the name of the source and a table, dot-separated
-
-```
-Run all of the models downstream of a source
-$ dbt run --model source:ecommerce+
-
-Run all of the models downstream of a specific source table
-$ dbt run --model source:ecommerce.orders+
-```
+### FAQs
+<FAQ src="source-has-bad-name" />
+<FAQ src="source-in-different-database" />
+<FAQ src="source-quotes" />
+<FAQ src="testing-sources" />
+<FAQ src="running-models-downstream-of-source" />
 
 ## Snapshotting source data freshness
-
 With a couple of extra configs, dbt can optionally snapshot the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
 
+### Declaring source freshness
 To configure sources to snapshot freshness information, add a `freshness` block to your source and `loaded_at_field` to your table declaration:
 
-<File name='schema.yml'>
+<File name='models/<filename>.yml'>
 
 ```yaml
-
 version: 2
 
 sources:
-  - name: snowplow
+  - name: jaffle_shop
     database: raw
-    loader: emr # optional, informational only
-
-    freshness:
+    freshness: # default freshness
       warn_after: {count: 12, period: hour}
       error_after: {count: 24, period: hour}
+    loaded_at_field: _elt_loaded_at
 
     tables:
-      - name: event
-        loaded_at_field: collector_tstamp # required for freshness snapshotting
+      - name: orders
+        freshness: # make this a little more strict
+          warn_after: {count: 6, period: hour}
+          error_after: {count: 12, period: hour}
+
+      - name: customers # this will use the freshness defined above
+
+
+      - name: product_skus
+        freshness: {} # do not check freshness for this table
 ```
 
 </File>
@@ -219,92 +162,29 @@ Additionally, the `loaded_at_field` is required to calculate freshness for a tab
 
 These configs are applied hierarchically, so `freshness` and `loaded_at` field values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
-### Freshness declarations
-
-The `freshness:` block can accept one or both of `warn_after` and `error_after`. Each of these fields requires the specification of a `count` and a `period`. The `count` can be any positive integer, and the `period` can be one of `minute`, `hour`, or `day`.
-
-The following example shows a source schema configured with a `freshness` specification. The second table, `web_page` overrides `freshness` to `null`, indicating that it will not participate in freshness tests.
-
-<File name='models/sources.yml'>
-
-```yaml
-
-version: 2
-
-sources:
-  - name: snowplow
-    database: raw
-    loader: emr
-
-    freshness:
-      warn_after: {count: 12, period: hour}
-      error_after: {count: 24, period: hour}
-
-    loaded_at_field: event_time
-
-    tables:
-      - name: event
-
-      - name: web_page
-        freshness: null
-```
-
-</File>
-
-### Filtering sources
-If your source tables are configured to require partition filters, you can use the `filter` config on the `freshness` block to add a filter to the freshness query that dbt runs. You can use the built-in [datetime module](modules) to dynamically generate a freshness filter. This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table.
-
-<File name='models/sources.yml'>
-
-```yaml
-
-version: 2
-
-sources:
-  - name: snowplow
-    database: raw
-    loader: emr
-
-    freshness:
-      warn_after: {count: 12, period: hour}
-      error_after: {count: 24, period: hour}
-
-      # Filter in the freshness query
-      filter: event_time > '2019-01-01'
-
-    loaded_at_field: event_time
-
-    tables:
-      - name: event
-```
-
-</File>
-
-### Snapshotting freshness
-
-To snapshot freshness information for your sources, use the `dbt source snapshot-freshness` command:
+### Snapshotting source freshness
+To snapshot freshness information for your sources, use the `dbt source snapshot-freshness` command ([reference docs](command-line-interface/source)):
 
 ```
-$ dbt source snapshot-freshness [--select [source_1, ...]]
+$ dbt source snapshot-freshness
 ```
 
-Use the `--select` flag to snapshot freshness for specific sources. Eg:
+Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the logs.
+
+```sql
+select
+  max(_etl_loaded_at) as max_loaded_at,
+  convert_timezone('UTC', current_timestamp()) as snapshotted_at
+from raw.jaffle_shop.orders
 
 ```
-# Snapshot freshness for all Snowplow tables:
-$ dbt source snapshot-freshness --select snowplow
 
-# Snapshot freshness for a particular source table:
-$ dbt source snapshot-freshness --select snowplow.event
+The results of this query are used to determine whether the source is fresh or not:
 
-# Snapshot freshness for multiple particular source tables:
-$ dbt source snapshot-freshness --select snowplow.event snowplow.web_page
-```
+<Lightbox src="/img/docs/building-a-dbt-project/snapshot-freshness.png" title="Uh oh! Not everything is as fresh as we'd like!"/>
 
-See the [sources reference](source) for more information on the `dbt source snapshot-freshness` command.
 
-### Output
-
-The `snapshot-freshness` command will output a pass/warning/error status for each table selected in the freshness snapshot. Additionally, dbt will write the freshness results to a file in the `target/` directory called `sources.json` by default. To override this destination, use the `-o` flag to the `snapshot-freshness` command.
-
-<Lightbox src="/img/docs/building-a-dbt-project/85ff277-Screen_Shot_2019-02-14_at_7.53.27_PM.png" title=""/>
+### FAQs
+<FAQ src="exclude-table-from-freshness" />
+<FAQ src="snapshotting-freshness-for-one-source" />
+<FAQ src="snapshot-freshness-output" />
