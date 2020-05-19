@@ -138,9 +138,16 @@ The following context methods _are_ available in the `generate_schema_name` macr
 
 
 ### Which vars are available in generate_schema_name?
-dbt scopes variables differently depending on where they are defined in the `dbt_project.yml` file. Because the `generate_schema_name` macro is compiled only once for all of the models in your project, vars defined in a `dbt_project.yml` scope will not work with the `generate_schema_name` macro.
 
-Variables defined on the command line (as in, with the [--vars](var) option) *are* however globally scoped in nature, so they are provided in the `generate_schema_name` context. While this functionality is supported, other mechanisms like [env_vars](env_var) may be more suitable for typical use cases.
+<Changelog>
+
+Variable semantics have changed in dbt v0.17.0. See the [migration guide](upgrading-to-0-17-0)
+for more information on these changes.
+
+</Changelog>
+
+Globally-scoped variables and variables defined on the command line with
+[--vars](using-variables) are accessible in the `generate_schema_name` context. 
 
 # Managing environments
 

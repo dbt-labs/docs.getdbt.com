@@ -27,44 +27,30 @@ Vars supplied to package_name.my_model = {
 }
 ```
 
-To supply a variable to a given model, add one or more `vars` dictionaries to the `models`
-config in your `dbt_project.yml` file. These `vars` are in-scope for all models at or below
-where they are defined, so place them where they make the most sense. Below are three different
-placements of the `vars` dict, all of which will make the `my_model` model compile.
+To define a variable in your project, add the `vars:` config to your `dbt_project.yml` file.
+See the docs on [using variables](using-variables) for more information on
+defining variables in your dbt project.
 
 <File name='dbt_project.yml'>
 
 ```yaml
-# 1) scoped at the model level
-models:
-  package_name:
-    my_model:
-      materialized: view
-      vars:
-        event_type: activation
+name: my_dbt_project
+version: 1.0.0
 
-# 2) scoped at the package level
-models:
-  package_name:
-    vars:
-      event_type: activation
-    my_model:
-      materialized: view
+config-version: 2
 
-# 3) scoped globally
-models:
-  vars:
-    event_type: activation
-  package_name:
-    my_model:
-      materialized: view
+# Define variables here
+vars:
+  event_type: activation
 ```
 
 </File>
 
 ### Variable default values
 
-The `var()` function takes an optional second argument, `default`. If this argument is provided, then it will be the default value for the variable if one is not explicitly defined.
+The `var()` function takes an optional second argument, `default`. If this
+argument is provided, then it will be the default value for the variable if one
+is not explicitly defined.
 
 <File name='my_model.sql'>
 
