@@ -339,6 +339,7 @@ module.exports = {
           "reference/resource-properties/loader",
           "reference/resource-properties/quoting",
           "reference/resource-properties/schema",
+          "reference/resource-properties/overrides",
         ],
       },
     ],
