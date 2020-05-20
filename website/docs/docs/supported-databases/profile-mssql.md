@@ -6,7 +6,7 @@ id: "profile-mssql"
 
 <Callout type="info" title="Community contributed plugin">
 
-This is a Community Contributed plugin for dbt. If you're interested in contributing, check out the source code [on GitHub](https://github.com/jacobm001/dbt-mssql).
+This is a Community Contributed plugin for dbt. If you're interested in contributing, check out the source code for each repository [dbt-sqlserver](https://github.com/mikaelene/dbt-sqlserver), [dbt-mssql](https://github.com/jacobm001/dbt-mssql).
 
 </Callout>
 
@@ -15,27 +15,54 @@ This is a Community Contributed plugin for dbt. If you're interested in contribu
 **Author:** Mikael Ene
 **Source Code:** https://github.com/mikaelene/dbt-sqlserver
 
-**dbt-sqlserver** is a custom adapter for Microsoft SQL Server (with emphasis on 2016 and later). Based on `pymssql`.  Passing all tests in dbt-integration-tests. Only supports `dbt` 0.14 and newer.
+**dbt-sqlserver** 
+Only supports dbt 0.14 and newer!
+- For dbt 0.14.x use dbt-sqlserver 0.14.x
+- For dbt 0.15.x use dbt-sqlserver 0.15.x
+
+Easiest install is to use pip:
+
+    pip install dbt-sqlserver
+
+On Ubuntu make sure you have the ODBC header files before installing
+    
+    sudo apt install unixodbc-dev
 
 ### Connecting to SQL Server with **dbt-sqlserver** 
 
 #### User / password authentication
 
-A SQL Server connection can be configured using basic user/password authentication as shown below.  If using Windows Authentication then use `[company-domain\username]` as the value for the `user` key instead of just `[username]`.
+Configure your dbt profile for using SQL Server authentication or Integrated Security:
 
+##### SQL Server authentication
 ```yaml
 dbt-sqlserver:
   target: dev
   outputs:
     dev:
       type: sqlserver
-      threads: 1
-      server: [host] # like sqlserver.mydomain.com 
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
       port: 1433
       user: [username]
       password: [password]
-      database: [database]
+      database: [databasename]
       schema: [schema]
+```
+
+##### Integrated Security
+```yaml
+dbt-sqlserver:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      database: [databasename]
+      schema: [schema]
+      windows_login: True
 ```
 
 
