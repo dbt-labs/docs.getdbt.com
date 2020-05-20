@@ -1,7 +1,20 @@
 ---
-title: "Using sql headers"
-id: "using-sql-headers"
+resource_types: [models]
+datatype: "string"
 ---
+<Alert type='warning'>
+
+<h4>Heads up!</h4>
+These docs are a work in progress.
+
+</Alert>
+
+<!----
+To-do:
+- use the reference doc structure for this article
+- check if SQL headers apply to models only
+--->
+
 
 ### Overview
 

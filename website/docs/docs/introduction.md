@@ -81,8 +81,6 @@ dbt ships with the following built-in materializations:
 
 Custom materializations can also be built if required.
 
-Materializations are discussed further in [Configuring models](configuring-models).
-
 **dbt determines the order of model execution.**
 Often when transforming data, it makes sense to do so in a staged approach. dbt provides a mechanism to implement transformations in stages through the [ref](ref) function.
 

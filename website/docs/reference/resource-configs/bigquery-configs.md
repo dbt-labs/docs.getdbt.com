@@ -1,10 +1,19 @@
 ---
-title: "BigQuery specific configurations"
+title: "BigQuery configurations"
 id: "bigquery-configs"
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+<Alert type='warning'>
+
+<h4>Heads up!</h4>
+These docs are a work in progress.
+
+</Alert>
+
+<!----
+To-do:
+- use the reference doc structure for this article/split into separate articles
+--->
 
 ## Using table partitioning and clustering
 

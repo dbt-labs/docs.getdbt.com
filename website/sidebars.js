@@ -20,19 +20,11 @@ module.exports = {
         items: [
           "docs/building-a-dbt-project/building-models",
           "docs/building-a-dbt-project/building-models/materializations",
-          "docs/building-a-dbt-project/building-models/configuring-models",
           "docs/building-a-dbt-project/building-models/configuring-incremental-models",
-          "docs/building-a-dbt-project/building-models/enable-and-disable-models",
           "docs/building-a-dbt-project/building-models/using-custom-aliases",
           "docs/building-a-dbt-project/building-models/using-custom-schemas",
           "docs/building-a-dbt-project/building-models/using-custom-database",
-          "docs/building-a-dbt-project/building-models/tags",
           "docs/building-a-dbt-project/building-models/using-variables",
-          "docs/building-a-dbt-project/building-models/using-sql-headers",
-          "docs/building-a-dbt-project/building-models/snowflake-configs",
-          "docs/building-a-dbt-project/building-models/redshift-configs",
-          "docs/building-a-dbt-project/building-models/bigquery-configs",
-          "docs/building-a-dbt-project/building-models/spark-configs",
         ],
       },
       "docs/building-a-dbt-project/hooks",
@@ -287,6 +279,14 @@ module.exports = {
       },
       {
         type: "category",
+        label: "List of model configs",
+        items: [
+          "reference/resource-configs/materialized",
+          "reference/resource-configs/sql_header",
+        ],
+      },
+      {
+        type: "category",
         label: "List of seed configs",
         items: [
           "reference/resource-configs/column_types",
@@ -305,6 +305,11 @@ module.exports = {
           "reference/resource-configs/updated_at",
         ],
       },
+      "reference/resource-configs/bigquery-configs",
+      "reference/resource-configs/redshift-configs",
+      "reference/resource-configs/snowflake-configs",
+      "reference/resource-configs/spark-configs",
+      "reference/advanced-config-usage"
     ],
     Properties: [
       "reference/declaring-properties",
