@@ -64,6 +64,7 @@ models:
     { label: 'Config block', value: 'config', },
   ]
 }>
+
 <TabItem value="yaml">
 
 <File name='dbt_project.yml'>
