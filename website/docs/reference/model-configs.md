@@ -110,12 +110,19 @@ models:
 
 </Tabs>
 
+### Warehouse-specific configurations
+* [BigQuery configurations](bigquery-configs)
+* [Redshift configurations](redshift-configs)
+* [Snowflake configurations](snowflake-configs)
+* [Spark configurations](spark-configs)
+
 ## Configuring models
 Models can be configured in one of two ways:
+
 1. Using a `config` block within a model, or
 2. From the `dbt_project.yml` file, under the `models:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 
-Model configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project.
+Model configurations are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project.
 
 ## Example
 

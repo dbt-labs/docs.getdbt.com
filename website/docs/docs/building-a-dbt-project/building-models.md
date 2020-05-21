@@ -106,7 +106,7 @@ Configurations are "model settings"  that can be set in your `dbt_project.yml` f
 * Build models into separate [schemas](using-custom-schemas).
 * Apply [tags](resource-configs/tags) to a model.
 
-Here's an example of model configurations:
+Here's an example of model configuration:
 
 <File name='dbt_project.yml'>
 
@@ -153,33 +153,98 @@ You can learn more about configurations in the [reference docs](model-configs).
 ## Building dependencies between models
 By using the [`ref` function](ref) in the place of table names in a query, you can build dependencies between models. Use the name of another model as the argument for `ref`.
 
+Tabs
+  defaultValue="redshift"
+  values={[
+    {label: 'Model', value: 'model'},
+    {label: 'Compiled code in dev', value: 'dev'},
+    {label: 'Compiled code in prod', value: 'prod'},
+  ]}>
+  <TabItem value="model">
 
-<File name='models/customers.sql'>
+
+  <File name='models/customers.sql'>
+
+  ```sql
+  with customers as (
+
+      select * from {{ ref('stg_customers') }}
+
+  ),
+
+  orders as (
+
+      select * from {{ ref('stg_orders') }}
+
+  ),
+
+  ...
+
+  ```
+
+  </File>
+
+
+  </TabItem>
+
+  <TabItem value="dev">
 
 ```sql
-with customers as (
+create view dbt_alice.customers as (
+  with customers as (
 
-    select * from {{ ref('stg_customers') }}
+      select * from dbt_alice.stg_customers
 
-),
+  ),
 
-orders as (
+  orders as (
 
-    select * from {{ ref('stg_orders') }}
+      select * from dbt_alice.stg_orders
 
-),
+  ),
+
+  ...
+)
 
 ...
 
 ```
 
-</File>
+
+  </TabItem>
+
+  <TabItem value="prod">
+
+```sql
+create view analytics.customers as (
+  with customers as (
+
+      select * from analytics.stg_customers
+
+  ),
+
+  orders as (
+
+      select * from analytics.stg_orders
+
+  ),
+
+  ...
+)
+
+...
+
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 dbt uses the `ref` function to:
 * Determine the order to run models in by creating a dependent acyclic graph (DAG).
 <Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
 
-* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from upstream table in the same schema.
+* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from upstream table in the same schema. Check out the tabs above to see thsi in action.
 
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code, and reduce repeated code.
 

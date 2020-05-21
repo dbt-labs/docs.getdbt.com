@@ -33,7 +33,7 @@ To replace an existing table, here's an _illustrative_ example of the SQL dbt wi
   <TabItem value="redshift">
 
 ```sql
--- you can't create or replace on redshift, so use a session to do this in an atomic way
+-- you can't create or replace on redshift, so use a transaction to do this in an atomic way
 
 begin;
 
