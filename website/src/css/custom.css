@@ -31,6 +31,16 @@ a.hash-link:hover
     color: black;
 }
 
+
+/* Fix for nav links that break (like dbt Cloud) */
+.navbar__brand {
+    width: 105px;
+}
+.navbar__item.navbar__link {
+    white-space: nowrap;
+}
+
+
 pre {
     font-size: 14px !important;
 }
@@ -58,6 +68,12 @@ nav.navbar div.navbar__toggle,
 nav.navbar a.navbar__link--active
 {
     color: white !important;
+    font-weight: bold !important;
+}
+
+li.menu__list-item a.navbar__link--active
+{
+    color: black !important;
     font-weight: bold !important;
 }
 
