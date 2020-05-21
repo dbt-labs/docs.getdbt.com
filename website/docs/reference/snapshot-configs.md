@@ -92,10 +92,10 @@ Parts of a snapshot:
 ```jinja
 
 {{ config(
-    [enabled](enabled)=true | false
-    [tags](tags)="<string>" | ["<string>"]
-    [pre-hook](pre-hook)="<sql-statement>" | ["<sql-statement>"]
-    [post-hook](post-hook)="<sql-statement>" | ["<sql-statement>"]
+    [enabled](enabled)=true | false,
+    [tags](tags)="<string>" | ["<string>"],
+    [pre_hook](pre-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](post-hook)="<sql-statement>" | ["<sql-statement>"]
 ) }}
 
 ```

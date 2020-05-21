@@ -1,7 +1,19 @@
 ---
-title: "Redshift specific configurations"
+title: "Redshift configurations"
 id: "redshift-configs"
 ---
+<Alert type='warning'>
+
+<h4>Heads up!</h4>
+These docs are a work in progress.
+
+</Alert>
+
+<!----
+To-do:
+- use the reference doc structure for this article/split into separate articles
+- think about whether some of these should be outside of models
+--->
 
 ## Performance Optimizations
 
@@ -22,14 +34,14 @@ Sort and dist keys should be added to the `{{ config(...) }}` block in model `.s
 {{ config(materialized='table', sort='id', dist='received_at') }}
 
 select ...
-  
-  
+
+
 -- Example with multiple sort keys
 {{ config(materialized='table', sort=['id', 'category'], dist='received_at') }}
 
 select ...
-  
-  
+
+
 -- Example with interleaved sort keys
 {{ config(materialized='table',
           sort_type='interleaved'
