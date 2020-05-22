@@ -303,7 +303,10 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 ```python
     def drop_schema(self, relation: BaseRelation):
-        relations = self.list_relations(database=relation.database, schema=relation.schema)
+        relations = self.list_relations(
+            database=relation.database,
+            schema=relation.schema
+        )
         for relation in relations:
             self.drop_relation(relation)
         super().drop_schema(relation)
