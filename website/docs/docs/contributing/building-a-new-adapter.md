@@ -141,11 +141,9 @@ For example:
         try:
             handle = myadapter_library.connect(
                 host=credentials.host,
-                # default port is 8080
-                port=credentials.get('port', 8080),
-                # underlying database accepts username/password of None
-                username=credentials.get('username', None),
-                password=credentials.get('password', None),
+                port=credentials.port,
+                username=credentials.username,
+                password=credentials.password,
                 catalog=credentials.database
             )
             connection.state = 'open'
