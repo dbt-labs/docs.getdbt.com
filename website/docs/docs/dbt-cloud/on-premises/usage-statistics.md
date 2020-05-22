@@ -10,7 +10,7 @@ for an installation back to Fishtown Analytics. Fishtown Analytics uses this
 information to record license utilization and better assist in supporting
 on-premises deployments of dbt Cloud.
 
-Usage statistics are tracked once daily, and include the following information:
+Usage statistics are tracked once weekly, and include the following information:
  - The account ids and account names present in a deployment
  - The number of developer and read only licenses utilized in each account
  - The version of dbt Cloud installed in the on-premises environment
@@ -33,5 +33,4 @@ payload looks like:
 ## Whitelisting outbound traffic
 
 To enable the collection of this metadata for your deployment, please whitelist
-outbound http traffic on port 443 to https://usage.getdbt.com from your dbt Cloud
-installation.
+outbound http traffic to https://usage.getdbt.com from your dbt Cloud installation.
