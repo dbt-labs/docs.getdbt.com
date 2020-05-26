@@ -55,3 +55,37 @@ Will get compiled to:
 ```sql
 select * from postgres_backend_public_schema.orders
 ```
+
+### Reference sharded tables in BigQuery
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+sources:
+  - name: ga
+    tables:
+      - name: events    
+        identifier: "events_*"
+
+```
+
+</File>
+
+
+In a downstream model:
+```sql
+select * from {{ source('ga', 'events') }}
+
+-- filter on shards by suffix
+where _table_suffix > '20200101'
+```
+
+Will get compiled to:
+```sql
+select * from `my_project`.`ga`.`events_*`
+
+-- filter on shards by suffix
+where _table_suffix > '20200101'
+```
