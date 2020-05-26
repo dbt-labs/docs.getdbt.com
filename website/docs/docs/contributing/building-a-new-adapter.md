@@ -15,7 +15,7 @@ This guide will walk you through the first two steps, and provide some resources
 
 ## Scaffolding a new adapter
 
-dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/dev/stephen-girard/core/scripts/create_adapter_plugins.py) directory.
+dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/core/scripts/create_adapter_plugins.py) directory.
 
 Example usage:
 
@@ -37,53 +37,30 @@ You can skip this step if you passed the arguments for `email`, `url`, `author`,
 
 Edit the connection manager at `myadapter/dbt/adapters/myadapter/connections.py`. This file is defined in the sections below.
 
-### The Credentials contract
+### The Credentials class
 
-The credentials contract defines all of the database-specific credentials (e.g. `username` and `password`) that users will need to add to `profiles.yml` to use your new adapter.  Each credentials contract should follow the [JSON Schema](https://json-schema.org/) Draft 4 specification.
+The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need to add to `profiles.yml` to use your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
 
-For example, if your adapter requires a host, integer port, username string, and password string, but host is the only required field, you'd add definitions for those new properties to the contract, and then add 'host' to the list of required fields, like this:
+Note that the base class includes required database and schema fields, as dbt uses those values internally.
 
-<File name='connections.py'>
-
-```python
-MYADAPTER_CREDENTIALS_CONTRACT = {
-    'type': 'object',
-    'additionalProperties': False,
-    'properties': {
-        'database': {
-            'type': 'string',
-        },
-        'schema': {
-            'type': 'string',
-        },
-        'host': {
-            'type': 'string',
-        },
-        'port': {
-            'type': 'integer',
-            'minimum': 0,
-            'maximum': 65535,
-        },
-        'username': {
-            'type': 'string',
-        },
-        'password': {
-            'type': 'string',
-        },
-    },
-    'required': ['host'],
-}
-```
-
-</File>
-
-Be sure to implement the Credentials' `_connection_keys` method. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments). Example code:
+For example, if your adapter requires a host, integer port, username string, and password string, but host is the only required field, you'd add definitions for those new properties to the class as types, like this:
 
 <File name='connections.py'>
 
 ```python
+
+from dataclasses import dataclass
+from typing import Optional
+
+from dbt.adapters.base import Credentials
+
+
+@dataclass
 class MyAdapterCredentials(Credentials):
-    SCHEMA = MYADAPTER_CREDENTIALS_CONTRACT
+    host: str
+    port: int = 1337
+    username: Optional[str] = None
+    password: Optional[str] = None
 
     @property
     def type(self):
@@ -98,13 +75,20 @@ class MyAdapterCredentials(Credentials):
 
 </File>
 
+Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
+
 You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
 
 <File name='connections.py'>
 
 ```python
+@dataclass
 class MyAdapterCredentials(Credentials):
-    SCHEMA = MYADAPTER_CREDENTIALS_CONTRACT
+    host: str
+    port: int = 1337
+    username: Optional[str] = None
+    password: Optional[str] = None
+
     ALIASES = {
         'collection': 'database',
     }
@@ -157,11 +141,9 @@ For example:
         try:
             handle = myadapter_library.connect(
                 host=credentials.host,
-                # default port is 8080
-                port=credentials.get('port', 8080),
-                # underlying database accepts username/password of None
-                username=credentials.get('username', None),
-                password=credentials.get('password', None),
+                port=credentials.port,
+                username=credentials.username,
+                password=credentials.password,
                 catalog=credentials.database
             )
             connection.state = 'open'
@@ -213,7 +195,7 @@ If you use the (highly recommended) `@contextmanager` decorator, you only have t
 
 ```python
     @contextmanager
-    def exception_handler(self, sql, connection_name='master'):
+    def exception_handler(self, sql: str):
         try:
             yield
         except myadapter_library.DatabaseError as exc:
@@ -257,24 +239,24 @@ dbt implements specific SQL operations using jinja macros. While reasonable defa
 
 ### Required macros
 
-The following macros must be implemented, but you can override their behavior for your adapter using the "adapter macro" pattern described below.
+The following macros must be implemented, but you can override their behavior for your adapter using the "adapter macro" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
-- `alter_column_type` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L118))
-- `check_schema_exists` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L202))
-- `create_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L31))
-- `drop_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L141))
-- `drop_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L41))
-- `get_columns_in_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L101))
-- `list_relations_without_caching` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L217))
-- `list_schemas` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L188))
-- `rename_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L163))
-- `truncate_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/b7d9eecf86566dd3d86077667bf8c0dc4cf2ef22/core/dbt/include/global_project/macros/adapters/common.sql#L152))
+- `alter_column_type` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L170))
+- `check_schema_exists` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L254))
+- `create_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L51))
+- `drop_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L194))
+- `drop_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L61))
+- `get_columns_in_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L125)) (required)
+- `list_relations_without_caching` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L270)) (required)
+- `list_schemas` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L240))
+- `rename_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L215))
+- `truncate_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L205))
 
 ### Adapter macros
 
 Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create table") in a database-specific way.
 
-To define an "adapter macro", use the `adapter_macro` function as shown [here](https://github.com/fishtown-analytics/dbt/blob/89207155fdb25f7e3a74dd2eebbd8e4c23147cc5/core/dbt/include/global_project/macros/adapters/common.sql#L51).
+To define an "adapter macro", use the `adapter_macro` function as shown [here](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L67).
 
 <File name='adapters.sql'>
 
@@ -318,19 +300,14 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 <File name='impl.py'>
 
 ```python
-    def drop_schema(self, database, schema, model_name=None):
+    def drop_schema(self, relation: BaseRelation):
         relations = self.list_relations(
-            database=database,
-            schema=schema,
-            model_name=model_name
+            database=relation.database,
+            schema=relation.schema
         )
         for relation in relations:
-            self.drop_relation(relation, model_name=model_name)
-        super(MyAdapter, self).drop_schema(
-            database=database,
-            schema=schema,
-            model_name=model_name
-        )
+            self.drop_relation(relation)
+        super().drop_schema(relation)
 ```
 
 </File>
