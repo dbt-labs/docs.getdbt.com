@@ -166,15 +166,23 @@ The `tests` field is used to assert properties of a column or table. Defining te
 Once these tests are defined, you can validate their correctness by running `dbt test`. More information on the options and syntax for these schema tests can be found in the [Testing](testing) guide.
 
 ## test_name
+### unique
+
+### not_null
+
+### accepted_values
+
+### relationships
 
 ## severity
 
 
 ## Examples
+- Test a primary key
 - Test an expression
 - Advanced: define and use custom schema test (see the guide)
 
 ## FAQs:
 - Thresholds
 - Set all tests to warn severity by default
--
+- reuse test logic
