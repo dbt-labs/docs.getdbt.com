@@ -145,6 +145,14 @@ Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
 
 9. Select from the `snapshot` in downstream models using the `ref` function.
 
+<File name='models/changed_orders.sql'>
+
+```sql
+select * from {{ ref('orders_snapshot') }}
+```
+
+</File>
+
 10. Schedule the `snapshot` command to run regularly — snapshots are only useful if you run them frequently.
 
 
