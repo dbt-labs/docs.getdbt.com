@@ -56,7 +56,7 @@ Will get compiled to:
 select * from postgres_backend_public_schema.orders
 ```
 
-### Reference sharded tables in BigQuery
+### Reference sharded tables as a source in BigQuery
 
 <File name='models/<filename>.yml'>
 
