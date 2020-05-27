@@ -49,7 +49,7 @@ To install the dbt Cloud appliance or perform updates, some external connections
         "name": "fishtown_analytics",
         "developer_licenses": 20,
         "read_only_licenses": 100,
-        "dbt_cloud_version": "0.16.1"
+        "dbt_cloud_version": "1.0.0"
     ]
 }
 
