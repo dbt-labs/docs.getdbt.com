@@ -5,6 +5,33 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.0.12 (May 27, 2020)
+
+This release contains a few bugfixes for the IDE and email notifications, as well as the latest release candidate of 0.17.0.
+
+### All versions
+
+#### Added
+
+- Use the correct starter project tag, based on dbt version, when initializing a new project in the IDE
+- Added branch filtering to IDE git checkout UI.
+- Added dbt 0.17.0-rc3.
+
+#### Fixed
+
+- Fixed source freshness report for dbt version v0.17.0
+- Fixed issue with checking-out git branches
+- Fixed issue of logs being omitted on long running queries in the IDE
+- Fixed slack notifications failing to send if email notifications fail
+
+### On-Premises Only
+
+#### Added
+
+- Added an Admin page for deleting credentials.
+
+---
+
 ## dbt Cloud v1.0.11 (May 19, 2020)
 
 This version adds some new permission sets, and a new release candidate of dbt.
