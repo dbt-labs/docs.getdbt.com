@@ -52,7 +52,7 @@ from {{ ref('raw_payments') }}
 order by 1
 {% endset %}
 
-{% set results = run_query(relation_query) %}
+{% set results = run_query(payment_method_query) %}
 
 {% if execute %}
 {# Return the first column #}
