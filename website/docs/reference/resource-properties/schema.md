@@ -36,7 +36,7 @@ If you're using BigQuery, use the _dataset_ name as the `schema:` property.
 By default, dbt will use the source's `name:` parameter as the schema name.
 
 ## Examples
-### Use a simpler name for a source table than the one in your database
+### Use a simpler name for a source schema than the one in your database
 
 <File name='models/<filename>.yml'>
 
@@ -45,10 +45,9 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    schema: postgres_backend_public_schema
     tables:
       - name: orders
-        identifier: api_orders
-
 
 ```
 
@@ -61,7 +60,6 @@ select * from {{ source('jaffle_shop', 'orders') }}
 ```
 
 Will get compiled to:
-
 ```sql
-select * from jaffle_shop.api_orders
+select * from postgres_backend_public_schema.orders
 ```

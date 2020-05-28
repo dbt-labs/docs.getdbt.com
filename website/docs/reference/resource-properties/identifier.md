@@ -37,9 +37,9 @@ version: 2
 
 sources:
   - name: jaffle_shop
-    schema: postgres_backend_public_schema
     tables:
       - name: orders
+        identifier: api_orders
 
 ```
 
@@ -53,7 +53,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 Will get compiled to:
 ```sql
-select * from postgres_backend_public_schema.orders
+select * from jaffle_shop.api_orders
 ```
 
 ### Reference sharded tables as a source in BigQuery
@@ -66,7 +66,7 @@ version: 2
 sources:
   - name: ga
     tables:
-      - name: events    
+      - name: events
         identifier: "events_*"
 
 ```
