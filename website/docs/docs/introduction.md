@@ -117,7 +117,7 @@ For more information see [Ref](ref).
 
 <Callout type="info" title="Want to see a DAG visualization for your project?">
 
-Check out the [Documentation Website](documentation-website) docs
+Check out the [Documentation Website](documentation) docs
 
 </Callout>
 
@@ -148,7 +148,7 @@ SQL can be difficult to test, since the underlying data is frequently changing. 
 
 Tests can be easily extended to suit business logic specific to your organization – any assertion that you can make about your model in the form of a select query can be turned into a test.
 
-To learn more about writing tests for your models, see [Testing](testing).
+To learn more about writing tests for your models, see [Testing](building-a-dbt-project/tests).
 
 
 **Package management:**

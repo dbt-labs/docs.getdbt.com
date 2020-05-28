@@ -155,13 +155,13 @@ dbt makes it possible for users of your package to override your model materiali
 
 **7. Test your models**
 
-It's critical that you [test](testing) your models using both schema tests and, when appropriate, custom data tests. This will give your end users confidence that your package is actually working on top of their dataset as intended.
+It's critical that you [test](building-a-dbt-project/tests) your models using both schema tests and, when appropriate, custom data tests. This will give your end users confidence that your package is actually working on top of their dataset as intended.
 
 ## Documenting a dbt package
 
 The better documented your package is, the more likely it is that other people will use it! Good package docs include:
 - An index of important models along with a short description of the model if necessary
-- A picture of the package's dependency graph generated via your project's [documentation website](documentation-website).
+- A picture of the package's dependency graph generated via your project's [documentation website](documentation).
 - A list of any `var`s required by the package along with a short description of the variable
 
 An example of good package documentation can be found [here](https://github.com/fishtown-analytics/snowplow).

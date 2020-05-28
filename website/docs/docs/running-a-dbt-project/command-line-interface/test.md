@@ -32,4 +32,4 @@ dbt test --data --models one_specific_model
 dbt test --schema --models one_specific_model
 ```
 
-For more information on writing tests, see the [Testing Documentation](testing).
+For more information on writing tests, see the [Testing Documentation](building-a-dbt-project/tests).

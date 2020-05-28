@@ -123,7 +123,7 @@ The documentation site can be used in basically two different ways. It serves as
 
 ### Documenting models
 
-If you followed along with the [Testing](testing) and [Documentation](documentation) guides, then your models are annotated with rich descriptions and schema tests. Using the docs interface, you can navigate to the documentation for a specific model. That might look something like this:
+If you followed along with the [Testing](building-a-dbt-project/tests) and [Documentation](documentation) guides, then your models are annotated with rich descriptions and schema tests. Using the docs interface, you can navigate to the documentation for a specific model. That might look something like this:
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/f2221dc-Screen_Shot_2018-08-14_at_6.29.55_PM.png" title="Auto-generated documentation for a dbt model"/>
 
