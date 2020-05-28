@@ -40,6 +40,20 @@ To install the dbt Cloud appliance or perform updates, some external connections
 - `registry-data.replicated.com`: The private Replicated Docker registry.
 - `quay.io`: Some dependencies of Replicated are hosted as public images in the Quay.io registry.
 - `hub.docker.com`: Some dependencies of Replicated are hosted as public images in Docker Hub.
+- `usage.getdbt.com`: Your installation will send usage data to our server once per week. The schema of the data is as follows:
+
+```json
+{
+    "accounts": [
+        "id": 1,
+        "name": "fishtown_analytics",
+        "developer_licenses": 20,
+        "read_only_licenses": 100,
+        "dbt_cloud_version": "1.0.0"
+    ]
+}
+
+```
 
 Replicated maintains a list of Replicated-owned IPs for whitelisting purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
 
