@@ -76,6 +76,7 @@ Parts of a snapshot:
 
 ```yaml
 [enabled](enabled): true | false
+[transient](transient): true | false
 [tags](tags): <string> | [<string>]
 [pre-hook](pre-hook): <sql-statement> | [<sql-statement>]
 [post-hook](post-hook): <sql-statement> | [<sql-statement>]
