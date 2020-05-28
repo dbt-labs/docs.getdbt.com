@@ -48,8 +48,8 @@
 /docs/debug-method	/docs/writing-code-in-dbt/jinja-context/debug-method	302
 /docs/deps	/docs/running-a-dbt-project/command-line-interface/deps	302
 /docs/doc	/docs/writing-code-in-dbt/jinja-context/doc	302
-/docs/documentation	/docs/building-a-dbt-project/testing-and-documentation/documentation	302
-/docs/documentation-website	/docs/building-a-dbt-project/testing-and-documentation/documentation-website	302
+/docs/documentation	/docs/building-a-dbt-project/documentation	302
+/docs/documentation-website	/docs/building-a-dbt-project/documentation	302
 /docs/dont-nest-your-curlies	/docs/building-a-dbt-project/dont-nest-your-curlies	302
 /docs/enable-and-disable-models	/reference/resource-configs/enabled	302
 /docs/enterprise-permissions	/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions	302
@@ -116,8 +116,8 @@
 /docs/tags	/reference/resource-configs/tags	302
 /docs/target	/docs/writing-code-in-dbt/jinja-context/target	302
 /docs/test	/docs/running-a-dbt-project/command-line-interface/test	302
-/docs/testing	/docs/building-a-dbt-project/testing-and-documentation/testing	302
-/docs/testing-and-documentation	/docs/building-a-dbt-project/testing-and-documentation	302
+/docs/testing	/docs/building-a-dbt-project/tests	302
+/docs/testing-and-documentation	/docs/building-a-dbt-project/tests	302
 /docs/the-dbt-ide	/docs/dbt-cloud/the-dbt-ide	302
 /docs/this	/docs/writing-code-in-dbt/jinja-context/this	302
 /docs/tojson	/docs/writing-code-in-dbt/jinja-context/tojson	302
@@ -167,3 +167,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/building-a-dbt-project/building-models/redshift-configs /reference/resource-configs/redshift-configs  302
 /docs/building-a-dbt-project/building-models/bigquery-configs /reference/resource-configs/bigquery-configs  302
 /docs/building-a-dbt-project/building-models/spark-configs  /reference/resource-configs/spark-configs 302
+/docs/building-a-dbt-project/testing-and-documentation  /docs/building-a-dbt-project/tests  302
+/docs/building-a-dbt-project/testing-and-documentation/testing  /docs/building-a-dbt-project/tests  302
+/docs/building-a-dbt-project/testing-and-documentation/documentation  /docs/building-a-dbt-project/testing-and-documentation/documentation  302
+/docs/building-a-dbt-project/testing-and-documentation/documentation-website  /docs/building-a-dbt-project/testing-and-documentation/documentation  302
