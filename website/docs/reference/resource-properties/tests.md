@@ -2,11 +2,6 @@
 resource_types: all
 datatype: test
 ---
-<Alert type='warning'>
-<h4>Heads up!</h4>
-This is a work in progress document.
-
-</Alert>
 
 <Tabs
   defaultValue="models"
@@ -209,7 +204,7 @@ models:
 
 This test validates that all of the values in a column are present in a supplied list of `values`. If any values other than those provided in the list are present, then the test will fail.
 
-The `accepted_values` test supports an optional `quote` parameter which by default will single-quote the list of accepted values in the test query. To test non-strings (like integers or boolean values) explicitly set the `quote` config to `false`.
+The `accepted_values` test supports an optional `quote` parameter which, by default, will single-quote the list of accepted values in the test query. To test non-strings (like integers or boolean values) explicitly set the `quote` config to `false`.
 
 <File name='schema.yml'>
 
@@ -227,7 +222,7 @@ models:
       - name: status_id
         tests:
           - accepted_values:
-              values: [1, 2, 3 4]
+              values: [1, 2, 3, 4]
               quote: false
 ```
 
@@ -250,8 +245,8 @@ models:
       - name: customer_id
         tests:
           - relationships:
-                to: ref('customers')
-                field: id
+              to: ref('customers')
+              field: id
 ```
 
 </File>
@@ -269,16 +264,77 @@ The `to` argument accepts a [Relation](class-reference#relation) – this means 
 
 The "severity" of a test can be configured by supplying the `severity` configuration option in the test specification. The `severity` option can be one of `warn` or `error`. If `warn` is supplied, then dbt will log a warning for any failing tests, but the test will still be considered passing. This configuration is useful for tests in which a failure does not imply that action is required.
 
-If a `severity` level is not provided, then tests are run with the `error` severity level. The `severity` config can be applied to any schema test, including those  [you define yourself](custom-schema-tests).
+<File name='models/<filename>.yml'>
 
-They can also be applied to [data tests](building-a-dbt-project/tests#data-tests)
+```yaml
+version: 2
+
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        tests:
+          - unique:
+              severity: warn
+```
+
+</File>
+
+If a `severity` level is not provided, then tests are run with the `error` severity level. There is currently no way to set all tests to the "warn" severity by default.
+
+
+The `severity` config can be applied to any schema test. They can also be applied to [data tests](building-a-dbt-project/tests#data-tests):
+
+```sql
+{{
+    config(
+        severity='warn'
+    )
+}}
+
+select ...
+
+```
+
+
 
 ## Additional examples
-- Test a primary key
-- Test an expression
-- Advanced: define and use custom schema test (see the guide)
 
-## FAQs:
-- Thresholds
-- Set all tests to warn severity by default
-- reuse test logic
+### Testing an expression
+Some tests require multiple columns, so it doesn't make sense to nest them under the `columns:` key. In this case you can apply the test to the model (or source, seed or snapshot) instead:
+
+<File name='models/orders.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: orders
+    tests:
+      - unique:
+          column_name: "country_code || '-' || order_id"
+```
+
+</File>
+
+### Advanced: define and use a custom schema test
+
+If you define your own custom schema test, you can use that as the `test_name`:
+
+<File name='models/<filename>.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        tests:
+          - primary_key
+
+```
+
+</File>
+
+Check out the guide on writing a [custom schema test](custom-schema-tests) for more information.

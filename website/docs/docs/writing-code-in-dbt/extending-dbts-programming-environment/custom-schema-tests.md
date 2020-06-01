@@ -5,9 +5,13 @@ id: "custom-schema-tests"
 
 dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) schema tests. Under the hood, these schema tests are defined as macros in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/fishtown-analytics/dbt/tree/development/dbt/include/global_project/macros/schema_tests).
 
-## Schema Tests with One Argument
+:::info
+We've open sourced some useful custom schema tests in [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) — the test you're looking for might already be here!
+:::
 
-To define your own schema tests, simply create a macro called `test_{test_name}`. Here's an example of an `is_even` schema test:
+## Schema tests with one argument
+
+To define your own schema tests, simply create a macro called `test_<test_name>`. Here's an example of an `is_even` schema test:
 
 <File name='macros/test_is_even.sql'>
 
@@ -63,13 +67,8 @@ models:
 
 In the above example, `users` will be passed to the `is_even` test as the `model` argument, and `favorite_number` will be passed in as the `column_name` argument.
 
-<Callout type="info" title="ProTip">
 
-Run `dbt test --model users` to run only the tests defined for the `users` model.
-
-</Callout>
-
-## Schema Tests with More Than One Argument
+## Schema tests with more than one argument
 
 The above test, `is_even` works if only one argument needs to be specified. Other tests, like `relationships`, require more than one argument. If your custom tests requires more than one argument (besides `model`), define them like this:
 
@@ -124,3 +123,14 @@ models:
 ```
 
 </File>
+
+## Customizing dbt's built-in tests
+
+To change the way a built-in test works (for example, to add additional parameters, or re-write the SQL), add a macro named `test_<test_name>` (e.g. `test_unique`) to your project — dbt will favor your macro over the global implementation!
+
+## Examples
+
+Here's some additional examples of custom schema tests from the community:
+* [Creating a custom schema test with an error threshold](https://discourse.getdbt.com/t/creating-an-error-threshold-for-schema-tests/966)
+* [Using custom schema tests to only run tests in production](https://discourse.getdbt.com/t/conditionally-running-dbt-tests-only-running-dbt-tests-in-production/32)
+* [Additional examples of custom schema tests](https://discourse.getdbt.com/t/examples-of-custom-schema-tests/181)

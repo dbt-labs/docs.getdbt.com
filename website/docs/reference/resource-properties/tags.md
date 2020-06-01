@@ -2,11 +2,7 @@
 resource_types: all
 datatype: test
 ---
-<Alert type='warning'>
-<h4>Heads up!</h4>
-This is a work in progress document.
 
-</Alert>
 
 <Tabs
   defaultValue="models"
@@ -29,6 +25,7 @@ version: 2
 
 models:
   - name: model_name
+    # tags: [] # check out [these docs](resource-configs/tags) for more info
 
     columns:
       - name: column_name
@@ -84,6 +81,7 @@ version: 2
 
 seeds:
   - name: seed_name
+    # tags: [] # check out [these docs](resource-configs/tags) for more info
 
     columns:
       - name: column_name
@@ -109,6 +107,7 @@ version: 2
 
 snapshots:
   - name: snapshot_name
+    # tags: [] # check out [these docs](resource-configs/tags) for more info
 
     columns:
       - name: column_name
