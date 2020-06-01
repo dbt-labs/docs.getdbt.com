@@ -1,25 +1,25 @@
 ---
+title: on-run-start & on-run-end
 datatype: sql-statement | [sql-statement]
 ---
-:::caution Heads up!
-This is a work in progress document.
-
-:::
 
 <File name='dbt_project.yml'>
 
 ```yml
-on-run-end: sql-statement
+on-run-start: sql-statement | [sql-statement]
+on-run-end: sql-statement | [sql-statement]
 ```
 
 </File>
 
+
 ## Definition
-A SQL statement (or list of SQL statements) to be run at the end of the following commands:
+A SQL statement (or list of SQL statements) to be run at the start, or end, of the following commands:
 - `dbt run`
 - `dbt seed`
+- `dbt snapshot`
 
-`on-run-end` hooks can also call macros that return SQL statements.
+`on-run-start` and `on-run-end` hooks can also call macros that return SQL statements
 
 ## Examples
 ### Grant privileges at the end of a run

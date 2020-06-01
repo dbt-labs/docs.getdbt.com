@@ -171,3 +171,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/building-a-dbt-project/testing-and-documentation/testing  /docs/building-a-dbt-project/tests  302
 /docs/building-a-dbt-project/testing-and-documentation/documentation  /docs/building-a-dbt-project/testing-and-documentation/documentation  302
 /docs/building-a-dbt-project/testing-and-documentation/documentation-website  /docs/building-a-dbt-project/testing-and-documentation/documentation  302
+/docs/reference/project-configs/on-run-start  /docs/reference/project-configs/on-run-start-on-run-end  302
+/docs/reference/project-configs/on-run-end  /docs/reference/project-configs/on-run-start-on-run-end  302
+/docs/reference/resource-configs/pre-hook /docs/reference/resource-configs/pre-hook-post-hook 302
+/docs/reference/resource-configs/post-hook /docs/reference/resource-configs/pre-hook-post-hook 302

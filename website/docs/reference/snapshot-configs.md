@@ -82,8 +82,8 @@ snapshots:
 ```yaml
 [enabled](enabled): true | false
 [tags](tags): <string> | [<string>]
-[pre-hook](pre-hook): <sql-statement> | [<sql-statement>]
-[post-hook](post-hook): <sql-statement> | [<sql-statement>]
+[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
 
 ```
 
@@ -99,8 +99,8 @@ snapshots:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](tags)="<string>" | ["<string>"],
-    [pre_hook](pre-hook)="<sql-statement>" | ["<sql-statement>"],
-    [post_hook](post-hook)="<sql-statement>" | ["<sql-statement>"]
+    [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
 ) }}
 
 ```
