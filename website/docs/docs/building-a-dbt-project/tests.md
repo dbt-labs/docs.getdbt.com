@@ -1,10 +1,9 @@
 ---
-title: "Testing"
+title: "Tests"
 ---
 
 ## Related reference docs
 * [Test command](test)
-* [Declaring properties](declaring-properties)
 * [Test properties](resource-properties/tests)
 * [Data test configurations](data-test-configs)
 
@@ -14,16 +13,20 @@ title: "Testing"
 
 ## Getting started
 
-Tests are assertions you make about your models, and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if the test passes or fails.
+Tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
 
 There are two type of tests:
-* **schema tests** (more common): applied in yaml, returns the number of records that _do not_ pass an assertion — when this number is 0, all records pass, therfore, your test passes
+* **schema tests** (more common): applied in YAML, returns the number of records that _do not_ pass an assertion — when this number is 0, all records pass, therefore, your test passes
 * **data tests**: specific queries that return 0 records
 
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes.
 
+:::tip Creating your first tests
+If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models and tests.
+:::
+
 ## Schema tests
-Schema tests are added as _properties_ for an existing model (or source, seed, analysis — collectively known as a resource in your project).
+Schema tests are added as _properties_ for an existing model (or source, seed, or snapshot).
 
 These properties are added in  `.yml` files in the same directory as your resource.
 
@@ -50,8 +53,8 @@ models:
       - name: customer_id
         tests:
           - relationships:
-                to: ref('customers')
-                field: id
+              to: ref('customers')
+              field: id
 ```
 
 In plain English, these tests translate to:
@@ -62,7 +65,7 @@ In plain English, these tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each schema test. These queries return the number `0` when your assertion is true, otherwise the test fails
 
-You can find more information about these tests, and additional configurations (including `severity` and `tags`) in the [reference section](resource-properties/tests).
+You can find more information about these tests, and additional configurations (including [`severity`](resource-properties/tests#severity) and [`tags`](resource-properties/tags)) in the [reference section](resource-properties/tests).
 
 You can also write your own custom schema tests to use in your dbt project — check out the [guide](custom-schema-tests) for more information.
 
@@ -113,7 +116,10 @@ Completed successfully
 Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 
 ```
-3. Check out the SQL dbt is running by either checking the `target/compiled` directory if developing using the CLI, or the Details tab in dbt Cloud.
+3. Check out the SQL dbt is running by either:
+   * **dbt Cloud:** checking the Details tab.
+   * **dbt CLI:** checking the `target/compiled` directory
+
 
 **Unique test**
 <Tabs
@@ -198,9 +204,11 @@ where {{ column_name }} is null
 
 
 ## Data tests
-A data test is a `select` statements that returns 0 records when the test is successful. Data tests are defined in `.sql` files, typically in your `tests` directory. Each `.sql` file contains one data test / `select` statement`
+A data test is a `select` statement that returns `0` records when the test is successful. Note: this differs from schema tests that return the number `0`.
 
-<File name='tests/refund_cannot_exceed_amount.sql'>
+Data tests are defined in `.sql` files, typically in your `tests` directory. Each `.sql` file contains one data test / one `select` statement:
+
+<File name='tests/assert_total_payment_amount_is_positive.sql'>
 
 ```sql
 -- Refunds have a negative amount, so the total amount should always be >= 0.
@@ -210,7 +218,7 @@ select
     sum(amount) as total_amount
 from {{ ref('fct_payments' )}}
 group by 1
-having total_amount < 0
+having not(total_amount >= 0)
 
 ```
 
@@ -221,13 +229,19 @@ Data tests are also run by the `dbt test` command. To _only_ run data tests, run
 
 
 ## FAQs
-* How can I run tests so that my model passes?
-* What should i test?
-* pro tip about utils
-* When should I run tests?
-* Is there a way to see the failing records?
-* Can I use a different directory for data tests?
-* How do I run tests on sources only?
-* Can I set custom thresholds for my tests?
-* Can I run subsets of tests?
-* Can I tests uniqueness of two columns
+
+
+<FAQ src="test-one-model" />
+<FAQ src="failed-tests" />
+<FAQ src="recommended-tests" />
+<FAQ src="when-to-test" />
+<FAQ src="records-from-failed-tests" />
+<FAQ src="configurable-data-test-path" />
+<FAQ src="test-sources" />
+<FAQ src="custom-test-thresholds" />
+<FAQ src="uniqueness-two-columns" />
+
+<!--
+Additional FAQs that need Discourse articles:
+- How can I run my tests before a model is created?
+-->

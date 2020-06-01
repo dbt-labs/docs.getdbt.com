@@ -67,7 +67,7 @@ The `@` operator is similar to `+`, but will also include _the parents of the ch
 <Lightbox src="/img/docs/running-a-dbt-project/command-line-interface/1643e30-Screen_Shot_2019-03-11_at_7.18.20_PM.png" title="@snowplow_web_page_context will select all of the models shown here"/>
 
 ### The "star" operator
-The `*` operator matches all models within a package or directory. 
+The `*` operator matches all models within a package or directory.
 
 ```bash
 dbt run --models snowplow.*      # run all of the models in the snowplow package
@@ -106,3 +106,132 @@ dbt provides an `--exclude` flag with the same semantics as `--models`. Models s
 ```bash
 dbt run --models my_package.*+ --exclude my_package.a_big_model+
 ```
+
+
+## Test selection examples
+The test selection syntax grew out of the model selection syntax. In the future, we plan this more straightforward.
+
+### Run schema tests only
+
+```shell
+$ dbt test --schema
+```
+
+### Run data tests only
+
+```shell
+$ dbt test --data
+```
+
+
+### Run tests on all sources
+
+```shell
+$ dbt test --models source:*
+```
+
+### Run tests on one source
+
+```shell
+# syntax
+$ dbt test --models source:<source_name>
+# example
+$ dbt test --models source:jaffle_shop
+```
+
+### Run tests on one source table
+
+```shell
+# syntax
+$ dbt test --models source:<source_name>.<table_name>
+# example
+$ dbt test --models source:jaffle_shop.customers
+```
+
+
+### Run tests on everything _but_ sources
+
+```shell
+$ dbt test --exclude sources:*
+```
+
+### Run tests on seeds / snapshots only
+
+Currently it is not possible to:
+* Run tests on all seeds, OR
+* Run tests on all snapshots
+
+Instead, you will have to provide the name of the resource as the argument to the `--models` option:
+
+```shell
+$ dbt test --models orders_snapshot
+```
+### Run tests on tagged models
+
+<File name='models/<filename>.sql'>
+
+```sql
+
+{{ config(tags=["my_model_tag"]) }}
+
+select ...
+
+```
+
+</File>
+
+```shell
+$ dbt test --tags tag:my_model_tag
+```
+
+### Run tests on tagged columns
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        tests:
+        tags: [my_column_tag]
+          - unique
+
+```
+
+</File>
+
+```shell
+$ dbt test --tags tag:my_column_tag
+```
+
+### Run tagged tests only
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        tests:
+          - unique:
+              tags: [my_test_tag]
+
+```
+
+</File>
+
+
+```shell
+$ dbt test --models tag:my_test_tag
+```
+
+<!---
+## List selection examples
+### List all models that are materialized as tables
+
+--->
