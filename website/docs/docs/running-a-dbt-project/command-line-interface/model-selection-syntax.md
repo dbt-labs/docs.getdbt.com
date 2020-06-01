@@ -109,7 +109,12 @@ dbt run --models my_package.*+ --exclude my_package.a_big_model+
 
 
 ## Test selection examples
-The test selection syntax grew out of the model selection syntax. In the future, we plan this more straightforward.
+The test selection syntax grew out of the model selection syntax. As such, the syntax will look familiar if you wish to :
+* run tests on a particular model
+* run tests on models in a sub directory
+* run tests on all models upstream / downstream of a model, etc.
+
+However, things start to get a little unfamiliar when you want to test things other than models, so we've included lots of examples below. In the future, we plan to make this syntax more intuitive.
 
 ### Run schema tests only
 
@@ -123,6 +128,39 @@ $ dbt test --schema
 $ dbt test --data
 ```
 
+### Run tests on a particular model
+
+```shell
+# syntax
+$ dbt test --models model_name
+# example
+$ dbt test --models customers
+```
+
+
+### Run tests on models
+
+These should feel somewhat familiar if you're used to executing `dbt run` with the `--models` option to build parts of your DAG.
+
+Check out the more in-depth examples of the model selection syntax above for more details:
+
+```shell
+# Run tests on a model
+$ dbt test --models customers
+
+# Run tests on all models in the models/staging/jaffle_shop directory
+$ dbt test --models staging.jaffle_shop
+
+# Run tests downstream of a model
+$ dbt tests --models stg_customers+
+
+# Run tests upstream of a model
+$ dbt tests --models +stg_customers
+
+# Run tests on all models with a particular tag
+$ dbt test --tags tag:my_model_tag
+
+```
 
 ### Run tests on all sources
 
@@ -165,23 +203,6 @@ Instead, you will have to provide the name of the resource as the argument to th
 
 ```shell
 $ dbt test --models orders_snapshot
-```
-### Run tests on tagged models
-
-<File name='models/<filename>.sql'>
-
-```sql
-
-{{ config(tags=["my_model_tag"]) }}
-
-select ...
-
-```
-
-</File>
-
-```shell
-$ dbt test --tags tag:my_model_tag
 ```
 
 ### Run tests on tagged columns
