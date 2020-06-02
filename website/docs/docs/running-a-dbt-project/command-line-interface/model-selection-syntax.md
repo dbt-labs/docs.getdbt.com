@@ -224,7 +224,7 @@ models:
 </File>
 
 ```shell
-$ dbt test --tags tag:my_column_tag
+$ dbt test --models tag:my_column_tag
 ```
 
 ### Run tagged tests only
