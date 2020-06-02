@@ -25,7 +25,7 @@ version: 2
 
 models:
   - name: model_name
-    # tags: [] # check out [these docs](resource-configs/tags) for more info
+    # tags: [] # this is not supported — check out the above link for more info
 
     columns:
       - name: column_name
@@ -81,7 +81,7 @@ version: 2
 
 seeds:
   - name: seed_name
-    # tags: [] # check out [these docs](resource-configs/tags) for more info
+    # tags: [] # this is not supported — check out the above link for more info
 
     columns:
       - name: column_name
@@ -107,7 +107,7 @@ version: 2
 
 snapshots:
   - name: snapshot_name
-    # tags: [] # check out [these docs](resource-configs/tags) for more info
+    # tags: [] # this is not supported — check out the above link for more info
 
     columns:
       - name: column_name
