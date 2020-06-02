@@ -158,7 +158,7 @@ $ dbt tests --models stg_customers+
 $ dbt tests --models +stg_customers
 
 # Run tests on all models with a particular tag
-$ dbt test --tags tag:my_model_tag
+$ dbt test --models tag:my_model_tag
 
 ```
 
