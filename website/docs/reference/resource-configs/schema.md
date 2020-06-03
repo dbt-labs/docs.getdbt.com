@@ -10,7 +10,7 @@ This is a work in progress document. While this configuration applies to multipl
 </Alert>
 
 ## Definition
-Optionally specify a custom schema for a [model](docs/docs/building-a-dbt-project/building-models.md) or [seed](docs/docs/building-a-dbt-project/seeds.md).
+Optionally specify a custom schema for a [model](docs/docs/building-a-dbt-project/building-models.md) or [seed](docs/docs/building-a-dbt-project/seeds.md). (To specify a schema for a [snapshot](snapshots), use the [`target_schema` config](target_schema)).
 
 When dbt creates a relation (table/view) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
