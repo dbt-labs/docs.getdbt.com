@@ -16,3 +16,17 @@ Pre-hooks can also call macros that return SQL statements.
 
 ## Examples
 Pre-hooks work very similarly to post-hooks, check out the [post-hook](post-hook.md) docs for more examples.
+
+<!----
+### Alter a snowflake session using post-hooks
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  pre-hook: "alter session set week_of_year_policy=1, week_start=1;"
+```
+
+</File>
+
+--->

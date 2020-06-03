@@ -7,7 +7,7 @@ While configurations tell dbt _how_ to build something in your warehouse (for ex
 
 For example, you can use resource properties to:
 * Describe models, snapshots, seed files, and their columns
-* Assert "truths" about a model, in the form of [tests](testing), e.g. "this `id` column is unique"
+* Assert "truths" about a model, in the form of [tests](building-a-dbt-project/tests), e.g. "this `id` column is unique"
 * Apply tags to resources
 * Define existing tables contains raw data as [sources](using-sources)
 * Assert the expected "freshness" of this raw data
