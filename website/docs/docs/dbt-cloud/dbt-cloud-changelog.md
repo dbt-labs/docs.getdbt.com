@@ -5,6 +5,23 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.0 (June 2, 2020)
+
+This release adds some new admin backend functionality, as well as automatic seat usage reporting.
+
+### On-Premises Only
+
+#### Added
+
+- Added automatic reporting of seat usage.
+
+#### Changed
+
+- Admins can now edit remote URLs for repository in the admin backend.
+- Admins can now edit credentials in the admin backend.
+
+---
+
 ## dbt Cloud v1.0.12 (May 27, 2020)
 
 This release contains a few bugfixes for the IDE and email notifications, as well as the latest release candidate of 0.17.0.
