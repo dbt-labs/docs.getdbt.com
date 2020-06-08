@@ -48,6 +48,7 @@ module.exports = {
         label: "Jinja Function Reference",
         items: [
           "docs/writing-code-in-dbt/jinja-context/adapter",
+          "docs/writing-code-in-dbt/jinja-context/as_text",
           "docs/writing-code-in-dbt/jinja-context/builtins",
           "docs/writing-code-in-dbt/jinja-context/config",
           "docs/writing-code-in-dbt/jinja-context/dbt_version",
@@ -256,6 +257,7 @@ module.exports = {
       },
       "reference/model-configs",
       "reference/seed-configs",
+      "reference/source-configs",
       "reference/snapshot-configs",
       {
         type: "category",
@@ -264,6 +266,7 @@ module.exports = {
           "reference/resource-configs/alias",
           "reference/resource-configs/database",
           "reference/resource-configs/enabled",
+          "reference/resource-configs/persist_docs",
           "reference/resource-configs/post-hook",
           "reference/resource-configs/pre-hook",
           "reference/resource-configs/schema",
@@ -334,6 +337,7 @@ module.exports = {
           "reference/resource-properties/loader",
           "reference/resource-properties/quoting",
           "reference/resource-properties/schema",
+          "reference/resource-properties/overrides",
         ],
       },
     ],

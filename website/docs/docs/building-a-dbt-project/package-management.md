@@ -127,18 +127,24 @@ When you remove a package from your `packages.yml` file, it isn't automatically 
 You can configure the models and seeds in a package from the `dbt_project.yml` file, like so:
 ```
 # dbt_project.yml
+
+vars:
+  snowplow:
+    'snowplow:timezone': 'America/New_York'
+    'snowplow:page_ping_frequency': 10
+    'snowplow:events': "{{ ref('sp_base_events') }}"
+    'snowplow:context:web_page': "{{ ref('sp_base_web_page_context') }}"
+    'snowplow:context:performance_timing': false
+    'snowplow:context:useragent': false
+    'snowplow:pass_through_columns': []
+
 models:
   snowplow:
     schema: snowplow
-    materialized: table
-    vars:
-      'snowplow:timezone': 'America/New_York'
-      'snowplow:page_ping_frequency': 10
-      'snowplow:events': "{{ ref('sp_base_events') }}"
-      'snowplow:context:web_page': "{{ ref('sp_base_web_page_context') }}"
-      'snowplow:context:performance_timing': false
-      'snowplow:context:useragent': false
-      'snowplow:pass_through_columns': []
+
+seeds:
+  snowplow:
+    schema: snowplow_seeds
 ```
 For example, when using a dataset specific package, you may need to configure variables for the names of the tables that contain your raw data.
 

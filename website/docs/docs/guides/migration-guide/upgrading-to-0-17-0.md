@@ -119,6 +119,76 @@ This configuration will work in dbt v0.17.0 when `config-version: 2` is used, bu
 
 Support for version 1 will be removed in a future release of dbt.
 
+### NativeEnvironment rendering for yaml fields
+
+In dbt v0.17.0, dbt will use a jinja Native Environment to render values in
+schema.yml files. This Native Environment will coerce string values to their
+primitive Python types (booleans, integers, floats, and tuples). With this
+change, you can now provide boolean and integer values to configurations via
+stirng-oriented inputs, like environment variables or command line variables.
+
+This example specifies a port number as an integer from an environment variable.
+This was not possible in previous versions of dbt.
+
+```yml
+
+debug:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      user: "{{ env_var('DBT_USER') }}"
+      pass: "{{ env_var('DBT_PASS') }}"
+      host: "{{ env_var('DBT_HOST') }}"
+
+      # The port number will be coerced from a string to an integer
+      port: "{{ env_var('DBT_PORT') }}"
+
+      dbname: analytics
+      schema: analytics
+```
+
+If you want to bypass this type coercion, you can use the [as_text](as_text)
+jinja filter to force the value to be a string instead:
+
+```yml
+
+debug:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+
+      # The DBT_USER env var will be force-casted to a string
+      user: "{{ env_var('DBT_USER') | as_text }}"
+      pass: "{{ env_var('DBT_PASS') }}"
+      host: "{{ env_var('DBT_HOST') }}"
+      port: "{{ env_var('DBT_PORT') }}"
+      dbname: analytics
+      schema: analytics
+```
+
+Finally, you can now enable or disable models conditionally based on the
+environment that dbt is running in. In this example, models in the `admin`
+package will be disabled in dev. This was not possible in previous versions of
+dbt.
+
+```yml
+# dbt_project.yml
+
+name: my_project
+version: 1.0.0
+
+config-version: 2
+
+models:
+  my_project:
+    enabled: true
+
+  admin:
+    enabled: "{{ target.name == 'prod' }}"
+```
+
 ### Accessing sources in the `graph` object
 
 In previous versions of dbt, the `sources` in a dbt project could be accessed in the compilation context using the [graph.nodes](jinja-context/graph) context variable. In dbt v0.17.0, these sources have been moved out of the `graph.nodes` dictionary and into a new `graph.sources` dictionary. This change is also reflected in the `manifest.json` artifact produced by dbt. If you are accessing these sources programmatically, please update any references from `graph.nodes` to `graph.sources` instead.
@@ -129,11 +199,28 @@ As a workaround for permission issues encountered by many dbt users, the `locati
 
 ## Python requirements
 
-If you are installing dbt in a Python environment alongside other Python modules,
-please be mindful of the following changes to dbt's Python dependencies:
+If you are installing dbt in a Python environment alongside other Python
+modules, please be mindful of the following changes to dbt's Python
+dependencies:
 
-- To come
+Core:
+- Pinned `Jinja2` depdendency to `2.11.2`
+- Pinned `hologram` to `0.0.7`
+- Require Python >= `3.6.2`
+
+BigQuery:
+- Require `protobuf>=3.6.0,<3.12`
 
 ## New and changed documentation
 
-- To come
+**Core**
+- [`path:` selectors](model-selection-syntax#the-path-operator)
+- [`--fail-fast`](command-line-interface/run#failing-fast)
+- [as_text Jinja filter](jinja-context/as_text)
+- [accessing nodes in the `graph` object](jinja-context/graph)
+- [persist_docs](resource-configs/persist_docs)
+- [source properties](reference/source-properties)
+- [source overrides](resource-properties/overrides)
+
+**BigQuery**
+- [maximum_bytes_billed](profile-bigquery#maximum-bytes-billed)

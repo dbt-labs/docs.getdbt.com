@@ -27,9 +27,10 @@ The `--models` flag accepts one or more arguments. Each argument can be one of:
 
 1. a package name
 2. a model name
-3. a path hierarchy to a models directory
+3. a fully-qualified path to a directory of models
 4. a tag selector
 5. a source selector
+6. a path selector
 
 Examples:
 ```bash
@@ -38,6 +39,8 @@ dbt run --models my_dbt_model          # runs a specific model
 dbt run --models path.to.my.models     # runs all models in a specific directory
 dbt run --models my_package.some_model # run a specific model in a specific package
 dbt run --models tag:nightly           # run models with the "nightly" tag
+dbt run --models path/to/models        # run models contained in path/to/models
+dbt run --models path/to/my_model.sql  # run a specific model by its path
 
 # multiple arguments can be provided to --models
 dbt run --models my_first_model my_second_model
@@ -87,6 +90,22 @@ The `source:` prefix is used to select models that select from a specified [sour
 ```
 dbt run --models source:snowplow+    # run all models that select from Snowplow sources
 ```
+
+### The "path:" operator
+The `path:` prefix is used to select models located at or under a specific path.
+While the `path:` prefix is not explicitly required, it may be used to make
+selectors unambiguous.
+
+```
+# These two selectors are equivalent
+dbt run --models path:models/staging/github
+dbt run --models models/staging/github
+
+# These two selectors are equivalent
+dbt run --models path:models/staging/github/stg_issues.sql
+dbt run --models models/staging/github/stg_issues.sql
+```
+
 
 ### Putting it all together
 ```bash

@@ -3,40 +3,63 @@ title: "graph"
 id: "graph"
 ---
 
-The `graph` context variable contains information about the _nodes_ in your dbt project. Models, sources, tests, and snapshots are all examples of nodes in dbt projects.
+The `graph` context variable contains information about the _nodes_ in your dbt
+project. Models, sources, tests, and snapshots are all examples of nodes in dbt
+projects.
 
 <Callout type="danger" title="Heads up">
 
-dbt actively builds the `graph` variable during the [parsing phase](execute) of running dbt projects, so some properties of the `graph` context variable will be missing or incorrect during parsing. Please read the information below carefully to understand how to effectively use this variable.
+dbt actively builds the `graph` variable during the [parsing phase](execute) of
+running dbt projects, so some properties of the `graph` context variable will be
+missing or incorrect during parsing. Please read the information below carefully
+to understand how to effectively use this variable.
 
 </Callout>
 
 ### The graph context variable
 
-The `graph` context variable is a dictionary which maps node ids onto dictionary representations of those nodes. A simplified example might look like:
-```
+<Changelog>
+
+  - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
+
+</Changelog>
+
+The `graph` context variable is a dictionary which maps node ids onto dictionary
+representations of those nodes. A simplified example might look like:
+
+```json
 {
-  "model.project_name.model_name": {
-    "config": {"materialzed": "table", "sort": "id"},
-    "tags": ["abc", "123"],
-    "path": "models/path/to/model_name.sql",
-    ...
-  },
-  "source.project_name.source_name": {
-    "path": "models/path/to/schema.yml",
-    "columns": {
-      "id": { .... },
-      "first_name": { .... },
+  "nodes": {
+    "model.project_name.model_name": {
+      "config": {"materialized": "table", "sort": "id"},
+      "tags": ["abc", "123"],
+      "path": "models/path/to/model_name.sql",
+      ...
     },
-    ...
-  }
+  },
+  "sources": {
+    "source.project_name.snowplow.event": {
+      "database": "analytics",
+      "schema": "analytics",
+      "unique_id": "source.project_name.snowplow.event",
+      "tags": ["abc", "123"],
+      "path": "models/path/to/schema.yml",
+      ...
+    },
 }
 ```
 
-The exact contract for these model and source nodes is not currently documented, but that will change in the future.
+The exact contract for these model and source nodes is not currently documented,
+but that will change in the future.
 
 ### Accessing models
-The `model` entries in the `graph` dictionary will be incomplete or incorrect during parsing. If accessing the models in your project via the `graph` variable, be sure to use the [execute](execute) flag to ensure that this code only executes at run-time and not at parse-time. Do not use the `graph` variable to build you DAG, as the resulting dbt behavior will be undefined and likely incorrect. Example usage:
+
+The `model` entries in the `graph` dictionary will be incomplete or incorrect
+during parsing. If accessing the models in your project via the `graph`
+variable, be sure to use the [execute](execute) flag to ensure that this code
+only executes at run-time and not at parse-time. Do not use the `graph` variable
+to build you DAG, as the resulting dbt behavior will be undefined and likely
+incorrect. Example usage:
 
 <File name='graph-usage.sql'>
 
@@ -77,7 +100,8 @@ model.snowplow.snowplow_sessions, materialized: table
 
 ### Accessing sources
 
-To access the sources in your dbt project programatically, filter for nodes where the `resource_type == 'source'`.
+To access the sources in your dbt project programatically, use the `sources`
+attribute of the `graph` object.
 
 Example usage:
 
@@ -90,7 +114,7 @@ Example usage:
 */
 
 {% set sources = [] -%}
-{% for node in graph.nodes.values() | selectattr("resource_type", "equalto", "source") -%}
+{% for node in graph.sources.values() -%}
   {%- if node.name.startswith('event_') and node.source_name == 'snowplow' -%}
     {%- do sources.append(source(node.source_name, node.name)) -%}
   {%- endif -%}

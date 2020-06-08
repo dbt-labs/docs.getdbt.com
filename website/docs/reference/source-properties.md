@@ -26,6 +26,8 @@ sources:
     [meta](meta): {<dictionary>}
     [tags](resource-properties/tags): [<string>]
 
+    [overrides](resource-properties/overrides): <string>
+
     [freshness](resource-properties/freshness):
       warn_after:
         [count](resource-properties/freshness#count): <positive_integer>
