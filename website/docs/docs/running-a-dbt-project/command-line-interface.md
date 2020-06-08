@@ -28,3 +28,4 @@ For information about selecting models on the command line, consult the docs on 
 - [run-operation](run-operation): runs arbitrary maintenance SQL against the database
 - [rpc](rpc) (CLI only): runs an RPC server that clients can submit queries to
 - [list](list) (CLI only): lists resources defined in a dbt project
+- [target](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name/ "target") (CLI only): specify the target name to run
