@@ -11,7 +11,7 @@ test-paths: [directorypath]
 </File>
 
 ## Definition
-Optionally specify a custom list of directories where [data tests](testing#custom-data-tests) are located.
+Optionally specify a custom list of directories where [data tests](resource-properties/tests#custom-data-tests) are located.
 
 ## Default
 By default, dbt will search for data tests in the `tests` directory, i.e. `test-paths: ["tests"]`

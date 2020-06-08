@@ -1,9 +1,9 @@
 ---
-title: Can I put my seeds in a schema other than my target schema?
+title: Can I build my seeds in a schema other than my target schema?
 ---
 ## Or: Can I split my seeds across multiple schemas?
 
-Yes! The [schema](reference/configs/schema.md) configuration can be applied to seeds in your `dbt_project.yml` file.
+Yes! Use the [schema](reference/configs/schema.md) configuration in your `dbt_project.yml` file.
 
 <File name='dbt_project.yml'>
 

@@ -39,7 +39,7 @@ module.exports = {
           });
           return theme
       })(),
-      additionalLanguages: ['bash', 'shell'],
+      additionalLanguages: ['bash'],
     },
     navbar: {
       logo: {
@@ -51,26 +51,31 @@ module.exports = {
           to: '/docs/introduction',
           label: 'Docs',
           position: 'left',
+          activeBaseRegex: 'docs\/(?!(dbt-cloud))',
         },
         {
           to: '/reference/dbt_project.yml',
           label: 'Reference',
           position: 'left',
+          activeBasePath: 'reference'
         },
         {
           to: '/docs/dbt-cloud/cloud-overview',
           label: 'dbt Cloud',
           position: 'left',
+          activeBasePath: 'docs/dbt-cloud'
         },
         {
           to: '/tutorial/setting-up',
           label: 'Tutorial',
           position: 'left',
+          activeBasePath: 'tutorial'
         },
         {
           to: '/faqs/all',
           label: 'FAQs',
           position: 'left',
+          activeBasePath: 'faqs'
         },
         {
           href: 'https://blog.getdbt.com',

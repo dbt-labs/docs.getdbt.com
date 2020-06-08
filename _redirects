@@ -5,7 +5,7 @@
 /docs/archival	/docs/building-a-dbt-project/archival	302
 /docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts	302
 /docs/best-practices	/docs/guides/best-practices	302
-/docs/bigquery-configs	/docs/building-a-dbt-project/building-models/bigquery-configs	302
+/docs/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-new-adapter	/docs/contributing/building-a-new-adapter	302
 /docs/building-models	/docs/building-a-dbt-project/building-models	302
 /docs/building-packages	/docs/guides/building-packages	302
@@ -31,7 +31,7 @@
 /docs/config	/docs/writing-code-in-dbt/jinja-context/config	302
 /docs/configure-your-profile	/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile	302
 /docs/configuring-incremental-models	/docs/building-a-dbt-project/building-models/configuring-incremental-models	302
-/docs/configuring-models	/docs/building-a-dbt-project/building-models/configuring-models	302
+/docs/configuring-models	/reference/model-configs	302
 /docs/configuring-query-comments	/docs/building-a-dbt-project/dbt-projects/configuring-query-comments	302
 /docs/configuring-quoting	/docs/building-a-dbt-project/dbt-projects/configuring-quoting	302
 /docs/configuring-resources-from-the-project-file	/docs/building-a-dbt-project/dbt-projects/configuring-resources-from-the-project-file	302
@@ -48,10 +48,10 @@
 /docs/debug-method	/docs/writing-code-in-dbt/jinja-context/debug-method	302
 /docs/deps	/docs/running-a-dbt-project/command-line-interface/deps	302
 /docs/doc	/docs/writing-code-in-dbt/jinja-context/doc	302
-/docs/documentation	/docs/building-a-dbt-project/testing-and-documentation/documentation	302
-/docs/documentation-website	/docs/building-a-dbt-project/testing-and-documentation/documentation-website	302
+/docs/documentation	/docs/building-a-dbt-project/documentation	302
+/docs/documentation-website	/docs/building-a-dbt-project/documentation	302
 /docs/dont-nest-your-curlies	/docs/building-a-dbt-project/dont-nest-your-curlies	302
-/docs/enable-and-disable-models	/docs/building-a-dbt-project/building-models/enable-and-disable-models	302
+/docs/enable-and-disable-models	/reference/resource-configs/enabled	302
 /docs/enterprise-permissions	/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions	302
 /docs/env_var	/docs/writing-code-in-dbt/jinja-context/env_var	302
 /docs/exceptions	/docs/writing-code-in-dbt/jinja-context/exceptions	302
@@ -79,6 +79,7 @@
 /docs/modules	/docs/writing-code-in-dbt/jinja-context/modules	302
 /docs/on-run-end-context	/docs/writing-code-in-dbt/jinja-context/on-run-end-context	302
 /docs/package-management	/docs/building-a-dbt-project/package-management	302
+/docs/profile	/docs/supported-databases	302
 /docs/profile-bigquery	/docs/supported-databases/profile-bigquery	302
 /docs/profile-mssql	/docs/supported-databases/profile-mssql	302
 /docs/profile-postgres	/docs/supported-databases/profile-postgres	302
@@ -109,14 +110,14 @@
 /docs/slack-rules-of-the-road	/docs/contributing/slack-rules-of-the-road	302
 /docs/snapshot	/docs/running-a-dbt-project/command-line-interface/snapshot	302
 /docs/snapshots	/docs/building-a-dbt-project/snapshots	302
-/docs/snowflake-configs	/docs/building-a-dbt-project/building-models/snowflake-configs	302
+/docs/snowflake-configs	/reference/resource-configs/snowflake-configs	302
 /docs/source	/docs/running-a-dbt-project/command-line-interface/source	302
 /docs/statement-blocks	/docs/writing-code-in-dbt/jinja-context/statement-blocks	302
-/docs/tags	/docs/building-a-dbt-project/building-models/tags	302
+/docs/tags	/reference/resource-configs/tags	302
 /docs/target	/docs/writing-code-in-dbt/jinja-context/target	302
 /docs/test	/docs/running-a-dbt-project/command-line-interface/test	302
-/docs/testing	/docs/building-a-dbt-project/testing-and-documentation/testing	302
-/docs/testing-and-documentation	/docs/building-a-dbt-project/testing-and-documentation	302
+/docs/testing	/docs/building-a-dbt-project/tests	302
+/docs/testing-and-documentation	/docs/building-a-dbt-project/tests	302
 /docs/the-dbt-ide	/docs/dbt-cloud/the-dbt-ide	302
 /docs/this	/docs/writing-code-in-dbt/jinja-context/this	302
 /docs/tojson	/docs/writing-code-in-dbt/jinja-context/tojson	302
@@ -132,7 +133,7 @@
 /docs/using-jinja	/docs/writing-code-in-dbt/using-jinja	302
 /docs/using-operations	/docs/building-a-dbt-project/using-operations	302
 /docs/using-sources	/docs/building-a-dbt-project/using-sources	302
-/docs/using-sql-headers	/docs/building-a-dbt-project/building-models/using-sql-headers	302
+/docs/using-sql-headers	/reference/resource-configs/sql_header	302
 /docs/using-the-command-line-interface	/docs/running-a-dbt-project/using-the-command-line-interface	302
 /docs/using-the-dbt-ide	/docs/running-a-dbt-project/using-the-dbt-ide	302
 /docs/using-variables	/docs/building-a-dbt-project/building-models/using-variables	302
@@ -158,3 +159,15 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions	/reference/project-configs/require-dbt-version	302
 /docs/building-a-dbt-project/dbt-projects/configuring-query-comments	/reference/project-configs/query-comment	302
 /docs/building-a-dbt-project/testing-and-documentation/schemayml-files	/reference/declaring-properties	302
+/docs/building-a-dbt-project/building-models/enable-and-disable-models	/reference/resource-configs/enabled	302
+/docs/building-a-dbt-project/building-models/configuring-models	/reference/model-configs
+/docs/building-a-dbt-project/building-models/tags	/reference/resource-configs/tags  302
+/docs/building-a-dbt-project/building-models/using-sql-headers  /reference/resource-configs/sql_header 302
+/docs/building-a-dbt-project/building-models/snowflake-configs  /reference/resource-configs/snowflake-configs 302
+/docs/building-a-dbt-project/building-models/redshift-configs /reference/resource-configs/redshift-configs  302
+/docs/building-a-dbt-project/building-models/bigquery-configs /reference/resource-configs/bigquery-configs  302
+/docs/building-a-dbt-project/building-models/spark-configs  /reference/resource-configs/spark-configs 302
+/docs/building-a-dbt-project/testing-and-documentation  /docs/building-a-dbt-project/tests  302
+/docs/building-a-dbt-project/testing-and-documentation/testing  /docs/building-a-dbt-project/tests  302
+/docs/building-a-dbt-project/testing-and-documentation/documentation  /docs/building-a-dbt-project/testing-and-documentation/documentation  302
+/docs/building-a-dbt-project/testing-and-documentation/documentation-website  /docs/building-a-dbt-project/testing-and-documentation/documentation  302

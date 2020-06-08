@@ -5,6 +5,110 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.0 (June 2, 2020)
+
+This release adds some new admin backend functionality, as well as automatic seat usage reporting.
+
+### On-Premises Only
+
+#### Added
+
+- Added automatic reporting of seat usage.
+
+#### Changed
+
+- Admins can now edit remote URLs for repository in the admin backend.
+- Admins can now edit credentials in the admin backend.
+
+---
+
+## dbt Cloud v1.0.12 (May 27, 2020)
+
+This release contains a few bugfixes for the IDE and email notifications, as well as the latest release candidate of 0.17.0.
+
+### All versions
+
+#### Added
+
+- Use the correct starter project tag, based on dbt version, when initializing a new project in the IDE
+- Added branch filtering to IDE git checkout UI.
+- Added dbt 0.17.0-rc3.
+
+#### Fixed
+
+- Fixed source freshness report for dbt version v0.17.0
+- Fixed issue with checking-out git branches
+- Fixed issue of logs being omitted on long running queries in the IDE
+- Fixed slack notifications failing to send if email notifications fail
+
+### On-Premises Only
+
+#### Added
+
+- Added an Admin page for deleting credentials.
+
+---
+
+## dbt Cloud v1.0.11 (May 19, 2020)
+
+This version adds some new permission sets, and a new release candidate of dbt.
+
+### All versions
+
+#### Added
+
+- Added permission sets for Job Viewer, Job Admin and Analyst.
+- Added dbt 0.17.0-rc1
+
+---
+
+## dbt Cloud v1.0.10 (May 11, 2020)
+
+### All versions
+
+#### Added
+
+- Added dbt 0.17.0-b1.
+- PR Url is now self serve configurable.
+- Added more granular permissions around creating and deleting permissions. (Account Admin can create new projects by default while both Account Admin and Project Admin can delete the projects they have permissions for by default)
+- Added an error message to display to users that do not have permissions set up for any projects on an account.
+
+#### Fixed
+
+- Removed .sql from csv download filename
+- Fixed breaking JobDefinition API with new param custom_branch_only
+- Fixed IDE query table column heading casing
+
+---
+
+## dbt Cloud v1.0.9 (May 5, 2020)
+
+This release includes bugfixes around how permissions are applied to runs and run steps, fixes a bug where the scheduler would hang up, and improves performance of the IDE.
+
+### All versions
+
+#### Fixed
+
+- Fixed permission checks around Runs and Run Steps, this should only affect Enterprise accounts with per-project permissions.
+- Fixed receiving arbitrary remote_url when creating a git url repository.
+- Fixed issue when handling non-resource specific errors from RPC server in IDE.
+- Fixed a bug where the scheduler would stop if the database went away.
+- Fixed IDE query results table not supporting horizontal scrolling.
+
+#### Changed
+
+- Improve IDE query results performance.
+- Allow configuration on jobs to only run builds when environment target branch is env's custom branch.
+- Allow configuration of GitHub installation IDs in the admin backend.
+
+### On-Premises Only
+
+#### Fixed
+
+- Fixed logic error for installations with user/password auth enabled in an on-premises context
+
+---
+
 ## dbt Cloud v1.0.8 (April 28, 2020)
 
 This release adds a new version of dbt (0.16.1), fixes a number of IDE bugs, and fixes some dbt Cloud on-premises bugs.

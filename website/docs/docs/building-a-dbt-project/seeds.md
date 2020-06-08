@@ -4,6 +4,7 @@ id: "seeds"
 ---
 ## Related reference docs
 * [Seed configurations](reference/seed-configs.md)
+* [Seed properties](reference/seed-properties.md)
 * The `dbt seed` [command](docs/running-a-dbt-project/command-line-interface/seed.md)
 
 ## Getting started
@@ -71,6 +72,8 @@ select * from {{ ref('country_codes') }}
 Seeds are configured in your `dbt_project.yml`, check out the [seed configurations](reference/seed-configs.md) docs for a full list of available configurations.
 
 
+## Documenting and testing seeds
+You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
 
 ## FAQs
 <FAQ src="load-raw-data-with-seed" />

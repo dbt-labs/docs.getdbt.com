@@ -1,7 +1,20 @@
 ---
-title: "Spark specific configurations"
+title: "Spark configurations"
 id: "spark-configs"
 ---
+
+<Alert type='warning'>
+
+<h4>Heads up!</h4>
+These docs are a work in progress.
+
+</Alert>
+
+<!----
+To-do:
+- use the reference doc structure for this article/split into separate articles
+--->
+
 
 ## Configuring Spark tables
 

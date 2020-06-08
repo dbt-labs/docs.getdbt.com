@@ -10,7 +10,7 @@ Now that we've successfully run our sample query in Snowflake, and chosen the wa
 <Callout type="info">
 
 These are the instructions for developing a project in dbt Cloud. If you're
-using the dbt CLI, follow the instructions [here](/tutorial/create-a-project-dbt-cli).
+using the dbt CLI, follow the instructions [here](/learn/create-a-project-dbt-cli).
 
 </Callout>
 

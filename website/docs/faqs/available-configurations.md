@@ -8,4 +8,4 @@ You can also configure:
 * Snippets of SQL to run at the start or end of a model, known as [hooks](https://docs.getdbt.com/docs/hooks)
 * Warehouse-specific configurations for performance (e.g. `sort` and `dist` keys on Redshift, `partitions` on BigQuery)
 
-Check out the docs on [models](https://docs.getdbt.com/docs/building-models) to learn more.
+Check out the docs on [model configurations](model-configs) to learn more.

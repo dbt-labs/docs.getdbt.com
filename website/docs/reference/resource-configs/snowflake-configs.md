@@ -1,7 +1,19 @@
 ---
-title: "Snowflake specific configurations"
+title: "Snowflake configurations"
 id: "snowflake-configs"
 ---
+
+<Alert type='warning'>
+
+<h4>Heads up!</h4>
+These docs are a work in progress.
+
+</Alert>
+
+<!----
+To-do:
+- use the reference doc structure for this article / split into separate articles
+--->
 
 ## Transient tables
 
@@ -9,7 +21,7 @@ Snowflake supports the creation of [transient tables](https://docs.snowflake.net
 
 ### Configuring transient tables in dbt_project.yml
 
-A whole folder (or package) can be configured to be transient (or not) by adding a line to the `dbt_project.yml` file. This config works just like all of the [model configs](configuring-models) defined in `dbt_project.yml`.
+A whole folder (or package) can be configured to be transient (or not) by adding a line to the `dbt_project.yml` file. This config works just like all of the [model configs](model-configs) defined in `dbt_project.yml`.
 
 <File name='dbt_project.yml'>
 
@@ -44,7 +56,7 @@ select * from ...
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
 
-Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`. 
+Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`.
 
 ## Configuring table clustering
 
@@ -98,11 +110,11 @@ create or replace table my_database.my_schema.my_table as (
     from {{ source('snowplow', 'event') }}
     group by 1
   )
-  
+
   -- this order by is added by dbt in order to create the
   -- table in an already-clustered manner.
   order by session_start
-  
+
 );
 
  alter table my_database.my_schema.my_table cluster by (session_start);
@@ -141,7 +153,7 @@ models:
   my_project:
     clickstream:
       snowflake_warehouse: "EXTRA_LARGE"
-      
+
 snapshots:
   snowflake_warehouse: "EXTRA_LARGE"
 ```

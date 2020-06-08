@@ -145,6 +145,14 @@ Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
 
 9. Select from the `snapshot` in downstream models using the `ref` function.
 
+<File name='models/changed_orders.sql'>
+
+```sql
+select * from {{ ref('orders_snapshot') }}
+```
+
+</File>
+
 10. Schedule the `snapshot` command to run regularly — snapshots are only useful if you run them frequently.
 
 
@@ -272,6 +280,17 @@ If you apply business logic in a snapshot query, and this logic changes in the f
 Basically – keep your query as simple as possible! Some reasonable exceptions to these recommendations include:
 * Selecting specific columns if the table is wide.
 * Doing light transformation to get data into a reasonable shape, for example, unpacking a JSON blob to flatten your source data into columns.
+
+## Snapshot meta-fields
+
+Snapshot tables will be created as a clone of your source dataset, plus some additional meta-fields.
+
+| Field          | Meaning | Usage |
+| -------------- | ------- | ----- |
+| dbt_valid_from | The timestamp when this snapshot row was first inserted | This column can be used to order the different "versions" of a record. |
+| dbt_valid_to   | The timestamp when this row row became invalidated. | The most recent snapshot record will have `dbt_valid_to` set to `null`. |
+| dbt_scd_id     | A unique key generated for each snapshotted record. | This is used internally by dbt |
+| dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
 
 
 
