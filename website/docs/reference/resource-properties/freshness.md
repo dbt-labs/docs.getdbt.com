@@ -8,23 +8,25 @@ sources:
   - name: <source_name>
     freshness:
       warn_after:
-        count: <positive_integer>
-        period: minute | hour | day
+        [count](#count): <positive_integer>
+        [period](#period): minute | hour | day
       error_after:
-        count: <positive_integer>
-        period: minute | hour | day
-    loaded_at_field: <column_name_or_expression>
+        [count](#count): <positive_integer>
+        [period](#period): minute | hour | day
+      [filter](#filter): <boolean_sql_expression>
+    [loaded_at_field](#loaded_at_field): <column_name_or_expression>
 
     tables:
       - name: <table_name>
         freshness:
           warn_after:
-            count: <positive_integer>
-            period: minute | hour | day
+            [count](#count): <positive_integer>
+            [period](#period): minute | hour | day
           error_after:
-            count: <positive_integer>
-            period: minute | hour | day
-        loaded_at_field: <column_name_or_expression>
+            [count](#count): <positive_integer>
+            [period](#period): minute | hour | day
+          [filter](#filter): <boolean_sql_expression>
+        [loaded_at_field](#loaded_at_field): <column_name_or_expression>
         ...
 ```
 
@@ -76,11 +78,9 @@ Add a where clause to the query run by `dbt source snapshot-freshness` in order 
 
 This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table.
 
-This is particular useful if:
-- You are using BigQuery and your source tables are [partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
+This is particularly useful if:
+- You are using BigQuery and your source tables are [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
 - You are using Snowflake or Spark with large tables, and this results in a performance benefit
-
-Use the SQL of your warehouse to construct a filter (see below example).
 
 <Changelog>
 
