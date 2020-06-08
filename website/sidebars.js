@@ -172,6 +172,7 @@ module.exports = {
     About: ["docs/about/license", "docs/about/viewpoint"],
   },
   "dbt Cloud": [
+    "docs/dbt-cloud/cool-new-page",
     "docs/dbt-cloud/cloud-overview",
     "docs/dbt-cloud/cloud-quickstart",
     "docs/dbt-cloud/the-dbt-ide",
