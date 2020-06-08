@@ -199,11 +199,28 @@ As a workaround for permission issues encountered by many dbt users, the `locati
 
 ## Python requirements
 
-If you are installing dbt in a Python environment alongside other Python modules,
-please be mindful of the following changes to dbt's Python dependencies:
+If you are installing dbt in a Python environment alongside other Python
+modules, please be mindful of the following changes to dbt's Python
+dependencies:
 
-- To come
+Core:
+- Pinned `Jinja2` depdendency to `2.11.2`
+- Pinned `hologram` to `0.0.7`
+- Require Python >= `3.6.2`
+
+BigQuery:
+- Require `protobuf>=3.6.0,<3.12`
 
 ## New and changed documentation
 
-- To come
+**Core**
+- [`path:` selectors](model-selection-syntax#the-path-operator)
+- [`--fail-fast`](command-line-interface/run#failing-fast)
+- [as_text Jinja filter](jinja-context/as_text)
+- [accessing nodes in the `graph` object](jinja-context/graph)
+- [persist_docs](resource-configs/persist_docs)
+- [source properties](reference/source-properties)
+- [source overrides](resource-properties/overrides)
+
+**BigQuery**
+- [maximum_bytes_billed](profile-bigquery#maximum-bytes-billed)
