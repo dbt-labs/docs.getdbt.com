@@ -53,6 +53,12 @@ If using a date field, you may have to cast it to a timestamp:
 loaded_at_field: "completed_date::timestamp"
 ```
 
+If using a non-UTC timestamp, cast it to UTC first:
+
+```yml
+loaded_at_field: "convert_timezone('UTC', 'Australia/Sydney', created_at_local)"
+```
+
 ## count
 (Required)
 
