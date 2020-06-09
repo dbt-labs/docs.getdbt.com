@@ -127,8 +127,7 @@ Returns a list of [Columns](class-reference#column) in a table.
 ## create_schema
 __Args__:
 
- * `database`: The name of the database to create the schema in
- * `schema`: The name of the schema to create
+ * `relation`: A relation object with the database and schema to create. Any identifier on the relation will be ignored.
 
 Creates a schema (or equivalent) in the target database. If the target schema already exists, then this method is a no-op.
 
@@ -138,7 +137,7 @@ Creates a schema (or equivalent) in the target database. If the target schema al
 
 ```sql
 
-{% do adapter.create_schema(target.database, "my_schema") %}
+{% do adapter.create_schema(api.Relation.create(database=target.database, schema="my_schema"))) %}
 ```
 
 </File>
@@ -146,8 +145,7 @@ Creates a schema (or equivalent) in the target database. If the target schema al
 ## drop_schema
 __Args__:
 
- * `database`: The name of the database to drop the schema in
- * `schema`: The name of the schema to drop
+ * `relation`: A relation object with the database and schema to drop. Any identifier on the relation will be ignored.
 
 Drops a schema (or equivalent) in the target database. If the target schema does not exist, then this method is a no-op. The specific implementation is adapter-dependent, but adapters should implement a cascading drop, such that objects in the schema are also dropped. **Note**: this adapter method is destructive, so please use it with care!
 
@@ -157,7 +155,7 @@ Drops a schema (or equivalent) in the target database. If the target schema does
 
 ```sql
 
-{% do adapter.drop_schema(target.database, "my_schema") %}
+{% do adapter.drop_schema(api.Relation.create(database=target.database, schema="my_schema"))) %}
 ```
 
 </File>
