@@ -179,3 +179,5 @@ As of 0.17.0, if the package version you want is only specified as `major`.`mino
    - git: https://github.com/fishtown-analytics/dbt-codegen.git
      version: "{{ 1.0 | as_text }}"
 ```
+
+</File>
