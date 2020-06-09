@@ -89,7 +89,7 @@ models:
 
 <File name='dbt_project.yml'>
 
-Note that when using `config-version: 2` you will need to use the `+persist_docs`
+Note that when using `config-version: 2` you will need to identify the `persist_docs` key as a config using the `+` config syntax:
 
 ```yml
 models:
