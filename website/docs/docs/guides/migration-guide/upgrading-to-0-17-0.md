@@ -125,7 +125,7 @@ In dbt v0.17.0, dbt will use a jinja Native Environment to render values in
 schema.yml files. This Native Environment will coerce string values to their
 primitive Python types (booleans, integers, floats, and tuples). With this
 change, you can now provide boolean and integer values to configurations via
-stirng-oriented inputs, like environment variables or command line variables.
+string-oriented inputs, like environment variables or command line variables.
 
 This example specifies a port number as an integer from an environment variable.
 This was not possible in previous versions of dbt.
