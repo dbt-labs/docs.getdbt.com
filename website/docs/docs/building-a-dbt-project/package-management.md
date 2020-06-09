@@ -173,8 +173,7 @@ packages:
 As of 0.17.0, if the package version you want is only specified as `major`.`minor`, as opposed to `major.minor.patch`, you may get an error that `1.0 is not of type 'string'`. In that case you will have to tell dbt that your version number is a string.
 
 <File name='packages.yml'>
- 
- 
+
 ```yaml
 packages:
  - git: https://github.com/fishtown-analytics/dbt-codegen.git
