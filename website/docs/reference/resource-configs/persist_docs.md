@@ -87,6 +87,19 @@ models:
 
 </File>
 
+<File name='dbt_project.yml'>
+
+Note that when using `config-version: 2` you will need to use the `+persist_docs`
+
+```yml
+models:
+  +persist_docs:
+    relation: true
+    columns: true
+```
+
+</File>
+
 Run dbt and observe that the created relation and columns are annotated with
 your descriptions:
 
