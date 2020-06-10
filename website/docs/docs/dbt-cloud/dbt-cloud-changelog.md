@@ -5,6 +5,26 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.1 (June 9, 2020)
+
+#### Enhancements
+
+- Added dbt 0.17.0
+- Added the ability to create a new folder in the IDE
+- Added gitignore status to file system and display dbt artifacts, including directories dbt_modules, logs and target
+- (Cloud only) Added rollbar and update some various error handling clean up
+- (On-premises only) Admin site: allow Repository's Pull Request Template field to be blank
+- (On-premises only) Added AWS KMS support
+
+#### Fixed
+
+- Expires old pending password reset codes when a new password reset is requested
+
+#### Internal
+
+- Clean up git service GitBranch code
+- Upgrade node dependencies to support ECMAScript 2020 features
+
 ## dbt Cloud v1.1.0 (June 2, 2020)
 
 This release adds some new admin backend functionality, as well as automatic seat usage reporting.
