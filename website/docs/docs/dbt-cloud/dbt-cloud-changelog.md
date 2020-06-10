@@ -7,6 +7,8 @@ description: "Changelog for the dbt Cloud application"
 
 ## dbt Cloud v1.1.1 (June 9, 2020)
 
+This release includes dbt 0.17.0 and a number of IDE quality of life improvements.
+
 #### Enhancements
 
 - Added dbt 0.17.0
