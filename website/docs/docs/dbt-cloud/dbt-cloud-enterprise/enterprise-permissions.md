@@ -3,6 +3,13 @@ title: "Enterprise Permissions"
 id: "enterprise-permissions"
 ---
 
+<Callout type="info" title="Enterprise Feature">
+
+This guide describes a feature of the dbt Cloud Enterprise plan. 
+If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+
+</Callout>
+
 The following permission sets are available for assignment for dbt Cloud Enterprise.
 Please contact your Account Manager to implement the permissions defined here.
 See [Seats and Users](cloud-seats-and-users) for more information on user licenses.
