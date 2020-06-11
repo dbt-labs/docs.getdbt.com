@@ -190,7 +190,7 @@ as (
 
 ### Clustering Clause
 
-BigQuery tables can be [clustered](https://cloud.google.com/bigquery/docs/clustered-tables) to colocate related data. At present, BigQuery is only able to cluster partitioned tables, so be sure to use the `cluster_by` config in conjunction with the `partition_by` config.
+BigQuery tables can be [clustered](https://cloud.google.com/bigquery/docs/clustered-tables) to colocate related data.
 
 Clustering on a single column:
 
@@ -200,7 +200,6 @@ Clustering on a single column:
 {{
   config(
     materialized = "table",
-    partition_by = "date(created_at)",
     cluster_by = "order_id",
   )
 }}
@@ -218,7 +217,6 @@ Clustering on a multiple columns:
 {{
   config(
     materialized = "table",
-    partition_by = "date(created_at)",
     cluster_by = ["customer_id", "order_id"],
   )
 }}
