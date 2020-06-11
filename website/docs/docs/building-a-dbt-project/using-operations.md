@@ -74,7 +74,7 @@ Create a macro in your project. This macro should call a [statement](statement-b
 Run the macro from the command line, providing arguments as a YAML string.
 
 ```shell
-$ dbt run-operation say_hi --args '{name: world}'
+$ dbt run-operation say_hi --args "{name: world}"
 ```
 
 ### Exit codes
