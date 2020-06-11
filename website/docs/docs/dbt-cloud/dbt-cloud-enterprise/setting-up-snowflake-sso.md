@@ -49,7 +49,7 @@ Additional configuration options may be specified for the security integration a
 
 ### Configure a Connection in dbt Cloud
 
-The dbt Cloud Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
+The Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
 
 ```
 select SYSTEM$SHOW_OAUTH_CLIENT_SECRETS('DBT_CLOUD_<PROJECT_NAME>');
