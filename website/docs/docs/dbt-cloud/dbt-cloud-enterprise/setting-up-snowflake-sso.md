@@ -49,7 +49,7 @@ Additional configuration options may be specified for the security integration a
 
 ### Configure a Connection in dbt Cloud
 
-When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
+The dbt Cloud Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
 
 ```
 select SYSTEM$SHOW_OAUTH_CLIENT_SECRETS('DBT_CLOUD_<PROJECT_NAME>');
@@ -67,3 +67,12 @@ Enter the Client ID and Client Secret into dbt Cloud to complete the creation of
 ### Authorize Developer Credentials
 
 Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to dbt Cloud to complete the setup process. At this point, users should now be able to use the dbt IDE with their development credentials.
+
+### SSO OAuth Flow Diagram
+
+![image](https://user-images.githubusercontent.com/46451573/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png)
+
+Once a user has authorized dbt Cloud with Snowflake via their identity provider, Snowflake will return a Refresh Token to the dbt Cloud application. dbt Cloud is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the dbt Cloud IDE on behalf of users.
+
+**NOTE**: The lifetime of the refresh token is dictated by the OAUTH_REFRESH_TOKEN_VALIDITY parameter supplied in the “create security integration” statement. When a user’s refresh token expires, the user will need to re-authorize with Snowflake to continue development in dbt Cloud.
+
