@@ -227,9 +227,9 @@ This is a breaking change in dbt-spark v0.17.0. See [installation instructions](
 
 </Callout>
 
-In Spark, `schema` and `database` are used interchangeably. dbt understands
+Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
 `database` to exist at a higher level than `schema`. As such, you should _never_
-use or set `database` as a node config or in the target profile.
+use or set `database` as a node config or in the target profile when running dbt-spark.
 
 If you want to control the schema/database in which dbt will materialize models,
 use the `schema` config and `generate_schema_name` macro _only_.
