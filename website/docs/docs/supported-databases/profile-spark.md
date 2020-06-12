@@ -70,8 +70,14 @@ pip install dbt-spark
 ### Usage with EMR
 To connect to Spark running on an Amazon EMR cluster, you will need to run `sudo /usr/lib/spark/sbin/start-thriftserver.sh` on the master node of the cluster to start the Thrift server (see [the docs](https://aws.amazon.com/premiumsupport/knowledge-center/jdbc-connection-emr/) for more information). You will also need to connect to port 10001, which will connect to the Spark backend Thrift server; port 10000 will instead connect to a Hive backend, which will not work correctly with dbt.
 
-### Unsupported Functionality
+### Supported Functionality
 
-Not all core dbt functionality is supported. The following features of dbt are not yet implemented for the Spark plugin:
+Most dbt Core functionality is supported, but some features are only available
+on Delta Lake (Databricks).
 
-1. [Snapshots](snapshots) 
+Delta-only features:
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](https://docs.getdbt.com/reference/resource-configs/spark-configs/#the-merge-strategy))
+2. [Snapshots](snapshots) 
+
+Some dbt features, available on the core adapters, are not yet supported on Spark:
+1. [Persisting](persist_docs) column-level descriptions as database comments

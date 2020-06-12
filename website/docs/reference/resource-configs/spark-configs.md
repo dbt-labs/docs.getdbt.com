@@ -218,3 +218,18 @@ information on configuring docs persistence, see [the docs](resource-configs/per
 When the `persist_docs` option is configured appropriately, you'll be able to
 see model descriptions in the `Comment` field of `describe [table] extended`
 or `show table extended in [database] like '*'`.
+
+## Always `schema`, never `database`
+
+<Callout type="info" title="New in dbt-spark v0.17.0">
+
+This is a breaking change in dbt-spark v0.17.0. See [installation instructions](profile-spark#installation-and-distribution)
+
+</Callout>
+
+Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
+`database` to exist at a higher level than `schema`. As such, you should _never_
+use or set `database` as a node config or in the target profile when running dbt-spark.
+
+If you want to control the schema/database in which dbt will materialize models,
+use the `schema` config and `generate_schema_name` macro _only_.
