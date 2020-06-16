@@ -4,12 +4,12 @@ id: "sso-overview"
 
 ---
 
-<Callout type="info" title="Enterprise Feature">
+:::info Enterprise Feature
 
 This guide describes a feature of the dbt Cloud Enterprise plan. 
 If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
-</Callout>
+:::
 
 This overview explains how users are provisioned in dbt Cloud via Single Sign-On (SSO). 
 dbt Cloud supports JIT (Just-in-Time) provisioning and IdP-initiated login. You can learn more about our supported options [here](/docs/dbt-cloud/dbt-cloud-enterprise).

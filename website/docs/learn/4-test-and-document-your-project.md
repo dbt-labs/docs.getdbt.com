@@ -63,9 +63,9 @@ models:
     <Lightbox src="/img/successful-tests-dbt-cli.png" title="Passing tests when using the dbt CLI" />
 </CloudCore>
 
-<Callout type="info">
+:::info 
 When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test. Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
-</Callout>
+:::
 
 ### FAQs
 <FAQ src="available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
@@ -134,9 +134,9 @@ models:
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
 
 
-<Callout type="success">
+:::tip 
 Great work ⭐️! You've just built your first dbt project that's tested and documented!
-</Callout>
+:::
 
 
 ### FAQs
@@ -170,12 +170,12 @@ Click the `commit` button, with a message like "Add customers model"
 2. Commit your changes: `git commit -m "Add customers models"`
 3. Push your changes to your repository: `git push`
 
-<Callout type="warning">
+:::caution 
 We just pushed straight to master 😬! We <strong>always</strong> use a git flow when working on dbt projects, and recommend you do too!
-</Callout>
+:::
 
 ## Next steps
 
-<Callout type="success">
+:::tip 
 Congratulations 🎉! You've just deployed your first dbt project! <strong>Please reply to the email you received with your credentials with a link to your GitHub repository.</strong>
-</Callout>
+:::

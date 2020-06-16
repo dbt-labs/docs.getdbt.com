@@ -25,7 +25,7 @@ In dbt, these properties are declared in `.yml` files, in the same directory as 
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
 
-<Alert type='info'>
+:::info
 
 #### schema.yml files
 
@@ -33,7 +33,7 @@ Previous versions of the docs referred to these as `schema.yml` files — we've 
 
 (Of course, you're still free to name your files `schema.yml`)
 
-</Alert>
+:::
 
 ## Example
 Here's an example that defines both `sources` and `models` for a project:

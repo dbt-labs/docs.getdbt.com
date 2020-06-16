@@ -28,9 +28,9 @@ First off, we need to commit the changes we made to our project so that our repo
 ## Connect dbt Cloud to your repository
 Connecting dbt Cloud to your repository will allow you to have the latest code whenever your dbt project runs.
 
-<Callout type="info">
+:::info 
 This step only applies to folks who use the dbt CLI to develop their project. <strong>If you developed your project in dbt Cloud, you can skip this step!</strong>
-</Callout>
+:::
 
 <LoomVideo id="48abd56ec909405cbc76f4946e930a43" />
 
@@ -74,9 +74,9 @@ Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
 
 ## Next steps
 
-<Callout type="success">
+:::tip 
 Congratulations 🎉! You've just deployed your first dbt project!
-</Callout>
+:::
 
 Here's a few suggestions to keep learning:
 

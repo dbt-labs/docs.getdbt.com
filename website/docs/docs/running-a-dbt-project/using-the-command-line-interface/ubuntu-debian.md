@@ -7,11 +7,11 @@ id: "ubuntu-debian"
 
 First, make sure you have git, postgres, python-dev and pip installed:
 
-<Callout type="warning" title="Python Requirements">
+:::caution Python Requirements
 
 The dbt CLI is compatible with Python versions 3.6 and higher. As of v0.15.0, dbt is no longer compatible with Python2.
 
-</Callout>
+:::
 
 ```bash
 sudo apt-get install git libpq-dev python-dev python3-pip

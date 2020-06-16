@@ -17,14 +17,14 @@ In this guide, we'll create credentials for one user, and for our production dep
 
 # Step 1: Create and configure database users
 
-<Callout type="info" title="">
+:::info 
 
 You can skip this section if you already have a set of user credentials that can:
 * `select` from raw data
 * `create` schemas (or the ability to `create` within an existing schema)
 * read system views to generate documentation (i.e. views in `information_schema` and `pg_catalog`)
 
-</Callout>
+:::
 
 1. Connect to your Amazon Redshift cluster using a SQL client.
 2. Create a user (`dbt_cloud` in this guide) for deployment. If you don't yet have your own user credentials to use when developing, create a new user for yourself now. You can also create users for any colleagues that will be developing with dbt.
@@ -70,11 +70,11 @@ grant select on all tables in schema pg_catalog to group transformer;
 * Execute `open ~/.dbt` from the command line
 * Copy the following into your `profiles.yml` file, updating as needed.
 
-<Callout type="info" title="">
+:::info 
 
 something about default profiles path?
 
-</Callout>
+:::
 
  
 ### Password-based authentication

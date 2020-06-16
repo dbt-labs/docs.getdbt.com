@@ -4,11 +4,11 @@ id: "using-operations"
 ---
 
 
-<Callout type="info" title="New in dbt v0.14.0">
+:::info New in dbt v0.14.0
 
 This functionality is new in dbt v0.14.0. For upgrading instructions, check out [the docs](installation).
 
-</Callout>
+:::
 
 ## Overview
 The effective maintenance of a data warehouse sometimes requires manual or automated "operational" queries to be run. While these operations frequently vary by organization, they might include:

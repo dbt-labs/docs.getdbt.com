@@ -4,11 +4,11 @@ id: "this"
 ---
 
 
-<Callout type="info" title="New in dbt 0.11.0">
+:::info New in dbt 0.11.0
 
 Before 0.11.0, there was a difference between `this.table` and `this.name`. In 0.11.0, this distinction was removed! Both syntaxes can be used, but `this.table` is recommended, and `this.name` may be deprecated in a future release.
 
-</Callout>
+:::
 
 `this` makes available schema information about the currently executing model. It's is useful in any context in which you need to write code that references the current model, for example when defining a `sql_where` clause for an incremental model and for writing pre- and post-model hooks that operate on the model in some way. Developers have options for how to use `this`:
 

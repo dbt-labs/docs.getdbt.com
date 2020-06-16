@@ -7,14 +7,14 @@ The `graph` context variable contains information about the _nodes_ in your dbt
 project. Models, sources, tests, and snapshots are all examples of nodes in dbt
 projects.
 
-<Callout type="danger" title="Heads up">
+:::danger Heads up
 
 dbt actively builds the `graph` variable during the [parsing phase](execute) of
 running dbt projects, so some properties of the `graph` context variable will be
 missing or incorrect during parsing. Please read the information below carefully
 to understand how to effectively use this variable.
 
-</Callout>
+:::
 
 ### The graph context variable
 

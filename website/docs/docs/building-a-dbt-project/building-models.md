@@ -11,11 +11,11 @@ id: "building-models"
 
 ## Getting started
 
-<Callout type="info" title="Building your first models">
+:::info Building your first models
 
 If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models.
 
-</Callout>
+:::
 
 A model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement

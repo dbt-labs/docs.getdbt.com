@@ -24,12 +24,12 @@ The database that your source is stored in.
 
 Note that to use this parameter, your warehouse must allow cross-database queries.
 
-<Alert type='info'>
+:::info
 
 #### BigQuery terminology
 If you're using BigQuery, use the _project_ name as the `database:` property.
 
-</Alert>
+:::
 
 ## Default
 By default, dbt will search in your target database (i.e. the database that you are creating tables and views).

@@ -4,11 +4,11 @@ id: "cloud-quickstart"
 ---
 
 
-<Callout type="info" title="dbt Cloud">
+:::info dbt Cloud
 
 The functionality documented here is available in dbt Cloud. Don't have an account? You can get started for free [here](https://www.getdbt.com/signup).
 
-</Callout>
+:::
 
 ## Connect a repository
 

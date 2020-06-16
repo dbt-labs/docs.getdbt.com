@@ -13,11 +13,11 @@ We recommend you use one of our OS-specific guides for help with installing dbt.
 
 ## pip
 
-<Callout type="info" title="Python3">
+:::info Python3
 
 The dbt CLI is compatible with Python versions 3.6 and higher. As of v0.15.0, dbt is no longer compatible with Python2.
 
-</Callout>
+:::
 
 dbt is a Python module distributed on [pypi](https://pypi.org/project/dbt/), and can be installed via `pip`. We recommend using virtual environments when installing dbt via pip.
 ## Installation

@@ -25,8 +25,8 @@ on-run-end:
 
 
 
-<Callout type="info" title="Want more in-depth instructions on the recommended way to grant privileges?">
+:::info Want more in-depth instructions on the recommended way to grant privileges?
 
 We've written a full discourse article [here](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
 
-</Callout>
+:::

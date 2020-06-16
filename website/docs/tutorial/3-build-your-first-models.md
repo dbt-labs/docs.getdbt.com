@@ -80,9 +80,9 @@ models:
 </File>
 
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
-<Callout type="info">
+:::info 
 To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
-</Callout>
+:::
 
 
 3. Edit `models/customers.sql` to have the following snippet at the top:

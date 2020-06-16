@@ -3,11 +3,11 @@ title: "Setting up Snowflake OAuth"
 id: "setting-up-enterprise-snowflake-oauth"
 ---
 
-<Callout type="info" title="Enterprise Feature">
+:::info Enterprise Feature
 
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
-</Callout>
+:::
 
 dbt Cloud Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to dbt Cloud.
 
@@ -29,11 +29,11 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD_<PROJECT_NAME>
   OAUTH_REFRESH_TOKEN_VALIDITY = 7776000;
 ```
 
-<Callout type="warning" title="Permissions">
+:::caution Permissions
 
   Note: Only Snowflake account administrators (users with the `ACCOUNTADMIN` role) or a role with the global `CREATE INTEGRATION` privilege can execute this SQL command.
 
-</Callout>
+:::
 
 | Field | Description |
 | ----- | ----------- |

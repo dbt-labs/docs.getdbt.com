@@ -62,11 +62,11 @@ from raw_app_data.events
 
 
 
-<Callout type="success" title="Optimizing your incremental model">
+:::tip Optimizing your incremental model
 
 For more complex incremental models that make use of CTEs, you should consider the impact of the position of the `is_incremental()` macro on query performance. On some warehouses, filtering your records early can vastly improve the run time of your query!
 
-</Callout>
+:::
 
 ### Defining a uniqueness constraint (optional)
 `unique_key` is an optional parameter for incremental models that specifies a field which should be unique within your model. If the unique key of existing row in your target table matches a row in your incrementally transformed rows, the existing row will be updated. This ensures that you don't have multiple rows in your target table for a single row in your source data.

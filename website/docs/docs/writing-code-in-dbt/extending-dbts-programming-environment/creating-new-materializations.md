@@ -7,11 +7,11 @@ id: "creating-new-materializations"
 
 The model materializations you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/fishtown-analytics/dbt/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
 
-<Callout type="warning" title="">
+:::caution 
 
 This is an advanced feature of dbt. Let us know if you need a hand! We're always happy to  [chat](http://community.getdbt.com/).
 
-</Callout>
+:::
 
 ## Creating a materialization
 
@@ -42,11 +42,11 @@ Materializations can be given a name, and they can be tied to a specific adapter
 
 
 
-<Callout type="info" title="">
+:::info 
 
 dbt's ability to dynamically pick the correct materialization based on the active database target is called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). This feature unlocks a whole world of cross-database compatibility features -- if you're interested in this, please let us know on Slack!
 
-</Callout>
+:::
 
 ### Anatomy of a materialization
 
@@ -108,11 +108,11 @@ Be sure to `commit` the transaction in the `cleanup` phase of the materializatio
 ### Update the Relation cache
 
 
-<Callout type="info" title="New in 0.15.0">
+:::info New in 0.15.0
 
 The ability to synchronize the Relation cache is new in dbt v0.15.0
 
-</Callout>
+:::
 
 Materializations should [return](return) the list of Relations that they have created at the end of execution. dbt will use this list of Relations to update the relation cache in order to reduce the number of queries executed against the database's `information_schema`. If a list of Relations is not returned, then dbt will raise a Deprecation Warning and infer the created relation from the model's configured database, schema, and alias.
 
@@ -170,11 +170,11 @@ For more information on materialization configuration, see the [config](config) 
 ## Materialization precedence
 
 
-<Callout type="info" title="New in 0.15.1">
+:::info New in 0.15.1
 
 The materialization resolution order was poorly defined in versions of dbt prior to 0.15.1. Please use this guide for versions of dbt greater than or equal to 0.15.1.
 
-</Callout>
+:::
 
 dbt will pick the materialization macro in the following order (lower takes priority):
 

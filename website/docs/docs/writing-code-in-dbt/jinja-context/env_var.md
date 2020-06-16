@@ -26,11 +26,11 @@ profile:
 
 If the `DBT_USER` and `DBT_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
 
-<Callout type="warning" title="Quoting, Curly Brackets, & You">
+:::caution Quoting, Curly Brackets, & You
 
 Be sure to quote the entire jinja string (as shown above), or else the yaml parser will be confused by the Jinja curly brackets.
 
-</Callout>
+:::
 
 `env_var` accepts a second, optional argument for default value, like so:
 

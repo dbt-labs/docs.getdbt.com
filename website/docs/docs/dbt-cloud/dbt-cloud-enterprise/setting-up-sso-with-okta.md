@@ -3,11 +3,11 @@ title: "Setting up SSO with Okta"
 id: "setting-up-sso-with-okta"
 ---
 
-<Callout type="info" title="Enterprise Feature">
+:::info Enterprise Feature
 
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
-</Callout>
+:::
 
 ## Okta SSO
 
@@ -42,11 +42,11 @@ Click **Next** to continue.
 
 ### Configure SAML Settings
 
-<Callout type="warning" title="Group Attributes">
+:::caution Group Attributes
 
 dbt Cloud uses SAML settings provided by Okta to enforce role-based access control. If the Group Attribute statement shown below is misconfigured, then users may not be permissioned to projects appropriately in dbt Cloud.
 
-</Callout>
+:::
 
 On the **SAML Settings** page, enter the following values:
 
