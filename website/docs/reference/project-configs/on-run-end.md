@@ -1,11 +1,11 @@
 ---
 datatype: sql-statement | [sql-statement]
 ---
-<Alert type='warning'>
+:::caution
 <h4>Heads up!</h4>
 This is a work in progress document.
 
-</Alert>
+:::
 
 <File name='dbt_project.yml'>
 

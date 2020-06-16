@@ -3,12 +3,12 @@ title: "BigQuery configurations"
 id: "bigquery-configs"
 ---
 
-<Alert type='warning'>
+:::caution
 
 <h4>Heads up!</h4>
 These docs are a work in progress.
 
-</Alert>
+:::
 
 <!----
 To-do:
@@ -356,11 +356,11 @@ strategy is selected.
 
 ### The `insert_overwrite` strategy
 
-<Callout type="info" title="New in dbt v0.16.0">
+:::info New in dbt v0.16.0
 
 This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](installation)
 
-</Callout>
+:::
 
 The `insert_overwrite` strategy generates a merge statement that replaces entire partitions
 in the destination table. **Note:** this configuration requires that the model is configured

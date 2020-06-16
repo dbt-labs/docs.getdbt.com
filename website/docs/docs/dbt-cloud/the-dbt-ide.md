@@ -4,11 +4,11 @@ id: "the-dbt-ide"
 ---
 
 
-<Callout type="info" title="Prerequisites">
+:::info Prerequisites
 
 To set up your account to use the IDE, consult the guide on [using the dbt IDE](using-the-dbt-ide).
 
-</Callout>
+:::
 
 
 The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.

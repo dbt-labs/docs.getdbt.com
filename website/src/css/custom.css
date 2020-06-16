@@ -1,18 +1,9 @@
 
-root {
-    --ifm-color-primary: #023644;
-    --ifm-color-primary-dark: #02313d;
-    --ifm-color-primary-darker: #022e3a;
-    --ifm-color-primary-darkest: #012630;
-    --ifm-color-primary-light: #023b4b;
-    --ifm-color-primary-lighter: #023e4e;
-    --ifm-color-primary-lightest: #034658;
-    --ifm-h1-font-size: 2rem;
-    --ifm-h2-font-size: 1.5rem;
-    --ifm-h3-font-size: 1.25rem;
-    --ifm-h4-font-size: 1rem;
-    --ifm-h5-font-size: 0.875rem;
-    --ifm-h6-font-size: 0.85rem;
+:root {
+    --ifm-color-success: #7ec631 !important;
+    --ifm-color-info: #0bb !important;
+    --ifm-color-warning: #fc0 !important;
+    --ifm-color-danger: #ff694b !important;
 }
 
 h1, h2, h3 {

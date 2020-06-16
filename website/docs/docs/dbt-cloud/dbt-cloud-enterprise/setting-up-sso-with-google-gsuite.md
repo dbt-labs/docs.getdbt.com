@@ -4,11 +4,11 @@ id: "setting-up-sso-with-google-gsuite"
 ---
 
 
-<Callout type="info" title="Enterprise Feature">
+:::info Enterprise Feature
 
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
-</Callout>
+:::
 
 dbt Cloud Enterprise supports single-sign on via Google GSuite. You will need permissions to create and manage a new Google OAuth2 application, as well as access to enable the Google Admin SDK. Currently supported features include:
 

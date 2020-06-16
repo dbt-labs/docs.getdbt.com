@@ -4,11 +4,11 @@ id: "cloud-snapshotting-source-freshness"
 ---
 
 
-<Callout type="info" title="dbt Cloud">
+:::info dbt Cloud
 
 The functionality documented here is available in dbt Cloud. Don't have an account? You can get started for free [here](https://cloud.getdbt.com/signup).
 
-</Callout>
+:::
 
 ## Data Source Freshness
 

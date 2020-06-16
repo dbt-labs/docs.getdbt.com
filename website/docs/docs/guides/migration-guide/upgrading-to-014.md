@@ -43,11 +43,11 @@ The provided migration script should be run _once_ by a single dbt user. This da
 
 ### Running the migration script
 
-<Callout type="warning" title="Custom Materializations">
+:::caution Custom Materializations
 
 This guide assumes that you are using the built-in archive materialization. If you are using a custom archive materialization, see the section on "Migrating archives manually" below.
 
-</Callout>
+:::
 
 By default, the migration script will not make any changes to your project or database. Instead, it will report on the changes that _should_ be made to migrate your archives to snapshots. To run the migration script in dry-run mode, execute:
 ```

@@ -64,11 +64,11 @@ my-bigquery-db:
 
 ### Service Account JSON Authentication
 
-<Callout type="warning" title="Note">
+:::caution Note
 
 This authentication method is only recommended for production environments where using a Service Account Keyfile is impractical.
 
-</Callout>
+:::
 
 
 

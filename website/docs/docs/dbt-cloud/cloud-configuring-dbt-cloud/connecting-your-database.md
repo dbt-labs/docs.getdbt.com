@@ -84,11 +84,11 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 
 ## Connecting to BigQuery
 
-<Callout type="info" title="Uploading a service account JSON keyfile">
+:::info Uploading a service account JSON keyfile
 
 While the fields in a BigQuery connection can be specified manually, we recommend uploading a service account JSON keyfile to quickly and accurately configure a connection to BigQuery.
 
-</Callout>
+:::
 
 Uploading a JSON keyfile should populate the following fields:
 - Project id

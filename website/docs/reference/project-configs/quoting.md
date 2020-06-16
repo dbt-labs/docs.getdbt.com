@@ -19,11 +19,11 @@ Optionally configure whether dbt should quote databases, schemas, and identifier
 * creating relations (tables/views)
 * resolving a `ref` function to a direct relation reference
 
-<Callout type="info" title="BigQuery Terminology">
+:::info BigQuery Terminology
 
 Note that for BigQuery quoting configuration, `database` and `schema` should be used here, though these configs will apply to `project` and `dataset` names respectively
 
-</Callout>
+:::
 
 <Changelog>
 

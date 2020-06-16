@@ -2,12 +2,12 @@
 title: "Redshift configurations"
 id: "redshift-configs"
 ---
-<Alert type='warning'>
+:::caution
 
 <h4>Heads up!</h4>
 These docs are a work in progress.
 
-</Alert>
+:::
 
 <!----
 To-do:

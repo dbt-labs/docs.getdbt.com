@@ -9,11 +9,11 @@ Before starting, you'll need to install [Git for Windows](https://git-scm.com/do
 
 Open up Windows powershell __as an administrator__, and install dbt with `pip`:
 
-<Callout type="warning" title="Python Requirements">
+:::caution Python Requirements
 
 The dbt CLI is compatible with Python versions 3.6 and higher. As of dbt v0.15.0, dbt is no longer compatible with Python2.
 
-</Callout>
+:::
 
 ```bash
 pip install dbt

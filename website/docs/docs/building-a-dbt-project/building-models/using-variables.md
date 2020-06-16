@@ -17,13 +17,13 @@ Variables can defined in two ways:
 
 ### Defining variables in `dbt_project.yml`
 
-<Callout type='info' title='New in v0.17.0'>
+:::info New in v0.17.0
 
 The syntax for specifying vars in the `dbt_project.yml` file has changed in
 dbt v0.17.0. See the [migration guide](migration-guide/upgrading-to-0-17-0)
 for more information on these changes.
 
-</Callout>
+:::
 
 To define variables in a dbt project, add a `vars` config to your `dbt_project.yml` file.
 These `vars` can be scoped globally, or to a specific package imported in your

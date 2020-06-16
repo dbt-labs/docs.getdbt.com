@@ -4,11 +4,11 @@ id: "setting-up-enterprise-sso-with-azure-active-directory"
 ---
 
 
-<Callout type="info" title="Enterprise Feature">
+:::info Enterprise Feature
 
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
-</Callout>
+:::
 
 dbt Cloud Enterprise supports single-sign on via Azure Active Directory (AD). You will need permissions to create and manage a new Azure AD application. Currently supported features include:
 

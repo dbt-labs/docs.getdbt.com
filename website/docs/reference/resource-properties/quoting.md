@@ -29,11 +29,11 @@ Optionally configure whether dbt should quote databases, schemas, and identifier
 
 This config can be specified for all tables in a source, or for a specific source table. Quoting configs defined for a specific source table override the quoting configs specified for the top-level source.
 
-<Callout type="info" title="BigQuery Terminology">
+:::info BigQuery Terminology
 
 Note that for BigQuery quoting configuration, `database` and `schema` should be used here, though these configs will apply to `project` and `dataset` names respectively
 
-</Callout>
+:::
 
 
 ## Default

@@ -202,11 +202,11 @@ The `check` strategy requires the following configurations:
 
 
 
-<Callout type="warning" title="check_cols = 'all'">
+:::caution check_cols = 'all'
 
 The `check` snapshot strategy can be configured to track changes to _all_ columns by supplying `check_cols = 'all'`. It is better to explicitly enumerate the columns that you want to check. Consider using a [surrogate key](https://github.com/fishtown-analytics/dbt-utils#surrogate_key-source) to condense many columns into a single column.
 
-</Callout>
+:::
 
 
 **Example Usage**

@@ -211,11 +211,11 @@ Renames a Relation the database.  The `rename_relation` method will rename the s
 
 ## get_columns_in_table
 
-<Callout type="danger" title="Deprecated">
+:::danger Deprecated
 
 This method is deprecated and will be removed in a future release. Please use [get_columns_in_relation](#get_columns_in_relation) instead.
 
-</Callout>
+:::
 
 __Args__:
 
@@ -240,11 +240,11 @@ insert into {{ this }} ({{ dest_cols_csv }}) (
 
 ## already_exists
 
-<Callout type="danger" title="Deprecated">
+:::danger Deprecated
 
 This method is deprecated and will be removed in a future release. Please use [get_relation](#get_relation) instead.
 
-</Callout>
+:::
 
 __Args__:
 

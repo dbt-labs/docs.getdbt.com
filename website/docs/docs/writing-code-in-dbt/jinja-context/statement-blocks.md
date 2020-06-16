@@ -59,8 +59,8 @@ The contents of the returned `data` field is a matrix. It contains a list rows, 
 
 
 
-<Callout type="danger" title="Volatile API">
+:::danger Volatile API
 
 While the `statement` and `load_result` setup works for now, we intend to improve this interface in the future. If you have questions or suggestions, please let us know in GitHub or on Slack.
 
-</Callout>
+:::

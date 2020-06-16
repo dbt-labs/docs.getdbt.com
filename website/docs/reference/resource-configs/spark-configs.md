@@ -3,12 +3,12 @@ title: "Spark configurations"
 id: "spark-configs"
 ---
 
-<Alert type='warning'>
+:::caution
 
 <h4>Heads up!</h4>
 These docs are a work in progress.
 
-</Alert>
+:::
 
 <!----
 To-do:
@@ -120,11 +120,11 @@ insert overwrite table analytics.spark_incremental
 
 ### The `merge` strategy
 
-<Callout type="info" title="New in dbt-spark v0.15.3">
+:::info New in dbt-spark v0.15.3
 
 This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark#installation-and-distribution)
 
-</Callout>
+:::
 
 There are three prerequisites for the `merge` incremental strategy:
 - Creating the table in Delta file format
@@ -221,11 +221,11 @@ or `show table extended in [database] like '*'`.
 
 ## Always `schema`, never `database`
 
-<Callout type="info" title="New in dbt-spark v0.17.0">
+:::info New in dbt-spark v0.17.0
 
 This is a breaking change in dbt-spark v0.17.0. See [installation instructions](profile-spark#installation-and-distribution)
 
-</Callout>
+:::
 
 Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
 `database` to exist at a higher level than `schema`. As such, you should _never_

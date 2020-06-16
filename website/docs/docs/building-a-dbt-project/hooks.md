@@ -49,11 +49,11 @@ seeds:
 
 Model-level hook configuration applies, like all configuration, to the scope in which it is defined in the model hierarchy. Model hooks can also be configured within a given model as shown below. Note that the `pre-hook` and `post-hook` keywords both contain `-` characters making them invalid identifiers. Instead, use the keys `pre_hook` and `post_hook` to specific hooks inside of a model `config` block:
 
-<Callout type="info" title="New in dbt v0.12.2">
+:::info New in dbt v0.12.2
 
 The `pre_hook` and `post_hook` aliases are new in dbt v0.12.2. If you're using a previous version of dbt, you can use the "dict" syntax when calling config.
 
-</Callout>
+:::
 
 
 
