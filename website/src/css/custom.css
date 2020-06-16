@@ -24,9 +24,7 @@ a.hash-link:hover
 
 
 /* Fix for nav links that break (like dbt Cloud) */
-.navbar__brand {
-    width: 105px;
-}
+
 .navbar__item.navbar__link {
     white-space: nowrap;
 }
