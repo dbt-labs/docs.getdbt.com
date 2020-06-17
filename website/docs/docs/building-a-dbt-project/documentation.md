@@ -168,6 +168,6 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 dbt's documentation website was built in a way that makes it easy to host on the web. The site itself is "static", meaning that you don't need any type of "dynamic" server to serve the docs. Some common methods for hosting the docs are:
 
 1. [dbt Cloud](cloud-generating-documentation)
-2. [Host on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP Whitelisting](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
+2. [Host on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
 3. [Publish on Netlify](https://discourse.getdbt.com/t/publishing-dbt-docs-to-netlify/121)
 4. Spin up a web server like Apache/Nginx

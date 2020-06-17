@@ -13,7 +13,7 @@ In this guide, we'll create credentials for one user, and for our production dep
 * An already operating Amazon Redshift cluster.
 * Raw data loaded into your Redshift cluster
 * A set of superuser privileges (including database connection details)
-* Privileges in AWS that allow you whitelist an IP address
+* Privileges in AWS that allow you allow web traffic from an IP address
 
 # Step 1: Create and configure database users
 

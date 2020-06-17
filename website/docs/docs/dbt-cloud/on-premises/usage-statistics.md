@@ -30,7 +30,7 @@ payload looks like:
 }
 ```
 
-## Whitelisting outbound traffic
+## Allow outbound traffic
 
-To enable the collection of this metadata for your deployment, please whitelist
+To enable the collection of this metadata for your deployment, please allow
 outbound http traffic to https://usage.getdbt.com from your dbt Cloud installation.
