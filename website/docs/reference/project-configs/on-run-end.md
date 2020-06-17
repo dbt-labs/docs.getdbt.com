@@ -1,8 +1,7 @@
 ---
 datatype: sql-statement | [sql-statement]
 ---
-:::caution
-<h4>Heads up!</h4>
+:::caution Heads up!
 This is a work in progress document.
 
 :::

@@ -3,9 +3,7 @@ title: "Snowflake configurations"
 id: "snowflake-configs"
 ---
 
-:::caution
-
-<h4>Heads up!</h4>
+:::caution Heads up!
 These docs are a work in progress.
 
 :::

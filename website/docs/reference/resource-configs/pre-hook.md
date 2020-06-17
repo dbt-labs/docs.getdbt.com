@@ -3,8 +3,7 @@ resource_types: [models, seeds]
 datatype: sql-statement | [sql-statement]
 ---
 
-:::caution
-<h4>Heads up!</h4>
+:::caution Heads up!
 This is a work in progress document. While this configuration applies to multiple resource types, the documentation has only been written for seeds.
 
 :::

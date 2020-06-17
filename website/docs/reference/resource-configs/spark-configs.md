@@ -3,9 +3,7 @@ title: "Spark configurations"
 id: "spark-configs"
 ---
 
-:::caution
-
-<h4>Heads up!</h4>
+:::caution Heads up!
 These docs are a work in progress.
 
 :::
