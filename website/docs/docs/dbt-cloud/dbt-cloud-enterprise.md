@@ -3,7 +3,9 @@ title: "dbt Cloud Enterprise"
 id: "dbt-cloud-enterprise"
 ---
 
+:::info dbt Cloud Enterprise
 This section describes features of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact sales@getdbt.com.
+:::
 
 ### SSO
 -  [Setting up SSO with Okta](setting-up-sso-with-okta) 

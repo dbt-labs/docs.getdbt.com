@@ -206,12 +206,30 @@ module.exports = {
       label: "dbt Cloud Enterprise",
       items: [
         "docs/dbt-cloud/dbt-cloud-enterprise",
-        "docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions",
-        "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
-        "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta",
-        "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
-        "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
-        "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+        {
+            type: "category",
+            label: "Single Sign On",
+            items: [
+                "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
+            ]
+        },
+        {
+            type: "category",
+            label: "Database Auth",
+            items: [
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+            ]
+        },
+        {
+            type: "category",
+            label: "Permissions",
+            items: [
+                "docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions",
+            ]
+        }
       ],
     },
     {
