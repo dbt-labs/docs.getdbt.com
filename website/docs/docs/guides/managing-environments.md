@@ -15,11 +15,11 @@ Data warehouses can also be designed to have separate environments – the _prod
 ## How do I maintain different environments with dbt?
 dbt makes it easy to maintain separate production and development environments through the use of targets within a profile. A typical profile when using dbt locally (i.e. running from your command line) will have a target named `dev`, and have this set as the default. This means that while making changes, your objects will be built in your _development_ target, without affecting production queries made by your end users. Once you are confident in your changes, you can deploy the code to _production_, by running your dbt project with a _prod_ target.
 
-<Callout type="info" title="Running dbt in production">
+:::info Running dbt in production
 
 You can learn more about different ways to run dbt in production in [this article](running-dbt-in-production)
 
-</Callout>
+:::
 
 Targets offer the flexibility to decide how to implement your separate environments – whether you want to use separate schemas, databases, or entirely different clusters altogether! We recommend using _different schemas within one data warehouse_ to separate your environments. This is the easiest to set up, and is the most cost effective solution in a modern cloud-based data stack.
 

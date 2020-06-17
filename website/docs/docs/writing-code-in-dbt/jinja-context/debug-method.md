@@ -4,11 +4,11 @@ id: "debug-method"
 ---
 
 
-<Callout type="warning" title="New in v0.14.1">
+:::caution New in v0.14.1
 
 The `debug` macro is new in dbt v0.14.1, and is only intended to be used in a development context with dbt. Do not deploy code to production which uses the `debug` macro.
 
-</Callout>
+:::
 
 ## Overview
 

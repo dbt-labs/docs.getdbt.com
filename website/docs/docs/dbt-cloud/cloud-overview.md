@@ -29,11 +29,11 @@ dbt Cloud hosts and authorizes access to dbt project documentation. After enabli
 
 ### Enable Continuous Integration 
 
-<Callout type="info" title="Available on the Basic Tier">
+:::info Available on the Basic Tier
 
 Continuous Integration functionality is available to accounts on the Basic Tier or higher.
 
-</Callout>
+:::
 
 dbt Cloud can be configured to run your dbt projects in a temporary schema when new commits are pushed to open Pull Requests. When the Cloud job completes, a status will be shown for the PR inside of GitHub. This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool in any analysts belt. More info on enabling CI workflows in dbt Cloud can be found [here](cloud-enabling-continuous-integration-with-github).
 

@@ -72,11 +72,11 @@ A number of useful macros have also been grouped together into the [dbt-utils pa
 ## What parts of Jinja are dbt-specific?
 There are certain expressions that are specific to dbt -- these are documented in the [Jinja function reference](jinja-context/adapter). Further, docs blocks, snapshots, and materializations are custom Jinja extensions that exist only in dbt.
 
-<Callout type="info" title="Ready to get started with Jinja?">
+:::info Ready to get started with Jinja?
 
 Check out the [tutorial on using Jinja](using-jinja) for step-by-step example of using Jinja in a model, and turning it into a macro!
 
-</Callout>
+:::
 
 ## Useful Jinja tips & tricks
 ### Quoting in Jinja

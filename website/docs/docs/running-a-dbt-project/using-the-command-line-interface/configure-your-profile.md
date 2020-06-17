@@ -43,11 +43,11 @@ jaffle_shop:
 
 
 
-<Callout type="info" title="Setting up your profiles.yml file for the first time">
+:::info Setting up your profiles.yml file for the first time
 
 A sample `~/.dbt/profiles.yml` file can be created by running [dbt init](init)
 
-</Callout>
+:::
 
 
 
@@ -77,11 +77,11 @@ To populate your profile, copy the correct sample profile for your warehouse int
 
 You can find more information on which values to use in your targets below.
 
-<Callout type="info" title="Validating your warehouse credentials">
+:::info Validating your warehouse credentials
 
 Use the [debug](debug) command to check whether you can successfully connect to your warehouse. Simply run `dbt debug` from within a dbt project to test your connection.
 
-</Callout>
+:::
 
 # Understanding profiles
 ## Understanding targets
@@ -101,20 +101,20 @@ To ensure the user credentials you use in your target allow dbt to run, you will
 * create schemas¹
 * read system tables
 
-<Callout type="info" title="Running dbt without create schema privileges">
+:::info Running dbt without create schema privileges
 
 If your user is unable to be granted the privilege to create schemas, your dbt runs should instead target an existing schema that your user has permission to create relations within.
 
-</Callout>
+:::
 
 ## Understanding target schemas
 The target schema represents the default schema that dbt will build objects into, and is often used as the differentiator between separate environments within a warehouse.
 
-<Callout type="info" title="Schemas in BigQuery">
+:::info Schemas in BigQuery
 
 dbt uses the term "schema" in a target across all supported warehouses for consistency. Note that in the case of BigQuery, a schema is actually a dataset.
 
-</Callout>
+:::
 
 The schema used for production should be named in a way that makes it clear that it is ready for end-users to use for analysis – we often name this  `analytics`.
 

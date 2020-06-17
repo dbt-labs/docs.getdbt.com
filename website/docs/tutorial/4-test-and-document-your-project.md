@@ -63,11 +63,11 @@ models:
     <Lightbox src="/img/successful-tests-dbt-cli.png" title="Passing tests when using the dbt CLI" />
 </CloudCore>
 
-<Callout type="info">
+:::info 
 
 When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test. Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
 
-</Callout>
+:::
 
 ### FAQs
 <FAQ src="available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
@@ -136,11 +136,11 @@ models:
 3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
 
 
-<Callout type="success">
+:::tip 
 
 Great work ⭐️! You've just built your first dbt project that's tested and documented!
 
-</Callout>
+:::
 
 
 ### FAQs

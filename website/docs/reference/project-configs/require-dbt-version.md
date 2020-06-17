@@ -24,7 +24,7 @@ If this configuration is not specified, no version check will occur.
 
 </Changelog>
 
-<Callout type="info" title="YAML Quoting">
+:::info YAML Quoting
 
 This configuration needs to be interpolated by the yaml parser as a string. As such, you should quote the value of the configuration. For example. Also take care to get the spacing correct.
 ```yml
@@ -37,7 +37,7 @@ require-dbt-version: >=0.16.0
 require-dbt-version: ">= 0.16.0"
 ```
 
-</Callout>
+:::
 
 
 ## Examples

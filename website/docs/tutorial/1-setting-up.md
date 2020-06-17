@@ -77,9 +77,9 @@ For this tutorial, we've created a public dataset in BigQuery that anyone can `s
 
 We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
 
-<Callout type="info">
+:::info 
 BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you have an existing GCP account that has surpassed these tiers on BigQuery, running queries for this tutorial will incur a very small (less than a few USD) cost.
-</Callout>
+:::
 
 <LoomVideo id="9b8d852c7e754d978209c3a60b53464e" />
 

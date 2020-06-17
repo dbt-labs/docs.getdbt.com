@@ -3,11 +3,11 @@ resource_types: [models, seeds]
 datatype: string
 ---
 
-<Alert type='warning'>
+:::caution
 <h4>Heads up!</h4>
 This is a work in progress document. While this configuration applies to multiple resource types, the documentation has only been written for seeds.
 
-</Alert>
+:::
 
 ## Definition
 Optionally specify a custom schema for a [model](docs/docs/building-a-dbt-project/building-models.md) or [seed](docs/docs/building-a-dbt-project/seeds.md).

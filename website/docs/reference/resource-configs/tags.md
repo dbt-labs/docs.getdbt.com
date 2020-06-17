@@ -2,11 +2,11 @@
 resource_types: all
 datatype: string | [string]
 ---
-<Alert type='info'>
+:::info
 
 To tag a column, test, or source, use the [tag _property_](resource-properties/tags).
 
-</Alert>
+:::
 
 <Tabs
   defaultValue="yaml"

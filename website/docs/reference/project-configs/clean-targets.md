@@ -20,9 +20,9 @@ If this configuration is not included in your `dbt_project.yml` file, the `clean
 
 ## Examples
 ### Remove packages and compiled files as part of `dbt clean`
-<Alert type='info'>
+:::info
 This is our preferred configuration
-</Alert>
+:::
 To remove packages as well as compiled files, include the value of your [modules-path](modules-path) configuration in your `clean-targets` configuration.
 
 <File name='dbt_project.yml'>

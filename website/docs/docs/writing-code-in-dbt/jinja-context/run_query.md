@@ -13,11 +13,11 @@ Returns a [Table](https://agate.readthedocs.io/en/1.3.1/api/table.html) object w
 **Note:** The `run_query` macro will not begin a transaction automatically - if you wish to run your query inside of a transaction, please use `begin` and `commit ` statements as appropriate.
 
 
-<Callout type="info" title="Using run_query for the first time?">
+:::info Using run_query for the first time?
 
 Check out the tutorial on [using Jinja](using-jinja#dynamically-retrieve-the-list-of-payment-methods) for an example of working with the results of the `run_query` macro!
 
-</Callout>
+:::
 
 
 **Example Usage:**

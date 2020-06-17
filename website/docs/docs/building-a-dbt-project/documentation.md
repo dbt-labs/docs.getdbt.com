@@ -159,11 +159,11 @@ Specific information
 
 ## Deploying the documentation site
 
-<Callout type="warning" title="Security">
+:::caution Security
 
 The `dbt docs serve` command is only intended for local/development hosting of the documentation site. Please use one of the methods listed below (or similar) to ensure that your documentation site is hosted securely!
 
-</Callout>
+:::
 
 dbt's documentation website was built in a way that makes it easy to host on the web. The site itself is "static", meaning that you don't need any type of "dynamic" server to serve the docs. Some common methods for hosting the docs are:
 
