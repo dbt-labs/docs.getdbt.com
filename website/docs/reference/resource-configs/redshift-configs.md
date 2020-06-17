@@ -2,9 +2,7 @@
 title: "Redshift configurations"
 id: "redshift-configs"
 ---
-:::caution
-
-<h4>Heads up!</h4>
+:::caution Heads up!
 These docs are a work in progress.
 
 :::
