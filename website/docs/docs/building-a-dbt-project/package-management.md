@@ -33,10 +33,10 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 packages:
   - package: fishtown-analytics/snowplow
     version: 0.7.0
-    
+
   - git: "https://github.com/fishtown-analytics/dbt-utils.git"
     revision: 0.1.21
-    
+
   - local: /opt/dbt/redshift
 ```
 
@@ -125,8 +125,10 @@ When you remove a package from your `packages.yml` file, it isn't automatically 
 
 ### Configuring packages
 You can configure the models and seeds in a package from the `dbt_project.yml` file, like so:
-```
-# dbt_project.yml
+
+<File name='dbt_project.yml'>
+
+```yml
 
 vars:
   snowplow:
@@ -140,12 +142,15 @@ vars:
 
 models:
   snowplow:
-    schema: snowplow
+    +schema: snowplow
 
 seeds:
   snowplow:
-    schema: snowplow_seeds
+    +schema: snowplow_seeds
 ```
+
+</File>
+
 For example, when using a dataset specific package, you may need to configure variables for the names of the tables that contain your raw data.
 
 Configurations made in your `dbt_project.yml` file will override any configurations in a package (either in the `dbt_project.yml` file of the package, or in config blocks).

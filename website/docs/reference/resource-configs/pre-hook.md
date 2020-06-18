@@ -23,7 +23,7 @@ Pre-hooks work very similarly to post-hooks, check out the [post-hook](post-hook
 
 ```yml
 models:
-  pre-hook: "alter session set week_of_year_policy=1, week_start=1;"
+  +pre-hook: "alter session set week_of_year_policy=1, week_start=1;"
 ```
 
 </File>

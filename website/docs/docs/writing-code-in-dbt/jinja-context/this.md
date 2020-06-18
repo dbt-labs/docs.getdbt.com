@@ -21,12 +21,12 @@ Before 0.11.0, there was a difference between `this.table` and `this.name`. In 0
 
 Here's an example of how to use `this` in `dbt_project.yml` to grant select rights on a table to a different db user.
 
-<File name='example.yml'>
+<File name='dbt_project.yml'>
 
 ```yaml
 models:
   project-name:
-    post-hook:
+    +post-hook:
       - "grant select on {{ this }} to db_reader"
 ```
 

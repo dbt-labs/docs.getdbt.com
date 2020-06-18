@@ -131,7 +131,7 @@ To apply a configuration to all snapshots, including those in any installed [pac
 ```yml
 
 snapshots:
-  target_schema: snapshots
+  +target_schema: snapshots
 ```
 
 </File>
@@ -148,7 +148,7 @@ For a project named `jaffle_shop`:
 
 snapshots:
   jaffle_shop:
-    target_schema: snapshot_data
+    +target_schema: snapshot_data
 ```
 
 </File>
@@ -188,9 +188,9 @@ snapshots:
   jaffle_shop:
     postgres_app:
       orders_snapshot:
-        unique_key: id
-        strategy: timestamp
-        updated_at: updated_at
+        +unique_key: id
+        +strategy: timestamp
+        +updated_at: updated_at
 ```
 
 </File>

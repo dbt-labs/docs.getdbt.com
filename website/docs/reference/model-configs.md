@@ -131,8 +131,10 @@ Model configurations are applied hierarchically — configurations applied to a 
 
 To configure models in your `dbt_project.yml` file, use the `models:` configuration option. Be sure to use namespace your configurations to your project (shown below):
 
-```yaml
-# dbt_project.yml
+<File name='dbt_project.yml'>
+
+```yml
+
 
 name: fishtown_analytics
 
@@ -151,7 +153,11 @@ models:
         +materialized: ephemeral
 
       ...
+
+
 ```
+
+</File>
 
 ### Apply configurations to one model only
 

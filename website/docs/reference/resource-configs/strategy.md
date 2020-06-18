@@ -67,8 +67,8 @@ snapshots:
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    strategy: check
-    check_cols: [column_name] | all
+    +strategy: check
+    +check_cols: [column_name] | all
 
 ```
 
