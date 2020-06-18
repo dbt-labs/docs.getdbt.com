@@ -38,7 +38,7 @@ state your configuration under the [project name](project-configs/name.md) in th
 
 sources:
   events:
-    enabled: false
+    +enabled: false
 ```
 
 </File>
@@ -57,7 +57,7 @@ with both a package name and a source name.
 sources:
   events:
     clickstream:
-      enabled: false
+      +enabled: false
 ```
 
 </File>
@@ -72,7 +72,7 @@ sources:
   events:
     clickstream:
       pageviews:
-        enabled: false
+        +enabled: false
 ```
 
 </File>
@@ -93,16 +93,16 @@ config-version: 2
 sources:
   # project names
   jaffle_shop:
-    enabled: true
+    +enabled: true
 
   events:
     # source names
     clickstream:
       # table names
       pageviews:
-        enabled: false
+        +enabled: false
       link_clicks:
-        enabled: true
+        +enabled: true
 ```
 
 </File>

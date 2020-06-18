@@ -130,10 +130,10 @@ models:
   jaffle_shop:
     # 🙅 The yaml parser will interpret the { as the start of a dictionary
     # and get confused by the next {, resulting in a compliation error
-    schema: {{ env_var('DBT_SCHEMA') }}
+    +schema: {{ env_var('DBT_SCHEMA') }}
     
     # ✅ This works
-    schema: "{{ env_var('DBT_SCHEMA') }}"
+    +schema: "{{ env_var('DBT_SCHEMA') }}"
 ```
 
 </File>
@@ -151,7 +151,7 @@ models:
     description: {{ docs('users') }}
     
     # ✅ This is the correct way to reference a docs block
-		description: "{{ docs('users') }}"
+    description: "{{ docs('users') }}"
 
 ```
 

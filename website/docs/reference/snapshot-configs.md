@@ -24,16 +24,21 @@ Parts of a snapshot:
 }>
 <TabItem value="yaml">
 
+<File name='dbt_project.yml'>
 
 ```yaml
-[target_schema](target_schema): <string>
-[target_database](target_database): <string>
-[unique_key](unique_key): <column_name_or_expression>
-[strategy](strategy): timestamp | check
-[updated_at](updated_at): <column_name>
-[check_cols](check_cols): [<column_name>] | all
+
+snapshots:
+  +[target_schema](target_schema): <string>
+  +[target_database](target_database): <string>
+  +[unique_key](unique_key): <column_name_or_expression>
+  +[strategy](strategy): timestamp | check
+  +[updated_at](updated_at): <column_name>
+  +[check_cols](check_cols): [<column_name>] | all
 
 ```
+
+</File>
 
 </TabItem>
 

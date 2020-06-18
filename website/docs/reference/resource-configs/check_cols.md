@@ -20,8 +20,8 @@ datatype: "[column_name] | all"
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    strategy: check
-    unique_key: [column_name] | all
+    +strategy: check
+    +unique_key: [column_name] | all
 
 ```
 

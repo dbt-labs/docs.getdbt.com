@@ -35,8 +35,8 @@ select ...
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    strategy: timestamp
-    updated_at: column_name
+    +strategy: timestamp
+    +updated_at: column_name
 
 ```
 

@@ -24,8 +24,8 @@ title: Model configurations
 ```yaml
 models:
   [<resource-path>](resource-path):
-    [materialized](materialized): <materialization_name>
-    [sql_header](sql_header): <string>
+    +[materialized](materialized): <materialization_name>
+    +[sql_header](sql_header): <string>
 
 ```
 
@@ -72,13 +72,13 @@ models:
 ```yaml
 models:
   [<resource-path>](resource-path):
-    [enabled](enabled): true | false
-    [tags](tags): <string> | [<string>]
-    [pre-hook](pre-hook): <sql-statement> | [<sql-statement>]
-    [post-hook](post-hook): <sql-statement> | [<sql-statement>]
-    [database](resource-configs/database): <string>
-    [schema](resource-configs/schema): <string>
-    [alias](resource-configs/alias): <string>
+    +[enabled](enabled): true | false
+    +[tags](tags): <string> | [<string>]
+    +[pre-hook](pre-hook): <sql-statement> | [<sql-statement>]
+    +[post-hook](post-hook): <sql-statement> | [<sql-statement>]
+    +[database](resource-configs/database): <string>
+    +[schema](resource-configs/schema): <string>
+    +[alias](resource-configs/alias): <string>
 
 ```
 
@@ -142,13 +142,13 @@ models:
 
     # This configures models found in models/events/
     events:
-      enabled: true
-      materialized: view
+      +enabled: true
+      +materialized: view
 
       # This configures models found in models/events/base
       # These models will be ephemeral, as the config above is overridden
       base:
-        materialized: ephemeral
+        +materialized: ephemeral
 
       ...
 ```

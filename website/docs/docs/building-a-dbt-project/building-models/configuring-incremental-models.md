@@ -169,7 +169,7 @@ for all models in your `dbt_project.yml` file:
 # Your dbt_project.yml file
 
 models:
-  incremental_strategy: "insert_overwrite"
+  +incremental_strategy: "insert_overwrite"
 ```
 
 </File>

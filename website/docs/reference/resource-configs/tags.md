@@ -23,15 +23,15 @@ To tag a column, test, or source, use the [tag _property_](resource-properties/t
 
 models:
   [<resource-path>](resource-path):
-    [tags](tags): <string> | [<string>]
+    +[tags](tags): <string> | [<string>]
 
 snapshots:
   [<resource-path>](resource-path):
-    [tags](tags): <string> | [<string>]
+    +[tags](tags): <string> | [<string>]
 
 seeds:
   [<resource-path>](resource-path):
-    [tags](tags): <string> | [<string>]
+    +[tags](tags): <string> | [<string>]
 
 ```
 
@@ -73,19 +73,19 @@ Apply tags in your `dbt_project.yml` as a single value or a string:
 ```yml
 models:
   jaffle_shop:
-    tags: "contains_pii"
+    +tags: "contains_pii"
 
     staging:
-      tags:
+      +tags:
         - "hourly"
 
     marts:
-      tags:
+      +tags:
         - "hourly"
         - "published"
 
     metrics:
-      tags:
+      +tags:
         - "daily"
         - "published"
 
@@ -126,7 +126,7 @@ $ dbt run --model tag:daily --exclude tag:hourly
 seeds:
   jaffle_shop:
     utm_mappings:
-      tags: marketing
+      +tags: marketing
 ```
 
 </File>
@@ -137,7 +137,7 @@ seeds:
 seeds:
   jaffle_shop:
     utm_mappings:
-      tags:
+      +tags:
         - marketing
         - hourly
 ```

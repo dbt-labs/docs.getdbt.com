@@ -23,7 +23,7 @@ Post-hooks can also call macros that return SQL statements.
 ```yml
 
 seeds:
-  post-hook: "grant select on {{ this }} to group reporter"
+  +post-hook: "grant select on {{ this }} to group reporter"
 
 ```
 
@@ -36,7 +36,7 @@ seeds:
 ```yml
 
 seeds:
-  post-hook:
+  +post-hook:
     - "grant select on {{ this }} to group reporter"
     - "grant select on {{ this }} to group transformer"
 
@@ -51,7 +51,7 @@ seeds:
 ```yml
 
 seeds:
-  post-hook: "{{ grant_select(this) }}"
+  +post-hook: "{{ grant_select(this) }}"
 
 ```
 

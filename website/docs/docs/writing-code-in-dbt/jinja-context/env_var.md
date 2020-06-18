@@ -40,7 +40,7 @@ Be sure to quote the entire jinja string (as shown above), or else the yaml pars
 ...
 models:
   jaffle_shop:
-      materialized: "{{ env_var('DBT_MATERIALIZATION', 'view') }}"
+    +materialized: "{{ env_var('DBT_MATERIALIZATION', 'view') }}"
 ```
 
 </File>

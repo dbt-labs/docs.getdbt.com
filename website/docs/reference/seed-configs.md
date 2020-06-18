@@ -30,7 +30,7 @@ To apply a configuration to all seeds, including those in any installed [package
 ```yml
 
 seeds:
-  schema: seed_data
+  +schema: seed_data
 ```
 
 </File>
@@ -47,7 +47,7 @@ For a project named `jaffle_shop`:
 
 seeds:
   jaffle_shop:
-    schema: seed_data
+    +schema: seed_data
 ```
 
 </File>
@@ -66,7 +66,7 @@ seeds:
   jaffle_shop:
     marketing:
       utm_parameters:
-        schema: seed_data
+        +schema: seed_data
 ```
 
 </File>
@@ -86,16 +86,16 @@ name: jaffle_shop
 ...
 seeds:
   jaffle_shop:
-    enabled: true
-    schema: seed_data
+    +enabled: true
+    +schema: seed_data
     # This configures data/country_codes.csv
     country_codes:
       # Override column types
-      column_types:
+      +column_types:
         country_code: varchar(2)
         country_name: varchar(32)
     marketing:
-      schema: marketing # this will take precedence
+      +schema: marketing # this will take precedence
 ```
 
 </File>

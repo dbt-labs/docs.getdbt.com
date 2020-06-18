@@ -33,7 +33,7 @@ To learn more about changing the way that dbt generates a relation's `database`,
 
 ```yml
 seeds:
-  database: RAW
+  +database: RAW
 
 ```
 

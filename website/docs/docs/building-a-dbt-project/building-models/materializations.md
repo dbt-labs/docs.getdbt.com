@@ -35,10 +35,10 @@ models:
   my_project:
     events:
       # materialize all models in models/events as tables
-      materialized: table
+      +materialized: table
     csvs:
       # this is redundant, and does not need to be set
-      materialized: view
+      +materialized: view
 ```
 
 </File>

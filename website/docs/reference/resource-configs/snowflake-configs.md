@@ -29,7 +29,7 @@ name: my_project
 ...
 
 models:
-  transient: false
+  +transient: false
   my_project:
     ...
 ```
@@ -129,7 +129,7 @@ The `automatic_clustering` config can be specified in the `dbt_project.yml` file
 ```yaml
 
 models:
-  automatic_clustering: true
+  +automatic_clustering: true
 ```
 
 </File>
@@ -147,13 +147,13 @@ version: 1.0.0
 ...
 
 models:
-  snowflake_warehouse: "EXTRA_SMALL"
+  +snowflake_warehouse: "EXTRA_SMALL"
   my_project:
     clickstream:
-      snowflake_warehouse: "EXTRA_LARGE"
+      +snowflake_warehouse: "EXTRA_LARGE"
 
 snapshots:
-  snowflake_warehouse: "EXTRA_LARGE"
+  +snowflake_warehouse: "EXTRA_LARGE"
 ```
 
 ## Copying grants
@@ -165,7 +165,7 @@ When the `copy_grants` config is set to `true`, dbt will add the `copy grants` D
 ```yaml
 
 models:
-  copy_grants: true
+  +copy_grants: true
 ```
 
 </File>
@@ -186,8 +186,8 @@ version: 1.0.0
 models:
   my_project:
     sensitive:
-      materialized: view
-      secure: true
+      +materialized: view
+      +secure: true
 ```
 
 </File>

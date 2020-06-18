@@ -72,9 +72,9 @@ One of the most powerful features of dbt is that you can change the way a model 
 ```yaml
 models:
   jaffle_shop:
-    materialized: table
+    +materialized: table
     example:
-      materialized: view
+      +materialized: view
 ```
 
 </File>
@@ -133,9 +133,9 @@ We don't need the sample files that dbt created for us anymore! Let's delete the
 # before
 models:
   jaffle_shop:
-    materialized: table
+    +materialized: table
     example:
-      materialized: view
+      +materialized: view
 ```
 </File>
 
@@ -145,7 +145,7 @@ models:
 # after
 models:
   jaffle_shop:
-    materialized: table
+    +materialized: table
 ```
 
 </File>

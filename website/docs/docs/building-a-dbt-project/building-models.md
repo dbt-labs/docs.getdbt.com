@@ -115,11 +115,11 @@ name: jaffle_shop
 
 models:
   jaffle_shop: # this matches the `name:`` config
-    materialized: view # this applies to all models in the current project
+    +materialized: view # this applies to all models in the current project
       marts:
-        materialized: table # this applies to all models in the `marts/` directory
+        +materialized: table # this applies to all models in the `marts/` directory
         marketing:
-          schema: marketing # this applies to all models in the `marts/marketing/`` directory
+          +schema: marketing # this applies to all models in the `marts/marketing/`` directory
 
 ```
 

@@ -27,11 +27,11 @@ Configure groups of models from the `dbt_project.yml` file.
 
 <File name='dbt_project.yml'>
 
-```
+```yml
 models:
   jaffle_shop: # the name of a project
     marketing:
-      schema: marketing
+      +schema: marketing
 ```
 
 </File>
@@ -51,9 +51,9 @@ Configure individual models using a config block:
 ### Seeds
 <File name='dbt_project.yml'>
 
-```
+```yml
 seeds:
-  schema: mappings
+  +schema: mappings
 ```
 
 </File>

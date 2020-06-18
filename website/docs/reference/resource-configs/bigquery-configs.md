@@ -244,7 +244,7 @@ version: 1.0.0
 models:
   my_project:
     encrypted:
-      kms_key_name: 'projects/PROJECT_ID/locations/global/keyRings/test/cryptoKeys/quickstart'
+      +kms_key_name: 'projects/PROJECT_ID/locations/global/keyRings/test/cryptoKeys/quickstart'
 ```
 
 </File>
@@ -283,10 +283,10 @@ select * from {{ ref('another_model') }}
 models:
   my_project:
     snowplow:
-      labels:
+      +labels:
         domain: clickstream
     finance:
-      labels:
+      +labels:
         domain: finance
 ```
 

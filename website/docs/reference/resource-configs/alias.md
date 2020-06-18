@@ -34,7 +34,7 @@ The seed at `data/country_codes.csv` will be built as a table named `country_map
 seeds:
   jaffle_shop:
     country_codes:
-      alias: country_mappings
+      +alias: country_mappings
 
 ```
 

@@ -43,7 +43,7 @@ This is a **required** parameter, no default is provided.
 
 ```yml
 snapshots:
-  target_schema: snapshots
+  +target_schema: snapshots
 
 ```
 
@@ -58,7 +58,7 @@ Note: consider whether this use-case is right for you, as downstream `refs` will
 
 ```yml
 snapshots:
-  target_schema: "{% if target.name == 'prod' %}snapshots{% else %}{{ target.schema }}{% endif %}"
+  +target_schema: "{% if target.name == 'prod' %}snapshots{% else %}{{ target.schema }}{% endif %}"
 
 ```
 

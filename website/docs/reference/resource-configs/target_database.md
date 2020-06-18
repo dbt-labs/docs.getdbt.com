@@ -49,7 +49,7 @@ By default, dbt will use the [target](target) database associated with your prof
 
 ```yml
 snapshots:
-  target_database: snapshots
+  +target_database: snapshots
 
 ```
 
@@ -64,7 +64,7 @@ Note: consider whether this use-case is right for you, as downstream `refs` will
 
 ```yml
 snapshots:
-  target_database: "{% if target.name == 'dev' %}dev{% else %}{{ target.database }}{% endif %}"
+  +target_database: "{% if target.name == 'dev' %}dev{% else %}{{ target.database }}{% endif %}"
 
 ```
 
