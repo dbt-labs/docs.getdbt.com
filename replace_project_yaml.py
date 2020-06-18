@@ -29,7 +29,8 @@ config_keys = [
     'incremental_strategy',
     'cluster_by',
     'automatic_clustering',
-    'secure'
+    'secure',
+    'persist_docs'
 ]
 
 def fixPath(path):
