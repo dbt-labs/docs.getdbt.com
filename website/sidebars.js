@@ -31,12 +31,11 @@ module.exports = {
       "docs/building-a-dbt-project/documentation",
       "docs/building-a-dbt-project/using-sources",
       "docs/building-a-dbt-project/seeds",
-      "docs/building-a-dbt-project/hooks",
+      "docs/building-a-dbt-project/hooks-operations",
       "docs/building-a-dbt-project/snapshots",
       "docs/building-a-dbt-project/analyses",
       //"docs/building-a-dbt-project/dont-nest-your-curlies",
       //"docs/building-a-dbt-project/archival",
-      "docs/building-a-dbt-project/using-operations",
       "docs/building-a-dbt-project/package-management",
     ],
     "Writing Code in dbt": [
