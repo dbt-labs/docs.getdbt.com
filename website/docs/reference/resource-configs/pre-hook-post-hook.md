@@ -21,8 +21,8 @@ datatype: sql-statement | [sql-statement]
 
 models:
   [<resource-path>](resource-path):
-    pre-hook: <string> | [<string>]
-    post-hook: <string> | [<string>]
+    +pre-hook: <sql-statement> | [<sql-statement>]
+    +post-hook: <sql-statement> | [<sql-statement>]
 
 ```
 
@@ -33,8 +33,8 @@ models:
 ```sql
 
 {{ config(
-    pre_hook="<string>" | ["<string>"],
-    post_hook="<string>" | ["<string>"],
+    pre_hook="<sql-statement>" | ["<sql-statement>"],
+    post_hook="<sql-statement>" | ["<sql-statement>"],
 ) }}
 
 select ...
@@ -54,8 +54,8 @@ select ...
 
 seeds:
   [<resource-path>](resource-path):
-    pre-hook: <string> | [<string>]
-    post-hook: <string> | [<string>]
+    +pre-hook: <sql-statement> | [<sql-statement>]
+    +post-hook: <sql-statement> | [<sql-statement>]
 
 ```
 
@@ -71,8 +71,8 @@ seeds:
 
 snapshots:
   [<resource-path>](resource-path):
-    pre-hook: <string> | [<string>]
-    post-hook: <string> | [<string>]
+    +pre-hook: <sql-statement> | [<sql-statement>]
+    +post-hook: <sql-statement> | [<sql-statement>]
 
 ```
 
@@ -83,8 +83,8 @@ snapshots:
 ```sql
 {% snapshot snapshot_name %}
 {{ config(
-    pre_hook="<string>" | ["<string>"],
-    post_hook="<string>" | ["<string>"],
+    pre_hook="<sql-statement>" | ["<sql-statement>"],
+    post_hook="<sql-statement>" | ["<sql-statement>"],
 ) }}
 
 select ...
@@ -112,27 +112,27 @@ Pre- and post-hooks can also call macros that return SQL statements.
 
 
 ## Examples
-### Grant select privileges on a seed
+### Grant privileges on a model
 
 <File name='dbt_project.yml'>
 
 ```yml
 
-seeds:
-  post-hook: "grant select on {{ this }} to group reporter"
+models:
+  +post-hook: "grant select on {{ this }} to group reporter"
 
 ```
 
 </File>
 
-### Grant multiple select privileges on a seed
+### Grant multiple privileges on a model
 
 <File name='dbt_project.yml'>
 
 ```yml
 
-seeds:
-  post-hook:
+models:
+  +post-hook:
     - "grant select on {{ this }} to group reporter"
     - "grant select on {{ this }} to group transformer"
 
@@ -140,28 +140,116 @@ seeds:
 
 </File>
 
-### Call a macro to grant select privileges on a seed
+### Call a macro to grant privileges on a model
 
 <File name='dbt_project.yml'>
 
 ```yml
 
-seeds:
-  post-hook: "{{ grant_select(this) }}"
+model:
+  +post-hook: "{{ grant_select(this) }}"
 
 ```
 
 </File>
 
+
+### Grant privileges on a directory of models
+
+<File name='dbt_project.yml'>
+
+```yml
+
+model:
+  jaffle_shop: # this is the project name
+    marts:
+      marketing:
+        # this will be applied to all models in marts/marketing/
+        +post-hook: "{{ grant_select(this) }}"
+
+```
+
+</File>
+
+### Additional examples
+We've compiled some more in-depth examples [here](hooks-operations#additional-examples).
+
 ## Usage notes
 ### Hooks are cumulative
-
-### Transaction behavior
-
+If you define hooks in both your `dbt_project.yml` and in the `config` block of a model, both sets of hooks will be applied to your model.
 
 ### Execution ordering
-Multiple instances of any hook may be defined. In this case, dbt will run each hook using the following ordering:
+If multiple instances of any hooks are defined, dbt will run each hook using the following ordering:
+1. Hooks from dependent packages will be run before hooks in the active package.
+2. Hooks defined within the model itself will be run before hooks defined in `dbt_project.yml`.
+3. Hooks within a given context will be run in the order in which they are defined.
 
-- Hooks from dependent packages will be run before hooks in the active package.
-- Hooks defined within the model itself will be run before hooks defined in `dbt_project.yml`.
-- Hooks within a given context will be run in the order in which they are defined.
+
+### Transaction behavior
+If you're using an adapter that makes use of transactions (namely Postgres or Redshift), it's worth noting that by default hooks are executed inside of the same transaction as your model being created.
+
+There may be occasions where you need to run these hooks _outside_ of a transaction, for example:
+* You want to run a `VACUUM` in a `post-hook`, however this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
+* You want to insert a record into an audit table at the start of a run, and do not want that statement rolled back if the model creation fails.
+
+To achieve this, you can use one of the following syntaxes:
+
+#### Config block: use the `before_begin` and `after_commit` helper macros
+
+<File name='models/<modelname>.sql'>
+
+```sql
+{{
+  config(
+    pre_hook=before_begin("<sql-statement>"),
+    post_hook=after_commit("<sql-statement>")
+  )
+}}
+
+select ...
+
+```
+
+</File>
+
+#### Config block: use a dictionary
+<File name='models/<modelname>.sql'>
+
+```sql
+{{
+  config(
+    pre_hook={
+      "sql": "<sql-statement>",
+      "transaction": False
+    },
+    post_hook={
+      "sql": "<sql-statement>",
+      "transaction": False
+    }
+  )
+}}
+
+select ...
+
+```
+
+</File>
+
+#### `dbt_project.yml`: Use a dictionary
+
+<File name='dbt_project.yml'>
+
+```yml
+
+models:
+  +pre-hook:
+    sql: "<sql-statement>"
+    transaction: false
+  +post-hook:
+    sql: "<sql-statement>"
+    transaction: false
+
+
+```
+
+</File>
