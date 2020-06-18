@@ -16,7 +16,7 @@ default_value: true
 
 <File name='models/<modelname>.sql'>
 
-```jinja2
+```sql
 
 {{ config(
   enabled=true | false
@@ -62,7 +62,7 @@ seeds:
 
 <File name='snapshots/<filename>.sql'>
 
-```jinja2
+```sql
 {% snapshot [snapshot_name](snapshot_name) %}
 
 {{ config(
