@@ -11,6 +11,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 ```yml
 [name](project-configs/name): string
 
+[config-version](project-configs/config-version): 2
 [version](project-configs/version): version
 
 [profile](project-configs/profile): profilename

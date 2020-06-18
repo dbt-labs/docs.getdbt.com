@@ -112,6 +112,8 @@ Here's an example of model configuration:
 
 ```yaml
 name: jaffle_shop
+config-version: 2
+...
 
 models:
   jaffle_shop: # this matches the `name:`` config

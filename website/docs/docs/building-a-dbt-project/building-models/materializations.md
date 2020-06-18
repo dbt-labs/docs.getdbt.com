@@ -29,7 +29,7 @@ By default, dbt models are materialized as "views". Models can be configured wit
 
 name: my_project
 version: 1.0.0
-
+config-version: 2
 
 models:
   my_project:
