@@ -27,7 +27,7 @@ During initial installation, the KOTS appliance can be directly downloaded from 
 - `quay.io`: Some dependencies of Replicated are hosted as public images in the Quay.io registry.
 - `hub.docker.com`: Some dependencies of Replicated are hosted as public images in Docker Hub.
 
-Replicated maintains a list of Replicated-owned IPs for whitelisting purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
+Replicated maintains a list of Replicated-owned IPs for IP access restriction purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
 
 #### dbt Cloud Appliance Installation and Upgrades
 
@@ -55,7 +55,7 @@ To install the dbt Cloud appliance or perform updates, some external connections
 
 ```
 
-Replicated maintains a list of Replicated-owned IPs for whitelisting purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
+Replicated maintains a list of Replicated-owned IPs for IP access restriction purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
 
 #### Ongoing Access
 
@@ -71,7 +71,7 @@ In order to perform basic maintenance and license checking, the following outbou
 
 _Required for SSO integrations_
 
-Auth0 (https://auth0.com/) is a third-party service used by dbt Cloud to provide SSO integrations via SAML or Azure ADFS. Installations relying on SSO integrations must whitelist `auth.getdbt.com` to be accessed via HTTPS.
+Auth0 (https://auth0.com/) is a third-party service used by dbt Cloud to provide SSO integrations via SAML or Azure ADFS. Installations relying on SSO integrations must allow `auth.getdbt.com` to be accessed via HTTPS.
 
 #### Integrations
 
