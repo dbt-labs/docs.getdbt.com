@@ -38,6 +38,10 @@ If your organization is already using Airflow, that could be a great way to kick
 * Invoking dbt through the [BashOperator](https://airflow.apache.org/howto/operator/bash.html). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
 * Installing the [airflow-dbt](https://pypi.org/project/airflow-dbt/) python package. This package uses Airflow's operator and hook concept, the source code can be found on [github](https://github.com/gocardless/airflow-dbt).
 
+### Using Prefect
+If your organization is using [Prefect](https://www.prefect.io), it offers a supported task for scheduling, executing and monitoring your dbt runs. Prefect's DbtShellTask will help you to build and manage your profiles.yml file prior to executing your dbt commands. Here is the link to the documentation for the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask). 
+The source code for the DbtShellTask can be found on [github](https://github.com/PrefectHQ/prefect/blob/master/src/prefect/tasks/dbt/dbt.py).  Alternatively, you can use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) for executing dbt commands through the shell.   
+
 ### Using an automation server
 Automation servers, like CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-XBIIY2pFpc?t=1301)), Bamboo and Jenkins, can be used to schedule bash commands for dbt. They also provide a UI to view logging to the command line, and integrate with your git repository.
 
