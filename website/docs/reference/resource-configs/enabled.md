@@ -34,7 +34,7 @@ select ...
 ```yml
 models:
   [<resource-path>](resource-path):
-    enabled: true | false
+    +enabled: true | false
 
 ```
 
@@ -50,7 +50,7 @@ models:
 ```yml
 seeds:
   [<resource-path>](resource-path):
-    enabled: true | false
+    +enabled: true | false
 
 ```
 
@@ -82,7 +82,7 @@ select ...
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    enabled: true | false
+    +enabled: true | false
 
 ```
 
@@ -116,7 +116,7 @@ models:
   segment:
     base:
       segment_web_page_views:
-        enabled: false
+        +enabled: false
 ```
 
 </File>

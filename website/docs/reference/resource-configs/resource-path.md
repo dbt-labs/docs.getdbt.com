@@ -13,7 +13,7 @@ To apply a configuration to all models, do not use a `<resource-path>`:
 
 ```yml
 models:
-  enabled: false # this will disable all models (not a thing you probably want to do)
+  +enabled: false # this will disable all models (not a thing you probably want to do)
 ```
 
 </File>
@@ -27,7 +27,7 @@ name: jaffle_shop
 
 models:
   jaffle_shop:
-    enabled: false # this will apply to all models in your project, but not any installed packages
+    +enabled: false # this will apply to all models in your project, but not any installed packages
 ```
 
 </File>
@@ -42,7 +42,7 @@ name: jaffle_shop
 models:
   jaffle_shop:
     staging:
-      enabled: false # this will apply to all models in the `staging/` directory of your project
+      +enabled: false # this will apply to all models in the `staging/` directory of your project
 ```
 
 </File>
@@ -69,7 +69,7 @@ models:
     staging:
       stripe:
         payments:
-          enabled: false # this will apply to only one model
+          +enabled: false # this will apply to only one model
 ```
 
 </File>

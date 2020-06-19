@@ -25,7 +25,7 @@ and `snapshots:` keys in the `dbt_project.yml` file.
 
 ### Example configuration
 
-<File name="dbt_project.yml">
+<File name='dbt_project.yml'>
 
 ```yml
 name: my_project
@@ -37,7 +37,7 @@ version: 1.0.0
 models:
   my_project:
     facts:
-      materialized: "{{ 'view' if target.name == 'dev' else 'table' }}"
+      +materialized: "{{ 'view' if target.name == 'dev' else 'table' }}"
 ```
 
 </File>

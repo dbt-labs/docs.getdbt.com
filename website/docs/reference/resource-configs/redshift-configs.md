@@ -82,7 +82,7 @@ To make all views late-binding, configure your `dbt_project.yml` file like this:
 
 ```yaml
 models:
-  bind: false # Materialize all views as late-binding
+  +bind: false # Materialize all views as late-binding
   project_name:
     ....
 ```

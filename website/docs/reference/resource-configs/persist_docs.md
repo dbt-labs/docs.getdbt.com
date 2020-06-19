@@ -22,7 +22,7 @@ select ...
 ```yml
 models:
   [<resource-path>](resource-path):
-    persist_docs:
+    +persist_docs:
       relation: true
       columns: true
 
@@ -77,19 +77,6 @@ models:
 Enable `persist_docs` for columns and relations in your project:
 
 <File name='dbt_project.yml'>
-
-```yml
-models:
-  persist_docs:
-    relation: true
-    columns: true
-```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-Note that when using `config-version: 2` you will need to identify the `persist_docs` key as a config using the `+` config syntax:
 
 ```yml
 models:

@@ -45,9 +45,9 @@ Previous releases of dbt allowed variables (`vars:`) to be scoped to a folder le
 
 In version 2 of the `dbt_project.yml` config, vars must now be defined in a top-level `vars:` dictionary, eg:
 
-```yml
-# dbt_project.yml
+<File name='dbt_project.yml'>
 
+```yml
 name: my_project
 version: 1.0.0
 
@@ -56,10 +56,13 @@ config-version: 2
 vars:
   my_var: 1
   another_var: true
-  
+
 models:
   ...
 ```
+
+</File>
+
 
 This syntax makes variable scoping unambiguous, as all of the nodes in a given package will receive the same value for a given variable. Note that this syntax _does_ still support package-level variable scoping. See the docs on the `dbt_project.yml` file syntax for more information.
 
@@ -67,17 +70,19 @@ This syntax makes variable scoping unambiguous, as all of the nodes in a given p
 
 Version 1 of the `dbt_project.yml` file spec allowed for ambiguous model configurations when dictionary configs were defined in a `models:` block. Consider:
 
-```yml
-# dbt_project.yml
+<File name='dbt_project.yml'>
 
+```yml
 models:
   my_project:
     reporting:
       partition_by:
         field: date_day
-        data_type: timestamp	
-      
+        data_type: timestamp
+
 ```
+
+</File>
 
 This example is intended to configure a `partition_by` setting for all of the BigQuery models in the `models/reporting/` folder. From the syntax in this file alone though, there are two possible interpretations:
 
@@ -86,8 +91,9 @@ This example is intended to configure a `partition_by` setting for all of the Bi
 
 To resolve this ambiguity, configurations can now be supplied using the `+` syntax for config keys. For the example above, this would look like:
 
+<File name='dbt_project.yml'>
+
 ```yml
-# dbt_project.yml
 
 models:
   my_project:
@@ -96,8 +102,12 @@ models:
         field: date_day
         data_type: timestamp
 ```
+</File>
+
 
 This syntax unambiguously defines `partition_by` as a configuration with a dictionary value of `{field: date_day, data_type: timestamp}`. This `+` decorator can be used for _any_ configuration, and can be helpful if you have a folder name that collides with a known dbt project config key. Example:
+
+<File name='dbt_project.yml'>
 
 ```yml
 # Your model lives in models/materialized/my_model.sql
@@ -108,6 +118,8 @@ models:
       +materialized: table
 
 ```
+</File>
+
 
 This configuration will work in dbt v0.17.0 when `config-version: 2` is used, but was not possible to represent in previous versions of dbt.
 
@@ -173,9 +185,9 @@ environment that dbt is running in. In this example, models in the `admin`
 package will be disabled in dev. This was not possible in previous versions of
 dbt.
 
-```yml
-# dbt_project.yml
+<File name='dbt_project.yml'>
 
+```yml
 name: my_project
 version: 1.0.0
 
@@ -183,11 +195,14 @@ config-version: 2
 
 models:
   my_project:
-    enabled: true
+    +enabled: true
 
   admin:
-    enabled: "{{ target.name == 'prod' }}"
+    +enabled: "{{ target.name == 'prod' }}"
 ```
+
+</File>
+
 
 ### Accessing sources in the `graph` object
 

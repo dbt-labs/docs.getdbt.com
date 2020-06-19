@@ -256,6 +256,7 @@ module.exports = {
         items: [
           "reference/project-configs/analysis-paths",
           "reference/project-configs/clean-targets",
+          "reference/project-configs/config-version",
           "reference/project-configs/data-paths",
           "reference/project-configs/docs-paths",
           "reference/project-configs/log-path",
