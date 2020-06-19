@@ -6,6 +6,11 @@
     --ifm-color-danger: #ff694b !important;
 }
 
+.admonition h5 {
+    text-transform: none;
+    font-size: 1rem;
+}
+
 h1, h2, h3 {
     font-family: "dbt-brand"
 }
