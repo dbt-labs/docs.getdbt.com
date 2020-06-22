@@ -75,7 +75,7 @@ models:
     +[enabled](enabled): true | false
     +[tags](tags): <string> | [<string>]
     +[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    +[post-hook](post-hook-post-hook): <sql-statement> | [<sql-statement>]
+    +[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     +[database](resource-configs/database): <string>
     +[schema](resource-configs/schema): <string>
     +[alias](resource-configs/alias): <string>

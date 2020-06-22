@@ -5,7 +5,7 @@ id: "run-operation"
 
 ### Overview
 
-The `dbt run-operation` command is used to invoke a macro from the CLI. For usage information, consult the guide on [using operations](using-operations).
+The `dbt run-operation` command is used to invoke a macro from the CLI. For usage information, consult the docs on [operations](hooks-operations#hooks).
 
 ### Usage
 ```
