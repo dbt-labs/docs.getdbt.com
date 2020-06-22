@@ -86,7 +86,7 @@ Often when transforming data, it makes sense to do so in a staged approach. dbt 
 
 Rather than selecting from existing tables and views in your warehouse, you can select from _another model_, like so:
 
-<File name='/models/payments.sql'>
+<File name='/models/orders.sql'>
 
 ```sql
 select
