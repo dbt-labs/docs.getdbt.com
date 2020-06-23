@@ -58,7 +58,6 @@ module.exports = {
       type: "category",
       label: "Writing Code in dbt",
       items: [
-        "docs/writing-code-in-dbt/using-jinja",
         {
           type: "category",
           label: "Jinja Function Reference",
@@ -409,6 +408,7 @@ module.exports = {
     {
       type: "category",
       label: "Getting Started",
+      collapsed: false,
       items: [
         "tutorial/setting-up",
         {
@@ -424,6 +424,14 @@ module.exports = {
         "tutorial/deploy-your-project",
       ],
     },
+    {
+      type: "category",
+      label: "Leveling up",
+      collapsed: false,
+      items: [
+        "tutorial/using-jinja",
+      ]
+    }
   ],
   learn: [
     {

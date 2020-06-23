@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Using Jinja"
+title: "Using Jinja"
 id: "using-jinja"
 ---
 

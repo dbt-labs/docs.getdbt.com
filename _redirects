@@ -130,7 +130,7 @@
 /docs/using-custom-database	/docs/building-a-dbt-project/building-models/using-custom-database	302
 /docs/using-custom-schemas	/docs/building-a-dbt-project/building-models/using-custom-schemas	302
 /docs/using-dbt-cloud	/docs/dbt-cloud/using-dbt-cloud	302
-/docs/using-jinja	/docs/writing-code-in-dbt/using-jinja	302
+/docs/using-jinja	/tutorial/using-jinja	302
 /docs/using-operations	/docs/building-a-dbt-project/hooks-operations	302
 /docs/using-sources	/docs/building-a-dbt-project/using-sources	302
 /docs/using-sql-headers	/reference/resource-configs/sql_header	302
@@ -179,3 +179,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/building-a-dbt-project/using-operations	/docs/building-a-dbt-project/hooks-operations	302
 /docs/writing-code-in-dbt/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302
+/docs/writing-code-in-dbt/using-jinja	/tutorial/using-jinja	302
