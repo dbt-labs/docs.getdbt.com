@@ -3,6 +3,7 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
+      collapsed: false,
       items: [
         "docs/introduction",
       ],
@@ -24,6 +25,7 @@ module.exports = {
     {
       type: "category",
       label: "Building a dbt Project",
+      collapsed: false,
       items: [
         "docs/building-a-dbt-project/projects",
         {
