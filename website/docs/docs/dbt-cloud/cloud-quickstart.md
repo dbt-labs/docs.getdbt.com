@@ -15,7 +15,7 @@ When creating a new dbt Cloud account, you will be prompted to move through the 
 
 Let's get started!
 
-## Connect your database
+## Create a connection
 
 dbt Cloud uses this connection to _connect_ to your database when running jobs and transformation queries. Depending on the type of data warehouse you're using, you'll need to supply [different configuration parameters](connecting-your-database.md). dbt Cloud natively supports connections to Snowflake, BigQuery, Redshift and Postgres.
 
