@@ -10,7 +10,7 @@ id: "seeds"
 ## Getting started
 Seeds are CSV files in your dbt project (typically in your `data` directory), that dbt can load into your data warehouse using the `dbt seed` command.
 
-Seeds can be referenced in downstream models the same way as referencing models — by using the `ref` [function](docs/writing-code-in-dbt/jinja-context/ref.md).
+Seeds can be referenced in downstream models the same way as referencing models — by using the `ref` [function](dbt-jinja-functions/ref).
 
 Because these CSV files are located in your dbt repository, they are version controlled and code reviewable. Seeds are best suited to static data which changes infrequently.
 

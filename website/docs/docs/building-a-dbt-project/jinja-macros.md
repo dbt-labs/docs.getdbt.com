@@ -5,7 +5,7 @@ id: "jinja-macros"
 
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/) (external link)
-* [dbt Jinja context](adapter)
+* [dbt Jinja context](dbt-jinja-functions)
 * [Macro properties](macro-properties)
 
 ## Overview
