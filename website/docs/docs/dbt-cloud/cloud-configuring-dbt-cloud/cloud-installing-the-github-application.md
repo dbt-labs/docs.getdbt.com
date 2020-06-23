@@ -27,6 +27,6 @@ Note that only the Github admin who sets up new dbt Cloud projects needs to conn
 
 ## Connect your personal GitHub account
 
-To connect your personal GitHub account, navigate to your [User Profile](https://cloud.getdbt.com/#/profile/) select the [Integrations section](https://cloud.getdbt.com/#/profile/integrations/) from the left sidebar. Under “GitHub”, if your account is already connected, you’ll see "Your user account is linked to a GitHub account with username <your-github-username>."
+To connect your personal GitHub account, navigate to your [User Profile](https://cloud.getdbt.com/#/profile/) select the [Integrations section](https://cloud.getdbt.com/#/profile/integrations/) from the left sidebar. Under “GitHub”, if your account is already connected, you’ll see "Your user account is linked to a GitHub account with username &lt;your-github-username&gt;."
 
 If your account is not connected, you’ll see "This account is not linked to a GitHub account.” Click the button to begin the setup process. You’ll be redirected to GitHub, and then back into dbt Cloud. When you are redirected to dbt Cloud, you should now see your connected account. The next time you log into dbt Cloud, you will be able to do so via oauth through GitHub.
