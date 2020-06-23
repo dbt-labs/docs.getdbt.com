@@ -25,7 +25,7 @@ Effective database administration sometimes requires additional SQL statements t
 - Create a share on Snowflake
 - Cloning a database on Snowflake
 
-dbt provides two different interfaces for you to version control, and execute these statements as part of your dbt project — hooks and operations.
+dbt provides two different interfaces for you to version control and execute these statements as part of your dbt project — hooks and operations.
 
 ### Hooks
 Hooks are snippets of SQL that are executed at different times:
