@@ -59,7 +59,7 @@
 /docs/exit-codes	/docs/running-a-dbt-project/command-line-interface/exit-codes	302
 /docs/flags	/docs/writing-code-in-dbt/jinja-context/flags	302
 /docs/fromjson	/docs/writing-code-in-dbt/jinja-context/fromjson	302
-/docs/getting-started-with-jinja	/docs/writing-code-in-dbt/getting-started-with-jinja	302
+/docs/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
 /docs/global-cli-flags	/docs/running-a-dbt-project/command-line-interface/global-cli-flags	302
 /docs/graph	/docs/writing-code-in-dbt/jinja-context/graph	302
 /docs/hooks	/docs/building-a-dbt-project/hooks-operations	302
@@ -72,7 +72,7 @@
 /docs/list	/docs/running-a-dbt-project/command-line-interface/list	302
 /docs/log	/docs/writing-code-in-dbt/jinja-context/log	302
 /docs/macos	/docs/running-a-dbt-project/using-the-command-line-interface/macos	302
-/docs/macros	/docs/writing-code-in-dbt/macros	302
+/docs/macros	/docs/building-a-dbt-project/macros	302
 /docs/managing-environments	/docs/guides/managing-environments	302
 /docs/materializations	/docs/building-a-dbt-project/building-models/materializations	302
 /docs/model-selection-syntax	/docs/running-a-dbt-project/command-line-interface/model-selection-syntax	302
@@ -177,3 +177,5 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/resource-configs/post-hook	/reference/resource-configs/pre-hook-post-hook	302
 /docs/building-a-dbt-project/hooks	/docs/building-a-dbt-project/hooks-operations	302
 /docs/building-a-dbt-project/using-operations	/docs/building-a-dbt-project/hooks-operations	302
+/docs/writing-code-in-dbt/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
+/docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302

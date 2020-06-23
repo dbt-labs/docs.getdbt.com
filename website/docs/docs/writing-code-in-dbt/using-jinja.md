@@ -3,8 +3,6 @@ title: "Tutorial: Using Jinja"
 id: "using-jinja"
 ---
 
-
-
 In this tutorial, we're going to take a common pattern used in SQL, and then use Jinja to improve our code.
 
 If you'd like to work through this query, add [this CSV](https://github.com/fishtown-analytics/jaffle_shop/blob/master/data/raw_payments.csv) to the `data/` folder of your dbt project, and then execute `dbt seed`.
@@ -218,7 +216,7 @@ The easiest way to use a statement is through the [run_query](run_query) macro. 
 select distinct
 payment_method
 from {{ ref('raw_payments') }}
-order by 1 
+order by 1
 {% endset %}
 
 {% set results = run_query(payment_methods_query) %}
@@ -247,7 +245,7 @@ This is actually an [Agate table](https://agate.readthedocs.io/en/1.1.0/api/tabl
 select distinct
 payment_method
 from app_data.payments
-order by 1 
+order by 1
 {% endset %}
 
 {% set results = run_query(payment_methods_query) %}
