@@ -62,7 +62,7 @@
 /docs/getting-started-with-jinja	/docs/writing-code-in-dbt/getting-started-with-jinja	302
 /docs/global-cli-flags	/docs/running-a-dbt-project/command-line-interface/global-cli-flags	302
 /docs/graph	/docs/writing-code-in-dbt/jinja-context/graph	302
-/docs/hooks	/docs/building-a-dbt-project/hooks	302
+/docs/hooks	/docs/building-a-dbt-project/hooks-operations	302
 /docs/init	/docs/running-a-dbt-project/command-line-interface/init	302
 /docs/install-from-source	/docs/running-a-dbt-project/using-the-command-line-interface/install-from-source	302
 /docs/installation	/docs/running-a-dbt-project/using-the-command-line-interface/installation	302
@@ -131,7 +131,7 @@
 /docs/using-custom-schemas	/docs/building-a-dbt-project/building-models/using-custom-schemas	302
 /docs/using-dbt-cloud	/docs/dbt-cloud/using-dbt-cloud	302
 /docs/using-jinja	/docs/writing-code-in-dbt/using-jinja	302
-/docs/using-operations	/docs/building-a-dbt-project/using-operations	302
+/docs/using-operations	/docs/building-a-dbt-project/hooks-operations	302
 /docs/using-sources	/docs/building-a-dbt-project/using-sources	302
 /docs/using-sql-headers	/reference/resource-configs/sql_header	302
 /docs/using-the-command-line-interface	/docs/running-a-dbt-project/using-the-command-line-interface	302
@@ -171,3 +171,9 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/building-a-dbt-project/testing-and-documentation/testing  /docs/building-a-dbt-project/tests  302
 /docs/building-a-dbt-project/testing-and-documentation/documentation  /docs/building-a-dbt-project/testing-and-documentation/documentation  302
 /docs/building-a-dbt-project/testing-and-documentation/documentation-website  /docs/building-a-dbt-project/testing-and-documentation/documentation  302
+/docs/reference/project-configs/on-run-start  /docs/reference/project-configs/on-run-start-on-run-end  302
+/docs/reference/project-configs/on-run-end  /docs/reference/project-configs/on-run-start-on-run-end  302
+/docs/reference/resource-configs/pre-hook /docs/reference/resource-configs/pre-hook-post-hook 302
+/docs/reference/resource-configs/post-hook /docs/reference/resource-configs/pre-hook-post-hook 302
+/docs/building-a-dbt-project/hooks  /docs/building-a-dbt-project/hooks-operations 302
+/docs/building-a-dbt-project/using-operations /docs/building-a-dbt-project/hooks-operations 302
