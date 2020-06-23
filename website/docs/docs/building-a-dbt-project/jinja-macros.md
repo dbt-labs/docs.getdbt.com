@@ -154,6 +154,7 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 <FAQ src="jinja-whitespace" />
 <FAQ src="debugging-jinja" />
 <FAQ src="documenting-macros" />
+<FAQ src="why-so-many-macros" />
 
 ## dbtonic Jinja
 
