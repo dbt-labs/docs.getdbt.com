@@ -38,8 +38,8 @@
 /docs/connecting-your-database	/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database	302
 /docs/contributor-license-agreements	/docs/contributing/contributor-license-agreements	302
 /docs/creating-a-project	/docs/building-a-dbt-project/dbt-projects/creating-a-project	302
-/docs/creating-new-materializations	/docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations	302
-/docs/custom-schema-tests	/docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests	302
+/docs/creating-new-materializations	/docs/guides/creating-new-materializations	302
+/docs/custom-schema-tests	/docs/guides/writing-custom-schema-tests	302
 /docs/dbt-api	/docs/running-a-dbt-project/dbt-api	302
 /docs/dbt-cloud-enterprise	/docs/dbt-cloud/dbt-cloud-enterprise	302
 /docs/dbt-projects	/docs/building-a-dbt-project/dbt-projects	302
@@ -180,3 +180,5 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/writing-code-in-dbt/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/using-jinja	/tutorial/using-jinja	302
+/docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations	/docs/guides/creating-new-materializations	302
+/docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests	/docs/guides/writing-custom-schema-tests	302

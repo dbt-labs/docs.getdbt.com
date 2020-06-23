@@ -99,14 +99,6 @@ module.exports = {
           ],
         },
         "docs/writing-code-in-dbt/class-reference",
-        {
-          type: "category",
-          label: "Extending dbt's Programming Environment",
-          items: [
-            "docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations",
-            "docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests",
-          ],
-        },
       ],
     },
     {
@@ -169,7 +161,9 @@ module.exports = {
       items: [
         "docs/guides/best-practices",
         "docs/guides/managing-environments",
+        "docs/guides/writing-custom-schema-tests",
         "docs/guides/building-packages",
+        "docs/guides/creating-new-materializations",
         {
           type: "category",
           label: "Migration Guides",

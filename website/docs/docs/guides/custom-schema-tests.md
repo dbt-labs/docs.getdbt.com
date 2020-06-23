@@ -1,6 +1,6 @@
 ---
-title: "Custom schema tests"
-id: "custom-schema-tests"
+title: "Writing custom schema tests"
+id: "writing-custom-schema-tests"
 ---
 
 dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) schema tests. Under the hood, these schema tests are defined as macros in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/fishtown-analytics/dbt/tree/development/dbt/include/global_project/macros/schema_tests).
