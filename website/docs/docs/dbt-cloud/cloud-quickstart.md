@@ -29,7 +29,7 @@ dbt Cloud plugs directly into your version control system (GitHub, GitLab, BitBu
 
 If you've [installed the dbt Cloud application in your GitHub account](cloud-installing-the-github-application), then you will be able to select a repo from your GitHub org using this interface. If you're not using GitHub, or if you haven't installed the integration yet, you can optionally connect a git repository by [providing a git URL](cloud-import-a-project-by-git-url) from the "Git URL" tab.
 
-You’ll find the “Managed” tab useful if you do not already have a git repository for your dbt project, you can let [dbt Cloud manage a repository](cloud-using-a-managed-repository) for you.
+You’ll find the “Managed” tab useful if you do not already have a git repository for your dbt project. With this option, you can let [dbt Cloud manage a repository](cloud-using-a-managed-repository) for you.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-repository.png" title="Adding a new repository from GitHub"/>
 
