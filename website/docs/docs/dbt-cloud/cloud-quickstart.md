@@ -52,4 +52,4 @@ Now that dbt Cloud is able to clone your dbt repo and connect to your warehouse,
 
 Job schedules can be configured from the job creation interface. You can either schedule your job using the visual editor, or you can enter a custom cron syntax for your job.
 
-<Lightbox src="/img/docs/dbt-quickstart-new-job-schedule.png" title="Setting a job schedule"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job-schedule.png" title="Setting a job schedule"/>
