@@ -5,6 +5,30 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.2 (June 23, 2020)
+
+This branch includes an important security fix, two new versions of dbt, and some miscellaneous fixes.
+
+#### Enhancements
+
+- Add project names to the account settings notifications section
+- Add dbt 0.17.1 release candidate
+- Update development dbt version to Marian Anderson
+- Add remember me to login page and expire user sessions at browser close
+- Adding Auth Provider and enabling Gsuite SSO for enterprise customers
+
+#### Fixed
+
+- \[Security\] Fix intra-account API key leakage
+- Support queries containing unicode characters in the IDE
+
+#### Internal
+
+- Remove all usage of outdated `environments_develop` permission
+- Add profiling utility
+- Replace cloudwatch client with datadog client
+- Cleanup git service GitBranch code
+
 ## dbt Cloud v1.1.1 (June 9, 2020)
 
 This release includes dbt 0.17.0 and a number of IDE quality of life improvements.
