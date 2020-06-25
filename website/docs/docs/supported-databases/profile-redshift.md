@@ -56,9 +56,10 @@ my-redshift-db:
       cluster_id: [cluster_id]
       host: hostname.region.redshift.amazonaws.com
       user: alice
-      iam_duration_seconds: 900 # optional
-      autocreate: true          # optional
-      db_groups: ['analysts']   # optional
+      iam_profile: data_engineer # optional
+      iam_duration_seconds: 900  # optional
+      autocreate: true           # optional
+      db_groups: ['analysts']    # optional
 
       # Other Redshift configs:
       port: 5439
@@ -69,6 +70,31 @@ my-redshift-db:
       # search_path: public # optional, but not recommended
 ```
 
+</File>
+
+Ideally, the region and access keys should be configured in the usual `~/.aws` folder,
+via profiles you can then specify using the `iam_profile` option.
+
+A sample `~/.aws/config` file would be:
+<File name='~/.aws/config.yml'>
+
+```
+[profile data_engineer]
+role_arn=arn:aws:iam::<you-account-id>:role/Data_Engineer
+region = eu-west-1
+source_profile = default
+```
+
+</File>
+where the `source_profile` would be the profile that holds the access credentials, set in the `~/.aws/credentials` file
+
+<File name='~/.aws/config.yml'>
+
+```
+[default]  # 'default' profile
+aws_access_key_id=<access-key>
+aws_secret_access_key=<secret-access-key>
+```
 </File>
 
 ## Redshift notes
