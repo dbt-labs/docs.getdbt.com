@@ -5,7 +5,7 @@ id: "projects"
 
 ## Related reference docs
 * [`dbt_project.yml` configurations](reference/dbt_project.yml.md)
-* The [`dbt init` command](docs/running-a-dbt-project/command-line-interface/init.md)
+* The [`dbt init` command](init)
 
 ## Getting started
 A dbt project is a directory of `.sql` and `.yml` files, which dbt uses to transform your data. At a minimum, a dbt project must contain:

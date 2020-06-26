@@ -257,7 +257,7 @@ BigQuery:
 
 **Core**
 - [`path:` selectors](model-selection-syntax#the-path-operator)
-- [`--fail-fast`](command-line-interface/run#failing-fast)
+- [`--fail-fast`](commands/run#failing-fast)
 - [as_text Jinja filter](dbt-jinja-functions/as_text)
 - [accessing nodes in the `graph` object](dbt-jinja-functions/graph)
 - [persist_docs](resource-configs/persist_docs)

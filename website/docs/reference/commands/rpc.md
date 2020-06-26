@@ -243,7 +243,7 @@ The following methods make it possible to run dbt projects via the RPC server.
 
 ### Run tests
 
-**Parameters:** ([docs](test))
+**Parameters:** ([docs](commands/test))
  - `models`: The space-delimited set of models to include in testing (optional)
  - `exclude`: The space-delimited set of models to exclude from testing (optional)
  - `data`: If True, run data tests (optional, default=true)
