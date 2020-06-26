@@ -3,7 +3,7 @@ title: "dbt Jinja Functions"
 ---
 
 In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.com/en/2.11.x/templates/)), we've added additional functions and variables to the Jinja context that are useful when working with a dbt project:
-* [adapter](adapter)
+* [adapter](dbt-jinja-functions/adapter)
 * [as_text](as_text)
 * [builtins](builtins)
 * [config](config)
