@@ -397,6 +397,7 @@ module.exports = {
         "reference/dbt-classes",
       ],
     },
+    "reference/dbt-artifacts"
   ],
   tutorial: [
     {

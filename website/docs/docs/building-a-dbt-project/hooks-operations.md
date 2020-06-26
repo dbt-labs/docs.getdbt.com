@@ -8,7 +8,7 @@ id: "hooks-operations"
 * [on-run-start & on-run-end](on-run-start-on-run-end)
 * [`run-operation` command](run-operation)
 
-## Assumed knowledge:
+## Assumed knowledge
 * [Project configurations](dbt_project.yml)
 * [Model configurations](model-configs)
 * [Macros](macros)

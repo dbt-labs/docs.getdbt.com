@@ -15,4 +15,4 @@ models:
     consequat.
 ```
 
-2. Use a [docs block](https://docs.getdbt.com/docs/documentation#section-docs-blocks) to write the description in a Markdown file.
+2. Use a [docs block](/documentation#using-docs-blocks) to write the description in a Markdown file.
