@@ -27,10 +27,10 @@ The following adapter functions are deprecated, and will be removed in a future 
 ## get_missing_columns
 __Args__:
 
- * `from_relation`: The source [Relation](class-reference#relation)
- * `to_relation`: The target [Relation](class-reference#relation)
+ * `from_relation`: The source [Relation](dbt-classes#relation)
+ * `to_relation`: The target [Relation](dbt-classes#relation)
 
-Returns a list of [Columns](class-reference#column) that is the difference of the columns in the `from_table`
+Returns a list of [Columns](dbt-classes#column) that is the difference of the columns in the `from_table`
 and the columns in the `to_table`, i.e. (`set(from_relation.columns) - set(to_table.columns)`).
 Useful for detecting new columns in a source table.
 
@@ -55,8 +55,8 @@ Useful for detecting new columns in a source table.
 ## expand_target_column_types
 __Args__:
 
- * `from_relation`: The source [Relation](class-reference#relation) to use as a template
- * `to_relation`: The [Relation](class-reference#relation) to mutate
+ * `from_relation`: The source [Relation](dbt-classes#relation) to use as a template
+ * `to_relation`: The [Relation](dbt-classes#relation) to mutate
 
 Expand the `to_relation` table's column types to match the schema of `from_relation`. Column expansion is constrained to string and numeric types on supported databases. Typical usage involves expanding column types (from eg. `varchar(16)` to `varchar(32)`) to support insert statements.
 
@@ -81,7 +81,7 @@ __Args__:
  * `schema`: The schema of the relation to fetch
  * `identifier`: The identifier of the relation to fetch
 
-Returns a [Relation](class-reference#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
+Returns a [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
 
 **Usage**:
 
@@ -104,9 +104,9 @@ Returns a [Relation](class-reference#relation) object identified by the `databas
 ## get_columns_in_relation
 __Args__:
 
- * `relation`: The [Relation](class-reference#relation) to find the columns for
+ * `relation`: The [Relation](dbt-classes#relation) to find the columns for
 
-Returns a list of [Columns](class-reference#column) in a table.
+Returns a list of [Columns](dbt-classes#column) in a table.
 
 **Usage**:
 
@@ -222,7 +222,7 @@ __Args__:
  * `schema_name`: The schema to test
  * `table_name`: The table (or view) from which to select columns
 
-Returns a list of [Columns](class-reference#column) in a table.
+Returns a list of [Columns](dbt-classes#column) in a table.
 
 <File name='models/example.sql'>
 

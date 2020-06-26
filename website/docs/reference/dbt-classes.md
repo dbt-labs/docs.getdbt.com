@@ -1,6 +1,5 @@
 ---
-title: "Class Reference"
-id: "class-reference"
+title: "dbt Classes"
 ---
 
 dbt has a number of classes it uses to represent objects in a data warehouse, parts of a dbt project, and the results of a command.
@@ -13,7 +12,7 @@ The `Relation` object is used to interpolate schema and table names into SQL cod
 
 ### Creating Relations
 
-A `Relation` can be created by calling the `create` classmethod on the `Relation` class.
+A `Relation` can be created by calling the `create` class method on the `Relation` class.
 
 <File name='Relation.create'>
 

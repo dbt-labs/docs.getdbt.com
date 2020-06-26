@@ -5,7 +5,7 @@ id: "using-sources"
 
 ## Related reference docs
 * [Source properties](source-properties)
-* [`{{ source() }}` jinja function](jinja-context/source)
+* [`{{ source() }}` jinja function](dbt-jinja-functions/source)
 * [`source snapshot-freshness` command](command-line-interface/source)
 
 ## Using sources
@@ -40,7 +40,7 @@ If you're not already familiar with these files, be sure to check out [the docum
 
 ### Selecting from a source
 
-Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](jinja-context/source).
+Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](dbt-jinja-functions/source).
 
 
 <File name='models/orders.sql'>

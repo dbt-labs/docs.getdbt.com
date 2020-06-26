@@ -96,7 +96,7 @@ on-run-end:
 
 
 ## Results
-The `results` variable contains a list of [Result objects](class-reference#result-objects) with one element per resource that executed in the dbt job.
+The `results` variable contains a list of [Result objects](dbt-classes#result-objects) with one element per resource that executed in the dbt job.
 
 Example usage:
 
