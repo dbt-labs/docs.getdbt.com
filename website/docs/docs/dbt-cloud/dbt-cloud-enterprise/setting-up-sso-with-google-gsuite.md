@@ -1,5 +1,5 @@
 ---
-title: "Setting up SSO with Google GSuite"
+title: "Setting up SSO with GSuite"
 id: "setting-up-sso-with-google-gsuite"
 ---
 
