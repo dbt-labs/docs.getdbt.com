@@ -21,7 +21,7 @@ Currently supported features include:
 ## Configuration
 
 dbt Cloud supports both single tenant and multitenant Azure Active Directory SSO
-Connections. For most Enterprise purposes, you will want to use the Single
+Connections. For most Enterprise purposes, you will want to use the single
 tenant flow when creating an Azure AD Application.
 
 ### Creating an application
@@ -53,17 +53,22 @@ the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
 the **Redirect URI** configuration shown below.
 :::
 
-
 5. Under **Manage**, click the **Authentication** link
-6. Add a **Platform configuration** for the dbt Cloud **Redirect URI**
+6. Add a **Platform configuration** for the dbt Cloud **Redirect URI**. For most
+   typical enterprise use-cases, you will only need to supply the Single-Tenant
+   Redirect URI shown below.
 
-| Field | Value |
+| Application Type | Redirect URI |
 | ----- | ----- |
-| Redirect URI | `https://cloud.getdbt.com/complete/azure` |
+| Single-Tenant _(recommended)_ | `https://cloud.getdbt.com/complete/azure_single_tenant` |
+| Multi-Tenant | `https://cloud.getdbt.com/complete/azure_multi_tenant` |
 
 7. Verify that the Redirect URI has been added successfully and save the page to continue
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
+
+
+
 
 ### Configuring permissions
 
