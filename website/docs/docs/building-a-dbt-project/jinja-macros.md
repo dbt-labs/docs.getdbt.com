@@ -180,7 +180,7 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 -- ✅ This is our preferred method of setting variables
 {% set payment_methods = ["bank_transfer", "credit_card", "gift_card"] %}
 
-{% for payment_methods in payment_methods %}
+{% for payment_method in payment_methods %}
 ...
 {% endfor %}
 ```
