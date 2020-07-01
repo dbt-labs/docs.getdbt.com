@@ -43,35 +43,10 @@ module.exports = {
     {
       type: "category",
       label: "Running a dbt Project",
+      collapsed: false,
       items: [
-        {
-          type: "category",
-          label: "dbt Command Reference",
-          items: [
-
-          ],
-        },
         "docs/running-a-dbt-project/using-the-dbt-ide",
-        {
-          type: "category",
-          label: "Using the CLI",
-          items: [
-            "docs/running-a-dbt-project/using-the-command-line-interface",
-            "docs/running-a-dbt-project/using-the-command-line-interface/installation",
-            "docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile",
-            {
-              type: "category",
-              label: "Installation instructions",
-              items: [
-                "docs/running-a-dbt-project/using-the-command-line-interface/macos",
-                "docs/running-a-dbt-project/using-the-command-line-interface/windows",
-                "docs/running-a-dbt-project/using-the-command-line-interface/ubuntu-debian",
-                "docs/running-a-dbt-project/using-the-command-line-interface/centos",
-                "docs/running-a-dbt-project/using-the-command-line-interface/install-from-source",
-              ],
-            },
-          ],
-        },
+        "docs/running-a-dbt-project/using-the-cli",
         "docs/running-a-dbt-project/dbt-api",
         "docs/running-a-dbt-project/running-dbt-in-production",
       ],
@@ -120,6 +95,22 @@ module.exports = {
         "docs/about/viewpoint",
       ],
     },
+  ],
+  "dbt CLI": [
+    "dbt-cli/cli-overview",
+    "dbt-cli/installation",
+    {
+      type: "category",
+      label: "Installation guides",
+      items: [
+        "dbt-cli/installation-guides/macos",
+        "dbt-cli/installation-guides/windows",
+        "dbt-cli/installation-guides/ubuntu-debian",
+        "dbt-cli/installation-guides/centos",
+        "dbt-cli/installation-guides/install-from-source",
+      ],
+    },
+    "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
     "docs/dbt-cloud/cloud-overview",

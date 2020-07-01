@@ -9,7 +9,7 @@ id: "hooks-operations"
 * [`run-operation` command](run-operation)
 
 ## Assumed knowledge
-* [Project configurations](dbt_project.yml)
+* [Project configurations](reference/dbt_project.yml.md)
 * [Model configurations](model-configs)
 * [Macros](macros)
 
