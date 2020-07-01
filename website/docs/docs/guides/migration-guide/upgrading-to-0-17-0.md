@@ -265,4 +265,4 @@ BigQuery:
 - [source overrides](resource-properties/overrides)
 
 **BigQuery**
-- [maximum_bytes_billed](profile-bigquery#maximum-bytes-billed)
+- [maximum_bytes_billed](bigquery-profile#maximum-bytes-billed)

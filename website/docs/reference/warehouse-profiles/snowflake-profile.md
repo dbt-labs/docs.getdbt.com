@@ -1,6 +1,5 @@
 ---
-title: "Snowflake"
-id: "profile-snowflake"
+title: "Snowflake Profile"
 ---
 
 ## Authentication Methods

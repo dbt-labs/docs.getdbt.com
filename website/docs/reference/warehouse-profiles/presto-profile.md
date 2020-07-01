@@ -1,6 +1,5 @@
 ---
-title: "Presto"
-id: "profile-presto"
+title: "Presto Profile"
 ---
 
 ## Set up a Presto Target
@@ -45,7 +44,7 @@ pip install dbt-presto
 
 Due to the nature of Presto, not all core dbt functionality is supported. The following features of dbt are not implemented on Presto:
 
-1. [Snapshots](snapshots) 
+1. [Snapshots](snapshots)
 2. [Incremental models](configuring-incremental-models)
 
 If you are interested in helping to add support for this functionality in dbt on Presto, please [open an issue](https://github.com/fishtown-analytics/dbt-presto/issues/new).

@@ -1,6 +1,5 @@
 ---
-title: "Postgres"
-id: "profile-postgres"
+title: "Postgres Profile"
 ---
 
 ## Profile Configuration

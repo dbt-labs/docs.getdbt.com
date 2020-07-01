@@ -3,23 +3,9 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
-      collapsed: false,
       items: [
         "docs/introduction",
-      ],
-    },
-    {
-      type: "category",
-      label: "Supported Databases",
-      items: [
         "docs/supported-databases",
-        "docs/supported-databases/profile-postgres",
-        "docs/supported-databases/profile-redshift",
-        "docs/supported-databases/profile-snowflake",
-        "docs/supported-databases/profile-bigquery",
-        "docs/supported-databases/profile-presto",
-        "docs/supported-databases/profile-spark",
-        "docs/supported-databases/profile-mssql",
       ],
     },
     {
@@ -360,7 +346,7 @@ module.exports = {
         },
         "reference/global-cli-flags",
         "reference/exit-codes",
-      ]
+      ],
     },
     {
       type: "category",
@@ -409,7 +395,21 @@ module.exports = {
         "reference/dbt-classes",
       ],
     },
-    "reference/dbt-artifacts"
+    {
+      type: "category",
+      label: "Profiles (CLI only)",
+      items: [
+        "reference/profiles.yml",
+        "reference/warehouse-profiles/bigquery-profile",
+        "reference/warehouse-profiles/postgres-profile",
+        "reference/warehouse-profiles/redshift-profile",
+        "reference/warehouse-profiles/snowflake-profile",
+        "reference/warehouse-profiles/mssql-profile",
+        "reference/warehouse-profiles/presto-profile",
+        "reference/warehouse-profiles/spark-profile",
+      ],
+    },
+    "reference/dbt-artifacts",
   ],
   tutorial: [
     {
@@ -437,8 +437,8 @@ module.exports = {
       collapsed: false,
       items: [
         "tutorial/using-jinja",
-      ]
-    }
+      ],
+    },
   ],
   learn: [
     {

@@ -1,6 +1,5 @@
 ---
-title: "BigQuery"
-id: "profile-bigquery"
+title: "BigQuery Profile"
 ---
 
 ## Authentication Methods
@@ -9,7 +8,7 @@ BigQuery targets can be specified using one of three methods:
 
 1. oauth
 2. a service account file
-3. service account json 
+3. service account json
 
 For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
