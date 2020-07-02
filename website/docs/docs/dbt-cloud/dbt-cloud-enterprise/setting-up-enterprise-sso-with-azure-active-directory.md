@@ -29,7 +29,7 @@ tenant flow when creating an Azure AD Application.
 ### Creating an application
 
 Log into the Azure portal for your organization. Using the **Azure Active Directory** page, you will
-need to select the appropriate directory and then register a new application. 
+need to select the appropriate directory and then register a new application.
 
 1. Under **Manage**, select **App registrations**
 2. Click **+ New Registration** to begin creating a new application
@@ -46,6 +46,7 @@ need to select the appropriate directory and then register a new application.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application.png" title="Configuring a new app registration"/>
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration (Alternate view)"/>
 
 ### Configuring the redirect URI
 
@@ -82,7 +83,7 @@ the **Redirect URI** configuration shown below.
 | Microsoft Graph | Delegated | `Directory.AccessAsUser.All` |
 | Microsoft Graph | Delegated | `Directory.Read.All` |
 | Microsoft Graph | Application | `Directory.Read.All` |
-| Microsoft Graph | Delegated | `User.Read.All` |
+| Microsoft Graph | Delegated | `User.Read` |
 
 10. Save these permissions, then click **Grant admin consent** to grant admin
    consent for this directory on behalf of all of your users.
