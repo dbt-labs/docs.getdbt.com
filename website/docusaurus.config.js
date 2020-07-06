@@ -63,7 +63,7 @@ module.exports = {
           to: '/dbt-cli/cli-overview',
           label: 'dbt CLI',
           position: 'left',
-          activeBasePath: 'docs/dbt-cli'
+          activeBasePath: 'dbt-cli'
         },
         {
           to: '/docs/dbt-cloud/cloud-overview',
