@@ -3,8 +3,8 @@ title: Model configurations
 ---
 
 ## Related documentation
-* [Models](docs/building-a-dbt-project/building-models)
-* [`run` command](command-line-interface/run)
+* [Models](building-models)
+* [`run` command](run)
 
 ## Available configurations
 ### Model-specific configurations

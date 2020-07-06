@@ -1,6 +1,5 @@
 ---
-title: "Microsoft SQL Server"
-id: "profile-mssql"
+title: "Microsoft SQL Server Profile"
 ---
 
 
@@ -15,7 +14,7 @@ This is a Community Contributed plugin for dbt. If you're interested in contribu
 **Author:** Mikael Ene
 **Source Code:** https://github.com/mikaelene/dbt-sqlserver
 
-**dbt-sqlserver** 
+**dbt-sqlserver**
 Only supports dbt 0.14 and newer!
 - For dbt 0.14.x use dbt-sqlserver 0.14.x
 - For dbt 0.15.x use dbt-sqlserver 0.15.x
@@ -25,10 +24,10 @@ Easiest install is to use pip:
     pip install dbt-sqlserver
 
 On Ubuntu make sure you have the ODBC header files before installing
-    
+
     sudo apt install unixodbc-dev
 
-### Connecting to SQL Server with **dbt-sqlserver** 
+### Connecting to SQL Server with **dbt-sqlserver**
 
 #### User / password authentication
 
@@ -77,7 +76,7 @@ dbt-sqlserver:
 
 **dbt-mssql** is a custom adapter for dbt that adds support for Microsoft SQL Server versions 2008 R2 and later. `pyodbc` is used as the connection driver as that is what is [suggested by Microsoft](https://docs.microsoft.com/en-us/sql/connect/python/python-driver-for-sql-server). The adapter supports both windows auth, and specified user accounts.
 
-dbt-mssql is currently in a beta release. It is passing all of the [dbt integration tests](https://github.com/fishtown-analytics/dbt-integration-tests/) on SQL Server 2008 R2. Considering Microsoft's legendary backwards compatibility, it should work on newer versions, but that testing will come in the near future. 
+dbt-mssql is currently in a beta release. It is passing all of the [dbt integration tests](https://github.com/fishtown-analytics/dbt-integration-tests/) on SQL Server 2008 R2. Considering Microsoft's legendary backwards compatibility, it should work on newer versions, but that testing will come in the near future.
 
 ### Connecting to SQL Server with **dbt-mssql**
 

@@ -60,6 +60,12 @@ module.exports = {
           activeBasePath: 'reference'
         },
         {
+          to: '/dbt-cli/cli-overview',
+          label: 'dbt CLI',
+          position: 'left',
+          activeBasePath: 'dbt-cli'
+        },
+        {
           to: '/docs/dbt-cloud/cloud-overview',
           label: 'dbt Cloud',
           position: 'left',

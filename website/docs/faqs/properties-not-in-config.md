@@ -7,7 +7,7 @@ No — properties (including tests and descriptions) must be declared in separat
 
 Configurations:
 - tell dbt _how_ to build something in your warehouse (for example, whether a model should be a table or view, or which SQL to use when running a snapshot)
-- are defined in your [`dbt_project.yml` file](dbt_project.yml) or a `config` block in a `.sql` file.
+- are defined in your [`dbt_project.yml` file](reference/dbt_project.yml.md) or a `config` block in a `.sql` file.
 
 Properties:
 - are used to declare things _about_ your dbt project or data warehouse.

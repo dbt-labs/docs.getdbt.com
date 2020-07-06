@@ -1,10 +1,12 @@
 ---
-title: "Connecting to your warehouse"
-id: "configure-your-profile"
+title: "Configure your profile"
 ---
 
+## Related documentation
+* [`profiles.yml` reference](reference/profiles.yml)
+
 ## How to connect to your warehouse when using the CLI
-When you invoke dbt from the CLI, dbt parses your `dbt_project.yml` for the name of the `profile` to use to connect to your data warehouse. 
+When you invoke dbt from the CLI, dbt parses your `dbt_project.yml` for the name of the `profile` to use to connect to your data warehouse.
 
 <File name='dbt_project.yml'>
 
@@ -17,9 +19,9 @@ profile: 'jaffle_shop'
 
 </File>
 
-dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse. 
+dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
-This file generally lives outside of your dbt project to avoid sensitive credentials being check in to verison control. By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
+This file generally lives outside of your dbt project to avoid sensitive credentials being check in to version control. By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -43,15 +45,7 @@ jaffle_shop:
 
 
 
-:::info Setting up your profiles.yml file for the first time
-
-A sample `~/.dbt/profiles.yml` file can be created by running [dbt init](init)
-
-:::
-
-
-
-## What goes in my profiles.yml file?
+## What goes in my `profiles.yml` file?
 In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use – for most organizations, this means you would only have one profile.
 
 You can also configure some advanced dbt options in your `profiles.yml` file, see [Additional profile configurations](configure-your-profile#additional-profile-configurations).
@@ -93,7 +87,7 @@ You may also have a `prod` target within your profile, which creates the objects
 
 If you do have multiple targets in your profile, and want to use a target other than the default, you can do this using the `--target` option when issuing a dbt command.
 
- ## Understanding warehouse credentials
+## Understanding warehouse credentials
 We recommend that each dbt user has their own set of database credentials, including a separate user for production runs of dbt – this helps debug rogue queries, simplifies ownerships of schemas, and improves security.
 
 To ensure the user credentials you use in your target allow dbt to run, you will need to ensure the user has appropriate privileges. While the exact privileges needed varies between data warehouses, at a minimum your user must be able to:
@@ -131,7 +125,7 @@ For example, if you specify `threads: 1`, dbt will start building only one model
 
 There's no set limit of the maximum number of threads you can set – while increasing the number of threads generally decreases execution time, there are a number of things to consider:
 * Increasing the number of threads increases the load on your warehouse, which may impact other tools in your data stack. For example, if your BI tool uses the same compute resources as dbt, their queries may get queued during a dbt run.
-* The number of concurrent queries your database will allow you to run may be a limiting factor in how many models can be actively built – some models may queue while waiting for an available query slot. 
+* The number of concurrent queries your database will allow you to run may be a limiting factor in how many models can be actively built – some models may queue while waiting for an available query slot.
 
 Generally the optimal number of threads depends on your data warehouse and its configuration. It’s best to test different values to find the best number of threads for your project. We recommend setting this to 4 to start with.
 
@@ -168,45 +162,3 @@ If the `--profiles-dir` option is used in a dbt command, it will take precedence
 
 ## Using environment variables in your profile
 Credentials can either be placed directly into the `profiles.yml` file, or they can be loaded from environment variables. This is especially useful for production deployments of dbt. You can find more information about using environment variables [here](env_var).
-
-## Additional profile configurations
-### Partial parsing
-
-Partial parsing can improve the performance characteristics of dbt runs by limiting the number of files that are parsed by dbt. Here, "parsing" means reading files in a dbt project from disk and capturing `ref()` and `config()` method calls. dbt uses these method calls to determine 1) the shape of the dbt DAG and 2) the supplied configurations for dbt resources.
-
-If partial parsing is enabled and files are unchanged between invocations of dbt, then dbt does not need to re-parse these files -- it can instead use the parsed representation from the _last_ invocation of dbt. If a file *has* changed between invocations of dbt, then dbt will re-parse the file and update the parsed node cache accordingly.
-
-Use caution when enabling partial parsing in dbt. If environment variables or variables specified on the CLI with `--vars` control the parsed representation of your project, then the logic executed by dbt may differ from the logic specified in your project. Partial parsing should only be used when all of the logic in your dbt project is encoded in the files inside of that project.
-
-To enable partial parsing in your project, use the `--partial-parse` dbt flag, or specify `partial_parse: true` in your `profiles.yml` file:
-```yaml
-config:
-  partial_parse: True
-```
-
-This value can be overridden using the `--partial-parse` or `--no-partial-parse` flags.
-
-### Using colors in terminal output
-By default, dbt will colorize the output it prints in your terminal. You can turn this off by adding the following to your `profiles.yml` file:
-```yaml
-config:
-  use_colors: False
-```
-
-### Configuring printer width
-By default, dbt will print out lines padded to 80 characters wide. You can change this setting by adding the following to your `profiles.yml` file:
-```yaml
-config:
-  printer_width: 120
-```
-
-### Usage statistics
-We want to build the best version of dbt possible, and a crucial part of that is understanding how users work with dbt. To this end, we've added some simple event tracking to dbt (using Snowplow). We do not track credentials, model contents or model names (we consider these private, and frankly none of our business).
-
-Usage statistics are fired when dbt is invoked and when models are run. These events contain basic platform information (OS + python version). The schemas for these events can be seen [here](https://github.com/fishtown-analytics/dbt/tree/development/events/schemas/com.fishtownanalytics)
-
-By default this is turned on – you can opt out of event tracking at any time by adding the following to your `profiles.yml` file:
-```yaml
-config:
-  send_anonymous_usage_stats: False
-```

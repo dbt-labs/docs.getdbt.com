@@ -1,9 +1,6 @@
 ---
-title: "Redshift"
-id: "profile-redshift"
+title: "Redshift Profile"
 ---
-
-
 
 ## Authentication Methods
 

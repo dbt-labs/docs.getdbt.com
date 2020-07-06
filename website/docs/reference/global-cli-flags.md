@@ -111,7 +111,7 @@ $ dbt --warn-error run
 </File>
 
 ## Partial Parsing
-The `--partial-parse` and `--no-partial-parse` flags can be used to configure partial parsing in your project. See [the docs on partial parsing](configure-your-profile#partial-parsing) for more information on using this flag.
+The `--partial-parse` and `--no-partial-parse` flags can be used to configure partial parsing in your project. See [the docs on partial parsing](reference/profiles.yml.md#partial_parse) for more information on using this flag.
 
 <File name='Usage'>
 

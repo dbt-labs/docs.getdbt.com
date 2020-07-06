@@ -3,23 +3,9 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
-      collapsed: false,
       items: [
         "docs/introduction",
-      ],
-    },
-    {
-      type: "category",
-      label: "Supported Databases",
-      items: [
         "docs/supported-databases",
-        "docs/supported-databases/profile-postgres",
-        "docs/supported-databases/profile-redshift",
-        "docs/supported-databases/profile-snowflake",
-        "docs/supported-databases/profile-bigquery",
-        "docs/supported-databases/profile-presto",
-        "docs/supported-databases/profile-spark",
-        "docs/supported-databases/profile-mssql",
       ],
     },
     {
@@ -57,53 +43,10 @@ module.exports = {
     {
       type: "category",
       label: "Running a dbt Project",
+      collapsed: false,
       items: [
-        {
-          type: "category",
-          label: "dbt Command Reference",
-          items: [
-            "docs/running-a-dbt-project/command-line-interface",
-            "docs/running-a-dbt-project/command-line-interface/model-selection-syntax",
-            "docs/running-a-dbt-project/command-line-interface/global-cli-flags",
-            "docs/running-a-dbt-project/command-line-interface/clean",
-            "docs/running-a-dbt-project/command-line-interface/cmd-docs",
-            "docs/running-a-dbt-project/command-line-interface/compile",
-            "docs/running-a-dbt-project/command-line-interface/debug",
-            "docs/running-a-dbt-project/command-line-interface/deps",
-            "docs/running-a-dbt-project/command-line-interface/init",
-            "docs/running-a-dbt-project/command-line-interface/list",
-            "docs/running-a-dbt-project/command-line-interface/rpc",
-            "docs/running-a-dbt-project/command-line-interface/run",
-            "docs/running-a-dbt-project/command-line-interface/run-operation",
-            "docs/running-a-dbt-project/command-line-interface/seed",
-            "docs/running-a-dbt-project/command-line-interface/snapshot",
-            "docs/running-a-dbt-project/command-line-interface/source",
-            "docs/running-a-dbt-project/command-line-interface/test",
-            "docs/running-a-dbt-project/command-line-interface/version",
-            "docs/running-a-dbt-project/command-line-interface/exit-codes",
-          ],
-        },
         "docs/running-a-dbt-project/using-the-dbt-ide",
-        {
-          type: "category",
-          label: "Using the CLI",
-          items: [
-            "docs/running-a-dbt-project/using-the-command-line-interface",
-            "docs/running-a-dbt-project/using-the-command-line-interface/installation",
-            "docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile",
-            {
-              type: "category",
-              label: "Installation instructions",
-              items: [
-                "docs/running-a-dbt-project/using-the-command-line-interface/macos",
-                "docs/running-a-dbt-project/using-the-command-line-interface/windows",
-                "docs/running-a-dbt-project/using-the-command-line-interface/ubuntu-debian",
-                "docs/running-a-dbt-project/using-the-command-line-interface/centos",
-                "docs/running-a-dbt-project/using-the-command-line-interface/install-from-source",
-              ],
-            },
-          ],
-        },
+        "docs/running-a-dbt-project/using-the-cli",
         "docs/running-a-dbt-project/dbt-api",
         "docs/running-a-dbt-project/running-dbt-in-production",
       ],
@@ -152,6 +95,22 @@ module.exports = {
         "docs/about/viewpoint",
       ],
     },
+  ],
+  "dbt CLI": [
+    "dbt-cli/cli-overview",
+    "dbt-cli/installation",
+    {
+      type: "category",
+      label: "Installation guides",
+      items: [
+        "dbt-cli/installation-guides/macos",
+        "dbt-cli/installation-guides/windows",
+        "dbt-cli/installation-guides/ubuntu-debian",
+        "dbt-cli/installation-guides/centos",
+        "dbt-cli/installation-guides/install-from-source",
+      ],
+    },
+    "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
     "docs/dbt-cloud/cloud-overview",
@@ -352,6 +311,36 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Commands",
+      items: [
+        "reference/dbt-commands",
+        "reference/model-selection-syntax",
+        {
+          type: "category",
+          label: "List of commands",
+          items: [
+            "reference/commands/clean",
+            "reference/commands/cmd-docs",
+            "reference/commands/compile",
+            "reference/commands/debug",
+            "reference/commands/deps",
+            "reference/commands/init",
+            "reference/commands/list",
+            "reference/commands/rpc",
+            "reference/commands/run",
+            "reference/commands/run-operation",
+            "reference/commands/seed",
+            "reference/commands/snapshot",
+            "reference/commands/source",
+            "reference/commands/test",
+          ],
+        },
+        "reference/global-cli-flags",
+        "reference/exit-codes",
+      ],
+    },
+    {
+      type: "category",
       label: "Jinja Reference",
       items: [
         "reference/dbt-jinja-functions",
@@ -397,7 +386,21 @@ module.exports = {
         "reference/dbt-classes",
       ],
     },
-    "reference/dbt-artifacts"
+    {
+      type: "category",
+      label: "Profiles (CLI only)",
+      items: [
+        "reference/profiles.yml",
+        "reference/warehouse-profiles/bigquery-profile",
+        "reference/warehouse-profiles/postgres-profile",
+        "reference/warehouse-profiles/redshift-profile",
+        "reference/warehouse-profiles/snowflake-profile",
+        "reference/warehouse-profiles/mssql-profile",
+        "reference/warehouse-profiles/presto-profile",
+        "reference/warehouse-profiles/spark-profile",
+      ],
+    },
+    "reference/dbt-artifacts",
   ],
   tutorial: [
     {
@@ -425,8 +428,8 @@ module.exports = {
       collapsed: false,
       items: [
         "tutorial/using-jinja",
-      ]
-    }
+      ],
+    },
   ],
   learn: [
     {

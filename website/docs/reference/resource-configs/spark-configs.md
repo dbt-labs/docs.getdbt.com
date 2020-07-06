@@ -120,7 +120,7 @@ insert overwrite table analytics.spark_incremental
 
 :::info New in dbt-spark v0.15.3
 
-This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark#installation-and-distribution)
+This functionality is new in dbt-spark v0.15.3. See [installation instructions](spark-profile#installation-and-distribution)
 
 :::
 
@@ -221,7 +221,7 @@ or `show table extended in [database] like '*'`.
 
 :::info New in dbt-spark v0.17.0
 
-This is a breaking change in dbt-spark v0.17.0. See [installation instructions](profile-spark#installation-and-distribution)
+This is a breaking change in dbt-spark v0.17.0. See [installation instructions](spark-profile#installation-and-distribution)
 
 :::
 

@@ -43,7 +43,7 @@ When you issue a dbt command, such as `run`, dbt:
 2. Generates the DDL required to build the model, as per the model's *materialization*
 3. Executes the compiled queries against your data warehouse, using the credentials specified in the *target* defined in your *profile*. Executing these queries creates relations in the target schema in your data warehouse. These relations contain transformed data, ready for analysis.
 
-A list of commands can be found in the [Command reference](command-line-interface) section of these docs.
+A list of commands can be found in the [Command reference](dbt-commands) section of these docs.
 
 ## What does the workflow for using dbt look like?
 There’s two main ways of working with dbt -- using the web-based Integrated Development Environment (IDE) in dbt Cloud, or using the Command Line Interface (CLI).

@@ -1,13 +1,12 @@
 ---
-title: "Spark"
-id: "profile-spark"
+title: "Spark Profile"
 ---
 
 ## Connection Methods
 There are two supported connection methods for Spark targets: `http` and `thrift`.
 
 ### thrift
-Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster. 
+Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -48,7 +47,7 @@ your_profile_name:
       connect_retries: 5    # optional, default 0
 ```
 
-Databricks interactive clusters can take several minutes to start up. You may 
+Databricks interactive clusters can take several minutes to start up. You may
 include the optional profile configs `connect_timeout` and `connect_retries`,
 and dbt will periodically retry the connection.
 
@@ -77,7 +76,7 @@ on Delta Lake (Databricks).
 
 Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](https://docs.getdbt.com/reference/resource-configs/spark-configs/#the-merge-strategy))
-2. [Snapshots](snapshots) 
+2. [Snapshots](snapshots)
 
 Some dbt features, available on the core adapters, are not yet supported on Spark:
 1. [Persisting](persist_docs) column-level descriptions as database comments
