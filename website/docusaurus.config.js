@@ -54,7 +54,7 @@ module.exports = {
           activeBaseRegex: 'docs\/(?!(dbt-cloud))',
         },
         {
-          to: '/reference/dbt_project.yml',
+          to: '/reference/overview',
           label: 'Reference',
           position: 'left',
           activeBasePath: 'reference'

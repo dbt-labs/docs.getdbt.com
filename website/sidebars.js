@@ -189,6 +189,7 @@ module.exports = {
     "docs/dbt-cloud/cloud-changelog",
   ],
   reference: [
+    "reference/overview",
     {
       type: "category",
       label: "Configurations",
@@ -273,7 +274,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Properties",
+      label: "Properties (schema.yml files)",
       items: [
         "reference/declaring-properties",
         "reference/model-properties",
