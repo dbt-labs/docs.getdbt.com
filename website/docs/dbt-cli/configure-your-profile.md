@@ -5,7 +5,7 @@ title: "Configure your profile"
 ## Related documentation
 * [`profiles.yml` reference](reference/profiles.yml)
 
-## How to connect to your warehouse when using the CLA
+## How to connect to your warehouse when using the CLI
 When you invoke dbt from the CLI, dbt parses your `dbt_project.yml` for the name of the `profile` to use to connect to your data warehouse.
 
 <File name='dbt_project.yml'>
