@@ -2,7 +2,7 @@
 title: CLI overview
 
 ---
-dbt ships with a Command Line Interface (CLI) for running your dbt project. This way of running dbt a dbt project is free and open source.
+dbt ships with a Command Line Interface (CLI) for running your dbt project. The dbt CLI is free to use and [open source](https://github.com/fishtown-analytics/dbt).
 
 Your command line has a concept of a "working directory": each command that you run is executed from a directory on your computer. To run your dbt project using the command line, you'll need to ensure that your command line's working directory is within your dbt project.
 
