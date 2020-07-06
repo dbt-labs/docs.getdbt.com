@@ -161,7 +161,9 @@ create or replace table my_database.my_schema.my_table as (
 
 ### Automatic clustering
 
-Automatic clustering is a preview feature in Snowflake (at the time of this writing) and as such, some accounts may have it turned on while others may not. You can use the `automatic_clustering` config to control whether or not automatic clustering is enabled for dbt models. When `automatic_clustering` is set to `true`, dbt will run an `alter table <table name> resume recluster` query after building the target table. This configuration is only required for Snowflake accounts which do not have automatic clustering enabled. For more information, consult the [Snowflake documentation on Manual Reclustering](https://docs.snowflake.net/manuals/user-guide/tables-clustering-manual.html#switching-from-manual-reclustering-to-automatic-clustering).
+Automatic clustering is [enabled by default in Snowflake today](https://docs.snowflake.com/en/user-guide/tables-clustering-manual.html), no action is needed to make use of it. Though there is an `automatic_clustering` config, it has no effect except for accounts with (deprecated) manual clustering enabled.
+
+If [manual clustering is still enabled for your account](https://docs.snowflake.com/en/user-guide/tables-clustering-manual.html), you can use the `automatic_clustering` config to control whether or not automatic clustering is enabled for dbt models. When `automatic_clustering` is set to `true`, dbt will run an `alter table <table name> resume recluster` query after building the target table. 
 
 The `automatic_clustering` config can be specified in the `dbt_project.yml` file, or in a model `config()` block.
 
