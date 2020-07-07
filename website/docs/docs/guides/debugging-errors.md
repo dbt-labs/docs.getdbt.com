@@ -302,6 +302,20 @@ Compilation Error
 
 </details>
 
+## Dependency Errors
+```
+$ dbt run
+Running with dbt=0.17.1-rc
+
+Encountered an error:
+Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers --> model.jaffle_shop.customers
+
+```
+
+
+Your dbt DAG is not acyclic, and needs to be fixed!
+- Update the `ref` functions to break the cycle.
+- If you need to reference the current model, use the [`{{ this }}` variable](dbt-jinja-functions/this) instead.
 
 ## Database Errors
 
