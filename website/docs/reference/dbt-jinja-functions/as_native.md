@@ -22,6 +22,7 @@ variable into a dictionary for freshness testing.
 ```yml
 sources:
   - name: stripe
+    loaded_at_field: synced_at
     freshness: "{{ var('stripe_freshness') | as_native }}"
 ```
 

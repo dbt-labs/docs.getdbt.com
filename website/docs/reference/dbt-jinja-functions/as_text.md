@@ -18,44 +18,38 @@ It is still possible to natively render specific values using the [`as_bool`](as
 
 ### Usage
 
-In the example below, the `as_text` filter is used to assert that `1.0` is a string,
-not the integer 1. This specification is necessary in `v0.17.0`.
+In the example below, the `as_text` filter is used to assert that `''` is an
+empty string. In a native rendering, `''` would be coerced to the Python 
+keyword `None`. This specification is necessary in `v0.17.0`.
 
 <File name='schema.yml'>
 
 ```yml
-version: 2
-
 models:
-  - name: devices
+  - name: orders
     columns:
-      - name: installed_version
+      - name: order_status
         tests:
-          accepted_values:
-            values:
-              - "{{ 1.0 | as_text }}"
-              - 1.1
+          - accepted_values:
+              values: ['pending', 'shipped', "{{ '' | as_text }}"]
+
 ```
 
 </File>
 
-As of `v0.17.1`, this native rendering is not necessary, because `values` treats 
-all its inputs as strings by default.
+As of `v0.17.1`, native rendering does not occur by default, and the `as_text`
+specification is unnecessary.
 
 <File name='schema.yml'>
 
 ```yml
-version: 2
-
 models:
-  - name: devices
+  - name: orders
     columns:
-      - name: installed_version
+      - name: order_status
         tests:
-          accepted_values:
-            values:
-              - 1.0
-              - 1.1
+          - accepted_values:
+              values: ['pending', 'shipped', '']
 ```
 
 </File>

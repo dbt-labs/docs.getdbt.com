@@ -17,8 +17,9 @@ variables into a numeric value to dynamically control the connection port.
 ```yml
 my_profile:
   outputs:
-    type: postgres
-    port: "{{ env_var('PGPORT') | as_number }}"
+    dev:
+      type: postgres
+      port: "{{ env_var('PGPORT') | as_number }}"
 ```
 
 </File>
