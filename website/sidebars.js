@@ -349,6 +349,9 @@ module.exports = {
           label: "List of dbt Jinja functions",
           items: [
             "reference/dbt-jinja-functions/adapter",
+            "reference/dbt-jinja-functions/as_bool",
+            "reference/dbt-jinja-functions/as_native",
+            "reference/dbt-jinja-functions/as_number",
             "reference/dbt-jinja-functions/as_text",
             "reference/dbt-jinja-functions/builtins",
             "reference/dbt-jinja-functions/config",

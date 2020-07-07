@@ -133,11 +133,19 @@ Support for version 1 will be removed in a future release of dbt.
 
 ### NativeEnvironment rendering for yaml fields
 
-In dbt v0.17.0, dbt will use a jinja Native Environment to render values in
-schema.yml files. This Native Environment will coerce string values to their
+In dbt v0.17.0, dbt enables use of Jinja's Native Environment to render values in
+YML files. This Native Environment coerces string values to their
 primitive Python types (booleans, integers, floats, and tuples). With this
 change, you can now provide boolean and integer values to configurations via
 string-oriented inputs, like environment variables or command line variables.
+
+<Changelog>
+
+  In dbt v0.17.1, native rendering is not enabled by default. It is possible to
+  natively render specific values using the [`as_bool`](as_bool), 
+  [`as_number`](as_number), and [`as_native`](as_native) filters.
+
+</Changelog>
 
 This example specifies a port number as an integer from an environment variable.
 This was not possible in previous versions of dbt.
