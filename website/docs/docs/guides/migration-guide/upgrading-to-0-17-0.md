@@ -133,19 +133,21 @@ Support for version 1 will be removed in a future release of dbt.
 
 ### NativeEnvironment rendering for yaml fields
 
-In dbt v0.17.0, dbt enables use of Jinja's Native Environment to render values in
+In dbt v0.17.0, dbt enabled use of Jinja's Native Environment to render values in
 YML files. This Native Environment coerces string values to their
 primitive Python types (booleans, integers, floats, and tuples). With this
 change, you can now provide boolean and integer values to configurations via
 string-oriented inputs, like environment variables or command line variables.
 
-<Changelog>
+:::danger Heads up
 
   In dbt v0.17.1, native rendering is not enabled by default. It is possible to
   natively render specific values using the [`as_bool`](as_bool), 
   [`as_number`](as_number), and [`as_native`](as_native) filters.
+  
+  The examples below have been updated to reflect 0.17.1 functionality.
 
-</Changelog>
+:::
 
 This example specifies a port number as an integer from an environment variable.
 This was not possible in previous versions of dbt.
@@ -162,28 +164,8 @@ debug:
       host: "{{ env_var('DBT_HOST') }}"
 
       # The port number will be coerced from a string to an integer
-      port: "{{ env_var('DBT_PORT') }}"
+      port: "{{ env_var('DBT_PORT') | as_number }}"
 
-      dbname: analytics
-      schema: analytics
-```
-
-If you want to bypass this type coercion, you can use the [as_text](as_text)
-jinja filter to force the value to be a string instead:
-
-```yml
-
-debug:
-  target: dev
-  outputs:
-    dev:
-      type: postgres
-
-      # The DBT_USER env var will be force-casted to a string
-      user: "{{ env_var('DBT_USER') | as_text }}"
-      pass: "{{ env_var('DBT_PASS') }}"
-      host: "{{ env_var('DBT_HOST') }}"
-      port: "{{ env_var('DBT_PORT') }}"
       dbname: analytics
       schema: analytics
 ```
@@ -206,7 +188,7 @@ models:
     +enabled: true
 
   admin:
-    +enabled: "{{ target.name == 'prod' }}"
+    +enabled: "{{ (target.name == 'prod') | as_bool }}"
 ```
 
 </File>
