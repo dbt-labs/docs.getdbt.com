@@ -33,38 +33,38 @@ need to select the appropriate directory and then register a new application.
 
 1. Under **Manage**, select **App registrations**
 2. Click **+ New Registration** to begin creating a new application
-3. Create the new app registration with the following configurations:
+3. Create the new app registration with the following configurations. Depending on your Azure experience, you might be seeing an alternative view. Please enter information that is relevant to the view you are seeing.
 
 | Field | Value |
 | ----- | ----- |
 | **Name** | dbt Cloud |
 | **Supported account types** | Accounts in this organizational directory only _(single tenant)_ |
-| **Platform configuration** | Client Application |
+| **Platform configuration (Optional)** | Client Application |
+| **Redirect URI (Optional)** | Web (Refer to table in step 6 for Redirect URI.) |
 
 4. Save the App registration to continue setting up Azure AD SSO
-
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application.png" title="Configuring a new app registration"/>
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration (Alternate view)"/>
-
-### Configuring the redirect URI
-
 :::note Redirect URIs
 If you are deploying dbt Cloud into a VPC, you should use the hostname where
 the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
 the **Redirect URI** configuration shown below.
 :::
 
-5. Under **Manage**, click the **Authentication** link
-6. Add a **Platform configuration** for the dbt Cloud **Redirect URI**. For most
-   typical enterprise use-cases, you will only need to supply the Single-Tenant
-   Redirect URI shown below.
+5. Once you've registered your App, make sure you are on your registered App page. Under **Manage**, click the **Authentication** link to view the current configuration.
+6. If you have not configured redirect URI while registering your app in step 3, you need to add a Redirect URI.
+
+* On the App **Authentication** page, add a **Platform configuration**.
+* Choose **Web** as your Platform type.
+* For the dbt Cloud **Redirect URI**, in most typical enterprise use-cases, you will only need to supply the Single-Tenant Redirect URI shown below.
 
 | Application Type | Redirect URI |
 | ----- | ----- |
 | Single-Tenant _(recommended)_ | `https://cloud.getdbt.com/complete/azure_single_tenant` |
 | Multi-Tenant | `https://cloud.getdbt.com/complete/azure_multi_tenant` |
+
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application.png" title="Configuring a new app registration"/>
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration (Alternate view)"/>
+
 
 7. Verify that the Redirect URI has been added successfully and save the page to continue
 
