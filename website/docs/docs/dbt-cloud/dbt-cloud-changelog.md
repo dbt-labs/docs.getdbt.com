@@ -20,12 +20,11 @@ This release contains a number of IDE features and bugfixes, a new release candi
 
 - Do not run CI builds for draft PRs in GitHub
 - Remove race condition when syncing account with stripe billing events
-- Enterprise: Fix authentication bug where we setup all accounts with same domain
+- Enterprise: Fixed JIT provisioning bug impacting accounts with shared IdP domains
 - IDE: Fix a regression with Github git clone method
 - IDE: Fix a race condition where git clone didn't complete before user entered IDE
 - IDE: Fix bug with checking out an environment custom branch on IDE refresh
 - Bigquery: Fix PR schema dropping
-- Security: Fix intra-account API key leakage
 
 #### Internal
 
