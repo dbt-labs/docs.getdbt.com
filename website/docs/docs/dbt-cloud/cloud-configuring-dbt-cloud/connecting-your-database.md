@@ -15,7 +15,7 @@ The following fields are required when creating a Redshift connection:
 
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/e180a10-Screen_Shot_2019-11-18_at_9.44.44_PM.png" title="Configuring a Redshift connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" title="Configuring a Redshift connection"/>
 
 ### Connecting via an SSH Tunnel
 
@@ -23,7 +23,7 @@ To connect to a Postgres or Redshift instance via an SSH tunnel, check the "Use 
 
 Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize dbt Cloud to connect to your database via the bastion server.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/3f25478-Screen_Shot_2019-11-18_at_9.43.32_PM.png" title="A generated public key for a Postgres connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" title="A generated public key for a Redshift connection"/>
 
 ## Connecting to Snowflake
 
@@ -110,4 +110,4 @@ In addition to these fields, there are two other optional fields that can be con
 
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/14dba0a-Screen_Shot_2019-11-18_at_9.49.03_PM.png" title="A valid BigQuery connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>

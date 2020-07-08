@@ -16,7 +16,7 @@ default_value: true
 
 <File name='models/<modelname>.sql'>
 
-```jinja2
+```sql
 
 {{ config(
   enabled=true | false
@@ -62,7 +62,7 @@ seeds:
 
 <File name='snapshots/<filename>.sql'>
 
-```jinja2
+```sql
 {% snapshot [snapshot_name](snapshot_name) %}
 
 {{ config(
@@ -99,7 +99,7 @@ An optional configuration for disabling models, seeds, and snapshots.
 
 When a resource is disabled, dbt will not consider it as part of your project. Note that this can cause compilation errors.
 
-If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](docs/running-a-dbt-project/command-line-interface/model-selection-syntax.md)
+If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](model-selection-syntax)
 
 If you are disabling models because they are no longer being used, but you want to version control their SQL, consider making them an [analysis](docs/building-a-dbt-project/analyses.md) instead.
 

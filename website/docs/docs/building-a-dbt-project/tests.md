@@ -3,7 +3,7 @@ title: "Tests"
 ---
 
 ## Related reference docs
-* [Test command](test)
+* [Test command](commands/test)
 * [Test properties](resource-properties/tests)
 * [Data test configurations](data-test-configs)
 
@@ -95,7 +95,7 @@ models:
 
 </File>
 
-2. Run the [`dbt test` command](command-line-interface/test):
+2. Run the [`dbt test` command](commands/test):
 
 ```
 $ dbt test

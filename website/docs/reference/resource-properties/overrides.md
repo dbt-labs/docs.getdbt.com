@@ -37,36 +37,38 @@ The following source properties can be overridden:
 ## Examples
 ### Supply your database and schema name for a source defined in a package
 
-This example is based on the [Fivetran Netsuite package](https://github.com/fivetran/dbt_netsuite/blob/bbc3b34151acacffa8a44a7cf422cef3b2f9ef46/models/src_netsuite.yml#L1-L17).
+This example is based on the [Fivetran GitHub Source package](https://github.com/fivetran/dbt_github_source/blob/830ba43ac2948e4853a3c167ab7ee88b8b425fa0/models/src_github.yml#L3-L29).
 Here, the database and schema is overridden in the parent dbt project which
-includes the `netsuite` package.
+includes the `github_source` package.
 
-<File name='models/src_netsuite.yml'>
+<File name='models/src_github.yml'>
 
 ```yml
 version: 2
 
 sources:
-  - name: netsuite
-    overrides: netsuite
+  - name: github
+    overrides: github_source
 
     database: RAW
-    schema: netsuitedata
+    schema: github_data
 
 ```
 
 </File>
 
-### Configure source freshness based on your loading frequency
+### Configure your own source freshness for a source table in a package
 
-<File name='models/src_netsuite.yml'>
+You can override configurations at both the source and the table level
+
+<File name='models/src_github.yml'>
 
 ```yml
 version: 2
 
 sources:
-  - name: netsuite
-    overrides: netsuite
+  - name: github
+    overrides: github_source
 
     freshness:
       warn_after:
@@ -75,6 +77,17 @@ sources:
       error_after:
         count: 2
         period: day
+
+    tables:
+      - name: issue_assignee
+        freshness:
+          warn_after:
+            count: 2
+            period: day
+          error_after:
+            count: 4
+            period: day
+
 ```
 
 </File>

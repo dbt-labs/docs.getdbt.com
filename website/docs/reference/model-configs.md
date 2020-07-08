@@ -3,8 +3,8 @@ title: Model configurations
 ---
 
 ## Related documentation
-* [Models](docs/building-a-dbt-project/building-models)
-* [`run` command](command-line-interface/run)
+* [Models](building-models)
+* [`run` command](run)
 
 ## Available configurations
 ### Model-specific configurations
@@ -74,11 +74,12 @@ models:
   [<resource-path>](resource-path):
     +[enabled](enabled): true | false
     +[tags](tags): <string> | [<string>]
-    +[pre-hook](pre-hook): <sql-statement> | [<sql-statement>]
-    +[post-hook](post-hook): <sql-statement> | [<sql-statement>]
+    +[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    +[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     +[database](resource-configs/database): <string>
     +[schema](resource-configs/schema): <string>
     +[alias](resource-configs/alias): <string>
+    +[persist_docs](persist_docs): <dict>
 
 ```
 
@@ -96,11 +97,12 @@ models:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](tags)="<string>" | ["<string>"],
-    [pre_hook](pre-hook)="<sql-statement>" | ["<sql-statement>"],
-    [post_hook](post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [database](resource-configs/database): <string>,
     [schema](resource-configs/schema): <string>,
-    [alias](resource-configs/alias): <string>
+    [alias](resource-configs/alias): <string>,
+    [persist_docs](persist_docs): {<dict>}
 ) }}
 
 ```

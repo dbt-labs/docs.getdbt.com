@@ -33,10 +33,15 @@ If you're interested in giving dbt Cloud a spin, you can sign up for a *forever 
 <Lightbox src="/img/docs/running-a-dbt-project/8e7a6eb-cloud-img.png" title="dbt Cloud in action"/>
 
 ### Using Airflow
-If your organization is already using Airflow, that could be a great way to kick off your dbt runs. There are a number of ways you can run your dbt jobs in Airflow, including:
+If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
 * Using this [dbt-cloud-plugin](https://github.com/dwallace0723/dbt-cloud-plugin/). This plugin gives you the best of both worlds -- deep integration of dbt into your existing data stack, along with all of the benefits of dbt Cloud.
 * Invoking dbt through the [BashOperator](https://airflow.apache.org/howto/operator/bash.html). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
-* Installing the [airflow-dbt](https://pypi.org/project/airflow-dbt/) python package. This package uses Airflow's operator and hook concept, the source code can be found on [github](https://github.com/gocardless/airflow-dbt).
+* Installing the [airflow-dbt](https://pypi.org/project/airflow-dbt/) python package. This package uses Airflow's operator and hook concept — the source code can be found on [github](https://github.com/gocardless/airflow-dbt).
+
+### Using Prefect
+If your organization is using [Prefect](https://www.prefect.io), use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute and monitor your dbt runs.
+
+Alternatively, you can use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.
 
 ### Using an automation server
 Automation servers, like CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-XBIIY2pFpc?t=1301)), Bamboo and Jenkins, can be used to schedule bash commands for dbt. They also provide a UI to view logging to the command line, and integrate with your git repository.

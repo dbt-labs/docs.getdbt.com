@@ -3,14 +3,14 @@ title: "Seeds"
 id: "seeds"
 ---
 ## Related reference docs
-* [Seed configurations](reference/seed-configs.md)
-* [Seed properties](reference/seed-properties.md)
-* The `dbt seed` [command](docs/running-a-dbt-project/command-line-interface/seed.md)
+* [Seed configurations](seed-configs)
+* [Seed properties](seed-properties)
+* [`seed` command](seed)
 
 ## Getting started
 Seeds are CSV files in your dbt project (typically in your `data` directory), that dbt can load into your data warehouse using the `dbt seed` command.
 
-Seeds can be referenced in downstream models the same way as referencing models — by using the `ref` [function](docs/writing-code-in-dbt/jinja-context/ref.md).
+Seeds can be referenced in downstream models the same way as referencing models — by using the `ref` [function](dbt-jinja-functions/ref).
 
 Because these CSV files are located in your dbt repository, they are version controlled and code reviewable. Seeds are best suited to static data which changes infrequently.
 
@@ -39,7 +39,7 @@ GB,United Kingdom
 
 </File>
 
-2. Run the `dbt seed` [command](docs/running-a-dbt-project/command-line-interface/seed.md) — a new table will be created in your warehouse in your target schema, named `country_codes`
+2. Run the `dbt seed` [command](seed) command — a new table will be created in your warehouse in your target schema, named `country_codes`
 ```
 $ dbt seed
 

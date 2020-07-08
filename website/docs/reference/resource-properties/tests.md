@@ -251,7 +251,7 @@ models:
 
 </File>
 
-The `to` argument accepts a [Relation](class-reference#relation) – this means you can pass it a `ref` to a model (e.g. `ref('customers')`), or a `source` (e.g. `source('jaffle_shop', 'customers')`).
+The `to` argument accepts a [Relation](dbt-classes#relation) – this means you can pass it a `ref` to a model (e.g. `ref('customers')`), or a `source` (e.g. `source('jaffle_shop', 'customers')`).
 
 
 ## severity
