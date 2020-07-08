@@ -5,6 +5,35 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.3 (July 7, 2020)
+
+This release contains a number of IDE features and bugfixes, a new release candidate of dbt, and a brand new Enterprise Single-Sign On method: Azure Active Directory!
+
+#### Enhancements
+
+- Add dbt 0.17.1rc3
+- Snowflake: Add support for `client_session_keep_alive` config
+- Enterprise: Native Azure Oauth2 for Enterprise accounts
+- IDE: Add custom command palette for finding files
+
+#### Fixed
+
+- Do not run CI builds for draft PRs in GitHub
+- Remove race condition when syncing account with stripe billing events
+- Enterprise: Fixed JIT provisioning bug impacting accounts with shared IdP domains
+- IDE: Fix a regression with Github git clone method
+- IDE: Fix a race condition where git clone didn't complete before user entered IDE
+- IDE: Fix bug with checking out an environment custom branch on IDE refresh
+- Bigquery: Fix PR schema dropping
+
+#### Internal
+
+- Add flake8 to CI
+- Add profiler and enable configuration to any python method
+- Add analytics event handling middleware for snowplow
+- Move IDE startup modals from Angular to modern codebase
+- Log user impersonation events for SOC2 compliance
+
 ## dbt Cloud v1.1.2 (June 23, 2020)
 
 This branch includes an important security fix, two new versions of dbt, and some miscellaneous fixes.
