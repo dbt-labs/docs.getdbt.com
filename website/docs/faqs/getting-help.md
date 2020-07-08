@@ -10,7 +10,7 @@ Then, feel free to join our [Slack community](http://community.getdbt.com/) and 
 
 If you need dedicated support with building your dbt project, also consider engaging one of our [consulting partners](https://www.getdbt.com/ecosystem/).
 
-**Note:** If you are a **dbt Cloud user** and need help with one of the following issues, please reach out to us by using the speech bubble (💬) in the dbt Cloud interface.
+**Note:** If you are a **dbt Cloud user** and need help with one of the following issues, please reach out to us by using the speech bubble (💬) in the dbt Cloud interface or at support@getdbt.com
 - Account setup (e.g. connection issues, repo connections)
 - Billing
 - Bug reports related to the web interface
