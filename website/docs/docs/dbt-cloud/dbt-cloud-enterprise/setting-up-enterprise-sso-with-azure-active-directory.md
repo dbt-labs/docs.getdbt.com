@@ -63,14 +63,14 @@ the **Redirect URI** input.
 
 **Configuration with the new Azure AD interface (optional)**
 
-Depending on your Azure AD settings, your App registration page might look
+Depending on your Azure AD settings, your App Registration page might look
 different than the screenshots shown above. If you are _not_ prompted to
-configure a Redirect URI on the **New Registration** page, the follow the steps
-below. If you were able to set up the Redirect URI in the steps above, then skip ahead to step 8
-below.
+configure a Redirect URI on the **New Registration** page, then follow steps 6
+and 7 below after creating your App Registration. If you were able to set up
+the Redirect URI in the steps above, then skip ahead to step 8.
 
-6. After registering the new application, navigate to the **Authentication** tab
-   for the new application.
+6. After registering the new application without specifying a Redirect URI,
+   navigate to the **Authentication** tab for the new application.
 
 7. Click **+ Add platform** and enter a Redirect URI for your application. See
    step 4 above for more information on the correct Redirect URI value for your
