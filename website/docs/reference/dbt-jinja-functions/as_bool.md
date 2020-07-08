@@ -4,7 +4,7 @@ id: "as_bool"
 ---
 
 The `as_number` Jinja filter will coerce Jinja-compiled output into a boolean
-value (`true` or `false`), or return an error if it cannot be represented
+value (`True` or `False`), or return an error if it cannot be represented
 as a bool.
 
 :::caution Heads up!

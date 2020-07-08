@@ -20,7 +20,8 @@ It is still possible to natively render specific values using the [`as_bool`](as
 
 In the example below, the `as_text` filter is used to assert that `''` is an
 empty string. In a native rendering, `''` would be coerced to the Python 
-keyword `None`. This specification is necessary in `v0.17.0`.
+keyword `None`. This specification is necessary in `v0.17.0`, but it is not
+useful or necessary in later versions of dbt.
 
 <File name='schema.yml'>
 
@@ -38,7 +39,7 @@ models:
 </File>
 
 As of `v0.17.1`, native rendering does not occur by default, and the `as_text`
-specification is unnecessary.
+specification is superfluous.
 
 <File name='schema.yml'>
 
