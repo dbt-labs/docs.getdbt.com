@@ -8,7 +8,7 @@ The `modules` variable in the Jinja context contains useful Python modules for o
 ## datetime
 This variable is a pointer to the Python [datetime](https://docs.python.org/3/library/datetime.html) module.
 
-It includes the modules contexts of `date`, `datetime`, '`time`, `timedelta`, and `tzinfo`.
+It includes the modules contexts of `date`, `datetime`, `time`, `timedelta`, and `tzinfo`.
 
 **Usage**
 
