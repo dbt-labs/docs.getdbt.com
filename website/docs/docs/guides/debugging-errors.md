@@ -11,6 +11,7 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
     - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
+    - **dbt CLI users**: Note that your code editor _may_ be hiding these files from the tree view ([Atom help](https://discuss.atom.io/t/all-gitignored-files-are-hidden-now-atom-1-15/39238), [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
 
 
@@ -177,7 +178,7 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt CLI users, these won't get picked up until you run `dbt run` or `dbt compile._
+_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt CLI users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function
@@ -333,15 +334,15 @@ Database Error in model customers (models/customers.sql)
 
 90% of the time, there's a mistake in the SQL of your model. To fix this:
 1. Open the offending file:
-    - **dbt Cloud:** Open the model `models/customers.sql` directly
-    - **dbt CLI:** It may be useful to also open the compiled SQL, i.e. the `target/run/jaffle_shop/models/customers.sql` file
+    - **dbt Cloud:** Open the model (in this case `models/customers.sql` as per the error message)
+    - **dbt CLI:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
     - **dbt Cloud:** Use the `Run SQL` button from the model file
-    - **dbt CLI:** Copy and paste the query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
-3. Fix the mistake
+    - **dbt CLI:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
+3. Fix the mistake.
 4. Rerun the failed model.
 
-In some cases, these errors might occur as a result of queries that dbt runs "behind-the-scenes". These inlcude:
+In some cases, these errors might occur as a result of queries that dbt runs "behind-the-scenes". These include:
 - Introspective queries to list objects in your database
 - Queries to `create` schemas
 - `pre-hooks`s, `post-hooks`, `on-run-end` hooks and `on-run-start` hooks
@@ -349,7 +350,7 @@ In some cases, these errors might occur as a result of queries that dbt runs "be
 
 In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
 - **dbt Cloud**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
-- **dbt CLI**: Open the `logs/dbt.log` file. Note that your code editor _may_ be hiding this file from the tree view ([Atom help](https://discuss.atom.io/t/all-gitignored-files-are-hidden-now-atom-1-15/39238), [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
+- **dbt CLI**: Open the `logs/dbt.log` file.
 
 :::tip Isolating errors in the logs
 If you're hitting a strange `Database Error`, it can be a good idea to clean out your logs by opening the file, and deleting the contents. Then, re-execute `dbt run` for _just_ the problematic model. The logs will _just_ have the output you're looking for.
