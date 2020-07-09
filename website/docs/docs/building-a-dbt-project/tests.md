@@ -16,8 +16,8 @@ title: "Tests"
 Tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
 
 There are two type of tests:
-* **schema tests** (more common): applied in YAML, returns the number of records that _do not_ pass an assertion — when this number is 0, all records pass, therefore, your test passes
-* **data tests**: specific queries that return 0 records
+* **schema tests** (more common): applied via YAML, a query that should return _the number 0_ for a test to pass and any other number for a test to _do not_ pass an assertion.
+* **data tests**: applied via a model (.sql file), a query that should return _0 records_ test to pass and >0 records for a test to _do not_ pass an assertion.
 
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes.
 
