@@ -3,7 +3,7 @@ title: Debugging errors
 ---
 ## General process of debugging
 Learning how to debug is a skill, and one that will make you great at your role!
-1. Read the error message — we try our best to write as much information as possible. It will normally contain the type of error, and the file where the error occurred. There's more details about different types of errors below.
+1. Read the error message — when writing the code behind dbt, we try our best to make error messages as useful as we can. The error message dbt produces will normally contain the type of error (more on these error types below), and the file where the error occurred.
 2. Inspect the file that was known to cause the issue, and see if there's an immediate fix.
 3. Isolate the problem — for example, by running one model a time, or by undoing the code that broke things.
 4. Get comfortable with compiled files and the logs.
@@ -11,12 +11,11 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
     - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
-5. If you are really stuck, try [asking for help](getting-help). Before doing so, take the time to write your question well so that others diagnose the problem..
+5. If you are really stuck, try [asking for help](getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
 
 
 ## Types of errors
 Below, we've listed some of common errors. It's useful to understand what dbt is doing behind the scenes when you execute a command like `dbt run`.
-
 
 | Step | Description | Error type |
 |:-----|:------------|:-----------|
