@@ -1,12 +1,25 @@
 
 const path = require('path');
 
+/* Debugging */
+var SITE_URL;
+if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
+    SITE_URL = 'https://docs.getdbt.com';
+} else {
+    SITE_URL = process.env.DEPLOY_URL;
+}
+
+console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
+console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
+console.log("DEBUG: SITE_URL = ", SITE_URL);
+
+
 module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
   title: 'dbt - Documentation',
-  url: 'https://docs.getdbt.com',
+  url: SITE_URL,
 
   themeConfig: {
     disableDarkMode: true,
