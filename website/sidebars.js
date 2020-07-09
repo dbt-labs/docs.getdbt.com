@@ -55,6 +55,7 @@ module.exports = {
       type: "category",
       label: "Guides",
       items: [
+        "docs/guides/debugging-errors",
         "docs/guides/best-practices",
         "docs/guides/managing-environments",
         "docs/guides/writing-custom-schema-tests",

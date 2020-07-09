@@ -2,7 +2,7 @@
 title: How do I do X? How do I solve Y problem? Where can I go to get help?
 ---
 
-First, please check the relevant documentation and FAQs. Also, search for answers using your favorite search engine and in [Discourse](https://discourse.getdbt.com/).
+First, please check the relevant documentation and FAQs — we have a handy guide on [debugging errors](debugging-errors) to help out. Also, search for answers using your favorite search engine and in [Discourse](https://discourse.getdbt.com/).
 
 If you can’t find an answer, please take a few minutes to formulate your question well. Explaining the problems you are facing clearly will help others help you. See our guide on [asking good questions](https://discourse.getdbt.com/t/how-to-get-the-most-out-of-dbt-slack/290).
 
