@@ -11,6 +11,7 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
     - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
+    - **dbt CLI users**: Note that your code editor _may_ be hiding these files from the tree view ([Atom help](https://discuss.atom.io/t/all-gitignored-files-are-hidden-now-atom-1-15/39238), [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
 
 
@@ -349,7 +350,7 @@ In some cases, these errors might occur as a result of queries that dbt runs "be
 
 In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
 - **dbt Cloud**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
-- **dbt CLI**: Open the `logs/dbt.log` file. Note that your code editor _may_ be hiding this file from the tree view ([Atom help](https://discuss.atom.io/t/all-gitignored-files-are-hidden-now-atom-1-15/39238), [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
+- **dbt CLI**: Open the `logs/dbt.log` file.
 
 :::tip Isolating errors in the logs
 If you're hitting a strange `Database Error`, it can be a good idea to clean out your logs by opening the file, and deleting the contents. Then, re-execute `dbt run` for _just_ the problematic model. The logs will _just_ have the output you're looking for.
