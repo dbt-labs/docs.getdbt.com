@@ -177,7 +177,7 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt CLI users, these won't get picked up until you run `dbt run` or `dbt compile._
+_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt CLI users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function
@@ -333,15 +333,15 @@ Database Error in model customers (models/customers.sql)
 
 90% of the time, there's a mistake in the SQL of your model. To fix this:
 1. Open the offending file:
-    - **dbt Cloud:** Open the model `models/customers.sql` directly
-    - **dbt CLI:** It may be useful to also open the compiled SQL, i.e. the `target/run/jaffle_shop/models/customers.sql` file
+    - **dbt Cloud:** Open the model (in this case `models/customers.sql` as per the error message)
+    - **dbt CLI:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
     - **dbt Cloud:** Use the `Run SQL` button from the model file
-    - **dbt CLI:** Copy and paste the query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
-3. Fix the mistake
+    - **dbt CLI:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
+3. Fix the mistake.
 4. Rerun the failed model.
 
-In some cases, these errors might occur as a result of queries that dbt runs "behind-the-scenes". These inlcude:
+In some cases, these errors might occur as a result of queries that dbt runs "behind-the-scenes". These include:
 - Introspective queries to list objects in your database
 - Queries to `create` schemas
 - `pre-hooks`s, `post-hooks`, `on-run-end` hooks and `on-run-start` hooks
