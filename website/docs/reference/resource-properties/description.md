@@ -305,7 +305,7 @@ models:
 
 ### Use html in a description
 
-You can use html in the description to do fancier things than you can in just markdown. Embedding iFrames work too! It is recomended you do this in a docs block for easy of maintenance. 
+You can use html in the description to do fancier things than you can in just markdown. Embedding iframes work too! It is recomended you do this in a docs block for ease of maintenance. 
 
 
 <File name='models/docs.md'>
