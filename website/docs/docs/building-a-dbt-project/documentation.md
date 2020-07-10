@@ -101,8 +101,6 @@ The events in this table are recorded by \[Snowplow](http://github.com/snowplow/
 
 In the above example, a docs block named `table_events` is defined with some descriptive markdown contents. There is nothing significant about the name `table_events` — docs blocks can be named however you like, as long as the name only contains alphanumeric and underscore characters.
 
-You can also use arbitrary html inside a docs block. This is useful for embedding charts or diagrams from other tools directly into the documentation for a model.
-
 ### Placement
 Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [source-paths](source-paths), [data-paths](data-paths), [analysis-paths](analysis-paths), [macro-paths](macro-paths) and [snapshot-paths](snapshot-paths)) — you can adjust this behavior using the [docs-paths](docs-paths) config.
 
