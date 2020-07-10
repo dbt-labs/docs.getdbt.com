@@ -7,7 +7,7 @@ description: Now that we're set up, let's create a starter project with example 
 
 Now that we've successfully run our sample query in BigQuery, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
-:::info 
+:::info
 
 These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions [here](/tutorial/create-a-project-dbt-cloud).
 
@@ -33,7 +33,7 @@ $ dbt --version
 
 ```
 
-:::info 
+:::info
 
 dbt should have been installed as part of the  <a href="/tutorial/setting-up">Setting Up</a> part of the tutorial. If it was not installed, please follow the <a href="https://docs.getdbt.com/docs/installation"> installation instructions </a>
 
@@ -75,7 +75,7 @@ models:
 </File>
 
 ## Connect to BigQuery
-When developing locally, dbt connects to your data warehouse using a [profile](https://docs.getdbt.com/docs/configure-your-profile) — a yaml file with all the connection details to your warehouse.
+When developing locally, dbt connects to your data warehouse using a [profile](/dbt-cli/configure-your-profile) — a yaml file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
@@ -140,6 +140,6 @@ $ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
 $ git push -u origin master
 ```
 
-:::info 
+:::info
 If this is your first time using git, it's worth taking some time to understand the basics.
 :::

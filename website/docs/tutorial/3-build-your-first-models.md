@@ -28,7 +28,7 @@ It's a good idea to check out a new git branch when working on new code.
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](1-setting-up.md) instructions into the file.
+3. Paste the query from the [Setting up](/tutorial/setting-up) instructions into the file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You should get a successful run, like so:
 
 <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
@@ -42,7 +42,7 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](1-setting-up.md) instructions into the file.
+3. Paste the query from the [Setting up](/tutorial/setting-up) instructions into the file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
@@ -270,7 +270,7 @@ This time when dbt ran, separate views/tables were created for `stg_customers`, 
 
 ## Extra exercises
 * Write some bad SQL to cause an error — can you debug this error?
-* Run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
+* Run only a single model at a time ([docs](/reference/model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e. `models/staging/stg_customers.sql`)
     * Configure your `staging` models to be views
     * Run only the `staging` models
