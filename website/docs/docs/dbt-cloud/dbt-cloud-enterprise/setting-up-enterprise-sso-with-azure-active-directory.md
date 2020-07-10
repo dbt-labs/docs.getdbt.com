@@ -29,47 +29,54 @@ tenant flow when creating an Azure AD Application.
 ### Creating an application
 
 Log into the Azure portal for your organization. Using the **Azure Active Directory** page, you will
-need to select the appropriate directory and then register a new application. 
+need to select the appropriate directory and then register a new application.
 
 1. Under **Manage**, select **App registrations**
 2. Click **+ New Registration** to begin creating a new application
-3. Create the new app registration with the following configurations:
+3. Supply configurations for the **Name** and **Supported account types**
+   fields as shown in the table below.
 
 | Field | Value |
 | ----- | ----- |
 | **Name** | dbt Cloud |
 | **Supported account types** | Accounts in this organizational directory only _(single tenant)_ |
-| **Platform configuration** | Client Application |
 
-4. Save the App registration to continue setting up Azure AD SSO
+4. Configure the **Redirect URI**. The table below shows the appropriate
+   Redirect URI values for single-tenant and multi-tenant deployments. For most
+   enterprise use-cases, you will want to use the single-tenant Redirect URI.
 
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application.png" title="Configuring a new app registration"/>
-
-### Configuring the redirect URI
-
-:::note Redirect URIs
+:::note VPC Deployment
 If you are deploying dbt Cloud into a VPC, you should use the hostname where
 the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the **Redirect URI** configuration shown below.
+the **Redirect URI** input.
 :::
-
-5. Under **Manage**, click the **Authentication** link
-6. Add a **Platform configuration** for the dbt Cloud **Redirect URI**. For most
-   typical enterprise use-cases, you will only need to supply the Single-Tenant
-   Redirect URI shown below.
 
 | Application Type | Redirect URI |
 | ----- | ----- |
 | Single-Tenant _(recommended)_ | `https://cloud.getdbt.com/complete/azure_single_tenant` |
 | Multi-Tenant | `https://cloud.getdbt.com/complete/azure_multi_tenant` |
 
-7. Verify that the Redirect URI has been added successfully and save the page to continue
+5. Save the App registration to continue setting up Azure AD SSO
+
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration"/>
+
+**Configuration with the new Azure AD interface (optional)**
+
+Depending on your Azure AD settings, your App Registration page might look
+different than the screenshots shown above. If you are _not_ prompted to
+configure a Redirect URI on the **New Registration** page, then follow steps 6
+and 7 below after creating your App Registration. If you were able to set up
+the Redirect URI in the steps above, then skip ahead to step 8.
+
+6. After registering the new application without specifying a Redirect URI,
+   navigate to the **Authentication** tab for the new application.
+
+7. Click **+ Add platform** and enter a Redirect URI for your application. See
+   step 4 above for more information on the correct Redirect URI value for your
+   dbt Cloud application.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
-
-
 
 
 ### Configuring permissions
@@ -82,7 +89,7 @@ the **Redirect URI** configuration shown below.
 | Microsoft Graph | Delegated | `Directory.AccessAsUser.All` |
 | Microsoft Graph | Delegated | `Directory.Read.All` |
 | Microsoft Graph | Application | `Directory.Read.All` |
-| Microsoft Graph | Delegated | `User.Read.All` |
+| Microsoft Graph | Delegated | `User.Read` |
 
 10. Save these permissions, then click **Grant admin consent** to grant admin
    consent for this directory on behalf of all of your users.
@@ -135,21 +142,18 @@ Settings.
 | **Client&nbspID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** recorded in the steps above |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
-| **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with an email address from this domain will be able to log into your dbt Cloud account using Azure AD SSO. |
+| **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with with accounts a directory with this primary domain will be able to log into the dbt Cloud application. |
 | **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring credentials in dbt Cloud" />
 
-21. Click **Save &amp; Authorize** to authorize your credentials. You should be
-   dropped into the Azure AD login flow and prompted to log into dbt Cloud with
-   your work email address. If authentication is successful, you will be
-   redirected back to the dbt Cloud application.
-22. On the **Verify SSO Credentials** page, verify that a `groups` entry is
-   present, and that it reflects the groups you are a member of in Azure AD.
+21. Click **Save** to complete setup for the Azure AD SSO integration. From
+    here, you can navigate to the URL generated for your account's _slug_ to
+    test logging in with Azure AD.
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso-verify.png" title="Verifying configured credentials" />
+:::success Logging in
+Users in your Azure AD account will now be able to log into the application
+by navigating to the URL:
 
-If the verification information looks appropriate, then you have completed
-the configuration of GSuite SSO. Members of your team should now be able to log
-into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<login-slug>`.
+`https://cloud.getdbt.com/enterprise-login/<login-slug>`
