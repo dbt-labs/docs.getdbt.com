@@ -33,7 +33,7 @@ You should have received an invitation to dbt Cloud. Please accept the invitatio
     * Switch the project in the header bar to your new "dbt Learn - [initialsurname]" project. **Do not use another student's project**
 3. Complete the project setup flow:
     * Connect to Snowflake using your provided credentials (also see below image)
-    * Add a repository — choose the Github integration, and link to the repository you set up in the [Setting Up](1-setting-up.md) instructions.
+    * Add a repository — choose the Github integration, and link to the repository you set up in the [Setting Up](/learn/setting-up) instructions.
 
 <Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
 
