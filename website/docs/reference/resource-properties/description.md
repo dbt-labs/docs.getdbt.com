@@ -302,3 +302,29 @@ models:
 ```
 
 </File>
+
+
+### Include an image in your descriptions
+
+At present, it's not possible to include an image in your project and render it as part of your project documentation using the image path. This is because images are not included in the `target` directory when you execute `dbt compile`. We hope to address this in the future ([related issue](https://github.com/fishtown-analytics/dbt/issues/2072)).
+
+Instead, consider hosting the image online and using the image URL to render the image.
+
+<File name='models/schema.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: dim_customers
+    description: "!\[dbt Logo](https://github.com/fishtown-analytics/dbt/raw/master/etc/dbt-horizontal.png)"
+
+    columns:
+      - name: customer_id
+        description: Primary key
+
+```
+
+</File>
+
+If mixing images and text together, consider using a docs block instead.
