@@ -81,7 +81,7 @@ select * from final
 ```
 
 ## Connect to Snowflake
-For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
+For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](/docs/supported-databases).
 
 1. Go to the Snowflake Console (link provided in email) and login with your supplied credentials.
 2. Reset your password: all students will be asked to update their password — please use a password manager to store this securely.
@@ -116,4 +116,4 @@ To use the CLI, it's important that you know some basics of your terminal. In pa
 During dbt Learn, we try our best to demonstrate using both workflows. However, we tend to default to using dbt Cloud for some of the shorter demonstrations.
 :::
 
-If you wish to use the CLI, please follow the [installation instructions](https://docs.getdbt.com/docs/installation) for your operating system.
+If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/installation) for your operating system.

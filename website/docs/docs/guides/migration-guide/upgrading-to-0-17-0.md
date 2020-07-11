@@ -133,11 +133,21 @@ Support for version 1 will be removed in a future release of dbt.
 
 ### NativeEnvironment rendering for yaml fields
 
-In dbt v0.17.0, dbt will use a jinja Native Environment to render values in
-schema.yml files. This Native Environment will coerce string values to their
+In dbt v0.17.0, dbt enabled use of Jinja's Native Environment to render values in
+YML files. This Native Environment coerces string values to their
 primitive Python types (booleans, integers, floats, and tuples). With this
 change, you can now provide boolean and integer values to configurations via
 string-oriented inputs, like environment variables or command line variables.
+
+:::danger Heads up
+
+  In dbt v0.17.1, native rendering is not enabled by default. It is possible to
+  natively render specific values using the [`as_bool`](as_bool), 
+  [`as_number`](as_number), and [`as_native`](as_native) filters.
+  
+  The examples below have been updated to reflect 0.17.1 functionality.
+
+:::
 
 This example specifies a port number as an integer from an environment variable.
 This was not possible in previous versions of dbt.
@@ -154,28 +164,8 @@ debug:
       host: "{{ env_var('DBT_HOST') }}"
 
       # The port number will be coerced from a string to an integer
-      port: "{{ env_var('DBT_PORT') }}"
+      port: "{{ env_var('DBT_PORT') | as_number }}"
 
-      dbname: analytics
-      schema: analytics
-```
-
-If you want to bypass this type coercion, you can use the [as_text](as_text)
-jinja filter to force the value to be a string instead:
-
-```yml
-
-debug:
-  target: dev
-  outputs:
-    dev:
-      type: postgres
-
-      # The DBT_USER env var will be force-casted to a string
-      user: "{{ env_var('DBT_USER') | as_text }}"
-      pass: "{{ env_var('DBT_PASS') }}"
-      host: "{{ env_var('DBT_HOST') }}"
-      port: "{{ env_var('DBT_PORT') }}"
       dbname: analytics
       schema: analytics
 ```
@@ -198,7 +188,7 @@ models:
     +enabled: true
 
   admin:
-    +enabled: "{{ target.name == 'prod' }}"
+    +enabled: "{{ (target.name == 'prod') | as_bool }}"
 ```
 
 </File>
@@ -206,7 +196,7 @@ models:
 
 ### Accessing sources in the `graph` object
 
-In previous versions of dbt, the `sources` in a dbt project could be accessed in the compilation context using the [graph.nodes](jinja-context/graph) context variable. In dbt v0.17.0, these sources have been moved out of the `graph.nodes` dictionary and into a new `graph.sources` dictionary. This change is also reflected in the `manifest.json` artifact produced by dbt. If you are accessing these sources programmatically, please update any references from `graph.nodes` to `graph.sources` instead.
+In previous versions of dbt, the `sources` in a dbt project could be accessed in the compilation context using the [graph.nodes](dbt-jinja-functions/graph) context variable. In dbt v0.17.0, these sources have been moved out of the `graph.nodes` dictionary and into a new `graph.sources` dictionary. This change is also reflected in the `manifest.json` artifact produced by dbt. If you are accessing these sources programmatically, please update any references from `graph.nodes` to `graph.sources` instead.
 
 ### BigQuery `locations` removed from Catalog
 
@@ -257,12 +247,12 @@ BigQuery:
 
 **Core**
 - [`path:` selectors](model-selection-syntax#the-path-operator)
-- [`--fail-fast`](command-line-interface/run#failing-fast)
-- [as_text Jinja filter](jinja-context/as_text)
-- [accessing nodes in the `graph` object](jinja-context/graph)
+- [`--fail-fast`](commands/run#failing-fast)
+- [as_text Jinja filter](dbt-jinja-functions/as_text)
+- [accessing nodes in the `graph` object](dbt-jinja-functions/graph)
 - [persist_docs](resource-configs/persist_docs)
 - [source properties](reference/source-properties)
 - [source overrides](resource-properties/overrides)
 
 **BigQuery**
-- [maximum_bytes_billed](profile-bigquery#maximum-bytes-billed)
+- [maximum_bytes_billed](bigquery-profile#maximum-bytes-billed)

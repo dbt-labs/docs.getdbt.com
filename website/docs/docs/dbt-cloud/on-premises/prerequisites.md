@@ -65,9 +65,21 @@ We recommend using NFS.
 
 dbt Cloud uses Auth0 to provide SSO integration with a variety of platforms. If you opt to use a SSO provider such as Okta, your license file will include a set of credentials specific to your installation to enable the Auth0 integration.
 
-### SMTP
+### Email over SMTP
 
-dbt Cloud can send email notifications when runs finish. You can provide a set of SMTP credentials for dbt Cloud to use to send these emails inside your network.
+dbt Cloud has the ability to send emails over SMTP. The emails that dbt Cloud can send include:
+
+- **Post-run notifications**: your users can get notified when runs finish.
+- **Email invitations**: if your instance supports login via email/password, you can send email invitations that will allow users to log in.
+- **Password resets**: if your instance supports login via email/password, users can reset their own passwords.
+
+To configure SMTP, you will provide a set of SMTP credentials in the configuration console. These credentials include:
+
+- **SMTP Host**: the hostname of your SMTP server.
+- **SMTP Port**: the port (often 25 or 465)
+- **SMTP Username**: the username to use when logging into the SMTP server. For some platforms, this will be someone's actual username. For others, you can generate a service account username.
+- **SMTP Password**: the password for the given username.
+- **System "From" Email Address**: The "From" email address that dbt Cloud will use. Typically this will be a "no-reply" or system address. If you'd like to enable your users to reply to these emails, you can change the "From" address accordingly. Make sure that you have configured your SMTP server to allow outbound email coming from this "From" address.
 
 ### Github
 

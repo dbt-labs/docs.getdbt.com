@@ -16,7 +16,7 @@ function Home() {
   const context = useDocusaurusContext();
 
   return (
-	  
+
     <Layout permalink="/">
         <div className="container container--fluid home" style={{"padding": "10px 0"}}>
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
@@ -249,12 +249,7 @@ function Home() {
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
         		<div className="col col--8">
         			 <h1>Having trouble?</h1>
-        			 <p style={{"fontSize": "120%"}}>If you&#39;re having trouble, check out our Getting Help FAQ for information on getting support and asking questions in the community.</p>
-        			  <Link
-                          className="button help button--primary"
-                          to={useBaseUrl('/faqs/getting-help/')}>
-                          View FAQs
-                        </Link>
+        			 <p style={{"fontSize": "120%"}}>If you&#39;re having trouble, check out our <a href="/faqs/getting-help" >Getting Help FAQ</a> for information on getting support and asking questions in the community.</p>
 				</div>
 			</div>
         </div>

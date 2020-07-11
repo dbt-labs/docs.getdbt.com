@@ -75,9 +75,9 @@ select * from final
 ## Create a BigQuery project
 For this tutorial, we've created a public dataset in BigQuery that anyone can `select` from.
 
-We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
+We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](/docs/supported-databases).
 
-:::info 
+:::info
 BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you have an existing GCP account that has surpassed these tiers on BigQuery, running queries for this tutorial will incur a very small (less than a few USD) cost.
 :::
 
@@ -118,4 +118,4 @@ There’s two main ways of working with dbt:
 
 To use the CLI, it's important that you know some basics of your terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily. As such, if you are new to programming, we recommend using **dbt Cloud** for this tutorial.
 
-If you wish to use the CLI, please follow the [installation instructions](https://docs.getdbt.com/docs/installation) for your operating system.
+If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/installation) for your operating system.

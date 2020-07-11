@@ -6,7 +6,7 @@ id: "building-models"
 ## Related reference docs
 * [Model configurations](model-configs)
 * [Model properties](model-properties)
-* [`run` command](command-line-interface/run)
+* [`run` command](run)
 * [`ref` function](ref)
 
 ## Getting started

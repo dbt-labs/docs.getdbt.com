@@ -2,8 +2,8 @@
 title: Snapshot configurations
 ---
 ## Related documentation
-* [Snapshots](docs/building-a-dbt-project/snapshots.md)
-* The `dbt snapshot` [command](docs/running-a-dbt-project/command-line-interface/snapshot.md)
+* [Snapshots](snapshots)
+* The `dbt snapshot` [command](snapshot)
 
 <!--
 Parts of a snapshot:

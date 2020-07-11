@@ -4,8 +4,9 @@ id: "snapshots"
 ---
 
 ## Related documentation
-* [Snapshot configurations](reference/snapshot-configs.md)
-* The `dbt snapshot` [command](docs/running-a-dbt-project/command-line-interface/snapshot.md)
+* [Snapshot configurations](snapshot-configs)
+* [Snapshot properties](snapshot-properties)
+* [`snapshot` command](snapshot)
 
 ## Getting started
 

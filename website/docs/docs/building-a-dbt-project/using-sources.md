@@ -5,8 +5,8 @@ id: "using-sources"
 
 ## Related reference docs
 * [Source properties](source-properties)
-* [`{{ source() }}` jinja function](jinja-context/source)
-* [`source snapshot-freshness` command](command-line-interface/source)
+* [`{{ source() }}` jinja function](dbt-jinja-functions/source)
+* [`source snapshot-freshness` command](commands/source)
 
 ## Using sources
 Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
@@ -40,7 +40,7 @@ If you're not already familiar with these files, be sure to check out [the docum
 
 ### Selecting from a source
 
-Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](jinja-context/source).
+Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](dbt-jinja-functions/source).
 
 
 <File name='models/orders.sql'>
@@ -163,7 +163,7 @@ Additionally, the `loaded_at_field` is required to calculate freshness for a tab
 These configs are applied hierarchically, so `freshness` and `loaded_at` field values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
 ### Snapshotting source freshness
-To snapshot freshness information for your sources, use the `dbt source snapshot-freshness` command ([reference docs](command-line-interface/source)):
+To snapshot freshness information for your sources, use the `dbt source snapshot-freshness` command ([reference docs](commands/source)):
 
 ```
 $ dbt source snapshot-freshness

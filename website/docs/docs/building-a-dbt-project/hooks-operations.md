@@ -8,8 +8,8 @@ id: "hooks-operations"
 * [on-run-start & on-run-end](on-run-start-on-run-end)
 * [`run-operation` command](run-operation)
 
-## Assumed knowledge:
-* [Project configurations](dbt_project.yml)
+## Assumed knowledge
+* [Project configurations](reference/dbt_project.yml.md)
 * [Model configurations](model-configs)
 * [Macros](macros)
 
