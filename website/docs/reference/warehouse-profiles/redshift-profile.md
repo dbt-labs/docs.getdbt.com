@@ -39,7 +39,8 @@ on generating user credentials with IAM Auth.
 
 If you receive the "You must specify a region" error when using IAM
 Authentication, then your aws credentials are likely misconfigured. Try running
-`aws configure` to set up AWS access keys, and pick a default region.
+`aws configure` to set up AWS access keys, and pick a default region. If you have any questions,
+please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -53,9 +54,10 @@ my-redshift-db:
       cluster_id: [cluster_id]
       host: hostname.region.redshift.amazonaws.com
       user: alice
-      iam_duration_seconds: 900 # optional
-      autocreate: true          # optional
-      db_groups: ['analysts']   # optional
+      iam_profile: data_engineer # optional
+      iam_duration_seconds: 900  # optional
+      autocreate: true           # optional
+      db_groups: ['analysts']    # optional
 
       # Other Redshift configs:
       port: 5439
@@ -68,6 +70,13 @@ my-redshift-db:
 
 </File>
 
+### Specifying an IAM Profile
+
+:::info New in dbt v0.18.0
+The `iam_profile` config option for Redshift profiles is new in dbt v0.18.0
+:::
+
+When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
 ## Redshift notes
 
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](redshift-configs).
