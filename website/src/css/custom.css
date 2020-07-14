@@ -6,6 +6,11 @@
     --ifm-color-danger: #ff694b !important;
 }
 
+/* For /dbt-cloud/api redoc page */
+div.collapser {
+    color: white;
+}
+
 .admonition h5 {
     text-transform: none;
     font-size: 1rem;
