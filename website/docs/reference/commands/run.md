@@ -102,3 +102,12 @@ Encountered an error:
 FailFast Error in model model_1 (models/model_1.sql)
   Failing early due to test failure or runtime error
 ```
+
+## Enable or Disable Colorized Logs
+
+DBT can colorize the run logs output to your terminal to make the logs more readable. This is enabled by default, [can be overriden in your profiles.yml] (https://docs.getdbt.com/reference/profiles.yml/#use_colors), and both the default and the profiles.yml can be overriden at the command line. Use `--use-colors` or `--no-use-colors` to enable or disable log colorizing from the command line.
+Example usage:
+```
+$ dbt --use-colors run
+$ dbt --no-use-colors run
+```
