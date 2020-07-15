@@ -43,33 +43,26 @@ On AWS, you can use either instance profile based or AWS keypair based authentic
 
 
 ```json
-{  
-    "Version": "2012-10-17",  
-    "Statement": [  
-        {  
-            "Sid": "VisualEditor0",  
-            "Effect": "Allow",  
-            "Action": [  
-                "s3:PutObject",  
-                "s3:GetObjectAcl",  
-                "s3:GetObject",  
-                "s3:ListBucket"  
-            ],  
-            "Resource": [  
-                "arn:aws:s3:::<bucket-name>-logs",
-                "arn:aws:s3:::<bucket-name>-logs/*",   
-                "arn:aws:s3:::<bucket-name>-artifacts",  
-                "arn:aws:s3:::<bucket-name>-artifacts/*"  
-                 
-            ]  
-        },  
-        {  
-            "Sid": "VisualEditor1",  
-            "Effect": "Allow",  
-            "Action": "s3:HeadBucket",  
-            "Resource": "*"  
-        }  
-    ]  
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObjectAcl",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:HeadBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<logs-bucket-name>",
+                "arn:aws:s3:::<logs-bucket-name>/*",
+                "arn:aws:s3:::<artifacts-bucket-name>",
+                "arn:aws:s3:::<artifacts-bucket-name>/*"
+            ]
+        }
+    ]
 }
 ```
 
