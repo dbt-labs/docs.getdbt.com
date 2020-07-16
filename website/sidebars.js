@@ -274,7 +274,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Properties",
+      label: "Properties (schema.yml files)",
       items: [
         "reference/declaring-properties",
         "reference/model-properties",
@@ -306,6 +306,13 @@ module.exports = {
             "reference/resource-properties/quoting",
             "reference/resource-properties/schema",
             "reference/resource-properties/overrides",
+          ],
+        },
+        {
+          type: "category",
+          label: "List of macro properties",
+          items: [
+            "reference/resource-properties/argument-type",
           ],
         },
       ],
