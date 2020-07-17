@@ -56,6 +56,8 @@ module.exports = {
       label: "Guides",
       items: [
         "docs/guides/debugging-errors",
+        "docs/guides/navigating-the-docs",
+        "docs/guides/getting-help",
         "docs/guides/best-practices",
         "docs/guides/managing-environments",
         "docs/guides/writing-custom-schema-tests",
@@ -63,7 +65,7 @@ module.exports = {
         "docs/guides/creating-new-materializations",
         {
           type: "category",
-          label: "Migration Guides",
+          label: "Migration guides",
           items: [
             "docs/guides/migration-guide/upgrading-from-0-10-to-0-11",
             "docs/guides/migration-guide/upgrading-to-0-12-0",
