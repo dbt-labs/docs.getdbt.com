@@ -249,7 +249,7 @@ function Home() {
         	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
         		<div className="col col--8">
         			 <h1>Having trouble?</h1>
-        			 <p style={{"fontSize": "120%"}}>If you&#39;re having trouble, check out our <a href="/faqs/getting-help" >Getting Help FAQ</a> for information on getting support and asking questions in the community.</p>
+        			 <p style={{"fontSize": "120%"}}>If you&#39;re having trouble, check out our guide on <a href="/docs/guides/getting-help" >Getting Help</a> for information on getting support and asking questions in the community.</p>
 				</div>
 			</div>
         </div>
