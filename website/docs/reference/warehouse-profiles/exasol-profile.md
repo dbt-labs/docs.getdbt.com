@@ -28,6 +28,8 @@ Easiest install is to use pip:
 Configure your dbt profile for using SQL Server authentication or Integrated Security:
 
 ##### Exasol connection information
+<File name='profiles.yml'>
+
 ```yaml
 dbt-exasol:
   target: dev
@@ -41,7 +43,5 @@ dbt-exasol:
       dbname: db
       schema: SCHEMA
 ```
-
-------------------------------------------------------------
 
 </File>
