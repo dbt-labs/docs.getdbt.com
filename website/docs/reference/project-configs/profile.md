@@ -18,7 +18,7 @@ The profile your dbt project should use to connect to your data warehouse.
 * [Connecting to your warehouse](docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile.md)
 
 ## Recommendation
-Often an organization has only one data warehouse, so it is sensible to use your organization's name as a profile name, in `kebab_case`. For example:
+Often an organization has only one data warehouse, so it is sensible to use your organization's name as a profile name, in `snake_case`. For example:
 * `profile: acme`
 * `profile: jaffle_shop`
 * `profile: evilcorp`
