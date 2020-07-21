@@ -24,3 +24,5 @@ To upgrade, use:
 ```bash
 pip install --upgrade dbt
 ```
+
+Run 'dbt init' to prepare the environment for creating a project https://docs.getdbt.com/reference/commands/init/
