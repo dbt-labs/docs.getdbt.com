@@ -4,13 +4,13 @@ title: On-premises FAQs
 
 ## Customizations
 
-### How does one add a custom ingress to the application?
+### Adding custom ingresses
 
-All ingress to dbt Cloud goes through a component called the **API Gateway**. The deployment that makes up the API Gateway has the label `name: api-gateway`. Within your deployment, you can create custom services and ingresses to these pods by targeting that set of labels.
+All ingress to dbt Cloud goes through a component called the **API Gateway**. The Kubernetes deployment that makes up the API Gateway has the label `name: api-gateway` and serves up all traffic on port 8000. Within your dbt Cloud installation, you can create custom services and ingresses to these pods by targeting that set of labels with custom services.
 
 **Example: on an embedded cluster, add a service that does _not_ terminate TLS**
 
-This example only applies to an embedded cluster (dbt Cloud installed onto a VM). Note that exposing dbt Cloud over http is insecure, and not recommended.
+This example only applies to an embedded cluster (dbt Cloud installed onto a VM). Note that exposing dbt Cloud traffic over http is insecure, and not recommended.
 
 ```yaml
 apiVersion: v1
@@ -52,7 +52,7 @@ spec:
       # This assumes tls-secret exists and the SSL
       # certificate contains a CN for
       # "<hostname-to-terminate-tls>"
-      secretName: <tls-secret>
+      secretName: "<tls-secret>"
   rules:
     - host: "<hostname-to-terminate-tls>"
       http:
