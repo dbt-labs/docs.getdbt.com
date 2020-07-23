@@ -67,11 +67,9 @@ For more examples of using the nginx ingress controller, see [the Examples secti
 
 ## Troubleshooting
 
-### Restarting the dbt or kotsadm Applications
+### Restarting the dbt Cloud Application
 
-Certain tasks may require restarting the dbt or the kotsadm applications. In order to accomplish this, the below commands can be run.
-
-**Restarting dbt**
+Certain tasks may require restarting the dbt Cloud application such as updating a configuration value. In order to accomplish this, the below commands can be run. Note that when these commands are run, the dbt Cloud application (including the IDE and job scheduler) will be unavailable for a few minutes until the restart is complete.
 
 ```bash
 kubectl rollout restart deployment/api-gateway
@@ -79,7 +77,9 @@ kubectl rollout restart deployment/app
 kubectl rollout restart deployment/scheduler
 ```
 
-**Restarting kotsadm**
+### Restarting the Configuration Console (kotsadm)
+
+Certain tasks may require restarting the Configuration Console (kotsadm) such as changing the TLS certificate. In order to accomplish this, the below commands can be run. Note that when these commands are run, the Configuration Console will be unavailable for a few minutes until the restart is complete.
 
 ```bash
 kubectl rollout restart deployment/kotsadm
