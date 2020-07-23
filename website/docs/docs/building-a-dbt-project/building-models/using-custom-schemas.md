@@ -45,7 +45,7 @@ select ...
 models:
   my_project:
     marketing:
-      +schema: marketing
+      schema: marketing
 ```
 
 </File>
