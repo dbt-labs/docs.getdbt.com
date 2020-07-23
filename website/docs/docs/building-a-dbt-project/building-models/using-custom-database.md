@@ -29,7 +29,7 @@ name: jaffle_shop
 
 models:
   my_project:
-    +database: jaffle_shop
+    database: jaffle_shop
 
     # For BigQuery users:
     # project: jaffle_shop
