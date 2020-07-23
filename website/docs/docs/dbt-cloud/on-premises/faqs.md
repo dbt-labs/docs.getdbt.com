@@ -64,3 +64,24 @@ spec:
 ```
 
 For more examples of using the nginx ingress controller, see [the Examples section](https://kubernetes.github.io/ingress-nginx/examples/tls-termination/) of their documentation.
+
+## Troubleshooting
+
+### Restarting the dbt or kotsadm Applications
+
+Certain tasks may require restarting the dbt or the kotsadm applications. In order to accomplish this, the below commands can be run.
+
+**Restarting dbt**
+
+```bash
+kubectl rollout restart deployment/api-gateway
+kubectl rollout restart deployment/app
+kubectl rollout restart deployment/scheduler
+```
+
+**Restarting kotsadm**
+
+```bash
+kubectl rollout restart deployment/kotsadm
+kubectl rollout restart deployment/kotsadm-api
+```
