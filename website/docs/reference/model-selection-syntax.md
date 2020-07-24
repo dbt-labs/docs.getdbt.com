@@ -7,61 +7,73 @@ id: "model-selection-syntax"
 
 dbt's model selection syntax makes it possible to run only specific resources in a given invocation of dbt. The model selection syntax is used for the following subcommands:
 
-| command   | argument(s)                         |
-| :-------- | ----------------------------------- |
-| run       | `--models`, `--exclude`             |
-| test      | `--models`, `--exclude`             |
-| seed      | `--select`, `--exclude`             |
-| snapshot  | `--select`, `--exclude`             |
-| ls (list) | `--select`, `--models`, `--exclude` |
-| compile   | `--select`, `--exclude`             |
+| command   | argument(s)                                       |
+| :-------- | ------------------------------------------------- |
+| run       | `--models`, `--exclude`, `--selector`             |
+| test      | `--models`, `--exclude`, `--selector`             |
+| seed      | `--select`, `--exclude`                           |
+| snapshot  | `--select`, `--exclude`                           |
+| ls (list) | `--select`, `--models`, `--exclude`, `--selector` |
+| compile   | `--select`, `--exclude`                           |
 
 
 
 
 ## Specifying models to run
 
-By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--models` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--models` and `--exclude`) also apply to `dbt test`!
+By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--models` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--models`, `--exclude`, and `--selector`) also apply to `dbt test`!
 
 The `--models` flag accepts one or more arguments. Each argument can be one of:
 
 1. a package name
 2. a model name
 3. a fully-qualified path to a directory of models
-4. a tag selector
-5. a source selector
-6. a path selector
+4. a selector method (`path:`, `tag:`, `config:`, `test_type:`, `test_name:`)
 
 Examples:
 ```bash
-dbt run --models my_dbt_project_name   # runs all models in your project
-dbt run --models my_dbt_model          # runs a specific model
-dbt run --models path.to.my.models     # runs all models in a specific directory
-dbt run --models my_package.some_model # run a specific model in a specific package
-dbt run --models tag:nightly           # run models with the "nightly" tag
-dbt run --models path/to/models        # run models contained in path/to/models
-dbt run --models path/to/my_model.sql  # run a specific model by its path
+$ dbt run --models my_dbt_project_name   # runs all models in your project
+$ dbt run --models my_dbt_model          # runs a specific model
+$ dbt run --models path.to.my.models     # runs all models in a specific directory
+$ dbt run --models my_package.some_model # run a specific model in a specific package
+$ dbt run --models tag:nightly           # run models with the "nightly" tag
+$ dbt run --models path/to/models        # run models contained in path/to/models
+$ dbt run --models path/to/my_model.sql  # run a specific model by its path
+$ dbt run --models 
 
 # multiple arguments can be provided to --models
-dbt run --models my_first_model my_second_model
+$ dbt run --models my_first_model my_second_model
 
 # these arguments can be projects, models, directory paths, tags, or sources
-dbt run --models tag:nightly my_model finance.base.*
+$ dbt run --models tag:nightly my_model finance.base.*
+
+$ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
 ```
 
-## Model selection shorthand
+## Model selection
 The flags `--models`, `--model`, and `-m` are all equivalent ways to select models in `dbt run` and `dbt test` invocations.
+Tests are associated with models; it is possible to select them based on properties
 
-## Model Selectors
-dbt supports a shorthand language for selecting models to run. This language uses the characters `+`, `@`, and `*`.
+## Operators
+dbt supports a shorthand language for selecting nodes to run. This language uses the characters `+`, `@`, and `*`.
 
 ### The "plus" operator
 If placed at the front of the model selector, `+` will select all parents of the selected model. If placed at the end of the string, `+` will select all children of the selected model.
 
 ```bash
-dbt run --models my_model+          # select my_model and all children
-dbt run --models +my_model          # select my_model and all parents
-dbt run --models +my_model+         # select my_model, and all of its parents and children
+$ dbt run --models my_model+          # select my_model and all children
+$ dbt run --models +my_model          # select my_model and all parents
+$ dbt run --models +my_model+         # select my_model, and all of its parents and children
+```
+
+### The ["n-plus"](https://nplusonemag.com/) operator
+You can adjust the behavior of the `+` operator by quantifying the number of edges
+to step through.
+
+```bash
+$ dbt run --models my_model+1          # select my_model and its first-degree children
+$ dbt run --models 2+my_model          # select my_model, its first-degree parents, and its second-degree parents ("grandparents")
+$ dbt run --models 3+my_model+4        # select my_model, its parents up to the 3rd degree, and its children down to the 4th degree
 ```
 
 ### The "at" operator
@@ -73,30 +85,90 @@ The `@` operator is similar to `+`, but will also include _the parents of the ch
 The `*` operator matches all models within a package or directory.
 
 ```bash
-dbt run --models snowplow.*      # run all of the models in the snowplow package
-dbt run --models finance.base.*  # run all of the models in models/finance/base
+$ dbt run --models snowplow.*      # run all of the models in the snowplow package
+$ dbt run --models finance.base.*  # run all of the models in models/finance/base
 ```
 
-### The "tag:" operator
-The `tag:` prefix is used to select models that match a specified [tag](tags) .
+## Set Operators
 
-```
-dbt run --models tag:nightly    # run all models with the `nightly` tag
+### Unions
+Providing multiple space-delineated arguments to the `--models`, `--exclude`, or `--selector` flags selects
+the union of them all. If a resource is included in at least one selector, it will be 
+included in the final set.
+
+### Intersections
+<Changelog>New in v0.18.0</Changelog>
+If multiple arguments to `--models`, `--exclude`, and `--select` can be comma-separated (with no whitespace in between),
+dbt will select only resources which satisfy _all_ arguments.
+
+Run all the common ancestors of snowplow_sessions and fct_orders:
+```bash
+$ dbt run --models +snowplow_sessions,+fct_orders
 ```
 
-### The "source:" operator
-The `source:` prefix is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
-
-```
-dbt run --models source:snowplow+    # run all models that select from Snowplow sources
+Run all the common descendents of stg_invoices and stg_accounts:
+```bash
+$ dbt run --models stg_invoices+,stg_accounts+
 ```
 
-### The "path:" operator
-The `path:` prefix is used to select models located at or under a specific path.
-While the `path:` prefix is not explicitly required, it may be used to make
+Run models that are in the marts/finance subdirectory *and* tagged nightly:
+```bash
+$ dbt run --models marts.finance,tag:nightly
+```
+
+### Excluding models
+dbt provides an `--exclude` flag with the same semantics as `--models`. Models specified with the `--exclude` flag will be removed from the set of models selected with `--models`.
+
+```bash
+$ dbt run --models my_package.*+ --exclude my_package.a_big_model+
+```
+
+Exclude a specific resource by its name or lineage:
+
+```bash
+# test
+$ dbt test --exclude not_null_orders_order_id
+$ dbt test --exclude orders
+
+# seed
+$ dbt seed --exclude account_parent_mappings
+
+# snapshot
+$ dbt snapshot --exclude snap_order_statuses
+$ dbt test --exclude orders+
+```
+
+
+## Methods
+
+Selector methods return all resources that share a common property, using the
+syntax `method:value`.
+
+### The "package" method
+The `package` method is used
+While the `package:` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
 
+### The "tag" method
+The `tag` method is used to select models that match a specified [tag](tags) .
+
+```bash
+$ dbt run --models tag:nightly    # run all models with the `nightly` tag
 ```
+
+### The "source" method
+The `source` method is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
+
+```bash
+$ dbt run --models source:snowplow+    # run all models that select from Snowplow sources
+```
+
+### The "path" method
+The `path` method is used to select models located at or under a specific path.
+While the `path` prefix is not explicitly required, it may be used to make
+selectors unambiguous.
+
+```bash
 # These two selectors are equivalent
 dbt run --models path:models/staging/github
 dbt run --models models/staging/github
@@ -106,45 +178,177 @@ dbt run --models path:models/staging/github/stg_issues.sql
 dbt run --models models/staging/github/stg_issues.sql
 ```
 
-
-### Putting it all together
-```bash
-
-dbt run --models my_package.*+      # select all models in my_package and their children
-dbt run --models +some_model+       # select some_model and all parents and children
-
-dbt run --models tag:nightly+       # select "nightly" models and all children
-dbt run --models +tag:nightly+      # select "nightly" models and all parents and children
-
-dbt run --models @source:snowplow   # build all models that select from snowplow sources, plus their parents
-```
-
-## Excluding models
-dbt provides an `--exclude` flag with the same semantics as `--models`. Models specified with the `--exclude` flag will be removed from the set of models selected with `--models`
+### The "config" method
+<Changelog>New in v0.18.0</Changelog>
+The `config` method is used to select models that match a specified [node config](config).
 
 ```bash
-dbt run --models my_package.*+ --exclude my_package.a_big_model+
+$ dbt run --models config.materialized:incremental    # run all models that are materialized incrementally
+$ dbt run --models config.schema:audit                # run all models that are created in the `audit` schema
+$ dbt run --models config.cluster_by:geo_country      # run all models clustered by `geo_country`
 ```
+
+### The "test_type" method
+<Changelog>New in v0.18.0</Changelog>
+The `test_type` method is used to select tests based on their type, `schema` or `data`:
+
+```bash
+$ dbt test --models test_type:schema        # run all schema tests
+$ dbt test --models test_type:data          # run all data tests
+```
+
+### The "test_name" method
+<Changelog>New in v0.18.0</Changelog>
+The `test_name` method is used to select schema tests based on the name of the `test_` macro
+that defines it. For more information about how schema tests are defined, read about
+[custom schema tests](custom-schema-tests).
+
+```bash
+$ dbt test --models test_name:unique            # run all instances of the `unique` test
+$ dbt test --models test_name:equality          # run all instances of the `dbt_utils.equality` test
+$ dbt test --models test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
+```
+
+
+## Putting it all together
+```bash
+
+$ dbt run --models my_package.*+      # select all models in my_package and their children
+$ dbt run --models +some_model+       # select some_model and all parents and children
+
+$ dbt run --models tag:nightly+       # select "nightly" models and all children
+$ dbt run --models +tag:nightly+      # select "nightly" models and all parents and children
+
+$ dbt run --models @source:snowplow   # build all models that select from snowplow sources, plus their parents
+
+$ dbt test --models config.incremental_strategy:insert_overwrite,test_name:unique   # execute all `unique` tests that select from models using the `insert_overwrite` incremental strategy
+```
+
+This can get complex! Let's say I want to define a nightly run of models that build off snowplow data
+and are used for export, while excluding the biggest incremental models (and one more model, to boot).
+
+```bash
+$ dbt run --models @source:snowplow,tag:nightly export.*+ --exclude package:snowplow,config.materialized:incremental performance_context_pivoted
+```
+
+This command selects all models that:
+* Select from snowplow sources, plus their parents, _and_ are tagged "nightly"
+* Are defined in the `export` model subfolder and their children
+
+Except for models that are:
+* Defined in the snowplow package and materialized incrementally
+* Named `performance_context_pivoted`
+
+
+## Selectors
+
+It's possible to write model selectors in YML format, save them with a human-friendly
+name, and reference them using the `--selector` flag. 
+
+Selectors are recorded in a project's top-level `selectors.yml` file. Here is the same example from above,
+with varying degrees of CLI-to-YML conversion:
+
+<Tabs
+  defaultValue="light_yml"
+  values={[
+    { label: 'Unconverted', value: 'no_yml', },
+    { label: 'Partial YML', value: 'part_yml', },
+    { label: 'Full YML', value: 'all_yml', },
+  ]
+}>
+
+<File name='selectors.yml'>
+<TabItem value="no_yml">
+
+```yml
+selectors:
+  - name: nightly_diet_snowplow
+    definition:
+        '@source:snowplow,tag:nightly export.*+ --exclude package:snowplow,config.materialized:incremental performance_context_pivoted'
+```
+</TabItem>
+
+<TabItem value="part_yml">
+
+```yml
+selectors:
+  - name: nightly_diet_snowplow
+    definition:
+      union:
+        - intersection:
+            - '@source:snowplow'
+            - 'tag:nightly'
+        - 'export.\*+'
+        - exclude:
+            - intersection:
+                - 'package:snowplow'
+                - 'config.materialized:incremental'
+            - performance_context_pivoted
+```
+</TabItem>
+
+<TabItem value="all_yml">
+
+```yml
+selectors:
+  - name: nightly_diet_snowplow
+    definition:
+      union:
+        - intersection:
+            - method: source
+              value: snowplow
+              childrens_parents: true
+            - method: tag
+              value: nightly
+        - method: path
+          value: export
+        - exclude:
+            - intersection:
+                - method: package
+                  value: snowplow
+                - method: config.materialized
+                  value: config.materialized:incremental
+            - method: fqn
+              value: performance_context_pivoted
+```
+</TabItem>
+
+</File>
+
+What is the appeal of `selectors.yml`?
+* Complex selection criteria can be written in YML, instead of as character-sensitive string CLI arguments
+* Selectors live in a version-controlled file
+* Reusability: selectors are reusable across job definitions, and extensible (via YML anchors)
 
 
 ## Test selection examples
-The test selection syntax grew out of the model selection syntax. As such, the syntax will look familiar if you wish to :
+The test selection syntax grew out of the model selection syntax. As such, the syntax will look familiar if you wish to:
 * run tests on a particular model
 * run tests on models in a sub directory
 * run tests on all models upstream / downstream of a model, etc.
 
-However, things start to get a little unfamiliar when you want to test things other than models, so we've included lots of examples below. In the future, we plan to make this syntax more intuitive.
+Tests have their own properties _and_ inherit the properties of the nodes they select from. This means you:
+* select tests based on the file path of the models being tested, rather than the file paths of the `.yml` files that configure the tests
+* can use selector methods that check config properties of the resources being tested
+
+Things start to get a little unfamiliar when you want to test things other than models, so we've included lots of examples below. In the future, we plan to make this syntax more intuitive.
 
 ### Run schema tests only
 
 ```shell
-$ dbt test --schema
+$ dbt test --models test_type:schema
+
+# before v0.18.0:
+$ dbt test --schema # technically this runs all schema tests, tests tagged `'schema'`, or tests of models tagged `'schema'`
 ```
 
 ### Run data tests only
 
 ```shell
-$ dbt test --data
+$ dbt test --models test_type:data
+
+# before v0.18.0:
+$ dbt test --data  # technically this runs all data tests, tests tagged `'data'`, or tests of models tagged `'data'`
 ```
 
 ### Run tests on a particular model
@@ -178,6 +382,9 @@ $ dbt tests --models +stg_customers
 
 # Run tests on all models with a particular tag
 $ dbt test --models tag:my_model_tag
+
+# Run tests on all models with a particular materialization
+$ dbt test --models config.materialized:table
 
 ```
 
@@ -269,9 +476,3 @@ models:
 ```shell
 $ dbt test --models tag:my_test_tag
 ```
-
-<!---
-## List selection examples
-### List all models that are materialized as tables
-
---->

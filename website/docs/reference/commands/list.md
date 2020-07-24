@@ -28,24 +28,32 @@ Note that the `dbt ls` command does not include models which are disabled or sch
 
 ### Example usage
 
-**Listing models by selector**
+**Listing models by package**
 ```
 $ dbt ls --models snowplow.*
-model.snowplow.snowplow_base_events
-model.snowplow.snowplow_base_web_page_context
-model.snowplow.snowplow_id_map
-model.snowplow.snowplow_page_views
-model.snowplow.snowplow_sessions
+snowplow.snowplow_base_events
+snowplow.snowplow_base_web_page_context
+snowplow.snowplow_id_map
+snowplow.snowplow_page_views
+snowplow.snowplow_sessions
 ...
 ```
 
 **Listing tests by tag name**
 ```
 $ dbt ls --select tag:nightly --resource-type test
-model.my_project.orders
-model.my_project.order_items
-model.my_project.products
+my_project.schema_test.not_null_orders_order_id
+my_project.schema_test.unique_orders_order_id
+my_project.schema_test.not_null_products_product_id
+my_project.schema_test.unique_products_product_id
 ...
+```
+
+**Listing schema tests of incremental models**
+```
+$ dbt ls --select config.materialized:incremental,test_type:schema
+model.my_project.logs_parsed
+model.my_project.events_categorized
 ```
 
 **Listing JSON output**
