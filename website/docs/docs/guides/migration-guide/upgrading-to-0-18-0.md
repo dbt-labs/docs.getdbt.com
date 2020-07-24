@@ -4,6 +4,13 @@ id: "upgrading-to-0-18-0"
 
 ---
 
+:::info Prerelease
+
+dbt v0.18.0 is currently in beta. Please post in the dbt Slack #prereleases channel
+if you uncover any bugs or issues.
+
+:::
+
 dbt v0.18.0 introduces several new features around model selection.
 
 ## Articles:
