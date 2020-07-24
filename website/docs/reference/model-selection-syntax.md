@@ -234,51 +234,108 @@ This can get complex! Let's say I want a nightly run of models that build off sn
 and feed exports, while _excluding_ the biggest incremental models (and one other model, to boot).
 
 ```bash
-$ dbt run --models @source:snowplow,tag:nightly export.*+ --exclude package:snowplow,config.materialized:incremental performance_context_pivoted
+$ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
 ```
 
 This command selects all models that:
 * Select from snowplow sources, plus their parents, _and_ are tagged "nightly"
-* Are defined in the `export` model subfolder and their children
+* Are defined in the `export` model subfolder
 
 Except for models that are:
 * Defined in the snowplow package and materialized incrementally
-* Named `performance_context_pivoted`
+* Named `export_performance_timing`
 
 
 ## Selectors
 <Changelog>New in v0.18.0</Changelog>
+
 Write model selectors in YML, save them with a human-friendly name, and reference them using the `--selector` flag.
 By recording selectors in a top-level `selectors.yml` file:
 
-* Complex selection criteria are composed of dictionaries and arrays
-* Selector definitions are version-controlled
-* Reusability: selectors can be referenced in multiple job definitions, and their definitions are extensible (via YML anchors)
+* **Legibility:** complex selection criteria are composed of dictionaries and arrays
+* **Version control:** selector definitions are stored in the same git repository as the dbt project
+* **Reusability:** selectors can be referenced in multiple job definitions, and their definitions are extensible (via YML anchors)
 
-Here is the same example from above in three valid versions of `selectors.yml`, with varying degrees of CLI-to-YML conversion:
+Selectors each have a `name` and a `definition`. Each `definition` is comprised of
+one or more arguments, which can be one of the following:
+* **CLI-style:** strings, representing CLI-style) arguments
+* **Key-value:** pairs in the form `method: value`
+* **Dictionaries:** `method`, `value`, operator-equivalent keywords, and support for `exclude`
+    
+Use `union` and `intersection` to organize multiple arguments.
+
+#### CLI-style
+```yml
+definition:
+  'tag:nightly'
+```
+
+This simple syntax supports use of the `+`, `@`, and `*` operators. It does
+not support `exclude`.
+
+#### Key-value
+```yml
+definition:
+  tag: nightly
+```
+
+This simple syntax does not support any operators or `exclude`.
+
+#### Dictionaries
+```yml
+definition:
+  method: tag
+  value: nightly
+```
+
+Optional keywords map to the `+` and `@` operators:
+```yml
+  children: true | false
+  parents: true | false
+
+  children_depth: 1    # if children: true, degrees to include
+  parents_depth: 1     # if parents: true, degrees to include
+
+  childrens_parents: true | false     # @ operator
+```
+
+The `*` operator to select all nodes can be written as:
+```yml
+definition:
+  method: fqn
+  value: "*"
+```
+
+The `exclude` keyword may be passed as an argument to each dictionary, or as
+an item in a `union`. The following are equivalent:
+
+```yml
+- method: tag
+  value: nightly
+  exclude:
+    - "@tag:daily"
+```
+
+```yml
+- union:
+    - method: tag
+      value: nightly
+    - exclude:
+       - method: tag
+         value: daily
+```
+
+Here is the same example from above, written two different ways:
 
 <Tabs
   defaultValue="part_yml"
   values={[
-    { label: 'Unconverted', value: 'no_yml', },
-    { label: 'Partial YML', value: 'part_yml', },
+    { label: 'CLI-style', value: 'cli_style', },
     { label: 'Full YML', value: 'all_yml', },
   ]
 }>
 
-<TabItem value="no_yml">
-<File name='selectors.yml'>
-
-```yml
-selectors:
-  - name: nightly_diet_snowplow
-    definition:
-        '@source:snowplow,tag:nightly export.*+ --exclude package:snowplow,config.materialized:incremental performance_context_pivoted'
-```
-</File>
-</TabItem>
-
-<TabItem value="part_yml">
+<TabItem value="cli_style">
 <File name='selectors.yml'>
 
 ```yml
@@ -289,12 +346,12 @@ selectors:
         - intersection:
             - '@source:snowplow'
             - 'tag:nightly'
-        - 'export.\*+'
+        - 'models/export'
         - exclude:
             - intersection:
                 - 'package:snowplow'
                 - 'config.materialized:incremental'
-            - performance_context_pivoted
+            - export_performance_timing
 ```
 </File>
 </TabItem>
@@ -314,15 +371,15 @@ selectors:
             - method: tag
               value: nightly
         - method: path
-          value: export
+          value: models/export
         - exclude:
             - intersection:
                 - method: package
                   value: snowplow
                 - method: config.materialized
-                  value: config.materialized:incremental
+                  value: incremental
             - method: fqn
-              value: performance_context_pivoted
+              value: export_performance_timing
 ```
 </File>
 </TabItem>
