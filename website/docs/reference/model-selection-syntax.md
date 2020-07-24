@@ -3,8 +3,6 @@ title: "Model selection syntax"
 id: "model-selection-syntax"
 ---
 
-## Overview
-
 dbt's model selection syntax makes it possible to run only specific resources in a given invocation of dbt. The model selection syntax is used for the following subcommands:
 
 | command   | argument(s)                                       |
@@ -47,6 +45,7 @@ $ dbt run --models my_first_model my_second_model
 # these arguments can be projects, models, directory paths, tags, or sources
 $ dbt run --models tag:nightly my_model finance.base.*
 
+# use methods and intersections for more complex selectors
 $ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
 ```
 
@@ -144,11 +143,6 @@ $ dbt test --exclude orders+
 Selector methods return all resources that share a common property, using the
 syntax `method:value`.
 
-### The "package" method
-The `package` method is used
-While the `package:` prefix is not explicitly required, it may be used to make
-selectors unambiguous.
-
 ### The "tag" method
 The `tag` method is used to select models that match a specified [tag](tags) .
 
@@ -176,6 +170,19 @@ dbt run --models models/staging/github
 # These two selectors are equivalent
 dbt run --models path:models/staging/github/stg_issues.sql
 dbt run --models models/staging/github/stg_issues.sql
+```
+
+### The "package" method
+<Changelog>New in v0.18.0</Changelog>
+The `package` method is used to select models defined within the root project
+or an installed dbt package. While the `package:` prefix is not explicitly required, it may be used to make
+selectors unambiguous.
+
+```bash
+# These three selectors are equivalent
+dbt run --models package:snowplow
+dbt run --models snowplow
+dbt run --models snowplow.*
 ```
 
 ### The "config" method
@@ -212,7 +219,6 @@ $ dbt test --models test_name:range_min_max     # run all instances of a custom 
 
 ## Putting it all together
 ```bash
-
 $ dbt run --models my_package.*+      # select all models in my_package and their children
 $ dbt run --models +some_model+       # select some_model and all parents and children
 
@@ -224,8 +230,8 @@ $ dbt run --models @source:snowplow   # build all models that select from snowpl
 $ dbt test --models config.incremental_strategy:insert_overwrite,test_name:unique   # execute all `unique` tests that select from models using the `insert_overwrite` incremental strategy
 ```
 
-This can get complex! Let's say I want to define a nightly run of models that build off snowplow data
-and are used for export, while excluding the biggest incremental models (and one more model, to boot).
+This can get complex! Let's say I want a nightly run of models that build off snowplow data
+and feed exports, while _excluding_ the biggest incremental models (and one other model, to boot).
 
 ```bash
 $ dbt run --models @source:snowplow,tag:nightly export.*+ --exclude package:snowplow,config.materialized:incremental performance_context_pivoted
@@ -241,15 +247,18 @@ Except for models that are:
 
 
 ## Selectors
+<Changelog>New in v0.18.0</Changelog>
+Write model selectors in YML, save them with a human-friendly name, and reference them using the `--selector` flag.
+By recording selectors in a top-level `selectors.yml` file:
 
-It's possible to write model selectors in YML format, save them with a human-friendly
-name, and reference them using the `--selector` flag. 
+* Complex selection criteria are composed of dictionaries and arrays
+* Selector definitions are version-controlled
+* Reusability: selectors can be referenced in multiple job definitions, and their definitions are extensible (via YML anchors)
 
-Selectors are recorded in a project's top-level `selectors.yml` file. Here is the same example from above,
-with varying degrees of CLI-to-YML conversion:
+Here is the same example from above in three valid versions of `selectors.yml`, with varying degrees of CLI-to-YML conversion:
 
 <Tabs
-  defaultValue="light_yml"
+  defaultValue="part_yml"
   values={[
     { label: 'Unconverted', value: 'no_yml', },
     { label: 'Partial YML', value: 'part_yml', },
@@ -257,8 +266,8 @@ with varying degrees of CLI-to-YML conversion:
   ]
 }>
 
-<File name='selectors.yml'>
 <TabItem value="no_yml">
+<File name='selectors.yml'>
 
 ```yml
 selectors:
@@ -266,9 +275,11 @@ selectors:
     definition:
         '@source:snowplow,tag:nightly export.*+ --exclude package:snowplow,config.materialized:incremental performance_context_pivoted'
 ```
+</File>
 </TabItem>
 
 <TabItem value="part_yml">
+<File name='selectors.yml'>
 
 ```yml
 selectors:
@@ -285,9 +296,11 @@ selectors:
                 - 'config.materialized:incremental'
             - performance_context_pivoted
 ```
+</File>
 </TabItem>
 
 <TabItem value="all_yml">
+<File name='selectors.yml'>
 
 ```yml
 selectors:
@@ -311,15 +324,15 @@ selectors:
             - method: fqn
               value: performance_context_pivoted
 ```
+</File>
 </TabItem>
 
-</File>
+</Tabs>
 
-What is the appeal of `selectors.yml`?
-* Complex selection criteria can be written in YML, instead of as character-sensitive string CLI arguments
-* Selectors live in a version-controlled file
-* Reusability: selectors are reusable across job definitions, and extensible (via YML anchors)
-
+Then in our job definition:
+```bash
+$ dbt run --select nightly_diet_snowplow
+```
 
 ## Test selection examples
 The test selection syntax grew out of the model selection syntax. As such, the syntax will look familiar if you wish to:
@@ -339,7 +352,7 @@ Things start to get a little unfamiliar when you want to test things other than 
 $ dbt test --models test_type:schema
 
 # before v0.18.0:
-$ dbt test --schema # technically this runs all schema tests, tests tagged `'schema'`, or tests of models tagged `'schema'`
+$ dbt test --schema # technically this runs all schema tests, tests tagged 'schema', and tests of models tagged 'schema'
 ```
 
 ### Run data tests only
@@ -348,7 +361,7 @@ $ dbt test --schema # technically this runs all schema tests, tests tagged `'sch
 $ dbt test --models test_type:data
 
 # before v0.18.0:
-$ dbt test --data  # technically this runs all data tests, tests tagged `'data'`, or tests of models tagged `'data'`
+$ dbt test --data  # technically this runs all data tests, tests tagged 'data', and tests of models tagged 'data'
 ```
 
 ### Run tests on a particular model
