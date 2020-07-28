@@ -208,7 +208,7 @@ A data test is a `select` statement that returns `0` records when the test is su
 
 Data tests are defined in `.sql` files, typically in your `tests` directory. Each `.sql` file contains one data test / one `select` statement:
 
-<File name='tests/assert_total_payment_amount_is_positive.sql'>
+<File name='test/assert_total_payment_amount_is_positive.sql'>
 
 ```sql
 -- Refunds have a negative amount, so the total amount should always be >= 0.
