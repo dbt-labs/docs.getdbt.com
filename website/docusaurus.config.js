@@ -9,16 +9,32 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
     SITE_URL = process.env.DEPLOY_URL;
 }
 
+var DISCLAIMER;
+if (!process.env.DISCLAIMER) {
+    DISCLAIMER = '';
+} else {
+    DISCLAIMER = process.env.DISCLAIMER;
+}
+
+var ALGOLIA_INDEX_NAME;
+if (!process.env.ALGOLIA_INDEX_NAME) {
+    ALGOLIA_INDEX_NAME = 'dbt';
+} else {
+    ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME;
+}
+
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
+console.log("DEBUG: DISCLAIMER = ", DISCLAIMER);
+console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 
 
 module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
-  title: 'dbt - Documentation',
+  title: 'dbt - ' + DISCLAIMER + 'Documentation',
   url: SITE_URL,
 
   themeConfig: {
@@ -29,7 +45,7 @@ module.exports = {
     algolia: {
       apiKey: '0e9665cbb272719dddc6e7113b4131a5',
       //debug: true,
-      indexName: 'dbt',
+      indexName: ALGOLIA_INDEX_NAME,
       algoliaOptions: {
       },
     },
@@ -62,7 +78,7 @@ module.exports = {
       links: [
         {
           to: '/docs/introduction',
-          label: 'Docs',
+          label: DISCLAIMER + 'Docs',
           position: 'left',
           activeBaseRegex: 'docs\/(?!(dbt-cloud))',
         },
