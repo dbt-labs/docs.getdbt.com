@@ -9,11 +9,19 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
     SITE_URL = process.env.DEPLOY_URL;
 }
 
-var DISCLAIMER;
-if (!process.env.DISCLAIMER) {
-    DISCLAIMER = '';
+var PRERELEASE = (process.env.PRERELEASE || false);
+
+var WARNING_BANNER;
+if (!PRERELEASE) {
+    WARNING_BANNER = {};
 } else {
-    DISCLAIMER = process.env.DISCLAIMER;
+    WARNING_BANNER = {
+        id: 'prerelease', // Any value that will identify this message.
+        content:
+          'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
+        backgroundColor: '#ffa376', // Defaults to `#fff`.
+        textColor: '#033744', // Defaults to `#000`.
+    }
 }
 
 var ALGOLIA_INDEX_NAME;
@@ -26,7 +34,7 @@ if (!process.env.ALGOLIA_INDEX_NAME) {
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
-console.log("DEBUG: DISCLAIMER = ", DISCLAIMER);
+console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 
 
@@ -34,13 +42,15 @@ module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
-  title: 'dbt - ' + DISCLAIMER + 'Documentation',
+  title: 'dbt - Documentation',
   url: SITE_URL,
 
   themeConfig: {
     disableDarkMode: true,
     sidebarCollapsible: true,
     image: '/img/avatar.png',
+    
+    announcementBar: WARNING_BANNER,
 
     algolia: {
       apiKey: '0e9665cbb272719dddc6e7113b4131a5',
@@ -78,7 +88,7 @@ module.exports = {
       links: [
         {
           to: '/docs/introduction',
-          label: DISCLAIMER + 'Docs',
+          label: 'Docs',
           position: 'left',
           activeBaseRegex: 'docs\/(?!(dbt-cloud))',
         },

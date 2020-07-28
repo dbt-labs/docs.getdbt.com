@@ -3,8 +3,8 @@
   command = "make build"
   
   [context.next.environment]
+  PRERELEASE = "true"
   ALGOLIA_INDEX_NAME = "dbt-next"
-  DISCLAIMER = "Prerelease "
   
   [[headers]]
   for = "/*"
