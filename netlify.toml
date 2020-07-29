@@ -1,12 +1,7 @@
 # for deployments of prerelease docs
 [context.next]
-  command = "make build"
+  command = "make build-prerelease"
   
-  [context.next.environment]
+[context.next.environment]
   PRERELEASE = "true"
   ALGOLIA_INDEX_NAME = "dbt-next"
-  
-  [[headers]]
-  for = "/*"
-    [headers.values]
-    X-robots-tag = "noindex"
