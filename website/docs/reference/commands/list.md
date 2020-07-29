@@ -11,17 +11,21 @@ The `dbt ls` command lists resources in your dbt project. It accepts selector ar
 ```
 dbt ls
      [--resource-type {source,analysis,model,snapshot,test,seed,default,all}]
-     [--select SELECTOR [SELECTOR ...]]
+     [--select SELECTION_ARG [SELECTION_ARG ...]]
      [--models SELECTOR [SELECTOR ...]]
      [--exclude SELECTOR [SELECTOR ...]]
+     [--selector YML_SELECTOR_NAME [YML_SELECTOR_NAME ...]]
      [--output {json,name,path,selector}]
 ```
 
+See [resource selection syntax](model-selection-syntax) for more information on how to select resources in dbt
+
 **Arguments**:
 - `--resource-type`: This flag limits the "resource types" that dbt will return in the `dbt ls` command. By default, the following resources are included in the results of `dbt ls`: models, snapshots, seeds, tests, and sources.
-- `--select`: This flag specifies one or more "selectors" used to filter the nodes returned by the `dbt ls` command. See the docs on the [resource selection syntax](model-selection-syntax) for more information on selecting resources in dbt
+- `--select`: This flag specifies one or more selection-type arguments used to filter the nodes returned by the `dbt ls` command
 - `--models`: Like the `--select` flag, this flag is used to select nodes. It implies `--resource-type=model`, and will only return models in the results of the `dbt ls` command.
 - `--exclude`: Specify selectors that should be _excluded_ from the list of returned nodes.
+- `--selector`: This flag specifies one or more named selectors, defined in a `selectors.yml` file.
 - `--output`: This flag controls the format of output from the `dbt ls` command.
 
 Note that the `dbt ls` command does not include models which are disabled or schema tests which depend on models which are disabled. All returned resources will have a `config.enabled` value of `true`.

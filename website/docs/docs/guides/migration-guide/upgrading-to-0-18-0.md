@@ -1,6 +1,5 @@
 ---
-title: "Upgrading to 0.18.0"
-id: "upgrading-to-0-18-0"
+title: "Upgrading to 0.18.0 (prerelease)"
 
 ---
 
