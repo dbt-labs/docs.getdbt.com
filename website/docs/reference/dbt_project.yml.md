@@ -51,6 +51,9 @@ snapshots:
 sources:
   [<source-configs>](source-configs)
 
+vars:
+  [<variables>](using-variables)
+
 [on-run-start](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 [on-run-end](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 
