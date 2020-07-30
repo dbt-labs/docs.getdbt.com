@@ -15,7 +15,7 @@ For information about selecting models on the command line, consult the docs on 
 - [debug](debug) (CLI only): debugs dbt connections and projects
 - [init](init) (CLI only): initializes a new dbt project
 - [compile](compile): compiles (but does not run) the models in a project
-- [run](run): runs the models in a project
+- [run](commands/run): runs the models in a project
 - [test](commands/test): executes tests defined in a project
 - [deps](deps): downloads dependencies for a project
 - [snapshot](snapshot): executes "snapshot" jobs defined in a project
