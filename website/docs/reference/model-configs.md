@@ -4,7 +4,7 @@ title: Model configurations
 
 ## Related documentation
 * [Models](building-models)
-* [`run` command](run)
+* [`run` command](commands/run)
 
 ## Available configurations
 ### Model-specific configurations
