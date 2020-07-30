@@ -13,7 +13,7 @@ Artifacts are on the project level and can be configured in your project setting
 
 ### Documentation
 
-Once a job has been selected under the Documentation section of the Artifacts page, dbt Cloud's left-hand navbar will update to include a link to documentation for this job. This link will always point to the latest version of the documentation for your account.
+Once a job has been selected from the Documentation drop-down menu in your project settings, dbt Cloud's left-hand navbar will update to include a link to documentation for this job. This link will always point to the latest version of the documentation for your account!
 
 
 
