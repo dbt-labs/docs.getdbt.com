@@ -204,6 +204,7 @@ module.exports = {
           label: "Project configurations",
           items: [
             "reference/project-configs/analysis-paths",
+            "reference/project-configs/asset-paths",
             "reference/project-configs/clean-targets",
             "reference/project-configs/config-version",
             "reference/project-configs/data-paths",
