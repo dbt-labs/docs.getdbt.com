@@ -75,6 +75,7 @@ module.exports = {
             "docs/guides/migration-guide/upgrading-to-0-15-0",
             "docs/guides/migration-guide/upgrading-to-0-16-0",
             "docs/guides/migration-guide/upgrading-to-0-17-0",
+            "docs/guides/migration-guide/upgrading-to-0-18-0",
           ],
         },
         "docs/guides/videos",
