@@ -13,7 +13,7 @@ var GIT_BRANCH;
 if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
     GIT_BRANCH = 'current';
 } else {
-    GIT_BRANCH = process.env.BRANCH;
+    GIT_BRANCH = process.env.HEAD;
 }
 
 var PRERELEASE = (process.env.PRERELEASE || false);
