@@ -9,6 +9,13 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
     SITE_URL = process.env.DEPLOY_URL;
 }
 
+var GIT_BRANCH;
+if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
+    GIT_BRANCH = 'current';
+} else {
+    GIT_BRANCH = process.env.HEAD;
+}
+
 var PRERELEASE = (process.env.PRERELEASE || false);
 
 var WARNING_BANNER;
@@ -150,7 +157,7 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
 
-          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/master/website/',
+          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
         }
