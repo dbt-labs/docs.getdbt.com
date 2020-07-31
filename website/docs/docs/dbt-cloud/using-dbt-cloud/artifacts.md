@@ -9,7 +9,7 @@ When dbt Cloud runs dbt jobs, it generates and saves *artifacts*. These artifact
 
 Artifacts are on the project level and can be configured in your project settings.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifacts-updated.png" title="Configuring Artifacts"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifacts-updated.gif" title="Configuring Artifacts"/>
 
 ### Documentation
 
