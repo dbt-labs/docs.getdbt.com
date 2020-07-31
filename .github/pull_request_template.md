@@ -22,4 +22,4 @@ If yes, please:
 - Add Changelog components
     - if new: `<Changelog>New in v0.x.0</Changelog>`
     - if changed: `<Changelog>Changed in v0.x.0: In prior versions, ...</Changelog>`
-- Add links to the "New and changed documentation" section of the latest [Migration Guide](website/docs/docs/guides/migration-guide)
+- Add links to the "New and changed documentation" section of the latest [Migration Guide](../website/docs/docs/guides/migration-guide)
