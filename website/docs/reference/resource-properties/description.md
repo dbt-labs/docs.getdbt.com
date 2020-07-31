@@ -292,7 +292,7 @@ You can use relative links to link to another model. It's a little hacky — but
 version: 2
 
 models:
-  - name: dim_customers
+  - name: customers
     description: "Filtering done based on \[stg_stripe__payments](#!/model/model.jaffle_shop.stg_stripe__payments)"
 
     columns:
@@ -304,11 +304,20 @@ models:
 </File>
 
 
-### Include an image in your descriptions
+### Include an image from your repo in your descriptions
+To include an image from your repository in your descriptions:
+1. Add the file in a subdirectory, e.g. `assets/dbt-logo.png`
+2. Set the [`asset-paths` config](project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
 
-At present, it's not possible to include an image in your project and render it as part of your project documentation using the image path. This is because images are not included in the `target` directory when you execute `dbt compile`. We hope to address this in the future ([related issue](https://github.com/fishtown-analytics/dbt/issues/2072)).
+<File name='dbt_project.yml'>
 
-Instead, consider hosting the image online and using the image URL to render the image.
+```yml
+asset-paths: ["assets"]
+```
+
+</File>
+
+2. Use a Markdown link to the image in your `description:`
 
 <File name='models/schema.yml'>
 
@@ -316,8 +325,8 @@ Instead, consider hosting the image online and using the image URL to render the
 version: 2
 
 models:
-  - name: dim_customers
-    description: "!\[dbt Logo](https://github.com/fishtown-analytics/dbt/raw/master/etc/dbt-horizontal.png)"
+  - name: customers
+    description: "!\[dbt Logo](assets/dbt-logo.png)"
 
     columns:
       - name: customer_id
@@ -327,4 +336,35 @@ models:
 
 </File>
 
-If mixing images and text together, consider using a docs block instead.
+_[CLI users only]_
+
+3. Run `dbt docs generate` — the `assets` directory will be copied to the `target` directory
+
+4. Run `dbt docs serve` — the image will be rendered as part of your project documentation:
+
+<Lightbox src="/img/reference/image-in-docs.png" title="The image at assets/dbt-logo.png is rendered correctly"/>
+
+If mixing images and text together, also consider using a docs block.
+
+### Include an image from the web in your descriptions
+
+Use the image URL to render the image.
+
+<File name='models/schema.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: customers
+    description: "!\[dbt Logo](https://raw.githubusercontent.com/fishtown-analytics/dbt/dev/marian-anderson/etc/dbt-logo-full.svg)"
+
+    columns:
+      - name: customer_id
+        description: Primary key
+
+```
+
+</File>
+
+If mixing images and text together, also consider using a docs block.
