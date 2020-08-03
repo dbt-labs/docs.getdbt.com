@@ -9,7 +9,7 @@ Merge conflicts often occur when multiple users are concurrently making edits to
 
 In this example we have a column that represents the total number of orders your customer has ever had. It's currently named `number_of_orders` but your stakeholder feels like this could named better. 
 
-You and your teammate come in to make the change but decide to go two separate routes. You rename this column to `total_number_of_orders` and your teammate decides to name it `historical_order_count`. 
+You and a teammate make changes to the column name, but have gone two separate routes. You rename this column to `total_number_of_orders` and your teammate has renamed it `historical_order_count`. 
 
 Your teammate got to make their change first so you encounter the merge conflict when you press commit.
 
