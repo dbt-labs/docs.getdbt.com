@@ -118,7 +118,14 @@ module.exports = {
   "dbt Cloud": [
     "docs/dbt-cloud/cloud-overview",
     "docs/dbt-cloud/cloud-quickstart",
-    "docs/dbt-cloud/the-dbt-ide",
+    {
+      type: "category",
+      label: "dbt Cloud IDE (Develop)",
+      items: [
+        "docs/dbt-cloud/cloud-ide/the-dbt-ide",
+        "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
+      ],
+    },
     {
       type: "category",
       label: "Configuring dbt Cloud",
