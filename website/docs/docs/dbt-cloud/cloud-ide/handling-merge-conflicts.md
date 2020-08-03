@@ -11,7 +11,7 @@ In this example we have a column that represents the total number of orders your
 
 You and a teammate make changes to the column name, but have gone two separate routes. You rename this column to `total_number_of_orders` and your teammate has renamed it `historical_order_count`. 
 
-Your teammate got to make their change first so you encounter the merge conflict when you press commit.
+Your teammate has committed their change first, so you encounter a merge conflict when you press commit.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-to-merge-conflict.png" title="Commit which will trigger the merge conflict"/>
 
