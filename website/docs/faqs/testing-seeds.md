@@ -28,3 +28,9 @@ seeds:
 ```
 
 </File>
+
+To run tests on one seed:
+
+```
+$ dbt test --models country_codes
+```
