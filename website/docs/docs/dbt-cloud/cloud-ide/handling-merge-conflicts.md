@@ -3,7 +3,7 @@ title: "Handling Merge Conflicts"
 id: "handling-merge-conflicts"
 ---
 
-Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine the appropriate change to keep. The merge conflict process then gives the users the ability to sort out which lines of code should be kept and committed. Here we'll show you how you'd resolve merge conflicts the Cloud IDE!
+Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine the appropriate change to keep. The merge conflict process gives users the ability to sort out which lines of code should be kept and committed. Here we'll show you how you'd resolve merge conflicts in the IDE!
 
 ## Running into a merge conflict
 
