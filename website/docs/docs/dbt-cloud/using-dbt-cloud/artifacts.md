@@ -7,13 +7,13 @@ id: "artifacts"
 
 When dbt Cloud runs dbt jobs, it generates and saves *artifacts*. These artifacts, like `manifest.json`, `catalog.json`, and `sources.json` are used to power different aspects of dbt Cloud, namely: [dbt Docs](documentation) and [source freshness reporting](cloud-snapshotting-source-freshness).
 
-From your Account Settings page, you can select specific jobs that build the "production" version of your documentation
+While every dbt Cloud job will produce artifacts, typically there is only one production job for a given project. If you select a production job on the Project Settings page, dbt Cloud will render links to the production Documentation and Source Freshness artifacts generated for that project in the nav sidebar.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/artifacts.png" title="Configuring Artifacts"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifact-updated.gif" title="Configuring Artifacts"/>
 
 ### Documentation
 
-Once a job has been selecting from the Documentation section of the Artifacts page, dbt Cloud's left-hand navbar will update to include a link to documentation for this job. This link will always point to the latest version of the documentation for your account.
+Once a job has been selected from the Documentation drop-down menu in your project settings, dbt Cloud's left-hand navbar will update to include a link to documentation for this job. This link will always point to the latest version of the documentation for your account!
 
 
 
@@ -23,4 +23,4 @@ Once a job has been selecting from the Documentation section of the Artifacts pa
 
 As with Documentation, configuring a job for the Source Freshness artifact setting will update dbt Cloud's left-hand navbar to include a link to the latest Source Freshness report for the selected job.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/source-freshness.png" title="A link to the latest source freshness snapshot for the selected job"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources.png" title="A link to the latest source freshness snapshot for the selected job"/>
