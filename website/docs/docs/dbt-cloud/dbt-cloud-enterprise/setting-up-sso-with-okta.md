@@ -53,7 +53,7 @@ On the **SAML Settings** page, enter the following values:
 * **Single sign on URL**: `https://auth.getdbt.com/login/callback?connection=<your-deployment-id>`
 * **Audience URI (SP Entity ID)**: `urn:auth0:dbt-cloud:<your-deployment-id>`
 
-Replace `<your-deployment-id>` with your dbt Cloud deployment ID. If you aren't sure what value you should use, please contact support (support@getdbt.com).
+Replace `<your-deployment-id>` with your dbt Cloud deployment ID. Your deployment ID will be provided to you by your Customer Success Manager during implementation.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/61d2b48-Screen_Shot_2019-04-25_at_6.05.23_PM.png" title="The 'SAML Settings' page"/>
 
