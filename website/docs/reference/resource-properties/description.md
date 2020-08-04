@@ -368,3 +368,26 @@ models:
 </File>
 
 If mixing images and text together, also consider using a docs block.
+
+
+
+### Use html in a description
+
+You can use html in the description to do fancier things than you can in just markdown. Embedding iframes work too! It is recomended you do this in a docs block for ease of maintenance. 
+
+
+<File name='models/docs.md'>
+
+```
+
+{% docs orders_status %}
+
+Here is an image documenting the ERD for this table:
+
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://your-embed-url.com"></iframe></div>
+
+{% enddocs %}
+
+```
+
+</File>
