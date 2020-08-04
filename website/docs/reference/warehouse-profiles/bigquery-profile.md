@@ -216,6 +216,7 @@ Database Error in model debug_table (models/debug_table.sql)
 ```
 
 ### Service Account Impersonation
+<Changelog>New in v0.18.0</Changelog>
 You may want your models to be built using a dedicated service account that has
 elevated access to read or write data to the specified project or dataset.
 Typically, this requires you to create a service account key for running under
