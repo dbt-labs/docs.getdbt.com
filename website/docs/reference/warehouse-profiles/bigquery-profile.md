@@ -241,7 +241,7 @@ tokens identifying itself, and allows your human users (or other service
 accounts) to do the same. More information on this scenario is available
 [here](https://cloud.google.com/iam/docs/understanding-service-accounts#directly_impersonating_a_service_account).
 
-Once you've granted the appropriate permissions. You'll need to enable
+Once you've granted the appropriate permissions, you'll need to enable
 the [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com).
 Then, just add the `impersonate_service_account` option to your BigQuery
 profile configuration:
