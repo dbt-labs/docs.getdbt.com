@@ -244,8 +244,10 @@ accounts) to do the same. More information on this scenario is available
 
 Once you've granted the appropriate permissions, you'll need to enable
 the [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com).
-Then, just add the `impersonate_service_account` option to your BigQuery
-profile configuration:
+Enabling the API and granting the role are eventually consistent operations,
+taking up to 7 minutes to fully complete, but usually fully propagating within 60
+seconds. Give it a few minutes, then add the `impersonate_service_account`
+option to your BigQuery profile configuration:
 
 ```yaml
 my-profile:
