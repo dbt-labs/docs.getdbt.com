@@ -120,7 +120,7 @@ module.exports = {
     "docs/dbt-cloud/cloud-quickstart",
     {
       type: "category",
-      label: "dbt Cloud IDE (Develop)",
+      label: "dbt Cloud IDE",
       items: [
         "docs/dbt-cloud/cloud-ide/the-dbt-ide",
         "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
