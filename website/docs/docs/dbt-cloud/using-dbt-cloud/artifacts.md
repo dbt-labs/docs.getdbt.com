@@ -9,7 +9,7 @@ When dbt Cloud runs dbt jobs, it generates and saves *artifacts*. These artifact
 
 While every dbt Cloud job will produce artifacts, typically there is only one production job for a given project. If you select a production job on the Project Settings page, dbt Cloud will render links to the production Documentation and Source Freshness artifacts generated for that project in the nav sidebar.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifacts-updated.gif" title="Configuring Artifacts"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifact-updated.gif" title="Configuring Artifacts"/>
 
 ### Documentation
 
@@ -23,4 +23,4 @@ Once a job has been selected from the Documentation drop-down menu in your proje
 
 As with Documentation, configuring a job for the Source Freshness artifact setting will update dbt Cloud's left-hand navbar to include a link to the latest Source Freshness report for the selected job.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources.jpg" title="A link to the latest source freshness snapshot for the selected job"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources.png" title="A link to the latest source freshness snapshot for the selected job"/>
