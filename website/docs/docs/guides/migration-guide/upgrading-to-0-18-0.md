@@ -14,17 +14,21 @@ dbt v0.18.0 is currently in beta. Please post in dbt Slack #prereleases with que
 
 ## New features
 
+For more details, see [new and changed documentation](#new-and-changed-documentation) below.
+
 ### Node selection
 - methods: `config`, `test_type`, `test_name`, `package`
 - intersections
 - nth-parent/child
 - version-controlled YML selectors
 
-See the updated docs on [model selection syntax](model-selection-syntax) for details.
+### Docs
+- Include static assets (such as images) in auto-generated docs site
 
-### Not yet documented
-- Adding policy tags to BigQuery columns
-- Include static assets (such as images) in auto-generated docs
+### Database-specific
+- Specify IAM profile when connecting to Redshift
+- Adding policy tags to BigQuery columns [not yet documented]
+- Snowflake query tags at connection and model level [not yet documented]
 
 
 ## Resources
@@ -46,3 +50,4 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 - [list (ls)](commands/list)
 - [Redshift profile](redshift-profile#specifying-an-iam-profile)
 - [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and the [description](description) docs to match)
+- [`impersonate_service_account` in the BigQuery profile configuration](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
