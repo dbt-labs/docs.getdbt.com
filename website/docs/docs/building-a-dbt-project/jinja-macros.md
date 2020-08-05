@@ -22,7 +22,7 @@ Using Jinja turns your dbt project into a programming environment for SQL, givin
 
 In fact, if you've used the [`{{ ref() }}` function](ref), you're already using Jinja!
 
-Jinja can be used in any SQL in a dbt project, including [models](building-models), [analyses](analyses), [tests](custom-schema-tests), and even [hooks](hooks).
+Jinja can be used in any SQL in a dbt project, including [models](building-models), [analyses](analyses), [tests](custom-schema-tests), and even [hooks](hooks-operations).
 
 
 :::info Ready to get started with Jinja and macros?
@@ -70,7 +70,7 @@ group by 1
 </File>
 
 You can recognize Jinja based on the delimiters the language uses, which we refer to as "curlies":
-- **Expressions `{{ ... }}`**: Expressions are used when you want to output a string. You can use expressions to reference [variables](var) and call [macros](macros).
+- **Expressions `{{ ... }}`**: Expressions are used when you want to output a string. You can use expressions to reference [variables](var) and call [macros](jinja-macros#macros).
 - **Statements `{% ... %}`**: Statements are used for control flow, for example, to set up `for` loops and `if` statements, or to define macros.
 -  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from compiling.
 
@@ -79,7 +79,7 @@ When used in a dbt model, your Jinja needs to compile to a valid query. To check
 * **Using the dbt CLI:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
-[Macros](macros) in Jinja are pieces of code that can be reused multiple times – they are analogous to "functions" in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in `.sql` files, typically in your `macros` directory ([docs](macro-paths)).
+[Macros](jinja-macros#macros) in Jinja are pieces of code that can be reused multiple times – they are analogous to "functions" in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in `.sql` files, typically in your `macros` directory ([docs](macro-paths)).
 
 Macro files can contain one or more macros — here's an example:
 

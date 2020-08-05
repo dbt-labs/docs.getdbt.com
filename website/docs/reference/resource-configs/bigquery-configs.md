@@ -356,7 +356,7 @@ strategy is selected.
 
 :::info New in dbt v0.16.0
 
-This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](installation)
+This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](upgrading-to-0-16-0)
 
 :::
 
