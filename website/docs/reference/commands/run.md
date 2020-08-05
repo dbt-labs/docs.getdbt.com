@@ -127,8 +127,8 @@ as it obviates the need to create all of those models' parents.
 
 Deferral and state can be set by environment variables as well as CLI flags:
 
-- `--defer` or `DEFER_MODE`
-- `--state` or `ARTIFACT_STATE_PATH`
+- `--defer` or `DBT_DEFER_TO_STATE`
+- `--state` or `DBT_ARTIFACT_STATE_PATH`
 
 If both the flag and env var are provided, the flag takes precedence.
 
