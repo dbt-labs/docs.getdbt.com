@@ -102,3 +102,96 @@ Encountered an error:
 FailFast Error in model model_1 (models/model_1.sql)
   Failing early due to test failure or runtime error
 ```
+
+## Deferring to previous run state
+
+<Changelog>
+
+ - The `--defer` and `--state` flags are new in dbt v0.18.0
+
+</Changelog>
+
+:::info Beta Feature
+This is net-new functionality in v0.18.0, with iterative improvements to come.
+If you encounter unexpected behavior, please post in Slack or open an issue.
+:::
+
+dbt will resolve `ref` calls differently depending on whether a node is selected
+for a given run. If a node is unselected, references to it will resolve to the namespace 
+specified by the state artifact.
+
+This is especially useful when running a subset of models in a new test or development schema,
+as it obviates the need to create all of those models' parents.
+
+**Environment variables**
+
+Deferral and state can be set by environment variables as well as CLI flags:
+
+- `--defer` or `DEFER_MODE`
+- `--state` or `ARTIFACT_STATE_PATH`
+
+If both the flag and env var are provided, the flag takes precedence.
+
+**Usage notes**
+
+- In its current implementation, deferral requires **state** to be set explicitly, either
+by flag or env var. In a future release, we may set state to be the [target-path](target-path) by default.
+- `dbt run` (with no `--models` or `--exclude` specification) includes _all_
+nodes, even seeds and sources. In this way, `dbt run` and `dbt run --defer --state ...` always yield
+identical results, with no deferred nodes.
+- Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls.
+Including or excluding an ephemeral model makes no difference; including or excluding
+the non-ephemeral parent of an ephemeral model does.
+
+**Example**
+
+In my local development environment, I create all models in a schema named
+`dbt_me`. In production, the same models are created in a schema named
+`prod`. Both are located in a database called `analytics`.
+
+Given a model `model_2`:
+
+<File name='models/model_2.sql'>
+
+```sql
+select
+
+    id,
+    count(*)
+    
+from {{ ref('model_1') }}
+```
+
+</File>
+
+I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`)
+from a production run, and copy them into a local directory called `prod-run-artifacts`.
+Then I can run:
+
+<File name='bash'>
+
+```shell
+dbt run --models model_2 --defer --state prod-run-artifacts
+```
+
+</File>
+
+Because `model_1` is unselected, dbt will resolve all instances of `{{ ref(model_1) }}` 
+using the production namespace, instead of the one configured in my profile.
+
+<File name='target/run/my_project/model_2.sql'>
+
+```sql
+create or replace view analytics.dbt_me.model_2 as (
+    
+    select
+
+        id,
+        count(*)
+        
+    from analytics.prod.model_1
+    
+)
+```
+
+</File>

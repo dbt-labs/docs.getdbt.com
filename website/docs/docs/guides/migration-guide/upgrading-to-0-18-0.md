@@ -21,9 +21,11 @@ For more details, see [new and changed documentation](#new-and-changed-documenta
 - intersections
 - nth-parent/child
 - version-controlled YML selectors
+- [Beta Feature] Defer unselected node references to state defined by a previous run's artifacts
 
 ### Docs
 - Include static assets (such as images) in auto-generated docs site
+- Improved resource search
 
 ### Database-specific
 - Specify IAM profile when connecting to Redshift
@@ -51,3 +53,4 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 - [Redshift profile](redshift-profile#specifying-an-iam-profile)
 - [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and the [description](description) docs to match)
 - [`impersonate_service_account` in the BigQuery profile configuration](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
+- [Deferring to previous run state](run#deferring-to-previous-run-state)
