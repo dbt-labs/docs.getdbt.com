@@ -23,15 +23,15 @@ To tag a column, test, or source, use the [tag _property_](resource-properties/t
 
 models:
   [<resource-path>](resource-path):
-    +[tags](tags): <string> | [<string>]
+    +tags: <string> | [<string>]
 
 snapshots:
   [<resource-path>](resource-path):
-    +[tags](tags): <string> | [<string>]
+    +tags: <string> | [<string>]
 
 seeds:
   [<resource-path>](resource-path):
-    +[tags](tags): <string> | [<string>]
+    +tags: <string> | [<string>]
 
 ```
 
@@ -44,7 +44,7 @@ seeds:
 ```jinja
 
 {{ config(
-    [tags](tags)="<string>" | ["<string>"]
+    tags="<string>" | ["<string>"]
 ) }}
 
 ```

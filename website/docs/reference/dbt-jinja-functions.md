@@ -3,7 +3,7 @@ title: "dbt Jinja Functions"
 ---
 
 In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.com/en/2.11.x/templates/)), we've added additional functions and variables to the Jinja context that are useful when working with a dbt project:
-* [adapter](dbt-jinja-functions/adapter)
+* [adapter](adapter)
 * [as_bool](as_bool)
 * [as_native](as_native)
 * [as_number](as_number)
@@ -31,9 +31,9 @@ In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.
 * [return](return)
 * [run_query](run_query)
 * [run_started_at](run_started_at)
-* [schema](schema)
+* [schema](dbt-jinja-functions/schema)
 * [schemas](schemas)
-* [source](source)
+* [source](dbt-jinja-functions/source)
 * [statement-blocks](statement-blocks)
 * [target](target)
 * [this](this)
