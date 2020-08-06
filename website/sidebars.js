@@ -137,7 +137,8 @@ module.exports = {
       label: "Access Control",
       items: [
         "docs/dbt-cloud/access-control/access-control-overview",
-        "docs/dbt-cloud/access-control/cloud-managing-permissions",
+        "docs/dbt-cloud/access-control/cloud-seats-and-users",
+        "docs/dbt-cloud/access-control/self-service-permissions",
         "docs/dbt-cloud/access-control/enterprise-permissions",
       ],
     },
