@@ -84,7 +84,7 @@ snapshots:
 snapshots:
   [<resource-path>](resource-path):
     +[enabled](enabled): true | false
-    +[tags](tags): <string> | [<string>]
+    +[tags](resource-configs/tags): <string> | [<string>]
     +[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     +[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     +[persist_docs](persist_docs): {<dict>}
@@ -101,7 +101,7 @@ snapshots:
 
 {{ config(
     [enabled](enabled)=true | false,
-    [tags](tags)="<string>" | ["<string>"],
+    [tags](resource-configs/tags)="<string>" | ["<string>"],
     [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
     [persist_docs](persist_docs)={<dict>}
