@@ -10,13 +10,13 @@ If you’re interested in learning more about an Enterprise plan, contact us at 
 
 :::
 
-The following permission sets are available for assignment for dbt Cloud Enterprise.
-Please contact your Account Manager to implement the permissions defined here.
-See [Seats and Users](cloud-seats-and-users) for more information on user licenses.
+The following permission sets are available for assignment for dbt Cloud Enterprise plans.
+Please contact your Customer Success Manager to implement the permissions defined here. 
 
 ## Permission Sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts.
+The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
+can be granted to dbt Cloud groups which are then in turn granted to users.
 
 ### Account Admin
 - **Has permissions on:** Authorized projects, account-level settings
@@ -129,6 +129,11 @@ Analysts can perform the following actions in projects they are assigned to:
 - **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
-- View the read-only dashboard
+- View the Read Only dashboard
 - View generated documentation
 - View generated source freshness reports
+
+## Diagram of the Permission Sets
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
+static/

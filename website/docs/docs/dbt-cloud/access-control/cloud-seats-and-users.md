@@ -7,7 +7,7 @@ id: "cloud-seats-and-users"
 
 In dbt Cloud, _seats_ are used to allocate users to your account. There are two different types of seat licenses in dbt Cloud: _Developer_ and _Read Only_ .
 
-The type of license a user is assigned to controls which capabilities of dbt Cloud the user is permitted to access. Developers can be granted access to the Deployment and [Development](the-dbt-ide) functionality in dbt Cloud, whereas Read Only users are not.  
+The type of license a user is assigned to controls which capabilities of dbt Cloud the user is permitted to access at the highest level. Developers can be granted access to the Deployment and [Development](the-dbt-ide) functionality in dbt Cloud, whereas Read Only users are not.  
 
 | Functionality | Developer User | Read Only Users |
 | ------------- | -------------- | --------------- |
@@ -36,6 +36,7 @@ To change the license type for users on your team, navigate to the Team page in 
 
 ## Enterprise dbt Cloud Plans
 
-If you are on an Enterprise plan, you have access to enterprise permission sets. The type of seat a user has defines
-what enterprise permission sets a user can be granted. If you wish to implement enterprise permissioning, check out [Enterprise Permissions](docs/dbt-cloud/access-control/enterprise-permissions). Otherwise, your account will default to the self-service dbt Cloud permission sets: [Members and Groups](docs/dbt-cloud/access-control/self-service-permissions).
+Once an user has been granted a seat license, you can further control the grandularity of access via permission sets. 
+If you are on an Enterprise plan, you have the ability to use enterprise permission sets. The type of seat a user has defines
+what enterprise permission sets a user can be granted. If you wish to implement enterprise permissions, check out [Enterprise Permissions](docs/dbt-cloud/access-control/enterprise-permissions). Otherwise, your account will default to the self-service dbt Cloud permission sets: [Members and Groups](docs/dbt-cloud/access-control/self-service-permissions).
 
