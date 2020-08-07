@@ -25,4 +25,6 @@ dbt Cloud approaches access control by combining aspects from both of the follow
 - **Permission Set**
     - A defined level of access privileges. 
     - Each permission set is associated with specific privileges to dbt Cloud objects. Permission sets are granted to groups in order to easily control the grandularity of access for users. 
-    - Access to different types of permission sets is defined by your dbt Cloud plan. Self Service dbt Cloud plans have access to the 'Member' and 'Owner' permission sets. Enterprise dbt Cloud plans have access to a greater selection of permission sets.
+    - Access to different types of permission sets is defined by your dbt Cloud plan. Self-Service dbt Cloud plans have access to the 'Member' and 'Owner' permission sets. Enterprise dbt Cloud plans have access to a greater selection of permission sets.
+    - For more information about Self-Service permission sets, check out [Self-Service Permissions](/docs/dbt-cloud/access-control/self-service-permissions).
+    - For more information about Enterprise permission sets, check out [Enterprise Permissions](/docs/dbt-cloud/access-control/enterprise-permissions). 

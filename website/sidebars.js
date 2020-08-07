@@ -134,16 +134,6 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Access Control",
-      items: [
-        "docs/dbt-cloud/access-control/access-control-overview",
-        "docs/dbt-cloud/access-control/cloud-seats-and-users",
-        "docs/dbt-cloud/access-control/self-service-permissions",
-        "docs/dbt-cloud/access-control/enterprise-permissions",
-      ],
-    },
-    {
-      type: "category",
       label: "Using dbt Cloud",
       items: [
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github",
@@ -152,6 +142,16 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
+      ],
+    },
+    {
+      type: "category",
+      label: "Access Control",
+      items: [
+        "docs/dbt-cloud/access-control/access-control-overview",
+        "docs/dbt-cloud/access-control/cloud-seats-and-users",
+        "docs/dbt-cloud/access-control/self-service-permissions",
+        "docs/dbt-cloud/access-control/enterprise-permissions",
       ],
     },
     {
