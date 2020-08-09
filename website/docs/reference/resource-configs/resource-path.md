@@ -1,7 +1,7 @@
 The `<resource-path>` nomenclature is used in this documentation when documenting how to configure a model, seed, or snapshot, from your `dbt_project.yml` file. It represents the nested dictionary keys that provide the path to either a directory of models, or a single model.
 
 ## Example
-:::info 
+:::info
 
 This example is for models, but the same concepts apply for seeds and snapshots.
 
@@ -18,7 +18,7 @@ models:
 
 </File>
 
-To apply a configuration to all models in _your_ project only, use your [project name](name) as the `<resource-path>`:
+To apply a configuration to all models in _your_ project only, use your [project name](project-configs/name) as the `<resource-path>`:
 
 <File name='dbt_project.yml'>
 

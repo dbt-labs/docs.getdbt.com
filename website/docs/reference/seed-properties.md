@@ -18,7 +18,7 @@ seeds:
     [description](description): <markdown_string>
     [docs](resource-properties/docs):
       show: true | false
-    [tests](tests):
+    [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests
     columns:
@@ -27,7 +27,7 @@ seeds:
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
         [tags](resource-properties/tags): [<string>]
-        [tests](tests):
+        [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
 

@@ -9,7 +9,7 @@ id: "documentation"
 * [`doc` Jinja function](dbt-jinja-functions/doc)
 
 ## Assumed knowledge
-* [Tests](tests)
+* [Tests](building-a-dbt-project/tests)
 
 ## Overview
 
@@ -31,7 +31,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started Tutor
 :::
 
 ## Adding descriptions to your project
-To add descriptions to your project, use the `description:` key in the same files where you declare [tests](tests), like so:
+To add descriptions to your project, use the `description:` key in the same files where you declare [tests](building-a-dbt-project/tests), like so:
 
 <File name='models/<filename>.yml'>
 

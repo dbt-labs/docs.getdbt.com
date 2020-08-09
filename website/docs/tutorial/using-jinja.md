@@ -153,7 +153,7 @@ Getting whitespace control right is often a lot of trial and error! We recommend
 ## Use a macro to return payment methods
 Here, we've hardcoded the list of payment methods in our model. We may need to access this list from another model. A good solution here is to use a [variable](using-variables), but for the purpose of this tutorial, we're going to instead use a macro!
 
-[Macros](macros) in Jinja are pieces of code that can be called multiple times – they are analogous to a function in Python, and are extremely useful if you find yourself repeating code across multiple models.
+[Macros](jinja-macros#macros) in Jinja are pieces of code that can be called multiple times – they are analogous to a function in Python, and are extremely useful if you find yourself repeating code across multiple models.
 
 Our macro is simply going to return the list of payment methods:
 

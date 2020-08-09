@@ -145,7 +145,7 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`.
 
 ### The "tag" method
-The `tag` method is used to select models that match a specified [tag](tags) .
+The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
 
 ```bash
 $ dbt run --models tag:nightly    # run all models with the `nightly` tag
