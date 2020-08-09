@@ -152,7 +152,7 @@ This feature is not implemented for analyses.
 </Tabs>
 
 ## Related documentation
-* [Testing guide](tests)
+* [Testing guide](building-a-dbt-project/tests)
 
 ## Description
 

@@ -48,7 +48,7 @@ sources:
         [meta](meta): {<dictionary>}
         [identifier](identifier): <table_name>
         [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
-        [tests](tests):
+        [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
         [tags](resource-properties/tags): [<string>]
@@ -70,7 +70,7 @@ sources:
             [description](description): <markdown_string>
             [meta](meta): {<dictionary>}
             [quote](quote): true | false
-            [tests](tests):
+            [tests](resource-properties/tests):
               - <test>
               - ... # declare additional tests
             [tags](resource-properties/tags): [<string>]
