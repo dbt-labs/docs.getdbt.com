@@ -116,8 +116,13 @@ This is net-new functionality in v0.18.0, with iterative improvements to come.
 If you encounter unexpected behavior, please post in Slack or open an issue.
 :::
 
-dbt will resolve `ref` calls differently depending on whether a node is selected
-for a given run. If a node is unselected, references to it will resolve to the namespace 
+```
+dbt run --models [...] --defer --state path/to/artifacts
+```
+
+When the `--defer` flag is provided, dbt will resolve `ref` calls differently 
+depending on whether a node has been included in the model selection criteria of
+the current run. If a node is not included, references to it will resolve to the namespace 
 specified by the state artifact.
 
 This is especially useful when running a subset of models in a new test or development schema,
@@ -134,14 +139,14 @@ If both the flag and env var are provided, the flag takes precedence.
 
 **Usage notes**
 
-- In its current implementation, deferral requires **state** to be set explicitly, either
+- In its current implementation, deferral requires `state` to be set explicitly, either
 by flag or env var. In a future release, we may set state to be the [target-path](target-path) by default.
-- `dbt run` (with no `--models` or `--exclude` specification) includes _all_
-nodes, even seeds and sources. In this way, `dbt run` and `dbt run --defer --state ...` always yield
-identical results, with no deferred nodes.
+- The `dbt run` command (with no `--models` or `--exclude` specification) includes _all_
+nodes in its selection criteria, even seeds and sources. In this way, `dbt run` 
+and `dbt run --defer --state ...` always yield identical results, with no deferred nodes.
 - Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls.
-Including or excluding an ephemeral model makes no difference; including or excluding
-the non-ephemeral parent of an ephemeral model does.
+Excluding an ephemeral model from the model selection criteria makes no difference
+to the output; including or excluding the non-ephemeral parent of an ephemeral model does.
 
 **Example**
 
@@ -149,7 +154,18 @@ In my local development environment, I create all models in a schema named
 `dbt_me`. In production, the same models are created in a schema named
 `prod`. Both are located in a database called `analytics`.
 
-Given a model `model_2`:
+I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`)
+from a production run, and copy them into a local directory called `prod-run-artifacts`.
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Standard run', value: 'no_defer', },
+    { label: 'Deferred run', value: 'yes_defer', },
+  ]
+}>
+<TabItem value="source">
 
 <File name='models/model_2.sql'>
 
@@ -163,21 +179,37 @@ from {{ ref('model_1') }}
 ```
 
 </File>
+</TabItem>
 
-I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`)
-from a production run, and copy them into a local directory called `prod-run-artifacts`.
-Then I can run:
+<TabItem value="no_defer">
 
-<File name='bash'>
+```shell
+dbt run --models model_2
+```
+
+<File name='target/run/my_project/model_2.sql'>
+
+```sql
+create or replace view analytics.dbt_me.model_2 as (
+    
+    select
+
+        id,
+        count(*)
+        
+    from analytics.dbt_me.model_1
+    
+)
+```
+
+</File>
+</TabItem>
+
+<TabItem value="yes_defer">
 
 ```shell
 dbt run --models model_2 --defer --state prod-run-artifacts
 ```
-
-</File>
-
-Because `model_1` is unselected, dbt will resolve all instances of `{{ ref(model_1) }}` 
-using the production namespace, instead of the one configured in my profile.
 
 <File name='target/run/my_project/model_2.sql'>
 
@@ -195,3 +227,9 @@ create or replace view analytics.dbt_me.model_2 as (
 ```
 
 </File>
+
+Because `model_1` is unselected, dbt will resolve all instances of `{{ ref(model_1) }}` 
+using the production namespace, instead of the one configured in my profile.
+
+</TabItem>
+</Tabs>
