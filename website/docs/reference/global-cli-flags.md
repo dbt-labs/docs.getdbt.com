@@ -87,9 +87,7 @@ $ dbt --no-write-json run
 
 ## Strict
 
-The `-S` or `--strict` flag runs schema validations on dbt python objects at runtime. This flag may incur a performance penalty, but it is useful for catching logic errors in development of the dbt project.
-
-**N.B.** In versions >=0.15.0, dbt uses [hologram](https://github.com/fishtown-analytics/hologram) and [mypy](http://mypy-lang.org/) for object type declaration, validation, and testing. The `--strict` flag has no functional use except as an alias for `--warn-error`. We may choose to someday repurpose it.
+The `-S` or `--strict` flag is _only_ for use during dbt development. It performs extra validation of dbt objects and internal consistency checks during compilation. Use of this flag incurs a significant performance penalty. We use it only when running integration tests against proposed changes to dbt.
 
 <File name='Usage'>
 
