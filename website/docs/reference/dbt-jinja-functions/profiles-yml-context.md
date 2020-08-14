@@ -8,7 +8,7 @@ resources in the `profiles.yml` file.
 
 **Available context variables:**
 - [env_var](env_var)
-- [vars](var) (_Note: only variables defined with `--vars` are availabe_)
+- [vars](var) (_Note: only variables defined with `--vars` are available_)
 
 ### Example usage
 
