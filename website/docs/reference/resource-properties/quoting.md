@@ -79,7 +79,7 @@ select
 from {{ source('jaffle_shop', 'orders') }}
 
 -- here, the identifier should be unquoted
-left join {{ source('jaffle_shop', 'customers') }} using (order_id)
+left join {{ source('jaffle_shop', customers) }} using (order_id)
 
 ```
 
