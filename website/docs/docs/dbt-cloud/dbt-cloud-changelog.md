@@ -5,6 +5,40 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.6 (DATE PENDING)
+
+RELEASE SUMMARY - TBD
+
+#### Enhancements
+
+- Adds a link to the data docs in the IDE
+- Replace uses of get_all with list
+- changed pr schema name to dbt_cloud
+- Update coloring for various text and add iconography to improve accessibility and user experience
+- Add support for multiple SSO domains
+
+#### Fixed
+
+- Add paging support when listing Azure groups
+- symlink file creation is no longer allowed
+- Handle exception in background cleanup when listing schemas
+
+#### Internal
+
+- Remove a log message that is not useful
+- Handle more edge cases in the time to run calculation
+- Rollbar source map support for prod and staging
+- Dockerize Condenser
+- Thread flushing run step logs and separate background clean up and PR webhook processing
+- remove feature flag: run limiter
+- Add a reason to webhooks if there is an issue processing it
+- Skip downloading logs during the run step log flush process
+- Fix boto dependency to make snowflake-connector happy
+- catch inner exception to prevent jsonschema validation with password in logs
+- Enable the exhaustive-deps eslint rule and ignore current lint issues
+- [On-premises] Upgrade boto3 to support KIAM authentication
+- Migrate to uWSGI
+
 ## dbt Cloud v1.1.5 (August 4, 2020)
 
 This release adds a major new feature to the IDE: merge conflict resolution!
