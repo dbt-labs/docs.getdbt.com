@@ -230,7 +230,8 @@ manifest. The file path of the comparison manifest _must_ be specified via the
 `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
-`state:modified`: Everything in `:new`, plus changes to:
+
+`state:modified`: Everything new, plus any changes to:
 * file/node contents
 * configs (`materialized`, `bind`, `transient`, `quote`, etc.)
 * descriptions (if `persist_docs`)
@@ -242,9 +243,7 @@ $ dbt run --models state:modified        # run all models that have been modifie
 $ dbt ls --models state:modified     # list all modified nodes (not just models)
 ```
 
-#### Note
-
-State comparison works by identifying discrepancies between two manifests. 
+**N.B.** State comparison works by identifying discrepancies between two manifests. 
 Those discrepancies could be the result of:
 
 1. Changes made to a project in development
