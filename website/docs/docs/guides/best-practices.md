@@ -119,7 +119,7 @@ where created_at >= dateadd('day', -3, current_date)
 ```
 
 ### Use hooks to manage privileges on objects that dbt creates
-Use `grant` statements from [hooks](hooks) to ensure that permissions are applied to the objects created by dbt. By codifying these grant statements in hooks, you can version control and repeatably apply these permissions.
+Use `grant` statements from [hooks](hooks-operations) to ensure that permissions are applied to the objects created by dbt. By codifying these grant statements in hooks, you can version control and repeatably apply these permissions.
 
 
 :::info Recommended grant statements
