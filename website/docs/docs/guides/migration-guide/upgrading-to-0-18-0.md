@@ -17,7 +17,7 @@ dbt v0.18.0 is currently in beta. Please post in dbt Slack #prereleases with que
 For more details, see [new and changed documentation](#new-and-changed-documentation) below.
 
 ### Node selection
-- methods: `config`, `test_type`, `test_name`, `package`
+- methods: `config`, `test_type`, `test_name`, `package`, [β] `state`
 - intersections
 - nth-parent/child
 - [β] version-controlled YAML selectors

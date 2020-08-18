@@ -217,6 +217,44 @@ $ dbt test --models test_name:equality          # run all instances of the `dbt_
 $ dbt test --models test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
 ```
 
+### The "state" method
+<Changelog>New in v0.18.0</Changelog>
+
+:::info [β] Beta Feature
+This is net-new functionality in v0.18.0, with iterative improvements to come.
+If you encounter unexpected behavior, please post in Slack or open an issue.
+:::
+
+The `state` method is used to select nodes by comparing them against a supplied
+manifest. The file path of the comparison manifest _must_ be specified via the
+`--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+
+`state:new`: There is no node with the same `unique_id` in the comparison manifest
+`state:modified`: Everything in `:new`, plus changes to:
+* file/node contents
+* configs (`materialized`, `bind`, `transient`, `quote`, etc.)
+* descriptions (if `persist_docs`)
+* database representations (`database`, `schema`, `alias`)
+
+```bash
+$ dbt test --models state:new            # run all tests on new models + and new tests on old models
+$ dbt run --models state:modified        # run all models that have been modified
+$ dbt ls --models state:modified     # list all modified nodes (not just models)
+```
+
+#### Note
+
+State comparison works by identifying discrepancies between two manifests. 
+Those discrepancies could be the result of:
+
+1. Changes made to a project in development
+2. Env-aware logic that causes different behavior based on the `target`, env vars, etc.
+
+dbt will do its best to capture *only* changes that are the result of development.
+In projects with intricate env-aware logic, dbt will try to do the right
+thing and will err on the side of running too many models (i.e. false positives)
+than too few. We're working on the option to turn off some knobs, in the form of more-specific subselectors.
+Track [this issue](https://github.com/fishtown-analytics/dbt/issues/2704) for progress.
 
 ## Putting it all together
 ```bash
@@ -250,12 +288,17 @@ Except for models that are:
 ## Selectors
 <Changelog>New in v0.18.0</Changelog>
 
-Write model selectors in YML, save them with a human-friendly name, and reference them using the `--selector` flag.
+:::info [β] Beta Feature
+This is net-new functionality in v0.18.0, with iterative improvements to come.
+If you encounter unexpected behavior, please post in Slack or open an issue.
+:::
+
+Write model selectors in YAML, save them with a human-friendly name, and reference them using the `--selector` flag.
 By recording selectors in a top-level `selectors.yml` file:
 
 * **Legibility:** complex selection criteria are composed of dictionaries and arrays
 * **Version control:** selector definitions are stored in the same git repository as the dbt project
-* **Reusability:** selectors can be referenced in multiple job definitions, and their definitions are extensible (via YML anchors)
+* **Reusability:** selectors can be referenced in multiple job definitions, and their definitions are extensible (via YAML anchors)
 
 Selectors each have a `name` and a `definition`. Each `definition` is comprised of
 one or more arguments, which can be one of the following:

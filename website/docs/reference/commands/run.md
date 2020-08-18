@@ -111,7 +111,7 @@ FailFast Error in model model_1 (models/model_1.sql)
 
 </Changelog>
 
-:::info Beta Feature
+:::info [β] Beta Feature
 This is net-new functionality in v0.18.0, with iterative improvements to come.
 If you encounter unexpected behavior, please post in Slack or open an issue.
 :::
