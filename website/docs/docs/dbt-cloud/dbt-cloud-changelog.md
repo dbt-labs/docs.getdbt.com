@@ -5,7 +5,7 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
-## dbt Cloud v1.1.6.0 (August 20, 2020)
+## dbt Cloud v1.1.6 (August 20, 2020)
 
 This release includes security enhancements and improvements across the entire
 dbt Cloud application.
