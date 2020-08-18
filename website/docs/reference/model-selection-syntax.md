@@ -250,9 +250,9 @@ Those discrepancies could be the result of:
 2. Env-aware logic that causes different behavior based on the `target`, env vars, etc.
 
 dbt will do its best to capture *only* changes that are the result of development.
-In projects with intricate env-aware logic, dbt will try to do the right
-thing and will err on the side of running too many models (i.e. false positives)
-than too few. We're working on the option to turn off some knobs, in the form of more-specific subselectors.
+In projects with intricate env-aware logic, dbt will err on the side of running 
+too many models (i.e. false positives). We're working on better options for more 
+complex projects, in the form of more-specific subselectors.
 Track [this issue](https://github.com/fishtown-analytics/dbt/issues/2704) for progress.
 
 ## Putting it all together
