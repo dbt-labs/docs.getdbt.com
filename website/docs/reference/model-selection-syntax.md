@@ -234,8 +234,8 @@ manifest. The file path of the comparison manifest _must_ be specified via the
 `state:modified`: Everything new, plus any changes to:
 * file/node contents
 * configs (`materialized`, `bind`, `transient`, `quote`, etc.)
-* descriptions (if `persist_docs`)
-* database representations (`database`, `schema`, `alias`)
+* descriptions (top-level and/or column-level, depending on `persist_docs`)
+* database representations (user-input `database`, `schema`, `alias`, irrespective of `target` + `generate_x_name` macros)
 
 ```bash
 $ dbt test --models state:new            # run all tests on new models + and new tests on old models
