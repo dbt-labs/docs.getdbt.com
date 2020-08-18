@@ -5,6 +5,24 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.6.0 (August 14, 2020)
+
+This release includes security enhancements and improvements across the entire
+dbt Cloud application.
+
+#### Enhancements
+- Support for viewing development docs inside of the IDE ([docs](viewing-docs-in-the-ide))
+- Change CI temporary schema names to be prefixed with `dbt_cloud` instead of `sinter`
+- Change coloring and iconography to improve accessibility and UX across the application
+- [Enterprise] Support the specification of multiple authorized domains in SSO configuration
+- [On-premises] Upgrade boto3 to support KIAM authentication
+
+#### Fixed
+- [Enterprise] Fix for missing IdP group membership mappings when users belong to >100 Azure AD groups
+- Disallow the creation of symlinks in the IDE
+- [Internal] Improve reliability of background cleanup processes
+- [Internal]Improve performance and reliability of artifact management and PR webhook processing
+
 ## dbt Cloud v1.1.5 (August 4, 2020)
 
 This release adds a major new feature to the IDE: merge conflict resolution!
