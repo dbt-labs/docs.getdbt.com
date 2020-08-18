@@ -1,14 +1,24 @@
-A [docusaurus](https://docusaurus.io/en/) site that powers [docs.getdbt.com](https://docs.getdbt.com/)
+A [docusaurus](https://docusaurus.io/en/) site that powers [docs.getdbt.com](https://docs.getdbt.com/).
 
-To run this yourself:
-1. `brew install node`
-2. Clone this repo
+## Branching
+
+There are two long-lived branches in this repo:
+- `current`: This branch is what is reflected at at [docs.getdbt.com](https://docs.getdbt.com/)
+- `next`: This branch represent the next release of dbt, and is deployed [next.docs.getdbt.com](https://next.docs.getdbt.com/)
+
+## Contributing
+We welcome contributions from community members to this repo:
+- **Fixes**: If you notice an error (there are likely many), use the `Edit this page` button at the bottom of each page to suggest a change. We recommend you contribute small changes directly from the GitHub interface.
+- **New documentation**: If you contributed code in [dbt-core](https://github.com/fishtown-analytics/dbt), we encourage you to also write the docs here!
+- **Refactors**: At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
+
+If you are contributing significant changes, it may be worth setting up the repo to run locally, as follows:
+1. Ensure node is installed: `brew install node`
+2. Clone this repo: `git@github.com:fishtown-analytics/dbt.git`
 3. `cd` into the `website` subdirectory
-4. `npm install`
-5. `npm start`
+4. Install the required node packages: `npm install`
+5. Build the website: `npm start`
+6. Before pushing your changes to a branch, check that all links work by using the `make build` script
 
-
-## Notes
-* When using markdown links, you can use file paths relative to the current file, or, relative to the `website/docs/` directory, e.g. `[my link text](faqs/available-configurations.md)`.
-    * For FAQs: use the file path relative to the `docs` directory (since it may have to be resolved from different paths).
-    * Otherwise: use the relative filepath (fewer changes required if we rename a directory)
+## Custom components
+Check out [docs.getdbt.com/styles](https://docs.getdbt.com/styles) for examples of different components that can be used in these docs.
