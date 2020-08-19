@@ -21,7 +21,7 @@ dbt Cloud application.
 - [Enterprise] Fix for missing IdP group membership mappings when users belong to >100 Azure AD groups
 - Disallow the creation of symlinks in the IDE
 - [Internal] Improve reliability of background cleanup processes
-- [Internal]Improve performance and reliability of artifact management and PR webhook processing
+- [Internal] Improve performance and reliability of artifact management and PR webhook processing
 
 ## dbt Cloud v1.1.5 (August 4, 2020)
 
