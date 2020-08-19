@@ -56,6 +56,8 @@ module.exports = {
       label: "Guides",
       items: [
         "docs/guides/debugging-errors",
+        "docs/guides/navigating-the-docs",
+        "docs/guides/getting-help",
         "docs/guides/best-practices",
         "docs/guides/managing-environments",
         "docs/guides/writing-custom-schema-tests",
@@ -63,7 +65,7 @@ module.exports = {
         "docs/guides/creating-new-materializations",
         {
           type: "category",
-          label: "Migration Guides",
+          label: "Migration guides",
           items: [
             "docs/guides/migration-guide/upgrading-from-0-10-to-0-11",
             "docs/guides/migration-guide/upgrading-to-0-12-0",
@@ -73,6 +75,7 @@ module.exports = {
             "docs/guides/migration-guide/upgrading-to-0-15-0",
             "docs/guides/migration-guide/upgrading-to-0-16-0",
             "docs/guides/migration-guide/upgrading-to-0-17-0",
+            "docs/guides/migration-guide/upgrading-to-0-18-0",
           ],
         },
         "docs/guides/videos",
@@ -116,7 +119,14 @@ module.exports = {
   "dbt Cloud": [
     "docs/dbt-cloud/cloud-overview",
     "docs/dbt-cloud/cloud-quickstart",
-    "docs/dbt-cloud/the-dbt-ide",
+    {
+      type: "category",
+      label: "dbt Cloud IDE",
+      items: [
+        "docs/dbt-cloud/cloud-ide/the-dbt-ide",
+        "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
+      ],
+    },
     {
       type: "category",
       label: "Configuring dbt Cloud",
@@ -185,6 +195,7 @@ module.exports = {
         "docs/dbt-cloud/on-premises/installation",
         "docs/dbt-cloud/on-premises/setup",
         "docs/dbt-cloud/on-premises/usage-statistics",
+        "docs/dbt-cloud/on-premises/faqs",
       ],
     },
     "docs/dbt-cloud/cloud-changelog",
@@ -200,6 +211,7 @@ module.exports = {
           label: "Project configurations",
           items: [
             "reference/project-configs/analysis-paths",
+            "reference/project-configs/asset-paths",
             "reference/project-configs/clean-targets",
             "reference/project-configs/config-version",
             "reference/project-configs/data-paths",
@@ -274,7 +286,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Properties",
+      label: "Properties (schema.yml files)",
       items: [
         "reference/declaring-properties",
         "reference/model-properties",
@@ -306,6 +318,13 @@ module.exports = {
             "reference/resource-properties/quoting",
             "reference/resource-properties/schema",
             "reference/resource-properties/overrides",
+          ],
+        },
+        {
+          type: "category",
+          label: "List of macro properties",
+          items: [
+            "reference/resource-properties/argument-type",
           ],
         },
       ],

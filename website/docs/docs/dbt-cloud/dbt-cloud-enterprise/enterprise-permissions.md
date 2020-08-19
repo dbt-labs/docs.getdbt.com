@@ -107,7 +107,7 @@ Job Viewers can perform the following actions in projects they are assigned to:
 - **License restrictions:** must have a developer license
 
 Developers can perform the following actions in projects they are assigned to:
-- Access the IDE
+- Use the IDE
 - Configure personal developer credentials
 - Manage job definitions in assigned projects
 - Kick off runs in deployment environments
@@ -118,7 +118,7 @@ Developers can perform the following actions in projects they are assigned to:
 
 Analysts can perform the following actions in projects they are assigned to:
 - Use the IDE
-- Manage their personal developer credentials
+- Configure personal developer credentials
 - View environments
 - View job definitions
 - View historical runs

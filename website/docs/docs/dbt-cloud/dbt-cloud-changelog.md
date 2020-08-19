@@ -5,6 +5,74 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.5 (August 4, 2020)
+
+This release adds a major new feature to the IDE: merge conflict resolution!
+
+It also includes changes to the job scheduler that cut the time and resource utilization
+significantly.
+
+#### Enhancements
+
+- Add dbt 0.17.2
+- Add dbt 0.18.0 beta 2
+- Add merge conflict resolution, a merge commit workflow, and merge abort workflow to the IDE
+- Deprecate dbt versions prior to 0.13.0
+- Refactor to cut job scheduler loop time
+- Reduce extra database calls to account table in job scheduler loop
+- [On-premises] Allow clients to disable authentication for SMTP
+- [On-premises] Allow disabling of TLS for SMTP
+- [On-premises] Making k8s access mode for IDE pods an environment variable
+- [Security] Force session cookie to be secure
+- [Internal] Make api and admin modules flake8 complaint
+
+#### Fixed
+
+- Fix incorrect usage of `region_name` in KMS client
+- Fix a call to a deprecated Github API
+- Remove extraneous billing API calls during job scheduler loop
+- Fix error where refreshing the IDE would leave running dbt processes in a bad state
+
+#### Internal
+
+- Add logging around malformed task tags for IDE queries
+- Preserve artifacts for each run step
+- Add status message to run info in backend
+- Add extra debug logs to dbt run
+
+## dbt Cloud v1.1.4 (July 21, 2020)
+
+This release dramatically speeds up the job scheduler. It adds a new
+stable dbt version (0.17.1) and a new prerelease (0.17.2b1), and it
+includes a number of bugfixes.
+
+#### Enhancements
+
+- Add dbt 0.17.2b1
+- Add dbt 0.17.1 and set as default version
+- Speed up job scheduler by 50%
+- Added generate docs to rpc service and new view docs route
+- Queue limiting by account for scheduled jobs
+
+#### Fixed
+
+- Fix enterprise SSO configuration when old Auth0 Azure AD is configured
+- Do not schedule jobs for deleted job definitions or environments
+- Fix permissions issues
+- Fix a bug with metadata set in azure storage provider
+- Fixed error when switching to developer plan from trial
+- Fix authentication bug where we setup all accounts with same domain
+- \[Security\] Disallow partial_parse.pickle files in repositories
+- \[Security\] Add security check to prevent potentially malicious html files in dbt docs
+
+#### Internal
+
+- Log api v1/ calls to Datadog
+- Add a scheduler loop time metric to Datadog
+- Add a time to run metric to the scheduler
+- Using type property along with feature flag to display verify tab
+- Fix waffle profiler to update on db switch changes
+
 ## dbt Cloud v1.1.3 (July 7, 2020)
 
 This release contains a number of IDE features and bugfixes, a new release candidate of dbt, and a brand new Enterprise Single-Sign On method: Azure Active Directory!

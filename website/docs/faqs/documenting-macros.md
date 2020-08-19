@@ -4,7 +4,7 @@ title: How do I document macros?
 
 <Changelog>The `macros:` key is new in 0.16.0.</Changelog>
 
-To document macros, use a [schema file](macro-properties) and nest the configurations under a `models:` key
+To document macros, use a [schema file](macro-properties) and nest the configurations under a `macros:` key
 
 ## Example:
 
@@ -13,7 +13,7 @@ To document macros, use a [schema file](macro-properties) and nest the configura
 ```yml
 version: 2
 
-models:
+macros:
   - name: cents_to_dollars
     description: A macro to convert cents to dollars
     arguments:

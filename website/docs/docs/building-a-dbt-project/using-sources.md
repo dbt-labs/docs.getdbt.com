@@ -5,6 +5,7 @@ id: "using-sources"
 
 ## Related reference docs
 * [Source properties](source-properties)
+* [Source configurations](source-configs)
 * [`{{ source() }}` jinja function](dbt-jinja-functions/source)
 * [`source snapshot-freshness` command](commands/source)
 

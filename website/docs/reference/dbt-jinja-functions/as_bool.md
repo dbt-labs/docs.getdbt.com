@@ -3,7 +3,7 @@ title: "as_bool"
 id: "as_bool"
 ---
 
-The `as_number` Jinja filter will coerce Jinja-compiled output into a boolean
+The `as_bool` Jinja filter will coerce Jinja-compiled output into a boolean
 value (`True` or `False`), or return an error if it cannot be represented
 as a bool.
 

@@ -20,7 +20,7 @@ macros:
       show: true | false
     arguments:
       - name: <arg name>
-        type: <arg type>
+        [type](argument-type): <string>
         [description](description): <markdown_string>
       - ... # declare properties of additional arguments
 
