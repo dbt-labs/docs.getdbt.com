@@ -53,10 +53,12 @@ module.exports = {
   url: SITE_URL,
 
   themeConfig: {
-    disableDarkMode: true,
+    colorMode: {
+      disableSwitch: true
+    },
     sidebarCollapsible: true,
     image: '/img/avatar.png',
-    
+
     announcementBar: WARNING_BANNER,
 
     algolia: {
@@ -92,7 +94,7 @@ module.exports = {
         src: '/img/dbt-logo-full-white.png',
         alt: 'dbt Logo',
       },
-      links: [
+      items: [
         {
           to: '/docs/introduction',
           label: 'Docs',
