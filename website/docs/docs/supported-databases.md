@@ -1,9 +1,7 @@
 ---
-title: "Supported Databases"
+title: "Supported databases"
 id: "supported-databases"
 ---
-
-## Supported databases
 
 dbt supports the following databases:
 
