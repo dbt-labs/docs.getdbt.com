@@ -402,6 +402,7 @@ module.exports = {
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/spark-profile",
+	"reference/warehouse-profiles/exasol-profile",
       ],
     },
     "reference/dbt-artifacts",
