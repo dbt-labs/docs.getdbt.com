@@ -138,7 +138,7 @@ password: hunter2
 Links to pages can be specified using:
 <li>Just the <code>id</code>¹ of the document, if the <code>id</code> is unique. Note: the <code>id</code> may be specified in the YAML front-matter of a document. If not, then it defaults to the filename.</li>
 <li>A relative <code>id</code> of the document. Note: this is required when two documents have the same <code>id</code>.</li>
-<li>Or, a path to the document (with <code>.md</code> file extension), relative to the <code>website/docs/</code> directory. Note: this is _required_ for pages where the <code>id</code> looks like a filename (e.g. <code>profiles.yml</code>)</li>
+<li>Or, a path to the document (with <code>.md</code> file extension), relative to the <code>website/docs/</code> directory. Note: this is <em>required</em> for pages where the <code>id</code> looks like a filename (e.g. <code>profiles.yml</code>)</li>
 <br/>
 Bad links will appear with red underlines when building locally, and will cause an error in a deploy preview.
 <br/>
