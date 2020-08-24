@@ -1,9 +1,7 @@
 ---
-title: "Supported Databases"
+title: "Supported databases"
 id: "supported-databases"
 ---
-
-## Supported databases
 
 dbt supports the following databases:
 
@@ -26,6 +24,7 @@ These database plugins are community-supported 🌱
 | -------- | ------------- | ----- |
 | Microsoft SQL Server ([dbt-mssql](https://github.com/jacobm001/dbt-mssql)) | [Profile Setup](mssql-profile) | SQL Server 2008 R2 and later |
 | Microsoft SQL Server ([dbt-sqlserver](https://github.com/mikaelene/dbt-sqlserver)) | [Profile Setup](mssql-profile) | SQL Server 2016 and later |
+| Exasol Analytics ([dbt-exasol](https://github.com/tglunde/dbt-exasol)) | [Profile Setup](exasol-profile) | Exasol 6.x and later |
 
 ## Creating a new adapter
 

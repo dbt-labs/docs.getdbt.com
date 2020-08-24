@@ -24,7 +24,6 @@ version: 2
 models:
   - name: <model_name>
     tests:
-      - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
           [severity](#severity): warn | error
