@@ -15,10 +15,11 @@ To enable runs on Pull Requests, navigate to the Job Settings page for the relev
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
 
+
 ## Understanding CI in dbt Cloud
 
-When Pull Request builds are enabled, dbt Cloud will listen for webhooks from GitHub indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the specified job. Crucially, this run will be configured to build into a special, temporary schema. The name of these schema will be unique for each PR, and is shown in the Run Details page for the given run.
+When Pull Request builds are enabled, dbt Cloud will listen for webhooks from GitHub indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the specified job. Crucially, this run will be configured to build into a special, [temporary schema](configure using-custom-schemas) using the prefix dbt_cloud. The name of these schema will be unique for each PR, and is shown in the Run Details page for the given run.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fbe3725-Screen_Shot_2019-02-08_at_10.02.02_PM.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
 When the run is complete, dbt Cloud will update the PR in GitHub with a status message indicating the results of the run. The temporary schema created for the run will remain in your warehouse until the PR is closed, allowing you to inspect the relations built by dbt Cloud. Once the PR is closed, dbt Cloud will delete the temporary schema.
