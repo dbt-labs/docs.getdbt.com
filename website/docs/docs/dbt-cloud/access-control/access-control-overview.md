@@ -23,8 +23,7 @@ both the dbt Cloud account and project level. You can grant access privileges to
 - **Group**
     - An entity to which permission sets can be granted. Users can be assigned to multiple groups. Once 
     a user is assigned to the group, they have the permission sets granted to the group.
-    -  **Enterprise Plans Only:** Identify Provider (IdP) groups can be mapped to dbt Cloud groups. This will enable a user logging in via SSO to automatically be mapped to the dbt Cloud group. If they were newly added to a group, the user 
-    will need to relog into dbt Cloud to refresh their group memberships.
+    -  **Enterprise Plans Only:** Identify Provider (IdP) groups can be mapped to dbt Cloud groups. This will enable a user logging in via SSO to automatically be mapped to the dbt Cloud group. 
 
 - **Permission Set**
     - A defined set of access privileges. 

@@ -10,13 +10,23 @@ If you’re interested in learning more about an Enterprise plan, contact us at 
 
 :::
 
-The following permission sets are available for assignment for dbt Cloud Enterprise plans.
-Please contact your Customer Success Manager to implement the permissions defined here. 
+## Overview
+
+With enterprise security features, you can manage secure access to your dbt Cloud account and access dbt Cloud objects within the account. We recommend setting up [SSO](/docs/dbt-cloud/dbt-cloud-enterprise/sso-overview) and dbt Cloud groups to easily manage user access.
+
+## RBAC groups
+
+When you create dbt Cloud groups, you can associate Identity Provider (IdP) group(s) to the group.
+This will allow users who log in via the SSO flow to be automatically associated with the corresponding dbt Cloud group. While multiple IdP groups may be associated with one dbt Cloud group, we recommend having a 1:1 mapping for simplicity. Having the same name for your IdP group as for your dbt Cloud group will make adminstration easier. 
+
+To reset a user's group membership, have the user relog into dbt Cloud. This will be needed when a 
+user is added to a new dbt Cloud group via a new IdP group.
 
 ## Permission Sets
 
 The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
-can be granted to dbt Cloud groups which are then in turn granted to users.
+can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group 
+can be associated with more than one permission sets.
 
 ### Account Admin
 - **Has permissions on:** Authorized projects, account-level settings
@@ -107,10 +117,10 @@ Job Viewers can perform the following actions in projects they are assigned to:
 - **License restrictions:** must have a developer license
 
 Developers can perform the following actions in projects they are assigned to:
-- Use the IDE
-- Configure personal developer credentials
 - Create, delete, and modify Jobs
 - Trigger runs
+- Use the IDE
+- Configure personal developer credentials
 
 ### Analyst
 - **Has permissions on:** Authorized projects
@@ -137,3 +147,4 @@ Stakeholders can perform the following actions in projects they are assigned to:
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
 static/
+
