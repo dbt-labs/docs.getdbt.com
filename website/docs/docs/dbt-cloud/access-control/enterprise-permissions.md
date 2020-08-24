@@ -109,8 +109,8 @@ Job Viewers can perform the following actions in projects they are assigned to:
 Developers can perform the following actions in projects they are assigned to:
 - Use the IDE
 - Configure personal developer credentials
-- Manage job definitions in assigned projects
-- Kick off runs in deployment environments
+- Create, delete, and modify Jobs
+- Trigger runs
 
 ### Analyst
 - **Has permissions on:** Authorized projects
