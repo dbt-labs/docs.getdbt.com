@@ -22,6 +22,7 @@ In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.
 * [fromyaml](fromyaml)
 * [graph](graph)
 * [invocation_id](invocation_id)
+* [load_result](load_result)
 * [log](log)
 * [modules](modules)
 * [on-run-end-context](on-run-end-context)
