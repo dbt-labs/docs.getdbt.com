@@ -65,6 +65,14 @@ When you run the [`dbt snapshot` command](snapshot):
 
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](ref) function.
 
+*Note*: You'll need to have snapshots configured in your `dbt_project.yml` file for this to work. You're looking for a line like this:
+
+```yaml
+snapshot-paths: ["snapshots"]
+```
+
+If that configuration isn't set, when you run `dbt snapshot` you might seen an error that says something like `Encountered unknown tag 'snapshot'.`
+
 ## Example
 To add a snapshot to your project:
 
