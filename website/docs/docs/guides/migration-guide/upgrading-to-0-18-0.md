@@ -36,7 +36,7 @@ can override schema test definitions
 - Specify IAM profile when connecting to Redshift
 - Impersonate a BigQuery service account when connecting via oauth
 - Adding policy tags to BigQuery columns
-- Snowflake query tags at connection and model level [not yet documented]
+- Snowflake query tags at connection and model level
 
 
 ## Resources
@@ -64,3 +64,4 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 - [deferring to previous run state](run#deferring-to-previous-run-state)
 - [`full_refresh` config](full_refresh)
 - [bigquery policy tags](bigquery-configs/#policy-tags)
+- Snowflake query tags in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
