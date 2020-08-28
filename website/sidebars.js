@@ -125,6 +125,7 @@ module.exports = {
       items: [
         "docs/dbt-cloud/cloud-ide/the-dbt-ide",
         "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
+        "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
       ],
     },
     {
@@ -421,6 +422,7 @@ module.exports = {
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/spark-profile",
+	"reference/warehouse-profiles/exasol-profile",
       ],
     },
     "reference/dbt-artifacts",

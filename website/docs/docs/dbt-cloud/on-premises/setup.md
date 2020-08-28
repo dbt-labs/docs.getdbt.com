@@ -23,7 +23,7 @@ Enter the desired hostname, and upload your TLS certificate to establish secure 
 
 ### Upload License
 
-The first time you log into the configuration console, you will need to upload your license file. This contains information about your subscription, as well as configuration for your specific installation. If you don't already have a license file, [contact sales](sales@getdbt.com).
+The first time you log into the configuration console, you will need to upload your license file. This contains information about your subscription, as well as configuration for your specific installation. If you don't already have a license file, [contact your account manager or support](support@getdbt.com).
 
 After you upload the license, you will be redirected to the Config page. You can access this page at any time to reconfigure your dbt Cloud installation.
 

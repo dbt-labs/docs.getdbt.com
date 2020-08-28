@@ -56,14 +56,14 @@ module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
-  title: 'dbt - Documentation',
+  title: 'docs.getdbt.com',
   url: SITE_URL,
 
   themeConfig: {
     disableDarkMode: true,
     sidebarCollapsible: true,
     image: '/img/avatar.png',
-    
+
     announcementBar: WARNING_BANNER,
 
     algolia: {

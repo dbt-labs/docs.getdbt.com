@@ -1,3 +1,9 @@
-/website/docs/docs/dbt-cloud   @drewbanin
-/website/src/pages/dbt-cloud   @drewbanin
-*                              @clrcrl
+# Lower entries on this list take precedence
+
+# Anything unmatched by selectors below
+*                                     @clrcrl
+
+# Cloud docs and images are assigned to Drew
+/website/docs/docs/dbt-cloud/         @drewbanin
+/website/src/pages/dbt-cloud/         @drewbanin
+/website/static/img/docs/dbt-cloud/   @drewbanin

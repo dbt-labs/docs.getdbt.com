@@ -118,7 +118,7 @@
 /docs/test	/reference/commands/test	302
 /docs/testing	/docs/building-a-dbt-project/tests	302
 /docs/testing-and-documentation	/docs/building-a-dbt-project/tests	302
-/docs/the-dbt-ide	/docs/dbt-cloud/the-dbt-ide	302
+/docs/the-dbt-ide	/docs/dbt-cloud/cloud-ide/the-dbt-ide	302
 /docs/this	/docs/writing-code-in-dbt/jinja-context/this	302
 /docs/tojson	/docs/writing-code-in-dbt/jinja-context/tojson	302
 /docs/ubuntu-debian	/dbt-cli/installation-guides/ubuntu-debian	302
