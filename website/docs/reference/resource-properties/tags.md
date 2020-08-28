@@ -156,7 +156,7 @@ The `tags` _property_ can be used to:
 - set tags on a specific test
 - set tags for a source or source table.
 
-These tags can be used as part of the [resource selection syntax](model-selection-syntax).
+These tags can be used as part of the [resource selection syntax](node-selection/syntax).
 
 Note that you need to use the [tag _configuration_](resource-configs/tags) to apply tags to models, seeds, and snapshots. (Yes, we know this is confusing, and hope to resolve it in a future release!)
 

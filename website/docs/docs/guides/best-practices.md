@@ -70,7 +70,7 @@ Complex models often include multiple Common Table Expressions (CTEs). In dbt, y
 ### Group your models in directories
 Within your `models/` directory, you can have any number of nested subdirectories. We leverage directories heavily, since using a nested structure within directories makes it easier to:
 * Configure groups of models, by specifying configurations in your `dbt_project.yml` file.
-* Run subsections of your DAG, by using the [model selection syntax](model-selection-syntax).
+* Run subsections of your DAG, by using the [model selection syntax](node-selection/syntax).
 * Communicate modeling steps to collaborators
 * Create conventions around the allowed upstream dependencies of a model, for example, "models in the `marts` directory can only select from other models in the `marts` directory, or from models in the `staging` directory".
 
@@ -104,7 +104,7 @@ We often:
 
 ## Pro-tips for workflows
 ### Use the model selection syntax when running locally
-When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](model-selection-syntax).
+When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](node-selection/syntax).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development

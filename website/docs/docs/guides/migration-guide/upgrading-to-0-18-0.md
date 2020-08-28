@@ -54,7 +54,7 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 ## New and changed documentation
 
 **Core**
-- [model selection syntax](model-selection-syntax)
+- [node selection syntax](node-selection/syntax)
 - [list (ls)](commands/list)
 - [Redshift profile](redshift-profile#specifying-an-iam-profile)
 - [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and the [description](description) docs to match)
