@@ -244,6 +244,7 @@ module.exports = {
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
+            "reference/resource-configs/full_refresh",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
