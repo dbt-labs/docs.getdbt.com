@@ -106,6 +106,23 @@ We often:
 ### Use the model selection syntax when running locally
 When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](node-selection/syntax).
 
+### Run only modified models to test changes ("slim CI")
+To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](cloud-enabling-continuous-integration-with-github).)
+
+<Changelog>New in v0.18.0</Changelog>
+
+:::info [β] Beta Feature
+This is net-new functionality in v0.18.0, with iterative improvements to come.
+If you encounter unexpected behavior, please post in Slack or open an issue.
+:::
+
+```bash
+dbt run -m state:modified --defer --state path/to/prod/artifacts
+dbt test -m state:modified
+```
+
+For more details, see the docs on [deferred runs](run#deferring-to-previous-run-state) and [the state selection method](node-selection/methods#the-state-method).
+
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development
 In a development environment, faster run times allow you to iterate your code more quickly. We frequently speed up our runs by using a pattern that limits data based on the [target](target) name:
