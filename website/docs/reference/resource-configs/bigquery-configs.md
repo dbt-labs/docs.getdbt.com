@@ -314,6 +314,26 @@ select * from {{ ref('another_model') }}
 
 </File>
 
+### Policy tags
+BigQuery enables [column-level security](https://cloud.google.com/bigquery/docs/column-level-security-intro) by setting [policy tags](https://cloud.google.com/bigquery/docs/best-practices-policy-tags) on specific columns.
+
+dbt enables this feature as a column resource property, `policy_tags` (_not_ a node config).
+
+<File name='models/<filename>.yml'>
+
+```yaml
+version: 2
+
+models:
+- name: policy_tag_table
+  columns:
+    - name: field
+      policy_tags:
+        - 'need_to_know'
+```
+
+</File>
+
 ## Merge behavior (incremental models)
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
