@@ -512,3 +512,34 @@ with events as (
 
 ... rest of model ...
 ```
+
+## Controlling table expiration
+<Changelog>New in v0.18.0</Changelog>
+
+By default, dbt-created tables never expire. You can configure certain model(s)
+to expire after a set number of hours by setting `hours_to_expiration`.
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](resource-path):
+    +hours_to_expiration: 6
+
+```
+
+</File>
+
+<File name='models/<modelname>.sql'>
+
+```sql
+
+{{ config(
+    hours_to_expiration = 6
+) }}
+
+select ...
+
+```
+
+</File>

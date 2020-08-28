@@ -63,5 +63,5 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 - [Enable or Disable colorized logs](run#enable-or-disable-colorized-logs)
 - [deferring to previous run state](run#deferring-to-previous-run-state)
 - [`full_refresh` config](full_refresh)
-- [bigquery policy tags](bigquery-configs/#policy-tags)
+- BigQuery configs: [policy tags](bigquery-configs#policy-tags), [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)
 - Snowflake query tags in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
