@@ -4,6 +4,7 @@
 *                                     @clrcrl
 
 # Cloud docs and images are assigned to Drew
-/website/docs/docs/dbt-cloud/         @drewbanin
-/website/src/pages/dbt-cloud/         @drewbanin
-/website/static/img/docs/dbt-cloud/   @drewbanin
+/website/docs/docs/dbt-cloud/dbt-cloud-changelog.md    @drewbanin @alexbethea22
+/website/docs/docs/dbt-cloud/                          @drewbanin
+/website/src/pages/dbt-cloud/                          @drewbanin
+/website/static/img/docs/dbt-cloud/                    @drewbanin
