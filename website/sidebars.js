@@ -118,7 +118,15 @@ module.exports = {
   "dbt Cloud": [
     "docs/dbt-cloud/cloud-overview",
     "docs/dbt-cloud/cloud-quickstart",
-    "docs/dbt-cloud/the-dbt-ide",
+    {
+      type: "category",
+      label: "dbt Cloud IDE",
+      items: [
+        "docs/dbt-cloud/cloud-ide/the-dbt-ide",
+        "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
+        "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
+      ],
+    },
     {
       type: "category",
       label: "Configuring dbt Cloud",
@@ -412,7 +420,8 @@ module.exports = {
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/spark-profile",
-        "reference/warehouse-profiles/oracle-profile"
+        "reference/warehouse-profiles/exasol-profile",
+        "reference/warehouse-profiles/oracle-profile",
       ],
     },
     "reference/dbt-artifacts",

@@ -21,7 +21,7 @@ By default, dbt will search in all resource paths for docs blocks (i.e. the comb
 
 ## Examples
 :::info
-    We typically omit this configuration as we prefer dbt's default behavior.
+We typically omit this configuration as we prefer dbt's default behavior.
 :::
 
 ### Use a subdirectory named `docs` for docs blocks
