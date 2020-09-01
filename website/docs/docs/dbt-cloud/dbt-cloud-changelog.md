@@ -5,6 +5,114 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.4 (July 21, 2020)
+
+This release dramatically speeds up the job scheduler. It adds a new
+stable dbt version (0.17.1) and a new prerelease (0.17.2b1), and it
+includes a number of bugfixes.
+
+#### Enhancements
+
+- Add dbt 0.17.2b1
+- Add dbt 0.17.1 and set as default version
+- Speed up job scheduler by 50%
+- Added generate docs to rpc service and new view docs route
+- Queue limiting by account for scheduled jobs
+
+#### Fixed
+
+- Fix enterprise SSO configuration when old Auth0 Azure AD is configured
+- Do not schedule jobs for deleted job definitions or environments
+- Fix permissions issues
+- Fix a bug with metadata set in azure storage provider
+- Fixed error when switching to developer plan from trial
+- Fix authentication bug where we setup all accounts with same domain
+- \[Security\] Disallow partial_parse.pickle files in repositories
+- \[Security\] Add security check to prevent potentially malicious html files in dbt docs
+
+#### Internal
+
+- Log api v1/ calls to Datadog
+- Add a scheduler loop time metric to Datadog
+- Add a time to run metric to the scheduler
+- Using type property along with feature flag to display verify tab
+- Fix waffle profiler to update on db switch changes
+
+## dbt Cloud v1.1.3 (July 7, 2020)
+
+This release contains a number of IDE features and bugfixes, a new release candidate of dbt, and a brand new Enterprise Single-Sign On method: Azure Active Directory!
+
+#### Enhancements
+
+- Add dbt 0.17.1rc3
+- Snowflake: Add support for `client_session_keep_alive` config
+- Enterprise: Native Azure Oauth2 for Enterprise accounts
+- IDE: Add custom command palette for finding files
+
+#### Fixed
+
+- Do not run CI builds for draft PRs in GitHub
+- Remove race condition when syncing account with stripe billing events
+- Enterprise: Fixed JIT provisioning bug impacting accounts with shared IdP domains
+- IDE: Fix a regression with Github git clone method
+- IDE: Fix a race condition where git clone didn't complete before user entered IDE
+- IDE: Fix bug with checking out an environment custom branch on IDE refresh
+- Bigquery: Fix PR schema dropping
+
+#### Internal
+
+- Add flake8 to CI
+- Add profiler and enable configuration to any python method
+- Add analytics event handling middleware for snowplow
+- Move IDE startup modals from Angular to modern codebase
+- Log user impersonation events for SOC2 compliance
+
+## dbt Cloud v1.1.2 (June 23, 2020)
+
+This branch includes an important security fix, two new versions of dbt, and some miscellaneous fixes.
+
+#### Enhancements
+
+- Add project names to the account settings notifications section
+- Add dbt 0.17.1 release candidate
+- Update development dbt version to Marian Anderson
+- Add remember me to login page and expire user sessions at browser close
+- Adding Auth Provider and enabling Gsuite SSO for enterprise customers
+
+#### Fixed
+
+- \[Security\] Fix intra-account API key leakage
+- Support queries containing unicode characters in the IDE
+
+#### Internal
+
+- Remove all usage of outdated `environments_develop` permission
+- Add profiling utility
+- Replace cloudwatch client with datadog client
+- Cleanup git service GitBranch code
+
+## dbt Cloud v1.1.1 (June 9, 2020)
+
+This release includes dbt 0.17.0 and a number of IDE quality of life improvements.
+
+#### Enhancements
+
+- Added dbt 0.17.0
+- Added the ability to create a new folder in the IDE
+- Added gitignore status to file system and display dbt artifacts, including directories dbt_modules, logs and target
+- (Cloud only) Added rollbar and update some various error handling clean up
+- (On-premises only) Admin site: allow Repository's Pull Request Template field to be blank
+- (On-premises only) Added AWS KMS support
+
+#### Fixed
+
+- Expires old pending password reset codes when a new password reset is requested
+
+#### Internal
+
+- Clean up git service GitBranch code
+- Upgrade node dependencies to support ECMAScript 2020 features
+
 ## dbt Cloud v1.1.0 (June 2, 2020)
 
 This release adds some new admin backend functionality, as well as automatic seat usage reporting.

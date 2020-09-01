@@ -2,16 +2,16 @@ Every [dbt project](projects) needs a `dbt_project.yml` file — this is how dbt
 
 The following is a list of all available configurations in the `dbt_project.yml` file.
 
-<Alert type='info'>
-    <h4>YAML syntax</h4>
-    dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
-</Alert>
+:::info YAML syntax
+dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
+:::
 
 <File name='dbt_project.yml'>
 
 ```yml
 [name](project-configs/name): string
 
+[config-version](project-configs/config-version): 2
 [version](project-configs/version): version
 
 [profile](project-configs/profile): profilename
@@ -48,8 +48,11 @@ seeds:
 snapshots:
   [<snapshot-configs>](snapshot-configs)
 
-[on-run-start](project-configs/on-run-start): sql-statement | [sql-statement]
-[on-run-end](project-configs/on-run-end): sql-statement | [sql-statement]
+sources:
+  [<source-configs>](source-configs)
+
+[on-run-start](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
+[on-run-end](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 
 ```
 

@@ -5,7 +5,7 @@ id: "projects"
 
 ## Related reference docs
 * [`dbt_project.yml` configurations](reference/dbt_project.yml.md)
-* The [`dbt init` command](docs/running-a-dbt-project/command-line-interface/init.md)
+* The [`dbt init` command](init)
 
 ## Getting started
 A dbt project is a directory of `.sql` and `.yml` files, which dbt uses to transform your data. At a minimum, a dbt project must contain:
@@ -16,11 +16,11 @@ A project may also contain a number of other resources, such as [snapshots](snap
 
 ## Creating a dbt project
 
-<Callout type="info" title="Creating your first dbt project">
+:::info Creating your first dbt project
 
 If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project.
 
-</Callout>
+:::
 
 If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/fishtown-analytics/dbt-starter-project) contains default configurations as well as helpful notes.
 

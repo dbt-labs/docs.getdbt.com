@@ -6,11 +6,11 @@ id: "running-dbt-in-production"
 ## What does running dbt in production mean?
 Running dbt in production simply means **setting up a system to run a dbt job on a schedule**, rather than running dbt commands manually from the command line. These production dbt jobs should create the tables and views that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](managing-environments).
 
-<Callout type="info" title="dbt commands in production">
+:::info dbt commands in production
 
 We've written a guide for the dbt commands we run in production, over on [Discourse](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366).
 
-</Callout>
+:::
 
 As well as setting up a schedule, there are a number of other things you should consider when setting up dbt to run in production, such as:
 * The complexity involved in creating a new dbt job, or editing an existing one.
@@ -33,9 +33,15 @@ If you're interested in giving dbt Cloud a spin, you can sign up for a *forever 
 <Lightbox src="/img/docs/running-a-dbt-project/8e7a6eb-cloud-img.png" title="dbt Cloud in action"/>
 
 ### Using Airflow
-If your organization is already using Airflow, that could be a great way to kick off your dbt runs. There are a number of ways you can run your dbt jobs in Airflow, including:
+If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
 * Using this [dbt-cloud-plugin](https://github.com/dwallace0723/dbt-cloud-plugin/). This plugin gives you the best of both worlds -- deep integration of dbt into your existing data stack, along with all of the benefits of dbt Cloud.
 * Invoking dbt through the [BashOperator](https://airflow.apache.org/howto/operator/bash.html). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
+* Installing the [airflow-dbt](https://pypi.org/project/airflow-dbt/) python package. This package uses Airflow's operator and hook concept — the source code can be found on [github](https://github.com/gocardless/airflow-dbt).
+
+### Using Prefect
+If your organization is using [Prefect](https://www.prefect.io), use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute and monitor your dbt runs.
+
+Alternatively, you can use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.
 
 ### Using an automation server
 Automation servers, like CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-XBIIY2pFpc?t=1301)), Bamboo and Jenkins, can be used to schedule bash commands for dbt. They also provide a UI to view logging to the command line, and integrate with your git repository.

@@ -2,8 +2,8 @@
 title: Snapshot configurations
 ---
 ## Related documentation
-* [Snapshots](docs/building-a-dbt-project/snapshots.md)
-* The `dbt snapshot` [command](docs/running-a-dbt-project/command-line-interface/snapshot.md)
+* [Snapshots](snapshots)
+* The `dbt snapshot` [command](snapshot)
 
 <!--
 Parts of a snapshot:
@@ -24,22 +24,26 @@ Parts of a snapshot:
 }>
 <TabItem value="yaml">
 
+<File name='dbt_project.yml'>
 
 ```yaml
-[target_schema](target_schema): <string>
-[target_database](target_database): <string>
-[unique_key](unique_key): <column_name_or_expression>
-[strategy](strategy): timestamp | check
-[updated_at](updated_at): <column_name>
-[check_cols](check_cols): [<column_name>] | all
+snapshots:
+  [<resource-path>](resource-path):
+    +[target_schema](target_schema): <string>
+    +[target_database](target_database): <string>
+    +[unique_key](unique_key): <column_name_or_expression>
+    +[strategy](strategy): timestamp | check
+    +[updated_at](updated_at): <column_name>
+    +[check_cols](check_cols): [<column_name>] | all
 
 ```
+
+</File>
 
 </TabItem>
 
 
 <TabItem value="config">
-
 
 
 ```jinja
@@ -74,19 +78,23 @@ Parts of a snapshot:
 <TabItem value="yaml">
 
 
+<File name='dbt_project.yml'>
+
 ```yaml
-[enabled](enabled): true | false
-[tags](tags): <string> | [<string>]
-[pre-hook](pre-hook): <sql-statement> | [<sql-statement>]
-[post-hook](post-hook): <sql-statement> | [<sql-statement>]
+snapshots:
+  [<resource-path>](resource-path):
+    +[enabled](enabled): true | false
+    +[tags](tags): <string> | [<string>]
+    +[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    +[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    +[persist_docs](persist_docs): {<dict>}
 
 ```
+</File>
 
 </TabItem>
 
-
 <TabItem value="config">
-
 
 
 ```jinja
@@ -94,19 +102,16 @@ Parts of a snapshot:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](tags)="<string>" | ["<string>"],
-    [pre_hook](pre-hook)="<sql-statement>" | ["<sql-statement>"],
-    [post_hook](post-hook)="<sql-statement>" | ["<sql-statement>"]
+    [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
+    [persist_docs](persist_docs)={<dict>}
 ) }}
 
 ```
 
-
 </TabItem>
 
 </Tabs>
-
-
-
 
 
 ## Configuring snapshots
@@ -126,7 +131,7 @@ To apply a configuration to all snapshots, including those in any installed [pac
 ```yml
 
 snapshots:
-  target_schema: snapshots
+  +target_schema: snapshots
 ```
 
 </File>
@@ -143,7 +148,7 @@ For a project named `jaffle_shop`:
 
 snapshots:
   jaffle_shop:
-    target_schema: snapshot_data
+    +target_schema: snapshot_data
 ```
 
 </File>
@@ -183,9 +188,9 @@ snapshots:
   jaffle_shop:
     postgres_app:
       orders_snapshot:
-        unique_key: id
-        strategy: timestamp
-        updated_at: updated_at
+        +unique_key: id
+        +strategy: timestamp
+        +updated_at: updated_at
 ```
 
 </File>

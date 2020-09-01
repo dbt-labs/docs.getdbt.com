@@ -4,11 +4,11 @@ id: "creating-date-partitioned-tables"
 ---
 
 
-<Callout type="info" title="New in version 0.10.0!">
+:::info New in version 0.10.0!
 
 
 
-</Callout>
+:::
 
 dbt supports the creation of [date partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables) in BigQuery.
 

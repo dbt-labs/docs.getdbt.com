@@ -7,23 +7,23 @@ description: Now that we're set up, let's create a starter project with example 
 
 Now that we've successfully run our sample query in Snowflake, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
-<Callout type="info">
+:::info
 
 These are the instructions for developing a project in dbt Cloud. If you're
 using the dbt CLI, follow the instructions [here](/learn/create-a-project-dbt-cli).
 
-</Callout>
+:::
 
-<Callout type="warning">
+:::caution
 <strong>Learn students:</strong> please make sure you name your project "dbt Learn - [initialsurname]"
-</Callout>
+:::
 
 <LoomVideo id="7386840381764d13b1d25f575719e218" />
 
 ## Create the starter project
-<Callout type="info">
+:::info
 You should have received an invitation to dbt Cloud. Please accept the invitation and create an account.
-</Callout>
+:::
 
 1. Login to [dbt Cloud](https://cloud.getdbt.com/login/). If you are also part of another organization's account, ensure you select "dbt Learn" as your account in the header bar.
 2. Create a new project in dbt Cloud:
@@ -33,7 +33,7 @@ You should have received an invitation to dbt Cloud. Please accept the invitatio
     * Switch the project in the header bar to your new "dbt Learn - [initialsurname]" project. **Do not use another student's project**
 3. Complete the project setup flow:
     * Connect to Snowflake using your provided credentials (also see below image)
-    * Add a repository — choose the Github integration, and link to the repository you set up in the [Setting Up](1-setting-up.md) instructions.
+    * Add a repository — choose the Github integration, and link to the repository you set up in the [Setting Up](/learn/setting-up) instructions.
 
 <Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
 
@@ -53,7 +53,7 @@ You should have received an invitation to dbt Cloud. Please accept the invitatio
 
 ```yaml
 name: jaffle_shop # this normally says my_new_package
-
+config-version: 2 # you must be using dbt v0.17.0 for this to work
 ...
 
 models:

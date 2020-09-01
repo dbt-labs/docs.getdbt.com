@@ -22,11 +22,11 @@ Projects also typically contains a number of other resources, including tests, s
 
 Whether you are starting a project from scratch, or if your organization already has a dbt project, see the docs on [projects](projects) for more information on getting started.
 
-<Callout type="info" title="Check out our sample dbt project">
+:::info Check out our sample dbt project
 
 Want to check out a sample project? Have a look at our [Jaffle Shop](https://github.com/fishtown-analytics/jaffle_shop) project on GitHub!
 
-</Callout>
+:::
 
 ### Database Connections
 dbt connects to your data warehouse to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [docs](supported-databases)).
@@ -43,7 +43,7 @@ When you issue a dbt command, such as `run`, dbt:
 2. Generates the DDL required to build the model, as per the model's *materialization*
 3. Executes the compiled queries against your data warehouse, using the credentials specified in the *target* defined in your *profile*. Executing these queries creates relations in the target schema in your data warehouse. These relations contain transformed data, ready for analysis.
 
-A list of commands can be found in the [Command reference](command-line-interface) section of these docs.
+A list of commands can be found in the [Command reference](dbt-commands) section of these docs.
 
 ## What does the workflow for using dbt look like?
 There’s two main ways of working with dbt -- using the web-based Integrated Development Environment (IDE) in dbt Cloud, or using the Command Line Interface (CLI).
@@ -59,11 +59,11 @@ To use the CLI:
 3. Build your dbt project in a code editor, like Atom or VSCode
 4. Execute commands using your terminal
 
-<Callout type="info" title="Developing locally?">
+:::info Developing locally?
 
 If you’re developing your dbt project locally, we recommend checking out [this article](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243) to understand how we set up our computers.
 
-</Callout>
+:::
 
 ## What makes dbt so powerful?
 As a dbt user, your main focus will be on writing models (i.e. select queries) that reflect core business logic – there’s no need to write boilerplate code to create tables and views, or to define the order of execution of your models. Instead, dbt handles turning these models into objects in your warehouse for you.
@@ -86,7 +86,7 @@ Often when transforming data, it makes sense to do so in a staged approach. dbt 
 
 Rather than selecting from existing tables and views in your warehouse, you can select from _another model_, like so:
 
-<File name='/models/payments.sql'>
+<File name='/models/orders.sql'>
 
 ```sql
 select
@@ -115,11 +115,11 @@ When dbt runs, models are executed in the order specified by the DAG – there�
 
 For more information see [Ref](ref).
 
-<Callout type="info" title="Want to see a DAG visualization for your project?">
+:::info Want to see a DAG visualization for your project?
 
 Check out the [Documentation Website](documentation) docs
 
-</Callout>
+:::
 
 ## What else can dbt do?
 dbt has a number of additional features that make it even more powerful, including:

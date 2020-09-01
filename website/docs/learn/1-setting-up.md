@@ -14,9 +14,9 @@ If you are already **experienced with dbt**, you still need to complete this tut
 
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
-<Callout type="info">
+:::info
 Please note that this tutorial is adapted from the main <a href="https://tutorial.getdbt.com/tutorial/setting-up/">Getting Started</a> tutorial — there may be some references to BigQuery in various videos, however the same concepts should apply on Snowflake.
-</Callout>
+:::
 
 This tutorial is based on a fictional business named `jaffle_shop`, so you'll see this name used throughout the project.
 
@@ -81,7 +81,7 @@ select * from final
 ```
 
 ## Connect to Snowflake
-For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](https://docs.getdbt.com/docs/supported-databases).
+For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](/docs/supported-databases).
 
 1. Go to the Snowflake Console (link provided in email) and login with your supplied credentials.
 2. Reset your password: all students will be asked to update their password — please use a password manager to store this securely.
@@ -112,8 +112,8 @@ There’s two main ways of working with dbt:
 
 To use the CLI, it's important that you know some basics of your terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily. As such, if you are new to programming, we recommend using **dbt Cloud** for this tutorial.
 
-<Alert type='info'>
-    <p>During dbt Learn, we try our best to demonstrate using both workflows. However, we tend to default to using dbt Cloud for some of the shorter demonstrations.</p>
-</Alert>
+:::info
+During dbt Learn, we try our best to demonstrate using both workflows. However, we tend to default to using dbt Cloud for some of the shorter demonstrations.
+:::
 
-If you wish to use the CLI, please follow the [installation instructions](https://docs.getdbt.com/docs/installation) for your operating system.
+If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/installation) for your operating system.

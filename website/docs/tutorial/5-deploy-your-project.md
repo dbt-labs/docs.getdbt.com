@@ -6,7 +6,7 @@ description: In this part of the tutorial, we'll go through how you can deploy y
 
 As the `jaffle_shop` business gains more customers, and those customers create more orders, there will be more records added to your source data. Since the `customers` model is materialized as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date.
 
-This is often referred to as "deploying a project" or "[running a project in production](https://docs.getdbt.com/docs/running-dbt-in-production)". In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
+This is often referred to as "deploying a project" or "[running a project in production](/docs/running-dbt-in-production)". In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
 
 ## Commit your changes
 First off, we need to commit the changes we made to our project so that our repository has our latest code.
@@ -28,9 +28,9 @@ First off, we need to commit the changes we made to our project so that our repo
 ## Connect dbt Cloud to your repository
 Connecting dbt Cloud to your repository will allow you to have the latest code whenever your dbt project runs.
 
-<Callout type="info">
+:::info
 This step only applies to folks who use the dbt CLI to develop their project. <strong>If you developed your project in dbt Cloud, you can skip this step!</strong>
-</Callout>
+:::
 
 <LoomVideo id="48abd56ec909405cbc76f4946e930a43" />
 
@@ -42,8 +42,8 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the onboarding flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](1-setting-up.md) instructions.
-    * Add a repository — choose the GitHub integration, and connect to your `dbt-tutorial` repository that we set up on the [Create a Project](create-a-project-dbt-cli) instructions.
+    * Connect to BigQuery using the credentials file from the [Setting Up](/tutorial/setting-up) instructions.
+    * Add a repository — choose the GitHub integration, and connect to your `dbt-tutorial` repository that we set up on the [Create a Project](/tutorial/create-a-project-dbt-cli) instructions.
 
 
 ## Create a deployment environment
@@ -74,9 +74,9 @@ Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
 
 ## Next steps
 
-<Callout type="success">
+:::tip
 Congratulations 🎉! You've just deployed your first dbt project!
-</Callout>
+:::
 
 Here's a few suggestions to keep learning:
 
@@ -84,11 +84,11 @@ Here's a few suggestions to keep learning:
 Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!
 
 ### Learn some best practices
-Now that you've got a working dbt project, read more about some of our [best practices](https://docs.getdbt.com/docs/best-practices), or go back this tutorial and read some of the FAQs.
+Now that you've got a working dbt project, read more about some of our [best practices](/docs/best-practices), or go back this tutorial and read some of the FAQs.
 
 ### Keep building this project
 Here's some suggested exercises to level-up your dbt skills:
-* Try turning your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](https://docs.getdbt.com/docs/using-sources).
+* Try turning your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/using-sources).
 * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
 * Reorganize your project into our [recommended structure](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355)
-* Use some Jinja in your project — check out the [Jinja tutorial](https://docs.getdbt.com/docs/using-jinja).
+* Use some Jinja in your project — check out the [Jinja tutorial](/tutorial/using-jinja).

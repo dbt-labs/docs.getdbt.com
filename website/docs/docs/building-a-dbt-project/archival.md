@@ -4,11 +4,11 @@ id: "archival"
 ---
 
 
-<Callout type="info" title="Archives are now Snapshots!">
+:::info Archives are now Snapshots!
 
 Archives have been renamed to "Snapshots" in dbt v0.14.0. Check out the docs on [Snapshots](snapshots) for more information.
 
-</Callout>
+:::
 
 
 

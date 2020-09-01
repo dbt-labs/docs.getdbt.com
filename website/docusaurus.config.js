@@ -1,22 +1,61 @@
 
 const path = require('path');
 
+/* Debugging */
+var SITE_URL;
+if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
+    SITE_URL = 'https://docs.getdbt.com';
+} else {
+    SITE_URL = process.env.DEPLOY_URL;
+}
+
+var PRERELEASE = (process.env.PRERELEASE || false);
+
+var WARNING_BANNER;
+if (!PRERELEASE) {
+    WARNING_BANNER = {};
+} else {
+    WARNING_BANNER = {
+        id: 'prerelease', // Any value that will identify this message.
+        content:
+          'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
+        backgroundColor: '#ffa376', // Defaults to `#fff`.
+        textColor: '#033744', // Defaults to `#000`.
+    }
+}
+
+var ALGOLIA_INDEX_NAME;
+if (!process.env.ALGOLIA_INDEX_NAME) {
+    ALGOLIA_INDEX_NAME = 'dbt';
+} else {
+    ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME;
+}
+
+console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
+console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
+console.log("DEBUG: SITE_URL = ", SITE_URL);
+console.log("DEBUG: PRERELEASE = ", PRERELEASE);
+console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
+
+
 module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
   title: 'dbt - Documentation',
-  url: 'https://docs.getdbt.com',
+  url: SITE_URL,
 
   themeConfig: {
     disableDarkMode: true,
     sidebarCollapsible: true,
     image: '/img/avatar.png',
+    
+    announcementBar: WARNING_BANNER,
 
     algolia: {
       apiKey: '0e9665cbb272719dddc6e7113b4131a5',
       //debug: true,
-      indexName: 'dbt',
+      indexName: ALGOLIA_INDEX_NAME,
       algoliaOptions: {
       },
     },
@@ -58,6 +97,12 @@ module.exports = {
           label: 'Reference',
           position: 'left',
           activeBasePath: 'reference'
+        },
+        {
+          to: '/dbt-cli/cli-overview',
+          label: 'dbt CLI',
+          position: 'left',
+          activeBasePath: 'dbt-cli'
         },
         {
           to: '/docs/dbt-cloud/cloud-overview',

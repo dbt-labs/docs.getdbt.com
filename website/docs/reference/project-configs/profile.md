@@ -18,7 +18,7 @@ The profile your dbt project should use to connect to your data warehouse.
 * [Connecting to your warehouse](docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile.md)
 
 ## Recommendation
-Often an organization has only one data warehouse, so it is sensible to use your organization's name as a profile name, in `kebab_case`. For example:
+Often an organization has only one data warehouse, so it is sensible to use your organization's name as a profile name, in `snake_case`. For example:
 * `profile: acme`
 * `profile: jaffle_shop`
 * `profile: evilcorp`
@@ -28,4 +28,4 @@ It is also reasonable to include the name of your warehouse technology in your p
 * `profile: jaffle_shop_bigquery`
 * `profile: evilcorp_redshift`
 
-If you are working on more than one project, do not use `profile: default` as your profile name (as set by the `dbt init` [command](/docs/running-a-dbt-project/command-line-interface/init.md)), as it will become hard to manage multiple profiles.
+If you are working on more than one project, do not use `profile: default` as your profile name (as set by the `dbt init` [command](init)), as it will become hard to manage multiple profiles.

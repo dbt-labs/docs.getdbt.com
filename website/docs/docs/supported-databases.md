@@ -1,5 +1,5 @@
 ---
-title: "Overview"
+title: "Supported Databases"
 id: "supported-databases"
 ---
 
@@ -11,12 +11,12 @@ These database plugins are supported by the core dbt maintainers.
 
 | Database | Documentation | Support |
 | -------- | ------------- | ------- |
-| Postgres | [Profile Setup](profile-postgres) | ✅Full Support |
-| Redshift | [Profile Setup](profile-redshift), [Configuration](redshift-configs) | ✅Full Support |
-| BigQuery | [Profile Setup](profile-bigquery), [Configuration](bigquery-configs) | ✅Full Support |
-| Snowflake | [Profile Setup](profile-snowflake), [Configuration](snowflake-configs) | ✅ Full Support |
-| Presto | [Profile Setup](profile-presto) | Partial Support |
-| Spark | [Profile Setup](profile-spark), [Configuration](spark-configs) | Partial Support |
+| Postgres | [Profile Setup](postgres-profile) | ✅Full Support |
+| Redshift | [Profile Setup](redshift-profile), [Configuration](redshift-configs) | ✅Full Support |
+| BigQuery | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅Full Support |
+| Snowflake | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ Full Support |
+| Presto | [Profile Setup](presto-profile) | Partial Support |
+| Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | Partial Support |
 
 ##  Community Supported dbt Plugins
 
@@ -24,10 +24,9 @@ These database plugins are community-supported 🌱
 
 | Database | Documentation | Notes |
 | -------- | ------------- | ----- |
-| Microsoft SQL Server ([dbt-mssql](https://github.com/jacobm001/dbt-mssql)) | [Profile Setup](profile-mssql) | SQL Server 2008 R2 and later |
-| Microsoft SQL Server ([dbt-sqlserver](https://github.com/mikaelene/dbt-sqlserver)) | [Profile Setup](profile-mssql) | SQL Server 2016 and later |
+| Microsoft SQL Server ([dbt-mssql](https://github.com/jacobm001/dbt-mssql)) | [Profile Setup](mssql-profile) | SQL Server 2008 R2 and later |
+| Microsoft SQL Server ([dbt-sqlserver](https://github.com/mikaelene/dbt-sqlserver)) | [Profile Setup](mssql-profile) | SQL Server 2016 and later |
 | Oracle Database ([dbt-oracle](https://github.com/techindicium/dbt-oracle)) | [Profile Setup](profile-oracle) |Oracle 11+ |
-
 
 ## Creating a new adapter
 

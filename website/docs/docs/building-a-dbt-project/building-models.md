@@ -6,16 +6,16 @@ id: "building-models"
 ## Related reference docs
 * [Model configurations](model-configs)
 * [Model properties](model-properties)
-* [`run` command](command-line-interface/run)
+* [`run` command](run)
 * [`ref` function](ref)
 
 ## Getting started
 
-<Callout type="info" title="Building your first models">
+:::info Building your first models
 
 If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models.
 
-</Callout>
+:::
 
 A model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
@@ -112,14 +112,16 @@ Here's an example of model configuration:
 
 ```yaml
 name: jaffle_shop
+config-version: 2
+...
 
 models:
   jaffle_shop: # this matches the `name:`` config
-    materialized: view # this applies to all models in the current project
+    +materialized: view # this applies to all models in the current project
       marts:
-        materialized: table # this applies to all models in the `marts/` directory
+        +materialized: table # this applies to all models in the `marts/` directory
         marketing:
-          schema: marketing # this applies to all models in the `marts/marketing/`` directory
+          +schema: marketing # this applies to all models in the `marts/marketing/`` directory
 
 ```
 
@@ -244,7 +246,7 @@ dbt uses the `ref` function to:
 * Determine the order to run models in by creating a dependent acyclic graph (DAG).
 <Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
 
-* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from upstream table in the same schema. Check out the tabs above to see thsi in action.
+* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from upstream table in the same schema. Check out the tabs above to see this in action.
 
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code, and reduce repeated code.
 

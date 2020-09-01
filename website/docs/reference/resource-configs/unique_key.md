@@ -19,7 +19,7 @@ datatype: column_name_or_expression
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    unique_key: column_name_or_expression
+    +unique_key: column_name_or_expression
 
 ```
 
@@ -28,11 +28,11 @@ snapshots:
 ## Description
 A column name or expression that is unique for the results of a snapshot. dbt uses this to match records between a result set and an existing snapshot, so that changes can be captured correctly.
 
-<Callout type='warning'>
+:::caution 
 
 Providing a non-unique key will result in unexpected snapshot results. dbt **will not** test the uniqueness of this key, consider adding a test to your project to ensure that this key is indeed unique.
 
-</Callout>
+:::
 
 ## Default
 This is a **required parameter**. No default is provided.
@@ -60,7 +60,7 @@ You can also write this in yaml. This might be a good idea if multiple snapshots
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    unique_key: id
+    +unique_key: id
 
 ```
 

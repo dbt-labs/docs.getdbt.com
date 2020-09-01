@@ -3,10 +3,10 @@ title: Add a seed file
 id: add-a-seed
 description: Learn how to add a seed file to your project
 ---
-<Callout type='warning' title="Heads up!">
+:::caution Heads up!
 You'll need to have completed the Getting Started part of this tutorial to
 complete this lesson
-</Callout>
+:::
 
 1. Add a seed file:
 

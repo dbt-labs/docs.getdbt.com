@@ -8,15 +8,15 @@ The dbt v0.15.0 release contains a handful of breaking code changes for users up
 ## Breaking changes
 
 ### Stricter YML compilation
- 
+
 Previous versions of dbt would raise warnings and ignore improperly formatted `.yml` files.
 Compilation errors in .yml files are now treated as errors instead of warnings.
 
 ### Relation class
 
 The `table_name` field has been removed from Relations. Macros that
-expect this field will now return errors. See the latest 
-[class reference](class-reference#relation) for details.
+expect this field will now return errors. See the latest
+[class reference](dbt-classes#relation) for details.
 
 ### Custom materializations
 

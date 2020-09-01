@@ -9,8 +9,6 @@ import {MDXProvider} from '@mdx-js/react';
 import MDXComponents from '@theme/MDXComponents';
 import CodeBlock from '@theme/CodeBlock';
 
-import Alert from '@site/src/components/alert';
-import Callout from '@site/src/components/callout';
 import Changelog from '@site/src/components/changelog';
 import CloudCore from '@site/src/components/cloudcore';
 import Collapsible from '@site/src/components/collapsible';
@@ -47,29 +45,6 @@ function Styles() {
 [view the license](license)
 \`\`\`
             </CodeBlock>
-            </div>
-            <div className='section' style={{marginTop: '40px'}}>
-                <h1>Alert</h1>
-<pre>{`<Alert type='info'>
-    <h4>Heads up!</h4>
-    <p>This is an alert</p>
-</Alert>
-`}</pre>
-                <Alert type='info'><h4>Heads up!</h4><p>This is an "info" alert</p></Alert>
-                <Alert type='warning'><h4>Heads up!</h4><p>This is a "warning" alert</p></Alert>
-                <Alert type='danger'><h4>Heads up!</h4><p>This is a "danger" alert</p></Alert>
-                <Alert type='success'><h4>Heads up!</h4><p>This is a "success" alert</p></Alert>
-            </div>
-            <div className='section' style={{marginTop: '40px'}}>
-                <h1>Callout</h1>
-<pre>{`<Callout type='info' title="Heads up!">
-    <p>This is a callout</p>
-</Callout>
-`}</pre>
-                <Callout type='info' title="info"><p>This is a callout</p></Callout>
-                <Callout type='warning' title="warning"><p>This is a callout</p></Callout>
-                <Callout type='danger' title="danger"><p>This is a callout</p></Callout>
-                <Callout type='success' title="success"><p>This is a callout</p></Callout>
             </div>
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>Changelog</h1>

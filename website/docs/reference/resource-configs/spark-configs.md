@@ -3,12 +3,10 @@ title: "Spark configurations"
 id: "spark-configs"
 ---
 
-<Alert type='warning'>
-
-<h4>Heads up!</h4>
+:::caution Heads up!
 These docs are a work in progress.
 
-</Alert>
+:::
 
 <!----
 To-do:
@@ -120,11 +118,11 @@ insert overwrite table analytics.spark_incremental
 
 ### The `merge` strategy
 
-<Callout type="info" title="New in dbt-spark v0.15.3">
+:::info New in dbt-spark v0.15.3
 
-This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark#installation-and-distribution)
+This functionality is new in dbt-spark v0.15.3. See [installation instructions](spark-profile#installation-and-distribution)
 
-</Callout>
+:::
 
 There are three prerequisites for the `merge` incremental strategy:
 - Creating the table in Delta file format
@@ -212,41 +210,24 @@ merge into analytics.delta_incremental as DBT_INTERNAL_DEST
 
 ## Persisting model descriptions
 
-<Callout type="info" title="New in dbt-spark v0.15.3">
+Relation-level docs persistence is supported in dbt v0.17.0. For more
+information on configuring docs persistence, see [the docs](resource-configs/persist_docs).
 
-This functionality is new in dbt-spark v0.15.3. See [installation instructions](profile-spark#installation-and-distribution)
+When the `persist_docs` option is configured appropriately, you'll be able to
+see model descriptions in the `Comment` field of `describe [table] extended`
+or `show table extended in [database] like '*'`.
 
-</Callout>
+## Always `schema`, never `database`
 
-The `persist_docs` config can be used to persist the dbt `description` supplied for a model to the resulting Spark table or view. The `persist_docs` config is not yet supported for objects other than tables and views.
+:::info New in dbt-spark v0.17.0
 
-The `persist_docs` config can be specified in the `dbt_project.yml` file, or in a specific model.
+This is a breaking change in dbt-spark v0.17.0. See [installation instructions](spark-profile#installation-and-distribution)
 
-<File name='dbt_project.yml'>
+:::
 
-```yaml
+Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
+`database` to exist at a higher level than `schema`. As such, you should _never_
+use or set `database` as a node config or in the target profile when running dbt-spark.
 
-models:
-  # enable docs persistence for all models
-  persist_docs:
-    relation: true
-```
-
-</File>
-
-or:
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(persist_docs={"relation": true})
-}}
-
-select ...
-```
-
-</File>
-
-When the `persist_docs` option is configured appropriately, you'll be able to see your model descriptions
-in the `Comment` field of `describe [table] extended` or `show table extended in [database] like '*'`.
+If you want to control the schema/database in which dbt will materialize models,
+use the `schema` config and `generate_schema_name` macro _only_.

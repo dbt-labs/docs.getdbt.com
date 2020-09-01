@@ -20,7 +20,16 @@ function dbtCloudAPI() {
                 hideDownloadButton: true,
                 onlyRequiredInSamples: true,
                 scrollYOffset: 60,
-                theme: {colors: {primary: {main: "#033744"}}},
+                expandResponses: "200",
+                hideHostname: false,
+                pathInMiddlePanel: true,
+                theme: {
+                    colors: {
+                        primary: {
+                            main: "#033744"
+                        },
+                    },
+                },
             }}
         />
     </Layout>

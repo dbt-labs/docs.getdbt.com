@@ -7,12 +7,12 @@ description: Now that we're set up, let's create a starter project with example 
 
 Now that we've successfully run our sample query in BigQuery, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
-<Callout type="info">
+:::info
 
 These are the instructions for developing a project in dbt Cloud. If you're
 using the dbt CLI, follow the instructions [here](/tutorial/create-a-project-dbt-cli)
 
-</Callout>
+:::
 
 <LoomVideo id="7386840381764d13b1d25f575719e218" />
 
@@ -24,7 +24,7 @@ using the dbt CLI, follow the instructions [here](/tutorial/create-a-project-dbt
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the project setup flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](tutorial/1-setting-up.md) instructions.
+    * Connect to BigQuery using the credentials file from the [Setting Up](/tutorial/setting-up) instructions.
     * Add a repository — choose managed repository, and name it `dbt-tutorial`. If you're comfortable with git, you can also choose to link to an existing, but bare, repository.
 
 <Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />

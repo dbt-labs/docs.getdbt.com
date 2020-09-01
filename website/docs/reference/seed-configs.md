@@ -4,17 +4,40 @@ title: Seed configurations
 
 ## Available configurations
 ### Seed-specific configurations
-* [quote_columns](resource-configs/quote_columns.md): true | false
-* [column_types](resource-configs/column_types.md): {column_name: datatype}
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  [<resource-path>](resource-path):
+    +[quote_columns](resource-configs/quote_columns): true | false
+    +[column_types](resource-configs/column_types): {column_name: datatype}
+
+```
+
+</File>
+
 
 ### General configurations
-* [enabled](resource-configs/enabled.md): true | false
-* [schema](resource-configs/schema.md): string
-* [database](resource-configs/database.md): string
-* [alias](resource-configs/alias.md): string
-* [pre-hook](resource-configs/pre-hook.md): sql-statement | [sql-statement]
-* [post-hook](resource-configs/post-hook.md): sql-statement | [sql-statement]
-* [tags](resource-configs/tags.md): string | [string]
+
+<File name='dbt_project.yml'>
+
+```yml
+
+seeds:
+  [<resource-path>](resource-path):
+    +[enabled](resource-configs/enabled): true | false
+    +[schema](resource-configs/schema): string
+    +[database](resource-configs/database): string
+    +[alias](resource-configs/alias): string
+    +[pre-hook](resource-configs/pre-hook-post-hook): sql-statement | [sql-statement]
+    +[post-hook](resource-configs/pre-hook-post-hook): sql-statement | [sql-statement]
+    +[tags](resource-configs/tags): string | [string]
+    +[persist_docs](resource-configs/persist_docs): {<dict>}
+
+```
+
+</File>
 
 ## Configuring seeds
 Seeds can only be configured from the `dbt_project.yml` file, under the `seeds:` key. To apply a configuration to a seed, or directory of seeds, define the resource path as nested dictionary keys.
@@ -30,7 +53,7 @@ To apply a configuration to all seeds, including those in any installed [package
 ```yml
 
 seeds:
-  schema: seed_data
+  +schema: seed_data
 ```
 
 </File>
@@ -47,7 +70,7 @@ For a project named `jaffle_shop`:
 
 seeds:
   jaffle_shop:
-    schema: seed_data
+    +schema: seed_data
 ```
 
 </File>
@@ -66,7 +89,7 @@ seeds:
   jaffle_shop:
     marketing:
       utm_parameters:
-        schema: seed_data
+        +schema: seed_data
 ```
 
 </File>
@@ -86,16 +109,16 @@ name: jaffle_shop
 ...
 seeds:
   jaffle_shop:
-    enabled: true
-    schema: seed_data
+    +enabled: true
+    +schema: seed_data
     # This configures data/country_codes.csv
     country_codes:
       # Override column types
-      column_types:
+      +column_types:
         country_code: varchar(2)
         country_name: varchar(32)
     marketing:
-      schema: marketing # this will take precedence
+      +schema: marketing # this will take precedence
 ```
 
 </File>

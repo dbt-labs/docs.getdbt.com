@@ -15,8 +15,6 @@ import styles from './styles.module.css';
 /*
  * docs.getdbt.com additions:
  */
-import Alert from '@site/src/components/alert';
-import Callout from '@site/src/components/callout';
 import Changelog from '@site/src/components/changelog';
 import CloudCore from '@site/src/components/cloudcore';
 import Collapsible from '@site/src/components/collapsible';
@@ -51,8 +49,6 @@ export default {
   h5: Heading('h5'),
   h6: Heading('h6'),
 
-  Alert: Alert,
-  Callout: Callout,
   Changelog: Changelog,
   CloudCore: CloudCore,
   Collapsible: Collapsible,

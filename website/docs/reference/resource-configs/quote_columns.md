@@ -24,7 +24,7 @@ An optional seed configuration, used to determine whether column names in the se
 
 ```yml
 seeds:
-  quote_columns: true
+  +quote_columns: true
 ```
 
 </File>
@@ -38,7 +38,7 @@ For a project with:
 seeds:
   jaffle_shop:
     mappings:
-      quote_columns: true
+      +quote_columns: true
 ```
 
 ## Recommended configuration

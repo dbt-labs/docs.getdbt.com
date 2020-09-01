@@ -7,11 +7,11 @@ description: Now that we're set up, let's create a starter project with example 
 
 Now that we've successfully run our sample query in Snowflake, and chosen the way we want to develop, we can create a dbt project! In this step, we'll create a starter project with example models, before we build our own models.
 
-<Callout type="info">
+:::info
 
-These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions [here](/tutorial/create-a-project-dbt-cloud).
+These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions [here](/learn/create-a-project-dbt-cloud).
 
-</Callout>
+:::
 
 
 ## Create a project
@@ -24,11 +24,11 @@ $ dbt --version
 
 ```
 
-<Callout type="info">
+:::info
 
 dbt should have been installed as part of the  <a href="/tutorial/setting-up">Setting Up</a> part of the tutorial. If it was not installed, please follow the <a href="https://docs.getdbt.com/docs/installation"> installation instructions </a>
 
-</Callout>
+:::
 
 2. Run the `init` command:
 ```shell-session
@@ -51,6 +51,7 @@ You can use `pwd` to confirm that you are in the right spot.
 
 ```yaml
 name: jaffle_shop # this normally says my_new_package
+config-version: 2 # you must be using dbt v0.17.0 for this to work
 
 ...
 
@@ -66,7 +67,7 @@ models:
 </File>
 
 ## Connect to Snowflake
-When developing locally, dbt connects to your data warehouse using a [profile](https://docs.getdbt.com/docs/configure-your-profile) — a yaml file with all the connection details to your warehouse.
+When developing locally, dbt connects to your data warehouse using a [profile](/dbt-cli/configure-your-profile) — a yaml file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Copy the following into the file — make sure you update the values where indicated.
@@ -123,7 +124,7 @@ You should have an ouput that looks like this:
 We need to commit our changes so that our repository has up-to-date code.
 <LoomVideo id="a39753e4ce5647b2be4e5331788bab91" />
 
-1. Link the GitHub repository you created in the [Setting Up](1-setting-up.md) instructions to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
+1. Link the GitHub repository you created in the [Setting Up](/learn/setting-up) instructions to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
 ```shell-session
 $ git init
 $ git commit -m "Create a dbt project"
@@ -131,8 +132,8 @@ $ git remote add origin https://github.com/USERNAME/dbt-learn-[initialsurname].g
 $ git push -u origin master
 ```
 
-<Callout type="info">
+:::info
 
 If this is your first time using git, it's worth taking some time to understand the basics.
 
-</Callout>
+:::

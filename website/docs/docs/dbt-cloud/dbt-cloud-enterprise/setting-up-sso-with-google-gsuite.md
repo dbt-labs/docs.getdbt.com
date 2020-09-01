@@ -1,46 +1,143 @@
 ---
-title: "Setting up SSO with Google GSuite"
+title: "Setting up SSO with GSuite"
 id: "setting-up-sso-with-google-gsuite"
 ---
 
+_To view setup instructions for GSuite SSO
+using Auth0, see [here](setting-up-sso-with-google-gsuite-deprecated)._
 
-<Callout type="info" title="Enterprise Feature">
+:::info Enterprise Feature
+This guide describes a feature of the dbt Cloud Enterprise plan. If you’re
+interested in learning more about an Enterprise plan, contact us at
+sales@getdbt.com.
+:::
 
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+dbt Cloud Enterprise supports Single-Sign On (SSO) via Google GSuite. You will need
+permissions to create and manage a new Google OAuth2 application, as well as
+access to enable the Google Admin SDK.
 
-</Callout>
-
-dbt Cloud Enterprise supports single-sign on via Google GSuite. You will need permissions to create and manage a new Google OAuth2 application, as well as access to enable the Google Admin SDK. Currently supported features include:
+ Currently supported features include:
 
 * SP-initiated SSO
 * Just-in-time provisioning
 
-This guide outlines the setup process for authenticating to dbt Cloud with Google GSuite. After following the steps below, please contact your account manager or support (support@getdbt.com) to complete the setup process.
+This guide outlines the setup process for authenticating to dbt Cloud with
+Google GSuite.
 
-## Configuration
+## Configuration in GCP
 
-Log into the Google Developer Console. Create a new project or use an existing project. Navigate to **APIs & Services** &gt; **Credentials**.
+dbt Cloud uses a Client ID and Client Secret to authenticate users of a
+GSuite organization. The steps below outline how to create a Client ID and
+Client Secret for use in dbt Cloud.
 
-On the **Credentials** page you will need to create a new set of credentials to allow dbt Cloud to authenticate with your GSuite org. Click **Create Credentials**, and then select "OAuth Client ID". Select "Web Application" as the Application type.
+### Creating credentials
 
-On the **Create OAuth client ID** page, enter the following:
+1. Navigate to the GCP [API Manager](https://console.developers.google.com/projectselector/apis/credentials)
+2. Select an existing project, or create a new project for your API Credentials
+3. Click on **Create Credentials** and select **OAuth Client ID** in the resulting
+   popup
+4. Google requires that you configure an OAuth consent screen for OAuth
+   credentials. Click the **Configure consent screen** button to create
+   a new consent screen if prompted.
+5. On the OAuth consent screen page, configure the following settings ([Google docs](https://support.google.com/cloud/answer/6158849?hl=en#userconsent)):
 
-- **Name**: dbt Cloud
-- **Authorized Javascript Origins**: https://cloud.getdbt.com
-- **Authorized Redirect URIs**: https://auth.getdbt.com/login/callback
+| Configuration          | Value        | notes |
+| ---------------------- | ------------ | ------ |
+| **Application type**   | internal     | required |
+| **Application name**   | dbt Cloud    | required |
+| **Application logo**   | Download the logo <a href="/img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png" target="_blank">here</a> | optional |
+| **Authorized domains** | `getdbt.com` | If deploying into a VPC, use the domain for your deployment |
+| **Scopes** | `email, profile, openid` | The default scopes are sufficient |
 
-Press "Create". A popup will appear with a **Client ID** and **Client Secret**. Write these down, you will need them later!
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-consent-top.png" title="GSuite Consent Screen configuration"/>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/0ccb854-Screen_Shot_2019-12-03_at_10.11.15_AM.png" title="The 'Create Oauth client ID' page"/>
+6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
+   id** page.
+7. Use the following configuration values when creating your Credentials:
 
-Next, you will need to enable the Admin SDK for this application so that dbt Cloud can request information about your GSuite users. In the search bar, search for the "Admin SDK" API. Select it, and press "Enable" to enable it for this project.
+:::caution Authorized URIs
+If you are deploying dbt Cloud into a VPC, you should use the hostname where
+the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
+the _Authorized Javascript origins_ and _Authorized Redirect URIs_ configurations.
+:::
+
+| Config | Value |
+| ------ | ----- |
+| **Application type** | Web application |
+| **Name** | dbt Cloud |
+| **Authorized Javascript origins** | `https://cloud.getdbt.com` |
+| **Authorized Redirect URIs** | `https://cloud.getdbt.com/complete/gsuite` |
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
+
+8. Press "Create" to create your new credentials. A popup will appear
+with a **Client ID** and **Client Secret**. Write these down as you will need them later!
+
+### Enabling the Admin SDK
+
+dbt Cloud requires that the Admin SDK is enabled in this application to request
+Group Membership information from the GSuite API. To enable the Admin SDK for
+this project, navigate to the [Admin SDK Settings page](https://console.developers.google.com/apis/api/admin.googleapis.com/overview)
+and ensure that the API is enabled.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/7f36f50-Screen_Shot_2019-12-03_at_10.15.01_AM.png" title="The 'Admin SDK' page"/>
 
-To finish your setup, you will need to provide support the following values:
+## Configuration in dbt Cloud
 
-- The **Client ID** you generated on the "Create Oauth client ID" page.
-- The **Client Secret** you generated on the "Create Oauth client ID" page.
-- The domain of your Google GSuite domain.
+To complete setup, follow the steps below in the dbt Cloud application.
 
-Send these values to your account manager, or via support (either in-app via Intercom, or via email at support@getdbt.com), and we'll get back to you when the integration is ready to use.
+### Enable GSuite Native Auth (beta)
+
+- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
+  gain access to the GSuite Native auth configuration UI
+- For users accessing dbt Cloud deployed in a VPC, enable the `native_gsuite`
+  feature flag in the dbt Cloud admin backend.
+
+### Supply your OAuth Client ID and Client Secret
+
+1. Navigate to the **Enterprise &gt; Single Sign On** page under Account
+Settings.
+2. Click the **Edit** button and supply the following SSO details:
+    - **Log in with**: GSuite
+    - **Client ID**: Paste the Client ID generated in the steps above
+    - **Client Secret**: Paste the Client Secret generated in the steps above
+    - **Domain in GSuite**: Enter the domain name for your GSuite account (eg. `fishtownanalytics.com`).
+      Only users with an email address from this domain will be able to log into your dbt Cloud
+      account using GSuite auth.
+    - **Slug**: Enter your desired login slug. Users will be able to log into dbt
+      Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must
+      be unique across all dbt Cloud accounts, so pick a slug that uniquely
+      identifies your company.
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
+3. Click **Save &amp; Authorize** to authorize your credentials. You should be
+   dropped into the GSuite OAuth flow and prompted to log into dbt Cloud with
+   your work email address. If authentication is successful, you will be
+   redirected back to the dbt Cloud application.
+4. On the **Verify SSO Credentials** page, verify that a `groups` entry is
+   present, and that it reflects the groups you are a member of in GSuite. If
+   you do not see a `groups` entry in the IdP attribute list, consult the
+   Troubleshooting steps below.
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite SSO Verification"/>
+
+If the verification information looks appropriate, then you have completed
+the configuration of GSuite SSO. Members of your team should now be able to log
+into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<login-slug>`.
+
+## Troubleshooting
+
+
+### OAuth errors
+
+If OAuth verification does not complete successfully, double check that:
+ - The Admin SDK is enabled in your GCP project
+ - The Client ID and Client Secret provided match the values generated in the
+   GCP Credentials page
+ - An Authorized Domain was provided in the OAuth Consent Screen configuration
+
+### Missing groups
+
+If authentication with the GSuite API succeeds but you do not see a
+`groups` entry on the **Verify SSO Credentials** page, then you may not have
+permissions to access Groups in your GSuite account. Either request that your
+GSuite user is granted the ability to request groups from an administrator, or
+have an administrator log into dbt Cloud and authorize the GSuite integration.

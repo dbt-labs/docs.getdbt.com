@@ -3,11 +3,10 @@ resource_types: [models, seeds]
 datatype: string
 ---
 
-<Alert type='warning'>
-<h4>Heads up!</h4>
+:::caution Heads up!
 This is a work in progress document. While this configuration applies to multiple resource types, the documentation has only been written for seeds.
 
-</Alert>
+:::
 
 ## Definition
 
@@ -35,7 +34,7 @@ The seed at `data/country_codes.csv` will be built as a table named `country_map
 seeds:
   jaffle_shop:
     country_codes:
-      alias: country_mappings
+      +alias: country_mappings
 
 ```
 

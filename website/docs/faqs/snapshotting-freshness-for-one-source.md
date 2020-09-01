@@ -16,4 +16,4 @@ $ dbt source snapshot-freshness --select jaffle_shop.orders
 $ dbt source snapshot-freshness --select jaffle_shop.orders jaffle_shop.customers
 ```
 
-See the [`source snapshot-freshness` command reference](command-line-interface/source) for more information.
+See the [`source snapshot-freshness` command reference](commands/source) for more information.

@@ -4,13 +4,13 @@ id: "using-custom-database"
 ---
 
 
-<Callout type="info" title="A word on naming">
+:::info A word on naming
 
 Different warehouses have different names for "logical databases". The information in this document covers "databases" on Snowflake, Redshift, and Postgres, as well as "projects" on BigQuery.
 
 The values `project` and `database` are interchangeable in BigQuery project configurations.
 
-</Callout>
+:::
 
 ## Configuring custom databases
 
@@ -29,7 +29,7 @@ name: jaffle_shop
 
 models:
   my_project:
-    database: jaffle_shop
+    +database: jaffle_shop
 
     # For BigQuery users:
     # project: jaffle_shop

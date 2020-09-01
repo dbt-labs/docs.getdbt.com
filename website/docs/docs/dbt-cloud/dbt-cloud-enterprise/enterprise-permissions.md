@@ -3,6 +3,13 @@ title: "Enterprise Permissions"
 id: "enterprise-permissions"
 ---
 
+:::info Enterprise Feature
+
+This guide describes a feature of the dbt Cloud Enterprise plan. 
+If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+
+:::
+
 The following permission sets are available for assignment for dbt Cloud Enterprise.
 Please contact your Account Manager to implement the permissions defined here.
 See [Seats and Users](cloud-seats-and-users) for more information on user licenses.
@@ -100,7 +107,7 @@ Job Viewers can perform the following actions in projects they are assigned to:
 - **License restrictions:** must have a developer license
 
 Developers can perform the following actions in projects they are assigned to:
-- Access the IDE
+- Use the IDE
 - Configure personal developer credentials
 - Manage job definitions in assigned projects
 - Kick off runs in deployment environments
@@ -111,7 +118,7 @@ Developers can perform the following actions in projects they are assigned to:
 
 Analysts can perform the following actions in projects they are assigned to:
 - Use the IDE
-- Manage their personal developer credentials
+- Configure personal developer credentials
 - View environments
 - View job definitions
 - View historical runs

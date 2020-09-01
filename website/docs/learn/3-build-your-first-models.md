@@ -4,7 +4,7 @@ id: build-your-first-models
 description: With our starter project setup, it's time to get to the fun part — building models!
 ---
 
-With our starter project setup, it's time to get to the fun part — building [models](https://docs.getdbt.com/docs/building-models)! We're going to take the query from the [Setting up](1-setting-up.md) instructions, and turn it into a model in our dbt project.
+With our starter project setup, it's time to get to the fun part — building [models](/docs/building-models)! We're going to take the query from the [Setting up](/learn/setting-up) instructions, and turn it into a model in our dbt project.
 
 ## Checkout a new git branch
 ### dbt Cloud
@@ -27,7 +27,7 @@ It's a good idea to check out a new git branch when working on new code.
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](1-setting-up.md) instructions into the file.
+3. Paste the query from the [Setting up](/learn/setting-up) instructions into the file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You should get a successful run, like so:
 
 <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
@@ -41,7 +41,7 @@ If you switch back to the Snowflake console you'll be able to `select` from this
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](1-setting-up.md) instructions into the file.
+3. Paste the query from the [Setting up](/learn/setting-up) instructions into the file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
@@ -59,6 +59,13 @@ If you switch back to the Snowflake console you'll be able to `select` from this
 ## Change the way your model is materialized
 One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value. Let's see this in action.
 
+:::info Using the `+` sign in your `dbt_project.yml`
+These videos were recorded with a slightly older version of dbt (dbt v0.15.0), which did not use the `+` sign in the `dbt_project.yml` file (this was introduced in dbt v0.17.0).
+
+We'll try to update the videos soon, but for now, take extra note of the `+` signs in the code samples below, under the `models:` key.
+
+:::
+
 <CloudCore>
     <LoomVideo id="fbaa9948dccf4f74a17ffc7de1ddf4f2" />
     <LoomVideo id="22ebdc914426461ea5c617a415cb4c21" />
@@ -71,9 +78,9 @@ One of the most powerful features of dbt is that you can change the way a model 
 ```yml
 models:
   jaffle_shop:
-    materialized: table
+    +materialized: table
     example:
-      materialized: view
+      +materialized: view
 
 ```
 
@@ -81,9 +88,9 @@ models:
 
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
 
-<Callout type="info">
+:::info
 To do this, dbt had to first run a `drop view` statement, then a `create table as` statement.
-</Callout>
+:::
 
 
 3. Edit `models/customers.sql` to have the following snippet at the top:
@@ -134,9 +141,9 @@ We don't need the sample files that dbt created for us anymore! Let's delete the
 # before
 models:
   jaffle_shop:
-    materialized: table
+    +materialized: table
     example:
-      materialized: view
+      +materialized: view
 ```
 </File>
 
@@ -146,7 +153,7 @@ models:
 # after
 models:
   jaffle_shop:
-    materialized: table
+    +materialized: table
 ```
 
 </File>
@@ -157,7 +164,7 @@ models:
 
 
 ## Build models on top of other models
-Often, it's a good idea to clean your data in one place, before doing additional transformations downstream. Our query already uses CTEs to this effect, but now we're going to experiment with using the [ref](https://docs.getdbt.com/docs/ref) function to separate this clean-up into upstream models, like so:
+Often, it's a good idea to clean your data in one place, before doing additional transformations downstream. Our query already uses CTEs to this effect, but now we're going to experiment with using the [ref](ref) function to separate this clean-up into upstream models, like so:
 
 
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
@@ -264,7 +271,7 @@ This time when dbt ran, separate views/tables were created for `stg_customers`, 
 
 ## Extra exercises
 * Write some bad SQL to cause an error — can you debug this error?
-* Run only a single model at a time ([docs](https://docs.getdbt.com/docs/model-selection-syntax))
+* Run only a single model at a time ([docs](model-selection-syntax))
 * Group your models with a `stg_` prefix into a `staging` subdirectory (i.e. `models/staging/stg_customers.sql`)
     * Configure your `staging` models to be views
     * Run only the `staging` models

@@ -7,11 +7,11 @@ The dbt v0.14.1 release _does not_ contain any breaking code changes for users u
 
 ## Changes to the Snapshot "check" algorithm
 
-<Callout type="warning" title="Snowflake and BigQuery">
+:::caution Snowflake and BigQuery
 
 The following section only applies to Snapshots running against Snowflake or BigQuery. If you are using a different database, then the following section does not apply to your dbt project.
 
-</Callout>
+:::
 
 When a [Snapshot](snapshots) is configured to use the `check` strategy, dbt will compare the specified `check_cols` between the source dataset and the snapshotted dataset to determine if a row in the Snapshot has changed. A logic error in the v0.14.0 release of dbt caused this strategy to fail if the values of the specified `check_cols` for a given row cycled back into a previously known state. Importantly, this issue only affects Snowflake and BigQuery due to their respective uses of the `merge` statement in Snapshots.
 
@@ -73,11 +73,11 @@ There are two methods available for resolving this issue. In either case, it is 
 
 ### Approach #1: Manually update your snapshot tables
 
-<Callout type="warning" title="Warning!">
+:::caution Warning!
 
 This migration is only required for users of the `check` snapshot strategy on Snowflake and BigQuery. If your project doesn't meet these criteria, then you do not need to migrate your Snapshot tables.
 
-</Callout>
+:::
 
 The query shown above will generate a set of rows which are in a "stuck" state. You can use the output of this query to update the records in your snapshot table to become "unstuck". To do this, use an `update` statement that sets the `dbt_valid_to` column to `null` for records identified in the query above. **Use caution when running DML directly against a snapshot table. It is a good idea to make a backup of this table before applying running this migration manually!** A sample query has been provided below: please test this query _thoroughly_ before running it in production.
 
@@ -132,11 +132,11 @@ where dbt_scd_id in (
 
 ### Approach #2: Delete the existing snapshot tables
 
-<Callout type="warning" title="Warning!">
+:::caution Warning!
 
 This migration is only required for users of the `check` snapshot strategy on Snowflake and BigQuery. If your project doesn't meet these criteria, then you do not need to migrate your Snapshot tables.
 
-</Callout>
+:::
 
 If you have only recently started snapshotting tables using the `check` strategy, you may simply drop your existing snapshot table(s) and begin recording new snapshot table(s) from scratch. **In general, you should be very careful when operating on snapshot tables manually. Take great care when deleting Snapshot tables.** If you choose to go this route, you _will_ lose data. Balance this tradeoff with the complexity specified in the first approach.
 

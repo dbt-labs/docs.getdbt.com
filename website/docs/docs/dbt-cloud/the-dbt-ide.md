@@ -4,11 +4,11 @@ id: "the-dbt-ide"
 ---
 
 
-<Callout type="info" title="Prerequisites">
+:::info Prerequisites
 
 To set up your account to use the IDE, consult the guide on [using the dbt IDE](using-the-dbt-ide).
 
-</Callout>
+:::
 
 
 The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
@@ -21,7 +21,7 @@ In the dbt IDE, you can compile dbt code into SQL and execute it against your da
 
 ## Running Projects
 
-In addition to compiling and executing SQL, you can also *run* dbt projects in the dbt IDE. Use dbt's [rich model selection syntax](model-selection-syntax) to [run arbitrary dbt jobs](command-line-interface) directly in your browser.
+In addition to compiling and executing SQL, you can also *run* dbt projects in the dbt IDE. Use dbt's [rich model selection syntax](model-selection-syntax) to [run dbt commands](dbt-commands) directly in your browser.
 
 The dbt IDE updates in real-time as models, tests, seeds, and operations are run. If a model or tests fails, you can dig into the logs to find and fix the issue.
 
@@ -29,7 +29,7 @@ The dbt IDE updates in real-time as models, tests, seeds, and operations are run
 
 ## Version Control
 
-Leverage git directly from the dbt IDE to version control your code from your browser. You can branch, commit, push, and pull code with a couple of clicks - no command line required. 
+Leverage git directly from the dbt IDE to version control your code from your browser. You can branch, commit, push, and pull code with a couple of clicks - no command line required.
 
 <Lightbox src="/img/docs/dbt-cloud/8959807-Screen_Shot_2019-11-05_at_9.15.46_PM.png" title="Creating a new git branch in the IDE"/>
 

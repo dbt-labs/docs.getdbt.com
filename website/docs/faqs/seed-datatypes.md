@@ -11,7 +11,7 @@ You can also explicitly set a datatype using the `column_types` [configuration](
 seeds:
   jaffle_shop: # you must include the project name
     warehouse_locations:
-      column_types:
+      +column_types:
         zipcode: varchar(5)
 ```
 

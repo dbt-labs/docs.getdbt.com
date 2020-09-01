@@ -3,6 +3,9 @@ title: "Overview"
 id: "cloud-overview"
 ---
 
+dbt Cloud is a hosted service that helps data analysts and engineers productionize dbt deployments. It comes equipped with turnkey support for scheduling jobs, CI/CD, serving documentation, monitoring & alerting, and an Integrated Developer Environment (IDE). dbt Cloud’s generous Developer (free) plan and deep integration with dbt Core make it well suited for data teams small and large alike.  
+
+
 ### Develop dbt projects
 
 Using the [dbt IDE](the-dbt-ide), you can develop, run, and version control dbt projects on the web.
@@ -29,11 +32,11 @@ dbt Cloud hosts and authorizes access to dbt project documentation. After enabli
 
 ### Enable Continuous Integration 
 
-<Callout type="info" title="Available on the Basic Tier">
+:::info Available on the Basic Tier
 
 Continuous Integration functionality is available to accounts on the Basic Tier or higher.
 
-</Callout>
+:::
 
 dbt Cloud can be configured to run your dbt projects in a temporary schema when new commits are pushed to open Pull Requests. When the Cloud job completes, a status will be shown for the PR inside of GitHub. This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool in any analysts belt. More info on enabling CI workflows in dbt Cloud can be found [here](cloud-enabling-continuous-integration-with-github).
 

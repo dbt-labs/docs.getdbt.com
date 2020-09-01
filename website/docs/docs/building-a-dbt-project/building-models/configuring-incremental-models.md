@@ -31,7 +31,7 @@ To use incremental models, you also need to tell dbt:
 ### Filtering rows on an incremental run
 To tell dbt which rows it should transform on an incremental run this, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
 
-Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](this)" variable. 
+Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](this)" variable.
 
 For example, a model that includes a computationally slow transformation on a column can be built incrementally, as follows:
 
@@ -47,7 +47,7 @@ For example, a model that includes a computationally slow transformation on a co
 select
     *,
     my_slow_function(my_column)
-    
+
 from raw_app_data.events
 
 {% if is_incremental() %}
@@ -62,11 +62,11 @@ from raw_app_data.events
 
 
 
-<Callout type="success" title="Optimizing your incremental model">
+:::tip Optimizing your incremental model
 
 For more complex incremental models that make use of CTEs, you should consider the impact of the position of the `is_incremental()` macro on query performance. On some warehouses, filtering your records early can vastly improve the run time of your query!
 
-</Callout>
+:::
 
 ### Defining a uniqueness constraint (optional)
 `unique_key` is an optional parameter for incremental models that specifies a field which should be unique within your model. If the unique key of existing row in your target table matches a row in your incrementally transformed rows, the existing row will be updated. This ensures that you don't have multiple rows in your target table for a single row in your source data.
@@ -81,14 +81,14 @@ As an example, consider a model that calculates the number of daily active users
 {{
     config(
         materialized='incremental',
-        unique_key='date_day' 
+        unique_key='date_day'
     )
 }}
 
 select
     date_trunc('day', event_at) as date_day,
     count(distinct user_id) as daily_active_users
-    
+
 from raw_app_data.events
 
 
@@ -166,10 +166,8 @@ for all models in your `dbt_project.yml` file:
 <File name='dbt_project.yml'>
 
 ```yaml
-# Your dbt_project.yml file
-
 models:
-  incremental_strategy: "insert_overwrite"
+  +incremental_strategy: "insert_overwrite"
 ```
 
 </File>

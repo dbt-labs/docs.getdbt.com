@@ -29,16 +29,16 @@ By default, dbt models are materialized as "views". Models can be configured wit
 
 name: my_project
 version: 1.0.0
-
+config-version: 2
 
 models:
   my_project:
     events:
       # materialize all models in models/events as tables
-      materialized: table
+      +materialized: table
     csvs:
       # this is redundant, and does not need to be set
-      materialized: view
+      +materialized: view
 ```
 
 </File>

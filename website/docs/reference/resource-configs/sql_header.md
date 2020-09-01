@@ -2,12 +2,10 @@
 resource_types: [models]
 datatype: "string"
 ---
-<Alert type='warning'>
-
-<h4>Heads up!</h4>
+:::caution Heads up!
 These docs are a work in progress.
 
-</Alert>
+:::
 
 <!----
 To-do:

@@ -161,11 +161,11 @@ These descriptions are used in the documentation website rendered by dbt (see [t
 
 Descriptions can include markdown, as well as the [`doc` jinja function](doc).
 
-<Callout type='warning' title="You may need to quote your YAML">
+:::caution You may need to quote your YAML
 
 Be mindful of YAML semantics when providing a description. If your description contains special yaml characters like curly brackets, colons, or square brackets, you may need to quote your description. An example of a quoted description is shown [below](#use-some-markdown-in-a-description).
 
-</Callout>
+:::
 
 ## Examples
 
@@ -302,3 +302,29 @@ models:
 ```
 
 </File>
+
+
+### Include an image in your descriptions
+
+At present, it's not possible to include an image in your project and render it as part of your project documentation using the image path. This is because images are not included in the `target` directory when you execute `dbt compile`. We hope to address this in the future ([related issue](https://github.com/fishtown-analytics/dbt/issues/2072)).
+
+Instead, consider hosting the image online and using the image URL to render the image.
+
+<File name='models/schema.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: dim_customers
+    description: "!\[dbt Logo](https://github.com/fishtown-analytics/dbt/raw/master/etc/dbt-horizontal.png)"
+
+    columns:
+      - name: customer_id
+        description: Primary key
+
+```
+
+</File>
+
+If mixing images and text together, consider using a docs block instead.

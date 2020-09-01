@@ -33,10 +33,10 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 packages:
   - package: fishtown-analytics/snowplow
     version: 0.7.0
-    
+
   - git: "https://github.com/fishtown-analytics/dbt-utils.git"
     revision: 0.1.21
-    
+
   - local: /opt/dbt/redshift
 ```
 
@@ -125,21 +125,32 @@ When you remove a package from your `packages.yml` file, it isn't automatically 
 
 ### Configuring packages
 You can configure the models and seeds in a package from the `dbt_project.yml` file, like so:
-```
-# dbt_project.yml
+
+<File name='dbt_project.yml'>
+
+```yml
+
+vars:
+  snowplow:
+    'snowplow:timezone': 'America/New_York'
+    'snowplow:page_ping_frequency': 10
+    'snowplow:events': "{{ ref('sp_base_events') }}"
+    'snowplow:context:web_page': "{{ ref('sp_base_web_page_context') }}"
+    'snowplow:context:performance_timing': false
+    'snowplow:context:useragent': false
+    'snowplow:pass_through_columns': []
+
 models:
   snowplow:
-    schema: snowplow
-    materialized: table
-    vars:
-      'snowplow:timezone': 'America/New_York'
-      'snowplow:page_ping_frequency': 10
-      'snowplow:events': "{{ ref('sp_base_events') }}"
-      'snowplow:context:web_page': "{{ ref('sp_base_web_page_context') }}"
-      'snowplow:context:performance_timing': false
-      'snowplow:context:useragent': false
-      'snowplow:pass_through_columns': []
+    +schema: snowplow
+
+seeds:
+  snowplow:
+    +schema: snowplow_seeds
 ```
+
+</File>
+
 For example, when using a dataset specific package, you may need to configure variables for the names of the tables that contain your raw data.
 
 Configurations made in your `dbt_project.yml` file will override any configurations in a package (either in the `dbt_project.yml` file of the package, or in config blocks).
@@ -159,6 +170,19 @@ This warning can be silenced by setting `warn-unpinned: false` in the package sp
 packages:
   - git: https://github.com/fishtown-analytics/dbt-utils.git
     warn-unpinned: false
+```
+
+</File>
+
+### Setting two-part versions
+As of 0.17.0, if the package version you want is only specified as `major`.`minor`, as opposed to `major.minor.patch`, you may get an error that `1.0 is not of type 'string'`. In that case you will have to tell dbt that your version number is a string.
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+ - git: https://github.com/fishtown-analytics/dbt-codegen.git
+   version: "{{ 1.0 | as_text }}"
 ```
 
 </File>

@@ -1,7 +1,7 @@
 
 :local(.title) {
-    width: 600px;
     text-align: center;
+    width: 100%;
 }
 
 
@@ -12,3 +12,7 @@
     width: 600px;
 }
 
+:local(.collapsed) {
+    max-width: 300px !important;
+    display: inline-block;
+}

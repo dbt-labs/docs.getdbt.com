@@ -55,6 +55,22 @@ Here, the return value of the `var()` context method is supplied as the `start_d
   }}
 ```
 
+Here's another example:
+
+```sql
+{# Either of these work #}
+
+{% set query_sql = 'select * from ' ~ ref('my_model') %}
+
+{% set query_sql %}
+select * from {{ ref('my_model') }}
+{% endset %}
+
+{# This does not #}
+{% set query_sql = "select * from {{ ref('my_model')}}" %}
+
+```
+
 ### An exception
 
 There is one exception to this rule: curlies inside of curlies are acceptable in hooks (ie. `on-run-start`, `on-run-end`, `pre-hook`, and `post-hook`).

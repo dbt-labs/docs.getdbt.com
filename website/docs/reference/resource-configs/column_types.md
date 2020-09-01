@@ -17,7 +17,7 @@ Specify column types in your `dbt_project.yml` file:
 seeds:
   jaffle_shop:
     country_codes:
-      column_types:
+      +column_types:
         country_code: varchar(2)
         country_name: varchar(32)
 
@@ -36,7 +36,7 @@ seeds:
   jaffle_shop:
     marketing:
       utm_mappings:
-        column_types:
+        +column_types:
           ...
 
 ```
@@ -53,7 +53,7 @@ seeds:
 seeds:
   jaffle_shop: # you must include the project name
     warehouse_locations:
-      column_types:
+      +column_types:
         zipcode: varchar(5)
 ```
 

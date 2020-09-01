@@ -101,11 +101,11 @@ Once these files are set up, you're ready to begin adding models, tests, macros,
 
 dbt packages can contain any of the dbt constructs that you're already familiar with: models, tests, analyses, macros, and even other dependencies! Since the rest of this website is dedicated to explaining these topics, an in-depth explanation of them will not be given here. Instead, this section will outline some of the best-practices we've encountered to-date while building dozens of open-source packages.
 
-<Callout type="info" title="">
+:::info 
 
 Have a tip you don't see here? Feel free to suggest an edit!
 
-</Callout>
+:::
 
 **1. Keep it generic**
 
@@ -174,7 +174,7 @@ In the future, you may need to update your package. If these changes mutate the 
 
 Breaking changes are sometimes necessary, but they can be unpleasant for end-users. To avoid headaches here, you should create a [release](https://help.github.com/articles/creating-releases/) in GitHub for each new version of your package. If you do this, then end-users can include a specific version of your package and upgrade to newer version when they're ready.
 
-<Callout type="info" title="ProTip">
+:::info ProTip
 
 Name your releases something like `0.1` or `2.9` so users can include it with:
 ```yml
@@ -183,7 +183,7 @@ packages:
   revision: 0.1
 ```
 
-</Callout>
+:::
 
 Each release should contain an overview of the changes introduced in the new version. Be sure to call out any changes that break the existing interface!
 
