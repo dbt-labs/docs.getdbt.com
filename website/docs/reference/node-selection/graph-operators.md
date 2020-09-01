@@ -13,6 +13,7 @@ $ dbt run --models +my_model+         # select my_model, and all of its parents 
 
 ### The "n-plus" operator
 <Changelog>New in v0.18.0</Changelog>
+
 You can adjust the behavior of the `+` operator by quantifying the number of edges
 to step through.
 

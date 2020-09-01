@@ -2,7 +2,7 @@
 title: "Syntax overview"
 ---
 
-dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. The model selection syntax is used for the following subcommands:
+dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:
 
 | command   | argument(s)                                       |
 | :-------- | ------------------------------------------------- |
@@ -13,7 +13,10 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | ls (list) | `--select`, `--models`, `--exclude`, `--selector` |
 | compile   | `--select`, `--exclude`, `--selector`             |
 
-A node is any resource in dbt: models, tests, sources, snapshots, seeds, analyses.
+:::info Nodes and resources
+
+We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably. These  encompass all the models, tests, sources, seeds, snapshots, and analyses in your project. They are the objects that make up dbt's DAG (directed acyclic graph).
+:::
 
 ## Specifying resources
 

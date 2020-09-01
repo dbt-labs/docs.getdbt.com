@@ -9,6 +9,7 @@ included in the final set.
 
 ### Intersections
 <Changelog>New in v0.18.0</Changelog>
+
 If multiple arguments to `--models`, `--exclude`, and `--select` can be comma-separated (with no whitespace in between),
 dbt will select only resources which satisfy _all_ arguments.
 

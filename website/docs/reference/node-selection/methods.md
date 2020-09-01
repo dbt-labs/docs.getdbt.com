@@ -36,6 +36,7 @@ dbt run --models models/staging/github/stg_issues.sql
 
 ### The "package" method
 <Changelog>New in v0.18.0</Changelog>
+
 The `package` method is used to select models defined within the root project
 or an installed dbt package. While the `package:` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
@@ -49,6 +50,7 @@ dbt run --models snowplow.*
 
 ### The "config" method
 <Changelog>New in v0.18.0</Changelog>
+
 The `config` method is used to select models that match a specified [node config](config).
 
 ```bash
@@ -59,6 +61,7 @@ $ dbt run --models config.cluster_by:geo_country      # run all models clustered
 
 ### The "test_type" method
 <Changelog>New in v0.18.0</Changelog>
+
 The `test_type` method is used to select tests based on their type, `schema` or `data`:
 
 ```bash
@@ -68,6 +71,7 @@ $ dbt test --models test_type:data          # run all data tests
 
 ### The "test_name" method
 <Changelog>New in v0.18.0</Changelog>
+
 The `test_name` method is used to select schema tests based on the name of the `test_` macro
 that defines it. For more information about how schema tests are defined, read about
 [custom schema tests](custom-schema-tests).
