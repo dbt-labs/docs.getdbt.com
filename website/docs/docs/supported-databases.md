@@ -26,7 +26,7 @@ These database plugins are community-supported 🌱
 | -------- | ------------- | ----- |
 | Microsoft SQL Server ([dbt-mssql](https://github.com/jacobm001/dbt-mssql)) | [Profile Setup](mssql-profile) | SQL Server 2008 R2 and later |
 | Microsoft SQL Server ([dbt-sqlserver](https://github.com/mikaelene/dbt-sqlserver)) | [Profile Setup](mssql-profile) | SQL Server 2016 and later |
-| Oracle Database ([dbt-oracle](https://github.com/techindicium/dbt-oracle)) | [Profile Setup](profile-oracle) |Oracle 11+ |
+| Oracle Database ([dbt-oracle](https://github.com/techindicium/dbt-oracle)) | [Profile Setup](oracle-profile) |Oracle 11+ |
 
 ## Creating a new adapter
 
