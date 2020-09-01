@@ -1,19 +1,18 @@
 ---
-title: "Oracle SQL Database"
-id: "profile-oracle"
+title: "Oracle Profile"
 ---
 
 
-<Callout type="info" title="Community contributed plugin">
+:::info Community contributed plugin
 
 This is a Community Contributed plugin for dbt. If you're interested in contributing, check out the source code [dbt-oracle](https://github.com/techindicium/dbt-oracle)
 
-</Callout>
+:::
 
 ## Overview of dbt-oracle
 **Status:** Community Contributed
 **Author:** Vitor Avancini
-**Source Code:** https://github.com/techinidicium/dbt-oracle
+**Source Code:** https://github.com/techindicium/dbt-oracle
 
 
 Easiest install is to use pip:
@@ -43,3 +42,4 @@ dbt_oracle:
          schema: [schema]
          threads: 4
 ```
+</File>
