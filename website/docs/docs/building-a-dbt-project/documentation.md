@@ -148,6 +148,32 @@ as well as the repo for this project \[here](https://github.com/fishtown-analyti
 
 </File>
 
+### Custom project-level overviews
+<Changelog>New in v0.18.0</Changelog>
+
+You can set different overviews for each dbt project/package included in your documentation site
+by creating a docs block named `__[project_name]__`. For example, in order to define
+custom overview pages that appear when a viewer navigates inside the `dbt_utils` or `snowplow` package:
+
+<File name='models/overview.md'>
+
+```markdown
+{% docs __dbt_utils__ %}
+# Utility macros
+Our dbt project heavily uses this suite of utility macros, especially:
+- `surrogate_key`
+- `test_equality`
+- `pivot`
+{% enddocs %}
+
+{% docs __snowplow__ %}
+# Snowplow sessionization
+Our organization uses this package of transformations to roll Snowplow events
+up to page views and sessions.
+{% enddocs %}
+```
+
+</File>
 
 ## Navigating the documentation site
 Using the docs interface, you can navigate to the documentation for a specific model. That might look something like this:
