@@ -9,7 +9,7 @@ id: "documentation"
 * [`doc` Jinja function](dbt-jinja-functions/doc)
 
 ## Assumed knowledge
-* [Tests](tests)
+* [Tests](building-a-dbt-project/tests)
 
 ## Overview
 
@@ -31,7 +31,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started Tutor
 :::
 
 ## Adding descriptions to your project
-To add descriptions to your project, use the `description:` key in the same files where you declare [tests](tests), like so:
+To add descriptions to your project, use the `description:` key in the same files where you declare [tests](building-a-dbt-project/tests), like so:
 
 <File name='models/<filename>.yml'>
 
@@ -63,7 +63,7 @@ models:
 ## Generating project documentation
 You can generate a documentation site for your project (with or without descriptions) using the CLI.
 
-First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively.
+First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
 
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 

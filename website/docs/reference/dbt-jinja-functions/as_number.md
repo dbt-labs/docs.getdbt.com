@@ -12,7 +12,7 @@ a number.
 In the example below, the `as_number` filter is used to coerce an environment
 variables into a numeric value to dynamically control the connection port.
 
-<File name='profiles.yml.yml'>
+<File name='profiles.yml'>
 
 ```yml
 my_profile:

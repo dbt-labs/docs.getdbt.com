@@ -136,7 +136,7 @@ models:
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](profile) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
 
 The following config uses the `EXTRA_SMALL` warehouse for all models in the project, except for the models in the `clickstream` folder, which are configured to use the `EXTRA_LARGE` warehouse. In this example, all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 

@@ -3,7 +3,7 @@ title: Analysis properties
 ---
 
 Analysis properties can be declared in `.yml` files in:
-- your `analyses/` directory (as defined by the [`macro-paths` config](macro-paths))
+- your `analyses/` directory (as defined by the [`analysis-paths` config](analysis-paths))
 - your `models/` directory (as defined by the [`source-paths` config](source-paths))
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `analyses/` or `models/` directory.

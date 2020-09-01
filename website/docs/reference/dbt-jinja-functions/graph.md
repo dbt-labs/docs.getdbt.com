@@ -58,7 +58,7 @@ The `model` entries in the `graph` dictionary will be incomplete or incorrect
 during parsing. If accessing the models in your project via the `graph`
 variable, be sure to use the [execute](execute) flag to ensure that this code
 only executes at run-time and not at parse-time. Do not use the `graph` variable
-to build you DAG, as the resulting dbt behavior will be undefined and likely
+to build your DAG, as the resulting dbt behavior will be undefined and likely
 incorrect. Example usage:
 
 <File name='graph-usage.sql'>

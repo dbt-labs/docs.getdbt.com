@@ -7,7 +7,7 @@ id: "cloud-seats-and-users"
 
 In dbt Cloud, _seats_ are used to allocate users to your account. There are two different types of seat licenses in dbt Cloud: _Developer_ and _Read Only_ .
 
-The type of license a user is assigned to controls which capabilities of dbt Cloud the user is permitted to access. Developers are granted access to the Deployment and [Development](the-dbt-ide) functionality in dbt Cloud, whereas Standard users are not. 
+The type of license a user is assigned to controls which capabilities of dbt Cloud the user is permitted to access. Developers are granted access to the Deployment and [Development](the-dbt-ide) functionality in dbt Cloud, whereas Read Only users are not. 
 
 | Functionality | Developer User | Read Only Users |
 | ------------- | -------------- | --------------- |

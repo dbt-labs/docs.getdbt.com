@@ -9,6 +9,13 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
     SITE_URL = process.env.DEPLOY_URL;
 }
 
+var GIT_BRANCH;
+if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
+    GIT_BRANCH = 'current';
+} else {
+    GIT_BRANCH = process.env.HEAD;
+}
+
 var PRERELEASE = (process.env.PRERELEASE || false);
 
 var WARNING_BANNER;
@@ -42,14 +49,14 @@ module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
-  title: 'dbt - Documentation',
+  title: 'docs.getdbt.com',
   url: SITE_URL,
 
   themeConfig: {
     disableDarkMode: true,
     sidebarCollapsible: true,
     image: '/img/avatar.png',
-    
+
     announcementBar: WARNING_BANNER,
 
     algolia: {
@@ -150,7 +157,7 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
 
-          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/master/website/',
+          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
         }

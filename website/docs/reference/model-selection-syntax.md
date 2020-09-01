@@ -78,7 +78,7 @@ dbt run --models finance.base.*  # run all of the models in models/finance/base
 ```
 
 ### The "tag:" operator
-The `tag:` prefix is used to select models that match a specified [tag](tags) .
+The `tag:` prefix is used to select models that match a specified [tag](resource-configs/tags) .
 
 ```
 dbt run --models tag:nightly    # run all models with the `nightly` tag
