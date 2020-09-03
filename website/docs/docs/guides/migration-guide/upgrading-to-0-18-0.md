@@ -1,20 +1,36 @@
 ---
-title: "Upgrading to 0.18.0 (prerelease)"
+title: "Upgrading to 0.18.0"
 
 ---
 
-:::info Prerelease
+### Resources
 
-dbt v0.18.0 is currently in beta. Please post in dbt Slack #prereleases with questions or issues.
+- [Changelog](https://github.com/fishtown-analytics/dbt/blob/dev/marian-anderson/CHANGELOG.md)
+- [Discussion: Prerelease](https://discourse.getdbt.com/t/prerelease-v0-18-0-marian-anderson/1545)
 
-:::
+## Breaking changes
 
-<FAQ src="beta-release" />
-<FAQ src="prerelease-docs" />
+Please be aware of the following changes in v0.18.0. While breaking, we do not expect these to affect the majority of projects.
+
+### Adapter macros
+
+- dbt only has access to adapter plugin macros from the currently-in-use adapter or one of its dependencies, rather than all installed adapters in the namespace.
+- `adapter_macro` is no longer a macro and will raise a deprecation warning. Use `adapter.dispatch` instead.
+
+### Data tests
+
+- Data tests are written as CTEs instead of subqueries. Adapter plugins for databases that don't support CTEs may need to override this behavior.
+
+### Python requirements
+- Upgraded `snowflake-connector-python` dependency to 2.2.10 and enabled the SSO token cache
 
 ## New features
 
 For more details, see [new and changed documentation](#new-and-changed-documentation) below.
+
+:::info [β] Beta Features
+There are several pieces of net-new functionality in v0.18.0, with iterative improvements to come. If you encounter unexpected behavior, please post in Slack or open an issue.
+:::
 
 ### Node selection
 - methods: `config`, `test_type`, `test_name`, `package`, [β] `state`
@@ -31,37 +47,35 @@ can override schema test definitions
 ### Docs
 - Include static assets (such as images) in auto-generated docs site
 - Improved resource search
+- Project-level overviews
 
 ### Database-specific
 - Specify IAM profile when connecting to Redshift
+- Snowflake query tags at connection and model level
 - Impersonate a BigQuery service account when connecting via oauth
 - Adding policy tags to BigQuery columns
-- Snowflake query tags at connection and model level
-
-
-## Resources
-
- - [Changelog](https://github.com/fishtown-analytics/dbt/blob/dev/marian-anderson/CHANGELOG.md)
-
-## Breaking changes
-
-Please be aware of the following changes in v0.18.0. While breaking, we do not expect these to affect the majority of projects.
-
-### Adapter macros
-
-* Previously, dbt put macros from all installed plugins into the namespace. This version of dbt will not include adapter plugin macros unless they are from the currently-in-use adapter or one of its dependencies.
+- Configure time-to-live for BigQuery tables
 
 ## New and changed documentation
 
 **Core**
 - [node selection syntax](node-selection/syntax)
 - [list (ls)](commands/list)
-- [Redshift profile](redshift-profile#specifying-an-iam-profile)
-- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and the [description](description) docs to match)
-- [`impersonate_service_account` in the BigQuery profile configuration](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
-- [adapter.dispatch](adapter#dispatch)
-- [Enable or Disable colorized logs](run#enable-or-disable-colorized-logs)
 - [deferring to previous run state](run#deferring-to-previous-run-state)
+- [adapter.dispatch](adapter#dispatch)
+- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and [description](description))
+- [flag for colorized logs](run#enable-or-disable-colorized-logs)
 - [`full_refresh` config](full_refresh)
-- BigQuery configs: [policy tags](bigquery-configs#policy-tags), [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)
-- Snowflake query tags in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
+
+**Docs**
+- [project-level overviews](documentation#custom-project-level-overviews)
+
+**Redshift**
+- [`iam_profile`](redshift-profile#specifying-an-iam-profile)
+
+**Snowflake**
+- `query_tag` in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
+
+**BigQuery** - - [`impersonate_service_account`](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
+- [`policy_tags`](bigquery-configs#policy-tags)
+- [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)
