@@ -10,7 +10,7 @@ id: "test"
 
 `dbt test` runs both types of test and reports the results to the console.
 
-The tests to run can be selected using the `--models` flag discussed [here](model-selection-syntax).
+The tests to run can be selected using the `--models` flag discussed [here](node-selection/syntax).
 
 ```bash
 # run tests for one_specific_model

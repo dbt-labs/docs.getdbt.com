@@ -34,6 +34,7 @@ seeds:
     +[post-hook](resource-configs/pre-hook-post-hook): sql-statement | [sql-statement]
     +[tags](resource-configs/tags): string | [string]
     +[persist_docs](resource-configs/persist_docs): {<dict>}
+    +[full_refresh](full_refresh): <boolean>
 
 ```
 

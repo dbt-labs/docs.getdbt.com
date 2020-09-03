@@ -23,6 +23,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 [macro-paths](project-configs/macro-paths): [directorypath]
 [snapshot-paths](project-configs/snapshot-paths): [directorypath]
 [docs-paths](project-configs/docs-paths): [directorypath]
+[asset-paths](project-configs/asset-paths): [directorypath]
 
 [target-path](project-configs/target-path): directorypath
 [log-path](project-configs/log-path): directorypath
