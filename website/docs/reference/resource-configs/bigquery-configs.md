@@ -314,6 +314,26 @@ select * from {{ ref('another_model') }}
 
 </File>
 
+### Policy tags
+BigQuery enables [column-level security](https://cloud.google.com/bigquery/docs/column-level-security-intro) by setting [policy tags](https://cloud.google.com/bigquery/docs/best-practices-policy-tags) on specific columns.
+
+dbt enables this feature as a column resource property, `policy_tags` (_not_ a node config).
+
+<File name='models/<filename>.yml'>
+
+```yaml
+version: 2
+
+models:
+- name: policy_tag_table
+  columns:
+    - name: field
+      policy_tags:
+        - 'need_to_know'
+```
+
+</File>
+
 ## Merge behavior (incremental models)
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
@@ -492,3 +512,34 @@ with events as (
 
 ... rest of model ...
 ```
+
+## Controlling table expiration
+<Changelog>New in v0.18.0</Changelog>
+
+By default, dbt-created tables never expire. You can configure certain model(s)
+to expire after a set number of hours by setting `hours_to_expiration`.
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](resource-path):
+    +hours_to_expiration: 6
+
+```
+
+</File>
+
+<File name='models/<modelname>.sql'>
+
+```sql
+
+{{ config(
+    hours_to_expiration = 6
+) }}
+
+select ...
+
+```
+
+</File>

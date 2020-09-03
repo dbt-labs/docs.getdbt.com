@@ -75,7 +75,9 @@
 /docs/macros	/docs/building-a-dbt-project/macros	302
 /docs/managing-environments	/docs/guides/managing-environments	302
 /docs/materializations	/docs/building-a-dbt-project/building-models/materializations	302
-/docs/model-selection-syntax	/reference/model-selection-syntax	302
+/docs/model-selection-syntax	/reference/node-selection/syntax	302
+/reference/model-selection-syntax    /reference/node-selection/syntax 302   
+reference/model-selection-syntax/#test-selection-examples    /reference/node-selection/test-selection-examples 302 
 /docs/modules	/docs/writing-code-in-dbt/jinja-context/modules	302
 /docs/on-run-end-context	/docs/writing-code-in-dbt/jinja-context/on-run-end-context	302
 /docs/package-management	/docs/building-a-dbt-project/package-management	302

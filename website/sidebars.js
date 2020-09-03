@@ -75,6 +75,7 @@ module.exports = {
             "docs/guides/migration-guide/upgrading-to-0-15-0",
             "docs/guides/migration-guide/upgrading-to-0-16-0",
             "docs/guides/migration-guide/upgrading-to-0-17-0",
+            "docs/guides/migration-guide/upgrading-to-0-18-0",
           ],
         },
         "docs/guides/videos",
@@ -211,6 +212,7 @@ module.exports = {
           label: "Project configurations",
           items: [
             "reference/project-configs/analysis-paths",
+            "reference/project-configs/asset-paths",
             "reference/project-configs/clean-targets",
             "reference/project-configs/config-version",
             "reference/project-configs/data-paths",
@@ -242,6 +244,7 @@ module.exports = {
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
+            "reference/resource-configs/full_refresh",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
@@ -333,7 +336,20 @@ module.exports = {
       label: "Commands",
       items: [
         "reference/dbt-commands",
-        "reference/model-selection-syntax",
+        {
+          type: "category",
+          label: "Node selection",
+          items: [
+            "reference/node-selection/syntax",
+            "reference/node-selection/graph-operators",
+            "reference/node-selection/set-operators",
+            "reference/node-selection/exclude",
+            "reference/node-selection/methods",
+            "reference/node-selection/putting-it-together",
+            "reference/node-selection/yaml-selectors",
+            "reference/node-selection/test-selection-examples",
+          ],
+        },
         {
           type: "category",
           label: "List of commands",

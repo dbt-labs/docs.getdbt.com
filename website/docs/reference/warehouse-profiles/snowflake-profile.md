@@ -28,6 +28,7 @@ my-snowflake-db:
       schema: [dbt schema]
       threads: [1 or more]
       client_session_keep_alive: False
+      query_tag: [anything]
 
 ```
 
@@ -58,6 +59,7 @@ my-snowflake-db:
       schema: [dbt schema]
       threads: [1 or more]
       client_session_keep_alive: False
+      query_tag: [anything]
 ```
 
 </File>
@@ -88,6 +90,7 @@ my-snowflake-db:
       schema: [dbt schema]
       threads: [between 1 and 8]
       client_session_keep_alive: False
+      query_tag: [anything]
 ```
 
 </File>
@@ -109,7 +112,16 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | role | No (but recommended) | The role to assume when running queries as the specified user. |
 | client_session_keep_alive | No | If provided, issue a periodic `select` statement to keep the connection open when particularly long-running queries are executing (&gt; 4 hours). Default: False (see note below) |
 | threads | No | The number of concurrent models dbt should build. Set this to a higher number if using a bigger warehouse. Default=1 |
+| query_tag | No | A value with which to tag all queries, for later searching in [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html) |
 
 ### client_session_keep_alive
 
 The `client_session_keep_alive` feature is intended to keep Snowflake sessions alive beyond the typical 4 hour timeout limit. The snowflake-connector-python implementation of this feature can prevent processes that use it (read: dbt) from exiting in specific scenarios. If you encounter this in your deployment of dbt, please let us know in [the GitHub issue](https://github.com/fishtown-analytics/dbt/issues/1271), and work around it by disabling the keepalive.
+
+
+### query_tag
+
+<Changelog>New in v0.18.0</Changelog>
+
+[Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
+parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
