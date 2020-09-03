@@ -5,6 +5,29 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.7 [September 3, 2020]
+
+This release adds a Release Candidate for [dbt
+v0.18.0](migration-guide/upgrading-to-0-18-0) and
+includes bugfixes and improvements to the Cloud IDE
+and job scheduler.
+
+#### Enhancements
+- Improve scheduler backoff behavior
+- Add dbt 0.18.0rc1
+- Add support for non-standard ssh ports in connection tunnels
+- Add support for closing the IDE filesystem context menu by clicking outside the menu
+
+#### Fixed
+- Fix for joining threads in run triggers
+- Fix thread caching for s3 uploads
+
+#### Internal
+- Disable thread session cache
+- Adds ddtrace
+- Enable botocore logging for credentials matching
+- Increase protection against SSRF
+
 ## dbt Cloud v1.1.6 (August 20, 2020)
 
 This release includes security enhancements and improvements across the entire

@@ -14,4 +14,4 @@ To run models downstream of one source table:
 $ dbt run --models source:jaffle_shop.orders+
 ```
 
-Check out the [model selection syntax](model-selection-syntax) for more examples!
+Check out the [model selection syntax](node-selection/syntax) for more examples!

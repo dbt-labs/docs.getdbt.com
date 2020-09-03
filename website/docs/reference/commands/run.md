@@ -65,7 +65,7 @@ $ dbt --warn-error run
 
 dbt will also allow you select which specific models you'd like to materialize. This can be useful during special scenarios where you may prefer running a different set of models at various intervals. This can also be helpful when you may want to limit the tables materialized while you develop and test new models.
 
-For more information, see the [Model Selection Syntax Documentation](model-selection-syntax).
+For more information, see the [Model Selection Syntax Documentation](node-selection/syntax).
 
 ## Failing fast
 
@@ -102,3 +102,149 @@ Encountered an error:
 FailFast Error in model model_1 (models/model_1.sql)
   Failing early due to test failure or runtime error
 ```
+
+## Enable or Disable Colorized Logs
+
+<Changelog>
+
+ - The `--use-colors` and `--no-use-colors` flags are new in dbt v0.18.0
+
+</Changelog>
+
+DBT can colorize the run logs output to your terminal to make the logs more readable. This is enabled by default, [can be overriden in your profiles.yml] (https://docs.getdbt.com/reference/profiles.yml/#use_colors), and both the default and the profiles.yml can be overriden at the command line. Use `--use-colors` or `--no-use-colors` to enable or disable log colorizing from the command line.
+Example usage:
+```
+$ dbt --use-colors run
+$ dbt --no-use-colors run
+```
+
+## Deferring to previous run state
+
+<Changelog>
+
+ - The `--defer` and `--state` flags are new in dbt v0.18.0
+
+</Changelog>
+
+:::info [β] Beta Feature
+This is net-new functionality in v0.18.0, with iterative improvements to come.
+If you encounter unexpected behavior, please post in Slack or open an issue.
+:::
+
+```
+dbt run --models [...] --defer --state path/to/artifacts
+```
+
+When the `--defer` flag is provided, dbt will resolve `ref` calls differently 
+depending on whether a node has been included in the model selection criteria of
+the current run. If a node is not included, references to it will resolve to the namespace 
+specified by the state artifact.
+
+This is especially useful when running a subset of models in a new test or development schema,
+as it obviates the need to create all of those models' parents.
+
+**Environment variables**
+
+Deferral and state can be set by environment variables as well as CLI flags:
+
+- `--defer` or `DBT_DEFER_TO_STATE`
+- `--state` or `DBT_ARTIFACT_STATE_PATH`
+
+If both the flag and env var are provided, the flag takes precedence.
+
+**Usage notes**
+
+- In its current implementation, deferral requires `state` to be set explicitly, either
+by flag or env var. In a future release, we may set state to be the [target-path](target-path) by default.
+- The `dbt run` command (with no `--models` or `--exclude` specification) includes _all_
+nodes in its selection criteria, even seeds and sources. In this way, `dbt run` 
+and `dbt run --defer --state ...` always yield identical results, with no deferred nodes.
+- Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls.
+Excluding an ephemeral model from the model selection criteria makes no difference
+to the output; including or excluding the non-ephemeral parent of an ephemeral model does.
+
+**Example**
+
+In my local development environment, I create all models in a schema named
+`dbt_me`. In production, the same models are created in a schema named
+`prod`. Both are located in a database called `analytics`.
+
+I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`)
+from a production run, and copy them into a local directory called `prod-run-artifacts`.
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Standard run', value: 'no_defer', },
+    { label: 'Deferred run', value: 'yes_defer', },
+  ]
+}>
+<TabItem value="source">
+
+<File name='models/model_2.sql'>
+
+```sql
+select
+
+    id,
+    count(*)
+    
+from {{ ref('model_1') }}
+```
+
+</File>
+</TabItem>
+
+<TabItem value="no_defer">
+
+```shell
+dbt run --models model_2
+```
+
+<File name='target/run/my_project/model_2.sql'>
+
+```sql
+create or replace view analytics.dbt_me.model_2 as (
+    
+    select
+
+        id,
+        count(*)
+        
+    from analytics.dbt_me.model_1
+    
+)
+```
+
+</File>
+</TabItem>
+
+<TabItem value="yes_defer">
+
+```shell
+dbt run --models model_2 --defer --state prod-run-artifacts
+```
+
+<File name='target/run/my_project/model_2.sql'>
+
+```sql
+create or replace view analytics.dbt_me.model_2 as (
+    
+    select
+
+        id,
+        count(*)
+        
+    from analytics.prod.model_1
+    
+)
+```
+
+</File>
+
+Because `model_1` is unselected, dbt will resolve all instances of `{{ ref(model_1) }}` 
+using the production namespace, instead of the one configured in my profile.
+
+</TabItem>
+</Tabs>
