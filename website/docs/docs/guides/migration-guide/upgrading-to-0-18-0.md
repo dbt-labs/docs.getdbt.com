@@ -76,6 +76,7 @@ can override schema test definitions
 **Snowflake**
 - `query_tag` in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
 
-**BigQuery** - - [`impersonate_service_account`](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
+**BigQuery**
+- [`impersonate_service_account`](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
 - [`policy_tags`](bigquery-configs#policy-tags)
 - [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)
