@@ -18,7 +18,7 @@ dbt ls
      [--output {json,name,path,selector}]
 ```
 
-See [resource selection syntax](model-selection-syntax) for more information on how to select resources in dbt
+See [resource selection syntax](node-selection/syntax) for more information on how to select resources in dbt
 
 **Arguments**:
 - `--resource-type`: This flag limits the "resource types" that dbt will return in the `dbt ls` command. By default, the following resources are included in the results of `dbt ls`: models, snapshots, seeds, tests, and sources.

@@ -99,7 +99,7 @@ An optional configuration for disabling models, seeds, and snapshots.
 
 When a resource is disabled, dbt will not consider it as part of your project. Note that this can cause compilation errors.
 
-If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](model-selection-syntax)
+If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](node-selection/syntax)
 
 If you are disabling models because they are no longer being used, but you want to version control their SQL, consider making them an [analysis](docs/building-a-dbt-project/analyses.md) instead.
 

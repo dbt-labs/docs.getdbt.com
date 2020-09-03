@@ -80,6 +80,7 @@ models:
     +[schema](resource-configs/schema): <string>
     +[alias](resource-configs/alias): <string>
     +[persist_docs](persist_docs): <dict>
+    +[full_refresh](full_refresh): <boolean>
 
 ```
 

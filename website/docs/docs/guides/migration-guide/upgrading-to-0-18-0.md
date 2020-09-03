@@ -35,8 +35,8 @@ can override schema test definitions
 ### Database-specific
 - Specify IAM profile when connecting to Redshift
 - Impersonate a BigQuery service account when connecting via oauth
-- Adding policy tags to BigQuery columns [not yet documented]
-- Snowflake query tags at connection and model level [not yet documented]
+- Adding policy tags to BigQuery columns
+- Snowflake query tags at connection and model level
 
 
 ## Resources
@@ -54,7 +54,7 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 ## New and changed documentation
 
 **Core**
-- [model selection syntax](model-selection-syntax)
+- [node selection syntax](node-selection/syntax)
 - [list (ls)](commands/list)
 - [Redshift profile](redshift-profile#specifying-an-iam-profile)
 - [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and the [description](description) docs to match)
@@ -62,3 +62,6 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 - [adapter.dispatch](adapter#dispatch)
 - [Enable or Disable colorized logs](run#enable-or-disable-colorized-logs)
 - [deferring to previous run state](run#deferring-to-previous-run-state)
+- [`full_refresh` config](full_refresh)
+- BigQuery configs: [policy tags](bigquery-configs#policy-tags), [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)
+- Snowflake query tags in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
