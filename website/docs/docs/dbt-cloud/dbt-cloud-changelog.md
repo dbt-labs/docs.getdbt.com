@@ -9,7 +9,7 @@ description: "Changelog for the dbt Cloud application"
 
 This release adds a Release Candidate for [dbt
 v0.18.0](migration-guide/upgrading-to-0-18-0) and
-includes bugfixes and improbements to the Cloud IDE
+includes bugfixes and improvements to the Cloud IDE
 and job scheduler.
 
 #### Enhancements
