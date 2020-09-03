@@ -19,35 +19,6 @@ You may optionally specify an `--adapter`. If you do, dbt will create `~/.dbt/pr
 dbt init [project_name] --adapter bigquery
 ```
 
-<File name='~/.dbt/profiles.yml'>
-
-```yml
-default:
-  outputs:
-
-    dev:
-      type: bigquery
-      method: oauth
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      timeout_seconds: 300
-      location: US # Optional, one of US or EU
-      priority: interactive
-      retries: 1
-
-    prod:
-      type: bigquery
-      method: service-account
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      keyfile: [/path/to/bigquery/keyfile.json]
-      timeout_seconds: 300
-      priority: interactive
-      retries: 1
-
-  target: dev
-```
-
-</File>
+**Note for plugin authors:** The `--adapter` flag looks for a file named
+`dbt/include/[adapter_name]/sample_profiles.yml`. Check out [dbt-spark](https://github.com/fishtown-analytics/dbt-spark/tree/master/dbt/include/spark/sample_profiles.yml)
+and [dbt-presto](https://github.com/fishtown-analytics/dbt-presto/blob/master/dbt/include/presto/sample_profiles.yml) as examples.
