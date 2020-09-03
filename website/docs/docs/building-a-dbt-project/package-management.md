@@ -9,7 +9,7 @@ Software engineers frequently modularize code into libraries. These libraries he
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
  * turning [Snowplow](https://hub.getdbt.com/fishtown-analytics/snowplow/latest/), [Segment](https://hub.getdbt.com/fishtown-analytics/segment/latest/) or [Heap](https://hub.getdbt.com/fishtown-analytics/heap/latest/) pageviews into sessions
-  * transforming [AdWords](https://hub.getdbt.com/fishtown-analytics/adwords/latest/), [Facebook Ads](https://hub.getdbt.com/fishtown-analytics/facebook_ads/latest/), or [Bing Ads](https://hub.getdbt.com/fishtown-analytics/bing_ads/latest/) spend data into a consistent format.
+  * transforming [AdWords](https://hub.getdbt.com/fishtown-analytics/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/fishtown-analytics/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
   * [generating SQL](https://github.com/fishtown-analytics/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
   * creating [custom schema tests](https://github.com/fishtown-analytics/dbt-utils#schema-tests)
