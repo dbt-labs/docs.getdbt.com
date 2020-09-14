@@ -68,7 +68,9 @@ my-snowflake-db:
 
 To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. `authenticator` can be one of 'externalbrowser' or a valid Okta URL.
 
-**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. Contact your Snowflake support rep and inquire about turning on the "id token cache" for your account as described [here](https://github.com/snowflakedb/snowflake-connector-python/issues/140#issuecomment-447028785).
+<Changelog>New in v0.18.0</Changelog>
+
+**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication). See [the Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for how to enable this feature in your account.
 
 <File name='~/.dbt/profiles.yml'>
 

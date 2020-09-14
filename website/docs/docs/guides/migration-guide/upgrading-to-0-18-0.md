@@ -75,6 +75,7 @@ can override schema test definitions
 
 **Snowflake**
 - `query_tag` in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
+- automatic SSO [session caching](snowflake-configs#sso-authentication) support
 
 **BigQuery**
 - [`impersonate_service_account`](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
