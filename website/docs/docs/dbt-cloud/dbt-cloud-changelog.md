@@ -4,6 +4,29 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.8 [TODO - Enter date]
+
+TODO - enter release summary
+
+#### Enhancements
+
+- Add git cloning support via GitLab deploy tokens for scheduled runs
+- Add RBAC Groups Detail Page
+- Add created_at range filter to RunService
+- Add dbt 0.18.0
+- Native Okta SSO support
+- Add logging for gsuite and Azure SSO
+- Add RBAC Groups List
+
+#### Fixed
+
+- Allow *_proxy env vars in scheduled runs
+
+#### Internal
+
+- Update freeze.0.18.0.txt
+- filter out pickle files
+- error log consolidation, enable apm trace ids in logs
 
 ## dbt Cloud v1.1.7 [September 3, 2020]
 
