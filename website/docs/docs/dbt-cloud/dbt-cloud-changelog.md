@@ -4,7 +4,7 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.8 (Unreleased)
+## dbt Cloud v1.1.8 (September 17, 2020)
 
 This release adds native support for Okta SSO and dbt v0.18.0. It also adds
 initial support for a GitLab integration and self-service RBAC configuration.
