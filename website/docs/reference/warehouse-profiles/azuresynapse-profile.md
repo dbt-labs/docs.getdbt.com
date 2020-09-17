@@ -62,7 +62,7 @@ dbt-azuresynapse:
 
 **dbt-azuresynapse** is a custom adapter for dbt that adds support for Azure Synapse 10 and later. `pyodbc` is used as the connection driver as that is what is [suggested by Microsoft](https://docs.microsoft.com/en-us/sql/connect/python/python-driver-for-sql-server). 
 
-dbt-mssql is currently in a beta release. It is passing all of the [dbt integration tests](https://github.com/fishtown-analytics/dbt-integration-tests/) on Azure Synapse DW 10.
+dbt-azuresynapse is currently in a beta release. It is passing all of the [dbt integration tests](https://github.com/fishtown-analytics/dbt-integration-tests/) on Azure Synapse DW 10.
 
 ### Connecting to SQL Server with **dbt-azuresynapse**
 
