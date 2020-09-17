@@ -35,7 +35,7 @@ Configure your dbt profile for using SQL Server authentication or Integrated Sec
 
 ##### SQL Server authentication
 ```yaml
-dbt-sqlserver:
+dbt-azuresynapse:
   target: dev
   outputs:
     dev:
@@ -73,17 +73,19 @@ A connection can be configured using basic user/password authentication as shown
 <File name='profiles.yml'>
 
 ```yaml
-my-mssql-db:
+dbt-azuresynapse:
   target: dev
   outputs:
     dev:
-      type: mssql
-      driver: 'ODBC Driver 17 for SQL Server'
-      host: [host] # like sqlserver.mydomain.com
-      database: [database]
-      schema: [schema]
-      username: [username]
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      user: [username]
       password: [password]
+      database: [databasename]
+      authentication: SqlPassword
+      schema: [schema]
 ```
 
 </File>
