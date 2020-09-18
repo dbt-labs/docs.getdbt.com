@@ -41,7 +41,7 @@ dbt-azuresynapse:
   target: dev
   outputs:
     dev:
-      type: sqlserver
+      type: azuresynapse
       driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
       server: server-host-name or ip
       port: 1433
