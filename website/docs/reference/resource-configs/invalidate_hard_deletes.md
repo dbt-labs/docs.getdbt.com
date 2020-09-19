@@ -2,6 +2,8 @@
 resource_types: [snapshots]
 datatype: column_name
 ---
+
+<Changelog>New in v0.19.0</Changelog>
 <File name='snapshots/<filename>.sql'>
 
 ```jinja2

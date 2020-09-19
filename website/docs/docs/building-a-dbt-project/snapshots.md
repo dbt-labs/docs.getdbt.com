@@ -235,11 +235,14 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 
 ### Hard deletes (opt-in)
+
+<Changelog>New in v0.19.0</Changelog>
+
 Rows that are deleted from the source query are not invalidated by default. With the config option `invalidate_hard_deletes`, dbt can track rows that no longer exist. This is done by left joining the snapshot table with the source table, and filtering the rows that are still valid at that point, but no longer can be found in the source table. `dbt_valid_to` will be set to the current snapshot time.
 
 This configuration is not a different strategy as described above, but is an additional opt-in feature. It is not enabled by default since it alters the previous behavior.
 
-For this configuration to work, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due mixing data types.
+For this configuration to work, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
 
 **Example Usage**
 
