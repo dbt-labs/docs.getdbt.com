@@ -42,7 +42,7 @@ You should have received an invitation to dbt Cloud. Please accept the invitatio
 <Lightbox src="/img/dbt-cloud-github-integration.png" title="dbt Cloud GitHub Integration" />
 
 :::caution
-For the `[account id]` for Snowflake, this should be the account ID, not the entire URL.  For example, use `abc12345` instead of `abc12345/.snowflakecomputing.com`
+For the `[account id]` for Snowflake, this should be the account ID, not the entire URL.  For example, use `abc12345` instead of `abc12345.snowflakecomputing.com`
 :::
 
 4. Go to the `Develop` interface by either:
