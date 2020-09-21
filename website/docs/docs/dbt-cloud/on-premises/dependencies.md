@@ -1,6 +1,6 @@
 ---
-id: architecture
-title: Architecture & Data Flows
+id: dependencies
+title: External Dependencies
 ---
 
 This guide is intended to help administrators running instances of dbt Cloud on-premises understand the internal components of their instance, as well as how their instance will interact with other services over the internet.
@@ -65,15 +65,15 @@ In order to perform basic maintenance and license checking, the following outbou
 
 - `api.replicated.com`: This endpoint services the license sync check and is used to pull down yaml files for app upgrades.
 
-### Optional External Dependencies
+## Optional External Dependencies
 
-#### Auth0
+### Auth0
 
 _Required for SSO integrations_
 
 Auth0 (https://auth0.com/) is a third-party service used by dbt Cloud to provide SSO integrations via SAML or Azure ADFS. Installations relying on SSO integrations must allow `auth.getdbt.com` to be accessed via HTTPS.
 
-#### Integrations
+### Integrations
 
 _Can be individually enabled or disabled_
 
@@ -82,8 +82,10 @@ dbt Cloud supports integrations with a number of third-party applications. If en
 - **Github, Github Enterprise, Github Enterprise Server**: if the Github integration is enabled, and you wish to make use of PR builds, you will need to grant Github the ability to send webhooks to your dbt Cloud instance.
 - **Slack**: if enabled, you can send notifications on completed dbt Cloud runs to your Slack organization.
 - **Email over SMTP**: if enabled, your dbt Cloud instance will be able to send email to your users.
+- **Datadog**: if enabled, your dbt Cloud instance will attempt to send metrics and logs to Datadog. Note that this requires a valid Datadog agent installation.
 
-### Inbound (Client) Traffic
+
+## Inbound (Client) Traffic
 
 dbt Cloud requires some ports to be opened for inbound traffic from admins and end users. All inbound traffic is secured using TLS / HTTPS. Upon installation, the Replicated appliance will generate a self-signed cert, and then prompt the admin configuring the installation to provide an SSL certificate to be used for securing inbound client requests to the application.
 
@@ -92,31 +94,10 @@ The required inbound ports are:
 - 443 (tcp): For end user access to the dbt Cloud application.
 - 8800 (tcp): For admin access to the dbt Cloud admin console.
 
-### Application Data Flows
+### Additional Information
 
-The dbt Cloud application is comprised of a set of static components, as well as a set of dynamic components. The static components are constantly running to serve highly available dbt Cloud functionality, for example, the dbt Cloud web application. The dynamic components are created just-in-time to fill background jobs or a user request to use the IDE. These components are enumerated below.
+For additional information related to inbound traffic view the following sections.
 
-<img src="/img/docs/dbt-cloud/on-premises/data-flows.png" />
-
-#### Static Application Components
-
-- **api gateway**: The api gateway is the entrypoint for all client requests to dbt Cloud. The api gateway serves static content, and contains logic for routing requests within the dbt Cloud application.
-- **app**: The app is the dbt Cloud application server. It consists of a Django application capable of serving dbt Cloud REST API requests.
-- **scheduler**: The scheduler is a continuously running process that orchestrates background jobs in dbt Cloud. It consists of two components: the scheduler container which provisions dynamic resources just-in-time, and the background cleanup container which performs maintenance tasks on the dbt Cloud database, including flushing logs from dbt runs out into the object store.
-
-#### Dynamic Application Components
-
-- **dbt run**: A "run" in dbt Cloud represents a series of background invocations of dbt that are triggered either on a cron scheduler, manually by a user, or via dbt Cloud's API.
-- **dbt develop**: This is a server capable of serving dbt IDE requests for a single user. dbt Cloud will create one of these for each user that is actively using the dbt IDE.
-
-#### Application Critical Components
-
-In addition to the application components, there are a few critical dependencies of the application components that are required in order for the dbt Cloud application to function.
-
-- **PostgreSQL database**: dbt Cloud uses a PostgreSQL database as its backend. This can be a cloud-hosted database, for example, AWS RDS, Azure Database, Google Cloud SQL (recommended for production deployments); or, it can be embedded into the dbt Cloud Kubernetes appliance (not recommended for production deployments).
-- **Object Storage**: dbt Cloud requires an S3-compatible Object Storage system for persisting run logs and artifacts.
-- **Storage Volumes**: dbt Cloud requires a Kubernetes storage provider capable of creating dynamic persistent volumes that can be mounted to multiple containers in R/W mode.
-
-### Data Warehouse Interaction
-
-dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation purposes. However, it is possible for users to dispatch SQL that returns customer data into the dbt Cloud application. This data is never persisted and will only exist in memory on the instance in question. In order to properly lock down customer data, it is critical that proper data warehouse permissioning is applied to prevent improper access or storage of sensitive data.
+- [Application Data Flows](/docs/dbt-cloud/deployments/deployment-architecture#application-data-flows)
+- [Data Warehouse Interaction](/docs/dbt-cloud/deployments/deployment-architecture#data-warehouse-interaction)
+- [Customer Managed Network Architecture](/docs/dbt-cloud/deployments/deployment-architecture#customer-managed-general-network-architecture)

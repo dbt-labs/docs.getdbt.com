@@ -11,6 +11,10 @@ A dbt Cloud installation requires at least:
 
 For every 20 developer users, it is recommended to add another 4 CPU cores, 16 GB of memory, and 100GB of disk. You can accomplish this either by creating a larger instance, or by adding another node to your dbt Cloud cluster.
 
+### Install into an existing Kubernetes cluster
+
+As mentioned above, it is recommended that at least 4 CPU cores, 16GB of memory, and 100GB of storage is made available for the dbt Cloud application. These are the resource totals consumed across the entire Kubernetes cluster by the dbt Cloud application.
+
 ### Install into a VM
 
 #### Supported Operating Systems
@@ -32,7 +36,3 @@ For major cloud providers, use the following instance types or larger for a star
 - **GCP**: n1-standard-4
 - **AWS**: m5.xlarge
 - **Azure**: D4 v3
-
-### Install into an existing Kubernetes cluster
-
-As with installing into a VM, it is recommended that at least 4 CPU cores, 16GB of memory, and 100GB of storage is made available for the dbt Cloud application. These are the resource totals consumed across the entire Kubernetes cluster by the dbt Cloud application.
