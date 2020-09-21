@@ -277,6 +277,7 @@ module.exports = {
             "reference/resource-configs/target_schema",
             "reference/resource-configs/unique_key",
             "reference/resource-configs/updated_at",
+            "reference/resource-configs/invalidate_hard_deletes",
           ],
         },
         "reference/resource-configs/bigquery-configs",
