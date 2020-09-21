@@ -84,7 +84,7 @@ Unlike hooks, you need to explicitly execute a query within a macro, by using ei
 
 This macro performs a similar action as the above hooks:
 
-<File name='macros/grant_select.yml'>
+<File name='macros/grant_select.sql'>
 
 ```sql
 {% macro grant_select(role) %}
