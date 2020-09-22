@@ -185,20 +185,6 @@ module.exports = {
         },
       ],
     },
-    // {
-    //   type: "category",
-    //   label: "On-Premises",
-    //   items: [
-    //     "docs/dbt-cloud/on-premises/index",
-    //     "docs/dbt-cloud/on-premises/architecture",
-    //     "docs/dbt-cloud/on-premises/prerequisites",
-    //     "docs/dbt-cloud/on-premises/system-requirements",
-    //     "docs/dbt-cloud/on-premises/installation",
-    //     "docs/dbt-cloud/on-premises/setup",
-    //     "docs/dbt-cloud/on-premises/usage-statistics",
-    //     "docs/dbt-cloud/on-premises/faqs",
-    //   ],
-    // },
     {
       type: "category",
       label: "Deployments",
