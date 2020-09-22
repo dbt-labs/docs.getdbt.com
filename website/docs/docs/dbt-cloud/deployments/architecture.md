@@ -45,7 +45,7 @@ The following diagram shows the network architecture for the _Production_ and _S
 - **CLB**: One or more [AWS Classic Load Balancers](https://aws.amazon.com/elasticloadbalancing/) living in a public subnet are leveraged in the hosted deployment environments to distribute incoming traffic across multple EC2 instances in the EKS cluster.
 - **EC2**: The hosted dbt Cloud deployments leverage a cluster of [AWS EC2](https://aws.amazon.com/ec2/) worker nodes to run the dbt Cloud application.
 - **EBS**: In order to store temporary in-memory application data, dbt Cloud leverages [AWS Elastic Block Store](https://aws.amazon.com/ebs/) mounted to the EC2 instances described above.
-- **EFS**: An [AWS Elastic File System](https://aws.amazon.com/efs/) is provisioned for hosted deployments to store and manage local files from the dbt Cloud developer environment.
+- **EFS**: An [AWS Elastic File System](https://aws.amazon.com/efs/) is provisioned for hosted deployments to store and manage local files from the dbt Cloud IDE.
 - **S3**: [AWS Simple Storage Service (S3)](https://aws.amazon.com/s3/) is used to store dbt Cloud application logs and artifacts (such as those generated from dbt job runs). 
 - **RDS**: The hosted dbt Cloud application leverages [AWS Postgres RDS](https://aws.amazon.com/rds/postgresql/) to store application information such as accounts, users, environments, etc. Note that as explained in the [Data Warehouse Interaction](#data-warehouse-interaction) section above, no data from an associated warehouse is ever stored in this database.
 
