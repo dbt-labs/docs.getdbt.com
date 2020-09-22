@@ -34,7 +34,11 @@ In addition to the application components, there are a few critical dependencies
 
 dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation purposes. However, it is possible for users to dispatch SQL that returns customer data into the dbt Cloud application. This data is never persisted and will only exist in memory on the instance in question. In order to properly lock down customer data, it is critical that proper data warehouse permissioning is applied to prevent improper access or storage of sensitive data.
 
-### Hosted Network Architecture
+### Deployment Architecture
+
+The following two sections describe the network architectures for _hosted_ and _customer managed_ deployments. Note that both categories have many similar components with the main difference being that hosted deployments leverage AWS infrastructure and customer managed can be deployed in any cloud based or on-premise infrastructure.
+
+#### Hosted Network Architecture
 
 The following diagram shows the network architecture for the _Production_ and _Single Tenant_ deployment types. While many of the specifications of the components differ between the Production and Single Tenant offerings Read below for more information on each of the components and how they might differ between the two deployment models. 
 
@@ -44,13 +48,13 @@ The following diagram shows the network architecture for the _Production_ and _S
 - **EKS**: Hosted environments leverage [AWS Elastic Kubernetes Service](https://aws.amazon.com/eks/) to manage dbt Cloud application resources. EKS provides a high degree of reliability and scalability for the dbt Cloud application.
 - **CLB**: One or more [AWS Classic Load Balancers](https://aws.amazon.com/elasticloadbalancing/) living in a public subnet are leveraged in the hosted deployment environments to distribute incoming traffic across multple EC2 instances in the EKS cluster.
 - **EC2**: The hosted dbt Cloud deployments leverage a cluster of [AWS EC2](https://aws.amazon.com/ec2/) worker nodes to run the dbt Cloud application.
-- **EBS**: In order to store temporary in-memory application data, dbt Cloud leverages [AWS Elastic Block Store](https://aws.amazon.com/ebs/) mounted to the EC2 instances described above.
+- **EBS**: In order to store application data, dbt Cloud leverages [AWS Elastic Block Store](https://aws.amazon.com/ebs/) mounted to the EC2 instances described above.
 - **EFS**: An [AWS Elastic File System](https://aws.amazon.com/efs/) is provisioned for hosted deployments to store and manage local files from the dbt Cloud IDE.
 - **S3**: [AWS Simple Storage Service (S3)](https://aws.amazon.com/s3/) is used to store dbt Cloud application logs and artifacts (such as those generated from dbt job runs). 
 - **RDS**: The hosted dbt Cloud application leverages [AWS Postgres RDS](https://aws.amazon.com/rds/postgresql/) to store application information such as accounts, users, environments, etc. Note that as explained in the [Data Warehouse Interaction](#data-warehouse-interaction) section above, no data from an associated warehouse is ever stored in this database.
 
 
-### Customer Managed (General) Network Architecture
+#### Customer Managed (General) Network Architecture
 
 The following diagram illustrates a general network architecture that applies to _On-premise_ and _Airgapped_ deployment models. Note that in a customer managed model, the architecture may be augmented or modified (for example if using a VM) but the below describes the basic infrastructure needed to host the dbt Cloud application in a cloud environment such as AWS, GCP, or Azure.
 
