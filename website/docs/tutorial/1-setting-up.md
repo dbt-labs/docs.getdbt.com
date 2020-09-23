@@ -3,6 +3,8 @@ title: Setting up
 id: setting-up
 ---
 
+In this tutorial, we will be turning the below query into a dbt project that is tested, documented, and deployed — you can check out the generated documentation for the project we're building [here](https://www.getdbt.com/getting-started-tutorial/#!/overview?g_v=1).
+
 This tutorial is geared at first-time users who want detailed instructions on how to go from zero to a deployed dbt project. You'll need a working knowledge of SQL in order to do this tutorial.
 
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
@@ -10,9 +12,8 @@ This tutorial is geared at first-time users who want detailed instructions on ho
 
 We recommend you go through this project once from beginning to end. Once you've completed it, you should go back through and read some of the FAQs to broaden your understanding of dbt.
 
-This tutorial is based on a fictional business named `jaffle_shop`, so you'll see this name used throughout the project.
+This tutorial is based on a fictional business named `jaffle_shop`, so you'll see this name used throughout the project. At this organization, the following query is used to build a `customers` table.
 
-In this tutorial, we will be turning the following query into a dbt project that is tested, documented, and deployed.
 ```sql
 with customers as (
 
