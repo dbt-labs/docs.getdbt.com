@@ -38,7 +38,8 @@ dbt run --models state:modified
 dbt test --models state:modified
 ```
 
-Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags.
+Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs
+need to be running dbt v0.18.0 or newer.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests may select another job from the same project for deferral and comparison"/>
