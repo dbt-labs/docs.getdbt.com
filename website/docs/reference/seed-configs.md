@@ -10,8 +10,8 @@ title: Seed configurations
 ```yml
 seeds:
   [<resource-path>](resource-path):
-    +[quote_columns](resource-configs/quote_columns): true | false
-    +[column_types](resource-configs/column_types): {column_name: datatype}
+    [+](plus-prefix)[quote_columns](resource-configs/quote_columns): true | false
+    [+](plus-prefix)[column_types](resource-configs/column_types): {column_name: datatype}
 
 ```
 
@@ -26,15 +26,15 @@ seeds:
 
 seeds:
   [<resource-path>](resource-path):
-    +[enabled](resource-configs/enabled): true | false
-    +[schema](resource-configs/schema): string
-    +[database](resource-configs/database): string
-    +[alias](resource-configs/alias): string
-    +[pre-hook](resource-configs/pre-hook-post-hook): sql-statement | [sql-statement]
-    +[post-hook](resource-configs/pre-hook-post-hook): sql-statement | [sql-statement]
-    +[tags](resource-configs/tags): string | [string]
-    +[persist_docs](resource-configs/persist_docs): {<dict>}
-    +[full_refresh](full_refresh): <boolean>
+    [+](plus-prefix)[enabled](resource-configs/enabled): true | false
+    [+](plus-prefix)[schema](resource-configs/schema): string
+    [+](plus-prefix)[database](resource-configs/database): string
+    [+](plus-prefix)[alias](resource-configs/alias): string
+    [+](plus-prefix)[pre-hook](resource-configs/pre-hook-post-hook): sql-statement | [sql-statement]
+    [+](plus-prefix)[post-hook](resource-configs/pre-hook-post-hook): sql-statement | [sql-statement]
+    [+](plus-prefix)[tags](resource-configs/tags): string | [string]
+    [+](plus-prefix)[persist_docs](resource-configs/persist_docs): {<dict>}
+    [+](plus-prefix)[full_refresh](full_refresh): <boolean>
 
 ```
 
