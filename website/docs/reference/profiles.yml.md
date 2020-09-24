@@ -6,7 +6,7 @@ If you're using the dbt CLI, you'll need to set up a `profiles.yml` file.
 
 You can learn more about this in the article on [Connecting to your warehouse](configure-your-profile).
 
-This article lists the parts of your `profile.yml` which are _not_ database specific. Check out the article for your database for exact connection details.
+This article lists the parts of your `profiles.yml` which are _not_ database specific. Check out the article for your database for exact connection details.
 
 <File name='profiles.yml'>
 

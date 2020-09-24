@@ -150,3 +150,7 @@ They will need the following:
 ### Slack
 
 dbt Cloud can send Slack notifications when runs finish. You can provide a set of Slack credentials for dbt Cloud to use to interact with a Slack app you create.
+
+### Datadog
+
+dbt Cloud can be configured to send logs and metrics to your Datadog account. This requires configuration and installation of a [Datadog agent](https://www.datadoghq.com/blog/monitoring-kubernetes-with-datadog/#install-the-datadog-agent).

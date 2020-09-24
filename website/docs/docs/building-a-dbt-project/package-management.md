@@ -97,6 +97,31 @@ To find the latest release for a package, navigate to the `Releases` tab in the 
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
 
+#### Private packages
+Private packages can be installed by using the SSH configuration on the machine or by passing in a username and password with the git URL. It is recommended that you use SSH authentication method where possible.
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  - git: "git@github.com:fishtown-analytics/dbt-utils.git" # git SSH URL
+```
+This method requires the SSH configuration be stored in `~/.ssh/`.
+
+</File>
+
+```yaml
+packages:
+  - git: "https://<username>:<password>@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
+```
+
+You can also reference an [environment variables](env_var).
+
+```yaml
+packages:
+  - git: "https://{{env_var('GIT_CREDENTIALS)}}@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
+```
+
 ### Local packages
 Packages that you have stored locally can be installed by specifying the path to the project, like so:
 

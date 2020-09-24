@@ -9,6 +9,9 @@ This guide describes a feature of the dbt Cloud Enterprise plan. If you’re int
 
 :::
 
+_To view setup instructions for Okta SSO
+using Auth0, see [here](setting-up-sso-with-okta-deprecated)._
+
 ## Okta SSO
 
 dbt Cloud Enterprise supports single-sign on via Okta (using SAML). Currently supported features include:
@@ -17,45 +20,88 @@ dbt Cloud Enterprise supports single-sign on via Okta (using SAML). Currently su
 * SP-initiated SSO
 * Just-in-time provisioning
 
-This guide outlines the setup process for authenticating to dbt Cloud with Okta. After following the steps below, please contact support (support@getdbt.com) to complete the setup process.
+This guide outlines the setup process for authenticating to dbt Cloud with Okta.
+If you have any questions during the setup process, please contact support
+(support@getdbt.com) for assistance.
 
-## Configuration
+## Configuration in Okta
 
 ### Create a new application
 
-Log into your Okta account. You'll need administrator access to your Okta organization to follow this guide.
+Note: You'll need administrator access to your Okta organization to follow this guide.
 
-Using the Admin dashboard, you need to create a new app. To do this, first go to the Okta dashboard. Click **Admin** to go to the admin dashboard. Click **+ Add Applications** on the right side of the screen. Finally, click **Create New App**.
+First, log into your Okta account. Using the Admin dashboard, create a new app.
 
-Next, you'll configure the dbt Cloud application. On the **Create a New Application Integration** modal, select *Web* as the **Platform**, and *SAML 2.0* as the **Sign on method**. Click Create to continue.
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app.png"
+    title="Create a new app"
+/>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/137b611-Screen_Shot_2019-04-25_at_6.10.43_PM.png" title="The 'Create a New Application Integration' modal"/>
+On the following screen, select the following configurations:
+- **Platform**: Web
+- **Sign on method**: SAML 2.0
 
-On the *General Settings* page, enter the following:
+Click **Create** to continue the setup process.
+
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
+    title="Configure a new app"
+/>
+
+### Configure the Okta application
+
+On the **General Settings** page, enter the following details::
 
 * **App name**: dbt Cloud
-* **App logo** (optional): You can optionally [download this dbt logo](https://raw.githubusercontent.com/fishtown-analytics/corp/master/assets/dbt/dbt-logo-75x75.png), and upload it to Okta to use as the logo for this app.
+* **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1w_Yj7QK-ULP4ebtKbrbvGo04pWlg0Y7S/view),
+  and upload it to Okta to use as the logo for this app.
 
 Click **Next** to continue.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/ae2045a-Screen_Shot_2019-04-25_at_6.05.12_PM.png" title="The 'General Settings' page"/>
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
+    title="Configure the app's General Settings"
+/>
 
 ### Configure SAML Settings
 
-:::caution Group Attributes
+The SAML Settings page configures how Okta and dbt Cloud communicate. If your
+dbt Cloud instance is _not_ running at `cloud.getdbt.com`, you will want to replace
+the domain names shown below with the domain name where your instance is running. If you
+aren't sure which values you should use, please contact support (support@getdbt.com).
 
-dbt Cloud uses SAML settings provided by Okta to enforce role-based access control. If the Group Attribute statement shown below is misconfigured, then users may not be permissioned to projects appropriately in dbt Cloud.
-
-:::
+To complete this section, you will need a _login slug_. This slug controls the
+URL where users on your account can log into your application via Okta. Login
+slugs are typically the lowercased name of your organization separated with
+dashes. For example, the _login slug_ for Fishtown Analytics would be
+`fishtown-analytics`. Login slugs must be unique across all dbt Cloud accounts,
+so pick a slug that uniquely identifies your company.
 
 On the **SAML Settings** page, enter the following values:
 
-* **Single sign on URL**: `https://auth.getdbt.com/login/callback?connection=<your-deployment-id>`
-* **Audience URI (SP Entity ID)**: `urn:auth0:dbt-cloud:<your-deployment-id>`
+* **Single sign on URL**: `https://cloud.getdbt.com/complete/okta`
+* **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
+* **Relay State**: `<login slug>`
 
-Replace `<your-deployment-id>` with your dbt Cloud deployment ID. If you aren't sure what value you should use, please contact support (support@getdbt.com).
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png"
+    title="Configure the app's SAML Settings"
+/>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/61d2b48-Screen_Shot_2019-04-25_at_6.05.23_PM.png" title="The 'SAML Settings' page"/>
+<!-- TODO : Will users need to change the Name ID format and Application
+username on this screen? -->
+
+:::caution User and Group Attributes
+
+dbt Cloud uses SAML settings provided by Okta to enforce role-based access
+control. If the Group Attribute statements shown below are misconfigured, then
+users may not be permissioned to projects correctly in dbt Cloud.
+
+:::
 
 Under **Attribute Statements**, enter the following:
 
@@ -67,18 +113,98 @@ Under **Group Attribute Statments**, enter the following:
 
 * **Name**: groups
 * **Name format**: Unspecified
-* **Value**: Use the Regex filter and supply `.*` (or an appropriate filter for your dbt Cloud configuration)
+* **Filter**: Matches regex
+* **Value**: `.*`
+
+**Note:** You may use a more restrictive Group Attribute Statement than the
+example shown above. For example, if all of your dbt Cloud groups start with
+`DBT_CLOUD_`, you may use a filter like `Starts With: DBT_CLOUD_`. **Okta
+only returns 100 groups for each user, so if your users belong to more than 100
+IdP groups, you will need to use a more restrictive filter**. Please contact
+support if you have any questions.
+
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
+    title="Configure the app's User and Group Attribute Statements"
+/>
 
 Click **Next** to continue.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/51f1bb7-Screen_Shot_2019-04-25_at_6.05.32_PM.png" title="Attribute Statements on the 'SAML Settings' page"/>
+### Finish Okta setup
 
-### Finish setup
+Select *I'm an Okta customer adding an internal app*, and select *This is an
+internal app that we have created*. Click **Finish** to finish setting up the
+app.
 
-Select *I'm an Okta customer adding an internal app*, and select *This is an internal app that we have created*. Click **Finish** to finish setting up the app.
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-4-feedback.png"
+    title="Finishing setup in Okta"
+/>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/41b00ff-Screen_Shot_2019-04-25_at_6.06.08_PM.png" title="Final Setup"/>
+### View setup instructions
 
-On the next page, click **View Setup Instructions**. There are three values here that you'll need to provide us to complete your account setup: *Identity Provider Single Sign-On URL*, *Identity Provider Issuer*, and *X.509 Certificate*. Send these values to us via support (either in-app via Intercom, or via email at support@getdbt.com), and we'll get back to you when the Okta integration is ready to use.
+On the next page, click **View Setup Instructions**. In the steps below,
+you'll supply these values in your dbt Cloud Account Settings to complete
+the integration between Okta and dbt Cloud.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/2be2b70-Screen_Shot_2019-04-25_at_6.06.31_PM.png" title="SAML Credentials"/>
+<Lightbox
+    collapsed={true}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
+    title="Viewing the configured application"
+/>
+
+<Lightbox
+    collapsed={true}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-instructions.png"
+    title="Application setup instructions"
+/>
+
+## Configuration in dbt Cloud
+
+To complete setup, follow the steps below in dbt Cloud.
+
+### Enable Okta Native Auth (beta)
+
+- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
+  gain access to the Okta configuration UI
+- For users accessing dbt Cloud deployed in a VPC, enable the `native_okta`
+  feature flag in the dbt Cloud admin backend.
+
+### Supplying credentials
+
+First, navigate to the **Enterprise &gt; Single Sign On** page under Account
+Settings. Next, click the **Edit** button and supply the following SSO details:
+
+:::note Login Slugs
+
+The slug configured here should have the same value as the  **Okta RelayState**
+configured in the steps above.
+
+:::
+
+| Field | Value |
+| ----- | ----- |
+| **Log&nbsp;in&nbsp;with** | Okta |
+| **Identity&nbsp;Provider&nbsp;SSO&nbsp;Url** | Paste the **Identity Provider Single Sign-On URL** shown in the Okta setup instructions |
+| **Identity&nbsp;Provider&nbsp;Issuer** | Paste the **Identity Provider Issuer** shown in the Okta setup instructions |
+| **X.509&nbsp;Certificate** | Paste the **X.509 Certificate** shown in the Okta setup instructions |
+| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
+
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+    title="Configuring the application in dbt Cloud"
+/>
+
+21. Click **Save** to complete setup for the Okta integration. From
+    here, you can navigate to the URL generated for your account's _slug_ to
+    test logging in with Okta. Additionally, users added the the Okta app
+    will be able to log in to dbt Cloud from Okta directly.
+
+:::success Logging in
+Users in your Okta account will now be able to log into the application
+by navigating to the URL:
+
+`https://cloud.getdbt.com/enterprise-login/<login-slug>`

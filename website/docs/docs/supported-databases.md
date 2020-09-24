@@ -24,6 +24,7 @@ These database plugins are community-supported 🌱
 | -------- | ------------- | ----- |
 | Microsoft SQL Server ([dbt-mssql](https://github.com/jacobm001/dbt-mssql)) | [Profile Setup](mssql-profile) | SQL Server 2008 R2 and later |
 | Microsoft SQL Server ([dbt-sqlserver](https://github.com/mikaelene/dbt-sqlserver)) | [Profile Setup](mssql-profile) | SQL Server 2016 and later 
+| Microsoft Azure Synapse DW ([dbt-azuresynapse](https://github.com/embold-health/dbt-azuresynapse)) | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+ 
 | Exasol Analytics ([dbt-exasol](https://github.com/tglunde/dbt-exasol)) | [Profile Setup](exasol-profile) | Exasol 6.x and later |
 | Oracle Database ([dbt-oracle](https://github.com/techindicium/dbt-oracle)) | [Profile Setup](oracle-profile) |Oracle 11+ |
 
