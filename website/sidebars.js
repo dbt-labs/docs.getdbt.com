@@ -61,6 +61,7 @@ module.exports = {
         "docs/guides/best-practices",
         "docs/guides/managing-environments",
         "docs/guides/writing-custom-schema-tests",
+        "docs/guides/dbt-artifacts",
         "docs/guides/building-packages",
         "docs/guides/creating-new-materializations",
         {
@@ -76,6 +77,7 @@ module.exports = {
             "docs/guides/migration-guide/upgrading-to-0-16-0",
             "docs/guides/migration-guide/upgrading-to-0-17-0",
             "docs/guides/migration-guide/upgrading-to-0-18-0",
+            "docs/guides/migration-guide/upgrading-to-0-19-0",
           ],
         },
         "docs/guides/videos",
