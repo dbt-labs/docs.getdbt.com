@@ -8,7 +8,7 @@ title: "Tests"
 * [Data test configurations](data-test-configs)
 
 <!---
-* [Test selection syntax](model-selection-syntax)
+* [Test selection syntax](node-selection/syntax)
 --->
 
 ## Getting started

@@ -21,7 +21,7 @@ In the dbt IDE, you can compile dbt code into SQL and execute it against your da
 
 ## Running Projects
 
-In addition to compiling and executing SQL, you can also *run* dbt projects in the dbt IDE. Use dbt's [rich model selection syntax](model-selection-syntax) to [run dbt commands](dbt-commands) directly in your browser.
+In addition to compiling and executing SQL, you can also *run* dbt projects in the dbt IDE. Use dbt's [rich model selection syntax](node-selection/syntax) to [run dbt commands](dbt-commands) directly in your browser.
 
 The dbt IDE updates in real-time as models, tests, seeds, and operations are run. If a model or tests fails, you can dig into the logs to find and fix the issue.
 

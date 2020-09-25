@@ -25,7 +25,7 @@ Easiest install is to use pip:
 
 #### User / password authentication
 
-Configure your dbt profile for using SQL Server authentication or Integrated Security:
+Configure your dbt profile for using Exasol:
 
 ##### Exasol connection information
 <File name='profiles.yml'>
@@ -37,7 +37,7 @@ dbt-exasol:
     dev:
       type: exasol
       threads: 1
-      dsn: IP:PORT
+      dsn: HOST:PORT
       user: USERNAME
       pass: PASSWORD
       dbname: db
