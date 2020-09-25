@@ -18,13 +18,12 @@ We recommend locally rendering changes made to the docs site so you can review y
 
 0. If applicable, install [Xcode CLTs](https://developer.apple.com/download/more/); you'll likely need an AppleID for this.
 1. Install `node`: `brew install node`
-2. Install `yarn`: `brew install yarn`
-3. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
-4. `cd` into the repo: `cd docs.getdbt.com`
-5. `cd` into the `website` subdirectory: `cd website`
-6. Install the required node packages: `npm install`
-7. Build the website: `npm start`
-8. Before pushing your changes to a branch, check that all links work by using the `make build` script.
+2. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
+3. `cd` into the repo: `cd docs.getdbt.com`
+4. `cd` into the `website` subdirectory: `cd website`
+5. Install the required node packages: `npm install`
+6. Build the website: `npm start`
+7. Before pushing your changes to a branch, check that all links work by using the `make build` script.
 
 Advisory: Currently an `npm install` produces a number of depedency warnings, in particular several claiming that `docusaurus/core` is missing. Rest assured, this message is a red herring. As of writing this, no 2.0.0 package exists, so you won't have much luck trying to install it. Feel free to ignore those warnings.
 
