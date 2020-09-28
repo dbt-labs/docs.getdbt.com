@@ -61,3 +61,6 @@ $ dbt run --models tag:nightly my_model finance.base.*
 # use methods and intersections for more complex selectors
 $ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
 ```
+
+:::info
+The shorthand of --models that can be used for selecting models is -m 
