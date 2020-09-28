@@ -78,7 +78,7 @@ function expandRelativeLink(href, ignoreInvalid) {
         hash = ''
     }
 
-    var isExternal = !!link.match(/https?:/);
+    var isExternal = !!link.match(/https?:/) || !!link.match(/:/);
 
     var sourceLink = findSource(link);
     if (sourceLink) {
@@ -93,7 +93,8 @@ function expandRelativeLink(href, ignoreInvalid) {
         }
     } else if (!isExternal && !href.startsWith('/')) {
         if (ENV.DOCS_ENV == 'build' && !ignoreInvalid) {
-            throw new Error(`Broken link detected ${href}`)
+            console.log(` - Broken link detected ${href}`);
+            throw new Error("Broken link")
         } else {
             return {
                 bad: true,
