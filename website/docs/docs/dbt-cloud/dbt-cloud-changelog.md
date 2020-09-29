@@ -4,17 +4,21 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.9 (TODO - Enter date)
+## dbt Cloud v1.1.9 (Oct 1, 2020)
 
-TODO - Enter release summary and curate below release notes
+This release adds the ability for admins on the Enterprise plan to configure
+the Role Based Access Control permissions applied to Projects in their account.
+Additionally, job execution deferral is now available behind a feature flag,
+and a number of fixes and improvements were released as well.
 
 #### Enhancements
 
 - Add dbt Cloud version in the navigation sidebar
-- Add RBAC Group Permission Set Edit and Creation
-- Added personal git auth for IDE error handling modals
-- add Develop Requests to admin
-- implement first-pass at job execution deferral
+- Add RBAC Group Permission view, create, and modify UIs
+- Add personal git auth for IDE error handling modals
+- Add Develop Requests to backend views
+- Implemented job execution deferral
+- Add support for dbt v0.18.1b2
 
 #### Fixed
 
@@ -23,16 +27,14 @@ TODO - Enter release summary and curate below release notes
 - Address RBAC inconsistencies
 - Fixed users not being able to update their dbt Cloud password in-app
 - Fix for applying user permissions across multiple accounts after SSO auth
-- google api: default to common api endpoint but allow override
+- Google API: default to common api endpoint but allow override
 - Fix for missing email variable in GSuite debug logging
 - Destroy IDE session when switching projects
 
 #### Internal
 
-- 0.18.1b2 support
-- Fix GSuite API Scope
 - Use FQDN for routing internal develop requests
-- s3: upping the retry limit
+- S3: upping the retry limit
 
 ## dbt Cloud v1.1.8 (September 17, 2020)
 
