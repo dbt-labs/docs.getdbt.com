@@ -18,15 +18,11 @@ This is a Community Contributed plugin for dbt. If you're interested in contribu
 
 **dbt-dremio** supports dbt 0.18.0 or newer.
 
-When available, the easiest install will be to use pip:
+The easiest way to install it is to use pip:
 
     pip install dbt-dremio
 
-There is no package yet, you can clone the repository, cd in it, and then type 
-
-    pip3 install -e .
-
-Follow the repository's link for python and os dependencies.
+Follow the repository's link for os dependencies.
 
 ## Connecting to Dremio with **dbt-dremio**
 
