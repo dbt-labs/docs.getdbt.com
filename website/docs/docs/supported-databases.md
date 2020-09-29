@@ -27,6 +27,7 @@ These database plugins are community-supported 🌱
 | Microsoft Azure Synapse DW ([dbt-azuresynapse](https://github.com/embold-health/dbt-azuresynapse)) | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+ 
 | Exasol Analytics ([dbt-exasol](https://github.com/tglunde/dbt-exasol)) | [Profile Setup](exasol-profile) | Exasol 6.x and later |
 | Oracle Database ([dbt-oracle](https://github.com/techindicium/dbt-oracle)) | [Profile Setup](oracle-profile) |Oracle 11+ |
+| Dremio ([dbt-dremio](https://github.com/fabrice-etanchaud/dbt-dremio)) | [Profile Setup](dremio-profile) |Dremio 4.7+ |
 
 ## Creating a new adapter
 

@@ -450,6 +450,7 @@ module.exports = {
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
+        "reference/warehouse-profiles/dremio-profile",        
       ],
     },
     "reference/dbt-artifacts",
