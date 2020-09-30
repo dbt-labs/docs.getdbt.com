@@ -48,7 +48,7 @@ jaffle_shop:
 ## What goes in my `profiles.yml` file?
 In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use – for most organizations, this means you would only have one profile.
 
-You can also configure some advanced dbt options in your `profiles.yml` file, see [Additional profile configurations](configure-your-profile#additional-profile-configurations).
+You can also configure some advanced dbt options in your `profiles.yml` file, see [Additional profile configurations](configure-your-profile/#additional-profile-configuration).
 
 ## What goes in a profile?
 A profile consists of _targets_, and a specified _default target_.
