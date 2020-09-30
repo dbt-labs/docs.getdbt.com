@@ -295,6 +295,7 @@ module.exports = {
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/spark-configs",
         "reference/advanced-config-usage",
+        "reference/resource-configs/plus-prefix",
       ],
     },
     {
