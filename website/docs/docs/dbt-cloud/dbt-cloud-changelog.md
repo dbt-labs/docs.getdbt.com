@@ -4,6 +4,38 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.9 (Oct 1, 2020)
+
+This release adds the ability for admins on the Enterprise plan to configure
+the Role Based Access Control permissions applied to Projects in their account.
+Additionally, job execution deferral is now available behind a feature flag,
+and a number of fixes and improvements were released as well.
+
+#### Enhancements
+
+- Add dbt Cloud version in the navigation sidebar
+- Add RBAC Group Permission view, create, and modify UIs
+- Add personal git auth for IDE error handling modals
+- Add Develop Requests to backend views
+- Implemented job execution deferral
+- Add support for dbt v0.18.1b2
+
+#### Fixed
+
+- Fixed the scenario where interacting with the Refresh IDE button causes an index.lock file to remain in the IDE file system
+- Validate PR URL for XSS attempts
+- Address RBAC inconsistencies
+- Fixed users not being able to update their dbt Cloud password in-app
+- Fix for applying user permissions across multiple accounts after SSO auth
+- Google API: default to common api endpoint but allow override
+- Fix for missing email variable in GSuite debug logging
+- Destroy IDE session when switching projects
+
+#### Internal
+
+- Use FQDN for routing internal develop requests
+- S3: upping the retry limit
+
 ## dbt Cloud v1.1.8 (September 17, 2020)
 
 This release adds native support for Okta SSO and dbt v0.18.0. It also adds
