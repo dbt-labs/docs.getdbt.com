@@ -316,6 +316,7 @@ module.exports = {
         "reference/snapshot-properties",
         "reference/analysis-properties",
         "reference/macro-properties",
+        "reference/exposure-properties",
         {
           type: "category",
           label: "List of general properties",
