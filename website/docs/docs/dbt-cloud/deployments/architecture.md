@@ -40,7 +40,7 @@ The following two sections describe the network architectures for _hosted_ and _
 
 #### Hosted Network Architecture
 
-The following diagram shows the network architecture for the _Production_ and _Single Tenant_ deployment types. While many of the specifications of the components differ between the Production and Single Tenant offerings Read below for more information on each of the components and how they might differ between the two deployment models. 
+The following diagram shows the network architecture for the hosted _Multi Tenant_ and _Single Tenant_ deployment types. While many of the specifications differ between the Multi Tenant and Single Tenant offerings the basic types of components illustrated below are mostly the same. Read below for more information on each of the components and how they might differ between the two deployment models. 
 
 <img src="/img/docs/dbt-cloud/deployment/aws-network-architecture.png" />
 
@@ -56,7 +56,7 @@ The following diagram shows the network architecture for the _Production_ and _S
 
 #### Customer Managed (General) Network Architecture
 
-The following diagram illustrates a general network architecture that applies to _On-premise_ and _Airgapped_ deployment models. Note that in a customer managed model, the architecture may be augmented or modified (for example if using a VM) but the below describes the basic infrastructure needed to host the dbt Cloud application in a cloud environment such as AWS, GCP, or Azure.
+The following diagram illustrates a general network architecture that applies to _Customer Managed_ deployment models. Note that in a customer managed model, the architecture may be augmented or modified (for example if using a VM) but the below describes the basic infrastructure needed to host the dbt Cloud application in a cloud environment such as AWS, GCP, or Azure.
 
 <img src="/img/docs/dbt-cloud/deployment/generic-network-architecture.png" />
 

@@ -187,15 +187,21 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Deployments",
+      label: "dbt Cloud Deployments",
       items: [
         "docs/dbt-cloud/deployments/deployment-overview",
-        "docs/dbt-cloud/deployments/deployment-architecture",
-        "docs/dbt-cloud/deployments/production-deployment",
-        "docs/dbt-cloud/deployments/single-tenant-deployment",
+        
         {
           type: "category",
-          label: "On-Premises",
+          label: "Hosted",
+          items: [
+            "docs/dbt-cloud/deployments/multi-tenant-deployment",
+            "docs/dbt-cloud/deployments/single-tenant-deployment",
+          ],
+        },
+        {
+          type: "category",
+          label: "Customer Managed",
           items: [
             "docs/dbt-cloud/on-premises/index",
             "docs/dbt-cloud/on-premises/dependencies",
@@ -204,10 +210,11 @@ module.exports = {
             "docs/dbt-cloud/on-premises/installation",
             "docs/dbt-cloud/on-premises/setup",
             "docs/dbt-cloud/on-premises/usage-statistics",
+            "docs/dbt-cloud/deployments/airgapped-deployment",
             "docs/dbt-cloud/on-premises/faqs",
           ],
         },
-        "docs/dbt-cloud/deployments/airgapped-deployment",
+        "docs/dbt-cloud/deployments/deployment-architecture",
       ],
     },
     "docs/dbt-cloud/cloud-changelog",
