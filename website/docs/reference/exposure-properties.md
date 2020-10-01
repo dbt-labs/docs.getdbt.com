@@ -9,7 +9,6 @@ title: Exposure properties
 </Changelog>
 
 ## Related documentation
-- [Using exposures](using-exposures)
 - [Declaring resource properties](declaring-properties)
 
 Exposure properties can be declared in `.yml` files in:
