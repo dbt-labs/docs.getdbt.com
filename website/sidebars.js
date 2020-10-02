@@ -136,6 +136,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users",
