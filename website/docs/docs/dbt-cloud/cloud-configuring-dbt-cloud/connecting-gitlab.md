@@ -24,13 +24,15 @@ To link your dbt Cloud account to your GitLab account, navigate to your Account 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_navigation_setup.gif" title="Like so!"/>
 
-Here you can link your GitLab account to dbt Cloud. You'll need to set up an application at GitLab in order to make it official - [they have a guide for that here](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application-through-the-profile)! For your dbt Cloud application, you'll want to check the `api` scope level.
+Here you can link your GitLab account to dbt Cloud. 
+
+You'll need to set up an application at GitLab in order to make it official - [they have a guide for that here](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application-through-the-profile)! For your dbt Cloud application, you'll want to check the `api` scope level.
 
 Once you've gotten your Application ID and Secret from GitLab, you can click the Edit button in your Integrations tab, and copy-paste those values into the form.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_integration_edit_button.png" title="This button!"/>
 
-Note that you'll need to approve the application explicitly with GitLab: 
+GitLab will then ask for your explicit approval:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_application_auth.png"/>
 
