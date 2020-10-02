@@ -293,6 +293,71 @@ Snapshot tables will be created as a clone of your source dataset, plus some add
 | dbt_scd_id     | A unique key generated for each snapshotted record. | This is used internally by dbt |
 | dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
 
+The timestamps used for each column are subtly different depending on the strategy you use:
+
+For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
+
+<details>
+
+Snapshot query results at `2019-01-01 11:00`:
+
+| order_id | status  | updated_at       |
+| -------- | ------- | ---------------- |
+| 1        | pending | 2019-01-01 10:47 |
+
+Snapshot results (note that `11:00` is not used anywhere):
+
+| order_id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| -------- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1        | pending | 2019-01-01 10:47 | 2019-01-01 10:47 |                  | 2019-01-01 10:47 |
+
+Query results at `2019-01-01 11:30`:
+
+| order_id | status  | updated_at       |
+| -------- | ------- | ---------------- |
+| 1        | shipped | 2019-01-01 11:05 |
+
+Snapshot results (note that `11:30` is not used anywhere):
+
+| order_id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| -------- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1        | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 11:05 |
+| 1        | shipped | 2019-01-01 10:47 | 2019-01-01 11:05 |                  | 2019-01-01 11:05 |
+
+</details>
+
+<br/>
+
+For the `check` strategy, the current timestamp is used to populate each column
+
+<details>
+
+Snapshot query results at `2019-01-01 11:00`:
+
+| order_id | status  |
+| -------- | ------- |
+| 1        | pending |
+
+Snapshot results:
+
+| order_id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| -------- | ------- | ---------------- | ---------------- | ---------------- |
+| 1        | pending | 2019-01-01 11:00 |                  | 2019-01-01 11:00 |
+
+Query results at `2019-01-01 11:30`:
+
+| order_id | status  |
+| -------- | ------- |
+| 1        | shipped |
+
+Snapshot results:
+
+| order_id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| -------- | ------- | ---------------- | ---------------- | ---------------- |
+| 1        | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:30 |
+| 1        | pending | 2019-01-01 11:30 |                  | 2019-01-01 11:30 |
+
+</details>
 
 
 ## FAQs

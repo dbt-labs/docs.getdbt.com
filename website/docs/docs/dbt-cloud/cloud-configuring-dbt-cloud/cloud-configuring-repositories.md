@@ -47,11 +47,17 @@ https://github.com/fishtown-analytics/jaffle_shop/compare/master..my-branch
 ## Example templates
 
 Some common URL templates are provided below, but please note that the exact
-value may vary depending on your configured git provider.
+value may vary depending on your configured git provider. 
 
 ### GitHub
 ```
 https://github.com/<org>/<repo>/compare/{{destination}}..{{source}}
+```
+
+If you're using Github Enterprise your template may look something like:
+
+```
+https://git.<mycompany>.com/<org>/<repo>/compare/{{destination}}..{{source}}
 ```
 
 ### GitLab

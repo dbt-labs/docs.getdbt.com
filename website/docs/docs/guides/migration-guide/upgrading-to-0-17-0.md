@@ -246,7 +246,7 @@ BigQuery:
 ## New and changed documentation
 
 **Core**
-- [`path:` selectors](model-selection-syntax#the-path-operator)
+- [`path:` selectors](node-selection/methods#the-path-method)
 - [`--fail-fast`](commands/run#failing-fast)
 - [as_text Jinja filter](dbt-jinja-functions/as_text)
 - [accessing nodes in the `graph` object](dbt-jinja-functions/graph)

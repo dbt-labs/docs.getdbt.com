@@ -17,7 +17,7 @@ models:
     [docs](resource-properties/docs):
       show: true | false
     [meta](meta): {<dictionary>}
-    [tests](tests):
+    [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests
     columns:
@@ -25,7 +25,7 @@ models:
         [description](description): <markdown_string>
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
-        [tests](tests):
+        [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
         [tags](resource-properties/tags): [<string>]

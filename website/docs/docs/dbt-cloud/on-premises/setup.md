@@ -7,11 +7,23 @@ title: Setup
 
 ### Configuration Console
 
-dbt Cloud ships with a configuration console that lets you self-manage settings, view the status of your deployment, and automatically install new versions of the software. If you are not sure how to access the Configuration Console (a.k.a kotsadm UI), go back to the appropriate installation section.
+dbt Cloud ships with a configuration console that lets you self-manage settings, view the status of your deployment, and automatically install new versions of the software. If you are not sure how to access the configuration console (a.k.a kotsadm UI), go back to the appropriate installation section. You will be prompted for the password created in this section the first time you access the console.
+
+Note that the version of the configuration console installation can be viewed on the bottom of the UI.
+
+<img src="/img/docs/dbt-cloud/deployment/kotsadm-login.png" />
+
+This version corresponds with the kots installation from the previous step and can alternatively be viewed by running the following command.
+
+```bash
+kubectl kots version
+```
+
+This version should be kept up to date with the latest release which will have the latest patches and bug fixes. Detailed instructions on how upgrade the configuration console will be published soon but in the mean time if you need to update the console [contact your account manager or support](mailto:support@getdbt.com). The kots release notes can be found [here](https://kots.io/release-notes/).
 
 ### Self-signed TLS Certificate Warning (Install into a VM only)
 
-During the installation process, the application bundle will generate a self-signed certificate for connecting securely to the configuration console. You will need to follow the instructions to temporarily trust this self-signed certificate. This self-signed TLS certificate is only used during the initial setup.
+During the installation process, the application bundle will generate a self-signed certificate for connecting securely to the configuration console. You will need to follow the instructions to temporarily trust this self-signed certificate. This self-signed TLS certificate is only used during the initial setup. 
 
 <img src="/img/docs/dbt-cloud/on-premises/self-signed-cert.png" />
 
@@ -23,19 +35,25 @@ Enter the desired hostname, and upload your TLS certificate to establish secure 
 
 ### Upload License
 
-The first time you log into the configuration console, you will need to upload your license file. This contains information about your subscription, as well as configuration for your specific installation. If you don't already have a license file, [contact sales](sales@getdbt.com).
+The first time you log into the configuration console, you will need to upload your license file. This contains information about your subscription, as well as configuration for your specific installation. If you don't already have a license file, [contact your account manager or support](mailto:support@getdbt.com).
+
+<img src="/img/docs/dbt-cloud/deployment/kotsadm-license.png" />
 
 After you upload the license, you will be redirected to the Config page. You can access this page at any time to reconfigure your dbt Cloud installation.
 
 ### Configure the Application
 
-On the Config screen, you'll be prompted to provide configuration details for your dbt Cloud application. Follow the instructions on this page to configure the application. Most or all of the configuration values should be established from the [prerequisites section](/docs/dbt-cloud/on-premises/prerequisites). If anything is missing, please contact sales or the person on your team that set up the prerequisites.
+On the Config screen, you'll be prompted to provide configuration details for your dbt Cloud application. Follow the instructions on this page to configure the application. Most of the configuration values should be established from the [prerequisites section](/docs/dbt-cloud/on-premises/prerequisites). If anything is missing, please contact sales or the person on your team that set up the prerequisites.
+
+<img src="/img/docs/dbt-cloud/deployment/kotsadm-config.png" />
+
+### Deploy the Application
 
 After configuring the application, you will be taken to the **Version History** page where you can manage which version of dbt Cloud is deployed. A series of preflight checks will run on your newly configured version. If everything is configured correctly, it will say "Ready to Deploy." Click Deploy to start the application.
 
 <img src="/img/docs/dbt-cloud/on-premises/version-history.png" />
 
-You can skip to the Deployment section below to learn more about how dbt Cloud deployment management works.
+You can skip to the Deploying Application Updates section below to learn more about how dbt Cloud deployment management works.
 
 ### Create a dbt Cloud Account
 
@@ -57,15 +75,19 @@ Accounts and Users are separate constructs that can have a many-to-many relation
 
 Each user can have a specific role on each account. For more information on each role, please see: https://docs.getdbt.com/docs/cloud-managing-permissions
 
-### Deployments
+### Deploying Application Updates
 
 A new version of dbt Cloud will appear on the Version History page in your Configuration Console anytime any of the following happen:
 
-- A new version of the dbt Cloud code is released. This typically happens once per week, and each new version will be accompanied by a changelog.
+- A new version of the dbt Cloud code is released. This typically happens every two weeks, and each new version will be accompanied by a [changelog](/docs/dbt-cloud/cloud-changelog).
 - Any configuration change is applied to your application via the Configuration Console.
 - Anytime an edit is applied to your Kubernetes configs via the overlays mechanism built into kots.
 
+<img src="/img/docs/dbt-cloud/deployment/kotsadm-version-history.png" />
+
 You can apply or roll back these changes at any time by clicking the Deploy and Rollback buttons on the right side of this screen.
+
+<img src="/img/docs/dbt-cloud/deployment/kotsadm-deploy.png" />
 
 ### Github Setup
 

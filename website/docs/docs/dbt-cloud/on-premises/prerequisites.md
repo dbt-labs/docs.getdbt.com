@@ -150,3 +150,19 @@ They will need the following:
 ### Slack
 
 dbt Cloud can send Slack notifications when runs finish. You can provide a set of Slack credentials for dbt Cloud to use to interact with a Slack app you create.
+
+### Datadog
+
+dbt Cloud can be configured to send logs and metrics to your Datadog account. This requires configuration and installation of a [Datadog agent](https://www.datadoghq.com/blog/monitoring-kubernetes-with-datadog/#install-the-datadog-agent).
+
+### Google SSO
+
+If running dbt Cloud in GCP with Private Google Access enabled, SSO can be configured either using the default googleapis.com URL or setting a custom one.  
+
+### Okta SSO
+
+dbt Cloud can be configured to integrate with Okta SSO by providing a public SAML certificate and corresponding private key. The key pair can be generated using an openssl command such as the below.
+
+```bash
+openssl req -new -x509 -days 3652 -nodes -out saml.crt -keyout saml.key
+```

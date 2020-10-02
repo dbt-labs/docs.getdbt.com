@@ -36,8 +36,23 @@ The `{{ ref }}` function returns a `Relation` object that has the same `table`, 
 :::
 
 ## Advanced ref usage
+
+### Two-argument variant
+
 There is also a two-argument variant of the `ref` function. With this variant, you can pass both a package name and model name to `ref` to avoid ambiguity. This functionality is not commonly required for typical dbt usage.
 
 ```sql
 select * from {{ ref('package_name', 'model_name') }}
 ```
+
+### Forcing Dependencies
+
+In normal usage, dbt knows the proper order to run all models based on the usage of the `ref` function. There are cases though where dbt doesn't know when a model should be run. An example of this is when a model only references a macro. In that case, dbt thinks the model can run first because no explicit references are made at compilation time. To address this, you can use a SQL comment along with the `ref` function — dbt will understand the dependency, and the compiled query will still be valid:
+
+     ```sql
+      -- depends on: {{ ref('upstream_parent_model') }}
+
+      {{ your_macro('variable') }}
+     ```
+
+dbt will see the `ref` and build this model after the specified reference.
