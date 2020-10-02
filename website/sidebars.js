@@ -130,7 +130,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-dbt-version",
       ],
     },
     {
