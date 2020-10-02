@@ -9,6 +9,7 @@ id: "target"
 
 | Variable | Example | Description |
 | -------- | ------- | ----------- |
+| {{target.profile_name}} | jaffle_shop | The name of the active profile |
 | {{target.name}} | dev | Name of the active target |
 | {{target.schema}} | dbt_alice | Name of the dbt schema (or, dataset on BigQuery) |
 | {{target.type}} | postgres | The active adapter being used. One of "postgres", "snowflake", "bigquery", "redshift" |
