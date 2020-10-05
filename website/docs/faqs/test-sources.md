@@ -8,4 +8,4 @@ Because the test selection syntax grew out of the model selection syntax (and pr
 $ dbt test --models source:*
 ```
 
-Check out the [model selection syntax documentation](model-selection-syntax#test-selection-examples) for more operators and examples.
+Check out the [model selection syntax documentation](node-selection/test-selection-examples) for more operators and examples.

@@ -50,6 +50,47 @@ select * from ...
 
 </File>
 
+## Query tags
+
+[Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
+parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
+
+dbt supports setting a default query tag for the duration of its Snowflake connections in
+[your profile](snowflake-profile). You can set more precise values (and override the default) for subsets of models by setting
+a `query_tag` model config:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](resource-path):
+    +query_tag: dbt_special
+
+```
+
+</File>
+
+<File name='models/<modelname>.sql'>
+
+```sql
+
+{{ config(
+    query_tag = 'dbt_special'
+) }}
+
+select ...
+
+```
+
+**Note:** query tags are set at the _session_ level. At the start of each model
+materialization, if the model has a custom `query_tag`
+configured, dbt will run `alter session set query_tag` to set the new value.
+At the end of the materialization, dbt will run another `alter` statement to reset
+the tag to its default value. As such, build failures midway through a materialization may result in subsequent
+queries running with an incorrect tag.
+
+</File>
+
 ## Merge behavior (incremental models)
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
@@ -120,7 +161,9 @@ create or replace table my_database.my_schema.my_table as (
 
 ### Automatic clustering
 
-Automatic clustering is a preview feature in Snowflake (at the time of this writing) and as such, some accounts may have it turned on while others may not. You can use the `automatic_clustering` config to control whether or not automatic clustering is enabled for dbt models. When `automatic_clustering` is set to `true`, dbt will run an `alter table <table name> resume recluster` query after building the target table. This configuration is only required for Snowflake accounts which do not have automatic clustering enabled. For more information, consult the [Snowflake documentation on Manual Reclustering](https://docs.snowflake.net/manuals/user-guide/tables-clustering-manual.html#switching-from-manual-reclustering-to-automatic-clustering).
+Automatic clustering is [enabled by default in Snowflake today](https://docs.snowflake.com/en/user-guide/tables-auto-reclustering.html), no action is needed to make use of it. Though there is an `automatic_clustering` config, it has no effect except for accounts with (deprecated) manual clustering enabled.
+
+If [manual clustering is still enabled for your account](https://docs.snowflake.com/en/user-guide/tables-clustering-manual.html), you can use the `automatic_clustering` config to control whether or not automatic clustering is enabled for dbt models. When `automatic_clustering` is set to `true`, dbt will run an `alter table <table name> resume recluster` query after building the target table.
 
 The `automatic_clustering` config can be specified in the `dbt_project.yml` file, or in a model `config()` block.
 

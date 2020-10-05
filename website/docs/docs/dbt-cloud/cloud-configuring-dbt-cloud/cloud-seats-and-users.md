@@ -20,7 +20,7 @@ The type of license a user is assigned to controls which capabilities of dbt Clo
 
 ## Included seats
 
-Each dbt Cloud plan comes with a base number of  Developer and Read Only seats. To add additional seats to your account, navigate to the Billing tab of the Account Settings page in your dbt Cloud account. Note: accounts on the Developer plan must upgrade to the Team plan to add additional team members to their account.
+Each dbt Cloud plan comes with a base number of  Developer and Read Only seats. 
 
 The table below shows the base number of Developer and Read Only seats for each dbt Cloud plan.
 
@@ -29,6 +29,12 @@ The table below shows the base number of Developer and Read Only seats for each 
 | Developer (free) | 1 | 0 |
 | Team | $50/developer/mo | 50 ($0/mo) |
 | Enterprise | Custom | Custom |
+
+## Add additional seats
+
+An Owner can add additional seats to your account by clicking the hamburger menu in the upper left-hand corner of the Cloud UI and selecting Account Setting > Billing > Configure Seats. 
+
+**Note:** accounts on the Developer plan must upgrade to the Team plan to add additional team members to their account.
 
 ## Changing user license types
 

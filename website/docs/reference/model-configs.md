@@ -24,8 +24,8 @@ title: Model configurations
 ```yaml
 models:
   [<resource-path>](resource-path):
-    +[materialized](materialized): <materialization_name>
-    +[sql_header](sql_header): <string>
+    [+](plus-prefix)[materialized](materialized): <materialization_name>
+    [+](plus-prefix)[sql_header](sql_header): <string>
 
 ```
 
@@ -72,14 +72,15 @@ models:
 ```yaml
 models:
   [<resource-path>](resource-path):
-    +[enabled](enabled): true | false
-    +[tags](resource-configs/tags): <string> | [<string>]
-    +[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    +[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    +[database](resource-configs/database): <string>
-    +[schema](resource-configs/schema): <string>
-    +[alias](resource-configs/alias): <string>
-    +[persist_docs](persist_docs): <dict>
+    [+](plus-prefix)[enabled](enabled): true | false
+    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[database](resource-configs/database): <string>
+    [+](plus-prefix)[schema](resource-configs/schema): <string>
+    [+](plus-prefix)[alias](resource-configs/alias): <string>
+    [+](plus-prefix)[persist_docs](persist_docs): <dict>
+    [+](plus-prefix)[full_refresh](full_refresh): <boolean>
 
 ```
 
