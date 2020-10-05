@@ -5,22 +5,17 @@ id: "enterprise-permissions"
 
 :::info Enterprise Feature
 
-This guide describes a feature of the dbt Cloud Enterprise plan. 
-If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+This guide describes a feature of the dbt Cloud Enterprise plan.
+If you're interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
 :::
 
 ## Overview
 
-With enterprise security features, you can manage secure access to your dbt Cloud account and access dbt Cloud objects within the account. We recommend setting up [SSO](/docs/dbt-cloud/dbt-cloud-enterprise/sso-overview) and dbt Cloud groups to easily manage user access.
-
-## RBAC groups
-
-When you create dbt Cloud groups, you can associate Identity Provider (IdP) group(s) to the group.
-This will allow users who log in via the SSO flow to be automatically associated with the corresponding dbt Cloud group. While multiple IdP groups may be associated with one dbt Cloud group, we recommend having a 1:1 mapping for simplicity. Having the same name for your IdP group as for your dbt Cloud group will make adminstration easier. 
-
-To reset a user's group membership, have the user relog into dbt Cloud. This will be needed when a 
-user is added to a new dbt Cloud group via a new IdP group.
+The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
+help manage access controls within a dbt Cloud account. See the docs on [access
+control](access-control-overview) for more information on Role-Based access
+control (RBAC).
 
 ## Permission Sets
 

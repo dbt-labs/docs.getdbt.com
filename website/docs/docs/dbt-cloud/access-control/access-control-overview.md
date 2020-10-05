@@ -4,30 +4,117 @@ id: "access-control-overview"
 ---
 
 ## Overview
-This overview provides a basic explanation of access control in dbt Cloud.
 
-dbt Cloud approaches access control by combining aspects from both of the following models:
+dbt Cloud administrators can use dbt Cloud's permissioning model to restrict the
+permissions of users on their account. This access control comes in two
+flavors: License-based, and Role-based.
 
-- **Seat-based Access Control:** Each user is associated with an account-wide seat license type. The license type controls what specific parts of the dbt Cloud application that a user can access on the account level.
-- **Role-based Access Control (RBAC):** RBAC is a method of restricting access to dbt Cloud objects on 
-both the dbt Cloud account and project level. You can grant access privileges to groups and then grant users to groups.
+- **License-based Access Controls:** User are configured with account-wide
+  license types. These licenses control the specific parts of the dbt Cloud application
+  that a given user can access.
+- **Role-based Access Control (RBAC):** Users are assigned to _groups_ that have
+  specific permissions on specific projects or the entire account. A user may be
+  a member of multiple groups, and those groups may have permissions on multiple
+  projects.
+
+## License-based access control
+
+Each user on an account is assigned a license type when the user is first
+invited to a given account. This license type may change over time, but a
+user can only have one type of license at any given time.
+
+A user's license type controls the features in dbt Cloud that the user is able
+to access. dbt Cloud's two license types are:
+ - **Read Only**
+ - **Developer**
+
+For more information on these license types, see [Seats & Users](cloud-seats-and-users).
+At a high-level, Developers may be granted _any_ permissions, whereas Read Only
+users will have read-only permissions applied to all dbt Cloud resources
+regardless of the role-based permissions that the user is assigned.
+
+## Role-based access control
+
+Role-based access control allows for fine-grained permissioning in the dbt Cloud
+application. With role-based access control, users can be assigned varying
+permissions to different projects within a dbt Cloud account. For teams on the
+Enterprise tier, role-based permissions can be generated dynamically from
+configurations in an [Identity Provider](sso-overview).
+
+Role-based permissions are applied to _groups_ and pertain to _projects_. The
+assignable permissions themselves are granted via _permission sets_.
 
 
-## Key Objects in dbt Cloud
+### Groups
 
-- **Seat License**
-    - Seat licenses are allocated to users on the account level.
-    - The type of license a user is assigned controls what capabilities of dbt Cloud the user is permitted to access. These licenses affect the permission sets a user can be granted. 
-    - For more information about seats, check out [Seats & Users](/docs/dbt-cloud/access-control/cloud-seats-and-users).
+A group is a collection of users. Users may belong to multiple groups. Members
+of a group inherit any permissions applied to the group itself.
 
-- **Group**
-    - An entity to which permission sets can be granted. Users can be assigned to multiple groups. Once 
-    a user is assigned to the group, they have the permission sets granted to the group.
-    -  **Enterprise Plans Only:** Identify Provider (IdP) groups can be mapped to dbt Cloud groups. This will enable a user logging in via SSO to automatically be mapped to the dbt Cloud group. 
+Users can be added to a dbt Cloud group based on their group memberships in the
+configured [Identity Provider](sso-overview) for the account. In this way, dbt
+Cloud administrators can manage access to dbt Cloud resources via identity
+management software like Azure AD, Okta, or GSuite. See _SSO Mappings_ below for
+more information.
 
-- **Permission Set**
-    - A defined set of access privileges. 
-    - Each permission set is associated with specific privileges to dbt Cloud objects. You can control the granularity of access for users easily by granting permission sets to groups.
-    - Your dbt Cloud plan defines access to different types of permission sets. Self-Service dbt Cloud plans have access to the 'Member' and 'Owner' permission sets. Enterprise dbt Cloud plans have access to a greater selection of permission sets.
-    - For more information about Self-Service permission sets, check out [Self-Service Permissions](/docs/dbt-cloud/access-control/self-service-permissions).
-    - For more information about Enterprise permission sets, check out [Enterprise Permissions](/docs/dbt-cloud/access-control/enterprise-permissions). 
+You can view the groups in your account or create new groups from the **Team > Groups**
+page in your Account Settings.
+
+<Lightbox
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list.png"
+    title="Viewing a list of groups in the Account Settings page."
+/>
+
+
+### SSO Mappings
+
+SSO Mappings connect Identity Provider group membership to dbt Cloud group
+membership. SSO Mappings are declared as a list of IdP group names within a
+specific dbt Cloud group. When a user logs into dbt Cloud via a supported
+identity provider, their IdP group memberships are synced with dbt Cloud. Upon
+logging in successfully, the user's group memberships (and therefore, permissions)
+are adjusted as needed within dbt Cloud automatically.
+
+:::tip Creating SSO Mappings
+
+While dbt Cloud supports mapping multiple IdP groups to a single dbt Cloud
+group, we recommend using a 1:1 mapping to make administration as simple as
+possible. Consider using the same name for your dbt Cloud groups and your IdP
+groups.
+
+:::
+
+<Lightbox
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-detail.png"
+    title="Users in the 'data-team-dbt-analysts' or 'data-team-dbt-admins' groups will be assigned to the Analysts dbt Cloud group when they log into dbt Cloud"
+/>
+
+### Permission Sets
+
+Permission sets are predefined collections of granular permissions. Permission
+sets combine low-level permission grants into high-level roles that can be
+assigned to groups. Some examples of existing permission sets are:
+ - Account Admin
+ - Git Admin
+ - Job Admin
+ - Job Viewer
+ - ...and more
+
+For a full list of enterprise permission sets, see [Enterprise Permissions](/docs/dbt-cloud/access-control/enterprise-permissions).
+These permission sets are available for assignment to groups and control the ability
+for users in these groups to take specific actions in the dbt Cloud application.
+
+In the following example, the _Analysts_ group is configured with the
+**Analyst** permission set on _All Projects_ and the **Job Admin** permission
+set on the _BQ test_ project.
+
+<Lightbox
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-permissions.png"
+    title="Configuring permissions for the Analysts group"
+/>
+
+
+## FAQs
+- **When are IdP group memberships updated?** Group memberships are updated
+  every time a user logs into dbt Cloud via a supported SSO provider. If you've
+  changed group memberships in your identity provider or dbt Cloud, ask your
+  users to log back into dbt Cloud for these group memberships to be synchronized.
