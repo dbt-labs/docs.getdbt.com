@@ -11,10 +11,9 @@ title: Exposure properties
 ## Related documentation
 - [Declaring resource properties](declaring-properties)
 
-Exposure properties can be declared in `.yml` files in:
-- your `data/` directory (as defined by the [`data-paths` config](data-paths))
+Exposures are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under an `exposures:` key.
 
-You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within `models/` directory.
+You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
 ### Available Properties
 
