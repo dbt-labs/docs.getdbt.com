@@ -4,6 +4,136 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.9 (Oct 1, 2020)
+
+This release adds the ability for admins on the Enterprise plan to configure
+the Role Based Access Control permissions applied to Projects in their account.
+Additionally, job execution deferral is now available behind a feature flag,
+and a number of fixes and improvements were released as well.
+
+#### Enhancements
+
+- Add dbt Cloud version in the navigation sidebar
+- Add RBAC Group Permission view, create, and modify UIs
+- Add personal git auth for IDE error handling modals
+- Add Develop Requests to backend views
+- Implemented job execution deferral
+- Add support for dbt v0.18.1b2
+
+#### Fixed
+
+- Fixed the scenario where interacting with the Refresh IDE button causes an index.lock file to remain in the IDE file system
+- Validate PR URL for XSS attempts
+- Address RBAC inconsistencies
+- Fixed users not being able to update their dbt Cloud password in-app
+- Fix for applying user permissions across multiple accounts after SSO auth
+- Google API: default to common api endpoint but allow override
+- Fix for missing email variable in GSuite debug logging
+- Destroy IDE session when switching projects
+
+#### Internal
+
+- Use FQDN for routing internal develop requests
+- S3: upping the retry limit
+
+## dbt Cloud v1.1.8 (September 17, 2020)
+
+This release adds native support for Okta SSO and dbt v0.18.0. It also adds
+initial support for a GitLab integration and self-service RBAC configuration.
+
+#### Enhancements
+- Add dbt 0.18.0
+- Add native Okta SSO support
+- Add additional logging for Gsuite and Azure SSO
+- Add git cloning support via GitLab deploy tokens for scheduled runs (coming soon)
+- add RBAC Groups Detail Page and Groups List UIs
+
+#### Fixed
+
+- Allow `*_proxy` env vars in scheduled runs
+
+#### Internal
+
+- Update freeze.0.18.0.txt
+- filter out pickle files
+- error log consolidation, enable apm trace ids in logs
+- add created_at range filter to RunService
+
+## dbt Cloud v1.1.7 [September 3, 2020]
+
+This release adds a Release Candidate for [dbt
+v0.18.0](migration-guide/upgrading-to-0-18-0) and
+includes bugfixes and improvements to the Cloud IDE
+and job scheduler.
+
+#### Enhancements
+- Improve scheduler backoff behavior
+- Add dbt 0.18.0rc1
+- Add support for non-standard ssh ports in connection tunnels
+- Add support for closing the IDE filesystem context menu by clicking outside the menu
+
+#### Fixed
+- Fix for joining threads in run triggers
+- Fix thread caching for s3 uploads
+
+#### Internal
+- Disable thread session cache
+- Adds ddtrace
+- Enable botocore logging for credentials matching
+- Increase protection against SSRF
+
+## dbt Cloud v1.1.6 (August 20, 2020)
+
+This release includes security enhancements and improvements across the entire
+dbt Cloud application.
+
+#### Enhancements
+- Support for viewing development docs inside of the IDE ([docs](viewing-docs-in-the-ide))
+- Change CI temporary schema names to be prefixed with `dbt_cloud` instead of `sinter`
+- Change coloring and iconography to improve accessibility and UX across the application
+- [Enterprise] Support the specification of multiple authorized domains in SSO configuration
+- [On-premises] Upgrade boto3 to support KIAM authentication
+
+#### Fixed
+- [Enterprise] Fix for missing IdP group membership mappings when users belong to >100 Azure AD groups
+- Disallow the creation of symlinks in the IDE
+- [Internal] Improve reliability of background cleanup processes
+- [Internal] Improve performance and reliability of artifact management and PR webhook processing
+
+## dbt Cloud v1.1.5 (August 4, 2020)
+
+This release adds a major new feature to the IDE: merge conflict resolution!
+
+It also includes changes to the job scheduler that cut the time and resource utilization
+significantly.
+
+#### Enhancements
+
+- Add dbt 0.17.2
+- Add dbt 0.18.0 beta 2
+- Add merge conflict resolution, a merge commit workflow, and merge abort workflow to the IDE
+- Deprecate dbt versions prior to 0.13.0
+- Refactor to cut job scheduler loop time
+- Reduce extra database calls to account table in job scheduler loop
+- [On-premises] Allow clients to disable authentication for SMTP
+- [On-premises] Allow disabling of TLS for SMTP
+- [On-premises] Making k8s access mode for IDE pods an environment variable
+- [Security] Force session cookie to be secure
+- [Internal] Make api and admin modules flake8 complaint
+
+#### Fixed
+
+- Fix incorrect usage of `region_name` in KMS client
+- Fix a call to a deprecated Github API
+- Remove extraneous billing API calls during job scheduler loop
+- Fix error where refreshing the IDE would leave running dbt processes in a bad state
+
+#### Internal
+
+- Add logging around malformed task tags for IDE queries
+- Preserve artifacts for each run step
+- Add status message to run info in backend
+- Add extra debug logs to dbt run
 
 ## dbt Cloud v1.1.4 (July 21, 2020)
 

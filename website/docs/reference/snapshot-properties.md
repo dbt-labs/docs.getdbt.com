@@ -19,7 +19,7 @@ snapshots:
     [meta](meta): {<dictionary>}
     [docs](resource-properties/docs):
       show: true | false
-    [tests](tests):
+    [tests](resource-properties/tests):
       - <test>
       - ...
     columns:
@@ -28,7 +28,7 @@ snapshots:
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
         [tags](resource-properties/tags): [<string>]
-        [tests](tests):
+        [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
       - ... # declare properties of additional columns

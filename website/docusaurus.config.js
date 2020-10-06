@@ -9,6 +9,13 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
     SITE_URL = process.env.DEPLOY_URL;
 }
 
+var GIT_BRANCH;
+if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
+    GIT_BRANCH = 'current';
+} else {
+    GIT_BRANCH = process.env.HEAD;
+}
+
 var PRERELEASE = (process.env.PRERELEASE || false);
 
 var WARNING_BANNER;
@@ -22,6 +29,13 @@ if (!PRERELEASE) {
         backgroundColor: '#ffa376', // Defaults to `#fff`.
         textColor: '#033744', // Defaults to `#000`.
     }
+}
+
+var ALGOLIA_API_KEY;
+if (!process.env.ALGOLIA_API_KEY) {
+    ALGOLIA_API_KEY = '0e9665cbb272719dddc6e7113b4131a5';
+} else {
+    ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY;
 }
 
 var ALGOLIA_INDEX_NAME;
@@ -42,18 +56,18 @@ module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'Your entire analytics engineering workflow',
-  title: 'dbt - Documentation',
+  title: 'docs.getdbt.com',
   url: SITE_URL,
 
   themeConfig: {
     disableDarkMode: true,
     sidebarCollapsible: true,
     image: '/img/avatar.png',
-    
+
     announcementBar: WARNING_BANNER,
 
     algolia: {
-      apiKey: '0e9665cbb272719dddc6e7113b4131a5',
+      apiKey: ALGOLIA_API_KEY,
       //debug: true,
       indexName: ALGOLIA_INDEX_NAME,
       algoliaOptions: {
@@ -150,7 +164,7 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
 
-          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/master/website/',
+          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
         }

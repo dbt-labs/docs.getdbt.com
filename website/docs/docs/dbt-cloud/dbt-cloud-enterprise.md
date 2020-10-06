@@ -16,4 +16,5 @@ This section describes features of the dbt Cloud Enterprise plan. If you’re in
 -  [Setting up Snowflake OAuth](setting-up-enterprise-snowflake-oauth)
 
 ### Permissions
--  [Enterprise Permissions](dbt-cloud-enterprise/enterprise-permissions)
+-  [Access Control](/docs/dbt-cloud/access-control/access-control-overview)
+-  [Enterprise Permissions](/docs/dbt-cloud/access-control/enterprise-permissions)

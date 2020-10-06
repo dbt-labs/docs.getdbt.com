@@ -22,7 +22,7 @@ As well as setting up a schedule, there are a number of other things you should 
 
 ## Ways to run dbt in production
 ### Using dbt Cloud
-We've built [dbt Cloud](https://www.getdbt.com/) from the ground up to empower data teams to easily run dbt in production. With dbt Cloud, you can:
+We've built [dbt Cloud](https://www.getdbt.com/signup/) from the ground up to empower data teams to easily run dbt in production. With dbt Cloud, you can:
 - run your jobs on a schedule
 - view logs for any historical invocation of dbt
 - configure error notifications

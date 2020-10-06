@@ -6,7 +6,7 @@ If you're using the dbt CLI, you'll need to set up a `profiles.yml` file.
 
 You can learn more about this in the article on [Connecting to your warehouse](configure-your-profile).
 
-This article lists the parts of your `profile.yml` which are _not_ database specific. Check out the article for your database for exact connection details.
+This article lists the parts of your `profiles.yml` which are _not_ database specific. Check out the article for your database for exact connection details.
 
 <File name='profiles.yml'>
 
@@ -57,7 +57,9 @@ Partial parsing can improve the performance characteristics of dbt runs by limit
 
 If partial parsing is enabled and files are unchanged between invocations of dbt, then dbt does not need to re-parse these files — it can instead use the parsed representation from the _last_ invocation of dbt. If a file *has* changed between invocations of dbt, then dbt will re-parse the file and update the parsed node cache accordingly.
 
-Use caution when enabling partial parsing in dbt. If environment variables or variables specified on the CLI with `--vars` control the parsed representation of your project, then the logic executed by dbt may differ from the logic specified in your project. Partial parsing should only be used when all of the logic in your dbt project is encoded in the files inside of that project.
+Use caution when enabling partial parsing in dbt. If environment variables control the parsed representation of your project, then the logic executed by dbt may differ from the logic specified in your project. Partial parsing should only be used when all of the logic in your dbt project is encoded in the files inside of that project.
+
+If partial parsing is enabled and `--vars` change between runs, dbt will always re-parse.
 
 By default, `partial_parse` is set to `false`
 

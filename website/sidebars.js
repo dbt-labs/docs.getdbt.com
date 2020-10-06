@@ -75,6 +75,7 @@ module.exports = {
             "docs/guides/migration-guide/upgrading-to-0-15-0",
             "docs/guides/migration-guide/upgrading-to-0-16-0",
             "docs/guides/migration-guide/upgrading-to-0-17-0",
+            "docs/guides/migration-guide/upgrading-to-0-18-0",
           ],
         },
         "docs/guides/videos",
@@ -118,7 +119,15 @@ module.exports = {
   "dbt Cloud": [
     "docs/dbt-cloud/cloud-overview",
     "docs/dbt-cloud/cloud-quickstart",
-    "docs/dbt-cloud/the-dbt-ide",
+    {
+      type: "category",
+      label: "dbt Cloud IDE",
+      items: [
+        "docs/dbt-cloud/cloud-ide/the-dbt-ide",
+        "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
+        "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
+      ],
+    },
     {
       type: "category",
       label: "Configuring dbt Cloud",
@@ -128,8 +137,6 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions",
       ],
     },
@@ -143,6 +150,16 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
+      ],
+    },
+    {
+      type: "category",
+      label: "Access Control",
+      items: [
+        "docs/dbt-cloud/access-control/access-control-overview",
+        "docs/dbt-cloud/access-control/cloud-seats-and-users",
+        "docs/dbt-cloud/access-control/self-service-permissions",
+        "docs/dbt-cloud/access-control/enterprise-permissions",
       ],
     },
     {
@@ -167,27 +184,38 @@ module.exports = {
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
             ],
         },
-        {
-            type: "category",
-            label: "Permissions",
-            items: [
-                "docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions",
-            ],
-        },
       ],
     },
     {
       type: "category",
-      label: "On-Premises",
+      label: "dbt Cloud Deployments",
       items: [
-        "docs/dbt-cloud/on-premises/index",
-        "docs/dbt-cloud/on-premises/architecture",
-        "docs/dbt-cloud/on-premises/prerequisites",
-        "docs/dbt-cloud/on-premises/system-requirements",
-        "docs/dbt-cloud/on-premises/installation",
-        "docs/dbt-cloud/on-premises/setup",
-        "docs/dbt-cloud/on-premises/usage-statistics",
-        "docs/dbt-cloud/on-premises/faqs",
+        "docs/dbt-cloud/deployments/deployment-overview",
+        
+        {
+          type: "category",
+          label: "Hosted",
+          items: [
+            "docs/dbt-cloud/deployments/multi-tenant-deployment",
+            "docs/dbt-cloud/deployments/single-tenant-deployment",
+          ],
+        },
+        {
+          type: "category",
+          label: "Customer Managed",
+          items: [
+            "docs/dbt-cloud/on-premises/index",
+            "docs/dbt-cloud/on-premises/dependencies",
+            "docs/dbt-cloud/on-premises/prerequisites",
+            "docs/dbt-cloud/on-premises/system-requirements",
+            "docs/dbt-cloud/on-premises/installation",
+            "docs/dbt-cloud/on-premises/setup",
+            "docs/dbt-cloud/on-premises/usage-statistics",
+            "docs/dbt-cloud/deployments/airgapped-deployment",
+            "docs/dbt-cloud/on-premises/faqs",
+          ],
+        },
+        "docs/dbt-cloud/deployments/deployment-architecture",
       ],
     },
     "docs/dbt-cloud/cloud-changelog",
@@ -203,6 +231,7 @@ module.exports = {
           label: "Project configurations",
           items: [
             "reference/project-configs/analysis-paths",
+            "reference/project-configs/asset-paths",
             "reference/project-configs/clean-targets",
             "reference/project-configs/config-version",
             "reference/project-configs/data-paths",
@@ -234,6 +263,7 @@ module.exports = {
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
+            "reference/resource-configs/full_refresh",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
@@ -273,6 +303,7 @@ module.exports = {
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/spark-configs",
         "reference/advanced-config-usage",
+        "reference/resource-configs/plus-prefix",
       ],
     },
     {
@@ -325,7 +356,20 @@ module.exports = {
       label: "Commands",
       items: [
         "reference/dbt-commands",
-        "reference/model-selection-syntax",
+        {
+          type: "category",
+          label: "Node selection",
+          items: [
+            "reference/node-selection/syntax",
+            "reference/node-selection/graph-operators",
+            "reference/node-selection/set-operators",
+            "reference/node-selection/exclude",
+            "reference/node-selection/methods",
+            "reference/node-selection/putting-it-together",
+            "reference/node-selection/yaml-selectors",
+            "reference/node-selection/test-selection-examples",
+          ],
+        },
         {
           type: "category",
           label: "List of commands",
@@ -412,6 +456,10 @@ module.exports = {
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/spark-profile",
+        "reference/warehouse-profiles/exasol-profile",
+        "reference/warehouse-profiles/oracle-profile",
+        "reference/warehouse-profiles/azuresynapse-profile",
+        "reference/warehouse-profiles/dremio-profile",        
       ],
     },
     "reference/dbt-artifacts",

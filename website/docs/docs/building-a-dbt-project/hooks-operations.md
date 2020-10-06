@@ -11,7 +11,7 @@ id: "hooks-operations"
 ## Assumed knowledge
 * [Project configurations](reference/dbt_project.yml.md)
 * [Model configurations](model-configs)
-* [Macros](macros)
+* [Macros](jinja-macros#macros)
 
 ## Getting started
 
@@ -71,12 +71,12 @@ select ...
 
 :::tip Calling a macro in a hook
 
-You can also use a [macro](macros) to bundle up hook logic. Check out some of the examples in the reference sections for [on-run-start and on-run-end hooks](on-run-start-on-run-end) and [pre- and post-hooks](pre-hook-post-hook),
+You can also use a [macro](jinja-macros#macros) to bundle up hook logic. Check out some of the examples in the reference sections for [on-run-start and on-run-end hooks](on-run-start-on-run-end) and [pre- and post-hooks](pre-hook-post-hook),
 
 :::
 
 ### Operations
-Operations are [macros](macros) that you can run using the [`run-operation` command](run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a model.
+Operations are [macros](jinja-macros#macros) that you can run using the [`run-operation` command](run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a model.
 
 :::info Explicitly execute the SQL in an operation
 Unlike hooks, you need to explicitly execute a query within a macro, by using either a [statement block](statement-blocks) or a helper macro like the [run_query macro](run_query) macro. Otherwise, dbt will return the query as a string without executing it.
@@ -84,7 +84,7 @@ Unlike hooks, you need to explicitly execute a query within a macro, by using ei
 
 This macro performs a similar action as the above hooks:
 
-<File name='macros/grant_select.yml'>
+<File name='macros/grant_select.sql'>
 
 ```sql
 {% macro grant_select(role) %}

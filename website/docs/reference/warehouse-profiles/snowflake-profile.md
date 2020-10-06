@@ -28,6 +28,7 @@ my-snowflake-db:
       schema: [dbt schema]
       threads: [1 or more]
       client_session_keep_alive: False
+      query_tag: [anything]
 
 ```
 
@@ -58,6 +59,7 @@ my-snowflake-db:
       schema: [dbt schema]
       threads: [1 or more]
       client_session_keep_alive: False
+      query_tag: [anything]
 ```
 
 </File>
@@ -66,7 +68,9 @@ my-snowflake-db:
 
 To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. `authenticator` can be one of 'externalbrowser' or a valid Okta URL.
 
-**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. Contact your Snowflake support rep and inquire about turning on the "id token cache" for your account as described [here](https://github.com/snowflakedb/snowflake-connector-python/issues/140#issuecomment-447028785).
+<Changelog>New in v0.18.0</Changelog>
+
+**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication). See [the Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for how to enable this feature in your account.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -88,6 +92,7 @@ my-snowflake-db:
       schema: [dbt schema]
       threads: [between 1 and 8]
       client_session_keep_alive: False
+      query_tag: [anything]
 ```
 
 </File>
@@ -109,7 +114,16 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | role | No (but recommended) | The role to assume when running queries as the specified user. |
 | client_session_keep_alive | No | If provided, issue a periodic `select` statement to keep the connection open when particularly long-running queries are executing (&gt; 4 hours). Default: False (see note below) |
 | threads | No | The number of concurrent models dbt should build. Set this to a higher number if using a bigger warehouse. Default=1 |
+| query_tag | No | A value with which to tag all queries, for later searching in [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html) |
 
 ### client_session_keep_alive
 
 The `client_session_keep_alive` feature is intended to keep Snowflake sessions alive beyond the typical 4 hour timeout limit. The snowflake-connector-python implementation of this feature can prevent processes that use it (read: dbt) from exiting in specific scenarios. If you encounter this in your deployment of dbt, please let us know in [the GitHub issue](https://github.com/fishtown-analytics/dbt/issues/1271), and work around it by disabling the keepalive.
+
+
+### query_tag
+
+<Changelog>New in v0.18.0</Changelog>
+
+[Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
+parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).

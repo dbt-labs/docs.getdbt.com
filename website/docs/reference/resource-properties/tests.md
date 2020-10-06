@@ -24,7 +24,6 @@ version: 2
 models:
   - name: <model_name>
     tests:
-      - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
           [severity](#severity): warn | error
@@ -152,7 +151,7 @@ This feature is not implemented for analyses.
 </Tabs>
 
 ## Related documentation
-* [Testing guide](tests)
+* [Testing guide](building-a-dbt-project/tests)
 
 ## Description
 
