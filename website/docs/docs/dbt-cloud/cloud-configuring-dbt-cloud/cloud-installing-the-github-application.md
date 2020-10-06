@@ -1,6 +1,7 @@
 ---
 title: "Connecting your GitHub Account"
 id: "cloud-installing-the-github-application"
+sidebar_label: "Connecting GitHub"
 ---
 
 ## Overview
