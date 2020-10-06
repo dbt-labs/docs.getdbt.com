@@ -103,17 +103,6 @@ module.exports = {
   "dbt CLI": [
     "dbt-cli/cli-overview",
     "dbt-cli/installation",
-    {
-      type: "category",
-      label: "Installation guides",
-      items: [
-        "dbt-cli/installation-guides/macos",
-        "dbt-cli/installation-guides/windows",
-        "dbt-cli/installation-guides/ubuntu-debian",
-        "dbt-cli/installation-guides/centos",
-        "dbt-cli/installation-guides/install-from-source",
-      ],
-    },
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
