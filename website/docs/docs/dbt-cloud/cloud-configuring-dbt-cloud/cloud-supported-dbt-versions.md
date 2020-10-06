@@ -4,6 +4,7 @@ id: "cloud-supported-dbt-versions"
 ---
 
 dbt Cloud supports the three latest minor releases of dbt Core. At the present time, the following versions of dbt are supported:
+ - v0.18.x
  - v0.17.x
  - v0.16.x
  - v0.15.x

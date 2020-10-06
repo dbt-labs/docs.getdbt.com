@@ -137,8 +137,6 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions",
       ],
     },
@@ -152,6 +150,16 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
+      ],
+    },
+    {
+      type: "category",
+      label: "Access Control",
+      items: [
+        "docs/dbt-cloud/access-control/access-control-overview",
+        "docs/dbt-cloud/access-control/cloud-seats-and-users",
+        "docs/dbt-cloud/access-control/self-service-permissions",
+        "docs/dbt-cloud/access-control/enterprise-permissions",
       ],
     },
     {
@@ -174,13 +182,6 @@ module.exports = {
             label: "Database Auth",
             items: [
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
-            ],
-        },
-        {
-            type: "category",
-            label: "Permissions",
-            items: [
-                "docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions",
             ],
         },
       ],
