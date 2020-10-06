@@ -5,9 +5,9 @@ id: "access-control-overview"
 
 ## Overview
 
-dbt Cloud administrators can use dbt Cloud's permissioning model to restrict the
-permissions of users on their account. This access control comes in two
-flavors: License-based, and Role-based.
+dbt Cloud administrators can use dbt Cloud's permissioning model to control
+user-level access in a dbt Cloud account. This access control comes in two flavors:
+License-based and Role-based.
 
 - **License-based Access Controls:** User are configured with account-wide
   license types. These licenses control the specific parts of the dbt Cloud application
@@ -34,6 +34,12 @@ users will have read-only permissions applied to all dbt Cloud resources
 regardless of the role-based permissions that the user is assigned.
 
 ## Role-based access control
+
+:::info dbt Cloud Enterprise
+
+Role-based access control is a feature of the dbt Cloud Enterprise plan
+
+:::
 
 Role-based access control allows for fine-grained permissioning in the dbt Cloud
 application. With role-based access control, users can be assigned varying
@@ -67,12 +73,11 @@ page in your Account Settings.
 
 ### SSO Mappings
 
-SSO Mappings connect Identity Provider group membership to dbt Cloud group
-membership. SSO Mappings are declared as a list of IdP group names within a
-specific dbt Cloud group. When a user logs into dbt Cloud via a supported
-identity provider, their IdP group memberships are synced with dbt Cloud. Upon
-logging in successfully, the user's group memberships (and therefore, permissions)
-are adjusted as needed within dbt Cloud automatically.
+SSO Mappings connect Identity Provider (IdP) group membership to dbt Cloud group
+membership. When a user logs into dbt Cloud via a supported identity provider,
+their IdP group memberships are synced with dbt Cloud. Upon logging in
+successfully, the user's group memberships (and therefore, permissions) are
+adjusted accordingly within dbt Cloud automatically.
 
 :::tip Creating SSO Mappings
 
