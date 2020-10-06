@@ -252,3 +252,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/running-a-dbt-project/using-the-command-line-interface/centos	/dbt-cli/installation-guides/centos	302
 /docs/running-a-dbt-project/using-the-command-line-interface/install-from-source	/dbt-cli/installation-guides/install-from-source	302
 /faqs/getting-help/	/docs/guides/getting-help/	302
+/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions/	/docs/dbt-cloud/access-control/enterprise-permissions
