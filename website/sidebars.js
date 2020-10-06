@@ -137,7 +137,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-dbt-version",
       ],
     },
     {

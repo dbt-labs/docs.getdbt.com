@@ -11,4 +11,4 @@ The following sections will help you set up your dbt Cloud account:
 - [Importing a project by git URL](cloud-import-a-project-by-git-url) 
 - [Access Control](/docs/dbt-cloud/access-control/access-control-overview)
 - [Self-Service Permissions](/docs/dbt-cloud/access-control/self-service-permissions)
-- [Supported dbt versions](cloud-supported-dbt-versions)
+- [Configuring dbt version](cloud-configuring-dbt-version)
