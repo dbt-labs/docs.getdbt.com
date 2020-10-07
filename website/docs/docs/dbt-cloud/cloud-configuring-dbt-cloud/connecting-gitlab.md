@@ -42,7 +42,7 @@ Once you've gotten your Application ID and Secret from GitLab, you can click the
 
 Note that if you're using the regular consumer version of GitLab, you'll want to use the standard `https://gitlab.com` for your GitLab instance - if your organization is using a hosted version of GitLab, you'll want to use the hostname provided by your organization, probably something like `https://gitlab.yourgreatcompany.com/`
 
-GitLab will then ask for your explicit approval: the application explicitly with GitLab: 
+GitLab will then ask for your explicit approval: 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_application_auth.png" title="GitLab Authorization Screen" />
 
@@ -51,6 +51,12 @@ And then you're all set!
 ## Usage Notes
 
 Note that only Admins and dbt Developers working in the IDE need to connect their GitLab accounts. It’s not necessary for every dbt Cloud user to connect GitLab.
+
+If your dbt Project is connected to your organization's GitLab repo, you'll be prompted to also connect your personal GitLab account before you're able to use the Cloud IDE:
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_personal_auth.png" title="GitLab Authentication Required" />
+
+You can click the Authenticate button to begin the process, or follow the instructions below.
 
 ## Connect your personal GitLab account
 
