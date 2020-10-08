@@ -4,7 +4,7 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.10 (to be released)
+## dbt Cloud v1.1.10 (October 8, 2020)
 
 This release adds support for repositories imported via GitLab (Enterprise)
 and contains a number of bugfixes and improvements in the dbt Cloud IDE.
@@ -26,7 +26,7 @@ and contains a number of bugfixes and improvements in the dbt Cloud IDE.
 - Gracefully clean up IDE backend on shutdown
 - Always show SSO mappings on Group Details page
 
-## dbt Cloud v1.1.9 (Oct 1, 2020)
+## dbt Cloud v1.1.9 (October 1, 2020)
 
 This release adds the ability for admins on the Enterprise plan to configure
 the Role Based Access Control permissions applied to Projects in their account.
