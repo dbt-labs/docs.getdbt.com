@@ -1,11 +1,11 @@
 ---
-title: "Install dbt"
+title: "Installation"
 id: "installation"
 ---
 
 We recommend you use install dbt using one of three tried and tested methods:
 
-- [brew](#homebrew) (recommended for MacOS)
+- [homebrew](#homebrew) (recommended for MacOS)
 - [pip](#pip)
 - [from source](#install-from-source)
 
@@ -55,7 +55,7 @@ brew unlink dbt@0.17.0
 brew link dbt
 ```
 
-If you'd prefer to use the development version of dbt, you can install it as follows:
+If you want to use a development version of dbt, you can install it as follows:
 
 ```shell
 brew unlink dbt
@@ -66,7 +66,7 @@ brew link dbt-development
 
 ## pip
 
-dbt is a Python module distributed on [pypi](https://pypi.org/project/dbt/), and can be installed via `pip`. We recommend using virtual environments when installing dbt via pip. Some additional steps are required for linux flavors. See the relevant section for [prerequisite commands](#additional-steps-by-installation).
+dbt is a Python module distributed on [pypi](https://pypi.org/project/dbt/), and can be installed via `pip`. We recommend using virtual environments when installing with `pip`. [Some additional steps](#additional-steps-by-operating-system) may be required for Windows and certain flavors of Linux.
 
 :::caution Python3
 The dbt CLI is compatible with Python versions 3.6 and higher. As of v0.15.0, dbt is no longer compatible with Python2.
@@ -98,9 +98,9 @@ To upgrade dbt, use:
 pip install --upgrade dbt
 ```
 
-### Additional Steps by Installation
+### Additional steps by operating system
 
-After running the following commands relevant to your development environment, you can return to the generic installation instructions above.
+These operating systems require additional pre-installation setup. After running whichever commands are relevant to your development environment, return to the instructions above.
 
 #### Ubuntu/Debian
 ```shell
@@ -110,7 +110,7 @@ sudo pip install --upgrade cffi
 pip install cryptography==1.7.2
 ```
 
-#### Centos
+#### CentOS
 
 ```shell
 sudo yum install redhat-rpm-config gcc libffi-devel \
@@ -121,11 +121,11 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 
 Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.5 or higher for Windows](https://www.python.org/downloads/windows/).
 
-## Install from Source
+## Install from source
 
 Create a dbt virtual environment as detailed in the `pip` section above.
 
-Finally, install dbt from GitHub source
+Then, install dbt from GitHub source
 ```shell
 git clone https://github.com/fishtown-analytics/dbt.git
 cd dbt

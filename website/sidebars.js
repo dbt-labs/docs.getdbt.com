@@ -126,7 +126,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-dbt-version",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
       ],
     },
     {
@@ -180,7 +180,7 @@ module.exports = {
       label: "dbt Cloud Deployments",
       items: [
         "docs/dbt-cloud/deployments/deployment-overview",
-        
+
         {
           type: "category",
           label: "Hosted",
@@ -448,7 +448,7 @@ module.exports = {
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
-        "reference/warehouse-profiles/dremio-profile",        
+        "reference/warehouse-profiles/dremio-profile",
       ],
     },
     "reference/dbt-artifacts",
