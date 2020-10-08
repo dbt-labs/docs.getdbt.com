@@ -4,7 +4,29 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.9 (Oct 1, 2020)
+## dbt Cloud v1.1.10 (October 8, 2020)
+
+This release adds support for repositories imported via GitLab (Enterprise)
+and contains a number of bugfixes and improvements in the dbt Cloud IDE.
+
+#### Enhancements
+
+- Add Gitlab integration (Enterprise)
+- Add GitLab repository setup to project setup flow (Enterprise)
+- Add GitLab automated Deploy Token installation (Enterprise)
+- Add dbt 0.18.1rc1
+
+#### Fixed
+
+- Fix bug where IDE gets stuck after changing project repository
+- Fix race condition where connections can be added to the wrong project
+- Fix revoking email invites
+- Fix a bug in slim CI deferring run search where missing previous run caused the scheduler to raise an error
+- Fix a source of IDE instability
+- Gracefully clean up IDE backend on shutdown
+- Always show SSO mappings on Group Details page
+
+## dbt Cloud v1.1.9 (October 1, 2020)
 
 This release adds the ability for admins on the Enterprise plan to configure
 the Role Based Access Control permissions applied to Projects in their account.
