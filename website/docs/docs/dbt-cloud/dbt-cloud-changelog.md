@@ -4,32 +4,27 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.10 (TODO - Enter release date)
+## dbt Cloud v1.1.10 (to be released)
 
-TODO - Enter release description and curate below release notes
+This release adds support for repositories imported via GitLab (Enterprise)
+and contains a number of bugfixes and improvements in the dbt Cloud IDE.
 
 #### Enhancements
 
-- Gitlab base url is now account-level gitlab url
-- Send run completed event to RabbitMQ
+- Add Gitlab integration (Enterprise)
+- Add GitLab repository setup to project setup flow (Enterprise)
+- Add GitLab automated Deploy Token installation (Enterprise)
 - Add dbt 0.18.1rc1
-- Add GitLab repository setup to project setup flow
-- Added automatic deploy token creation on repository create for gitlab projects
-- Add gitlab application integration settings to account settings
 
 #### Fixed
 
 - Fix bug where IDE gets stuck after changing project repository
 - Fix race condition where connections can be added to the wrong project
 - Fix revoking email invites
-- Gracefully clean up IDE backend on shutdown
 - Fix a bug in slim CI deferring run search where missing previous run caused the scheduler to raise an error
-- Fix source of develop instability
+- Fix a source of IDE instability
+- Gracefully clean up IDE backend on shutdown
 - Always show SSO mappings on Group Details page
-
-#### Internal
-
-- Log raw Okta response for debugging
 
 ## dbt Cloud v1.1.9 (Oct 1, 2020)
 
