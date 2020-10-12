@@ -4,6 +4,32 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.11 (TODO - enter release date)
+
+TODO - Enter summary and curate below release notes.
+
+#### Enhancements
+
+- Add InterfaceError exception handling for commands
+- Rename My Account --> Profile
+- Add project and connection to admin backend
+
+#### Fixed
+
+- resolve presence of null-characters in logs throwing errors
+- Email verifications backend
+- Undo run.serialize
+- Fix error while serialized run
+- Fix logic error in connection setup
+- Fix a bug with Gitlab auth flow for unauthenticated users
+- Fix bug where Native Okta SSO uses the wrong port
+
+#### Internal
+
+- Codex Exposure Tile Snippet Generation
+- Remove embedded database storage class preflight check for on-premises
+- Autogenerate Django secret key and remove from from config for on-premises
+
 ## dbt Cloud v1.1.10 (October 8, 2020)
 
 This release adds support for repositories imported via GitLab (Enterprise)
