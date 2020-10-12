@@ -4,9 +4,9 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.11 (TODO - enter release date)
+## dbt Cloud v1.1.11 (to be released)
 
-TODO - Enter summary and curate below release notes.
+Release v1.1.11 includes some quality-of-life enhancements, copy tweaks, and error resolutions. It also marks the last time we'll have the same digit four times in a row in a release until v2.2.22.
 
 #### Enhancements
 
@@ -16,12 +16,12 @@ TODO - Enter summary and curate below release notes.
 
 #### Fixed
 
-- resolve presence of null-characters in logs throwing errors
+- Resolve errors from presence of null-characters in logs
 - Email verifications backend
 - Undo run.serialize
 - Fix error while serialized run
 - Fix logic error in connection setup
-- Fix a bug with Gitlab auth flow for unauthenticated users
+- Fix a bug with GitLab auth flow for unauthenticated users
 - Fix bug where Native Okta SSO uses the wrong port
 
 #### Internal
