@@ -572,8 +572,8 @@ models:
 
 {{ config(
     grant_access_to=[
-      {project: 'project_1', dataset: 'dataset_1'},
-      {project: 'project_2', dataset: 'dataset_2'}
+      {'project': 'project_1', 'dataset': 'dataset_1'},
+      {'project': 'project_2', 'dataset': 'dataset_2'}
     ]
 ) }}
 ```
