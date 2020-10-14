@@ -16,7 +16,9 @@ dbt Cloud supports JIT (Just-in-Time) provisioning and IdP-initiated login. You 
 
 The diagram below explains the basic process by which users are provisioned in dbt Cloud upon logging in with SSO.
 
-![SSO-diagram](https://user-images.githubusercontent.com/46451573/84216940-e0b60e80-aa98-11ea-91a2-4bffbfffe69e.png)
+<Lightbox src="/img/sso_overview.png" title="SSO-diagram" />
+
+![SSO-diagram](static/img/sso_overview.png)
 
 #### Diagram Explanation
 

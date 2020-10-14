@@ -65,14 +65,6 @@ In order to perform basic maintenance and license checking, the following outbou
 
 - `api.replicated.com`: This endpoint services the license sync check and is used to pull down yaml files for app upgrades.
 
-### Optional External Dependencies
-
-#### Auth0
-
-_Required for SSO integrations_
-
-Auth0 (https://auth0.com/) is a third-party service used by dbt Cloud to provide SSO integrations via SAML or Azure ADFS. Installations relying on SSO integrations must allow `auth.getdbt.com` to be accessed via HTTPS.
-
 #### Integrations
 
 _Can be individually enabled or disabled_
