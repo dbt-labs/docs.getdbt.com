@@ -26,6 +26,7 @@ Expected:
 - **depends_on**: list of relations (`ref` + `source`)
 
 Optional properties:
+- **url**
 - **maturity**: one of `high`, `medium`, `low`
 - **owner**: name
 
@@ -40,6 +41,7 @@ exposures:
   - name: <string>
     [description](description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
+    url: <string>
     maturity: {high, medium, low}
     owner:
       name: <string>
