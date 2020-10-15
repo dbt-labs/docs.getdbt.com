@@ -119,3 +119,14 @@ In projects with intricate env-aware logic, dbt will err on the side of running
 too many models (i.e. false positives). We're working on better options for more 
 complex projects, in the form of more-specific subselectors.
 Track [this issue](https://github.com/fishtown-analytics/dbt/issues/2704) for progress.
+
+### The "exposure" method
+<Changelog>New in v0.18.1</Changelog>
+
+The `exposure` method is used to select parent resources of a specified [exposure](exposure-properties). Use in conjunction with the `+` operator.
+
+```bash
+$ dbt run --models +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
+$ dbt test --models +exposure:*                         # test all resources upstream of all exposures
+$ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
+```
