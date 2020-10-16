@@ -71,6 +71,7 @@
 /docs/dbt-api	/docs/running-a-dbt-project/dbt-api	302
 /docs/dbt-cloud-enterprise	/docs/dbt-cloud/dbt-cloud-enterprise	302
 /docs/dbt-cloud/cloud-configuring-repositories	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories	302
+/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions/	/docs/dbt-cloud/access-control/enterprise-permissions	302
 /docs/dbt-cloud/on-premises/architecture    /dbt-cloud/on-premises/dependencies 302
 /docs/dbt-projects	/docs/building-a-dbt-project/dbt-projects	302
 /docs/dbt_projectyml-file	/docs/building-a-dbt-project/dbt-projects/dbt_projectyml-file	302

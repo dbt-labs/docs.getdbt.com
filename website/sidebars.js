@@ -125,6 +125,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
       ],
@@ -306,6 +307,7 @@ module.exports = {
         "reference/snapshot-properties",
         "reference/analysis-properties",
         "reference/macro-properties",
+        "reference/exposure-properties",
         {
           type: "category",
           label: "List of general properties",
