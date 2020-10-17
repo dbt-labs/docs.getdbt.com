@@ -103,17 +103,6 @@ module.exports = {
   "dbt CLI": [
     "dbt-cli/cli-overview",
     "dbt-cli/installation",
-    {
-      type: "category",
-      label: "Installation guides",
-      items: [
-        "dbt-cli/installation-guides/macos",
-        "dbt-cli/installation-guides/windows",
-        "dbt-cli/installation-guides/ubuntu-debian",
-        "dbt-cli/installation-guides/centos",
-        "dbt-cli/installation-guides/install-from-source",
-      ],
-    },
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
@@ -138,7 +127,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-supported-dbt-versions",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
       ],
     },
     {
@@ -192,7 +181,7 @@ module.exports = {
       label: "dbt Cloud Deployments",
       items: [
         "docs/dbt-cloud/deployments/deployment-overview",
-        
+
         {
           type: "category",
           label: "Hosted",
@@ -461,7 +450,7 @@ module.exports = {
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
-        "reference/warehouse-profiles/dremio-profile",        
+        "reference/warehouse-profiles/dremio-profile",
       ],
     },
     "reference/dbt-artifacts",
