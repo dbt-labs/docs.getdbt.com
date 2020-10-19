@@ -20,7 +20,12 @@ These are Community Contributed plugins for dbt. If you're interested in contrib
 
 **dbt support**: version 0.18.0 and newer
 
-For more info, see the [README](https://github.com/swanderz/dbt-synapse/blob/master/README.md)
+The pacakge can be installed from PyPI with:
+
+```python
+pip install dbt-synapse
+```
+For further (and more likely up-to-date) info, see the [README](https://github.com/swanderz/dbt-synapse/blob/master/README.md)
 
 ### Connecting to SQL Server with **`dbt-azuresynapse`**
 
