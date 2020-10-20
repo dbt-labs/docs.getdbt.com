@@ -32,7 +32,9 @@ For further (and more likely up-to-date) info, see the [README](https://github.c
 
 #### standard SQL Server authentication
 SQL Server credentials are supported for on-prem as well as cloud, and it is the default authentication method for `dbt-sqlsever`
+
 <File name='profiles.yml'>
+
 ```yml
 type: sqlserver
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
@@ -42,6 +44,7 @@ schema: schemaname
 user: username
 password: password
 ```
+
 </File>
 
 #### Active Directory Authentication
@@ -68,6 +71,7 @@ The following [`pyodbc`-supported ActiveDirectory methods](https://docs.microsof
 Definitely not ideal, but available
 
 <File name='profiles.yml'>
+
 ```yml
 type: sqlserver
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
@@ -78,7 +82,9 @@ authentication: ActiveDirectoryPassword
 user: bill.gates@microsoft.com
 password: iheartopensource
 ```
+
 </File>
+
 </TabItem>
 
 <TabItem value="interactive">
@@ -88,6 +94,7 @@ password: iheartopensource
 brings up the Azure AD prompt so you can MFA if need be.
 
 <File name='profiles.yml'>
+
 ```yml
 type: sqlserver
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
@@ -97,7 +104,9 @@ schema: schemaname
 authentication: ActiveDirectoryInteractive
 user: bill.gates@microsoft.com
 ```
+
 </File>
+
 </TabItem>
 
 <TabItem value="integrated">
@@ -107,6 +116,7 @@ user: bill.gates@microsoft.com
 uses your machine's credentials (might be disabled by your AAD admins)
 
 <File name='profiles.yml'>
+
 ```yml
 type: sqlserver
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
@@ -115,7 +125,9 @@ port: 1433
 schema: schemaname
 authentication: ActiveDirectoryIntegrated
 ```
+
 </File>
+
 </TabItem>
 
 <TabItem value="serviceprincipal">
@@ -123,6 +135,7 @@ authentication: ActiveDirectoryIntegrated
 `client_*` and `app_*` can be used interchangeably
 
 <File name='profiles.yml'>
+
 ```yml
 type: sqlserver
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
@@ -133,7 +146,9 @@ tenant_id: tenant_id
 client_id: clientid
 client_secret: ActiveDirectoryIntegrated
 ```
+
 </File>
+
 </TabItem>
 
 </Tabs>
@@ -166,6 +181,7 @@ On Ubuntu make sure you have the ODBC header files as well as the appropriate OD
 Configure your dbt profile for using SQL Server authentication or Integrated Security:
 
 ##### SQL Server authentication
+
 ```yml
 dbt-azuresynapse:
   target: dev
