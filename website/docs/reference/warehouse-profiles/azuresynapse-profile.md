@@ -27,7 +27,7 @@ pip install dbt-synapse
 ```
 For further (and more likely up-to-date) info, see the [README](https://github.com/swanderz/dbt-synapse/blob/master/README.md)
 
-### Connecting to SQL Server with **`dbt-azuresynapse`**
+### Connecting to Azure Synapse with **`dbt-synapse`**
 
 
 #### standard SQL Server authentication
@@ -159,7 +159,7 @@ On Ubuntu make sure you have the ODBC header files as well as the appropriate OD
     sudo apt-get install msodbcsql17
     sudo apt-get install mssql-tools
 
-### Connecting to SQL Server with **dbt-azuresynapse**
+### Connecting to Azure Synapse with **dbt-azuresynapse**
 
 #### User / password authentication
 
