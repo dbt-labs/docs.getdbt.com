@@ -76,7 +76,7 @@ port: 1433
 schema: schemaname
 authentication: ActiveDirectoryPassword
 user: bill.gates@microsoft.com
-password: i<3opensource?
+password: iheartopensource
 ```
 </File>
 </TabItem>
