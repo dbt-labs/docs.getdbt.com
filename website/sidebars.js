@@ -201,6 +201,7 @@ module.exports = {
             "docs/dbt-cloud/on-premises/installation",
             "docs/dbt-cloud/on-premises/setup",
             "docs/dbt-cloud/on-premises/usage-statistics",
+            "docs/dbt-cloud/on-premises/upgrading-kots",
             "docs/dbt-cloud/deployments/airgapped-deployment",
             "docs/dbt-cloud/on-premises/faqs",
           ],

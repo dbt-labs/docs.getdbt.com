@@ -11,7 +11,7 @@ dbt Cloud has several external network dependencies that are required for normal
 
 ### Replicated
 
-Replicated (https://www.replicated.com/) is a third-party service that provides a management layer over the dbt Cloud Kubernetes appliance. Our installer configures an additional KOTS (https://kots.io/) appliance to configure and manage the dbt Cloud appliance. KOTS is open-source, Apache 2 licensed software developed by Replicated.
+Replicated (https://www.replicated.com/) is a third-party service that provides a management layer over the dbt Cloud Kubernetes appliance. Our installer configures an additional KOTS (https://kots.io/) appliance to configure and manage the dbt Cloud application. KOTS is open-source, Apache 2 licensed software developed by Replicated.
 
 An overview of Replicated's security posture can be found at: https://www.replicated.com/resources/files/Replicated-Security-Whitepaper.pdf
 
