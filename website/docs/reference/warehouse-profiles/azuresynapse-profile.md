@@ -29,6 +29,7 @@ For further (and more likely up-to-date) info, see the [README](https://github.c
 
 ### Connecting to Azure Synapse with **`dbt-synapse`**
 
+First download and install the [MSFT ODBC Driver 17 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
 
 #### standard SQL Server authentication
 SQL Server credentials are supported for on-prem as well as cloud, and it is the default authentication method for `dbt-sqlsever`
