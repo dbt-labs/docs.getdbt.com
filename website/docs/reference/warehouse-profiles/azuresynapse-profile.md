@@ -50,10 +50,10 @@ password: password
 
 #### Active Directory Authentication
 
-The following [`pyodbc`-supported ActiveDirectory methods](https://docs.microsoft.com/en-us/sql/connect/odbc/using-azure-active-directory?view=sql-server-ver15#new-andor-modified-dsn-and-connection-string-keywords) are available to authenticate to Azure SQL:
+The following [`pyodbc`-supported ActiveDirectory methods](https://docs.microsoft.com/en-us/sql/connect/odbc/using-azure-active-directory?view=sql-server-ver15#new-andor-modified-dsn-and-connection-string-keywords) are available to authenticate to Azure SQL products:
 - ActiveDirectory Password
-- ActiveDirectory Interactive
-- ActiveDirectory Integrated
+- ActiveDirectory Interactive (*Windows only*)
+- ActiveDirectory Integrated (*Windows only*)
 - Service Principal (a.k.a. AAD Application)
 - ~~ActiveDirectory MSI~~ (not implemented)
 
@@ -90,9 +90,7 @@ password: iheartopensource
 
 <TabItem value="interactive">
 
-**Windows Only**
-
-brings up the Azure AD prompt so you can MFA if need be.
+*Windows Only* brings up the Azure AD prompt so you can MFA if need be.
 
 <File name='profiles.yml'>
 
@@ -112,9 +110,7 @@ user: bill.gates@microsoft.com
 
 <TabItem value="integrated">
 
-**Windows Only**
-
-uses your machine's credentials (might be disabled by your AAD admins)
+*Windows Only* uses your machine's credentials (might be disabled by your AAD admins)
 
 <File name='profiles.yml'>
 
