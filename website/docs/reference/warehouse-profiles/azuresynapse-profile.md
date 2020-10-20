@@ -62,7 +62,7 @@ The following [`pyodbc`-supported ActiveDirectory methods](https://docs.microsof
     { label: 'Password', value: 'password'},
     { label: 'Interactive', value:'interactive'},
     { label: 'Integrated', value: 'integrated'},
-    { label: 'ServicePrincipal', value: 'serviceprincipal'}
+    { label: 'Service Principal', value: 'serviceprincipal'}
     ]
 }>
 
