@@ -103,7 +103,8 @@ Settings.
     - **Client Secret**: Paste the Client Secret generated in the steps above
     - **Domain in GSuite**: Enter the domain name for your GSuite account (eg. `fishtownanalytics.com`).
       Only users with an email address from this domain will be able to log into your dbt Cloud
-      account using GSuite auth.
+      account using GSuite auth. Optionally, you may specify a CSV of domains
+      which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
       Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely

@@ -1,5 +1,5 @@
 ---
-title: On-premises FAQs
+title: Customer Managed FAQs
 ---
 
 ## Customizations

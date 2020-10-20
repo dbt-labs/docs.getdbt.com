@@ -142,4 +142,4 @@ If you have only recently started snapshotting tables using the `check` strategy
 
 ### Getting help
 
-We're happy to help with this migration if you have any questions or issues. Please let us know [on Slack](community.getdbt.com) if you'd like a hand!
+We're happy to help with this migration if you have any questions or issues. Please let us know [on Slack](https://community.getdbt.com) if you'd like a hand!

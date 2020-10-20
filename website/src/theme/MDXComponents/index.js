@@ -34,13 +34,7 @@ export default {
     }
     return children;
   },
-  a: props => {
-    if (/\.[^./]+$/.test(props.href)) {
-      // eslint-disable-next-line jsx-a11y/anchor-has-content
-      return <a {...props} />;
-    }
-    return <Link {...props} />;
-  },
+  a: (props) => <Link {...props} />,
   pre: props => <pre className={styles.mdxCodeBlock} {...props} />,
   h1: Heading('h1'),
   h2: Heading('h2'),

@@ -87,7 +87,7 @@ $ dbt --no-write-json run
 
 ## Strict
 
-The `-S` or `--strict` flag runs schema validations on dbt objects at runtime. This flag may incur a performance penalty, but it is useful for catching logic errors in development of the dbt project.
+The `-S` or `--strict` flag is _only_ for use during dbt development. It performs extra validation of dbt objects and internal consistency checks during compilation. Use of this flag incurs a significant performance penalty. We use it only when running integration tests against proposed changes to dbt.
 
 <File name='Usage'>
 

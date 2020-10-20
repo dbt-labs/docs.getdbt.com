@@ -29,12 +29,12 @@ Parts of a snapshot:
 ```yaml
 snapshots:
   [<resource-path>](resource-path):
-    +[target_schema](target_schema): <string>
-    +[target_database](target_database): <string>
-    +[unique_key](unique_key): <column_name_or_expression>
-    +[strategy](strategy): timestamp | check
-    +[updated_at](updated_at): <column_name>
-    +[check_cols](check_cols): [<column_name>] | all
+    [+](plus-prefix)[target_schema](target_schema): <string>
+    [+](plus-prefix)[target_database](target_database): <string>
+    [+](plus-prefix)[unique_key](unique_key): <column_name_or_expression>
+    [+](plus-prefix)[strategy](strategy): timestamp | check
+    [+](plus-prefix)[updated_at](updated_at): <column_name>
+    [+](plus-prefix)[check_cols](check_cols): [<column_name>] | all
 
 ```
 
@@ -83,11 +83,11 @@ snapshots:
 ```yaml
 snapshots:
   [<resource-path>](resource-path):
-    +[enabled](enabled): true | false
-    +[tags](tags): <string> | [<string>]
-    +[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    +[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    +[persist_docs](persist_docs): {<dict>}
+    [+](plus-prefix)[enabled](enabled): true | false
+    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[persist_docs](persist_docs): {<dict>}
 
 ```
 </File>
@@ -101,7 +101,7 @@ snapshots:
 
 {{ config(
     [enabled](enabled)=true | false,
-    [tags](tags)="<string>" | ["<string>"],
+    [tags](resource-configs/tags)="<string>" | ["<string>"],
     [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
     [persist_docs](persist_docs)={<dict>}

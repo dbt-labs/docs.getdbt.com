@@ -314,6 +314,26 @@ select * from {{ ref('another_model') }}
 
 </File>
 
+### Policy tags
+BigQuery enables [column-level security](https://cloud.google.com/bigquery/docs/column-level-security-intro) by setting [policy tags](https://cloud.google.com/bigquery/docs/best-practices-policy-tags) on specific columns.
+
+dbt enables this feature as a column resource property, `policy_tags` (_not_ a node config).
+
+<File name='models/<filename>.yml'>
+
+```yaml
+version: 2
+
+models:
+- name: policy_tag_table
+  columns:
+    - name: field
+      policy_tags:
+        - 'need_to_know'
+```
+
+</File>
+
 ## Merge behavior (incremental models)
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
@@ -356,7 +376,7 @@ strategy is selected.
 
 :::info New in dbt v0.16.0
 
-This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](installation)
+This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](upgrading-to-0-16-0)
 
 :::
 
@@ -492,3 +512,75 @@ with events as (
 
 ... rest of model ...
 ```
+
+## Controlling table expiration
+<Changelog>New in v0.18.0</Changelog>
+
+By default, dbt-created tables never expire. You can configure certain model(s)
+to expire after a set number of hours by setting `hours_to_expiration`.
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](resource-path):
+    +hours_to_expiration: 6
+
+```
+
+</File>
+
+<File name='models/<modelname>.sql'>
+
+```sql
+
+{{ config(
+    hours_to_expiration = 6
+) }}
+
+select ...
+
+```
+
+</File>
+
+## Authorized Views
+<Changelog>New in v0.18.0</Changelog>
+
+If the `grant_access_to` config is specified for a model materialized as a
+view, dbt will grant the view model access to select from the list of datasets
+provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
+for more details.
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](resource-path):
+    +grant_access_to:
+      - project: project_1
+        dataset: dataset_1
+      - project: project_2
+        dataset: dataset_2
+```
+
+</File>
+
+<File name='models/<modelname>.sql'>
+
+```sql
+
+{{ config(
+    grant_access_to=[
+      {'project': 'project_1', 'dataset': 'dataset_1'},
+      {'project': 'project_2', 'dataset': 'dataset_2'}
+    ]
+) }}
+```
+
+</File>
+
+Views with this configuration will be able to select from objects in 
+`project_1.dataset_1` and `project_2.dataset_2`, even when they are located
+elsewhere and queried by users who do not otherwise have
+access to `project_1.dataset_1` and `project_2.dataset_2`.

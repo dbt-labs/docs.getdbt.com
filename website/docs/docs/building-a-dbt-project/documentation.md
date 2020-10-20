@@ -9,7 +9,7 @@ id: "documentation"
 * [`doc` Jinja function](dbt-jinja-functions/doc)
 
 ## Assumed knowledge
-* [Tests](tests)
+* [Tests](building-a-dbt-project/tests)
 
 ## Overview
 
@@ -31,7 +31,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started Tutor
 :::
 
 ## Adding descriptions to your project
-To add descriptions to your project, use the `description:` key in the same files where you declare [tests](tests), like so:
+To add descriptions to your project, use the `description:` key in the same files where you declare [tests](building-a-dbt-project/tests), like so:
 
 <File name='models/<filename>.yml'>
 
@@ -63,7 +63,7 @@ models:
 ## Generating project documentation
 You can generate a documentation site for your project (with or without descriptions) using the CLI.
 
-First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively.
+First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
 
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
@@ -148,6 +148,32 @@ as well as the repo for this project \[here](https://github.com/fishtown-analyti
 
 </File>
 
+### Custom project-level overviews
+<Changelog>New in v0.18.0</Changelog>
+
+You can set different overviews for each dbt project/package included in your documentation site
+by creating a docs block named `__[project_name]__`. For example, in order to define
+custom overview pages that appear when a viewer navigates inside the `dbt_utils` or `snowplow` package:
+
+<File name='models/overview.md'>
+
+```markdown
+{% docs __dbt_utils__ %}
+# Utility macros
+Our dbt project heavily uses this suite of utility macros, especially:
+- `surrogate_key`
+- `test_equality`
+- `pivot`
+{% enddocs %}
+
+{% docs __snowplow__ %}
+# Snowplow sessionization
+Our organization uses this package of transformations to roll Snowplow events
+up to page views and sessions.
+{% enddocs %}
+```
+
+</File>
 
 ## Navigating the documentation site
 Using the docs interface, you can navigate to the documentation for a specific model. That might look something like this:
@@ -160,7 +186,7 @@ From a docs page, you can click the green button in the bottom-right corner of t
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ec77c45-Screen_Shot_2018-08-14_at_6.31.56_PM.png" title="Opening the DAG mini-map"/>
 
-In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full lineage for our model. This lineage is filterable using the `--models` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](model-selection-syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
+In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full lineage for our model. This lineage is filterable using the `--models` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](node-selection/syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ac97fba-Screen_Shot_2018-08-14_at_6.35.14_PM.png" title="The full lineage for a dbt model"/>
 

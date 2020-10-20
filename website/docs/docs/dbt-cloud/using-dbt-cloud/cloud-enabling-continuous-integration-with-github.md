@@ -15,10 +15,31 @@ To enable runs on Pull Requests, navigate to the Job Settings page for the relev
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
 
+
 ## Understanding CI in dbt Cloud
 
-When Pull Request builds are enabled, dbt Cloud will listen for webhooks from GitHub indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the specified job. Crucially, this run will be configured to build into a special, temporary schema. The name of these schema will be unique for each PR, and is shown in the Run Details page for the given run.
+When Pull Request builds are enabled, dbt Cloud will listen for webhooks from GitHub indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the specified job. Crucially, this run will be configured to build into a special, [temporary schema](building-models/using-custom-schemas) using the prefix `dbt_cloud`. The name of these temporary schemas will be unique for each PR, and is shown in the Run Details page for the given run.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fbe3725-Screen_Shot_2019-02-08_at_10.02.02_PM.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
 When the run is complete, dbt Cloud will update the PR in GitHub with a status message indicating the results of the run. The temporary schema created for the run will remain in your warehouse until the PR is closed, allowing you to inspect the relations built by dbt Cloud. Once the PR is closed, dbt Cloud will delete the temporary schema.
+
+## Defer to a Production Job
+
+:::info [β] Preview Feature
+This is a preview feature in dbt Cloud that depends on net-new functionality in  dbt v0.18.0. If you would like to enable this feature in your dbt Cloud account, please contact support.
+:::
+
+If a job is selected, dbt Cloud will surface the artifacts from its most recent successful run. dbt can then use those artifacts to determine the set of new and modified resources. Your job definition can include steps like:
+
+```
+dbt seed --select state:modified
+dbt run --models state:modified
+dbt test --models state:modified
+```
+
+Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs
+need to be running dbt v0.18.0 or newer.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
+on pull requests may select another job from the same project for deferral and comparison"/>

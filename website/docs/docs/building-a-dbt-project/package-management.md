@@ -9,7 +9,7 @@ Software engineers frequently modularize code into libraries. These libraries he
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
  * turning [Snowplow](https://hub.getdbt.com/fishtown-analytics/snowplow/latest/), [Segment](https://hub.getdbt.com/fishtown-analytics/segment/latest/) or [Heap](https://hub.getdbt.com/fishtown-analytics/heap/latest/) pageviews into sessions
-  * transforming [AdWords](https://hub.getdbt.com/fishtown-analytics/adwords/latest/), [Facebook Ads](https://hub.getdbt.com/fishtown-analytics/facebook_ads/latest/), or [Bing Ads](https://hub.getdbt.com/fishtown-analytics/bing_ads/latest/) spend data into a consistent format.
+  * transforming [AdWords](https://hub.getdbt.com/fishtown-analytics/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/fishtown-analytics/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
   * [generating SQL](https://github.com/fishtown-analytics/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
   * creating [custom schema tests](https://github.com/fishtown-analytics/dbt-utils#schema-tests)
@@ -96,6 +96,31 @@ If you do not provide a revision, or if you use `master`, then any updates to th
 To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/fishtown-analytics/dbt-utils/releases).
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
+
+#### Private packages
+Private packages can be installed by using the SSH configuration on the machine or by passing in a username and password with the git URL. It is recommended that you use SSH authentication method where possible.
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  - git: "git@github.com:fishtown-analytics/dbt-utils.git" # git SSH URL
+```
+This method requires the SSH configuration be stored in `~/.ssh/`.
+
+</File>
+
+```yaml
+packages:
+  - git: "https://<username>:<password>@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
+```
+
+You can also reference an [environment variables](env_var).
+
+```yaml
+packages:
+  - git: "https://{{env_var('GIT_CREDENTIALS)}}@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
+```
 
 ### Local packages
 Packages that you have stored locally can be installed by specifying the path to the project, like so:

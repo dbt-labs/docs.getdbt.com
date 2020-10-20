@@ -2,6 +2,8 @@ import React from 'react';
 
 import Link from '@docusaurus/Link';
 
+const ENV = process ? process.env : {};
+
 const docsFiles = require.context(
     '../../../docs/',
     true,
@@ -25,7 +27,6 @@ docsFiles.keys().forEach(function(key, i) {
       var message = `Duplicate slug found: ${slug}\n`;
       message += ` - ${meta.source}\n`;
       message += ` - ${slugs[slug].source}`;
-      //throw new Error(message);
       console.error(message);
   }
 
@@ -35,19 +36,32 @@ docsFiles.keys().forEach(function(key, i) {
 
 function findSource(source_href) {
     var stripped_source_href = source_href.replace(/.md$/, '')
+    if (!stripped_source_href.startsWith('/')) {
+        stripped_source_href = '/' + stripped_source_href;
+    }
     var found = null;
     for (var source in sources) {
         var stripped_source = source.replace(/.md$/, '')
-        if (stripped_source.endsWith(stripped_source_href)) {
+        var is_match = stripped_source.endsWith(stripped_source_href);
+        if (is_match && !found) {
             found = sources[source];
-            break;
+        } else if (is_match && found) {
+            // The link is ambiguous. Pick one, but error?
+            var msg = (
+                `Ambiguous link slug: "${source_href}"\n`
+                + `- Two matched:, "${found.id}", "${sources[source].id}"`
+            );
+
+            console.error(msg);
+            if (ENV.DOCS_ENV == 'build') {
+                throw new Error(`Ambiguous link detected: ${msg}`)
+            }
         }
     }
     return found;
 }
 
 function expandRelativeLink(href, ignoreInvalid) {
-    var env = process ? process.env : {};
     if (!href) {
         //throw new Error(`Broken link detected (href is undefined)`)
         // how does this happen?
@@ -64,7 +78,7 @@ function expandRelativeLink(href, ignoreInvalid) {
         hash = ''
     }
 
-    var isExternal = !!link.match(/https?:/);
+    var isExternal = !!link.match(/https?:/) || !!link.match(/:/);
 
     var sourceLink = findSource(link);
     if (sourceLink) {
@@ -78,8 +92,9 @@ function expandRelativeLink(href, ignoreInvalid) {
             link: `${slugs[link].permalink}#${hash}`
         }
     } else if (!isExternal && !href.startsWith('/')) {
-        if (env.DOCS_ENV == 'build' && !ignoreInvalid) {
-            throw new Error(`Broken link detected ${href}`)
+        if (ENV.DOCS_ENV == 'build' && !ignoreInvalid) {
+            console.log(` - Broken link detected ${href}`);
+            throw new Error("Broken link")
         } else {
             return {
                 bad: true,

@@ -41,9 +41,17 @@ function Styles() {
 \`\`\`
 `}</pre>
             <CodeBlock>
-\`\`\`
 [view the license](license)
+            </CodeBlock>
+            <br/>
+            <p>Use a backslash to escape linking:</p>
+<pre>{`
+\`\`\`yml
+description: "this is \\[an escaped link](docs.getdbt.com)"
 \`\`\`
+`}</pre>
+            <CodeBlock>
+description: "this is \[an escaped link](docs.getdbt.com)"
             </CodeBlock>
             </div>
             <div className='section' style={{marginTop: '40px'}}>
@@ -126,29 +134,34 @@ password: hunter2
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>
-                <h1>Link</h1>
-<pre>{`
-    Links to .md pages can be specified using:
-        - The absolute path to the document (docs/guides/best-practices)
-        - The "slug" of the document (best-practices)
-        - A relative path to the document (guides/best-practices)
-
-      <Link href="viewpoint">A link to the viewpoint</Link>
-
-    Invalid links are underlined, and will raise an error if compiled:
-
-      <Link href="viewpoint-bad">A link to the viewpoint (that does not work)</Link>
-
-    Markdown links are wired up to this component, so you can do:
-
-      [A markdown link to the viewpoint](viewpoint)
-
+                <h1>Markdown Link</h1>
+Links to pages can be specified using:
+<li>Just the <code>id</code>¹ of the document, if the <code>id</code> is unique. Note: the <code>id</code> may be specified in the YAML front-matter of a document. If not, then it defaults to the filename.</li>
+<li>A relative <code>id</code> of the document. Note: this is required when two documents have the same <code>id</code>.</li>
+<li>Or, a path to the document (with <code>.md</code> file extension), relative to the <code>website/docs/</code> directory. Note: this is <em>required</em> for pages where the <code>id</code> looks like a filename (e.g. <code>profiles.yml</code>)</li>
+<br/>
+Bad links will appear with red underlines when building locally, and will cause an error in a deploy preview.
+<br/>
+<pre>{`[link to unique id](supported-databases)
+[disambiguated link to duplicate id](dbt-cli/installation)
+[second disambiguated link to duplicate id](on-premises/installation)
+[file paths work too](dbt-cli/installation.md)
+[link to document where id looks like a filename](reference/profiles.yml.md)
+[a bad link](bad-link)
 `}</pre>
-                <Link href="viewpoint">A link to the viewpoint</Link>
+
+                <Link href="supported-databases">link to unique id</Link>
                 <br />
-                <Link href="viewpoint-bad" ignoreInvalid={true}>A link to the viewpoint (that does not work)</Link>
+                <Link href="dbt-cli/installation">disambiguated link to duplicate id</Link>
                 <br />
-                <Link href="viewpoint">A markdown link to the viewpoint</Link>
+                <Link href="on-premises/installation">second disambiguated link to duplicate id</Link>
+                <br />
+                <Link href="dbt-cli/installation.md">file paths work too</Link>
+                <br />
+                <Link href="docs/reference/profiles.yml.md">link to document where id looks like a file</Link>
+                <br />
+                <Link href="bad-link" ignoreInvalid={true}>a bad link</Link>
+
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>
