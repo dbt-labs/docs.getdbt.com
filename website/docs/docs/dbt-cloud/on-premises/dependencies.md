@@ -65,9 +65,6 @@ In order to perform basic maintenance and license checking, the following outbou
 
 - `api.replicated.com`: This endpoint services the license sync check and is used to pull down yaml files for app upgrades.
 
-<<<<<<< HEAD:website/docs/docs/dbt-cloud/on-premises/architecture.md
-#### Integrations
-=======
 ## Optional External Dependencies
 
 ### Integrations

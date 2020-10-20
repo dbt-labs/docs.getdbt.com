@@ -16,13 +16,6 @@ Your teammate has committed their change first, so you encounter a merge conflic
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-to-merge-conflict.png" title="Commit which will trigger the merge conflict"/>
 
 You will then see that the git action bar shows `commit and resolve...` instead of `commit` indicating that the Cloud IDE has detected some conflicts that need to be addressed. You should also see the conflict section marked with some flags:
-```
-<<<<<< HEAD
-    your current code
-======
-    conflicting code
->>>>>> (some branch identifier)
-```
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/conflict-section.png" title="Conflicting section that needs resolution will be highlighted"/>
 
