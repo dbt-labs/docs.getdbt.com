@@ -18,8 +18,6 @@ The diagram below explains the basic process by which users are provisioned in d
 
 <Lightbox src="/img/sso_overview.png" title="SSO-diagram" />
 
-![SSO-diagram](static/img/sso_overview.png)
-
 #### Diagram Explanation
 
 - **Login Page**: The user accesses the dbt Cloud login page, initiating the SSO flow.
