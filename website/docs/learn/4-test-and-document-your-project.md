@@ -130,8 +130,8 @@ models:
 
 </File>
 
-2. [dbt CLI only] Execute `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a json file with rich documentation about your project.
-3. [dbt CLI only] Execute `dbt docs serve` to launch the documentation in a local website.
+2. Execute `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a json file with rich documentation about your project.
+3. [CLI] Execute `dbt docs serve` to launch the documentation in a local website. [Cloud] Click the link above the file tree in the develop interface to launch documentation in a new tab.
 
 
 :::tip
