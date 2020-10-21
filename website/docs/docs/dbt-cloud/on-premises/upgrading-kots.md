@@ -27,7 +27,7 @@ If you are upgrading your KOTS installation and have not tried the previous comm
 
 ## Manually upgrading the KOTS installation
 
-This section describes the steps needed to manually upgrade KOTS by deleting the current installation and re-installing the latest version. This process necesitates updating dbt Cloud to the latest stable version and as such is it is recommended that this process be executed along with a planned dbt Cloud upgrade. This process will not cause any downtime of the dbt Cloud application.
+This section describes the steps needed to manually upgrade KOTS by deleting the current installation and re-installing the latest version. This process necessitates updating dbt Cloud to the latest stable version and as such is it is recommended that this process be executed along with a planned dbt Cloud upgrade. This process will not cause any downtime of the dbt Cloud application.
 
 Note: This process will erase the Version History in the Admin Console and force you to update to the latest stable version (meaning that you will lose the ability to roll back to prior versions). If you need to deploy a previous version of dbt Cloud please reach out to the Fishtown Analytics team.
 
