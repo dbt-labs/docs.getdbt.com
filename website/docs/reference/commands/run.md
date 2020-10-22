@@ -163,6 +163,8 @@ and `dbt run --defer --state ...` always yield identical results, with no deferr
 Excluding an ephemeral model from the model selection criteria makes no difference
 to the output; including or excluding the non-ephemeral parent of an ephemeral model does.
 
+Read more about [state](understanding-state).
+
 **Example**
 
 In my local development environment, I create all models in a schema named

@@ -4,18 +4,20 @@ title: "BigQuery Profile"
 
 ## Authentication Methods
 
-BigQuery targets can be specified using one of three methods:
+BigQuery targets can be specified using one of four methods:
 
-1. oauth
-2. a service account file
-3. service account json
+1. [oauth via `gcloud`](#oauth-via-gcloud)
+2. [oauth token-based](#oauth-token-based)
+3. [service account file](#service-account-file)
+4. [service account json](#service-account-json)
 
 For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file.
 
-### oauth Authentication
+### OAuth via gcloud
 
+This connection method requires [local OAuth via `gcloud`](#local-oauth-gcloud-setup).
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -39,7 +41,77 @@ my-bigquery-db:
 
 </File>
 
-### Service Account File Authentication
+### Oauth Token-Based
+
+See [docs](https://developers.google.com/identity/protocols/oauth2) on using Oauth 2.0 to access Google APIs.
+
+<Tabs
+  defaultValue="refresh"
+  values={[
+    {label: 'Refresh token', value: 'refresh'},
+    {label: 'Temporary token', value: 'temp'},
+  ]}>
+
+<TabItem value="refresh">
+
+Using the refresh token and client information, dbt will mint new access tokens as necessary.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-bigquery-db:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth-secrets
+      project: [GCP project id]
+      dataset: [the name of your dbt dataset] # You can also use "schema" here
+      threads: [1 or more]
+      timeout_seconds: 300
+      location: US # Optional, one of US or EU
+      priority: interactive
+      retries: 1
+      refresh_token: [token]
+      client_id: [client id]
+      client_secret: [client secret]
+      token_uri: [redirect URI]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="temp">
+
+dbt will use the one-time access token, no questions asked. This approach makes sense if you have an external deployment process that can mint new access tokens and update the profile file accordingly.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-bigquery-db:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth-secrets
+      project: [GCP project id]
+      dataset: [the name of your dbt dataset] # You can also use "schema" here
+      threads: [1 or more]
+      timeout_seconds: 300
+      location: US # Optional, one of US or EU
+      priority: interactive
+      retries: 1
+      token: [temporary access token] # refreshed + updated by external process
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+### Service Account File
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -61,7 +133,7 @@ my-bigquery-db:
 
 </File>
 
-### Service Account JSON Authentication
+### Service Account JSON
 
 :::caution Note
 
@@ -102,26 +174,6 @@ my-bigquery-db:
 ```
 
 </File>
-
-## Oauth Authorization
-
-To connect to BigQuery using the `oauth` method, follow these steps:
-
-
-
-1. Make sure the `gcloud` command is [installed on your computer](https://cloud.google.com/sdk/downloads)
-2. Activate the application-default account with
-
-```shell
-gcloud auth application-default login \
-  --scopes=https://www.googleapis.com/auth/userinfo.email,\
-https://www.googleapis.com/auth/cloud-platform,\
-https://www.googleapis.com/auth/drive.readonly
-```
-
-A browser window should open, and you should be promoted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
-
-This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.
 
 ## Configuration options
 
@@ -216,24 +268,9 @@ Database Error in model debug_table (models/debug_table.sql)
 ```
 
 ### Service Account Impersonation
-<FAQ src="bq-impersonate-service-account" />
 <Changelog>New in v0.18.0</Changelog>
 
-To use this functionality, first create the service account you want to
-impersonate. Then grant users that you want to be able to impersonate
-this service account the `roles/iam.serviceAccountTokenCreator` role on
-the service account resource. Then, you also need to grant the service
-account the same role on itself. This allows it to create short-lived
-tokens identifying itself, and allows your human users (or other service
-accounts) to do the same. More information on this scenario is available
-[here](https://cloud.google.com/iam/docs/understanding-service-accounts#directly_impersonating_a_service_account).
-
-Once you've granted the appropriate permissions, you'll need to enable
-the [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com).
-Enabling the API and granting the role are eventually consistent operations,
-taking up to 7 minutes to fully complete, but usually fully propagating within 60
-seconds. Give it a few minutes, then add the `impersonate_service_account`
-option to your BigQuery profile configuration:
+This feature allows users authenticating via local oauth to access BigQuery resources based on the permissions of a service account.
 
 ```yaml
 my-profile:
@@ -249,6 +286,9 @@ my-profile:
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
 
+<FAQ src="bq-impersonate-service-account-why" />
+<FAQ src="bq-impersonate-service-account-setup" />
+
 ## Required permissions
 
 BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
@@ -256,3 +296,21 @@ BigQuery's permission model is dissimilar from more conventional databases like 
 - BigQuery User
 
 This set of permissions will permit dbt users to read from and create tables and views in a BigQuery project.
+
+## Local OAuth gcloud setup
+
+To connect to BigQuery using the `oauth` method, follow these steps:
+
+1. Make sure the `gcloud` command is [installed on your computer](https://cloud.google.com/sdk/downloads)
+2. Activate the application-default account with
+
+```shell
+gcloud auth application-default login \
+  --scopes=https://www.googleapis.com/auth/userinfo.email,\
+https://www.googleapis.com/auth/cloud-platform,\
+https://www.googleapis.com/auth/drive.readonly
+```
+
+A browser window should open, and you should be promoted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
+
+This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.

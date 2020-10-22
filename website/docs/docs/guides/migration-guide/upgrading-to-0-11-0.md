@@ -1,6 +1,6 @@
 ---
 title: "Upgrading to 0.11.0"
-id: "upgrading-from-0-10-to-0-11"
+id: "upgrading-to-0-11-0"
 ---
 
 ## Schema.yml v2 syntax
