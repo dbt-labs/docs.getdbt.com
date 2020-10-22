@@ -214,7 +214,7 @@ Several of the following request types accept these additional parameters:
 - `select`: The space-delimeted set of resources to seed or snapshot (optional)
 - `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
-- `state`: The filepath of artifacts to use when establishing [state](state) (optional)
+- `state`: The filepath of artifacts to use when establishing [state](understanding-state) (optional)
 
 ### Compile a project ([docs](compile))
 

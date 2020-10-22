@@ -47,4 +47,4 @@ changes limited to minor versions and announced accordingly.
 - [bigquery-profile](bigquery-profile)
 - [rpc](rpc)
 - [snapshots](snapshots) ([invalidate_hard_deletes](invalidate_hard_deletes))
-- [state](state)
+- [state](understanding-state)

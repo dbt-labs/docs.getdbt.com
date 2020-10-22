@@ -6,10 +6,10 @@ title: "BigQuery Profile"
 
 BigQuery targets can be specified using one of four methods:
 
-1. [oauth via `gcloud`](oauth-via-gcloud)
-2. [oauth token-based](oauth-token-based)
-3. [service account file](service-account-file)
-4. [service account json](service-account-json)
+1. [oauth via `gcloud`](#oauth-via-gcloud)
+2. [oauth token-based](#oauth-token-based)
+3. [service account file](#service-account-file)
+4. [service account json](#service-account-json)
 
 For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
@@ -17,7 +17,7 @@ BigQuery targets should be set up using the following configuration in your `pro
 
 ### OAuth via gcloud
 
-This connection method requires [local OAuth via `gcloud`](local-oauth-gcloud-setup).
+This connection method requires [local OAuth via `gcloud`](#local-oauth-gcloud-setup).
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -268,26 +268,9 @@ Database Error in model debug_table (models/debug_table.sql)
 ```
 
 ### Service Account Impersonation
-<FAQ src="bq-impersonate-service-account" />
 <Changelog>New in v0.18.0</Changelog>
 
 This feature allows users authenticating via local oauth to access BigQuery resources based on the permissions of a service account.
-
-To use this functionality, first create the service account you want to
-impersonate. Then grant users that you want to be able to impersonate
-this service account the `roles/iam.serviceAccountTokenCreator` role on
-the service account resource. Then, you also need to grant the service
-account the same role on itself. This allows it to create short-lived
-tokens identifying itself, and allows your human users (or other service
-accounts) to do the same. More information on this scenario is available
-[here](https://cloud.google.com/iam/docs/understanding-service-accounts#directly_impersonating_a_service_account).
-
-Once you've granted the appropriate permissions, you'll need to enable
-the [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com).
-Enabling the API and granting the role are eventually consistent operations,
-taking up to 7 minutes to fully complete, but usually fully propagating within 60
-seconds. Give it a few minutes, then add the `impersonate_service_account`
-option to your BigQuery profile configuration:
 
 ```yaml
 my-profile:
@@ -302,6 +285,9 @@ my-profile:
 ```
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
+
+<FAQ src="bq-impersonate-service-account-why" />
+<FAQ src="bq-impersonate-service-account-setup" />
 
 ## Required permissions
 
