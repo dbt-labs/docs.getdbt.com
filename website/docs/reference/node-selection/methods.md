@@ -109,3 +109,14 @@ $ dbt ls --models state:modified     # list all modified nodes (not just models)
 ```
 
 Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
+
+### The "exposure" method
+<Changelog>New in v0.18.1</Changelog>
+
+The `exposure` method is used to select parent resources of a specified [exposure](exposure-properties). Use in conjunction with the `+` operator.
+
+```bash
+$ dbt run --models +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
+$ dbt test --models +exposure:*                         # test all resources upstream of all exposures
+$ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
+```
