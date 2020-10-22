@@ -2,25 +2,130 @@
 resource_types: [models]
 datatype: "string"
 ---
-:::caution Heads up!
-These docs are a work in progress.
 
-:::
+<Tabs
+  defaultValue="models"
+  values={[
+    { label: 'Models', value: 'models', },
+    { label: 'Seeds', value: 'seeds', },
+    { label: 'Snapshots', value: 'snapshots', },
+  ]
+}>
+<TabItem value="models">
 
-<!----
-To-do:
-- use the reference doc structure for this article
-- check if SQL headers apply to models only
---->
+<File name='models/<modelname>.sql'>
+
+```sql
+{{ config(
+  sql_header="<sql-statement>"
+) }}
+
+select ...
 
 
-### Overview
+```
 
-dbt supports the specification of SQL headers: arbitrary SQL snippets that are injected above `create table as` and `create view as` statements that dbt executes.
+</File>
 
-One possible use-case for SQL headers is the specification of [BigQuery Temporary UDFs](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions#sql-udf-examples). SQL headers are logically similar to model pre-hooks, with the notable difference being that they run in the same *query* as the `create table|view as` statement.
+<File name='dbt_project.yml'>
 
-### Usage
+```yml
+[config-version](config-version): 2
+
+models:
+  [<resource-path>](resource-path):
+    +sql_header: <sql-statement>
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="seeds">
+
+This config is not implemented for seeds
+
+</TabItem>
+
+<TabItem value="snapshots">
+
+<File name='snapshots/<filename>.sql'>
+
+```sql
+{% snapshot [snapshot_name](snapshot_name) %}
+
+{{ config(
+  sql_header="<sql-statement>"
+) }}
+
+select ...
+
+{% endsnapshot %}
+
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](resource-path):
+    +sql_header: <sql-statement>
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+
+## Definition
+An optional configuration to inject SQL above the `create table as` and `create view as` statements that dbt executes when building models and snapshots.
+
+`sql_header`s can be set using the config, or by `call`-ing the `set_sql_header` macro (example below).
+
+## Comparison to pre-hooks
+[Pre-hooks](pre-hook-post-hook) also provide an opportunity to execute SQL before model creation, as a _preceding_ query. In comparison, SQL in a `sql_header` is run in the same _query_ as the `create table|view as` statement.
+
+As a result, this makes it more useful for [Snowflake session parameters](https://docs.snowflake.com/en/sql-reference/parameters.html) and [BigQuery Temporary UDFs](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions#sql-udf-examples).
+
+## Examples
+
+### Set Snowflake session parameters for a particular model
+This uses the config block syntax:
+<File name='models/my_model.sql'>
+
+```sql
+{{ config(
+  sql_header="alter session set timezone = 'Australia/Sydney'"
+) }}
+
+select * from {{ ref('other_model') }}
+```
+
+</File>
+
+### Set Snowflake session parameters for all models
+
+<File name='dbt_project.yml'>
+
+```yml
+config-version: 2
+
+models:
+  +sql_header: "alter session set timezone = 'Australia/Sydney'"
+```
+
+</File>
+
+### Create a BigQuery Temporary UDF
+
+This example calls the `set_sql_header` macro. This macro is a convenience wrapper which you may choose to use if you have a multi-line SQL statement to inject. You do not need to use the `sql_header` configuration key in this case.
 
 <File name='models/my_model.sql'>
 
@@ -41,20 +146,6 @@ One possible use-case for SQL headers is the specification of [BigQuery Temporar
 
 
 select yes_no_to_boolean(yes_no) from {{ ref('other_model') }}
-```
-
-</File>
-
-
-The `set_sql_header` macro a convenience method for setting the `sql_header` model config. This config can also be supplied manually:
-
-<File name='models/my_model.sql'>
-
-```sql
-
-{{ config(sql_header="-- my very cool comment") }}
-
-select * from {{ ref('other_model') }}
 ```
 
 </File>

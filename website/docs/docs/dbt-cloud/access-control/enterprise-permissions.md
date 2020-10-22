@@ -5,18 +5,23 @@ id: "enterprise-permissions"
 
 :::info Enterprise Feature
 
-This guide describes a feature of the dbt Cloud Enterprise plan. 
-If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+This guide describes a feature of the dbt Cloud Enterprise plan.
+If you're interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
 :::
 
-The following permission sets are available for assignment for dbt Cloud Enterprise.
-Please contact your Account Manager to implement the permissions defined here.
-See [Seats and Users](cloud-seats-and-users) for more information on user licenses.
+## Overview
+
+The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
+help manage access controls within a dbt Cloud account. See the docs on [access
+control](access-control-overview) for more information on Role-Based access
+control (RBAC).
 
 ## Permission Sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts.
+The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
+can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group 
+can be associated with more than one permission sets.
 
 ### Account Admin
 - **Has permissions on:** Authorized projects, account-level settings
@@ -107,10 +112,10 @@ Job Viewers can perform the following actions in projects they are assigned to:
 - **License restrictions:** must have a developer license
 
 Developers can perform the following actions in projects they are assigned to:
+- Create, delete, and modify Jobs
+- Trigger runs
 - Use the IDE
 - Configure personal developer credentials
-- Manage job definitions in assigned projects
-- Kick off runs in deployment environments
 
 ### Analyst
 - **Has permissions on:** Authorized projects
@@ -129,6 +134,21 @@ Analysts can perform the following actions in projects they are assigned to:
 - **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
-- View the read-only dashboard
+- View the Read Only dashboard
 - View generated documentation
 - View generated source freshness reports
+
+## Diagram of the Permission Sets
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
+static/
+
+## How to Set Up RBAC Groups in dbt Cloud
+ 
+- **If you are on a Fishtown Hosted dbt Cloud instance:**
+Contact support via the Intercom button or support@getdbt.com to turn on this feature. 
+- **If you are on a customer deployed dbt Cloud instance:**
+Contact your account manager for instructions on how to turn on this feature.
+
+<LoomVideo id="8e2e00c57bde4fbfa4b519bf35d7632d" />
+

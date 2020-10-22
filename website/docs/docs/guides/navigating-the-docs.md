@@ -29,6 +29,7 @@ Easily indexed common questions that link back to relevant guides and reference 
 
 ### Stack Overflow
 _[Link](https://stackoverflow.com/search?q=dbt)_
+
 Troubleshooting oriented
 
 Specifically, “I’m stuck and don’t know what to do”. We use Stack Overflow to answer these questions since:
