@@ -248,7 +248,7 @@ dbt uses the `ref` function to:
 
 * Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from upstream table in the same schema. Check out the tabs above to see this in action.
 
-Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code, and reduce repeated code.
+Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 
 ## Testing and documenting models
 You can also document and test models — skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
