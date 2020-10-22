@@ -93,6 +93,8 @@
 /docs/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
 /docs/global-cli-flags	/reference/global-cli-flags	302
 /docs/graph	/docs/writing-code-in-dbt/jinja-context/graph	302
+/docs/guides/migration-guide/upgrading-to-014	/docs/guides/migration-guide/upgrading-to-0-14-0	302
+/docs/guides/migration-guide/upgrading-from-0-10-to-0-11	/docs/guides/migration-guide/upgrading-to-0-11-0	302
 /docs/hooks	/docs/building-a-dbt-project/hooks-operations	302
 /docs/init	/reference/commands/init	302
 /docs/install-from-source	/dbt-cli/installation	302
