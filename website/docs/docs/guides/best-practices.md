@@ -109,6 +109,8 @@ When developing, it often makes sense to only run the model you are actively wor
 ### Run only modified models to test changes ("slim CI")
 To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](cloud-enabling-continuous-integration-with-github).)
 
+At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
+
 <Changelog>New in v0.18.0</Changelog>
 
 By comparing to artifacts from a previous production run, dbt can determine
@@ -125,7 +127,7 @@ You may need to adjust syntax for your project. If you encounter unexpected
 behavior, please post in Slack or open an issue.
 :::
 
-To learn more, read the docs on [state](state).
+To learn more, read the docs on [state](understanding-state).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development

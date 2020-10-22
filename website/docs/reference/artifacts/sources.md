@@ -6,8 +6,8 @@ title: Sources
 
 _Produced by:_ `dbt source snapshot-freshness`
 
-This file contains information from your data warehouse about the tables and views produced by the models in your project. dbt uses this file to render information like column types and table statistics into the docs site.
+This file contains information about sources with freshness checks. Today, dbt Cloud uses this file to power its [Source Freshness visualization](cloud-snapshotting-source-freshness).
 
-- [`metadata`](dbt-artifacts#common-artifact-metadata)
+- [`metadata`](dbt-artifacts#common-metadata)
 - `elapsed_time`: Total invocation time in seconds.
 - `results`: Array of freshness-check execution details.

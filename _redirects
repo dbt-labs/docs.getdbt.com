@@ -248,10 +248,10 @@
 /docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/using-jinja	/tutorial/using-jinja	302
 /faqs/getting-help/	/docs/guides/getting-help/	302
-/reference/dbt-artifacts	/reference/artifacts/dbt-artifacts	302
 /reference/accounts	/dbt-cloud/api	302
 /reference/api	/dbt-cloud/api	302
 /reference/connections	/dbt-cloud/api	302
+/reference/dbt-artifacts	/reference/artifacts/dbt-artifacts	302
 /reference/environments	/dbt-cloud/api	302
 /reference/jobs	/dbt-cloud/api	302
 /reference/model-selection-syntax    /reference/node-selection/syntax 302

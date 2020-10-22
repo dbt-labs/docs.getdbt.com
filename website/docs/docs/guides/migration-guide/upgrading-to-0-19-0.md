@@ -5,7 +5,7 @@ title: "Upgrading to 0.19.0"
 
 :::info Prerelease
 
-dbt v0.19.0 is currently in beta. Please post in dbt Slack #prereleases with questions or issues.
+dbt v0.19.0 is currently in beta. Please post in dbt Slack #dbt-prereleases with questions or issues.
 
 :::
 

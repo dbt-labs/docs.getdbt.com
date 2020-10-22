@@ -2,15 +2,13 @@
 title: Catalog
 ---
 
-### catalog.json
-
 _Produced by:_ `dbt docs generate`
 
-This file contains information from your data warehouse about the tables and views produced by the models in your project. dbt uses this file to render information like column types and table statistics into the docs site.
+This file contains information from your data warehouse about the tables and views produced and defined by the resources in your project. Today, dbt uses this file to render information like column types and table statistics into the docs site.
 
 ### Top-level keys
 
-- [`metadata`](dbt-artifacts#common-artifact-metadata)
+- [`metadata`](dbt-artifacts#common-metadata)
 - `nodes`: Dictionary containing information about database objects corresponding to dbt models, seeds, and snapshots.
 - `sources`: Dictionary containing information about database objects corresponding to dbt sources.
 - `errors`: Errors received while running metadata queries during `dbt docs generate`.

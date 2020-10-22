@@ -16,7 +16,7 @@ This file contains a full representation of your dbt project in a single file. R
 
 ### Top-level keys
 
-- [`metadata`](dbt-artifacts#common-artifact-metadata)
+- [`metadata`](dbt-artifacts#common-metadata)
 - `nodes`: Dictionary of all analyses, models, seeds, snapshots, and tests.
 - `sources`: Dictionary of sources.
 - `exposures`: Dictionary of exposures.

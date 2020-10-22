@@ -1,5 +1,5 @@
 ---
-title: "State"
+title: "Understanding state"
 ---
 
 <Changelog>
@@ -17,8 +17,8 @@ dbt can leverage artifacts from a prior invocation as long as their file path is
 by comparing code in the current project against the state manifest.
 - [Deferring to previous run](run#deferring-to-previous-run-state), whereby dbt can identify references to upstream, unselected models and "defer" them to the namespaces provided by the state manifest, instead of expecting them in the current run environment's namespace.
 
-Notes:
+Together, these two features enable ["slim CI"](best-practices#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
+
+#### Notes:
 - The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
 - The path to state artifacts can be set via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable. If both the flag and env var are provided, the flag takes precedence.
-
-Together, these two features enable ["slim CI"](best-practices#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.

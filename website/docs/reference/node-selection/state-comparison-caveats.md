@@ -58,9 +58,10 @@ dbt will do its best to capture *only* changes that are the result of modificati
 - better options for more complex projects, in the form of more-specific subselectors (see [this issue](https://github.com/fishtown-analytics/dbt/issues/2704))
 
 <Changelog>
-- v0.18.0: All env-aware logic results in false positives during state comparison,
-when comparing against a manifest generated with a different target.
-- v0.19.0: dbt can detect
+
+- v0.18.0: All env-aware logic results in false positives during state comparison, when comparing against a manifest generated with a different target.
+- v0.19.0: dbt stores and compares unrendered Jinja expressions for configurations, allowing it to see past env-aware logic in `dbt_project.yml`.
+
 </Changelog>
 
 State comparison is now able to detect env-aware config in `dbt_project.yml`. For instance, this target-based config would register as a modification in v0.18.0, but in v0.19.0 it no longer will:
@@ -76,23 +77,17 @@ models:
 
 Of course, if the raw Jinja expression is modified, it will be marked as a modification.
 
-The functionally equivalent config expressed with in-file `config()` arguments _will_ be detected as a modification when comparing across targets:
+Note that, as of now, this improved detection is true _only_ for `dbt_project.yml` configuration. It does not apply to:
+- `.yml` resource properties (including `sources`)
+- in-file `config()`
+
+That means the following config—functionally identical to the snippet above—_will_ be marked as a modification when comparing across targets:
 
 ```sql
 {{ config(
     materialized = ('table' if target.name == 'prod' else 'view')
 ) }}
 ```
-
-If you represent the same logic with a macro, it will _not_ be detected as a modification when comparing across targets:
-
-```sql
-{{ config(
-    materialized = materialize_based_on_target()
-) }}
-```
- 
-An important caveat: Although dbt can observe modifications to the `materialize_based_on_target()`, it cannot reliably determine the set of downstream models that select from that macro, and so macro modifications are not reflected in `state:modified` selection criteria.
 
 ### Final note
 
