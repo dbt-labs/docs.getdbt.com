@@ -6,7 +6,8 @@ title: "BigQuery Profile"
 
 BigQuery targets can be specified using one of three methods:
 
-1. oauth
+1. oauth via `gcloud`
+2. oauth via access token(s)
 2. a service account file
 3. service account json
 
@@ -14,8 +15,7 @@ For local development, we recommend using the oauth method. If you're scheduling
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file.
 
-### oauth Authentication
-
+### OAuth Local Authentication
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -38,6 +38,76 @@ my-bigquery-db:
 ```
 
 </File>
+
+### Oauth Token-Based Authentication
+
+See [docs](https://developers.google.com/identity/protocols/oauth2) on using Oauth 2.0 to access Google APIs.
+
+<Tabs
+  defaultValue="refresh"
+  values={[
+    {label: 'Refresh token', value: 'refresh'},
+    {label: 'Temporary token', value: 'temp'},
+  ]}>
+
+<TabItem value="refresh">
+
+Using the refresh token and client information, dbt will mint new access tokens as necessary.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-bigquery-db:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth-secrets
+      project: [GCP project id]
+      dataset: [the name of your dbt dataset] # You can also use "schema" here
+      threads: [1 or more]
+      timeout_seconds: 300
+      location: US # Optional, one of US or EU
+      priority: interactive
+      retries: 1
+      refresh_token: [token]
+      client_id: [client id]
+      client_secret: [client secret]
+      token_uri: [redirect URI]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="temp">
+
+dbt will use the one-time access token, no questions asked. This approach makes sense if you have an external deployment process that can mint new access tokens and update the profile file accordingly.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-bigquery-db:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth-secrets
+      project: [GCP project id]
+      dataset: [the name of your dbt dataset] # You can also use "schema" here
+      threads: [1 or more]
+      timeout_seconds: 300
+      location: US # Optional, one of US or EU
+      priority: interactive
+      retries: 1
+      token: [temporary access token] # refreshed + updated by external process
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 ### Service Account File Authentication
 
@@ -103,11 +173,11 @@ my-bigquery-db:
 
 </File>
 
-## Oauth Authorization
+
+
+## OAuth Authorization (local)
 
 To connect to BigQuery using the `oauth` method, follow these steps:
-
-
 
 1. Make sure the `gcloud` command is [installed on your computer](https://cloud.google.com/sdk/downloads)
 2. Activate the application-default account with
@@ -218,6 +288,8 @@ Database Error in model debug_table (models/debug_table.sql)
 ### Service Account Impersonation
 <FAQ src="bq-impersonate-service-account" />
 <Changelog>New in v0.18.0</Changelog>
+
+This feature allows users authenticating via local oauth to access BigQuery resources based on the permissions of a service account.
 
 To use this functionality, first create the service account you want to
 impersonate. Then grant users that you want to be able to impersonate
