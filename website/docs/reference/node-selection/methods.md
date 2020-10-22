@@ -108,14 +108,4 @@ $ dbt run --models state:modified        # run all models that have been modifie
 $ dbt ls --models state:modified     # list all modified nodes (not just models)
 ```
 
-**N.B.** State comparison works by identifying discrepancies between two manifests. 
-Those discrepancies could be the result of:
-
-1. Changes made to a project in development
-2. Env-aware logic that causes different behavior based on the `target`, env vars, etc.
-
-dbt will do its best to capture *only* changes that are the result of development.
-In projects with intricate env-aware logic, dbt will err on the side of running 
-too many models (i.e. false positives). We're working on better options for more 
-complex projects, in the form of more-specific subselectors.
-Track [this issue](https://github.com/fishtown-analytics/dbt/issues/2704) for progress.
+Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.

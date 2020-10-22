@@ -61,7 +61,6 @@ module.exports = {
         "docs/guides/best-practices",
         "docs/guides/managing-environments",
         "docs/guides/writing-custom-schema-tests",
-        "docs/guides/dbt-artifacts",
         "docs/guides/building-packages",
         "docs/guides/creating-new-materializations",
         {
@@ -455,7 +454,19 @@ module.exports = {
         "reference/warehouse-profiles/azuresynapse-profile",
       ],
     },
-    "reference/dbt-artifacts",
+    {
+      type: "category",
+      label: "dbt Artifacts",
+      items: [
+        "reference/artifacts/dbt-artifacts",
+        "reference/artifacts/manifest",
+        "reference/artifacts/run-results",
+        "reference/artifacts/catalog",
+        "reference/artifacts/sources",
+        "reference/artifacts/state",
+        "reference/artifacts/other-artifacts",
+      ],
+    },
   ],
   tutorial: [
     {

@@ -125,7 +125,7 @@ You may need to adjust syntax for your project. If you encounter unexpected
 behavior, please post in Slack or open an issue.
 :::
 
-For more details, see the docs on [deferred runs](run#deferring-to-previous-run-state) and [the state selection method](node-selection/methods#the-state-method).
+To learn more, read the docs on [state](state).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development
