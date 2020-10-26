@@ -4,6 +4,34 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.12 (TODO - Enter date)
+
+TODO - Enter description and curate release notes
+
+#### Enhancements
+
+- Update copy on billing page
+- Add dbt 0.19.0b1
+- Add dbt 0.18.1
+- Added codex auth jwt endpoint
+
+#### Fixed
+
+- Add metric unable to pick up runs
+- Escape characters fix for codex html snippet
+- resolve groups from other logged-in accounts appearing
+- Fix requested Gitlab scopes, issue when encrypting deploy tokens
+- resolve presence of null-characters in logs throwing errors
+
+#### Internal
+
+- measure artifact upload time
+- change metric type for artifact upload duration
+- measure artifact upload time
+- change permission logs to info and prefix
+- Bump django from 2.2.10 to 2.2.16
+- Add FA snippets to IDE
+
 ## dbt Cloud v1.1.11 (October 15, 2020)
 
 Release v1.1.11 includes some quality-of-life enhancements, copy tweaks, and error resolutions. It also marks the last time we'll have the same digit four times in a row in a release until v2.2.22.
