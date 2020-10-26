@@ -4,33 +4,24 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.12 (TODO - Enter date)
+## dbt Cloud v1.1.12 (Unreleased)
 
-TODO - Enter description and curate release notes
+This release adds dbt v.18.1 and 0.19.0b1 to dbt Cloud. Additionally, a
+number of bugs have been fixed.
 
 #### Enhancements
 
-- Update copy on billing page
+- Update copy on billing page for picking a plan at the end of a trial
+- Improved authorization for metadata API
 - Add dbt 0.19.0b1
 - Add dbt 0.18.1
-- Added codex auth jwt endpoint
 
 #### Fixed
 
-- Add metric unable to pick up runs
-- Escape characters fix for codex html snippet
-- resolve groups from other logged-in accounts appearing
-- Fix requested Gitlab scopes, issue when encrypting deploy tokens
-- resolve presence of null-characters in logs throwing errors
+- Fixed an issue where groups from other logged-in accounts appeared in the RBAC UI
+- Fixed requested Gitlab scopes and an issue when encrypting deploy tokens for GitLab auth
+- Fixed an issue where null characters in logs threw errors in scheduled runs
 
-#### Internal
-
-- measure artifact upload time
-- change metric type for artifact upload duration
-- measure artifact upload time
-- change permission logs to info and prefix
-- Bump django from 2.2.10 to 2.2.16
-- Add FA snippets to IDE
 
 ## dbt Cloud v1.1.11 (October 15, 2020)
 
