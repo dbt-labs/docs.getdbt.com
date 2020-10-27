@@ -63,3 +63,22 @@ from source('web_events', 'page_views')
 where created_at >= dateadd('day', -3, current_date)
 {% endif %}
 ```
+
+### Use `target.name` to change your source database
+If you have specific Snowflake databases configured for your dev/qa/prod environments,
+you can set up your sources to compile to different databases depending on your 
+environment. 
+
+```yml
+version: 2
+ 
+sources:
+  - name: source_name 
+    database: |
+      {%- if  target.name == "dev" -%} raw_dev
+      {%- elif target.name == "qa"  -%} raw_qa
+      {%- elif target.name == "prd"  -%} raw_prod
+      {%- else -%} invalid_database
+      {%- endif -%}
+    schema: source_schema
+```
