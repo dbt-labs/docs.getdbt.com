@@ -22,7 +22,7 @@ A model is a `select` statement. Models are defined in `.sql` files (typically i
 - The name of the file is used as the model name
 - Models can be nested in subdirectories within the `models` directory
 
-When you execute the [`dbt run` command](run), dbt will build this model in your data warehouse by wrapping it a `create view as` or `create table as` statement.
+When you execute the [`dbt run` command](run), dbt will build this model in your data warehouse by wrapping it in a `create view as` or `create table as` statement.
 
 For example, consider this `customers` model:
 
@@ -246,7 +246,7 @@ dbt uses the `ref` function to:
 * Determine the order to run models in by creating a dependent acyclic graph (DAG).
 <Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
 
-* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from upstream table in the same schema. Check out the tabs above to see this in action.
+* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from an upstream table in the same schema. Check out the tabs above to see this in action.
 
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code, and reduce repeated code.
 
