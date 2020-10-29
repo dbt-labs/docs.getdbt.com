@@ -29,7 +29,7 @@ To use incremental models, you also need to tell dbt:
 
 
 ### Filtering rows on an incremental run
-To tell dbt which rows it should transform on an incremental run this, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
+To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
 
 Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](this)" variable.
 
