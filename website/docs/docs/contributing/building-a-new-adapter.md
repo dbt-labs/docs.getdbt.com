@@ -314,4 +314,4 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 ### Testing your new adapter
 
-You can clone and use a pre-configured [dbt integration test suite](https://github.com/fishtown-analytics/dbt-integration-tests) to test that your new adapter works. This closely mirrors the test suite that we use on dbt itself, and tests much of dbt's basic functionality.
+You can use a pre-configured [dbt adapter test suite](https://github.com/fishtown-analytics/dbt-adapter-tests) to test that your new adapter works. These tests include much of dbt's basic functionality, with the option to override or disable functionality that may not be supported on your adapter.
