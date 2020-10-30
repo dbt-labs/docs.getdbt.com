@@ -4,10 +4,9 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.12 (Unreleased)
+## dbt Cloud v1.1.12 (October 30, 2020)
 
-This release adds dbt v.18.1 and 0.19.0b1 to dbt Cloud. Additionally, a
-number of bugs have been fixed.
+This release adds dbt v.18.1 and 0.19.0b1 to dbt Cloud. Additionally, a number of bugs have been fixed.
 
 #### Enhancements
 
