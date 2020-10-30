@@ -18,7 +18,7 @@ This release adds dbt v.18.1 and 0.19.0b1 to dbt Cloud. Additionally, a number o
 #### Fixed
 
 - Fixed an issue where groups from other logged-in accounts appeared in the RBAC UI
-- Fixed requested Gitlab scopes and an issue when encrypting deploy tokens for GitLab auth
+- Fixed requested GitLab scopes and an issue when encrypting deploy tokens for GitLab auth
 - Fixed an issue where null characters in logs threw errors in scheduled runs
 
 
