@@ -247,6 +247,7 @@ module.exports = {
         "reference/seed-configs",
         "reference/source-configs",
         "reference/snapshot-configs",
+        "reference/data-test-configs",
         {
           type: "category",
           label: "List of general configs",
