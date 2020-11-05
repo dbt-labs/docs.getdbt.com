@@ -32,7 +32,7 @@ Optional properties:
 
 We plan to add more subtypes and optional properties in future releases.
 
-<File name='data/<filename>.yml'>
+<File name='models/<filename>.yml'>
 
 ```yml
 version: 2
