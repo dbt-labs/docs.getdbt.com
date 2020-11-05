@@ -29,7 +29,7 @@ To use incremental models, you also need to tell dbt:
 
 
 ### Filtering rows on an incremental run
-To tell dbt which rows it should transform on an incremental run this, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
+To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
 
 Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](this)" variable.
 
@@ -69,7 +69,7 @@ For more complex incremental models that make use of CTEs, you should consider t
 :::
 
 ### Defining a uniqueness constraint (optional)
-`unique_key` is an optional parameter for incremental models that specifies a field which should be unique within your model. If the unique key of existing row in your target table matches a row in your incrementally transformed rows, the existing row will be updated. This ensures that you don't have multiple rows in your target table for a single row in your source data.
+`unique_key` is an optional parameter for incremental models that specifies a field which should be unique within your model. If the unique key of an existing row in your target table matches one of your incrementally transformed rows, the existing row will be updated. This ensures that you don't have multiple rows in your target table for a single row in your source data.
 
 You can define `unique_key` in a configuration block at the top of your model. The `unique_key` should be a single field name that is present in your model definition. While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported, so is not recommended. If you do not have a single field that is unique, consider first creating such a field in your model.
 
