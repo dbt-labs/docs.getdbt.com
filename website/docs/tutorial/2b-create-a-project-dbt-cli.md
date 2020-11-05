@@ -137,7 +137,7 @@ We need to commit our changes so that our repository has up-to-date code.
 $ git init
 $ git commit -m "Create a dbt project"
 $ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
-$ git push -u origin master
+$ git push -u origin main
 ```
 
 :::info
