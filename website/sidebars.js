@@ -125,7 +125,7 @@ module.exports = {
         "docs/dbt-cloud/setting-up-dbt-cloud/connect-to-your-database",
         "docs/dbt-cloud/setting-up-dbt-cloud/connect-to-your-database/redshift-and-postgres",
         "docs/dbt-cloud/setting-up-dbt-cloud/connect-to-your-database/snowflake",
-        "docs/dbt-cloud/setting-up-dbt-cloud/configure-a-repository/"
+        "docs/dbt-cloud/setting-up-dbt-cloud/configure-a-repository/",
         "docs/dbt-cloud/setting-up-dbt-cloud/configure-a-repository/managed-repository",
         "docs/dbt-cloud/setting-up-dbt-cloud/configure-a-repository/git-url",
         "docs/dbt-cloud/setting-up-dbt-cloud/configure-a-repository/github-repository",
