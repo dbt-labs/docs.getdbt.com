@@ -203,6 +203,7 @@ module.exports = {
             "docs/dbt-cloud/on-premises/installation",
             "docs/dbt-cloud/on-premises/setup",
             "docs/dbt-cloud/on-premises/usage-statistics",
+            "docs/dbt-cloud/on-premises/upgrading-kots",
             "docs/dbt-cloud/deployments/airgapped-deployment",
             "docs/dbt-cloud/on-premises/faqs",
           ],
@@ -248,6 +249,7 @@ module.exports = {
         "reference/seed-configs",
         "reference/source-configs",
         "reference/snapshot-configs",
+        "reference/data-test-configs",
         {
           type: "category",
           label: "List of general configs",
