@@ -2,7 +2,10 @@
 title: "YAML Selectors"
 ---
 
-<Changelog>New in v0.18.0</Changelog>
+<Changelog>
+- **v0.18.0**: Introduced YAML selectors
+- **v0.19.0**: Added optional `description` property
+</Changelog>
 
 :::info [β] Beta Feature
 This is net-new functionality in v0.18.0, with iterative improvements to come.
@@ -16,7 +19,7 @@ By recording selectors in a top-level `selectors.yml` file:
 * **Version control:** selector definitions are stored in the same git repository as the dbt project
 * **Reusability:** selectors can be referenced in multiple job definitions, and their definitions are extensible (via YAML anchors)
 
-Selectors live in a top-level file named `selectors.yml`. Each has a `name` and a `definition`:
+Selectors live in a top-level file named `selectors.yml`. Each has a `name`, a `definition`, and an optional `description`:
 
 <File name='selectors.yml'>
 
@@ -25,6 +28,7 @@ selectors:
   - name: nodes_to_joy
     definition: ...
   - name: nodes_to_a_grecian_urn
+    description: Attic shape with a fair attitude
     definition: ...
 ```
 </File>
@@ -130,6 +134,7 @@ $ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:
 ```yml
 selectors:
   - name: nightly_diet_snowplow
+    description: "Non-incremental Snowplow models that power nightly exports"
     definition:
       union:
         - intersection:
@@ -151,6 +156,7 @@ selectors:
 ```yml
 selectors:
   - name: nightly_diet_snowplow
+    description: "Non-incremental Snowplow models that power nightly exports"
     definition:
       union:
         - intersection:
