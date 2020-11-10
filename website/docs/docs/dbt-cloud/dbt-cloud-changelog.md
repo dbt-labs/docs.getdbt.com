@@ -6,35 +6,26 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.13 (TODO - Enter Release date)
 
-TODO - write release summary and curate release notes
+This release adds support for triggering runs with overriden attributes via the
+[triggerRun](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun) API endpoint. Additionally,
+a number of bugs have been squashed and performance improvements have been made.
 
 #### Enhancements
 
-- Add dashboard status tile landing page
-- Added failures for long running RPC processes in IDE
-- Use s3 client caching for downloading logs in dbt Cloud app
-- Allow run trigger API requests to override job attributes
-- Update copy on billing page
+- Improve error handling for long-running queries in the IDE
+- Use S3 client caching to improve log download speed for scheduled runs
+- Support triggering jobs [with overriden attributes from the API](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun)
+- Clarify "upgrade" copy on the billing page
 
 #### Fixed
 
+- Gitlab groups endpoint now returns all groups and subgroups
 - Support BigQuery retry configs with value 0
 - Prevent web IDE from crashing after running an invalid dbt command
-- Added default for github installation id
-- Gitlab groups endpoint now returns all groups and subgroups
-- Fix a bug with null handling in scrub message
-- Scrub logs of any temporary Github credentials
+- Apply additional log scrubbing to filter short-lived git credentials
 - Fix older migration to make auth_url field nullable
-
-#### Internal
-
-- Install ssh and git for CI qawolf job for cloning fishtown-ui
-- Add Fishtown UI to dbt Cloud
 - Support paths in gitlab instance URL
-- artificially slow down log processing to relieve load on the database
 - Fix for auth token request url in gitlab oauth flow
-- Remove threaded version of upload_artifacts
-- Add a switch to upload artifacts without threads
 
 ## dbt Cloud v1.1.12 (October 30, 2020)
 
