@@ -38,13 +38,13 @@ $ dbt test -m state:modified --exclude test_name:relationships
 "Run all modified models, then execute all modified tests _except_ relationships tests."
 
 ```bash
-$ dbt run -m state:modified 1+state:modified,1+test_type:data
+$ dbt run -m state:modified @state:modified,1+test_type:data
 $ dbt test -m state:modified
 ```
 
-"Run all modified models _and_ all first-order parents of modified data tests, then execute all modified tests." This is a "safe not sorry" approach: you may find an extra model along for the ride, if it is the first-order parent of an modified model and the first-order parent of a data test, but not the first-order parent of a modified data test. ([For more on this phenomenon.](https://youtu.be/bWOfT45DShU?t=73))
+"Run all modified models _and_ all models which might be needed to run modified data tests _or_ unmodified data tests that select from modified models. Then, execute all modified tests." This is a "safe not sorry" approach: you may find an extra model along for the ride, if it is the parent of a child a modified model _and_ the first-order parent of an unrelated data test, but not the first-order parent of a modified data test.
 
-When your selection syntax gets too verbose, consider defining a [YAML selector](node-selection/yaml-selectors).
+If you find your selection syntax becoming overly verbose, consider defining a [YAML selector](node-selection/yaml-selectors).
 
 ### False positives
 
