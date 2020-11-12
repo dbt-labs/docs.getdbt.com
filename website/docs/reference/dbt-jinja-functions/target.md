@@ -77,7 +77,7 @@ sources:
     database: |
       {%- if  target.name == "dev" -%} raw_dev
       {%- elif target.name == "qa"  -%} raw_qa
-      {%- elif target.name == "prd"  -%} raw_prod
+      {%- elif target.name == "prod"  -%} raw_prod
       {%- else -%} invalid_database
       {%- endif -%}
     schema: source_schema
