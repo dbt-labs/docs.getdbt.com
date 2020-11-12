@@ -166,6 +166,17 @@ Note that you need to use the [tag _configuration_](resource-configs/tags) to ap
 
 </Changelog>
 
+### Scopes of `tags` _property_
+The scopes of the `tags` _property_ are different depending on the annotated targets.
+When we run schema tests, `tags` _property_ affects all schema tests on a particular tagged source, column or test.
+Even though a schema test is not applied by any `tags`.
+
+|tagged target           |scopes                                                    |
+|------------------------|----------------------------------------------------------|
+|a source or source table|all schema tests under a particular source or source table|
+|a column                |all schema tests under a particular column                |
+|a schema test           |a particular schema test                                  |
+
 
 ## Examples
 ### Tag a column and test
