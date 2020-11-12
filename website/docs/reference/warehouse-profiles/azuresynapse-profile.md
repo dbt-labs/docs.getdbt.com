@@ -139,9 +139,10 @@ driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your syste
 server: server-host-name or ip
 port: 1433
 schema: schemaname
+authentication: ServicePrincipal
 tenant_id: tenant_id
 client_id: clientid
-client_secret: ActiveDirectoryIntegrated
+client_secret: clientsecret
 ```
 
 </File>
