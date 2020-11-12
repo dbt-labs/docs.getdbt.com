@@ -19,13 +19,13 @@ a number of bugs have been squashed and performance improvements have been made.
 
 #### Fixed
 
-- Gitlab groups endpoint now returns all groups and subgroups
+- GitLab groups endpoint now returns all groups and subgroups
 - Support BigQuery retry configs with value 0
 - Prevent web IDE from crashing after running an invalid dbt command
 - Apply additional log scrubbing to filter short-lived git credentials
 - Fix older migration to make auth_url field nullable
-- Support paths in gitlab instance URL
-- Fix for auth token request url in gitlab oauth flow
+- Support paths in GitLab instance URL
+- Fix for auth token request url in GitLab oauth flow
 
 ## dbt Cloud v1.1.12 (October 30, 2020)
 
