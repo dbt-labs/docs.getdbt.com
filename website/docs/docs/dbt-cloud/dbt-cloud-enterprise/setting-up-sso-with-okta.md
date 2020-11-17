@@ -95,26 +95,25 @@ On the **SAML Settings** page, enter the following values:
 <!-- TODO : Will users need to change the Name ID format and Application
 username on this screen? -->
 
-:::caution User and Group Attributes
+Use the **Attribute Statements** and **Group Attribute Statements** forms to
+map your organization's Okta User and Group Attributes to the format that
+dbt Cloud expects.
 
-dbt Cloud uses SAML settings provided by Okta to enforce role-based access
-control. If the Group Attribute statements shown below are misconfigured, then
-users may not be permissioned to projects correctly in dbt Cloud.
+Expected **User Attribute Statements**:
 
-:::
+| Name           | Name format | Value                | Description                |
+| -------------- | ----------- | -------------------- | -------------------------- |
+| `email`        | Unspecified | `${user.email}`      | _The user's email address_ |
+| `first_name`   | Unspecified | `${user.firstName}`  | _The user's first name_    |
+| `last_name`    | Unspecified | `${user.lastName}`   | _The user's last name_     |
 
-Under **Attribute Statements**, enter the following:
 
-* **Name**: email
-* **Name format**: Unspecified
-* **Value**: `${user.email}`
+Expected **Group Attribute Statements**:
 
-Under **Group Attribute Statments**, enter the following:
+| Name     | Name format | Filter        | Value | Description                           |
+| -------- | ----------- | ------------- | ----- | ------------------------------------- |
+| `groups` | Unspecified | Matches regex | `.*`  | _The groups that the user belongs to_ |
 
-* **Name**: groups
-* **Name format**: Unspecified
-* **Filter**: Matches regex
-* **Value**: `.*`
 
 **Note:** You may use a more restrictive Group Attribute Statement than the
 example shown above. For example, if all of your dbt Cloud groups start with
