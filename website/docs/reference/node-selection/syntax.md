@@ -56,7 +56,7 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
 $ dbt run --models my_first_model my_second_model
 
 # these arguments can be projects, models, directory paths, tags, or sources
-$ dbt run --models tag:nightly my_model finance.base.*
+$ dbt run --models tag:nightly my_model 'finance.base.*'
 
 # use methods and intersections for more complex selectors
 $ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
