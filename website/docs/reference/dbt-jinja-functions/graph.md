@@ -122,7 +122,7 @@ Example usage:
 
 select * from (
   {%- for source in sources %}
-    {{ source }} {% if not loop.last %} union all {% endif %}
+    select * from {{ source }} {% if not loop.last %} union all {% endif %}
   {% endfor %}
 )
 
