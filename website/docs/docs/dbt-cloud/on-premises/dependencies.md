@@ -68,7 +68,6 @@ In order to perform basic maintenance and license checking, the following outbou
 ## Optional External Dependencies
 
 ### Integrations
->>>>>>> 9e2f8181a35f827b06f636744cc17d20746291ec:website/docs/docs/dbt-cloud/on-premises/dependencies.md
 
 _Can be individually enabled or disabled_
 
