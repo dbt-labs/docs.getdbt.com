@@ -18,7 +18,7 @@ A dbt project is a directory of `.sql` and .`yml` files. The directory must cont
 * Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
 * A project file: a `dbt_project.yml` file which configures and defines your dbt project.
 
-Projects also typically contains a number of other resources, including tests, snapshots, and seed files (see [below](#what-else-can-dbt-do)).
+Projects typically contain a number of other resources as well, including tests, snapshots, and seed files (see [below](#what-else-can-dbt-do)).
 
 Whether you are starting a project from scratch, or if your organization already has a dbt project, see the docs on [projects](projects) for more information on getting started.
 

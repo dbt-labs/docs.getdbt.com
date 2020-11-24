@@ -3,10 +3,10 @@ title: "Spark Profile"
 ---
 
 ## Connection Methods
-There are two supported connection methods for Spark targets: `http` and `thrift`.
+There are three supported connection methods for Spark targets: `thrift`, `http`, and `odbc`.
 
 ### thrift
-Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster.
+Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster, e.g. a cluster running locally or on Amazon EMR.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -26,7 +26,7 @@ your_profile_name:
 </File>
 
 ### http
-Use the `http` method if your Spark provider supports connections over HTTP (e.g. Databricks).
+Use the `http` method if your Spark provider supports connections over HTTP (e.g. Databricks interactive cluster).
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -47,9 +47,38 @@ your_profile_name:
       connect_retries: 5    # optional, default 0
 ```
 
+</File>
+
 Databricks interactive clusters can take several minutes to start up. You may
 include the optional profile configs `connect_timeout` and `connect_retries`,
 and dbt will periodically retry the connection.
+
+### ODBC
+
+<Changelog>New in v0.18.1</Changelog>
+
+Use the `odbc` connection method if you are connecting to a Databricks SQL endpoint or interactive cluster via ODBC driver. (Download the latest version of the official driver [here](https://databricks.com/spark/odbc-driver-download).)
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: odbc
+      driver: [path/to/driver]
+      schema: [database/schema name]
+      host: [yourorg.sparkhost.com]
+      organization: [org id]    # required if Azure Databricks, exclude if AWS Databricks
+      port: [port]
+      token: [abc123]
+      
+      # one of:
+      endpoint: [endpoint id]
+      cluster: [cluster id]
+```
 
 </File>
 
@@ -60,8 +89,14 @@ dbt's Spark adapter is managed in its own repository, [dbt-spark](https://github
 ### Using pip
 The following command will install the latest version of `dbt-spark` as well as the requisite version of `dbt-core`:
 
-```
+```bash
 pip install dbt-spark
+```
+
+If you are using the `odbc` connection method, you will need to install the extra `ODBC` requirement (includes `pyodbc`):
+
+```bash
+pip install "dbt-spark[ODBC]"
 ```
 
 ## Caveats

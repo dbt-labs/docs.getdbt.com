@@ -67,8 +67,6 @@ First, run `dbt docs generate` — this command tells dbt to compile relevant in
 
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
-Note: We're adding a way to see docs in the dbt Cloud IDE soon! You _can_ generate docs as part of your scheduled runs in the IDE — see [this guide](cloud-generating-documentation).
-
 ## FAQs
 <FAQ src="example-projects" alt_header="Are there any example dbt documentation sites?"/>
 <FAQ src="document-all-columns" />

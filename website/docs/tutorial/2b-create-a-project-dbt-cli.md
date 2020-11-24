@@ -135,9 +135,10 @@ We need to commit our changes so that our repository has up-to-date code.
 1. Link the GitHub repository you created to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
 ```shell-session
 $ git init
+$ git add .
 $ git commit -m "Create a dbt project"
 $ git remote add origin https://github.com/USERNAME/dbt-tutorial.git
-$ git push -u origin master
+$ git push -u origin main
 ```
 
 :::info

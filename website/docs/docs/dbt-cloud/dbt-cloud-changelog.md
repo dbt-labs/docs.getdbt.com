@@ -4,6 +4,47 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.13 (November 12, 2020)
+
+This release adds support for triggering runs with overriden attributes via the
+[triggerRun](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun) API endpoint. Additionally,
+a number of bugs have been squashed and performance improvements have been made.
+
+#### Enhancements
+
+- Improve error handling for long-running queries in the IDE
+- Use S3 client caching to improve log download speed for scheduled runs
+- Support triggering jobs [with overriden attributes from the API](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun)
+- Clarify "upgrade" copy on the billing page
+
+#### Fixed
+
+- GitLab groups endpoint now returns all groups and subgroups
+- Support BigQuery retry configs with value 0
+- Prevent web IDE from crashing after running an invalid dbt command
+- Apply additional log scrubbing to filter short-lived git credentials
+- Fix older migration to make auth_url field nullable
+- Support paths in GitLab instance URL
+- Fix for auth token request url in GitLab oauth flow
+
+## dbt Cloud v1.1.12 (October 30, 2020)
+
+This release adds dbt v.18.1 and 0.19.0b1 to dbt Cloud. Additionally, a number of bugs have been fixed.
+
+#### Enhancements
+
+- Update copy on billing page for picking a plan at the end of a trial
+- Improved authorization for metadata API
+- Add dbt 0.19.0b1
+- Add dbt 0.18.1
+
+#### Fixed
+
+- Fixed an issue where groups from other logged-in accounts appeared in the RBAC UI
+- Fixed requested GitLab scopes and an issue when encrypting deploy tokens for GitLab auth
+- Fixed an issue where null characters in logs threw errors in scheduled runs
+
+
 ## dbt Cloud v1.1.11 (October 15, 2020)
 
 Release v1.1.11 includes some quality-of-life enhancements, copy tweaks, and error resolutions. It also marks the last time we'll have the same digit four times in a row in a release until v2.2.22.
