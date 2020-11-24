@@ -68,5 +68,8 @@ If your account is not connected, you’ll see "This account is not linked to a 
 
 ### Errors importing a repository
 If you do not see your repository listed, double-check that:
-- You are a maintainer on that repository (only users with a maintainer or owner permissions can set up repository connections
 - Your repository is in a Gitlab group you have access to
+
+If you do see your repository listed but after selecting it, it's stuck loading/errors, double-check that:
+- You are a maintainer on that repository (only users with a maintainer or owner permissions can set up repository connections
+
