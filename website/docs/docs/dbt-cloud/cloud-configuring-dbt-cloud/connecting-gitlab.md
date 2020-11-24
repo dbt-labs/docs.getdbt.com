@@ -63,3 +63,10 @@ You can click the Authenticate button to begin the process, or follow the instru
 To connect your personal GitLab account, navigate to your [User Profile](https://cloud.getdbt.com/#/profile/) select the [Integrations section](https://cloud.getdbt.com/#/profile/integrations/) from the left sidebar. Under "GitLab", if your account is already connected, you’ll see "Your user account is linked to a GitLab account with username &lt;your-gitlab-username&gt;."
 
 If your account is not connected, you’ll see "This account is not linked to a GitLab account.” Click the button to begin the setup process. You’ll be redirected to GitLab, and then back into dbt Cloud. When you are redirected to dbt Cloud, you should now see your connected account. 
+
+## Troubleshooting
+
+### Respositories Errors
+If you do not see your repository listed, double-check that:
+- You are a maintainer on that repository (only users with a maintainer or owner permissions can set up repository connections
+- Your repository is in a Gitlab group you have access to
