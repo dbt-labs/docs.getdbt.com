@@ -106,7 +106,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 
 | Config | Required? | Description |
 | ------ | --------- | ----------- |
-| account | Yes | The account to connect to. This will be something like `abc123` or `abc123.us-east-1` for your particular account |
+| account | Yes | The account to connect to. This will be something like `abc123` or `abc123.us-east-1` for your particular account. Note that for GCP and Azure-based accounts, you may also have to append `gcp` or `azure`, respectively (for example: `abc123.us-central1.gcp`) |
 | user | Yes | The user to log in as |
 | database | Yes | The database that dbt should create models in |
 | warehouse | Yes | The warehouse to use when building models |
