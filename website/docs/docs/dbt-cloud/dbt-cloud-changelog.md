@@ -4,6 +4,33 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.14 (November 25, 2020)
+
+This release adds a few new pieces of connective tissue, notably OAuth for BigQuery and SparkAdapter work. There are also some quality of life improvements and investments for the future, focused on our beloved IDE users, and some improved piping for observability into log management and API usage. 
+
+#### Enhancements
+
+- Update IP allowlist
+- User can OAuth for BigQuery in profile credentials
+- Adding SparkAdapter backend models, mappers and services
+- Added BigQuery OAuth integration
+- Adding db index for owner_thread_id
+
+#### Fixed
+
+- Fix post /run error rate
+- Fix bug where bad argument was passed to dbt runs
+- Log out unhandled error in environment variable context manager
+- Remove account settings permissions for user integrations
+
+#### Internal
+
+- Fix some cases of missing params
+- Add a Datadog metric to count the number of log bytes written to the database
+- Add feature flag for IDE work/code retention
+- Logging API usage
+- Add scribe to run pods
+
 ## dbt Cloud v1.1.13 (November 12, 2020)
 
 This release adds support for triggering runs with overriden attributes via the
