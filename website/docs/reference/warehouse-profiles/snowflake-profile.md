@@ -106,7 +106,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 
 | Config | Required? | Description |
 | ------ | --------- | ----------- |
-| account | Yes | The account to connect to. This will be something like `abc123` or `abc123.us-east-1` for your particular account. Note that for GCP and Azure-based accounts, you may also have to append `gcp` or `azure`, respectively (for example: `abc123.us-central1.gcp`) |
+| account | Yes | The account to connect to. For AWS accounts in the default US West region, this will be something like `abc123` (without any other segments). For AWS accounts *not* in the default US West region and for GCP and Azure-based accounts, you also have to append the cloud platform, such as `aws`, `gcp` or `azure`, respectively (for example: `abc123.us-central1.gcp`) See [https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname) for more information. |
 | user | Yes | The user to log in as |
 | database | Yes | The database that dbt should create models in |
 | warehouse | Yes | The warehouse to use when building models |
