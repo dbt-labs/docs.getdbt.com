@@ -56,10 +56,11 @@ The `partition_by` config can be supplied as a dictionary with the following for
 ```
 
 #### Partitioning by a date or timestamp
-If the `data_type` is specified as `timestamp` or `datetime`, dbt will wrap
-the specfied `field` in a `DATE()` function when configuring table partitioning.
+<Changelog>Partitioning by hour, month or year is new in v0.19.0</Changelog>
 
-If the `data_type` is specified as a `date`, dbt will supply the field as-is
+When using a `datetime` or `timestamp` column to partition data, you can create partitions with a granularity of hour, day, month, or year. A `date` column supports granularity of day, month and year. Daily partitioning is the default for all column types.
+
+If the `data_type` is specified as a `date` and the granularity is day, dbt will supply the field as-is
 when configuring table partitioning.
 
 <Tabs
@@ -79,6 +80,7 @@ when configuring table partitioning.
     partition_by={
       "field": "created_at",
       "data_type": "timestamp"
+      "granularity": "day"
     }
 )}}
 
@@ -99,7 +101,7 @@ from {{ ref('events') }}
 
 ```sql
 create table analytics.bigquery_table
-partition by date(created_at)
+partition by timestamp_trunc(created_at, day)
 as (
 
   select
