@@ -48,3 +48,6 @@ changes limited to minor versions and announced accordingly.
 - [rpc](rpc)
 - [snapshots](snapshots) ([invalidate_hard_deletes](invalidate_hard_deletes))
 - [state](understanding-state)
+
+**BigQuery**
+- [`Hourly, monthly and yearly partitions`](bigquery-configs#partitioning-by-a-date-or-timestamp)
