@@ -3,24 +3,21 @@ title: "Microsoft Azure Synapse DW Profile"
 ---
 
 
-:::info Community contributed plugin
+:::info Community plugin
 
-These are Community Contributed plugins for dbt. If you're interested in contributing, check out the source code for each repository:
-- [`dbt-synapse`](https://github.com/swanderz/dbt-synapse)
-- [`dbt-azuresynapse`](https://github.com/embold-health/dbt-azuresynapse)
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
 
 ## Overview of dbt-synapse
-**Status:** Community Contributed
+**Maintained by:** Community      
+**Author:** Nandan Hegde and Anders Swanson    
+**Source:** https://github.com/swanderz/dbt-synapse    
+**Core version:** v0.18.0 and newer    
 
-**Author:** Nandan Hegde and Anders Swanson
+![dbt-synapse stars](https://img.shields.io/github/stars/swanderz/dbt-synapse?style=for-the-badge)
 
-**Source Code:** https://github.com/swanderz/dbt-synapse
-
-**dbt support**: version 0.18.0 and newer
-
-The pacakge can be installed from PyPI with:
+The package can be installed from PyPI with:
 
 ```python
 pip install dbt-synapse
@@ -153,14 +150,12 @@ client_secret: clientsecret
 
 
 ## Overview of dbt-azuresynapse
-**Status:** Community Contributed
+**Maintained by:** Community      
+**Author:** Ernesto Barajas and Matt Berns    
+**Source:** https://github.com/embold-health/dbt-azuresynapse    
+**Core version:** v0.17.0 and newer
 
-**Author:** Ernesto Barajas and Matt Berns
-
-**Source Code:** https://github.com/embold-health/dbt-azuresynapse
-
-**dbt-azuresynapse**
-Only supports dbt 0.17 and newer!
+![dbt-azuresynapse stars](https://img.shields.io/github/stars/embold-health/dbt-azuresynapse?style=for-the-badge)
 
 Easiest install is to use pip:
 

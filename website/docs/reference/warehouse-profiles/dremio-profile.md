@@ -2,21 +2,19 @@
 title: "Dremio Profile"
 ---
 
+:::info Community plugin
 
-:::info Community contributed plugin
-
-This is a Community Contributed plugin for dbt. If you're interested in contributing, check out the source code for the repository [dbt-dremio](https://github.com/fabrice-etanchaud/dbt-dremio)
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
 
 ## Overview of dbt-dremio
-**Status:** Community Contributed
+**Maintained by:** Community      
+**Author:** Fabrice Etanchaud (Maif-vie)    
+**Source:** https://github.com/fabrice-etanchaud/dbt-dremio    
+**Core version:** v0.18.0 and newer
 
-**Author:** Fabrice Etanchaud (Maif-vie)
-
-**Source Code:** https://github.com/fabrice-etanchaud/dbt-dremio
-
-**dbt-dremio** supports dbt 0.18.0 or newer.
+![dbt-dremio stars](https://img.shields.io/github/stars/fabrice-etanchaud/dbt-dremio?style=for-the-badge)
 
 The easiest way to install it is to use pip:
 

@@ -2,6 +2,21 @@
 title: "Spark Profile"
 ---
 
+:::info Community plugin
+
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+
+:::
+
+## Overview of dbt-spark
+**Maintained by:** core dbt maintainers    
+**Author:** Fishtown Analytics    
+**Source:** https://github.com/fishtown-analytics/dbt-spark    
+**Core version:** v0.13.0 and newer     
+**dbt Cloud:** Preview
+
+![dbt-spark stars](https://img.shields.io/github/stars/fishtown-analytics/dbt-spark?style=for-the-badge)
+
 ## Connection Methods
 There are three supported connection methods for Spark targets: `thrift`, `http`, and `odbc`.
 
