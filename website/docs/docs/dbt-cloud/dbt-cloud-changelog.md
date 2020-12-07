@@ -6,27 +6,27 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.15 (December 10, 2020)
 
-TODO - add release summary and curate below notes
+Lots of great stuff to confer about this go-round: things really coalesced this week! Lots of excitement around adding Spark to the connection family, as well as knocking out some longstanding bugs. 
 
 #### Enhancements
 
-- Add spark as an option for database setup
+- Add Spark as an option for database setup
 
 #### Fixed
 
-- Fix creating multiple accounts with the same email
+- Fix this one hairy bug where one email could have multiple user accounts
 - Fix setup-connection react-page routing
-- Make group selection logic independent of license types and group names
-- handle json errors in v1/v2 body parsing
-- Handle AuthForbidden and AuthCancelled graciously and not throw 500s.
+- Break out group selection logic from license types and group names
+- Handle json errors in v1/v2 body parsing
+- Handle AuthForbidden and AuthCancelled graciously - ie, not throw 500s
 - Fix regression with IDE loading spinner
 
 #### Internal
 
 - Adding drf-spectacular
 - Hubspot signup integration
-- add additional ssh logging
-- Add datadog traces to IDE filesystem interactions
+- Add additional SSH logging
+- Add Datadog traces to IDE filesystem interactions
 
 ## dbt Cloud v1.1.14 (November 25, 2020)
 
