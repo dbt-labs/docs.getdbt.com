@@ -13,9 +13,7 @@ For every 20 developer users, it is recommended to add another 4 CPU cores, 16 G
 
 ### Install into an existing Kubernetes cluster
 
-The dbt Cloud application is currently compatible with all [Kubernetes versions](https://kubernetes.io/docs/home/supported-doc-versions/) up to **1.18**. A breaking change was introduced in Kubernetes 1.19 that will be mitigated in a future dbt Cloud release.
-
-As mentioned above, it is recommended that at least 4 CPU cores, 16GB of memory, and 100GB of storage is made available for the dbt Cloud application. These are the resource totals consumed across the entire Kubernetes cluster by the dbt Cloud application. 
+As mentioned above, it is recommended that at least 4 CPU cores, 16GB of memory, and 100GB of storage is made available for the dbt Cloud application. These are the resource totals consumed across the entire Kubernetes cluster by the dbt Cloud application.
 
 ### Install into a VM
 
