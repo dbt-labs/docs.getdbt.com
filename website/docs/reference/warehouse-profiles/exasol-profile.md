@@ -2,20 +2,19 @@
 title: "Exasol Profile"
 ---
 
+:::info Community plugin
 
-:::info Community contributed plugin
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
-This is a Community Contributed plugin for dbt. If you're interested in contributing, check out the source code at [dbt-exasol](https://github.com/tglunde/dbt-exasol).
-For more information on Exasol Analytics database visit [exasol home](https://www.exasol.com).
 :::
 
 ## Overview of dbt-exasol
-**Status:** Community Contributed
-**Author:** Torsten Glunde, Ilija Kutle
-**Source Code:** https://github.com/tglunde/dbt-exasol
+**Maintained by:** Community      
+**Author:** Torsten Glunde, Ilija Kutle    
+**Source:** https://github.com/tglunde/dbt-exasol    
+**Core version:** v0.14.0 and newer    
 
-**dbt-exasol**
-Only supports dbt 0.14 and newer!
+![dbt-exasol stars](https://img.shields.io/github/stars/tglunde/dbt-exasol?style=for-the-badge)
 
 Easiest install is to use pip:
 

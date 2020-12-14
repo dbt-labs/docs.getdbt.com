@@ -2,18 +2,19 @@
 title: "Oracle Profile"
 ---
 
+:::info Community plugin
 
-:::info Community contributed plugin
-
-This is a Community Contributed plugin for dbt. If you're interested in contributing, check out the source code [dbt-oracle](https://github.com/techindicium/dbt-oracle)
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
 
 ## Overview of dbt-oracle
-**Status:** Community Contributed
-**Author:** Vitor Avancini
-**Source Code:** https://github.com/techindicium/dbt-oracle
+**Maintained by:** Community      
+**Author:** Vitor Avancini    
+**Source:** https://github.com/techindicium/dbt-oracle    
+**Core version:** v0.16.0 and newer     
 
+![dbt-oracle stars](https://img.shields.io/github/stars/techindicium/dbt-oracle?style=for-the-badge)
 
 Easiest install is to use pip:
 

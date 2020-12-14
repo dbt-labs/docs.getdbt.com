@@ -2,6 +2,20 @@
 title: "Presto Profile"
 ---
 
+:::info Community plugin
+
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+
+:::
+
+## Overview of dbt-presto
+**Maintained by:** core dbt maintainers    
+**Author:** Fishtown Analytics    
+**Source:** https://github.com/fishtown-analytics/dbt-presto    
+**Core version:** v0.13.0 and newer     
+
+![dbt-presto stars](https://img.shields.io/github/stars/fishtown-analytics/dbt-presto?style=for-the-badge)
+
 ## Set up a Presto Target
 
 Presto targets should be set up using the following configuration in your `profiles.yml` file.
