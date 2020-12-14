@@ -5,7 +5,7 @@ default_value: logs
 <File name='dbt_project.yml'>
 
 ```yml
-log-paths: directorypath
+log-path: directorypath
 ```
 
 </File>
