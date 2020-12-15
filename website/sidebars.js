@@ -32,6 +32,7 @@ module.exports = {
         "docs/building-a-dbt-project/using-sources",
         "docs/building-a-dbt-project/seeds",
         "docs/building-a-dbt-project/snapshots",
+        "docs/building-a-dbt-project/exposures",
         "docs/building-a-dbt-project/jinja-macros",
         "docs/building-a-dbt-project/hooks-operations",
         //"docs/building-a-dbt-project/dont-nest-your-curlies",
