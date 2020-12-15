@@ -17,7 +17,7 @@ where created_at > date_trunc('month', current_date)
 {% endif %}
 ```
 
-To set a custom target name for a job in dbt Cloud, configure the "Target Name" field for you job in the Job Settings page.
+To set a custom target name for a job in dbt Cloud, configure the "Target Name" field for your job in the Job Settings page.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/60f3fa2-Screen_Shot_2019-02-08_at_10.33.20_PM.png" title="Overriding the target name to 'prod'"/>
 
