@@ -21,7 +21,6 @@ The dbt CLI comes with a command to help you scaffold a dbt project. To create y
 1. Ensure dbt is installed by running `dbt --version`:
 ```shell-session
 $ dbt --version
-
 ```
 
 :::info
@@ -127,6 +126,7 @@ We need to commit our changes so that our repository has up-to-date code.
 1. Link the GitHub repository you created in the [Setting Up](/learn/setting-up) instructions to your dbt project by running the following commands. Make sure you use the correct git URL for your repository.
 ```shell-session
 $ git init
+$ git add -A
 $ git commit -m "Create a dbt project"
 $ git remote add origin https://github.com/USERNAME/dbt-learn-[initialsurname].git
 $ git push -u origin master
