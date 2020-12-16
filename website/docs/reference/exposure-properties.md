@@ -9,28 +9,13 @@ title: Exposure properties
 </Changelog>
 
 ## Related documentation
+- [Using exposures](exposures)
 - [Declaring resource properties](declaring-properties)
 
-Exposures are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under an `exposures:` key.
+## Overview
+Exposures are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under an `exposures:` key. You may define `exposures` in YAML files that also define define `sources` or `models`.
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
-
-### Available Properties
-
-Required:
-- **name**
-- **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application`
-- **owner**: email
-
-Expected:
-- **depends_on**: list of relations (`ref` + `source`)
-
-Optional properties:
-- **url**
-- **maturity**: one of `high`, `medium`, `low`
-- **owner**: name
-
-We plan to add more subtypes and optional properties in future releases.
 
 <File name='models/<filename>.yml'>
 
@@ -54,4 +39,53 @@ exposures:
 
   - name: ... # declare properties of additional exposures
 ```
+</File>
+
+
+## Example
+
+<File name='models/jaffle/exposures.yml'>
+
+```yaml
+exposures:
+  
+  - name: weekly_jaffle_metrics
+    type: dashboard                         # required
+    maturity: high                          # optional
+    url: https://bi.tool/dashboards/1       # optional
+    description: >                          # optional
+      Did someone say "exponential growth"?
+    
+    depends_on:                             # expected
+      - ref('fct_orders')
+      - ref('dim_customers')
+      - source('gsheets', 'goals')
+
+    owner:
+      name: Claire from Data                # optional
+      email: data@jaffleshop.com            # required
+
+      
+  - name: jaffle_recommender
+    maturity: medium
+    type: ml
+    url: https://jupyter.org/mycoolalg
+    description: >
+      Deep learning to power personalized "Discover Sandwiches Weekly"
+    
+    depends_on:
+      - ref('fct_orders')
+      
+    owner:
+      name: Data Science Drew
+      email: data@jaffleshop.com
+
+      
+  - name: jaffle_wrapped
+    type: application
+    description: Tell users about their favorite jaffles of the year
+    depends_on: [ ref('fct_orders') ]
+    owner: { email: summer-intern@jaffleshop.com }
+```
+
 </File>
