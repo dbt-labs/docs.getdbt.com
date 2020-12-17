@@ -36,3 +36,6 @@ Please be aware of the following changes in v0.19.0:
 ### BigQuery
 - [bigquery-profile](bigquery-profile): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
 - [Hourly, monthly and yearly partitions](bigquery-configs#partitioning-by-a-date-or-timestamp): With a new `granularity` attribute of the `partition_by` config, dbt can materialize models as tables partitioned by hour, month, or year.
+
+### Spark
+- [spark-profile](spark-profile): The `thrift` and `http` connection methods require installation of a `PyHive` extra.
