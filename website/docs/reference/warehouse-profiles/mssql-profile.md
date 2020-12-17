@@ -2,22 +2,19 @@
 title: "Microsoft SQL Server Profile"
 ---
 
+:::info Community plugin
 
-:::info Community contributed plugin
-
-This is a Community Contributed plugin for dbt. If you're interested in contributing, check out the source code for each repository [dbt-sqlserver](https://github.com/mikaelene/dbt-sqlserver), [dbt-mssql](https://github.com/jacobm001/dbt-mssql).
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
 
 ## Overview of dbt-sqlserver
-**Status:** Community Contributed
-**Author:** Mikael Ene
-**Source Code:** https://github.com/mikaelene/dbt-sqlserver
+**Maintained by:** Community      
+**Author:** Mikael Ene    
+**Source:** https://github.com/mikaelene/dbt-sqlserver    
+**Core version:** v0.14.0 and newer    
 
-**dbt-sqlserver**
-Only supports dbt 0.14 and newer!
-- For dbt 0.14.x use dbt-sqlserver 0.14.x
-- For dbt 0.15.x use dbt-sqlserver 0.15.x
+![dbt-sqlserver stars](https://img.shields.io/github/stars/mikaelene/dbt-sqlserver?style=for-the-badge)
 
 Easiest install is to use pip:
 
@@ -70,9 +67,12 @@ dbt-sqlserver:
 
 ## Overview of dbt-mssql
 
-**Status:** Community Contributed
-**Author:** Jacob M. Mastel
-**Source Code:** https://github.com/jacobm001/dbt-mssql
+**Maintained by:** Community      
+**Author:** Jacob M. Mastel    
+**Source:** https://github.com/jacobm001/dbt-mssql    
+**Core version:** v0.14.0     
+
+![dbt-mssql stars](https://img.shields.io/github/stars/jacobm001/dbt-mssql?style=for-the-badge)
 
 **dbt-mssql** is a custom adapter for dbt that adds support for Microsoft SQL Server versions 2008 R2 and later. `pyodbc` is used as the connection driver as that is what is [suggested by Microsoft](https://docs.microsoft.com/en-us/sql/connect/python/python-driver-for-sql-server). The adapter supports both windows auth, and specified user accounts.
 

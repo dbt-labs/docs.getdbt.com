@@ -4,6 +4,80 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.15 (December 10, 2020)
+
+Lots of great stuff to confer about this go-round: things really coalesced this week! Lots of excitement around adding Spark to the connection family, as well as knocking out some longstanding bugs. 
+
+#### Enhancements
+
+- Add Spark as an option for database setup
+
+#### Fixed
+
+- Fix this one hairy bug where one email could have multiple user accounts
+- Fix setup-connection react-page routing
+- Break out group selection logic from license types and group names
+- Handle json errors in v1/v2 body parsing
+- Handle AuthForbidden and AuthCancelled graciously - ie, not throw 500s
+- Fix regression with IDE loading spinner
+
+#### Internal
+
+- Adding drf-spectacular
+- Hubspot signup integration
+- Add additional SSH logging
+- Add Datadog traces to IDE filesystem interactions
+
+## dbt Cloud v1.1.14 (November 25, 2020)
+
+This release adds a few new pieces of connective tissue, notably OAuth for BigQuery and SparkAdapter work. There are also some quality of life improvements and investments for the future, focused on our beloved IDE users, and some improved piping for observability into log management and API usage. 
+
+#### Enhancements
+
+- Update IP allowlist
+- User can OAuth for BigQuery in profile credentials
+- Adding SparkAdapter backend models, mappers and services
+- Added BigQuery OAuth integration
+- Adding db index for owner_thread_id
+
+#### Fixed
+
+- Fix post /run error rate
+- Fix bug where bad argument was passed to dbt runs
+- Log out unhandled error in environment variable context manager
+- Remove account settings permissions for user integrations
+
+#### Internal
+
+- Fix some cases of missing params
+- Add a Datadog metric to count the number of log bytes written to the database
+- Add feature flag for IDE work/code retention
+- Logging API usage
+- Add scribe to run pods
+
+## dbt Cloud v1.1.13 (November 12, 2020)
+
+This release adds support for triggering runs with overriden attributes via the
+[triggerRun](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun) API endpoint. Additionally,
+a number of bugs have been squashed and performance improvements have been made.
+
+#### Enhancements
+
+- Improve error handling for long-running queries in the IDE
+- Use S3 client caching to improve log download speed for scheduled runs
+- Support triggering jobs [with overriden attributes from the API](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun)
+- Clarify "upgrade" copy on the billing page
+
+#### Fixed
+
+- GitLab groups endpoint now returns all groups and subgroups
+- Support BigQuery retry configs with value 0
+- Prevent web IDE from crashing after running an invalid dbt command
+- Apply additional log scrubbing to filter short-lived git credentials
+- Fix older migration to make auth_url field nullable
+- Support paths in GitLab instance URL
+- Fix for auth token request url in GitLab oauth flow
+
 ## dbt Cloud v1.1.12 (October 30, 2020)
 
 This release adds dbt v.18.1 and 0.19.0b1 to dbt Cloud. Additionally, a number of bugs have been fixed.

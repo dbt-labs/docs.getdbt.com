@@ -3,6 +3,23 @@ title: "Connecting your database"
 id: "connecting-your-database"
 ---
 
+## IP Restrictions
+
+dbt Cloud will always connect to your warehouse from the following IP addresses.
+Be sure to allow traffic from these IPs in your firewall, and include them in
+any database grants.
+
+- 52.45.144.63
+- 54.81.134.249
+- 52.22.161.231
+
+<Changelog>
+
+- `54.81.134.249` and `52.22.161.231` were added in November, 2020
+
+</Changelog>
+
+
 ## Connecting to Redshift and Postgres
 
 The following fields are required when creating a Redshift connection:
