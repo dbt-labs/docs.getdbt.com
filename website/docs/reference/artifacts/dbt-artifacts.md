@@ -1,5 +1,5 @@
 ---
-title: dbt Artifacts
+title: Overview
 ---
 
 With every invocation, dbt generates and saves one or more *artifacts*. Several of these are JSON files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:

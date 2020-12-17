@@ -2,7 +2,8 @@
 title: Manifest
 ---
 
-_Current schema_: https://schemas.getdbt.com/dbt/manifest/v1.json
+_Current schema_: [`v1`](https://schemas.getdbt.com/dbt/manifest/v1.json)
+
 _Produced by:_
 - `dbt compile`
 - `dbt run`

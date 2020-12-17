@@ -2,7 +2,8 @@
 title: Catalog
 ---
 
-_Current schema_: https://schemas.getdbt.com/dbt/catalog/v1.json
+_Current schema_: [`v1`](https://schemas.getdbt.com/dbt/catalog/v1.json)
+    
 _Produced by:_ `dbt docs generate`
 
 This file contains information from your data warehouse about the tables and views produced and defined by the resources in your project. Today, dbt uses this file to render information like column types and table statistics into the docs site.
