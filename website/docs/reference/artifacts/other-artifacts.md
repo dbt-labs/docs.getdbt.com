@@ -16,7 +16,7 @@ _Produced by: all commands_
 
 This file is used to store a compressed representation of files dbt has parsed. If you have [partial parsing](profiles.yml#partial_parse) enabled, dbt will use this file to identify the files that have changed and avoid re-parsing the rest.
 
-### graph.pickle
+### graph.gpickle
 
 _Produced by: all commands_
 
