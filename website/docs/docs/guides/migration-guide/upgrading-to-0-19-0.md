@@ -32,7 +32,7 @@ changes limited to minor versions and announced accordingly.
 - If the config `invalidate_hard_deletes` is enabled, `dbt snapshot` will update records whose unique key no longer exist in the snapshot query. Should those uniquely identified records "revive," `dbt snapshot` will re-add them.
 
 ### Database-specific
-- BigQuery supports connecting via OAuth tokens
+- **BigQuery** supports connecting via OAuth tokens, and using the default project when connecting via `gcloud` oauth
 
 ### Docs
 - Added select/deselect options to dropdown menus in the bottom bar of the DAG view
