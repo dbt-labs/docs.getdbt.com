@@ -2,6 +2,7 @@
 title: Manifest
 ---
 
+_Current schema_: https://schemas.getdbt.com/dbt/manifest/v1.json
 _Produced by:_
 - `dbt compile`
 - `dbt run`
@@ -24,7 +25,7 @@ This file contains a full representation of your dbt project in a single file. R
 - `docs`: Dictionary of `docs` blocks.
 - `parent_map`: Dictionary that contains the first-order parents of each resource.
 - `child_map`: Dictionary that contains the first-order children of each resource.
-- `selectors`: Dictionary representation of YAML `selectors`.
+- `selectors`: Expanded dictionary representation of [YAML `selectors`](yaml-selectors).
 - `disabled`: Array of resources with `enabled: false`.
 
 ### Resource details
@@ -38,4 +39,4 @@ All resources nested within `nodes`, `sources`, `exposures`, `macros`, and `docs
 - `path`: Relative file path of this resource's definition within its "resource path" (`source-paths`, `data-paths`, etc.).
 - `original_file_path`: Relative file path of this resource's definition, including its resource path.
 
-Each has several additional properties based on its resource type.
+Each has several additional properties related to its resource type.

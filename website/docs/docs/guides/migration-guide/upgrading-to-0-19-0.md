@@ -23,7 +23,7 @@ changes limited to minor versions and announced accordingly.
 ## New features
 
 ### Artifacts
-- The JSON artifacts produced by dbt—manifest, catalog, run results, and sources—are simpler to consume and more clearly documented.
+- The JSON artifacts produced by dbt—manifest, catalog, run results, and sources—are simpler to consume, more clearly documented, and officially versioned at **schemas.getdbt.com**.
 
 ### State
 - dbt is a little bit smarter at identifying `state:modified` "false positives" that previously resulted from env-based config in `dbt_project`.

@@ -18,10 +18,10 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ## When are artifacts produced?
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
-- **manifest**: produced by `compile`, `run`, `test`, `docs generate`, `ls`
-- **run results**: produced by `run`, `test`, `seed`, `snapshot`, `docs generate`
-- **catalog**: produced by `docs generate`
-- **sources**: produced by `source snapshot-freshness`
+- [manifest](artifacts/manifest): produced by `compile`, `run`, `test`, `docs generate`, `ls`
+- [run results](artifacts/run-results): produced by `run`, `test`, `seed`, `snapshot`, `docs generate`
+- [catalog](artifacts/catalog): produced by `docs generate`
+- [sources](artifacts/sources): produced by `source snapshot-freshness`
 
 ## Common metadata
 
@@ -31,10 +31,22 @@ All artifacts produced by dbt include a `metadata` dictionary with these propert
 
 - `dbt_version`: Version of dbt that produced this artifact.
 - `dbt_schema_version`: URL of this artifact's schema. See notes below.
-- [`invocation_id`](invocation_id)
 - `generated_at`: Timestamp in UTC when this artifact was produced.
+- `adapter_type`: The adapter (database), e.g. `postgres`, `spark`, etc.
 - `env`: Any environment variables prefixed with `DBT_ENV_CUSTOM_ENV_` will be included in a dictionary, with the prefix-stripped variable name as its key.
+- [`invocation_id`](invocation_id): Unique identifier for this dbt invocation
+
+In the manifest, the `metadata` may also include:
+- `send_anonymous_usage_stats`: Whether this invocation sent [anonymous usage statistics](https://docs.getdbt.com/reference/profiles.yml/#send_anonymous_usage_stats) while executing.
+- `project_id`: Project identifier, hashed from `project_name`, sent with anonymous usage stats if enabled.
+- `user_id`: User identifier, stored by default in `~/dbt/.user.yml`, sent with anonymous usage stats if enabled.
 
 #### Notes:
-- The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/). Starting with the release of v0.19.0, we plan to host these schemas at the URL contained in `dbt_schema_version` (https://schemas.getdbt.com/dbt/...).
-- Going forward, artifact versions may change in minor versions of dbt. Artifact version updates are not guaranteed to align with each other (e.g. we may have a v3 `manifest` while still using v2 `sources`). We will always include artifact schema updates as breaking changes in the release notes.
+- The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at **schemas.getdbt.com**.
+- As of v0.19.0, all artifacts are `v1`:
+    - https://schemas.getdbt.com/dbt/manifest/v1.json
+    - https://schemas.getdbt.com/dbt/run-results/v1.json
+    - https://schemas.getdbt.com/dbt/catalog/v1.json
+    - https://schemas.getdbt.com/dbt/sources/v1.json
+- The previous `v0` schemas are also available for ease of comparison. These represent the artifact schemas as of v0.18.1. In prior versions, artifacts were not standardized or versioned.
+- Going forward, artifact versions may change in any minor version of dbt (`v0.x.0`). Artifact version updates are not guaranteed to align with each other—for instance, dbt may introduce `manifest/v2` while still using `sources/v1`. We will always include artifact schema updates as breaking changes in the release notes.
