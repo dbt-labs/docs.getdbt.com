@@ -82,5 +82,6 @@ If you are planning to set up the same Snowflake account to different dbt Cloud 
 ### Troubleshooting
 
 #### Invalid consent request
-If you are receiving this Snowflake error after clicking the `Connect Snowflake Account` in your development credentials, check that your user has access to the role you have defined in your development credentials in dbt Cloud. 
+When clicking on the `Connect Snowflake Account` successfully redirects you to the Snowflake login page, but you receive an `Invalid consent request` error, your Snowflake user may not have access to the Snowflake role defined on the development credentials in dbt Cloud. Double-check that you have access to that role and if the role name has been correctly entered in as Snowflake is case sensitive. 
+
 
