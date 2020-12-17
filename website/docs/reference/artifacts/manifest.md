@@ -24,6 +24,7 @@ This file contains a full representation of your dbt project in a single file. R
 - `docs`: Dictionary of `docs` blocks.
 - `parent_map`: Dictionary that contains the first-order parents of each resource.
 - `child_map`: Dictionary that contains the first-order children of each resource.
+- `selectors`: Dictionary representation of YAML `selectors`.
 - `disabled`: Array of resources with `enabled: false`.
 
 ### Resource details
