@@ -365,6 +365,7 @@ module.exports = {
             "reference/node-selection/putting-it-together",
             "reference/node-selection/yaml-selectors",
             "reference/node-selection/test-selection-examples",
+            "reference/node-selection/defer",
             "reference/node-selection/state-comparison-caveats",
           ],
         },

@@ -15,10 +15,20 @@ That said, dbt does store "state"—a detailed, point-in-time view of project re
 dbt can leverage artifacts from a prior invocation as long as their file path is passed to the `--state` flag. This is a prerequsite for:
 - [The `state:` selector](methods#the-state-method), whereby dbt can identify resources that are new or modified
 by comparing code in the current project against the state manifest.
-- [Deferring to a previous run](run#deferring-to-previous-run-state), whereby dbt can identify references to upstream, unselected models and "defer" them to the namespaces provided by the state manifest, instead of expecting them in the current run environment's namespace.
+- [Deferring](defer) to another environment, whereby dbt can identify upstream, unselected resources that don't exist in your current environment and instead "defer" their references to the environment provided by the state manifest.
 
 Together, these two features enable ["slim CI"](best-practices#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
+
+### Establishing state
+
+State and defer can be set by environment variables as well as CLI flags:
+
+- `--state` or `DBT_ARTIFACT_STATE_PATH`: file path
+- `--defer` or `DBT_DEFER_TO_STATE`: boolean
+
+If both the flag and env var are provided, the flag takes precedence.
 
 #### Notes:
 - The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
 - The path to state artifacts can be set via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable. If both the flag and env var are provided, the flag takes precedence.
+- These are powerful, complex features. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.

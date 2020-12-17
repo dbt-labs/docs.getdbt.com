@@ -2,7 +2,7 @@
 title: "Caveats to state comparison"
 ---
 
-The [`state:` selection method](methods#the-state-method) is a wildly powerful feature, with a lot of underlying complexity. Here are two big things to consider when setting up automated jobs  that leverage state comparison.
+The [`state:` selection method](methods#the-state-method) is a wildly powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
 
 ### Seeds
 
@@ -22,29 +22,30 @@ The command `dbt test -m state:modified` will include both:
 - tests that select from a new/modified resource
 - tests that are themselves new or modified
 
-As long as you're adding or changing tests at the same time that you're adding or changing the resources (models, seeds, snapshots) they select from, all should work the way you expect.
+As long as you're adding or changing tests at the same time that you're adding or changing the resources (models, seeds, snapshots) they select from, all should work the way you expect with "simple" state selection:
 
-That said, there are some implications when running in a development or CI context:
-- When you add a test, or modify an existing test (such as its `severity` level), that selects from an otherwise unmodified resource. That test, but not its parent resource, will be included in the selection criteria of `state:modified`. The test will fail because its parent is "missing" in the sandbox schema, on account of not having been included in the selection criteria of `dbt run -m state:modified`, `dbt seed -s state:modified`, etc.
-- When you have an unmodified `relationships` test, data test, or custom schema test that depends on multiple resources, only one of which is modified. That test will be included in the selection criteria of `state:modified`, on account of its parent. There's no guarantee, however, that _all_ first-order parents of that test are included in the selection criteria of `state:modified`. When dbt executes the  test, one or more of its parents will be "missing" and the test will fail.
-
-Given the way that test selection works today, these sets of test difficult to disambiguate. If you're a frequent user of `relationships` tests or data tests, or frequently find yourself adding tests without modifying their underlying models, consider tweaking  the selection criteria of your CI job. For instance:
-
-```bash
+```shell
 $ dbt run -m state:modified
-$ dbt test -m state:modified --exclude test_name:relationships
+$ dbt test -m state:modified
 ```
 
-"Run all modified models, then execute all modified tests _except_ relationships tests."
+This can get complicated, however. If you add a new test without modifying its underlying model, or add a test that selects from a new model and an old unmodified one, you may need to test a model without having first run it.
 
-```bash
+In v0.18.0, you needed to handle this by building the unmodified models needed for modified tests:
+
+```shell
 $ dbt run -m state:modified @state:modified,1+test_type:data
 $ dbt test -m state:modified
 ```
 
-"Run all modified models _and_ all models which might be needed to run modified data tests _or_ unmodified data tests that select from modified models. Then, execute all modified tests." This is a "safe not sorry" approach: you may find an extra model along for the ride, if it is the parent of a child a modified model _and_ the first-order parent of an unrelated data test, but not the first-order parent of a modified data test.
+In v0.19.0, dbt added support for deferring upstream references when testing. If a test selects from a model that doesn't exist as a database object in your current environment, dbt will look to the other environment instead—the one defined in your state manifest. This enables you to use "simple" state selection without risk of query failure, but it may have some surprising consequences for tests with multiple parents. For instance, if you have a `relationships` test that depends on one modified model and one unmodiifed model, the test query will select from data "across" two different environments. If you limit or sample your data in development and CI, it may not make much sense to test for referential integrity, knowing there's a good chance of mismatch.
 
-If you find your selection syntax becoming overly verbose, consider defining a [YAML selector](node-selection/yaml-selectors).
+If you're a frequent user of `relationships` tests or data tests, or frequently find yourself adding tests without modifying their underlying models, consider tweaking the selection criteria of your CI job. For instance:
+
+```shell
+$ dbt run -m state:modified
+$ dbt test -m state:modified --exclude test_name:relationships
+```
 
 ### False positives
 
