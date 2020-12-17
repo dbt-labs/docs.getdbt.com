@@ -7,7 +7,7 @@ title: Sources
 _Current schema_: https://schemas.getdbt.com/dbt/sources/v1.json
 _Produced by:_ `dbt source snapshot-freshness`
 
-This file contains information about [sources with freshness checks](using-sources/#snapshotting-source-data-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](cloud-snapshotting-source-freshness).
+This file contains information about [sources with freshness checks](using-sources#snapshotting-source-data-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](cloud-snapshotting-source-freshness).
 
 ### Top-level keys
 
@@ -17,7 +17,7 @@ This file contains information about [sources with freshness checks](using-sourc
 
 Each entry in `results` is a dictionary with the following keys:
 
-- `unique_id`: Unique source node identifier, which map results to `sources` in the [manifest](artifacts/manifest)
+- `unique_id`: Unique source node identifier, which map results to `sources` in the [manifest](manifest-json)
 - `max_loaded_at`: Max value of `loaded_at_field` timestamp in the source table when queried.
 - `snapshotted_at`: Current timestamp when querying.
 - `max_loaded_at_time_ago_in_s`: Interval between `max_loaded_at` and `snapshotted_at`, calculated in python to handle timezone complexity.

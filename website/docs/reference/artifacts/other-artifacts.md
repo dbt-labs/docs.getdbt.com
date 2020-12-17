@@ -6,7 +6,7 @@ title: Other Artifacts
 
 _Produced by:_ `dbt docs generate`
 
-This file is the skeleton of the [auto-generated dbt documentation website](documentation). The contents of the site are populated by the [manifest](artifacts/manifest) and [catalog](artifacts/catalog).
+This file is the skeleton of the [auto-generated dbt documentation website](documentation). The contents of the site are populated by the [manifest](manifest-json) and [catalog](catalog-json).
 
 Note: the source code for `index.json` comes from the [dbt-docs repo](https://github.com/fishtown-analytics/dbt-docs). Head over there if you want to make a bug report, suggestion, or contribution relating to the documentation site.
 

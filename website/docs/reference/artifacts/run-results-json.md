@@ -21,7 +21,7 @@ This file contains information about the last run of dbt. Crucially, it contains
 
 Each entry in `results` is a dictionary with the following keys:
 
-- `unique_id`: Unique node identifier, which map results to `nodes` in the [manifest](artifacts/manifest)
+- `unique_id`: Unique node identifier, which map results to `nodes` in the [manifest](manifest-json)
 - `status`: dbt's interpretation of runtime success, failure, or error
 - `thread_id`: Which thread executed this node? E.g. `Thread-1`
 - `execution_time`: Total time spent executing this node

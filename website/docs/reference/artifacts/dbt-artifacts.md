@@ -18,10 +18,10 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ## When are artifacts produced?
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
-- [manifest](artifacts/manifest): produced by `compile`, `run`, `test`, `docs generate`, `ls`
-- [run results](artifacts/run-results): produced by `run`, `test`, `seed`, `snapshot`, `docs generate`
-- [catalog](artifacts/catalog): produced by `docs generate`
-- [sources](artifacts/sources): produced by `source snapshot-freshness`
+- [manifest](manifest-json): produced by `compile`, `run`, `test`, `docs generate`, `ls`
+- [run results](run-results-json): produced by `run`, `test`, `seed`, `snapshot`, `docs generate`
+- [catalog](catalog-json): produced by `docs generate`
+- [sources](sources-json): produced by `source snapshot-freshness`
 
 ## Common metadata
 
