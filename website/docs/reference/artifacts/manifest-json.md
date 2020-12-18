@@ -14,7 +14,7 @@ _Produced by:_
 - `dbt source snapshot-freshness`
 - `dbt ls`
 
-This file contains a full representation of your dbt project in a single file. Resources like models, tests, and macros are all represented inside of this file. The docs site uses this file to render information about your models, their tests, their relationships, and so on. Members of the community have used this file to run checks on how many models have descriptions and tests.
+This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Today, dbt uses this file to populate the [docs site](documentation), and to perform [state comparison](understanding-state). Members of the community have used this file to run checks on how many models have descriptions and tests.
 
 ### Top-level keys
 

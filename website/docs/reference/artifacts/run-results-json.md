@@ -11,12 +11,14 @@ _Produced by:_
 - `dbt snapshot`
 - `dbt docs generate`
 
-This file contains information about the last run of dbt. Crucially, it contains the compiled SQL for every model in your project. dbt uses this file to render the compiled SQL directly into the documentation site.
+This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
+
+Note: `dbt source snapshot-freshness` produces a different artifact, [`sources.json`](sources-json), with similar attributes.
 
 ### Top-level keys
 
 - [`metadata`](dbt-artifacts#common-metadata)
-- `args`: Dictionary of CLI or RPC arguments passed to the command that produced this artifact. Excludes null values, and includes default values if they are not null.
+- `args`: Dictionary of arguments passed to the CLI command or RPC method that produced this artifact. Most useful is `which` (command) or `rpc_method`. This dict excludes null values, and includes default values if they are not null.
 - `elapsed_time`: Total invocation time in seconds.
 - `results`: Array of node execution details.
 
