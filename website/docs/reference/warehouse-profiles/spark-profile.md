@@ -44,12 +44,16 @@ your_profile_name:
       schema: [database/schema name]
       host: [yourorg.sparkhost.com]
       organization: [org id]    # Azure Databricks only
-      port: [port]              # default 443
       token: [abc123]
       
       # one of:
       endpoint: [endpoint id]
       cluster: [cluster id]
+      
+      # optional
+      port: [port]              # default 443
+      user: [user]
+      
 ```
 
 </File>
@@ -69,10 +73,10 @@ your_profile_name:
       method: thrift
       schema: [database/schema name]
       host: [hostname]
+      
+      # optional
       port: [port]              # default 10001
       user: [user]
-      
-      # optional:
       auth: [e.g. KERBEROS]
       kerberos_service_name: [e.g. hive]
 ```
@@ -95,13 +99,14 @@ your_profile_name:
       schema: [database/schema name]
       host: [yourorg.sparkhost.com]
       organization: [org id]    # Azure Databricks only
-      port: [port]              # default: 443
       token: [abc123]
       cluster: [cluster id]
       
       # optional
-      connect_timeout: 60   # default 10
-      connect_retries: 5    # default 0
+      port: [port]              # default: 443
+      user: [user]
+      connect_timeout: 60       # default 10
+      connect_retries: 5        # default 0
 ```
 
 </File>
