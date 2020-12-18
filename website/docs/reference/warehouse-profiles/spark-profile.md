@@ -18,55 +18,12 @@ Some core functionality may be limited. If you're interested in contributing, ch
 ![dbt-spark stars](https://img.shields.io/github/stars/fishtown-analytics/dbt-spark?style=for-the-badge)
 
 ## Connection Methods
-There are three supported connection methods for Spark targets: `thrift`, `http`, and `odbc`.
 
-### thrift
-Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster, e.g. a cluster running locally or on Amazon EMR.
+dbt-spark can connect to Spark clusters by three different methods:
 
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-your_profile_name:
-  target: dev
-  outputs:
-    dev:
-      type: spark
-      method: thrift
-      schema: [database/schema name]
-      host: [hostname]
-      port: [port]
-      user: [user]
-```
-
-</File>
-
-### http
-Use the `http` method if your Spark provider supports connections over HTTP (e.g. Databricks interactive cluster).
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-your_profile_name:
-  target: dev
-  outputs:
-    dev:
-      type: spark
-      method: http
-      schema: [database/schema name]
-      host: [yourorg.sparkhost.com]
-      organization: [org id]    # required if Azure Databricks, exclude if AWS Databricks
-      port: [port]
-      token: [abc123]
-      cluster: [cluster id]
-      connect_timeout: 60   # optional, default 10
-      connect_retries: 5    # optional, default 0
-```
-
-</File>
-
-Databricks interactive clusters can take several minutes to start up. You may
-include the optional profile configs `connect_timeout` and `connect_retries`,
-and dbt will periodically retry the connection.
+- `odbc` is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
+- `http` is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
+- `thrift` connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
 
 ### ODBC
 
@@ -86,32 +43,95 @@ your_profile_name:
       driver: [path/to/driver]
       schema: [database/schema name]
       host: [yourorg.sparkhost.com]
-      organization: [org id]    # required if Azure Databricks, exclude if AWS Databricks
-      port: [port]
+      organization: [org id]    # Azure Databricks only
       token: [abc123]
       
       # one of:
       endpoint: [endpoint id]
       cluster: [cluster id]
+      
+      # optional
+      port: [port]              # default 443
+      user: [user]
+      
 ```
 
 </File>
+
+### Thrift
+
+Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster, e.g. a cluster running locally or on Amazon EMR.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: thrift
+      schema: [database/schema name]
+      host: [hostname]
+      
+      # optional
+      port: [port]              # default 10001
+      user: [user]
+      auth: [e.g. KERBEROS]
+      kerberos_service_name: [e.g. hive]
+```
+
+</File>
+
+### HTTP
+
+Use the `http` method if your Spark provider supports generic connections over HTTP (e.g. Databricks interactive cluster).
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: http
+      schema: [database/schema name]
+      host: [yourorg.sparkhost.com]
+      organization: [org id]    # Azure Databricks only
+      token: [abc123]
+      cluster: [cluster id]
+      
+      # optional
+      port: [port]              # default: 443
+      user: [user]
+      connect_timeout: 60       # default 10
+      connect_retries: 5        # default 0
+```
+
+</File>
+
+Databricks interactive clusters can take several minutes to start up. You may
+include the optional profile configs `connect_timeout` and `connect_retries`,
+and dbt will periodically retry the connection.
 
 ## Installation and Distribution
 
 dbt's Spark adapter is managed in its own repository, [dbt-spark](https://github.com/fishtown-analytics/dbt-spark). To use the Spark adapter, you must install the `dbt-spark` plugin.
 
 ### Using pip
-The following command will install the latest version of `dbt-spark` as well as the requisite version of `dbt-core`:
+The following commands will install the latest version of `dbt-spark` as well as the requisite version of `dbt-core`.
 
-```bash
-pip install dbt-spark
+If connecting to Databricks via ODBC driver, it requires `pyodbc`. Depending on your system, you can install it seperately or via pip. See the [`pyodbc` wiki](https://github.com/mkleehammer/pyodbc/wiki/Install) for OS-specific installation details.
+
+If connecting to a Spark cluster via the generic thrift or http methods, it requires `PyHive`.
+
 ```
+# odbc connections
+$ pip install "dbt-spark[ODBC]"
 
-If you are using the `odbc` connection method, you will need to install the extra `ODBC` requirement (includes `pyodbc`):
-
-```bash
-pip install "dbt-spark[ODBC]"
+# thrift or http connections
+$ pip install "dbt-spark[PyHive]"
 ```
 
 ## Caveats

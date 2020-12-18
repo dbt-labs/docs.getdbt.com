@@ -2,9 +2,11 @@
 title: Catalog
 ---
 
+_Current schema_: [`v1`](https://schemas.getdbt.com/dbt/catalog/v1.json)
+    
 _Produced by:_ `dbt docs generate`
 
-This file contains information from your data warehouse about the tables and views produced and defined by the resources in your project. Today, dbt uses this file to render information like column types and table statistics into the docs site.
+This file contains information from your data warehouse about the tables and views produced and defined by the resources in your project. Today, dbt uses this file to populate metadata, such as column types and table statistics, in the [docs site](documentation).
 
 ### Top-level keys
 
@@ -16,7 +18,7 @@ This file contains information from your data warehouse about the tables and vie
 ### Resource details
 
 Within `sources` and `nodes`, each dictionary key is a resource `unique_id`. Each nested resource contains:
-- `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key
+- `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key, maps to `nodes` and `sources` in the [manifest](manifest-json)
 - `metadata`
     - `type`: table, view, etc.
     - `database`

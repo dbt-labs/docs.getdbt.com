@@ -41,6 +41,12 @@ my-bigquery-db:
 
 </File>
 
+**Default project**
+
+<Changelog>New in dbt v0.19.0</Changelog>
+
+If you do not specify a `project`/`database` and are using the `oauth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
+
 ### Oauth Token-Based
 
 See [docs](https://developers.google.com/identity/protocols/oauth2) on using Oauth 2.0 to access Google APIs.
