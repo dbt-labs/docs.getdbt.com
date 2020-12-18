@@ -58,6 +58,7 @@ select
     count(*)
     
 from {{ ref('model_a') }}
+group by 1
 ```
 
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
@@ -89,6 +90,7 @@ create or replace view dev_me.model_b as (
         count(*)
         
     from dev_alice.model_a
+    group by 1
     
 )
 ```
@@ -115,6 +117,7 @@ create or replace view dev_me.model_b as (
         count(*)
         
     from prod.model_a
+    group by 1
     
 )
 ```
