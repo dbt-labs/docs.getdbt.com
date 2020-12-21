@@ -6,24 +6,18 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.16 (December 23, 2020)
 
-TODO - Enter release summary and curate below notes.
+This release adds preview support for Databricks Spark in dbt Cloud
+and adds two new permission sets for Enterprise acccounts.
 
 #### Enhancements
 
-- Added taxcode metadata for charging sales tax
-- [1956] added sales tax verbiage to confirmation page
-- Adding DatabricksSparkAdapter
-- Adds local storage services for persisting data between browser refreshes and sessions
-- Add scribe service for each run
-- use boto3 session cache everywhere
-- Adjusted stripe client to charge sales tax through avalara
+- Added preview support for Databricks Spark support
+- Added two new Enterprise permission sets: Account Viewer and Project Creator
 
-#### Internal
+#### Fixed
 
-- Improve application logging when running dbt core processes
-- 1486: new permission sets
-- Fix typo and add remote-debugger for every develop pod
-- ssh logging fix
+- Improve logging infrastructure for dbt run logs
+- Fix for SSH tunnel logging errors
 
 ## dbt Cloud v1.1.15 (December 10, 2020)
 
