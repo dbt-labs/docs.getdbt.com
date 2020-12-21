@@ -48,7 +48,7 @@ The following fields are required when creating a Snowflake connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Account | The Snowflake account to connect to. See [notes](setting-up-enterprise-snowflake-oauth)| `db5261993`, `db5261993.east-us-2.azure` |
+| Account | The Snowflake account to connect to.| `db5261993`, `db5261993.east-us-2.azure` |
 | Role | An optional field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
