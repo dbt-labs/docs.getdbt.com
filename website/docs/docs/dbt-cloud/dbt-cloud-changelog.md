@@ -4,6 +4,27 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.16 (December 23, 2020)
+
+TODO - Enter release summary and curate below notes.
+
+#### Enhancements
+
+- Added taxcode metadata for charging sales tax
+- [1956] added sales tax verbiage to confirmation page
+- Adding DatabricksSparkAdapter
+- Adds local storage services for persisting data between browser refreshes and sessions
+- Add scribe service for each run
+- use boto3 session cache everywhere
+- Adjusted stripe client to charge sales tax through avalara
+
+#### Internal
+
+- Improve application logging when running dbt core processes
+- 1486: new permission sets
+- Fix typo and add remote-debugger for every develop pod
+- ssh logging fix
+
 ## dbt Cloud v1.1.15 (December 10, 2020)
 
 Lots of great stuff to confer about this go-round: things really coalesced this week! Lots of excitement around adding Spark to the connection family, as well as knocking out some longstanding bugs. 
