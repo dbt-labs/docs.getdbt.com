@@ -13,6 +13,14 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
+## Use `project` and `dataset` in configurations
+
+- `schema` is interchangeable with the BigQuery concept `dataset`
+- `database` is interchangeable with the BigQuery concept of `project`
+
+For our reference documentation, you can declare `project` in place of `database.` 
+This will allow you to read and write from multiple BigQuery projects. Same for `dataset`.
+
 ## Using table partitioning and clustering
 
 ### Partition clause
