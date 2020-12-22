@@ -87,10 +87,6 @@ We recommend using NFS.
 
 ## Optional
 
-### Auth0 (included in License)
-
-dbt Cloud uses Auth0 to provide SSO integration with a variety of platforms. If you opt to use a SSO provider such as Okta, your license file will include a set of credentials specific to your installation to enable the Auth0 integration.
-
 ### Email over SMTP
 
 dbt Cloud has the ability to send emails over SMTP. The emails that dbt Cloud can send include:
