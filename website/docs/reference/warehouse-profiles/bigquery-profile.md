@@ -165,7 +165,9 @@ my-profile:
 
 ### Dataset locations
 
-The location of BigQuery datasets can be configured using the `location` configuration in a BigQuery profile. Example:
+The location of BigQuery datasets can be configured using the `location` configuration in a BigQuery profile.
+`location` can accept one of multi-regional locations or one of regional locations, as [the google cloud official documentation](https://cloud.google.com/bigquery/docs/locations) describes.
+Example:
 
 ```yaml
 my-profile:
@@ -176,7 +178,7 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      location: US # Optional, one of US or EU
+      location: US # Optional, one of US or EU / one of regional locations
 ```
 
 ### Maximum Bytes Billed
