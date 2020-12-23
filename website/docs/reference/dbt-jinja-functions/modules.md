@@ -37,7 +37,7 @@ This variable is a pointer to the Python [re](https://docs.python.org/3/library/
 **Usage**
 
 ```
-{% set s3_path_pattern = 's3://[a-z0-9-_/]+ %}
+{% set s3_path_pattern = 's3://[a-z0-9-_/]+' %}
 {% set is_match = modules.re.match(s3_path_pattern, my_string, re.IGNORECASE) %}
 {% if not is_match %}
     {%- do exceptions.raise_compiler_error(
