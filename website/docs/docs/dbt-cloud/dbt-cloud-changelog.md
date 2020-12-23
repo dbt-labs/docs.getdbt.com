@@ -4,6 +4,21 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.16 (December 23, 2020)
+
+This release adds preview support for Databricks Spark in dbt Cloud
+and adds two new permission sets for Enterprise acccounts.
+
+#### Enhancements
+
+- Added preview support for Databricks Spark support
+- Added two new Enterprise permission sets: Account Viewer and Project Creator
+
+#### Fixed
+
+- Improve logging infrastructure for dbt run logs
+- Fix for SSH tunnel logging errors
+
 ## dbt Cloud v1.1.15 (December 10, 2020)
 
 Lots of great stuff to confer about this go-round: things really coalesced this week! Lots of excitement around adding Spark to the connection family, as well as knocking out some longstanding bugs. 
