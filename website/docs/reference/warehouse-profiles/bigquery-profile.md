@@ -178,7 +178,7 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      location: US # Optional, one of US or EU / one of regional locations
+      location: US # Optional, one of US or EU, or a regional location
 ```
 
 ### Maximum Bytes Billed
