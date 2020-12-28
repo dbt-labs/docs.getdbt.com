@@ -30,7 +30,6 @@ The dbt CLI comes with a command to help you scaffold a dbt project. To create y
 1. Ensure dbt is installed by running `dbt --version`:
 ```shell-session
 $ dbt --version
-
 ```
 
 :::info
