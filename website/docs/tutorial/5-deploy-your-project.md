@@ -14,14 +14,14 @@ First off, we need to commit the changes we made to our project so that our repo
 ### dbt Cloud
 <LoomVideo id="afd55d89abdc4a77b34deaee90da0813" />
 
-1. Click the `commit` button, with a message like "Add customers model"
+1. Click the `commit` button, with a message like "Add customers model, tests, docs"
 2. Click the `merge to master` button
 
 ### dbt CLI
 <LoomVideo id="b07d7efe3f054e3bb357b4bccd805e70" />
 
-1. Add all your changes to git: `git add -a`
-2. Commit your changes: `git commit -m "Add customers models"`
+1. Add all your changes to git: `git add -A`
+2. Commit your changes: `git commit -m "Add customers model, tests, docs"`
 3. Push your changes to your repository: `git push`
 4. Navigate to your repository, and open a Pull Request to merge the code into your master branch.
 
