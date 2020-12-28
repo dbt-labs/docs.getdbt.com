@@ -14,7 +14,14 @@ sales@getdbt.com.
 
 dbt Cloud Enterprise supports Single-Sign On (SSO) via Google GSuite. You will need
 permissions to create and manage a new Google OAuth2 application, as well as
-access to enable the Google Admin SDK.
+access to enable the Google Admin SDK. Gsuite is a component within Google
+Cloud Platform (GCP), so you will also need access to a login with permissions
+to manage the GSuite application within a GCP account. 
+
+Some customers choose to use different cloud providers for User and Group permission setup
+than for hosting infrastructure. For example, it's certainly possible to use GSuite to 
+manage login information and Multifactor Authentication (MFA) configuration while hosting
+data workloads on AWS.
 
  Currently supported features include:
 
@@ -24,7 +31,7 @@ access to enable the Google Admin SDK.
 This guide outlines the setup process for authenticating to dbt Cloud with
 Google GSuite.
 
-## Configuration in GCP
+## Configuration of the GSuite organization within GCP
 
 dbt Cloud uses a Client ID and Client Secret to authenticate users of a
 GSuite organization. The steps below outline how to create a Client ID and
@@ -134,9 +141,6 @@ If OAuth verification does not complete successfully, double check that:
  - The Client ID and Client Secret provided match the values generated in the
    GCP Credentials page
  - An Authorized Domain was provided in the OAuth Consent Screen configuration
-
-### Missing groups
-
 If authentication with the GSuite API succeeds but you do not see a
 `groups` entry on the **Verify SSO Credentials** page, then you may not have
 permissions to access Groups in your GSuite account. Either request that your
