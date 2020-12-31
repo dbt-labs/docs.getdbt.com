@@ -154,11 +154,10 @@ Settings.
 | **Client&nbspID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** recorded in the steps above |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
-| **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) Ensure that the domain(s) match the values configured on user accounts in Azure, as shown in the below screenshot |
+| **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) Ensure that the domain(s) match the values configured on user accounts in Azure |
 | **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring credentials in dbt Cloud" />
 
 26. Click **Save** to complete setup for the Azure AD SSO integration. From
@@ -173,10 +172,8 @@ by navigating to the URL:
 
 ### Troubleshooting Tips
 
-
 Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
 
-# Where do I go to upload the image as referenced in the path below? Not seeing this from navigating this git repo or searching for /img/ as a repository at the top level of the dbt org.
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-domain-in-dbt.png" title="Adding the user domain to dbt cloud" />
 
-<Lightbox collapsed="true" src="/path/to/my/image.png" title="Referencing Users' domain names in Azure"/>
-<Lightbox collapsed="true" src="/path/to/my/image.png" title="Specifying the domain in dbt"/>
