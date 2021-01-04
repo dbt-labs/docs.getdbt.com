@@ -120,7 +120,7 @@ sources:
 
 
       - name: product_skus
-        freshness: {} # do not check freshness for this table
+        freshness: # do not check freshness for this table
 ```
 
 </File>
