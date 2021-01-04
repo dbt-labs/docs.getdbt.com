@@ -6,17 +6,19 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.17 (January 7, 2021)
 
-TODO - Release summary and curate notes
+Tidying up this and that as we settle into 2021. No new user-facing functionality. Hope everyone had a safe and cozy New Year!
 
 #### Internal
 
 - Fix Stripe event syncer
-- backfill all avalara metadata
-- bump psycopg2
-- fix circle jobs
-- fix duplicated circle jobs
+- Take down the wreath
+- Sweep up the confetti
+- Backfill all Avalara metadata
+- Bump psycopg2
+- Fix Circle jobs
+- Fix duplicated Circle jobs
 - Migrate to Python 3.8
-- Check the scribe image version before each scheduler loop
+- Check the Scribe image version before each scheduler loop
 
 ## dbt Cloud v1.1.16 (December 23, 2020)
 
