@@ -61,6 +61,7 @@ the **Redirect URI** input.
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration"/>
 
+
 **Configuration with the new Azure AD interface (optional)**
 
 Depending on your Azure AD settings, your App Registration page might look
@@ -78,11 +79,26 @@ the Redirect URI in the steps above, then skip ahead to step 8.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
+### Azure <-> dbt Cloud User and Group mapping 
+
+The Azure users and groups you will create in the following steps are mapped to groups created in dbt Cloud based on the group name. Reference `https://docs.getdbt.com/docs/dbt-cloud/access-control/enterprise-permissions/` for additional information on how users, groups, and permission sets are configured in dbt Cloud.
+
+### Adding Users to an Enterprise Application
+
+Once you've registered the application, the next step is to assign users to it. Add the users you want to be viewable to dbt with the following steps:
+
+8. From the **Default Directory** click **Enterprise Applications**
+9. Click the name of the application you created earlier
+10. Click **Assign Users and Groups**
+11. Click **Add User/Group**
+12. Assign additional users and groups as-needed
+
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
 
 ### Configuring permissions
 
-8. Under **Manage**, click **API Permissions**
-9. Click **+Add a permission** and add the permissions shown below
+13. Under **Manage**, click **API Permissions**
+14. Click **+Add a permission** and add the permissions shown below
 
 | API Name | Type | Permission |
 | -------- | ---- | ---------- |
@@ -91,19 +107,19 @@ the Redirect URI in the steps above, then skip ahead to step 8.
 | Microsoft Graph | Application | `Directory.Read.All` |
 | Microsoft Graph | Delegated | `User.Read` |
 
-10. Save these permissions, then click **Grant admin consent** to grant admin
+15. Save these permissions, then click **Grant admin consent** to grant admin
    consent for this directory on behalf of all of your users.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-permissions-overview.png" title="Configuring application permissions" />
 
 ### Creating a client secret
 
-11. Under **Manage**, click **Certificates & secrets**
-12. Click **+New client secret**
-13. Name the client secret "dbt Cloud" (or similar) to identify the secret
-14. Select **Never** as the expiration value for this secret
-15. Click **Add** to finish creating the client secret
-16. Record the generated client secret somewhere safe. Later in the setup process,
+16. Under **Manage**, click **Certificates & secrets**
+17. Click **+New client secret**
+18. Name the client secret "dbt Cloud" (or similar) to identify the secret
+19. Select **Never** as the expiration value for this secret
+20. Click **Add** to finish creating the client secret
+21. Record the generated client secret somewhere safe. Later in the setup process,
    we'll use this client secret in dbt Cloud to finish configuring the
    integration.
 
@@ -112,8 +128,8 @@ the Redirect URI in the steps above, then skip ahead to step 8.
 
 ### Collect client credentials
 
-17. Navigate to the **Overview** page for the app registration
-18. Note the **Application (client) ID** and **Directory (tenant) ID** shown in
+22. Navigate to the **Overview** page for the app registration
+23. Note the **Application (client) ID** and **Directory (tenant) ID** shown in
    this form and record them along with your client secret. We'll use these keys
    in the steps below to finish configuring the integration in dbt Cloud.
 
@@ -132,9 +148,9 @@ To complete setup, follow the steps below in the dbt Cloud application.
 
 ### Supplying credentials
 
-19. Navigate to the **Enterprise &gt; Single Sign On** page under Account
+24. Navigate to the **Enterprise &gt; Single Sign On** page under Account
 Settings.
-20. Click the **Edit** button and supply the following SSO details:
+25. Click the **Edit** button and supply the following SSO details:
 
 | Field | Value |
 | ----- | ----- |
@@ -142,13 +158,13 @@ Settings.
 | **Client&nbspID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** recorded in the steps above |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
-| **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) |
+| **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) Ensure that the domain(s) match the values configured on user accounts in Azure |
 | **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring credentials in dbt Cloud" />
 
-21. Click **Save** to complete setup for the Azure AD SSO integration. From
+26. Click **Save** to complete setup for the Azure AD SSO integration. From
     here, you can navigate to the URL generated for your account's _slug_ to
     test logging in with Azure AD.
 
@@ -157,3 +173,13 @@ Users in your Azure AD account will now be able to log into the application
 by navigating to the URL:
 
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
+:::
+
+*Note:* If your dbt account is configured with a single-tenant cloud or on-premise installation, the `cloud.getdbt.com` domain in the URL above will be replaced with a different value.
+
+### Troubleshooting Tips
+
+Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
+
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-domain-in-dbt.png" title="Adding the user domain to dbt cloud" />
