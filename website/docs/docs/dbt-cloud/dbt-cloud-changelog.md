@@ -4,6 +4,20 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.17 (January 7, 2021)
+
+TODO - Release summary and curate notes
+
+#### Internal
+
+- Fix Stripe event syncer
+- backfill all avalara metadata
+- bump psycopg2
+- fix circle jobs
+- fix duplicated circle jobs
+- Migrate to Python 3.8
+- Check the scribe image version before each scheduler loop
+
 ## dbt Cloud v1.1.16 (December 23, 2020)
 
 This release adds preview support for Databricks Spark in dbt Cloud
