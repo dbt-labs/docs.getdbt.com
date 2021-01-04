@@ -79,6 +79,10 @@ the Redirect URI in the steps above, then skip ahead to step 8.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
+### Azure <-> dbt User and Group mapping 
+
+The Azure users and groups you will create in the following steps are mapped to groups created in dbt Cloud based on the group name. Reference `https://docs.getdbt.com/docs/dbt-cloud/access-control/enterprise-permissions/` for additional information on how users, groups, and permission sets are configured in dbt Cloud.
+
 ### Adding Users to an Enterprise Application
 
 Once you've registered the application, the next step is to assign users to it. Add the users you want to be viewable to dbt with the following steps:
