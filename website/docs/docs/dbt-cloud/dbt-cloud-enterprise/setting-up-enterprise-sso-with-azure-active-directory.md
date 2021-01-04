@@ -173,6 +173,7 @@ Users in your Azure AD account will now be able to log into the application
 by navigating to the URL:
 
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
+:::
 
 *Note:* If your dbt account is configured with a single-tenant cloud or on-premise installation, the `cloud.getdbt.com` domain in the URL above will be replaced with a different value.
 
