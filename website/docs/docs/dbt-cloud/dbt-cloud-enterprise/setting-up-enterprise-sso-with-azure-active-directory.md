@@ -170,6 +170,8 @@ by navigating to the URL:
 
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
 
+*Note:* If your dbt account is configured with a single-tenant cloud or on-premise installation, the `cloud.getdbt.com` domain in the URL above will be replaced with a different value.
+
 ### Troubleshooting Tips
 
 Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
