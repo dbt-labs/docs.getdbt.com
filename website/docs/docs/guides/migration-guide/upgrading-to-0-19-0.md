@@ -3,14 +3,15 @@ title: "Upgrading to 0.19.0"
 
 ---
 
-:::info Prerelease
+:::info Release Candidate
 
-dbt v0.19.0 is currently in beta. Please post in dbt Slack #dbt-prereleases with questions or issues.
+`dbt v0.19.0-rc1` is currently available. Please help us by testing, and post in [#dbt-prereleases](https://getdbt.slack.com/archives/C016X6ABVUK) with questions or issues.
 
 :::
 
 ### Resources
 
+- [Discourse](https://discourse.getdbt.com/t/1951)
 - [Changelog](https://github.com/fishtown-analytics/dbt/blob/dev/kiyoshi-kuromiya/CHANGELOG.md)
 
 ## Breaking changes
