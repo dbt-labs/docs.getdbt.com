@@ -15,10 +15,28 @@ dbt v0.19.0 is currently in beta. Please post in dbt Slack #dbt-prereleases with
 
 ## Breaking changes
 
+### For dbt users
+
 Please be aware of the following changes in v0.19.0:
 
 - dbt artifacts have a new schema. From here on, artifact schemas are officially versioned at **schemas.getdbt.com**. Future breaking changes will be limited to minor version releases.
-- Defer, a beta feature introduced in v0.18.0, has changed to better support the "Slim CI" use case.
+- Defer, a beta feature introduced in v0.18.0, has subtly changed to better support the "Slim CI" use case.
+
+See the docs below for more details. We don't expect these to require action in most projects.
+
+### For dbt plugin maintainers
+
+(You know who you are!)
+
+The `results` context and `run_results.json` artifact include a new unstructured dictionary called `adapter_response`. This reflects structured information returned by the database after dbt runs the "main" query for a model, seed, snapshot, etc.
+
+By default, this dict accepts keys such as `code` (`OK`, `SUCCESS`, `CREATE TABLE`, etc) and `rows_affected` (integer). You can add custom arguments to reflect information specific to your adapter. For instance, `dbt-bigquery` populates an additional argument, `bytes_processed`.
+
+As part of this change:
+- the `SQLConnectionManager` method `get_status` has been renamed to `get_response`
+- `execute` now returns a tuple instead of a string
+
+See [dbt#2961](https://github.com/fishtown-analytics/dbt/pull/2961) for full implementation details. While `adapter_response` is not yet populated by tests or source freshness checks, we hope to add those in a future release ([dbt#2964](https://github.com/fishtown-analytics/dbt/issues/2964)).
 
 ## New and changed documentation
 
