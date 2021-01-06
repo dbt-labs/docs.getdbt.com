@@ -133,37 +133,19 @@ will be expanded to:
 ```
 
 ## Result objects
-The execution of a resource in dbt generates a Result object. This object contains information about the node that was executed, as well as its resulting status. The JSON Schema for a Result object can be found [here](https://github.com/fishtown-analytics/dbt/blob/6563b0329936dbd75b6a4cdf8a98e90fb717cd84/core/dbt/contracts/results.py#L9). Note that this contract may be subject to change in the future until dbt's API has reached a "stable" state.
 
+<Changelog>
 
-```python
-{
-    'type': 'object',
-    'additionalProperties': False,
-    'description': 'The result of a single node being run',
-    'properties': {
-        'error': {
-            'type': ['string', 'null'],
-            'description': 'The error string, or None if there was no error',
-        },
-        'skip': {
-            'type': 'boolean',
-            'description': 'True if this node was skipped',
-        },
-        'fail': {
-            'type': ['boolean', 'null'],
-            'description': 'On tests, true if the test failed',
-        },
-        'status': {
-            'type': ['string', 'null', 'number', 'boolean'],
-            'description': 'The status result of the node execution',
-        },
-        'execution_time': {
-            'type': 'number',
-            'description': 'The execution time, in seconds',
-        },
-        'node': <Node Contract>;,
-    },
-    'required': ['node'],
-}
-```
+* `v0.19.0`: The `Result` object significantly changed its schema. See https://schemas.getdbt.com/dbt/run-results/v1.json for the full specification.
+
+</Changelog>
+
+The execution of a resource in dbt generates a `Result` object. This object contains information about the node that was executed, as well as metadata returned by the adapter. These objects are recorded in more-concise form in two dbt artifacts: [`run_results.json`](run-results-json) and [`sources.json`](sources-json).
+
+- `node`: Full object representation of the dbt resource (model, seed, snapshot, test) executed, including its `unique_id`
+- `status`: dbt's interpretation of runtime success, failure, or error
+- `thread_id`: Which thread executed this node? E.g. `Thread-1`
+- `execution_time`: Total time spent executing this node
+- `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
+- `adapter_response`: Dictionary of metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc.
+- `message`: How dbt will report this result on the CLI, based on information returned from the database

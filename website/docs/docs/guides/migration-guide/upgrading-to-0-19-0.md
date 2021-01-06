@@ -20,8 +20,9 @@ title: "Upgrading to 0.19.0"
 
 Please be aware of the following changes in v0.19.0:
 
-- dbt artifacts have a new schema. From here on, artifact schemas are officially versioned at **schemas.getdbt.com**. Future breaking changes will be limited to minor version releases.
-- Defer, a beta feature introduced in v0.18.0, has subtly changed to better support the "Slim CI" use case.
+1. dbt artifacts have a new schema. From here on, artifact schemas are officially versioned at **schemas.getdbt.com**. Future breaking changes will be limited to minor version releases. Some dbt classes, such as the `Result` object, have associated breaking changes.
+2. Defer, a beta feature introduced in v0.18.0, has subtly changed to better support the "Slim CI" use case.
+3. The `call statement` block returns a structured `AdapterResponse` instead of a string `status`. If you previously accessed `statement['status']` within a custom macro or materalization, you should now use `statement[response]`.
 
 See the docs below for more details. We don't expect these to require action in most projects.
 
@@ -29,7 +30,7 @@ See the docs below for more details. We don't expect these to require action in 
 
 (You know who you are!)
 
-The `results` context and `run_results.json` artifact include a new unstructured dictionary called `adapter_response`. This reflects structured information returned by the database after dbt runs the "main" query for a model, seed, snapshot, etc.
+Related to change #3 above: The `results` context and `run_results.json` artifact include a new unstructured dictionary called `adapter_response`. This reflects structured information returned by the database after dbt runs the "main" query for a model, seed, snapshot, etc.
 
 By default, this dict accepts keys such as `code` (`OK`, `SUCCESS`, `CREATE TABLE`, etc) and `rows_affected` (integer). You can add custom arguments to reflect information specific to your adapter. For instance, `dbt-bigquery` populates an additional argument, `bytes_processed`.
 
@@ -43,6 +44,7 @@ See [dbt#2961](https://github.com/fishtown-analytics/dbt/pull/2961) for full imp
 
 ### Core
 - [dbt-artifacts](dbt-artifacts): The JSON artifacts produced by dbt—manifest, catalog, run results, and sources—are simpler to consume and more clearly documented.
+- [dbt classes](dbt-classes): The `Result` object has a new schema, related to the new schema in `run_results.json`.
 - [snapshots](snapshots) ([invalidate_hard_deletes](invalidate_hard_deletes)): If the config `invalidate_hard_deletes` is enabled, `dbt snapshot` will update records whose unique key no longer exist in the snapshot query. Should those uniquely identified records "revive," `dbt snapshot` will re-add them.
 - [YAML selectors](yaml-selectors) support a `description` property and record their expanded dictionary representations in the manifest.
 - [modules](modules): The regex python module, `re`, is available in dbt's Jinja context.

@@ -96,7 +96,7 @@ on-run-end:
 
 
 ## Results
-The `results` variable contains a list of [Result objects](dbt-classes#result-objects) with one element per resource that executed in the dbt job.
+The `results` variable contains a list of [Result objects](dbt-classes#result-objects) with one element per resource that executed in the dbt job. The Result object provides access within the Jinja on-run-end context to the information that will populate the [run results JSON artifact](run-results-json).
 
 Example usage:
 
@@ -150,34 +150,3 @@ node: model.my_project.abc; status: CREATE VIEW (error: None)
 11:27:52 |
 11:27:52 | Finished running 1 table models, 1 view models in 0.26s.
 ```
-
-## Advanced Usage
-
-Objects of the Results class have the following properties:
-```
-{
-    'error': {
-        'type': ['string', 'null'],
-        'description': 'The error string, or None if there was no error',
-    },
-    'skip': {
-        'type': 'boolean',
-        'description': 'True if this node was skipped',
-    },
-    'fail': {
-        'type': ['boolean', 'null'],
-        'description': 'On tests, true if the test failed',
-    },
-    'status': {
-        'type': ['string', 'null', 'number', 'boolean'],
-        'description': 'The status result of the node execution',
-    },
-    'execution_time': {
-        'type': 'number',
-        'description': 'The execution time, in seconds',
-    },
-    'node': COMPILE_RESULT_NODE_CONTRACT,
-}
-```
-
-Additionally, Result objects have a `serialize()` method which can be used to convert the object into a Python dictionary.
