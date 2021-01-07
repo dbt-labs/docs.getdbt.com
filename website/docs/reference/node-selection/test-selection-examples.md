@@ -99,6 +99,18 @@ $ dbt test --models source:jaffle_shop.customers
 $ dbt test --exclude sources:*
 ```
 
+### Run a specific data test
+
+```shell
+# syntax
+$ dbt test --data --models model_name
+
+# example
+$ dbt test --data --models assert_total_payment_amount_is_positive
+# alternate syntax
+$ dbt test --models assert_total_payment_amount_is_positive  # The --data flag is optional
+```
+
 ### Run tests on seeds / snapshots only
 
 Currently it is not possible to:
