@@ -22,7 +22,7 @@ Please be aware of the following changes in v0.19.0:
 
 1. dbt artifacts have a new schema. From here on, artifact schemas are officially versioned at **schemas.getdbt.com**. Future breaking changes will be limited to minor version releases. Some dbt classes, such as the `Result` object, have associated breaking changes.
 2. Defer, a beta feature introduced in v0.18.0, has subtly changed to better support the "Slim CI" use case.
-3. The `call statement` block returns a structured `AdapterResponse` instead of a string `status`. If you previously accessed `statement['status']` within a custom macro or materalization, you should now use `statement[response]`.
+3. The `call statement` block returns a structured `AdapterResponse` instead of a string `status`. If you previously accessed `statement['status']` within a custom macro or materalization, you should now use `statement['response']`.
 
 See the docs below for more details. We don't expect these to require action in most projects.
 
