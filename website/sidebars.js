@@ -23,7 +23,7 @@ module.exports = {
             "docs/building-a-dbt-project/building-models/configuring-incremental-models",
             "docs/building-a-dbt-project/building-models/using-custom-aliases",
             "docs/building-a-dbt-project/building-models/using-custom-schemas",
-            "docs/building-a-dbt-project/building-models/using-custom-database",
+            "docs/building-a-dbt-project/building-models/using-custom-databases",
             "docs/building-a-dbt-project/building-models/using-variables",
           ],
         },
