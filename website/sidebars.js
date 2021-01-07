@@ -57,6 +57,7 @@ module.exports = {
       label: "Guides",
       items: [
         "docs/guides/debugging-errors",
+        "docs/guides/debugging-schema-names",
         "docs/guides/navigating-the-docs",
         "docs/guides/getting-help",
         "docs/guides/best-practices",

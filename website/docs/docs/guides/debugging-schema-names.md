@@ -1,0 +1,94 @@
+---
+title: Debugging schema names
+---
+
+If you using the [`schema` config](resource-configs/schema), and your model is being created in a schema that you are not expecting, here are the steps to debug it.
+
+:::info 
+The full explanation on custom schemas can be found [here](using-custom-schemas).
+:::
+
+You can also follow along via this video:
+
+<LoomVideo id="1c6e33b504da432dbd07c4cb7f35478e" />
+
+### 1. Search for a macro named `generate_schema_name`
+Do a file search to check if you have a macro named `generate_schema_name` in the `macros` directory of your project.
+
+#### I do not have a macro named `generate_schema_name` in my project
+This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/fishtown-analytics/dbt/blob/dev/kiyoshi-kuromiya/core/dbt/include/global_project/macros/etc/get_custom_schema.sql#L17-L30)
+
+<!--- CC note: this link is going to keep going out of date --->
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+
+    {%- set default_schema = target.schema -%}
+    {%- if custom_schema_name is none -%}
+
+        {{ default_schema }}
+
+    {%- else -%}
+
+        {{ default_schema }}_{{ custom_schema_name | trim }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+```
+
+Note that this logic 
+
+#### I have a `generate_schema_name` macro in my project that calls another macro
+If your `generate_schema_name` macro looks like so:
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {{ generate_schema_name_for_env(custom_schema_name, node) }}
+{%- endmacro %}
+```
+Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/fishtown-analytics/dbt/blob/dev/kiyoshi-kuromiya/core/dbt/include/global_project/macros/etc/get_custom_schema.sql#L43-L56).
+
+```sql
+{% macro generate_schema_name_for_env(custom_schema_name, node) -%}
+
+    {%- set default_schema = target.schema -%}
+    {%- if target.name == 'prod' and custom_schema_name is not none -%}
+
+        {{ custom_schema_name | trim }}
+
+    {%- else -%}
+
+        {{ default_schema }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+```
+#### I have a `generate_schema_name` macro with custom logic
+
+If this is the case — it might be a great idea to reach out to the person who added this macro to your project, as they will have context here — you can use [GitHub's blame feature](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/tracking-changes-in-a-file) to do this.
+
+In all cases take a moment to read through the Jinja to see if you can follow the logic.
+
+
+### 2. Confirm your target values
+Most `generate_schema_name` macros incorporate logic from the [`target` variable](target), in particular `target.schema` and `target.name`. Use the docs [here](target) to help you find the values of each key in this dictionary.
+
+
+### 3. Put the two together
+
+Now, re-read through the logic of your `generate_schema_name` macro, and mentally plug in the `target` values. It's also worth noting that your `schema` config gets passed through as the argument named `custom_schema_name`.
+
+You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
+
+:::info
+Note that snapshots do not follow this behavior, check out the docs on [target_schema](resource-configs/target_schema) instead.
+:::
+
+### 4. Adjust as necessary
+
+Now that you understand how a model's schema is being generated, you can adjust as necessary:
+- You can adjust the logic in your `generate_schema_name` macro (or add this macro to your project if you don't yet have one and adjust from there)
+- You can also adjust your `target` details (for example, changing the name of a target)
+
+If you change the logic in `generate_schema_name`, it's important that you consider whether two users will end up writing to the same schema when in development — we thought ahead for you by implementing name-spaced logic in the the default `generate_schema_name` macro (but acknowledge that we might have been a little too clever here 😅).
