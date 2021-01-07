@@ -18,7 +18,7 @@ The standard behavior of dbt is:
 * If a custom database is _not_ specified, the database of the relation is the target database (`{{ target.database }}`).
 * If a custom database is specified, the database of the relation is the `{{ database }}` value.
 
-To learn more about changing the way that dbt generates a relation's `database`, read [Using Custom Databases](docs/building-a-dbt-project/building-models/using-custom-database.md)
+To learn more about changing the way that dbt generates a relation's `database`, read [Using Custom Databases](using-custom-databases)
 
 <Changelog>
 
