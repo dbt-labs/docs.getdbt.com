@@ -64,6 +64,25 @@ function Home() {
                     </div>
                   </div>
                 </div>
+                <div className="col col--4">
+                  <div className="card large dark darkest">
+                    <div className="card__header">
+                      <h3>dbt Learn</h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                        Learn dbt on your own time with our on demand course or sign up for an upcoming, live public course.
+                      </p>
+                    </div>
+                    <div className="card__footer">
+                        <Link
+                          className="button button--primary"
+                          to="https://learn.getdbt.com">
+                          Learn Now
+                        </Link>
+                    </div>
+                  </div>
+                </div>
             </div>
         </div>
         <div className="container container--fluid home" style={{"background": "#FFF", "padding": "10px 0"}}>
