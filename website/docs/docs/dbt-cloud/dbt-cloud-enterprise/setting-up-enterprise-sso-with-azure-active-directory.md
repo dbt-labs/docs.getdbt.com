@@ -179,7 +179,7 @@ by navigating to the URL:
 
 ## Troubleshooting Tips
 
-Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
+Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side. A way to double check after SSO has been set up would be going to this [url](https://cloud.getdbt.com/api/v2/whoami/) and assuring the `auth_provider_domain` listed is the same as the one you configured. 
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-domain-in-dbt.png" title="Adding the user domain to dbt cloud" />
