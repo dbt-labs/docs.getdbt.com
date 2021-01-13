@@ -56,7 +56,7 @@ See [dbt#2961](https://github.com/fishtown-analytics/dbt/pull/2961) for full imp
 - [RPC](rpc): Added `state` and `defer` as arguments to RPC methods for which it is supported on the CLI.
 
 ### BigQuery
-- [Bigquery profile](bigquery-profile): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
+- [BigQuery profile](bigquery-profile): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
 - [Hourly, monthly and yearly partitions](bigquery-configs#partitioning-by-a-date-or-timestamp): With a new `granularity` attribute of the `partition_by` config, dbt can materialize models as tables partitioned by hour, month, or year.
 
 ### Spark
