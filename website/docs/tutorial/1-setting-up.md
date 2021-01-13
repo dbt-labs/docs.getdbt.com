@@ -76,7 +76,7 @@ select * from final
 ## Create a BigQuery project
 For this tutorial, we've created a public dataset in BigQuery that anyone can `select` from.
 
-We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](/docs/supported-databases).
+We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](available-adapters).
 
 :::info
 BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you have an existing GCP account that has surpassed these tiers on BigQuery, running queries for this tutorial will incur a very small (less than a few USD) cost.

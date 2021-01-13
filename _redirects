@@ -110,7 +110,7 @@
 /docs/modules	/docs/writing-code-in-dbt/jinja-context/modules	302
 /docs/on-run-end-context	/docs/writing-code-in-dbt/jinja-context/on-run-end-context	302
 /docs/package-management	/docs/building-a-dbt-project/package-management	302
-/docs/profile	/docs/supported-databases	302
+/docs/profile	/docs/available-adapters	302
 /docs/profile-bigquery	/reference/warehouse-profiles/bigquery-profile	302
 /docs/profile-mssql	/reference/warehouse-profiles/mssql-profile	302
 /docs/profile-postgres	/reference/warehouse-profiles/postgres-profile	302
@@ -120,7 +120,7 @@
 /docs/profile-spark	/reference/warehouse-profiles/spark-profile	302
 /docs/redshift-configs	/reference/resource-configs/redshift-configs	302
 /docs/spark-configs	/reference/resource-configs/spark-configs	302
-/docs/redshift-v2	/docs/supported-databases/redshift-v2	302
+/docs/redshift-v2	/reference/warehouse-profiles/redshift-profile	302
 /docs/ref	/docs/writing-code-in-dbt/jinja-context/ref	302
 /docs/requiring-specific-dbt-versions	/docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions	302
 /docs/return	/docs/writing-code-in-dbt/jinja-context/return	302
@@ -172,6 +172,7 @@
 /docs/snowflake-configs	/reference/resource-configs/snowflake-configs	302
 /docs/source	/reference/commands/source	302
 /docs/statement-blocks	/docs/writing-code-in-dbt/jinja-context/statement-blocks	302
+/docs/supported-databases	/docs/available-adapters	302
 /docs/supported-databases/profile-bigquery	/reference/bigquery-profile	302
 /docs/supported-databases/profile-mssql	/reference/mssql-profile	302
 /docs/supported-databases/profile-postgres	/reference/postgres-profile	302
