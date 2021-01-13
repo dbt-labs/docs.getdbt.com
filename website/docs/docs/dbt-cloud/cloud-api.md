@@ -18,4 +18,4 @@ You can find your API token in your user's profile under `API Access`.
 
 <Lightbox src="/img/api-access-profile.png" title="API Access" />
 
-Learn more about our API [here](https://docs.getdbt.com/dbt-cloud/api/).
+Learn more about our API [here](dbt-cloud/api/).
