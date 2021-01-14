@@ -264,7 +264,9 @@ Most modern databases support a majority of the standard SQL spec. There are som
 {% macro create_table_as(temporary, relation, sql) -%}
 
   {# dbt will dispatch the macro call to the relevant macro #}
-  {{ adapter.dispatch('create_table_as')(temporary, relation, sql) }}
+  {{ return(
+      adapter.dispatch('create_table_as')(temporary, relation, sql)
+     ) }}
 {%- endmacro %}
 
 
