@@ -2,7 +2,14 @@
 title: "Syntax overview"
 ---
 
-dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:
+The following objects in a dbt project are called "nodes": models, data tests, sources, seeds, snapshots, and analyses. Nodes are visually represented by the circles in a dbt project's DAG (directed acyclic graph).
+
+:::info Nodes and resources
+
+We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably.
+:::
+
+dbt's node selection syntax makes it possible to run dbt subcommands on specific resources only. This selection syntax is used for the following subcommands:
 
 | command   | argument(s)                                       |
 | :-------- | ------------------------------------------------- |
@@ -13,14 +20,9 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | ls (list) | `--select`, `--models`, `--exclude`, `--selector` |
 | compile   | `--select`, `--exclude`, `--selector`             |
 
-:::info Nodes and resources
-
-We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably. These  encompass all the models, tests, sources, seeds, snapshots, and analyses in your project. They are the objects that make up dbt's DAG (directed acyclic graph).
-:::
-
 ## Specifying resources
 
-By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--models` and `--select` flags are used to specify a subset of nodes to execute.
+By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--models` and `--select` flags are used to specify a subset of nodes to execute. The `--selector`` flag specifies which [user-defined yaml selector](http://localhost:3000/reference/node-selection/yaml-selectors) to use.
 
 ### Shorthand
 
