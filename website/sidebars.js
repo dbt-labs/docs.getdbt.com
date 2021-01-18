@@ -5,7 +5,7 @@ module.exports = {
       label: "Introduction",
       items: [
         "docs/introduction",
-        "docs/supported-databases",
+        "docs/available-adapters",
       ],
     },
     {

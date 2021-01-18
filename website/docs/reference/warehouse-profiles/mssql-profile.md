@@ -11,7 +11,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 ## Overview of dbt-sqlserver
 **Maintained by:** Community      
 **Author:** Mikael Ene    
-**Source:** https://github.com/mikaelene/dbt-sqlserver    
+**Source:** https://github.com/dbt-msft/dbt-sqlserver    
 **Core version:** v0.14.0 and newer    
 
 ![dbt-sqlserver stars](https://img.shields.io/github/stars/mikaelene/dbt-sqlserver?style=for-the-badge)

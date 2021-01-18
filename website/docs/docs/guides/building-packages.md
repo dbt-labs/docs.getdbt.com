@@ -143,7 +143,7 @@ When packages are installed from dbt Hub, dbt is able to handle duplicate depend
 
 **4. Implement cross-database compatibility**
 
-Many SQL functions are specific to a particular database. For example, the function name and order of arguments to calculate the difference between two dates varies between Redshift, Snowflake and BigQuery, and no similar function exists on Postgres! To help with this, we've made a number of macros that compile to valid SQL snippets on each of our [fully supported databases](supported-databases) – check them out [here](https://github.com/fishtown-analytics/dbt-utils#cross-database). While we generally don't recommend you implement these in a project designed for one warehouse, we do recommend you use them in a package that will be used on multiple data warehouses.
+Many SQL functions are specific to a particular database. For example, the function name and order of arguments to calculate the difference between two dates varies between Redshift, Snowflake and BigQuery, and no similar function exists on Postgres! To help with this, we've made a number of macros that compile to valid SQL snippets on each of our [fully supported databases](available-adapters) – check them out [here](https://github.com/fishtown-analytics/dbt-utils#cross-database). While we generally don't recommend you implement these in a project designed for one warehouse, we do recommend you use them in a package that will be used on multiple data warehouses.
 
 **5. Prefix model names**
 
