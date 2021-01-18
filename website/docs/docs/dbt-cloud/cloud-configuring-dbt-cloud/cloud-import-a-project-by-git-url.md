@@ -3,7 +3,7 @@ title: "Importing a project by git URL"
 id: "cloud-import-a-project-by-git-url"
 ---
 
-In dbt Cloud. You can import a git repository from any valid git URL that points to a dbt project. There are a couple of important considerations to keep in mind when doing this:
+In dbt Cloud, you can import a git repository from any valid git URL that points to a dbt project. There are a couple of important considerations to keep in mind when doing this:
 
 ## Git protocols
 You must use the `git@...` or `ssh:..`. version of your git URL, not the `https://...` version. dbt Cloud uses the SSH protocol to clone repositories, so dbt Cloud will be unable to clone repos supplied with the HTTP protocol.
