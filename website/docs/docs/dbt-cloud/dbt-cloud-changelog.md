@@ -4,6 +4,38 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.18 (January 20, 2021)
+
+TODO - enter release summary and curate below release notes
+
+#### Enhancements
+
+- Fixing and upgrading social-auth
+- add dbt spark 0.19.0rc1
+- Adds the reconciliation of persisted file content and tab state when navigating into the IDE
+- Adds the reconciliation of persisted file content and tab state between IDE sessions
+- Read logs from scribe and stop logging to db
+- Upgrade social auth 3.3.3
+- Add warning logs for social auth failures
+- Add dbt 0.19.0rc1
+
+#### Fixed
+
+- Prevent enqueueing runs in deleted projects
+- Fix IDE git actions causing open tab contents to be lost on IDE re-entry
+- Add DBT_CLOUD_CONTEXT environment variable
+- Add logic to hide IP whitelist message for on-prem customers
+- fix 0.19.0rc1 run image dependencies
+
+#### Internal
+
+- Remove Mailchimp integration
+- Use the generic get_handle method in the run service
+- Clean up scribe services when finished jobs are cleaned up
+- Downgrade social auth
+- Adds an (albeit) scrappy django command to verify the content of scribe logs vs cloud
+- Adjust existing customer taxation backfill method
+
 ## dbt Cloud v1.1.17 (January 7, 2021)
 
 Tidying up this and that as we settle into 2021. No new user-facing functionality. Hope everyone had a safe and cozy New Year!
