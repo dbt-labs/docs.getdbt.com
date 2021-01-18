@@ -37,7 +37,7 @@ This means that you are using dbt's default implementation of the macro, as defi
 {%- endmacro %}
 ```
 
-Note that this logic 
+Note that this logic is designed so that two dbt users won't accidentally overwrite each other's work by writing to the same schema.
 
 #### I have a `generate_schema_name` macro in my project that calls another macro
 If your `generate_schema_name` macro looks like so:
@@ -71,13 +71,17 @@ If this is the case — it might be a great idea to reach out to the person who 
 In all cases take a moment to read through the Jinja to see if you can follow the logic.
 
 
-### 2. Confirm your target values
+### 2. Confirm your `schema` config
+Check if you are using the [`schema` config](resource-configs/schema) in your model, either via a `{{ config() }}` block, or from `dbt_project.yml`. This gets passed through to the macro as the `custom_schema_name` argument.
+
+
+### 3. Confirm your target values
 Most `generate_schema_name` macros incorporate logic from the [`target` variable](target), in particular `target.schema` and `target.name`. Use the docs [here](target) to help you find the values of each key in this dictionary.
 
 
-### 3. Put the two together
+### 4. Put the two together
 
-Now, re-read through the logic of your `generate_schema_name` macro, and mentally plug in the `target` values. It's also worth noting that your `schema` config gets passed through as the argument named `custom_schema_name`.
+Now, re-read through the logic of your `generate_schema_name` macro, and mentally plug in your `customer_schema_name` and `target` values.
 
 You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
 
