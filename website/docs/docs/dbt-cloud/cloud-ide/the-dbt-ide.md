@@ -6,7 +6,7 @@ id: "the-dbt-ide"
 
 :::info Prerequisites
 
-To set up your account to use the IDE, consult the guide on [using the dbt IDE](using-the-dbt-ide).
+You must have a dbt Cloud account to use the IDE. Consult the guide on [using the dbt IDE](using-the-dbt-ide). Don't have an account? You can get started for free [here](https://www.getdbt.com/signup).
 
 :::
 
