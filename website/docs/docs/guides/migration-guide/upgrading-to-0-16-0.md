@@ -104,7 +104,7 @@ please be mindful of the following changes to dbt's Python dependencies:
 ## New and changed documentation
 - [BigQuery partitioning configs](bigquery-configs)
 - [Select specific seeds to run with `--select`](seed)
-- [New `generate_database_name` macro](using-custom-database)
+- [New `generate_database_name` macro](using-custom-databases)
 - [New `dbt_project.yml context`](dbt-project-yml-context)
 - [New configurations for schema.yml files](declaring-properties)
 - [New configurations for Source declarations](using-sources)
