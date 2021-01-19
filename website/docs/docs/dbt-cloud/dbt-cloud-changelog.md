@@ -6,12 +6,12 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.18 (January 20, 2021)
 
-TODO - enter release summary and curate below release notes
+Most notable things here are around foundational work toward future feature releases, as well as strong assurances of future stability for dbt Cloud, and ensuring future sales tax compliance (which we understand turns out to be quite important!) - turns out to be a quite future-looking release!
 
 #### Enhancements
 
-- Fixing and upgrading social-auth
-- add dbt spark 0.19.0rc1
+- Fixing and Upgrading social-auth
+- Add dbt Spark 0.19.0rc1
 - Adds the reconciliation of persisted file content and tab state when navigating into the IDE
 - Adds the reconciliation of persisted file content and tab state between IDE sessions
 - Read logs from scribe and stop logging to db
