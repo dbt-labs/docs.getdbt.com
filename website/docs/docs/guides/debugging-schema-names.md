@@ -72,7 +72,7 @@ In all cases take a moment to read through the Jinja to see if you can follow th
 
 
 ### 2. Confirm your `schema` config
-Check if you are using the [`schema` config](resource-configs/schema) in your model, either via a `{{ config() }}` block, or from `dbt_project.yml`. This gets passed through to the macro as the `custom_schema_name` argument.
+Check if you are using the [`schema` config](resource-configs/schema) in your model, either via a `{{ config() }}` block, or from `dbt_project.yml`. In both cases, dbt passes this value as the `custom_schema_name` parameter of the `generate_schema_name` macro.
 
 
 ### 3. Confirm your target values
