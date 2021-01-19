@@ -95,4 +95,4 @@ Now that you understand how a model's schema is being generated, you can adjust 
 - You can adjust the logic in your `generate_schema_name` macro (or add this macro to your project if you don't yet have one and adjust from there)
 - You can also adjust your `target` details (for example, changing the name of a target)
 
-If you change the logic in `generate_schema_name`, it's important that you consider whether two users will end up writing to the same schema when in development — we thought ahead for you by implementing name-spaced logic in the the default `generate_schema_name` macro (but acknowledge that we might have been a little too clever here 😅).
+If you change the logic in `generate_schema_name`, it's important that you consider whether two users will end up writing to the same schema when developing dbt models. This consideration is the reason why the default implementation of the macro concatenates your target schema and custom schema together — we promise we were trying to be helpful by implementing this behavior, but acknowledge that the resulting schema name is unintuitive.
