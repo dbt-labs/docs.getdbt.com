@@ -37,7 +37,7 @@ regardless of the role-based permissions that the user is assigned.
 
 :::info dbt Cloud Enterprise
 
-Role-based access control is a feature of the dbt Cloud Enterprise plan
+Role-based access control is a feature of the dbt Cloud Enterprise plan. [View the pricing page for more information](https://www.getdbt.com/pricing/).
 
 :::
 
