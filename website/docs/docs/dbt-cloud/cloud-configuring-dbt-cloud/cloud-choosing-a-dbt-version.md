@@ -5,6 +5,8 @@ id: "cloud-choosing-a-dbt-version"
 
 In dbt Cloud, both jobs and environments are configured to use some version of dbt Core. This can be altered at any time.
 
+[Log in to update your settings](https://cloud.getdbt.com/).
+
 ### Environments
 
 Navigate to the settings page of an environment, then click **edit**. Click the 'dbt version' dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
