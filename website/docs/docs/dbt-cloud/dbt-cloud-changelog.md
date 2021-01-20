@@ -10,6 +10,7 @@ Most notable things here are around foundational work toward future feature rele
 
 #### Enhancements
 
+- Add service tokens UI (stubbed) behind a feature flag
 - Fixing and Upgrading social-auth
 - Add dbt Spark 0.19.0rc1
 - Adds the reconciliation of persisted file content and tab state when navigating into the IDE
@@ -21,6 +22,8 @@ Most notable things here are around foundational work toward future feature rele
 
 #### Fixed
 
+- Prevent social-auth from updating first or last name
+- Page through Stripe results when listing subscriptions
 - Prevent enqueueing runs in deleted projects
 - Fix IDE git actions causing open tab contents to be lost on IDE re-entry
 - Add DBT_CLOUD_CONTEXT environment variable
