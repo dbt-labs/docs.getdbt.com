@@ -9,8 +9,9 @@ Now that we've successfully run our sample query in BigQuery, and chosen the way
 
 :::info
 
-These are the instructions for developing a project in dbt Cloud. If you're
-using the dbt CLI, follow the instructions [here](/tutorial/create-a-project-dbt-cli)
+These are the instructions for developing a project in dbt Cloud. [Create a dbt Cloud account to get started](https://cloud.getdbt.com/signup/).
+
+If you're using the dbt CLI, follow the instructions [here](/tutorial/create-a-project-dbt-cli)
 
 :::
 
