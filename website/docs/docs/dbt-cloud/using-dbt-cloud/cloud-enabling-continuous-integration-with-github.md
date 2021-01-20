@@ -7,6 +7,8 @@ id: "cloud-enabling-continuous-integration-with-github"
 
 dbt Cloud makes it easy to test every single change you make prior to deploying that code into production. Once you've [connected your GitHub account](cloud-installing-the-github-application), you can configure jobs to run when new Pull Requests are opened against your dbt repo. When these jobs complete, their statuses will be shown directly in the Pull Request. This makes it possible to deploy new code to production with confidence.
 
+[Log in to set up continuous integration](https://cloud.getdbt.com/login/)
+
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/09c886f-Screen_Shot_2019-02-08_at_4.54.41_PM.png" title="The green checkmark means this PR is ready to be merged. The 'details' link shown here will navigate you to the relevant run in dbt Cloud."/>
 
 ## Enabling Continuous Integration (CI)
@@ -27,7 +29,7 @@ When the run is complete, dbt Cloud will update the PR in GitHub with a status m
 ## Defer to a Production Job
 
 :::info [β] Preview Feature
-This is a preview feature in dbt Cloud that depends on net-new functionality in  dbt v0.18.0. If you would like to enable this feature in your dbt Cloud account, please contact support.
+This is a preview feature in dbt Cloud that depends on net-new functionality in  dbt v0.18.0. If you would like to enable this feature in your dbt Cloud account, please [log in and contact support](https://cloud.getdbt.com/login/).
 :::
 
 If a job is selected, dbt Cloud will surface the artifacts from its most recent successful run. dbt can then use those artifacts to determine the set of new and modified resources. Your job definition can include steps like:
