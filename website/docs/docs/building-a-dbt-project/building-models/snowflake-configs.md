@@ -159,21 +159,6 @@ select
 from {{ source('snowplow', 'event') }}
 group by 1
 ```
-### Automatic clustering
-
-Automatic clustering is a preview feature in Snowflake (at the time of this writing) and as such, some accounts may have it turned on while others may not. You can use the `automatic_clustering` config to control whether or not automatic clustering is enabled for dbt models. When `automatic_clustering` is set to `true`, dbt will run an `alter table <table name> resume recluster` query after building the target table. This configuration is only required for Snowflake accounts which do not have automatic clustering enabled. For more information, consult the [Snowflake documentation on Manual Reclustering](https://docs.snowflake.net/manuals/user-guide/tables-clustering-manual.html#switching-from-manual-reclustering-to-automatic-clustering).
-
-The `automatic_clustering` config can be specified in the `dbt_project.yml` file, or in a model `config()` block.
-
-<File name='dbt_project.yml'>
-
-```yaml
-
-models:
-  automatic_clustering: true
-```
-
-</File>
 
 ## Configuring virtual warehouses
 
