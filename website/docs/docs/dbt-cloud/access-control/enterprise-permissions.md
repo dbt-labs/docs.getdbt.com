@@ -6,7 +6,7 @@ id: "enterprise-permissions"
 :::info Enterprise Feature
 
 This guide describes a feature of the dbt Cloud Enterprise plan.
-If you're interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+If you're interested in learning more about an Enterprise plan, [contact our team](https://www.getdbt.com/contact/).
 
 :::
 
