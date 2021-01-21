@@ -10,68 +10,37 @@ This guide describes a feature of the dbt Cloud Enterprise plan. If you’re int
 
 dbt Cloud supports [OAuth authentication](https://cloud.google.com/bigquery/docs/authentication) with BigQuery. When BigQuery OAuth is enabled, users can interact with the BigQuery warehouse as individual users, rather than leveraging a shared service level authentication. 
 
-### Configuring a security integration
-To enable Snowflake OAuth, you will need to create a [security integration](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html) in Snowflake to manage the OAuth connection between dbt Cloud and Snowflake.
+:::info Some Pre-Work Required
 
-### Create a security integration
-
-In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). You can find a sample `create or replace security integration` query below.
-
-```
-CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD_<PROJECT_NAME>
-  TYPE = OAUTH
-  ENABLED = TRUE
-  OAUTH_CLIENT = CUSTOM
-  OAUTH_CLIENT_TYPE = 'CONFIDENTIAL'
-  OAUTH_REDIRECT_URI = 'https://cloud.getdbt.com/complete/snowflake'
-  OAUTH_ISSUE_REFRESH_TOKENS = TRUE
-  OAUTH_REFRESH_TOKEN_VALIDITY = 7776000;
-```
-
-:::caution Permissions
-
-  Note: Only Snowflake account administrators (users with the `ACCOUNTADMIN` role) or a role with the global `CREATE INTEGRATION` privilege can execute this SQL command.
+Before setting up a Client ID & Secret, you'll have to have your existing BigQuery Settings in order. We recommend using a Service Account JSON file, and have a walkthrough for that [here](https://docs.getdbt.com/tutorial/setting-up/#generate-bigquery-credentials)
 
 :::
 
-| Field | Description |
-| ----- | ----------- |
-| TYPE  | Required |
-| ENABLED  | Required |
-| OAUTH_CLIENT  | Required |
-| OAUTH_CLIENT_TYPE  | Required |
-| OAUTH_REDIRECT_URI  | Required. If dbt Cloud is deployed on-premises, use the domain name of your application instead of `cloud.getdbt.com` |
-| OAUTH_ISSUE_REFRESH_TOKENS  | Required |
-| OAUTH_REFRESH_TOKEN_VALIDITY  | Required. This configuration dictates the number of seconds that a refresh token is valid for. Use a smaller value to force users to re-authenticate with Snowflake more frequently. |
+### Configuring a Client ID & Secret
+To enable BigQuery OAuth, you will need a Client ID & Secret for [authentication](https://cloud.google.com/bigquery/docs/authentication) with BigQuery to manage the OAuth connection between dbt Cloud and BigQuery.
 
-Additional configuration options may be specified for the security integration as needed.
+In the BigQuery console you'll want to navigate to the Credentials page:
 
-### Configure a Connection in dbt Cloud
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_creds_bq_sidebar.png" title="BigQuery Sidebar Menu to Credentials Page" />
 
-The Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
+There you'll see your existing Keys, Client IDs and Service Accounts - you'll want to click the "Create Credentials" button at the top and follow the steps, like this:
 
-```
-select SYSTEM$SHOW_OAUTH_CLIENT_SECRETS('DBT_CLOUD_<PROJECT_NAME>');
-```
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/create_creds_bq_oauth.gif" title="Creating OAuth Credentials in BigQuery" />
 
-This query should return a single variant column containing three fields:
-- `OAUTH_CLIENT_ID`
-- `OAUTH_CLIENT_SECRET`
-- `OAUTH_CLIENT_SECRET_2`
+For the fields we recommend the following:
+- **Application Type:** Web application
+- **Name:** dbt cloud
+- **Authorized JavaScript origins:** Not required, but some organizations may have URIs they'd like to use here
+- **Authorized redirect URIs:** Not required, but some organizations may have URIs they'd like to use here
 
-Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection. Note that the `OAUTH_CLIENT_SECRET_2` field is unused in dbt Cloud configuration.
+Then, click the blue Create button, which will display your Client ID and Client Secret, with handy clipboard buttons for copying into other screens, which is exactly whaty we're about to do. These values will continue to be available in your Credentials screen in perpetuity, *this is not the only chance you have to access them*. 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/1bd0c42-Screen_Shot_2020-03-10_at_6.20.05_PM.png" title="Configuring OAuth credentials in the dbt Cloud UI" />
 
-### Authorize Developer Credentials
+### Configure the Connection in dbt Cloud
 
-Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to dbt Cloud to complete the setup process. At this point, users should now be able to use the dbt IDE with their development credentials.
+Back in dbt Cloud, you'll want to navigate to your Connection page for BigQuery. There you'll be able to click the Edit button in the top corner to enable writing into the OAuth 2.0 Settings boxes near the bottom.
 
-### SSO OAuth Flow Diagram
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/dbt_cloud_bq_cred_edit.png" title="Edit Button in dbt Cloud BQ Connection" />
 
-![image](https://user-images.githubusercontent.com/46451573/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png)
-
-Once a user has authorized dbt Cloud with Snowflake via their identity provider, Snowflake will return a Refresh Token to the dbt Cloud application. dbt Cloud is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the dbt Cloud IDE on behalf of users.
-
-**NOTE**: The lifetime of the refresh token is dictated by the OAUTH_REFRESH_TOKEN_VALIDITY parameter supplied in the “create security integration” statement. When a user’s refresh token expires, the user will need to re-authorize with Snowflake to continue development in dbt Cloud.
+With Editing enabled, you can copy paste the Client ID and the Client Secret you created in BigQuery into their respective boxes, and return to the top of the page, to Save your new OAuth Credentials. 
 

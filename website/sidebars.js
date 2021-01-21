@@ -165,6 +165,7 @@ module.exports = {
             label: "Database Auth",
             items: [
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth"
             ],
         },
         {
