@@ -72,7 +72,7 @@ will remove this restriction, and passwordless private keys will be supported.
 
 ![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
 
-### OAuth
+### Snowflake OAuth
 **Available in:** Development environments, Enterprise plans only
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
@@ -111,3 +111,11 @@ In addition to these fields, there are two other optional fields that can be con
 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>
+
+### BigQuery OAuth
+**Available in:** Development environments, Enterprise plans only
+
+The OAuth auth method permits dbt Cloud to run development queries on behalf of
+a BigQuery user without the configuration of BigQuery password in dbt Cloud. For
+more information on configuring a BigQuery OAuth connection in dbt Cloud, please see
+[the docs on setting up BigQuery OAuth](cloud-setting-up-bigquery-oauth).
