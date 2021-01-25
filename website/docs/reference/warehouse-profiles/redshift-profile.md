@@ -23,7 +23,7 @@ company-name:
       threads: 4
       keepalives_idle: 0 # default 0, indicating the system default
       # search_path: public # optional, not recommended
-      sslmode: [optional, set the sslmode used to connect to the database (points to ~/.postgresql/root.crt)]
+      sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
 ```
 
 </File>
@@ -67,7 +67,7 @@ my-redshift-db:
       threads: 4
       keepalives_idle: 0 # default 0, indicating the system default
       # search_path: public # optional, but not recommended
-      sslmode: [optional, set the sslmode used to connect to the database (points to ~/.postgresql/root.crt)]
+      sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
 
 ```
 
