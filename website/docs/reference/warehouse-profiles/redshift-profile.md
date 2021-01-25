@@ -23,8 +23,7 @@ company-name:
       threads: 4
       keepalives_idle: 0 # default 0, indicating the system default
       # search_path: public # optional, not recommended
-      sslmode: [optional, set the sslmode used to connect to the database]
-      sslrootcert: [optional, This parameter specifies the name of a file containing SSL certificate authority (CA) certificate(s). If the file exists, the server's certificate will be verified to be signed by one of these authorities. The default is ~/.postgresql/root.crt.]
+      sslmode: [optional, set the sslmode used to connect to the database (points to ~/.postgresql/root.crt)]
 ```
 
 </File>
@@ -68,8 +67,8 @@ my-redshift-db:
       threads: 4
       keepalives_idle: 0 # default 0, indicating the system default
       # search_path: public # optional, but not recommended
-      sslmode: [optional, set the sslmode used to connect to the database]
-      sslrootcert: [optional, This parameter specifies the name of a file containing SSL certificate authority (CA) certificate(s). If the file exists, the server's certificate will be verified to be signed by one of these authorities. The default is ~/.postgresql/root.crt.]
+      sslmode: [optional, set the sslmode used to connect to the database (points to ~/.postgresql/root.crt)]
+
 ```
 
 </File>
