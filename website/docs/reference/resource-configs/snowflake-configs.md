@@ -61,7 +61,7 @@ a `query_tag` model config:
 
 <File name='dbt_project.yml'>
 
-```yml
+```yaml
 models:
   [<resource-path>](resource-path):
     +query_tag: dbt_special
@@ -73,7 +73,6 @@ models:
 <File name='models/<modelname>.sql'>
 
 ```sql
-
 {{ config(
     query_tag = 'dbt_special'
 ) }}
@@ -113,7 +112,6 @@ The `cluster_by` config accepts either a string, or a list of strings to use as 
 <File name='models/events/sessions.sql'>
 
 ```sql
-
 {{
   config(
     materialized='table',
@@ -136,7 +134,6 @@ group by 1
 The code above will be compiled to SQL that looks (approximately) like this:
 
 ```sql
-
 create or replace table my_database.my_schema.my_table as (
 
   select * from (
@@ -170,7 +167,6 @@ The `automatic_clustering` config can be specified in the `dbt_project.yml` file
 <File name='dbt_project.yml'>
 
 ```yaml
-
 models:
   +automatic_clustering: true
 ```
@@ -182,6 +178,8 @@ models:
 The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
 
 The following config uses the `EXTRA_SMALL` warehouse for all models in the project, except for the models in the `clickstream` folder, which are configured to use the `EXTRA_LARGE` warehouse. In this example, all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
+
+<File name='dbt_project.yml'>
 
 ```yaml
 name: my_project
@@ -199,14 +197,15 @@ snapshots:
   +snowflake_warehouse: "EXTRA_LARGE"
 ```
 
+</File>
+
 ## Copying grants
 
 When the `copy_grants` config is set to `true`, dbt will add the `copy grants` DDL qualifier when rebuilding tables and views. The default value is `false`.
 
-<File name='dbt_project.ym'>
+<File name='dbt_project.yml'>
 
 ```yaml
-
 models:
   +copy_grants: true
 ```
@@ -222,7 +221,6 @@ The following example configures the models in the `sensitive/` folder to be con
 <File name='dbt_project.yml'>
 
 ```yaml
-
 name: my_project
 version: 1.0.0
 
