@@ -81,7 +81,7 @@ the Redirect URI in the steps above, then skip ahead to step 8.
 
 ### Azure <-> dbt Cloud User and Group mapping 
 
-The Azure users and groups you will create in the following steps are mapped to groups created in dbt Cloud based on the group name. Reference `https://docs.getdbt.com/docs/dbt-cloud/access-control/enterprise-permissions/` for additional information on how users, groups, and permission sets are configured in dbt Cloud.
+The Azure users and groups you will create in the following steps are mapped to groups created in dbt Cloud based on the group name. Reference the docs on [enterprise permissions](enterprise-permissions) for additional information on how users, groups, and permission sets are configured in dbt Cloud.
 
 ### Adding Users to an Enterprise Application
 
