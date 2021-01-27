@@ -35,10 +35,16 @@ docsFiles.keys().forEach(function(key, i) {
 });
 
 function findSource(source_href) {
-    var stripped_source_href = source_href.replace(/.md$/, '')
+    // remove trailing .md if present
+    var stripped_source_href = source_href.replace(/.md$/, '');
+
+    // Remove trailing slash if present
+    stripped_source_href = source_href.replace(/\/$/, '');
+
     if (!stripped_source_href.startsWith('/')) {
         stripped_source_href = '/' + stripped_source_href;
     }
+
     var found = null;
     for (var source in sources) {
         var stripped_source = source.replace(/.md$/, '')
@@ -79,6 +85,7 @@ function expandRelativeLink(href, ignoreInvalid) {
     }
 
     var isExternal = !!link.match(/https?:/) || !!link.match(/:/);
+    var isInternal = !!link.match(/docs.getdbt.com\//);
 
     var sourceLink = findSource(link);
     if (sourceLink) {
@@ -90,6 +97,11 @@ function expandRelativeLink(href, ignoreInvalid) {
         return {
             bad: false,
             link: `${slugs[link].permalink}#${hash}`
+        }
+    } else if (isInternal) {
+        return {
+            bad: true,
+            link: href
         }
     } else if (!isExternal && !href.startsWith('/')) {
         if (ENV.DOCS_ENV == 'build' && !ignoreInvalid) {
