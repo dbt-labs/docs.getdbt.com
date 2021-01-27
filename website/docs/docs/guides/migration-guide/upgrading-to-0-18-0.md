@@ -61,7 +61,7 @@ can override schema test definitions
 **Core**
 - [node selection syntax](node-selection/syntax)
 - [list (ls)](commands/list)
-- [deferring to previous run state](run#deferring-to-previous-run-state)
+- [defer](defer)
 - [adapter.dispatch](adapter#dispatch)
 - [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and [description](description))
 - [flag for colorized logs](run#enable-or-disable-colorized-logs)

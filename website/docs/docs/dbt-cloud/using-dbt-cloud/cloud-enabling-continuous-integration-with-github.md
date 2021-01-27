@@ -30,16 +30,17 @@ When the run is complete, dbt Cloud will update the PR in GitHub with a status m
 This is a preview feature in dbt Cloud that depends on net-new functionality in  dbt v0.18.0. If you would like to enable this feature in your dbt Cloud account, please contact support.
 :::
 
-If a job is selected, dbt Cloud will surface the artifacts from its most recent successful run. dbt can then use those artifacts to determine the set of new and modified resources. Your job definition can include steps like:
+If a job is selected, dbt Cloud will surface the artifacts from its most recent successful run. dbt will then use those artifacts to determine the set of new and modified resources. Your job definition can include steps like:
 
 ```
-dbt seed --select state:modified
-dbt run --models state:modified
-dbt test --models state:modified
+dbt seed --select state:modified+
+dbt run --models state:modified+
+dbt test --models state:modified+
 ```
 
-Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs
-need to be running dbt v0.18.0 or newer.
+Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or newer.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests may select another job from the same project for deferral and comparison"/>
+
+To learn more about state comparison and deferral in dbt, read the docs on [state](understanding-state).

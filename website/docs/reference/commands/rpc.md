@@ -182,11 +182,16 @@ The `kill` method will terminate a running task. You can find a `task_id` for a 
 
 The following methods make it possible to run dbt projects via the RPC server.
 
+### Common parameters
+
+All RPC requests accept the following parameters in addition to the parameters listed:
+- `timeout`: The max amount of time to wait before cancelling the request.
+- `task_tags`: Arbitrary key/value pairs to attach to this task. These tags will be returned in the output of the `poll` and `ps` methods (optional).
+
 ### Running a task with CLI syntax
 
 **Parameters:**
  - `cli`: A dbt command (eg. `run --models abc+ --exclude +def`) to run (required)
- - `task_tags`: Arbitrary key/value pairs to attach to this task. These tags will be returned in the output of the `poll` and `ps` methods (optional).
 
 ```json
 {
@@ -203,12 +208,15 @@ The following methods make it possible to run dbt projects via the RPC server.
 }
 ```
 
-### Compile a project
+Several of the following request types accept these additional parameters:
+- `threads`: The number of [threads](configure-your-profile#understanding-threads) to use when compiling (optional)
+- `models`: The space-delimited set of models to compile, run, or test (optional)
+- `select`: The space-delimeted set of resources to seed or snapshot (optional)
+- `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
+- `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
+- `state`: The filepath of artifacts to use when establishing [state](understanding-state) (optional)
 
-**Parameters:** ([docs](compile))
- - `models`: The space-delimited set of models to include in compilation (optional)
- - `exclude`: The space-delimited set of models to exclude in compilation (optional)
- - `task_tags`: Arbitrary key/value pairs to attach to this task. These tags will be returned in the output of the `poll` and `ps` methods (optional).
+### Compile a project ([docs](compile))
 
 ```json
 {
@@ -216,18 +224,19 @@ The following methods make it possible to run dbt projects via the RPC server.
 	"method": "compile",
 	"id": "<request id>",
 	"params": {
+            "threads": "<int> (optional)",
             "models": "<str> (optional)",
-            "exclude": "<str> (optional)"
+            "exclude": "<str> (optional)",
+            "selector": "<str> (optional)",
+            "state": "<str> (optional)"
         }
 }
 ```
 
-### Run models
+### Run models ([docs](run))
 
-**Parameters:**  ([docs](run))
- - `models`: The space-delimited set of models to include in the run (optional)
- - `exclude`: The space-delimited set of models to exclude in the run (optional)
- - `task_tags`: Arbitrary key/value pairs to attach to this task. These tags will be returned in the output of the `poll` and `ps` methods (optional).
+**Additional parameters:**
+- `defer`: Whether to defer references to upstream, unselected resources (optional, requires `state`)
 
 ```json
 {
@@ -235,20 +244,21 @@ The following methods make it possible to run dbt projects via the RPC server.
 	"method": "run",
 	"id": "<request id>",
 	"params": {
+            "threads": "<int> (optional)",
             "models": "<str> (optional)",
-            "exclude": "<str> (optional)"
+            "exclude": "<str> (optional)",
+            "selector": "<str> (optional)",
+            "state": "<str> (optional)",
+            "defer": "<bool> (optional)"
         }
 }
 ```
 
-### Run tests
+### Run tests ([docs](commands/test))
 
-**Parameters:** ([docs](commands/test))
- - `models`: The space-delimited set of models to include in testing (optional)
- - `exclude`: The space-delimited set of models to exclude from testing (optional)
+**Additional parameters:**
  - `data`: If True, run data tests (optional, default=true)
  - `schema`: If True, run schema tests (optional, default=true)
- - `task_tags`: Arbitrary key/value pairs to attach to this task. These tags will be returned in the output of the `poll` and `ps` methods (optional).
 
 ```json
 {
@@ -256,19 +266,21 @@ The following methods make it possible to run dbt projects via the RPC server.
 	"method": "test",
 	"id": "<request id>",
 	"params": {
+            "threads": "<int> (optional)",
             "models": "<str> (optional)",
             "exclude": "<str> (optional)",
+            "selector": "<str> (optional)",
+            "state": "<str> (optional)",
             "data": "<bool> (optional)",
-            "schema": "<bool> (optional)",
+            "schema": "<bool> (optional)"
         }
 }
 ```
 
-### Run seeds
+### Run seeds ([docs](seed))
 
-**Parameters:** ([docs](seed))
+**Parameters:**
  - `show`: If True, show a sample of the seeded data in the response (optional, default=false)
- - `task_tags`: Arbitrary key/value pairs to attach to this task. These tags will be returned in the output of the `poll` and `ps` methods (optional).
 
 ```json
 {
@@ -276,18 +288,37 @@ The following methods make it possible to run dbt projects via the RPC server.
 	"method": "seed",
 	"id": "<request id>",
 	"params": {
-            "show": "<bool> (optional)"
+            "threads": "<int> (optional)",
+            "select": "<str> (optional)",
+            "exclude": "<str> (optional)",
+            "selector": "<str> (optional)",
+            "show": "<bool> (optional)",
+            "state": "<str> (optional)"
         }
 }
 ```
 
-### Generate docs
+### Run snapshots ([docs](seed))
 
-**Parameters:** ([docs](cmd-docs#dbt-docs-generate))
- - `models`: The space-delimited set of models to compile (optional)
- - `exclude`: The space-delimited set of models to exclude from compilation (optional)
+```json
+{
+	"jsonrpc": "2.0",
+	"method": "snapshot",
+	"id": "<request id>",
+	"params": {
+            "threads": "<int> (optional)",
+            "select": "<str> (optional)",
+            "exclude": "<str> (optional)",
+            "selector": "<str> (optional)",
+            "state": "<str> (optional)"
+        }
+}
+```
+
+### Generate docs ([docs](cmd-docs#dbt-docs-generate))
+
+**Additional parameters:**
  - `compile`: If True, compile the project before generating a catalog (optional, default=false)
- - `task_tags`: Arbitrary key/value pairs to attach to this task. These tags will be returned in the output of the `poll` and `ps` methods (optional).
 
 ```json
 {
@@ -295,12 +326,12 @@ The following methods make it possible to run dbt projects via the RPC server.
 	"method": "docs.generate",
 	"id": "<request id>",
 	"params": {
-            "models": "<str> (optional)",
-            "exclude": "<str> (optional)",
-            "compile": "<bool> (optional)"
+            "compile": "<bool> (optional)",
+            "state": "<str> (optional)"
         }
 }
 ```
+
 ## Compiling and running SQL statements
 
 ### Compiling a query
