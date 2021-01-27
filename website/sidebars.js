@@ -183,31 +183,8 @@ module.exports = {
       label: "dbt Cloud Deployments",
       items: [
         "docs/dbt-cloud/deployments/deployment-overview",
-
-        {
-          type: "category",
-          label: "Hosted",
-          items: [
-            "docs/dbt-cloud/deployments/multi-tenant-deployment",
-            "docs/dbt-cloud/deployments/single-tenant-deployment",
-          ],
-        },
-        {
-          type: "category",
-          label: "Customer Managed",
-          items: [
-            "docs/dbt-cloud/on-premises/index",
-            "docs/dbt-cloud/on-premises/dependencies",
-            "docs/dbt-cloud/on-premises/prerequisites",
-            "docs/dbt-cloud/on-premises/system-requirements",
-            "docs/dbt-cloud/on-premises/installation",
-            "docs/dbt-cloud/on-premises/setup",
-            "docs/dbt-cloud/on-premises/usage-statistics",
-            "docs/dbt-cloud/on-premises/upgrading-kots",
-            "docs/dbt-cloud/deployments/airgapped-deployment",
-            "docs/dbt-cloud/on-premises/faqs",
-          ],
-        },
+        "docs/dbt-cloud/deployments/multi-tenant-deployment",
+        "docs/dbt-cloud/deployments/single-tenant-deployment",
         "docs/dbt-cloud/deployments/deployment-architecture",
       ],
     },
