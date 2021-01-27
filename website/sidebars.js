@@ -5,7 +5,7 @@ module.exports = {
       label: "Introduction",
       items: [
         "docs/introduction",
-        "docs/supported-databases",
+        "docs/available-adapters",
       ],
     },
     {
@@ -23,7 +23,7 @@ module.exports = {
             "docs/building-a-dbt-project/building-models/configuring-incremental-models",
             "docs/building-a-dbt-project/building-models/using-custom-aliases",
             "docs/building-a-dbt-project/building-models/using-custom-schemas",
-            "docs/building-a-dbt-project/building-models/using-custom-database",
+            "docs/building-a-dbt-project/building-models/using-custom-databases",
             "docs/building-a-dbt-project/building-models/using-variables",
           ],
         },
@@ -57,6 +57,7 @@ module.exports = {
       label: "Guides",
       items: [
         "docs/guides/debugging-errors",
+        "docs/guides/debugging-schema-names",
         "docs/guides/navigating-the-docs",
         "docs/guides/getting-help",
         "docs/guides/best-practices",
@@ -184,31 +185,8 @@ module.exports = {
       label: "dbt Cloud Deployments",
       items: [
         "docs/dbt-cloud/deployments/deployment-overview",
-
-        {
-          type: "category",
-          label: "Hosted",
-          items: [
-            "docs/dbt-cloud/deployments/multi-tenant-deployment",
-            "docs/dbt-cloud/deployments/single-tenant-deployment",
-          ],
-        },
-        {
-          type: "category",
-          label: "Customer Managed",
-          items: [
-            "docs/dbt-cloud/on-premises/index",
-            "docs/dbt-cloud/on-premises/dependencies",
-            "docs/dbt-cloud/on-premises/prerequisites",
-            "docs/dbt-cloud/on-premises/system-requirements",
-            "docs/dbt-cloud/on-premises/installation",
-            "docs/dbt-cloud/on-premises/setup",
-            "docs/dbt-cloud/on-premises/usage-statistics",
-            "docs/dbt-cloud/on-premises/upgrading-kots",
-            "docs/dbt-cloud/deployments/airgapped-deployment",
-            "docs/dbt-cloud/on-premises/faqs",
-          ],
-        },
+        "docs/dbt-cloud/deployments/multi-tenant-deployment",
+        "docs/dbt-cloud/deployments/single-tenant-deployment",
         "docs/dbt-cloud/deployments/deployment-architecture",
       ],
     },

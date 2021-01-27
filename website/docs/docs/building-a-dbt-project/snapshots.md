@@ -15,20 +15,20 @@ Commonly, analysts need to "look back in time" at some previous state of data in
 
 Snapshots implement [type-2 Slowly Changing Dimensions](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) over mutable source tables. These Slowly Changing Dimensions (or SCDs) identify how a row in a table changes over time. Imagine you have an `orders` table where the `status` field can be overwritten as the order is processed.
 
-| order_id | status | updated_at |
-| -------- | ------ | ---------- |
+| id | status | updated_at |
+| -- | ------ | ---------- |
 | 1 | pending | 2019-01-01 |
 
 Now, imagine that the order goes from "pending" to "shipped". That same record will now look like:
 
-| order_id | status | updated_at |
-| -------- | ------ | ---------- |
+| id | status | updated_at |
+| -- | ------ | ---------- |
 | 1 | shipped | 2019-01-02 |
 
 This order is now in the "shipped" state, but we've lost the information about when the order was last in the "pending" state. This makes it difficult (or impossible) to analyze how long it took for an order to ship. dbt can "snapshot" these changes to help you understand how values in a row change over time. Here's an example of a snapshot table for the previous example:
 
-| order_id | status | updated_at | dbt_valid_from | dbt_valid_to |
-| -------- | ------ | ---------- | -------------- | ------------ |
+| id | status | updated_at | dbt_valid_from | dbt_valid_to |
+| -- | ------ | ---------- | -------------- | ------------ |
 | 1 | pending | 2019-01-01 | 2019-01-01 | 2019-01-02 |
 | 1 | shipped | 2019-01-02 | 2019-01-02 | `null` |
 
@@ -278,7 +278,7 @@ There are a number of snapshot-specific configurations:
 | [target_database](target_database) | The database that dbt should render the snapshot table into | No | analytics |
 | [target_schema](target_schema) | The schema that dbt should render the snapshot table into | Yes | snapshots |
 | [strategy](strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
-| [unique_key](unique_key) | A primary key column or expression for the record | Yes | order_id |
+| [unique_key](unique_key) | A primary key column or expression for the record | Yes | id |
 | [check_cols](check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
 | [updated_at](updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
@@ -338,28 +338,28 @@ For the `timestamp` strategy, the configured `updated_at` column is used to popu
 
 Snapshot query results at `2019-01-01 11:00`:
 
-| order_id | status  | updated_at       |
-| -------- | ------- | ---------------- |
+| id | status  | updated_at       |
+| -- | ------- | ---------------- |
 | 1        | pending | 2019-01-01 10:47 |
 
 Snapshot results (note that `11:00` is not used anywhere):
 
-| order_id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
-| -------- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| -- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
 | 1        | pending | 2019-01-01 10:47 | 2019-01-01 10:47 |                  | 2019-01-01 10:47 |
 
 Query results at `2019-01-01 11:30`:
 
-| order_id | status  | updated_at       |
-| -------- | ------- | ---------------- |
-| 1        | shipped | 2019-01-01 11:05 |
+| id | status  | updated_at       |
+| -- | ------- | ---------------- |
+| 1  | shipped | 2019-01-01 11:05 |
 
 Snapshot results (note that `11:30` is not used anywhere):
 
-| order_id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
-| -------- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1        | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 11:05 |
-| 1        | shipped | 2019-01-01 10:47 | 2019-01-01 11:05 |                  | 2019-01-01 11:05 |
+| id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| -- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| 1  | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 11:05 |
+| 1  | shipped | 2019-01-01 10:47 | 2019-01-01 11:05 |                  | 2019-01-01 11:05 |
 
 </details>
 
@@ -371,28 +371,28 @@ For the `check` strategy, the current timestamp is used to populate each column
 
 Snapshot query results at `2019-01-01 11:00`:
 
-| order_id | status  |
-| -------- | ------- |
-| 1        | pending |
+| id | status  |
+| -- | ------- |
+| 1  | pending |
 
 Snapshot results:
 
-| order_id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
-| -------- | ------- | ---------------- | ---------------- | ---------------- |
-| 1        | pending | 2019-01-01 11:00 |                  | 2019-01-01 11:00 |
+| id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| -- | ------- | ---------------- | ---------------- | ---------------- |
+| 1  | pending | 2019-01-01 11:00 |                  | 2019-01-01 11:00 |
 
 Query results at `2019-01-01 11:30`:
 
-| order_id | status  |
-| -------- | ------- |
-| 1        | shipped |
+| id | status  |
+| -- | ------- |
+| 1  | shipped |
 
 Snapshot results:
 
-| order_id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
-| -------- | ------- | ---------------- | ---------------- | ---------------- |
-| 1        | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:30 |
-| 1        | pending | 2019-01-01 11:30 |                  | 2019-01-01 11:30 |
+| id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
+| --- | ------- | ---------------- | ---------------- | ---------------- |
+| 1   | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:30 |
+| 1   | pending | 2019-01-01 11:30 |                  | 2019-01-01 11:30 |
 
 </details>
 

@@ -3,7 +3,11 @@ title: "Overview"
 id: "cloud-overview"
 ---
 
-[dbt Cloud](https://www.getdbt.com/signup/) is a hosted service that helps data analysts and engineers productionize dbt deployments. It comes equipped with turnkey support for scheduling jobs, CI/CD, serving documentation, monitoring & alerting, and an Integrated Developer Environment (IDE). dbt Cloud’s generous Developer (free) plan and deep integration with dbt Core make it well suited for data teams small and large alike.  
+[dbt Cloud](https://www.getdbt.com/product/) is a hosted service that helps data analysts and engineers productionize dbt deployments. It comes equipped with turnkey support for scheduling jobs, CI/CD, serving documentation, monitoring & alerting, and an Integrated Developer Environment (IDE).
+
+dbt Cloud’s generous Developer (free) plan and deep integration with dbt Core make it well suited for data teams small and large alike.  
+
+[Get started with dbt Cloud](https://www.getdbt.com/signup/)
 
 
 ### Develop dbt projects
@@ -20,7 +24,7 @@ Set up custom schedules to run your production dbt jobs. dbt Cloud's comprehensi
 
 ### Democratize access to logs
 
-dbt Cloud makes it easy to view in-progress and historical logs for your dbt runs. From Cloud's web interface, you can view and download the run logs for your dbt invocations. If you're happy ssh'ing into a cron server and running `tail -f` on a logifle, then this feature is *not* for you!
+dbt Cloud makes it easy to view in-progress and historical logs for your dbt runs. From Cloud's web interface, you can view and download the run logs for your dbt invocations. If you're happy ssh'ing into a cron server and running `tail -f` on a logfile, then this feature is *not* for you!
 
 <Lightbox src="/img/docs/dbt-cloud/c3fe800-Screen_Shot_2019-02-08_at_6.53.29_PM.png" title="Viewing logs for a dbt run"/>
 

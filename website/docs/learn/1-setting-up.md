@@ -82,7 +82,7 @@ select * from final
 ```
 
 ## Connect to Snowflake
-For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](/docs/supported-databases).
+For dbt Learn, we've created a Snowflake account that you will be added to, but dbt works with [many data warehouses](available-adapters).
 
 1. Go to the Snowflake Console (link provided in email) and login with your supplied credentials.
 2. Reset your password: all students will be asked to update their password — please use a password manager to store this securely.

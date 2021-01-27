@@ -234,7 +234,7 @@ Creates a schema (or equivalent) in the target database. If the target schema al
 
 ```sql
 
-{% do adapter.create_schema(api.Relation.create(database=target.database, schema="my_schema"))) %}
+{% do adapter.create_schema(api.Relation.create(database=target.database, schema="my_schema")) %}
 ```
 
 </File>

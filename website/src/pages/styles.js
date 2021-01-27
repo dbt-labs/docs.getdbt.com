@@ -142,7 +142,7 @@ Links to pages can be specified using:
 <br/>
 Bad links will appear with red underlines when building locally, and will cause an error in a deploy preview.
 <br/>
-<pre>{`[link to unique id](supported-databases)
+<pre>{`[link to unique id](available-adapters)
 [disambiguated link to duplicate id](dbt-cli/installation)
 [second disambiguated link to duplicate id](on-premises/installation)
 [file paths work too](dbt-cli/installation.md)
@@ -150,7 +150,7 @@ Bad links will appear with red underlines when building locally, and will cause 
 [a bad link](bad-link)
 `}</pre>
 
-                <Link href="supported-databases">link to unique id</Link>
+                <Link href="available-adapters">link to unique id</Link>
                 <br />
                 <Link href="dbt-cli/installation">disambiguated link to duplicate id</Link>
                 <br />

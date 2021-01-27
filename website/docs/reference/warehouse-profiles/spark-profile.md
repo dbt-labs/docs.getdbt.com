@@ -1,5 +1,6 @@
 ---
-title: "Spark Profile"
+title: "Apache Spark Profile"
+id: "spark-profile"
 ---
 
 :::info Community plugin
@@ -117,7 +118,8 @@ and dbt will periodically retry the connection.
 
 ## Installation and Distribution
 
-dbt's Spark adapter is managed in its own repository, [dbt-spark](https://github.com/fishtown-analytics/dbt-spark). To use the Spark adapter, you must install the `dbt-spark` plugin.
+dbt's adapter for Apache Spark and Databricks is managed in its own repository, [dbt-spark](https://github.com/fishtown-analytics/dbt-spark). To use it, 
+you must install the `dbt-spark` plugin.
 
 ### Using pip
 The following commands will install the latest version of `dbt-spark` as well as the requisite version of `dbt-core`.
@@ -137,7 +139,7 @@ $ pip install "dbt-spark[PyHive]"
 ## Caveats
 
 ### Usage with EMR
-To connect to Spark running on an Amazon EMR cluster, you will need to run `sudo /usr/lib/spark/sbin/start-thriftserver.sh` on the master node of the cluster to start the Thrift server (see [the docs](https://aws.amazon.com/premiumsupport/knowledge-center/jdbc-connection-emr/) for more information). You will also need to connect to port 10001, which will connect to the Spark backend Thrift server; port 10000 will instead connect to a Hive backend, which will not work correctly with dbt.
+To connect to Apache Spark running on an Amazon EMR cluster, you will need to run `sudo /usr/lib/spark/sbin/start-thriftserver.sh` on the master node of the cluster to start the Thrift server (see [the docs](https://aws.amazon.com/premiumsupport/knowledge-center/jdbc-connection-emr/) for more information). You will also need to connect to port 10001, which will connect to the Spark backend Thrift server; port 10000 will instead connect to a Hive backend, which will not work correctly with dbt.
 
 ### Supported Functionality
 
@@ -145,7 +147,7 @@ Most dbt Core functionality is supported, but some features are only available
 on Delta Lake (Databricks).
 
 Delta-only features:
-1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](https://docs.getdbt.com/reference/resource-configs/spark-configs/#the-merge-strategy))
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
 2. [Snapshots](snapshots)
 
 Some dbt features, available on the core adapters, are not yet supported on Spark:

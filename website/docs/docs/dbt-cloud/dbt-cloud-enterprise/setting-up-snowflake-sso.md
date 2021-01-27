@@ -79,3 +79,9 @@ Once a user has authorized dbt Cloud with Snowflake via their identity provider,
 ### Setting up multiple dbt Cloud projects with Snowflake 0Auth
 If you are planning to set up the same Snowflake account to different dbt Cloud projects, you can use the same security integration for all of the projects. 
 
+### Troubleshooting
+
+#### Invalid consent request
+When clicking on the `Connect Snowflake Account` successfully redirects you to the Snowflake login page, but you receive an `Invalid consent request` error, your Snowflake user may not have access to the Snowflake role defined on the development credentials in dbt Cloud. Double-check that you have access to that role and if the role name has been correctly entered in as Snowflake is case sensitive. 
+
+

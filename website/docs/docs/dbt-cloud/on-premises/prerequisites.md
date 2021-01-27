@@ -87,10 +87,6 @@ We recommend using NFS.
 
 ## Optional
 
-### Auth0 (included in License)
-
-dbt Cloud uses Auth0 to provide SSO integration with a variety of platforms. If you opt to use a SSO provider such as Okta, your license file will include a set of credentials specific to your installation to enable the Auth0 integration.
-
 ### Email over SMTP
 
 dbt Cloud has the ability to send emails over SMTP. The emails that dbt Cloud can send include:
@@ -140,8 +136,8 @@ During dbt Cloud setup, the installer will need to provide credentials for this 
 
 They will need the following:
 
-- the base URL of your Github enterprise installation, e.g. github.mycompany.com
-- the scheme-included API URL of your Github enterprise installation. Usually https://github.mycompany.com/api/v3
+- the base URL of your Github enterprise installation, e.g. github.mycompany.com or github.com (if you're a cloud-hosted)
+- the scheme-included API URL of your Github enterprise installation. Usually https://github.mycompany.com/api/v3 or https://api.github.com (if you're cloud-hosted)
 - the App ID, Client ID, and Client Secret from the "About" page of the newly created Github app
 - the Configuration URL for your Github app: right click "Install app" on the "About" page, click "Copy Link Location" to get the Configuration URL
 - the Install URL: right click "Public page" on the "About" page, click "Copy Link Location," and paste in the value here.

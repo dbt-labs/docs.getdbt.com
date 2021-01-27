@@ -78,6 +78,6 @@ can override schema test definitions
 - automatic SSO [session caching](snowflake-configs#sso-authentication) support
 
 **BigQuery**
-- [`impersonate_service_account`](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
+- [`impersonate_service_account`](bigquery-profile#service-account-impersonation)
 - [`policy_tags`](bigquery-configs#policy-tags)
 - [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)

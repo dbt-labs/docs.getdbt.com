@@ -41,7 +41,7 @@ version: 2
 models:
   - name: orders
     columns:
-      - name: unique_id
+      - name: surrogate_key
         tests:
           - unique
 

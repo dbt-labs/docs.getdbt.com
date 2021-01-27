@@ -4,6 +4,72 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.18 (January 20, 2021)
+
+Most notable things here are around foundational work toward future feature releases, as well as strong assurances of future stability for dbt Cloud, and ensuring future sales tax compliance (which we understand turns out to be quite important!) - turns out to be a quite future-looking release!
+
+#### Enhancements
+
+- Add service tokens UI (stubbed) behind a feature flag
+- Fixing and Upgrading social-auth
+- Add dbt Spark 0.19.0rc1
+- Adds the reconciliation of persisted file content and tab state when navigating into the IDE
+- Adds the reconciliation of persisted file content and tab state between IDE sessions
+- Read logs from scribe and stop logging to db
+- Upgrade social auth 3.3.3
+- Add warning logs for social auth failures
+- Add dbt 0.19.0rc1
+
+#### Fixed
+
+- Prevent social-auth from updating first or last name
+- Page through Stripe results when listing subscriptions
+- Prevent enqueueing runs in deleted projects
+- Fix IDE git actions causing open tab contents to be lost on IDE re-entry
+- Add DBT_CLOUD_CONTEXT environment variable
+- Add logic to hide IP whitelist message for on-prem customers
+- fix 0.19.0rc1 run image dependencies
+
+#### Internal
+
+- Remove Mailchimp integration
+- Use the generic get_handle method in the run service
+- Clean up scribe services when finished jobs are cleaned up
+- Downgrade social auth
+- Adds an (albeit) scrappy django command to verify the content of scribe logs vs cloud
+- Adjust existing customer taxation backfill method
+
+## dbt Cloud v1.1.17 (January 7, 2021)
+
+Tidying up this and that as we settle into 2021. No new user-facing functionality. Hope everyone had a safe and cozy New Year!
+
+#### Internal
+
+- Fix Stripe event syncer
+- Take down the wreath
+- Sweep up the confetti
+- Backfill all Avalara metadata
+- Bump psycopg2
+- Fix Circle jobs
+- Fix duplicated Circle jobs
+- Migrate to Python 3.8
+- Check the Scribe image version before each scheduler loop
+
+## dbt Cloud v1.1.16 (December 23, 2020)
+
+This release adds preview support for Databricks Spark in dbt Cloud
+and adds two new permission sets for Enterprise acccounts.
+
+#### Enhancements
+
+- Added preview support for Databricks Spark support
+- Added two new Enterprise permission sets: Account Viewer and Project Creator
+
+#### Fixed
+
+- Improve logging infrastructure for dbt run logs
+- Fix for SSH tunnel logging errors
+
 ## dbt Cloud v1.1.15 (December 10, 2020)
 
 Lots of great stuff to confer about this go-round: things really coalesced this week! Lots of excitement around adding Spark to the connection family, as well as knocking out some longstanding bugs. 
