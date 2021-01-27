@@ -39,7 +39,7 @@ function findSource(source_href) {
     var stripped_source_href = source_href.replace(/.md$/, '');
 
     // Remove trailing slash if present
-    stripped_source_href = source_href.replace(/\/$/, '');
+    stripped_source_href = stripped_source_href.replace(/\/$/, '');
 
     if (!stripped_source_href.startsWith('/')) {
         stripped_source_href = '/' + stripped_source_href;
