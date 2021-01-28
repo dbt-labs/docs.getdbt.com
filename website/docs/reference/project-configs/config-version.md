@@ -20,4 +20,4 @@ Specify your `dbt_project.yml` as using the v2 structure.
 </Changelog>
 
 ## Default
-Without this configuration, dbt will assume your `dbt_project.yml` uses the version 1 syntax, which will be deprecated in a future release.
+Without this configuration, dbt will assume your `dbt_project.yml` uses the version 1 syntax, which was deprecated in dbt v0.19.0.
