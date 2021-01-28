@@ -20,6 +20,10 @@ Please be aware of the following changes in v0.19.0:
 
 See the docs below for more details. We don't expect these to require action in most projects.
 
+#### Deprecations
+
+Removed support for `config-version: 1` of dbt_project.yml, which was deprecated in v0.17.0. Use `config-version: 2` in all projects and installed packages. Otherwise, dbt will raise an error. See docs on [config-version](config-version) and the [v0.17.0 Migration Guide](upgrading-to-0-17-0) for details.
+
 ### For dbt plugin maintainers
 
 (You know who you are!)
