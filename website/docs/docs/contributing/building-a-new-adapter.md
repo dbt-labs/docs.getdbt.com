@@ -15,7 +15,7 @@ This guide will walk you through the first two steps, and provide some resources
 
 ## Scaffolding a new adapter
 
-dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/core/scripts/create_adapter_plugins.py) directory.
+dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/releases/0.19.0/core/scripts/create_adapter_plugins.py) directory.
 
 Example usage:
 
