@@ -321,7 +321,7 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 
 ## Snapshot meta-fields
 
-Snapshot tables will be created as a clone of your source dataset, plus some additional meta-fields.
+Snapshot tables will be created as a clone of your source dataset, plus some additional meta-fields*.
 
 | Field          | Meaning | Usage |
 | -------------- | ------- | ----- |
@@ -330,7 +330,7 @@ Snapshot tables will be created as a clone of your source dataset, plus some add
 | dbt_scd_id     | A unique key generated for each snapshotted record. | This is used internally by dbt |
 | dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
 
-The timestamps used for each column are subtly different depending on the strategy you use:
+*The timestamps used for each column are subtly different depending on the strategy you use:
 
 For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
 
