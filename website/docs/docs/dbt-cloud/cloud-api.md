@@ -6,8 +6,7 @@ id: "cloud-api"
 ### Overview
 
 If you are on the `Team` or `Enterprise` dbt Cloud plan, you will have access to the 
-dbt Cloud API token. If you're interested in learning more about an Enterprise plan, 
-contact us at sales@getdbt.com.
+dbt Cloud API.
 
 Common uses for our API would be:
 
@@ -29,7 +28,7 @@ To enable this for your account, you will need to contact Support via Intercom
 or support@getdbt.com. Once it is enabled, you can create these tokens by going to 
 Account Settings > Service Tokens.
 
-<LoomVideo id="e0364c53c7ef44d09cfba2db754c2479" />
+<LoomVideo id="/55eb660a52bf4417b1274c6a55796cda" />
 
 
 
