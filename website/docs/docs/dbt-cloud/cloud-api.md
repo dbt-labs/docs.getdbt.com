@@ -14,7 +14,7 @@ Common uses for our API would be:
 - Kicking off a job run 
 - Creating/modifying/deleting objects in dbt Cloud 
 
-Our API endpoints can be found [here](dbt-cloud/api/).
+Our API endpoints can be found [here](/dbt-cloud/api).
 
 ### How to Access the API 
 
