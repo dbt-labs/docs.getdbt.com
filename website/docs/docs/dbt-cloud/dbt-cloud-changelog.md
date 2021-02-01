@@ -4,6 +4,30 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.19 (February 3, 2021)
+
+TODO - Add release summary and curate below notes
+
+#### Enhancements
+
+- add dbt 0.19.0
+- Allow service tokens to create connections
+- Add integration for service token UI and API
+- Authorize requests that supply a service token
+
+#### Fixed
+
+- Add logic to show the entered service token name prior to the request completing
+- Fixed endlessly running rpc queries with non working cancel button on ide refresh
+
+#### Internal
+
+- Add filters to scribe verification script
+- Set dd_agent_host host for run and develop pods.
+- Reduce dbt version constraint to use codex
+- Generate service tokens
+- Add API endpoints for service tokens
+
 ## dbt Cloud v1.1.18 (January 20, 2021)
 
 Most notable things here are around foundational work toward future feature releases, as well as strong assurances of future stability for dbt Cloud, and ensuring future sales tax compliance (which we understand turns out to be quite important!) - turns out to be a quite future-looking release!
