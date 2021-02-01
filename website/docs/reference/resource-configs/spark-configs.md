@@ -1,5 +1,5 @@
 ---
-title: "Spark configurations"
+title: "Apache Spark configurations"
 id: "spark-configs"
 ---
 
@@ -13,8 +13,7 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
-
-## Configuring Spark tables
+## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs:
 
@@ -26,7 +25,7 @@ When materializing a model as `table`, you may include several optional configs:
 | clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns. | Optional               | `country_code`              |
 | buckets  | The number of buckets to create while clustering | Required if `clustered_by` is specified                | `8`              |
 
-## Incremental Models
+## Incremental models
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models, and it can be set to one of two values:
  - `insert_overwrite` (default)
@@ -231,3 +230,27 @@ use or set `database` as a node config or in the target profile when running dbt
 
 If you want to control the schema/database in which dbt will materialize models,
 use the `schema` config and `generate_schema_name` macro _only_.
+
+## Databricks configurations
+
+To access features exclusive to Databricks runtimes, such as 
+[snapshots](snapshots) and the `merge` incremental strategy, you will want to
+use the Delta file format when materializing models as tables.
+
+It's quite convenient to do this by setting a top-level configuration in your
+project file:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  +file_format: delta
+  
+seeds:
+  +file_format: delta
+  
+snapshots:
+  +file_format: delta
+```
+
+</File>

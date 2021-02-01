@@ -20,7 +20,6 @@ and `snapshots:` keys in the `dbt_project.yml` file.
 - [vars](var) (_Note: only variables defined with `--vars` are availabe_)
 - [builtins](builtins)
 - [dbt_version](dbt_version)
-- [project_name](project_name)
 
 
 ### Example configuration

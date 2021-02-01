@@ -233,6 +233,42 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 </File>
 
+
+### Hard deletes (opt-in)
+
+<Changelog>New in v0.19.0</Changelog>
+
+Rows that are deleted from the source query are not invalidated by default. With the config option `invalidate_hard_deletes`, dbt can track rows that no longer exist. This is done by left joining the snapshot table with the source table, and filtering the rows that are still valid at that point, but no longer can be found in the source table. `dbt_valid_to` will be set to the current snapshot time.
+
+This configuration is not a different strategy as described above, but is an additional opt-in feature. It is not enabled by default since it alters the previous behavior.
+
+For this configuration to work, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
+
+**Example Usage**
+
+<File name='snapshots/hard_delete_example.sql'>
+
+```sql
+{% snapshot orders_snapshot_hard_delete %}
+
+    {{
+        config(
+          target_schema='snapshots',
+          strategy='timestamp',
+          unique_key='id',
+          updated_at='updated_at',
+          invalidate_hard_deletes=True,
+        )
+    }}
+
+    select * from {{ source('jaffle_shop', 'orders') }}
+
+{% endsnapshot %}
+```
+
+</File>
+
+
 ## Configuring snapshots
 ### Snapshot configurations
 There are a number of snapshot-specific configurations:
@@ -245,6 +281,7 @@ There are a number of snapshot-specific configurations:
 | [unique_key](unique_key) | A primary key column or expression for the record | Yes | id |
 | [check_cols](check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
 | [updated_at](updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
+| [invalidate_hard_deletes](invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
 
 A number of other configurations are also supported (e.g. `tags` and `post-hook`), check out the full list [here](snapshot-configs).
 
@@ -362,7 +399,6 @@ Snapshot results:
 
 ## FAQs
 <FAQ src="run-one-snapshot" />
-<FAQ src="snapshot-hard-deletes" />
 <FAQ src="snapshot-frequency" />
 <FAQ src="snapshot-schema-changes" />
 <FAQ src="snapshot-hooks" />

@@ -24,18 +24,29 @@ statement(name=None, fetch_result=False, auto_begin=True)
 ```
 
 __Args__:
-  - name (string): The name for the result set returned by this statement
- - fetch_result (bool): If True, load the results of the statement into the Jinja context
- - auto_begin (bool): If True, open a transaction if one does not exist. If false, do not open a transaction.
+ - `name` (string): The name for the result set returned by this statement
+ - `fetch_result` (bool): If True, load the results of the statement into the Jinja context
+ - `auto_begin` (bool): If True, open a transaction if one does not exist. If false, do not open a transaction.
 
-Once the statement block has executed, the result set is accessible via the `load_result` function. For the above statement, that would look like:
+Once the statement block has executed, the result set is accessible via the `load_result` function. The result object includes three keys:
+- `response`: Structured object containing metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Comparable to `adapter_response` in the [Result object](dbt-classes#result-objects).
+- `data`: Pythonic representation of data returned by query (arrays, tuples, dictionaries).
+- `table`: [Agate](https://agate.readthedocs.io/en/1.1.0/api/table.html) table representation of data returned by query.
+
+<Changelog>
+
+* `v0.19.0`: The `response` structured object replaced a `status` string that contained similar information.
+
+</Changelog>
+
+For the above statement, that could look like:
 
 <File name='load_states.sql'>
 
 ```sql
 {%- set states = load_result('states') -%}
 {%- set states_data = states['data'] -%}
-{%- set states_status = states['status'] -%}
+{%- set states_status = states['response'] -%}
 ```
 
 </File>

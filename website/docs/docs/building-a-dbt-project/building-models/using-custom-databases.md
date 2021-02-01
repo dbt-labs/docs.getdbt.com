@@ -1,6 +1,5 @@
 ---
-title: "Using databases"
-id: "using-custom-database"
+title: "Using custom databases"
 ---
 
 

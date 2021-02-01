@@ -61,7 +61,7 @@ can override schema test definitions
 **Core**
 - [node selection syntax](node-selection/syntax)
 - [list (ls)](commands/list)
-- [deferring to previous run state](run#deferring-to-previous-run-state)
+- [defer](defer)
 - [adapter.dispatch](adapter#dispatch)
 - [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and [description](description))
 - [flag for colorized logs](run#enable-or-disable-colorized-logs)
@@ -78,6 +78,6 @@ can override schema test definitions
 - automatic SSO [session caching](snowflake-configs#sso-authentication) support
 
 **BigQuery**
-- [`impersonate_service_account`](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile#service-account-impersonation)
+- [`impersonate_service_account`](bigquery-profile#service-account-impersonation)
 - [`policy_tags`](bigquery-configs#policy-tags)
 - [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)

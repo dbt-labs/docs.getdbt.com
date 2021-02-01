@@ -6,8 +6,8 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 
 | command   | argument(s)                                       |
 | :-------- | ------------------------------------------------- |
-| run       | `--models`, `--exclude`, `--selector`             |
-| test      | `--models`, `--exclude`, `--selector`             |
+| run       | `--models`, `--exclude`, `--selector`, `--defer`  |
+| test      | `--models`, `--exclude`, `--selector`, `--defer`  |
 | seed      | `--select`, `--exclude`, `--selector`             |
 | snapshot  | `--select`, `--exclude`  `--selector`             |
 | ls (list) | `--select`, `--models`, `--exclude`, `--selector` |

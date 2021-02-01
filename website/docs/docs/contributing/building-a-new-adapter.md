@@ -15,7 +15,7 @@ This guide will walk you through the first two steps, and provide some resources
 
 ## Scaffolding a new adapter
 
-dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/core/scripts/create_adapter_plugins.py) directory.
+dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/releases/0.19.0/core/scripts/create_adapter_plugins.py) directory.
 
 Example usage:
 
@@ -252,11 +252,9 @@ The following macros must be implemented, but you can override their behavior fo
 - `rename_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L215))
 - `truncate_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L205))
 
-### Adapter macros
+### Adapter dispatch
 
 Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create table") in a database-specific way.
-
-To define an "adapter macro", use the `adapter_macro` function as shown [here](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L67).
 
 <File name='adapters.sql'>
 
@@ -266,7 +264,9 @@ To define an "adapter macro", use the `adapter_macro` function as shown [here](h
 {% macro create_table_as(temporary, relation, sql) -%}
 
   {# dbt will dispatch the macro call to the relevant macro #}
-  {{ adapter_macro('create_table_as', temporary, relation, sql) }}
+  {{ return(
+      adapter.dispatch('create_table_as')(temporary, relation, sql)
+     ) }}
 {%- endmacro %}
 
 
@@ -293,6 +293,10 @@ To define an "adapter macro", use the `adapter_macro` function as shown [here](h
 
 </File>
 
+The `adapter.dispatch()` macro takes a second argument, `packages`, which represents a set of "search namespaces" in which to find potential implementations of a dispatched macro. This allows users of community-supported adapters to extend or "shim" dispatched macros from common packages, such as `dbt-utils`, with adapter-specific versions in their own project or other installed packages. See:
+- "Shim" package examples: [`spark-utils`](https://github.com/fishtown-analytics/spark-utils), [`tsql-utils`](https://github.com/dbt-msft/tsql-utils)
+- [`adapter.dispatch` docs](adapter#dispatch)
+
 ### Overriding adapter methods
 
 While much of dbt's adapter-specific functionality can be modified in adapter macros, it can also make sense to override adapter methods directly. In this example, assume that a database does not support a `cascade` parameter to `drop schema`. Instead, we can implement an approximation where we drop each relation and then drop the schema.
@@ -315,3 +319,10 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 ### Testing your new adapter
 
 You can use a pre-configured [dbt adapter test suite](https://github.com/fishtown-analytics/dbt-adapter-tests) to test that your new adapter works. These tests include much of dbt's basic functionality, with the option to override or disable functionality that may not be supported on your adapter.
+
+### Documenting your new adapter
+
+Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
+- Hosting on a public git provider (e.g. GitHub, GitLab)
+- Publishing to [PyPi](https://pypi.org/)
+- Adding to the list of ["Available Adapters"](available-adapters#community-plugins)

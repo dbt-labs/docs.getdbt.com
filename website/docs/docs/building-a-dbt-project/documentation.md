@@ -73,6 +73,7 @@ Then, run `dbt docs serve` to use these `.json` files to populate a local websit
 <FAQ src="long-descriptions" />
 <FAQ src="sharing-documentation" />
 <FAQ src="document-other-resources" />
+<FAQ src="docs-for-multiple-projects" />
 
 
 ## Using Docs Blocks
