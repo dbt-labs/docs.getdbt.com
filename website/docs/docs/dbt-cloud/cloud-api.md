@@ -14,7 +14,7 @@ The dbt Cloud API can be used to:
 - Kick off a job run from an orchestration tool
 - Manage your dbt Cloud account
 
-Our API endpoints can be found [here](/dbt-cloud/api).
+Full documentation for the dbt Cloud API can be found [here](/dbt-cloud/api).
 
 ### How to Access the API 
 
@@ -29,7 +29,6 @@ or support@getdbt.com. Once it is enabled, you can create these tokens by going 
 Account Settings > Service Tokens.
 
 <LoomVideo id="/55eb660a52bf4417b1274c6a55796cda" />
-
 
 
 
