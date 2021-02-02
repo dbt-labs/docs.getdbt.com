@@ -104,7 +104,7 @@ Once credentials are configured, you'll need to implement some connection-orient
 
 **Methods to implement:**
 - open
-- get_status
+- get_response
 - cancel
 - exception_handler
 
@@ -153,15 +153,15 @@ For example:
 
 </File>
 
-#### get_status(cls, cursor)
+#### get_response(cls, cursor)
 
-get_status is a classmethod that gets a cursor object and returns the status of the last executed command. The return value is one of the values returned from `execute()` and is logged. You can just return 'OK' or similar if your database does not provide status.
+get_response is a classmethod that gets a cursor object and returns adapter-specific information about the last executed command. Ideally, the return value is an `AdapterResponse` object that includes items such as `code`, `rows_affected`, `bytes_processed`, and a summary `_message` for logging to stdout. Or, get_response can just return a string `'OK'` if your connection cursor does not provide richer metadata.
 
 <File name='connections.py'>
 
 ```python
     @classmethod
-    def get_status(cls, cursor):
+    def get_response(cls, cursor):
         return cursor.status_message
 ```
 
