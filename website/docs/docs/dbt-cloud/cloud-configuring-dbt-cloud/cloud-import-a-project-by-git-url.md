@@ -65,7 +65,7 @@ You're all set! Once support handles your request, your project is set up and yo
 
 ### Azure DevOps
 
-To add a deploy key to an Azure DevOps account, navigate to the "SSH public keys" page in the User Settings of your user's Azure DevOps account or a service user's account. If possible, we recommend using a service user to mitigate issues like a user leaving the company. 
+To add a deploy key to an Azure DevOps account, navigate to the "SSH public keys" page in the User Settings of your user's Azure DevOps account or a service user's account. We recommend using a dedicated service user for the integration to ensure that dbt Cloud's connection to Azure DevOps is not interrupted by changes to user permissions.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/52bfdaa-Screen_Shot_2020-03-09_at_4.13.20_PM.png" title="Navigate to the 'SSH public keys' settings page" />
 
