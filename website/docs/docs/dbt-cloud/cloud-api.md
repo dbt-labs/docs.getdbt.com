@@ -8,11 +8,11 @@ id: "cloud-api"
 If you are on the `Team` or `Enterprise` dbt Cloud plan, you will have access to the 
 dbt Cloud API.
 
-Common uses for our API would be:
+The dbt Cloud API can be used to:
 
-- Downloading artifacts after a job has completed 
-- Kicking off a job run 
-- Creating/modifying/deleting objects in dbt Cloud 
+- Download artifacts after a job has completed 
+- Kick off a job run from an orchestration tool
+- Manage your dbt Cloud account
 
 Our API endpoints can be found [here](/dbt-cloud/api).
 
@@ -29,7 +29,6 @@ or support@getdbt.com. Once it is enabled, you can create these tokens by going 
 Account Settings > Service Tokens.
 
 <LoomVideo id="/55eb660a52bf4417b1274c6a55796cda" />
-
 
 
 
