@@ -6,27 +6,27 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.19 (February 3, 2021)
 
-TODO - Add release summary and curate below notes
+The latest release of dbt (Oh Nineteen Oh) is now available for your enjoyment on dbt Cloud! We're also releasing some service token pieces here, though they're not quite ready for wide release yet. Moving forward, Oh Nineteen Oh will probably end up being the minimum version required to run the Metadata API & Metadata Toolkit, so, this is a big release! 
 
 #### Enhancements
 
-- add dbt 0.19.0
-- Allow service tokens to create connections
-- Add integration for service token UI and API
-- Authorize requests that supply a service token
+- Added dbt 0.19.0 :heart_eyes_cat:
+- Allowed account-wide service tokens to create connections
+- Added integration for service token UI and API
+- Authorized requests that supply a service token
 
 #### Fixed
 
-- Add logic to show the entered service token name prior to the request completing
-- Fixed endlessly running rpc queries with non working cancel button on ide refresh
+- Added logic to show the entered service token name prior to the request completing
+- Fixed endlessly running rpc queries with non-working cancel button on IDE refresh
 
 #### Internal
 
-- Add filters to scribe verification script
+- Added filters to Scribe verification script
 - Set dd_agent_host host for run and develop pods.
-- Reduce dbt version constraint to use codex
-- Generate service tokens
-- Add API endpoints for service tokens
+- Adjusted dbt version constraint to use Metadata API
+- Generated service tokens
+- Added API endpoints for service tokens
 
 ## dbt Cloud v1.1.18 (January 20, 2021)
 
