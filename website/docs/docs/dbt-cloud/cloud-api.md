@@ -23,11 +23,10 @@ You can find your API token in your user's profile under `API Access`.
 
 <Lightbox src="/img/api-access-profile.png" title="API Access" />
 
-#### Service API token
+#### Service Account API tokens
 Service Account API tokens are currently available in a beta for dbt Cloud Enterprise customers. To request access to the Service Account API token preview, please contact support in-app or by emailing support@getdbt.com.
 
 Once enabled, you can manage Service Account API Tokens from the Account Settings > Service Tokens page within dbt Cloud.
 
 <LoomVideo id="/55eb660a52bf4417b1274c6a55796cda" />
-
 
