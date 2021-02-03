@@ -3,30 +3,56 @@ title: "dbt Cloud API"
 id: "cloud-api"
 ---
 
-### Overview
+## Overview
 
-If you are on the `Team` or `Enterprise` dbt Cloud plan, you will have access to the 
-dbt Cloud API.
-
+Accounts on the _Team_ and _Enterprise_ plans can query the dbt Cloud API.
 The dbt Cloud API can be used to:
 
 - Download artifacts after a job has completed 
 - Kick off a job run from an orchestration tool
 - Manage your dbt Cloud account
+- and more
 
-Full documentation for the dbt Cloud API can be found [here](/dbt-cloud/api).
+Full reference documentation for the dbt Cloud API can be found [here](/dbt-cloud/api).
 
-### How to Access the API 
+## How to Access the API 
 
-#### User API tokens
-You can find your API token in your user's profile under `API Access`.  
+dbt Cloud support two types of API Tokens: User tokens and Service Account
+tokens.
 
-<Lightbox src="/img/api-access-profile.png" title="API Access" />
+### User API tokens
 
-#### Service Account API tokens
-Service Account API tokens are currently available in a beta for dbt Cloud Enterprise customers. To request access to the Service Account API token preview, please contact support in-app or by emailing support@getdbt.com.
+Each dbt Cloud user with a [Developer license](cloud-seats-and-users) is
+issued an API token. This token can be used to execute queries against
+the dbt Cloud API on the user's behalf. User API tokens inherit the
+permissions of the user the that they were created for.
 
-Once enabled, you can manage Service Account API Tokens from the Account Settings > Service Tokens page within dbt Cloud.
+You can find your User API token in the Profile page under the `API Access`
+label.
+
+<Lightbox src="/img/api-access-profile.png" title="Finding your API token in your dbt Cloud Profile" />
+
+### Service Account API tokens
+
+<Changelog>
+
+ - Service Account tokens were launched on Feb 3, 2021
+
+</Changelog>
+
+Service Account API tokens are like User API tokens, but they belong to an
+_account_, rather than _a user_. As such, they may be suitable for system-level
+integrations that do not run on behalf of any one user. Service Account tokens
+may only be created or modified by users with Account Admin (Enterprise plan) or
+Owner (Team plan) permissions on an account. Service Account tokens may be revoked
+if they become lost or compromised.
+
+Service Account API tokens currently have full read+write access to an account,
+to please use them with caution. A future release of dbt Cloud will add granular
+project-level permissioning to Service Account API tokens.
+
+You can manage Service Account API tokens from the Account Settings > Service Tokens
+page within dbt Cloud.
 
 <LoomVideo id="55eb660a52bf4417b1274c6a55796cda" />
 
