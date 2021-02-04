@@ -4,12 +4,12 @@ id: "jinja-macros"
 ---
 
 ## Related reference docs
-* [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/) (external link)
+* [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
 * [dbt Jinja context](dbt-jinja-functions)
 * [Macro properties](macro-properties)
 
 ## Overview
-In dbt, you can combine SQL with [Jinja](https://jinja.palletsprojects.com/en/2.10.x/), a templating language.
+In dbt, you can combine SQL with [Jinja](https://jinja.palletsprojects.com), a templating language.
 
 Using Jinja turns your dbt project into a programming environment for SQL, giving you the ability to do things that aren't normally possible in SQL. For example, with Jinja you can:
 * Use control structures (e.g. `if` statements and `for` loops) in SQL
