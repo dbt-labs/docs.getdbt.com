@@ -128,7 +128,7 @@ group by 1
 
 </File>
 
-We can use [whitespace control](https://jinja.palletsprojects.com/en/2.10.x/templates/#whitespace-control) to tidy up our code:
+We can use [whitespace control](https://jinja.palletsprojects.com/page/templates/#whitespace-control) to tidy up our code:
 
 <File name='models/order_payment_method_amounts.sql'>
 
