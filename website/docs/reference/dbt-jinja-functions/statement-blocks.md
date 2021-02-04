@@ -31,7 +31,7 @@ __Args__:
 Once the statement block has executed, the result set is accessible via the `load_result` function. The result object includes three keys:
 - `response`: Structured object containing metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Comparable to `adapter_response` in the [Result object](dbt-classes#result-objects).
 - `data`: Pythonic representation of data returned by query (arrays, tuples, dictionaries).
-- `table`: [Agate](https://agate.readthedocs.io/en/1.1.0/api/table.html) table representation of data returned by query.
+- `table`: [Agate](https://agate.readthedocs.io/page/api/table.html) table representation of data returned by query.
 
 <Changelog>
 
