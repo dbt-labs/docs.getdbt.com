@@ -236,7 +236,7 @@ The command line gives us back the following:
 | -------------- | --------- |
 | payment_method | Text      |
 ```
-This is actually an [Agate table](https://agate.readthedocs.io/en/1.1.0/api/table.html). To get the payment methods back as a list, we need to do some further transformation.
+This is actually an [Agate table](https://agate.readthedocs.io/page/api/table.html). To get the payment methods back as a list, we need to do some further transformation.
 
 ```sql
 {% macro get_payment_methods() %}
