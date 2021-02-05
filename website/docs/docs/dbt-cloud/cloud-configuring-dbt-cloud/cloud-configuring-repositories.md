@@ -69,3 +69,13 @@ https://gitlab.com/<org>/<repo>/-/merge_requests/new?merge_request[source_branch
 ```
 https://bitbucket.org/<org>/<repo>/pull-requests/new?source={{source}}
 ```
+
+### AWS CodeCommit
+```
+https://console.aws.amazon.com/codesuite/codecommit/repositories/<repo>/pull-requests/new/refs/heads/{{destination}}/.../refs/heads/{{source}}
+```
+
+### Azure DevOps
+```
+https://dev.azure.com/<org>/<repo>/_git/dbt/pullrequestcreate?sourceRef={{source}}&targetRef={{destination}}
+```
