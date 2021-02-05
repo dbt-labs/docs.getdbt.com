@@ -47,7 +47,7 @@ dbt Cloud can work with dbt projects hosted on AWS CodeCommit, but there are som
 
 To give dbt Cloud access to your repository, first you'll need to create an AWS IAM user for dbt Cloud. Log into the AWS Console and navigate to the IAM section. Click "Add User", and create a new user with "Programmatic Access".
 
-This user will need clone access to your repository. The easiest way to set that up is to add the "AWSCodeCommitReadOnly" permission during setup.
+This user will need clone access to your repository. The easiest way to set that up is to add the "AWSCodeCommitPowerUser" permission during setup.
 
 #### Step 2: Import your repository by name
 
