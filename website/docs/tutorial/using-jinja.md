@@ -128,7 +128,7 @@ group by 1
 
 </File>
 
-We can use [whitespace control](https://jinja.palletsprojects.com/en/2.10.x/templates/#whitespace-control) to tidy up our code:
+We can use [whitespace control](https://jinja.palletsprojects.com/page/templates/#whitespace-control) to tidy up our code:
 
 <File name='models/order_payment_method_amounts.sql'>
 
@@ -236,7 +236,7 @@ The command line gives us back the following:
 | -------------- | --------- |
 | payment_method | Text      |
 ```
-This is actually an [Agate table](https://agate.readthedocs.io/en/1.1.0/api/table.html). To get the payment methods back as a list, we need to do some further transformation.
+This is actually an [Agate table](https://agate.readthedocs.io/page/api/table.html). To get the payment methods back as a list, we need to do some further transformation.
 
 ```sql
 {% macro get_payment_methods() %}
