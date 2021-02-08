@@ -15,7 +15,7 @@ This guide will walk you through the first two steps, and provide some resources
 
 ## Scaffolding a new adapter
 
-dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/releases/0.19.0/core/scripts/create_adapter_plugins.py) directory.
+dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/develop/core/scripts/create_adapter_plugins.py) directory.
 
 Example usage:
 
@@ -239,18 +239,18 @@ dbt implements specific SQL operations using jinja macros. While reasonable defa
 
 ### Required macros
 
-The following macros must be implemented, but you can override their behavior for your adapter using the "adapter macro" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
+The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
-- `alter_column_type` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L170))
-- `check_schema_exists` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L254))
-- `create_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L51))
-- `drop_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L194))
-- `drop_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L61))
-- `get_columns_in_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L125)) (required)
-- `list_relations_without_caching` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L270)) (required)
-- `list_schemas` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L240))
-- `rename_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L215))
-- `truncate_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/65090678562597b933bbebafbf02bb98375d0166/core/dbt/include/global_project/macros/adapters/common.sql#L205))
+- `alter_column_type` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#140))
+- `check_schema_exists` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#224))
+- `create_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L21))
+- `drop_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L164))
+- `drop_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L31))
+- `get_columns_in_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L95)) (required)
+- `list_relations_without_caching` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L240)) (required)
+- `list_schemas` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L210))
+- `rename_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L185))
+- `truncate_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L175))
 
 ### Adapter dispatch
 
