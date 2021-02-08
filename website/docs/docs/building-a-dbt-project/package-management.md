@@ -21,7 +21,7 @@ In dbt, libraries like these are called _packages_. dbt's packages are so powerf
 dbt _packages_ are in fact standalone dbt projects, with models and macros that tackle a specific problem area. As a dbt user, by adding a package to your project, the package's models and macros will become part of your own project. This means:
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
-* You can use macros in the package in you own project.
+* You can use macros in the package in your own project.
 
 ## How do I add a package to my project?
 1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
