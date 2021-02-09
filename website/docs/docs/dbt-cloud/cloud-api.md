@@ -36,7 +36,7 @@ label.
 
 <Changelog>
 
- - Service Account tokens were launched on Feb 3, 2021
+ - Service Account tokens were launched in February, 2021
 
 </Changelog>
 
@@ -48,7 +48,7 @@ Owner (Team plan) permissions on an account. Service Account tokens may be revok
 if they become lost or compromised.
 
 Service Account API tokens currently have full read+write access to an account,
-to please use them with caution. A future release of dbt Cloud will add granular
+so please use them with caution. A future release of dbt Cloud will add granular
 project-level permissioning to Service Account API tokens.
 
 You can manage Service Account API tokens from the Account Settings > Service Tokens
