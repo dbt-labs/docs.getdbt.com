@@ -190,6 +190,7 @@ module.exports = {
         "docs/dbt-cloud/deployments/deployment-architecture",
       ],
     },
+    "docs/dbt-cloud/cloud-api",
     "docs/dbt-cloud/cloud-changelog",
   ],
   reference: [

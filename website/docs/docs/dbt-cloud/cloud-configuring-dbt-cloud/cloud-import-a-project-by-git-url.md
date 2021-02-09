@@ -47,7 +47,7 @@ dbt Cloud can work with dbt projects hosted on AWS CodeCommit, but there are som
 
 To give dbt Cloud access to your repository, first you'll need to create an AWS IAM user for dbt Cloud. Log into the AWS Console and navigate to the IAM section. Click "Add User", and create a new user with "Programmatic Access".
 
-This user will need clone access to your repository. The easiest way to set that up is to add the "AWSCodeCommitReadOnly" permission during setup.
+This user will need clone access to your repository. The easiest way to set that up is to add the "AWSCodeCommitPowerUser" permission during setup.
 
 #### Step 2: Import your repository by name
 
@@ -65,7 +65,7 @@ You're all set! Once support handles your request, your project is set up and yo
 
 ### Azure DevOps
 
-To add a deploy key to an Azure DevOps account, navigate to the "SSH public keys" page in the User Settings of your Azure DevOps account.
+To add a deploy key to an Azure DevOps account, navigate to the "SSH public keys" page in the User Settings of your user's Azure DevOps account or a service user's account. We recommend using a dedicated service user for the integration to ensure that dbt Cloud's connection to Azure DevOps is not interrupted by changes to user permissions.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/52bfdaa-Screen_Shot_2020-03-09_at_4.13.20_PM.png" title="Navigate to the 'SSH public keys' settings page" />
 

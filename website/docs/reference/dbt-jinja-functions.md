@@ -2,7 +2,7 @@
 title: "dbt Jinja Functions"
 ---
 
-In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.com/en/2.11.x/templates/)), we've added additional functions and variables to the Jinja context that are useful when working with a dbt project:
+In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.com/page/templates/)), we've added additional functions and variables to the Jinja context that are useful when working with a dbt project:
 * [adapter](adapter)
 * [as_bool](as_bool)
 * [as_native](as_native)
