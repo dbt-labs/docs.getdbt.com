@@ -15,7 +15,7 @@ Connecting your GitHub account to dbt Cloud unlocks exciting and compelling func
 
 :::info Use Github On-Premise?
 This method will not work for On-Premise Github deployments. Please reference our 
-[Importing a project by git url](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#github) to setup your connection.
+[Importing a project by git url](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#github) to setup your connection. This alternative method does not include the benefits mentioned above.
 :::
 
 ## Linking dbt Cloud to your GitHub account
