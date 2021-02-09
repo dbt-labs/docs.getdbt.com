@@ -160,7 +160,7 @@ where {{ filter }}
 {% endif %}
 ```
 
-_[Source code](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/core/dbt/include/global_project/macros/adapters/common.sql#L294)_
+_[Source code](https://github.com/fishtown-analytics/dbt/blob/develop/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
 
 </TabItem>
 
