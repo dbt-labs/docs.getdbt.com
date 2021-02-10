@@ -12,6 +12,12 @@ Connecting your GitHub account to dbt Cloud unlocks exciting and compelling func
 - add new repos to Cloud in a single click (no need to fuss with Deploy Keys)
 - and more!
 
+
+:::info Use Github On-Premise?
+This method will not work for On-Premise Github deployments. Please reference our 
+[Importing a project by git url](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#github) to setup your connection. This alternative method does not include the benefits mentioned above.
+:::
+
 ## Linking dbt Cloud to your GitHub account
 
 To link your dbt Cloud account to your GitHub account, navigate to your [user profile](https://cloud.getdbt.com/#/profile/) and click the [Integrations section](https://cloud.getdbt.com/#/profile/integrations/). Here you can link your GitHub account to dbt Cloud.
