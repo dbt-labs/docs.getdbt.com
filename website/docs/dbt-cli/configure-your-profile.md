@@ -34,7 +34,7 @@ jaffle_shop:
       type: postgres
       host: localhost
       user: alice
-      pass: <password>
+      password: <password>
       port: 5432
       dbname: jaffle_shop
       schema: dbt_alice
