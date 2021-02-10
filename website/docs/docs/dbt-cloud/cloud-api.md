@@ -17,7 +17,7 @@ Full reference documentation for the dbt Cloud API can be found [here](/dbt-clou
 
 ## How to Access the API 
 
-dbt Cloud support two types of API Tokens: User tokens and Service Account
+dbt Cloud supports two types of API Tokens: User tokens and Service Account
 tokens.
 
 ### User API tokens
