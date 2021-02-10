@@ -129,5 +129,5 @@ Then, install dbt from GitHub source
 ```shell
 git clone https://github.com/fishtown-analytics/dbt.git
 cd dbt
-pip install -r editable_requirements.txt
+pip install -r requirements.txt
 ```
