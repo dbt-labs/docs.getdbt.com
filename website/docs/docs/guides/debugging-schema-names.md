@@ -87,7 +87,7 @@ You should find that the schema dbt is constructing for your model matches the o
 Note that snapshots do not follow this behavior, check out the docs on [target_schema](resource-configs/target_schema) instead.
 :::
 
-### 4. Adjust as necessary
+### 5. Adjust as necessary
 
 Now that you understand how a model's schema is being generated, you can adjust as necessary:
 - You can adjust the logic in your `generate_schema_name` macro (or add this macro to your project if you don't yet have one and adjust from there)
