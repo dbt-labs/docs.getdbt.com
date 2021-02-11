@@ -125,26 +125,46 @@ module.exports = {
           activeBasePath: 'docs/dbt-cloud'
         },
         {
-          to: '/tutorial/setting-up',
-          label: 'Tutorial',
-          position: 'left',
-          activeBasePath: 'tutorial'
-        },
-        {
           to: '/faqs/all',
           label: 'FAQs',
           position: 'left',
           activeBasePath: 'faqs'
         },
         {
-          href: 'https://blog.getdbt.com',
-          label: 'Blog',
+          label: 'Learn',
           position: 'right',
+          items: [
+            {
+              label: 'Tutorial',
+              to: '/tutorial/setting-up/',
+            },
+            {
+              label: 'On Demand',
+              href: 'https://courses.getdbt.com',
+            },
+            {
+              label: 'Live Courses',
+              href: 'https://learn.getdbt.com/public',
+            }
+          ],
         },
         {
-          href: 'https://github.com/fishtown-analytics/dbt',
-          label: 'GitHub',
+          label: 'Community',
           position: 'right',
+          items: [
+            {
+              label: 'dbt Slack',
+              href: 'https://community.getdbt.com/',
+            },
+            {
+              label: 'Blog',
+              href: 'https://blog.getdbt.com',
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/fishtown-analytics/dbt',
+            },
+          ]
         },
       ],
     },
