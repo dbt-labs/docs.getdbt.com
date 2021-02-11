@@ -37,11 +37,11 @@ You can install and use multiple versions of dbt with Homebrew through something
 
 ```shell
 brew unlink dbt
-brew install dbt@0.17.0
-brew link dbt@0.17.0
+brew install dbt@0.19.0
+brew link dbt@0.19.0
 ```
 
-Now, you can use dbt version 0.17.0:
+Now, you can use dbt version 0.19.0:
 
 ```shell
 $ dbt --version
@@ -51,7 +51,7 @@ installed version: 0.17.0
 You can switch between versions by linking the one you want to use:
 
 ```shell
-brew unlink dbt@0.17.0
+brew unlink dbt@0.19.0
 brew link dbt
 ```
 
