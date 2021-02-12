@@ -79,6 +79,10 @@ Once a user has authorized dbt Cloud with Snowflake via their identity provider,
 ### Setting up multiple dbt Cloud projects with Snowflake 0Auth
 If you are planning to set up the same Snowflake account to different dbt Cloud projects, you can use the same security integration for all of the projects. 
 
+### FAQs 
+#### How do I use the Blocked Roles List with dbt Cloud?
+<LoomVideo id="1ad791f87c024f82b5bcf93eb2047676" />
+
 ### Troubleshooting
 
 #### Invalid consent request
