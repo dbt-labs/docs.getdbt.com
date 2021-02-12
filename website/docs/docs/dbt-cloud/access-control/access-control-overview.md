@@ -123,3 +123,6 @@ set on the _BQ test_ project.
   every time a user logs into dbt Cloud via a supported SSO provider. If you've
   changed group memberships in your identity provider or dbt Cloud, ask your
   users to log back into dbt Cloud for these group memberships to be synchronized.
+ 
+- **Can I set up SSO without RBAC?** No, you must set up RBAC groups if you have 
+SSO setup. 
