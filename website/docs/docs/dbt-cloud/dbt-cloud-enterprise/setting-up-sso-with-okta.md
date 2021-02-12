@@ -207,3 +207,7 @@ Users in your Okta account will now be able to log into the application
 by navigating to the URL:
 
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
+
+### Setting up RBAC
+Now you have completed setting up SSO with Azure AD, the next steps will be to set up
+[RBAC](/docs/dbt-cloud/access-control/enterprise-permissions) to complete your access control configuration.

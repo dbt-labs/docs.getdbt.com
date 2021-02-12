@@ -177,6 +177,11 @@ by navigating to the URL:
 
 *Note:* If your dbt account is configured with a single-tenant cloud or on-premise installation, the `cloud.getdbt.com` domain in the URL above will be replaced with a different value.
 
+
+### Setting up RBAC
+Now you have completed setting up SSO with Azure AD, the next steps will be to set up
+[RBAC](/docs/dbt-cloud/access-control/enterprise-permissions) to complete your access control configuration.
+
 ### Troubleshooting Tips
 
 Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
