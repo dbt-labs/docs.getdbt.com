@@ -6,41 +6,41 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.20 (February 17, 2021)
 
-TODO - enter release description and curate below notes
+Continued stability and quality of life improvements for folks with multiple accounts and projects - no longer will you have to remember the chronological order of birth of your accounts and projects, as they'll be ordered by the much easier to parse (for human brains anyway) alphabetical order. We're also shipping some experience improvements in the SQL Drawer at the bottom half of the IDE. 
 
 #### Enhancements
 
-- Deleted Info and Logs Tabs, logs will now be displayed in Results Tab
-- remove service token feature flag
-- List Jobs in ABC order
-- Alphabetize account and project drop downs
+- Deleted Info and Logs IDE Tabs, logs will now be displayed in Results Tab
+- Removed service token feature flag
+- List Jobs dropdown in alphabetical order
+- List Account and Project dropdowns in alphabetica order
 - Pre-join Job Definition results to speed up scheduler
 - Combine scheduler queries to speedup runtime by about 30%
 
 #### Fixed
 
-- fix issue with source freshness for 0.19.0
+- Fix issue with source freshness for 0.19.0
 
 #### Internal
 
-- Fix simultanous builds
+- Fix simultaneous builds
 - Add copy_from argument to feature flag commands and refactor sampling into service
-- admin panel updates
+- Admin panel updates
 - Ignore if cloud log is not available
 - Add scribe enabled filter and some more summary cleanup
-- fix extra_data clobbering auth_provider_groups
-- fix account page in backend
-- rpc -> api in the shell command link
-- improve job definition page performance in backend
-- speed up project admin
-- Add management commands for percentage based Feature flag operations
-- logging empty user groups in sso
+- Fix extra_data clobbering auth_provider_groups
+- Fix account page in backend
+- RPC -> API in the shell command link
+- Improve job definition page performance in backend
+- Speed up project admin
+- Add management commands for percentage based feature flag operations
+- Logging empty user groups in SSO
 - Remove test prefix
-- tag develop resources with better labels in k8s
+- Tag develop resources with better labels in k8s
 - Verification script without downloading logs in from_dbobj and having no such key stats
 - Updates to verification script
-- add ddtrace to SchedulerCommand
-- freshness fix
+- Add ddtrace to SchedulerCommand
+- Freshness fix
 - Only use scribe logs when feature flag is currently turned on for account
 
 ## dbt Cloud v1.1.19 (February 3, 2021)
