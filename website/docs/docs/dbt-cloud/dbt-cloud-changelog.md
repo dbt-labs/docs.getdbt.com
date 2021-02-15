@@ -4,6 +4,45 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.20 (February 17, 2021)
+
+TODO - enter release description and curate below notes
+
+#### Enhancements
+
+- Deleted Info and Logs Tabs, logs will now be displayed in Results Tab
+- remove service token feature flag
+- List Jobs in ABC order
+- Alphabetize account and project drop downs
+- Pre-join Job Definition results to speed up scheduler
+- Combine scheduler queries to speedup runtime by about 30%
+
+#### Fixed
+
+- fix issue with source freshness for 0.19.0
+
+#### Internal
+
+- Fix simultanous builds
+- Add copy_from argument to feature flag commands and refactor sampling into service
+- admin panel updates
+- Ignore if cloud log is not available
+- Add scribe enabled filter and some more summary cleanup
+- fix extra_data clobbering auth_provider_groups
+- fix account page in backend
+- rpc -> api in the shell command link
+- improve job definition page performance in backend
+- speed up project admin
+- Add management commands for percentage based Feature flag operations
+- logging empty user groups in sso
+- Remove test prefix
+- tag develop resources with better labels in k8s
+- Verification script without downloading logs in from_dbobj and having no such key stats
+- Updates to verification script
+- add ddtrace to SchedulerCommand
+- freshness fix
+- Only use scribe logs when feature flag is currently turned on for account
+
 ## dbt Cloud v1.1.19 (February 3, 2021)
 
 The latest release of dbt (Oh Nineteen Oh) is now available for your enjoyment on dbt Cloud! We're also releasing some service token pieces here, though they're not quite ready for wide release yet. Moving forward, Oh Nineteen Oh will probably end up being the minimum version required to run the Metadata API & Metadata Toolkit, so, this is a big release! 
