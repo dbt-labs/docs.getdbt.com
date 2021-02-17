@@ -4,6 +4,45 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.20 (February 17, 2021)
+
+Continued stability and quality of life improvements for folks with multiple accounts and projects - no longer will you have to remember the chronological order of birth of your accounts and projects, as they'll be ordered by the much easier to parse (for human brains anyway) alphabetical order. We're also shipping some experience improvements in the SQL Drawer at the bottom half of the IDE. 
+
+#### Enhancements
+
+- Deleted Info and Logs IDE Tabs, logs will now be displayed in Results Tab
+- Removed service token feature flag
+- List Jobs dropdown in alphabetical order
+- List Account and Project dropdowns in alphabetica order
+- Pre-join Job Definition results to speed up scheduler
+- Combine scheduler queries to speedup runtime by about 30%
+
+#### Fixed
+
+- Fix issue with source freshness for 0.19.0
+
+#### Internal
+
+- Fix simultaneous builds
+- Add copy_from argument to feature flag commands and refactor sampling into service
+- Admin panel updates
+- Ignore if cloud log is not available
+- Add scribe enabled filter and some more summary cleanup
+- Fix extra_data clobbering auth_provider_groups
+- Fix account page in backend
+- RPC -> API in the shell command link
+- Improve job definition page performance in backend
+- Speed up project admin
+- Add management commands for percentage based feature flag operations
+- Logging empty user groups in SSO
+- Remove test prefix
+- Tag develop resources with better labels in k8s
+- Verification script without downloading logs in from_dbobj and having no such key stats
+- Updates to verification script
+- Add ddtrace to SchedulerCommand
+- Freshness fix
+- Only use scribe logs when feature flag is currently turned on for account
+
 ## dbt Cloud v1.1.19 (February 3, 2021)
 
 The latest release of dbt (Oh Nineteen Oh) is now available for your enjoyment on dbt Cloud! We're also releasing some service token pieces here, though they're not quite ready for wide release yet. Moving forward, Oh Nineteen Oh will probably end up being the minimum version required to run the Metadata API & Metadata Toolkit, so, this is a big release! 
