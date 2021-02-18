@@ -9,11 +9,23 @@ dbt test -m <path.to.models.folder>  # run tests on models in a sub directory
 dbt test -m +<model_name>+           # run tests on models upstream/downstream of a model
 ```
 
-Tests have their own properties (set in yaml files or data test `config` blocks). Tests _also_ inherit the properties of the nodes they test (i.e. select from). This enables you to select which nodes to test using:
-* the file paths of the models themselves, as opposed to paths of `.yml` files where schema tests are defined
+Tests have their own properties (set in yaml files or data test `config` blocks). Tests _also_ inherit the properties of the nodes they test (i.e. select from). dbt currently requires you to select which nodes to test using:
+* the file paths of the models which tests are defined on
 * the properties of a source or model
 
-Selecting nodes other than models, such as sources, deviates from the usual model selection syntax, so we've listed several examples below. In the future, we plan to make test selection syntax more intuitive.
+Selecting tests to run on nodes other than models, such as sources, is different from the usual model selection syntax.
+
+A test is selected if the `--models` criteria includes any property of:
+
+    * the test itself (e.g. tag: or test_name: selection method)
+    * a resource (model/source/snapshot/seed) the test directly depends on
+
+By the same token, a test is not selected if the --exclude criteria includes any property of:
+
+    * the test itself
+    * a resource the test directly depends on
+
+In the future, we plan to make test selection syntax more intuitive. For now, here are several examples.
 
 ### Run schema tests only
 
@@ -73,7 +85,7 @@ $ dbt test --models config.materialized:table
 ### Run tests on all sources
 
 ```shell
-$ dbt test --models source:\*
+$ dbt test --models 'source:*'
 ```
 `*` is a sometimes called a [wildcard](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm). To ensure `dbt` runs all source tests, prepend all instances of `*` with the `\`, or escape, character. "Escaping" wildcard characters is necessary both on the command line and in shell scripts.
 
@@ -99,7 +111,7 @@ $ dbt test --models source:jaffle_shop.customers
 ### Run tests on everything _but_ sources
 
 ```shell
-$ dbt test --exclude sources:\*
+$ dbt test --exclude 'sources:*'
 ```
 
 ### Run a specific data test

@@ -22,7 +22,7 @@ dbt's node selection syntax makes it possible to run dbt subcommands on specific
 
 ## Specifying resources
 
-By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--models` and `--select` flags are used to specify a subset of nodes to execute. The `--selector`` flag specifies which [user-defined yaml selector](http://localhost:3000/reference/node-selection/yaml-selectors) to use.
+By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--models` and `--select` flags are used to specify a subset of nodes to execute. The `--selector`` flag specifies which [user-defined yaml selector](#yaml-selectors) to use.
 
 ### Shorthand
 
