@@ -188,11 +188,12 @@ insert overwrite table analytics.spark_incremental
 
 ### The `merge` strategy
 
-:::info New in dbt-spark v0.15.3
+<Changelog>
 
-This functionality is new in dbt-spark v0.15.3. See [installation instructions](spark-profile#installation-and-distribution)
+ - `dbt-spark==0.15.3`: Introduced `merge` incremental strategy
 
-:::
+</Changelog>
+
 
 **Usage notes:** The `merge` incremental strategy requires:
 - `file_format: delta`
@@ -288,11 +289,11 @@ or `show table extended in [database] like '*'`.
 
 ## Always `schema`, never `database`
 
-:::info New in dbt-spark v0.17.0
+<Changelog>
 
-This is a breaking change in dbt-spark v0.17.0. See [installation instructions](spark-profile#installation-and-distribution)
+ - `dbt-spark==0.17.0` ended use of `database` in all cases.
 
-:::
+</Changelog>
 
 Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
 `database` to exist at a higher level than `schema`. As such, you should _never_
