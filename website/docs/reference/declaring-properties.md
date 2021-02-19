@@ -96,6 +96,25 @@ models:
 
 </File>
 
+You can also use Jinja to conditionally configure the schema associated with sources. Anything that can be computed in Jinja can be used to determine what schema to look for a table in at runtime.
+
+<File name='models/jaffle_shop_with_dynamic_schema.yml'>
+
+```yml
+version: 2
+
+sources:
+  - name: raw_jaffle_shop
+    schema: {{ 'core_production' if target.name == 'prod' else 'core_staging' }}
+    description: A replica of the postgres database used to power the jaffle_shop app.
+    tables:
+        <...>
+
+```
+
+</File>
+
+The value of the `schema` parameter will be resolved by the Jinja compiler prior to dbt reading the `.yml` file itself. For information on the `target` environment variable, check out [this document](https://docs.getdbt.com/reference/dbt-jinja-functions/target/).
 
 ## Related documentation
 You can find an exhaustive list of each property for a resource in the following docs:
