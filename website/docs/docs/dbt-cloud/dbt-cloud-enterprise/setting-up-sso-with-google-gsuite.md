@@ -131,6 +131,10 @@ If the verification information looks appropriate, then you have completed
 the configuration of GSuite SSO. Members of your team should now be able to log
 into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<login-slug>`.
 
+## Setting up RBAC
+Now you have completed setting up SSO with GSuite, the next steps will be to set up
+[RBAC groups](/docs/dbt-cloud/access-control/enterprise-permissions) to complete your access control configuration.
+
 ## Troubleshooting
 
 
