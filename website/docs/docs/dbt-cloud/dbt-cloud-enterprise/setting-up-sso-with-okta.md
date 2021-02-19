@@ -209,6 +209,6 @@ by navigating to the URL:
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
 :::
 
-### Setting up RBAC
+## Setting up RBAC
 Now you have completed setting up SSO with Okta, the next steps will be to set up
 [RBAC groups](/docs/dbt-cloud/access-control/enterprise-permissions) to complete your access control configuration.
