@@ -440,6 +440,7 @@ module.exports = {
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
         "reference/warehouse-profiles/dremio-profile",
+        "reference/warehouse-profiles/clickhouse-profile",
       ],
     },
     {
