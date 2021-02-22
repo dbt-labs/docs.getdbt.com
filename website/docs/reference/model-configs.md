@@ -100,10 +100,10 @@ models:
     [tags](resource-configs/tags)="<string>" | ["<string>"],
     [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
-    [database](resource-configs/database): <string>,
-    [schema](resource-configs/schema): <string>,
-    [alias](resource-configs/alias): <string>,
-    [persist_docs](persist_docs): {<dict>}
+    [database](resource-configs/database)="<string>",
+    [schema](resource-configs/schema)="<string>",
+    [alias](resource-configs/alias)="<string>",
+    [persist_docs](persist_docs)={<dict>}
 ) }}
 
 ```
