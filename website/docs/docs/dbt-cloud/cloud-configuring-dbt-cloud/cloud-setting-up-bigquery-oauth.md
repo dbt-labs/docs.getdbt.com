@@ -12,7 +12,7 @@ dbt Cloud supports [OAuth authentication](https://cloud.google.com/bigquery/docs
 
 :::info Some Pre-Work Required
 
-Before setting up a Client ID & Secret, you'll have to have your existing BigQuery Settings in order. We recommend using a Service Account JSON file, and have a walkthrough for that [here](https://docs.getdbt.com/tutorial/setting-up/#generate-bigquery-credentials)
+Before setting up a Client ID & Secret, you'll have to have your existing BigQuery Settings in order. We recommend using a Service Account JSON file, and have a walkthrough for that [here](tutorial/setting-up/#generate-bigquery-credentials)
 
 :::
 
@@ -28,10 +28,22 @@ There you'll see your existing Keys, Client IDs and Service Accounts - you'll wa
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/create_creds_bq_oauth.gif" title="Creating OAuth Credentials in BigQuery" />
 
 For the fields we recommend the following:
-- **Application Type:** Web application
-- **Name:** dbt cloud
-- **Authorized JavaScript origins:** Not required, but some organizations may have URIs they'd like to use here
-- **Authorized redirect URIs:** Not required, but some organizations may have URIs they'd like to use here
+
+| Config | Value |
+| ------ | ----- |
+| **Application type** | Web application |
+| **Name** | dbt Cloud |
+| **Authorized Javascript origins** | `https://cloud.getdbt.com` |
+| **Authorized Redirect URIs** | `https://cloud.getdbt.com/complete/bigquery` |
+
+
+:::info Deployment Nuance
+
+If you're using a deployment other than the standard dbt Cloud multi-tenant, you'll need to replace `cloud.getdbt.com` with the hostname of
+your cloud instance here!
+
+:::
+
 
 Then, click the blue Create button, which will display your Client ID and Client Secret, with handy clipboard buttons for copying into other screens, which is exactly whaty we're about to do. These values will continue to be available in your Credentials screen in perpetuity, *this is not the only chance you have to access them*. 
 

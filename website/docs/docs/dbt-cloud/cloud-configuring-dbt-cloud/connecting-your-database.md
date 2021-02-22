@@ -84,6 +84,8 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 
 ## Connecting to BigQuery
 
+### JSON keyfile
+
 :::info Uploading a service account JSON keyfile
 
 While the fields in a BigQuery connection can be specified manually, we recommend uploading a service account JSON keyfile to quickly and accurately configure a connection to BigQuery.
@@ -117,5 +119,9 @@ In addition to these fields, there are two other optional fields that can be con
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a BigQuery user without the configuration of BigQuery password in dbt Cloud. For
-more information on configuring a BigQuery OAuth connection in dbt Cloud, please see
+more information on the initial configuration of a BigQuery OAuth connection in dbt Cloud, please see
 [the docs on setting up BigQuery OAuth](cloud-setting-up-bigquery-oauth).
+
+As an end user, you can connect via OAuth by clicking the Edit button in your BigQuery Connection page, and adding your Client ID and Secret for the connection. You'll need that Client ID and Secret specifically from BigQuery to set up this connection - discuss with your database administrator how to go about getting those for your organization.
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/dbt_cloud_bq_cred_edit.png" title="Edit Button in dbt Cloud BQ Connection" />
