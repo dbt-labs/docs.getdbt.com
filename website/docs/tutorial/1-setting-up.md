@@ -104,7 +104,7 @@ In order to let dbt connect to your warehouse, you'll need generate a keyfile. T
     * **Which API are you using?** BigQuery API
     * **Are you planning to use this API with App Engine or Compute Engine?** No
     * **Service account name:** `dbt-user`
-    * **Role:** BigQuery Job User
+    * **Role:** BigQuery Job User & BigQuery User
     * **Key type:** JSON
 3. Download the JSON file and save it in an easy-to-remember spot, with a clear filename (e.g. `dbt-user-creds.json`)
 
