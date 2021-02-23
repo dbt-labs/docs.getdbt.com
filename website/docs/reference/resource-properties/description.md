@@ -283,7 +283,7 @@ You can use relative links to link to another model. It's a little hacky — but
 
 1. Serve your docs site.
 2. Navigate to the model you want to link to, e.g. `http://127.0.0.1:8080/#!/model/model.jaffle_shop.stg_stripe__payments`
-3. Copy the url_path, i.e. everything after `http://127.0.0.1:8080/`, so in this case `!/model/model.jaffle_shop.stg_stripe__payments`
+3. Copy the url_path, i.e. everything after `http://127.0.0.1:8080/`, so in this case `#!/model/model.jaffle_shop.stg_stripe__payments`
 4. Paste it as the link
 
 <File name='models/schema.yml'>
