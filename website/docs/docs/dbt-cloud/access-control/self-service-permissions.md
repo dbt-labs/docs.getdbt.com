@@ -23,9 +23,9 @@ Users configured with Read Only license types will experience a restricted set o
 
 ## Owner and Member Groups in dbt Cloud Enterprise
 
-By default, new users are added to the Member and Owner groups when they onboard to dbt Cloud. This is necessary for account onboarding but can create confusion when initially setting up SSO and RBAC for dbt Cloud Enterprise accounts as described in the [Enterprise Permissions](enterprise-permissions) guide. Owner and Member groups are **account level** groups, so their permissions override any project-level permissions you wish to apply.
+By default, new users are added to the Member and Owner groups when they onboard to a new dbt Cloud. Member and Owner groups are included with every new dbt Cloud account. They're used to provide access for Administrators to add additional users, groups and apply permission sets. This is necessary for account onboarding but can create confusion when initially setting up SSO and RBAC for dbt Cloud Enterprise accounts as described in the [Enterprise Permissions](enterprise-permissions) guide. Owner and Member groups are **account level** groups, so their permissions override any project-level permissions you wish to apply.
 
-We recommend the following steps be taken after onboarding Administrative users and before adding less priveleged users to a dbt Cloud Enterprise account.
+After onboarding Administrative users and configuring RBAC/SSO groups, we recommend adding an Administrator group to ensure your priveleged users don't lose access. Following that, you can safely remove the Owner and Member groups from the account as described below:  
 
 1) Click the Hamburger icon at the top left of the Cloud Console, then Account Settings >> Groups >> <Owner/Member>  
 2) Click "Edit" in the upper right corner
@@ -34,3 +34,5 @@ We recommend the following steps be taken after onboarding Administrative users 
 
 3) Scroll to the bottom of the group page
 4) Click "Delete"
+
+From here, you can add additional groups, permission sets and users as needed.
