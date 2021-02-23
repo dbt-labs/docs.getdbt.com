@@ -144,7 +144,7 @@ function Home() {
                     <div className="card__footer">
                         <Link
                           className="button button--primary"
-                          to={useBaseUrl('/faqs/all/')}>
+                          to={useBaseUrl('/faqs/all')}>
                           Get Answers
                         </Link>
                     </div>
@@ -170,7 +170,7 @@ function Home() {
                     <div className="card__footer">
                         <Link
                           className="button button--primary"
-                          to="/docs/dbt-cloud/cloud-overview/">
+                          to="/docs/dbt-cloud/cloud-overview">
                           Cloud Overview
                         </Link>
                     </div>
@@ -189,7 +189,7 @@ function Home() {
                     <div className="card__footer">
                         <Link
                           className="button button--primary"
-                          to={useBaseUrl('/dbt-cloud/api/')}>
+                          to={useBaseUrl('/dbt-cloud/api')}>
                           API docs
                         </Link>
                     </div>
@@ -256,7 +256,7 @@ function Home() {
                     <div className="card__footer">
                         <Link
                           className="button button--primary"
-                          to={useBaseUrl('/faqs/example-projects/')}>
+                          to={useBaseUrl('/faqs/example-projects')}>
                           View Projects
                         </Link>
                     </div>
