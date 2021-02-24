@@ -136,7 +136,7 @@ module.exports = {
           items: [
             {
               label: 'Getting Started Tutorial',
-              to: '/tutorial/setting-up/',
+              to: '/tutorial/setting-up',
             },
             {
               label: 'Online Courses',
