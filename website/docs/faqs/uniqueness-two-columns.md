@@ -61,7 +61,7 @@ models:
   - name: orders
     tests:
       - unique:
-          column_name: "country_code || '-' || order_id"
+          column_name: "(country_code || '-' || order_id)"
 ```
 
 </File>
