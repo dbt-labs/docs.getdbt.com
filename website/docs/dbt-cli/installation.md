@@ -45,7 +45,7 @@ Now, you can use dbt version 0.19.0:
 
 ```shell
 $ dbt --version
-installed version: 0.17.0
+installed version: 0.19.0
 ```
 
 You can switch between versions by linking the one you want to use:
