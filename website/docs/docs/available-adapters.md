@@ -21,6 +21,14 @@ In addition to maintaining `dbt-core`, [Fishtown Analytics](https://github.com/f
 
 Adapters distributed with "core" are ready to use when you [install dbt](dbt-cli/installation). For "plugin" adapters, check each page for specific installation instructions.
 
+### Vendor Supported
+
+These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.
+
+| Adapter for  | Documentation |
+| ------------ | ------------- |
+| Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) |
+
 ### Community Supported
 
 These adapter plugins are contributed and maintained by members of the community 🌱
