@@ -443,14 +443,14 @@ will reduce costs by eliminating multiple queries in the model build script.
 
 #### Static partitions
 
-To supply a static list of partitions to overwrite, use the `partitions` configuration:
+To supply a static list of partitions to overwrite, use the `partitions` configuration.
 
 <File name="models/session.sql">
 
 ```sql
 {% set partitions_to_replace = [
-  'current_date',
-  'date_sub(current_date, interval 1 day)'
+  'timestamp(current_date)',
+  'timestamp(date_sub(current_date, interval 1 day))'
 ] %}
 
 {{
@@ -481,6 +481,12 @@ with events as (
 This example model serves to replace the data in the destination table for both
 _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
 way to incrementally update a table using dbt.
+
+<Changelog>
+  - v0.19.0: With the advent of truncated timestamp partitions in BigQuery, `timestamp`-type partitions are now treated as timestamps instead of dates for the purposes of filtering. Update `partitions_to_replace` accordingly.
+</Changelog>
+
+Think of this as "full control" mode. You must ensure that expressions or literal values in the the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.
 
 #### Dynamic partitions
 
