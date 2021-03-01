@@ -51,12 +51,11 @@ view | YES | Creates a [view](https://materialize.com/docs/sql/create-view/#main
 materializedview | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main).
 table | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main). (Actual table support pending [#5266](https://github.com/MaterializeInc/materialize/issues/5266))
 ephemeral | YES | Executes queries using CTEs.
-incremental | NO | Use the `materializedview` materialization instead! dbt's incremental models are valuable because they only spend your time and money transforming your new data as it arrives. Luckily, this is exactly what Materialize's materialized views were built to do! Better yet, materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
+incremental | NO | Use the `materializedview` materialization instead. Materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
 
 ### Seeds
 
-[`dbt seed`](https://docs.getdbt.com/reference/commands/seed/) will create a static materialized
-view from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
+Running [`dbt seed`](commands/seed) will create a static materialized view from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
 
 ## Resources
 
