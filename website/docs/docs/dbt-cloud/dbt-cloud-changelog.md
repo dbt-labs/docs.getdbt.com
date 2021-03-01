@@ -4,6 +4,35 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.21 (March 3, 2021)
+
+TODO - enter release description and curate below notes
+
+#### Enhancements
+
+- Open self-service rbac to all enterprise customers
+- Update AuthProvider UI to enable SAML and Okta
+- Add a SAML auth redirect URL
+
+#### Fixed
+
+- added param to admin project mapper to included soft deleted projects
+- Fix delaying logs when we are waiting for a model to finish executing
+- Saving gsuite auth provider form should trigger an authorize
+- Scribe should populate truncated debug logs when runs are executing
+- Delayed attempts for non-200 status codes
+- Add logic to support select fields in adapter UI
+- Undo clobbering groups
+
+#### Internal
+
+- Fix latest.sh script
+- Remove scribe image version check
+- allow opt-in APM
+- fix: allow updating user license from backend page
+- update the production build workflow
+- Filter only for log_archive_type of database
+
 ## dbt Cloud v1.1.20 (February 17, 2021)
 
 Continued stability and quality of life improvements for folks with multiple accounts and projects - no longer will you have to remember the chronological order of birth of your accounts and projects, as they'll be ordered by the much easier to parse (for human brains anyway) alphabetical order. We're also shipping some experience improvements in the SQL Drawer at the bottom half of the IDE. 
