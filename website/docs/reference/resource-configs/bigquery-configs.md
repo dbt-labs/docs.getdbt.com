@@ -521,7 +521,7 @@ with events as (
 
     -- recalculate latest day's data + previous
     -- NOTE: The _dbt_max_partition variable is used to introspect the destination table
-    where date(event_timestamp) >= date_sub(date(_dbt_max_partition, interval 1 day))
+    where date(event_timestamp) >= date_sub(date(_dbt_max_partition), interval 1 day)
 
 {% endif %}
 
