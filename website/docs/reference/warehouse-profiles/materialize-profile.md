@@ -20,7 +20,7 @@ The easiest way to install is to use pip:
 
 ## Connecting to Materialize with **dbt-materialize**
 
-The dbt profile for Materialize is nearly identical to the [profile configuration for Postgres](profile-postgres):
+The dbt profile for Materialize is nearly identical to the [profile configuration for Postgres](postgres-profile):
 
 <File name='profiles.yml'>
 
