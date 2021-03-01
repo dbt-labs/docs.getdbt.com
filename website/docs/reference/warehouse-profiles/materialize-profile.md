@@ -1,10 +1,10 @@
 ---
-title: "ClickHouse Profile"
+title: "Materialize Profile"
 ---
 
 :::info Vendor-supported plugin
 
-Certain core functionality may vary. If would like to report a bug, request a feature, or contribute, you can see the source code and open an issue in the repository below.
+Certain core functionality may vary. If would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
 
 :::
 
@@ -51,14 +51,14 @@ view | YES | Creates a [view](https://materialize.com/docs/sql/create-view/#main
 materializedview | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main).
 table | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main). (Actual table support pending [#5266](https://github.com/MaterializeInc/materialize/issues/5266))
 ephemeral | YES | Executes queries using CTEs.
-incremental | NO | Use the `materializedview` materialization instead! dbt's incremental models are valuable because they only spend your time and money transforming your new data as it arrives. Luckily, this is exactly what Materialize's materialized views were built to do! Better yet, our materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [our documentation](https://materialize.com/docs/).
+incremental | NO | Use the `materializedview` materialization instead! dbt's incremental models are valuable because they only spend your time and money transforming your new data as it arrives. Luckily, this is exactly what Materialize's materialized views were built to do! Better yet, materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
 
 ### Seeds
 
 [`dbt seed`](https://docs.getdbt.com/reference/commands/seed/) will create a static materialized
-view from a CSV file. You will not be able to add to or update this view after it has been created.
+view from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
 
 ## Resources
 
-- [Interactive demo](https://github.com/MaterializeInc/materialize/blob/main/play/wikirecent-dbt/README.md) using dbt and Materialize together
+- [Get started](https://github.com/MaterializeInc/materialize/blob/main/play/wikirecent-dbt/README.md) using dbt and Materialize together
 - [Materialize docs about dbt](https://materialize.com/docs/third-party/dbt/)
