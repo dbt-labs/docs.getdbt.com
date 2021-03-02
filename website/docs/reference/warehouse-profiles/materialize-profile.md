@@ -4,7 +4,7 @@ title: "Materialize Profile"
 
 :::info Vendor-supported plugin
 
-Certain core functionality may vary. If would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
+Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
 
 :::
 
