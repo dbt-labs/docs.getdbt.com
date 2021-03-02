@@ -441,6 +441,7 @@ module.exports = {
         "reference/warehouse-profiles/azuresynapse-profile",
         "reference/warehouse-profiles/dremio-profile",
         "reference/warehouse-profiles/clickhouse-profile",
+        "reference/warehouse-profiles/materialize-profile",
       ],
     },
     {
