@@ -104,7 +104,6 @@ Once you've registered the application, the next step is to assign users to it. 
 | -------- | ---- | ---------- |
 | Microsoft Graph | Delegated | `Directory.AccessAsUser.All` |
 | Microsoft Graph | Delegated | `Directory.Read.All` |
-| Microsoft Graph | Application | `Directory.Read.All` |
 | Microsoft Graph | Delegated | `User.Read` |
 
 15. Save these permissions, then click **Grant admin consent** to grant admin
