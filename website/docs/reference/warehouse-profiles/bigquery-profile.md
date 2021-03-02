@@ -316,7 +316,8 @@ To connect to BigQuery using the `oauth` method, follow these steps:
 gcloud auth application-default login \
   --scopes=https://www.googleapis.com/auth/userinfo.email,\
 https://www.googleapis.com/auth/cloud-platform,\
-https://www.googleapis.com/auth/drive.readonly
+https://www.googleapis.com/auth/drive.readonly,\
+openid
 ```
 
 A browser window should open, and you should be promoted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
