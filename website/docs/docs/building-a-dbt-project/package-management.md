@@ -119,7 +119,7 @@ You can also reference an [environment variables](env_var).
 
 ```yaml
 packages:
-  - git: "https://{{env_var('GIT_CREDENTIALS)}}@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
+  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
 ```
 
 ### Local packages
