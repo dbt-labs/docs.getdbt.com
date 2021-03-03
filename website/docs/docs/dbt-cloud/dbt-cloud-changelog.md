@@ -4,6 +4,37 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.21 (March 3, 2021)
+
+This changelog wraps up work on what we've been calling the SQL Drawer in the IDE - some design nudges, some interface adjustments, overall a cleaner and snappier experience. If you haven't dipped into the IDE in a while it's worth taking a look! Some back-end work as well, making SSO and role based admin easier and more broadly available for Enterprise level folks, along with your usual assortment of bug squashes and iterations. 
+
+
+#### Enhancements
+
+- Styling and copy adjustments in the Cloud IDE
+- Open self-service role based access control to all Enterprise customers
+- Update AuthProvider UI to enable SAML and Okta
+- Add a SAML auth redirect URL
+
+#### Fixed
+
+- Add param to admin project mapper to included soft deleted projects
+- Fix delaying logs when we are waiting for a model to finish executing
+- Saving GSuite auth provider form triggers an authorize
+- Scribe populates truncated debug logs when runs are executing
+- Delay attempts for non-200 status codes
+- Add logic to support select fields in adapter UI
+- Undo clobbering groups
+
+#### Internal
+
+- Fix latest.sh script
+- Remove scribe image version check
+- Allow opt-in APM
+- Allow updating user license from backend page
+- Update production build workflow
+- Filter only for log_archive_type of database
+
 ## dbt Cloud v1.1.20 (February 17, 2021)
 
 Continued stability and quality of life improvements for folks with multiple accounts and projects - no longer will you have to remember the chronological order of birth of your accounts and projects, as they'll be ordered by the much easier to parse (for human brains anyway) alphabetical order. We're also shipping some experience improvements in the SQL Drawer at the bottom half of the IDE. 
