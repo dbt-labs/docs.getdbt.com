@@ -45,7 +45,7 @@ your cloud instance here!
 :::
 
 
-Then, click the blue Create button, which will display your Client ID and Client Secret, with handy clipboard buttons for copying into other screens, which is exactly whaty we're about to do. These values will continue to be available in your Credentials screen in perpetuity, *this is not the only chance you have to access them*. 
+Then, click the blue Create button, which will display your Client ID and Client Secret, with handy clipboard buttons for copying into other screens, which is exactly what we're about to do. These values will continue to be available in your Credentials screen in perpetuity, *this is not the only chance you have to access them*. 
 
 
 ### Configure the Connection in dbt Cloud
@@ -55,4 +55,3 @@ Back in dbt Cloud, you'll want to navigate to your Connection page for BigQuery.
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/dbt_cloud_bq_cred_edit.png" title="Edit Button in dbt Cloud BQ Connection" />
 
 With Editing enabled, you can copy paste the Client ID and the Client Secret you created in BigQuery into their respective boxes, and return to the top of the page, to Save your new OAuth Credentials. 
-

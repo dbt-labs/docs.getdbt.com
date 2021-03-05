@@ -118,8 +118,8 @@ In addition to these fields, there are two other optional fields that can be con
 **Available in:** Development environments, Enterprise plans only
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
-a BigQuery user without the configuration of BigQuery password in dbt Cloud. For
-more information on the initial configuration of a BigQuery OAuth connection for an organization in dbt Cloud, please see
+a BigQuery user without the configuration of BigQuery service account keyfile in dbt Cloud. For
+more information on the initial configuration of a BigQuery OAuth connection in dbt Cloud, please see
 [the docs on setting up BigQuery OAuth](cloud-setting-up-bigquery-oauth).
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
