@@ -107,7 +107,7 @@ These operating systems require additional pre-installation setup. After running
 sudo apt-get install git libpq-dev python-dev python3-pip
 sudo apt-get remove python-cffi
 sudo pip install --upgrade cffi
-pip install cryptography==1.7.2
+pip install cryptography~=3.4
 ```
 
 #### CentOS
