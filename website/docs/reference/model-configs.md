@@ -132,7 +132,7 @@ Model configurations are applied hierarchically — configurations applied to a 
 
 ### Configuring directories of models in `dbt_project.yml`
 
-To configure models in your `dbt_project.yml` file, use the `models:` configuration option. Be sure to use namespace your configurations to your project (shown below):
+To configure models in your `dbt_project.yml` file, use the `models:` configuration option. Be sure to namespace your configurations to your project (shown below):
 
 <File name='dbt_project.yml'>
 
