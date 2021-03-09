@@ -7,11 +7,6 @@ title: "YAML Selectors"
 - **v0.19.0**: Added optional `description` property
 </Changelog>
 
-:::info [β] Beta Feature
-This is net-new functionality in v0.18.0, with iterative improvements to come.
-If you encounter unexpected behavior, please post in Slack or open an issue.
-:::
-
 Write model selectors in YAML, save them with a human-friendly name, and reference them using the `--selector` flag.
 By recording selectors in a top-level `selectors.yml` file:
 
