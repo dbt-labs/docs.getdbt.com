@@ -9,9 +9,6 @@ This guide describes a feature of the dbt Cloud Enterprise plan. If you’re int
 
 :::
 
-_To view setup instructions for Okta SSO
-using Auth0, see [here](setting-up-sso-with-okta-deprecated)._
-
 ## Okta SSO
 
 dbt Cloud Enterprise supports single-sign on via Okta (using SAML). Currently supported features include:

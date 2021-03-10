@@ -167,7 +167,7 @@ module.exports = {
             label: "Single Sign On",
             items: [
                 "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
             ],
