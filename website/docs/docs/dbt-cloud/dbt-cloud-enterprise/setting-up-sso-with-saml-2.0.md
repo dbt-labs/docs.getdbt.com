@@ -16,14 +16,19 @@ Currently supported features include:
 * SP-initiated SSO
 * Just-in-time provisioning
 
+This document details the steps to integrate dbt Cloud with an identity
+provider in order to configure Single Sign On and [role-based access control](access-control-overview#role-based-access-control).
+
 ## Generic SAML 2.0 integrations
+
+_Use this section if you are configuring an identity provider besides Okta._
 
 ### Configuration in your identity provider
 
 _Note: You'll need administrator access to your SAML 2.0 compliant identity provider to follow this guide.
 This approach will work with any SAML 2.0 compliant identity provider._
 
-#### Creating the application
+### Creating the application
 
 First, log into your SAML 2.0 identity provider and create a new application.
 When promoted, configure the application with the following details:
@@ -80,7 +85,7 @@ to dbt Cloud for each authenticated user. For example, if all of your dbt Cloud 
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
 Please contact support if you have any questions.
 
-#### Finish IdP setup
+### Collect integration secrets
 
 After confirming your details, the IdP should show you the following values for
 the new SAML 2.0 integration. Keep these values somewhere safe, as you will need
@@ -90,45 +95,14 @@ them to complete setup in dbt Cloud.
 - Identity Provider SSO Url
 - X.509 Certificate
 
-### Configuration in dbt Cloud
+### Finish setup
 
-#### Providing IdP values
+After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+section to complete the integration.
 
+## Okta integration
 
-To complete setup, follow the steps below in dbt Cloud. First, navigate to the
-**Enterprise &gt; Single Sign On** page under Account Settings. Next, click
-the **Edit** button and supply the following SSO details:
-
-| Field | Value |
-| ----- | ----- |
-| Log&nbsp;in&nbsp;with | SAML 2.0 |
-| Identity&nbsp;Provider&nbsp;SSO&nbsp;Url | Paste the **Identity Provider Single Sign-On URL** shown in the IdP setup instructions |
-| Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
-| X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions |
-| Slug | Enter your desired login slug. |
-
-<Lightbox
-    collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
-    title="Configuring the application in dbt Cloud"
-/>
-
-Click **Save** to complete setup for the SAML 2.0 integration. From
-here, you can navigate to the URL generated for your account's _slug_ to
-test logging in with your identity provider. Additionally, users added the the SAML 2.0 app
-will be able to log in to dbt Cloud from the IdP directly.
-
-:::success Logging in
-Users in your IdP will now be able to log into the application by navigating to the URL:
-
-`https://cloud.getdbt.com/enterprise-login/<login-slug>`
-:::
-
-#### Setting up RBAC
-After configuring an identity provider, you will be able to set up [role-based
-access control](/access-control/enterprise-permissions) for your account.
-
-## Setup with Okta
+_Use this section if you are configuring Okta as your identity provider_.
 
 First, log into your Okta account. Using the Admin dashboard, create a new app.
 
@@ -247,5 +221,45 @@ the integration between Okta and dbt Cloud.
 
 ### Finish setup
 
-After creating the Okta application, follow the instructions in the [configuration in dbt Cloud](#configuration-in-dbt-cloud)
+After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
+
+
+## dbt Cloud Setup
+
+### Providing IdP values
+
+
+To complete setup, follow the steps below in dbt Cloud. First, navigate to the
+**Enterprise &gt; Single Sign On** page under Account Settings. Next, click
+the **Edit** button and supply the following SSO details:
+
+| Field | Value |
+| ----- | ----- |
+| Log&nbsp;in&nbsp;with | SAML 2.0 |
+| Identity&nbsp;Provider&nbsp;SSO&nbsp;Url | Paste the **Identity Provider Single Sign-On URL** shown in the IdP setup instructions |
+| Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
+| X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions |
+| Slug | Enter your desired login slug. |
+
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+    title="Configuring the application in dbt Cloud"
+/>
+
+Click **Save** to complete setup for the SAML 2.0 integration.
+
+### Test the integration
+After setup is complete, you can navigate to the URL generated for your account's _slug_ to
+test logging in with your identity provider. Additionally, users added the the SAML 2.0 app
+will be able to log in to dbt Cloud from the IdP directly.
+
+Users in your IdP will now be able to log into the application by navigating to the URL:
+
+`https://cloud.getdbt.com/enterprise-login/<login-slug>`
+
+### Setting up RBAC
+After configuring an identity provider, you will be able to set up [role-based
+access control](/access-control/enterprise-permissions) for your account.
+
