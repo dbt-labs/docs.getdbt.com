@@ -3,9 +3,6 @@ title: "Setting up SSO with Azure AD"
 id: "setting-up-enterprise-sso-with-azure-active-directory"
 ---
 
-_To view setup instructions for Azure AD SSO
-using Auth0, see [here](setting-up-enterprise-sso-with-azure-active-directory-deprecated)._
-
 :::info Enterprise Feature
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re
 interested in learning more about an Enterprise plan, contact us at

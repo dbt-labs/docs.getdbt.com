@@ -3,9 +3,6 @@ title: "Setting up SSO with GSuite"
 id: "setting-up-sso-with-google-gsuite"
 ---
 
-_To view setup instructions for GSuite SSO
-using Auth0, see [here](setting-up-sso-with-google-gsuite-deprecated)._
-
 :::info Enterprise Feature
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re
 interested in learning more about an Enterprise plan, contact us at
