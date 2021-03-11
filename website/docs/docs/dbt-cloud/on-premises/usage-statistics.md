@@ -3,6 +3,12 @@ id: usage-statistics
 title: Usage Statistics
 ---
 
+:::note
+
+We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+
+:::
+
 ## Overview
 
 On-premises dbt Cloud deployments send high-level dbt Cloud metadata
