@@ -3,6 +3,12 @@ id: installation
 title: Installation
 ---
 
+:::note
+
+We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+
+:::
+
 Before proceeding with installation, please make sure to review the [prerequisites](/docs/dbt-cloud/on-premises/prerequisites) and [system requirements](/docs/dbt-cloud/on-premises/system-requirements).
 
 ### Installation into an existing Kubernetes cluster

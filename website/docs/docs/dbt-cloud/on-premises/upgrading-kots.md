@@ -3,6 +3,12 @@ id: upgrading-kots
 title: Upgrading KOTS
 ---
 
+:::note
+
+We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+
+:::
+
 ## Overview
 
 As explained in the [dependencies](/docs/dbt-cloud/on-premises/dependencies) section, customer managed deployments rely on the Kubernetes-Off-The-Shelf (KOTS) appliance to configure and deploy the dbt Cloud application. When installing the dbt Cloud application for the first time as described in the [installation](/docs/dbt-cloud/on-premises/installation) section, the latest version of KOTS will be downloaded and installed along with the Admin Console. The KOTS version should be periodically upgraded to stay current with the [latest release](https://kots.io/release-notes/)
