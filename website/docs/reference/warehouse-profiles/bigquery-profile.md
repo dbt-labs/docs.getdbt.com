@@ -314,8 +314,7 @@ To connect to BigQuery using the `oauth` method, follow these steps:
 
 ```shell
 gcloud auth application-default login \
-  --scopes=https://www.googleapis.com/auth/userinfo.email,\
-https://www.googleapis.com/auth/cloud-platform,\
+  --scopes=https://www.googleapis.com/auth/bigquery,\
 https://www.googleapis.com/auth/drive.readonly
 ```
 
