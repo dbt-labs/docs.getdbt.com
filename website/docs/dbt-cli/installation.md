@@ -3,11 +3,19 @@ title: "Installation"
 id: "installation"
 ---
 
-We recommend you use install dbt using one of three tried and tested methods:
+We recommend you use install dbt using [homebrew](#homebrew) (recommended for MacOS), [pip](#pip), or by [installing from source](#install-from-source).
 
-- [homebrew](#homebrew) (recommended for MacOS)
+- [Pre-installation requirements](#pre-installation-requirements)
+  - [CentOS](#centos)
+  - [Debian/Ubuntu](#debianubuntu)
+  - [Windows](#windows)
+- [Homebrew](#homebrew)
+  - [Upgrading](#upgrading)
+  - [Installing different versions with Homebrew](#installing-different-versions-with-homebrew)
 - [pip](#pip)
-- [from source](#install-from-source)
+  - [Installation](#installation)
+  - [Upgrading](#upgrading-1)
+- [Install from source](#install-from-source)
 
 
 ## Pre-installation requirements
