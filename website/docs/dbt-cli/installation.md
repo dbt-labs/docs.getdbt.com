@@ -9,6 +9,44 @@ We recommend you use install dbt using one of three tried and tested methods:
 - [pip](#pip)
 - [from source](#install-from-source)
 
+
+## Pre-installation requirements
+
+These operating systems require additional pre-installation setup. After running whichever commands are relevant to your development environment, refer to the `dbt` installation instructions of your choice below.
+
+### CentOS
+There are a few development related dependencies you will need on CentOS.
+
+```shell
+sudo yum install redhat-rpm-config gcc libffi-devel \
+  python-devel openssl-devel
+```
+
+### Debian/Ubuntu
+Since Git does not come pre-installed on Debian/Ubuntu, you will need to install Git with the following command.
+```shell
+sudo apt install git
+```
+
+You will also need to configure your Git name and password.
+```shell
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+Finally, there are a few Python requirements.
+```shell
+sudo apt-get install git libpq-dev python-dev python3-pip
+sudo apt-get remove python-cffi
+sudo pip install --upgrade cffi
+pip install cryptography~=3.4
+```
+
+### Windows
+
+Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.5 or higher for Windows](https://www.python.org/downloads/windows/).
+
+
 ## Homebrew
 
 Install [Homebrew](http://brew.sh/). Then, run:
@@ -97,29 +135,6 @@ To upgrade dbt, use:
 ```
 pip install --upgrade dbt
 ```
-
-### Additional steps by operating system
-
-These operating systems require additional pre-installation setup. After running whichever commands are relevant to your development environment, return to the instructions above.
-
-#### Ubuntu/Debian
-```shell
-sudo apt-get install git libpq-dev python-dev python3-pip
-sudo apt-get remove python-cffi
-sudo pip install --upgrade cffi
-pip install cryptography~=3.4
-```
-
-#### CentOS
-
-```shell
-sudo yum install redhat-rpm-config gcc libffi-devel \
-  python-devel openssl-devel
-```
-
-#### Windows
-
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.5 or higher for Windows](https://www.python.org/downloads/windows/).
 
 ## Install from source
 
