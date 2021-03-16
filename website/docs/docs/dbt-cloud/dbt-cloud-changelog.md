@@ -6,13 +6,13 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.22 (March 17, 2021)
 
-TODO - enter release summary and curate below release notes
+Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not fall over for want of memory, as well as a grip of bug fixes and error messaging improvements (error messages should be helpful, not scolding or baffling, after all!)
 
 #### Enhancements
 
-- Release scribe to 100% of multi-tenant accounts
-- Updates language for sql drawer empty state
-- Reduce scribe memory usage
+- Release Scribe to 100% of multi-tenant accounts
+- Update language for SQL drawer empty state
+- Reduce Scribe memory usage
 
 #### Fixed
 
@@ -20,17 +20,17 @@ TODO - enter release summary and curate below release notes
 - Guarantee unique notification settings per account, user, and type
 - Fix for account notification settings
 - Dont show deleted projects on notifications page
-- Unicode error while decoding last_chunk
-- Show relevant errors to users and not raise RuntimeExceptions
-- Groups should be editable by non-sudo requests
-- Allow lowercase domain names in
-- Redirect auth failed errors back to enterprise-login page with error description
+- Fix unicode error while decoding last_chunk
+- Show more relevant errors to customers
+- Groups are now editable by non-sudo requests
+- Normalize domain names across inputs/outputs
+- Redirect auth failed errors back to appropriate page with error description
 
 #### Internal
 
-- Reducing scribe memory request in prod
-- Don't clobber run logs across all our dev envs
-- Refactor license_type -> strenum
+- Reducing Scribe memory request in production
+- Don't clobber run logs across all dev environments
+- Refactor license_type
 
 ## dbt Cloud v1.1.21 (March 3, 2021)
 
