@@ -36,7 +36,7 @@ git config --global user.email "your.email@example.com"
 
 Finally, there are a few Python requirements.
 ```shell
-sudo apt-get install git libpq-dev python-dev python3-pip
+sudo apt-get install git libpq-dev python-dev python3-pip pkg-config
 sudo apt-get remove python-cffi
 sudo pip install --upgrade cffi
 pip install cryptography~=3.4
