@@ -7,6 +7,11 @@ Providing multiple space-delineated arguments to the `--models`, `--exclude`, or
 the union of them all. If a resource is included in at least one selector, it will be 
 included in the final set.
 
+Run all ancestors of snowplow_sessions and fct_orders:
+```bash
+$ dbt run --models +snowplow_sessions +fct_orders
+```
+
 ### Intersections
 <Changelog>New in v0.18.0</Changelog>
 
