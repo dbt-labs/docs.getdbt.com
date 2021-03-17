@@ -4,6 +4,34 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.22 (March 17, 2021)
+
+Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not fall over for want of memory, as well as a grip of bug fixes and error messaging improvements (error messages should be helpful, not scolding or baffling, after all!)
+
+#### Enhancements
+
+- Release Scribe to 100% of multi-tenant accounts
+- Update language for SQL drawer empty state
+- Reduce Scribe memory usage
+
+#### Fixed
+
+- Fix NoSuchKey error
+- Guarantee unique notification settings per account, user, and type
+- Fix for account notification settings
+- Dont show deleted projects on notifications page
+- Fix unicode error while decoding last_chunk
+- Show more relevant errors to customers
+- Groups are now editable by non-sudo requests
+- Normalize domain names across inputs/outputs
+- Redirect auth failed errors back to appropriate page with error description
+
+#### Internal
+
+- Reducing Scribe memory request in production
+- Don't clobber run logs across all dev environments
+- Refactor license_type
+
 ## dbt Cloud v1.1.21 (March 3, 2021)
 
 This changelog wraps up work on what we've been calling the SQL Drawer in the IDE - some design nudges, some interface adjustments, overall a cleaner and snappier experience. If you haven't dipped into the IDE in a while it's worth taking a look! Some back-end work as well, making SSO and role based admin easier and more broadly available for Enterprise level folks, along with your usual assortment of bug squashes and iterations. 
