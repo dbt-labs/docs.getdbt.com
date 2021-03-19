@@ -18,7 +18,7 @@ profile:
       host: 127.0.0.1
       # IMPORTANT: Make sure to quote the entire Jinja string here
       user: "{{ env_var('DBT_USER') }}"
-      pass: "{{ env_var('DBT_PASSWORD') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
       ....
 ```
 

@@ -9,10 +9,10 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 ## Overview of dbt-oracle
-**Maintained by:** Community      
-**Author:** Vitor Avancini    
-**Source:** https://github.com/techindicium/dbt-oracle    
-**Core version:** v0.16.0 and newer     
+**Maintained by:** Community
+**Author:** Vitor Avancini
+**Source:** https://github.com/techindicium/dbt-oracle
+**Core version:** v0.16.0 and newer
 
 ![dbt-oracle stars](https://img.shields.io/github/stars/techindicium/dbt-oracle?style=for-the-badge)
 
@@ -22,7 +22,7 @@ Easiest install is to use pip:
 
 You will need Oracle client driver installed. Check this [link](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html) for the installation guide for your operating system
 
-### Connecting to Oracle with **dbt-oracle** 
+### Connecting to Oracle with **dbt-oracle**
 
 #### User / password authentication
 
@@ -39,7 +39,7 @@ dbt_oracle:
          type: oracle
          host: localhost
          user: system
-         pass: oracle
+         password: oracle
          port: 1521
          dbname: [dbname]
          schema: [schema]

@@ -142,9 +142,9 @@ string-oriented inputs, like environment variables or command line variables.
 :::danger Heads up
 
   In dbt v0.17.1, native rendering is not enabled by default. It is possible to
-  natively render specific values using the [`as_bool`](as_bool), 
+  natively render specific values using the [`as_bool`](as_bool),
   [`as_number`](as_number), and [`as_native`](as_native) filters.
-  
+
   The examples below have been updated to reflect 0.17.1 functionality.
 
 :::
@@ -160,7 +160,7 @@ debug:
     dev:
       type: postgres
       user: "{{ env_var('DBT_USER') }}"
-      pass: "{{ env_var('DBT_PASS') }}"
+      password: "{{ env_var('DBT_PASS') }}"
       host: "{{ env_var('DBT_HOST') }}"
 
       # The port number will be coerced from a string to an integer

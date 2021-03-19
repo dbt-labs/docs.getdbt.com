@@ -87,7 +87,7 @@ mailchimp:
       type: xxx
       host: xxx
       user: xxx
-      pass: xxx
+      password: xxx
       port: xxx
       dbname: xxx
       schema: package_mailchimp # call this whatever makes sense for you

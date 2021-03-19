@@ -16,7 +16,7 @@ company-name:
       type: postgres
       host: [hostname]
       user: [username]
-      pass: [password]
+      password: [password]
       port: [port]
       dbname: [database name]
       schema: [dbt schema]
