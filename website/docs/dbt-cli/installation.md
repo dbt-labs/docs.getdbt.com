@@ -104,9 +104,10 @@ These operating systems require additional pre-installation setup. After running
 
 #### Ubuntu/Debian
 ```shell
-sudo apt-get install git libpq-dev python-dev python3-pip
+sudo apt-get install git libpq-dev python-dev python3-dev python3-pip libicu-dev
 sudo apt-get remove python-cffi
 sudo pip install --upgrade cffi
+pip install --upgrade pip
 pip install cryptography~=3.4
 ```
 
