@@ -118,12 +118,37 @@ set on the _BQ test_ project.
 />
 
 
+### Manual assignment
+
+<Changelog>
+
+- New in version 1.1.23 (March, 2021)
+
+</Changelog>
+
+dbt Cloud administrators can manually assign users to groups independently of
+IdP attributes. If a dbt Cloud group is configured _without_ any
+SSO Mappings, then the group will be _unmanaged_ and dbt Cloud will not adjust
+group membership automatically when users log into dbt Cloud via an identity
+provider. This behavior may be desirable for teams that have connected an identity
+provider, but have not yet configured SSO Mappings between dbt Cloud and the
+IdP.
+
+If an SSO Mapping is added to an _unmanaged_ group, then it will become
+_managed_, and dbt Cloud may add or remove users to the group automatically at
+sign-in time based on the user's IdP-provided group membership information.
+
+
 ## FAQs
-- **When are IdP group memberships updated?** Group memberships are updated
-  every time a user logs into dbt Cloud via a supported SSO provider. If you've
-  changed group memberships in your identity provider or dbt Cloud, ask your
+- **When are IdP group memberships updated for SSO Mapped groups?** Group memberships
+  are updated every time a user logs into dbt Cloud via a supported SSO provider. If
+  you've changed group memberships in your identity provider or dbt Cloud, ask your
   users to log back into dbt Cloud for these group memberships to be synchronized.
- 
-- **Can I set up SSO without RBAC?** We do not recommend setting up SSO without RBAC.
-If you are interested in this, please contact your account manager to discuss further 
-about your use case.
+
+- **Can I set up SSO without RBAC?** Yes, see the documentation on
+  [Manual Assignment](#manual-assignment) above for more information on using
+  SSO without RBAC.
+
+- **Can I configure a user's License Type based on IdP Attributes?** Yes, see
+  the docs on [managing license types](/cloud-seats-and-users#managing-license-types)
+  for more information.
