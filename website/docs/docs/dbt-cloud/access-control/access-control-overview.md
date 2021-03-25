@@ -134,7 +134,7 @@ provider. This behavior may be desirable for teams that have connected an identi
 provider, but have not yet configured SSO Mappings between dbt Cloud and the
 IdP.
 
-Note: If an SSO Mapping is added to an _unmanaged_ group, then it will become
+If an SSO Mapping is added to an _unmanaged_ group, then it will become
 _managed_, and dbt Cloud may add or remove users to the group automatically at
 sign-in time based on the user's IdP-provided group membership information.
 
