@@ -9,7 +9,7 @@ This guide describes a feature of the dbt Cloud Enterprise plan. If you’re int
 
 :::
 
-dbt Cloud Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to dbt Cloud.
+dbt Cloud Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to dbt Cloud. If Snowflake is setup with SSO through a third-party identity provider, developers can use this method to log into Snowflake and authorize the dbt Development credentials without any additional setup.
 
 ### Configuring a security integration
 To enable Snowflake OAuth, you will need to create a [security integration](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html) in Snowflake to manage the OAuth connection between dbt Cloud and Snowflake.
