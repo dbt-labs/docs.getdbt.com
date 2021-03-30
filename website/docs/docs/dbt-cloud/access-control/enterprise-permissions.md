@@ -41,6 +41,27 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Use the IDE
 - Run and cancel jobs
 
+### Account Viewer
+- **Has permissions on:** Authorized projects, account-level settings
+- **License restrictions:** must have a developer license
+
+Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can: 
+- View account settings
+- View authentication providers
+- View Billing information
+- View Database Connections
+- View Database Credentials
+- View Environment configurations
+- View Groups
+- View Invitations for New Users
+- View Jobs
+- View License assignments
+- View Memboers
+- View permission sets applied to projects (taking a guess here)
+- View Projects
+- View Repositories
+- View Historical Job runs
+
 ### Admin
 - **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
