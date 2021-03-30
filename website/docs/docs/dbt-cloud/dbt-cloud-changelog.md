@@ -6,23 +6,23 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.23 (March 31, 2021)
 
-TODO - Enter release description and curate below release notes.
+Some backend work, some frontend work, some bug fixes: a nice mix for this release. A few user facing changes you may have noticed already are the persistence of dark/light mode settings across refresh (no more blinding IDE!), branches in the IDE being categorized by Active vs. Removed from Remote, and a tidier new file creation flow, with the file tree expanding to show the new file and opening a new tab to populate the said file! 
 
 #### Enhancements
 
 - Splitting Local-only and Remote branches into different sections of the dropdown selector
 - Update Profile Integrations to include SSO info
-- Upgrade to tailwind 2.0 and fui 0.0.5
+- Upgrade to Tailwind 2.0 and FUI 0.0.5
 - Allow users to create metadata tokens from the UI
 - Support manually-managed group memberships
-- SSO: Set first_name, last_name [v2]
-- Refactor JIT account provisioning and SSO groups license mapper
+- SSO: resolve bug w/ first & last names acting up 
 - Integrate Delighted for NPS surveys
-- add dbt 0.19.1rc1 to cloud 
-- Add profiling tag for longhorn enabled
+- Add dbt 0.19.1rc1 to Cloud 
 - Add an account-level setting to require users to re-authenticate via SSO
-- Read-only metadata ServiceToken for Cloud ↔️ Codex 
-- Persists ide editor settings and rehydrates sourceEditor and editorSettings separately
+- Read-only metadata ServiceToken for Cloud 
+- Persist IDE light mode / dark mode across refresh
+- Categorize & order git branches
+- Improve new file creation flow
 
 #### Fixed
 
@@ -31,19 +31,16 @@ TODO - Enter release description and curate below release notes.
 - Support default branches through git when a custom branch is not specified
 - Don't download logs for skipped steps
 - API Gateway is no longer flooded with errors due to IDE blindly polling dead Develop pod
-- Fix creating user license through admin interface
-- Fix longhorn datadog tagp
-- Set k8s:enableServiceLinks to false for new run and develop pods
+- Fix user license creation via admin interface
 - Adjusted addition of global .gitignore
 
 #### Internal
 
-- Add user feature flag for command_line_abstraction and fetch in /whoami
 - Filter our ResourceWarning error from Datadog
 - add log filter to wsgi.py
 - Remove Rollbar from codebase
 - Add UI Logs to Datadog
-- lower develop session timeout from 6 hours to 3 hours
+- Lower develop session timeout from 6 hours to 3 hours
 - Upgrade to Webpack 5 and bundle Angularjs
 
 ## dbt Cloud v1.1.22 (March 17, 2021)
