@@ -4,6 +4,48 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.23 (March 31, 2021)
+
+TODO - Enter release description and curate below release notes.
+
+#### Enhancements
+
+- Splitting Local-only and Remote branches into different sections of the dropdown selector
+- Update Profile Integrations to include SSO info
+- Upgrade to tailwind 2.0 and fui 0.0.5
+- Allow users to create metadata tokens from the UI
+- Support manually-managed group memberships
+- SSO: Set first_name, last_name [v2]
+- Refactor JIT account provisioning and SSO groups license mapper
+- Integrate Delighted for NPS surveys
+- add dbt 0.19.1rc1 to cloud 
+- Add profiling tag for longhorn enabled
+- Add an account-level setting to require users to re-authenticate via SSO
+- Read-only metadata ServiceToken for Cloud ↔️ Codex 
+- Persists ide editor settings and rehydrates sourceEditor and editorSettings separately
+
+#### Fixed
+
+- Check for an empty repository before checking matching remote
+- Increase wait if run was finished recently
+- Support default branches through git when a custom branch is not specified
+- Don't download logs for skipped steps
+- API Gateway is no longer flooded with errors due to IDE blindly polling dead Develop pod
+- Fix creating user license through admin interface
+- Fix longhorn datadog tagp
+- Set k8s:enableServiceLinks to false for new run and develop pods
+- Adjusted addition of global .gitignore
+
+#### Internal
+
+- Add user feature flag for command_line_abstraction and fetch in /whoami
+- Filter our ResourceWarning error from Datadog
+- add log filter to wsgi.py
+- Remove Rollbar from codebase
+- Add UI Logs to Datadog
+- lower develop session timeout from 6 hours to 3 hours
+- Upgrade to Webpack 5 and bundle Angularjs
+
 ## dbt Cloud v1.1.22 (March 17, 2021)
 
 Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not fall over for want of memory, as well as a grip of bug fixes and error messaging improvements (error messages should be helpful, not scolding or baffling, after all!)
