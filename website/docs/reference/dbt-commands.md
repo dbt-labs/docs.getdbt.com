@@ -19,7 +19,7 @@ For information about selecting models on the command line, consult the docs on 
 - [test](commands/test): executes tests defined in a project
 - [deps](deps): downloads dependencies for a project
 - [snapshot](snapshot): executes "snapshot" jobs defined in a project
-- [clean](clean): deletes artifacts present in the dbt project
+- [clean](clean) (CLI only): deletes artifacts present in the dbt project
 - [seed](seed): loads CSV files into the database
 - [docs](cmd-docs) : generates documentation for a project
 - [source](commands/source): provides tools for working with source data (including validating that sources are "fresh")
