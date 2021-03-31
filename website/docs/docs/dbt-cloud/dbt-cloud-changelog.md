@@ -4,6 +4,45 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.23 (March 31, 2021)
+
+Some backend work, some frontend work, some bug fixes: a nice mix for this release. A few user facing changes you may have noticed already are the persistence of dark/light mode settings across refresh (no more blinding IDE!), branches in the IDE being categorized by Active vs. Removed from Remote, and a tidier new file creation flow, with the file tree expanding to show the new file and opening a new tab to populate the said file! 
+
+#### Enhancements
+
+- Splitting Local-only and Remote branches into different sections of the dropdown selector
+- Update Profile Integrations to include SSO info
+- Upgrade to Tailwind 2.0 and FUI 0.0.5
+- Allow users to create metadata tokens from the UI
+- Support manually-managed group memberships
+- SSO: resolve bug w/ first & last names acting up 
+- Integrate Delighted for NPS surveys
+- Add dbt 0.19.1rc1 to Cloud 
+- Add an account-level setting to require users to re-authenticate via SSO
+- Read-only metadata ServiceToken for Cloud 
+- Persist IDE light mode / dark mode across refresh
+- Categorize & order git branches
+- Improve new file creation flow
+
+#### Fixed
+
+- Check for an empty repository before checking matching remote
+- Increase wait if run was finished recently
+- Support default branches through git when a custom branch is not specified
+- Don't download logs for skipped steps
+- API Gateway is no longer flooded with errors due to IDE blindly polling dead Develop pod
+- Fix user license creation via admin interface
+- Adjusted addition of global .gitignore
+
+#### Internal
+
+- Filter our ResourceWarning error from Datadog
+- add log filter to wsgi.py
+- Remove Rollbar from codebase
+- Add UI Logs to Datadog
+- Lower develop session timeout from 6 hours to 3 hours
+- Upgrade to Webpack 5 and bundle Angularjs
+
 ## dbt Cloud v1.1.22 (March 17, 2021)
 
 Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not fall over for want of memory, as well as a grip of bug fixes and error messaging improvements (error messages should be helpful, not scolding or baffling, after all!)
