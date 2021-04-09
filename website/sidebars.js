@@ -192,7 +192,15 @@ module.exports = {
         "docs/dbt-cloud/deployments/deployment-architecture",
       ],
     },
-    "docs/dbt-cloud/cloud-api",
+    {
+      type: "category",
+      label: "dbt Cloud API",
+      items: [
+        "docs/dbt-cloud/dbt-cloud-api/cloud-api",
+        "docs/dbt-cloud/dbt-cloud-api/user-tokens",
+        "docs/dbt-cloud/dbt-cloud-api/service-tokens",
+      ],
+    },
     "docs/dbt-cloud/cloud-changelog",
   ],
   reference: [
