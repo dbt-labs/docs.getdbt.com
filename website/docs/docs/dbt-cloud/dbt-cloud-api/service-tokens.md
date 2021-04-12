@@ -1,5 +1,5 @@
 ---
-title: "Service Account and Metadata API tokens"
+title: "Service Account Tokens"
 id: "service-tokens"
 ---
 
