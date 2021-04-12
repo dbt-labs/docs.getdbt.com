@@ -6,67 +6,59 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.24 (April 14, 2021)
 
-TODO - enter release description and curate below notes
+Phew! As our company grows, so too does our changelog! Look at all these! The big chunks you'll see here are related to some ongoing in-IDE work, focused on the command bar experience, as well as some partner & connection work (see the Gits, Databricks, and so forth), and of course ongoing longer-term bets around metadata! 
 
 #### Enhancements
 
-- Adds onFocus and onBlur properties to populate and remove 'dbt ' in command bar
-- Executes command on enter if user's cursor is in the command bar
-- Added metadata api access button to account settings
-- Adds feature flag for displaying only recent actions
-- Racheld/2525/filter command bar actions
-- add dbt 0.19.1
-- Copy Adjustment for Clarity
-- Add regex validation to Databrick's hostname web-form field
-- Update Connection Edit to allow adapter editing.
-- Feat/populate modal with recent actions
-- Self-service GitHub and GitLab integration disconnection
-- Add link to docs for license map, handle duplicate error gracefully and tests!
-- Moving deferred job execution to execution settings.
-- Feat/record user command history
-- add 0.18.2 image
-- Feat/new file creation flow
+- Added onFocus and onBlur properties to populate and remove "dbt" in command bar
+- Enabled executing command on enter if user's cursor is in the command bar
+- Added Metadata API access button to account settings
+- Added feature flag for displaying only recent actions
+- Added dbt 0.19.1
+- Added regex validation to Databrick's hostname web-form field
+- Updated Connection Edit to allow adapter editing
+- Enabled self-service Github and GitLab integration disconnection
+- Added link to docs for license map & handle duplicate error gracefully
+- Moved deferred job execution to execution settings.
+- Recorded user command history
+- Enabled new file creation flow
 
 #### Fixed
 
-- Adds styling class to popup to ensure text is readable
-- Fixing sourcemaps syntax for dev commands
-- Revert "Define rpc readiness probe (#2547)"
-- Add timeout and retry to dbt deps
-- 2451/type fix
-- Update databricks schema field type and add error handling to ConnectionSetup
-- Fix bigquery private keys, convert text to textarea
-- fix last used datetime in the service token UI
-- Add missing token uri to bigquery connection edit
+- Added styling class to popup to ensure text is readable
+- Fixed sourcemaps syntax for dev commands
+- Added timeout and retry to dbt deps
+- Updated databricks schema field type and add error handling to ConnectionSetup
+- Fixed Bigquery private keys & convert text to textarea
+- Fixed last used datetime in the service token UI
+- Added missing token URI to Bigquery connection edit
 - Prevent multiple develop sessions for one user
-- Fix to prevent SchemaForm from validating non-displayed fields
-- Fix required fields for bigquery connection json uploads
-- Fix self selection as deferred job
-- Always create a Monaco model on tab open if no matching model exists.
-- Fix tab dirty indicator on open tab
-- Fix password reset flow
-- Fix docs and sources links in dashboard page for read only users
-- Truncating first_name to 30 characters
-- Share boto3.clients across threads to prevent AWS IAM throttling
+- Fixed SchemaForm validating non-displayed fields
+- Fixed required fields for Bigquery connection JSON uploads
+- Fixed self selection as deferred job
+- Always create a Monaco model on tab open if no matching model exists
+- Fixed tab dirty indicator on open tab
+- Fixed password reset flow
+- Fixed docs and sources links in dashboard page for read only users
+- Fixed truncating first_name to 30 characters
 
 #### Internal
 
-- Bump schema version of command drawer dismiss event to 1-0-1
-- Attempt to prevent test-frontend from running out of memory
-- Add successful sign in metric
-- Define rpc readiness probe
-- remove should_handle method from ScrubbingStreamHandler
-- add metadata read permission to account admin service token
-- Fix develop request timing monitoring, push data to Datadog
-- Update ide_command_drawer_dismiss event to schema version 1-0-0
-- Track snowplow event when command drawer menu is dismissed
-- add metadata.cloud.getdbt.com to allowed hosts
-- Track Snowplow event when items are selected from the command drawer
-- self instead of api class name
-- Add Datadog Real User Monitoring to dbt-cloud
-- Improve command drawer interactions
-- Replace legacy user feature flag admin with new
-- Create basic command drawer experience with stubbed data
+- Bumped schema version of command drawer dismiss event to 1-0-1
+- Attempted to prevent test-frontend from running out of memory
+- Added successful sign in metric
+- Defined RPC readiness probe
+- Removed should_handle method from ScrubbingStreamHandler
+- Added metadata read permission to account admin service token
+- Fixed develop request timing monitoring, push data to Datadog
+- Updated ide_command_drawer_dismiss event to schema version 1-0-0
+- Tracked snowplow event when command drawer menu is dismissed
+- Added metadata.cloud.getdbt.com to allowed hosts
+- Tracked Snowplow event when items are selected from the command drawer
+- Added Datadog Real User Monitoring to dbt-cloud
+- Improved command drawer interactions
+- Replaced legacy user feature flag admin with new
+- Created basic command drawer experience with stubbed data
 
 ## dbt Cloud v1.1.23 (March 31, 2021)
 
