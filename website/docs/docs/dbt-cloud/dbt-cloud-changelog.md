@@ -4,6 +4,70 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.24 (April 14, 2021)
+
+TODO - enter release description and curate below notes
+
+#### Enhancements
+
+- Adds onFocus and onBlur properties to populate and remove 'dbt ' in command bar
+- Executes command on enter if user's cursor is in the command bar
+- Added metadata api access button to account settings
+- Adds feature flag for displaying only recent actions
+- Racheld/2525/filter command bar actions
+- add dbt 0.19.1
+- Copy Adjustment for Clarity
+- Add regex validation to Databrick's hostname web-form field
+- Update Connection Edit to allow adapter editing.
+- Feat/populate modal with recent actions
+- Self-service GitHub and GitLab integration disconnection
+- Add link to docs for license map, handle duplicate error gracefully and tests!
+- Moving deferred job execution to execution settings.
+- Feat/record user command history
+- add 0.18.2 image
+- Feat/new file creation flow
+
+#### Fixed
+
+- Adds styling class to popup to ensure text is readable
+- Fixing sourcemaps syntax for dev commands
+- Revert "Define rpc readiness probe (#2547)"
+- Add timeout and retry to dbt deps
+- 2451/type fix
+- Update databricks schema field type and add error handling to ConnectionSetup
+- Fix bigquery private keys, convert text to textarea
+- fix last used datetime in the service token UI
+- Add missing token uri to bigquery connection edit
+- Prevent multiple develop sessions for one user
+- Fix to prevent SchemaForm from validating non-displayed fields
+- Fix required fields for bigquery connection json uploads
+- Fix self selection as deferred job
+- Always create a Monaco model on tab open if no matching model exists.
+- Fix tab dirty indicator on open tab
+- Fix password reset flow
+- Fix docs and sources links in dashboard page for read only users
+- Truncating first_name to 30 characters
+- Share boto3.clients across threads to prevent AWS IAM throttling
+
+#### Internal
+
+- Bump schema version of command drawer dismiss event to 1-0-1
+- Attempt to prevent test-frontend from running out of memory
+- Add successful sign in metric
+- Define rpc readiness probe
+- remove should_handle method from ScrubbingStreamHandler
+- add metadata read permission to account admin service token
+- Fix develop request timing monitoring, push data to Datadog
+- Update ide_command_drawer_dismiss event to schema version 1-0-0
+- Track snowplow event when command drawer menu is dismissed
+- add metadata.cloud.getdbt.com to allowed hosts
+- Track Snowplow event when items are selected from the command drawer
+- self instead of api class name
+- Add Datadog Real User Monitoring to dbt-cloud
+- Improve command drawer interactions
+- Replace legacy user feature flag admin with new
+- Create basic command drawer experience with stubbed data
+
 ## dbt Cloud v1.1.23 (March 31, 2021)
 
 Some backend work, some frontend work, some bug fixes: a nice mix for this release. A few user facing changes you may have noticed already are the persistence of dark/light mode settings across refresh (no more blinding IDE!), branches in the IDE being categorized by Active vs. Removed from Remote, and a tidier new file creation flow, with the file tree expanding to show the new file and opening a new tab to populate the said file! 
