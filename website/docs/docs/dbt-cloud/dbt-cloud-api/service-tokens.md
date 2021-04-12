@@ -35,7 +35,11 @@ In the Account Settings view of dbt Cloud, you can click on the Service Account 
 
 </Changelog>
 
+<<<<<<< HEAD
 Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the views and tables in the warehouse. dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata at [https://metadata.cloud.getdbt.com/graphiql](https://www.getdbt.com/product/), and this API is an incredibly rich resource for evaluating data health longitudinally or at a point in time.
+=======
+Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the views and tables in the warehouse. dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata at https://metadata.cloud.getdbt.com/graphiql, and this API is an incredibly rich resource for evaluating data health longitudinally or at a point in time.
+>>>>>>> 4e7f298df3b360bd82fba10f4bef47ade108c375
 
 dbt Cloud users can create metadata only service account based API Tokens to authorize requests to the metadata API. These types of API Tokens will make it possible for a user to provide a single-purpose token to Mode that can authorize all requests to the metadata API.
 
