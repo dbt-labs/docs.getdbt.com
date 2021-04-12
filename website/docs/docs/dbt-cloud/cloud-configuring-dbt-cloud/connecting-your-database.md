@@ -172,9 +172,13 @@ The following fields are available when creating a Databricks connection:
 ### HTTP and Thrift
 
 dbt Cloud supports connecting to an Apache Spark cluster using the HTTP method
-or the Thrift method.
+or the Thrift method. Note: While the HTTP method can be used to connect to
+an all-purpose Databricks cluster, the ODBC method is recommended for all
+Databricks connections. For further details on configuring these connection
+parameters, please see the [dbt-spark documentation](https://github.com/fishtown-analytics/dbt-spark#configuring-your-profile)
 
-The following fields are available when creating an Apache Spark connection over HTTP:
+The following fields are available when creating an Apache Spark connection using the
+HTTP and Thrift connection methods:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
