@@ -194,11 +194,11 @@ module.exports = {
     },
     {
       type: "category",
-      label: "dbt Cloud API",
+      label: "dbt Cloud APIs",
       items: [
-        "docs/dbt-cloud/dbt-cloud-api/cloud-api",
-        "docs/dbt-cloud/dbt-cloud-api/user-tokens",
-        "docs/dbt-cloud/dbt-cloud-api/service-tokens",
+        "docs/dbt-cloud/dbt-cloud-apis/cloud-apis",
+        "docs/dbt-cloud/dbt-cloud-apis/user-tokens",
+        "docs/dbt-cloud/dbt-cloud-apis/service-tokens",
       ],
     },
     "docs/dbt-cloud/cloud-changelog",

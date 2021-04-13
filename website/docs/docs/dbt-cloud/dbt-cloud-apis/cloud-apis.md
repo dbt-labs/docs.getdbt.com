@@ -1,6 +1,6 @@
 ---
-title: "dbt Cloud API"
-id: "cloud-api"
+title: "dbt Cloud APIs"
+id: "cloud-apis"
 ---
 
 ## Overview
