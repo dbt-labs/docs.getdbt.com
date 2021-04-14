@@ -160,7 +160,7 @@ The following fields are available when creating a Databricks connection:
 | ----- | ----------- | -------- |
 | Host Name | The hostname of the Databricks account to connect to | `avc-def1234ghi-9999.cloud.databricks.com` |
 | Port | The port to connect to Databricks for this connection | 443 |
-| Organization | Optional, only required for Azure Databricks | 0123456789 |
+| Organization | Optional (default: 0) | 0123456789 |
 | Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
 | Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL Analytics) | 0123456789 |
 | User | Optional | dbt_cloud_user |
@@ -184,7 +184,7 @@ HTTP and Thrift connection methods:
 | ----- | ----------- | -------- |
 | Host Name | The hostname of the Spark cluster to connect to | `yourorg.sparkhost.com` |
 | Port | The port to connect to Spark on | 443 |
-| Organization | Optional, only required for Azure Databricks | 0123456789 |
+| Organization | Optional (default: 0) | 0123456789 |
 | Cluster | The ID of the cluster to connect to | 1234-567890-abc12345 |
 | Connection Timeout | Number of seconds after which to timeout a connection | 10 |
 | Connection Retries | Number of times to attempt connecting to cluster before failing | 10 |
