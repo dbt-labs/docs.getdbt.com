@@ -601,3 +601,6 @@ Views with this configuration will be able to select from objects in
 `project_1.dataset_1` and `project_2.dataset_2`, even when they are located
 elsewhere and queried by users who do not otherwise have
 access to `project_1.dataset_1` and `project_2.dataset_2`.
+
+#### Limitations
+The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
