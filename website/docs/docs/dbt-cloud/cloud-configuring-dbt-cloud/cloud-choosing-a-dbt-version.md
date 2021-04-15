@@ -25,6 +25,7 @@ The example job seen in the screenshot above belongs to the environment "Redshif
 
 At the present time, the following versions of dbt are supported:
 
+ - v0.19.x
  - v0.18.x
  - v0.17.x
  - v0.16.x
