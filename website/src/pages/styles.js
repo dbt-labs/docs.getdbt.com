@@ -143,20 +143,20 @@ Links to pages can be specified using:
 Bad links will appear with red underlines when building locally, and will cause an error in a deploy preview.
 <br/>
 <pre>{`[link to unique id](available-adapters)
-[disambiguated link to duplicate id](dbt-cli/installation)
-[second disambiguated link to duplicate id](on-premises/installation)
-[file paths work too](dbt-cli/installation.md)
+[disambiguated link to duplicate id](docs/about/overview)
+[second disambiguated link to duplicate id](dbt-cli/install/overview)
+[file paths work too](docs/about/overview.md)
 [link to document where id looks like a filename](reference/profiles.yml.md)
 [a bad link](bad-link)
 `}</pre>
 
                 <Link href="available-adapters">link to unique id</Link>
                 <br />
-                <Link href="dbt-cli/installation">disambiguated link to duplicate id</Link>
+                <Link href="docs/about/overview">disambiguated link to duplicate id</Link>
                 <br />
-                <Link href="on-premises/installation">second disambiguated link to duplicate id</Link>
+                <Link href="dbt-cli/install/overview">second disambiguated link to duplicate id</Link>
                 <br />
-                <Link href="dbt-cli/installation.md">file paths work too</Link>
+                <Link href="docs/about/overview.md">file paths work too</Link>
                 <br />
                 <Link href="docs/reference/profiles.yml.md">link to document where id looks like a file</Link>
                 <br />

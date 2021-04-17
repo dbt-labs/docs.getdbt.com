@@ -1,0 +1,58 @@
+---
+title: "pip"
+---
+
+dbt Core and plugins are Python modules distributed on [PyPi](https://pypi.org/project/dbt/), and can be installed via `pip`. We recommend using virtual environments when installing with `pip`.
+
+<FAQ src="install-pip-os-prereqs" />
+<FAQ src="install-python-compatibility" />
+<FAQ src="install-pip-best-practices" />
+
+Once you know [which adapter](available-adapters) you're using, you can install it as `dbt-<adapter>`. For instance, if using Postgres:
+```shell
+pip install dbt-postgres
+```
+This will install `dbt-core` and `dbt-postgres` _only_:
+```
+$ dbt --version
+installed version: 1.0.0
+   latest version: 1.0.0
+
+Up to date!
+
+Plugins:
+  - postgres: 1.0.0
+```
+
+All adapters build on top of `dbt-core`. Some also depend on other adapters: for example, `dbt-redshift` builds on top of `dbt-postgres`. In that case, you would see those adapters included by your specific installation, too.
+
+### Upgrading
+
+To upgrade a specific adapter plugin:
+```shell
+pip install --upgrade dbt-<adapter>
+```
+
+### Install dbt-core only
+
+If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool. Also, be advised that dbt Core's [python API is currently unstable and undocumented](dbt-api).
+
+```shell
+pip install dbt-core
+```
+
+### `pip install dbt`
+
+Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, the PyPi package named `dbt` was a simple "pass-through" of `dbt-core` and the four original database adapter plugins. For v1, we formalized that split.
+
+If you have workflows or integrations that relied on installing the package named `dbt`, you can achieve the same behavior going forward by installing the same five packages that it used to:
+```
+pip install \
+  dbt-core \
+  dbt-postgres \
+  dbt-redshift \
+  dbt-snowflake \
+  dbt-bigquery
+```
+
+Or, better yet—install just the one(s) you need!

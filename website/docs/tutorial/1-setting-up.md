@@ -120,4 +120,4 @@ There’s two main ways of working with dbt:
 
 To use the CLI, it's important that you know some basics of your terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily. As such, if you are new to programming, we recommend using **dbt Cloud** for this tutorial.
 
-If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/installation) for your operating system.
+If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/install/overview) for your operating system.

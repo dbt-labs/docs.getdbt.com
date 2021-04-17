@@ -102,7 +102,17 @@ module.exports = {
   ],
   "dbt CLI": [
     "dbt-cli/cli-overview",
-    "dbt-cli/installation",
+    {
+      type: "category",
+      label: "Installing locally",
+      items: [
+        "dbt-cli/install/overview",
+        "dbt-cli/install/homebrew",
+        "dbt-cli/install/pip",
+        "dbt-cli/install/docker",
+        "dbt-cli/install/from-source",
+      ],
+    },
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
