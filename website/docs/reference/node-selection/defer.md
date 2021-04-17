@@ -4,15 +4,12 @@ title: "Defer"
 
 <Changelog>
 
-- **v0.18.0**: Introduced `--defer` and `--state` flags.
+- **v0.18.0**: Introduced `--defer` and `--state` flags as beta features.
 - **v0.19.0**: Changed `--defer` to use the current environment's resource, if it exists, and only fall back to the other environment's resource if the first does not. Also added support for `dbt test --defer`.
 
 </Changelog>
 
-:::info [β] Beta Feature
-This is net-new functionality in v0.18.0, with iterative improvements to come.
-If you encounter unexpected behavior, please post in Slack or open an issue.
-:::
+**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/fishtown-analytics/dbt/issues/2968).
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
