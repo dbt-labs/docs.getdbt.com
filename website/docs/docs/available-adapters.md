@@ -15,7 +15,7 @@ In addition to maintaining `dbt-core`, [Fishtown Analytics](https://github.com/f
 | Redshift     | [Profile Setup](redshift-profile), [Configuration](redshift-configs) | ✅ | ✅  | core |
 | BigQuery     | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅  | ✅  | core |
 | Snowflake    | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ | ✅  | core |
-| Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | nearly full support | preview | plugin |
+| Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | nearly full support | ✅ | plugin |
 | Databricks   | [Profile Setup](spark-profile#odbc), [Configuration](spark-configs#databricks-configurations) | nearly full support | preview | plugin |
 | Presto       | [Profile Setup](presto-profile) | partial support |  | plugin |
 
