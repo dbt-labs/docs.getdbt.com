@@ -19,7 +19,7 @@ function Home() {
   return (
     <>
       <Head>
-        <meta property="something" />
+        <meta name="google-site-verification" content="ex1EMwuCGU33-nOpoOajLXEpMPgUYK5exBWePCu-0l0" />
       </Head>
 
       <Layout permalink="/">
