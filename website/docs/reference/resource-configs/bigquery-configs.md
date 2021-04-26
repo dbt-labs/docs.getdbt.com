@@ -345,6 +345,8 @@ models:
 
 </File>
 
+Please note that in order to apply this, [persist_docs](https://docs.getdbt.com/reference/resource-configs/persist_docs) should be enabled on your dbt_project.yml file.
+
 ## Merge behavior (incremental models)
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
