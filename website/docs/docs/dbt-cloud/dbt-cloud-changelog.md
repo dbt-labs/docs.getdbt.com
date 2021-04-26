@@ -4,6 +4,44 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.25 (April 28, 2021)
+
+TODO - add release description and curate release notes.
+
+#### Enhancements
+
+- Makes remaining visual updates to the command bar
+- Use the active model name instead of the placeholder
+- Updates Common Actions Section as the User Types
+- Adds descriptions, syntax styling and descriptions to common actions
+- Add ability to delete connections, removing their association from the project.
+- Adds verification of dbt version for recent actions only feature flag
+
+#### Fixed
+
+- Removes testing prop that keeps drawer open
+- Add double encoding to handle snowflake roles with spaces and resolve a console error
+- Fix account switching in user notifications
+- Handle invalid Azure SSO group responses
+- Only show common actions when run drawer is closed
+- Allow unencrypted adapter fields to be edited
+- Reverting alerternativeId logic to the way it was before my renaming bugfix
+- Fix file and folder renaming, alongside associated tab state
+
+#### Internal
+
+- Save theoritical run start time to database to calculate run start delay.
+- Process GitLab webhooks on close events
+- Refactor getting dequeued and running runs with cache
+- GitLab webhooks UI update :fishing_pole_and_fish:
+- Add auth to GitProvider endpoint, support Service Tokens too :the_horns:
+- Process GitLab webhooks
+- Remove bring_your_own_dbt feature flag checks
+- Use manifest.json client-side to identify model of focused editor
+- Provision scribe as a headless service by default
+- Add connection testing for Spark connections
+- Add GitProviderView and register GitLab webhooks
+
 ## dbt Cloud v1.1.24 (April 14, 2021)
 
 Phew! As our company grows, so too does our changelog! Look at all these! The big chunks you'll see here are related to some ongoing in-IDE work, focused on the command bar experience, as well as some partner & connection work (see the Gits, Databricks, and so forth), and of course ongoing longer-term bets around metadata! 
