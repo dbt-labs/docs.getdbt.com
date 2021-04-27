@@ -211,7 +211,7 @@ Data tests are defined in `.sql` files, typically in your `tests` directory (as 
 <File name='tests/assert_total_payment_amount_is_positive.sql'>
 
 ```sql
--- Refunds have a negative amount, so the total amount should always be >= 0.
+-- Refunds have a negative amount, so the total amount should always be <= 0.
 -- Therefore return records where this isn't true to make the test fail
 select
     order_id,
