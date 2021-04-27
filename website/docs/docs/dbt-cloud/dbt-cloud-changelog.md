@@ -6,41 +6,36 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.25 (April 28, 2021)
 
-TODO - add release description and curate release notes.
+Exciting things coming down the pipe - ongoing enhancements to the command bar experience in the IDE, doing some work to ensure that more git providers are presented with a first class experience in Cloud, as well as assorted bug fixes - "I must have bug fixes, always and always" - that was Monet I think  
 
 #### Enhancements
 
-- Makes remaining visual updates to the command bar
-- Use the active model name instead of the placeholder
-- Updates Common Actions Section as the User Types
-- Adds descriptions, syntax styling and descriptions to common actions
-- Add ability to delete connections, removing their association from the project.
-- Adds verification of dbt version for recent actions only feature flag
+- Made a grip of visual updates to the new command bar work
+- Moved to using the active model name instead of a placeholder in command bar work
+- Added user ability to delete connections, remove association from a given project.
+- Added verification of dbt version for command bar beta feature flag
 
 #### Fixed
 
-- Removes testing prop that keeps drawer open
-- Add double encoding to handle snowflake roles with spaces and resolve a console error
-- Fix account switching in user notifications
-- Handle invalid Azure SSO group responses
-- Only show common actions when run drawer is closed
-- Allow unencrypted adapter fields to be edited
-- Reverting alerternativeId logic to the way it was before my renaming bugfix
-- Fix file and folder renaming, alongside associated tab state
+- Removed testing prop that keeps drawer open
+- Added double encoding to handle Snowflake roles with spaces
+- Fixed account switching in user notifications
+- Handled invalid Azure SSO group responses
+- Fixed error which only showed common actions when run drawer was closed
+- Allowed unencrypted adapter fields to be edited
+- Fixed bugs with file and folder renaming, alongside associated tab state
 
 #### Internal
 
-- Save theoritical run start time to database to calculate run start delay.
-- Process GitLab webhooks on close events
-- Refactor getting dequeued and running runs with cache
-- GitLab webhooks UI update :fishing_pole_and_fish:
-- Add auth to GitProvider endpoint, support Service Tokens too :the_horns:
-- Process GitLab webhooks
-- Remove bring_your_own_dbt feature flag checks
-- Use manifest.json client-side to identify model of focused editor
-- Provision scribe as a headless service by default
-- Add connection testing for Spark connections
-- Add GitProviderView and register GitLab webhooks
+- Saved theoretical run start time to database to calculate run start delay.
+- Processed GitLab webhooks on close events
+- Refactored getting dequeued and running runs with cache
+- Updated GitLab webhooks UI :fishing_pole_and_fish:
+- Added auth to GitProvider endpoint, support Service Tokens too :the_horns:
+- Used manifest.json client-side to identify model of focused editor
+- Provisioned scribe as a headless service by default
+- Added connection testing for Spark connections
+- Added GitProviderView and register GitLab webhooks
 
 ## dbt Cloud v1.1.24 (April 14, 2021)
 
