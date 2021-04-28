@@ -4,6 +4,39 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.25 (April 28, 2021)
+
+Exciting things coming down the pipe - ongoing enhancements to the command bar experience in the IDE, doing some work to ensure that more git providers are presented with a first class experience in Cloud, as well as assorted bug fixes - "I must have bug fixes, always and always" - that was Monet I think  
+
+#### Enhancements
+
+- Made a grip of visual updates to the new command bar work
+- Moved to using the active model name instead of a placeholder in command bar work
+- Added user ability to delete connections, remove association from a given project.
+- Added verification of dbt version for command bar beta feature flag
+
+#### Fixed
+
+- Removed testing prop that keeps drawer open
+- Added double encoding to handle Snowflake roles with spaces
+- Fixed account switching in user notifications
+- Handled invalid Azure SSO group responses
+- Fixed error which only showed common actions when run drawer was closed
+- Allowed unencrypted adapter fields to be edited
+- Fixed bugs with file and folder renaming, alongside associated tab state
+
+#### Internal
+
+- Saved theoretical run start time to database to calculate run start delay.
+- Processed GitLab webhooks on close events
+- Refactored getting dequeued and running runs with cache
+- Updated GitLab webhooks UI :fishing_pole_and_fish:
+- Added auth to GitProvider endpoint, support Service Tokens too :the_horns:
+- Used manifest.json client-side to identify model of focused editor
+- Provisioned scribe as a headless service by default
+- Added connection testing for Spark connections
+- Added GitProviderView and register GitLab webhooks
+
 ## dbt Cloud v1.1.24 (April 14, 2021)
 
 Phew! As our company grows, so too does our changelog! Look at all these! The big chunks you'll see here are related to some ongoing in-IDE work, focused on the command bar experience, as well as some partner & connection work (see the Gits, Databricks, and so forth), and of course ongoing longer-term bets around metadata! 
