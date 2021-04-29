@@ -345,7 +345,7 @@ models:
 
 </File>
 
-Please note that in order to apply this, [persist_docs](https://docs.getdbt.com/reference/resource-configs/persist_docs) should be enabled on your dbt_project.yml file.
+Please note that in order for policy tags to take effect, [column-level `persist_docs`](https://docs.getdbt.com/reference/resource-configs/persist_docs) must be enabled for the model, seed, or snapshot.
 
 ## Merge behavior (incremental models)
 
