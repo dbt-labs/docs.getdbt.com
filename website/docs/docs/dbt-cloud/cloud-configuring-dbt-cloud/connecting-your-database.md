@@ -89,7 +89,7 @@ will remove this restriction, and passwordless private keys will be supported.
 
 ![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
 
-### OAuth
+### Snowflake OAuth
 **Available in:** Development environments, Enterprise plans only
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
@@ -100,6 +100,8 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 ![Configuring Snowflake OAuth for a connection](/img/docs/dbt-cloud/dbt-cloud-enterprise/1bd0c42-Screen_Shot_2020-03-10_at_6.20.05_PM.png)
 
 ## Connecting to BigQuery
+
+### JSON keyfile
 
 :::info Uploading a service account JSON keyfile
 
@@ -128,3 +130,66 @@ In addition to these fields, there are two other optional fields that can be con
 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>
+
+### BigQuery OAuth
+**Available in:** Development environments, Enterprise plans only
+
+The OAuth auth method permits dbt Cloud to run development queries on behalf of
+a BigQuery user without the configuration of BigQuery service account keyfile in dbt Cloud. For
+more information on the initial configuration of a BigQuery OAuth connection in dbt Cloud, please see
+[the docs on setting up BigQuery OAuth](cloud-setting-up-bigquery-oauth).
+
+As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
+
+## Connecting to Databricks
+
+### ODBC
+
+dbt Cloud supports connecting to Databricks using
+[a Cluster](https://docs.databricks.com/clusters/index.html) or 
+[a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+Depending on how you connect to Databricks, either one of the `Cluster` or
+`Endpoint` configurations must be provided, but setting _both_ values is not
+allowed.
+
+The following fields are available when creating a Databricks connection:
+
+| Field | Description | Examples |
+| ----- | ----------- | -------- |
+| Host Name | The hostname of the Databricks account to connect to | `avc-def1234ghi-9999.cloud.databricks.com` |
+| Port | The port to connect to Databricks for this connection | 443 |
+| Organization | Optional (default: 0) | 0123456789 |
+| Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
+| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL Analytics) | 0123456789 |
+| User | Optional | dbt_cloud_user |
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connection.png" title="Configuring a Databricks connection"/>
+
+## Connecting to Apache Spark
+
+### HTTP and Thrift
+
+dbt Cloud supports connecting to an Apache Spark cluster using the HTTP method
+or the Thrift method. Note: While the HTTP method can be used to connect to
+an all-purpose Databricks cluster, the ODBC method is recommended for all
+Databricks connections. For further details on configuring these connection
+parameters, please see the [dbt-spark documentation](https://github.com/fishtown-analytics/dbt-spark#configuring-your-profile)
+
+The following fields are available when creating an Apache Spark connection using the
+HTTP and Thrift connection methods:
+
+| Field | Description | Examples |
+| ----- | ----------- | -------- |
+| Host Name | The hostname of the Spark cluster to connect to | `yourorg.sparkhost.com` |
+| Port | The port to connect to Spark on | 443 |
+| Organization | Optional (default: 0) | 0123456789 |
+| Cluster | The ID of the cluster to connect to | 1234-567890-abc12345 |
+| Connection Timeout | Number of seconds after which to timeout a connection | 10 |
+| Connection Retries | Number of times to attempt connecting to cluster before failing | 10 |
+| User | Optional | dbt_cloud_user |
+| Auth | Optional, supply if using Kerberos | `KERBEROS` |
+| Kerberos Service Name | Optional, supply if using Kerberos | `hive` |
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/spark-connection.png" title="Configuring a Spark connection"/>

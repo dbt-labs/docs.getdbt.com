@@ -46,6 +46,9 @@ class Relation:
 -- Return the `identifier` for this relation
 {{ relation.identifier }}
 
+-- Return relation name without the database
+{{ relation.include(database=false) }}
+
 -- Return true if the relation is a table
 {{ relation.is_table }}
 

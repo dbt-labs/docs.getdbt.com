@@ -345,6 +345,8 @@ models:
 
 </File>
 
+Please note that in order for policy tags to take effect, [column-level `persist_docs`](https://docs.getdbt.com/reference/resource-configs/persist_docs) must be enabled for the model, seed, or snapshot.
+
 ## Merge behavior (incremental models)
 
 The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
@@ -601,3 +603,6 @@ Views with this configuration will be able to select from objects in
 `project_1.dataset_1` and `project_2.dataset_2`, even when they are located
 elsewhere and queried by users who do not otherwise have
 access to `project_1.dataset_1` and `project_2.dataset_2`.
+
+#### Limitations
+The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.

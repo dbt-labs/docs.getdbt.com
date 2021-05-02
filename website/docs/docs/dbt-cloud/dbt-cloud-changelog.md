@@ -4,6 +4,193 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.25 (April 28, 2021)
+
+Exciting things coming down the pipe - ongoing enhancements to the command bar experience in the IDE, doing some work to ensure that more git providers are presented with a first class experience in Cloud, as well as assorted bug fixes - "I must have bug fixes, always and always" - that was Monet I think  
+
+#### Enhancements
+
+- Made a grip of visual updates to the new command bar work
+- Moved to using the active model name instead of a placeholder in command bar work
+- Added user ability to delete connections, remove association from a given project.
+- Added verification of dbt version for command bar beta feature flag
+
+#### Fixed
+
+- Removed testing prop that keeps drawer open
+- Added double encoding to handle Snowflake roles with spaces
+- Fixed account switching in user notifications
+- Handled invalid Azure SSO group responses
+- Fixed error which only showed common actions when run drawer was closed
+- Allowed unencrypted adapter fields to be edited
+- Fixed bugs with file and folder renaming, alongside associated tab state
+
+#### Internal
+
+- Saved theoretical run start time to database to calculate run start delay.
+- Processed GitLab webhooks on close events
+- Refactored getting dequeued and running runs with cache
+- Updated GitLab webhooks UI :fishing_pole_and_fish:
+- Added auth to GitProvider endpoint, support Service Tokens too :the_horns:
+- Used manifest.json client-side to identify model of focused editor
+- Provisioned scribe as a headless service by default
+- Added connection testing for Spark connections
+- Added GitProviderView and register GitLab webhooks
+
+## dbt Cloud v1.1.24 (April 14, 2021)
+
+Phew! As our company grows, so too does our changelog! Look at all these! The big chunks you'll see here are related to some ongoing in-IDE work, focused on the command bar experience, as well as some partner & connection work (see the Gits, Databricks, and so forth), and of course ongoing longer-term bets around metadata! 
+
+#### Enhancements
+
+- Added onFocus and onBlur properties to populate and remove "dbt" in command bar
+- Enabled executing command on enter if user's cursor is in the command bar
+- Added Metadata API access button to account settings
+- Added feature flag for displaying only recent actions
+- Added dbt 0.19.1
+- Added regex validation to Databrick's hostname web-form field
+- Updated Connection Edit to allow adapter editing
+- Enabled self-service Github and GitLab integration disconnection
+- Added link to docs for license map & handle duplicate error gracefully
+- Moved deferred job execution to execution settings.
+- Recorded user command history
+- Enabled new file creation flow
+
+#### Fixed
+
+- Added styling class to popup to ensure text is readable
+- Fixed sourcemaps syntax for dev commands
+- Added timeout and retry to dbt deps
+- Updated databricks schema field type and add error handling to ConnectionSetup
+- Fixed Bigquery private keys & convert text to textarea
+- Fixed last used datetime in the service token UI
+- Added missing token URI to Bigquery connection edit
+- Prevent multiple develop sessions for one user
+- Fixed SchemaForm validating non-displayed fields
+- Fixed required fields for Bigquery connection JSON uploads
+- Fixed self selection as deferred job
+- Always create a Monaco model on tab open if no matching model exists
+- Fixed tab dirty indicator on open tab
+- Fixed password reset flow
+- Fixed docs and sources links in dashboard page for read only users
+- Fixed truncating first_name to 30 characters
+
+#### Internal
+
+- Bumped schema version of command drawer dismiss event to 1-0-1
+- Attempted to prevent test-frontend from running out of memory
+- Added successful sign in metric
+- Defined RPC readiness probe
+- Removed should_handle method from ScrubbingStreamHandler
+- Added metadata read permission to account admin service token
+- Fixed develop request timing monitoring, push data to Datadog
+- Updated ide_command_drawer_dismiss event to schema version 1-0-0
+- Tracked snowplow event when command drawer menu is dismissed
+- Added metadata.cloud.getdbt.com to allowed hosts
+- Tracked Snowplow event when items are selected from the command drawer
+- Added Datadog Real User Monitoring to dbt-cloud
+- Improved command drawer interactions
+- Replaced legacy user feature flag admin with new
+- Created basic command drawer experience with stubbed data
+
+## dbt Cloud v1.1.23 (March 31, 2021)
+
+Some backend work, some frontend work, some bug fixes: a nice mix for this release. A few user facing changes you may have noticed already are the persistence of dark/light mode settings across refresh (no more blinding IDE!), branches in the IDE being categorized by Active vs. Removed from Remote, and a tidier new file creation flow, with the file tree expanding to show the new file and opening a new tab to populate the said file! 
+
+#### Enhancements
+
+- Splitting Local-only and Remote branches into different sections of the dropdown selector
+- Update Profile Integrations to include SSO info
+- Upgrade to Tailwind 2.0 and FUI 0.0.5
+- Allow users to create metadata tokens from the UI
+- Support manually-managed group memberships
+- SSO: resolve bug w/ first & last names acting up 
+- Integrate Delighted for NPS surveys
+- Add dbt 0.19.1rc1 to Cloud 
+- Add an account-level setting to require users to re-authenticate via SSO
+- Read-only metadata ServiceToken for Cloud 
+- Persist IDE light mode / dark mode across refresh
+- Categorize & order git branches
+- Improve new file creation flow
+
+#### Fixed
+
+- Check for an empty repository before checking matching remote
+- Increase wait if run was finished recently
+- Support default branches through git when a custom branch is not specified
+- Don't download logs for skipped steps
+- API Gateway is no longer flooded with errors due to IDE blindly polling dead Develop pod
+- Fix user license creation via admin interface
+- Adjusted addition of global .gitignore
+
+#### Internal
+
+- Filter our ResourceWarning error from Datadog
+- add log filter to wsgi.py
+- Remove Rollbar from codebase
+- Add UI Logs to Datadog
+- Lower develop session timeout from 6 hours to 3 hours
+- Upgrade to Webpack 5 and bundle Angularjs
+
+## dbt Cloud v1.1.22 (March 17, 2021)
+
+Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not fall over for want of memory, as well as a grip of bug fixes and error messaging improvements (error messages should be helpful, not scolding or baffling, after all!)
+
+#### Enhancements
+
+- Release Scribe to 100% of multi-tenant accounts
+- Update language for SQL drawer empty state
+- Reduce Scribe memory usage
+
+#### Fixed
+
+- Fix NoSuchKey error
+- Guarantee unique notification settings per account, user, and type
+- Fix for account notification settings
+- Dont show deleted projects on notifications page
+- Fix unicode error while decoding last_chunk
+- Show more relevant errors to customers
+- Groups are now editable by non-sudo requests
+- Normalize domain names across inputs/outputs
+- Redirect auth failed errors back to appropriate page with error description
+
+#### Internal
+
+- Reducing Scribe memory request in production
+- Don't clobber run logs across all dev environments
+- Refactor license_type
+
+## dbt Cloud v1.1.21 (March 3, 2021)
+
+This changelog wraps up work on what we've been calling the SQL Drawer in the IDE - some design nudges, some interface adjustments, overall a cleaner and snappier experience. If you haven't dipped into the IDE in a while it's worth taking a look! Some back-end work as well, making SSO and role based admin easier and more broadly available for Enterprise level folks, along with your usual assortment of bug squashes and iterations. 
+
+
+#### Enhancements
+
+- Styling and copy adjustments in the Cloud IDE
+- Open self-service role based access control to all Enterprise customers
+- Update AuthProvider UI to enable SAML and Okta
+- Add a SAML auth redirect URL
+
+#### Fixed
+
+- Add param to admin project mapper to included soft deleted projects
+- Fix delaying logs when we are waiting for a model to finish executing
+- Saving GSuite auth provider form triggers an authorize
+- Scribe populates truncated debug logs when runs are executing
+- Delay attempts for non-200 status codes
+- Add logic to support select fields in adapter UI
+- Undo clobbering groups
+
+#### Internal
+
+- Fix latest.sh script
+- Remove scribe image version check
+- Allow opt-in APM
+- Allow updating user license from backend page
+- Update production build workflow
+- Filter only for log_archive_type of database
+
 ## dbt Cloud v1.1.20 (February 17, 2021)
 
 Continued stability and quality of life improvements for folks with multiple accounts and projects - no longer will you have to remember the chronological order of birth of your accounts and projects, as they'll be ordered by the much easier to parse (for human brains anyway) alphabetical order. We're also shipping some experience improvements in the SQL Drawer at the bottom half of the IDE. 

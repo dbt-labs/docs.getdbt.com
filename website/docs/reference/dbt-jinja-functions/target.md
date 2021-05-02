@@ -49,6 +49,7 @@ Some configs are shared between all adapters, while others are adapter-specific.
 | Variable | Example | Description |
 | -------- | ------- | ----------- |
 | `target.project` | abc-123 | The project specified in the active profile |
+| `target.dataset` | dbt_alice | The dataset the active profile |
 
 ## Examples
 ### Use `target.name` to limit data in dev

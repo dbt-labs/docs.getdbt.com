@@ -167,7 +167,7 @@ module.exports = {
             label: "Single Sign On",
             items: [
                 "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
             ],
@@ -177,6 +177,7 @@ module.exports = {
             label: "Database Auth",
             items: [
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth"
             ],
         },
       ],
@@ -191,7 +192,15 @@ module.exports = {
         "docs/dbt-cloud/deployments/deployment-architecture",
       ],
     },
-    "docs/dbt-cloud/cloud-api",
+    {
+      type: "category",
+      label: "dbt Cloud APIs",
+      items: [
+        "docs/dbt-cloud/dbt-cloud-api/cloud-apis",
+        "docs/dbt-cloud/dbt-cloud-api/user-tokens",
+        "docs/dbt-cloud/dbt-cloud-api/service-tokens",
+      ],
+    },
     "docs/dbt-cloud/cloud-changelog",
   ],
   reference: [

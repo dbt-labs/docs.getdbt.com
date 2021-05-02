@@ -3,6 +3,12 @@ id: dependencies
 title: External Dependencies
 ---
 
+:::note
+
+We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+
+:::
+
 This guide is intended to help administrators running instances of dbt Cloud on-premises understand the internal components of their instance, as well as how their instance will interact with other services over the internet.
 
 ## Required External Dependencies

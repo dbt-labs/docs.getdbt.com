@@ -3,6 +3,12 @@ id: setup
 title: Setup
 ---
 
+:::note
+
+We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+
+:::
+
 ## First-time Setup
 
 ### Configuration Console

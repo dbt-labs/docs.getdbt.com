@@ -3,11 +3,11 @@ id: deployment-architecture
 title: Architecture
 ---
 
-This page is intended to help both practitioners seeking to understand the architecture and data flow of the hosted dbt Cloud product as well as administrators running customer managed instances of dbt Cloud.
+This page is intended to help both practitioners seeking to understand the architecture and data flow of the hosted dbt Cloud product.
 
 ### Application Data Flows
 
-Whether installed in a hosted or customer managed environment, the dbt Cloud application is comprised of a set of static components, as well as a set of dynamic components. The static components are constantly running to serve highly available dbt Cloud functionality, for example, the dbt Cloud web application. The dynamic components are created just-in-time to fill background jobs or a user request to use the IDE. These components are enumerated below.
+The dbt Cloud application is comprised of a set of static components, as well as a set of dynamic components. The static components are constantly running to serve highly available dbt Cloud functionality, for example, the dbt Cloud web application. The dynamic components are created just-in-time to fill background jobs or a user request to use the IDE. These components are enumerated below.
 
 <img src="/img/docs/dbt-cloud/on-premises/data-flows.png" />
 
@@ -36,7 +36,7 @@ dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud
 
 ### Deployment Architecture
 
-The following two sections describe the network architectures for _hosted_ and _customer managed_ deployments. Note that both categories have many similar components with the main difference being that hosted deployments leverage AWS infrastructure and customer managed can be deployed in any cloud based or on-premise infrastructure.
+The following two sections describe the network architectures for dbt Cloud deployments. Hosted deployments leverage AWS infrastructure.
 
 #### Hosted Network Architecture
 

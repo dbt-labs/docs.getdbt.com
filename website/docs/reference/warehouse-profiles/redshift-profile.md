@@ -16,7 +16,7 @@ company-name:
       type: redshift
       host: hostname.region.redshift.amazonaws.com
       user: username
-      pass: password1
+      password: password1
       port: 5439
       dbname: analytics
       schema: analytics
