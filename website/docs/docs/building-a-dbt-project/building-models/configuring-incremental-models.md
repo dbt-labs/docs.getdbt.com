@@ -190,3 +190,32 @@ select ...
 ```
 
 </File>
+
+### Strategy-specific configs
+
+<Changelog>
+
+  - **v0.20.0:** Introduced `merge_update_columns`
+
+</Changelog>
+
+If you are using the `merge` strategy and have specified a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
+
+On Snowflake and BigQuery, you may optionally pass a list of column names to a `merge_update_columns` config. In that case, dbt will update _only_ the columns specified by the config, and keep the previous values of other columns.
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    merge_update_columns = ['email', 'ip_address'],
+    ...
+  )
+}}
+
+select ...
+```
+
+</File>
