@@ -21,6 +21,7 @@ to understand how to effectively use this variable.
 <Changelog>
 
   - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
+  - In dbt v0.20.0, exposures were added to the `graph.exposures` object
 
 </Changelog>
 
@@ -36,6 +37,7 @@ representations of those nodes. A simplified example might look like:
       "path": "models/path/to/model_name.sql",
       ...
     },
+    ...
   },
   "sources": {
     "source.project_name.snowplow.event": {
@@ -46,6 +48,18 @@ representations of those nodes. A simplified example might look like:
       "path": "models/path/to/schema.yml",
       ...
     },
+    ...
+  },
+  "exposures": {
+    "exposure.my_project.traffic_dashboard": {
+      "type": "dashboard",
+      "maturity": "high",
+      "unique_id": "source.project_name.traffic_dashboard",
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  }
 }
 ```
 
@@ -134,6 +148,46 @@ select * from (
   select * from raw.snowplow.event_remove_from_cart union all
   select * from raw.snowplow.event_checkout
 )
+*/
+
+```
+
+</File>
+
+### Accessing exposures
+
+To access the sources in your dbt project programatically, use the `exposures`
+attribute of the `graph` object.
+
+Example usage:
+
+<File name='models/my_important_view_model.sql'>
+
+```sql
+{# Include a SQL comment naming all of the exposures that this model feeds into #}
+
+{% set exposures = [] -%}
+{% for exposure in graph.exposures.values() -%}
+  {%- if model['unique_id'] in exposure.depends_on.nodes -%}
+    {%- do exposures.append(exposure) -%}
+  {%- endif -%}
+{%- endfor %}
+
+-- HELLO database administrator! Before dropping this view,
+-- please be aware that doing so will affect:
+
+{% for exposure in exposures %}
+--   * {{ exposure.name }} ({{ exposure.type }})
+{% endfor %}
+
+/*
+  Example compiled SQL
+---------------------------------------------------------------
+-- HELLO database administrator! Before dropping this view,
+-- please be aware that doing so will affect:
+
+--   * our_metrics (dashboard)
+--   * my_sync (application)
 */
 
 ```
