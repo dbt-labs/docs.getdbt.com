@@ -38,7 +38,7 @@ Finds an adapter-appropriate version of a named macro. If `packages` is specifie
 searches the packages in order until it finds a working implementation.
 
 Adapter-specific macros are prefixed with the lowercase adapter name and two
-underscores. For a macro named `my_macro`:
+underscores. E.g., given a macro named `my_macro`, dbt would look for:
 * Postgres: `postgres__my_macro`
 * Redshift: `redshift__my_macro`
 * Snowflake: `snowflake__my_macro`
@@ -57,7 +57,7 @@ underscores. For a macro named `my_macro`:
 }>
 <TabItem value="simple">
 
-I want to define a macro, `concat`, that compiles to the SQL function `concat()` as its
+Let's say I want to define a macro, `concat`, that compiles to the SQL function `concat()` as its
 default behavior. On Redshift and Snowflake, however, I want to use the `||` operator instead.
 
 <File name='macros/concat.sql'>
@@ -89,9 +89,9 @@ default behavior. On Redshift and Snowflake, however, I want to use the `||` ope
 
 <TabItem value="advanced">
 
-I want to define a macro, `concat`, with a specific implementation on Redshift
+Let's say I want to define a macro, `concat`, with a specific implementation on Redshift
 that handles null values. In all other cases—including the default implementation—
-I want to fall back on [`dbt_utils.concat`](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/cross_db_utils/concat.sql).
+I want to fall back on [`dbt_utils.concat`](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/cross_db_utils/concat.sql). In this case, I can use the `packages` argument to define the search area and order:
 
 <File name='macros/concat.sql'>
 
@@ -110,16 +110,11 @@ I want to fall back on [`dbt_utils.concat`](https://github.com/fishtown-analytic
 
 </File>
 
-dbt prioritizes package specificity over adapter specificity. If I call the `concat` 
-macro while running on Postgres, dbt will look for the following macros in order:
-
-1. `my_project.postgres__concat` (not found)
-2. `my_project.default__concat` (not found)
-3. `dbt_utils.postgres__concat` (not found)
-4. `dbt_utils.default__concat` (found!)
-
 </TabItem>
 </Tabs>
+
+<FAQ src="dispatch-package-maintainer" />
+
 
 ## get_missing_columns
 __Args__:
