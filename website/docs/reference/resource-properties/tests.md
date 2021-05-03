@@ -26,7 +26,8 @@ models:
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [severity](#severity): warn | error
+          [enabled](enabled): true | false
+          [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
 
     columns:
@@ -35,7 +36,8 @@ models:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [severity](#severity): warn | error
+              [enabled](enabled): true | false
+              [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
 
 ```
@@ -60,7 +62,8 @@ sources:
 
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
-            [severity](#severity): warn | error
+            [enabled](enabled): true | false
+            [severity](severity): error | warn
             [tags](resource-properties/tags): [<string>]
 
       columns:
@@ -70,7 +73,8 @@ sources:
 
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
-                [severity](#severity): warn | error
+                [enabled](enabled): true | false
+                [severity](severity): error | warn
                 [tags](resource-properties/tags): [<string>]
 
 ```
@@ -92,7 +96,8 @@ seeds:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [severity](#severity): warn | error
+          [enabled](enabled): true | false
+          [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
 
     columns:
@@ -101,7 +106,8 @@ seeds:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [severity](#severity): warn | error
+              [enabled](enabled): true | false
+              [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
 
 ```
@@ -123,7 +129,8 @@ snapshots:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [severity](#severity): warn | error
+          [enabled](enabled): true | false
+          [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
 
     columns:
@@ -132,7 +139,8 @@ snapshots:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [severity](#severity): warn | error
+              [enabled](enabled): true | false
+              [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
 
 ```
@@ -252,51 +260,6 @@ models:
 
 The `to` argument accepts a [Relation](dbt-classes#relation) – this means you can pass it a `ref` to a model (e.g. `ref('customers')`), or a `source` (e.g. `source('jaffle_shop', 'customers')`).
 
-
-## severity
-
-<Changelog>
-
-* `v0.14.0`: This parameter was introduced
-
-</Changelog>
-
-The "severity" of a test can be configured by supplying the `severity` configuration option in the test specification. The `severity` option can be one of `warn` or `error`. If `warn` is supplied, then dbt will log a warning for any failing tests, but the test will still be considered passing. This configuration is useful for tests in which a failure does not imply that action is required.
-
-<File name='models/<filename>.yml'>
-
-```yaml
-version: 2
-
-models:
-  - name: orders
-    columns:
-      - name: order_id
-        tests:
-          - unique:
-              severity: warn
-```
-
-</File>
-
-If a `severity` level is not provided, then tests are run with the `error` severity level. There is currently no way to set all tests to the "warn" severity by default.
-
-
-The `severity` config can be applied to any schema test. They can also be applied to [data tests](building-a-dbt-project/tests#data-tests):
-
-```sql
-{{
-    config(
-        severity='warn'
-    )
-}}
-
-select ...
-
-```
-
-
-
 ## Additional examples
 
 ### Testing an expression
@@ -316,9 +279,9 @@ models:
 
 </File>
 
-### Advanced: define and use a custom schema test
+### Define and use a custom generic test
 
-If you define your own custom schema test, you can use that as the `test_name`:
+If you define your own custom generic ("schema") test, you can use that as the `test_name`:
 
 <File name='models/<filename>.yml'>
 
@@ -336,4 +299,4 @@ models:
 
 </File>
 
-Check out the guide on writing a [custom schema test](custom-schema-tests) for more information.
+Check out the guide on writing a [custom generic test](custom-generic-tests) for more information.

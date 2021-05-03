@@ -62,7 +62,7 @@ module.exports = {
         "docs/guides/getting-help",
         "docs/guides/best-practices",
         "docs/guides/managing-environments",
-        "docs/guides/writing-custom-schema-tests",
+        "docs/guides/writing-custom-generic-tests",
         "docs/guides/building-packages",
         "docs/guides/creating-new-materializations",
         "docs/guides/understanding-state",
@@ -239,7 +239,7 @@ module.exports = {
         "reference/seed-configs",
         "reference/source-configs",
         "reference/snapshot-configs",
-        "reference/data-test-configs",
+        "reference/test-configs",
         {
           type: "category",
           label: "List of general configs",

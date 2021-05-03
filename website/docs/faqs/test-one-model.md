@@ -7,4 +7,4 @@ Running tests on one model looks very similar to running a model: use the `--mod
 dbt test --models customers
 ```
 
-Check out the [model selection syntax documentation](node-selection/syntax) for more operators and examples.
+Check out the [model selection syntax documentation](node-selection/syntax) for full syntax, and [test selection examples](test-selection-examples) in particular.

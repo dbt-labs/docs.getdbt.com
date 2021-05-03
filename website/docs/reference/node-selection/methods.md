@@ -72,9 +72,9 @@ $ dbt test --models test_type:data          # run all data tests
 ### The "test_name" method
 <Changelog>New in v0.18.0</Changelog>
 
-The `test_name` method is used to select schema tests based on the name of the `test_` macro
-that defines it. For more information about how schema tests are defined, read about
-[custom schema tests](custom-schema-tests).
+The `test_name` method is used to select tests based on the name of the generic test
+that defines it. For more information about how generic tests are defined, read about
+[tests](building-a-dbt-project/tests).
 
 ```bash
 $ dbt test --models test_name:unique            # run all instances of the `unique` test
