@@ -70,6 +70,7 @@ module.exports = {
           type: "category",
           label: "Migration guides",
           items: [
+            "docs/guides/migration-guide/upgrading-to-0-20-0",
             "docs/guides/migration-guide/upgrading-to-0-19-0",
             "docs/guides/migration-guide/upgrading-to-0-18-0",
             "docs/guides/migration-guide/upgrading-to-0-17-0",
