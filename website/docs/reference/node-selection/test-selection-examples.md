@@ -2,27 +2,35 @@
 title: "Test selection examples"
 ---
 
-The test selection syntax grew out of the model selection syntax. As such, the syntax will look familiar if you wish to:
+Test selection works a little differently, in order to make it very easy to:
 * run tests on a particular model
-* run tests on models in a sub directory
+* run tests on all models in a subdirectory
 * run tests on all models upstream / downstream of a model, etc.
 
-Tests have their own properties _and_ inherit the properties of the nodes they select from. This means you:
-* select tests based on the file path of the models being tested, rather than the file paths of the `.yml` files that configure the tests
-* can use selector methods that check config properties of the resources being tested
+Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, or so on. Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected.
 
-Things start to get a little unfamiliar when you want to test things other than models, so we've included lots of examples below. In the future, we plan to make this syntax more intuitive.
+<Changelog>
 
-### Run schema tests only
+* `v0.20.0`: Test selection is no longer greedy for indirect inclusion (ALL parents must be selected for the test to be selected). It is still greedy for indirect exclusion (if ANY parent is excluded, the test is excluded).
+
+</Changelog>
+
+This can be complex for tests with multiple parents (e.g. `relationships`, or custom tests that `ref()` multiple models). To prevent tests from running when they aren't expected, a test will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. On the other hand, if **ANY** parent is excluded, the test will be "greedily" excluded as well.
+
+We've included lots of examples below:
+
+### Direct selection
+
+Run schema tests only:
 
 ```shell
 $ dbt test --models test_type:schema
 
 # before v0.18.0:
-$ dbt test --schema # technically this runs all schema tests, tests tagged 'schema', and tests of models tagged 'schema'
+$ dbt test --schema # technically this runs all schema tests, tests tagged 'schema', and tests on anything else tagged 'schema'
 ```
 
-### Run data tests only
+Run data tests only:
 
 ```shell
 $ dbt test --models test_type:data
@@ -31,97 +39,86 @@ $ dbt test --models test_type:data
 $ dbt test --data  # technically this runs all data tests, tests tagged 'data', and tests of models tagged 'data'
 ```
 
-### Run tests on a particular model
+In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
+
+### Indirect selection
 
 ```shell
-# syntax
-$ dbt test --models model_name
-# example
 $ dbt test --models customers
+$ dbt test --models orders
 ```
 
+These are examples of "indirect" selection: `customers` and `orders` select models (whether by name or FQN). Any tests defined on `customers` or `orders` will be selected indirectly.
 
-### Run tests on models
-
-These should feel somewhat familiar if you're used to executing `dbt run` with the `--models` option to build parts of your DAG.
-
-Check out the more in-depth examples of the model selection syntax above for more details:
+If a test depends on both `customers` _and_ `orders`, e.g. a `relationships` test between them, it will _not_ be selected indirectly in the example above. It would be selected indirectly by:
 
 ```shell
-# Run tests on a model
+$ dbt test --models customers orders
+```
+
+The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--models` option to build parts of your DAG:
+
+```shell
+# Run tests on a model (indirect selection)
 $ dbt test --models customers
 
-# Run tests on all models in the models/staging/jaffle_shop directory
+# Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
 $ dbt test --models staging.jaffle_shop
 
-# Run tests downstream of a model
+# Run tests downstream of a model (note this will select those tests directly!)
 $ dbt tests --models stg_customers+
 
-# Run tests upstream of a model
+# Run tests upstream of a model (indirect selection)
 $ dbt tests --models +stg_customers
 
-# Run tests on all models with a particular tag
+# Run tests on all models with a particular tag (direct + indirect)
 $ dbt test --models tag:my_model_tag
 
-# Run tests on all models with a particular materialization
+# Run tests on all models with a particular materialization (indirect selection)
 $ dbt test --models config.materialized:table
 
 ```
 
-### Run tests on all sources
+The same principle can be extended to tests defined on other resource types. In these cases, we will execute all tests defined on certain sources via the `source:` selection method:
 
 ```shell
+# tests on all sources
 $ dbt test --models source:*
-```
 
-### Run tests on one source
-
-```shell
-# syntax
-$ dbt test --models source:<source_name>
-# example
+# tests on one source
 $ dbt test --models source:jaffle_shop
-```
 
-### Run tests on one source table
-
-```shell
-# syntax
-$ dbt test --models source:<source_name>.<table_name>
-# example
+# tests on one source table
 $ dbt test --models source:jaffle_shop.customers
-```
 
-
-### Run tests on everything _but_ sources
-
-```shell
+# tests on everything _except_ sources
 $ dbt test --exclude source:*
 ```
 
-### Run a specific data test
+### More complex selection
+
+Through the combination of direct and indirect selection, there are many ways to accomplish the same outcome. Let's say we have a data test named `assert_total_payment_amount_is_positive` that depends on a model named `payments`. All of the following would manage to select and execute that test specifically:
 
 ```shell
-# syntax
-$ dbt test --data --models model_name
-
-# example
-$ dbt test --data --models assert_total_payment_amount_is_positive
-# alternate syntax
-$ dbt test --models assert_total_payment_amount_is_positive  # The --data flag is optional
+$ dbt test --models assert_total_payment_amount_is_positive # directly select the test by name
+$ dbt test --models payments,test_type:data # indirect selection, v0.18.0
+$ dbt test --models payments --data  # indirect selection, earlier versions
 ```
 
-### Run tests on seeds / snapshots only
-
-Currently it is not possible to:
-* Run tests on all seeds, OR
-* Run tests on all snapshots
-
-Instead, you will have to provide the name of the resource as the argument to the `--models` option:
+As long as you can select a common property of a group of resources, indirect selection allows you to execute all the tests on those resources, too. In the example above, we saw it was possible to test all table-materialized models. This principle can be extended to other resource types, too:
 
 ```shell
-$ dbt test --models orders_snapshot
+# Run tests on all models with a particular materialization
+$ dbt test --models config.materialized:table
+
+# Run tests on all seeds, which use the 'seed' materialization
+$ dbt test --models config.materialized:seed
+
+# Run tests on all snapshots, which use the 'snapshot' materialization
+$ dbt test --models config.materialized:snapshot
 ```
+
+Note that this functionality may change in future versions of dbt.
 
 ### Run tests on tagged columns
 <File name='models/<filename>.yml'>
