@@ -61,9 +61,22 @@ Table models, incremental models, seeds, and snapshots may have a list of `index
 select ...
 ```
 
+</File>
+
 If one or more indexes are configured on a resource, dbt will run `create index` DDL statement(s) as part of that resource's materialization, within the same transaction as its main `create` statement. For the index's name, dbt uses a hash of its properties and the current timestamp, in order to guarantee uniqueness and avoid namespace conflict with other indexes.
 
-</File>
+```sql
+create index if not exists
+"3695050e025a7173586579da5b27d275"
+on "my_target_database"."my_target_schema"."indexed_model" 
+using hash
+(column_a);
+
+create unique index if not exists
+"1bf5f4a6b48d2fd1a9b0470f754c1b0d"
+on "my_target_database"."my_target_schema"."indexed_model" 
+(column_a, column_b);
+```
 
 You can also configure indexes for a number of resources at once:
 

@@ -2,12 +2,14 @@
 title: "Test selection examples"
 ---
 
-Test selection works a little differently, in order to make it very easy to:
+Test selection works a little differently from other resource selection. This makes it very easy to:
 * run tests on a particular model
 * run tests on all models in a subdirectory
 * run tests on all models upstream / downstream of a model, etc.
 
-Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, or so on. Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected.
+Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, etc.
+
+Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected.
 
 <Changelog>
 
@@ -15,28 +17,28 @@ Like all resource types, tests can be selected **directly**, by methods and oper
 
 </Changelog>
 
-This can be complex for tests with multiple parents (e.g. `relationships`, or custom tests that `ref()` multiple models). To prevent tests from running when they aren't expected, a test will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. On the other hand, if **ANY** parent is excluded, the test will be "greedily" excluded as well.
+This can be complex for tests with multiple parents (e.g. `relationships`, or custom tests that `ref()` multiple models). To prevent tests from running when they aren't wanted, a test will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. On the other hand, if **ANY** parent is excluded, the test will be aggressively excluded as well.
 
 We've included lots of examples below:
 
 ### Direct selection
 
-Run schema tests only:
+<Changelog>
+
+* `v0.18.0`: Introduced the `test_type` selection method. In previous versions, similar behavior is possible via the `--schema` or `--data` flags.
+
+</Changelog>
+
+Run generic (schema) tests only:
 
 ```shell
 $ dbt test --models test_type:schema
-
-# before v0.18.0:
-$ dbt test --schema # technically this runs all schema tests, tests tagged 'schema', and tests on anything else tagged 'schema'
 ```
 
-Run data tests only:
+Run bespoke (data) tests only:
 
 ```shell
 $ dbt test --models test_type:data
-
-# before v0.18.0:
-$ dbt test --data  # technically this runs all data tests, tests tagged 'data', and tests of models tagged 'data'
 ```
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
@@ -48,13 +50,15 @@ $ dbt test --models customers
 $ dbt test --models orders
 ```
 
-These are examples of "indirect" selection: `customers` and `orders` select models (whether by name or FQN). Any tests defined on `customers` or `orders` will be selected indirectly.
+These are examples of "indirect" selection: `customers` and `orders` select models (whether by name or path). Any tests defined on `customers` or `orders` will be selected indirectly, and thereby included.
 
-If a test depends on both `customers` _and_ `orders`, e.g. a `relationships` test between them, it will _not_ be selected indirectly in the example above. It would be selected indirectly by:
+If a test depends on both `customers` _and_ `orders` (e.g. a `relationships` test between them), it will _not_ be selected indirectly in the example above. Instead, it would only be selected indirectly if both parents are selected:
 
 ```shell
 $ dbt test --models customers orders
 ```
+
+### Syntax examples
 
 The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--models` option to build parts of your DAG:
 
@@ -121,6 +125,9 @@ $ dbt test --models config.materialized:snapshot
 Note that this functionality may change in future versions of dbt.
 
 ### Run tests on tagged columns
+
+Because the column `order_id` is tagged `my_column_tag`, the test itself also receives the tag `my_column_tag`. Because of that, this is an example of direct selection.
+
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -142,7 +149,11 @@ models:
 $ dbt test --models tag:my_column_tag
 ```
 
+Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of dbt.
+
 ### Run tagged tests only
+
+This is an even clearer example of direct selection: the test itself is tagged `my_test_tag`, and selected accordingly.
 
 <File name='models/<filename>.yml'>
 

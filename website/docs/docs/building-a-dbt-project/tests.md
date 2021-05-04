@@ -18,13 +18,13 @@ Tests are assertions you make about your models and other resources in your dbt 
 
 </Changelog>
 
-Like almost everything in dbt, tests are just SQL queries. In particular, they are `select` statements that seek to grab "failing" records: All the rows which go against your expectation. If you assert that a column is unique in a model, the test query wants to find all your duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
+Like almost everything in dbt, tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
 
 There are two ways of defining tests in dbt:
-* A **bespoke** test (sometimes called "data test") is testing in its simplest form: If you can write a SQL query that returns "failing" rows, you can save that query in a `.sql` file within your [test directory](test-paths). It's a test!
-* A **generic** test (sometimes called "schema test") is a parametrized query that accepts arguments. The test query is defined in a special `test` block (like a macro). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic tests built in, and we think you should use them!
+* A **bespoke** test (sometimes called "data test") is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](test-paths). It's now a test, and it will be executed by the `dbt test` command.
+* A **generic** test (sometimes called "schema test") is a parametrized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic tests built in, and we think you should use them!
 
-Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both have their time and place.
+Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
 :::tip Creating your first tests
 If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models and tests.
@@ -34,7 +34,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started Tutor
 
 The simplest way to define a test is by writing the exact SQL that will return failing records. We call these bespoke, one-off, or "data" tests.
 
-These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one data test / one `select` statement:
+These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one test:
 
 <File name='tests/assert_total_payment_amount_is_positive.sql'>
 
@@ -51,10 +51,26 @@ having not(total_amount >= 0)
 
 </File>
 
-Bespoke tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model each time. In that case, we recommend...
+The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
+
+Bespoke tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. In that case, we recommend...
 
 ## Generic tests
-Certain tests are generic: they can be reused over and over again. A generic test is a `test` block containing a parametrized query that accepts arguments. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
+Certain tests are generic: they can be reused over and over again. A generic test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
+
+
+The simplest example is the `not_null` test, whose definition looks like:
+```sql
+{% test not_null(model, column_name) %}
+
+    select *
+    from {{ model }}
+    where {{ column_name }} is null
+
+{% endtest %}
+```
+
+Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
 
 :::info
 If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](declaring-properties).
@@ -90,17 +106,6 @@ In plain English, these tests translate to:
 * `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` table (also known as referential integrity)
 
 Behind the scenes, dbt constructs a `select` query for each test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
-
-The simplest example is the `not_null` test, whose definition looks like:
-```sql
-{% test not_null(model, column_name) %}
-
-    select *
-    from {{ model }}
-    where {{ column_name }} is null
-
-{% endtest %}
-```
 
 You can find more information about these tests, and additional configurations (including [`severity`](severity) and [`tags`](resource-properties/tags)) in the [reference section](resource-properties/tests).
 
@@ -180,7 +185,6 @@ from (
     having count(*) > 1
 
 ) validation_errors
-
 ```
 
   </TabItem>
@@ -199,8 +203,6 @@ from (
     having count(*) > 1
 
 ) validation_errors
-
-
 ```
 
   </TabItem>
@@ -220,7 +222,6 @@ from (
 select *
 from analytics.orders
 where order_id is null
-
 ```
 
   </TabItem>
@@ -230,7 +231,6 @@ where order_id is null
 select *
 from {{ model }}
 where {{ column_name }} is null
-
 ```
 
   </TabItem>

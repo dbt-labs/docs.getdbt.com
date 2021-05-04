@@ -59,7 +59,6 @@ sources:
     - name: <table_name>
       tests:
         - [<test_name>](#test_name)
-
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
             [enabled](enabled): true | false
@@ -70,7 +69,6 @@ sources:
         - name: <column_name>
           tests:
             - [<test_name>](#test_name)
-
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
                 [enabled](enabled): true | false
@@ -163,7 +161,7 @@ This feature is not implemented for analyses.
 
 ## Description
 
-The `tests` field is used to assert properties of a column or table.
+The `tests` property defines assertions about a column, table, or view. The property contains a list of generic tests (referenced by name), which can include the four built-in generic tests available in dbt. It can also includes any arguments or [configurations](test-configs) passed to those tests.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 

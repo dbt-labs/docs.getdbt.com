@@ -9,7 +9,7 @@ id: "writing-custom-generic-tests"
 
 </Changelog>
 
-dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and they still are in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/fishtown-analytics/dbt/tree/develop/core/dbt/include/global_project/macros/schema_tests).
+dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/fishtown-analytics/dbt/tree/develop/core/dbt/include/global_project/macros/schema_tests).
 
 :::info
 There are tons of generic tests defined in open source packages, such as [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — the test you're looking for might already be here!
@@ -18,7 +18,7 @@ There are tons of generic tests defined in open source packages, such as [dbt-ut
 ### Generic tests with standard arguments
 
 To define your own generic tests, simply create a `test` block called `<test_name>`. All generic tests should accept one or both of the standard arguments:
-- `model`: The resource on which the test is defined, templated out to its relation name. (Note that the argument is always called `model`, even when the resource is a source, seed, or snapshot.)
+- `model`: The resource on which the test is defined, templated out to its relation name. (Note that the argument is always named `model`, even when the resource is a source, seed, or snapshot.)
 - `column_name`: The column on which the test is defined. Not all generic tests operate on the column level, but if they do, they should accept `column_name` as an argument.
 
 Here's an example of an `is_even` schema test that uses both arguments:
@@ -80,7 +80,7 @@ In the above example, `users` will be passed to the `is_even` test as the `model
 
 ### Generic tests with additional arguments
 
-The above test, `is_even` works if only one argument needs to be specified. Other tests, like `relationships`, require more than one argument. If your custom tests requires more than the standard argument, include those arguments in the test signature:
+The `is_even` test works without needing to specify any additional arguments. Other tests, like `relationships`, require more than just `model` and `column_name`. If your custom tests requires more than the standard argument, include those arguments in the test signature, as `field` and `to` are included below:
 
 <File name='macros/test_relationships.sql'>
 
@@ -152,6 +152,8 @@ It is possible to include a `config()` block in a generic test definition. Value
 {% endtest %}
 ```
 
+Any time the `warn_if_odd` test is used, it will _always_ have warning-level severity, unless the specific test overrides that value:
+
 </File>
 
 <File name='models/<filename>.yml'>
@@ -164,18 +166,30 @@ models:
     columns:
       - name: favorite_number
         tests:
-      	  - is_even  # will use default 'warn' config value set in generic test definition
+      	  - warn_if_odd         # default 'warn'
       - name: other_number
         tests:
-          - is_even:
-              severity: error   # overrides value set in generic test definition
+          - warn_if_odd:
+              severity: error   # overrides
 ```
 
 </File>
 
 ### Customizing dbt's built-in tests
 
-To change the way a built-in test works (for example, to add additional parameters, or re-write the SQL), add a test block named `<test_name>` (e.g. `{% test unique() %}`) to your project — dbt will favor your version over the global implementation!
+To change the way a built-in generic test works—whether to add additional parameters, re-write the SQL, or for any other reason—you simply add a test block named `<test_name>` to your own project. dbt will favor your version over the global implementation!
+
+<File name='macros/<filename>.yml'>
+
+```sql
+{% test unique(model, column_name) %}
+
+    -- whatever SQL you'd like!
+
+{% endtest %}
+```
+
+</File>
 
 ### Examples
 

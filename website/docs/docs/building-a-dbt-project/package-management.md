@@ -100,7 +100,7 @@ Add the Git URL for the package, and optionally specify a revision. The revision
 - a tagged release
 - a specific commit (full 40-character hash)
 
-. We **strongly recommend** "pinning" your package to a specific release by specifying a release name.
+We **strongly recommend** "pinning" your package to a specific release by specifying a release name.
 
 If you do not provide a revision, or if you use `master`, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
 
@@ -141,6 +141,8 @@ packages:
 
 </Changelog>
 
+In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the project is instead nested in a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.25.0`).
+
 <File name='packages.yml'>
 
 ```yaml
@@ -150,8 +152,6 @@ packages:
 ```
 
 </File>
-
-Generally, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If it is nested within a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.25.0`).
 
 ### Local packages
 Packages that you have stored locally can be installed by specifying the path to the project, like so:

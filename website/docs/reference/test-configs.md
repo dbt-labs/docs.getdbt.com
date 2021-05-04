@@ -13,11 +13,11 @@ and to configure `enabled` for generic tests.
 </Changelog>
 
 Tests can be configured in a few different ways:
-1. Properties within `.yml` definition (generic tests only). See [test properties](resource-properties/tests)) for full syntax.
-2. A `config()` block within SQL definition
+1. Properties within `.yml` definition (generic tests only, see [test properties](resource-properties/tests) for full syntax)
+2. A `config()` block within the test's SQL definition
 3. In `dbt_project.yml`
 
-Test configs are applied hierarchically, in the order of specifity outlined above. So in the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
+Test configs are applied hierarchically, in the order of specifity outlined above. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
 
 <File name='tests/<filename>.sql'>
 
