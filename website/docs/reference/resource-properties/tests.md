@@ -239,7 +239,7 @@ The following example tests that every order's `customer_id` maps back to a vali
 version: 2
 
 models:
-  - name: people
+  - name: orders
     columns:
       - name: customer_id
         tests:
