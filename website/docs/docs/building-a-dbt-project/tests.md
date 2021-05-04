@@ -58,8 +58,6 @@ Bespoke tests are easy to write—so easy that you may find yourself writing the
 ## Generic tests
 Certain tests are generic: they can be reused over and over again. A generic test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
 
-
-The simplest example is the `not_null` test, whose definition looks like:
 ```sql
 {% test not_null(model, column_name) %}
 
@@ -70,7 +68,7 @@ The simplest example is the `not_null` test, whose definition looks like:
 {% endtest %}
 ```
 
-Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
+You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
 
 :::info
 If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](declaring-properties).
