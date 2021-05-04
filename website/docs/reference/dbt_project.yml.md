@@ -51,6 +51,9 @@ snapshots:
 
 sources:
   [<source-configs>](source-configs)
+  
+tests:
+  [<test-configs>](test-configs)
 
 vars:
   [<variables>](using-variables)

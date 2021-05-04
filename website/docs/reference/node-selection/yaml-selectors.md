@@ -3,8 +3,10 @@ title: "YAML Selectors"
 ---
 
 <Changelog>
+
 - **v0.18.0**: Introduced YAML selectors
-- **v0.19.0**: Added optional `description` property
+- **v0.19.0**: Added optional `description` property. Selectors appear as in `manifest.json`.
+
 </Changelog>
 
 Write model selectors in YAML, save them with a human-friendly name, and reference them using the `--selector` flag.

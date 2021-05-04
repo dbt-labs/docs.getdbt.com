@@ -72,9 +72,9 @@ $ dbt test --models test_type:data          # run all data tests
 ### The "test_name" method
 <Changelog>New in v0.18.0</Changelog>
 
-The `test_name` method is used to select schema tests based on the name of the `test_` macro
-that defines it. For more information about how schema tests are defined, read about
-[custom schema tests](custom-schema-tests).
+The `test_name` method is used to select tests based on the name of the generic test
+that defines it. For more information about how generic tests are defined, read about
+[tests](building-a-dbt-project/tests).
 
 ```bash
 $ dbt test --models test_name:unique            # run all instances of the `unique` test
@@ -85,14 +85,9 @@ $ dbt test --models test_name:range_min_max     # run all instances of a custom 
 ### The "state" method
 <Changelog>New in v0.18.0</Changelog>
 
-:::info [β] Beta Feature
-This is net-new functionality in v0.18.0, with iterative improvements to come.
-If you encounter unexpected behavior, please post in Slack or open an issue.
-:::
+**N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
 
-The `state` method is used to select nodes by comparing them against a supplied
-manifest. The file path of the comparison manifest _must_ be specified via the
-`--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -107,8 +102,6 @@ $ dbt test --models state:new            # run all tests on new models + and new
 $ dbt run --models state:modified        # run all models that have been modified
 $ dbt ls --models state:modified     # list all modified nodes (not just models)
 ```
-
-Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
 
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>
