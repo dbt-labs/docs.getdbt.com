@@ -48,7 +48,7 @@ Community-supported plugins are works in progress, and all users are encouraged 
 - Join the dedicated channel in [dbt Slack](https://community.getdbt.com/) (e.g. #db-sqlserver, #db-athena)
 - Check out the open issues in the plugin's source repository
 
-Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in 2021.
+Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in the near future.
 
 ## Creating a new adapter
 
