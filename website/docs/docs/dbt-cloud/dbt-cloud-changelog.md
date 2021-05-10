@@ -6,40 +6,33 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.26 (May 12, 2021)
 
+If you haven't seen it yet, spin up the IDE: the command bar now has recent actions (you can up-arrow like on the command line) as well as some hardcoded suggestions that will auto-populate your active model, if there is one. Check it out! Other fixes and adjustments as well, as we all get ready for Staging this Thursday - exciting week for the Product org over at ol' Fishtown!
 
 #### Enhancements
 
-- Racheld/2779/command drawer dark mode
-- add support for step param to get step-specific artifacts
-- Making dbt default version on env 0.19.1
+- Made dbt default version on env 0.19.1
+- Rolled out new command line experience to all customers
 - Post webhook triggered run status back to gitlab
 - Temporary tabs can also populate the model from manifest
-- Check commandline content is minimally valid (+ 1st unit tests)
+- Check command line content is minimally valid
 - Allow user to restart server when develop pod crashes
 - Prevent overflow of menu items
-- Allow users to select text by clicking and dragging anywhere in input box
-- Event tracking/ide operations
-- Select model name / placeholder after choosing an action from the command drawer
 
 #### Fixed
 
-- [scheduler] Handle validation error for improper remote URLs
+- Handle validation error for improper remote URLs in the Scheduler
 - Refactor exception logging out of GitRepo and into exception handlers
-- Add additional data optional checks in sometimes missing error data.
-- Required tags returning null from core no longer causes infinite spinner in RpcQuery
-- Do not include deleted repos while fetching repository for sending commit statuses
-- Refactor git provider service to use RepositoryV3
-- Command bar disappears after running command while impersonating user
+- Required tags returning null from core no longer causing infinite spinner
+- Removed deleted repos while fetching repository for sending commit statuses
+- Refactor git provider service
 - Resolve files with special characters becoming forever dirty
-- Disable input when RPC command running. Button when command bar is empty.
-- Updating Button and using it for the Cancel/Enter button on commandline
-- Fix FILE_TREE_LASTEST variables in fileTreeDuck tests
-- 2650: Don't dispatch fileTreeLatestPath on file saves
+- Disable input when RPC command running & add button when command bar is empty
+- Updating button for the Cancel/Enter button on commandline
 - Fix connection setup to always use the project referenced in the route
-- Fix "View data sources" url in environment page
+- Fix "View data sources" URL in environment page
 - Add support for clicking on previously run commands and updating the text inside of the commandline
-- Fix sources url in environments page
-- fix metadata token not allowed API response
+- Fix sources URL in environments page
+- Fix metadata token not allowed API response
 
 #### Internal
 
@@ -54,7 +47,6 @@ description: "Changelog for the dbt Cloud application"
 - Cancel runs when Scribe is killed
 - Use protobufs to serialize messages on the message queue
 - Generate SSH keys for GitLab projects on Developer/Team plans
-- Do not highlight "selected" option [cli abstraction]
 - Webhooks only Service Tokens for GitLab
 
 
