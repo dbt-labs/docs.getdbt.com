@@ -10,7 +10,7 @@ The `dbt ls` command lists resources in your dbt project. It accepts selector ar
 ### Usage
 ```
 dbt ls
-     [--resource-type {source,analysis,model,snapshot,test,seed,default,all}]
+     [--resource-type {source,analysis,model,snapshot,test,seed,exposure,default,all}]
      [--select SELECTION_ARG [SELECTION_ARG ...]]
      [--models SELECTOR [SELECTOR ...]]
      [--exclude SELECTOR [SELECTOR ...]]
