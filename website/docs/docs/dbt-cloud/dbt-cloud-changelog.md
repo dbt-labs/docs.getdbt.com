@@ -4,6 +4,60 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.26 (May 12, 2021)
+
+
+#### Enhancements
+
+- Racheld/2779/command drawer dark mode
+- add support for step param to get step-specific artifacts
+- Making dbt default version on env 0.19.1
+- Post webhook triggered run status back to gitlab
+- Temporary tabs can also populate the model from manifest
+- Check commandline content is minimally valid (+ 1st unit tests)
+- Allow user to restart server when develop pod crashes
+- Prevent overflow of menu items
+- Allow users to select text by clicking and dragging anywhere in input box
+- Event tracking/ide operations
+- Select model name / placeholder after choosing an action from the command drawer
+
+#### Fixed
+
+- [scheduler] Handle validation error for improper remote URLs
+- Refactor exception logging out of GitRepo and into exception handlers
+- Add additional data optional checks in sometimes missing error data.
+- Required tags returning null from core no longer causes infinite spinner in RpcQuery
+- Do not include deleted repos while fetching repository for sending commit statuses
+- Refactor git provider service to use RepositoryV3
+- Command bar disappears after running command while impersonating user
+- Resolve files with special characters becoming forever dirty
+- Disable input when RPC command running. Button when command bar is empty.
+- Updating Button and using it for the Cancel/Enter button on commandline
+- Fix FILE_TREE_LASTEST variables in fileTreeDuck tests
+- 2650: Don't dispatch fileTreeLatestPath on file saves
+- Fix connection setup to always use the project referenced in the route
+- Fix "View data sources" url in environment page
+- Add support for clicking on previously run commands and updating the text inside of the commandline
+- Fix sources url in environments page
+- fix metadata token not allowed API response
+
+#### Internal
+
+- Add stubbed directory structure
+- GitLab for Developer/Team plans project creation flow
+- Notify developers of failing master builds
+- Show Common Actions when run drawer is open
+- Increase the max size of the snowflake user column
+- Record exception info when we fail to send commit status
+- Add integration tests for command drawer
+- Resolve conflicting migrations
+- Cancel runs when Scribe is killed
+- Use protobufs to serialize messages on the message queue
+- Generate SSH keys for GitLab projects on Developer/Team plans
+- Do not highlight "selected" option [cli abstraction]
+- Webhooks only Service Tokens for GitLab
+
+
 ## dbt Cloud v1.1.25 (April 28, 2021)
 
 Exciting things coming down the pipe - ongoing enhancements to the command bar experience in the IDE, doing some work to ensure that more git providers are presented with a first class experience in Cloud, as well as assorted bug fixes - "I must have bug fixes, always and always" - that was Monet I think  
