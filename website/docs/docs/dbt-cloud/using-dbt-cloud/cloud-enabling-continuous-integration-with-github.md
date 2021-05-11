@@ -5,7 +5,7 @@ id: "cloud-enabling-continuous-integration-with-github"
 
 ## Overview
 
-dbt Cloud makes it easy to test every single change you make prior to deploying that code into production. Once you've [connected your GitHub account](cloud-installing-the-github-application) or [your GitLab account](connection-gitlab), you can configure jobs to run when new Pull Requests (referred to as Merge Requests in GitLab) are opened against your dbt repo. When these jobs complete, their statuses will be shown directly in the Pull Request. This makes it possible to deploy new code to production with confidence.
+dbt Cloud makes it easy to test every single change you make prior to deploying that code into production. Once you've [connected your GitHub account](cloud-installing-the-github-application) or [your GitLab account](connecting-gitlab), you can configure jobs to run when new Pull Requests (referred to as Merge Requests in GitLab) are opened against your dbt repo. When these jobs complete, their statuses will be shown directly in the Pull Request. This makes it possible to deploy new code to production with confidence.
 
 :::info GitLab Webhooks Availability 
 
