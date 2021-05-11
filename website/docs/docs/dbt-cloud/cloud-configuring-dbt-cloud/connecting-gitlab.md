@@ -4,17 +4,11 @@ id: "connecting-gitlab"
 sidebar_label: "Connecting GitLab"
 ---
 
-:::info Enterprise Feature
-
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, let us know at sales@getdbt.com.
-
-:::
-
 ## Overview
 
 Once your GitLab account is connected, you can:
 - Import new repos with one click
-- Carry GitLab permissions through to dbt cloud IDE driven git actions
+- Carry GitLab permissions through to dbt Cloud IDE's git actions
 
 ## Linking dbt Cloud to your GitLab account
 
@@ -22,27 +16,28 @@ To link your dbt Cloud account to your GitLab account, navigate to your Account 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_navigation_setup.gif" title="Navigating to the GitLab Integration"/>
 
-Here you can link your GitLab account to dbt Cloud. 
 
-You'll need to set up an application at GitLab in order to make it official - [they have a guide for that here](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application-through-the-profile). 
+You'll first need to set up an User Owned Application or Group Own Application in GitLab - [they have a guide for that here](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application-through-the-profile). 
 
-For your dbt Cloud application, you'll want to select:
+In GitLab, when creating your dbt Cloud application, you'll want to input:
 - `Name` - We recommend `dbt Cloud`
-- `Redirect URI` - You will want to copy-paste this from your Account Integrations page
+- `Redirect URI` - You can copy-paste this from your Account Integrations page in dbt Cloud
 - Check the `Confidential` box
 - Check the `api` Scope
 
-The screen at GitLab should look something like this:
+The applicatoin form in GitLab should look something like this:
 
 <Lightbox src="/img/docs/dbt-cloud/dbt_cloud_gitlab_application_settings.png" title="Add New Application Screen at GitLab"/>
 
-Once you've gotten your Application ID and Secret from GitLab, you can click the Edit button in your Integrations tab, and copy-paste those values into the form.
+Click 'Save application' in GitLab. GitLab will then generate an Application ID and Secret. You should copy-paste those values back into the form on your dbt Cloud's Integrations page.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_integration_edit_button.png" title="Edit button in the top right corner"/>
 
 Note that if you're using the regular consumer version of GitLab, you'll want to use the standard `https://gitlab.com` for your GitLab instance - if your organization is using a hosted version of GitLab, you'll want to use the hostname provided by your organization, probably something like `https://gitlab.yourgreatcompany.com/`
 
-GitLab will then ask for your explicit approval: 
+Once the form is completed in dbt Cloud, click the button 'Connect to GitLab'.
+
+GitLab will then ask for your explicit authorization: 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_application_auth.png" title="GitLab Authorization Screen" />
 
