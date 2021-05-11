@@ -118,10 +118,10 @@ config-version: 2
 models:
   jaffle_shop: # this matches the `name:`` config
     +materialized: view # this applies to all models in the current project
-      marts:
-        +materialized: table # this applies to all models in the `marts/` directory
-        marketing:
-          +schema: marketing # this applies to all models in the `marts/marketing/`` directory
+    marts:
+      +materialized: table # this applies to all models in the `marts/` directory
+      marketing:
+        +schema: marketing # this applies to all models in the `marts/marketing/`` directory
 
 ```
 
