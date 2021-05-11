@@ -9,7 +9,7 @@ dbt Cloud makes it easy to test every single change you make prior to deploying 
 
 :::info GitLab Webhooks Availability 
 
-GitLab Webhooks are only available to GitLab users who have a paid or self-hosted GitLab account.
+GitLab Webhooks are available to only GitLab users who have a paid or self-hosted GitLab account.
 
 :::
 
