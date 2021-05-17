@@ -77,5 +77,5 @@ https://console.aws.amazon.com/codesuite/codecommit/repositories/<repo>/pull-req
 
 ### Azure DevOps
 ```
-https://dev.azure.com/<org>/<repo>/_git/dbt/pullrequestcreate?sourceRef={{source}}&targetRef={{destination}}
+https://dev.azure.com/<org>/<project>/_git/<repo>/pullrequestcreate?sourceRef={{source}}&targetRef={{destination}}
 ```
