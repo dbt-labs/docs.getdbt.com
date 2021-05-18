@@ -201,6 +201,7 @@ module.exports = {
         "docs/dbt-cloud/dbt-cloud-api/service-tokens",
       ],
     },
+    "docs/dbt-cloud/cloud-dbt-cloud-support",
     "docs/dbt-cloud/cloud-changelog",
   ],
   reference: [
