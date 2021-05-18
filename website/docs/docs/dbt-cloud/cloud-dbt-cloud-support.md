@@ -39,4 +39,6 @@ Types of questions you should ask your Solutions Architect and Sales Director:
 - I want to expand my account! How do I add more people and train them?
 - Here is our data road map for the next year - can we talk through how dbt fits into it and what features we may not be utilizing that can help us achieve our goals?
 - It is time for our contract renewal, what options do I have?
+
+
 When you need help writing SQL or want someone to actually help build your dbt Project, check out our list of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/) or our [Services](https://www.fishtownanalytics.com/professional-services/) page!
