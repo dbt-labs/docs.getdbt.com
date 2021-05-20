@@ -370,6 +370,7 @@ module.exports = {
             "reference/commands/deps",
             "reference/commands/init",
             "reference/commands/list",
+            "reference/commands/parse",
             "reference/commands/rpc",
             "reference/commands/run",
             "reference/commands/run-operation",
