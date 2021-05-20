@@ -9,7 +9,7 @@ id: "adapter"
 
 The following functions are available:
 
-- [adapter.dispatch](#dispatch)
+- [adapter.dispatch](dispatch)
 - [adapter.get_missing_columns](#get_missing_columns)
 - [adapter.expand_target_column_types](#expand_target_column_types)
 - [adapter.get_relation](#get_relation)
@@ -27,94 +27,8 @@ The following adapter functions are deprecated, and will be removed in a future 
 - [adapter_macro](#adapter_macro) **(deprecated)**
 
 ## dispatch
-<Changelog>New in v0.18.0</Changelog>
 
-__Args__:
-
-  * `macro_name`: name of macro to dynamically implement
-  * `packages`: optional list (`[]`) of packages to search for implementations (defaults to root project)
-  
-Finds an adapter-appropriate version of a named macro. If `packages` is specified,
-searches the packages in order until it finds a working implementation.
-
-Adapter-specific macros are prefixed with the lowercase adapter name and two
-underscores. E.g., given a macro named `my_macro`, dbt would look for:
-* Postgres: `postgres__my_macro`
-* Redshift: `redshift__my_macro`
-* Snowflake: `snowflake__my_macro`
-* BigQuery: `bigquery__my_macro`
-* OtherAdapter: `otheradapter__my_macro`
-* _default:_ `default__my_macro`
-
-**Usage**:
-
-<Tabs
-  defaultValue="simple"
-  values={[
-    { label: 'Simple', value: 'simple', },
-    { label: 'Intermediate', value: 'advanced', },
-  ]
-}>
-<TabItem value="simple">
-
-Let's say I want to define a macro, `concat`, that compiles to the SQL function `concat()` as its
-default behavior. On Redshift and Snowflake, however, I want to use the `||` operator instead.
-
-<File name='macros/concat.sql'>
-
-```sql
-{% macro concat(fields) -%}
-  {{ adapter.dispatch('concat')(fields) }}
-{%- endmacro %}
-
-
-{% macro default__concat(fields) -%}
-    concat({{ fields|join(', ') }})
-{%- endmacro %}
-
-
-{% macro redshift__concat(fields) %}
-    {{ fields|join(' || ') }}
-{% endmacro %}
-
-
-{% macro snowflake__concat(fields) %}
-    {{ fields|join(' || ') }}
-{% endmacro %}
-```
-
-</File>
-
-</TabItem>
-
-<TabItem value="advanced">
-
-Let's say I want to define a macro, `concat`, with a specific implementation on Redshift
-that handles null values. In all other cases—including the default implementation—
-I want to fall back on [`dbt_utils.concat`](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/cross_db_utils/concat.sql). In this case, I can use the `packages` argument to define the search area and order:
-
-<File name='macros/concat.sql'>
-
-```sql
-{% macro concat(fields) -%}
-  {{ adapter.dispatch('concat', packages = ['my_project', 'dbt_utils'])(fields) }}
-{%- endmacro %}
-
-
-{% macro redshift__concat(fields) %}
-    {% for field in fields %}
-        nullif({{ field }},'') {{ ' || ' if not loop.last }}
-    {% endfor %}
-{% endmacro %}
-```
-
-</File>
-
-</TabItem>
-</Tabs>
-
-<FAQ src="dispatch-package-maintainer" />
-
+Moved to separate page: [dispatch](dispatch)
 
 ## get_missing_columns
 __Args__:

@@ -403,6 +403,7 @@ module.exports = {
             "reference/dbt-jinja-functions/config",
             "reference/dbt-jinja-functions/dbt_version",
             "reference/dbt-jinja-functions/debug-method",
+            "reference/dbt-jinja-functions/dispatch",
             "reference/dbt-jinja-functions/doc",
             "reference/dbt-jinja-functions/env_var",
             "reference/dbt-jinja-functions/exceptions",
