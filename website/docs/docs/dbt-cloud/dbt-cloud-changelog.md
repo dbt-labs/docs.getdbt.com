@@ -4,6 +4,58 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.27 (May 26, 2021)
+
+TODO: add description and curate below release notes
+
+#### Enhancements
+
+- add dbt v0.19.2rc1 and v0.20.0b1
+- Add a open/closable overlay for the DAG #2904
+- disable department dropdown
+- Adding DAG flags, button, and tab context
+- Added run source freshness option to jobs
+- Implement conditional redirecting after GitLab app integration
+- Add Develop Pod Support for rook+cepth file storage
+- Show all common actions for valid top level commands
+
+#### Fixed
+
+- Fix link to documentation
+- Disable the "Restart IDE" Button while the IDE is loading
+- Continue cancelling runs when we run into deleted accounts
+- fix sso-reauth page
+- Fix blank verify email page
+- Resolve git refresh regression
+- [bug] Fix missing "Run on Merge" button in Job creation/edit form
+- Warn users they have unsaved changes
+- Updates test command suggestions and regex for common action suggestions
+- Updates order of stylesheet import to fix missing border bug
+- Fix GitLab PR link for Run page
+- Fixing infinite spinner for missing environment or development credentials
+- Fix infinite spinner when user is missing dev credentials
+- Do not try to push if awaiting a merge.
+- Fix deleting schemas
+- Fix favicon reference
+
+#### Internal
+
+- Fix layout issues when a user is hijacked
+- Add feature flag for manually_configured_git_provider
+- Add a space to the body navigation class
+- Add develop health endpoint
+- Migrate code, body, hr, ul, ol, img tags from tag styles to class styles
+- Add a React Navigation bar and control plane
+- Migrate headers from tag styles to class styles
+- Apply Prettier to all HTML
+- Support Chat Widget using Zendesk
+- add github_personal_auth_for_enterprise feature flag
+- Associate Repository with GitProvider on project creation
+- Remove gitlab_webhooks feature flag
+- Conditionally render GitLab integration UI on /profile/settings for Team/Developer plans
+- Provision IDE for GitLab repos on Team/Dev plans
+- Add single-spa wrapper to dbt-cloud
+
 ## dbt Cloud v1.1.26 (May 12, 2021)
 
 If you haven't seen it yet, spin up the IDE: the command bar now has recent actions (you can up-arrow like on the command line) as well as some hardcoded suggestions that will auto-populate your active model, if there is one. Check it out! Other fixes and adjustments as well, as we all get ready for Staging this Thursday - exciting week for the Product org over at ol' Fishtown!
