@@ -10,15 +10,27 @@ title: "Macro dispatch"
     
 </Changelog>
 
-__Args__:
-
-  * `macro_name`: Name of macro to dynamically implement. Must be a string literal.
-  * `packages`: Optional list (`[]`) of packages to search for implementations (defaults to root project). The list may include string literals or [`vars`](var); note that it _may not_ include other macros or be set to a macro result.
-  
 dbt can extend functionality across [its many supported adapters](available-adapters) through a system of [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). Because SQL syntax, data types, and DDL/DML support vary across adapters, dbt can define and call generic functional macros, and then "dispatch" that macro to the appropriate implementation for the current adapter.
 
-Adapter-specific macros are prefixed with the lowercase adapter name and two
-underscores. E.g., given a macro named `my_macro`, dbt would look for:
+__Args__:
+
+  * `macro_name` [required]: Name of macro to dispatch. Must be a string literal.
+  * `macro_namespace` [optional]: Namespace (package) of macro to dispatch. Must be a string literal.
+  * `packages` [DEPRECATED]: Optional list (`[]`) of packages to search for implementations (defaults to root project).
+
+__Usage__:
+
+```sql
+{% macro my_macro(arg1, arg2) -%}
+  {{ return(adapter.dispatch('my_macro')(arg1, arg2)) }}
+{%- endmacro %}
+```
+
+dbt uses two criteria when searching for the right candidate macro:
+- Adapter prefix
+- Namespace (package)
+
+**Adapter prefix:** Adapter-specific macros are prefixed with the lowercase adapter name and two underscores. Given a macro named `my_macro`, dbt will look for:
 * Postgres: `postgres__my_macro`
 * Redshift: `redshift__my_macro`
 * Snowflake: `snowflake__my_macro`
@@ -26,7 +38,7 @@ underscores. E.g., given a macro named `my_macro`, dbt would look for:
 * OtherAdapter: `otheradapter__my_macro`
 * _default:_ `default__my_macro`
 
-By default, dbt will search for implementations in the root project, internal projects (e.g. `dbt`, `dbt_postgres`), and the package where the macro is defined. If the `packages` argument is provided, it searches the specified list of packages in order until it finds a working implementation.
+**Namespace:** By default, dbt will search for implementations in the root project and internal projects (e.g. `dbt`, `dbt_postgres`). If the `macro_namespace` argument is provided, it searches the specified namespace (package) for implementations instead. It is also possible to "reroute" the namespace searching by defining a `dispatch` project config.
 
 ### A simple example
 
@@ -64,15 +76,18 @@ Below that, I've defined three possible implementations of the `concat` macro: o
 
 ### A more complex example
 
-I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in [`dbt_utils.concat`](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/cross_db_utils/concat.sql). In this case, I can use the `packages` argument to define the search area and order:
+I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in [`dbt_utils.concat`](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/cross_db_utils/concat.sql).
 
 <File name='macros/concat.sql'>
 
 ```sql
 {% macro concat(fields) -%}
-  {{ return(adapter.dispatch('concat', packages = ['my_project', 'dbt_utils']))(fields) }}
+  {{ return(adapter.dispatch('concat')(fields)) }}
 {%- endmacro %}
 
+{% macro default__concat(fields) -%}
+  {{ return(dbt_utils.concat(fields)) }}
+{%- endmacro %}
 
 {% macro redshift__concat(fields) %}
     {% for field in fields %}
@@ -83,35 +98,46 @@ I found an existing implementation of the `concat` macro in the dbt-utils packag
 
 </File>
 
-In the example above, dbt prioritizes package specificity over adapter specificity when searching for viable implementations. If I call the `concat` macro while running on Postgres, in the example above, dbt will look for the following macros in order:
+If I'm running on Redshift, dbt will use my version; if I'm running on any other database, the `concat()` macro will shell out to the version defined in `dbt_utils`.
+
+### For package maintainers
+
+Each dispatched macro from a package must declare the namespace (package) to search in for candidates. Most often, this is the same as the name of the package. (It is possible, if rarely desirable, to define a dispatched macro _not_ in the `dbt_utils` package, and dispatch it into the `dbt_utils` namespace.)
+
+Here we have the definition of the `dbt_utils.concat` macro, which specifies both the `macro_name` and `macro_namespace` to dispatch:
+
+```sql
+{% macro concat(fields) -%}
+  {{ return(adapter.dispatch('concat', 'dbt_utils')(fields)) }}
+{%- endmacro %}
+```
+
+Following the complex example above: Whenever I call my `concat` macro in my own project, it will use my special null-handling version on Redshift. But the version of the `concat` macro _within_ the dbt-utils package will not use my version. Why does this matter? Other macros in dbt-utils, such as `surrogate_key`, call the `dbt_utils.concat` macro directly. What if I wanted `dbt_utils.surrogate_key` to use _my_ version of `redshift__concat` instead?
+
+As a user, I can accomplish this via a [project-level `dispatch` config](project-configs/dispatch-config). When dbt goes to dispatch `dbt_utils.concat`, it knows from the second argument to search in the `dbt_utils` namespace. The config below "reroutes" that namespace, telling dbt to search instead through an ordered sequence of packages.
+
+<File name='dbt_project.yml'>
+
+```yml
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['my_project', 'dbt_utils']
+```
+
+</File>
+
+Note that this config _must_ be specified in the user's root `dbt_project.yml`. dbt will ignore any `dispatch` configs defined in the project files of installed packages.
+
+<FAQ src="dispatch-could-not-find-package" />
+
+Adapter prefixes still matter: dbt will only ever look for implementations that are compatible with the current adapter. But dbt will prioritize package specificity over adapter specificity. If I call the `concat` macro while running on Postgres, with the config above, dbt will look for the following macros in order:
 
 1. `my_project.postgres__concat` (not found)
 2. `my_project.default__concat` (not found)
 3. `dbt_utils.postgres__concat` (not found)
-4. `dbt_utils.default__concat` (found)
+4. `dbt_utils.default__concat` (found! use this one)
 
-### For package maintainers
-
-The macros in dbt-utils, and in many other packages, offer an additional lever of configuration by including a variable in the `packages` argument of their dispatched macros:
-
-```sql
-{% macro concat(fields) -%}
-  {{ return(adapter.dispatch('concat', packages = (var('dbt_utils_dispatch_list', []) + ['dbt_utils']))(fields)) }}
-{%- endmacro %}
-```
-
-The conventional name of this variable is `<package_name>_dispatch_list`, but you could name it whatever you'd like. If the variable is defined, it will be prioritized; if it isn't defined, `dbt_utils` is always the final place searched.
-
-Following the same example above: Whenever I call my `concat` macro in my own project, it will use my special null-handling version on Redshift. But the version of the `concat` macro _within_ the dbt-utils package will not use my version. Why does this matter? Other macros in dbt-utils, e.g. `surrogate_key`, call the `dbt_utils.concat` macro directly. What if I wanted `dbt_utils.surrogate_key` to use _my_ version of `redshift__concat` instead?
-
-I can accomplish this by adding `my_project` to the variable dispatch list, which `dbt_utils.concat` will look to when searching for viable implementations of `redshift__concat`:
-
-```yml
-vars:
-  dbt_utils_dispatch_list: ['my_project']
-```
-
-As an end use, this functionality makes it possible for me to change the behavior of another, more complex macro (`dbt_utils.surrogate_key`) by reimplementing and overriding one of its modular components.
+As someone installing a package, this functionality makes it possible for me to change the behavior of another, more complex macro (`dbt_utils.surrogate_key`) by reimplementing and overriding one of its modular components.
 
 As a package maintainer, this functionality enables users of my package to extend, reimplement, or override default behavior, without needing to fork the package's source code.
 
@@ -119,7 +145,7 @@ As a package maintainer, this functionality enables users of my package to exten
 
 Most packages were initially designed to work on the four original dbt adapters. By using `dispatch` and the "dispatch list" variable pattern described above, it is possible to "shim" existing packages with new third-party packages. For instance, if the user wishes to use `dbt_utils.concat` on Apache Spark, they can install a compatibility package, spark-utils, alongside dbt-utils:
 
-<File name='dbt_project.yml'>
+<File name='packages.yml'>
 
 ```yml
 packages:
@@ -134,8 +160,9 @@ packages:
 <File name='dbt_project.yml'>
 
 ```yml
-vars:
-  dbt_utils_dispatch_list: ['my_project', 'spark_utils']
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['my_project', 'spark_utils', 'dbt_utils']
 ```
 
 </File>
@@ -153,7 +180,7 @@ As a compatibility package maintainer, I only have to reimplement the foundation
 
 **Note:** Some adapters "inherit" from other adapters (e.g. `dbt-postgres` &rarr; `dbt-redshift`). If using a child adapter, dbt will include the "parent" adapter's implementations in its search order. Child adapters tend to have very similar SQL syntax to their parents, so this allows them to skip reimplementing a macro if already reimplemented by the parent adapter.
 
-So, in the case of `dbt_utils.concat` on Redshift, the full search order is actually:
+Following the example above with `dbt_utils.concat`, the full search order on Redshift is actually:
 
 1. `my_project.redshift__concat`
 2. `my_project.postgres__concat`

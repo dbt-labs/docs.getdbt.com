@@ -295,7 +295,7 @@ Most modern databases support a majority of the standard SQL spec. There are som
 
 The `adapter.dispatch()` macro takes a second argument, `packages`, which represents a set of "search namespaces" in which to find potential implementations of a dispatched macro. This allows users of community-supported adapters to extend or "shim" dispatched macros from common packages, such as `dbt-utils`, with adapter-specific versions in their own project or other installed packages. See:
 - "Shim" package examples: [`spark-utils`](https://github.com/fishtown-analytics/spark-utils), [`tsql-utils`](https://github.com/dbt-msft/tsql-utils)
-- [`adapter.dispatch` docs](adapter#dispatch)
+- [`adapter.dispatch` docs](dispatch)
 
 ### Overriding adapter methods
 

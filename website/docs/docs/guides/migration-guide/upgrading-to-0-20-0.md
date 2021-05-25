@@ -34,7 +34,7 @@ Macro dispatch now includes "parent" adapter implementations before using the de
 ### Elsewhere in Core
 - The [graph](graph) Jinja context variable includes `exposures`
 - [Packages](package-management) can now be installed from git with a specific commit hash as the revision, or via sparse checkout if the dbt project is located in a `subdirectory`.
-- [adapter.dispatch](adapter#dispatch) includes parent adapters when searching for macro implementations.
+- [adapter.dispatch](dispatch) supports new arguments, a new [project-level config](project-configs/dispatch-config), and includes parent adapters when searching for macro implementations.
 
 ### Plugins
 - New partition-related [BigQuery configs](bigquery-configs#additional-partition-configs): `require_partition_filter` and `partition_expiration_days`
