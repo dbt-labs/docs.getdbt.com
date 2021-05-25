@@ -6,35 +6,35 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.27 (May 26, 2021)
 
-TODO: add description and curate below release notes
+A lot of improvements coming for GitLab webhooks and native auth. We also fixed a number of bugs in the IDE. Our goal is for you to never see an infinite spinner again!
 
 #### Enhancements
 
-- add dbt v0.19.2rc1 and v0.20.0b1
-- Add a open/closable overlay for the DAG #2904
-- disable department dropdown
-- Adding DAG flags, button, and tab context
-- Added run source freshness option to jobs
+- Add dbt v0.19.2rc1 and v0.20.0b1
+- Add an open/closable overlay for the DAG
+- Disable department dropdown
+- Add DAG flags, button, and tab context
+- Add run source freshness option to jobs
 - Implement conditional redirecting after GitLab app integration
-- Add Develop Pod Support for rook+cepth file storage
+- Add Develop Pod Support for Rook and Ceph file storage
 - Show all common actions for valid top level commands
 
 #### Fixed
 
 - Fix link to documentation
 - Disable the "Restart IDE" Button while the IDE is loading
-- Continue cancelling runs when we run into deleted accounts
-- fix sso-reauth page
+- Continue canceling runs when we run into deleted accounts
+- Fix SSO re-auth page
 - Fix blank verify email page
 - Resolve git refresh regression
-- [bug] Fix missing "Run on Merge" button in Job creation/edit form
+- Fix missing "Run on Merge" button in Job creation/edit form- 
 - Warn users they have unsaved changes
 - Updates test command suggestions and regex for common action suggestions
 - Updates order of stylesheet import to fix missing border bug
-- Fix GitLab PR link for Run page
-- Fixing infinite spinner for missing environment or development credentials
+- Fix GitLab PR link for Run Page
+- Fix infinite spinner for missing environment or development credentials
 - Fix infinite spinner when user is missing dev credentials
-- Do not try to push if awaiting a merge.
+- Do not try to push if awaiting a merge
 - Fix deleting schemas
 - Fix favicon reference
 
@@ -49,7 +49,7 @@ TODO: add description and curate below release notes
 - Migrate headers from tag styles to class styles
 - Apply Prettier to all HTML
 - Support Chat Widget using Zendesk
-- add github_personal_auth_for_enterprise feature flag
+- Add github_personal_auth_for_enterprise feature flag
 - Associate Repository with GitProvider on project creation
 - Remove gitlab_webhooks feature flag
 - Conditionally render GitLab integration UI on /profile/settings for Team/Developer plans
