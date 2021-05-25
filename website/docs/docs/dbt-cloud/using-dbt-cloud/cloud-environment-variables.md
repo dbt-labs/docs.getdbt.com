@@ -23,7 +23,7 @@ values cannot be changed.
 
 **Git details**
 
-_Note: These variables are currently only available for GitHub
+_Note: These variables are currently only available for GitHub and GitLab
 PR builds triggered via a webhook_
 
 - `DBT_CLOUD_PR_ID`: The Pull Request ID in the connected version control system
