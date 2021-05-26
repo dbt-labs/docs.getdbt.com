@@ -18,12 +18,12 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 ### Use separate development and production environments
 dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments](managing-environments).
 
-### Use a style guide and code conventions for your project
+### Use a style guide and for your project
 SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.
 
-:::info Coding conventions
+:::info Our style guide
 
-We've made our [coding conventions](https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md) public – these can act as a good starting point for your own coding conventions.
+We've made our [style guide](https://github.com/fishtown-analytics/corp/blob/master/dbt_style_guide.md) public – these can act as a good starting point for your own style guide.
 
 :::
 
