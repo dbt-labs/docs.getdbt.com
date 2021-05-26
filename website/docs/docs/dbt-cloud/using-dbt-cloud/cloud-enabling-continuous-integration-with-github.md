@@ -23,7 +23,7 @@ GitLab Example:
 
 ## Enabling Continuous Integration (CI)
 
-To enable runs on Pull Requests, navigate to the Job Settings page for the relevant job. In the "Triggers" section of the page, switch to the "Webhooks" tab, and then click the checkbox labeled "RUN ON PULL REQUESTS?" as shown below.
+To enable runs on Pull Requests, navigate to the Job Settings page for the relevant job. In the "Triggers" section of the page, switch to the "Webhooks" tab, and then click the checkbox next to `RUN ON PULL REQUESTS?` as shown below.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
 
@@ -72,8 +72,8 @@ First, make sure you have [native GitLab authentication](connecting-gitlab) set 
 Once you're in the repository page, you can click the `Edit` button and then the `Disconnect Repository` button at the bottom.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" title="Disconnect repo"/>
 
-Confirm that you'd like to disconnect your repository. You should then see a new `Configure a repository` link in your old repository's place. Click through to configuration page, which will look like this:
+Confirm that you'd like to disconnect your repository. You should then see a new `Configure a repository` link in your old repository's place. Click through to the configuration page, which will look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" title="Disconnect repo"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" title="Configure repo"/>
 
 Select the `GitLab` tab and reselect your repository. That should complete the setup and enable you to use webhooks in your jobs configuration.
