@@ -64,7 +64,7 @@ The “Webhooks” tab is where you can configure webhooks such as running a job
 
 **Note**: The repo connected to your dbt Cloud project must be connected via the &quot;Github app&quot; strategy in order to configure webhooks. If you don’t have the option to enable webhooks, check to make sure that your repo is connected to your project via the Github app in your project settings.
 
-The &quot;API&quot; tab includes a link to our API docs as well as to your profile settings, where the API key can be found (under &quot;API Access&quot;).
+The &quot;API&quot; tab includes a link to our [API docs](https://docs.getdbt.com/dbt-cloud/api) as well as to your profile settings, where the API key can be found (under &quot;API Access&quot;).
 
 
 Once the job is configured properly, click the &quot;Save&quot; button in the top right corner.
