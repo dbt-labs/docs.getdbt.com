@@ -19,31 +19,101 @@ Tests can be configured in a few different ways:
 
 Test configs are applied hierarchically, in the order of specifity outlined above. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
 
-<File name='tests/<filename>.sql'>
+## Available configurations
+### Test-specific configurations
 
-```jinja
-{{
-    config(
-        [enabled](enabled) = true | false,
-        [severity](resource-properties/tests#severity) = 'error' | 'warn',
-        [tags](resource-configs/tags) = 'example_tag' | ['example_tag_1', 'example_tag_2']
-    )
-}}
-```
-
-</File>
+<Tabs
+  groupId="config-languages"
+  defaultValue="yaml"
+  values={[
+    { label: 'YAML', value: 'yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+<TabItem value="yaml">
 
 <File name='dbt_project.yml'>
 
-```yml
+```yaml
 tests:
   [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
+    [+](plus-prefix)[fail_calc](fail_calc): <string>
+    [+](plus-prefix)[limit](limit): <integer>
     [+](plus-prefix)[severity](severity): error | warn
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[error_if](severity): <string>
+    [+](plus-prefix)[warn_if](severity): <string>
+    [+](plus-prefix)[store_failures](store_failures): true | false
+    [+](plus-prefix)[where](where): <string>
+
 ```
 
 </File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+```jinja
+
+{{ config(
+    [fail_calc](fail_calc) = "<string>",
+    [limit](limit) = <integer>,
+    [severity](severity) = "error | warn",
+    [error_if](severity) = "<string>",
+    [warn_if](severity) = "<string>",
+    [store_failures](store_failures) = true | false,
+    [where](where) = "<string>"
+) }}
+
+```
+
+
+</TabItem>
+
+</Tabs>
+
+
+### General configurations
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="yaml"
+  values={[
+    { label: 'YAML', value: 'yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+<TabItem value="yaml">
+
+
+<File name='dbt_project.yml'>
+
+```yaml
+tests:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)[enabled](enabled): true | false
+    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
+```
+</File>
+
+</TabItem>
+
+<TabItem value="config">
+
+
+```jinja
+
+{{ config(
+    [enabled](enabled)=true | false,
+    [tags](resource-configs/tags)="<string>" | ["<string>"]
+) }}
+
+```
+
+</TabItem>
+
+</Tabs>
 
 ### Examples
 

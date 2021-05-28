@@ -235,6 +235,21 @@ where {{ column_name }} is null
 </Tabs>
 
 
+## Storing test failures
+
+<Changelog>
+
+* `v0.20.0`: Introduced storing test failures in the database
+
+</Changelog>
+
+Normally, a test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
+
+This workflow allows you to query and examine failing records much more quickly in development:
+
+<Lightbox src="/img/docs/building-a-dbt-project/test-store-failures.gif" title="Store test failures in the database for faster development-time debugging."/>
+
+
 ## FAQs
 
 
@@ -242,7 +257,6 @@ where {{ column_name }} is null
 <FAQ src="failed-tests" />
 <FAQ src="recommended-tests" />
 <FAQ src="when-to-test" />
-<FAQ src="records-from-failed-tests" />
 <FAQ src="configurable-data-test-path" />
 <FAQ src="test-sources" />
 <FAQ src="custom-test-thresholds" />
