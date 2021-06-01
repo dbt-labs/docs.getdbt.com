@@ -7,10 +7,10 @@ sidebar_label: "Connecting GitHub"
 ## Overview
 
 Connecting your GitHub account to dbt Cloud unlocks exciting and compelling functionality in dbt Cloud. Once your GitHub account is connected, you can:
-- trigger CI builds when Pull Requests are opened in GitHub
-- log into dbt Cloud via oauth through GitHub
-- add new repos to Cloud in a single click (no need to fuss with Deploy Keys)
-- and more!
+- [Trigger CI builds](cloud-enabling-continuous-integration-with-github) when Pull Requests are opened in GitHub
+- Log into dbt Cloud via oauth through GitHub
+- Add new repos to Cloud in a single click (no need to fuss with Deploy Keys)
+
 
 
 :::info Use Github On-Premise?
