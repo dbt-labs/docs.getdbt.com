@@ -29,6 +29,10 @@ models:
           [enabled](enabled): true | false
           [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
+          [tags](resource-properties/tags): [<string>]
+          [tags](resource-properties/tags): [<string>]
+          [tags](resource-properties/tags): [<string>]
+          [tags](resource-properties/tags): [<string>]
 
     columns:
       - name: <column_name>
@@ -38,6 +42,10 @@ models:
               <argument_name>: <argument_value>
               [enabled](enabled): true | false
               [severity](severity): error | warn
+              [tags](resource-properties/tags): [<string>]
+              [tags](resource-properties/tags): [<string>]
+              [tags](resource-properties/tags): [<string>]
+              [tags](resource-properties/tags): [<string>]
               [tags](resource-properties/tags): [<string>]
 
 ```

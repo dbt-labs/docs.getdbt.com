@@ -22,4 +22,4 @@ drop table ...
 The list of valid flags are:
 - `flags.STRICT_MODE`: True if `--strict` (or `-S`) was provided on the command line
 - `flags.FULL_REFRESH`: True if `--full-refresh` was provided on the command line 
-- `flags.NON_DESTRUCTIVE`: True if `--non-destructive` was provided on the command line
+- `flags.STORE_FAILURES`: True if `--store-failures` was provided on the command line

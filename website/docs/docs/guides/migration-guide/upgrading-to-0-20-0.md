@@ -26,7 +26,6 @@ Macro dispatch now includes "parent" adapter implementations before using the de
 ### Tests
 - [Building a dbt Project: tests](building-a-dbt-project/tests)
 - [Test Configs](test-configs)
-- Resource configs: [enabled](enabled) and [severity](severity)
 - [Test properties](resource-properties/tests)
 - [Node Selection](node-selection/syntax) (with updated [test selection examples](test-selection-examples))
 - [Writing custom generic tests](custom-generic-tests)
