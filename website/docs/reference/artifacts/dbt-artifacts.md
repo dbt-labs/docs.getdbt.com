@@ -43,10 +43,9 @@ In the manifest, the `metadata` may also include:
 
 #### Notes:
 - The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at **schemas.getdbt.com**.
-- As of v0.19.0, all artifacts are `v1`:
-    - https://schemas.getdbt.com/dbt/manifest/v1.json
-    - https://schemas.getdbt.com/dbt/run-results/v1.json
+- As of v0.20.0, the current schema for each artifact is:
+    - https://schemas.getdbt.com/dbt/manifest/v2.json
+    - https://schemas.getdbt.com/dbt/run-results/v2.json
     - https://schemas.getdbt.com/dbt/catalog/v1.json
     - https://schemas.getdbt.com/dbt/sources/v1.json
-- The previous `v0` schemas are also available for ease of comparison. These represent the artifact schemas as of v0.18.1. In prior versions, artifacts were not standardized or versioned.
-- Going forward, artifact versions may change in any minor version of dbt (`v0.x.0`). Artifact version updates are not guaranteed to align with each other—for instance, dbt may introduce `manifest/v2` while still using `sources/v1`. We will always include artifact schema updates as breaking changes in the release notes.
+- Artifact versions may change in any minor version of dbt (`v0.x.0`). Each artifact is versioned independently.

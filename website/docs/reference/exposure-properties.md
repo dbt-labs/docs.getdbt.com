@@ -28,6 +28,8 @@ exposures:
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}
+    [tags](resource-properties/tags): [<string>]
+    [meta](resource-properties/meta): {<dictionary>}
     owner:
       name: <string>
       email: <string>
