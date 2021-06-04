@@ -202,6 +202,7 @@ module.exports = {
         "docs/dbt-cloud/dbt-cloud-api/service-tokens",
       ],
     },
+    "docs/dbt-cloud/cloud-dbt-cloud-support",
     "docs/dbt-cloud/cloud-changelog",
   ],
   reference: [
@@ -383,6 +384,7 @@ module.exports = {
             "reference/commands/deps",
             "reference/commands/init",
             "reference/commands/list",
+            "reference/commands/parse",
             "reference/commands/rpc",
             "reference/commands/run",
             "reference/commands/run-operation",

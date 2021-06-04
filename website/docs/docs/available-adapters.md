@@ -36,9 +36,9 @@ These adapter plugins are contributed and maintained by members of the community
 | Adapter for | Documentation | Notes | Install from PyPi |
 | ----------- | ------------- | ----- | ----------------- |
 | Microsoft SQL Server | [Profile Setup](mssql-profile) | SQL Server 2008 R2 and later | `pip install dbt-mssql` |
-| Microsoft SQL Server | [Profile Setup](mssql-profile) | SQL Server 2016 and later | `pip install dbt-sqlserver` |
+| Microsoft SQL Server | [Profile Setup](mssql-profile#overview-of-dbt-mssql) | SQL Server 2016 and later | `pip install dbt-sqlserver` |
 | Microsoft Azure Synapse DW | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+ | `pip install dbt-synapse` |
-| Microsoft Azure Synapse DW | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+ | `pip install dbt-azuresynapse` |
+| Microsoft Azure Synapse DW | [Profile Setup](azuresynapse-profile#overview-of-dbt-azuresynapse) | Azure Synapse 10+ | `pip install dbt-azuresynapse` |
 | Exasol Analytics | [Profile Setup](exasol-profile) | Exasol 6.x and later | `pip install dbt-exasol` |
 | Oracle Database | [Profile Setup](oracle-profile) | Oracle 11+ | `pip install dbt-oracle` |
 | Dremio | [Profile Setup](dremio-profile) | Dremio 4.7+ | `pip install dbt-dremio` |
@@ -48,7 +48,7 @@ Community-supported plugins are works in progress, and all users are encouraged 
 - Join the dedicated channel in [dbt Slack](https://community.getdbt.com/) (e.g. #db-sqlserver, #db-athena)
 - Check out the open issues in the plugin's source repository
 
-Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in 2021.
+Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in the near future.
 
 ## Creating a new adapter
 

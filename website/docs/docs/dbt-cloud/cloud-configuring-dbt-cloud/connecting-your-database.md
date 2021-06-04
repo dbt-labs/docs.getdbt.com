@@ -162,7 +162,7 @@ The following fields are available when creating a Databricks connection:
 | Port | The port to connect to Databricks for this connection | 443 |
 | Organization | Optional (default: 0) | 0123456789 |
 | Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
-| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL Analytics) | 0123456789 |
+| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 0123456789 |
 | User | Optional | dbt_cloud_user |
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connection.png" title="Configuring a Databricks connection"/>

@@ -19,7 +19,7 @@ To enable Snowflake OAuth, you will need to create a [security integration](http
 In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). You can find a sample `create or replace security integration` query below.
 
 ```
-CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD_<PROJECT_NAME>
+CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
   TYPE = OAUTH
   ENABLED = TRUE
   OAUTH_CLIENT = CUSTOM
@@ -52,15 +52,20 @@ Additional configuration options may be specified for the security integration a
 The Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
 
 ```
-select SYSTEM$SHOW_OAUTH_CLIENT_SECRETS('DBT_CLOUD_<PROJECT_NAME>');
+with 
+
+integration_secrets as (
+  select parse_json(system$show_oauth_client_secrets('DBT_CLOUD')) as secrets
+)
+
+select
+  secrets:"OAUTH_CLIENT_ID"::string     as client_id,
+  secrets:"OAUTH_CLIENT_SECRET"::string as client_secret
+from 
+  integration_secrets;
 ```
 
-This query should return a single variant column containing three fields:
-- `OAUTH_CLIENT_ID`
-- `OAUTH_CLIENT_SECRET`
-- `OAUTH_CLIENT_SECRET_2`
-
-Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection. Note that the `OAUTH_CLIENT_SECRET_2` field is unused in dbt Cloud configuration.
+Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection. 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/1bd0c42-Screen_Shot_2020-03-10_at_6.20.05_PM.png" title="Configuring OAuth credentials in the dbt Cloud UI" />
 

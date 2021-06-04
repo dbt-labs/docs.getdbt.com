@@ -4,6 +4,104 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.27 (May 26, 2021)
+
+A lot of improvements coming for GitLab webhooks and native auth. We also fixed a number of bugs in the IDE. Our goal is for you to never see an infinite spinner again!
+
+#### Enhancements
+
+- Add dbt v0.19.2rc1 and v0.20.0b1
+- Add an open/closable overlay for the DAG
+- Disable department dropdown
+- Add DAG flags, button, and tab context
+- Add run source freshness option to jobs
+- Implement conditional redirecting after GitLab app integration
+- Add Develop Pod Support for Rook and Ceph file storage
+- Show all common actions for valid top level commands
+
+#### Fixed
+
+- Fix link to documentation
+- Disable the "Restart IDE" Button while the IDE is loading
+- Continue canceling runs when we run into deleted accounts
+- Fix SSO re-auth page
+- Fix blank verify email page
+- Resolve git refresh regression
+- Fix missing "Run on Merge" button in Job creation/edit form- 
+- Warn users they have unsaved changes
+- Updates test command suggestions and regex for common action suggestions
+- Updates order of stylesheet import to fix missing border bug
+- Fix GitLab PR link for Run Page
+- Fix infinite spinner for missing environment or development credentials
+- Fix infinite spinner when user is missing dev credentials
+- Do not try to push if awaiting a merge
+- Fix deleting schemas
+- Fix favicon reference
+
+#### Internal
+
+- Fix layout issues when a user is hijacked
+- Add feature flag for manually_configured_git_provider
+- Add a space to the body navigation class
+- Add develop health endpoint
+- Migrate code, body, hr, ul, ol, img tags from tag styles to class styles
+- Add a React Navigation bar and control plane
+- Migrate headers from tag styles to class styles
+- Apply Prettier to all HTML
+- Support Chat Widget using Zendesk
+- Add github_personal_auth_for_enterprise feature flag
+- Associate Repository with GitProvider on project creation
+- Remove gitlab_webhooks feature flag
+- Conditionally render GitLab integration UI on /profile/settings for Team/Developer plans
+- Provision IDE for GitLab repos on Team/Dev plans
+- Add single-spa wrapper to dbt-cloud
+
+## dbt Cloud v1.1.26 (May 12, 2021)
+
+If you haven't seen it yet, spin up the IDE: the command bar now has recent actions (you can up-arrow like on the command line) as well as some hardcoded suggestions that will auto-populate your active model, if there is one. Check it out! Other fixes and adjustments as well, as we all get ready for Staging this Thursday - exciting week for the Product org over at ol' Fishtown!
+
+#### Enhancements
+
+- Made dbt default version on env 0.19.1
+- Rolled out new command line experience to all customers
+- Post webhook triggered run status back to gitlab
+- Temporary tabs can also populate the model from manifest
+- Check command line content is minimally valid
+- Allow user to restart server when develop pod crashes
+- Prevent overflow of menu items
+
+#### Fixed
+
+- Handle validation error for improper remote URLs in the Scheduler
+- Refactor exception logging out of GitRepo and into exception handlers
+- Required tags returning null from core no longer causing infinite spinner
+- Removed deleted repos while fetching repository for sending commit statuses
+- Refactor git provider service
+- Resolve files with special characters becoming forever dirty
+- Disable input when RPC command running & add button when command bar is empty
+- Updating button for the Cancel/Enter button on commandline
+- Fix connection setup to always use the project referenced in the route
+- Fix "View data sources" URL in environment page
+- Add support for clicking on previously run commands and updating the text inside of the commandline
+- Fix sources URL in environments page
+- Fix metadata token not allowed API response
+
+#### Internal
+
+- Add stubbed directory structure
+- GitLab for Developer/Team plans project creation flow
+- Notify developers of failing master builds
+- Show Common Actions when run drawer is open
+- Increase the max size of the snowflake user column
+- Record exception info when we fail to send commit status
+- Add integration tests for command drawer
+- Resolve conflicting migrations
+- Cancel runs when Scribe is killed
+- Use protobufs to serialize messages on the message queue
+- Generate SSH keys for GitLab projects on Developer/Team plans
+- Webhooks only Service Tokens for GitLab
+
+
 ## dbt Cloud v1.1.25 (April 28, 2021)
 
 Exciting things coming down the pipe - ongoing enhancements to the command bar experience in the IDE, doing some work to ensure that more git providers are presented with a first class experience in Cloud, as well as assorted bug fixes - "I must have bug fixes, always and always" - that was Monet I think  
