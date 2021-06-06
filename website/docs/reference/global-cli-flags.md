@@ -121,7 +121,7 @@ $ dbt --partial-parse run
 
 </File>
 
-## Partial Parsing
+## Experimental parser
 The `--use-experimental-parser` flag will statically analyze model files in your project and, if possible, extract needed information 3x faster than a full Jinja render. See [the docs on parsing](parsing#experimental-parser) for more details.
 
 <File name='Usage'>
