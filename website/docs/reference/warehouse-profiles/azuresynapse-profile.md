@@ -34,7 +34,7 @@ SQL Server credentials are supported for on-prem as well as cloud, and it is the
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
+type: synapse
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
 server: server-host-name or ip
 port: 1433
@@ -49,6 +49,7 @@ password: password
 
 The following [`pyodbc`-supported ActiveDirectory methods](https://docs.microsoft.com/en-us/sql/connect/odbc/using-azure-active-directory?view=sql-server-ver15#new-andor-modified-dsn-and-connection-string-keywords) are available to authenticate to Azure SQL products:
 - ActiveDirectory Password
+- Azure CLI
 - ActiveDirectory Interactive (*Windows only*)
 - ActiveDirectory Integrated (*Windows only*)
 - Service Principal (a.k.a. AAD Application)
@@ -58,6 +59,7 @@ The following [`pyodbc`-supported ActiveDirectory methods](https://docs.microsof
   defaultValue="integrated"
   values={[
     { label: 'Password', value: 'password'},
+    { label: 'CLI', value: 'cli'},
     { label: 'Interactive', value:'interactive'},
     { label: 'Integrated', value: 'integrated'},
     { label: 'Service Principal', value: 'serviceprincipal'}
@@ -71,7 +73,7 @@ Definitely not ideal, but available
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
+type: synapse
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
 server: server-host-name or ip
 port: 1433
@@ -85,6 +87,30 @@ password: iheartopensource
 
 </TabItem>
 
+<TabItem value="cli">
+
+First, install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli), then, log in:
+
+`az login`
+
+<File name='profiles.yml'>
+
+```yml
+type: synapse
+driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+server: server-host-name or ip
+port: 1433
+schema: schemaname
+authentication: CLI
+```
+This is also the preferred route for using a service principal:
+
+`az login --service-principal --username $CLIENTID --password $SECRET --tenant $TENANTID`
+
+</File>
+
+</TabItem>
+
 <TabItem value="interactive">
 
 *Windows Only* brings up the Azure AD prompt so you can MFA if need be.
@@ -92,7 +118,7 @@ password: iheartopensource
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
+type: synapse
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
 server: server-host-name or ip
 port: 1433
@@ -112,7 +138,7 @@ user: bill.gates@microsoft.com
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
+type: synapse
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
 server: server-host-name or ip
 port: 1433
@@ -131,7 +157,7 @@ authentication: ActiveDirectoryIntegrated
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
+type: synapse
 driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
 server: server-host-name or ip
 port: 1433
