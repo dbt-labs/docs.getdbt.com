@@ -9,7 +9,7 @@ description: "Changelog for the dbt Cloud application"
 
 #### Enhancements
 
-generated sources from checkbox command are now available in artifacts drop down on project settings
+- generated sources from checkbox command are now available in artifacts drop down on project settings
 - Create the "Transform Dag" component for the Knowledge Layer
 - Stub out and wire up the KnowledgeService
 - Prompt use for PAT and provision IDE for Azure DevOps
