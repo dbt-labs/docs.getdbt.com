@@ -70,7 +70,6 @@ generated sources from checkbox command are now available in artifacts drop down
 
 ## dbt Cloud v1.1.27 (May 26, 2021)
 
-
 A lot of improvements coming for GitLab webhooks and native auth. We also fixed a number of bugs in the IDE. Our goal is for you to never see an infinite spinner again!
 
 #### Enhancements
