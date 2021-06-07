@@ -4,7 +4,72 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.28 (June 9, 2021)
+
+#### Enhancements
+
+generated sources from checkbox command are now available in artifacts drop down on project settings
+- Create the "Transform Dag" component for the Knowledge Layer
+- Stub out and wire up the KnowledgeService
+- Prompt use for PAT and provision IDE for Azure DevOps
+- Removing dbt_run_dedicated_nodegroup account feature flag
+- Add UI for manually configuring a git repo
+- Remove deferred state job execution feature flag
+- Update project creation endpoint to support manually configured repositries
+- Add a DAG with Fake/Random Data into the IDE
+- Global gitlab auth.
+- add dbt v0.19.2rc1 and v0.20.0b1
+
+#### Fixed
+
+- Fix custom branch only on job definition default value
+- fix slack integration for team info
+- fix unhandled rejection when canceling a run
+- Updating duck test to new flag name
+- Resolves statement tab contents not saving
+- Add unsaved changes warning to git actions modal
+- Drop temporary schemas for closed/merged GitLab merge requests
+- Use new develop pod health endpoint to determine when the IDE is ready to prevent "Unable to retrieve repository status" modal
+- Define full name should only return when there is a match
+- Fix inconsistencies in job details page and profile integrations page
+- Ensure DD_LOGS logger is truly available
+- Do not kick off multiple runs for same sha.
+- Add classmethod back
+- Reduce log level when we are not able to reach scribe
+- Fix IDE layout by removing unneeded layout class
+- Continue with scheduler execution when we can't send commit status
+
+#### Internal
+
+- Add tests for #3009
+- RunSQL migration for populating git_auth_level column in database_account table
+- Migrate data fetching, ToS, Verify Email to react
+- Force cache invalidation via styles.css version
+- Support Tailwind preflight and contextless styling
+- Add git_auth_level column to database_account table
+- Remove cli abstraction flag (CLI abstraction GA)
+- add more logging to the slack integration
+- Switch from 3 to 2 jest workers in CI to prevent crashes due to insufficient memory
+- Add bold class to strong
+- Skip fetching user_git_token for non-manually configured repos
+- Remove gitlab_for_dev_team_plans feature flag
+- Fixing script to only detect changed migrations not all migrations
+- Add migration check to circle
+- Refactor turn_user_feature_flag_on and reuse for turn off
+- Remove Angular Navigation and feature flag
+- Forcing the pulling of tags during a deploy
+- Fix for potential race condition during deploys
+- Switching to common tag-based deploy for staging
+- Fixing migrations in prod
+- Fix conflicting migrations
+- Add constants/migrations for Azure DevOps support (Geico)
+- Single bumpversion for dbt-cloud prod deploys
+- Migrate anchors from tag styles to class styles
+- Switching to common tag-based deploy for dbt-cloud/prod+onprem
+
 ## dbt Cloud v1.1.27 (May 26, 2021)
+
 
 A lot of improvements coming for GitLab webhooks and native auth. We also fixed a number of bugs in the IDE. Our goal is for you to never see an infinite spinner again!
 
