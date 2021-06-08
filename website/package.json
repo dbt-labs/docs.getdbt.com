@@ -14,6 +14,7 @@
     "core-js": "^3.6.4",
     "file-loader": "^6.1.0",
     "mobx": "^4.15.4",
+    "node-polyfill-webpack-plugin": "^1.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.0",
     "redoc": "^2.0.0-rc.41",

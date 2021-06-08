@@ -193,6 +193,7 @@ module.exports = {
   ],
   plugins: [
     path.resolve('plugins/svg'),
+    path.resolve('plugins/webpack'),
   ],
   scripts: [
     'https://code.jquery.com/jquery-3.4.1.min.js',
