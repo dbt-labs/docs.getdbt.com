@@ -4,6 +4,28 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.28 (June 9, 2021)
+We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab, and all developers should test out Slim CI which will speed up their model builds.
+
+#### New products and features
+
+- `Slim CI`: We’ve made Slim CI available for all our cloud customers! With Slim CI, you don't have to rebuild and test all your models; you can instruct dbt Cloud to run jobs on only modified or new resources. If you are a GitHub or GitLab user, try creating a new job that runs on pull requests and you can signal to dbt to run only on these modified resources by including the `state:modified` argument. Read more about Slim CI [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github#slim-ci).
+
+- Native GitLab authentication for dbt Cloud Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to dbt Cloud IDE's git actions. Read how to set up native GitLab auth [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab).
+
+
+#### Bugs and fixes
+- Allow users to select artifacts from a job that runs source freshness on jobs with the source freshness execution settings set to `ON`.
+- Resolve `RUN ONLY ON CUSTOM BRANCH?` button to toggle on and off properly.
+- Retain information in a `Statement` tab when the page is refreshed.
+- Unsaved changes in the IDE are now saved when committing work.
+- Drop temporary schemas in the data warehouse for closed or merged GitLab merge requests.
+
+#### Performance improvements
+- Behind the scenes, we’ve been moving off of Angular and onto React. We’ve started the process of migrating the central pieces of our UI over - the first of which is the main navigation. We think this will have a big impact on our ability to reduce UI bugs and improve user experience.
+- Added support for dbt 0.19.2rc2 + 0.20.0rc1 in dbt Cloud.
+
+
 ## dbt Cloud v1.1.27 (May 26, 2021)
 
 A lot of improvements coming for GitLab webhooks and native auth. We also fixed a number of bugs in the IDE. Our goal is for you to never see an infinite spinner again!
@@ -38,24 +60,6 @@ A lot of improvements coming for GitLab webhooks and native auth. We also fixed 
 - Fix deleting schemas
 - Fix favicon reference
 
-#### Internal
-
-- Fix layout issues when a user is hijacked
-- Add feature flag for manually_configured_git_provider
-- Add a space to the body navigation class
-- Add develop health endpoint
-- Migrate code, body, hr, ul, ol, img tags from tag styles to class styles
-- Add a React Navigation bar and control plane
-- Migrate headers from tag styles to class styles
-- Apply Prettier to all HTML
-- Support Chat Widget using Zendesk
-- Add github_personal_auth_for_enterprise feature flag
-- Associate Repository with GitProvider on project creation
-- Remove gitlab_webhooks feature flag
-- Conditionally render GitLab integration UI on /profile/settings for Team/Developer plans
-- Provision IDE for GitLab repos on Team/Dev plans
-- Add single-spa wrapper to dbt-cloud
-
 ## dbt Cloud v1.1.26 (May 12, 2021)
 
 If you haven't seen it yet, spin up the IDE: the command bar now has recent actions (you can up-arrow like on the command line) as well as some hardcoded suggestions that will auto-populate your active model, if there is one. Check it out! Other fixes and adjustments as well, as we all get ready for Staging this Thursday - exciting week for the Product org over at ol' Fishtown!
@@ -86,22 +90,6 @@ If you haven't seen it yet, spin up the IDE: the command bar now has recent acti
 - Fix sources URL in environments page
 - Fix metadata token not allowed API response
 
-#### Internal
-
-- Add stubbed directory structure
-- GitLab for Developer/Team plans project creation flow
-- Notify developers of failing master builds
-- Show Common Actions when run drawer is open
-- Increase the max size of the snowflake user column
-- Record exception info when we fail to send commit status
-- Add integration tests for command drawer
-- Resolve conflicting migrations
-- Cancel runs when Scribe is killed
-- Use protobufs to serialize messages on the message queue
-- Generate SSH keys for GitLab projects on Developer/Team plans
-- Webhooks only Service Tokens for GitLab
-
-
 ## dbt Cloud v1.1.25 (April 28, 2021)
 
 Exciting things coming down the pipe - ongoing enhancements to the command bar experience in the IDE, doing some work to ensure that more git providers are presented with a first class experience in Cloud, as well as assorted bug fixes - "I must have bug fixes, always and always" - that was Monet I think  
@@ -123,17 +111,6 @@ Exciting things coming down the pipe - ongoing enhancements to the command bar e
 - Allowed unencrypted adapter fields to be edited
 - Fixed bugs with file and folder renaming, alongside associated tab state
 
-#### Internal
-
-- Saved theoretical run start time to database to calculate run start delay.
-- Processed GitLab webhooks on close events
-- Refactored getting dequeued and running runs with cache
-- Updated GitLab webhooks UI :fishing_pole_and_fish:
-- Added auth to GitProvider endpoint, support Service Tokens too :the_horns:
-- Used manifest.json client-side to identify model of focused editor
-- Provisioned scribe as a headless service by default
-- Added connection testing for Spark connections
-- Added GitProviderView and register GitLab webhooks
 
 ## dbt Cloud v1.1.24 (April 14, 2021)
 
@@ -173,23 +150,6 @@ Phew! As our company grows, so too does our changelog! Look at all these! The bi
 - Fixed docs and sources links in dashboard page for read only users
 - Fixed truncating first_name to 30 characters
 
-#### Internal
-
-- Bumped schema version of command drawer dismiss event to 1-0-1
-- Attempted to prevent test-frontend from running out of memory
-- Added successful sign in metric
-- Defined RPC readiness probe
-- Removed should_handle method from ScrubbingStreamHandler
-- Added metadata read permission to account admin service token
-- Fixed develop request timing monitoring, push data to Datadog
-- Updated ide_command_drawer_dismiss event to schema version 1-0-0
-- Tracked snowplow event when command drawer menu is dismissed
-- Added metadata.cloud.getdbt.com to allowed hosts
-- Tracked Snowplow event when items are selected from the command drawer
-- Added Datadog Real User Monitoring to dbt-cloud
-- Improved command drawer interactions
-- Replaced legacy user feature flag admin with new
-- Created basic command drawer experience with stubbed data
 
 ## dbt Cloud v1.1.23 (March 31, 2021)
 
@@ -221,14 +181,6 @@ Some backend work, some frontend work, some bug fixes: a nice mix for this relea
 - Fix user license creation via admin interface
 - Adjusted addition of global .gitignore
 
-#### Internal
-
-- Filter our ResourceWarning error from Datadog
-- add log filter to wsgi.py
-- Remove Rollbar from codebase
-- Add UI Logs to Datadog
-- Lower develop session timeout from 6 hours to 3 hours
-- Upgrade to Webpack 5 and bundle Angularjs
 
 ## dbt Cloud v1.1.22 (March 17, 2021)
 
@@ -252,11 +204,6 @@ Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not f
 - Normalize domain names across inputs/outputs
 - Redirect auth failed errors back to appropriate page with error description
 
-#### Internal
-
-- Reducing Scribe memory request in production
-- Don't clobber run logs across all dev environments
-- Refactor license_type
 
 ## dbt Cloud v1.1.21 (March 3, 2021)
 
@@ -280,14 +227,6 @@ This changelog wraps up work on what we've been calling the SQL Drawer in the ID
 - Add logic to support select fields in adapter UI
 - Undo clobbering groups
 
-#### Internal
-
-- Fix latest.sh script
-- Remove scribe image version check
-- Allow opt-in APM
-- Allow updating user license from backend page
-- Update production build workflow
-- Filter only for log_archive_type of database
 
 ## dbt Cloud v1.1.20 (February 17, 2021)
 
@@ -306,27 +245,6 @@ Continued stability and quality of life improvements for folks with multiple acc
 
 - Fix issue with source freshness for 0.19.0
 
-#### Internal
-
-- Fix simultaneous builds
-- Add copy_from argument to feature flag commands and refactor sampling into service
-- Admin panel updates
-- Ignore if cloud log is not available
-- Add scribe enabled filter and some more summary cleanup
-- Fix extra_data clobbering auth_provider_groups
-- Fix account page in backend
-- RPC -> API in the shell command link
-- Improve job definition page performance in backend
-- Speed up project admin
-- Add management commands for percentage based feature flag operations
-- Logging empty user groups in SSO
-- Remove test prefix
-- Tag develop resources with better labels in k8s
-- Verification script without downloading logs in from_dbobj and having no such key stats
-- Updates to verification script
-- Add ddtrace to SchedulerCommand
-- Freshness fix
-- Only use scribe logs when feature flag is currently turned on for account
 
 ## dbt Cloud v1.1.19 (February 3, 2021)
 
@@ -344,13 +262,6 @@ The latest release of dbt (Oh Nineteen Oh) is now available for your enjoyment o
 - Added logic to show the entered service token name prior to the request completing
 - Fixed endlessly running rpc queries with non-working cancel button on IDE refresh
 
-#### Internal
-
-- Added filters to Scribe verification script
-- Set dd_agent_host host for run and develop pods.
-- Adjusted dbt version constraint to use Metadata API
-- Generated service tokens
-- Added API endpoints for service tokens
 
 ## dbt Cloud v1.1.18 (January 20, 2021)
 
@@ -378,30 +289,6 @@ Most notable things here are around foundational work toward future feature rele
 - Add logic to hide IP whitelist message for on-prem customers
 - fix 0.19.0rc1 run image dependencies
 
-#### Internal
-
-- Remove Mailchimp integration
-- Use the generic get_handle method in the run service
-- Clean up scribe services when finished jobs are cleaned up
-- Downgrade social auth
-- Adds an (albeit) scrappy django command to verify the content of scribe logs vs cloud
-- Adjust existing customer taxation backfill method
-
-## dbt Cloud v1.1.17 (January 7, 2021)
-
-Tidying up this and that as we settle into 2021. No new user-facing functionality. Hope everyone had a safe and cozy New Year!
-
-#### Internal
-
-- Fix Stripe event syncer
-- Take down the wreath
-- Sweep up the confetti
-- Backfill all Avalara metadata
-- Bump psycopg2
-- Fix Circle jobs
-- Fix duplicated Circle jobs
-- Migrate to Python 3.8
-- Check the Scribe image version before each scheduler loop
 
 ## dbt Cloud v1.1.16 (December 23, 2020)
 
@@ -417,6 +304,7 @@ and adds two new permission sets for Enterprise acccounts.
 
 - Improve logging infrastructure for dbt run logs
 - Fix for SSH tunnel logging errors
+
 
 ## dbt Cloud v1.1.15 (December 10, 2020)
 
@@ -435,12 +323,6 @@ Lots of great stuff to confer about this go-round: things really coalesced this 
 - Handle AuthForbidden and AuthCancelled graciously - ie, not throw 500s
 - Fix regression with IDE loading spinner
 
-#### Internal
-
-- Adding drf-spectacular
-- Hubspot signup integration
-- Add additional SSH logging
-- Add Datadog traces to IDE filesystem interactions
 
 ## dbt Cloud v1.1.14 (November 25, 2020)
 
@@ -461,13 +343,6 @@ This release adds a few new pieces of connective tissue, notably OAuth for BigQu
 - Log out unhandled error in environment variable context manager
 - Remove account settings permissions for user integrations
 
-#### Internal
-
-- Fix some cases of missing params
-- Add a Datadog metric to count the number of log bytes written to the database
-- Add feature flag for IDE work/code retention
-- Logging API usage
-- Add scribe to run pods
 
 ## dbt Cloud v1.1.13 (November 12, 2020)
 
@@ -491,6 +366,7 @@ a number of bugs have been squashed and performance improvements have been made.
 - Fix older migration to make auth_url field nullable
 - Support paths in GitLab instance URL
 - Fix for auth token request url in GitLab oauth flow
+
 
 ## dbt Cloud v1.1.12 (October 30, 2020)
 
@@ -530,11 +406,6 @@ Release v1.1.11 includes some quality-of-life enhancements, copy tweaks, and err
 - Fix a bug with GitLab auth flow for unauthenticated users
 - Fix bug where Native Okta SSO uses the wrong port
 
-#### Internal
-
-- Codex Exposure Tile Snippet Generation
-- Remove embedded database storage class preflight check for on-premises
-- Autogenerate Django secret key and remove from from config for on-premises
 
 ## dbt Cloud v1.1.10 (October 8, 2020)
 
@@ -557,6 +428,7 @@ and contains a number of bugfixes and improvements in the dbt Cloud IDE.
 - Fix a source of IDE instability
 - Gracefully clean up IDE backend on shutdown
 - Always show SSO mappings on Group Details page
+
 
 ## dbt Cloud v1.1.9 (October 1, 2020)
 
@@ -585,10 +457,6 @@ and a number of fixes and improvements were released as well.
 - Fix for missing email variable in GSuite debug logging
 - Destroy IDE session when switching projects
 
-#### Internal
-
-- Use FQDN for routing internal develop requests
-- S3: upping the retry limit
 
 ## dbt Cloud v1.1.8 (September 17, 2020)
 
@@ -606,12 +474,6 @@ initial support for a GitLab integration and self-service RBAC configuration.
 
 - Allow `*_proxy` env vars in scheduled runs
 
-#### Internal
-
-- Update freeze.0.18.0.txt
-- filter out pickle files
-- error log consolidation, enable apm trace ids in logs
-- add created_at range filter to RunService
 
 ## dbt Cloud v1.1.7 [September 3, 2020]
 
@@ -630,11 +492,6 @@ and job scheduler.
 - Fix for joining threads in run triggers
 - Fix thread caching for s3 uploads
 
-#### Internal
-- Disable thread session cache
-- Adds ddtrace
-- Enable botocore logging for credentials matching
-- Increase protection against SSRF
 
 ## dbt Cloud v1.1.6 (August 20, 2020)
 
@@ -651,8 +508,9 @@ dbt Cloud application.
 #### Fixed
 - [Enterprise] Fix for missing IdP group membership mappings when users belong to >100 Azure AD groups
 - Disallow the creation of symlinks in the IDE
-- [Internal] Improve reliability of background cleanup processes
-- [Internal] Improve performance and reliability of artifact management and PR webhook processing
+- Improve reliability of background cleanup processes
+- Improve performance and reliability of artifact management and PR webhook processing
+
 
 ## dbt Cloud v1.1.5 (August 4, 2020)
 
@@ -673,7 +531,7 @@ significantly.
 - [On-premises] Allow disabling of TLS for SMTP
 - [On-premises] Making k8s access mode for IDE pods an environment variable
 - [Security] Force session cookie to be secure
-- [Internal] Make api and admin modules flake8 complaint
+- Make api and admin modules flake8 complaint
 
 #### Fixed
 
@@ -682,12 +540,6 @@ significantly.
 - Remove extraneous billing API calls during job scheduler loop
 - Fix error where refreshing the IDE would leave running dbt processes in a bad state
 
-#### Internal
-
-- Add logging around malformed task tags for IDE queries
-- Preserve artifacts for each run step
-- Add status message to run info in backend
-- Add extra debug logs to dbt run
 
 ## dbt Cloud v1.1.4 (July 21, 2020)
 
@@ -711,16 +563,8 @@ includes a number of bugfixes.
 - Fix a bug with metadata set in azure storage provider
 - Fixed error when switching to developer plan from trial
 - Fix authentication bug where we setup all accounts with same domain
-- \[Security\] Disallow partial_parse.pickle files in repositories
 - \[Security\] Add security check to prevent potentially malicious html files in dbt docs
 
-#### Internal
-
-- Log api v1/ calls to Datadog
-- Add a scheduler loop time metric to Datadog
-- Add a time to run metric to the scheduler
-- Using type property along with feature flag to display verify tab
-- Fix waffle profiler to update on db switch changes
 
 ## dbt Cloud v1.1.3 (July 7, 2020)
 
@@ -743,13 +587,6 @@ This release contains a number of IDE features and bugfixes, a new release candi
 - IDE: Fix bug with checking out an environment custom branch on IDE refresh
 - Bigquery: Fix PR schema dropping
 
-#### Internal
-
-- Add flake8 to CI
-- Add profiler and enable configuration to any python method
-- Add analytics event handling middleware for snowplow
-- Move IDE startup modals from Angular to modern codebase
-- Log user impersonation events for SOC2 compliance
 
 ## dbt Cloud v1.1.2 (June 23, 2020)
 
@@ -768,12 +605,6 @@ This branch includes an important security fix, two new versions of dbt, and som
 - \[Security\] Fix intra-account API key leakage
 - Support queries containing unicode characters in the IDE
 
-#### Internal
-
-- Remove all usage of outdated `environments_develop` permission
-- Add profiling utility
-- Replace cloudwatch client with datadog client
-- Cleanup git service GitBranch code
 
 ## dbt Cloud v1.1.1 (June 9, 2020)
 
@@ -792,10 +623,6 @@ This release includes dbt 0.17.0 and a number of IDE quality of life improvement
 
 - Expires old pending password reset codes when a new password reset is requested
 
-#### Internal
-
-- Clean up git service GitBranch code
-- Upgrade node dependencies to support ECMAScript 2020 features
 
 ## dbt Cloud v1.1.0 (June 2, 2020)
 
