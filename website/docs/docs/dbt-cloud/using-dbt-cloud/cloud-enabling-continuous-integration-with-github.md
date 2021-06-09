@@ -46,7 +46,7 @@ When creating or editing a job in dbt Cloud, you can set your execution settings
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests may select &quot;self&quot; or another job from the same project for deferral and comparison"/>
 
-When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of new and modified resources. In your job commands, you can signal to dbt to run only on these modified resources by including the `state:modified` argument. 
+When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of new and modified resources. In your job commands, you can signal to dbt to run only on these modified resources and their children by including the `state:modified+` argument. 
 
 As example:
 
