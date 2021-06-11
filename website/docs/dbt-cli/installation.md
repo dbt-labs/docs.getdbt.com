@@ -119,7 +119,7 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 
 #### Windows
 
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.5 or higher for Windows](https://www.python.org/downloads/windows/).
+Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.5 or higher for Windows](https://www.python.org/downloads/windows/). Installation with Python 3.9 seems to have issues where some of the dependencies cannot be installed properly (cryptography is one of them.) Either try the installation by downgrading your Python version from 3.9.x or create a virtual environment with lower version of Python than that of 3.9.x but equal to or higher than the minimum required version 3.5.
 
 ## Install from source
 
