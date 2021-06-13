@@ -33,7 +33,7 @@ These adapter plugins are built and maintained by the same people who build and 
 
 These adapter plugins are contributed and maintained by members of the community 🌱
 
-| Adapter for | Documentation | Notes | Install from PyPi |
+| Adapter for | Documentation | Notes | Install from PyPI |
 | ----------- | ------------- | ----- | ----------------- |
 | Microsoft SQL Server | [Profile Setup](mssql-profile#overview-of-dbt-mssql) | SQL Server 2008 R2 and later | `pip install dbt-mssql` |
 | Microsoft SQL Server | [Profile Setup](mssql-profile) | SQL Server 2016 and later | `pip install dbt-sqlserver` |
