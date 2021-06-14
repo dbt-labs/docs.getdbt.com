@@ -117,9 +117,11 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
   python-devel openssl-devel
 ```
 
-#### Windows
+#### Windows 10 
 
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.5 or higher for Windows](https://www.python.org/downloads/windows/).
+* Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.6 or higher for Windows](https://www.python.org/downloads/windows/).
+* Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
+* Enable [Long Paths](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later)
 
 ## Install from source
 
