@@ -7,8 +7,7 @@ title: Test configurations
 
 <Changelog>
 
-* `v0.20.0`: Introduced the ability to configure tests from `dbt_project.yml`,
-and to configure `enabled` for generic tests.
+* `v0.20.0`: Introduced the ability to configure tests from `dbt_project.yml`, and to configure `enabled` for generic tests. Introduced `fail_calc`, `where`, `error_if`, `warn_if`, `store_failures`, and `where` configs.
 
 </Changelog>
 
