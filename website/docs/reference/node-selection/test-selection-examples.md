@@ -70,10 +70,10 @@ $ dbt test --models customers
 $ dbt test --models staging.jaffle_shop
 
 # Run tests downstream of a model (note this will select those tests directly!)
-$ dbt tests --models stg_customers+
+$ dbt test --models stg_customers+
 
 # Run tests upstream of a model (indirect selection)
-$ dbt tests --models +stg_customers
+$ dbt test --models +stg_customers
 
 # Run tests on all models with a particular tag (direct + indirect)
 $ dbt test --models tag:my_model_tag
