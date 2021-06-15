@@ -26,7 +26,7 @@ We recommend locally rendering changes made to the docs site so you can review y
 8. Before pushing your changes to a branch, check that all links work by using the `make build` script.
 
 Advisory: 
-- Currently an `npm install` produces a number of depedency warnings, in particular several claiming that `docusaurus/core` is missing. Rest assured, this message is a red herring. As of writing this, no 2.0.0 package exists, so you won't have much luck trying to install it. Feel free to ignore those warnings.
+- Currently an `npm install` produces a number of dependency warnings, in particular several claiming that `docusaurus/core` is missing. Rest assured, this message is a red herring. As of writing this, no 2.0.0 package exists, so you won't have much luck trying to install it. Feel free to ignore those warnings.
 - If you run into an `fatal error: 'vips/vips8' file not found` error when you run `npm install`, you may need to run `brew install vips`. Warning: this one will take a while -- go ahead and grab some coffee!
 
 You can also check out [this Loom video](https://www.loom.com/share/7037780b86eb4f16953664b8f15f1e21) that I recorded for co-workers — it covers setting up docs.getdbt.com locally, and adding a page with links and images. Heads up — this was very much something I did on the fly, so is not super polished!
