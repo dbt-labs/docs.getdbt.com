@@ -293,7 +293,7 @@ Snapshots can be configured from both your `dbt_project.yml` file and a `config`
 This strategy handles column additions and deletions better than the `check_cols` strategy.
 
 #### Ensure your unique key is really unique
-The unique key is used by dbt to match rows up, so it's extremely important to make sure this key is actually unique! If you're snapshotting a source, I'd recommend adding a uniqueness test to your source ([example](https://github.com/fishtown-analytics/jaffle_shop/blob/demo/master/models/staging/jaffle_shop/jaffle_shop.yml#L22)).
+The unique key is used by dbt to match rows up, so it's extremely important to make sure this key is actually unique! If you're snapshotting a source, I'd recommend adding a uniqueness test to your source ([example](https://github.com/fishtown-analytics/jaffle_shop/blob/8e7c853c858018180bef1756ec93e193d9958c5b/models/staging/schema.yml#L26)).
 
 #### Use a `target_schema` that is separate to your analytics schema
 Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a separate schema so end users know they are special. From there, you may want to set different privileges on your snapshots compared to your models, and even run them as a different user (or role, depending on your warehouse) to make it very difficult to drop a snapshot unless you really want to.
@@ -321,7 +321,7 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 
 ## Snapshot meta-fields
 
-Snapshot tables will be created as a clone of your source dataset, plus some additional meta-fields.
+Snapshot tables will be created as a clone of your source dataset, plus some additional meta-fields*.
 
 | Field          | Meaning | Usage |
 | -------------- | ------- | ----- |
@@ -330,7 +330,7 @@ Snapshot tables will be created as a clone of your source dataset, plus some add
 | dbt_scd_id     | A unique key generated for each snapshotted record. | This is used internally by dbt |
 | dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
 
-The timestamps used for each column are subtly different depending on the strategy you use:
+*The timestamps used for each column are subtly different depending on the strategy you use:
 
 For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
 
@@ -359,7 +359,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 | id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
 | -- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
 | 1  | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 11:05 |
-| 1  | shipped | 2019-01-01 10:47 | 2019-01-01 11:05 |                  | 2019-01-01 11:05 |
+| 1  | shipped | 2019-01-01 11:05 | 2019-01-01 11:05 |                  | 2019-01-01 11:05 |
 
 </details>
 
@@ -392,7 +392,7 @@ Snapshot results:
 | id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
 | --- | ------- | ---------------- | ---------------- | ---------------- |
 | 1   | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:30 |
-| 1   | pending | 2019-01-01 11:30 |                  | 2019-01-01 11:30 |
+| 1   | shipped | 2019-01-01 11:30 |                  | 2019-01-01 11:30 |
 
 </details>
 

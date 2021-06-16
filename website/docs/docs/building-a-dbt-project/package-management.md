@@ -133,6 +133,8 @@ packages:
   - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
 ```
 
+**Note**: The use of private packages is not currently supported in dbt Cloud.
+
 #### Project subdirectories
 
 <Changelog>

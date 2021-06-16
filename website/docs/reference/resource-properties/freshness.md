@@ -55,6 +55,11 @@ If using a date field, you may have to cast it to a timestamp:
 loaded_at_field: "completed_date::timestamp"
 ```
 
+Or, depending on your SQL variant:
+```yml
+loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
+```
+
 If using a non-UTC timestamp, cast it to UTC first:
 
 ```yml

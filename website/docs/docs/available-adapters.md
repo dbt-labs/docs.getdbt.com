@@ -35,8 +35,8 @@ These adapter plugins are contributed and maintained by members of the community
 
 | Adapter for | Documentation | Notes | Install from PyPi |
 | ----------- | ------------- | ----- | ----------------- |
-| Microsoft SQL Server | [Profile Setup](mssql-profile) | SQL Server 2008 R2 and later | `pip install dbt-mssql` |
-| Microsoft SQL Server | [Profile Setup](mssql-profile#overview-of-dbt-mssql) | SQL Server 2016 and later | `pip install dbt-sqlserver` |
+| Microsoft SQL Server | [Profile Setup](mssql-profile#overview-of-dbt-mssql) | SQL Server 2008 R2 and later | `pip install dbt-mssql` |
+| Microsoft SQL Server | [Profile Setup](mssql-profile) | SQL Server 2016 and later | `pip install dbt-sqlserver` |
 | Microsoft Azure Synapse DW | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+ | `pip install dbt-synapse` |
 | Microsoft Azure Synapse DW | [Profile Setup](azuresynapse-profile#overview-of-dbt-azuresynapse) | Azure Synapse 10+ | `pip install dbt-azuresynapse` |
 | Exasol Analytics | [Profile Setup](exasol-profile) | Exasol 6.x and later | `pip install dbt-exasol` |
