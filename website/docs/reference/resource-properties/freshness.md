@@ -55,7 +55,7 @@ If using a date field, you may have to cast it to a timestamp:
 loaded_at_field: "completed_date::timestamp"
 ```
 
-or for bigquery
+Or, depending on your SQL variant:
 ```yml
 loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
 ```
