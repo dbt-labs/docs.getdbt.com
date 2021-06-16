@@ -189,7 +189,7 @@ Note that this contract may be subject to change in the future until dbt's API h
 
 Keys:
 - `status`: The status code returned by the database. Note: this varies across databases and query types.
-- `data`: An array of tuples represent the results. The first item represents the first row. For example, for a table with results:
+- `data`: An array of tuples representing the results. The first item represents the first row. For example, for a table with results:
 
 | my_col_1 | my_col_2 |
 |----------|----------|
