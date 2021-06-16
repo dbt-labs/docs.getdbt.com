@@ -43,7 +43,13 @@ If you ever get into a bad state, you can disable partial parsing and trigger a 
 
 At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `config()` from all models in the project. Traditionally, dbt has extracted those values by rendering the Jinja in every model file, which can be slow. In v0.20.0, we're trying out a new way to statically analyze model files, leveraging [`tree-sitter`](https://github.com/tree-sitter/tree-sitter), which we're calling an "experimental parser". You can see the code for an initial Jinja2 grammar [here](https://github.com/fishtown-analytics/tree-sitter-jinja2).
 
-For now, the experimental parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The experimental parser is at least 3x faster than a full Jinja render. Based on testing with data from dbt Cloud, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser. You can check this by running `dbt parse` and `dbt parse --use-experimental-parser`, and comparing `target/perf_info.json` produced by each.
+```
+dbt --use-experimental-parser parse
+dbt --use-experimental-parser run
+dbt --use-experimental-parser test
+```
+
+For now, the experimental parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The experimental parser is at least 3x faster than a full Jinja render. Based on testing with data from dbt Cloud, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser. You can check this by running `dbt parse` and `dbt --use-experimental-parser parse`, and comparing `target/perf_info.json` produced by each.
 
 The experimental parser is off by default. We believe it can offer *some* speedup to 95% of projects.
 
