@@ -180,6 +180,7 @@ or:
 {{
   config(
     materialized='incremental',
+    unique_key='date_day',
     incremental_strategy='insert_overwrite',
     ...
   )

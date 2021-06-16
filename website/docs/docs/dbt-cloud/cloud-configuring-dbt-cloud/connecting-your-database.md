@@ -83,9 +83,7 @@ Finally, set the "Private Key" and "Private Key Passphrase" fields in the "Edit
 Credentials" page to finish configuring dbt Cloud to authenticate with Snowflake
 using a key pair.
 
-**Note:** At the present time, dbt Cloud _must_ be provided with an encrypted
-private key along with an encryption password. A future release of dbt Cloud
-will remove this restriction, and passwordless private keys will be supported.
+**Note:** You can optionally add an ssh key without a passphrase by leaving the `PRIVATE KEY PASSPHRASE` field blank.
 
 ![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
 
@@ -160,9 +158,9 @@ The following fields are available when creating a Databricks connection:
 | ----- | ----------- | -------- |
 | Host Name | The hostname of the Databricks account to connect to | `avc-def1234ghi-9999.cloud.databricks.com` |
 | Port | The port to connect to Databricks for this connection | 443 |
-| Organization | Optional, only required for Azure Databricks | 0123456789 |
+| Organization | Optional (default: 0) | 0123456789 |
 | Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
-| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL Analytics) | 0123456789 |
+| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 0123456789 |
 | User | Optional | dbt_cloud_user |
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connection.png" title="Configuring a Databricks connection"/>
@@ -184,7 +182,7 @@ HTTP and Thrift connection methods:
 | ----- | ----------- | -------- |
 | Host Name | The hostname of the Spark cluster to connect to | `yourorg.sparkhost.com` |
 | Port | The port to connect to Spark on | 443 |
-| Organization | Optional, only required for Azure Databricks | 0123456789 |
+| Organization | Optional (default: 0) | 0123456789 |
 | Cluster | The ID of the cluster to connect to | 1234-567890-abc12345 |
 | Connection Timeout | Number of seconds after which to timeout a connection | 10 |
 | Connection Retries | Number of times to attempt connecting to cluster before failing | 10 |

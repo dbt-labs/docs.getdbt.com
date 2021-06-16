@@ -114,6 +114,8 @@ If you want to use this pattern, you'll need a `generate_schema_name` macro in y
 
 </File>
 
+**Note:** When using this macro, you'll need to set the target name in your job specifically to "prod" if you want custom schemas to be applied.
+
 ## generate_schema_name arguments
 
 | Argument | Description | Example |

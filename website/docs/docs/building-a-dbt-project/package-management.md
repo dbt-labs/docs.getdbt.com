@@ -122,6 +122,8 @@ packages:
   - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
 ```
 
+**Note**: The use of private packages is not currently supported in dbt Cloud.
+
 ### Local packages
 Packages that you have stored locally can be installed by specifying the path to the project, like so:
 

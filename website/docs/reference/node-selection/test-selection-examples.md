@@ -96,7 +96,7 @@ $ dbt test --models source:jaffle_shop.customers
 ### Run tests on everything _but_ sources
 
 ```shell
-$ dbt test --exclude sources:*
+$ dbt test --exclude source:*
 ```
 
 ### Run a specific data test

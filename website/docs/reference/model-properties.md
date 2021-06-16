@@ -30,7 +30,7 @@ models:
           - ... # declare additional tests
         [tags](resource-properties/tags): [<string>]
 
-      - name: ... # declare properties of additional comments
+      - name: ... # declare properties of additional columns
 
 ```
 

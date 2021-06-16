@@ -47,6 +47,7 @@ See [dbt#2961](https://github.com/fishtown-analytics/dbt/pull/2961) for full imp
 - [Snapshots](snapshots#invalidate_hard_deletes): If the config `invalidate_hard_deletes` is enabled, `dbt snapshot` will update records whose unique key no longer exist in the snapshot query. Should those uniquely identified records "revive," `dbt snapshot` will re-add them.
 - [YAML selectors](yaml-selectors) support a `description` property and record their expanded dictionary representations in the manifest.
 - [Modules](modules): The regex python module, `re`, is available in dbt's Jinja context.
+- [parse](parse): New command to parse a dbt project and write detailed timing info.
 
 #### State
 - [Understanding state](understanding-state): New docs outlining the conceptual background of state-informed runs, as well as the [known caveats](state-comparison-caveats) for state comparison. In v0.19.0, dbt is a little bit smarter at identifying `state:modified` "false positives" that previously resulted from env-based configurations in `dbt_project`.

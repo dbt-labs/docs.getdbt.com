@@ -115,7 +115,7 @@ Runtime Error
 <summary>Debugging</summary>
 
 
-- Open your `profiles.yml` file (if you're unsure where this is, run `dbt debug --config dir`)
+- Open your `profiles.yml` file (if you're unsure where this is, run `dbt debug --config-dir`)
 - Confirm that your credentials are correct — you may need to work with a DBA to confirm this.
 - After updating the credentials, run `dbt debug` to check you can connect
 

@@ -4,14 +4,14 @@ title: "Syntax overview"
 
 dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:
 
-| command   | argument(s)                                       |
-| :-------- | ------------------------------------------------- |
-| run       | `--models`, `--exclude`, `--selector`, `--defer`  |
-| test      | `--models`, `--exclude`, `--selector`, `--defer`  |
-| seed      | `--select`, `--exclude`, `--selector`             |
-| snapshot  | `--select`, `--exclude`  `--selector`             |
-| ls (list) | `--select`, `--models`, `--exclude`, `--selector` |
-| compile   | `--select`, `--exclude`, `--selector`             |
+| command   | argument(s)                                                          |
+| :-------- | -------------------------------------------------------------------- |
+| run       | `--models`, `--exclude`, `--selector`, `--defer`                     |
+| test      | `--models`, `--exclude`, `--selector`, `--defer`                     |
+| seed      | `--select`, `--exclude`, `--selector`                                |
+| snapshot  | `--select`, `--exclude`  `--selector`                                |
+| ls (list) | `--select`, `--models`, `--exclude`, `--selector`, `--resource-type` |
+| compile   | `--select`, `--exclude`, `--selector`                                |
 
 :::info Nodes and resources
 
