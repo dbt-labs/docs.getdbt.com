@@ -210,7 +210,7 @@ Keys:
 
 ### Examples
 
-All examples use this setup SQL:
+The examples below use this setup SQL:
 
 ```sql
 {%- call statement('test_query', fetch_result=True) -%}
