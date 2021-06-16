@@ -119,6 +119,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-ide/the-dbt-ide",
         "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
+        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
       ],
     },
     {
