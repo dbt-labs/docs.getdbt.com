@@ -344,7 +344,7 @@ Included for illustrative purposes only.
 Consider using the built-in [`get_columns_in_query` macro](https://github.com/fishtown-analytics/dbt/blob/dev/marian-anderson/core/dbt/include/global_project/macros/adapters/common.sql#L1) instead.
 
 ```
-{% set column_names=test_query.table.columns | map(attribute='name') | list }
+{% set column_names=test_query.table.columns | map(attribute='name') | list %}
 
 {# This is a list #}
 {{ log(column_names, info=True) }}
