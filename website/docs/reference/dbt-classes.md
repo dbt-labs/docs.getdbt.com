@@ -175,7 +175,7 @@ The execution of a resource in dbt generates a Result object. This object contai
 
 Note for the discerning reader: this is not a true python Class — it's a dictionary.
 
-The [`load_result` macro](load_result) macro returns a SQL Results object. The schema of a SQL Results Object is as follows ([source code](https://github.com/fishtown-analytics/dbt/blob/dev/marian-anderson/core/dbt/context/providers.py#L667)):
+The [`load_result` macro](load_result) returns a SQL Results object. The schema of a SQL Results Object is as follows ([source code](https://github.com/fishtown-analytics/dbt/blob/dev/marian-anderson/core/dbt/context/providers.py#L667)):
 
 ```python
 {
