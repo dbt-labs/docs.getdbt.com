@@ -4,6 +4,47 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.29 (June 21, 2021)
+
+#### Enhancements
+- Override GitLab auth to import private GitLab packages over HTTPS
+- Create the knowlege/dag endpoint with fake data
+- Add Knowledge Layer 1.0 and RPC poller
+- update 0.19 and 0.20 dbt versions
+- Add navigation bar dark mode when IDE is in dark mode
+
+#### Fixed
+- Update dbt-styleguide for logs toggle fix (and bonus spacing fix for jobs)
+- Suppress call to /git-token/user for non-manually configured repos
+- Add a safeguard for the reauth page to avoid 401 interceptors
+
+#### Internal
+- Merge migration updates together
+- Updating the dbt-cloud version in the staging env
+- [deploy] Batched PRs for singular deploy (June 21, 2021)
+- Add columns to webhooks table
+- Adding back deps-hub task
+- Prevent health checks from re-running unnecessarily
+- Clicking/double-clicking on a node will open tabs
+- Add repository_id column to account_git_token table
+- validate emails against known-abuser domains
+- fix callback to only reference oldConnection if it exists
+- Issue request on tab change, default selectors, dag validation and caching, and visual changes
+- Fix project permissions if user is on sso-reauth
+- Add feature parity for alerts in react, subscribe angular alerts to react
+- Adding logs to capture more context about auth forbidden
+- Move develop react apps into a single app
+- add 'gitlab_private_package_https' feature flag
+- Provision IDE for GitHub personal auth (Enterprise teams)
+- Add a list of angular routes
+- Add changelog slot to PR template
+- Adding restore zoom and zoom on scale support
+- Automatically redirect to the first available account and project
+- Updates DAG styles, adds component memoization, and throttles network calls
+- Migrate logic from angular to react for auth.
+- Switching to bumpversion==0.5.3
+- Switching to our custom CI image
+
 ## dbt Cloud v1.1.28 (June 9, 2021)
 We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab, and all developers should test out Slim CI which will speed up their model builds.
 
