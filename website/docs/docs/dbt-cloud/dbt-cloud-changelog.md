@@ -5,48 +5,22 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.29 (June 21, 2021)
+We're heads down working on a handful of new features that we're going to release at the end of this month. The finish line is in sight, and we can't wait to share them all with you.
 
 #### Enhancements
-- Override GitLab auth to import private GitLab packages over HTTPS
-- Create the knowlege/dag endpoint with fake data
-- Add Knowledge Layer 1.0 and RPC poller
-- update 0.19 and 0.20 dbt versions
-- Add navigation bar dark mode when IDE is in dark mode
+- ?Add Knowledge Layer 1.0 and RPC poller
+- ?update 0.19 and 0.20 dbt versions
 
-#### Fixed
-- Update dbt-styleguide for logs toggle fix (and bonus spacing fix for jobs)
-- Suppress call to /git-token/user for non-manually configured repos
-- Add a safeguard for the reauth page to avoid 401 interceptors
+#### Bug fixes
+- ?Update dbt-styleguide for logs toggle fix (and bonus spacing fix for jobs)
+- Add a safeguard for the SSO reauth page to avoid 401 interceptors
 
-#### Internal
-- Merge migration updates together
-- Updating the dbt-cloud version in the staging env
-- [deploy] Batched PRs for singular deploy (June 21, 2021)
-- Add columns to webhooks table
-- Adding back deps-hub task
-- Prevent health checks from re-running unnecessarily
-- Clicking/double-clicking on a node will open tabs
-- Add repository_id column to account_git_token table
-- validate emails against known-abuser domains
-- fix callback to only reference oldConnection if it exists
-- Issue request on tab change, default selectors, dag validation and caching, and visual changes
-- Fix project permissions if user is on sso-reauth
-- Add feature parity for alerts in react, subscribe angular alerts to react
-- Adding logs to capture more context about auth forbidden
-- Move develop react apps into a single app
-- add 'gitlab_private_package_https' feature flag
-- Provision IDE for GitHub personal auth (Enterprise teams)
-- Add a list of angular routes
-- Add changelog slot to PR template
-- Adding restore zoom and zoom on scale support
-- Automatically redirect to the first available account and project
-- Updates DAG styles, adds component memoization, and throttles network calls
-- Migrate logic from angular to react for auth.
-- Switching to bumpversion==0.5.3
-- Switching to our custom CI image
+#### Performance improvements and enhancements
+- Ensure navigation bar is in dark mode when IDE is set to dark mode
+
 
 ## dbt Cloud v1.1.28 (June 9, 2021)
-We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab, and all developers should test out Slim CI which will speed up their model builds.
+We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab. Additionally, all developers should test out Slim CI which will speed up their model builds.
 
 #### New products and features
 
@@ -55,14 +29,14 @@ We shipped a far better experience for GitLab users. Be sure to check out new CI
 - Native GitLab authentication for dbt Cloud Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to dbt Cloud IDE's git actions. Read how to set up native GitLab auth [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab).
 
 
-#### Bugs and fixes
+#### Bug fixes
 - Allow users to select artifacts from a job that runs source freshness on jobs with the source freshness execution settings set to `ON`.
 - Resolve `RUN ONLY ON CUSTOM BRANCH?` button to toggle on and off properly.
 - Retain information in a `Statement` tab when the page is refreshed.
 - Unsaved changes in the IDE are now saved when committing work.
 - Drop temporary schemas in the data warehouse for closed or merged GitLab merge requests.
 
-#### Performance improvements
+#### Performance improvements and enhancements
 - Behind the scenes, we’ve been moving off of Angular and onto React. We’ve started the process of migrating the central pieces of our UI over - the first of which is the main navigation. We think this will have a big impact on our ability to reduce UI bugs and improve user experience.
 - Added support for dbt 0.19.2rc2 + 0.20.0rc1 in dbt Cloud.
 
