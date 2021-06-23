@@ -120,6 +120,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-ide/the-dbt-ide",
         "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
+        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
       ],
     },
     {
@@ -146,6 +147,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
       ],
     },
     {
