@@ -4,8 +4,21 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.29 (June 23, 2021)
+We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for dbt Core. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
+
+#### New products and features
+- Add support for latest Core release candidates to dbt Cloud: v0.19.2-rc2 and v0.20.0-rc1
+
+#### Bug fixes
+- Add a safeguard for the SSO reauth page to avoid 401 interceptors
+
+#### Performance improvements and enhancements
+- Ensure navigation bar is in dark mode when IDE is set to dark mode
+
+
 ## dbt Cloud v1.1.28 (June 9, 2021)
-We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab, and all developers should test out Slim CI which will speed up their model builds.
+We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab. Additionally, all developers should test out Slim CI which will speed up their model builds.
 
 #### New products and features
 
@@ -13,15 +26,14 @@ We shipped a far better experience for GitLab users. Be sure to check out new CI
 
 - Native GitLab authentication for dbt Cloud Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to dbt Cloud IDE's git actions. Read how to set up native GitLab auth [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab).
 
-
-#### Bugs and fixes
+#### Bug fixes
 - Allow users to select artifacts from a job that runs source freshness on jobs with the source freshness execution settings set to `ON`.
 - Resolve `RUN ONLY ON CUSTOM BRANCH?` button to toggle on and off properly.
 - Retain information in a `Statement` tab when the page is refreshed.
 - Unsaved changes in the IDE are now saved when committing work.
 - Drop temporary schemas in the data warehouse for closed or merged GitLab merge requests.
 
-#### Performance improvements
+#### Performance improvements and enhancements
 - Behind the scenes, we’ve been moving off of Angular and onto React. We’ve started the process of migrating the central pieces of our UI over - the first of which is the main navigation. We think this will have a big impact on our ability to reduce UI bugs and improve user experience.
 - Added support for dbt 0.19.2rc2 + 0.20.0rc1 in dbt Cloud.
 
