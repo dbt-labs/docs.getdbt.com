@@ -5,14 +5,12 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.29 (June 21, 2021)
-We're heads down working on a handful of new features that we're going to release at the end of this month. The finish line is in sight, and we can't wait to share our work with you.
+We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for dbt Core. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
 
-#### Enhancements
-- ?Add Knowledge Layer 1.0 and RPC poller
-- ?update 0.19 and 0.20 dbt versions
+#### New products and features
+- Add support for latest Core release candidates to dbt Cloud: v0.19.2-rc2 and v0.20.0-rc1
 
 #### Bug fixes
-- ?Update dbt-styleguide for logs toggle fix (and bonus spacing fix for jobs)
 - Add a safeguard for the SSO reauth page to avoid 401 interceptors
 
 #### Performance improvements and enhancements
@@ -27,7 +25,6 @@ We shipped a far better experience for GitLab users. Be sure to check out new CI
 - `Slim CI`: We’ve made Slim CI available for all our cloud customers! With Slim CI, you don't have to rebuild and test all your models; you can instruct dbt Cloud to run jobs on only modified or new resources. If you are a GitHub or GitLab user, try creating a new job that runs on pull requests and you can signal to dbt to run only on these modified resources by including the `state:modified+` argument. Read more about Slim CI [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github#slim-ci).
 
 - Native GitLab authentication for dbt Cloud Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to dbt Cloud IDE's git actions. Read how to set up native GitLab auth [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab).
-
 
 #### Bug fixes
 - Allow users to select artifacts from a job that runs source freshness on jobs with the source freshness execution settings set to `ON`.
