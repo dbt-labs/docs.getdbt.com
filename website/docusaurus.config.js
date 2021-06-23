@@ -55,8 +55,8 @@ console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 module.exports = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
-  tagline: 'Your entire analytics engineering workflow',
-  title: 'docs.getdbt.com',
+  tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
+  title: 'dbt Docs',
   url: SITE_URL,
 
   themeConfig: {

@@ -63,11 +63,11 @@ To learn more about state comparison and deferral in dbt, read the docs on [stat
 
 ## Troubleshooting
 
-### Reconnecting your dbt project to use a native GitLab repo 
+### Reconnecting your dbt project to use a native GitHub or GitLab repo 
 
-If your dbt project relies on a Git URL and SSH to connect to your GitLab repo, you need to disconnect your repo and reconnect it with native GitLab auth in order to enable webhooks. 
+If your dbt project relies on a Git URL and SSH to connect to your GitHub or GitLab repo, you need to disconnect your repo and reconnect it with native Github or GitLab auth in order to enable webhooks. 
 
-First, make sure you have [native GitLab authentication](connecting-gitlab) set up. After you have gone through those steps, head to `Account Settings` -> `Projects` and click on the project you'd like to reconnect through native GitLab auth. Then click on the repository link. 
+First, make sure you have [native GitHub authentication](cloud-installing-the-github-application) or [native GitLab authentication](connecting-gitlab) set up. After you have gone through those steps, head to `Account Settings` -> `Projects` and click on the project you'd like to reconnect through native GitHub or GitLab auth. Then click on the repository link. 
 
 Once you're in the repository page, you can click the `Edit` button and then the `Disconnect Repository` button at the bottom.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" title="Disconnect repo"/>
@@ -76,4 +76,4 @@ Confirm that you'd like to disconnect your repository. You should then see a new
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" title="Configure repo"/>
 
-Select the `GitLab` tab and reselect your repository. That should complete the setup and enable you to use webhooks in your jobs configuration.
+Select the `GitHub` or `GitLab` tab and reselect your repository. That should complete the setup and enable you to use webhooks in your jobs configuration.

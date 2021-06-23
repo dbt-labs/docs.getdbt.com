@@ -123,6 +123,8 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 * Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
 * Enable [Long Paths](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later)
 
+Note: We have received reports some community members have experienced problems with Python 3.9 where some dependencies (e.g. cryptography) cannot be properly installed. If you encounter this problem, consider reinstalling or creating a virtual environment with a prior version of Python 3.6.x through Python 3.8.x.
+
 ## Install from source
 
 Create a dbt virtual environment as detailed in the `pip` section above.
