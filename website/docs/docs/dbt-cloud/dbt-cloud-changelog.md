@@ -5,7 +5,7 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.29 (June 21, 2021)
-We're heads down working on a handful of new features that we're going to release at the end of this month. The finish line is in sight, and we can't wait to share them all with you.
+We're heads down working on a handful of new features that we're going to release at the end of this month. The finish line is in sight, and we can't wait to share our work with you.
 
 #### Enhancements
 - ?Add Knowledge Layer 1.0 and RPC poller
