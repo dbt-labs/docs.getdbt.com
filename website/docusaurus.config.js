@@ -96,7 +96,7 @@ module.exports = {
     },
     navbar: {
       logo: {
-        src: '/img/dbt-logo-full-white.png',
+        src: '/img/dbt-logo-light.svg',
         alt: 'dbt Logo',
       },
       links: [
@@ -169,7 +169,7 @@ module.exports = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} Fishtown Analytics, Inc.`,
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
     },
   },
   presets: [
