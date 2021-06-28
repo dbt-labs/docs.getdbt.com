@@ -3,11 +3,6 @@ title: "Apache Spark configurations"
 id: "spark-configs"
 ---
 
-:::caution Heads up!
-These docs are a work in progress.
-
-:::
-
 <!----
 To-do:
 - use the reference doc structure for this article/split into separate articles
