@@ -79,15 +79,15 @@ For this tutorial, we've created a public dataset in BigQuery that anyone can `s
 We're using BigQuery since anyone with a Google Account can use BigQuery, but dbt works with [many data warehouses](available-adapters).
 
 :::info
-BigQuery has <a href="https://cloud.google.com/bigquery/pricing">generous free tier</a>. If you have an existing GCP account that has surpassed these tiers on BigQuery, running queries for this tutorial will incur a very small (less than a few USD) cost.
+BigQuery has <a href="https://cloud.google.com/bigquery/pricing">a generous free tier</a>. If you have an existing GCP account that has surpassed these tiers on BigQuery, running queries for this tutorial will incur a very small (less than a few USD) cost.
 :::
 
 <LoomVideo id="9b8d852c7e754d978209c3a60b53464e" />
 
 1. Go to [the BigQuery Console](https://console.cloud.google.com/bigquery) — if you don't have a Google Cloud Platform account you will be asked to create one.
-2. Create a new project for this tutorial — if you've just created a BigQuery account, you'll be prompted to create a new project straight away. If you already have an existing you can select the project drop down in the header bar, and create a new project from there.
+2. Create a new project for this tutorial — if you've just created a BigQuery account, you'll be prompted to create a new project straight away. If you already have an existing account, you can select the project drop down in the header bar, and create a new project from there.
 <Lightbox src="/img/create-bigquery-project.png" title="Create a new GCP project" />
-3. Head back to the [the BigQuery Console](https://console.cloud.google.com/bigquery), and ensure your new project is selected. Copy and paste the above query into the Query Editor to validate that you are able to run it successfully.
+3. Head back to [the BigQuery Console](https://console.cloud.google.com/bigquery), and ensure your new project is selected. Copy and paste the above query into the Query Editor to validate that you are able to run it successfully.
 <Lightbox src="/img/successful-bigquery-query.png" title="Ensure you can run the above query" />
 
 
