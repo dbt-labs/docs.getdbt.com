@@ -60,7 +60,6 @@ export const ArgsTable = ({ queryName }) => {
       </thead>
       <tbody>
         {data.data.__schema.queryType.fields.find(d=>d.name===queryName).args.map(function ({name, description, type} ) {
-          console.log(name, type)
           return (
             <tr key={name}>
               <td><code>{name}</code></td>
