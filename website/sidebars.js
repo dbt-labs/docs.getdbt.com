@@ -3,10 +3,7 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
-      items: [
-        "docs/introduction",
-        "docs/available-adapters",
-      ],
+      items: ["docs/introduction", "docs/available-adapters"],
     },
     {
       type: "category",
@@ -98,10 +95,7 @@ module.exports = {
     {
       type: "category",
       label: "About",
-      items: [
-        "docs/about/license",
-        "docs/about/viewpoint",
-      ],
+      items: ["docs/about/license", "docs/about/viewpoint"],
     },
   ],
   "dbt CLI": [
@@ -165,22 +159,22 @@ module.exports = {
       items: [
         "docs/dbt-cloud/dbt-cloud-enterprise",
         {
-            type: "category",
-            label: "Single Sign On",
-            items: [
-                "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
-            ],
+          type: "category",
+          label: "Single Sign On",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
+          ],
         },
         {
-            type: "category",
-            label: "Database Auth",
-            items: [
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
-                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth"
-            ],
+          type: "category",
+          label: "Database Auth",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+            "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
+          ],
         },
       ],
     },
@@ -199,8 +193,28 @@ module.exports = {
       label: "dbt Cloud APIs",
       items: [
         "docs/dbt-cloud/dbt-cloud-api/cloud-apis",
-        "docs/dbt-cloud/dbt-cloud-api/user-tokens",
-        "docs/dbt-cloud/dbt-cloud-api/service-tokens",
+        {
+          type: "category",
+          label: "Authentication",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-api/user-tokens",
+            "docs/dbt-cloud/dbt-cloud-api/service-tokens",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Metadata API",
+      items: [
+        "docs/dbt-cloud/metadata/metadata-overview",
+        "docs/dbt-cloud/metadata/metadata-authorization",
+        "docs/dbt-cloud/metadata/metadata-examples",
+        {
+          type: "category",
+          label: "Schema",
+          items: ["docs/dbt-cloud/metadata/schema/metadata-schema-model"],
+        },
       ],
     },
     "docs/dbt-cloud/cloud-dbt-cloud-support",
@@ -334,9 +348,7 @@ module.exports = {
         {
           type: "category",
           label: "List of macro properties",
-          items: [
-            "reference/resource-properties/argument-type",
-          ],
+          items: ["reference/resource-properties/argument-type"],
         },
       ],
     },
@@ -494,9 +506,7 @@ module.exports = {
       type: "category",
       label: "Leveling up",
       collapsed: false,
-      items: [
-        "tutorial/using-jinja",
-      ],
+      items: ["tutorial/using-jinja"],
     },
   ],
   learn: [
