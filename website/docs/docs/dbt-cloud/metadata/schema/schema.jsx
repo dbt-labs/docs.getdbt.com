@@ -2,17 +2,6 @@ import React, { setState } from "react";
 
 import { useState, useEffect } from 'react'
 
-const nodeQuery = `{
-  __type(name: "ModelNode") {
-    fields {
-      name
-      description
-      type { name description kind ofType { name description} }
-    }
-  }
-}
-`
-
 const queriesQuery = `{
   __schema {
     queryType {
@@ -89,14 +78,22 @@ export const ArgsTable = ({ queryName }) => {
 
 
 
-export const SchemaTable = () => {
+export const SchemaTable = ({ nodeName }) => {
   const [data, setData] = useState(null)
   useEffect(() => {
     const fetchData = () => {
       fetch('https://metadata.cloud.getdbt.com/graphql', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: nodeQuery }),        
+        body: JSON.stringify({ query: `{
+          __type(name: "${nodeName}") {
+            fields {
+              name
+              description
+              type { name description kind ofType { name description} }
+            }
+          }
+        }`}),        
       })
         .then((result) => result.json())
         .then((data) => setData(data))
