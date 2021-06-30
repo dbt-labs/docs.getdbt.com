@@ -139,11 +139,11 @@ To configure models in your `dbt_project.yml` file, use the `models:` configurat
 ```yml
 
 
-name: fishtown_analytics
+name: dbt_labs
 
 models:
   # Be sure to namespace your model configs to your project name
-  fishtown_analytics:
+  dbt_labs:
 
     # This configures models found in models/events/
     events:

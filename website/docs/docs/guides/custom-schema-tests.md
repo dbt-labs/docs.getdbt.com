@@ -3,10 +3,10 @@ title: "Writing custom schema tests"
 id: "writing-custom-schema-tests"
 ---
 
-dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) schema tests. Under the hood, these schema tests are defined as macros in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/fishtown-analytics/dbt/tree/develop/core/dbt/include/global_project/macros/schema_tests).
+dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) schema tests. Under the hood, these schema tests are defined as macros in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/dbt-labs/dbt/tree/develop/core/dbt/include/global_project/macros/schema_tests).
 
 :::info
-We've open sourced some useful custom schema tests in [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) — the test you're looking for might already be here!
+We've open sourced some useful custom schema tests in [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) — the test you're looking for might already be here!
 :::
 
 ## Schema tests with one argument

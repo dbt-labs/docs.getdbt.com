@@ -79,4 +79,4 @@ When we generate our documentation site, you'll see the exposure appear:
 
 ## Exposures are new!
 
-Exposures were introduced in dbt v0.18.1, with a limited set of supported types and properties. If you're interested in requesting or contributing additional properties, check out issue [dbt#2835](https://github.com/fishtown-analytics/dbt/issues/2835).
+Exposures were introduced in dbt v0.18.1, with a limited set of supported types and properties. If you're interested in requesting or contributing additional properties, check out issue [dbt#2835](https://github.com/dbt-labs/dbt/issues/2835).

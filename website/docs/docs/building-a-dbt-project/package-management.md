@@ -8,15 +8,15 @@ Software engineers frequently modularize code into libraries. These libraries he
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
-  * turning [Snowplow](https://hub.getdbt.com/fishtown-analytics/snowplow/latest/), [Segment](https://hub.getdbt.com/fishtown-analytics/segment/latest/) or [Heap](https://hub.getdbt.com/fishtown-analytics/heap/latest/) pageviews into sessions
-  * transforming [AdWords](https://hub.getdbt.com/fishtown-analytics/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/fishtown-analytics/facebook_ads/latest/) spend data into a consistent format.
+  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) or [Heap](https://hub.getdbt.com/dbt-labs/heap/latest/) pageviews into sessions
+  * transforming [AdWords](https://hub.getdbt.com/dbt-labs/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
-  * [generating SQL](https://github.com/fishtown-analytics/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
-  * creating [custom schema tests](https://github.com/fishtown-analytics/dbt-utils#schema-tests)
-  * writing [audit queries](https://hub.getdbt.com/fishtown-analytics/audit_helper/latest/)
+  * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
+  * creating [custom schema tests](https://github.com/dbt-labs/dbt-utils#schema-tests)
+  * writing [audit queries](https://hub.getdbt.com/dbt-labs/audit_helper/latest/)
 * building models and macros for a particular tool used in your data stack, for example:
-  * Models to understand [Redshift](https://hub.getdbt.com/fishtown-analytics/redshift/latest/) privileges.
-  * Macros to work with data loaded by [Stitch](https://hub.getdbt.com/fishtown-analytics/stitch_utils/latest/).
+  * Models to understand [Redshift](https://hub.getdbt.com/dbt-labs/redshift/latest/) privileges.
+  * Macros to work with data loaded by [Stitch](https://hub.getdbt.com/dbt-labs/stitch_utils/latest/).
 
 dbt _packages_ are in fact standalone dbt projects, with models and macros that tackle a specific problem area. As a dbt user, by adding a package to your project, the package's models and macros will become part of your own project. This means:
 * Models in the package will be materialized when you `dbt run`.
@@ -31,10 +31,10 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 
 ```yaml
 packages:
-  - package: fishtown-analytics/snowplow
+  - package: dbt-labs/snowplow
     version: 0.7.0
 
-  - git: "https://github.com/fishtown-analytics/dbt-utils.git"
+  - git: "https://github.com/dbt-labs/dbt-utils.git"
     revision: 0.1.21
 
   - local: /opt/dbt/redshift
@@ -54,7 +54,7 @@ You can specify a package using one of the following methods, depending on where
 
 ```yaml
 packages:
-  - package: fishtown-analytics/snowplow
+  - package: dbt-labs/snowplow
     version: 0.7.3 # version number
 ```
 
@@ -65,7 +65,7 @@ Hub packages require a version to be specified – you can find the latest relea
 
 ```yaml
 packages:
-  - package: fishtown-analytics/snowplow
+  - package: dbt-labs/snowplow
     version: [">=0.7.0", "<0.8.0"]
 ```
 
@@ -83,7 +83,7 @@ Packages stored on a Git server can be installed using the `git` syntax, like so
 
 ```yaml
 packages:
-  - git: "https://github.com/fishtown-analytics/dbt-utils.git" # git URL
+  - git: "https://github.com/dbt-labs/dbt-utils.git" # git URL
     revision: 0.1.21 # tag or branch name
 ```
 
@@ -93,7 +93,7 @@ Add the Git URL for the package, and optionally specify a revision. The revision
 
 If you do not provide a revision, or if you use `master`, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
 
-To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/fishtown-analytics/dbt-utils/releases).
+To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/dbt-labs/dbt-utils/releases).
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
 
@@ -104,7 +104,7 @@ Private packages can be installed by using the SSH configuration on the machine 
 
 ```yaml
 packages:
-  - git: "git@github.com:fishtown-analytics/dbt-utils.git" # git SSH URL
+  - git: "git@github.com:dbt-labs/dbt-utils.git" # git SSH URL
 ```
 This method requires the SSH configuration be stored in `~/.ssh/`.
 
@@ -112,14 +112,14 @@ This method requires the SSH configuration be stored in `~/.ssh/`.
 
 ```yaml
 packages:
-  - git: "https://<username>:<password>@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
+  - git: "https://<username>:<password>@github.com/dbt-labs/dbt-utils.git" # git HTTPS URL
 ```
 
 You can also reference an [environment variables](env_var).
 
 ```yaml
 packages:
-  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/fishtown-analytics/dbt-utils.git" # git HTTPS URL
+  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/dbt-labs/dbt-utils.git" # git HTTPS URL
 ```
 
 **Note**: The use of private packages is not currently supported in dbt Cloud.
@@ -185,7 +185,7 @@ Configurations made in your `dbt_project.yml` file will override any configurati
 ### Specifying unpinned Git packages
 If your project specifies an "unpinned" Git package, you may see a warning like:
 ```
-The git package "https://github.com/fishtown-analytics/dbt-utils.git" is not pinned.
+The git package "https://github.com/dbt-labs/dbt-utils.git" is not pinned.
 This can introduce breaking changes into your project without warning!
 ```
 
@@ -195,7 +195,7 @@ This warning can be silenced by setting `warn-unpinned: false` in the package sp
 
 ```yaml
 packages:
-  - git: https://github.com/fishtown-analytics/dbt-utils.git
+  - git: https://github.com/dbt-labs/dbt-utils.git
     warn-unpinned: false
 ```
 
@@ -208,7 +208,7 @@ As of 0.17.0, if the package version you want is only specified as `major`.`mino
 
 ```yaml
 packages:
- - git: https://github.com/fishtown-analytics/dbt-codegen.git
+ - git: https://github.com/dbt-labs/dbt-codegen.git
    version: "{{ 1.0 | as_text }}"
 ```
 

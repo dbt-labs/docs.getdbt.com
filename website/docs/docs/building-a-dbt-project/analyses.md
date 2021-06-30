@@ -9,7 +9,7 @@ dbt's notion of `models` makes it easy for data teams to version control and col
 
 Any `.sql` files found in the `analysis/` directory of a dbt project will be compiled, but not executed. This means that analysts can use dbt functionality like `{{ ref(...) }}` to select from models in an environment-agnostic way.
 
-In practice, an analysis file might look like this (via the [open source Quickbooks models](https://github.com/fishtown-analytics/quickbooks)):
+In practice, an analysis file might look like this (via the [open source Quickbooks models](https://github.com/dbt-labs/quickbooks)):
 
 <File name='running_total_by_account.sql'>
 

@@ -70,7 +70,7 @@ You can find more information about these tests, and additional configurations (
 You can also write your own custom schema tests to use in your dbt project — check out the [guide](custom-schema-tests) for more information.
 
 :::info
-We've open sourced some useful schema tests in [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) — skip ahead to the docs on [packages](package-management) to learn more!
+We've open sourced some useful schema tests in [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) — skip ahead to the docs on [packages](package-management) to learn more!
 :::
 
 ### Example
