@@ -305,6 +305,12 @@ BigQuery's permission model is dissimilar from more conventional databases like 
 
 This set of permissions will permit dbt users to read from and create tables and views in a BigQuery project.
 
+:::caution Note
+
+If your are using [external tables](https://cloud.google.com/bigquery/docs/external-tables) (i.e. you query the data stored in Google Cloud Storage, Drive or Bigtable), then you need `Bigquery Admin` permission.
+
+:::
+
 ## Local OAuth gcloud setup
 
 To connect to BigQuery using the `oauth` method, follow these steps:
