@@ -24,7 +24,7 @@ Whether you are starting a project from scratch, or if your organization already
 
 :::info Check out our sample dbt project
 
-Want to check out a sample project? Have a look at our [Jaffle Shop](https://github.com/fishtown-analytics/jaffle_shop) project on GitHub!
+Want to check out a sample project? Have a look at our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop) project on GitHub!
 
 :::
 
@@ -154,7 +154,7 @@ To learn more about writing tests for your models, see [Testing](building-a-dbt-
 **Package management:**
 dbt ships with a package manager, which allows analysts to use and publish both public and private repositories of dbt code which can then be referenced by others.
 
-This means analysts can leverage libraries that provide commonly-used macros like [dbt_utils](https://github.com/fishtown-analytics/dbt-utils), or dataset-specific projects for software services like [Snowplow](https://github.com/fishtown-analytics/snowplow) and [Stripe](https://github.com/fishtown-analytics/stripe), to hit the ground running.
+This means analysts can leverage libraries that provide commonly-used macros like [dbt_utils](https://github.com/dbt-labs/dbt-utils), or dataset-specific projects for software services like [Snowplow](https://github.com/dbt-labs/snowplow) and [Stripe](https://github.com/dbt-labs/stripe), to hit the ground running.
 
 For more information, see [Package Management](package-management).
 

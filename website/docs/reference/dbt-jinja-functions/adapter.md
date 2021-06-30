@@ -91,7 +91,7 @@ default behavior. On Redshift and Snowflake, however, I want to use the `||` ope
 
 I want to define a macro, `concat`, with a specific implementation on Redshift
 that handles null values. In all other cases—including the default implementation—
-I want to fall back on [`dbt_utils.concat`](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/cross_db_utils/concat.sql).
+I want to fall back on [`dbt_utils.concat`](https://github.com/dbt-labs/dbt-utils/blob/master/macros/cross_db_utils/concat.sql).
 
 <File name='macros/concat.sql'>
 

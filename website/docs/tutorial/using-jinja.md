@@ -5,7 +5,7 @@ id: "using-jinja"
 
 In this tutorial, we're going to take a common pattern used in SQL, and then use Jinja to improve our code.
 
-If you'd like to work through this query, add [this CSV](https://github.com/fishtown-analytics/jaffle_shop/blob/master/data/raw_payments.csv) to the `data/` folder of your dbt project, and then execute `dbt seed`.
+If you'd like to work through this query, add [this CSV](https://github.com/dbt-labs/jaffle_shop/blob/master/data/raw_payments.csv) to the `data/` folder of your dbt project, and then execute `dbt seed`.
 
 While working through the steps of this model, we recommend that you have your compiled SQL open as well, to check what your Jinja compiles to. To do this:
 * **Using dbt Cloud:** Click the compile button to see the compiled SQL in the right hand pane
@@ -310,9 +310,9 @@ order by 1
 ## Use a macro from a package
 Macros let analysts bring software engineering principles to the SQL they write. One of the features of macros that makes them even more powerful is their ability to be shared across projects.
 
-A number of useful dbt macros have already been written in the [dbt-utils package](https://github.com/fishtown-analytics/dbt-utils). For example, the [get_column_values](https://github.com/fishtown-analytics/dbt-utils#get_column_values-source) macro from dbt-utils could be used instead of the `get_column_values` macro we wrote ourselves (saving us a lot of time, but at least we learnt something along the way!).
+A number of useful dbt macros have already been written in the [dbt-utils package](https://github.com/dbt-labs/dbt-utils). For example, the [get_column_values](https://github.com/dbt-labs/dbt-utils#get_column_values-source) macro from dbt-utils could be used instead of the `get_column_values` macro we wrote ourselves (saving us a lot of time, but at least we learnt something along the way!).
 
-Install the [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) package in your project (docs [here](package-management)), and then update your model to use the macro from the package instead:
+Install the [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package in your project (docs [here](package-management)), and then update your model to use the macro from the package instead:
 
 <File name='models/order_payment_method_amounts.sql'>
 
@@ -335,4 +335,4 @@ group by 1
 
 </File>
 
-You can then remove the macros that we built in previous steps. Whenever you're trying to solve a problem that you think others may have solved previously, it's worth checking the [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) package to see if someone has shared their code!
+You can then remove the macros that we built in previous steps. Whenever you're trying to solve a problem that you think others may have solved previously, it's worth checking the [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package to see if someone has shared their code!

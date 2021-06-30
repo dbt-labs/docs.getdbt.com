@@ -73,8 +73,8 @@ aren't sure which values you should use, please contact support (support@getdbt.
 To complete this section, you will need a _login slug_. This slug controls the
 URL where users on your account can log into your application via Okta. Login
 slugs are typically the lowercased name of your organization separated with
-dashes. For example, the _login slug_ for Fishtown Analytics would be
-`fishtown-analytics`. Login slugs must be unique across all dbt Cloud accounts,
+dashes. For example, the _login slug_ for dbt Labs would be
+`dbt-labs`. Login slugs must be unique across all dbt Cloud accounts,
 so pick a slug that uniquely identifies your company.
 
 On the **SAML Settings** page, enter the following values:

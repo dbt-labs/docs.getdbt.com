@@ -22,7 +22,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started Tutor
 
 :::
 
-If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/fishtown-analytics/dbt-starter-project) contains default configurations as well as helpful notes.
+If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/dbt-labs/dbt-starter-project) contains default configurations as well as helpful notes.
 
 
 <Tabs

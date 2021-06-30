@@ -7,9 +7,9 @@ dbt connects to and runs SQL against your database, warehouse, platform, or quer
 
 Any adapter can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/installation).
 
-### Fishtown Supported
+### dbt Labs Supported
 
-In addition to maintaining `dbt-core`, [Fishtown Analytics](https://github.com/fishtown-analytics) maintains a set of adapters for some of the most common databases, warehouses, and platforms. (✅ indicates "full support.")
+In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) maintains a set of adapters for some of the most common databases, warehouses, and platforms. (✅ indicates "full support.")
 
 | Adapter for  | Documentation | Core features | dbt Cloud | Install from PyPi |
 | ------------ | ------------- | ------------- | --------- | ----------------- |

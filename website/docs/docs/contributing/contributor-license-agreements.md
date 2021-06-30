@@ -5,9 +5,9 @@ id: "contributor-license-agreements"
 
 ## Why we have a CLA
 
-As the sponsor of dbt, Fishtown Analytics would like to ensure the long-term viability of dbt and its community. The Contributor License Agreement helps ensure everyone can enjoy dbt with confidence that dbt is here to stay.
+As the sponsor of dbt, dbt Labs would like to ensure the long-term viability of dbt and its community. The Contributor License Agreement helps ensure everyone can enjoy dbt with confidence that dbt is here to stay.
 
-Specifically, our Contributor License Agreements (CLAs) grant the contributor and Fishtown Analytics joint copyright interest in contributed code. Further, it provides assurance from the contributor that contributions are original work that does not violate any third-party license agreement. The agreement between contributors and project is explicit, so dbt users can be confident in the legal status of the source code and their right to use it.
+Specifically, our Contributor License Agreements (CLAs) grant the contributor and dbt Labs joint copyright interest in contributed code. Further, it provides assurance from the contributor that contributions are original work that does not violate any third-party license agreement. The agreement between contributors and project is explicit, so dbt users can be confident in the legal status of the source code and their right to use it.
 
 ## Our CLAs
 

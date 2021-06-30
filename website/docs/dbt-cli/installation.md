@@ -16,7 +16,7 @@ Install [Homebrew](http://brew.sh/). Then, run:
 ```shell
 brew update
 brew install git
-brew tap fishtown-analytics/dbt
+brew tap dbt-labs/dbt
 brew install dbt
 ```
 
@@ -127,7 +127,7 @@ Create a dbt virtual environment as detailed in the `pip` section above.
 
 Then, install dbt from GitHub source
 ```shell
-git clone https://github.com/fishtown-analytics/dbt.git
+git clone https://github.com/dbt-labs/dbt.git
 cd dbt
 pip install -r requirements.txt
 ```

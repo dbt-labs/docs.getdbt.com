@@ -31,14 +31,14 @@ A typical PR build URL looks like:
 <TabItem value="template">
 
 ```
-https://github.com/fishtown-analytics/jaffle_shop/compare/{{destination}}..{{source}}
+https://github.com/dbt-labs/jaffle_shop/compare/{{destination}}..{{source}}
 ```
 
 </TabItem>
 <TabItem value="rendered">
 
 ```
-https://github.com/fishtown-analytics/jaffle_shop/compare/master..my-branch
+https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
 ```
 
 </TabItem>

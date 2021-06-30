@@ -357,7 +357,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://raw.githubusercontent.com/fishtown-analytics/dbt/dev/marian-anderson/etc/dbt-logo-full.svg)"
+    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt/develop/etc/dbt-logo-full.svg)"
 
     columns:
       - name: customer_id
