@@ -202,19 +202,26 @@ module.exports = {
             "docs/dbt-cloud/dbt-cloud-api/service-tokens",
           ],
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Metadata API",
-      items: [
-        "docs/dbt-cloud/metadata/metadata-overview",
-        "docs/dbt-cloud/metadata/metadata-authorization",
-        "docs/dbt-cloud/metadata/metadata-examples",
+        "docs/dbt-cloud/dbt-cloud-api/admin-cloud-api",
         {
           type: "category",
-          label: "Schema",
-          items: ["docs/dbt-cloud/metadata/schema/metadata-schema-model"],
+          label: "Metadata API",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview",
+            "docs/dbt-cloud/dbt-cloud-api/metadata/metadata-querying",
+            {
+              type: "category",
+              label: "Schema",
+              items: [
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
+            ],
+            },
+          ],
         },
       ],
     },
