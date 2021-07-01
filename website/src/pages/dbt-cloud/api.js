@@ -13,7 +13,7 @@ function dbtCloudAPI() {
   return (
     <Layout permalink="/">
         <RedocStandalone
-            specUrl='https://raw.githubusercontent.com/fishtown-analytics/dbt-cloud-openapi-spec/master/openapi-v3.yaml'
+            specUrl='/api.yaml'
             options={{
                 requiredPropsFirst: true,
                 noAutoAuth: true,
