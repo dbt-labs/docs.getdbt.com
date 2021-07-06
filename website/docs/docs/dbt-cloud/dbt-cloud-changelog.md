@@ -4,6 +4,32 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.30 (July 6, 2021)
+
+#### Fixed
+
+- Fixing repository import view to display ssh key
+- Handle Gitlab Merge Request "update" actions successfully.
+- [deploy] Batched PRs for singular deploy (June 30, 2021)
+- [deploy] Batched PRs for singular deploy (June 29, 2021)
+- [deploy] Batched PRs for singular deploy (June 25, 2021)
+- [deploy] Batched PRs for singular deploy (June 24, 2021)
+- Fix angular routes to use a wildcard where possible
+- [deploy] Batched PRs for singular deploy (June 23, 2021)
+
+#### Internal
+
+- We shouldn't update the prod `/public` files on PR builds
+- improve auth header checks
+- Use png images in email templates
+- Switch to new logo and change name to dbt Labs
+- Move Pod cleanup from the main scheduler to the background
+- Allow cleanup_servers to bypass pod shutdown waiting
+- Bump webpack memory limit and comment out RUM (temporarily)
+- [PREPARING TO MERGE] Deploy static assets to S3
+- Fix webhook "action" parsing and type hints
+- [deploy] Batched PRs for singular deploy (June 22, 2021)
+
 ## dbt Cloud v1.1.29 (June 23, 2021)
 We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for dbt Core. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
 
