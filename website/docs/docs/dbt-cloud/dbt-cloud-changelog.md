@@ -15,7 +15,7 @@ We shipped a resizable folder pane in the IDE, and we're hearing great things! "
 - Resolved an issue where users saw a blank screen rather than the SSO reauthentication page.
 
 #### Performance improvements and enhancements
-- Refreshed design on the repository import page.
+- Refreshed the design of the repository import page.
 
 
 ## dbt Cloud v1.1.29 (June 23, 2021)
