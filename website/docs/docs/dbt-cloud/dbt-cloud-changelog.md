@@ -4,31 +4,19 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.30 (July 6, 2021)
+## dbt Cloud v1.1.30 (July 7, 2021)
+We shipped a resizable folder pane in the IDE, and we're hearing great things! "My quality of life has greatly increased with this little update!" Hope this helps everyone else enjoy the IDE a little more too.
 
-#### Fixed
+#### New products and features
+- Resizable folder pane in the IDE: Have you ever developed in the IDE and not been able to see the full name of your model because you couldn’t adjust the width of the file pane? Yeah, us too. Now you’ll be able to adjust your project’s file tree width to be as wide or as narrow as you’d like. It’s these small things that make developing in the IDE so much easier.
 
-- Fixing repository import view to display ssh key
-- Handle Gitlab Merge Request "update" actions successfully.
-- [deploy] Batched PRs for singular deploy (June 30, 2021)
-- [deploy] Batched PRs for singular deploy (June 29, 2021)
-- [deploy] Batched PRs for singular deploy (June 25, 2021)
-- [deploy] Batched PRs for singular deploy (June 24, 2021)
-- Fix angular routes to use a wildcard where possible
-- [deploy] Batched PRs for singular deploy (June 23, 2021)
+#### Bug fixes
+- Made some changes to GitLab webhooks so that the status of the dbt run gets properly updated in GitLab.
+- Resolved an issue where users saw a blank screen rather than the SSO reauthentication page.
 
-#### Internal
+#### Performance improvements and enhancements
+- Refreshed design on the repository import page.
 
-- We shouldn't update the prod `/public` files on PR builds
-- improve auth header checks
-- Use png images in email templates
-- Switch to new logo and change name to dbt Labs
-- Move Pod cleanup from the main scheduler to the background
-- Allow cleanup_servers to bypass pod shutdown waiting
-- Bump webpack memory limit and comment out RUM (temporarily)
-- [PREPARING TO MERGE] Deploy static assets to S3
-- Fix webhook "action" parsing and type hints
-- [deploy] Batched PRs for singular deploy (June 22, 2021)
 
 ## dbt Cloud v1.1.29 (June 23, 2021)
 We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for dbt Core. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
