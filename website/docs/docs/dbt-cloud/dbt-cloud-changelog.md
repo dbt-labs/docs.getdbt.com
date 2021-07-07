@@ -4,6 +4,20 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.30 (July 7, 2021)
+We shipped a resizable folder pane in the IDE, and we're hearing great things! "My quality of life has greatly increased with this little update!" Hope this helps everyone else enjoy the IDE a little more too.
+
+#### New products and features
+- Resizable folder pane in the IDE: Have you ever developed in the IDE and not been able to see the full name of your model because you couldn’t adjust the width of the file pane? Yeah, us too. Now you’ll be able to adjust your project’s file tree width to be as wide or as narrow as you’d like. It’s these small things that make developing in the IDE so much easier.
+
+#### Bug fixes
+- Made some changes to GitLab webhooks so that the status of the dbt run gets properly updated in GitLab.
+- Resolved an issue where users saw a blank screen rather than the SSO reauthentication page.
+
+#### Performance improvements and enhancements
+- Refreshed the design of the repository import page.
+
+
 ## dbt Cloud v1.1.29 (June 23, 2021)
 We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for dbt Core. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
 
