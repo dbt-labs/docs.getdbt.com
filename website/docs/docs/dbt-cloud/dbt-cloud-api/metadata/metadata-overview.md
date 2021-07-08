@@ -9,4 +9,4 @@ We also provide a [graphical explorer](https://metadata.cloud.getdbt.com/graphiq
 
 The metadata API is available to accounts on the _Team_ and _Enterprise_ plans, for any version >= dbt v0.19.0.
 
-*Please note that today, any query on our metadata API today will refer to the last run. We will continuously expand the capabilities of the metadata API, and are open to all feedback and suggestions at metadata@dbtlabs.com.*
+*Please note that at present, queries to the Metadata API exclusively return metadata about the most recent Run for a given dbt Cloud Job. We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at metadata@dbtlabs.com.*
