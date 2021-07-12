@@ -11,12 +11,22 @@ title: "Project Parsing"
 
 At the start of every dbt invocation, dbt reads all the files in your project, extracts information, and constructs a manifest containing every object (model, source, macro, etc). Among other things, dbt uses the `ref()`, `source()`, and `config()` macro calls within models to set properties, infer dependencies, and construct your project's DAG.
 
-Parsing projects can be slow, especially as projects get bigger—hundreds of models, thousands of files—which is frustrating ind evelopment. There are three performance optimizations that dbt offers today:
+Parsing projects can be slow, especially as projects get bigger—hundreds of models, thousands of files—which is frustrating in development. There are a handful of ways to optimize dbt performance today:
+- LibYAML bindings for PyYAML
 - Partial parsing, which avoids re-parsing unchanged files between invocations
 - An experimental parser, which extracts information from simple models much more quickly
 - [RPC server](rpc), which keeps a manifest in memory, and re-parses the project at server startup/hangup
 
 These optimizations can be used in combination to reduce parse time from minutes to seconds. At the same time, each has some known limitations, so they are disabled by default.
+
+## PyYAML + LibYAML
+
+dbt uses [PyYAML](https://pyyaml.org/wiki/PyYAML) to read and validate YAML files in your project. PyYAML is written in pure Python, but it can leverage [LibYAML](https://pyyaml.org/wiki/LibYAML) (written in C, much faster) if it's available in your system. Whenever it parses your project, dbt will always check first to see if LibYAML is available.
+
+You can test to see if LibYAML is installed by running this command in the environment where you've installed dbt:
+```
+python -c "from yaml import CLoader"
+```
 
 ## Partial parsing
 
