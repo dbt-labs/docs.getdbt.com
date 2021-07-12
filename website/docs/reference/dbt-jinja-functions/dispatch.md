@@ -82,7 +82,7 @@ Below that macro, I've defined three possible implementations of the `concat` ma
 
 ### A more complex example
 
-I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in [`dbt_utils.concat`](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/cross_db_utils/concat.sql).
+I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in [`dbt_utils.concat`](https://github.com/dbt-labs/dbt-utils/blob/master/macros/cross_db_utils/concat.sql).
 
 <File name='macros/concat.sql'>
 
@@ -159,9 +159,9 @@ For instance, if I want to use `dbt_utils.concat` on Apache Spark, I can install
 
 ```yml
 packages:
-  - package: fishtown-analytics/dbt_utils
+  - package: dbt-labs/dbt_utils
     version: ...
-  - package: fishtown-analytics/spark_utils
+  - package: dbt-labs/spark_utils
     version: ...
 ```
 

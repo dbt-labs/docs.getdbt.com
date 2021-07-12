@@ -16,7 +16,7 @@ Install [Homebrew](http://brew.sh/). Then, run:
 ```shell
 brew update
 brew install git
-brew tap fishtown-analytics/dbt
+brew tap dbt-labs/dbt
 brew install dbt
 ```
 
@@ -117,9 +117,13 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
   python-devel openssl-devel
 ```
 
-#### Windows
+#### Windows 10 
 
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.5 or higher for Windows](https://www.python.org/downloads/windows/). Installation with Python 3.9 seems to have issues where some of the dependencies cannot be installed properly (cryptography is one of them.) Either try the installation by downgrading your Python version from 3.9.x or create a virtual environment with lower version of Python than that of 3.9.x but equal to or higher than the minimum required version 3.5.
+* Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.6 or higher for Windows](https://www.python.org/downloads/windows/).
+* Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
+* Enable [Long Paths](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later)
+
+Note: We have received reports some community members have experienced problems with Python 3.9 where some dependencies (e.g. cryptography) cannot be properly installed. If you encounter this problem, consider reinstalling or creating a virtual environment with a prior version of Python 3.6.x through Python 3.8.x.
 
 ## Install from source
 
@@ -127,7 +131,7 @@ Create a dbt virtual environment as detailed in the `pip` section above.
 
 Then, install dbt from GitHub source
 ```shell
-git clone https://github.com/fishtown-analytics/dbt.git
+git clone https://github.com/dbt-labs/dbt.git
 cd dbt
 pip install -r requirements.txt
 ```

@@ -2,10 +2,6 @@
 title: "Redshift configurations"
 id: "redshift-configs"
 ---
-:::caution Heads up!
-These docs are a work in progress.
-
-:::
 
 <!----
 To-do:

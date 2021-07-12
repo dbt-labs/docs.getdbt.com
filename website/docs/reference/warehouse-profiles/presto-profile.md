@@ -10,11 +10,11 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-presto
 **Maintained by:** core dbt maintainers    
-**Author:** Fishtown Analytics    
-**Source:** https://github.com/fishtown-analytics/dbt-presto    
+**Author:** dbt Labs    
+**Source:** https://github.com/dbt-labs/dbt-presto    
 **Core version:** v0.13.0 and newer     
 
-![dbt-presto stars](https://img.shields.io/github/stars/fishtown-analytics/dbt-presto?style=for-the-badge)
+![dbt-presto stars](https://img.shields.io/github/stars/dbt-labs/dbt-presto?style=for-the-badge)
 
 ## Set up a Presto Target
 
@@ -43,7 +43,7 @@ my-presto-db:
 
 ## Installation and Distribution
 
-dbt's Presto adapter is managed in its own repository, [dbt-presto](https://github.com/fishtown-analytics/dbt-presto). To use the Presto adapter, you must install the `dbt-presto` plugin:
+dbt's Presto adapter is managed in its own repository, [dbt-presto](https://github.com/dbt-labs/dbt-presto). To use the Presto adapter, you must install the `dbt-presto` plugin:
 
 ### Using pip
 The following command will install the latest version of `dbt-presto` as well as the requisite version of `dbt-core`:
@@ -61,7 +61,7 @@ Due to the nature of Presto, not all core dbt functionality is supported. The fo
 1. [Snapshots](snapshots)
 2. [Incremental models](configuring-incremental-models)
 
-If you are interested in helping to add support for this functionality in dbt on Presto, please [open an issue](https://github.com/fishtown-analytics/dbt-presto/issues/new).
+If you are interested in helping to add support for this functionality in dbt on Presto, please [open an issue](https://github.com/dbt-labs/dbt-presto/issues/new).
 
 ### Required configuration
 

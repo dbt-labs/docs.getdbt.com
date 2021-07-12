@@ -14,7 +14,7 @@ require-dbt-version: version-range | [version-range]
 
 Optionally specify a range of dbt versions that a project is compatible with.
 
-By using this configuration, dbt will throw a helpful error message if a user tries to run your project with an unsupported version of dbt. This is especially useful for packages (like [dbt-utils](https://github.com/fishtown-analytics/dbt-utils)). Additionally, this can help ensure that your whole team is synchronized on the same version of dbt for local development.
+By using this configuration, dbt will throw a helpful error message if a user tries to run your project with an unsupported version of dbt. This is especially useful for packages (like [dbt-utils](https://github.com/dbt-labs/dbt-utils)). Additionally, this can help ensure that your whole team is synchronized on the same version of dbt for local development.
 
 If this configuration is not specified, no version check will occur.
 

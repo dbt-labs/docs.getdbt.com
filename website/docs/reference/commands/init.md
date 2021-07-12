@@ -20,5 +20,5 @@ dbt init [project_name] --adapter bigquery
 ```
 
 **Note for plugin authors:** The `--adapter` flag looks for a file named
-`dbt/include/[adapter_name]/sample_profiles.yml`. Check out [dbt-spark](https://github.com/fishtown-analytics/dbt-spark/tree/master/dbt/include/spark/sample_profiles.yml)
-and [dbt-presto](https://github.com/fishtown-analytics/dbt-presto/blob/master/dbt/include/presto/sample_profiles.yml) as examples.
+`dbt/include/[adapter_name]/sample_profiles.yml`. Check out [dbt-spark](https://github.com/dbt-labs/dbt-spark/tree/master/dbt/include/spark/sample_profiles.yml)
+and [dbt-presto](https://github.com/dbt-labs/dbt-presto/blob/master/dbt/include/presto/sample_profiles.yml) as examples.

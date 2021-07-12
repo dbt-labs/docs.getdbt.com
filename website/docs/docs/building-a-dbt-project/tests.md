@@ -110,7 +110,7 @@ You can find more information about these tests, and additional configurations (
 You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide](custom-generic-tests) for more information.
 
 :::info
-There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](package-management) to learn more!
+There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](package-management) to learn more!
 :::
 
 ### Example

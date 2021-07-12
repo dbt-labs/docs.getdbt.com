@@ -41,7 +41,7 @@ Sometimes you might hit a boundary of dbt because you're trying to use it in a w
 ### 3. Choose the right medium for your question
 We use a number of different mediums to share information
 - If your question is roughly "I've hit this error and am stuck", please ask it on [Stack Overflow](https://stackoverflow.com/questions/ask?tags=dbt).
-- If you think you've found a bug, please report it on the relevant GitHub repo (e.g. [dbt repo](https://github.com/fishtown-analytics/dbt), [dbt-utils repo](https://github.com/fishtown-analytics/dbt-utils))
+- If you think you've found a bug, please report it on the relevant GitHub repo (e.g. [dbt repo](https://github.com/dbt-labs/dbt), [dbt-utils repo](https://github.com/dbt-labs/dbt-utils))
 - If you are looking for an opinionated answer (e.g. "What's the best approach to X?", "Why is Y done this way?"), then, feel free to join our [Slack community](https://community.getdbt.com/) and ask it in the correct channel:
     * **#beginners:** A great channel if you're getting started with dbt and want to understand how it works.
     * **#modeling:** This channel is most useful when wanting to ask questions about data model design, SQL patterns, and testing.

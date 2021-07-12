@@ -50,7 +50,7 @@ Check out the tutorial on [using Jinja](using-jinja#dynamically-retrieve-the-lis
 
 </File>
 
-Here's an example of using this (though if you're using `run_query` to return the values of a column, check out the [get_column_values](https://github.com/fishtown-analytics/dbt-utils#get_column_values-source) macro in the dbt-utils package).
+Here's an example of using this (though if you're using `run_query` to return the values of a column, check out the [get_column_values](https://github.com/dbt-labs/dbt-utils#get_column_values-source) macro in the dbt-utils package).
 
 <File name='models/my_model.sql'>
 
