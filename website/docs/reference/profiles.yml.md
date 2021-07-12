@@ -52,28 +52,9 @@ config:
 
 </File>
 
+See the docs on [partial parsing](parsing#partial-parsing) for details on functionality. By default, `partial_parse` is set to `false`. To enable partial parsing for all dbt projects you run locally, specify `partial_parse: true` in your `profiles.yml` file:
 
-Partial parsing can improve the performance characteristics of dbt runs by limiting the number of files that are parsed by dbt. Here, "parsing" means reading files in a dbt project from disk and capturing `ref()` and `config()` method calls. dbt uses these method calls to determine 1) the shape of the dbt DAG and 2) the supplied configurations for dbt resources.
-
-If partial parsing is enabled and files are unchanged between invocations of dbt, then dbt does not need to re-parse these files — it can instead use the parsed representation from the _last_ invocation of dbt. If a file *has* changed between invocations of dbt, then dbt will re-parse the file and update the parsed node cache accordingly.
-
-Use caution when enabling partial parsing in dbt. If environment variables control the parsed representation of your project, then the logic executed by dbt may differ from the logic specified in your project. Partial parsing should only be used when all of the logic in your dbt project is encoded in the files inside of that project.
-
-If partial parsing is enabled and `--vars` change between runs, dbt will always re-parse.
-
-By default, `partial_parse` is set to `false`
-
-**Usage**
-To enable partial parsing for all dbt projects, specify `partial_parse: true` in your `profiles.yml` file:
-
-```yaml
-config:
-  partial_parse: True
-```
-
-You can also achieve this by using the [`--partial-parse` command line flag](global-cli-flags#partial-parsing).
-
-The value in your `profiles.yml` can be overridden with the `--partial-parse` or `--no-partial-parse` flags.
+You can also turn partial parsing on or off via [command line flags](global-cli-flags#partial-parsing). The CLI flags (`--partial-parse` or `--no-partial-parse`) will take precedence over the config set in `profiles.yml`.
 
 ## use_colors
 

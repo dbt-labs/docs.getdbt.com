@@ -10,11 +10,11 @@ This file is the skeleton of the [auto-generated dbt documentation website](docu
 
 Note: the source code for `index.json` comes from the [dbt-docs repo](https://github.com/dbt-labs/dbt-docs). Head over there if you want to make a bug report, suggestion, or contribution relating to the documentation site.
 
-### partial_parse.pickle
+### partial_parse.msgpack
 
 _Produced by: all commands_
 
-This file is used to store a compressed representation of files dbt has parsed. If you have [partial parsing](profiles.yml#partial_parse) enabled, dbt will use this file to identify the files that have changed and avoid re-parsing the rest.
+This file is used to store a compressed representation of files dbt has parsed. If you have [partial parsing](parsing#partial-parsing) enabled, dbt will use this file to identify the files that have changed and avoid re-parsing the rest.
 
 ### graph.gpickle
 

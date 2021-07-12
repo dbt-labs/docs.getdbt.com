@@ -5,7 +5,8 @@ id: "exposures"
 
 <Changelog>
 
-* Exposures are new in `v0.18.1`
+* **v0.18.1**: Exposures are new!
+* **v0.20.0**: Exposures support `tags` and `meta` properties
 
 </Changelog>
 
@@ -61,6 +62,11 @@ _Optional:_
 - **url**
 - **maturity**: one of `high`, `medium`, `low`
 - **owner**: name
+
+_General properties (optional)_
+- **description**
+- **tags**
+- **meta**
 
 We plan to add more subtypes and optional properties in future releases.
 

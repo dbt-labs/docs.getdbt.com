@@ -3,12 +3,7 @@ title: "test"
 id: "test"
 ---
 
-`dbt test` runs tests on data in deployed models. There are two types of tests:
-
-- schema validations, declared in a `schema.yml` file.
-- custom data tests, written as SQL `SELECT` statements.
-
-`dbt test` runs both types of test and reports the results to the console.
+`dbt test` runs tests defined on models, sources, snapshots, and seeds. It expects that you have already created those resources through the appropriate commands.
 
 The tests to run can be selected using the `--models` flag discussed [here](node-selection/syntax).
 

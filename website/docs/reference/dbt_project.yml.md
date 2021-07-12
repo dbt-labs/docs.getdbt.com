@@ -51,12 +51,19 @@ snapshots:
 
 sources:
   [<source-configs>](source-configs)
+  
+tests:
+  [<test-configs>](test-configs)
 
 vars:
   [<variables>](using-variables)
 
 [on-run-start](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 [on-run-end](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
+
+[dispatch](project-configs/dispatch-config):
+  - macro_namespace: packagename
+    search_order: [packagename]
 
 ```
 

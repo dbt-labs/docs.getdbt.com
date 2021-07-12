@@ -89,7 +89,18 @@ packages:
 
 </File>
 
-Add the Git URL for the package, and optionally specify a revision. The revision can be either the name of a branch, or a tagged release. We **strongly recommend** "pinning" your package to a specific release by specifying a release name.
+<Changelog>
+
+* `v0.20.0`: Introduced the ability to specify commit hashes as package revisions
+
+</Changelog>
+
+Add the Git URL for the package, and optionally specify a revision. The revision can be:
+- a branch name
+- a tagged release
+- a specific commit (full 40-character hash)
+
+We **strongly recommend** "pinning" your package to a specific release by specifying a release name.
 
 If you do not provide a revision, or if you use `master`, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
 
@@ -123,6 +134,26 @@ packages:
 ```
 
 **Note**: The use of private packages is not currently supported in dbt Cloud.
+
+#### Project subdirectories
+
+<Changelog>
+
+* `v0.20.0`: Introduced the ability to specify `subdirectory`
+
+</Changelog>
+
+In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the project is instead nested in a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.25.0`).
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  - git: "https://github.com/dbt-labs/dbt-labs-experimental-features" # git URL
+    subdirectory: "materialized-views" # name of subdirectory containing `dbt_project.yml`
+```
+
+</File>
 
 ### Local packages
 Packages that you have stored locally can be installed by specifying the path to the project, like so:
@@ -202,7 +233,7 @@ packages:
 </File>
 
 ### Setting two-part versions
-As of 0.17.0, if the package version you want is only specified as `major`.`minor`, as opposed to `major.minor.patch`, you may get an error that `1.0 is not of type 'string'`. In that case you will have to tell dbt that your version number is a string.
+In dbt v0.17.0 _only_, if the package version you want is only specified as `major`.`minor`, as opposed to `major.minor.patch`, you may get an error that `1.0 is not of type 'string'`. In that case you will have to tell dbt that your version number is a string. This issue was resolved in v0.17.1 and all subsequent versions.
 
 <File name='packages.yml'>
 

@@ -99,7 +99,7 @@ $ dbt --strict run
 
 ## Warnings as Errors
 
-The `--warn-error` flag converts dbt warnings into errors. If dbt would normally warn, it will instead raise an error. Examples include `--models` selectors that selects nothing, deprecations, configurations with no associated models, or invalid test configurations.
+The `--warn-error` flag converts dbt warnings into errors. If dbt would normally warn, it will instead raise an error. Examples include `--models` selectors that selects nothing, deprecations, configurations with no associated models, invalid test configurations, or tests and freshness checks that are configured to return warnings.
 
 <File name='Usage'>
 
@@ -111,12 +111,23 @@ $ dbt --warn-error run
 </File>
 
 ## Partial Parsing
-The `--partial-parse` and `--no-partial-parse` flags can be used to configure partial parsing in your project. See [the docs on partial parsing](reference/profiles.yml.md#partial_parse) for more information on using this flag.
+The `--partial-parse` and `--no-partial-parse` flags can be used to configure partial parsing in your project, and will override the value set in `profiles.yml`. See [the docs on parsing](parsing#partial-parsing) for more details.
 
 <File name='Usage'>
 
 ```text
 $ dbt --partial-parse run
+```
+
+</File>
+
+## Experimental parser
+The `--use-experimental-parser` flag will statically analyze model files in your project and, if possible, extract needed information 3x faster than a full Jinja render. See [the docs on parsing](parsing#experimental-parser) for more details.
+
+<File name='Usage'>
+
+```text
+$ dbt --use-experimental-parser run
 ```
 
 </File>

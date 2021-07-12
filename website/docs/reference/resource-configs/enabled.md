@@ -10,6 +10,7 @@ default_value: true
     { label: 'Models', value: 'models', },
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
+    { label: 'Tests', value: 'tests', },
   ]
 }>
 <TabItem value="models">
@@ -90,10 +91,52 @@ snapshots:
 
 </TabItem>
 
+<TabItem value="tests">
+
+<File name='tests/<filename>.sql'>
+
+```sql
+{% test <testname>() %}
+
+{{ config(
+  enabled=true | false
+) }}
+
+select ...
+
+{% endtest %}
+
+```
+
+</File>
+
+<File name='tests/<filename>.sql'>
+
+```sql
+{{ config(
+  enabled=true | false
+) }}
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+tests:
+  [<resource-path>](resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, and snapshots.
+An optional configuration for disabling models, seeds, snapshots, and tests.
 
 * Default: true
 
