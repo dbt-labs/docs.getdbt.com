@@ -3,12 +3,9 @@ title: "Upgrading to 0.20.0"
 
 ---
 
-:::info Prerelease
-`dbt v0.20.0rc1` is currently available. Please help us by testing, and post in [#dbt-prereleases](https://getdbt.slack.com/archives/C016X6ABVUK) with questions or issues.
-:::
-
 ### Resources
 
+- [Discourse](https://discourse.getdbt.com/t/2621)
 - [Changelog](https://github.com/fishtown-analytics/dbt/blob/develop/CHANGELOG.md)
 
 ## Breaking changes
