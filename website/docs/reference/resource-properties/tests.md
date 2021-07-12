@@ -26,13 +26,7 @@ models:
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [enabled](enabled): true | false
-          [severity](severity): error | warn
-          [tags](resource-properties/tags): [<string>]
-          [tags](resource-properties/tags): [<string>]
-          [tags](resource-properties/tags): [<string>]
-          [tags](resource-properties/tags): [<string>]
-          [tags](resource-properties/tags): [<string>]
+          <test_config>: <config-value>
 
     columns:
       - name: <column_name>
@@ -40,14 +34,7 @@ models:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [enabled](enabled): true | false
-              [severity](severity): error | warn
-              [tags](resource-properties/tags): [<string>]
-              [tags](resource-properties/tags): [<string>]
-              [tags](resource-properties/tags): [<string>]
-              [tags](resource-properties/tags): [<string>]
-              [tags](resource-properties/tags): [<string>]
-
+              <test_config>: <config-value>
 ```
 
 </File>
@@ -69,9 +56,7 @@ sources:
         - [<test_name>](#test_name)
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
-            [enabled](enabled): true | false
-            [severity](severity): error | warn
-            [tags](resource-properties/tags): [<string>]
+            <test_config>: <config-value>
 
       columns:
         - name: <column_name>
@@ -79,9 +64,7 @@ sources:
             - [<test_name>](#test_name)
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
-                [enabled](enabled): true | false
-                [severity](severity): error | warn
-                [tags](resource-properties/tags): [<string>]
+                <test_config>: <config-value>
 
 ```
 
@@ -102,9 +85,7 @@ seeds:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [enabled](enabled): true | false
-          [severity](severity): error | warn
-          [tags](resource-properties/tags): [<string>]
+          <test_config>: <config-value>
 
     columns:
       - name: <column_name>
@@ -112,9 +93,7 @@ seeds:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [enabled](enabled): true | false
-              [severity](severity): error | warn
-              [tags](resource-properties/tags): [<string>]
+              <test_config>: <config-value>
 
 ```
 
@@ -135,9 +114,7 @@ snapshots:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [enabled](enabled): true | false
-          [severity](severity): error | warn
-          [tags](resource-properties/tags): [<string>]
+          <test_config>: <config-value>
 
     columns:
       - name: <column_name>
@@ -145,9 +122,7 @@ snapshots:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [enabled](enabled): true | false
-              [severity](severity): error | warn
-              [tags](resource-properties/tags): [<string>]
+              <test_config>: <config-value>
 
 ```
 
