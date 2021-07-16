@@ -7,6 +7,12 @@ id: "cloud-enabling-continuous-integration-with-github"
 
 dbt Cloud makes it easy to test every single change you make prior to deploying that code into production. Once you've [connected your GitHub account](cloud-installing-the-github-application) or [your GitLab account](connecting-gitlab), you can configure jobs to run when new Pull Requests (referred to as Merge Requests in GitLab) are opened against your dbt repo. When these jobs complete, their statuses will be shown directly in the Pull Request. This makes it possible to deploy new code to production with confidence.
 
+:::info Draft Pull Requests
+
+Jobs will _not_ be triggered by draft Pull Requests. If you would like jobs to run on each new commit, please mark your Pull Request as `Ready for review`.
+
+:::
+
 :::info GitLab Webhooks Compatability and Availability 
 
 If you previously configured your dbt project by providing a GitLab git URL, you need to reconfigure the repository to connect through [native GitLab authentication](connecting-gitlab), as we cannot enable webhooks for your project through SSH.
