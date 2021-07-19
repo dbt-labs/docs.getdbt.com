@@ -110,7 +110,7 @@ from child
 where id is not null
   and id not in (select id from parent)
 
-{% endmacro %}
+{% endtest %}
 ```
 
 </File>
