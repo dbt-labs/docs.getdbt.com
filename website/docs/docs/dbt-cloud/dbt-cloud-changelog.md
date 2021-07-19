@@ -6,72 +6,20 @@ description: "Changelog for the dbt Cloud application"
 ---
 
 ## dbt Cloud v1.1.31 (July 21, 2021)
+We’ve improved the tabbing experience in the IDE. Tabs now work much more intuitively, and you don’t have to worry about losing your work anymore!
 
-#### Enhancements
+#### New products and features
+- We are working to release a DAG directly in the IDE, so that when you’re developing, you have a clear idea of where the model you’re working on sits in the dependency graph. If you’re interested in testing out the feature early, head over to the #beta-feedback-for-ide-dag, and we’ll get the new product feature-flagged on your account!
+- Added dbt 0.20.0 to Cloud
 
-- Adding GSSAPIAuthentication no to all ssh configs
-- Add dbt 0.20.0 and set as default
-- [feat] Revoke personal access tokens BE & FE work
-- Update default dbt to 0.19.2 and add support for 0.20.2rc2
-- Scrub debug messages
+#### Bug fixes
+- Users will now be able to initialize any project that doesn't contain a `dbt_project.yml` file, regardless of whether or not there are pre-existing files and/or commits to that repo.
 
-#### Feature
+#### Performance improvements and enhancements
+- We've been working on some nice improvements to tabs in our IDE. We’ve fixed deficiencies with tabs that caused users to lose work if they didn’t hit save regularly enough. Additionally, opening, closing, and the order of the tabs work much more smoothly.
+- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run dbt source snapshot-freshness as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
+- Added a new endpoint to allow API key rotation via `POST https://cloud.getdbt.com/api/v2/users/{user-id}/apiKey`
 
-- Add token rotation endpoint
-
-#### Fixed
-
-- Bugfix - ide permits editing on readonly (Tab State Refactor Regression)
-- Allow a user to initialize a repo with prior commits and contents
-- Dont chunk, try to decrypt as a whole
-- Fix profile project credentials routing
-- Add options to cancel either queries or processes
-- Using list instead of get to avoid database errors
-- Use credentials database along with connections database name
-- Updates new file color to text-green per design request
-- Fix border styles for checkbox components embedded in tables
-- add route match for project repo creation page
-- Convert all use of activeUriValue and uriValueToStateMap to new state objects
-- Fix blank page when navigating in app
-
-#### Internal
-- Allow the LD API keys to be empty strings
-- Add a table to track Partner Connect signups
-- Add new `request_id` to DAG logging
-- Send projectID to GTM
-- [Snyk] Upgrade react-hook-form from 6.11.2 to 6.15.8
-- fix: upgrade @datadog/datadog-ci from 0.11.1 to 0.13.3
-- fix: upgrade dompurify from 2.0.7 to 2.2.9
-- Updating event name to match schema
-- Add backend endpoints to support the Partner Connect UI
-- method name fix
-- DAG Dark Mode, ContextMenu, Zoom, and Iconography Tweaks
-- Selecting a Node will display the lineage of that selected node
-- Create two different Azure object storage clients
-- Stripping out the api-gateway
-- Use builtin fields for email and name
-- Add javascript disabled notification
-- Add DataDog tracing for the Knowledge Layer
-- Adds some logic to prevent errors from reverting tab state
-- fix k8s service ownerreference fields
-- Adding logging to figure out tmp schemas not dropping
-- Fixes IDE error state and shows a modal when a user opens IDE after losing access with feature flag. 
-- update API doc link on job settings page
-- add thread and target tooltips to job settings page
-- Fix Dag Node styles
-- DAG - Double Click and Right Click on Node are Only Ways to Open File from DAG
-- Adding in DAG Icons and associated styles for new node design
-- Migrate existing Dag FeatureFlags to LaunchDarkly
-- Add feature flag for Environment Variables project
-- Create a Snowflake connection in the Partner Connect flow
-- Improve python test run time
-- A few strategies to speed up the existing build
-- Refactor github personal auth for enterprise accounts
-- Integrate LaunchDarkly with the frontend IDE
-- Provision a trial account in the Partner Connect flow
-- Update the DAG on Save
-- Add error handling for the Knowledge Layer endpoint
-- Removes editorTabs from local storage when switching projects
 
 ## dbt Cloud v1.1.30 (July 7, 2021)
 We shipped a resizable folder pane in the IDE, and we're hearing great things! "My quality of life has greatly increased with this little update!" Hope this helps everyone else enjoy the IDE a little more too.
