@@ -17,7 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.0",
     "redoc": "^2.0.0-rc.41",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "css-loader": "^3.4.2",
