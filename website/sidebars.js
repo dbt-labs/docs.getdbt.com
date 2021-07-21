@@ -141,7 +141,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
       ],
     },
     {
