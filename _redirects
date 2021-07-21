@@ -271,3 +271,4 @@
 https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/model-selection-syntax/#test-selection-examples    /reference/node-selection/test-selection-examples 302
 /docs/building-a-dbt-project/building-models/using-custom-database  /docs/building-a-dbt-project/building-models/using-custom-databases 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
