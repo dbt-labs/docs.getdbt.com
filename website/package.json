@@ -12,7 +12,7 @@
     "classnames": "^2.2.6",
     "color": "^3.1.2",
     "core-js": "^3.6.4",
-    "file-loader": "^6.1.0",
+    "file-loader": "^6.2.0",
     "mobx": "^4.15.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.0",
