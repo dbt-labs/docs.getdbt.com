@@ -316,6 +316,11 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 </File>
 
+### Enabling dbt init 
+
+In order to enable the [dbt init command](/reference/commands/init), make sure to include a sample profile file. The filepath will be `dbt/adapters/<adapter_name>/sample_profiles.yml`. This will assure that users can create a new dbt project with the command. 
+For sample profiles, check out this [example](https://github.com/dbt-labs/dbt/blob/develop/plugins/postgres/dbt/include/postgres/sample_profiles.yml).
+
 ### Testing your new adapter
 
 You can use a pre-configured [dbt adapter test suite](https://github.com/dbt-labs/dbt-adapter-tests) to test that your new adapter works. These tests include much of dbt's basic functionality, with the option to override or disable functionality that may not be supported on your adapter.
