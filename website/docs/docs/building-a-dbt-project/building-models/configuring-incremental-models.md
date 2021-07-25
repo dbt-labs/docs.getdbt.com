@@ -230,6 +230,7 @@ select ...
 <Changelog>
 
   - **v0.20.0:** Introduced `merge_update_columns`
+  - **v0.21.0:** Introduced `on_schema_change`
 
 </Changelog>
 
