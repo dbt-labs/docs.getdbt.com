@@ -316,10 +316,12 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 </File>
 
-### Enabling dbt init 
+### Other files
 
-In order to enable the [dbt init command](/reference/commands/init), make sure to include a sample profile file. The filepath will be `dbt/adapters/<adapter_name>/sample_profiles.yml`. This will assure that users can create a new dbt project with the command. 
+In order to enable the [dbt init command](/reference/commands/init), make sure to include a sample profile file. The filepath will be `dbt/adapters/<adapter_name>/sample_profiles.yml`. This will assure that users can create a new dbt project with the `dbt init` command. 
 For sample profiles, check out this [example](https://github.com/dbt-labs/dbt/blob/develop/plugins/postgres/dbt/include/postgres/sample_profiles.yml).
+
+To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatiable with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
 
 ### Testing your new adapter
 
