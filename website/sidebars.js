@@ -398,6 +398,7 @@ module.exports = {
           type: "category",
           label: "List of commands",
           items: [
+            "reference/commands/build",
             "reference/commands/clean",
             "reference/commands/cmd-docs",
             "reference/commands/compile",

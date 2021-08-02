@@ -13,6 +13,7 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | [ls (list)](commands/list)      | `--select`, `--models`, `--exclude`, `--selector`, `--resource-type` |
 | [compile](commands/compile)     | `--select`, `--exclude`, `--selector`                                |
 | [freshness](commands/source)    | `--select`, `--exclude`, `--selector`                                |
+| [build](commands/build)         | `--models`, `--exclude`, `--selector`, `--defer`                     |
 
 :::info Nodes and resources
 
