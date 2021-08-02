@@ -16,7 +16,7 @@ This file contains information about a completed invocation of dbt, including ti
 
 Note that only executed nodes appear in the run results. If you have multiple run or test steps with different critiera, each will produce different run results.
 
-Note: `dbt source snapshot-freshness` produces a different artifact, [`sources.json`](sources-json), with similar attributes.
+Note: `dbt source freshness` produces a different artifact, [`sources.json`](sources-json), with similar attributes.
 
 ### Top-level keys
 

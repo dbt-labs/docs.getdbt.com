@@ -79,7 +79,7 @@ The time period used in the freshness calculation. One of `minute`, `hour` or `d
 ## filter
 (optional)
 
-Add a where clause to the query run by `dbt source snapshot-freshness` in order to limit data scanned.
+Add a where clause to the query run by `dbt source freshness` in order to limit data scanned.
 
 This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table.
 
@@ -130,7 +130,7 @@ sources:
 
 </File>
 
-When running `dbt source snapshot-freshness`, the following query will be run:
+When running `dbt source freshness`, the following query will be run:
 
 <Tabs
   defaultValue="compiled"
