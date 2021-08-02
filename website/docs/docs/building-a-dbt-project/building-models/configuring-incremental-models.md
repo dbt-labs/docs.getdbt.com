@@ -143,6 +143,12 @@ Transaction management is used to ensure this is executed as a single unit of wo
 
 ## What if the columns of my incremental model change?
 
+<Changelog>
+
+  - **v0.21.0:** Introduced `on_schema_change`
+
+</Changelog>
+
 :::tip New `on_schema_change` config in dbt version `v0.21.0`
 
 Incremental models can now be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs.  
@@ -230,7 +236,6 @@ select ...
 <Changelog>
 
   - **v0.20.0:** Introduced `merge_update_columns`
-  - **v0.21.0:** Introduced `on_schema_change`
 
 </Changelog>
 

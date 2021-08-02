@@ -4,6 +4,23 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.31 (July 21, 2021)
+We’ve improved the tabbing experience in the IDE. Tabs now work much more intuitively, and you don’t have to worry about losing your work anymore!
+
+#### New products and features
+- We are working to release a DAG directly in the IDE, so that when you’re developing, you have a clear idea of where the model you’re working on sits in the dependency graph. If you’re interested in testing out the feature early, head over to the `#beta-feedback-for-ide-dag` channel in the dbt Slack, and we’ll get the new product feature-flagged on your account!
+- Added dbt 0.20.0 to Cloud
+
+#### Bug fixes
+- Users will now be able to initialize any project that doesn't contain a `dbt_project.yml` file, regardless of whether or not there are pre-existing files and/or commits to that repo.
+
+#### Performance improvements and enhancements
+- We've been working on some nice improvements to tabs in our IDE. We’ve fixed deficiencies with tabs that caused users to lose work if they didn’t hit save regularly enough. Additionally, opening, closing, and the order of the tabs work much more smoothly.
+- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run `dbt source snapshot-freshness` as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
+- Added a new endpoint to allow API key rotation via `POST https://cloud.getdbt.com/api/v2/users/{user-id}/apiKey`
+
+
 ## dbt Cloud v1.1.30 (July 7, 2021)
 We shipped a resizable folder pane in the IDE, and we're hearing great things! "My quality of life has greatly increased with this little update!" Hope this helps everyone else enjoy the IDE a little more too.
 
