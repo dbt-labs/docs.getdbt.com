@@ -5,6 +5,72 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.32 (August 4, 2021)
+#### Enhancements
+
+- Point development to HEAD
+
+#### Feature
+
+- Add Tests table and other updates to Exposure Landing Page
+
+#### Fixed
+
+- Restore docs functionality to IDE
+- Fix model null error on Exposure Landing Page
+- Make ide limit regex case insensitive
+- Cancel API runs if limit is exceeded
+- Use the intiialized LDClient to avoid blank feature flags
+
+#### Internal
+
+- add account level activeDeadlineSeconds for job execution
+- Remove 'Git auth level' drop down from backend
+- Remove Global Spinner and Adding Progressive Loading Behind Flag
+- Make sure FeatureFlagClient.is_flag_enabled provides all the necessary arguments
+- Add active_account_id to Launch Darkly
+- Retry manually instead of using urllib retry
+- Retry github api on failure
+- Mitating some Test Flakiness for A Fake Component
+- Make the Partner Connect endpoint atomic
+- Expose the Filesystem API underlying storage to the App container
+- Update default dbt version
+- Add http method support to hijack decorator
+- Remove feature flag for personal git auth to get ready for GA 🚀
+- Forbid preview data while hijacking a session
+- Check EnvironmentVariables on Django startup
+- Adding a ApolloProvider for the FS API clientside
+- Add handling for project-level environment variables
+- Remove the 2 unused flags from DAG rollout
+- Add git repo for dev environment seed data
+- Configure GitLab SDK to return 100 results per page, add exception handling
+- Create some example resources for Partner Connect
+- allow service tokens to not fail a check for user tokens
+- more validation for connection profile creation
+- Inject custom environment variables into run and develop pods
+- Use the new color palette for the Partner Connect email
+- Account for empty responses from the RPC in the Knowledge Layer for ls
+- support specific user tokens
+- Handle the Partner Connect case where the user already has an account
+- Add custom_environment_variables table
+- Handle API exception for invalid ip addresses
+- Add change management standard link to PR template
+- strip remote_url whitespace on repo creation, add unit test
+- Throws error in cases where symlink is passed to write or move FileSystem methods
+- Add the ability to feature flag routes
+- Fix project permissions message flash II
+- Resolve missing editor.worker.js file
+- Return "Account Exists" when a Snowflake partner account already exists
+- Disallows writing or moving files to the .git directory
+- Send a backup email for Partner Connect Signups
+- cache calls to bcrypt to improve middleware performance
+- Fix project permissions message flash
+- Adding more scheduler metrics
+- Revert "Dont chunk, try to decrypt as a whole (#3539)"
+- [DAG] Fixes Lineage Detection to detect lineage and not all connections between nodes in lineage
+- Change uWSGI entry command
+- add /ready route
+
 ## dbt Cloud v1.1.31 (July 21, 2021)
 We’ve improved the tabbing experience in the IDE. Tabs now work much more intuitively, and you don’t have to worry about losing your work anymore!
 
