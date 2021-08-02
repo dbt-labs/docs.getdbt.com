@@ -157,6 +157,15 @@ Incremental models can now be configured to include an optional `on_schema_chang
 
 You can configure the `on_schema_change` setting as follows.
 
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  +on_schema_change: "sync_all_columns"
+```
+
+</File>
+
 <File name='models/staging/fct_daily_active_users.sql'>
 
 ```sql
@@ -164,23 +173,25 @@ You can configure the `on_schema_change` setting as follows.
     config(
         materialized='incremental',
         unique_key='date_day',
-        on_schema_change=['ignore', 'fail', 'append_new_columns', 'sync_all_columns'] --choose one
+        on_schema_change='fail'
     )
 }}
 ```
 
 </File>
 
-The behaviors for `on_schema_change` are:  
+The possible values for `on_schema_change` are:  
 
-* `ignore`: this is the default, and preserves the behavior of dbt versions <= v.0.20.0  
-* `fail`: triggers an error message when the source and target schemas diverge  
-* `append_new_columns`: Append new columns identified in the temporary source schema to the target schema. Note that this setting does *not* remove columns from the target that are not present in the source.  
-* `sync_all_columns`: Adds any new columns to the target table and removes them from the temporary source schema. Note that this is *inclusive* of data type changes. On Bigquery, data type changes currently cause a full table scan, so we advise Bigquery users to be mindful of the trade-offs when implementing this setting.  
+* `ignore`: Default behavior (see below).
+* `fail`: Triggers an error message when the source and target schemas diverge  
+* `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
+* `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full table scan; be mindful of the trade-offs when implementing.
 
-**Note**: The `on_schema_change` behaviors do not currently include backfill functionality on the target table.  
+**Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
-### For dbt versions <= v0.20.0, refer to the logic below
+### Default behavior
+
+This is the behavior if `on_schema_change: ignore`, which is set by default, and on older versions of dbt.
 
 If you add a column to your incremental model, and execute a `dbt run`, this column will _not_ appear in your target table.
 
