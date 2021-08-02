@@ -13,16 +13,6 @@ The Metadata API is now in GA! When dbt Cloud invokes certain commands like run,
 - The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview).
 - dbt Enterprise customers using GitHub now get better fine grained access control in their dbt projects. dbt will enforce git permissions for every developer to ensure that read / write policies in GitHub carry through to the IDE.
 
-#### Bug fixes
-- Restore docs functionality to IDE
-- Fix model null error on Exposure Landing Page
-- Make ide limit regex case insensitive
-- Cancel API runs if limit is exceeded
-- Use the intiialized LDClient to avoid blank feature flags
-
-#### Performance improvements and enhancements
-- Breaks apart the exposure data health check into freshness and quality and surfaces test results on the Exposure Landing Page.
-
 
 ## dbt Cloud v1.1.31 (July 21, 2021)
 We’ve improved the tabbing experience in the IDE. Tabs now work much more intuitively, and you don’t have to worry about losing your work anymore!
