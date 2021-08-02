@@ -142,7 +142,41 @@ On warehouses that do not support `merge` statements, a merge is implemented by 
 Transaction management is used to ensure this is executed as a single unit of work.
 
 ## What if the columns of my incremental model change?
-If you add a column from your incremental model, and execute a `dbt run`, this column will _not_ appear in your target table.
+
+:::tip New `on_schema_change` config in dbt version `v0.21.0`
+
+Incremental models can now be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs.  
+
+:::
+
+You can configure the `on_schema_change` setting as follows.
+
+<File name='models/staging/fct_daily_active_users.sql'>
+
+```sql
+{{
+    config(
+        materialized='incremental',
+        unique_key='date_day',
+        on_schema_change=['ignore', 'fail', 'append_new_columns', 'sync_all_columns'] --choose one
+    )
+}}
+```
+
+</File>
+
+The behaviors for `on_schema_change` are:  
+
+* `ignore`: this is the default, and preserves the behavior of dbt versions <= v.0.20.0  
+* `fail`: triggers an error message when the source and target schemas diverge  
+* `append_new_columns`: Append new columns identified in the temporary source schema to the target schema. Note that this setting does *not* remove columns from the target that are not present in the source.  
+* `sync_all_columns`: Adds any new columns to the target table and removes them from the temporary source schema. Note that this is *inclusive* of data type changes. On Bigquery, data type changes currently cause a full table scan, so we advise Bigquery users to be mindful of the trade-offs when implementing this setting.  
+
+**Note**: The `on_schema_change` behaviors do not currently include backfill functionality on the target table.  
+
+### For dbt versions <= v0.20.0, refer to the logic below
+
+If you add a column to your incremental model, and execute a `dbt run`, this column will _not_ appear in your target table.
 
 Similarly, if you remove a column from your incremental model, and execute a `dbt run`, this column will _not_ be removed from your target table.
 
@@ -196,6 +230,7 @@ select ...
 <Changelog>
 
   - **v0.20.0:** Introduced `merge_update_columns`
+  - **v0.21.0:** Introduced `on_schema_change`
 
 </Changelog>
 
