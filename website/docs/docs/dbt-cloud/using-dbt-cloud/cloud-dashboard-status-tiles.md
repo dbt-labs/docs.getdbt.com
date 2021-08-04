@@ -22,7 +22,7 @@ First, be sure to enable [source freshness](dbt-cloud/using-dbt-cloud/cloud-snap
 
 In order to set up your dashboard status tile, here is what you need:
 
-1. **Metadata Token.**  You can learn how to set up a metadata only token [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens).
+1. **Metadata Token.**  You can learn how to set up a metadata only token [here](dbt-cloud/dbt-cloud-api/service-tokens).
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](building-a-dbt-project/exposures).
 
