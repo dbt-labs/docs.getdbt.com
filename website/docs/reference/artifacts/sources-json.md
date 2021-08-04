@@ -4,7 +4,7 @@ title: Sources
 
 _Current schema_: [`v1`](https://schemas.getdbt.com/dbt/sources/v1.json)
 
-_Produced by:_ `dbt source snapshot-freshness`
+_Produced by:_ `dbt source freshness`
 
 This file contains information about [sources with freshness checks](using-sources#snapshotting-source-data-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](cloud-snapshotting-source-freshness).
 
