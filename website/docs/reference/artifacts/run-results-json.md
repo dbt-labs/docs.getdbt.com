@@ -11,6 +11,7 @@ _Produced by:_
 - `dbt snapshot`
 - `dbt compile`
 - `dbt docs generate`
+- `dbt build`
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
 

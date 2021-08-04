@@ -13,6 +13,7 @@ _Produced by:_
 - `dbt docs generate`
 - `dbt source freshness`
 - `dbt ls`
+- `dbt build`
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
