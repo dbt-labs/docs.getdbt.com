@@ -21,7 +21,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [manifest](manifest-json): produced by `compile`, `run`, `test`, `docs generate`, `ls`
 - [run results](run-results-json): produced by `run`, `test`, `seed`, `snapshot`, `docs generate`
 - [catalog](catalog-json): produced by `docs generate`
-- [sources](sources-json): produced by `source snapshot-freshness`
+- [sources](sources-json): produced by `source freshness`
 
 ## Common metadata
 
