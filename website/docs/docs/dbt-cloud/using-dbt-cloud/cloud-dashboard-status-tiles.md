@@ -40,7 +40,7 @@ The dashboard status tile should work anywhere you can embed HTML. But below are
 ### Mode
 Mode allows you to directly [edit the HTML](https://mode.com/help/articles/report-layout-and-presentation/#html-editor) of any given report, where you can embed the iFrame.
 
-Note that Mode has also built their own [integration](https://mode.com/get-dbt/) with dbt's Metadata API!
+Note that Mode has also built their own [integration](https://mode.com/get-dbt/) with the dbt Cloud Metadata API!
 
 ### Looker
 Looker does not allow you to directly embed HTML, and instead requires creating a [custom visualization](https://docs.looker.com/admin-options/platform/visualizations). One way to do this for admins is to:
