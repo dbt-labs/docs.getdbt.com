@@ -5,6 +5,15 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+
+## dbt Cloud v1.1.32 (August 4, 2021)
+The Metadata API is now in GA! When dbt Cloud invokes certain commands like run, test, seed, etc, dbt generates metadata in the form of [artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now dbt Cloud serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
+
+#### New products and features
+- The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview).
+- dbt Enterprise customers using GitHub now get better fine grained access control in their dbt projects. dbt will enforce git permissions for every developer to ensure that read / write policies in GitHub carry through to the IDE.
+
+
 ## dbt Cloud v1.1.31 (July 21, 2021)
 We’ve improved the tabbing experience in the IDE. Tabs now work much more intuitively, and you don’t have to worry about losing your work anymore!
 
