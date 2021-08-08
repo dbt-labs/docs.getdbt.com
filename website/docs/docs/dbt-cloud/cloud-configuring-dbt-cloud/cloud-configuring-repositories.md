@@ -80,7 +80,7 @@ https://console.aws.amazon.com/codesuite/codecommit/repositories/<repo>/pull-req
 https://dev.azure.com/<org>/<repo>/_git/dbt/pullrequestcreate?sourceRef={{source}}&targetRef={{destination}}
 ```
 
-### Configuring Custom Branches on Repositories
+## Configuring Custom Branches on Repositories
 
 By default in Development Environments, dbt Cloud attempts to reference the `main` branch in connected repositories. If you want to use a different default branch name, you can configure dbt Cloud with a custom branch setting. 
 
