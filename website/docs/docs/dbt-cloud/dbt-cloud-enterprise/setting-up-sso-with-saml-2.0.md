@@ -35,7 +35,7 @@ When promoted, configure the application with the following details:
  - **Platform:** Web
  - **Sign on method:** SAML 2.0
  - **App name:** dbt Cloud
- - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/drive/folders/15_zFYLMAKjybHP-S4LmFyoiBeTq6wTUb), and use as the logo for this app.
+ - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 #### Configuring the application
 
@@ -129,7 +129,7 @@ Click **Create** to continue the setup process.
 On the **General Settings** page, enter the following details::
 
 * **App name**: dbt Cloud
-* **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/drive/folders/15_zFYLMAKjybHP-S4LmFyoiBeTq6wTUb),
+* **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing),
   and upload it to Okta to use as the logo for this app.
 
 Click **Next** to continue.
