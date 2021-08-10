@@ -23,7 +23,7 @@ This logic is encoded in the [`should_store_failures()`](https://github.com/fish
   defaultValue="specific"
   values={[
     { label: 'Specific test', value: 'specific', },
-    { label: 'One-off test', value: 'one_off', },
+    { label: 'Bespoke test', value: 'bespoke', },
     { label: 'Generic test block', value: 'generic', },
     { label: 'Project level', value: 'project', },
   ]
@@ -53,9 +53,9 @@ models:
 
 </TabItem>
 
-<TabItem value="one_off">
+<TabItem value="bespoke">
 
-Configure a one-off (data) test:
+Configure a bespoke (data) test:
 
 <File name='tests/<filename>.sql'>
 
