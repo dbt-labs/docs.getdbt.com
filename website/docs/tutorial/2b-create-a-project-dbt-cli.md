@@ -58,7 +58,7 @@ You can use `pwd` to confirm that you are in the right spot.
 <File name='dbt_project.yml'>
 
 ```yaml
-name: jaffle_shop # this normally says my_new_package
+name: jaffle_shop # this normally says my_new_project
 
 ...
 
