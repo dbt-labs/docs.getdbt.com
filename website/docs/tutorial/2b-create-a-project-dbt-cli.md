@@ -67,7 +67,7 @@ profile: jaffle_shop # this normally says default
 ...
 
 models:
-  jaffle_shop: #this normally says my_new_package. It should match the value for `name:`
+  jaffle_shop: #this normally says my_new_project. It should match the value for `name:`
     ...
 ```
 
