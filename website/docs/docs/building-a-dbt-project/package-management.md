@@ -75,6 +75,25 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package.
 
+#### Prerelease versions
+
+<Changelog>
+
+* `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
+
+</Changelog>
+
+Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
+
+By default, `dbt deps` will not install prerelease versions of packages. You can enable the installation of prereleases with the `install-prerelease` parameter.
+
+```yaml
+packages:
+  - package: tailsdotcom/dbt_artifacts
+    version: 0.4.5a2
+    install-prerelease: true
+```
+
 ### Git packages
 Packages stored on a Git server can be installed using the `git` syntax, like so:
 
