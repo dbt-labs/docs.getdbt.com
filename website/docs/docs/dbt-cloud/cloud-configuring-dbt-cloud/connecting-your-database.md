@@ -81,7 +81,7 @@ Finally, set the "Private Key" and "Private Key Passphrase" fields in the "Edit
 Credentials" page to finish configuring dbt Cloud to authenticate with Snowflake
 using a key pair.
 
-**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud -- you **must** add the passphrase that will be used to decrypt the and will receive an error if you attempt to leave the `PRIVATE KEY PASSPHRASE` field blank.
+**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud -- you **must** add the passphrase that will be used to decrypt the and will receive an error if the `PRIVATE KEY PASSPHRASE` field is empty.
 
 ![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
 
