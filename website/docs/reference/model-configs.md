@@ -81,6 +81,7 @@ models:
     [+](plus-prefix)[alias](resource-configs/alias): <string>
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
+    [+][meta](meta): {<dictionary>}
 
 ```
 
@@ -103,7 +104,8 @@ models:
     [database](resource-configs/database)="<string>",
     [schema](resource-configs/schema)="<string>",
     [alias](resource-configs/alias)="<string>",
-    [persist_docs](persist_docs)={<dict>}
+    [persist_docs](persist_docs)={<dict>},
+    [meta](meta)={<dict>}
 ) }}
 
 ```
@@ -121,12 +123,13 @@ models:
 * [Spark configurations](spark-configs)
 
 ## Configuring models
-Models can be configured in one of two ways:
+Models can be configured in one of three ways:
 
-1. Using a `config` block within a model, or
-2. From the `dbt_project.yml` file, under the `models:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
+1. Using a `config()` Jinja macro within a model
+2. Using a `config` [resource property](model-properties) in a `.yml` file
+3. From the `dbt_project.yml` file, under the `models:` key.
 
-Model configurations are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project.
+Model configurations are applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
 ## Example
 

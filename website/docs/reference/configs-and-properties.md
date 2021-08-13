@@ -1,16 +1,41 @@
 ---
-title: Declaring resource properties
+title: Configs and properties
 ---
 
-## Overview
-While configurations tell dbt _how_ to build something in your warehouse (for example, whether a model should be a table or view, or which SQL to use when running a snapshot), resource properties are used to declare things _about_ your dbt project or data warehouse.
+<Changelog>
+    - **v0.21.0** introduced the `config` property, thereby allowing you to configure resources in all `.yml` files
+</Changelog>
+
+Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. A special category of resource properties are **configurations**. What's the distinction?
+- Properties are declared for resources one-by-one in `.yml` files. But configs can also be set in via a Jinja `config()` macro (right within your `.sql` files) and in `dbt_project.yml`, from which they're _inherited_ or _overridden_ by each individual resource.
+- As a general rule, properties declare things _about_ your project resources. Configs go the extra step of telling dbt _how_ to build those resources in your warehouse.
 
 For example, you can use resource properties to:
 * Describe models, snapshots, seed files, and their columns
 * Assert "truths" about a model, in the form of [tests](building-a-dbt-project/tests), e.g. "this `id` column is unique"
-* Apply tags to resources
 * Define existing tables contains raw data as [sources](using-sources)
 * Assert the expected "freshness" of this raw data
+
+Whereas you can use configurations to:
+* Change how a model will be materialized
+* Declare where a seed will be created in the database (`<database>.<schema>.<alias>`)
+* Apply tags and "meta" properties
+
+## Where can I define configs?
+
+Depending on the resource, configurations can be defined:
+
+1. Using a `config()` Jinja macro within a `model`, `snapshot`, or `test` SQL file
+2. Using a `config` property in a `.yml` file
+3. From the `dbt_project.yml` file, under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
+
+### Config inheritance
+
+Configurations are prioritized in order of specificity, which is generally the order above: an in-file `config()` block takes precedence over properties defied in a `.yml` file, which takes precedence over a config defined in the project file. (Note that generic tests work a little differently, since a specific test's properties are actually more specific than the generic test SQL. See [test configs](test-configs).)
+
+Within the project file, configurations are also applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
+
+## Where can I define properties?
 
 In dbt, these properties are declared in `.yml` files, in the same directory as your resources. There's a few quirks for backwards compatibility reasons:
 

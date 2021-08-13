@@ -115,10 +115,11 @@ snapshots:
 
 
 ## Configuring snapshots
-Snapshots can be configured in one of two ways:
+Snapshots can be configured in one of three ways:
 
-1. Using a `config` block within a snapshot, or
-2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
+1. Using a `config` block within a snapshot
+2. Using a `config` [resource property](model-properties) in a `.yml` file
+3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 
 Snapshot configurations, like model configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project.
 

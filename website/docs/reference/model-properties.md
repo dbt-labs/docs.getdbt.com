@@ -16,7 +16,8 @@ models:
     [description](description): <markdown_string>
     [docs](resource-properties/docs):
       show: true | false
-    [meta](meta): {<dictionary>}
+    [config](model-config):
+      ...
     [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests
