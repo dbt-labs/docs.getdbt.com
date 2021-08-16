@@ -11,7 +11,7 @@ We added a DAG in the IDE, so that you can see your model dependencies as you de
 #### New products and features
 - [Dashboard Status Tiles](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) can now be embedded on dashboards (or anywhere you can embed an iFrame) to give immediate insight into data freshness and quality. This helps dbt project maintainers build trust internally about the data that end users are seeing.
 - We shipped DAG in the IDE to GA!
-- Support for ` dbt v0.20.1` in Cloud.
+- Support for `dbt v0.20.1` in Cloud.
 
 #### Bug fixes
 - Databricks users will now be able to see and update the token/schema for deployment environments.
