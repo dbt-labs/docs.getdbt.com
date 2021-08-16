@@ -5,58 +5,18 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
-## dbt Cloud v1.1.33 (August 16, 2021)
+## dbt Cloud v1.1.33 (August 18, 2021)
+We added a DAG in the IDE, so that you can see your model dependencies as you develop! If you haven’t seen the DAG visualization yet, take a moment to spin up the IDE, navigate to the Lineage tab, and click-click-click around in there — it is legitimately a brand new modality for developing dbt projects, and it’s something worth being excited about!
 
-#### Enhancements
+#### New products and features
+- Dashboard status tiles . Read more about setting up Dashboard Status Tiles [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles).
+- We shipped DAG in the IDE to GA!
+- Support for ` dbt v0.20.1` in Cloud.
 
-- Raises a 400 for AssertionError: Popped Unexpected Object
+#### Bug fixes
+- Databricks users will now be able to see and update the token/schema for deployment environments.
+- Some Github users were experiencing a broken profile image in dbt Cloud. This should be fixed if users disconnect and reconnect their Github accounts.
 
-#### Feature
-
-- Add dbt 0.20.1
-- Adds Dag loading and empty states
-- Allow '--use-experimental-parser' flag and 'build' / 'parse' commands in job definitions
-- Fix DAG Default Zoom
-
-#### Fixed
-
-- move profile Router outside div to resolve issue
-- Caruso/zen13422 missing credentials form databricks
-- Adds vertical zoom adjusting for dags that extend vertically past the viewport, fixes other bugs
-- Conditionally renders DAG in drawer only if overlay modal is not visible
-- Fix github broken profile image bug
-
-#### Internal
-
-- admin panel: allow saving complex models in one page
-- Add React hooks for custom environment variables
-- Update accout.py to make all fields read only
-- Revert "Add indexes concurrently to run step table (#3371)"
-- Migrate environments and jobs listings to react
-- change schedule, try to fix base build push condition
-- initial production build tweaks
-- Add indexes concurrently to run step table
-- Create blocklist for custom environment variables
-- security updates for some python libs
-- fix django static asset extraction and scheduled build trigger
-- Adding new 103 error code, migrating to 400, naming error codes, and adding tests
-- Fix some Partner Connect tests
-- better python test parallelization
-- Change code ownership of migrations
-- Refactor git state out of file tree git entity in preparation for FS API
-- Add endpoints for custom Env Var project
-- fix dbt-cloud scheduler build, take 2
-- Update the LaunchDarkly namespace for single tenant environments
-- default value for OKTA_SP_PUBLIC_CERT
-- get rid of unused pygobject lib
-- No longer returning dbtProjectSubdirectory with terminating slash
-- try to improve docker layer cache hits for PR builds
-- Removing flaky tests that only sort of proved that we had a working apollo configuration
-- update os base image to latest
-- Add Snowflake Partner Connect onboarding UI
-- fix scheduled os build tags
-- dbt-cloud image builds in github actions
-- Fix default value
 
 ## dbt Cloud v1.1.32 (August 4, 2021)
 The Metadata API is now in GA! When dbt Cloud invokes certain commands like run, test, seed, etc, dbt generates metadata in the form of [artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now dbt Cloud serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
