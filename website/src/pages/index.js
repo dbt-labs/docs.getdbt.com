@@ -188,13 +188,13 @@ function Home() {
                       </div>
                       <div className="card__body">
                         <p>
-	  				   Technical reference docs for using the dbt Cloud API. These docs assume you&#39;re familiar with REST APIs.
+	  				   Technical reference docs for using the dbt Cloud APIs.
                         </p>
                       </div>
                       <div className="card__footer">
                           <Link
                             className="button button--primary"
-                            to={useBaseUrl('/dbt-cloud/api')}>
+                            to={useBaseUrl('/docs/dbt-cloud/dbt-cloud-api/cloud-apis')}>
                             API docs
                           </Link>
                       </div>
