@@ -9,7 +9,7 @@ description: "Changelog for the dbt Cloud application"
 We added a DAG in the IDE, so that you can see your model dependencies as you develop! If you haven’t seen the DAG visualization yet, take a moment to spin up the IDE, navigate to the Lineage tab, and click-click-click around in there — it is legitimately a brand new modality for developing dbt projects, and it’s something worth being excited about!
 
 #### New products and features
-- Dashboard status tiles . Read more about setting up Dashboard Status Tiles [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles).
+- [Dashboard Status Tiles](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) can now be embedded on dashboards (or anywhere you can embed an iFrame) to give immediate insight into data freshness and quality. This helps dbt project maintainers build trust internally about the data that end users are seeing.
 - We shipped DAG in the IDE to GA!
 - Support for ` dbt v0.20.1` in Cloud.
 
