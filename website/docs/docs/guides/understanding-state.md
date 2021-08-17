@@ -4,7 +4,7 @@ title: "Understanding state"
 
 <Changelog>
 
- - The `--state` flag was introduced in dbt v0.18.0 as a beta feature
+ - The `--state` flag was introduced in dbt v0.18.0
 
 </Changelog>
 
