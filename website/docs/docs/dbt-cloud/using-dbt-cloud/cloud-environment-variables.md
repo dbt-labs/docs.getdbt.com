@@ -57,12 +57,12 @@ To supply an override, developers can edit and specify a different value to use.
 [TO CREATE GIF]
 
 :::info Appropriate coverage
-If you have not set a project level default value for every environment variable, it may be possible that dbt Cloud does not know how to interpret the value of an environment variable in all contexts. We leave it to our users to either supply a default or make sure all scenarios where dbt runs have been covered; otherwise, dbt will throw a compile error.
+If you have not set a project level default value for every environment variable, it may be possible that dbt Cloud does not know how to interpret the value of an environment variable in all contexts. You should either supply a default value or ensure that specific environment variables are specified for all relevant environments; otherwise, dbt will throw a compile error.
 :::
 
 ### Handling secrets
 
-While all environment variables are encrypted in our database regardless of whether they are secrets or not, we want to apply extra care when using environment variables as secrets. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you need to prefix the key with `DBT_ENV_SECRET_`. This functionality is supported from `dbt v0.21.0` and on. 
+While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET_`. This functionality is supported from `dbt v0.21.0` and on. 
 
 [TO ADD PICTURE]
 
@@ -93,9 +93,9 @@ Environment variables can be used in many ways, and they give you the power and 
 #### Clone private packages
 Now that you can set secrets as environment variables, you can pass git tokens into your package HTTPS URLs to allow for on-the-fly cloning of private repositories. Read more about enabling [private package cloning](/building-a-dbt-project/package-management#private-packages).
 #### Dynamically set your warehouse in your Snowflake connection
-Environment variables can make overriding warehouses possible.  
+Environment variables can make it simpler to override a Snowflake virtual warehouse for specific dbt Cloud jobs or environments.  
 
-Suppose you'd like to set your warehouse in Snowflake depending on the job. You'd like to run a full-refresh job in a XL warehouse, but your incremental job only needs to run in a medium-sized warehouse. Both jobs run in the same dbt environment. In your connection configuration, you should use an environment variable to set the warehouse name to `{{env_var('WAREHOUSE')}}`. Then depending on the job, the value can be interpretted to different warehouse names corresponding to the appropriate size.
+Suppose you'd like to set your warehouse in Snowflake to different values for different jobs. You'd like to run a full-refresh job in an XL warehouse, but your incremental job only needs to run in a medium-sized warehouse. Both jobs are configured in the same dbt Cloud environment. In your connection configuration, you can use an environment variable to set the warehouse name to `{{env_var('WAREHOUSE')}}`. Then in the job configuration, different values for the `WAREHOUSE` environment variable can be specified to dynamically configure different warehouses for each workload.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/warehouse-override.png" title="Adding Environment Variables to your connection credentials"/>
 
