@@ -200,6 +200,25 @@ function Home() {
                       </div>
                     </div>
                   </div>
+                  <div className="col col--4">
+                    <div className="card large light lighter">
+                      <div className="card__header">
+                        <h3>dbt Cloud Metadata API</h3>
+                      </div>
+                      <div className="card__body">
+                        <p>
+	  				   Technical reference docs for using the dbt Cloud Metadata API.
+                        </p>
+                      </div>
+                      <div className="card__footer">
+                          <Link
+                            className="button button--primary"
+                            to="/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview">
+                            API docs
+                          </Link>
+                      </div>
+                    </div>
+                  </div>
               </div>
           </div>
           <div className="container container--fluid home" style={{"background": "#f5f6f7", "padding": "10px 0"}}>
