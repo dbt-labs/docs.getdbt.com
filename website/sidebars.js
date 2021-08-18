@@ -484,6 +484,7 @@ module.exports = {
         "reference/warehouse-profiles/snowflake-profile",
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
+        "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/spark-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
