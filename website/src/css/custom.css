@@ -303,6 +303,15 @@ nav.navbar div.navbar__inner {
 	border-color: #033744;
 }
 
+@media (min-width: 997px) and (max-width: 1150px) {
+  nav.navbar a.navbar__link {
+    font-size: .9rem;
+  }
+  .navbar__search .navbar__search-input {
+    max-width: 160px;
+  }
+}
+
 @media (max-width: 996px) {
 	.card.large:after {
 		width: 30%;
