@@ -76,7 +76,7 @@ function Home() {
                       </div>
                       <div className="card__body">
                         <p>
-                          Learn dbt on your own time with our on demand course or sign up for an upcoming, live public course.
+                          Learn dbt on your own time with our on demand course or with your organization in company training.
                         </p>
                       </div>
                       <div className="card__footer">
