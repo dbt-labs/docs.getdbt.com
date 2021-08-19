@@ -24,7 +24,7 @@ The example job seen in the screenshot above belongs to the environment "Redshif
 ## Supported Versions
 :::info DEPRECATION WARNING
 
-Starting November 15, 2021, dbt Cloud will no longer run jobs that use dbt versions older than v0.19.2. See our [migration guides](/docs/guides/migration-guide/upgrading-to-0-20-0) to learn about breaking changes between minor versions of dbt.
+Starting November 15, 2021, dbt Cloud will no longer run jobs that use dbt versions older than v0.19.0. See our [migration guides](/docs/guides/migration-guide/upgrading-to-0-20-0) to learn about breaking changes between minor versions of dbt.
 :::
 
 
@@ -35,13 +35,14 @@ Starting November 15, 2021, the following versions of dbt will be supported:
 
 Upgrading from a patch version (ex. v0.20.0 to v0.20.1) will not create any breaking changes, so can and should be done when a new patch is available without much effort from our users.
 
-Upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your jobs to run the latest version of dbt.
+Upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
 
 
-| Cloud Feature | v0.17.x | v0.18.x| v0.19.x| v0.20.x| v0.21.x|
-| ------------- | -------------- | --------------- | --------------- | --------------- | --------------- |
-| [Environment variable secret scrubbing](/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#handling-secrets)| No | No| No | No | Yes |
-| DAG in the IDE | No | No| No | Yes | Yes |
-| [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview.md) | No | No| Yes | Yes | Yes |
-| [Dashboard status tiles](/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) | No | No| Yes | Yes | Yes |
-| [Slim CI](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github#slim-ci) | No | Yes | Yes | Yes | Yes |
+
+| dbt Cloud Feature | dbt Core Version Needed |
+| ------------- | -------------- |
+| [Environment variable secret scrubbing](/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#handling-secrets)| v0.21.0+ |
+| DAG in the IDE | v0.20.0+|
+| [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview.md) |v0.19.0+|
+| [Dashboard status tiles](/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) | v0.19.0+ |
+| [Slim CI](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github#slim-ci) | v0.18.0+ |
