@@ -224,6 +224,67 @@ the integration between Okta and dbt Cloud.
 After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
+## Google integration
+
+_Use this section if you are configuring Google as your identity provider_.
+
+### Configure the Google application
+
+Sign into your **Google Admin Console** via an account with super administrator privileges.
+
+* From the Admin console Home page, go to **Apps** > **Web and mobile apps**.
+* Click **Add** > **Add custom SAML app**.
+
+Click **Next** to continue.
+
+On the **App Details** page:
+
+* ** Name the custom app
+* ** Upload an app logo (optional)
+* ** Click **Continue**.
+
+### Configure SAML Settings
+
+On the **Google Identity Provider details** page:
+
+* Download the **IDP metadata**.
+* Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
+
+On the **Service Provider Details** window, enter the following values:
+
+* **ACS URL**: `https://cloud.getdbt.com/complete/saml`
+* **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
+* **Start URL**: (if needed)
+
+The default **Name ID** is the primary email. Multi-value input is not supported.
+
+Use the **Attribute mapping** page to
+map your organization's Google Directory Attributes to the format that
+dbt Cloud expects; click **Add another mapping** to map additional attributes.
+
+Expected **Attributes**:
+
+| Name           | Name format | Value                | Description                |
+| -------------- | ----------- | -------------------- | -------------------------- |
+| `First name`   | Unspecified | `first_name`         | _The user's first name_    |
+| `Last name`    | Unspecified | `last_name`          | _The user's last name_     |
+| `Primary email`| Unspecified | `email`              | _The user's email address_ |
+
+Click **Finish** to continue.
+
+
+### Finish Google setup
+
+* From the Admin console Home page, go to **Apps** > **Web and mobile apps**.
+* Select your SAML app.
+* Click **User access**.
+* To turn on or off a service for everyone in your organization, click **On for everyone** or **Off for everyone**, and then click **Save**.
+* Ensure that the email addresses your users use to sign in to the SAML app match the email addresses they use to sign in to your Google domain (Changes typically take effect in minutes, but can take up to 24 hours).
+
+### Finish setup
+
+After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+section to complete the integration.
 
 ## dbt Cloud Setup
 
