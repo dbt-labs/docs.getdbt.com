@@ -67,6 +67,7 @@ module.exports = {
           type: "category",
           label: "Migration guides",
           items: [
+            "docs/guides/migration-guide/upgrading-to-0-21-0",
             "docs/guides/migration-guide/upgrading-to-0-20-0",
             "docs/guides/migration-guide/upgrading-to-0-19-0",
             "docs/guides/migration-guide/upgrading-to-0-18-0",
@@ -399,6 +400,7 @@ module.exports = {
           type: "category",
           label: "List of commands",
           items: [
+            "reference/commands/build",
             "reference/commands/clean",
             "reference/commands/cmd-docs",
             "reference/commands/compile",

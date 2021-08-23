@@ -171,7 +171,7 @@ You can also reference an [environment variables](env_var).
 
 ```yaml
 packages:
-  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/dbt-labs/dbt-utils.git" # git HTTPS URL
+  - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIALS')}}@github.com/dbt-labs/dbt-utils.git" # git HTTPS URL
 ```
 
 **Note**: The use of private packages is not currently supported in dbt Cloud.
