@@ -110,6 +110,7 @@ Installing https://github.com/dbt-labs/dbt-labs-experimental-features@0.0.1
 Installing calogica/dbt_date@0.4.0
   Installed from version 0.4.0
   Up to date!
+
 Updates available from hub: ['dbt-labs/dbt_utils', 'calogica/dbt_expectations']                 
 Update your versions in packages.yml, then run dbt deps
 ```
