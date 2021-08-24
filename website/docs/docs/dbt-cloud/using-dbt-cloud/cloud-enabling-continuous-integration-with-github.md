@@ -1,6 +1,6 @@
 ---
 title: "Enabling CI"
-id: "cloud-enabling-continuous-integration-with-github"
+id: "cloud-enabling-continuous-integration"
 ---
 
 ## Overview

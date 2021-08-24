@@ -134,7 +134,7 @@ module.exports = {
       type: "category",
       label: "Using dbt Cloud",
       items: [
-        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
         "docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness",
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
