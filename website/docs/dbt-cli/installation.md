@@ -92,11 +92,18 @@ pip install dbt
 
 Check your installation with `dbt --version`.
 
-### Upgrading
-To upgrade dbt, use:
+### Upgrading and Downgrading
+To upgrade dbt to its latest version, use:
 ```
 pip install --upgrade dbt
 ```
+To downgrade to an older version, you'll want to use the command above while specifying the version you want to use. As an example:
+```
+pip install --upgrade dbt==0.19.0
+```
+
+The `upgrade` flag is used to change versions of dbt, regardless of whether you're upgrading or downgrading via pip.
+
 
 ### Additional steps by operating system
 
@@ -117,7 +124,7 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
   python-devel openssl-devel
 ```
 
-#### Windows 10 
+#### Windows 10
 
 * Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.6 or higher for Windows](https://www.python.org/downloads/windows/).
 * Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
