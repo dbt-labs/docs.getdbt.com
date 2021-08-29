@@ -27,7 +27,7 @@ Environment variable values can be set in multiple places within dbt Cloud. As a
 
 **Setting environment variables at the project and environment level**
 
-To set environment variables at the project and environment level, head over to the Environments section in your main navigation pane. You'll see a view to list all your environments and a view to set and update environment variables. Make sure you're in environment variable view.
+To set environment variables at the project and environment level, head over to the Environments section in your main navigation pane. You'll see a view to list all your environments and a view to set and update environment variables. Make sure you're in the environment variable view.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/Environment Variables.gif" title="Environment variables tab"/>
 
@@ -48,7 +48,7 @@ To the right of the `Project Default` column are all your environments. Values s
 
 You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpretted differently depending on the job. 
 
-When setting up or editing a job, you will see a section for overriding environment variables. Every job is specified to run in a specific, deployment environment, and by default, a job will inherit the values set at the environment level for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
+When setting up or editing a job, you will see a section for overriding environment variables. Every job runs in a specific, deployment environment, and by default, a job will inherit the values set at the environment level for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
 
 
 
