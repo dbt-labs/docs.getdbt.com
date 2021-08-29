@@ -111,7 +111,7 @@ As of v0.14.0, dbt will warn you if you install a package using the `git` syntax
 ### Private packages
 
 #### SSH Key Method
-Private packages can be installed via SSH keys, which authenticate to remote servers. You'll need to add your key to your git provider and update your ~/.ssh/config file to manage your settings.
+Private packages can be installed via SSH keys, which authenticate to remote git servers. You'll need to add your key to your git provider.
 
 <File name='packages.yml'>
 
