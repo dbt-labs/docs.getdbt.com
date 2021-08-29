@@ -44,7 +44,7 @@ To the right of the `Project Default` column are all your environments. Values s
 :::note Job and personal overrides are coming soon!
 :::
 
-**Overridng environment variables at the job level**
+**Overriding environment variables at the job level**
 
 You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpretted differently depending on the job. 
 
@@ -52,7 +52,7 @@ When setting up or editing a job, you will see a section for overriding environm
 
 
 
-**Overridng environment variables at the personal level**
+**Overriding environment variables at the personal level**
 
 
 Developers may also want to set a personal value override for an environment variable while developing in the dbt IDE. By default, dbt Cloud will look to use environment variable values set in the project's development environment. To see and override these values, developers should head to their Profile and then select their project under Credentials and scroll to the Environment Variables section. 
