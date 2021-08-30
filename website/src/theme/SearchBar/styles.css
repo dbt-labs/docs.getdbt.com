@@ -7,39 +7,39 @@
 
 /* Bottom border of each suggestion */
 .algolia-docsearch-suggestion {
-  border-bottom-color: #3a3dd1;
+  border-bottom-color: var(--color-green-blue)
 }
 /* Main category headers */
 .algolia-docsearch-suggestion--category-header {
-  background-color: #4b54de;
+  background-color: var(--color-green-blue);
 }
 /* Highlighted search terms */
 .algolia-docsearch-suggestion--highlight {
-  color: #3a33d1;
+  color: var(--color-green-blue);
 }
 /* Highligted search terms in the main category headers */
 .algolia-docsearch-suggestion--category-header
   .algolia-docsearch-suggestion--highlight {
-  background-color: #4d47d5;
+  background-color: var(--color-green-blue);
 }
 /* Currently selected suggestion */
 .aa-cursor .algolia-docsearch-suggestion--content {
-  color: #272296;
+  color: var(--color-primary-blue);
 }
 .aa-cursor .algolia-docsearch-suggestion {
-  background: #ebebfb;
+  background: var(--color-off-white);
 }
 
 /* For bigger screens, when displaying results in two columns */
 @media (min-width: 768px) {
   /* Bottom border of each suggestion */
   .algolia-docsearch-suggestion {
-    border-bottom-color: #7671df;
+    border-bottom-color: var(--ifm-footer-background-color);
   }
   /* Left column, with secondary category header */
   .algolia-docsearch-suggestion--subcategory-column {
-    border-right-color: #7671df;
-    background-color: #f2f2ff;
+    border-right-color: var(--ifm-footer-background-color);
+    background-color: var(--color-off-white);
     color: #4e4726;
   }
 }
