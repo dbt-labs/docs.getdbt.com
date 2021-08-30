@@ -10,17 +10,18 @@
     --ifm-navbar-height: 94px;
     --ifm-footer-background-color: #4F5D75;
     --ifm-footer-color: #BFC0C0;
-    --ifm-link-color: #047377;
-    --ifm-link-hover-color: #FF694A;
+    --ifm-link-color: #009999;
+    --ifm-link-hover-color: #047377;
     --ifm-button-border-radius: 4px;
     --ifm-menu-color: #262A38;
-    --ifm-menu-color-active: #FF694A;
+    --ifm-menu-color-active: #009999;
     --ifm-pagination-nav-color-hover: #047377;
     --ifm-color-info: #047377 !important;
     --ifm-tabs-color-active: #047377;
     --primary-font: 'Source Sans Pro', sans-serif;
     --color-primary-blue: #262A38;
     --color-green-blue: #047377;
+    --color-light-teal: #009999;
     --color-light-blue: #96D7D1;
     --color-orange: #FF694A;
     --color-off-white: #EFF2F3;
@@ -115,7 +116,7 @@ nav.navbar a.navbar__link {
 }
 
 nav.navbar a.navbar__link:hover {
-    color: var(--color-orange);
+    color: var(--color-light-teal);
 }
 
 nav.navbar div.navbar__toggle,
@@ -344,10 +345,16 @@ nav.navbar div.navbar__inner {
 	border-color: var(--color-green-blue);
 }
 
-.card.large .button:hover, .card.large.light .button:hover, .card.large.light-blue .button:hover {
+.card.large .button:hover {
 	background: #FFF;
 	border-color: #FFF;
 	color: var(--color-green-blue);
+}
+
+.card.large.dark .button:hover  {
+  background: var(--color-light-teal);
+	border-color: var(--color-light-teal);
+  color: #fff;
 }
 
 .card.large.light .button, .button.help:hover {
@@ -355,9 +362,21 @@ nav.navbar div.navbar__inner {
 	border-color: var(--color-orange);
 }
 
+.card.large.light .button:hover {
+  background: #DE5D43;
+  border-color: #DE5D43;
+  color: #fff;
+}
+
 .card.large.light-blue .button {
 	background: var(--color-light-blue);
 	border-color: var(--color-light-blue);
+  color: var(--color-primary-blue);
+}
+
+.card.large.light-blue .button:hover {
+  background: #D9F6F4;
+	border-color: #D9F6F4;
   color: var(--color-primary-blue);
 }
 
