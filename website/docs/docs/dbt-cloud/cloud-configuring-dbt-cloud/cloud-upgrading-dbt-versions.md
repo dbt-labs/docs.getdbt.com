@@ -16,7 +16,7 @@ To get started, read the next section to figure out if your project might be aff
 
 Below we try to help you answer the question of whether a known breaking change between minor versions of dbt will affect your project. If you answer "yes" to any of the questions below, we recommend that you read the migration guides that we've put together for every dbt minor version release.
 
-:::caution An Important Note on Packages
+:::info An Important Note on Packages
 
 If you use any packages from [dbt Hub]([https://hub.getdbt.com/](https://hub.getdbt.com/)), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on Github.
 
@@ -28,7 +28,7 @@ After you've changed the package version in your packages.yml file, be sure to r
 
 
 <details>
-<summary>  Upgrading to v0.20.0 from v0.19.x </summary>
+<summary>  Upgrading to v0.20.latest from v0.19 </summary>
 
 - Does your project define any custom schema tests?
 - Does your project use `adapter.dispatch` or the `spark_utils` package?
@@ -41,13 +41,14 @@ If you believe your project might be affected, read more details in the migratio
 
 
 <details>
-<summary>  Upgrading to v0.19.0 from v0.18.x </summary>
+<summary>  Upgrading to v0.19.latest from v0.18 </summary>
 
 <div>
 
 :::info Important   
 
 If you have not already, you must add `config-version: 2` to your dbt_project.yml file.
+See **Upgrading to v0.17.latest from v0.16** below for more details.
 
 :::
 </div>
@@ -62,7 +63,7 @@ If you believe your project might be affected, read more details in the migratio
 
 
 <details>
-<summary>  Upgrading to v0.18.0 from v0.17.x </summary>
+<summary>  Upgrading to v0.18.latest from v0.17 </summary>
 
 - Do you directly call `adapter_macro`?
 
@@ -73,7 +74,7 @@ If you believe your project might be affected, read more details in the migratio
 
 
 <details>
-<summary>  Upgrading to v0.17.0 from v0.16.x </summary>
+<summary>  Upgrading to v0.17.latest from v0.16 </summary>
 <div>
 
 :::info Universal change
@@ -149,7 +150,7 @@ If you believe your project might be affected, read more details in the migratio
 
 
 <details>
-<summary>  Upgrading to v0.16.0 from v0.15.x </summary>
+<summary>  Upgrading to v0.16.latest from v0.15 </summary>
 
 - Do you use the custom `generate_schema_name` macro?
 - Do you use `partition_by` config for BigQuery models?
@@ -159,7 +160,7 @@ If you believe your project might be affected, read more details in the migratio
 
 
 <details>
-<summary>  Upgrading to v0.15.0 from v0.14.x </summary>
+<summary>  Upgrading to v0.15.latest from v0.14 </summary>
 
 - Do you have a custom materialization?
 - Do you have a macro that accesses `Relations` directly?
@@ -168,7 +169,7 @@ If you believe your project might be affected, read more details in the migratio
 </details>
 
 <details>
-<summary>  Upgrading to v0.14.0 from v0.13.x </summary>
+<summary>  Upgrading to v0.14.latest from v0.13 </summary>
 
 - Do you still use `Archives`?
 - Do you use the custom `generate_schema_name` macro?
