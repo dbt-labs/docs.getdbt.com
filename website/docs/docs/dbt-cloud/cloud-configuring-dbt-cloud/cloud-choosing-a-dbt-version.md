@@ -24,16 +24,17 @@ The example job seen in the screenshot above belongs to the environment "Redshif
 ## Supported Versions
 :::info DEPRECATION WARNING
 
-Starting November 15, 2021, dbt Cloud will no longer run jobs that use dbt versions older than v0.19.0. See our [migration guides](/docs/guides/migration-guide/upgrading-to-0-20-0) to learn about breaking changes between minor versions of dbt.
+Starting December 1, 2021, dbt Cloud will no longer run jobs that use dbt versions older than v0.19.0. See our [migration guides](/docs/guides/migration-guide/upgrading-to-0-20-0) to learn about if a breaking change between minor versions of dbt will affect your project.
 :::
 
 
-Starting November 15, 2021, the following versions of dbt will be supported:
+Starting December 1, 2021, the following versions of dbt will be supported:
 
+ - v0.21.x
  - v0.20.x
  - v0.19.x
 
-Upgrading from a patch version (ex. v0.20.0 to v0.20.1) will not create any breaking changes, so can and should be done when a new patch is available without much effort from our users.
+After dbt v1.0.0 comes out in December, we will have a more automated policy of what we will support in dbt Cloud. All v0.19.x, v0.20.x, and v0.21.x projects will have until June 30, 2022 to be on v1.0.0 or later, and w e will support any minor version that we release post v1.0.0 for 1 year after its release.
 
 Upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
 
