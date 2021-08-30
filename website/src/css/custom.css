@@ -340,14 +340,14 @@ nav.navbar div.navbar__inner {
 }
 
 .card.large .button, .button.help {
-	background: var(--ifm-link-hover-color);
-	border-color: var(--ifm-link-hover-color);
+	background: var(--color-green-blue);
+	border-color: var(--color-green-blue);
 }
 
 .card.large .button:hover, .card.large.light .button:hover, .card.large.light-blue .button:hover {
 	background: #FFF;
 	border-color: #FFF;
-	color: var(--ifm-link-hover-color);
+	color: var(--color-green-blue);
 }
 
 .card.large.light .button, .button.help:hover {
