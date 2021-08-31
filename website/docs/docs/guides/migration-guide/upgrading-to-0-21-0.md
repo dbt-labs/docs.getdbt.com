@@ -24,6 +24,7 @@ dbt v0.21.0-b2 is currently available as a prerelease. If you have questions or 
 - [Commands: `source`](commands/source): Renamed to `dbt source freshness`, updated selection logic.
 - [Environment variables](env_var): Add a log-scrubbing prefix, `DBT_ENV_SECRET_`
 - [Selection methods](node-selection/methods) and [state comparison caveats](state-comparison-caveats): Add `state:modified` subselectors, and reflect that it now includes changes to upstream macros.
+- [Packages](package-management): Add `dbt deps` logging for outdated packages
 
 ### Plugins
 - [Redshift profile](redshift-profile): `ra3: true` profile property to support cross-database source definitions and read-only querying
