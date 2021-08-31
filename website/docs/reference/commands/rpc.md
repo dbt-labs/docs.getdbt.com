@@ -315,24 +315,6 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Build ([docs](build))
-
-```json
-{
-	"jsonrpc": "2.0",
-	"method": "build",
-	"id": "<request id>",
-	"params": {
-            "threads": "<int> (optional)",
-            "models": "<str> (optional)",
-            "exclude": "<str> (optional)",
-            "selector": "<str> (optional)",
-            "state": "<str> (optional)",
-            "defer": "<str> (optional)"
-        }
-}
-```
-
 ### Generate docs ([docs](cmd-docs#dbt-docs-generate))
 
 **Additional parameters:**

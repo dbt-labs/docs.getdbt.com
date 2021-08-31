@@ -83,10 +83,7 @@ $ dbt test --models test_name:range_min_max     # run all instances of a custom 
 ```
 
 ### The "state" method
-<Changelog>
-    - **v0.18.0** introduced `state:new` and `state:modified`
-    - **v0.21.0** introduced `modified` sub-selectors, and handling for upstream macro dependencies
-</Changelog>
+<Changelog>New in v0.18.0</Changelog>
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
 
@@ -94,22 +91,17 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
-`state:modified`: All new nodes, plus any changes to existing nodes.
+`state:modified`: Everything new, plus any changes to:
+* file/node contents
+* configs (`materialized`, `bind`, `transient`, `quote`, etc.)
+* descriptions (top-level and/or column-level, depending on `persist_docs`)
+* database representations (user-input `database`, `schema`, `alias`, irrespective of `target` + `generate_x_name` macros)
 
 ```bash
 $ dbt test --models state:new            # run all tests on new models + and new tests on old models
 $ dbt run --models state:modified        # run all models that have been modified
-$ dbt ls --models state:modified         # list all modified nodes (not just models)
+$ dbt ls --models state:modified     # list all modified nodes (not just models)
 ```
-
-Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
-- `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
-- `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`
-- `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
-- `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
-- `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
-
-Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>
