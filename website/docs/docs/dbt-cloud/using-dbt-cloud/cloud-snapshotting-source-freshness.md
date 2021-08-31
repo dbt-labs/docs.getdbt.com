@@ -3,9 +3,16 @@ title: "Source freshness"
 id: "cloud-snapshotting-source-freshness"
 ---
 
+
+:::info dbt Cloud
+
+The functionality documented here is available in dbt Cloud. Don't have an account? You can get started for free [here](https://cloud.getdbt.com/signup).
+
+:::
+
 ## Data Source Freshness
 
-dbt Cloud provides a helpful interface around dbt's [source data freshness](using-sources#snapshotting-source-data-freshness) calculations. When a dbt Cloud job is configured to snapshot source data freshness, dbt Cloud will render a user interface showing you the state of the most recent snapshot. This interface is intended to help you determine if your source data freshness is meeting the SLAs that you've defined for your organization.
+dbt Cloud provides a helpful interface around dbt's [source data freshness](using-sources#snapshotting-source-data-freshness) calculations. When a dbt Cloud job is configured to snapshot source data freshness, dbt Cloud will render a user interface showing you the state of the most recent snapshot. This interface is intended to help you determine if your source data freshness is meeting the [SLAs](https://en.wikipedia.org/wiki/Service-level_agreement) that you've defined for your organization.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/3c3c1ca-Screen_Shot_2019-03-21_at_11.05.28_AM.png" title="Data Sources in dbt Cloud"/>
 

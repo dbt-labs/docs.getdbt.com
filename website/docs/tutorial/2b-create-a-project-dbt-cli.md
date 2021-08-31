@@ -58,7 +58,7 @@ You can use `pwd` to confirm that you are in the right spot.
 <File name='dbt_project.yml'>
 
 ```yaml
-name: jaffle_shop # this normally says my_new_project
+name: jaffle_shop # this normally says my_new_package
 
 ...
 
@@ -67,7 +67,7 @@ profile: jaffle_shop # this normally says default
 ...
 
 models:
-  jaffle_shop: #this normally says my_new_project. It should match the value for `name:`
+  jaffle_shop: #this normally says my_new_package. It should match the value for `name:`
     ...
 ```
 

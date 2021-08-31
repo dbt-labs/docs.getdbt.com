@@ -19,19 +19,16 @@ function Home() {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google-site-verification" content="ex1EMwuCGU33-nOpoOajLXEpMPgUYK5exBWePCu-0l0" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap" />
       </Head>
 
       <Layout permalink="/">
           <div className="container container--fluid home" style={{"padding": "10px 0"}}>
           	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
-          		<div className="col">
+          		<div className="col col--8">
           			 <h1>Get started</h1>
-          			 <p>If you’re new to dbt, start here. These resources will get you off to a strong start:</p>
-	  			    </div>
+          			 <p style={{"fontSize": "120%"}}>If you’re new to dbt, start here. These resources will get you off to a strong start:</p>
+	  			</div>
 	  		</div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(2vh)"}}>
                   <div className="col col--4">
@@ -95,9 +92,9 @@ function Home() {
           </div>
           <div className="container container--fluid home" style={{"background": "#FFF", "padding": "10px 0"}}>
           	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
-          		<div className="col">
+          		<div className="col col--8">
           			 <h1>Build your project</h1>
-          			 <p>If you’re getting comfortable with dbt, bookmark these resources! They’ll help you level up quickly.</p>
+          			 <p style={{"fontSize": "120%"}}>If you’re getting comfortable with dbt, bookmark these resources! They’ll help you level up quickly.</p>
 	  			</div>
 	  		</div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
@@ -160,8 +157,8 @@ function Home() {
                   </div>
               </div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
-          		<div className="col">
-          			 <p>If you’re a dbt Cloud user, these resources may also be helpful:</p>
+          		<div className="col col--8">
+          			 <p style={{"fontSize": "120%"}}>If you’re a dbt Cloud user, these resources may also be helpful:</p>
 	  			</div>
 	  		</div>
 	  		<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
@@ -191,13 +188,13 @@ function Home() {
                       </div>
                       <div className="card__body">
                         <p>
-	  				   Technical reference docs for using the dbt Cloud APIs.
+	  				   Technical reference docs for using the dbt Cloud API. These docs assume you&#39;re familiar with REST APIs.
                         </p>
                       </div>
                       <div className="card__footer">
                           <Link
                             className="button button--primary"
-                            to={useBaseUrl('/docs/dbt-cloud/dbt-cloud-api/cloud-apis')}>
+                            to={useBaseUrl('/dbt-cloud/api')}>
                             API docs
                           </Link>
                       </div>
@@ -207,14 +204,14 @@ function Home() {
           </div>
           <div className="container container--fluid home" style={{"background": "#f5f6f7", "padding": "10px 0"}}>
           	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
-          		<div className="col">
+          		<div className="col col--8">
           			 <h1>Learn from the community</h1>
-          			 <p>Every data team uses dbt to solve different analytics engineering problems. It can be useful to learn how other teams are using dbt with the following resources:</p>
-	  			    </div>
-	  		    </div>
+          			 <p style={{"fontSize": "120%"}}>Every data team uses dbt to solve different analytics engineering problems. It can be useful to learn how other teams are using dbt with the following resources:</p>
+	  			</div>
+	  		</div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
                   <div className="col col--4">
-                    <div className="card large light-blue">
+                    <div className="card large dark">
                       <div className="card__header">
                         <h3><i data-icon="discourse" style={{"marginRight": "7px"}}></i>Discourse</h3>
                       </div>
@@ -233,7 +230,7 @@ function Home() {
                     </div>
                   </div>
                   <div className="col col--4">
-                    <div className="card large light-blue">
+                    <div className="card large dark darker">
                       <div className="card__header">
                         <h3><i data-icon="slack" style={{"marginRight": "7px"}}></i>Slack</h3>
                       </div>
@@ -252,7 +249,7 @@ function Home() {
                     </div>
                   </div>
                   <div className="col col--4">
-                    <div className="card large light-blue">
+                    <div className="card large dark darkest">
                       <div className="card__header">
                         <h3>Example projects</h3>
                       </div>
@@ -274,9 +271,9 @@ function Home() {
           </div>
           <div className="container container--fluid home" style={{"background": "#FFF", "padding": "10px 0"}}>
           	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
-          		<div className="col">
+          		<div className="col col--8">
           			 <h1>Having trouble?</h1>
-          			 <p>If you&#39;re having trouble, check out our guide on <a href="/docs/guides/getting-help" >Getting Help</a> for information on getting support and asking questions in the community.</p>
+          			 <p style={{"fontSize": "120%"}}>If you&#39;re having trouble, check out our guide on <a href="/docs/guides/getting-help" >Getting Help</a> for information on getting support and asking questions in the community.</p>
 	  			</div>
 	  		</div>
           </div>

@@ -52,7 +52,7 @@ parameter that can be quite useful later on when searching in the [QUERY_HISTORY
 
 dbt supports setting a default query tag for the duration of its Snowflake connections in
 [your profile](snowflake-profile). You can set more precise values (and override the default) for subsets of models by setting
-a `query_tag` model config or by overriding the default `set_query_tag` macro:
+a `query_tag` model config:
 
 <File name='dbt_project.yml'>
 
@@ -73,23 +73,6 @@ models:
 ) }}
 
 select ...
-
-```
-  
-In this example, you can set up a query tag to be applied to every query with the model's name. 
-  
-```sql 
-
-  {% macro set_query_tag() -%}
-  {% set new_query_tag = model.name %} 
-  {% if new_query_tag %}
-    {% set original_query_tag = get_current_query_tag() %}
-    {{ log("Setting query_tag to '" ~ new_query_tag ~ "'. Will reset to '" ~ original_query_tag ~ "' after materialization.") }}
-    {% do run_query("alter session set query_tag = '{}'".format(new_query_tag)) %}
-    {{ return(original_query_tag)}}
-  {% endif %}
-  {{ return(none)}}
-{% endmacro %}
 
 ```
 
