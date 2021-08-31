@@ -10,17 +10,11 @@ dbt stores a file hash of seed files that are <1 MB in size. If the contents of 
 
 If a seed file is >1 MB in size, dbt cannot compare its contents and will raise a warning as such. Instead, dbt will use only the seed's file path to detect changes. If the file path has changed, the seed will be included in `state:modified`; if it hasn't, it won't.
 
-### Macros
+### Macros, vars
 
-<Changelog>
+Although dbt can observe modifications to macros, it cannot reliably determine  the set of downstream resources that select from a given macro. As such, macro  modifications are not reflected in `state:modified` selection criteria. dbt will raise a warning at top of runs that use the `state:` method if it detects a macro has been modified.
 
-- New in v0.21.0: dbt will mark modified any resource that depends on a changed macro, or on a macro that depends on a changed macro.
-
-</Changelog>
-
-### Vars
-
-If a model uses a `var` or `env_var` in its definition, dbt is unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+The same principle holds true for `vars` and `env_vars`. If a model uses a `var` in its definition, dbt is unable today to identify that lineage in such a way that it could include the model in `state:modified` when the `var` value changes.
 
 ### Tests
 
