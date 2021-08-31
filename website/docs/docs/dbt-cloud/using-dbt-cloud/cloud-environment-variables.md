@@ -41,15 +41,19 @@ To the right of the `Project Default` column are all your environments. Values s
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project and environment variables view.png" title="Setting project level and environment level values"/>
 
 
-:::note Job and personal overrides are coming soon!
-:::
 
 **Overriding environment variables at the job level**
 
 You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpretted differently depending on the job. 
 
-When setting up or editing a job, you will see a section for overriding environment variables. Every job runs in a specific, deployment environment, and by default, a job will inherit the values set at the environment level for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
+When setting up or editing a job, you will see a button in the Environment section to `Set Environment Variables`. Clicking on that button will take you to a section where you can override environment variable values set at the environment or project level. 
 
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.gif" title="Navigating to environment variables job override settings"/>
+
+
+Every job runs in a specific, deployment environment, and by default, a job will inherit the values set at the environment level for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.png" title="Setting a job override value"/>
 
 
 **Overriding environment variables at the personal level**
@@ -57,13 +61,23 @@ When setting up or editing a job, you will see a section for overriding environm
 
 Developers may also want to set a personal value override for an environment variable while developing in the dbt IDE. By default, dbt Cloud will look to use environment variable values set in the project's development environment. To see and override these values, developers should head to their Profile and then select their project under Credentials and scroll to the Environment Variables section. 
 
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.gif" title="Navigating to environment variables personal override settings"/>
 
 To supply an override, developers can edit and specify a different value to use. These values will be respected in the IDE both for the Results and Compiled SQL tabs.
 
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.png" title="Setting a personal override value"/>
 
 :::info Appropriate coverage
 If you have not set a project level default value for every environment variable, it may be possible that dbt Cloud does not know how to interpret the value of an environment variable in all contexts. You should either supply a default value or ensure that specific environment variables are specified for all relevant environments; otherwise, dbt will throw a compilation error: "Env var required but not provided".
 :::
+
+:::info Changing environment variables mid-session in the IDE
+If you change the value of an environment variable mid-session while using the IDE, you may have to refresh the IDE for the change to take effect.
+:::
+
+To refresh the IDE mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the IDE. A new modal will pop up, and you should select the Refresh IDE button. This will load your environment variables values into your development environment.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/refresh-ide.gif" title="Refreshing IDE mid-session"/>
 
 ### Handling secrets
 
@@ -99,7 +113,7 @@ Environment variables can be used in many ways, and they give you the power and 
 #### Clone private packages
 Now that you can set secrets as environment variables, you can pass git tokens into your package HTTPS URLs to allow for on-the-fly cloning of private repositories. Read more about enabling [private package cloning](/building-a-dbt-project/package-management#private-packages).
 #### Dynamically set your warehouse in your Snowflake connection
-Environment variables can make it simpler to override a Snowflake virtual warehouse for specific dbt Cloud jobs or environments.  
+Environment variables can make it simpler to override a Snowflake virtual warehouse for specific dbt Cloud jobs.  
 
 Suppose you'd like to set your warehouse in Snowflake to different values for different jobs. You'd like to run a full-refresh job in an XL warehouse, but your incremental job only needs to run in a medium-sized warehouse. Both jobs are configured in the same dbt Cloud environment. In your connection configuration, you can use an environment variable to set the warehouse name to `{{env_var('WAREHOUSE')}}`. Then in the job configuration, different values for the `WAREHOUSE` environment variable can be specified to dynamically configure different warehouses for each workload.
 
