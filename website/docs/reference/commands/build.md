@@ -33,7 +33,6 @@ In DAG order, for selected resources or an entire project.
 v0.21 is currently in beta, and as such there are some limitations to `dbt build` that we're hoping to address before the final release:
 
 - A test on a resource should block that resource's other downstream children from running, and a test failure should cause those other children to `SKIP` ([dbt#3597](https://github.com/dbt-labs/dbt/issues/3597))
-- The `build` command should be supported in the [dbt Server](rpc) ([#3595](https://github.com/dbt-labs/dbt/issues/3595))
 - The `build` command should support the superset of CLI flags supported by `run`, `test`, `seed`, and `snapshot` ([dbt#3596](https://github.com/dbt-labs/dbt/issues/3596)). The `build` command should also support a `--resource-type` flag, as the `list` command does.
 - Ahead of the final v0.21 release, we're thinking about switching all commands to use `--select`, with backwards compatibility for `--models` ([dbt#3210](https://github.com/dbt-labs/dbt/issues/3210)). It doesn't make much sense to use a `--models` flag, when the whole point is building more than models.
 
