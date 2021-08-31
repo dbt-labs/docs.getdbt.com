@@ -72,7 +72,7 @@ If you have not set a project level default value for every environment variable
 :::
 
 :::info Changing environment variables mid-session in the IDE
-If you change the value of an environment variable mid-session while using the IDE, you may have to refresh the IDE for the change to take affect.
+If you change the value of an environment variable mid-session while using the IDE, you may have to refresh the IDE for the change to take effect.
 :::
 
 To refresh the IDE mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the IDE. A new modal will pop up, and you should select the Refresh IDE button. This will load your environment variables values into your development environment.
