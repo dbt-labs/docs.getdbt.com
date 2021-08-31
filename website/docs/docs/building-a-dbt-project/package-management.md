@@ -75,6 +75,12 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package.
 
+<Changelog>
+
+* **v0.21.0**: dbt package version comparison logging is new!
+
+</Changelog>
+
 Where relevant, dbt will display up to date and/or latest versions of packages that are listed on dbt Hub. Example below.
 > This does NOT apply to packages that are installed via git/local
 
