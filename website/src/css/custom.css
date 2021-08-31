@@ -414,6 +414,11 @@ nav.navbar div.navbar__inner {
   font-size: 0.813rem !important;
 }
 
+/* Docs */
+.docImage_src-components-lightbox- {
+  max-width: 100%;
+}
+
 @media (min-width: 997px) and (max-width: 1150px) {
   nav.navbar a.navbar__link {
     font-size: 0.9rem;
