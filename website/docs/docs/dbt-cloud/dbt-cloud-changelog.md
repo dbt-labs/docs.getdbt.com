@@ -5,6 +5,97 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.34 (September 1, 2021)
+
+#### Enhancements
+
+- Updating IDE Drawer Header for DAG in IDE
+- Custom Environment Variables: Environment level table UI
+- Delete legacy project permissions section
+
+#### Feature
+
+- Environment Variables: new Job/User UIs, refactored Environment UI
+- remove scheduled pr build to save money
+- Re-Merge SQL Drawer UI Changes
+- Removes dag-in-ide feature flag code
+- Adds backend handling and frontend display of invalid node spec error and empty rpc response
+
+#### Fixed
+
+- 1 liner, remove disable on Compile button
+- Fix incorrect response body type
+- Modifies license view url to path instead of url obj
+- Fixes Max Row hover state unreadable bug
+- Creating a fileContentsMap and accessing the file contents on tab refresh
+- Revert "Updating IDE Drawer Header for DAG in IDE (#3824)"
+- Add logic to populate redux with constants
+- Updating get_docs num params
+
+#### Internal
+
+- read the docs, and use CSV list of tags
+- Environment Variables beta release testing fixes
+- Push images to replicated
+- Update deployment to match what is offered today
+- must checkout code first, then check for latest commit
+- implement check for latest commit
+- React hook for querying API v2 file tree using Apollo
+- (#3976) update copyright statement
+- add 0.14.3 run image to the build
+- faster run image sanity check
+- restore workflow cancelation on failure
+- remove condenser (unused)
+- skip sanity check on 0.10.2
+- remove cancel from failure to debug
+- fix conditional check for staging
+- fix s3 bucket access keys
+- rename HEAD -> head
+- tagging fixes
+- be explicit about prod/staging build
+- dbt-cloud production CI in Github Actions
+- Env Vars environment-level UI QA notes
+- remove old dev docs/artifacts
+- Update README.md
+- update readme to remove stagehand references
+- Remove auth error tests involving Django templates
+- Adds manage.py command for bulk refreshing develop pods
+- Add react component for model bottleneck viz, hidden by feature flag
+- Run task to inject sha into nginx config s3 urls on PR deploy
+- Add logic to detect runs with deleted or otherwise lost job relations
+- Ignoring ./node_modules/fishtown-ui/**/*.tsx from the purge
+- Fix frontend rollback s3 path
+- Give 'member' role read and write permissions for environment variables
+- Make frontend rollback s3 copy recursive
+- Update environment variable blocklist
+- Organize custom environment variables API responses by variable key
+- Inject frontend version into on-prem kustomize.yaml
+- partner connect: add foreign key from project to managed repo
+- Fix pagination count when no rows are found
+- Refactor thunk file system state dependencies
+- Filter Run History runs by project id
+- Create generalize table component for Env Vars (i.e. `<EnvVarTable />`)
+- Migrate the Run History screen to react (behind feature flag)
+- Update frontend rollback workflow
+- add secondary custom env vars feature flag
+- Adds container version to develop request labels
+- no more clutter in PR conversations
+- Replaces the clientside usage of the filesystem endpoint with the new git end point
+- Stub out next phase of file system api client
+- Downgrade formik to stable version
+- fix scheduler unhandled exceptions for dbt < 0.15.0
+- Serve index.html from s3
+- scheduler: only retry sending lifecycle webhooks twice
+- update some critical vuln packages
+- permissions: add read metadata to user roles
+- sort jobs by name in the jobs list
+- Implementing new git fileTree state endpoint
+- dbt 0.12.2 run image: abandon freeze in favor of Dockerfile
+- admin panel: revert account admin read-only change
+- Add user_id to service-auth user tokens
+- Update list styles to match angular page
+- Fix job listing environment link
+
 ## dbt Cloud v1.1.33 (August 18, 2021)
 We added a DAG in the IDE, so that you can see your model dependencies as you develop! If you haven’t seen the DAG visualization yet, take a moment to spin up the IDE, navigate to the Lineage tab, and click-click-click around in there — it is legitimately a brand new modality for developing dbt projects, and it’s something worth being excited about!
 
