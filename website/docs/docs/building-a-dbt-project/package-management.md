@@ -97,7 +97,6 @@ packages:
 ### Git packages
 Packages stored on a Git server can be installed using the `git` syntax, like so:
 
-
 <File name='packages.yml'>
 
 ```yaml
