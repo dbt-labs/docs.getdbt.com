@@ -6,7 +6,7 @@ description: "Changelog for the dbt Cloud application"
 ---
 
 ## dbt Cloud v1.1.34 (September 1, 2021)
-We’ve just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta join the #beta-feedback-for-env-vars channel in dbt Slack.
+We’ve just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
 
 #### Performance improvements and enhancements
 Our IDE SQL drawer got a fresh new look, and it now has improved accessibility.
