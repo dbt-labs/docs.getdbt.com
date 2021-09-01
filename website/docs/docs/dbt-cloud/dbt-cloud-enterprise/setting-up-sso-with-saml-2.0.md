@@ -283,7 +283,7 @@ Click **Finish** to continue.
 
 ### Finish setup
 
-After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+After creating the Google application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
 ## dbt Cloud Setup
