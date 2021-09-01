@@ -10,15 +10,13 @@ There aren't many breaking changes between versions, and it may be the case that
 
 ### How to run the latest version of dbt in Cloud
 
-To get started, read the next section to figure out if your project might be affected when upgrading to a newer version of dbt. This should help you identify what changes, if any, you'll need to make. 
-
 #### Changes between minor versions of dbt that will affect your project
 
 Below we try to help you answer the question of whether a known breaking change between minor versions of dbt will affect your project. If you answer "yes" to any of the questions below, we recommend that you read the migration guides that we've put together for every dbt minor version release.
 
 :::info An Important Note on Packages
 
-If you use any packages from [dbt Hub]([https://hub.getdbt.com/](https://hub.getdbt.com/)), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on Github.
+If you use any packages from [dbt Hub]([https://hub.getdbt.com/](https://hub.getdbt.com/)), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on GitHub.
 
 As an example, dbt-utils version 0.7.1 supports dbt v0.20, and it will support v0.21 when it is released, as described in its [dbt_project.yml](https://github.com/dbt-labs/dbt-utils/blob/0.7.1/dbt_project.yml).
 
@@ -29,7 +27,7 @@ After you've changed the package version in your packages.yml file, be sure to r
 
 <details>
 <summary>  Upgrading to v0.20.latest from v0.19 </summary>
-
+<br></br>
 - Does your project define any custom schema tests?
 - Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
@@ -42,7 +40,7 @@ If you believe your project might be affected, read more details in the migratio
 
 <details>
 <summary>  Upgrading to v0.19.latest from v0.18 </summary>
-
+<br></br>
 <div>
 
 :::info Important   
@@ -64,7 +62,7 @@ If you believe your project might be affected, read more details in the migratio
 
 <details>
 <summary>  Upgrading to v0.18.latest from v0.17 </summary>
-
+<br></br>
 - Do you directly call `adapter_macro`?
 
 If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-18-0).
@@ -75,6 +73,7 @@ If you believe your project might be affected, read more details in the migratio
 
 <details>
 <summary>  Upgrading to v0.17.latest from v0.16 </summary>
+<br></br>
 <div>
 
 :::info Universal change
@@ -151,7 +150,7 @@ If you believe your project might be affected, read more details in the migratio
 
 <details>
 <summary>  Upgrading to v0.16.latest from v0.15 </summary>
-
+<br></br>
 - Do you use the custom `generate_schema_name` macro?
 - Do you use `partition_by` config for BigQuery models?
 
@@ -161,7 +160,7 @@ If you believe your project might be affected, read more details in the migratio
 
 <details>
 <summary>  Upgrading to v0.15.latest from v0.14 </summary>
-
+<br></br>
 - Do you have a custom materialization?
 - Do you have a macro that accesses `Relations` directly?
 
@@ -170,7 +169,7 @@ If you believe your project might be affected, read more details in the migratio
 
 <details>
 <summary>  Upgrading to v0.14.latest from v0.13 </summary>
-
+<br></br>
 - Do you still use `Archives`?
 - Do you use the custom `generate_schema_name` macro?
 - Do you use the `—non-destructive` flag?
@@ -180,14 +179,14 @@ If you believe your project might be affected, read more details in the migratio
 
 
 #### Testing your changes before upgrading
-Once you have an idea about what code changes you'll need to make, you can start implementing them in your development environment. You'll first need to [change the project's development environment settings](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version#supported-versions) to run the latest version of dbt. Next check out a branch `dbt-version-upgrade`, make the appropriate updates to your project (if needed), and see if your dbt project compiles and runs with the new version of dbt in the IDE. If jumping directly to the latest version of dbt is too far of a leap for your project, try iteratively getting your project to work on each successive minor version. There are years of development and a handful of breaking changes between two distant versions of dbt (e.g. 0.14 --> 0.20). There are far fewer between two subsequent versions of dbt, which is why upgrading regularly is important.
+Once you have an idea about what code changes you'll need to make, you can start implementing them. We recommend that you create a separate dbt project, `Upgrade Project`, to test your changes before making them live in your main dbt project. In your `Upgrade Project` connect to the same repository that you use for your main dbt project, but this time, set the development environment [settings](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version#supported-versions) to run the latest version of dbt Core. Next check out a branch `dbt-version-upgrade`, make the appropriate updates to your project (if needed), and see if your dbt project compiles and runs with the new version of dbt in the IDE. If jumping directly to the latest version of dbt is too far of a leap for your project, try iteratively getting your project to work on each successive minor version. There are years of development and a handful of breaking changes between two distant versions of dbt (e.g. 0.14 --> 0.20). There are far fewer between two subsequent versions of dbt, which is why upgrading regularly is important.
 
-Once you have your project compiling and running on the latest version of dbt in the development environment for your `dbt-version-upgrade` branch, try replicating one of your production jobs to run off your branch's code. You can do this by creating a new environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest dbt version. 
+Once you have your project compiling and running on the latest version of dbt in the development environment for your `dbt-version-upgrade` branch, try replicating one of your production jobs to run off your branch's code. You can do this by creating a new deployment environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest dbt Core version. 
 
 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/custom-branch.png" title="Setting your testing environment" />
 
 
-Then add a job to the new testing environment that replicates one of the production jobs your team relies on. If that job runs smoothly, you should be all set to merge your branch into main and change your deployment environments to run off the newest version of dbt core.
+Then add a job to the new testing environment that replicates one of the production jobs your team relies on. If that job runs smoothly, you should be all set to merge your branch into main and change your development and deployment environments in your main dbt project to run off the newest version of dbt Core.
 
