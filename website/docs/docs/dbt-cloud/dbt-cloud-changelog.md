@@ -5,6 +5,13 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.34 (September 1, 2021)
+We’ve just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
+
+#### Performance improvements and enhancements
+Our IDE SQL drawer got a fresh new look, and it now has improved accessibility.
+
+
 ## dbt Cloud v1.1.33 (August 18, 2021)
 We added a DAG in the IDE, so that you can see your model dependencies as you develop! If you haven’t seen the DAG visualization yet, take a moment to spin up the IDE, navigate to the Lineage tab, and click-click-click around in there — it is legitimately a brand new modality for developing dbt projects, and it’s something worth being excited about!
 
