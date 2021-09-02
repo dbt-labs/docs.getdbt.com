@@ -3,15 +3,16 @@ title: "deps"
 id: "deps"
 ---
 
-`dbt deps` pulls the most recent version of the dependencies listed in your `packages.yml` from git. See [Package-Management](package-management) for more information.
+- `dbt deps` pulls the most recent version of the dependencies listed in your `packages.yml` from git. See [Package-Management](package-management) for more information.
 
 <Changelog>
 
-* **v0.21.0**: dbt package version comparison logging is new!
+- **v0.21.0**: dbt package version comparison logging is new!
 
 </Changelog>
 
 Where relevant, dbt will display up to date and/or latest versions of packages that are listed on dbt Hub. Example below.
+
 > This does NOT apply to packages that are installed via git/local
 
 ```yaml
@@ -59,6 +60,6 @@ Installing calogica/dbt_date@0.4.0
   Installed from version 0.4.0
   Up to date!
 
-Updates available for packages: ['tailsdotcom/dbt_artifacts', 'dbt-labs/snowplow']                 
+Updates available for packages: ['tailsdotcom/dbt_artifacts', 'dbt-labs/snowplow']
 Update your versions in packages.yml, then run dbt deps
 ```
