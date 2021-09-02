@@ -6,7 +6,7 @@ description: In this part of the tutorial, we'll go through how you can deploy y
 
 As the `jaffle_shop` business gains more customers, and those customers create more orders, there will be more records added to your source data. Since the `customers` model is materialized as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date.
 
-This is often referred to as "deploying a project" or "[running a project in production](/docs/running-dbt-in-production)". In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
+This is often referred to as "deploying a project" or "[running a project in production](/docs/running-a-dbt-project/running-dbt-in-production)". In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
 
 ## Commit your changes
 First off, we need to commit the changes we made to our project so that our repository has our latest code.
