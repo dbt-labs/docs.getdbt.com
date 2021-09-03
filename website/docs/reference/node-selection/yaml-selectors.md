@@ -108,13 +108,13 @@ the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference
 and it is always applied _last_ within its scope.
 
 This gets us more intricate subset definitions than what's available on the CLI,
-where we can only pass one "yeslist" (`--models`, `--select`) and one "nolist" (`--exclude`).
+where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`).
 
 ### Example
 
 Here are two ways to represent:
 ```
-$ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
+$ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
 ```
 
 <Tabs

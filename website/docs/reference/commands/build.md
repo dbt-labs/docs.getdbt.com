@@ -25,7 +25,6 @@ In DAG order, for selected resources or an entire project.
 
 ### Implementation details
 
-- The `build` task uses the same selection syntax as `run` and `test`: `--models`, `--exclude`, `--selector`, etc.
 - The `build` task will write a single [manifest](artifacts/manifest-json) and a single [run results artifact](artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
 
 ### Current limitations
@@ -34,7 +33,6 @@ v0.21 is currently in beta, and as such there are some limitations to `dbt build
 
 - A test on a resource should block that resource's other downstream children from running, and a test failure should cause those other children to `SKIP` ([dbt#3597](https://github.com/dbt-labs/dbt/issues/3597))
 - The `build` command should support the superset of CLI flags supported by `run`, `test`, `seed`, and `snapshot` ([dbt#3596](https://github.com/dbt-labs/dbt/issues/3596)). The `build` command should also support a `--resource-type` flag, as the `list` command does.
-- Ahead of the final v0.21 release, we're thinking about switching all commands to use `--select`, with backwards compatibility for `--models` ([dbt#3210](https://github.com/dbt-labs/dbt/issues/3210)). It doesn't make much sense to use a `--models` flag, when the whole point is building more than models.
 
 ```
 $ dbt build

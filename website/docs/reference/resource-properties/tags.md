@@ -194,5 +194,5 @@ models:
 Then, use the `tag:` selector to run the tests on a particular column.
 
 ```
-$ dbt test --models tag:pii
+$ dbt test --select tag:pii
 ```

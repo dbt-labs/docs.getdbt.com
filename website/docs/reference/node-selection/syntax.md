@@ -6,14 +6,14 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 
 | command                         | argument(s)                                                          |
 | :------------------------------ | -------------------------------------------------------------------- |
-| [run](commands/run)             | `--models`, `--exclude`, `--selector`, `--defer`                     |
-| [test](commands/test)           | `--models`, `--exclude`, `--selector`, `--defer`                     |
+| [run](commands/run)             | `--select`, `--exclude`, `--selector`, `--defer`                     |
+| [test](commands/test)           | `--select`, `--exclude`, `--selector`, `--defer`                     |
 | [seed](commands/seed)           | `--select`, `--exclude`, `--selector`                                |
 | [snapshot](commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
-| [ls (list)](commands/list)      | `--select`, `--models`, `--exclude`, `--selector`, `--resource-type` |
+| [ls (list)](commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type` |
 | [compile](commands/compile)     | `--select`, `--exclude`, `--selector`                                |
 | [freshness](commands/source)    | `--select`, `--exclude`, `--selector`                                |
-| [build](commands/build)         | `--models`, `--exclude`, `--selector`, `--defer`                     |
+| [build](commands/build)         | `--select`, `--exclude`, `--selector`, `--defer`                     |
 
 :::info Nodes and resources
 
@@ -22,11 +22,15 @@ We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"
 
 ## Specifying resources
 
-By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--models` and `--select` flags are used to specify a subset of nodes to execute.
+By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--select` flag is used to specify a subset of nodes to execute.
+
+:::info
+Before dbt v0.21, certain commands (notably `run`, `test`, and `compile`) used a flag called `--models` instead of `--select`. The two were functionally identical. Those commands still support the `--models` flag for backwards compatibility.
+:::
 
 ### How does selection work?
 
-1. dbt gathers all the resources that are matched by one or more of the `--models`/`--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators (unions, intersections, exclusions).
+1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators (unions, intersections, exclusions).
 
 2. The selected resources may be models, sources, seeds, snapshots, tests. (Tests can also be selected "indirectly" via their parents; see [test selection examples](test-selection-examples) for details.)
 
@@ -34,14 +38,13 @@ By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt
 
 ### Shorthand
 
-Select models to run or test: `--models`, `--model`, `-m`
-Select resources to list, seed, or snapshot: `--select`, `-s`
+Select resources to build (run, test, seed, snapshot) or check freshness: `--select`, `-s`
 
 ### Examples
 
-By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--models` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--models`, `--exclude`, and `--selector`) also apply to `dbt test`!
+By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--select` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--select`, `--exclude`, and `--selector`) also apply to `dbt test`!
 
-The `--models` and `--select` flags accept one or more arguments. Each argument can be one of:
+The `--select` flag accepts one or more arguments. Each argument can be one of:
 
 1. a package name
 2. a model name
@@ -50,24 +53,24 @@ The `--models` and `--select` flags accept one or more arguments. Each argument 
 
 Examples:
 ```bash
-$ dbt run --models my_dbt_project_name   # runs all models in your project
-$ dbt run --models my_dbt_model          # runs a specific model
-$ dbt run --models path.to.my.models     # runs all models in a specific directory
-$ dbt run --models my_package.some_model # run a specific model in a specific package
-$ dbt run --models tag:nightly           # run models with the "nightly" tag
-$ dbt run --models path/to/models        # run models contained in path/to/models
-$ dbt run --models path/to/my_model.sql  # run a specific model by its path
+$ dbt run --select my_dbt_project_name   # runs all models in your project
+$ dbt run --select my_dbt_model          # runs a specific model
+$ dbt run --select path.to.my.models     # runs all models in a specific directory
+$ dbt run --select my_package.some_model # run a specific model in a specific package
+$ dbt run --select tag:nightly           # run models with the "nightly" tag
+$ dbt run --select path/to/models        # run models contained in path/to/models
+$ dbt run --select path/to/my_model.sql  # run a specific model by its path
 ```
 
 dbt supports a shorthand language for defining subsets of nodes. This language uses the characters `+`, `@`, `*`, and `,`.
 
 ```bash
-# multiple arguments can be provided to --models
-$ dbt run --models my_first_model my_second_model
+# multiple arguments can be provided to --select
+$ dbt run --select my_first_model my_second_model
 
 # these arguments can be projects, models, directory paths, tags, or sources
-$ dbt run --models tag:nightly my_model finance.base.*
+$ dbt run --select tag:nightly my_model finance.base.*
 
 # use methods and intersections for more complex selectors
-$ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
+$ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
 ```
