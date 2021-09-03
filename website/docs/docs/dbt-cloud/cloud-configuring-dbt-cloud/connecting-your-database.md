@@ -69,11 +69,9 @@ to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowfl
 ### Key Pair
 **Available in:** Development environments,  Deployment environments
 
-The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development
-or Deployment credentials for a dbt Cloud project.
+The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development or Deployment credentials for a dbt Cloud project.
 
-After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user
-to authenticate in dbt Cloud:
+After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in dbt Cloud:
 
 ```sql
 alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';
@@ -83,7 +81,7 @@ Finally, set the "Private Key" and "Private Key Passphrase" fields in the "Edit
 Credentials" page to finish configuring dbt Cloud to authenticate with Snowflake
 using a key pair.
 
-**Note:** You can optionally add an ssh key without a passphrase by leaving the `PRIVATE KEY PASSPHRASE` field blank.
+**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud -- you **must** add the passphrase that will be used to decrypt the and will receive an error if the `PRIVATE KEY PASSPHRASE` field is empty.
 
 ![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
 
