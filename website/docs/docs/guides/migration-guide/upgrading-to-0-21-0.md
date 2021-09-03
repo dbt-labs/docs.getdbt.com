@@ -28,5 +28,6 @@ dbt v0.21.0-b2 is currently available as a prerelease. If you have questions or 
 - [`deps`](commands/deps): Add `dbt deps` logging for outdated packages
 
 ### Plugins
+- **Postgres** [profile](postgres-profile) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
 - **Redshift**: [profile](redshift-profile) property `ra3: true` to support cross-database source definitions and read-only querying
 - **BigQuery**: [Snapshots](snapshots) support `target_project` and `target_dataset` config aliases
