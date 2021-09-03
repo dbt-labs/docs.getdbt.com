@@ -26,6 +26,7 @@ dbt v0.21.0-b2 is currently available as a prerelease. If you have questions or 
 - [Environment variables](env_var): Add a log-scrubbing prefix, `DBT_ENV_SECRET_`
 - [Selection methods](node-selection/methods) and [state comparison caveats](state-comparison-caveats): Add `state:modified` subselectors, and reflect that it now includes changes to upstream macros.
 - [`deps`](commands/deps): Add `dbt deps` logging for outdated packages
+- [`list`](commands/list): Add `--output-keys` flag and RPC parameter
 
 ### Plugins
 - **Postgres** [profile](postgres-profile) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)

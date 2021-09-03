@@ -16,6 +16,7 @@ dbt ls
      [--exclude SELECTOR [SELECTOR ...]]
      [--selector YML_SELECTOR_NAME [YML_SELECTOR_NAME ...]]
      [--output {json,name,path,selector}]
+     [--output-keys KEY_NAME [KEY_NAME]]
 ```
 
 See [resource selection syntax](node-selection/syntax) for more information on how to select resources in dbt
@@ -27,6 +28,7 @@ See [resource selection syntax](node-selection/syntax) for more information on h
 - `--exclude`: Specify selectors that should be _excluded_ from the list of returned nodes.
 - `--selector`: This flag specifies one or more named selectors, defined in a `selectors.yml` file.
 - `--output`: This flag controls the format of output from the `dbt ls` command.
+- `--output-keys`: If `--output json`, this flag controls which node properties are included in the output.
 
 Note that the `dbt ls` command does not include models which are disabled or schema tests which depend on models which are disabled. All returned resources will have a `config.enabled` value of `true`.
 
@@ -65,6 +67,14 @@ model.my_project.events_categorized
 $ dbt ls --select snowplow.* --output json
 {"name": "snowplow_events", "resource_type": "model", "package_name": "snowplow",  ...}
 {"name": "snowplow_page_views", "resource_type": "model", "package_name": "snowplow",  ...}
+...
+```
+
+**Listing JSON output with custom keys**
+```
+$ dbt ls --select snowplow.* --output json --output-keys name description
+{"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
+{"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...
 ```
 

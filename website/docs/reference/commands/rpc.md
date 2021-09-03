@@ -332,6 +332,27 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
+### List project resources ([docs](cmd-docs#dbt-docs-generate))
+
+**Additional parameters:**
+ - `resource_types`: Filter selected resources by type
+ - `output_keys`: Specify which node properties to include in output
+
+ ```json
+ {
+ 	"jsonrpc": "2.0",
+ 	"method": "build",
+ 	"id": "<request id>",
+ 	"params": {
+         "select": "<str> (optional)",
+         "exclude": "<str> (optional)",
+         "selector": "<str> (optional)",
+         "resource_types": ["<list> (optional)"],
+         "output_keys": ["<list> (optional)"],
+     }
+ }
+ ```
+
 ### Generate docs ([docs](cmd-docs#dbt-docs-generate))
 
 **Additional parameters:**
