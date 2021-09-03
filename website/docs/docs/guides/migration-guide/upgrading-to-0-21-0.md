@@ -28,4 +28,5 @@ dbt v0.21.0-b2 is currently available as a prerelease. If you have questions or 
 - [`deps`](commands/deps): Add `dbt deps` logging for outdated packages
 
 ### Plugins
-- [Redshift profile](redshift-profile): `ra3: true` profile property to support cross-database source definitions and read-only querying
+- **Redshift**: [profile](redshift-profile) property `ra3: true` to support cross-database source definitions and read-only querying
+- **BigQuery**: [Snapshots](snapshots) support `target_project` and `target_dataset` config aliases
