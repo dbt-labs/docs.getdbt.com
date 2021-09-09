@@ -142,6 +142,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
         "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
       ],
     },
     {
@@ -483,6 +484,7 @@ module.exports = {
         "reference/warehouse-profiles/snowflake-profile",
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
+        "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/spark-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",

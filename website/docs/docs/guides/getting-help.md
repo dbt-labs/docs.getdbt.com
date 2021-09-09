@@ -18,7 +18,7 @@ We're committed to making more errors searchable, so it's worth checking if ther
 #### Experiment!
 If the question you have is "What happens when I do `X`", try doing `X` and see what happens! Assuming you have a solid dev environment set up, making mistakes in development won't affect your end users
 
-## 2. Take a few minutes to formulate your question well
+### 2. Take a few minutes to formulate your question well
 Explaining the problems you are facing clearly will help others help you.
 <!--- To-do:
 We've also included some examples of well-asked questions below.-->

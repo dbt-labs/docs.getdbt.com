@@ -75,6 +75,25 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package.
 
+#### Prerelease versions
+
+<Changelog>
+
+* `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
+
+</Changelog>
+
+Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
+
+By default, `dbt deps` will not install prerelease versions of packages. You can enable the installation of prereleases with the `install-prerelease` parameter.
+
+```yaml
+packages:
+  - package: tailsdotcom/dbt_artifacts
+    version: 0.4.5a2
+    install-prerelease: true
+```
+
 ### Git packages
 Packages stored on a Git server can be installed using the `git` syntax, like so:
 
@@ -108,8 +127,11 @@ To find the latest release for a package, navigate to the `Releases` tab in the 
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
 
-#### Private packages
-Private packages can be installed by using the SSH configuration on the machine or by passing in a username and password with the git URL. It is recommended that you use SSH authentication method where possible.
+### Private packages
+
+#### SSH Key Method
+Private packages can be cloned via SSH and an SSH key. When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/ssh/).
+
 
 <File name='packages.yml'>
 
@@ -117,24 +139,69 @@ Private packages can be installed by using the SSH configuration on the machine 
 packages:
   - git: "git@github.com:dbt-labs/dbt-utils.git" # git SSH URL
 ```
-This method requires the SSH configuration be stored in `~/.ssh/`.
 
 </File>
 
+#### Git Token Method
+This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
+
+
+In GitHub:
+
+<File name='packages.yml'>
+
 ```yaml
 packages:
-  - git: "https://<username>:<password>@github.com/dbt-labs/dbt-utils.git" # git HTTPS URL
+  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
-You can also reference an [environment variables](env_var).
+</File>
+
+Read more about creating a GitHub Personal Access token [here](https://docs.github.com/en/enterprise-server@3.1/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token). You can also use a GitHub  App installation [token](https://docs.github.com/en/rest/reference/apps#create-an-installation-access-token-for-an-app).
+
+In GitLab:
+
+<File name='packages.yml'>
 
 ```yaml
 packages:
-  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/dbt-labs/dbt-utils.git" # git HTTPS URL
+  - git: "https://{{env_var('USER_NAME')}}:{{env_var('DEPLOY_TOKEN')}}@gitlab.example.com/dbt-labs/awesome_project.git" # git HTTPS URL
 ```
 
-**Note**: The use of private packages is not currently supported in dbt Cloud.
+</File>
 
+Read more about creating a GitLab Deploy Token [here](https://docs.gitlab.com/ee/user/project/deploy_tokens/#creating-a-deploy-token) and how to properly construct your HTTPS URL [here](https://docs.gitlab.com/ee/user/project/deploy_tokens/#git-clone-a-repository). Deploy tokens can be managed by Maintainers only.
+
+In Azure DevOps:
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  - git: "https://{{env_var('PERSONAL_ACCESS_TOKEN')}}@dev.azure.com/dbt-labs/awesome_project/_git/awesome_repo" # git HTTPS URL
+```
+
+</File>
+
+Read more about creating a Personal Access Token [here](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page#create-a-pat).
+
+In Bitbucket:
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  - git: "https://{{env_var('USER_NAME')}}:{{env_var('PERSONAL_ACCESS_TOKEN')}}@bitbucketserver.com/scm/awesome_project/awesome_repo.git" # for Bitbucket Server
+```
+
+</File>
+
+Read more about creating a Personal Access Token [here](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html).
+
+
+:::info Beta Feature
+Environment variables, which enable private packages, are now supported in dbt Cloud! To get access to the beta, reach out to support@getdbt.com.
+:::
 #### Project subdirectories
 
 <Changelog>
