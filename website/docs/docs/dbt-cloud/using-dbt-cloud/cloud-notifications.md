@@ -10,7 +10,7 @@ Setting up notifications in dbt Cloud will allow you to receive alerts via Email
 
 There are two options for setting up email notifications. As a **user**, you can set up email notifications for yourself under your Profile. As an **admin**, you can set up notifications on your team members' behalf.
 
-* **As a user:** To set up email notifications first navigate to your **Profile** (found in the top right hand side of dbt Cloud) and the select **Notifications**.\
+* **As a user:** Navigate to your **Profile** (found in the top right-hand side of dbt Cloud) and select **Notifications**.
 \
 Next select **Edit** and select the type of Notification (Succeeds, Fails or Is Cancelled) for each Job for which you would like to be notified.
 
