@@ -14,7 +14,7 @@ There are two options for setting up email notifications. As a **user**, you can
 \
 Next select **Edit** and select the type of Notification (Succeeds, Fails, or Is Cancelled) for each Job for which you would like to be notified.
 
-* **As an admin:** To set up email notifications navigate to Account Settings > Notifications.\
+* **As an admin:**  Navigate to Account Settings (in the hamburger menu) > Notifications.
 \
 Select the User you'd like to set notifications for. Select **Edit** and select the type of Notification (Succeeds, Fails or Is Cancelled) for each Job for which they will be notified.
 
