@@ -191,7 +191,12 @@ module.exports = {
           editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
-        }
+        },
+        blog: {
+          blogTitle: 'dbt Developer Hub',
+          blogDescription: 'Technical tutorials from the dbt Community.',
+          postsPerPage: '20',
+        },
       },
     ],
   ],
