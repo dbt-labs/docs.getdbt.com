@@ -139,6 +139,10 @@ module.exports = {
               to: '/tutorial/setting-up',
             },
             {
+              label: 'Developer Blog',
+              to: '/blog',
+            },            
+            {
               label: 'Online Courses',
               href: 'https://courses.getdbt.com',
             },
