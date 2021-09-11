@@ -3,3 +3,10 @@ dkrevitt:
   title: dbt Labs team
   url: https://twitter.com/dkrevitt
   image_url: /img/blog/authors/dkrevitt.jpg
+
+jmarcey:
+  name: Joel Marcey
+  title: Co-creator of Docusaurus 1
+  url: https://github.com/JoelMarcey
+  image_url: https://github.com/JoelMarcey.png
+

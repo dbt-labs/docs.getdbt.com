@@ -1,8 +1,13 @@
 ---
-title: Towards an error-free UNION ALL
-description: Union'ing two or more tables with a long list of columns can be an error-prone chore, which dbt + dbt_utils abstracts away.
-slug: /blog/sql-magic/union-all
-authors: dkrevitt
+title: "SQL Magic: DATEADD across data warehouses"
+description: "Abstract away the need to look up the SQL dateadd function syntax every time you use it, by standardizing your syntax with dbt macros."
+slug: sql-dateadd
+
+author: David Krevitt
+author_title: dbt Labs team
+author_url: https://twitter.com/dkrevitt
+author_image_url: /img/blog/authors/dkrevitt.jpg
+
 tags: [sql magic]
 image: https://unsplash.com/photos/qiHYnaXjP8E
 hide_table_of_contents: false
@@ -17,7 +22,7 @@ Say we need to combine 3 tables: web traffic, ad spend and sales data, to form a
 
 Ultimately, we’d want to roll up data at a granularity of date, landing page URL, campaign and channel—so however we combine the 3 tables, we’ll want to wrap it in an outer query with a GROUP BY to reduce the grain.  
 
-To accomplish that, we could do two things:
+To accomplish that, we could do a few things:
 
 * `FULL OUTER JOIN`: returns all values + joins where there is a date / landing page / campaign / channel match
 
@@ -35,7 +40,7 @@ Often when running a UNION ALL, tables will have mismatched columns: the web tra
 
 To complete the union, we have to propagate those columns as null or 0 in our query, in order for the union to succeed:
 
-```
+```sql
 select
 	date,
 	landing_page_url,
@@ -44,9 +49,9 @@ select
 	sessions,
 	pageviews,
 	time_on_site,
-	**null as orders**,
-	**null as customers**,
-	**null as revenue**
+	null as orders,
+	null as customers,
+	null as revenue
 from sessions
 
 union all 
@@ -56,9 +61,9 @@ select
 	landing_page_url,
 	campaign,
 	channel,
-	**null as sessions**,
-	**null as pageviews**,
-	**null as time_on_site**,
+	null as sessions,
+	null as pageviews,
+	null as time_on_site,
 	orders,
 	customers,
 	revenue
@@ -79,7 +84,7 @@ The [union_relations](https://github.com/dbt-labs/dbt-utils#union_relations-sour
 
 With 3 lines of code, we can accomplish what previously required dozens:
 
-```
+```sql
 {{ dbt_utils.union_relations(
 
     relations=[ref('sessions'), ref('sales'), ref('ads')
