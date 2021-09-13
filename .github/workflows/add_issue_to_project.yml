@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: octokit/graphql-action@v2.x
         name: Get project data
-        id: get_project_info
+        id: get_project_info          
         with:
           query: |
             query($org: String!, $number: Int!) {
@@ -28,8 +28,6 @@ jobs:
           org: 'dbt-labs'
           number: 14
           header: 'GraphQL-Features: projects_next_graphql'
-
-        env:
           GITHUB_TOKEN: ${{secrets.ProjectsNext}}
 
       - run: 
