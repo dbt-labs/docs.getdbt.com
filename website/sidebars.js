@@ -280,6 +280,7 @@ module.exports = {
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
             "reference/resource-configs/tags",
+            "reference/resource-configs/meta",
           ],
         },
         {
@@ -333,9 +334,9 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Properties (schema.yml files)",
+      label: "Configs and Properties",
       items: [
-        "reference/declaring-properties",
+        "reference/configs-and-properties",
         "reference/model-properties",
         "reference/source-properties",
         "reference/seed-properties",
@@ -349,9 +350,7 @@ module.exports = {
           items: [
             "reference/resource-properties/description",
             "reference/resource-properties/docs",
-            "reference/resource-properties/meta",
             "reference/resource-properties/quote",
-            "reference/resource-properties/tags",
             "reference/resource-properties/tests",
           ],
         },

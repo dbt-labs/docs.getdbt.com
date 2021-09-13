@@ -2,6 +2,10 @@
 title: Model configurations
 ---
 
+<Changelog>
+    - **v0.21.0** introduced the `config` property, thereby allowing you to configure models in all `.yml` files
+</Changelog>
+
 ## Related documentation
 * [Models](building-models)
 * [`run` command](run)
@@ -13,11 +17,12 @@ title: Model configurations
   groupId="config-languages"
   defaultValue="yaml"
   values={[
-    { label: 'YAML', value: 'yaml', },
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
     { label: 'Config block', value: 'config', },
   ]
 }>
-<TabItem value="yaml">
+<TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
 
@@ -26,6 +31,26 @@ models:
   [<resource-path>](resource-path):
     [+](plus-prefix)[materialized](materialized): <materialization_name>
     [+](plus-prefix)[sql_header](sql_header): <string>
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](materialized): <materialization_name>
+      [sql_header](sql_header): <string>
 
 ```
 
@@ -60,12 +85,13 @@ models:
   groupId="config-languages"
   defaultValue="yaml"
   values={[
-    { label: 'YAML', value: 'yaml', },
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
     { label: 'Config block', value: 'config', },
   ]
 }>
 
-<TabItem value="yaml">
+<TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
 
@@ -81,13 +107,42 @@ models:
     [+](plus-prefix)[alias](resource-configs/alias): <string>
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
-    [+][meta](meta): {<dictionary>}
+    [+](plus-prefix)[meta](meta): {<dictionary>}
 
 ```
 
 </File>
 
 </TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [enabled](enabled): true | false
+      [tags](resource-configs/tags): <string> | [<string>]
+      [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [database](resource-configs/database): <string>
+      [schema](resource-configs/schema): <string>
+      [alias](resource-configs/alias): <string>
+      [persist_docs](persist_docs): <dict>
+      [full_refresh](full_refresh): <boolean>
+      [meta](meta): {<dictionary>}
+
+```
+
+</File>
+
+</TabItem>
+
 
 
 <TabItem value="config">
@@ -167,7 +222,7 @@ models:
 
 ### Apply configurations to one model only
 
-Some types of configurations are specific to a particular model. In these cases, placing configurations in the `dbt_project.yml` file can be unwieldy. Instead, you can specify these configurations at the top of a model .sql file.
+Some types of configurations are specific to a particular model. In these cases, placing configurations in the `dbt_project.yml` file can be unwieldy. Instead, you can specify these configurations at the top of a model `.sql` file, or in its individual yaml properties.
 
 <File name='models/events/base/base_events.sql'>
 
@@ -182,6 +237,21 @@ Some types of configurations are specific to a particular model. In these cases,
 
 
 select * from ...
+```
+
+</File>
+
+<File name='models/events/base/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: base_events
+    config:
+      materialized: table
+      sort: event_time
+      dist: event_id
 ```
 
 </File>

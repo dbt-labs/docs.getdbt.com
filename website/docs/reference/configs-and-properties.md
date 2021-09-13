@@ -3,11 +3,12 @@ title: Configs and properties
 ---
 
 <Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure resources in all `.yml` files
+    - **v0.21.0** introduced the `config` property, thereby allowing you to configure certain resource types in all `.yml` files
 </Changelog>
 
-Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. A special category of resource properties are **configurations**. What's the distinction?
-- Properties are declared for resources one-by-one in `.yml` files. But configs can also be set in via a Jinja `config()` macro (right within your `.sql` files) and in `dbt_project.yml`, from which they're _inherited_ or _overridden_ by each individual resource.
+Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also have **configurations**, which are a special kind of property. What's the distinction?
+- Properties are declared for resources one-by-one in `.yml` files. Configs can be defined there, but they can also be set via a Jinja `config()` macro (right within `.sql` files) and in `dbt_project.yml`.
+- Because configs can be set in multiple places, they are also applied hierarchically. An individual resource might _inherit_ or _override_ configs set elsewhere.
 - As a general rule, properties declare things _about_ your project resources. Configs go the extra step of telling dbt _how_ to build those resources in your warehouse.
 
 For example, you can use resource properties to:
@@ -23,7 +24,7 @@ Whereas you can use configurations to:
 
 ## Where can I define configs?
 
-Depending on the resource, configurations can be defined:
+Depending on the resource type, configurations can be defined:
 
 1. Using a `config()` Jinja macro within a `model`, `snapshot`, or `test` SQL file
 2. Using a `config` property in a `.yml` file
@@ -31,24 +32,34 @@ Depending on the resource, configurations can be defined:
 
 ### Config inheritance
 
-Configurations are prioritized in order of specificity, which is generally the order above: an in-file `config()` block takes precedence over properties defied in a `.yml` file, which takes precedence over a config defined in the project file. (Note that generic tests work a little differently, since a specific test's properties are actually more specific than the generic test SQL. See [test configs](test-configs).)
+Configurations are prioritized in order of specificity, which is generally the order above: an in-file `config()` block takes precedence over properties defied in a `.yml` file, which takes precedence over a config defined in the project file. (Note that generic tests work a little differently when it comes to specificity. See [test configs](test-configs).)
 
 Within the project file, configurations are also applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
+### Combining configs
+
+Most configurations are "clobbered" when applied hierarchically. Whenever a more-specific value is available, it will completely replace the less-specific value. Note that a few configs have different merge behavior:
+- [`tags`](tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags applied in its `.sql` file, the final set of tags will include all of them.
+- [`meta`](meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key)
+- [`pre-hook` and `post-hook`](pre-hook-post-hook) are also additive.
+
 ## Where can I define properties?
 
-In dbt, these properties are declared in `.yml` files, in the same directory as your resources. There's a few quirks for backwards compatibility reasons:
+In dbt, properties are declared in `.yml` files, in the same directory as your resources.
 
-| Resource  | Default directories       | Defined by                   |
+| Resource  | Default directory         | Defined by                   |
 |-----------|---------------------------|------------------------------|
 | models    | `models/`                 | [source-paths](source-paths) |
 | sources   | `models/`                 | [source-paths](source-paths) |
-| seeds     | `data/` or `models/`      | [data-paths](data-paths) or [source-paths](source-paths) |
-| snapshots | `snapshots/` or `models/` | [snapshot-paths](snapshot-paths) or [source-paths](source-paths) |
-| analyses  | `analyses/` or `models/`  | [analysis-paths](analysis-paths) or [source-paths](source-paths) |
-| macros    | `macros/` or `models/`    | [macro-paths](macro-paths) or [source-paths](source-paths) |
+| exposures | `models/`                 | [source-paths](source-paths) |
+| seeds     | `data/` or `models/`      | [data-paths](data-paths)     |
+| snapshots | `snapshots/` or `models/` | [snapshot-paths](snapshot-paths) |
+| analyses  | `analyses/` or `models/`  | [analysis-paths](analysis-paths) |
+| macros    | `macros/` or `models/`    | [macro-paths](macro-paths) |
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
+
+(For backwards compatibility, the `models/` directory also supports seed, snapshot, analysis, and macro properties. We highly recommend that you define properties in dedicated paths alongside the resources they're describing.)
 
 :::info
 
@@ -59,6 +70,26 @@ Previous versions of the docs referred to these as `schema.yml` files — we've 
 (Of course, you're still free to name your files `schema.yml`)
 
 :::
+
+### Which properties are _not_ also configs?
+
+In v0.21, dbt added the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
+
+Certain properties are special, because:
+- They have a unique Jinja rendering context
+- They create new project resources
+- They don't make sense as hierarchical configuration
+- They're older properties that haven't yet been redefined as configs
+
+These properties are:
+- [`description`](resource-properties/description)
+- [`tests`](resource-properties/tests)
+- [`docs`](resource-properties/docs)
+- `columns`
+- [`quote`](resource-properties/quote)
+- [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
+- [`exposure` properties](exposure-properties) (e.g. `type`, `maturity`)
+- [`macro` properties](macro-properties) (e.g. `arguments`)
 
 ## Example
 Here's an example that defines both `sources` and `models` for a project:
@@ -99,6 +130,8 @@ sources:
 
 models:
   - name: stg_jaffle_shop__customers
+    config:
+      tags: ['pii']
     columns:
       - name: customer_id
         tests:
@@ -106,6 +139,8 @@ models:
           - not_null
 
   - name: stg_jaffle_shop__orders
+    config:
+      materialized: view
     columns:
       - name: order_id
         tests:
@@ -115,6 +150,8 @@ models:
         tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              config:
+                severity: warn
 
 
 ```
@@ -123,13 +160,14 @@ models:
 
 
 ## Related documentation
-You can find an exhaustive list of each property for a resource in the following docs:
-* [Model Properties](model-properties)
-* [Source Properties](source-properties)
-* [Seed Properties](seed-properties)
+You can find an exhaustive list of each supported property and config, broken down by resource type:
+* Model [properties](model-properties) and [configs](model-configs)
+* Source [properties](source-properties) and [configs](source-configs)
+* Seed [properties](seed-properties) and [configs](seed-configs)
 * [Snapshot Properties](snapshot-properties)
-* [Analysis Properties](analysis-properties)
+* Analysis [properties](analysis-properties)
 * [Macro Properties](macro-properties)
+* Exposure [properties](exposure-properties)
 
 ## FAQs
 <FAQ src="schema-yml-name" />

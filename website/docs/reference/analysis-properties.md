@@ -18,6 +18,8 @@ analyses:
     [description](description): <markdown_string>
     [docs](resource-properties/docs):
       show: true | false
+    config:
+      [tags](resource-configs/tags): <string> | [<string>]
     columns:
       - name: <column_name>
         [description](description): <markdown_string>

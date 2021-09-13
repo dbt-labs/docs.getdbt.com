@@ -11,10 +11,11 @@ Certain properties are special, because:
 - They're older properties that haven't yet been redefined as configs
 
 These properties are:
-- [`description`](https://docs.getdbt.com/reference/resource-properties/description)
-- [`tests`](https://docs.getdbt.com/reference/resource-properties/tests)
-- [`docs`](https://docs.getdbt.com/reference/resource-properties/docs)
+- [`description`](resource-properties/description)
+- [`tests`](resource-properties/tests)
+- [`docs`](resource-properties/docs)
 - `columns`
-- `source` properties (e.g. `loaded_at_field`, `freshness`)
-- `exposure` properties (e.g. `type`, `maturity`)
-- `macro` properties (`arguments`)
+- [`quote`](resource-properties/quote)
+- [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
+- [`exposure` properties](exposure-properties) (e.g. `type`, `maturity`)
+- [`macro` properties](macro-properties) (e.g. `arguments`)

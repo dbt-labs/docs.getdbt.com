@@ -6,6 +6,7 @@ datatype: string
 <Changelog>
 
 * `v0.20.0`: Introduced `where` config
+* `v0.21.0`: Introduced `config` property for tests
 
 </Changelog>
 
@@ -50,7 +51,8 @@ models:
         tests:
           - accepted_values:
               values: ["a", "b", "c"]
-              where: "date_column = current_date"
+              config:
+                where: "date_column = current_date"
 ```
 
 </File>
