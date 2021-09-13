@@ -14,7 +14,7 @@ It includes the modules contexts of `date`, `datetime`, `time`, `timedelta`, and
 
 ```
 {% set now = modules.datetime.datetime.now() %}
-{% set three_days_ago_iso = (now - modules.datetime.timedelta(3)).isoformat()
+{% set three_days_ago_iso = (now - modules.datetime.timedelta(3)).isoformat() %}
 ```
 This module will return the current date and time on every Jinja evaluation. 
 For the date and time of the start of the run, please see
