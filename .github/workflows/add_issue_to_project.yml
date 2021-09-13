@@ -54,7 +54,7 @@ jobs:
 
       - name: Set fields
         env:
-          GITHUB_TOKEN: ${{secrets.YOUR_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
         run: |
           gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
             mutation (
