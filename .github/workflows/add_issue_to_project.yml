@@ -6,6 +6,12 @@ jobs:
   track_issue:
     runs-on: ubuntu-latest
     steps:
+      - name: Authenticate 
+        env:
+          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
+        run: |
+          echo $GITHUB_TOKEN | gh auth login --with-token 
+        
       - name: Get project data
         env:
           GITHUB_TOKEN: ${{secrets.ProjectsNext}}
