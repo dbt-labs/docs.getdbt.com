@@ -25,7 +25,7 @@ jobs:
                 }
               }
             }
-          org: ${{ github.event.repository.owner.name }}
+          org: 'dbt-labs'
           number: 14
           header: 'GraphQL-Features: projects_next_graphql'
 
