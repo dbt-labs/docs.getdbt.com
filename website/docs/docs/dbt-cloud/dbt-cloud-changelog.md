@@ -6,57 +6,21 @@ description: "Changelog for the dbt Cloud application"
 ---
 
 ## dbt Cloud v1.1.35 (September 15, 2021)
+Have you ever been working in the IDE, taken a several hour break from developing, and when you returned to your work, the IDE started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! dbt Cloud now will let you know when you have to refresh your IDE so you can continue to pick up work where you last left off.
 
-#### Enhancements
+#### New products and features
+- dbt v0.20.2 is released in dbt Cloud.
 
-- Update DAG buttons
-- dbt 0.20.2 released, while deprecating 0.20.1 and 0.20.0
-- updated dbt thread count default to 8 for jobs and profile settings
-- add dbt 0.20.2rc2 and 0.21.0b2
+#### Performance improvements and enhancements
+- Set default threads to 4 for new jobs and in development creds.
 
-#### Feature
-
-- Detect an offline pod on window refocus (+ heartbeat polling), and let users know
-
-#### Fixed
-
-- Add start time client side to sort rpc calls that error
-- Fix broken test
-- Add explicit allowlist of errors which can dispatch develop health state changes
-- revert change to SAFE_ENV_KEYS
-- rebase fix, double quotes fix included
-
-#### Internal
-
-- merge mess fix
-- eliminate freeze files for dbt 0.20.*
-- eliminate freeze files for dbt 0.19.*
-- eliminate freeze files for dbt 0.18.*
-- Implement MVP of model bottleneck data viz
-- eliminate freeze files for dbt 0.17.*
-- handle yaml parsing errors for project files
-- admin panel: allow exporting user licenses
-- handle shlex exceptions
-- Update chown command to only run when needed
-- eliminate freeze files for dbt 0.16.*
-- React hook for querying FS API Repository using Apollo
-- eliminate freeze files for dbt 0.15.*
-- setuptools>58.0.0 deprecates use_2to3, so pin to 58.0.0 for dbt 0.15.*
-- Revert "eliminate freeze files for dbt 0.15.* (#3975)"
-- eliminate freeze files for dbt 0.15.*
-- Serve partner connect from s3
-- fix migration failure
-- Remove LaunchDarkly feature flag for EnvironmentList (`react-environment-listing`)
-- Fix syntax warning
-- Add tests for updating and deleting environment variables without using an ID
-- partner connect: return account exists response is a user's email is not verified
-- Revert " Change develop pod user for dbt commands (#3974)"
-- partner connect: fix message type
-- read the docs, and use CSV list of tags
+#### Bug fixes
+- The user is now prompted to refresh the page when in a disconnected IDE state.
+- dbt tasks that fail or error are now correctly ordered in the run drawer history.
 
 
 ## dbt Cloud v1.1.34 (September 1, 2021)
-We’ve just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
+We just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
 
 #### Performance improvements and enhancements
 Our IDE SQL drawer got a fresh new look, and it now has improved accessibility.
