@@ -1,4 +1,4 @@
-name: Add PR to project
+name: Add Issue to Project
 on:
   issues
 
