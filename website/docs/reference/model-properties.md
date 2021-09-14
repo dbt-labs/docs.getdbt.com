@@ -20,8 +20,8 @@ models:
     [description](description): <markdown_string>
     [docs](resource-properties/docs):
       show: true | false
-    [config](model-configs):
-      ...
+    [config](resource-properties/config):
+      [<model_config>](model-configs): <config_value>
     [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests

@@ -1,34 +1,37 @@
 ---
-title: Configs and properties
+title: Configs and properties for resources
 ---
 
 <Changelog>
     - **v0.21.0** introduced the `config` property, thereby allowing you to configure certain resource types in all `.yml` files
 </Changelog>
 
-Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also have **configurations**, which are a special kind of property. What's the distinction?
-- Properties are declared for resources one-by-one in `.yml` files. Configs can be defined there, but they can also be set via a Jinja `config()` macro (right within `.sql` files) and in `dbt_project.yml`.
+Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also define **configurations**, which are a special kind of property that bring extra abilities. What's the distinction?
+- Properties are declared for resources one-by-one in `.yml` files. Configs can be defined there, nested under a `config` property. They can also be set one-by-one via a `config()` macro (right within `.sql` files), and for many resources at once in `dbt_project.yml`.
 - Because configs can be set in multiple places, they are also applied hierarchically. An individual resource might _inherit_ or _override_ configs set elsewhere.
-- As a general rule, properties declare things _about_ your project resources. Configs go the extra step of telling dbt _how_ to build those resources in your warehouse.
+- You can select resources based on their config values using the `config:` selection method, but not the values of non-config properties
 
-For example, you can use resource properties to:
+A rule of thumb: properties declare things _about_ your project resources; configs go the extra step of telling dbt _how_ to build those resources in your warehouse. This is generally true, but not always, so it's always good to check!
+
+For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
 * Assert "truths" about a model, in the form of [tests](building-a-dbt-project/tests), e.g. "this `id` column is unique"
-* Define existing tables contains raw data as [sources](using-sources)
-* Assert the expected "freshness" of this raw data
+* Define pointers to existing tables that contain raw data, in the form of [sources](using-sources), and assert the expected "freshness" of this raw data
+* Define official downstream uses of your data models, in the form of [exposures](exposures)
 
-Whereas you can use configurations to:
-* Change how a model will be materialized
+Whereas you can use **configurations** to:
+* Change how a model will be materialized (table, view, incremental, etc)
 * Declare where a seed will be created in the database (`<database>.<schema>.<alias>`)
+* Declare whether a resource should persist its descriptions as comments in the database
 * Apply tags and "meta" properties
 
 ## Where can I define configs?
 
 Depending on the resource type, configurations can be defined:
 
-1. Using a `config()` Jinja macro within a `model`, `snapshot`, or `test` SQL file
-2. Using a `config` property in a `.yml` file
-3. From the `dbt_project.yml` file, under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
+1. Using a [`config()` Jinja macro](dbt-jinja-functions/config) within a `model`, `snapshot`, or `test` SQL file
+2. Using a [`config` property](resource-properties/config) in a `.yml` file
+3. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
 
 ### Config inheritance
 
@@ -85,7 +88,7 @@ These properties are:
 - [`description`](resource-properties/description)
 - [`tests`](resource-properties/tests)
 - [`docs`](resource-properties/docs)
-- `columns`
+- [`columns`](resource-properties/columns)
 - [`quote`](resource-properties/quote)
 - [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
 - [`exposure` properties](exposure-properties) (e.g. `type`, `maturity`)

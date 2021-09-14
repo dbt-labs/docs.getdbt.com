@@ -22,8 +22,8 @@ seeds:
     [description](description): <markdown_string>
     [docs](resource-properties/docs):
       show: true | false
-    [config](seed-configs):
-      ...
+    [config](resource-properties/config):
+      [<seed_config>](seed-configs): <config_value>
     [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests

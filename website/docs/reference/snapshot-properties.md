@@ -23,8 +23,8 @@ snapshots:
     [meta](meta): {<dictionary>}
     [docs](resource-properties/docs):
       show: true | false
-    [config](snapshot-configs):
-      ...
+    [config](resource-properties/config):
+      [<snapshot_config>](snapshot-configs): <config_value>
     [tests](resource-properties/tests):
       - <test>
       - ...
