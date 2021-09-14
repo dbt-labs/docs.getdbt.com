@@ -16,7 +16,7 @@ Parts of a snapshot:
 
 <Tabs
   groupId="config-languages"
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
@@ -94,7 +94,7 @@ snapshots:
 
 <Tabs
   groupId="config-languages"
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },

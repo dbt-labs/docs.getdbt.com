@@ -25,8 +25,8 @@ models:
   - name: <model_name>
     columns:
       - name: <column_name>
-        [description](description): <markdown_string>
         data_type: <string>
+        [description](description): <markdown_string>
         [quote](quote): true | false
         [tests](resource-properties/tests): ...
         [tags](resource-configs/tags): ...
@@ -144,4 +144,12 @@ analyses:
 
 </Tabs>
 
-Columns are not resources in and of themselves. Instead, they are child properties of another resource type.
+Columns are not resources in and of themselves. Instead, they are child properties of another resource type. They can define sub-properties that are similar to properties defined at the resource level:
+- `tags`
+- `meta`
+- `tests`
+- `description`
+
+Because columns are not resources, their `tags` and `meta` properties are not true configurations. They do not inherit the `tags` or `meta` values of their parent resources. However, you can select a generic test, defined on a column, using tags applied to its column or top-level resource; see [test selection examples](test-selection-examples#run-tests-on-tagged-columns).
+
+Columns may optionally define a `data_type`. This is for metadata purposes only, such as to use alongside the [`external`](resource-properties/external) property of sources.

@@ -1,5 +1,5 @@
 ---
-title: Configs and properties for resources
+title: Configs, properties, what are they?
 ---
 
 <Changelog>

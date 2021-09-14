@@ -343,7 +343,6 @@ module.exports = {
           type: "category",
           label: "For tests",
           items: [
-            "reference/source-properties",
             "reference/test-configs",
             "reference/resource-configs/fail_calc",
             "reference/resource-configs/limit",
@@ -356,8 +355,10 @@ module.exports = {
           type: "category",
           label: "For sources",
           items: [
+            "reference/source-properties",
             "reference/source-configs",
             "reference/resource-properties/database",
+            "reference/resource-properties/external",
             "reference/resource-properties/freshness",
             "reference/resource-properties/identifier",
             "reference/resource-properties/loader",

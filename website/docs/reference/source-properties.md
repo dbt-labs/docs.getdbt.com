@@ -65,6 +65,7 @@ sources:
           database: true | false
           schema: true | false
           identifier: true | false
+        [external](resource-properties/external): {<dictionary>}
         columns:
           - name: <column_name> # required
             [description](description): <markdown_string>

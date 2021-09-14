@@ -12,7 +12,7 @@ title: Seed configurations
 
 <Tabs
   groupId="config-languages"
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
@@ -62,7 +62,7 @@ seeds:
 
 <Tabs
   groupId="config-languages"
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
