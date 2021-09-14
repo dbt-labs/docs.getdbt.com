@@ -1,24 +1,19 @@
 name: Add Issue to Project
 on:
-  issues
+  issues:
+    types: [opened]
 
 jobs:
   track_issue:
     runs-on: ubuntu-latest
+    uses: ./
+
     steps:
-      - name: Authenticate 
-        env:
-          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
-        run: |
-          echo $GITHUB_TOKEN | gh auth login --with-token 
-        
-      - name: Get project data
-        env:
-          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
-          ORGANIZATION: dbt-labs
-          PROJECT_NUMBER: 14
-        run: |
-          gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
+      - uses: octokit/graphql-action@v2.x
+        name: Get project data
+        id: get_project_info          
+        with:
+          query: |
             query($org: String!, $number: Int!) {
               organization(login: $org){
                 projectNext(number: $number) {
@@ -32,37 +27,62 @@ jobs:
                   }
                 }
               }
-            }' -f org=$ORGANIZATION -F number=$PROJECT_NUMBER > project_data.json
-
-          echo 'PROJECT_ID='$(jq '.data.organization.projectNext.id' project_data.json) >> $GITHUB_ENV
-          echo 'DATE_FIELD_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Date posted") | .id' project_data.json) >> $GITHUB_ENV
-          echo 'STATUS_FIELD_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") | .id' project_data.json) >> $GITHUB_ENV
-          echo 'TODO_OPTION_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Todo") |.id' project_data.json) >> $GITHUB_ENV
-
-      - name: Add Issue to project
-        env:
+            }
+          org: 'dbt-labs'
+          number: 14
+          headers: 'GraphQL-Features: projects_next_graphql'
           GITHUB_TOKEN: ${{secrets.ProjectsNext}}
-          ISSUE_ID: ${{ github.event.issue.node_id }}
-        run: |
-          item_id="$( gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
+
+      - uses: octokit/graphql-action@v2.x
+        name: Add Issue to Project
+        id: add_issue
+        with:
+          query: |
             mutation($project:ID!, $issue:ID!) {
-              addProjectNextItem(input: {projectId: $project, contentId: $issue}) {
-                projectNextItem {
-                  id
+                addProjectNextItem(input: {projectId: $project, contentId: $issue}) {
+                  projectNextItem {
+                    id
+                  }
                 }
               }
-            }' -f project=$PROJECT_ID -f issue=$ISSUE_ID --jq '.data.addProjectNextItem.projectNextItem.id')"
-          
-          echo 'ITEM_ID='$item_id >> $GITHUB_ENV
-
-      - name: Get date
-        run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
-
-      - name: Set fields
-        env:
           GITHUB_TOKEN: ${{secrets.ProjectsNext}}
-        run: |
-          gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
+          project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
+          issue: ${{ github.event.issue.node_id}}
+          headers: 'GraphQL-Features: projects_next_graphql'
+
+      - name: create-json
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "data.json"
+          json: ${{ steps.get_project_info.outputs.data }}
+    
+      - name: Extract date field ID
+        uses: sergeysova/jq-action@v2
+        id: date_field_id
+        with:
+          cmd: 
+            jq '.organization.projectNext.fields.nodes[] | select(.name == "Date") | .id' data.json
+
+      - name: Extract status field ID
+        uses: sergeysova/jq-action@v2
+        id: status_field_id
+        with:
+          cmd: 
+            jq '.organization.projectNext.fields.nodes[] | select(.name == "Status") | .id' data.json
+
+      - name: Extract status field value
+        uses: sergeysova/jq-action@v2
+        id: status_field_value
+        with:
+          cmd: 
+            jq '.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Todo") |.id' data.json
+      
+      - name: Set fields
+        id: set_fields
+        uses: octokit/graphql-action@v2.x  
+        with:
+          query: |
             mutation (
               $project: ID!
               $item: ID!
@@ -91,4 +111,12 @@ jobs:
                   id
                 }
               }
-            }' -f project=$PROJECT_ID -f item=$ITEM_ID -f status_field=$STATUS_FIELD_ID -f status_value=${{ env.TODO_OPTION_ID }} -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
+            }
+          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
+          project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
+          headers: 'GraphQL-Features: projects_next_graphql'
+          item: ${{ fromJSON(steps.add_issue.outputs.data).addProjectNextItem.projectNextItem.id }}
+          status_field: ${{ steps.status_field_id.outputs.value }}
+          status_value: ${{ steps.status_field_value.outputs.value }}
+          date_field: ${{ steps.date_field_id.outputs.value }}
+          date_value: ${{ github.event.issue.created_at }}
