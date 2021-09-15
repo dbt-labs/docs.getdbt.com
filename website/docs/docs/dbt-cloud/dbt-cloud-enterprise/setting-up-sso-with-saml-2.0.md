@@ -326,6 +326,6 @@ access control](/access-control/enterprise-permissions) for your account.
 
 **Please note the following for Google Workplace integration via SAML:**
 Because Google's current SAML implementation does not support sending group membership information as part of the SAML response, we strongly recommend the use of [our native Google Workspace integration](/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite).
-* Integrations with Google SAML will be subject to the following limitations:
+Integrations with Google Workspace via SAML will have the following limitations:
 * All users will be given a Developer license type. Users who are configured with the Read-Only license type will be reverted to a Developer license type on their next login.
 * Group membership in dbt Cloud must be manually managed.
