@@ -324,7 +324,7 @@ Users in your IdP will now be able to log into the application by navigating to 
 After configuring an identity provider, you will be able to set up [role-based
 access control](/access-control/enterprise-permissions) for your account.
 
-**Please note the following for Google integrations -**
+**Please note the following for Google Workplace integration via SAML:**
 * While it is possible to integrate with Google Workspace via SAML, because Google's current SAML implementation does not support expressing group membership information, we strongly recommend the use of our native Google Workspace integration.
 * Integrations with Google SAML will be subject to the following limitations:
 * All users will be given a Developer license type. Users who are configured with the Read-Only license type will be reverted to a Developer license type on their next login.
