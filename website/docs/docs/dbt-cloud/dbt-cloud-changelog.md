@@ -5,8 +5,22 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.35 (September 15, 2021)
+Have you ever been working in the IDE, taken a several hour break from developing, and when you returned to your work, the IDE started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! dbt Cloud now will let you know when you have to refresh your IDE so you can continue to pick up work where you last left off.
+
+#### New products and features
+- dbt v0.20.2 is released in dbt Cloud.
+
+#### Performance improvements and enhancements
+- Set default threads to 4 for new jobs and in development creds.
+
+#### Bug fixes
+- The user is now prompted to refresh the page when in a disconnected IDE state.
+- dbt tasks that fail or error are now correctly ordered in the run drawer history.
+
+
 ## dbt Cloud v1.1.34 (September 1, 2021)
-We’ve just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
+We just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
 
 #### Performance improvements and enhancements
 Our IDE SQL drawer got a fresh new look, and it now has improved accessibility.
