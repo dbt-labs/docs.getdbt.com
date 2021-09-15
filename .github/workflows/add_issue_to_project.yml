@@ -6,7 +6,6 @@ on:
 jobs:
   track_issue:
     runs-on: ubuntu-latest
-    uses: ./
 
     steps:
       - uses: octokit/graphql-action@v2.x
