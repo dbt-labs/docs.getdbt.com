@@ -6,7 +6,7 @@ To run models downstream of a source, use the `source:` selector:
 ```
 $ dbt run --select source:jaffle_shop+
 ```
-(You can also use the `-m` shorthand here instead of `--select`)
+(You can also use the `-s` shorthand here instead of `--select`)
 
 To run models downstream of one source table:
 

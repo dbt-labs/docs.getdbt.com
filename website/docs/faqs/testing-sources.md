@@ -7,7 +7,7 @@ To run tests on all sources, use the following command:
 ```
 $ dbt test --select source:*
 ```
-(You can also use the `-m` shorthand here instead of `--select`)
+(You can also use the `-s` shorthand here instead of `--select`)
 
 To run tests on one source (and all of its tables):
 

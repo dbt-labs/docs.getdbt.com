@@ -2,7 +2,7 @@
 title: How do I run one model at a time?
 ---
 
-To run one model, use the `--select` flag (or `-m` flag), followed by the name of the model:
+To run one model, use the `--select` flag (or `-s` flag), followed by the name of the model:
 
 
 ```
