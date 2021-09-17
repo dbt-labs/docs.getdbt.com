@@ -3,12 +3,6 @@ title: "build"
 id: "build"
 ---
 
-:::info Beta
-
-dbt v0.21.0-b1 is currently available as a prerelease. If you have questions or encounter bugs, please let us know in [#dbt-prereleases](https://community.getdbt.com/) or by opening an issue [in GitHub](https://github.com/dbt-labs/dbt).
-
-:::
-
 <Changelog>
 
 - Introduced in **v0.21.0**
@@ -23,20 +17,24 @@ The `dbt build` command will:
 
 In DAG order, for selected resources or an entire project.
 
-### Implementation details
+### Details
 
-- The `build` task will write a single [manifest](artifacts/manifest-json) and a single [run results artifact](artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
+**Artifacts:** The `build` task will write a single [manifest](artifacts/manifest-json) and a single [run results artifact](artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
 
-### Current limitations
+**Skipping on failures:** Tests on upstream resources will block downstream resources from running, and a test failure will cause those downstream resources to skip entirely. E.g. If `model_b` depends on `model_a`, and a `unique` test on `model_a` fails, then `model_b` will `SKIP`.
+- Don't want a test to cause skipping? Adjust its [severity or thresholds](severity) to `warn` instead of `error`
+- In the case of a test with multiple parents, where one parent depends on the other (e.g. a `relationships` test between `model_a` + `model_b`), that test will block-and-skip children of the most-downstream parent only (`model_b`).
 
-v0.21 is currently in beta, and as such there are some limitations to `dbt build` that we're hoping to address before the final release:
+**Selecting resources:** The `build` task supports standard selection syntax (`--select`, `--exclude`, `--selector`), as well as a `--resource-type` flag that offers a final filter (just like `list`). Whichever resources are selected, those are the ones that `build` will run/test/snapshot/seed.
+- Remember that tests support indirect selection, so `dbt build -s model_a` will both run _and_ test `model_a`. What does that mean? Any tests that directly depend on `model_a` will be included, so long as those tests don't also depend on other unselected parents. See [test selection](test-selection-examples) for details and examples.
 
-- A test on a resource should block that resource's other downstream children from running, and a test failure should cause those other children to `SKIP` ([dbt#3597](https://github.com/dbt-labs/dbt/issues/3597))
-- The `build` command should support the superset of CLI flags supported by `run`, `test`, `seed`, and `snapshot` ([dbt#3596](https://github.com/dbt-labs/dbt/issues/3596)). The `build` command should also support a `--resource-type` flag, as the `list` command does.
+**Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types (e.g. both models and seeds will be full refreshed).
+
+### Examples
 
 ```
 $ dbt build
-Running with dbt=0.21.0-a1
+Running with dbt=0.21.0-b2
 Found 1 model, 4 tests, 1 snapshot, 1 analysis, 341 macros, 0 operations, 1 seed file, 2 sources, 2 exposures
 
 18:49:43 | Concurrency: 1 threads (target='dev')

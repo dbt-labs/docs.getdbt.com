@@ -10,10 +10,10 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | [test](commands/test)           | `--select`, `--exclude`, `--selector`, `--defer`                     |
 | [seed](commands/seed)           | `--select`, `--exclude`, `--selector`                                |
 | [snapshot](commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
-| [ls (list)](commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type` |
+| [ls (list)](commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
 | [compile](commands/compile)     | `--select`, `--exclude`, `--selector`                                |
 | [freshness](commands/source)    | `--select`, `--exclude`, `--selector`                                |
-| [build](commands/build)         | `--select`, `--exclude`, `--selector`, `--defer`                     |
+| [build](commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
 
 :::info Nodes and resources
 
