@@ -20,7 +20,8 @@ dbt v0.21.0-b2 is currently available as a prerelease. If you have questions or 
 ## New and changed documentation
 
 - [Commands](dbt-commands), [`build`](commands/build), [rpc](rpc): Add `dbt build`
-- [Node selection syntax](node-selection/syntax) and above: Switch `--models` for `--select` across the board. (Commands which previously used the `--models` flag still support it for backwards compatibility.)
+- [Node selection syntax](node-selection/syntax), [commands](dbt-commands): Switch `--models` for `--select` across the board. (Commands which previously used the `--models` flag still support it for backwards compatibility.)
+- [YAML selectors](yaml-selectors#default) now support an optional `default` property. If set, dbt will use custom selection criteria for commands that do not specify their own selection/exclusion flags.
 - [Configuring incremental models](configuring-incremental-models): New optional configuration for incremental models, `on_schema_change`.
 - [Commands: `source`](commands/source): Renamed to `dbt source freshness`, updated selection logic.
 - [Environment variables](env_var): Add a log-scrubbing prefix, `DBT_ENV_SECRET_`
