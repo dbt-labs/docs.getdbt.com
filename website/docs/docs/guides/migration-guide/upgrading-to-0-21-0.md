@@ -35,6 +35,7 @@ dbt v0.21.0-rc1 is currently available as a release candidate. If you have quest
 ### Elsewhere in Core
 - [Configuring incremental models](configuring-incremental-models): New optional configuration for incremental models, `on_schema_change`.
 - [Environment variables](env_var): Add a log-scrubbing prefix, `DBT_ENV_SECRET_`
+- [Test `where` config](where) has been reimplemented as a macro (`get_where_subquery`) that you can optionally reimplement, too
 
 ### Plugins
 - **Postgres** [profile](postgres-profile) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
