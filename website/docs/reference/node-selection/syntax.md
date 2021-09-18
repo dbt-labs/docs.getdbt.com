@@ -76,5 +76,5 @@ $ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
 ```
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
-consider using a [yaml selector](yaml-selector). You can use a predefined definition with the `--selector` flag.
+consider using a [yaml selector](yaml-selectors). You can use a predefined definition with the `--selector` flag.
 Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
