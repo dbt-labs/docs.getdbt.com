@@ -42,14 +42,14 @@ Select resources to build (run, test, seed, snapshot) or check freshness: `--sel
 
 ### Examples
 
-By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--select` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--select`, `--exclude`, and `--selector`) also apply to `dbt test`!
+By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--select` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--select`, `--exclude`, and `--selector`) also apply to other dbt tasks, such as `test` and `build`.
 
 The `--select` flag accepts one or more arguments. Each argument can be one of:
 
 1. a package name
 2. a model name
 3. a fully-qualified path to a directory of models
-4. a selector method (`path:`, `tag:`, `config:`, `test_type:`, `test_name:`)
+4. a selection method (`path:`, `tag:`, `config:`, `test_type:`, `test_name:`)
 
 Examples:
 ```bash
@@ -74,3 +74,7 @@ $ dbt run --select tag:nightly my_model finance.base.*
 # use methods and intersections for more complex selectors
 $ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
 ```
+
+As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
+consider using a [yaml selector](yaml-selector). You can use a predefined definition with the `--selector` flag.
+Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
