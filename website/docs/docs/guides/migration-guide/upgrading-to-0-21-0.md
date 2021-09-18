@@ -32,6 +32,7 @@ dbt v0.21.0-rc1 is currently available as a release candidate. If you have quest
 - [Node selection syntax](node-selection/syntax), [commands](dbt-commands): Switch `--models` for `--select` across the board. (Commands which previously used the `--models` flag still support it for backwards compatibility.)
 - [YAML selectors](yaml-selectors#default) now support an optional `default` property. If set, dbt will use custom selection criteria for commands that do not specify their own selection/exclusion flags.
 - [Selection methods](node-selection/methods) and [state comparison caveats](state-comparison-caveats): Add `state:modified` subselectors, and reflect that it now includes changes to upstream macros.
+- [Test selection examples](test-selection-examples) includes more discussion of indirect selection (a change in v0.20), and the optional "greedy" flag/property (new in v0.21), which you can optionally set to include tests that have a mix of selected + unselected parents
 
 ### Elsewhere in Core
 - [Configuring incremental models](configuring-incremental-models): New optional configuration for incremental models, `on_schema_change`.

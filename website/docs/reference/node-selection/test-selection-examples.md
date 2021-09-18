@@ -14,10 +14,13 @@ Unlike other resource types, tests can also be selected **indirectly**. If a sel
 <Changelog>
 
 * `v0.20.0`: Test selection is no longer greedy for indirect inclusion (ALL parents must be selected for the test to be selected). It is still greedy for indirect exclusion (if ANY parent is excluded, the test is excluded).
+* `v0.21.0`: Introduce `--greedy` flag (and `greedy` selector property), to optionally include tests that are indirectly selected and have an unselected parent.
 
 </Changelog>
 
 This can be complex for tests with multiple parents (e.g. `relationships`, or custom tests that `ref()` multiple models). To prevent tests from running when they aren't wanted, a test will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. On the other hand, if **ANY** parent is excluded, the test will be aggressively excluded as well.
+
+Starting in dbt v0.21, dbt will warn you about tests that have not been indirectly selected because they have at least one unselected parent. You may optionally include them by turning on "greedy" selection: pass the `--greedy` flag, or define a `greedy` property in [yaml selectors](yaml-selectors). When enabled, dbt will include tests that have ANY parent selected, even if other parents are not selected.
 
 We've included lots of examples below:
 
@@ -56,6 +59,12 @@ If a test depends on both `customers` _and_ `orders` (e.g. a `relationships` tes
 
 ```shell
 $ dbt test --select customers orders
+```
+
+Or if you pass the `--greedy` flag:
+```shell
+$ dbt test --select customers --greedy
+$ dbt test --select orders --greedy
 ```
 
 ### Syntax examples

@@ -6,7 +6,7 @@ title: "YAML Selectors"
 
 - **v0.18.0**: Introduced YAML selectors
 - **v0.19.0**: Added optional `description` property. Selectors appear in `manifest.json` under a new `selectors` key.
-- **v0.21.0**: Added optional `default` property
+- **v0.21.0**: Added optional `default` + `greedy` properties
 
 </Changelog>
 
@@ -76,6 +76,8 @@ definition:
   parents_depth: 1     # if parents: true, degrees to include
 
   childrens_parents: true | false     # @ operator
+  
+  greedy: true | false  # include all tests selected indirectly? false by default
 ```
 
 The `*` operator to select all nodes can be written as:
@@ -113,6 +115,27 @@ and it is always applied _last_ within its scope.
 
 This gets us more intricate subset definitions than what's available on the CLI,
 where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`).
+
+#### Greedy
+
+As a general rule, dbt will indirectly select tests if they touch resources that you're selecting directly,
+but not tests that also touch unselected resources (e.g. a `relationships` test, with one parent selected and one parent
+not selected). Starting in v0.21, you can optionally turn this on by setting `greedy: true` for a specific criterion:
+
+```yml
+- union:
+    - method: fqn
+      value: model_a
+      greedy: true  # will include all tests that touch model_a
+    - method: fqn
+      value: model_b
+      greedy: false  # default: will not include tests touching model_b
+                     # if they have other unselected parents
+```
+
+In CLI-based selection, dbt will warn you about tests that aren't greedily included. Here, you're in "full control" mode—dbt will not warn you about which tests your yaml selector definition does or does not include. Remember that you can always use [`list`](commands/list) to check.
+
+See [test selection examples](test-selection-examples) for more details about greediness and indirect selection.
 
 ## Example
 
