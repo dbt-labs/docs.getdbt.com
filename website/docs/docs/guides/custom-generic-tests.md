@@ -28,28 +28,11 @@ Here's an example of an `is_even` schema test that uses both arguments:
 ```sql
 {% test is_even(model, column_name) %}
 
-with validation as (
-
     select
         {{ column_name }} as even_field
 
     from {{ model }}
-
-),
-
-validation_errors as (
-
-    select
-        even_field
-
-    from validation
-    -- if this is true, then even_field is actually odd!
-    where (even_field % 2) = 1
-
-)
-
-select *
-from validation_errors
+    where not(mod(even_field, 2) = 0)
 
 {% endtest %}
 ```
@@ -147,7 +130,7 @@ It is possible to include a `config()` block in a generic test definition. Value
 
     select *
     from {{ model }}
-    where ({{ column_name }} % 2) = 1
+    where mod({{ column_name }}, 2) = 1
 
 {% endtest %}
 ```
