@@ -9,14 +9,14 @@ syntax `method:value`.
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
 
 ```bash
-$ dbt run --models tag:nightly    # run all models with the `nightly` tag
+$ dbt run --select tag:nightly    # run all models with the `nightly` tag
 ```
 
 ### The "source" method
 The `source` method is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
 
 ```bash
-$ dbt run --models source:snowplow+    # run all models that select from Snowplow sources
+$ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
 ```
 
 ### The "path" method
@@ -26,12 +26,12 @@ selectors unambiguous.
 
 ```bash
 # These two selectors are equivalent
-dbt run --models path:models/staging/github
-dbt run --models models/staging/github
+dbt run --select path:models/staging/github
+dbt run --select models/staging/github
 
 # These two selectors are equivalent
-dbt run --models path:models/staging/github/stg_issues.sql
-dbt run --models models/staging/github/stg_issues.sql
+dbt run --select path:models/staging/github/stg_issues.sql
+dbt run --select models/staging/github/stg_issues.sql
 ```
 
 ### The "package" method
@@ -43,9 +43,9 @@ selectors unambiguous.
 
 ```bash
 # These three selectors are equivalent
-dbt run --models package:snowplow
-dbt run --models snowplow
-dbt run --models snowplow.*
+dbt run --select package:snowplow
+dbt run --select snowplow
+dbt run --select snowplow.*
 ```
 
 ### The "config" method
@@ -54,9 +54,9 @@ dbt run --models snowplow.*
 The `config` method is used to select models that match a specified [node config](config).
 
 ```bash
-$ dbt run --models config.materialized:incremental    # run all models that are materialized incrementally
-$ dbt run --models config.schema:audit                # run all models that are created in the `audit` schema
-$ dbt run --models config.cluster_by:geo_country      # run all models clustered by `geo_country`
+$ dbt run --select config.materialized:incremental    # run all models that are materialized incrementally
+$ dbt run --select config.schema:audit                # run all models that are created in the `audit` schema
+$ dbt run --select config.cluster_by:geo_country      # run all models clustered by `geo_country`
 ```
 
 ### The "test_type" method
@@ -65,8 +65,8 @@ $ dbt run --models config.cluster_by:geo_country      # run all models clustered
 The `test_type` method is used to select tests based on their type, `schema` or `data`:
 
 ```bash
-$ dbt test --models test_type:schema        # run all schema tests
-$ dbt test --models test_type:data          # run all data tests
+$ dbt test --select test_type:schema        # run all schema tests
+$ dbt test --select test_type:data          # run all data tests
 ```
 
 ### The "test_name" method
@@ -77,9 +77,9 @@ that defines it. For more information about how generic tests are defined, read 
 [tests](building-a-dbt-project/tests).
 
 ```bash
-$ dbt test --models test_name:unique            # run all instances of the `unique` test
-$ dbt test --models test_name:equality          # run all instances of the `dbt_utils.equality` test
-$ dbt test --models test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
+$ dbt test --select test_name:unique            # run all instances of the `unique` test
+$ dbt test --select test_name:equality          # run all instances of the `dbt_utils.equality` test
+$ dbt test --select test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
 ```
 
 ### The "state" method
@@ -97,9 +97,9 @@ The `state` method is used to select nodes by comparing them against a previous 
 `state:modified`: All new nodes, plus any changes to existing nodes.
 
 ```bash
-$ dbt test --models state:new            # run all tests on new models + and new tests on old models
-$ dbt run --models state:modified        # run all models that have been modified
-$ dbt ls --models state:modified         # list all modified nodes (not just models)
+$ dbt test --select state:new            # run all tests on new models + and new tests on old models
+$ dbt run --select state:modified        # run all models that have been modified
+$ dbt ls --select state:modified         # list all modified nodes (not just models)
 ```
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
@@ -117,7 +117,7 @@ Remember that `state:modified` includes _all_ of the criteria above, as well as 
 The `exposure` method is used to select parent resources of a specified [exposure](exposure-properties). Use in conjunction with the `+` operator.
 
 ```bash
-$ dbt run --models +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
-$ dbt test --models +exposure:*                         # test all resources upstream of all exposures
+$ dbt run --select +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
+$ dbt test --select +exposure:*                         # test all resources upstream of all exposures
 $ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
 ```

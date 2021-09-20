@@ -112,7 +112,7 @@ If your incremental model logic has changed, the transformations on your new row
 To force dbt to rebuild the entire incremental model from scratch, use the `--full-refresh` flag on the command line. This flag will cause dbt to drop the existing target table in the database before rebuilding it for all-time.
 
 ```bash
-$ dbt run --full-refresh --models my_incremental_model+
+$ dbt run --full-refresh --select my_incremental_model+
 ```
 It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
 

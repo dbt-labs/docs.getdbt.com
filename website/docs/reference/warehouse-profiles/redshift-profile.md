@@ -22,6 +22,7 @@ company-name:
       schema: analytics
       threads: 4
       keepalives_idle: 0 # default 0, indicating the system default
+      connect_timeout: 10 # default 10 seconds
       # search_path: public # optional, not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
       ra3: true # enables cross-database sources

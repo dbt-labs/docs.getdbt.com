@@ -57,7 +57,7 @@ seeds:
 Apply a tag (or list of tags) to a model, seed, or snapshot.
 
 These tags can be used as part of the [resource selection syntax](node-selection/syntax), when running the following commands:
-- `dbt run --models tag:my_tag`
+- `dbt run --select tag:my_tag`
 - `dbt seed --select tag:my_tag`
 - `dbt snapshot --select tag:my_tag`
 

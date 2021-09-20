@@ -65,6 +65,14 @@ class MyAdapterCredentials(Credentials):
     @property
     def type(self):
         return 'myadapter'
+        
+    @property
+    def unique_field(self):
+        """
+        Hashed and included in anonymous telemetry to track adapter adoption.
+        Pick a field that can uniquely identify one team/organization building with this adapter
+        """
+        return self.host
 
     def _connection_keys(self):
         """
