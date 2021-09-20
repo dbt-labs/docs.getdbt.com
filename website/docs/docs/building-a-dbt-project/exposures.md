@@ -74,8 +74,8 @@ We plan to add more subtypes and optional properties in future releases.
 
 Once an exposure is defined, you can run commands that reference it:
 ```
-dbt run -m +exposure:weekly_jaffle_metrics
-dbt test -m +exposure:weekly_jaffle_metrics
+dbt run -s +exposure:weekly_jaffle_metrics
+dbt test -s +exposure:weekly_jaffle_metrics
 ```
 
 When we generate our documentation site, you'll see the exposure appear:

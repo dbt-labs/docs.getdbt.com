@@ -24,15 +24,15 @@ If a model uses a `var` or `env_var` in its definition, dbt is unable today to i
 
 ### Tests
 
-The command `dbt test -m state:modified` will include both:
+The command `dbt test -s state:modified` will include both:
 - tests that select from a new/modified resource
 - tests that are themselves new or modified
 
 As long as you're adding or changing tests at the same time that you're adding or changing the resources (models, seeds, snapshots) they select from, all should work the way you expect with "simple" state selection:
 
 ```shell
-$ dbt run -m state:modified
-$ dbt test -m state:modified
+$ dbt run -s state:modified
+$ dbt test -s state:modified
 ```
 
 This can get complicated, however. If you add a new test without modifying its underlying model, or add a test that selects from a new model and an old unmodified one, you may need to test a model without having first run it.
@@ -40,8 +40,8 @@ This can get complicated, however. If you add a new test without modifying its u
 In v0.18.0, you needed to handle this by building the unmodified models needed for modified tests:
 
 ```shell
-$ dbt run -m state:modified @state:modified,1+test_type:data
-$ dbt test -m state:modified
+$ dbt run -s state:modified @state:modified,1+test_type:data
+$ dbt test -s state:modified
 ```
 
 In v0.19.0, dbt added support for deferring upstream references when testing. If a test selects from a model that doesn't exist as a database object in your current environment, dbt will look to the other environment instead—the one defined in your state manifest. This enables you to use "simple" state selection without risk of query failure, but it may have some surprising consequences for tests with multiple parents. For instance, if you have a `relationships` test that depends on one modified model and one unmodified model, the test query will select from data "across" two different environments. If you limit or sample your data in development and CI, it may not make much sense to test for referential integrity, knowing there's a good chance of mismatch.
@@ -49,8 +49,8 @@ In v0.19.0, dbt added support for deferring upstream references when testing. If
 If you're a frequent user of `relationships` tests or data tests, or frequently find yourself adding tests without modifying their underlying models, consider tweaking the selection criteria of your CI job. For instance:
 
 ```shell
-$ dbt run -m state:modified
-$ dbt test -m state:modified --exclude test_name:relationships
+$ dbt run -s state:modified
+$ dbt test -s state:modified --exclude test_name:relationships
 ```
 
 ### False positives

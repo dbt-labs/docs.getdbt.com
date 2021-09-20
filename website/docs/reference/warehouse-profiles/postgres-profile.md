@@ -22,6 +22,7 @@ company-name:
       schema: [dbt schema]
       threads: [1 or more]
       keepalives_idle: 0 # default 0, indicating the system default
+      connect_timeout: 10 # default 10 seconds
       search_path: [optional, override the default postgres search_path]
       role: [optional, set the role dbt assumes when executing queries]
       sslmode: [optional, set the sslmode used to connect to the database]
