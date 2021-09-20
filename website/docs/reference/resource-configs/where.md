@@ -6,7 +6,7 @@ datatype: string
 <Changelog>
 
 * `v0.20.0`: Introduced `where` config
-* `v0.21.0`: Reimplemented `where` config with `get_where_subquery` macro
+* `v0.21.0`: Introduced `config` property for tests. Reimplemented `where` config with `get_where_subquery` macro
 
 </Changelog>
 
@@ -55,7 +55,8 @@ models:
         tests:
           - accepted_values:
               values: ["a", "b", "c"]
-              where: "date_column = current_date"
+              config:
+                where: "date_column = current_date"
 ```
 
 </File>

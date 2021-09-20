@@ -51,7 +51,7 @@ dbt run --select snowplow.*
 ### The "config" method
 <Changelog>New in v0.18.0</Changelog>
 
-The `config` method is used to select models that match a specified [node config](config).
+The `config` method is used to select models that match a specified [node config](configs-and-properties).
 
 ```bash
 $ dbt run --select config.materialized:incremental    # run all models that are materialized incrementally

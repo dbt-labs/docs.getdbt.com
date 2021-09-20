@@ -37,7 +37,7 @@ sources:
 
 </File>
 
-If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](declaring-properties) before proceeding.
+If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](configs-and-properties) before proceeding.
 
 ### Selecting from a source
 
