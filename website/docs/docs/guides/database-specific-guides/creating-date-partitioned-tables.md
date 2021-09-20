@@ -113,5 +113,5 @@ If a `dates` variable is provided (eg. on the command line with `--vars`), then 
 Here's an example of running this model for the first 3 days of 2018 as a part of a backfill:
 
 ```
-dbt run --models partitioned_yesterday --vars 'dates: "20180101, 20180103"'
+dbt run --select partitioned_yesterday --vars 'dates: "20180101, 20180103"'
 ```

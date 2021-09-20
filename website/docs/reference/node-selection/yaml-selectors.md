@@ -5,18 +5,19 @@ title: "YAML Selectors"
 <Changelog>
 
 - **v0.18.0**: Introduced YAML selectors
-- **v0.19.0**: Added optional `description` property. Selectors appear as in `manifest.json`.
+- **v0.19.0**: Added optional `description` property. Selectors appear in `manifest.json` under a new `selectors` key.
+- **v0.21.0**: Added optional `default` + `greedy` properties
 
 </Changelog>
 
-Write model selectors in YAML, save them with a human-friendly name, and reference them using the `--selector` flag.
+Write resource selectors in YAML, save them with a human-friendly name, and reference them using the `--selector` flag.
 By recording selectors in a top-level `selectors.yml` file:
 
 * **Legibility:** complex selection criteria are composed of dictionaries and arrays
 * **Version control:** selector definitions are stored in the same git repository as the dbt project
 * **Reusability:** selectors can be referenced in multiple job definitions, and their definitions are extensible (via YAML anchors)
 
-Selectors live in a top-level file named `selectors.yml`. Each has a `name`, a `definition`, and an optional `description`:
+Selectors live in a top-level file named `selectors.yml`. Each must have a `name` and a `definition`, and can optionally define a `description` and [`default` flag](#default).
 
 <File name='selectors.yml'>
 
@@ -26,9 +27,12 @@ selectors:
     definition: ...
   - name: nodes_to_a_grecian_urn
     description: Attic shape with a fair attitude
+    default: true
     definition: ...
 ```
 </File>
+
+## Definitions
 
 Each `definition` is comprised of one or more arguments, which can be one of the following:
 * **CLI-style:** strings, representing CLI-style) arguments
@@ -37,7 +41,7 @@ Each `definition` is comprised of one or more arguments, which can be one of the
     
 Use `union` and `intersection` to organize multiple arguments.
 
-#### CLI-style
+### CLI-style
 ```yml
 definition:
   'tag:nightly'
@@ -46,7 +50,7 @@ definition:
 This simple syntax supports use of the `+`, `@`, and `*` operators. It does
 not support `exclude`.
 
-#### Key-value
+### Key-value
 ```yml
 definition:
   tag: nightly
@@ -54,7 +58,7 @@ definition:
 
 This simple syntax does not support any operators or `exclude`.
 
-#### Full YAML
+### Full YAML
 
 This is the most thorough syntax, which can include graph and set operators.
 
@@ -72,6 +76,8 @@ definition:
   parents_depth: 1     # if parents: true, degrees to include
 
   childrens_parents: true | false     # @ operator
+  
+  greedy: true | false  # include all tests selected indirectly? false by default
 ```
 
 The `*` operator to select all nodes can be written as:
@@ -108,13 +114,34 @@ the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference
 and it is always applied _last_ within its scope.
 
 This gets us more intricate subset definitions than what's available on the CLI,
-where we can only pass one "yeslist" (`--models`, `--select`) and one "nolist" (`--exclude`).
+where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`).
 
-### Example
+#### Greedy
+
+As a general rule, dbt will indirectly select tests if they touch resources that you're selecting directly,
+but not tests that also touch unselected resources (e.g. a `relationships` test, with one parent selected and one parent
+not selected). Starting in v0.21, you can optionally turn this on by setting `greedy: true` for a specific criterion:
+
+```yml
+- union:
+    - method: fqn
+      value: model_a
+      greedy: true  # will include all tests that touch model_a
+    - method: fqn
+      value: model_b
+      greedy: false  # default: will not include tests touching model_b
+                     # if they have other unselected parents
+```
+
+In CLI-based selection, dbt will warn you about tests that aren't greedily included. Here, you're in "full control" mode—dbt will not warn you about which tests your yaml selector definition does or does not include. Remember that you can always use [`list`](commands/list) to check.
+
+See [test selection examples](test-selection-examples) for more details about greediness and indirect selection.
+
+## Example
 
 Here are two ways to represent:
 ```
-$ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
+$ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
 ```
 
 <Tabs
@@ -181,4 +208,46 @@ selectors:
 Then in our job definition:
 ```bash
 $ dbt run --selector nightly_diet_snowplow
+```
+
+## Default
+
+Starting in v0.21, selectors may define a boolean `default` property. If a selector has `default: true`, dbt will use this selector's criteria when tasks do not define their own selection criteria.
+
+Let's say we define a default selector that only selects resources defined in our root project:
+```yml
+selectors:
+  - name: root_project_only
+    description: >
+        Only resources from the root project.
+        Excludes resources defined in installed packages.
+    default: true
+    definition:
+      method: project
+      value: <my_root_project_name>
+```
+
+If I run an "unqualified" command, dbt will use the selection criteria defined in `root_project_only`—that is, dbt will only build / freshness check / generate compiled SQL for resources defined in my root project.
+```
+$ dbt build
+$ dbt source freshness
+$ dbt docs generate
+```
+
+If I run a command that defines its own selection criteria (via `--select`, `--exclude`, or `--selector`), dbt will ignore the default selector and use the flag criteria instead. It will not try to combine the two.
+```
+$ dbt run --select  model_a
+$ dbt run --exclude model_a
+```
+
+Only one selector may set `default: true` for a given invocation; otherwise, dbt will return an error. You may use a Jinja expression to adjust the value of `default` depending on the environment, however:
+
+```yml
+selectors:
+  - name: default_for_dev
+    default: "{{ target.name == 'dev' | as_bool }}"
+    definition: ...
+  - name: default_for_prod
+    default: "{{ target.name == 'prod' | as_bool }}"
+    definition: ...
 ```
