@@ -28,6 +28,7 @@ After you've changed the package version in your packages.yml file, be sure to r
 <details>
 <summary>  Upgrading to v0.20.latest from v0.19 </summary>
 <br></br>
+
 - Does your project define any custom schema tests?
 - Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
@@ -63,6 +64,7 @@ If you believe your project might be affected, read more details in the migratio
 <details>
 <summary>  Upgrading to v0.18.latest from v0.17 </summary>
 <br></br>
+
 - Do you directly call `adapter_macro`?
 
 If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-18-0).
@@ -151,6 +153,7 @@ If you believe your project might be affected, read more details in the migratio
 <details>
 <summary>  Upgrading to v0.16.latest from v0.15 </summary>
 <br></br>
+
 - Do you use the custom `generate_schema_name` macro?
 - Do you use `partition_by` config for BigQuery models?
 
@@ -160,7 +163,9 @@ If you believe your project might be affected, read more details in the migratio
 
 <details>
 <summary>  Upgrading to v0.15.latest from v0.14 </summary>
+
 <br></br>
+
 - Do you have a custom materialization?
 - Do you have a macro that accesses `Relations` directly?
 
@@ -170,6 +175,7 @@ If you believe your project might be affected, read more details in the migratio
 <details>
 <summary>  Upgrading to v0.14.latest from v0.13 </summary>
 <br></br>
+
 - Do you still use `Archives`?
 - Do you use the custom `generate_schema_name` macro?
 - Do you use the `—non-destructive` flag?
