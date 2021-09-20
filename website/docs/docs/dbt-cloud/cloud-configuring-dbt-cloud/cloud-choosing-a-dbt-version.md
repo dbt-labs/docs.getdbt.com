@@ -41,7 +41,7 @@ We will continue to update this table so that customers know when we plan to sto
 We will give customers consistent communication that they're hitting the end of their supported window, so they can plan accordingly. 
 
 #### What should you be doing today?
-There are years of development and a handful of breaking changes between two distant versions of dbt (e.g. 0.14 --> 0.20). There are far fewer between two subsequent versions of dbt, which is why upgrading regularly is important. Getting your project running on the latest release of dbt today will make the jump to v1.0 much easier when it's released.
+There are years of development and a handful of breaking changes between two distant versions of dbt (e.g. v0.14 --> v0.20). There are far fewer between two subsequent versions of dbt, which is why upgrading regularly is important. Getting your project running on the latest release of dbt today will make the jump to v1.0 much easier when it's released.
 
 Additionally upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
 
