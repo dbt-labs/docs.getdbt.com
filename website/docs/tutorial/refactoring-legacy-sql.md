@@ -232,14 +232,3 @@ Sure, we could write our own query manually to audit these models, but using the
 Head to the free on-demand course, [Refactoring is a Lifestyle](https://courses.getdbt.com) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
 
 Questions on this tutorial or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).
-
-
-
-
-
-
-CTEs / intermediate models: https://getdbt.wistia.com/medias/
-
-final model: https://getdbt.wistia.com/medias/w04yhe3kb4
-
-auditing: https://getdbt.wistia.com/medias/dymp75cwh6
