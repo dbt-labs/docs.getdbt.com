@@ -22,7 +22,7 @@ Let's get into it!
 
 > Note: this tutorial is excerpted from the new dbt Learn On-demand Course, "Refactoring and Its Joys" - if you're curious, pick up the [free SQL refactoring course here](https://courses.getdbt.com), which includes example and practice refactoring projects.
 
-## Step 1: Migrate your existing SQL code
+## Migrate your existing SQL code
 
 <WistiaVideo id="5u67ik9t66" />
 
@@ -46,7 +46,7 @@ Functions that you were using previously may not exist, or their syntax may shif
 
 If you're not migrating data warehouses at the moment, then you have access to exact same SQL dialect inside of dbt that you have working directly in a SQL browser - dbt SQL compiles to your warehouse's SQL dialect at runtime.
 
-## Step 2: Create sources from table references
+## Create sources from table references
 
 <WistiaVideo id="m1a5p32rny" />
 
@@ -56,14 +56,14 @@ This allows you to call the same table in multiple places with the simpler `{{ s
 
 We start here for several reasons:
 
-### Easy dependency tracing
+#### Easy dependency tracing
 If you're migrating multiple stored procedures into dbt, with sources you can see which queries depend on the same raw tables. 
 
 This allows you to consolidate modeling work on those base tables, rather than calling them separately in multiple places. 
 
 <Lightbox src="/img/docs/building-a-dbt-project/sources-dag.png" title="Sources appear in green in your DAG in dbt docs" />
 
-### Build the habit of analytics-as-code
+#### Build the habit of analytics-as-code
 Sources are an easy way to get your feet wet using config files to define aspects of your transformation pipeline.
 
 ```yml
@@ -78,17 +78,17 @@ With a few lines of code in a `.yml` file in your dbt project's `/models` subfol
 
 For example, say you migrate from one [ETL tool](https://getdbt.com/analytics-engineering/etl-tools-a-love-letter/) to another, and the schema name on your tables changes from - source config files allow you to make that migration from a single file, and flip the change on with one pull request to your repo. 
 
-## Step 3: Choose a refactoring strategy
+## Choose a refactoring strategy
 There are two ways you can choose to refactor: in-place or alongside.
 
 <WistiaVideo id="5dd74bsw96" />
 
-### In-place refactoring 
-In-place means that you will work directly on the SQL script that you ported over in the first step.
+#### In-place refactoring
+Means that you will work directly on the SQL script that you ported over in the first step.
 
 You'll move it into a `/marts` subfolder within your project's `/models` folder and go to town.
 
-**Pros**:
+**Pros**: 
 - You won't have any old models to delete once refactoring is done.
 
 **Cons**:
@@ -97,8 +97,8 @@ You'll move it into a `/marts` subfolder within your project's `/models` folder 
 - Requires navigating through Git commits to see what code you've changed throughout.
 
 
-### Alongside refactoring
-Alongside means that you will copy your model to a `/marts` folder, and work on changes on that copy.
+#### Alongside refactoring
+Means that you will copy your model to a `/marts` folder, and work on changes on that copy.
 
 **Pros**:
 - Less impact on end users - anything that is referencing the model you're refactoring can keep that reference until you can safely deprecate that model.
@@ -113,7 +113,7 @@ Alongside means that you will copy your model to a `/marts` folder, and work on 
 We generally recommend the **alongside** approach, which we'll follow in this tutorial.
 
 
-## Step 4: Implement CTE groupings and cosmetic cleanups
+## Implement CTE groupings
 Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. This will give you a head start on porting SQL snippets from CTEs into modular [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
 
 <WistiaVideo id="di9jovovdv" />
@@ -161,7 +161,8 @@ final_cte as (
 select * from final_cte 
 ```
 
-### 1. Import CTEs
+#### 1. Import CTEs
+
 Let's start with our components, and identify raw data that is being used in our analysis. For this exercise, the components are three sources:
 
 - jaffle_shop.customers
@@ -172,7 +173,8 @@ Let's make a CTE for each of these under the `Import CTEs` comment. These import
 
 We'll cover that later - for now, just use `select * from {{ source('schema', 'table') }}` for each, with the appropriate reference. Then, we will switch out all hard-coded references with our import CTE names.
 
-### 2. Logical CTEs
+#### 2. Logical CTEs
+
 Logical CTEs contain unique transformations used to generate the final product, and we want to separate these into logical blocks. To identify our logical CTEs, we will follow subqueries in order. 
 
 If a subquery has nested subqueries, we will want to continue moving down until we get to the first layer, then pull out the subqueries in order as CTEs, making our way back to the final select statement. 
@@ -181,14 +183,16 @@ Name these CTEs as the alias that the subquery was given - you can rename it lat
 
 If the script is particularly complicated, it's worth it to go through once you're finished pulling out subqueries and follow the CTEs to make sure they happen in an order that makes sense for the end result.
 
-### 3. Final CTE
+#### 3. Final CTE
+
 The previous process usually results in a select statement that is left over at the end - this select statement can be moved into its own CTE called the final CTE, or can be named something that is inherent for others to understand. This CTE determines the final product of the model.
 
-### 4. Simple SELECT statement
+#### 4. Simple SELECT statement 
+
 After you have moved everything into CTEs, you'll want to write a `select * from final` (or something similar, depending on your final CTE name) at the end of the model.
 
 
-## Step 5: Centralizing transformations and creating models
+## Port CTEs to individual data models
 Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
 
 Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355) accordingly.
@@ -218,7 +222,7 @@ Intermediate models are optional and are not always needed, but do help when you
 Our final model accomplishes the result set we want, and it uses the components we've built. By this point we've identified what we think should stay in our final model.
 
 
-## Step 6: Data model auditing
+## Data model auditing
 
 <WistiaVideo id="dymp75cwh6" />
 
