@@ -532,7 +532,10 @@ module.exports = {
       type: "category",
       label: "Leveling up",
       collapsed: false,
-      items: ["tutorial/using-jinja"],
+      items: [
+        "tutorial/using-jinja",
+        "tutorial/refactoring-legacy-sql"
+      ],
     },
   ],
   learn: [
