@@ -4,8 +4,8 @@ function WistiaVideo({id}) {
   return (
 
   	 <React.Fragment>
-		 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-			<div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+		 <div class="wistia_responsive_padding" style={{padding:"56.25% 0 0 0",position:"relative",marginBottom:"30px"}}>
+			<div class="wistia_responsive_wrapper" style={{height:"100%",left:0,position:"absolute",top:0,width:"100%"}}>
 				<iframe 
 					src={`https://fast.wistia.net/embed/iframe/${id}?seo=false&videoFoam=true`} 
 					allow="autoplay; fullscreen" 
