@@ -22,7 +22,7 @@ Let's get into it!
 
 > Note: this tutorial is excerpted from the new dbt Learn On-demand Course, "Refactoring and Its Joys" - if you're curious, pick up the [free SQL refactoring course here](https://courses.getdbt.com), which includes example and practice refactoring projects.
 
-## Migrate your existing SQL code
+## Step 1: Migrate your existing SQL code
 
 <WistiaVideo id="5u67ik9t66" />
 
@@ -46,7 +46,7 @@ Functions that you were using previously may not exist, or their syntax may shif
 
 If you're not migrating data warehouses at the moment, then you have access to exact same SQL dialect inside of dbt that you have working directly in a SQL browser - dbt SQL compiles to your warehouse's SQL dialect at runtime.
 
-## Creating sources from table references
+## Step 2: Create sources from table references
 
 <WistiaVideo id="m1a5p32rny" />
 
@@ -78,7 +78,7 @@ With a few lines of code in a `.yml` file in your dbt project's `/models` subfol
 
 For example, say you migrate from one [ETL tool](https://getdbt.com/analytics-engineering/etl-tools-a-love-letter/) to another, and the schema name on your tables changes from - source config files allow you to make that migration from a single file, and flip the change on with one pull request to your repo. 
 
-## Choosing a refactoring strategy
+## Step 3: Choose a refactoring strategy
 There are two ways you can choose to refactor: in-place or alongside.
 
 <WistiaVideo id="5dd74bsw96" />
@@ -113,14 +113,10 @@ Alongside means that you will copy your model to a `/marts` folder, and work on 
 We generally recommend the **alongside** approach, which we'll follow in this tutorial.
 
 
-## CTE groupings and cosmetic cleanups
-Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. 
+## Step 4: Implement CTE groupings and cosmetic cleanups
+Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. This will give you a head start on porting SQL snippets from CTEs into modular [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
 
 <WistiaVideo id="di9jovovdv" />
-
-Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355) accordingly.
-
-We'll follow those structures in this walkthrough, but your team's conventions may of course differ from ours.
 
 ### What's a CTE?
 CTE stands for “Common Table Expression”, which is a temporary result set available for use until the end of SQL script execution. Using the `with` keyword at the top of a query allows us to use CTEs in our code. 
@@ -192,32 +188,57 @@ The previous process usually results in a select statement that is left over at 
 After you have moved everything into CTEs, you'll want to write a `select * from final` (or something similar, depending on your final CTE name) at the end of the model.
 
 
+## Step 5: Centralizing transformations and creating models
+Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
 
-Step 5: Centralizing Transformations and Creating Models
-Identifying Staging Models
+Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355) accordingly.
 
- To identify our staging models, we want to look at the things we've imported. For us, that's customers, orders, and payments. We want to look at the transformations that can occur within each of these sources without needing to be joined to each other, and then we want to make components out of those so they can be our building blocks for further development.
+We'll follow those structures in this walkthrough, but your team's conventions may of course differ from ours.
+
+### Identifying staging models
+
+<WistiaVideo id="f3nqj8tsde" />
+
+To identify our [staging models](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/#staging-models), we want to look at the things we've imported in our import CTEs. 
+
+For us, that's customers, orders, and payments. We want to look at the transformations that can occur within each of these sources without needing to be joined to each other, and then we want to make components out of those so they can be our building blocks for further development.
+
+### CTEs or intermediate models
+
+<WistiaVideo id="9cu4hoiw0w" />
+
+Our left-over logic can then be split into steps that are more easily understandable. 
+
+We'll start by using CTEs, but when a model becomes complex or can be divided out into reusable components you may consider an intermediate model. 
+
+Intermediate models are optional and are not always needed, but do help when you have large data flows coming together.
 
 
-### CTEs or Intermediate Models
-
-We want to split up our left over logic into steps that are more easily understandable. We will start by using CTEs, but when a model becomes complex or can be divided out into reusable components you may consider an intermediate model. Intermediate models are optional and are not always needed, but do help when you have large data flows coming together.
-
-
-Final Model
-
- Our final model accomplishes the result set we want, and it uses the components we've built. By this point we've identified what we think should stay in our final model.
+### Final model
+Our final model accomplishes the result set we want, and it uses the components we've built. By this point we've identified what we think should stay in our final model.
 
 
-Step 6: Auditing
-We will want to audit our results using the dbt audit helper package. We could write our own query to audit these models, but using the dbt audit helper package can help us identify variances more quickly and provide proof for things that we expect to differ or stay the same.
+## Step 6: Data model auditing
+
+<WistiaVideo id="dymp75cwh6" />
+
+We'll want to audit our results using the dbt [audit_helper package](https://hub.getdbt.com/fishtown-analytics/audit_helper/latest/). 
+
+Under the hood, it generates comparison queries between our before and after states, so that we can compare our original query results to our refactored results to identify differences.
+
+Sure, we could write our own query manually to audit these models, but using the dbt `audit_helper` package gives us a head start and allows us to identify variances more quickly.  
+
+## Ready for refactoring practice?
+Head to the free on-demand course, [Refactoring is a Lifestyle](https://courses.getdbt.com) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
+
+Questions on this tutorial or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).
 
 
 
 
-staging models: https://getdbt.wistia.com/medias/f3nqj8tsde
 
-CTEs / intermediate models: https://getdbt.wistia.com/medias/9cu4hoiw0w
+
+CTEs / intermediate models: https://getdbt.wistia.com/medias/
 
 final model: https://getdbt.wistia.com/medias/w04yhe3kb4
 
