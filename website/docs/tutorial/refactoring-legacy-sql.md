@@ -1,6 +1,7 @@
 ---
 title: Refactoring legacy SQL to dbt SQL
 id: refactoring-legacy-sql
+description: This tutorial walks through refactoring a long SQL query (perhaps from a stored procedure) into modular dbt data models.
 ---
 
 You may have already learned how to build dbt models from scratch. 
@@ -166,6 +167,8 @@ final_cte as (
 select * from final_cte 
 ```
 
+Notice there are no nested queries here, which makes reading our logic much more straightforward. If a query needs to be nested, it's just a new CTE that references the previous CTE.
+
 #### 1. Import CTEs
 
 Let's start with our components, and identify raw data that is being used in our analysis. For this exercise, the components are three sources:
@@ -195,6 +198,8 @@ The previous process usually results in a select statement that is left over at 
 #### 4. Simple SELECT statement 
 
 After you have moved everything into CTEs, you'll want to write a `select * from final` (or something similar, depending on your final CTE name) at the end of the model.
+
+This allows anyone after us to easily step through the CTEs when troubleshooting, rather than having to untangle nested queries.
 
 > For more background on CTEs, check out the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md#ctes).
 
