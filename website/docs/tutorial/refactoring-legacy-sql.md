@@ -8,7 +8,7 @@ You may have already learned how to build dbt models from scratch.
 
 But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt. 
 
-There are two parts to accomplish this: migration and refactoring. In this lesson we’re going to learn a process to help us turn legacy SQL code into modular dbt models.
+There are two parts to accomplish this: migration and refactoring. In this tutorial we’re going to learn a process to help us turn legacy SQL code into modular dbt models.
 
 When migrating and refactoring code, it’s of course important to stay organized. We'll do this is by following several steps (jump directly from the right sidebar):
 
