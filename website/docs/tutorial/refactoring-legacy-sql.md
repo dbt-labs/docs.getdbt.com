@@ -187,7 +187,7 @@ Logical CTEs contain unique transformations used to generate the final product, 
 
 If a subquery has nested subqueries, we will want to continue moving down until we get to the first layer, then pull out the subqueries in order as CTEs, making our way back to the final select statement. 
 
-Name these CTEs as the alias that the subquery was given - you can rename it later, but for now it is best to make as little change as possible.
+Name these CTEs as the alias that the subquery was given - you can rename it later, but for now it is best to make as few changes as possible.
 
 If the script is particularly complicated, it's worth it to go through once you're finished pulling out subqueries and follow the CTEs to make sure they happen in an order that makes sense for the end result.
 
