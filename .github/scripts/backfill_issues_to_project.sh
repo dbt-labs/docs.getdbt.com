@@ -66,11 +66,16 @@ status_field_id=$(jq '.data.organization.projectNext.fields.nodes[] | select(.na
 status_field_value=$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Triage") |.id' data/project.json | sed -e 's/^"//' -e 's/"$//')
 author_field_id=$(jq '.data.organization.projectNext.fields.nodes[] | select(.name == "Issue Author") | .id' data/project.json )
 
+type_field_id=$(jq '.data.organization.projectNext.fields.nodes[] | select(.name == "Type") | .id' data/project.json )
+type_issue=$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Type") |.settings | fromjson.options[] | select(.name=="Issue") |.id' data/project.json | sed -e 's/^"//' -e 's/"$//')
+
 echo "Project ID:" $project_id
 echo "Date field ID:" $date_field_id
 echo "Status field ID:" $status_field_id
 echo "Status field value:" $status_field_value
 echo "Author field value:" $author_field_id
+echo "Type field ID:" $type_field_id
+echo "Type field value:" $type_issue
 
 for issue_id in $issues
 do
@@ -106,6 +111,8 @@ do
                 $date_value: String!
                 $author_field: ID!
                 $author_value: String!
+                $type_field: ID!
+                $type_value: String!
                 ) {
                     set_status: updateProjectNextItemField(input: {
                         projectId: $project
@@ -137,6 +144,16 @@ do
                         id
                         }
                     }
-                }' -F project=$project_id -F item=$response_id -F status_field=$status_field_id -f status_value=$status_field_value -F date_field=$date_field_id -f date_value=$issue_date -F author_field=$author_field_id -f author_value=$issue_author
+                    set_type: updateProjectNextItemField(input: {
+                        projectId: $project
+                        itemId: $item
+                        fieldId: $type_field
+                        value: $type_value
+                    }) {
+                        projectNextItem {
+                        id
+                        }
+                    }
+                }' -F project=$project_id -F item=$response_id -F status_field=$status_field_id -f status_value=$status_field_value -F date_field=$date_field_id -f date_value=$issue_date -F author_field=$author_field_id -f author_value=$issue_author -F type_field=$type_field_id -f type_value=$type_issue
           
 done
