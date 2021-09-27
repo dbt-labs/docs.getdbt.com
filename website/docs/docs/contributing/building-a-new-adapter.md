@@ -259,6 +259,7 @@ The following macros must be implemented, but you can override their behavior fo
 - `list_schemas` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L210))
 - `rename_relation` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L185))
 - `truncate_relation` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L175))
+- `current_timestamp` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L269)) (required)
 
 ### Adapter dispatch
 
