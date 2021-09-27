@@ -2,7 +2,7 @@
 title: Run Results
 ---
 
-_Current schema_: [`v2`](https://schemas.getdbt.com/dbt/run-results/v2.json)
+_Current schema_: [`v3`](https://schemas.getdbt.com/dbt/run-results/v3/index.html)
 
 _Produced by:_
 - `dbt run`
