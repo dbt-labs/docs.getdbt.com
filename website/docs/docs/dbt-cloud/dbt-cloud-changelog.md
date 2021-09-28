@@ -4,6 +4,35 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.36 (September 29,2021)
+#### Fixed
+
+- Add back network keepalive settings to run pods
+- Saves view state of active tab instead of new tab
+
+#### Internal
+
+- Bug fixing for model bottleneck viz
+- [env vars] Enforce uppercasing of custom env var names
+- add proto-python key to ssh environment
+- Update change password form label
+- Update and delete environment variables using IDs (without an extra lookup)
+- Update bug_report.md
+- Asweet/4184 open file apollo
+- Changing "image_pull_secret" to an env var
+- [geico] Set k8s API timeout as environment variable, add logging
+- python requirements security update, take 2
+- Implement UI for errored models, skipped models, and edge cases
+- Environment Variables security fixes
+- Fix spacing and color scale for model bottleneck viz
+- partner connect: add state column to signups
+- Stale PR automation
+- Add frontend build helpers
+- Update model bottleneck viz (d3 refactor)
+- update 0.21.0 to rc1 from b2
+- React hook for querying API v2 file contents using Apollo
+- admin: add partner connect signups
+- Split init container spec into develop and run pod methods
 
 ## dbt Cloud v1.1.35 (September 15, 2021)
 Have you ever been working in the IDE, taken a several hour break from developing, and when you returned to your work, the IDE started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! dbt Cloud now will let you know when you have to refresh your IDE so you can continue to pick up work where you last left off.
