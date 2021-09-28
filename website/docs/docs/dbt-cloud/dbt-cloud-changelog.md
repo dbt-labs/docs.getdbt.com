@@ -4,35 +4,14 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.36 (September 29,2021)
-#### Fixed
+## dbt Cloud v1.1.36 (September 29, 2021)
+Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt Cloud IDE now keeps track of your scroll position - at last!
 
-- Add back network keepalive settings to run pods
-- Saves view state of active tab instead of new tab
+#### Bug fixes
+- Some Redshift customers were experiencing timeouts on runs. We've since fixed this bug by keeping the session alive longer.
 
-#### Internal
-
-- Bug fixing for model bottleneck viz
-- [env vars] Enforce uppercasing of custom env var names
-- add proto-python key to ssh environment
-- Update change password form label
-- Update and delete environment variables using IDs (without an extra lookup)
-- Update bug_report.md
-- Asweet/4184 open file apollo
-- Changing "image_pull_secret" to an env var
-- [geico] Set k8s API timeout as environment variable, add logging
-- python requirements security update, take 2
-- Implement UI for errored models, skipped models, and edge cases
-- Environment Variables security fixes
-- Fix spacing and color scale for model bottleneck viz
-- partner connect: add state column to signups
-- Stale PR automation
-- Add frontend build helpers
-- Update model bottleneck viz (d3 refactor)
-- update 0.21.0 to rc1 from b2
-- React hook for querying API v2 file contents using Apollo
-- admin: add partner connect signups
-- Split init container spec into develop and run pod methods
+#### Performance improvements and enhancements
+- You won't lose track of the code snippets you were looking at when you switch back and forth between tabs in the dbt Cloud IDE, as we now keep track of your scroll position.
 
 ## dbt Cloud v1.1.35 (September 15, 2021)
 Have you ever been working in the IDE, taken a several hour break from developing, and when you returned to your work, the IDE started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! dbt Cloud now will let you know when you have to refresh your IDE so you can continue to pick up work where you last left off.
