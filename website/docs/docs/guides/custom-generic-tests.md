@@ -110,7 +110,11 @@ from child
 where id is not null
   and id not in (select id from parent)
 
+<<<<<<< HEAD
 {% endmacro %}
+=======
+{% endtest %}
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ```
 
 </File>

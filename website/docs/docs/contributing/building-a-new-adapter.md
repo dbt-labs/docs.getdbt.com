@@ -65,6 +65,14 @@ class MyAdapterCredentials(Credentials):
     @property
     def type(self):
         return 'myadapter'
+        
+    @property
+    def unique_field(self):
+        """
+        Hashed and included in anonymous telemetry to track adapter adoption.
+        Pick a field that can uniquely identify one team/organization building with this adapter
+        """
+        return self.host
 
     def _connection_keys(self):
         """
@@ -251,6 +259,7 @@ The following macros must be implemented, but you can override their behavior fo
 - `list_schemas` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L210))
 - `rename_relation` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L185))
 - `truncate_relation` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L175))
+- `current_timestamp` ([source](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L269)) (required)
 
 ### Adapter dispatch
 
@@ -315,6 +324,15 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 ```
 
 </File>
+
+### Other files
+
+In order to enable the [dbt init command](/reference/commands/init), make sure to include a sample profile file. The filepath will be `dbt/include/<adapter_name>/sample_profiles.yml`. This will assure that users can create a new dbt project with the `dbt init` command.
+For sample profiles, check out this [example](https://github.com/dbt-labs/dbt/blob/develop/plugins/postgres/dbt/include/postgres/sample_profiles.yml).
+
+To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatiable with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
+
+It should be noted that both of these files are included in the bootstrapped output of the `create_adapter_plugins.py` so when using that script, these files will be included.
 
 ### Testing your new adapter
 

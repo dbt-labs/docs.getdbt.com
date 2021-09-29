@@ -6,9 +6,18 @@ datatype: string
 <Changelog>
 
 * `v0.20.0`: Introduced `where` config
+<<<<<<< HEAD
 
 </Changelog>
 
+=======
+* `v0.21.0`: Introduced `config` property for tests. Reimplemented `where` config with `get_where_subquery` macro
+
+</Changelog>
+
+### Definition
+
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 Filter the resource being tested (model, source, seed, or snapshot).
 
 The `where` condition is templated into the test query by replacing the resource reference with a subquery. For instance, a `not_null` test may look like:
@@ -20,10 +29,19 @@ where my_column is null
 If the `where` config is set to `where date_column = current_date`, then the test query will be updated to:
 ```sql
 select *
+<<<<<<< HEAD
 from (select * from my_model where date_column = current_date) my_model
 where my_column is null
 ```
 
+=======
+from (select * from my_model where date_column = current_date) dbt_subquery
+where my_column is null
+```
+
+### Examples
+
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 <Tabs
   defaultValue="specific"
   values={[
@@ -50,7 +68,12 @@ models:
         tests:
           - accepted_values:
               values: ["a", "b", "c"]
+<<<<<<< HEAD
               where: "date_column = current_date"
+=======
+              config:
+                where: "date_column = current_date"
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ```
 
 </File>
@@ -114,3 +137,18 @@ tests:
 </TabItem>
 
 </Tabs>
+<<<<<<< HEAD
+=======
+
+### Custom logic
+
+As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt/blob/develop/core/dbt/include/global_project/macros/etc/where_subquery.sql).
+
+dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subquery(relation) }}`, where `relation` is a `ref()` or `source()` for the resource being tested. The default implementation of this macro returns:
+- `{{ relation }}` when the `where` config is not defined (`ref()` or `source()`)
+- `(select * from {{ relation }} where {{ where }}) dbt_subquery` when the `where` config is defined
+
+You can override this behavior by:
+- Defining a custom `get_where_subquery` in your root project
+- Defining a custom `<adapter>__get_where_subquery` [dispatch candidate](dispatch) in your package or adapter plugin
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb

@@ -91,7 +91,7 @@ When a user connects to a data warehouse via a SQL client, they often rely on th
 * Use prefixes in table names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
 
 ### Choose your materializations wisely
-[Materializations](materializations) determine the way models are built through configuration. As a general rules:
+[Materializations](materializations) determine the way models are built through configuration. As a general rule:
 * Views are faster to build, but slower to query compared to tables.
 * Incremental models provide the same query performance as tables, are faster to build compared to the table materialization, however they introduce complexity into a project.
 
@@ -117,8 +117,8 @@ By comparing to artifacts from a previous production run, dbt can determine
 which models are modified and build them on top of of their unmodified parents.
 
 ```bash
-dbt run -m state:modified+ --defer --state path/to/prod/artifacts
-dbt test -m state:modified+
+dbt run -s state:modified+ --defer --state path/to/prod/artifacts
+dbt test -s state:modified+
 ```
 
 To learn more, read the docs on [state](understanding-state).

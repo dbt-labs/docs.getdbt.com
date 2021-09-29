@@ -112,7 +112,7 @@ If your incremental model logic has changed, the transformations on your new row
 To force dbt to rebuild the entire incremental model from scratch, use the `--full-refresh` flag on the command line. This flag will cause dbt to drop the existing target table in the database before rebuilding it for all-time.
 
 ```bash
-$ dbt run --full-refresh --models my_incremental_model+
+$ dbt run --full-refresh --select my_incremental_model+
 ```
 It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
 
@@ -142,7 +142,52 @@ On warehouses that do not support `merge` statements, a merge is implemented by 
 Transaction management is used to ensure this is executed as a single unit of work.
 
 ## What if the columns of my incremental model change?
-If you add a column from your incremental model, and execute a `dbt run`, this column will _not_ appear in your target table.
+
+:::tip New `on_schema_change` config in dbt version `v0.21.0`
+
+Incremental models can now be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs.  
+
+:::
+
+You can configure the `on_schema_change` setting as follows.
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  +on_schema_change: "sync_all_columns"
+```
+
+</File>
+
+<File name='models/staging/fct_daily_active_users.sql'>
+
+```sql
+{{
+    config(
+        materialized='incremental',
+        unique_key='date_day',
+        on_schema_change='fail'
+    )
+}}
+```
+
+</File>
+
+The possible values for `on_schema_change` are:  
+
+* `ignore`: Default behavior (see below).
+* `fail`: Triggers an error message when the source and target schemas diverge  
+* `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
+* `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full table scan; be mindful of the trade-offs when implementing.
+
+**Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
+
+### Default behavior
+
+This is the behavior if `on_schema_change: ignore`, which is set by default, and on older versions of dbt.
+
+If you add a column to your incremental model, and execute a `dbt run`, this column will _not_ appear in your target table.
 
 Similarly, if you remove a column from your incremental model, and execute a `dbt run`, this column will _not_ be removed from your target table.
 
@@ -196,6 +241,10 @@ select ...
 <Changelog>
 
   - **v0.20.0:** Introduced `merge_update_columns`
+<<<<<<< HEAD
+=======
+  - **v0.21.0:** Introduced `on_schema_change`
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 </Changelog>
 

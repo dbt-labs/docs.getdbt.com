@@ -8,6 +8,11 @@ title: Test configurations
 <Changelog>
 
 * `v0.20.0`: Introduced the ability to configure tests from `dbt_project.yml`, and to configure `enabled` for generic tests. Introduced `fail_calc`, `where`, `error_if`, `warn_if`, `store_failures`, and `where` configs.
+<<<<<<< HEAD
+=======
+* `v0.21.0`: Introduced the `config()` dictionary, making it easier and clearer to configure specific instances of generic tests
+
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 </Changelog>
 
@@ -16,13 +21,23 @@ Tests can be configured in a few different ways:
 2. A `config()` block within the test's SQL definition
 3. In `dbt_project.yml`
 
+<<<<<<< HEAD
 Test configs are applied hierarchically, in the order of specifity outlined above. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
 
 ## Available configurations
+=======
+Test configs are applied hierarchically, in the order of specifity outlined above. In the case of a singular test, the `config()` block within the SQL definition takes precedence over configs in the project file. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
+
+## Available configurations
+
+Click the link on each configuration option to read more about what it can do.
+
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ### Test-specific configurations
 
 <Tabs
   groupId="config-languages"
+<<<<<<< HEAD
   defaultValue="yaml"
   values={[
     { label: 'YAML', value: 'yaml', },
@@ -30,6 +45,16 @@ Test configs are applied hierarchically, in the order of specifity outlined abov
   ]
 }>
 <TabItem value="yaml">
+=======
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Config block', value: 'config', },
+    { label: 'Property file', value: 'property-yaml', },
+  ]
+}>
+<TabItem value="project-yaml">
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 <File name='dbt_project.yml'>
 
@@ -70,6 +95,48 @@ tests:
 
 </TabItem>
 
+<<<<<<< HEAD
+=======
+<TabItem value="property-yaml">
+
+```yaml
+version: 2
+
+<resource_type>:
+  - name: <resource_name>
+    tests:
+      - [<test_name>](#test_name):
+          <argument_name>: <argument_value>
+          [config](resource-properties/config):
+            [fail_calc](fail_calc): <string>
+            [limit](limit): <integer>
+            [severity](severity): error | warn
+            [error_if](severity): <string>
+            [warn_if](severity): <string>
+            [store_failures](store_failures): true | false
+            [where](where): <string>
+
+    [columns](columns):
+      - name: <column_name>
+        tests:
+          - [<test_name>](#test_name):
+              <argument_name>: <argument_value>
+              [config](resource-properties/config):
+                [fail_calc](fail_calc): <string>
+                [limit](limit): <integer>
+                [severity](severity): error | warn
+                [error_if](severity): <string>
+                [warn_if](severity): <string>
+                [store_failures](store_failures): true | false
+                [where](where): <string>
+```
+
+This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
+
+
+</TabItem>
+
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 </Tabs>
 
 
@@ -77,6 +144,7 @@ tests:
 
 <Tabs
   groupId="config-languages"
+<<<<<<< HEAD
   defaultValue="yaml"
   values={[
     { label: 'YAML', value: 'yaml', },
@@ -84,6 +152,16 @@ tests:
   ]
 }>
 <TabItem value="yaml">
+=======
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Config block', value: 'config', },
+    { label: 'Property file', value: 'property-yaml', },
+  ]
+}>
+<TabItem value="project-yaml">
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 
 <File name='dbt_project.yml'>
@@ -93,6 +171,10 @@ tests:
   [<resource-path>](resource-path):
     [+](plus-prefix)[enabled](enabled): true | false
     [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
+<<<<<<< HEAD
+=======
+    [+](plus-prefix)[meta](resource-configs/meta): {dictionary}
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ```
 </File>
 
@@ -106,12 +188,51 @@ tests:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](resource-configs/tags)="<string>" | ["<string>"]
+<<<<<<< HEAD
+=======
+    [meta](resource-configs/meta)={dictionary}
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ) }}
 
 ```
 
 </TabItem>
 
+<<<<<<< HEAD
+=======
+<TabItem value="property-yaml">
+
+```yaml
+version: 2
+
+<resource_type>:
+  - name: <resource_name>
+    tests:
+      - [<test_name>](#test_name):
+          <argument_name>: <argument_value>
+          [config](resource-properties/config):
+            [enabled](enabled): true | false
+            [tags](resource-configs/tags): <string> | [<string>]
+            [meta](resource-configs/meta): {dictionary}
+
+    [columns](columns):
+      - name: <column_name>
+        tests:
+          - [<test_name>](#test_name):
+              <argument_name>: <argument_value>
+              [config](resource-properties/config):
+                [enabled](enabled): true | false
+                [tags](resource-configs/tags): <string> | [<string>]
+                [meta](resource-configs/meta): {dictionary}
+```
+
+This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
+
+
+</TabItem>
+
+
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 </Tabs>
 
 ### Examples

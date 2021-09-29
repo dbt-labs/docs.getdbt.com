@@ -106,7 +106,7 @@ please be mindful of the following changes to dbt's Python dependencies:
 - [Select specific seeds to run with `--select`](seed)
 - [New `generate_database_name` macro](using-custom-databases)
 - [New `dbt_project.yml context`](dbt-project-yml-context)
-- [New configurations for schema.yml files](declaring-properties)
+- [New configurations for schema.yml files](configs-and-properties)
 - [New configurations for Source declarations](using-sources)
 - [New Postgres connection configs](postgres-profile)
 - [New Snowflake KeyPair auth configs](snowflake-profile)

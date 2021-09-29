@@ -26,6 +26,7 @@ models:
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
+<<<<<<< HEAD
           [enabled](enabled): true | false
           [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
@@ -33,13 +34,18 @@ models:
           [tags](resource-properties/tags): [<string>]
           [tags](resource-properties/tags): [<string>]
           [tags](resource-properties/tags): [<string>]
+=======
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
-    columns:
+    [columns](columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
+<<<<<<< HEAD
               [enabled](enabled): true | false
               [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
@@ -48,6 +54,10 @@ models:
               [tags](resource-properties/tags): [<string>]
               [tags](resource-properties/tags): [<string>]
 
+=======
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ```
 
 </File>
@@ -69,9 +79,14 @@ sources:
         - [<test_name>](#test_name)
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
+<<<<<<< HEAD
             [enabled](enabled): true | false
             [severity](severity): error | warn
             [tags](resource-properties/tags): [<string>]
+=======
+            [config](resource-properties/config):
+              [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
       columns:
         - name: <column_name>
@@ -79,9 +94,14 @@ sources:
             - [<test_name>](#test_name)
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
+<<<<<<< HEAD
                 [enabled](enabled): true | false
                 [severity](severity): error | warn
                 [tags](resource-properties/tags): [<string>]
+=======
+                [config](resource-properties/config):
+                  [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 ```
 
@@ -102,9 +122,14 @@ seeds:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
+<<<<<<< HEAD
           [enabled](enabled): true | false
           [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
+=======
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
     columns:
       - name: <column_name>
@@ -112,9 +137,14 @@ seeds:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
+<<<<<<< HEAD
               [enabled](enabled): true | false
               [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
+=======
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 ```
 
@@ -135,9 +165,14 @@ snapshots:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
+<<<<<<< HEAD
           [enabled](enabled): true | false
           [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
+=======
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
     columns:
       - name: <column_name>
@@ -145,9 +180,14 @@ snapshots:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
+<<<<<<< HEAD
               [enabled](enabled): true | false
               [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
+=======
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 ```
 
@@ -169,7 +209,11 @@ This feature is not implemented for analyses.
 
 ## Description
 
+<<<<<<< HEAD
 The `tests` property defines assertions about a column, table, or view. The property contains a list of generic tests (referenced by name), which can include the four built-in generic tests available in dbt. It can also includes any arguments or [configurations](test-configs) passed to those tests.
+=======
+The `tests` property defines assertions about a column, table, or view. The property contains a list of generic tests (referenced by name), which can include the four built-in generic tests available in dbt. It can also include any arguments or [configurations](test-configs) passed to those tests.
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 

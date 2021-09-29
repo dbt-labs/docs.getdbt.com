@@ -71,7 +71,7 @@ Certain tests are generic: they can be reused over and over again. A generic tes
 You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
 
 :::info
-If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](declaring-properties).
+If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](configs-and-properties).
 :::
 
 Out of the box, dbt ships with four generic tests already defined: `unique`, `not_null`, `accepted_values` and `relationships`. Here's a full example using those tests on an `orders` model:
@@ -105,7 +105,11 @@ In plain English, these tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
+<<<<<<< HEAD
 You can find more information about these tests, and additional configurations (including [`severity`](severity) and [`tags`](resource-properties/tags)) in the [reference section](resource-properties/tests).
+=======
+You can find more information about these tests, and additional configurations (including [`severity`](severity) and [`tags`](resource-configs/tags)) in the [reference section](resource-properties/tests).
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide](custom-generic-tests) for more information.
 

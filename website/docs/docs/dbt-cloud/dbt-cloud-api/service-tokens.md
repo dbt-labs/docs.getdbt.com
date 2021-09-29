@@ -3,7 +3,7 @@ title: "Service Account Tokens"
 id: "service-tokens"
 ---
 
-## Service Account Tokens
+## Overview
 Service Account Admin API tokens are like [User API tokens](user-tokens), but they belong to an
 _account_, rather than _a user_.
 

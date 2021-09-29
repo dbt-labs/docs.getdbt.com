@@ -99,7 +99,11 @@ $ dbt --strict run
 
 ## Warnings as Errors
 
+<<<<<<< HEAD
 The `--warn-error` flag converts dbt warnings into errors. If dbt would normally warn, it will instead raise an error. Examples include `--models` selectors that selects nothing, deprecations, configurations with no associated models, invalid test configurations, or tests and freshness checks that are configured to return warnings.
+=======
+The `--warn-error` flag converts dbt warnings into errors. If dbt would normally warn, it will instead raise an error. Examples include `--select` selectors that selects nothing, deprecations, configurations with no associated models, invalid test configurations, or tests and freshness checks that are configured to return warnings.
+>>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 <File name='Usage'>
 

@@ -107,7 +107,7 @@ The `poll` endpoint will return the status, logs, and results (if available) for
         "elapsed_time": 0.8381369113922119,
         "logs": [],
         "tags": {
-            "command": "run --models my_model",
+            "command": "run --select my_model",
             "branch": "abc123"
         },
         "status": "success"
@@ -152,7 +152,7 @@ The `ps` methods lists running and completed processes executed by the RPC serve
                 "elapsed": 1.107261,
                 "timeout": null,
                 "tags": {
-                    "command": "run --models my_model",
+                    "command": "run --select my_model",
                     "branch": "feature/add-models"
                 }
             }
@@ -191,7 +191,7 @@ All RPC requests accept the following parameters in addition to the parameters l
 ### Running a task with CLI syntax
 
 **Parameters:**
- - `cli`: A dbt command (eg. `run --models abc+ --exclude +def`) to run (required)
+ - `cli`: A dbt command (eg. `run --select abc+ --exclude +def`) to run (required)
 
 ```json
 {
@@ -199,7 +199,7 @@ All RPC requests accept the following parameters in addition to the parameters l
     "method": "cli_args",
     "id": "<request id>",
     "params": {
-        "cli": "run --models abc+ --exclude +def",
+        "cli": "run --select abc+ --exclude +def",
         "task_tags": {
             "branch": "feature/my-branch",
             "commit": "c0ff33b01"
@@ -210,8 +210,7 @@ All RPC requests accept the following parameters in addition to the parameters l
 
 Several of the following request types accept these additional parameters:
 - `threads`: The number of [threads](configure-your-profile#understanding-threads) to use when compiling (optional)
-- `models`: The space-delimited set of models to compile, run, or test (optional)
-- `select`: The space-delimeted set of resources to seed or snapshot (optional)
+- `select`: The space-delimeted set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
 - `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
 - `state`: The filepath of artifacts to use when establishing [state](understanding-state) (optional)
@@ -225,7 +224,7 @@ Several of the following request types accept these additional parameters:
 	"id": "<request id>",
 	"params": {
             "threads": "<int> (optional)",
-            "models": "<str> (optional)",
+            "select": "<str> (optional)",
             "exclude": "<str> (optional)",
             "selector": "<str> (optional)",
             "state": "<str> (optional)"
@@ -245,7 +244,7 @@ Several of the following request types accept these additional parameters:
 	"id": "<request id>",
 	"params": {
             "threads": "<int> (optional)",
-            "models": "<str> (optional)",
+            "select": "<str> (optional)",
             "exclude": "<str> (optional)",
             "selector": "<str> (optional)",
             "state": "<str> (optional)",
@@ -267,7 +266,7 @@ Several of the following request types accept these additional parameters:
 	"id": "<request id>",
 	"params": {
             "threads": "<int> (optional)",
-            "models": "<str> (optional)",
+            "select": "<str> (optional)",
             "exclude": "<str> (optional)",
             "selector": "<str> (optional)",
             "state": "<str> (optional)",
@@ -314,6 +313,45 @@ Several of the following request types accept these additional parameters:
         }
 }
 ```
+
+### Build ([docs](build))
+
+```json
+{
+	"jsonrpc": "2.0",
+	"method": "build",
+	"id": "<request id>",
+	"params": {
+            "threads": "<int> (optional)",
+            "select": "<str> (optional)",
+            "exclude": "<str> (optional)",
+            "selector": "<str> (optional)",
+            "state": "<str> (optional)",
+            "defer": "<str> (optional)"
+        }
+}
+```
+
+### List project resources ([docs](cmd-docs#dbt-docs-generate))
+
+**Additional parameters:**
+ - `resource_types`: Filter selected resources by type
+ - `output_keys`: Specify which node properties to include in output
+
+ ```json
+ {
+ 	"jsonrpc": "2.0",
+ 	"method": "build",
+ 	"id": "<request id>",
+ 	"params": {
+         "select": "<str> (optional)",
+         "exclude": "<str> (optional)",
+         "selector": "<str> (optional)",
+         "resource_types": ["<list> (optional)"],
+         "output_keys": ["<list> (optional)"],
+     }
+ }
+ ```
 
 ### Generate docs ([docs](cmd-docs#dbt-docs-generate))
 

@@ -3,10 +3,7 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
-      items: [
-        "docs/introduction",
-        "docs/available-adapters",
-      ],
+      items: ["docs/introduction", "docs/available-adapters"],
     },
     {
       type: "category",
@@ -70,6 +67,7 @@ module.exports = {
           type: "category",
           label: "Migration guides",
           items: [
+            "docs/guides/migration-guide/upgrading-to-0-21-0",
             "docs/guides/migration-guide/upgrading-to-0-20-0",
             "docs/guides/migration-guide/upgrading-to-0-19-0",
             "docs/guides/migration-guide/upgrading-to-0-18-0",
@@ -99,10 +97,7 @@ module.exports = {
     {
       type: "category",
       label: "About",
-      items: [
-        "docs/about/license",
-        "docs/about/viewpoint",
-      ],
+      items: ["docs/about/license", "docs/about/viewpoint"],
     },
   ],
   "dbt CLI": [
@@ -134,6 +129,7 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
       ],
     },
     {
@@ -148,6 +144,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
         "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
       ],
     },
     {
@@ -166,22 +163,22 @@ module.exports = {
       items: [
         "docs/dbt-cloud/dbt-cloud-enterprise",
         {
-            type: "category",
-            label: "Single Sign On",
-            items: [
-                "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
-            ],
+          type: "category",
+          label: "Single Sign On",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
+          ],
         },
         {
-            type: "category",
-            label: "Database Auth",
-            items: [
-                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
-                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth"
-            ],
+          type: "category",
+          label: "Database Auth",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+            "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
+          ],
         },
       ],
     },
@@ -200,8 +197,35 @@ module.exports = {
       label: "dbt Cloud APIs",
       items: [
         "docs/dbt-cloud/dbt-cloud-api/cloud-apis",
-        "docs/dbt-cloud/dbt-cloud-api/user-tokens",
-        "docs/dbt-cloud/dbt-cloud-api/service-tokens",
+        {
+          type: "category",
+          label: "Authentication",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-api/user-tokens",
+            "docs/dbt-cloud/dbt-cloud-api/service-tokens",
+          ],
+        },
+        "docs/dbt-cloud/dbt-cloud-api/admin-cloud-api",
+        {
+          type: "category",
+          label: "Metadata API",
+          items: [
+            "docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview",
+            "docs/dbt-cloud/dbt-cloud-api/metadata/metadata-querying",
+            {
+              type: "category",
+              label: "Schema",
+              items: [
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
+            ],
+            },
+          ],
+        },
       ],
     },
     "docs/dbt-cloud/cloud-dbt-cloud-support",
@@ -210,44 +234,63 @@ module.exports = {
   reference: [
     {
       type: "category",
-      label: "Configurations",
+      label: "Project configs",
       items: [
         "reference/dbt_project.yml",
+        "reference/project-configs/analysis-paths",
+        "reference/project-configs/asset-paths",
+        "reference/project-configs/clean-targets",
+        "reference/project-configs/config-version",
+        "reference/project-configs/data-paths",
+        "reference/project-configs/dispatch-config",
+        "reference/project-configs/docs-paths",
+        "reference/project-configs/log-path",
+        "reference/project-configs/macro-paths",
+        "reference/project-configs/modules-path",
+        "reference/project-configs/name",
+        "reference/project-configs/on-run-start-on-run-end",
+        "reference/project-configs/profile",
+        "reference/project-configs/query-comment",
+        "reference/project-configs/quoting",
+        "reference/project-configs/require-dbt-version",
+        "reference/project-configs/snapshot-paths",
+        "reference/project-configs/source-paths",
+        "reference/project-configs/target-path",
+        "reference/project-configs/test-paths",
+        "reference/project-configs/version",
+      ],
+    },
+    {
+      type: "category",
+      label: "Adapter-specific configs",
+      items: [
+        "reference/resource-configs/postgres-configs",
+        "reference/resource-configs/bigquery-configs",
+        "reference/resource-configs/redshift-configs",
+        "reference/resource-configs/snowflake-configs",
+        "reference/resource-configs/spark-configs",
+      ],
+    },
+    {
+      type: "category",
+      label: "Resource configs and properties",
+      items: [
+        "reference/configs-and-properties",
         {
           type: "category",
-          label: "Project configurations",
+          label: "General properties",
           items: [
-            "reference/project-configs/analysis-paths",
-            "reference/project-configs/asset-paths",
-            "reference/project-configs/clean-targets",
-            "reference/project-configs/config-version",
-            "reference/project-configs/data-paths",
-            "reference/project-configs/dispatch-config",
-            "reference/project-configs/docs-paths",
-            "reference/project-configs/log-path",
-            "reference/project-configs/macro-paths",
-            "reference/project-configs/modules-path",
-            "reference/project-configs/name",
-            "reference/project-configs/on-run-start-on-run-end",
-            "reference/project-configs/profile",
-            "reference/project-configs/query-comment",
-            "reference/project-configs/quoting",
-            "reference/project-configs/require-dbt-version",
-            "reference/project-configs/snapshot-paths",
-            "reference/project-configs/source-paths",
-            "reference/project-configs/target-path",
-            "reference/project-configs/test-paths",
-            "reference/project-configs/version",
+            "reference/resource-properties/columns",
+            "reference/resource-properties/config",
+            "reference/resource-properties/description",
+            "reference/resource-properties/docs",
+            "reference/resource-properties/quote",
+            "reference/resource-properties/tests",
           ],
         },
-        "reference/model-configs",
-        "reference/seed-configs",
-        "reference/source-configs",
-        "reference/snapshot-configs",
-        "reference/test-configs",
         {
           type: "category",
-          label: "List of general configs",
+          label: "General configs",
           items: [
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
@@ -257,28 +300,37 @@ module.exports = {
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
             "reference/resource-configs/tags",
+            "reference/resource-configs/meta",
+            "reference/advanced-config-usage",
+            "reference/resource-configs/plus-prefix",
           ],
         },
         {
           type: "category",
-          label: "List of model configs",
+          label: "For models",
           items: [
+            "reference/model-properties",
+            "reference/model-configs",
             "reference/resource-configs/materialized",
             "reference/resource-configs/sql_header",
           ],
         },
         {
           type: "category",
-          label: "List of seed configs",
+          label: "For seeds",
           items: [
+            "reference/seed-properties",
+            "reference/seed-configs",
             "reference/resource-configs/column_types",
             "reference/resource-configs/quote_columns",
           ],
         },
         {
           type: "category",
-          label: "List of snapshot configs",
+          label: "For snapshots",
           items: [
+            "reference/snapshot-properties",
+            "reference/snapshot-configs",
             "reference/resource-configs/check_cols",
             "reference/resource-configs/strategy",
             "reference/resource-configs/target_database",
@@ -290,8 +342,9 @@ module.exports = {
         },
         {
           type: "category",
-          label: "List of test configs",
+          label: "For tests",
           items: [
+            "reference/test-configs",
             "reference/resource-configs/fail_calc",
             "reference/resource-configs/limit",
             "reference/resource-configs/severity",
@@ -299,44 +352,14 @@ module.exports = {
             "reference/resource-configs/where",
           ],
         },
-        "reference/resource-configs/postgres-configs",
-        "reference/resource-configs/bigquery-configs",
-        "reference/resource-configs/redshift-configs",
-        "reference/resource-configs/snowflake-configs",
-        "reference/resource-configs/spark-configs",
-        "reference/advanced-config-usage",
-        "reference/resource-configs/plus-prefix",
-      ],
-    },
-    {
-      type: "category",
-      label: "Properties (schema.yml files)",
-      items: [
-        "reference/declaring-properties",
-        "reference/model-properties",
-        "reference/source-properties",
-        "reference/seed-properties",
-        "reference/snapshot-properties",
-        "reference/analysis-properties",
-        "reference/macro-properties",
-        "reference/exposure-properties",
         {
           type: "category",
-          label: "List of general properties",
+          label: "For sources",
           items: [
-            "reference/resource-properties/description",
-            "reference/resource-properties/docs",
-            "reference/resource-properties/meta",
-            "reference/resource-properties/quote",
-            "reference/resource-properties/tags",
-            "reference/resource-properties/tests",
-          ],
-        },
-        {
-          type: "category",
-          label: "List of source properties",
-          items: [
+            "reference/source-properties",
+            "reference/source-configs",
             "reference/resource-properties/database",
+            "reference/resource-properties/external",
             "reference/resource-properties/freshness",
             "reference/resource-properties/identifier",
             "reference/resource-properties/loader",
@@ -347,9 +370,24 @@ module.exports = {
         },
         {
           type: "category",
-          label: "List of macro properties",
-          items: [
-            "reference/resource-properties/argument-type",
+          label: "For analyses",
+          items: [      
+            "reference/analysis-properties",
+          ],
+        },
+        {
+          type: "category",
+          label: "For exposures",
+          items: [      
+            "reference/exposure-properties",
+          ],
+        },
+        {
+          type: "category",
+          label: "For macros",
+          items: [      
+            "reference/macro-properties",
+            "reference/resource-properties/argument-type"
           ],
         },
       ],
@@ -379,6 +417,7 @@ module.exports = {
           type: "category",
           label: "List of commands",
           items: [
+            "reference/commands/build",
             "reference/commands/clean",
             "reference/commands/cmd-docs",
             "reference/commands/compile",
@@ -464,6 +503,7 @@ module.exports = {
         "reference/warehouse-profiles/snowflake-profile",
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
+        "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/spark-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
@@ -510,9 +550,7 @@ module.exports = {
       type: "category",
       label: "Leveling up",
       collapsed: false,
-      items: [
-        "tutorial/using-jinja",
-      ],
+      items: ["tutorial/using-jinja"],
     },
   ],
   learn: [
