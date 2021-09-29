@@ -4,6 +4,14 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.36 (September 29, 2021)
+Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt Cloud IDE now keeps track of your scroll position - at last!
+
+#### Bug fixes
+- Some Redshift customers were experiencing timeouts on runs. We've since fixed this bug by keeping the session alive longer.
+
+#### Performance improvements and enhancements
+- You won't lose track of the code snippets you were looking at when you switch back and forth between tabs in the dbt Cloud IDE, as we now keep track of your scroll position.
 
 ## dbt Cloud v1.1.35 (September 15, 2021)
 Have you ever been working in the IDE, taken a several hour break from developing, and when you returned to your work, the IDE started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! dbt Cloud now will let you know when you have to refresh your IDE so you can continue to pick up work where you last left off.
