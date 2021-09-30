@@ -29,19 +29,20 @@ We've included lots of examples below:
 <Changelog>
 
 * `v0.18.0`: Introduced the `test_type` selection method. In previous versions, similar behavior is possible via the `--schema` or `--data` flags.
+- `v1.0.0`: Renamed test types: "generic" (formerly "schema") and "singular" (formerly "data"). Removed support for the `--schema` and `--data` flags.
 
 </Changelog>
 
-Run generic (schema) tests only:
+Run generic tests only:
 
 ```shell
-$ dbt test --select test_type:schema
+$ dbt test --select test_type:generic
 ```
 
-Run bespoke (data) tests only:
+Run singular tests only:
 
 ```shell
-$ dbt test --select test_type:data
+$ dbt test --select test_type:singular
 ```
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
