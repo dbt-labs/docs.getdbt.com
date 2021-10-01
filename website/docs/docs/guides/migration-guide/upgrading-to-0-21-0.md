@@ -16,8 +16,11 @@ dbt v0.21.0-rc1 is currently available as a release candidate. If you have quest
 ## Breaking changes
 
 - `dbt source snapshot-freshness` has been renamed to `dbt source freshness`. Its node selection logic is now consistent with other tasks. In order to check freshness for a specific source, you must prefix it with `source:`.
-- Two dbt JSON artifacts have a new schema: [`manifest.json`](manifest-json) (new default node properties) and [`sources.json`](sources-json) (now includes timing information).
 - **Snowflake:** Turn off transactions and turn on autocommit by default. Explicitly specify `begin` and `commit` for DML statements in incremental and snapshot materializations. Note that this may affect user-space code that depends on transactions.
+- **Artifacts:**
+    - [`manifest.json`](manifest-json) uses a `v3` schema that includes additional node properties (no changes to existing properties)
+    - [`run_results.json`](run-results-json) uses a `v3` schema that has added `skipped` as a potential `TestResult`
+    - [`sources.json`](sources-json) has a new `v2` schema that has added timing and thread details
 
 ## New and changed documentation
 
