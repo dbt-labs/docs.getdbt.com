@@ -1,6 +1,6 @@
 /*
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; style-src 'self' unsafe-inline *cdn.jsdelivr.net *fonts.googleapis.com data:; img-src 'self' data:; script-src 'self' unsafe-inline *jquery.com *googletagmanager.com; connect-src 'self'; frame-ancestors 'none'; font-src 'self' *fonts.googleapis.com
+  Content-Security-Policy: style-src https: data:; script-src https:; object-src 'none'; frame-ancestors 'none'; f
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
