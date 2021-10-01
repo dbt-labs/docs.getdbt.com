@@ -1,3 +1,4 @@
+// Inject metatags to head
 module.exports = function insertMetaTagsPlugin(context, options) {
   return {
     name: 'docusaurus-insert-meta-tags-plugin',
