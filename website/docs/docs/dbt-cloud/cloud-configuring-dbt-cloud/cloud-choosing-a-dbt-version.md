@@ -3,7 +3,7 @@ title: "Choosing a dbt version"
 id: "cloud-choosing-a-dbt-version"
 ---
 
-In dbt Cloud, both jobs and environments are configured to use some version of dbt Core. This can be altered at any time.
+In dbt Cloud, both jobs and environments are configured to use a specific version of dbt Core. The version can be upgraded at any time.
 
 ### Environments
 
@@ -41,7 +41,11 @@ We will continue to update this table so that customers know when we plan to sto
 We will give customers consistent communication that they're hitting the end of their supported window, so they can plan accordingly. 
 
 #### What should you be doing today?
-There are years of development and a handful of breaking changes between two distant versions of dbt (e.g. v0.14 --> v0.20). There are far fewer between two subsequent versions of dbt, which is why upgrading regularly is important. Getting your project running on the latest release of dbt today will make the jump to v1.0 much easier when it's released.
+Your migration to v1.0.0 will progress much smoother if you **begin transitioning to more recent versions of dbt as soon as possible.**
+
+Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v.0.20.0) implies 6x the potential for breaking changes vs. upgrading a single minor version. 
+
+Refactoring code is much easier when you're updating a well-defined, constrained surface area. Doing things incrementally is the way to go.
 
 Additionally upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
 
