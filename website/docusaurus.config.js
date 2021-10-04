@@ -45,12 +45,24 @@ if (!process.env.ALGOLIA_INDEX_NAME) {
   ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME;
 }
 
+let metatags = []
+// If Not Current Branch, do not index site
+if(GIT_BRANCH !== 'current') {
+  metatags.push({
+    tagName: 'meta',
+    attributes: {
+      name: 'robots',
+      content: 'noindex'
+    }
+  })
+}
+
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
 console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
-
+console.log("DEBUG: metatags = ", metatags);
 
 module.exports = {
   baseUrl: '/',
@@ -192,6 +204,10 @@ module.exports = {
     ],
   ],
   plugins: [
+    [
+      path.resolve('plugins/insertMetaTags'), 
+      { metatags } 
+    ],
     path.resolve('plugins/svg'),
   ],
   scripts: [
