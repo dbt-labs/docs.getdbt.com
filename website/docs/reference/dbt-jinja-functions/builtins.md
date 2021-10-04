@@ -11,7 +11,7 @@ The `builtins` variable is a dictionary containing the following keys:
 
 - [ref](ref)
 - [source](dbt-jinja-functions/source)
-- [config](config)
+- [config](dbt-jinja-functions/config)
 - [execute](execute)
 
 ## Usage

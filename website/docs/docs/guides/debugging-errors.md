@@ -183,7 +183,7 @@ _Note: if you're using the dbt Cloud IDE to work on your dbt project, this error
 
 ### Invalid `ref` function
 ```
-$ dbt run -m customers
+$ dbt run -s customers
 Running with dbt=0.17.1
 
 Encountered an error:

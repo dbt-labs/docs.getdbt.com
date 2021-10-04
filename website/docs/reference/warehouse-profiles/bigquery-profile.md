@@ -13,7 +13,7 @@ BigQuery targets can be specified using one of four methods:
 
 For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
-BigQuery targets should be set up using the following configuration in your `profiles.yml` file.
+BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
 
 ### OAuth via gcloud
 
@@ -33,10 +33,7 @@ my-bigquery-db:
       project: [GCP project id]
       dataset: [the name of your dbt dataset] # You can also use "schema" here
       threads: [1 or more]
-      timeout_seconds: 300
-      location: US # Optional, one of US or EU
-      priority: interactive
-      retries: 1
+      [<optional_config>](#optional-configurations): <value>
 ```
 
 </File>
@@ -74,14 +71,11 @@ my-bigquery-db:
       project: [GCP project id]
       dataset: [the name of your dbt dataset] # You can also use "schema" here
       threads: [1 or more]
-      timeout_seconds: 300
-      location: US # Optional, one of US or EU
-      priority: interactive
-      retries: 1
       refresh_token: [token]
       client_id: [client id]
       client_secret: [client secret]
       token_uri: [redirect URI]
+      [<optional_config>](#optional-configurations): <value>
 ```
 
 </File>
@@ -104,11 +98,8 @@ my-bigquery-db:
       project: [GCP project id]
       dataset: [the name of your dbt dataset] # You can also use "schema" here
       threads: [1 or more]
-      timeout_seconds: 300
-      location: US # Optional, one of US or EU
-      priority: interactive
-      retries: 1
       token: [temporary access token] # refreshed + updated by external process
+      [<optional_config>](#optional-configurations): <value>
 ```
 
 </File>
@@ -132,9 +123,7 @@ my-bigquery-db:
       dataset: [the name of your dbt dataset]
       threads: [1 or more]
       keyfile: [/path/to/bigquery/keyfile.json]
-      timeout_seconds: 300
-      priority: interactive
-      retries: 1
+      [<optional_config>](#optional-configurations): <value>
 ```
 
 </File>
@@ -161,8 +150,7 @@ my-bigquery-db:
       project: [GCP project id]
       dataset: [the name of your dbt dataset]
       threads: [1 or more]
-      timeout_seconds: 300
-      priority: interactive
+      [<optional_config>](#optional-configurations): <value>
 
       # These fields come from the service account json keyfile
       keyfile_json:
@@ -181,11 +169,23 @@ my-bigquery-db:
 
 </File>
 
-## Configuration options
+## Optional configurations
 
 ### Priority
 
 The `priority` for the BigQuery jobs that dbt executes can be configured with the `priority` configuration in your BigQuery profile. The `priority` field can be set to one of `batch` or `interactive`. For more information on query priority, consult the [BigQuery documentation](https://cloud.google.com/bigquery/docs/running-queries).
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      priority: interactive
+```
 
 ### Timeouts
 
@@ -195,7 +195,19 @@ BigQuery supports query timeouts. By default, the timeout is set to 300 seconds.
  Operation did not complete within the designated timeout.
 ```
 
-To change this timeout, use the `timeout_seconds` option shown in the BigQuery profile configuration above.
+To change this timeout, use the `timeout_seconds` configuration:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      timeout_seconds: 600 # 10 minutes
+```
 
 ### Retries
 
@@ -296,6 +308,27 @@ For a general overview of this process, see the official docs for [Creating Shor
 
 <FAQ src="bq-impersonate-service-account-why" />
 <FAQ src="bq-impersonate-service-account-setup" />
+
+### Execution project
+<Changelog>New in v0.21.0</Changelog>
+
+By default, dbt will use the specified `project`/`database` as both:
+1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom `project`/`database` config
+2. The GCP project that receives the bill for query costs or slot usage
+
+Optionally, you may specify an `execution_project` to bill for query execution, instead of the `project`/`database` where you materialize most resources.
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      execution_project: buck-stops-here-456
+```
 
 ## Required permissions
 

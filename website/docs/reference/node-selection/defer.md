@@ -18,8 +18,8 @@ Defer requires that a manifest from a previous dbt invocation be passed to the `
 ### Usage
 
 ```shell
-$ dbt run --models [...] --defer --state path/to/artifacts
-$ dbt test --models [...] --defer --state path/to/artifacts
+$ dbt run --select [...] --defer --state path/to/artifacts
+$ dbt test --select [...] --defer --state path/to/artifacts
 ```
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
@@ -73,7 +73,7 @@ I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 <TabItem value="no_defer">
 
 ```shell
-$ dbt run --models model_b
+$ dbt run --select model_b
 ```
 
 <File name='target/run/my_project/model_b.sql'>
@@ -100,7 +100,7 @@ Unless I had previously run `model_a` into this development environment, `dev_al
 <TabItem value="yes_defer">
 
 ```shell
-$ dbt run --models model_b --defer --state prod-run-artifacts
+$ dbt run --select model_b --defer --state prod-run-artifacts
 ```
 
 <File name='target/run/my_project/model_b.sql'>
@@ -160,7 +160,7 @@ models:
 <TabItem value="no_defer">
 
 ```shell
-dbt test --models model_b
+dbt test --select model_b
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>
@@ -185,7 +185,7 @@ The `relationships` test requires both `model_a` and `model_b`. Because I did no
 <TabItem value="yes_defer">
 
 ```shell
-dbt test --models model_b --defer --state prod-run-artifacts
+dbt test --select model_b --defer --state prod-run-artifacts
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>

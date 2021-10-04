@@ -287,6 +287,8 @@ A number of other configurations are also supported (e.g. `tags` and `post-hook`
 
 Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](snapshot-configs) for more information.
 
+Note: As of v0.21, BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
+
 
 ### Configuration best practices
 #### Use the `timestamp` strategy where possible

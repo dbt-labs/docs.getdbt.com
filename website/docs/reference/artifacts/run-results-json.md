@@ -2,7 +2,7 @@
 title: Run Results
 ---
 
-_Current schema_: [`v2`](https://schemas.getdbt.com/dbt/run-results/v2.json)
+_Current schema_: [`v3`](https://schemas.getdbt.com/dbt/run-results/v3/index.html)
 
 _Produced by:_
 - `dbt run`
@@ -11,12 +11,13 @@ _Produced by:_
 - `dbt snapshot`
 - `dbt compile`
 - `dbt docs generate`
+- `dbt build`
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
 
 Note that only executed nodes appear in the run results. If you have multiple run or test steps with different critiera, each will produce different run results.
 
-Note: `dbt source snapshot-freshness` produces a different artifact, [`sources.json`](sources-json), with similar attributes.
+Note: `dbt source freshness` produces a different artifact, [`sources.json`](sources-json), with similar attributes.
 
 ### Top-level keys
 

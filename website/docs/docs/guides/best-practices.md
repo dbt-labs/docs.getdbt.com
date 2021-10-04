@@ -117,8 +117,8 @@ By comparing to artifacts from a previous production run, dbt can determine
 which models are modified and build them on top of of their unmodified parents.
 
 ```bash
-dbt run -m state:modified+ --defer --state path/to/prod/artifacts
-dbt test -m state:modified+
+dbt run -s state:modified+ --defer --state path/to/prod/artifacts
+dbt test -s state:modified+
 ```
 
 To learn more, read the docs on [state](understanding-state).

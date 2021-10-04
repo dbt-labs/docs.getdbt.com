@@ -26,6 +26,20 @@ After you've changed the package version in your packages.yml file, be sure to r
 
 
 <details>
+<summary>  Upgrading to v0.21.latest from v0.20 </summary>
+<br></br>
+
+- Do you select specific sources to check freshness (`dbt snapshot-freshness --select <source_name>`)?
+- Do you have custom scripts that parse dbt JSON artifacts?
+- (Snowflake only) Do you have custom macros or materializations that depend on using transactions, such as statement blocks with `auto_begin=True`?
+
+If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-21-0).
+
+</details>
+
+
+
+<details>
 <summary>  Upgrading to v0.20.latest from v0.19 </summary>
 <br></br>
 
