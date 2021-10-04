@@ -55,7 +55,7 @@ When setting up or editing a job, you will see a button in the Environment secti
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.gif" title="Navigating to environment variables job override settings"/>
 
 
-Every job runs in a specific, deployment environment, and by default, a job will inherit the values set at the environment level (or highest precedence level set) for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
+Every job runs in a specific, deployment environment, and by default, a job will inherit the values set at the environment level (or the highest precedence level set) for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.png" title="Setting a job override value"/>
 
