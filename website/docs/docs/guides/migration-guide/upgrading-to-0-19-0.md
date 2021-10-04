@@ -6,7 +6,8 @@ title: "Upgrading to 0.19.0"
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/1951)
-- [Changelog](https://github.com/dbt-labs/dbt/blob/dev/kiyoshi-kuromiya/CHANGELOG.md)
+- [Release notes](https://github.com/dbt-labs/dbt/releases/tag/v0.19.0)
+- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.19.latest/CHANGELOG.md)
 
 ## Breaking changes
 

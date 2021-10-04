@@ -3,15 +3,11 @@ title: "Upgrading to 0.21.0"
 
 ---
 
-:::info Release candidate
-
-dbt v0.21.0-rc1 is currently available as a release candidate. If you have questions or encounter bugs, please let us know in [#dbt-prereleases](https://community.getdbt.com/) or by opening an issue [in GitHub](https://github.com/dbt-labs/dbt).
-
-:::
-
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt/blob/0.21.latest/CHANGELOG.md)
+- [Discourse](https://discourse.getdbt.com/t/3077)
+- [Release notes](https://github.com/dbt-labs/dbt/releases/tag/v0.21.0)
+- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.21.0/CHANGELOG.md)
 
 ## Breaking changes
 
