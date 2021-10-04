@@ -46,3 +46,7 @@ models:
 </File>
 
  This can be useful to avoid compilation errors when the environment variable isn't available.
+
+:::info dbt Cloud Usage
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+::: 
