@@ -146,13 +146,17 @@ packages:
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
+:::info dbt Cloud Usage
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+::: 
+
 In GitHub:
 
 <File name='packages.yml'>
 
 ```yaml
 packages:
-  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+  - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
@@ -165,7 +169,7 @@ In GitLab:
 
 ```yaml
 packages:
-  - git: "https://{{env_var('USER_NAME')}}:{{env_var('DEPLOY_TOKEN')}}@gitlab.example.com/dbt-labs/awesome_project.git" # git HTTPS URL
+  - git: "https://{{env_var('DBT_USER_NAME')}}:{{env_var('DBT_ENV_SECRET_DEPLOY_TOKEN')}}@gitlab.example.com/dbt-labs/awesome_project.git" # git HTTPS URL
 ```
 
 </File>
@@ -178,7 +182,7 @@ In Azure DevOps:
 
 ```yaml
 packages:
-  - git: "https://{{env_var('PERSONAL_ACCESS_TOKEN')}}@dev.azure.com/dbt-labs/awesome_project/_git/awesome_repo" # git HTTPS URL
+  - git: "https://{{env_var('DBT_ENV_SECRET_PERSONAL_ACCESS_TOKEN')}}@dev.azure.com/dbt-labs/awesome_project/_git/awesome_repo" # git HTTPS URL
 ```
 
 </File>
@@ -191,7 +195,7 @@ In Bitbucket:
 
 ```yaml
 packages:
-  - git: "https://{{env_var('USER_NAME')}}:{{env_var('PERSONAL_ACCESS_TOKEN')}}@bitbucketserver.com/scm/awesome_project/awesome_repo.git" # for Bitbucket Server
+  - git: "https://{{env_var('DBT_USER_NAME')}}:{{env_var('DBT_ENV_SECRET_PERSONAL_ACCESS_TOKEN')}}@bitbucketserver.com/scm/awesome_project/awesome_repo.git" # for Bitbucket Server
 ```
 
 </File>
