@@ -6,7 +6,8 @@ title: "Upgrading to 0.20.0"
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/2621)
-- [Changelog](https://github.com/fishtown-analytics/dbt/blob/develop/CHANGELOG.md)
+- [Release notes](https://github.com/dbt-labs/dbt/releases/tag/v0.20.0)
+- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.20.latest/CHANGELOG.md)
 
 ## Breaking changes
 
