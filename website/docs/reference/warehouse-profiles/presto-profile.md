@@ -11,7 +11,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 ## Overview of dbt-presto
 **Maintained by:** core dbt maintainers    
 **Author:** dbt Labs    
-**Source:** [Github](https://github.com/dbt-labs/dbt-presto )   
+**Source:** [Github](https://github.com/dbt-labs/dbt-presto)   
 **Core version:** v0.13.0 and newer    
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNNPBQ24R)    
 
