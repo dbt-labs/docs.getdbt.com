@@ -8,7 +8,7 @@ Software engineers frequently modularize code into libraries. These libraries he
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
-  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) or [Heap](https://hub.getdbt.com/dbt-labs/heap/latest/) pageviews into sessions
+  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/) or [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) pageviews into sessions
   * transforming [AdWords](https://hub.getdbt.com/dbt-labs/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
   * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
