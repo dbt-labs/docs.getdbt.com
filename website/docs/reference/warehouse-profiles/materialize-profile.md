@@ -11,8 +11,9 @@ Certain core functionality may vary. If you would like to report a bug, request 
 ## Overview of dbt-materialize
 
 **Maintained by:** Materialize, Inc.      
-**Source:** https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize    
-**Core version:** v0.18.1 and newer    
+**Source:** [Github](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)
+**Core version:** v0.18.1 and newer  
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01PWAH41A5)  
 
 The easiest way to install is to use pip:
 
