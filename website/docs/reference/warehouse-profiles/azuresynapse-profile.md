@@ -13,7 +13,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 **Maintained by:** Community
 **Author:** Nandan Hegde and Anders Swanson         
-**Source:** [Github](https://github.com/dbt-msft/dbt-synapse    )
+**Source:** [Github](https://github.com/dbt-msft/dbt-synapse)
 **Core version:** v0.18.0 and newer  
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01DRQ178LQ)    
 

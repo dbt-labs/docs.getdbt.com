@@ -9,10 +9,13 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 ## Overview of dbt-trino
-**Maintained by:** Community    
-**Author:** findinpath    
-**Source:** https://github.com/findinpath/dbt-trino    
-**Core version:** v0.20.0 and newer     
+
+**Maintained by:** Community
+**Author:** findinpath       
+**Source:** [Github](https://github.com/findinpath/dbt-trino)
+**Core version:** v0.20.0 and newer    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNNPBQ24R)   
+
 
 ![dbt-presto stars](https://img.shields.io/github/stars/findinpath/dbt-trino?style=for-the-badge)
 
