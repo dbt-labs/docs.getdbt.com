@@ -37,8 +37,6 @@ rockset:
 
 </File>
 
-## Supported Features
-
 ### Materializations
 
 Type | Supported? | Details
