@@ -121,6 +121,34 @@ dbt run -s state:modified+ --defer --state path/to/prod/artifacts
 dbt test -s state:modified+
 ```
 
+<Changelog>New in v1.0.0</Changelog>
+
+By comparing to artifacts from a previous production run, dbt can determine model and test result statuses.
+
+- `result:fail`
+- `result:error`
+- `result:warn`
+- `result:success`
+- `result:skipped`
+- `result:pass`
+
+For smarter reruns, use the `result:<status>` selector instead of manually overriding dbt commands with the models in scope.
+
+`dbt run state:modified+ result:error+ -—defer -—state ./target`
+  - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
+
+`dbt build state:modified+ result:error+ -—defer -—state ./target`
+  - Rerun and retest all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
+
+`dbt build state:modified+ result:error+ result:fail+ --defer --state ./target`
+  - Rerun all my erroneous models AND all my failed tests
+  - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
+  - There's a failed test that's unrelated to modified or error nodes(think: source test that needs to refresh a data load in order to pass)
+
+`dbt test result:fail --exclude <example test> -—defer -—state ./target`
+  - Rerun all my failed tests and exclude tests that I know will still fail
+  - This can apply to updates in source data during the "EL" process that need to be rerun after they are refreshed
+
 To learn more, read the docs on [state](understanding-state).
 
 ## Pro-tips for dbt Projects
