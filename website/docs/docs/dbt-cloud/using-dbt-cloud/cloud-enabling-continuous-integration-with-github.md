@@ -46,7 +46,7 @@ When the run is complete, dbt Cloud will update the PR in GitHub or MR in GitLab
 
 With Slim CI, you don't have to rebuild and test all your models. You can instruct dbt Cloud to run jobs on only modified or new resources.
 
-When creating or editing a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the drop drop menu to select which **production** job you want to defer to. 
+When creating or editing a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the drop menu to select which **production** job you want to defer to. 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests can select another job from the same project for deferral and comparison"/>
