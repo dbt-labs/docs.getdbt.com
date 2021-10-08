@@ -77,7 +77,7 @@ As example:
 dbt build --select result:error+ result:fail+
 ```
 
-More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md##Pro-tips-for-workflows)
+More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
 
 ## Troubleshooting
 
