@@ -134,24 +134,24 @@ By comparing to artifacts from a previous production run, dbt can determine mode
 
 For smarter reruns, use the `result:<status>` selector instead of manually overriding dbt commands with the models in scope.
 ```bash
-dbt run state:modified+ result:error+ -—defer -—state ./target
+dbt run state:modified+ result:error+ --defer --state path/to/prod/artifacts
 ```
   - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
 
 ```bash
-dbt build state:modified+ result:error+ -—defer -—state ./target
+dbt build state:modified+ result:error+ --defer --state path/to/prod/artifacts
 ```
   - Rerun and retest all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
 
 ```bash
-dbt build state:modified+ result:error+ result:fail+ --defer --state ./target
+dbt build state:modified+ result:error+ result:fail+ --defer --state path/to/prod/artifacts
 ```
   - Rerun all my erroneous models AND all my failed tests
   - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
   - There's a failed test that's unrelated to modified or error nodes(think: source test that needs to refresh a data load in order to pass)
 
 ```bash
-dbt test result:fail --exclude <example test> -—defer -—state ./target
+dbt test result:fail --exclude <example test> --defer --state path/to/prod/artifacts
 ```
   - Rerun all my failed tests and exclude tests that I know will still fail
   - This can apply to updates in source data during the "EL" process that need to be rerun after they are refreshed
