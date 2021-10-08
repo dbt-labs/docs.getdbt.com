@@ -11,14 +11,14 @@ Some core functionality may be limited. If you're interested in contributing, ch
 ## Overview of dbt-trino
 **Maintained by:** Community    
 **Author:** findinpath    
-**Source:** https://github.com/findinpath/dbt-trino    
+**Source:** https://github.com/starburstdata/dbt-trino    
 **Core version:** v0.20.0 and newer     
 
 ![dbt-presto stars](https://img.shields.io/github/stars/findinpath/dbt-trino?style=for-the-badge)
 
 ## Installation and Distribution
 
-dbt's Trino adapter is managed in its own repository, [dbt-trino](https://github.com/findinpath/dbt-trino). To use the Trino adapter, you must install the `dbt-trino` plugin:
+dbt's Trino adapter is managed in its own repository, [dbt-trino](https://github.com/starburstdata/dbt-trino). To use the Trino adapter, you must install the `dbt-trino` plugin:
 
 ### Using pip
 The following command will install the latest version of `dbt-trino` as well as the requisite version of `dbt-core`:
@@ -48,10 +48,23 @@ trino:
       port: [port number]
       schema: [your dbt schema]
       threads: [1 or more]
-
+      http_scheme: [http or https]
+      session_properties:
+        query_max_run_time: 5d
+        exchange_compression: True
 ```
 
 </File>
+
+## Incremental models
+
+The incremental strategy currently supported by this adapter is to append new records without updating/overwriting any existing data from the target model.
+
+```
+{{
+    config(materialized = 'incremental')
+}}
+```
 
 ## Caveats
 
@@ -60,5 +73,4 @@ trino:
 Due to the nature of Trino, not all core dbt functionality is supported. The following features of dbt are not implemented on Trino:
 
 1. [Snapshots](snapshots)
-2. [Incremental models](configuring-incremental-models)
 
