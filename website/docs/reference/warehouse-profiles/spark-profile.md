@@ -14,9 +14,9 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Maintained by:** core dbt maintainers    
 **Author:** dbt Labs    
 **Source:** [Github](https://github.com/dbt-labs/dbt-spark)    
-**Core version:** v0.13.0 and newer     
+**Core version:** v0.13.0 and newer 
+**dbt Cloud:** Supported    
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNGCW8HKL) 
-**dbt Cloud:** Preview
 
 
 ![dbt-spark stars](https://img.shields.io/github/stars/dbt-labs/dbt-spark?style=for-the-badge)

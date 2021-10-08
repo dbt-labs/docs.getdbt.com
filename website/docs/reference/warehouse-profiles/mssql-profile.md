@@ -14,6 +14,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Author:** Mikael Ene           
 **Source:** [Github](https://github.com/dbt-msft/dbt-sqlserver)
 **Core version:** v0.14.0 and newer 
+**dbt Cloud:** Not Supported
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CMRMDDQ9W)  
 
 ![dbt-sqlserver stars](https://img.shields.io/github/stars/mikaelene/dbt-sqlserver?style=for-the-badge)
