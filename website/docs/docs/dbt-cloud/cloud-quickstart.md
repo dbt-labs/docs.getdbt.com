@@ -53,3 +53,7 @@ Now that dbt Cloud is able to clone your dbt repo and connect to your warehouse,
 Job schedules can be configured from the job creation interface. You can either schedule your job using the visual editor, or you can enter a custom cron syntax for your job.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job-schedule.png" title="Setting a job schedule"/>
+
+## Alternatives
+
+If you are interested in trialing dbt Cloud with Snowflake, you can use [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to spin up a dbt Cloud account with all of the key objects created (deployment and development environments, git repository, and sample job). All you need is a Snowflake Account with access to the ACCOUNTADMIN role to go into Partner Connect and find the dbt tile to set up a dedicated environment for test driving. 
