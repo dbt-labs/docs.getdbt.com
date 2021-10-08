@@ -3,12 +3,12 @@ title: "Redshift Profile"
 ---
 
 ## Overview of dbt-redshift
-**Maintained by:** core dbt maintainers    
-**Author:** dbt Labs    
-**Source:** [Github](https://github.com/dbt-labs/dbt-redshift)   
-**Core version:** v0.13.0 and newer    
-**dbt Cloud:** Supported
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CJARVS0RY)  
+**Maintained by:** core dbt maintainers        
+**Author:** dbt Labs        
+**Source:** [Github](https://github.com/dbt-labs/dbt-redshift)       
+**Core version:** v0.13.0 and newer        
+**dbt Cloud:** Supported    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CJARVS0RY)      
 
 
 ## Authentication Methods
