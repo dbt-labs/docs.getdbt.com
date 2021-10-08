@@ -11,12 +11,12 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-synapse
 
-**Maintained by:** Community
-**Author:** Nandan Hegde and Anders Swanson         
-**Source:** [Github](https://github.com/dbt-msft/dbt-synapse)
-**Core version:** v0.18.0 and newer  
-**dbt Cloud:** Not Supported
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01DRQ178LQ)    
+**Maintained by:** Community  
+**Author:** Nandan Hegde and Anders Swanson           
+**Source:** [Github](https://github.com/dbt-msft/dbt-synapse)  
+**Core version:** v0.18.0 and newer      
+**dbt Cloud:** Not Supported  
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01DRQ178LQ)      
 
 ![dbt-synapse stars](https://img.shields.io/github/stars/dbt-msft/dbt-synapse?style=for-the-badge)
 

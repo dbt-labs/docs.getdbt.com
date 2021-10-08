@@ -10,12 +10,12 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-oracle
 
-**Maintained by:** Community
-**Author:** Vitor Avancini 
-**Source:** [Github](https://github.com/techindicium/dbt-oracle)
-**Core version:** v0.16.0 and newer  
-**dbt Cloud:** Not Supported
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01PWH4TXLY)   
+**Maintained by:** Community    
+**Author:** Vitor Avancini     
+**Source:** [Github](https://github.com/techindicium/dbt-oracle)    
+**Core version:** v0.16.0 and newer      
+**dbt Cloud:** Not Supported    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01PWH4TXLY)       
 
 ![dbt-oracle stars](https://img.shields.io/github/stars/techindicium/dbt-oracle?style=for-the-badge)
 
