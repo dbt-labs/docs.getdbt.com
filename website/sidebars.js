@@ -511,7 +511,7 @@ module.exports = {
         "reference/warehouse-profiles/dremio-profile",
         "reference/warehouse-profiles/clickhouse-profile",
         "reference/warehouse-profiles/materialize-profile",
-        "reference/warehouse-profiles/rockset-profile",
+        "reference/warehouse-profiles/rockset-profile"
       ],
     },
     {
