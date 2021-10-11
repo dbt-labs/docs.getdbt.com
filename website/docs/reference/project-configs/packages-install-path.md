@@ -1,6 +1,6 @@
 ---
 datatype: directorypath
-default_value: modules
+default_value: dbt_packages
 ---
 <File name='dbt_project.yml'>
 
