@@ -25,9 +25,9 @@ Poor use-cases of dbt seeds:
 
 ## Example
 To load a seed file in your dbt project:
-1. Add the file to your `data` directory, with a `.csv` file extension, e.g. `data/country_codes.csv`
+1. Add the file to your `data` directory, with a `.csv` file extension, e.g. `seeds/country_codes.csv`
 
-<File name='data/country_codes.csv'>
+<File name='seeds/country_codes.csv'>
 
 ```text
 country_code,country_name
@@ -62,7 +62,7 @@ Done. PASS=1 ERROR=0 SKIP=0 TOTAL=1
 <File name='models/orders.csv'>
 
 ```sql
--- This refers to the table created from data/country_codes.csv
+-- This refers to the table created from seeds/country_codes.csv
 select * from {{ ref('country_codes') }}
 ```
 

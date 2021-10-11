@@ -275,3 +275,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/building-a-dbt-project/building-models/using-custom-database  /docs/building-a-dbt-project/building-models/using-custom-databases 302
 /dbt-cloud/api  /dbt-cloud/api-v2 302
 /reference/project-configs/source-paths  /reference/project-configs/model-paths 302
+/reference/project-configs/data-paths  /reference/project-configs/seed-paths 302

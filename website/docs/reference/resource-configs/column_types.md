@@ -42,7 +42,7 @@ seeds:
 
 If you have previously run `dbt seed`, you'll need to run `dbt seed --full-refresh` for the changes to take effect.
 
-Note that you will need to use the fully directory path of a seed when configuring `column_types`. For example, for a seed file at `data/marketing/utm_mappings.csv`, you will need to configure it like so:
+Note that you will need to use the fully directory path of a seed when configuring `column_types`. For example, for a seed file at `seeds/marketing/utm_mappings.csv`, you will need to configure it like so:
 
 <File name='dbt_project.yml'>
 
