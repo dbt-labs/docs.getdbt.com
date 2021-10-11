@@ -33,7 +33,7 @@ seeds:
 ### Only quote seeds in the `data/mappings` directory.
 For a project with:
 * `name: jaffle_shop` in the `dbt_project.yml` file
-* `data-paths: ["data"]` in the `dbt_project.yml` file
+* `seed-paths: ["seeds"]` in the `dbt_project.yml` file
 
 <File name='dbt_project.yml'>
 

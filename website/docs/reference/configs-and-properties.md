@@ -55,7 +55,7 @@ In dbt, properties are declared in `.yml` files, in the same directory as your r
 | models    | `models/`                 | [source-paths](source-paths) |
 | sources   | `models/`                 | [source-paths](source-paths) |
 | exposures | `models/`                 | [source-paths](source-paths) |
-| seeds     | `data/` or `models/`      | [data-paths](data-paths)     |
+| seeds     | `seeds/` or `models/`      | [seed-paths](seed-paths)     |
 | snapshots | `snapshots/` or `models/` | [snapshot-paths](snapshot-paths) |
 | analyses  | `analyses/` or `models/`  | [analysis-paths](analysis-paths) |
 | macros    | `macros/` or `models/`    | [macro-paths](macro-paths) |

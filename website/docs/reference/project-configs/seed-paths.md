@@ -1,11 +1,11 @@
 ---
 datatype: [directorypath]
-default_value: [data]
+default_value: [seeds]
 ---
 <File name='dbt_project.yml'>
 
 ```yml
-data-paths: [directorypath]
+seed-paths: [directorypath]
 ```
 
 </File>
@@ -15,15 +15,15 @@ Optionally specify a custom list of directories where [seed](docs/building-a-dbt
 
 ## Default
 
-By default, dbt expects analyses to be located in the `data` directory, i.e. `data-paths: ["data"]`
+By default, dbt expects analyses to be located in the `seeds` directory, i.e. `seed-paths: ["seeds"]`
 
 ## Examples
-### Use a subdirectory named `seeds` instead of `data`
+### Use a subdirectory named `custom_seeds` instead of `seeds`
 
 <File name='dbt_project.yml'>
 
 ```yml
-data-paths: ["seeds"]
+seed-paths: ["custom_seeds"]
 ```
 
 </File>
@@ -34,19 +34,19 @@ Note: this works because dbt is looking for different file types for seeds (`.cs
 <File name='dbt_project.yml'>
 
 ```yml
-data-paths: ["models"]
-source-paths: ["models"]
+seed-paths: ["models"]
+model-paths: ["models"]
 ```
 
 </File>
 
 ### Split your seeds across two directories
-Note: We recommend that you instead use two subdirectories within the `data/` directory to achieve a similar effect.
+Note: We recommend that you instead use two subdirectories within the `seeds/` directory to achieve a similar effect.
 
 <File name='dbt_project.yml'>
 
 ```yml
-data-paths: ["data", "seeds"]
+seed-paths: ["seeds", "custom_seeds"]
 ```
 
 </File>
