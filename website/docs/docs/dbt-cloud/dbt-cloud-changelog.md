@@ -4,6 +4,70 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.37 (October 13, 2021)
+#### Enhancements
+
+- dbt 0.21.0
+
+#### Feature
+
+- Add on-submission feedback for custom environment variables
+
+#### Fixed
+
+- Surface top navigation bar above locked modal
+- Add network fail tolerance to RPC polling service
+- partner connect: sanitize schema
+- Hide locked account modal when switching to an unlocked account
+- Make ResultsTable scrollable
+
+#### Internal
+
+- Prevent filesystem request with default id
+- Revert ecr changes in CI
+- Fix docker pull in CI
+- Fix ecr login in CI
+- Push images to staging and infra root during prod builds
+- Fix how errored models are displayed in model bottleneck viz
+- Remove old django templates
+- Fix object string in error message
+- Fix frontend file list
+- Copy current schema from filesystem-api and regen types
+- Fix hijack notification
+- Remove old frontend code
+- Refactor Filesystem Entity
+- Include deleted files in GHA workflow
+- Test frontend deployment
+- Fix s3 sync
+- Setup separate frontend and backend deploys
+- File Tree using Apollo
+- [env vars] Allow for deletion of non-prefixed CustomEnvironmentVariables
+- hide env var button on create form
+- Improve model bottleneck viz event tracking
+- Fix audit log metadata typing
+- Adding proto and the message queue publisher to dbt Cloud
+- bump dbt version
+- Setup basic audit log table and pagination
+- update viz to use react query for auth
+- [env vars] Add styling to overridden values and helper text
+- Viz auth correction
+- viz auth adjustment
+- [env vars] Update pod provisioning logic re: safe env vars
+- Setup audit log table and fetch endpoint
+- [env vars] Environment table column sorting and helper text
+- Updated the link to the Change Management Standard doc
+- Remove some unnecessary codex auth logic in model bottleneck viz
+- mounting bug fix
+- Update Apollo filesystem entity state and project code clean up
+- ui: remove react-profile-password feature flag
+- fix mounting bug
+- Update FS API schema for new repository query patterns
+- Migrating dbt-cloud staging deploys to the helm-charts repo
+- Tweak language used in the stale notifications.
+- Fix if models were built in model bottleneck viz
+- Removing root expectation
+- remove old redeem-reset-password-code endpoint
+
 ## dbt Cloud v1.1.36 (September 29, 2021)
 Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt Cloud IDE now keeps track of your scroll position - at last!
 
