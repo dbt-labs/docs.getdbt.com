@@ -14,9 +14,7 @@ test-paths: [directorypath]
 Optionally specify a custom list of directories where [data tests](docs/building-a-dbt-project/tests#data-tests) are located.
 
 ## Default
-Without specifying this config, dbt will search for data tests in the `test` directory, i.e. `test-paths: ["test"]`.
-
-However, the [`dbt init` command](init) sets most projects to use `test-paths: ["tests"]` — check your `dbt_project.yml` file to see if a value is set for your project.
+Without specifying this config, dbt will search for data tests in the `tests` directory, i.e. `test-paths: ["tests"]`.
 
 ## Examples
 ### Use a subdirectory named `tests` instead of `test` for data tests
