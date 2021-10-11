@@ -1,5 +1,5 @@
 ---
-title: Can I store my data tests in a directory other than the `test` directory in my project?
+title: Can I store my data tests in a directory other than the `tests` directory in my project?
 ---
 By default, dbt expects your singular test files to be located in the `tests` subdirectory of your project.
 
