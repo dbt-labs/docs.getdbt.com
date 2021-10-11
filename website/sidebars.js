@@ -246,7 +246,7 @@ module.exports = {
         "reference/project-configs/docs-paths",
         "reference/project-configs/log-path",
         "reference/project-configs/macro-paths",
-        "reference/project-configs/modules-path",
+        "reference/project-configs/packages-install-path",
         "reference/project-configs/name",
         "reference/project-configs/on-run-start-on-run-end",
         "reference/project-configs/profile",

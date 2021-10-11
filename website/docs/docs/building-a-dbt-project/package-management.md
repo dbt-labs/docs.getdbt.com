@@ -42,7 +42,7 @@ packages:
 
 </File>
 
-3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_modules` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
+3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
 ## How do I specify a package?
 You can specify a package using one of the following methods, depending on where your package is stored.
@@ -247,8 +247,8 @@ Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt 
 When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](run) of the models in this package.
 
 ### Uninstalling a package
-When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_modules/` directory. If you want to completely uninstall a package, you should either:
-* delete the package directory in `dbt_modules/`;  or
+When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:
+* delete the package directory in `dbt_packages/`;  or
 * run `dbt clean` to delete _all_ packages (and any compiled models), followed by `dbt deps`.
 
 ### Configuring packages

@@ -27,7 +27,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 
 [target-path](project-configs/target-path): directorypath
 [log-path](project-configs/log-path): directorypath
-[modules-path](project-configs/modules-path): directorypath
+[packages-install-path](project-configs/packages-install-path): directorypath
 
 [clean-targets](project-configs/clean-targets): [directorypath]
 
