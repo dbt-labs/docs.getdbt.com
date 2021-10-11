@@ -17,7 +17,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 ### Declaring a source
 
-Sources are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under a `sources:` key.
+Sources are defined in `.yml` files in your `models` directory (as defined by the [`model-paths` config](model-paths)), nested under a `sources:` key.
 
 <File name='models/<filename>.yml'>
 

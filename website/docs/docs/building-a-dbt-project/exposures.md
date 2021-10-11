@@ -22,7 +22,7 @@ Exposures make it possible to define and describe a downstream use of your dbt p
 
 ### Declaring an exposure
 
-Exposures are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under an `exposures:` key.
+Exposures are defined in `.yml` files in your `models` directory (as defined by the [`model-paths` config](model-paths)), nested under an `exposures:` key.
 
 <File name='models/<filename>.yml'>
 

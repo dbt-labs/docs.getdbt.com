@@ -254,7 +254,7 @@ module.exports = {
         "reference/project-configs/quoting",
         "reference/project-configs/require-dbt-version",
         "reference/project-configs/snapshot-paths",
-        "reference/project-configs/source-paths",
+        "reference/project-configs/model-paths",
         "reference/project-configs/target-path",
         "reference/project-configs/test-paths",
         "reference/project-configs/version",
