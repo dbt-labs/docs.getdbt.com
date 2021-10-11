@@ -13,8 +13,6 @@ Certain core functionality may vary. If you would like to report a bug, request 
 **Maintained by:** Materialize, Inc.      
 **Source:** https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize    
 **Core version:** v0.18.1 and newer    
-**dbt Cloud:** Not Supported  
-**dbt Slack channel:** Coming Soon :)  
 
 The easiest way to install is to use pip:
 
