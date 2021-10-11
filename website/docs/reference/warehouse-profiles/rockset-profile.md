@@ -11,8 +11,8 @@ Certain core functionality may vary. If you would like to report a bug, request 
 ## Overview of dbt-rockset
 
 **Maintained by:** Rockset, Inc.      
-**Source:** https://github.com/rockset/dbt-rockset
-**Core version:** v0.0.3 and newer    
+**Source:** https://github.com/rockset/dbt-rockset  
+**Core version:** v0.19.2 and newer    
 
 The easiest way to install is to use pip:
 
