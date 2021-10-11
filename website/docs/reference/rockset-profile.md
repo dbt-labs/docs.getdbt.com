@@ -32,7 +32,7 @@ rockset:
       type: rockset
       workspace: [schema]
       api_key: [api_key]
-      region: [region] # (Optional. Default is us-west-2)
+      api_server: [api_server] # (Optional. Default is api.rs2.usw2.rockset.com)
 ```
 
 </File>
