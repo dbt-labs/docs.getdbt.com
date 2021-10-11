@@ -52,9 +52,9 @@ In dbt, properties are declared in `.yml` files, in the same directory as your r
 
 | Resource  | Default directory         | Defined by                   |
 |-----------|---------------------------|------------------------------|
-| models    | `models/`                 | [source-paths](source-paths) |
-| sources   | `models/`                 | [source-paths](source-paths) |
-| exposures | `models/`                 | [source-paths](source-paths) |
+| models    | `models/`                 | [model-paths](model-paths) |
+| sources   | `models/`                 | [model-paths](model-paths) |
+| exposures | `models/`                 | [model-paths](model-paths) |
 | seeds     | `data/` or `models/`      | [data-paths](data-paths)     |
 | snapshots | `snapshots/` or `models/` | [snapshot-paths](snapshot-paths) |
 | analyses  | `analyses/` or `models/`  | [analysis-paths](analysis-paths) |

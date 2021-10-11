@@ -16,7 +16,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 
 [profile](project-configs/profile): profilename
 
-[source-paths](project-configs/source-paths): [directorypath]
+[model-paths](project-configs/model-paths): [directorypath]
 [data-paths](project-configs/data-paths): [directorypath]
 [test-paths](project-configs/test-paths): [directorypath]
 [analysis-paths](project-configs/analysis-paths): [directorypath]

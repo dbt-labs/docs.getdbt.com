@@ -8,7 +8,7 @@ title: Seed properties
 
 Seed properties can be declared in `.yml` files in:
 - your `data/` directory (as defined by the [`data-paths` config](data-paths))
-- your `models/` directory (as defined by the [`source-paths` config](source-paths)), for backwards compatibility
+- your `models/` directory (as defined by the [`model-paths` config](model-paths)), for backwards compatibility
 
 We recommend that you put them in the `data/` directory. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within that directory.
 

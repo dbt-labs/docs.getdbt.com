@@ -6,7 +6,7 @@ title: Model properties
     - **v0.21.0** introduced the `config` property, thereby allowing you to configure models in all `.yml` files
 </Changelog>
 
-Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`source-paths` config](source-paths)).
+Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](model-paths)).
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 

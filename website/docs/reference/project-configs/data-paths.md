@@ -35,7 +35,7 @@ Note: this works because dbt is looking for different file types for seeds (`.cs
 
 ```yml
 data-paths: ["models"]
-source-paths: ["models"]
+model-paths: ["models"]
 ```
 
 </File>
