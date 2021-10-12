@@ -126,7 +126,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | query_tag | No | A value with which to tag all queries, for later searching in [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html) |
 
 ### account
-For AWS accounts in the default US West region, this will be something like `abc123` (without any other segments). For AWS accounts *not* in the default US West region and for GCP and Azure-based accounts, you also have to append the cloud platform, such as `aws`, `gcp` or `azure`, respectively (for example: `abc123.us-central1.gcp`) See [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname) for more information.
+For AWS accounts in the default US West region, this will be something like `abc123` (without any other segments). For AWS accounts *not* in the default US West region you have to append the region (for example: `abc123.eu-west-1`). For GCP and Azure-based accounts, you also have to append the cloud platform, such as `gcp` or `azure`, respectively (for example: `abc123.us-central1.gcp`) See [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname) for more information.
 
 ### client_session_keep_alive
 
