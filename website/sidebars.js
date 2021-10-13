@@ -511,6 +511,7 @@ module.exports = {
         "reference/warehouse-profiles/dremio-profile",
         "reference/warehouse-profiles/clickhouse-profile",
         "reference/warehouse-profiles/materialize-profile",
+        "reference/warehouse-profiles/rockset-profile"
       ],
     },
     {
@@ -550,7 +551,10 @@ module.exports = {
       type: "category",
       label: "Leveling up",
       collapsed: false,
-      items: ["tutorial/using-jinja"],
+      items: [
+        "tutorial/using-jinja",
+        "tutorial/refactoring-legacy-sql"
+      ],
     },
   ],
   learn: [
