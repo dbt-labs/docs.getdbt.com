@@ -42,6 +42,12 @@ packages:
 
 </File>
 
+<Changelog>
+
+- **v1.0.0:** The default [`packages-install-path`](packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
+
+</Changelog>
+
 3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
 ## How do I specify a package?

@@ -1,6 +1,11 @@
 ---
 title: Can I store my seeds in a directory other than the `seeds` directory in my project?
 ---
+<Changelog>
+
+- **v1.0.0:** The config 'data-paths' has been deprecated in favor of [`seed-paths`](seed-paths).
+    
+</Changelog>
 By default, dbt expects your seed files to be located in the `seeds` subdirectory
 of your project.
 

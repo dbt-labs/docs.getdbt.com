@@ -50,19 +50,9 @@ Most configurations are "clobbered" when applied hierarchically. Whenever a more
 
 In dbt, properties are declared in `.yml` files, in the same directory as your resources.
 
-| Resource  | Default directory         | Defined by                   |
-|-----------|---------------------------|------------------------------|
-| models    | `models/`                 | [model-paths](model-paths) |
-| sources   | `models/`                 | [model-paths](model-paths) |
-| exposures | `models/`                 | [model-paths](model-paths) |
-| seeds     | `seeds/` or `models/`      | [seed-paths](seed-paths)     |
-| snapshots | `snapshots/` or `models/` | [snapshot-paths](snapshot-paths) |
-| analyses  | `analyses/` or `models/`  | [analysis-paths](analysis-paths) |
-| macros    | `macros/` or `models/`    | [macro-paths](macro-paths) |
-
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
 
-(For backwards compatibility, the `models/` directory also supports seed, snapshot, analysis, and macro properties. We highly recommend that you define properties in dedicated paths alongside the resources they're describing.)
+We highly recommend that you define properties in dedicated paths alongside the resources they're describing.
 
 :::info
 
