@@ -14,7 +14,7 @@ Certain core functionality may vary. If you would like to report a bug, request 
 **Source:** [Github](https://github.com/rockset/dbt-rockset  )
 **Core version:** v0.19.2 and newer    
 **dbt Cloud:** Not Supported  
-**dbt Slack channel:** Coming Soon :)  
+**dbt Slack channel:** [Slack](https://getdbt.slack.com/archives/C02J7AZUAMN  )
 
 The easiest way to install is to use pip:
 
