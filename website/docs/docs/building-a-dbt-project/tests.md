@@ -21,8 +21,8 @@ Tests are assertions you make about your models and other resources in your dbt 
 Like almost everything in dbt, tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
 
 There are two ways of defining tests in dbt:
-* A **bespoke** test (sometimes called "data test") is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](test-paths). It's now a test, and it will be executed by the `dbt test` command.
-* A **generic** test (sometimes called "schema test") is a parametrized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic tests built in, and we think you should use them!
+* A **singular** test is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](test-paths). It's now a test, and it will be executed by the `dbt test` command.
+* A **generic** test is a parametrized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic tests built in, and we think you should use them!
 
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
@@ -30,9 +30,9 @@ Defining tests is a great way to confirm that your code is working correctly, an
 If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models and tests.
 :::
 
-## Bespoke tests
+## Singular tests
 
-The simplest way to define a test is by writing the exact SQL that will return failing records. We call these bespoke, one-off, or "data" tests.
+The simplest way to define a test is by writing the exact SQL that will return failing records. We call these "singular" tests, because they're one-off assertions usable for a single purpose.
 
 These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one test:
 
@@ -53,7 +53,7 @@ having not(total_amount >= 0)
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
 
-Bespoke tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. In that case, we recommend...
+Singular tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
 
 ## Generic tests
 Certain tests are generic: they can be reused over and over again. A generic test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:

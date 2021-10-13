@@ -67,6 +67,7 @@ module.exports = {
           type: "category",
           label: "Migration guides",
           items: [
+            "docs/guides/migration-guide/upgrading-to-1-0-0",
             "docs/guides/migration-guide/upgrading-to-0-21-0",
             "docs/guides/migration-guide/upgrading-to-0-20-0",
             "docs/guides/migration-guide/upgrading-to-0-19-0",
@@ -436,6 +437,7 @@ module.exports = {
           ],
         },
         "reference/global-cli-flags",
+        "reference/global-configs",
         "reference/exit-codes",
         "reference/parsing",
       ],
