@@ -5,14 +5,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import classnames from 'classnames';
 
-import { RedocStandalone } from 'redoc';
+// import { RedocStandalone } from 'redoc';
 
 function dbtCloudAPI() {
   const context = useDocusaurusContext();
 
   return (
     <Layout permalink="/">
-        <RedocStandalone
+        {/* <RedocStandalone
             specUrl='https://raw.githubusercontent.com/fishtown-analytics/dbt-cloud-openapi-spec/master/openapi-v3.yaml'
             options={{
                 requiredPropsFirst: true,
@@ -31,7 +31,7 @@ function dbtCloudAPI() {
                     },
                 },
             }}
-        />
+        /> */}
     </Layout>
   );
 }

@@ -2,7 +2,8 @@ import React from 'react';
 
 import Link from '@docusaurus/Link';
 
-const ENV = process ? process.env : {};
+const ENV = {}
+// const ENV = process ? process.env : {};
 
 const docsFiles = require.context(
     '../../../docs/',

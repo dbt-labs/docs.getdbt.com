@@ -72,10 +72,10 @@ module.exports = {
   url: SITE_URL,
 
   themeConfig: {
-    disableDarkMode: true,
-    sidebarCollapsible: true,
     image: '/img/avatar.png',
-
+    colorMode: {
+      disableSwitch: true
+    },
     announcementBar: WARNING_BANNER,
 
     algolia: {
@@ -111,7 +111,7 @@ module.exports = {
         src: '/img/dbt-logo-light.svg',
         alt: 'dbt Logo',
       },
-      links: [
+      items: [
         {
           to: '/docs/introduction',
           label: 'Docs',
@@ -199,6 +199,8 @@ module.exports = {
           editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
+
+          sidebarCollapsible: true,
         }
       },
     ],
