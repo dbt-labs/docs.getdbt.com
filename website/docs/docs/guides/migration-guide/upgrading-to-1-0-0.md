@@ -11,7 +11,7 @@ dbt v1.0.0-b1 is currently available in beta. If you have questions or encounter
 
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt/blob/HEAD/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/HEAD/CHANGELOG.md)
 
 ## Breaking changes
 

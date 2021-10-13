@@ -5,7 +5,7 @@ title: "Upgrading to 0.18.0"
 
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt/blob/dev/marian-anderson/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/dev/marian-anderson/CHANGELOG.md)
 - [Discussion: Prerelease](https://discourse.getdbt.com/t/prerelease-v0-18-0-marian-anderson/1545)
 
 ## Breaking changes
