@@ -211,6 +211,7 @@ module.exports = {
       { metatags } 
     ],
     path.resolve('plugins/svg'),
+    path.resolve('plugins/customWebpackConfig'),
   ],
   scripts: [
     'https://code.jquery.com/jquery-3.4.1.min.js',
