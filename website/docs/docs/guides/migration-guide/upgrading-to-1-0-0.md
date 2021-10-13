@@ -20,3 +20,4 @@ dbt v1.0.0-b1 is currently available in beta. If you have questions or encounter
 ## New and changed documentation
 
 - [Tests](building-a-dbt-project/tests), [test selection](test-selection-examples), [selection methods](node-selection/methods): Update `test_type:` selection method. Remove references to `--schema` and `--data` flags.
+- [Parsing](parsing): partial parsing and static parsing have been turned on by default
