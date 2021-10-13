@@ -67,6 +67,7 @@ module.exports = {
           type: "category",
           label: "Migration guides",
           items: [
+            "docs/guides/migration-guide/upgrading-to-1-0-0",
             "docs/guides/migration-guide/upgrading-to-0-21-0",
             "docs/guides/migration-guide/upgrading-to-0-20-0",
             "docs/guides/migration-guide/upgrading-to-0-19-0",
@@ -136,7 +137,7 @@ module.exports = {
       type: "category",
       label: "Using dbt Cloud",
       items: [
-        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
         "docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness",
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
@@ -436,6 +437,7 @@ module.exports = {
           ],
         },
         "reference/global-cli-flags",
+        "reference/global-configs",
         "reference/exit-codes",
         "reference/parsing",
       ],

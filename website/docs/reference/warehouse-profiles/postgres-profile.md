@@ -2,6 +2,13 @@
 title: "Postgres Profile"
 ---
 
+## Overview of dbt-postgres
+**Maintained by:** core dbt maintainers        
+**Author:** dbt Labs     
+**Core version:** v0.13.0 and newer     
+**dbt Cloud:** Supported       
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C0172G2E273)      
+
 ## Profile Configuration
 
 Postgres targets should be set up using the following configuration in your `profiles.yml` file.
