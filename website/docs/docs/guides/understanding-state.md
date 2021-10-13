@@ -5,6 +5,7 @@ title: "Understanding state"
 <Changelog>
 
  - The `--state` flag was introduced in dbt v0.18.0
+ - The `result` selector was introduced in dbt v1.0.0
 
 </Changelog>
 
@@ -32,3 +33,27 @@ If both the flag and env var are provided, the flag takes precedence.
 - The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
 - The path to state artifacts can be set via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable. If both the flag and env var are provided, the flag takes precedence.
 - These are powerful, complex features. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
+
+### The "result" status
+
+Another element of job state is the `result` of a prior dbt invocation. After executing a `dbt run`, for example, dbt creates the `run_results.json` artifact which contains execution times and success / error status for dbt models. You can read more about `run_results.json` on the ['run results'](/docs/reference/artifacts/run-results-json) page. 
+
+The following dbt commands produce `run_results.json` artifacts whose results can be referenced in subsequent dbt invocations:  
+- `dbt run`
+- `dbt test`
+- `dbt build` (new in dbt version v0.21.0)
+- `dbt seed` 
+
+After issuing one of the above commands, you can reference the results by adding a selector to a subsequent command as follows: 
+
+```bash
+$ dbt run --select result:<status>
+```
+
+### Combining `state` and `result` selectors
+
+The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run AND any new or modified models.
+
+```bash
+$ dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
+```
