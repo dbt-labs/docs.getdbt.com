@@ -131,7 +131,7 @@ Create a dbt virtual environment as detailed in the `pip` section above.
 
 Then, install dbt from GitHub source
 ```shell
-git clone https://github.com/dbt-labs/dbt.git
+git clone https://github.com/dbt-labs/dbt-core.git
 cd dbt
 pip install -r requirements.txt
 ```

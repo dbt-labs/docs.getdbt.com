@@ -60,13 +60,18 @@ $ dbt run --select config.cluster_by:geo_country      # run all models clustered
 ```
 
 ### The "test_type" method
-<Changelog>New in v0.18.0</Changelog>
+<Changelog>
 
-The `test_type` method is used to select tests based on their type, `schema` or `data`:
+- New in v0.18.0
+- In v1.0.0, test types were renamed: "singular" (instead of "data") and "generic" (instead of "schema")
+
+</Changelog>
+
+The `test_type` method is used to select tests based on their type, `singular` or `generic`:
 
 ```bash
-$ dbt test --select test_type:schema        # run all schema tests
-$ dbt test --select test_type:data          # run all data tests
+$ dbt test --select test_type:singular        # run all tests defined singularly
+$ dbt test --select test_type:generic         # run all tests defined generically
 ```
 
 ### The "test_name" method
@@ -109,7 +114,7 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
 
-Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
+Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>

@@ -22,7 +22,7 @@ previously errantly converted string values in [seed CSV files](seeds)
 like `sunday` or `March` into date timestamps in the year `0001`.
 This was obviously incorrect and has now been remedied, but if you
 _relied_ on this functionality, then this represents a breaking change. See
-[this pull request](https://github.com/dbt-labs/dbt/pull/1920) for more
+[this pull request](https://github.com/dbt-labs/dbt-core/pull/1920) for more
 information on the change.
 
 ### One-argument generate_schema_name deprecation
@@ -53,31 +53,31 @@ faster and cheaper.
 ### Source test argument compilation
 Source test arguments are now handled the same way as model test arguments.
 If you are providing jinja expressions in Source table schema tests, then this
-is a breaking change for your project. See [this pull request](https://github.com/dbt-labs/dbt/pull/2150)
+is a breaking change for your project. See [this pull request](https://github.com/dbt-labs/dbt-core/pull/2150)
 for more information on the change.
 
 ### Debug log timestamp formatting
 The format of timestamps in debug logs has changed. Previously, a comma (`,`)
 was used to separate the seconds and microseconds in debug log timestamps. If you are
 programmatically consuming the debug logs emitted by dbt, this could be a breaking change.
-See [this pull request](https://github.com/dbt-labs/dbt/pull/2099) for more
+See [this pull request](https://github.com/dbt-labs/dbt-core/pull/2099) for more
 information on the change.
 
 ### Docrefs removed from manifest
 `docrefs` are no longer present in the compiled `manifest.json` file. If you are programmatically
 consuming the `manifest.json` file emitted by dbt and making use of the `docrefs` field
-in the manifest, then this is a breaking change. See [this pull request](https://github.com/dbt-labs/dbt/pull/2096) for more information no the change.
+in the manifest, then this is a breaking change. See [this pull request](https://github.com/dbt-labs/dbt-core/pull/2096) for more information no the change.
 
 ### get_catalog macro interface change
 `get_catalog` macros should now accept two arguments: a Relation pointing to an
 information schema, and a list of schemas to search for in the supplied information schema.
 If you are overriding the `get_catalog` macro in your project, you can find more
-information about this change in [this pull request](https://github.com/dbt-labs/dbt/pull/2037).
+information about this change in [this pull request](https://github.com/dbt-labs/dbt-core/pull/2037).
 
 ### snowflake__list_schemas macro interface change
 The `snowflake__list_schemas` macro should now return an Agate dataframe with a
 column named `"name"`. If you are overriding the `snowflake__list_schemas` macro in your
-project, you can find more information about this change in [this pull request](https://github.com/dbt-labs/dbt/pull/2171).
+project, you can find more information about this change in [this pull request](https://github.com/dbt-labs/dbt-core/pull/2171).
 
 ### Snowflake databases wih 10,000 schemas
 dbt no longer supports running against Snowflake databases containing more than
