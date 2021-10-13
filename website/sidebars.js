@@ -436,6 +436,7 @@ module.exports = {
           ],
         },
         "reference/global-cli-flags",
+        "reference/global-configs",
         "reference/exit-codes",
         "reference/parsing",
       ],

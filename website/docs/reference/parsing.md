@@ -34,7 +34,7 @@ After parsing your project, dbt stores an internal project manifest in a file ca
 
 Starting in v1.0, partial parsing is **on** by default. In development, partial parsing can significantly reduce the time spent waiting at the start of a run, which translates to faster dev cycles and iteration.
 
-Partial parsing is a [global config](global-config). As such, it can be disabled via [profile config](profiles.yml#partial_parse), env var, or [CLI flags](global-cli-flags#partial-parsing).
+The [`PARTIAL_PARSE` global config](global-configs#partial-parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
 
 ### Known limitations
 
@@ -45,7 +45,6 @@ Anything that is re-rendered at execution time, such as model SQL or [nested hoo
 In particular, you may see **incorrect results** due to:
 - A change in environment variables. Files which depend on [`env_var`](env_var) for parse-time attributes (dependencies and configs) may be incorrect in subsequent parses/invocations if env vars have changed.
 - "Volatile" Jinja variables, such as [`run_started_at`](run_started_at), [`invocation_id`](invocation_id), or [flags](flags), that are likely (or guaranteed!) to change in each invocation. We _highly discourage_ you from using these variables to set parse-time attributes (dependencies, configs, and resource properties).
-- Values of [flags](flags), or 
 
 If certain inputs change between runs, dbt will trigger a full re-parse. The results will be correct but **slow**. Today those inputs are:
 - `--vars`
@@ -55,14 +54,16 @@ If certain inputs change between runs, dbt will trigger a full re-parse. The res
 - dbt version
 - certain widely-used macros, e.g. [builtins](builtins) overrides or `generate_x_name` for `database`/`schema`/`alias`
 
-If you ever get into a bad state, you can disable partial parsing and trigger a full re-parse by setting the `PARTIAL_PARSER` global config to false, or by deleting `target/partial_parse.msgpack` (e.g. by running `dbt clean`).
+If you ever get into a bad state, you can disable partial parsing and trigger a full re-parse by setting the `PARTIAL_PARSE` global config to false, or by deleting `target/partial_parse.msgpack` (e.g. by running `dbt clean`).
 
-## Static parsing
+## Static parser
 
 At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `config()` from all models in the project. Traditionally, dbt has extracted those values by rendering the Jinja in every model file, which can be slow. In v0.20, we introduced a new way to statically analyze model files, leveraging [`tree-sitter`](https://github.com/tree-sitter/tree-sitter), which we're calling an "experimental parser". You can see the code for an initial Jinja2 grammar [here](https://github.com/fishtown-analytics/tree-sitter-jinja2).
 
-Starting in v1.0, the experimental parser is **on** by default. We believe it can offer *some* speedup to 95% of projects. You may optionally turn it off using the `STATIC_PARSER` global config.
+Starting in v1.0, the experimental parser is **on** by default. We believe it can offer *some* speedup to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](global-configs#static-parser).
 
 For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The experimental parser is at least 3x faster than a full Jinja render. Based on testing with data from dbt Cloud, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.
 
-We plan to make iterative improvements to static parsing in future versions, and to use random sampling (via anonymous usage tracking) to verify that it yields correct results. You can opt into the latest "experimental" version of the static parser using the `EXPERIMENTAL_PARSER` global config.
+## Experimental parser
+
+We plan to make iterative improvements to static parsing in future versions, and to use random sampling (via anonymous usage tracking) to verify that it yields correct results. You can opt into the latest "experimental" version of the static parser using the [`USE_EXPERIMENTAL_PARSER` global config](global-configs#experimental-parser).
