@@ -102,8 +102,6 @@ $ dbt run --select state:modified        # run all models that have been modifie
 $ dbt ls --select state:modified         # list all modified nodes (not just models)
 ```
 
-<<<<<<< HEAD
-=======
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
 - `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
 - `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`
@@ -113,7 +111,6 @@ Because state comparison is complex, and everyone's project is different, dbt su
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>
 

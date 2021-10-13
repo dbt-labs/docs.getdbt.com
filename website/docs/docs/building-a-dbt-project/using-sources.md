@@ -163,7 +163,7 @@ Additionally, the `loaded_at_field` is required to calculate freshness for a tab
 
 These configs are applied hierarchically, so `freshness` and `loaded_at` field values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
-### Snapshotting source freshness
+### Checking source freshness
 To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](commands/source)):
 
 ```

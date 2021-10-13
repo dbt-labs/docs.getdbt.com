@@ -8,11 +8,8 @@ title: Test configurations
 <Changelog>
 
 * `v0.20.0`: Introduced the ability to configure tests from `dbt_project.yml`, and to configure `enabled` for generic tests. Introduced `fail_calc`, `where`, `error_if`, `warn_if`, `store_failures`, and `where` configs.
-<<<<<<< HEAD
-=======
 * `v0.21.0`: Introduced the `config()` dictionary, making it easier and clearer to configure specific instances of generic tests
 
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 </Changelog>
 
@@ -21,31 +18,16 @@ Tests can be configured in a few different ways:
 2. A `config()` block within the test's SQL definition
 3. In `dbt_project.yml`
 
-<<<<<<< HEAD
-Test configs are applied hierarchically, in the order of specifity outlined above. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
-
-## Available configurations
-=======
 Test configs are applied hierarchically, in the order of specifity outlined above. In the case of a singular test, the `config()` block within the SQL definition takes precedence over configs in the project file. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
 
 ## Available configurations
 
 Click the link on each configuration option to read more about what it can do.
 
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ### Test-specific configurations
 
 <Tabs
   groupId="config-languages"
-<<<<<<< HEAD
-  defaultValue="yaml"
-  values={[
-    { label: 'YAML', value: 'yaml', },
-    { label: 'Config block', value: 'config', },
-  ]
-}>
-<TabItem value="yaml">
-=======
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
@@ -54,7 +36,6 @@ Click the link on each configuration option to read more about what it can do.
   ]
 }>
 <TabItem value="project-yaml">
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 <File name='dbt_project.yml'>
 
@@ -95,8 +76,6 @@ tests:
 
 </TabItem>
 
-<<<<<<< HEAD
-=======
 <TabItem value="property-yaml">
 
 ```yaml
@@ -136,7 +115,6 @@ This configuration mechanism is supported for specific instances of generic test
 
 </TabItem>
 
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 </Tabs>
 
 
@@ -144,15 +122,6 @@ This configuration mechanism is supported for specific instances of generic test
 
 <Tabs
   groupId="config-languages"
-<<<<<<< HEAD
-  defaultValue="yaml"
-  values={[
-    { label: 'YAML', value: 'yaml', },
-    { label: 'Config block', value: 'config', },
-  ]
-}>
-<TabItem value="yaml">
-=======
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
@@ -161,7 +130,6 @@ This configuration mechanism is supported for specific instances of generic test
   ]
 }>
 <TabItem value="project-yaml">
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 
 <File name='dbt_project.yml'>
@@ -171,10 +139,7 @@ tests:
   [<resource-path>](resource-path):
     [+](plus-prefix)[enabled](enabled): true | false
     [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
-<<<<<<< HEAD
-=======
     [+](plus-prefix)[meta](resource-configs/meta): {dictionary}
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ```
 </File>
 
@@ -188,18 +153,13 @@ tests:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](resource-configs/tags)="<string>" | ["<string>"]
-<<<<<<< HEAD
-=======
     [meta](resource-configs/meta)={dictionary}
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ) }}
 
 ```
 
 </TabItem>
 
-<<<<<<< HEAD
-=======
 <TabItem value="property-yaml">
 
 ```yaml
@@ -232,7 +192,6 @@ This configuration mechanism is supported for specific instances of generic test
 </TabItem>
 
 
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 </Tabs>
 
 ### Examples

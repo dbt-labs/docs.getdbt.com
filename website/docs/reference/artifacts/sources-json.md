@@ -2,7 +2,7 @@
 title: Sources
 ---
 
-_Current schema_: [`v1`](https://schemas.getdbt.com/dbt/sources/v1.json)
+_Current schema_: [`v2`](https://schemas.getdbt.com/dbt/sources/v2/index.html)
 
 _Produced by:_ `dbt source freshness`
 

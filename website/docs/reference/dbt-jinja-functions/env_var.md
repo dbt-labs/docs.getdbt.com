@@ -59,3 +59,7 @@ models:
 If environment variables are named with one of two prefixes, it will have special behavior in dbt:
 - `DBT_ENV_CUSTOM_ENV_`: Any env var named with this prefix will be included in [dbt artifacts](dbt-artifacts#common-metadata), in a `metadata.env` dictionary, with its prefix-stripped name as its key.
 - `DBT_ENV_SECRET_`: Any env var named with this prefix will be scrubbed from dbt logs and replaced with `*****`, any time its value appears in those logs (even if the env var was not called directly). While dbt already avoids logging database credentials, this is useful for other types of secrets, such as git tokens for [private packages](package-management#private-packages), or AWS keys for querying data in S3.
+
+:::info dbt Cloud Usage
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET_`). Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+:::

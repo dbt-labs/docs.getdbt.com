@@ -5,12 +5,9 @@ title: "YAML Selectors"
 <Changelog>
 
 - **v0.18.0**: Introduced YAML selectors
-<<<<<<< HEAD
-- **v0.19.0**: Added optional `description` property. Selectors appear as in `manifest.json`.
-=======
+
 - **v0.19.0**: Added optional `description` property. Selectors appear in `manifest.json` under a new `selectors` key.
 - **v0.21.0**: Added optional `default` + `greedy` properties
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 </Changelog>
 

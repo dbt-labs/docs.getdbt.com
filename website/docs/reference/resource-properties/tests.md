@@ -27,6 +27,7 @@ models:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
 <<<<<<< HEAD
+<<<<<<< HEAD
           [enabled](enabled): true | false
           [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
@@ -38,6 +39,10 @@ models:
           [config](resource-properties/config):
             [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 
     [columns](columns):
       - name: <column_name>
@@ -45,6 +50,7 @@ models:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
+<<<<<<< HEAD
 <<<<<<< HEAD
               [enabled](enabled): true | false
               [severity](severity): error | warn
@@ -58,6 +64,10 @@ models:
               [config](resource-properties/config):
                 [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 ```
 
 </File>
@@ -80,6 +90,7 @@ sources:
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
 <<<<<<< HEAD
+<<<<<<< HEAD
             [enabled](enabled): true | false
             [severity](severity): error | warn
             [tags](resource-properties/tags): [<string>]
@@ -87,6 +98,10 @@ sources:
             [config](resource-properties/config):
               [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+            [config](resource-properties/config):
+              [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 
       columns:
         - name: <column_name>
@@ -95,6 +110,7 @@ sources:
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 [enabled](enabled): true | false
                 [severity](severity): error | warn
                 [tags](resource-properties/tags): [<string>]
@@ -102,6 +118,10 @@ sources:
                 [config](resource-properties/config):
                   [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+                [config](resource-properties/config):
+                  [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 
 ```
 
@@ -123,6 +143,7 @@ seeds:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
 <<<<<<< HEAD
+<<<<<<< HEAD
           [enabled](enabled): true | false
           [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
@@ -130,6 +151,10 @@ seeds:
           [config](resource-properties/config):
             [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 
     columns:
       - name: <column_name>
@@ -138,6 +163,7 @@ seeds:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
 <<<<<<< HEAD
+<<<<<<< HEAD
               [enabled](enabled): true | false
               [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
@@ -145,6 +171,10 @@ seeds:
               [config](resource-properties/config):
                 [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 
 ```
 
@@ -166,6 +196,7 @@ snapshots:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
 <<<<<<< HEAD
+<<<<<<< HEAD
           [enabled](enabled): true | false
           [severity](severity): error | warn
           [tags](resource-properties/tags): [<string>]
@@ -173,6 +204,10 @@ snapshots:
           [config](resource-properties/config):
             [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 
     columns:
       - name: <column_name>
@@ -181,6 +216,7 @@ snapshots:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
 <<<<<<< HEAD
+<<<<<<< HEAD
               [enabled](enabled): true | false
               [severity](severity): error | warn
               [tags](resource-properties/tags): [<string>]
@@ -188,6 +224,10 @@ snapshots:
               [config](resource-properties/config):
                 [<test_config>](test-configs): <config-value>
 >>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
+=======
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
+>>>>>>> a58156631ca40ec59bbab3f4f348e924d1362e5c
 
 ```
 

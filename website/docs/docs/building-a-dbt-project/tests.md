@@ -105,11 +105,7 @@ In plain English, these tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
-<<<<<<< HEAD
-You can find more information about these tests, and additional configurations (including [`severity`](severity) and [`tags`](resource-properties/tags)) in the [reference section](resource-properties/tests).
-=======
 You can find more information about these tests, and additional configurations (including [`severity`](severity) and [`tags`](resource-configs/tags)) in the [reference section](resource-properties/tests).
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide](custom-generic-tests) for more information.
 

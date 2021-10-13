@@ -7,10 +7,7 @@ datatype: string
 
 * `v0.14.0`: Introduced `severity` config
 * `v0.20.0`: Introduced `error_if` + `warn_if` configs. Enabled configuration of tests from `dbt_project.yml`
-<<<<<<< HEAD
-=======
 * `v0.21.0`: Introduced `config` property for tests
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 </Changelog>
 
@@ -56,16 +53,10 @@ models:
       - name: slightly_unreliable_column
         tests:
           - unique:
-<<<<<<< HEAD
-              severity: error
-              error_if: ">1000"
-              warn_if: ">10"
-=======
               config:
                 severity: error
                 error_if: ">1000"
                 warn_if: ">10"
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ```
 
 </File>

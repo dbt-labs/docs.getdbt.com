@@ -36,14 +36,6 @@ Before dbt v0.21, certain commands (notably `run`, `test`, and `compile`) used a
 
 3. dbt now has a list of still-selected resources of varying types. As a final step, it tosses away any resource that does not match the resource type of the current task. (Only seeds are kept for `dbt seed`, only models for `dbt run`, only tests for `dbt test`, and so on.)
 
-### How does selection work?
-
-1. dbt gathers all the resources that are matched by one or more of the `--models`/`--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators (unions, intersections, exclusions).
-
-2. The selected resources may be models, sources, seeds, snapshots, tests. (Tests can also be selected "indirectly" via their parents; see [test selection examples](test-selection-examples) for details.)
-
-3. dbt now has a list of still-selected resources of varying types. As a final step, it tosses away any resource that does not match the resource type of the current task. (Only seeds are kept for `dbt seed`, only models for `dbt run`, only tests for `dbt test`, and so on.)
-
 ### Shorthand
 
 Select resources to build (run, test, seed, snapshot) or check freshness: `--select`, `-s`

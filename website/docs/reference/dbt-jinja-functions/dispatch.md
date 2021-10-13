@@ -7,10 +7,7 @@ title: "dispatch"
 - **v0.18.0:** Introduced `dispatch` as a replacement for deprecated `adapter_macro`
 - **v0.19.2:** Limited rendering context for `dispatch` arguments. Includes backwards compatibility for widely used packages.
 - **v0.20.0:** Parent adapters' macro implementations are included in search order. Formalized supported arguments.
-<<<<<<< HEAD
-=======
 - **v0.21.0:** All dispatched macros in the dbt global project include `dbt` namespace
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
     
 </Changelog>
 
@@ -153,8 +150,6 @@ As someone installing a package, this functionality makes it possible for me to 
 
 As a package maintainer, this functionality enables users of my package to extend, reimplement, or override default behavior, without needing to fork the package's source code.
 
-<<<<<<< HEAD
-=======
 ### Overriding global macros
 
 I maintain an internal utility package at my organization, named `my_org_dbt_helpers`. I use this package to reimplement built-in dbt macros on behalf of all my dbt-using colleagues, who work across a number of dbt projects.
@@ -173,7 +168,6 @@ dispatch:
 
 </File>
 
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 ## For adapter plugin maintainers
 
 Most packages were initially designed to work on the four original dbt adapters. By using the `dispatch` macro and project config, it is possible to "shim" existing packages to work on other adapters, by way of third-party compatibility packages.

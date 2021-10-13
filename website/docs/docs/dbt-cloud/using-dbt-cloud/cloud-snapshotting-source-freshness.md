@@ -13,15 +13,26 @@ dbt Cloud provides a helpful interface around dbt's [source data freshness](usin
 
 First, make sure to configure your sources to [snapshot freshness information](using-sources#snapshotting-source-data-freshness).
 
-Then, to enable source freshness snapshots in dbt Cloud, add a `dbt source freshness` step to one of your jobs, or create a new job to snapshot source freshness.
+<Changelog>
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/49a03cc-Screen_Shot_2019-03-06_at_10.24.15_AM.png" title="Adding a step to snapshot source freshness"/>
+  - **v0.21.0:** Renamed `dbt source snapshot-freshness` to `dbt source freshness`. If using an older version of dbt, the command is `snapshot-freshness`.
+
+</Changelog>
+
+Then, to enable source freshness snapshots in dbt Cloud, add a `dbt source freshness` step to one of your jobs, or create a new job to snapshot source freshness. **Note:** If you're using an older version of dbt Core (before v0.21), you'll need to use the old name of this command instead: `dbt source snapshot-freshness`. See [`source` command docs](commands/source) for details.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-step-source-freshness.png" title="Adding a step to snapshot source freshness"/>
 
 You can add `dbt source freshness` anywhere in your list of run steps, but note that if your source data is out of date, this step will "fail', and subsequent steps will not run. dbt Cloud will trigger email notifications (if configured) based on the end state of this step.
 
 If you *do not* want your models to run if your source data is out of date, then it could be a good idea to run `dbt source freshness` as the first step in your job. Otherwise, we recommend adding `dbt source freshness` as the last step in the job, or creating a separate job just for this task.
 
-Another option is to select the source freshness checkbox in your execution settings when you configure a job on dbt cloud. Selecting this checkbox will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. If you wanted your job dedicated *exclusively* to running freshness checks, you would need to use the `dbt compile` command.
+Another option is to select the source freshness checkbox in your execution settings when you configure a job on dbt cloud. Selecting this checkbox will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. If you wanted your job dedicated *exclusively* to running freshness checks, you still need to include at least one placeholder step, such as `dbt compile`.
+
+Remember that `dbt build` does _not_ include source freshness checks when it builds and tests resources in your DAG. As such, here's a common pattern for defining jobs:
+- `dbt build` as the run step
+- check box for generating docs
+- check box for source freshness
 
 <Lightbox src="/img/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
 

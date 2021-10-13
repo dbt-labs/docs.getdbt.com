@@ -241,10 +241,7 @@ select ...
 <Changelog>
 
   - **v0.20.0:** Introduced `merge_update_columns`
-<<<<<<< HEAD
-=======
   - **v0.21.0:** Introduced `on_schema_change`
->>>>>>> 0d0f94e87e138f3d13ad645c0b493bcf540fe8cb
 
 </Changelog>
 
