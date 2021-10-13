@@ -28,6 +28,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | Adapter for  | Documentation | Install from PyPi |
 | ------------ | ------------- | ----------------- |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
+| Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
 
 ### Community Supported
 
