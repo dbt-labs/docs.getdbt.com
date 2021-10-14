@@ -90,7 +90,7 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
 
-**Note**: An environment variable can be used to store a [git token for repo cloning](/cloud-environment-variables#clone-private-packages). We recommend you make the git token's permissions read only in order to practice good security hygiene. If a user were to unintentially write the environment variable storing the token to the database, the token would be exposed.
+**Note**: An environment variable can be used to store a [git token for repo cloning](/cloud-environment-variables#clone-private-packages). We recommend you make the git token's permissions read only in order to practice good security hygiene. If a user were to unintentionally write the environment variable storing the token to the database, the token would be exposed.
 
 ### Special deployment environment variables
 
