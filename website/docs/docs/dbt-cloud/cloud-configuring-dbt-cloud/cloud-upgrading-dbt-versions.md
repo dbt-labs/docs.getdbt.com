@@ -16,7 +16,7 @@ Below we try to help you answer the question of whether a known breaking change 
 
 :::info An Important Note on Packages
 
-If you use any packages from [dbt Hub]([https://hub.getdbt.com/](https://hub.getdbt.com/)), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on GitHub.
+If you use any packages from [dbt Hub](https://hub.getdbt.com/), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on GitHub.
 
 As an example, dbt-utils version 0.7.1 supports dbt v0.20 and v0.21, as described in its [dbt_project.yml](https://github.com/dbt-labs/dbt-utils/blob/0.7.1/dbt_project.yml).
 

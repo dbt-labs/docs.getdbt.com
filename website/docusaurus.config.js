@@ -70,6 +70,7 @@ module.exports = {
   tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
   title: 'dbt Docs',
   url: SITE_URL,
+  onBrokenLinks: 'warn',
 
   themeConfig: {
     image: '/img/avatar.png',
@@ -77,7 +78,6 @@ module.exports = {
       disableSwitch: true
     },
     announcementBar: WARNING_BANNER,
-
     algolia: {
       apiKey: ALGOLIA_API_KEY,
       //debug: true,
@@ -85,7 +85,6 @@ module.exports = {
       algoliaOptions: {
       },
     },
-
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
