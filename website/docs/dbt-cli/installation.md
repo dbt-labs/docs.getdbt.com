@@ -3,7 +3,7 @@ title: "Installation"
 id: "installation"
 ---
 
-We recommend you use install dbt using one of three tried and tested methods:
+We recommend you install dbt using one of three tried and tested methods:
 
 - [homebrew](#homebrew) (recommended for MacOS)
 - [pip](#pip)
@@ -33,7 +33,7 @@ brew upgrade dbt
 
 ### Installing different versions with Homebrew
 
-You can install and use multiple versions of dbt with Homebrew through something called Homebrew "links." To allow installation of another version of dbt, first unlink the current version:
+You can install and use multiple versions of dbt with Homebrew through something called Homebrew "links". To allow installation of another version of dbt, first unlink the current version:
 
 ```shell
 brew unlink dbt
@@ -123,13 +123,13 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 * Enable [Developer Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
 * Enable [Long Paths](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later)
 
-Note: We have received reports some community members have experienced problems with Python 3.9 where some dependencies (e.g. cryptography) cannot be properly installed. If you encounter this problem, consider reinstalling or creating a virtual environment with a prior version of Python 3.6.x through Python 3.8.x.
+Note: We have received reports that some community members have experienced problems with Python 3.9 where some dependencies (e.g. cryptography) cannot be properly installed. If you encounter this problem, consider reinstalling or creating a virtual environment with a prior version of Python 3.6.x through Python 3.8.x.
 
 ## Install from source
 
 Create a dbt virtual environment as detailed in the `pip` section above.
 
-Then, install dbt from GitHub source
+Then, install dbt from its GitHub source:
 ```shell
 git clone https://github.com/dbt-labs/dbt.git
 cd dbt
