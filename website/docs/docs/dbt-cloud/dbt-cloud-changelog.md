@@ -4,9 +4,31 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.36 (September 29, 2021)
+Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt Cloud IDE now keeps track of your scroll position - at last!
+
+#### Bug fixes
+- Some Redshift customers were experiencing timeouts on runs. We've since fixed this bug by keeping the session alive longer.
+
+#### Performance improvements and enhancements
+- You won't lose track of the code snippets you were looking at when you switch back and forth between tabs in the dbt Cloud IDE, as we now keep track of your scroll position.
+
+## dbt Cloud v1.1.35 (September 15, 2021)
+Have you ever been working in the IDE, taken a several hour break from developing, and when you returned to your work, the IDE started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! dbt Cloud now will let you know when you have to refresh your IDE so you can continue to pick up work where you last left off.
+
+#### New products and features
+- dbt v0.20.2 is released in dbt Cloud.
+
+#### Performance improvements and enhancements
+- Set default threads to 4 for new jobs and in development creds.
+
+#### Bug fixes
+- The user is now prompted to refresh the page when in a disconnected IDE state.
+- dbt tasks that fail or error are now correctly ordered in the run drawer history.
+
 
 ## dbt Cloud v1.1.34 (September 1, 2021)
-We’ve just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
+We just launched our beta for supporting environment variables in dbt Cloud. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
 
 #### Performance improvements and enhancements
 Our IDE SQL drawer got a fresh new look, and it now has improved accessibility.
@@ -45,7 +67,7 @@ We’ve improved the tabbing experience in the IDE. Tabs now work much more intu
 
 #### Performance improvements and enhancements
 - We've been working on some nice improvements to tabs in our IDE. We’ve fixed deficiencies with tabs that caused users to lose work if they didn’t hit save regularly enough. Additionally, opening, closing, and the order of the tabs work much more smoothly.
-- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run `dbt source snapshot-freshness` as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
+- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
 - Added a new endpoint to allow API key rotation via `POST https://cloud.getdbt.com/api/v2/users/{user-id}/apiKey`
 
 

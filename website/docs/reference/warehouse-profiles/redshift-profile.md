@@ -2,6 +2,15 @@
 title: "Redshift Profile"
 ---
 
+## Overview of dbt-redshift
+**Maintained by:** core dbt maintainers        
+**Author:** dbt Labs        
+**Source:** [Github](https://github.com/dbt-labs/dbt-redshift)       
+**Core version:** v0.13.0 and newer        
+**dbt Cloud:** Supported    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CJARVS0RY)      
+
+
 ## Authentication Methods
 
 ### Password-based authentication
@@ -22,8 +31,10 @@ company-name:
       schema: analytics
       threads: 4
       keepalives_idle: 0 # default 0, indicating the system default
+      connect_timeout: 10 # default 10 seconds
       # search_path: public # optional, not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      ra3: true # enables cross-database sources
 ```
 
 </File>
@@ -68,6 +79,7 @@ my-redshift-db:
       keepalives_idle: 0 # default 0, indicating the system default
       # search_path: public # optional, but not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      ra3: true # enables cross-database sources
 
 ```
 

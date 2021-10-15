@@ -1,6 +1,6 @@
 ---
 title: "Enabling CI"
-id: "cloud-enabling-continuous-integration-with-github"
+id: "cloud-enabling-continuous-integration"
 ---
 
 ## Overview
@@ -57,8 +57,8 @@ As example:
 
 ```
 dbt seed --select state:modified+
-dbt run --models state:modified+
-dbt test --models state:modified+
+dbt run --select state:modified+
+dbt test --select state:modified+
 ```
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or newer.

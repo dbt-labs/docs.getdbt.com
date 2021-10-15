@@ -165,7 +165,7 @@ config.get('optional_config_name', default="the default")
 config.require('required_conifg_name')
 ```
 
-For more information on materialization configuration, see the [config](config) reference.
+For more information on the `config` dbt Jinja function, see the [config](dbt-jinja-functions/config) reference.
 
 ## Materialization precedence
 

@@ -2,11 +2,15 @@
 title: Seed properties
 ---
 
+<Changelog>
+    - **v0.21.0** introduced the `config` property, thereby allowing you to configure seeds in all `.yml` files
+</Changelog>
+
 Seed properties can be declared in `.yml` files in:
 - your `data/` directory (as defined by the [`data-paths` config](data-paths))
-- your `models/` directory (as defined by the [`source-paths` config](source-paths))
+- your `models/` directory (as defined by the [`source-paths` config](source-paths)), for backwards compatibility
 
-You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `data/` or `models/` directory.
+We recommend that you put them in the `data/` directory. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within that directory.
 
 <File name='data/<filename>.yml'>
 
@@ -18,6 +22,8 @@ seeds:
     [description](description): <markdown_string>
     [docs](resource-properties/docs):
       show: true | false
+    [config](resource-properties/config):
+      [<seed_config>](seed-configs): <config_value>
     [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests
@@ -26,7 +32,7 @@ seeds:
         [description](description): <markdown_string>
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
-        [tags](resource-properties/tags): [<string>]
+        [tags](resource-configs/tags): [<string>]
         [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
