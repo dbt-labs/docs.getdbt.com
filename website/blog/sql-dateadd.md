@@ -6,7 +6,7 @@ slug: sql-dateadd
 authors: dkrevitt
 
 tags: [sql magic]
-image: https://unsplash.com/photos/qiHYnaXjP8E
+image: /img/blog/union_unsplash.jpg
 hide_table_of_contents: false
 
 ---
