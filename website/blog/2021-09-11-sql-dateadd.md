@@ -3,10 +3,7 @@ title: "SQL Magic: DATEADD across data warehouses"
 description: "Abstract away the need to look up the SQL dateadd function syntax every time you use it, by standardizing your syntax with dbt macros."
 slug: sql-dateadd
 
-author: David Krevitt
-author_title: dbt Labs team
-author_url: https://twitter.com/dkrevitt
-author_image_url: /img/blog/authors/dkrevitt.jpg
+authors: dkrevitt
 
 tags: [sql magic]
 image: https://unsplash.com/photos/qiHYnaXjP8E

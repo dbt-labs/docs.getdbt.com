@@ -208,9 +208,9 @@ module.exports = {
         blog: {
           blogTitle: 'dbt Developer Hub',
           blogDescription: 'Technical tutorials from the dbt Community.',
-          postsPerPage: '20',
+          postsPerPage: 20,
           blogSidebarTitle: 'Recent tutorials',
-          blogSidebarCount: '20',
+          blogSidebarCount: 20,
         },
       },
     ],
