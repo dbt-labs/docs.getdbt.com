@@ -3,6 +3,7 @@ dkrevitt:
   title: dbt Labs team
   image_url: /img/blog/authors/dkrevitt.jpg
   organization: dbt Labs
+  description: This is a demo description
   links:
     - url: https://twitter.com/dkrevitt
       icon: fa-twitter

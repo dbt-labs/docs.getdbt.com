@@ -223,6 +223,7 @@ module.exports = {
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
     path.resolve('plugins/buildBlogData'),
+    path.resolve('plugins/buildAuthorPages'),
   ],
   scripts: [
     'https://code.jquery.com/jquery-3.4.1.min.js',

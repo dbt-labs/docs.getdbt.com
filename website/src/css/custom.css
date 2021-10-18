@@ -511,3 +511,34 @@ code {
     height: 500px;
   }
 }
+
+/* Custom Author Styles */
+.author-header {
+  display: flex;
+  align-items: center;
+}
+.author-header-left, .author-header-right {
+  padding: 20px;
+}
+.author-header img {
+  max-width: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+}
+.author-header h1 {
+  display: block;
+  margin-bottom: 5px;
+}
+.author-header .author-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.author-header .author-links a {
+  display: block;
+  padding: 5px;
+}
+.author-header .author-links i {
+  font-size: 1.25rem;
+}
