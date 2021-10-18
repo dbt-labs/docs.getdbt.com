@@ -228,6 +228,7 @@ module.exports = {
     'https://code.jquery.com/jquery-3.4.1.min.js',
     'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
     '/js/gtm.js',
+    'https://kit.fontawesome.com/7110474d41.js'
   ],
   stylesheets: [
     '/css/fonts.css',
