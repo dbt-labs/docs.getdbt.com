@@ -228,163 +228,47 @@ section to complete the integration.
 
 _Use this section if you are configuring Azure AD as your identity provider_.
 
-### Enable single sign-on for an app
+### Create Azure AD Enterprise Application
 
 First, log into your Azure account. Follow the steps below to set up single sign-on with dbt Cloud.
 
-- In the Azure AD portal, choose **Enterprise applications**. Then find and select dbt Cloud to set up for single sign-on.
-- In the **Manage** section, select **Single sign-on** to open the **Single sign-on** pane for editing.
-- Select **SAML** to open the SSO configuration page. After dbt Cloud is set up, your users can sign in to dbt Clud by using their credentials from your Azure AD tenant.
+- In the Azure AD portal, choose **Enterprise applications** and create a new application.
+- Select **Create your own application**.
 
-### Configuration
+- Name the application **dbt Cloud** or some other descriptive name.
+- Select the **Non-gallery** option for application type.
+- When the application is done being created, find it in the **Enterprise applications > All applications** view.
+- Click the application to configure.
 
-dbt Cloud supports both single tenant and multitenant Azure Active Directory SSO
-Connections. For most Enterprise purposes, you will want to use the single
-tenant flow when creating an Azure AD Application.
+### Configurating SAML Endpoints in AD
 
-#### Creating an application
-
-Log into the Azure portal for your organization. Using the **Azure Active Directory** page, you will
-need to select the appropriate directory and then register a new application.
-
-1. Under **Manage**, select **App registrations**
-2. Click **+ New Registration** to begin creating a new application
-3. Supply configurations for the **Name** and **Supported account types**
-   fields as shown in the table below.
+- Navigate to **Single sign-on > Set up single sign on**.
+- Under **Select a single sign-on method**, choose **SAML**.
+- Edit the **Basic SAML Configuration**.
 
 | Field | Value |
 | ----- | ----- |
-| **Name** | dbt Cloud |
-| **Supported account types** | Accounts in this organizational directory only _(single tenant)_ |
+| **Identifier (Entity ID)** | This is the base URL for dbt Cloud (https://cloud.getdbt.com/ or https://yourcompany.getdbt.com/ for a single tenant instance). |
+| **Reply URL (Assertion Consumer Service URL)** | https://cloud.getdbt.com/complete/saml or https://yourcompany.getdbt.com/complete/saml for a single tenant instance. |
+| **Relay State** | This is the slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
 
-4. Configure the **Redirect URI**. The table below shows the appropriate
-   Redirect URI values for single-tenant and multi-tenant deployments. For most
-   enterprise use-cases, you will want to use the single-tenant Redirect URI.
+#### Creating SAML Attributes in AD
 
-:::note VPC Deployment
-If you are deploying dbt Cloud into a VPC, you should use the hostname where
-the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the **Redirect URI** input.
-:::
+- Edit the **User Attributes & Claims**.
+- Delete all of the **Additional claims**.
+- Leave the **Required claim** as is.
+- Add the three claims below.
 
-| Application Type | Redirect URI |
+| Name | Source attribute |
 | ----- | ----- |
-| Single-Tenant _(recommended)_ | `https://cloud.getdbt.com/complete/azure_single_tenant` |
-| Multi-Tenant | `https://cloud.getdbt.com/complete/azure_multi_tenant` |
+| **email** | user.mail |
+| **first_name** | user.givenname |
+| **last_name** | user.surname |
 
-5. Save the App registration to continue setting up Azure AD SSO
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration"/>
-
-
-**Configuration with the new Azure AD interface (optional)**
-
-Depending on your Azure AD settings, your App Registration page might look
-different than the screenshots shown above. If you are _not_ prompted to
-configure a Redirect URI on the **New Registration** page, then follow steps 6
-and 7 below after creating your App Registration. If you were able to set up
-the Redirect URI in the steps above, then skip ahead to step 8.
-
-6. After registering the new application without specifying a Redirect URI,
-   navigate to the **Authentication** tab for the new application.
-
-7. Click **+ Add platform** and enter a Redirect URI for your application. See
-   step 4 above for more information on the correct Redirect URI value for your
-   dbt Cloud application.
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
-
-#### Azure <-> dbt Cloud User and Group mapping 
-
-The Azure users and groups you will create in the following steps are mapped to groups created in dbt Cloud based on the group name. Reference the docs on [enterprise permissions](enterprise-permissions) for additional information on how users, groups, and permission sets are configured in dbt Cloud.
-
-#### Adding Users to an Enterprise Application
-
-Once you've registered the application, the next step is to assign users to it. Add the users you want to be viewable to dbt with the following steps:
-
-8. From the **Default Directory** click **Enterprise Applications**
-9. Click the name of the application you created earlier
-10. Click **Assign Users and Groups**
-11. Click **Add User/Group**
-12. Assign additional users and groups as-needed
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
-
-:::info User assignment required?
-Under **Properties** check the toggle setting for **User assignment required?** and confirm it aligns to your requirements. Most customers will want this toggled to **Yes** so that only users/groups explicitly assigned to dbt Cloud will be able to sign in. If this setting is toggled to **No** any user will be able to access the application if they have a direct link to the application per [Azure AD Documentation](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/assign-user-or-group-access-portal#configure-an-application-to-require-user-assignment)
-::: 
-
-#### Configuring permissions
-
-13. Under **Manage**, click **API Permissions**
-14. Click **+Add a permission** and add the permissions shown below
-
-| API Name | Type | Permission |
-| -------- | ---- | ---------- |
-| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` |
-| Microsoft Graph | Delegated | `Directory.Read.All` |
-| Microsoft Graph | Delegated | `User.Read` |
-
-15. Save these permissions, then click **Grant admin consent** to grant admin
-   consent for this directory on behalf of all of your users.
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-permissions-overview.png" title="Configuring application permissions" />
-
-#### Creating a client secret
-
-16. Under **Manage**, click **Certificates & secrets**
-17. Click **+New client secret**
-18. Name the client secret "dbt Cloud" (or similar) to identify the secret
-19. Select **Never** as the expiration value for this secret
-20. Click **Add** to finish creating the client secret
-21. Record the generated client secret somewhere safe. Later in the setup process,
-   we'll use this client secret in dbt Cloud to finish configuring the
-   integration.
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-config.png" title="Configuring certificates & secrets" />
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-saved.png" title="Recording the client secret" />
-
-#### Collect client credentials
-
-22. Navigate to the **Overview** page for the app registration
-23. Note the **Application (client) ID** and **Directory (tenant) ID** shown in
-   this form and record them along with your client secret. We'll use these keys
-   in the steps below to finish configuring the integration in dbt Cloud.
-
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-overview.png" title="Collecting credentials. Store these somewhere safe!" />
-
-#### Configure Azure AD for SAML-based SSO
-
-On the **General Settings** page, enter the following details::
-
-* **App name**: dbt Cloud
-* **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing),
-  and upload it to Okta to use as the logo for this app.
-
-1. In the Azure portal, on the **dbt Cloud** application integration page, find the **Manage** section and select **single sign-on**
-2. On the **Select a single sign-on method** page, select **SAML**.
-3. On the **Set up single sign-on with SAML** page, click the pencil icon for **Basic SAML Configuration** to edit the settings.
-
-#### Configure SAML Settings
-
-For **Basic SAML Configuration** , enter the following values:
-
-* **Identifier (EnityID)**: `https://cloud.getdbt.com/`
-* **Reply URL (Assertion Consumer Service URL)**: `https://cloud.getdbt.com/complete/saml`
-* **Relay State**: `<login slug>`
-
-Expected **User Attributes & Claims**:
-
-| Name                         | Name format | Value                   | Description                |
-| --------------               | ----------- | --------------------    | -------------------------- |
-| `email`                      | Unspecified | `user.userprincipalname`| _The user's email address_ |
-| `first_name`                 | Unspecified | `user.givenname`        | _The user's first name_    |
-| `last_name`                  | Unspecified | `user.surname`          | _The user's last name_     |
-| `groups`                     | Unspecified | `groups`                | _The user's groups_        |
-| `Unique User Identifier`     | Unspecified | `user.userprincipalname`| _The user's email address_ |
-
-
+- Select **Add a group claim**.
+- If you'll assign users directly to the enterprise application, select **Security Groups**. If not, select **Groups assigned to the application**.
+- **Source attribute** should be set to **Group ID**.
+- Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
 
 ### Finish setup
 
