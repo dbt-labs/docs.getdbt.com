@@ -1,7 +1,7 @@
 ---
 title: "SQL Magic: DATEADD across data warehouses"
 description: "Abstract away the need to look up the SQL dateadd function syntax every time you use it, by standardizing your syntax with dbt macros."
-slug: sql-dateadd
+slug: sql-dateadd-2
 
 authors: dkrevitt
 
@@ -9,6 +9,7 @@ tags: [sql magic]
 image: /img/blog/union_unsplash.jpg
 hide_table_of_contents: false
 
+is_featured: true
 ---
 
 I’ve used the dateadd SQL function thousands of times.

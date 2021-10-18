@@ -498,3 +498,16 @@ code {
     max-width: var(--ifm-container-width);
   }
 }
+
+/* Custom Blog Styles */
+.blog-hero {
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (min-width: 997px) {
+  .blog-hero {
+    height: 500px;
+  }
+}

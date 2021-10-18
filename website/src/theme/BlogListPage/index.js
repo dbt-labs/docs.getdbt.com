@@ -30,7 +30,7 @@ function BlogListPage(props) {
         tag: 'blog_posts_list',
       }}
       sidebar={sidebar}>
-      {items.map(({content: BlogPostContent}) => (
+      {items.filter(item => item.content.frontMatter.is_featured).map(({content: BlogPostContent}) => (
         <BlogPostItem
           key={BlogPostContent.metadata.permalink}
           frontMatter={BlogPostContent.frontMatter}

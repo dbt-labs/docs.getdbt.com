@@ -222,6 +222,7 @@ module.exports = {
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
+    path.resolve('plugins/buildBlogData'),
   ],
   scripts: [
     'https://code.jquery.com/jquery-3.4.1.min.js',
@@ -236,5 +237,5 @@ module.exports = {
     'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
-  ]
+  ],
 };
