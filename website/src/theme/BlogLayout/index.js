@@ -19,8 +19,8 @@ function BlogLayout(props) {
   const hasSidebar = sidebar && sidebar.items.length > 0;
 
   // dbt Custom 
-  const blogData = usePluginData('docusaurus-build-blog-data-plugin');
-  const {featured_image} = blogData
+  const { blogMeta } = usePluginData('docusaurus-build-blog-data-plugin');
+  const { featured_image } = blogMeta
 
   return (
     <Layout {...layoutProps}>

@@ -16,6 +16,8 @@
     "color": "^3.1.2",
     "core-js": "^3.6.4",
     "file-loader": "^6.2.0",
+    "fs": "0.0.1-security",
+    "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "mobx": "^6.3.3",
     "node-polyfill-webpack-plugin": "^1.1.4",

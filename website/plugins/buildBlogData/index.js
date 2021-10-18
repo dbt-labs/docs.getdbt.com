@@ -6,8 +6,17 @@ module.exports = function buildBlogDataPlugin(context, options) {
   return {
     name: 'docusaurus-build-blog-data-plugin',
     async loadContent() {
-      const blogData = yaml.load(fs.readFileSync(`blog/metadata.yml`, { encoding: 'utf8' }))
-      return blogData
+
+      // Get all tags
+      const tagData = yaml.load(fs.readFileSync(`blog/categories.yml`, { encoding: 'utf8' }))
+      
+      // Get custom blog metadata
+      const blogMeta = yaml.load(fs.readFileSync(`blog/metadata.yml`, { encoding: 'utf8' }))
+      
+      return {
+        tagData,
+        blogMeta
+      }
     },
     async contentLoaded({content, actions}) {
       const { setGlobalData } = actions;
