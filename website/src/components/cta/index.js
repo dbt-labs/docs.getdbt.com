@@ -32,7 +32,12 @@ export default function CTA({ cta }) {
     <div className="docs-cta" style={ctaStyle}>
       <h4>{header}</h4>
       <p>{subheader}</p>
-      <a className="docs-cta-btn" href={url} title={button_text}>{button_text}</a>
+      <a 
+        className="docs-cta-btn" 
+        href={url} 
+        title={button_text}
+        target="_blank"
+      >{button_text}</a>
     </div>
   )
 }

@@ -497,6 +497,27 @@ code {
 }
 
 /* Custom Blog Styles */
+.blog-breadcrumbs {
+  display: block;
+  margin-bottom: 1rem;
+}
+.blog-breadcrumbs a {
+  margin-right: 1.5rem;
+  position: relative;
+}
+.blog-breadcrumbs a:not(:last-of-type):after {
+  content: ">";
+  color: var(--color-primary-blue);
+  position: absolute;
+  right: -15px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: auto;
+  font-size: .9rem;
+  pointer-events: none;
+}
+
 .blog-list-page .main-blog-container .blog-index-posts-section:not(:last-of-type) {
   border-bottom: 1px solid var(--color-off-white);
   margin-bottom: 2rem;

@@ -74,7 +74,7 @@ function BlogListPage(props) {
           .slice(0, featured_tag_posts_count ? featured_tag_posts_count : 4)
           .filter(post => post.content.frontMatter.tags.includes(category.name))
         return (
-          <section className="blog-index-posts-section">
+          <section className="blog-index-posts-section" key={category.name}>
             <h2>Featured Category: {category.name}</h2>
             <div className="blog-index-posts-flex">
               {recentPosts.map(({content: BlogPostContent}) => (

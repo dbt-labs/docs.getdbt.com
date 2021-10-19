@@ -3,7 +3,7 @@ import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {usePluginData} from '@docusaurus/useGlobalData';
-import Layout from '@theme/Layout';
+import BlogLayout from '@theme/BlogLayout';
 
 function Author(props) {
   const { authorData } = props
@@ -21,7 +21,7 @@ function Author(props) {
   const { featured_image } = blogMeta
 
   return (
-    <Layout>
+    <BlogLayout>
       <Head>
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle ? blogData.blogTitle : ''}`} />
@@ -29,10 +29,6 @@ function Author(props) {
           <meta property="og:description" content={`${description}`} />
         : ''}
       </Head>
-
-      {featured_image && featured_image !== "" && 
-        <div className="blog-hero" style={{backgroundImage: `url(${featured_image}`}}></div>
-      }
 
       <div className="container margin-vert--lg">
         <main
@@ -73,7 +69,7 @@ function Author(props) {
           : ''}
         </main>
       </div>
-    </Layout>
+    </BlogLayout>
   );
 }
 

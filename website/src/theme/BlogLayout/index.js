@@ -12,6 +12,7 @@ import TOC from '@theme/TOC';
 
 // dbt Custom 
 import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import CTA from '../../components/cta';
 
@@ -43,14 +44,15 @@ function BlogLayout(props) {
         ) : ''}
         {/* end dbt Custom */}
 
+
       <div className="container margin-vert--lg">
+        <div className="blog-breadcrumbs">
+            <Link to="/" title="Home">Home</Link>
+            <Link to="/blog" title="Blog">Blog</Link>
+        </div>
         <div className="blog-index-header">
-          {show_title ? 
-            <h1>{title}</h1>
-          : ''}
-          {show_description ? 
-            <p>{description}</p>
-          : ''}
+          {show_title && <h1>{title}</h1>}
+          {show_description && <p>{description}</p>}
         </div>
         <div className="row">
           {hasSidebar && (
