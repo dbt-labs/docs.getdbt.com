@@ -4,13 +4,43 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 
-function Author({ authorData }) {
+function Author(props) {
+  const { authorData } = props
   const { siteConfig } = useDocusaurusContext()
   const presets  = siteConfig.presets[0].find(preset => preset['blog'])
   let blogData = {} 
   if(presets) blogData = presets['blog']
 
   const { name, title, image_url, organization, description, links } = authorData
+
+  /* 
+   * Credit to get all posts:
+   * https://blog.johnnyreilly.com/2021/05/01/blog-archive-for-docusaurus/
+   */
+  const allPosts = ((ctx) => {
+    const blogpostNames = ctx.keys();
+    return blogpostNames.reduce((blogposts, blogpostName, i) => {
+      const module = ctx(blogpostName);
+      const { image } = module.frontMatter
+      const { date, formattedDate, title, permalink, authors } = module.metadata;
+      return [
+        ...blogposts,
+        {
+          date,
+          formattedDate,
+          title,
+          permalink,
+          authors,
+          image
+        },
+      ];
+    }, ([]));
+  })(require.context('../../../blog', false, /.md/));
+
+  console.log('allPosts', allPosts)
+
+  // TODO: Filter posts by author
+
   return (
     <Layout>
       <Head>
@@ -29,9 +59,16 @@ function Author({ authorData }) {
             <div className="author-header">
               <div className="author-header-left">
                 <img src={image_url} alt={name} itemProp="image" />
-                <div className="author-links">
-                  {links && links.length > 0 ? 
-                    links.map((link, i) => (
+              </div>
+              <div className="author-header-right">
+                <h1 itemProp="name">{name}</h1>
+                <h4 className="author-title" itemProp="jobTitle">
+                  {title ? title : ''} {organization ? `at ${organization}` : ''} 
+                  <div className="author-links">
+                  {links && links.length > 0 ? (
+                    <>
+                    <span>|</span>
+                    {links.map((link, i) => (
                       <a 
                         href={link.url} 
                         title={`${name} - Social`} 
@@ -40,13 +77,12 @@ function Author({ authorData }) {
                       >
                         <i className={`fab ${link.icon}`}></i>
                       </a>
-                    ))
+                    ))}
+                    </>
+                  )
                   : ''}
                 </div>
-              </div>
-              <div className="author-header-right">
-                <h1 itemProp="name">{name}</h1>
-                <h4 itemProp="jobTitle">{title ? title : ''} {organization ? `at ${organization}` : ''}</h4>
+                </h4>
                 <p itemProp="description">{description ? description : ''}</p>
               </div>
             </div>
