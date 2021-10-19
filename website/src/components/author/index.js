@@ -2,6 +2,7 @@ import React from 'react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {usePluginData} from '@docusaurus/useGlobalData';
 import Layout from '@theme/Layout';
 
 function Author(props) {
@@ -10,10 +11,14 @@ function Author(props) {
   const presets  = siteConfig.presets[0].find(preset => preset['blog'])
   let blogData = {} 
   if(presets) blogData = presets['blog']
-
+  
   const { name, job_title, image_url, organization, description, links, slug } = authorData
 
   const authorPosts = getAuthorPosts(slug)
+
+  // Get featured_image
+  const { blogMeta } = usePluginData('docusaurus-build-blog-data-plugin');
+  const { featured_image } = blogMeta
 
   return (
     <Layout>
@@ -24,6 +29,11 @@ function Author(props) {
           <meta property="og:description" content={`${description}`} />
         : ''}
       </Head>
+
+      {featured_image && featured_image !== "" && 
+        <div className="blog-hero" style={{backgroundImage: `url(${featured_image}`}}></div>
+      }
+
       <div className="container margin-vert--lg">
         <main
           itemScope
@@ -73,11 +83,11 @@ function AuthorPosts({posts, siteImg}) {
     <section className="author-posts-section">
       <h2>View Author Posts</h2>
       <div className="row author-posts">
-        {posts.map(post => {
+        {posts.map((post, i) => {
           const { authors, date, formattedDate, image, permalink, title, description } = post
           let postImg = image ? image : siteImg
           return (
-            <div className="author-post">
+            <div className="author-post" key={i}>
               <Link to={permalink}>
                 <img src={postImg} alt={title} />
                 <h3>{title}</h3>
@@ -118,7 +128,7 @@ function getAuthorPosts(author) {
     }, ([]));
   })(require.context('../../../blog', false, /.md/));
 
-  return allPosts.filter(post => 
+  return allPosts.slice(0, 20).filter(post => 
     post.authors.find(auth => auth.key === author)
   )
 }

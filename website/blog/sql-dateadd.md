@@ -5,12 +5,12 @@ slug: sql-dateadd
 
 authors: dkrevitt
 
-tags: [sql magic]
+tags: [sql magic, dbt, python]
 image: /img/blog/union_unsplash.jpg
 hide_table_of_contents: false
 
 date: 2021-09-30
-is_featured: false
+is_featured: true
 ---
 
 It is a thankless but necessary task. In SQL, often we’ll need to UNION ALL two or more tables vertically, to combine their values.  

@@ -13,9 +13,13 @@ module.exports = function buildBlogDataPlugin(context, options) {
       // Get custom blog metadata
       const blogMeta = yaml.load(fs.readFileSync(`blog/metadata.yml`, { encoding: 'utf8' }))
       
+      // Get CTA data
+      const CTAData = yaml.load(fs.readFileSync(`blog/ctas.yml`, { encoding: 'utf8' }))
+      
       return {
         tagData,
-        blogMeta
+        blogMeta,
+        CTAData
       }
     },
     async contentLoaded({content, actions}) {

@@ -1,5 +1,7 @@
-- name: cta name
-  header: aaa
-  subheader: test category description goes here
-  button_text: aaa
-  url: aaa
+# name property should not be changed once set
+# or references to CTA will break
+- name: coalesce
+  header: Signup for Coalesce
+  subheader: 5 days across 4 time zones, an online conference dedicated to the advancement and practice of analytics engineering.
+  button_text: Register
+  url: https://coalesce.getdbt.com/

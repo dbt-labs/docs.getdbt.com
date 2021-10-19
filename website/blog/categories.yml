@@ -6,7 +6,11 @@
   display_title: test title
   description: test category description goes here
   is_featured: true
-  featured_cta: 
-- name: test tag
-  description: test category tag 2 description goes here
-
+- name: dbt
+  display_title: test title
+  description: test category description goes here
+  is_featured: true
+- name: python
+  display_title: test title
+  description: test category description goes here
+  is_featured: false

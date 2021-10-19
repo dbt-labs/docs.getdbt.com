@@ -13,14 +13,20 @@ import TOC from '@theme/TOC';
 // dbt Custom 
 import Head from '@docusaurus/Head';
 import {usePluginData} from '@docusaurus/useGlobalData';
+import CTA from '../../components/cta';
 
 function BlogLayout(props) {
-  const {sidebar, toc, children, ...layoutProps} = props;
+  const {title, description, sidebar, toc, children, ...layoutProps} = props;
   const hasSidebar = sidebar && sidebar.items.length > 0;
 
   // dbt Custom 
   const { blogMeta } = usePluginData('docusaurus-build-blog-data-plugin');
-  const { featured_image } = blogMeta
+  const { 
+    featured_image, 
+    featured_cta, 
+    show_title, 
+    show_description 
+  } = blogMeta
 
   return (
     <Layout {...layoutProps}>
@@ -38,6 +44,14 @@ function BlogLayout(props) {
         {/* end dbt Custom */}
 
       <div className="container margin-vert--lg">
+        <div className="blog-index-header">
+          {show_title ? 
+            <h1>{title}</h1>
+          : ''}
+          {show_description ? 
+            <p>{description}</p>
+          : ''}
+        </div>
         <div className="row">
           {hasSidebar && (
             <aside className="col col--3">
@@ -45,7 +59,7 @@ function BlogLayout(props) {
             </aside>
           )}
           <main
-            className={clsx('col', {
+            className={clsx('col main-blog-container', {
               'col--7': hasSidebar,
               'col--9 col--offset-1': !hasSidebar,
             })}
@@ -53,11 +67,14 @@ function BlogLayout(props) {
             itemType="http://schema.org/Blog">
             {children}
           </main>
-          {toc && (
-            <div className="col col--2">
+          <div className="col col--2 blog-right-sidebar">
+            {toc && (
               <TOC toc={toc} />
-            </div>
-          )}
+            )}
+            {featured_cta && (
+              <CTA cta={featured_cta} />
+            )}
+          </div>
         </div>
       </div>
     </Layout>
