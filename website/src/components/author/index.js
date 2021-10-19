@@ -11,35 +11,9 @@ function Author(props) {
   let blogData = {} 
   if(presets) blogData = presets['blog']
 
-  const { name, title, image_url, organization, description, links } = authorData
+  const { name, title, image_url, organization, description, links, slug } = authorData
 
-  /* 
-   * Credit to get all posts:
-   * https://blog.johnnyreilly.com/2021/05/01/blog-archive-for-docusaurus/
-   */
-  const allPosts = ((ctx) => {
-    const blogpostNames = ctx.keys();
-    return blogpostNames.reduce((blogposts, blogpostName, i) => {
-      const module = ctx(blogpostName);
-      const { image } = module.frontMatter
-      const { date, formattedDate, title, permalink, authors } = module.metadata;
-      return [
-        ...blogposts,
-        {
-          date,
-          formattedDate,
-          title,
-          permalink,
-          authors,
-          image
-        },
-      ];
-    }, ([]));
-  })(require.context('../../../blog', false, /.md/));
-
-  console.log('allPosts', allPosts)
-
-  // TODO: Filter posts by author
+  const authorPosts = getAuthorPosts(slug)
 
   return (
     <Layout>
@@ -51,46 +25,102 @@ function Author(props) {
         : ''}
       </Head>
       <div className="container margin-vert--lg">
-        <div className="row">
-          <main
-            className="col"
-            itemScope
-            itemType="http://schema.org/Person">
-            <div className="author-header">
-              <div className="author-header-left">
-                <img src={image_url} alt={name} itemProp="image" />
-              </div>
-              <div className="author-header-right">
-                <h1 itemProp="name">{name}</h1>
-                <h4 className="author-title" itemProp="jobTitle">
-                  {title ? title : ''} {organization ? `at ${organization}` : ''} 
-                  <div className="author-links">
-                  {links && links.length > 0 ? (
-                    <>
-                    <span>|</span>
-                    {links.map((link, i) => (
-                      <a 
-                        href={link.url} 
-                        title={`${name} - Social`} 
-                        target="_blank"
-                        key={i}
-                      >
-                        <i className={`fab ${link.icon}`}></i>
-                      </a>
-                    ))}
-                    </>
-                  )
-                  : ''}
-                </div>
-                </h4>
-                <p itemProp="description">{description ? description : ''}</p>
-              </div>
+        <main
+          itemScope
+          itemType="http://schema.org/Person">
+          <section className="author-header row align-items-center">
+            <div className="author-header-left">
+              <img src={image_url} alt={name} itemProp="image" />
             </div>
-          </main>
-        </div>
+            <div className="author-header-right">
+              <h1 itemProp="name">{name}</h1>
+              <h4 className="author-title" itemProp="jobTitle">
+                {title ? title : ''} {organization ? `at ${organization}` : ''} 
+                <div className="author-links">
+                {links && links.length > 0 ? (
+                  <>
+                  <span>|</span>
+                  {links.map((link, i) => (
+                    <a 
+                      href={link.url} 
+                      title={`${name} - Social`} 
+                      target="_blank"
+                      key={i}
+                    >
+                      <i className={`fab ${link.icon}`}></i>
+                    </a>
+                  ))}
+                  </>
+                )
+                : ''}
+              </div>
+              </h4>
+              <p itemProp="description">{description ? description : ''}</p>
+            </div>
+          </section>
+          {authorPosts && authorPosts.length > 0 ? 
+            <AuthorPosts posts={authorPosts} siteImg={siteConfig.themeConfig.image} />
+          : ''}
+        </main>
       </div>
     </Layout>
   );
+}
+
+// Author Posts component
+function AuthorPosts({posts, siteImg}) {
+  return (
+    <section className="author-posts-section">
+      <h2>View Author Posts</h2>
+      <div className="row author-posts">
+        {posts.map(post => {
+          const { authors, date, formattedDate, image, permalink, title, description } = post
+          let postImg = image ? image : siteImg
+          return (
+            <div className="author-post">
+              <Link to={permalink}>
+                <img src={postImg} alt={title} />
+                <h3>{title}</h3>
+              </Link>
+              <p>{description}</p>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+// Util function to filter posts by Author
+function getAuthorPosts(author) {
+  /* 
+   * Credit to get all posts:
+   * https://blog.johnnyreilly.com/2021/05/01/blog-archive-for-docusaurus/
+   */
+  const allPosts = ((ctx) => {
+    const blogpostNames = ctx.keys();
+    return blogpostNames.reduce((blogposts, blogpostName, i) => {
+      const module = ctx(blogpostName);
+      const { image } = module.frontMatter
+      const { date, formattedDate, title, permalink, authors, description } = module.metadata;
+      return [
+        ...blogposts,
+        {
+          date,
+          formattedDate,
+          title,
+          permalink,
+          authors,
+          image,
+          description
+        },
+      ];
+    }, ([]));
+  })(require.context('../../../blog', false, /.md/));
+
+  return allPosts.filter(post => 
+    post.authors.find(auth => auth.key === author)
+  )
 }
 
 export default Author;

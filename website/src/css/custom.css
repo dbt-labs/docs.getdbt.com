@@ -511,7 +511,6 @@ code {
 
 /* Custom Author Styles */
 .author-header {
-  display: flex;
   align-items: center;
 }
 .author-header-left, .author-header-right {
@@ -549,4 +548,33 @@ code {
 }
 .author-header .author-links i {
   font-size: 1.1rem;
+}
+.author-posts {
+  justify-content: center;
+}
+.author-posts .author-post {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 20px;
+}
+.author-posts .author-post img {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.author-posts .author-post h3 {
+  margin: 10px 0;
+}
+@media screen and (min-width: 700px) {
+  .author-posts .author-post {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (min-width: 997px) {
+  .author-posts .author-post {
+    flex: 0 0 33%;
+    max-width: 33%;
+  }
 }

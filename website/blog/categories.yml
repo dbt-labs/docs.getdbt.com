@@ -3,6 +3,7 @@
 # This allows to add custom descriptions for tags
 
 - name: sql magic
+  title: test title
   description: test category description goes here
 - name: test tag
   description: test category tag 2 description goes here
