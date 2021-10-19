@@ -9,7 +9,7 @@ id: "writing-custom-generic-tests"
 
 </Changelog>
 
-dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/dbt-labs/dbt/tree/develop/core/dbt/include/global_project/macros/schema_tests).
+dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests [here](https://github.com/dbt-labs/dbt/tree/develop/core/dbt/include/global_project/macros/generic_tests).
 
 :::info
 There are tons of generic tests defined in open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — the test you're looking for might already be here!
@@ -80,7 +80,7 @@ In the above example, `users` will be passed to the `is_even` test as the `model
 
 ### Generic tests with additional arguments
 
-The `is_even` test works without needing to specify any additional arguments. Other tests, like `relationships`, require more than just `model` and `column_name`. If your custom tests requires more than the standard argument, include those arguments in the test signature, as `field` and `to` are included below:
+The `is_even` test works without needing to specify any additional arguments. Other tests, like `relationships`, require more than just `model` and `column_name`. If your custom tests requires more than the standard arguments, include those arguments in the test signature, as `field` and `to` are included below:
 
 <File name='macros/test_relationships.sql'>
 
@@ -195,5 +195,5 @@ To change the way a built-in generic test works—whether to add additional para
 
 Here's some additional examples of custom generic ("schema") tests from the community:
 * [Creating a custom schema test with an error threshold](https://discourse.getdbt.com/t/creating-an-error-threshold-for-schema-tests/966)
-* [Using custom schema tests to only run tests in production](https://discourse.getdbt.com/t/conditionally-running-dbt-tests-only-running-dbt-tests-in-production/32)
+* [Using custom schema tests to only run tests in production](https://discourse.getdbt.com/t/conditionally-running-dbt-tests-only-running-dbt-tests-in-production/322)
 * [Additional examples of custom schema tests](https://discourse.getdbt.com/t/examples-of-custom-schema-tests/181)
