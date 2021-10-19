@@ -108,6 +108,19 @@ create table analytics.dbt_alice.dim_customers
 ### Snowflake
 Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
 
+If you cannot change the source table name, quote the specific table name in the source.yml file:
+
+```yml
+sources:
+  - name: <your_schema>
+    tables:
+      - name: group
+        identifier: GROUP
+        quoting:
+          identifier: true
+
+```
+
 #### Explanation:
 
 Whereas most databases will _lowercase_ unquoted identifiers, Snowflake will _uppercase_ unquoted identifiers. If a model name is lowercased _and quoted_, then it cannot be referred to without quotes! Check out the example below for more information.
