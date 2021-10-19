@@ -4,6 +4,12 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.37 (October 13, 2021)
+dbt v0.21 is now available in dbt Cloud. The big change with this release is it introduces the `dbt build` command. `dbt build` logically does everything you'd want to do in your DAG. It runs your models, tests your tests, snapshots your snapshots, and seeds your seeds. It does this, resource by resource, from left to right across your DAG. dbt build is an opinionated task. It’s the culmination of all we’ve built- running models with resilient materializations, prioritizing data quality with tests, updating fixtures with seeds, capturing slowly changing dimensions with snapshot. Give it a try!
+
+#### New products and features
+- We have a new beta feature, which we're calling Model Bottlenecks. It allows you to visually see how long it takes to build models in each run, so you can see clearly which models are taking the longest. If you're interested in learning more, check out #beta-feedback-model-bottlenecks in the dbt community Slack, and we can add you to the beta.
+
 ## dbt Cloud v1.1.36 (September 29, 2021)
 Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt Cloud IDE now keeps track of your scroll position - at last!
 

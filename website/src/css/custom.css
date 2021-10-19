@@ -494,9 +494,6 @@ code {
   .container--fluid {
     max-width: inherit;
   }
-  .container {
-    max-width: var(--ifm-container-width);
-  }
 }
 
 /* Custom Blog Styles */
