@@ -11,7 +11,7 @@ function Author(props) {
   let blogData = {} 
   if(presets) blogData = presets['blog']
 
-  const { name, title, image_url, organization, description, links, slug } = authorData
+  const { name, job_title, image_url, organization, description, links, slug } = authorData
 
   const authorPosts = getAuthorPosts(slug)
 
@@ -35,7 +35,7 @@ function Author(props) {
             <div className="author-header-right">
               <h1 itemProp="name">{name}</h1>
               <h4 className="author-title" itemProp="jobTitle">
-                {title ? title : ''} {organization ? `at ${organization}` : ''} 
+                {job_title ? job_title : ''} {organization ? `at ${organization}` : ''} 
                 <div className="author-links">
                 {links && links.length > 0 ? (
                   <>

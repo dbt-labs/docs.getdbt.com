@@ -1,6 +1,6 @@
 dkrevitt:
   name: David Krevitt
-  title: dbt Labs team
+  job_title: dbt Labs team
   image_url: /img/blog/authors/dkrevitt.jpg
   organization: dbt Labs
   description: This is a demo description
@@ -10,7 +10,7 @@ dkrevitt:
 
 jmarcey:
   name: Joel Marcey
-  title: Co-creator of Docusaurus 1
+  job_title: Co-creator of Docusaurus 1
   image_url: https://github.com/JoelMarcey.png
   links:
     - url: https://github.com/JoelMarcey
