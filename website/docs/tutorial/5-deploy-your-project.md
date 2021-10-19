@@ -84,11 +84,11 @@ Here's a few suggestions to keep learning:
 Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!
 
 ### Learn some best practices
-Now that you've got a working dbt project, read more about some of our [best practices](/docs/best-practices), or go back this tutorial and read some of the FAQs.
+Now that you've got a working dbt project, read more about some of our [best practices](/docs/guides/best-practices), or go back this tutorial and read some of the FAQs.
 
 ### Keep building this project
 Here's some suggested exercises to level-up your dbt skills:
-* Try turning your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/using-sources).
+* Try turning your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
 * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
 * Reorganize your project into our [recommended structure](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355)
 * Use some Jinja in your project — check out the [Jinja tutorial](/tutorial/using-jinja).
