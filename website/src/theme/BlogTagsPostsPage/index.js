@@ -63,7 +63,8 @@ export default function BlogTagsPostsPage(props) {
         // assign unique search tag to exclude this page from search results!
         tag: 'blog_tags_posts',
       }}
-      sidebar={sidebar}>
+      sidebar={sidebar}
+      blogPageTitle={thisTagData.display_title ? thisTagData.display_title : title}>
       <header className="margin-bottom--xl">
         <h1>{thisTagData.display_title ? thisTagData.display_title : title}</h1>
 

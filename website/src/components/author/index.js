@@ -2,7 +2,6 @@ import React from 'react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {usePluginData} from '@docusaurus/useGlobalData';
 import BlogLayout from '@theme/BlogLayout';
 
 function Author(props) {
@@ -20,12 +19,8 @@ function Author(props) {
 
   const authorPosts = getAuthorPosts(slug)
 
-  // Get featured_image
-  const { blogMeta } = usePluginData('docusaurus-build-blog-data-plugin');
-  const { featured_image } = blogMeta
-
   return (
-    <BlogLayout>
+    <BlogLayout blogPageTitle={name}>
       <Head>
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle && blogData.blogTitle}`} />

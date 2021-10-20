@@ -17,7 +17,7 @@ import {usePluginData} from '@docusaurus/useGlobalData';
 import CTA from '../../components/cta';
 
 function BlogLayout(props) {
-  const {title, description, sidebar, toc, children, ...layoutProps} = props;
+  const {title, description, blogPageTitle, sidebar, toc, children, ...layoutProps} = props;
   const hasSidebar = sidebar && sidebar.items.length > 0;
 
   // dbt Custom 
@@ -28,6 +28,20 @@ function BlogLayout(props) {
     show_title, 
     show_description 
   } = blogMeta
+
+  // The pageTitle variable sets the final item in breadcrumbs
+  let breadcrumbTitle = undefined
+  if(blogPageTitle) {
+    // Set to blogPageTitle prop
+    breadcrumbTitle = blogPageTitle
+  } else if(title) {
+    // Set to title prop
+    breadcrumbTitle = title
+  } else if (layoutProps.pageClassName === "blog-post-page") {
+    // Set to blog post title
+    const { props: { frontMatter }} = children.find(child => child.props.frontMatter)
+    breadcrumbTitle = frontMatter.title
+  }
 
   return (
     <Layout {...layoutProps}>
@@ -61,6 +75,11 @@ function BlogLayout(props) {
         <div className="container">
           <Link to="/" title="Home">Home</Link>
           <Link to="/blog" title="Blog">Blog</Link>
+          {(layoutProps.pageClassName !== "blog-list-page" && breadcrumbTitle) && 
+            <Link to="#" title={breadcrumbTitle}>
+              {breadcrumbTitle}
+            </Link>
+          }
         </div>
       </div>
           

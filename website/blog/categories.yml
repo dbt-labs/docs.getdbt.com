@@ -1,6 +1,7 @@
 # Note
 # These are not required to add tags to blog posts
-# This allows to add custom descriptions for tags
+# This adds the tag to the Categories sidebar
+# and allows to add custom descriptions for tags
 
 - name: sql magic
   display_title: sql magic
