@@ -21,17 +21,18 @@ function BlogLayout(props) {
   const hasSidebar = sidebar && sidebar.items.length > 0;
 
   // dbt Custom 
-  const { blogMeta } = usePluginData('docusaurus-build-blog-data-plugin');
+  const { blogMeta, tagData } = usePluginData('docusaurus-build-blog-data-plugin');
   const { 
     featured_image, 
     featured_cta, 
     show_title, 
     show_description 
   } = blogMeta
-
+  
+  console.log('tagData', tagData)
   return (
     <Layout {...layoutProps}>
-  
+
         {/* dbt Custom */}
         {featured_image && featured_image !== "" ? (
           <>
@@ -57,6 +58,16 @@ function BlogLayout(props) {
         <div className="row">
           {hasSidebar && (
             <aside className="col col--3">
+              <nav class="sidebar_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module thin-scrollbar" aria-label="Blog categories navigation">
+                <div class="sidebarItemTitle_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module margin-bottom--md">Categories</div>
+                  <ul class="sidebarItemList_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module">
+                    {tagData && tagData.map(tag => (
+                      <li class="sidebarItem_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module">
+                        <a class="sidebarItemLink_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module" href="#">{tag.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
               <BlogSidebar sidebar={sidebar} />
             </aside>
           )}

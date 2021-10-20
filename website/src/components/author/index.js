@@ -8,7 +8,11 @@ import BlogLayout from '@theme/BlogLayout';
 function Author(props) {
   const { authorData } = props
   const { siteConfig } = useDocusaurusContext()
-  const presets  = siteConfig.presets[0].find(preset => preset['blog'])
+
+  const presets  = 
+    siteConfig.presets && 
+    siteConfig.presets[0].find(preset => preset['blog'])
+
   let blogData = {} 
   if(presets) blogData = presets['blog']
   
@@ -24,10 +28,10 @@ function Author(props) {
     <BlogLayout>
       <Head>
         <meta property="og:type" content="profile" />
-        <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle ? blogData.blogTitle : ''}`} />
-        {description ?
+        <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle && blogData.blogTitle}`} />
+        {description &&
           <meta property="og:description" content={`${description}`} />
-        : ''}
+        }
       </Head>
 
       <div className="container margin-vert--lg">
@@ -41,9 +45,9 @@ function Author(props) {
             <div className="author-header-right">
               <h1 itemProp="name">{name}</h1>
               <h4 className="author-title" itemProp="jobTitle">
-                {job_title ? job_title : ''} {organization ? `at ${organization}` : ''} 
+                {job_title && job_title} {organization && `at ${organization}`} 
                 <div className="author-links">
-                {links && links.length > 0 ? (
+                {links && links.length > 0 && (
                   <>
                   <span>|</span>
                   {links.map((link, i) => (
@@ -58,15 +62,15 @@ function Author(props) {
                   ))}
                   </>
                 )
-                : ''}
+                }
               </div>
               </h4>
               <p itemProp="description">{description ? description : ''}</p>
             </div>
           </section>
-          {authorPosts && authorPosts.length > 0 ? 
-            <AuthorPosts posts={authorPosts} siteImg={siteConfig.themeConfig.image} />
-          : ''}
+          {authorPosts && authorPosts.length > 0 && 
+            <AuthorPosts posts={authorPosts} siteImg={siteConfig.themeConfig && siteConfig.themeConfig.image} />
+          }
         </main>
       </div>
     </BlogLayout>
