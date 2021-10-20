@@ -8,6 +8,7 @@ title: "dispatch"
 - **v0.19.2:** Limited rendering context for `dispatch` arguments. Includes backwards compatibility for widely used packages.
 - **v0.20.0:** Parent adapters' macro implementations are included in search order. Formalized supported arguments.
 - **v0.21.0:** All dispatched macros in the dbt global project include `dbt` namespace
+- **v1.0.0:** The 'packages' argument is fully deprecated. Use `macro_namespace` and project-level `dispatch` config instead.
     
 </Changelog>
 
@@ -19,7 +20,6 @@ __Args__:
 
   * `macro_name` [required]: Name of macro to dispatch. Must be a string literal.
   * `macro_namespace` [optional]: Namespace (package) of macro to dispatch. Must be a string literal.
-  * `packages` [DEPRECATED]: List of packages to search for implementations. Use `macro_namespace` and project-level `dispatch` config instead.
 
 __Usage__:
 

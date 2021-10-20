@@ -40,7 +40,7 @@ All resources nested within `nodes`, `sources`, `exposures`, `macros`, and `docs
 - `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key
 - `package_name`: Name of package that defines this resource.
 - `root_path`: Absolute file path of this resource's package.
-- `path`: Relative file path of this resource's definition within its "resource path" (`source-paths`, `data-paths`, etc.).
+- `path`: Relative file path of this resource's definition within its "resource path" (`model-paths`, `seed-paths`, etc.).
 - `original_file_path`: Relative file path of this resource's definition, including its resource path.
 
 Each has several additional properties related to its resource type.
