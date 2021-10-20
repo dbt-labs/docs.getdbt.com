@@ -14,7 +14,7 @@ Certain core functionality may vary. If you would like to report a bug, request 
 **Source:** [Github](https://github.com/starburstdata/dbt-trino)    
 **Core version:** v0.20.0 and newer      
 **dbt Cloud:** Not Supported      
-**dbt Slack channel** [Slack](https://getdbt.slack.com/archives/CNNPBQ24R)       
+**dbt Slack channel:** [Slack](https://getdbt.slack.com/archives/CNNPBQ24R)       
 
 ![dbt-presto stars](https://img.shields.io/github/stars/starburstdata/dbt-trino?style=for-the-badge)
 
