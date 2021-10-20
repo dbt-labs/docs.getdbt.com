@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 import React from 'react';
+import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import BlogLayout from '@theme/BlogLayout';
 import BlogPostItem from '@theme/BlogPostItem';
@@ -37,7 +38,7 @@ function BlogListPage(props) {
     .filter(post => post.content.frontMatter.is_featured)
 
   // Set Featured Categories
-  const featuredCategories = tagData.filter(tag => tag.is_featured)
+  const featuredCategories = tagData.filter(tag => tag && tag.is_featured)
 
   return (
     <BlogLayout
@@ -69,13 +70,21 @@ function BlogListPage(props) {
       </section>
 
       {/* Posts by Featured Tags */}
-      {featuredCategories.map(category => {
+      {featuredCategories && featuredCategories.map(category => {
         const recentPosts = items
           .slice(0, featured_tag_posts_count ? featured_tag_posts_count : 4)
           .filter(post => post.content.frontMatter.tags.includes(category.name))
+        
+        if(!category)
+          return null
+
+        const { name, display_title, description, slug } = category
         return (
-          <section className="blog-index-posts-section" key={category.name}>
-            <h2>Featured Category: {category.name}</h2>
+          <section className="blog-index-posts-section" key={display_title ? display_title : name}>
+            <h2>
+              <Link to={`/blog/tags/${slug}`}>{display_title ? display_title : name}</Link>
+            </h2>
+            <p>{description}</p>
             <div className="blog-index-posts-flex">
               {recentPosts.map(({content: BlogPostContent}) => (
                 <BlogPostItem

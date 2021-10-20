@@ -3,14 +3,14 @@
 # This allows to add custom descriptions for tags
 
 - name: sql magic
-  display_title: test title
+  display_title: sql magic
   description: test category description goes here
   is_featured: true
 - name: dbt
-  display_title: test title
+  display_title: dbt tag
   description: test category description goes here
   is_featured: true
 - name: python
-  display_title: test title
+  display_title: python
   description: test category description goes here
   is_featured: false

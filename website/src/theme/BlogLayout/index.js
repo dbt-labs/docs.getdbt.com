@@ -28,8 +28,7 @@ function BlogLayout(props) {
     show_title, 
     show_description 
   } = blogMeta
-  
-  console.log('tagData', tagData)
+
   return (
     <Layout {...layoutProps}>
 
@@ -40,47 +39,51 @@ function BlogLayout(props) {
               <meta property="og:image" content={featured_image} />
               <meta property="twitter:image" content={featured_image} />
             </Head>
-            <div className="blog-hero" style={{backgroundImage: `url(${featured_image}`}}></div>
+            <Link to="/blog">
+              <div className="blog-hero" style={{backgroundImage: `url(${featured_image}`}}></div>
+            </Link>
           </>
         ) : ''}
         {/* end dbt Custom */}
+        
+      {layoutProps.pageClassName && layoutProps.pageClassName === "blog-list-page" &&
+        ((show_title || show_description) && (title || description)) && (
+          <div className="blog-index-header">
+            <div className="container margin-vert--lg">
+              {title && show_title && <h1>{title}</h1>}
+              {description && show_description && <p>{description}</p>}
+            </div>
+          </div>
+        )
+      }
 
-
-      <div className="container margin-vert--lg">
-        <div className="blog-breadcrumbs">
-            <Link to="/" title="Home">Home</Link>
-            <Link to="/blog" title="Blog">Blog</Link>
+      <div className="blog-breadcrumbs">
+        <div className="container">
+          <Link to="/" title="Home">Home</Link>
+          <Link to="/blog" title="Blog">Blog</Link>
         </div>
-        <div className="blog-index-header">
-          {show_title && <h1>{title}</h1>}
-          {show_description && <p>{description}</p>}
-        </div>
-        <div className="row">
-          {hasSidebar && (
-            <aside className="col col--3">
-              <nav class="sidebar_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module thin-scrollbar" aria-label="Blog categories navigation">
-                <div class="sidebarItemTitle_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module margin-bottom--md">Categories</div>
-                  <ul class="sidebarItemList_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module">
-                    {tagData && tagData.map(tag => (
-                      <li class="sidebarItem_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module">
-                        <a class="sidebarItemLink_node_modules-@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module" href="#">{tag.name}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              <BlogSidebar sidebar={sidebar} />
-            </aside>
-          )}
-          <main
-            className={clsx('col main-blog-container', {
-              'col--7': hasSidebar,
-              'col--9 col--offset-1': !hasSidebar,
-            })}
-            itemScope
-            itemType="http://schema.org/Blog">
+      </div>
+          
+      <div className="row blog-main-row">
+        {hasSidebar && (
+          <aside className="col col--2 blog-aside">
+            <BlogSidebar sidebar={sidebar} tagData={tagData} />
+          </aside>
+        )}
+        <main
+          className={clsx('col main-blog-container', {
+            'col--7': hasSidebar,
+            'col--8 col--offset-1': !hasSidebar && layoutProps.pageClassName,
+            'col--9 col--offset-1': !hasSidebar && !layoutProps.pageClassName,
+          })}
+          itemScope
+          itemType="http://schema.org/Blog">
+          <div className="container margin-vert--lg">
             {children}
-          </main>
-          <div className="col col--2 blog-right-sidebar">
+          </div>
+        </main>
+        {layoutProps.pageClassName &&
+          <div className="col col--3 blog-right-sidebar">
             {toc && (
               <TOC toc={toc} />
             )}
@@ -88,7 +91,7 @@ function BlogLayout(props) {
               <CTA cta={featured_cta} />
             )}
           </div>
-        </div>
+        }
       </div>
     </Layout>
   );

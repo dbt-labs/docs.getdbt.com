@@ -11,6 +11,6 @@ featured_posts_count: 2
 featured_tag_posts_count: 4
 
 # Show or hide title and description from blog index
-show_title: false
-show_description: false
+show_title: true
+show_description: true
 
