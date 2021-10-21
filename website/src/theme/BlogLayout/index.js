@@ -165,7 +165,6 @@ function handleTocClick(e) {
   } else {
     toc.classList.add('tocActive')
     tocButton.classList.add('tocActive')
-
   }
 }
 
