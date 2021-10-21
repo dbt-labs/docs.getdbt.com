@@ -35,14 +35,15 @@ These adapter plugins are built and maintained by the same people who build and 
 
 These adapter plugins are contributed and maintained by members of the community 🌱
 
-| Adapter for            | Documentation                         | Notes                     | Install from PyPI            |
-|------------------------|---------------------------------------|---------------------------|------------------------------|
-| SQL Server & Azure SQL | [Profile Setup](mssql-profile)        | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
-| Azure Synapse          | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+         | `pip install dbt-synapse`    |
-| Exasol Analytics       | [Profile Setup](exasol-profile)       | Exasol 6.x and later      | `pip install dbt-exasol`     |
-| Oracle Database        | [Profile Setup](oracle-profile)       | Oracle 11+                | `pip install dbt-oracle`     |
-| Dremio                 | [Profile Setup](dremio-profile)       | Dremio 4.7+               | `pip install dbt-dremio`     |
-| ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
+| Adapter for            | Documentation                                              | Notes                     | Install from PyPI            |
+|:-----------------------|:-----------------------------------------------------------|:--------------------------|:-----------------------------|
+| SQL Server & Azure SQL | [Profile Setup](mssql-profile)                             | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
+| Azure Synapse          | [Profile Setup](azuresynapse-profile)                      | Azure Synapse 10+         | `pip install dbt-synapse`    |
+| Exasol Analytics       | [Profile Setup](exasol-profile)                            | Exasol 6.x and later      | `pip install dbt-exasol`     |
+| Oracle Database        | [Profile Setup](oracle-profile)                            | Oracle 11+                | `pip install dbt-oracle`     |
+| Dremio                 | [Profile Setup](dremio-profile)                            | Dremio 4.7+               | `pip install dbt-dremio`     |
+| ClickHouse             | [Profile Setup](clickhouse-profile)                        | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
+| Vertica                | [Profile Setup](https://github.com/andyreagan/dbt-vertica) |                           | `pip install dbt-verrtica`   |
 
 Community-supported plugins are works in progress, and all users are encouraged to contribute by testing and writing code. If you're interested in contributing:
 - Join the dedicated channel in [dbt Slack](https://community.getdbt.com/) (e.g. #db-sqlserver, #db-athena)
