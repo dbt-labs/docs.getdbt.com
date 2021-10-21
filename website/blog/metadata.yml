@@ -1,5 +1,5 @@
 # Set custom blog metadata
-featured_image: "/img/blog/union_unsplash.jpg"
+featured_image: ""
 
 # This CTA lives in right sidebar on blog index
 featured_cta: "coalesce"
@@ -10,7 +10,10 @@ featured_posts_count: 2
 # How many featured posts by tag to show on blog index
 featured_tag_posts_count: 4
 
-# Show or hide title and description from blog index
+# Show or hide hero title, description, cta from blog index
 show_title: true
 show_description: true
+hero_button_url: ""
+hero_button_text: ""
+hero_button_new_tab: false
 

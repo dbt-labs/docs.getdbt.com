@@ -18,11 +18,13 @@ export default function CTA({ cta }) {
   // This is required due to the TOC in right sidebar being sticky
   useEffect(() => {
     let navbarHeight = 94
+    let breadcrumbsHeight = 14
     let ctaTopPosition = navbarHeight
     const toc = document.querySelector('.blog-right-sidebar .thin-scrollbar')
-    if(toc) {
-      ctaTopPosition = toc.offsetHeight + navbarHeight
-    }
+    
+    if(toc)
+      ctaTopPosition = toc.offsetHeight + navbarHeight + breadcrumbsHeight
+
     setCtaStyle({
       top: `calc(${ctaTopPosition}px + 1rem)`
     })
@@ -32,12 +34,14 @@ export default function CTA({ cta }) {
     <div className="docs-cta" style={ctaStyle}>
       <h4>{header}</h4>
       <p>{subheader}</p>
-      <a 
-        className="docs-cta-btn" 
-        href={url} 
-        title={button_text}
-        target="_blank"
-      >{button_text}</a>
+      {button_text && (
+        <a 
+          className="docs-cta-btn" 
+          href={url} 
+          title={button_text}
+          target="_blank"
+        >{button_text}</a>
+      )}
     </div>
   )
 }

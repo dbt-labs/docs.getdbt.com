@@ -64,13 +64,13 @@ export default function BlogTagsPostsPage(props) {
         tag: 'blog_tags_posts',
       }}
       sidebar={sidebar}
-      blogPageTitle={thisTagData.display_title ? thisTagData.display_title : title}>
+      blogPageTitle={thisTagData && thisTagData.display_title ? thisTagData.display_title : title}>
       <header className="margin-bottom--xl">
-        <h1>{thisTagData.display_title ? thisTagData.display_title : title}</h1>
 
         {/* dbt Custom */}
         {thisTagData ? (
           <>
+            <h1>{thisTagData.display_title ? thisTagData.display_title : title}</h1>
             <Head>
               <meta property="description" content={thisTagData.description } />
               <meta property="og:description" content={thisTagData.description } />

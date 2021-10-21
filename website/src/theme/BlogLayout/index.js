@@ -26,7 +26,10 @@ function BlogLayout(props) {
     featured_image, 
     featured_cta, 
     show_title, 
-    show_description 
+    show_description,
+    hero_button_url,
+    hero_button_text,
+    hero_button_new_tab
   } = blogMeta
 
   // The pageTitle variable sets the final item in breadcrumbs
@@ -64,8 +67,29 @@ function BlogLayout(props) {
         ((show_title || show_description) && (title || description)) && (
           <div className="blog-index-header">
             <div className="container margin-vert--lg">
-              {title && show_title && <h1>{title}</h1>}
-              {description && show_description && <p>{description}</p>}
+              <div className="admonition alert card large light blog-hero-card">
+                <div className="blog-hero-card-content">
+                  {title && show_title && <h1>{title}</h1>}
+                  {description && show_description && <p>{description}</p>}
+                  {blogMeta.test}
+                  {(hero_button_text !== "" && hero_button_text !== "") && (
+                    hero_button_new_tab ? (
+                      <a 
+                        className="button button--primary" 
+                        href={hero_button_url} 
+                        title={hero_button_text}
+                        target="_blank"
+                      >{hero_button_text}</a>
+                    ) : (
+                      <Link 
+                        className="button button--primary" 
+                        to={hero_button_url} 
+                        title={hero_button_text}
+                      >{hero_button_text}</Link>
+                    )
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         )
@@ -82,7 +106,21 @@ function BlogLayout(props) {
           }
         </div>
       </div>
-          
+      
+      <div className="mobile-toc-section container">
+        {toc && (
+          <div className="mobile-toc-container">
+            <div 
+              id="mobile-toc-dropdown"
+              className="tocCollapsible_node_modules-@docusaurus-theme-classic-lib-next-theme-TOCCollapsible-styles-module theme-doc-toc-mobile tocMobile_node_modules-@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"
+            >
+              <button type="button" className="clean-btn tocCollapsibleButton_node_modules-@docusaurus-theme-classic-lib-next-theme-TOCCollapsible-styles-module" onClick={handleTocClick}>On this page</button>
+              <TOC toc={toc} />
+            </div>
+          </div>
+        )}
+      </div>
+
       <div className="row blog-main-row">
         {hasSidebar && (
           <aside className="col col--2 blog-aside">
@@ -114,6 +152,21 @@ function BlogLayout(props) {
       </div>
     </Layout>
   );
+}
+
+// Show or hide table of contents for mobile
+function handleTocClick(e) {
+  const tocButton = document.querySelector('#mobile-toc-dropdown > button')
+  const toc = document.querySelector('#mobile-toc-dropdown > div')
+
+  if(toc.classList.contains('tocActive')) {
+    toc.classList.remove('tocActive')
+    tocButton.classList.remove('tocActive')
+  } else {
+    toc.classList.add('tocActive')
+    tocButton.classList.add('tocActive')
+
+  }
 }
 
 export default BlogLayout;

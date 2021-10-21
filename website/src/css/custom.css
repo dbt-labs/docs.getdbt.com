@@ -546,8 +546,14 @@ code {
 }
 
 @media (max-width: 996px) {
+  .blog-post-page .main-blog-container .container {
+    margin-top: 0 !important;
+  }
   .blog-main-row .blog-aside {
     margin: 0 !important;
+  }
+  .blog-main-row .blog-right-sidebar {
+    max-width: initial !important;
   }
 }
 
@@ -555,6 +561,9 @@ code {
   border-bottom: 1px solid var(--color-off-white);
   margin-bottom: 2rem;
   padding-bottom: 2rem;
+}
+.blog-list-page .main-blog-container .blog-index-posts-section h2 a {
+  color: var(--color-primary-blue);
 }
 .blog-list-page .main-blog-container .blog-index-posts-flex {
   display: flex;
@@ -598,6 +607,32 @@ code {
 @media (min-width: 997px) {
   .blog-hero {
     height: 500px;
+  }
+}
+
+.card.large.blog-hero-card:before {
+  right: 350px;
+}
+.card.large.blog-hero-card:after {
+  right: 250px;
+}
+.blog-hero-card .button {
+  text-decoration: none;
+}
+.blog-hero-card-content {
+  z-index: 2;
+  max-width: 75%;
+  text-align: left;
+}
+@media (max-width: 699px) {
+  .card.large.blog-hero-card:before, .card.large.blog-hero-card:after {
+    display: none;
+  }
+  .blog-hero-card {
+    background: var(--color-primary-blue);
+  }
+  .blog-hero-card-content {
+    max-width: 100%;
   }
 }
 
@@ -699,3 +734,26 @@ code {
   background: var(--ifm-menu-color-active);
 }
 
+.mobile-toc-section {
+  display: none;
+}
+.mobile-toc-section .mobile-toc-container {
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+@media (max-width: 996px) {
+  .mobile-toc-section {
+    display: block;
+  }
+  .mobile-toc-section .tableOfContents_node_modules-\@docusaurus-theme-classic-lib-next-theme-TOC-styles-module {
+    display: none;
+  }
+  .mobile-toc-section .tableOfContents_node_modules-\@docusaurus-theme-classic-lib-next-theme-TOC-styles-module.tocActive {
+    display: block;
+  }
+  .mobile-toc-section .tableOfContents_node_modules-\@docusaurus-theme-classic-lib-next-theme-TOC-styles-module .table-of-contents__left-border {
+    border-left: none;
+  }
+  #mobile-toc-dropdown button.tocActive:after {
+    transform: rotate(0deg);
+  }
+}
