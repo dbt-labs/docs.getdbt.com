@@ -9,7 +9,7 @@ There are two long-lived branches in this repo:
 ## Contributing
 We welcome contributions from community members to this repo:
 - **Fixes**: If you notice an error (there are likely many), use the `Edit this page` button at the bottom of each page to suggest a change. We recommend you contribute small changes directly from the GitHub interface.
-- **New documentation**: If you contributed code in [dbt-core](https://github.com/fishtown-analytics/dbt), we encourage you to also write the docs here!
+- **New documentation**: If you contributed code in [dbt-core](https://github.com/dbt-labs/dbt-core), we encourage you to also write the docs here!
 - **Refactors**: At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
 
 ### Running the Docs site locally
@@ -18,7 +18,7 @@ We recommend locally rendering changes made to the docs site so you can review y
 
 0. If applicable, install [Xcode Command Line Tools](https://developer.apple.com/download/more/); you'll likely need an AppleID for this. You will also need [homebrew](https://brew.sh/). 
 2. Install `node`: `brew install node`
-3. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
+3. Clone this repo: `git clone git@github.com:dbt-labs/docs.getdbt.com.git`
 4. `cd` into the repo: `cd docs.getdbt.com`
 5. `cd` into the `website` subdirectory: `cd website`
 6. Install the required node packages: `npm install`
