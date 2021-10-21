@@ -156,7 +156,7 @@ dbt test --select result:fail --exclude <example test> --defer --state path/to/p
   - Rerun all my failed tests and exclude tests that I know will still fail
   - This can apply to updates in source data during the "EL" process that need to be rerun after they are refreshed
 
-> Note: `result:error` and `result:fail` flags can only be selected concurrently(in the same command) if using the `dbt build` command because `dbt test` will overwrite the `run_results.json` from `dbt run` in a previous command invocation.
+> Note: If you're using the `--state target/` flag, `result:error` and `result:fail` flags can only be selected concurrently(in the same command) if using the `dbt build` command. `dbt test` will overwrite the `run_results.json` from `dbt run` in a previous command invocation.
 
 To learn more, read the docs on [state](understanding-state).
 
