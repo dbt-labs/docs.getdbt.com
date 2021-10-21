@@ -13,7 +13,7 @@ featured_tag_posts_count: 4
 # Show or hide hero title, description, cta from blog index
 show_title: true
 show_description: true
-hero_button_url: ""
-hero_button_text: ""
+hero_button_url: "https://nytimes.com"
+hero_button_text: "Read the news"
 hero_button_new_tab: false
 
