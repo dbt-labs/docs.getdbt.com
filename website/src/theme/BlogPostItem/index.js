@@ -75,14 +75,6 @@ function BlogPostItem(props) {
       <header>
         <TitleHeading className={styles.blogPostTitle} itemProp="headline">
           
-          {image ? 
-            isBlogPostPage ? (
-              <img src={image} alt={title} /> 
-            ) : (
-              <Link itemProp="url" to={permalink}>
-                <img src={image} alt={title} />
-              </Link>
-          ) : ''}
           {isBlogPostPage ? (
             title
           ) : (

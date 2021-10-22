@@ -79,12 +79,10 @@ function AuthorPosts({posts, siteImg}) {
       <h2>View Author Posts</h2>
       <div className="row author-posts">
         {posts.map((post, i) => {
-          const { authors, date, formattedDate, image, permalink, title, description } = post
-          let postImg = image ? image : siteImg
+          const { authors, date, formattedDate, permalink, title, description } = post
           return (
             <div className="author-post" key={i}>
               <Link to={permalink}>
-                <img src={postImg} alt={title} />
                 <h3>{title}</h3>
               </Link>
               <p>{description}</p>

@@ -586,7 +586,7 @@ code {
   max-width: calc(4 / 12 * 100%);
 }
 .blogPostTitle_src-theme-BlogPostItem-styles-module > img {
-  display: block;
+  display: none;
 }
 
 @media (min-width: 700px) {
