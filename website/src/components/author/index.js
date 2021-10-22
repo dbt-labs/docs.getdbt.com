@@ -76,7 +76,7 @@ function Author(props) {
 function AuthorPosts({posts, siteImg}) {
   return (
     <section className="author-posts-section">
-      <h2>View Author Posts</h2>
+      <h2>Author Posts</h2>
       <div className="row author-posts">
         {posts.map((post, i) => {
           const { authors, date, formattedDate, permalink, title, description } = post
