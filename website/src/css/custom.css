@@ -541,6 +541,7 @@ code {
 }
 .blog-main-row .blog-right-sidebar {
   max-width: 400px !important;
+  margin-top: 2rem;
 }
 
 .blog-list-item {
@@ -723,7 +724,7 @@ code {
 /* CTA Styles */
 .docs-cta {
   padding: 20px 10px;
-  margin: 1rem auto;
+  margin: 3rem auto;
   position: sticky;
   text-align: center;
   background: var(--color-off-white);
