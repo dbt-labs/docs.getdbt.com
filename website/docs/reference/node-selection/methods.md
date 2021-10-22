@@ -204,11 +204,33 @@ The `test_name` method is used to select tests based on the name of the generic 
 that defines it. For more information about how generic tests are defined, read about
 [tests](building-a-dbt-project/tests).
 
-```bash
-$ dbt test --select test_name:unique            # run all instances of the `unique` test
-$ dbt test --select test_name:equality          # run all instances of the `dbt_utils.equality` test
-$ dbt test --select test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select test_name:unique            # run all instances of the `unique` test
+  $ dbt test --select test_name:equality          # run all instances of the `dbt_utils.equality` test
+  $ dbt test --select test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+
+  ```bash
+  $ dbt test --models test_name:unique            # run all instances of the `unique` test
+  $ dbt test --models test_name:equality          # run all instances of the `dbt_utils.equality` test
+  $ dbt test --models test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
+  ```
+
+</TabItem>
+</Tabs>
 
 ### The "state" method
 <Changelog>
