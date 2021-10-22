@@ -527,7 +527,11 @@ code {
 
 .blog-main-row {
   margin: 0;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.blog-main-row .main-blog-container .container {
+  max-width: 958px;
 }
 
 .blog-main-row .blog-aside {

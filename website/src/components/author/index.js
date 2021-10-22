@@ -29,45 +29,43 @@ function Author(props) {
         }
       </Head>
 
-      <div className="container margin-vert--lg">
-        <main
-          itemScope
-          itemType="http://schema.org/Person">
-          <section className="author-header row align-items-center">
-            <div className="author-header-left">
-              <img src={image_url} alt={name} itemProp="image" />
+      <main
+        itemScope
+        itemType="http://schema.org/Person">
+        <section className="author-header row align-items-center">
+          <div className="author-header-left">
+            <img src={image_url} alt={name} itemProp="image" />
+          </div>
+          <div className="author-header-right">
+            <h1 itemProp="name">{name}</h1>
+            <h4 className="author-title" itemProp="jobTitle">
+              {job_title && job_title} {organization && `at ${organization}`} 
+              <div className="author-links">
+              {links && links.length > 0 && (
+                <>
+                <span>|</span>
+                {links.map((link, i) => (
+                  <a 
+                    href={link.url} 
+                    title={`${name} - Social`} 
+                    target="_blank"
+                    key={i}
+                  >
+                    <i className={`fab ${link.icon}`}></i>
+                  </a>
+                ))}
+                </>
+              )
+              }
             </div>
-            <div className="author-header-right">
-              <h1 itemProp="name">{name}</h1>
-              <h4 className="author-title" itemProp="jobTitle">
-                {job_title && job_title} {organization && `at ${organization}`} 
-                <div className="author-links">
-                {links && links.length > 0 && (
-                  <>
-                  <span>|</span>
-                  {links.map((link, i) => (
-                    <a 
-                      href={link.url} 
-                      title={`${name} - Social`} 
-                      target="_blank"
-                      key={i}
-                    >
-                      <i className={`fab ${link.icon}`}></i>
-                    </a>
-                  ))}
-                  </>
-                )
-                }
-              </div>
-              </h4>
-              <p itemProp="description">{description ? description : ''}</p>
-            </div>
-          </section>
-          {authorPosts && authorPosts.length > 0 && 
-            <AuthorPosts posts={authorPosts} siteImg={siteConfig.themeConfig && siteConfig.themeConfig.image} />
-          }
-        </main>
-      </div>
+            </h4>
+            <p itemProp="description">{description ? description : ''}</p>
+          </div>
+        </section>
+        {authorPosts && authorPosts.length > 0 && 
+          <AuthorPosts posts={authorPosts} siteImg={siteConfig.themeConfig && siteConfig.themeConfig.image} />
+        }
+      </main>
     </BlogLayout>
   );
 }
