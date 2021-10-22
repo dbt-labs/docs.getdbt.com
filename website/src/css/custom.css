@@ -533,11 +533,9 @@ code {
 .blog-main-row .blog-aside {
   border-right: 1px solid var(--ifm-toc-border-color);
   margin-bottom: 2rem !important;
-  margin-top: 2rem !important;
   max-width: 400px !important;
 }
 .blog-main-row .blog-aside li a {
-  font-weight: var(--ifm-font-weight-semibold);
   font-size: 1rem;
   line-height: 1.25;
 }

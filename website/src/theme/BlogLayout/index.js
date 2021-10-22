@@ -112,8 +112,8 @@ function BlogLayout(props) {
 
       <div className="blog-breadcrumbs">
         <div className="container">
-          <Link to="/" title="Home">Home</Link>
-          <Link to="/blog" title="Blog">Blog</Link>
+          <Link to="/" title="dbt Docs">dbt Docs</Link>
+          <Link to="/blog" title="Blog">Developer Blog</Link>
           {(layoutProps.pageClassName !== "blog-list-page" && breadcrumbTitle) && 
             <Link to="#" title={breadcrumbTitle}>
               {breadcrumbTitle}
