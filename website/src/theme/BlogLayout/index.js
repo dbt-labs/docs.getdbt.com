@@ -46,8 +46,6 @@ function BlogLayout(props) {
     breadcrumbTitle = frontMatter.title
   }
 
-  console.log('breadcrumbTitle', breadcrumbTitle, typeof(breadcrumbTitle))
-  console.log('description', description, typeof(description))
   return (
     <Layout {...layoutProps}>
 
