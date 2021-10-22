@@ -6,7 +6,6 @@ slug: sql-dateadd-2
 authors: dkrevitt
 
 tags: [sql magic, python]
-image: /img/blog/union_unsplash.jpg
 hide_table_of_contents: false
 
 is_featured: true

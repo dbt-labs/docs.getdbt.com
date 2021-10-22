@@ -142,6 +142,12 @@ module.exports = {
           activeBasePath: 'faqs'
         },
         {
+          to: '/blog/',
+          label: 'Developer Blog',
+          position: 'right',
+          activeBasePath: 'blog'
+        },        
+        {
           label: 'Learn',
           position: 'right',
           items: [
@@ -149,10 +155,6 @@ module.exports = {
               label: 'Getting Started Tutorial',
               to: '/tutorial/setting-up',
             },
-            {
-              label: 'Developer Blog',
-              to: '/blog',
-            },            
             {
               label: 'Online Courses',
               href: 'https://courses.getdbt.com',

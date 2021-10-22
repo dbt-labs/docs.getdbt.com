@@ -5,8 +5,7 @@ slug: sql-dateadd
 
 authors: dkrevitt
 
-tags: [sql magic, dbt, python]
-image: /img/blog/union_unsplash.jpg
+tags: [sql magic, dbt]
 hide_table_of_contents: false
 
 date: 2021-09-30
