@@ -54,8 +54,8 @@ function BlogListPage(props) {
       
       {/* Featured Posts */}
       <section className="blog-index-posts-section">
-        <h2>Featured Posts</h2>
-        <div className="blog-index-posts-flex">
+        <h3>Featured Posts</h3>
+        <div>
           {featuredPosts.map(({content: BlogPostContent}) => (
             <BlogPostItem
               key={BlogPostContent.metadata.permalink}
@@ -81,11 +81,11 @@ function BlogListPage(props) {
         const { name, display_title, description, slug } = category
         return (
           <section className="blog-index-posts-section" key={display_title ? display_title : name}>
-            <h2>
+            <h3>
               <Link to={`/blog/tags/${slug}`}>{display_title ? display_title : name}</Link>
-            </h2>
+            </h3>
             <p>{description}</p>
-            <div className="blog-index-posts-flex">
+            <div>
               {recentPosts.map(({content: BlogPostContent}) => (
                 <BlogPostItem
                   key={BlogPostContent.metadata.permalink}

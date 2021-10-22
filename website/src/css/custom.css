@@ -543,6 +543,10 @@ code {
   max-width: 400px !important;
 }
 
+.blog-list-item {
+  margin-bottom: 3rem;
+}
+
 @media (max-width: 996px) {
   .blog-post-page .main-blog-container .container {
     margin-top: 0 !important;
@@ -560,9 +564,14 @@ code {
   margin-bottom: 2rem;
   padding-bottom: 2rem;
 }
-.blog-list-page .main-blog-container .blog-index-posts-section h2 a {
+.blog-list-page .main-blog-container .blog-index-posts-section h3 a {
   color: var(--color-primary-blue);
 }
+
+.main-blog-container h2 a {
+  color: var(--color-primary-blue);
+}
+
 .blog-list-page .main-blog-container .blog-index-posts-flex {
   display: flex;
   justify-content: space-between;
@@ -703,6 +712,13 @@ code {
     max-width: 33%;
   }
 }
+
+/* Tag Page Styles */
+.tag-header {
+  margin: 0 0 var(--ifm-paragraph-margin-bottom);
+
+}
+
 
 /* CTA Styles */
 .docs-cta {

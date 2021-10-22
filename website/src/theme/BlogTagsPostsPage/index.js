@@ -65,7 +65,7 @@ export default function BlogTagsPostsPage(props) {
       }}
       sidebar={sidebar}
       blogPageTitle={thisTagData && thisTagData.display_title ? thisTagData.display_title : title}>
-      <header className="margin-bottom--xl">
+      <header className="tag-header">
 
         {/* dbt Custom */}
         {thisTagData ? (

@@ -102,7 +102,7 @@ function BlogPostItem(props) {
 
   return (
     <article
-      className={!isBlogPostPage ? 'margin-bottom--xl' : undefined}
+      className={!isBlogPostPage ? 'blog-list-item' : undefined}
       itemProp="blogPost"
       itemScope
       itemType="http://schema.org/BlogPosting">
