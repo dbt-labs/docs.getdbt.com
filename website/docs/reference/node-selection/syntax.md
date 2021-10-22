@@ -17,7 +17,7 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 
 :::info Nodes and resources
 
-We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably. These  encompass all the models, tests, sources, seeds, snapshots, and analyses in your project. They are the objects that make up dbt's DAG (directed acyclic graph).
+We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably. These  encompass all the models, tests, sources, seeds, snapshots, exposures, and analyses in your project. They are the objects that make up dbt's DAG (directed acyclic graph).
 :::
 
 ## Specifying resources
@@ -52,28 +52,83 @@ The `--select` flag accepts one or more arguments. Each argument can be one of:
 4. a selection method (`path:`, `tag:`, `config:`, `test_type:`, `test_name:`)
 
 Examples:
-```bash
-$ dbt run --select my_dbt_project_name   # runs all models in your project
-$ dbt run --select my_dbt_model          # runs a specific model
-$ dbt run --select path.to.my.models     # runs all models in a specific directory
-$ dbt run --select my_package.some_model # run a specific model in a specific package
-$ dbt run --select tag:nightly           # run models with the "nightly" tag
-$ dbt run --select path/to/models        # run models contained in path/to/models
-$ dbt run --select path/to/my_model.sql  # run a specific model by its path
-```
+
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt run --select my_dbt_project_name   # runs all models in your project
+  $ dbt run --select my_dbt_model          # runs a specific model
+  $ dbt run --select path.to.my.models     # runs all models in a specific directory
+  $ dbt run --select my_package.some_model # run a specific model in a specific package
+  $ dbt run --select tag:nightly           # run models with the "nightly" tag
+  $ dbt run --select path/to/models        # run models contained in path/to/models
+  $ dbt run --select path/to/my_model.sql  # run a specific model by its path
+  ```
+
+</TabItem>
+
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt run --models my_dbt_project_name   # runs all models in your project
+  $ dbt run --models my_dbt_model          # runs a specific model
+  $ dbt run --models path.to.my.models     # runs all models in a specific directory
+  $ dbt run --models my_package.some_model # run a specific model in a specific package
+  $ dbt run --models tag:nightly           # run models with the "nightly" tag
+  $ dbt run --models path/to/models        # run models contained in path/to/models
+  $ dbt run --models path/to/my_model.sql  # run a specific model by its path
+  ```
+
+</TabItem>
+
+</Tabs>
 
 dbt supports a shorthand language for defining subsets of nodes. This language uses the characters `+`, `@`, `*`, and `,`.
 
-```bash
-# multiple arguments can be provided to --select
-$ dbt run --select my_first_model my_second_model
 
-# these arguments can be projects, models, directory paths, tags, or sources
-$ dbt run --select tag:nightly my_model finance.base.*
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
 
-# use methods and intersections for more complex selectors
-$ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
-```
+  ```bash
+  # multiple arguments can be provided to --select
+  $ dbt run --select my_first_model my_second_model
+
+  # these arguments can be projects, models, directory paths, tags, or sources
+  $ dbt run --select tag:nightly my_model finance.base.*
+
+  # use methods and intersections for more complex selectors
+  $ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
+  ```
+</TabItem>
+
+<TabItem value="legacy">
+
+  ```bash
+  # multiple arguments can be provided to --select
+  $ dbt run --models my_first_model my_second_model
+
+  # these arguments can be projects, models, directory paths, tags, or sources
+  $ dbt run --models tag:nightly my_model finance.base.*
+
+  # use methods and intersections for more complex selectors
+  $ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
+  ```
+</TabItem>
+
+</Tabs>
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](yaml-selectors). You can use a predefined definition with the `--selector` flag.

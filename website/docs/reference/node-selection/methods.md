@@ -8,21 +8,69 @@ syntax `method:value`.
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
 
-```bash
-$ dbt run --select tag:nightly    # run all models with the `nightly` tag
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt run --select tag:nightly    # run all models with the `nightly` tag
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt run --models tag:nightly    # run all models with the `nightly` tag
+  ```
+
+</TabItem>
+</Tabs>
 
 ### The "source" method
 The `source` method is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
 
-```bash
-$ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt run --models source:snowplow+    # run all models that select from Snowplow sources
+  ```
+
+</TabItem>
+</Tabs>
 
 ### The "path" method
 The `path` method is used to select models located at or under a specific path.
 While the `path` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
+
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
 
 ```bash
 # These two selectors are equivalent
@@ -34,6 +82,22 @@ dbt run --select path:models/staging/github/stg_issues.sql
 dbt run --select models/staging/github/stg_issues.sql
 ```
 
+</TabItem>
+<TabItem value="legacy">
+
+
+```bash
+# These two selectors are equivalent
+dbt run --models path:models/staging/github
+dbt run --models models/staging/github
+
+# These two selectors are equivalent
+dbt run --models path:models/staging/github/stg_issues.sql
+dbt run --models models/staging/github/stg_issues.sql
+```
+</TabItem>
+</Tabs>
+
 ### The "package" method
 <Changelog>New in v0.18.0</Changelog>
 
@@ -41,33 +105,97 @@ The `package` method is used to select models defined within the root project
 or an installed dbt package. While the `package:` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
 
-```bash
-# These three selectors are equivalent
-dbt run --select package:snowplow
-dbt run --select snowplow
-dbt run --select snowplow.*
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  # These three selectors are equivalent
+  dbt run --select package:snowplow
+  dbt run --select snowplow
+  dbt run --select snowplow.*
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+
+  ```bash
+  # These three selectors are equivalent
+  dbt run --models package:snowplow
+  dbt run --models snowplow
+  dbt run --models snowplow.*
+  ```
+
+</TabItem>
+</Tabs>
 
 ### The "config" method
 <Changelog>New in v0.18.0</Changelog>
 
 The `config` method is used to select models that match a specified [node config](configs-and-properties).
 
-```bash
-$ dbt run --select config.materialized:incremental    # run all models that are materialized incrementally
-$ dbt run --select config.schema:audit                # run all models that are created in the `audit` schema
-$ dbt run --select config.cluster_by:geo_country      # run all models clustered by `geo_country`
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt run --select config.materialized:incremental    # run all models that are materialized incrementally
+  $ dbt run --select config.schema:audit                # run all models that are created in the `audit` schema
+  $ dbt run --select config.cluster_by:geo_country      # run all models clustered by `geo_country`
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt run --models config.materialized:incremental    # run all models that are materialized incrementally
+  $ dbt run --models config.schema:audit                # run all models that are created in the `audit` schema
+  $ dbt run --models config.cluster_by:geo_country      # run all models clustered by `geo_country`
+  ```
+
+</TabItem>
+</Tabs>
 
 ### The "test_type" method
 <Changelog>New in v0.18.0</Changelog>
 
 The `test_type` method is used to select tests based on their type, `schema` or `data`:
 
-```bash
-$ dbt test --select test_type:schema        # run all schema tests
-$ dbt test --select test_type:data          # run all data tests
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select test_type:schema        # run all schema tests
+  $ dbt test --select test_type:data          # run all data tests
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models test_type:schema        # run all schema tests
+  $ dbt test --models test_type:data          # run all data tests
+  ```
+
+</TabItem>
+</Tabs>
 
 ### The "test_name" method
 <Changelog>New in v0.18.0</Changelog>
@@ -76,11 +204,33 @@ The `test_name` method is used to select tests based on the name of the generic 
 that defines it. For more information about how generic tests are defined, read about
 [tests](building-a-dbt-project/tests).
 
-```bash
-$ dbt test --select test_name:unique            # run all instances of the `unique` test
-$ dbt test --select test_name:equality          # run all instances of the `dbt_utils.equality` test
-$ dbt test --select test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select test_name:unique            # run all instances of the `unique` test
+  $ dbt test --select test_name:equality          # run all instances of the `dbt_utils.equality` test
+  $ dbt test --select test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+
+  ```bash
+  $ dbt test --models test_name:unique            # run all instances of the `unique` test
+  $ dbt test --models test_name:equality          # run all instances of the `dbt_utils.equality` test
+  $ dbt test --models test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
+  ```
+
+</TabItem>
+</Tabs>
 
 ### The "state" method
 <Changelog>
@@ -96,11 +246,32 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 `state:modified`: All new nodes, plus any changes to existing nodes.
 
-```bash
-$ dbt test --select state:new            # run all tests on new models + and new tests on old models
-$ dbt run --select state:modified        # run all models that have been modified
-$ dbt ls --select state:modified         # list all modified nodes (not just models)
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select state:new            # run all tests on new models + and new tests on old models
+  $ dbt run --select state:modified        # run all models that have been modified
+  $ dbt ls --select state:modified         # list all modified nodes (not just models)
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models state:new            # run all tests on new models + and new tests on old models
+  $ dbt run --models state:modified        # run all models that have been modified
+  $ dbt ls --select state:modified         # This really is still --select! list all modified nodes (not just models)
+  ```
+
+</TabItem>
+</Tabs>
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
 - `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
@@ -116,8 +287,29 @@ Remember that `state:modified` includes _all_ of the criteria above, as well as 
 
 The `exposure` method is used to select parent resources of a specified [exposure](exposure-properties). Use in conjunction with the `+` operator.
 
-```bash
-$ dbt run --select +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
-$ dbt test --select +exposure:*                         # test all resources upstream of all exposures
-$ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt run --select +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
+  $ dbt test --select +exposure:*                         # test all resources upstream of all exposures
+  $ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt run --models +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
+  $ dbt test --models +exposure:*                         # test all resources upstream of all exposures
+  $ dbt ls --select +exposure:* --resource-type source    # This really is still --select! list all sources upstream of all exposures
+  ```
+
+</TabItem>
+</Tabs>

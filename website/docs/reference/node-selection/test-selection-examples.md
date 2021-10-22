@@ -34,104 +34,318 @@ We've included lots of examples below:
 
 Run generic (schema) tests only:
 
-```shell
-$ dbt test --select test_type:schema
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select test_type:schema
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models test_type:schema
+  ```
+
+</TabItem>
+</Tabs>
 
 Run bespoke (data) tests only:
 
-```shell
-$ dbt test --select test_type:data
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select test_type:data
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models test_type:data
+  ```
+
+</TabItem>
+</Tabs>
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
 
 ### Indirect selection
 
-```shell
-$ dbt test --select customers
-$ dbt test --select orders
-```
+
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select customers
+  $ dbt test --select orders
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models customers
+  $ dbt test --models orders
+  ```
+
+</TabItem>
+</Tabs>
 
 These are examples of "indirect" selection: `customers` and `orders` select models (whether by name or path). Any tests defined on `customers` or `orders` will be selected indirectly, and thereby included.
 
 If a test depends on both `customers` _and_ `orders` (e.g. a `relationships` test between them), it will _not_ be selected indirectly in the example above. Instead, it would only be selected indirectly if both parents are selected:
 
-```shell
-$ dbt test --select customers orders
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select customers orders
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models customers orders
+  ```
+
+</TabItem>
+</Tabs>
+
+
 
 Or if you pass the `--greedy` flag:
-```shell
-$ dbt test --select customers --greedy
-$ dbt test --select orders --greedy
-```
 
-### Syntax examples
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select customers --greedy
+  $ dbt test --select orders --greedy
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models customers --greedy
+  $ dbt test --models orders --greedy
+  ```
+
+</TabItem>
+</Tabs>
+
+ ### Syntax examples
 
 The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG:
 
-```shell
-# Run tests on a model (indirect selection)
-$ dbt test --select customers
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
 
-# Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
-$ dbt test --select staging.jaffle_shop
+  ```bash
+  # Run tests on a model (indirect selection)
+  $ dbt test --select customers
 
-# Run tests downstream of a model (note this will select those tests directly!)
-$ dbt test --select stg_customers+
+  # Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
+  $ dbt test --select staging.jaffle_shop
 
-# Run tests upstream of a model (indirect selection)
-$ dbt test --select +stg_customers
+  # Run tests downstream of a model (note this will select those tests directly!)
+  $ dbt test --select stg_customers+
 
-# Run tests on all models with a particular tag (direct + indirect)
-$ dbt test --select tag:my_model_tag
+  # Run tests upstream of a model (indirect selection)
+  $ dbt test --select +stg_customers
 
-# Run tests on all models with a particular materialization (indirect selection)
-$ dbt test --select config.materialized:table
+  # Run tests on all models with a particular tag (direct + indirect)
+  $ dbt test --select tag:my_model_tag
 
-```
+  # Run tests on all models with a particular materialization (indirect selection)
+  $ dbt test --select config.materialized:table
 
-The same principle can be extended to tests defined on other resource types. In these cases, we will execute all tests defined on certain sources via the `source:` selection method:
+  ```
 
-```shell
-# tests on all sources
-$ dbt test --select source:*
+</TabItem>
+<TabItem value="legacy">
 
-# tests on one source
-$ dbt test --select source:jaffle_shop
+  ```bash
+  # Run tests on a model (indirect selection)
+  $ dbt test --models customers
 
-# tests on one source table
-$ dbt test --select source:jaffle_shop.customers
+  # Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
+  $ dbt test --models staging.jaffle_shop
 
-# tests on everything _except_ sources
-$ dbt test --exclude source:*
-```
+  # Run tests downstream of a model (note this will select those tests directly!)
+  $ dbt test --models stg_customers+
 
-### More complex selection
+  # Run tests upstream of a model (indirect selection)
+  $ dbt test --models +stg_customers
+
+  # Run tests on all models with a particular tag (direct + indirect)
+  $ dbt test --models tag:my_model_tag
+
+  # Run tests on all models with a particular materialization (indirect selection)
+  $ dbt test --models config.materialized:table
+
+  ```
+
+</TabItem>
+</Tabs>
+
+ The same principle can be extended to tests defined on other resource types. In these cases, we will execute all tests defined on certain sources via the `source:` selection method:
+
+ <Tabs
+   defaultValue="modern"
+   values={[
+     { label: 'v0.21.0 and later', value: 'modern', },
+     { label: 'v0.20.x and earlier', value: 'legacy', }
+   ]
+ }>
+ <TabItem value="modern">
+
+   ```bash
+   # tests on all sources
+   $ dbt test --select source:*
+
+   # tests on one source
+   $ dbt test --select source:jaffle_shop
+
+   # tests on one source table
+   $ dbt test --select source:jaffle_shop.customers
+
+   # tests on everything _except_ sources
+   $ dbt test --exclude source:*
+   ```
+
+ </TabItem>
+ <TabItem value="legacy">
+
+   ```bash
+   # tests on all sources
+   $ dbt test --models source:*
+
+   # tests on one source
+   $ dbt test --models source:jaffle_shop
+
+   # tests on one source table
+   $ dbt test --models source:jaffle_shop.customers
+
+   # tests on everything _except_ sources
+   $ dbt test --exclude source:*
+   ```
+
+</TabItem>
+</Tabs>
+
+ ### More complex selection
 
 Through the combination of direct and indirect selection, there are many ways to accomplish the same outcome. Let's say we have a data test named `assert_total_payment_amount_is_positive` that depends on a model named `payments`. All of the following would manage to select and execute that test specifically:
 
-```shell
-$ dbt test --select assert_total_payment_amount_is_positive # directly select the test by name
-$ dbt test --select payments,test_type:data # indirect selection, v0.18.0
-$ dbt test --select payments --data  # indirect selection, earlier versions
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
 
-As long as you can select a common property of a group of resources, indirect selection allows you to execute all the tests on those resources, too. In the example above, we saw it was possible to test all table-materialized models. This principle can be extended to other resource types, too:
+  ```bash
+  $ dbt test --select assert_total_payment_amount_is_positive # directly select the test by name
+  $ dbt test --select payments,test_type:data # indirect selection, v0.18.0
+  $ dbt test --select payments --data  # indirect selection, earlier versions
+  ```
 
-```shell
-# Run tests on all models with a particular materialization
-$ dbt test --select config.materialized:table
+</TabItem>
+<TabItem value="legacy">
 
-# Run tests on all seeds, which use the 'seed' materialization
-$ dbt test --select config.materialized:seed
+  ```bash
+  $ dbt test --models assert_total_payment_amount_is_positive # directly select the test by name
+  $ dbt test --models payments,test_type:data # indirect selection, v0.18.0
+  $ dbt test --models payments --data  # indirect selection, earlier versions
+  ```
 
-# Run tests on all snapshots, which use the 'snapshot' materialization
-$ dbt test --select config.materialized:snapshot
-```
+</TabItem>
+</Tabs>
 
-Note that this functionality may change in future versions of dbt.
+ As long as you can select a common property of a group of resources, indirect selection allows you to execute all the tests on those resources, too. In the example above, we saw it was possible to test all table-materialized models. This principle can be extended to other resource types, too:
+
+
+ <Tabs
+   defaultValue="modern"
+   values={[
+     { label: 'v0.21.0 and later', value: 'modern', },
+     { label: 'v0.20.x and earlier', value: 'legacy', }
+   ]
+ }>
+ <TabItem value="modern">
+
+ ```bash
+ # Run tests on all models with a particular materialization
+ $ dbt test --select config.materialized:table
+
+ # Run tests on all seeds, which use the 'seed' materialization
+ $ dbt test --select config.materialized:seed
+
+ # Run tests on all snapshots, which use the 'snapshot' materialization
+ $ dbt test --select config.materialized:snapshot
+ ```
+
+ </TabItem>
+ <TabItem value="legacy">
+
+   ```bash
+   # Run tests on all models with a particular materialization
+   $ dbt test --models config.materialized:table
+
+   # Run tests on all seeds, which use the 'seed' materialization
+   $ dbt test --models config.materialized:seed
+
+   # Run tests on all snapshots, which use the 'snapshot' materialization
+   $ dbt test --models config.materialized:snapshot
+   ```
+
+</TabItem>
+</Tabs>
+
+ Note that this functionality may change in future versions of dbt.
 
 ### Run tests on tagged columns
 
@@ -154,9 +368,29 @@ models:
 
 </File>
 
-```shell
-$ dbt test --select tag:my_column_tag
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select tag:my_column_tag
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models tag:my_column_tag
+  ```
+
+</TabItem>
+</Tabs>
+
 
 Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of dbt.
 
@@ -182,6 +416,26 @@ models:
 </File>
 
 
-```shell
-$ dbt test --select tag:my_test_tag
-```
+
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt test --select tag:my_test_tag
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt test --models tag:my_test_tag
+  ```
+
+</TabItem>
+</Tabs>

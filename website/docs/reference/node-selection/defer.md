@@ -17,10 +17,32 @@ Defer requires that a manifest from a previous dbt invocation be passed to the `
 
 ### Usage
 
-```shell
-$ dbt run --select [...] --defer --state path/to/artifacts
-$ dbt test --select [...] --defer --state path/to/artifacts
-```
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```shell
+  $ dbt run --select [...] --defer --state path/to/artifacts
+  $ dbt test --select [...] --defer --state path/to/artifacts
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```shell
+  $ dbt run --models [...] --defer --state path/to/artifacts
+  $ dbt test --models [...] --defer --state path/to/artifacts
+  ```
+
+</TabItem>
+</Tabs>
+
+
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
@@ -43,7 +65,6 @@ In my local development environment, I create all models in my target schema, `d
 I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`) from a production run, and copy them into a local directory called `prod-run-artifacts`.
 
 ### run
-
 I've been working on `model_b`:
 
 <File name='models/model_b.sql'>
@@ -53,13 +74,17 @@ select
 
     id,
     count(*)
-    
+
 from {{ ref('model_a') }}
 group by 1
 ```
 
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 
+### test
+:::info
+Before dbt v0.21, use the `--models` flag instead of `--select`.
+:::
 </File>
 
 <Tabs
@@ -80,15 +105,15 @@ $ dbt run --select model_b
 
 ```sql
 create or replace view dev_me.model_b as (
-    
+
     select
 
         id,
         count(*)
-        
+
     from dev_alice.model_a
     group by 1
-    
+
 )
 ```
 
@@ -107,15 +132,15 @@ $ dbt run --select model_b --defer --state prod-run-artifacts
 
 ```sql
 create or replace view dev_me.model_b as (
-    
+
     select
 
         id,
         count(*)
-        
+
     from prod.model_a
     group by 1
-    
+
 )
 ```
 
@@ -125,8 +150,6 @@ Because `model_a` is unselected, dbt will check to see if `dev_alice.model_a` ex
 
 </TabItem>
 </Tabs>
-
-### test
 
 I also have a `relationships` test that establishes referential integrity between `model_a` and `model_b`:
 
@@ -146,6 +169,10 @@ models:
 ```
 
 (A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)
+
+:::info
+Before dbt v0.21, use the `--models` flag instead of `--select`.
+:::
 
 </File>
 
