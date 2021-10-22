@@ -724,7 +724,7 @@ code {
 /* CTA Styles */
 .docs-cta {
   padding: 20px 10px;
-  margin: 3rem auto;
+  margin: 1rem auto;
   position: sticky;
   text-align: center;
   background: var(--color-off-white);
