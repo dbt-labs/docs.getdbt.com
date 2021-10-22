@@ -46,23 +46,40 @@ function BlogLayout(props) {
     breadcrumbTitle = frontMatter.title
   }
 
+  console.log('breadcrumbTitle', breadcrumbTitle, typeof(breadcrumbTitle))
+  console.log('description', description, typeof(description))
   return (
     <Layout {...layoutProps}>
 
-        {/* dbt Custom */}
-        {featured_image && featured_image !== "" ? (
-          <>
-            <Head>
-              <meta property="og:image" content={featured_image} />
-              <meta property="twitter:image" content={featured_image} />
-            </Head>
-            <Link to="/blog">
-              <div className="blog-hero" style={{backgroundImage: `url(${featured_image}`}}></div>
-            </Link>
-          </>
-        ) : ''}
-        {/* end dbt Custom */}
-        
+      {/* Set Custom Metadata */}
+      {featured_image && featured_image !== "" &&
+        <Head> 
+          <meta property="og:image" content={featured_image} />
+          <meta property="twitter:image" content={featured_image} />
+        </Head>
+      }
+
+      {breadcrumbTitle &&
+        <Head>
+          <title>{breadcrumbTitle}</title>
+          <meta property="og:title" content={breadcrumbTitle} />
+        </Head>
+      }
+
+      {description &&
+        <Head>
+          <meta name="description" content={description} />
+          <meta property="og:description" content={description} />
+        </Head>
+      }
+      {/* End Custom Metadata */}
+
+      {featured_image && featured_image !== "" &&
+        <Link to="/blog">
+          <div className="blog-hero" style={{backgroundImage: `url(${featured_image}`}}></div>
+        </Link>
+      }
+
       {layoutProps.pageClassName && layoutProps.pageClassName === "blog-list-page" &&
         ((show_title || show_description) && (title || description)) && (
           <div className="blog-index-header">
