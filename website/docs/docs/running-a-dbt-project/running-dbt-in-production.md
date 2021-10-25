@@ -32,10 +32,6 @@ If you're interested in giving dbt Cloud a spin, you can sign up for a *forever 
 
 <Lightbox src="/img/docs/running-a-dbt-project/8e7a6eb-cloud-img.png" title="dbt Cloud in action"/>
 
-[How to Run and Test my Changes Only](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github.md#slim-ci)
-
-[How to Perform Smart Reruns](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github.md#smart-reruns)
-
 ### Using Airflow
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
 * Invoking dbt through the [BashOperator](https://airflow.apache.org/howto/operator/bash.html). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
