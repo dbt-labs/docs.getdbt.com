@@ -47,7 +47,8 @@ The following dbt commands produce `run_results.json` artifacts whose results ca
 After issuing one of the above commands, you can reference the results by adding a selector to a subsequent command as follows: 
 
 ```bash
-$ dbt run --select result:<status>
+# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
+$ dbt run --select result:<status> --defer --state path/to/prod/artifacts
 ```
 
 ### Combining `state` and `result` selectors
