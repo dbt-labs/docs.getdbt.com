@@ -26,6 +26,9 @@ dbt v1.0.0-b1 is currently available. If you have questions or encounter bugs, p
 - [Parsing](parsing): partial parsing and static parsing have been turned on by default.
 - [Global configs](global-configs) have been standardized. Related updates to [global CLI flags](global-cli-flags) and [`profiles.yml`](profiles.yml).
 
+## Selection
+- Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
+
 ### Elsewhere in Core
 - [model-paths](model-paths) have replaced `source-paths` in `dbt-project.yml.
 - [seed-paths](seed-paths) have replaced `data-paths` in `dbt-project.yml with a default value of `seeds`.

@@ -121,6 +121,43 @@ dbt run -s state:modified+ --defer --state path/to/prod/artifacts
 dbt test -s state:modified+
 ```
 
+<Changelog>New in v1.0.0</Changelog>
+
+By comparing to artifacts from a previous production run, dbt can determine model and test result statuses.
+
+- `result:fail`
+- `result:error`
+- `result:warn`
+- `result:success`
+- `result:skipped`
+- `result:pass`
+
+For smarter reruns, use the `result:<status>` selector instead of manually overriding dbt commands with the models in scope.
+```bash
+dbt run --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
+```
+  - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
+
+```bash
+dbt build --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
+```
+  - Rerun and retest all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
+
+```bash
+dbt build --select state:modified+ result:error+ result:fail+ --defer --state path/to/prod/artifacts
+```
+  - Rerun all my erroneous models AND all my failed tests
+  - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
+  - There's a failed test that's unrelated to modified or error nodes(think: source test that needs to refresh a data load in order to pass)
+
+```bash
+dbt test --select result:fail --exclude <example test> --defer --state path/to/prod/artifacts
+```
+  - Rerun all my failed tests and exclude tests that I know will still fail
+  - This can apply to updates in source data during the "EL" process that need to be rerun after they are refreshed
+
+> Note: If you're using the `--state target/` flag, `result:error` and `result:fail` flags can only be selected concurrently(in the same command) if using the `dbt build` command. `dbt test` will overwrite the `run_results.json` from `dbt run` in a previous command invocation.
+
 To learn more, read the docs on [state](understanding-state).
 
 ## Pro-tips for dbt Projects
