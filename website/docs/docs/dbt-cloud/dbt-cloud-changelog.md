@@ -5,62 +5,8 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.38 (October 27, 2021)
+Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
-#### Enhancements
-
-- Add Bigquery OAuth configuration options to Edit Connection page
-- View docs tooltip now tells users 'run dbt docs'
-
-#### Feature
-
-- Set dbt default version to 0.21.0
-- Add on-submission feedback for custom environment variables
-
-#### Fixed
-
-- Fixed bug where repeated clicks spawns new tab
-- SQL Drawer Clears State on Server Restart
-- Return 400 instead of 500 when RunTrigger.cause is too long.
-
-#### Internal
-
-- Require an environment var name to save/update
-- Add audit log refresh button
-- Extend the max length of auth_token and refresh_token fields
-- Setup audit log infinite scroll
-- Switch to uuid for audit log export
-- Add metrics token auth to admin backend
-- Standardize bulk delete endpoint - backend
-- Standardize Bulk Custom Environment Variable Endpoint Responses - frontend
-- prevent staff/sudo based on env params
-- Disable network requests to pod when develop pod/ rpc is offline
-- Updates server check to use ready endpoint
-- only alert git_clone_failure on absolute failure
-- Using s3 static assets for PR envs
-- pass environment to dbt deps call
-- Push images to infra-root and implement push retries
-- partner connect: add the ability to rotate secrets
-- new uuid field for audit_log table
-- Update audit log table design
-- [codex/362] corrected version parse check, env/job dbt version mismatch can no longer incorrectly push v0 (pre 0.19.0) runs to codex consumer queue
-- Setup audit log pruning
-- Initialize repo before mounting
-- Add root repository to the GraphQL File Tree
-- Tiger/proxy client requests to new server
-- Add audit log export button
-- Add slash to audit log download route
-- Add audit log export endpoint
-- [Snyk] Security upgrade ruby from 2.6.7 to 2.6.8-slim
-- slack: add logging around channel list failures
-- Add sortKey to FileSystemEntity
-- Add tcp keepalive setting for scheduler
-- [env vars] Reject bulk env var creation call when there are multiple environments with the same name
-- Add client side timeout to RPC polling service
-- Remove circle CI code
-- Using yq@4 for `staging-deploy`
-- Adding DEPLOYMENT_TYPE for Helm-specific configs
-- Update frontend rollback action
-- Prevent filesystem request with default id
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
 dbt v0.21 is now available in dbt Cloud. The big change with this release is it introduces the `dbt build` command. `dbt build` logically does everything you'd want to do in your DAG. It runs your models, tests your tests, snapshots your snapshots, and seeds your seeds. It does this, resource by resource, from left to right across your DAG. dbt build is an opinionated task. It’s the culmination of all we’ve built- running models with resilient materializations, prioritizing data quality with tests, updating fixtures with seeds, capturing slowly changing dimensions with snapshot. Give it a try!
