@@ -64,13 +64,6 @@ trino:
 
 The incremental strategy supported by the adapter is to append new records without updating/overwriting any existing data from the target model.
 
-```
-{{
-    config(materialized = 'incremental')
-}}
-```
-
-
 ## Caveats
 
 ### Unsupported Functionality
