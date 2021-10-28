@@ -44,3 +44,4 @@ dbt-core v1.0.0-b2 is currently available. If you have questions or encounter bu
 
 ### Plugins
 - [dbt RPC Server](rpc) has been split out from `dbt-core` and is now packaged separately. Its functionality will be fully deprecated by the end of 2022, in favor of a new dbt Server.
+- **BigQuery:** Support for [ingestion-time-partitioned tables](creating-date-partitioned-tables) has been deprecated. Use `partition_by` and incremental modeling strategies instead.
