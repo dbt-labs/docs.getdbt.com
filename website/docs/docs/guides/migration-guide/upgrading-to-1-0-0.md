@@ -30,6 +30,7 @@ dbt-core v1.0.0-b2 is currently available. If you have questions or encounter bu
 - [Tests](building-a-dbt-project/tests), [test selection](test-selection-examples), [selection methods](node-selection/methods): Update `test_type:` selection method. Remove references to `--schema` and `--data` flags.
 - [Parsing](parsing): partial parsing and static parsing have been turned on by default.
 - [Global configs](global-configs) have been standardized. Related updates to [global CLI flags](global-cli-flags) and [`profiles.yml`](profiles.yml).
+- [The `init` command](init) has a whole new look and feel. It's no longer just for first-time users.
 
 ## Selection
 - Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
