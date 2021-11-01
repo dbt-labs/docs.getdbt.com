@@ -49,7 +49,7 @@ models:
                 store_failures: true  # always store failures
           - not_null:
               config:
-                store_failures: fail  # never store failures
+                store_failures: false  # never store failures
 ```
 
 </File>
