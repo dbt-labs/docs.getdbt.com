@@ -83,7 +83,6 @@ module.exports = {
           ],
         },
         "docs/guides/videos",
-        //"docs/guides/database-specific-guides/creating-date-partitioned-tables", // deprecated
       ],
     },
     {

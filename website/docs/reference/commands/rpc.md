@@ -3,16 +3,31 @@ title: "rpc"
 id: "rpc"
 ---
 
+<Changelog>
+
+  - **v0.14**: The `dbt rpc` command was introduced to dbt Core
+  - **v1.0**: RPC Server functionality was split apart from `dbt-core`, to be packaged and distributed separately. The code lives in a dedicated [`dbt-rpc` repository](https://github.com/dbt-labs/dbt-rpc)
+
+</Changelog>
+
 ### Overview
-The `dbt rpc` command runs a Remote Procedure Call dbt Server. This server can compile and run queries in the context of a dbt project. Additionally, it provides methods that can be used to list and terminate running processes. The rpc server should be run from a directory which contains a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
+The `dbt-rpc` plugin makes it possible to run a Remote Procedure Call dbt Server. This server can compile and run queries in the context of a dbt project. Additionally, it provides methods that can be used to list and terminate running processes. The rpc server should be run from a directory which contains a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
+
+:::caution Deprecation
+**The dbt-rpc plugin will be fully deprecated by the end of 2022.**
+
+For now, dbt Labs is actively maintaining and using `dbt-rpc` to enable interactive dbt development. Soon, we plan to announce a next-generation dbt Server. After the new Server reaches general release, this plugin will be locked, except for critical maintenance, for a period of six months. After that time, we plan to archive this repository. It will remain available for read-only use.
+:::
 
 :::caution Running on Windows
 The rpc server is not supported on Windows, due to historic reliability issues. A docker container may be a useful workaround if required.
 :::
 
+For more information, and to see the source code, visit the [`dbt-rpc` repository](https://github.com/dbt-labs/dbt-rpc).
+
 **Running the server:**
 ```
-$ dbt rpc
+$ dbt-rpc serve
 Running with dbt=0.15.0
 
 16:34:31 | Concurrency: 8 threads (target='dev')
@@ -428,7 +443,7 @@ To find the server PID, either fetch the `.result.pid` value from the `status` m
 
 ```
 # Find the server PID using `ps`:
-ps aux | grep 'dbt rpc' | grep -v grep
+ps aux | grep 'dbt-rpc serve' | grep -v grep
 ```
 
 After finding the PID for the process (eg. 12345), send a signal to the running server using the `kill` command:

@@ -107,7 +107,9 @@ Behind the scenes, dbt constructs a `select` query for each test, using the para
 
 You can find more information about these tests, and additional configurations (including [`severity`](severity) and [`tags`](resource-configs/tags)) in the [reference section](resource-properties/tests).
 
-You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide](custom-generic-tests) for more information.
+### More generic tests
+
+Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](custom-generic-tests) for more information.
 
 :::info
 There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](package-management) to learn more!

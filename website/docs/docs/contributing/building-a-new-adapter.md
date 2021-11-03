@@ -39,7 +39,7 @@ Edit the connection manager at `myadapter/dbt/adapters/myadapter/connections.py`
 
 ### The Credentials class
 
-The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need to add to `profiles.yml` to use your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
+The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need in the [connection profile](configure-your-profile) for your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
 
 Note that the base class includes required database and schema fields, as dbt uses those values internally.
 
@@ -83,9 +83,10 @@ class MyAdapterCredentials(Credentials):
 
 </File>
 
-Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
-
-You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
+There are a few things you can do to make it easier for users when connecting to your database:
+- Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
+- Create a `profile_template.yml` to enable configuration prompts for a brand-new user setting up a connection profile via the [`dbt init` command](init). See more details [below](#other-files).
+- You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
 
 <File name='connections.py'>
 
@@ -327,8 +328,17 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 ### Other files
 
-In order to enable the [dbt init command](/reference/commands/init), make sure to include a sample profile file. The filepath will be `dbt/include/<adapter_name>/sample_profiles.yml`. This will assure that users can create a new dbt project with the `dbt init` command.
-For sample profiles, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/postgres/dbt/include/postgres/sample_profiles.yml).
+#### `profile_template.yml`
+
+In order to enable the [`dbt init` command](/reference/commands/init) to prompt users when setting up a new project and connection profile, you should include a **profile template**. The filepath needs to be `dbt/include/<adapter_name>/profile_template.yml`. It's possible to provide hints, default values, and conditional prompts based on connection methods that require different supporting attributes. Users will also be able to include custom versions of this file in their own projects, with fixed values specific to their organization, to support their colleagues when using your dbt adapter for the first time.
+
+See examples:
+- [dbt-postgres](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml)
+- [dbt-redshift](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/include/redshift/profile_template.yml)
+- [dbt-snowflake](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/include/snowflake/profile_template.yml)
+- [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/snowflake/profile_template.yml)
+
+#### `__version__.py`
 
 To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatiable with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
 
