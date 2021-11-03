@@ -85,7 +85,7 @@ class MyAdapterCredentials(Credentials):
 
 There are a few things you can do to make it easier for users when connecting to your database:
 - Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
-- Create a `profile_template.yml` that includes to prompt a brand-new user setting up a connection profile via the [`dbt init` command](init). See more details [below](#other-files).
+- Create a `profile_template.yml` to enable configuration prompts for a brand-new user setting up a connection profile via the [`dbt init` command](init). See more details [below](#other-files).
 - You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
 
 <File name='connections.py'>
