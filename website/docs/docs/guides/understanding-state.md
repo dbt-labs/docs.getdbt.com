@@ -52,6 +52,7 @@ $ dbt run --select result:<status> --defer --state path/to/prod/artifacts
 ```
 
 The available options depend on the node type: 
+
 |                | model | seed | snapshot | test |
 |----------------|-------|------|------|----------|
 | `result:error`   | ✅    | ✅    | ✅    |  ✅      |
