@@ -57,7 +57,7 @@ The available options depend on the node type:
 |----------------|-------|------|------|----------|
 | `result:error`   | ✅    | ✅    | ✅    |  ✅      |
 | `result:success` | ✅    | ✅    | ✅     |         |
-| `result:skipped` | ✅    |      |  ✅    |        |
+| `result:skipped` | ✅    |      |  ✅    | ✅       |
 | `result:fail`    |       |      |     |   ✅       |
 | `result:warn`    |       |      |      |  ✅        |
 | `result:pass`    |       |      |      |  ✅      |
