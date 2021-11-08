@@ -9,7 +9,7 @@ The test object allows you to query information about a particular test.
 
 ### Arguments
 
-When querying for a `test`, the following arguments are available:
+When querying for a `test`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
 
 <ArgsTable queryName="test" />
 
@@ -18,11 +18,11 @@ Below we show some illustrative example queries and outline the schema (all poss
 ### Example Queries
 #### Test result
 
-The example query below outputs information about a test, including the state of the test result. This can be  one of, in order of severity, "error", "fail", "warn", "pass."
+The example query below outputs information about a test, including the state of the test result. This can be one of, in order of severity, "error", "fail", "warn", "pass."
 
 ```graphql
 {
-  test(jobId: 940, uniqueId: "test.internal_analytics.not_null_metrics_id") {
+  test(jobId: 123, uniqueId: "test.internal_analytics.not_null_metrics_id") {
     runId
     accountId
     projectId
@@ -30,7 +30,7 @@ The example query below outputs information about a test, including the state of
     name
     columnName
     state
-    }
+  }
 }
 ```
 

@@ -220,8 +220,12 @@ module.exports = {
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seed",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seeds",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposures",
             ],
             },
           ],
@@ -371,21 +375,21 @@ module.exports = {
         {
           type: "category",
           label: "For analyses",
-          items: [      
+          items: [
             "reference/analysis-properties",
           ],
         },
         {
           type: "category",
           label: "For exposures",
-          items: [      
+          items: [
             "reference/exposure-properties",
           ],
         },
         {
           type: "category",
           label: "For macros",
-          items: [      
+          items: [
             "reference/macro-properties",
             "reference/resource-properties/argument-type"
           ],
