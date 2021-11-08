@@ -3,9 +3,9 @@ title: "Upgrading to 1.0.0"
 
 ---
 
-:::info Prerelease
+:::info Release candidate
 
-dbt-core v1.0.0-b2 is currently available. If you have questions or encounter bugs, please let us know in [#dbt-prereleases](https://community.getdbt.com/) or by opening an issue [in GitHub](https://github.com/dbt-labs/dbt-core).
+dbt-core v1.0.0-rc1 is currently available. If you have questions or encounter bugs, please let us know in [#dbt-prereleases](https://community.getdbt.com/) or by opening an issue [in GitHub](https://github.com/dbt-labs/dbt-core).
 
 :::
 
@@ -16,14 +16,16 @@ dbt-core v1.0.0-b2 is currently available. If you have questions or encounter bu
 
 ## Breaking changes
 
-- The two type of test definitions are now "singular" and "generic" (instead of "data" and "schema", respectively). The `test_type:` selection method accepts `test_type:singular` and `test_type:generic`. (It will also accept test_type:schema and test_type:data for backwards compatibility.) **Not backwards compatible:** The `--data` and `--schema` flags to dbt test are no longer supported, and tests no longer have the tags `'data'` and `'schema'` automatically applied.
+- The two type of test definitions are now "singular" and "generic" (instead of "data" and "schema", respectively). The `test_type:` selection method accepts `test_type:singular` and `test_type:generic`. (It will also accept `test_type:schema` and `test_type:data` for backwards compatibility.) **Not backwards compatible:** The `--data` and `--schema` flags to dbt test are no longer supported, and tests no longer have the tags `'data'` and `'schema'` automatically applied.
 - The `dbt-rpc` server has been split apart from `dbt-core`, to be packaged, distributed, and installed separately. Instead of `dbt rpc`, use `dbt-rpc serve`.
+- The `greedy` flag/property has been renamed to `indirect_selection`, which is now eager by default. **Note:** This reverts test selection to its pre-v0.20 behavior by default. `dbt test -s my_model` _will_ select multi-parent tests, such as `relationships`, that depend on unselected resources. To achieve the behavior change in v0.20 + v0.21, set `--indirect-selection=cautious` on the CLI or `indirect_selection: cautious` in yaml selectors.
+- `pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `pip install dbt-<adapter>`.
+- **Artifacts:** New schemas (manifest v4, run results v4, sources v3). Notable changes: schema test + data test nodes are renamed to generic test + singular test nodes; freshness threshold default values look slightly different.
 
 **Deprecations:** Several under-the-hood changes from past minor versions, tagged with deprecation warnings, have now been fully deprecated.
 - The `packages` argument of [dispatch](dispatch) has been deprecated and will raise an exception when used.
 - The "adapter_macro" macro has been deprecated. Instead, use the [dispatch](dispatch) method to find a macro and call the result.
 - The `release` arg has been removed from the `execute_macro` method.
-- 
 
 ## New and changed documentation
 
@@ -35,6 +37,7 @@ dbt-core v1.0.0-b2 is currently available. If you have questions or encounter bu
 
 ## Selection
 - Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
+- [Test selection](test-selection-examples) supports an `--indirect-selection` flag, and [yaml selectors](yaml-selectors) support an `indirect_selection` property. Those have replaced the `--greedy` flag and `greedy` property introduced in v0.21.
 
 ### Elsewhere in Core
 - [model-paths](model-paths) have replaced `source-paths` in `dbt-project.yml.
