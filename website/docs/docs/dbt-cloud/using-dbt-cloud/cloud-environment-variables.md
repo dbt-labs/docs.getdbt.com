@@ -3,10 +3,6 @@ title: Environment Variables
 id: "cloud-environment-variables"
 ---
 
-:::info Beta Feature
-Environment variables are currently a beta feature in dbt Cloud. If you are interested in joining the beta program, reach out to support@getdbt.com.
-:::
-
 Environment variables can be used to customize the behavior of a dbt project depending on where the project is running. See the docs on
 [env_var](dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
 
@@ -83,6 +79,8 @@ To refresh the IDE mid-development, click on either the green 'ready' signal or 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/refresh-ide.gif" title="Refreshing IDE mid-session"/>
 
+There are some known issues with partial parsing of a project and changing environment variables mid-session in the IDE. If you find that your dbt project is not compiling to the values you've set, try deleting the `target/partial_parse.msgpack` file in your dbt project which will force dbt to re-compile your whole project.
+
 ### Handling secrets
 
 While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET_`. This functionality is supported from `dbt v0.21.0` and on. 
@@ -90,11 +88,14 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
 
-**Note**: An environment variable can be used to store a [git token for repo cloning](/cloud-environment-variables#clone-private-packages). We recommend you make the git token's permissions read only in order to practice good security hygiene. If a user were to unintentially write the environment variable storing the token to the database, the token would be exposed.
+**Note**: An environment variable can be used to store a [git token for repo cloning](/cloud-environment-variables#clone-private-packages). We recommend you make the git token's permissions read only in order to practice good security hygiene. If a user were to unintentionally write the environment variable storing the token to the database, the token would be exposed.
 
-### Special deployment environment variables
+### Special environment variables
 
 dbt Cloud has a number of pre-defined variables built in. The following environment variables are set automatically for deployment runs, and their values cannot be changed.
+
+**dbt Cloud context**
+- `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'
 
 **Run details**
 - `DBT_CLOUD_PROJECT_ID`: The ID of the dbt Cloud Project for this run
@@ -118,6 +119,7 @@ Environment variables can be used in many ways, and they give you the power and 
 
 #### Clone private packages
 Now that you can set secrets as environment variables, you can pass git tokens into your package HTTPS URLs to allow for on-the-fly cloning of private repositories. Read more about enabling [private package cloning](/building-a-dbt-project/package-management#private-packages).
+
 #### Dynamically set your warehouse in your Snowflake connection
 Environment variables make it possible to dynamically change the Snowflake virtual warehouse size depending on the job. Instead of calling the warehouse name directly in your project connection, you can reference an environment variable which will get set to a specific virtual warehouse at runtime. 
 

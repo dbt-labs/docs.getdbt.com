@@ -208,9 +208,7 @@ packages:
 Read more about creating a Personal Access Token [here](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html).
 
 
-:::info Beta Feature
-Environment variables, which enable private packages, are now supported in dbt Cloud! To get access to the beta, reach out to support@getdbt.com.
-:::
+
 #### Project subdirectories
 
 <Changelog>

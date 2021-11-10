@@ -38,7 +38,7 @@ Each `definition` is comprised of one or more arguments, which can be one of the
 * **CLI-style:** strings, representing CLI-style) arguments
 * **Key-value:** pairs in the form `method: value`
 * **Full YAML:** fully specified dictionaries with items for `method`, `value`, operator-equivalent keywords, and support for `exclude`
-    
+
 Use `union` and `intersection` to organize multiple arguments.
 
 ### CLI-style
@@ -89,7 +89,7 @@ definition:
 
 #### Exclude
 
-The `exclude` keyword is only supported by fully-qualified dictionaries. 
+The `exclude` keyword is only supported by fully-qualified dictionaries.
 It may be passed as an argument to each dictionary, or as
 an item in a `union`. The following are equivalent:
 
@@ -110,7 +110,7 @@ an item in a `union`. The following are equivalent:
 ```
 
 Note: The `exclude` argument in YAML selectors is subtly different from
-the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)), 
+the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)),
 and it is always applied _last_ within its scope.
 
 This gets us more intricate subset definitions than what's available on the CLI,
@@ -138,9 +138,29 @@ See [test selection examples](test-selection-examples) for more details about in
 ## Example
 
 Here are two ways to represent:
-```
-$ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
-```
+
+<Tabs
+  defaultValue="modern"
+  values={[
+    { label: 'v0.21.0 and later', value: 'modern', },
+    { label: 'v0.20.x and earlier', value: 'legacy', }
+  ]
+}>
+<TabItem value="modern">
+
+  ```bash
+  $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
+  ```
+
+</TabItem>
+<TabItem value="legacy">
+
+  ```bash
+  $ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
+  ```
+
+</TabItem>
+</Tabs>
 
 <Tabs
   defaultValue="cli_style"

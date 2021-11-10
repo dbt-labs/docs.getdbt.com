@@ -70,14 +70,14 @@ module.exports = {
   tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
   title: 'dbt Docs',
   url: SITE_URL,
+  onBrokenLinks: 'warn',
 
   themeConfig: {
-    disableDarkMode: true,
-    sidebarCollapsible: true,
     image: '/img/avatar.png',
-
+    colorMode: {
+      disableSwitch: true
+    },
     announcementBar: WARNING_BANNER,
-
     algolia: {
       apiKey: ALGOLIA_API_KEY,
       //debug: true,
@@ -85,7 +85,6 @@ module.exports = {
       algoliaOptions: {
       },
     },
-
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
@@ -111,7 +110,7 @@ module.exports = {
         src: '/img/dbt-logo-light.svg',
         alt: 'dbt Logo',
       },
-      links: [
+      items: [
         {
           to: '/docs/introduction',
           label: 'Docs',
@@ -199,6 +198,8 @@ module.exports = {
           editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
+
+          sidebarCollapsible: true,
         }
       },
     ],
@@ -209,6 +210,7 @@ module.exports = {
       { metatags } 
     ],
     path.resolve('plugins/svg'),
+    path.resolve('plugins/customWebpackConfig'),
   ],
   scripts: [
     'https://code.jquery.com/jquery-3.4.1.min.js',

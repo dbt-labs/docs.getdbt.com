@@ -85,7 +85,7 @@ With one line of code, you've just created a test! In this example, `users` will
 
 ### Generic tests with additional arguments
 
-The `is_even` test works without needing to specify any additional arguments. Other tests, like `relationships`, require more than just `model` and `column_name`. If your custom tests requires more than the standard argument, include those arguments in the test signature, as `field` and `to` are included below:
+The `is_even` test works without needing to specify any additional arguments. Other tests, like `relationships`, require more than just `model` and `column_name`. If your custom tests requires more than the standard arguments, include those arguments in the test signature, as `field` and `to` are included below:
 
 <File name='tests/generic/test_relationships.sql'>
 
@@ -200,5 +200,5 @@ To change the way a built-in generic test works—whether to add additional para
 
 Here's some additional examples of custom generic ("schema") tests from the community:
 * [Creating a custom schema test with an error threshold](https://discourse.getdbt.com/t/creating-an-error-threshold-for-schema-tests/966)
-* [Using custom schema tests to only run tests in production](https://discourse.getdbt.com/t/conditionally-running-dbt-tests-only-running-dbt-tests-in-production/32)
+* [Using custom schema tests to only run tests in production](https://discourse.getdbt.com/t/conditionally-running-dbt-tests-only-running-dbt-tests-in-production/322)
 * [Additional examples of custom schema tests](https://discourse.getdbt.com/t/examples-of-custom-schema-tests/181)

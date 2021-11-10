@@ -63,7 +63,7 @@ can override schema test definitions
 - [list (ls)](commands/list)
 - [defer](defer)
 - [adapter.dispatch](adapter#dispatch)
-- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and [description](description))
+- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](reference/dbt_project.yml) and [description](description))
 - [flag for colorized logs](run#enable-or-disable-colorized-logs)
 - [`full_refresh` config](full_refresh)
 
