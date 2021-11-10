@@ -2,7 +2,9 @@
 title: What are best practices for installing dbt with pip?
 ---
 
-**First,** we recommend [python virtual environments](https://docs.python-guide.org/dev/virtualenvs/) to namespace `pip` modules. Here's an example setup:
+Managing Python local environments isn't easy! 
+
+**First,** we recommend using [virtual environments](https://docs.python-guide.org/dev/virtualenvs/) to namespace `pip` modules. Here's an example setup:
 ```shell
 python3 -m venv dbt-env				# create the environment
 source dbt-env/bin/activate			# activate the environment

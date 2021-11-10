@@ -6,7 +6,7 @@ Some operating systems require additional pre-installation setup. After running 
 
 #### MacOS
 
-The version of python installed on your system may not be compatible with dbt. To check, run:
+The version of Python installed on your system may not be compatible with dbt. To check, run:
 ```
 python --version
 ```

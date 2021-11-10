@@ -12,7 +12,7 @@ You will also need to follow this process if you'd like to contribute to the pro
 To install from source:
 
 ```shell
-git clone https://github.com/dbt-labs/dbt.git
+git clone https://github.com/dbt-labs/dbt-core.git
 cd dbt
 pip install -r requirements.txt
 ```
@@ -21,13 +21,15 @@ This will install `dbt-core` and `dbt-postgres`. To install in editable mode (in
 
 ### Plugin
 
-To install a plugin from source:
+To install an adapter plugin from source, first locate its repository. For instance, the `dbt-redshift` adapter is located at https://github.com/dbt-labs/dbt-redshift.git, so I can clone it and install from there:
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-redshift.git
 cd dbt-redshift
 pip install .
 ```
+
+You do _not_ need to install `dbt-core` before installing an adapter plugin—it includes `dbt-core` among its dependencies, and it will install the latest compatible version automatically.
 
 To install in editable mode, such as while contributing, use `pip install -e .` instead.
 

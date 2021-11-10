@@ -35,7 +35,7 @@ pip install --upgrade dbt-<adapter>
 
 ### Install dbt-core only
 
-If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool. Also, be advised that dbt Core's [python API is currently unstable and undocumented](dbt-api).
+If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool. Also, be advised that dbt Core's [Python API is currently unstable and undocumented](dbt-api).
 
 ```shell
 pip install dbt-core

@@ -2,16 +2,18 @@
 title: "Homebrew"
 ---
 
-dbt Labs maintains Homebrew formulae for the four oldest and most popular adapter plugins.
+dbt Labs maintains Homebrew formulae for the four oldest and most popular adapter plugins: Postgres, Redshift, Snowflake, and BigQuery.
 
-Reasons to use Homebrew:
+We recommend you use Homebrew if you meet the following conditions:
 - You use MacOS for local development
-- You use dbt with one of Postgres, Redshift, Snowflake, or BigQuery
-- You're not sure if you have system requirements (such as python3) already installed
+- You use dbt with one of the four databases listed above
+- You're not sure if you have system requirements (such as Python 3) already installed, and don't care to manage them by hand
 
-Note that:
+If that sounds like you, great! Homebrew makes it significantly easier to install dbt Core. Note that:
 - Installation with Homebrew can take longer than installing with other methods, because `brew` takes care of more setup behind the scenes
 - If you're using an M1 Mac, we recommend that you install dbt via Homebrew with [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
+
+If you're someone who prefers to manage Python environments yourself, such as having multiple versions of Python to switch between, we recommend you install dbt Core via [`pip` instead](install/pip).
 
 ### Installation
 
@@ -55,16 +57,13 @@ Now, you can use dbt version 0.21.0:
 
 ```
 $ dbt --version
-installed version: 0.21.0
-   latest version: 0.21.0
+installed version: 1.0.0
+   latest version: 1.0.0
 
 Up to date!
 
 Plugins:
-  - bigquery: 0.21.0
-  - snowflake: 0.21.0
-  - redshift: 0.21.0
-  - postgres: 0.21.0
+  - <adapter>: 1.0.0
 ```
 
 You can switch between versions by linking the one you want to use:
