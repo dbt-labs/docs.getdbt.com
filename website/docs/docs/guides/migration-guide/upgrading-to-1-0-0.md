@@ -67,13 +67,9 @@ Several under-the-hood changes from past minor versions, tagged with deprecation
 
 ## New features and changed documentation
 
+- Add [metrics](metrics), a new node type
 - [Generic tests](custom-generic-tests) can be defined in `tests/generic` (new), in addition to `macros/` (as before)
 - [Parsing](parsing): partial parsing and static parsing have been turned on by default.
 - [Global configs](global-configs) have been standardized. Related updates to [global CLI flags](global-cli-flags) and [`profiles.yml`](profiles.yml).
 - [The `init` command](init) has a whole new look and feel. It's no longer just for first-time users.
-
-### Metrics
-- 
-
-### Selection
 - Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
