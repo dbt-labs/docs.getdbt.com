@@ -5,7 +5,7 @@ id: "from-source"
 
 dbt Core is open source software, as are almost all adapter plugins. As such, the codebases are freely available to download and build from source. To do this, you can clone the repositories from GitHub and install the local version using `pip`.
 
-This is also an important part of contributing. If you'd like to help fix a bug or implement a sought-after feature. For more details, read the [core contributing guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
+You will also need to follow this process if you'd like to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [core contributing guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
 
 ### Core
 
