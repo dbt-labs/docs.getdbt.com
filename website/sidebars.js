@@ -36,6 +36,7 @@ module.exports = {
         //"docs/building-a-dbt-project/archival",
         "docs/building-a-dbt-project/package-management",
         "docs/building-a-dbt-project/analyses",
+        "docs/building-a-dbt-project/metrics",
       ],
     },
     {
