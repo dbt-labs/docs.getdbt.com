@@ -51,6 +51,17 @@ After issuing one of the above commands, you can reference the results by adding
 $ dbt run --select result:<status> --defer --state path/to/prod/artifacts
 ```
 
+The available options depend on the node type: 
+
+|                | model | seed | snapshot | test |
+|----------------|-------|------|------|----------|
+| `result:error`   | ✅    | ✅    | ✅    |  ✅      |
+| `result:success` | ✅    | ✅    | ✅     |         |
+| `result:skipped` | ✅    |      |  ✅    | ✅       |
+| `result:fail`    |       |      |     |   ✅       |
+| `result:warn`    |       |      |      |  ✅        |
+| `result:pass`    |       |      |      |  ✅      |
+
 ### Combining `state` and `result` selectors
 
 The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run AND any new or modified models.
