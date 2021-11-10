@@ -4,6 +4,64 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.39 (November 10, 2021)
+
+#### Enhancements
+
+- [env vars] Refresh modal in IDE when Env Var values change behind the scenes
+
+#### Feature
+
+- Micro authn endpoint addition
+
+#### Fixed
+
+- Creating files and folders no longer overwrites existing filesystem entities
+- [env vars] Strip leading/trailing whitespace from UI inputs
+- Sorting folders relative to files nearby should be valid again
+- remove call to non-existent function
+- [env vars] Fix regression in Job/User UIs
+
+#### Internal
+
+- Add datepicker component and setup in audit log page
+- Update audit log description mappings
+- useCurrentDevelopEnvironmentQuery
+- Switch to routing_key column in audit log table
+- Update CODEOWNERS
+- Add audit log date filtering support
+- Add index to audit log actor name field
+- Implement useIsBigQueryOAuthRequired hook
+- Server (start/restart) Lifecycle Mutations
+- Part 3 - removing backend aspect of qawolf
+- Part 2 - Remove qawolf from the frontend pattern file
+- Add Cypress tests and basic E2E tests for login page and dashboard
+- Remove qawolf
+- [env vars] Strip whitespace from incoming Create/Update calls
+- Remove SSO related feature flags
+- Update CODEOWNERS to cover Permissions config
+- Fix frontend PR environments
+- User credentials hook
+- Move develop hooks to /hooks/develop
+- Angular Reactify Groundwork
+- Adds deployment deletion to server k8s client and proxy view
+- Adding backend support for file overwrites
+- Adding additional debug logging to start_server
+- Refactor out useFileSystem hook
+- git: send metric upon successful clone
+- Flag-Guarded React-Only Empty IDE
+- Perform PR deploys with our Helm charts
+- add audit_log.internal
+- Consolidate filesystem entities
+- Raise API error on Environment Variable submissions without values
+- [TIGER-5] Default to infra root account for image repo
+- [env vars]  Remove FE feature flag and logic
+- [env vars] Remove BE feature flag
+- Setup individual event overlay on audit log page
+- Pin pyparsing version for dbt-core v0.11.x
+- add env var field check to develop interaction polling
+
+
 ## dbt Cloud v1.1.38 (October 27, 2021)
 Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
