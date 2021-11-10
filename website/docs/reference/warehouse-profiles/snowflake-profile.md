@@ -166,10 +166,10 @@ parameter that can be quite useful later on when searching in the [QUERY_HISTORY
 
 <Changelog>New in v1.0.0.</Changelog>
 
-The `retry_on_database_errors` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake-connector encounters errors of type snowflake.connector.errors.DatabaseError. These retries can be helpful for handling errors of type "JWT token is invalid" when using key pair authentication.
+The `retry_on_database_errors` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake connector encounters errors of type snowflake.connector.errors.DatabaseError. These retries can be helpful for handling errors of type "JWT token is invalid" when using key pair authentication.
 
 ### retry_all
 
 <Changelog>New in v1.0.0.</Changelog>
 
-The `retry_all` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake-connector encounters any error.
+The `retry_all` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake connector encounters any error.
