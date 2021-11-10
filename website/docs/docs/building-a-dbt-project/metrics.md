@@ -9,13 +9,13 @@ id: "metrics"
 
 </Changelog>
 
-::info Metrics are new
+:::info Metrics are new
 An initial version of `metrics` was introduced in v1.0.0, following [vibrant community discusion](https://github.com/dbt-labs/dbt-core/issues/4071). Try them out, and let us know what you think!
-::
+:::
 
-::caution Metrics are experimental
-`metrics` will be released in v1.0, but they should _not_ be considered a stable API. We reserve the right to make breaking changes to their schema in **future minor versions**. We will aim for backwards compatibility whenever possible.
-::
+:::caution Metrics are experimental
+`metrics` will be released in v1.0, but they should _not_ be considered a stable API. We reserve the right to make breaking changes to their schema in future **minor** versions. We will aim for backwards compatibility whenever possible.
+:::
 
 ## Related documentation
 * [`metric:` selection method](node-selection/methods#the-metric-method)
@@ -92,7 +92,7 @@ metrics:
 
 **See and select dependencies.** As with exposures, it's possible to see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation).
 
-<Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
+<Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 
 ### Open questions
 

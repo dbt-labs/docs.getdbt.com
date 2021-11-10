@@ -119,12 +119,22 @@ Remember that `state:modified` includes _all_ of the criteria above, as well as 
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>
 
-The `exposure` method is used to select parent resources of a specified [exposure](exposure-properties). Use in conjunction with the `+` operator.
+The `exposure` method is used to select parent resources of a specified [exposure](exposures). Use in conjunction with the `+` operator.
 
 ```bash
-$ dbt run --select +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
+$ dbt run  --select +exposure:weekly_kpis               # run all models that feed into the weekly_kpis exposure
 $ dbt test --select +exposure:*                         # test all resources upstream of all exposures
-$ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
+$ dbt ls   --select +exposure:* --resource-type source  # list all sources upstream of all exposures
+```
+
+### The "metric" method
+<Changelog>New in v1.0.0</Changelog>
+
+The `metric` method is used to select parent resources of a specified [metric](metrics). Use in conjunction with the `+` operator.
+
+```bash
+$ dbt build --select +metric:weekly_active_users       # build all resources upstream of weekly_active_users metric
+$ dbt ls    --select +metric:* --resource-type source  # list all source tables upstream of all metrics
 ```
 
 ### The "result" method
