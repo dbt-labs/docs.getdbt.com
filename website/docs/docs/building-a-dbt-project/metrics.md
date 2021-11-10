@@ -48,7 +48,7 @@ models:
 metrics:
   - name: new_customers
     label: New Customers
-    model: dim_customers
+    model: ref('dim_customers')
     description: "The number of paid customers who are using the product"
 
     type: count
