@@ -14,7 +14,7 @@ If you install `dbt` in a virtual environment, that same virtual environment mus
 
 Tip: `alias` the `source ...` command in your `$HOME/.bashrc`, `$HOME/.zshrc`, or whatever rc file your shell draws from. For example, you can add a command like `alias env_dbt='source <...>/bin/activate'`, where `<...>` is substituted for the path to your virtual environment configuration.
 
-**Second,** dbt installations are tested using the latest versions of `pip` + `setuptools`. Newer versions have improved behavior around dependency resolution. Before installing, you should ensure that you are using the latest versions:
+**Second,** dbt installations are tested using the latest versions of `pip` + `setuptools`. Newer versions have improved behavior around dependency resolution, as well as much faster install times by using precompiled "wheels" when available for your operating system. Before installing, you should ensure that you are using the latest versions:
 ```shell
-pip install --upgrade pip setuptools
+pip install --upgrade pip wheel setuptools
 ```
