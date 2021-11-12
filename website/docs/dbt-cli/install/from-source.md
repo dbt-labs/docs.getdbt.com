@@ -13,7 +13,7 @@ To install from source:
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-core.git
-cd dbt
+cd dbt-core
 pip install -r requirements.txt
 ```
 
