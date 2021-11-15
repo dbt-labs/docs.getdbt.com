@@ -292,35 +292,6 @@ Remember that `state:modified` includes _all_ of the criteria above, as well as 
 
 The `exposure` method is used to select parent resources of a specified [exposure](exposures). Use in conjunction with the `+` operator.
 
-<<<<<<< HEAD
-```bash
-$ dbt run  --select +exposure:weekly_kpis               # run all models that feed into the weekly_kpis exposure
-$ dbt test --select +exposure:*                         # test all resources upstream of all exposures
-$ dbt ls   --select +exposure:* --resource-type source  # list all sources upstream of all exposures
-```
-
-### The "metric" method
-<Changelog>New in v1.0.0</Changelog>
-
-The `metric` method is used to select parent resources of a specified [metric](metrics). Use in conjunction with the `+` operator.
-
-```bash
-$ dbt build --select +metric:weekly_active_users       # build all resources upstream of weekly_active_users metric
-$ dbt ls    --select +metric:* --resource-type source  # list all source tables upstream of all metrics
-```
-
-### The "result" method
-<Changelog>New in v1.0.0</Changelog>
-
-The `result` method is related to the `state` method described above, and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator.
-
-```bash
-$ dbt run --select result:error # run all models that generated errors on the prior invocation of dbt run
-$ dbt test --select result:fail # run all tests that failed on the prior invocation of dbt test
-$ dbt build --select 1+result:fail # run all the models associated with failed tests from the prior invocation of dbt build
-$ dbt seed --select result:error # run all seeds that generated errors on the prior invocation of dbt seed.
-```
-=======
 <Tabs
   defaultValue="modern"
   values={[
@@ -347,4 +318,25 @@ $ dbt seed --select result:error # run all seeds that generated errors on the pr
 
 </TabItem>
 </Tabs>
->>>>>>> current
+
+### The "metric" method
+<Changelog>New in v1.0.0</Changelog>
+
+The `metric` method is used to select parent resources of a specified [metric](metrics). Use in conjunction with the `+` operator.
+
+```bash
+$ dbt build --select +metric:weekly_active_users       # build all resources upstream of weekly_active_users metric
+$ dbt ls    --select +metric:* --resource-type source  # list all source tables upstream of all metrics
+```
+
+### The "result" method
+<Changelog>New in v1.0.0</Changelog>
+
+The `result` method is related to the `state` method described above, and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator.
+
+```bash
+$ dbt run --select result:error # run all models that generated errors on the prior invocation of dbt run
+$ dbt test --select result:fail # run all tests that failed on the prior invocation of dbt test
+$ dbt build --select 1+result:fail # run all the models associated with failed tests from the prior invocation of dbt build
+$ dbt seed --select result:error # run all seeds that generated errors on the prior invocation of dbt seed.
+```
