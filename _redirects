@@ -1,9 +1,10 @@
-/dbt-cli/installation-guides/centos		/dbt-cli/installation	302
-/dbt-cli/installation-guides/centos	/dbt-cli/installation	302
-/dbt-cli/installation-guides/install-from-source	/dbt-cli/installation	302
-/dbt-cli/installation-guides/macos	/dbt-cli/installation	302
-/dbt-cli/installation-guides/ubuntu-debian	/dbt-cli/installation	302
-/dbt-cli/installation-guides/windows	/dbt-cli/installation	302
+/dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
+/dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
+/dbt-cli/installation-guides/install-from-source	/dbt-cli/install/from-source	302
+/dbt-cli/installation-guides/macos	/dbt-cli/install/overview	302
+/dbt-cli/installation-guides/ubuntu-debian	/dbt-cli/install/overview	302
+/dbt-cli/installation-guides/windows	/dbt-cli/install/overview	302
+/dbt-cli/installation		/dbt-cli/install/overview	302
 /docs	/docs/introduction	302
 /docs/adapter	/docs/writing-code-in-dbt/jinja-context/adapter	302
 /docs/analyses	/docs/building-a-dbt-project/analyses	302
