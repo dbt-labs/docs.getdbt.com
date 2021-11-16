@@ -213,8 +213,14 @@ module.exports = {
     path.resolve('plugins/customWebpackConfig'),
   ],
   scripts: [
-    'https://code.jquery.com/jquery-3.4.1.min.js',
-    'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
+    {
+      src: 'https://code.jquery.com/jquery-3.4.1.min.js',
+      defer: true
+    },
+    {
+      src: 'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
+      defer: true
+    },
     '/js/gtm.js',
   ],
   stylesheets: [
