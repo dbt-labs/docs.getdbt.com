@@ -161,7 +161,7 @@ static/
 
 ## How to Set Up RBAC Groups in dbt Cloud
  
-- **If you are on a Fishtown Hosted dbt Cloud instance:**
+- **If you are on a dbt Labs Hosted dbt Cloud instance:**
 Contact support via the Intercom button or support@getdbt.com to turn on this feature. 
 - **If you are on a customer deployed dbt Cloud instance:**
 Contact your account manager for instructions on how to turn on this feature.
