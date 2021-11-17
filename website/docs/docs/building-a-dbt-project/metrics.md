@@ -86,6 +86,19 @@ metrics:
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
+### Filters
+Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are ANDed together. If more complex filtering is required, users can (and should) push that logic down into the underlying model.
+
+```yml
+filters:
+  - field: is_paying
+    value: true
+  
+  - field: ltv
+    operator: ">="
+    value: 100
+```
+
 ### Why define metrics?
 
 **Use metric specifications in downstream tools.** Metrics are available to dbt's compilation context via the [`graph.metrics` variable](graph). They are included in [the manifest artifact](manifest-json) for downstream metadata consumption.
