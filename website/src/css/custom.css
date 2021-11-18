@@ -419,7 +419,9 @@ nav.navbar div.navbar__inner {
 }
 
 /* Docs */
-.docImage_src-components-lightbox-, .docImage_2V3X {
+.docImage_src-components-lightbox-,
+.docImage_src-components-lightbox-styles-module,
+.docImage_2V3X {
   max-width: 100%;
 }
 
