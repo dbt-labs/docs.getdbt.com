@@ -27,6 +27,6 @@ Yep, we know this syntax is a little less than ideal, so we're hoping to improve
 :::info Node selection syntax 
 In dbt 0.21.0, the node selection syntax was standardised (https://github.com/dbt-labs/dbt-core/pull/3791) to use `--select` everywhere. Before this, some commands like `dbt run` and `dbt test` used `--models` instead.  
  
-Older versions show the error because argparse (https://docs.python.org/3/library/argparse.html#allow-abbrev) is expanding `--select` to `--selector`, a different flag.
+Older versions still show an error because [argparse](https://docs.python.org/3/library/argparse.html#allow-abbrev) is expanding `--select` to `--selector`, which is a different flag.
 To fix this issue, either upgrade to dbt 0.21.0 or higher or use `--models` instead of `--select`.
 :::
