@@ -59,7 +59,8 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 :::  Preview or Compile Snapshots in IDE'
 
-It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud. Instead, run the `dbt snapshot` command in the IDE by following the steps below:
+It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud. Instead, run the `dbt snapshot` command in the IDE by completing the following steps.
+
 :::
 
 When you run the [`dbt snapshot` command](snapshot):
