@@ -6,11 +6,11 @@ id: "metadata-schema-sources"
 import { ArgsTable, SchemaTable } from "./schema";
 
 
-The sources object allows you to query information about many sources in a given job.
+The sources object allows you to query information about all sources in a given job.
 
 ### Arguments
 
-When querying for `sources`, the following arguments are available:
+When querying for `sources`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
 
 <ArgsTable queryName="sources" />
 

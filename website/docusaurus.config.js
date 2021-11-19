@@ -228,8 +228,14 @@ module.exports = {
     path.resolve('plugins/buildAuthorPages'),
   ],
   scripts: [
-    'https://code.jquery.com/jquery-3.4.1.min.js',
-    'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
+    {
+      src: 'https://code.jquery.com/jquery-3.4.1.min.js',
+      defer: true
+    },
+    {
+      src: 'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',
+      defer: true
+    },
     '/js/gtm.js',
     'https://kit.fontawesome.com/7110474d41.js'
   ],
@@ -238,7 +244,6 @@ module.exports = {
     '/css/entypo.css',
     '/css/search.css',
     '/css/api.css',
-    'https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
   ],

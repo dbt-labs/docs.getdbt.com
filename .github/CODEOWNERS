@@ -1,7 +1,7 @@
 # Lower entries on this list take precedence
 
 # Anything unmatched by selectors below
-*                                     @annafil
+*                                     @annafil @runleonarun
 
 # Cloud docs and images are assigned to Drew
 /website/docs/docs/dbt-cloud/dbt-cloud-changelog.md    @drewbanin @alexbethea22

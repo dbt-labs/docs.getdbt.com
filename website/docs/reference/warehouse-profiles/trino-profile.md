@@ -50,10 +50,19 @@ trino:
       port: [port number]
       schema: [your dbt schema]
       threads: [1 or more]
+      http_scheme: [http or https]
+      session_properties:
+        query_max_run_time: 5d
+        exchange_compression: True
+  
 
 ```
 
 </File>
+
+## Incremental models
+
+The incremental strategy supported by the adapter is to append new records without updating/overwriting any existing data from the target model.
 
 ## Caveats
 
@@ -62,5 +71,4 @@ trino:
 Due to the nature of Trino, not all core dbt functionality is supported. The following features of dbt are not implemented on Trino:
 
 1. [Snapshots](snapshots)
-2. [Incremental models](configuring-incremental-models)
 

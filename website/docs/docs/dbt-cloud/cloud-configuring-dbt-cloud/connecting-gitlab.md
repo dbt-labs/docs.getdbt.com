@@ -25,6 +25,8 @@ Once you've accepted, you should be redirected back to dbt Cloud, and you'll see
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/connected.png" title="GitLab connected" />
 
+Now that you've linked to your account from your Profile page, you should verify that your Project Settings page also shows your deploy token. 
+
 ## For Enterprise tier
 
 Before developers can personally authenticate in GitLab, account admins need to set up a GitLab application.
