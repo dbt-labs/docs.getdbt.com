@@ -21,7 +21,6 @@ any database grants.
 
 If you want to send requests to the dbt Cloud API from your restricted network, you will need to allow the entire `cloud.getdbt.com` domain instead of only allowing specific IP addresses. For example, if you want to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun).
 
-:::
 
 ## Connecting to Redshift and Postgres
 
