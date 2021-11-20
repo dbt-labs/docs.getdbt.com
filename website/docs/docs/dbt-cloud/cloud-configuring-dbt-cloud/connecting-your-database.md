@@ -19,8 +19,7 @@ any database grants.
 
 </Changelog>
 
-::: Note: This is not the same as whitelisting dbt Clouds' endpoint for receiving API requests (e.g.[sending a POST request to trigger a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun)).
-In order to send requests to the dbt Cloud API from your restricted network, you will need to whitelist the domain name (cloud.getdbt.com) instead of the specific IP addresses listed.
+If you want to send requests to the dbt Cloud API from your restricted network, you will need to allow the entire `cloud.getdbt.com` domain instead of only allowing specific IP addresses. For example, if you want to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun).
 
 :::
 
