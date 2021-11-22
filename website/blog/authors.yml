@@ -1,18 +1,27 @@
 dkrevitt:
   name: David Krevitt
-  job_title: dbt Labs team
+  job_title: Marketing
   image_url: /img/blog/authors/dkrevitt.jpg
   organization: dbt Labs
-  description: This is a demo description
+  description: Laziness is a virtue
   links:
     - url: https://twitter.com/dkrevitt
       icon: fa-twitter
 
-jmarcey:
-  name: Joel Marcey
-  job_title: Co-creator of Docusaurus 1
-  image_url: https://github.com/JoelMarcey.png
+jasnonaz:
+  name: Jason Ganz
+  job_title: Developer experience
+  organization: dbt Labs
+  image_url: https://github.com/jasnonaz.jpeg
   links:
-    - url: https://github.com/JoelMarcey
-      icon: fa-github
+    - url: https://twitter.com/jasnonaz
+      icon: fa-twitter
 
+sanjana:
+  name: Sanjana Sen 
+  job_title: Analytics engineer 
+  organization: dbt Labs
+  image_url: /img/blog/authors/sanjana.png
+  links:
+    - url: https://twitter.com/sqlsanj
+      icon: fa-twitter

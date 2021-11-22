@@ -4,8 +4,8 @@
 # and allows to add custom descriptions for tags
 
 - name: sql magic
-  display_title: sql magic
-  description: test category description goes here
+  display_title: SQL magic
+  description: Stories of dbt developers making SQL sing across warehouses
   is_featured: true
 - name: dbt
   display_title: dbt tag
