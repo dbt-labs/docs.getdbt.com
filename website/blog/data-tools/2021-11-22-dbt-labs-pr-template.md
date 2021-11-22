@@ -34,7 +34,7 @@ Let’s jump into the exact PR template we use internally at dbt Labs.
 Our PR template ([view markdown file in GitHub](https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md)) is composed of 6 sections: 
 
 * Description & motivation
-* To-do before merge
+* To-do before merge (optional)
 * Screenshots
 * Validation of models
 * Changes to existing models
@@ -46,8 +46,10 @@ Having each of these sections written down significantly limits the communicatio
 
 This is the intro to your PR and should allow the reviewer to quickly be able to understand the reason for opening this PR. If your actual code is the “how”, the description is the “what” and “why.”  As an example from a recent project:
 
-> Example: This PR updates the channel mapping for Google Adwords data based on this Google Sheet. This mimics the mapping used for sessions and will be used in our final attribution modeling to look at ROAS.
-> This PR also adds a stg table for the `final_url_report` from Adwords. This is currently only being used to map `utm_medium` and `utm_source` to `campaign_id` and `ad_group_id` to then derive a channel. This is not yet being used as an input to the Adwords package due to limitations in the data that is configured and available via Adwords. We may choose to incorporate that later.
+> Example: This PR updates the channel mapping for Google Adwords data based on this Google Sheet. This mimics the mapping used for sessions and will be used in our final attribution modeling to look at ROAS.  
+
+> This PR also adds a stg table for the `final_url_report` from Adwords. This is currently only being used to map `utm_medium` and `utm_source` to `campaign_id` and `ad_group_id` to then derive a channel. This is not yet being used as an input to the Adwords package due to limitations in the data that is configured and available via Adwords. We may choose to incorporate that later.  
+
 > The main purpose of this PR was to update the channel mapping for an attribution model. I could have quickly written “updated channel mapping” and called it a day. But, knowing that I would likely need to reference this mapping again at some point in the future, I added this link to the google sheet where we initially built the mapping.
 
 Remember, you know more about this PR **right now** than you will in a couple of months. If you or your team ships 30+ PRs and need to go back to one of those early ones to reference something, you’re going to be bummed when your description says “added a model”. 
@@ -57,7 +59,7 @@ Remember, you know more about this PR **right now** than you will in a couple of
 
 This is where we add the relevant sections from our DAG! This is one of my favorite features of dbt, as I’m a very visual learner. So when I open a PR, I take a quick look at the relevant sections of the DAG (aka dependency graph) to help me conceptualize the modeling.
 
-![test validation](/static/img/blog/pr-template-test-validation.png "dbt test validation")
+![test validation](/img/blog/pr-template-test-validation.png "dbt test validation")
 
 Checking for things like modularity and 1:1 relationships between sources and staging models is much easier done visually via the DAG than trying to look at code and visualize the relationships. 
 
@@ -68,7 +70,7 @@ Checking for things like modularity and 1:1 relationships between sources and st
 
 This section should show something to confirm that your model is doing what you intended it to do. This could be a [dbt test](https://docs.getdbt.com/docs/building-a-dbt-project/tests) like uniqueness or not null, or could be an ad-hoc query that you wrote to validate your data. Here is a screenshot from a test run on a local development branch:
 
-![dbt dag check](/static/img/blog/pr-template-dag-check.png "dbt DAG check")
+![dbt dag check](/img/blog/pr-template-dag-check.png "dbt DAG check")
 
 Adding uniqueness tests shows that you have put thought into the grain of each of your models, and then ensures that those assumptions hold true over time. 
 
@@ -95,7 +97,7 @@ This also makes things much easier on your reviewer. Reviewing a PR with multipl
 
 Think of yourself! What if you need to roll back a change, but in a moment of post-coding fogginess, you made a massive commit of unrelated concepts that “updated all the things”. Woof.
 
-![woof](/static/img/blog/pr-template-woof.png "woof")
+![woof](/img/blog/pr-template-woof.gif "woof")
 
 **My SQL follows the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md).**
 
@@ -111,13 +113,10 @@ Documentation follows the same reasoning as the PR description. You will know mo
 
 This is all about performance. Our ultimate goal is to model data such that end users can easily and efficiently query the resulting database objects.
 
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.jpg). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![choose your materializations wisely](/img/blog/pr-template-fct-meme.jpeg "choose your materializations wisely")
 
 
-![choose your materializations wisely](/static/img/blog/pr-template-fct-meme.png "choose your materializations wisely")
-
-
-**I have updated the README file.**
+**I have updated the README file.**  
 Last but not least, the README. This doesn’t need to be updated with every single PR. 
 
 In general, your README contains information about things such as how to get going with contributing to your dbt project, who to go to for database access, additional development resources, etc. If any of this changes as a result of your PR, make sure to update the README!
