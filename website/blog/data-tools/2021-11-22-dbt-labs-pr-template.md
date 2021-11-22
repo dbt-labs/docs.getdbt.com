@@ -12,8 +12,6 @@ date: 2021-11-29
 is_featured: true
 ---
 
-<WistiaVideo id="7em2tj62yo" />
-
 Having a PR template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow. Opening a pull request is the final step of your modeling process - a process which typically involves a lot of complex work! 
 
 For you, the dbt developer, the pull request serves as a final checkpoint in your modeling process, ensuring that no key elements are missing from your code or project. 
@@ -30,6 +28,8 @@ Let’s jump into the exact PR template we use internally at dbt Labs.
 
 
 ## The dbt Labs’ pull request template
+
+<WistiaVideo id="7em2tj62yo" />
 
 Our PR template ([view markdown file in GitHub](https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md)) is composed of 6 sections: 
 

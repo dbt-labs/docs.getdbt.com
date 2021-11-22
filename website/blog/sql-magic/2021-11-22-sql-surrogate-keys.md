@@ -7,6 +7,7 @@ authors: [sanjana,jasnonaz,dkrevitt]
 tags: [sql magic]
 hide_table_of_contents: false
 
+date: 2021-11-29
 is_featured: false
 ---
 

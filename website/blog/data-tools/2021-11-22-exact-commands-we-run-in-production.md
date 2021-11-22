@@ -12,15 +12,13 @@ date: 2021-11-29
 is_featured: true
 ---
 
-<WistiaVideo id="7em2tj62yo" />
-
-> _Note: As of dbt v0.21.0 (released in October 2021), you can now set your preferred production commands using [`dbt build`](https://github.com/dbt-labs/dbt-core/releases). Once setup, a single `dbt build` command can be used to execute your prescribed `seed`, `test`, `run` and `snapshot` and other commands in a specified order._
-
 Without a command to run them, dbt models and tests are just taking up space in a Git repo.
 
 The specific dbt commands you run in production are the control center for your project. They are the structure that defines your team’s data quality + freshness standards.
 
 <!--truncate-->
+
+> _Note: As of dbt v0.21.0 (released in October 2021), you can now set your preferred production commands using [`dbt build`](https://github.com/dbt-labs/dbt-core/releases). Once setup, a single `dbt build` command can be used to execute your prescribed `seed`, `test`, `run` and `snapshot` and other commands in a specified order._
 
 The most important command is [`dbt run`](https://docs.getdbt.com/reference/commands/run). But in deployment, we rarely just use `dbt run`. 
 
@@ -29,6 +27,8 @@ You’re probably familiar with a bunch of [dbt commands](https://docs.getdbt.co
 In production, reliability and consistency are key. This guarantees that your stakeholders have data that could be meaningfully used. In order to ensure reliability and consistency, here are a few principles we believe you should keep in mind when designing your deployment commands:
 
 ## Principles of dbt deployment commands
+
+<WistiaVideo id="7em2tj62yo" />
 
 ### 1) Always test your data 
 
