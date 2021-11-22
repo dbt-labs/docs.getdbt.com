@@ -25,3 +25,12 @@ sanjana:
   links:
     - url: https://twitter.com/sqlsanj
       icon: fa-twitter
+
+lcraigie:
+  name: Lauren Craigie
+  job_title: Product marketing
+  organization: dbt Labs
+  image_url: /img/blog/authors/craigie.png
+  links:
+    - url: https://twitter.com/crai_fish
+      icon: fa-twitter      

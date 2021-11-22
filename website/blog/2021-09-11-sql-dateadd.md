@@ -1,7 +1,7 @@
 ---
 title: "SQL Magic: DATEADD across data warehouses"
 description: "Abstract away the need to look up the SQL dateadd function syntax every time you use it, by standardizing your syntax with dbt macros."
-slug: sql-dateadd-2
+slug: sql-dateadd
 
 authors: dkrevitt
 

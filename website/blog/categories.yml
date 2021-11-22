@@ -7,9 +7,9 @@
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses
   is_featured: true
-- name: dbt
-  display_title: dbt tag
-  description: test category description goes here
+- name: dbt updates
+  display_title: dbt Product Upates
+  description: An archive of monthly product updates from the dbt Labs team.
   is_featured: true
 - name: python
   display_title: python
