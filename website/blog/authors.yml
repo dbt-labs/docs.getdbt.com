@@ -12,7 +12,7 @@ jasnonaz:
   name: Jason Ganz
   job_title: Developer experience
   organization: dbt Labs
-  image_url: https://github.com/jasnonaz.jpeg
+  image_url: /img/blog/authors/jasnonaz.jpeg
   links:
     - url: https://twitter.com/jasnonaz
       icon: fa-twitter

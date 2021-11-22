@@ -3,7 +3,7 @@
 # This adds the tag to the Categories sidebar
 # and allows to add custom descriptions for tags
 
-- name: sql magic
+- name: SQL magic
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses
   is_featured: true

@@ -2,7 +2,7 @@
 title: "Generating surrogate keys across warehouses using dbt_utils"
 description: "What's a surrogate key, and how can you generate them across BigQuery, Databricks, Redshift, Snowflake and other data warehouses?"
 slug: sql-surrogate-keys
-authors: sanjana, jasnonaz, dkrevitt	 
+authors: [sanjana,jasnonaz,dkrevitt] 
 
 tags: [sql magic]
 hide_table_of_contents: false
@@ -17,8 +17,6 @@ is_featured: false
 ### Why primary keys are important
 
 We all know one of the most fundamental rules in data is that every table should have a primary key. Primary keys are critical for many reasons:
-
-
 
 * They ensure that you don’t have duplicate rows in your table
 * They help establish relationships to other tables
@@ -96,8 +94,9 @@ Rather than wrapping your columns in a `coalesce` function when concatenating th
 
 When you call `{{ dbt_utils.surrogate_key(['field_a', 'field_b'[,...]]) }}`, behind the scenes dbt compiles SQL on your behalf, looping through each field and generating the correct number of `coalesce` statements:
 
-
-    ```"coalesce(cast(" ~ field ~ " as " ~ dbt_utils.type_string() ~ "), '')"```
+```
+    coalesce(cast(" ~ field ~ " as " ~ dbt_utils.type_string() ~ "), '')
+```
 
 What does this mean in practice? 
 
