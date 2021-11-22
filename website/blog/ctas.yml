@@ -1,7 +1,7 @@
 # name property should not be changed once set
 # or references to CTA will break
 - name: coalesce
-  header: Signup for Coalesce
-  subheader: 5 days across 4 time zones, an online conference dedicated to the advancement and practice of analytics engineering.
-  button_text: Register
+  header: Don't miss Coalesce!
+  subheader: Coming up December 6-10th, the online conference dedicated to the advancement of analytics engineering.
+  button_text: Register free
   url: https://coalesce.getdbt.com/
