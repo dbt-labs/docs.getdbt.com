@@ -82,7 +82,7 @@ models:
 
 It really is as simple as adding those two tests to the primary keys of all of your tables, and then you have a built-in safeguard against bad data in your primary keys.
 
-Having tests configured and running in production using the `[dbt test](https://docs.getdbt.com/reference/commands/test)` command unlocks your ability to do things like [send Slack alerts](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications) on test failures, so you’ll be the first to know when PK issues arise. 
+Having tests configured and running in production using the [`dbt test`](https://docs.getdbt.com/reference/commands/test) command unlocks your ability to do things like [send Slack alerts](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications) on test failures, so you’ll be the first to know when PK issues arise. 
 
 
 ## Does your warehouse support primary keys?
@@ -103,7 +103,7 @@ Redshift, Snowflake and Postgres allow you to query primary key column lists fro
 
 ### BigQuery primary keys
 
-BigQuery does not have a concept of primary key constraints for tables, so instead you’ll want to use [surrogate keys](https://docs.getdbt.com/blog/sql-surrogate-keys) in dbt to define your primary key for a table.
+BigQuery does not have a concept of primary key constraints for tables, so instead you’ll want to use [surrogate keys](/blog/sql-surrogate-keys) in dbt to define your primary key for a table.
 
 
 ### Databricks primary keys
