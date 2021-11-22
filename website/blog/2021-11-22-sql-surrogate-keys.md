@@ -62,7 +62,7 @@ Let’s take a look at how generating surrogate keys specifically looks in pract
 
 [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#concat), [Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_CONCAT.html) and [Snowflake’s](https://docs.snowflake.com/en/sql-reference/functions/concat.html) concat functions returns null if any of the referenced columns for that row returns a null, so to create a proper surrogate key you’d need to wrap each column in a `coalesce` before hashing with an md5 function:
 
-```
+```sql
 md5 ( concat ( coalesce(column1, ‘’), coalesce(column2, ‘’) ) )
 ```
 
@@ -79,7 +79,7 @@ If you used `||` instead of `concat`, one _null_ column would cause the entire s
 
 So in plain old PostgreSQL, you’d use:
 
-```
+```sql
 md5 ( concat (column1, column2) )
 ```
 
@@ -94,7 +94,7 @@ Rather than wrapping your columns in a `coalesce` function when concatenating th
 
 When you call `{{ dbt_utils.surrogate_key(['field_a', 'field_b'[,...]]) }}`, behind the scenes dbt compiles SQL on your behalf, looping through each field and generating the correct number of `coalesce` statements:
 
-```
+```sql
     coalesce(cast(" ~ field ~ " as " ~ dbt_utils.type_string() ~ "), '')
 ```
 

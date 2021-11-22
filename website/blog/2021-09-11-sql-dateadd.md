@@ -5,9 +5,10 @@ slug: sql-dateadd-2
 
 authors: dkrevitt
 
-tags: [sql magic, python]
+tags: [SQL magic]
 hide_table_of_contents: false
 
+date: 2021-11-29
 is_featured: true
 ---
 
@@ -123,5 +124,5 @@ And it’s actually quite a simple 31-line macro ([source here](https://github.c
 {% endmacro %}
 ```
 
-Enjoy! The dateadd macro in dbt-utils currently supports BigQuery, Postgres, Redshift and Snowflake.
+Enjoy! FYI I've used dateadd macro in dbt-utils on BigQuery, Postgres, Redshift and Snowflake, but it likely works across most other warehouses.
 
