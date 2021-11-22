@@ -42,4 +42,13 @@ aescay:
   image_url: /img/blog/authors/aescay.jpeg
   links:
     - url: https://twitter.com/_aescay
-      icon: fa-twitter      
+      icon: fa-twitter
+
+jwilliams:
+  name: Jess Williams
+  job_title: Head of professional services
+  organization: dbt Labs
+  image_url: /img/blog/authors/jess.png
+  links:
+    - url: https://www.linkedin.com/in/jessdwilliams/
+      icon: fa-linkedin            
