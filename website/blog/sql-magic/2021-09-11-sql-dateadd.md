@@ -1,5 +1,5 @@
 ---
-title: "SQL Magic: DATEADD across data warehouses"
+title: "DATEADD across data warehouses"
 description: "Abstract away the need to look up the SQL dateadd function syntax every time you use it, by standardizing your syntax with dbt macros."
 slug: sql-dateadd
 
@@ -8,7 +8,7 @@ authors: dkrevitt
 tags: [SQL magic]
 hide_table_of_contents: false
 
-date: 2021-11-29
+date: 2021-11-15
 is_featured: true
 ---
 

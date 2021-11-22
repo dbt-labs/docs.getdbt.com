@@ -34,3 +34,12 @@ lcraigie:
   links:
     - url: https://twitter.com/crai_fish
       icon: fa-twitter      
+
+aescay:
+  name: Andrew Escay
+  job_title: Analytics engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/aescay.jpeg
+  links:
+    - url: https://twitter.com/_aescay
+      icon: fa-twitter      
