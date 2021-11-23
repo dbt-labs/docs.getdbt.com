@@ -31,13 +31,13 @@ Someone on the data team might send you a list of models and say "It is in one o
 
 ```
 
-* Users
+* users
 
-* User_dimensions
+* user_dimensions
 
-* User_properties
+* user_properties
 
-* Dim_users_attributed
+* dim_users_attributed
 
 * dim_users_revenue_attributed
 
