@@ -18,8 +18,8 @@ jasnonaz:
       icon: fa-twitter
 
 sanjana:
-  name: Sanjana Sen 
-  job_title: Analytics engineer 
+  name: Sanjana Sen
+  job_title: Analytics engineer
   organization: dbt Labs
   image_url: /img/blog/authors/sanjana.png
   links:
@@ -33,7 +33,7 @@ lcraigie:
   image_url: /img/blog/authors/craigie.png
   links:
     - url: https://twitter.com/crai_fish
-      icon: fa-twitter      
+      icon: fa-twitter
 
 aescay:
   name: Andrew Escay
@@ -51,4 +51,22 @@ jwilliams:
   image_url: /img/blog/authors/jess.png
   links:
     - url: https://www.linkedin.com/in/jessdwilliams/
-      icon: fa-linkedin            
+      icon: fa-linkedin
+
+pkearns:
+  name: Pat Kearns
+  job_title: Senior Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/pkearns.png
+  links:
+    - url: https://www.linkedin.com/in/pat-kearns/
+      icon: fa-linkedin
+
+achen:
+  name: Amy Chen
+  job_title: Senior Partner Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/achen.png
+  links:
+    - url: https://www.linkedin.com/in/yuanamychen/
+      icon: fa-linkedin
