@@ -13,7 +13,7 @@ id: "snapshots"
 ### What are snapshots?
 Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable table over time.
 
-Snapshots implement [type-2 Slowly Changing Dimensions](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) over mutable source tables. These Slowly Changing Dimensions (or SCDs) identify how a row in a table changes over time. Imagine you have an `orders` table where the `status` field can be overwritten as the order is processed.
+Snapshots leverage [type-2 Slowly Changing Dimensions](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) with a [pure type 6 implemenation](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Pure_type_6_implementation) over mutable source tables. These Slowly Changing Dimensions (or SCDs) identify how a row in a table changes over time. Imagine you have an `orders` table where the `status` field can be overwritten as the order is processed.
 
 | id | status | updated_at |
 | -- | ------ | ---------- |
