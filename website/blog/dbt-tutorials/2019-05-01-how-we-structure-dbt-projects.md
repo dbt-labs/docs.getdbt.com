@@ -1,5 +1,5 @@
 ---
-title: "How we structure our dbt projects"
+title: "How We Structure our dbt Projects"
 description: "As the maintainers of dbt, and analytics consultants, at Fishtown Analytics we build a lot of dbt projects. Over time, we’ve developed internal conventions on how we structure them."
 slug: how-we-structure-our-dbt-projects
 canonical_url: https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355
@@ -14,7 +14,7 @@ is_featured: true
 ---
 
 
-As the maintainers of dbt, and analytics consultants, at [Fishtown Analytics](https://www.fishtownanalytics.com/) (now dbt Labs) we build a lot of dbt projects. Over time, we’ve developed internal conventions on how we structure them.
+As the maintainers of dbt, and analytics consultants, at [Fishtown Analytics](https://www.getdbt.com/dbt-labs/about-us/) (now dbt Labs) we build a lot of dbt projects. Over time, we’ve developed internal conventions on how we structure them.
 
 This article does not seek to instruct you on how to design a final model for your stakeholders — it won’t cover whether you should denormalize everything into one wide master table, or have many tables that need to be joined together in the BI layer. There are entire books on this topic. Instead, use this as a guide once you’ve already got an idea of what you’re building for how you should break the transformations up into separate dbt models.
 

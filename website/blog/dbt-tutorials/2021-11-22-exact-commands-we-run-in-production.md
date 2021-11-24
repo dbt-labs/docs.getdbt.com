@@ -1,5 +1,5 @@
 ---
-title: "The exact dbt commands we run in production"
+title: "The Exact dbt Commands We Run in Production"
 description: "Without a command to run them, dbt models and tests are just taking up space in a Git repo. These are the exact dbt commands we run internally at dbt Labs."
 slug: dbt-production-commands
 

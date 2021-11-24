@@ -1,5 +1,5 @@
 ---
-title: "Generating surrogate keys across warehouses"
+title: "Generating Surrogate Keys Across Warehouses"
 description: "What's a surrogate key, and how can you generate them across BigQuery, Databricks, Redshift, Snowflake and other data warehouses?"
 slug: sql-surrogate-keys
 authors: [sanjana,jasnonaz,dkrevitt] 

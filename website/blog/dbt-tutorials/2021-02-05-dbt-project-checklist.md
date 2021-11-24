@@ -1,5 +1,5 @@
 ---
-title: "Your essential dbt project checklist"
+title: "Your Essential dbt Project Checklist"
 description: "A checklist created to guide our internal work, which you can use to clean up your own dbt project."
 slug: essential-dbt-project-checklist
 canonical_url: https://discourse.getdbt.com/t/your-essential-dbt-project-checklist/1377 
