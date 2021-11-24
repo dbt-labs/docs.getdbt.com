@@ -34,8 +34,12 @@ function BlogListPage(props) {
 
   // Set Featured Posts
   const featuredPosts = items
-    .slice(0, featured_posts_count ? featured_posts_count : 2)
     .filter(post => post.content.frontMatter.is_featured)
+    .slice(0, featured_posts_count ? featured_posts_count : 2)
+
+  const allOtherPosts = items
+    .filter(post => post.content.frontMatter.is_featured)
+    .slice(featured_posts_count ? featured_posts_count : 2)
 
   // Set Featured Categories
   const featuredCategories = tagData.filter(tag => tag && tag.is_featured)
@@ -70,7 +74,7 @@ function BlogListPage(props) {
 
       {/* Posts by Featured Tags */}
       {featuredCategories && featuredCategories.map(category => {
-        const recentPosts = items
+        const recentPosts = allOtherPosts
           .filter(post => {
             const lowercaseTags = post.content.frontMatter.tags.map(tag => tag.toLowerCase())
             if(lowercaseTags.includes(category.name.toLowerCase()))
