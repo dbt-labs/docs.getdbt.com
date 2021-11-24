@@ -70,3 +70,14 @@ achen:
   links:
     - url: https://www.linkedin.com/in/yuanamychen/
       icon: fa-linkedin
+
+jlabes:
+  name: Joel Labes
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  image_url: /img/blog/authors/jlabes.png
+  links:
+    - url: https://www.linkedin.com/in/joel-labes/
+      icon: fa-linkedin
+    - url: https://twitter.com/joellabes
+      icon: fa-twitter
