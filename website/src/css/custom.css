@@ -772,6 +772,13 @@ code {
   background: var(--ifm-menu-color-active);
 }
 
+@media (max-width: 996px) {
+  .docs-cta {
+    display:none;
+  }
+}
+
+
 .mobile-toc-section {
   display: none;
 }
