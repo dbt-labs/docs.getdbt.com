@@ -5,7 +5,7 @@ slug: dbt-production-commands
 
 authors: [aescay]
 
-tags: [data tooling]
+tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2021-11-29

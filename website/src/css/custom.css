@@ -754,10 +754,14 @@ code {
 /* CTA Styles */
 .docs-cta {
   padding: 20px 10px;
-  margin: 1rem auto;
-  position: sticky;
+  margin: 1rem;
+  border-radius: 1rem;
+  /*position: sticky;*/
   text-align: center;
   background: var(--color-off-white);
+  position:fixed;
+  bottom:0;
+  max-width: 400px;
 }
 .docs-cta h4 {
   margin-bottom: 10px;
@@ -786,6 +790,7 @@ code {
 .mobile-toc-section .mobile-toc-container {
   padding: 0 var(--ifm-spacing-horizontal);
 }
+
 @media (max-width: 996px) {
   .mobile-toc-section {
     display: block;

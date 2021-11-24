@@ -6,7 +6,7 @@ canonical_url: https://discourse.getdbt.com/t/your-essential-dbt-project-checkli
 
 authors: [achen, dconnors]
 
-tags: [analytics craft]
+tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2020-06-20
@@ -15,7 +15,11 @@ is_featured: true
 
 If you’ve been using dbt for over a year, your project is out-of-date. This is natural.  
 
-New functionalities have been released. Warehouses change. Best practices are updated. Over the last year, I and others on the Fishtown Analytics team have conducted seven audits for clients who have been using dbt for a minimum of 2 months. In every single audit, we found opportunities to:
+New functionalities have been released. Warehouses change. Best practices are updated. Over the last year, I and others on the Fishtown Analytics (now dbt Labs!) team have conducted seven audits for clients who have been using dbt for a minimum of 2 months. 
+
+<!--truncate-->
+
+In every single audit, we found opportunities to:
 
 1.  Improve performance
 2.  Improve maintainability

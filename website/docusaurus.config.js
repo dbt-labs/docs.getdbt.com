@@ -208,11 +208,11 @@ module.exports = {
           sidebarCollapsible: true,
         },
         blog: {
-          blogTitle: 'Developer Hub',
+          blogTitle: 'dbt Developer Blog',
           blogDescription: 'Technical tutorials from the dbt Community.',
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
-          blogSidebarCount: 20,
+          blogSidebarCount: 5,
         },
       },
     ],

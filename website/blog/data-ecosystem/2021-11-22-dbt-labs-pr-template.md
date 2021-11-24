@@ -5,7 +5,7 @@ slug: analytics-pull-request-template
 
 authors: [jwilliams]
 
-tags: [data tooling]
+tags: [data ecosystem]
 hide_table_of_contents: false
 
 date: 2021-11-29

@@ -6,7 +6,7 @@ canonical_url: https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/
 
 authors: [claire]
 
-tags: [data tooling]
+tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2019-05-01
