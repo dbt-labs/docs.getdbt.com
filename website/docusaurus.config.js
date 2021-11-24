@@ -208,7 +208,7 @@ module.exports = {
           sidebarCollapsible: true,
         },
         blog: {
-          blogTitle: 'Developer Hub',
+          blogTitle: 'Developer Blog',
           blogDescription: 'Technical tutorials from the dbt Community.',
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
