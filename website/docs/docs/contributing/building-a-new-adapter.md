@@ -343,4 +343,4 @@ You can use a pre-configured [dbt adapter test suite](https://github.com/dbt-lab
 Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
 - Hosting on a public git provider (e.g. GitHub, GitLab)
 - Publishing to [PyPi](https://pypi.org/)
-- Adding to the list of ["Available Adapters"](available-adapters#community-plugins)
+- Adding to the list of ["Available Adapters"](available-adapters#community-supported)
