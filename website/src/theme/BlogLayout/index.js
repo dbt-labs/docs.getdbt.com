@@ -19,6 +19,8 @@
  function BlogLayout(props) {
    const {title, description, blogPageTitle, sidebar, toc, children, ...layoutProps} = props;
    
+   console.log('props', props)
+   
    // dbt Custom 
    const { blogMeta, tagData } = usePluginData('docusaurus-build-blog-data-plugin');
    const { 

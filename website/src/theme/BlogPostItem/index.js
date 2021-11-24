@@ -16,6 +16,7 @@ import React from 'react';
 import clsx from 'clsx';
 import {MDXProvider} from '@mdx-js/react';
 import Translate, {translate} from '@docusaurus/Translate';
+import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import {useBaseUrlUtils} from '@docusaurus/useBaseUrl';
 import {usePluralForm} from '@docusaurus/theme-common';
@@ -68,7 +69,9 @@ function BlogPostItem(props) {
     authors,
   } = metadata;
   const image = assets.image ?? frontMatter.image ?? '/img/avatar.png';
-  
+
+  console.log('frontMatter', frontMatter)
+
   const renderPostHeader = () => {
     const TitleHeading = isBlogPostPage ? 'h1' : 'h2';
     return (
@@ -101,64 +104,71 @@ function BlogPostItem(props) {
   };
 
   return (
-    <article
-      className={!isBlogPostPage ? 'blog-list-item' : undefined}
-      itemProp="blogPost"
-      itemScope
-      itemType="http://schema.org/BlogPosting">
-      {renderPostHeader()}
-
-      {image && (
-        <meta
-          itemProp="image"
-          content={withBaseUrl(image, {
-            absolute: true,
-          })}
-        />
+    <>
+      {frontMatter.canonical_url && (
+        <Head>
+          <link rel="canonical" href={frontMatter.canonical_url} />
+        </Head>
       )}
+      <article
+        className={!isBlogPostPage ? 'blog-list-item' : undefined}
+        itemProp="blogPost"
+        itemScope
+        itemType="http://schema.org/BlogPosting">
+        {renderPostHeader()}
 
-      <div className="markdown" itemProp="articleBody">
-        <MDXProvider components={MDXComponents}>{children}</MDXProvider>
-      </div>
+        {image && (
+          <meta
+            itemProp="image"
+            content={withBaseUrl(image, {
+              absolute: true,
+            })}
+          />
+        )}
 
-      {(tags.length > 0 || truncated) && (
-        <footer
-          className={clsx('row docusaurus-mt-lg', {
-            [styles.blogPostDetailsFull]: isBlogPostPage,
-          })}>
-          {tags.length > 0 && (
-            <div
-              className={clsx('col', {
-                'col--9': !isBlogPostPage,
-              })}>
-              <TagsListInline tags={tags} />
-            </div>
-          )}
+        <div className="markdown" itemProp="articleBody">
+          <MDXProvider components={MDXComponents}>{children}</MDXProvider>
+        </div>
 
-          {isBlogPostPage && editUrl && (
-            <div className="col margin-top--sm">
-              <EditThisPage editUrl={editUrl} />
-            </div>
-          )}
+        {(tags.length > 0 || truncated) && (
+          <footer
+            className={clsx('row docusaurus-mt-lg', {
+              [styles.blogPostDetailsFull]: isBlogPostPage,
+            })}>
+            {tags.length > 0 && (
+              <div
+                className={clsx('col', {
+                  'col--9': !isBlogPostPage,
+                })}>
+                <TagsListInline tags={tags} />
+              </div>
+            )}
 
-          {!isBlogPostPage && truncated && (
-            <div className="col col--3 text--right">
-              <Link
-                to={metadata.permalink}
-                aria-label={`Read more about ${title}`}>
-                <b>
-                  <Translate
-                    id="theme.blog.post.readMore"
-                    description="The label used in blog post item excerpts to link to full blog posts">
-                    Read More
-                  </Translate>
-                </b>
-              </Link>
-            </div>
-          )}
-        </footer>
-      )}
-    </article>
+            {isBlogPostPage && editUrl && (
+              <div className="col margin-top--sm">
+                <EditThisPage editUrl={editUrl} />
+              </div>
+            )}
+
+            {!isBlogPostPage && truncated && (
+              <div className="col col--3 text--right">
+                <Link
+                  to={metadata.permalink}
+                  aria-label={`Read more about ${title}`}>
+                  <b>
+                    <Translate
+                      id="theme.blog.post.readMore"
+                      description="The label used in blog post item excerpts to link to full blog posts">
+                      Read More
+                    </Translate>
+                  </b>
+                </Link>
+              </div>
+            )}
+          </footer>
+        )}
+      </article>
+    </>
   );
 }
 
