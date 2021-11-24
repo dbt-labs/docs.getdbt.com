@@ -537,6 +537,7 @@ code {
   border-right: 1px solid var(--ifm-toc-border-color);
   margin-bottom: 2rem !important;
   width: 300px !important;
+  flex: 1 0 300px;
 }
 .blog-main-row .blog-aside li a {
   font-size: 1rem;
@@ -551,6 +552,10 @@ code {
   margin-bottom: 3rem;
 }
 
+.blog-post-page .docItemCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module {
+  max-width: 70% !important;
+}
+
 @media (max-width: 996px) {
   .blog-post-page .main-blog-container .container {
     margin-top: 0 !important;
@@ -561,6 +566,9 @@ code {
   }
   .blog-main-row .blog-right-sidebar {
     max-width: initial !important;
+  }
+  .blog-post-page .docItemCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module {
+    max-width: 100% !important;
   }
 }
 
@@ -648,10 +656,20 @@ code {
   }
 }
 
+.left-sidebar-hidden {
+  max-width: 100% !important;
+}
+
 /* Custom Author Styles */
 .col.col--6.authorCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogPostAuthors-styles-module {
-  flex: 0 0;
+  flex: 0 0 50% !important;
   min-width: 220px;
+}
+@media (min-width: 997px) {
+  .col.col--6.authorCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogPostAuthors-styles-module {
+    flex: 0 0 !important;
+    min-width: 220px;
+  }
 }
 .col.col--6.authorCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogPostAuthors-styles-module .avatar__intro {
   flex: 0 1 auto;
@@ -695,13 +713,13 @@ code {
 .author-header .author-links i {
   font-size: 1.1rem;
 }
-.author-posts {
-  justify-content: center;
+.author-posts-section {
+  margin-top: 2rem;
 }
 .author-posts .author-post {
   flex: 0 0 100%;
   max-width: 100%;
-  padding: 20px;
+  padding: 0 1rem 1rem;
 }
 .author-posts .author-post img {
   max-width: 100%;
@@ -755,6 +773,7 @@ code {
   text-decoration: none;
   padding: 10px 20px;
   transition: 100ms all ease-in-out;
+  white-space: nowrap;
 }
 .docs-cta .docs-cta-btn:hover {
   background: var(--ifm-menu-color-active);

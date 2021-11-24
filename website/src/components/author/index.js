@@ -3,6 +3,7 @@ import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import BlogLayout from '@theme/BlogLayout';
+import getAllPosts from '../../utils/get-all-posts';
 
 function Author(props) {
   const { authorData } = props
@@ -17,7 +18,10 @@ function Author(props) {
   
   const { name, job_title, image_url, organization, description, links, slug } = authorData
 
-  const authorPosts = getAuthorPosts(slug)
+  // Get all posts and filter by Author
+  let authorPosts = getAllPosts().filter(post => 
+    post.authors.find(auth => auth.key === slug)
+  )
 
   return (
     <BlogLayout blogPageTitle={name}>
@@ -92,37 +96,7 @@ function AuthorPosts({posts, siteImg}) {
   )
 }
 
-// Util function to filter posts by Author
-function getAuthorPosts(author) {
-  /* 
-   * Credit to get all posts:
-   * https://blog.johnnyreilly.com/2021/05/01/blog-archive-for-docusaurus/
-   */
-  const allPosts = ((ctx) => {
-    const blogpostNames = ctx.keys();
-    return blogpostNames.reduce((blogposts, blogpostName, i) => {
-      const module = ctx(blogpostName);
-      const { image } = module.frontMatter
-      const { date, formattedDate, title, permalink, authors, description } = module.metadata;
-      return [
-        ...blogposts,
-        {
-          date,
-          formattedDate,
-          title,
-          permalink,
-          authors,
-          image,
-          description
-        },
-      ];
-    }, ([]));
-  })(require.context('../../../blog', false, /.md/));
 
-  return allPosts.slice(0, 20).filter(post => 
-    post.authors.find(auth => auth.key === author)
-  )
-}
 
 export default Author;
 

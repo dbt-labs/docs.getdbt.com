@@ -39,8 +39,6 @@ function BlogListPage(props) {
 
   // Set Featured Categories
   const featuredCategories = tagData.filter(tag => tag && tag.is_featured)
-  console.log('featuredCategories', featuredCategories)
-  console.log('items', items)
   return (
     <BlogLayout
       title={title}
@@ -75,11 +73,10 @@ function BlogListPage(props) {
         const recentPosts = items
           .filter(post => {
             const lowercaseTags = post.content.frontMatter.tags.map(tag => tag.toLowerCase())
-            console.log('lowercaseTags', lowercaseTags)
             if(lowercaseTags.includes(category.name.toLowerCase()))
               return true
           })
-        if(!category)
+        if(!category || recentPosts.length <= 0)
           return null
 
         const { name, display_title, description, slug } = category
