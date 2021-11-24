@@ -7,14 +7,14 @@
   display_title: Analytics Craft
   description: The art of being an analytics practitioner.
   is_featured: true
-- name: dbt tutorials
-  display_title: dbt Tutorials
-  description: Best practices in the usage of our favorite data transformation tool.
-  is_featured: true  
 - name: data ecosystem
   display_title: Data Ecosystem
   description: Walkthroughs of how top data practitioners use tools in the modern data stack.
   is_featured: true
+- name: dbt tutorials
+  display_title: dbt Tutorials
+  description: Best practices in the usage of our favorite data transformation tool.
+  is_featured: true    
 - name: dbt updates
   display_title: dbt Product Updates
   description: An archive of monthly product updates from the dbt Labs team.
