@@ -18,9 +18,7 @@
  
  function BlogLayout(props) {
    const {title, description, blogPageTitle, sidebar, toc, children, ...layoutProps} = props;
-   
-   console.log('props', props)
-   
+      
    // dbt Custom 
    const { blogMeta, tagData } = usePluginData('docusaurus-build-blog-data-plugin');
    const { 
@@ -51,7 +49,11 @@
      const { props: { frontMatter }} = children.find(child => child.props.frontMatter)
      breadcrumbTitle = frontMatter.title
    }
- 
+
+   if(layoutProps.pageClassName !== "blog-list-page") {
+     breadcrumbTitle = `${breadcrumbTitle} | dbt Developer Blog`
+   }
+
    return (
      <Layout {...layoutProps}>
  

@@ -70,8 +70,6 @@ function BlogPostItem(props) {
   } = metadata;
   const image = assets.image ?? frontMatter.image ?? '/img/avatar.png';
 
-  console.log('frontMatter', frontMatter)
-
   const renderPostHeader = () => {
     const TitleHeading = isBlogPostPage ? 'h1' : 'h2';
     return (

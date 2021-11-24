@@ -830,4 +830,7 @@ code {
   #mobile-toc-dropdown > div.tocActive {
     display: block;
   }
+  #mobile-toc-dropdown > div > ul {
+    border-left: none;
+  }
 }

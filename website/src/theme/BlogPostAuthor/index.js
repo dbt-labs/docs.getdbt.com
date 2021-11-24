@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 function BlogPostAuthor({author}) {
-  const {name, job_title, url, imageURL, key} = author;
+  const {name, job_title, organization, url, imageURL, key} = author;
   return (
     <div className="avatar margin-bottom--sm">
       {imageURL && (
@@ -33,7 +33,7 @@ function BlogPostAuthor({author}) {
             </div>
             {job_title && (
               <small className="avatar__subtitle" itemProp="description">
-                {job_title}
+                {job_title} {' '} {organization && `@ ${organization}`}
               </small>
             )}
           </div>
