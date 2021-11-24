@@ -138,32 +138,32 @@ function BlogLayout(props) {
 
       <div className="row blog-main-row">
         {hasSidebar && (
-          <aside className="col col--2 blog-aside">
+          <aside className="col blog-aside">
             <BlogSidebar sidebar={sidebar} tagData={tagData} />
           </aside>
         )}
         <main
-          className={clsx('col main-blog-container', {
-            'col--7': hasSidebar,
-            'col--8 col--offset-1': !hasSidebar && layoutProps.pageClassName,
-            'col--9 col--offset-1': !hasSidebar && !layoutProps.pageClassName,
-          })}
+          className="docMainContainer_node_modules-@docusaurus-theme-classic-lib-next-theme-DocPage-styles-module"
           itemScope
           itemType="http://schema.org/Blog">
-          <div className="container margin-vert--lg">
-            {children}
+          <div className="container padding-top--md padding-bottom--lg">
+            <div className="row">
+              <div className="col docItemCol_node_modules-@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module">
+                {children}
+              </div>
+              {layoutProps.pageClassName &&
+                <div className="col col--3 blog-right-sidebar">
+                  {toc && (
+                    <TOC toc={toc} />
+                  )}
+                  {featured_cta && (
+                    <CTA cta={featured_cta} />
+                  )}
+                </div>
+              }
+            </div>
           </div>
         </main>
-        {layoutProps.pageClassName &&
-          <div className="col col--3 blog-right-sidebar">
-            {toc && (
-              <TOC toc={toc} />
-            )}
-            {featured_cta && (
-              <CTA cta={featured_cta} />
-            )}
-          </div>
-        }
       </div>
     </Layout>
   );

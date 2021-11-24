@@ -39,7 +39,8 @@ function BlogListPage(props) {
 
   // Set Featured Categories
   const featuredCategories = tagData.filter(tag => tag && tag.is_featured)
-
+  console.log('featuredCategories', featuredCategories)
+  console.log('items', items)
   return (
     <BlogLayout
       title={title}
@@ -72,9 +73,12 @@ function BlogListPage(props) {
       {/* Posts by Featured Tags */}
       {featuredCategories && featuredCategories.map(category => {
         const recentPosts = items
-          .slice(0, featured_tag_posts_count ? featured_tag_posts_count : 4)
-          .filter(post => post.content.frontMatter.tags.includes(category.name))
-        
+          .filter(post => {
+            const lowercaseTags = post.content.frontMatter.tags.map(tag => tag.toLowerCase())
+            console.log('lowercaseTags', lowercaseTags)
+            if(lowercaseTags.includes(category.name.toLowerCase()))
+              return true
+          })
         if(!category)
           return null
 
@@ -86,7 +90,7 @@ function BlogListPage(props) {
             </h3>
             <p>{description}</p>
             <div>
-              {recentPosts.map(({content: BlogPostContent}) => (
+              {recentPosts.slice(0, featured_tag_posts_count ? featured_tag_posts_count : 4).map(({content: BlogPostContent}) => (
                 <BlogPostItem
                   key={BlogPostContent.metadata.permalink}
                   frontMatter={BlogPostContent.frontMatter}

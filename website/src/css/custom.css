@@ -530,16 +530,13 @@ code {
 .blog-main-row {
   margin: 0;
   justify-content: flex-start;
-}
-
-.blog-main-row .main-blog-container .container {
-  max-width: 958px;
+  flex-wrap: nowrap;
 }
 
 .blog-main-row .blog-aside {
   border-right: 1px solid var(--ifm-toc-border-color);
   margin-bottom: 2rem !important;
-  max-width: 400px !important;
+  width: 300px !important;
 }
 .blog-main-row .blog-aside li a {
   font-size: 1rem;
@@ -560,6 +557,7 @@ code {
   }
   .blog-main-row .blog-aside {
     margin: 0 !important;
+    display: none;
   }
   .blog-main-row .blog-right-sidebar {
     max-width: initial !important;
@@ -651,6 +649,13 @@ code {
 }
 
 /* Custom Author Styles */
+.col.col--6.authorCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogPostAuthors-styles-module {
+  flex: 0 0;
+  min-width: 220px;
+}
+.col.col--6.authorCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogPostAuthors-styles-module .avatar__intro {
+  flex: 0 1 auto;
+}
 .author-header {
   align-items: center;
 }
