@@ -1,5 +1,5 @@
 ---
-title: "November 2021 dbt update: v1.0, Environment variables, and a question about the size of waves 🌊"
+title: "November 2021 dbt Update: v1.0, Environment Variables, and a Question About the Size of Waves 🌊"
 description: "Also flagging that Coalesce is less than 3 weeks away! 😱"
 slug: dbt-product-update-2021-november
 authors: [lcraigie] 

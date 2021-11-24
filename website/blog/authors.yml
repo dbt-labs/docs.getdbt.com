@@ -10,7 +10,7 @@ dkrevitt:
 
 jasnonaz:
   name: Jason Ganz
-  job_title: Developer experience
+  job_title: Developer Experience
   organization: dbt Labs
   image_url: /img/blog/authors/jasnonaz.jpeg
   links:
@@ -19,7 +19,7 @@ jasnonaz:
 
 sanjana:
   name: Sanjana Sen
-  job_title: Analytics engineer
+  job_title: Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/sanjana.png
   links:
@@ -28,7 +28,7 @@ sanjana:
 
 lcraigie:
   name: Lauren Craigie
-  job_title: Product marketing
+  job_title: Product Marketing
   organization: dbt Labs
   image_url: /img/blog/authors/craigie.png
   links:
@@ -37,7 +37,7 @@ lcraigie:
 
 aescay:
   name: Andrew Escay
-  job_title: Analytics engineer
+  job_title: Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/aescay.jpeg
   links:
@@ -46,7 +46,7 @@ aescay:
 
 jwilliams:
   name: Jess Williams
-  job_title: Head of professional services
+  job_title: Head of Professional Services
   organization: dbt Labs
   image_url: /img/blog/authors/jess.png
   links:
@@ -84,7 +84,7 @@ jlabes:
 
 claire:
   name: Claire Carroll
-  job_title: Analytics engineer
+  job_title: Analytics Engineer
   organization: analyticsengineers.club
   image_url: /img/blog/authors/claire.jpeg
   links:
@@ -97,7 +97,7 @@ claire:
 
 dconnors:
   name: Dave Connors
-  job_title: Analytics engineer
+  job_title: Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/dconnors.jpeg
   links:

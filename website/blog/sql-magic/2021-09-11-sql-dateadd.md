@@ -1,5 +1,5 @@
 ---
-title: "DATEADD across data warehouses"
+title: "DATEADD Across Data Warehouses"
 description: "Abstract away the need to look up the SQL dateadd function syntax every time you use it, by standardizing your syntax with dbt macros."
 slug: sql-dateadd
 

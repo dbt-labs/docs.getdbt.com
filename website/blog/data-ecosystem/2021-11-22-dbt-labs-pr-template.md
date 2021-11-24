@@ -1,5 +1,5 @@
 ---
-title: "The exact pull request template we use at dbt Labs"
+title: "The Exact Pull Request Template We Use at dbt Labs"
 description: "Having a PR template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow."
 slug: analytics-pull-request-template
 
@@ -9,7 +9,7 @@ tags: [data ecosystem]
 hide_table_of_contents: false
 
 date: 2021-11-29
-is_featured: true
+is_featured: false
 ---
 
 Having a PR template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow. Opening a pull request is the final step of your modeling process - a process which typically involves a lot of complex work! 
