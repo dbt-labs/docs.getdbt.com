@@ -81,3 +81,27 @@ jlabes:
       icon: fa-linkedin
     - url: https://twitter.com/joellabes
       icon: fa-twitter
+
+claire:
+  name: Claire Carroll
+  job_title: Analytics engineer
+  organization: analyticsengineers.club
+  image_url: /img/blog/authors/claire.jpeg
+  links:
+    - url: https://twitter.com/clairebcarroll
+      icon: fa-twitter    
+    - url: https://github.com/clrcrl
+      icon: fa-github  
+    - url: https://www.linkedin.com/in/clrcrl/
+      icon: fa-linkedin      
+
+dconnors:
+  name: Dave Connors
+  job_title: Analytics engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/dconnors.jpeg
+  links:
+    - url: https://github.com/dave-connors-3
+      icon: fa-github  
+    - url: https://www.linkedin.com/in/daveconnors3/
+      icon: fa-linkedin      
