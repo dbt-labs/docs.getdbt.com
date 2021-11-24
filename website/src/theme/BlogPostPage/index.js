@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import Seo from '@theme/Seo';
+import Head from '@docusaurus/Head';
 import BlogLayout from '@theme/BlogLayout';
 import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
@@ -30,7 +31,6 @@ function BlogPostPage(props) {
       wrapperClassName={ThemeClassNames.wrapper.blogPages}
       pageClassName={ThemeClassNames.page.blogPostPage}
       sidebar={sidebar}
-      blogPageTitle={title}
       toc={
         !hideTableOfContents && BlogPostContents.toc
           ? BlogPostContents.toc
@@ -62,6 +62,13 @@ function BlogPostPage(props) {
           />
         )}
       </Seo>
+      
+      {/* dbt Custom */}
+      <Head>
+        <title>{title} | dbt Developer Blog</title>
+        <meta property="og:title" content={`${title} | dbt Developer Blog`} />
+      </Head>
+      {/* End dbt Custom */}
 
       <BlogPostItem
         frontMatter={frontMatter}

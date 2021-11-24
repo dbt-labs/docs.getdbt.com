@@ -50,9 +50,9 @@
      breadcrumbTitle = frontMatter.title
    }
 
-   if(layoutProps.pageClassName !== "blog-list-page") {
-     breadcrumbTitle = `${breadcrumbTitle} | dbt Developer Blog`
-   }
+   const metaTitle = layoutProps.pageClassName !== "blog-list-page"
+    ? `${breadcrumbTitle} | dbt Developer Blog`
+    : breadcrumbTitle
 
    return (
      <Layout {...layoutProps}>
@@ -65,10 +65,10 @@
          </Head>
        }
  
-       {breadcrumbTitle &&
+       {metaTitle &&
          <Head>
-           <title>{breadcrumbTitle}</title>
-           <meta property="og:title" content={breadcrumbTitle} />
+           <title>{metaTitle}</title>
+           <meta property="og:title" content={metaTitle} />
          </Head>
        }
  
