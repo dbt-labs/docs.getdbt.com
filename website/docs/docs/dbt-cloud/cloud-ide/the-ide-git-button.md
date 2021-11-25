@@ -28,6 +28,12 @@ Once you click "initialize your project" you'll see the following in your IDE. C
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/open_pr.png" />
 </p>
 
+**Check out a branch**: This allows you to swap off of your base branch and on to another branch. You’ll need to click on the arrow in the green Git button and select 'checkout branch'. You'll immediately have a pop up box appear in your dbt Cloud IDE and you can select an existing branch by clicking on the 'Branch Name' dropdown. Once you've selected the branch, click 'Checkout' and your newly-selected branch will be available in the dbt Cloud IDE.
+
+<p align="center">
+<Lightbox src=" i dont have the url for this, only a screenshot and i dont know how to add it here!! />
+</p>
+
 **Open pull request**: This allows you to open a pull request in your git provider for peers to review changes before merging into the base branch.
 
 <p align="center">
