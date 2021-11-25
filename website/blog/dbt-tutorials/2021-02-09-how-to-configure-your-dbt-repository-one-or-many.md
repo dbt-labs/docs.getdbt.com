@@ -53,11 +53,7 @@ The answers to these questions should help you navigate through the four options
 ## Option 1: One Repository
 ------------------------------------------------------
 
-[![](https://aws1.discourse-cdn.com/business7/uploads/getdbt/optimized/1X/52954083da8268c53f27a578b4b5722b35803b03_2_624x439.png)
-
-1600×1125 189 KB
-
-](https://aws1.discourse-cdn.com/business7/uploads/getdbt/original/1X/52954083da8268c53f27a578b4b5722b35803b03.png)
+![one repository](/img/blog/monorepo-52954083da8268c53f27a578b4b5722b35803b03_2_624x439.png)
 
 This is the most common structure we see for dbt repository configuration. Though the illustration separates models by business unit, all of the SQL files are stored and organized in a single repository.
 
@@ -82,11 +78,7 @@ This is our most time tested option and our most recommended. However, we have s
 ## Option 2: Separate Team Repository with One Shared Repository
 --------------------------------------------------------------------------------------------------------------------------------
 
-[![](https://aws1.discourse-cdn.com/business7/uploads/getdbt/optimized/1X/3d6f91c1ab275d953417d2239f66e8f81bad7078_2_600x217.png)
-
-1600×578 51.3 KB
-
-](https://aws1.discourse-cdn.com/business7/uploads/getdbt/original/1X/3d6f91c1ab275d953417d2239f66e8f81bad7078.png)
+![separate repository](/img/blog/monorepo-3d6f91c1ab275d953417d2239f66e8f81bad7078_2_600x217.png)
 
 This is one of the first structures we see people move toward when they “outgrow” the mono repo: there is one “core” repository that is incorporated into team specific repositories as a package. If you aren’t familiar with packages, [see the documentation](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/) for more information.
 
@@ -119,11 +111,7 @@ This is the option I recommend the most when one must stray away from Option 2. 
 ## Option 3: Completely Separate Repositories
 ------------------------------------------------------------------------------------------
 
-[![](https://aws1.discourse-cdn.com/business7/uploads/getdbt/optimized/1X/7f6c787766d980479e44a0419e845bc2fc80fa1a_2_296x390.png)
-
-1213×1600 151 KB
-
-](https://aws1.discourse-cdn.com/business7/uploads/getdbt/original/1X/7f6c787766d980479e44a0419e845bc2fc80fa1a.png)
+![completely separate repos](/img/blog/monorepo-7f6c787766d980479e44a0419e845bc2fc80fa1a_2_296x390.png)
 
 Then, there is the “don’t allow any overlap” complete separation of repositories within a single organization.
 
@@ -144,11 +132,7 @@ There is a time and a place where this makes sense but you start to lose the reu
 ## Option 4: Separate Team Repositories + One Documentation Repository
 ------------------------------------------------------------------------------------------------------------------------------------------
 
-[![](https://aws1.discourse-cdn.com/business7/uploads/getdbt/optimized/1X/275ba0c84ef31370a57f125ac13a0cbcb808af9a_2_600x365.png)
-
-1600×971 183 KB
-
-](https://aws1.discourse-cdn.com/business7/uploads/getdbt/original/1X/275ba0c84ef31370a57f125ac13a0cbcb808af9a.png)
+![separate team repositories](/img/blog/monorepo-275ba0c84ef31370a57f125ac13a0cbcb808af9a_2_600x365.png)
 
 This approach is nearly identical to the former (completely separate repositories) but solves one of the weaknesses (“incomplete lineage/documentation”) by introducing an additional repository. If you need something akin to Option 3, this is the better approach.
 
@@ -173,6 +157,6 @@ All of the above configurations “work”. And as detailed, they each solve for
 
 1.  Ask the above questions.
 2.  Figure out what may be a pain point in the future and try to plan for it from the beginning.
-3.  Don’t over-complicate things until you have the right reason. As I said in my Coalesce talk: **don’t drag your skeletons from one closet to another.** ![:skull:](https://emoji.discourse-cdn.com/twitter/skull.png?v=10 ":skull:")
+3.  Don’t over-complicate things until you have the right reason. As I said in my Coalesce talk: **don’t drag your skeletons from one closet to another** 💀!
 
-**Note:** Our attempt in writing guides like this and [How we structure our dbt projects](/blog/how-we-structure-our-dbt-projects/) aren’t to try to convince you that our way is right; it is to hopefully save you the hundreds of hours it has taken us to form those opinions!
+**Note:** Our attempt in writing guides like this and [How we structure our dbt projects](/blog/how-we-structure-our-dbt-projects) aren’t to try to convince you that our way is right; it is to hopefully save you the hundreds of hours it has taken us to form those opinions!

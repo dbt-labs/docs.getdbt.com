@@ -1,5 +1,5 @@
 ---
-title: "How to Create Near Real-time Models with Just dbt + SQL"
+title: "How to Create Near Real-time Models With Just dbt + SQL"
 description: "Before I dive into how to create this, I have to say this. **You probably don’t need this**."
 slug: how-to-create-near-real-time-models-with-just-dbt-sql
 canonical_url: https://discourse.getdbt.com/t/how-to-create-near-real-time-models-with-just-dbt-sql/1457
@@ -62,21 +62,13 @@ The idea of lambda views comes from lambda architecture. This [Wikipedia page](h
 
 Taking that approach, a lambda view is essentially the union of a historical table and a current view. The model where the union takes place is the lambda view. Here is a diagram that might be helpful:
 
-[![](https://aws1.discourse-cdn.com/business7/uploads/getdbt/optimized/1X/9eb7699399fe576a2a20b13bcf523a1e8b96cf09_2_624x244.png)
-
-1600×627 160 KB
-
-](https://aws1.discourse-cdn.com/business7/uploads/getdbt/original/1X/9eb7699399fe576a2a20b13bcf523a1e8b96cf09.png)
+![lambda views](/img/blog/real-time-9eb7699399fe576a2a20b13bcf523a1e8b96cf09_2_624x244.png)
 
 The lamba view can be queried for always up-to-date data, no matter how often you have run your dbt models. Since the majority of the records in the lambda view come directly from a table, it should be relatively fast to query. And since the most recent rows come from the view, transformations are run on a small subset of data which shouldn’t take long in the lambda view. This provides a performant and always up-to-date model.
 
 The SQL in the lambda view is simple (just a `union all`), but there’s a bit of work to get to the unioned model. To better understand this, it is important to think about the flow of transformations as demonstrated below.
 
-[![](https://aws1.discourse-cdn.com/business7/uploads/getdbt/optimized/1X/5ab4b384ec36ed52d422e3ffcf238a4446dc3ba5_2_624x345.jpeg)
-
-1600×887 151 KB
-
-](https://aws1.discourse-cdn.com/business7/uploads/getdbt/original/1X/5ab4b384ec36ed52d422e3ffcf238a4446dc3ba5.jpeg)
+![lambda view flow](/img/blog/real-time-5ab4b384ec36ed52d422e3ffcf238a4446dc3ba5_2_624x345.jpeg)
 
 What is essentially happening is a series of parallel transformations from the raw data. Looking at the blue and red boxes that represent the creation of both the current view and historical table, you can see that they are the same transformations. The only key difference is that one flow is always using views as the materialization versus the other is materialized as tables. Often, those tables are incrementally built to improve performance.
 
@@ -182,7 +174,7 @@ This approach is extremely dependent on the type of materializations. Requiring 
 ## Future implementations
 ----------------------------------------------------
 
-All I can truly say is there’s more to come. Internally Jeremy and Claire have been working on if and how we should create a custom materialization to make this approach a lot cleaner. If interested, keep an eye out on our [experimental features repo](https://github.com/fishtown-analytics/dbt-labs-experimental-features) and contribute if you have thoughts!
+All I can truly say is there’s more to come. Internally Jeremy and Claire have been working on if and how we should create a custom materialization to make this approach a lot cleaner. If interested, keep an eye out on our [experimental features repo](https://github.com/dbt-labs/dbt-labs-experimental-features) and contribute if you have thoughts!
 
 ## Thank You
 --------------------------
@@ -191,4 +183,4 @@ This post would not have materialized (lol) without the Fishtown Team working to
 
 Drew and I had a brainstorming session to discuss lambda architecture and the initial concept of lambda views. Sanjana and Jeremy were my rubber duckies as I started writing the SQL and conceptizing how things would work in code. Janessa and Claire also spent a lot of time helping me write this discourse post as I tried to form it between meetings. [This is basically us at Fishtown.](https://gph.is/2R7vpjR)
 
-I also want to give a special thanks to Ben from JetBlue who has been essential to this process from implementation to editing this post. [My apologies for spelling JetBlue as Jetblue far too many times!](http://gph.is/2pbhdJ3)
+I also want to give a special thanks to Ben from JetBlue who has been essential to this process from implementation to editing this post. My apologies for spelling JetBlue as Jetblue far too many times!
