@@ -17,8 +17,8 @@ Packages are the easiest way for a dbt user to contribute code to the dbt commun
 
 The reason is simple: packages, as an inherent part of dbt, follow our principle of being built by and for analytics engineers. They’re easy to install, accessible and at the end of the day, it’s just SQL (with sprinklings of git and jinja). You can either share your package with the community or just use it among your teams at your org.
 
-So I challenge you after reading this article to test out your skillsets, think about the code that you find yourself reusing again and again, and build a package. Packages can be as complex as you would want; it’s just SQL hidden in the mix of reusable macros and expansive testing frameworks . So let’s get started on your journey.
-
+So I challenge you after reading this article to test out your skillsets, think about the code that you find yourself reusing again and again, and build a package. Packages can be as complex as you would want; it’s just SQL hidden in the mix of reusable macros and expansive testing frameworks. So let’s get started on your journey.
+<!--truncate-->
 **What is a package even?**
 
 If you’re considering making a package, you probably already know what one is but let’s take a quick review to help structure our thinking. A dbt package is basically a mini-dbt project. The only mandatory file that it requires is a dbt_project.yml to validate that it’s a dbt package (same as any dbt project). It can contain macros that help you write something in SQL in significantly less lines. It could contain models that help you model your SaaS dataset in a manner of minutes (I’m looking at you, Fivetran Salesforce package). But in dbt land, you could literally take one project (say Jaffle shop) and install it as a package to your project, regardless of its from the Hub or not.
