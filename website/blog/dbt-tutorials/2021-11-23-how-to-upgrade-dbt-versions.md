@@ -6,10 +6,10 @@ slug: upgrade-dbt-without-fear
 authors: [jlabes]
 
 tags: [dbt tutorials]
-hide_table_of_contents: true
+hide_table_of_contents: false
 
 date: 2021-11-29
-is_featured: false
+is_featured: true
 ---
 
 As we get closer to dbt v1.0 shipping in December, it's a perfect time to get your installation up to scratch. dbt 1.0 represents the culmination of over five years of development and refinement to the analytics engineering experience - smoothing off sharp edges, speeding up workflows and enabling whole new classes of work.
