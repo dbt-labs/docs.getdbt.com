@@ -10,7 +10,7 @@ hide_table_of_contents: false
 
 date: 2021-11-29
 is_featured: true
-
+---
 Doing analytics is hard. Doing analytics *right* is even harder.
 
 There are a massive number of factors to consider: Is data missing? How do we make this insight discoverable? Why is my database locked? *Are we even asking the right questions?*
@@ -20,11 +20,11 @@ Compounding this is the fact that analytics can sometimes feel like a lonely pur
 Sure, our data is generally proprietary and therefore we can’t talk much about it. But we certainly **can** share what we’ve learned **about** working with that data.
 
 So let’s all commit to sharing our hard won knowledge with each other—and in doing so pave the path for the next generations of analytics practitioners.
+<!--truncate-->
 
 ## Welcome to the dbt Developer Blog
 
 The purpose of this blog is to double down on our long running commitment to contributing to the knowledge loop.
-<!--truncate-->
 
 From early posts like ‘[The Startup Founders Guide to Analytics’](https://thinkgrowth.org/the-startup-founders-guide-to-analytics-1d2176f20ac1) to foundational guides like [‘How We Structure Our dbt Projects](https://docs.getdbt.com/blog/how-we-structure-dbt-projects)’, we’ve had a long standing goal of working with the community to create practical, hands-on tutorials and guides which distill the knowledge we’ve been able to collectively gather.
 
