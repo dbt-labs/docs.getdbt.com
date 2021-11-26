@@ -6,7 +6,7 @@ slug: upgrade-dbt-without-fear
 authors: [jlabes]
 
 tags: [dbt tutorials]
-hide_table_of_contents: false
+hide_table_of_contents: true
 
 date: 2021-11-29
 is_featured: false
