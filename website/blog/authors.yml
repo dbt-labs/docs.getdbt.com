@@ -105,3 +105,23 @@ dconnors:
       icon: fa-github  
     - url: https://www.linkedin.com/in/daveconnors3/
       icon: fa-linkedin      
+
+rossturk:
+  name: Ross Turk
+  job_title: VP Marketing
+  organization: Datakin
+  image_url: /img/blog/authors/ross-turk.png
+  links:
+    - url: https://mobile.twitter.com/rossturk
+      icon: fa-twitter
+    - url: https://github.com/rossturk
+      icon: fa-github
+
+sung:
+  name: Sung Won Chung
+  job_title: Solutions Architect
+  organization: dbt Labs
+  image_url: /img/blog/authors/sung.jpeg
+  links:
+    - url: https://www.linkedin.com/in/sungwonchung1/
+      icon: fa-linkedin
