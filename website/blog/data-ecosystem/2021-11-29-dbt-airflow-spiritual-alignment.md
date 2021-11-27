@@ -1,5 +1,5 @@
 ---
-title: "The spiritual alignment of dbt + Airflow"
+title: "The Spiritual Alignment of dbt + Airflow"
 description: "Airflow and dbt are often framed as either / or, but in practice I've experienced them to play extremely well together."
 slug: dbt-airflow-spiritual-alignment
 
@@ -19,6 +19,8 @@ You either build SQL transformations using Airflow’s SQL database operators (l
 You either orchestrate dbt models in Airflow, or you deploy them using dbt Cloud.
 
 In my experience, these are false dichotomies, that sound great as hot takes but don’t really help us do our jobs as data people. 
+
+<!--truncate-->
 
 In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the API](https://docs.getdbt.com/dbt-cloud/api-v2)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
 

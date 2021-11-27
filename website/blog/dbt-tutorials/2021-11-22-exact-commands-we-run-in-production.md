@@ -9,7 +9,7 @@ tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2021-11-29
-is_featured: true
+is_featured: false
 ---
 
 Without a command to run them, dbt models and tests are just taking up space in a Git repo.

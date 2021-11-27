@@ -1,5 +1,5 @@
 ---
-title: "How I study open source community growth with dbt"
+title: "How I Study Open Source Community Growth with dbt"
 description: "Building a data pipeline to study open source community growth with BigQuery, dbt, OpenLineage and Superset."
 slug: open-source-community-growth-analysis
 
@@ -14,8 +14,11 @@ is_featured: false
 
 Most organizations spend at least *some* of their time contributing to an open source project. 100% of them, though, depend in some way on the output of open source communities.
 
+<!--truncate-->
+
 In fact we all do. The work of communities can be found everywhere - in the cell phone that wakes you up, the machine that makes your coffee, the car that drives you to get better coffee, the magic app that brings you dinner, and the television that lulls you back to sleep. It's your entire day, even if you aren't a software engineer. Call me weird, but I think everyone should be interested in how open source communities grow and operate.
 
+## Why I Care About Open Source Adoption
 There are two communities that my colleagues and I have a particular curiosity in: OpenLineage and Marquez. We build a product based on the standards, conventions, and capabilities that are created there, and at least 70% of our engineering time is spent in contribution. Understanding how these communities grow and evolve, and how our behavior affects them, is important to each of us.
 
 In many organizations it's important to measure the results of ongoing investment in open source projects, especially when dealing with stakeholders who favor quantitative proof. Often, this is framed in terms of popularity and adoption - i.e., "how many people use our stuff" and "how many people love it". A chart showing strong adoption of a project is likely to make hard conversations easier...and a hockey stick might just lead to a stronger round of funding.
@@ -62,13 +65,13 @@ To summarize, here are the metrics I decided to track (for now, anyway):
 - Docker Hub pulls (by image)
 - PyPI downloads (by package)
 
-## Getting everything into BigQuery
+## Getting raw data into BigQuery
 
 The first step was to get all of my raw data into BigQuery. This was the messiest part of the entire operation, without question. Let's dig into each data source one at a time.
 
 ### Slack
 
-#### Loading in the raw data
+**Loading in the raw data**
 
 It wasn't immediately clear how to get a message count from each of the Slack communities. The Slack API can provide some of what I need, but I chose instead to use Zapier to load messages into BigQuery in real time.
 
@@ -94,7 +97,7 @@ Next I created two separate Zaps using the "New Public Message Posted Anywhere i
 
 After turning the two Zaps on, I was able to verify that new messages were appearing in the `slack_messages` table.
 
-#### Setting up dbt sources
+**Setting up dbt sources**
 
 To make dbt aware of this new table, I created a new `models/schema.yml` file containing the following:
 
@@ -116,7 +119,7 @@ Explicitly defining external data sources in dbt was important to me for two rea
 
 ### GitHub
 
-#### Loading in the raw data
+**Loading in the raw data**
 
 Getting a current GitHub star count into BigQuery wasn't terribly difficult, since there is a public API that provides it.
 
@@ -149,7 +152,7 @@ CREATE TABLE `openlineage.metrics.github_stars`
 )
 ```
 
-#### Setting up dbt sources
+**Setting up dbt sources**
 
 To make dbt aware of this new `github_stars` table, I added it to the list of tables in `models/schema.xml`:
 
@@ -180,7 +183,7 @@ When `dbt seed` is run, a table will be created with the star history. Being exp
 
 ### DockerHub
 
-#### Loading in the raw data
+**Loading in the raw data**
 
 For Docker Hub, I took a similar approach. There's an API that provides the total number of pulls each image has had over its entire history. I wrote another simple script in `loaderscripts/` to poll the API and load the count into BigQuery. It is very similar to the GitHub script, with only the block at the end differing:
 
@@ -205,7 +208,7 @@ CREATE TABLE `openlineage.metrics.dockerhub_pulls`
 )
 ```
 
-#### Setting up dbt sources
+**Setting up dbt sources**
 
 Again, to make dbt aware of this new `dockerhub_pulls` table, I added it to the list of tables in `models/schema.xml`:
 
@@ -275,7 +278,7 @@ and timestamp > TIMESTAMP_SECONDS(1549497600)
 
 So! I had figured out how to load all the raw data into BigQuery, but I wasn't done yet. Dashboarding tools tend to want data structured in predictable ways, and that means having clear measures and dimensions (almost always with one of the dimensions being a unit of time). I created several dbt models to cajole everything into the proper shape.
 
-### Slack
+**Slack**
 
 For Slack, I had a simple transformation to do. The `slack_messages` table contains one row per message sent. What I needed, instead, was one row per user, per community, per day; the only measure I track currently is the number of messages sent.
 
@@ -292,7 +295,7 @@ from {{ source('metrics', 'slack_messages') }}
 group by day, domain, username
 ```
 
-### GitHub
+**GitHub**
 
 For GitHub, the challenge is that there are two inputs: `github_stars`, which is populated by the loader script, and `github_daily_summary_history`, which is loaded from a CSV file. Both of these sources contain a date, a project, and a star count. In both cases there is the possibility of multiple data points per day.
 
@@ -311,7 +314,7 @@ from combined_stars
 group by day, project
 ```
 
-### Docker Hub
+**Docker Hub**
 
 The Docker Hub data requires very little transformation. However, for consistency I decided to create a summary table containing the maximum value recorded for each image on a given day. To accomplish this, a new `models/dockerhub_daily_summary.sql` file was required:
 
@@ -332,7 +335,7 @@ group by day, image
 
 I decided to make this a view, since the source table is already pretty svelte and the transformation involved is lightweight. In the future, I'd like to calculate a `new_pulls` field that contains the difference between the current `total_pulls` and the previous day's value. Once I build that, I'm likely to change this model into a table.
 
-### PyPI
+**PyPI**
 
 Finally, the PyPI data requires a simple model to count the number of daily downloads per package, `models/pypi_daily_summary.sql`:
 
@@ -453,12 +456,11 @@ Emitted 16 openlineage events
 ```
 
 A lineage graph of the entire pipeline can now be viewed in Marquez, which shows the relationships between datasets and provides detail about the run history.
-```
+
 
 ![marquez dashboard](/img/blog/community-growth-marquez.png "marquez dashboard")
 
 
-```
 ## Visualizing the Results
 
 This is the simplest part, by far. Since we have a set of tables with clearly-defined measures and dimensions, getting everything working in a system like Apache Superset is straightforward.
@@ -468,18 +470,18 @@ Configuring the data source and adding each table to a Preset Workspace was easy
 Once the database connection was in place, I created datasets for each of my `*_daily_summary` tables by  selecting the database/schema/table from a dropdown.
 
 With the database and datasets configured, I was able to use the charting interface to explore the various measures and dimensions in the warehouse. After about fifteen minutes, I had created a dashboard that shows the evolution of the communities where my colleagues and I do our work.
-```
+
 
 ![community growth dashboard](/img/blog/community-growth-dashboard.png "community growth dashboard")
 
-```
+
 This overall view is interesting - it suggests acceleration in activity across every channel during the summer of 2021, which makes a lot of sense. That is when the first release of OpenLineage happened, and also when a few talks and podcasts were released. Things have slowed down as the holiday approaches, which also checks out. Unless you're in the retail business, that kind of thing happens.
 
 Indeed, you can see a familiar pattern happen every year on the PyPI chart. That indicates at least one thing: CI/CD systems aren't responsible for *all* of those package downloads. The trend has too much humanity baked into it, too many calendar-influenced peaks and valleys.
 
 Something else can be learned from this PyPI data, something more specific to my project. Over the summer, several integrations were moved from the Marquez project to the OpenLineage project. That means that `marquez-airflow` has become `openlineage-airflow`. I'd like to know whether the old packages are still being used. When I create a chart using `num_downloads` as a metric and `package` as a dimension, with monthly granularity, it shows:
 
-![community growth trends](/img/blog/community-growth-dashboard.png "community growth trends")
+![community growth trends](/img/blog/community-growth-trend.png "community growth trends")
 
 The shift began in August, and as of right now the Marquez packages still account for about half of the total downloads. That means we have some work to do. Likely there is some old documentation still out there to be found and updated.
 
@@ -493,6 +495,4 @@ Next, I plan to:
 * Look into creating some basic user segmentation - e.g., how much of this activity comes from people my employer sponsors?
 * Expand the list of projects to include those we contribute to less frequently, so I can study possible intersections. Perhaps even include a few completely unrelated projects just for fun :)
 
-
-```
 To view the entire thing (including a Dockerfile I use to containerize it all) check out the [OpenLineage metrics GitHub project](https://github.com/OpenLineage/metrics), where pull requests are most welcome. I am easy to find - @rossturk on [GitHub](https://github.com/rossturk), [Twitter](https://mobile.twitter.com/rossturk), and dbt Slack - and am always interested in a chat about community metrics.

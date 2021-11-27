@@ -125,3 +125,15 @@ sung:
   links:
     - url: https://www.linkedin.com/in/sungwonchung1/
       icon: fa-linkedin
+
+sethrosen:
+  name: Seth Rosen
+  job_title: Co-Founder & CEO
+  organization: TopCoat Data
+  description: Seth Rosen is co-founder and CEO of TopCoat Data - a platform for helping organizations build analytical applications. Prior to founding TopCoat, Seth helped companies of all sizes build custom data apps on top of the modern data stack through his consultancy, Hashpath. When he’s not tweeting and thinking about data, he’s tweeting while parenting two toddlers.
+  image_url: /img/blog/authors/seth-rosen.jpeg
+  links:
+    - url: https://twitter.com/sethrosen
+      icon: fa-twitter
+    - url: https://www.linkedin.com/in/sdrosen/
+      icon: fa-linkedin
