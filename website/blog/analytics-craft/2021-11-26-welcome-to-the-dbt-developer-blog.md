@@ -26,7 +26,7 @@ So let’s all commit to sharing our hard won knowledge with each other—and in
 
 The purpose of this blog is to double down on our long running commitment to contributing to the knowledge loop.
 
-From early posts like ‘[The Startup Founders Guide to Analytics’](https://thinkgrowth.org/the-startup-founders-guide-to-analytics-1d2176f20ac1) to foundational guides like [‘How We Structure Our dbt Projects](https://docs.getdbt.com/blog/how-we-structure-dbt-projects)’, we’ve had a long standing goal of working with the community to create practical, hands-on tutorials and guides which distill the knowledge we’ve been able to collectively gather.
+From early posts like ‘[The Startup Founders Guide to Analytics’](https://thinkgrowth.org/the-startup-founders-guide-to-analytics-1d2176f20ac1) to foundational guides like [‘How We Structure Our dbt Projects](/blog/how-we-structure-our-dbt-projects)’, we’ve had a long standing goal of working with the community to create practical, hands-on tutorials and guides which distill the knowledge we’ve been able to collectively gather.
 
 dbt as a product is based around the philosophy that even the most complicated problems can be broken down into modular, reusable components, then mixed and matched to create something novel.
 
@@ -44,9 +44,9 @@ A brief overview of the types of posts that you will find on the blog:
 
 * *Analytics Craft*: The art of being an analytics practitioner.
 
-* *dbt Tutorials: *Best practices in the usage of our favorite data transformation tool.
+* *dbt Tutorials:* Best practices in the usage of our favorite data transformation tool.
 
-* *Data Ecosystem: *Walkthroughs of how top data practitioners use tools in the modern data stack.
+* *Data Ecosystem:* Walkthroughs of how top data practitioners use tools in the modern data stack.
 
 * *Product Updates:* An archive of monthly product updates from the dbt Labs team.
 
