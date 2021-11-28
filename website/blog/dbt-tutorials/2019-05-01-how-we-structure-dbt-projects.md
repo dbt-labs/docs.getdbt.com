@@ -83,7 +83,7 @@ The goal of the staging layer is to create staging models. Staging models take r
 *   If useful, flattening of objects might have occurred.
 *   There is a primary key that is both unique and not null (and tested).
 
-Staging models can have joins in them to field additional columns for context or enrichment; add rows through unions and remove them through filters; deduplicate a natural key or hash together a [surrogate one](/blog/sql-surrogate-key).
+Staging models can have joins in them to field additional columns for context or enrichment; add rows through unions and remove them through filters; deduplicate a natural key or hash together a [surrogate one](/blog/sql-surrogate-keys).
 
 Because we often work with multiple data sources, in our `staging` directory, we create one directory per source.
 
