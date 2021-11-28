@@ -12,19 +12,19 @@ date: 2021-11-29
 is_featured: true
 ---
 
-Airflow and dbt are often framed as either / or: 
+Airflow and dbt are often framed as either / or:
 
-You either build SQL transformations using Airflow’s SQL database operators (like [SnowflakeOperator](https://airflow.apache.org/docs/apache-airflow-providers-snowflake/stable/operators/snowflake.html)), or develop them in a dbt project. 
+You either build SQL transformations using Airflow’s SQL database operators (like [SnowflakeOperator](https://airflow.apache.org/docs/apache-airflow-providers-snowflake/stable/operators/snowflake.html)), or develop them in a dbt project.
 
 You either orchestrate dbt models in Airflow, or you deploy them using dbt Cloud.
 
-In my experience, these are false dichotomies, that sound great as hot takes but don’t really help us do our jobs as data people. 
+In my experience, these are false dichotomies, that sound great as hot takes but don’t really help us do our jobs as data people.
 
 <!--truncate-->
 
 In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the API](https://docs.getdbt.com/dbt-cloud/api-v2)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
 
-More fundamentally, I think it’s important to call out that Airflow + dbt are **spiritually aligned**inpurpose. They both exist to facilitate clear communication across data teams, in service of producing trustworthy data.
+More fundamentally, I think it’s important to call out that Airflow + dbt are **spiritually aligned** in purpose. They both exist to facilitate clear communication across data teams, in service of producing trustworthy data.
 
 Let’s dive a bit deeper into that spiritual alignment, hone in on a couple cases where they play nicely, and then dive into the nitty gritty of which combination of Airflow + dbt might be right for your team.
 
@@ -32,20 +32,20 @@ Let’s dive a bit deeper into that spiritual alignment, hone in on a couple cas
 
 Let’s walk through a hypothetical scenario I’d run into as a consultant, to illustrate how Airflow + dbt operate on a parallel spiritual wavelength.
 
-TL;DR: they both provide **common interfaces** that data teams can use to get on the same page. 
+TL;DR: they both provide **common interfaces** that data teams can use to get on the same page.
 
 The intricacies of when I’ve found each to be useful (Airflow alone, Airflow w/ dbt Core or Cloud, dbt Core or Cloud alone) is in _which team members_ need to get on the same page—I’ll get to that in the next section.
 
 ### From the Airflow side
 
-A client has 100 data pipelines running via a cron job in a GCP (Google Cloud Platform) virtual machine, every day at 8am. 
+A client has 100 data pipelines running via a cron job in a GCP (Google Cloud Platform) virtual machine, every day at 8am.
 
 It was simple to set up, but then the conversation started flowing:
 
 * “Where am I going to put logs?”  In a Google Cloud Storage bucket.
 * “Where can I view history in a table format?”  Let’s export log events into BigQuery.
 * “I have to create log alerts to notify people of failures.”  Let’s use GCP’s logging alerts to send emails.
-* “When something fails, how do you rerun from the point of failure?”  Let’s mangle the production script. 
+* “When something fails, how do you rerun from the point of failure?”  Let’s mangle the production script.
 
 Over time, you end up building a bunch of pieces that Airflow provides out of the box.
 
@@ -59,13 +59,13 @@ That pipeline above included a plethora of data transformation jobs, built in va
 
 They were often written in naked python scripts that only ran a SQL query + wrote data to BigQuery. These stored procedure-like SQL scripts required:
 
-* Writing boilerplate DDL (`CREATE TABLE` etc * 1000) 
+* Writing boilerplate DDL (`CREATE TABLE` etc * 1000)
 * Managing schema names between production and dev environments
 * Manually managing dependencies between scripts
 
-Again, this is **pretty easy to set up**, but it doesn’t get to the heart of the matter: getting trusted data to the people that you care about. 
+Again, this is **pretty easy to set up**, but it doesn’t get to the heart of the matter: getting trusted data to the people that you care about.
 
-It _kind of _works, but you need it to _really work_ in a way that’s publicly observable + verifiable via testing. 
+It _kind of works_, but you need it to _really work_ in a way that’s publicly observable + verifiable via testing.
 
 I have never encountered a client writing a script to auto-generate DDL, or writing boilerplate tests for SQL—no one wants these to be their job.
 
@@ -73,11 +73,11 @@ So like Airflow for pipeline orchestration, dbt does these things out of the box
 
 dbt provides a **common interface** where data teams can get on the same page about the business logic + run status of data transformations—again, in a way that’s configured in code + version-controlled.
 
-> If you’re curious about the migration path from a stored procedure-based transformation workflow to modular data modeling in dbt, check out my colleagues Sean McIntyre + Pat Kearns writing on [migrating to an ELT pipeline](https://getdbt.com/analytics-engineering/case-for-elt-workflow/). 
+> If you’re curious about the migration path from a stored procedure-based transformation workflow to modular data modeling in dbt, check out my colleagues Sean McIntyre + Pat Kearns writing on [migrating to an ELT pipeline](https://getdbt.com/analytics-engineering/case-for-elt-workflow/).
 
 ## A note on data team roles for Airflow + dbt
 
-In my experience, these tech decisions also boil down to the **[data team structure](https://www.getdbt.com/data-teams/data-org-structure-examples/)** you’re building around, and specifically the **skills** + **training** baked into that structure. 
+In my experience, these tech decisions also boil down to the **[data team structure](https://www.getdbt.com/data-teams/data-org-structure-examples/)** you’re building around, and specifically the **skills** + **training** baked into that structure.
 
 Tools are cheap relative to hiring + training, so I’ve most often seen tool decisions made by the availability of staff + training support, rather than the technical specs or features of the tools themselves. So let’s peek into what roles are required to build around dbt and Airflow (these same skills would also roughly map to any other orchestration tool).
 
@@ -99,11 +99,11 @@ SQL skills are generally shared by data people + engineers, which makes SQL-base
 
 To layer on Airflow, you’ll need more software or infrastructure engineering-y skills to build + deploy your pipelines: Python, Docker, Bash (for using the Airflow CLI), Kubernetes, Terraform and secrets management.
 
-## How Airflow + dbt play nicely 
+## How Airflow + dbt play nicely
 
 Knowing that this toolbelt (Airflow + dbt) provides sustenance to the same spiritual needs (public observability, configuration as code, version control etc), how might one decide when and where to deploy them?
 
-> This is the same sensibility expressed in the [dbt viewpoint](/docs/about/viewpoint) in 2016, the closest thing to a founding blog post as exists for dbt. ] 
+> This is the same sensibility expressed in the [dbt viewpoint](/docs/about/viewpoint) in 2016, the closest thing to a founding blog post as exists for dbt. ]
 
 I usually think in terms of how I want my job to look when things go wrong—am I equipped to do the debugging, and is it clear who to pass the baton to, to fix the issue (if it’s not me)?
 
@@ -111,7 +111,7 @@ A couple examples:
 
 ### Pipeline observability for analysts
 
-If your team’s dbt users are analysts rather than engineers, they still may need to be able to dig into the root cause of a failing dbt [source freshness test](/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness). 
+If your team’s dbt users are analysts rather than engineers, they still may need to be able to dig into the root cause of a failing dbt [source freshness test](/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
 
 Having your upstream extract + load jobs configured in Airflow means that analysts can pop open the Airflow UI to monitor for issues (as they would a GUI-based [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)), rather than opening a ticket or bugging an engineer in Slack. The Airflow UI provides the common interface that analysts need to self-serve, up to the point of action needing to be taken.
 
@@ -129,13 +129,13 @@ dbt provides common programmatic interfaces (the [dbt Cloud Admin + Metadata API
 
 dbt Core is a fantastic framework for developing data transformation + testing logic. It is less fantastic as a shared interface for data analysts + engineers to collaborate **_on production runs of transformation jobs_**.
 
-dbt Cloud picks up that baton, and provides a common interface where teams can configure runs + debug issues in production jobs. 
+dbt Cloud picks up that baton, and provides a common interface where teams can configure runs + debug issues in production jobs.
 
 If you productionalize your dbt runs in Airflow using the dbt Core operator, you run into the same `SQL wrapped in Python` communication challenge I mentioned at the top: the analyst who built the transformation logic is in the dark about the production run workflow, which is spiritually the thing we’re trying to avoid here.
 
 ### dbt Core + Airflow
 
-Let’s take a look at an example, from GitLab’s `[dbt_full_refresh](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_full_refresh.py)` Airflow pipeline. 
+Let’s take a look at an example, from GitLab’s [dbt_full_refresh](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_full_refresh.py) Airflow pipeline.
 
 If this task fails in the Airflow pipeline, there are a number of aspects of the pipeline to debug: was it an issue with Kubernetes or secrets, the Docker image, or the dbt transformation code itself?
 
@@ -165,6 +165,6 @@ If the operator fails, it’s an Airflow problem. If the dbt run returns a model
 
 This creates a much more natural baton pass, and clarity on who needs to fix what.
 
-And if my goal is to ship trusted data, I opt for that simplicity + clarity every time. 
+And if my goal is to ship trusted data, I opt for that simplicity + clarity every time.
 
 But there are no right or wrong decisions here! Any combination of tools that solves the problem of delivering trusted data for your team is the right choice.
