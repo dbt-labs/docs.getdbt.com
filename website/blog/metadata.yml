@@ -5,7 +5,7 @@ featured_image: ""
 featured_cta: "coalesce"
 
 # How many featured posts to show on blog index
-featured_posts_count: 2
+featured_posts_count: 4
 
 # How many featured posts by tag to show on blog index
 featured_tag_posts_count: 3
@@ -19,4 +19,3 @@ hero_button_new_tab: false
 
 # Show or hide sidebar on blog post page
 show_left_sidebar: false
-
