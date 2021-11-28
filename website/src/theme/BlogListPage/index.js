@@ -36,10 +36,15 @@ function BlogListPage(props) {
   const featuredPosts = items
     .filter(post => post.content.frontMatter.is_featured)
     .slice(0, featured_posts_count ? featured_posts_count : 2)
+  
+  let allOtherPosts = items
+    .filter(post => !post.content.frontMatter.is_featured)
 
-  const allOtherPosts = items
+  const allOtherFeaturedPosts = items
     .filter(post => post.content.frontMatter.is_featured)
     .slice(featured_posts_count ? featured_posts_count : 2)
+  
+  allOtherPosts = allOtherPosts.concat(allOtherFeaturedPosts)
 
   // Set Featured Categories
   const featuredCategories = tagData.filter(tag => tag && tag.is_featured)
