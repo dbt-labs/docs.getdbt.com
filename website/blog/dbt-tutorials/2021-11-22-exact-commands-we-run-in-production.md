@@ -9,7 +9,7 @@ tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2021-11-29
-is_featured: false
+is_featured: true
 ---
 
 Without a command to run them, dbt models and tests are just taking up space in a Git repo.
@@ -20,7 +20,7 @@ The specific dbt commands you run in production are the control center for your 
 
 > _Note: As of dbt v0.21.0 (released in October 2021), you can now set your preferred production commands using [`dbt build`](https://github.com/dbt-labs/dbt-core/releases). Once setup, a single `dbt build` command can be used to execute your prescribed `seed`, `test`, `run` and `snapshot` and other commands in a specified order._
 
-The most important command is [`dbt run`](https://docs.getdbt.com/reference/commands/run). But in deployment, we rarely just use `dbt run`. 
+The most important command is [`dbt run`](https://docs.getdbt.com/reference/commands/run). But in deployment, we rarely just use `dbt run`.
 
 You’re probably familiar with a bunch of [dbt commands](https://docs.getdbt.com/reference/dbt-commands) already, and this section is dedicated to showing you what we believe the most effective commands should be when running your dbt project in production!
 
@@ -30,7 +30,7 @@ In production, reliability and consistency are key. This guarantees that your st
 
 <WistiaVideo id="7em2tj62yo" />
 
-### 1) Always test your data 
+### 1) Always test your data
 
 You’re likely already familiar with testing in dbt, and we believe that every production run should always be tested.
 
@@ -68,7 +68,7 @@ In practice however, we often find that this is more effective:
 
 ```
 
-dbt test -s source:* (or dbt test -m source:* if you are on a version earlier than dbt v0.21.0) 
+dbt test -s source:* (or dbt test -m source:* if you are on a version earlier than dbt v0.21.0)
 
 dbt run
 
@@ -78,31 +78,31 @@ dbt source `freshness ` (or dbt source snapshot-freshness if you are on a versio
 
 ```
 
-This is a more robust implementation of the first version. The two additions here would be: 
+This is a more robust implementation of the first version. The two additions here would be:
 
 
 
-1. Testing source data before running any dbt transformation, and 
+1. Testing source data before running any dbt transformation, and
 2. Testing source freshness
 
-When you test source data before running transformations, this removes the possibility of bad source data affecting the dbt project. 
+When you test source data before running transformations, this removes the possibility of bad source data affecting the dbt project.
 
-This will stop the build process if bad source data is detected, and protects the integrity of your dbt models. 
+This will stop the build process if bad source data is detected, and protects the integrity of your dbt models.
 
-When sources are tested for freshness, it allows you to easily triage whether data in your warehouse is old, and subsequently alert relevant stakeholders. 
+When sources are tested for freshness, it allows you to easily triage whether data in your warehouse is old, and subsequently alert relevant stakeholders.
 
 You could also opt to run your source freshness test at the beginning, if your organization would prefer that stale data isn’t processed, or if you believe that stale data could lead to unreliable final models.
 
 
 ## Pro trip: beware of model selectors
 
-First, I want to quickly cover the topic of using [model selectors](https://docs.getdbt.com/reference/node-selection/syntax) (`-s` for specific models/tags/folders, or `-m` if you’re on a version prior to dbt v0.21.0) in your run commands. You may already know how to run specific models and subsequently their parent or child models. 
+First, I want to quickly cover the topic of using [model selectors](https://docs.getdbt.com/reference/node-selection/syntax) (`-s` for specific models/tags/folders, or `-m` if you’re on a version prior to dbt v0.21.0) in your run commands. You may already know how to run specific models and subsequently their parent or child models.
 
-When building production jobs, we highly advise not relying on these, as it adds to the complexity of your project, and is prone to creating mismatched timings in your build steps. 
+When building production jobs, we highly advise not relying on these, as it adds to the complexity of your project, and is prone to creating mismatched timings in your build steps.
 
-The way to think about model selectors in runs is more of an exception, rather than the default. It’s best to start with a single main job that runs at a consistent cadence. From there, assess whether specific parts of your dbt project need specific handling for optimization. 
+The way to think about model selectors in runs is more of an exception, rather than the default. It’s best to start with a single main job that runs at a consistent cadence. From there, assess whether specific parts of your dbt project need specific handling for optimization.
 
-Maybe some models only require updating once a week, while everything else needs to be updated every hour. Maybe some teams need data at a specific time of the day, and thus need their models to be run at a specific time in the morning. 
+Maybe some models only require updating once a week, while everything else needs to be updated every hour. Maybe some teams need data at a specific time of the day, and thus need their models to be run at a specific time in the morning.
 
 These exceptions justify having separate run commands, and even a separate job, but make sure to exercise caution when building these as they could easily become difficult to manage in the long run.
 
