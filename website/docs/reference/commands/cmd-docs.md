@@ -26,7 +26,7 @@ dbt docs generate --no-compile
 ```
 
 ### dbt docs serve
-This command starts a webserver on port 8000 to serve your documentation locally. The webserver is rooted in your `target/` directory.
+This command starts a webserver on port 8000 to serve your documentation locally. Run `generate` before `serve` as `serve` depends on the catalog which `generate` produces. The webserver is rooted in your `target/` directory.
 
 **Usage:**
 ```
