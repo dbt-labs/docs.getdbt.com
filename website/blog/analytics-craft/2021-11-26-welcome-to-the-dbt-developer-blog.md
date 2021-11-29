@@ -1,6 +1,6 @@
 ---
 title: "Welcome to the dbt Developer Blog"
-description: "Naming our models is one of the hardest and most important tasks of the analytics engineer. This post walks through the reasons that we should focus on naming as a key part of the process of building data models."
+description: "Doing analytics is hard. Doing analytics *right* is even harder. The purpose of this blog is to double down on our long running commitment to contributing to the knowledge loop."
 slug: welcome
 
 authors: [jasnonaz, dkrevitt]
