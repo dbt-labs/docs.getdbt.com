@@ -1,7 +1,7 @@
 ---
 title: "Metrics"
 id: "metrics"
-description: "When you define metrics in dbt projects, you can encode crucial business logic in tested, version-controlled code."
+description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code."
 ---
 
 <Changelog>
@@ -26,7 +26,7 @@ A metric is a timeseries aggregation over a table that supports zero or more dim
 - churn rate
 - mrr (monthly recurring revenue)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you can encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 ### Benefits of defining metrics
 
@@ -34,7 +34,7 @@ In v1.0, dbt supports metric definitions as a new node type. Like [exposures](ex
 dbt's compilation context can access metrics via the [`graph.metrics` variable](graph). The [manifest artifact](manifest-json) includes metrics for downstream metadata consumption.
 
 **See and select dependencies**   
-As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation).
+As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation). For more information, see "[The `metric:` selection method](node-selection/methods#the-metric-method)."
 
 <Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 
@@ -96,14 +96,11 @@ You can see how these properties are used in the [example YAML file](#declaring-
 | filters     | List of filters to apply before calculating the metric    | field: is_paying<br/>value: true  | No        |
 | meta        | Arbitrary key/value store                                 | {team: Finance}                   | No        |
 
-## Open questions
+## Ongoing discussions
 
-- Should we define metrics on top of more strongly typed **attributes**, rather than columns? [dbt-core#4090](https://github.com/dbt-labs/dbt-core/issues/4090)
+- Should we define metrics be defined on top of more strongly typed **attributes**, rather than columns? [dbt-core#4090](https://github.com/dbt-labs/dbt-core/issues/4090)
 - Should metrics include support for joins? How should dbt know about foreign-key relationships between models? [dbt-core#4125](https://github.com/dbt-labs/dbt-core/issues/4125)
 - Should metrics inherit configurations from the models on which they are defined? Should it be possible to define metrics directly on models/columns, like tests?
 
 These are just a start! We welcome you to check out open issues on GitHub, and join the conversation.
 
-## Further reading
-
-* [`metric:` selection method](node-selection/methods#the-metric-method)
