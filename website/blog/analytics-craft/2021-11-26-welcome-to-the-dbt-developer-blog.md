@@ -44,9 +44,9 @@ A brief overview of the types of posts that you will find on the blog:
 
 * *Analytics Craft*: The art of being an analytics practitioner.
 
-* *dbt Tutorials: *Best practices in the usage of our favorite data transformation tool.
+* *dbt Tutorials:* Best practices in the usage of our favorite data transformation tool.
 
-* *Data Ecosystem: *Walkthroughs of how top data practitioners use tools in the modern data stack.
+* *Data Ecosystem:* Walkthroughs of how top data practitioners use tools in the modern data stack.
 
 * *Product Updates:* An archive of monthly product updates from the dbt Labs team.
 
