@@ -21,7 +21,7 @@ When migrating and refactoring code, it’s of course important to stay organize
 
 Let's get into it!
 
-> Note: this tutorial is excerpted from the new dbt Learn On-demand Course, "Refactoring from Procedural SQL to dbt" - if you're curious, pick up the [free refactoring course here](https://courses.getdbt.com/courses/refactoring), which includes example and practice refactoring projects.
+> Note: this tutorial is excerpted from the new dbt Learn On-demand Course, "Refactoring from Procedural SQL to dbt" - if you're curious, pick up the [free refactoring course here](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects.
 
 ## Migrate your existing SQL code
 
@@ -244,6 +244,6 @@ Under the hood, it generates comparison queries between our before and after sta
 Sure, we could write our own query manually to audit these models, but using the dbt `audit_helper` package gives us a head start and allows us to identify variances more quickly.  
 
 ## Ready for refactoring practice?
-Head to the free on-demand course, [Refactoring from Procedural SQL to dbt](https://courses.getdbt.com/courses/refactoring) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
+Head to the free on-demand course, [Refactoring from Procedural SQL to dbt](https://courses.getdbt.com/courses/refactoring-sql-for-modularity) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
 
 Questions on this tutorial or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).

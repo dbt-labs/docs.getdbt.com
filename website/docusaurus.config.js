@@ -142,6 +142,12 @@ module.exports = {
           activeBasePath: 'faqs'
         },
         {
+          to: '/blog/',
+          label: 'Developer Blog',
+          position: 'right',
+          activeBasePath: 'blog'
+        },        
+        {
           label: 'Learn',
           position: 'right',
           items: [
@@ -200,7 +206,14 @@ module.exports = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
-        }
+        },
+        blog: {
+          blogTitle: 'dbt Developer Blog',
+          blogDescription: 'Technical tutorials from the dbt Community.',
+          postsPerPage: 20,
+          blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 5,
+        },
       },
     ],
   ],
@@ -211,6 +224,8 @@ module.exports = {
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
+    path.resolve('plugins/buildBlogData'),
+    path.resolve('plugins/buildAuthorPages'),
   ],
   scripts: [
     {
@@ -222,6 +237,7 @@ module.exports = {
       defer: true
     },
     '/js/gtm.js',
+    'https://kit.fontawesome.com/7110474d41.js'
   ],
   stylesheets: [
     '/css/fonts.css',
@@ -230,5 +246,5 @@ module.exports = {
     '/css/api.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
-  ]
+  ],
 };
