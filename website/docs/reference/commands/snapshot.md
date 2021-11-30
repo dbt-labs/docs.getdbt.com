@@ -23,3 +23,5 @@ optional arguments:
   --exclude EXCLUDE [EXCLUDE ...]
                         Specify the snapshots to exclude in the run.
 ```
+
+Note: To run a specific snapshot, you do not need to use 'select' with a 'selector'. For example, to run a specific snapshot, you can use write: dbt snapshot --select tag:tag_name
