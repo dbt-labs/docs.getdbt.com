@@ -5,93 +5,16 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.40 (December 1, 2021)
+The team is working hard as we race towards the end of the year. Be sure to check out [Coalesce](https://coalesce.getdbt.com/) next week, as we'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-building-a-force-of-gravity/)?!
 
-#### Enhancements
+#### New products and features
 
-- Prevent hostname submission of ngrok.io and include an error explanation
-- adapt to dbt-rpc for dbt >= 1.0.0b2
+- dbt v0.21.1 is now available in dbt Cloud.
 
-#### Feature
 
-- Rename 1.0.0rc1 to prerelease
-- Bump dbt to 0.21.1
-- Add logic to store and pull last active project and account from localStorage
+#### Performance improvements and enhancements
 
-#### Fixed
-
-- change sub permission check for project level var creation
-- Fix: Disable Saving Variables with missing/invalid key names (take 2)
-- Update persisted account and project logic to only use localStorage on homepage load
-- Revert "Fix: Set better create/save behavior for env vars (#4507)"
-- Fix: Set better create/save behavior for env vars
-
-#### Internal
-
-- Service token added/revoked events
-- SHP-3 Refactor time to run metric to use cached previous statement. 
-- audit group added/changed/removed
-- Add new metrics layer account registration table
-- Ensure consistent audit log pagination behavior
-- XP-189 Fix typing on useUserCredentialsQuery
-- Fix flaky audit log test
-- Add username column to metrics_auth_token table
-- XP-160 useDevelopAuthorization
-- audit user_group: user added/removed
-- add event for brush use
-- Check user perms on audit log page
-- Handle multi line overflow in audit log table
-- admin: fix pages that time out from account/project lists
-- Temporarilly comment out broken audit log test
-- Fix audit log refresh button focus styling
-- Fix incorrect audit log total count
-- Position ourselves to be deterministic about file tree sorting
-- audit job definition
-- Fix hour 0 tests
-- audit log user creation from signup
-- Deploy to prod with helm-charts
-- Switch audit log primary key to bigint
-- Remove count tag from audit log prune success metric
-- General audit log bug fixes
-- Fix account settings feature flag fetch
-- Include current filters in audit log export
-- Switch audit log routing keys to lowercase
-- Add audit log titles and descriptions for p0 events
-- Don't refetch feature flags on every list call
-- Update localstorage account and project id to key off user id
-- Ignore localstorage account and project for sudo sessions
-- Remove vscode devcontainer
-- Codex 367 model bottleneck responsiveness
-- Updating useDevelopRequestByEnvironmentId to conform to new standards
-- Overrides kube client env generation method to remove secrets on server
-- Make password a readonly field
-- Run the dbt-cloud frontend in its own Devspace deployment
-- Container spec for frontend, and do not silence django system checks for helm deployments
-- Setup audit log error states
-- Setup audit log UI filtering search bar
-- Setup audit log backend search filtering
-- Fix a few model bottleneck viz bugs
-- Allow audit log service tests to run again
-- Fix broken reference in audit log tests
-- Bump proto-python to v0.0.36
-- Raises exception for missing env, includes auth user id in server proxy response
-- Refactor audit log service structure
-- Codex 366/add tooltip to bottleneck
-- XP-180: Implement mergeUseQueryResults for useCurrentDevelopEnvironmentQuery
-- Add datadog metric for audit log prune failures
-- Match audit log json display to s3 storage format
-- Add auth creds login successful event
-- pip install prerequisites for bigquery
-- django admin: re-enable ability to change pwd
-- Improve viz check for dbt run and dbt build steps
-- Add Zod and return types for new useQuery Hooks
-- XP-170 Create useDevelopRequestByEnvironmentId hook
-- Adds service_token_permission database migration, mapper, and model
-- Fix broken audit log test
-- Repurpose FS API Feature Flag
-- Implement the useDevelopRequest Hook
-- Comment out broken test
-- Also block dbtlabs email domain
-- Disable time to run behind a flag
+- Now whenever you log back into dbt Cloud, you'll return to the acccount and project that you most recently were working in!
 
 
 ## dbt Cloud v1.1.39 (November 10, 2021)
