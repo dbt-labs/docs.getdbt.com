@@ -51,7 +51,7 @@ exposures:
 ### Available properties
 
 _Required:_
-- **name** (must be unique among exposures)
+- **name** (must be unique among exposures): use underscores so as to populate the lineage graph
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
 - **owner**: email
 
@@ -59,7 +59,7 @@ _Expected:_
 - **depends_on**: list of refable nodes (`ref` + `source`)
 
 _Optional:_
-- **url**
+- **url**: will enable the link to "View this exposure" in the documentation
 - **maturity**: one of `high`, `medium`, `low`
 - **owner**: name
 
