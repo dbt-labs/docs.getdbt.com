@@ -10,7 +10,7 @@ Downloading and building dbt Core will enable you to contribute to the project b
 
 ### Installing dbt Core
 
-To install dbt from the GitHub source:
+To install dbt from the GitHub code source:
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-core.git

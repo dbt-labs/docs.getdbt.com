@@ -1,6 +1,6 @@
 ---
 title: "Use Homebrew to install dbt"
-description: ""
+description: "You can use Homebrew to install dbt Core and adapter plugins from the command line."
 ---
 
 dbt Labs maintains Homebrew formulae for the four oldest and most popular adapter plugins: Postgres, Redshift, Snowflake, and BigQuery.

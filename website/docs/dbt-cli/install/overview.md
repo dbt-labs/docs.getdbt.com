@@ -1,7 +1,7 @@
 ---
 id: "overview"
 title: "How to install dbt"
-description: ""
+description: "You can install dbt Core using a few different tested methods."
 ---
 
 You can install dbt Core on the command line by using one of these recommended methods:
