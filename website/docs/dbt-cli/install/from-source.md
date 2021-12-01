@@ -22,7 +22,7 @@ This will install `dbt-core` and `dbt-postgres`. To install in editable mode (in
 
 ### Installing adapter plugins
 
-To install an adapter plugin from source, first locate its repository. For instance, the `dbt-redshift` adapter is located at https://github.com/dbt-labs/dbt-redshift.git, so I can clone it and install from there:
+To install an adapter plugin from source, you will need to first locate its source repository. For instance, the `dbt-redshift` adapter is located at https://github.com/dbt-labs/dbt-redshift.git, so I can clone it and install from there:
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-redshift.git
