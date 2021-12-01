@@ -1,6 +1,6 @@
 ---
 title: "Configuring your profile"
-description: "You can configure your profile using your computer's command line."
+description: "Configure your profile using the command line."
 ---
 
 ## Related documentation

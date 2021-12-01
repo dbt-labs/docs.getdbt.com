@@ -1,6 +1,6 @@
 ---
 title: "CLI overview"
-description: ""
+description: "Run your dbt project from the command line."
 ---
 
 dbt Core ships with a command-line interface (CLI) for running your dbt project. The dbt CLI is free to use and available as an [open source project](https://github.com/dbt-labs/dbt-core).

@@ -1,12 +1,12 @@
 ---
 title: "Install dbt from source"
 id: "from-source"
-description: ""
+description: "You can install dbt Core from its GitHub code source."
 ---
 
 dbt Core and almost all of its adaptor plugins are open source software. As such, the codebases are freely available to download and build from source. To do this, you can clone the repositories from GitHub, which makes a local copy, and then install the local version using `pip`.
 
-You will also need download and build dbt Core if you'd like to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [core contributing guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
+Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
 
 ### Installing dbt Core
 
