@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 This will install `dbt-core` and `dbt-postgres`. To install in editable mode (includes your local changes as you make them), use `pip install -e editable-requirements.txt` instead.
 
-### Installing the adapter plugins
+### Installing adapter plugins
 
 To install an adapter plugin from source, first locate its repository. For instance, the `dbt-redshift` adapter is located at https://github.com/dbt-labs/dbt-redshift.git, so I can clone it and install from there:
 
