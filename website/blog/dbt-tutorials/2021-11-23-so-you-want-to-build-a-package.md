@@ -21,7 +21,7 @@ So I challenge you after reading this article to test out your skillsets, think 
 <!--truncate-->
 **What is a package even?**
 
-If you’re considering making a package, you probably already know what one is but let’s take a quick review to help structure our thinking. A dbt package is basically a mini-dbt project. The only mandatory file that it requires is a dbt_project.yml to validate that it’s a dbt package (same as any dbt project). It can contain macros that help you write something in SQL in significantly less lines. It could contain models that help you model your SaaS dataset in a manner of minutes (I’m looking at you, Fivetran Salesforce package). But in dbt land, you could literally take one project (say Jaffle shop) and install it as a package to your project, regardless of its from the Hub or not.
+If you’re considering making a package, you probably already know what one is but let’s take a quick review to help structure our thinking. A dbt package is basically a mini-dbt project. The only mandatory file that it requires is a dbt_project.yml to validate that it’s a dbt package (same as any dbt project). It can contain macros that help you write something in SQL in significantly less lines. It could contain models that help you model your SaaS dataset in a manner of minutes (I’m looking at you, Fivetran Salesforce package). But in dbt land, you could literally take one project (say Jaffle shop) and install it as a package to your project, regardless of whether its from the Hub or not.
 
 Packages are a way to share code in dbt without ever having to copy and paste (or *email* :screaming face:).
 
