@@ -62,7 +62,18 @@ The table below shows which dbt and Firebolt features are supported by the adapt
 
 A dbt model can be created as a Firebolt fact table and configured using the following syntax:
 
-Project file syntax
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+<File name='dbt_project.yml'>
 ```yml
 models:
   <resource-path>:
@@ -75,8 +86,11 @@ models:
         aggregation: [ <agg-sql>, ... ]
       ...
 ```
+</File>
+</TabItem>
 
-Property file syntax
+<TabItem value="property-yaml">
+<File name='models/properties.yml'>
 ```yml
 models:
   - name: <model-name>
@@ -90,9 +104,12 @@ models:
           aggregation: [ <agg-sql>, ... ]
         ...
 ```
+</File>
+</TabItem>
 
-Config block syntax
-```
+<TabItem value="config">
+<File name='models/<model_name.sql>'>
+```jinja
 {{ config(
     materialized = "table"
     table_type = "fact"
@@ -107,6 +124,10 @@ Config block syntax
     ]
 ) }}
 ```
+</File>
+</TabItem>
+</Tabs>
+
 
 #### Fact Table Configurations
 
