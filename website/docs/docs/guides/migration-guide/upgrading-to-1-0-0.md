@@ -53,7 +53,7 @@ Global project macros have been reorganized, and some old unused macros have bee
 
 ### For maintainers of plugins + other integrations
 
-We've introduced a new **structured event interface**, and we've begun the transition away from legacy logging. **This includes a breaking change for adapter plugins**, requiring a very simple migration—see [`events` module README](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/events/README.md#adapter-maintainers) for details. If you maintain a different kind of plugin that _needs_ legacy logging, for the time being, you can re-enable it with an env var (`DBT_ENABLE_LEGACY_LOGGER=True`); be advised that we will remove this capability in a future version of dbt Core.
+We've introduced a new [**structured event interface**](events-logging), and we've transitioned all dbt logging to use this new system. **This includes a breaking change for adapter plugins**, requiring a very simple migration—see [`events` module README](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/events/README.md#adapter-maintainers) for details. If you maintain a different kind of plugin that _needs_ legacy logging, for the time being, you can re-enable it with an env var (`DBT_ENABLE_LEGACY_LOGGER=True`); be advised that we will remove this capability in a future version of dbt Core.
 
 The [**dbt RPC Server**](rpc) has been split out from `dbt-core` and is now packaged separately. Its functionality will be fully deprecated by the end of 2022, in favor of a new dbt Server. Instead of `dbt rpc`, use `dbt-rpc serve`.
 
