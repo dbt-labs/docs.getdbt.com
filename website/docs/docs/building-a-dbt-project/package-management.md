@@ -86,17 +86,28 @@ In comparison, other package installation methods are unable to handle the dupli
 <Changelog>
 
 * `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
+* `v1.0.0`: If provided an explicit prerelease version, dbt will install it
 
 </Changelog>
 
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
-By default, `dbt deps` will not install prerelease versions of packages. You can enable the installation of prereleases with the `install-prerelease` parameter.
+By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
+- explicitly specifying a prerelease in your `version` criteria
+- setting `install-prerelease` to `true`
+
+Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
 
 ```yaml
 packages:
   - package: tailsdotcom/dbt_artifacts
     version: 0.4.5a2
+```
+
+```yaml
+packages:
+  - package: tailsdotcom/dbt_artifacts
+    version: [">=0.4.4", "<0.4.6"]
     install-prerelease: true
 ```
 
