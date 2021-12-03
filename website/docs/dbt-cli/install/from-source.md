@@ -4,13 +4,13 @@ id: "from-source"
 description: "You can install dbt Core from its GitHub code source."
 ---
 
-dbt Core and almost all of its adaptor plugins are open source software. As such, the codebases are freely available to download and build from source. To do this, you can clone the repositories from GitHub, which makes a local copy, and then install the local version using `pip`.
+dbt Core and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. To do this, you can clone the repositories from GitHub, which makes a local copy, and then install the local version using `pip`.
 
 Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
 
 ### Installing dbt Core
 
-To install dbt from the GitHub code source:
+To install `dbt-core` from the GitHub code source:
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-core.git
@@ -30,7 +30,7 @@ cd dbt-redshift
 pip install .
 ```
 
-You do _not_ need to install `dbt-core` before installing an adapter plugin -- it includes `dbt-core` among its dependencies, and it will install the latest compatible version automatically.
+You do _not_ need to install `dbt-core` before installing an adapter plugin -- the plugin includes `dbt-core` among its dependencies, and it will install the latest compatible version automatically.
 
 To install in editable mode, such as while contributing, use `pip install -e .` instead.
 
