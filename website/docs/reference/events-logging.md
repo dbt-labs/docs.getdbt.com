@@ -1,6 +1,5 @@
 ---
 title: "Events and logs"
-id: "events-logs"
 ---
 
 :::info New in v1.0
