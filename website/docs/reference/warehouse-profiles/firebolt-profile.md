@@ -9,14 +9,14 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
-## Overview of dbt-synapse
+## Overview of dbt-firebolt
 
 **Maintained by:** Community  
 **Author:** Anders Swanson and Eric Ford
 **Source:** [Github](https://github.com/firebolt-db/dbt-firebolt)  
 **dbt Cloud:** Not Supported  
 
-![dbt-synapse stars](https://img.shields.io/github/stars/firebolt-db/dbt-firebolt?style=for-the-badge)
+![dbt-firebolt stars](https://img.shields.io/github/stars/firebolt-db/dbt-firebolt?style=for-the-badge)
 
 The package can be installed from PyPI with:
 

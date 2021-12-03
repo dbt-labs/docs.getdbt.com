@@ -29,7 +29,8 @@ These adapter plugins are built and maintained by the same people who build and 
 | ------------ | ------------- | ----------------- |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
 | Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
-| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino`
+| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
+| Firebolt               | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | Firebolt | `pip install dbt-firebolt`   |
 
 ### Community Supported
 
@@ -43,7 +44,6 @@ These adapter plugins are contributed and maintained by members of the community
 | Oracle Database        | [Profile Setup](oracle-profile)       | Oracle 11+                | `pip install dbt-oracle`     |
 | Dremio                 | [Profile Setup](dremio-profile)       | Dremio 4.7+               | `pip install dbt-dremio`     |
 | ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
-| Firebolt               | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | Firebolt | `pip install dbt-firebolt`   |
 
 Community-supported plugins are works in progress, and all users are encouraged to contribute by testing and writing code. If you're interested in contributing:
 - Join the dedicated channel in [dbt Slack](https://community.getdbt.com/) (e.g. #db-sqlserver, #db-athena)
