@@ -8,3 +8,7 @@
 /website/docs/docs/dbt-cloud/                          @drewbanin
 /website/src/pages/dbt-cloud/                          @drewbanin
 /website/static/img/docs/dbt-cloud/                    @drewbanin
+
+# Partner Related docs assigned to Amy C
+/website/docs/docs/available-adapters.md/                       @amychen1776
+/website/docs/reference/warehouse-profiles/                     @amychen1776
