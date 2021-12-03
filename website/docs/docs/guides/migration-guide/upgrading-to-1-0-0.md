@@ -23,7 +23,7 @@ dbt Core major version 1.0 includes a number of breaking changes! Wherever possi
 **These affect everyone:**
 - [model-paths](model-paths) have replaced `source-paths` in `dbt-project.yml.
 - [seed-paths](seed-paths) have replaced `data-paths` in `dbt-project.yml with a default value of `seeds`.
-- The [packages-install-path](packages-install-path) was updated from `modules-path`.  Additionally the default value is now `dbt-packages` instead of `dbt-modules`.  You may need to update this value in [`clean-targets`](clean-targets).
+- The [packages-install-path](packages-install-path) was updated from `modules-path`.  Additionally the default value is now `dbt_packages` instead of `dbt_modules`.  You may need to update this value in [`clean-targets`](clean-targets).
 - Default for `quote-columns` is now `True` for all adapters other than Snowflake.
 
 **These probably don't:**
