@@ -1,15 +1,18 @@
 ---
-title: "Install from source"
+title: "Install dbt from source"
 id: "from-source"
+description: "You can install dbt Core from its GitHub code source."
 ---
 
-dbt Core is open source software, as are almost all adapter plugins. As such, the codebases are freely available to download and build from source. To do this, you can clone the repositories from GitHub and install the local version using `pip`.
+dbt Core and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install form source if you want the latest code or want to install dbt from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.
 
-You will also need to follow this process if you'd like to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [core contributing guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
+To download form source, you would clone the repositories from GitHub, making a local copy, and then install the local version using `pip`.
 
-### Core
+Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
 
-To install from source:
+### Installing dbt Core
+
+To install `dbt-core` from the GitHub code source:
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-core.git
@@ -19,9 +22,9 @@ pip install -r requirements.txt
 
 This will install `dbt-core` and `dbt-postgres`. To install in editable mode (includes your local changes as you make them), use `pip install -e editable-requirements.txt` instead.
 
-### Plugin
+### Installing adapter plugins
 
-To install an adapter plugin from source, first locate its repository. For instance, the `dbt-redshift` adapter is located at https://github.com/dbt-labs/dbt-redshift.git, so I can clone it and install from there:
+To install an adapter plugin from source, you will need to first locate its source repository. For instance, the `dbt-redshift` adapter is located at https://github.com/dbt-labs/dbt-redshift.git, so I can clone it and install from there:
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-redshift.git
@@ -29,7 +32,7 @@ cd dbt-redshift
 pip install .
 ```
 
-You do _not_ need to install `dbt-core` before installing an adapter plugin—it includes `dbt-core` among its dependencies, and it will install the latest compatible version automatically.
+You do _not_ need to install `dbt-core` before installing an adapter plugin -- the plugin includes `dbt-core` among its dependencies, and it will install the latest compatible version automatically.
 
 To install in editable mode, such as while contributing, use `pip install -e .` instead.
 
