@@ -105,7 +105,7 @@ module.exports = {
     "dbt-cli/cli-overview",
     {
       type: "category",
-      label: "Installing locally",
+      label: "Installing dbt from the command line",
       items: [
         "dbt-cli/install/overview",
         "dbt-cli/install/homebrew",
