@@ -63,4 +63,4 @@ pip install \
   dbt-bigquery
 ```
 
-Or, better yet -— install just the one(s) you need!
+Or, better yet, just install the package(s) you need!
