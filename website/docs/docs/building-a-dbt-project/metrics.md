@@ -63,7 +63,15 @@ metrics:
     
     filters:
       - field: is_paying
-        value: true
+        operator: 'is'
+        value: 'true'
+      - field: lifetime_value
+        operator: '>='
+        value: '100'
+      - field: company_name
+        operator: '!='
+        value: "'Acme, Inc'"
+
 
     meta: {}
 ```
@@ -87,16 +95,21 @@ metrics:
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
 ### Filters
-Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are ANDed together. If more complex filtering is required, users can (and should) push that logic down into the underlying model.
+Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric.
+
+Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded in quotes inside the query, use `"'nested'"` quotes:
 
 ```yml
-filters:
-  - field: is_paying
-    value: true
-  
-  - field: ltv
-    operator: ">="
-    value: 100
+    filters:
+      - field: is_paying
+        operator: 'is'
+        value: 'true'
+      - field: lifetime_value
+        operator: '>='
+        value: '100'
+      - field: company_name
+        operator: '!='
+        value: "'Acme, Inc'"
 ```
 
 ### Why define metrics?
