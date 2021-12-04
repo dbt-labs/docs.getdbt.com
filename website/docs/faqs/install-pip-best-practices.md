@@ -1,12 +1,13 @@
 ---
-title: What are the best practices for installing dbt with pip?
+title: "What are the best practices for installing dbt Core with pip?"
+description: ""
 ---
 
-Managing Python local environments can be challenging!
+Managing Python local environments can be challenging! You can use these best practices to improve the dbt Core installation with pip. 
 
-## Use virtual environments
+### Using virtual environments
 
-we recommend using [virtual environments](https://docs.python-guide.org/dev/virtualenvs/) to namespace `pip` modules. Here's an example setup:
+We recommend using [virtual environments](https://docs.python-guide.org/dev/virtualenvs/) to namespace `pip` modules. Here's an example setup:
 
 ```shell
 
@@ -19,7 +20,7 @@ If you install `dbt` in a virtual environment, you need to reactivate that same 
 
 *Tip:* You can create an alias for the `source` command in your `$HOME/.bashrc`, `$HOME/.zshrc`, or whichever rc file your shell draws from. For example, you can add a command like `alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'`, replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration.
 
-## Use the latest versions
+### Using the latest versions
 
 dbt installations are tested using the latest versions of `pip` and `setuptools`. Newer versions have improved behavior around dependency resolution, as well as much faster install times by using precompiled "wheels" when available for your operating system.
 

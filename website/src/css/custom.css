@@ -79,6 +79,20 @@ h3 {
 h1.docTitle_node_modules-\@docusaurus-theme-classic-src-theme-DocItem- {
   font-size: 2rem;
 }
+/* Adding FAQ specific links so we can left-justify the FAQ page titles */
+a.hash-link-faq:link {
+  margin-left: -20px;
+  opacity: 0;
+}
+
+a.hash-link-faq:visited,
+a.hash-link-faq:hover {
+  color: black;
+}
+
+a.hash-link-faq:active {
+  color: black;
+}
 
 a.hash-link:link,
 a.hash-link:visited,
