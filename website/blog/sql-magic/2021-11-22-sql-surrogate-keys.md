@@ -151,9 +151,9 @@ output:
 
 | USER_ID | PRODUCT_ID | _SURROGATE_KEY |
 |---------|------------|----------------|
-| 123     | 123        | 123|123        |
-| 123     | `null`     | 123|           |
-| `null`  | 123        | |123           |
+| 123     | 123        | '123|123'      |
+| 123     | `null`     | '123|'         |
+| `null`  | 123        | '|123'         |
 
 
 Let’s take a look at how generating surrogate keys specifically looks in practice across data warehouses, and how you can use one simple dbt macro ([dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)) to abstract away the null value problem.
