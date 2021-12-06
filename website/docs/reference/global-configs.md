@@ -15,13 +15,59 @@ Starting in v1.0, you can set global configs in three places. When all three are
 
 #### Command line flags
 
-Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs. You can use `--this-config` CLI flag to turn on boolean configs, and a `--no-this-config` CLI flag to turn off boolean configs:
+Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
+
+Use this non-boolean config structure, replacing  `<THIS-CONFIG>` with the config you are enabling or disabling, `<SETTING>` with the new setting for the config, and `<SUBCOMMAND>`  with the command this config applies to:
 
 <File name='CLI flags'>
 
+
 ```text
-$ dbt --<this-config> <subcommand>
-$ dbt --<no-this-config> <subcommand>
+
+$ --<THIS-CONFIG>=<SETTING> <SUBCOMMAND>
+
+```
+
+</File>
+
+Non-boolean config examples:
+
+<File name='CLI flags'>
+
+
+```text
+
+$ dbt --printer-width=80 run
+$ dbt --indirect-selection=eager test
+
+```
+
+</File>
+
+To turn on boolean configs, you would use the `--<THIS-CONFIG>` CLI flag, and a `--no-<THIS-CONFIG>` CLI flag to turn off boolean configs, replacing `<THIS-CONFIG>` with the config you are enabling or disabling and `<SUBCOMMAND>`  with the command this config applies to.
+
+Boolean config structure:
+
+<File name='CLI flags'>
+
+
+```text
+$ dbt --<THIS-CONFIG> <SUBCOMMAND>
+$ dbt --no-<THIS-CONFIG> <SUBCOMMAND>
+
+```
+
+</File>
+
+Boolean config example:
+
+<File name='CLI flags'>
+
+
+```text
+
+$ dbt --version-check run
+$ dbt --no-version-check run
 
 ```
 
@@ -35,7 +81,7 @@ Environment variables contain a `DBT_` prefix
 
 ```text
 
-$ export DBT_THIS_CONFIG=True
+$ export DBT_<THIS-CONFIG>=True
 $ dbt run
 
 ```
@@ -51,7 +97,7 @@ You can set profile (or user) configurations in the `config:` block of `profiles
 ```yaml
 
 config:
-  this_config: true
+  <THIS-CONFIG>: true
 
 ```
 
