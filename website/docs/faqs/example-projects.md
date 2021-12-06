@@ -8,5 +8,6 @@ Yes!
 * **MRR Playbook:** A demonstration project that models subscription revenue ([source code](https://github.com/dbt-labs/mrr-playbook), [docs](https://www.getdbt.com/mrr-playbook/#!/overview))
 * **Attribution Playbook:** A demonstration project that models marketing attribution  ([source code](https://github.com/dbt-labs/attribution-playbook), [docs](https://www.getdbt.com/attribution-playbook/#!/overview))
 * **GitLab:** Gitlab's internal dbt project is open source and is a great example of how to use dbt at scale ([source code](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt), [docs](https://dbt.gitlabdata.com/))
+* **Google Analytics 4:** A demonstration project that transforms the Google Analytics 4 BigQuery exports to various models ([source code](https://github.com/stacktonic-com/stacktonic-dbt-example-project), [docs](https://stacktonic.com/article/google-analytics-big-query-and-dbt-a-dbt-example-project))
 
 If you have an example project to add to this list, suggest an [edit](https://github.com/dbt-labs/docs.getdbt.com/edit/master/website/docs/faqs/example-projects.md).
