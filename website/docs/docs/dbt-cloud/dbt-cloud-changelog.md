@@ -4,7 +4,7 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
-## dbt Cloud v1.1.40 (December 1, 2021)
+## dbt Cloud v1.1.41 (December 8, 2021)
 The team is working hard as we race towards the end of the year. Be sure to check out [Coalesce](https://coalesce.getdbt.com/) next week, as we'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-building-a-force-of-gravity/)?!
 
 #### New products and features
