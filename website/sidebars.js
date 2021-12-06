@@ -36,6 +36,7 @@ module.exports = {
         //"docs/building-a-dbt-project/archival",
         "docs/building-a-dbt-project/package-management",
         "docs/building-a-dbt-project/analyses",
+        "docs/building-a-dbt-project/metrics",
       ],
     },
     {
@@ -67,6 +68,7 @@ module.exports = {
           type: "category",
           label: "Migration guides",
           items: [
+            "docs/guides/migration-guide/upgrading-to-1-0-0",
             "docs/guides/migration-guide/upgrading-to-0-21-0",
             "docs/guides/migration-guide/upgrading-to-0-20-0",
             "docs/guides/migration-guide/upgrading-to-0-19-0",
@@ -82,7 +84,6 @@ module.exports = {
           ],
         },
         "docs/guides/videos",
-        //"docs/guides/database-specific-guides/creating-date-partitioned-tables", // deprecated
       ],
     },
     {
@@ -102,7 +103,17 @@ module.exports = {
   ],
   "dbt CLI": [
     "dbt-cli/cli-overview",
-    "dbt-cli/installation",
+    {
+      type: "category",
+      label: "Installing dbt from the command line",
+      items: [
+        "dbt-cli/install/overview",
+        "dbt-cli/install/homebrew",
+        "dbt-cli/install/pip",
+        "dbt-cli/install/docker",
+        "dbt-cli/install/from-source",
+      ],
+    },
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
@@ -245,12 +256,12 @@ module.exports = {
         "reference/project-configs/asset-paths",
         "reference/project-configs/clean-targets",
         "reference/project-configs/config-version",
-        "reference/project-configs/data-paths",
+        "reference/project-configs/seed-paths",
         "reference/project-configs/dispatch-config",
         "reference/project-configs/docs-paths",
         "reference/project-configs/log-path",
         "reference/project-configs/macro-paths",
-        "reference/project-configs/modules-path",
+        "reference/project-configs/packages-install-path",
         "reference/project-configs/name",
         "reference/project-configs/on-run-start-on-run-end",
         "reference/project-configs/profile",
@@ -258,7 +269,7 @@ module.exports = {
         "reference/project-configs/quoting",
         "reference/project-configs/require-dbt-version",
         "reference/project-configs/snapshot-paths",
-        "reference/project-configs/source-paths",
+        "reference/project-configs/model-paths",
         "reference/project-configs/target-path",
         "reference/project-configs/test-paths",
         "reference/project-configs/version",
@@ -440,6 +451,8 @@ module.exports = {
           ],
         },
         "reference/global-cli-flags",
+        "reference/global-configs",
+        "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
       ],

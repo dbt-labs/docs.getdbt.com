@@ -42,7 +42,13 @@ packages:
 
 </File>
 
-3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_modules` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
+<Changelog>
+
+- **v1.0.0:** The default [`packages-install-path`](packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
+
+</Changelog>
+
+3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
 ## How do I specify a package?
 You can specify a package using one of the following methods, depending on where your package is stored.
@@ -80,17 +86,28 @@ In comparison, other package installation methods are unable to handle the dupli
 <Changelog>
 
 * `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
+* `v1.0.0`: When you provide an explicit prerelease version, dbt will install that version.
 
 </Changelog>
 
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
-By default, `dbt deps` will not install prerelease versions of packages. You can enable the installation of prereleases with the `install-prerelease` parameter.
+By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
+- Explicitly specifying a prerelease version in your `version` criteria
+- Setting `install-prerelease` to `true`, and providing a compatible version range
+
+Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
 
 ```yaml
 packages:
   - package: tailsdotcom/dbt_artifacts
     version: 0.4.5a2
+```
+
+```yaml
+packages:
+  - package: tailsdotcom/dbt_artifacts
+    version: [">=0.4.4", "<0.4.6"]
     install-prerelease: true
 ```
 
@@ -245,8 +262,8 @@ Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt 
 When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](run) of the models in this package.
 
 ### Uninstalling a package
-When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_modules/` directory. If you want to completely uninstall a package, you should either:
-* delete the package directory in `dbt_modules/`;  or
+When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:
+* delete the package directory in `dbt_packages/`;  or
 * run `dbt clean` to delete _all_ packages (and any compiled models), followed by `dbt deps`.
 
 ### Configuring packages
