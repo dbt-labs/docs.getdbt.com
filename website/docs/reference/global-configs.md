@@ -4,11 +4,13 @@ id: "global-configs"
 ---
 
 dbt supports several global runtime configs. Starting in v1.0, all these configs can be set in three places:
+
 - `config:` block in `profiles.yml`, sometimes called "user config"
 - environment variables, prefixed with `DBT_`
 - CLI flags, which immediately follow `dbt` and precede your subcommand
 
 Notes:
+
 - The precedence order is always (1) CLI flag > (2) env var > (3) profile config
 - All boolean configs can be turned on via a CLI flag named `--this-config`, and turned off with a CLI flag named `--no-this-config`
 - Use the profile config to set defaults for all projects running on your local machine
@@ -27,8 +29,10 @@ config:
 <File name='Env var'>
 
 ```text
+
 $ export DBT_THIS_CONFIG=True
 $ dbt run
+
 ```
 
 </File>

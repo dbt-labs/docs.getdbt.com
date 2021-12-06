@@ -23,8 +23,8 @@ support transactions.
 
 If you provide the `--full-refresh` argument to `dbt run`, dbt will treat incremental models as table models. This is useful when
 
-1. The schema of an incremental model changes and you need to recreate it
-2. You want to reprocess the entirety of the incremental model because of new logic in the model code
+1. The schema of an incremental model changes and you need to recreate it.
+2. You want to reprocess the entirety of the incremental model because of new logic in the model code.
 
 <File name='bash'>
 
@@ -73,8 +73,8 @@ See [global configs](global-configs#failing-fast)
 
 <Changelog>
 
- - The `--fail-fast` flag is new in dbt v0.17.0
- - Moved to [global configs](global-configs) in v1.0
+- The `--fail-fast` flag is new in dbt v0.17.0
+- Moved to [global configs](global-configs) in v1.0
 
 </Changelog>
 
@@ -84,8 +84,8 @@ See [global configs](global-configs#failing-fast)
 
 <Changelog>
 
- - The `--use-colors` and `--no-use-colors` flags are new in dbt v0.18.0
- - Moved to [global configs](global-configs) in v1.0
+- The `--use-colors` and `--no-use-colors` flags are new in dbt v0.18.0
+- Moved to [global configs](global-configs) in v1.0
 
 </Changelog>
 
