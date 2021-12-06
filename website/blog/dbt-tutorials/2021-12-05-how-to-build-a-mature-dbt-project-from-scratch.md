@@ -14,11 +14,12 @@ is_featured: true
 
 # Building a Mature dbt Project from Scratch
 
-## Introduction
+> *[We would love to have] A maturity curve of an end-to-end dbt implementation for each version of dbt .... There are so many features in dbt now but it'd be great to understand, "what is the minimum set of dbt features/components that need to go into a base-level dbt implementation?...and then what are the things that are extra credit?"*
+-*Will Weld on dbt Community Slack*
 
-*"[We would love to have] A maturity curve of an end-to-end dbt implementation for each version of dbt .... There are so many features in dbt now but it'd be great to understand, "what is the minimum set of dbt features/components that need to go into a base-level dbt implementation?...and then what are the things that are extra credit?" - Will Weld on the dbt Slack.*
+One question we hear time and time again is this - what does it look like to progress through the different stages of maturity on a dbt project?
 
-One question we hear time and time again is this - what does it look like to progress through the different stages of maturity on a dbt project. When Will posed this question on the Slack, it got me thinking about what it would take to create a framework for dbt project maturity.
+When Will posed this question on Slack, it got me thinking about what it would take to create a framework for dbt project maturity.
 <!--truncate-->
 As an analytics engineer on the professional services team at dbt Labs, my teammates and I have had the unique opportunity to work on an unusually high number dbt projects at organizations ranging from tiny startups to Fortune 500 companies and everything in between. From this vantage point, we have gained a unique understanding of the dbt adoption curve - how companies actually implement and expand their usage of dbt.
 
@@ -32,13 +33,13 @@ We can break the concept of maturity down into two categories. The first is** fe
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_0.png)
 
-### How do we do this?
+**How do we do this?**
 
 Let’s pretend that we are an analytics engineer at Seeq Wellness, a hypothetical EHR (electronic health record!) company, and we want to try out dbt to model our patient, doctor and claims data for a critical KPI dashboard. We’re going to create a new dbt project together, and walk through the stages of development, incrementally adding key dbt features as we go along.  
 
 [We’ve developed a repository](https://github.com/dbt-labs/dbt-project-maturity) that traces the progress in this project; **for each step along the maturity curve**, there is a subfolder in that repo with a **fully functional version of our dbt project** at that stage. We’ve also included some sample raw data to add to your warehouse so you can run these projects yourself! You can use this repository to **benchmark the maturity of your own dbt project**.
 
-### Caveats and Assumptions
+## Caveats and Assumptions
 
 **This is an art, not science!**
 
@@ -50,15 +51,15 @@ Let’s pretend that we are an analytics engineer at Seeq Wellness, a hypothetic
 
 ## Level 1 - Infancy - Running your first model
 
-### Key Outcomes
+**Key Outcomes**
 
 * Create your first [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models)
 
 * Execute your first [dbt run](https://docs.getdbt.com/reference/commands/run)
 
-### ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_1.png)
+![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_1.png)
 
-### Themes and Goals
+**Themes and Goals**
 
 Now, I definitely have no authority to speak on what it takes to raise a child, but I understand that a big part of caring for an infant has to do with taking care of its inputs and outputs. The same can be said about a dbt project in this stage!
 
@@ -70,7 +71,7 @@ If we decide not to do this, we end up missing out on what the dbt workflow has 
 
 In order to learn the basics, we’re going to [port over the SQL file](https://docs.getdbt.com/tutorial/refactoring-legacy-sql) that powers our existing "patient_claim_summary" report that we use in our KPI dashboard in parallel to our old transformation process. We’re not ripping out the old plumbing just yet. In doing so, we're going to try dbt on for size and get used to interfacing with a dbt project.
 
-### Project Appearance
+**Project Appearance**
 
 We have one single SQL model in our models folder, and really, that's it. At this stage, the README and dbt_project.yml are just artifacts from the [dbt init command](https://www.google.com/url?q=https://docs.getdbt.com/reference/commands/init&sa=D&source=docs&ust=1636059050382000&usg=AOvVaw3spuGmh9--dlfaGWanf0eZ), and don’t yet have specific documentation or configuration. At this stage of our journey, we just want to get up and running with a functional dbt project.
 
@@ -80,7 +81,7 @@ The most important thing we’re introducing when your project is an infant is t
 
 ## Level 2 - Toddlerhood - Building Modular Data Models
 
-### Key Outcomes
+**Key Outcomes**
 
 * Configure your first [sources](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources)
 
@@ -88,9 +89,9 @@ The most important thing we’re introducing when your project is an infant is t
 
 * [Document](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) and [test](https://docs.getdbt.com/docs/building-a-dbt-project/tests) your first models
 
-### ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_3.png)
+![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_3.png)
 
-### Themes and Goals
+**Themes and Goals**
 
 Now that we're comfortable translating SQL into a model from our infant project, it's time to teach our project to take its very first steps.
 
@@ -104,7 +105,7 @@ We’re going to:
 
 * Dip our toes into testing and documenting our models
 
-### Project Appearance
+**Project Appearance**
 
 Let's check in on the growth of [our projec](https://github.com/dbt-labs/dbt-project-maturity/tree/main/2-toddlerhood)t. We've broken some of our logic into its own model — our original script had repetitive logic in subqueries, now it's following a key principle of analytics engineering: Don't Repeat Yourself (DRY). For more information on how to refactor your SQL queries for Modularity - check out our [free on-demand course](https://courses.getdbt.com/courses/refactoring-sql-for-modularity).
 
@@ -116,7 +117,7 @@ Leveling up from infant to toddler is a huge jump in terms of feature completene
 
 ## Level 3 - Childhood - Developing Standards for Code Collaboration and Maintainability
 
-### Key Outcomes
+**Key Outcomes**
 
 * Standardize [project structure](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355), [SQL style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md) and [model naming conventions](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) in a contribution guide
 
@@ -126,9 +127,9 @@ Leveling up from infant to toddler is a huge jump in terms of feature completene
 
 * [Deploy your project](https://docs.getdbt.com/docs/running-a-dbt-project/running-dbt-in-production)!
 
-### ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_5.png)
+![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_5.png)
 
-### Themes and Goals
+**Themes and Goals**
 
 We made a huge jump in our feature completeness in the last stage - now it’s time to think about getting the project ready to be used by multiple developers and even deployed into production. The best way to ensure consistency as we start collaborating is to define standards for how we write code and model data then enforce them in the review process. From the data team's perspective, we shouldn't be able to infer who wrote what line of code because one of our teammates uses the dreaded leading comma. Analytics code is an asset, and should be treated as production grade software. Project Appearance
 
@@ -148,7 +149,7 @@ Even though we haven't changed the function of a lot of our features *codifying 
 
 ## Level 4 - Adolescence - Increasing Flexibility
 
-### Key Outcomes
+**Key Outcomes**
 
 * Leverage code from dbt [packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management)
 
@@ -156,15 +157,15 @@ Even though we haven't changed the function of a lot of our features *codifying 
 
 * Reduce dbt production build times with [advanced materializations](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations)
 
-### ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_7.png)
+![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_7.png)
 
-### Themes and Goals
+**Themes and Goals**
 
 Wow, our project is growing up fast — it's heading off into the world, learning new things, getting into trouble (don't worry that's just normal teen stuff). Our project is finally starting to think about its place in the world and in the greater dbt ecosystem. It's also starting to get buy-in from our stakeholders, and they want *more. *At this stage, learning how to do some more advanced tricks with dbt can allow us to think beyond the business logic we’re defining, and instead think more about *how *that business logic is built. Where can we make this project more efficient? How can we start serving up more information *about* our data to our stakeholders?
 
 I want to also call out that a "feature" to introduce at this stage is engagement with the [dbt community](https://www.getdbt.com/community/) — in reality, I'm hopeful that we'd have been doing that this whole time, but thinking about opening up your projects to community-supported packages, as well as using the braintrust in the community Slack as a jumping off point for solving some of your data problems starts to really blossom around this point in the project lifecycle.
 
-### Project Appearance
+**Project Appearance**
 
 We can see the major development at [this stage](https://github.com/dbt-labs/dbt-project-maturity/tree/main/4-adolescence) is adding additional models that make our original claims report a lot more flexible -- we had only shown our users a subset of patient and doctor information in our fact model. Now, we have a more Kimball-ish-style marts set up, and we can leave selecting the dimensions up to our BI tool.
 
@@ -176,19 +177,19 @@ We've spent this level focused on deepening and optimizing our feature set — w
 
 ## Level 5 - Adulthood - Solidifying Relationships
 
-### Key Outcomes
+**Key Outcomes**
 
 * Formalize dbt’s relationship to BI with [exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures)!
 
 * Advanced use of metadata
 
-### ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_9.png)Themes and Goals
+![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_9.png)Themes and Goals
 
 In adulthood, we're turning our gaze even further inward. Our dbt project itself is independent enough to start asking itself the big questions! What does it mean to be a dbt project in the year 2021? How have I been changing? How am I relating to my peers?
 
 At this point, like we started to do in adolescence, we are going to focus on thinking about dbt-as-a-product, and how that product interacts with the rest of our stack. We are sinking our roots a layer deeper.
 
-### Project Appearance
+**Project Appearance**
 
 We see the biggest jump from the previous stage in the [macros folder](https://github.com/dbt-labs/dbt-project-maturity/tree/main/5-adulthood/macros). By introducing advanced macros that go beyond simple SQL templating, we’re able to have dbt deepen its relationship to our warehouse. Now we can have dbt manage things like custom schema behavior, run post hooks to drop retired models and dynamically orchestrate object permission controls; dbt itself can become your command post for warehouse management.
 
