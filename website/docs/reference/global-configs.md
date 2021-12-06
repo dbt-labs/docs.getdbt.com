@@ -7,7 +7,7 @@ id: "global-configs"
 
 Global runtime configurations (global configs) enable you to set default configuration values for all projects that you run locally on your computer. dbt supports several global configs.
 
-Starting in v1.0, you can set global configs in three places (in order of precedence): Command line flags, environment variables, and profile (or user) configurations.
+Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last profile configs.
 
 #### Command line flags
 
