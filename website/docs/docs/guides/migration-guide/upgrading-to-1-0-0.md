@@ -3,16 +3,10 @@ title: "Upgrading to 1.0.0"
 
 ---
 
-:::info Release candidate
-
-dbt-core v1.0.0-rc1 is currently available. If you have questions or encounter bugs, please let us know in [#dbt-prereleases](https://community.getdbt.com/) or by opening an issue [in GitHub](https://github.com/dbt-labs/dbt-core).
-
-:::
-
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/HEAD/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
 
 ## Breaking changes
 
