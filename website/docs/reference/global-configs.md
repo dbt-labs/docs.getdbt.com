@@ -99,16 +99,24 @@ $ dbt --debug run
 
 The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in JSON format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
-Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis.
-
-See [structured logging](events-logging#structured-logging) for more details.
-
 <File name='Usage'>
 
 ```text
 $ dbt --log-format json run
 {"code": "A001", "data": {"v": "=1.0.0"}, "invocation_id": "1193e449-4b7a-4eb1-8e8e-047a8b3b7973", "level": "info", "log_version": 1, "msg": "Running with dbt=1.0.0", "node_info": {}, "pid": 35098, "thread_name": "MainThread", "ts": "2021-12-03T10:46:59.928217Z", "type": "log_line"}
 ```
+
+:::tip Tip: verbose structured logs
+
+Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
+```text
+$ dbt --debug --log-format json run
+```
+
+See [structured logging](events-logging#structured-logging) for more details.
+
+:::
+
 
 </File>
 
