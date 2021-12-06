@@ -32,7 +32,7 @@ After you've changed the package version in your packages.yml file, be sure to r
 Certain configurations in dbt_project.yml have been renamed
 :::
 
-Existing projects will see non-breaking deprecation warnings. To remove the warnings, most projects can change three lines:
+Existing projects will see non-breaking deprecation warnings. You can change three lines in most projects to remove the warnings:
 
 <File name='dbt_project.yml'>
 

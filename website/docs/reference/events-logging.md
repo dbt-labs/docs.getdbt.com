@@ -3,11 +3,11 @@ title: "Events and logs"
 ---
 
 :::info New in v1.0
-While dbt has always generated logs, the eventing + structured logging system is new in v1
+While dbt has always generated logs, the eventing and structured logging system described below is new in v1.
 :::
 
 With every task that dbt performs, it generates events. It records those events as log messages, and writes them (in real time) to two places:
-- The command line console (`stdout`), to provide interactive feedback while running dbt
+- The command line terminal (`stdout`), to provide interactive feedback while running dbt.
 - The debug log file (`logs/dbt.log`), to enable detailed [debugging of errors](debugging-errors) when they occur. The text-formatted log messages in this file include all `DEBUG`-level events, as well as contextual information, such as log level and thread name. The location of this file can be configured via [the `log_path` config](log-path).
 
 <File name='CLI'>
@@ -36,26 +36,33 @@ When `json` [log formatting](global-configs#log-formatting) is enabled, dbt will
 
 Each log line will have the following JSON properties:
 
-- `log_version`: Integer indicating version
-- `type`: Always `log_line`
-- `code`: A unique identifier for each event type
-- `ts`: When the log line was printed
-- `pid`: The process ID for the running dbt invocation which produced this log message
-- `msg`: The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are subject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`.
-- `level`: A string representation of the log level (`debug`, `info`, `warn`, `error`)
-- [`invocation_id`](invocation_id): A unique identifier for this invocation of dbt
-- `thread_name`: The thread in which the log message was produced, helpful for tracking queries when dbt is run with multiple threads
-- `data`: A dictionary containing programmatically accessible information about the log line. The contents of this dictionary vary based on the event type which generated this log message.
-- `node_info`: If applicable, a dictionary of human- and machine-friendly information about a currently running resource
-    - `node_name`
-    - `node_path`: File path to where this resource is defined
-    - `unique_id`: The unique identifier for this resource, which can be used to look up contextual information in a [manifest](artifacts/manifest-json)
-    - `resource_type`: model, test, seed, snapshot, etc.
-    - `materialized`: view, table, incremental, etc.
-    - `node_status`: Current status of the node, as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/contracts/results.py#L61-L74)
-    - `node_started_at`: Timestamp when node processing started
-    - `node_finished_at`: Timestamp when node processing completed
-    - `type`: Always `'node_status'`
+| Field       | Description   |
+|-------------|---------------|
+| `code` | A unique identifier for each event type |
+| `data` | A dictionary containing programmatically accessible information about the log line. The contents of this ctionary vary based on the event type which generated this log message. |
+| [`invocation_id`](invocation_id) | A unique identifier for this invocation of dbt |
+| `level` | A string representation of the log level (`debug`, `info`, `warn`, `error`) |
+| `log_version` | Integer indicating version |
+| `msg` | The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are bject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`. |
+| `node_info` | If applicable, a dictionary of human- and machine-friendly information about a currently running resource |
+| `pid` | The process ID for the running dbt invocation which produced this log message |
+| `thread_name` | The thread in which the log message was produced, helpful for tracking queries when dbt is run with ltiple threads |
+| `ts` | When the log line was printed |
+| `type` | Always `log_line` |
+
+If available, `node_info` will include:
+
+| Field       | Description   |
+|-------------|---------------|
+| `materialized` | view, table, incremental, etc. |
+| `node_finished_at` | Timestamp when node processing completed |
+| `node_name` | Name of this model/seed/test/etc |
+| `node_path` | File path to where this resource is defined |
+| `node_started_at` | Timestamp when node processing started |
+| `node_status` | Current status of the node, as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/contracts/results.py#L61-L74) |
+| `resource_type` | model, test, seed, snapshot, etc. |
+| `type` | Always `'node_status'` |
+| `unique_id` | The unique identifier for this resource, which can be used to look up contextual information in a [manifest](artifacts/manifest-json) |
 
 ### Example
 
