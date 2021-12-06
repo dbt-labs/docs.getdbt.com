@@ -18,11 +18,42 @@ Below we try to help you answer the question of whether a known breaking change 
 
 If you use any packages from [dbt Hub](https://hub.getdbt.com/), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on GitHub.
 
-As an example, dbt-utils version 0.7.1 supports dbt v0.20 and v0.21, as described in its [dbt_project.yml](https://github.com/dbt-labs/dbt-utils/blob/0.7.1/dbt_project.yml).
+As an example, dbt-utils version 0.7.6 supports dbt v0.20, v0.21, and v1.0, as described in its [dbt_project.yml](https://github.com/dbt-labs/dbt-utils/blob/0.7.6/dbt_project.yml).
 
 After you've changed the package version in your packages.yml file, be sure to run `dbt deps` in the IDE to install the updated version.
 
 :::
+
+<details>
+<summary>  Upgrading to v1.0.latest from v0.21 </summary>
+<br></br>
+
+:::info Universal change
+Certain configurations in dbt_project.yml have been renamed
+:::
+
+Existing projects will see non-breaking deprecation warnings. To remove the warnings, most projects can change three lines:
+
+<File name='dbt_project.yml'>
+
+```yml
+model-paths: ["models"] # formerly named "model-paths"
+seed-paths: ["data"]    # formerly named "data-paths"
+clean-targets:
+  - "target"
+  - "dbt_packages"      # formerly named "dbt_modules"
+```
+
+</File>
+
+- Do you select tests using the old names for test types? (`test_type:schema`, `test_type:data`, `--schema`, `--data`)
+- Do you have custom macro code that calls the (undocumented) global macros `column_list`, `column_list_for_create_table`, `incremental_upsert`?
+- Do you have custom scripts that parse dbt JSON artifacts?
+- (BigQuery only) Do you use dbt's legacy capabilities around ingestion-time-partitioned tables?
+
+If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-1-0-0).
+
+</details>
 
 
 <details>
