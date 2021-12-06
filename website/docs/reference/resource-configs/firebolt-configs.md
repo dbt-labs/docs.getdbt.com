@@ -162,7 +162,18 @@ models:
 
 A dbt model can be created as a Firebolt dimension table and configured using the following syntax:
 
-Project file syntax
+<Tabs
+  groupId="config-dimension"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+<File name='dbt_project.yml'>
 ```yml
 models:
   <resource-path>:
@@ -174,7 +185,12 @@ models:
         dimension_column: [ <column-name>, ... ]
       ...
 ```
+</File>
+</TabItem>
 
+
+<TabItem value="property-yaml">
+<File name='models/properties.yml'>
 Property file syntax
 ```yml
 models:
@@ -188,9 +204,14 @@ models:
           dimension_column: [ <column-name>, ... ]
         ...
 ```
+</File>
+</TabItem>
+
+<TabItem value="config">
+<File name='models/<model_name>.sql'>
 
 Config block syntax
-```
+```jinja
 {{ config(
     materialized = "table"
     table_type = "dimension",
@@ -204,6 +225,9 @@ Config block syntax
     ]
 ) }}
 ```
+</File>
+</TabItem
+
 
 #### Dimension Table Configurations
 
@@ -257,7 +281,7 @@ To install and use `dbt-external-tables` with Firebolt, you must:
     - package: dbt-labs/dbt_external_tables
         version: <version>
     ```
-2. Add these fields to your `dbt_project.yml`: 
+2. Add these fields to your `dbt_project.yml`:
     ```yml
     dispatch:
       - macro_namespace: dbt_external_tables
