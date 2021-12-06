@@ -3,28 +3,29 @@ title: "Global Configs"
 id: "global-configs"
 ---
 
-dbt supports several global runtime configs. Starting in v1.0, all these configs can be set in three places:
+### About Global Configs
 
-- `config:` block in `profiles.yml`, sometimes called "user config"
-- environment variables, prefixed with `DBT_`
-- CLI flags, which immediately follow `dbt` and precede your subcommand
+Global runtime configurations (global configs) enable you to set default configuration values for all projects that you run locally on your computer. dbt supports several global configs.
 
-Notes:
+Starting in v1.0, you can set global configs in three places (in order of precedence): Command line flags, environment variables, and profile (or user) configurations.
 
-- The precedence order is always (1) CLI flag > (2) env var > (3) profile config
-- All boolean configs can be turned on via a CLI flag named `--this-config`, and turned off with a CLI flag named `--no-this-config`
-- Use the profile config to set defaults for all projects running on your local machine
+#### Command line flags
 
-<File name='profiles.yml'>
+Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs. You can use `--this-config` CLI flag to turn on boolean configs, and a `--no-this-config` CLI flag to turn off boolean configs:
 
-```yaml
+<File name='CLI flags'>
 
-config:
-  this_config: true
+```text
+$ dbt --this-config
+$ dbt --no-this-config
 
 ```
 
 </File>
+
+#### Environment variables
+
+Environment variables contain a `DBT_` prefix
 
 <File name='Env var'>
 
@@ -37,11 +38,16 @@ $ dbt run
 
 </File>
 
-<File name='CLI flags'>
+#### Profile (or user) configurations
 
-```text
-$ dbt --this-config
-$ dbt --no-this-config
+You can set profile (or user) configurations in the `config:` block of `profiles.yml`. You would use the profile config to set defaults for all projects running on your local machine.
+
+<File name='profiles.yml'>
+
+```yaml
+
+config:
+  this_config: true
 
 ```
 
@@ -49,7 +55,9 @@ $ dbt --no-this-config
 
 ## Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. In the example below, note that 4 models are selected to run, but a failure in the first model prevents other models from running.
+Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
+
+For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
 ```text
 $ dbt -x run --threads 1
