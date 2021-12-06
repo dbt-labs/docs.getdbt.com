@@ -21,7 +21,7 @@ Command line (CLI) flags immediately follow `dbt` and precede your subcommand. W
 
 ```text
 $ dbt --<this-config> <subcommand>
-$ dbt --no-this-config
+$ dbt --<no-this-config> <subcommand>
 
 ```
 
