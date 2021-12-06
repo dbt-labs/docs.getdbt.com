@@ -3,16 +3,10 @@ title: "Upgrading to 1.0.0"
 
 ---
 
-:::info Release candidate
-
-dbt-core v1.0.0-rc1 is currently available. If you have questions or encounter bugs, please let us know in [#dbt-prereleases](https://community.getdbt.com/) or by opening an issue [in GitHub](https://github.com/dbt-labs/dbt-core).
-
-:::
-
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/HEAD/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
 
 ## Breaking changes
 
@@ -53,7 +47,7 @@ Global project macros have been reorganized, and some old unused macros have bee
 
 ### For maintainers of plugins + other integrations
 
-We've introduced a new **structured event interface**, and we've begun the transition away from legacy logging. **This includes a breaking change for adapter plugins**, requiring a very simple migration—see [`events` module README](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/events/README.md#adapter-maintainers) for details. If you maintain a different kind of plugin that _needs_ legacy logging, for the time being, you can re-enable it with an env var (`DBT_ENABLE_LEGACY_LOGGER=True`); be advised that we will remove this capability in a future version of dbt Core.
+We've introduced a new [**structured event interface**](events-logging), and we've transitioned all dbt logging to use this new system. **This includes a breaking change for adapter plugins**, requiring a very simple migration. For more details, see the [`events` module README](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/events/README.md#adapter-maintainers). If you maintain a different kind of plugin that _needs_ legacy logging, for the time being, you can re-enable it with an env var (`DBT_ENABLE_LEGACY_LOGGER=True`); be advised that we will remove this capability in a future version of dbt Core.
 
 The [**dbt RPC Server**](rpc) has been split out from `dbt-core` and is now packaged separately. Its functionality will be fully deprecated by the end of 2022, in favor of a new dbt Server. Instead of `dbt rpc`, use `dbt-rpc serve`.
 
@@ -74,3 +68,4 @@ Several under-the-hood changes from past minor versions, tagged with deprecation
 - [Global configs](global-configs) have been standardized. Related updates to [global CLI flags](global-cli-flags) and [`profiles.yml`](profiles.yml).
 - [The `init` command](init) has a whole new look and feel. It's no longer just for first-time users.
 - Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
+- Secret-prefixed [env vars](env_var) are now allowed only in `profiles.yml` + `packages.yml`

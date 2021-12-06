@@ -159,25 +159,26 @@ $ dbt --debug run
 
 ## Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. The value for this flag can be one of: `text`, `json,` or `default`. Use the `json` formatting value in conjunction with `DEBUG` flag to produce rich log information which can be piped into monitoring tools for analysis.
-
-When `json` log formatting is used, each log line will have the following JSON properties:
-- timestamp: when the log line was printed
-- message: the textual log message
-- channel: the source for the log (eg. `dbt`, or `some_module`)
-- level: an integer indicating the log level for the log line (10=info, 11=debug, ...)
-- levelname: a string representation of the log level
-- thread_name: the thread in which the log message was produced
-- process: the PID for the running dbt invocation which produced this log message
-- extra: a dictionary containing "extra" information about the log line. This contents of this dictionary vary based on the specific log message that is being emitted. This dictionary contains programmatically accessible information to contextualize the log message.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in JSON format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 
 ```text
 $ dbt --log-format json run
-{"timestamp": "2019-11-24T18:51:48.683295Z", "message": "Running with dbt=0.15.0", "channel": "dbt", "level": 11, "levelname": "INFO", "thread_name": "MainThread", "process": 94207, "extra": {"run_state": "internal"}}
-{"timestamp": "2019-11-24T18:51:49.386586Z", "message": "Found 3 models, 0 tests, 1 snapshot, 0 analyses, 120 macros, 0 operations, 2 seed files, 1 source", "channel": "dbt", "level": 11, "levelname": "INFO", "thread_name": "MainThread", "process": 94207, "extra": {"run_state": "internal"}}
+{"code": "A001", "data": {"v": "=1.0.0"}, "invocation_id": "1193e449-4b7a-4eb1-8e8e-047a8b3b7973", "level": "info", "log_version": 1, "msg": "Running with dbt=1.0.0", "node_info": {}, "pid": 35098, "thread_name": "MainThread", "ts": "2021-12-03T10:46:59.928217Z", "type": "log_line"}
 ```
+
+:::tip Tip: verbose structured logs
+
+Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
+```text
+$ dbt --debug --log-format json run
+```
+
+See [structured logging](events-logging#structured-logging) for more details.
+
+:::
+
 
 </File>
 

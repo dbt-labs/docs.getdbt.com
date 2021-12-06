@@ -452,6 +452,7 @@ module.exports = {
         },
         "reference/global-cli-flags",
         "reference/global-configs",
+        "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
       ],
