@@ -2,7 +2,7 @@
 title: Analysis properties
 ---
 
-We highly encourage you to define analysis properties in your `analyses/` directory (as defined by the [`analysis-paths` config](analysis-paths)).
+We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](analysis-paths) configuration.
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `analyses/` or `models/` directory.
 

@@ -4,7 +4,7 @@ id: "init"
 ---
 
 :::info Improved in v1.0!
-The `init` command is interactive and responsive like never before
+The `init` command is interactive and responsive like never before.
 :::
 
 `dbt init` helps get you started using dbt Core!
