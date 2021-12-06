@@ -22,7 +22,7 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 
 ### MacOS
 
-The MacOS requires Python 3.6 or higher to successfully install and run dbt Core.
+The MacOS requires Python 3.7 or higher to successfully install and run dbt Core.
 
 To check the Python version:
 
@@ -32,7 +32,7 @@ python --version
 
 ```
 
-If you need a compatible version, you can download and install [Python version 3.6 or higher for MacOS](https://www.python.org/downloads/macos).
+If you need a compatible version, you can download and install [Python version 3.7 or higher for MacOS](https://www.python.org/downloads/macos).
 
 If your machine runs on an Apple M1 architecture, we recommend that you install dbt via [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
 ### Ubuntu/Debian
