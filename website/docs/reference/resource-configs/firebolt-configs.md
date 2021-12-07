@@ -283,34 +283,3 @@ For example, a join index could be named `my_users__id__join_1633504263` and an 
 
 More information on using external tables including properly configuring IAM can be found in the Firebolt [documentation](https://docs.firebolt.io/sql-reference/commands/ddl-commands#create-external-table).
 
-#### Installation of External Tables Package
-
-To install and use `dbt-external-tables` with Firebolt, you must:
-
-1. Add this package to your packages.yml:
-
-    ```yaml
-    packages:
-      - package: dbt-labs/dbt_external_tables
-        version: <version>
-    ```
-
-2. Add these fields to your `dbt_project.yml`:
-
-    ```yaml
-    dispatch:
-      - macro_namespace: dbt_external_tables
-        search_order: ['dbt', 'dbt_external_tables']
-    ```
-
-3. Pull in the `packages.yml` dependencies by calling `dbt deps`.
-
-#### Using External Tables
-
-To use external tables, you must define a table as `external` in your `dbt_project.yml` file. Every external table must contain the fields `url`, `type`, and `object_pattern`. Note that the Firebolt external table specification requires fewer fields than what is specified in the dbt documentation.
-
-In addition to specifying the columns, an external table may specify partitions. Partitions are not columns and they cannot have the same name as columns. To avoid yaml parsing errors, remember to encase string literals (such as the `url` and `object_pattern` values) in single quotation marks.
-
-#### dbt_project.yml Syntax For an External Table
-
-
