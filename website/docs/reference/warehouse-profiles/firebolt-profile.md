@@ -3,7 +3,6 @@ title: "Firebolt Profile"
 ---
 
 
-:::info Community plugin
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
@@ -11,7 +10,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-firebolt
 
-**Maintained by:** Community  
+**Maintained by:** Firebolt  
 **Author:** Anders Swanson and Eric Ford
 **Source:** [Github](https://github.com/firebolt-db/dbt-firebolt)  
 **dbt Cloud:** Not Supported  
