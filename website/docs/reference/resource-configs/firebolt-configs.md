@@ -232,7 +232,7 @@ Config block syntax
 ) }}
 ```
 </File>
-</TabItem
+</TabItem>
 
 
 #### Dimension Table Configurations
