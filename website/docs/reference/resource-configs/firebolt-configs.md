@@ -74,9 +74,10 @@ A dbt model can be created as a Firebolt fact table and configured using the fol
 
 <TabItem value="project-yaml">
 <File name='dbt_project.yml'>
-```yml
+
+```yaml
 models:
-  <resource-path>:
+  [<resource-path>]:
     +materialized: table
     +table_type: fact
     +primary_index: [ <column-name>, ... ]
@@ -86,12 +87,14 @@ models:
         aggregation: [ <agg-sql>, ... ]
       ...
 ```
+
 </File>
 </TabItem>
 
 <TabItem value="property-yaml">
 <File name='models/properties.yml'>
-```yml
+
+```yaml
 models:
   - name: <model-name>
     config:
@@ -104,11 +107,13 @@ models:
           aggregation: [ <agg-sql>, ... ]
         ...
 ```
+
 </File>
 </TabItem>
 
 <TabItem value="config">
 <File name='models/<model_name.sql>'>
+
 ```jinja
 {{ config(
     materialized = "table"
@@ -124,6 +129,7 @@ models:
     ]
 ) }}
 ```
+
 </File>
 </TabItem>
 </Tabs>
