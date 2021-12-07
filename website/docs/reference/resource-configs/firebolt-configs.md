@@ -3,17 +3,6 @@ title: "Firebolt configurations"
 id: "firebolt-configs"
 ---
 
-### Setup Recommendations
-
-#### `quote_columns`
-
-To prevent a warning, you should add a configuration as below to your `dbt_project.yml`. For more info, see the [relevant dbt docs page](https://docs.getdbt.com/reference/resource-configs/quote_columns).
-
-```yaml
-seeds:
-  +quote_columns: false  #or `true` if you have csv column headers with spaces
-```
-
 ## Using dbt-firebolt
 
 ### Model Configuration for Fact Tables
@@ -43,7 +32,7 @@ models:
       - type: aggregating
         key_column: [ <column-name>, ... ]
         aggregation: [ <agg-sql>, ... ]
-      - ...
+      ...
 ```
 
 </File>
