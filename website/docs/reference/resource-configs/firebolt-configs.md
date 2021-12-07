@@ -9,7 +9,7 @@ id: "firebolt-configs"
 
 To prevent a warning, you should add a configuration as below to your `dbt_project.yml`. For more info, see the [relevant dbt docs page](https://docs.getdbt.com/reference/resource-configs/quote_columns).
 
-```yml
+```yaml
 seeds:
   +quote_columns: false  #or `true` if you have csv column headers with spaces
 ```
@@ -85,7 +85,7 @@ models:
       - type: aggregating
         key_column: [ <column-name>, ... ]
         aggregation: [ <agg-sql>, ... ]
-      ...
+      - ...
 ```
 
 </File>
@@ -288,17 +288,21 @@ More information on using external tables including properly configuring IAM can
 To install and use `dbt-external-tables` with Firebolt, you must:
 
 1. Add this package to your packages.yml:
-    ```yml
+
+    ```yaml
     packages:
     - package: dbt-labs/dbt_external_tables
         version: <version>
     ```
+
 2. Add these fields to your `dbt_project.yml`:
-    ```yml
+
+    ```yaml
     dispatch:
       - macro_namespace: dbt_external_tables
         search_order: ['dbt', 'dbt_external_tables']
     ```
+
 3. Pull in the `packages.yml` dependencies by calling `dbt deps`.
 
 #### Using External Tables
@@ -309,7 +313,7 @@ In addition to specifying the columns, an external table may specify partitions.
 
 #### dbt_project.yml Syntax For an External Table
 
-```yml
+```yaml
 sources:
   - name: firebolt_external
     schema: "{{ target.schema }}"
