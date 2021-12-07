@@ -5,6 +5,19 @@ id: "firebolt-configs"
 
 ## Using dbt-firebolt
 
+### `quote_columns`
+
+To prevent a warning, you should add a configuration as below to your `dbt_project.yml`. For more info, see the [relevant dbt docs page](https://docs.getdbt.com/reference/resource-configs/quote_columns).
+
+
+<File name>
+```yml
+seeds:
+  +quote_columns: false  #or `true` if you have csv column headers with spaces
+```
+</File>
+
+
 ### Model Configuration for Fact Tables
 
 A dbt model can be created as a Firebolt fact table and configured using the following syntax:

@@ -3,7 +3,6 @@ title: "Firebolt Profile"
 ---
 
 
-
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
@@ -24,6 +23,7 @@ pip install dbt-firebolt
 ```
 For more complete information including Firebolt feature support, see the [README](https://github.com/firebolt-db/dbt-firebolt/blob/main/README.md)
 
+
 ### Connecting to Firebolt
 
 To connect to Firebolt from dbt, you'll need to add a new [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
@@ -42,7 +42,7 @@ To connect to Firebolt from dbt, you'll need to add a new [profile](https://docs
       schema: <tablename-prefix>
       jar_path: <path-to-local-jdbc-driver>
       threads: 1
-      
+
       #optional fields
       engine_name: <engine-name>
       host: <hostname>
@@ -51,19 +51,33 @@ To connect to Firebolt from dbt, you'll need to add a new [profile](https://docs
 
 </File>
 
-### Setup Recommendations
 
-#### `quote_columns`
+#### Description of Firebolt Profile Fields
 
-To prevent a warning, you should add a configuration as below to your `dbt_project.yml`. For more info, see the [relevant dbt docs page](https://docs.getdbt.com/reference/resource-configs/quote_columns).
+| Field                    | Required | Description |
+|--------------------------|----------|--------------------------------------------------------------------------------------------------------|
+| `type`                   | Yes | Must be set to `firebolt`. This must be included either in `profiles.yml` or in the `dbt_project.yml` file. |
+| `user`                   | Yes | Your Firebolt username. |
+| `password`               | Yes | Your Firebolt password. |
+| `database`               | Yes | The name of your Firebolt database. |
+| `schema`                 | Yes | A string to prefix the names of generated tables with, if using the [custom schemas workaround below](https://github.com/firebolt-db/dbt-firebolt#supporting-concurrent-development). |
+| `jar_path`               | Yes | The path to your JDBC driver on your local drive. |
+| `threads`                | Yes | Must be set to `1`. Multi-threading is not currently supported. |
+| `engine_name`            | No | The name (not the URL) of the Firebolt engine to use. If omitted, it will use your default engine. |
+| `host`                   | No | The host name of the connection. For all customers it is `api.app.firebolt.io`, which will be used if omitted. |
+| `account_name`           | No | The account name (not the account ID). If omitted, it will use your default account. |
 
+#### Troubleshooting Connections
 
-<File name>
-```yml
-seeds:
-  +quote_columns: false  #or `true` if you have csv column headers with spaces
-```
-</File>
+If you encounter issues connecting to Firebolt from dbt, make sure the following criteria are met:
+- The engine must be a general-purpose read-write engine, not an analytics engine.
+- You must have adequate permissions to access the engine.
+- The engine must be running.
+- If you're not using the default engine for the database, you must specify an engine name.
+- If there is more than one account associated with your credentials, you must specify an account.
+
+To connect to Firebolt from dbt, you'll need to add a new [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
+
 
 #### Supporting Concurrent Development
 
