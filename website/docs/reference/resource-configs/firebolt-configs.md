@@ -14,48 +14,6 @@ seeds:
   +quote_columns: false  #or `true` if you have csv column headers with spaces
 ```
 
-#### Supporting Concurrent Development
-
-In dbt, database schemas are used to compartmentalize developer environments so that concurrent development does not cause table name collisions. Firebolt, however, does not currently support database schemas (it is on the roadmap). To work around this, we recommend that you add the following macro to your project. This macro will take the `schema` field of your `profiles.yml` file and use it as a table name prefix.
-
-```sql
--- macros/generate_alias_name.sql
-{% macro generate_alias_name(custom_alias_name=none, node=none) -%}
-    {%- if custom_alias_name is none -%}
-        {{ node.schema }}__{{ node.name }}
-    {%- else -%}
-        {{ node.schema }}__{{ custom_alias_name | trim }}
-    {%- endif -%}
-{%- endmacro %}
-```
-
-For an example of how this works, let’s say Shahar and Eric are both working on the same project.
-
-In her `.dbt/profiles.yml`, Sharar sets `schema=sh`, whereas Eric sets `schema=er` in his. When each runs the `customers` model, the models will land in the database as tables named `sh_customers` and `er_customers`, respectively. When running dbt in production, you would use yet another `profiles.yml` with nothing set in the `schema` field (or any string of your choice).
-
-## Feature Support
-
-The table below shows which dbt and Firebolt features are supported by the adapter. dbt-firebolt is under active development and will be gradually unlocking more features over time.
-
-| Feature                      | Supported          |
-|------------------------------|--------------------|
-| Table materializations       | :white_check_mark: |
-| Ephemeral materializations   | :white_check_mark: |
-| View materializations        | :white_check_mark: |
-| Incremental materializations | :x: |
-| Seeds                        | :white_check_mark: |
-| Tests                        | :white_check_mark: |
-| Documentation                | :white_check_mark: |
-| Snapshots                    | :x: |
-| Custom schemas               | :x: (see [workaround](https://github.com/firebolt-db/dbt-firebolt#supporting-concurrent-development)) |
-| Custom databases             | :x: |
-| Source freshness             | :white_check_mark: |
-| External tables              | :white_check_mark: |
-| Primary indexes              | :white_check_mark: |
-| Aggregating indexes          | :white_check_mark: |
-| Join indexes                 | :white_check_mark: |
-| Partitioned tables           | :x: |
-
 ## Using dbt-firebolt
 
 ### Model Configuration for Fact Tables
