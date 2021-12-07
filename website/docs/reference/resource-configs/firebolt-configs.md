@@ -180,7 +180,8 @@ A dbt model can be created as a Firebolt dimension table and configured using th
 
 <TabItem value="project-yaml">
 <File name='dbt_project.yml'>
-```yml
+
+```yaml
 models:
   <resource-path>:
     +materialized: table
@@ -191,6 +192,7 @@ models:
         dimension_column: [ <column-name>, ... ]
       ...
 ```
+
 </File>
 </TabItem>
 
@@ -198,7 +200,8 @@ models:
 <TabItem value="property-yaml">
 <File name='models/properties.yml'>
 Property file syntax
-```yml
+
+```yaml
 models:
   - name: <model-name>
     config:
@@ -207,9 +210,10 @@ models:
       indexes:
         - type: join
           join_column: <column-name>
-          dimension_column: [ <column-name>, ... ]
+          dimension_column: [ <column-name>, ... ],
         ...
 ```
+
 </File>
 </TabItem>
 
@@ -217,9 +221,10 @@ models:
 <File name='models/<model_name>.sql'>
 
 Config block syntax
+
 ```jinja
 {{ config(
-    materialized = "table"
+    materialized = "table",
     table_type = "dimension",
     indexes = [
       {
@@ -231,6 +236,7 @@ Config block syntax
     ]
 ) }}
 ```
+
 </File>
 </TabItem>
 
