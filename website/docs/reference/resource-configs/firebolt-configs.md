@@ -239,5 +239,5 @@ Config block syntax
 
 </File>
 </TabItem>
-
+</Tabs>
 
