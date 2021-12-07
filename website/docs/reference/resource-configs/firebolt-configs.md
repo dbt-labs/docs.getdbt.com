@@ -233,7 +233,7 @@ Config block syntax
         dimension_column: [ "<column-name>", ... ]
       },
       ...
-    ]
+    ],
 ) }}
 ```
 
@@ -291,7 +291,7 @@ To install and use `dbt-external-tables` with Firebolt, you must:
 
     ```yaml
     packages:
-    - package: dbt-labs/dbt_external_tables
+      - package: dbt-labs/dbt_external_tables
         version: <version>
     ```
 
@@ -313,28 +313,4 @@ In addition to specifying the columns, an external table may specify partitions.
 
 #### dbt_project.yml Syntax For an External Table
 
-```yaml
-sources:
-  - name: firebolt_external
-    schema: "{{ target.schema }}"
-    loader: S3
 
-    tables:
-      - name: <table-name>
-        external:
-          url: 's3://<bucket_name>/'
-          object_pattern: '<regex>'
-          type: '<type>'
-          credentials:
-            internal_role_arn: arn:aws:iam::id:<role>/<bucket-name>
-            external_role_id: <external-id>
-          object_pattern: '<regex>'
-          compression: '<compression-type>'
-          partitions:
-            - name: <partition-name>
-              data_type: <partition-type>
-              regex: '<partition-definition-regex>'
-          columns:
-            - name: <column-name>
-              data_type: <type>
-```
