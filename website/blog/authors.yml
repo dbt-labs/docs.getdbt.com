@@ -1,0 +1,139 @@
+dkrevitt:
+  name: David Krevitt
+  job_title: Marketing
+  image_url: /img/blog/authors/dkrevitt.jpg
+  organization: dbt Labs
+  description: Laziness is a virtue
+  links:
+    - url: https://twitter.com/dkrevitt
+      icon: fa-twitter
+
+jasnonaz:
+  name: Jason Ganz
+  job_title: Developer Experience
+  organization: dbt Labs
+  image_url: /img/blog/authors/jasnonaz.jpeg
+  links:
+    - url: https://twitter.com/jasnonaz
+      icon: fa-twitter
+
+sanjana:
+  name: Sanjana Sen
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/sanjana.png
+  links:
+    - url: https://twitter.com/sqlsanj
+      icon: fa-twitter
+
+lcraigie:
+  name: Lauren Craigie
+  job_title: Product Marketing
+  organization: dbt Labs
+  image_url: /img/blog/authors/craigie.png
+  links:
+    - url: https://twitter.com/crai_fish
+      icon: fa-twitter
+
+aescay:
+  name: Andrew Escay
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/aescay.jpeg
+  links:
+    - url: https://twitter.com/_aescay
+      icon: fa-twitter
+
+jwilliams:
+  name: Jess Williams
+  job_title: Head of Professional Services
+  organization: dbt Labs
+  image_url: /img/blog/authors/jess.png
+  links:
+    - url: https://www.linkedin.com/in/jessdwilliams/
+      icon: fa-linkedin
+
+pkearns:
+  name: Pat Kearns
+  job_title: Senior Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/pkearns.png
+  links:
+    - url: https://www.linkedin.com/in/pat-kearns/
+      icon: fa-linkedin
+
+achen:
+  name: Amy Chen
+  job_title: Senior Partner Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/achen.png
+  links:
+    - url: https://www.linkedin.com/in/yuanamychen/
+      icon: fa-linkedin
+
+jlabes:
+  name: Joel Labes
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  image_url: /img/blog/authors/jlabes.png
+  links:
+    - url: https://www.linkedin.com/in/joel-labes/
+      icon: fa-linkedin
+    - url: https://twitter.com/joellabes
+      icon: fa-twitter
+
+claire:
+  name: Claire Carroll
+  job_title: Analytics Engineer
+  organization: analyticsengineers.club
+  image_url: /img/blog/authors/claire.jpeg
+  links:
+    - url: https://twitter.com/clairebcarroll
+      icon: fa-twitter    
+    - url: https://github.com/clrcrl
+      icon: fa-github  
+    - url: https://www.linkedin.com/in/clrcrl/
+      icon: fa-linkedin      
+
+dconnors:
+  name: Dave Connors
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/dconnors.jpeg
+  links:
+    - url: https://github.com/dave-connors-3
+      icon: fa-github  
+    - url: https://www.linkedin.com/in/daveconnors3/
+      icon: fa-linkedin      
+
+rossturk:
+  name: Ross Turk
+  job_title: VP Marketing
+  organization: Datakin
+  image_url: /img/blog/authors/ross-turk.png
+  links:
+    - url: https://mobile.twitter.com/rossturk
+      icon: fa-twitter
+    - url: https://github.com/rossturk
+      icon: fa-github
+
+sung:
+  name: Sung Won Chung
+  job_title: Solutions Architect
+  organization: dbt Labs
+  image_url: /img/blog/authors/sung.jpeg
+  links:
+    - url: https://www.linkedin.com/in/sungwonchung1/
+      icon: fa-linkedin
+
+sethrosen:
+  name: Seth Rosen
+  job_title: Co-Founder & CEO
+  organization: TopCoat Data
+  description: Seth Rosen is co-founder and CEO of TopCoat Data - a platform for helping organizations build analytical applications. Prior to founding TopCoat, Seth helped companies of all sizes build custom data apps on top of the modern data stack through his consultancy, Hashpath. When he’s not tweeting and thinking about data, he’s tweeting while parenting two toddlers.
+  image_url: /img/blog/authors/seth-rosen.jpeg
+  links:
+    - url: https://twitter.com/sethrosen
+      icon: fa-twitter
+    - url: https://www.linkedin.com/in/sdrosen/
+      icon: fa-linkedin

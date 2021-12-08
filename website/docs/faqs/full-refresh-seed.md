@@ -26,7 +26,7 @@ Found 0 models, 0 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 1 se
 
 Completed with 1 error and 0 warnings:
 
-Database Error in seed country_codes (data/country_codes.csv)
+Database Error in seed country_codes (seeds/country_codes.csv)
   000904 (42000): SQL compilation error: error line 1 at position 62
   invalid identifier 'COUNTRY_NAME'
 
@@ -51,7 +51,7 @@ Found 0 models, 0 tests, 0 snapshots, 0 analyses, 149 macros, 0 operations, 1 se
 
 Completed with 1 error and 0 warnings:
 
-Database Error in seed country_codes (data/country_codes.csv)
+Database Error in seed country_codes (seeds/country_codes.csv)
   column "country_name" of relation "country_codes" does not exist
 
 Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1

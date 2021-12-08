@@ -120,8 +120,8 @@ col.string_type() # character varying (255)
 The `Column` type is overridden as a `BigQueryColumn` in BigQuery dbt projects. This object works the same as the `Column` type described above, with the exception of extra properties and methods:
 
 ### Properties
-**fields**: Returns the list of subfields contained within a field (if the column is a STRUCT)
-**mode**: Returns the "mode" of the column, eg. `REPEATED`
+- **fields**: Returns the list of subfields contained within a field (if the column is a STRUCT)
+- **mode**: Returns the "mode" of the column, eg. `REPEATED`
 
 ### Instance methods
 **flatten()**: Return a flattened list of `BigQueryColumns` in which subfields are expanded into their own columns. For example, this nested field:

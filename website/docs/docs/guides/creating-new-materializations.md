@@ -5,7 +5,7 @@ id: "creating-new-materializations"
 
 ## Overview
 
-The model materializations you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/dbt-labs/dbt/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
+The model materializations you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/dbt-labs/dbt-core/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
 
 :::caution 
 
@@ -165,7 +165,7 @@ config.get('optional_config_name', default="the default")
 config.require('required_conifg_name')
 ```
 
-For more information on materialization configuration, see the [config](config) reference.
+For more information on the `config` dbt Jinja function, see the [config](dbt-jinja-functions/config) reference.
 
 ## Materialization precedence
 

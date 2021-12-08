@@ -9,7 +9,7 @@ In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.
 * [as_number](as_number)
 * [as_text](as_text)
 * [builtins](builtins)
-* [config](config)
+* [config](dbt-jinja-functions/config)
 * [dbt_version](dbt_version)
 * [dbt-project-yml-context](dbt-project-yml-context)
 * [debug-method](debug-method)
