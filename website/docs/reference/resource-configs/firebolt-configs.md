@@ -36,7 +36,7 @@ A dbt model can be created as a Firebolt fact table and configured using the fol
 
 ```yaml
 models:
-  [<resource-path>]:
+  <resource-path>:
     +materialized: table
     +table_type: fact
     +primary_index: [ <column-name>, ... ]
