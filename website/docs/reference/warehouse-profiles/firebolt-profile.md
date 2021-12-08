@@ -76,7 +76,6 @@ If you encounter issues connecting to Firebolt from dbt, make sure the following
 - If you're not using the default engine for the database, you must specify an engine name.
 - If there is more than one account associated with your credentials, you must specify an account.
 
-To connect to Firebolt from dbt, you'll need to add a new [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
 
 
 #### Supporting Concurrent Development

@@ -243,36 +243,3 @@ To install and use `dbt-external-tables` with Firebolt, you must:
 
 3. Pull in the `packages.yml` dependencies by calling `dbt deps`.
 
-#### Using External Tables
-
-To use external tables, you must define a table as `external` in your `dbt_project.yml` file. Every external table must contain the fields `url`, `type`, and `object_pattern`. Note that the Firebolt external table specification requires fewer fields than what is specified in the dbt documentation.
-
-In addition to specifying the columns, an external table may specify partitions. Partitions are not columns and they cannot have the same name as columns. To avoid yaml parsing errors, remember to encase string literals (such as the `url` and `object_pattern` values) in single quotation marks.
-
-#### dbt_project.yml Syntax For an External Table
-
-```yaml
-sources:
-  - name: firebolt_external
-    schema: "{{ target.schema }}"
-    loader: S3
-
-    tables:
-      - name: <table-name>
-        external:
-          url: 's3://<bucket_name>/'
-          object_pattern: '<regex>'
-          type: '<type>'
-          credentials:
-            internal_role_arn: arn:aws:iam::id:<role>/<bucket-name>
-            external_role_id: <external-id>
-          object_pattern: '<regex>'
-          compression: '<compression-type>'
-          partitions:
-            - name: <partition-name>
-              data_type: <partition-type>
-              regex: '<partition-definition-regex>'
-          columns:
-            - name: <column-name>
-              data_type: <type>
-```
