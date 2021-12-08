@@ -6,6 +6,7 @@ datatype: boolean
 <Changelog>
 
 * `v0.20.0`: Introduced `store_failures` config and functionality
+* `v0.21.0`: Introduced `config` property for tests
 
 </Changelog>
 
@@ -44,9 +45,11 @@ models:
       - name: my_column
         tests:
           - unique:
-              store_failures: true  # always store failures
+              config:
+                store_failures: true  # always store failures
           - not_null:
-              store_failures: fail  # never store failures
+              config:
+                store_failures: fail  # never store failures
 ```
 
 </File>

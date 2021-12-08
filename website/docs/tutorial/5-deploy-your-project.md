@@ -6,7 +6,7 @@ description: In this part of the tutorial, we'll go through how you can deploy y
 
 As the `jaffle_shop` business gains more customers, and those customers create more orders, there will be more records added to your source data. Since the `customers` model is materialized as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date.
 
-This is often referred to as "deploying a project" or "[running a project in production](/docs/running-dbt-in-production)". In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
+This is often referred to as "deploying a project" or "[running a project in production](/docs/running-a-dbt-project/running-dbt-in-production)". In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
 
 ## Commit your changes
 First off, we need to commit the changes we made to our project so that our repository has our latest code.
@@ -84,11 +84,11 @@ Here's a few suggestions to keep learning:
 Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!
 
 ### Learn some best practices
-Now that you've got a working dbt project, read more about some of our [best practices](/docs/best-practices), or go back this tutorial and read some of the FAQs.
+Now that you've got a working dbt project, read more about some of our [best practices](/docs/guides/best-practices), or go back this tutorial and read some of the FAQs.
 
 ### Keep building this project
 Here's some suggested exercises to level-up your dbt skills:
-* Try turning your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/using-sources).
+* Try turning your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
 * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
 * Reorganize your project into our [recommended structure](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355)
 * Use some Jinja in your project — check out the [Jinja tutorial](/tutorial/using-jinja).

@@ -4,7 +4,7 @@ id: "documentation"
 ---
 
 ## Related documentation
-* [Declaring properties](declaring-properties)
+* [Declaring properties](configs-and-properties)
 * [`dbt docs` command](cmd-docs)
 * [`doc` Jinja function](dbt-jinja-functions/doc)
 
@@ -87,7 +87,7 @@ To declare a docs block, use the jinja `docs` tag. Docs blocks must be uniquely 
 
 This table contains clickstream events from the marketing website.
 
-The events in this table are recorded by \[Snowplow](http://github.com/snowplow/snowplow) and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:
+The events in this table are recorded by [Snowplow](http://github.com/snowplow/snowplow) and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:
  - /
  - /about
  - /team
@@ -101,7 +101,7 @@ The events in this table are recorded by \[Snowplow](http://github.com/snowplow/
 In the above example, a docs block named `table_events` is defined with some descriptive markdown contents. There is nothing significant about the name `table_events` — docs blocks can be named however you like, as long as the name only contains alphanumeric and underscore characters.
 
 ### Placement
-Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [source-paths](source-paths), [data-paths](data-paths), [analysis-paths](analysis-paths), [macro-paths](macro-paths) and [snapshot-paths](snapshot-paths)) — you can adjust this behavior using the [docs-paths](docs-paths) config.
+Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](model-paths), [seed-paths](seed-paths), [analysis-paths](analysis-paths), [macro-paths](macro-paths) and [snapshot-paths](snapshot-paths)) — you can adjust this behavior using the [docs-paths](docs-paths) config.
 
 
 ### Usage
@@ -179,13 +179,13 @@ Using the docs interface, you can navigate to the documentation for a specific m
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/f2221dc-Screen_Shot_2018-08-14_at_6.29.55_PM.png" title="Auto-generated documentation for a dbt model"/>
 
-Here, you can see the a representation of the project structure, a markdown description for a model, and a list of all of the columns (with documentation) in the model.
+Here, you can see a representation of the project structure, a markdown description for a model, and a list of all of the columns (with documentation) in the model.
 
 From a docs page, you can click the green button in the bottom-right corner of the webpage to expand a "mini-map" of your DAG. This pane (shown below) will display the immediate parents and children of the model that you're exploring.
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ec77c45-Screen_Shot_2018-08-14_at_6.31.56_PM.png" title="Opening the DAG mini-map"/>
 
-In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full lineage for our model. This lineage is filterable using the `--models` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](node-selection/syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
+In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full lineage for our model. This lineage is filterable using the `--select` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](node-selection/syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ac97fba-Screen_Shot_2018-08-14_at_6.35.14_PM.png" title="The full lineage for a dbt model"/>
 

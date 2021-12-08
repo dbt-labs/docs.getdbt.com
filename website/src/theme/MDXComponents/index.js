@@ -25,6 +25,7 @@ import Lightbox from '@site/src/components/lightbox';
 import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import YoutubeVideo from '@site/src/components/youtube';
+import WistiaVideo from '@site/src/components/wistia';
 
 export default {
   code: props => {
@@ -54,5 +55,6 @@ export default {
   LoomVideo: LoomVideo,
   Tabs: Tabs,
   TabItem: TabItem,
+  WistiaVideo: WistiaVideo,
   YoutubeVideo: YoutubeVideo,
 };
