@@ -105,7 +105,7 @@ models:
 
 ### Model Configuration for Dimension Tables
 
-A dbt model can be created as a Firebolt dimension table and configured using the following syntax:
+A dbt model can be materialized as a Firebolt dimension table and configured using the following syntax:
 
 <Tabs
   groupId="config-dimension"
