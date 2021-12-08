@@ -4,6 +4,19 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.41 (December 8, 2021)
+It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [dbt Core v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
+
+#### New products and features
+
+- dbt v1.0 is now available in dbt Cloud... nbd.
+
+
+#### Performance improvements and enhancements
+
+- Now whenever you log back into dbt Cloud, you'll return to the acccount and project that you most recently were working in!
+
+
 ## dbt Cloud v1.1.39 (November 10, 2021)
 We shipped environment variables in dbt Cloud. Environment variables create a way to separate code from configuration - allowing you to set config based on context and keep secrets like git tokens securely stored.
 
