@@ -11,8 +11,10 @@ Certain core functionality may vary. If you would like to report a bug, request 
 ## Overview of dbt-materialize
 
 **Maintained by:** Materialize, Inc.      
-**Source:** https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize    
-**Core version:** v0.18.1 and newer    
+**Source:** [Github](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)    
+**Core version:** v0.18.1 and newer      
+**dbt Cloud:** Not Supported    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01PWAH41A5)      
 
 The easiest way to install is to use pip:
 
@@ -47,9 +49,12 @@ dbt-materialize:
 
 Type | Supported? | Details
 -----|------------|----------------
+source | YES | Creates a [source](https://materialize.com/docs/sql/create-source/).
 view | YES | Creates a [view](https://materialize.com/docs/sql/create-view/#main).
 materializedview | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main).
 table | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main). (Actual table support pending [#5266](https://github.com/MaterializeInc/materialize/issues/5266))
+index | YES | Creates an [index](https://materialize.com/docs/sql/create-index/#main).
+sink | YES | Creates a [sink](https://materialize.com/docs/sql/create-sink/#main).
 ephemeral | YES | Executes queries using CTEs.
 incremental | NO | Use the `materializedview` materialization instead. Materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
 
@@ -59,5 +64,5 @@ Running [`dbt seed`](commands/seed) will create a static materialized view from 
 
 ## Resources
 
+- [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/)
 - [Get started](https://github.com/MaterializeInc/materialize/blob/main/play/wikirecent-dbt/README.md) using dbt and Materialize together
-- [Materialize docs about dbt](https://materialize.com/docs/third-party/dbt/)

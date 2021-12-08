@@ -3,18 +3,14 @@ title: "Apache Spark Profile"
 id: "spark-profile"
 ---
 
-:::info Community plugin
-
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
-
-:::
-
 ## Overview of dbt-spark
+
 **Maintained by:** core dbt maintainers    
 **Author:** dbt Labs    
-**Source:** https://github.com/dbt-labs/dbt-spark    
-**Core version:** v0.13.0 and newer     
-**dbt Cloud:** Preview
+**Source:** [Github](https://github.com/dbt-labs/dbt-spark)    
+**dbt Cloud:** Supported    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNGCW8HKL)     
+
 
 ![dbt-spark stars](https://img.shields.io/github/stars/dbt-labs/dbt-spark?style=for-the-badge)
 

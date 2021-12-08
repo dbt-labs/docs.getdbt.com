@@ -7,5 +7,5 @@ You can run models downstream of a seed using the [model selection syntax](node-
 For example, the following would run all models downstream of a seed named `country_codes`:
 
 ```
-$ dbt run --models country_codes+
+$ dbt run --select country_codes+
 ```

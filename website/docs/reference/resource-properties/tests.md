@@ -26,15 +26,17 @@ models:
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          <test_config>: <config-value>
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
 
-    columns:
+    [columns](columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              <test_config>: <config-value>
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
 ```
 
 </File>
@@ -56,7 +58,8 @@ sources:
         - [<test_name>](#test_name)
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
-            <test_config>: <config-value>
+            [config](resource-properties/config):
+              [<test_config>](test-configs): <config-value>
 
       columns:
         - name: <column_name>
@@ -64,7 +67,8 @@ sources:
             - [<test_name>](#test_name)
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
-                <test_config>: <config-value>
+                [config](resource-properties/config):
+                  [<test_config>](test-configs): <config-value>
 
 ```
 
@@ -74,7 +78,7 @@ sources:
 
 <TabItem value="seeds">
 
-<File name='data/<filename>.yml'>
+<File name='seeds/<filename>.yml'>
 
 ```yml
 version: 2
@@ -85,7 +89,8 @@ seeds:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          <test_config>: <config-value>
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
 
     columns:
       - name: <column_name>
@@ -93,7 +98,8 @@ seeds:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              <test_config>: <config-value>
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
 
 ```
 
@@ -114,7 +120,8 @@ snapshots:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          <test_config>: <config-value>
+          [config](resource-properties/config):
+            [<test_config>](test-configs): <config-value>
 
     columns:
       - name: <column_name>
@@ -122,7 +129,8 @@ snapshots:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              <test_config>: <config-value>
+              [config](resource-properties/config):
+                [<test_config>](test-configs): <config-value>
 
 ```
 
@@ -144,7 +152,7 @@ This feature is not implemented for analyses.
 
 ## Description
 
-The `tests` property defines assertions about a column, table, or view. The property contains a list of generic tests (referenced by name), which can include the four built-in generic tests available in dbt. It can also includes any arguments or [configurations](test-configs) passed to those tests.
+The `tests` property defines assertions about a column, table, or view. The property contains a list of generic tests (referenced by name), which can include the four built-in generic tests available in dbt. It can also include any arguments or [configurations](test-configs) passed to those tests.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 
