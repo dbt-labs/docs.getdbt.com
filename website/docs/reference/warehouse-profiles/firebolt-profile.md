@@ -3,14 +3,13 @@ title: "Firebolt Profile"
 ---
 
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.
 
-:::
 
 ## Overview of dbt-firebolt
 
 **Maintained by:** Firebolt  
-**Author:** Anders Swanson and Eric Ford
+**Author:** Anders Swanson and Eric Ford     
 **Source:** [Github](https://github.com/firebolt-db/dbt-firebolt)  
 **dbt Cloud:** Not Supported  
 
@@ -26,7 +25,7 @@ For more complete information including Firebolt feature support, see the [READM
 
 ### Connecting to Firebolt
 
-To connect to Firebolt from dbt, you'll need to add a new [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
+To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 
