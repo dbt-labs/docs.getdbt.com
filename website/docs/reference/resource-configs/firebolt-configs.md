@@ -27,7 +27,6 @@ A dbt model can be created as a Firebolt fact table and configured using the fol
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
     { label: 'Config block', value: 'config', },
   ]
 }>
@@ -46,26 +45,6 @@ models:
         key_column: [ <column-name>, ... ]
         aggregation: [ <agg-sql>, ... ]
       ...
-```
-
-</File>
-</TabItem>
-
-<TabItem value="property-yaml">
-<File name='models/properties.yml'>
-
-```yaml
-models:
-  - name: <model-name>
-    config:
-      materialized: table
-      table_type: fact
-      primary_index: [ <column-name>, ... ]
-      indexes:
-        - type: aggregating | join
-          key_column: [ <column-name>, ... ]
-          aggregation: [ <agg-sql>, ... ]
-        ...
 ```
 
 </File>
