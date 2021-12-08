@@ -11,6 +11,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Maintained by:** Firebolt  
 **Author:** Anders Swanson and Eric Ford     
 **Source:** [Github](https://github.com/firebolt-db/dbt-firebolt)  
+**dbt Slack channel:** [Slack](https://getdbt.slack.com/archives/C02PYT5CXN0)  
 **dbt Cloud:** Not Supported  
 
 ![dbt-firebolt stars](https://img.shields.io/github/stars/firebolt-db/dbt-firebolt?style=for-the-badge)
