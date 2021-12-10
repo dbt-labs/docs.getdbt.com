@@ -19,7 +19,7 @@
     "fs": "0.0.2",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "mobx": "^6.3.3",
+    "mobx": "^6.3.7",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
