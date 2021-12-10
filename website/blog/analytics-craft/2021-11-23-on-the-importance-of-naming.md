@@ -115,4 +115,4 @@ In the organization which produced the above example, they are managing to remai
 
 Hopefully by now I have convinced you that it is worth your time to spend a considerable amount of effort on a logical naming convention for your models. After all, if you cannot understand the flow of data through models even when looking at the DAG (or using folder hierarchy) then how are we supposed to set our company up for success, onboard new members to our team quickly, and ensure that without supervision, your project (and DAG) continues to grow in a stable fashion?
 
-In the next posts in this series, I’ll walk you through a number of guidelines and heuristics that we have developed to make it an easy and repeatable to name your models well.
+In the next posts in this series, I’ll walk you through a number of guidelines and heuristics that we have developed to make it easy and repeatable to name your models well.
