@@ -98,7 +98,7 @@ You can see how these properties are used in the [example YAML file](#declaring-
 
 ## Ongoing discussions
 
-- Should we define metrics be defined on top of more strongly typed **attributes**, rather than columns? [dbt-core#4090](https://github.com/dbt-labs/dbt-core/issues/4090)
+- Should metrics be defined on top of more strongly typed **attributes**, rather than columns? [dbt-core#4090](https://github.com/dbt-labs/dbt-core/issues/4090)
 - Should metrics include support for joins? How should dbt know about foreign-key relationships between models? [dbt-core#4125](https://github.com/dbt-labs/dbt-core/issues/4125)
 - Should metrics inherit configurations from the models on which they are defined? Should it be possible to define metrics directly on models/columns, like tests?
 
