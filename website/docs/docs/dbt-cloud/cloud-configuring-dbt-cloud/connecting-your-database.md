@@ -55,6 +55,10 @@ The following fields are required when creating a Snowflake connection:
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
+Note: When connecting to Snowflake, pay close attention to the relevant parts of your Account URL when filling in the "Account" field.  For example, below you can see guidance on what to enter in the "Account" field in dbt Cloud or your profiles.yml file for dbt Core.
+
+• If the URL for your Snowflake account is abc12345.eu-central-1.snowflakecomputing.com, then you should enter abc12345.eu-central-1. Basically, remove the snowflakecomputing.com portion of your URL
+
 ![Snowflake connection details](/img/docs/dbt-cloud/snowflake-conn-details.png)
 
 ### Username / Password
