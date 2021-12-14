@@ -46,6 +46,7 @@ Global project macros have been reorganized, and some old unused macros have bee
 ### For users of adapter plugins
 
 - **BigQuery:** Support for [ingestion-time-partitioned tables](creating-date-partitioned-tables) has been officially deprecated in favor of modern approaches. Use `partition_by` and incremental modeling strategies instead.
+- **BigQuery:** Support fine-grained control of the BigQuery query timeout and retry [bigquery-profile](bigquery-profile).
 
 ### For maintainers of plugins + other integrations
 
