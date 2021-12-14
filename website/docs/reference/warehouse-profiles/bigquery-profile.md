@@ -195,15 +195,25 @@ my-profile:
       priority: interactive
 ```
 
-### Timeouts
+### Timeouts and Retries
 
-BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
+Every BigQuery query is made in two steps.
+  1) submit the query job to BQ server and obtain a query job id. 
+  2) wait for the query to execute and poll the query result. 
+
+dbt supports configuring BigQuery query timeouts in each step, as well as the retry and deadline of the overall query. 
+
+#### job_execution_timeout_seconds
+
+The timeout setting of step 2, `job_execution_timeout_seconds`, is the most common one. (formally `timeout_seconds`).
+  
+By default, the query execuion timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
 
 ```
  Operation did not complete within the designated timeout.
 ```
-
-To change this timeout, use the `timeout_seconds` configuration:
+  
+To change this timeout, use the `job_execution_timeout_seconds` configuration:
 
 ```yaml
 my-profile:
@@ -214,19 +224,28 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      timeout_seconds: 600 # 10 minutes
+      job_execution_timeout_seconds: 600 # 10 minutes
 ```
 
-### Retries
+#### job_creation_timeout_seconds
+  
+In addition, dbt also allow more advanced timeout control in step 1 via `job_creation_timeout_seconds`, in which dbt submits a query job to BQ JobInsert API server and receives a query job id in return. This step shall be very quick, usually under a few seconds. However, in some rare situation, it could take much longer to complete. 
 
-The `retries` profile configuration designates the number of times dbt should retry queries that result in unhandled server errors. This configuration is only specified for BigQuery targets. Example:
+  
+#### job_retries and job_retry_deadline_seconds
 
-<File name='profiles.yml'>
+The `job_retries` (formally "retries") and `job_retry_deadline_seconds` configurations designate the number of times and the maximum deadline dbt should retry queries that result in unhandled server errors. 
+
+Combining the four configurations above, We could maximize the chances to mitigate different kinds of intermittent errors.
+
+Example: 
 
 ```yaml
-# This example target will retry BigQuery queries 5
-# times with a delay. If the query does not succeed
-# after the fifth attempt, then dbt will raise an error
+# In this example below, target would fail faster on the step of BQ job creation,
+# while allowing queries with long-running results.
+# it would also retry BigQuery queries 5 times. 
+# If the query does not succeed after the fifth attempt or exceed 
+# the maximum deadline of 1500 seconds, or then dbt will raise an error.
 
 my-profile:
   target: dev
@@ -236,7 +255,11 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      retries: 5
+      job_creation_timeout_seconds: 30
+      job_execution_timeout_seconds: 600
+      job_retry_deadline_seconds: 1500
+      job_retries: 5
+
 ```
 
 </File>
