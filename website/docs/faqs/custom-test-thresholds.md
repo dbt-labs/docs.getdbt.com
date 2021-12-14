@@ -2,7 +2,7 @@
 title: Can I set test failure thresholds?
 ---
 
-Yes, as of `v0.20.0`, you can use the `error_if` + `warn_if` configs to set custom failure thresholds in your tests. See [reference](reference/resource-configs/severity) for more information.
+As of `v0.20.0`, you can use the `error_if` and `warn_if` configs to set custom failure thresholds in your tests. For more details, see [reference](reference/resource-configs/severity) for more information.
 
 If you are on an earlier version of dbt consider:
 * Setting the [severity](resource-properties/tests#severity) to `warn`, or:
