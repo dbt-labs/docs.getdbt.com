@@ -156,6 +156,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
         "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
         "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
       ],
     },
     {
@@ -229,10 +230,13 @@ module.exports = {
               items: [
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metric",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metrics",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seed",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seeds",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-snapshots",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
