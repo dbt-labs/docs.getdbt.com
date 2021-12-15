@@ -33,8 +33,6 @@ if (!PRERELEASE) {
 }
 
 let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
-if (!process.env.ALGOLIA_INDEX_NAME) 
-  ALGOLIA_INDEX_NAME = 'dbt'
 
 let metatags = []
 // If Not Current Branch, do not index site
