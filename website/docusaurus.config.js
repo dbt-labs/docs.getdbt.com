@@ -67,10 +67,12 @@ module.exports = {
       disableSwitch: true
     },
     announcementBar: WARNING_BANNER,
+    // Adding non-empty strings for Algolia config 
+    // allows Docusaurus to run locally without .env file 
     algolia: {
-      apiKey: ALGOLIA_API_KEY,
-      indexName: ALGOLIA_INDEX_NAME,
-      appId: ALGOLIA_APP_ID
+      apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
+      indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
+      appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : 'dbt'
       //debug: true,
     },
     prism: {
