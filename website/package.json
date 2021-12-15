@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "css-loader": "^3.4.2",
+    "dotenv": "^10.0.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "stream-http": "^3.2.0",

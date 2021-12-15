@@ -1,5 +1,6 @@
 
 const path = require('path');
+require('dotenv').config()
 
 /* Debugging */
 var SITE_URL;
@@ -31,19 +32,9 @@ if (!PRERELEASE) {
   }
 }
 
-var ALGOLIA_API_KEY;
-if (!process.env.ALGOLIA_API_KEY) {
-  ALGOLIA_API_KEY = '0e9665cbb272719dddc6e7113b4131a5';
-} else {
-  ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY;
-}
-
-var ALGOLIA_INDEX_NAME;
-if (!process.env.ALGOLIA_INDEX_NAME) {
-  ALGOLIA_INDEX_NAME = 'dbt';
-} else {
-  ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME;
-}
+let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
+if (!process.env.ALGOLIA_INDEX_NAME) 
+  ALGOLIA_INDEX_NAME = 'dbt'
 
 let metatags = []
 // If Not Current Branch, do not index site
@@ -80,10 +71,9 @@ module.exports = {
     announcementBar: WARNING_BANNER,
     algolia: {
       apiKey: ALGOLIA_API_KEY,
-      //debug: true,
       indexName: ALGOLIA_INDEX_NAME,
-      algoliaOptions: {
-      },
+      appId: ALGOLIA_APP_ID
+      //debug: true,
     },
     prism: {
       theme: (() => {
