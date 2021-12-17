@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: dbt Labs Community
+    url: https://www.getdbt.com/community/join-the-community
+    about: You can join the dbt Labs Community to ask and answer questions.
