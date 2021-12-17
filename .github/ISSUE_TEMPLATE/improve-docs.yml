@@ -19,7 +19,7 @@ body:
 
   - type: textarea
     attributes:
-      label: What article on docs.getdbt.com is affected?
+      label: What page on docs.getdbt.com is affected?
       description: Please link to the page you'd like to see updated.
     validations:
       required: true
