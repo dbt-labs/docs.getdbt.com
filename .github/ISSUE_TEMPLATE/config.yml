@@ -6,3 +6,4 @@ contact_links:
   - name: dbt Labs discussion about docs
     url: https://github.com/dbt-labs/docs.getdbt.com/discussions/new
     about: You can open a discussion to propose new content for the dbt product documentation.
+    
