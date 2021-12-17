@@ -19,8 +19,8 @@ body:
 
   - type: textarea
     attributes:
-      label: What article(s) or areas on docs.getdbt.com are affected?
-      description: Include links to articles where you're seeing a problem, screenshots, what browser you're using, etc.
+      label: What page(s) or areas on docs.getdbt.com are affected?
+      description: Include links to pages where you're seeing a problem or making a suggestion. Also include screenshots, what browser you're using, etc.
     validations:
       required: true
 

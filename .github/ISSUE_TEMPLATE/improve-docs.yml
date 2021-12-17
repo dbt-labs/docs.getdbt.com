@@ -1,5 +1,5 @@
 name: Improve content
-description: Make a suggestion to improve the content in an existing article.
+description: Make a suggestion to improve the content in an existing page.
 labels: ["content","improvement"]
 body:
   - type: markdown
@@ -20,13 +20,13 @@ body:
   - type: textarea
     attributes:
       label: What article on docs.getdbt.com is affected?
-      description: Please link to the article you'd like to see updated.
+      description: Please link to the page you'd like to see updated.
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: What part(s) of the article would you like to see updated?
+      label: What part(s) of the page would you like to see updated?
       description: |
         - Give as much detail as you can to help us understand the change you want to see. 
         - Why should the docs be changed? What use cases does it support? 
