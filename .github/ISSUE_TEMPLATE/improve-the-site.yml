@@ -1,7 +1,6 @@
 name: Improve the docs.getdbt.com site
 description: Make a suggestion or report a problem about the technical implementation of docs.getdbt.com.
-labels:
-  - content
+labels: ["engineering"]
 body:
   - type: markdown
     attributes:
@@ -20,7 +19,7 @@ body:
 
   - type: textarea
     attributes:
-      label: What article on docs.getdbt.com is affected?
+      label: What article(s) or areas on docs.getdbt.com are affected?
       description: Include links to articles where you're seeing a problem, screenshots, what browser you're using, etc.
     validations:
       required: true
@@ -30,7 +29,7 @@ body:
       label: What changes are you suggesting?
       description: |
         - Give as much detail as you can to help us understand the change you want to see. 
-        - Why should the docs be changed? What use cases does it support? 
+        - Why should the docs be changed? 
         - What is the expected outcome?
     validations:
       required: true
