@@ -18,4 +18,4 @@ dbt works with a number of different databases, query engines, and other SQL-spe
 
 ## Updating dbt
 
-To upgrade via `pip`, see the [pip upgrading instructions](pip#upgrading). dbt Labs provides a number of resources for understanding general best practices while upgrading your dbt project as well as detailed [migration guides](https://docs.getdbt.com/docs/guides/migration-guide/upgrading-to-1-0-0) highlighting the changes required for each minor and major release.
+To upgrade via `pip`, see the [pip upgrading instructions](pip#upgrading). dbt Labs provides a number of resources for understanding [general best practices](https://docs.getdbt.com/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](https://docs.getdbt.com/docs/guides/migration-guide/upgrading-to-1-0-0) highlighting the changes required for each minor and major release.
