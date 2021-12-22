@@ -19,8 +19,8 @@ body:
 
   - type: textarea
     attributes:
-      label: What page on docs.getdbt.com is affected?
-      description: Please link to the page you'd like to see updated.
+      label: Link to the page on docs.getdbt.com requiring updates
+      description: Please link to the page or pages you'd like to see improved.
     validations:
       required: true
 
