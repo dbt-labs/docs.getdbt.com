@@ -1,7 +1,9 @@
 ---
 title: "Metrics"
 id: "metrics"
-description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code."
+description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. The dbt metrics layer helps you standardize metrics within your organization."
+keywords:
+  - dbt metrics layer
 ---
 
 <Changelog>
