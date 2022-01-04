@@ -14,7 +14,6 @@ We started the new year with a gift! Multi-tenant Team and Enterprise accounts c
 #### Performance improvements and enhancements
 
 * We added client-side naming validation for file or folder creation.
-* You can now see run duration for a completed run on the run details page. 
 
 ## dbt Cloud v1.1.41 (December 8, 2021)
 
