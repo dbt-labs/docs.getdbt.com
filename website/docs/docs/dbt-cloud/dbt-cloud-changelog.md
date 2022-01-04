@@ -9,6 +9,7 @@ description: "Changelog for the dbt Cloud application"
 
 #### Enhancements
 
+- ui: show run duration on run details page
 - Xp 98/client detect whitespace
 
 #### Feature
@@ -17,6 +18,7 @@ description: "Changelog for the dbt Cloud application"
 
 #### Fixed
 
+- Move the post network response logic INTO the react-query cache
 - Prevent new develop pods from going online while PVC is bound (rook+ceph only)
 - Use non-default target directory for dbt runs
 - Return a 400 error when order_by request param is on a field that does not exist for GETting list of entities
@@ -24,6 +26,10 @@ description: "Changelog for the dbt Cloud application"
 
 #### Internal
 
+- Rehydrate on IDE startup and fix IDE Colors
+- Start and stop the IDE spinner in React-Only implementation
+- Only require develop pod to be fully stopped for rookceph
+- Removing alerts for non-retryable errors
 - sanity check: dbt run image adapters
 - Adding start-server logic to any rook-ceph related failures on a retry loop
 - add custom header in redirect for email signup success/failure
