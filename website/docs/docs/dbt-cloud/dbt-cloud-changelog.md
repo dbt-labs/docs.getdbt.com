@@ -7,66 +7,11 @@ description: "Changelog for the dbt Cloud application"
 
 ## dbt Cloud v1.1.42 (January 5th, 2022)
 
-#### Enhancements
+We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. You can use this to further explore long-running models to see if they need refactoring or rescheduling.
 
-- Xp 98/client detect whitespace
+#### Performance improvements and enhancements
 
-#### Feature
-
-- adding dbt v1.0.1rc1 to dbt-cloud
-
-#### Fixed
-
-- Prevent new develop pods from going online while PVC is bound (rook+ceph only)
-- Use non-default target directory for dbt runs
-- Return a 400 error when order_by request param is on a field that does not exist for GETting list of entities
-- ignore dbt_packages/ dir in ide
-
-#### Internal
-
-- sanity check: dbt run image adapters
-- Adding start-server logic to any rook-ceph related failures on a retry loop
-- add custom header in redirect for email signup success/failure
-- XP-124 FS API Git actions parity
-- add metrics for runs
-- remote debug tests
-- Added translations for connection events
-- freeze setuptools to fix adapter install problem
-- Adding User Feature Flags inline table to the User page in the admin panel
-- Add license map event translations
-- Revert "Use non-default target directory for dbt runs (#4674)"
-- optionally use different database credentials from the environment
-- Add license map added/changed/removed events
-- Update zod, replace nonstrict with passthrough (or nothing?)
-- only clone private starter repo if one is provided
-- auditing of service token
-- XP-198 startDevelopPod
-- Update dev image CI step name
-- Change seed data config for devspace
-- billing syncer: guard account locking with a switch
-- Properly route the /ide URL in the nav pane by feature flag
-- Add more audit log translations
-- Refetch the Apollo file tree after CRUD operations
-- Add project added/removed events
-- add debug mode to wsgi.py
-- Update model bottleneck viz message
-- Update node image to pull from AWS
-- publish event along with audit
-- Fix a few URLs that incorrectly include the /ide path
-- Integrating all develop.js reactified logic into useDevelopPod
-- XP-210: Refactor Navigation to support a separate IDE route
-- Port dispatches from develop.js
-- XP-162 useDevelopPodWithLifecycle
-- Refactor view file event to calculate file size using monaco instead of cached file contents from server
-- Make IdeNavigation with Git history
-- useFirstMatchingEnvironment / useEnvironments split
-- XP-209: Add Feature Flag for the IDE path
-- Add webhook and metadata permissions for service tokens
-- Updates invalidSets in access table to exclude new permissions
-- Updating hooks returning DevelopRequest with zod, APIV2 return type, and redux update
-- Build dev dbt-cloud images
-- fix for dbt 1.0.0 to include pyodbc
-- Link useDevelopHealth to Start/Restart Mutation requests
+We added client-side naming validation for file or folder creation.
 
 ## dbt Cloud v1.1.41 (December 8, 2021)
 It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [dbt Core v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
