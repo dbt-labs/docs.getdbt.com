@@ -117,8 +117,15 @@ module.exports = {
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
-    "docs/dbt-cloud/cloud-overview",
-    "docs/dbt-cloud/cloud-quickstart",
+    {
+      type: "category",
+      label: "Introduction",
+      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-intro' },
+      items: [
+        'docs/dbt-cloud/cloud-overview',
+        'docs/dbt-cloud/cloud-quickstart',
+      ],
+    },
     {
       type: "category",
       label: "dbt Cloud IDE",
