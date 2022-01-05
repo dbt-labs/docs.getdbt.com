@@ -62,7 +62,7 @@ metrics:
     description: "The number of paid customers using the product"
 
     type: count
-    sql: user_id # superflous here, but shown as an example
+    sql: user_id # superfluous here, but shown as an example
 
     timestamp: signup_date
     time_grains: [day, week, month]
