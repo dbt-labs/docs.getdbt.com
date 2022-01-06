@@ -37,8 +37,15 @@ Note that for BigQuery quoting configuration, `database` and `schema` should be 
 
 
 ## Default
+The default values vary by database. 
 
-By default, dbt will _not_ quote the database, schema, or identifier.
+For most adapters, quoting is set to _true_ by default.
+
+This is because creating relations with quoted identifiers does not inhibit the ability to select from them, and quoting allows you to use reserved words as object names (though that should probably be avoided)
+
+On Snowflake, quoting is set to _false_ by default.
+
+This is because creating relations with quoted identifiers inhibits your ability to select from the them.
 
 ## Example
 
