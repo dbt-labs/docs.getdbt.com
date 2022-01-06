@@ -119,11 +119,12 @@ module.exports = {
   "dbt Cloud": [
     {
       type: "category",
-      label: "Introduction",
-      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-intro' },
+      label: "Overview",
+//      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
       items: [
-        'docs/dbt-cloud/cloud-overview',
+        'docs/dbt-cloud/cloud-overview', 
         'docs/dbt-cloud/cloud-quickstart',
+        'docs/dbt-cloud/cloud-metrics-layer',
       ],
     },
     {
