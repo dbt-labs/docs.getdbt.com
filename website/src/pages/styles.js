@@ -129,8 +129,8 @@ password: hunter2
 
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>Lightbox</h1>
-                <pre>{`<Lightbox src="/img/dbt-logo-full.png" title="The dbt logo" />`}</pre>
-                <Lightbox src="/img/dbt-logo-full.png" title="The dbt logo" />
+                <pre>{`<Lightbox src="/img/dbt-logo.svg" title="The dbt logo" />`}</pre>
+                <Lightbox src="/img/dbt-logo.svg" title="The dbt logo" />
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>
