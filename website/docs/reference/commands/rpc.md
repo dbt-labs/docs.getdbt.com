@@ -273,6 +273,7 @@ Several of the following request types accept these additional parameters:
 	"id": "<request id>",
 	"params": {
             "threads": "<int> (optional)",
+	    "models": "<str> (optional)",
             "select": "<str> (optional)",
             "exclude": "<str> (optional)",
             "selector": "<str> (optional)",
