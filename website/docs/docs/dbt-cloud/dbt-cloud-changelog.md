@@ -4,7 +4,19 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.42 (January 5th, 2022)
+
+#### New products and features
+
+We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
+
+#### Performance improvements and enhancements
+
+* We added client-side naming validation for file or folder creation.
+
 ## dbt Cloud v1.1.41 (December 8, 2021)
+
 It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [dbt Core v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
 
 #### New products and features
