@@ -6,8 +6,8 @@ keywords:
   - dbt metrics layer
 ---
 
-[dbt metrics](/docs/building-a-dbt-project/metrics) keeps your metrics consistent and provides a way to standardize them for an organization by abstracting metrics calculations out of the data warehouse and into the transformation later, which is where dbt exists. dbt metrics solves the problem of trying to calculate metrics along a set of specified dimensions accurately when metrics values are constantly changing.
+[dbt metrics](/docs/building-a-dbt-project/metrics) ensure metric consistency and provide a way to standardize metrics under version control in dbt projects. By abstracting metrics calculations out of pre-aggregated tables or specific business intelligence tools (BI tools), dbt metrics can be defined once and used everywhere. This helps ensure consistent reporting of key business metrics especially in an environment where metric definitions and dimensions are changing along with your business.
 
-Because dbt already transforms your data, it can use the same plane of existence to abstract out the metrics. dbt already knows about your core entities, for example, users, orders, and sessions. It can tell you not just about sessions, but average time on site. Or it might tell you not only about users but new users across these dimensions and this time range.
+dbt already transforms your data, so it can use the same plane of existence to abstract out the metrics. Because dbt already knows about your core entities, such as users, orders, and sessions, dbt metrics can reveal a broader story. You can learn not just about sessions, but about average time on site, or not only about users but about new users across these dimensions and this time range.
 
 [Sign up for the beta!](https://forms.gle/4hi8YQ4mQ35QvYCh7)
