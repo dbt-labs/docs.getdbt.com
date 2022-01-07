@@ -10,4 +10,4 @@ keywords:
 
 Because dbt already transforms your data, it can use the same plane of existence to abstract out the metrics. dbt already knows about your core entities, for example, users, orders, and sessions. It can tell you not just about sessions, but average time on site. Or it might tell you not only about users but new users across these dimensions and this time range.
 
-[Sign up for the beta!](https://www.getdbt.com/signup/)
+[Sign up for the beta!](https://forms.gle/4hi8YQ4mQ35QvYCh7)
