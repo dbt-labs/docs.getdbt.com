@@ -1,4 +1,5 @@
 
+const { any } = require('core-js/fn/promise');
 const path = require('path');
 require('dotenv').config()
 
@@ -15,21 +16,6 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
   GIT_BRANCH = 'current';
 } else {
   GIT_BRANCH = process.env.HEAD;
-}
-
-var PRERELEASE = (process.env.PRERELEASE || false);
-
-var WARNING_BANNER;
-if (!PRERELEASE) {
-  WARNING_BANNER = {};
-} else {
-  WARNING_BANNER = {
-    id: 'prerelease', // Any value that will identify this message.
-    content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
-    backgroundColor: '#ffa376', // Defaults to `#fff`.
-    textColor: '#033744', // Defaults to `#000`.
-  }
 }
 
 let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
@@ -53,7 +39,7 @@ console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
-module.exports = {
+var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
@@ -66,7 +52,6 @@ module.exports = {
     colorMode: {
       disableSwitch: true
     },
-    announcementBar: WARNING_BANNER,
     // Adding non-empty strings for Algolia config 
     // allows Docusaurus to run locally without .env file 
     algolia: {
@@ -237,4 +222,19 @@ module.exports = {
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
   ],
-};
+}
+
+var PRERELEASE = (process.env.PRERELEASE || false);
+
+if (PRERELEASE) {
+  var WARNING_BANNER = {
+    id: 'prerelease', // Any value that will identify this message.
+    content:
+      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
+    backgroundColor: '#ffa376', // Defaults to `#fff`.
+    textColor: '#033744', // Defaults to `#000`.
+  }
+  siteSettings.themeConfig.announcementBar = WARNING_BANNER;
+}
+
+module.exports = siteSettings;
