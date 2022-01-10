@@ -1,5 +1,3 @@
-
-const { any } = require('core-js/fn/promise');
 const path = require('path');
 require('dotenv').config()
 
