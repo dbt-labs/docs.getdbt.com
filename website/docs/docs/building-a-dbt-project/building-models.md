@@ -156,7 +156,7 @@ You can learn more about configurations in the [reference docs](model-configs).
 By using the [`ref` function](ref) in the place of table names in a query, you can build dependencies between models. Use the name of another model as the argument for `ref`.
 
 <Tabs
-  defaultValue="redshift"
+  defaultValue="model"
   values={[
     {label: 'Model', value: 'model'},
     {label: 'Compiled code in dev', value: 'dev'},
