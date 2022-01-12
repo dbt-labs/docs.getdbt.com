@@ -22,5 +22,5 @@ jobs:
           fail_if_xl: 'false'
           message_if_xl: >
             'This PR is pretty big! We recommend breaking it down to under 1000 lines, which makes it easier to review.
-            YOu can also make it mor emanageable by only addressing one issue per PR or moving some changes to a separate branch.’
+            You can also make it more manageable by only addressing one issue per PR or moving some changes to a separate branch.
           github_api_url: 'api.github.com'
