@@ -37,7 +37,7 @@ Existing projects will see non-breaking deprecation warnings. You can change thr
 <File name='dbt_project.yml'>
 
 ```yml
-model-paths: ["models"] # formerly named "model-paths"
+model-paths: ["models"] # formerly named "source-paths"
 seed-paths: ["data"]    # formerly named "data-paths"
 clean-targets:
   - "target"
