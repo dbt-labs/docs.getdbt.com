@@ -50,7 +50,6 @@ Use a `>=` operator for a minimum boundary. In this example, this project will r
 
 ```yml
 require-dbt-version: ">=1.0.0"
-
 ```
 
 </File>
@@ -78,8 +77,8 @@ require-dbt-version: ">=1.0.0,<2.0.0"
 </File>
 
   
-### Require a specific dbt version (not recommended)
-:::caution
+### Require a specific dbt version
+:::Not recommended
 With the release of major version 1.0 of dbt Core, pinning to a specific patch is discouraged.
 :::
 
@@ -89,7 +88,6 @@ Use an exact version number. In this example, this project will only run with db
 
 ```yml
 require-dbt-version: 0.21.1
-
 ```
 
 </File>
