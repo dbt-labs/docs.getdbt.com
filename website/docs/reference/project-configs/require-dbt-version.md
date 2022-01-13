@@ -12,9 +12,9 @@ require-dbt-version: version-range | [version-range]
 
 ## Definition
 
-Optionally specify a range of dbt versions that a project is compatible with.
+You can use `require-dbt-version` to restrict your project to only work with a range of dbt versions. 
 
-By using this configuration, dbt will throw a helpful error message if a user tries to run your project with an unsupported version of dbt. This is especially useful for packages (like [dbt-utils](https://github.com/dbt-labs/dbt-utils)). Additionally, this can help ensure that your whole team is synchronized on the same version of dbt for local development.
+When you set this configuration, dbt sends a helpful error message for any user who attempts to run the project with an unsupported version of dbt. This can be useful for maintaining package compatibility when your project is dependent on certain package functionality. [dbt-utils](https://github.com/dbt-labs/dbt-utils) is a common package for which you might want to specify a version. Setting this configuration might also help your whole team remain synchronized on the same version of dbt for local development.
 
 If this configuration is not specified, no version check will occur.
 
