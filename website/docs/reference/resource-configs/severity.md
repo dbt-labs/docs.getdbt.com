@@ -31,7 +31,7 @@ Note that test warn statuses will return errors instead if the [`--warn-error`](
 <Tabs
   defaultValue="generic"
   values={[
-    { label: 'Built in generic tests', value: 'generic', },
+    { label: 'Out-of-the-box generic tests', value: 'generic', },
     { label: 'Singular tests', value: 'singular', },
     { label: 'Custom generic tests', value: 'custom-generic', },
     { label: 'Project level', value: 'project', },
@@ -40,7 +40,7 @@ Note that test warn statuses will return errors instead if the [`--warn-error`](
 
 <TabItem value="generic">
 
-Configure a specific instance of a built-in generic test:
+Configure a specific instance of a out-of-the-box generic test:
 
 <File name='models/<filename>.yml'>
 
