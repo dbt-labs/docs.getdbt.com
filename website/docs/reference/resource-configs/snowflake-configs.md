@@ -10,7 +10,14 @@ To-do:
 
 ## Transient tables
 
-Snowflake supports the creation of [transient tables](https://docs.snowflake.net/manuals/user-guide/tables-temp-transient.html). Snowflake does not preserve a history for these tables, which can result in a measurable reduction of your Snowflake storage costs. Note however that transient tables do not participate in Time Travel. Weigh these tradeoffs when deciding whether or not to configure your dbt models as `transient`. **By default, all Snowflake tables created by dbt are `transient`.**
+The default table type for Snowflake is "permanent", but Snowflake also supports the creation of [transient tables](https://docs.snowflake.net/manuals/user-guide/tables-temp-transient.html). Snowflake only keeps a maximum of **one day** of [Time Travel](https://docs.snowflake.com/en/user-guide/data-time-travel.html) history for transient tables. Time Travel data storage costs may be significant for large tables so using transient tables can help minimise storage costs. Transient tables do not have a [Fail-safe](https://docs.snowflake.com/en/user-guide/data-failsafe.html) period and so do not incur the associated storage costs for Fail-safe, however this also means the data they contain is not recoverable outside the Time Travel window.
+Weigh these tradeoffs when deciding whether or not to configure your dbt models as `transient`. 
+
+:::info dbt Default
+
+By default, all Snowflake tables created by dbt are `transient`.
+
+:::
 
 ### Configuring transient tables in dbt_project.yml
 
