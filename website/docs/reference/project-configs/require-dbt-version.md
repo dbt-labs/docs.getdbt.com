@@ -78,7 +78,7 @@ require-dbt-version: ">=1.0.0,<2.0.0"
 
   
 ### Require a specific dbt version
-:::Not recommended
+:::caution Not recommended
 With the release of major version 1.0 of dbt Core, pinning to a specific patch is discouraged.
 :::
 
