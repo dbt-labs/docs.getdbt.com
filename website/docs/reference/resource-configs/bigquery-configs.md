@@ -47,8 +47,8 @@ The `partition_by` config can be supplied as a dictionary with the following for
 ```python
 {
   "field": "<field name>",
-  "data_type": "<timestamp | date | datetime | int64 >",
-  "granularity": "< hour | day | month | year >"
+  "data_type": "<timestamp | date | datetime | int64>",
+  "granularity": "< hour | day | month | year>"
 
   # Only required if data_type is "int64"
   "range": {
