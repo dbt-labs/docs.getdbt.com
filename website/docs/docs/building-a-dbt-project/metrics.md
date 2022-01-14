@@ -73,30 +73,54 @@ metrics:
     
     filters:
       - field: is_paying
-        value: true
+        operator: 'is'
+        value: 'true'
+      - field: lifetime_value
+        operator: '>='
+        value: '100'
+      - field: company_name
+        operator: '!='
+        value: "'Acme, Inc'"
+
 
     meta: {team: Finance}
 ```
 
 </File>
 
-### Metrics properties
+### Available properties
 
-You can see how these properties are used in the [example YAML file](#declaring-a-metric).
+| Field       | Description                                                 | Example                         | Required? |
+|-------------|-------------------------------------------------------------|---------------------------------|-----------|
+| name        | A unique identifier for the metric                          | new_customers                   | yes       |
+| model       | The dbt model that powers this metric                       | dim_customers                   | yes       |
+| label       | A short for name / label for the metric                     | New Customers                   | no        |
+| description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
+| type        | The type of calculation to perform when evaluating a metric | count_distinct                  | yes       |
+| sql         | The expression to aggregate/calculate over                  | user_id                         | yes       |
+| timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
+| dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
+| filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
+| meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
-| Field       | Description                                               | Example                           | Required? |
-|-------------|-----------------------------------------------------------|-----------------------------------|-----------|
-| name        | Unique identifier for the metric                          | new_customers                     | Yes       |
-| model       | The dbt model that powers this metric                     | dim_customers                     | Yes       |
-| label       | A short name / label for the metric                       | New Customers                     | No        |
-| description | Long form, human-readable description for the metric      | "The number of paid customers..." | No        |
-| type        | Type of calculation to perform when evaluating a metric   | count_distinct                    | Yes       |
-| sql         | Expression to aggregate or calculate over                 | user_id                           | Yes       |
-| timestamp   | Time-based component of the metric                        | signup_date                       | Yes       |
-| time_grains | One or more "grains" at which the metric can be evaluated | [day, week, month]                | Yes       |
-| dimensions  | List of dimensions to group or filter the metric by       | plan <br/> country                | No        |
-| filters     | List of filters to apply before calculating the metric    | field: is_paying<br/>value: true  | No        |
-| meta        | Arbitrary key/value store                                 | {team: Finance}                   | No        |
+### Filters
+Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric.
+
+Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded in quotes inside the query, use `"'nested'"` quotes:
+
+```yml
+    filters:
+      - field: is_paying
+        operator: 'is'
+        value: 'true'
+      - field: lifetime_value
+        operator: '>='
+        value: '100'
+      - field: company_name
+        operator: '!='
+        value: "'Acme, Inc'"
+```
 
 ## Ongoing discussions
 
