@@ -9,4 +9,4 @@ id: "clean"
 
 </Changelog>
 
-`dbt clean` is a utility function that deletes all folders specified in the `clean-targets` list specified in `dbt_project.yml`. This is useful for deleting the `dbt_packages` and `target` directories.
+`dbt clean` is a utility function that deletes all folders specified in the `clean-targets` list specified in `dbt_project.yml`. You can use this to delete the `dbt_packages` and `target` directories.

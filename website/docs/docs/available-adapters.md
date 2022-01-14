@@ -29,7 +29,8 @@ These adapter plugins are built and maintained by the same people who build and 
 | ------------ | ------------- | ----------------- |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
 | Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
-| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` 
+| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
+| Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
 
 ### Community Supported
 

@@ -105,7 +105,7 @@ module.exports = {
     "dbt-cli/cli-overview",
     {
       type: "category",
-      label: "Installing locally",
+      label: "Installing dbt from the command line",
       items: [
         "dbt-cli/install/overview",
         "dbt-cli/install/homebrew",
@@ -156,6 +156,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
         "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
         "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
       ],
     },
     {
@@ -229,10 +230,13 @@ module.exports = {
               items: [
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metric",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metrics",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seed",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seeds",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-snapshots",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
@@ -284,6 +288,7 @@ module.exports = {
         "reference/resource-configs/redshift-configs",
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/spark-configs",
+        "reference/resource-configs/firebolt-configs",
       ],
     },
     {
@@ -452,6 +457,7 @@ module.exports = {
         },
         "reference/global-cli-flags",
         "reference/global-configs",
+        "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
       ],
@@ -527,7 +533,8 @@ module.exports = {
         "reference/warehouse-profiles/dremio-profile",
         "reference/warehouse-profiles/clickhouse-profile",
         "reference/warehouse-profiles/materialize-profile",
-        "reference/warehouse-profiles/rockset-profile"
+        "reference/warehouse-profiles/rockset-profile",
+        "reference/warehouse-profiles/firebolt-profile",
       ],
     },
     {

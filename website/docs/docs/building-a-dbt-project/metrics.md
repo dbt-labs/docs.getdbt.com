@@ -1,6 +1,9 @@
 ---
 title: "Metrics"
 id: "metrics"
+description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. The dbt metrics layer helps you standardize metrics within your organization."
+keywords:
+  - dbt metrics layer
 ---
 
 <Changelog>
@@ -9,30 +12,37 @@ id: "metrics"
 
 </Changelog>
 
+
 :::info Metrics are new
-An initial version of `metrics` was introduced in v1.0.0, following [vibrant community discusion](https://github.com/dbt-labs/dbt-core/issues/4071). Try them out, and let us know what you think!
+v1.0.0 includes an initial version of metrics, following a [vibrant community discussion](https://github.com/dbt-labs/dbt-core/issues/4071). Try them out, and let us know what you think!
 :::
 
 :::caution Metrics are experimental
-`metrics` will be released in v1.0, but they should _not_ be considered a stable API. We reserve the right to make breaking changes to their schema in future **minor** versions. We will aim for backwards compatibility whenever possible.
+v1.0 includes metrics, but they should be considered an _unstable_ API because they are experimental and subject to change. We reserve the right to make breaking changes to the metrics schema in future **minor** versions, but will aim for backwards compatibility when possible.
 :::
 
-## Related documentation
-* [`metric:` selection method](node-selection/methods#the-metric-method)
-
-## Getting started
+## About metrics 
 
 A metric is a timeseries aggregation over a table that supports zero or more dimensions. Some examples of metrics include:
-
 - active users
 - churn rate
 - mrr (monthly recurring revenue)
 
-Starting in v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in yaml files. By defining metrics in dbt projects, analytics engineers can encode crucial business logic in tested, version controlled code. Further, these metrics definitions can be exposed to downstream tooling to drive consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
-### Declaring a metric
+### Benefits of defining metrics
 
-Exposures are defined in `.yml` files nested under an `metrics:` key.
+**Use metric specifications in downstream tools**  
+dbt's compilation context can access metrics via the [`graph.metrics` variable](graph). The [manifest artifact](manifest-json) includes metrics for downstream metadata consumption.
+
+**See and select dependencies**   
+As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation). For more information, see "[The `metric:` selection method](node-selection/methods#the-metric-method)."
+
+<Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
+
+## Declaring a metric
+
+You can define metrics in `.yml` files nested under a `metrics:` key.
 
 <File name='models/<filename>.yml'>
 
@@ -49,10 +59,10 @@ metrics:
   - name: new_customers
     label: New Customers
     model: ref('dim_customers')
-    description: "The number of paid customers who are using the product"
+    description: "The number of paid customers using the product"
 
     type: count
-    sql: user_id # superflous here, but shown as an example
+    sql: user_id # superfluous here, but shown as an example
 
     timestamp: signup_date
     time_grains: [day, week, month]
@@ -73,7 +83,7 @@ metrics:
         value: "'Acme, Inc'"
 
 
-    meta: {}
+    meta: {team: Finance}
 ```
 
 </File>
@@ -112,18 +122,11 @@ Note that `value` must be defined as a string in YAML, because it will be compil
         value: "'Acme, Inc'"
 ```
 
-### Why define metrics?
-
-**Use metric specifications in downstream tools.** Metrics are available to dbt's compilation context via the [`graph.metrics` variable](graph). They are included in [the manifest artifact](manifest-json) for downstream metadata consumption.
-
-**See and select dependencies.** As with exposures, it's possible to see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation).
-
-<Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
-
-### Open questions
+## Ongoing discussions
 
 - Should metrics be defined on top of more strongly typed **attributes**, rather than columns? [dbt-core#4090](https://github.com/dbt-labs/dbt-core/issues/4090)
 - Should metrics include support for joins? How should dbt know about foreign-key relationships between models? [dbt-core#4125](https://github.com/dbt-labs/dbt-core/issues/4125)
 - Should metrics inherit configurations from the models on which they are defined? Should it be possible to define metrics directly on models/columns, like tests?
 
 These are just a start! We welcome you to check out open issues on GitHub, and join the conversation.
+

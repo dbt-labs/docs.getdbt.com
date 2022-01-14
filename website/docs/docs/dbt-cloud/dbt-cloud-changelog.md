@@ -4,6 +4,38 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.42 (January 5th, 2022)
+
+#### New products and features
+
+We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
+
+#### Performance improvements and enhancements
+
+* We added client-side naming validation for file or folder creation.
+
+## dbt Cloud v1.1.41 (December 8, 2021)
+
+It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [dbt Core v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
+
+#### New products and features
+
+- dbt v1.0 is now available in dbt Cloud... nbd.
+
+
+#### Performance improvements and enhancements
+
+- Now whenever you log back into dbt Cloud, you'll return to the acccount and project that you most recently were working in!
+
+
+## dbt Cloud v1.1.39 (November 10, 2021)
+We shipped environment variables in dbt Cloud. Environment variables create a way to separate code from configuration - allowing you to set config based on context and keep secrets like git tokens securely stored.
+
+#### New products and features
+- You can now add environment variables to your dbt Cloud project. Why does this matter? Environment variables are a fundamental building block of a dbt project, which until now, we only enabled in dbt Core. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables). 
+
+
 ## dbt Cloud v1.1.38 (October 27, 2021)
 Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 

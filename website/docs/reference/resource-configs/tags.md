@@ -8,7 +8,7 @@ datatype: string | [string]
 </Changelog>
 
 <Tabs
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Config property', value: 'other-yaml', },

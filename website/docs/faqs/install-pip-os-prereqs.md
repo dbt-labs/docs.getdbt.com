@@ -1,34 +1,57 @@
 ---
-title: Are there prerequisites for my operating system?
+
+title: "Does my operating system have prerequisites?"
+Description: "You can check whether your operating system has prerequisites for installing dbt Core."
+
 ---
 
-Some operating systems require additional pre-installation setup. After running whichever commands are relevant to your development environment, return to the instructions above.
+Your operating system may require pre-installation setup before installing dbt Core with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of dbt Core](/docs/dbt-cli/install/pip).
 
-#### MacOS
+### CentOS
 
-The version of Python installed on your system may not be compatible with dbt. To check, run:
+CentOS requires Python and some other dependencies to successfully install and run dbt Core.
+
+To install Python and other dependencies:
+
+```shell
+
+sudo yum install redhat-rpm-config gcc libffi-devel \
+  python-devel openssl-devel
+
 ```
+
+### MacOS
+
+The MacOS requires Python 3.7 or higher to successfully install and run dbt Core.
+
+To check the Python version:
+
+```shell
+
 python --version
+
 ```
-If needed, download and install [Python version 3.6 or higher for MacOS](https://www.python.org/downloads/macos).
+
+If you need a compatible version, you can download and install [Python version 3.7 or higher for MacOS](https://www.python.org/downloads/macos).
 
 If your machine runs on an Apple M1 architecture, we recommend that you install dbt via [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
+### Ubuntu/Debian
 
-#### Ubuntu/Debian
+Ubuntu requires Python and other dependencies to successfully install and run dbt Core.
+
+To install Python and other dependencies:
+
 ```shell
+
 sudo apt-get install git libpq-dev python-dev python3-pip
 sudo apt-get remove python-cffi
 sudo pip install --upgrade cffi
 pip install cryptography~=3.4
-```
 
-#### CentOS
-
-```shell
-sudo yum install redhat-rpm-config gcc libffi-devel \
-  python-devel openssl-devel
 ```
 
 #### Windows
+
+Windows requires Python and git to successfully install and run dbt Core.
 
 Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.6 or higher for Windows](https://www.python.org/downloads/windows/).

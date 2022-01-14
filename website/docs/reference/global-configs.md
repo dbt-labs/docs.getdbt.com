@@ -3,41 +3,101 @@ title: "Global Configs"
 id: "global-configs"
 ---
 
-dbt supports several global runtime configs. Starting in v1.0, all these configs can be set in three places:
-- `config:` block in `profiles.yml`, sometimes called "user config"
-- environment variables, prefixed with `DBT_`
-- CLI flags, which immediately follow `dbt` and precede your subcommand
+### About Global Configs
 
-Notes:
-- The precedence order is always (1) CLI flag > (2) env var > (3) profile config
-- All boolean configs can be turned on via a CLI flag named `--this-config`, and turned off with a CLI flag named `--no-this-config`
-- Use the profile config to set defaults for all projects running on your local machine
+Global configs enable you to fine-tune how dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. They differ from [project configs](reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
+
+Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model.
+
+These configs are "global" because they are available for all dbt commands, and because they apply across all projects run on the same machine.
+
+Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last profile configs.
+
+#### Command line flags
+
+Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
+
+Use this non-boolean config structure, replacing  `<THIS-CONFIG>` with the config you are enabling or disabling, `<SETTING>` with the new setting for the config, and `<SUBCOMMAND>`  with the command this config applies to:
+
+<File name='CLI flags'>
+
+
+```text
+
+$ --<THIS-CONFIG>=<SETTING> <SUBCOMMAND>
+
+```
+
+</File>
+
+Non-boolean config examples:
+
+<File name='CLI flags'>
+
+
+```text
+
+$ dbt --printer-width=80 run
+$ dbt --indirect-selection=eager test
+
+```
+
+</File>
+
+To turn on boolean configs, you would use the `--<THIS-CONFIG>` CLI flag, and a `--no-<THIS-CONFIG>` CLI flag to turn off boolean configs, replacing `<THIS-CONFIG>` with the config you are enabling or disabling and `<SUBCOMMAND>`  with the command this config applies to.
+
+Boolean config structure:
+
+<File name='CLI flags'>
+
+
+```text
+$ dbt --<THIS-CONFIG> <SUBCOMMAND>
+$ dbt --no-<THIS-CONFIG> <SUBCOMMAND>
+
+```
+
+</File>
+
+Boolean config example:
+
+<File name='CLI flags'>
+
+
+```text
+
+$ dbt --version-check run
+$ dbt --no-version-check run
+
+```
+
+</File>
+
+#### Environment variables
+
+Environment variables contain a `DBT_` prefix
+
+<File name='Env var'>
+
+```text
+
+$ export DBT_<THIS-CONFIG>=True
+$ dbt run
+
+```
+
+</File>
+
+#### Profile (or user) configurations
+
+You can set profile (or user) configurations in the `config:` block of `profiles.yml`. You would use the profile config to set defaults for all projects running on your local machine.
 
 <File name='profiles.yml'>
 
 ```yaml
 
 config:
-  this_config: true
-
-```
-
-</File>
-
-<File name='Env var'>
-
-```text
-$ export DBT_THIS_CONFIG=True
-$ dbt run
-```
-
-</File>
-
-<File name='CLI flags'>
-
-```text
-$ dbt --this-config
-$ dbt --no-this-config
+  <THIS-CONFIG>: true
 
 ```
 
@@ -45,7 +105,9 @@ $ dbt --no-this-config
 
 ## Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. In the example below, note that 4 models are selected to run, but a failure in the first model prevents other models from running.
+Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
+
+For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
 ```text
 $ dbt -x run --threads 1
@@ -97,25 +159,26 @@ $ dbt --debug run
 
 ## Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. The value for this flag can be one of: `text`, `json,` or `default`. Use the `json` formatting value in conjunction with `DEBUG` flag to produce rich log information which can be piped into monitoring tools for analysis.
-
-When `json` log formatting is used, each log line will have the following JSON properties:
-- timestamp: when the log line was printed
-- message: the textual log message
-- channel: the source for the log (eg. `dbt`, or `some_module`)
-- level: an integer indicating the log level for the log line (10=info, 11=debug, ...)
-- levelname: a string representation of the log level
-- thread_name: the thread in which the log message was produced
-- process: the PID for the running dbt invocation which produced this log message
-- extra: a dictionary containing "extra" information about the log line. This contents of this dictionary vary based on the specific log message that is being emitted. This dictionary contains programmatically accessible information to contextualize the log message.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in JSON format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 
 ```text
 $ dbt --log-format json run
-{"timestamp": "2019-11-24T18:51:48.683295Z", "message": "Running with dbt=0.15.0", "channel": "dbt", "level": 11, "levelname": "INFO", "thread_name": "MainThread", "process": 94207, "extra": {"run_state": "internal"}}
-{"timestamp": "2019-11-24T18:51:49.386586Z", "message": "Found 3 models, 0 tests, 1 snapshot, 0 analyses, 120 macros, 0 operations, 2 seed files, 1 source", "channel": "dbt", "level": 11, "levelname": "INFO", "thread_name": "MainThread", "process": 94207, "extra": {"run_state": "internal"}}
+{"code": "A001", "data": {"v": "=1.0.0"}, "invocation_id": "1193e449-4b7a-4eb1-8e8e-047a8b3b7973", "level": "info", "log_version": 1, "msg": "Running with dbt=1.0.0", "node_info": {}, "pid": 35098, "thread_name": "MainThread", "ts": "2021-12-03T10:46:59.928217Z", "type": "log_line"}
 ```
+
+:::tip Tip: verbose structured logs
+
+Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
+```text
+$ dbt --debug --log-format json run
+```
+
+See [structured logging](events-logging#structured-logging) for more details.
+
+:::
+
 
 </File>
 
