@@ -1,7 +1,7 @@
 name: Mark PR as done
 on:
   pull_request:
-    types: [closed,merged]
+    types: [closed]
     
 jobs:
   track_pr:
@@ -35,7 +35,7 @@ jobs:
 
       - uses: octokit/graphql-action@v2.x
         name: Add PR to Project
-        id: add_ppr
+        id: add_pr
         with:
           query: |
             mutation($project:ID!, $pr:ID!) {
