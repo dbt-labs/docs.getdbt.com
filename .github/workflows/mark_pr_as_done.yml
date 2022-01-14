@@ -46,7 +46,7 @@ jobs:
                 }
               }
           project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
-          pr: ${{ github.event.pr.node_id}}
+          pr: ${{ github.event.pull_request.node_id}}
           headers: 'GraphQL-Features: projects_next_graphql'
         env:
           GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
