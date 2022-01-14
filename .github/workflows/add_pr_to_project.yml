@@ -77,7 +77,7 @@ jobs:
         id: status_field_value
         with:
           cmd: 
-            jq '.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Done") |.id' data.json
+            jq '.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Triage") |.id' data.json
       
       - name: Set fields
         id: set_fields
