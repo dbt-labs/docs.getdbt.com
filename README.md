@@ -14,7 +14,7 @@ We welcome contributions from community members to this repo:
 
 ### Running the Docs site locally
 
-You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
+You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. You can use [homebrew](https://brew.sh/) to get set up:
 
 0. If applicable, install [Xcode Command Line Tools](https://developer.apple.com/download/more/); you'll likely need an AppleID for this. You will also need [homebrew](https://brew.sh/). 
 2. Install `node`: `brew install node`
