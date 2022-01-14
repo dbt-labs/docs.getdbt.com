@@ -1,7 +1,7 @@
-name: Mark PR as done
+name: Add PR to project
 on:
   pull_request:
-    types: [closed]
+    types: [opened,reopened]
 
 jobs:
   track_pr:
