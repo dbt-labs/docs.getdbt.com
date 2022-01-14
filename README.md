@@ -1,4 +1,4 @@
-A [docusaurus](https://v2.docusaurus.io/) site that powers [docs.getdbt.com](https://docs.getdbt.com/).
+We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https://docs.getdbt.com/).
 
 ## Branching
 
