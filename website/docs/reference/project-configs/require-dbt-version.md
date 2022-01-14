@@ -43,7 +43,7 @@ require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
 ## Examples
 
 ### Specify a minimum dbt version
-Use a `>=` operator for a minimum boundary. In this example, this project will run with any version of dbt greater than or equal to 1.0.0.
+Use a `>=` operator for a minimum boundary. In the following example, this project will run with any version of dbt greater than or equal to 1.0.0.
 
 
 <File name='dbt_project.yml'>
@@ -56,7 +56,7 @@ require-dbt-version: ">=1.0.0"
 
 
 ### Pin to a range
-Use a comma separated list for an upper and lower bound. In this example, this project will run with dbt 1.x.x.
+Use a comma separated list for an upper and lower bound. In the following example, this project will run with dbt 1.x.x.
 
 <File name='dbt_project.yml'>
 
@@ -82,7 +82,9 @@ require-dbt-version: ">=1.0.0,<2.0.0"
 With the release of major version 1.0 of dbt Core, pinning to a specific patch is discouraged.
 :::
 
-Use an exact version number. In this example, this project will only run with dbt v0.21.1. 
+While you can restrict your project to run only with an exact version of dbt Core, we do not recommend this for dbt Core v1.0.0 and higher. 
+
+In the following example, the project will only run with dbt v0.21.1. 
 
 <File name='dbt_project.yml'>
 
