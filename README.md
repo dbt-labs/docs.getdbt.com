@@ -1,8 +1,8 @@
 We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https://docs.getdbt.com/).
 
-## Branching
+## Versioning with branches
 
-There are two long-lived branches in this repo:
+We currently version our docs by using two long-lived branches in this repo:
 - `current`: This branch is what is reflected at at [docs.getdbt.com](https://docs.getdbt.com/)
 - `next`: This branch represent the next release of dbt, and is deployed [next.docs.getdbt.com](https://next.docs.getdbt.com/)
 
