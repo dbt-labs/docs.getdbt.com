@@ -39,7 +39,7 @@ Each log line will have the following JSON properties:
 | Field       | Description   |
 |-------------|---------------|
 | `code` | A unique identifier for each event type |
-| `data` | A dictionary containing programmatically accessible information about the log line. The contents of this ctionary vary based on the event type which generated this log message. |
+| `data` | A dictionary containing programmatically accessible information about the log line. The contents of this dictionary vary based on the event type which generated this log message. |
 | [`invocation_id`](invocation_id) | A unique identifier for this invocation of dbt |
 | `level` | A string representation of the log level (`debug`, `info`, `warn`, `error`) |
 | `log_version` | Integer indicating version |

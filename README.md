@@ -1,8 +1,8 @@
-A [docusaurus](https://v2.docusaurus.io/) site that powers [docs.getdbt.com](https://docs.getdbt.com/).
+We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https://docs.getdbt.com/).
 
-## Branching
+## Versioning with branches
 
-There are two long-lived branches in this repo:
+We currently version our docs by using two long-lived branches in this repo:
 - `current`: This branch is what is reflected at at [docs.getdbt.com](https://docs.getdbt.com/)
 - `next`: This branch represent the next release of dbt, and is deployed [next.docs.getdbt.com](https://next.docs.getdbt.com/)
 
@@ -14,7 +14,7 @@ We welcome contributions from community members to this repo:
 
 ### Running the Docs site locally
 
-We recommend locally rendering changes made to the docs site so you can review your proposed modifications. Our setup instructions use [homebrew](https://brew.sh/):
+You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
 0. If applicable, install [Xcode Command Line Tools](https://developer.apple.com/download/more/); you'll likely need an AppleID for this. You will also need [homebrew](https://brew.sh/). 
 2. Install `node`: `brew install node`
