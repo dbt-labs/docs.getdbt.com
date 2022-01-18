@@ -123,7 +123,6 @@ module.exports = {
       link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
       items: [
         'docs/dbt-cloud/cloud-quickstart',
-        'docs/dbt-cloud/cloud-metrics-layer',
       ],
     },
     {
@@ -154,6 +153,7 @@ module.exports = {
       type: "category",
       label: "Using dbt Cloud",
       items: [
+        "docs/dbt-cloud/cloud-metrics-layer",
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
         "docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness",
