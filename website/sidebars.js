@@ -122,7 +122,6 @@ module.exports = {
       label: "Overview",
       link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
       items: [
-        'docs/dbt-cloud/cloud-overview', 
         'docs/dbt-cloud/cloud-quickstart',
         'docs/dbt-cloud/cloud-metrics-layer',
       ],
