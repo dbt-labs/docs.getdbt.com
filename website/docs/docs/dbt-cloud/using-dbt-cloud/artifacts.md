@@ -1,6 +1,7 @@
 ---
 title: "Building and Configuring Artifacts"
 id: "artifacts"
+description: "You can use artifacts to power different aspects of dbt Cloud." 
 ---
 
 ## dbt Cloud Artifacts

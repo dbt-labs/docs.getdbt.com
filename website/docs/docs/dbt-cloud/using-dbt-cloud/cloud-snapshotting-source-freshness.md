@@ -1,6 +1,7 @@
 ---
 title: "Source freshness"
 id: "cloud-snapshotting-source-freshness"
+description: "You can see the state of source data by loking at a recent snapshot."
 ---
 
 ## Data Source Freshness
