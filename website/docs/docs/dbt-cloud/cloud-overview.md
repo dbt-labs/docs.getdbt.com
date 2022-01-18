@@ -8,7 +8,7 @@ id: "cloud-overview"
 
 dbt Cloud’s generous Developer (free) plan and deep integration with dbt Core make it well suited for data teams small and large alike.  
 
-[Get started with dbt Cloud](https://www.getdbt.com/signup/)
+You can get started with dbt Cloud by [Signing up](https://www.getdbt.com/signup/).
 
 
 ## Develop dbt projects
