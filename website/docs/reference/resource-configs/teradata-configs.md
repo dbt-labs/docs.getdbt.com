@@ -29,7 +29,7 @@ seeds:
       vars:
         use_qvci: true
       ```
-      For example configuration, see https://github.com/Teradata/dbt-teradata/blob/main/test/catalog/with_qvci/dbt_project.yml.
+      For example configuration, see [dbt_project.yml](https://github.com/Teradata/dbt-teradata/blob/main/test/catalog/with_qvci/dbt_project.yml) in `dbt-teradata` QVCI tests.
 
 ## Models
 
@@ -195,6 +195,16 @@ seeds:
   }}
   ```
 ## Seeds
+
+:::info Using seeds to load raw data
+
+As explained in [dbt seeds documentation](https://docs.getdbt.com/docs/building-a-dbt-project/seeds), seeds should not be used to load raw data (for example, large CSV exports from a production database). 
+
+Since seeds are version controlled, they are best suited to files that contain business-specific logic, for example a list of country codes or user IDs of employees.
+
+Loading CSVs using dbt's seed functionality is not performant for large files. Consider using a different tool to load these CSVs into your data warehouse.
+
+:::
 
 * `use_fastload` - use [fastload](https://github.com/Teradata/python-driver#FastLoad) when handling `dbt seed` command. The option will likely speed up loading when your seed files have hundreds of thousands of rows. You can set this seed configuration option in your `project.yml` file, e.g.:
 
