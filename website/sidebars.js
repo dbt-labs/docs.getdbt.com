@@ -117,8 +117,14 @@ module.exports = {
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
-    "docs/dbt-cloud/cloud-overview",
-    "docs/dbt-cloud/cloud-quickstart",
+    {
+      type: "category",
+      label: "Overview",
+      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
+      items: [
+        'docs/dbt-cloud/cloud-quickstart',
+      ],
+    },
     {
       type: "category",
       label: "dbt Cloud IDE",
@@ -146,6 +152,12 @@ module.exports = {
     {
       type: "category",
       label: "Using dbt Cloud",
+    //    link: {
+    //    type: 'generated-index',
+    //    title: 'Using dbt Cloud',
+    //    description: 'Learn how you can use dbt Cloud.',
+    //    slug: '/docs/dbt-cloud',
+    //  },
       items: [
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
@@ -157,6 +169,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
         "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
       ],
     },
     {

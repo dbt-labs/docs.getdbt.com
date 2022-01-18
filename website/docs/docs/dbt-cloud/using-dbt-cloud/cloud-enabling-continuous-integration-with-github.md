@@ -1,6 +1,7 @@
 ---
 title: "Enabling CI"
 id: "cloud-enabling-continuous-integration"
+description: "You can enable CI to test every single change prior to deploying the code to production just like in a software development workflow."
 ---
 
 ## Overview

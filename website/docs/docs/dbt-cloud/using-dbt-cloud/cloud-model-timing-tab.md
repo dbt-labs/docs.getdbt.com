@@ -1,6 +1,7 @@
 ---
 title: "Model Timing Tab"
 id: "cloud-model-timing-tab"
+description: "You can use the Model Timing dashboard to visually explore runs."
 ---
 
 ### Overview
