@@ -12,7 +12,7 @@ We have made some improvements this time around (see the highlights below) and a
 #### Performance improvements and enhancements
 
 * Branch names now default to "main" instead of "master" in new managed and unmanaged Git repositories.
-* Fixed the stale status of run steps on canceled runs.
+* Update IDE autocomplete snippets.
 
 
 
