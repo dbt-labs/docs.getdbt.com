@@ -7,7 +7,7 @@ description: "Changelog for the dbt Cloud application"
 
 ## dbt Cloud v1.1.43 (January 19th, 2022)
 
-We have made some improvements this time around (see the highlights below) and added a [new metric layer page](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer) to docs.getdbt.com to help you begin thinking about the metrics layer in dbt Cloud.
+We have made some improvements that include the new autocomplete snippets for sql and yaml files in the IDE, which are available for use now! We also added a [new metric layer page](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer) to docs.getdbt.com to help you begin thinking about the metrics layer in dbt Cloud.
 
 #### Performance improvements and enhancements
 
