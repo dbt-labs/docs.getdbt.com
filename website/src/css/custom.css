@@ -444,7 +444,7 @@ nav.navbar div.navbar__inner {
   color: #fff;
   background: var(--ifm-footer-background-color);
 }
-.generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module:hover, .generatedIndexPage_aEAk .card {
+.generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module:hover, .generatedIndexPage_aEAk .card:hover {
   color: #fff;
   background: var(--color-primary-blue);
 }
