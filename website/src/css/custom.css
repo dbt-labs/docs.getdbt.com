@@ -348,7 +348,7 @@ nav.navbar div.navbar__inner {
   content: "";
 }
 
-.card {
+.home .card {
   background: var(--ifm-footer-background-color);
   color: #fff;
 }
@@ -438,14 +438,6 @@ nav.navbar div.navbar__inner {
 .docImage_src-components-lightbox-styles-module,
 .docImage_2V3X {
   max-width: 100%;
-}
-
-.generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module {
-  color: #fff;
-}
-.generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module:hover {
-  color: #fff;
-  background: var(--color-primary-blue);
 }
 
 @media (min-width: 997px) and (max-width: 1150px) {
