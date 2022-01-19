@@ -7,10 +7,10 @@ id: "teradata-configs"
 
 * *Set `quote_columns`* - to prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
 
-```yaml
-seeds:
-  +quote_columns: false  #or `true` if you have csv column headers with spaces
-```
+  ```yaml
+  seeds:
+    +quote_columns: false  #or `true` if you have csv column headers with spaces
+  ```
 
 * *Enable view column types in docs* - Teradata Vantage has a dbscontrol configuration flag called `DisableQVCI`. This flag instructs the database to create `DBC.ColumnsJQV` with view column type definitions. To enable this functionality you need to:
   1. Enable QVCI mode in Vantage. Use `dbscontrol` utility and then restart Teradata. Run these commands as a privileged user on a Teradata node:
@@ -44,9 +44,9 @@ seeds:
     }}
     ```
   For details, see [CREATE TABLE documentation](https://docs.teradata.com/r/76g1CuvvQlYBjb2WPIuk3g/B6Js16DRQVwPDjgJ8rz7hg).
-* `table_option` - define table options. Legal values are:
+* `table_option` - defines table options. The config supports multiple statements. The definition below uses the Teradata syntax definition to explain what statements are allowed. Square brackets `[]` denote optional parameters. The pipe symbol `|` separates statements. Use commas to combine multiple statements as shown in the examples below:
     ```
-    { MAP = map_name [COLOCATE USING colocation_name |
+    { MAP = map_name [COLOCATE USING colocation_name] |
       [NO] FALLBACK [PROTECTION] |
       WITH JOURNAL TABLE = table_specification |
       [NO] LOG |
@@ -87,6 +87,10 @@ seeds:
       ```
 
   Examples:
+
+  :::info Separators between statements
+  Note the commas that separate statements in `table_option` config.
+  :::
 
   ```yaml
   {{
@@ -165,7 +169,10 @@ seeds:
     )
   }}
   ```
-  :information_source: Note, unlike in `table_option`, there are no commas between index statements!
+
+  :::info Separators between statements
+  Note, unlike with `table_option` statements, there are no commas between statements in `index` config.
+  :::
 
   ```yaml
   {{
@@ -179,7 +186,10 @@ seeds:
     )
   }}
   ```
-  :information_source: Note, unlike in `table_option`, there are no commas between index statements!
+
+  :::info Separators between statements
+  Note, unlike with `table_option` statements, there are no commas between statements in `index` config.
+  :::
 
   ```yaml
   {{
