@@ -7,57 +7,14 @@ description: "Changelog for the dbt Cloud application"
 
 ## dbt Cloud v1.1.43 (January 19th, 2022)
 
-#### Enhancements
+We have made some improvements this time around and added a [new metric layer page](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer) to the product docs to help you begin thinking about the metrics layer in dbt Cloud.
 
-- Run docs first and also download other artifacts
-- Make sure new git repos default to the main branch
-- Convert Dagre layout task to promise
-- Change CI status updates to use Job ID context, not Run
-- Update IDE autocomplete snippets
-- support docs redirect
+#### Performance improvements and enhancements
 
-#### Fixed
+* Branch names now default to "main" instead of "master" in new managed and unmanaged Git repositories.
+* Fixed the stale status of run steps on canceled runs.
 
-- Changing dbt_versions to use pretty names instead
-- Restore useDevelopHealth functionality
-- Revert "Project Switching Loads Wrong Project Data (#4748)"
-- Cancel run steps after cancelling the run
-- Use default as target when dropping temp schemas
-- Simplify polling. Refetch only when we get success response, else retry after timeouts/failures.
-- Revert "Change CI status updates to use Job ID context, not Run (#4719)"
 
-#### Internal
-
-- Project Switching Loads Wrong Project Data (Pt. 2)
-- Add a liveness probe for develop pod deployments
-- Use Apollo data for DAG when using filesytem API
-- Project Switching Loads Wrong Project Data
-- Remove apollo strategy toggle and add flag indicator
-- Loosen zod typing to ensure that we allow `null` created at timestamp
-- Remove longhorn and rookceph storage class logic
-- [SHP-17] Add social-core backend for Azure Active Directory
-- Enable PR builds
-- Add clarifying comments to dequeue logic
-- Using the Restart Hook in React-Only Configuration
-- Dedup lifecycle dispatching
-- scheduler: insert idempotency key when queuing runs
-- Ensure git is updated in the dbt-cloud base image
-- Extract changes related to XP-126 from PR #4671
-- scheduler: add last run cache for time to run calculation
-- XP-224 recreate modals
-- Moving LayoutFrame out of the IDE through routing.
-- Remove all usage of useAccountSettings
-- Use Apollo data for command palette file filter when feature flagged for filesystem API
-- Filesystem Read Parity, Apollo/Redux mutually exclusive fetching
-- add env var support for requested authn context for saml
-- interpret str as bool when determining debug mode
-- Update main.yml
-- Link to feature flag by ID
-- Ensure init user is called in react only mode
-- Remote debugging configurations for emacs, vim and vscode
-- Enable Launch Darkly for react-spa
-- Move source editor callbacks out of AppAdapter
-- Add connection added/changed/removed events
 
 ## dbt Cloud v1.1.42 (January 5th, 2022)
 
