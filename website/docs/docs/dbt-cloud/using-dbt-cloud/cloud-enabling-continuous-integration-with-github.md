@@ -1,6 +1,7 @@
 ---
 title: "Enabling CI"
 id: "cloud-enabling-continuous-integration"
+description: "You can enable CI to test every single change prior to deploying the code to production just like in a software development workflow."
 ---
 
 ## Overview
@@ -46,7 +47,7 @@ When the run is complete, dbt Cloud will update the PR in GitHub or MR in GitLab
 
 With Slim CI, you don't have to rebuild and test all your models. You can instruct dbt Cloud to run jobs on only modified or new resources.
 
-When creating or editing a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the drop drop menu to select which **production** job you want to defer to. 
+When creating or editing a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the drop menu to select which **production** job you want to defer to. 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests can select another job from the same project for deferral and comparison"/>
@@ -65,6 +66,19 @@ Because dbt Cloud manages deferral and state environment variables, there is no 
 
 
 To learn more about state comparison and deferral in dbt, read the docs on [state](understanding-state).
+
+## Smart Reruns
+
+As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that failed and had errors.
+
+When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of error/fail resources. In your job commands, you can signal to dbt to run and test only on these error/fail results and their children by including the `result:error+` and `result:fail+` argument. 
+
+As example:
+```bash
+dbt build --select result:error+ result:fail+
+```
+
+More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
 
 ## Troubleshooting
 

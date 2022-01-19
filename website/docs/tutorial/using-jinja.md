@@ -5,7 +5,7 @@ id: "using-jinja"
 
 In this tutorial, we're going to take a common pattern used in SQL, and then use Jinja to improve our code.
 
-If you'd like to work through this query, add [this CSV](https://github.com/dbt-labs/jaffle_shop/blob/master/data/raw_payments.csv) to the `data/` folder of your dbt project, and then execute `dbt seed`.
+If you'd like to work through this query, add [this CSV](https://github.com/dbt-labs/jaffle_shop/blob/core-v1.0.0/seeds/raw_payments.csv) to the `seeds/` folder of your dbt project, and then execute `dbt seed`.
 
 While working through the steps of this model, we recommend that you have your compiled SQL open as well, to check what your Jinja compiles to. To do this:
 * **Using dbt Cloud:** Click the compile button to see the compiled SQL in the right hand pane

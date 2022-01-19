@@ -168,9 +168,14 @@ The `config` method is used to select models that match a specified [node config
 </Tabs>
 
 ### The "test_type" method
-<Changelog>New in v0.18.0</Changelog>
+<Changelog>
 
-The `test_type` method is used to select tests based on their type, `schema` or `data`:
+- New in v0.18.0
+- In v1.0.0, test types were renamed: "singular" (instead of "data") and "generic" (instead of "schema")
+
+</Changelog>
+
+The `test_type` method is used to select tests based on their type, `singular` or `generic`:
 
 <Tabs
   defaultValue="modern"
@@ -182,8 +187,8 @@ The `test_type` method is used to select tests based on their type, `schema` or 
 <TabItem value="modern">
 
   ```bash
-  $ dbt test --select test_type:schema        # run all schema tests
-  $ dbt test --select test_type:data          # run all data tests
+  $ dbt test --select test_type:generic        # run all generic tests
+  $ dbt test --select test_type:singular       # run all singular tests
   ```
 
 </TabItem>
@@ -280,12 +285,12 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
 
-Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
+Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>
 
-The `exposure` method is used to select parent resources of a specified [exposure](exposure-properties). Use in conjunction with the `+` operator.
+The `exposure` method is used to select parent resources of a specified [exposure](exposures). Use in conjunction with the `+` operator.
 
 <Tabs
   defaultValue="modern"
@@ -313,3 +318,25 @@ The `exposure` method is used to select parent resources of a specified [exposur
 
 </TabItem>
 </Tabs>
+
+### The "metric" method
+<Changelog>New in v1.0.0</Changelog>
+
+The `metric` method is used to select parent resources of a specified [metric](metrics). Use in conjunction with the `+` operator.
+
+```bash
+$ dbt build --select +metric:weekly_active_users       # build all resources upstream of weekly_active_users metric
+$ dbt ls    --select +metric:* --resource-type source  # list all source tables upstream of all metrics
+```
+
+### The "result" method
+<Changelog>New in v1.0.0</Changelog>
+
+The `result` method is related to the `state` method described above, and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator.
+
+```bash
+$ dbt run --select result:error # run all models that generated errors on the prior invocation of dbt run
+$ dbt test --select result:fail # run all tests that failed on the prior invocation of dbt test
+$ dbt build --select 1+result:fail # run all the models associated with failed tests from the prior invocation of dbt build
+$ dbt seed --select result:error # run all seeds that generated errors on the prior invocation of dbt seed.
+```

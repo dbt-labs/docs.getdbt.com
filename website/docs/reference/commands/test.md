@@ -14,17 +14,17 @@ dbt test --select one_specific_model
 # run tests for all models in package
 dbt test --select some_package.*
 
-# run only custom data tests
-dbt test --data
+# run only tests defined singularly
+dbt test --select test_type:singular
 
-# run only schema tests
-dbt test --schema
+# run only tests defined generically
+dbt test --select test_type:generic
 
-# run custom data tests for one_specific_model
-dbt test --data --select one_specific_model
+# run singular tests limited to one_specific_model
+dbt test --select one_specific_model,test_type:singular
 
-# run schema tests for one_specific_model
-dbt test --schema --select one_specific_model
+# run generic tests limited to one_specific_model
+dbt test --select one_specific_model,test_type:generic
 ```
 
 For more information on writing tests, see the [Testing Documentation](building-a-dbt-project/tests).

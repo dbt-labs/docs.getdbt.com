@@ -8,7 +8,7 @@ To test and document seeds, use a [schema file](configs-and-properties) and nest
 
 ## Example:
 
-<File name='data/schema.yml'>
+<File name='seeds/schema.yml'>
 
 ```yml
 version: 2
