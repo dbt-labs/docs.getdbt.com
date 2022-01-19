@@ -15,7 +15,6 @@ Some noteworthy improvements include autocomplete snippets for sql and yaml file
 * Update IDE autocomplete snippets.
 
 
-
 ## dbt Cloud v1.1.42 (January 5th, 2022)
 
 #### New products and features
