@@ -161,6 +161,10 @@ id: "teradata-configs"
 
   Examples:
 
+  :::info Separators between statements
+  Note, unlike with `table_option` statements, there are no commas between statements in `index` config.
+  :::
+
   ```yaml
   {{
     config(
@@ -169,10 +173,6 @@ id: "teradata-configs"
     )
   }}
   ```
-
-  :::info Separators between statements
-  Note, unlike with `table_option` statements, there are no commas between statements in `index` config.
-  :::
 
   ```yaml
   {{
@@ -186,10 +186,6 @@ id: "teradata-configs"
     )
   }}
   ```
-
-  :::info Separators between statements
-  Note, unlike with `table_option` statements, there are no commas between statements in `index` config.
-  :::
 
   ```yaml
   {{
