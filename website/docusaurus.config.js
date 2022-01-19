@@ -30,6 +30,9 @@ if(GIT_BRANCH !== 'current') {
   })
 }
 
+const versions = require('./version-manager.json');
+const lastReleasedVersion = versions[0];
+
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
@@ -156,6 +159,19 @@ var siteSettings = {
             },
           ]
         },
+        {
+          label: 'Versions',
+          position: 'right',
+          className: 'nav-versioning',
+          items: [
+            ...versions.map((version, i) => (
+              {
+                label: `v${version}`,
+                href: '/',
+              }
+            ))
+          ]
+        },
       ],
     },
     footer: {
@@ -178,7 +194,7 @@ var siteSettings = {
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,
+          sidebarCollapsible: true,     
         },
         blog: {
           blogTitle: 'dbt Developer Blog',
@@ -187,6 +203,7 @@ var siteSettings = {
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
         },
+
       },
     ],
   ],
@@ -199,6 +216,7 @@ var siteSettings = {
     path.resolve('plugins/customWebpackConfig'),
     path.resolve('plugins/buildBlogData'),
     path.resolve('plugins/buildAuthorPages'),
+    path.resolve('plugins/handleVersioning'),
   ],
   scripts: [
     {

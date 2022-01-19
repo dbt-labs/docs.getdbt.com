@@ -26,6 +26,7 @@ import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
+import VersionBlock from '@site/src/components/versionBlock';
 
 export default {
   code: props => {
@@ -57,4 +58,5 @@ export default {
   TabItem: TabItem,
   WistiaVideo: WistiaVideo,
   YoutubeVideo: YoutubeVideo,
+  VersionBlock: VersionBlock,
 };

@@ -17,6 +17,10 @@ Defer requires that a manifest from a previous dbt invocation be passed to the `
 
 ### Usage
 
+<VersionBlock>
+
+</VersionBlock>
+
 <Tabs
   defaultValue="modern"
   values={[
