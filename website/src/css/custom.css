@@ -440,6 +440,15 @@ nav.navbar div.navbar__inner {
   max-width: 100%;
 }
 
+.generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module, .generatedIndexPage_aEAk .card {
+  color: #fff;
+  background: var(--ifm-footer-background-color);
+}
+.generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module:hover, .generatedIndexPage_aEAk .card {
+  color: #fff;
+  background: var(--color-primary-blue);
+}
+
 @media (min-width: 997px) and (max-width: 1150px) {
   nav.navbar a.navbar__link {
     font-size: 0.9rem;
@@ -657,6 +666,9 @@ code {
 }
 .card.large.blog-hero-card:after {
   right: 250px;
+}
+.blog-hero-card {
+  background: var(--ifm-footer-background-color);
 }
 .blog-hero-card .button {
   text-decoration: none;
