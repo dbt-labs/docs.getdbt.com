@@ -152,12 +152,12 @@ module.exports = {
     {
       type: "category",
       label: "Using dbt Cloud",
-    //    link: {
-    //    type: 'generated-index',
-    //    title: 'Using dbt Cloud',
-    //    description: 'Learn how you can use dbt Cloud.',
-    //    slug: '/docs/dbt-cloud',
-    //  },
+      link: {
+        type: 'generated-index',
+        title: 'Using dbt Cloud',
+        description: 'Learn how you can use dbt Cloud.',
+        slug: '/docs/dbt-cloud',
+      },
       items: [
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
@@ -166,7 +166,7 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
         "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
         "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
