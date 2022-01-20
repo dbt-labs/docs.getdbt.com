@@ -2,10 +2,8 @@
 title: "Available adapters"
 id: "available-adapters"
 ---
+##TODO moving this content to the new location under "Connecting to dbt"
 
-dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
-
-Any adapter can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
 
 ### dbt Labs Supported
 
