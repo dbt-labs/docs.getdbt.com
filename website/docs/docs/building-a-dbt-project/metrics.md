@@ -105,7 +105,9 @@ metrics:
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
 ### Filters
-Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric.
+Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric. 
+
+All three properties (`field`, `operator`, `value`) are required for each defined filter.
 
 Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded in quotes inside the query, use `"'nested'"` quotes:
 
