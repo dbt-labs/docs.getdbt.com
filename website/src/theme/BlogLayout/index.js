@@ -132,7 +132,7 @@
        
        <div className="mobile-toc-section container">
          {toc && (
-           <div className="mobile-toc-container">
+           <div className="mobile-toc-,4container">
              <div 
                id="mobile-toc-dropdown"
                className="tocCollapsible_node_modules-@docusaurus-theme-classic-lib-next-theme-TOCCollapsible-styles-module theme-doc-toc-mobile tocMobile_node_modules-@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"
@@ -164,10 +164,7 @@
                {layoutProps.pageClassName &&
                  <div className="col col--3 blog-right-sidebar">
                    {toc && (
-                     <TOC toc={toc} />
-                   )}
-                   {featured_cta && (
-                     <CTA cta={featured_cta} />
+                     <TOC toc={toc} featured_cta={featured_cta} />
                    )}
                  </div>
                }

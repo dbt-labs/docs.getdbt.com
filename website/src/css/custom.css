@@ -768,7 +768,7 @@ code {
   /*position: sticky;*/
   text-align: center;
   background: var(--color-off-white);
-  position:fixed;
+  position:relative;
   bottom:0;
   max-width: 400px;
 }
