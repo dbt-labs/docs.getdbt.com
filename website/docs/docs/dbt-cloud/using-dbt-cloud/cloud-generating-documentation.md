@@ -1,5 +1,5 @@
 ---
-title: "Generating Documentation"
+title: "Generating documentation"
 id: "cloud-generating-documentation"
 description: "You can automate project documentation generation as you run jobs."
 ---

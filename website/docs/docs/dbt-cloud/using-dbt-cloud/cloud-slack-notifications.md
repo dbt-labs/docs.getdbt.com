@@ -1,5 +1,5 @@
 ---
-title: "Configuring Slack Notifications"
+title: "Configuring Slack notifications"
 description: "You can report status alerts in a designated Slack channel every time you run a job."
 ---
 

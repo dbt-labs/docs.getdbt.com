@@ -1,5 +1,5 @@
 ---
-title: "Dashboard Status Tiles"
+title: "Dashboard status tiles"
 id: "cloud-dashboard-status-tiles"
 description: "You can get an insight into the quality and freshness of data when you use a Dashboard Status Tile."
 ---

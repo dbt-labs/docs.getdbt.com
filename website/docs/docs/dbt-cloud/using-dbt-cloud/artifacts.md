@@ -1,5 +1,5 @@
 ---
-title: "Building and Configuring Artifacts"
+title: "Building and configuring artifacts"
 id: "artifacts"
 description: "You can use artifacts to power different aspects of dbt Cloud." 
 ---

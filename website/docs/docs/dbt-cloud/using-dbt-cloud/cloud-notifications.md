@@ -1,5 +1,5 @@
 ---
-title: "Configuring Notifications"
+title: "Configuring notifications"
 description: "You receive Email or Slack alerts for job run status when you set up notification in dbt Cloud."
 ---
 
