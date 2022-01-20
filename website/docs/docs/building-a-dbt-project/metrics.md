@@ -102,7 +102,6 @@ metrics:
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
-| operator    | Defines the type of filter to use                           | '!='                            | yes       |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
 ### Filters
