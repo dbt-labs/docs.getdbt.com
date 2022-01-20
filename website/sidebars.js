@@ -152,12 +152,12 @@ module.exports = {
     {
       type: "category",
       label: "Using dbt Cloud",
-    //    link: {
-    //    type: 'generated-index',
-    //    title: 'Using dbt Cloud',
-    //    description: 'Learn how you can use dbt Cloud.',
-    //    slug: '/docs/dbt-cloud',
-    //  },
+      link: {
+        type: 'generated-index',
+        title: 'Using dbt Cloud',
+        description: 'Learn how you can use dbt Cloud.',
+        slug: '/docs/dbt-cloud',
+      },
       items: [
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
