@@ -3,15 +3,15 @@ title: "Global CLI flags"
 id: "global-cli-flags"
 ---
 
-dbt commands (eg. `run`, `test`, etc) support their own command-specific CLI flags. In addition to these command specific flags, the dbt command itself supports "global" flags applicable to *all* subcommands.
+dbt commands, such as `run` or `test`, support their own command-specific CLI flags. In addition, the dbt command itself supports "global" flags applicable to *all* subcommands.
 
-As of v1.0, the vast majority of global CLI flags map to [global configs](global-configs), which can also be configured via environment variables or `dbt_project.yml`.
+As of v1.0, the vast majority of global CLI flags map to [global configs](global-configs), which can also be configured via environment variables or in the `profiles.yml`.
 
-There remain two flags that are available on the CLI only:
+The `--version` and `--record-timing-info` flags remain available to the CLI only.
 
 ## Version
 
-The `--version`  flag returns information about the currently installed version of dbt.
+The `--version` flag returns information about the currently installed version of dbt.
 
 <File name='Usage'>
 

@@ -125,7 +125,7 @@ model.snowplow.snowplow_sessions, materialized: table
 
 ### Accessing sources
 
-To access the sources in your dbt project programatically, use the `sources`
+To access the sources in your dbt project programmatically, use the `sources`
 attribute of the `graph` object.
 
 Example usage:
@@ -167,7 +167,7 @@ select * from (
 
 ### Accessing exposures
 
-To access the sources in your dbt project programatically, use the `exposures`
+To access the sources in your dbt project programmatically, use the `exposures`
 attribute of the `graph` object.
 
 Example usage:
@@ -205,11 +205,11 @@ Example usage:
 
 </File>
 
-<File name='macros/get_metric.sql'>
-
 ### Accessing metrics
 
-To access the metrics in your dbt project programatically, use the `metrics` attribute of the `graph` object.
+To access the metrics in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
+
+<File name='macros/get_metric.sql'>
 
 ```sql
 Example usage:

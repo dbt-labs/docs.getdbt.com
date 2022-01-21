@@ -2,7 +2,7 @@ name: Mark PR as done
 on:
   pull_request:
     types: [closed]
-
+    
 jobs:
   track_pr:
     runs-on: ubuntu-latest

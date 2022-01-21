@@ -8,7 +8,7 @@ Software engineers frequently modularize code into libraries. These libraries he
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
-  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) or [Heap](https://hub.getdbt.com/dbt-labs/heap/latest/) pageviews into sessions
+  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/) or [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) pageviews into sessions
   * transforming [AdWords](https://hub.getdbt.com/dbt-labs/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
   * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
@@ -86,17 +86,28 @@ In comparison, other package installation methods are unable to handle the dupli
 <Changelog>
 
 * `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
+* `v1.0.0`: When you provide an explicit prerelease version, dbt will install that version.
 
 </Changelog>
 
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
-By default, `dbt deps` will not install prerelease versions of packages. You can enable the installation of prereleases with the `install-prerelease` parameter.
+By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
+- Explicitly specifying a prerelease version in your `version` criteria
+- Setting `install-prerelease` to `true`, and providing a compatible version range
+
+Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
 
 ```yaml
 packages:
   - package: tailsdotcom/dbt_artifacts
     version: 0.4.5a2
+```
+
+```yaml
+packages:
+  - package: tailsdotcom/dbt_artifacts
+    version: [">=0.4.4", "<0.4.6"]
     install-prerelease: true
 ```
 
@@ -153,7 +164,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 :::info dbt Cloud Usage
 If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
-::: 
+:::
 
 In GitHub:
 

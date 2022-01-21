@@ -105,7 +105,7 @@ module.exports = {
     "dbt-cli/cli-overview",
     {
       type: "category",
-      label: "Installing locally",
+      label: "Installing dbt from the command line",
       items: [
         "dbt-cli/install/overview",
         "dbt-cli/install/homebrew",
@@ -117,8 +117,14 @@ module.exports = {
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
-    "docs/dbt-cloud/cloud-overview",
-    "docs/dbt-cloud/cloud-quickstart",
+    {
+      type: "category",
+      label: "Overview",
+      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
+      items: [
+        'docs/dbt-cloud/cloud-quickstart',
+      ],
+    },
     {
       type: "category",
       label: "dbt Cloud IDE",
@@ -146,6 +152,12 @@ module.exports = {
     {
       type: "category",
       label: "Using dbt Cloud",
+      link: {
+        type: 'generated-index',
+        title: 'Using dbt Cloud',
+        description: 'Learn how you can use dbt Cloud.',
+        slug: '/docs/dbt-cloud',
+      },
       items: [
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
@@ -154,8 +166,10 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
         "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
       ],
     },
     {
@@ -229,10 +243,13 @@ module.exports = {
               items: [
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metric",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metrics",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seed",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seeds",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-snapshots",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
@@ -284,6 +301,8 @@ module.exports = {
         "reference/resource-configs/redshift-configs",
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/spark-configs",
+        "reference/resource-configs/firebolt-configs",
+        "reference/resource-configs/teradata-configs",
       ],
     },
     {
@@ -452,6 +471,7 @@ module.exports = {
         },
         "reference/global-cli-flags",
         "reference/global-configs",
+        "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
       ],
@@ -527,7 +547,9 @@ module.exports = {
         "reference/warehouse-profiles/dremio-profile",
         "reference/warehouse-profiles/clickhouse-profile",
         "reference/warehouse-profiles/materialize-profile",
-        "reference/warehouse-profiles/rockset-profile"
+        "reference/warehouse-profiles/rockset-profile",
+        "reference/warehouse-profiles/firebolt-profile",
+        "reference/warehouse-profiles/teradata-profile",
       ],
     },
     {

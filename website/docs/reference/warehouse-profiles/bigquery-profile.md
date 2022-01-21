@@ -295,6 +295,23 @@ Database Error in model debug_table (models/debug_table.sql)
   compiled SQL at target/run/bq_project/models/debug_table.sql
 ```
 
+### OAuth 2.0 Scopes for Google APIs
+
+By default, the BigQuery connector requests three OAuth scopes, namely `https://www.googleapis.com/auth/bigquery`, `https://www.googleapis.com/auth/cloud-platform`, and `https://www.googleapis.com/auth/drive`. These scopes were originally added to provide access for the models that are reading from Google Sheets. However, in some cases, a user may need to customize the default scopes (for example, to reduce them down to the minimal set needed). By using the `scopes` profile configuration you are able to set up your own OAuth scopes for dbt. Example:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      scopes:
+        - https://www.googleapis.com/auth/bigquery
+```
+
 ### Service Account Impersonation
 <Changelog>New in v0.18.0</Changelog>
 

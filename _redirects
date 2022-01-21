@@ -113,6 +113,7 @@
 /docs/model-selection-syntax	/reference/node-selection/syntax	302
 /docs/modules	/docs/writing-code-in-dbt/jinja-context/modules	302
 /docs/on-run-end-context	/docs/writing-code-in-dbt/jinja-context/on-run-end-context	302
+/docs/overview	/docs/introduction	302
 /docs/package-management	/docs/building-a-dbt-project/package-management	302
 /docs/profile	/docs/available-adapters	302
 /docs/profile-bigquery	/reference/warehouse-profiles/bigquery-profile	302
@@ -278,3 +279,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/project-configs/source-paths  /reference/project-configs/model-paths 302
 /reference/project-configs/data-paths  /reference/project-configs/seed-paths 302
 /reference/project-configs/modules-paths  /reference/project-configs/packages-install-path 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
