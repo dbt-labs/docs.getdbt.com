@@ -11,7 +11,7 @@ Often, the rows you filter for on an incremental run will be the rows in your so
 Using an incremental model limits the amount of data that needs to be transformed, vastly reducing the runtime of your transformations. This improves warehouse performance and reduces compute costs.
 
 ## How do I use the incremental materialization?
-Like the other materializations built into dbt, incremental models are defined with `select` statements, with the the materialization defined in a config block.
+Like the other materializations built into dbt, incremental models are defined with `select` statements, with the materialization defined in a config block.
 ```sql
 {{
     config(
