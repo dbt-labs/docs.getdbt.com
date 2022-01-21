@@ -4,35 +4,63 @@ id: "service-tokens"
 ---
 
 ## Overview
-Service Account Admin API tokens are like [User API tokens](user-tokens), but they belong to an
-_account_, rather than _a user_.
 
-As such, they may be suitable for system-level integrations that do not run on behalf of any one user. Service Account Admin tokens may only be created or modified by users with Account Admin (Enterprise plan) or Owner (Team plan) permissions on an account. Service Account tokens may be revoked if they become lost or compromised.
+Service tokens are like [User API tokens](user-tokens), but they belong to an account, rather than a user.
 
-### Service Account Admin API tokens
+As such, they may be suitable for system-level integrations that do not run on behalf of any one user. Service tokens can be assigned any one of the roles that are available on dbt Cloud. More information on which roles are available can be found here.
 
-<Changelog>
+## Generating a Service Token
 
- - Service Account Admin tokens were launched in February, 2021
+In the Account Settings view of dbt Cloud, you can click on the Service Account tokens page and generate a new token. Create and save your token. Please note that you will not be able to view this token again after it is generated, so store it somewhere safe for later use.
 
-</Changelog>
+## Service Token Permissions
 
-Service Account Admin API tokens currently have full read+write access to an account, so please use them with caution.
+Service tokens can be assigned any of the roles available in dbt Cloud. The list below is a summarized view of what each of the roles do. For a detailed view of the permissions in these roles please refer here.
 
-#### Generating a Service Account Admin Token
+### Account Admin Service Token
 
-In the Account Settings view of dbt Cloud, you can click on the Service Account tokens page and generate a new Account Admin token.  Create and save your token. Please note that you will not be able to view this token again after its is generated, so store it somewhere safe for later use.
+Account Admin Service tokens have full `read+write` access to an account, so please use them with caution.
 
-### Metadata Only Service Account Tokens
+### Metadata Only Service Token
 
-<Changelog>
+Metadata only service tokens can be used to authorize requests to the metadata API.
 
- - Metadata Only Service Account tokens were launched in April, 2021
+### Account Viewer Service Token
 
-</Changelog>
+Account viewer service tokens have read only access to dbt Cloud accounts
 
-dbt Cloud users can create metadata only service account based API Tokens to authorize requests to the metadata API.
+### Admin Service Token
 
-#### Generating a Metadata Only Service Account Token
+Admin service tokens have unrestricted access to projects in dbt Cloud accounts. You have the option to grant that permission all projects in the account or grant the permission only on specific projects.
 
-In the Account Settings view of dbt Cloud, you can click on the Service Account tokens page and generate a new Metadata Only token.  Create and save your Metadata Only token. Please note that you will not be able to view this token again after its is generated, so store it somewhere safe for later use.
+### Git Admin Service Token
+
+Git admin service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
+
+### Database Admin Service Token
+
+Database admin service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
+
+### Team Admin Service Token
+
+Team admin service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
+
+### Job Admin Service Token
+
+Job admin service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
+
+### Job Viewer Service Token
+
+Job viewer admin service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
+
+### Developer Service Token
+
+Developer service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
+
+### Analyst Service Token
+
+Analyst admin service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
+
+### Stakeholder Service Token
+
+Stakeholder service tokens have all the permissions listed [here](/docs/dbt-cloud/access-control/enterprise-permissions#git-admin).
