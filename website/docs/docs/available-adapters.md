@@ -32,8 +32,6 @@ These adapter plugins are built and maintained by the same people who build and 
 | Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
 | Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
-| SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
-
 
 ### Community Supported
 
