@@ -14,7 +14,6 @@
  import Head from '@docusaurus/Head';
  import Link from '@docusaurus/Link';
  import {usePluginData} from '@docusaurus/useGlobalData';
- import CTA from '../../components/cta';
  
  function BlogLayout(props) {
    const {title, description, blogPageTitle, sidebar, toc, children, ...layoutProps} = props;
@@ -132,7 +131,7 @@
        
        <div className="mobile-toc-section container">
          {toc && (
-           <div className="mobile-toc-,4container">
+           <div className="mobile-toc-container">
              <div 
                id="mobile-toc-dropdown"
                className="tocCollapsible_node_modules-@docusaurus-theme-classic-lib-next-theme-TOCCollapsible-styles-module theme-doc-toc-mobile tocMobile_node_modules-@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"
