@@ -1,4 +1,4 @@
-module.exports = {
+const sidebarSettings = {
   docs: [
     {
       type: "category",
@@ -615,3 +615,6 @@ module.exports = {
     },
   ],
 };
+
+
+module.exports = sidebarSettings

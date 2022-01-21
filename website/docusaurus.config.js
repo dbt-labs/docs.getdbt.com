@@ -30,7 +30,7 @@ if(GIT_BRANCH !== 'current') {
   })
 }
 
-const versions = require('./version-manager.json');
+const versions = require('./dbt-versions.json');
 const lastReleasedVersion = versions[0];
 
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);

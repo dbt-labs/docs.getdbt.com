@@ -17,7 +17,12 @@ Defer requires that a manifest from a previous dbt invocation be passed to the `
 
 ### Usage
 
-<VersionBlock>
+<VersionBlock excluded_versions={['0.21.0', '0.20.x']}>
+
+```shell
+$ dbt run --select [...] --defer --state path/to/artifacts
+$ dbt test --select [...] --defer --state path/to/artifacts
+```
 
 </VersionBlock>
 
