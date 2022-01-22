@@ -53,10 +53,9 @@ models:
       - name: slightly_unreliable_column
         tests:
           - unique:
-              config:
-                severity: error
-                error_if: ">1000"
-                warn_if: ">10"
+              severity: error
+              error_if: ">1000"
+              warn_if: ">10"
 ```
 
 </File>
