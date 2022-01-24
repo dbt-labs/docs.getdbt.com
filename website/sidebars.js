@@ -550,6 +550,7 @@ module.exports = {
         "reference/warehouse-profiles/rockset-profile",
         "reference/warehouse-profiles/firebolt-profile",
         "reference/warehouse-profiles/teradata-profile",
+        "reference/warehouse-profiles/athena-profile",
       ],
     },
     {
