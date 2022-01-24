@@ -13,7 +13,10 @@ export default (function() {
       if(!version)
         return
       
-      console.log('version', version)
+      console.log('version from onRouteUpdate', version)
+      
+      return version
     },
+    
   }
 })();

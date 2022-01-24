@@ -31,7 +31,6 @@ if(GIT_BRANCH !== 'current') {
 }
 
 const versions = require('./dbt-versions.json');
-const lastReleasedVersion = versions[0];
 
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
@@ -159,19 +158,6 @@ var siteSettings = {
             },
           ]
         },
-        {
-          label: 'Versions',
-          position: 'right',
-          className: 'nav-versioning',
-          items: [
-            ...versions.map((version, i) => (
-              {
-                label: `v${version}`,
-                href: '/',
-              }
-            ))
-          ]
-        },
       ],
     },
     footer: {
@@ -238,6 +224,9 @@ var siteSettings = {
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
   ],
+  clientModules: [
+    require.resolve('./src/utils/handle-version-select.js'),
+  ],
 }
 
 var PRERELEASE = (process.env.PRERELEASE || false);
@@ -251,6 +240,23 @@ if (PRERELEASE) {
     textColor: '#033744', // Defaults to `#000`.
   }
   siteSettings.themeConfig.announcementBar = WARNING_BANNER;
+}
+
+// If versions json file found, add versions dropdown to nav
+if(versions) {
+  siteSettings.themeConfig.navbar.items.push({
+    label: 'Versions',
+    position: 'right',
+    className: 'nav-versioning',
+    items: [
+      ...versions.map(version => (
+        {
+          label: `${version}`,
+          href: '#',
+        }
+      ))
+    ]
+  },)
 }
 
 module.exports = siteSettings;

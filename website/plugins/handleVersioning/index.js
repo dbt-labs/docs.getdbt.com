@@ -5,6 +5,7 @@ module.exports = function handleVersioning(context, options) {
     name: 'docusaurus-handle-versioning-plugin',
     getClientModules() {
       return [path.resolve(__dirname, './event')];
-    }
+    },
+
   }
 }
