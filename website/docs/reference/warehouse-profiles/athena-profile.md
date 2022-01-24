@@ -16,7 +16,7 @@ The easiest way to install is to use pip:
 
 ## Connecting to Athena with dbt-athena
 
-This plugin does not accept any credentials directly. Instead, [credentials are determined automatically](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html) based on aws cli/boto3 conventions and stored login info. You can configure the AWS profile name to use via aws_profile_name. Checkout DBT profile configuration below for details.
+This plugin does not accept any credentials directly. Instead, [credentials are determined automatically](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html) based on aws cli/boto3 conventions and stored login info. You can configure the AWS profile name to use via aws_profile_name. Checkout dbt profile configuration below for details.
 
 <File name='~/.dbt/profiles.yml'>
 
