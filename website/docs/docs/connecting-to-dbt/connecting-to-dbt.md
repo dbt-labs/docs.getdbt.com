@@ -6,7 +6,11 @@ description: ""
 
 To use dbt, you will need to connect dbt to a data warehouse/query engine/data platform. dbt works on top of your data warehouse to utilize its compute capabilities, compiling your data transformation queries for the data warehouse to execute. As such, you’ll need a data warehouse with source data loaded in it for dbt to transform. 
 
-dbt uses **adapters** in order to connect to the data warehouse. These adapters allow users to make calls to the data warehouse and translates the dbt functionality to the given platform. All adapters are open source and free to use, just like dbt Core. To see what platforms are supported, check out [our available adapters](/docs/connecting-to-dbt/selecting-an-available-adapter). If you do not see an adapter for your data platform, check out [our guide for creating adapters](docs/connecting-to-dbt/building-a-new-adapter).
+dbt uses **adapters** in order to connect to the data warehouse. These adapters allow users to make calls to the data warehouse and translates the dbt functionality to the given platform. All adapters are open source and free to use, just like dbt Core. 
+
+To see what platforms are supported, check out [our available adapters](/docs/connecting-to-dbt/selecting-an-available-adapter). 
+
+If you do not see an adapter for your data platform, check out [our guide for creating adapters](docs/connecting-to-dbt/building-a-new-adapter).
 
 How you interact with the adapter will be dependent on whether you are using it on dbt Core or dbt Cloud.
 
