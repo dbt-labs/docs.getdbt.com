@@ -14,11 +14,11 @@ If you do not see an adapter for your data platform, check out [our guide for cr
 
 How you interact with the adapter will be dependent on whether you are using it on dbt Core or dbt Cloud.
 
-## On dbt Core
+## Adapters on dbt Core
 
 All adapters are available on dbt Core and can be installed from PyPi using pip. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. This means once you have installed the adapter, you are ready to use dbt Core. Read more about [installing dbt Core](dbt-cli/install/overview).
 
-## On dbt Cloud 
+## Adapters on dbt Cloud 
 
 Just like you don't have to install dbt in dbt Cloud, there is no need to install adapters as well. Once you sign up for an account, you will be bought through the project configuration flow and asked to select a data warehouse to connect to and supply your credentials. Read more about [connecting databases in dbt Cloud here](website/docs/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database).
 
