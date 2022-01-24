@@ -4,18 +4,16 @@ id: "connecting-to-dbt"
 description: ""
 ---
 
+To use dbt, you will need to connect dbt to a data warehouse/query engine/data platform. dbt works on top of your data warehouse to utilize its compute capabilities, compiling your data transformation queries for the data warehouse to execute. As such, you’ll need a data warehouse with source data loaded in it for dbt to transform. 
 
-dbt connects to your data warehouse to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses.
+In order to connect to the data warehouse, dbt has **adapters**. These adapters allow users to make calls to the data warehouse and translates the dbt functionality to the given platform. All adapters are open source and free to use, just like dbt Core. To see what platforms are supported, check out [our available adapters](/docs/connecting-to-dbt/selecting-an-available-adapter). If you do not see an adapter for your data platform, check out [our guide for creating adapters](docs/connecting-to-dbt/building-a-new-adapter).
 
-When you define your connection, you’ll also be able to specify the target schema where dbt should create your models as tables and views. For more information on picking target schema names, see [Managing environments](/docs/guides/managing-environments).
+How you interact with the adapter will be dependent on whether you are using it on dbt Core or dbt Cloud.
 
-## About adapters
-dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
+## On dbt Core
 
-Any adapter can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
+All adapters are available on dbt Core and can be installed from PyPi using pip. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. This means once you have installed the adapter, you are ready to use dbt Core. Read more about [installing dbt Core](dbt-cli/install/overview).
 
-##TODO what is an adapter? When do you need an adapter? Why would I use an adapter?
+## On dbt Cloud 
 
-##TODO LINK TO AVAILABLE ADAPTERS
-##TODO LINK TO CREATING AN ADAPTER
-##TODO link To building a new adapter
+Just like you don't have to install dbt in dbt Cloud, there is no need to install adapters as well. Once you sign up for an account, you will be bought through the project configuration flow and asked to select a data warehouse to connect to and supply your credentials. Read more about [connecting databases in dbt Cloud here](website/docs/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database).
