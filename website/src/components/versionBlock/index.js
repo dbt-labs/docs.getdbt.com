@@ -1,13 +1,16 @@
 import React, { useContext } from 'react'
 import VersionContext from '../../stores/VersionContext';
 
-export default function Versioning({ excluded_versions, children }) {
+export default function VersionBlock({ firstVersion, lastVersion = undefined, children }) {
   const { version } = useContext(VersionContext)
-  console.log('version from context', version)
 
-  console.log('excluded_versions', excluded_versions)
-  if(excluded_versions.includes(version))
-    return null
+  if(lastVersion) {
+    if(parseFloat(version) > parseFloat(lastVersion))
+      return null
+  } else {
+    if(parseFloat(version) < parseFloat(firstVersion))
+      return null
+  }
 
   return (
     <div>{children}</div>

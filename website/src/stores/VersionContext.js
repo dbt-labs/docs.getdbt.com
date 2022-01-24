@@ -11,14 +11,12 @@ const VersionContext = createContext({
 export const VersionContextProvider = ({ children }) => {
 
   const [version, setVersion] = useState(lastReleasedVersion)
-  console.log('lastReleasedVersion', lastReleasedVersion)
 
   const updateVersion = (e) => {
     if(!e.target)
       return
     
     const versionValue = e.target.text.replace('v', '')
-    console.log('SELECTED VERSION VALUE', versionValue)
     setVersion(versionValue)
   }
 

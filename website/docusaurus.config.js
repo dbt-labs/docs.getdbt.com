@@ -202,7 +202,6 @@ var siteSettings = {
     path.resolve('plugins/customWebpackConfig'),
     path.resolve('plugins/buildBlogData'),
     path.resolve('plugins/buildAuthorPages'),
-    path.resolve('plugins/handleVersioning'),
   ],
   scripts: [
     {
@@ -223,9 +222,6 @@ var siteSettings = {
     '/css/api.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
-  ],
-  clientModules: [
-    require.resolve('./src/utils/handle-version-select.js'),
   ],
 }
 
