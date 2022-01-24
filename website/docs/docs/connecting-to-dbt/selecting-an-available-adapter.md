@@ -8,7 +8,7 @@ description: "You can choose an adapter supported by dbt Labs, vendors, or the c
 
 As noted in [Connecting to dbt](docs/connecting-to-dbt/connecting-to-dbt), all adapters are available on dbt Core. If there is an adapter you would like to be in dbt Cloud, contact Support (support@getdbt.com) to let us know.
 
-All adapters on open source. This means if you have an idea or found an bug on the adapters, please contribute! 
+All adapters on open source, so if you have an idea or found an bug on the adapters, please do contribute! 
 
 Ways to contribute: 
 
@@ -42,4 +42,5 @@ These adapters are supported and maintained by members of the dbt community.
 * [Exasol Analytics](/docs/connecting-to-dbt/using-your-adapter/exasol-adapter)
 * [Oracle Database](/docs/connecting-to-dbt/using-your-adapter/oracle-adapter)
 * [SQL Server & Azure SQL](/docs/connecting-to-dbt/using-your-adapter/sql-azure-adapter)
+* [Presto](/docs/connecting-to-dbt/using-your-adapter/presto-adapter)
 
