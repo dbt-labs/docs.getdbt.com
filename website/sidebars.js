@@ -3,7 +3,45 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
-      items: ["docs/introduction", "docs/available-adapters"],
+      items: ["docs/introduction"],
+    },
+    {
+      type: "category",
+      label: "Connecting to dbt",
+      link: { type: 'doc', id: 'docs/connecting-to-dbt/connecting-to-dbt' },
+      items: [
+        "docs/connecting-to-dbt/selecting-an-available-adapter",
+        {
+            type: "category",
+            label: "Using your adapter",
+              link: {
+                type: 'generated-index',
+                title: 'Using your adapter',
+                description: 'Find out which adapters you can use.',
+                slug: '/connecting-to-dbt/using-your-adapter',
+              },
+              items: [
+                "docs/connecting-to-dbt/using-your-adapter/apache-spark-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/bigquery-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/databricks-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/firebolt-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/materialize-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/postgres-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/redshift-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/rockset-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/snowflake-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/starburst-trino-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/teradata-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/azure-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/clickhouse-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/demio-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/exasol-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/oracle-adapter",
+                "docs/connecting-to-dbt/using-your-adapter/sql-azure-adapter",
+              ],
+        },
+        "docs/connecting-to-dbt/building-a-new-adapter",
+      ]
     },
     {
       type: "category",
@@ -91,7 +129,6 @@ module.exports = {
       label: "Contributing",
       items: [
         "docs/contributing/contributor-license-agreements",
-        "docs/contributing/building-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
       ],
     },
