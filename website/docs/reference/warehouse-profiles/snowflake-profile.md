@@ -146,7 +146,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | connect_timeout | No | The number of seconds to sleep between failed connection retries |
 
 ### account
-For AWS accounts in the default US West region, this will be something like `abc123` (without any other segments). For AWS accounts *not* in the default US West region and for GCP and Azure-based accounts, you also have to append the cloud platform, such as `aws`, `gcp` or `azure`, respectively (for example: `abc123.us-central1.gcp`) See [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname) for more information.
+For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1.aws`. For GCP and Azure-based accounts, you have to append the region and cloud platform, such as `gcp` or `azure`, respectively. For example, `abc123.us-central1.gcp`. For details, see Snowflake's documention: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)" and "[Account Identifier Formats by Cloud Platform and Region](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#account-identifier-formats-by-cloud-platform-and-region)".
 
 ### client_session_keep_alive
 
