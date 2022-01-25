@@ -24,3 +24,9 @@ You can learn more about different ways to run dbt in production in [this articl
 Targets offer the flexibility to decide how to implement your separate environments – whether you want to use separate schemas, databases, or entirely different clusters altogether! We recommend using _different schemas within one data warehouse_ to separate your environments. This is the easiest to set up, and is the most cost effective solution in a modern cloud-based data stack.
 
 In practice, this means that most of the details in a target will be consistent across all targets, except for the `schema` and user credentials. If you have multiple dbt users writing code, it often makes sense for _each user_ to have their own _development_ environment. A pattern we've found useful is to set your dev target schema to be `dbt_<username>`. User credentials should also differ across targets so that each dbt user is using their own data warehouse user.
+
+:::info Deleting Environments
+
+A quick note on deleting Environments. Deleting an Environment will not automically delete the job(s) associated to it. Before you completely delete your Environment, remember to delete any jobs associated to that Environment first. Once you've deleted the job, you can delete the Environment fully. 
+
+:::
