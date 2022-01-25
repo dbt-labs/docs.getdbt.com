@@ -270,6 +270,8 @@ First, log into your Azure account. Follow the steps below to set up single sign
 - **Source attribute** should be set to **Group ID**.
 - Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
 
+**Note:** Keep in mind that the Group ID in Azure AD maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
+
 ### Finish setup
 
 After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
