@@ -15,6 +15,8 @@ datatype: sql-statement | [sql-statement]
 
 <TabItem value="models">
 
+**Note**: In the following examples, the `|` symbol is meant to separate two different formatting options for SQL statements in pre-hooks and post-hooks. The first option (without brackets) will accept a single SQL statement as a string, while the second (with brackets) will accept multiple SQL statements as an array of strings.
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -48,6 +50,8 @@ select ...
 
 <TabItem value="seeds">
 
+**Note**: In the following examples, the `|` symbol is meant to separate two different formatting options for SQL statements in pre-hooks and post-hooks. The first option (without brackets) will accept a single SQL statement as a string, while the second (with brackets) will accept multiple SQL statements as an array of strings.
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -64,6 +68,8 @@ seeds:
 </TabItem>
 
 <TabItem value="snapshots">
+
+**Note**: In the following examples, the `|` symbol is meant to separate two different formatting options for SQL statements in pre-hooks and post-hooks. The first option (without brackets) will accept a single SQL statement as a string, while the second (with brackets) will accept multiple SQL statements as an array of strings.
 
 <File name='dbt_project.yml'>
 
