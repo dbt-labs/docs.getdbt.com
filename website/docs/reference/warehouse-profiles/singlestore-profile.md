@@ -67,8 +67,8 @@ It is recommended to set optional parameters as well.
 | `host`                   | No | The host name of the SingleStore server to connect to. |
 | `user`                   | No | Your SingleStore database username. |
 | `password`               | No | Your SingleStore database password. |
-| `database`               | Yes | The name of your database. |
-| `schema`                 | Yes | The string to prefix the names of generated tables if `generate_alias_name` macro is added (see below). |
+| `database`               | Yes | The name of your database. If you are using custom database names in your models config, they must be created prior to running those models. |
+| `schema`                 | Yes | The string to prefix the names of generated tables if `generate_alias_name` macro is added (see below). If you are using a custom schema name in your model config, it will be concatenated with the one specified in profile using `_`. |
 | `threads`                | No | The number of threads available to dbt. |
 
 ## Schema and Concurrent Development
