@@ -88,4 +88,4 @@ In order to support concurrent development, `schema` can be used to prefix table
 {%- endmacro %}
 ```
 
-Therefore, if you set `schema=some_id` in your `.dbt/profiles.yml` file and run the `customers` model with the corresponding profile, `dbt` will create a table named `some_id__customers` in your database.
+Therefore, if you set `schema=dev` in your `.dbt/profiles.yml` file and run the `customers` model with the corresponding profile, `dbt` will create a table named `dev__customers` in your database.
