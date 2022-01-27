@@ -14,21 +14,31 @@ is_featured: false
 
 # Measuring business hours
 
-Anyone who’s done analysis for operational teams can tell you that one of the peskiest and most frequent data requests is to measure a team’s Time on Task – how quickly a team is able to triage and fix issues that come into the work queue. In my experience, this has also come with the caveat that the metric should take the team’s schedules into account - you don’t want to count time that the team is sleeping and/or at happy hour! From your perspective, unbeknownst to the stakeholder, what they’ve really asked you to do is some gnarly SQL gymnastics to properly account for this non-working time.
+Measuring the number of business hours between two dates using sql is one of those classic problems that sounds simple yet has [plagued analysts since time immemorial](https://www.sqlteam.com/forums/topic.asp?TOPIC_ID=74645). Whether you need to calculate the time it takes for a support ticket to get solved or you're trying to ensure you are accurately measuring team performance against response time SLAs, this metric, which we refer to internally as Time on Task can be a critical data point for customer or client facing teams. Thankfully our tools for calculating Time on Task have improved just a little bit since 2006.
+
+Even still, you've got to do some pretty gnarly sql gymnastics to get this right, including:
+
+1. Figuring out how to exclude nights and weekends from your sql calculations
+2. Accounting for holidays using a custom holiday calendar
+3. Accommodating for changes in business hour schedules
 
 <!--truncate-->
 
-This piece will provide an overview of how and critically *why* to calculate Time on Task. Here at dbt Labs, we spent some time developing these approaches to measure our Customer Support team’s KPIs – we wanted to understand how well we were responding to customer support tickets in a timely fashion. I’ve outlined the two approaches we took to solve this problem below:
+This piece will provide an overview of how and critically *why* to calculate Time on Task and how we use it here at dbt Labs. We solved this problem in two distinct stages:
 
-1. Nested macros - use a series of macros to differentiate between working and non-working time between any two date fields
+1. A One Size Fits All Solution for Calculating Time on Task via Nested Macros:
 
-2. Calculation via subquery - use an hourly-grain date table to measure working and non-working time between any two dates
+This solution allowed us to create a one-line macro to account for most common Time On Task use cases by having a series of nested macros behind the scenes. This strategy does a great job in being able to account for nights, weekends and custom holidays, but lacks the flexibility to accommodate changes in business hours.
+
+2. A Bespoke Calendar for Calculating Time on Task via subquery:
+
+Our current production Time on Task calculation is able to be both powerful and flexible by bringing in a construct you rarely see at dbt Labs - a _[gasp]_ subquery. By using an hourly-grain date table, you are able to standardize your organization's unique definition of business hours vs. non business hours in a fully customizable way.
 
 You can find example code for each of these approaches in [an example repo](https://github.com/dbt-labs/dbt-labs-experimental-features/tree/master/business-hours).
 
 After we’ve walked through the mechanics of calculating Time on Task, we’ll spend some time thinking about how and why to use this metric in your reporting. Time on Task can be a huge boon for operational reporting, but like any metric it has inherent strengths and weaknesses in terms of reflecting actual business value. We’ve put together a series of questions to ask yourself to make sure that you are optimizing Time on Task for the problems it is best suited to solve.
 
-## Attempt 1: Nested Macros
+## A One Size Fits All Solution for Measuring Business Hours and Calculating Time on Task via Nested Macros:
 
 Our first approach to calculating Time on Task relied upon tying together a series of macros. Specifically, as we diagram below, we needed a way to model non-working time to properly remove it from a standard `date_diff` calculation. This approach works great for the case where we have a standard business schedule, but falls flat when we want to bring in more complex, real world applications.
 
@@ -58,15 +68,16 @@ This ends up being helpful twice - the result of the weekdays macro is the same 
 
 You might have already picked up the huge caveat here — a consistent schedule is baked into this calculation, and that’s usually not the case. Throw in a public holiday, or a new hire in a different time zone, and suddenly these calculations stop reflecting reality! Some edge cases and how we deal with them:
 
-1. What if a ticket comes in outside business hours?
 
-    1. In the past, we had a workaround baked into the ticket table itself! We maintain a `all_business_hours` model in our project using the `date_spine` macro from dbt_utils. This creates a table at the hour level, and we add a custom boolean column that indicates whether that hour is within our 8am - 8pm working hour window. We then join this to our ticket data, and for each ticket timestamp of interest, create a new column that returns *the next available business hour.* So for any timestamp that is already in business hours like the above example, the timestamp_business column is identical, but for any ticket that comes in outside business hours, it returns the first business hour of the following day - i.e. a ticket made late wednesday night has a start_business timestamp of 8:00am on Thursday. This allows us to only ever perform these calculations on timestamps that appear within our working hours.
+### What if a ticket comes in outside business hours?
 
-2. What about holidays?
+     In the past, we had a workaround baked into the ticket table itself! We maintain a `all_business_hours` model in our project using the `date_spine` macro from dbt_utils. This creates a table at the hour level, and we add a custom boolean column that indicates whether that hour is within our 8am - 8pm working hour window. We then join this to our ticket data, and for each ticket timestamp of interest, create a new column that returns *the next available business hour.* So for any timestamp that is already in business hours like the above example, the timestamp_business column is identical, but for any ticket that comes in outside business hours, it returns the first business hour of the following day - i.e. a ticket made late wednesday night has a start_business timestamp of 8:00am on Thursday. This allows us to only ever perform these calculations on timestamps that appear within our working hours.
 
-    2. We maintain a seed file in our project that has the dates of holidays for the next 5 years or so - we join this to our hour-level date_dim table, and incorporate holidays into the boolean column mentioned above. This way, any ticket that comes in on a holiday gets fast forwarded to the beginning of the next working day. Not a perfect solution, so curious to hear how this is handled elsewhere!
+### What about holidays?
 
-## Attempt 2: The Rare Subquery!
+     We maintain a seed file in our project that has the dates of holidays for the next 5 years or so - we join this to our hour-level date_dim table, and incorporate holidays into the boolean column mentioned above. This way, any ticket that comes in on a holiday gets fast forwarded to the beginning of the next working day. Not a perfect solution, so curious to hear how this is handled elsewhere!
+
+## A Bespoke Calendar for Calculating Time on Task via Subquery:
 
 Our first measurement approach recently needed to be adjusted when our business hours changed. It was immediately obvious that this Jenga-tower of macros was too difficult to parse and did not easily accommodate the changes we needed to make. We decided to scrap the whole thing and simplify with the rare (for us!) use of a correlated subquery.
 
@@ -102,7 +113,7 @@ from table
 
 ```
 
-## Discussion
+## What is the Value of Measuring Business Hours via Time on Task?
 
 Let’s step back and think about what utility these metrics actually have. What is the benefit of having a schedule-sensitive metric versus just doing a simple date_diff() function and finding the total elapsed time? Here’s where I come down on this question:
 
