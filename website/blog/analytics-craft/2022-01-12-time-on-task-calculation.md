@@ -14,9 +14,9 @@ is_featured: false
 
 # Measuring business hours
 
-Measuring the number of business hours between two dates using sql is one of those classic problems that sounds simple yet has [plagued analysts since time immemorial](https://www.sqlteam.com/forums/topic.asp?TOPIC_ID=74645). Whether you need to calculate the time it takes for a support ticket to get solved or you're trying to ensure you are accurately measuring team performance against response time SLAs, this metric, which we refer to internally as Time on Task can be a critical data point for customer or client facing teams. Thankfully our tools for calculating Time on Task have improved just a little bit since 2006.
+Measuring the number of business hours between two dates using sql is one of those classic problems that sounds simple yet has [plagued analysts since time immemorial](https://www.sqlteam.com/forums/topic.asp?TOPIC_ID=74645). Whether you need to calculate the time it takes for a support ticket to get solved or you're trying to ensure you are accurately measuring team performance against response time SLAs, this metric, which we refer to internally as Time on Task, can be a critical data point for customer or client facing teams. Thankfully our tools for calculating Time on Task have improved just a little bit since 2006.
 
-Even still, you've got to do some pretty gnarly sql gymnastics to get this right, including:
+Even still, you've got to do some pretty gnarly sql or dbt gymnastics to get this right, including:
 
 1. Figuring out how to exclude nights and weekends from your sql calculations
 2. Accounting for holidays using a custom holiday calendar
@@ -60,7 +60,7 @@ How do we get there? For any of these tickets, the general formula to get the an
 
 Those blocks of non-working time can be broken down into two sections: overnights and weekends. But how can we dynamically count the number of overnights or weekend days? Enter the weekday macro!
 
-Building off the excellent [work](https://help.looker.com/hc/en-us/articles/360023861113-How-to-Count-Only-Weekdays-Between-Two-Dates) of the intrepid staff over at Looker, we created a macro that returns the number of weekdays between two dates. It works by calculating the number of calendar days between two timestamps, then subtracting the number of Saturdays and Sundays from that result. So, for a ticket created on a monday, closed on tuesday, the `weekdays_between` macro returns 1. For a ticket opened on a thursday, closed on the following monday, this macro returns 2!
+Building off the excellent [work](https://help.looker.com/hc/en-us/articles/360023861113-How-to-Count-Only-Weekdays-Between-Two-Dates) of the intrepid staff over at Looker, we created a macro that returns the number of weekdays between two dates. It works by calculating the number of calendar days between two timestamps, then subtracting the number of Saturdays and Sundays from that result. So, for a ticket created on a monday, closed on tuesday, the `weekdays_between` macro returns 1. For a ticket opened on a thursday, closed on the following Monday, this macro returns 2!
 
 This ends up being helpful twice - the result of the weekdays macro is the same as the number of overnights between two dates, which is effectively the first half of our non-working time formula. Multiplying the number of weekdays between the two dates by the daily window of non-working time gets us the number of overnight hours (in our example, this window is 8pm - 8am, or 12 hours). Then, we can use this result to measure the number of weekend days between the two dates – subtracting the number of weekdays from the total number of days between the two dates gives you the number of weekend days. Let’s focus on our example ticket that was opened on Friday and closed on Monday to explain:
 
