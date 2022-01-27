@@ -1,14 +1,14 @@
 ---
-title: "How We Calculate Our Time on Task"
-description: "Anyone who’s done analysis for operational teams can tell you that one of the peskiest and most frequent data requests is to measure a team’s Time on Task."
-slug: time-on-task-calculation
+title: "How We Measure Business Hours via Time on Task"
+description: "This piece will provide an overview of how and critically *why* to calculate Time on Task and how we use it here at dbt Labs."
+slug: measuring-business-hours-sql-time-on-task-calculation
 
 authors: [dconnors]
 
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-01-13
+date: 2022-01-28
 is_featured: false
 ---
 
