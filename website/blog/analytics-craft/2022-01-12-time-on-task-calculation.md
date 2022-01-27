@@ -14,7 +14,9 @@ is_featured: false
 
 # Measuring business hours
 
-Measuring the number of business hours between two dates using sql is one of those classic problems that sounds simple yet has [plagued analysts since time immemorial](https://www.sqlteam.com/forums/topic.asp?TOPIC_ID=74645). Whether you need to calculate the time it takes for a support ticket to get solved or you're trying to ensure you are accurately measuring team performance against response time SLAs, this metric, which we refer to internally as Time on Task, can be a critical data point for customer or client facing teams. Thankfully our tools for calculating Time on Task have improved just a little bit since 2006.
+Measuring the number of business hours between two dates using sql is one of those classic problems that sounds simple yet has [plagued analysts since time immemorial](https://www.sqlteam.com/forums/topic.asp?TOPIC_ID=74645).
+
+Whether you need to calculate the time it takes for a support ticket to get solved or you're trying to ensure you are accurately measuring team performance against response time SLAs, this metric, which we refer to internally as Time on Task, can be a critical data point for customer or client facing teams. Thankfully our tools for calculating Time on Task have improved just a little bit since 2006.
 
 Even still, you've got to do some pretty gnarly sql or dbt gymnastics to get this right, including:
 
@@ -22,9 +24,7 @@ Even still, you've got to do some pretty gnarly sql or dbt gymnastics to get thi
 2. Accounting for holidays using a custom holiday calendar
 3. Accommodating for changes in business hour schedules
 
-<!--truncate-->
-
-This piece will provide an overview of how and critically *why* to calculate Time on Task and how we use it here at dbt Labs. We solved this problem in two distinct stages:
+This piece will provide an overview of how and critically *why* to calculate Time on Task and how we use it here at dbt Labs.<!--truncate--> We solved this problem in two distinct stages:
 
 1. A One Size Fits All Solution for Calculating Time on Task via Nested Macros:
 
@@ -40,7 +40,9 @@ After we’ve walked through the mechanics of calculating Time on Task, we’ll 
 
 ## A One Size Fits All Solution for Measuring Business Hours and Calculating Time on Task via Nested Macros:
 
-Our first approach to calculating Time on Task relied upon tying together a series of macros. Specifically, as we diagram below, we needed a way to model non-working time to properly remove it from a standard `date_diff` calculation. This approach works great for the case where we have a standard business schedule, but falls flat when we want to bring in more complex, real world applications.
+Our first approach to calculating Time on Task relied upon tying together a series of macros. Specifically, as we diagram below, we needed a way to model non-working time to properly remove it from a standard `date_diff` calculation.
+
+This approach works great for the case where we have a standard business schedule, but falls flat when we want to bring in more complex, real world applications.
 
 Let’s assume that your customer support team always works Monday to Friday, and from 8am to 8pm, and your schedule looks something like this:
 
@@ -60,9 +62,11 @@ How do we get there? For any of these tickets, the general formula to get the an
 
 Those blocks of non-working time can be broken down into two sections: overnights and weekends. But how can we dynamically count the number of overnights or weekend days? Enter the weekday macro!
 
-Building off the excellent [work](https://help.looker.com/hc/en-us/articles/360023861113-How-to-Count-Only-Weekdays-Between-Two-Dates) of the intrepid staff over at Looker, we created a macro that returns the number of weekdays between two dates. It works by calculating the number of calendar days between two timestamps, then subtracting the number of Saturdays and Sundays from that result. So, for a ticket created on a monday, closed on tuesday, the `weekdays_between` macro returns 1. For a ticket opened on a thursday, closed on the following Monday, this macro returns 2!
+Building off the excellent [work](https://help.looker.com/hc/en-us/articles/360023861113-How-to-Count-Only-Weekdays-Between-Two-Dates) of the intrepid staff over at Looker, we created a macro that returns the number of weekdays between two dates. It works by calculating the number of calendar days between two timestamps, then subtracting the number of Saturdays and Sundays from that result. So, for a ticket created on a Monday, closed on Tuesday, the `weekdays_between` macro returns 1. For a ticket opened on a Thursday, closed on the following Monday, this macro returns 2!
 
-This ends up being helpful twice - the result of the weekdays macro is the same as the number of overnights between two dates, which is effectively the first half of our non-working time formula. Multiplying the number of weekdays between the two dates by the daily window of non-working time gets us the number of overnight hours (in our example, this window is 8pm - 8am, or 12 hours). Then, we can use this result to measure the number of weekend days between the two dates – subtracting the number of weekdays from the total number of days between the two dates gives you the number of weekend days. Let’s focus on our example ticket that was opened on Friday and closed on Monday to explain:
+This ends up being helpful twice - the result of the weekdays macro is the same as the number of overnights between two dates, which is effectively the first half of our non-working time formula. Multiplying the number of weekdays between the two dates by the daily window of non-working time gets us the number of overnight hours (in our example, this window is 8pm - 8am, or 12 hours).
+
+We can use this result to measure the number of weekend days between the two dates – subtracting the number of weekdays from the total number of days between the two dates gives you the number of weekend days. Let’s focus on our example ticket that was opened on Friday and closed on Monday to explain:
 
 ![image alt text](/img/blog/2022-01-12-time-on-task/image_4.png)
 
@@ -71,7 +75,9 @@ You might have already picked up the huge caveat here — a consistent schedule
 
 ### What if a ticket comes in outside business hours?
 
-     In the past, we had a workaround baked into the ticket table itself! We maintain a `all_business_hours` model in our project using the `date_spine` macro from dbt_utils. This creates a table at the hour level, and we add a custom boolean column that indicates whether that hour is within our 8am - 8pm working hour window. We then join this to our ticket data, and for each ticket timestamp of interest, create a new column that returns *the next available business hour.* So for any timestamp that is already in business hours like the above example, the timestamp_business column is identical, but for any ticket that comes in outside business hours, it returns the first business hour of the following day - i.e. a ticket made late wednesday night has a start_business timestamp of 8:00am on Thursday. This allows us to only ever perform these calculations on timestamps that appear within our working hours.
+     In the past, we had a workaround baked into the ticket table itself! We maintain a `all_business_hours` model in our project using the `date_spine` macro from dbt_utils. This creates a table at the hour level, and we add a custom boolean column that indicates whether that hour is within our 8am - 8pm working hour window. We then join this to our ticket data, and for each ticket timestamp of interest, create a new column that returns *the next available business hour.*
+
+     So for any timestamp that is already in business hours like the above example, the timestamp_business column is identical, but for any ticket that comes in outside business hours, it returns the first business hour of the following day - i.e. a ticket made late Wednesday night has a start_business timestamp of 8:00am on Thursday. This allows us to only ever perform these calculations on timestamps that appear within our working hours.
 
 ### What about holidays?
 
@@ -87,7 +93,9 @@ We realized that since we were already maintaining an hourly-grain date dimensio
 
 2. Use a subquery to perform the aggregation
 
-Given that we were actually calculating several of these metrics on one single table of tickets (think: time to first touch, time to first close, time to last touch, etc), direct joining would cause *a lot *of competing fanout that we decided would be too difficult to manage. Generally speaking, the dbt Labs team tends to opt for use of CTEs rather than subqueries, but this was one of the few times where the benefits seemed to outweigh the tradeoffs. A subquery allowed us to perform our business hours calculation on any two date fields without changing the grain of our tickets model.
+Given that we were actually calculating several of these metrics on one single table of tickets (think: time to first touch, time to first close, time to last touch, etc), direct joining would cause *a lot *of competing fanout that we decided would be too difficult to manage.
+
+Generally speaking, the dbt Labs team tends to opt for use of CTEs rather than subqueries, but this was one of the few times where the benefits seemed to outweigh the tradeoffs. A subquery allowed us to perform our business hours calculation on any two date fields without changing the grain of our tickets model.
 
 Here’s an example to explain our subquery approach:If working hours for our team are 8AM - 8PM, and a ticket was opened at 8:46 AM Tues, closed 1:13PM Wed on an 8-8 schedule to measure the business hours from open to close, you’d need to include:
 
