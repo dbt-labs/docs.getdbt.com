@@ -571,9 +571,20 @@ module.exports = {
     {
       type: "category",
       label: "Getting Started",
-      collapsed: false,
       items: [
-        "tutorial/setting-up",
+        {
+          type: "category",
+          label: "Setting up",
+          link: { 
+            type: 'doc', 
+            id: 'tutorial/setting-up'
+          },
+          items: [
+            "tutorial/setting-up-bigquery",
+            "tutorial/setting-up-snowflake",
+            "tutorial/setting-up-databricks"
+          ],
+        },
         {
           type: "category",
           label: "Create a project",
