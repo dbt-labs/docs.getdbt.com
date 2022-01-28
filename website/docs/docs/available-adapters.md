@@ -32,6 +32,8 @@ These adapter plugins are built and maintained by the same people who build and 
 | Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
 | Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
+| SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
+
 
 ### Community Supported
 
@@ -45,6 +47,7 @@ These adapter plugins are contributed and maintained by members of the community
 | Oracle Database        | [Profile Setup](oracle-profile)       | Oracle 11+                | `pip install dbt-oracle`     |
 | Dremio                 | [Profile Setup](dremio-profile)       | Dremio 4.7+               | `pip install dbt-dremio`     |
 | ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
+| Athena                 | [Profile Setup](athena-profile)       | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
 
 Community-supported plugins are works in progress, and all users are encouraged to contribute by testing and writing code. If you're interested in contributing:
 - Join the dedicated channel in [dbt Slack](https://community.getdbt.com/) (e.g. #db-sqlserver, #db-athena)

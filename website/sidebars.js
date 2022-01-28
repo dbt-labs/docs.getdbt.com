@@ -540,6 +540,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/trino-profile",
+        "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
@@ -550,6 +551,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/rockset-profile",
         "reference/warehouse-profiles/firebolt-profile",
         "reference/warehouse-profiles/teradata-profile",
+        "reference/warehouse-profiles/athena-profile",
       ],
     },
     {
