@@ -130,7 +130,7 @@ The `poll` endpoint will return the status, logs, and results (if available) for
 {
     "result": {
         "state": "success",
-	"start": "2019-10-11T18:57:03.732153Z",
+        "start": "2019-10-11T18:57:03.732153Z",
         "end": "2019-10-11T18:57:44.410798Z",
         "elapsed": 0.8381369113922119,
         "logs": [],
@@ -138,10 +138,10 @@ The `poll` endpoint will return the status, logs, and results (if available) for
             "command": "run --select my_model",
             "branch": "abc123"
         },
-	"results": [],
+        "results": [],
         "elapsed_time": 16.607702016830444,
         "args": {},
-	"generated_at": "2019-10-11T18:25:22.477203Z"
+        "generated_at": "2019-10-11T18:25:22.477203Z"
     },
     "id": "2db9a2fe-9a39-41ef-828c-25e04dd6b07d",
     "jsonrpc": "2.0"
