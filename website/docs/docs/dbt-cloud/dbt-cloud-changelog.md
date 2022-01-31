@@ -4,6 +4,77 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+## dbt Cloud v1.1.44 (February 2nd, 2022)
+
+#### Enhancements
+
+- Show run created/completed times in local time
+- Command bar recommendations based on dbtVersion
+
+#### Feature
+
+- Display Blocked Time on Run Details page
+- Upsert subdirectory if not found at rpc startup time
+
+#### Fixed
+
+- Frontend changes to check pricing plan and audit_log_read permissions for displaying audit log
+- Preventing the DAG in the IDE from crashing the IDE when metrics resource
+- Backend changes to increasae hot storage audit log window to 90 days.
+- Audit log startDate in UI should be 90 days earlier than today
+- Don't write {} to json if file is not found
+- Allow IDE sessions with a subdirectory specified to initialize repo
+- use most recent run to calculate 'Next run in' (back end)
+- use most recent run to calculate 'Next run in' (front end)
+- Adding ReadOnly check to the save button
+
+#### Internal
+
+- FIX: reference correct Run instances in test
+- Allow manual workflow on main
+- Disable signup endpoint in single tenant instances
+- QUICKFIX: fix type annotation, skip failing test
+- QUICKFIX: remove 'sinter' from an import statement
+- QUICKFIX: get blocking runs correctly
+- Add 'organization_name' to Azure AD app creation form
+- QUICKFIX: remove a regex Safari doesn't support
+- Add 'organization_name' to 'account_azure_active_directory_application' table
+- Revert "Display Blocked Time on Run Details page (#4757)"
+- Revert "Support filesystem refetching via Redux middleware, primarily to handle RPC process filesystem side effects (without updating git status fetching) (#4801)"
+- More migrations for SHP-31
+- Disallow hyphen at start of git branch name
+- Support filesystem refetching via Redux middleware, primarily to handle RPC process filesystem side effects (without updating git status fetching)
+- Migrations for SHP-31
+- Resolving DAG re-rendering on non-relevant file changes
+- Revert "Support filesystem refetching via Redux middleware, primarily to handle RPC process filesystem side effects (#4773)"
+- Account for unfinished previous runs in run timing calculations
+- SHP-18 | Add DevOps integration UI to Profile integrations page
+- Support filesystem refetching via Redux middleware, primarily to handle RPC process filesystem side effects
+- SHP-99 | Add Azure details to User models & disconnection endpoint
+- Devspace: Change mount point for ephemeral pod data
+- ignore models with null or skipped status
+- Update GitProvider 'provider_type' enum
+- Sync local files to ephemeral pods
+- Update protos to use v1
+- Remove initialDelay for dev pod probes
+- update ci-labels workflow run to use GITHUB_TOKEN env var
+- Add translations for proto v1
+- Create tmp apollo GitActionsDropdownMenu
+- Update logo on error page
+- Adds additional permission checks for GroupPermissionService/AccountGroupPermissionService
+- Fix file contents from being empty when opening via the DAG or file filter
+- SHP-19 | Azure Active Directory app configuration UI
+- Serve run timing details via API v3
+- filter sources with null state
+- Restart IDE No Longer Becomes "Disconnected" on RPC Disconnect
+- SHP-32 & SHP-33 | Persist Azure client_id and client_secret in DB
+- Fix 0 artifact in editor tabs
+- Missed review comments
+- Update environment_variables.py
+- Fix spacing for LD eval
+- Support Account only LD Ids in the backend
+- Enable account LD key support on the frontend
+
 
 ## dbt Cloud v1.1.43 (January 19th, 2022)
 
