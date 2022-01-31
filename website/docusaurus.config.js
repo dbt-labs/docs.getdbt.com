@@ -1,4 +1,5 @@
 const path = require('path');
+const { versions, versionedPages } = require('./dbt-versions.json');
 require('dotenv').config()
 
 /* Debugging */
@@ -29,8 +30,6 @@ if(GIT_BRANCH !== 'current') {
     }
   })
 }
-
-const versions = require('./dbt-versions.json');
 
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
@@ -200,7 +199,10 @@ var siteSettings = {
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
-    path.resolve('plugins/buildBlogData'),
+    [
+      path.resolve('plugins/buildGlobalData'),
+      { versionedPages }
+    ],
     path.resolve('plugins/buildAuthorPages'),
   ],
   scripts: [
