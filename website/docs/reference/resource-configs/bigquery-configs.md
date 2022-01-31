@@ -574,6 +574,9 @@ to expire after a set number of hours by setting `hours_to_expiration`.
 models:
   [<resource-path>](resource-path):
     +hours_to_expiration: 6
+    [<resource-path>](resource-path):
+      # Override parent's expiry with no expiration
+      +hours_to_expiration:
 
 ```
 
