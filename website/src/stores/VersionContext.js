@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react"
-import versionsArray from '../../dbt-versions.json'
+import { versions } from '../../dbt-versions.json'
 
-const lastReleasedVersion = versionsArray[0];
+const lastReleasedVersion = versions[0];
 
 const VersionContext = createContext({
   version: lastReleasedVersion,

@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, {useEffect, memo, useMemo} from 'react';
+import React, {useEffect, memo, useMemo, useContext} from 'react';
 import clsx from 'clsx';
 import {
   isActiveSidebarItem,
@@ -24,10 +24,10 @@ import useIsBrowser from '@docusaurus/useIsBrowser'; // Optimize sidebar at each
 // TODO this triggers whole sidebar re-renders on navigation
 
 import {usePluginData} from '@docusaurus/useGlobalData';
+import VersionContext from '../../stores/VersionContext'
 
 export const DocSidebarItems = memo(({items, ...props}) => {
   const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
-  console.log('items', items)
   console.log('versionedPages', versionedPages)
   return (
     <>
@@ -35,13 +35,30 @@ export const DocSidebarItems = memo(({items, ...props}) => {
         <DocSidebarItem
           key={index} // sidebar is static, the index does not change
           item={item}
+          versionedPages={versionedPages}
           {...props}
         />
       ))}
     </>
   );
 })
-export default function DocSidebarItem({item, ...props}) {
+
+export default function DocSidebarItem({item, versionedPages, ...props}) {
+  
+  const itemFound = versionedPages.find(vpage => vpage.page === item.docId) 
+  if(itemFound) {
+    const { version } = useContext(VersionContext)
+    const currentVersion = parseFloat(version)
+    
+    console.log('itemFound', itemFound)
+    console.log('current version', currentVersion)
+
+    // TODO: Logic to determine if sidebar item within version range
+    if(itemFound.lastVersion) {
+      const lv = parseFloat(itemFound.lastVersion)
+    }
+  }
+
   switch (item.type) {
     case 'category':
       if (item.items.length === 0) {
