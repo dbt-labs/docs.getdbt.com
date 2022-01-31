@@ -19,7 +19,7 @@
    const {title, description, blogPageTitle, sidebar, toc, children, ...layoutProps} = props;
       
    // dbt Custom 
-   const { blogMeta, tagData } = usePluginData('docusaurus-build-blog-data-plugin');
+   const { blogMeta, tagData } = usePluginData('docusaurus-build-global-data-plugin');
    const { 
      featured_image, 
      featured_cta, 
