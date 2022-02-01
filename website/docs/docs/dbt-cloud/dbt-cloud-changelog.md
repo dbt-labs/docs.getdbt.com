@@ -6,32 +6,13 @@ description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.44 (February 2nd, 2022)
 
-
-#### New products and features
+Along with a fresh look and feel, you can now render a DAG in the IDE seamlessly with a metric node. We've also updated recommended dbt commands in the IDE to include dbt Core v1.0 commands. 
 
 #### Performance improvements and enhancements
 
-#### Enhancements
-
-- Show run created/completed times in local time
-- Command bar recommendations based on dbtVersion
-
-#### Feature
-
-- Display Blocked Time on Run Details page
-- Upsert subdirectory if not found at rpc startup time
-
-#### Fixed
-
-- Frontend changes to check pricing plan and audit_log_read permissions for displaying audit log
-- Preventing the DAG in the IDE from crashing the IDE when metrics resource
-- Backend changes to increasae hot storage audit log window to 90 days.
-- Audit log startDate in UI should be 90 days earlier than today
-- Don't write {} to json if file is not found
-- Allow IDE sessions with a subdirectory specified to initialize repo
-- use most recent run to calculate 'Next run in' (back end)
-- use most recent run to calculate 'Next run in' (front end)
-- Adding ReadOnly check to the save button
+* The Command Bar recommendation actions now support dbt Core v1.0 commands. For example, you now see "build" and the "--select" argument.
+* Created and Finished times for runs now use localized timestamps.
+* The scheduler now shows blocked time for a run, which pinpoints the time a job is unable to run, such as waiting for a previous job to finish.  
 
 
 ## dbt Cloud v1.1.43 (January 19th, 2022)
