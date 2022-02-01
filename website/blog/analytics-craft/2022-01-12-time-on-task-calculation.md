@@ -29,12 +29,11 @@ Even still, you've got to do some pretty gnarly SQL or dbt gymnastics to get thi
 
 This piece will provide an overview of how and critically *why* to calculate Time on Task and how we use it here at dbt Labs.
 
+<!--truncate-->
 
-<!--truncate--> 
+## Two strategies to calculate Time on Task 
 
-## Two strategies to calculate Time on Task
-
-1. One-size-fits-all with nested macros
+1. One size fits all with nested macros
 
 This solution allowed us to create a one-line [dbt macro](/docs/building-a-dbt-project/jinja-macros#macros) to account for most common Time On Task use cases by having a series of nested macros behind the scenes. 
 
@@ -50,7 +49,7 @@ After we’ve walked through the mechanics of calculating Time on Task, we’ll 
 
 We’ve put together a series of questions to ask yourself to make sure that you are optimizing Time on Task for the problems it is best suited to solve.
 
-## The one-size-fits-all solution: nested macros
+## The one size fits all solution: nested macros
 
 Our first approach to calculating Time on Task relied upon tying together a series of macros. Specifically, as we diagram below, we needed a way to model non-working time to properly remove it from a standard `date_diff` calculation.
 
