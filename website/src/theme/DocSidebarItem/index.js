@@ -48,14 +48,22 @@ export default function DocSidebarItem({item, versionedPages, ...props}) {
   const itemFound = versionedPages.find(vpage => vpage.page === item.docId) 
   if(itemFound) {
     const { version } = useContext(VersionContext)
-    const currentVersion = parseFloat(version)
-    
-    console.log('itemFound', itemFound)
-    console.log('current version', currentVersion)
+    const currentVersion = version.toString()
+    const { firstVersion, lastVersion } = itemFound
 
-    // TODO: Logic to determine if sidebar item within version range
-    if(itemFound.lastVersion) {
-      const lv = parseFloat(itemFound.lastVersion)
+    // Determine if sidebar item within version range
+    if(lastVersion) {
+      // If lastVersion set for sidebar item, 
+      // check if current version is higher than lastVersion
+      // or if current version is less than firstVersion
+      // If true, remove item in sidebar
+      if(version > lastVersion || version < firstVersion) {
+        return null
+      }
+    } else if(firstVersion > version) {
+      // If firstVersion is greater than currentVersion
+      // remove item from sidebar
+      return null
     }
   }
 
