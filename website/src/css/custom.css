@@ -868,3 +868,7 @@ code {
   }
 }
 
+/* Discourse Comment Embed */
+.commentEmbed {
+  margin-top: 2rem;
+}
