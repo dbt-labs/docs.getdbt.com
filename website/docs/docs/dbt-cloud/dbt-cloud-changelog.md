@@ -14,7 +14,7 @@ Updates to the scheduler include localized timestamps and how long a run remains
 
 * The Command Bar recommendation actions now support dbt Core v1.0 commands. For example, you now see "build" and the "--select" argument.
 * Created and Finished times for runs now use localized timestamps.
-* The scheduler now shows blocked time for a run, which pinpoints the time a job is unable to run, such as waiting for a previous job to finish.  
+* The scheduler now shows blocked time for a run.  
 
 
 ## dbt Cloud v1.1.43 (January 19th, 2022)
