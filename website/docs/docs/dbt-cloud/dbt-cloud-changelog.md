@@ -12,7 +12,7 @@ Updates to the scheduler include localized timestamps and how long a run remains
 
 #### Performance improvements and enhancements
 
-* The Command Bar recommendation actions now support dbt Core v1.0 commands. 
+* The Command bar recommendation actions now support dbt Core v1.0 commands. 
 * Created and Finished times for runs now use localized timestamps.
 * The scheduler now shows blocked time for a run.  
 
