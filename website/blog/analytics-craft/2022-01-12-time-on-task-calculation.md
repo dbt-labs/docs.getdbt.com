@@ -1,5 +1,5 @@
 ---
-title: "How We Measure Business Hours with Time on Task"
+title: "How We Calculate Time on Task, the Business Hours Between Two Dates"
 description: "An overview of how to calculate the Time on Task metric, the number of business hours between two dates, in SQL."
 slug: measuring-business-hours-sql-time-on-task
 
@@ -12,9 +12,7 @@ date: 2022-01-28
 is_featured: false
 ---
 
-# Measuring business hours
-
-Measuring the number of business hours between two dates using SQL is one of those classic problems that sounds simple yet has [plagued analysts since time immemorial](https://www.SQLteam.com/forums/topic.asp?TOPIC_ID=74645).
+Measuring the number of business hours between two dates using SQL is one of those classic problems that sounds simple yet has [plagued analysts since time immemorial](https://www.sqlteam.com/forums/topic.asp?TOPIC_ID=74645).
 
 This comes up in a couple places at dbt Labs:
 
@@ -104,13 +102,13 @@ We maintain a [seed file](/docs/building-a-dbt-project/seeds) in our project tha
 Our first measurement approach recently needed to be adjusted when our business hours changed. It was immediately obvious that this Jenga-tower of macros was too difficult to parse and did not easily accommodate the changes we needed to make. We decided to scrap the whole thing and simplify with the rare (for us!) use of a correlated subquery.
 
 ### How we accounted for changing business hours
-We realized that since we were already maintaining an hourly-grain date dimension table using the [datespine macro from dbt_utils](https://github.com/dbt-labs/dbt-utils/blob/0.7.4/macros/SQL/date_spine.SQL), as mentioned above, we could adjust the boolean `is_business_hour` to reflect the changing schedules over time. Then, we can use the hourly grain table to control the aggregation properly without overly complex macros. The options to accomplish that were:
+We realized that since we were already maintaining an hourly-grain date dimension table using the [datespine macro from dbt_utils](https://github.com/dbt-labs/dbt-utils/blob/0.7.4/macros/sql/date_spine.sql), as mentioned above, we could adjust the boolean `is_business_hour` to reflect the changing schedules over time. Then, we can use the hourly grain table to control the aggregation properly without overly complex macros. The options to accomplish that were:
 
 1. Join directly to the hour-grain table, aggregate after the fact
 
 2. Use a subquery to perform the aggregation
 
-Given that we were actually calculating several of these metrics on one single table of tickets (think: time to first touch, time to first close, time to last touch, etc), direct joining would cause *a lot *of competing fanout that we decided would be too difficult to manage.
+Given that we were actually calculating several of these metrics on one single table of tickets (think: time to first touch, time to first close, time to last touch, etc), direct joining would cause *a lot* of competing fanout that we decided would be too difficult to manage.
 
 Generally speaking, the dbt Labs team tends to opt for use of CTEs rather than subqueries, but this was one of the few times where the benefits seemed to outweigh the tradeoffs. A subquery allowed us to perform our business hours calculation on any two date fields without changing the grain of our tickets model.
 
@@ -122,7 +120,7 @@ Here’s an example to explain our subquery approach:If working hours for our te
 
 * 13 min (1PM - 1:13PM)
 
-which reduces down to
+Which reduces down to:
 
 ```
 
