@@ -5,16 +5,11 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.44 (February 2nd, 2022)
-
-Along with a fresh look and feel, you can now render a DAG in the IDE seamlessly with a metric node. We've also updated recommended dbt commands in the IDE to include dbt Core v1.0 commands, which means you will now see recommendations for "build" and the "--select" argument.
-
-Updates to the scheduler include localized timestamps and how long a run remains blocked, which pinpoints how long a job is unable to run. For example, a run might be blocked waiting for a previous job to finish. Look for these changes in the Timing tab for run details. 
+Love the DAG in the IDE as much as we do? Now when you click on a node in the DAG, the model or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic funcationality throughout the year.
 
 #### Performance improvements and enhancements
 
-* The Command bar recommendation actions now support dbt Core v1.0 commands. 
-* Created and Finished times for runs now use localized timestamps.
-* The scheduler now shows blocked time for a run.  
+* Updated recommended dbt commands in the IDE to include dbt Core v1.0 commands, such as "build" and the "--select" argument.  
 
 
 ## dbt Cloud v1.1.43 (January 19th, 2022)
