@@ -3,8 +3,6 @@ title: Setting up with Snowflake
 id: setting-up-snowflake
 ---
 
-This guide is under construction
-
 ## Get started with Snowflake
 
 1. Getting started with Snowflake is super easy. You can sign up for a free trial by following [this link](https://signup.snowflake.com/). 
@@ -15,7 +13,9 @@ This guide is under construction
 
 3. Select the Enterprise edition, choose a cloud provider and region, and agree to the terms of service. There are some organizational questions to think about when choosing a cloud provider for a full implementation, which you can read more about [here](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html). For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like. Finally, click get started.
 
-<Lightbox src="/img/snowflake_tutorial/choose_your_cloud_provider.png" title="Choose Your Cloud Provider" />
+<p align="center">
+<Lightbox  src="/img/snowflake_tutorial/choose_your_cloud_provider.png" title="Choose Your Cloud Provider" />
+</p>
 
 4. After submitting the signup form you should receive an email asking you to activate your account. Click on the link in the email and a new tab will open up where you’ll create your username and password. Enter in all that info and click Get started.
 
@@ -32,6 +32,7 @@ This guide is under construction
 
 2. Run the following commands to create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and a jaffle_shop schema for your raw data. Feel free to copy/paste from below:
 
+```sql
 create warehouse transforming;
 
 create database raw;
@@ -39,11 +40,13 @@ create database raw;
 create database analytics;
 
 create schema raw.jaffle_shop;
+```
 
 <Lightbox src="/img/snowflake_tutorial/create_warehouse_commands.png" title="Create Warehouse Commands" />
 
 3. Create the jaffle_shop.customers table and then copy the customers data from S3 into the customers table by following these commands:
 
+```sql
 ​​create table raw.jaffle_shop.customers 
 ( id integer,
   first_name varchar,
@@ -58,6 +61,7 @@ file_format = (
 	skip_header = 1
 	)
 ;
+```
 
 <Lightbox src="/img/snowflake_tutorial/create_customers_table.png" title="Create Customers Table" />
 
@@ -85,6 +89,7 @@ file_format = (
 
 5. Create the stripe schema, the payment table, and copy the payment data into the payment table by following these commands:
 
+```sql
 create schema raw.stripe;
 
 create table raw.stripe.payment 
@@ -105,20 +110,23 @@ file_format = (
 	skip_header = 1
 	)
 ;
+```
 
 <Lightbox src="/img/snowflake_tutorial/create_payments_table.png" title="Create Payments Table" />
 
 6. Great! Your data is loaded and ready to go. Just to make sure, run the following commands to query your data and confirm that you see an output for each one. 
 
+```sql
 select * from raw.jaffle_shop.customers;
 
 select * from raw.jaffle_shop.orders;
 
 select * from raw.stripe.payment;
+```
 
 Now we’re ready to set up dbt Cloud!
 
-## Set up a project to connect dbt Cloud to Snowflake (partner connect)
+## Set up a project to connect dbt Cloud to Snowflake with Partner Connect
 
 1. With your Snowflake account up and running with data, we’re ready to connect it with dbt Cloud. We’re going to use [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to set up your dbt Cloud account and project. Using Partner Connect will allow you to create a complete dbt account with your [Snowflake connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake), [a managed repository](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository), [environments](https://docs.getdbt.com/docs/guides/managing-environments), and credentials. 
 
