@@ -120,7 +120,7 @@ module.exports = {
     {
       type: "category",
       label: "Overview",
-      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
+      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' },
       items: [
         'docs/dbt-cloud/cloud-quickstart',
       ],
@@ -254,7 +254,7 @@ module.exports = {
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposures",
-            ],
+              ],
             },
           ],
         },
@@ -570,19 +570,17 @@ module.exports = {
   tutorial: [
     {
       type: "category",
-      label: "Getting Started",
+      label: "Get Started with dbt",
+      link: { type: 'doc', id: 'tutorial/setting-up' },
       items: [
         {
           type: "category",
-          label: "Setting up",
-          link: { 
-            type: 'doc', 
-            id: 'tutorial/setting-up'
-          },
+          label: "Set up your data platform",
+          link: { type: 'doc', id: 'tutorial/set-up-data-platform' },
           items: [
             "tutorial/setting-up-bigquery",
             "tutorial/setting-up-snowflake",
-            "tutorial/setting-up-databricks"
+            "tutorial/setting-up-databricks",
           ],
         },
         {
@@ -596,34 +594,15 @@ module.exports = {
         "tutorial/build-your-first-models",
         "tutorial/test-and-document-your-project",
         "tutorial/deploy-your-project",
-      ],
+          ],
     },
     {
       type: "category",
-      label: "Leveling up",
+      label: "Level up",
       collapsed: false,
       items: [
         "tutorial/using-jinja",
         "tutorial/refactoring-legacy-sql"
-      ],
-    },
-  ],
-  learn: [
-    {
-      type: "category",
-      label: "Getting Started",
-      items: [
-        "learn/setting-up",
-        {
-          type: "category",
-          label: "Create a project",
-          items: [
-            "learn/create-a-project-dbt-cloud",
-            "learn/create-a-project-dbt-cli",
-          ],
-        },
-        "learn/build-your-first-models",
-        "learn/test-and-document-your-project",
       ],
     },
   ],
