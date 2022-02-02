@@ -586,6 +586,7 @@ module.exports = {
         {
           type: "category",
           label: "Create a project",
+            link: { type: 'doc', id: 'tutorial/create-a-project' },
           items: [
             "tutorial/create-a-project-dbt-cloud",
             "tutorial/create-a-project-dbt-cli",
