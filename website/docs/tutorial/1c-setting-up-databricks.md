@@ -157,16 +157,79 @@ select * from stripe.payments
 
 <Lightbox src="/img/databricks_tutorial/images/query_check.png" title="Query Check" />
 
+6. To get setup in dbt Cloud, you will now need to get the SQL Endpoint connection information and generate a user token. 
+
+You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information or keep this window open for the next part.
+
+<Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
+
+7. To generate a user token for your development credentials in dbt Cloud, click on `Settings` on the left side console (while still in the SQL part of the workspace). Click on `Personal Access Token` and provide a comment like `dbt Cloud development`
+
+<Lightbox src="/img/databricks_tutorial/images/Generate_user_token.png" title="Generate User Token" />
+
+Save the token information somewhere because you will need it for the next part. 
+
 
 Congratulations! At this point, you have created a Databricks account, loaded training data, and successfully set up a SQL end point to query the data.  In the next section, we will walk through the next steps to connect dbt Cloud and Databricks.
+
 
 ## Set up a project to connect dbt Cloud to Databricks
 
 Now it’s time to connect to dbt Cloud to Databricks in order to develop your dbt Project. 
 
-If you haven’t already, navigate to dbt Cloud and create a new account. If you already have a dbt Cloud account, you can create a new project in your existing account.  In this tutorial, we will be using the Set Up project workflow for new users.  This can easily be adapted for additional projects to an existing account.
+If you don't have an existing dbt Cloud account, you can [sign up for a dbt Cloud trial account here.](https://www.getdbt.com/signup/). If you already have a dbt Cloud account, you can create a new project in your existing account.  In this tutorial, we will be using the Set Up project workflow for new users.  This can easily be adapted for additional projects to an existing account.
 
+1. Log into dbt Cloud in a new window. Once you have logged into your new account and validated your email, you will see our Project Setup Flow with the page Set up “Analytics”.  Click `Continue`. 
 
-1. Let’s go over to dbt Cloud.  In the suitcase project dropdown at the top, click “Create a new account…”. Add a “COMPANY NAME”. As soon as you create a new account, you will be created with the Project Setup Flow, Set up “Analytics”.  Click”Continue”.
+<Lightbox src="/img/databricks_tutorial/images/setup_flow_dbt_cloud.png" title="dbt Cloud Set Up Flow" />
 
+2. Choose `Databricks` on the Set Up a Database Connection page. 
 
+<Lightbox src="/img/databricks_tutorial/images/setup_database_connection.png" title="Databrick Connection" />
+
+3. Here we will configure our connection to Databricks.
+ 
+ a. For the name, simply write `Databricks` or another simple title.
+ b. For Databricks settings, reference your SQL endpoint connection details for each of the following field:
+ - Method will be ODBC
+ - “Hostname” comes from “Server hostname”
+ - “Endpoint” comes from the last part of “HTTP path” after `/endpoints`
+ c. For your Development Credentials, input: 
+ - “User” input “token” from Step 7 of the previous section
+ - For the schema field, choose a development schema (this will be your default development database to build objects into).  We recommend something in the form of dbt_{{ first initial, last name}} like dbt_achen.  
+ 
+ <Lightbox src="/img/databricks_tutorial/images/setup_databricks_connection.png" title="Databrick Connection" />
+ 
+ 4. Then scroll to the top of the page to test your connection. Once successful, click on `Continue`
+
+5. On the next page, we will “Set up a Repository”.  For training purposes, we recommend selecting a managed repo and entering your first initial, last name for the repository name.  “Create” your repository and select “Continue”.
+
+6. Now you can start developing!  Open the left hand hamburger menu in dbt Cloud and choose “Develop”.  This will load up the dbt Cloud IDE.  
+
+7. In the upper left hand corner, select `initialize your project`.  This will set up the folder structure for your dbt Project.  Then select `commit` to initialize your repo with the commit message `Initial Commit`.  Create a new branch with the title `start-dbt-fundamentals`.  Your UI in the top left should look like this.
+
+ <Lightbox src="/img/databricks_tutorial/images/IDE.png" title="dbt Cloud IDE" />
+ 
+ 8. Finally, let’s make sure everything is connected correctly.  In the “Statement 1” tab, type the following code: 
+ 
+ ```sql 
+ Select * from jaffle_shop_customers 
+```
+Click on `Preview` and you should see the same results as you saw earlier when you queried the table directly in Databricks SQL editor.
+
+ <Lightbox src="/img/databricks_tutorial/images/preview_query.png" title="Preview Query" />
+
+9. Now to make sure your dbt project can run. In the command line below, type in `dbt run`. 
+
+ <Lightbox src="/img/databricks_tutorial/images/dbt_run.png" title="Test out dbt run" />
+ 
+ You can click on the tab to expand to see 
+ 
+ <Lightbox src="/img/databricks_tutorial/images/dbt_run_status.png" title="dbt Run status" />
+ 
+
+Success!  You are all set to leverage the power of dbt Cloud and Databricks together.  As a recap, we just completed the following:
+Set up a Databricks account
+Loaded training data into your Databricks account
+Configured a SQL endpoint in Databricks
+Connected dbt Cloud and Databricks
