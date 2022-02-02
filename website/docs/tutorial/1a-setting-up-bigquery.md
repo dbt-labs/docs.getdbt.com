@@ -7,6 +7,8 @@ id: setting-up-bigquery
 
 Anyone with a Google Account can use BigQuery, so let's go through how to Create a BigQuery project
 
+<LoomVideo id="f9f42ae9ef7643b2b2043256927feb26" />
+
 1. Go to the [BigQuery Console](https://console.cloud.google.com/bigquery)
 
    1. If you don't have a Google Cloud Platform account you will be asked to create one.
@@ -25,12 +27,13 @@ Anyone with a Google Account can use BigQuery, so let's go through how to Create
    
    4. It will automatically populate with a project name, feel free to pick something that makes more sense. I chose 'dbt Learn - Bigquery Setup'.  Click “Create”!
 
+
 ## Access Sample Data Within BigQuery
 
-BigQuery supports public data sets that can be directly queried, so we don't need to go into creating datasets necessarily. The data is publicly available with the following select statements.
+BigQuery supports public data sets that can be directly queried, so we will show you how to access those datasets via select statements. Additionally, we will show you how to populate your own database objects with that data.
 
 1. Head back to the [BigQuery Console](https://console.cloud.google.com/bigquery), and ensure your new project is selected. 
-> Note: If you do not see your account or project, click on your profile picture on the far right to ensure you are under the proper email address account. Sometimes when following links, your account switches from personal email to work email, or vice versa.
+    > Note: If you do not see your account or project, click on your profile picture on the far right to ensure you are under the proper email address account. Sometimes when following links, your account switches from personal email to work email, or vice versa.
 
 2. Copy and paste the below queries into the Query Editor to validate that you are able to run them successfully.
 
@@ -91,10 +94,13 @@ BigQuery supports public data sets that can be directly queried, so we don't nee
 
 ## Generate BigQuery Credentials
 
+<LoomVideo id="33f64471b1714be397ada074cdbd8649" />
+
 In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
 
-1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar 
-    > Note: > Note: If you do not see your account or project, click on your profile picture on the far right to ensure you are under the proper email address account. Sometimes when following links, your account switches from personal email to work email, or vice versa.
+1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
+    > Note: If you do not see your account or project, click on your profile picture on the far right to ensure you are under the proper email address account. Sometimes when following links, your account switches from personal email to work email, or vice versa.
+    
     <Lightbox src="/img/bigquery/project-selected.png" title="Bigquery Project Selected" />
 
 2. Generate credentials with the following options:
@@ -113,15 +119,18 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
     2. “Service account details”
 
         1. "Service account name" `dbt-user` (although I chose `dbt-learn-admin`)
-            > Note: You can enter a description for future reference, but this is optional
+            > Note: You can enter a description for future reference, but this is optional.
+
             <Lightbox src="/img/bigquery/api-service-account-details.png" title="Bigquery API - Service Account Details" />
 
         2. Click “CREATE AND CONTINUE”
 
-    3. Create and/or grant access to project. The simplest way is to set up one owner/admin role, but you can set up different permissions here for developers or read-only if required.
+    3. Create and/or grant access to project. 
+        > Note: The simplest way is to set up one owner/admin role, but you can set up different permissions here for developers or read-only if required.
+
         <Lightbox src="/img/bigquery/api-grant-service-access.png" title="Bigquery API - Grant Service Account Access" />
 
-        1. then click “CONTINUE”  
+        1. then click “CONTINUE”
 
     4. Grant users access:
 
@@ -142,6 +151,8 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
     3. Click “CREATE” and it will download the keyfile
 
 ## Set up a dbt Cloud project and connect to BigQuery
+
+<LoomVideo id="c75212052038463b977d0eb856d25ff1" />
 
 Above we created a project in Bigquery and created an API key so we interact with BigQuery from other applications. Now we are going to navigate to dbt Cloud and see if we can access our BigQuery Project!
 
@@ -185,8 +196,11 @@ Above we created a project in Bigquery and created an API key so we interact wit
 
 Welcome to dbt Learn on dbt Cloud!
 
+<LoomVideo id="df61a23b29974710b67088514f895aa5" />
+
 1. Click “Start Developing”.
-    > Note: This can take a few minutes for your project to spin up for the first time, as it established your git connection, clones your repo, and tests the connection to the warehouse. 
+    > Note: This can take a few minutes for your project to spin up for the first time, as it established your git connection, clones your repo, and tests the connection to the warehouse.
+        
     <Lightbox src="/img/bigquery/start-developing.png" title="dbt Cloud - Start Developing" />
 
 2. Click “initialize your project”
