@@ -194,7 +194,7 @@ Above we created a project in Bigquery and created an API key so we interact wit
 
         3. Click “Create” then “Continue”
 
-## Welcome to dbt Learn on dbt Cloud!
+## Test Your Connection on dbt Cloud
 
 <LoomVideo id="df61a23b29974710b67088514f895aa5" />
 
