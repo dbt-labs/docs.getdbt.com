@@ -4,7 +4,7 @@ id: setting-up
 description: "Create your first dbt project using a SQL query."
 ---
 
-Learn how to turn the following SQL query into a tested, documented, and deployed dbt project. You can preview [the generated documentation](https://www.getdbt.com/getting-started-tutorial/#!/overview?g_v=1) for the project we're building. You'll need a working knowledge of SQL to complete this tutorial.
+Learn how to turn the following SQL query into a tested, documented, and deployed dbt project. You can preview [the generated documentation](https://www.getdbt.com/getting-started-tutorial/#!/overview) for the project we're building. You'll need a working knowledge of SQL to complete this tutorial.
 
 If you want a more in-depth learning experience, consider taking some [dbt Learn online courses](https://courses.getdbt.com/).
 
