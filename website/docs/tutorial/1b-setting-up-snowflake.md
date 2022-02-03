@@ -273,7 +273,7 @@ It should take a few seconds to create the repo and once it’s complete you’l
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_write_commit_message.png" title="dbt Cloud - Write Commit Message" />
 </p>
 
-4. Next we’re going to make sure that you can query the data we loaded earlier from within the IDE. Enter the following code into a tab in the IDE and click preview to view the results:<br>
+4. Next we’re going to make sure that you can query the data we loaded earlier from within the IDE. Enter the following code into a tab in the IDE and click preview to view the results:
 `select * from raw.jaffle_shop.customers`
 
 <p align="center">
