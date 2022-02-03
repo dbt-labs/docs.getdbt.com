@@ -140,7 +140,7 @@ select * from raw.jaffle_shop.orders;
 select * from raw.stripe.payment;
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;Now we’re ready to set up dbt Cloud!
+Now we’re ready to set up dbt Cloud!
 
 ## Set up a project to connect dbt Cloud to Snowflake with Partner Connect
 
@@ -154,7 +154,7 @@ select * from raw.stripe.payment;
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 </p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Snowflake New UI: If you’re using the new web interface, you’ll want to click on your name in the upper left hand corner and then click on Partner Connect in the drop down menu.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
+Snowflake New UI: If you’re using the new web interface, you’ll want to click on your name in the upper left hand corner and then click on Partner Connect in the drop down menu.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_partner_connect.png" title="Snowflake New UI - Partner Connect" />
@@ -239,7 +239,7 @@ then the account will be: `oq65696.west-us-2.azure`
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_set_up_a_repository.png" title="dbt Cloud - Set Up a Repository" />
 </p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;It should take a few seconds to create the repo and once it’s complete you’ll see a Successfully imported repository message and you’ll be able to click Continue. 
+It should take a few seconds to create the repo and once it’s complete you’ll see a Successfully imported repository message and you’ll be able to click Continue. 
 
 11. You can skip the final step of inviting other users to your account and click Skip & Complete to finish the setup. You’ll be able to go back and add users at any point within your account. 
 
@@ -282,7 +282,7 @@ then the account will be: `oq65696.west-us-2.azure`
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_dbt_run.png" title="dbt Cloud - dbt run" />
 </p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;When you expand the run bar you should see something similar to the below. This run should have created the two example models in your development schema in Snowflake. By clicking on each model you should see more details about each run in the drop down menu. Next, go into your trial Snowflake account and open up the `ANALYTICS` database. You should be able to see that your development schema was created by this run and within that schema both of the models that you just ran.
+When you expand the run bar you should see something similar to the below. This run should have created the two example models in your development schema in Snowflake. By clicking on each model you should see more details about each run in the drop down menu. Next, go into your trial Snowflake account and open up the `ANALYTICS` database. You should be able to see that your development schema was created by this run and within that schema both of the models that you just ran.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_run_results.png" title="dbt Cloud - Run Results" />
