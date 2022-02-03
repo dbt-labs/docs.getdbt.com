@@ -8,7 +8,7 @@ authors: [dconnors]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-01-28
+date: 2022-02-03
 is_featured: false
 ---
 
@@ -31,11 +31,11 @@ This piece will provide an overview of how and critically *why* to calculate Tim
 
 <!--truncate-->
 
-## Two strategies to calculate Time on Task 
+## Two strategies to calculate Time on Task
 
 1. One size fits all with nested macros
 
-This solution allowed us to create a one-line [dbt macro](/docs/building-a-dbt-project/jinja-macros#macros) to account for most common Time On Task use cases by having a series of nested macros behind the scenes. 
+This solution allowed us to create a one-line [dbt macro](/docs/building-a-dbt-project/jinja-macros#macros) to account for most common Time On Task use cases by having a series of nested macros behind the scenes.
 
 This strategy does a great job in being able to account for nights, weekends and custom holidays, but lacks the flexibility to accommodate changes in business hours, so we've transitioned off of it to the 2nd option:
 
@@ -45,7 +45,7 @@ Our current production Time on Task calculation is able to be both powerful and 
 
 You can find example code for each of these approaches in [an example repo](https://github.com/dbt-labs/dbt-labs-experimental-features/tree/master/business-hours).
 
-After we’ve walked through the mechanics of calculating Time on Task, we’ll spend some time thinking about how and why to use this metric in your reporting. Time on Task can be a huge boon for operational reporting, but like any metric it has inherent strengths and weaknesses in terms of reflecting actual business value. 
+After we’ve walked through the mechanics of calculating Time on Task, we’ll spend some time thinking about how and why to use this metric in your reporting. Time on Task can be a huge boon for operational reporting, but like any metric it has inherent strengths and weaknesses in terms of reflecting actual business value.
 
 We’ve put together a series of questions to ask yourself to make sure that you are optimizing Time on Task for the problems it is best suited to solve.
 
