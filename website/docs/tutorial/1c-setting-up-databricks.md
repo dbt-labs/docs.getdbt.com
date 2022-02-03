@@ -5,7 +5,7 @@ id: setting-up-databricks
 
 This guide is under construction
 
-## Prerequeistics 
+## Prerequisites  
 
 Before starting this tutorial, you will need the following:
 
