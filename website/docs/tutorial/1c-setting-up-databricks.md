@@ -82,7 +82,7 @@ If you ever want to edit the cluster in terms of the name of the cluster and res
 
 ## Loading sample data into Databricks
 
-Before we get started on the tutorial, we will need some data to transform. Luckily for us, Databricks makes it really easy for us to upload data. 
+Our next step is to load some data to transform. Luckily for us, Databricks makes it really easy for us to upload data. 
 
 1. Download the following csv files locally that you will need for this tutorial. You can find them here:
 
