@@ -39,3 +39,7 @@ As Ben Franklin once said:
 > In matters of principle, stand like a rock; in matters of taste, swim with the current.
 
 <Lightbox src="/img/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/>
+
+To enable dark mode in the Cloud IDE, click the vertical … menu at the top of the file tree. As a heads up, this does not persist between sessions at present.
+
+"![dark_mode_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/89008547/152340422-36c2ac79-bc6a-4993-ba0f-b39d04443601.gif)"
