@@ -117,11 +117,7 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
 
     <Lightbox src="/img/databricks_tutorial/images/new_table_created.png" title="Jaffle Shop Customers table" />
     
-8. Now let’s do the same for `Jaffle Shop Orders` and `Stripe Payments` by clicking on the Data tab on the left hand console. The end result will be three tables in the default database. While updating the table attributes, follow the same directions as in Step 6 with the following renaming:
-
-- Stripe Payments = `stripe_payments` 
-
-- Jaffle Shop Orders = `jaffle_shop_orders`
+8. Now let’s do the same for `Jaffle Shop Orders` and `Stripe Payments` by clicking on the Data tab on the left hand console. The end result will be three tables in the default database. While updating the table attributes, follow the same directions as in Step 6.
 
     <Lightbox src="/img/databricks_tutorial/images/raw_tables_created.png" title="Raw Data Tables" />
 
