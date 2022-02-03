@@ -72,7 +72,7 @@ Provide the name of your workspace and choose the appropriate AWS region and cli
 
 Spark cluster is going to be your compution resource for running your analytics workloads. We will be using it to run our queries. 
 
-Ghosting over the Databricks logo on the left, you will see a left hand side console. Click on `Compute` and you will see the clusters at your disposal. For this tutorial, we will be using the starter cluster that comes with our workspace but you can always create your own. 
+Hovering over the Databricks logo on the left, you will see a left hand side console. Click on `Compute` and you will see the clusters at your disposal. For this tutorial, we will be using the starter cluster that comes with our workspace but you can always create your own. 
 
 Ghosting your pointer over the space under `Actions` of your starter cluster, click on the play button. Confirm that you do want to start up the cluster.'
 
