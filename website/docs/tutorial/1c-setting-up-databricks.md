@@ -86,11 +86,9 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
 
 1. Download the three csv files locally that you will need for this tutorial. You can find them here:
 
-- [Jaffle Shop Orders](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
-
-- [Jaffle Shop Customers](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
-
-- [Stripe Payments](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
+- [jaffle_shop_customers.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
+- [jaffle_shop_orders.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
+- [stripe_payments.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
 
 
 2. In your workspace, go to `Data` on the left side console. You should still be in the “Data Science & Engineering” part of the workspace. 
