@@ -52,7 +52,7 @@ Provide the name of your workspace and choose the appropriate AWS region and cli
     
 9. Check off the Acknowledgement and click `Create stack`.     
     
-    <Lightbox src="/img/databricks_tutorial/images/create_stack.png" title="Parameters" />
+    <Lightbox src="/img/databricks_tutorial/images/create_stack.png" title="Capabilities" />
     
 10. Afterwards, you should land on the `CloudFormation > Stacks` page. Once the status becomes `CREATE_COMPLETE`, you shall be ready to start. This process can take about 5 minutes so feel free to click on refresh to refresh the status updates. 
 
