@@ -62,7 +62,7 @@ BigQuery supports public data sets that can be directly queried, so we will show
         <Lightbox src="/img/bigquery/create-dataset-id.png" title="Bigquery Create Dataset ID" />
     
     6. Leave everything else as is:
-        - “Data location” can be left blank -- if selected, this determines the AWS location where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
+        - “Data location” can be left blank -- if selected, this determines the GCP location where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
         - Even though it is unchecked, billing table expiration will be set automatically to 60 days, because billing has not been enabled for this project, so AWS defaults to deprecating tables.
         - Let Google manage encryption
         - Click “CREATE DATASET”
