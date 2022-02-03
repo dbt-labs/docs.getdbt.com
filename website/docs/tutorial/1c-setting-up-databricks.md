@@ -84,7 +84,7 @@ If you ever want to edit the cluster in terms of the name of the cluster and res
 
 Our next step is to load some data to transform. Luckily for us, Databricks makes it really easy for us to upload data. 
 
-1. Download the following csv files locally that you will need for this tutorial. You can find them here:
+1. Download the three csv files locally that you will need for this tutorial. You can find them here:
 
 - [Jaffle Shop Orders](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
 
