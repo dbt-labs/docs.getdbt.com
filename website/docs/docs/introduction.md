@@ -109,7 +109,7 @@ Importantly, dbt also uses the `ref` function to determine the sequence in which
 
 <Lightbox src="/img/docs/2ce8dce-Screen_Shot_2018-09-16_at_11.46.12_AM.png" title="A DAG for a simple dbt project"/>
 
-dbt builds a directed acyclic graph (DAG) based on the interdepencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
+dbt builds a directed acyclic graph (DAG) based on the interdependencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
 
 When dbt runs, models are executed in the order specified by the DAG – there’s no need to explicitly define the order of execution of your models. Building models in staged transformations also reduces the need to repeat SQL, as a single transformation (for example, renaming a column) can be shared as a predecessor for a number of downstream models.
 
