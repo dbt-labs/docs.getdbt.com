@@ -184,7 +184,7 @@ If you don't have an existing dbt Cloud account, you can [sign up for a dbt Clou
 
     a. For the name, write `Databricks` or another simple title.
     
-    b. For Databricks settings, reference your SQL endpoint connection details from part 6 of the previous section for each of the following fields:
+    b. For Databricks settings, reference your SQL endpoint connection details from step 6 of the previous section for each of the following fields:
     
     <ul>
         <li> Method will be ODBC</li>
