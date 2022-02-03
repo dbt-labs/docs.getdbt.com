@@ -38,7 +38,9 @@ A Databricks workspace is an environment for accessing all of your Databricks as
 
 Provide the name of your workspace and choose the appropriate AWS region and click on `Start Quickstart`. You might get the checkbox of `I have data in S3 that I want to query with Databricks`. You do not need to check this off for the purpose of this tutorial. 
 
-    <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" />
+<Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" title="Setup First Workspace" />
+
+
 
 7. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
 
