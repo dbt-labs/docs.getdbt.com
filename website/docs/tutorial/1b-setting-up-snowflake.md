@@ -148,27 +148,23 @@ Now we’re ready to set up dbt Cloud!
 
 2. There’s a couple of ways you can access the Partner Connect page depending on if you’re navigating in the classic Snowflake UI or the new UI. 
 
-    1. If you’re using the classic version of the Snowflake UI, you can click the Partner Connect button in the top bar of your account.
+  Snowflake Classic UI: If you’re using the classic version of the Snowflake UI, you can click the Partner Connect button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 </p>
 
-    From there, click on the dbt tile to open up the connect box. 
-
-    2. If you’re using the new web interface, you’ll want to click on your name in the upper left hand corner and then click on Partner Connect in the drop down menu.
+  Snowflake New UI: If you’re using the new web interface, you’ll want to click on your name in the upper left hand corner and then click on Partner Connect in the drop down menu.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_partner_connect.png" title="Snowflake New UI - Partner Connect" />
 </p>
 
-    You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
-
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 </p>
 
-3. Once you’ve clicked on the tile, a connection box will appear that will look slightly different depending on the route you took above, but will contain the same Optional Grant box towards the bottom. In both cases, you’ll want to type in or select the RAW and ANALYTICS databases. This will grant access for your new dbt user role to each database. 
+3. Once you’ve clicked on the tile, a connection box will appear that will look slightly different depending on the route you took above, but will contain the same Optional Grant box towards the bottom. In both cases, you’ll want to type in or select the `RAW` and `ANALYTICS` databases. This will grant access for your new dbt user role to each database. 
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
@@ -178,7 +174,7 @@ Now we’re ready to set up dbt Cloud!
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" title="Snowflake New UI - Connection Box" />
 </p>
 
-4. After you’ve entered the database names using either option above, click Connect. You should see a pop up window similar to the one of the options below. Click Activate.
+4. After you’ve entered the database names using either option above, click "Connect". You should see a pop up window similar to the one of the options below. Click Activate.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" title="Snowflake Classic UI - Actviation Window" />
@@ -198,16 +194,16 @@ Now we’re ready to set up dbt Cloud!
 
 ## Set up a project to connect dbt Cloud to Snowflake Without Partner Connect
 
-1. With your Snowflake account up and running with data, we’re ready to connect it with dbt Cloud. We’ll start by going to [https://cloud.getdbt.com/signup/](https://cloud.getdbt.com/signup/) to start the signup process. Fill out all the information and click Create my account.
+1. With your Snowflake account up and running with data, we’re ready to connect it with dbt Cloud. We’ll start by going to [https://cloud.getdbt.com/signup/](https://cloud.getdbt.com/signup/) to start the signup process. Fill out all the information and click "Create my account".
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_registration.png" title="dbt Cloud - Account Registration" />
 </p>
 
-2. Once your account is created you’ll get a verification email. When you click the ‘Verify Email Address’ button in the email you should be redirected to your new dbt Cloud account.
+2. Once your account is created you’ll get a verification email. When you click the "Verify Email Address" button in the email you should be redirected to your new dbt Cloud account.
 
 <p align="center">
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup.png" title="dbt Cloud - Set Up" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup.png" title="dbt Cloud - Setup" />
 </p>
 
 3. Clicking Continue will send you to start setting up the database connection. Click Snowflake.
@@ -216,12 +212,12 @@ Now we’re ready to set up dbt Cloud!
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_connect_snowflake.png" title="dbt Cloud - Connect Snowflake" />
 </p>
 
-4. To create the connection we’ll start by inputting the account information. Your account is going to be the url of your Snowflake trial account up to the period before snowflakecomputing.com. So, if this is the full url of my trial account: oq65696.west-us-2.azure.snowflakecomputing.com 
-then the account will be: oq65696.west-us-2.azure
+4. To create the connection we’ll start by inputting the account information. Your account is going to be the url of your Snowflake trial account up to the period before snowflakecomputing.com. So, if this is the full url of my trial account: `oq65696.west-us-2.azure.snowflakecomputing.com`
+then the account will be: `oq65696.west-us-2.azure`
 
 5. The role is optional and can be left blank for the purposes here, but this can be filled in with the role that you’d like dbt to assume when connecting. 
 
-6. Enter ANALYTICS as the database name and TRANSFORMING as the warehouse name. We created this database and warehouse earlier in the setup when adding data to our warehouse. This tells dbt to create models in the ANALYTICS database and to use the TRANSFORMING warehouse when running queries and building models. After all this is entered, the Snowflake settings section should look something like this, with your trial url as the account:
+6. Enter `ANALYTICS` as the database name and `TRANSFORMING` as the warehouse name. We created this database and warehouse earlier in the setup when adding data to our warehouse. This tells dbt to create models in the `ANALYTICS` database and to use the `TRANSFORMING` warehouse when running queries and building models. After all this is entered, the Snowflake settings section should look something like this, with your trial url as the account:
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
@@ -229,21 +225,21 @@ then the account will be: oq65696.west-us-2.azure
 
 7. We’ll create the connection with your Snowflake account using your username and password, which means we’ll use the Username & Password Auth Method. Enter in the username and password that were created when you started the Snowflake trial account. Note that the username is not your email address and is usually your first and last name together in one word. 
 
-8. Leave the rest of the Development Credentials section as is. You’ll notice that the schema name has been auto created for you and is dbt_ followed by your first initial and last name. This is the schema connected directly to your development environment and is where your models will be built when running dbt within the Cloud IDE.
+8. Leave the rest of the Development Credentials section as is. You’ll notice that the schema name has been auto created for you and is `dbt_` followed by your first initial and last name. This is the schema connected directly to your development environment and is where your models will be built when running dbt within the Cloud IDE.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
 </p>
 
-9. Scroll back to the top of the page and click test to test your connection with Snowflake. If it’s successful, you should see a green connection succeeded banner at the top of the page and you can click continue. If the connection is unsuccessful, you should see an error message returned to allow you to take action to resolve the issue specified by the error. Keep testing until you’re able to successfully create the connection. 
+9. Scroll back to the top of the page and click "Test" to check your connection with Snowflake. If it’s successful, you should see a green connection succeeded banner at the top of the page and you can continue. If the connection is unsuccessful you should see an error message returned, allowing you to take action to resolve the issue specified by the error. Keep testing until you’re able to successfully create the connection. 
 
-10. Now it’s time to create your Git repository. For this setup we’re going to stick with a dbt Cloud managed repository, but feel free to create your own repo and connect it to your git provider of choice if you’d like to manage it yourself. To create the managed repository, make sure that Managed is selected from the list of repos/options and then type in the name that you’d like to give the repo. Once complete, click create.
+10. Now it’s time to create your Git repository. For this setup we’re going to stick with a dbt Cloud managed repository, but feel free to create your own repo and connect it to your git provider of choice if you’d like to manage it yourself. To create the managed repository, make sure that `Managed` is selected from the list of repos/options and then type in the name that you’d like to give the repo. Once complete, click "Create".
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_set_up_a_repository.png" title="dbt Cloud - Set Up a Repository" />
 </p>
 
-It should take a few seconds to create the repo and once it’s complete you’ll see a Successfully imported repository message and you’ll be able to click Continue. 
+  It should take a few seconds to create the repo and once it’s complete you’ll see a Successfully imported repository message and you’ll be able to click Continue. 
 
 11. You can skip the final step of inviting other users to your account and click Skip & Complete to finish the setup. You’ll be able to go back and add users at any point within your account. 
 
@@ -251,7 +247,7 @@ It should take a few seconds to create the repo and once it’s complete you’l
 
 ## Start developing in dbt Cloud
 
-1. On the welcome page click Start Developing, which will take you to Cloud IDE.
+1. On the welcome page click "Start Developing", which will take you to Cloud IDE.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_welcome_page.png" title="dbt Cloud - Welcome Page" />
@@ -263,7 +259,7 @@ It should take a few seconds to create the repo and once it’s complete you’l
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_initialize_your_project.png" title="dbt Cloud - Initialize Your Project" />
 </p>
 
-3. Next you’ll want to commit all the newly created folders and files to your main branch. Click commit, enter a brief message, and then click commit again in the pop up window.
+3. Next you’ll want to commit all the newly created folders and files to your main branch. Click "commit", enter a brief message, and then click "Commit" again in the pop up window.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_click_commit.png" title="dbt Cloud - Click Commit" />
@@ -280,13 +276,13 @@ It should take a few seconds to create the repo and once it’s complete you’l
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_preview_results.png" title="dbt Cloud - Preview Results" />
 </p>
 
-5. Alright, we’re ready to run our first dbt command. In the run bar at the bottom of the screen enter dbt run and click enter.
+5. Alright, we’re ready to run our first dbt command. In the run bar at the bottom of the screen enter `dbt run` and click "Enter".
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_dbt_run.png" title="dbt Cloud - dbt run" />
 </p>
 
-When you expand the run bar you should see something similar to the below. This run should have created the two example models in your development schema in Snowflake. By clicking on each model you should see more details about each run in the drop down menu. Next, go into your trial Snowflake account and open up the `ANALYTICS` database. You should be able to see that your development schema was created by this run and within that schema both of the models that you just ran.
+  When you expand the run bar you should see something similar to the below. This run should have created the two example models in your development schema in Snowflake. By clicking on each model you should see more details about each run in the drop down menu. Next, go into your trial Snowflake account and open up the `ANALYTICS` database. You should be able to see that your development schema was created by this run and within that schema both of the models that you just ran.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_run_results.png" title="dbt Cloud - Run Results" />
