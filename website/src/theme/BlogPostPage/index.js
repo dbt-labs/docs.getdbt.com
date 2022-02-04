@@ -4,17 +4,17 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 import Seo from '@theme/Seo';
 import Head from '@docusaurus/Head';
 import BlogLayout from '@theme/BlogLayout';
 import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
-import {ThemeClassNames} from '@docusaurus/theme-common';
+import { ThemeClassNames } from '@docusaurus/theme-common';
 
 function BlogPostPage(props) {
-  const {content: BlogPostContents, sidebar} = props;
-  const {frontMatter, assets, metadata} = BlogPostContents;
+  const { content: BlogPostContents, sidebar } = props;
+  const { frontMatter, assets, metadata } = BlogPostContents;
   const {
     title,
     description,
@@ -24,8 +24,23 @@ function BlogPostPage(props) {
     tags,
     authors,
   } = metadata;
-  const {hide_table_of_contents: hideTableOfContents, keywords} = frontMatter;
+  const { hide_table_of_contents: hideTableOfContents, keywords } = frontMatter;
   const image = assets.image ?? frontMatter.image;
+
+  useEffect(() => {
+    window.DiscourseEmbed = {
+      discourseUrl: 'https://discourse.getdbt.com/',
+      discourseEmbedUrl: `${window.location.href}`
+    }
+    
+
+    var d = document.createElement('script');
+    d.type = 'text/javascript';
+    d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+    
+  }, [])
   return (
     <BlogLayout
       wrapperClassName={ThemeClassNames.wrapper.blogPages}
@@ -62,7 +77,7 @@ function BlogPostPage(props) {
           />
         )}
       </Seo>
-      
+
       {/* dbt Custom */}
       <Head>
         <title>{title} | dbt Developer Blog</title>
@@ -81,8 +96,13 @@ function BlogPostPage(props) {
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
       )}
+
+
+      <div className="commentEmbed" id='discourse-comments'></div>
+
+
     </BlogLayout>
   );
 }
 
-export default BlogPostPage;
+export default BlogPostPage;          
