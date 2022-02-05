@@ -7,7 +7,7 @@ title: "Upgrading to 1.0.0"
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
-- [CLI Installation guide](https://docs.getdbt.com/dbt-cli/install/overview)
+- [CLI Installation guide](/dbt-cli/install/overview)
 - [Cloud upgrade guide](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
 
 ## Breaking changes
