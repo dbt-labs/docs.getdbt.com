@@ -8,7 +8,7 @@ description: "Service account tokens help you define permissions for securing ac
 
 Service account tokens enable you to securely authenticate with the dbt Cloud API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [User API tokens](user-tokens), service account tokens belong to an account rather than a user.
 
-You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any role available in dbt Cloud to your service account token. For more information about roles, see "[Enterprise Permissions](docs/dbt-cloud/access-control/enterprise-permissions)".
+You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permissions set available in dbt Cloud to your service account token. For more information about permissions sets, see "[Enterprise Permissions](docs/dbt-cloud/access-control/enterprise-permissions)".
 
 ## Generating service account tokens
 
@@ -21,9 +21,9 @@ You will not be able to view this token again after generating it, so store the 
 :::
 ## Permissions for service account tokens
 
-You can assign service account tokens any role available in dbt Cloud. When you assign a role to a token, you will also be able to choose whether to grant that permissions to all projects in the account or to specific projects.
+You can assign service account tokens any permission set available in dbt Cloud. When you assign a permission set to a token, you will also be able to choose whether to grant that permissions to all projects in the account or to specific projects.
 
-The following permission list summarizes each role. For more details about the permissions in these roles, see "[Enterprise permissions](/docs/dbt-cloud/access-control/enterprise-permissions)."
+The following permission list summarizes each permission set. For more details about the permissions in these sets, see "[Enterprise permissions](/docs/dbt-cloud/access-control/enterprise-permissions)."
 
 **Account Admin service token:**<br/>
 Account Admin service tokens have full `read + write` access to an account, so please use them with caution. For more on these permissions, see [Account Admin](docs/dbt-cloud/access-control/enterprise-permissions#account-admin) on the Enterprise Permissions page.
