@@ -8,7 +8,13 @@ description: "Service account tokens help you define permissions for securing ac
 
 Service account tokens enable you to securely authenticate with the dbt Cloud API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [User API tokens](user-tokens), service account tokens belong to an account rather than a user.
 
-You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permissions set available in dbt Cloud to your service account token. For more information about permissions sets, see "[Enterprise Permissions](docs/dbt-cloud/access-control/enterprise-permissions)".
+You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permissions set available in dbt Cloud to your service account token. 
+
+:::info Enterprise and Team plan differences
+Enterprise plans can apply any permission sets available to service tokens. Team plans can apply three permissions sets to service tokens: Owner, Metadata, or Job Admin.
+:::
+
+For more on Enterprise plan permissions sets, see "[Enterprise Permissions](docs/dbt-cloud/access-control/enterprise-permissions)." For more on Teamplan permisison sets, see [Team permissions](docs/dbt-cloud/access-control/team-permissions).
 
 ## Generating service account tokens
 
@@ -19,22 +25,26 @@ In the Account Settings view of dbt Cloud, you can click on the Service Account 
 You will not be able to view this token again after generating it, so store the token somewhere safe for later use.
 
 :::
+
 ## Permissions for service account tokens
 
 You can assign service account tokens any permission set available in dbt Cloud. When you assign a permission set to a token, you will also be able to choose whether to grant that permissions to all projects in the account or to specific projects.
 
 The following permission list summarizes each permission set. For more details about the permissions in these sets, see "[Enterprise permissions](/docs/dbt-cloud/access-control/enterprise-permissions)."
 
-**Account Admin service token:**<br/>
-Account Admin service tokens have full `read + write` access to an account, so please use them with caution. For more on these permissions, see [Account Admin](docs/dbt-cloud/access-control/enterprise-permissions#account-admin) on the Enterprise Permissions page.
+**Account Admin service token:** (Enterprise and Team plans) <br/>
+Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role." 
 
-**Metadata Only service token:**<br/>
+**Metadata Only service token:** (Enterprise and Team plans)<br/>
 Metadata only service tokens can be used to authorize requests to the metadata API.
 
-**Account Viewer service token:**<br/>
+**Job Admin service token:** (Enterprise and Team plans)<br/>
+Job admin service tokens have all the permissions listed [Job admin](/docs/dbt-cloud/access-control/enterprise-permissions#job-admin).
+
+**Account Viewer service token:** (Enterprise plan only)<br/>
 Account Viewer service tokens have read only access to dbt Cloud accounts. For more on these permissions, see [Account Viewer](docs/dbt-cloud/access-control/enterprise-permissions#account-viewer) on the Enterprise Permissions page.
 
-**Admin service token:**<br/>
+**Admin service token:** (Enterprise plan only)<br/>
 Admin service tokens have unrestricted access to projects in dbt Cloud accounts. You have the option to grant that permission all projects in the account or grant the permission only on specific projects. For more on these permissions, see [Admin Service](docs/dbt-cloud/access-control/enterprise-permissions#admin-service) on the Enterprise Permissions page.
 
 **Git Admin service token:**<br/>
@@ -45,9 +55,6 @@ Database admin service tokens have all the permissions listed in [Database admin
 
 **Team Admin service token:**<br/>
 Team admin service tokens have all the permissions listed in [Team admin](/docs/dbt-cloud/access-control/enterprise-permissions#team-admin) on the Enterprise Permissions page.
-
-**Job Admin service token:**<br/>
-Job admin service tokens have all the permissions listed [Job admin](/docs/dbt-cloud/access-control/enterprise-permissions#job-admin).
 
 **Job Viewer service token:**<br/>
 Job viewer admin service tokens have all the permissions listed in [Job viewer](/docs/dbt-cloud/access-control/enterprise-permissions#job-viewer) on the Enterprise Permissions page.
