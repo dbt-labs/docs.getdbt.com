@@ -13,12 +13,14 @@ control (RBAC).
 ## Permission Sets
 
 The following permission sets are available for assignment in dbt Cloud Team accounts. They
-can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
+can be granted to dbt Cloud groups, where you can add users. A dbt Cloud group
 can be associated with more than one permission set.
 
-### Account Admin
+### Owner (Account Admin)
 
-This permission set is referred to as the Owner role in 
+**/ Update to a reusable with `enterprise-permissions` when available on docs.getdbt.com /**
+
+This permission set is referred to as the Owner role, and these permissions can be assigned to an Account Admin service token.
 
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license

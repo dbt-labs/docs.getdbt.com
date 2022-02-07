@@ -21,7 +21,7 @@ control (RBAC).
 ## Permission Sets
 
 The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
-can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group 
+can be granted to dbt Cloud groups, where users belong. A dbt Cloud group 
 can be associated with more than one permission set.
 
 ### Account Admin
@@ -45,6 +45,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Run and cancel jobs
 
 ### Account Viewer
+
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
