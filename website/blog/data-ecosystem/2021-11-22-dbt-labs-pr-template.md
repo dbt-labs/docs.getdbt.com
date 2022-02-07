@@ -29,7 +29,7 @@ Let’s jump into the exact PR template we use internally at dbt Labs.
 
 ## The dbt Labs’ pull request template
 
-<WistiaVideo id="7em2tj62yo" />
+<WistiaVideo id="r3u04isgxf" />
 
 Our PR template ([view markdown file in GitHub](https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md)) is composed of 6 sections: 
 
