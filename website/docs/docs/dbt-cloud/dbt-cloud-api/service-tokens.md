@@ -11,7 +11,7 @@ Service account tokens enable you to securely authenticate with the dbt Cloud AP
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permissions set available in dbt Cloud to your service account token.
 
 :::info Enterprise and Team plan differences
-Enterprise plans can apply any permission sets available to service tokens. Team plans can apply the following permissions sets to service tokens: Account Admin, Member, Job Admin, Read-Only, and Metadata Only.
+Enterprise plans can apply any permission sets available to service tokens. Team plans can apply the following permissions sets to service tokens: Owner, Member, Job Admin, Read-Only, and Metadata Only.
 :::
 
 For more on permissions sets, see "[Enterprise Permissions](docs/dbt-cloud/access-control/enterprise-permissions)."
