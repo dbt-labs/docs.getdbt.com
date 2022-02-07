@@ -20,9 +20,7 @@ control (RBAC).
 
 ## Permission Sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
-can be granted to dbt Cloud groups, where users belong. A dbt Cloud group 
-can be associated with more than one permission set.
+The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups, where users belong. A dbt Cloud group can be associated with more than one permission set.
 
 ### Account Admin
 

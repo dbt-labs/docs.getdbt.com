@@ -180,7 +180,6 @@ module.exports = {
         "docs/dbt-cloud/access-control/cloud-seats-and-users",
         "docs/dbt-cloud/access-control/self-service-permissions",
         "docs/dbt-cloud/access-control/enterprise-permissions",
-        "docs/dbt-cloud/access-control/team-permissions",
       ],
     },
     {
