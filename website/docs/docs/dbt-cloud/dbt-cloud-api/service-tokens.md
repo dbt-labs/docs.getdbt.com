@@ -51,7 +51,7 @@ Read-only service tokens can authorize requests for viewing a read-only dashboar
 
 ### Service account tokens for Enterprise plans
 
-The following permissions can be assigned to a service account token on an Enterprise plan. For more details about the permissions in these sets, see "[Enterprise permissions](/docs/dbt-cloud/access-control/enterprise-permissions)."
+The following permissions can be assigned to a service account token on an Enterprise plan. For more details about these permissions, see "[Enterprise permissions](/docs/dbt-cloud/access-control/enterprise-permissions)."
 
 **Account Admin service token:** <br/>
 Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role."
