@@ -34,8 +34,8 @@ You can assign service account tokens any permission set available in dbt Cloud.
 
 The following permissions can be assigned to a service account token on a Team plan.
 
-**Account Admin service token:**<br/>
-Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role."
+**Owner service token:**<br/>
+Owner service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role."
 
 **Metadata Only service token:**<br/>
 Metadata only service tokens can authorize requests to the metadata API.
