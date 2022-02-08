@@ -12,7 +12,7 @@ Most adapters can be installed from PyPi using `pip`. The installation will incl
 Some vendor or community adapters may not exist in PyPi. However, an adapter hosted on GitHub can still be installed with `pip`:
 
 ```shell
-pip install git+https://github.com/{MAINTAINER_NAME}/{ADAPTER_NAME}.git
+pip install git+https://github.com/MAINTAINER_NAME/ADAPTER_NAME.git
 ```
 
 ### dbt Labs Supported
