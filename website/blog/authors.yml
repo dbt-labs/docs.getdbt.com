@@ -137,3 +137,15 @@ sethrosen:
       icon: fa-twitter
     - url: https://www.linkedin.com/in/sdrosen/
       icon: fa-linkedin
+
+dflynn:
+  name: Donny Flynn
+  job_title: Customer Data Architect
+  organization: Census
+  description: Seth Rosen is co-founder and CEO of TopCoat Data - a platform for helping organizations build analytical applications. Prior to founding TopCoat, Seth helped companies of all sizes build custom data apps on top of the modern data stack through his consultancy, Hashpath. When he’s not tweeting and thinking about data, he’s tweeting while parenting two toddlers.
+  image_url: /img/blog/authors/dflynn.jpeg
+  links:
+    - url: https://twitter.com/donmandonguy
+      icon: fa-twitter
+    - url: https://www.linkedin.com/in/donny-flynn-578149a4/
+      icon: fa-linkedin
