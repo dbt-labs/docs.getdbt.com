@@ -18,7 +18,6 @@ In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) m
 | BigQuery     | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅  | ✅  | `pip install dbt-bigquery` |
 | Snowflake    | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ | ✅  | `pip install dbt-snowflake` |
 | Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | ✅ | ✅ | `pip install dbt-spark[PyHive]` |
-| Databricks   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | ✅ | ✅ | `pip install dbt-databricks` |
 | Presto       | [Profile Setup](presto-profile) | partial support |  | `pip install dbt-presto` |
 
 ### Vendor Supported
@@ -27,12 +26,13 @@ These adapter plugins are built and maintained by the same people who build and 
 
 | Adapter for  | Documentation | Install from PyPi |
 | ------------ | ------------- | ----------------- |
+| Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks)) | [Profile Setup](databricks-profile), [Configuration](databricks-configs) | `pip install dbt-databricks` |
+| Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
 | Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
-| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
-| Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
-| Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
 | SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
+| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
+| Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
 
 
 ### Community Supported
