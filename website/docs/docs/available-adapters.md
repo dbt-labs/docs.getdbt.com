@@ -18,7 +18,7 @@ In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) m
 | BigQuery     | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅  | ✅  | `pip install dbt-bigquery` |
 | Snowflake    | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ | ✅  | `pip install dbt-snowflake` |
 | Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | ✅ | ✅ | `pip install dbt-spark[PyHive]` |
-| Databricks   | [Profile Setup](spark-profile#odbc), [Configuration](spark-configs#databricks-configurations) | ✅ | ✅ | `pip install dbt-spark[ODBC]` |
+| Databricks   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | ✅ | ✅ | `pip install dbt-databricks` |
 | Presto       | [Profile Setup](presto-profile) | partial support |  | `pip install dbt-presto` |
 
 ### Vendor Supported
