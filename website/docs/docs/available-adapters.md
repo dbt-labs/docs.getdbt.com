@@ -9,7 +9,7 @@ dbt connects to and runs SQL against your database, warehouse, platform, or quer
 
 Most adapters can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
 
-Some vendor or community adapters may not exist in PyPi. However, you can still install an adapter hosted on GitHub with `pip install`, by replacing MAINTAINER_NAME with the person or company maintaining the adapter on GitHub and ADAPTER_NAME with the git repository's name (these can be taken directly from the package's url):
+Some vendor or community adapters may not exist in PyPi. However, you can still install an adapter hosted on GitHub with `pip install`, by replacing MAINTAINER_NAME with the person or company maintaining the adapter on GitHub and ADAPTER_NAME with the git repository's name (these can be taken directly from the adapter's url):
 
 ```shell
 pip install git+https://github.com/MAINTAINER_NAME/ADAPTER_NAME.git
