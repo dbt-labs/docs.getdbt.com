@@ -1,5 +1,5 @@
 ---
-title: "The JaffleGaggle story: modeling a customer 360 view in dbt"
+title: "The JaffleGaggle story: data modeling for a customer 360 view"
 description: "The core challenge of building a customer 360 view is identity resolution. How do you map individual users of a freemium product to potential customer accounts?"
 slug: customer-360-view-identity-resolution
 
@@ -14,18 +14,20 @@ is_featured: true
 
 *Editor's note: In this tutorial, Donny walks through the fictional story of a SaaS company called JaffleGaggle, who needs to group their freemium individual users into company accounts (aka a customer 360 view) in order to drive their product-led growth efforts.*
 
-*You can follow along with Donny's data modeling technique for identity resolution in (this dbt project repo)[https://github.com/dflynn20/jaffle_gaggle]. It includes a set of demo CSV files, which you can use as [dbt seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds) to test Donny's project for yourself.*
+*You can follow along with Donny's data modeling technique for identity resolution in [this dbt project repo](https://github.com/dflynn20/jaffle_gaggle). It includes a set of demo CSV files, which you can use as [dbt seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds) to test Donny's project for yourself.*
 
 <!--truncate-->
 
-## Before we begin: a quick note on Jaffles
+**Before we begin: a quick note on Jaffles** 
+
 If you’ve been in the sphere of dbt, you probably know the lore of the Jaffle shop. If not, I’d recommend taking a second to look at Claire Carroll’s [README for the original Jaffle Shop demo project](https://github.com/dbt-labs/jaffle_shop) (otherwise this playbook is probably going to be a little weird, but still useful, to read). 
 
 In short, a jaffle is: 
 
 > "A toasted sandwich with crimped, sealed edges. Invented in Bondi in 1949, the humble jaffle is an Australian classic. The sealed edges allow jaffle-eaters to enjoy liquid fillings inside the sandwich, which reach temperatures close to the core of the earth during cooking. Often consumed at home after a night out, the most classic filling is tinned spaghetti, while my personal favourite is leftover beef stew with melted cheese."
 
-![freshly-toasted jaffles](/img/blog/2022-02-08-customer-360-view/image_0.jpg)
+![freshly-toasted jaffles](/img/blog/2022-02-08-customer-360-view/image_0.jpg) 
+
 *See above: Tasty, tasty jaffles.*
 
 Jaffle Shop is a demo repo referenced in [dbt’s Getting Started tutorial](https://docs.getdbt.com/tutorial/setting-up), and its jaffles hold a special place in the dbt community’s hearts, as well as on Data Twitter™.
@@ -41,7 +43,8 @@ This can be challenging because people move companies, create new accounts with 
 
 All this to say, creating a customer 360 view is a powerful way to gain understanding of your customers and users, but can come with challenges (which we’ll help you work through). 
 
-## Meet JaffleGaggle, our fictitious company
+**Meet JaffleGaggle, our fictitious company** 
+
 In our fictitious data world for today’s example, a B2B company saw that people really loved a thing (e.g. jaffles) and found a way to scale that beloved thing into a business. **Enter JaffleGaggle.**
 
 There are two parts of JaffleGaggle’s product: 
@@ -54,8 +57,9 @@ JaffleGaggle is growing rapidly and has just bought a CRM (yay!), but it’s cur
 
 As people invite more of their peers to their Gaggle, they’re able to unlock even more recipes and jaffles. 
 
-![a live look at jafflegaggle](/img/blog/2022-02-08-customer-360-view/jafflegaggle_screenshot.png)
-***Seen above**: One of the many, many delicious jaffle recipes that await teams on JaffleGaggle.*
+![a live look at jafflegaggle](/img/blog/2022-02-08-customer-360-view/jafflegaggle_screenshot.png) 
+
+**Seen above**: One of the many, many delicious jaffle recipes that await teams on JaffleGaggle.
 
 OK, now that we’ve got you hungry for some tasty, tasty jaffles, here’s what this has to do with data and product led-growth (aka PLG). 
 
@@ -72,6 +76,8 @@ JaffleGaggle has to keep track of information about their interactions with thei
 All of these questions require aggregating + syncing data from application usage, workspace information, and orders into the CRM for the sales team to have at their fingertips.
 
 This aggregation process requires an analytics warehouse, as all of these things need to be synced together outside of the application database itself to incorporate other data sources (billing / events information, past touchpoints in the CRM, etc). Thus, we can create our fancy customer 360 within JaffleGaggle’s data warehouse, which is a standard project for a B2B company’s data team.
+
+**Diving into data modeling** 
 
 In this playbook, I’ll take you along on JaffleGaggle’s journey to build a customer 360 view using dbt so they (and you, too) can supercharge their PLG strategy with better data (and spread the love of jaffles everywhere). 
 
@@ -97,7 +103,7 @@ To use our CRM, we’ll need to **upload data for the following**:
 
 ![contacts in the dbt DAG](/img/blog/2022-02-08-customer-360-view/image_2.png)
 
-* **gaggles** (understanding the activity of a workspace) 
+* **Gaggles** (understanding the activity of a workspace) 
 
 ![gaggles in the dbt DAG](/img/blog/2022-02-08-customer-360-view/image_3.png)
 
@@ -353,7 +359,8 @@ corporate_power_users as (
 
 In almost every CRM, there’s a supported Lookup functionality, which means a record includes a property linked to another related record. As long as the `user_id` is marked as an external and unique id for the contact object in the CRM, this can be set from the model here.
 
-## Building the JaffleGaggle empire of your dreams
+**Building the JaffleGaggle empire of your dreams** 
+
 Congrats! If you’ve made it this far, you should be well on your way to establishing the JaffleGaggle empire you’ve always dreamed of. Since we covered a lot of ground in this tutorial, here’s a summary of all the steps together: 
 
 1. **Define your entities** 
@@ -392,7 +399,7 @@ In terms of data architecture, there are four things you need to do to get this 
 
 If you’ve made it this far, you’ve gone from having three raw source tables to a business-specific source of truth within your own data warehouse featuring human-in-the-loop identity resolution, email domain dbt macro magic, and best practices for operationalizing B2B product-led growth. You most definitely deserve a jaffle. 🥪
 
-DM me in dbt Community Slack (I’m *@Donny Flynn (Census)*) if you want to learn more about JaffleGaggle, PLG, reverse ETL, or how I created these random datasets. 😊 
+DM me in [dbt Community Slack](https://www.getdbt.com/community/join-the-community) (I’m *@Donny Flynn (Census)*) if you want to learn more about JaffleGaggle, PLG, reverse ETL, or how I created these random datasets. 😊 
 
 PS: @clrclr don’t hate me. 🙏🏻
 
