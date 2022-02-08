@@ -25,10 +25,10 @@ import useIsBrowser from '@docusaurus/useIsBrowser'; // Optimize sidebar at each
 
 import {usePluginData} from '@docusaurus/useGlobalData';
 import VersionContext from '../../stores/VersionContext'
+import pageVersionCheck from '../../utils/page-version-check';
 
 export const DocSidebarItems = memo(({items, ...props}) => {
   const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
-  console.log('versionedPages', versionedPages)
   return (
     <>
       {items.map((item, index) => (
@@ -44,27 +44,12 @@ export const DocSidebarItems = memo(({items, ...props}) => {
 })
 
 export default function DocSidebarItem({item, versionedPages, ...props}) {
+  const { version } = useContext(VersionContext)
   
-  const itemFound = versionedPages.find(vpage => vpage.page === item.docId) 
-  if(itemFound) {
-    const { version } = useContext(VersionContext)
-    const currentVersion = version.toString()
-    const { firstVersion, lastVersion } = itemFound
-
-    // Determine if sidebar item within version range
-    if(lastVersion) {
-      // If lastVersion set for sidebar item, 
-      // check if current version is higher than lastVersion
-      // or if current version is less than firstVersion
-      // If true, remove item in sidebar
-      if(version > lastVersion || version < firstVersion) {
-        return null
-      }
-    } else if(firstVersion > version) {
-      // If firstVersion is greater than currentVersion
-      // remove item from sidebar
+  if(version && versionedPages) {
+    const pageAvailable = pageVersionCheck(version, versionedPages, item.docId)
+    if(!pageAvailable)
       return null
-    }
   }
 
   switch (item.type) {
