@@ -25,12 +25,12 @@ In short, a jaffle is:
 
 > "A toasted sandwich with crimped, sealed edges. Invented in Bondi in 1949, the humble jaffle is an Australian classic. The sealed edges allow jaffle-eaters to enjoy liquid fillings inside the sandwich, which reach temperatures close to the core of the earth during cooking. Often consumed at home after a night out, the most classic filling is tinned spaghetti, while my personal favourite is leftover beef stew with melted cheese."
 
-![freshly-toasted jaffles](/image/blog/2022-02-08-customer-360-view/image_0.jpg)
+![freshly-toasted jaffles](/img/blog/2022-02-08-customer-360-view/image_0.jpg)
 *See above: Tasty, tasty jaffles.*
 
 Jaffle Shop is a demo repo referenced in [dbt’s Getting Started tutorial](https://docs.getdbt.com/tutorial/setting-up), and its jaffles hold a special place in the dbt community’s hearts, as well as on Data Twitter™.
 
-![jaffles on data twitter](/image/blog/2022-02-08-customer-360-view/image_1.png)
+![jaffles on data twitter](/img/blog/2022-02-08-customer-360-view/image_1.png)
 
 So, I thought it only apt to build on the collective reverence for these tasty, crunchy snacks to talk about customer 360 views.
 
@@ -54,7 +54,7 @@ JaffleGaggle is growing rapidly and has just bought a CRM (yay!), but it’s cur
 
 As people invite more of their peers to their Gaggle, they’re able to unlock even more recipes and jaffles. 
 
-![a live look at jafflegaggle](/image/blog/2022-02-08-customer-360-view/jafflegaggle_screenshot.png)
+![a live look at jafflegaggle](/img/blog/2022-02-08-customer-360-view/jafflegaggle_screenshot.png)
 ***Seen above**: One of the many, many delicious jaffle recipes that await teams on JaffleGaggle.*
 
 OK, now that we’ve got you hungry for some tasty, tasty jaffles, here’s what this has to do with data and product led-growth (aka PLG). 
@@ -95,15 +95,15 @@ To use our CRM, we’ll need to **upload data for the following**:
 
 * **Contacts** (contacts that are unique by email address)
 
-![contacts in the dbt DAG](/image/blog/2022-02-08-customer-360-view/image_2.png)
+![contacts in the dbt DAG](/img/blog/2022-02-08-customer-360-view/image_2.png)
 
 * **gaggles** (understanding the activity of a workspace) 
 
-![gaggles in the dbt DAG](/image/blog/2022-02-08-customer-360-view/image_3.png)
+![gaggles in the dbt DAG](/img/blog/2022-02-08-customer-360-view/image_3.png)
 
 * **Accounts** (companies our sales team can track and prioritize)
 
-![accounts in the dbt DAG](/image/blog/2022-02-08-customer-360-view/image_4.png)
+![accounts in the dbt DAG](/img/blog/2022-02-08-customer-360-view/image_4.png)
 
 ## Step 2: Model the contact
 
@@ -234,7 +234,7 @@ Now to generate dbt docs and view our DAG, we can run:
 
 This gives us access to the DAG for `jafflegaggle_contacts.sql` which can serve as the source of truth for the JaffleGaggle Ops team about where the analytics definitions live for the contacts in the system.
 
-![jafflegaggle contacts DAG](/image/blog/2022-02-08-customer-360-view/image_6.png)
+![jafflegaggle contacts DAG](/img/blog/2022-02-08-customer-360-view/image_6.png)
 
 ## Step 3: Model the Gaggle
 
@@ -281,11 +281,11 @@ gaggle_total_facts as (
 
 I know, that’s a ton of code. Check out the dbt docs for the project for an explanation of the fields. Here’s the output of final `jafflegaggle_facts` table:
 
-![jafflegaggle facts query output screenshot](/image/blog/2022-02-08-customer-360-view/image_7.png)
+![jafflegaggle facts query output screenshot](/img/blog/2022-02-08-customer-360-view/image_7.png)
 
 Referring to the DAG from the dbt docs, you can see how we are already benefiting from merging at the user level for analytics information related to `jafflegaggle_contacts`.
 
-![DAG of gaggle modeling](/image/blog/2022-02-08-customer-360-view/image_8.png)
+![DAG of gaggle modeling](/img/blog/2022-02-08-customer-360-view/image_8.png)
 
 We also use an upstream table of `stg_gaggles` which pulls in information about the creation of the Gaggle and its name. 
 
@@ -297,7 +297,7 @@ We want to **join the characteristics for different gaggles that share the same 
 
 By looking at the dbt docs, we see that every model is an upstream source for [`jafflegaggle_corporate_accounts`](https://github.com/dflynn20/jaffle_gaggle/blob/main/models/jafflegaggle_corporate_accounts.sql).
 
-![jagglegaggle corporate accounts](/image/blog/2022-02-08-customer-360-view/image_9.png)
+![jagglegaggle corporate accounts](/img/blog/2022-02-08-customer-360-view/image_9.png)
 
 At this level we **coalesce the company for the merged domain** as we did with the `merged_users` previously. Here’s the code for this step: 
 
@@ -319,7 +319,7 @@ Note: This is not the only place where we reference the `merged_company_domain` 
 
 Here is an output of the final corporate accounts table:
 
-![corporate accounts table](/image/blog/2022-02-08-customer-360-view/image_10.png)
+![corporate accounts table](/img/blog/2022-02-08-customer-360-view/image_10.png)
 
 ### Step 4.1: Identify power users for an account
 
@@ -388,7 +388,7 @@ In terms of data architecture, there are four things you need to do to get this 
 3. Leverage ETL/ELT to get CRM data back into the data warehouse
 4. Design for how you can extend the current merging solution 
 
-![customer 360 view architecture diagram](/image/blog/2022-02-08-customer-360-view/image_11.png)
+![customer 360 view architecture diagram](/img/blog/2022-02-08-customer-360-view/image_11.png)
 
 If you’ve made it this far, you’ve gone from having three raw source tables to a business-specific source of truth within your own data warehouse featuring human-in-the-loop identity resolution, email domain dbt macro magic, and best practices for operationalizing B2B product-led growth. You most definitely deserve a jaffle. 🥪
 
