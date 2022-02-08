@@ -153,7 +153,7 @@ var siteSettings = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/fishtown-analytics/dbt',
+              href: 'https://github.com/dbt-labs/dbt-core',
             },
           ]
         },
@@ -175,7 +175,7 @@ var siteSettings = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
 
-          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
+          editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
