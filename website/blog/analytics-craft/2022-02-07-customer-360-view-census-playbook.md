@@ -1,6 +1,6 @@
 ---
 title: "The JaffleGaggle story: modeling a customer 360 view in dbt"
-description: "The core challenge of building a customer 360 view is identity resolution: how do you map individual users of a freemium product to potential customer accounts?"
+description: "The core challenge of building a customer 360 view is identity resolution. How do you map individual users of a freemium product to potential customer accounts?"
 slug: customer-360-view-identity-resolution
 
 authors: [dflynn]
@@ -16,12 +16,14 @@ is_featured: true
 
 *You can follow along with Donny's data modeling technique for identity resolution in (this dbt project repo)[https://github.com/dflynn20/jaffle_gaggle]. It includes a set of demo CSV files, which you can use as [dbt seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds) to test Donny's project for yourself.*
 
+<!--truncate-->
+
 ## Before we begin: a quick note on Jaffles
 If you’ve been in the sphere of dbt, you probably know the lore of the Jaffle shop. If not, I’d recommend taking a second to look at Claire Carroll’s [README for the original Jaffle Shop demo project](https://github.com/dbt-labs/jaffle_shop) (otherwise this playbook is probably going to be a little weird, but still useful, to read). 
 
 In short, a jaffle is: 
 
-> "A toasted sandwich with crimped, sealed edges. Invented in Bondi in 1949, the humble jaffle is an Australian classic. The sealed edges allow jaffle-eaters to enjoy liquid fillings inside the sandwich, which reach temperatures close to the core of the earth during cooking. Often consumed at home after a night out, the most classic filling is tinned spaghetti, while my personal favourite is leftover beef stew with melted cheese.""
+> "A toasted sandwich with crimped, sealed edges. Invented in Bondi in 1949, the humble jaffle is an Australian classic. The sealed edges allow jaffle-eaters to enjoy liquid fillings inside the sandwich, which reach temperatures close to the core of the earth during cooking. Often consumed at home after a night out, the most classic filling is tinned spaghetti, while my personal favourite is leftover beef stew with melted cheese."
 
 ![freshly-toasted jaffles](/image/blog/2022-02-08-customer-360-view/image_0.jpg)
 *See above: Tasty, tasty jaffles.*
