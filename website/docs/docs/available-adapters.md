@@ -5,7 +5,15 @@ id: "available-adapters"
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
 
-Any adapter can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
+### Installation
+
+Most adapters can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
+
+Some vendor or community adapters may not exist in PyPi. However, you can still install an adapter hosted on GitHub with `pip install`, by replacing MAINTAINER_NAME with the person or company maintaining the adapter on GitHub and ADAPTER_NAME with the git repository's name (these can be taken directly from the adapter's url):
+
+```shell
+pip install git+https://github.com/MAINTAINER_NAME/ADAPTER_NAME.git
+```
 
 ### dbt Labs Supported
 
@@ -39,7 +47,7 @@ These adapter plugins are built and maintained by the same people who build and 
 
 These adapter plugins are contributed and maintained by members of the community 🌱
 
-| Adapter for            | Documentation                         | Notes                     | Install from PyPI            |
+| Adapter for            | Documentation                         | Notes                     | Install with pip             |
 |------------------------|---------------------------------------|---------------------------|------------------------------|
 | SQL Server & Azure SQL | [Profile Setup](mssql-profile)        | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
 | Azure Synapse          | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+         | `pip install dbt-synapse`    |
@@ -49,8 +57,8 @@ These adapter plugins are contributed and maintained by members of the community
 | ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
 | Athena                 | [Profile Setup](athena-profile)       | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
 
-Community-supported plugins are works in progress, and all users are encouraged to contribute by testing and writing code. If you're interested in contributing:
-- Join the dedicated channel in [dbt Slack](https://community.getdbt.com/) (e.g. #db-sqlserver, #db-athena)
+Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
+- Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 
 - Check out the open issues in the plugin's source repository
 
 Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in the near future.
