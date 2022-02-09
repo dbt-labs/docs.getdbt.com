@@ -15,7 +15,7 @@ __Example usage__:
 
 ```sql
 {% if number < 0 or number > 100 %}
-  {{ exceptions.raise_compiler_error("Invalid `number`. Got: " ~ number) }}
+  {% exceptions.raise_compiler_error("Invalid `number`. Got: " ~ number) %}
 {% endif %}
 ```
 
