@@ -43,6 +43,8 @@ When Pull Request builds are enabled, dbt Cloud will listen for webhooks from Gi
 
 When the run is complete, dbt Cloud will update the PR in GitHub or MR in GitLab with a status message indicating the results of the run. Once the PR is closed or merged, dbt Cloud will delete the temporary schema from your data warehouse.
 
+_Note: dbt Cloud may not drop the temporary schema from your data warehouse if your project has database / schema customization via the [`generate_database_name()`](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-databases#generate_database_name) / [`generate_schema_name()`](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas#how-does-dbt-generate-a-models-schema-name) macros._
+
 ## Slim CI
 
 With Slim CI, you don't have to rebuild and test all your models. You can instruct dbt Cloud to run jobs on only modified or new resources.
