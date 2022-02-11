@@ -18,6 +18,8 @@ If that sounds like you, great! Homebrew makes it significantly easier to instal
 
 If you're someone who prefers to manage Python environments yourself, such as having multiple versions of Python to switch between, we recommend you install dbt Core via [`pip` instead](install/pip).
 
+See below for how the install is manifest on your machine. 
+
 ### Installing with Homebrew
 
 Install [Homebrew](http://brew.sh/). Then run this one-time setup:
@@ -76,3 +78,11 @@ You can switch between versions by linking the one you want to use:
 brew unlink dbt-<adapter>@1.0.0
 brew link dbt-<adapter>@0.21.1
 ```
+
+### Installation Footprint
+
+dbt is installed as Python libraries so where it resides depends on the Python installation. See (LINK TO similar note in the pip-installation docs?).
+
+For those installing via Homebrew, the formula includes the Python dependency and so will use (and download if needed) Python as installed via Homebrew.
+
+If you manage Python using another facility, such as Anaconda or by creating Python virtual environments, note that a Homebrew install will not be present in those environments. On a related note, tools that are aware of those environments, such as VSCode will not see dbt as installed without configuring an additional interpreter pointed to the Homebrew-managed Python. 
