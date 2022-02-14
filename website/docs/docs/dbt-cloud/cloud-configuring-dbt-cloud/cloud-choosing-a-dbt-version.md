@@ -22,7 +22,8 @@ Each job in dbt Cloud can be configured to inherit parameters from the environme
 The example job seen in the screenshot above belongs to the environment "Redshift - Maintenance." It inherits the dbt version of its environment using the `inherit from <environment name>` option. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud.
 
 ## Supported Versions
-We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt v1.0.0` - in December 2021. Alongside this release, we've updated our policy on which versions of dbt Core we will support running in dbt Cloud.
+
+We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt v1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support running in dbt Cloud.
 
  > **By June 30, 2022, all dbt projects in Cloud must be running v1.0 or later. Starting with v1.0, any subsequent minor versions will be allowed to run in Cloud for 1 year post release.**
 
