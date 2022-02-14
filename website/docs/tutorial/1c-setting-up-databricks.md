@@ -3,8 +3,6 @@ title: Setting up with Databricks
 id: setting-up-databricks
 ---
 
-This guide is under construction
-
 ## Prerequisites  
 
 Before starting this tutorial, you will need the following:

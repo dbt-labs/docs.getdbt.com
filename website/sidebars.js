@@ -579,8 +579,9 @@ module.exports = {
           link: { type: 'doc', id: 'tutorial/set-up-data-platform' },
           items: [
             "tutorial/setting-up-bigquery",
-            "tutorial/setting-up-snowflake",
             "tutorial/setting-up-databricks",
+            "tutorial/setting-up-redshift",
+            "tutorial/setting-up-snowflake",
           ],
         },
         {
