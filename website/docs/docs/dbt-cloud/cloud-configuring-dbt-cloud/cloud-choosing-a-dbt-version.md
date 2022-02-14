@@ -22,7 +22,7 @@ Each job in dbt Cloud can be configured to inherit parameters from the environme
 The example job seen in the screenshot above belongs to the environment "Redshift - Maintenance." It inherits the dbt version of its environment using the `inherit from <environment name>` option. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud.
 
 ## Supported Versions
-We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We are releasing our first major version of dbt - `dbt v1.0.0` - in December 2021. Alongside this release, we are updating our policy on which versions of dbt Core we will support running in dbt Cloud.
+We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt v1.0.0` - in December 2021. Alongside this release, we've updated our policy on which versions of dbt Core we will support running in dbt Cloud.
 
  > **By June 30, 2022, all dbt projects in Cloud must be running v1.0 or later. Starting with v1.0, any subsequent minor versions will be allowed to run in Cloud for 1 year post release.**
 
@@ -33,6 +33,10 @@ We will continue to update this table so that customers know when we plan to sto
 | v0.X.X (major version 0 ) | Various Dates | June 30, 2022 |
 | v1.0.0 | December 2021 | December 2022 |
 
+<!--- TODO: How to avoid duplication with core-versions? --->
+
+For more details on version support and future releases, see: ["Understanding dbt Core versions"](core-versions).
+
 
 #### What will actually happen on the deprecation date?
 - On July 1, 2022, we will only run jobs that are on dbt v1.0 or later. Customers must upgrade their projects to be compatible with dbt v1.0 or later.
@@ -41,9 +45,10 @@ We will continue to update this table so that customers know when we plan to sto
 We will give customers consistent communication that they're hitting the end of their supported window, so they can plan accordingly. 
 
 #### What should you be doing today?
-Your migration to v1.0.0 will progress much smoother if you **begin transitioning to more recent versions of dbt as soon as possible.**
 
-Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v.0.21.0) implies 6x the potential for breaking changes vs. upgrading a single minor version. 
+You should **upgrade to v1.0 as soon as you can** - and we recommend that you proceed **slowly and steadily**.
+
+Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v0.21.0) implies 6x the potential for breaking changes, versus upgrading a single minor version. 
 
 Refactoring code is much easier when you're updating a well-defined, constrained surface area. Doing things incrementally is the way to go.
 
