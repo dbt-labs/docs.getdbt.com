@@ -7,8 +7,9 @@ description: "Changelog for the dbt Cloud application"
 ## dbt Cloud v1.1.45 (February 16, 2022)
 
 #### New products and features
-- Add UI components for service token permissions
-- Reading `token_string` directly
+
+Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign Job Admin permission set to new issued service tokens. We highly recommend you to re-issue service tokens with these new permissions to increase your security posture!
+
 - We are joining the [GitHub secret scanning partner program](https://docs.github.com/en/developers/overview/secret-scanning-partner-program) to better secure your token against accidental public exposure and potential fraudulent usage. 
 
 #### Bug fixes
