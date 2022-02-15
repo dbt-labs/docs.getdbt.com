@@ -118,54 +118,29 @@ create table stripe.payment(
 11. Now we need to copy the data from S3. **Be sure to update the S3 location, iam role, and region.** You can find the S3 and iam role in your outputs from the Cloudformation stack.
 
 ```sql
-
-
 copy jaffle_shop.customers( id, first_name, last_name)
-
 from 's3://dbt-data-lake-xxxx/jaffle_shop_customers.csv'
-
 iam_role 'arn:aws:iam::XXXXXXXXXX:role/RoleName'
-
 region 'us-east-1'
-
 delimiter ','
-
 ignoreheader 1
-
 acceptinvchars;
-
-        
-
+       
 copy jaffle_shop.orders(id, user_id, order_date, status)
-
 from 's3://dbt-data-lake-xxxx/jaffle_shop_orders.csv'
-
 iam_role 'arn:aws:iam::XXXXXXXXXX:role/RoleName'
-
 region 'us-east-1'
-
 delimiter ','
-
 ignoreheader 1
-
 acceptinvchars;
-
 
 copy stripe.payment(id, orderid, paymentmethod, status, amount, created)
-
 from 's3://dbt-data-lake-xxxx/stripe_payments.csv'
-
 iam_role 'arn:aws:iam::XXXXXXXXXX:role/RoleName'
-
 region 'us-east-1'
-
 delimiter ','
-
 ignoreheader 1
-
 Acceptinvchars;
-
-```
 
 <Lightbox src="/img/redshift_tutorial/images/copy_data.png" title="Copy Your Data Query" />
 
