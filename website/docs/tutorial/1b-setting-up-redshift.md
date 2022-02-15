@@ -35,7 +35,7 @@ Let’s get started by accessing your AWS account and setting up Redshift.
 
 <Lightbox src="/img/redshift_tutorial/images/cluster_overview.png" title="Available Redshift Cluster" />
 
-7. Click on `Query Data`. You can choose the classic query editor or v2. We will be using the v2 version for the purpose of this guide.
+7. Click on `Query Data`. You can choose the classic query editor or v2. We will be using the v2 version for the purpose of this tutorial.
 
 8. You may be asked to Configure account.  For the purpose of this sandbox environment, we recommend selecting “Configure account”.
 
