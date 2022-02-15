@@ -1,5 +1,5 @@
 const path = require('path');
-const { versions, versionedPages } = require('./dbt-versions.json');
+const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
 
 /* Debugging */

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react"
-import { versions } from '../../dbt-versions.json'
+import { versions } from '../../dbt-versions'
 
 const lastReleasedVersion = versions[0];
 
