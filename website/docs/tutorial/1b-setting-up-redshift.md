@@ -5,7 +5,7 @@ id: setting-up-redshift
 
 # Getting started with Redshift for dbt Cloud
 
-In this section we will focus on setting up Redshift from scratch and connecting it to dbt Cloud.  This tutorial assumes that you have access to the following:
+In this section we will focus on setting up Redshift from scratch and connecting it to dbt Cloud.  This tutorial assumes that you have access to the following prerequisites:
 
 ## Prerequisites
 
