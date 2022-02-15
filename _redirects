@@ -1,3 +1,6 @@
+​https://docs.getdbt.com/*       https://developer.dbt.com/:splat              301!
+​https://docs.dbt.com/*       https://developer.dbt.com/:splat              301!
+
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/install-from-source	/dbt-cli/install/from-source	302
