@@ -19,7 +19,7 @@ Let’s get started by accessing your AWS account and setting up Redshift.
 1. Sign into your AWS account on the AWS sign in page as a root user or IAM user depending on your level of access.
 2. We will be using a CloudFormation stack to quickly set up a Redshift instance. Use the link below to start this process. (source: cloudformation json file)
 
-[Start CloudFormation Stack](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=dbt-workshop&templateURL=https://tpch-sample-data.s3.amazonaws.com/create-dbtworkshop-infr)
+**[Start CloudFormation Stack](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=dbt-workshop&templateURL=https://tpch-sample-data.s3.amazonaws.com/create-dbtworkshop-infr)**
 
 3. Choose next for each page until you reach the `Select acknowledgement checkbox`. Check the box for "I acknowledge that AWS CloudFormation might create IAM resources with custom names" and click `Create Stack`.  You should land on the stack page with a `CREATE_IN_PROGRESS` status.
 
