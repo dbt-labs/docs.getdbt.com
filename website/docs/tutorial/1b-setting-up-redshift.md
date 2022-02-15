@@ -17,7 +17,7 @@ In this section we will focus on setting up Redshift from scratch and connecting
 Let’s get started by accessing your AWS account and setting up Redshift
 
 1. Sign into your AWS account on the AWS sign in page as a root user or IAM user depending on your level of access.
-2. We will be using a CloudFormation stack to quickly set up a Redshift instance. Use the link below to start this process. (source: cloudformation json file)
+2. We will be using a CloudFormation stack to quickly set up a Redshift instance. Use the link below to start this process. (source: [cloudformation json file](https://github.com/aws-samples/aws-modernization-with-dbtlabs/blob/main/resources/cloudformation/create-dbtworkshop-infr))
 
 [Start CloudFormation Stack](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=dbt-workshop&templateURL=https://tpch-sample-data.s3.amazonaws.com/create-dbtworkshop-infr)
 
@@ -65,7 +65,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
 <Lightbox src="/img/redshift_tutorial/images/go_to_s3.png" title="Go to S3" />
 
 
-3. Click on the `name of the bucket` S3 bucket.  If you have multiple S3 buckets, this will be the bucket that was listed under “Workshopbucket” on the Outputs page. The bucket will be prefixed with `dbt-data-lake`.
+3. Click on the `name of the bucket` S3 bucket.  If you have multiple S3 buckets, this will be the bucket that was listed under “Workshopbucket” on the Outputs page. The bucket will be prefixed with `dbt-data-lake`.a
 
 <Lightbox src="/img/redshift_tutorial/images/s3_bucket.png" title="Go to your S3 Bucket" />
 
