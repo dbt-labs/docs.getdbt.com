@@ -5,72 +5,14 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 ## dbt Cloud v1.1.45 (February 16, 2022)
-#### Enhancements
-- Scrub display values from custom env secrets on rename
-- Update user facing naming scheme for dbt v1.0.x
 
-#### Feature
+#### New products and features
 - Add UI components for service token permissions
-- reading token_string directly
-- update token format supporting secret scan
+- Reading `token_string` directly
+- We are joining the [GitHub secret scanning partner program](https://docs.github.com/en/developers/overview/secret-scanning-partner-program) to better secure your token against accidental public exposure and potential fraudulent usage. 
 
-#### Fixed
-- Fetch more users when loading the users page
-- CS-146: allow credentials to remain intact when flipping environment settings
-- Display run timing metrics: Take 2
-
-#### Internal
-- Prevent flash of content while run timings load
-- IDE entry side effect for Apollo client launch
-- Correctly introduce startup error modals to Angular Free IDE
-- Make blocked_by optional in run timings
-- Run slots should always default to 1
-- add user id to codex token
-- Update README.md
-- Add Apollo side-effect support for dbt rpc
-- Add Reclone Repo button
-- Add reclone parameter to start API
-- database: fix temp run foreign key
-- database: add temp run and run trigger tables
-- Improve Single Tenant QA Automation script
-- FIX: tweak tooltip language for run timings
-- Adds ServiceTokenPermission service+API routes, and updates RequestContext to use granular permissions
-- SHP-122 | Auto-refresh User's Azure access token
-- Add git status request to the useIdeStartup hook
-- Split rpc process and filesystem ready side effects into multiple thunks
-- Add audit log data dog error for publishing events
-- Test run timing endpoint behavior
-- Always serve blocked time
-- adapt to weird dbt --version behavior
-- Disable GraphQL network requests with ID values of 0
-- Various fixes for audit log bugs
-- Replace the useContext with new useApolloClientStrategy hook. Adding new flag. Use new flag.
-- SHP-20 | Azure DevOps project creation UI
-- Split app-secrets into a Secret and a ConfigMap
-- SHP-120 | Add `tenant_id` to UI form
-- remove dupe tenant id field
-- SHP-120 | Backend logic for `tenant_id`
-- SHP-120 | Add `tenant_id` to Azure app models/table (migration)
-- Prevent declassifying User-Defined Environment Secrets
-- Restrict the DBT_DOWNLOADS_DIR env var
-- Update the feature flag used for the Apollo Strategy release
-- disallow malformed branch names when running git 
-- SHP-31 | Server-side logic for Azure project creation
-- Serve run waiting time
-- add uid to social auth inline table in backend
-- Fix some v1 event translations
-- Add email to sso login event
-- New ConfigMap name: image-versions -> dbt-version
-- [INFRA-907] Use new name for the uwsgi-config ConfigMap
-- Add invite added, redeemed events
-- Add single tenant qa test
-- fix minimap
-- SHP:113 Hidden adapter schema fields should not be overridden
-- Add additional translations for audit events
-- Publish more events for audit logging
-- Meta 187/bottleviz multi run step
-- Delete "Pure React" visual badge + logging
-- Actionable error modals will now take precedence over a loading spinner
+#### Bug fixes
+- Credentials are no longer accidentally deleted when a user updates an environment setting.
 
 ## dbt Cloud v1.1.44 (February 2nd, 2022)
 Love the DAG in the IDE as much as we do? Now when you click on a node in the DAG, the model or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic functionality throughout the year.
