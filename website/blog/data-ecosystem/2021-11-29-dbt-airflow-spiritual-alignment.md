@@ -22,7 +22,7 @@ In my experience, these are false dichotomies, that sound great as hot takes but
 
 <!--truncate-->
 
-In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the API](https://docs.getdbt.com/dbt-cloud/api-v2)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
+In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the API](/dbt-cloud/api-v2)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
 
 More fundamentally, I think it’s important to call out that Airflow + dbt are **spiritually aligned** in purpose. They both exist to facilitate clear communication across data teams, in service of producing trustworthy data.
 
@@ -145,7 +145,7 @@ This can be perfectly ok, in the event your data team is structured for data eng
 
 ### dbt Cloud + Airflow
 
-With dbt Cloud and its aforementioned [APIs](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/cloud-apis), any dbt user can configure dbt runs from the UI.
+With dbt Cloud and its aforementioned [APIs](/docs/dbt-cloud/dbt-cloud-api/cloud-apis), any dbt user can configure dbt runs from the UI.
 
 In Airflow, engineers can then call the API, and everyone can move on with their lives. This allows the API to be a programmatic interface between analysts and data engineers, vs relying on the human interface.
 

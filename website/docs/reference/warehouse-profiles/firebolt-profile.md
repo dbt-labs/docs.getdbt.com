@@ -27,7 +27,7 @@ For other information including Firebolt feature support, see the [GitHub README
 
 ## Connecting to Firebolt
 
-To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
+To connect to Firebolt from dbt, you'll need to add a [profile](/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 
@@ -64,7 +64,7 @@ To specify values as environment variables, use the format `{{ env_var('<variabl
 | `password`               | Required. The password associated with the specified `user`. |
 | `database`               | Required. The name of the Firebolt database to connect to. |
 | `engine_name`            | Required in version 0.21.10 and later. Optional in earlier versions. The name (not the URL) of the Firebolt engine to use in the specified `database`. This must be a general purpose read-write engine and the engine must be running. If omitted in earlier versions, the default engine for the specified `database` is used. |
-| `schema`                 | Recommended. A string to add as a prefix to the names of generated tables when using the [custom schemas workaround](https://docs.getdbt.com/reference/warehouse-profiles/firebolt-profile#supporting-concurrent-development). |
+| `schema`                 | Recommended. A string to add as a prefix to the names of generated tables when using the [custom schemas workaround](/reference/warehouse-profiles/firebolt-profile#supporting-concurrent-development). |
 | `threads`                | Required. Must be set to `1`. Multi-threading is not currently supported. |
 | `jar_path`               | Required only with versions earlier than 0.21.0. Ignored in 0.21.0 and later. The path to your JDBC driver on your local drive. |
 | `api_endpoint`	   | Optional. For all customers, this is `api.app.firebolt.io`, which will be used if omitted.|

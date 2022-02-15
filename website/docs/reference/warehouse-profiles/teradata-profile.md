@@ -25,7 +25,7 @@ For other information including Teradata feature support, see the [GitHub README
 
 ### Connecting to Teradata
 
-To connect to Teradata Vantage from dbt, you'll need to add a [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Teradata profile conforms to the following syntax:
+To connect to Teradata Vantage from dbt, you'll need to add a [profile](/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Teradata profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 

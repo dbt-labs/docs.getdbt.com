@@ -42,7 +42,7 @@ Hear their take, and share your own by [registering here](https://coalesce.getdb
 
 -   A release candidate for v0.21.1 is available, with an official release coming next week. This release resolves some [slowdown issues](https://github.com/dbt-labs/dbt-core/issues/4012?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9SoWbfj9_ZRDew6i8p8yand1JSmLh7yfridIrLwO7bgHTUmnbKcRp3AEKCO8pOytotdxAo) encountered in large projects on v0.21.0.
 
-### dbt Cloud v1.1.38 - v1.1.39: *Changelog + docs located [here.](https://docs.getdbt.com/docs/dbt-cloud/cloud-changelog?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9SoWbfj9_ZRDew6i8p8yand1JSmLh7yfridIrLwO7bgHTUmnbKcRp3AEKCO8pOytotdxAo)*
+### dbt Cloud v1.1.38 - v1.1.39: *Changelog + docs located [here.](/docs/dbt-cloud/cloud-changelog?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9SoWbfj9_ZRDew6i8p8yand1JSmLh7yfridIrLwO7bgHTUmnbKcRp3AEKCO8pOytotdxAo)*
 
 -   [Environment Variables](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9SoWbfj9_ZRDew6i8p8yand1JSmLh7yfridIrLwO7bgHTUmnbKcRp3AEKCO8pOytotdxAo) have landed in dbt Cloud! Clone private packages, limit data processed in dev environments, and a whole lot more
 

@@ -5,7 +5,7 @@ id: "teradata-configs"
 
 ## General
 
-* *Set `quote_columns`* - to prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
+* *Set `quote_columns`* - to prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](/reference/resource-configs/quote_columns) for more information.
 
   ```yaml
   seeds:
@@ -204,7 +204,7 @@ id: "teradata-configs"
 
 :::info Using seeds to load raw data
 
-As explained in [dbt seeds documentation](https://docs.getdbt.com/docs/building-a-dbt-project/seeds), seeds should not be used to load raw data (for example, large CSV exports from a production database). 
+As explained in [dbt seeds documentation](/docs/building-a-dbt-project/seeds), seeds should not be used to load raw data (for example, large CSV exports from a production database). 
 
 Since seeds are version controlled, they are best suited to files that contain business-specific logic, for example a list of country codes or user IDs of employees.
 

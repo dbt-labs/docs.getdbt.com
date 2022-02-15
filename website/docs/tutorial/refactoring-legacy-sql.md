@@ -118,7 +118,7 @@ We generally recommend the **alongside** approach, which we'll follow in this tu
 
 
 ## Implement CTE groupings
-Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. This will give you a head start on porting SQL snippets from CTEs into modular [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
+Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. This will give you a head start on porting SQL snippets from CTEs into modular [dbt data models](/docs/building-a-dbt-project/building-models).
 
 <WistiaVideo id="di9jovovdv" />
 
@@ -204,7 +204,7 @@ This allows anyone after us to easily step through the CTEs when troubleshooting
 > For more background on CTEs, check out the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md#ctes).
 
 ## Port CTEs to individual data models
-Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
+Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](/docs/building-a-dbt-project/building-models).
 
 Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355) accordingly.
 

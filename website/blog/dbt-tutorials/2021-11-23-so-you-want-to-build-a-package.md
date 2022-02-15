@@ -39,7 +39,7 @@ The problem: Analysts often need to add an interval to a timestamp/date. To make
 
 ```
 
-In this section, we are using the [dispatch](https://docs.getdbt.com/reference/dbt-jinja-functions/dispatch) Jinja reference to enable the right macro from the rest of the file is called (since they are specific to the adapter) when a user called the macro. This means the user doesn’t have to think about what to call based on the adapter, they just need to call one macro, dbt handles it all behind the scene.
+In this section, we are using the [dispatch](/reference/dbt-jinja-functions/dispatch) Jinja reference to enable the right macro from the rest of the file is called (since they are specific to the adapter) when a user called the macro. This means the user doesn’t have to think about what to call based on the adapter, they just need to call one macro, dbt handles it all behind the scene.
 
 ```sql
 
@@ -174,7 +174,7 @@ As you’re going through these steps, keep in mind how configurable you want yo
 
 **Testing **
 
-After you have developed your core code, it’s time to [add integration tests](https://docs.getdbt.com/docs/guides/building-packages#4-add-integration-tests). This is a great thing to do because this confirms your assumptions and gives you and any contributors to your package a baseline of how the package should work. Our [audit-helper](https://github.com/dbt-labs/dbt-audit-helper/tree/master/integration_tests) package has some fantastic cross-platform integrations tests. Be sure to also install your package into an existing dbt project to validate that it works.
+After you have developed your core code, it’s time to [add integration tests](/docs/guides/building-packages#4-add-integration-tests). This is a great thing to do because this confirms your assumptions and gives you and any contributors to your package a baseline of how the package should work. Our [audit-helper](https://github.com/dbt-labs/dbt-audit-helper/tree/master/integration_tests) package has some fantastic cross-platform integrations tests. Be sure to also install your package into an existing dbt project to validate that it works.
 
 **Document**
 
@@ -194,7 +194,7 @@ A mindset to have here is setting up a framework that encourages people to join 
 
 **Publish**
 
-Now that all the work is done, it’s time to take the stage. This is the part of the workflow where you will make the repo public if necessary and [add to have it added to our Hub site](https://docs.getdbt.com/docs/guides/building-packages#7-add-the-package-to-hubgetdbtcom). Be sure to tell folks what you have done in dbt Slack in the #i-made-this channel or social media.
+Now that all the work is done, it’s time to take the stage. This is the part of the workflow where you will make the repo public if necessary and [add to have it added to our Hub site](/docs/guides/building-packages#7-add-the-package-to-hubgetdbtcom). Be sure to tell folks what you have done in dbt Slack in the #i-made-this channel or social media.
 
 **Maintain **
 

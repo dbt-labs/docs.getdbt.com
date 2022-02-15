@@ -80,7 +80,7 @@ Adding 1 month to today would look like...
 {{ dbt_utils.dateadd(month, 1, '2021-08-12' }}
 ```
 
-> *New to dbt?  Check out [dbt introduction](https://docs.getdbt.com/docs/introduction) for more background on dbt and the analytics engineering workflow that it facilitates.*
+> *New to dbt?  Check out [dbt introduction](/docs/introduction) for more background on dbt and the analytics engineering workflow that it facilitates.*
 > 
 > *TL;DR: dbt allows data practitioners to write code like software engineers, which in this case means not repeating yourself unnecessarily.*
 

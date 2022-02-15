@@ -20,9 +20,9 @@ The specific dbt commands you run in production are the control center for your 
 
 > _Note: As of dbt v0.21.0 (released in October 2021), you can now set your preferred production commands using [`dbt build`](https://github.com/dbt-labs/dbt-core/releases). Once setup, a single `dbt build` command can be used to execute your prescribed `seed`, `test`, `run` and `snapshot` and other commands in a specified order._
 
-The most important command is [`dbt run`](https://docs.getdbt.com/reference/commands/run). But in deployment, we rarely just use `dbt run`.
+The most important command is [`dbt run`](/reference/commands/run). But in deployment, we rarely just use `dbt run`.
 
-You’re probably familiar with a bunch of [dbt commands](https://docs.getdbt.com/reference/dbt-commands) already, and this section is dedicated to showing you what we believe the most effective commands should be when running your dbt project in production!
+You’re probably familiar with a bunch of [dbt commands](/reference/dbt-commands) already, and this section is dedicated to showing you what we believe the most effective commands should be when running your dbt project in production!
 
 In production, reliability and consistency are key. This guarantees that your stakeholders have data that could be meaningfully used. In order to ensure reliability and consistency, here are a few principles we believe you should keep in mind when designing your deployment commands:
 
@@ -96,7 +96,7 @@ You could also opt to run your source freshness test at the beginning, if your o
 
 ## Pro trip: beware of model selectors
 
-First, I want to quickly cover the topic of using [model selectors](https://docs.getdbt.com/reference/node-selection/syntax) (`-s` for specific models/tags/folders, or `-m` if you’re on a version prior to dbt v0.21.0) in your run commands. You may already know how to run specific models and subsequently their parent or child models.
+First, I want to quickly cover the topic of using [model selectors](/reference/node-selection/syntax) (`-s` for specific models/tags/folders, or `-m` if you’re on a version prior to dbt v0.21.0) in your run commands. You may already know how to run specific models and subsequently their parent or child models.
 
 When building production jobs, we highly advise not relying on these, as it adds to the complexity of your project, and is prone to creating mismatched timings in your build steps.
 

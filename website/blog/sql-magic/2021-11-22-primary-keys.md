@@ -51,14 +51,14 @@ In the days before testing your data was commonplace, you often found out that y
 
 ## How to test primary keys with dbt
 
-Today, you can add two simple [dbt tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data. 
+Today, you can add two simple [dbt tests](/docs/building-a-dbt-project/tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data. 
 
 Not surprisingly, these two tests correspond to the two most common errors found on your primary keys, and are usually the first tests that teams testing data with dbt implement:
 
 
 
-* [Not_null](https://docs.getdbt.com/reference/resource-properties/tests#not_null)
-* [Unique](https://docs.getdbt.com/reference/resource-properties/tests#unique)
+* [Not_null](/reference/resource-properties/tests#not_null)
+* [Unique](/reference/resource-properties/tests#unique)
 
 These tests are specified inline in your models’ .yml configuration files, so you can define a batch of tests across models from one file.  Put together, a `not_null` + `unique` test would look like so:
 
@@ -82,7 +82,7 @@ models:
 
 It really is as simple as adding those two tests to the primary keys of all of your tables, and then you have a built-in safeguard against bad data in your primary keys.
 
-Having tests configured and running in production using the [`dbt test`](https://docs.getdbt.com/reference/commands/test) command unlocks your ability to do things like [send Slack alerts](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications) on test failures, so you’ll be the first to know when PK issues arise. 
+Having tests configured and running in production using the [`dbt test`](/reference/commands/test) command unlocks your ability to do things like [send Slack alerts](/docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications) on test failures, so you’ll be the first to know when PK issues arise. 
 
 
 ## Does your warehouse support primary keys?

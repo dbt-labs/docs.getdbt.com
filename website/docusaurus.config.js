@@ -4,7 +4,7 @@ require('dotenv').config()
 /* Debugging */
 var SITE_URL;
 if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
-  SITE_URL = 'https://docs.getdbt.com';
+  SITE_URL = 'https://developer.dbt.com';
 } else {
   SITE_URL = process.env.DEPLOY_URL;
 }
@@ -228,7 +228,7 @@ if (PRERELEASE) {
   var WARNING_BANNER = {
     id: 'prerelease', // Any value that will identify this message.
     content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
+      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="/">View current docs</a>.',
     backgroundColor: '#ffa376', // Defaults to `#fff`.
     textColor: '#033744', // Defaults to `#000`.
   }

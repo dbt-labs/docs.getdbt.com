@@ -146,7 +146,7 @@ As you start to create more lambda views, you will want to make the filter into 
 ```    
     
 
-\*\* Note for the macro above, the timestamp is `var(lambda_timestamp, run_started_at)`. We want to default to the last time the historical models were run but allow for flexibility depending on the situation. It would be useful to note that we used [run\_started\_at timestamp](https://docs.getdbt.com/reference/dbt-jinja-functions/run_started_at/) rather than `current_timestamp()` to avoid any situations where there is a job failure and the historical table hasn’t been updated for the last 5 hours.
+\*\* Note for the macro above, the timestamp is `var(lambda_timestamp, run_started_at)`. We want to default to the last time the historical models were run but allow for flexibility depending on the situation. It would be useful to note that we used [run\_started\_at timestamp](/reference/dbt-jinja-functions/run_started_at/) rather than `current_timestamp()` to avoid any situations where there is a job failure and the historical table hasn’t been updated for the last 5 hours.
 
 ### Write idempotent models
 
