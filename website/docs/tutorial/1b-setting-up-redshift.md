@@ -80,14 +80,9 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
 9. In your query editor, execute this query below to create the schemas that we will be placing your raw data into. You can highlight the statement and then click on Run to run them individually. If you are on the Classic Query Editor, you might need to input them separately into the UI.  You should see these schemas listed under `dbtworkshop`.
 
 ```sql
-
 create schema if not exists jaffle_shop;
 
-        
-
 create schema if not exists stripe;
-
-```
 
 <Lightbox src="/img/redshift_tutorial/images/create_schemas.png" title="Create Schemas" />
 
