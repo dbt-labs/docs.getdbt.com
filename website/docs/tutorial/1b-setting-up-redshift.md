@@ -14,7 +14,7 @@ In this section we will focus on setting up Redshift from scratch and connecting
 
 ## Setting up Redshift
 
-Let’s get started by accessing your AWS account and setting up Redshift
+Let’s get started by accessing your AWS account and setting up Redshift.
 
 1. Sign into your AWS account on the AWS sign in page as a root user or IAM user depending on your level of access.
 2. We will be using a CloudFormation stack to quickly set up a Redshift instance. Use the link below to start this process. (source: cloudformation json file)
