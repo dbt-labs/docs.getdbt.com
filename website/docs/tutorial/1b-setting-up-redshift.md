@@ -5,7 +5,7 @@ id: setting-up-redshift
 
 # Getting started with Redshift for dbt Cloud
 
-In this section we will focus on setting up Redshift from scratch and connecting it to dbt Cloud.  This tutorial assumes that you have access to the following:
+In this section we will focus on setting up Redshift from scratch and connecting it to dbt Cloud.  This tutorial assumes that you have access to the following prerequisites:
 
 ## Prerequisites
 
@@ -14,12 +14,12 @@ In this section we will focus on setting up Redshift from scratch and connecting
 
 ## Setting up Redshift
 
-Let’s get started by accessing your AWS account and setting up Redshift
+Let’s get started by accessing your AWS account and setting up Redshift.
 
 1. Sign into your AWS account on the AWS sign in page as a root user or IAM user depending on your level of access.
 2. We will be using a CloudFormation stack to quickly set up a Redshift instance. Use the link below to start this process. (source: [cloudformation json file](https://github.com/aws-samples/aws-modernization-with-dbtlabs/blob/main/resources/cloudformation/create-dbtworkshop-infr))
 
-[Start CloudFormation Stack](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=dbt-workshop&templateURL=https://tpch-sample-data.s3.amazonaws.com/create-dbtworkshop-infr)
+**[Start CloudFormation Stack](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=dbt-workshop&templateURL=https://tpch-sample-data.s3.amazonaws.com/create-dbtworkshop-infr)**
 
 3. Choose next for each page until you reach the `Select acknowledgement checkbox`. Check the box for "I acknowledge that AWS CloudFormation might create IAM resources with custom names" and click `Create Stack`.  You should land on the stack page with a `CREATE_IN_PROGRESS` status.
 
@@ -35,7 +35,7 @@ Let’s get started by accessing your AWS account and setting up Redshift
 
 <Lightbox src="/img/redshift_tutorial/images/cluster_overview.png" title="Available Redshift Cluster" />
 
-7. Click on `Query Data`. You can choose the classic query editor or v2. We will be using the v2 version for the purpose of this guide.
+7. Click on `Query Data`. You can choose the classic query editor or v2. We will be using the v2 version for the purpose of this tutorial.
 
 8. You may be asked to Configure account.  For the purpose of this sandbox environment, we recommend selecting “Configure account”.
 
@@ -80,65 +80,37 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
 9. In your query editor, execute this query below to create the schemas that we will be placing your raw data into. You can highlight the statement and then click on Run to run them individually. If you are on the Classic Query Editor, you might need to input them separately into the UI.  You should see these schemas listed under `dbtworkshop`.
 
 ```sql
-
 create schema if not exists jaffle_shop;
 
-        
-
 create schema if not exists stripe;
-
-```
 
 <Lightbox src="/img/redshift_tutorial/images/create_schemas.png" title="Create Schemas" />
 
 10. Now create the tables in your schema with these queries using the statements below.  These will be populated as tables in the respective schemas.
 
 ```sql
-
 create table jaffle_shop.customers(
-
   id integer,
-
   first_name varchar(50),
-
   last_name varchar(50)
-
 );
-
-        
 
 create table jaffle_shop.orders(
-
   id integer,
-
   user_id integer,
-
   order_date date,
-
   status varchar(50),
-
   _etl_loaded_at timestamp default current_timestamp
-
 );
 
-        
-
 create table stripe.payment(
-
   id integer,
-
   orderid integer,
-
   paymentmethod varchar(50),
-
   status varchar(50),
-
   amount integer,
-
   created date,
-
   _batched_at timestamp default current_timestamp
-
 );
 
 ```
@@ -146,54 +118,29 @@ create table stripe.payment(
 11. Now we need to copy the data from S3. **Be sure to update the S3 location, iam role, and region.** You can find the S3 and iam role in your outputs from the Cloudformation stack.
 
 ```sql
-
-
 copy jaffle_shop.customers( id, first_name, last_name)
-
 from 's3://dbt-data-lake-xxxx/jaffle_shop_customers.csv'
-
 iam_role 'arn:aws:iam::XXXXXXXXXX:role/RoleName'
-
 region 'us-east-1'
-
 delimiter ','
-
 ignoreheader 1
-
 acceptinvchars;
-
-        
-
+       
 copy jaffle_shop.orders(id, user_id, order_date, status)
-
 from 's3://dbt-data-lake-xxxx/jaffle_shop_orders.csv'
-
 iam_role 'arn:aws:iam::XXXXXXXXXX:role/RoleName'
-
 region 'us-east-1'
-
 delimiter ','
-
 ignoreheader 1
-
 acceptinvchars;
-
 
 copy stripe.payment(id, orderid, paymentmethod, status, amount, created)
-
 from 's3://dbt-data-lake-xxxx/stripe_payments.csv'
-
 iam_role 'arn:aws:iam::XXXXXXXXXX:role/RoleName'
-
 region 'us-east-1'
-
 delimiter ','
-
 ignoreheader 1
-
 Acceptinvchars;
-
-```
 
 <Lightbox src="/img/redshift_tutorial/images/copy_data.png" title="Copy Your Data Query" />
 
@@ -258,10 +205,7 @@ For Set up a Database Connection, choose Redshift.
 10. Finally, let’s make sure everything is connected correctly.  In the “Statement 1” tab, type the following code. Click on `Preview` to execute the query.
 
 ```sql
-
 select * from jaffle_shop.customers
-
-```
 
 You should see the same results as you saw earlier when you queried the table directly in Redshift SQL editor.
 
