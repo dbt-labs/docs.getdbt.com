@@ -205,10 +205,7 @@ For Set up a Database Connection, choose Redshift.
 10. Finally, let’s make sure everything is connected correctly.  In the “Statement 1” tab, type the following code. Click on `Preview` to execute the query.
 
 ```sql
-
 select * from jaffle_shop.customers
-
-```
 
 You should see the same results as you saw earlier when you queried the table directly in Redshift SQL editor.
 
