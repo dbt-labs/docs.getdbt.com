@@ -2,6 +2,8 @@
 title: "Defer"
 ---
 
+import { dbtVariables } from '/dbt-global-variables.js';
+
 <Changelog>
 
 - **v0.18.0**: Introduced `--defer` and `--state` flags as beta features.
@@ -13,7 +15,7 @@ title: "Defer"
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
-Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
+Defer requires <Variable name="dbtCore" /> that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
 
 ### Usage
 

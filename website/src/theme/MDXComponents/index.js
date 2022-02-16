@@ -28,6 +28,7 @@ import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
 import VersionBlock from '@site/src/components/versionBlock';
+import Variable from '@site/src/components/variable';
 
 export default {
   code: props => {
@@ -61,4 +62,5 @@ export default {
   WistiaVideo: WistiaVideo,
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
+  Variable: Variable
 };
