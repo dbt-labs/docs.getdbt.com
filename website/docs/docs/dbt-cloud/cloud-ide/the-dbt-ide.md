@@ -39,3 +39,16 @@ As Ben Franklin once said:
 > In matters of principle, stand like a rock; in matters of taste, swim with the current.
 
 <Lightbox src="/img/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/>
+
+## Dark mode
+As Ben Franklin once said:
+
+> In matters of principle, stand like a rock; in matters of taste, swim with the current.
+
+<Lightbox src="/img/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/>
+
+## Reclone Repo
+Reclone your repository directly from the dbt IDE and your browser. You can reset your repository back to a fresh clone from your remote, you will want to click on the bottom right hand side green 'Ready'text, then click on the 'Reclone Repo' selection.
+
+![ide_reclone_repo](https://user-images.githubusercontent.com/89008547/154305592-948a20c5-519e-43f0-9e29-1ae86be42268.gif)
+
