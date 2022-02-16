@@ -144,7 +144,7 @@ var siteSettings = {
           items: [
             {
               label: 'Maintaining a Channel',
-              to: '/community/maintaining-a-channel.md',
+              to: '/community/maintaining-a-channel',
             },
             {
               label: 'dbt Slack',
