@@ -1,0 +1,36 @@
+name: New product feature
+description: Make a suggestion to add docs for a new dbt product feature.
+labels: ["content","new dbt feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        * You can ask questions or submit ideas for the dbt docs in [Discussions](https://github.com/dbt-labs/docs.getdbt.com/discussions)
+        * Before you file an issue read the [Contributing guide](https://github.com/dbt-labs/docs.getdbt.com#contributing).
+        * Check to make sure someone hasn't already opened a similar [issue](https://github.com/dbt-labs/docs.getdbt.com/issues).
+
+  - type: checkboxes
+    id: contributions
+    attributes:
+      label: Contributions
+      description: This applies to new, unreleased content.
+      options:
+        - label: I am a Product manager at dbt who is responsible for this feature. 
+
+  - type: textarea
+    attributes:
+      label: Where does this content belong?
+      description: |
+        - Give as much detail as you can to help us understand where you expect the content to live.  
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Why this feature? Why now?
+      description: |
+        - Add any other context or screenshots about the feature here.
+        - How will this feature be helpful?
+        - What is the expected outcome?
+    validations:
+      required: true
