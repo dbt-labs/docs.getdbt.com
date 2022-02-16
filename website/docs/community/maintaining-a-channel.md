@@ -1,3 +1,8 @@
+---
+title: "Maintaining a channel"
+id: "maintaining-a-channel"
+---
+
 ## TL;DR
 
 There are three things you should do to be a good channel maintainer:
