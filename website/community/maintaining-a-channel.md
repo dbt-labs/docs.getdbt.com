@@ -1,3 +1,7 @@
+---
+title: "Maintaining a channel"
+id: "maintaining-a-channel"
+---
 # Maintaining a Channel
 
 ## TL;DR
