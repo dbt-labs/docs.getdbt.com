@@ -21,7 +21,7 @@ Good use-cases for seeds:
 
 Poor use-cases of dbt seeds:
 * Loading raw data that has been exported to CSVs
-* Any kind of production data which contains (real) sensitive information (PII,passwords)
+* Any kind of production data which contains sensitive information (PII,passwords)
 
 
 ## Example
