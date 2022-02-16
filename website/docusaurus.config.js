@@ -143,6 +143,10 @@ var siteSettings = {
           position: 'right',
           items: [
             {
+              label: 'Maintaining a Channel',
+              to: '/community/maintaining-a-channel',
+            },
+            {
               label: 'dbt Slack',
               href: 'https://community.getdbt.com/',
             },
