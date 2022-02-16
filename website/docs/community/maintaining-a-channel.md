@@ -5,7 +5,7 @@ id: "maintaining-a-channel"
 
 ## TL;DR
 
-There are three things you should do to be a good channel maintainer:
+There are three things you should do to be a good channel maintainer in the [dbt Slack community](https://community.getdbt.com/):
 
 - Once you see some folks in the channel, post initial conversation topics to help them get to know each other.
 - Keep an eye out in #introductions for folks who might benefit from your new channel. For example if someone works in the space or on  the same problems, then direct them to the channel.
