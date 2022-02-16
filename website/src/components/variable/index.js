@@ -3,7 +3,7 @@ import { dbtVariables } from '../../../dbt-global-variables';
 import VersionContext from '../../stores/VersionContext';
 
 console.log('dbtVar', dbtVariables)
-export default function Variable({ name }) {
+export default function Var({ name }) {
   const { version } = useContext(VersionContext)
   console.log("v", version)
 
