@@ -1,5 +1,5 @@
 ---
-title: "Maintaining a channel"
+title: "Maintaining a Slack channel"
 id: "maintaining-a-channel"
 ---
 
