@@ -143,7 +143,7 @@ var siteSettings = {
           position: 'right',
           items: [
             {
-              label: 'Maintaining a Channel',
+              label: 'Maintaining a Slack Channel',
               to: '/community/maintaining-a-channel',
             },
             {
