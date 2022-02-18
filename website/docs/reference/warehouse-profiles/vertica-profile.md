@@ -9,11 +9,11 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 ## Overview of dbt-vertica
-**Maintained by:** Community    
-**Authors:** Matthew Carter, Andy Regan, Andrew Hedengren
-**Source:** https://github.com/mpcarter/dbt-vertica
-**Core version:** v0.21.0 and newer    
-**dbt Cloud:** Not Supported    
+**Maintained by:** Community      
+**Authors:** Matthew Carter, Andy Regan, Andrew Hedengren  
+**Source:** [Github](https://github.com/mpcarter/dbt-vertica)  
+**Core version:** v0.21.0 and newer      
+**dbt Cloud:** Not Supported      
 
 ![dbt-vertica stars](https://img.shields.io/github/stars/mpcarter/dbt-vertica)
 
