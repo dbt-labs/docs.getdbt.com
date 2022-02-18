@@ -7,7 +7,7 @@ id: setting-up-bigquery
 
 Anyone with a Google Account can use BigQuery, so let's go through how to Create a BigQuery project
 
-<WistiaVideo id="668fnsit1t" />
+<WistiaVideo id="668fnsit1t" paddingTweak="62.5%" />
 
 1. Go to the [BigQuery Console](https://console.cloud.google.com/bigquery)
 
@@ -94,7 +94,7 @@ BigQuery supports public data sets that can be directly queried, so we will show
 
 ## Generate BigQuery Credentials
 
-<WistiaVideo id="o9a2bawwl6" />
+<WistiaVideo id="o9a2bawwl6" paddingTweak="62.5%" />
 
 In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
 
@@ -152,7 +152,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 
 ## Set up a dbt Cloud project and connect to BigQuery
 
-<WistiaVideo id="vrytipyvl4" />
+<WistiaVideo id="vrytipyvl4" paddingTweak="62.5%" />
 
 Above we created a project in Bigquery and created an API key so we interact with BigQuery from other applications. Now we are going to navigate to dbt Cloud and see if we can access our BigQuery Project!
 
@@ -196,7 +196,7 @@ Above we created a project in Bigquery and created an API key so we interact wit
 
 ## Test Your Connection on dbt Cloud
 
-<WistiaVideo id="x3vd9bowj0" />
+<WistiaVideo id="x3vd9bowj0" paddingTweak="62.5%" />
 
 1. Click “Start Developing”.
     > Note: This can take a few minutes for your project to spin up for the first time, as it established your git connection, clones your repo, and tests the connection to the warehouse.
