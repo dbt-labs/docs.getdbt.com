@@ -52,7 +52,7 @@ Click **Create** to continue the setup process.
 On the **General Settings** page, enter the following details::
 
 * **App name**: dbt Cloud
-* **App logo** (optional): You can optionally <a target="\_blank" href={require('/img/dbt-icon.png').default}>download the dbt logo</a>,
+* **App logo** (optional): You can optionally [download the dbt logo](https://www.getdbt.com/ui/img/dbt-icon.png),
   and upload it to Okta to use as the logo for this app.
 
 Click **Next** to continue.
