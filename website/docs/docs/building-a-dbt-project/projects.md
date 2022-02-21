@@ -59,7 +59,7 @@ To create a new dbt project when developing in dbt Cloud:
 To create a new dbt project, run:
 
 ```bash
-$ dbt init [project-name]
+$ dbt init [project_name]
 ```
 
 This will create a new directory in your current path (i.e. at `./[project-name]`.
