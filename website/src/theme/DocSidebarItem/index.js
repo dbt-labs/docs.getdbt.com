@@ -48,7 +48,6 @@ export default function DocSidebarItem({item, versionedPages, ...props}) {
   
   if(version && versionedPages) {
     const { pageAvailable } = pageVersionCheck(version, versionedPages, item.docId)
-    console.log('pageAvailable', pageAvailable)
     if(!pageAvailable)
       return null
   }

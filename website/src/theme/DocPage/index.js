@@ -53,9 +53,6 @@ function DocPageContent({
   const { version: dbtVersion } = useContext(VersionContext)
   const { pageAvailable, firstAvailableVersion } = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute.path)
 
-  console.log('dbtVersion', dbtVersion)
-  console.log('versionedPages', versionedPages)
-
   return (
     <Layout
       wrapperClassName={ThemeClassNames.wrapper.docsPages}
