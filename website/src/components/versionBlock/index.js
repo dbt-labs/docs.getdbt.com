@@ -11,10 +11,10 @@ export default function VersionBlock({ firstVersion, lastVersion = undefined, ch
     version && setLoading(false)
   }, [version])
 
-  // Only check version if current version and first version set
-  if(version && firstVersion) {
+  // Only check version if current version set
+  if(version) {
     const currentVersionVal = parseFloat(version)
-    const firstVersionval = parseFloat(firstVersion)
+    const firstVersionVal = parseFloat(firstVersion) || 0
     {/* 
       * If last version set, check if current version greater than last version
       * Or if current version less than first version
@@ -23,10 +23,10 @@ export default function VersionBlock({ firstVersion, lastVersion = undefined, ch
     */}
     if(lastVersion) {
       if((currentVersionVal > parseFloat(lastVersion)) 
-      || (currentVersionVal < firstVersionval))
+      || (currentVersionVal < firstVersionVal))
         return null
     } else {
-      if(currentVersionVal < firstVersionval)
+      if(currentVersionVal < firstVersionVal)
         return null
     }
   }

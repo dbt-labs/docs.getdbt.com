@@ -13,13 +13,13 @@ title: "Defer"
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
-Defer requires that a <Var name="dbtCore" /> manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
+Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
 
 Variable Test: <Var name="dbtCore" />
 
 ### Usage
 
-<VersionBlock firstVersion="1.2">
+<VersionBlock firstVersion="0.21">
 
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
@@ -28,7 +28,7 @@ $ dbt test --select [...] --defer --state path/to/artifacts
 
 </VersionBlock>
 
-<VersionBlock firstVersion="0.21" lastVersion="1.0">
+<VersionBlock lastVersion="0.20">
 
 ```shell
 $ dbt run --models [...] --defer --state path/to/artifacts
