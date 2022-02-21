@@ -51,7 +51,10 @@ function DocPageContent({
   // Check if page available for current version
   const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
   const { version: dbtVersion } = useContext(VersionContext)
-  const pageAvailable = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute.path)
+  const { pageAvailable, firstAvailableVersion } = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute.path)
+
+  console.log('dbtVersion', dbtVersion)
+  console.log('versionedPages', versionedPages)
 
   return (
     <Layout
@@ -129,9 +132,12 @@ function DocPageContent({
                 [styles.docItemWrapperEnhanced]: hiddenSidebarContainer,
               },
             )}>
-            {!pageAvailable && dbtVersion && (
+            {!pageAvailable && dbtVersion && firstAvailableVersion && (
               <div className={styles.versionBanner}>
-                <Admonition type="caution" title={`This feature is not available in the selected version: ${dbtVersion}`} ></Admonition>
+                <Admonition type="caution" title={`New feature!`} icon="🎉 " >
+                  <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, it's not available in {dbtVersion}</p>
+                  <p>Upgrade to {firstAvailableVersion} or later to use it</p>
+                </Admonition>
               </div>
             )}
             <MDXProvider components={MDXComponents}>{children}</MDXProvider>

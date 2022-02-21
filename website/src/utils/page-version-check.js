@@ -1,8 +1,10 @@
 export default function pageVersionCheck(version, versionedPages, path) {
-  let pageAvailable = true
+  let pageAvailableObj = {
+    pageAvailable: true
+  }
   
   if(!path)
-    return pageAvailable
+    return pageAvailableObj
 
   let updatedPath = path.charAt(0) === '/'
     ? path.substr(1)
@@ -16,6 +18,8 @@ export default function pageVersionCheck(version, versionedPages, path) {
     const currentVersionVal = parseFloat(version)
     const firstVersionVal = parseFloat(firstVersion)
 
+    pageAvailableObj.firstAvailableVersion = firstVersion
+
     // Determine if sidebar item within version range
     if(lastVersion) {
       const lastVersionVal = parseFloat(lastVersion)
@@ -24,13 +28,14 @@ export default function pageVersionCheck(version, versionedPages, path) {
       // or if current version is less than firstVersion
       // If true, remove item in sidebar
       if(currentVersionVal > lastVersionVal || currentVersionVal < firstVersionVal) {
-        pageAvailable = false
+        pageAvailableObj.pageAvailable = false
       }
     } else if(firstVersionVal > currentVersionVal) {
       // If firstVersion is greater than currentVersion
       // remove item from sidebar
-      pageAvailable = false
+      pageAvailableObj.pageAvailable = false
     }
   }
-  return pageAvailable
+
+  return pageAvailableObj
 }
