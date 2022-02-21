@@ -43,5 +43,4 @@ As Ben Franklin once said:
 ## Reclone Repo
 Reclone your repository directly from the dbt IDE and your browser. To reset your repository back to a fresh clone from your remote, click **Ready**, which is green text in the bottom-right, then click **Reclone Repo**.
 
-![ide_reclone_repo](https://user-images.githubusercontent.com/89008547/154305592-948a20c5-519e-43f0-9e29-1ae86be42268.gif)
-
+<Lightbox src="/img/docs/dbt-cloud/![repo_reclone](https://user-images.githubusercontent.com/89008547/154994570-ff2ef8b2-8d7c-4337-b230-c95ea4920a33.gif
