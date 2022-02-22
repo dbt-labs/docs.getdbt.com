@@ -86,7 +86,7 @@
 
 /* Page Not Available Banner */
 :local(.versionBanner) > div {
-  background: var(--ifm-menu-color);
+  background: var(--ifm-color-warning);
 }
 :local(.versionBanner) h5 {
   margin-bottom: 0;

@@ -1,8 +1,8 @@
 :root {
-  --ifm-color-success: #047377 !important;
-  --ifm-color-info: #262A38 !important;
-  --ifm-color-warning: #ff694a !important;
-  --ifm-color-danger: #ff694a !important;
+  --ifm-color-success: #086343 !important;
+  --ifm-color-info: #047377 !important;
+  --ifm-color-warning: #9f1b1f !important;
+  --ifm-color-danger: #a64f21 !important;
   --ifm-font-weight-semibold: 600;
   --ifm-font-weight-bold: 700;
   --ifm-h1-font-size: 2.5rem;
