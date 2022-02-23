@@ -9,49 +9,7 @@ description: "Learn about semantic versions of dbt Core, and how long those vers
 - To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](require-dbt-version) and [`dbt_version`](dbt_version).
 - To learn how you can use dbt Core versions in dbt Cloud, see "[Choosing a dbt Core version](cloud-choosing-a-dbt-version)."
 
-## Semantic versioning
-
-dbt Core follows [semantic versioning](https://semver.org/), which means there are three types of version releases:
-
-- **Major versions:** To date, dbt Core has had one major version release (v1.0.0). When released, v2.0.0 will introduce new features and break backwards compatibility for functionality that has been deprecated.
-- **Minor versions**, also called "feature" releases, include a mix of new features, behind-the-scenes improvements, and changes to existing capabilities that are **backwards compatible** with previous minor versions. They will not break code in your project that relies on documented functionality.
-- **Patch versions**, also called "bugfix" or "security" releases, include **fixes _only_**. These fixes could be needed to restore previous (documented) behavior, fix obvious shortcomings of new features, or offer critical fixes for security or installation issues. We are judicious about which fixes are included in patch releases, to minimize the surface area of changes.
-
-### Versioning plugins
-
-When you use dbt, you're using `dbt-core` together with an adapter plugin specific to your database. (See the list of [available adapters](available-adapters). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
-
-`dbt-core` and adapter plugins coordinate new features and behind-the-scenes changes in minor releases. When it comes to fixing bugs, sooner is better—so patch versions are released independently for `dbt-core` and plugins. As such, patch version numbers may differ; major and minor version numbers should always match.
-
-You may find you're using `dbt-core==1.0.2` with `dbt-snowflake==1.0.0` — that's ok! If you're running dbt locally, you can use the `dbt --version` command to see which versions you have installed:
-```
-$ dbt --version
-installed version: 1.0.2-rc1
-   latest version: 1.0.1
-
-Your version of dbt is ahead of the latest release!
-
-Plugins:
-  - snowflake: 1.0.0 - Up to date!
-```
-
-<!-- TODO: revisit once v1.0.2 has its final release --->
-
-## Expectations
-
-What do we expect of dbt users, as we continue to release new versions of dbt Core?
-
-### Upgrading to new patch versions
-
-We expect users to upgrade to patches as soon as they're available. When we refer to a "minor version" of dbt Core, which may be written as v1.0 or v1.0.x, we are always referring to _the latest patch release of that minor version_. We highly encourage you to structure your development and production environments such that you can always install the latest patches of `dbt-core` and any adapter plugins (noting that those patch numbers may be different).
-
-### Upgrading to new minor versions
-
-While we do not expect users to immediately upgrade to minor versions as soon as they're available, there will always be features and some fixes that are only available for users of the latest minor version.
-
-### Trying prereleases
-
-All dbt Core versions are available as _prereleases_ before the final release. "Release candidates" are available for testing, in production-like environments, two weeks before the final release. For minor versions, we also aim to release one or more "betas," which include new features and invite community feedback, 4+ weeks before the final release. It is in your interest to help us test prereleases—we need your help!
+dbt Core releases follow [semantic versioning](https://semver.org/). The policies and expectations on this page assume prior familiarity with semantic versions. If you're not familiar with semantic versions, we recommend that you start by reading the section titled ["What are semantic versions?"](#what-are-semantic-versions)
 
 ## Timeline and support
 
@@ -66,23 +24,17 @@ All dbt Core versions are available as _prereleases_ before the final release. "
 
 Minor versions will be supported for one year (12 months) from the date of their initial release. _This is a definite commitment._ Our mechanism for continuing to support a minor version is by releasing new patches for that minor version—so it's important to make sure you're always using the latest patch.
 
+While a minor version is officially supported, you can use it in dbt Cloud. For more information, see ["Choosing a dbt version"](cloud-choosing-a-dbt-version).
+
 #### Ongoing patches
 
 During the 12 months of ongoing support, we will continue to release new patch versions that include fixes.
 
-In the first few months, those patches will be "bugfix" releases, focusing on regressions and net-new bugs in the minor version's original release. This is called "Active Support."
+**Active Support:** In the first few months after a minor version's initial release, we will patch it with "bugfix" releases. These will include fixes for regressions and net-new bugs that were present in the minor version's original release.
 
-Once a newer minor version is available, we will transition into "Critical Support." Subsequent patches will be "security" releases, limited to critical fixes related to security and installation.
+**Critical Support:** When a newer minor version is available, we will transition the previous minor version into "Critical Support." Subsequent patches to that older minor version will be "security" releases only, limited to critical fixes related to security and installation.
 
-Once a minor version reaches the end of its critical support period, one year after its initial release, no new patches will be released.
-
-#### Availability in dbt Cloud
-
-While a minor version is officially supported, you can continue to use it in dbt Cloud. We will ensure that you're always using the latest patch release of `dbt-core` and plugins, including all the latest fixes. You may choose to try prereleases of those patch releases before they are generally available.
-
-We will notify you when newer minor versions are available. You may choose when to upgrade to newer minor versions. You may also choose to try prereleases of new minor (feature) versions before their final releases.
-
-We will notify you if you're still using a minor version that is nearing the end of its critical support period. On the day its support period ends, we will automatically upgrade you to the subsequent minor version. <!-- TODO: Is this true? Do we want to say it here? No breaking changes to project code after v1.0, so this feels like a reasonable approach for us to take. --->
+After a minor version reaches the end of its critical support period, one year after its initial release, no new patches will be released.
 
 #### Future versions
 
@@ -96,3 +48,49 @@ We aim to release a new minor "feature" every 3 months. _This is an indicative t
 | _1.3.x_    | _2022-10_       |                      | _1.4.0 release_      | _2023-10_       |
 
 _Italics: Future releases, NOT definite commitments. Shown for indication only._
+
+
+## Expectations
+
+What do we expect of dbt users, as we continue to release new versions of dbt Core?
+
+### Upgrading to new patch versions
+
+We expect users to upgrade to patches as soon as they're available. When we refer to a "minor version" of dbt Core, which may be written as v1.0 or v1.0.x, we are always referring to _the latest patch release of that minor version_. We highly encourage you to structure your development and production environments such that you can always install the latest patches of `dbt-core` and any adapter plugins (noting that those patch numbers may be different).
+
+### Upgrading to new minor versions
+
+You may continue to use any minor version of dbt while it is officially supported. While we do not expect users to immediately upgrade to newer minor versions as soon as they're available, there will always be some features and fixes that are only available for users of the latest minor version.
+
+### Trying prereleases
+
+All dbt Core versions are available as _prereleases_ before the final release. "Release candidates" are available for testing, in production-like environments, two weeks before the final release. For minor versions, we also aim to release one or more "betas," which include new features and invite community feedback, 4+ weeks before the final release. It is in your interest to help us test prereleases—we need your help!
+
+
+## What are semantic versions?
+
+Like many software projects, dbt Core releases follow [semantic versioning](https://semver.org/), which defines three types of version releases.
+
+- **Major versions:** To date, dbt Core has had one major version release: v1.0.0. When v2.0.0 is released, it will introduce new features and break backwards compatibility for functionality that has been deprecated.
+- **Minor versions**, also called "feature" releases, include a mix of new features, behind-the-scenes improvements, and changes to existing capabilities that are **backwards compatible** with previous minor versions. They will not break code in your project that relies on documented functionality.
+- **Patch versions**, also called "bugfix" or "security" releases, include **fixes _only_**. These fixes could be needed to restore previous (documented) behavior, fix obvious shortcomings of new features, or offer critical fixes for security or installation issues. We are judicious about which fixes are included in patch releases, to minimize the surface area of changes.
+
+### How we version adapter plugins
+
+When you use dbt, you're using `dbt-core` together with an adapter plugin specific to your database. You can see the current list in ["Available adapters"](available-adapters). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
+
+`dbt-core` and adapter plugins coordinate new features and behind-the-scenes changes in minor releases. When it comes to fixing bugs, sooner is better—so patch versions are released independently for `dbt-core` and plugins.
+
+What does that mean? Patch version numbers are likely to be different between `dbt-core` and the adapter plugin(s) you have installed. Major and minor version numbers should always match.
+
+As an example, you may find you're using `dbt-core==1.0.3` with `dbt-snowflake==1.0.0`. The most important thing is that you're using the latest patch available for each (v1.0.x). If you're running dbt locally, you can use the `dbt --version` command to see which versions you have installed:
+```
+$ dbt --version
+installed version: 1.0.3
+   latest version: 1.0.3
+
+Up to date!
+
+Plugins:
+  - snowflake: 1.0.0 - Up to date!
+```
