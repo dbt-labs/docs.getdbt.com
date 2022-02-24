@@ -25,5 +25,5 @@
   is_featured: true
 - name: release notes
   display_title: Release notes
-  description: Communications from the Product team announcing notable updates and new features in dbt Cloud.
+  description: Notable updates and new features in dbt Cloud.
   is_featured: true
