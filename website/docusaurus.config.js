@@ -41,7 +41,7 @@ var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
-  title: 'dbt Docs',
+  title: 'dbt™ Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
 
@@ -104,7 +104,7 @@ var siteSettings = {
         },
         {
           to: '/docs/dbt-cloud/cloud-overview',
-          label: 'dbt Cloud',
+          label: 'dbt Cloud™',
           position: 'left',
           activeBasePath: 'docs/dbt-cloud'
         },
@@ -163,7 +163,7 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
     },
   },
   presets: [
@@ -185,7 +185,7 @@ var siteSettings = {
           sidebarCollapsible: true,
         },
         blog: {
-          blogTitle: 'dbt Developer Blog',
+          blogTitle: 'dbt™ Developer Blog',
           blogDescription: 'Technical tutorials from the dbt Community.',
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
