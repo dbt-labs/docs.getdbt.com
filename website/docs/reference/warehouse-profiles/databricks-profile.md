@@ -5,11 +5,11 @@ id: "databricks-profile"
 
 ## Overview of dbt-databricks
 
-**Maintained by:** some dbt loving Bricksters
-**Author:** Databricks
-**Source:** [Github](https://github.com/databricks/dbt-databricks)
-**dbt Cloud:** Coming Soon
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNGCW8HKL)
+**Maintained by:** some dbt loving Bricksters  
+**Author:** Databricks  
+**Source:** [Github](https://github.com/databricks/dbt-databricks)  
+**dbt Cloud:** Coming Soon  
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNGCW8HKL)  
 
 ![dbt-databricks stars](https://img.shields.io/github/stars/databricks/dbt-databricks?style=for-the-badge)
 
