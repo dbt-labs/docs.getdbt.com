@@ -55,7 +55,7 @@ on Delta Lake.
 
 Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
-2. [Snapshots](snapshots)
+2. [Snapshots](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots)
 
 ### Choosing between dbt-databricks and dbt-spark
 
