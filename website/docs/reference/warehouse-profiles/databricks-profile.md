@@ -63,6 +63,6 @@ While `dbt-spark` can be connect to Databricks, `dbt-databricks` was created to 
 even easier to use dbt with the Databricks Lakehouse.
 
 `dbt-databricks` includes:
-- No need to install additional drivers or dependencies
+- No need to install additional drivers or dependencies for use on the CLI
 - Use of Delta Lake for all models out of the box
 - SQL macros that are optimzed to run with [Photon](https://docs.databricks.com/runtime/photon.html)
