@@ -6,6 +6,7 @@ const lastReleasedVersion = versions[0];
 const VersionContext = createContext({
   version: lastReleasedVersion.version,
   EODDate: lastReleasedVersion.EOLDate, 
+  latestStableRelease: lastReleasedVersion.version,
   updateVersion: () => {},
 })
 
@@ -57,6 +58,11 @@ export const VersionContextProvider = ({ children }) => {
   const currentVersion = versions.find(ver => ver.version === version)
   if(currentVersion)
     context.EOLDate = currentVersion.EOLDate
+  
+  // Get latest stable release
+  const latestStableRelease = versions.find(ver => new Date(ver.EOLDate) > new Date())
+  if(latestStableRelease?.version)
+    context.latestStableRelease = latestStableRelease.version
 
   return (
     <VersionContext.Provider value={context}>

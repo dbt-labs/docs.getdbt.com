@@ -50,7 +50,7 @@ function DocPageContent({
 
   // Check if page available for current version
   const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
-  const { version: dbtVersion, EOLDate } = useContext(VersionContext)
+  const { version: dbtVersion, EOLDate, latestStableRelease } = useContext(VersionContext)
   const { pageAvailable, firstAvailableVersion } = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute.path)
 
   // Check End of Life date and show unsupported banner if depricated version
@@ -66,12 +66,12 @@ function DocPageContent({
     if(new Date() > new Date(EOLDate)) {
       setEOLData({
         showEOLBanner: true,
-        EOLBannerText: 'This version is no longer supported. Please upgrade to a newer version.'
+        EOLBannerText: `This version is no longer supported. The latest stable version is ${latestStableRelease}`
       })
     } else if(new Date() > threeMonths) {
       setEOLData({
         showEOLBanner: true,
-        EOLBannerText: 'This version is nearing the end of support. Please upgrade to a newer version.'
+        EOLBannerText: `This version is nearing the end of support. The latest stable version is ${latestStableRelease}`
       })
     } else {
       setEOLData({
