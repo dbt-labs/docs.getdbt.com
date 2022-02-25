@@ -542,6 +542,7 @@ module.exports = {
         "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
+        "reference/warehouse-profiles/databricks-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
@@ -552,6 +553,7 @@ module.exports = {
         "reference/warehouse-profiles/firebolt-profile",
         "reference/warehouse-profiles/teradata-profile",
         "reference/warehouse-profiles/athena-profile",
+        "reference/warehouse-profiles/vertica-profile",
       ],
     },
     {
