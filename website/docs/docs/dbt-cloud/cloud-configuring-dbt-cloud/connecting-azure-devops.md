@@ -5,11 +5,11 @@ sidebar_label: "Connecting Azure DevOps"
 ---
 
 ## Overview
-Connecting your Azure DevOps account to dbt Cloud unlocks exciting new functionality in dbt Cloud. It allows customers to:
+Connecting your Azure DevOps account to dbt Cloud unlocks exciting new functionality in dbt Cloud:
 - Import new Azure DevOps repos with a couple clicks during dbt Cloud project setup
 - Enforce user authorization with OAuth 2.0 
 - Carry Azure DevOps user repository permissions through to dbt Cloud IDE's git actions
-- Trigger CI builds when pull requests are opened in Azure DevOps (coming soon!)
+- Trigger Continuous integration (CI) builds when pull requests are opened in Azure DevOps (coming soon!)
 
 :::info Beta feature
 This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com
