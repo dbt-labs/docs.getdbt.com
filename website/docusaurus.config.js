@@ -163,7 +163,7 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`, `[Terms of Service](https://www.getdbt.com/cloud/terms/) | `, `[Privacy Policy](https://www.getdbt.com/cloud/privacy-policy/) | `,`[Security](https://www.getdbt.com/security/)`
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | [Terms of Service](https://www.getdbt.com/cloud/terms/) | [Privacy Policy](https://www.getdbt.com/cloud/privacy-policy/) | [Security](https://www.getdbt.com/security/)`
     },
   },
   presets: [
