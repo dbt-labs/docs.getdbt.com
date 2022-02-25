@@ -35,7 +35,7 @@ Once you click "initialize your project" you'll see the following in your IDE. C
 </p>
                
 <p align="center">
-<Lightbox src=" ![select_branch](https://user-images.githubusercontent.com/89008547/152341705-0a0e3ee1-45bf-408e-820c-046f39c01ec7.png)/>
+<Lightbox src="website/static/img/docs/dbt-cloud/cloud-ide/checkout_one.png"/>
 </p>
 
 
