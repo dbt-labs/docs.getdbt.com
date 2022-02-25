@@ -21,7 +21,7 @@ To do this, sign into Azure Active Directory. You'll then nativigate to 'App reg
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD natigation.gif" title="Navigating to the AD app registrations"/>
 
-Next, give your app a name. We recommend 'dbt Labs Azure DevOps App'. Select 'Accounts in any organizational directory (Any Azure AD directory - Multitenant)' for Supported Account Types. Finally, add a redirect URI by selecting 'Web' and typing in 'https://cloud.getdbt.com/complete/azure-active-directory'. If you have a custom dbt Cloud url be sure to swap in your appropriate domain.
+Next, give your app a name. We recommend 'dbt Labs Azure DevOps App'. Select 'Accounts in any organizational directory (Any Azure AD directory - Multitenant)' for Supported Account Types. Finally, add a redirect URI by selecting 'Web' and typing in 'https://cloud.getdbt.com/complete/azure_active_directory'. If you have a custom dbt Cloud url be sure to swap in your appropriate domain.
 
 Your app should look as follows before you register it.
 
@@ -31,21 +31,28 @@ Next, you'll need to give your new app access to Azure DevOps. Select 'API permi
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" title="Adding permissions to the app"/>
 
-Finally, you need to connect Azure DevOps to the Active Directory App you just created. To do so, head to your Azure DevOps account, select 'Organization settings', navigate to Azure Active Directory, click 'Connect directory', and select the directory to connect to.
+Finally, you need to connect Azure DevOps to the Active Directory App you just created. To do so, head to your Azure DevOps account, select 'Organization settings', navigate to Azure Active Directory, click 'Connect directory', and select the appropriate directory to connect.
 
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" title="Connecting Azure DevOps and Active Directory"/>
 
-Now that Active Directory and Azure DevOps are connected. You need to give dbt Cloud proper information about your Active Directory App. To do so, navigate to your account settings in dbt Cloud, select Integrations and then scroll to the Azure DevOps section. There you should add the following:
+Now that Active Directory and Azure DevOps are connected. You need to give dbt Cloud proper information about your Active Directory App. To do so, navigate to your account settings in dbt Cloud, select Integrations and then scroll to the Azure DevOps section. 
+
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/Azure Devops App in dbt Cloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
+
+There you should add the following:
  - Azure DevOps Organization, which must match the name of your Azure DevOps organization exactly.
  - Application (client) ID from the Active Directory App
  - Directory (tenant) ID from the Active Directory App
- - Client secrets, which must be added to the Active Directory App under Client credentials
+ - Client secrets, which must be first created in the Active Directory App under Client credentials. The customer will be responsible for the AD app secret expiration and rotation.
 
-Once you've hit save, your Active Directory app has been added to your dbt Cloud Account. Developers on your team are now ready to authorize Azure DevOps on their profiles.
+Once those steps are completed, your Active Directory app has been added to your dbt Cloud Account. Developers on your team are now ready to authorize Azure DevOps on their profiles.
 
 ## For dbt Cloud developers
 All dbt Cloud developers will need to connect their dbt Cloud profiles to Azure DevOps via OAuth. You can do so in your profile page by navigating to Integrations and clicking 'Link your Azure DevOps Profile'. 
+
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/profile link.gif" title="Linking your Azure DevOps Profile" />
+
 
 You should then be redirected to Azure DevOps and prompted to sign into your account. Azure DevOps will then ask for your explicit authorization: 
 
