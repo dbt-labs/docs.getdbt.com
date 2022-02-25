@@ -4,7 +4,8 @@ import { versions } from '../../dbt-versions'
 const lastReleasedVersion = versions[0];
 
 const VersionContext = createContext({
-  version: lastReleasedVersion,
+  version: lastReleasedVersion.version,
+  EODDate: lastReleasedVersion.EOLDate, 
   updateVersion: () => {},
 })
 
@@ -18,7 +19,7 @@ export const VersionContextProvider = ({ children }) => {
     const urlParams = new URLSearchParams(search);
     const versionParam = urlParams.get('version')
 
-    if(versionParam && versions.includes(versionParam)) {
+    if(versionParam && versions.find(ver => ver?.version && ver.version === versionParam)) {
       {/* 
         * Check if version param exists in url,
         * and is in current versions array
@@ -33,7 +34,7 @@ export const VersionContextProvider = ({ children }) => {
       */}
       storageVersion
         ? setVersion(storageVersion)
-        : setVersion(lastReleasedVersion)
+        : setVersion(lastReleasedVersion.version)
     }
   }, [])
 
@@ -47,10 +48,15 @@ export const VersionContextProvider = ({ children }) => {
       window.localStorage.setItem('dbtVersion', versionValue)
   }
 
-  const context = {
+  let context = {
     version, 
     updateVersion
   }
+
+  // Get End of Life date for current version
+  const currentVersion = versions.find(ver => ver.version === version)
+  if(currentVersion)
+    context.EOLDate = currentVersion.EOLDate
 
   return (
     <VersionContext.Provider value={context}>

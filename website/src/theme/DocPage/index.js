@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, {useState, useCallback, useContext} from 'react';
+import React, {useState, useCallback, useContext, useEffect} from 'react';
 import {MDXProvider} from '@mdx-js/react';
 import renderRoutes from '@docusaurus/renderRoutes';
 import Layout from '@theme/Layout';
@@ -50,8 +50,36 @@ function DocPageContent({
 
   // Check if page available for current version
   const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
-  const { version: dbtVersion } = useContext(VersionContext)
+  const { version: dbtVersion, EOLDate } = useContext(VersionContext)
   const { pageAvailable, firstAvailableVersion } = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute.path)
+
+  // Check End of Life date and show unsupported banner if depricated version
+  const [EOLData, setEOLData] = useState({
+    showEOLBanner: false,
+    EOLBannerText: ''
+  })
+
+  useEffect(() => {
+    let threeMonths = new Date(EOLDate)
+    threeMonths.setMonth(threeMonths.getMonth() - 3)
+
+    if(new Date() > new Date(EOLDate)) {
+      setEOLData({
+        showEOLBanner: true,
+        EOLBannerText: 'This version is no longer supported. Please upgrade to a newer version.'
+      })
+    } else if(new Date() > threeMonths) {
+      setEOLData({
+        showEOLBanner: true,
+        EOLBannerText: 'This version is nearing the end of support. Please upgrade to a newer version.'
+      })
+    } else {
+      setEOLData({
+        showEOLBanner: false,
+        EOLBannerText: ''
+      })
+    }
+  }, [dbtVersion])
 
   return (
     <Layout
@@ -129,6 +157,13 @@ function DocPageContent({
                 [styles.docItemWrapperEnhanced]: hiddenSidebarContainer,
               },
             )}>
+            {EOLData.showEOLBanner && (
+              <div className={styles.versionBanner}>
+                <Admonition type="caution" title="Warning">
+                  <p>{EOLData.EOLBannerText}</p>
+                </Admonition>
+              </div>
+            )}
             {!pageAvailable && dbtVersion && firstAvailableVersion && (
               <div className={styles.versionBanner}>
                 <Admonition type="caution" title={`New feature!`} icon="🎉 " >

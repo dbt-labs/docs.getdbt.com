@@ -251,12 +251,15 @@ if(versions) {
     position: 'left',
     className: 'nav-versioning',
     items: [
-      ...versions.map(version => (
-        {
-          label: `${version}`,
-          href: '#',
+      ...versions.reduce((acc, version) => {
+        if(version?.version) {
+          acc.push({
+            label: `${version.version}`,
+            href: '#',
+          })
         }
-      ))
+        return acc
+      }, [])
     ]
   },)
 }
