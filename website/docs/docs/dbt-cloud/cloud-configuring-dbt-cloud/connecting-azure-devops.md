@@ -20,12 +20,13 @@ This feature is currently in Beta. If you are interested in getting access to th
 Account admins need to set up an Active Directory application before developers can personally authenticate in Azure DevOps:
 
 1. [Register an Active directory app](#registering-an-active-director-app) in Azure DevOps.
-2. Connect Azure DevOps to your new app.
-3. Add your Active Directory app to dbt Cloud.
+2. [Add permissions to your new app](#add-permissions-to-your-new-app).
+3. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
+4. [Add your Active Directory app to dbt Cloud](#add-your-active-directory-app-to-dbt-cloud).
 
 Developers can authenticate to Azure DevOps:
 
-4. Link your Azure DevOps profile in dbt Cloud
+4. [Link your dbt Cloud profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops).
 
 
 ## Register an Active Director app
