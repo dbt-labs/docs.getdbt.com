@@ -45,5 +45,7 @@ Once you click "initialize your project" you'll see the following in your IDE. C
 ## Reclone Repo
 Reclone your repository directly from the dbt IDE and your browser. You can reset your repository back to a fresh clone from your remote, you will want to click on the bottom right hand side green 'Ready'text, then click on the 'Reclone Repo' selection.
 
-![ide_reclone_repo](https://user-images.githubusercontent.com/89008547/154313204-8a31af6d-14d3-4e5d-ace5-8e0cce4c3217.gif)
+<p align="center">
+<Lightbox src="/img/docs/dbt-cloud/reclone_repo.mp4" />
+
 
