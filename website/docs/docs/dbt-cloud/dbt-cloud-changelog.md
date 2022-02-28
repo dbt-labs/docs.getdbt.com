@@ -4,6 +4,68 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.46 (March 2nd, 2022)
+
+#### Enhancements
+
+- Deleting angular logic from the Develop route.
+
+#### Feature
+
+- Give a link to re-authenticate big query account
+- Embed status page
+
+#### Fixed
+
+- Sanitize escaped unicode characters from BigQuery query results
+- Pinning MarkupSafe dependency
+- Restore run timing UI
+- Restoring ability to search and open files in redux strategy
+- SHP-151: Remove Azure feature flag check from repo create endpoint
+- comment out call to timing endpoint
+
+#### Internal
+
+- Ensure one ending / exists for repository subpaths
+- scheduler: timing metric for account list
+- Enable SSO re-auth for new customers by default
+- Refactor IDE read-only state
+- Add feature flag for auto-deactivating jobs
+- SHP-186 | Add modal for missing Azure OAuth token on IDE startup
+- Change pod image policies in devspace
+- First stab at refactor
+- k8s: only cache pod IP
+- scribe: cache run pod IPs
+- reduce polling rate on run details
+- SHP-185 | Add BE logic for DevOps user with no OAuth token at Develop startup
+- create function for generating globally unique account identifier
+- Add fields to deactivate jobs
+- Address scribe pods directly by their IPs, remove associated services
+- Account for project subpaths
+- remove run endpoint deletion
+- SHP-194 Delete run service after run completion
+- use headless service based on feature flag setting
+- Fix work code retention for Apollo implementation
+- SHP-168 | Azure DevOps Phase 1 QA cleanup
+- Remove model bottleneck viz LD flags
+- Refresh Git State now wipes unsaved changes with apollo strategy
+- Implement support for the new RPC route, behind a feature flag
+- Implement new route for RPC commands with install-path validation
+- SHP-15 | Clone Azure repos for Develop and auth git interactions with user token
+- improve error handling for azure refresh token call:
+- Use `POD_NAMESPACE` for LD id when using devspace
+- Migrating ID validation logic closer to the network request
+- Limit service token permissions available on non-Enterprise plans
+- Fix run timing API performance (for real this time)
+- use proper path comparison when checking for invalid package install paths
+- also log invalid package install path errors
+- prevent absolute packages install path for scheduled runs
+- publish run completed events on the event bus
+- Reverse get_first_finished_blocking_run ordering
+- Remove tests on RunTiming endpoint
+- disable run timings endpoint
+
 ## dbt Cloud v1.1.45 (February 16, 2022)
 
 Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens#permissions-for-service-account-tokens).
