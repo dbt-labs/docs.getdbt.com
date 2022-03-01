@@ -41,7 +41,7 @@ var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
-  title: 'dbt™ Docs',
+  title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
 
@@ -50,8 +50,8 @@ var siteSettings = {
     colorMode: {
       disableSwitch: true
     },
-    // Adding non-empty strings for Algolia config 
-    // allows Docusaurus to run locally without .env file 
+    // Adding non-empty strings for Algolia config
+    // allows Docusaurus to run locally without .env file
     algolia: {
       apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
       indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
@@ -104,7 +104,7 @@ var siteSettings = {
         },
         {
           to: '/docs/dbt-cloud/cloud-overview',
-          label: 'dbt Cloud™',
+          label: 'dbt Cloud',
           position: 'left',
           activeBasePath: 'docs/dbt-cloud'
         },
@@ -119,7 +119,7 @@ var siteSettings = {
           label: 'Developer Blog',
           position: 'right',
           activeBasePath: 'blog'
-        },        
+        },
         {
           label: 'Learn',
           position: 'right',
@@ -163,7 +163,7 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a>`
     },
   },
   presets: [
@@ -185,7 +185,7 @@ var siteSettings = {
           sidebarCollapsible: true,
         },
         blog: {
-          blogTitle: 'dbt™ Developer Blog',
+          blogTitle: 'dbt Developer Blog',
           blogDescription: 'Technical tutorials from the dbt Community.',
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
@@ -196,8 +196,8 @@ var siteSettings = {
   ],
   plugins: [
     [
-      path.resolve('plugins/insertMetaTags'), 
-      { metatags } 
+      path.resolve('plugins/insertMetaTags'),
+      { metatags }
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
