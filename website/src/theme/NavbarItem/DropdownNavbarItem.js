@@ -61,8 +61,11 @@ function DropdownNavbarItemDesktop({items, position, className, versionContext, 
   }, [dropdownRef]);
 
   // If in the blog directory, hide versioning from nav
-  if(window?.location?.pathname.includes('/blog') && className === 'nav-versioning')
-    return null
+  if(
+    typeof window !== 'undefined' && 
+    window?.location?.pathname.includes('/blog') && 
+    className === 'nav-versioning'
+  ) return null
 
   return (
     <div
