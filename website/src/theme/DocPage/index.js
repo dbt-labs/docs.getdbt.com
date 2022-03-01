@@ -157,18 +157,18 @@ function DocPageContent({
                 [styles.docItemWrapperEnhanced]: hiddenSidebarContainer,
               },
             )}>
-            {EOLData.showEOLBanner && (
-              <div className={styles.versionBanner}>
-                <Admonition type="caution" title="Warning">
-                  <p>{EOLData.EOLBannerText}</p>
-                </Admonition>
-              </div>
-            )}
             {!pageAvailable && dbtVersion && firstAvailableVersion && (
               <div className={styles.versionBanner}>
                 <Admonition type="caution" title={`New feature!`} icon="🎉 " >
                   <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, it's not available in {dbtVersion}</p>
                   <p>Upgrade to {firstAvailableVersion} or later to use it</p>
+                </Admonition>
+              </div>
+            )}
+            {EOLData.showEOLBanner && (
+              <div className={styles.versionBanner}>
+                <Admonition type="caution" title="Warning">
+                  <p>{EOLData.EOLBannerText}</p>
                 </Admonition>
               </div>
             )}

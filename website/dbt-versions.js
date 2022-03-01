@@ -21,7 +21,7 @@ exports.versionedPages = [
   {
     "page": "docs/available-adapters",
     "firstVersion": "0.21",
-    "lastVersion": ""
+    "lastVersion": "",
   },
   {
     "page": "docs/building-a-dbt-project/metrics",
