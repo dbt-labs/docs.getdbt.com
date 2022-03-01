@@ -100,7 +100,7 @@ What if we cleaned up the old reporting ecosystem at the same time?
 
 A dozen light bulbs went off at once. We could change *everything*. We could make *everyone’s* time more effective and efficient.
 
-I remember going into a meeting with our team SVP after realizing we should do more than just make some clean tables. I told him “this project is a lot bigger than we signed on for, there’s so much to do to get it right.” He was gracious to give us some more time, with the expectation that we’d deliver something within the year.It was time to get to work. We not only needed to make some clean data,   choose our tools, overhaul the analytics code production process and significantly clean the old reporting ecosystem. It would take a marathon sprint to get there. The question of “What if” became “When?” We ambitiously chose by the end of the calendar year and off to the races we went.
+I remember going into a meeting with our team SVP after realizing we should do more than just make some clean tables. I told him “this project is a lot bigger than we signed on for, there’s so much to do to get it right.” He was gracious to give us some more time, with the expectation that we’d deliver something within the year. It was time to get to work. We not only needed to make some clean data, choose our tools, overhaul the analytics code production process and significantly clean the old reporting ecosystem. It would take a marathon sprint to get there. The question of “What if” became “When?” We ambitiously chose by the end of the calendar year and off to the races we went.
 
 ## Technology & Database Design
 
