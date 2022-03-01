@@ -8,8 +8,8 @@ authors: [nate-sooter]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-02-23
-is_featured: false
+date: 2022-03-01
+is_featured: true
 ---
 
 # Founding an Analytics Engineering Team
