@@ -5,6 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
- module.exports = {
+module.exports = {
   presets: ['@babel/preset-env', '@babel/preset-react'],
 };
