@@ -18,6 +18,7 @@ description: "Changelog for the dbt Cloud application"
 
 #### Fixed
 
+- Project switch/unmount root components
 - Sanitize escaped unicode characters from BigQuery query results
 - Pinning MarkupSafe dependency
 - Restore run timing UI
@@ -27,6 +28,8 @@ description: "Changelog for the dbt Cloud application"
 
 #### Internal
 
+- Add table and models for Azure service user
+- fix: move ld namespace logic so client and backend use the same value
 - Ensure one ending / exists for repository subpaths
 - scheduler: timing metric for account list
 - Enable SSO re-auth for new customers by default
