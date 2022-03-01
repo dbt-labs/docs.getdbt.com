@@ -14,7 +14,8 @@ is_featured: false
 
 # Founding an Analytics Engineering Team
 
-**Executive Summary**
+**Executive Summary:**
+
 If your company is struggling to leverage analytics, dealing with an overgrown ecosystem of dashboards/databases or simply want to avoid the mistakes of others, this story is for you. In this article, I will walk through forming the first analytics engineering team at Smartsheet including how momentum built around forming the team,  the challenges we faced, and the solutions we developed within the first year.
 
 ## Introduction
