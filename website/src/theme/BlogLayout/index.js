@@ -89,7 +89,7 @@
          ((show_title || show_description) && (title || description)) && (
            <div className="blog-index-header">
              <div className="container margin-vert--lg">
-               <div className="admonition alert card large light blog-hero-card">
+               <div className="card large light blog-hero-card">
                  <div className="blog-hero-card-content">
                    {title && show_title && <h1>{title}</h1>}
                    {description && show_description && <p>{description}</p>}

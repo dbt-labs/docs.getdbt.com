@@ -3,6 +3,10 @@
   --ifm-color-info: #047377 !important;
   --ifm-color-warning: #9f1b1f !important;
   --ifm-color-danger: #a64f21 !important;
+  --ifm-color-success-light: #d6f3e2 !important;
+  --ifm-color-info-light: #d9f6f4 !important;
+  --ifm-color-warning-light: #ffe1be !important;
+  --ifm-color-danger-light: #f9d3d4 !important;
   --ifm-font-weight-semibold: 600;
   --ifm-font-weight-bold: 700;
   --ifm-h1-font-size: 2.5rem;
@@ -164,6 +168,9 @@ nav.navbar div.navbar__inner {
 .dropdown__link {
   font-size: 1rem;
 }
+.dropdown__link:hover {
+  cursor: pointer;
+}
 
 .featherlight:before {
   height: 5%;
@@ -290,19 +297,19 @@ nav.navbar div.navbar__inner {
 } */
 
 .alert--info {
-  --ifm-alert-background-color: rgba(4, 115, 119, .1);
+  --ifm-alert-background-color: var(--ifm-color-info-light);
   --ifm-alert-border-color: var(--ifm-color-info);
 }
 .alert--success {
-  --ifm-alert-background-color: rgba(8, 99, 67, .1);
+  --ifm-alert-background-color: var(--ifm-color-success-light);
   --ifm-alert-border-color: var(--ifm-color-success);
 }
 .alert--danger {
-  --ifm-alert-background-color: rgba(166, 79, 33, .1);
+  --ifm-alert-background-color: var(--ifm-color-danger-light);
   --ifm-alert-border-color: var(--ifm-color-danger);
 }
 .alert--warning {
-  --ifm-alert-background-color: rgba(159, 27, 31, .1);
+  --ifm-alert-background-color: var(--ifm-color-warning-light);
   --ifm-alert-border-color: var(--ifm-color-warning);
 }
 
@@ -696,6 +703,7 @@ code {
 }
 .blog-hero-card {
   background: var(--ifm-footer-background-color);
+  color: white;
 }
 .blog-hero-card .button {
   text-decoration: none;
