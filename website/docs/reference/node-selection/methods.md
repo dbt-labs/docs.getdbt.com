@@ -60,7 +60,7 @@ The `source` method is used to select models that select from a specified [sourc
 ### The "path" method
 The `path` method is used to select models located at or under a specific path.
 While the `path` prefix is not explicitly required, it may be used to make
-selectors unambiguous.
+selectors unambiguous. This method supports wildcard (`*`) matching.
 
 <Tabs
   defaultValue="modern"
@@ -80,6 +80,10 @@ dbt run --select models/staging/github
 # These two selectors are equivalent
 dbt run --select path:models/staging/github/stg_issues.sql
 dbt run --select models/staging/github/stg_issues.sql
+  
+# These two selectors are equivalent
+dbt run --select path:models/staging/github/stg_*
+dbt run --select models/staging/github/stg_*
 ```
 
 </TabItem>
@@ -94,6 +98,10 @@ dbt run --models models/staging/github
 # These two selectors are equivalent
 dbt run --models path:models/staging/github/stg_issues.sql
 dbt run --models models/staging/github/stg_issues.sql
+  
+# These two selectors are equivalent
+dbt run --models path:models/staging/github/stg_*
+dbt run --models models/staging/github/stg_*
 ```
 </TabItem>
 </Tabs>
