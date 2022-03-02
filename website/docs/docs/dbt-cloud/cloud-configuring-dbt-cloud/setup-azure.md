@@ -17,7 +17,7 @@ To use Azure Active Directory (Azure AD) for identity and access management in d
 Once the Azure AD app is set up and added to dbt Cloud, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenitcate with Azure DevOps](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
 
 :::info Beta feature
-This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com
+This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com.
 :::
 
 ## Register an Azure AD app
@@ -27,7 +27,7 @@ This feature is currently in Beta. If you are interested in getting access to th
 3. Select **New registration**. The form for creating a new Active Directory app opens.
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
 5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types.
-6. Add a redirect URI by selecting **Web** and typing in `https://cloud.getdbt.com/complete/azure_active_directory`. If you have a custom dbt Cloud url be sure to use the appropriate domain.
+6. Add a redirect URI by selecting **Web** and typing in `https://cloud.getdbt.com/complete/azure_active_directory`. If you have a custom dbt Cloud URL be sure to use the appropriate domain.
 7. Click **Register**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the AD app registrations"/>
@@ -42,9 +42,9 @@ Provide your new app access to Azure DevOps:
 
 1. Select **API permissions** in the left navigation panel.
 2. Remove the "Microsoft Graph / User Read" permission.
-3. Click **Add a permission**
-4. Select **Azure DevOps**
-5. Select **`user_impersonation`** permission.
+3. Click **Add a permission**.
+4. Select **Azure DevOps**.
+5. Select the **user_impersonation** permission.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" title="Adding permissions to the app"/>
 
@@ -64,7 +64,7 @@ Connect Azure DevOps to the Active Directory App you just created:
 
 Once you connect Azure AD app and Azure DevOps, you need to provide dbt Cloud information about the app:
 
-1. Navigate to your account settings in dbt Cloud
+1. Navigate to your account settings in dbt Cloud.
 2. Select **Integrations**.
 3. Scroll to the Azure DevOps section.
 4. Complete the form:
@@ -76,4 +76,4 @@ Once you connect Azure AD app and Azure DevOps, you need to provide dbt Cloud in
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/Azure Devops App in dbt Cloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
 
-Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally authorize Azure DevOps from their profiles.
+Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).

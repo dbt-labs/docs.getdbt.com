@@ -8,10 +8,10 @@ sidebar_label: "Connecting Azure DevOps"
 
 You can connect your Azure DevOps account and use Azure Active Directory (Azure AD) to enable identity and access management in dbt Cloud:
 
-- Import new Azure DevOps repos with a couple clicks during dbt Cloud project setup
-- Enforce user authorization with OAuth 2.0
-- Carry Azure DevOps user repository permissions through to dbt Cloud IDE's git actions
-- Trigger Continuous integration (CI) builds when pull requests are opened in Azure DevOps (coming soon!)
+- Import new Azure DevOps repos with a couple clicks during dbt Cloud project setup.
+- Enforce user authorization with OAuth 2.0.
+- Carry Azure DevOps user repository permissions through to dbt Cloud IDE's git actions.
+- Trigger Continuous integration (CI) builds when pull requests are opened in Azure DevOps. (Coming soon!)
 
 To connect Azure DevOps and use Azure AD in dbt Cloud:
 
@@ -19,5 +19,5 @@ To connect Azure DevOps and use Azure AD in dbt Cloud:
 2. dbt Cloud developers need to [personally authenticate with Azure DevOps](docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticating-azure) from dbt Cloud.
 
 :::info Beta feature
-This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com
+This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com.
 :::
