@@ -34,6 +34,7 @@ If you're interested in giving dbt Cloud a spin, you can sign up for a *forever 
 
 ### Using Airflow
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
+* Invoking dbt through the [DbtCloudRunJobOperator](link to production docs in airflow).
 * Invoking dbt through the [BashOperator](https://airflow.apache.org/howto/operator/bash.html). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
 * Installing the [airflow-dbt](https://pypi.org/project/airflow-dbt/) python package. This package uses Airflow's operator and hook concept — the source code can be found on [github](https://github.com/gocardless/airflow-dbt).
 
