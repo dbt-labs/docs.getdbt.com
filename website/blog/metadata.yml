@@ -10,6 +10,9 @@ featured_posts_count: 4
 # How many featured posts by tag to show on blog index
 featured_tag_posts_count: 3
 
+# How many posts which aren't in featured post section should show
+regular_posts_count: 10
+
 # Show or hide hero title, description, cta from blog index
 show_title: true
 show_description: true
