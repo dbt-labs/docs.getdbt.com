@@ -1,6 +1,6 @@
 ---
 title: "Founding an Analytics Engineering Team"
-description: "Nate Sooter shares the challenges and successes of forming the first analytics engineering team at Smartsheet"
+description: "Nate Sooter shares the challenges and successes of forming the first analytics engineering tem at Smartsheet"
 slug: founding-an-analytics-engineering-team-smartsheet
 
 authors: [nate-sooter]
