@@ -23,7 +23,3 @@
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses.
   is_featured: true
-- name: release notes
-  display_title: Release notes
-  description: Notable updates and new features in dbt Cloud.
-  is_featured: true
