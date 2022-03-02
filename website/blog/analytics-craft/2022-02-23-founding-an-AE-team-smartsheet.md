@@ -8,7 +8,7 @@ authors: [nate-sooter]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-03-01
+date: 2022-03-02
 is_featured: true
 ---
 
