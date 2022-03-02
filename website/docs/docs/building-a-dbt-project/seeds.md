@@ -61,7 +61,7 @@ Done. PASS=1 ERROR=0 SKIP=0 TOTAL=1
 
 3. Refer to seeds in downstream models using the `ref` function.
 
-<File name='models/orders.csv'>
+<File name='models/orders.sql'>
 
 ```sql
 -- This refers to the table created from seeds/country_codes.csv

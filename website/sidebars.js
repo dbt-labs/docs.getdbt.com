@@ -3,7 +3,7 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
-      items: ["docs/introduction", "docs/available-adapters"],
+      items: ["docs/introduction", "docs/available-adapters", "docs/core-versions"],
     },
     {
       type: "category",
@@ -542,6 +542,7 @@ module.exports = {
         "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
+        "reference/warehouse-profiles/databricks-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
