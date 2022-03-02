@@ -149,3 +149,14 @@ dflynn:
       icon: fa-twitter
     - url: https://www.linkedin.com/in/donny-flynn-578149a4/
       icon: fa-linkedin
+
+nate-sooter:
+    name: Nate Sooter
+    job_title: Manager of BI Operations
+    organization: Smartsheet
+    image_url: /img/blog/authors/nate-sooter.jpeg
+    links:
+      - url: https://twitter.com/natesooter
+        icon: fa-twitter
+      - url: https://www.linkedin.com/in/nathansooter
+        icon: fa-linkedin
