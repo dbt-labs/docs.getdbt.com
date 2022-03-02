@@ -44,10 +44,10 @@ Starting in v1.0, dbt Cloud will ensure that you're always using the latest comp
   - auto-upgrading users to the subsequent minor version when critical support ends
 --->
 
-For more details on version support and future releases, see: ["Understanding dbt Core versions"](core-versions).
-
+For more on version support and future releases, see "[Understanding dbt Core versions](core-versions)."
 
 #### What will actually happen on the deprecation date?
+
 - On July 1, 2022, we will only run jobs that are on dbt v1.0 or later. Customers must upgrade their projects to be compatible with dbt v1.0 or later.
 - 1 year post a minor version release of v1.X, we will try to run our customers' projects on the latest release of dbt if they have not already upgraded their projects themselves. In a post dbt v1.0 world, there won't be breaking changes between minor versions of dbt, so we might be reasonably successful at upgrading our customers' versions automatically. However, our strong preference is for customers to try to manage the upgrade process themselves which is a more cautious way to prevent failures to their production pipelines. 
 

@@ -1,32 +1,31 @@
 ---
-title: "Understanding dbt Core versions"
+title: "About dbt Core versions"
 id: "core-versions"
-description: "Learn about semantic versions of dbt Core, and how long those versions are supported."
+description: "Learn about semantic versioning for dbt Core, and how long those versions are supported."
 ---
 
+dbt Core releases follow [semantic versioning](https://semver.org/). The policies and expectations on this page assume prior familiarity with semantic versions. For more on how we use semantic versions, see "[How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning)."
+
 ### Further reading
-- To learn about the different ways you can install dbt Core, see "[How to install dbt Core](dbt-cli/install/overview)."
-- To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](require-dbt-version) and [`dbt_version`](dbt_version).
+
 - To learn how you can use dbt Core versions in dbt Cloud, see "[Choosing a dbt Core version](cloud-choosing-a-dbt-version)."
+- To learn about installing dbt Core, see "[How to install dbt Core](dbt-cli/install/overview)."
+- To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](require-dbt-version) and [`dbt_version`](dbt_version).
 
-dbt Core releases follow [semantic versioning](https://semver.org/). The policies and expectations on this page assume prior familiarity with semantic versions. If you're not familiar with semantic versions, we recommend that you start by reading the section titled ["What are semantic versions?"](#what-are-semantic-versions)
-
-## Timeline and support
-
-### Support for versions prior to v1.0
+## Version support prior to v1.0
 
 - We are no longer releasing new patches for minor versions prior to v1.0
 - As of June 30, 2022, dbt Cloud will remove support for dbt Core versions older than v1.0
 
-### Support for versions starting with v1.0
+## Version support starting with v1.0
 
-#### Minor version support
+### Minor version support
 
 Minor versions will be supported for one year (12 months) from the date of their initial release. _This is a definite commitment._ Our mechanism for continuing to support a minor version is by releasing new patches for that minor version—so it's important to make sure you're always using the latest patch.
 
-While a minor version is officially supported, you can use it in dbt Cloud. For more information, see ["Choosing a dbt version"](cloud-choosing-a-dbt-version).
+While a minor version is officially supported, you can use it in dbt Cloud. For more on dbt Cloud versioning, see "[Choosing a dbt version](cloud-choosing-a-dbt-version)."
 
-#### Ongoing patches
+### Ongoing patches
 
 During the 12 months of ongoing support, we will continue to release new patch versions that include fixes.
 
@@ -36,7 +35,7 @@ During the 12 months of ongoing support, we will continue to release new patch v
 
 After a minor version reaches the end of its critical support period, one year after its initial release, no new patches will be released.
 
-#### Future versions
+### Future versions
 
 We aim to release a new minor "feature" every 3 months. _This is an indicative timeline ONLY._ For the latest information about upcoming releases, including their planned release dates and which features and fixes might be included in each, always consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones).
 
@@ -49,10 +48,9 @@ We aim to release a new minor "feature" every 3 months. _This is an indicative t
 
 _Italics: Future releases, NOT definite commitments. Shown for indication only._
 
+## Best practices for upgrading
 
-## Expectations
-
-What do we expect of dbt users, as we continue to release new versions of dbt Core?
+Because of our new version practice, we've outline best practices and expectations for dbt users to upgrade as we continue to release new versions of dbt Core.
 
 ### Upgrading to new patch versions
 
@@ -66,8 +64,7 @@ You may continue to use any minor version of dbt while it is officially supporte
 
 All dbt Core versions are available as _prereleases_ before the final release. "Release candidates" are available for testing, in production-like environments, two weeks before the final release. For minor versions, we also aim to release one or more "betas," which include new features and invite community feedback, 4+ weeks before the final release. It is in your interest to help us test prereleases—we need your help!
 
-
-## What are semantic versions?
+## How dbt Core uses semantic versioning
 
 Like many software projects, dbt Core releases follow [semantic versioning](https://semver.org/), which defines three types of version releases.
 
