@@ -215,7 +215,7 @@ By the end of the `jafflegaggle_contacts` model, we have a unified view of event
 
 > Definition: When I write "Human in the Loop" I mean that operational people at the company are contributing to data integrity at the modelling stage and reviewing data for quality. This is very important for making sure that the domain knowledge is used in the CRM definitions.
 
-I intentionally left out two seed files, one of which (`data/merged_user.csv`)[https://github.com/dflynn20/jaffle_gaggle/blob/main/data/merged_user.csv] contains users the JaffleGaggle team have identified as the same person.
+I intentionally left out two seed files, one of which [`data/merged_user.csv`](https://github.com/dflynn20/jaffle_gaggle/blob/main/data/merged_user.csv) contains users the JaffleGaggle team have identified as the same person.
 
 To track this, the team decided to track the old user email and the new user email as one. Oftentimes, in a CRM’s data schema, there’s a built-in treatment for handling merged entities.
 
