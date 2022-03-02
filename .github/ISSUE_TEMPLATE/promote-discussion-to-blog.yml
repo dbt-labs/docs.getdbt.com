@@ -1,0 +1,46 @@
+name: Promote Discussion to Blog Content
+description: Promote a Discussion approved for outlining to an Issue for creating new content on the Developer Blog section of the Developer Hub.
+labels: ["content","developer blog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Let's write an article together! What is the topic of the Discussion being promoted?
+        
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: your preferred email and/or dbt Slack handle
+
+  - type: checkboxes
+    id: from-discussion
+    attributes:
+      label: This issue is being created to promote an approved Discussion.
+      description: >
+        Creating new content for the Developer Blog should start as a Discussion. Please confirm that you've followed the Discussion path and 
+        the Discussion being promoted has been approved with the label 'promote to developer blog issue'.
+      options:
+        - label: I am promoting this issue from an approved Discussion and will link it below.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Link to the Discussion this Issue is promoting.
+      description: Please link to the Discussion this Issue is originating from.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: >
+        If you're promoting this from an 'I want to write about...' Discussion, you can copy over the answers to the following questions. Otherwise,
+        please answer these questions below
+      description: |
+        - Give as much detail as you can to help us understand the change you want to see. 
+        - Why should the docs be changed? What use cases does it support? 
+        - What is the expected outcome?
+    validations:
+      required: true
