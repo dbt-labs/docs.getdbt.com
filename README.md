@@ -26,12 +26,14 @@ You can click a link available in a netlify bot PR comment to see and review you
 8. Before pushing your changes to a branch, check that all links work by using the `make build` script.
 
 Advisory: 
+
 - Currently an `npm install` produces a number of dependency warnings, in particular several claiming that `docusaurus/core` is missing. Rest assured, this message is a red herring. As of writing this, no 2.0.0 package exists, so you won't have much luck trying to install it. Feel free to ignore those warnings.
 - If you run into an `fatal error: 'vips/vips8' file not found` error when you run `npm install`, you may need to run `brew install vips`. Warning: this one will take a while -- go ahead and grab some coffee!
 
 You can also check out [this Loom video](https://www.loom.com/share/7037780b86eb4f16953664b8f15f1e21) that I recorded for co-workers — it covers setting up docs.getdbt.com locally, and adding a page with links and images. Heads up — this was very much something I did on the fly, so is not super polished!
 
 ## Custom components
+
 Check out [docs.getdbt.com/styles](https://docs.getdbt.com/styles) for examples of different components that can be used in these docs.
 
 You can also use components directly from the [docusaurus library](https://v2.docusaurus.io/docs/markdown-features/).
