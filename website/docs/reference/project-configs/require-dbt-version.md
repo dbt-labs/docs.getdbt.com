@@ -29,12 +29,12 @@ If this configuration is not specified, no version check will occur.
 This configuration needs to be interpolated by the yaml parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:
 ```yml
 # ✅ These will work
-require-dbt-version: ">=1.0.0" # Double quotes are OK
-require-dbt-version: '>=1.0.0' # So are single quotes
+require-dbt-version: ">=1.0" # Double quotes are OK
+require-dbt-version: '>=1.0' # So are single quotes
 
 # ❌ These will not work
-require-dbt-version: >=1.0.0 # No quotes? No good
-require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
+require-dbt-version: >=1.0 # No quotes? No good
+require-dbt-version: ">= 1.0" # Don't put whitespace after the equality signs
 ```
 
 :::
@@ -43,13 +43,13 @@ require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
 ## Examples
 
 ### Specify a minimum dbt version
-Use a `>=` operator for a minimum boundary. In the following example, this project will run with any version of dbt greater than or equal to 1.0.0.
+Use a `>=` operator for a minimum boundary. In the following example, this project will run with any version of dbt greater than or equal to 1.0.
 
 
 <File name='dbt_project.yml'>
 
 ```yml
-require-dbt-version: ">=1.0.0"
+require-dbt-version: ">=1.0"
 ```
 
 </File>
