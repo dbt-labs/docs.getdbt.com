@@ -20,7 +20,7 @@ The version of a dbt project. Note that while **this is a required parameter**, 
 
 The version must be in a [semantic version](https://semver.org/) format, e.g. `1.0.0`
 
-## 2. In yml property files
+##  `.yml` property file versions
 
 <File name='<any valid filename>.yml'>
 
