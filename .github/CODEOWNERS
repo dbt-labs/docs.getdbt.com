@@ -9,6 +9,10 @@
 /website/src/pages/dbt-cloud/                          @runleonarun 
 /website/static/img/docs/dbt-cloud/                    @runleonarun 
 
+# Blog content assigned to Developer experience team
+/website/blog/                       @dbt-labs/devex 
+
+
 # Partner Related docs assigned to Amy C
 /website/docs/docs/available-adapters.md/                       @amychen1776 @runleonarun
 /website/docs/reference/warehouse-profiles/                     @amychen1776 @runleonarun
