@@ -31,7 +31,6 @@ version: 2  # Only 2 is accepted by current and recent versions of dbt.
  
 </File>
 
-### Definition
 A control tag that informs how dbt processes property files. For more on why 2 is required, see property file [FAQs](https://docs.getdbt.com/reference/configs-and-properties#faqs).
 
 For more on property files, see their general [documentation](https://docs.getdbt.com/reference/configs-and-properties#where-can-i-define-properties) on the same page.
