@@ -32,6 +32,13 @@ function BlogListPage(props) {
     regular_posts_count
   } = blogMeta
 
+  // Sort posts by date then title
+  const handlePostsSort = (a, b) => {
+    const { date: a_date, title: a_title } = a.content.frontMatter
+    const { date: b_date, title: b_title } = b.content.frontMatter
+    return b_date - a_date || a_title.localeCompare(b_title)
+  }
+
   // Set Featured Posts
   const featuredPosts = items
     .filter(post => post.content.frontMatter.is_featured)
@@ -40,7 +47,7 @@ function BlogListPage(props) {
   // Get all non-featured posts
   let allOtherPosts = items
     .filter(post => !post.content.frontMatter.is_featured)
-
+  
   // Get all featured posts 
   // which aren't included in featured posts section
   const allOtherFeaturedPosts = items
@@ -48,10 +55,8 @@ function BlogListPage(props) {
     .slice(featured_posts_count ? featured_posts_count : 2)
   
   // Group together all posts not featured
-  allOtherPosts = allOtherPosts.concat(allOtherFeaturedPosts)
+  allOtherPosts = allOtherPosts.concat(allOtherFeaturedPosts)    
 
-  // Set Featured Categories
-  const featuredCategories = tagData.filter(tag => tag && tag.is_featured)
   return (
     <BlogLayout
       title={title}
@@ -68,15 +73,17 @@ function BlogListPage(props) {
       <section className="blog-index-posts-section">
         <h3>Featured Posts</h3>
         <div>
-          {featuredPosts.map(({content: BlogPostContent}) => (
-            <BlogPostItem
-              key={BlogPostContent.metadata.permalink}
-              frontMatter={BlogPostContent.frontMatter}
-              assets={BlogPostContent.assets}
-              metadata={BlogPostContent.metadata}
-              truncated={BlogPostContent.metadata.truncated}>
-              <BlogPostContent />
-            </BlogPostItem>
+          {featuredPosts
+            .sort(handlePostsSort)
+            .map(({content: BlogPostContent}) => (
+              <BlogPostItem
+                key={BlogPostContent.metadata.permalink}
+                frontMatter={BlogPostContent.frontMatter}
+                assets={BlogPostContent.assets}
+                metadata={BlogPostContent.metadata}
+                truncated={BlogPostContent.metadata.truncated}>
+                <BlogPostContent />
+              </BlogPostItem>
             ))}
         </div>
       </section>
@@ -84,15 +91,18 @@ function BlogListPage(props) {
       <section className="blog-index-posts-section blog-index-other-posts">
         <h3>Recent Posts</h3>
         <div>
-          {allOtherPosts.slice(0, regular_posts_count ? regular_posts_count : 10).map(({content: BlogPostContent}) => (
-            <BlogPostItem
-              key={BlogPostContent.metadata.permalink}
-              frontMatter={BlogPostContent.frontMatter}
-              assets={BlogPostContent.assets}
-              metadata={BlogPostContent.metadata}
-              truncated={BlogPostContent.metadata.truncated}>
-              <BlogPostContent />
-            </BlogPostItem>
+          {allOtherPosts
+            .sort(handlePostsSort)
+            .slice(0, regular_posts_count ? regular_posts_count : 15)
+            .map(({content: BlogPostContent}) => (
+              <BlogPostItem
+                key={BlogPostContent.metadata.permalink}
+                frontMatter={BlogPostContent.frontMatter}
+                assets={BlogPostContent.assets}
+                metadata={BlogPostContent.metadata}
+                truncated={BlogPostContent.metadata.truncated}>
+                <BlogPostContent />
+              </BlogPostItem>
             ))}
         </div>
       </section>
