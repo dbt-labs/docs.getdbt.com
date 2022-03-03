@@ -5,7 +5,7 @@ required: True
 
 dbt projects have two distinct types of the `version` tags. This field has a different meaning depending on its location.
 
-## 1. In dbt_project.yml
+## `dbt_project.yml` versions
 
 <File name='dbt_project.yml'>
 
