@@ -4,6 +4,13 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.46 (March 2nd, 2022)
+
+dbt Cloud now shows "waiting time" and "prep time" for a run, which used to be expressed in aggregate as "queue time". Waiting time captures the time dbt Cloud waits to run your job if there isn't an available run slot or if a previous run of the same job is still running. Prep time represents the time it takes dbt Cloud to ready your job to run in your cloud data warehouse.
+
+<Lightbox src="/img/docs/dbt-cloud/v1.1.46releasenotes_img1.png" title="New prep time and waiting time"/>
+
 ## dbt Cloud v1.1.45 (February 16, 2022)
 
 Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens#permissions-for-service-account-tokens).

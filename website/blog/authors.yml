@@ -155,3 +155,14 @@ izzy:
     job_title: Solutions Architect
     organization: dbt Labs
     image_url: /img/blog/authors/izzy.jpeg
+
+nate-sooter:
+    name: Nate Sooter
+    job_title: Manager of BI Operations
+    organization: Smartsheet
+    image_url: /img/blog/authors/nate-sooter.jpeg
+    links:
+      - url: https://twitter.com/natesooter
+        icon: fa-twitter
+      - url: https://www.linkedin.com/in/nathansooter
+        icon: fa-linkedin
