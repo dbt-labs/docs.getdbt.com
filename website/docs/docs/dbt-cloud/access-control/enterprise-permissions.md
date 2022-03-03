@@ -1,6 +1,7 @@
 ---
 title: "Enterprise Permissions"
 id: "enterprise-permissions"
+description: "Permission sets for Enterprise plans." 
 ---
 
 :::info Enterprise Feature
@@ -19,15 +20,15 @@ control (RBAC).
 
 ## Permission Sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
-can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group 
-can be associated with more than one permission sets.
+The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups, where users belong. A dbt Cloud group can be associated with more than one permission set.
 
 ### Account Admin
+
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
 Account Admins have unrestricted access to dbt Cloud accounts. Users with Account Admin permissions can:
+
 - Create, delete and modify all projects in an account
 - Create, delete, and modify Repositories
 - Create, delete, and modify Connections
@@ -42,6 +43,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Run and cancel jobs
 
 ### Account Viewer
+
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
