@@ -35,11 +35,11 @@ jobs:
 
       - uses: octokit/graphql-action@v2.x
         name: Add PR to Project
-        id: add_pull_request
+        id: add_pr
         with:
           query: |
-            mutation($project:ID!, $pull_request:ID!) {
-                addProjectNextItem(input: {projectId: $project, contentId: $pull_request) {
+            mutation($project:ID!, $pr:ID!) {
+                addProjectNextItem(input: {projectId: $project, contentId: $pr}) {
                   projectNextItem {
                     id
                   }
@@ -116,7 +116,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
           project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
           headers: 'GraphQL-Features: projects_next_graphql'
-          item: ${{ fromJSON(steps.add_pull_request.outputs.data).addProjectNextItem.projectNextItem.id }}
+          item: ${{ fromJSON(steps.add_pr.outputs.data).addProjectNextItem.projectNextItem.id }}
           status_field: ${{ steps.status_field_id.outputs.value }}
           status_value: ${{ steps.status_field_value.outputs.value }}
           date_field: ${{ steps.date_field_id.outputs.value }}
