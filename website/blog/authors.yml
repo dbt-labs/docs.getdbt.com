@@ -89,11 +89,11 @@ claire:
   image_url: /img/blog/authors/claire.jpeg
   links:
     - url: https://twitter.com/clairebcarroll
-      icon: fa-twitter    
+      icon: fa-twitter
     - url: https://github.com/clrcrl
-      icon: fa-github  
+      icon: fa-github
     - url: https://www.linkedin.com/in/clrcrl/
-      icon: fa-linkedin      
+      icon: fa-linkedin
 
 dconnors:
   name: Dave Connors
@@ -102,9 +102,9 @@ dconnors:
   image_url: /img/blog/authors/dconnors.jpeg
   links:
     - url: https://github.com/dave-connors-3
-      icon: fa-github  
+      icon: fa-github
     - url: https://www.linkedin.com/in/daveconnors3/
-      icon: fa-linkedin      
+      icon: fa-linkedin
 
 rossturk:
   name: Ross Turk
@@ -137,3 +137,26 @@ sethrosen:
       icon: fa-twitter
     - url: https://www.linkedin.com/in/sdrosen/
       icon: fa-linkedin
+
+dflynn:
+  name: Donny Flynn
+  job_title: Customer Data Architect
+  organization: Census
+  description: Donny Flynn is a customer data architect at Census - a reverse ETL product that helps companies operationalize analytics. Prior to joining Census, Donny built out the data stack at Owner and led a data team at Chiper. When not doing data work, he's most likely watching Chicago sports.
+  image_url: /img/blog/authors/dflynn.jpeg
+  links:
+    - url: https://twitter.com/donmandonguy
+      icon: fa-twitter
+    - url: https://www.linkedin.com/in/donny-flynn-578149a4/
+      icon: fa-linkedin
+
+nate-sooter:
+    name: Nate Sooter
+    job_title: Manager of BI Operations
+    organization: Smartsheet
+    image_url: /img/blog/authors/nate-sooter.jpeg
+    links:
+      - url: https://twitter.com/natesooter
+        icon: fa-twitter
+      - url: https://www.linkedin.com/in/nathansooter
+        icon: fa-linkedin

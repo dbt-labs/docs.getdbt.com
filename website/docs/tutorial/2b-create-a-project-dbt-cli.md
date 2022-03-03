@@ -40,11 +40,11 @@ dbt should have been installed as part of the  [Setting Up](/tutorial/setting-up
 
 2. Run the `init` command:
 ```shell-session
-$ dbt init jaffle-shop
+$ dbt init jaffle_shop
 ```
 3. `cd` into your project:
 ```shell-session
-$ cd jaffle-shop
+$ cd jaffle_shop
 ```
 You can use `pwd` to confirm that you are in the right spot.
 
