@@ -9,28 +9,26 @@ tags: [data ecosystem]
 hide_table_of_contents: false
 
 date: 2022-02-18
-is_featured: false
+is_featured: true
 ---
 _Special Thanks: Emilie Schario, Matt Winkler_
 
-dbt has done a great job of building an elegant, common interface between data engineers, analytics engineers, and any data-y role, by uniting our work on SQL.
+dbt has done a great job of building an elegant, common interface between data engineers, analytics engineers, and any data-y role, by uniting our work on SQL. This unification of tools and workflows creates interoperability between what would normally be distinct teams within the data organization. 
 
-But one baton pass is still relatively painful and undefined: the handoff between machine learning (ML) engineers and analytics engineers. There isn't a great answer for when things go wrong in the baton pass from analytics transformations to the machine learning arena.
+I like to call this interoperability a “baton pass.” Like in a relay race, there are clear handoff points & explicit ownership at all stages of the process. But there’s one baton pass that’s still relatively painful and undefined: the handoff between machine learning (ML) engineers and analytics engineers. 
 
-- Do we simply need a better Jupyter notebook?
+In my experience, the initial collaboration workflow between ML engineering & analytics engineering starts off strong but eventually becomes muddy during the maintenance phase. This eventually leads to projects becoming unusable and forgotten. 
+
+In this article, we’ll explore a real-life baton pass between ML engineering and analytics engineering and highlighting where things went wrong. By doing so, we can hopefully solve this breakdown by answering questions like:
+
+- Do we need a better Jupyter notebook?
 - Should we increase the SQL surface area to build ML models?
-- Should we leave that to non-SQL interfaces(python/scala/etc.)?
+- Should we leave that to non-SQL interfaces(Python/Scala/etc.)?
 - Does this have to be an either/or future?
 
-I’m not the only one asking these questions! And better yet, not the only one answering them. I’m seeing players rise to the occasion by:
+Whatever the interface evolves into, it must center people, create a low bar and high ceiling, and focus on outcomes and not the mystique of high learning curves.
 
-1. Creating a better notebook experience
-2. Bringing machine learning to SQL
-3. Adding multilingual support to dbt
-
-**Whatever the interface evolves into, it must center people, create a low bar and high ceiling, and focus on outcomes and not the mystique of high learning curves.**
-
-**TL;DR: Who knows, maybe people will actually use our work?**
+**TL;DR: There’s an ownership problem in the ML engineering & analytics engineering workflow. Luckily, the Modern Data Stack is making this baton pass smoother. This post will walk you through a recent project where I was able to see firsthand how these systems can work together to provide models that are built for long term accuracy and maintainability.**
 
 ## What does a baton pass look like today?
 
