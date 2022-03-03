@@ -56,8 +56,8 @@ require-dbt-version: ">=1.0"
 
 
 ### Pin to a range
-:::caution Not recommended
-With the release of major version 1.0 of dbt Core, pinning to a specific patch in the upper bound is discouraged.
+:::caution Proceed with caution
+With the release of major version 1.0 of dbt Core, pinning the upper bound to a specific patch (e.g. 1.0.1) is discouraged.
 :::
 
 Use a comma separated list for an upper and lower bound. In the following example, this project will run with dbt 1.x.x.
