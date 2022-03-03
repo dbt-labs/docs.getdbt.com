@@ -15,7 +15,6 @@ version: version
 
 </File>
 
-### Definition
 
 The version must be in a [semantic version](https://semver.org/) format, e.g. `1.0.0`
 
