@@ -32,4 +32,3 @@ version: 2  # Only 2 is accepted by current and recent versions of dbt.
 </File>
 
 
-For more on property files, see their general [documentation](https://docs.getdbt.com/reference/configs-and-properties#where-can-i-define-properties) on the same page.
