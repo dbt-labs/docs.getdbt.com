@@ -1,6 +1,6 @@
 ---
 title: "Founding an Analytics Engineering Team"
-description: "Nate Sooter shares the challenges and successes of forming the first analytics engineering tem at Smartsheet"
+description: "Nate Sooter shares the challenges and successes of forming the first analytics engineering team at Smartsheet"
 slug: founding-an-analytics-engineering-team-smartsheet
 
 authors: [nate-sooter]
@@ -20,7 +20,7 @@ If your company is struggling to leverage analytics, dealing with an overgrown e
 
 ## Introduction
 
-Most writing about analytics engineering, or AE for short, assumes a team already exists. It’s about operating as an AE team or managing stakeholders or leveraging tools more effectively. But what about the prologue? What initial problems do AEs solve? How does an AE team even start? What do the early days look like?
+Most writing about analytics engineering, or AE for short, assumes a team already exists. It’s about operating as an AE team or managing stakeholders or leveraging tools more effectively. But what about the prologue? What initial problems do AEs solve? How does an AE team even start? What do the early days look like? <!--truncate-->
 
 Enter this story. I’m Nate and I manage the Analytics Engineering team at [Smartsheet](https://www.smartsheet.com/customers-home), a software platform that helps you manage your work. We’re not a large team, just me and two others. A lot went into the formation of our team and this is that story. I’ll tell it in three parts:
 

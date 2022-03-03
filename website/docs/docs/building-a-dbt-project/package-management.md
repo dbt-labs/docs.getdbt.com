@@ -145,6 +145,19 @@ As of v0.14.0, dbt will warn you if you install a package using the `git` syntax
 
 ### Private packages
 
+#### SSH Key Method
+Private packages can be cloned via SSH and an SSH key. When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/ssh/).
+
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  - git: "git@github.com:dbt-labs/dbt-utils.git" # git SSH URL
+```
+
+</File>
+
 #### Git Token Method
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
