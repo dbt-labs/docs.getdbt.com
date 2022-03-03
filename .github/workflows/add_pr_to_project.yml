@@ -57,7 +57,7 @@ jobs:
         with:
           name: "data.json"
           json: ${{ steps.get_project_info.outputs.data }}
-    
+
       - name: Extract date field ID
         uses: sergeysova/jq-action@v2
         id: date_field_id
@@ -78,7 +78,7 @@ jobs:
         with:
           cmd: 
             jq '.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Triage") |.id' data.json
-      
+
       - name: Set fields
         id: set_fields
         uses: octokit/graphql-action@v2.x  
@@ -88,7 +88,7 @@ jobs:
               $project: ID!
               $item: ID!
               $status_field: ID!
-              $status_value: ID!
+              $status_value: String!
               $date_field: ID!
               $date_value: String!
             ) {
