@@ -8,9 +8,12 @@ We currently version our docs by using two long-lived branches in this repo:
 
 ## Contributing
 We welcome contributions from community members to this repo:
-- **Fixes**: If you notice an error (there are likely many), use the `Edit this page` button at the bottom of each page to suggest a change. We recommend you contribute small changes directly from the GitHub interface.
-- **New documentation**: If you contributed code in [dbt-core](https://github.com/fishtown-analytics/dbt), we encourage you to also write the docs here!
-- **Refactors**: At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
+- **Fixes**: 
+  If you notice an error (there are likely many), use the `Edit this page` button at the bottom of each page to suggest a change. We recommend you contribute small changes directly from the GitHub interface.
+- **New documentation**: 
+  If you contributed code in [dbt-core](https://github.com/fishtown-analytics/dbt), we encourage you to also write the docs here!
+- **Re-architecting**: 
+  At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
 
 ### Running the Docs site locally
 
