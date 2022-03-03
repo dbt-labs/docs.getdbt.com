@@ -29,7 +29,7 @@ Let’s jump into the exact PR template we use internally at dbt Labs.
 
 ## The dbt Labs’ pull request template
 
-<WistiaVideo id="7em2tj62yo" />
+<WistiaVideo id="r3u04isgxf" />
 
 Our PR template ([view markdown file in GitHub](https://github.com/dbt-labs/dbt-init/blob/master/starter-project/.github/pull_request_template.md)) is composed of 6 sections: 
 
@@ -59,7 +59,7 @@ Remember, you know more about this PR **right now** than you will in a couple of
 
 This is where we add the relevant sections from our DAG! This is one of my favorite features of dbt, as I’m a very visual learner. So when I open a PR, I take a quick look at the relevant sections of the DAG (aka dependency graph) to help me conceptualize the modeling.
 
-![test validation](/img/blog/pr-template-test-validation.png "dbt test validation")
+![dbt dag check](/img/blog/pr-template-dag-check.png "dbt DAG check")
 
 Checking for things like modularity and 1:1 relationships between sources and staging models is much easier done visually via the DAG than trying to look at code and visualize the relationships. 
 
@@ -70,7 +70,7 @@ Checking for things like modularity and 1:1 relationships between sources and st
 
 This section should show something to confirm that your model is doing what you intended it to do. This could be a [dbt test](https://docs.getdbt.com/docs/building-a-dbt-project/tests) like uniqueness or not null, or could be an ad-hoc query that you wrote to validate your data. Here is a screenshot from a test run on a local development branch:
 
-![dbt dag check](/img/blog/pr-template-dag-check.png "dbt DAG check")
+![test validation](/img/blog/pr-template-test-validation.png "dbt test validation")
 
 Adding uniqueness tests shows that you have put thought into the grain of each of your models, and then ensures that those assumptions hold true over time. 
 

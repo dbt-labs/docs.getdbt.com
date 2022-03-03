@@ -14,7 +14,6 @@
  import Head from '@docusaurus/Head';
  import Link from '@docusaurus/Link';
  import {usePluginData} from '@docusaurus/useGlobalData';
- import CTA from '../../components/cta';
  
  function BlogLayout(props) {
    const {title, description, blogPageTitle, sidebar, toc, children, ...layoutProps} = props;
@@ -164,10 +163,7 @@
                {layoutProps.pageClassName &&
                  <div className="col col--3 blog-right-sidebar">
                    {toc && (
-                     <TOC toc={toc} />
-                   )}
-                   {featured_cta && (
-                     <CTA cta={featured_cta} />
+                     <TOC toc={toc} featured_cta={featured_cta} />
                    )}
                  </div>
                }

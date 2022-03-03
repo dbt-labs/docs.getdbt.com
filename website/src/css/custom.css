@@ -104,6 +104,13 @@ a.hash-link:hover {
 footer {
   font-weight: var(--ifm-font-weight-bold);
 }
+footer .footer__copyright a {
+  color: var(--ifm-footer-color);
+  text-decoration: none;
+}
+footer .footer__copyright a:hover {
+  text-decoration: underline;
+}
 
 /* Fix for nav links that break (like dbt Cloud) */
 
@@ -780,7 +787,7 @@ code {
   /*position: sticky;*/
   text-align: center;
   background: var(--color-off-white);
-  position:fixed;
+  position:relative;
   bottom:0;
   max-width: 400px;
 }

@@ -100,13 +100,13 @@ Both of the following configurations would successfully install `0.4.5a2` of `db
 
 ```yaml
 packages:
-  - package: tailsdotcom/dbt_artifacts
+  - package: brooklyn-data/dbt_artifacts
     version: 0.4.5a2
 ```
 
 ```yaml
 packages:
-  - package: tailsdotcom/dbt_artifacts
+  - package: brooklyn-data/dbt_artifacts
     version: [">=0.4.4", "<0.4.6"]
     install-prerelease: true
 ```
