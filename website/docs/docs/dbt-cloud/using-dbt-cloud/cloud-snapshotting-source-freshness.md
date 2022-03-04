@@ -45,3 +45,7 @@ It's important that your freshness jobs run frequently enough to snapshot data l
 | 1 hour | 30 mins |
 | 1 day | 12 hours |
 | 1 week | About daily |
+
+## Easy access
+
+See [Building and Configuring Artifacts](artifacts) for more information on exposing links to the latest Documentation and Source Freshness reports to your team.
