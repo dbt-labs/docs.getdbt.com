@@ -1,18 +1,20 @@
 ---
-title: Setting up with Databricks
+title: "Setting up Databricks for dbt Cloud"
 id: setting-up-databricks
+description: "Set up Databricks with sample data and connect to dbt Cloud."
+sidebar_label: "Setting up with Databricks"
 ---
 
 ## Prerequisites  
 
 Before starting this tutorial, you will need the following:
 
-- Existing Cloud Provider account (AWS, GCP, Azure)
-- Permissions to create S3 bucket in said account
+- Existing Cloud Provider account (AWS, GCP, Azure).
+- Permissions to create S3 bucket in said account.
 
-## Setting up Databricks 
+## Setting up Databricks
 
-1. For this tutorial, you are going to need a Databricks account. You can sign up by clicking [Try Databricks](https://databricks.com/) on the Databricks homepage. Fill out the form with your user information. 
+1. Use your existing account or sign up for a Databricks account at [Try Databricks](https://databricks.com/). Complete the form with your user information.
 
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
 

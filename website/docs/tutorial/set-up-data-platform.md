@@ -4,4 +4,9 @@ id: set-up-data-platform
 description: "Set up your environment to get started using dbt."
 ---
 
-Now that you have some context for this tutorial, let's get your environment set up. Check out the table of contents to the left to set up your environment on BigQuery, Snowflake, or Databricks. These guides are helpful for anyone with an existing data platform or starting from scratch.
+Once you complete "[Get started with dbt](/tutorial/setting-up)," you can set up your environment using the data platform of your choice:
+
+* [Setting up with BigQuery](/tutorial/setting-up-bigquery)
+* [Setting up with Databricks](/tutorial/setting-up-databricks)
+* [Setting up with Redshift](/tutorial/setting-up-redshift)
+* [Setting up with Snowflake](/tutorial/setting-up-snowflake)

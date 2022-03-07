@@ -1,11 +1,13 @@
 ---
-title: Setting up with BigQuery
+title: "Setting up BigQuery for dbt Cloud"
 id: setting-up-bigquery
+description: "Set up BigQuery with sample data and connect to dbt Cloud."
+sidebar_label: "Setting up with BigQuery"
 ---
 
 ## Create a BigQuery Project
 
-Anyone with a Google Account can use BigQuery, so let's go through how to Create a BigQuery project
+If you have a Google Account, you can use BigQuery to create a project.
 
 <WistiaVideo id="668fnsit1t" paddingTweak="62.5%" />
 

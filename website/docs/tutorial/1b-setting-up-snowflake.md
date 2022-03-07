@@ -1,36 +1,31 @@
 ---
-title: Setting up with Snowflake
+title: "Setting up Snowflake for dbt Cloud"
 id: setting-up-snowflake
+description: "Set up Snowflake with sample data and connect to dbt Cloud."
+sidebar_label: "Setting up with Snowflake"
 ---
 
 ## Get started with Snowflake
 
-1. To get started, sign up for a free trial by following [this link](https://signup.snowflake.com/). 
+1. To get started, sign up for a free trial by following [this link](https://signup.snowflake.com/) and completing the sign-up form.
 
-2. Then fill out the signup form.
-
-<p align="center">
-<Lightbox src="/img/snowflake_tutorial/snowflake_free_trial_signup_form.png" title="Snowflake Free Trial Signup Form" />
-</p>
-
-3. Select the Enterprise edition, choose a cloud provider and region, and agree to the terms of service. There are some organizational questions to think about when choosing a cloud provider for a full implementation, which you can read more about [here](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html). For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like. Finally, click "GET STARTED".
+2. Select the Enterprise edition, choose a cloud provider and region, and agree to the terms of service. There are some organizational questions to think about when choosing a cloud provider for a full implementation, which you can read more about [here](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html). For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like. Finally, click "GET STARTED".
 
 <p align="center">
 <Lightbox  src="/img/snowflake_tutorial/snowflake_account_configuration.png" title="Snowflake Account Configuration" />
 </p>
 
-4. After submitting the signup form you should receive an email asking you to activate your account. Click on the link in the email and a new tab will open up where you’ll create your username and password. Enter in all that info and click "Get started".
+3. After submitting the sign-up form, you should receive an email asking you to activate your account. Click the link in the email and a new tab will open up where you’ll create your username and password. Enter in all that info and click **Get started**.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_account_signup.png" title="Snowflake Account Signup" />
 </p>
 
-5. Congrats! Your workspace is ready for some data. Feel free to check out any of the getting started tooltips that Snowflake provides in the UI to familiarize yourself before moving on to the next section.
+4. Congrats! Your workspace is ready for some data. Feel free to check out any of the getting started tooltips that Snowflake provides in the UI to familiarize yourself before moving on to the next section.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_workspace.png" title="Snowflake Workspace" />
 </p>
-
 
 ## Load sample data into Snowflake
 
@@ -159,13 +154,13 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 
 2. There’s a couple of ways you can access the Partner Connect page depending on if you’re navigating in the classic Snowflake UI or the new UI. 
 
-a. Snowflake Classic UI: If you’re using the classic version of the Snowflake UI, you can click the Partner Connect button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
+* **Snowflake Classic UI:** If you’re using the classic version of the Snowflake UI, you can click the Partner Connect button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 </p>
 
-b. Snowflake New UI: If you’re using the new web interface, you’ll want to click on your name in the upper left hand corner and then click on Partner Connect in the drop down menu.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
+* **Snowflake New UI:** If you’re using the new web interface, you’ll want to click on your name in the upper left hand corner and then click on Partner Connect in the drop down menu.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_partner_connect.png" title="Snowflake New UI - Partner Connect" />
