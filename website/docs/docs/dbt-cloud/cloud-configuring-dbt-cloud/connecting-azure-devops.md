@@ -16,7 +16,7 @@ You can connect your Azure DevOps account and use Azure Active Directory (Azure 
 To connect Azure DevOps and use Azure AD in dbt Cloud:
 
 1. An account admin needs to [set up an Active Directory application and add it to dbt Cloud](docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure).
-2. dbt Cloud developers need to [personally authenticate with Azure DevOps](docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticating-azure) from dbt Cloud.
+2. dbt Cloud developers need to [personally authenticate with Azure DevOps](docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure) from dbt Cloud.
 
 :::info Beta feature
 This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com.
