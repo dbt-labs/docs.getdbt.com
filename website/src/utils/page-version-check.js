@@ -16,7 +16,7 @@ export default function pageVersionCheck(version, versionedPages, path) {
     
     const { firstVersion, lastVersion } = itemFound
     const currentVersionVal = parseFloat(version)
-    const firstVersionVal = parseFloat(firstVersion)
+    const firstVersionVal = parseFloat(firstVersion) || 0
 
     pageAvailableObj.firstAvailableVersion = firstVersion
 
