@@ -14,7 +14,7 @@ To use Azure Active Directory (Azure AD) for identity and access management in d
 3. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 4. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the Azure AD app is set up and added to dbt Cloud, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenitcate with Azure DevOps](docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
+Once the Azure AD app is set up and added to dbt Cloud, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
 
 :::info Beta feature
 This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com.
