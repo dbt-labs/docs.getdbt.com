@@ -1,7 +1,7 @@
 ---
 title: "Set up Azure DevOps"
 id: "setup-azure"
-description: "You can set up your Azure DevOps b creating and Azure AD app and adding it to dbt Cloud."
+description: "You can set up your Azure DevOps by creating an Azure AD app and adding it to dbt Cloud."
 sidebar_label: "Set up Azure DevOps"
 ---
 
