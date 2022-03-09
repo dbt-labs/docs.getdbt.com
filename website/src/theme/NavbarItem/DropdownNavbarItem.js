@@ -13,6 +13,7 @@ import {
   isRegexpStringMatch,
   useLocalPathname,
 } from '@docusaurus/theme-common';
+import {useLocation} from '@docusaurus/router';
 import {NavLink} from '@theme/NavbarItem/DefaultNavbarItem';
 import NavbarItem from '@theme/NavbarItem';
 import VersionsNavbarItem from './VersionsNavItem';
@@ -61,11 +62,9 @@ function DropdownNavbarItemDesktop({items, position, className, versionContext, 
   }, [dropdownRef]);
 
   // If in the blog directory, hide versioning from nav
-  if(
-    typeof window !== 'undefined' && 
-    window?.location?.pathname.includes('/blog') && 
-    className === 'nav-versioning'
-  ) return null
+  const { pathname } = useLocation()
+  if(pathname && pathname.includes('/blog') && className === 'nav-versioning')
+    return null
 
   return (
     <div
