@@ -29,7 +29,6 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "babel-jest": "^27.5.1",
     "css-loader": "^3.4.2",
     "dotenv": "^10.0.0",
     "path-browserify": "^1.0.1",
