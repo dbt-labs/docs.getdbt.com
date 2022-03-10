@@ -21,7 +21,7 @@ In my experience, the initial collaboration workflow between ML engineering & an
 
 In this article, we’ll explore a real-life baton pass between ML engineering and analytics engineering and highlighting where things went wrong.
 
-<!--truncate-→ 
+<!--truncate-->
 
 By doing so, we can hopefully solve this breakdown by answering questions like:
 
