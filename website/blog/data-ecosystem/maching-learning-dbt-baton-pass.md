@@ -19,7 +19,11 @@ I like to call this interoperability a “baton pass.” Like in a relay race, t
 
 In my experience, the initial collaboration workflow between ML engineering & analytics engineering starts off strong but eventually becomes muddy during the maintenance phase. This eventually leads to projects becoming unusable and forgotten.
 
-In this article, we’ll explore a real-life baton pass between ML engineering and analytics engineering and highlighting where things went wrong.<!--truncate-→ By doing so, we can hopefully solve this breakdown by answering questions like:
+In this article, we’ll explore a real-life baton pass between ML engineering and analytics engineering and highlighting where things went wrong.
+
+<!--truncate-->
+
+By doing so, we can hopefully solve this breakdown by answering questions like:
 
 - Do we need a better Jupyter notebook?
 - Should we increase the SQL surface area to build ML models?
