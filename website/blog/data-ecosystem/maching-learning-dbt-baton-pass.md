@@ -147,7 +147,7 @@ It may be worth having python scripts live side by side dbt jobs and configurati
 
 #### fal
 
-- [fal](https://www.google.com/url?q=https://github.com/fal-ai/fal&sa=D&source=editors&ust=1645197219063496&usg=AOvVaw18zwGErLmSn-xwcumClXsc): Makes dbt and python interoperable. Read in a dbt model as a pandas dataframe using a [ref statement](https://www.google.com/url?q=https://github.com/fal-ai/fal/blob/main/docs/write_jupyter_notebook.md%23example-9-use-dbt-from-a-jupyter-notebook&sa=D&source=editors&ust=1645197219063777&usg=AOvVaw011E-zfZx5gMbyuu6PleJK)!
+- [fal](https://github.com/fal-ai/fal): Makes dbt and python interoperable. Read in a dbt model as a pandas dataframe using a [ref statement](https://github.com/fal-ai/fal/blob/b20874ab957f8eb0f65c56d82e6bb85c717de4c6/examples/write_jupyter_notebook.md#example-9-use-dbt-from-a-jupyter-notebook)!
 
 #### How would this change my story?
 
