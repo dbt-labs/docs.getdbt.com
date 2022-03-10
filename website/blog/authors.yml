@@ -150,6 +150,12 @@ dflynn:
     - url: https://www.linkedin.com/in/donny-flynn-578149a4/
       icon: fa-linkedin
 
+izzy:
+    name: Izzy Erekson
+    job_title: Solutions Architect
+    organization: dbt Labs
+    image_url: /img/blog/authors/izzy.jpeg
+
 nate-sooter:
     name: Nate Sooter
     job_title: Manager of BI Operations
