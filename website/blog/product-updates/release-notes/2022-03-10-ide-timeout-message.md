@@ -10,6 +10,7 @@ date: 2022-03-10
 is_featured: true
 ---
 
+
 We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue.
 
 We updated the health check logic so it now excludes client-side connectivity issues from the IDE session check. If you lose your internet connection, we no longer update the health-check state. Now, losing internet connectivity will no longer cause this unexpected message.
