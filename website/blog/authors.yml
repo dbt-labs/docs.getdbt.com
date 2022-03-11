@@ -1,4 +1,4 @@
-dkrevitt:
+david_krevitt:
   name: David Krevitt
   job_title: Marketing
   image_url: /img/blog/authors/dkrevitt.jpg
@@ -8,7 +8,7 @@ dkrevitt:
     - url: https://twitter.com/dkrevitt
       icon: fa-twitter
 
-jasnonaz:
+jason_ganz:
   name: Jason Ganz
   job_title: Developer Experience
   organization: dbt Labs
@@ -17,7 +17,7 @@ jasnonaz:
     - url: https://twitter.com/jasnonaz
       icon: fa-twitter
 
-sanjana:
+sanjana_sen:
   name: Sanjana Sen
   job_title: Analytics Engineer
   organization: dbt Labs
@@ -26,7 +26,7 @@ sanjana:
     - url: https://twitter.com/sqlsanj
       icon: fa-twitter
 
-lcraigie:
+lauren_craigie:
   name: Lauren Craigie
   job_title: Product Marketing
   organization: dbt Labs
@@ -35,7 +35,7 @@ lcraigie:
     - url: https://twitter.com/crai_fish
       icon: fa-twitter
 
-aescay:
+andrew_escay:
   name: Andrew Escay
   job_title: Analytics Engineer
   organization: dbt Labs
@@ -44,7 +44,7 @@ aescay:
     - url: https://twitter.com/_aescay
       icon: fa-twitter
 
-jwilliams:
+jess_williams:
   name: Jess Williams
   job_title: Head of Professional Services
   organization: dbt Labs
@@ -53,7 +53,7 @@ jwilliams:
     - url: https://www.linkedin.com/in/jessdwilliams/
       icon: fa-linkedin
 
-pkearns:
+pat_kearns:
   name: Pat Kearns
   job_title: Senior Analytics Engineer
   organization: dbt Labs
@@ -62,7 +62,7 @@ pkearns:
     - url: https://www.linkedin.com/in/pat-kearns/
       icon: fa-linkedin
 
-achen:
+amy_chen:
   name: Amy Chen
   job_title: Senior Partner Engineer
   organization: dbt Labs
@@ -71,7 +71,7 @@ achen:
     - url: https://www.linkedin.com/in/yuanamychen/
       icon: fa-linkedin
 
-jlabes:
+joel_labes:
   name: Joel Labes
   job_title: Senior Developer Experience Advocate
   organization: dbt Labs
@@ -82,7 +82,7 @@ jlabes:
     - url: https://twitter.com/joellabes
       icon: fa-twitter
 
-claire:
+claire_carroll:
   name: Claire Carroll
   job_title: Analytics Engineer
   organization: analyticsengineers.club

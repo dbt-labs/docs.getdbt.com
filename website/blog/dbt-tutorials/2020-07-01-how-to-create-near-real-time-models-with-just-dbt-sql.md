@@ -4,7 +4,7 @@ description: "Before I dive into how to create this, I have to say this. **You p
 slug: how-to-create-near-real-time-models-with-just-dbt-sql
 canonical_url: https://discourse.getdbt.com/t/how-to-create-near-real-time-models-with-just-dbt-sql/1457
 
-authors: [achen]
+authors: [amy_chen]
 
 tags: [dbt tutorials]
 hide_table_of_contents: false
@@ -181,6 +181,6 @@ All I can truly say is there’s more to come. Internally Jeremy and Claire have
 
 This post would not have materialized (lol) without the Fishtown Team working together.
 
-Drew and I had a brainstorming session to discuss lambda architecture and the initial concept of lambda views. Sanjana and Jeremy were my rubber duckies as I started writing the SQL and conceptizing how things would work in code. Janessa and Claire also spent a lot of time helping me write this discourse post as I tried to form it between meetings. [This is basically us at Fishtown.](https://gph.is/2R7vpjR)
+Drew and I had a brainstorming session to discuss lambda architecture and the initial concept of lambda views. Sanajana and Jeremy were my rubber duckies as I started writing the SQL and conceptizing how things would work in code. Janessa and Claire also spent a lot of time helping me write this discourse post as I tried to form it between meetings. [This is basically us at Fishtown.](https://gph.is/2R7vpjR)
 
 I also want to give a special thanks to Ben from JetBlue who has been essential to this process from implementation to editing this post. My apologies for spelling JetBlue as Jetblue far too many times!

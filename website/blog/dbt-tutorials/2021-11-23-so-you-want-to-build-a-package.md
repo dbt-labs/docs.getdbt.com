@@ -3,7 +3,7 @@ title: "So You Want to Build a dbt Package"
 description: "Packages are the easiest way for a dbt user to contribute code to the dbt community."
 slug: so-you-want-to-build-a-package
 
-authors: [achen]
+authors: [amy_chen]
 
 tags: [dbt tutorials]
 hide_table_of_contents: false
