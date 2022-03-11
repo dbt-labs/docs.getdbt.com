@@ -168,6 +168,7 @@ module.exports = {
         slug: '/docs/dbt-cloud',
       },
       items: [
+        "docs/dbt-cloud/using-dbt-cloud/cloud-upgrade-instructions",
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
         "docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness",
