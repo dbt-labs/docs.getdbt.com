@@ -3,7 +3,7 @@ title: "The Spiritual Alignment of dbt + Airflow"
 description: "Airflow and dbt are often framed as either / or, but in practice I've experienced them to play extremely well together."
 slug: dbt-airflow-spiritual-alignment
 
-authors: [sung]
+authors: [sung_chung]
 
 tags: [data ecosystem]
 hide_table_of_contents: false

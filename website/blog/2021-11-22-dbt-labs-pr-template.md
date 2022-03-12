@@ -3,7 +3,7 @@ title: "The Exact Pull Request Template We Use at dbt Labs"
 description: "Having a PR template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow."
 slug: analytics-pull-request-template
 
-authors: [jwilliams]
+authors: [jess_williams]
 
 tags: [data ecosystem]
 hide_table_of_contents: false

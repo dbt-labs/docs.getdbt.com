@@ -3,7 +3,7 @@ title: "How to Upgrade dbt Versions (Mostly) Without Fear"
 description: "Upgrading your dbt project can be daunting – you rely on dbt to power your analytics workflow and can’t afford to change things just to discover that your daily run doesn’t work anymore. I’ve been there. This is the checklist I wish I had when I owned my last company’s dbt project."
 slug: upgrade-dbt-without-fear
 
-authors: [jlabes]
+authors: [joel_labes]
 
 tags: [dbt tutorials]
 hide_table_of_contents: false

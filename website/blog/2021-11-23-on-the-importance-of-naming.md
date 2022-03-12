@@ -3,7 +3,7 @@ title: "On the Importance of Naming: Model Naming Conventions (Part 1)"
 description: "Naming our models is one of the hardest and most important tasks of the analytics engineer. This post walks through the reasons that we should focus on naming as a key part of the process of building data models."
 slug: on-the-importance-of-naming
 
-authors: [pkearns]
+authors: [pat_kearns]
 
 tags: [analytics craft]
 hide_table_of_contents: false

@@ -3,7 +3,7 @@ title: "The JaffleGaggle Story: Data Modeling for a Customer 360 View"
 description: "The core challenge of building a customer 360 view is identity resolution. How do you map individual users of a freemium product to potential customer accounts?"
 slug: customer-360-view-identity-resolution
 
-authors: [dflynn]
+authors: [donny_flynn]
 
 tags: [analytics craft]
 hide_table_of_contents: false

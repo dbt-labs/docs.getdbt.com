@@ -2,7 +2,7 @@
 title: "September 2021 dbt Update: DAG in the IDE + Metadata API in GA"
 description: "dbt v1.0 is coming up! Don't forget to update your projects to the latest release."
 slug: dbt-product-update-2021-september
-authors: [lcraigie] 
+authors: [lauren_craigie] 
 
 tags: [dbt updates]
 hide_table_of_contents: false

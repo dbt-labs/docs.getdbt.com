@@ -3,7 +3,7 @@ title: "Welcome to the dbt Developer Blog"
 description: "Doing analytics is hard. Doing analytics *right* is even harder. The purpose of this blog is to double down on our long running commitment to contributing to the knowledge loop."
 slug: welcome
 
-authors: [jasnonaz, dkrevitt]
+authors: [jason_ganz, david_krevitt]
 
 tags: [analytics craft]
 hide_table_of_contents: false

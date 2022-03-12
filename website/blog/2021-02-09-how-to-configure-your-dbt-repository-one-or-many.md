@@ -4,7 +4,7 @@ description: "At dbt Labs, as more folks adopt dbt, we have started to see more 
 slug: how-to-configure-your-dbt-repository-one-or-many
 canonical_url: https://discourse.getdbt.com/t/how-to-configure-your-dbt-repository-one-or-many/2121
 
-authors: [achen]
+authors: [amy_chen]
 
 tags: [dbt tutorials]
 hide_table_of_contents: false

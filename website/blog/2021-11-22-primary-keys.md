@@ -2,7 +2,7 @@
 title: "What's a Primary Key and Why Do We Test Them?"
 description: "Let’s dive deep into: what primary keys are, which cloud analytics warehouses support them, and how you can test them in your warehouse to enforce uniqueness"
 slug: primary-key-testing
-authors: [sanjana,jasnonaz,dkrevitt] 
+authors: [sanjana_sen,jason_ganz,david_krevitt] 
 
 tags: [sql magic]
 hide_table_of_contents: false

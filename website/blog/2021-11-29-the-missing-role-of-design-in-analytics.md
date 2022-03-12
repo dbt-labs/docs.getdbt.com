@@ -3,7 +3,7 @@ title: "The (Missing) Role of Design in Analytics"
 description: "Opportunities to make the shift from building dashboards to designing analytical applications."
 slug: design-for-analytics-towards-analytical-applications
 
-authors: [sethrosen]
+authors: [seth_rosen]
 
 tags: [analytics craft]
 hide_table_of_contents: false
