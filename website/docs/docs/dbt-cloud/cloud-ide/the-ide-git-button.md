@@ -43,7 +43,7 @@ Once you click "initialize your project" you'll see the following in your IDE. C
 **Pull changes from master/main**: This option will be available if you are on any local branch that is behind the remote version of the base branch or the remote version of the branch that you're currently on.
 
 ## Reclone Repo
-Reclone your repository directly from the dbt IDE and your browser. You can reset your repository back to a fresh clone from your remote, you will want to click on the bottom right hand side green 'Ready'text, then click on the 'Reclone Repo' selection.
+Reclone your repository directly from the dbt IDE and your browser. To reset your repository back to a fresh clone from your remote, click **Ready**, which is green text in the bottom-right, then click **Reclone Repo**.
 
 <p align="center">
 <Lightbox src="/img/docs/dbt-cloud/reclone_repo.mp4" />
