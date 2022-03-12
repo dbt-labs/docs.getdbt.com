@@ -3,7 +3,7 @@ module.exports = {
     {
       type: "category",
       label: "Introduction",
-      items: ["docs/introduction", "docs/available-adapters"],
+      items: ["docs/introduction", "docs/available-adapters", "docs/core-versions"],
     },
     {
       type: "category",
@@ -144,6 +144,15 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
+        {
+          type: "category",
+          label: "Connecting Azure DevOps",
+          link: { type: 'doc', id: 'docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops' }, 
+          items: [
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure',
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure',
+          ],
+        }, 
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
@@ -513,6 +522,7 @@ module.exports = {
             "reference/dbt-jinja-functions/run_query",
             "reference/dbt-jinja-functions/run_started_at",
             "reference/dbt-jinja-functions/schema",
+            "reference/dbt-jinja-functions/schemas",
             "reference/dbt-jinja-functions/source",
             "reference/dbt-jinja-functions/statement-blocks",
             "reference/dbt-jinja-functions/target",
@@ -542,6 +552,7 @@ module.exports = {
         "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
+        "reference/warehouse-profiles/databricks-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
@@ -552,6 +563,7 @@ module.exports = {
         "reference/warehouse-profiles/firebolt-profile",
         "reference/warehouse-profiles/teradata-profile",
         "reference/warehouse-profiles/athena-profile",
+        "reference/warehouse-profiles/vertica-profile",
       ],
     },
     {
