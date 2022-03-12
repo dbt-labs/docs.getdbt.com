@@ -3,7 +3,7 @@ title: "dbt + Machine Learning: What makes a great baton pass?"
 description: "Working with machine learning in dbt can be clunky. Explore three tool paths that makes the baton pass between analytics engineering & machine learning smooth."
 slug: maching-learning-dbt-baton-pass
 
-authors: [sung, izzy]
+authors: [sung_chung, izzy_erekson]
 
 tags: [data ecosystem]
 hide_table_of_contents: false

@@ -4,7 +4,7 @@ description: "As the maintainers of dbt, and analytics consultants, at Fishtown 
 slug: how-we-structure-our-dbt-projects
 canonical_url: https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355
 
-authors: [claire]
+authors: [claire_carroll]
 
 tags: [dbt tutorials]
 hide_table_of_contents: false

@@ -3,7 +3,7 @@ title: "How to Build a Mature dbt Project from Scratch"
 description: "A guide to how to start and evolve a dbt project."
 slug: how-to-build-a-mature-dbt-project-from-scratch
 
-authors: [dconnors]
+authors: [dave_connors]
 
 tags: [dbt tutorials]
 hide_table_of_contents: false
