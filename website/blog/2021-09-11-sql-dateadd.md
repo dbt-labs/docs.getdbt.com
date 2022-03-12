@@ -3,7 +3,7 @@ title: "DATEADD Across Data Warehouses"
 description: "Abstract away the need to look up the SQL dateadd function syntax every time you use it, by standardizing your syntax with dbt macros."
 slug: sql-dateadd
 
-authors: david_krevitt
+authors: [david_krevitt]
 
 tags: [SQL magic]
 hide_table_of_contents: false
