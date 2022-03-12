@@ -3,7 +3,7 @@ title: "How We Calculate Time on Task, the Business Hours Between Two Dates"
 description: "An overview of how to calculate the Time on Task metric, the number of business hours between two dates, in SQL."
 slug: measuring-business-hours-sql-time-on-task
 
-authors: [dconnors]
+authors: [dave_connors]
 
 tags: [analytics craft]
 hide_table_of_contents: false

@@ -3,7 +3,7 @@ title: "How I Study Open Source Community Growth with dbt"
 description: "Building a data pipeline to study open source community growth with BigQuery, dbt, OpenLineage and Superset."
 slug: open-source-community-growth-analysis
 
-authors: [rossturk]
+authors: [ross_turk]
 
 tags: [analytics craft]
 hide_table_of_contents: false

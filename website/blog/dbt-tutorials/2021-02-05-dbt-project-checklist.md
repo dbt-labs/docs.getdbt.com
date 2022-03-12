@@ -4,7 +4,7 @@ description: "A checklist created to guide our internal work, which you can use 
 slug: essential-dbt-project-checklist
 canonical_url: https://discourse.getdbt.com/t/your-essential-dbt-project-checklist/1377 
 
-authors: [amy_chen, dconnors]
+authors: [amy_chen, dave_connors]
 
 tags: [dbt tutorials]
 hide_table_of_contents: false
