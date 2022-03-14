@@ -24,7 +24,7 @@ dogs:
 {% do log(my_dict['dogs'], info=true) %}
 -- ["good", "bad"]
 
-{% do my_dict['dogs'].pop() }
+{% do my_dict['dogs'].pop() %}
 {% do log(my_dict['dogs'], info=true) %}
 -- ["good"]
 ```
