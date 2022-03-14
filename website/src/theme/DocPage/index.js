@@ -71,7 +71,7 @@ function DocPageContent({
     } else if(new Date() > threeMonths) {
       setEOLData({
         showEOLBanner: true,
-        EOLBannerText: `This version is nearing the end of support. The latest stable version is ${latestStableRelease}`
+        EOLBannerText: `This version of dbt Core is nearing the end of its [critical support period](/docs/core-versions). For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
       })
     } else {
       setEOLData({
