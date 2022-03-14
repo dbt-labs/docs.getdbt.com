@@ -34,6 +34,14 @@ To enable runs on Pull Requests, navigate to the Job Settings page for the relev
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
 
+:::info Note
+
+To disable runs on Pull Requests and remove the webhook, make sure you perform the following steps:
+- As described above, navigate to the Job Settings page for the relevant job. In the "Triggers" section of the page, switch to the "Webhooks" tab, and then uncheck the checkbox next to `RUN ON PULL REQUESTS?`
+- In your Git settings, you'll want to delete your [Branch Protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule#deleting-a-branch-protection-rule) to remove the checks for dbtCloud. 
+
+:::
+
 
 ## Understanding CI in dbt Cloud
 
