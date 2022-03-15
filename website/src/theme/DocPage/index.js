@@ -66,12 +66,12 @@ function DocPageContent({
     if(new Date() > new Date(EOLDate)) {
       setEOLData({
         showEOLBanner: true,
-        EOLBannerText: `This version is no longer supported. The latest stable version is ${latestStableRelease}`
+        EOLBannerText: `This version of dbt Core is [no longer supported](/docs/core-versions). No patch releases will be made, even for critical security issues. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
       })
     } else if(new Date() > threeMonths) {
       setEOLData({
         showEOLBanner: true,
-        EOLBannerText: `This version is nearing the end of support. The latest stable version is ${latestStableRelease}`
+        EOLBannerText: `This version of dbt Core is nearing the end of its [critical support period](/docs/core-versions). For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
       })
     } else {
       setEOLData({
@@ -160,7 +160,7 @@ function DocPageContent({
             {!pageAvailable && dbtVersion && firstAvailableVersion && (
               <div className={styles.versionBanner}>
                 <Admonition type="caution" title={`New feature!`} icon="🎉 " >
-                  <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, it's not available in {dbtVersion}</p>
+                  <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, this feature is not available in dbt Core version {dbtVersion}</p>
                   <p>Upgrade to {firstAvailableVersion} or later to use it</p>
                 </Admonition>
               </div>
