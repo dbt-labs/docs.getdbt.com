@@ -23,7 +23,7 @@ pip install dbt-databricks
 
 ### Set up a Databricks Target
 
-dbt-databricks can connect to Databricks all-purpose clusters as well as SQL endpoints.
+dbt-databricks can connected to Databricks all-purpose clusters as well as SQL endpoints.
 The latter provides an opinionated way of running SQL workloads with optimal performance and
 price, the former provides all the flexibility of Spark.
 
