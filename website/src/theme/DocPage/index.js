@@ -66,12 +66,12 @@ function DocPageContent({
     if(new Date() > new Date(EOLDate)) {
       setEOLData({
         showEOLBanner: true,
-        EOLBannerText: `This version of dbt Core is [no longer supported](/docs/core-versions). No patch releases will be made, even for critical security issues. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
+        EOLBannerText: `This version of dbt Core is <a href="/docs/core-versions">no longer supported</a>. No patch releases will be made, even for critical security issues. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
       })
     } else if(new Date() > threeMonths) {
       setEOLData({
         showEOLBanner: true,
-        EOLBannerText: `This version of dbt Core is nearing the end of its [critical support period](/docs/core-versions). For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
+        EOLBannerText: `This version of dbt Core is nearing the end of its <a href="/docs/core-versions">critical support period</a>. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
       })
     } else {
       setEOLData({
@@ -168,7 +168,7 @@ function DocPageContent({
             {EOLData.showEOLBanner && (
               <div className={styles.versionBanner}>
                 <Admonition type="caution" title="Warning">
-                  <p>{EOLData.EOLBannerText}</p>
+                  <div dangerouslySetInnerHTML={{__html: EOLData.EOLBannerText}} />
                 </Admonition>
               </div>
             )}
