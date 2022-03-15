@@ -60,24 +60,31 @@ function DocPageContent({
   })
 
   useEffect(() => {
-    let threeMonths = new Date(EOLDate)
-    threeMonths.setMonth(threeMonths.getMonth() - 3)
-
-    if(new Date() > new Date(EOLDate)) {
-      setEOLData({
-        showEOLBanner: true,
-        EOLBannerText: `This version of dbt Core is <a href="/docs/core-versions">no longer supported</a>. No patch releases will be made, even for critical security issues. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
-      })
-    } else if(new Date() > threeMonths) {
-      setEOLData({
-        showEOLBanner: true,
-        EOLBannerText: `This version of dbt Core is nearing the end of its <a href="/docs/core-versions">critical support period</a>. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
-      })
-    } else {
+    // If EOLDate not set for version, do not show banner
+    if(!EOLDate) {
       setEOLData({
         showEOLBanner: false,
         EOLBannerText: ''
       })
+    } else {
+      let threeMonths = new Date(EOLDate)
+      threeMonths.setMonth(threeMonths.getMonth() - 3)
+      if(new Date() > new Date(EOLDate)) {
+        setEOLData({
+          showEOLBanner: true,
+          EOLBannerText: `This version of dbt Core is <a href="/docs/core-versions">no longer supported</a>. No patch releases will be made, even for critical security issues. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
+        })
+      } else if(new Date() > threeMonths) {
+        setEOLData({
+          showEOLBanner: true,
+          EOLBannerText: `This version of dbt Core is nearing the end of its <a href="/docs/core-versions">critical support period</a>. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
+        })
+      } else {
+        setEOLData({
+          showEOLBanner: false,
+          EOLBannerText: ''
+        })
+      }
     }
   }, [dbtVersion])
 
