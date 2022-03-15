@@ -33,9 +33,12 @@ export const VersionContextProvider = ({ children }) => {
         * If localStorage version exists, set version to LS value
         * Otherwise set version to latest version 
       */}
-      storageVersion
-        ? setVersion(storageVersion)
-        : setVersion(lastReleasedVersion.version)
+      if(storageVersion && versions.find(ver => ver?.version && ver.version === storageVersion)) {
+        setVersion(storageVersion)
+      } else {
+        setVersion(lastReleasedVersion.version)
+        window.localStorage.setItem('dbtVersion', lastReleasedVersion.version)
+      }
     }
   }, [])
 
