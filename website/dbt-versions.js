@@ -1,11 +1,11 @@
 exports.versions = [
-  {
-    version: "1.2",
-    EOLDate: "2023-01-01"
-  },
+  // {
+  //   version: "1.1",
+  //   EOLDate: "2023-01-01"
+  // },
   {
     version: "1.0",
-    EOLDate: "2022-05-20"
+    EOLDate: "2023-05-20"
   },
   {
     version: "0.21",
@@ -17,13 +17,4 @@ exports.versions = [
   }
 ]
 
-exports.versionedPages = [
-  {
-    "page": "docs/available-adapters",
-    "firstVersion": "0.21",
-  },
-  {
-    "page": "docs/building-a-dbt-project/metrics",
-    "lastVersion": "1.1"
-  }
-]
+exports.versionedPages = []

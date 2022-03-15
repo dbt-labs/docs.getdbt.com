@@ -60,24 +60,31 @@ function DocPageContent({
   })
 
   useEffect(() => {
-    let threeMonths = new Date(EOLDate)
-    threeMonths.setMonth(threeMonths.getMonth() - 3)
-
-    if(new Date() > new Date(EOLDate)) {
-      setEOLData({
-        showEOLBanner: true,
-        EOLBannerText: `This version is no longer supported. The latest stable version is ${latestStableRelease}`
-      })
-    } else if(new Date() > threeMonths) {
-      setEOLData({
-        showEOLBanner: true,
-        EOLBannerText: `This version is nearing the end of support. The latest stable version is ${latestStableRelease}`
-      })
-    } else {
+    // If EOLDate not set for version, do not show banner
+    if(!EOLDate) {
       setEOLData({
         showEOLBanner: false,
         EOLBannerText: ''
       })
+    } else {
+      let threeMonths = new Date(EOLDate)
+      threeMonths.setMonth(threeMonths.getMonth() - 3)
+      if(new Date() > new Date(EOLDate)) {
+        setEOLData({
+          showEOLBanner: true,
+          EOLBannerText: `This version of dbt Core is <a href="/docs/core-versions">no longer supported</a>. No patch releases will be made, even for critical security issues. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
+        })
+      } else if(new Date() > threeMonths) {
+        setEOLData({
+          showEOLBanner: true,
+          EOLBannerText: `This version of dbt Core is nearing the end of its <a href="/docs/core-versions">critical support period</a>. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`
+        })
+      } else {
+        setEOLData({
+          showEOLBanner: false,
+          EOLBannerText: ''
+        })
+      }
     }
   }, [dbtVersion])
 
@@ -160,7 +167,7 @@ function DocPageContent({
             {!pageAvailable && dbtVersion && firstAvailableVersion && (
               <div className={styles.versionBanner}>
                 <Admonition type="caution" title={`New feature!`} icon="🎉 " >
-                  <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, it's not available in {dbtVersion}</p>
+                  <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, this feature is not available in dbt Core version {dbtVersion}</p>
                   <p>Upgrade to {firstAvailableVersion} or later to use it</p>
                 </Admonition>
               </div>
@@ -168,7 +175,7 @@ function DocPageContent({
             {EOLData.showEOLBanner && (
               <div className={styles.versionBanner}>
                 <Admonition type="caution" title="Warning">
-                  <p>{EOLData.EOLBannerText}</p>
+                  <div dangerouslySetInnerHTML={{__html: EOLData.EOLBannerText}} />
                 </Admonition>
               </div>
             )}

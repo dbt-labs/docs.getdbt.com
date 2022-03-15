@@ -522,6 +522,7 @@ const sidebarSettings = {
             "reference/dbt-jinja-functions/run_query",
             "reference/dbt-jinja-functions/run_started_at",
             "reference/dbt-jinja-functions/schema",
+            "reference/dbt-jinja-functions/schemas",
             "reference/dbt-jinja-functions/source",
             "reference/dbt-jinja-functions/statement-blocks",
             "reference/dbt-jinja-functions/target",

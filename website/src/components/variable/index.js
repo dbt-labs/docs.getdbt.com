@@ -3,6 +3,9 @@ import { dbtVariables } from '../../../dbt-global-variables';
 import VersionContext from '../../stores/VersionContext';
 
 export default function Var({ name }) {
+  if(!name)
+    return null
+  
   const [variableName, setVariableName] = useState('')
 
   const { version } = useContext(VersionContext)

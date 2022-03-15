@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import VersionContext from '../../stores/VersionContext';
 
-export default function VersionBlock({ firstVersion, lastVersion = undefined, children }) {
+export default function VersionBlock({ firstVersion = 0, lastVersion = undefined, children }) {
   const { version } = useContext(VersionContext)
 
   const [loading, setLoading] = useState(true)
@@ -14,7 +14,7 @@ export default function VersionBlock({ firstVersion, lastVersion = undefined, ch
   // Only check version if current version set
   if(version) {
     const currentVersionVal = parseFloat(version)
-    const firstVersionVal = parseFloat(firstVersion) || 0
+    const firstVersionVal = parseFloat(firstVersion)
     {/* 
       * If last version set, check if current version greater than last version
       * Or if current version less than first version
