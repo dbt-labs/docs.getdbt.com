@@ -1,7 +1,7 @@
 exports.versions = [
   // {
   //   version: "1.1",
-  //   EOLDate: "2023-01-01"
+  //   EOLDate: "2023-03-18"
   // },
   {
     version: "1.0",
