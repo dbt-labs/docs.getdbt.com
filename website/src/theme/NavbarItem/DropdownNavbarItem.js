@@ -13,8 +13,7 @@ import {
   isRegexpStringMatch,
   useLocalPathname,
 } from '@docusaurus/theme-common';
-import {useLocation} from '@docusaurus/router';
-import {NavLink} from '@theme/NavbarItem/DefaultNavbarItem';
+import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 import VersionsNavbarItem from './VersionsNavItem';
 import VersionContext from '../../stores/VersionContext';
@@ -60,12 +59,7 @@ function DropdownNavbarItemDesktop({items, position, className, versionContext, 
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [dropdownRef]);
-
-  // If in the blog directory, hide versioning from nav
-  const { pathname } = useLocation()
-  if(pathname && pathname.includes('/blog') && className === 'nav-versioning')
-    return null
-
+  
   return (
     <div
       ref={dropdownRef}
@@ -73,20 +67,20 @@ function DropdownNavbarItemDesktop({items, position, className, versionContext, 
         'dropdown--right': position === 'right',
         'dropdown--show': showDropdown,
       })}>
-        <NavLink
-          href={props.to ? undefined : '#'}
-          className={clsx('navbar__link', className)}
-          {...props}
-          label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
-          onClick={props.to ? undefined : (e) => e.preventDefault()}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              setShowDropdown(!showDropdown);
-            }
-          }}>
-          props.children ?? props.label
-        </NavLink>
+      <NavbarNavLink
+        href={props.to ? undefined : '#'}
+        className={clsx('navbar__link', className)}
+        {...props}
+        label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+        onClick={props.to ? undefined : (e) => e.preventDefault()}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            setShowDropdown(!showDropdown);
+          }
+        }}>
+        {props.children ?? props.label}
+      </NavbarNavLink>
       <ul className="dropdown__menu">
         {items.map((childItemProps, i) => (
           className === "nav-versioning" ? (
@@ -116,7 +110,7 @@ function DropdownNavbarItemDesktop({items, position, className, versionContext, 
                   e.preventDefault();
                   setShowDropdown(false);
                   const nextNavbarItem = dropdownRef.current.nextElementSibling;
-  
+
                   if (nextNavbarItem) {
                     nextNavbarItem.focus();
                   }
@@ -157,7 +151,7 @@ function DropdownNavbarItemMobile({
       className={clsx('menu__list-item', {
         'menu__list-item--collapsed': collapsed,
       })}>
-      <NavLink
+      <NavbarNavLink
         role="button"
         className={clsx('menu__link menu__link--sublist', className)}
         {...props}
@@ -167,7 +161,7 @@ function DropdownNavbarItemMobile({
           toggleCollapsed();
         }}>
         {props.children ?? props.label}
-      </NavLink>
+      </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
         {items.map((childItemProps, i) => (
           className === "nav-versioning" ? (
@@ -195,11 +189,9 @@ function DropdownNavbarItemMobile({
   );
 }
 
-function DropdownNavbarItem({mobile = false, ...props}) {
+export default function DropdownNavbarItem({mobile = false, ...props}) {
   const versionContext = useContext(VersionContext)
 
   const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
   return <Comp versionContext={versionContext} {...props} />;
 }
-
-export default DropdownNavbarItem;
