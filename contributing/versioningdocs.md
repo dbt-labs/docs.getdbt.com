@@ -1,6 +1,5 @@
 # Managing Available Versions
 
-TOC
 * [Adding a new version](#adding-a-new-version)
 * [Using end-of-life dates](#using-end-of-life-dates)
 * [Versioning entire pages](#versioning-entire-pages)
