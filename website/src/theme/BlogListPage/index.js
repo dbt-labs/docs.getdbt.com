@@ -26,7 +26,7 @@ function BlogListPage(props) {
   const { 
     blogMeta,
     tagData
-    } = usePluginData('docusaurus-build-blog-data-plugin');
+    } = usePluginData('docusaurus-build-global-data-plugin');
   const { 
     featured_posts_count,
     regular_posts_count

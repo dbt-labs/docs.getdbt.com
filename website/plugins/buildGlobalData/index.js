@@ -3,9 +3,9 @@ const yaml = require('js-yaml')
 const slugify = require('slugify')
 
 // Pass custom data to blog
-module.exports = function buildBlogDataPlugin(context, options) {
+module.exports = function buildGlobalDataPlugin(context, options) {
   return {
-    name: 'docusaurus-build-blog-data-plugin',
+    name: 'docusaurus-build-global-data-plugin',
     async loadContent() {
 
       // Get all tags and build slug for tag
@@ -21,10 +21,15 @@ module.exports = function buildBlogDataPlugin(context, options) {
       // Get CTA data
       const CTAData = yaml.load(fs.readFileSync(`blog/ctas.yml`, { encoding: 'utf8' }))
       
+      // Get versionedPages param
+      // This controls versioning for sidebar
+      const { versionedPages } = options
+      
       return {
         tagData,
         blogMeta,
-        CTAData
+        CTAData,
+        versionedPages
       }
     },
     async contentLoaded({content, actions}) {

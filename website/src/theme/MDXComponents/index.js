@@ -26,8 +26,11 @@ import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
 import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
+import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
+import VersionBlock from '@site/src/components/versionBlock';
+import Var from '@site/src/components/variable';
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
@@ -50,8 +53,12 @@ const MDXComponents = {
   LoomVideo: LoomVideo,
   Tabs: Tabs,
   TabItem: TabItem,
+  Snippet: Snippet,
   WistiaVideo: WistiaVideo,
   YoutubeVideo: YoutubeVideo,
+  VersionBlock: VersionBlock,
+  Var: Var,
+
   head: (props) => {
     const unwrappedChildren = React.Children.map(props.children, (child) =>
       unwrapMDXElement(child),
