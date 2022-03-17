@@ -1,7 +1,5 @@
 # Managing Available Versions
 
----
-
 TOC
 * [Adding a new version](#adding-a-new-version)
 * [Using end-of-life dates](#using-end-of-life-dates)
@@ -48,8 +46,6 @@ The content for these two EOLDate banners are located in the `website/src/theme/
 
 ## Versioning entire pages
 
----
-
 If a Docs page should not be available for the selected version, it is possible to version the entire page. This is managed in the `versionedPages` array within the `website/dbt-versions.js` file.
 
 Two things occur when a page is not available for the selected version:
@@ -78,8 +74,6 @@ exports.versionedPages = [
 **lastVersion** (optional): Sets the last version which this page is available.
 
 ## Versioning blocks of content
-
----
 
 The **VersionBlock** component provides the ability to version a specific piece of content on a docs page. 
 
