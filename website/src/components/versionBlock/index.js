@@ -8,7 +8,6 @@ export default function VersionBlock({ firstVersion = 0, lastVersion = undefined
 
   // Hide versionBlock components until version ready
   useEffect(() => {
-    console.log('setting loading false')
     version && setLoading(false)
   }, [version])
 
@@ -27,16 +26,13 @@ export default function VersionBlock({ firstVersion = 0, lastVersion = undefined
       || (currentVersionVal < firstVersionVal))
         return null
     } else {
-      console.log('made it here', currentVersionVal, firstVersionVal)
       if(currentVersionVal < firstVersionVal) {
-        console.log('made it to if')
         return null
       }
       
     }
   }
 
-  console.log('render data', loading)
   return loading
     ?  null
     : <div>{children}</div>

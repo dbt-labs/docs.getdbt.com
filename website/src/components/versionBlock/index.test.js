@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react';
 import { fail } from 'assert';
 import VersionBlock from './index'
@@ -14,7 +14,7 @@ describe("Test VersionBlock component", () => {
     expect(testElement).toBeInTheDocument()
   })
 
-  it.only.each([
+  it.each([
     [
       'Should render content if current version >= firstVersion',
       "0.21",
@@ -38,27 +38,10 @@ describe("Test VersionBlock component", () => {
         </VersionBlock>
       </VersionContextProvider>
     )
-    screen.debug()
     const content = screen.queryByText(/current version/i)
     shouldShowContent 
      ? expect(content).toBeInTheDocument()
      : expect(content).not.toBeInTheDocument()
   })
-
-  // it.only('', () => {
-  //   jest.spyOn(window.localStorage.__proto__, 'getItem').mockReturnValue("0.21")
-
-  //   const firstVersion = "0.21"
-  //   render(
-  //     <VersionContextProvider>
-  //       <VersionBlock firstVersion={firstVersion}>
-  //         Current version
-  //       </VersionBlock>
-  //     </VersionContextProvider>
-  //   )
-  //   screen.debug()
-  //   const content = screen.queryByText(/current version/i)
-  //   expect(content).not.toBeInTheDocument()
-  // })
 })
 
