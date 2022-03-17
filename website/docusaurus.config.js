@@ -1,4 +1,5 @@
 const path = require('path');
+const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
 
 /* Debugging */
@@ -182,7 +183,7 @@ var siteSettings = {
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,
+          sidebarCollapsible: true,     
         },
         blog: {
           blogTitle: 'dbt Developer Blog',
@@ -191,6 +192,7 @@ var siteSettings = {
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
         },
+
       },
     ],
   ],
@@ -201,7 +203,10 @@ var siteSettings = {
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
-    path.resolve('plugins/buildBlogData'),
+    [
+      path.resolve('plugins/buildGlobalData'),
+      { versionedPages }
+    ],
     path.resolve('plugins/buildAuthorPages'),
   ],
   scripts: [
@@ -237,6 +242,26 @@ if (PRERELEASE) {
     textColor: '#033744', // Defaults to `#000`.
   }
   siteSettings.themeConfig.announcementBar = WARNING_BANNER;
+}
+
+// If versions json file found, add versions dropdown to nav
+if(versions) {
+  siteSettings.themeConfig.navbar.items.push({
+    label: 'Versions',
+    position: 'left',
+    className: 'nav-versioning',
+    items: [
+      ...versions.reduce((acc, version) => {
+        if(version?.version) {
+          acc.push({
+            label: `${version.version}`,
+            href: '#',
+          })
+        }
+        return acc
+      }, [])
+    ]
+  },)
 }
 
 module.exports = siteSettings;
