@@ -216,8 +216,6 @@ To use the component at the beginning of a sentence, add a non-breaking space ch
 
 ## Reusing snippets of content
 
----
-
 The Snippet component allows for content to be reusable throughout the Docs. This is very similar to the existing FAQ component.
 
 Creating and using a snippet requires two steps:
