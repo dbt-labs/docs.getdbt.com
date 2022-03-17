@@ -168,7 +168,7 @@ function DocPageContent({
               <div className={styles.versionBanner}>
                 <Admonition type="caution" title={`New feature!`} icon="🎉 " >
                   <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, this feature is not available in dbt Core version {dbtVersion}</p>
-                  <p>Upgrade to {firstAvailableVersion} or later to use it</p>
+                  <p> You should upgrade to {firstAvailableVersion} or later if you want to use this feature.</p>
                 </Admonition>
               </div>
             )}

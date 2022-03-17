@@ -14,14 +14,15 @@ const NavbarItemComponents = {
   localeDropdown: () => LocaleDropdownNavbarItem,
   search: () => SearchNavbarItem,
   dropdown: () => DropdownNavbarItem,
-  // Need to lazy load these items as we don't know for sure the docs plugin is loaded
-  // See https://github.com/facebook/docusaurus/issues/3360
+  // Need to lazy load these items as we don't know for sure the docs plugin is
+  // loaded. See https://github.com/facebook/docusaurus/issues/3360
 
   /* eslint-disable @typescript-eslint/no-var-requires, global-require */
   docsVersion: () => require('@theme/NavbarItem/DocsVersionNavbarItem').default,
   docsVersionDropdown: () =>
     require('@theme/NavbarItem/DocsVersionDropdownNavbarItem').default,
   doc: () => require('@theme/NavbarItem/DocNavbarItem').default,
+  docSidebar: () => require('@theme/NavbarItem/DocSidebarNavbarItem').default,
   /* eslint-enable @typescript-eslint/no-var-requires, global-require */
 };
 
@@ -45,8 +46,6 @@ function getComponentType(type, isDropdown) {
   return type;
 }
 
-export const getInfimaActiveClassName = (mobile) =>
-  mobile ? 'menu__link--active' : 'navbar__link--active';
 export default function NavbarItem({type, ...props}) {
   const componentType = getComponentType(type, props.items !== undefined);
   const NavbarItemComponent = getNavbarItemComponent(componentType);
