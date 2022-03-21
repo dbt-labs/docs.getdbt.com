@@ -129,7 +129,7 @@ As example, suppose you'd like to run a full-refresh job in an XL warehouse, but
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/warehouse-override.png" title="Adding environment variables to your connection credentials"/>
 
-This method also works for Databricks endpoints. 
+This method also works for Databricks SQL endpoints. 
 
 #### Audit your run metadata
 Here's another motivating example that uses the dbt Cloud run ID, which is set automatically at each run. This additional data field can be used for auditing and debugging:
