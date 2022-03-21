@@ -93,4 +93,5 @@ If you are planning to set up the same Snowflake account to different dbt Cloud 
 #### Invalid consent request
 When clicking on the `Connect Snowflake Account` successfully redirects you to the Snowflake login page, but you receive an `Invalid consent request` error, your Snowflake user may not have access to the Snowflake role defined on the development credentials in dbt Cloud. Double-check that you have access to that role and if the role name has been correctly entered in as Snowflake is case sensitive. 
 
-
+#### Server Error 500
+If you receive a 500 server error when being redirected from Snowflake back to dbt Cloud, double-check that you have whitelisted dbt Cloud's IP addresses listed [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database) on a Snowflake account level. Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
