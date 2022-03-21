@@ -14,16 +14,19 @@ dbt Core releases follow [semantic versioning](https://semver.org/). The policie
 
 ## Version support prior to v1.0
 
-- We are no longer releasing new patches for minor versions prior to v1.0
-- As of June 30, 2022, dbt Cloud will remove support for dbt Core versions older than v1.0
+- We are no longer releasing new patches for minor versions prior to v1.0.
+- As of June 30, 2022, dbt Cloud will remove support for dbt Core versions older than v1.0. At that point, we will also remove v0.20 and v0.21 from the version dropdown on this website.
+- Pages on this website include "Changelog" notes to represent changes in functionality in versions leading up to v1.0. You can also read the migration guide for a specific version for an overview of its changes.
 
 ## Version support starting with v1.0
 
 ### Minor version support
 
-Minor versions will be supported for one year (12 months) from the date of their initial release. _This is a definite commitment._ Our mechanism for continuing to support a minor version is by releasing new patches for that minor version—so it's important to make sure you're always using the latest patch.
+Minor versions will be supported for one year (12 months) from the date of their initial release. _This is a definite commitment._ Our mechanism for continuing to support a minor version is by releasing new patches for that minor version—so it's important to make sure you're always using the latest patch. Whenever we refer to a minor version, such as v1.0, we always mean its latest available patch release (v1.0.x).
 
-While a minor version is officially supported, you can use it in dbt Cloud. For more on dbt Cloud versioning, see "[Choosing a dbt version](cloud-choosing-a-dbt-version)."
+While a minor version is officially supported:
+- You can use it in dbt Cloud. For more on dbt Cloud versioning, see "[Choosing a dbt version](cloud-choosing-a-dbt-version)."
+- You can select it from the version dropdown on this website, to see documentation that is accurate for use with that minor version.
 
 ### Ongoing patches
 
@@ -50,15 +53,15 @@ _Italics: Future releases, NOT definite commitments. Shown for indication only._
 
 ## Best practices for upgrading
 
-Because of our new version practice, we've outline best practices and expectations for dbt users to upgrade as we continue to release new versions of dbt Core.
+Because of our new version practice, we've outlined best practices and expectations for dbt users to upgrade as we continue to release new versions of dbt Core.
 
 ### Upgrading to new patch versions
 
-We expect users to upgrade to patches as soon as they're available. When we refer to a "minor version" of dbt Core, which may be written as v1.0 or v1.0.x, we are always referring to _the latest patch release of that minor version_. We highly encourage you to structure your development and production environments such that you can always install the latest patches of `dbt-core` and any adapter plugins (noting that those patch numbers may be different).
+We expect users to upgrade to patches as soon as they're available. When we refer to a "minor version" of dbt Core, such as v1.0, we are always referring to the latest available patch release for that minor version. We encourage you to structure your development and production environments so that you can always install the latest patches of `dbt-core` and any adapter plugins. (Note that patch numbers may be different between dbt-core and plugins. [See below](#how-we-version-adapter-plugins) for an explanation.)
 
 ### Upgrading to new minor versions
 
-You may continue to use any minor version of dbt while it is officially supported. While we do not expect users to immediately upgrade to newer minor versions as soon as they're available, there will always be some features and fixes that are only available for users of the latest minor version.
+You may continue to use any minor version of dbt while it is officially supported. During that period, it will remain available in dbt Cloud, and in the version dropdown on this website. While we do not expect users to immediately upgrade to newer minor versions as soon as they're available, there will always be some features and fixes that are only available for users of the latest minor version.
 
 ### Trying prereleases
 
@@ -80,7 +83,7 @@ When you use dbt, you're using `dbt-core` together with an adapter plugin specif
 
 What does that mean? Patch version numbers are likely to be different between `dbt-core` and the adapter plugin(s) you have installed. Major and minor version numbers should always match.
 
-As an example, you may find you're using `dbt-core==1.0.3` with `dbt-snowflake==1.0.0`. The most important thing is that you're using the latest patch available for each (v1.0.x). If you're running dbt locally, you can use the `dbt --version` command to see which versions you have installed:
+As an example, on March 1, you may find you're using `dbt-core==1.0.3` with `dbt-snowflake==1.0.0`. The most important thing is that you're using the latest patch available for each (v1.0.x). If you're running dbt locally, you can use the `dbt --version` command to see which versions you have installed:
 ```
 $ dbt --version
 installed version: 1.0.3
@@ -91,3 +94,4 @@ Up to date!
 Plugins:
   - snowflake: 1.0.0 - Up to date!
 ```
+It's likely that newer patches have become available since then, so it's always important to check and make sure you're up to date!
