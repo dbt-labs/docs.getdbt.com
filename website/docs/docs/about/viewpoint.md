@@ -22,7 +22,7 @@ The center of gravity in mature analytics organizations has shifted away from pr
 
 This change has unlocked significant possibility, but analytics teams (ours included) have still faced challenges in consistently delivering high-quality, low-latency analytics.
 
-We believe that analytics teams have a workflow problem. Too often, analysts operate in isolation, and this creates suboptimal outcomes. Knowledge is siloed. We too often rewrite analyses that a colleague had already written. We fail to grasp the nuances of datasets that we’re less familiar with. We differ in our calculations of a shared metric.
+We believe that analytics teams have a workflow problem. Too often, analysts operate in isolation, and this creates suboptimal outcomes. Knowledge is siloed. We too often rewrite analyses that a colleague had already written. We fail to grasp the nuances of datasets that we’re less familiar with. We differ in our calculations of a shared <Term id="metric" />.
 
 We have convinced ourselves after hundreds of conversations that these conditions are by and large the status quo for even sophisticated analytics teams. As a result, organizations suffer from reduced decision speed and reduced decision quality.
 

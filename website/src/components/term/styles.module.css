@@ -1,0 +1,8 @@
+.term {
+  cursor: pointer;
+  position: relative;
+}
+.termToolTip {
+  background: var(--color-primary-blue) !important;
+  font-size: .9rem !important;
+}
