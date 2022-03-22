@@ -1,4 +1,5 @@
 ---
+id: metric
 title: Metric
 displayText: metric 
 hoverSnippet: A metric is a quantifiable measure that is used to track and assess the status of a specific process.

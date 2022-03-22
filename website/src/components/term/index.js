@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 */}
 export default function Term({ id, children = undefined }) {
 
-  const file = require('../../../terms/' + id + '.md')
+  const file = require('../../../docs/terms/' + id + '.md')
   if(!file)
     return null
   

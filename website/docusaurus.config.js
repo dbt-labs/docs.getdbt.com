@@ -208,7 +208,7 @@ var siteSettings = {
       { versionedPages }
     ],
     path.resolve('plugins/buildAuthorPages'),
-    path.resolve('plugins/buildTermPages'),
+    path.resolve('plugins/buildGlossaryPage'),
   ],
   scripts: [
     {
