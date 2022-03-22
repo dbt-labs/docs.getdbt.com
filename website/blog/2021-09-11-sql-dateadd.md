@@ -18,11 +18,11 @@ I’ve googled the syntax of the dateadd SQL function all of those times except 
 
 In switching between SQL dialects (BigQuery, Postgres and Snowflake are my primaries), I can literally never remember the argument order (or exact function name) of dateadd.
 
-This article will go over how the DATEADD function works, the nuances of using it across the major cloud warehouses, and how to standardize the syntax variances using dbt macros.
+This article will go over how the DATEADD function works, the nuances of using it across the major cloud warehouses, and how to standardize the syntax variances using dbt macro.
 
 <!--truncate-->
 
-## What is a DATEADD SQL Function?
+## What is the DATEADD SQL Function?
 
 The DATEADD function in SQL adds a time/date interval to a date and then returns the date. This allows you to add or subtract a certain period of time from a given start date.
 
@@ -77,7 +77,7 @@ So I made this handy 2 x 2 matrix to help sort the differences out:
 
 I am sorry - that’s just a blank 2x2 matrix. I've surrendered to just searching for the docs.
 
-## Standardizing your DATEADD SQL syntax with dbt macros
+## Standardizing your DATEADD SQL syntax with dbt macro
 
 But couldn’t we be doing something better with those keystrokes, like typing out and then deleting a tweet?
 
