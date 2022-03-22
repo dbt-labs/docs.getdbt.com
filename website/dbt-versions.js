@@ -5,6 +5,10 @@ exports.versions = [
     isPrerelease: true
   },
   {
+    version: "1.1",
+    EOLDate: "2024-5-01"
+  },
+  {
     version: "1.0",
     EOLDate: "2023-12-03"
   },
@@ -19,8 +23,12 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
-    {
-      "page": "docs/guides/migration-guide/upgrading-to-v1.1",
-      "firstVersion": "1.1",
-    }
+  {
+    "page": "docs/contributing/testing-a-new-adapter",
+    "firstVersion": "1.1",
+  },
+  {
+    "page": "docs/guides/migration-guide/upgrading-to-v1.1",
+    "firstVersion": "1.1",
+  }
 ]

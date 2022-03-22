@@ -111,6 +111,7 @@ const sidebarSettings = {
       items: [
         "docs/contributing/contributor-license-agreements",
         "docs/contributing/building-a-new-adapter",
+        "docs/contributing/testing-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
       ],
     },
