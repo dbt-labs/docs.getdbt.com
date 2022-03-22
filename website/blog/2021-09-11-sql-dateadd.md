@@ -77,7 +77,7 @@ So I made this handy 2 x 2 matrix to help sort the differences out:
 
 I am sorry - that’s just a blank 2x2 matrix. I've surrendered to just searching for the docs.
 
-## Standardizing your DATEADD SQL syntax with dbt macro
+## Standardizing your DATEADD SQL syntax with a dbt macro
 
 But couldn’t we be doing something better with those keystrokes, like typing out and then deleting a tweet?
 
