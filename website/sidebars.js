@@ -579,6 +579,105 @@ module.exports = {
       ],
     },
   ],
+  
+  "FAQs": [
+    {
+      type: "category",
+      label: "Models",
+      link: { type: 'doc', id: 'docs/faqs/models' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/available-configurations",
+        "https://docs.getdbt.com/faqs/configurable-model-path",
+        "https://docs.getdbt.com/faqs/create-a-schema",
+        "https://docs.getdbt.com/faqs/define-a-column-type",
+        "https://docs.getdbt.com/faqs/insert-records",
+        "https://docs.getdbt.com/faqs/model-custom-schemas",
+        "https://docs.getdbt.com/faqs/multiple-resource-yml-files",
+        "https://docs.getdbt.com/faqs/reference-models-in-another-project",
+        "https://docs.getdbt.com/faqs/removing-deleted-models",
+        "https://docs.getdbt.com/faqs/run-downstream-of-seed",
+        "https://docs.getdbt.com/faqs/run-downtime",
+        "https://docs.getdbt.com/faqs/run-one-model",
+        "https://docs.getdbt.com/faqs/running-models-downstream-of-source",
+        "https://docs.getdbt.com/faqs/source-has-bad-name",
+        "https://docs.getdbt.com/faqs/source-in-different-database",
+        "https://docs.getdbt.com/faqs/source-quotes",
+        "https://docs.getdbt.com/faqs/sql-dialect",
+        "https://docs.getdbt.com/faqs/test-one-model",
+        "https://docs.getdbt.com/faqs/unique-model-names",          
+      ],
+    },
+    {
+      type: "category",
+      label: "Tests",
+      link: { type: 'doc', id: 'docs/faqs/tests' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/configurable-data-path",
+        "https://docs.getdbt.com/faqs/configurable-data-test-path",
+        "https://docs.getdbt.com/faqs/load-raw-data-with-seed",
+        "https://docs.getdbt.com/faqs/multiple-test-files",
+        "https://docs.getdbt.com/faqs/properties-not-in-config",
+        "https://docs.getdbt.com/faqs/recommended-tests",
+        "https://docs.getdbt.com/faqs/test-one-model",
+        "https://docs.getdbt.com/faqs/testing-seeds",
+        "https://docs.getdbt.com/faqs/testing-sources",
+        "https://docs.getdbt.com/faqs/uniqueness-two-columns",
+        "https://docs.getdbt.com/faqs/when-to-test",
+      ],
+    },
+    {
+      type: "category",
+      label: "Warehouse",
+      link: { type: 'doc', id: 'docs/faqs/warehouse' }, 
+      items: [
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database",
+        "https://docs.getdbt.com/faqs/bq-impersonate-service-account-setup",
+        "https://docs.getdbt.com/faqs/bq-impersonate-service-account-why",
+        "https://docs.getdbt.com/faqs/database-privileges",
+        "https://docs.getdbt.com/faqs/loading-data",   
+      ],
+    },
+    {
+      type: "category",
+      label: "Security",
+      link: { type: 'doc', id: 'docs/faqs/security' }, 
+      items: [
+         
+      ],
+    },
+    {
+      type: "category",
+      label: "Environments",
+      link: { type: 'doc', id: 'docs/faqs/environments' }, 
+      items: [
+        "https://docs.getdbt.com/docs/guides/managing-environments",
+        "https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version#environments",
+        "https://docs.getdbt.com/faqs/beta-release",
+        "https://docs.getdbt.com/faqs/profile-env-vars",
+        "https://docs.getdbt.com/faqs/profile-name",
+      ],
+    },
+    {
+      type: "category",
+      label: "Accounts",
+      link: { type: 'doc', id: 'docs/faqs/accounts' }, 
+      items: [
+        "https://docs.getdbt.com/docs/guides/managing-environments",
+        "https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version#environments",
+        "https://docs.getdbt.com/faqs/beta-release",
+        "https://docs.getdbt.com/faqs/profile-env-vars",
+        "https://docs.getdbt.com/faqs/profile-name",
+      ],
+    },
+    {
+  
+  
+  
+  ----
+  
+  
+  
+  
   tutorial: [
     {
       type: "category",
