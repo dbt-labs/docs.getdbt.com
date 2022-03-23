@@ -23,13 +23,20 @@ export default function Term({ id, children = undefined }) {
       <Link
         to={permalink ? permalink : `/terms/${id}`}
         className={styles.term}
-        data-tip data-for="termTip"
+        data-tip 
+      data-for="termTip"
       >
         {children ? children : displayText}
       </Link>
       {hoverSnippet && (
-        <ReactTooltip id="termTip" className={styles.termToolTip} place="bottom" effect="solid">
-          <span>{hoverSnippet}</span>
+        <ReactTooltip 
+          id="termTip" 
+          className={styles.termToolTip} 
+          place="bottom" 
+          effect="solid"
+          wrapper="span" 
+        >
+          {hoverSnippet}
         </ReactTooltip>
       )} 
     </>
