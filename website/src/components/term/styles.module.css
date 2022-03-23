@@ -5,4 +5,5 @@
 .termToolTip {
   background: var(--color-primary-blue) !important;
   font-size: .9rem !important;
+  color: #fff !important;
 }
