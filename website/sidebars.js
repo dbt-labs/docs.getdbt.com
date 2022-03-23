@@ -662,14 +662,30 @@ module.exports = {
       label: "Accounts",
       link: { type: 'doc', id: 'docs/faqs/accounts' }, 
       items: [
-        "https://docs.getdbt.com/docs/guides/managing-environments",
-        "https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version#environments",
-        "https://docs.getdbt.com/faqs/beta-release",
-        "https://docs.getdbt.com/faqs/profile-env-vars",
-        "https://docs.getdbt.com/faqs/profile-name",
+        "https://docs.getdbt.com/faqs/configurable-snapshot-path",
+        "https://docs.getdbt.com/faqs/dbt-specific-jinja",
+        "
       ],
     },
     {
+      type: "category",
+      label: "Project",
+      link: { type: 'doc', id: 'docs/faqs/project' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/configurable-snapshot-path",
+        "https://docs.getdbt.com/faqs/dbt-specific-jinja",
+        "https://docs.getdbt.com/faqs/debugging-jinja",
+        "https://docs.getdbt.com/faqs/define-a-column-type",
+        "https://docs.getdbt.com/faqs/docs-for-multiple-projects",
+        "https://docs.getdbt.com/faqs/example-projects",
+        
+        
+        
+        
+      ],
+    },
+    {
+      
   
   
   
