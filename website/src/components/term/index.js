@@ -4,7 +4,7 @@ import ReactTooltip from "react-tooltip";
 import styles from './styles.module.css';
 
 {/* 
-  
+
 */}
 export default function Term({ id, children = undefined }) {
 
@@ -16,17 +16,21 @@ export default function Term({ id, children = undefined }) {
   if(!fm)
     return null
   
-  const { displayText, hoverSnippet, permalink } = fm
+  const { displayText, hoverSnippet } = fm
 
   return (
     <>
       <Link
-        to={permalink ? permalink : `/terms/${id}`}
+        to={`/terms/${id}`}
         className={styles.term}
         data-tip 
       data-for="termTip"
       >
-        {children ? children : displayText}
+        {/* If component has children, show children text,
+            Else, default to displayText frontmatter field,
+            Or filename if displayText not set
+        */}
+        {children ? children : displayText ? displayText : id}
       </Link>
       {hoverSnippet && (
         <ReactTooltip 

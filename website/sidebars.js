@@ -628,6 +628,22 @@ const sidebarSettings = {
       ],
     },
   ],
+  "Glossary": [
+    {
+      type: "category",
+      label: "Glossary",
+      link: {
+        type: 'generated-index',
+        title: 'Glossary',
+        description: 'Glossary of dbt terms.',
+        slug: '/glossary',
+      },
+      items: [
+        "terms/idempotent",
+        "terms/metric",
+      ],
+    },
+  ],
 };
 
 
