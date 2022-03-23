@@ -29,9 +29,7 @@ I've reimplemented certain macros from the `dbt_utils` package, and I want my ve
 ```yml
 dispatch:
   - macro_namespace: dbt_utils
-    search_order: 
-  - macro_namespace: packagename
-    search_order: [packagename]
+    search_order: ['my_dbt_project', 'dbt_utils']
 ```
 
 </File>
@@ -42,10 +40,8 @@ I want to "shim" the `dbt_utils` package with the `spark_utils` compatibility pa
 
 ```yml
 dispatch:
-  - macro_namespace: packagename
-    search_order: [packagename]
-  - macro_namespace: packagename
-    search_order: [packagename]
+  - macro_namespace: dbt_utils
+    search_order: [`spark_utils`, `dbt_utils`]
 ```
 
 </File>
