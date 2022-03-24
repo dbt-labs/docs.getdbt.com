@@ -22,7 +22,7 @@ to understand how to effectively use this variable.
 
   - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
   - In dbt v0.20.0, exposures were added to the `graph.exposures` object
-  - In dbt v1.0.0, metrics were added to the `graph.metrics` object
+  - In dbt v1.0.0, <Term id="metric">metrics</Term> were added to the `graph.metrics` object
 
 </Changelog>
 
@@ -205,7 +205,7 @@ Example usage:
 
 </File>
 
-### Accessing metrics
+### Accessing <Term id="metric">metrics</Term>
 
 To access the metrics in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
 

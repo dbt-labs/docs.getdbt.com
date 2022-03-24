@@ -244,7 +244,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
 
 </VersionBlock>
 
-### The "metric" method
+### The "<Term id="metric" />" method
 <Changelog>New in v1.0.0</Changelog>
 
 The `metric` method is used to select parent resources of a specified [metric](metrics). Use in conjunction with the `+` operator.
