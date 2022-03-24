@@ -16,7 +16,7 @@ Shifting from ETL to ELT means that you no longer have to capture your transform
 Data teams report that the ELT workflow has several advantages over the traditional ETL workflow. ELT enables you to create <Term id="idempotent" /> [hopeful link to glossary for idempotence] data workflows.
 
 - Recreate Historical Transformations
-- Trace Model Dependencies
+- Trace <Term id="model">Model</Term> Dependencies
 - QA test analytics code changes
 
 ### Learn More

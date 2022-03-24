@@ -74,7 +74,7 @@ representations of those nodes. A simplified example might look like:
 }
 ```
 
-The exact contract for these model and source nodes is not currently documented,
+The exact contract for these <Term id="model" /> and source nodes is not currently documented,
 but that will change in the future.
 
 ### Accessing models

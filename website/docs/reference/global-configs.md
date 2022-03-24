@@ -7,7 +7,7 @@ id: "global-configs"
 
 Global configs enable you to fine-tune how dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. They differ from [project configs](reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
 
-Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model.
+Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing <Term id="model" />.
 
 These configs are "global" because they are available for all dbt commands, and because they apply across all projects run on the same machine.
 
@@ -105,7 +105,7 @@ config:
 
 ## Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
+Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other <Term id="model">models</Term> are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 

@@ -14,7 +14,7 @@ We've written a guide for the dbt commands we run in production, over on [Discou
 
 As well as setting up a schedule, there are a number of other things you should consider when setting up dbt to run in production, such as:
 * The complexity involved in creating a new dbt job, or editing an existing one.
-* Setting up notifications if a step within your job returns an error code (e.g. a model cannot be built, or a test fails).
+* Setting up notifications if a step within your job returns an error code (e.g. a <Term id="model" /> cannot be built, or a test fails).
 * Accessing logs to help debug any issues.
 * Pulling the latest version of your git repo before running dbt (i.e. continuous deployment).
 * Running your dbt project before merging code into master (i.e. continuous integration).

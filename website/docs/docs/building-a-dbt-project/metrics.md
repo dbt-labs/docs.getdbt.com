@@ -95,7 +95,7 @@ metrics:
 | Field       | Description                                                 | Example                         | Required? |
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
-| model       | The dbt model that powers this metric                       | dim_customers                   | yes       |
+| <Term id="model" />       | The dbt model that powers this metric                       | dim_customers                   | yes       |
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | type        | The type of calculation to perform when evaluating a metric | count_distinct                  | yes       |
@@ -133,7 +133,7 @@ Note that `value` must be defined as a string in YAML, because it will be compil
 
 - Should metrics be defined on top of more strongly typed **attributes**, rather than columns? [dbt-core#4090](https://github.com/dbt-labs/dbt-core/issues/4090)
 - Should metrics include support for joins? How should dbt know about foreign-key relationships between models? [dbt-core#4125](https://github.com/dbt-labs/dbt-core/issues/4125)
-- Should metrics inherit configurations from the models on which they are defined? Should it be possible to define metrics directly on models/columns, like tests?
+- Should metrics inherit configurations from the models on which they are defined? Should it be possible to define metrics directly on <Term id="model">models</Term>/columns, like tests?
 
 These are just a start! We welcome you to check out open issues on GitHub, and join the conversation.
 

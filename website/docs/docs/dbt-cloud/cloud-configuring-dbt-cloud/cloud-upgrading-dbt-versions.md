@@ -200,7 +200,7 @@ If you believe your project might be affected, read more details in the migratio
 <br></br>
 
 - Do you use the custom `generate_schema_name` macro?
-- Do you use `partition_by` config for BigQuery models?
+- Do you use `partition_by` config for BigQuery <Term id="model">models</Term>?
 
 If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-16-0).
 </details>

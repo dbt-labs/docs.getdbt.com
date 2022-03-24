@@ -15,7 +15,7 @@ dbt also enables analysts to work more like software engineers, in line with the
 
 ### dbt Projects
 A dbt project is a directory of `.sql` and .`yml` files. The directory must contain at a minimum:
-* Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
+* <Term id="model">Models</Term>: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
 * A project file: a `dbt_project.yml` file which configures and defines your dbt project.
 
 Projects typically contain a number of other resources as well, including tests, snapshots, and seed files (see [below](#what-else-can-dbt-do)).
@@ -31,7 +31,7 @@ Want to check out a sample project? Have a look at our [Jaffle Shop](https://git
 ### Database Connections
 dbt connects to your data warehouse to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [docs](available-adapters)).
 
-When you define your connection, you’ll also be able to specify the target schema where dbt should create your models as tables and views. See [Managing environments](managing-environments)  for more information on picking target schema names.
+When you define your connection, you’ll also be able to specify the target schema where dbt should create your <Term id="model">models</Term> as tables and views. See [Managing environments](managing-environments)  for more information on picking target schema names.
 
 
 ### dbt Commands
@@ -187,4 +187,4 @@ dbt is appropriate for anyone who interacts with a data warehouse. It can be use
 
 For dbt users that are new to programming, you may also need to spend some time getting to know the basics of the command line, and familiarizing yourself with git.
 
-To make full use of dbt, it may also be beneficial to know some programming basics, such as `for` loops and `if` statements, to use Jinja effectively in your models.
+To make full use of dbt, it may also be beneficial to know some programming basics, such as `for` loops and `if` statements, to use Jinja effectively in your <Term id="model">models</Term>.

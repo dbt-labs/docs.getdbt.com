@@ -3,7 +3,7 @@ title: Model configurations
 ---
 
 <Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure models in all `.yml` files
+    - **v0.21.0** introduced the `config` property, thereby allowing you to configure <Term id="model">models</Term> in all `.yml` files
 </Changelog>
 
 ## Related documentation

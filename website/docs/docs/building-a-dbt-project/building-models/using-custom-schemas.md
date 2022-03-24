@@ -4,7 +4,7 @@ id: "using-custom-schemas"
 ---
 
 ## What is a custom schema?
-By default, all dbt models are built in the schema specified in your target. In dbt projects with lots of models, it may be useful to instead build some models in schemas other than your target schema – this can help logically group models together.
+By default, all dbt <Term id="model">models</Term> are built in the schema specified in your target. In dbt projects with lots of models, it may be useful to instead build some models in schemas other than your target schema – this can help logically group models together.
 
 For example, you may wish to:
 * Group models based on the business unit using the model, creating schemas such as `core`, `marketing`, `finance` and `support`; or,
@@ -23,7 +23,7 @@ You can use **custom schemas** in dbt to build models in a schema other than you
 
 ## How do I use custom schemas?
 Use the `schema` configuration key to specify a custom schema for a model. As with any configuration, you can either:
-* apply this configuration to a specific model by using a config block within a model, or
+* apply this configuration to a specific <Term id="model" /> by using a config block within a model, or
 * apply it to a subdirectory of models by specifying it in your `dbt_project.yml` file
 
 <File name='orders.sql'>
@@ -155,7 +155,7 @@ Globally-scoped variables and variables defined on the command line with
 
 ## Managing environments
 
-In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
+In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for <Term id="model">models</Term>. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
  - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.
  - **ci**:  A [continuous integration](cloud-enabling-continuous-integration-with-github) environment running on Pull Requests in GitHub, GitLab, etc.
  - **prod**: The production deployment of your dbt project, eg. in dbt Cloud, Airflow, or [similar](running-dbt-in-production)

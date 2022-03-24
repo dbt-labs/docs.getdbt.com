@@ -30,7 +30,7 @@ We've made our [style guide](https://github.com/dbt-labs/corp/blob/master/dbt_st
 
 ## Best practices in dbt projects
 ### Use the ref function
-The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that models are built in the correct order. It also ensures that your current model selects from upstream tables and views in the same environment that you're working in.
+The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that <Term id="model">models</Term> are built in the correct order. It also ensures that your current <Term id="model" /> selects from upstream tables and views in the same environment that you're working in.
 Always use the `ref` function when selecting from another model, rather than using the direct relation reference (e.g. `my_schema.my_table`).
 
 ### Limit references to raw data

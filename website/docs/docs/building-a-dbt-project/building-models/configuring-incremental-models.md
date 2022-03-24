@@ -3,7 +3,7 @@ title: "Configuring incremental models"
 id: "configuring-incremental-models"
 ---
 
-## What is an incremental model?
+## What is an incremental <Term id="model" />?
 Incremental models are built as tables in your data warehouse – the first time a model is run, the table is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the table that has already been built (the target table).
 
 Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time dbt ran. As such, on each dbt run, your model gets built incrementally.
@@ -104,7 +104,7 @@ group by 1
 
 </File>
 
-Building this model incrementally without the `unique_key` parameter would result in multiple rows in the target table for a single day – one row for each time dbt runs on that day. Instead, the inclusion of the `unique_key` parameter ensures the existing row is updated instead.
+Building this <Term id="model" /> incrementally without the `unique_key` parameter would result in multiple rows in the target table for a single day – one row for each time dbt runs on that day. Instead, the inclusion of the `unique_key` parameter ensures the existing row is updated instead.
 
 ## How do I rebuild an incremental model?
 If your incremental model logic has changed, the transformations on your new rows of data may diverge from the historical transformations, which are stored in your target table. In this case, you should rebuild your incremental model.
@@ -206,7 +206,7 @@ the reliability of your `unique_key`, or the availability of certain features.
 ### Configuring incremental strategy
 
 The `incremental_strategy` config can either be specified in specific models, or
-for all models in your `dbt_project.yml` file:
+for all <Term id="model">models</Term> in your `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 

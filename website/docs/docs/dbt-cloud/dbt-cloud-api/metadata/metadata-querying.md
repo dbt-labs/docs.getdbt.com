@@ -30,7 +30,7 @@ The `<query>` body should be a JSON string in the format:
 
 Every query will rely on a *jobID*.  You can get the jobID by clicking into the relevant job in dbt Cloud and observing the URL. In this example URL, the jobID would be 917: `https://cloud.getdbt.com/#/accounts/1/projects/665/jobs/917/`
 
-There are several illustrative example queries in this documentation (examples of queries on the Model node, [here](/docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model).
+There are several illustrative example queries in this documentation (examples of queries on the <Term id="model">Model</Term> node, [here](/docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model).
 
 ## GraphiQL
 You can also experiment and run queries directly in the [GraphiQL interface](https://metadata.cloud.getdbt.com/graphiql), which is convenient for exploration. On the right hand side, there is a document explorer where you can see all possible nodes and fields.  Below is an example of what a query looks like in GraphiQL.  Note that you must authenticate via bearer auth with your token.

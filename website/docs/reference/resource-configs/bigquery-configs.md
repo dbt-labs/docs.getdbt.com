@@ -200,7 +200,7 @@ as (
 
 </Changelog>
 
-If your model has `partition_by` configured, you may optionally specify two additional configurations:
+If your <Term id="model" /> has `partition_by` configured, you may optionally specify two additional configurations:
 
 - `require_partition_filter` (boolean): If set to `true`, anyone querying this model _must_ specify a partition filter, otherwise their query will fail. This is recommended for very large tables with obvious partitioning schemes, such as event streams grouped by day. Note that this will affect other dbt models or tests that try to select from this model, too.
 

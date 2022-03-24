@@ -11,7 +11,7 @@ id: "building-models"
 
 ## Getting started
 
-:::info Building your first models
+:::info Building your first <Term id="model">models</Term>
 
 If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models.
 
@@ -152,7 +152,7 @@ You can learn more about configurations in the [reference docs](model-configs).
 <FAQ src="available-configurations" />
 
 
-## Building dependencies between models
+## Building dependencies between <Term id="model">models</Term>
 By using the [`ref` function](ref) in the place of table names in a query, you can build dependencies between models. Use the name of another model as the argument for `ref`.
 
 <Tabs
@@ -251,7 +251,7 @@ dbt uses the `ref` function to:
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 
 ## Testing and documenting models
-You can also document and test models — skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
+You can also document and test <Term id="model">models</Term> — skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
 
 
 ## Additional FAQs

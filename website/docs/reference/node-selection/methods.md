@@ -212,7 +212,7 @@ The `state` method is used to select nodes by comparing them against a previous 
 </VersionBlock>
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
-- `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
+- `state:modified.body`: Changes to node body (e.g. <Term id="model" /> SQL, seed values)
 - `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`
 - `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level

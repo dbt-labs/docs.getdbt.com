@@ -16,7 +16,7 @@ models:
 </File>
 
 ## Definition
-The name of the model you are declaring properties for. Must match the _filename_ of a model.
+The name of the <Term id="model" /> you are declaring properties for. Must match the _filename_ of a model.
 
 ## Default
 

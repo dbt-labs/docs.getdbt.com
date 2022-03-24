@@ -10,7 +10,7 @@ To-do:
 
 ## Configuring tables
 
-When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](model-configs).
+When materializing a <Term id="model" /> as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](model-configs).
 
 | Option  | Description                                        | Required?               | Example                  |
 |---------|----------------------------------------------------|-------------------------|--------------------------|
@@ -20,7 +20,7 @@ When materializing a model as `table`, you may include several optional configs 
 | clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns. | Optional               | `country_code`              |
 | buckets  | The number of buckets to create while clustering | Required if `clustered_by` is specified                | `8`              |
 
-## Incremental models
+## Incremental <Term id="model">models</Term>
 
 <Changelog>
 

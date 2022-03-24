@@ -13,13 +13,13 @@ The values `project` and `database` are interchangeable in BigQuery project conf
 
 ## Configuring custom databases
 
-The logical database that dbt models are built into can be configured using the `database` model configuration. If this configuration is not supplied to a model, then dbt will use the database configured in the active target from your `profiles.yml` file. If the `database` configuration *is* supplied for a model, then dbt will build the model into the configured  database.
+The logical database that dbt <Term id="model">models</Term> are built into can be configured using the `database` model configuration. If this configuration is not supplied to a model, then dbt will use the database configured in the active target from your `profiles.yml` file. If the `database` configuration *is* supplied for a model, then dbt will build the model into the configured  database.
 
 The `database` configuration can be supplied for groups of models in the `dbt_project.yml` file, or for individual models in model SQL files.
 
 ### Configuring database overrides in `dbt_project.yml`:
 
-This config changes all models in the `jaffle_shop` project to be built into a database called `jaffle_shop`.
+This config changes all <Term id="model">models</Term> in the `jaffle_shop` project to be built into a database called `jaffle_shop`.
 
 <File name='dbt_project.yml'>
 
@@ -90,4 +90,4 @@ The default implementation of `generate_database_name` simply uses the supplied 
 
 ### BigQuery
 
-When dbt opens a BigQuery connection, it will do so using the `project_id` defined in your active `profiles.yml` target. This `project_id` will be billed for the queries that are executed in the dbt run, even if some models are configured to be built in other projects.
+When dbt opens a BigQuery connection, it will do so using the `project_id` defined in your active `profiles.yml` target. This `project_id` will be billed for the queries that are executed in the dbt run, even if some <Term id="model">models</Term> are configured to be built in other projects.

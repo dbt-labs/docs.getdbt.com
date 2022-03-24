@@ -21,7 +21,7 @@ To learn more about changing the way that dbt generates a relation's `schema`, r
 
 ## Usage
 
-### Models
+### <Term id="model">Models</Term>
 
 Configure groups of models from the `dbt_project.yml` file.
 

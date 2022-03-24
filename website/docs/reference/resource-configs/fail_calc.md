@@ -16,7 +16,7 @@ Most often, this is the count of rows returned by the test query: the default va
 
 Most tests do not use the `fail_calc` config, preferring to return a count of failing rows. For the tests that do, the most common place to set the `fail_calc` config is right within a generic test block, alongside its query definition. All the same, `fail_calc` can be set in all the same places as other configs.
 
-For instance, you can configure a `unique` test to return `sum(n_records)` instead of `count(*)` as the failure calculation: that is, the number of rows in the model containing a duplicated column value, rather than the number of distinct column values that are duplicated.
+For instance, you can configure a `unique` test to return `sum(n_records)` instead of `count(*)` as the failure calculation: that is, the number of rows in the <Term id="model" /> containing a duplicated column value, rather than the number of distinct column values that are duplicated.
 
 <Tabs
   defaultValue="specific"

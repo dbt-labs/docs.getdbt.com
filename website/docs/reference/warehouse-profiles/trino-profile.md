@@ -62,7 +62,7 @@ trino:
 
 ## Incremental models
 
-The incremental strategy supported by the adapter is to append new records without updating/overwriting any existing data from the target model.
+The incremental strategy supported by the adapter is to append new records without updating/overwriting any existing data from the target <Term id="model" />.
 
 ## Caveats
 

@@ -51,7 +51,7 @@ can override schema test definitions
 
 ### Database-specific
 - Specify IAM profile when connecting to Redshift
-- Snowflake query tags at connection and model level
+- Snowflake query tags at connection and <Term id="model" /> level
 - Impersonate a BigQuery service account when connecting via oauth
 - Adding policy tags to BigQuery columns
 - Configure time-to-live for BigQuery tables

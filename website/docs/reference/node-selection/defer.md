@@ -11,7 +11,7 @@ title: "Defer"
 
 **N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/fishtown-analytics/dbt/issues/2968).
 
-Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
+Defer is a powerful feature that makes it possible to run a subset of <Term id="model">models</Term> or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
 Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
 ### Usage
@@ -35,7 +35,7 @@ $ dbt test --models [...] --defer --state path/to/artifacts
 </VersionBlock>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
-1. Is the referenced node included in the model selection criteria of the current run?
+1. Is the referenced node included in the <Term id="model" /> selection criteria of the current run?
 2. Does the reference node exist as a database object in the current environment?
 
 If the answer to both is **no**—a node is not included _and_ it does not exist as a database object in the current environment—references to it will use the other namespace instead, provided by the state manifest.

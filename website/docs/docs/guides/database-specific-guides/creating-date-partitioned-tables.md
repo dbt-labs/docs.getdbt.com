@@ -12,7 +12,7 @@ The functionality described below was introduced in dbt Core v0.10 (March 2018).
 
 dbt supports the creation of [date partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables) in BigQuery.
 
-To configure a dbt model as a date partitioned table, use the `materialized='table'` model configuration in conjunction with a list of `partitions`. dbt will execute your model query once for each specified partition. For example:
+To configure a dbt <Term id="model" /> as a date partitioned table, use the `materialized='table'` model configuration in conjunction with a list of `partitions`. dbt will execute your model query once for each specified partition. For example:
 
 <File name='partitioned.sql'>
 

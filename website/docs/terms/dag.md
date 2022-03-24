@@ -7,7 +7,7 @@ hoverSnippet: A "graph" is a structure in which some pairs of objects are in som
 
 A "graph" is a structure in which some pairs of objects are in some sense related.
 
-dbt build a DAG (Directed Acyclic Graph) based on the interdependencies between models (which represent the nodes of the graph), and edges (which represent the lines of the graph). These interdependencies are are defined by ```ref``` and ```source``` functions in your code. A model or raw source specified in one of these functions is a known antecedent of the current model, so when you save in Cloud IDE or run a command in CLI, dbt will compile your project and log these interdependencies.
+dbt build a DAG (Directed Acyclic Graph) based on the interdependencies between models (which represent the nodes of the graph), and edges (which represent the lines of the graph). These interdependencies are are defined by ```ref``` and ```source``` functions in your code. A <Term id="model" /> or raw source specified in one of these functions is a known antecedent of the current model, so when you save in Cloud IDE or run a command in CLI, dbt will compile your project and log these interdependencies.
 
 The first word, "directed", means there is an inherent order in which the data must flow. When dbt runs, models are executed in the order defined by the DAG. 
 

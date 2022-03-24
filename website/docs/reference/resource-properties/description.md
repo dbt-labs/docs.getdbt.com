@@ -150,7 +150,7 @@ macros:
 
 ## Definition
 A user-defined description. Can be used to document:
-- a model, and model columns
+- a <Term id="model" />, and model columns
 - sources, source tables, and source columns
 - seeds, and seed columns
 - snapshots, and snapshot columns

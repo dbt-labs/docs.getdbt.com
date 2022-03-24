@@ -38,7 +38,7 @@ select ...
 
 </File>
 
-The configured model(s) will not full-refresh when `dbt run --full-refresh` is invoked.
+The configured <Term id="model">model(s)</Term> will not full-refresh when `dbt run --full-refresh` is invoked.
 
 </TabItem>
 

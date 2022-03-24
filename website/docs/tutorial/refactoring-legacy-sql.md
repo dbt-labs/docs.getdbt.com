@@ -4,7 +4,7 @@ id: refactoring-legacy-sql
 description: This tutorial walks through refactoring a long SQL query (perhaps from a stored procedure) into modular dbt data models.
 ---
 
-You may have already learned how to build dbt models from scratch. 
+You may have already learned how to build dbt <Term id="model">models</Term> from scratch. 
 
 But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt. 
 

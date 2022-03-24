@@ -1,7 +1,7 @@
 ---
 title: How do I specify column types?
 ---
-Simply cast the column to the correct type in your model:
+Simply cast the column to the correct type in your <Term id="model" />:
 
 ```sql
 select

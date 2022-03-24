@@ -3,7 +3,7 @@ title: Model properties
 ---
 
 <Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure models in all `.yml` files
+    - **v0.21.0** introduced the `config` property, thereby allowing you to configure <Term id="model">models</Term> in all `.yml` files
 </Changelog>
 
 Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](model-paths)).

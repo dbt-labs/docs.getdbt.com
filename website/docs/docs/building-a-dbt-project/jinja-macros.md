@@ -27,7 +27,7 @@ Jinja can be used in any SQL in a dbt project, including [models](building-model
 
 :::info Ready to get started with Jinja and macros?
 
-Check out the [tutorial on using Jinja](using-jinja) for step-by-step example of using Jinja in a model, and turning it into a macro!
+Check out the [tutorial on using Jinja](using-jinja) for step-by-step example of using Jinja in a <Term id="model" />, and turning it into a macro!
 
 :::
 
@@ -74,7 +74,7 @@ You can recognize Jinja based on the delimiters the language uses, which we refe
 - **Statements `{% ... %}`**: Statements are used for control flow, for example, to set up `for` loops and `if` statements, or to define macros.
 -  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from compiling.
 
-When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
+When used in a dbt <Term id="model" />, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using dbt Cloud:** Click the compile button to see the compiled SQL in the Compiled SQL pane
 * **Using the dbt CLI:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
@@ -167,7 +167,7 @@ Once you learn the power of Jinja, it's common to want to abstract every repeate
 Writing a macro for the first time? Check whether we've open sourced one in [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) that you can use, and save yourself some time!
 
 ### Set variables at the top of a model
-`{% set ... %}` can be used to create a new variable, or update an existing one. We recommend setting variables at the top of a model, rather than hardcoding it inline. This is a practice borrowed from many other coding languages, since it helps with readability, and comes in handy if you need to reference the variable in two places:
+`{% set ... %}` can be used to create a new variable, or update an existing one. We recommend setting variables at the top of a <Term id="model" />, rather than hardcoding it inline. This is a practice borrowed from many other coding languages, since it helps with readability, and comes in handy if you need to reference the variable in two places:
 
 
 ```sql

@@ -6,7 +6,7 @@ id: "var"
 Variables can be passed from your `dbt_project.yml` file into models during compilation.
 These variables are useful for configuring packages for deployment in multiple environments, or defining values that should be used across multiple models within a package.
 
-To add a variable to a model, use the `var()` function:
+To add a variable to a <Term id="model" />, use the `var()` function:
 
 <File name='my_model.sql'>
 

@@ -7,7 +7,7 @@ id: "execute"
 
 When you execute a `dbt compile` or `dbt run` command, dbt:
 
-1. Reads all of the files in your project and generates a "manifest" comprised of models, tests, and other graph nodes present in your project. During this phase, dbt uses the `ref` statements it finds to  generate the DAG for your project. **No SQL is run during this phase**, and `execute == False`.
+1. Reads all of the files in your project and generates a "manifest" comprised of <Term id="model">models</Term>, tests, and other graph nodes present in your project. During this phase, dbt uses the `ref` statements it finds to  generate the DAG for your project. **No SQL is run during this phase**, and `execute == False`.
 2. Compiles (and runs) each node (eg. building models, or running tests). **SQL is run during this phase**, and `execute == True`.
 
 Any Jinja that relies on a result being returned from the database will error during the parse phase. For example, this SQL will return an error:

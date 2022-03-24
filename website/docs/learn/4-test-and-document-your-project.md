@@ -4,7 +4,7 @@ id: test-and-document-your-project
 description: Let's test and document our models to build trust in our data.
 ---
 
-## Add tests to your models
+## Add tests to your <Term id="model">models</Term>
 Adding [tests](/docs/building-a-dbt-project/tests) to a project helps validate that your models are working correctly. So let's add some tests to our project!
 
 <CloudCore>
@@ -77,7 +77,7 @@ When you run `dbt test`, dbt iterates through your YAML files, and constructs a 
 <FAQ src="recommended-tests" />
 <FAQ src="when-to-test" />
 
-## Document your models
+## Document your <Term id="model">models</Term>
 Adding [documentation](/docs/building-a-dbt-project/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
 
 <CloudCore>

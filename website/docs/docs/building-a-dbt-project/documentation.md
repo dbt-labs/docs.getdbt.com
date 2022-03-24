@@ -13,7 +13,7 @@ id: "documentation"
 
 ## Overview
 
-Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them.
+Good documentation for your dbt <Term id="model">models</Term> will help downstream consumers discover and understand the datasets which you curate for them.
 
 dbt provides a way to generate documentation for your dbt project and render it as a website. The documentation for your project includes:
 * **Information about your project**: including model code, a DAG of your project, any tests you've added to a column, and more.
@@ -175,7 +175,7 @@ up to page views and sessions.
 </File>
 
 ## Navigating the documentation site
-Using the docs interface, you can navigate to the documentation for a specific model. That might look something like this:
+Using the docs interface, you can navigate to the documentation for a specific <Term id="model" />. That might look something like this:
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/f2221dc-Screen_Shot_2018-08-14_at_6.29.55_PM.png" title="Auto-generated documentation for a dbt model"/>
 
@@ -185,7 +185,7 @@ From a docs page, you can click the green button in the bottom-right corner of t
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ec77c45-Screen_Shot_2018-08-14_at_6.31.56_PM.png" title="Opening the DAG mini-map"/>
 
-In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full lineage for our model. This lineage is filterable using the `--select` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](node-selection/syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
+In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full lineage for our <Term id="model" />. This lineage is filterable using the `--select` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](node-selection/syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ac97fba-Screen_Shot_2018-08-14_at_6.35.14_PM.png" title="The full lineage for a dbt model"/>
 

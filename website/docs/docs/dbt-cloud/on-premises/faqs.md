@@ -4,7 +4,7 @@ title: Customer Managed FAQs
 
 :::note
 
-We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) <Term id="model" /> hosted in the cloud
 
 :::
 

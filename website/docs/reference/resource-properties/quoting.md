@@ -67,7 +67,7 @@ sources:
 
 </File>
 
-In a downstream model:
+In a downstream <Term id="model" />:
 
 <File name='models/<filename>.yml'>
 

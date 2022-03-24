@@ -44,7 +44,7 @@ models:
 
 The `meta` config can also be defined:
 - under the `models` config block in `dbt_project.yml`
-- in a `config()` Jinja macro within a model's SQL file
+- in a `config()` Jinja macro within a <Term id="model">model's</Term> SQL file
 
 See [configs and properties](configs-and-properties) for details.
 
@@ -186,7 +186,7 @@ Depending on the resource you're configuring, `meta` may be available within the
 </Changelog>
 
 ## Examples
-### Designate a model owner
+### Designate a <Term id="model" /> owner
 Additionally, indicate the maturity of a model using a `model_maturity:` key.
 
 <File name='models/schema.yml'>

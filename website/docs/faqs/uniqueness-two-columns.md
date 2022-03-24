@@ -19,7 +19,7 @@ Consider an orders table that contains records from multiple countries, and the 
 
 Here are some approaches:
 
-#### 1. Create a unique key in the model and test that
+#### 1. Create a unique key in the <Term id="model" /> and test that
 
 <File name='models/orders.sql'>
 

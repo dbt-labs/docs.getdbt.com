@@ -100,7 +100,7 @@ select ...
 </Tabs>
 
 ## Definition
-A SQL statement (or list of SQL statements) to be run before or after a model, seed or snapshot is built.
+A SQL statement (or list of SQL statements) to be run before or after a <Term id="model" />, seed or snapshot is built.
 
 Pre- and post-hooks can also call macros that return SQL statements.
 

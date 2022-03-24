@@ -3,9 +3,9 @@ title: What other model configurations are there?
 ---
 You can also configure:
 * [tags](resource-configs/tags) to support easy categorization and graph selection
-* [custom schemas](resource-configs/schema) to split your models across multiple schemas
+* [custom schemas](resource-configs/schema) to split your <Term id="model">models</Term> across multiple schemas
 * [aliases](resource-configs/alias) if your view/table name should differ from the filename
-* Snippets of SQL to run at the start or end of a model, known as [hooks](hooks-operations)
+* Snippets of SQL to run at the start or end of a <Term id="model" />, known as [hooks](hooks-operations)
 * Warehouse-specific configurations for performance (e.g. `sort` and `dist` keys on Redshift, `partitions` on BigQuery)
 
 Check out the docs on [model configurations](model-configs) to learn more.

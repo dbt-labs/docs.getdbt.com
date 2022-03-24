@@ -10,7 +10,7 @@ id: "build"
 </Changelog>
 
 The `dbt build` command will:
-- run models
+- run <Term id="model">models</Term>
 - test tests
 - snapshot snapshots
 - seed seeds

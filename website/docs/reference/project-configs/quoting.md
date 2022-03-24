@@ -111,7 +111,7 @@ Set all quoting configs to `False`. This means that you cannot use reserved word
 
 #### Explanation:
 
-Whereas most databases will _lowercase_ unquoted identifiers, Snowflake will _uppercase_ unquoted identifiers. If a model name is lowercased _and quoted_, then it cannot be referred to without quotes! Check out the example below for more information.
+Whereas most databases will _lowercase_ unquoted identifiers, Snowflake will _uppercase_ unquoted identifiers. If a <Term id="model" /> name is lowercased _and quoted_, then it cannot be referred to without quotes! Check out the example below for more information.
 
 <File name='snowflake_casing.sql'>
 

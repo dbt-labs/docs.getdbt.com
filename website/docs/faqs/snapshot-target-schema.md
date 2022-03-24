@@ -4,11 +4,11 @@ title: Why is there only one `target_schema` for snapshots?
 
 Snapshots build into the same `target_schema`, no matter who is running them.
 
-In comparison, models build into a separate schema for each user — this helps maintain separate development and production environments.
+In comparison, <Term id="model">models</Term> build into a separate schema for each user — this helps maintain separate development and production environments.
 
 So, why the difference?
 
-Let's assume you are running your snapshot regularly. If the model had a different target in `dev` (e.g. `dbt_claire`) compared to `prod` (e.g. `analytics`), when you `ref` the model in `dev`, dbt would select from a snapshot that has not been run regularly. This can make it hard to build models since the data differs from prod.
+Let's assume you are running your snapshot regularly. If the <Term id="model" /> had a different target in `dev` (e.g. `dbt_claire`) compared to `prod` (e.g. `analytics`), when you `ref` the model in `dev`, dbt would select from a snapshot that has not been run regularly. This can make it hard to build models since the data differs from prod.
 
 Instead, in the models that `ref` your snapshots, it makes more sense to `select` from the production version of your snapshot, even when developing models. In this way, snapshot tables are more similar to source data than they are to proper dbt models.
 

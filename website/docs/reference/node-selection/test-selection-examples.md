@@ -3,8 +3,8 @@ title: "Test selection examples"
 ---
 
 Test selection works a little differently from other resource selection. This makes it very easy to:
-* run tests on a particular model
-* run tests on all models in a subdirectory
+* run tests on a particular <Term id="model" />
+* run tests on all <Term id="model">models</Term> in a subdirectory
 * run tests on all models upstream / downstream of a model, etc.
 
 Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, etc.

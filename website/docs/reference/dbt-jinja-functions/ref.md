@@ -5,7 +5,7 @@ id: "ref"
 
 ## Overview
 
-The most important function in dbt is `ref()`; it's impossible to build even moderately complex models without it. `ref()` is how you reference one model within another. This is a very common behavior, as typically models are built to be "stacked" on top of one another. Here is how this looks in practice:
+The most important function in dbt is `ref()`; it's impossible to build even moderately complex models without it. `ref()` is how you reference one <Term id="model" /> within another. This is a very common behavior, as typically models are built to be "stacked" on top of one another. Here is how this looks in practice:
 
 <File name='model_a.sql'>
 

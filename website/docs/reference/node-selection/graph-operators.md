@@ -3,7 +3,7 @@ title: "Graph operators"
 ---
 
 ### The "plus" operator
-If placed at the front of the model selector, `+` will select all parents of the selected model. If placed at the end of the string, `+` will select all children of the selected model.
+If placed at the front of the <Term id="model" /> selector, `+` will select all parents of the selected model. If placed at the end of the string, `+` will select all children of the selected model.
 
 <VersionBlock firstVersion="0.21">
 

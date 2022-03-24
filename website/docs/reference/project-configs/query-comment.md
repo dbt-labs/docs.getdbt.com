@@ -26,7 +26,7 @@ query-comment:
 </File>
 
 ## Definition
-A string to inject as a comment in each query that dbt runs against your database. This comment can be used to attribute SQL statements to specific dbt resources like models and tests.
+A string to inject as a comment in each query that dbt runs against your database. This comment can be used to attribute SQL statements to specific dbt resources like <Term id="model">models</Term> and tests.
 
 The `query-comment` configuration can also call a macro that returns a string.
 

@@ -10,7 +10,7 @@ title: "Tests"
 
 ## Getting started
 
-Tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
+Tests are assertions you make about your <Term id="model">models</Term> and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
 
 <Changelog>
 
@@ -68,7 +68,7 @@ Certain tests are generic: they can be reused over and over again. A generic tes
 {% endtest %}
 ```
 
-You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
+You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the test "generic": it can be defined on as many columns as you like, across as many <Term id="model">models</Term> as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
 
 :::info
 If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](configs-and-properties).

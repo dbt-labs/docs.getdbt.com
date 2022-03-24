@@ -63,7 +63,7 @@ from validation_errors
 
 If this `select` statement returns zero records, then every record in the supplied `model` argument is even! If a nonzero number of records is returned instead, then at least one record in `model` is odd, and the test has failed.
 
-To use this generic test, specify it by name in the `tests` property of a model, source, snapshot, or seed:
+To use this generic test, specify it by name in the `tests` property of a <Term id="model" />, source, snapshot, or seed:
 
 <File name='models/<filename>.yml'>
 

@@ -11,7 +11,7 @@ id: "using-sources"
 
 ## Using sources
 Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
-- select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
+- select from source tables in your <Term id="model">models</Term> using the `{{ source() }}` function, helping define the lineage of your data
 - test your assumptions about your source data
 - calculate the freshness of your source data
 
@@ -41,7 +41,7 @@ If you're not already familiar with these files, be sure to check out [the docum
 
 ### Selecting from a source
 
-Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](dbt-jinja-functions/source).
+Once a source has been defined, it can be referenced from a <Term id="model" /> using the [`{{ source()}}` function](dbt-jinja-functions/source).
 
 
 <File name='models/orders.sql'>
@@ -84,7 +84,7 @@ You can also:
 - Add tests to sources
 - Add descriptions to sources, that get rendered as part of your documentation site
 
-These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](building-a-dbt-project/tests) and [documentation](documentation)).
+These should be familiar concepts if you've already added tests and descriptions to your <Term id="model">models</Term> (if not check out the guides on [testing](building-a-dbt-project/tests) and [documentation](documentation)).
 
 <File name='models/<filename>.yml'>
 

@@ -24,7 +24,7 @@ Service tokens can now be assigned granular permissions to enforce least privile
 
 
 ## dbt Cloud v1.1.44 (February 2nd, 2022)
-Love the DAG in the IDE as much as we do? Now when you click on a node in the DAG, the model or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic functionality throughout the year.
+Love the DAG in the IDE as much as we do? Now when you click on a node in the DAG, the <Term id="model" /> or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic functionality throughout the year.
 
 #### Performance improvements and enhancements
 
@@ -177,7 +177,7 @@ We're heads down working on a handful of new features that we're going to share 
 
 
 ## dbt Cloud v1.1.28 (June 9, 2021)
-We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab. Additionally, all developers should test out Slim CI which will speed up their model builds.
+We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab. Additionally, all developers should test out Slim CI which will speed up their <Term id="model" /> builds.
 
 #### New products and features
 
@@ -1175,7 +1175,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 - Make `retries` profile configuration for BigQuery connections optional
 - Support `retries` profile configuration for BigQuery connections (new in dbt v0.15.1)
 - Replace Gravatar images with generic person icons in the top navbar
-- Remove deprecated account subscription models
+- Remove deprecated account subscription <Term id="model">models</Term>
 - Remove external JS dependencies
 
 #### Removed

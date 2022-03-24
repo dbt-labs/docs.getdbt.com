@@ -13,7 +13,7 @@ We invest heavily in our docs, so this should be the first place you turn! If yo
 We have a handy guide on [debugging errors](debugging-errors) to help out! This guide also helps explain why errors occur, and which docs you might need to search for help.
 
 #### Search for answers using your favorite search engine
-We're committed to making more errors searchable, so it's worth checking if there's a solution already out there! Further, some errors related to installing dbt, the SQL in your models, or getting yaml right, are errors that are not-specific to dbt, so there may be other resources to cehck.
+We're committed to making more errors searchable, so it's worth checking if there's a solution already out there! Further, some errors related to installing dbt, the SQL in your <Term id="model">models</Term>, or getting yaml right, are errors that are not-specific to dbt, so there may be other resources to cehck.
 
 #### Experiment!
 If the question you have is "What happens when I do `X`", try doing `X` and see what happens! Assuming you have a solid dev environment set up, making mistakes in development won't affect your end users
@@ -44,7 +44,7 @@ We use a number of different mediums to share information
 - If you think you've found a bug, please report it on the relevant GitHub repo (e.g. [dbt repo](https://github.com/dbt-labs/dbt), [dbt-utils repo](https://github.com/dbt-labs/dbt-utils))
 - If you are looking for an opinionated answer (e.g. "What's the best approach to X?", "Why is Y done this way?"), then, feel free to join our [Slack community](https://community.getdbt.com/) and ask it in the correct channel:
     * **#beginners:** A great channel if you're getting started with dbt and want to understand how it works.
-    * **#modeling:** This channel is most useful when wanting to ask questions about data model design, SQL patterns, and testing.
+    * **#modeling:** This channel is most useful when wanting to ask questions about data <Term id="model" /> design, SQL patterns, and testing.
     * **#suggestions:** Got an idea for dbt? This is the place!
     * Other channels: We're adding new channels all the time — please take a moment to browse the channels to see if there is a better fit
 

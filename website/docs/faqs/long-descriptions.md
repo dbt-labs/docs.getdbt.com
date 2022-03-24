@@ -1,7 +1,7 @@
 ---
 title: How do I write long-form explanations in my descriptions?
 ---
-If you need more than a sentence to explain a model, you can:
+If you need more than a sentence to explain a <Term id="model" />, you can:
 1. Split your description over multiple lines ([yaml docs](https://yaml-multiline.info/)), like so:
 ```yml
 version: 2

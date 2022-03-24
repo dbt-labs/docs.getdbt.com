@@ -13,7 +13,7 @@ dbt's primary interface is its CLI. Using dbt is a combination of editing code i
 
 # How does dbt work?
 
-dbt has two core workflows: building data models and testing data models. (We call any transformed view of raw data a data model.)
+dbt has two core workflows: building data <Term id="model">models</Term> and testing data models. (We call any transformed view of raw data a data model.)
 
 To create a data model, an analyst simply writes a SQL `SELECT` statement. dbt then takes that statement and builds it in the database, materializing it as either a view or a table. This model can then be queried by other models or by other analytics tools.
 
@@ -24,7 +24,7 @@ To test a data model, an analyst asserts something to be true about the underlyi
 One dbt user has this to say: *“At this point when I have a new question, I can answer it 10-100x faster than I could before.”*  Here’s how:
 
 - dbt allows analysts avoid writing boilerplate DML and DDL: managing transactions, dropping tables, and managing schema changes. All business logic is expressed in SQL `SELECT` statements, and dbt takes care of materialization.
-- dbt creates leverage. Instead of starting at the raw data with every analysis, analysts instead build up reusable data models that can be referenced in subsequent work.
+- dbt creates leverage. Instead of starting at the raw data with every analysis, analysts instead build up reusable data <Term id="model">models</Term> that can be referenced in subsequent work.
 - dbt includes optimizations for data model materialization, allowing analysts to dramatically reduce the time their queries take to run.
 
 There are many other optimizations in the dbt to help you work quickly: macros, hooks, and package management are all accelerators.
@@ -34,7 +34,7 @@ There are many other optimizations in the dbt to help you work quickly: macros, 
 It does. Here’s how:
 
 - Writing SQL frequently involves a lot of copy-paste, which leads to errors when logic changes. With dbt, analysts don’t need to copy-paste. Instead, they build reusable data models that then get pulled into subsequent models and analysis. Change a model once and everything that relies on it reflects that change.
-- dbt allows subject matter experts to publish the canonical version of a particular data model, encapsulating all complex business logic. All analysis on top of this model will incorporate the same business logic without needing to understand it.
+- dbt allows subject matter experts to publish the canonical version of a particular data model, encapsulating all complex business logic. All analysis on top of this <Term id="model" /> will incorporate the same business logic without needing to understand it.
 - dbt plays nicely with source control. Using dbt, analysts can use mature source control processes like branching, pull requests, and code reviews.
 - dbt makes it easy and fast to write functional tests on the underlying data. Many analytic errors are caused by edge cases in the data: testing helps analysts find and handle those edge cases.
 
