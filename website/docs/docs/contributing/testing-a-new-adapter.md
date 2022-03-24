@@ -3,13 +3,13 @@ title: "Testing a new adapter"
 id: "testing-a-new-adapter"
 ---
 
-<VersionBlock lastVersion="1.0">
+:::info
 
-The previous way to test dbt adapter functionality was via a packaged suite of tests, [`pytest-dbt-adapter`](https://github.com/dbt-labs/dbt-adapter-tests). We've since deprecated that approach in favor of the new testing framework outlined in this document.
+Previously, we offered a packaged suite of tests for dbt adapter functionality: [`pytest-dbt-adapter`](https://github.com/dbt-labs/dbt-adapter-tests). We are deprecating that suite, in favor of the newer testing framework outlined in this document. The rest of this document assumes that your plugin is compatible with dbt-core v1.1 or newer.
 
-</VersionBlock>
+:::
 
-dbt-core offers a standard framework for running pre-built functional tests, and defining new ones.
+dbt-core offers a standard framework for running pre-built functional tests, and for defining new ones.
 
 The core testing framework is built using `pytest`, a mature and standard library for testing Python projects. It assumes a basic level of familiarity with the foundational concepts in `pytest`, such as fixtures. If this is your first time using `pytest`, we recommend you read the documentation: https://docs.pytest.org/
 
