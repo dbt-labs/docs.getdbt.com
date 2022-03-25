@@ -14,13 +14,11 @@ export default function Term({ id, children = undefined }) {
   const [uniqueID, setUniqueID] = useState(String(Math.random()))
   const [pageReady, setPageReady] = useState(false)
 
+  // Rebuild tooltips on every update
   useEffect(() => {
-    console.log('setting page ready')
     ReactTooltip.rebuild()
     setPageReady(true)
   })
-
-  console.log('rest of code')
 
   const file = require('../../../docs/terms/' + id + '.md')
   if(!file)
