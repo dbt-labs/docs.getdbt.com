@@ -13,7 +13,7 @@ dbt's primary interface is its CLI. Using dbt is a combination of editing code i
 
 # How does dbt work?
 
-dbt has two core workflows: building data <Term id="model">models</Term> and testing data models. (We call any transformed view of raw data a data model.)
+dbt has two core workflows: building data <Term id="model">models</Term> and testing data models. (We call any transformed <Term id="view" /> of raw data a data model.)
 
 To create a data model, an analyst simply writes a SQL `SELECT` statement. dbt then takes that statement and builds it in the database, materializing it as either a view or a table. This model can then be queried by other models or by other analytics tools.
 

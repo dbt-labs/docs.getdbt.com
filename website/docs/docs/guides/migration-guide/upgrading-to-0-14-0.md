@@ -145,7 +145,7 @@ To upgrade this macro (and suppress this warning), add a second argument, `node`
 
 ## Non-Destructive runs
 
-The `--non-destructive` flag was removed from dbt in v0.14.0. This flag existed as a workaround for the lack of late-binding views in Amazon Redshift. With the introduction of the [with no schema binding](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html) clause for Redshift views, non-destructive runs are no longer necessary.
+The `--non-destructive` flag was removed from dbt in v0.14.0. This flag existed as a workaround for the lack of late-binding <Term id="view">views</Term> in Amazon Redshift. With the introduction of the [with no schema binding](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html) clause for Redshift views, non-destructive runs are no longer necessary.
 
 The `--non-destructive` flag was problematic for a few reasons:
 

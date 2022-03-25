@@ -31,7 +31,7 @@ Want to check out a sample project? Have a look at our [Jaffle Shop](https://git
 ### Database Connections
 dbt connects to your data warehouse to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [docs](available-adapters)).
 
-When you define your connection, you’ll also be able to specify the target schema where dbt should create your <Term id="model">models</Term> as tables and views. See [Managing environments](managing-environments)  for more information on picking target schema names.
+When you define your connection, you’ll also be able to specify the target schema where dbt should create your <Term id="model">models</Term> as tables and <Term id="view">views</Term>. See [Managing environments](managing-environments)  for more information on picking target schema names.
 
 
 ### dbt Commands
@@ -111,7 +111,7 @@ Importantly, dbt also uses the `ref` function to determine the sequence in which
 
 dbt builds a directed acyclic graph (DAG) based on the interdepencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
 
-When dbt runs, models are executed in the order specified by the DAG – there’s no need to explicitly define the order of execution of your models. Building models in staged transformations also reduces the need to repeat SQL, as a single transformation (for example, renaming a column) can be shared as a predecessor for a number of downstream models.
+When dbt runs, models are executed in the order specified by the <Term id="dag" /> – there’s no need to explicitly define the order of execution of your models. Building models in staged transformations also reduces the need to repeat SQL, as a single transformation (for example, renaming a column) can be shared as a predecessor for a number of downstream models.
 
 For more information see [Ref](ref).
 

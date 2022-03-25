@@ -5,8 +5,8 @@ id: "materializations"
 
 ## Overview
 Materializations are strategies for persisting dbt <Term id="model">models</Term> in a warehouse. There are four types of materializations built into dbt. They are:
-- table
-- view
+- <Term id="table" />
+- <Term id="view" />
 - incremental
 - ephemeral
 
@@ -97,6 +97,6 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * Operations (e.g. macros called via `dbt run-operation` cannot `ref()` ephemeral nodes)
     * Overuse of the ephemeral materialization can also make queries harder to debug.
 * **Advice:**  Use the ephemeral materialization for:
-    * very light-weight transformations that are early on in your DAG
+    * very light-weight transformations that are early on in your <Term id="dag" />
     * are only used in one or two downstream <Term id="model">models</Term>, and
     * do not need to be queried directly

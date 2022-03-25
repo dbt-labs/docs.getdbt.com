@@ -30,7 +30,7 @@ We've made our [style guide](https://github.com/dbt-labs/corp/blob/master/dbt_st
 
 ## Best practices in dbt projects
 ### Use the ref function
-The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that <Term id="model">models</Term> are built in the correct order. It also ensures that your current <Term id="model" /> selects from upstream tables and views in the same environment that you're working in.
+The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that <Term id="model">models</Term> are built in the correct order. It also ensures that your current <Term id="model" /> selects from upstream tables and <Term id="view">views</Term> in the same environment that you're working in.
 Always use the `ref` function when selecting from another model, rather than using the direct relation reference (e.g. `my_schema.my_table`).
 
 ### Limit references to raw data
@@ -70,7 +70,7 @@ Complex models often include multiple Common Table Expressions (CTEs). In dbt, y
 ### Group your models in directories
 Within your `models/` directory, you can have any number of nested subdirectories. We leverage directories heavily, since using a nested structure within directories makes it easier to:
 * Configure groups of models, by specifying configurations in your `dbt_project.yml` file.
-* Run subsections of your DAG, by using the [model selection syntax](node-selection/syntax).
+* Run subsections of your <Term id="dag" />, by using the [model selection syntax](node-selection/syntax).
 * Communicate modeling steps to collaborators
 * Create conventions around the allowed upstream dependencies of a model, for example, "models in the `marts` directory can only select from other models in the `marts` directory, or from models in the `staging` directory".
 

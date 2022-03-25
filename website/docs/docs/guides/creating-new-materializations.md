@@ -63,7 +63,7 @@ Each of these tasks are explained in sections below.
 
 ### Prepare the database
 
-Materializations are responsible for creating new tables or views in the database, or inserting/updating/deleting data from existing tables. As such, materializations need to know about the state of the database to determine exactly what sql they should run. Here is some pseudocode for the "setup" phase of the **table** materialization:
+Materializations are responsible for creating new tables or <Term id="view">views</Term> in the database, or inserting/updating/deleting data from existing tables. As such, materializations need to know about the state of the database to determine exactly what sql they should run. Here is some pseudocode for the "setup" phase of the **table** materialization:
 
 ```sql
 -- Refer to the table materialization (linked above) for an example of real syntax

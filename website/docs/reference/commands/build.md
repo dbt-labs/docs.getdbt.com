@@ -15,7 +15,7 @@ The `dbt build` command will:
 - snapshot snapshots
 - seed seeds
 
-In DAG order, for selected resources or an entire project.
+In <Term id="dag" /> order, for selected resources or an entire project.
 
 ### Details
 

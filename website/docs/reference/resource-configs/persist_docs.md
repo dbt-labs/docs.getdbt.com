@@ -124,7 +124,7 @@ The `persist_docs` config is supported on all core dbt plugins: BigQuery,
 Redshift, Snowflake, and Postgres. Some databases impose limitations on the
 types of descriptions that can be added to database objects. At present, the
 `persist_docs` flag has the following known limitations:
- - Column-level comments are not supported on Snowflake views
+ - Column-level comments are not supported on Snowflake <Term id="view">views</Term>
 
 ## Usage
 

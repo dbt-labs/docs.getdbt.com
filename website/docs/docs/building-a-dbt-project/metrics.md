@@ -27,7 +27,7 @@ A <Term id="metric" /> is a timeseries aggregation over a table that supports ze
 - active users
 - mrr (monthly recurring revenue)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt <Term id="dag" /> and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 ### Benefits of defining metrics
 

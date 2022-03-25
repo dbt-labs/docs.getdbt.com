@@ -84,7 +84,7 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 
 #### Ambiguous database identifiers
 
-Using aliases, it's possible to accidentally create models with ambiguous identifiers. Given the following two models, dbt would attempt to create two views with _exactly_ the same names in the database (ie. `sessions`):
+Using aliases, it's possible to accidentally create models with ambiguous identifiers. Given the following two models, dbt would attempt to create two <Term id="view">views</Term> with _exactly_ the same names in the database (ie. `sessions`):
 
 ```sql
 -- models/snowplow_sessions.sql

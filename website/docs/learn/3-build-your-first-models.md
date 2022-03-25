@@ -116,7 +116,7 @@ with customers as (
 
 </File>
 
-4. Execute `dbt run`. Your model, `customers` should be built as a view.
+4. Execute `dbt run`. Your model, `customers` should be built as a <Term id="view" />.
 
 ### FAQs
 <FAQ src="available-materializations" />

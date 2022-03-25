@@ -171,7 +171,7 @@ __Args__:
 
  * `relation`: The Relation to drop
 
-Drops a Relation in the database. If the target relation does not exist, then this method is a no-op. The specific implementation is adapter-dependent, but adapters should implement a cascading drop, such that bound views downstream of the dropped relation are also dropped. **Note**: this adapter method is destructive, so please use it with care!
+Drops a Relation in the database. If the target relation does not exist, then this method is a no-op. The specific implementation is adapter-dependent, but adapters should implement a cascading drop, such that bound <Term id="view">views</Term> downstream of the dropped relation are also dropped. **Note**: this adapter method is destructive, so please use it with care!
 
 The `drop_relation` method will remove the specified relation from dbt's relation cache.
 

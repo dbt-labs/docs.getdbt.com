@@ -87,7 +87,7 @@ create view dbt_alice.customers as (
 ```
 
 Why a _view_ named `dbt_alice.customers`? By default dbt will:
-* create models as views
+* create models as <Term id="view">views</Term>
 * build models in a target schema you define
 * use your file name as the view or table name in the database
 

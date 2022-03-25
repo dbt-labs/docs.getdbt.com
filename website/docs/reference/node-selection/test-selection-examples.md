@@ -89,7 +89,7 @@ These are examples of "indirect" selection: `customers` and `orders` select mode
 
  By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include _any_ test that touches either `customers` or `orders`, even if it touches other models as well.
 
-It is possible to prevent tests from running if one or more of its parents is unselected, however; we call this "cautious" indirect selection. This can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures by tests that depend on unbuilt resources. (Another way to achieve this is with [deferral](defer)).
+It is possible to prevent tests from running if one or more of its parents is unselected, however; we call this "cautious" indirect selection. This can be useful in environments when you're only building a subset of your <Term id="dag" />, and you want to avoid test failures by tests that depend on unbuilt resources. (Another way to achieve this is with [deferral](defer)).
 
 With `dbt test --indirect-selection=cautious` (or setting `indirect_selection: cautious` in a [yaml selector](yaml-selectors)) tests will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. Note that test _exclusion_ is always greedy: if **ANY** parent is explicitly excluded, the test will be excluded as well.
 

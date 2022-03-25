@@ -291,7 +291,7 @@ models:
 
 ### Specifying labels
 
-dbt supports the specification of BigQuery labels for the tables and views that it creates. These labels can be specified using the `labels` model config.
+dbt supports the specification of BigQuery labels for the tables and <Term id="view">views</Term> that it creates. These labels can be specified using the `labels` model config.
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
 

@@ -213,7 +213,7 @@ snapshots:
 
 ## Copying grants
 
-When the `copy_grants` config is set to `true`, dbt will add the `copy grants` DDL qualifier when rebuilding tables and views. The default value is `false`.
+When the `copy_grants` config is set to `true`, dbt will add the `copy grants` DDL qualifier when rebuilding tables and <Term id="view">views</Term>. The default value is `false`.
 
 <File name='dbt_project.yml'>
 

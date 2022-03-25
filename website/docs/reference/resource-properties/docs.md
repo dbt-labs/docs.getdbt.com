@@ -119,7 +119,7 @@ macros:
 ## Definition
 The `docs` field can be used to provide documentation-specific configuration to <Term id="model">models</Term>. The only currently supported `docs` attribute is `show`, which controls whether or not models are shown in the auto-generated documentation website.
 
-**Note:** hidden models will still appear in the dbt DAG visualization, but will be identified as "hidden".
+**Note:** hidden models will still appear in the dbt <Term id="dag" /> visualization, but will be identified as "hidden".
 
 <Changelog>
 

@@ -10,7 +10,7 @@ keywords:
 
 The data models that power these metrics already exist in your dbt project. You can use dbt metrics in different ways:
   
-* High-level view of your most important key performance indicators (KPIs), such as  weekly active users, revenue, or time-on-site. 
+* High-level <Term id="view" /> of your most important key performance indicators (KPIs), such as  weekly active users, revenue, or time-on-site. 
 * Drilled-down view of the core entities that comprise those metrics, such as users, orders, or pageviews. 
 
 While dbt does not currently provide a BI experience for exploring these metrics, we’re working on a number of integrations with BI partners that will help unlock the full value of the metrics layer.
