@@ -12,10 +12,15 @@ import styles from './styles.module.css';
 export default function Term({ id, children = undefined }) {
 
   const [uniqueID, setUniqueID] = useState(String(Math.random()))
-  
+  const [pageReady, setPageReady] = useState(false)
+
   useEffect(() => {
+    console.log('setting page ready')
     ReactTooltip.rebuild()
-  })
+    setPageReady(true)
+  }, [])
+
+  console.log('rest of code')
 
   const file = require('../../../docs/terms/' + id + '.md')
   if(!file)
@@ -42,7 +47,7 @@ export default function Term({ id, children = undefined }) {
         */}
         {children ? children : displayText ? displayText : id}
       </Link>
-      {hoverSnippet && (
+      {hoverSnippet && pageReady && (
         <ReactTooltip 
           id={uniqueID} 
           className={styles.termToolTip} 
