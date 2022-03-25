@@ -4,7 +4,10 @@ import ReactTooltip from "react-tooltip";
 import styles from './styles.module.css';
 
 {/* 
-
+  Props:
+  id: filename of term
+  children (optional): to display different text 
+  other than displayText property for term
 */}
 export default function Term({ id, children = undefined }) {
 
