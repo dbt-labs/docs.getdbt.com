@@ -1,3 +1,4 @@
+/img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png	301!
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/install-from-source	/dbt-cli/install/from-source	302
@@ -170,7 +171,6 @@
 /docs/setting-up-enterprise-sso-with-azure-active-directory	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory	302
 /docs/setting-up-snowflake-sso	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth	302
 /docs/setting-up-sso-with-google-gsuite	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite	302
-/img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png
 /docs/setting-up-sso-with-okta	/docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta	302
 /docs/slack-rules-of-the-road	/docs/contributing/slack-rules-of-the-road	302
 /docs/snapshot	/reference/commands/snapshot	302
