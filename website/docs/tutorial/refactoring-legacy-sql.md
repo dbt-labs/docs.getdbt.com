@@ -35,7 +35,7 @@ To get going, you'll copy your legacy SQL query into your dbt project, by saving
 
 <Lightbox src="/img/tutorial/refactoring/legacy-query-model.png" title="Your dbt project's folder structure" />
 
-Once you've copied it over, you'll want to `dbt run` to execute the query and populate the table in your warehouse.
+Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
 > If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the [Getting Started tutorial](/tutorial/setting-up) before diving into refactoring.
 

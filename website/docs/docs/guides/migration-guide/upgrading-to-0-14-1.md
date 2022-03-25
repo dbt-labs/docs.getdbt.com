@@ -19,7 +19,7 @@ In this failure mode, dbt would "finalize" existing records by setting a `dbt_va
 
 ### Resolution
 
-To determine if your Snapshot table is affected by this issue, you can run a query to find "stuck" records. These "stuck" records:
+To determine if your Snapshot <Term id="table" /> is affected by this issue, you can run a query to find "stuck" records. These "stuck" records:
  - Are the most recent records for a given `unique_key` in the snapshot
  - Have a value for both `dbt_valid_from` and `dbt_valid_to`
 

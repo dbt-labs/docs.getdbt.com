@@ -12,7 +12,7 @@ We longer support new on-premises deployments, and instead have moved to a [Sing
 
 ### Adding custom ingresses
 
-All ingress to dbt Cloud goes through a component called the **API Gateway**. The Kubernetes deployment that makes up the API Gateway has the label `name: api-gateway` and serves up all traffic on port 8000. Within your dbt Cloud installation, you can create custom services and ingresses to these pods by targeting that set of labels with custom services.
+All ingress to dbt Cloud goes through a component called the **API Gateway**. The Kubernetes deployment that makes up the <Term id="api" /> Gateway has the label `name: api-gateway` and serves up all traffic on port 8000. Within your dbt Cloud installation, you can create custom services and ingresses to these pods by targeting that set of labels with custom services.
 
 **Example: on an embedded cluster, add a service that does _not_ terminate TLS**
 

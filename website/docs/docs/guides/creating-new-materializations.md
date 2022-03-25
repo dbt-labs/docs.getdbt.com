@@ -89,7 +89,7 @@ Pre- and post-hooks can be specified for any model -- be sure that your material
 ```
 ### Executing SQL
 
-Construct your materialization DML to account for the different permutations of table existence, materialization flags, etc. There are a number of [adapter functions](dbt-jinja-functions/adapter) and context variables that can help you here. Be sure to consult the Reference section of this site for a full list of variables and functions at your disposal.
+Construct your materialization DML to account for the different permutations of <Term id="table" /> existence, materialization flags, etc. There are a number of [adapter functions](dbt-jinja-functions/adapter) and context variables that can help you here. Be sure to consult the Reference section of this site for a full list of variables and functions at your disposal.
 
 ### Run post-hooks
 

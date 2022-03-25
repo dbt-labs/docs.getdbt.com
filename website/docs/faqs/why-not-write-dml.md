@@ -9,7 +9,7 @@ More people know how to write `select` statements, than DML, making the transfor
 
 #### Writing good DML is hard.
 If you write the DDL / DML yourself you can end up getting yourself tangled in problems like:
-* What happens if the table already exists? Or this table already exists as a view, but now I want it to be a table?
+* What happens if the <Term id="table" /> already exists? Or this table already exists as a view, but now I want it to be a table?
 * What if the schema already exists? Or, should I check if the schema already exists?
 * How do I replace a <Term id="model" /> atomically (such that there's no down-time for someone querying the table)
 * What if I want to parameterize my schema so I can run these transformations in a development environment?

@@ -110,7 +110,7 @@ Snowflake's `merge` statement fails with a "nondeterministic merge" error if the
 
 ## Configuring table clustering
 
-dbt supports [table clustering](https://docs.snowflake.net/manuals/user-guide/tables-clustering-keys.html) on Snowflake. To control clustering for a table or incremental model, use the `cluster_by` config. When this configuration is applied, dbt will do two things:
+dbt supports [table clustering](https://docs.snowflake.net/manuals/user-guide/tables-clustering-keys.html) on Snowflake. To control clustering for a <Term id="table" /> or incremental model, use the `cluster_by` config. When this configuration is applied, dbt will do two things:
 
 1. It will implicitly order the table results by the specified `cluster_by` fields
 2. It will add the specified clustering keys to the target table

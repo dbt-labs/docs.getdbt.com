@@ -73,7 +73,7 @@ We shipped environment variables in dbt Cloud. Environment variables create a wa
 
 
 ## dbt Cloud v1.1.38 (October 27, 2021)
-Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
+Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata <Term id="api" /> is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
@@ -697,7 +697,7 @@ significantly.
 - Add merge conflict resolution, a merge commit workflow, and merge abort workflow to the IDE
 - Deprecate dbt versions prior to 0.13.0
 - Refactor to cut job scheduler loop time
-- Reduce extra database calls to account table in job scheduler loop
+- Reduce extra database calls to account <Term id="table" /> in job scheduler loop
 - [On-premises] Allow clients to disable authentication for SMTP
 - [On-premises] Allow disabling of TLS for SMTP
 - [On-premises] Making k8s access mode for IDE pods an environment variable
@@ -883,7 +883,7 @@ This release includes bugfixes around how permissions are applied to runs and ru
 - Fixed receiving arbitrary remote_url when creating a git url repository.
 - Fixed issue when handling non-resource specific errors from RPC server in IDE.
 - Fixed a bug where the scheduler would stop if the database went away.
-- Fixed IDE query results table not supporting horizontal scrolling.
+- Fixed IDE query results <Term id="table" /> not supporting horizontal scrolling.
 
 #### Changed
 

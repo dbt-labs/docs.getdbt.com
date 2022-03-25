@@ -92,7 +92,7 @@ When a user connects to a data warehouse via a SQL client, they often rely on th
 
 ### Choose your materializations wisely
 [Materializations](materializations) determine the way models are built through configuration. As a general rule:
-* Views are faster to build, but slower to query compared to tables.
+* Views are faster to build, but slower to query compared to <Term id="table">tables</Term>.
 * Incremental models provide the same query performance as tables, are faster to build compared to the table materialization, however they introduce complexity into a project.
 
 We often:

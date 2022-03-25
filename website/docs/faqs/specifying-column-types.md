@@ -22,7 +22,7 @@ insert into dbt_alice.my_table (
 )
 ```
 
-In comparison, dbt would build this table using a `create table as` statement:
+In comparison, dbt would build this <Term id="table" /> using a `create table as` statement:
 
 ```sql
 create table dbt_alice.my_table as (

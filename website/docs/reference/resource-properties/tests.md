@@ -226,7 +226,7 @@ models:
 
 ### `relationships`
 
-This test validates that all of the records in a child table have a corresponding record in a parent table. This property is referred to as "referential integrity".
+This test validates that all of the records in a child <Term id="table" /> have a corresponding record in a parent table. This property is referred to as "referential integrity".
 
 The following example tests that every order's `customer_id` maps back to a valid `customer`.
 

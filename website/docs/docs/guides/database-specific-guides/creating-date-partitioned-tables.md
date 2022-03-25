@@ -46,7 +46,7 @@ from `snowplow`.`events_[DBT__PARTITION_DATE]`
 
 </File>
 
-To make this model more dynamic, we can use the `dbt.partition_range` macro to generate a list of 8-digit dates in a specified range. Further, dbt provides a handy macro, `date_sharded_table`, for getting a date-sharded table by its prefix for a given date. Together, this looks like:
+To make this model more dynamic, we can use the `dbt.partition_range` macro to generate a list of 8-digit dates in a specified range. Further, dbt provides a handy macro, `date_sharded_table`, for getting a date-sharded <Term id="table" /> by its prefix for a given date. Together, this looks like:
 
 <File name='partitioned_range.sql'>
 

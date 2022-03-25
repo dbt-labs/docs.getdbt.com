@@ -58,7 +58,7 @@ left join {{ source('jaffle_shop', 'customers') }} using (customer_id)
 
 </File>
 
-dbt will compile this to the full table name:
+dbt will compile this to the full <Term id="table" /> name:
 
 <File name='target/compiled/jaffle_shop/models/my_model.sql'>
 

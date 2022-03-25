@@ -3,7 +3,7 @@ title: "What is dbt?"
 id: "introduction"
 ---
 
-dbt (data build tool) enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into tables and views.
+dbt (data build tool) enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into <Term id="table">tables</Term> and views.
 
 dbt does the `T` in `ELT` (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
 
@@ -76,7 +76,7 @@ A materialization represents a build strategy for your select query – the code
 dbt ships with the following built-in materializations:
 * `view` (default): The model is built as a view in the database.
 * `table`: The model is built as a table in the database.
-* `ephemeral`: The model is not directly built in the database, but is instead pulled into dependent models as common table expressions.
+* `ephemeral`: The model is not directly built in the database, but is instead pulled into dependent models as common <Term id="table" /> expressions.
 * `incremental`: The model is initially built as a table, and in subsequent runs, dbt inserts new rows and updates changed rows in the table.
 
 Custom materializations can also be built if required.

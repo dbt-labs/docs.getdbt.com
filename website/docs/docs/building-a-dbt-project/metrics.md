@@ -13,7 +13,7 @@ keywords:
 </Changelog>
 
 
-:::info <Term id="metric">Metrics</Term> are new
+:::info Metrics are new
 v1.0.0 includes an initial version of metrics, following a [vibrant community discussion](https://github.com/dbt-labs/dbt-core/issues/4071). Try them out, and let us know what you think!
 :::
 
@@ -29,7 +29,7 @@ A <Term id="metric" /> is a timeseries aggregation over a table that supports ze
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
-### Benefits of defining <Term id="metric">metrics</Term>
+### Benefits of defining metrics
 
 **Use <Term id="metric" /> specifications in downstream tools**  
 dbt's compilation context can access metrics via the [`graph.metrics` variable](graph). The [manifest artifact](manifest-json) includes metrics for downstream metadata consumption.

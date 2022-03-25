@@ -205,9 +205,9 @@ Example usage:
 
 </File>
 
-### Accessing <Term id="metric">metrics</Term>
+### Accessing metrics
 
-To access the metrics in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
+To access the <Term id="metric">metrics</Term> in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
 
 <File name='macros/get_metric.sql'>
 

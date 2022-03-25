@@ -5,7 +5,7 @@ displayText: CTE
 hoverSnippet: CTE is one of those SQL specific acronyms that is impossible to Google.
 ---
 
-CTE is one of those SQL specific acronyms that is impossible to Google. It stands for common table expression, but the name itself doesn’t feel super self explanatory.. A CTE is used in order to enable readability within code. It is used to group little query snippets, and reference them all within one large piece of work. Each CTE is a common-table-expression because you are creating and naming a snippet that you will use more than once within your code so that you do not need to repeat, but instead just reference the common piece of code. 
+CTE is one of those SQL specific acronyms that is impossible to Google. It stands for common <Term id="table" /> expression, but the name itself doesn’t feel super self explanatory.. A CTE is used in order to enable readability within code. It is used to group little query snippets, and reference them all within one large piece of work. Each CTE is a common-table-expression because you are creating and naming a snippet that you will use more than once within your code so that you do not need to repeat, but instead just reference the common piece of code. 
 
 Common Table Expression - Creating an ephemeral table to reference downstream in your SQL query for ease of understanding / improved query readability. In my experience, these are extra helpful when you need to operate over aggregates.
 

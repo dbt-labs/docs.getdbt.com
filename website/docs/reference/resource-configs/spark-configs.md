@@ -20,7 +20,7 @@ When materializing a <Term id="model" /> as `table`, you may include several opt
 | clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns. | Optional               | `country_code`              |
 | buckets  | The number of buckets to create while clustering | Required if `clustered_by` is specified                | `8`              |
 
-## Incremental <Term id="model">models</Term>
+## Incremental models
 
 <Changelog>
 
@@ -30,9 +30,9 @@ When materializing a <Term id="model" /> as `table`, you may include several opt
 
 dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and materializations. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta file format and custom runtime—making sense of all the available options is an undertaking in its own right.
 
-For that reason, the dbt-spark plugin leans heavily on the [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
+For that reason, the dbt-spark plugin leans heavily on the [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy). This config tells the incremental materialization how to build <Term id="model">models</Term> in runs beyond their first. It can be set to one of three values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
- - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the table with new data. If no `partition_by` is specified, overwrite the entire table with new data.
+ - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
  - **`merge`** (Delta Lake only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.

@@ -15,4 +15,4 @@ The [dbt Metadata API](/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) can 
 
 ## How to Access the APIs
 
-dbt Cloud supports two types of API Tokens: [user tokens](/dbt-cloud/dbt-cloud-api/user-tokens) and [service account tokens](/dbt-cloud/dbt-cloud-api/service-tokens). Requests to the dbt Cloud APIs can be authorized using these tokens.
+dbt Cloud supports two types of <Term id="api" /> Tokens: [user tokens](/dbt-cloud/dbt-cloud-api/user-tokens) and [service account tokens](/dbt-cloud/dbt-cloud-api/service-tokens). Requests to the dbt Cloud APIs can be authorized using these tokens.

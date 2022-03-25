@@ -14,9 +14,9 @@ seeds:
 ```
 
 
-## <Term id="model">Model</Term> Configuration for Fact Tables
+## Model Configuration for Fact Tables
 
-A dbt model can be created as a Firebolt fact table and configured using the following syntax:
+A dbt <Term id="model" /> can be created as a Firebolt fact <Term id="table" /> and configured using the following syntax:
 
 <Tabs
   groupId="config-fact"

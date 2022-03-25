@@ -9,7 +9,7 @@ hoverSnippet: ELT, or "Extract, Load, Transform" has emerged as the dominant par
 
 ELT, or "Extract, Load, Transform" has emerged as the dominant paradign for how to manage information flows in a modern data warehouse. This represents a fundamental shift from how data previously was handled when ETL or Extract, Transform Load was the way most companies used their date. 
 
-In an ETL workflow, data is *extracted* from a data source via an API [glossary link] and *loaded* into a target data warehouses or data like (often these loads are managed via a data loading tool [glossary link]). These pipelines are commonly managed by the data team and figuring out the best strategies for loading your data sources is a key skillset for analytics engineers to master.
+In an ETL workflow, data is *extracted* from a data source via an <Term id="api" /> [glossary link] and *loaded* into a target data warehouses or data like (often these loads are managed via a data loading tool [glossary link]). These pipelines are commonly managed by the data team and figuring out the best strategies for loading your data sources is a key skillset for analytics engineers to master.
 
 Shifting from ETL to ELT means that you no longer have to capture your transformations during the initial loading of the data into the database. Rather you are able to load all of your data, then build transformations on top of it. Rather than every run of your ETL process being 
 

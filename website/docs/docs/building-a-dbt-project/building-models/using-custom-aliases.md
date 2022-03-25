@@ -11,7 +11,7 @@ When dbt runs a <Term id="model" />, it will generally create a relation (either
 The names of schemas and tables are effectively the "user interface" of your data warehouse. Well-named schemas and tables can help provide clarity and direction for consumers of this data. In combination with [custom schemas](using-custom-schemas), model aliasing is a powerful mechanism for designing your warehouse.
 
 ### Usage
-The `alias` config can be used to change the name of a model's identifier in the database. The following table shows examples of database identifiers for models both with, and without, a supplied `alias`.
+The `alias` config can be used to change the name of a model's identifier in the database. The following <Term id="table" /> shows examples of database identifiers for models both with, and without, a supplied `alias`.
 
 | Model | Config | Database Identifier |
 | ----- | ------ | ------------------- |

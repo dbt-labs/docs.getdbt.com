@@ -50,7 +50,7 @@ snapshots:
 </File>
 
 ### Use a target-aware schema
-Use the [`{{ target }}` variable](target) to change which schema a snapshot table is built in.
+Use the [`{{ target }}` variable](target) to change which schema a snapshot <Term id="table" /> is built in.
 
 Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
 

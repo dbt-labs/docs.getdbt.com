@@ -58,7 +58,7 @@ sources:
 
 </File>
 
-Similarly, you can disable a specific table from a source by qualifying the
+Similarly, you can disable a specific <Term id="table" /> from a source by qualifying the
 resource path with a package name, source name, and table name:
 
 <File name='dbt_project.yml'>

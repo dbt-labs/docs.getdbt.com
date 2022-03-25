@@ -35,8 +35,8 @@ seed-paths: ["custom_seeds"]
 
 </File>
 
-### Co-locate your <Term id="model">models</Term> and seeds in the `models` directory
-Note: this works because dbt is looking for different file types for seeds (`.csv` files) and models (`.sql` files).
+### Co-locate your models and seeds in the `models` directory
+Note: this works because dbt is looking for different file types for seeds (`.csv` files) and <Term id="model">models</Term> (`.sql` files).
 
 <File name='dbt_project.yml'>
 

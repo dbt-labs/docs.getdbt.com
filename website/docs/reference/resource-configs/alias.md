@@ -26,7 +26,7 @@ To learn more about changing the way that dbt generates a relation's `identifier
 ### Seeds
 Configure a seed's alias in your `dbt_project.yml` file.
 
-The seed at `seeds/country_codes.csv` will be built as a table named `country_mappings`.
+The seed at `seeds/country_codes.csv` will be built as a <Term id="table" /> named `country_mappings`.
 
 <File name='dbt_project.yml'>
 
