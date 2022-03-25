@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from '@docusaurus/Link';
 import ReactTooltip from "react-tooltip";
 import styles from './styles.module.css';
@@ -8,6 +8,8 @@ import styles from './styles.module.css';
 */}
 export default function Term({ id, children = undefined }) {
 
+  const [uniqueID, setUniqueID] = useState(String(Math.random()))
+  
   const file = require('../../../docs/terms/' + id + '.md')
   if(!file)
     return null
@@ -18,13 +20,18 @@ export default function Term({ id, children = undefined }) {
   
   const { displayText, hoverSnippet } = fm
 
+  const hideTooltip = () => {
+    ReactTooltip.hide()
+  }
+
   return (
     <>
       <Link
         to={`/terms/${id}`}
         className={styles.term}
         data-tip 
-      data-for="termTip"
+        data-for={uniqueID}
+        onMouseEnter={() => hideTooltip()}
       >
         {/* If component has children, show children text,
             Else, default to displayText frontmatter field,
@@ -34,7 +41,7 @@ export default function Term({ id, children = undefined }) {
       </Link>
       {hoverSnippet && (
         <ReactTooltip 
-          id="termTip" 
+          id={uniqueID} 
           className={styles.termToolTip} 
           place="bottom" 
           effect="solid"
