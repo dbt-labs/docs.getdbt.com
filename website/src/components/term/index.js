@@ -23,10 +23,6 @@ export default function Term({ id, children = undefined }) {
   
   const { displayText, hoverSnippet } = fm
 
-  const hideTooltip = () => {
-    ReactTooltip.hide()
-  }
-
   return (
     <>
       <Link
@@ -34,7 +30,6 @@ export default function Term({ id, children = undefined }) {
         className={styles.term}
         data-tip 
         data-for={uniqueID}
-        onMouseEnter={() => hideTooltip()}
       >
         {/* If component has children, show children text,
             Else, default to displayText frontmatter field,
