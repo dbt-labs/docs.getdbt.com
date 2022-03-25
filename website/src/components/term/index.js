@@ -30,6 +30,7 @@ export default function Term({ id, children = undefined }) {
         className={styles.term}
         data-tip 
         data-for={uniqueID}
+        onMouseEnter={() => ReactTooltip.rebuild()}
       >
         {/* If component has children, show children text,
             Else, default to displayText frontmatter field,
