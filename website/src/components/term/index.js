@@ -32,7 +32,7 @@ export default function Term({ id, children = undefined }) {
 
   return (
     <>
-      {pageReady && (
+      {pageReady ? (
         <>
           <Link
             to={`/terms/${id}`}
@@ -40,8 +40,6 @@ export default function Term({ id, children = undefined }) {
             className={styles.term}
             data-tip 
             data-for={uniqueID}
-            onMouseEnter={e => ReactTooltip.show(e.target)}
-            onMouseLeave={e => ReactTooltip.hide(e.target)}
           >
             {/* If component has children, show children text,
                 Else, default to displayText frontmatter field,
@@ -61,6 +59,8 @@ export default function Term({ id, children = undefined }) {
             </ReactTooltip>
           )} 
         </>
+      ) : (
+        <span>{children ? children : displayText ? displayText : id}</span>
       )}
     </>
   )
