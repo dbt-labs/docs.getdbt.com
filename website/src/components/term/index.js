@@ -18,7 +18,7 @@ export default function Term({ id, children = undefined }) {
     console.log('setting page ready')
     ReactTooltip.rebuild()
     setPageReady(true)
-  }, [])
+  })
 
   console.log('rest of code')
 
@@ -34,30 +34,36 @@ export default function Term({ id, children = undefined }) {
 
   return (
     <>
-      <Link
-        to={`/terms/${id}`}
-        key={id}
-        className={styles.term}
-        data-tip 
-        data-for={uniqueID}
-      >
-        {/* If component has children, show children text,
-            Else, default to displayText frontmatter field,
-            Or filename if displayText not set
-        */}
-        {children ? children : displayText ? displayText : id}
-      </Link>
-      {hoverSnippet && pageReady && (
-        <ReactTooltip 
-          id={uniqueID} 
-          className={styles.termToolTip} 
-          place="bottom" 
-          effect="solid"
-          wrapper="span" 
-        >
-          {hoverSnippet}
-        </ReactTooltip>
-      )} 
+      {pageReady && (
+        <>
+          <Link
+            to={`/terms/${id}`}
+            key={id}
+            className={styles.term}
+            data-tip 
+            data-for={uniqueID}
+            onMouseEnter={e => ReactTooltip.show(e.target)}
+            onMouseLeave={e => ReactTooltip.hide(e.target)}
+          >
+            {/* If component has children, show children text,
+                Else, default to displayText frontmatter field,
+                Or filename if displayText not set
+            */}
+            {children ? children : displayText ? displayText : id}
+          </Link>
+          {hoverSnippet && (
+            <ReactTooltip 
+              id={uniqueID} 
+              className={styles.termToolTip} 
+              place="bottom" 
+              effect="solid"
+              wrapper="span" 
+            >
+              {hoverSnippet}
+            </ReactTooltip>
+          )} 
+        </>
+      )}
     </>
   )
 }
