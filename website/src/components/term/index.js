@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from '@docusaurus/Link';
 import ReactTooltip from "react-tooltip";
 import styles from './styles.module.css';
@@ -13,6 +13,10 @@ export default function Term({ id, children = undefined }) {
 
   const [uniqueID, setUniqueID] = useState(String(Math.random()))
   
+  useEffect(() => {
+    ReactTooltip.rebuild()
+  })
+
   const file = require('../../../docs/terms/' + id + '.md')
   if(!file)
     return null
@@ -27,10 +31,10 @@ export default function Term({ id, children = undefined }) {
     <>
       <Link
         to={`/terms/${id}`}
+        key={id}
         className={styles.term}
         data-tip 
         data-for={uniqueID}
-        onMouseEnter={() => ReactTooltip.rebuild()}
       >
         {/* If component has children, show children text,
             Else, default to displayText frontmatter field,
