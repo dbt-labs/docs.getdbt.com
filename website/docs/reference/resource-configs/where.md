@@ -14,7 +14,7 @@ datatype: string
 
 Filter the resource being tested (<Term id="model" />, source, seed, or snapshot).
 
-The `where` condition is templated into the test query by replacing the resource reference with a subquery. For instance, a `not_null` test may look like:
+The `where` condition is templated into the test query by replacing the resource reference with a <Term id="subquery" />. For instance, a `not_null` test may look like:
 ```sql
 select *
 from my_model

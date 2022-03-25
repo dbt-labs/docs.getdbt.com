@@ -20,7 +20,7 @@ The dbt Cloud application is comprised of a set of static components, as well as
 #### Dynamic Application Components
 
 - **dbt run**: A "run" in dbt Cloud represents a series of background invocations of dbt that are triggered either on a cron scheduler, manually by a user, or via dbt Cloud's API.
-- **dbt develop**: This is a server capable of serving dbt IDE requests for a single user. dbt Cloud will create one of these for each user that is actively using the dbt IDE.
+- **dbt develop**: This is a server capable of serving dbt <Term id="ide" /> requests for a single user. dbt Cloud will create one of these for each user that is actively using the dbt IDE.
 
 #### Application Critical Components
 

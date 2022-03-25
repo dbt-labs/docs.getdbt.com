@@ -110,7 +110,7 @@ an item in a `union`. The following are equivalent:
 ```
 
 Note: The `exclude` argument in YAML selectors is subtly different from
-the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)),
+the `--exclude` <Term id="cli" /> argument. Here, `exclude` _always_ returns a [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)),
 and it is always applied _last_ within its scope.
 
 This gets us more intricate subset definitions than what's available on the CLI,

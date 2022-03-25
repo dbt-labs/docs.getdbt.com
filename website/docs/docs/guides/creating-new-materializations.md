@@ -5,7 +5,7 @@ id: "creating-new-materializations"
 
 ## Overview
 
-The <Term id="model" /> materializations you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/dbt-labs/dbt-core/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
+The <Term id="model" /> <Term id="materialization">materializations</Term> you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/dbt-labs/dbt-core/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
 
 :::caution 
 
@@ -89,7 +89,7 @@ Pre- and post-hooks can be specified for any model -- be sure that your material
 ```
 ### Executing SQL
 
-Construct your materialization DML to account for the different permutations of <Term id="table" /> existence, materialization flags, etc. There are a number of [adapter functions](dbt-jinja-functions/adapter) and context variables that can help you here. Be sure to consult the Reference section of this site for a full list of variables and functions at your disposal.
+Construct your materialization <Term id="dml" /> to account for the different permutations of <Term id="table" /> existence, materialization flags, etc. There are a number of [adapter functions](dbt-jinja-functions/adapter) and context variables that can help you here. Be sure to consult the Reference section of this site for a full list of variables and functions at your disposal.
 
 ### Run post-hooks
 

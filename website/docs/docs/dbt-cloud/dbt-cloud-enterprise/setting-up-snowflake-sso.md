@@ -71,7 +71,7 @@ Enter the Client ID and Client Secret into dbt Cloud to complete the creation of
 
 ### Authorize Developer Credentials
 
-Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to dbt Cloud to complete the setup process. At this point, users should now be able to use the dbt IDE with their development credentials.
+Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to dbt Cloud to complete the setup process. At this point, users should now be able to use the dbt <Term id="ide" /> with their development credentials.
 
 ### SSO OAuth Flow Diagram
 

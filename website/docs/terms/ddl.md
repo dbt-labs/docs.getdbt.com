@@ -5,7 +5,7 @@ displayText: DDL
 hoverSnippet: DDL (Data Definition Language) defines the actual schema or structure of database objects (usually tables and views).
 ---
 
-DDL (Data Definition Language) defines the actual schema or structure of database objects (usually tables and <Term id="view">views</Term>).  It creates / drops the actual database objects themselves (tables and views), but doesn’t pull data from or put data into those objects (that’s what DML does).
+DDL (Data Definition Language) defines the actual schema or structure of database objects (usually tables and <Term id="view">views</Term>).  It creates / drops the actual database objects themselves (tables and views), but doesn’t pull data from or put data into those objects (that’s what <Term id="dml" /> does).
 
 ### Yelp review
 

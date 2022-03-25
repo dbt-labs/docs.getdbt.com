@@ -16,7 +16,7 @@ in dbt Cloud, whereas users with Read Only licenses are intended to view the
 
 | Functionality | Developer User | Read Only Users |
 | ------------- | -------------- | --------------- |
-| Use the Developer IDE | ✅ | ❌ |
+| Use the Developer <Term id="ide" /> | ✅ | ❌ |
 | Use Jobs | ✅ | ❌ |
 | Manage Account | ✅ | ❌ |
 | <Term id="api" /> Access | ✅ | ❌ |

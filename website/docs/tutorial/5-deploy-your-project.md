@@ -29,7 +29,7 @@ First off, we need to commit the changes we made to our project so that our repo
 Connecting dbt Cloud to your repository will allow you to have the latest code whenever your dbt project runs.
 
 :::info
-This step only applies to folks who use the dbt CLI to develop their project. <strong>If you developed your project in dbt Cloud, you can skip this step!</strong>
+This step only applies to folks who use the dbt <Term id="cli" /> to develop their project. <strong>If you developed your project in dbt Cloud, you can skip this step!</strong>
 :::
 
 <LoomVideo id="48abd56ec909405cbc76f4946e930a43" />

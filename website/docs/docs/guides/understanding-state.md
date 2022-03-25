@@ -22,7 +22,7 @@ Together, these two features enable ["slim CI"](best-practices#run-only-modified
 
 ### Establishing state
 
-State and defer can be set by environment variables as well as CLI flags:
+State and defer can be set by environment variables as well as <Term id="cli" /> flags:
 
 - `--state` or `DBT_ARTIFACT_STATE_PATH`: file path
 - `--defer` or `DBT_DEFER_TO_STATE`: boolean

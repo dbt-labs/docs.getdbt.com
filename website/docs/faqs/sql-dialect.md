@@ -6,7 +6,7 @@ Or:
 
 dbt can feel like magic, but it isn't actually magic. Under the hood, it's running SQL in your own warehouse — your data is not processed outside of your warehouse.
 
-As such, your models should just use the **SQL dialect of your own database**. Then, when dbt wraps your `select` statements in the appropriate DDL or DML, it will use the correct DML for your warehouse — all of this logic is written in to dbt.
+As such, your models should just use the **SQL dialect of your own database**. Then, when dbt wraps your `select` statements in the appropriate <Term id="ddl" /> or <Term id="dml" />, it will use the correct DML for your warehouse — all of this logic is written in to dbt.
 
 You can find more information about the databases, platforms, and query engines that dbt supports in the [Supported Adapters](available-adapters) docs.
 

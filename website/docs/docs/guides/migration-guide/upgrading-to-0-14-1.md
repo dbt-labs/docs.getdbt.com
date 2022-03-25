@@ -79,7 +79,7 @@ This migration is only required for users of the `check` snapshot strategy on Sn
 
 :::
 
-The query shown above will generate a set of rows which are in a "stuck" state. You can use the output of this query to update the records in your snapshot table to become "unstuck". To do this, use an `update` statement that sets the `dbt_valid_to` column to `null` for records identified in the query above. **Use caution when running DML directly against a snapshot table. It is a good idea to make a backup of this table before applying running this migration manually!** A sample query has been provided below: please test this query _thoroughly_ before running it in production.
+The query shown above will generate a set of rows which are in a "stuck" state. You can use the output of this query to update the records in your snapshot table to become "unstuck". To do this, use an `update` statement that sets the `dbt_valid_to` column to `null` for records identified in the query above. **Use caution when running <Term id="dml" /> directly against a snapshot table. It is a good idea to make a backup of this table before applying running this migration manually!** A sample query has been provided below: please test this query _thoroughly_ before running it in production.
 
 <File name='fix_snapshot_stuck_records.sql'>
 

@@ -22,7 +22,7 @@ curl 'https://metadata.cloud.getdbt.com/graphql' \
   --data <query>
 ```
 
-The `<query>` body should be a JSON string in the format:
+The `<query>` body should be a <Term id="json" /> string in the format:
 
 ```
 { “query”: “<query text>” }

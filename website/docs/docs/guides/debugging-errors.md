@@ -28,7 +28,7 @@ Below, we've listed some of common errors. It's useful to understand what dbt is
 Let's dive into some of these errors and how to debug 👇. Note: not all errors are covered here!
 
 ## Runtime Errors
-_Note: If you're using the dbt Cloud IDE to work on your project, you're unlikely to encounter these errors._
+_Note: If you're using the dbt Cloud <Term id="ide" /> to work on your project, you're unlikely to encounter these errors._
 
 ### Not a dbt project
 
@@ -178,7 +178,7 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt CLI users, these won't get picked up until you run `dbt run` or `dbt compile`._
+_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt <Term id="cli" /> users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function

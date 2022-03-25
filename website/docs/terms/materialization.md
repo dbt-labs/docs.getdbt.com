@@ -1,7 +1,7 @@
 ---
-id: materializations
-title: Materializations
-displayText: materializations 
+id: materialization
+title: Materialization
+displayText: materialization 
 hoverSnippet: The specific kind of database object that data is persisted as in a data warehouse.
 ---
 

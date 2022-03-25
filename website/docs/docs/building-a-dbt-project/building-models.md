@@ -102,7 +102,7 @@ You can use _configurations_ to change any of these behaviors — more on that b
 
 ## Configuring models
 Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
-* Change the [materialization](materializations) that a model uses — a materialization determines the SQL that dbt uses to create the model in your warehouse.
+* Change the [materialization](materializations) that a model uses — a <Term id="materialization" /> determines the SQL that dbt uses to create the model in your warehouse.
 * Build models into separate [schemas](using-custom-schemas).
 * Apply [tags](resource-configs/tags) to a model.
 

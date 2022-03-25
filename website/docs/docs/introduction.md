@@ -40,7 +40,7 @@ A command is an instruction to execute dbt which compiles and runs SQL against t
 When you issue a dbt command, such as `run`, dbt:
 
 1. Determines the order to execute the models in your project in.
-2. Generates the DDL required to build the model, as per the model's *materialization*
+2. Generates the <Term id="ddl" /> required to build the model, as per the model's *<Term id="materialization" />*
 3. Executes the compiled queries against your data warehouse, using the credentials specified in the *target* defined in your *profile*. Executing these queries creates relations in the target schema in your data warehouse. These relations contain transformed data, ready for analysis.
 
 A list of commands can be found in the [Command reference](dbt-commands) section of these docs.

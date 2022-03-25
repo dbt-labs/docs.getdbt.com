@@ -76,4 +76,4 @@ Once you connect Azure AD app and Azure DevOps, you need to provide dbt Cloud in
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/Azure Devops App in dbt Cloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
 
-Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
+Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's <Term id="ide" /> can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).

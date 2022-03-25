@@ -45,7 +45,7 @@ The provided migration script should be run _once_ by a single dbt user. This da
 
 :::caution Custom Materializations
 
-This guide assumes that you are using the built-in archive materialization. If you are using a custom archive materialization, see the section on "Migrating archives manually" below.
+This guide assumes that you are using the built-in archive <Term id="materialization" />. If you are using a custom archive materialization, see the section on "Migrating archives manually" below.
 
 :::
 

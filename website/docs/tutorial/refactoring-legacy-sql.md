@@ -15,7 +15,7 @@ When migrating and refactoring code, it’s of course important to stay organize
 1. Migrate your code 1:1 into dbt
 2. Implement dbt sources rather than referencing raw database tables
 3. Choose a refactoring strategy
-4. Implement CTE groupings and cosmetic cleanup
+4. Implement <Term id="cte">CTE</Term> groupings and cosmetic cleanup
 5. Separate data transformations into standardized layers
 6. Audit the output of dbt models vs legacy SQL
 
@@ -185,7 +185,7 @@ We'll cover that later - for now, just use `select * from {{ source('schema', 't
 
 Logical CTEs contain unique transformations used to generate the final product, and we want to separate these into logical blocks. To identify our logical CTEs, we will follow subqueries in order. 
 
-If a subquery has nested subqueries, we will want to continue moving down until we get to the first layer, then pull out the subqueries in order as CTEs, making our way back to the final select statement. 
+If a <Term id="subquery" /> has nested subqueries, we will want to continue moving down until we get to the first layer, then pull out the subqueries in order as CTEs, making our way back to the final select statement. 
 
 Name these CTEs as the alias that the subquery was given - you can rename it later, but for now it is best to make as few changes as possible.
 

@@ -3,7 +3,7 @@ title: "Using the dbt IDE"
 id: "using-the-dbt-ide"
 ---
 
-The dbt Integrated Development Environment (IDE) is a single interface for building, testing, running, and version controlling dbt projects. We encourage you to use the IDE and share your feedback with the dbt Cloud team.
+The dbt Integrated Development Environment (<Term id="ide" />) is a single interface for building, testing, running, and version controlling dbt projects. We encourage you to use the IDE and share your feedback with the dbt Cloud team.
 
 ### Requirements
 

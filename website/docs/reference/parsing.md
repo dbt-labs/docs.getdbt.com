@@ -34,7 +34,7 @@ After parsing your project, dbt stores an internal project manifest in a file ca
 
 Starting in v1.0, partial parsing is **on** by default. In development, partial parsing can significantly reduce the time spent waiting at the start of a run, which translates to faster dev cycles and iteration.
 
-The [`PARTIAL_PARSE` global config](global-configs#partial-parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
+The [`PARTIAL_PARSE` global config](global-configs#partial-parsing) can be enabled or disabled via `profiles.yml`, environment variable, or <Term id="cli" /> flag.
 
 ### Known limitations
 

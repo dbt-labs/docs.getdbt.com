@@ -15,7 +15,7 @@ Starting in v1.0, you can set global configs in three places. When all three are
 
 #### Command line flags
 
-Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
+Command line (<Term id="cli" />) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
 
 Use this non-boolean config structure, replacing  `<THIS-CONFIG>` with the config you are enabling or disabling, `<SETTING>` with the new setting for the config, and `<SUBCOMMAND>`  with the command this config applies to:
 
@@ -159,7 +159,7 @@ $ dbt --debug run
 
 ## Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in JSON format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 

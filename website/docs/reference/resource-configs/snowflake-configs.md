@@ -94,7 +94,7 @@ In this example, you can set up a query tag to be applied to every query with th
 ```
 
 **Note:** query tags are set at the _session_ level. At the start of each model
-materialization, if the model has a custom `query_tag`
+<Term id="materialization" />, if the model has a custom `query_tag`
 configured, dbt will run `alter session set query_tag` to set the new value.
 At the end of the materialization, dbt will run another `alter` statement to reset
 the tag to its default value. As such, build failures midway through a materialization may result in subsequent
@@ -213,7 +213,7 @@ snapshots:
 
 ## Copying grants
 
-When the `copy_grants` config is set to `true`, dbt will add the `copy grants` DDL qualifier when rebuilding tables and <Term id="view">views</Term>. The default value is `false`.
+When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables and <Term id="view">views</Term>. The default value is `false`.
 
 <File name='dbt_project.yml'>
 

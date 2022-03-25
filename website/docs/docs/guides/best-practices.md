@@ -62,7 +62,7 @@ You can instead find our opinions on how we structure our dbt projects in [this 
 :::
 
 ### Break complex models up into smaller pieces
-Complex models often include multiple Common Table Expressions (CTEs). In dbt, you can instead separate these CTEs into separate models that build on top of each other. It is often a good idea to break up complex models when:
+Complex models often include multiple Common Table Expressions (<Term id="cte">CTEs</Term>). In dbt, you can instead separate these CTEs into separate models that build on top of each other. It is often a good idea to break up complex models when:
 * A CTE is duplicated across two models. Breaking the CTE into a separate model allows you to reference the model from any number of downstream models, reducing duplicated code.
 * A CTE changes the grain of a the data it selects from. It's often useful to test any transformations that change the grain (as in, what one record represents) of your data. Breaking a CTE into a separate model allows you to test this transformation independently of a larger model.
 * The SQL in a query contains many lines. Breaking CTEs into separate models can reduce the cognitive load when another dbt user (or your future self) is looking at the code.
@@ -93,7 +93,7 @@ When a user connects to a data warehouse via a SQL client, they often rely on th
 ### Choose your materializations wisely
 [Materializations](materializations) determine the way models are built through configuration. As a general rule:
 * Views are faster to build, but slower to query compared to <Term id="table">tables</Term>.
-* Incremental models provide the same query performance as tables, are faster to build compared to the table materialization, however they introduce complexity into a project.
+* Incremental models provide the same query performance as tables, are faster to build compared to the table <Term id="materialization" />, however they introduce complexity into a project.
 
 We often:
 * Use views by default

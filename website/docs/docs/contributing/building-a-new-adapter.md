@@ -9,7 +9,7 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 
 1. At the lowest level: An *adapter class* implementing all the methods responsible for connecting to a database and issuing queries.
 2. In the middle: A set of *macros* responsible for generating SQL that is compliant with the target database.
-3. (Optional) At the highest level: A set of *materializations* that tell dbt how to turn <Term id="model" /> files into persisted objects in the database.
+3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn <Term id="model" /> files into persisted objects in the database.
 
 This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
 
