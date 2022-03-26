@@ -68,6 +68,7 @@ const sidebarSettings = {
           type: "category",
           label: "Migration guides",
           items: [
+            "docs/guides/migration-guide/upgrading-to-v1.1",
             "docs/guides/migration-guide/upgrading-to-1-0-0",
             "docs/guides/migration-guide/upgrading-to-0-21-0",
             "docs/guides/migration-guide/upgrading-to-0-20-0",
