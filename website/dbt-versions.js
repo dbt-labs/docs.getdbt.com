@@ -2,6 +2,7 @@ exports.versions = [
   {
     version: "1.1",
     EOLDate: "2023-04-27",  // TODO estimated for now
+    isPrerelease: true
   },
   {
     version: "1.0",

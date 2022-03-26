@@ -50,10 +50,31 @@ function DocPageContent({
 
   // Check if page available for current version
   const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
-  const { version: dbtVersion, EOLDate, latestStableRelease } = useContext(VersionContext)
+  const { version: dbtVersion, EOLDate, isPrerelease, latestStableRelease } = useContext(VersionContext)
   const { pageAvailable, firstAvailableVersion } = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute.path)
 
-  // Check End of Life date and show unsupported banner if depricated version
+  // Check whether this version is a isPrerelease, and show banner if so
+  const [PreData, setPreData] = useState({
+    showisPrereleaseBanner: false,
+    isPrereleaseBannerText: ''
+  })
+
+  useEffect(() => {
+    // If version is not isPrerelease, do not show banner
+    if(!isPrerelease) {
+      setPreData({
+        showisPrereleaseBanner: false,
+        isPrereleaseBannerText: ''
+      })
+    } else {
+        setPreData({
+          showisPrereleaseBanner: true,
+          isPrereleaseBannerText: `This is a prerelease version. The latest stable version is ${latestStableRelease}`
+        })
+    }
+  })
+
+  // Check End of Life date and show unsupported banner if deprecated version
   const [EOLData, setEOLData] = useState({
     showEOLBanner: false,
     EOLBannerText: ''
@@ -169,6 +190,13 @@ function DocPageContent({
                 <Admonition type="caution" title={`New feature!`} icon="🎉 " >
                   <p style={{'marginTop': '5px', 'marginBottom': '0'}}>Unfortunately, this feature is not available in dbt Core version {dbtVersion}</p>
                   <p> You should upgrade to {firstAvailableVersion} or later if you want to use this feature.</p>
+                </Admonition>
+              </div>
+            )}
+            {PreData.showisPrereleaseBanner && (
+              <div className={styles.versionBanner}>
+                <Admonition type="caution" title="Warning">
+                  <div dangerouslySetInnerHTML={{__html: PreData.isPrereleaseBannerText}} />
                 </Admonition>
               </div>
             )}
