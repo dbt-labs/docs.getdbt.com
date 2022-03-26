@@ -1,8 +1,8 @@
 exports.versions = [
-  // {
-  //   version: "1.1",
-  //   EOLDate: "2023-03-18"
-  // },
+  {
+    version: "1.1",
+    EOLDate: "2023-04-27",  // TODO estimated for now
+  },
   {
     version: "1.0",
     EOLDate: "2023-12-03"
