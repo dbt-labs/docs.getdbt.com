@@ -18,4 +18,9 @@ exports.versions = [
   }
 ]
 
-exports.versionedPages = []
+exports.versionedPages = [
+    {
+      "page": "docs/guides/migration-guide/upgrading-to-v1.1",
+      "firstVersion": "1.1",
+    }
+]
