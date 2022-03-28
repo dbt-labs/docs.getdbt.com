@@ -678,15 +678,104 @@ module.exports = {
         "https://docs.getdbt.com/faqs/define-a-column-type",
         "https://docs.getdbt.com/faqs/docs-for-multiple-projects",
         "https://docs.getdbt.com/faqs/example-projects",
-        
-        
-        
-        
+        "https://docs.getdbt.com/faqs/multiple-resource-yml-files",
+        "https://docs.getdbt.com/faqs/profile-name",
+        "https://docs.getdbt.com/faqs/project-name",
+        "https://docs.getdbt.com/faqs/properties-not-in-config",
+        "https://docs.getdbt.com/faqs/quoting-column-names",
+        "https://docs.getdbt.com/faqs/schema-yml-name",
+        "https://docs.getdbt.com/faqs/seed-datatypes",
+        "https://docs.getdbt.com/faqs/separate-profile",
+        "https://docs.getdbt.com/faqs/snapshot-freshness-output",
+        "https://docs.getdbt.com/faqs/source-has-bad-name",
+        "https://docs.getdbt.com/faqs/source-in-different-database",
+        "https://docs.getdbt.com/faqs/specifying-column-types",
+        "https://docs.getdbt.com/faqs/sql-dialect",
+        "https://docs.getdbt.com/faqs/structure-a-project",
+        "https://docs.getdbt.com/faqs/unique-model-names",
+        "https://docs.getdbt.com/faqs/which-schema",
+        "https://docs.getdbt.com/faqs/why-not-write-dml",
+        "https://docs.getdbt.com/faqs/why-so-many-macros",
+        "https://docs.getdbt.com/faqs/why-version-2",
+        "https://docs.getdbt.com/faqs/yaml-file-extension",
       ],
     },
     {
-      
+      type: "category",
+      label: "Docs",
+      link: { type: 'doc', id: 'docs/faqs/docs' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/docs-for-multiple-projects",
+        "https://docs.getdbt.com/faqs/document-all-columns",
+        "https://docs.getdbt.com/faqs/document-other-resources",
+        "https://docs.getdbt.com/faqs/documenting-macros",
+        "https://docs.getdbt.com/faqs/long-descriptions",
+        "https://docs.getdbt.com/faqs/sharing-documentation",
+        "https://docs.getdbt.com/faqs/testing-seeds",
+      ],
+    },
+    {
+      type: "category",
+      label: "Runs",
+      link: { type: 'doc', id: 'docs/faqs/runs' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/checking-logs",
+        "https://docs.getdbt.com/faqs/failed-prod-run",
+        "https://docs.getdbt.com/faqs/failed-tests",
+        "https://docs.getdbt.com/faqs/run-downstream-of-seed",
+        "https://docs.getdbt.com/faqs/run-downtime",
+        "https://docs.getdbt.com/faqs/run-one-model",
+        "https://docs.getdbt.com/faqs/run-one-snapshot",
+        "https://docs.getdbt.com/faqs/running-models-downstream-of-source",
+        "https://docs.getdbt.com/faqs/snapshot-frequency",
+      ],
+    },
+    {
+      type: "category",
+      label: "Debug",
+      link: { type: 'doc', id: 'docs/faqs/debug' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/debugging-jinja",
+        "https://docs.getdbt.com/faqs/dispatch-could-not-find-package",
+        "https://docs.getdbt.com/faqs/failed-tests",
+        "https://docs.getdbt.com/faqs/full-refresh-seed",
+        "https://docs.getdbt.com/faqs/jinja-whitespace",
+        "https://docs.getdbt.com/faqs/sql-errors",
+        "https://docs.getdbt.com/faqs/unused-model-configurations",
+        "
+      ],
+    },
+    {
+      type: "category",
+      label: "Commonly Asked Questions",
+      link: { type: 'doc', id: 'docs/faqs/commonly-asked' }, 
+      items: [
+       ## need to reassess and shorten number of faqs
+      ],
+    },
+    {
+      type: "category",
+      label: "Git",
+      link: { type: 'doc', id: 'docs/faqs/git' }, 
+      items: [
+       
+      ],
+    },
+    {
+      type: "category",
+      label: "Git",
+      link: { type: 'doc', id: 'docs/faqs/git' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/dbt-specific-jinja",
+        "https://docs.getdbt.com/faqs/debugging-jinja",
+        "https://docs.getdbt.com/faqs/quoting-column-names",
+        "https://docs.getdbt.com/faqs/which-jinja-docs",
+      ],
+    },
+    {
   
+      
+      
   
   
   ----
