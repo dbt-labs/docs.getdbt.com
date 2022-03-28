@@ -98,14 +98,16 @@ BigQuery has <a href="https://cloud.google.com/bigquery/pricing">a generous free
 In order to let dbt connect to your warehouse, you'll need generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
-2. Select the "+ Create Credentials" button. Select the "Service account" option.
-3. Create a service account with the following options:
-    * **Service account name:** `dbt-user`
-    * **Select a role:** BigQuery Admin
-    * **Grant users access to this service account** Leave blank
-4. Select the service account that you just created. Select the "Keys" tab.
-5. Click "Add Key" and the option "Create new key". Select "JSON" as the key type.  
-6. Download the JSON file and save it in an easy-to-remember spot, with a clear filename (e.g. `dbt-user-creds.json`).
+2. Select **+ Create Credentials** then select **Service account**.
+3. Type "dbt-user" in the Service account name field, then click **Create and Continue**.
+4. Type and select **BigQuery Admin** in the Role field.
+5. Click **Continue**.
+6. Leave fields blank in the "Grant users access to this service account" section and click **Done**.
+7. Click the service account that you just created.
+8. Select **Keys**.
+9. Click **Add Key** then select **Create new key**. 
+10. Select **JSON** as the key type then click **Create**.  
+11. You should be prompted to download the JSON file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
 
 ### FAQs
 <FAQ src="database-privileges" />
