@@ -5,6 +5,67 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.48 (March 30th, 2022)
+
+#### Enhancements
+
+- Added some logic for polling health in the background while still connecting to develop pod
+- Clear and Reset IDE state on IDE Unmount
+- Refactor and unify git loading selector
+
+#### Feature
+
+- Incorporate Big Query MaxBilledBytes in configuration screens and hide be…
+- Databricks Complete Registration button complete
+
+#### Fixed
+
+- Option 2: Do not update git backend, check if we're on main in the frontend and force read-only
+- adding if block to catch errors on signup table
+
+#### Internal
+
+- pin click dependency for compatibility with black code formatter
+- add database-proxy to run pod environment
+- Add an empty repository to the seed data for IDE tests
+- test fixture update
+- scheduler: use is_running
+- SHP-286 | Azure integration UI updates
+- Forking InClusterKubernetesClient logic for use_k8s_pods_for_runs FF
+- add new is_running column to run table
+- get rid of unnecessary order by
+- Refactor InClusterKubernetesClient PodSpec creation
+- scheduler-pickup: no need for serializable transactions
+- lint fix
+- scheduler-pickup: add tracing
+- Enable secure social auth for Devspace envs
+- Fix Databricks partner connect flow for existing accounts
+- Add stricter ide validation
+- Add logs to thread logic
+- scheduler-pickup: prevent unnecessary ORM-generated queries
+- add more info on alerts
+- use head version of dbt-core when selecting dbt-server image to start…
+- fix | Filter out deleted resources in Azure service user lookup
+- fix github url for repos auth'd using github app for dbt-server
+- Adds account/connection not found logic for Databricks Partner Connect
+- fix env var validity helper function
+- use none when checking if feature flag is enabled for dbt-server in d…
+- Revert "Move new PR webhook processing from main scheduler loop to process-webhooks (#5050)"
+- Attempting to run controller app in dbt-server pod
+- SHP-172: backfill 'identifier' column in 'database_account' table
+- Move new PR webhook processing from main scheduler loop to process-webhooks
+- protect run ordering
+- refactor pickup to consolidate transactions
+- Fix file contents endpoint
+- [ENTERPRISE-52] No error logs for app integration logins
+- scheduler: cache LD evaluation
+- scheduler: make account order deterministic
+- black
+- launchdarkly: pass account model instead of account ID
+- Don't enqueue runs for deactivated jobs (current queuer)
+- scheduler: use LD to evaluate new scheduler feature flag
+- disable autocomplete on tooltipped env var input
+
 ## dbt Cloud v1.1.46 (March 2nd, 2022)
 
 dbt Cloud now shows "waiting time" and "prep time" for a run, which used to be expressed in aggregate as "queue time". Waiting time captures the time dbt Cloud waits to run your job if there isn't an available run slot or if a previous run of the same job is still running. Prep time represents the time it takes dbt Cloud to ready your job to run in your cloud data warehouse.
