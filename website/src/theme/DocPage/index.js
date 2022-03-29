@@ -75,7 +75,7 @@ function DocPageContent({
     } else {
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText  : `This is a prerelease version. The latest stable version is ${latestStableRelease}`
+          isPrereleaseBannerText  : `${dbtVersion} is a prerelease version. The latest stable version is ${latestStableRelease}`
         })
     }
     // If EOLDate not set for version, do not show banner
