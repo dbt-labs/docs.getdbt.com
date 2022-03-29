@@ -3,7 +3,7 @@ import {usePluginData} from '@docusaurus/useGlobalData';
 
 export default function CTA({ cta }) {
 
-  const { CTAData } = usePluginData('docusaurus-build-blog-data-plugin');
+  const { CTAData } = usePluginData('docusaurus-build-global-data-plugin');
 
   const thisCta = CTAData.find(data => data.name === cta)
 

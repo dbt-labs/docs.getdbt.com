@@ -25,7 +25,6 @@ v1.0 includes metrics, but they should be considered an _unstable_ API because t
 
 A metric is a timeseries aggregation over a table that supports zero or more dimensions. Some examples of metrics include:
 - active users
-- churn rate
 - mrr (monthly recurring revenue)
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
