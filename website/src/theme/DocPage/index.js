@@ -59,6 +59,12 @@ function DocPageContent({
     isPrereleaseBannerText: ''
   })
 
+  // Check End of Life date and show unsupported banner if deprecated version
+  const [EOLData, setEOLData] = useState({
+    showEOLBanner: false,
+    EOLBannerText: ''
+  })
+
   useEffect(() => {
     // If version is not isPrerelease, do not show banner
     if(!isPrerelease) {
@@ -69,18 +75,9 @@ function DocPageContent({
     } else {
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `This is a prerelease version. The latest stable version is ${latestStableRelease}`
+          isPrereleaseBannerText  : `This is a prerelease version. The latest stable version is ${latestStableRelease}`
         })
     }
-  })
-
-  // Check End of Life date and show unsupported banner if deprecated version
-  const [EOLData, setEOLData] = useState({
-    showEOLBanner: false,
-    EOLBannerText: ''
-  })
-
-  useEffect(() => {
     // If EOLDate not set for version, do not show banner
     if(!EOLDate) {
       setEOLData({
