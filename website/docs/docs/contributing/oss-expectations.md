@@ -63,7 +63,7 @@ Comment on it! Explain that you’ve run into the same bug, or had a similar ide
 
 In our most critical repositories (such as `dbt-core`), **our goal is to respond to most new issues within 2 standard work days.** This response will include the context, feedback, and pointers that we can offer as maintainers. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
 
-**What does “triage” mean?** In some repositories, we use a `triage` label to keep track of issues that need a response from a maintainer. In the `dbt-core` repo, we also tag issues with a “team” that will be providing the response.
+**What does “triage” mean?** In some repositories, we use a `triage` label to keep track of issues that need a response from a maintainer. In the `dbt-core` repo, we also tag issues with a "team" that will be providing the response.
 
 **What if I’m opening an issue in a smaller repository?** We’ve open sourced a number of software projects over the years; not all of them have the same activity or maintenance guarantees as `dbt-core`. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
@@ -82,10 +82,10 @@ In some cases, the right resolution to an open issue might be tangential to the 
 | `triage` | This is a new issue which has not yet been reviewed by a maintainer. This label is removed when a maintainer reviews and responds to the issue. |
 | `bug` | This issue represents a defect or regression from the behavior that's documented, or that you reasonably expect |
 | `enhancement` | This issue represents net-new functionality, including an extension of an existing capability |
-| `good first issue` | This issue does not require deep knowledge of the `dbt-core` codebase to implement. This issue is appropriate for a first-time contributor. |
+| `good first issue` | This issue does not require deep knowledge of the codebase to implement. This issue is appropriate for a first-time contributor. |
 | `help wanted` | This issue is trickier than a "good first issue." The required changes are scattered across the codebase, or more difficult to test. The maintainers are happy to help an experienced community contributor; they aren't planning to prioritize this issue themselves. |
-| `duplicate` | This issue is functionally identical to another open issue. The `dbt-core` maintainers will close this issue and encourage community members to focus conversation on the other one. |
-| `stale` | This is an old issue which has not recently been updated. In popular repositories, stale issues will periodically be closed. |
+| `duplicate` | This issue is functionally identical to another open issue. The maintainers will close this issue and encourage community members to focus conversation on the other one. |
+| `stale` | This is an old issue which has not recently been updated. In repositories with a lot of activity, stale issues will periodically be closed. |
 | `wontfix` | This issue does not require a code change in the repository, or the maintainers are unwilling to merge a change which implements the proposed behavior. |
 
 ## Pull requests
