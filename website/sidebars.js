@@ -763,13 +763,39 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Git",
-      link: { type: 'doc', id: 'docs/faqs/git' }, 
+      label: "Jinja",
+      link: { type: 'doc', id: 'docs/faqs/jinja' }, 
       items: [
         "https://docs.getdbt.com/faqs/dbt-specific-jinja",
         "https://docs.getdbt.com/faqs/debugging-jinja",
         "https://docs.getdbt.com/faqs/quoting-column-names",
         "https://docs.getdbt.com/faqs/which-jinja-docs",
+      ],
+    },
+    {
+      type: "category",
+      label: "Seeds",
+      link: { type: 'doc', id: 'docs/faqs/seeds' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/build-one-seed",
+        "https://docs.getdbt.com/faqs/full-refresh-seed",
+        "https://docs.getdbt.com/faqs/load-raw-data-with-seed",
+        "https://docs.getdbt.com/faqs/run-downstream-of-seed",
+        "https://docs.getdbt.com/faqs/seed-datatypes",
+        "https://docs.getdbt.com/faqs/seed-hooks",
+      ],
+    },
+    {
+      type: "category",
+      label: "Seeds",
+      link: { type: 'doc', id: 'docs/faqs/seeds' }, 
+      items: [
+        "https://docs.getdbt.com/faqs/build-one-seed",
+        "https://docs.getdbt.com/faqs/full-refresh-seed",
+        "https://docs.getdbt.com/faqs/load-raw-data-with-seed",
+        "https://docs.getdbt.com/faqs/run-downstream-of-seed",
+        "https://docs.getdbt.com/faqs/seed-datatypes",
+        "https://docs.getdbt.com/faqs/seed-hooks",
       ],
     },
     {
