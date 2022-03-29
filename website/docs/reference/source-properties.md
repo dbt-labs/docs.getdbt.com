@@ -7,7 +7,7 @@ title: Source properties
 - [Declaring resource properties](configs-and-properties)
 
 ## Overview
-Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`source-paths` config](source-paths)).
+Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](model-paths)).
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 

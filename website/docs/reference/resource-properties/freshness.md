@@ -165,7 +165,7 @@ where {{ filter }}
 {% endif %}
 ```
 
-_[Source code](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
+_[Source code](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
 
 </TabItem>
 

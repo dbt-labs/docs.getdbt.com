@@ -6,7 +6,6 @@ title: "BigQuery Profile"
 **Maintained by:** core dbt maintainers    
 **Author:** dbt Labs    
 **Source:** [Github](https://github.com/dbt-labs/dbt-bigquery)   
-**Core version:** v0.13.0 and newer   
 **dbt Cloud:** Supported   
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C99SNSRTK)      
 
@@ -296,6 +295,23 @@ Database Error in model debug_table (models/debug_table.sql)
   compiled SQL at target/run/bq_project/models/debug_table.sql
 ```
 
+### OAuth 2.0 Scopes for Google APIs
+
+By default, the BigQuery connector requests three OAuth scopes, namely `https://www.googleapis.com/auth/bigquery`, `https://www.googleapis.com/auth/cloud-platform`, and `https://www.googleapis.com/auth/drive`. These scopes were originally added to provide access for the models that are reading from Google Sheets. However, in some cases, a user may need to customize the default scopes (for example, to reduce them down to the minimal set needed). By using the `scopes` profile configuration you are able to set up your own OAuth scopes for dbt. Example:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      scopes:
+        - https://www.googleapis.com/auth/bigquery
+```
+
 ### Service Account Impersonation
 <Changelog>New in v0.18.0</Changelog>
 
@@ -361,6 +377,6 @@ https://www.googleapis.com/auth/drive.readonly,\
 https://www.googleapis.com/auth/iam.test
 ```
 
-A browser window should open, and you should be promoted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
+A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
 
 This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.

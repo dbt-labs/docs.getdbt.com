@@ -8,7 +8,7 @@ title: Snapshot properties
 
 Snapshots properties can be declared in `.yml` files in:
 - your `snapshots/` directory (as defined by the [`snapshot-paths` config](snapshot-paths))
-- your `models/` directory (as defined by the [`source-paths` config](source-paths))
+- your `models/` directory (as defined by the [`model-paths` config](model-paths))
 
 We recommend that you put them in the `snapshots/` directory. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `snapshots/` or `models/` directory.
 

@@ -9,177 +9,116 @@ Test selection works a little differently from other resource selection. This ma
 
 Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, etc.
 
-Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected.
+Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected. [See below](#indirect-selection) for more details.
 
 <Changelog>
 
 * `v0.20.0`: Test selection is no longer greedy for indirect inclusion (ALL parents must be selected for the test to be selected). It is still greedy for indirect exclusion (if ANY parent is excluded, the test is excluded).
 * `v0.21.0`: Introduce `--greedy` flag (and `greedy` selector property), to optionally include tests that are indirectly selected and have an unselected parent.
+* `v1.0.0`: Renamed the `--greedy` flag/property to `indirect_selection`, and set its default back to "eager" (pre-v0.20). You can achieve the "cautious" behavior introduced in v0.20 by setting the flag/property to `cautious`.
 
 </Changelog>
 
-This can be complex for tests with multiple parents (e.g. `relationships`, or custom tests that `ref()` multiple models). To prevent tests from running when they aren't wanted, a test will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. On the other hand, if **ANY** parent is excluded, the test will be aggressively excluded as well.
-
-Starting in dbt v0.21, dbt will warn you about tests that have not been indirectly selected because they have at least one unselected parent. You may optionally include them by turning on "greedy" selection: pass the `--greedy` flag, or define a `greedy` property in [yaml selectors](yaml-selectors). When enabled, dbt will include tests that have ANY parent selected, even if other parents are not selected.
-
-We've included lots of examples below:
+Test selection is powerful, and we know it can be tricky. To that end, we've included lots of examples below:
 
 ### Direct selection
 
 <Changelog>
 
 * `v0.18.0`: Introduced the `test_type` selection method. In previous versions, similar behavior is possible via the `--schema` or `--data` flags.
+- `v1.0.0`: Renamed test types: "generic" (formerly "schema") and "singular" (formerly "data"). Removed support for the `--schema` and `--data` flags.
 
 </Changelog>
 
-Run generic (schema) tests only:
+Run generic tests only:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
-  $ dbt test --select test_type:schema
+  $ dbt test --select test_type:generic
   ```
 
-</TabItem>
-<TabItem value="legacy">
-
-  ```bash
-  $ dbt test --models test_type:schema
-  ```
-
-</TabItem>
-</Tabs>
-
-Run bespoke (data) tests only:
-
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
-
-  ```bash
-  $ dbt test --select test_type:data
-  ```
-
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models test_type:data
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
+
+Run singular tests only:
+
+<VersionBlock firstVersion="0.21">
+
+  ```bash
+  $ dbt test --select test_type:singular
+  ```
+
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
+
+  ```bash
+  $ dbt test --models test_type:data
+  ```
+
+</VersionBlock>
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
 
 ### Indirect selection
 
-
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select customers
   $ dbt test --select orders
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models customers
   $ dbt test --models orders
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
-These are examples of "indirect" selection: `customers` and `orders` select models (whether by name or path). Any tests defined on `customers` or `orders` will be selected indirectly, and thereby included.
+These are examples of "indirect" selection: `customers` and `orders` select models (whether by name or path). Any tests defined on either `customers` or `orders` will be selected indirectly, and thereby included.
 
-If a test depends on both `customers` _and_ `orders` (e.g. a `relationships` test between them), it will _not_ be selected indirectly in the example above. Instead, it would only be selected indirectly if both parents are selected:
+ By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include _any_ test that touches either `customers` or `orders`, even if it touches other models as well.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+It is possible to prevent tests from running if one or more of its parents is unselected, however; we call this "cautious" indirect selection. This can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures by tests that depend on unbuilt resources. (Another way to achieve this is with [deferral](defer)).
+
+With `dbt test --indirect-selection=cautious` (or setting `indirect_selection: cautious` in a [yaml selector](yaml-selectors)) tests will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. Note that test _exclusion_ is always greedy: if **ANY** parent is explicitly excluded, the test will be excluded as well.
+
+Imagine a `relationships` test between `customers` and `orders`. By default, the selection criteria above would select that test "eagerly." If you opt for "cautious" indirect selection instead, the `relationships` test would _not_ be selected by the criteria above, because one of its parents is unselected. It would be selected indirectly only ("cautiously") if both parents are selected:
+
+```shell
+$ dbt test --select customers orders --indirect-selection=cautious
+```
+
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select customers orders
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models customers orders
   ```
 
-</TabItem>
-</Tabs>
-
-
-
-Or if you pass the `--greedy` flag:
-
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
-
-  ```bash
-  $ dbt test --select customers --greedy
-  $ dbt test --select orders --greedy
-  ```
-
-</TabItem>
-<TabItem value="legacy">
-
-  ```bash
-  $ dbt test --models customers --greedy
-  $ dbt test --models orders --greedy
-  ```
-
-</TabItem>
-</Tabs>
+</VersionBlock>
 
  ### Syntax examples
 
 The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   # Run tests on a model (indirect selection)
@@ -202,8 +141,8 @@ The following examples should feel somewhat familiar if you're used to executing
 
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   # Run tests on a model (indirect selection)
@@ -226,66 +165,50 @@ The following examples should feel somewhat familiar if you're used to executing
 
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
  The same principle can be extended to tests defined on other resource types. In these cases, we will execute all tests defined on certain sources via the `source:` selection method:
 
- <Tabs
-   defaultValue="modern"
-   values={[
-     { label: 'v0.21.0 and later', value: 'modern', },
-     { label: 'v0.20.x and earlier', value: 'legacy', }
-   ]
- }>
- <TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
-   ```bash
-   # tests on all sources
-   $ dbt test --select source:*
+  ```bash
+  # tests on all sources
+  $ dbt test --select source:*
 
-   # tests on one source
-   $ dbt test --select source:jaffle_shop
+  # tests on one source
+  $ dbt test --select source:jaffle_shop
 
-   # tests on one source table
-   $ dbt test --select source:jaffle_shop.customers
+  # tests on one source table
+  $ dbt test --select source:jaffle_shop.customers
 
-   # tests on everything _except_ sources
-   $ dbt test --exclude source:*
-   ```
+  # tests on everything _except_ sources
+  $ dbt test --exclude source:*
+  ```
 
- </TabItem>
- <TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
-   ```bash
-   # tests on all sources
-   $ dbt test --models source:*
+  ```bash
+  # tests on all sources
+  $ dbt test --models source:*
 
-   # tests on one source
-   $ dbt test --models source:jaffle_shop
+  # tests on one source
+  $ dbt test --models source:jaffle_shop
 
-   # tests on one source table
-   $ dbt test --models source:jaffle_shop.customers
+  # tests on one source table
+  $ dbt test --models source:jaffle_shop.customers
 
-   # tests on everything _except_ sources
-   $ dbt test --exclude source:*
-   ```
+  # tests on everything _except_ sources
+  $ dbt test --exclude source:*
+  ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
  ### More complex selection
 
 Through the combination of direct and indirect selection, there are many ways to accomplish the same outcome. Let's say we have a data test named `assert_total_payment_amount_is_positive` that depends on a model named `payments`. All of the following would manage to select and execute that test specifically:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select assert_total_payment_amount_is_positive # directly select the test by name
@@ -293,8 +216,8 @@ Through the combination of direct and indirect selection, there are many ways to
   $ dbt test --select payments --data  # indirect selection, earlier versions
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models assert_total_payment_amount_is_positive # directly select the test by name
@@ -302,48 +225,38 @@ Through the combination of direct and indirect selection, there are many ways to
   $ dbt test --models payments --data  # indirect selection, earlier versions
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
  As long as you can select a common property of a group of resources, indirect selection allows you to execute all the tests on those resources, too. In the example above, we saw it was possible to test all table-materialized models. This principle can be extended to other resource types, too:
 
+<VersionBlock firstVersion="0.21">
 
- <Tabs
-   defaultValue="modern"
-   values={[
-     { label: 'v0.21.0 and later', value: 'modern', },
-     { label: 'v0.20.x and earlier', value: 'legacy', }
-   ]
- }>
- <TabItem value="modern">
+  ```bash
+  # Run tests on all models with a particular materialization
+  $ dbt test --select config.materialized:table
 
- ```bash
- # Run tests on all models with a particular materialization
- $ dbt test --select config.materialized:table
+  # Run tests on all seeds, which use the 'seed' materialization
+  $ dbt test --select config.materialized:seed
 
- # Run tests on all seeds, which use the 'seed' materialization
- $ dbt test --select config.materialized:seed
+  # Run tests on all snapshots, which use the 'snapshot' materialization
+  $ dbt test --select config.materialized:snapshot
+  ```
 
- # Run tests on all snapshots, which use the 'snapshot' materialization
- $ dbt test --select config.materialized:snapshot
- ```
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
- </TabItem>
- <TabItem value="legacy">
+  ```bash
+  # Run tests on all models with a particular materialization
+  $ dbt test --models config.materialized:table
 
-   ```bash
-   # Run tests on all models with a particular materialization
-   $ dbt test --models config.materialized:table
+  # Run tests on all seeds, which use the 'seed' materialization
+  $ dbt test --models config.materialized:seed
 
-   # Run tests on all seeds, which use the 'seed' materialization
-   $ dbt test --models config.materialized:seed
+  # Run tests on all snapshots, which use the 'snapshot' materialization
+  $ dbt test --models config.materialized:snapshot
+  ```
 
-   # Run tests on all snapshots, which use the 'snapshot' materialization
-   $ dbt test --models config.materialized:snapshot
-   ```
-
-</TabItem>
-</Tabs>
+</VersionBlock>
 
  Note that this functionality may change in future versions of dbt.
 
@@ -368,29 +281,20 @@ models:
 
 </File>
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select tag:my_column_tag
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models tag:my_column_tag
   ```
 
-</TabItem>
-</Tabs>
-
+</VersionBlock>
 
 Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of dbt.
 
@@ -415,27 +319,17 @@ models:
 
 </File>
 
-
-
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select tag:my_test_tag
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models tag:my_test_tag
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
