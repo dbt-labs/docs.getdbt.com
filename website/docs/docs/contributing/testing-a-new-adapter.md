@@ -156,7 +156,7 @@ For the time being, this package is also located within the `dbt-core` repositor
 
 In the course of creating and maintaining your adapter, it's likely that you will end up implementing tests that fall into three broad categories:
 
-1. **Basic tests** that every adapter plugin is expected to pass, defined in `tests.adapter.basic`. Given differences across data platforms, these may require slightly modification or reimplementation. Significantly overriding or disabling these tests should be with good reason, since each represents basic functionality that dbt users are accustomed to having. For example, if your adapter does not support incremental models, you should disable the test _and_ note that limitation in documentation, READMEs, and usage guides that accompany your adapter.
+1. **Basic tests** that every adapter plugin is expected to pass, defined in `tests.adapter.basic`. Given differences across data platforms, these may require slight modification or reimplementation. Significantly overriding or disabling these tests should be with good reason, since each represents basic functionality that dbt users are accustomed to having. For example, if your adapter does not support incremental models, you should disable the test _and_ note that limitation in documentation, READMEs, and usage guides that accompany your adapter.
 
 2. **Optional tests**, for second-order functionality that is common across plugins, but not required for basic use. Your plugin can opt into these test cases by inheriting existing ones, or reimplementing them with adjustments. More tests will be added as we convert older tests defined on dbt-core and mature plugins to use the standard framework.
 
@@ -339,6 +339,10 @@ class TestSnapshotCheckColsRedshift(BaseSnapshotCheckCols):
 
 </File>
 
+As another example, the `dbt-bigquery` adapter asks users to "authorize" replacing a table with a view by supplying the `--full-refresh` flag. The reason: In the table materialization logic, a view by the same name must first be dropped; if the table query fails, the model will be missing.
+
+Knowing this possibility, the "base" test case offers a `require_full_refresh` switch on the `test_config` fixture class. For BigQuery, we'll switch it on:
+
 <File name="tests/functional/adapter/test_basic.py">
 
 ```python
@@ -346,10 +350,6 @@ import pytest
 from dbt.tests.adapter.basic.test_base import BaseSimpleMaterializations
 
 class TestSimpleMaterializationsBigQuery(BaseSimpleMaterializations):
-    # The dbt-bigquery adapter asks users to "authorize" replacing a table
-    # with a view by supplying the --full-refresh flag.
-    # Reason: In the table materialization logic, a view by the same name must
-    # first be dropped. If the table query fails, the model will be missing
     @pytest.fixture(scope="class")
     def test_config(self):
         # effect: add '--full-refresh' flag in requisite 'dbt run' step
