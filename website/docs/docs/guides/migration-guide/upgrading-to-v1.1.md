@@ -36,4 +36,5 @@ _Note: If you're contributing docs for a new or updated feature in v1.1, please 
 
 ### Plugins
 
+- **dbt-bigquery:** Support for finer-grained configuration of query timeout and retry when defining your [connection profile](bigquery-profile).
 - **dbt-spark** added support for a [`session` connection method](spark-profile#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
