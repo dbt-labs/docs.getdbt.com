@@ -732,8 +732,8 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Debug",
-      link: { type: 'doc', id: 'docs/faqs/debug' }, 
+      label: "Troubleshooting",
+      link: { type: 'doc', id: 'docs/faqs/troubleshooting' }, 
       items: [
         "https://docs.getdbt.com/faqs/debugging-jinja",
         "https://docs.getdbt.com/faqs/dispatch-could-not-find-package",
@@ -786,19 +786,7 @@ module.exports = {
       ],
     },
     {
-      type: "category",
-      label: "Seeds",
-      link: { type: 'doc', id: 'docs/faqs/seeds' }, 
-      items: [
-        "https://docs.getdbt.com/faqs/build-one-seed",
-        "https://docs.getdbt.com/faqs/full-refresh-seed",
-        "https://docs.getdbt.com/faqs/load-raw-data-with-seed",
-        "https://docs.getdbt.com/faqs/run-downstream-of-seed",
-        "https://docs.getdbt.com/faqs/seed-datatypes",
-        "https://docs.getdbt.com/faqs/seed-hooks",
-      ],
-    },
-    {
+      
   
       
       
