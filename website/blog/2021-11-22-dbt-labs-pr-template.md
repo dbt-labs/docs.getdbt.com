@@ -40,7 +40,7 @@ Our PR template ([view markdown file in GitHub](https://github.com/dbt-labs/dbt-
 * Changes to existing models
 * Checklist
 
-### How and why this GitHub pr template works
+### How and why this GitHub PR template works
 
 Having each of these sections written down significantly limits the communication overhead on our team, and limits the chances of us shipping low-quality analytics code. Let's explore how to use each section and its benefits.
 
