@@ -126,7 +126,7 @@ In general, your README contains information about things such as how to get goi
 
 ## Adding the full GitHub PR template to your repository
 
-If you haven’t already picked it up from GitHub, the full markdown code of the dbt Labs PR template is below. After copying the PR template to your clipboard, let's walk through how to add it to your repository
+If you haven’t already picked it up from GitHub, the full markdown code of the dbt Labs PR template is below. After copying the PR template to your clipboard, let's walk through how to add it to your repository.
 
 ```
 
