@@ -20,7 +20,7 @@ In that capacity, we cannot and will not fix every bug ourselves, or code up eve
 
 ### Initiative is everything
 
-Given that we, as maintainers, will not be able to resolve every bug or flesh out every feature request—if you, as a community member, want to see something change in dbt, the initiative rests with you.
+Given that we, as maintainers, will not be able to resolve every bug or flesh out every feature request, we empower you, as a community member, to initiate a change.
 
 - If you open the bug report, it’s more likely to be identified.
 - If you open the feature request, it’s more likely to be discussed.
