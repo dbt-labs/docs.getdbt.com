@@ -48,7 +48,7 @@ Having a consistent method to name tables and fields for backend data is incredi
 
 **Soft deletes FTW.**
 
-In a soft delete, data is noted as deleted in a type of `deleted_at`/`is_deleted field`. A hard delete performs a true deletion which ultimately removes the row from the table. Soft deletes and fields that specify whether rows were removed provide a true record of what is happening to the data. They establish greater context into backend application data and help analytics engineers ensure higher data quality.
+In a soft delete, data is noted as deleted in a type of `deleted_at`/`is_deleted` field. A hard delete performs a true deletion which ultimately removes the row from the table. Soft deletes and fields that specify whether rows were removed provide a true record of what is happening to the data. They establish greater context into backend application data and help analytics engineers ensure higher data quality.
 
 **Data is passed as the proper type.**
 
