@@ -1,8 +1,9 @@
 exports.versions = [
-  // {
-  //   version: "1.1",
-  //   EOLDate: "2023-03-18"
-  // },
+  {
+    version: "1.1",
+    EOLDate: "2023-04-27",  // TODO estimated for now
+    isPrerelease: true
+  },
   {
     version: "1.0",
     EOLDate: "2023-12-03"
@@ -17,4 +18,9 @@ exports.versions = [
   }
 ]
 
-exports.versionedPages = []
+exports.versionedPages = [
+    {
+      "page": "docs/guides/migration-guide/upgrading-to-v1.1",
+      "firstVersion": "1.1",
+    }
+]

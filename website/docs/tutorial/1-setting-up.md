@@ -98,7 +98,7 @@ BigQuery has <a href="https://cloud.google.com/bigquery/pricing">a generous free
 In order to let dbt connect to your warehouse, you'll need generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
-2. Select **+ Create Credentials** then select **Service account**.
+2. Select **+ Create Credentials** then **Service account**.
 3. Type "dbt-user" in the Service account name field, then click **Create and Continue**.
 4. Type and select **BigQuery Admin** in the Role field.
 5. Click **Continue**.

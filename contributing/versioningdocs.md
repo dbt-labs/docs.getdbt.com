@@ -61,7 +61,7 @@ exports.versionedPages = [
       "page": "docs/available-adapters",
       "firstVersion": "0.21",
     }
-}
+]
 ```
 
 ### Properties for versioning an entire page
