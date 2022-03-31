@@ -750,7 +750,8 @@ module.exports = {
       label: "Commonly Asked Questions",
       link: { type: 'doc', id: 'docs/faqs/commonly-asked' }, 
       items: [
-       ## need to reassess and shorten number of faqs
+       ## need to reassess and shorten number of faqs##
+      ## need Accounts, HIPPA/BAA/ reassess and shorten number of faqs##
       ],
     },
     {
@@ -783,6 +784,52 @@ module.exports = {
         "https://docs.getdbt.com/faqs/run-downstream-of-seed",
         "https://docs.getdbt.com/faqs/seed-datatypes",
         "https://docs.getdbt.com/faqs/seed-hooks",
+      ],
+    },
+    {
+      type: "category",
+      label: "Troubleshooting",
+      items: [
+        "docs.getdbt.com/faqs/troubleshooting",
+        {
+          type: "category",
+          label: "IDE",
+          items: [
+            "https://docs.getdbt.com/faqs/unused-model-configurations",
+						"https://docs.getdbt.com/faqs/sql-errors",
+						"https://docs.getdbt.com/faqs/jinja-whitespace",
+						"https://docs.getdbt.com/faqs/dispatch-could-not-find-package",
+          ],
+        },
+        {
+          type: "category",
+          label: "Git",
+          items: [
+            "need md files"
+          ],
+        },
+        {
+          type: "category",
+          label: "Accounts and Permissions",
+          items: [
+            "need md files"
+          ],
+        },
+        {
+          type: "category",
+          label: "Warehouse",
+          items: [
+            "need md files"
+          ],
+        },
+        {
+         type: "category",
+          label: "API",
+          items: [
+            "need md files",
+          ],
+        },
+        {
       ],
     },
     {
