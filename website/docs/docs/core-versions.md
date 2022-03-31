@@ -42,14 +42,7 @@ After a minor version reaches the end of its critical support period, one year a
 
 We aim to release a new minor "feature" every 3 months. _This is an indicative timeline ONLY._ For the latest information about upcoming releases, including their planned release dates and which features and fixes might be included in each, always consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones).
 
-| dbt Core   | Initial Release | Active Support Until | Critical Support Until  | Final Patch          |
-|------------|-----------------|----------------------|-------------------------|----------------------|
-| 1.0        | 2021-12-03      | 1.1.0 release        | 2022-12-03              |                      |
-| _1.1_      | _2022-04_       | _1.2.0 release_      | _2023-04_               |                      |
-| _1.2_      | _2022-07_       | _1.3.0 release_      | _2023-07_               |                      |
-| _1.3_      | _2022-10_       | _1.4.0 release_      | _2023-10_               |                      |
-
-_Italics: Future releases, NOT definite commitments. Shown for indication only._
+<Snippet src="core-versions-table" />
 
 ## Best practices for upgrading
 
