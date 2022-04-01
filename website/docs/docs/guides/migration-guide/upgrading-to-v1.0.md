@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to 1.0.0"
+title: "Upgrading to v1.0"
 
 ---
 
