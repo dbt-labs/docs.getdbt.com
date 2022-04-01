@@ -1,8 +1,8 @@
 ---
-title: "Setting up Redshift for dbt Cloud"
+title: "Set up and connect Redshift"
 id: setting-up-redshift
-description: "Set up Redshift with sample data and connect to dbt Cloud."
-sidebar_label: "Setting up Redshift"
+description: "Set up Redshift with sample data and connect to dbt Cloud or dbt Core."
+sidebar_label: "Set up and connect Redshift"
 ---
 
 In this tutorial, you will learn how to set up Redshift and connecting it to dbt Cloud.

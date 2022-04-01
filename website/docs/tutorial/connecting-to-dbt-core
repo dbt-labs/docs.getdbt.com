@@ -1,7 +1,7 @@
 ---
 title: "Connecting to dbt Core"
 id: connecting-to-dbt-core
-description: "Connectng your warehouse to dbt Core using the command line interface."
+description: "Connecting your warehouse to dbt Core using the command line interface."
 sidebar_label: "Connecting to dbt Core"
 ---
 TODO:move this content to a reuse snippet.

@@ -1,8 +1,8 @@
 ---
-title: "Setting up Snowflake for dbt Cloud"
+title: "Set up and connect Snowflake"
 id: setting-up-snowflake
-description: "Set up Snowflake with sample data and connect to dbt Cloud."
-sidebar_label: "Setting up with Snowflake"
+description: "Set up Snowflake with sample data and connect to dbt Cloud or dbt Core."
+sidebar_label: "Set up and connect Snowflake"
 ---
 
 ## Get started with Snowflake

@@ -1,8 +1,8 @@
 ---
-title: "Setting up Databricks for dbt Cloud"
+title: "Set up and connect Databricks"
 id: setting-up-databricks
-description: "Set up Databricks with sample data and connect to dbt Cloud."
-sidebar_label: "Setting up with Databricks"
+description: "Set up Databricks with sample data and connect to dbt Cloud or dbt Core."
+sidebar_label: "Set up and connect Databricks"
 ---
 
 ## Prerequisites  

@@ -1,10 +1,10 @@
 ---
 title: Build your first models
 id: build-your-first-models
-description: With our starter project setup, it's time to get to the fun part — building models!
+description: "Now that you've set up the starter project, you can get to the fun part — building models!"
 ---
 
-With our starter project setup, it's time to get to the fun part — building [models](building-models)! We're going to take the query from the [Setting up](/tutorial/setting-up) instructions, and turn it into a model in our dbt project.
+With our starter project setup, it's time to get to the fun part — building [models](building-models)! We're going to take the query from the [Setting up](/tutorial/getting-set-up) instructions, and turn it into a model in our dbt project.
 
 ## Checkout a new git branch
 
@@ -37,7 +37,7 @@ It's a good idea to check out a new git branch when working on new code.
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
-3. Paste the query from the [Setting up](/tutorial/setting-up) instructions into the file.
+3. Paste the query from the [Setting up](/tutorial/getting-set-up) instructions into the file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You should get a successful run, like so:
 
 <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
@@ -51,7 +51,7 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 
 1. Open your project in a code editor
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
-3. Paste the query from the [Setting up](/tutorial/setting-up) instructions into the file.
+3. Paste the query from the [Setting up](/tutorial/getting-set-up) instructions into the file.
 4. From the command line, execute `dbt run`. Your output should look like this:
 
 <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />

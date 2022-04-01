@@ -1,8 +1,8 @@
 ---
-title: "Setting up BigQuery for dbt Cloud"
+title: "Set up and connect BigQuery"
 id: setting-up-bigquery
-description: "Set up BigQuery with sample data and connect to dbt Cloud."
-sidebar_label: "Setting up with BigQuery"
+description: "Set up BigQuery with sample data and connect to dbt Cloud or dbt CLI."
+sidebar_label: "Set up and connect BigQuery"
 ---
 
 ## Create a BigQuery Project

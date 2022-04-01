@@ -5,6 +5,7 @@ description: Let's test and document our models to build trust in our data.
 ---
 
 ## Add tests to your models
+
 Adding [tests](/docs/building-a-dbt-project/tests) to a project helps validate that your models are working correctly. So let's add some tests to our project!
 
 <CloudCore>

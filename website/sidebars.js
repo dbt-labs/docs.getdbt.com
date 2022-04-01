@@ -598,26 +598,24 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Create a project",
-            link: { type: 'doc', id: 'tutorial/create-a-project' },
+          label: "Building your first project",
+            link: { type: 'doc', id: 'tutorial/building-your-first-project' },
           items: [
-            "tutorial/create-a-project-dbt-cloud",
-            "tutorial/create-a-project-dbt-cli",
+            "tutorial/build-your-first-models",
+            "tutorial/test-and-document-your-project",
+            "tutorial/deploy-your-project",
           ],
         },
-        "tutorial/build-your-first-models",
-        "tutorial/test-and-document-your-project",
-        "tutorial/deploy-your-project",
+        {
+          type: "category",
+          label: "Leveling up",
+          link: { type: 'doc', id: 'tutorial/leveling-up' },
+          items: [
+            "tutorial/using-jinja",
+            "tutorial/refactoring-legacy-sql"
           ],
     },
-    {
-      type: "category",
-      label: "Level up",
-      collapsed: false,
-      items: [
-        "tutorial/using-jinja",
-        "tutorial/refactoring-legacy-sql"
-      ],
+          ],
     },
   ],
 };

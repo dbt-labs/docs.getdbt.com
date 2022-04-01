@@ -127,7 +127,7 @@ var siteSettings = {
           items: [
             {
               label: 'Getting Started Tutorial',
-              to: '/tutorial/setting-up',
+              to: '/tutorial/getting-started',
             },
             {
               label: 'Online Courses',

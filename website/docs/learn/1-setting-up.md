@@ -12,7 +12,7 @@ If you are **new to dbt**, we recommend you take some time to read through the F
 If you are already **experienced with dbt**, you still need to complete this tutorial as we'll be building on this project in our lessons.
 
 :::info
-Please note that this tutorial is adapted from the main <a href="https://tutorial.getdbt.com/tutorial/setting-up/">Getting Started</a> tutorial — there may be some references to BigQuery in various videos, however the same concepts should apply on Snowflake.
+Please note that this tutorial is adapted from the main <a href="https://tutorial.getdbt.com/tutorial/getting-started">Getting Started</a> tutorial — there may be some references to BigQuery in various videos, however the same concepts should apply on Snowflake.
 :::
 
 In this tutorial, we will be turning the below query into a dbt project that is tested, documented, and deployed — you can check out the generated documentation docs for the project we're building [here](https://www.getdbt.com/getting-started-tutorial/#!/overview?g_v=1).

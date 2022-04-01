@@ -34,7 +34,7 @@ $ dbt --version
 
 :::info
 
-dbt should have been installed as part of the  [Setting Up](/tutorial/setting-up) part of the tutorial. If it was not installed, please follow the [installation instructions](dbt-cli/install/overview).
+dbt should have been installed as part of the  [Getting set up](/tutorial/getting-set-up) part of the tutorial. If it was not installed, please follow the [installation instructions](dbt-cli/install/overview).
 
 :::
 
