@@ -31,3 +31,7 @@ The manifest schema version will be updated to v5. The only change is to the def
 ## New and changed documentation
 
 _Note: If you're contributing docs for a new or updated feature in v1.1, please link those docs changes below!_
+
+### Plugins
+
+- **dbt-spark** added support for a [`session` connection method](spark-profile#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
