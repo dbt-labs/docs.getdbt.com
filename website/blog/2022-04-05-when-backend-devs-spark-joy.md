@@ -12,7 +12,7 @@ date: 2022-04-05
 is_featured: true
 ---
 
-# From the Slack Archives: When Backend Devs Spark Joy for Data Folks
+From the Slack Archives: When Backend Devs Spark Joy for Data Folks
 
 *"I forgot to mention we dropped that column and created a new one for it!”*
 
@@ -27,6 +27,9 @@ Backend developers work incredibly hard. They create the database and tables tha
 So what makes strong collaboration possible between analytics engineers and backend application developers?
 
 <!--truncate-->
+
+![A screenshot of the conversation that started the thread](/img/blog/2022-04-05-when-backend-devs-spark-joy/slack_thread_screenshot.png)
+*A screenshot of the conversation that started the thread*
 
 ## When the pieces fall into place
 
@@ -52,7 +55,9 @@ In a soft delete, data is noted as deleted in a type of `deleted_at`/`is_deleted
 
 **Data is passed as the proper type.**
 
-Fields that are strings should be strings! And ints should be ints! Completing funky casts of fields in your data models is sometimes inevitable, but limiting where those complexities happen makes data modeling more intuitive. 
+Fields that are strings should be strings! And ints should be ints! Completing funky casts of fields in your data models is sometimes inevitable, but limiting where those complexities happen makes data modeling more intuitive.
+
+> “I looked back at the list above and I didn't see 'proper data typing' explicitly called out. I've seen so many cases of strings when it should be an int or a decimal or date or whatever else.” - [a comment in the slack thread from Josh Andrews](https://getdbt.slack.com/archives/C0VLZPLAE/p1643305705280300?thread_ts=1643161237.258600&cid=C0VLZPLAE)
 
 ### Signs that operations are sparking joy
 
