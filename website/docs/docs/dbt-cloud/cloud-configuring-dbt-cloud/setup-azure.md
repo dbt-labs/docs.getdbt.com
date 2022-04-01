@@ -11,8 +11,9 @@ To use Azure Active Directory (Azure AD) for identity and access management in d
 
 1. [Register an Azure AD app](#register-an-azure-ad-app) in Azure DevOps.
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
-3. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
-4. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
+3. [Add another redirect URI](#add-another-redirect-URI).
+4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
+5. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
 Once the the Azure AD app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as scheduled runs and CI.
 1. [Connecting a Service User](#connecting-a-service-user).
