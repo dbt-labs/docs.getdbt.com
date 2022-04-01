@@ -102,55 +102,16 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
     > Note: If you do not see your account or project, click on your profile picture on the far right to ensure you are under the proper email address account. Sometimes when following links, your account switches from personal email to work email, or vice versa.
-    
-    <Lightbox src="/img/bigquery/project-selected.png" title="Bigquery Project Selected" />
-
-2. Generate credentials with the following options:
-
-    1. "Credential Type"
-
-        1. "Which API are you using?" `BigQuery API`
-
-        2. "What data will you be accessing?" `Application data` (you'll be creating a service account)
-
-        3. "Are you planning to use this API with App Engine or Compute Engine?" `No`
-            <Lightbox src="/img/bigquery/api-credential-type.png" title="Bigquery API - Credential Type" />
-
-        4. Click “NEXT”
-
-    2. “Service account details”
-
-        1. "Service account name" `dbt-user` (although I chose `dbt-learn-admin`)
-            > Note: You can enter a description for future reference, but this is optional.
-
-            <Lightbox src="/img/bigquery/api-service-account-details.png" title="Bigquery API - Service Account Details" />
-
-        2. Click “CREATE AND CONTINUE”
-
-    3. Create and/or grant access to project. 
-        > Note: The simplest way is to set up one owner/admin role, but you can set up different permissions here for developers or read-only if required.
-
-        <Lightbox src="/img/bigquery/api-grant-service-access.png" title="Bigquery API - Grant Service Account Access" />
-
-        1. then click “CONTINUE”
-
-    4. Grant users access:
-
-        1. Add your own email initially  
-            <Lightbox src="/img/bigquery/api-grant-user-access.png" title="Bigquery API - Grant Users Access" />
-
-        2. Click “DONE”
-
-3. You now have a service account. Click on it to proceed:
-    <Lightbox src="/img/bigquery/api-select-service-account.png" title="Bigquery API - Select Service Account" />
-
-    1. Under “KEYS” heading, click “ADD KEY” then “Create new key”
-        <Lightbox src="/img/bigquery/api-create-key.png" title="Bigquery API - Create New Key" />
-
-    2. "Key type" `JSON`
-        <Lightbox src="/img/bigquery/api-key-type.png" title="Bigquery API - Key Type" />
-
-    3. Click “CREATE” and it will download the keyfile
+2. Select **+ Create Credentials** then select **Service account**.
+3. Type "dbt-user" in the Service account name field, then click **Create and Continue**.
+4. Type and select **BigQuery Admin** in the Role field.
+5. Click **Continue**.
+6. Leave fields blank in the "Grant users access to this service account" section and click **Done**.
+7. Click the service account that you just created.
+8. Select **Keys**.
+9. Click **Add Key** then select **Create new key**.
+10. Select **JSON** as the key type then click **Create**.  
+11. You should be prompted to download the JSON file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
 
 ## Set up a dbt Cloud project and connect to BigQuery
 

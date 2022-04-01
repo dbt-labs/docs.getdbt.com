@@ -582,13 +582,13 @@ const sidebarSettings = {
   tutorial: [
     {
       type: "category",
-      label: "Get Started with dbt",
-      link: { type: 'doc', id: 'tutorial/setting-up' },
+      label: "Getting Started with dbt",
+      link: { type: 'doc', id: 'tutorial/getting-started' },
       items: [
         {
           type: "category",
-          label: "Set up your data platform",
-          link: { type: 'doc', id: 'tutorial/set-up-data-platform' },
+          label: "Getting set up",
+          link: { type: 'doc', id: 'tutorial/getting-set-up' },
           items: [
             "tutorial/setting-up-bigquery",
             "tutorial/setting-up-databricks",
