@@ -42,6 +42,8 @@ If your organization is using [Prefect](https://www.prefect.io), use the [DbtShe
 
 Alternatively, you can use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.
 
+You can also trigger dbt Cloud jobs with the [DbtCloudRunJob](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtcloudrunjob) task. Running this task will generate a markdown artifact viewable in the Prefect UI. The artifact will contain links to the dbt artifacts generate as a result of the job run.
+
 ### Using Dagster
 If your organization is using [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. Execution through both the dbt CLI and the dbt RPC server is supported, and metadata from dbt runs is automatically aggregated. Check out the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
 
