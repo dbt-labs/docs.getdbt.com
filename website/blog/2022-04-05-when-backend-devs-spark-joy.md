@@ -12,8 +12,6 @@ date: 2022-04-05
 is_featured: true
 ---
 
-From the Slack Archives: When Backend Devs Spark Joy for Data Folks
-
 *"I forgot to mention we dropped that column and created a new one for it!”*
 
 *“Hmm, I’m actually not super sure why `customer_id` is passed as an int and not a string.”*
