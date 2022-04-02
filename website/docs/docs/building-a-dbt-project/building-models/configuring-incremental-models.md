@@ -3,14 +3,16 @@ title: "Configuring incremental models"
 id: "configuring-incremental-models"
 ---
 
-## What is an incremental model?
-Incremental models are built as tables in your data warehouse – the first time a model is run, the table is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the table that has already been built (the target table).
+## About incremental models
+
+Incremental models are built as tables in your data warehouse. The first time a model is run, the table is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
 Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time dbt ran. As such, on each dbt run, your model gets built incrementally.
 
 Using an incremental model limits the amount of data that needs to be transformed, vastly reducing the runtime of your transformations. This improves warehouse performance and reduces compute costs.
 
-## How do I use the incremental materialization?
+## Using incremental materializations
+
 Like the other materializations built into dbt, incremental models are defined with `select` statements, with the materialization defined in a config block.
 ```sql
 {{
@@ -24,11 +26,12 @@ select ...
 ```
 
 To use incremental models, you also need to tell dbt:
-* how to filter the rows on an incremental run.
-* the uniqueness constraint of the model (if any).
 
+* How to filter the rows on an incremental run.
+* The uniqueness constraint of the model (if any).
 
 ### Filtering rows on an incremental run
+
 To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
 
 Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](this)" variable.
@@ -64,14 +67,28 @@ from raw_app_data.events
 
 :::tip Optimizing your incremental model
 
-For more complex incremental models that make use of CTEs, you should consider the impact of the position of the `is_incremental()` macro on query performance. On some warehouses, filtering your records early can vastly improve the run time of your query!
+For more complex incremental models that make use of Common Table Expressions (CTEs), you should consider the impact of the position of the `is_incremental()` macro on query performance. In some warehouses, filtering your records early can vastly improve the run time of your query!
 
 :::
 
 ### Defining a uniqueness constraint (optional)
-`unique_key` is an optional parameter for incremental models that specifies a field which should be unique within your model. If the unique key of an existing row in your target table matches one of your incrementally transformed rows, the existing row will be updated. This ensures that you don't have multiple rows in your target table for a single row in your source data.
 
-You can define `unique_key` in a configuration block at the top of your model. The `unique_key` should be a single field name that is present in your model definition. While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported, so is not recommended. If you do not have a single field that is unique, consider first creating such a field in your model.
+A `unique_key` is an optional parameter for incremental models that specifies a field that should be unique within your model.
+
+For a given rown in a `source` table: 
+* if all unique_key identified columns are present in the target table, an update procedure takes place
+* if any one of the unique_key columns in a source row does not find a matching target table row, the entire row is inserted into the target table
+
+
+Ideally, you would use incremental models when you want a row or rows in a database to only be represented by a single-source-of-truth row in the target table.
+
+You can define `unique_key` in a configuration block at the top of your model.
+
+The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `[‘col1, ‘col2’, …])`. We recommend you create a list of column in your model.
+ 
+:::info
+While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported, so is not recommended.
+:::
 
 As an example, consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
 
