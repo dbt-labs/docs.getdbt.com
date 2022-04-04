@@ -265,3 +265,12 @@ $ dbt test --select result:fail # run all tests that failed on the prior invocat
 $ dbt build --select 1+result:fail # run all the models associated with failed tests from the prior invocation of dbt build
 $ dbt seed --select result:error # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
+
+### The "source_status" method
+<Changelog>New in v1.1.0</Changelog>
+The `source_status` method is related to the `state` method described above, and can be used to select resources based on their source freshness status from a prior run. Note that `dbt source freshness` must have been run twice in order to create the result on which a source_status selector operates. You can use `source_status` selectors in conjunction with the `+` operator.
+
+```bash
+$ dbt test --select source_status:fresher # test all sources that are fresher
+$ dbt build --select source_status:fresher+ # run and test all the models that are related to fresher sources
+```
