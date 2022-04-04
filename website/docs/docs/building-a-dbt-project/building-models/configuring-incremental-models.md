@@ -80,13 +80,13 @@ For a given row in a `source` table:
 * if any one of the unique_key columns in a source row does not find a matching target table row, the entire row is inserted into the target table
 
 
-Ideally, you would use incremental models when you want a row or rows in a database to only be represented by a single-source-of-truth row in the target table.
+By using `unique_key`, you can ensure that each row from the source table is represented by a single row in your incremental model, without duplicates
 
 
 The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `[‘col1, ‘col2’, …])`. We recommend you create a list of column in your model.
  
 :::info
-While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported, so is not recommended.
+While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported. We recommend you pass these columns as a list instead: `unique_key = ['user_id', 'session_number']`.
 :::
 
 As an example, consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
