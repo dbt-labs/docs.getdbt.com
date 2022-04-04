@@ -69,3 +69,16 @@ The state and result selectors can also be combined in a single invocation of db
 ```bash
 $ dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
 ```
+### The "source_status" status
+
+Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/docs/reference/artifacts/sources-json) page. 
+
+The following dbt commands produce `sources.json` artifacts whose results can be referenced in subsequent dbt invocations:  
+- `dbt source freshness`
+
+After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
+
+```bash
+# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
+$ dbt build --select source_status:fresher+ --defer --state path/to/prod/artifacts
+```
