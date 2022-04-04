@@ -42,5 +42,5 @@ title: "Upgrading to 0.21.0"
 
 ### Plugins
 - **Postgres** [profile](postgres-profile) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
-- **Redshift**: [profile](redshift-profile) property `ra3: true` to support cross-database source definitions and read-only querying
+- **Redshift**: [profile](redshift-profile) property `ra3_node: true` to support cross-database source definitions and read-only querying
 - **BigQuery**: [profile](bigquery-profile) property `execution_project` now configurable. [Snapshots](snapshots) support `target_project` and `target_dataset` config aliases.
