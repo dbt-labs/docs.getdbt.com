@@ -158,6 +158,15 @@ dbt test --select result:fail --exclude <example test> --defer --state path/to/p
 
 > Note: If you're using the `--state target/` flag, `result:error` and `result:fail` flags can only be selected concurrently(in the same command) if using the `dbt build` command. `dbt test` will overwrite the `run_results.json` from `dbt run` in a previous command invocation.
 
+<Changelog>New in v1.1.0</Changelog>
+
+By comparing to a `sources.json` artifact from a previous production run to a current `sources.json` artifact, dbt can determine which sources are fresher and run downstream models based on them.
+
+```bash
+dbt build --select source_status:fresher+ --defer --state path/to/prod/artifacts
+```
+  - Run and test all my sources that are fresher than the previous run and run and test all downstream models that may be affected by them
+
 To learn more, read the docs on [state](understanding-state).
 
 ## Pro-tips for dbt Projects
