@@ -377,7 +377,7 @@ For the `check` strategy, the current timestamp is used to populate each column
 
 <details>
 
-    <summary>Snapshot query results at `2019-01-01 11:00`</summary>
+<summary>Snapshot query results at `2019-01-01 11:00`</summary>
 
 | id | status  |
 | -- | ------- |
