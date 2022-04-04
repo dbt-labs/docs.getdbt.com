@@ -73,7 +73,13 @@ For more complex incremental models that make use of Common Table Expressions (C
 
 ### Defining a uniqueness constraint (optional)
 
-A `unique_key` is an optional parameter for incremental models that specifies a field that should be unique within your model. You can define `unique_key` in a configuration block at the top of your model.
+<VersionBlock firstVersion="0.20" lastVersion="1.0">
+
+You can define `unique_key` in a configuration block at the top of your model. The `unique_key` should be a single field name that is present in your model definition. While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported, so is not recommended. If you do not have a single field that is unique, consider first creating such a field in your model.
+</VersionBlock>
+<VersionBlock firstVersion="1.1">
+A `unique_key` is an optional parameter for incremental models, that specifies a field (or combination of fields) that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model.
+</VersionBlock>
 
 For a given row in a `source` table: 
 * if all unique_key identified columns are present in the target table, an update procedure takes place
