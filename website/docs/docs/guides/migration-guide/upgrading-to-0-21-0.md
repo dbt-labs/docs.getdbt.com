@@ -12,7 +12,7 @@ title: "Upgrading to 0.21.0"
 ## Breaking changes
 
 - `dbt source snapshot-freshness` has been renamed to `dbt source freshness`. Its node selection logic is now consistent with other tasks. In order to check freshness for a specific source, you must prefix it with `source:`.
-- **Snowflake:** Turn off transactions and turn on autocommit by default. Explicitly specify `begin` and `commit` for [DML statements](https://stackoverflow.com/a/44796508) in incremental and snapshot materializations. Note that this may affect user-space code that depends on transactions.
+- **Snowflake:** Turn off transactions and turn on `autocommit` by default. Within dbt materializations, wrap [DML statements](https://stackoverflow.com/a/44796508) in explicit `begin` and `commit`. Note that it is not recommended to run DML statements outside of dbt materialization logic. If you do this, despite our recommendation, you will need to wrap those statements in explicit `begin` and `commit`. Note also that this may affect user-space code that depends on transactions, such as pre-hooks and post-hooks that specify `transaction: true` or `transaction: false`. We recommend removing those references to transactions.
 - **Artifacts:**
     - [`manifest.json`](manifest-json) uses a `v3` schema that includes additional node properties (no changes to existing properties)
     - [`run_results.json`](run-results-json) uses a `v3` schema that has added `skipped` as a potential `TestResult`
@@ -42,5 +42,5 @@ title: "Upgrading to 0.21.0"
 
 ### Plugins
 - **Postgres** [profile](postgres-profile) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
-- **Redshift**: [profile](redshift-profile) property `ra3: true` to support cross-database source definitions and read-only querying
+- **Redshift**: [profile](redshift-profile) property `ra3_node: true` to support cross-database source definitions and read-only querying
 - **BigQuery**: [profile](bigquery-profile) property `execution_project` now configurable. [Snapshots](snapshots) support `target_project` and `target_dataset` config aliases.

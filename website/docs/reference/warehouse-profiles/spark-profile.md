@@ -18,9 +18,19 @@ id: "spark-profile"
 
 dbt-spark can connect to Spark clusters by three different methods:
 
-- `odbc` is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
-- `http` is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
-- `thrift` connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
+- [`odbc`](#odbc) is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
+- [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
+- [`http`](#http) is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
+
+<VersionBlock firstVersion="1.1">
+
+- [`session`](#session) connects to a pySpark session, running locally or on a remote machine.
+
+:::info Advanced functionality
+The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by dbt Cloud.
+:::
+
+</VersionBlock>
 
 ### ODBC
 
@@ -112,6 +122,29 @@ Databricks interactive clusters can take several minutes to start up. You may
 include the optional profile configs `connect_timeout` and `connect_retries`,
 and dbt will periodically retry the connection.
 
+<VersionBlock firstVersion="1.1">
+
+### Session
+
+Use the `session` method if you want to run `dbt` against a pySpark session. 
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: session
+      schema: [database/schema name]
+      host: NA                           # not used, but required by `dbt-core`
+```
+
+</File>
+
+</VersionBlock>
+
 ## Installation and Distribution
 
 dbt's adapter for Apache Spark and Databricks is managed in its own repository, [dbt-spark](https://github.com/dbt-labs/dbt-spark). To use it, 
@@ -127,10 +160,20 @@ If connecting to a Spark cluster via the generic thrift or http methods, it requ
 ```
 # odbc connections
 $ pip install "dbt-spark[ODBC]"
-
+```
+```
 # thrift or http connections
 $ pip install "dbt-spark[PyHive]"
 ```
+
+<VersionBlock firstVersion="1.1">
+
+```
+# session connections
+$ pip install "dbt-spark[session]"
+```
+
+</VersionBlock>
 
 ## Caveats
 
