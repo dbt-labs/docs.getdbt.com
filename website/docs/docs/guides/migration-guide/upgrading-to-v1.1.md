@@ -16,6 +16,9 @@ pip install --pre "dbt-<adapter>~=1.1.0b1"
 - [CLI Installation guide](/dbt-cli/install/overview)
 - [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
 
+## Selection
+- Add `source_status:fresher` subselectors for fresher reruns when dbt sources are fresher in the current vs. previous state. See examples: [Pro-tips for Workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
+
 ## Breaking changes
 
 There are no breaking changes for end users of dbt. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
