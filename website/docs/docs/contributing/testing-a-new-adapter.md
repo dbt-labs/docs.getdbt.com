@@ -21,6 +21,8 @@ The **[`tests` module](https://github.com/dbt-labs/dbt-core/tree/HEAD/core/dbt/t
 
 In this example, we'll set up a basic dbt project using `pytest` fixtures, run some simple commands, and ensure they succeed (or fail) as we expect. To that end, we'll be using the `run_dbt` utility defined within the `tests` module of `dbt-core`.
 
+(For the sake of simplicity, the example assumes that we've already installed and configured `pytest`. We'll show that setup in more detail below.)
+
 First, let's define our project, using Python strings to stand in for file contents. The appeal of defining these in a separate file is that we can reuse the same "project" across test cases.
 
 <File name="tests/functional/example/fixtures.py">
@@ -128,7 +130,7 @@ class TestExample:
 
 Then, we invoke `pytest`:
 
-```bash
+```sh
 $ python3 -m pytest tests/functional/test_example.py
 =========================== test session starts ============================
 platform ... -- Python ..., pytest-..., pluggy-...
@@ -142,7 +144,7 @@ tests/functional/test_example.py .X                                  [100%]
 
 </File>
 
-The [pytest usage docs](https://docs.pytest.org/how-to/usage.html) offer guidance and a full command reference. In our experience, it can be particularly helpful to use the `-s` flag (or `--capture=no`) to print output from the dbt test, and to step into an interactive debugger if you've added one. You can also use environment variables to set [global dbt configs](global-configs), such as `DBT_DEBUG` (to show debug-level logs).
+The [pytest usage docs](https://docs.pytest.org/how-to/usage.html) offer guidance and a full command reference. In our experience, it can be particularly helpful to use the `-s` flag (or `--capture=no`) to print logs from the underlying dbt invocations, and to step into an interactive debugger if you've added one. You can also use environment variables to set [global dbt configs](global-configs), such as `DBT_DEBUG` (to show debug-level logs).
 
 ## Testing your adapter
 
@@ -177,19 +179,26 @@ In this section, we'll walk through the three steps to start running our basic t
 You should already have a virtual environment with `dbt-core` and your adapter plugin installed. You'll also need to install:
 - `pytest`
 - `dbt-tests-adapter`, the set of basic test cases
+- (optional) [`pytest` plugins](https://docs.pytest.org/en/7.0.x/reference/plugin_list.html)--we'll use `pytest-dotenv` below
 
 During initial development, the `dbt-tests-adapter` package is not yet on PyPi, so please install it directly from GitHub:
 ```bash
 pip install "git+https://github.com/dbt-labs/dbt-core.git#egg=dbt-tests-adapter&subdirectory=tests/adapter"
 ```
 
-Or specify it in a requirements file like:
+Or specify all dependencies in a requirements file like:
 <File name="dev_requirements.txt">
 
 ```txt
+pytest
+pytest-dotenv
 git+https://github.com/dbt-labs/dbt-core.git#egg=dbt-tests-adapter&subdirectory=tests/adapter
 ```
 </File>
+
+```sh
+pip install -r dev_requirements.txt
+```
 
 ### Set up and configure pytest
 
@@ -203,7 +212,9 @@ filterwarnings =
     ignore:.*'soft_unicode' has been renamed to 'soft_str'*:DeprecationWarning
     ignore:unclosed file .*:ResourceWarning
 env_files =
-    test.env  # this allows you to use env vars from a file named test.env
+    test.env  # uses pytest-dotenv plugin
+              # this allows you to store env vars for database connection in a file named test.env
+              # rather than passing them in every CLI command, or setting in `PYTEST_ADDOPTS`
               # be sure to add "test.env" to .gitignore as well!
 testpaths =
     tests/functional  # name per convention
@@ -249,7 +260,7 @@ import pytest
 
 from dbt.tests.adapter.basic.test_base import BaseSimpleMaterializations
 from dbt.tests.adapter.basic.test_singular_tests import BaseSingularTests
-from dbt.tests.adapter.basic.test_singular_tests_ephemeral importBaseSingularTestsEphemeral
+from dbt.tests.adapter.basic.test_singular_tests_ephemeral import BaseSingularTestsEphemeral
 from dbt.tests.adapter.basic.test_empty import BaseEmpty
 from dbt.tests.adapter.basic.test_ephemeral import BaseEphemeral
 from dbt.tests.adapter.basic.test_incremental import BaseIncremental
@@ -297,7 +308,7 @@ class TestSnapshotTimestampMyAdapter(BaseSnapshotTimestamp):
 
 
 Finally, run pytest:
-```bash
+```sh
 python3 -m pytest tests/functional
 ```
 
@@ -361,3 +372,78 @@ class TestSimpleMaterializationsBigQuery(BaseSimpleMaterializations):
 It's always worth asking whether the required modifications represent gaps in perceived or expected dbt functionality. Are these simple implementation details, which any user of this database would understand? Are they limitations worth documenting?
 
 If, on the other hand, they represent poor assumptions in the "basic" test cases, which fail to account for a common pattern in other types of databases-—please open an issue or PR in the `dbt-core` repository on GitHub.
+
+### Running with multiple profiles
+
+Some databases support multiple connection methods, which map to actually different functionality behind the scenes. For instance, the `dbt-spark` adapter supports connections to Apache Spark clusters _and_ Databricks runtimes, which supports additional functionality out of the box, enabled by the Delta file format.
+
+<File name="tests/conftest.py">
+
+```python
+def pytest_addoption(parser):
+    parser.addoption("--profile", action="store", default="apache_spark", type=str)
+
+
+# Using @pytest.mark.skip_adapter('apache_spark') uses the 'skip_by_adapter_type'
+# autouse fixture below
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers",
+        "skip_profile(profile): skip test for the given profile",
+    )
+
+@pytest.fixture(scope="session")
+def dbt_profile_target(request):
+    profile_type = request.config.getoption("--profile")
+    elif profile_type == "databricks_sql_endpoint":
+        target = databricks_sql_endpoint_target()
+    elif profile_type == "apache_spark":
+        target = apache_spark_target()
+    else:
+        raise ValueError(f"Invalid profile type '{profile_type}'")
+    return target
+
+def apache_spark_target():
+    return {
+        "type": "spark",
+        "host": "localhost",
+        ...
+    }
+
+def databricks_sql_endpoint_target():
+    return {
+        "type": "spark",
+        "host": os.getenv("DBT_DATABRICKS_HOST_NAME"),
+        ...
+    }
+```
+
+</File>
+
+<File name="tests/functional/adapter/basic.py">
+
+If there are tests that _shouldn't_ run for a given profile:
+```python
+# Snapshots require access to the Delta file format, available on our Databricks connection,
+# so let's skip on Apache Spark
+@pytest.mark.skip_profile('apache_spark')
+class TestSnapshotCheckColsSpark(BaseSnapshotCheckCols):
+    @pytest.fixture(scope="class")
+    def project_config_update(self):
+        return {
+            "seeds": {
+                "+file_format": "delta",
+            },
+            "snapshots": {
+                "+file_format": "delta",
+            }
+        }
+```
+
+</File>
+
+Finally:
+```sh
+python3 -m pytest tests/functional --profile apache_spark
+python3 -m pytest tests/functional --profile databricks_sql_endpoint
+```
