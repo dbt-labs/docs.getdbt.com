@@ -7,23 +7,32 @@ description: With our starter project setup, it's time to get to the fun part â€
 With our starter project setup, it's time to get to the fun part â€” building [models](building-models)! We're going to take the query from the [Setting up](/tutorial/setting-up) instructions, and turn it into a model in our dbt project.
 
 ## Checkout a new git branch
-### dbt Cloud
+
+<CloudCore>
+<div>
+
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`. The master branch should now be set to "read only" mode, so you'll need to create a new branch.
+
 2. Click the "create new branch" button, and name your branch `add-customers-model`.
 
 <Lightbox src="/img/checkout-branch-dbt-cloud.png" title="Checkout a new branch" />
+</div>
+<div>
 
-
-### dbt CLI
 It's a good idea to check out a new git branch when working on new code.
 
 1. Run `git checkout -b add-customers-model` to create a new branch.
 
 <Lightbox src="/img/checkout-branch-dbt-cli.png" title="Checkout a new branch" />
 
+</div>
+</CloudCore>
 
 ## Build your first model
-### dbt Cloud
+
+<CloudCore>
+<div>
+
 <LoomVideo id="09919ddb02e44015878c9e93e15fe792" />
 
 1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
@@ -35,8 +44,8 @@ It's a good idea to check out a new git branch when working on new code.
 
 If you switch back to the BigQuery console you'll be able to `select` from this model.
 
-
-### dbt CLI
+</div>
+<div>
 
 <LoomVideo id="2ae3e1c6dfab451ab165ce928c5600c0" />
 
@@ -49,7 +58,11 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 
 If you switch back to the BigQuery console you'll be able to `select` from this model.
 
+</div>
+</CloudCore>
+
 ### FAQs
+
 <FAQ src="checking-logs" />
 <FAQ src="which-schema" />
 <FAQ src="create-a-schema" />
@@ -58,6 +71,7 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 
 
 ## Change the way your model is materialized
+
 One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value. Let's see this in action.
 
 :::info Using the `+` sign in your `dbt_project.yml`

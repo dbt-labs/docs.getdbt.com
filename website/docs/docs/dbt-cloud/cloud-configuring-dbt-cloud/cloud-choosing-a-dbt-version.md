@@ -43,7 +43,7 @@ We will give customers consistent communication that they're hitting the end of 
 #### What should you be doing today?
 Your migration to v1.0.0 will progress much smoother if you **begin transitioning to more recent versions of dbt as soon as possible.**
 
-Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v.0.20.0) implies 6x the potential for breaking changes vs. upgrading a single minor version. 
+Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v.0.21.0) implies 6x the potential for breaking changes vs. upgrading a single minor version. 
 
 Refactoring code is much easier when you're updating a well-defined, constrained surface area. Doing things incrementally is the way to go.
 
@@ -61,4 +61,4 @@ Additionally upgrading to more recent versions of dbt Core will enable better pe
 
 #### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](docs/guides/migration-guide/upgrading-to-0-20-0) and our [upgrading Q&A page](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](docs/guides/migration-guide/upgrading-to-0-21-0) and our [upgrading Q&A page](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions).

@@ -117,4 +117,4 @@ To use the CLI, it's important that you know some basics of your terminal. In pa
 During dbt Learn, we try our best to demonstrate using both workflows. However, we tend to default to using dbt Cloud for some of the shorter demonstrations.
 :::
 
-If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/installation) for your operating system.
+If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/install/overview) for your operating system.

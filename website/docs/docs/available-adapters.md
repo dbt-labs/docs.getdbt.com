@@ -5,7 +5,7 @@ id: "available-adapters"
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
 
-Any adapter can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/installation).
+Any adapter can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
 
 ### dbt Labs Supported
 
@@ -28,6 +28,8 @@ These adapter plugins are built and maintained by the same people who build and 
 | Adapter for  | Documentation | Install from PyPi |
 | ------------ | ------------- | ----------------- |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
+| Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
+| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` 
 
 ### Community Supported
 
@@ -41,7 +43,6 @@ These adapter plugins are contributed and maintained by members of the community
 | Oracle Database        | [Profile Setup](oracle-profile)       | Oracle 11+                | `pip install dbt-oracle`     |
 | Dremio                 | [Profile Setup](dremio-profile)       | Dremio 4.7+               | `pip install dbt-dremio`     |
 | ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
-| Trino                  | [Profile Setup](trino-profile)        | Trino 359+                | `pip install dbt-trino`      |
 
 Community-supported plugins are works in progress, and all users are encouraged to contribute by testing and writing code. If you're interested in contributing:
 - Join the dedicated channel in [dbt Slack](https://community.getdbt.com/) (e.g. #db-sqlserver, #db-athena)

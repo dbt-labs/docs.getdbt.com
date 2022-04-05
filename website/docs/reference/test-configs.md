@@ -214,7 +214,7 @@ models:
 
 </File>
 
-If a bespoke test:
+If a singular test:
 
 <File name='tests/<filename>.sql'>
 

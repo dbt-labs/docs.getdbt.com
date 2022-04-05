@@ -6,7 +6,6 @@ title: "BigQuery Profile"
 **Maintained by:** core dbt maintainers    
 **Author:** dbt Labs    
 **Source:** [Github](https://github.com/dbt-labs/dbt-bigquery)   
-**Core version:** v0.13.0 and newer   
 **dbt Cloud:** Supported   
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C99SNSRTK)      
 
@@ -294,6 +293,23 @@ my-profile:
 Database Error in model debug_table (models/debug_table.sql)
   Query exceeded limit for bytes billed: 1000000000. 2000000000 or higher required.
   compiled SQL at target/run/bq_project/models/debug_table.sql
+```
+
+### OAuth 2.0 Scopes for Google APIs
+
+By default, the BigQuery connector requests three OAuth scopes, namely `https://www.googleapis.com/auth/bigquery`, `https://www.googleapis.com/auth/cloud-platform`, and `https://www.googleapis.com/auth/drive`. These scopes were originally added to provide access for the models that are reading from Google Sheets. However, in some cases, a user may need to customize the default scopes (for example, to reduce them down to the minimal set needed). By using the `scopes` profile configuration you are able to set up your own OAuth scopes for dbt. Example:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      scopes:
+        - https://www.googleapis.com/auth/bigquery
 ```
 
 ### Service Account Impersonation
