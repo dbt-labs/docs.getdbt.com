@@ -22,7 +22,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/). The policie
 
 ### Minor version support
 
-Minor versions will be supported for one year (12 months) from the date of their initial release. _This is a definite commitment._ Our mechanism for continuing to support a minor version is by releasing new patches for that minor version—so it's important to make sure you're always using the latest patch. Whenever we refer to a minor version, such as v1.0, we always mean its latest available patch release (v1.0.x).
+Minor versions include new features and capabilities. They will be supported for one year (12 months) from the date of their initial release. _This is a definite commitment._ Our mechanism for continuing to support a minor version is by releasing new patches: small, targeted bug fixes. Whenever we refer to a minor version, such as v1.0, we always mean its latest available patch release (v1.0.x).
 
 While a minor version is officially supported:
 - You can use it in dbt Cloud. For more on dbt Cloud versioning, see "[Choosing a dbt version](cloud-choosing-a-dbt-version)."
