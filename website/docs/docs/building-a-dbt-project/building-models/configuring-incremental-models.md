@@ -73,29 +73,38 @@ For more complex incremental models that make use of Common Table Expressions (C
 
 ### Defining a uniqueness constraint (optional)
 
+A `unique_key` determines whether a record has new values and should be updated. By using `unique_key`, you can ensure that each row from the source table is represented by a single row in your incremental model, without duplicates. Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
+
 <VersionBlock firstVersion="0.20" lastVersion="1.0">
 
-You can define `unique_key` in a configuration block at the top of your model. The `unique_key` should be a single field name that is present in your model definition. While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported, so is not recommended. If you do not have a single field that is unique, consider first creating such a field in your model.
+This optional parameter for incremental models specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, you should consider creating `unique_key` in your model definition.
+
 </VersionBlock>
+
 <VersionBlock firstVersion="1.1">
-A `unique_key` is an optional parameter for incremental models, that specifies a field (or combination of fields) that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model.
-</VersionBlock>
 
-For a given row in a `source` table: 
-* if all unique_key identified columns are present in the target table, an update procedure takes place
-* if any one of the unique_key columns in a source row does not find a matching target table row, the entire row is inserted into the target table
+This optional parameter for incremental models specifies a field (or combination of fields) that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model, and it can be a list in addition to a single column name.
 
+The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `[‘col1, ‘col2’, …])`. We recommend you create a list of columns in your model.
 
-By using `unique_key`, you can ensure that each row from the source table is represented by a single row in your incremental model, without duplicates
-
-
-The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `[‘col1, ‘col2’, …])`. We recommend you create a list of column in your model.
- 
-:::info
-While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported. We recommend you pass these columns as a list instead: `unique_key = ['user_id', 'session_number']`.
+:::tip
+We recommend using universally supported syntax to avoid problems and adhere to the same standards. For example, we recommend you pass these columns as a list: `unique_key = ['user_id', 'session_number']` instead of an expression: `concat(user_id, session_number)`.
 :::
 
-As an example, consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
+</VersionBlock>
+
+When using a `unique_key` for a given row in a `source` table:
+
+* If all `unique_key` identified columns are present in the target table, an update procedure likely takes place, depending on the incremental strategy. For more information, see [About incremental_strategy](#about-incremental_strategy).
+* If any one of the `unique_key` columns in a source row does not find a matching target table row, the entire row is inserted into the target table.
+
+:::info
+While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`. For more information, see [About incremental_strategy](#about-incremental_strategy).
+:::
+
+#### `unique_key` example
+
+Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
 
 <File name='models/staging/fct_daily_active_users.sql'>
 
@@ -157,6 +166,7 @@ The `is_incremental()` macro will return `True` if:
 Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
 
 ## How do incremental models work behind the scenes?
+
 dbt's incremental materialization works differently on different databases. Where supported, a `merge` statement is used to insert new records and update existing records.
 
 On warehouses that do not support `merge` statements, a merge is implemented by first using a `delete` statement to delete records in the target table that are to be updated, and then an `insert` statement.
@@ -215,7 +225,7 @@ Similarly, if you remove a column from your incremental model, and execute a `db
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-## What is an incremental_strategy?
+## About incremental_strategy
 
 On some adapters, an optional `incremental_strategy` config controls the code that dbt uses
 to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
