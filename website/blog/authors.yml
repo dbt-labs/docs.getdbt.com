@@ -166,3 +166,12 @@ nate_sooter:
       icon: fa-twitter
     - url: https://www.linkedin.com/in/nathansooter
       icon: fa-linkedin
+
+kira_furuichi:
+  name: Kira Furuichi
+  job_title: Technical Writer
+  organization: dbt Labs
+  image_url: /img/blog/authors/kira-furuichi.png
+  links:
+    - url: https://www.linkedin.com/in/kira-furuichi/
+      icon: fa-linkedin
