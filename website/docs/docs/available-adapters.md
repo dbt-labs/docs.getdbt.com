@@ -41,6 +41,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
 | Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
 | Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
+| TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb)) | [Profile Setup](tidb-profile) | `pip install dbt-tidb` |
 
 
 ### Community Supported
@@ -57,7 +58,6 @@ These adapter plugins are contributed and maintained by members of the community
 | ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
 | Athena                 | [Profile Setup](athena-profile)       | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
 | Vertica                | [Profile Setup](vertica-profile)      | Vertica 10.0+             | `pip install dbt-vertica`    |
-| TiDB                   | [Profile Setup](tidb-profile)         | TiDB 4.0+                 | `pip install dbt-tidb`       |
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
 - Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 
