@@ -53,7 +53,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**:
 
-*   [.yml files](/docs/building-a-dbt-project/testing-and-documentation/schemayml-files/#usage)
+*   [.yml files](/docs/building-a-dbt-project/using-sources/#testing-and-documenting-sources)
 *   [Materializations](/docs/building-a-dbt-project/building-models/materializations/#configuring-materializations)
 *   [YAML selectors](/reference/node-selection/yaml-selectors/)
 
@@ -200,7 +200,7 @@ Are you using the IDE and if so, how well?
 
 **Useful links**
 
-*   [dbt Cloud as a CI tool](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github/)
+*   [dbt Cloud as a CI tool](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github)
 
 
 ## ✅ DAG Auditing
