@@ -95,10 +95,10 @@ By using the first syntax, which is more universal, dbt can ensure that the colu
 
 </VersionBlock>
 
-When using a `unique_key` for a given row in a `source` table:
+When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
 
-* If all `unique_key` identified columns are present in the target table, an update procedure likely takes place, depending on the incremental strategy. For more information, see [About incremental_strategy](#about-incremental_strategy).
-* If any one of the `unique_key` columns in a source row does not find a matching target table row, the entire row is inserted into the target table.
+* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database and [incremental strategy](#about-incremental_strategy).
+* If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
 :::info
 While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
