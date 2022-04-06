@@ -85,10 +85,12 @@ This optional parameter for incremental models specifies a field that can unique
 
 This optional parameter for incremental models specifies a field (or combination of fields) that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model, and it can be a list in addition to a single column name.
 
-The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `[‘col1, ‘col2’, …])`. We recommend you create a list of columns in your model.
+The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `['col1', 'col2', …])`.
 
 :::tip
-We recommend using universally supported syntax to avoid problems and adhere to the same standards. For example, we recommend you pass these columns as a list: `unique_key = ['user_id', 'session_number']` instead of an expression: `concat(user_id, session_number)`.
+In cases where you need multiple columns in combination to uniquely identify each row, we recommend you pass these columns as a list (`unique_key = ['user_id', 'session_number']`), rather than a string expression (`unique_key = 'concat(user_id, session_number)'`).
+
+By using the first syntax, which is more universal, dbt can ensure that the columns will be templated into your incremental model materialization in a way that's appropriate to your database.
 :::
 
 </VersionBlock>
@@ -99,7 +101,7 @@ When using a `unique_key` for a given row in a `source` table:
 * If any one of the `unique_key` columns in a source row does not find a matching target table row, the entire row is inserted into the target table.
 
 :::info
-While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`. For more information, see [About incremental_strategy](#about-incremental_strategy).
+While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
 :::
 
 #### `unique_key` example
