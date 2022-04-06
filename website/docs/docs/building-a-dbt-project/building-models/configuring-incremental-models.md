@@ -77,7 +77,7 @@ A `unique_key` determines whether a record has new values and should be updated.
 
 <VersionBlock firstVersion="0.20" lastVersion="1.0">
 
-This optional parameter for incremental models specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, you should consider creating `unique_key` in your model definition.
+This optional parameter for incremental models specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
 
 </VersionBlock>
 
