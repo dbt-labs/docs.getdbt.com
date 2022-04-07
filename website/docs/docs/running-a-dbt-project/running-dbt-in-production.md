@@ -34,7 +34,7 @@ If you're interested in giving dbt Cloud a spin, you can sign up for a *forever 
 
 ### Using Airflow
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
-* Invoking dbt through the [DbtCloudRunJobOperator](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/operators.html). See the [Astronomer Registry](https://registry.astronomer.io/providers/dbt-cloud?type=Operators) as an alternative to the official [Airflow Docs](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/operators.html)
+* Invoking dbt through the [DbtCloudRunJobOperator](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/operators.html). See the [Astronomer Registry](https://registry.astronomer.io/providers/dbt-cloud?type=Operators) to see an [example airflow DAG](https://registry.astronomer.io/dags/example-dbt-cloud) to get started!
 
 <Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
 <Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
