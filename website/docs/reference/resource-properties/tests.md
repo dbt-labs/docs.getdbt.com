@@ -152,11 +152,11 @@ This feature is not implemented for analyses.
 
 ## Description
 
-The `tests` property defines assertions about a column, table, or view. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
+The `tests` property defines assertions about a column, table, or view. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 
-## test_name
+## Out-of-the-box tests
 
 There are four generic tests that are available out of the box, for everyone using dbt.
 
