@@ -1,4 +1,4 @@
-module.exports = {
+const sidebarSettings = {
   docs: [
     {
       type: "category",
@@ -67,20 +67,39 @@ module.exports = {
         {
           type: "category",
           label: "Migration guides",
+          link: {
+            type: 'generated-index',
+            title: 'Migration guides',
+            description: 'Learn how to upgrade to the latest version of dbt Core.',
+            slug: '/docs/guides/migration-guide',
+          },
           items: [
-            "docs/guides/migration-guide/upgrading-to-1-0-0",
-            "docs/guides/migration-guide/upgrading-to-0-21-0",
-            "docs/guides/migration-guide/upgrading-to-0-20-0",
-            "docs/guides/migration-guide/upgrading-to-0-19-0",
-            "docs/guides/migration-guide/upgrading-to-0-18-0",
-            "docs/guides/migration-guide/upgrading-to-0-17-0",
-            "docs/guides/migration-guide/upgrading-to-0-16-0",
-            "docs/guides/migration-guide/upgrading-to-0-15-0",
-            "docs/guides/migration-guide/upgrading-to-0-14-1",
-            "docs/guides/migration-guide/upgrading-to-0-14-0",
-            "docs/guides/migration-guide/upgrading-to-0-13-0",
-            "docs/guides/migration-guide/upgrading-to-0-12-0",
-            "docs/guides/migration-guide/upgrading-to-0-11-0",
+            "docs/guides/migration-guide/upgrading-to-v1.1",
+            "docs/guides/migration-guide/upgrading-to-v1.0",
+            "docs/guides/migration-guide/upgrading-to-v0.21",
+            "docs/guides/migration-guide/upgrading-to-v0.20",
+            {
+              type: "category",
+              label: "Older versions",
+              link: {
+                type: 'generated-index',
+                title: 'Migration guides',
+                description: 'Learn how to upgrade from older versions of dbt Core.',
+                slug: '/docs/guides/migration-guide/older-versions',
+              },
+              items: [
+                "docs/guides/migration-guide/upgrading-to-0-19-0",
+                "docs/guides/migration-guide/upgrading-to-0-18-0",
+                "docs/guides/migration-guide/upgrading-to-0-17-0",
+                "docs/guides/migration-guide/upgrading-to-0-16-0",
+                "docs/guides/migration-guide/upgrading-to-0-15-0",
+                "docs/guides/migration-guide/upgrading-to-0-14-1",
+                "docs/guides/migration-guide/upgrading-to-0-14-0",
+                "docs/guides/migration-guide/upgrading-to-0-13-0",
+                "docs/guides/migration-guide/upgrading-to-0-12-0",
+                "docs/guides/migration-guide/upgrading-to-0-11-0",
+              ],
+            },
           ],
         },
         "docs/guides/videos",
@@ -144,6 +163,15 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
+        {
+          type: "category",
+          label: "Connecting Azure DevOps",
+          link: { type: 'doc', id: 'docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops' }, 
+          items: [
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure',
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure',
+          ],
+        }, 
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
@@ -513,6 +541,7 @@ module.exports = {
             "reference/dbt-jinja-functions/run_query",
             "reference/dbt-jinja-functions/run_started_at",
             "reference/dbt-jinja-functions/schema",
+            "reference/dbt-jinja-functions/schemas",
             "reference/dbt-jinja-functions/source",
             "reference/dbt-jinja-functions/statement-blocks",
             "reference/dbt-jinja-functions/target",
@@ -619,3 +648,6 @@ module.exports = {
     },
   ],
 };
+
+
+module.exports = sidebarSettings
