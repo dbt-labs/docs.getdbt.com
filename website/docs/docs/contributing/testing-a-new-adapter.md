@@ -5,25 +5,40 @@ id: "testing-a-new-adapter"
 
 :::info
 
-Previously, we offered a packaged suite of tests for dbt adapter functionality: [`pytest-dbt-adapter`](https://github.com/dbt-labs/dbt-adapter-tests). We are deprecating that suite, in favor of the newer testing framework outlined in this document. The rest of this document assumes that your plugin is compatible with dbt-core v1.1 or newer.
+Previously, we offered a packaged suite of tests for dbt adapter functionality: [`pytest-dbt-adapter`](https://github.com/dbt-labs/dbt-adapter-tests). We are deprecating that suite, in favor of the newer testing framework outlined in this document.
 
 :::
 
-## Foundation
+This document has two sections:
+1. ["About the testing framework"](#about-the-testing-framework) describes the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
+2. ["Testing your adapter"](#testing-your-adapter) offers a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
 
-dbt-core offers a standard framework for running pre-built functional tests, and for defining new ones.
+## Prerequisites
+- Your adapter must be compatible with dbt-core **v1.1** or newer
+- You should be familiar with **pytest**: https://docs.pytest.org/
 
-The core testing framework is built using `pytest`, a mature and standard library for testing Python projects. It assumes a basic level of familiarity with the foundational concepts in `pytest`, such as fixtures. If this is your first time using `pytest`, we recommend you read the documentation: https://docs.pytest.org/
+## About the testing framework
 
-The **[`tests` module](https://github.com/dbt-labs/dbt-core/tree/HEAD/core/dbt/tests)** within `dbt-core` includes basic utilities for setting up `pytest` + `dbt`. These are used by all "pre-built" functional tests, and make it possible to quickly write your own tests.
+dbt-core offers a standard framework for running pre-built functional tests, and for defining your own tests. The core testing framework is built using `pytest`, a mature and standard library for testing Python projects.
 
-### Example
+The **[`tests` module](https://github.com/dbt-labs/dbt-core/tree/HEAD/core/dbt/tests)** within `dbt-core` includes basic utilities for setting up pytest + dbt. These are used by all "pre-built" functional tests, and make it possible to quickly write your own tests.
 
-In this example, we'll set up a basic dbt project using `pytest` fixtures, run some simple commands, and ensure they succeed (or fail) as we expect. To that end, we'll be using the `run_dbt` utility defined within the `tests` module of `dbt-core`.
+Those utilities allow you to do three basic things:
+1. **Quickly set up a dbt "project."** Define project resources via methods such as `models()` and `seeds()`. Use `project_config_update()` to pass configurations into `dbt_project.yml`.
+2. **Define a sequence of dbt commands.** The most important utility  is `run_dbt()`, which returns the [results](dbt-classes#result-objects) of each dbt command. It takes a list of CLI specifiers (subcommand + flags), as well as an optional second argument, `expect_pass=False`, for cases where you expect the command to fail.
+3. **Validate the results of those dbt commands.** For example, `check_relations_equal()` asserts that two database objects have the same structure and content. You can also write your own `assert` statements, by inspecting the results of a dbt command, or querying arbitrary database objects with `project.run_sql()`.
 
-(For the sake of simplicity, the example assumes that we've already installed and configured `pytest`. We'll show that setup in more detail below.)
+While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
 
-First, let's define our project, using Python strings to stand in for file contents. The appeal of defining these in a separate file is that we can reuse the same "project" across test cases.
+### Example: a simple test case
+
+This example will show you the anatomy of a test case using dbt + pytest. We will create reusable components, combine them to form a dbt "project", and define a sequence of dbt commands. Then, we'll use Python `assert` statements to ensure those commands succeed (or fail) as we expect.
+
+In ["Getting started running basic tests,"](#getting-started-running-basic-tests) we'll offer step-by-step instructions for installing and configuring `pytest`, so that you can run it on your own machine. For now, it's more important to see how the pieces of a test case fit together.
+
+This example includes a seed, a model, and two tests—one of which will fail.
+
+1. Define Python strings that will represent the file contents in your dbt project. Defining these in a separate file enables you to reuse the same components across different test cases. The pytest name for this type of reusable component is "fixture."
 
 <File name="tests/functional/example/fixtures.py">
 
@@ -53,18 +68,15 @@ models:
       - name: id
         tests:
           - unique
-          - not_null  # will not pass
+          - not_null  # this test will fail
 """
 ```
 
 </File>
 
-Next, we'll use these "fixtures" to define our test cases. Following the default `pytest` configurations:
-- The file name must begin with `test_`
-- The class must begin with `Test`
-- All test functions must begin with `test_`
+2. Use the "fixtures" to define the project for your test case. Following the default pytest configurations, the file name must begin with `test_`, and the class name must begin with `Test`.
 
-<File name="tests/functional/example/test_example.py">
+<File name="tests/functional/example/test_example_failing_test.py">
 
 ```python
 import pytest
@@ -79,16 +91,21 @@ from tests.functional.example.fixtures import (
 
 # class must begin with 'Test'
 class TestExample:
-    """Methods below are of two types:
-        - fixtures defining the setup for this test case
-          (scoped to the class, and reused for all tests in the class)
-        - actual tests, whose names begin with 'test_'
+    """
+    Methods in this class will be of two types:
+    1. Fixtures defining the dbt "project" for this test case.
+       These are scoped to the class, and reused for all tests in the class.
+    2. Actual tests, whose names begin with 'test_'.
+       These define sequences of dbt commands and 'assert' statements.
     """
     
     # configuration in dbt_project.yml
     @pytest.fixture(scope="class")
     def project_config_update(self):
-        return {"name": "example"}
+        return {
+          "name": "example",
+          "models": {"+materialized": "view"}
+        }
 
     # everything that goes in the "seeds" directory
     @pytest.fixture(scope="class")
@@ -104,12 +121,25 @@ class TestExample:
             "my_model.sql": my_model_sql,
             "my_model.yml": my_model_yml,
         }
-    
-    # the method defines the actual sequence of steps to execute
+        
+    # continues below
+```
+
+</File>
+
+3. Now that we've set up our project, it's time to define a sequence of dbt commands and assertions. These methods will be defined in the same file, on the same class (`TestExampleFailingTest`). In pytest, the methods defining actual tests must have names that begin with `test_`.
+
+<File name="tests/functional/example/test_example_failing_test.py">
+
+```python
+    # continued from above
+
+    # The actual sequence of dbt commands and assertions
     # pytest will take care of all "setup" + "teardown"
     def test_run_seed_test(self, project):
-        """Seed, then run, then test. We expect one of the tests to fail
-           An alternative pattern is to use pytest "xfail" (see below)
+        """
+        Seed, then run, then test. We expect one of the tests to fail
+        An alternative pattern is to use pytest "xfail" (see below)
         """
         # seed seeds
         results = run_dbt(["seed"])
@@ -120,6 +150,9 @@ class TestExample:
         # test tests
         results = run_dbt(["test"], expect_pass = False) # expect failing test
         assert len(results) == 2
+        # validate that the results include one pass and one failure
+        result_statuses = sorted(r.status for r in results)
+        assert result_statuses == ["fail", "pass"]
 
     @pytest.mark.xfail
     def test_build(self, project):
@@ -128,7 +161,11 @@ class TestExample:
         results = run_dbt(["build"])
 ```
 
-Then, we invoke `pytest`:
+</File>
+
+3. Our test is ready to run! The last step is to invoke `pytest` from your command line. We'll walk through the actual setup and configuration of `pytest` in the next section.
+
+<File name="terminal">
 
 ```sh
 $ python3 -m pytest tests/functional/test_example.py
@@ -144,13 +181,15 @@ tests/functional/test_example.py .X                                  [100%]
 
 </File>
 
-The [pytest usage docs](https://docs.pytest.org/how-to/usage.html) offer guidance and a full command reference. In our experience, it can be particularly helpful to use the `-s` flag (or `--capture=no`) to print logs from the underlying dbt invocations, and to step into an interactive debugger if you've added one. You can also use environment variables to set [global dbt configs](global-configs), such as `DBT_DEBUG` (to show debug-level logs).
+You can find more ways to run tests, along with a full command reference, in the [pytest usage docs](https://docs.pytest.org/how-to/usage.html).
+
+We've found the `-s` flag (or `--capture=no`) helpful to print logs from the underlying dbt invocations, and to step into an interactive debugger if you've added one. You can also use environment variables to set [global dbt configs](global-configs), such as `DBT_DEBUG` (to show debug-level logs).
 
 ## Testing your adapter
 
-The framework presented above is available for use by anyone who installs `dbt-core`, and who wishes to define their own test cases.
+Anyone who installs `dbt-core`, and wishes to define their own test cases, can use the framework presented in the first section. The framework is especially useful for testing standard dbt behavior across different databases.
 
-Building on top of that foundation, we have also built and made available a [package of reusable adapter test cases](https://github.com/dbt-labs/dbt-core/tree/HEAD/tests/adapter), for creators and maintainers of adapter plugins. These test cases cover basic expected functionality, as well as functionality that frequently requires different implementations across databases.
+To that end, we have built and made available a [package of reusable adapter test cases](https://github.com/dbt-labs/dbt-core/tree/HEAD/tests/adapter), for creators and maintainers of adapter plugins. These test cases cover basic expected functionality, as well as functionality that frequently requires different implementations across databases.
 
 For the time being, this package is also located within the `dbt-core` repository, but separate from the `dbt-core` Python package.
 
@@ -166,7 +205,7 @@ In the course of creating and maintaining your adapter, it's likely that you wil
 
 If you run into an issue with the core framework, or the basic/optional test cases—or if you've written a custom test that you believe would be relevant and useful for other adapter plugin developers—please open an issue or PR in the `dbt-core` repository on GitHub.
 
-## Getting started: basic tests
+## Getting started running basic tests
 
 In this section, we'll walk through the three steps to start running our basic test cases on your adapter plugin:
 
@@ -251,7 +290,7 @@ def dbt_profile_target():
 
 ### Define test cases
 
-As in the example above, each test case is defined as a class, and has its own "project" setup. To get started, you can import all basic test cases and try running them without changes:
+As in the example above, each test case is defined as a class, and has its own "project" setup. To get started, you can import all basic test cases and try running them without changes.
 
 <File name="tests/functional/adapter/test_basic.py">
 
@@ -420,9 +459,10 @@ def databricks_sql_endpoint_target():
 
 </File>
 
+If there are tests that _shouldn't_ run for a given profile:
+
 <File name="tests/functional/adapter/basic.py">
 
-If there are tests that _shouldn't_ run for a given profile:
 ```python
 # Snapshots require access to the Delta file format, available on our Databricks connection,
 # so let's skip on Apache Spark
