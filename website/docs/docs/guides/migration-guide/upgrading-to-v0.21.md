@@ -1,7 +1,11 @@
 ---
-title: "Upgrading to 0.21.0"
+title: "Upgrading to v0.21"
 
 ---
+
+:::caution Unsupported version
+dbt Core v0.21 has reached the end of critical support. No new patch versions will be released, and it will stop running in dbt Cloud on June 30, 2022. Read ["About dbt Core versions"](core-versions) for more details.
+:::
 
 ### Resources
 

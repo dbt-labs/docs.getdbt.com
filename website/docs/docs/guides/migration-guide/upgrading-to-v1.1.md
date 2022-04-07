@@ -1,12 +1,12 @@
 ---
-title: "Upgrading to v1.1"
+title: "Upgrading to v1.1 (prerelease)"
 
 ---
 
-:::info
-v1.1 is currently available as a beta prerelease. Install it from PyPi for your adapter, if available:
+:::info Beta
+v1.1 is currently available as a beta prerelease. Install it from PyPi [for your adapter](available-adapters), if available:
 ```
-pip install --pre "dbt-<adapter>~=1.1.0b1"
+pip install "dbt-<adapter>~=1.1.0b1"
 ```
 :::
 
