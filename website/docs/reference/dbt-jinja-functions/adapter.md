@@ -110,7 +110,7 @@ Returns a [Relation](dbt-classes#relation) object identified by the `database.sc
 ## load_relation
 __Args__:
 
- * `relation`: The database of the relation to fetch
+ * `relation`: The [Relation](dbt-classes#relation) to try to load
 
 A convenience wrapper for [get_relation](#get_relation). Returns another copy of the same [Relation](dbt-classes#relation) object, or `None` if the relation does not exist.
 
