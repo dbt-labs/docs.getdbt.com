@@ -1,0 +1,124 @@
+---
+title: "Apache Impala Profile"
+id: "impala-profile"
+---
+
+## Overview of dbt-impala
+
+**Maintained by:** Cloudera    
+**Author:** Cloudera    
+**Source:** [Github](https://github.com/cloudera/dbt-impala)    
+**dbt Cloud:** Currently un-supported    
+**dbt Slack channel** [Link to channel]()     
+
+
+![dbt-impala stars](https://img.shields.io/github/stars/cloudera/dbt-impala?style=for-the-badge)
+
+## Connection Methods
+
+dbt-impala can connect to Apache Impala / CDW / CDP clusters using three methods:
+
+- [`insecure`](#insecure) Not recommended, but good for devlopment and testing on a local setup.
+- [`ldap`](#ldap) connects via ldap with or without knox proxy.
+- [`kerbros`](#kerbros) connects to kerbros setup.
+
+### insecure
+
+This method is only recommended if you have a local install of Impala and want to test out the dbt-impala adapter. 
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: impala
+      host: localhost
+      port: 21050
+      dbname: [db name]  # this should be same as schema name provided below
+      schema: [schema name]
+      
+```
+
+</File>
+
+### LDAP
+
+Use the LDAP connection method if you are connecting to CDP or CDW using LDAP authentication 
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+     type: impala
+     host: [host name]
+     http_path: [optional, if using knox proxy the proxy path, eg. demodh/cdp-proxy-api/impala]
+     port: [port]
+     auth_type: ldap
+     use_http_transport: [true / false]
+     use_ssl: [true / false]
+     username: [username]
+     password: [password]
+     dbname: [db name]  # this should be same as schema name provided below
+     schema: [schema name]
+```
+
+</File>
+
+### Kerberos
+
+Use the Kerberos connection method for CDW installations that use this method. 
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: impala
+      host: [hostname]
+      port: [port]
+      auth_type: [GSSAPI or kerberos]
+      kerberos_service_name: [kerberos service name]
+      use_http_transport: true
+      use_ssl: true
+      dbname: [db name]  # this should be same as schema name provided below
+      schema: [schema name]
+
+```
+
+</File>
+
+## Installation and Distribution
+
+dbt's adapter for Apache Impala and CDW/CDP is managed in its own repository, [dbt-impala](https://github.com/cloudera/dbt-impala). To use it, 
+you must install the `dbt-impala` plugin.
+
+### Using pip
+The following commands will install the latest version of `dbt-impala` as well as the requisite version of `dbt-core` and `impaly` driver used for connections.
+
+```
+$ pip install "dbt-impala"
+```
+
+### Supported Functionality
+
+| Name | Supported |
+|------|-----------|
+|Materialization: Table|Yes|
+|Materialization: View|Yes|
+|Materialization: Incremental - Append|Yes|
+|Materialization: Incremental - Insert+Overwrite|Yes|
+|Materialization: Incremental - Merge|No|
+|Materialization: Ephemeral|No|
+|Seeds|Yes|
+|Tests|Yes|
+|Snapshots|Yes|
+|Documentation|Yes|
+|Authentication: LDAP|Yes|
+|Authentication: Kerberos|Yes|
