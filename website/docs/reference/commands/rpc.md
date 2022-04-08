@@ -1,18 +1,37 @@
 ---
 title: "rpc"
 id: "rpc"
+description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, and provides methods that enable you to list and terminate running processes. "
 ---
 
-### Overview
-The `dbt rpc` command runs a Remote Procedure Call dbt Server. This server can compile and run queries in the context of a dbt project. Additionally, it provides methods that can be used to list and terminate running processes. The rpc server should be run from a directory which contains a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
+<Changelog>
 
-:::caution Running on Windows
-The rpc server is not supported on Windows, due to historic reliability issues. A docker container may be a useful workaround if required.
+  - **v0.14**: The `dbt rpc` command was introduced to dbt Core
+  - **v1.0**: We now distribute and package the Remote Procedure Call (rpc) server functionality separately from `dbt-core`. You can find the code in a dedicated [`dbt-rpc` repository](https://github.com/dbt-labs/dbt-rpc).
+
+</Changelog>
+
+### Overview
+
+You can use the `dbt-rpc` plugin to run a Remote Procedure Call (rpc) dbt server. This server compiles and runs queries in the context of a dbt project. Additionally, the RPC server provides methods that enable you to list and terminate running processes. We recommend running an rpc server from a directory containing a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
+
+:::caution Deprecation
+**The dbt-rpc plugin will be fully deprecated by the end of 2022.**
+
+For now, dbt Labs actively maintains and uses `dbt-rpc` to enable interactive dbt development. Once we announce the next-generation dbt Server is available for general release, we will deprecate the legacy plugin and only fix critical issues for a period of six months. After six months, we will archive this repository for read-only use.
 :::
 
+:::caution Running on Windows
+We do not recommend running the rpc server on Windows because of reliability issues. A Docker container may provide a useful workaround, if required.
+:::
+
+For more details, see the [`dbt-rpc` repository](https://github.com/dbt-labs/dbt-rpc) source code.
+
 **Running the server:**
+
 ```
-$ dbt rpc
+
+$ dbt-rpc serve
 Running with dbt=0.15.0
 
 16:34:31 | Concurrency: 8 threads (target='dev')
@@ -23,6 +42,7 @@ Send requests to http://localhost:8580/jsonrpc
 ```
 
 **Configuring the server**
+
 * `--host`: Specify the host to listen on (default=`0.0.0.0`)
 * `--port`: Specify the port to listen on (default=`8580`)
 
@@ -49,18 +69,21 @@ The rpc server expects requests in the following format:
 ## Built-in Methods
 
 ### status
-The `status` method will return the status of the rpc server. This method response includes a high-level, like `ready`, `compiling`, or `error`, as well the set of logs that accumulated during the initial compilation of the project. When the rpc server is in the `compiling` or `error` state, all non-builtin methods of the RPC server will be rejected.
+
+The `status` method will return the status of the rpc server. This method response includes a high-level status, like `ready`, `compiling`, or `error`, as well as the set of logs accumulated during the initial compilation of the project. When the rpc server is in the `compiling` or `error` state, only built-in methods of the RPC server will be accepted.
 
 **Example request**
+
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "status",
-	"id": "2db9a2fe-9a39-41ef-828c-25e04dd6b07d"
+    "jsonrpc": "2.0",
+    "method": "status",
+    "id": "2db9a2fe-9a39-41ef-828c-25e04dd6b07d"
 }
 ```
 
 **Example response**
+
 ```json
 {
     "result": {
@@ -76,29 +99,33 @@ The `status` method will return the status of the rpc server. This method respon
 ```
 
 ### poll
+
 The `poll` endpoint will return the status, logs, and results (if available) for a running or completed  task. The `poll` method requires a `request_token` parameter which indicates the task to poll a response for. The `request_token` is returned in the response of dbt tasks like `compile`, `run` and `test`.
 
 **Parameters**:
+
 - `request_token`: The token to poll responses for
 - `logs`: A boolean flag indicating if logs should be returned in the response (default=false)
 - `logs_start`: The zero-indexed log line to fetch logs from (default=0)
 
 
 **Example request**
+
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "poll",
-	"id": "2db9a2fe-9a39-41ef-828c-25e04dd6b07d",
-	"params": {
-		"request_token": "f86926fa-6535-4891-8d24-2cfc65d2a347",
-		"logs": true,
-		"logs_start": 0
-	}
+    "jsonrpc": "2.0",
+    "method": "poll",
+    "id": "2db9a2fe-9a39-41ef-828c-25e04dd6b07d",
+    "params": {
+        "request_token": "f86926fa-6535-4891-8d24-2cfc65d2a347",
+        "logs": true,
+        "logs_start": 0
+    }
 }
 ```
 
 **Example Response**
+
 ```json
 {
     "result": {
@@ -119,9 +146,11 @@ The `poll` endpoint will return the status, logs, and results (if available) for
 
 
 ### ps
+
 The `ps` methods lists running and completed processes executed by the RPC server.
 
 **Parameters**
+
 - `completed`: If true, also return completed tasks (default=false)
 
 **Example request:**
@@ -428,7 +457,7 @@ To find the server PID, either fetch the `.result.pid` value from the `status` m
 
 ```
 # Find the server PID using `ps`:
-ps aux | grep 'dbt rpc' | grep -v grep
+ps aux | grep 'dbt-rpc serve' | grep -v grep
 ```
 
 After finding the PID for the process (eg. 12345), send a signal to the running server using the `kill` command:

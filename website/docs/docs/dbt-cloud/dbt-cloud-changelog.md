@@ -4,6 +4,67 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.46 (March 2nd, 2022)
+
+dbt Cloud now shows "waiting time" and "prep time" for a run, which used to be expressed in aggregate as "queue time". Waiting time captures the time dbt Cloud waits to run your job if there isn't an available run slot or if a previous run of the same job is still running. Prep time represents the time it takes dbt Cloud to ready your job to run in your cloud data warehouse.
+
+<Lightbox src="/img/docs/dbt-cloud/v1.1.46releasenotes_img1.png" title="New prep time and waiting time"/>
+
+## dbt Cloud v1.1.45 (February 16, 2022)
+
+Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens#permissions-for-service-account-tokens).
+
+#### New products and features
+
+- We are joining the [GitHub secret scanning partner program](https://docs.github.com/en/developers/overview/secret-scanning-partner-program) to better secure your token against accidental public exposure and potential fraudulent usage. 
+
+#### Bug fixes
+- Credentials are no longer accidentally deleted when a user updates an environment setting.
+
+
+## dbt Cloud v1.1.44 (February 2nd, 2022)
+Love the DAG in the IDE as much as we do? Now when you click on a node in the DAG, the model or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic functionality throughout the year.
+
+#### Performance improvements and enhancements
+
+* Updated recommended dbt commands in the IDE to include dbt Core v1.0 commands, such as "build" and the "--select" argument.  
+
+
+## dbt Cloud v1.1.43 (January 19th, 2022)
+
+Some noteworthy improvements include autocomplete snippets for sql and yaml files in the IDE, which are available for use now! We also added a [new metric layer page](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer) to docs.getdbt.com to help you begin thinking about the metrics layer in dbt Cloud.
+
+#### Performance improvements and enhancements
+
+* Branch names now default to "main" instead of "master" in new managed and unmanaged Git repositories.
+* Update IDE autocomplete snippets.
+
+
+## dbt Cloud v1.1.42 (January 5th, 2022)
+
+#### New products and features
+
+We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
+
+#### Performance improvements and enhancements
+
+* We added client-side naming validation for file or folder creation.
+
+## dbt Cloud v1.1.41 (December 8, 2021)
+
+It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [dbt Core v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
+
+#### New products and features
+
+- dbt v1.0 is now available in dbt Cloud... nbd.
+
+
+#### Performance improvements and enhancements
+
+- Now whenever you log back into dbt Cloud, you'll return to the acccount and project that you most recently were working in!
+
+
 ## dbt Cloud v1.1.39 (November 10, 2021)
 We shipped environment variables in dbt Cloud. Environment variables create a way to separate code from configuration - allowing you to set config based on context and keep secrets like git tokens securely stored.
 

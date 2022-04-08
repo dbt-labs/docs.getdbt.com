@@ -97,17 +97,17 @@ BigQuery has <a href="https://cloud.google.com/bigquery/pricing">a generous free
 ## Generate BigQuery credentials
 In order to let dbt connect to your warehouse, you'll need generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
 
-<LoomVideo id="2b5a8ec255bd4dce91374f6941d279e5" />
-
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
-2. Generate credentials with the following options:
-    * **Which API are you using?** BigQuery API
-    * **What data will you be accessing?** Application data (you'll be creating a service account)
-    * **Are you planning to use this API with App Engine or Compute Engine?** No
-    * **Service account name:** `dbt-user`
-    * **Role:** BigQuery Job User, BigQuery User, and BigQuery Data Editor
-    * **Key type:** JSON
-3. Download the JSON file and save it in an easy-to-remember spot, with a clear filename (e.g. `dbt-user-creds.json`)
+2. Select **+ Create Credentials** then **Service account**.
+3. Type "dbt-user" in the Service account name field, then click **Create and Continue**.
+4. Type and select **BigQuery Admin** in the Role field.
+5. Click **Continue**.
+6. Leave fields blank in the "Grant users access to this service account" section and click **Done**.
+7. Click the service account that you just created.
+8. Select **Keys**.
+9. Click **Add Key** then select **Create new key**. 
+10. Select **JSON** as the key type then click **Create**.  
+11. You should be prompted to download the JSON file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
 
 ### FAQs
 <FAQ src="database-privileges" />
@@ -120,4 +120,4 @@ There’s two main ways of working with dbt:
 
 To use the CLI, it's important that you know some basics of your terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily. As such, if you are new to programming, we recommend using **dbt Cloud** for this tutorial.
 
-If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/installation) for your operating system.
+If you wish to use the CLI, please follow the [installation instructions](/dbt-cli/install/overview) for your operating system.
