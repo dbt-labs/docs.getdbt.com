@@ -5,7 +5,14 @@ description: "Set up BigQuery with sample data and connect to dbt Cloud or dbt C
 sidebar_label: "Set up and connect BigQuery"
 ---
 
-## Create a BigQuery Project
+## Introduction
+
+## Prerequisites
+
+* Existing Cloud Provider account (AWS, GCP, Azure).
+* Permissions to create S3 bucket in you cloud provider account.
+
+## Setting up
 
 If you have a Google Account, you can use BigQuery to create a project.
 
@@ -23,18 +30,17 @@ If you have a Google Account, you can use BigQuery to create a project.
 
    2. If you already have an existing organization, you can select the project drop down in the header bar, and create a new project from there.
     <Lightbox src="/img/bigquery/project-dropdown.png" title="Bigquery Project Dropdown" />
-   
+
    3. Select "NEW PROJECT"
     <Lightbox src="/img/bigquery/new-project-creation.png" title="Bigquery New Project Creation" />
-   
+
    4. It will automatically populate with a project name, feel free to pick something that makes more sense. I chose 'dbt Learn - Bigquery Setup'.  Click “Create”!
 
-
-## Access Sample Data Within BigQuery
+## Loading data
 
 BigQuery supports public data sets that can be directly queried, so we will show you how to access those datasets via select statements. Additionally, we will show you how to populate your own database objects with that data.
 
-1. Head back to the [BigQuery Console](https://console.cloud.google.com/bigquery), and ensure your new project is selected. 
+1. Head back to the [BigQuery Console](https://console.cloud.google.com/bigquery), and ensure your new project is selected.
     > Note: If you do not see your account or project, click on your profile picture on the far right to ensure you are under the proper email address account. Sometimes when following links, your account switches from personal email to work email, or vice versa.
 
 2. Copy and paste the below queries into the Query Editor to validate that you are able to run them successfully.
@@ -58,28 +64,28 @@ BigQuery supports public data sets that can be directly queried, so we will show
     3. Click “Create dataset”
         <Lightbox src="/img/bigquery/create-dataset.png" title="Bigquery Create Dataset" />
     4. You should see this:
-        <Lightbox src="/img/bigquery/create-dataset-options.png" title="Bigquery Create Dataset Options" />    
-    
+        <Lightbox src="/img/bigquery/create-dataset-options.png" title="Bigquery Create Dataset Options" />
+
     5. Fill in “Dataset ID” as required. This will be used like schema in fully qualified references to your database objects, i.e. database.schema.table, so choose a name that fits the purpose, in this case we will be creating one now for 'jaffle_shop' and one for 'stripe' later.
         <Lightbox src="/img/bigquery/create-dataset-id.png" title="Bigquery Create Dataset ID" />
-    
+
     6. Leave everything else as is:
-        - “Data location” can be left blank -- if selected, this determines the GCP location where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
-        - Even though it is unchecked, billing table expiration will be set automatically to 60 days, because billing has not been enabled for this project, so AWS defaults to deprecating tables.
-        - Let Google manage encryption
-        - Click “CREATE DATASET”
-        - Repeat steps 1-6 for the second dataset, 'stripe'
+        * “Data location” can be left blank -- if selected, this determines the GCP location where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
+        * Even though it is unchecked, billing table expiration will be set automatically to 60 days, because billing has not been enabled for this project, so AWS defaults to deprecating tables.
+        * Let Google manage encryption
+        * Click “CREATE DATASET”
+        * Repeat steps 1-6 for the second dataset, 'stripe'
 
 5. Create Views
 
     1. “RUN” your first query: ```select * from `dbt-tutorial.jaffle_shop.customers`;```
 
-    2. Click “SAVE” > “Save View”
+    2. Click **SAVE** then **Save View**
         <Lightbox src="/img/bigquery/save-view.png" title="Bigquery Save View" />
-    
+
     3. Your two datasets, `jaffle_shop` and `stripe` should now show up under “Dataset”. Select “jaffle_shop”.
         <Lightbox src="/img/bigquery/save-view-datasets.png" title="Bigquery Save View - Datasets" />
-    
+
     4. Enter 'customers' as your “Table” name. Hit “SAVE”
         <Lightbox src="/img/bigquery/save-view-table.png" title="Bigquery Save View - Table" />
 
@@ -93,6 +99,26 @@ BigQuery supports public data sets that can be directly queried, so we will show
     1. ```select * from `dbt-tutorial.jaffle_shop.orders`;```
 
     2. ```select * from `dbt-tutorial.stripe.payment`;```
+
+## Connecting to dbt Cloud
+
+### Create dbt Cloud account
+
+### Enter credentials
+
+## Connecting to dbt CLI
+
+## Next steps
+
+
+
+
+## Create a BigQuery Project
+
+
+
+## Access Sample Data Within BigQuery
+
 
 ## Generate BigQuery Credentials
 
