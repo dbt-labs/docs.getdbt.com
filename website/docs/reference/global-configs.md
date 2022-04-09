@@ -13,7 +13,7 @@ These configs are "global" because they are available for all dbt commands, and 
 
 Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last profile configs.
 
-#### Command line flags
+### Command line flags
 
 Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
 
@@ -73,7 +73,7 @@ $ dbt --no-version-check run
 
 </File>
 
-#### Environment variables
+### Environment variables
 
 Environment variables contain a `DBT_` prefix
 
@@ -88,7 +88,7 @@ $ dbt run
 
 </File>
 
-#### Profile (or user) configurations
+### Profile (or user) configurations
 
 You can set profile (or user) configurations in the `config:` block of `profiles.yml`. You would use the profile config to set defaults for all projects running on your local machine.
 
@@ -103,6 +103,18 @@ config:
 
 </File>
 
+## Cache for selected models only
+
+Supply the `--cache_selected_only` flag to `dbt run` to make dbt Cache schema for selected models only instead of caching all schemas in a project. You can set `selected_schema_cache: true` in `profile.yml` as general config for a project but can override that with --cache_selected_only for specific scenario.
+
+For example, you can 
+  
+## Suppressing non-error logs in output
+
+Supply the `-q` or `--quiet` flag to `dbt run` to make dbt suppress all non-error logging to stdout
+
+For example, you can 
+  
 ## Failing fast
 
 Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
