@@ -1,5 +1,5 @@
-
 const path = require('path');
+const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
 
 /* Debugging */
@@ -15,21 +15,6 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
   GIT_BRANCH = 'current';
 } else {
   GIT_BRANCH = process.env.HEAD;
-}
-
-var PRERELEASE = (process.env.PRERELEASE || false);
-
-var WARNING_BANNER;
-if (!PRERELEASE) {
-  WARNING_BANNER = {};
-} else {
-  WARNING_BANNER = {
-    id: 'prerelease', // Any value that will identify this message.
-    content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
-    backgroundColor: '#ffa376', // Defaults to `#fff`.
-    textColor: '#033744', // Defaults to `#000`.
-  }
 }
 
 let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
@@ -53,7 +38,7 @@ console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
-module.exports = {
+var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
@@ -66,9 +51,8 @@ module.exports = {
     colorMode: {
       disableSwitch: true
     },
-    announcementBar: WARNING_BANNER,
-    // Adding non-empty strings for Algolia config 
-    // allows Docusaurus to run locally without .env file 
+    // Adding non-empty strings for Algolia config
+    // allows Docusaurus to run locally without .env file
     algolia: {
       apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
       indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
@@ -136,7 +120,7 @@ module.exports = {
           label: 'Developer Blog',
           position: 'right',
           activeBasePath: 'blog'
-        },        
+        },
         {
           label: 'Learn',
           position: 'right',
@@ -160,6 +144,10 @@ module.exports = {
           position: 'right',
           items: [
             {
+              label: 'Maintaining a Slack Channel',
+              to: '/community/maintaining-a-channel',
+            },
+            {
               label: 'dbt Slack',
               href: 'https://community.getdbt.com/',
             },
@@ -169,14 +157,14 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/fishtown-analytics/dbt',
+              href: 'https://github.com/dbt-labs/dbt-core',
             },
           ]
         },
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a>`
     },
   },
   presets: [
@@ -191,11 +179,11 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
 
-          editUrl: 'https://github.com/fishtown-analytics/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
+          editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,
+          sidebarCollapsible: true,     
         },
         blog: {
           blogTitle: 'dbt Developer Blog',
@@ -204,17 +192,21 @@ module.exports = {
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
         },
+
       },
     ],
   ],
   plugins: [
     [
-      path.resolve('plugins/insertMetaTags'), 
-      { metatags } 
+      path.resolve('plugins/insertMetaTags'),
+      { metatags }
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
-    path.resolve('plugins/buildBlogData'),
+    [
+      path.resolve('plugins/buildGlobalData'),
+      { versionedPages }
+    ],
     path.resolve('plugins/buildAuthorPages'),
   ],
   scripts: [
@@ -237,4 +229,39 @@ module.exports = {
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
   ],
-};
+}
+
+var PRERELEASE = (process.env.PRERELEASE || false);
+
+if (PRERELEASE) {
+  var WARNING_BANNER = {
+    id: 'prerelease', // Any value that will identify this message.
+    content:
+      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
+    backgroundColor: '#ffa376', // Defaults to `#fff`.
+    textColor: '#033744', // Defaults to `#000`.
+  }
+  siteSettings.themeConfig.announcementBar = WARNING_BANNER;
+}
+
+// If versions json file found, add versions dropdown to nav
+if(versions) {
+  siteSettings.themeConfig.navbar.items.push({
+    label: 'Versions',
+    position: 'left',
+    className: 'nav-versioning',
+    items: [
+      ...versions.reduce((acc, version) => {
+        if(version?.version) {
+          acc.push({
+            label: `${version.version}`,
+            href: '#',
+          })
+        }
+        return acc
+      }, [])
+    ]
+  },)
+}
+
+module.exports = siteSettings;

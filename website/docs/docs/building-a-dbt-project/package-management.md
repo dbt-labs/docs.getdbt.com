@@ -8,7 +8,7 @@ Software engineers frequently modularize code into libraries. These libraries he
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
-  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) or [Heap](https://hub.getdbt.com/dbt-labs/heap/latest/) pageviews into sessions
+  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/) or [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) pageviews into sessions
   * transforming [AdWords](https://hub.getdbt.com/dbt-labs/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
   * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
@@ -100,13 +100,13 @@ Both of the following configurations would successfully install `0.4.5a2` of `db
 
 ```yaml
 packages:
-  - package: tailsdotcom/dbt_artifacts
+  - package: brooklyn-data/dbt_artifacts
     version: 0.4.5a2
 ```
 
 ```yaml
 packages:
-  - package: tailsdotcom/dbt_artifacts
+  - package: brooklyn-data/dbt_artifacts
     version: [">=0.4.4", "<0.4.6"]
     install-prerelease: true
 ```
@@ -164,7 +164,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 :::info dbt Cloud Usage
 If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
-::: 
+:::
 
 In GitHub:
 
