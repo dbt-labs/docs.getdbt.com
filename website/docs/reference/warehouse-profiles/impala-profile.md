@@ -56,7 +56,9 @@ your_profile_name:
 
 ### LDAP
 
-Use the LDAP connection method if you are connecting to CDP or CDW using LDAP authentication 
+LDAP allows you to authenticate with a username & password when Impala is [configured with LDAP Auth](https://impala.apache.org/docs/build/html/topics/impala_ldap.html). LDAP is supported over Binary & HTTP connection mechanisms.
+
+This is the recommended authentication mechanism to use with Cloudera Data Platform.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -67,11 +69,11 @@ your_profile_name:
     dev:
      type: impala
      host: [host name]
-     http_path: [optional, if using knox proxy the proxy path, eg. demodh/cdp-proxy-api/impala]
+     http_path: [optional, http path to Impala]
      port: [port]
      auth_type: ldap
      use_http_transport: [true / false]
-     use_ssl: [true / false]
+     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials
      username: [username]
      password: [password]
      dbname: [db name]  # this should be same as schema name provided below
