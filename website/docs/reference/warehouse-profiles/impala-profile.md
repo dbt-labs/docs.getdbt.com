@@ -16,13 +16,24 @@ id: "impala-profile"
 
 ## Connection Methods
 
-dbt-impala can connect to Apache Impala / CDW / CDP clusters using three methods:
+dbt-impala can connect to Apache Impala and Cloudera Data Platform clusters.
 
-- [`insecure`](#insecure) Not recommended, but good for devlopment and testing on a local setup.
-- [`ldap`](#ldap) connects via ldap with or without knox proxy.
-- [`kerbros`](#kerbros) connects to kerbros setup.
+The [Impyla](https://github.com/cloudera/impyla/) library is used to establish connections to Impala.
 
-### insecure
+Two transport mechanisms are supported:
+- binary
+- HTTP(S)
+
+The default mechanism is `binary`. To use HTTP transport, use the boolean option `use_http_transport: [true / false]`.
+
+## Authentication Methods
+
+dbt-impala supports three authentication mechanisms:
+- [`insecure`](#Insecure) No authentication is used, only recommended for testing.
+- [`ldap`](#ldap) Authentication via LDAP
+- [`kerbros`](#kerbros) Authentication via Kerberos (GSSAPI)
+
+### Insecure
 
 This method is only recommended if you have a local install of Impala and want to test out the dbt-impala adapter. 
 
