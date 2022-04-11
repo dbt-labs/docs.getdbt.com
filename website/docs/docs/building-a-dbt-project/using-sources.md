@@ -188,4 +188,4 @@ The results of this query are used to determine whether the source is fresh or n
 ### FAQs
 <FAQ src="exclude-table-from-freshness" />
 <FAQ src="snapshotting-freshness-for-one-source" />
-<FAQ src="snapshot-freshness-output" />
+<FAQ src="dbt-source-freshness" />

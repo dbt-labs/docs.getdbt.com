@@ -13,6 +13,7 @@ The following functions are available:
 - [adapter.get_missing_columns](#get_missing_columns)
 - [adapter.expand_target_column_types](#expand_target_column_types)
 - [adapter.get_relation](#get_relation)
+- [adapter.load_relation](#load_relation)
 - [adapter.get_columns_in_relation](#get_columns_in_relation)
 - [adapter.create_schema](#create_schema)
 - [adapter.drop_schema](#drop_schema)
@@ -101,6 +102,30 @@ Returns a [Relation](dbt-classes#relation) object identified by the `database.sc
       identifier="orders") -%}
 
 {{ log("Source Relation: " ~ source_relation, info=true) }}
+
+```
+
+</File>
+
+## load_relation
+__Args__:
+
+ * `relation`: The [Relation](dbt-classes#relation) to try to load
+
+A convenience wrapper for [get_relation](#get_relation). Returns another copy of the same [Relation](dbt-classes#relation) object, or `None` if the relation does not exist.
+
+**Usage**:
+
+<File name='example.sql'>
+
+```sql
+
+{% set relation_exists = (adapter.load_relation(ref('my_model')) is not none %}
+{% if relation_exists %}
+      {{ log("my_model has already been built", info=true) }}
+{% else %}
+      {{ log("my_model doesn't exist in the warehouse. Maybe it was dropped?", info=true) }}
+{% endif %}
 
 ```
 
