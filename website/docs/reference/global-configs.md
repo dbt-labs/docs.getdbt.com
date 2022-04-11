@@ -102,12 +102,6 @@ config:
 ```
 
 </File>
-
-## Cache for selected models only
-
-Supply the `--cache_selected_only` flag to `dbt run` to make dbt Cache schema for selected models only instead of caching all schemas in a project. You can set `selected_schema_cache: true` in `profile.yml` as general config for a project but can override that with --cache_selected_only for specific scenario.
-
-For example, you can 
   
 ## Suppressing non-error logs in output
 
