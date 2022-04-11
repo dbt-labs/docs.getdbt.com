@@ -96,7 +96,7 @@ your_profile_name:
 
 ## Installation and Distribution
 
-dbt's adapter for Apache Impala and CDW/CDP is managed in its own repository, [dbt-impala](https://github.com/cloudera/dbt-impala). To use it, 
+dbt's adapter for Apache Impala is managed in its own repository, [dbt-impala](https://github.com/cloudera/dbt-impala). To use it, 
 you must install the `dbt-impala` plugin.
 
 ### Using pip
