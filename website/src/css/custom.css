@@ -816,3 +816,15 @@ code {
   }
 }
 
+/* Glossary Styles */
+.term_src-components-term-styles-module {
+  text-decoration: underline dotted var(--ifm-font-color-base);
+  color: var(--ifm-font-color-base);
+}
+.term_src-components-term-styles-module:hover {
+  color: var(--ifm-link-color);
+  text-decoration: underline dotted var(--ifm-link-color);
+}
+.__react_component_tooltip {
+  font-style: normal;
+}
