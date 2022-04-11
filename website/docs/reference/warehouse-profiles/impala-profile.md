@@ -100,7 +100,7 @@ dbt's adapter for Apache Impala and CDW/CDP is managed in its own repository, [d
 you must install the `dbt-impala` plugin.
 
 ### Using pip
-The following commands will install the latest version of `dbt-impala` as well as the requisite version of `dbt-core` and `impaly` driver used for connections.
+The following commands will install the latest version of `dbt-impala` as well as the requisite version of `dbt-core` and `impyla` driver used for connections.
 
 ```
 pip install dbt-impala
