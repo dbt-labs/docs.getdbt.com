@@ -84,7 +84,7 @@ your_profile_name:
 
 ### Kerberos
 
-Use the Kerberos connection method for CDW installations that use this method. 
+The Kerberos authentication mechanism uses GSSAPI to share Kerberos credentials when Impala is [configured with Kerberos Auth](https://impala.apache.org/docs/build/html/topics/impala_kerberos.html).
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -96,10 +96,10 @@ your_profile_name:
       type: impala
       host: [hostname]
       port: [port]
-      auth_type: [GSSAPI or kerberos]
+      auth_type: [GSSAPI]
       kerberos_service_name: [kerberos service name]
       use_http_transport: true
-      use_ssl: true
+      use_ssl: true # TLS should always be used with LDAP to ensure secure transmission of credentials
       dbname: [db name]  # this should be same as schema name provided below
       schema: [schema name]
 
