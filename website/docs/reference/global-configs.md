@@ -103,6 +103,41 @@ config:
 
 </File>
 
+<VersionBlock firstVersion="1.1">
+
+### Cache database objects for selected resource
+
+:::caution Experimental config flag
+This should be considered an _unstable_ config flag because it is experimental and subject to change. We reserve the right to make breaking changes to this config flag.
+:::
+
+When true, dbt caches database objects relevant to selected resource. Otherwise, dbt will cache all database objects related to the project.
+
+For example, to improve speed and performance while focused on Salesforce models you would select the source and use the `cache-selected-only` flag:
+
+```text
+
+$ dbt build --select source:salesforce 
+$ dbt --cache-selected-only run
+
+```
+
+The previous example enables you to start working with your salesforce models, and dbt will only cache those models instead of the entire project.
+
+To set the config in your `profile.yml`:
+<File name='profiles.yml'>
+
+```yaml
+
+config:
+  cache_selected_only: true
+
+```
+
+</File>
+
+</VersionBlock>
+
 ### Checking version compatibility
 
 Projects are recommended to set [dbt version requirements](require-dbt-version), especially if they use features that are newer, or which may break in future versions of dbt Core. By default, if you run a project with an incompatible dbt version, dbt will raise an error.
