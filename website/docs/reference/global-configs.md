@@ -283,6 +283,11 @@ config:
   send_anonymous_usage_stats: False
 ```
 
+You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
+
+`DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
+`DO_NOT_TRACK=2` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`
+
 ### Static parser
 
 The `STATIC_PARSER` config can enable or disable use of the static parser. See [the docs on parsing](parsing#static-parser) for more details.
@@ -303,9 +308,10 @@ config:
 As of v1.0, the `-S` or `--strict` flag has been deprecated.
 
 <VersionBlock firstVersion="1.1">
+
 ### Suppress non-error logs in output
 
-By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. For example, you might narrow down your logs to error logs only because it might help you more easily find and debug a jinja error.
+By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. Logs will still include the output of anything passed to the `print()` macro.  For example, you might suppress all but error logs to more easily find and debug a jinja error.
 
 <File name='profiles.yml'>
 
@@ -323,6 +329,28 @@ $ dbt --quiet run
 ...
 
 ```
+
+### Suppress `print()` messages in stdout
+
+By default, dbt includes `print()` messages in standard out (stdout). You can use the `NO_PRINT` config to prevent these messages from showing up in stdout.
+
+<File name='profiles.yml'>
+
+```yaml
+config:
+  no_print: true
+```
+
+</File>
+
+Supply the `-q` or `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
+
+```text
+$ dbt --no-print run
+...
+
+```
+
 </VersionBlock>
 
 ### Use colors
