@@ -130,7 +130,7 @@ $ dbt --debug run
 ```
 
 </File>  
-  
+
 ### Experimental parser
 
 With the `USE_EXPERIMENTAL_PARSER` config, you can opt into the latest and greatest experimental version of the static parser, which is still being sampled for 100% correctness. See [the docs on parsing](parsing#experimental-parser) for more details.
@@ -267,11 +267,20 @@ config:
 
 As of v1.0, the `-S` or `--strict` flag has been deprecated.
 
-### Suppressing non-error logs in output
+### Suppress non-error logs in output
 
-Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs in standard out.
+By default, dbt shows all logs in standard out (stdout) without suppressing non-error logs. You can use the `QUIET` config to show only error logs in stdout. For example, you might want to only see error logs to more easily find and debug a jinja error.
 
-For example, you can use this to more easily find and debug a jinja error.
+<File name='profiles.yml'>
+
+```yaml
+config:
+  quiet: true
+```
+
+</File>
+
+Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppress non-error logs.
 
 ```text
 $ dbt --quiet run
