@@ -102,7 +102,9 @@ config:
 ```
 
 </File>
+
 <VersionBlock firstVersion="1.1">
+
 ### Cache database objects for selected resource
 
 :::caution Experimental config flag
