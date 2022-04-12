@@ -41,3 +41,8 @@
   font-size: 0.8rem;
   min-height: 0.8rem;
 }
+
+.glossaryCard {
+  height: 100%;
+  margin-bottom: 0 !important;
+}

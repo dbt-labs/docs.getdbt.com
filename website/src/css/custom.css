@@ -815,3 +815,7 @@ code {
     border-left: none;
   }
 }
+
+.docs-wrapper.docs-doc-page main div.row > article.col--6 {
+  margin-bottom: 1.5rem;
+}

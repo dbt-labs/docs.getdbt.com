@@ -17,6 +17,7 @@ function CardContainer({href, children}) {
     'card margin-bottom--lg padding--lg',
     styles.cardContainer,
     href && styles.cardContainerLink,
+    href.includes('/terms/') && styles.glossaryCard
   );
   return href ? (
     <Link href={href} className={className}>
@@ -29,12 +30,12 @@ function CardContainer({href, children}) {
 
 function CardLayout({href, icon, title, description, hoverSnippet}) {
   return (
-    <CardContainer href={href}>
-      <h2 className={clsx('text--truncate', styles.cardTitle)} title={title}>
+    <CardContainer href={href} >
+      <h2 className={clsx(!href.includes('/terms/') && 'text--truncate', styles.cardTitle)} title={title}>
         {icon} {title}
       </h2>
       <div
-        className={clsx('text--truncate', styles.cardDescription)}
+        className={clsx(!href.includes('/terms/') && 'text--truncate', styles.cardDescription)}
         title={hoverSnippet ? hoverSnippet : description}>
         {hoverSnippet ? hoverSnippet : description}
       </div>
