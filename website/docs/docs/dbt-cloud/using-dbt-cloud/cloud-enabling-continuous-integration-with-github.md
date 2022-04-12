@@ -79,6 +79,20 @@ dbt build --select result:error+ result:fail+
 
 As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that are fresher compared to a previous run.
 
+<VersionBlock lastVersion="1.0">
+
+Only supported by v1.1 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+Only supported by v1.1 or newer.
+
+:::caution Experimental functionality
+The `source_status` selection method is new in v1.1, and may have rough edges. Give it a try and let us know what you think!
+:::
+
 When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal to dbt to run and test only on these fresher sources and their children by including the `source_status:fresher+` argument. This requires both previous and current state to have the `sources.json` artifact be available. Or plainly said, both job states need to run `dbt source freshness`.
 
 As example:
@@ -87,6 +101,7 @@ As example:
 dbt source freshness
 dbt build --select source_status:fresher+
 ```
+</VersionBlock>
 
 More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
 
