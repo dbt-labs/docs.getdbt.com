@@ -343,7 +343,7 @@ config:
 
 </File>
 
-Supply the `-q` or `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
+Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
 
 ```text
 $ dbt --no-print run
