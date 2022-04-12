@@ -111,8 +111,20 @@ config:
 This should be considered an _unstable_ config flag because it is experimental and subject to change. We reserve the right to make breaking changes to this config flag.
 :::
 
-When true, caches database objects relevant to selected resource. Otherwise, will cache all database objects related to the project.
+When true, dbt caches database objects relevant to selected resource. Otherwise, dbt will cache all database objects related to the project.
 
+For example, to improve speed and performance while focused on Salesforce models you would select the source and use the `cache-selected-only` flag:
+
+```text
+
+$ dbt build --select source:salesforce 
+$ dbt --cache-selected-only run
+
+```
+
+The previous example enables you to start working with your salesforce models, and dbt will only cache those models instead of the entire project.
+
+To set the config in your `profile.yml`:
 <File name='profiles.yml'>
 
 ```yaml
@@ -124,13 +136,6 @@ config:
 
 </File>
 
-<File name='Usage'>
-
-```text
-dbt --cache-selected-only run
-```
-
-</File>
 </VersionBlock>
 
 ### Checking version compatibility
