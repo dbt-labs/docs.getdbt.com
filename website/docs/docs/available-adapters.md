@@ -36,7 +36,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | ------------ | ------------- | ----------------- |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks)) | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
-| Impala ([dbt-impala](https://github.com/cloudera/dbt-impala)) | [Profile Setup](impala-profile) | `pip install dbt-impala` |
+| Impala ([dbt-impala](https://github.com/cloudera/dbt-impala)) | [Profile Setup](impala-profile), [Configuration](impala-configs) | `pip install dbt-impala` |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
 | Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
 | SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
