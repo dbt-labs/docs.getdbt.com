@@ -17,10 +17,6 @@ import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import {ThemeClassNames, useWindowSize} from '@docusaurus/theme-common';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
-
-// dbt Custom
-import {usePluginData} from '@docusaurus/useGlobalData';
-
 export default function DocItem(props) {
   const {content: DocContent} = props;
   const {metadata, frontMatter, assets} = DocContent;
@@ -43,10 +39,10 @@ export default function DocItem(props) {
     !hideTableOfContents && DocContent.toc && DocContent.toc.length > 0;
   const renderTocDesktop =
     canRenderTOC && (windowSize === 'desktop' || windowSize === 'ssr');
-  
-  // dbt Custom 
-  const { blogMeta } = usePluginData('docusaurus-build-global-data-plugin');
-  const { featured_cta } = blogMeta
+
+  // dbt Custom - if term has cta property set, show that cta
+  const termCTA = frontMatter?.cta && frontMatter.cta
+
   return (
     <>
       <Seo
@@ -111,7 +107,7 @@ export default function DocItem(props) {
               minHeadingLevel={tocMinHeadingLevel}
               maxHeadingLevel={tocMaxHeadingLevel}
               className={ThemeClassNames.docs.docTocDesktop}
-              featured_cta={featured_cta}
+              featured_cta={termCTA && termCTA}
             />
           </div>
         )}
