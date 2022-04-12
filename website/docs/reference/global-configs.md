@@ -103,6 +103,30 @@ config:
 
 </File>
 
+### Cache database objects for selected resource
+
+When true, caches database objects relevant to selected resource. Otherwise, will cache all database objects related to the project.
+
+<File name='profiles.yml'>
+
+```yaml
+
+config:
+  cache_selected_only: true
+
+```
+
+</File>
+
+<File name='Usage'>
+
+```text
+dbt --cache-selected-only run
+```
+
+</File>
+
+
 ### Checking version compatibility
 
 Projects are recommended to set [dbt version requirements](require-dbt-version), especially if they use features that are newer, or which may break in future versions of dbt Core. By default, if you run a project with an incompatible dbt version, dbt will raise an error.
