@@ -269,7 +269,7 @@ As of v1.0, the `-S` or `--strict` flag has been deprecated.
 
 ### Suppress non-error logs in output
 
-By default, dbt shows all logs in standard out (stdout) without suppressing non-error logs. You can use the `QUIET` config to show only error logs in stdout. For example, you might want to only see error logs to more easily find and debug a jinja error.
+By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. For example, you might narrow down your logs to error logs only because it might help you more easily find and debug a jinja error.
 
 <File name='profiles.yml'>
 
