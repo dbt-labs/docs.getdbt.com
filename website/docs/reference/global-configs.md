@@ -105,6 +105,10 @@ config:
 
 ### Cache database objects for selected resource
 
+:::caution Experimental config flag
+This should be considered an _unstable_ config flag because it is experimental and subject to change. We reserve the right to make breaking changes to this config flag.
+:::
+
 When true, caches database objects relevant to selected resource. Otherwise, will cache all database objects related to the project.
 
 <File name='profiles.yml'>
