@@ -104,6 +104,7 @@ On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer)
 Below is how we can implement the same versioning using the new **VersionBlock** component:
 
 ```markdown
+
 // Will show this block when the selected version is >= 0.21
 <VersionBlock firstVersion="0.21">
 
@@ -123,6 +124,7 @@ $ dbt test --models [...] --defer --state path/to/artifacts
 ```
 
 </VersionBlock>
+
 ```
 
 ## Using global variables
