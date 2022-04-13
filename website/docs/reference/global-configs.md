@@ -111,7 +111,7 @@ config:
 This should be considered an _unstable_ config flag because it is experimental and subject to change. We reserve the right to make breaking changes to this config flag.
 :::
 
-When true, dbt caches database objects relevant to selected resource. Otherwise, dbt will cache all database objects related to the project.
+At the start of runs, dbt caches metadata about all the objects in all the schemas where it might materialize resources (such as models). By default, dbt caches all schemas related to the project. When this config is enabled, dbt will only cache schemas related to selected resources for the current run. This can offer significant speed improvements when running a small subset of a large project.
 
 For example, to improve speed and performance while focused on Salesforce models you would select the source and use the `cache-selected-only` flag:
 
@@ -286,7 +286,7 @@ config:
 You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
 
 `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
-`DO_NOT_TRACK=2` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`
+`DO_NOT_TRACK=0` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`
 
 ### Static parser
 
