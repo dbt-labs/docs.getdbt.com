@@ -11,15 +11,7 @@ id: source-configs
 * [enabled](resource-configs/enabled.md): true | false
 
 ## Configuring sources
-Sources can be configured from the `dbt_project.yml` file under the `sources:`
-key. This configuration is most useful for configuring sources imported from
-[a package](package-management). You can disable sources imported from a package
-to prevent them from rendering in the documentation, or to prevent
-[source freshness checks](using-sources#snapshotting-source-data-freshness)
-from running on source tables imported from packages.
-
-Unlike other resource types, sources do not yet support a `config` property. It
-is not possible to (re)define source configs hierarchically across multiple yaml files.
+Sources can be configured via a `config:` block within their `.yml` definitions, or from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](using-sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
 
 ### Examples
 #### Disable all sources imported from a package
@@ -31,7 +23,6 @@ state your configuration under the [project name](project-configs/name.md) in th
 <File name='dbt_project.yml'>
 
 ```yml
-
 sources:
   events:
     +enabled: false
@@ -40,16 +31,56 @@ sources:
 </File>
 
 
-#### Disable a specific source
+#### Conditionally enable a single source
 
-To disable a specific source, qualify the resource path for your configuration
-with both a package name and a source name.
+<VersionBlock firstVersion="1.1">
 
+When defining a source, you can disable the entire source, or specific source tables, using the inline `config` property:
+
+<File name='models/sources.yml'>
+
+```yml
+version: 2
+
+sources:
+  - name: my_source
+    config:
+      enabled: true
+    tables:
+      - name: my_source_table  # enabled
+      - name: ignore_this_one  # not enabled
+        config:
+          enabled: false
+```
+
+</File>
+
+You can configure specific source tables, and use [variables](dbt-jinja-functions/var) as the input to that configuration:
+ 
+<File name='models/sources.yml'>
+
+```yml
+version: 2
+
+sources:
+  - name: my_source
+    tables:
+      - name: my_source_table
+        config:
+          enabled: "{{ var('my_source_table_enabled', false) }}"
+```
+
+</File>
+
+</VersionBlock>
+
+#### Disable a single source from a package
+
+To disable a specific source from another package, qualify the resource path for your configuration with both a package name and a source name. In this case, we're disabling the `clickstream` source from the `events` package.
 
 <File name='dbt_project.yml'>
 
 ```yml
-
 sources:
   events:
     clickstream:
@@ -58,8 +89,7 @@ sources:
 
 </File>
 
-Similarly, you can disable a specific table from a source by qualifying the
-resource path with a package name, source name, and table name:
+Similarly, you can disable a specific table from a source by qualifying the resource path with a package name, source name, and table name:
 
 <File name='dbt_project.yml'>
 
