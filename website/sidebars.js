@@ -537,6 +537,7 @@ const sidebarSettings = {
             "reference/dbt-jinja-functions/model",
             "reference/dbt-jinja-functions/modules",
             "reference/dbt-jinja-functions/project_name",
+            "reference/dbt-jinja-functions/print",
             "reference/dbt-jinja-functions/ref",
             "reference/dbt-jinja-functions/return",
             "reference/dbt-jinja-functions/run_query",
