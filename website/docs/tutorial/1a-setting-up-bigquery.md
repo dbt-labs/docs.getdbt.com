@@ -31,10 +31,10 @@ If you have a Google Account, you can use BigQuery to create a project.
    2. If you already have an existing organization, you can select the project drop down in the header bar, and create a new project from there.
     <Lightbox src="/img/bigquery/project-dropdown.png" title="Bigquery Project Dropdown" />
 
-   3. Select "NEW PROJECT"
+   3. Select NEW PROJECT
     <Lightbox src="/img/bigquery/new-project-creation.png" title="Bigquery New Project Creation" />
 
-   4. It will automatically populate with a project name, feel free to pick something that makes more sense. I chose 'dbt Learn - Bigquery Setup'.  Click “Create”!
+   4. It will automatically populate with a project name, but you can change the name to something more relevant. For example, dbt Learn - Bigquery Setup'.  Click **Create**.
 
 ## Loading data
 
@@ -139,11 +139,12 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 10. Select **JSON** as the key type then click **Create**.  
 11. You should be prompted to download the JSON file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
 
-## Set up a dbt Cloud project and connect to BigQuery
+## Connecting to dbt Cloud
 
 <WistiaVideo id="vrytipyvl4" paddingTweak="62.5%" />
 
 Above we created a project in Bigquery and created an API key so we interact with BigQuery from other applications. Now we are going to navigate to dbt Cloud and see if we can access our BigQuery Project!
+
 
 1. It's time to leave BigQuery and navigate to https://cloud.getdbt.com/ so we can create a new project
 
@@ -212,3 +213,9 @@ Above we created a project in Bigquery and created an API key so we interact wit
         <Lightbox src="/img/bigquery/preview-data.png" title="dbt Cloud - Statement Preview Project Data" />
 
 Congratulations, you are all set! 
+
+### Create dbt Cloud account
+
+### Enter connection credentials
+
+## Next steps

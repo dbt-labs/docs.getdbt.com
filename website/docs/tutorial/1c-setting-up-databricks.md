@@ -5,14 +5,17 @@ description: "Set up Databricks with sample data and connect to dbt Cloud or dbt
 sidebar_label: "Set up and connect Databricks"
 ---
 
-## Prerequisites  
+## Intro
+
+## Prerequisites
 
 Before starting this tutorial, you will need the following:
 
 - Existing Cloud Provider account (AWS, GCP, Azure).
 - Permissions to create S3 bucket in said account.
 
-## Setting up Databricks
+## Setting up
+
 
 1. Use your existing account or sign up for a Databricks account at [Try Databricks](https://databricks.com/). Complete the form with your user information.
 
@@ -80,9 +83,9 @@ Ghosting your pointer over the space under `Actions` of your starter cluster, cl
 
 <Lightbox src="/img/databricks_tutorial/images/start_cluster.png" title="Start the Cluster" />
 
-If you ever want to edit the cluster in terms of the name of the cluster and resources allocated, you can click on the cluster name and the `Edit` button. Please note that you cannot edit the cluster when it is starting up or running. 
+If you ever want to edit the cluster in terms of the name of the cluster and resources allocated, you can click on the cluster name and the `Edit` button. Please note that you cannot edit the cluster when it is starting up or running.
 
-## Loading sample data into Databricks
+## Loading data
 
 Our next step is to load some data to transform. Luckily for us, Databricks makes it really easy for us to upload data. 
 
@@ -107,7 +110,6 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
 5. Click on `Create Table with UI` and then select your cluster from the dropdown of available clusters. Click `Preview Table`.
 
     <Lightbox src="/img/databricks_tutorial/images/select_cluster_to_preview_table.png" title="Select Cluster to Preview Table" />
-
 
 6. Update the Table Attributes:
 - Change the table name to `jaffle_shop_customers`
@@ -165,10 +167,9 @@ You can find your SQL endpoint connection information by going to the `Databrick
 
 <Lightbox src="/img/databricks_tutorial/images/Generate_user_token.png" title="Generate User Token" />
 
-
 Congratulations! At this point, you have created a Databricks account, loaded training data, and successfully set up a SQL end point to query the data.  
 
-## Set up a project to connect dbt Cloud to Databricks
+## Connecting to dbt Cloud
 
 Now it’s time to connect to dbt Cloud to Databricks in order to develop your dbt Project. 
 
@@ -241,4 +242,16 @@ As a recap, we just completed the following:
 - Loaded training data into your Databricks account
 - Configured a SQL endpoint in Databricks
 - Connected dbt Cloud and Databricks
+
+### Create dbt Cloud account
+
+### Enter connection credentials
+
+## Next steps
+
+
+
+## Set up a project to connect dbt Cloud to Databricks
+
+
 

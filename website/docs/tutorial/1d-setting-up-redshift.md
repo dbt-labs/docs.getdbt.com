@@ -5,14 +5,15 @@ description: "Set up Redshift with sample data and connect to dbt Cloud or dbt C
 sidebar_label: "Set up and connect Redshift"
 ---
 
-In this tutorial, you will learn how to set up Redshift and connecting it to dbt Cloud.
+## Intro
 
 ## Prerequisites
 
+In this tutorial, you will learn how to set up Redshift and connecting it to dbt Cloud.
 - Existing AWS account
 - Permissions to execute a CloudFormation stack to create appropriate roles and a Redshift instance.
 
-## Setting up Redshift
+## Setting up
 
 Let’s get started by accessing your AWS account and setting up Redshift.
 
@@ -52,7 +53,8 @@ Let’s get started by accessing your AWS account and setting up Redshift.
 
 Congrats! You have your Redshift cluster.
 
-## How to load sample data into Redshift
+## Loading data
+
 Now we are going to load our sample data into the S3 bucket that our Cloudformation stack created. S3 buckets are a cheap and simple way to store data outside of Redshift.
 
 1. The data used in this course is stored as CSVs in a public S3 bucket. You can use the following URLs to download these files. Download these to your computer to use in the following steps.
@@ -142,6 +144,8 @@ delimiter ','
 ignoreheader 1
 Acceptinvchars;
 
+```
+
 <Lightbox src="/img/redshift_tutorial/images/copy_data.png" title="Copy Your Data Query" />
 
 
@@ -163,8 +167,7 @@ select * from stripe.payment;
 
 Congratulations! At this point, you have created a Redshift instance and loaded training data.  In the next section, we will walk through the next steps to connect dbt Cloud and Redshift.
 
-
-## How to set up a project for connect dbt Cloud to Redshift
+## Connecting to dbt Cloud
 
 Now it’s time to connect to dbt Cloud to Redshift in order to develop your dbt Project.
 
@@ -206,6 +209,7 @@ For Set up a Database Connection, choose Redshift.
 
 ```sql
 select * from jaffle_shop.customers
+```
 
 You should see the same results as you saw earlier when you queried the table directly in Redshift SQL editor.
 
@@ -219,3 +223,8 @@ Success!  You are all set to leverage the power of dbt Cloud and Redshift togeth
 - Configured a SQL endpoint in Redshift
 - Connected dbt Cloud and Redshift
 
+### Create dbt Cloud account
+
+### Enter connection credentials
+
+## Next steps

@@ -5,7 +5,12 @@ description: "Set up Snowflake with sample data and connect to dbt Cloud or dbt 
 sidebar_label: "Set up and connect Snowflake"
 ---
 
-## Get started with Snowflake
+## Intro
+
+## Prerequisites
+
+## Setting up
+
 
 1. To get started, sign up for a free trial by following [this link](https://signup.snowflake.com/) and completing the sign-up form.
 
@@ -27,7 +32,7 @@ sidebar_label: "Set up and connect Snowflake"
 <Lightbox src="/img/snowflake_tutorial/snowflake_workspace.png" title="Snowflake Workspace" />
 </p>
 
-## Load sample data into Snowflake
+## Loading data
 
 Now we’re ready for some sample data. The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it. 
 
@@ -144,7 +149,7 @@ select * from raw.stripe.payment;
 
 Now we’re ready to set up dbt Cloud!
 
-## Setting up a dbt Cloud project to connect dbt Cloud with Snowflake
+## Connecting to dbt Cloud
 
 There are two ways to connect dbt Cloud and Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Snowflake trial account.  The second option is to create your dbt Cloud account separately and build the Snowflake connection yourself.  If you are looking to get started quickly, we recommend **option 1**.  If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend **option 2**.
 
@@ -310,3 +315,10 @@ Awesome!  You are all set to leverage the power of dbt Cloud and Snowflake toget
 * Created a dbt Cloud account, either through Partner Connect or through the account flow
 * Connected dbt Cloud and Snowflake
 * Set up the dbt Cloud IDE, queried data, and did your first dbt run
+
+### Create dbt Cloud account
+
+### Enter connection credentials
+
+## Next steps
+
