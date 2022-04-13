@@ -34,6 +34,7 @@ In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.
 * [run_started_at](run_started_at)
 * [schema](dbt-jinja-functions/schema)
 * [schemas](schemas)
+* [selected_resources](selected_resources)
 * [source](dbt-jinja-functions/source)
 * [statement-blocks](statement-blocks)
 * [target](target)
