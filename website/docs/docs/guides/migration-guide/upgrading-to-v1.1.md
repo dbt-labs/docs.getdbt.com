@@ -36,6 +36,7 @@ _Note: If you're contributing docs for a new or updated feature in v1.1, please 
 
 - [**Incremental models**](configuring-incremental-models) can now accept a list of multiple columns as their `unique_key`, for models that need a combination of columns to uniquely identify each row. This is supported by the most common data warehouses, for incremental strategies that make use of the `unique_key` config (`merge` and `delete+insert`).
 - [**Generic tests**](resource-properties/tests) can define custom names. This is useful to "prettify" the synthetic name that dbt applies automatically. It's needed to disambiguate the case when the same generic test is defined multiple times with different configurations.
+- [Python compatibility](install-python-compatibility): dbt Core officially supports Python 3.10
 
 ### For users of specific adapter plugins
 
