@@ -82,7 +82,7 @@ Only supported by v1.1 or newer.
 Only supported by v1.1 or newer.
 
 :::caution Experimental functionality
-The `source_status` selection method is new in v1.1, and may have rough edges. Give it a try and let us know what you think!
+The `source_status` selection method should be considered _unstable_  because it is experimental and subject to change. We reserve the right to make breaking changes to this functionality.
 :::
 
 
