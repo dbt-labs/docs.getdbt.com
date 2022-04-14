@@ -28,7 +28,7 @@ exports.versionedPages = [
     "firstVersion": "1.1",
   },
   {
-    "page": "reference/dbt-jinja-functions/print/selected_resources",
+    "page": "reference/dbt-jinja-functions/selected_resources",
     "firstVersion": "1.1",
   }
 ]
