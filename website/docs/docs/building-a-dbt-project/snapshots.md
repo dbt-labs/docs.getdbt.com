@@ -57,6 +57,12 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 </File>
 
+:::info Preview or Compile Snapshots in IDE
+
+It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud. Instead, run the `dbt snapshot` command in the IDE by completing the following steps.
+
+:::
+
 When you run the [`dbt snapshot` command](snapshot):
 * **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null`.
 * **On subsequent runs:** dbt will check which records have changed or if any new records have been created:

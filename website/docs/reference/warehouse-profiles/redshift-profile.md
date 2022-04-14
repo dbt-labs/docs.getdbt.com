@@ -29,11 +29,11 @@ company-name:
       dbname: analytics
       schema: analytics
       threads: 4
-      keepalives_idle: 0 # default 0, indicating the system default
+      keepalives_idle: 240 # default 240 seconds
       connect_timeout: 10 # default 10 seconds
       # search_path: public # optional, not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
-      ra3: true # enables cross-database sources
+      ra3_node: true # enables cross-database sources
 ```
 
 </File>
@@ -75,10 +75,10 @@ my-redshift-db:
       dbname: analytics
       schema: analytics
       threads: 4
-      keepalives_idle: 0 # default 0, indicating the system default
+      keepalives_idle: 240 # default 240 seconds
       # search_path: public # optional, but not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
-      ra3: true # enables cross-database sources
+      ra3_node: true # enables cross-database sources
 
 ```
 

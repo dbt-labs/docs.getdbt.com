@@ -164,14 +164,21 @@ For example:
 
 #### get_response(cls, cursor)
 
-get_response is a classmethod that gets a cursor object and returns adapter-specific information about the last executed command. Ideally, the return value is an `AdapterResponse` object that includes items such as `code`, `rows_affected`, `bytes_processed`, and a summary `_message` for logging to stdout. Or, get_response can just return a string `'OK'` if your connection cursor does not provide richer metadata.
+`get_response` is a classmethod that gets a cursor object and returns adapter-specific information about the last executed command. The return value should be an `AdapterResponse` object that includes items such as `code`, `rows_affected`, `bytes_processed`, and a summary `_message` for logging to stdout.
 
 <File name='connections.py'>
 
 ```python
     @classmethod
-    def get_response(cls, cursor):
-        return cursor.status_message
+    def get_response(cls, cursor) -> AdapterResponse:
+        code = cursor.sqlstate or "OK"
+        rows = cursor.rowcount
+        status_message = f"{code} {rows_affected}"
+        return AdapterResponse(
+            _message=status_message,
+            code=code,
+            rows_affected=rows
+        )        
 ```
 
 </File>
@@ -336,21 +343,21 @@ See examples:
 - [dbt-postgres](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml)
 - [dbt-redshift](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/include/redshift/profile_template.yml)
 - [dbt-snowflake](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/include/snowflake/profile_template.yml)
-- [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/snowflake/profile_template.yml)
+- [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/bigquery/profile_template.yml)
 
 #### `__version__.py`
 
-To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatiable with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
+To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
 
 It should be noted that both of these files are included in the bootstrapped output of the `create_adapter_plugins.py` so when using that script, these files will be included.
 
 ### Testing your new adapter
 
-You can use a pre-configured [dbt adapter test suite](https://github.com/dbt-labs/dbt-adapter-tests) to test that your new adapter works. These tests include much of dbt's basic functionality, with the option to override or disable functionality that may not be supported on your adapter.
+This has moved to its own page: ["Testing a new adapter"](testing-a-new-adapter)
 
 ### Documenting your new adapter
 
 Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
 - Hosting on a public git provider (e.g. GitHub, GitLab)
 - Publishing to [PyPi](https://pypi.org/)
-- Adding to the list of ["Available Adapters"](available-adapters#community-plugins)
+- Adding to the list of ["Available Adapters"](available-adapters#community-supported)
