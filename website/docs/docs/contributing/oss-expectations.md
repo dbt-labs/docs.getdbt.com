@@ -4,7 +4,7 @@ title: "Expectations for OSS Contributors"
 
 Whether it's a dbt package, a plugin, `dbt-core`, or this very documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt open source software (OSS). While we can only speak for our own experience as open source maintainers, many of these guidelines apply when contributing to other open source projects, too.
 
-Have you seen things in other OSS projects that you quite like, and think we could learn from? Send us a message, or open a discussion--we're always excited to hear from you.
+Have you seen things in other OSS projects that you quite like, and think we could learn from? [Open a discussion on docs.dbt.com](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), or start a conversation in the dbt Community Slack (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
 
 ## Principles
 
@@ -51,7 +51,7 @@ An issue could be a bug you’ve identified while using the product or reading t
 
 ### Best practices for issues
 
-- Issues are **not** for support / troubleshooting / debugging help. Please open a discussion instead (so other future users can search for it), or post in the dbt Slack Community for help understanding the problem you’re running into.
+- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-for-beginners` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
 - Many repositories offer templates for creating issues, such as when reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This will help other people understand your issue and respond.
 
@@ -67,7 +67,7 @@ In our most critical repositories (such as `dbt-core`), **our goal is to respond
 
 **What if I’m opening an issue in a smaller repository?** We’ve open sourced a number of software projects over the years; not all of them have the same activity or maintenance guarantees as `dbt-core`. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
-**If my issue is lingering...** Sorry for the delay! If your issue still has the `triage` label attached, we’re still aware of it as something that needs a response. If it’s been more than two weeks without a response, we’d encourage you to comment, reminding us that you’re awaiting.
+**If my issue is lingering...** Sorry for the delay! If your issue is in a busier repo and has a `triage` label attached, we’re still aware of it as something that needs a response. If it's a smaller repo, or if it’s been more than two weeks without a response, we’d encourage you to comment and tag `@dbt-labs/oss-maintainers`, reminding us that you’re waiting.
 
 **Automation that can help us:** In many repositories, we use a bot that marks issues as stale if they haven’t had any activity for 180 days. This helps us keep our backlog organized and up-to-date. We encourage you to comment on older open issues that you’re interested in, to keep them from being marked stale. You’re also always welcome to comment on closed issues to say that you’re still interested in the proposal.
 
@@ -101,4 +101,4 @@ PRs are your surest way to make the change you want to see in dbt / packages / d
 - **Contributor License Agreement** (CLA): This ensures that we can merge your code, without worrying about unexpected implications for the copyright or license of open source dbt software. For more details, read: ["Contributor License Agreements"](contributor-license-agreements)
 - **Changelog:** In projects that include a number of changes in each release, we need a reliable way to signal what's been included. The mechanism for this will vary by repository, so keep an eye out for notes about how to update the changelog.
 
-**If my PR is lingering...?** This happens, despite our best efforts—we promise it’s not intentional! If it’s been more than two weeks, we’d encourage you to comment, reminding us that you’re awaiting review—for best results, say what in particular you’d like feedback on, and explain what would it mean to you to have this merged in.
+**If my PR is lingering...?** This happens, despite our best efforts—we promise it’s not intentional! If it’s been more than two weeks, we’d encourage you to leave a comment tagging `@dbt-labs/oss-maintainers`. reminding us that you’re awaiting review. For best results, say what in particular you’d like feedback on, and explain what would it mean to you to have the change merged in.
