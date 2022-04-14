@@ -26,6 +26,7 @@ In addition to the standard Jinja library ([docs](https://jinja.palletsprojects.
 * [model](model)
 * [modules](modules)
 * [on-run-end-context](on-run-end-context)
+* &nbsp;<VersionBlock firstVersion="1.1">[print](print)</VersionBlock>
 * [profiles-yml-context](profiles-yml-context)
 * [project_name](project_name)
 * [ref](ref)
