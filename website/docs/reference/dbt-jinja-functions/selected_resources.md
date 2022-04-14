@@ -19,7 +19,6 @@ to understand how to effectively use this variable.
 
 ### Usage
 
-
 The `selected_resources` context variable is a list of all the resources selected by 
 the current dbt command selector. Its value depends on the usage of parameters like
 `--select`, `--exclude` and `--selector`.
