@@ -113,12 +113,11 @@ This should be considered an _unstable_ config flag because it is experimental a
 
 At the start of runs, dbt caches metadata about all the objects in all the schemas where it might materialize resources (such as models). By default, dbt caches all schemas related to the project. When this config is enabled, dbt will only cache schemas related to selected resources for the current run. This can offer significant speed improvements when running a small subset of a large project.
 
-For example, to improve speed and performance while focused on Salesforce models you would select the source and use the `cache-selected-only` flag:
+For example, to improve speed and performance while focused on developing Salesforce models, which are materialized into their own dedicated schema, you would select those models and pass the `cache-selected-only` flag:
 
 ```text
 
-$ dbt build --select source:salesforce 
-$ dbt --cache-selected-only run
+$ dbt --cache-selected-only run --select salesforce
 
 ```
 
