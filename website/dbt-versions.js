@@ -30,5 +30,9 @@ exports.versionedPages = [
   {
     "page": "reference/dbt-jinja-functions/selected_resources",
     "firstVersion": "1.1",
-  }
+  },
+  {
+    "page": "reference/dbt-jinja-functions/print",
+    "firstVersion": "1.1",
+  },
 ]
