@@ -82,7 +82,7 @@ Only supported by v1.1 or newer.
 Only supported by v1.1 or newer.
 
 :::caution Experimental functionality
-The `source_status` selection method should be considered _unstable_  because it is experimental and subject to change. We reserve the right to make breaking changes to this functionality.
+The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
 :::
 
 
