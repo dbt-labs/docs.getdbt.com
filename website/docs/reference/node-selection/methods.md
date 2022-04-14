@@ -291,6 +291,6 @@ After issuing one of the above commands, you can reference the source freshness 
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
 $ dbt source freshness # must be run again to compare current to previous state
-$ dbt build --select source_status:fresher+ --defer --state path/to/prod/artifacts
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
 </VersionBlock>
