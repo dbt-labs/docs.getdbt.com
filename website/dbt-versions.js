@@ -34,5 +34,5 @@ exports.versionedPages = [
   {
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
-  },
+  }
 ]
