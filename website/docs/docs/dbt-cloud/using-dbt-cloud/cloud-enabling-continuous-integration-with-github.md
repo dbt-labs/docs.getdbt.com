@@ -78,6 +78,8 @@ As example:
 dbt build --select result:error+ result:fail+
 ```
 
+## Fresh Rebuilds
+
 As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that are fresher compared to a previous run.
 
 <VersionBlock lastVersion="1.0">
