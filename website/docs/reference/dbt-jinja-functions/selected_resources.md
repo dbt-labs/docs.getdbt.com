@@ -8,12 +8,11 @@ selected by the current dbt command.
 
 Currently, this variable is not accessible when using the command `run-operation`.
 
-:::danger Heads up
+:::danger Warning!
 
 dbt actively builds the graph during the [parsing phase](execute) of
 running dbt projects, so the `selected_resources` context variable will be
-empty during parsing. Please read the information below carefully
-to understand how to effectively use this variable.
+empty during parsing. Please read the information on this page to effectively use this variable.
 
 :::
 
