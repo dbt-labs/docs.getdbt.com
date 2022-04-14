@@ -3,13 +3,6 @@ title: "selected_resources"
 id: "selected_resources"
 ---
 
-<Changelog>
-
-  - New in dbt v1.1
-
-</Changelog>
-
-
 The `selected_resources` context variable contains a list of all the _nodes_ 
 selected by the current dbt command. 
 
