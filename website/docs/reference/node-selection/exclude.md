@@ -5,29 +5,20 @@ title: "Exclude"
 ### Excluding models
 dbt provides an `--exclude` flag with the same semantics as `--select`. Models specified with the `--exclude` flag will be removed from the set of models selected with `--select`.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
-  ```bash
-  $ dbt run --select my_package.*+ --exclude my_package.a_big_model+
-  ```
+```bash
+$ dbt run --select my_package.*+ --exclude my_package.a_big_model+
+```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
-  ```bash
-  $ dbt run --models my_package.*+ --exclude my_package.a_big_model+
-  ```
+```bash
+$ dbt run --models my_package.*+ --exclude my_package.a_big_model+
+```
 
-</TabItem>
-</Tabs>
-
+</VersionBlock>
 
 Exclude a specific resource by its name or lineage:
 

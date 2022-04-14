@@ -4,4 +4,10 @@
   header: Missed Coalesce?
   subheader: The annual conference dedicated to the advancement of analytics engineering wrapped up on December 10th.
   button_text: Watch the talks
-  url: https://coalesce.getdbt.com/
+  url: https://getdbt.com/coalesce-2021/
+- name: staging
+  header: "Staging: dbt Demo Day"
+  subheader: Is back April 19th! Learn what's new and coming soon to dbt.
+  button_text: Register
+  url: https://www.getdbt.com/resources/staging-dbt-demo-days-april-2022/?utm_medium=internal&utm_source=blog&utm_campaign=q1-2023_staging-demo-days_awareness&utm_content=connect
+
