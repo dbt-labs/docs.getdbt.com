@@ -179,12 +179,14 @@ By comparing to a `sources.json` artifact from a previous production run to a cu
 dbt source freshness # must be run to get previous state
 ```
 
+Test all my sources that are fresher than the previous run, and run and test all models downstream of them:
+
 ```bash
 # job 2
 dbt source freshness # must be run again to compare current to previous state
 dbt build --select source_status:fresher+ --defer --state path/to/prod/artifacts
 ```
-  - Run and test all my sources that are fresher than the previous run and run and test all downstream models that may be affected by them
+
 </VersionBlock>
 
 To learn more, read the docs on [state](understanding-state).
