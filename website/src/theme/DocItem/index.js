@@ -94,6 +94,7 @@ export default function DocItem(props) {
     }
     fetchElements()
   }, [DocContent, dbtVersion])
+  // end dbt Custom
 
   return (
     <>
