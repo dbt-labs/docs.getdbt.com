@@ -5,7 +5,7 @@ title: "TiDB Profile"
 :::info Vendor-supported plugin
 
 Some [core functionality](https://github.com/pingcap/dbt-tidb/blob/main/README.md#supported-features) may be limited. 
-If you're interested in contributing, check out the source code for each repository listed below.
+If you're interested in contributing, check out the source code repository listed below.
 
 :::
 
