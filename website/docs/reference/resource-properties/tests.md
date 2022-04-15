@@ -438,9 +438,9 @@ Only supported by v1.1 or newer.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.1">
-
 ### Alternative format for defining tests
+
+<VersionBlock firstVersion="1.1">
 
 When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
 
