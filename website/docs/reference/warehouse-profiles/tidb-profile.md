@@ -12,7 +12,7 @@ If you're interested in contributing, check out the source code for each reposit
 ## Overview of dbt-tidb
 
 **Maintained by:** PingCAP      
-**Author:** Xiang Zhang and Qiang Wu 
+**Author:** Xiang Zhang and Qiang Wu  
 **Source:** https://github.com/pingcap/dbt-tidb   
 **Core version:** v1.0.0 and newer   
 **dbt Cloud:** Not Supported
