@@ -120,7 +120,7 @@ A convenience wrapper for [get_relation](#get_relation). Returns another copy of
 
 ```sql
 
-{% set relation_exists = (adapter.load_relation(ref('my_model')) is not none %}
+{% set relation_exists = (load_relation(ref('my_model')) is not none %}
 {% if relation_exists %}
       {{ log("my_model has already been built", info=true) }}
 {% else %}
