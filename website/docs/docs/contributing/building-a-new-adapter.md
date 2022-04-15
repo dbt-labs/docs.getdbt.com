@@ -257,17 +257,17 @@ dbt implements specific SQL operations using jinja macros. While reasonable defa
 
 The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
-- `alter_column_type` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/columns.sql#L37))
-- `check_schema_exists` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/metadata.sql#L43))
-- `create_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/schema.sql#L1))
-- `drop_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/relation.sql#L14))
-- `drop_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/schema.sql#L12))
-- `get_columns_in_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/columns.sql#L1)) (required)
-- `list_relations_without_caching` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/metadata.sql#L58)) (required)
-- `list_schemas` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/metadata.sql#L29))
-- `rename_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/relation.sql#L36))
-- `truncate_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/relation.sql#L25))
-- `current_timestamp` ([source](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/adapters/freshness.sql#L1)) (required)
+- `alter_column_type` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/columns.sql#L37))
+- `check_schema_exists` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/metadata.sql#L43))
+- `create_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/schema.sql#L1))
+- `drop_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/relation.sql#L14))
+- `drop_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/schema.sql#L12))
+- `get_columns_in_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/columns.sql#L1)) (required)
+- `list_relations_without_caching` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/metadata.sql#L58)) (required)
+- `list_schemas` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/metadata.sql#L29))
+- `rename_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/relation.sql#L36))
+- `truncate_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/relation.sql#L25))
+- `current_timestamp` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/freshness.sql#L1)) (required)
 
 ### Adapter dispatch
 
