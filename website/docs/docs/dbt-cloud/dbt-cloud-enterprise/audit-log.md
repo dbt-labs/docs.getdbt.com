@@ -1,19 +1,19 @@
 ---
-title: "Audit Log for dbt Cloud Enterprise"
-id: audit-log-enterprise
-description: "Review actions in your organization for troubleshooting and security."
-sidebar_label: "Audit log"
+title: "Using the Audit Log for dbt Cloud Enterprise"
+id: audit-log
+description: "You can review actions in your organization, which can help troubleshoot issues and secure organization."
+sidebar_label: "Using the Audit log"
 ---
 
 dbt Cloud’s Audit Log allows you to quickly review the actions performed by members of your organization. It includes details such as who performed the action, what the action was, and when it was performed. These details can be used in various troubleshooting and security scenarios.
 
-## **Accessing the Audit Log**
+## Accessing the Audit Log
 
 To access Audit Log, click **Account Settings** and **Audit Log**
 
-[https://lh5.googleusercontent.com/RwFKrpYQXrFq_XDm36L2uFLGZwlqIVZqJdEQQ_PdmfKRYZgnxxAger_H_ZrMXnW6tUtezOYTJncXGi54eLYpD7E2tLgxCjhQUpnobeeTbDw6IeWD5ulDD8YhmxsqycwjWxgI-Rqw](https://lh5.googleusercontent.com/RwFKrpYQXrFq_XDm36L2uFLGZwlqIVZqJdEQQ_PdmfKRYZgnxxAger_H_ZrMXnW6tUtezOYTJncXGi54eLYpD7E2tLgxCjhQUpnobeeTbDw6IeWD5ulDD8YhmxsqycwjWxgI-Rqw)
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" title="Click Audit log in the Account settings menu."/>
 
-## **Exploring the Audit Log**
+## Exploring the Audit Log
 
 Audit Log lists all the events that occurred in your organization within the last 90 days. Audit Log is only accessible by the Org Owner. Once you get to the Audit Log page, you will see a list of various events and their associated event data. Each of these events have the following information on the main UI:
 
@@ -21,14 +21,27 @@ Audit Log lists all the events that occurred in your organization within the las
 2. **Agent** - User that triggered that action/event
 3. **Timestamp** - Local timestamp of when the event occurred
 
-### **Detailed Event View**
+### Detailed Event View
 
 Clicking on the event card opens a detailed view of the event. This displays granular information about the event. This view can be helpful in identifying details about the event. For example, if the settings for a job were changed, you can use the detailed event view to understand which job was changed, by whom, and when. This detailed view has the following information:
 
-## **Events in Audit Log**
+| Name                 | Description                                   |
+| -------------------- | --------------------------------------------- |
+| account_id           | Account ID of where the event occurred        |
+| actor                | Actor that carried out the event - User or Service    |
+| actor_id             | Unique ID of the actor                        |
+| actor_ip             | IP address of the actor                       |
+| actor_name           | Identifying name of the actor                 |
+| created_at_utc       | UTC timestamp on when the event occurred      |
+| event_type           | Unique key identifying the event              |
+| id                   | Unique ID of the event                        |
+| service              | Service that carried out the action           |
+| source               | Source of the event - dbt Cloud UI or API     |
+| v1.events.event_type | This key will be different for each event and will match the event_type. This data will include all the details about the object(s) that was changed. |
+
+## Events in Audit Log
 
 Currently, the Audit Log supports various events for different objects in dbt Cloud. The following events are currently supported:
-
 
 ### Authentication
 
@@ -135,12 +148,11 @@ Currently, the Audit Log supports various events for different objects in dbt Cl
 
 Audit Log also supports search. Currently, search is limited to the events and actors that are listed in the section above. Audit Log successfully lists historical events spanning the last 90 days. To search, search for an actor or event in the search bar and narrow your results based on the time window.
 
-[https://lh4.googleusercontent.com/iWEvtvk-oJNXhWqcxUl8E26aJfcE8QdVlmYufdS66MuZBASUD9hkCW-ySNELRd__PKJ4W58_SjlnebCJNH7DTFKXe0QuCMW5JAEc0GzQAC3AihQruEiWzvtHxyRr-ogy0MZ2jz_0](https://lh4.googleusercontent.com/iWEvtvk-oJNXhWqcxUl8E26aJfcE8QdVlmYufdS66MuZBASUD9hkCW-ySNELRd__PKJ4W58_SjlnebCJNH7DTFKXe0QuCMW5JAEc0GzQAC3AihQruEiWzvtHxyRr-ogy0MZ2jz_0)
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" title="Find content in the audit log"/>
 
----
 
 ## Exporting Logs
 
 Audit Log also allows you to export historical audit results for security, compliance, and analysis purposes. You can export data for up to the last 90 days. Clicking on the Export CSV button downloads a CSV file of all the events that occurred in your org over the last two weeks.
 
-[https://lh4.googleusercontent.com/i1SITGgFpLyK_ESs-B_SKX-PqChrNRWfa_I8ydBMkyax4v9mhFMrgRGpL_lmkrKbU3xztC18aC_Z6zRYBsRjQTG3ej2e8wJIuNaOKPN7GIyifbbIFmnd8nTjeXBF-FPyZ5bB8jsH](https://lh4.googleusercontent.com/i1SITGgFpLyK_ESs-B_SKX-PqChrNRWfa_I8ydBMkyax4v9mhFMrgRGpL_lmkrKbU3xztC18aC_Z6zRYBsRjQTG3ej2e8wJIuNaOKPN7GIyifbbIFmnd8nTjeXBF-FPyZ5bB8jsH)
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-export-csv.png" title="Export the CSV file by clicking the icon."/>
