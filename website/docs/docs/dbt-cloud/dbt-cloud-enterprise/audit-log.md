@@ -12,6 +12,7 @@ Use the Audit log to quickly review the actions performed by members of your org
 ## Accessing the Audit log
 
 To access Audit Log, click **Account Settings** and **Audit Log**.
+
 <div style={{maxWidth: '150px'}}>
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" title="Audit log menu"/>
 </div>
