@@ -1,7 +1,7 @@
 ---
 title: "Using the Audit Log for dbt Cloud Enterprise"
 id: audit-log
-description: "You can review actions in your organization, which can help troubleshoot issues and secure organization."
+description: "You can troubleshoot possible issues and provide security audits by reviewing event activity in your organization."
 sidebar_label: "Using the Audit log"
 ---
 
