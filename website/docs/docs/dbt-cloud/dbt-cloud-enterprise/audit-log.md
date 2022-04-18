@@ -7,7 +7,9 @@ sidebar_label: "Using the Audit log"
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events. The dbt Cloud Audit log lists events triggered in your organization within the last 90 days.
 
-Use the Audit log to quickly review the actions performed by members of your organization. The Audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. You must be an Org Owner to access the Audit log.
+Use the Audit log to quickly review the actions performed by members of your organization. The Audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
+
+You must be an **Account Owner** to access the Audit log and this feature is only available on Enterprise plans.
 
 ## Accessing the Audit log
 
