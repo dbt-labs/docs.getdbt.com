@@ -7,6 +7,7 @@ sidebar_label: "Set up and connect BigQuery"
 
 ## Introduction
 
+Add intro
 ## Prerequisites
 
 * Existing Cloud Provider account (AWS, GCP, Azure).
