@@ -554,6 +554,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/teradata-profile",
         "reference/warehouse-profiles/athena-profile",
         "reference/warehouse-profiles/vertica-profile",
+        "reference/warehouse-profiles/tidb-profile",
       ],
     },
     {
