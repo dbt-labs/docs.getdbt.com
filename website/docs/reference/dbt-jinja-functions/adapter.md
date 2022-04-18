@@ -75,7 +75,7 @@ Expand the `to_relation` table's column types to match the schema of `from_relat
 {% set tmp_relation = adapter.get_relation(...) %}
 {% set target_relation = adapter.get_relation(...) %}
 
-{% do adapter.expand_target_column_types(tmp_realtion, target_relation) %}
+{% do adapter.expand_target_column_types(tmp_relation, target_relation) %}
 ```
 
 </File>
