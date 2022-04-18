@@ -19,8 +19,20 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
-    {
-      "page": "docs/guides/migration-guide/upgrading-to-v1.1",
-      "firstVersion": "1.1",
-    }
+  {
+    "page": "docs/contributing/testing-a-new-adapter",
+    "firstVersion": "1.1",
+  },
+  {
+    "page": "docs/guides/migration-guide/upgrading-to-v1.1",
+    "firstVersion": "1.1",
+  },
+  {
+    "page": "reference/dbt-jinja-functions/selected_resources",
+    "firstVersion": "1.1",
+  },
+  {
+    "page": "reference/dbt-jinja-functions/print",
+    "firstVersion": "1.1",
+  }
 ]
