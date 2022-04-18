@@ -164,7 +164,7 @@ You can search the Audit log to find a specific event or actor, which is limited
 
 ## Exporting Logs
 
-You can use Audit log to export historical audit results for security, compliance, and analysis purposes. You can export data for up to the last 90 days. Click the **Export CSV** button to download a CSV file of all the events that occurred in your org over the last two weeks.
+You can use Audit log to export historical audit results for security, compliance, and analysis purposes. You can export data for up to the last 90 days. Click the **Export CSV** button to download a CSV file of all the events that occurred in your org over the last 90 days.
 
 <div style={{maxWidth: '200px'}}>
 
