@@ -292,9 +292,9 @@ models:
 
 Check out the guide on writing a [custom generic test](custom-generic-tests) for more information.
 
-### Define a custom name for one test
-
 <VersionBlock firstVersion="1.1">
+
+### Define a custom name for one test
 
 By default, dbt will synthesize a name for your generic test by concatenating:
 - test name (`not_null`, `unique`, etc)
@@ -432,12 +432,6 @@ $ dbt test
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.0">
-
-Only supported by v1.1 or newer.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.1">
 
 ### Alternative format for defining tests
@@ -468,11 +462,5 @@ models:
 ```
 
 </File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-Only supported by v1.1 or newer.
 
 </VersionBlock>
