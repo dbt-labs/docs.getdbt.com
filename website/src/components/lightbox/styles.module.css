@@ -10,6 +10,7 @@
     margin: 10px auto;
     display: block;
     width: 600px;
+    max-width: 100%;
 }
 
 :local(.collapsed) {
