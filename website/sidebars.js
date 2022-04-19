@@ -109,6 +109,7 @@ const sidebarSettings = {
       type: "category",
       label: "Contributing",
       items: [
+        "docs/contributing/oss-expectations",
         "docs/contributing/contributor-license-agreements",
         "docs/contributing/building-a-new-adapter",
         "docs/contributing/testing-a-new-adapter",
@@ -234,6 +235,7 @@ const sidebarSettings = {
             "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
           ],
         },
+        "docs/dbt-cloud/dbt-cloud-enterprise/audit-log",
       ],
     },
     {
@@ -554,6 +556,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/teradata-profile",
         "reference/warehouse-profiles/athena-profile",
         "reference/warehouse-profiles/vertica-profile",
+        "reference/warehouse-profiles/tidb-profile",
       ],
     },
     {
