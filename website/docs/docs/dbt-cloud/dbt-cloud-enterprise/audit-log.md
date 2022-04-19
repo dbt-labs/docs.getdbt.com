@@ -1,19 +1,19 @@
 ---
-title: "Using the Audit Log for dbt Cloud Enterprise"
+title: "Using the audit log for dbt Cloud Enterprise"
 id: audit-log
 description: "You can troubleshoot possible issues and provide security audits by reviewing event activity in your organization."
-sidebar_label: "Using the Audit log"
+sidebar_label: "Using the audit Log"
 ---
 
-To review actions performed by people in your organization, dbt provides logs of audited user and system events. The dbt Cloud Audit log lists events triggered in your organization within the last 90 days.
+To review actions performed by people in your organization, dbt provides logs of audited user and system events. The dbt Cloud audit log lists events triggered in your organization within the last 90 days.
 
-Use the Audit log to quickly review the actions performed by members of your organization. The Audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
+Use the audit log to quickly review the actions performed by members of your organization. The audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
 
-You must be an **Account Admin** to access the Audit log and this feature is only available on Enterprise plans.
+You must be an **Account Admin** to access the audit log and this feature is only available on Enterprise plans.
 
-## Accessing the Audit log
+## Accessing the audit log
 
-To access Audit Log, click **Account Settings** and **Audit Log**.
+To access audit log, click **Account Settings** and **Audit Log**.
 
 <div style={{maxWidth: '150px'}}>
 
@@ -21,9 +21,9 @@ To access Audit Log, click **Account Settings** and **Audit Log**.
 
 </div>
 
-## Understanding the Audit log
+## Understanding the audit log
 
-On the Audit Log page, you will see a list of various events and their associated event data. Each of these events show the following information in dbt:
+On the audit log page, you will see a list of various events and their associated event data. Each of these events show the following information in dbt:
 
 * **Event name**: Action that was triggered
 * **Agent**: User who triggered that action/event
@@ -31,7 +31,7 @@ On the Audit Log page, you will see a list of various events and their associate
 
 ### Event details
 
-Click the event card to see the details about the activity that triggered the event. This view provides important details, including when it happened and what type of event was triggered. For example, if someone changes the settings for a job, you can use the event details to see which job was changed (type of event: `v1.events.job_definition.Changed`), by whom (person who triggered the event: `actor`), and when (time it was triggered: `created_at_utc`). For types of events and their descriptions, see [Events in Audit log](#events-in-audit-log).
+Click the event card to see the details about the activity that triggered the event. This view provides important details, including when it happened and what type of event was triggered. For example, if someone changes the settings for a job, you can use the event details to see which job was changed (type of event: `v1.events.job_definition.Changed`), by whom (person who triggered the event: `actor`), and when (time it was triggered: `created_at_utc`). For types of events and their descriptions, see [Events in audit log](#events-in-audit-log).
 
 The event details provides the key factors of an event:
 
@@ -51,7 +51,7 @@ The event details provides the key factors of an event:
 
 ## Audit log events
 
-The Audit log supports various events for different objects in dbt Cloud. You will find events for authentication, environment, jobs, service tokens, groups, user, project, permissions, license, connection, repository, and credentials.
+The audit log supports various events for different objects in dbt Cloud. You will find events for authentication, environment, jobs, service tokens, groups, user, project, permissions, license, connection, repository, and credentials.
 
 ### Authentication
 
@@ -154,9 +154,9 @@ The Audit log supports various events for different objects in dbt Cloud. You wi
 | Credentials Changed in Project   | v1.events.credentials.Changed | Credentials changed in project   |
 | Credentials Removed from Project | v1.events.credentials.Removed | Credentials removed from project |
 
-## Searching the Audit Log
+## Searching the audit log
 
-You can search the Audit log to find a specific event or actor, which is limited to the ones listed in [Events in Audit log](#events-in-audit-log). The Audit log successfully lists historical events spanning the last 90 days. You can search for an actor or event using the search bar, and then narrow your results using the time window.
+You can search the audit log to find a specific event or actor, which is limited to the ones listed in [Events in audit log](#events-in-audit-log). The audit log successfully lists historical events spanning the last 90 days. You can search for an actor or event using the search bar, and then narrow your results using the time window.
 
 <div style={{maxWidth: '600px'}}>
 
@@ -164,9 +164,9 @@ You can search the Audit log to find a specific event or actor, which is limited
 
 </div>
 
-## Exporting Logs
+## Exporting logs
 
-You can use Audit log to export historical audit results for security, compliance, and analysis purposes. You can export data for up to the last 90 days. Click the **Export CSV** button to download a CSV file of all the events that occurred in your organization over the last 90 days.
+You can use audit log to export historical audit results for security, compliance, and analysis purposes. You can export data for up to the last 90 days. Click the **Export CSV** button to download a CSV file of all the events that occurred in your organization over the last 90 days.
 
 <div style={{maxWidth: '200px'}}>
 
