@@ -52,7 +52,7 @@ Click **Create** to continue the setup process.
 On the **General Settings** page, enter the following details::
 
 * **App name**: dbt Cloud
-* **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1w_Yj7QK-ULP4ebtKbrbvGo04pWlg0Y7S/view),
+* **App logo** (optional): You can optionally [download the dbt logo](https://www.getdbt.com/ui/img/dbt-icon.png),
   and upload it to Okta to use as the logo for this app.
 
 Click **Next** to continue.
@@ -73,8 +73,8 @@ aren't sure which values you should use, please contact support (support@getdbt.
 To complete this section, you will need a _login slug_. This slug controls the
 URL where users on your account can log into your application via Okta. Login
 slugs are typically the lowercased name of your organization separated with
-dashes. For example, the _login slug_ for Fishtown Analytics would be
-`fishtown-analytics`. Login slugs must be unique across all dbt Cloud accounts,
+dashes. For example, the _login slug_ for dbt Labs would be
+`dbt-labs`. Login slugs must be unique across all dbt Cloud accounts,
 so pick a slug that uniquely identifies your company.
 
 On the **SAML Settings** page, enter the following values:

@@ -5,7 +5,7 @@ description: Let's test and document our models to build trust in our data.
 ---
 
 ## Add tests to your models
-Adding [tests](/docs/testing) to a project helps validate that your models are working correctly. So let's add some tests to our project!
+Adding [tests](/docs/building-a-dbt-project/tests) to a project helps validate that your models are working correctly. So let's add some tests to our project!
 
 <CloudCore>
     <LoomVideo id="86a1e7ed19084810a7903bd31ebd83e0" />
@@ -80,7 +80,7 @@ When you run `dbt test`, dbt iterates through your YAML files, and constructs a 
 <FAQ src="when-to-test" />
 
 ## Document your models
-Adding [documentation](/docs/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
+Adding [documentation](/docs/building-a-dbt-project/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
 
 <CloudCore>
     <LoomVideo id="f946321f692747e59bec3b726eccbfd4" />
@@ -157,4 +157,4 @@ Great work ⭐️! You've just built your first dbt project that's tested and do
 
 * Write a test that fails, for example, omit one of the order statuses in the `accepted_values` list. What does a failing test look like? Can you debug the failure?
 * Run the tests for one model only. If you grouped your `stg_` models into a directory, try running the tests for all the models in that directory.
-* Use a [docs block](/docs/documentation#using-docs-blocks) to add a Markdown description to a model.
+* Use a [docs block](/docs/building-a-dbt-project/documentation#using-docs-blocks) to add a Markdown description to a model.

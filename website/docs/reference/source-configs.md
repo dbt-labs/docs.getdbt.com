@@ -18,12 +18,8 @@ to prevent them from rendering in the documentation, or to prevent
 [source freshness checks](using-sources#snapshotting-source-data-freshness)
 from running on source tables imported from packages.
 
-Unlike models, source configurations are _not_ applied hierarchically based on
-folder paths. Instead, source configurations are applied based on:
- - The package which contains the source
- - The source name
- - The table name
-
+Unlike other resource types, sources do not yet support a `config` property. It
+is not possible to (re)define source configs hierarchically across multiple yaml files.
 
 ### Examples
 #### Disable all sources imported from a package

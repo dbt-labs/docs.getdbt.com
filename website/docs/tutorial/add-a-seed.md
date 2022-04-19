@@ -10,7 +10,7 @@ complete this lesson
 
 1. Add a seed file:
 
-<File name='data/country_codes.csv'>
+<File name='seeds/country_codes.csv'>
 
 ```text
 country_code,country_name

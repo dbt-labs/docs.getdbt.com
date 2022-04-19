@@ -13,6 +13,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Author:** Dmitriy Sokolov    
 **Source:** https://github.com/silentsokolov/dbt-clickhouse    
 **Core version:** v0.19.0 and newer    
+**dbt Cloud:** Not Supported    
 
 ![dbt-clickhouse stars](https://img.shields.io/github/stars/silentsokolov/dbt-clickhouse?style=for-the-badge)
 

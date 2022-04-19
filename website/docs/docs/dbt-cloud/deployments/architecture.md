@@ -44,7 +44,7 @@ The following diagram shows the network architecture for the hosted _Multi Tenan
 
 <img src="/img/docs/dbt-cloud/deployment/aws-network-architecture.png" />
 
-- **VPC**: In both hosted deployments, the dbt Cloud application infrastructure lives in an [AWS VPC](https://aws.amazon.com/vpc/) managed by Fishtown Analytics. One of the key differences between the Production and Single Tenant deployment is that the Single Tenant deployment provides a dedicated VPC for a single customer.
+- **VPC**: In both hosted deployments, the dbt Cloud application infrastructure lives in an [AWS VPC](https://aws.amazon.com/vpc/) managed by dbt Labs. One of the key differences between the Production and Single Tenant deployment is that the Single Tenant deployment provides a dedicated VPC for a single customer.
 - **EKS**: Hosted environments leverage [AWS Elastic Kubernetes Service](https://aws.amazon.com/eks/) to manage dbt Cloud application resources. EKS provides a high degree of reliability and scalability for the dbt Cloud application.
 - **CLB**: One or more [AWS Classic Load Balancers](https://aws.amazon.com/elasticloadbalancing/) living in a public subnet are leveraged in the hosted deployment environments to distribute incoming traffic across multple EC2 instances in the EKS cluster.
 - **EC2**: The hosted dbt Cloud deployments leverage a cluster of [AWS EC2](https://aws.amazon.com/ec2/) worker nodes to run the dbt Cloud application.

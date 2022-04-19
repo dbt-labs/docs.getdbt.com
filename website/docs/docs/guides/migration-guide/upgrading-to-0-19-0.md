@@ -6,7 +6,8 @@ title: "Upgrading to 0.19.0"
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/1951)
-- [Changelog](https://github.com/fishtown-analytics/dbt/blob/dev/kiyoshi-kuromiya/CHANGELOG.md)
+- [Release notes](https://github.com/dbt-labs/dbt-core/releases/tag/v0.19.0)
+- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.19.latest/CHANGELOG.md)
 
 ## Breaking changes
 
@@ -36,7 +37,7 @@ As part of this change:
 - the `SQLConnectionManager` method `get_status` has been renamed to `get_response`
 - `execute` now returns a tuple instead of a string
 
-See [dbt#2961](https://github.com/fishtown-analytics/dbt/pull/2961) for full implementation details. While `adapter_response` is not yet populated by tests or source freshness checks, we hope to add those in a future release ([dbt#2964](https://github.com/fishtown-analytics/dbt/issues/2964)).
+See [dbt#2961](https://github.com/dbt-labs/dbt-core/pull/2961) for full implementation details. While `adapter_response` is not yet populated by tests or source freshness checks, we hope to add those in a future release ([dbt#2964](https://github.com/dbt-labs/dbt-core/issues/2964)).
 
 ## New and changed documentation
 
@@ -47,6 +48,7 @@ See [dbt#2961](https://github.com/fishtown-analytics/dbt/pull/2961) for full imp
 - [Snapshots](snapshots#invalidate_hard_deletes): If the config `invalidate_hard_deletes` is enabled, `dbt snapshot` will update records whose unique key no longer exist in the snapshot query. Should those uniquely identified records "revive," `dbt snapshot` will re-add them.
 - [YAML selectors](yaml-selectors) support a `description` property and record their expanded dictionary representations in the manifest.
 - [Modules](modules): The regex python module, `re`, is available in dbt's Jinja context.
+- [parse](parse): New command to parse a dbt project and write detailed timing info.
 
 #### State
 - [Understanding state](understanding-state): New docs outlining the conceptual background of state-informed runs, as well as the [known caveats](state-comparison-caveats) for state comparison. In v0.19.0, dbt is a little bit smarter at identifying `state:modified` "false positives" that previously resulted from env-based configurations in `dbt_project`.

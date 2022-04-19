@@ -115,7 +115,7 @@ Runtime Error
 <summary>Debugging</summary>
 
 
-- Open your `profiles.yml` file (if you're unsure where this is, run `dbt debug --config dir`)
+- Open your `profiles.yml` file (if you're unsure where this is, run `dbt debug --config-dir`)
 - Confirm that your credentials are correct — you may need to work with a DBA to confirm this.
 - After updating the credentials, run `dbt debug` to check you can connect
 
@@ -183,7 +183,7 @@ _Note: if you're using the dbt Cloud IDE to work on your dbt project, this error
 
 ### Invalid `ref` function
 ```
-$ dbt run -m customers
+$ dbt run -s customers
 Running with dbt=0.17.1
 
 Encountered an error:
@@ -222,7 +222,7 @@ To fix this:
 - Use the error message to find your mistake
 
 To prevent this:
-- _(dbt CLI users only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/fishtown-analytics/atom-dbt), [vscode-dbt extestion](https://marketplace.visualstudio.com/items?itemName=bastienboutonnet.vscode-dbt))
+- _(dbt CLI users only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/dbt-labs/atom-dbt), [vscode-dbt extestion](https://marketplace.visualstudio.com/items?itemName=bastienboutonnet.vscode-dbt))
 
 </details>
 

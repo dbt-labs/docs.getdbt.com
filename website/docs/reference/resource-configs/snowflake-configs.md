@@ -3,11 +3,6 @@ title: "Snowflake configurations"
 id: "snowflake-configs"
 ---
 
-:::caution Heads up!
-These docs are a work in progress.
-
-:::
-
 <!----
 To-do:
 - use the reference doc structure for this article / split into separate articles
@@ -57,7 +52,7 @@ parameter that can be quite useful later on when searching in the [QUERY_HISTORY
 
 dbt supports setting a default query tag for the duration of its Snowflake connections in
 [your profile](snowflake-profile). You can set more precise values (and override the default) for subsets of models by setting
-a `query_tag` model config:
+a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 <File name='dbt_project.yml'>
 
@@ -80,6 +75,23 @@ models:
 select ...
 
 ```
+  
+In this example, you can set up a query tag to be applied to every query with the model's name. 
+  
+```sql 
+
+  {% macro set_query_tag() -%}
+  {% set new_query_tag = model.name %} 
+  {% if new_query_tag %}
+    {% set original_query_tag = get_current_query_tag() %}
+    {{ log("Setting query_tag to '" ~ new_query_tag ~ "'. Will reset to '" ~ original_query_tag ~ "' after materialization.") }}
+    {% do run_query("alter session set query_tag = '{}'".format(new_query_tag)) %}
+    {{ return(original_query_tag)}}
+  {% endif %}
+  {{ return(none)}}
+{% endmacro %}
+
+```
 
 **Note:** query tags are set at the _session_ level. At the start of each model
 materialization, if the model has a custom `query_tag`
@@ -92,7 +104,7 @@ queries running with an incorrect tag.
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
+The [`incremental_strategy` config](configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`.
 

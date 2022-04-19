@@ -63,7 +63,7 @@ sources:
 
 <TabItem value="seeds">
 
-<File name='data/schema.yml'>
+<File name='seeds/schema.yml'>
 
 ```yml
 version: 2
@@ -306,7 +306,7 @@ models:
 
 ### Include an image from your repo in your descriptions
 To include an image from your repository in your descriptions:
-1. Add the file in a subdirectory, e.g. `assets/dbt-logo.png`
+1. Add the file in a subdirectory, e.g. `assets/dbt-logo.svg`
 2. Set the [`asset-paths` config](project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
 
 <File name='dbt_project.yml'>
@@ -326,7 +326,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](assets/dbt-logo.png)"
+    description: "!\[dbt Logo](assets/dbt-logo.svg)"
 
     columns:
       - name: customer_id
@@ -342,7 +342,7 @@ _[CLI users only]_
 
 4. Run `dbt docs serve` — the image will be rendered as part of your project documentation:
 
-<Lightbox src="/img/reference/image-in-docs.png" title="The image at assets/dbt-logo.png is rendered correctly"/>
+<Lightbox src="/img/reference/image-in-docs.png" title="The image at assets/dbt-logo.svg is rendered correctly"/>
 
 If mixing images and text together, also consider using a docs block.
 
@@ -357,7 +357,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://raw.githubusercontent.com/fishtown-analytics/dbt/dev/marian-anderson/etc/dbt-logo-full.svg)"
+    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt/develop/etc/dbt-logo.svg)"
 
     columns:
       - name: customer_id

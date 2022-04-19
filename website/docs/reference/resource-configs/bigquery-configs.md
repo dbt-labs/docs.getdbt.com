@@ -3,11 +3,6 @@ title: "BigQuery configurations"
 id: "bigquery-configs"
 ---
 
-:::caution Heads up!
-These docs are a work in progress.
-
-:::
-
 <!----
 To-do:
 - use the reference doc structure for this article/split into separate articles
@@ -51,9 +46,9 @@ The `partition_by` config can be supplied as a dictionary with the following for
 
 ```python
 {
-  "field": "<field name",
-  "data_type": "<timestamp | date | datetime | int64 >",
-  "granularity": "< hour | day | month | year >"
+  "field": "<field name>",
+  "data_type": "<timestamp | date | datetime | int64>",
+  "granularity": "<hour | day | month | year>"
 
   # Only required if data_type is "int64"
   "range": {
@@ -196,6 +191,38 @@ as (
 
 </TabItem>
 </Tabs>
+
+#### Additional partition configs
+
+<Changelog>
+
+  - **v0.20.0:** Introduced `require_partition_filter` and `partition_expiration_days`
+
+</Changelog>
+
+If your model has `partition_by` configured, you may optionally specify two additional configurations:
+
+- `require_partition_filter` (boolean): If set to `true`, anyone querying this model _must_ specify a partition filter, otherwise their query will fail. This is recommended for very large tables with obvious partitioning schemes, such as event streams grouped by day. Note that this will affect other dbt models or tests that try to select from this model, too.
+
+- `partition_expiration_days` (integer): If set for date- or timestamp-type partitions, the partition will expire that many days after the date it represents. E.g. A partition representing `2021-01-01`, set to expire after 7 days, will no longer be queryable as of `2021-01-08`, its storage costs zeroed out, and its contents will eventually be deleted. Note that [table expiration](#controlling-table-expiration) will take precedence if specified.
+
+<File name='bigquery_table.sql'>
+
+```sql
+{{ config(
+    materialized = 'table',
+    partition_by = {
+      "field": "created_at",
+      "data_type": "timestamp",
+      "granularity": "day"
+    },
+    require_partition_filter = true,
+    partition_expiration_days = 7
+)}}
+
+```
+
+</File>
 
 ### Clustering Clause
 
@@ -349,7 +376,7 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -387,11 +414,11 @@ strategy is selected.
 
 ### The `insert_overwrite` strategy
 
-:::info New in dbt v0.16.0
+<Changelog>
 
-This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](upgrading-to-0-16-0)
+  - **v0.16.0:** Introduced `insert_overwrite` incremental strategy
 
-:::
+</Changelog>
 
 The `insert_overwrite` strategy generates a merge statement that replaces entire partitions
 in the destination table. **Note:** this configuration requires that the model is configured
@@ -482,10 +509,13 @@ with events as (
 
 This example model serves to replace the data in the destination table for both
 _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
-way to incrementally update a table using dbt.
+way to incrementally update a table using dbt. If we wanted this to run more dynamically—
+let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
 
 <Changelog>
-  - v0.19.0: With the advent of truncated timestamp partitions in BigQuery, `timestamp`-type partitions are now treated as timestamps instead of dates for the purposes of filtering. Update `partitions_to_replace` accordingly.
+
+  - **v0.19.0:** With the advent of truncated timestamp partitions in BigQuery, `timestamp`-type partitions are now treated as timestamps instead of dates for the purposes of filtering. Update `partitions_to_replace` accordingly.
+
 </Changelog>
 
 Think of this as "full control" mode. You must ensure that expressions or literal values in the the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.

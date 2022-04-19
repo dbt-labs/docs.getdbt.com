@@ -4,71 +4,74 @@ id: "connecting-gitlab"
 sidebar_label: "Connecting GitLab"
 ---
 
-:::info Enterprise Feature
-
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, let us know at sales@getdbt.com.
-
-:::
-
 ## Overview
 
-Once your GitLab account is connected, you can:
+Connecting your GitLab account to dbt Cloud unlocks exciting and compelling functionality in dbt Cloud. Once your GitLab account is connected, you can:
+- [Trigger CI builds](cloud-enabling-continuous-integration-with-github) when Merge Requests are opened in GitLab.
 - Import new repos with one click
-- Carry GitLab permissions through to dbt cloud IDE driven git actions
+- Carry GitLab user permissions through to dbt Cloud IDE's git actions.
+## For Developer and Team tiers
 
-## Linking dbt Cloud to your GitLab account
+To connect your personal GitLab account, navigate to your [Profile](https://cloud.getdbt.com/#/profile/) and select [Integrations](https://cloud.getdbt.com/#/profile/integrations/) from the left sidebar. 
 
-To link your dbt Cloud account to your GitLab account, navigate to your Account Settings and click the Integrations tab. 
+If your account is not connected, click the button `Link your GitLab account` to continue the setup process. 
+<Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/not-connected.png" title="Link your GitLab" />
+
+You should be redirected to GitLab and prompted to sign into your account. GitLab will then ask for your explicit authorization: 
+
+<Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Auth.png" title="GitLab Authorization Screen" />
+
+Once you've accepted, you should be redirected back to dbt Cloud, and you'll see that your account has been linked.
+
+<Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/connected.png" title="GitLab connected" />
+
+Now that you've linked to your account from your Profile page, you should verify that your Project Settings page also shows your deploy token. 
+
+## For Enterprise tier
+
+Before developers can personally authenticate in GitLab, account admins need to set up a GitLab application.
+
+Account admins should navigate to `Account Settings` and click on the `Integrations` tab. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_navigation_setup.gif" title="Navigating to the GitLab Integration"/>
 
-Here you can link your GitLab account to dbt Cloud. 
 
-You'll need to set up an application at GitLab in order to make it official - [they have a guide for that here](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application-through-the-profile). 
+Admins can create a Group Owned Application in GitLab - [GitLab has a guide for that here](https://docs.gitlab.com/ee/integration/oauth_provider.html#group-owned-applications). 
 
-For your dbt Cloud application, you'll want to select:
+In GitLab, when creating your Group Owned Application, input the following:
 - `Name` - We recommend `dbt Cloud`
-- `Redirect URI` - You will want to copy-paste this from your Account Integrations page
+- `Redirect URI` - You should copy-paste this from your Account Integrations page in dbt Cloud, but it is likely `https://cloud.getdbt.com/complete/gitlab`
 - Check the `Confidential` box
 - Check the `api` Scope
 
-The screen at GitLab should look something like this:
+The application form in GitLab should look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/dbt_cloud_gitlab_application_settings.png" title="Add New Application Screen at GitLab"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Group-App.png" title="GitLab group owned applications set up"/>
 
-Once you've gotten your Application ID and Secret from GitLab, you can click the Edit button in your Integrations tab, and copy-paste those values into the form.
+Click `Save application` in GitLab, and GitLab will then generate an Application ID and Secret. You can copy-paste those values back into the form on your dbt Cloud's Integrations page.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_integration_edit_button.png" title="Edit button in the top right corner"/>
 
-Note that if you're using the regular consumer version of GitLab, you'll want to use the standard `https://gitlab.com` for your GitLab instance - if your organization is using a hosted version of GitLab, you'll want to use the hostname provided by your organization, probably something like `https://gitlab.yourgreatcompany.com/`
+Note that if you're using the regular consumer version of GitLab, you'll want to use the standard `https://gitlab.com` for your GitLab instance - if your organization is using a hosted version of GitLab, you'll want to use the hostname provided by your organization: `https://gitlab.yourgreatcompany.com/`.
 
-GitLab will then ask for your explicit approval: 
+Once the form is complete in dbt Cloud, click the button `Connect to GitLab`.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_application_auth.png" title="GitLab Authorization Screen" />
+GitLab will then ask for your explicit authorization: 
 
-And then you're all set!
+<Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Auth.png" title="GitLab Authorization Screen" />
 
-## Usage Notes
+And you're all set!
 
-Note that only Admins and dbt Developers working in the IDE need to connect their GitLab accounts. It’s not necessary for every dbt Cloud user to connect GitLab.
+Non-admins on Enterprise accounts can authenticate by going to `Profile` and then `Integrations` and clicking the `Link your GitLab account` button.
 
-If your dbt Project is connected to your organization's GitLab repo, you'll be prompted to also connect your personal GitLab account before you're able to use the Cloud IDE:
+<Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/not-connected.png" title="Link your GitLab" />
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/gitlab_personal_auth.png" title="GitLab Authentication Required" />
-
-You can click the Authenticate button to begin the process, or follow the instructions below.
-
-## Connect your personal GitLab account
-
-To connect your personal GitLab account, navigate to your [User Profile](https://cloud.getdbt.com/#/profile/) select the [Integrations section](https://cloud.getdbt.com/#/profile/integrations/) from the left sidebar. Under "GitLab", if your account is already connected, you’ll see "Your user account is linked to a GitLab account with username &lt;your-gitlab-username&gt;."
-
-If your account is not connected, you’ll see "This account is not linked to a GitLab account.” Click the button to begin the setup process. You’ll be redirected to GitLab, and then back into dbt Cloud. When you are redirected to dbt Cloud, you should now see your connected account. 
 
 ## Troubleshooting
 
 ### Errors importing a repository
 If you do not see your repository listed, double-check that:
-- Your repository is in a Gitlab group you have access to
+- Your repository is in a Gitlab group you have access to. dbt Cloud will not read repos associated with a user.
 
 If you do see your repository listed but are unable to import the repository successfully, double-check that:
-- You are a maintainer on that repository (only users with a maintainer permissions can set up repository connections)
+- You are a maintainer on that repository (only users with maintainer permissions can set up repository connections)

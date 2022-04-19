@@ -22,7 +22,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started Tutor
 
 :::
 
-If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/fishtown-analytics/dbt-starter-project) contains default configurations as well as helpful notes.
+If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/dbt-labs/dbt-starter-project) contains default configurations as well as helpful notes.
 
 
 <Tabs
@@ -59,7 +59,7 @@ To create a new dbt project when developing in dbt Cloud:
 To create a new dbt project, run:
 
 ```bash
-$ dbt init [project-name]
+$ dbt init [project_name]
 ```
 
 This will create a new directory in your current path (i.e. at `./[project-name]`.

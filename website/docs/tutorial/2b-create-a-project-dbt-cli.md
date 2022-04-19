@@ -34,17 +34,17 @@ $ dbt --version
 
 :::info
 
-dbt should have been installed as part of the  [Setting Up](/tutorial/setting-up) part of the tutorial. If it was not installed, please follow the [installation instructions](dbt-cli/installation).
+dbt should have been installed as part of the  [Setting Up](/tutorial/setting-up) part of the tutorial. If it was not installed, please follow the [installation instructions](dbt-cli/install/overview).
 
 :::
 
 2. Run the `init` command:
 ```shell-session
-$ dbt init jaffle-shop
+$ dbt init jaffle_shop
 ```
 3. `cd` into your project:
 ```shell-session
-$ cd jaffle-shop
+$ cd jaffle_shop
 ```
 You can use `pwd` to confirm that you are in the right spot.
 
@@ -58,7 +58,7 @@ You can use `pwd` to confirm that you are in the right spot.
 <File name='dbt_project.yml'>
 
 ```yaml
-name: jaffle_shop # this normally says my_new_package
+name: jaffle_shop # this normally says my_new_project
 
 ...
 
@@ -67,7 +67,7 @@ profile: jaffle_shop # this normally says default
 ...
 
 models:
-  jaffle_shop: #this normally says my_new_package. It should match the value for `name:`
+  jaffle_shop: #this normally says my_new_project. It should match the value for `name:`
     ...
 ```
 
