@@ -51,7 +51,7 @@ export default function BlogTagsPostsPage(props) {
   );
 
   // dbt Custom
-  const { tagData } = usePluginData('docusaurus-build-blog-data-plugin');
+  const { tagData } = usePluginData('docusaurus-build-global-data-plugin');
   const thisTagData = tagData.find(tag => tag.name === tagName)
 
   return (

@@ -1,5 +1,5 @@
 ---
-resource_types: [models, seeds]
+resource_types: [models, seeds, tests]
 datatype: string
 ---
 
