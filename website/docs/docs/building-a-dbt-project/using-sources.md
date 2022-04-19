@@ -17,7 +17,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 ### Declaring a source
 
-Sources are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under a `sources:` key.
+Sources are defined in `.yml` files nested under a `sources:` key.
 
 <File name='models/<filename>.yml'>
 
@@ -188,4 +188,4 @@ The results of this query are used to determine whether the source is fresh or n
 ### FAQs
 <FAQ src="exclude-table-from-freshness" />
 <FAQ src="snapshotting-freshness-for-one-source" />
-<FAQ src="snapshot-freshness-output" />
+<FAQ src="dbt-source-freshness" />

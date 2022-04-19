@@ -87,7 +87,7 @@ To declare a docs block, use the jinja `docs` tag. Docs blocks must be uniquely 
 
 This table contains clickstream events from the marketing website.
 
-The events in this table are recorded by \[Snowplow](http://github.com/snowplow/snowplow) and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:
+The events in this table are recorded by [Snowplow](http://github.com/snowplow/snowplow) and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:
  - /
  - /about
  - /team
@@ -101,7 +101,7 @@ The events in this table are recorded by \[Snowplow](http://github.com/snowplow/
 In the above example, a docs block named `table_events` is defined with some descriptive markdown contents. There is nothing significant about the name `table_events` — docs blocks can be named however you like, as long as the name only contains alphanumeric and underscore characters.
 
 ### Placement
-Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [source-paths](source-paths), [data-paths](data-paths), [analysis-paths](analysis-paths), [macro-paths](macro-paths) and [snapshot-paths](snapshot-paths)) — you can adjust this behavior using the [docs-paths](docs-paths) config.
+Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](model-paths), [seed-paths](seed-paths), [analysis-paths](analysis-paths), [macro-paths](macro-paths) and [snapshot-paths](snapshot-paths)) — you can adjust this behavior using the [docs-paths](docs-paths) config.
 
 
 ### Usage

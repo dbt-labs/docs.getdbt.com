@@ -1,6 +1,7 @@
 ---
 title: "Source freshness"
 id: "cloud-snapshotting-source-freshness"
+description: "Validate that data freshness meets expectations and alert if stale."
 ---
 
 ## Data Source Freshness

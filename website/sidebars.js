@@ -1,9 +1,9 @@
-module.exports = {
+const sidebarSettings = {
   docs: [
     {
       type: "category",
       label: "Introduction",
-      items: ["docs/introduction", "docs/available-adapters"],
+      items: ["docs/introduction", "docs/available-adapters", "docs/core-versions"],
     },
     {
       type: "category",
@@ -36,6 +36,7 @@ module.exports = {
         //"docs/building-a-dbt-project/archival",
         "docs/building-a-dbt-project/package-management",
         "docs/building-a-dbt-project/analyses",
+        "docs/building-a-dbt-project/metrics",
       ],
     },
     {
@@ -66,31 +67,52 @@ module.exports = {
         {
           type: "category",
           label: "Migration guides",
+          link: {
+            type: 'generated-index',
+            title: 'Migration guides',
+            description: 'Learn how to upgrade to the latest version of dbt Core.',
+            slug: '/docs/guides/migration-guide',
+          },
           items: [
-            "docs/guides/migration-guide/upgrading-to-0-21-0",
-            "docs/guides/migration-guide/upgrading-to-0-20-0",
-            "docs/guides/migration-guide/upgrading-to-0-19-0",
-            "docs/guides/migration-guide/upgrading-to-0-18-0",
-            "docs/guides/migration-guide/upgrading-to-0-17-0",
-            "docs/guides/migration-guide/upgrading-to-0-16-0",
-            "docs/guides/migration-guide/upgrading-to-0-15-0",
-            "docs/guides/migration-guide/upgrading-to-0-14-1",
-            "docs/guides/migration-guide/upgrading-to-0-14-0",
-            "docs/guides/migration-guide/upgrading-to-0-13-0",
-            "docs/guides/migration-guide/upgrading-to-0-12-0",
-            "docs/guides/migration-guide/upgrading-to-0-11-0",
+            "docs/guides/migration-guide/upgrading-to-v1.1",
+            "docs/guides/migration-guide/upgrading-to-v1.0",
+            "docs/guides/migration-guide/upgrading-to-v0.21",
+            "docs/guides/migration-guide/upgrading-to-v0.20",
+            {
+              type: "category",
+              label: "Older versions",
+              link: {
+                type: 'generated-index',
+                title: 'Migration guides',
+                description: 'Learn how to upgrade from older versions of dbt Core.',
+                slug: '/docs/guides/migration-guide/older-versions',
+              },
+              items: [
+                "docs/guides/migration-guide/upgrading-to-0-19-0",
+                "docs/guides/migration-guide/upgrading-to-0-18-0",
+                "docs/guides/migration-guide/upgrading-to-0-17-0",
+                "docs/guides/migration-guide/upgrading-to-0-16-0",
+                "docs/guides/migration-guide/upgrading-to-0-15-0",
+                "docs/guides/migration-guide/upgrading-to-0-14-1",
+                "docs/guides/migration-guide/upgrading-to-0-14-0",
+                "docs/guides/migration-guide/upgrading-to-0-13-0",
+                "docs/guides/migration-guide/upgrading-to-0-12-0",
+                "docs/guides/migration-guide/upgrading-to-0-11-0",
+              ],
+            },
           ],
         },
         "docs/guides/videos",
-        //"docs/guides/database-specific-guides/creating-date-partitioned-tables", // deprecated
       ],
     },
     {
       type: "category",
       label: "Contributing",
       items: [
+        "docs/contributing/oss-expectations",
         "docs/contributing/contributor-license-agreements",
         "docs/contributing/building-a-new-adapter",
+        "docs/contributing/testing-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
       ],
     },
@@ -102,12 +124,28 @@ module.exports = {
   ],
   "dbt CLI": [
     "dbt-cli/cli-overview",
-    "dbt-cli/installation",
+    {
+      type: "category",
+      label: "Installing dbt from the command line",
+      items: [
+        "dbt-cli/install/overview",
+        "dbt-cli/install/homebrew",
+        "dbt-cli/install/pip",
+        "dbt-cli/install/docker",
+        "dbt-cli/install/from-source",
+      ],
+    },
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
-    "docs/dbt-cloud/cloud-overview",
-    "docs/dbt-cloud/cloud-quickstart",
+    {
+      type: "category",
+      label: "Overview",
+      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
+      items: [
+        'docs/dbt-cloud/cloud-quickstart',
+      ],
+    },
     {
       type: "category",
       label: "dbt Cloud IDE",
@@ -127,6 +165,15 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
+        {
+          type: "category",
+          label: "Connecting Azure DevOps",
+          link: { type: 'doc', id: 'docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops' }, 
+          items: [
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure',
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure',
+          ],
+        }, 
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
@@ -135,6 +182,12 @@ module.exports = {
     {
       type: "category",
       label: "Using dbt Cloud",
+      link: {
+        type: 'generated-index',
+        title: 'Using dbt Cloud',
+        description: 'Learn how you can use dbt Cloud.',
+        slug: '/docs/dbt-cloud',
+      },
       items: [
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
@@ -143,8 +196,10 @@ module.exports = {
         "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
         "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
         "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
         "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
+        "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
       ],
     },
     {
@@ -218,10 +273,17 @@ module.exports = {
               items: [
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metric",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metrics",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seed",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seeds",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-snapshots",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposures",
             ],
             },
           ],
@@ -241,12 +303,12 @@ module.exports = {
         "reference/project-configs/asset-paths",
         "reference/project-configs/clean-targets",
         "reference/project-configs/config-version",
-        "reference/project-configs/data-paths",
+        "reference/project-configs/seed-paths",
         "reference/project-configs/dispatch-config",
         "reference/project-configs/docs-paths",
         "reference/project-configs/log-path",
         "reference/project-configs/macro-paths",
-        "reference/project-configs/modules-path",
+        "reference/project-configs/packages-install-path",
         "reference/project-configs/name",
         "reference/project-configs/on-run-start-on-run-end",
         "reference/project-configs/profile",
@@ -254,7 +316,7 @@ module.exports = {
         "reference/project-configs/quoting",
         "reference/project-configs/require-dbt-version",
         "reference/project-configs/snapshot-paths",
-        "reference/project-configs/source-paths",
+        "reference/project-configs/model-paths",
         "reference/project-configs/target-path",
         "reference/project-configs/test-paths",
         "reference/project-configs/version",
@@ -269,6 +331,8 @@ module.exports = {
         "reference/resource-configs/redshift-configs",
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/spark-configs",
+        "reference/resource-configs/firebolt-configs",
+        "reference/resource-configs/teradata-configs",
       ],
     },
     {
@@ -371,21 +435,21 @@ module.exports = {
         {
           type: "category",
           label: "For analyses",
-          items: [      
+          items: [
             "reference/analysis-properties",
           ],
         },
         {
           type: "category",
           label: "For exposures",
-          items: [      
+          items: [
             "reference/exposure-properties",
           ],
         },
         {
           type: "category",
           label: "For macros",
-          items: [      
+          items: [
             "reference/macro-properties",
             "reference/resource-properties/argument-type"
           ],
@@ -436,6 +500,8 @@ module.exports = {
           ],
         },
         "reference/global-cli-flags",
+        "reference/global-configs",
+        "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
       ],
@@ -444,51 +510,22 @@ module.exports = {
       type: "category",
       label: "Jinja Reference",
       items: [
-        "reference/dbt-jinja-functions",
         {
-          type: "category",
-          label: "List of dbt Jinja functions",
-          items: [
-            "reference/dbt-jinja-functions/adapter",
-            "reference/dbt-jinja-functions/as_bool",
-            "reference/dbt-jinja-functions/as_native",
-            "reference/dbt-jinja-functions/as_number",
-            "reference/dbt-jinja-functions/as_text",
-            "reference/dbt-jinja-functions/builtins",
-            "reference/dbt-jinja-functions/config",
-            "reference/dbt-jinja-functions/dbt_version",
-            "reference/dbt-jinja-functions/debug-method",
-            "reference/dbt-jinja-functions/dispatch",
-            "reference/dbt-jinja-functions/doc",
-            "reference/dbt-jinja-functions/env_var",
-            "reference/dbt-jinja-functions/exceptions",
-            "reference/dbt-jinja-functions/execute",
-            "reference/dbt-jinja-functions/flags",
-            "reference/dbt-jinja-functions/fromjson",
-            "reference/dbt-jinja-functions/fromyaml",
-            "reference/dbt-jinja-functions/graph",
-            "reference/dbt-jinja-functions/invocation_id",
-            "reference/dbt-jinja-functions/log",
-            "reference/dbt-jinja-functions/model",
-            "reference/dbt-jinja-functions/modules",
-            "reference/dbt-jinja-functions/project_name",
-            "reference/dbt-jinja-functions/ref",
-            "reference/dbt-jinja-functions/return",
-            "reference/dbt-jinja-functions/run_query",
-            "reference/dbt-jinja-functions/run_started_at",
-            "reference/dbt-jinja-functions/schema",
-            "reference/dbt-jinja-functions/source",
-            "reference/dbt-jinja-functions/statement-blocks",
-            "reference/dbt-jinja-functions/target",
-            "reference/dbt-jinja-functions/this",
-            "reference/dbt-jinja-functions/tojson",
-            "reference/dbt-jinja-functions/toyaml",
-            "reference/dbt-jinja-functions/var",
-            "reference/dbt-jinja-functions/profiles-yml-context",
-            "reference/dbt-jinja-functions/dbt-project-yml-context",
-            "reference/dbt-jinja-functions/on-run-end-context",
-          ],
+      type: "category",
+      label: "dbt Jinja functions",
+      link: {
+        type: 'generated-index',
+        title: 'dbt Jinja functions',
+        description: 'In addition to the standard Jinja library, we\'ve added additional functions and variables to the Jinja context that are useful when working with a dbt project.',
+        slug: '/reference/dbt-jinja-functions',
+      },
+      items: [
+        {
+          type: "autogenerated",
+          dirName: "reference/dbt-jinja-functions",
         },
+      ],
+    },
         "reference/dbt-classes",
       ],
     },
@@ -504,14 +541,21 @@ module.exports = {
         "reference/warehouse-profiles/mssql-profile",
         "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/trino-profile",
+        "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
+        "reference/warehouse-profiles/databricks-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
         "reference/warehouse-profiles/dremio-profile",
         "reference/warehouse-profiles/clickhouse-profile",
         "reference/warehouse-profiles/materialize-profile",
-        "reference/warehouse-profiles/rockset-profile"
+        "reference/warehouse-profiles/rockset-profile",
+        "reference/warehouse-profiles/firebolt-profile",
+        "reference/warehouse-profiles/teradata-profile",
+        "reference/warehouse-profiles/athena-profile",
+        "reference/warehouse-profiles/vertica-profile",
+        "reference/warehouse-profiles/tidb-profile",
       ],
     },
     {
@@ -577,3 +621,6 @@ module.exports = {
     },
   ],
 };
+
+
+module.exports = sidebarSettings

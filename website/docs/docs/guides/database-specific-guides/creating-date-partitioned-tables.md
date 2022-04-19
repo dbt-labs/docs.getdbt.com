@@ -4,9 +4,9 @@ id: "creating-date-partitioned-tables"
 ---
 
 
-:::info New in version 0.10.0!
+:::caution Deprecated
 
-
+The functionality described below was introduced in dbt Core v0.10 (March 2018). In v1.0 (December 2021), it was deprecated in favor of [column-based partitioning](bigquery-configs#partition-clause) and [incremental modeling](configuring-incremental-models).
 
 :::
 

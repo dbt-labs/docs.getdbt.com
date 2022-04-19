@@ -22,6 +22,7 @@ to understand how to effectively use this variable.
 
   - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
   - In dbt v0.20.0, exposures were added to the `graph.exposures` object
+  - In dbt v1.0.0, metrics were added to the `graph.metrics` object
 
 </Changelog>
 
@@ -31,7 +32,8 @@ representations of those nodes. A simplified example might look like:
 ```json
 {
   "nodes": {
-    "model.project_name.model_name": {
+    "model.my_project.model_name": {
+      "unique_id": "model.my_project.model_name",
       "config": {"materialized": "table", "sort": "id"},
       "tags": ["abc", "123"],
       "path": "models/path/to/model_name.sql",
@@ -40,10 +42,10 @@ representations of those nodes. A simplified example might look like:
     ...
   },
   "sources": {
-    "source.project_name.snowplow.event": {
+    "source.my_project.snowplow.event": {
+      "unique_id": "source.my_project.snowplow.event",
       "database": "analytics",
       "schema": "analytics",
-      "unique_id": "source.project_name.snowplow.event",
       "tags": ["abc", "123"],
       "path": "models/path/to/schema.yml",
       ...
@@ -52,9 +54,18 @@ representations of those nodes. A simplified example might look like:
   },
   "exposures": {
     "exposure.my_project.traffic_dashboard": {
+      "unique_id": "source.my_project.traffic_dashboard",
       "type": "dashboard",
       "maturity": "high",
-      "unique_id": "source.project_name.traffic_dashboard",
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  },
+  "metrics": {
+    "metric.my_project.count_all_events": {
+      "unique_id": "metric.my_project.count_all_events",
+      "type": "count",
       "path": "models/path/to/schema.yml",
       ...
     },
@@ -114,7 +125,7 @@ model.snowplow.snowplow_sessions, materialized: table
 
 ### Accessing sources
 
-To access the sources in your dbt project programatically, use the `sources`
+To access the sources in your dbt project programmatically, use the `sources`
 attribute of the `graph` object.
 
 Example usage:
@@ -156,7 +167,7 @@ select * from (
 
 ### Accessing exposures
 
-To access the sources in your dbt project programatically, use the `exposures`
+To access the sources in your dbt project programmatically, use the `exposures`
 attribute of the `graph` object.
 
 Example usage:
@@ -190,6 +201,38 @@ Example usage:
 --   * my_sync (application)
 */
 
+```
+
+</File>
+
+### Accessing metrics
+
+To access the metrics in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
+
+<File name='macros/get_metric.sql'>
+
+```sql
+Example usage:
+
+{% macro get_metric_sql_for(metric_name) %}
+
+  {% set metrics = graph.metrics.values() %}
+  
+  {% set metric = (metrics | selectattr('name', 'equalto', metric_name) | list).pop() %}
+
+  /* Elsewhere, I've defined a macro, get_metric_timeseries_sql, that will return 
+     the SQL needed to perform a time-based rollup of this metric's calculation */
+
+  {% set metric_sql = get_metric_timeseries_sql(
+      relation = metric['model'],
+      type = metric['type'],
+      expression = metric['sql'],
+      ...
+  ) %}
+
+  {{ return(metric_sql) }}
+
+{% endmacro %}
 ```
 
 </File>
