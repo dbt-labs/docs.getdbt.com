@@ -11,7 +11,7 @@ Add intro
 ## Prerequisites
 
 * Existing Cloud Provider account (AWS, GCP, Azure).
-* Permissions to create S3 bucket in you cloud provider account.
+* Permissions to create S3 bucket in your cloud provider account.
 
 ## Setting up
 

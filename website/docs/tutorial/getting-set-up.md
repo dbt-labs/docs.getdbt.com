@@ -6,7 +6,7 @@ description: "Set up your environment so you can start using dbt."
 
 Learn how to turn the following SQL query into a tested, documented, and deployed dbt project. You can preview [the generated documentation](https://www.getdbt.com/getting-started-tutorial/#!/overview) for the project you're about to build. You'll need a working knowledge of SQL to complete this tutorial.
 
-If you want a more in-depth learning experience, consider taking some [dbt Learn online courses](https://courses.getdbt.com/).
+If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
 
 <LoomVideo id="cb99861ab1034f7fab5fa48529e61f85" />
 
