@@ -30,8 +30,36 @@ For Cloudera specific options for above parameters see documentation of CREATE T
 Supported modes for incremental model:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: On new data, insert records. If data is updated or deleted, overwrite the entire table. 
+
+
 Not supported mode:
  - **`unique_key`** This is not suppored option for incremental models in dbt-impala
  - **`merge`**: Merge is not supported by underlying warehouse, and hence not supported by dbt-impala
 
+## Example: Using partition_by config option
 
+<File name='impala_partition_by.sql'>
+```
+{{
+    config(
+        materialized='table',
+        unique_key='id',
+        partition_by=['city'],
+    )
+}}
+
+with source_data as (
+     select 1 as id, "Name 1" as name, "City 1" as city,
+     union all
+     select 2 as id, "Name 2" as name, "City 2" as city,
+     union all
+     select 3 as id, "Name 3" as name, "City 2" as city,
+     union all
+     select 4 as id, "Name 4" as name, "City 1" as city,
+)
+
+select * from source_data
+```
+</File>
+
+In the above example, a sample table is created with partition_by and other config options. One thing to note when using partition_by option is that the select query should always have the column name used in partition_by option as the last one, as can be seen for the ```city``` column name used in the above query. If the partition_by clause is not the same as the last column in select statement, Impala will flag an error when trying to create the model.
