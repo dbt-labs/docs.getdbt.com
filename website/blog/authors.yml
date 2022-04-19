@@ -175,3 +175,17 @@ kira_furuichi:
   links:
     - url: https://www.linkedin.com/in/kira-furuichi/
       icon: fa-linkedin
+
+simon_podhajsky:
+  name: Simon Podhajsky
+  job_title: Data Lead
+  organization: iLife Technologies
+  description: >
+    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife 
+    Technologies, a startup that seeks to digitize the life insurance agency.
+  image_url: /img/blog/authors/simon-podhajsky.jpeg
+  links:
+    - url: https://www.linkedin.com/in/simonpodhajsky/
+      icon: fa-linkedin
+    - url: https://twitter.com/sim_pod
+      icon: fa-twitter

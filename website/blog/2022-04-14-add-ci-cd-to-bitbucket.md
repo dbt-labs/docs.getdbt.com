@@ -1,10 +1,24 @@
-# Slim CI CD with Bitbucket Pipelines
+---
+title: "Slim CI/CD with Bitbucket Pipelines"
+description: "How to set up slim CI/CD outside of dbt Cloud"
+slug: slim-ci-cd-with-bitbucket-pipelines
+
+authors: [simon_podhajsky]
+
+tags: [dbt tutorials]
+hide_table_of_contents: false
+
+date: 2022-04-19
+is_featured: true
+---
 
 Continuous Integration (CI) sets the system up to test everyone’s pull request before merging. Continuous Deployment (CD) deploys each approved change to production. “Slim CI” refers to running/testing only the changed code, [thereby saving compute](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603). In summary, CI/CD automates dbt pipeline testing and deployment.
 
 [dbt Cloud](https://www.getdbt.com/), a much beloved method of dbt deployment, [supports GitHub- and Gitlab-based CI/CD](https://blog.getdbt.com/adopting-ci-cd-with-dbt-cloud/) out of the box. It doesn’t support Bitbucket, AWS CodeCommit/CodeDeploy, or any number of other services, but you need not give up hope even if you are tethered to an unsupported platform.
 
 Although this article uses Bitbucket Pipelines as the compute service and Bitbucket Downloads as the storage service, this article should serve as a blueprint for creating a dbt-based Slim CI/CD *anywhere*. The idea is always the same:
+
+<!--truncate-->
 
 1. Deploy your product and save the deployment artifacts.
 2. Use the artifacts to allow dbt to determine the stateful changes and run only those (thereby achieving “slimness”).
@@ -44,7 +58,7 @@ grant create on database [dbname] to role_prod;
 
 -- Grant all permissions required for the production role
 
-create role dev_ci with login password ‘[password]’;
+create role dev_ci with login password '[password]';
 
 grant role_dev to dev_ci;
 
@@ -54,7 +68,7 @@ grant all on schema dbt_ci to role_dev;
 
 alter schema dbt_ci owner to role_dev;
 
-create role dbt_bitbucket with login password ‘[password]’;
+create role dbt_bitbucket with login password '[password]';
 
 grant role_prod to dbt_bitbucket;
 ```
@@ -81,9 +95,11 @@ Next, we’ll need to configure the repository. Within the repo, we’ll need to
 
 ### Pipeline environment: requirements.txt
 
-You’ll need at least your dbt adapter-specific package, ideally pinned to a version. Mine is just
+You’ll need at least your dbt adapter-specific package, ideally pinned to a version. Mine is just:
 
-`dbt-[adapter] ~= 1.0`.
+```yaml
+dbt-[adapter] ~= 1.0
+```
 
 ### Database connections: profiles.yml
 
@@ -287,3 +303,5 @@ You’re all done! Now it’s time to test that things work:
 It’s important to remember that CI/CD is a convenience, not a panacea. You must still devise the model logic and determine the appropriate tests. Some things it can do, though: catch more mistakes early, make sure that the database always reflects the most up-to-date code, and decrease the friction in collaboration. By automating the steps that should *always* be taken, it frees you up to think about the unusual steps required (e.g., do your changes to [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) require an additional deployment with `--full-refresh`?) and reduces the amount of review that others’ actions necessitate.
 
 Plus, it’s a good time, and it’s fun to watch the test lights turn green. Ding!
+
+![wild-child-yes.gif](https://c.tenor.com/wemr0g_Do8IAAAAC/wild-child-yes.gif)
