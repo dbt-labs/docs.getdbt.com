@@ -4,14 +4,85 @@ id: source-configs
 ---
 
 ## Available configurations
-### Source-specific configurations
-* None
+
+Sources only support one configuration, [`enabled`](enabled).
 
 ### General configurations
-* [enabled](resource-configs/enabled.md): true | false
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+sources:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)[enabled](enabled): true | false
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<VersionBlock firstVersion="1.1">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+sources:
+  - name: [<source-name>]
+    [config](resource-properties/config):
+      [enabled](enabled): true | false
+    tables:
+      - name: [<source-table-name>]
+        [config](resource-properties/config):
+          [enabled](enabled): true | false
+
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.0">
+
+Configuring sources within their yaml file definitions is only supported by v1.1 and newer.
+
+</VersionBlock>
+
+</TabItem>
+
+</Tabs>
 
 ## Configuring sources
+
+<VersionBlock firstVersion="1.1">
+
 Sources can be configured via a `config:` block within their `.yml` definitions, or from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](using-sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.0">
+
+Sources can be configured from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](using-sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
+
+Unlike other resource types, sources do not yet support a `config` property. It is not possible to (re)define source configs hierarchically across multiple yaml files.
+
+</VersionBlock>
 
 ### Examples
 #### Disable all sources imported from a package
@@ -71,6 +142,12 @@ sources:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.0">
+
+Configuring sources within their yaml file definitions is only supported by v1.1 and newer.
 
 </VersionBlock>
 
