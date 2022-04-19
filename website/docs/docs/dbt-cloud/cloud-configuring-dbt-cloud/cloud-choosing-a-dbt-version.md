@@ -22,28 +22,37 @@ Each job in dbt Cloud can be configured to inherit parameters from the environme
 The example job seen in the screenshot above belongs to the environment "Redshift - Maintenance." It inherits the dbt version of its environment using the `inherit from <environment name>` option. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud.
 
 ## Supported Versions
+
 We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt v1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support running in dbt Cloud.
 
  > **By June 30, 2022, all dbt projects in Cloud must be running v1.0 or later. Starting with v1.0, any subsequent minor versions will be allowed to run in Cloud for 1 year post release.**
 
 We will continue to update this table so that customers know when we plan to stop running different versions of Core in Cloud.
 
-| dbt Version | Release Date | Deprecation Date |
-| ------------- | -------------- | ------------- | 
-| v0.X.X (major version 0 ) | Various Dates | June 30, 2022 |
-| v1.0.0 | December 2021 | December 2022 |
+<Snippet src="core-versions-table" />
 
+Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may choose to try prereleases of those patch releases before they are generally available.
+
+<!--- TODO: Include language to reflect:
+  - notifying users when new minor versions are available
+  - notifying users when using a minor version that is nearing the end of its critical support period
+  - auto-upgrading users to the subsequent minor version when critical support ends
+--->
+
+For more on version support and future releases, see "[Understanding dbt Core versions](core-versions)."
 
 #### What will actually happen on the deprecation date?
+
 - On July 1, 2022, we will only run jobs that are on dbt v1.0 or later. Customers must upgrade their projects to be compatible with dbt v1.0 or later.
 - 1 year post a minor version release of v1.X, we will try to run our customers' projects on the latest release of dbt if they have not already upgraded their projects themselves. In a post dbt v1.0 world, there won't be breaking changes between minor versions of dbt, so we might be reasonably successful at upgrading our customers' versions automatically. However, our strong preference is for customers to try to manage the upgrade process themselves which is a more cautious way to prevent failures to their production pipelines. 
 
 We will give customers consistent communication that they're hitting the end of their supported window, so they can plan accordingly. 
 
 #### What should you be doing today?
-Your migration to v1.0.0 will progress much smoother if you **begin transitioning to more recent versions of dbt as soon as possible.**
 
-Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v.0.21.0) implies 6x the potential for breaking changes vs. upgrading a single minor version. 
+You should **upgrade to v1.0 as soon as you can** - and we recommend that you proceed **slowly and steadily**.
+
+Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v0.21.0) implies 6x the potential for breaking changes, versus upgrading a single minor version. 
 
 Refactoring code is much easier when you're updating a well-defined, constrained surface area. Doing things incrementally is the way to go.
 
