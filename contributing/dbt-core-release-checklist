@@ -1,0 +1,20 @@
+Here are the details of the dbt Core docs release in checklist form. We can copy this content to each new docs release issue, using the stage of the release.
+
+## Beta release
+
+- [ ] Use consistent banner text. The following is appropriate for both beta and RC:
+      > You are currently viewing v1.1, which is a prerelease of dbt Core. The latest stable version is v1.0
+
+- [ ] Change the install path to the correct version
+- [ ] Update page notes from `beta` to `rc`.
+- [ ] Add blurb about changes to the migration guide about v1.1-specific content/changes
+- [ ] Merge PR once the beta has released.
+ 
+ ## RC release
+- [ ]  
+ 
+ 
+ ## GA release
+- [ ] Remove the prerelease banner:
+      > You are currently viewing v1.1, which is a prerelease of dbt Core. The latest stable version is v1.0
+ 
