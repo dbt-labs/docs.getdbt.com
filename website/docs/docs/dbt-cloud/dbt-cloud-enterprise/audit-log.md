@@ -2,7 +2,7 @@
 title: "Using the audit log for dbt Cloud Enterprise"
 id: audit-log
 description: "You can troubleshoot possible issues and provide security audits by reviewing event activity in your organization."
-sidebar_label: "Using the audit Log"
+sidebar_label: "Using the audit log"
 ---
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events. The dbt Cloud audit log lists events triggered in your organization within the last 90 days.
