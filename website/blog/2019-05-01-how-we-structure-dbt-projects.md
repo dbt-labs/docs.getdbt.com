@@ -102,7 +102,7 @@ Each staging directory contains at a minimum:
 
 *   One staging model for each object that is useful for analytics:
     *   Named `stg_<source>__<object>`.
-    *   Generally materialized as a <Term id="table" /> (unless performance requires it as a table).
+    *   Generally materialized as a <Term id="view" /> (unless performance requires it as a table).
 *   A `src_<source>.yml` file which contains:
     *   [Source](/docs/using-sources) definitions, tests, and documentation
 *   A `stg_<source>.yml` file which contains
