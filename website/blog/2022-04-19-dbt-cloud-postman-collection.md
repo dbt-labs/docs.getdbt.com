@@ -5,7 +5,7 @@ slug: dbt-cloud-api-postman-collection-announcement
 
 authors: [matt_winkler]
 
-tags: [analytics craft]
+tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2022-04-19
