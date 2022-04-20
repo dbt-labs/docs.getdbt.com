@@ -42,11 +42,13 @@ Beyond the day-to-day process of managing their dbt Cloud accounts, many organiz
 
 *Below this you’ll find a series of example requests - use these to guide you or [check out the Postman Collection](https://dbtlabs.postman.co/workspace/Team-Workspace~520c7ac4-3895-4779-8bc3-9a11b5287c1c/request/12491709-23cd2368-aa58-4c9a-8f2d-e8d56abb6b1dlinklink) to try it out yourself.*
 
-## Examples of how to use the Postman Collection
+## Appendix 
+
+###Examples of how to use the Postman Collection
 
 Let’s run through some examples on how to make good use of this Postman Collection.
 
-### Migrating dbt Cloud Projects
+#### Migrating dbt Cloud Projects
 
 One common question we hear from customers is “How can we migrate resources from one dbt Cloud project to another?” Often, they’ll create a development project, in which users have access to the UI and can manually make changes, and then migrate selected resources from the development project to a production project once things are ready.
 
@@ -69,7 +71,7 @@ Our example contains the following elements:
 Create a “development” and a “production” project in dbt Cloud using the UI
 Set up a [data warehouse connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database) and [repository connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories)
 
-### Pull the environment from the development project
+#### Pull the environment from the development project
 
 All of this information is obtainable from the API (see the postman collection), but you can also identify the correct IDs to use from the URL when logged in to dbt Cloud:
 
@@ -83,7 +85,7 @@ We’ll send a GET request to
 
 https://cloud.getdbt.com/api/v3/accounts/28885/projects/86704/environments/75286/
 
-### Push the Environment to the production project
+#### Push the Environment to the production project
 
 We take the response from the GET request above, and then to the following: 
 
@@ -113,13 +115,13 @@ We take the response from the GET request above, and then to the following:
 
 3. Note the environment ID returned in the response, as we’ll use to create a dbt Cloud job in the next step 
 
-### Pull the Job definition from the dev project
+#### Pull the Job definition from the dev project
 
 We send a GET request to:
 
 https://cloud.getdbt.com/api/v2/accounts/28885/jobs/72025/
 
-### Push the job definition to the prod project
+#### Push the job definition to the prod project
 1. Adjust some of the variables for the new job:
     - Remove the “created_at”, “updated_at”, and “is_deferrable” fields. [Defer](https://docs.getdbt.com/reference/node-selection/defer) logic is out of scope for this post.
     - Change the value of the “name” field to “production-run–api-generated”
