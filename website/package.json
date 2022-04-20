@@ -31,8 +31,6 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
     "@swc/core": "^1.2.170",
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.2",
