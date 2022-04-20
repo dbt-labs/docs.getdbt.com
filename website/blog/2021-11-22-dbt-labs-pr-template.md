@@ -48,7 +48,7 @@ This is the intro to your PR and should allow the reviewer to quickly be able to
 
 > Example: This PR updates the channel mapping for Google Adwords data based on this Google Sheet. This mimics the mapping used for sessions and will be used in our final attribution modeling to look at ROAS.  
 
-> This PR also adds a stg <Term id="table" /> for the `final_url_report` from Adwords. This is currently only being used to map `utm_medium` and `utm_source` to `campaign_id` and `ad_group_id` to then derive a channel. This is not yet being used as an input to the Adwords package due to limitations in the data that is configured and available via Adwords. We may choose to incorporate that later.  
+> This PR also adds a stg table for the `final_url_report` from Adwords. This is currently only being used to map `utm_medium` and `utm_source` to `campaign_id` and `ad_group_id` to then derive a channel. This is not yet being used as an input to the Adwords package due to limitations in the data that is configured and available via Adwords. We may choose to incorporate that later.  
 
 > The main purpose of this PR was to update the channel mapping for an attribution model. I could have quickly written “updated channel mapping” and called it a day. But, knowing that I would likely need to reference this mapping again at some point in the future, I added this link to the google sheet where we initially built the mapping.
 
