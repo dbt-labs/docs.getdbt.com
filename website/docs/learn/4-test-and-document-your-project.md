@@ -78,7 +78,7 @@ When you run `dbt test`, dbt iterates through your YAML files, and constructs a 
 <FAQ src="when-to-test" />
 
 ## Document your models
-Adding [documentation](/docs/building-a-dbt-project/documentation) to your project allows you to describe your <Term id="model">models</Term> in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
+Adding [documentation](/docs/building-a-dbt-project/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
 
 <CloudCore>
     <LoomVideo id="f946321f692747e59bec3b726eccbfd4" />
@@ -130,7 +130,7 @@ models:
 
 </File>
 
-2. Execute `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a <Term id="json" /> file with rich documentation about your project.
+2. Execute `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a JSON file with rich documentation about your project.
 3. [CLI] Execute `dbt docs serve` to launch the documentation in a local website. [Cloud] Click the link above the file tree in the develop interface to launch documentation in a new tab.
 
 

@@ -35,6 +35,6 @@ The Team plan is built for teams collaborating on the analytics engineering work
 - Everything in the Developer Plan, plus
 - 5 run slots
 - 50 read only seats
-- <Term id="api" /> Access
+- API Access
 
 Price: **$50/developer/month**

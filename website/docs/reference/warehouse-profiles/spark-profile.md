@@ -186,7 +186,7 @@ Most dbt Core functionality is supported, but some features are only available
 on Delta Lake (Databricks).
 
 Delta-only features:
-1. Incremental <Term id="model" /> updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
 2. [Snapshots](snapshots)
 
 Some dbt features, available on the core adapters, are not yet supported on Spark:

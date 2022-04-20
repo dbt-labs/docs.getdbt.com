@@ -8,7 +8,7 @@ $ dbt run --select source:jaffle_shop+
 ```
 (You can also use the `-s` shorthand here instead of `--select`)
 
-To run models downstream of one source table:
+To run models downstream of one source <Term id="table" />:
 
 ```
 $ dbt run --select source:jaffle_shop.orders+

@@ -43,7 +43,7 @@ A client has 100 data pipelines running via a cron job in a GCP (Google Cloud Pl
 It was simple to set up, but then the conversation started flowing:
 
 * “Where am I going to put logs?”  In a Google Cloud Storage bucket.
-* “Where can I view history in a table format?”  Let’s export log events into BigQuery.
+* “Where can I view history in a <Term id="table" /> format?”  Let’s export log events into BigQuery.
 * “I have to create log alerts to notify people of failures.”  Let’s use GCP’s logging alerts to send emails.
 * “When something fails, how do you rerun from the point of failure?”  Let’s mangle the production script.
 
@@ -59,7 +59,7 @@ That pipeline above included a plethora of data transformation jobs, built in va
 
 They were often written in naked python scripts that only ran a SQL query + wrote data to BigQuery. These stored procedure-like SQL scripts required:
 
-* Writing boilerplate DDL (`CREATE TABLE` etc * 1000)
+* Writing boilerplate <Term id="ddl" /> (`CREATE TABLE` etc * 1000)
 * Managing schema names between production and dev environments
 * Manually managing dependencies between scripts
 

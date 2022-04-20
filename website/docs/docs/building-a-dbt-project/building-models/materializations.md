@@ -4,7 +4,7 @@ id: "materializations"
 ---
 
 ## Overview
-<Term id="materialization">Materializations</Term> are strategies for persisting dbt <Term id="model">models</Term> in a warehouse. There are four types of materializations built into dbt. They are:
+<Term id="materialization">Materializations</Term> are strategies for persisting dbt models in a warehouse. There are four types of materializations built into dbt. They are:
 - <Term id="table" />
 - <Term id="view" />
 - incremental
@@ -43,7 +43,7 @@ models:
 
 </File>
 
-Alternatively, materializations can be configured directly inside of the <Term id="model" /> sql files. This can be useful if you are also setting [Performance Optimization] configs for specific models (for example, [Redshift specific configurations](redshift-configs) or [BigQuery specific configurations](bigquery-configs)).
+Alternatively, materializations can be configured directly inside of the model sql files. This can be useful if you are also setting [Performance Optimization] configs for specific models (for example, [Redshift specific configurations](redshift-configs) or [BigQuery specific configurations](bigquery-configs)).
 
 <File name='models/events/stg_event_log.sql'>
 
@@ -97,6 +97,6 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * Operations (e.g. macros called via `dbt run-operation` cannot `ref()` ephemeral nodes)
     * Overuse of the ephemeral materialization can also make queries harder to debug.
 * **Advice:**  Use the ephemeral materialization for:
-    * very light-weight transformations that are early on in your <Term id="dag" />
-    * are only used in one or two downstream <Term id="model">models</Term>, and
+    * very light-weight transformations that are early on in your DAG
+    * are only used in one or two downstream models, and
     * do not need to be queried directly

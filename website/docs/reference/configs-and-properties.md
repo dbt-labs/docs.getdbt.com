@@ -14,13 +14,13 @@ Resources in your project—models, snapshots, seeds, tests, and the rest—can 
 A rule of thumb: properties declare things _about_ your project resources; configs go the extra step of telling dbt _how_ to build those resources in your warehouse. This is generally true, but not always, so it's always good to check!
 
 For example, you can use resource **properties** to:
-* Describe <Term id="model">models</Term>, snapshots, seed files, and their columns
-* Assert "truths" about a <Term id="model" />, in the form of [tests](building-a-dbt-project/tests), e.g. "this `id` column is unique"
+* Describe models, snapshots, seed files, and their columns
+* Assert "truths" about a model, in the form of [tests](building-a-dbt-project/tests), e.g. "this `id` column is unique"
 * Define pointers to existing tables that contain raw data, in the form of [sources](using-sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](exposures)
 
 Whereas you can use **configurations** to:
-* Change how a model will be materialized (table, <Term id="view" />, incremental, etc)
+* Change how a model will be materialized (<Term id="table" />, <Term id="view" />, incremental, etc)
 * Declare where a seed will be created in the database (`<database>.<schema>.<alias>`)
 * Declare whether a resource should persist its descriptions as comments in the database
 * Apply tags and "meta" properties

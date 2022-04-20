@@ -10,9 +10,9 @@ description: "You can use the Model Timing dashboard to visually explore runs."
 Model Timing is only available on the Team and Multi-tenant Enterprise plans
 :::
 
-Accessed via the "run detail" page in dbt Cloud, the <Term id="model" /> timing dashboard displays the model composition, order, and run time for every job run in dbt Cloud. The top 1% of model durations are automatically highlighted for quick reference.  This visualization is displayed after the run completes.
+Accessed via the "run detail" page in dbt Cloud, the model timing dashboard displays the model composition, order, and run time for every job run in dbt Cloud. The top 1% of model durations are automatically highlighted for quick reference.  This visualization is displayed after the run completes.
 
-This is a very visual way to explore your run. Longest running <Term id="model">models</Term> *may* be ripe for further exploration -- which can lead to refactoring or reducing run cadence.
+This is a very visual way to explore your run. Longest running models *may* be ripe for further exploration -- which can lead to refactoring or reducing run cadence.
 
 Note that this is currently only available on multi-tenant Team and Enterprise accounts.
 

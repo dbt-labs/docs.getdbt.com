@@ -3,7 +3,7 @@ title: "this"
 id: "this"
 ---
 
-`this` is the database representation of the current <Term id="model" />. It is useful when:
+`this` is the database representation of the current model. It is useful when:
 - Defining a `where` statement within [incremental models](configuring-incremental-models)
 - Using [pre or post hooks](pre-hook-post-hook)
 

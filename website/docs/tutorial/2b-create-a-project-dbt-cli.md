@@ -26,7 +26,7 @@ We're going to use [GitHub](https://github.com/) as our git provider for this tu
 ## Create a project
 <LoomVideo id="f36152340ccc41e8be517eb295c4d6f1" />
 
-The dbt <Term id="cli" /> comes with a command to help you scaffold a dbt project. To create your dbt project:
+The dbt CLI comes with a command to help you scaffold a dbt project. To create your dbt project:
 1. Ensure dbt is installed by running `dbt --version`:
 ```shell-session
 $ dbt --version

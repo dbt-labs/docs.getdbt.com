@@ -5,7 +5,7 @@ id: "creating-new-materializations"
 
 ## Overview
 
-The <Term id="model" /> <Term id="materialization">materializations</Term> you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/dbt-labs/dbt-core/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
+The model <Term id="materialization">materializations</Term> you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/dbt-labs/dbt-core/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
 
 :::caution 
 
@@ -63,7 +63,7 @@ Each of these tasks are explained in sections below.
 
 ### Prepare the database
 
-Materializations are responsible for creating new tables or <Term id="view">views</Term> in the database, or inserting/updating/deleting data from existing tables. As such, materializations need to know about the state of the database to determine exactly what sql they should run. Here is some pseudocode for the "setup" phase of the **table** materialization:
+Materializations are responsible for creating new tables or <Term id="view">views</Term> in the database, or inserting/updating/deleting data from existing tables. As such, materializations need to know about the state of the database to determine exactly what sql they should run. Here is some pseudocode for the "setup" phase of the **<Term id="table" />** materialization:
 
 ```sql
 -- Refer to the table materialization (linked above) for an example of real syntax

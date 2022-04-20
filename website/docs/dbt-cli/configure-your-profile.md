@@ -101,7 +101,7 @@ To ensure the user credentials you use in your target allow dbt to run, you will
 
 * read source data
 * create schemas¹
-* read system tables
+* read system <Term id="table">tables</Term>
 
 :::info Running dbt without create schema privileges
 
@@ -125,13 +125,13 @@ In development, a pattern we’ve found to work well is to name the schema in yo
 
 Note that there’s no need to create your target schema beforehand – dbt will check if the schema already exists when it runs, and create it if it doesn’t.
 
-While the target schema represents the default schema that dbt will use, it may make sense to split your <Term id="model">models</Term> into separate schemas, which can be done by using [custom schemas](using-custom-schemas).
+While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](using-custom-schemas).
 
 ## Understanding threads
 
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
 
-For example, if you specify `threads: 1`, dbt will start building only one <Term id="model" />, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
+For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
 
 There's no set limit of the maximum number of threads you can set – while increasing the number of threads generally decreases execution time, there are a number of things to consider:
 * Increasing the number of threads increases the load on your warehouse, which may impact other tools in your data stack. For example, if your BI tool uses the same compute resources as dbt, their queries may get queued during a dbt run.

@@ -26,4 +26,4 @@ Database Error in model customers (models/customers.sql)
 Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 ```
 
-Any <Term id="model">models</Term> downstream of this model will also be skipped. Use the error message and the [compiled SQL](faqs/checking-logs.md) to debug any errors.
+Any models downstream of this model will also be skipped. Use the error message and the [compiled SQL](faqs/checking-logs.md) to debug any errors.

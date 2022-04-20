@@ -23,7 +23,7 @@ There are four levels of environment variables:
  1. the optional default argument supplied to the `env_var` Jinja function in code
  2. a project-wide default value, which can be overridden at 
  3. the environment level, which can in turn be overridden again at 
- 4. the job level (job override) or in the <Term id="ide" /> for an individual dev (personal override).
+ 4. the job level (job override) or in the IDE for an individual dev (personal override).
 
 
 **Setting environment variables at the project and environment level**

@@ -4,7 +4,7 @@ id: build-your-first-models
 description: With our starter project setup, it's time to get to the fun part — building models!
 ---
 
-With our starter project setup, it's time to get to the fun part — building [models](building-models)! We're going to take the query from the [Setting up](/tutorial/setting-up) instructions, and turn it into a <Term id="model" /> in our dbt project.
+With our starter project setup, it's time to get to the fun part — building [models](building-models)! We're going to take the query from the [Setting up](/tutorial/setting-up) instructions, and turn it into a model in our dbt project.
 
 ## Checkout a new git branch
 
@@ -102,7 +102,7 @@ models:
 
 2. Execute `dbt run`. Your model, `customers` should now be built as a table!
 :::info
-To do this, dbt had to first run a `drop view` statement (or <Term id="api" /> call on BigQuery), then a `create table as` statement.
+To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
 :::
 
 

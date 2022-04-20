@@ -23,7 +23,7 @@ GB,United Kingdom
 </File>
 
 2. Run `dbt seed`
-3. Ref the <Term id="model" /> in a downstream model
+3. Ref the model in a downstream model
 
 <File name='models/something.sql'>
 

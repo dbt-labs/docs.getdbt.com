@@ -11,7 +11,7 @@ You must have a dbt Cloud account to use the IDE. Consult the guide on [using th
 :::
 
 
-The dbt Integrated Development Environment (<Term id="ide" />) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
+The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
 
 ## Compiling and Running SQL
 
@@ -23,7 +23,7 @@ In the dbt IDE, you can compile dbt code into SQL and execute it against your da
 
 In addition to compiling and executing SQL, you can also *run* dbt projects in the dbt IDE. Use dbt's [rich model selection syntax](node-selection/syntax) to [run dbt commands](dbt-commands) directly in your browser.
 
-The dbt IDE updates in real-time as <Term id="model">models</Term>, tests, seeds, and operations are run. If a <Term id="model" /> or tests fails, you can dig into the logs to find and fix the issue.
+The dbt IDE updates in real-time as models, tests, seeds, and operations are run. If a model or tests fails, you can dig into the logs to find and fix the issue.
 
 <Lightbox src="/img/docs/dbt-cloud/50e939e-Screen_Shot_2019-11-05_at_9.08.38_PM.png" title="Running jobs and viewing results in the dbt IDE"/>
 

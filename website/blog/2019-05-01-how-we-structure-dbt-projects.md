@@ -16,7 +16,7 @@ is_featured: true
 
 As the maintainers of dbt, and analytics consultants, at [Fishtown Analytics](https://www.getdbt.com/dbt-labs/about-us/) (now dbt Labs) we build a lot of dbt projects. Over time, we’ve developed internal conventions on how we structure them.
 
-This article does not seek to instruct you on how to design a final model for your stakeholders — it won’t cover whether you should denormalize everything into one wide master table, or have many tables that need to be joined together in the BI layer. There are entire books on this topic. Instead, use this as a guide once you’ve already got an idea of what you’re building for how you should break the transformations up into separate dbt models.
+This article does not seek to instruct you on how to design a final model for your stakeholders — it won’t cover whether you should denormalize everything into one wide master <Term id="table" />, or have many tables that need to be joined together in the BI layer. There are entire books on this topic. Instead, use this as a guide once you’ve already got an idea of what you’re building for how you should break the transformations up into separate dbt models.
 
 <!--truncate-->
 
@@ -102,7 +102,7 @@ Each staging directory contains at a minimum:
 
 *   One staging model for each object that is useful for analytics:
     *   Named `stg_<source>__<object>`.
-    *   Generally materialized as a view (unless performance requires it as a table).
+    *   Generally materialized as a <Term id="table" /> (unless performance requires it as a table).
 *   A `src_<source>.yml` file which contains:
     *   [Source](/docs/using-sources) definitions, tests, and documentation
 *   A `stg_<source>.yml` file which contains
@@ -247,7 +247,7 @@ There are other kinds of SQL files that find their way into robust dbt projects.
 
 *   `utils`: An `all_days` table. This is useful everywhere, though it never forms the basis for analysis/reporting.
 *   `lookups`**:** A user-mapping table, a zipcode-country table, etc. These are as likely to be [CSV seeds](/docs/building-a-dbt-project/seeds) as tables in a production database. You may reference it at several unpredictable points throughout modeling, and maybe even in a BI tool.
-*   `admin`**:** Audit logs, warehouse operations, Redshift maintenance, and incremental records of the miscellaneous DDL you run to make your project run smoothly.
+*   `admin`**:** Audit logs, warehouse operations, Redshift maintenance, and incremental records of the miscellaneous <Term id="ddl" /> you run to make your project run smoothly.
 *   `metrics`**:** Precisely defined measurements taken from fact tables, directly conducive to time-series reporting, and tightly structured so as to allow one-to-one comparison with goals and forecasting. A metrics table lives downstream of dimension and fact tables in your DAG, and it deserves special status.
 *   **Packages:** While not a model folder within your main project, packages that include models (like our [snowplow](https://github.com/dbt-labs/snowplow) package) can be configured into custom schema and materialization patterns from `dbt_project.yml`.
 

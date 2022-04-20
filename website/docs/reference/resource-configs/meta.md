@@ -187,7 +187,7 @@ Depending on the resource you're configuring, `meta` may be available within the
 
 ## Examples
 ### Designate a model owner
-Additionally, indicate the maturity of a <Term id="model" /> using a `model_maturity:` key.
+Additionally, indicate the maturity of a model using a `model_maturity:` key.
 
 <File name='models/schema.yml'>
 

@@ -14,7 +14,7 @@ For example, code in the `incremental` materialization like this:
   ...
 ```
 
-is responsible for handling <Term id="model" /> code that looks like this:
+is responsible for handling model code that looks like this:
 ```
 {{
   config(

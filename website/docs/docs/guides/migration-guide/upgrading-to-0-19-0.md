@@ -29,7 +29,7 @@ Removed support for `config-version: 1` of dbt_project.yml, which was deprecated
 
 (You know who you are!)
 
-Related to change #3 above: The `results` context and `run_results.json` artifact include a new unstructured dictionary called `adapter_response`. This reflects structured information returned by the database after dbt runs the "main" query for a <Term id="model" />, seed, snapshot, etc.
+Related to change #3 above: The `results` context and `run_results.json` artifact include a new unstructured dictionary called `adapter_response`. This reflects structured information returned by the database after dbt runs the "main" query for a model, seed, snapshot, etc.
 
 By default, this dict accepts keys such as `code` (`OK`, `SUCCESS`, `CREATE TABLE`, etc) and `rows_affected` (integer). You can add custom arguments to reflect information specific to your adapter. For instance, `dbt-bigquery` populates an additional argument, `bytes_processed`.
 
@@ -57,7 +57,7 @@ See [dbt#2961](https://github.com/dbt-labs/dbt-core/pull/2961) for full implemen
 
 ### BigQuery
 - [BigQuery profile](bigquery-profile): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
-- [Hourly, monthly and yearly partitions](bigquery-configs#partitioning-by-a-date-or-timestamp): With a new `granularity` attribute of the `partition_by` config, dbt can materialize <Term id="model">models</Term> as tables partitioned by hour, month, or year.
+- [Hourly, monthly and yearly partitions](bigquery-configs#partitioning-by-a-date-or-timestamp): With a new `granularity` attribute of the `partition_by` config, dbt can materialize models as tables partitioned by hour, month, or year.
 
 ### Spark
 - [Spark profile](spark-profile): The `thrift` and `http` connection methods require installation of a `PyHive` extra.

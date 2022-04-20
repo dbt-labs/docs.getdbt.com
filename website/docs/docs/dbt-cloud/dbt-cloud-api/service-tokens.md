@@ -6,7 +6,7 @@ description: "Service account tokens help you define permissions for securing ac
 
 ## About service tokens
 
-Service account tokens enable you to securely authenticate with the dbt Cloud <Term id="api" /> by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [User API tokens](user-tokens), service account tokens belong to an account rather than a user.
+Service account tokens enable you to securely authenticate with the dbt Cloud API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [User API tokens](user-tokens), service account tokens belong to an account rather than a user.
 
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permission sets available in dbt Cloud to your service account token, which can vary slightly depending on your plan:
 
@@ -17,7 +17,7 @@ You can assign as many permission sets as needed to one token. For more on permi
 
 ## Generating service account tokens
 
-In the Account Settings <Term id="view" /> of dbt Cloud, you can click on the Service Account tokens page and generate a new token. Create and save your token somewhere safe.
+In the Account Settings view of dbt Cloud, you can click on the Service Account tokens page and generate a new token. Create and save your token somewhere safe.
 
 :::caution Note
 

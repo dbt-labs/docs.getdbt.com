@@ -20,7 +20,7 @@ If a seed file is >1 MB in size, dbt cannot compare its contents and will raise 
 
 ### Vars
 
-If a <Term id="model" /> uses a `var` or `env_var` in its definition, dbt is unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+If a model uses a `var` or `env_var` in its definition, dbt is unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
 
 ### Tests
 

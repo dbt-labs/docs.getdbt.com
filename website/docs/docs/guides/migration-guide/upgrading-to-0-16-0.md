@@ -33,13 +33,13 @@ for an example of how to use the two-argument variant of `generate_schema_name`.
 
 ### BigQuery partition_by syntax
 
-The `partition_by` config for BigQuery <Term id="model">models</Term> now accepts a dictionary containing
+The `partition_by` config for BigQuery models now accepts a dictionary containing
 the following keys:
 - `field`: The field name in the <Term id="table" /> to partition by
 - `data_type`: The data type for the partitioning field (`date`, `timestamp`, `datetime`, `int64`)
 - `range`: Only required if the `data_type` is `int64` (for range bucket partitioning)
 
-If a string is provided as the `partition_by` config for a <Term id="model" /> on BigQuery, dbt
+If a string is provided as the `partition_by` config for a model on BigQuery, dbt
 will attempt to parse that string out to a field and data_type representation. A future
 release of dbt will remove the ability for `partition_by` configs to be configured
 using a string.

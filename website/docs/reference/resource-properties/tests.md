@@ -152,7 +152,7 @@ This feature is not implemented for analyses.
 
 ## Description
 
-The `tests` property defines assertions about a column, table, or view. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
+The `tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 
@@ -249,7 +249,7 @@ models:
 
 </File>
 
-The `to` argument accepts a [Relation](dbt-classes#relation) – this means you can pass it a `ref` to a <Term id="model" /> (e.g. `ref('customers')`), or a `source` (e.g. `source('jaffle_shop', 'customers')`).
+The `to` argument accepts a [Relation](dbt-classes#relation) – this means you can pass it a `ref` to a model (e.g. `ref('customers')`), or a `source` (e.g. `source('jaffle_shop', 'customers')`).
 
 ## Additional examples
 

@@ -9,16 +9,16 @@ More people know how to write `select` statements, than <Term id="dml" />, makin
 
 #### Writing good DML is hard.
 If you write the <Term id="ddl" /> / DML yourself you can end up getting yourself tangled in problems like:
-* What happens if the <Term id="table" /> already exists? Or this table already exists as a view, but now I want it to be a table?
+* What happens if the <Term id="table" /> already exists? Or this table already exists as a <Term id="view" />, but now I want it to be a table?
 * What if the schema already exists? Or, should I check if the schema already exists?
-* How do I replace a <Term id="model" /> atomically (such that there's no down-time for someone querying the table)
+* How do I replace a model atomically (such that there's no down-time for someone querying the table)
 * What if I want to parameterize my schema so I can run these transformations in a development environment?
 * What order do I need to run these statements in? If I run a `cascade` does it break other things?
 
 Each of these problems _can_ be solved, but they are unlikely to be the best use of your time.
 
 #### dbt does more than generate SQL
-You can test your <Term id="model">models</Term>, generate documentation, create snapshots, and more!
+You can test your models, generate documentation, create snapshots, and more!
 
 #### You reduce your vendor lock in
 SQL dialects tend to diverge the most in DML and DDL (rather than in `select` statements) — check out the example [here](sql-dialect). By writing less SQL, it can make a migration to a new database technology easier.

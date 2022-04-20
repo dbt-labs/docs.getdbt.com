@@ -12,7 +12,7 @@ datatype: string
 
 ### Definition
 
-Filter the resource being tested (<Term id="model" />, source, seed, or snapshot).
+Filter the resource being tested (model, source, seed, or snapshot).
 
 The `where` condition is templated into the test query by replacing the resource reference with a <Term id="subquery" />. For instance, a `not_null` test may look like:
 ```sql

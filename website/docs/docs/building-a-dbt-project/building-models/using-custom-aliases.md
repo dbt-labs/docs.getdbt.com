@@ -5,7 +5,7 @@ id: "using-custom-aliases"
 
 ## Overview
 
-When dbt runs a <Term id="model" />, it will generally create a relation (either a `table` or a `view`) in the database. By default, dbt uses the filename of the model as the identifier for this relation in the database. This identifier can optionally be overridden using the `alias` model configuration.
+When dbt runs a model, it will generally create a relation (either a `table` or a `view`) in the database. By default, dbt uses the filename of the model as the identifier for this relation in the database. This identifier can optionally be overridden using the `alias` model configuration.
 
 ### Why alias model names?
 The names of schemas and tables are effectively the "user interface" of your data warehouse. Well-named schemas and tables can help provide clarity and direction for consumers of this data. In combination with [custom schemas](using-custom-schemas), model aliasing is a powerful mechanism for designing your warehouse.
@@ -50,7 +50,7 @@ select * from {{ ref('snowplow_sessions') }}
 
 ### generate_alias_name
 
-The alias generated for a <Term id="model" /> is controlled by a macro called `generate_alias_name`. This macro can be overridden in a dbt project to change how dbt aliases models. This macro works similarly to the [generate_schema_name](using-custom-schemas#advanced-custom-schema-configuration) macro.
+The alias generated for a model is controlled by a macro called `generate_alias_name`. This macro can be overridden in a dbt project to change how dbt aliases models. This macro works similarly to the [generate_schema_name](using-custom-schemas#advanced-custom-schema-configuration) macro.
 
 To override dbt's alias name generation, create a macro named `generate_alias_name` in your own dbt project. The `generate_alias_name` macro accepts two arguments:
 
@@ -113,4 +113,4 @@ Compilation Error
   - model.my_project.sessions (models/sessions.sql)
 ```
 
-If these models should indeed have the same database identifier, you can work around this error by configuring a [custom schema](using-custom-schemas) for one of the <Term id="model">models</Term>.
+If these models should indeed have the same database identifier, you can work around this error by configuring a [custom schema](using-custom-schemas) for one of the models.

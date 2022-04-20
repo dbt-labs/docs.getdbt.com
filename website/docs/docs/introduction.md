@@ -5,7 +5,7 @@ id: "introduction"
 
 dbt (data build tool) enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into <Term id="table">tables</Term> and <Term id="view">views</Term>.
 
-dbt does the `T` in `ELT` (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
+dbt does the `T` in `<Term id="elt" />` (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
 
 The role of dbt within a modern data stack is discussed in more detail [here](https://blog.fishtownanalytics.com/what-exactly-is-dbt-47ba57309068).
 
@@ -15,7 +15,7 @@ dbt also enables analysts to work more like software engineers, in line with the
 
 ### dbt Projects
 A dbt project is a directory of `.sql` and .`yml` files. The directory must contain at a minimum:
-* <Term id="model">Models</Term>: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
+* Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
 * A project file: a `dbt_project.yml` file which configures and defines your dbt project.
 
 Projects typically contain a number of other resources as well, including tests, snapshots, and seed files (see [below](#what-else-can-dbt-do)).
@@ -31,7 +31,7 @@ Want to check out a sample project? Have a look at our [Jaffle Shop](https://git
 ### Database Connections
 dbt connects to your data warehouse to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [docs](available-adapters)).
 
-When you define your connection, you’ll also be able to specify the target schema where dbt should create your <Term id="model">models</Term> as tables and <Term id="view">views</Term>. See [Managing environments](managing-environments)  for more information on picking target schema names.
+When you define your connection, you’ll also be able to specify the target schema where dbt should create your models as tables and <Term id="view">views</Term>. See [Managing environments](managing-environments)  for more information on picking target schema names.
 
 
 ### dbt Commands
@@ -111,7 +111,7 @@ Importantly, dbt also uses the `ref` function to determine the sequence in which
 
 dbt builds a directed acyclic graph (DAG) based on the interdepencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
 
-When dbt runs, models are executed in the order specified by the <Term id="dag" /> – there’s no need to explicitly define the order of execution of your models. Building models in staged transformations also reduces the need to repeat SQL, as a single transformation (for example, renaming a column) can be shared as a predecessor for a number of downstream models.
+When dbt runs, models are executed in the order specified by the DAG – there’s no need to explicitly define the order of execution of your models. Building models in staged transformations also reduces the need to repeat SQL, as a single transformation (for example, renaming a column) can be shared as a predecessor for a number of downstream models.
 
 For more information see [Ref](ref).
 
@@ -187,4 +187,4 @@ dbt is appropriate for anyone who interacts with a data warehouse. It can be use
 
 For dbt users that are new to programming, you may also need to spend some time getting to know the basics of the command line, and familiarizing yourself with git.
 
-To make full use of dbt, it may also be beneficial to know some programming basics, such as `for` loops and `if` statements, to use Jinja effectively in your <Term id="model">models</Term>.
+To make full use of dbt, it may also be beneficial to know some programming basics, such as `for` loops and `if` statements, to use Jinja effectively in your models.

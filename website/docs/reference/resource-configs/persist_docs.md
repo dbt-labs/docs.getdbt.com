@@ -130,7 +130,7 @@ types of descriptions that can be added to database objects. At present, the
 
 ### Documenting columns and relations
 
-Supply a [description](resource-properties/description) for a <Term id="model" />:
+Supply a [description](resource-properties/description) for a model:
 
 <File name='models/schema.yml'>
 

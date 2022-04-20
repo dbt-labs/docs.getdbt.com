@@ -41,7 +41,7 @@ The accepted values for `config-version` are `1` and `2`. When the `config-versi
 Previous releases of dbt allowed variables (`vars:`) to be scoped to a folder level in the `models:` hierarchy. This presents a few problems:
 
 - The vars should only _really_ be applied to _models_ (as the variable declaration lives in the `models:` config), but variables are also often referenced in tests, `schema.yml` files, macros, snapshots, and so on.
-- There is an ambiguity in how variables are resolved in `schema.yml` files. Consider the case where a `schema.yml` file is scoped with one value for a variable, but the <Term id="model" /> it references is scoped with a different value for the same variable. The behavior of `var()` in this scenario is poorly defined, and often not what you would expect.
+- There is an ambiguity in how variables are resolved in `schema.yml` files. Consider the case where a `schema.yml` file is scoped with one value for a variable, but the model it references is scoped with a different value for the same variable. The behavior of `var()` in this scenario is poorly defined, and often not what you would expect.
 
 In version 2 of the `dbt_project.yml` config, vars must now be defined in a top-level `vars:` dictionary, eg:
 
@@ -84,7 +84,7 @@ models:
 
 </File>
 
-This example is intended to configure a `partition_by` setting for all of the BigQuery <Term id="model">models</Term> in the `models/reporting/` folder. From the syntax in this file alone though, there are two possible interpretations:
+This example is intended to configure a `partition_by` setting for all of the BigQuery models in the `models/reporting/` folder. From the syntax in this file alone though, there are two possible interpretations:
 
 - Configure the `partition_by` value for models in the `models/reporting` folder
 - Configure the `field` and `data_type` values for models in the `models/reporting/partition_by` folder

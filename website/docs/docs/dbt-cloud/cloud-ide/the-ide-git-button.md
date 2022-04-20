@@ -2,7 +2,7 @@
 title: "The IDE Git Button"
 ---
 
-The git button in the <Term id="ide" /> allows you to apply the concept of [version control](dbt-cloud/cloud-ide/the-dbt-ide#version-control) to your project. This page provides descriptions of each git button command and what they do.
+The git button in the IDE allows you to apply the concept of [version control](dbt-cloud/cloud-ide/the-dbt-ide#version-control) to your project. This page provides descriptions of each git button command and what they do.
 
 **Initialize your project**: This is done when first setting up your project. Initializing a project will create all required directories and files within an empty repository. Note: This option will not display if your repo isn't completely empty (i.e. includes a README file).
 

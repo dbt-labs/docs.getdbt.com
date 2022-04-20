@@ -26,7 +26,7 @@ snapshots:
 </File>
 
 ## Description
-The schema that dbt should build a [snapshot](snapshots) table into. Snapshots build into the same `target_schema`, no matter who is running them.
+The schema that dbt should build a [snapshot](snapshots) <Term id="table" /> into. Snapshots build into the same `target_schema`, no matter who is running them.
 
 On **BigQuery**, this is analogous to a `dataset`.
 

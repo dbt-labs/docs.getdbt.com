@@ -105,7 +105,7 @@ Next, inspect the new snapshots in your `snapshots/` directory. There should be 
 
  When you are confident that the migration has completed successfully, you can manually delete the backup tables in your archived schema(s). These backup tables will be suffixed with `_dbt_archive_migration_backup`.
 
-Snapshots participate in the dbt graph, so feel free to replace any `schema.table` references in your <Term id="model" /> code with `{{ ref('archive_name') }}`. You may also need to make changes to downstream <Term id="model">models</Term> or reports to account for the changes to your snapshot meta-column names. Consult the [snapshot docs](snapshots) for full usage instructions.
+Snapshots participate in the dbt graph, so feel free to replace any `schema.table` references in your model code with `{{ ref('archive_name') }}`. You may also need to make changes to downstream models or reports to account for the changes to your snapshot meta-column names. Consult the [snapshot docs](snapshots) for full usage instructions.
 
 ### Migrating archives manually (not recommended)
 

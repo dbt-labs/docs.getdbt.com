@@ -5,7 +5,7 @@ id: "access-control-overview"
 
 ## Overview
 
-dbt Cloud administrators can use dbt Cloud's permissioning <Term id="model" /> to control
+dbt Cloud administrators can use dbt Cloud's permissioning model to control
 user-level access in a dbt Cloud account. This access control comes in two flavors:
 License-based and Role-based.
 
