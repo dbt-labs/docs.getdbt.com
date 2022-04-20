@@ -1,7 +1,5 @@
 **dbt Cloud leverages git for version control. For the simplicity of this tutorial, we will use a managed repository.**
 
-<Lightbox src="/img/bigquery/set-up-repository.png" title="dbt Cloud - Set Up Repository" />
-
 1. Click on "Managed" repo.
 2. Type in a name for your repo such as `jsmith-dbt-tutorial`
 3. Click create and then continue.
