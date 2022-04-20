@@ -333,7 +333,7 @@ from {{ source('metrics', 'dockerhub_pulls') }}
 group by day, image
 ```
 
-I decided to make this a <Term id="table" />, since the source table is already pretty svelte and the transformation involved is lightweight. In the future, I'd like to calculate a `new_pulls` field that contains the difference between the current `total_pulls` and the previous day's value. Once I build that, I'm likely to change this model into a table.
+I decided to make this a <Term id="view" />, since the source table is already pretty svelte and the transformation involved is lightweight. In the future, I'd like to calculate a `new_pulls` field that contains the difference between the current `total_pulls` and the previous day's value. Once I build that, I'm likely to change this model into a table.
 
 **PyPI**
 
