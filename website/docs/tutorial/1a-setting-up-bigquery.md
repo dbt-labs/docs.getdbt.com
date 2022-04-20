@@ -7,35 +7,32 @@ sidebar_label: "Set up and connect BigQuery"
 
 ## Introduction
 
-Add intro
+Welcome to getting started wtih dbt and BigQuery! This section of the tutorial will focus on getting Google BigQuery set up and connected to dbt Cloud.
+
 ## Prerequisites
 
-* Existing Cloud Provider account (AWS, GCP, Azure).
-* Permissions to create S3 bucket in your cloud provider account.
+Before jumping into this tutorial, make sure that you have access to **new or existing Google account**. This can be a personal or work account. We will be using this to set up BigQuery through Google Cloud Platform (GCP).
 
 ## Setting up
 
-If you have a Google Account, you can use BigQuery to create a project.
-
 <WistiaVideo id="668fnsit1t" paddingTweak="62.5%" />
+
+
+Before jumping into the steps below, login to your Google account.
 
 1. Go to the [BigQuery Console](https://console.cloud.google.com/bigquery)
 
-   1. If you don't have a Google Cloud Platform account you will be asked to create one.
-
-   2. If you do have one (or multiple) it will likely log you into your oldest account. Check which Google account is being used by clicking your face in the top right corner.
+   - If you don't have a Google Cloud Platform account you will be asked to create one.
+   - If you do have one (or multiple) it will likely log you into your oldest account. Check which Google account is being used by clicking your face in the top right corner.
 
 2. Create a new project for this tutorial
 
-   1. If you've just created a BigQuery account, you'll be prompted to create a new project straight away.
-
-   2. If you already have an existing organization, you can select the project drop down in the header bar, and create a new project from there.
+   - If you've just created a BigQuery account, you'll be prompted to create a new project straight away.
+   - If you already have an existing organization, you can select the project drop down in the header bar, and create a new project from there.
     <Lightbox src="/img/bigquery/project-dropdown.png" title="Bigquery Project Dropdown" />
-
-   3. Select NEW PROJECT
+   - Select NEW PROJECT
     <Lightbox src="/img/bigquery/new-project-creation.png" title="Bigquery New Project Creation" />
-
-   4. It will automatically populate with a project name, but you can change the name to something more relevant. For example, dbt Learn - Bigquery Setup'.  Click **Create**.
+   - It will automatically populate with a project name, but you can change the name to something more relevant. For example, dbt Learn - Bigquery Setup'.  Click **Create**.
 
 ## Loading data
 
@@ -46,82 +43,53 @@ BigQuery supports public data sets that can be directly queried, so we will show
 
 2. Copy and paste the below queries into the Query Editor to validate that you are able to run them successfully.
 
-    1. select * from `dbt-tutorial.jaffle_shop.customers`;
-
-    2. select * from `dbt-tutorial.jaffle_shop.orders`;
-
-    3. select * from `dbt-tutorial.stripe.payment`;
+    ```sql
+    select * from `dbt-tutorial.jaffle_shop.customers`;
+    select * from `dbt-tutorial.jaffle_shop.orders`;
+    select * from `dbt-tutorial.stripe.payment`;
+    ```
 
 3. Verify you can see an output:
     <Lightbox src="/img/bigquery/query-results.png" title="Bigquery Query Results" />
 
-4. Create a dataset
+4. Create datasets. Datasets in BigQuery are equivalent to schemas in a traditional database.
 
-    1. Find your project in the picker (at this point it's probably the only project in your explorer!)
-
-    2. Click the three dots to expose options
-        <Lightbox src="/img/bigquery/expose-options.png" title="Bigquery Project Options" />
-
-    3. Click “Create dataset”
+    - Find your project in the picker (at this point it's probably the only project in your explorer!) Click the three dots to expose options. Click “Create dataset”
         <Lightbox src="/img/bigquery/create-dataset.png" title="Bigquery Create Dataset" />
-    4. You should see this:
-        <Lightbox src="/img/bigquery/create-dataset-options.png" title="Bigquery Create Dataset Options" />
-
-    5. Fill in “Dataset ID” as required. This will be used like schema in fully qualified references to your database objects, i.e. database.schema.table, so choose a name that fits the purpose, in this case we will be creating one now for 'jaffle_shop' and one for 'stripe' later.
+    - Fill in `Dataset ID` as required. This will be used like schema in fully qualified references to your database objects, i.e. database.schema.table, so choose a name that fits the purpose, in this case we will be creating one now for `jaffle_shop` and one for `stripe` later.
         <Lightbox src="/img/bigquery/create-dataset-id.png" title="Bigquery Create Dataset ID" />
-
-    6. Leave everything else as is:
-        * “Data location” can be left blank -- if selected, this determines the GCP location where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
-        * Even though it is unchecked, billing table expiration will be set automatically to 60 days, because billing has not been enabled for this project, so AWS defaults to deprecating tables.
+    - Leave everything else as is:
+        * `Data location` can be left blank -- if selected, this determines the GCP location where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
+        * Even though it is unchecked, billing table expiration will be set automatically to 60 days, because billing has not been enabled for this project, so GCP defaults to deprecating tables.
         * Let Google manage encryption
-        * Click “CREATE DATASET”
-        * Repeat steps 1-6 for the second dataset, 'stripe'
+        * Click `CREATE DATASET`
+        * Repeat these steps for the second dataset, `stripe`
 
-5. Create Views
+5. Create views. We will create views within your project to simulate source tables in your project.  These will be built on top of the public tables covered above.
 
-    1. “RUN” your first query: ```select * from `dbt-tutorial.jaffle_shop.customers`;```
-
-    2. Click **SAVE** then **Save View**
+    - “RUN” your first query: ```select * from `dbt-tutorial.jaffle_shop.customers`;```
+    - Click **SAVE** then **Save View**
         <Lightbox src="/img/bigquery/save-view.png" title="Bigquery Save View" />
-
-    3. Your two datasets, `jaffle_shop` and `stripe` should now show up under “Dataset”. Select “jaffle_shop”.
-        <Lightbox src="/img/bigquery/save-view-datasets.png" title="Bigquery Save View - Datasets" />
-
-    4. Enter 'customers' as your “Table” name. Hit “SAVE”
+    - Your two datasets, `jaffle_shop` and `stripe` should now show up under `Dataset`. Select `jaffle_shop`.  Enter `customers` as your “Table” name. Hit “SAVE”
         <Lightbox src="/img/bigquery/save-view-table.png" title="Bigquery Save View - Table" />
 
 6. You should now see your database object in the dropdown. If you click on it, BigQuery automatically infers data types and other metadata information for you:
     <Lightbox src="/img/bigquery/view-created.png" title="Bigquery View Created" />
 
-7. You can now query that database object using either `dbt-learn-bigquery-setup.jaffle_shop.customers` or more simply `jaffle_shop.customers`
+7. You can now query that database object using either `dbt-learn-bigquery-setup.jaffle_shop.customers` or more simply `jaffle_shop.customers`.  Note: `dbt-learn-big-query-setup` will reflect the project ID that you chose earlier in the tutorial.
 
-8. Repeat those steps for the other two queries / tables:
-
-    1. ```select * from `dbt-tutorial.jaffle_shop.orders`;```
-
-    2. ```select * from `dbt-tutorial.stripe.payment`;```
+8. Repeat steps 5 - 7 for the other two tables:
+    
+    ```sql
+    select * from `dbt-tutorial.jaffle_shop.orders`;
+    select * from `dbt-tutorial.stripe.payment`;```
+    ```
 
 ## Connecting to dbt Cloud
 
-### Create dbt Cloud account
+Our next step will focus on connecting dbt Cloud to Google BigQuery so that you can leverage the power of dbt to transform data in BigQuery.
 
-### Enter credentials
-
-## Connecting to dbt CLI
-
-## Next steps
-
-
-
-
-## Create a BigQuery Project
-
-
-
-## Access Sample Data Within BigQuery
-
-
-## Generate BigQuery Credentials
+### Access your BigQuery credentials
 
 <WistiaVideo id="o9a2bawwl6" paddingTweak="62.5%" />
 
@@ -130,7 +98,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Ensure that your new project is selected in the header bar.
     > Note: If you do not see your account or project, click on your profile picture on the far right to ensure you are under the proper email address account. Sometimes when following links, your account switches from personal email to work email, or vice versa.
 2. Select **+ Create Credentials** then select **Service account**.
-3. Type "dbt-user" in the Service account name field, then click **Create and Continue**.
+3. Type `dbt-user` in the Service account name field, then click **Create and Continue**.
 4. Type and select **BigQuery Admin** in the Role field.
 5. Click **Continue**.
 6. Leave fields blank in the "Grant users access to this service account" section and click **Done**.
@@ -140,83 +108,33 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 10. Select **JSON** as the key type then click **Create**.  
 11. You should be prompted to download the JSON file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
 
-## Connecting to dbt Cloud
+### Create a dbt Cloud account
 
 <WistiaVideo id="vrytipyvl4" paddingTweak="62.5%" />
 
-Above we created a project in Bigquery and created an API key so we interact with BigQuery from other applications. Now we are going to navigate to dbt Cloud and see if we can access our BigQuery Project!
+<Snippet src="tutorial-create-new-dbt-cloud-account" />
 
+### Connect dbt Cloud to BigQuery
 
-1. It's time to leave BigQuery and navigate to https://cloud.getdbt.com/ so we can create a new project
+Now let's formally set up the connection between dbt Cloud and BigQuery. 
 
-2. Click the Hamburger
+1. Click on the "BigQuery" icon to set up your connection.
+2. Click on “Upload a Service Account JSON File”.
+3. Select your file from your recent Downloads folder and dbt Cloud will automatically fill in all the necessary fields:
+4. Click “Test” at the top. This will check that dbt Cloud can access your BigQuery account.
+5. If test successful, click “Continue”
 
-3. Click "Account Settings"
-    
-    1. You should be in the "Projects" section by default. Click "New Project”, in the top right.
-        <Lightbox src="/img/bigquery/set-up-new-project.png" title="dbt Cloud - Set Up A New Project" />
-    
-    2. Click “Begin”
-
-4. Project Settings
-    1. Name your project. I chose 'BigQuery Demo', but you might consider your company's name or 'Arrakis' if you semi-haphazardly name all your projects and repos after Dune references. Click “Continue”.
-        <Lightbox src="/img/bigquery/project-name.png" title="dbt Cloud - Project Name" />
-    
-    2. Set Up a Database Connection
-        <Lightbox src="/img/bigquery/database-connection.png" title="dbt Cloud - Set Up a Database Connection" />
-        1. Click on “BigQuery” icon.
-
-        2. Click on “Upload a Service Account JSON File”.
-        
-        3. Select your file from your recent Downloads folder and dbt Cloud will automatically fill in all the necessary fields:
-            <Lightbox src="/img/bigquery/database-connection-json-file.png" title="dbt Cloud - Upload a JSON File" />
-        
-        4. Click “Test” at the top
-            <Lightbox src="/img/bigquery/database-connection-test.png" title="dbt Cloud - Database Connection Test" />
-        
-        5. If test successful, click “Continue”
-
-    3. Add Repository
-
-        1. If you have one already (CLI folks) you can connect your Github and select it from a dropdown
-
-        2. If you want to use dbt “Managed” repository, you can do that as well.  That's what I am doing, and chose the name 'bigquery_set_up_tutorial'
-            <Lightbox src="/img/bigquery/set-up-repository.png" title="dbt Cloud - Set Up Repository" />
-
-        3. Click “Create” then “Continue”
-
-## Test Your Connection on dbt Cloud
+### Initialize your repository and start development
 
 <WistiaVideo id="x3vd9bowj0" paddingTweak="62.5%" />
 
-1. Click “Start Developing”.
-    > Note: This can take a few minutes for your project to spin up for the first time, as it established your git connection, clones your repo, and tests the connection to the warehouse.
-        
-    <Lightbox src="/img/bigquery/start-developing.png" title="dbt Cloud - Start Developing" />
-
-2. Click “initialize your project”
-    <Lightbox src="/img/bigquery/initialize-your-project.png" title="dbt Cloud - Initialize Your Project" />
-    This will build out your folder structure with example models included
-
-3. Commit your first init
-    <Lightbox src="/img/bigquery/init-commit.png" title="dbt Cloud - First Commit" />
-
-4. Now you are ready to run SQL in the "Statement" tab!
-
-    1. Test you can access the opensource dataset by entering: 
-        - ```select * from `dbt-tutorial.jaffle_shop.customers` ``` 
-        - Hit "Preview"
-        <Lightbox src="/img/bigquery/preview-open-data.png" title="dbt Cloud - Statement Preview Open Source Data" />
-
-    1. Test you can access the datasets we created in your project by entering: 
-        - `select * from jaffle_shop.customers`
-        - Hit “Preview”
-        <Lightbox src="/img/bigquery/preview-data.png" title="dbt Cloud - Statement Preview Project Data" />
-
-Congratulations, you are all set! 
-
-### Create dbt Cloud account
-
-### Enter connection credentials
+<Snippet src="tutorial-managed-repo-and-initiate-project" />
 
 ## Next steps
+
+Congratulations! You have successfully completed the following:
+- Set up a new BigQuery instance
+- Replicated sample data for this tutorial
+- Connected dbt Cloud to BigQuery
+
+**[Continue the tutorial]**(/building-your-first-project) with the building your first project section here.  You will quickly learn and apply the fundamentals of dbt with models, tests, docs, and deploying your first job!
