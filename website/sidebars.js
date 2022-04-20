@@ -595,7 +595,7 @@ const sidebarSettings = {
           items: [
             "tutorial/build-your-first-models",
             "tutorial/test-and-document-your-project",
-            "tutorial/deploy-your-project",
+            "tutorial/schedule-a-job",
           ],
         },
         {
@@ -604,7 +604,8 @@ const sidebarSettings = {
           link: { type: 'doc', id: 'tutorial/leveling-up' },
           items: [
             "tutorial/using-jinja",
-            "tutorial/refactoring-legacy-sql"
+            "tutorial/refactoring-legacy-sql",
+            "tutorial/connecting-to-dbt-core",
           ],
     },
           ],

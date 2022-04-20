@@ -4,9 +4,9 @@ id: connecting-to-dbt-core
 description: "Connecting your warehouse to dbt Core using the command line interface."
 sidebar_label: "Connecting to dbt Core"
 ---
-TODO:move this content to a reuse snippet.
 
 ## Choose the way you want to develop
+
 There’s two main ways of working with dbt:
 
 1. Edit files and run projects using the web-based Integrated Development Environment (IDE) in **dbt Cloud**.

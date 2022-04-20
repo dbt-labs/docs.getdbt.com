@@ -11,7 +11,6 @@ sidebar_label: "Set up and connect Snowflake"
 
 ## Setting up
 
-
 1. To get started, sign up for a free trial by following [this link](https://signup.snowflake.com/) and completing the sign-up form.
 
 2. Select the Enterprise edition, choose a cloud provider and region, and agree to the terms of service. There are some organizational questions to think about when choosing a cloud provider for a full implementation, which you can read more about [here](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html). For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like. Finally, click "GET STARTED".

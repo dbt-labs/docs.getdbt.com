@@ -1,7 +1,7 @@
 ---
-title: Deploy your project
-id: deploy-your-project
-description: In this part of the tutorial, we'll go through how you can deploy your project with dbt Cloud.
+title: Schedule a job
+id: schedule-a-job
+description: In this part of the tutorial, we'll go through how you can schedule a job in dbt Cloud.
 ---
 
 As the `jaffle_shop` business gains more customers, and those customers create more orders, there will be more records added to your source data. Since the `customers` model is materialized as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date.
@@ -18,14 +18,16 @@ First off, we need to commit the changes we made to our project so that our repo
 2. Click the `merge to master` button
 
 ### dbt CLI
+
 <LoomVideo id="b07d7efe3f054e3bb357b4bccd805e70" />
 
 1. Add all your changes to git: `git add -A`
 2. Commit your changes: `git commit -m "Add customers model, tests, docs"`
 3. Push your changes to your repository: `git push`
-4. Navigate to your repository, and open a Pull Request to merge the code into your master branch.
+4. Navigate to your repository, and open a pull request to merge the code into your master branch.
 
 ## Connect dbt Cloud to your repository
+
 Connecting dbt Cloud to your repository will allow you to have the latest code whenever your dbt project runs.
 
 :::info
@@ -47,6 +49,7 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
 
 
 ## Create a deployment environment
+
 <LoomVideo id="bb6ea5b628ef4d019f9167f6ddf738cc" />
 
 1. Click the hamburger menu, and then `Home`
@@ -55,6 +58,7 @@ This step only applies to folks who use the dbt CLI to develop their project. <s
 4. Add a target dataset (e.g. "analytics") -- this is the dataset that dbt will build into. For other warehouses this is usually named "schema"
 
 ## Create and run a job
+
 _See above video_
 
 Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run on a schedule.
@@ -69,26 +73,20 @@ Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run
 6. Select `Save`, and then `Run now` to run your job.
 7. Click into the run to see the progress — once the run is complete, click "View Documentation" to see the docs for your project.
 
-### FAQs
-<FAQ src="failed-prod-run" />
-
-## Next steps
-
 :::tip
 Congratulations 🎉! You've just deployed your first dbt project!
 :::
 
-Here's a few suggestions to keep learning:
+### FAQs
 
-### Start working on your own project
-Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!
+<FAQ src="failed-prod-run" />
 
-### Learn some best practices
-Now that you've got a working dbt project, read more about some of our [best practices](/docs/guides/best-practices), or go back this tutorial and read some of the FAQs.
+## Next steps
 
-### Keep building this project
-Here's some suggested exercises to level-up your dbt skills:
-* Try turning your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
-* Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
-* Reorganize your project into our [recommended structure](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355)
-* Use some Jinja in your project — check out the [Jinja tutorial](/tutorial/using-jinja).
+* Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!
+* Now that you've got a working dbt project, read more about some of our [best practices](/docs/guides/best-practices), or go back this tutorial and read some of the FAQs
+* Try some exercises to level-up your dbt skills:
+    * Turn your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
+    * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
+    * Reorganize your project into our [recommended structure](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355)
+    * Use some Jinja in your project — check out the [Jinja tutorial](/tutorial/using-jinja).

@@ -1,8 +1,11 @@
 ---
 title: Getting set up
 id: getting-set-up
-description: "Set up your environment so you can start using dbt."
+description: "Set up a sample project to get you started using dbt."
 ---
+
+
+Learn how to set up your dbt environment using one of the most common data platforms. You can select from [BigQuery](/tutorial/setting-up-bigquery), [Databricks](/tutorial/setting-up-databricks), [Redshift](/tutorial/setting-up-redshift), or [Snowflake](/tutorial/setting-up-snowflake). If you're not sure, then we suggest using [BigQuery](/tutorial/setting-up-bigquery).
 
 Learn how to turn the following SQL query into a tested, documented, and deployed dbt project. You can preview [the generated documentation](https://www.getdbt.com/getting-started-tutorial/#!/overview) for the project you're about to build. You'll need a working knowledge of SQL to complete this tutorial.
 

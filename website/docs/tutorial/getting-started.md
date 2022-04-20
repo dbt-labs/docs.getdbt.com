@@ -4,12 +4,24 @@ id: getting-started
 description: "Create your first dbt project using a SQL query."
 ---
 
-TODO: add context for tutorial. prereqs or recommended reading? Learning paths?
+At the heart of dbt is a dbt project where all of your SQL queries live. By centralizing projects, dbt is able to build software engineering-style guardrails for data analyst work. dbt enables you to collaborate on SQL queries using `git`, then let's you run, test, and document those queries.
 
-Learn how to set up your dbt environment using the data platform of your choice:
+This guide will show you how to set up dbt Cloud and perform some key tasks. These tasks will illustrate how dbt establishes standard practices for your work.
 
-* [Setting up with BigQuery](/tutorial/setting-up-bigquery)
-* [Setting up with Databricks](/tutorial/setting-up-databricks)
-* [Setting up with Redshift](/tutorial/setting-up-redshift)
-* [Setting up with Snowflake](/tutorial/setting-up-snowflake)
+In this guide, you will:
 
+* Set up a warehouse with sample data
+* Connect the warehouse to dbt Cloud
+* Add a git repository to dbt Cloud
+* Execute a dbt transformation using dbt run
+* Schedule a transformation
+
+## Before you begin
+
+Before you begin, you will need:
+
+* A warehouse with sample data. If you don't have this, it's OK, you can run through the Big Query tutorial.
+* A basic understanding of git. 
+* Basic understanding of SQL.
+
+TODO: Other prereqs or recommended reading? Learning paths?
