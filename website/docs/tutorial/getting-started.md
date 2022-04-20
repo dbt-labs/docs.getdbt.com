@@ -4,7 +4,7 @@ id: getting-started
 description: "Create your first dbt project using a SQL query."
 ---
 
-At the heart of dbt is a dbt project where all of your SQL queries live. By centralizing projects, dbt is able to build software engineering-style guardrails for data analyst work. dbt enables you to collaborate on SQL queries using `git`, then let's you run, test, and document those queries.
+At the heart of dbt is a dbt project where all of your SQL queries live. By centralizing projects, dbt is able to build software engineering-style guardrails for data analyst work. dbt enables you to collaborate on SQL queries using Git, then let's you run, test, and document those queries.
 
 This guide will show you how to set up dbt Cloud and perform some key tasks. These tasks will illustrate how dbt establishes standard practices for your work.
 
@@ -12,7 +12,7 @@ In this guide, you will:
 
 * Set up a warehouse with sample data
 * Connect the warehouse to dbt Cloud
-* Add a git repository to dbt Cloud
+* Add a Git repository to dbt Cloud
 * Execute a dbt transformation using dbt run
 * Schedule a transformation
 
