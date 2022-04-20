@@ -5,13 +5,11 @@ displayText: view
 hoverSnippet: A view (as opposed to a table) is a defined passthrough SQL query that can be run against a database (or data warehouse).
 ---
 
-### What’s a view?
-
 A view (as opposed to a <Term id="table" />) is a defined passthrough SQL query that can be run against a database (or data warehouse). A view doesn’t store data, like a table does, but it defines the logic that you need to fetch the underlying data.
 
 For example, we might define a SQL view to count new users in a day as:
 
-```
+```sql
   select
     created_date,
     count(distinct(user_id)) as new_users
@@ -19,11 +17,11 @@ For example, we might define a SQL view to count new users in a day as:
   group by created_date
 ```
 
-That’s kind of tedious to write over and over again, so instead we could define it as a view called ```new_users```, and instead query ```select * from new_users```.
+That’s kind of tedious to write over and over again, so instead we could define it as a view called `new_users`, and instead query `select * from new_users`.
 
-When that ```new_users``` query runs, the underlying view compiles and runs against the database.  
+When that `new_users` query runs, the underlying view compiles and runs against the database.  
 
-### Yelp review on views
+## Tips on using views
 
 A healthy relationship with views is built on expectations. 
 
@@ -31,6 +29,6 @@ I don’t expect a view in itself to be my final destination in terms of data mo
 
 They’re like bus stops that you pass every day, never get out at, but appreciate as landmarks.
 
-Related reading 
+## Further reading 
 
-[Best practices guide on choosing table vs view materializations](docs/guides/best-practices#choose-your-materializations-wisely)
+- [Best practices guide on choosing table vs view materializations](docs/guides/best-practices#choose-your-materializations-wisely)
