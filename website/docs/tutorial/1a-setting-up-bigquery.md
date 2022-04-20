@@ -137,4 +137,4 @@ Congratulations! You have successfully completed the following:
 - Replicated sample data for this tutorial
 - Connected dbt Cloud to BigQuery
 
-**[Continue the tutorial]**(/building-your-first-project) with the building your first project section here.  You will quickly learn and apply the fundamentals of dbt with models, tests, docs, and deploying your first job!
+**[Continue the tutorial](/building-your-first-project)** with the building your first project section here.  You will quickly learn and apply the fundamentals of dbt with models, tests, docs, and deploying your first job!
