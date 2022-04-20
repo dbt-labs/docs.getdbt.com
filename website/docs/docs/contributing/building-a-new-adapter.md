@@ -14,16 +14,15 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
 
 ## Scaffolding a new adapter
-
-dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/scripts/create_adapter_plugins.py) directory.
+To create a new adapter plugin you will use the [dbt-database-adapter-scaffold](https://github.com/dbt-labs/dbt-database-adapter-scaffold) to trigger an interactive session which will allow to replace default naming, author information, versioning, and be used to augment other variables in the generation of your starting project.
 
 Example usage:
 
 ```
-$ python create_adapter_plugins.py --sql --title-case=MyAdapter ./ myadapter
+$ cookiecutter gh:dbt-labs/dbt-database-adapter-scaffold
 ```
 
-You will get a folder named 'myadapter' in the local directory, with some subfolders and files created. Your adapter will be named 'MyAdapter' in the generated code - without `--title-case=MyAdapter` it would be 'Myadapter'. You can set other flags to specify dependencies, author, and package information as well. If your adapter implements SQL's `information_schema` (or something similar enough) and supports a cursor() method on its connections, you may pass the `--sql` flag to derive from the SQLAdapter, which is much easier to implement than the BaseAdapter! Compare dbt's native BigQuery adapter with its SnowflakeAdapter to get an idea of the difference between the two.
+The generated boilerplate starting project will include basic adapter plugin file structure, examples of macros, high level method descriptions as seen below in this document.
 
 This rest of this guide will assume that a SQLAdapter is being used.
 
@@ -349,7 +348,7 @@ See examples:
 
 To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
 
-It should be noted that both of these files are included in the bootstrapped output of the `create_adapter_plugins.py` so when using that script, these files will be included.
+It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using that cookiecutter, these files will be included.
 
 ### Testing your new adapter
 
