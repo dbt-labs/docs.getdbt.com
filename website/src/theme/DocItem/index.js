@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import clsx from 'clsx';
 import DocPaginator from '@theme/DocPaginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
@@ -17,6 +17,11 @@ import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import {ThemeClassNames, useWindowSize} from '@docusaurus/theme-common';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+
+// dbt Custom
+import VersionContext from '../../stores/VersionContext'
+import getElements from '../../utils/get-html-elements';
+
 export default function DocItem(props) {
   const {content: DocContent} = props;
   const {metadata, frontMatter, assets} = DocContent;
@@ -40,8 +45,59 @@ export default function DocItem(props) {
   const renderTocDesktop =
     canRenderTOC && (windowSize === 'desktop' || windowSize === 'ssr');
 
-  // dbt Custom - if term has cta property set, show that cta
+  // dbt Custom
+  // If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
+
+  // This hides any TOC items not in
+  // html markdown headings for current version. 
+  const { version: dbtVersion } = useContext(VersionContext)
+  const [currentToc, setCurrentToc] = useState(DocContent.toc)
+  const [tocReady, setTocReady] = useState(true)
+  useEffect(() => {
+    async function fetchElements() {
+      // get html elements
+      const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
+      
+      // if headings exist on page
+      // compare against toc
+      if(DocContent.toc && headings && headings.length) {
+        let updated = DocContent.toc.reduce((acc, item) => {
+          // If heading id and toc item id match found
+          // include in updated toc
+          let found = Array.from(headings).find(heading => 
+            heading.id.includes(item.id)
+          )
+          // If toc item is not in headings
+          // do not include in toc
+          // This means heading is versioned
+          if(found)
+            acc.push(item)
+
+          return acc
+        }, [])
+
+        // If updated toc different than current
+        // If so, show loader and update toc 
+        if(currentToc.length !== updated.length) {
+          setTocReady(false)
+          // This timeout provides enough time to show the loader
+          // Otherwise the content updates immediately
+          // and toc content appears to flash with updates
+          setTimeout(() => {
+            setCurrentToc(updated)
+            setTocReady(true)
+          }, 500)
+        } else {
+          setTocReady(true)
+        }
+      } else {
+        setTocReady(true)
+      }
+    }
+    fetchElements()
+  }, [DocContent, dbtVersion])
+  // end dbt Custom
 
   return (
     <>
@@ -67,7 +123,7 @@ export default function DocItem(props) {
 
               {canRenderTOC && (
                 <TOCCollapsible
-                  toc={DocContent.toc}
+                  toc={currentToc}
                   minHeadingLevel={tocMinHeadingLevel}
                   maxHeadingLevel={tocMaxHeadingLevel}
                   className={clsx(
@@ -102,13 +158,22 @@ export default function DocItem(props) {
         </div>
         {renderTocDesktop && (
           <div className="col col--3">
-            <TOC
-              toc={DocContent.toc}
-              minHeadingLevel={tocMinHeadingLevel}
-              maxHeadingLevel={tocMaxHeadingLevel}
-              className={ThemeClassNames.docs.docTocDesktop}
-              featured_cta={termCTA && termCTA}
-            />
+            {tocReady ? (
+              <TOC
+                toc={currentToc}
+                minHeadingLevel={tocMinHeadingLevel}
+                maxHeadingLevel={tocMaxHeadingLevel}
+                className={ThemeClassNames.docs.docTocDesktop}
+                featured_cta={termCTA && termCTA}
+              />
+            ) : (
+              <img
+                className={styles.tocLoader} 
+                src="/img/loader-icon.svg" 
+                alt="Loading" 
+                title="Loading" 
+              />
+            )}
           </div>
         )}
       </div>
