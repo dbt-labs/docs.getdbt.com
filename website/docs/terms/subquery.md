@@ -195,7 +195,7 @@ Subqueries are likely to be supported across most, if not all, modern data wareh
 | Data warehouse | Supports subqueries? |
 |---|---|
 | [Snowflake](https://docs.snowflake.com/en/user-guide/querying-subqueries.html) | :white_check_mark: |
-| [AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_Subquery_examples.html) | :white_check_mark: |
+| [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_Subquery_examples.html) | :white_check_mark: |
 | [Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/subqueries) | :white_check_mark: |
 | [Databricks](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-qry-query.html) | :white_check_mark: |
 | [Postgres](https://www.postgresqltutorial.com/postgresql-subquery/) | :white_check_mark: |

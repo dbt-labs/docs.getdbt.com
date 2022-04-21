@@ -20,7 +20,7 @@ The primary DML statements are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`. With 
 - To *change* the actual data that lives in tables, use `INSERT`, `DELETE`, and `UPDATE` statements
 - To *access* the data in databse object, use `SELECT` statements
 
->For the most part, the syntax for DML statements are pretty universal across [most databases that dbt supports](https://docs.getdbt.com/docs/available-adapters) including Google Bigquery, Databricks, Postgres, AWS Redshift, and Snowflake. Regardless, please use the “Further Reading” section to see the specifics on how the following DML statements would be implemented in your database of interest!
+>For the most part, the syntax for DML statements are pretty universal across [most databases that dbt supports](https://docs.getdbt.com/docs/available-adapters) including Google Bigquery, Databricks, Postgres, Amazon Redshift, and Snowflake. Regardless, please use the “Further Reading” section to see the specifics on how the following DML statements would be implemented in your database of interest!
 
 ### SELECT
 

@@ -161,7 +161,7 @@ CTEs are likely to be supported across most, if not all, [modern data warehouses
 | Data Warehouse | Support CTEs? |
 |---|---|
 |[Snowflake](https://docs.snowflake.com/en/user-guide/queries-cte.html) | :white_check_mark: |
-|[AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_WITH_clause.html) | :white_check_mark: |
+|[Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_WITH_clause.html) | :white_check_mark: |
 |[Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) | :white_check_mark: |
 |[Databricks](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-qry-select-cte.html) | :white_check_mark: |
 |[Postgres](https://www.postgresqltutorial.com/postgresql-cte/) | :white_check_mark: |
