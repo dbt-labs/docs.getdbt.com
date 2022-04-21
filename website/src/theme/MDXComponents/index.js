@@ -19,6 +19,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
 import Changelog from '@site/src/components/changelog';
 import CloudCore from '@site/src/components/cloudcore';
+import WHCode from '@site/src/components/whcode';
 import Collapsible from '@site/src/components/collapsible';
 import FAQ from '@site/src/components/faqs';
 import FAQList from '@site/src/components/faqList';
@@ -44,6 +45,7 @@ function unwrapMDXElement(element) {
 const MDXComponents = {
   Changelog: Changelog,
   CloudCore: CloudCore,
+  WHCode: WHCode,
   Collapsible: Collapsible,
   FAQ: FAQ,
   FAQList: FAQList,

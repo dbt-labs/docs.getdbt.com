@@ -268,7 +268,20 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 
 #### Initialize your repository and start development
 
+#### This code snippet is done using tabs in a resusable code snippet
+
 <Snippet src="tutorial-managed-repo-and-initiate-project" />
+
+#### This code snippet is done using the WHCode component
+
+<WHCode>
+
+<p><code>I found some code</code></p>
+<p><code class="language-sql">select * from customers</code></p>
+<p>```I was hoping this code would be nicely formatted```</p>
+<p>Some text!</p>
+
+</WHCode>
 
 Congratulations! You have successfully completed the following:
 
