@@ -16,6 +16,7 @@ In this guide, you will:
 * Execute a dbt transformation using dbt run
 * Schedule a transformation
 
+If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
 ## Before you begin
 
 Before you begin, you will need:
