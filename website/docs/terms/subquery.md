@@ -5,7 +5,7 @@ displayText: subquery
 hoverSnippet: A subquery is a query within another query. Subqueries are often used when you need to process data in multiple steps.
 ---
 
-A subquery is what the name suggests: a query within another query. The true inception of SQL. Subqueries are often used when you need to process data in multiple steps. For the majority of subqueries you’ll see in actual practice, the inner query will execute first and pass its result to the outer query it's nested in.
+A subquery is what the name suggests: a query within another query. The true inception of SQL. Subqueries are often used when you need to process data in several steps. For the majority of subqueries you’ll see in actual practice, the inner query will execute first and pass its result to the outer query it's nested in.
 
 Subqueries are usually contrasted with <Term id="cte">Common Table Expressions (CTEs)</Term> as they have similar use cases. Unlike CTEs, which are usually separate `SELECT` statements within a query, subqueries are usually `SELECT` statements nested within a `JOIN`, `FROM`, or `WHERE` statement in a query.
 
@@ -75,7 +75,7 @@ You may often see subqueries in joins and DML statements. We’ll run through ex
 
 ### Subquery in a join
 
-In this example, I want to get the lifetime value per customer using our `orders` and `payments` table. Let’s take a look at how we can do that with a subquery in a join:
+In this example, I want to get the lifetime value per customer using our `raw_orders` and `raw_payments` table. Let’s take a look at how we can do that with a subquery in a join:
 
 ```sql
 select
