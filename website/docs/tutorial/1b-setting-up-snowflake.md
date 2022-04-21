@@ -172,7 +172,7 @@ Now we’re ready to set up dbt Cloud!
 
 There are two ways to connect dbt Cloud and Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Snowflake trial account.  The second option is to create your dbt Cloud account separately and build the Snowflake connection yourself.  If you are looking to get started quickly, we recommend **option 1**.  If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend **option 2**.
 
-## Option 1: Connect dbt Cloud and Snowflake with partner connect
+### Option 1: Connect dbt Cloud and Snowflake with partner connect
 
 1. With your Snowflake account up and running with data, we’re ready to connect it with dbt Cloud. We’re going to use [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to set up your dbt Cloud account and project. Using Partner Connect will allow you to create a complete dbt account with your [Snowflake connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake), [a managed repository](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository), [environments](https://docs.getdbt.com/docs/guides/managing-environments), and credentials. 
 2. There’s a couple of ways you can access the Partner Connect page depending on if you’re navigating in the classic Snowflake UI or the new UI. 
@@ -231,13 +231,13 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 
 7. Great! Your dbt Cloud account is now completely setup and connected to your Snowflake trial account with a [managed repository](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository). You can skip to the **[Initialize your repo and start development](#initialize-your-repository-and-start-development)** section to get started in the IDE. 
 
-## Option 2: Connect dbt Cloud and Snowflake manually
+### Option 2: Connect dbt Cloud and Snowflake manually
 
-### Create a dbt Cloud account
+#### Create a dbt Cloud account
 
 <Snippet src="tutorial-create-new-dbt-cloud-account" />
 
-### Connect dbt Cloud to Snowflake
+#### Connect dbt Cloud to Snowflake
 
 Now let's formally set up the connection between dbt Cloud and Snowflake.
 
@@ -266,7 +266,7 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 4. Click “Test” at the top. This will check that dbt Cloud can access your Snowflake account.
 5. If test successful, click “Continue”
 
-### Initialize your repository and start development
+#### Initialize your repository and start development
 
 <Snippet src="tutorial-managed-repo-and-initiate-project" />
 
