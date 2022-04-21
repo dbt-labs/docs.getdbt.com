@@ -1,22 +1,27 @@
 ---
 title: "Set up and connect BigQuery"
 id: setting-up-bigquery
-description: "Set up BigQuery with sample data and connect to dbt Cloud or dbt CLI."
+description: "Set up BigQuery with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect BigQuery"
 ---
 
 ## Introduction
 
-Welcome to getting started wtih dbt and BigQuery! This section of the tutorial will focus on getting Google BigQuery set up and connected to dbt Cloud.
+For the BigQuery project in the getting started guide, you'll learn how to set up BigQuery and connect it to dbt Cloud.
+
+This project will walk you through:
+
+- Setting up a new BigQuery instance
+- Replicating sample data for this guide
+- Connecting dbt Cloud to BigQuery
 
 ## Prerequisites
 
-Before jumping into this tutorial, make sure that you have access to **new or existing Google account**. This can be a personal or work account. We will be using this to set up BigQuery through Google Cloud Platform (GCP).
+Before beginning this tutorial, make sure that you have access to **new or existing Google account**. You can use a personal or work account to set up BigQuery through Google Cloud Platform (GCP).
 
 ## Setting up
 
 <WistiaVideo id="668fnsit1t" paddingTweak="62.5%" />
-
 
 Before jumping into the steps below, login to your Google account.
 
@@ -25,7 +30,7 @@ Before jumping into the steps below, login to your Google account.
    - If you don't have a Google Cloud Platform account you will be asked to create one.
    - If you do have one (or multiple) it will likely log you into your oldest account. Check which Google account is being used by clicking your face in the top right corner.
 
-2. Create a new project for this tutorial
+2. Create a new project for this tutorial:
 
    - If you've just created a BigQuery account, you'll be prompted to create a new project straight away.
    - If you already have an existing organization, you can select the project drop down in the header bar, and create a new project from there.
@@ -130,11 +135,14 @@ Now let's formally set up the connection between dbt Cloud and BigQuery.
 
 <Snippet src="tutorial-managed-repo-and-initiate-project" />
 
-## Next steps
+
 
 Congratulations! You have successfully completed the following:
+
 - Set up a new BigQuery instance
-- Replicated sample data for this tutorial
+- Replicated sample data for this guide
 - Connected dbt Cloud to BigQuery
 
-**[Continue the tutorial](/building-your-first-project)** with the building your first project section here.  You will quickly learn and apply the fundamentals of dbt with models, tests, docs, and deploying your first job!
+## Next steps
+
+<Snippet src="tutorial-next-steps-setting-up" />

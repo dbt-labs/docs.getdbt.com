@@ -1,15 +1,23 @@
 ---
 title: "Set up and connect Redshift"
 id: setting-up-redshift
-description: "Set up Redshift with sample data and connect to dbt Cloud or dbt Core."
+description: "Set up Redshift with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect Redshift"
 ---
 
-## Intro
+## Introduction
+
+For the Redshift project in the getting started guide, you'll learn how to set up Redshift and connect it to dbt Cloud.
+
+This project will walk you through:
+
+- Setting up a Redshift cluster
+- Loading training data into your Redshift account
+- Configuring a SQL endpoint in Redshift
+- Connecting dbt Cloud and Redshift
 
 ## Prerequisites
 
-In this tutorial, you will learn how to set up Redshift and connecting it to dbt Cloud.
 - Existing AWS account
 - Permissions to execute a CloudFormation stack to create appropriate roles and a Redshift instance.
 
@@ -216,15 +224,17 @@ You should see the same results as you saw earlier when you queried the table di
 <Lightbox src="/img/redshift_tutorial/images/review_jaffle_shop.png" title="Preview Jaffle Shop" />
 
 
-Success!  You are all set to leverage the power of dbt Cloud and Redshift together.  As a recap, we just completed the following:
+### Create dbt Cloud account
+
+### Enter connection credentials
+
+Congratulations! You have successfully completed the following:
 
 - Set up a Redshift cluster
 - Loaded training data into your Redshift account
 - Configured a SQL endpoint in Redshift
 - Connected dbt Cloud and Redshift
 
-### Create dbt Cloud account
-
-### Enter connection credentials
-
 ## Next steps
+
+<Snippet src="tutorial-next-steps-setting-up" />

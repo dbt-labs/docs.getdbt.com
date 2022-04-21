@@ -1,11 +1,20 @@
 ---
 title: "Set up and connect Databricks"
 id: setting-up-databricks
-description: "Set up Databricks with sample data and connect to dbt Cloud or dbt Core."
+description: "Set up Databricks with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect Databricks"
 ---
 
-## Intro
+## Introduction
+
+For the Databricks project in the getting started guide, you'll learn how to set up Databricks and connect it to dbt Cloud.
+
+This project will walk you through:
+
+- Setting up a Databricks account
+- Loading training data into your Databricks account
+- Configuring a SQL endpoint in Databricks
+- Connecting dbt Cloud and Databricks
 
 ## Prerequisites
 
@@ -234,24 +243,17 @@ Click on `Preview` and you should see the same results as you saw earlier when y
  
  <Lightbox src="/img/databricks_tutorial/images/dbt_run_status.png" title="dbt Run status" />
  
- 
-Success!  You are all set to leverage the power of dbt Cloud and Databricks together.  
-
-As a recap, we just completed the following:
-- Set up a Databricks account
-- Loaded training data into your Databricks account
-- Configured a SQL endpoint in Databricks
-- Connected dbt Cloud and Databricks
-
 ### Create dbt Cloud account
 
 ### Enter connection credentials
 
+
+Congratulations! You have successfully completed the following:
+
+- Set up a Databricks account
+- Loaded training data into your Databricks account
+- Configured a SQL endpoint in Databricks
+- Connected dbt Cloud and Databricks
 ## Next steps
 
-
-
-## Set up a project to connect dbt Cloud to Databricks
-
-
-
+<Snippet src="tutorial-next-steps-setting-up" />

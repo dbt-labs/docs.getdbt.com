@@ -1,13 +1,21 @@
 ---
 title: "Set up and connect Snowflake"
 id: setting-up-snowflake
-description: "Set up Snowflake with sample data and connect to dbt Cloud or dbt Core."
+description: "Set up Snowflake with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect Snowflake"
 ---
 
-## Intro
+## Introduction
 
-Welcome to getting started wtih dbt and BigQuery! This section of the tutorial will focus on getting Snowflake set up and connected to dbt Cloud.
+For the Snowflake project in the getting started guide, you'll learn how to set up Snowflake and connect it to dbt Cloud.
+
+This project will walk you through:
+
+* Setting up a Snowflake trial account
+* Loading training data into your Snowflake account
+* Creating a dbt Cloud account, either through Partner Connect or through the account flow
+* Connecting dbt Cloud and Snowflake
+* Setting up the dbt Cloud IDE, querying data, and doing your first dbt run
 
 ## Prerequisites
 
@@ -262,9 +270,7 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 
 <Snippet src="tutorial-managed-repo-and-initiate-project" />
 
-## Next steps
-
-Awesome!  You are all set to leverage the power of dbt Cloud and Snowflake together.  As a recap, we just completed the following:
+Congratulations! You have successfully completed the following:
 
 * Set up a Snowflake trial account
 * Loaded training data into your Snowflake account
@@ -272,4 +278,6 @@ Awesome!  You are all set to leverage the power of dbt Cloud and Snowflake toget
 * Connected dbt Cloud and Snowflake
 * Set up the dbt Cloud IDE, queried data, and did your first dbt run
 
-**[Continue the tutorial](/building-your-first-project)** with the building your first project section here.  You will quickly learn and apply the fundamentals of dbt with models, tests, docs, and deploying your first job!
+## Next steps
+
+<Snippet src="tutorial-next-steps-setting-up" />
