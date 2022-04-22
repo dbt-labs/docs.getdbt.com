@@ -58,12 +58,6 @@ sources:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.0">
-
-Configuring sources within their yaml file definitions is only supported by v1.1 and newer.
-
-</VersionBlock>
-
 </TabItem>
 
 </Tabs>
@@ -102,9 +96,9 @@ sources:
 </File>
 
 
-#### Conditionally enable a single source
-
 <VersionBlock firstVersion="1.1">
+
+#### Conditionally enable a single source
 
 When defining a source, you can disable the entire source, or specific source tables, using the inline `config` property:
 
@@ -142,12 +136,6 @@ sources:
 ```
 
 </File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-Configuring sources within their yaml file definitions is only supported by v1.1 and newer.
 
 </VersionBlock>
 
