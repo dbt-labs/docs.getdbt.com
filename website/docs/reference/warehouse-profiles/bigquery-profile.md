@@ -215,7 +215,7 @@ In older versions of `dbt-bigquery`, this same config was called `timeout_second
 
 :::
   
-The default value is 300 seconds. If any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
+No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set.) When `job_execution_timeout_seconds` is set, if any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
 
 ```
  Operation did not complete within the designated timeout.
