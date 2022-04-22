@@ -53,7 +53,7 @@ While we don’t always think of CTEs as having classical arguments like SQL fun
 
 ## When to use CTEs
 
-The primary motivation to implement CTEs in your code is to simplify the complexity of your queries and increase your code’s readability. There are other great benefits to using CTEs in your queries which we’ll outline below
+The primary motivation to implement CTEs in your code is to simplify the complexity of your queries and increase your code’s readability. There are other great benefits to using CTEs in your queries which we’ll outline below.
 
 ### Simplification
 
