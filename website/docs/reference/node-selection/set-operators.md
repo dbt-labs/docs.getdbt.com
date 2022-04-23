@@ -3,7 +3,7 @@ title: "Set operators"
 ---
 
 ### Unions
-Providing multiple space-delineated arguments to the `--select`, `--exclude`, or `--selector` flags selects
+Providing multiple space-delimited arguments to the `--select`, `--exclude`, or `--selector` flags selects
 the union of them all. If a resource is included in at least one selector, it will be
 included in the final set.
 
