@@ -11,11 +11,11 @@ When you use dbt Core to work with dbt, you will be editing files locally using 
 
 * To use the dbt CLI, it's important that you know some basics of your terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install dbt Core using the [installation instructions](/dbt-cli/install/overview) for your operating system.
-* Complete [Setting up (in BigQuery)](/tutorial/setting-up-bigquery#setting-up) and [Loading data (BigQuery)](/tutorial/setting-up-bigquery#loading-data).
+* Complete [Setting up (in BigQuery)](/tutorial/getting-set-up/setting-up-bigquery#setting-up) and [Loading data (BigQuery)](/tutorial/getting-set-up/setting-up-bigquery#loading-data).
 
 ## Create a project
 
-You should have successfully run the sample query in BigQuery. You will now learn how to create a starter project with example models, before buidling your own models.
+You should have successfully run the sample query in BigQuery. You will now learn how to create a starter project with example models, before building your own models.
 
 :::info
 
@@ -224,7 +224,7 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 ### Next steps
 
-<Snippet src="tutorial-extra-exercises" />
+<Snippet src="tutorial-next-steps-1st-model" />
 
 <LoomVideo id="2fc44590f2614a68bea402322c36f56e" />
 
@@ -245,6 +245,7 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 #### Next steps
 
+
 <Snippet src="tutorial-next-steps-tests" />
 
 <LoomVideo id="6db6956adbb04f55b6027c461e9b1792" />
@@ -262,7 +263,7 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using dbt Cloud to scedule a job.
+We recommend using dbt Cloud to schedule a job. If you do want to use dbt Core to schedule a job, you can refer to the [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 
-TODO @coapacetic mentioned we should refer to some guides: dbt airflow and [devblog post](/blog/dbt-airflow-spiritual-alignment)?
 
+TODO @coapacetic any other helpful links here?

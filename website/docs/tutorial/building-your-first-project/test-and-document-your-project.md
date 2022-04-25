@@ -18,6 +18,8 @@ description: Let's test and document our models to build trust in our data.
 
 ## Next steps
 
+Once you test and document your project, you're ready to [Schedule a job](tutorial/building-your-first-project/schedule-a-job).
+
 <Snippet src="tutorial-next-steps-tests" />
 
 <LoomVideo id="384fa15250d44ca3950a06477bc31a89" />

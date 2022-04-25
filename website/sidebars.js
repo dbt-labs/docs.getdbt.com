@@ -583,10 +583,10 @@ const sidebarSettings = {
           label: "Getting set up",
           link: { type: 'doc', id: 'tutorial/getting-set-up' },
           items: [
-            "tutorial/setting-up-bigquery",
-            "tutorial/setting-up-databricks",
-            "tutorial/setting-up-redshift",
-            "tutorial/setting-up-snowflake",
+            "tutorial/getting-set-up/setting-up-bigquery",
+            "tutorial/getting-set-up/setting-up-databricks",
+            "tutorial/getting-set-up/setting-up-redshift",
+            "tutorial/getting-set-up/setting-up-snowflake",
           ],
         },
         {
@@ -594,9 +594,9 @@ const sidebarSettings = {
           label: "Building your first project",
             link: { type: 'doc', id: 'tutorial/building-your-first-project' },
           items: [
-            "tutorial/build-your-first-models",
-            "tutorial/test-and-document-your-project",
-            "tutorial/schedule-a-job",
+            "tutorial/building-your-first-project/build-your-first-models",
+            "tutorial/building-your-first-project/test-and-document-your-project",
+            "tutorial/building-your-first-project/schedule-a-job",
           ],
         },
         {
@@ -604,9 +604,9 @@ const sidebarSettings = {
           label: "Leveling up",
           link: { type: 'doc', id: 'tutorial/leveling-up' },
           items: [
-            "tutorial/using-jinja",
-            "tutorial/refactoring-legacy-sql",
-            "tutorial/connecting-to-dbt-core",
+            "tutorial/leveling-up/using-jinja",
+            "tutorial/leveling-up/refactoring-legacy-sql",
+            "tutorial/leveling-up/connecting-to-dbt-core",
           ],
     },
           ],

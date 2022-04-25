@@ -50,10 +50,16 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 ## Next steps
 
-* Ready to get started with your own project? We recommend doing the tutorial a second time to create a new project. You should use your own warehouse, along with a query that you frequently run, to build your first models!
-* Now that you've got a working dbt project, read more about some of our [best practices](/docs/guides/best-practices), or go back this tutorial and read some of the FAQs
-* Try some exercises to level-up your dbt skills:
-    * Turn your raw data references (e.g. `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
-    * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
-    * Reorganize your project into our [recommended structure](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355)
-    * Use some Jinja in your project — check out the [Jinja tutorial](/tutorial/using-jinja).
+Congratulations! Now that you've got a working dbt project, you can read about dbt [best practices](/docs/guides/best-practices).
+
+You can improve your dbt skills with these fun exercises:
+
+* Turn your raw data references (for example, turn `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
+* Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
+* Reorganize your project into [how we structure dbt projects](/blog/how-we-structure-our-dbt-projects).
+
+Here are some ways to [level up your dbt skills](leveling-up):
+
+* Learn how to use Jinja in your project by reading the [Jinja tutorial](using-jinja).
+* Learn how to [connect to dbt Core using the CLI](connecting-to-dbt-core).
+* Refactor [legacy SQL to dbt SQL](refactoring-legacy-sql).
