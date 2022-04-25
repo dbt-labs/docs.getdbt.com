@@ -53,7 +53,9 @@ In our day-to-day we don’t normally formalize the names of the different types
 
 Nested subqueries are subqueries like the one we did in the first example: a subquery where the inner query is executed first (and once) and passes its result to the main query. The majority of subqueries you will see in the real world are likely to be a nested subquery. These are most useful when you need to process data in multiple steps.
 
->Debugging subqueries tip: It’s important to note that since the inner query is executed first in a nested subquery, the inner query must be able to execute by itself. If it’s unable to successfully run independently, it cannot pass results to the outer query.
+:::tip Debugging subqueries tip 
+It’s important to note that since the inner query is executed first in a nested subquery, the inner query must be able to execute by itself. If it’s unable to successfully run independently, it cannot pass results to the outer query.
+:::
 
 ### Correlated subqueries
 
@@ -200,7 +202,7 @@ Subqueries are likely to be supported across most, if not all, modern data wareh
 | [Databricks](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-qry-query.html) | :white_check_mark: |
 | [Postgres](https://www.postgresqltutorial.com/postgresql-subquery/) | :white_check_mark: |
 
-## TL;DR
+## Conclusion
 
 I’m going to be honest, I was hesitant to start writing the glossary page for SQL subqueries. As someone who has been using CTEs almost exclusively in their data career, I was intimidated by this concept. However, I am excited to say: Subqueries are not as scary as I expected them to be! 
 

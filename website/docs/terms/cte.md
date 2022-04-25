@@ -23,7 +23,7 @@ How can we make these complexities in our code more digestible and usable? CTEs 
 
 ## CTE Syntax: How it works
 
-To use CTEs, you begin by defining your first CTE using the WITH statement followed by a SELECT, INSERT, UPDATE, DELETE, or MERGE statement.
+To use CTEs, you begin by defining your first CTE using the `WITH` statement followed by a `SELECT`, `INSERT`, `UPDATE`, `DELETE`, or `MERGE` statement.
 
 Let’s break down this example involving a `rename_columns` CTE below:
 
@@ -140,8 +140,10 @@ My results from running this query look a little like this:
 | 64 | 1 | single_buyer |
 | 94 | 2 | regular_buyer |
 
->If you are finding yourself using the same code for a certain CTE across multiple 
+:::tip Tip
+If you are finding yourself using the same code for a certain CTE across multiple 
 queries or models, that’s probably a good sign that CTE should be its own [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models) or view.
+:::
 
 ## CTE vs Subquery
 
@@ -166,7 +168,7 @@ CTEs are likely to be supported across most, if not all, [modern data warehouses
 |[Databricks](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-qry-select-cte.html) | :white_check_mark: |
 |[Postgres](https://www.postgresqltutorial.com/postgresql-cte/) | :white_check_mark: |
 
-## TL;DR
+## Conclusion
 
 CTEs are essentially temporary views that can be used throughout a query. They are a great way to give your SQL more structure and readability, and offer simplified ways to debug your code. You can leverage appropriately-named CTEs to easily identify upstream dependencies and code functionality. CTEs also support recursiveness and reusability in the same query. Overall, CTEs can be an effective way to level-up your SQL to be more organized and understandable.
 

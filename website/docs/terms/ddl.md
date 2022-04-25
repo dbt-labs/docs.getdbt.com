@@ -10,7 +10,9 @@ Data Definition Language (DDL) is a group of SQL statements that you can execute
 
 DDL is contrasted with <Term id="dml">Data Manipulation Language (DML)</Term> which is the SQL that is used to actually access and manipulate data in database objects. The majority of data analysts will rarely execute DDL commands and will do the majority of their work creating DML statements to model and analyze data. 
 
->Data folks don’t typically write DDL [since dbt will do it for them](https://docs.getdbt.com/docs/about/overview#:~:text=dbt%20allows%20analysts%20avoid%20writing,dbt%20takes%20care%20of%20materialization.).
+:::caution Caution
+Data folks don’t typically write DDL [since dbt will do it for them](https://docs.getdbt.com/docs/about/overview#:~:text=dbt%20allows%20analysts%20avoid%20writing,dbt%20takes%20care%20of%20materialization.).
+:::
 
 To be honest, DDL is definitely some of the drier content that exists out there in the greater data world. However, because DDL commands are often uncompromising and should be used with caution, it’s incredibly important to understand how they work and when they should be used. We hope you can use this page to learn about the basics, strengths, and limitations of DDL statements.
 
@@ -20,7 +22,9 @@ To be honest, DDL is definitely some of the drier content that exists out there 
 
 DDL statements are used to create, drop, and manipulate objects in your database. They are often, but not always, unforgiving and irreversible. “With great power comes great responsibility,” is usually the first thing I think of before I execute a DDL command. We’ll highlight some of the primary DDL commands that are used by analytics engineers below.
 
->The syntax for DDL commands can be pretty database-specific. We are trying to make this glossary page as generic as possible, but please use the “Further Reading” section to see the specifics on how the following DDL commands would be implemented in your database of interest!
+:::important Important
+The syntax for DDL commands can be pretty database-specific. We are trying to make this glossary page as generic as possible, but please use the “Further Reading” section to see the specifics on how the following DDL commands would be implemented in your database of interest!
+:::
 
 ### ALTER
 
@@ -107,7 +111,7 @@ TRUNCATE TABLE payments;
 
 Previously, this table was 113 rows. After executing this statement, the table is still in my database, but now has zero rows.
 
-## TL;DR
+## Conclusion
 
 DDL statements allow you to remove, edit, and add database objects. Some of the most common DDL statements you’ll execute include `CREATE`, `DROP`, `COMMENT`, `ALTER`, and more. DDL commands are typically executed in a SQL browser or stored procedure. Ultimately, DDL commands are all-powerful and potentially high-risk and should be used with the greatest of care. In the case of DDL, **do not** throw caution to the wind…
 

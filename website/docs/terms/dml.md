@@ -20,7 +20,9 @@ The primary DML statements are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`. With 
 - To *change* the actual data that lives in tables, use `INSERT`, `DELETE`, and `UPDATE` statements
 - To *access* the data in databse object, use `SELECT` statements
 
->For the most part, the syntax for DML statements are pretty universal across [most databases that dbt supports](https://docs.getdbt.com/docs/available-adapters) including Google Bigquery, Databricks, Postgres, Amazon Redshift, and Snowflake. Regardless, please use the “Further Reading” section to see the specifics on how the following DML statements would be implemented in your database of interest!
+:::important Important
+For the most part, the syntax for DML statements are pretty universal across [most databases that dbt supports](https://docs.getdbt.com/docs/available-adapters) including Google Bigquery, Databricks, Postgres, Amazon Redshift, and Snowflake. Regardless, please use the “Further Reading” section to see the specifics on how the following DML statements would be implemented in your database of interest!
+:::
 
 ### SELECT
 
@@ -78,9 +80,11 @@ I can manually update the status column of an order in my orders table like this
 UPDATE orders SET status = ‘returned’ WHERE order_id = 7;
 ```
 
->The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. We see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here(https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-incremental-models-work-behind-the-scenes)].
+:::tip Tip
+The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. We see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-incremental-models-work-behind-the-scenes).
+:::
 
-## TL;DR
+## Conclusion
 
 DML statements allow you to query, edit, add, and remove data stored in database objects. The primary DML commands are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`. Using DML statements, you can perform powerful actions on the actual data stored in your system. We typically write DML `SELECT` statements in data models to conduct data analysis or create new tables and views. In many ways, DML is the air that us data folks breathe!
 

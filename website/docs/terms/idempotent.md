@@ -4,6 +4,9 @@ title: Idempotent
 displayText: idempotent
 hoverSnippet: Idempotent describes a process that is independent of previous executions of that same process.
 ---
+:::important This page needs some love
+This term lacks depth and requires more content. Would you like to contribute your knowledge to this page? [Create a discussion in our GitHub repository](https://github.com/dbt-labs/docs.getdbt.com/discussions) to begin the process of becoming a glossary contributor!
+:::
 
 Idempotent is a way to describe a particular process.  A process that is idempotent is independent of previous executions of that same process.  
 
@@ -11,4 +14,6 @@ For a mathematical example, adding 1 changes the results, but multiplying by 1 i
 
 Idempotent is an intimidating word, but particularly important in a data transformation process. dbt was built to be idempotent to avoid those challenges of having to roll back changes and being able to independently refresh your data pipeline.
 
->This is the concept in analytics engineering that is the hardest to spell and the most important to learn.
+:::note Note
+This is the concept in analytics engineering that is the hardest to spell and the most important to learn.
+:::

@@ -4,6 +4,9 @@ title: View
 displayText: view  
 hoverSnippet: A view (as opposed to a table) is a defined passthrough SQL query that can be run against a database (or data warehouse).
 ---
+:::important This page needs some love
+This term lacks depth and requires more content. Would you like to contribute your knowledge to this page? [Create a discussion in our GitHub repository](https://github.com/dbt-labs/docs.getdbt.com/discussions) to begin the process of becoming a glossary contributor!
+:::
 
 A view (as opposed to a <Term id="table" />) is a defined passthrough SQL query that can be run against a database (or data warehouse). A view doesn’t store data, like a table does, but it defines the logic that you need to fetch the underlying data.
 
