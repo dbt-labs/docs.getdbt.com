@@ -127,7 +127,7 @@ seeds:
 ## Configuring seeds
 Seeds can only be configured from yaml files, either in `dbt_project.yml` or within an individual seed's yaml properties. It is not possible to configure a seed from within its CSV file.
 
-Seed configurations, like <Term id="model" /> configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project, and configurations defined in a specific seed's properties will override configurations defined in `dbt_project.yml`.
+Seed configurations, like model configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project, and configurations defined in a specific seed's properties will override configurations defined in `dbt_project.yml`.
 
 ### Examples
 #### Apply the `schema` configuration to all seeds

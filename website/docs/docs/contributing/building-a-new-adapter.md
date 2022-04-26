@@ -9,7 +9,7 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 
 1. At the lowest level: An *adapter class* implementing all the methods responsible for connecting to a database and issuing queries.
 2. In the middle: A set of *macros* responsible for generating SQL that is compliant with the target database.
-3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn <Term id="model" /> files into persisted objects in the database.
+3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn model files into persisted objects in the database.
 
 This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
 
@@ -271,7 +271,7 @@ The following macros must be implemented, but you can override their behavior fo
 
 ### Adapter dispatch
 
-Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create table") in a database-specific way.
+Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create <Term id="table" />") in a database-specific way.
 
 <File name='adapters.sql'>
 

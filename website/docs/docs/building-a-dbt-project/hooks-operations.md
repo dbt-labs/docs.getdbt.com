@@ -29,7 +29,7 @@ dbt provides two different interfaces for you to version control and execute the
 
 ### Hooks
 Hooks are snippets of SQL that are executed at different times:
-  * `pre-hook`: executed _before_ a <Term id="model" />, seed or snapshot is built.
+  * `pre-hook`: executed _before_ a model, seed or snapshot is built.
   * `post-hook`: executed _after_ a model, seed or snapshot is built.
   * `on-run-start`: executed at the _start_ of `dbt run`, `dbt seed` or `dbt snapshot`
   * `on-run-end`: executed at the _end_ of `dbt run`, `dbt seed` or `dbt snapshot`
@@ -52,7 +52,7 @@ models:
 
 </File>
 
-You can also apply the `post-hook` to individual <Term id="model">models</Term> using a `config` block:
+You can also apply the `post-hook` to individual models using a `config` block:
 
 <File name='models/<model_name>.sql'>
 
@@ -76,7 +76,7 @@ You can also use a [macro](jinja-macros#macros) to bundle up hook logic. Check o
 :::
 
 ### Operations
-Operations are [macros](jinja-macros#macros) that you can run using the [`run-operation` command](run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a <Term id="model" />.
+Operations are [macros](jinja-macros#macros) that you can run using the [`run-operation` command](run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a model.
 
 :::info Explicitly execute the SQL in an operation
 Unlike hooks, you need to explicitly execute a query within a macro, by using either a [statement block](statement-blocks) or a helper macro like the [run_query macro](run_query) macro. Otherwise, dbt will return the query as a string without executing it.

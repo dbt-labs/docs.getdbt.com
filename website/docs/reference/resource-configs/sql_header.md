@@ -85,7 +85,7 @@ snapshots:
 
 
 ## Definition
-An optional configuration to inject SQL above the `create table as` and `create view as` statements that dbt executes when building <Term id="model">models</Term> and snapshots.
+An optional configuration to inject SQL above the `create table as` and `create view as` statements that dbt executes when building models and snapshots.
 
 `sql_header`s can be set using the config, or by `call`-ing the `set_sql_header` macro (example below).
 

@@ -2,7 +2,7 @@
 title: How do I run one model at a time?
 ---
 
-To run one <Term id="model" />, use the `--select` flag (or `-s` flag), followed by the name of the model:
+To run one model, use the `--select` flag (or `-s` flag), followed by the name of the model:
 
 
 ```

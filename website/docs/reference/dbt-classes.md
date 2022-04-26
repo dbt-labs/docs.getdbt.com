@@ -52,7 +52,7 @@ class Relation:
 -- Return true if the relation is a table
 {{ relation.is_table }}
 
--- Return true if the relation is a view
+-- Return true if the relation is a <Term id="table" />
 {{ relation.is_view }}
 
 -- Return true if the relation is a cte
@@ -145,7 +145,7 @@ will be expanded to:
 
 The execution of a resource in dbt generates a `Result` object. This object contains information about the executed node, timing, status, and metadata returned by the adapter. At the end of an invocation, dbt records these objects in [`run_results.json`](run-results-json).
 
-- `node`: Full object representation of the dbt resource (<Term id="model" />, seed, snapshot, test) executed, including its `unique_id`
+- `node`: Full object representation of the dbt resource (model, seed, snapshot, test) executed, including its `unique_id`
 - `status`: dbt's interpretation of runtime success, failure, or error
 - `thread_id`: Which thread executed this node? E.g. `Thread-1`
 - `execution_time`: Total time spent executing this node

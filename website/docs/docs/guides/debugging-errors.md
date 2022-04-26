@@ -5,10 +5,10 @@ title: Debugging errors
 Learning how to debug is a skill, and one that will make you great at your role!
 1. Read the error message — when writing the code behind dbt, we try our best to make error messages as useful as we can. The error message dbt produces will normally contain the type of error (more on these error types below), and the file where the error occurred.
 2. Inspect the file that was known to cause the issue, and see if there's an immediate fix.
-3. Isolate the problem — for example, by running one <Term id="model" /> a time, or by undoing the code that broke things.
+3. Isolate the problem — for example, by running one model a time, or by undoing the code that broke things.
 4. Get comfortable with compiled files and the logs.
     - The `target/compiled` directory contains `select` statements that you can run in any query editor.
-    - The `target/run` directory contains the SQL dbt executes to build your <Term id="model">models</Term>.
+    - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
     - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
     - **dbt CLI users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> ([Atom help](https://discuss.atom.io/t/all-gitignored-files-are-hidden-now-atom-1-15/39238), [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
@@ -28,7 +28,7 @@ Below, we've listed some of common errors. It's useful to understand what dbt is
 Let's dive into some of these errors and how to debug 👇. Note: not all errors are covered here!
 
 ## Runtime Errors
-_Note: If you're using the dbt Cloud <Term id="ide" /> to work on your project, you're unlikely to encounter these errors._
+_Note: If you're using the dbt Cloud IDE to work on your project, you're unlikely to encounter these errors._
 
 ### Not a dbt project
 
@@ -178,7 +178,7 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt <Term id="cli" /> users, these won't get picked up until you run `dbt run` or `dbt compile`._
+_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt CLI users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function

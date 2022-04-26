@@ -9,7 +9,7 @@ title: "Project Parsing"
 
 ## What is parsing?
 
-At the start of every dbt invocation, dbt reads all the files in your project, extracts information, and constructs a manifest containing every object (<Term id="model" />, source, macro, etc). Among other things, dbt uses the `ref()`, `source()`, and `config()` macro calls within models to set properties, infer dependencies, and construct your project's <Term id="dag" />.
+At the start of every dbt invocation, dbt reads all the files in your project, extracts information, and constructs a manifest containing every object (model, source, macro, etc). Among other things, dbt uses the `ref()`, `source()`, and `config()` macro calls within models to set properties, infer dependencies, and construct your project's DAG.
 
 Parsing projects can be slow, especially as projects get bigger—hundreds of models, thousands of files—which is frustrating in development. There are a handful of ways to optimize dbt performance today:
 - LibYAML bindings for PyYAML
@@ -34,7 +34,7 @@ After parsing your project, dbt stores an internal project manifest in a file ca
 
 Starting in v1.0, partial parsing is **on** by default. In development, partial parsing can significantly reduce the time spent waiting at the start of a run, which translates to faster dev cycles and iteration.
 
-The [`PARTIAL_PARSE` global config](global-configs#partial-parsing) can be enabled or disabled via `profiles.yml`, environment variable, or <Term id="cli" /> flag.
+The [`PARTIAL_PARSE` global config](global-configs#partial-parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
 
 ### Known limitations
 

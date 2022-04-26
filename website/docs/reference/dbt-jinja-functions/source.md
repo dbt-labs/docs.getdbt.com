@@ -10,7 +10,7 @@ select * from {{ source(source_name, table_name) }}
 
 This function:
 - Returns a [Relation](dbt-classes#relation) for a [source](using-sources)
-- Creates dependencies between a source and the current <Term id="model" />, which is useful for documentation and model selection
+- Creates dependencies between a source and the current model, which is useful for documentation and model selection
 - Compiles to the full object name in the database
 
 ## Related guides

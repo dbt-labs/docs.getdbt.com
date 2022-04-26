@@ -20,7 +20,7 @@ model-paths: [directorypath]
 Optionally specify a custom list of directories where [models](building-models) and [sources](using-sources) are located.
 
 ## Default
-By default, dbt will search for <Term id="model">models</Term> and sources in the `models` directory, i.e. `model-paths: ["models"]`
+By default, dbt will search for models and sources in the `models` directory, i.e. `model-paths: ["models"]`
 
 ## Examples
 ### Use a subdirectory named `transformations` instead of `models`

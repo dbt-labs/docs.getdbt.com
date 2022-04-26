@@ -26,7 +26,7 @@ query-comment:
 </File>
 
 ## Definition
-A string to inject as a comment in each query that dbt runs against your database. This comment can be used to attribute SQL statements to specific dbt resources like <Term id="model">models</Term> and tests.
+A string to inject as a comment in each query that dbt runs against your database. This comment can be used to attribute SQL statements to specific dbt resources like models and tests.
 
 The `query-comment` configuration can also call a macro that returns a string.
 
@@ -39,7 +39,7 @@ The `query-comment` configuration can also call a macro that returns a string.
 </Changelog>
 
 ## Default
-By default, dbt will insert a <Term id="json" /> comment at the top of your query containing the information including the dbt version, profile and target names, and node ids for the resources it runs. For example:
+By default, dbt will insert a JSON comment at the top of your query containing the information including the dbt version, profile and target names, and node ids for the resources it runs. For example:
 
 ```sql
 /* {"app": "dbt", "dbt_version": "0.15.0rc2", "profile_name": "debug",

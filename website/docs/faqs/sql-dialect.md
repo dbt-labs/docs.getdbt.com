@@ -21,7 +21,7 @@ select 1 as my_column
 
 </File>
 
-To replace an existing table, here's an _illustrative_ example of the SQL dbt will run on different warehouses (the actual SQL can get much more complicated than this!)
+To replace an existing <Term id="table" />, here's an _illustrative_ example of the SQL dbt will run on different warehouses (the actual SQL can get much more complicated than this!)
 
 <Tabs
   defaultValue="redshift"

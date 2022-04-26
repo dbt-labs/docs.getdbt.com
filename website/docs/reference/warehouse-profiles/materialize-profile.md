@@ -60,7 +60,7 @@ incremental | NO | Use the `materializedview` <Term id="materialization" /> inst
 
 ### Seeds
 
-Running [`dbt seed`](commands/seed) will create a static materialized view from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
+Running [`dbt seed`](commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
 
 ## Resources
 

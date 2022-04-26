@@ -24,7 +24,7 @@ Service tokens can now be assigned granular permissions to enforce least privile
 
 
 ## dbt Cloud v1.1.44 (February 2nd, 2022)
-Love the <Term id="dag" /> in the <Term id="ide" /> as much as we do? Now when you click on a node in the DAG, the <Term id="model" /> or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic functionality throughout the year.
+Love the DAG in the IDE as much as we do? Now when you click on a node in the DAG, the model or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic functionality throughout the year.
 
 #### Performance improvements and enhancements
 
@@ -73,7 +73,7 @@ We shipped environment variables in dbt Cloud. Environment variables create a wa
 
 
 ## dbt Cloud v1.1.38 (October 27, 2021)
-Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata <Term id="api" /> is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
+Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
@@ -177,7 +177,7 @@ We're heads down working on a handful of new features that we're going to share 
 
 
 ## dbt Cloud v1.1.28 (June 9, 2021)
-We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab. Additionally, all developers should test out Slim CI which will speed up their <Term id="model" /> builds.
+We shipped a far better experience for GitLab users. Be sure to check out new CI features that are now available for customers using GitLab. Additionally, all developers should test out Slim CI which will speed up their model builds.
 
 #### New products and features
 
@@ -313,7 +313,7 @@ Phew! As our company grows, so too does our changelog! Look at all these! The bi
 - Added missing token URI to Bigquery connection edit
 - Prevent multiple develop sessions for one user
 - Fixed SchemaForm validating non-displayed fields
-- Fixed required fields for Bigquery connection <Term id="json" /> uploads
+- Fixed required fields for Bigquery connection JSON uploads
 - Fixed self selection as deferred job
 - Always create a Monaco model on tab open if no matching model exists
 - Fixed tab dirty indicator on open tab
@@ -1175,7 +1175,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 - Make `retries` profile configuration for BigQuery connections optional
 - Support `retries` profile configuration for BigQuery connections (new in dbt v0.15.1)
 - Replace Gravatar images with generic person icons in the top navbar
-- Remove deprecated account subscription <Term id="model">models</Term>
+- Remove deprecated account subscription models
 - Remove external JS dependencies
 
 #### Removed

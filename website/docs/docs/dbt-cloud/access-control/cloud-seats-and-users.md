@@ -16,10 +16,10 @@ in dbt Cloud, whereas users with Read Only licenses are intended to view the
 
 | Functionality | Developer User | Read Only Users |
 | ------------- | -------------- | --------------- |
-| Use the Developer <Term id="ide" /> | ✅ | ❌ |
+| Use the Developer IDE | ✅ | ❌ |
 | Use Jobs | ✅ | ❌ |
 | Manage Account | ✅ | ❌ |
-| <Term id="api" /> Access | ✅ | ❌ |
+| API Access | ✅ | ❌ |
 | Use [Source Freshness](cloud-snapshotting-source-freshness) | ✅ | ✅ |
 | Use [Docs](cloud-generating-documentation) | ✅ | ✅ |
 

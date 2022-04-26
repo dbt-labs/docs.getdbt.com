@@ -10,7 +10,7 @@ id: "projects"
 ## Getting started
 A dbt project is a directory of `.sql` and `.yml` files, which dbt uses to transform your data. At a minimum, a dbt project must contain:
 * A project file: A `dbt_project.yml` file tells dbt that a particular directory is a dbt project, and also contains configurations for your project.
-* [Models](building-models): A <Term id="model" /> is a single `.sql` file. Each model contains a single select statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
+* [Models](building-models): A model is a single `.sql` file. Each model contains a single select statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
 
 A project may also contain a number of other resources, such as [snapshots](snapshots), [seeds](seeds), [tests](building-a-dbt-project/tests), [macros](jinja-macros#macros), [documentation](documentation), and [sources](using-sources).
 

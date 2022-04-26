@@ -22,7 +22,7 @@ to understand how to effectively use this variable.
 
   - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
   - In dbt v0.20.0, exposures were added to the `graph.exposures` object
-  - In dbt v1.0.0, <Term id="metric">metrics</Term> were added to the `graph.metrics` object
+  - In dbt v1.0.0, metrics were added to the `graph.metrics` object
 
 </Changelog>
 
@@ -74,7 +74,7 @@ representations of those nodes. A simplified example might look like:
 }
 ```
 
-The exact contract for these <Term id="model" /> and source nodes is not currently documented,
+The exact contract for these model and source nodes is not currently documented,
 but that will change in the future.
 
 ### Accessing models
@@ -83,7 +83,7 @@ The `model` entries in the `graph` dictionary will be incomplete or incorrect
 during parsing. If accessing the models in your project via the `graph`
 variable, be sure to use the [execute](execute) flag to ensure that this code
 only executes at run-time and not at parse-time. Do not use the `graph` variable
-to build your <Term id="dag" />, as the resulting dbt behavior will be undefined and likely
+to build your DAG, as the resulting dbt behavior will be undefined and likely
 incorrect. Example usage:
 
 <File name='graph-usage.sql'>
@@ -207,7 +207,7 @@ Example usage:
 
 ### Accessing metrics
 
-To access the <Term id="metric">metrics</Term> in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
+To access the metrics in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
 
 <File name='macros/get_metric.sql'>
 

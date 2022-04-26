@@ -17,7 +17,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started Tutor
 
 :::
 
-A <Term id="model" /> is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
+A model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
 - The name of the file is used as the model name
 - Models can be nested in subdirectories within the `models` directory
@@ -56,7 +56,7 @@ left join customer_orders using (customer_id)
 
 </File>
 
-When you execute `dbt run`, dbt will build this as a view named `customers` in your target schema:
+When you execute `dbt run`, dbt will build this as a <Term id="table" /> named `customers` in your target schema:
 
 ```sql
 create view dbt_alice.customers as (
@@ -89,7 +89,7 @@ create view dbt_alice.customers as (
 Why a _view_ named `dbt_alice.customers`? By default dbt will:
 * create models as <Term id="view">views</Term>
 * build models in a target schema you define
-* use your file name as the view or table name in the database
+* use your file name as the view or <Term id="table" /> name in the database
 
 You can use _configurations_ to change any of these behaviors — more on that below.
 
@@ -251,7 +251,7 @@ dbt uses the `ref` function to:
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 
 ## Testing and documenting models
-You can also document and test <Term id="model">models</Term> — skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
+You can also document and test models — skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
 
 
 ## Additional FAQs

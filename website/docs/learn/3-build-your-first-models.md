@@ -4,7 +4,7 @@ id: build-your-first-models
 description: With our starter project setup, it's time to get to the fun part — building models!
 ---
 
-With our starter project setup, it's time to get to the fun part — building [models](/docs/building-a-dbt-project/building-models)! We're going to take the query from the [Setting up](/learn/setting-up) instructions, and turn it into a <Term id="model" /> in our dbt project.
+With our starter project setup, it's time to get to the fun part — building [models](/docs/building-a-dbt-project/building-models)! We're going to take the query from the [Setting up](/learn/setting-up) instructions, and turn it into a model in our dbt project.
 
 ## Checkout a new git branch
 ### dbt Cloud

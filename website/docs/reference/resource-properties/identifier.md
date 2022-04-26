@@ -46,7 +46,7 @@ sources:
 </File>
 
 
-In a downstream <Term id="model" />:
+In a downstream model:
 ```sql
 select * from {{ source('jaffle_shop', 'orders') }}
 ```

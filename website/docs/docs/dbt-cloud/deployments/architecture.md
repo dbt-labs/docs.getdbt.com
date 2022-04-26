@@ -13,14 +13,14 @@ The dbt Cloud application is comprised of a set of static components, as well as
 
 #### Static Application Components
 
-- **api gateway**: The <Term id="api" /> gateway is the entrypoint for all client requests to dbt Cloud. The api gateway serves static content, and contains logic for routing requests within the dbt Cloud application.
+- **api gateway**: The API gateway is the entrypoint for all client requests to dbt Cloud. The api gateway serves static content, and contains logic for routing requests within the dbt Cloud application.
 - **app**: The app is the dbt Cloud application server. It consists of a Django application capable of serving dbt Cloud REST API requests.
 - **scheduler**: The scheduler is a continuously running process that orchestrates background jobs in dbt Cloud. It consists of two components: the scheduler container which provisions dynamic resources just-in-time, and the background cleanup container which performs maintenance tasks on the dbt Cloud database, including flushing logs from dbt runs out into the object store.
 
 #### Dynamic Application Components
 
 - **dbt run**: A "run" in dbt Cloud represents a series of background invocations of dbt that are triggered either on a cron scheduler, manually by a user, or via dbt Cloud's API.
-- **dbt develop**: This is a server capable of serving dbt <Term id="ide" /> requests for a single user. dbt Cloud will create one of these for each user that is actively using the dbt IDE.
+- **dbt develop**: This is a server capable of serving dbt IDE requests for a single user. dbt Cloud will create one of these for each user that is actively using the dbt IDE.
 
 #### Application Critical Components
 

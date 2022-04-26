@@ -2,9 +2,9 @@
 title: How do I create dependencies between models?
 ---
 
-When you use the `ref` [function](dbt-jinja-functions/ref), dbt automatically infers the dependencies between <Term id="model">models</Term>.
+When you use the `ref` [function](dbt-jinja-functions/ref), dbt automatically infers the dependencies between models.
 
-For example, consider a <Term id="model" />, `customer_orders`, like so:
+For example, consider a model, `customer_orders`, like so:
 
 <File name='models/customer_orders.sql'>
 

@@ -30,7 +30,7 @@ We've made our [style guide](https://github.com/dbt-labs/corp/blob/master/dbt_st
 
 ## Best practices in dbt projects
 ### Use the ref function
-The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that <Term id="model">models</Term> are built in the correct order. It also ensures that your current <Term id="model" /> selects from upstream tables and <Term id="view">views</Term> in the same environment that you're working in.
+The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that models are built in the correct order. It also ensures that your current model selects from upstream tables and <Term id="view">views</Term> in the same environment that you're working in.
 Always use the `ref` function when selecting from another model, rather than using the direct relation reference (e.g. `my_schema.my_table`).
 
 ### Limit references to raw data
@@ -70,7 +70,7 @@ Complex models often include multiple Common Table Expressions (<Term id="cte">C
 ### Group your models in directories
 Within your `models/` directory, you can have any number of nested subdirectories. We leverage directories heavily, since using a nested structure within directories makes it easier to:
 * Configure groups of models, by specifying configurations in your `dbt_project.yml` file.
-* Run subsections of your <Term id="dag" />, by using the [model selection syntax](node-selection/syntax).
+* Run subsections of your DAG, by using the [model selection syntax](node-selection/syntax).
 * Communicate modeling steps to collaborators
 * Create conventions around the allowed upstream dependencies of a model, for example, "models in the `marts` directory can only select from other models in the `marts` directory, or from models in the `staging` directory".
 
@@ -88,11 +88,11 @@ Our [style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.m
 ### Consider the information architecture of your data warehouse
 When a user connects to a data warehouse via a SQL client, they often rely on the names of schemas, relations, and columns, to understand the data they are presented with. To improve the information architecture of a data warehouse, we:
 * Use [custom schemas](using-custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file.
-* Use prefixes in table names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
+* Use prefixes in <Term id="table" /> names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
 
 ### Choose your materializations wisely
-[Materializations](materializations) determine the way models are built through configuration. As a general rule:
-* Views are faster to build, but slower to query compared to <Term id="table">tables</Term>.
+[<Term id="materialization" />](materializations) determine the way models are built through configuration. As a general rule:
+* Views are faster to build, but slower to query compared to tables.
 * Incremental models provide the same query performance as tables, are faster to build compared to the table <Term id="materialization" />, however they introduce complexity into a project.
 
 We often:

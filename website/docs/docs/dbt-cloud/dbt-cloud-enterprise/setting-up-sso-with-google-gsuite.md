@@ -37,7 +37,7 @@ Client Secret for use in dbt Cloud.
 ### Creating credentials
 
 1. Navigate to the GCP [API Manager](https://console.developers.google.com/projectselector/apis/credentials)
-2. Select an existing project, or create a new project for your <Term id="api" /> Credentials
+2. Select an existing project, or create a new project for your API Credentials
 3. Click on **Create Credentials** and select **OAuth Client ID** in the resulting
    popup
 4. Google requires that you configure an OAuth consent screen for OAuth

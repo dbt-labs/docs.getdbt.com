@@ -10,12 +10,12 @@ id: "build"
 </Changelog>
 
 The `dbt build` command will:
-- run <Term id="model">models</Term>
+- run models
 - test tests
 - snapshot snapshots
 - seed seeds
 
-In <Term id="dag" /> order, for selected resources or an entire project.
+In DAG order, for selected resources or an entire project.
 
 ### Details
 

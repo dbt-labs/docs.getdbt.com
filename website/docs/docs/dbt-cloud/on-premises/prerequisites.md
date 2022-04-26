@@ -5,7 +5,7 @@ title: Prerequisites
 
 :::note
 
-We no longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) <Term id="model" /> hosted in the cloud
+We no longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
 
 :::
 
@@ -143,7 +143,7 @@ During dbt Cloud setup, the installer will need to provide credentials for this 
 They will need the following:
 
 - the base URL of your Github enterprise installation, e.g. github.mycompany.com or github.com (if you're a cloud-hosted)
-- the scheme-included <Term id="api" /> URL of your Github enterprise installation. Usually https://github.mycompany.com/api/v3 or https://api.github.com (if you're cloud-hosted)
+- the scheme-included API URL of your Github enterprise installation. Usually https://github.mycompany.com/api/v3 or https://api.github.com (if you're cloud-hosted)
 - the App ID, Client ID, and Client Secret from the "About" page of the newly created Github app
 - the Configuration URL for your Github app: right click "Install app" on the "About" page, click "Copy Link Location" to get the Configuration URL
 - the Install URL: right click "Public page" on the "About" page, click "Copy Link Location," and paste in the value here.

@@ -5,9 +5,9 @@ id: "run"
 
 ## Overview
 
-`dbt run` executes compiled sql <Term id="model" /> files against the current `target`
+`dbt run` executes compiled sql model files against the current `target`
 database. dbt connects to the target database and runs the relevant SQL required
-to materialize all data <Term id="model">models</Term> using the specified <Term id="materialization" /> strategies.
+to materialize all data models using the specified <Term id="materialization" /> strategies.
 Models are run in the order defined by the dependency graph generated during
 compilation. Intelligent multi-threading is used to minimize execution time
 without violating dependencies.
@@ -21,7 +21,7 @@ support transactions.
 
 ## Refresh incremental models
 
-If you provide the `--full-refresh` argument to `dbt run`, dbt will treat incremental models as table models. This is useful when
+If you provide the `--full-refresh` argument to `dbt run`, dbt will treat incremental models as <Term id="table" /> models. This is useful when
 
 1. The schema of an incremental model changes and you need to recreate it.
 2. You want to reprocess the entirety of the incremental model because of new logic in the model code.

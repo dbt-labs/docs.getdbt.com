@@ -283,7 +283,7 @@ my-profile:
 
 <VersionBlock lastVersion="1.0">
 
-BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt <Term id="model" /> takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
+BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
 
 ```
  Operation did not complete within the designated timeout.

@@ -12,7 +12,7 @@ For information about selecting models on the command line, consult the docs on 
 
 **Available commands:**
 
-- [build](build): build and test all selected resources (<Term id="model">models</Term>, seeds, snapshots, tests)
+- [build](build): build and test all selected resources (models, seeds, snapshots, tests)
 - [clean](clean) (CLI only): deletes artifacts present in the dbt project
 - [compile](compile): compiles (but does not run) the models in a project
 - [debug](debug) (CLI only): debugs dbt connections and projects

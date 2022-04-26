@@ -2,9 +2,13 @@
 id: materialization
 title: Materialization
 displayText: materialization 
-hoverSnippet: The specific kind of database object that data is persisted as in a data warehouse.
+hoverSnippet: The exact Data Definition Language (DDL) that dbt will use when creating the model’s equivalent in a data warehouse. 
 ---
+:::important This page needs some love
+This term lacks depth and requires more content. Would you like to contribute your knowledge to this page? [Create a discussion in our GitHub repository](https://github.com/dbt-labs/docs.getdbt.com/discussions) to begin the process of becoming a glossary contributor!
+:::
 
-The specific kind of database object that data is persisted as in a data warehouse. Its the manner in which the data is represented, and each of those options is defined either canonically (tables, views, incremental), or bespoke. 
+The exact <Term id="ddl">Data Definition Language (DDL)</Term> that dbt will use when creating the model’s equivalent in a data warehouse. It's the manner in which the data is represented, and each of those options is defined either canonically (tables, views, incremental), or bespoke. 
 
-We all know what a materialization is, but we want to be careful about describing the right part of this whole thing as "a materialization"
+It is important to consider the downstream impacts of your materialization choice on query run times and macro capabilities.
+

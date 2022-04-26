@@ -7,7 +7,7 @@ id: "global-configs"
 
 Global configs enable you to fine-tune how dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. They differ from [project configs](reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
 
-Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing <Term id="model" />.
+Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model.
 
 These configs are "global" because they are available for all dbt commands, and because they apply across all projects run on the same machine.
 
@@ -15,7 +15,7 @@ Starting in v1.0, you can set global configs in three places. When all three are
 
 ## Command line flags
 
-Command line (<Term id="cli" />) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
+Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
 
 Use this non-boolean config structure, replacing  `<THIS-CONFIG>` with the config you are enabling or disabling, `<SETTING>` with the new setting for the config, and `<SUBCOMMAND>`  with the command this config applies to:
 
@@ -210,7 +210,7 @@ FailFast Error in model model_1 (models/model_1.sql)
 
 ### Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in JSON format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 
