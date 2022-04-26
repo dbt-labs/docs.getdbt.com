@@ -20,4 +20,6 @@ To connect Azure DevOps and use Azure AD in dbt Cloud:
 
 :::info Beta feature
 This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com.
+
+If you want to use dbt Cloud with Azure Dev Ops before the beta, [follow these instructions](/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#azure-devops)
 :::
