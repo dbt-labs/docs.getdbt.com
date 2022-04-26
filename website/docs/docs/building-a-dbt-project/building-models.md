@@ -56,7 +56,7 @@ left join customer_orders using (customer_id)
 
 </File>
 
-When you execute `dbt run`, dbt will build this as a <Term id="table" /> named `customers` in your target schema:
+When you execute `dbt run`, dbt will build this as a <Term id="view" /> named `customers` in your target schema:
 
 ```sql
 create view dbt_alice.customers as (
