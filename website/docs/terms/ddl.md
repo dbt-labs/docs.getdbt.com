@@ -47,7 +47,7 @@ To alter a table’s column, you may do something like this:
 ALTER TABLE customers rename column last_name as last_initial;
 ```
 
-In this example, you have rename the `last_name` column [in jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `customers` table to be called `last_initial`.
+In this example, you have to rename the `last_name` column [in jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `customers` table to be called `last_initial`.
 
 ### DROP
 
