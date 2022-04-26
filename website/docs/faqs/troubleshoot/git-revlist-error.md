@@ -2,7 +2,7 @@
 title: I'm receiving a git rev-list master error in the IDE?
 ---
 
-If you're unable to access the IDE due to the below error message, sorry about that and we'll get you unstuck with the below steps! Usually this error indicates that the "main" branch name has changed or it is possible that dbt Cloud was unable to determine what your primary branch was. 
+If you're unable to access the IDE due to the below error message, we'll do our best to get you unstuck with the below steps! 
 
 ```
 git rev-list master..origin/main --count
@@ -11,7 +11,7 @@ Use '--' to separate paths from revisions, like this:
 'git <command> [<revision>...] -- [<file>...]'
 ```
 
-No worries, we have a few workarounds for you to try:
+Usually this error indicates that the "main" branch name has changed or it is possible that dbt Cloud was unable to determine what your primary branch was. No worries, we have a few workarounds for you to try:
 
 **Workaround 1**
 Take a look at your Environment Settings - If you **do not** have a custom branch filled in your Environment Settings:
