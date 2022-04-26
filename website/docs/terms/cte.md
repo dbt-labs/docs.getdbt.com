@@ -19,7 +19,7 @@ Have you ever read through a query and thought:
 
 These thoughts often arise when we’ve written SQL queries and models that utilize complex business logic, references and joins multiple upstream dependencies, and are not outputting expected results. In a nutshell, these thoughts can occur often when you’re trying to write data models!
 
-How can you make these complexities in our code more digestible and usable? CTEs to the rescue!
+How can you make these complexities in your code more digestible and usable? CTEs to the rescue!
 
 ## CTE Syntax: How it works
 
@@ -61,7 +61,7 @@ When people talk about how CTEs can simplify your queries, they specifically mea
 
 #### Establish Structure
 
-In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](https://docs.getdbt.com/tutorial/refactoring-legacy-sql#implement-cte-groupings) for CTEs which creates a predictable and organized structure to our dbt models.
+In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](https://docs.getdbt.com/tutorial/refactoring-legacy-sql#implement-cte-groupings) for CTEs which creates a predictable and organized structure to your dbt models.
 
 #### Easily identify dependencies
 
@@ -87,7 +87,7 @@ Using CTEs, you can reference the same resulting set multiple times in one query
 
 Time to dive into an example using CTEs! For this example, you'll be using the data from our [jaffle_shop demo dbt](https://github.com/dbt-labs/jaffle_shop) project. In the `jaffle_shop`, you have three tables: one for customers, orders, and payments.
 
-In this query, you're creating three CTEs to ultimately allow me to segment buyers by how many times they’ve purchased.
+In this query, you're creating three CTEs to ultimately allow you to segment buyers by how many times they’ve purchased.
 
 ```sql
 with import_orders as (

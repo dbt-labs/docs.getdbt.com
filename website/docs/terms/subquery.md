@@ -32,7 +32,7 @@ select customer_id, count(order_id) as cnt_orders
 group by 1
 ```
 
-Given the elements of subqueries laid out in the beginning, let’s break down our example into its respective parts.
+Given the elements of subqueries laid out in the beginning, let’s break down this example into its respective parts.
 
 | Subquery elements | Example |
 |---|---|
@@ -77,7 +77,7 @@ You may often see subqueries in joins and DML statements. We’ll run through ex
 
 ### Subquery in a join
 
-In this example, you want to get the lifetime value per customer using our `raw_orders` and `raw_payments` table. Let’s take a look at how you can do that with a subquery in a join:
+In this example, you want to get the lifetime value per customer using your `raw_orders` and `raw_payments` table. Let’s take a look at how you can do that with a subquery in a join:
 
 ```sql
 select
@@ -109,7 +109,7 @@ Similar to what you saw in the first example, let’s break down the elements of
 | `SELECT` statement | `select order_id, amount from {{ ref(‘raw_payments’) }}`
 | Main query it is nested in | `select orders.user_id, sum(payments.amount) as lifetime_value from {{ ref(‘raw_orders’) }} as orders...` | 
 
-In this example, the `all_payments` subquery will execute first. you use the data from this query to join on the `raw_orders` table to calculate lifetime value per user. Unlike our first example, the subquery happens in the join statement. Subqueries can happen in `JOIN`, `FROM`, and `WHERE` clauses.
+In this example, the `all_payments` subquery will execute first. you use the data from this query to join on the `raw_orders` table to calculate lifetime value per user. Unlike the first example, the subquery happens in the join statement. Subqueries can happen in `JOIN`, `FROM`, and `WHERE` clauses.
 
 ### Subquery in a DML command
 
@@ -140,7 +140,7 @@ A subquery is a nested query that can oftentimes be used in place of a CTE. Subq
 
 ### Subquery vs CTE example
 
-To demonstrate the similarities and differences between subqueries and CTEs, it’s often most useful to look at an actual example. Going back to our very first example, let's compare how you would perform that query with a subquery vs a CTE:
+To demonstrate the similarities and differences between subqueries and CTEs, it’s often most useful to look at an actual example. Going back to the very first example, let's compare how you would perform that query with a subquery vs a CTE:
 
 <Tabs
   defaultValue="subquery"
