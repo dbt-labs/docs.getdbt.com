@@ -26,7 +26,7 @@ In this first step, data is extracted from different data sources. Data that is 
 - Sales CRMs
 - And more!
 
-To actually get this data, data engineers may write custom scripts that make Application Programming Interface (API) calls to extract all the relevant data. Because making and automating these API calls gets harder as data sources and data volume grows, this method of extraction often requires strong technical skills. In addition, these extraction scripts also involve considerable maintenance since APIs change relatively often. Data engineers are often incredibly competent at using different programming languages such as Python and Java. Data teams can also extract from these data sources with open-source and Software as a Service products.
+To actually get this data, data engineers may write custom scripts that make Application Programming Interface (API) calls to extract all the relevant data. Because making and automating these API calls gets harder as data sources and data volume grows, this method of extraction often requires strong technical skills. In addition, these extraction scripts also involve considerable maintenance since APIs change relatively often. Data engineers are often incredibly competent at using different programming languages such as Python and Java. Data teams can also extract from these data sources with open source and Software as a Service products.
 
 ### Transform
 
@@ -69,40 +69,45 @@ You'll see ETL processes most commonly leveraged by teams that want to write tra
 - **Complex transformations**: Custom transformations leveraging powerful programming languages like Python and Scala allow data engineers to conduct incredibly complex transformations that SQL could not easily, or at all, accomplish.
 - **Enterprise**: Legacy data systems may often be more compatible with existing ETL tools. Transitioning to a modern data stack and ELT workflow from legacy systems can be a long and challenging process.This process can be even more complex for highly distributed or larger enterprise organizations, motivating the case for an all-in-one ETL platform.
 
-### ETL drawkbacks
+### ETL drawbacks
 
 There are reasons ETL has persisted as a workflow for over twenty years. However, there are also reasons why there’s been such immense innovation in this part of the data world in the past decade. From our perspective, the technical and human limitations we describe below are some of the reasons ELT has surpassed ETL as the preferred workflow.
 
 #### Technical limitations
 
 **Limited or lack of version control**
+
 When transformations exist as standalone scripts or deeply woven in ETL products, it can be hard to version control the transformations. Not having version control on transformation as code means that data teams can’t easily recreate or rollback historical transformations and perform code reviews.
 
 **Immense amount of business logic living in BI tools**
+
 Some teams with ETL workflows only implement much of their business logic in their BI platform versus earlier in their transformation phase. While most organizations have some business logic in their BI tools, an excess of this logic downstream can make rendering data in the BI tool incredibly slow and potentially hard to track if the code in the BI tool is not version controlled or exposed in documentation.
 
 **Challenging QA processes**
+
 While data quality testing can be done in ETL processes, not having the raw data living somewhere in the data warehouse inevitably makes it harder to ensure data models are performing the correct functionality. In addition, quality control continually gets harder as the number of data sources and pipelines within your system grows.
 
 #### Human limitations
 
 **Data analysts can be excluded from ETL work**
+
 Because ETL workflows often involve incredibly technical processes, they've restricted data analysts from being involved in the data workflow process. One of the greatest strengths of data analysts is their knowledge of the data and SQL, and when extractions and transformations involve unfamiliar code or applications, they and their expertise can be left out of the process. Data analysts and scientists also become dependent on other people to create the schemas, tables, and datasets they need for their work.
 
 **Business users are kept in the dark**
+
 Transformations and business logic can often be buried deep in custom scripts, ETL tools, and BI platforms. At the end of the day, this can hurt business users: They're kept out of the data modeling process and have limited views into how data transformation takes place. As a result, end business users often have little clarity on data definition, quality, and freshness, which ultimately can decrease trust in the data and data team.
 
 ## ETL tools
 
 There exists a variety of ETL technologies to help teams get data into their data warehouse. A good portion of ETL tools on the market today are geared toward enterprise businesses and teams, but there are some that are also applicable for smaller organizations.
 
-| Platform | E, T, or L? | Description | Open-source option? |
+| Platform | E/T/L? | Description | Open source option? |
 |---|---|---|---|
 | Informatica | E, T, L | An all-purpose ETL platform that supports low or no-code extraction, transformations and loading. Informatica also offers a broad suite of data management solutions beyond ETL and is often leveraged by enterprise organizations. | :x: |
 | Integrate.io | E, T, L | A newer ETL product focused on both low-code ETL as well as reverse ETL pipelines. | :x: |
 | Matillion | E, T, L | Matillion is an end-to-end ETL solution with a variety of native data connectors and GUI-based transformations. | :x: |
 | Microsoft SISS | E, T, L |  Microsoft’s SQL Server Integration Services (SISS) offers a robust, GUI-based platform for ETL services. SISS is often used by larger enterprise teams. | :x: |
-| Talend Open Studio | E, T, L | An open-source suite of GUI-based ETL tools. | :white_check_mark: |
+| Talend Open Studio | E, T, L | An open source suite of GUI-based ETL tools. | :white_check_mark: |
 
 ## Conclusion
 
