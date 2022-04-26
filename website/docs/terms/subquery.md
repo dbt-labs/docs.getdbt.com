@@ -41,7 +41,7 @@ Given the elements of subqueries laid out in the beginning, let’s break down t
 | `SELECT` statement | `select * from {{ ref(`orders`) }}` | 
 | Main query it is nested in | `select customer_id, count(order_id) as cnt_orders from all_orders group by 1` | 
 
-When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ [ref](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)(‘orders’) }}` first. Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
+When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ ref(‘orders’) }}` first (NOTE: If you want to learn more about what a `ref`, [check out our documentation on it](https://docs.getdbt.com/reference/dbt-jinja-functions/ref). Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
 
 This is a relatively straightforward example, but should hopefully show you that subqueries start off like most other queries. As you nest more subqueries together, that’s when you unearth the power of subqueries, but also when you start to notice some readability tradeoffs. If you are using subqueries regularly, you'll want to leverage indenting and [strong naming conventions](https://docs.getdbt.com/blog/on-the-importance-of-naming) for your subqueries to clearly distinguish code functionality.
 
@@ -85,7 +85,7 @@ select
     orders.user_id, 
     sum(payments.amount) as lifetime_value
  
-from {{ ref(‘raw_orders’) }} as orders
+from {{ ref(`raw_orders`) }} as orders
 left join (
 
     select
@@ -93,7 +93,7 @@ left join (
         order_id,
         amount
 
-    from {{ ref(‘raw_payments’) }}
+    from {{ ref(`raw_payments`) }}
 
 ) all_payments
 on orders.id = payments.order_id
@@ -106,8 +106,8 @@ Similar to what you saw in the first example, let’s break down the elements of
 |---|---|
 | Enclosing parentheses | :white_check_mark: |
 | Subquery name | `all_payments` |
-| `SELECT` statement | `select order_id, amount from {{ ref(‘raw_payments’) }}`
-| Main query it is nested in | `select orders.user_id, sum(payments.amount) as lifetime_value from {{ ref(‘raw_orders’) }} as orders...` | 
+| `SELECT` statement | `select order_id, amount from {{ ref(`raw_payments`) }}` |
+| Main query it is nested in | `select orders.user_id, sum(payments.amount) as lifetime_value from {{ ref(`raw_orders`) }} as orders...` | 
 
 In this example, the `all_payments` subquery will execute first. you use the data from this query to join on the `raw_orders` table to calculate lifetime value per user. Unlike the first example, the subquery happens in the join statement. Subqueries can happen in `JOIN`, `FROM`, and `WHERE` clauses.
 
