@@ -288,3 +288,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/project-configs/data-paths  /reference/project-configs/seed-paths 302
 /reference/project-configs/modules-paths  /reference/project-configs/packages-install-path 302
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
+reference/warehouse-profiles/presto-profile    /reference/profiles.yml 302
