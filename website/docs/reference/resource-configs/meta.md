@@ -44,7 +44,7 @@ models:
 
 The `meta` config can also be defined:
 - under the `models` config block in `dbt_project.yml`
-- in a `config()` Jinja macro within a <Term id="model">model's</Term> SQL file
+- in a `config()` Jinja macro within a model's SQL file
 
 See [configs and properties](configs-and-properties) for details.
 
