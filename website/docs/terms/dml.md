@@ -28,7 +28,7 @@ For the most part, the syntax for DML statements are pretty universal across [mo
 
 Ah, our favorite of DML statements! This is the SQL we all know and love (most of the time). Because the `SELECT` statement allows you to access and manipulate data that exists in database objects, it makes it the true powerhouse in data analysis and analytics engineering. 
 
-We write `SELECT` statements to create queries that build data models and perform robust analysis. With `SELECT` statements, you can join different views and tables, qualify data by setting filters, apply functions and operators on the data, and more. `SELECT` statements, unlike `INSERT`, `DELETE`, and `UPDATE`, don’t actually change the row-level value stored in the tables/views. Instead, we write `SELECT` statements to express the business logic needed to perform analysis.
+You write `SELECT` statements to create queries that build data models and perform robust analysis. With `SELECT` statements, you can join different views and tables, qualify data by setting filters, apply functions and operators on the data, and more. `SELECT` statements, unlike `INSERT`, `DELETE`, and `UPDATE`, don’t actually change the row-level value stored in the tables/views. Instead, you write `SELECT` statements to express the business logic needed to perform analysis.
 
 All `SELECT` statements need three elements: a `SELECT` clause in the beginning, the actual field selection and manipulation, and a `FROM` statement which is specifying which database object you’re trying to access.
 
@@ -44,27 +44,27 @@ from {{ ref(‘raw_payments’) }}
 group by 1
 ```
 
-In this example, my selection of the `payment_method` column and summation of the `amount` column is the meat of my query. The `from {{ ref(‘raw_payments’) }}` specifies the actual table I want to do the selecting from.
+In this example, your selection of the `payment_method` column and summation of the `amount` column is the meat of your query. The `from {{ ref(‘raw_payments’) }}` specifies the actual table you want to do the selecting from.
 
 ### INSERT
 
 Using the `INSERT` DML command, you can add rows to a table that exists in your database. To be honest, data folks are rarely inserting data into tables manually with the `INSERT` command. Instead, data team members will most often use data that’s already been inserted by an <Term id="elt" /> tool or other data ingestion process.
 
-I can insert a record for myself [in my jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `raw_customers` table like this:
+You can insert a record for myself [in jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `raw_customers` table like this:
 
 ```sql
 INSERT INTO raw_customers VALUES (101, ‘Kira’, ‘F.’);
 ```
 
-As you can see from this example, I clearly set all the column values that exist in my `raw_customers` table. For `INSERT` statements, you can explicitly specify the values you want to insert or use a query result to set the column values.
+As you can see from this example, you clearly set all the column values that exist in your `raw_customers` table. For `INSERT` statements, you can explicitly specify the values you want to insert or use a query result to set the column values.
 
 ### DELETE
 
-The `DELETE` command will remove rows in an existing table in your database. In practice, you will usually specify a `WHERE` clause with your `DELETE` statement to only remove specific rows from a table. But, we don’t really recommend ever deleting rows from tables. Instead, we suggest applying filters on queries themselves to remove rows from your modeling or analysis.
+The `DELETE` command will remove rows in an existing table in your database. In practice, you will usually specify a `WHERE` clause with your `DELETE` statement to only remove specific rows from a table. But, you shouldn't really ever delete rows from tables. Instead, you should apply filters on queries themselves to remove rows from your modeling or analysis.
 
 For the most part, if you wanted to remove all existing rows in a table, but keep the underlying table structure, you would use the `TRUNCATE` DDL command. If you wanted to remove all rows and drop the entire table, you could use the `DROP` DDL command.
 
-I can delete the record for any Henry W. in my jaffle_shop’s customers table by executing this statement:
+You can delete the record for any Henry W. in jaffle_shop’s customers table by executing this statement:
 
 ```sql
 DELETE FROM customers WHERE first_name = ‘Henry’ AND last_name = ‘W.’;
@@ -74,19 +74,19 @@ DELETE FROM customers WHERE first_name = ‘Henry’ AND last_name = ‘W.’;
 
 With the `UPDATE` statement, you can change the actual data in existing rows in a table. Unlike the `ALTER` DDL command that changes the underlying structure or naming of database objects, the `UPDATE` statement will alter the actual row-level data. You can qualify an `UPDATE` command with a `WHERE` statement to change the values of columns of only specific rows.
 
-I can manually update the status column of an order in my orders table like this:
+You can manually update the status column of an order in your orders table like this:
 
 ```sql
 UPDATE orders SET status = ‘returned’ WHERE order_id = 7;
 ```
 
 :::tip Tip
-The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. We see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-incremental-models-work-behind-the-scenes).
+The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. You'll see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-incremental-models-work-behind-the-scenes).
 :::
 
 ## Conclusion
 
-DML statements allow you to query, edit, add, and remove data stored in database objects. The primary DML commands are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`. Using DML statements, you can perform powerful actions on the actual data stored in your system. We typically write DML `SELECT` statements in data models to conduct data analysis or create new tables and views. In many ways, DML is the air that us data folks breathe!
+DML statements allow you to query, edit, add, and remove data stored in database objects. The primary DML commands are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`. Using DML statements, you can perform powerful actions on the actual data stored in your system. You'll typically see DML `SELECT` statements written in data models to conduct data analysis or create new tables and views. In many ways, DML is the air that us data folks breathe!
 
 ## Further reading
 

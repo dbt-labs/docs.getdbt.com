@@ -28,7 +28,7 @@ The syntax for DDL commands can be pretty database-specific. We are trying to ma
 
 ### ALTER
 
-Using the `ALTER` DDL command, you can change an object in your database that already exists. By change, we specifically mean you can:
+Using the `ALTER` DDL command, you can change an object in your database that already exists. By "change", we specifically mean you can:
 
 - Add new, remove, and rename columns to views and tables
 - Rename a view or table
@@ -47,7 +47,7 @@ To alter a table’s column, you may do something like this:
 ALTER TABLE customers rename column last_name as last_initial;
 ```
 
-In this example, I rename the `last_name` column [in my jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `customers` table to be called `last_initial`.
+In this example, you have rename the `last_name` column [in jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `customers` table to be called `last_initial`.
 
 ### DROP
 
@@ -61,7 +61,7 @@ The syntax to use the DROP command is as follows:
 DROP <database object type> <database object name>;
 ```
 
-I can drop my `customer` table like this:
+You can drop your `customer` table like this:
 
 ```sql
 DROP TABLE customers;
@@ -91,7 +91,7 @@ CREATE TABLE prod.jaffle_shop.jaffles (
 );
 ```
 
-Note that I had to explicitly define column names and column data type here. *You must have a strong understanding of your data’s structure when using the CREATE command for tables and views.*
+Note that you had to explicitly define column names and column data type here. *You must have a strong understanding of your data’s structure when using the CREATE command for tables and views.*
 
 ### TRUNCATE
 
@@ -103,13 +103,13 @@ The syntax to use the `TRUNCATE` command is as follows:
 TRUNCATE TABLE <table name>;
 ```
 
-I can truncate my jaffle_shop’s `payments` table by executing this statement:
+You can truncate your jaffle_shop’s `payments` table by executing this statement:
 
 ```sql
 TRUNCATE TABLE payments;
 ```
 
-Previously, this table was 113 rows. After executing this statement, the table is still in my database, but now has zero rows.
+Previously, this table was 113 rows. After executing this statement, the table is still in your database, but now has zero rows.
 
 ## Conclusion
 

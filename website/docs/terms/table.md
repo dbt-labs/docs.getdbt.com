@@ -24,4 +24,4 @@ This table definition applies to most data warehouses, however there are differe
 
 ## Why are tables useful?
 
-Tables are an excellent choice for persisting transformed data in your warehouse at the time of execution. However, if the underlying data used is changed, the table will not reflect the underlying changes.  If that is something you need, I recommend the <Term id="view">views</Term>.
+Tables are an excellent choice for persisting transformed data in your warehouse at the time of execution. However, if the underlying data used is changed, the table will not reflect the underlying changes.  If that is something you need, dbt Lbas recommends <Term id="view">views</Term>.

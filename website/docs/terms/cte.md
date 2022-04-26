@@ -5,7 +5,7 @@ displayText: CTE
 hoverSnippet: A Common Table Expression (CTE) is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other.
 ---
 
-In a formal sense, a Common Table Expression (CTE), is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other. In a less formal, more human-sense, we like to think of a CTE as a separate, smaller query within the larger query you’re building up. Creating a CTE is essentially like making a temporary <Term id="view" /> that you can access throughout the rest of the query you are writing.
+In a formal sense, a Common Table Expression (CTE), is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other. In a less formal, more human-sense, you can think of a CTE as a separate, smaller query within the larger query you’re building up. Creating a CTE is essentially like making a temporary <Term id="view" /> that you can access throughout the rest of the query you are writing.
 
 There are two-types of CTEs: recursive and non-recursive. This glossary focuses on non-recursive CTEs.
 
@@ -19,7 +19,7 @@ Have you ever read through a query and thought:
 
 These thoughts often arise when we’ve written SQL queries and models that utilize complex business logic, references and joins multiple upstream dependencies, and are not outputting expected results. In a nutshell, these thoughts can occur often when you’re trying to write data models!
 
-How can we make these complexities in our code more digestible and usable? CTEs to the rescue!
+How can you make these complexities in our code more digestible and usable? CTEs to the rescue!
 
 ## CTE Syntax: How it works
 
@@ -43,10 +43,10 @@ with rename_columns as (
 select * from rename_columns
 ```
 
-In this query above, we first create a CTE called `rename_columns` where we conduct a 
+In this query above, you first create a CTE called `rename_columns` where you conduct a 
 simple `SELECT` statement that renames and lower cases some columns from a `raw_customers` <Term id="table" />/model. The final `select * from rename_columns` selects all results from the `rename_columns` CTE.
 
-While we don’t always think of CTEs as having classical arguments like SQL functions, we’ve got to call the necessary inputs for CTEs something. 
+While you shouldn't always think of CTEs as having classical arguments like SQL functions, you’ve got to call the necessary inputs for CTEs something. 
 
 - CTE_EXPRESSION_NAME: This is the name of the CTE you can reference in other CTEs or SELECT statements. In our example, `rename_columns` is the CTE_EXPRESSION_NAME. **If you are using multiple CTEs in one query, it’s important to note that each CTE_EXPRESSION_NAME must be unique.**
 - CTE_QUERY: This is the `SELECT` statement whose result set is produced by the CTE. In our example above, the `select … from {{ ref(‘raw_customers’) }}` is the CTE_QUERY. The CTE_QUERY is framed by parenthesis.
@@ -57,7 +57,7 @@ The primary motivation to implement CTEs in your code is to simplify the complex
 
 ### Simplification
 
-When we talk about how CTEs can simplify your queries, we specifically mean how CTEs can help simplify the structure, readability, and debugging process of your code.
+When people talk about how CTEs can simplify your queries, they specifically mean how CTEs can help simplify the structure, readability, and debugging process of your code.
 
 #### Establish Structure
 
@@ -85,9 +85,9 @@ Using CTEs, you can reference the same resulting set multiple times in one query
 
 ## CTE example
 
-Time to dive into an example using CTEs! For this example, we are using the data from our [jaffle_shop demo dbt](https://github.com/dbt-labs/jaffle_shop) project. In our `jaffle_shop`, we have three tables: one for customers, orders, and payments.
+Time to dive into an example using CTEs! For this example, you'll be using the data from our [jaffle_shop demo dbt](https://github.com/dbt-labs/jaffle_shop) project. In the `jaffle_shop`, you have three tables: one for customers, orders, and payments.
 
-In this query, I am creating three CTEs to ultimately allow me to segment buyers by how many times they’ve purchased.
+In this query, you're creating three CTEs to ultimately allow me to segment buyers by how many times they’ve purchased.
 
 ```sql
 with import_orders as (
@@ -127,12 +127,12 @@ select * from segment_users
 
 Let’s break this query down a bit:
 
-1. In the first `import_orders` CTE, I am simply importing the `orders` table which holds the data I’m interested in creating the customer segment off of. Note that this first CTE starts with a `WITH` statement and no following CTEs begin with a `WITH` statement.
+1. In the first `import_orders` CTE, you are simply importing the `orders` table which holds the data I’m interested in creating the customer segment off of. Note that this first CTE starts with a `WITH` statement and no following CTEs begin with a `WITH` statement.
 2. The second `aggregate_orders` CTE utilizes the `import_orders` CTE to get a count of orders per user with a filter applied.
-3. The last `segment_users` CTE builds off of the `aggregate_orders` by selecting the `customer_id`, `count_orders`, and creating my `buyer_type` segment. Note that the final `segment_users` CTE does not have a comma after its closing parenthesis.
+3. The last `segment_users` CTE builds off of the `aggregate_orders` by selecting the `customer_id`, `count_orders`, and creating your `buyer_type` segment. Note that the final `segment_users` CTE does not have a comma after its closing parenthesis.
 4. The final `select * from segment_users` statement simply selects all results from the `segment_users` CTE. 
 
-My results from running this query look a little like this:
+Your results from running this query look a little like this:
 
 | USER_ID | COUNT_ORDERS | BUYER_TYPE |
 |---|---|---|
@@ -147,7 +147,7 @@ queries or models, that’s probably a good sign that CTE should be its own [mod
 
 ## CTE vs Subquery
 
-A <Term id="subquery" /> is a nested query that can oftentimes be used in place of a CTE. Subqueries have different syntax than CTEs, but often have similar use cases. We won’t go too deep into subqueries here, but we’ll highlight some of the main differences between CTEs and subqueries below.
+A <Term id="subquery" /> is a nested query that can oftentimes be used in place of a CTE. Subqueries have different syntax than CTEs, but often have similar use cases. This content won’t go too deep into subqueries here, but it'll highlight some of the main differences between CTEs and subqueries below.
 
 | CTE | Subquery |
 |---|---|

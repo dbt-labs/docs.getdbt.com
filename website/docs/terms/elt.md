@@ -76,7 +76,7 @@ Why has ELT adoption grown so quickly in recent years? A few reasons:
 
 ## Benefits of ELT
 
-I think when we often talk about the benefits of the ELT workflow, we sometimes forget to talk about the benefits it brings to people. There are a variety of benefits that this workflow brings to the actual data (which we’ll outline in detail below), such as the ability to recreate historical transformations, test data and data models, and more. I also want to use this section to emphasize the empowerment the ELT workflow brings to both data team members and business stakeholders.
+You often hear about the benefits of the ELT workflow, but you can sometimes forget to talk about the benefits it brings to people. There are a variety of benefits that this workflow brings to the actual data (which we’ll outline in detail below), such as the ability to recreate historical transformations, test data and data models, and more. We'll also want to use this section to emphasize the empowerment the ELT workflow brings to both data team members and business stakeholders.
 
 ### Data as code
 
@@ -113,7 +113,7 @@ Data teams can expose the version-controlled code used to transform data for ana
 
 ## ELT tools
 
-As we mentioned earlier, the recent development of certain technologies and products has helped lower the barrier of entry to implementing the ELT workflow. Most of these new products act as one or two parts of the ELT process, but some have crossover across all three parts. We’ll outline some of the current tools in the ELT ecosystem below.
+As mentioned earlier, the recent development of certain technologies and products has helped lower the barrier of entry to implementing the ELT workflow. Most of these new products act as one or two parts of the ELT process, but some have crossover across all three parts. We’ll outline some of the current tools in the ELT ecosystem below.
 
 | Product | E, L, or T? | Description | Open-source option? |
 |---|---|---|---|

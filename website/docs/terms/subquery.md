@@ -32,7 +32,7 @@ select customer_id, count(order_id) as cnt_orders
 group by 1
 ```
 
-Given the elements of subqueries we laid out in the beginning, let’s break down our example into its respective parts.
+Given the elements of subqueries laid out in the beginning, let’s break down our example into its respective parts.
 
 | Subquery elements | Example |
 |---|---|
@@ -41,17 +41,17 @@ Given the elements of subqueries we laid out in the beginning, let’s break dow
 | `SELECT` statement | `select * from {{ ref(`orders`) }}` | 
 | Main query it is nested in | `select customer_id, count(order_id) as cnt_orders from all_orders group by 1` | 
 
-When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ [ref](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)(‘orders’) }}` first. Then, it would pass those results to the outer query, which is where we grab the count of orders by `customer_id`.
+When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ [ref](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)(‘orders’) }}` first. Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
 
-This is a relatively straightforward example, but should hopefully show you that subqueries start off like most other queries. As you nest more subqueries together, that’s when you unearth the power of subqueries, but also when you start to notice some readability tradeoffs. If you are using subqueries regularly, we recommend you leverage indenting and [strong naming conventions](https://docs.getdbt.com/blog/on-the-importance-of-naming) for your subqueries to clearly distinguish code functionality.
+This is a relatively straightforward example, but should hopefully show you that subqueries start off like most other queries. As you nest more subqueries together, that’s when you unearth the power of subqueries, but also when you start to notice some readability tradeoffs. If you are using subqueries regularly, you'll want to leverage indenting and [strong naming conventions](https://docs.getdbt.com/blog/on-the-importance-of-naming) for your subqueries to clearly distinguish code functionality.
 
 ## Types of subqueries
 
-In our day-to-day we don’t normally formalize the names of the different types of subqueries you can write, but when someone uses the term “correlated subquery” at a data conference, we want you to know what that means!
+In your day-to-day, you won’t normally formalize the names of the different types of subqueries you can write, but when someone uses the term “correlated subquery” at a data conference, you'll want to know what that means!
 
 ### Nested subqueries
 
-Nested subqueries are subqueries like the one we did in the first example: a subquery where the inner query is executed first (and once) and passes its result to the main query. The majority of subqueries you will see in the real world are likely to be a nested subquery. These are most useful when you need to process data in multiple steps.
+Nested subqueries are subqueries like the one you saw in the first example: a subquery where the inner query is executed first (and once) and passes its result to the main query. The majority of subqueries you will see in the real world are likely to be a nested subquery. These are most useful when you need to process data in multiple steps.
 
 :::tip Debugging subqueries tip 
 It’s important to note that since the inner query is executed first in a nested subquery, the inner query must be able to execute by itself. If it’s unable to successfully run independently, it cannot pass results to the outer query.
@@ -77,7 +77,7 @@ You may often see subqueries in joins and DML statements. We’ll run through ex
 
 ### Subquery in a join
 
-In this example, I want to get the lifetime value per customer using our `raw_orders` and `raw_payments` table. Let’s take a look at how we can do that with a subquery in a join:
+In this example, you want to get the lifetime value per customer using our `raw_orders` and `raw_payments` table. Let’s take a look at how you can do that with a subquery in a join:
 
 ```sql
 select
@@ -100,7 +100,7 @@ on orders.id = payments.order_id
 group by 1
 ```
 
-Similar to what we did on our first example, let’s break down the elements of this query.
+Similar to what you saw in the first example, let’s break down the elements of this query.
 
 | Subquery elements | Example |
 |---|---|
@@ -109,13 +109,13 @@ Similar to what we did on our first example, let’s break down the elements of 
 | `SELECT` statement | `select order_id, amount from {{ ref(‘raw_payments’) }}`
 | Main query it is nested in | `select orders.user_id, sum(payments.amount) as lifetime_value from {{ ref(‘raw_orders’) }} as orders...` | 
 
-In this example, the `all_payments` subquery will execute first. I use the data from this query to join on the `raw_orders` table to calculate lifetime value per user. Unlike our first example, the subquery happens in the join statement. Subqueries can happen in `JOIN`, `FROM`, and `WHERE` clauses.
+In this example, the `all_payments` subquery will execute first. you use the data from this query to join on the `raw_orders` table to calculate lifetime value per user. Unlike our first example, the subquery happens in the join statement. Subqueries can happen in `JOIN`, `FROM`, and `WHERE` clauses.
 
 ### Subquery in a DML command
 
 You may also see subqueries used in DML commands. As a jogger, DML commands are a series of SQL statements that you can write to access and manipulate row-level data in database objects. Oftentimes, you’ll want to use a query result in a qualifying `WHERE` clause to only delete, update, or manipulate certain rows of data.
 
-In this example below, we attempt to update the status of certain orders based on the payment method used in the `raw_payments` table.
+In this example below, you'll attempt to update the status of certain orders based on the payment method used in the `raw_payments` table.
 
 ```sql
 UPDATE raw_orders
@@ -128,7 +128,7 @@ where payment_method  = ‘bank_transfer’)
 
 ## Subquery vs CTE
 
-A subquery is a nested query that can oftentimes be used in place of a CTE. Subqueries have different syntax than CTEs, but often have similar use cases. We won’t go too deep into CTEs here, but we’ll highlight some of the main differences between CTEs and subqueries below.
+A subquery is a nested query that can oftentimes be used in place of a CTE. Subqueries have different syntax than CTEs, but often have similar use cases. The content won’t go too deep into CTEs here, but it’ll highlight some of the main differences between CTEs and subqueries below.
 
 | CTE | Subquery |
 |---|---|
@@ -140,7 +140,7 @@ A subquery is a nested query that can oftentimes be used in place of a CTE. Subq
 
 ### Subquery vs CTE example
 
-To demonstrate the similarities and differences between subqueries and CTEs, it’s often most useful to look at an actual example. Going back to our very first example, let's compare how we would perform that query with a subquery vs a CTE:
+To demonstrate the similarities and differences between subqueries and CTEs, it’s often most useful to look at an actual example. Going back to our very first example, let's compare how you would perform that query with a subquery vs a CTE:
 
 <Tabs
   defaultValue="subquery"

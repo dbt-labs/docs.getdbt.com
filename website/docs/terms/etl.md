@@ -9,7 +9,7 @@ ETL, or “Extract, Transform, Load”, is the process of first extracting data 
 
 The ETL workflow is still an effective method to create pipelines to bring data from different sources to end business users. However, the past decade has brought an immense amount of innovation in this sphere. There are now a variety of low or no-code data extractors, a code-based and version controlled transformation layer, and several affordable cloud storage options that have allowed ELT to become a competitive analytics workflow. 
 
-It’s important to talk about ETL and understand how it works, where it provides value, and how it can hold people back. If we don’t talk about the benefits and drawbacks of systems, how can we expect to improve them?
+It’s important to talk about ETL and understand how it works, where it provides value, and how it can hold people back. If you don’t talk about the benefits and drawbacks of systems, how can you expect to improve them?
 
 ## How ETL works
 
@@ -56,7 +56,7 @@ In both processes, data from different data sources is extracted in similar ways
 | Flexibility in transformations | Since transformations take place last, there is greater flexibility in the modeling process. Worry first about getting your data in one place, then you have time to explore the data to understand the best way to transform it. | Because transformation occurs before data is loaded into the target location, teams must conduct thorough work prior to make sure data is transformed properly. |
 | [Data team roles](https://www.getdbt.com/data-teams/analytics-job-descriptions/) | ELT workflows empower data team members who know SQL to create their own extraction and loading pipelines and transformations. | ETL workflows often require teams with greater technical skill to create and maintain pipelines. |
 
-While ELT is growing in adoption, it’s still important to talk about when ETL might be appropriate and where we see challenges with the ETL workflow.
+While ELT is growing in adoption, it’s still important to talk about when ETL might be appropriate and where you'll see challenges with the ETL workflow.
 
 ## ETL use cases and challenges
 
@@ -64,7 +64,7 @@ While ELT is growing in adoption, it’s still important to talk about when ETL 
 
 Most businesses need some sort of way to extract, model, store, and surface their data to end business users.
 
-We see ETL processes most commonly leveraged by teams that want to write transformations outside of SQL capabilities and within larger enterprise teams.
+You'll see ETL processes most commonly leveraged by teams that want to write transformations outside of SQL capabilities and within larger enterprise teams.
 
 - **Complex transformations**: Custom transformations leveraging powerful programming languages like Python and Scala allow data engineers to conduct incredibly complex transformations that SQL could not easily, or at all, accomplish.
 - **Enterprise**: Legacy data systems may often be more compatible with existing ETL tools. Transitioning to a modern data stack and ELT workflow from legacy systems can be a long and challenging process.This process can be even more complex for highly distributed or larger enterprise organizations, motivating the case for an all-in-one ETL platform.

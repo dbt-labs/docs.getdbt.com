@@ -10,7 +10,7 @@ This term lacks depth and requires more content. Would you like to contribute yo
 
 A view (as opposed to a <Term id="table" />) is a defined passthrough SQL query that can be run against a database (or data warehouse). A view doesn’t store data, like a table does, but it defines the logic that you need to fetch the underlying data.
 
-For example, we might define a SQL view to count new users in a day as:
+For example, you might define a SQL view to count new users in a day as:
 
 ```sql
   select
@@ -20,7 +20,7 @@ For example, we might define a SQL view to count new users in a day as:
   group by created_date
 ```
 
-That’s kind of tedious to write over and over again, so instead we could define it as a view called `new_users`, and instead query `select * from new_users`.
+That’s kind of tedious to write over and over again, so instead you could define it as a view called `new_users`, and instead query `select * from new_users`.
 
 When that `new_users` query runs, the underlying view compiles and runs against the database.  
 
@@ -28,7 +28,7 @@ When that `new_users` query runs, the underlying view compiles and runs against 
 
 A healthy relationship with views is built on expectations. 
 
-I don’t expect a view in itself to be my final destination in terms of data modeling (they’re slow + often more costly to query than tables, not great for connecting to a downstream process like reporting), but I do trust them to get me from point A to point B. 
+You shouldn’t expect a view in itself to be your final destination in terms of data modeling (they’re slow + often more costly to query than tables, not great for connecting to a downstream process like reporting), but you should trust them to get you from point A to point B. 
 
 They’re like bus stops that you pass every day, never get out at, but appreciate as landmarks.
 
