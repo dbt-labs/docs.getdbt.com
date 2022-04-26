@@ -20,46 +20,40 @@
 
     - In the "Scratchpad 1" tab, Delete all the text and try to select from one of the tables/views you created earlier in the tutorial.
 
-    <Tabs
-    defaultValue="bq"
-    values={[
-        {label: 'BigQuery', value: 'bq'},
-        {label: 'Snowflake', value: 'sf'},
-        {label: 'Databricks', value: 'db' },
-        {label: 'Redshift', value: 'rs'}
-    ]}>
+    <WHCode>
 
-    <TabItem value="bq">
+    <div>
 
     ```sql
     select * from `dbt-tutorial.jaffle_shop.customers`
     ```
 
-    </TabItem>
+    </div>
 
-    <TabItem value="sf">
+    <div>
 
     ```sql
     select * from raw.jaffle_shop.customers
     ```
 
-    </TabItem>
+    </div>
 
-    <TabItem value="db">
-
-    ```sql
-    select * from `dbt-tutorial.jaffle_shop.customers`
-    ```
-
-    </TabItem>
-
-    <TabItem value="rs">
+    <div>
 
     ```sql
     select * from `dbt-tutorial.jaffle_shop.customers`
     ```
 
-    </TabItem>
-    </Tabs>
+    </div>
+
+    <div>
+
+    ```sql
+    select * from `dbt-tutorial.jaffle_shop.customers`
+    ```
+
+    </div>
+
+    </WHCode>
 
     - In the command line bar at the bottom, type in `dbt run` and click enter.  We will go deeper on what this does later in the next section of the tutorial.
