@@ -17,12 +17,6 @@ When you use dbt Core to work with dbt, you will be editing files locally using 
 
 You should have successfully run the sample query in BigQuery. You will now learn how to create a starter project with example models, before building your own models.
 
-:::info
-
-These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions [here](/tutorial/create-a-project-dbt-cloud).
-
-:::
-
 ### Create a repository
 
 We're going to use [GitHub](https://github.com/) as our git provider for this tutorial, but you can use any git provider. If you don't yet have a GitHub account, [create one now](https://github.com/join).

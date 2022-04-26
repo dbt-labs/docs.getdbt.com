@@ -28,7 +28,7 @@ Before jumping into the steps below, login to your Google account.
 1. Go to the [BigQuery Console](https://console.cloud.google.com/bigquery)
 
    - If you don't have a Google Cloud Platform account you will be asked to create one.
-   - If you do have one (or multiple) it will likely log you into your oldest account. Check which Google account is being used by clicking your face in the top right corner.
+   - If you do have one (or multiple) it will likely log you into your oldest account. Click your profile icon in the top right corner to verify which Google account you're using.
 
 2. Create a new project for this tutorial:
 
@@ -83,10 +83,17 @@ BigQuery supports public data sets that can be directly queried, so we will show
 
 7. You can now query that database object using either `dbt-learn-bigquery-setup.jaffle_shop.customers` or more simply `jaffle_shop.customers`.  Note: `dbt-learn-big-query-setup` will reflect the project ID that you chose earlier in the tutorial.
 
-8. Repeat steps 5 - 7 for the other two tables:
-    
+8. Click **Compose new query**.
+ 
+9. Repeat steps 5 - 8 for the orders table, naming it "orders" or something similar:
+
     ```sql
     select * from `dbt-tutorial.jaffle_shop.orders`;
+    ```
+
+10. Repeat steps 5 - 7 for the payment table "payment" or something similar:
+
+    ```sql
     select * from `dbt-tutorial.stripe.payment`;```
     ```
 
