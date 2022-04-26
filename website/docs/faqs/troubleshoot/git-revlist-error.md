@@ -2,7 +2,7 @@
 title: I'm receiving a git rev-list master error in the IDE?
 ---
 
-If you're unable to access the IDE due to the below error message, sorry about that and we'll get you unstuck with the below steps! Usually this errors indicates that the "main" branch name has changed or it is possible that dbt Cloud was unable to determine what your primary branch was. 
+If you're unable to access the IDE due to the below error message, sorry about that and we'll get you unstuck with the below steps! Usually this error indicates that the "main" branch name has changed or it is possible that dbt Cloud was unable to determine what your primary branch was. 
 
 ```
 git rev-list master..origin/main --count
