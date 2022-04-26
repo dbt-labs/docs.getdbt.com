@@ -1,7 +1,7 @@
 ---
-title: Environment Variables
+title: Environment variables
 id: "cloud-environment-variables"
-description: "You can use environment variables to customize teh behavior of your dbt project."
+description: "Use environment variables to customize the behavior of your dbt project."
 ---
 
 Environment variables can be used to customize the behavior of a dbt project depending on where the project is running. See the docs on

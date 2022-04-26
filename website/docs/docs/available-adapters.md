@@ -26,7 +26,6 @@ In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) m
 | BigQuery     | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅  | ✅  | `pip install dbt-bigquery` |
 | Snowflake    | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ | ✅  | `pip install dbt-snowflake` |
 | Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | ✅ | ✅ | `pip install dbt-spark[PyHive]` |
-| Presto       | [Profile Setup](presto-profile) | partial support |  | `pip install dbt-presto` |
 
 ### Vendor Supported
 
@@ -41,6 +40,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
 | Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
 | Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
+| TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb)) | [Profile Setup](tidb-profile) | `pip install dbt-tidb` |
 
 
 ### Community Supported
