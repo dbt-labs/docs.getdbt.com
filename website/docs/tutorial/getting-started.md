@@ -17,12 +17,11 @@ In this guide, you will:
 * Schedule a transformation
 
 If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
+
 ## Before you begin
 
 Before you begin, you will need:
 
-* A warehouse with sample data. If you don't have this, it's OK, you can run through the Big Query tutorial.
-* A basic understanding of git. 
+* Warehouse with sample data. If you don't have this, you can use the [Big Query project](tutorial/getting-set-up/setting-up-bigquery), which leverages public data sets.
+* Basic understanding of Git.
 * Basic understanding of SQL.
-
-TODO: Other prereqs or recommended reading? Learning paths?

@@ -11,17 +11,11 @@ When you use dbt Core to work with dbt, you will be editing files locally using 
 
 * To use the dbt CLI, it's important that you know some basics of your terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install dbt Core using the [installation instructions](/dbt-cli/install/overview) for your operating system.
-* Complete [Setting up (in BigQuery)](/tutorial/setting-up-bigquery#setting-up) and [Loading data (BigQuery)](/tutorial/setting-up-bigquery#loading-data).
+* Complete [Setting up (in BigQuery)](/tutorial/getting-set-up/setting-up-bigquery#setting-up) and [Loading data (BigQuery)](/tutorial/getting-set-up/setting-up-bigquery#loading-data).
 
 ## Create a project
 
-You should have successfully run the sample query in BigQuery. You will now learn how to create a starter project with example models, before buidling your own models.
-
-:::info
-
-These are the instructions for developing a project using the dbt CLI. If you're developing in dbt Cloud, follow the instructions [here](/tutorial/create-a-project-dbt-cloud).
-
-:::
+You should have successfully run the sample query in BigQuery. You will now learn how to create a starter project with example models, before building your own models.
 
 ### Create a repository
 
@@ -224,7 +218,7 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 ### Next steps
 
-<Snippet src="tutorial-extra-exercises" />
+<Snippet src="tutorial-next-steps-1st-model" />
 
 <LoomVideo id="2fc44590f2614a68bea402322c36f56e" />
 
@@ -245,13 +239,11 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 #### Next steps
 
+
 <Snippet src="tutorial-next-steps-tests" />
 
 <LoomVideo id="6db6956adbb04f55b6027c461e9b1792" />
 
-## Schedule a job
-
- TODO needs intro
 ### Commit your changes
 
 You need to commit the changes you made to the project so that the repository has your latest code.
@@ -263,21 +255,9 @@ You need to commit the changes you made to the project so that the repository ha
 
 <LoomVideo id="b07d7efe3f054e3bb357b4bccd805e70" />
 
-### Connect dbt Cloud to your repository
+## Schedule a job
 
-Connecting dbt Cloud to your repository will allow you to have the latest code whenever your dbt project runs.
+We recommend using dbt Cloud to schedule a job. If you do want to use dbt Core to schedule a job, you can refer to the [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 
-1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
-2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
-    * Click the hamburger menu, then `Account Settings`, then `Projects`.
-    * Name your project "dbt Tutorial", and click `Save`. There's no need to fill
-    in the other details.
-    * Click the hamburger menu, and then `Home`.
-    * Switch the project in the header bar to your new "dbt Tutorial" project.
-3. Complete the onboarding flow:
-    * Connect to BigQuery using the credentials file from the [Setting Up](/tutorial/getting-set-up) instructions.
-    * Add a repository — choose the GitHub integration, and connect to your `dbt-tutorial` repository that we set up on the [Create a Project](/tutorial/create-a-project-dbt-cli) instructions.
 
-<LoomVideo id="48abd56ec909405cbc76f4946e930a43" />
-
-TODO: add ## Create a deployment environment and ## Create and run a job
+TODO @coapacetic any other helpful links here?

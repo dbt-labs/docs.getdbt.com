@@ -34,7 +34,6 @@ if(GIT_BRANCH !== 'current') {
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
-console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
@@ -229,19 +228,6 @@ var siteSettings = {
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
     'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
   ],
-}
-
-var PRERELEASE = (process.env.PRERELEASE || false);
-
-if (PRERELEASE) {
-  var WARNING_BANNER = {
-    id: 'prerelease', // Any value that will identify this message.
-    content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
-    backgroundColor: '#ffa376', // Defaults to `#fff`.
-    textColor: '#033744', // Defaults to `#000`.
-  }
-  siteSettings.themeConfig.announcementBar = WARNING_BANNER;
 }
 
 // If versions json file found, add versions dropdown to nav
