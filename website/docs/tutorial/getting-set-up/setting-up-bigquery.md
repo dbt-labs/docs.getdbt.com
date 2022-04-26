@@ -59,39 +59,54 @@ BigQuery supports public data sets that can be directly queried, so we will show
 
 4. Create datasets. Datasets in BigQuery are equivalent to schemas in a traditional database.
 
-    - Find your project in the picker (at this point it's probably the only project in your explorer!) Click the three dots to expose options. Click “Create dataset”
-        <Lightbox src="/img/bigquery/create-dataset.png" title="Bigquery Create Dataset" />
-    - Fill in `Dataset ID` as required. This will be used like schema in fully qualified references to your database objects, i.e. database.schema.table, so choose a name that fits the purpose, in this case we will be creating one now for `jaffle_shop` and one for `stripe` later.
-        <Lightbox src="/img/bigquery/create-dataset-id.png" title="Bigquery Create Dataset ID" />
-    - Leave everything else as is:
+    a. Find your project in the picker. Click the three dots to expose options. 
+    
+    b. Click **Create dataset**.
+
+    <Lightbox src="/img/bigquery/create-dataset.png" title="Bigquery Create Dataset" />
+    
+    c. Fill in `Dataset ID` as required. This will be used like schema in fully qualified references to your database objects, i.e. database.schema.table, so choose a name that fits the purpose, in this case we will be creating one now for `jaffle_shop` and one for `stripe` later.
+    
+    <Lightbox src="/img/bigquery/create-dataset-id.png" title="Bigquery Create Dataset ID" />
+    
+    d. Leave the default values in the rest of the fields:
         * `Data location` can be left blank -- if selected, this determines the GCP location where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
         * Even though it is unchecked, billing table expiration will be set automatically to 60 days, because billing has not been enabled for this project, so GCP defaults to deprecating tables.
         * Let Google manage encryption
         * Click `CREATE DATASET`
         * Repeat these steps for the second dataset, `stripe`
 
-5. Create views. We will create views within your project to simulate source tables in your project.  These will be built on top of the public tables covered above.
+5. Create views. You will create views within your project to simulate source tables in your project.  These will be built on top of the public tables created in previous steps.
 
-    - “RUN” your first query: ```select * from `dbt-tutorial.jaffle_shop.customers`;```
-    - Click **SAVE** then **Save View**
-        <Lightbox src="/img/bigquery/save-view.png" title="Bigquery Save View" />
-    - Your two datasets, `jaffle_shop` and `stripe` should now show up under `Dataset`. Select `jaffle_shop`.  Enter `customers` as your “Table” name. Hit “SAVE”
-        <Lightbox src="/img/bigquery/save-view-table.png" title="Bigquery Save View - Table" />
+  a. Select your jaffle_shop or stripe project and click **Compose new query**.
+
+  b. Copy the following code and paste it in the blank query editor: 
+  ```sql
+  select * from `dbt-tutorial.jaffle_shop.customers`;
+  ```
+  c. Click **SAVE** then **Save View**.
+
+    <Lightbox src="/img/bigquery/save-view.png" title="Bigquery Save View" />
+
+  d. Your two datasets, `jaffle_shop` and `stripe` should now show up under `Dataset`.
+
+  e. Select `jaffle_shop`.  Enter `customers` as your “Table” name. Click **Save**.
+
+    <Lightbox src="/img/bigquery/save-view-table.png" title="Bigquery Save View - Table" />
 
 6. You should now see your database object in the dropdown. If you click on it, BigQuery automatically infers data types and other metadata information for you:
+
     <Lightbox src="/img/bigquery/view-created.png" title="Bigquery View Created" />
 
 7. You can now query that database object using either `dbt-learn-bigquery-setup.jaffle_shop.customers` or more simply `jaffle_shop.customers`.  Note: `dbt-learn-big-query-setup` will reflect the project ID that you chose earlier in the tutorial.
-
-8. Click **Compose new query**.
  
-9. Repeat steps 5 - 8 for the orders table, naming it "orders" or something similar:
+ 8. Repeat steps 5 - 7 for the orders table, naming it "orders" and selecting the jaffle_shop project:
 
     ```sql
     select * from `dbt-tutorial.jaffle_shop.orders`;
     ```
 
-10. Repeat steps 5 - 7 for the payment table "payment" or something similar:
+9. Repeat steps 5 - 7 for the payment table "payment" and selecting the stripe project:
 
     ```sql
     select * from `dbt-tutorial.stripe.payment`;```

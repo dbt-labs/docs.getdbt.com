@@ -34,7 +34,6 @@ If you switch back to the BigQuery console you'll be able to `select` from this 
 <FAQ src="run-downtime" />
 <FAQ src="sql-errors" />
 
-
 ## Change the way your model is materialized
 
 One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value. Let's see this in action.
