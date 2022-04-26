@@ -266,7 +266,7 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 4. Click “Test” at the top. This will check that dbt Cloud can access your Snowflake account.
 5. If test successful, click “Continue”
 
-#### Initialize your repository and start development
+## Initialize your repository and start development
 
 <Snippet src="tutorial-managed-repo-and-initiate-project" />
 
