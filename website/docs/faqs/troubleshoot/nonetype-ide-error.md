@@ -2,7 +2,7 @@
 title: I'm receiving a NoneType object has no attribute error in the IDE?
 ---
 
-If you're unable to access the IDE due to the below error message, sorry about that and we'll get you unstuck with the below steps! 
+If you're unable to access the IDE due to the below error message, we'll do our best to get you unstuck with the below steps! 
 
 ```
 NoneType object has no attribute 
