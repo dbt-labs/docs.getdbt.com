@@ -49,7 +49,7 @@ simple `SELECT` statement that renames and lower cases some columns from a `raw_
 While you shouldn't always think of CTEs as having classical arguments like SQL functions, you’ve got to call the necessary inputs for CTEs something. 
 
 - CTE_EXPRESSION_NAME: This is the name of the CTE you can reference in other CTEs or SELECT statements. In our example, `rename_columns` is the CTE_EXPRESSION_NAME. **If you are using multiple CTEs in one query, it’s important to note that each CTE_EXPRESSION_NAME must be unique.**
-- CTE_QUERY: This is the `SELECT` statement whose result set is produced by the CTE. In our example above, the `select … from {{ ref(‘raw_customers’) }}` is the CTE_QUERY. The CTE_QUERY is framed by parenthesis.
+- CTE_QUERY: This is the `SELECT` statement whose result set is produced by the CTE. In our example above, the `select … from {{ ref(`raw_customers`) }}` is the CTE_QUERY. The CTE_QUERY is framed by parenthesis.
 
 ## When to use CTEs
 
@@ -112,12 +112,12 @@ segment_users as (
 	select
 
 		*,
-case 
-            	when count_orders >= 3 then 'super_buyer'
-            	when count_orders <3 and count_orders >= 2 then 
-'regular_buyer'
-            	else 'single_buyer'
-        	end as buyer_type
+		case 
+            when count_orders >= 3 then 'super_buyer'
+            when count_orders <3 and count_orders >= 2 then 
+				'regular_buyer'
+			else 'single_buyer'
+		end as buyer_type
 	
 	from aggregate_orders
 

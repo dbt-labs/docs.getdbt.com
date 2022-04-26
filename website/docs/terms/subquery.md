@@ -26,7 +26,7 @@ Let’s take this to an example, using the [sample jaffle_shop dataset](https://
 select customer_id, count(order_id) as cnt_orders
   from (
 
-        select * from {{ ref(‘orders’) }}
+        select * from {{ ref(`orders`) }}
 
        ) all_orders
 group by 1
@@ -41,7 +41,11 @@ Given the elements of subqueries laid out in the beginning, let’s break down t
 | `SELECT` statement | `select * from {{ ref(`orders`) }}` | 
 | Main query it is nested in | `select customer_id, count(order_id) as cnt_orders from all_orders group by 1` | 
 
-When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ ref(‘orders’) }}` first (NOTE: If you want to learn more about what a `ref`, [check out our documentation on it](https://docs.getdbt.com/reference/dbt-jinja-functions/ref). Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
+When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ ref(‘orders’) }}` first. Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
+
+```note Note
+If you want to learn more about what a `ref` is, [read our documentation on it.](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)
+```
 
 This is a relatively straightforward example, but should hopefully show you that subqueries start off like most other queries. As you nest more subqueries together, that’s when you unearth the power of subqueries, but also when you start to notice some readability tradeoffs. If you are using subqueries regularly, you'll want to leverage indenting and [strong naming conventions](https://docs.getdbt.com/blog/on-the-importance-of-naming) for your subqueries to clearly distinguish code functionality.
 
@@ -119,11 +123,11 @@ In this example below, you'll attempt to update the status of certain orders bas
 
 ```sql
 UPDATE raw_orders
-set status = ‘returned’
+set status = `returned`
 where order_id in (
 select order_id 
 from raw_payments 
-where payment_method  = ‘bank_transfer’)
+where payment_method  = `bank_transfer`)
 ```
 
 ## Subquery vs CTE
@@ -155,7 +159,7 @@ To demonstrate the similarities and differences between subqueries and CTEs, it�
 select customer_id, count(order_id) as cnt_orders
   from (
 
-        select * from {{ ref(‘orders’) }}
+        select * from {{ ref(`orders`) }}
 
        ) all_orders
 group by 1
@@ -166,7 +170,7 @@ group by 1
 ```sql CTE example
 with all_orders as (
 
-select * from {{ ref(‘orders’) }}
+select * from {{ ref(`orders`) }}
 
 ),
 aggregate_orders as (

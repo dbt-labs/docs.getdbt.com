@@ -4,8 +4,8 @@ title: Table
 displayText:  table 
 hoverSnippet: In simplest terms, a table is the direct storage of data on disk in rows and columns.  Think excel sheet with raw values in each of the cells.  
 ---
-:::important This page needs some love
-This term lacks depth and requires more content. Would you like to contribute your knowledge to this page? [Create a discussion in our GitHub repository](https://github.com/dbt-labs/docs.getdbt.com/discussions) to begin the process of becoming a glossary contributor!
+:::important This page could use some love
+This term would benefit from additional depth and examples. Have knowledge to contribute? [Create a discussion in the docs.getdbt.com GitHub repository](https://github.com/dbt-labs/docs.getdbt.com/discussions) to begin the process of becoming a glossary contributor!
 :::
 
 In simplest terms, a table is the direct storage of data on disk in rows and columns.  Think excel sheet with raw values in each of the cells.  

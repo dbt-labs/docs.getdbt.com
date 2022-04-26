@@ -51,11 +51,11 @@ In this example, you have to rename the `last_name` column [in jaffle_shop’s](
 
 ### DROP
 
-The `DROP` command. Probably the most high-stakes DDL statement one can execute. One that should be used with the *utmost* of care. At its core, an executed `DROP` statement will remove that object from the data warehouse. You can DROP tables, views, schemas, databases, users, functions, and more.
+The `DROP` command. Probably the most high-stakes DDL statement one can execute. One that should be used with the *utmost* of care. At its core, an executed `DROP` statement will remove that object from the data warehouse. You can drop tables, views, schemas, databases, users, functions, and more.
 
-Some data warehouses such as Snowflake allow you to add restrictions to DROP statements to caution you about the impact of dropping a table, view, or schema before it’s actually dropped. In practice, we recommend you never drop raw source tables as they are often your baseline of truth. Your database user also usually needs the correct permissions to drop database objects.
+Some data warehouses such as Snowflake allow you to add restrictions to `DROP` statements to caution you about the impact of dropping a table, view, or schema before it’s actually dropped. In practice, we recommend you never drop raw source tables as they are often your baseline of truth. Your database user also usually needs the correct permissions to drop database objects.
  
-The syntax to use the DROP command is as follows:
+The syntax to use the `DROP` command is as follows:
 
 ```sql
 DROP <database object type> <database object name>;
@@ -79,7 +79,7 @@ The generic syntax to use the `CREATE` command is as follows:
 CREATE <database object type> <database object name>;
 ```
 
-Creating a table using the CREATE statement may look a something like this:
+Creating a table using the `CREATE` statement may look a something like this:
 
 ```sql
 CREATE TABLE prod.jaffle_shop.jaffles (
@@ -95,7 +95,7 @@ Note that you had to explicitly define column names and column data type here. *
 
 ### TRUNCATE
 
-The `TRUNCATE` command will remove all rows from a table while maintaining the underlying table structure. The `TRUNCATE` command is only applicable for table objects in a database. Unlike `DROP` statements, `TRUNCATE` statements don’t remove the actual table from the database. While some platforms allow for `TRUNCATE` statements to be rolled-back, they do remove the actual data in tables and should be used with caution.
+The `TRUNCATE` command will remove all rows from a table while maintaining the underlying table structure. The `TRUNCATE` command is only applicable for table objects in a database. Unlike `DROP` statements, `TRUNCATE` statements don’t remove the actual table from the database, just the data stored in them.
 
 The syntax to use the `TRUNCATE` command is as follows:
 

@@ -63,9 +63,9 @@ The primary difference between the traditional ETL and the modern ELT workflow i
 |  | ELT | ETL |
 |---|---|---|
 | Programming skills required| Often little to no code to extract and load data into your data warehouse. | Often requires custom scripts or considerable data engineering lift to extract and transform data prior to load. |
-| Paritioning of layers | Extraction, load, and transformation layers can be explicitly separated out by different products. | ETL processes are often encapsulated in one product. |
-| Flexibility in transformations | Since transformations take place last, there is greater flexibility in the modeling process. Worry first about getting your data in one place, then you have time to explore the data to understand the best way to transform it. | Because transformation occurs before data is loaded into the target location, teams must conduct thorough work prior to make sure data is transformed properly. |
-| Data team distribution | ELT workflows empower data team members who know SQL to create their own extraction and loading pipelines and transformations. | ETL workflows often require teams with greater technical skill to create and maintain pipelines. |
+| Separation of concerns | Extraction, load, and transformation layers can be explicitly separated out by different products. | ETL processes are often encapsulated in one product. |
+| Distribution of transformations | Since transformations take place last, there is greater flexibility in the modeling process. Worry first about getting your data in one place, then you have time to explore the data to understand the best way to transform it. | Because transformation occurs before data is loaded into the target location, teams must conduct thorough work prior to make sure data is transformed properly. Heavy transformations often take place downstream in the BI layer. |
+| [Data team distribution](https://www.getdbt.com/data-teams/analytics-job-descriptions/) | ELT workflows empower data team members who know SQL to create their own extraction and loading pipelines and transformations. | ETL workflows often require teams with greater technical skill to create and maintain pipelines. |
 
 Why has ELT adoption grown so quickly in recent years? A few reasons:
 
@@ -119,7 +119,7 @@ As mentioned earlier, the recent development of certain technologies and product
 |---|---|---|---|
 | Fivetran/HVR | E, some T, L | Fivetran is a SaaS company that helps data teams extract, load, and perform some transformation on their data. Fivetran easily integrates with modern data warehouses and dbt. They also offer transformations that leverage dbt Core. | :x: |
 | Stitch by Talend | E, L | Stitch (part of Talend) is another SaaS product that has many data connectors to extract data and load it into data warehouses. | :x: |
-| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create data extraction and load pipelines. | :white_checl_mark: |
+| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create data extraction and load pipelines. | :white_check_mark: |
 | Funnel | E, some T, L | Funnel is another product that can extract and load data. Funnel’s data connectors are primarily focused around marketing data sources. | :x: |
 | dbt | T | dbt is the transformation tool that enables data analysts and engineers to transform, test, and document data in the cloud data warehouse. dbt offers both an open-source and cloud-based product. | :white_check_mark: |
 
