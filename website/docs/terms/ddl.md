@@ -10,7 +10,7 @@ Data Definition Language (DDL) is a group of SQL statements that you can execute
 
 DDL is contrasted with <Term id="dml">Data Manipulation Language (DML)</Term> which is the SQL that is used to actually access and manipulate data in database objects. The majority of data analysts will rarely execute DDL commands and will do the majority of their work creating DML statements to model and analyze data. 
 
-:::caution Caution
+:::note Note
 Data folks don’t typically write DDL [since dbt will do it for them](https://docs.getdbt.com/docs/about/overview#:~:text=dbt%20allows%20analysts%20avoid%20writing,dbt%20takes%20care%20of%20materialization.).
 :::
 
