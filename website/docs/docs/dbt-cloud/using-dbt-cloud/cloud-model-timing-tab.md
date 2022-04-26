@@ -1,12 +1,12 @@
 ---
-title: "Model Timing Tab"
+title: "Model timing tab"
 id: "cloud-model-timing-tab"
-description: "You can use the Model Timing dashboard to visually explore runs."
+description: "Visually explore runs and identify long-running models with the model timing dashboard."
 ---
 
 ### Overview
 
-:::info Model Timing
+:::info Model timing
 Model Timing is only available on the Team and Multi-tenant Enterprise plans
 :::
 
