@@ -20,7 +20,7 @@ Here is an example of a table:
 
 Tables do use storage in your data warehouse. The data can be queried directly because you are directly pulling from the raw data itself. If a particular table was created by underlying data, the table will not be automatically updated. 
 
-This table definition applies to most data warehouses, however there are different flavors of tables for different warehouses.  For example, Snowflake has transient and temporary tables that support different features.
+This table definition applies to most data warehouses, however, there are different flavors of tables for different warehouses.  For example, Snowflake has transient and temporary tables that support different features.
 
 ## Why are tables useful?
 
