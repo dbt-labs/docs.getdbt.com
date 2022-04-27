@@ -20,7 +20,7 @@ For example, you might define a SQL view to count new users in a day:
   group by created_date
 ```
 
-That’s kind of tedious to write over and over again, so instead you could define it as a view called `new_users`, and instead query `select * from new_users`.
+But this SQL might get tedious to write over and over again, so instead you could define it as a view called `new_users`, and instead query `select * from new_users`.
 
 When that `new_users` query runs, the underlying view compiles and runs against the database.  
 
