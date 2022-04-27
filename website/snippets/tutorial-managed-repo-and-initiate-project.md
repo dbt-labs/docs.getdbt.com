@@ -12,7 +12,7 @@ Now that we have a repository configured, let's initialize your project and star
 1. Click **Start Developing**.  Alternatively, you can find the "Develop" tab on the hamburger menu in the top left.
     > Note: This can take a few minutes for your project to spin up for the first time, as it established your git connection, clones your repo, and tests the connection to the warehouse.
 
-2. Above the file tree on the left hand side, click “initialize your project”.  This will build out your folder structure with example models included
+2. Above the file tree to the left, click “initialize your project”.  This will build out your folder structure with example models included
 
 3. Commit your first init by clicking **Commit**.  Use the commit message `initial commit`.  This will create the first commit to your managed repo and allow you to open a new branch for adding new dbt code.
 
