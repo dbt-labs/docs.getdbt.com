@@ -1,6 +1,6 @@
 ---
 title: "Making dbt Cloud API calls using dbt-cloud-cli"
-description: "Simo Tumelius shares how to use his dbt-cloud-cli to makae dbt Cloud API calls."
+description: "Simo Tumelius shares how to use his dbt-cloud-cli to make more readable and streamlined dbt Cloud API calls."
 slug: making-dbt-cloud-api-calls-using-dbt-cloud-cli
 
 authors: [simo_tumelius]
