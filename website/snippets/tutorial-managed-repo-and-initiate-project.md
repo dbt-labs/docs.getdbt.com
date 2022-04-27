@@ -1,9 +1,10 @@
 dbt Cloud uses Git for version control, but using a managed repository makes this easier. To set up a managed repository:
 
-1. Select **Managed** from the list of repositories.
-2. Type a name for your repo such as `jsmith-dbt-tutorial`
-3. Click **Create** then **Continue**.
-4. Optionally, you can invite other users to your dbt Cloud account:
+1. Under "Add repository from", select **Managed**.
+2. Type a name for your repo such as `jsmith-dbt-quickstart`
+3. Click **Create**. It will take a few seconds for your repository to be created and imported.
+4. Once you see the "Successfully imported repository," click **Continue**.
+5. Optionally, you can invite other users to your dbt Cloud account:
     1. Add emails and click **Send invitations**.
     2. Click **Continue**.
 
