@@ -75,7 +75,7 @@ You may want to use a scalar subquery if you’re interested in passing only a s
 
 ## Subquery examples
 
-You may often see subqueries in joins and DML statements. We’ll run through examples for each of those scenarios below.
+You may often see subqueries in joins and DML statements. The following sections contain examples for each scenario.
 
 ### Subquery in a join
 
@@ -117,7 +117,7 @@ In this example, the `all_payments` subquery will execute first. you use the dat
 
 You may also see subqueries used in DML commands. As a jogger, DML commands are a series of SQL statements that you can write to access and manipulate row-level data in database objects. Oftentimes, you’ll want to use a query result in a qualifying `WHERE` clause to only delete, update, or manipulate certain rows of data.
 
-In this example below, you'll attempt to update the status of certain orders based on the payment method used in the `raw_payments` table.
+In the following example, you'll attempt to update the status of certain orders based on the payment method used in the `raw_payments` table.
 
 ```sql
 UPDATE raw_orders
@@ -142,7 +142,7 @@ A subquery is a nested query that can oftentimes be used in place of a CTE. Subq
 
 ### Subquery vs CTE example
 
-To demonstrate the similarities and differences between subqueries and CTEs, it’s often most useful to look at an actual example. Going back to the very first example, let's compare how you would perform that query with a subquery vs a CTE:
+The following example demonstrates the similarities and differences between subqueries and CTEs. Using the [first subquery example](#subquery-in-a-join), you can compare how you would perform that query using subquery or a CTE:
 
 <Tabs
   defaultValue="subquery"

@@ -19,14 +19,14 @@ In an ELT process, data is extracted from data sources, loaded into a target dat
 
 ### Extract
 
-In the extraction process, data is extracted from multiple data sources. The data that is extracted is, for the most part, data that teams eventually want to use for analytics work. Some examples of data sources can include:
+In the extraction process, data is extracted from multiple data sources. The data extracted is, for the most part, data that teams eventually want to use for analytics work. Some examples of data sources can include:
 
 - Backend application databases 
 - Marketing platforms 
 - Email and sales CRMs 
 - and more!
 
-Accessing these data sources via Application Programming Interface calls can be a challenge for individuals and teams who don't have the technical expertise or resources to create their own scripts and automated processes. However, the recent development of certain open-source and Software as a Service (SaaS) products has removed some of the need for this custom development work. By establishing the option to create and manage pipelines in an automated way, you can extract the data from data sources and load it into data warehouses via a User Interface.
+Accessing these data sources using Application Programming Interface (API) calls can be a challenge for individuals and teams who don't have the technical expertise or resources to create their own scripts and automated processes. However, the recent development of certain open-source and Software as a Service (SaaS) products has removed the need for this custom development work. By establishing the option to create and manage pipelines in an automated way, you can extract the data from data sources and load it into data warehouses via a user interface.
 
 Since not every data source will integrate with SaaS tools for extraction and loading, it’s sometimes inevitable that teams will write custom ingestion scripts in addition to their SaaS tools.
 
@@ -129,7 +129,7 @@ The past few years have been a whirlwind for the data world. The increased acces
 
 ## Further reading
 
-Check out some of our favorite content about the ELT workflow below:
+Here's some of our favorite content about the ELT workflow:
 
 - [The Case for the ELT Workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
 - [A Love Letter to ETL Tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
