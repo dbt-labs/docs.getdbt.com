@@ -4,13 +4,13 @@ id: schedule-a-job
 description: In this part of the tutorial, we'll go through how you can schedule a job in dbt Cloud.
 ---
 
-As the `jaffle_shop` business gains more customers, and those customers create more orders, there will be more records added to your source data. Since the `customers` model is materialized as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date. This update will happen when you run a job.
+In this part of the guide, you will learn how to schedule a job to be run in your production environment. Scheduling a job is sometimes called _deploying a project_.
 
-Scheduling a job to be run in your production environment might also be called "deploying a project" or "[running a project in production](/docs/running-a-dbt-project/running-dbt-in-production)."
+As the `jaffle_shop` business gains more customers, and those customers create more orders, you will see more records added to your source data. Because you materialized the `customers` model as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date. This update will happen when you run a job.
 
 ## Commit your changes
 
-Now that you've built your customer modelYou need to commit the changes you made to the project so that the repository has your latest code.
+Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
 
 1. Click the `commit` button, with a message like "Add customers model, tests, docs"
 2. Click the `merge to master` button
@@ -57,6 +57,7 @@ You can improve your dbt skills with these fun exercises:
 * Turn your raw data references (for example, turn `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
 * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
 * Reorganize your project into [how we structure dbt projects](/blog/how-we-structure-our-dbt-projects).
+* Learn about dbt's approach to [Managing environments](/guides/managing-environments).
 
 Here are some ways to [level up your dbt skills](leveling-up):
 

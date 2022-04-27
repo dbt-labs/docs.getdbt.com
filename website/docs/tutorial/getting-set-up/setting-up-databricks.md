@@ -245,6 +245,8 @@ Click on `Preview` and you should see the same results as you saw earlier when y
  
 ### Create dbt Cloud account
 
+<Snippet src="tutorial-create-new-dbt-cloud-account" />
+
 ### Enter connection credentials
 
 

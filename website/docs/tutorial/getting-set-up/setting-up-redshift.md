@@ -177,10 +177,9 @@ Congratulations! At this point, you have created a Redshift instance and loaded 
 
 ## Connecting to dbt Cloud
 
-Now it’s time to connect to dbt Cloud to Redshift in order to develop your dbt Project.
+You can now connect to dbt Cloud to Redshift in order to develop your dbt Project.
 
-
-1. If you haven’t already, navigate to [dbt Cloud](cloud.getdbt.com) and create a new account. If you already have a dbt Cloud account, you can create a new project in your existing account.  In this tutorial, we will be using the Set Up project workflow for new users.  This can easily be adapted for additional projects to an existing account by navigating to accounts settings and selecting “Create new project”
+1. If you haven’t already, navigate to [dbt Cloud](https://cloud.getdbt.com) and create a new account. If you already have a dbt Cloud account, you can create a new project in your existing account.  In this tutorial, we will be using the Set Up project workflow for new users.  This can easily be adapted for additional projects to an existing account by navigating to accounts settings and selecting “Create new project”
 
 2. Let’s go over to dbt Cloud. Once you have logged into your new account and validated your email, you will see our Project Setup Flow with the page Set up “Analytics”.  Click `Continue`.
 
@@ -225,6 +224,8 @@ You should see the same results as you saw earlier when you queried the table di
 
 
 ### Create dbt Cloud account
+
+<Snippet src="tutorial-create-new-dbt-cloud-account" />
 
 ### Enter connection credentials
 

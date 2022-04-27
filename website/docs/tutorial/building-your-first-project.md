@@ -11,4 +11,4 @@ In this guide, you will:
 
 * Build your first models
 * Test and document your project
-* Schedule a job
+* Schedule a job to be run in your production environment
