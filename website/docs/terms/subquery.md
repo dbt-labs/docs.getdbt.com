@@ -144,7 +144,7 @@ A subquery is a nested query that can oftentimes be used in place of a CTE. Subq
 
 ### Subquery vs CTE example
 
-To demonstrate the similarities and differences between subqueries and CTEs, it’s often most useful to look at an actual example. Going back to the very first example, let's compare how you would perform that query with a subquery vs a CTE:
+The following example demonstrates the similarities and differences between subqueries and CTEs. Using the [first subquery example](#subquery-in-a-join), you can compare how you would perform that query using subquery or a CTE:
 
 <Tabs
   defaultValue="subquery"
