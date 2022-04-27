@@ -23,24 +23,23 @@ The only prerequisites for this tutorial are to have access to an email account 
 
 ## Setting up
 
-We will start by signing up for a free trial on Snowflake.
+You can start by signing up for a free trial on Snowflake:
 
 1. Sign up for a free trial by following [this link](https://signup.snowflake.com/) and completing the sign-up form.
+2. Select the Enterprise edition, choose a cloud provider and region, and agree to the terms of service. 
 
-2. Select the Enterprise edition, choose a cloud provider and region, and agree to the terms of service. There are some organizational questions to think about when choosing a cloud provider for a full implementation, which you can read more about [here](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html). For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like. Finally, click "GET STARTED".
-
-<p align="center">
+  You should consider organizational questions when choosing a cloud provider for a full implementation. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html) in the Snowflake docs. For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like. 
+3. Click **GET STARTED**.
+<div style={{maxWidth: '400px'}}>
 <Lightbox  src="/img/snowflake_tutorial/snowflake_account_configuration.png" title="Snowflake Account Configuration" />
-</p>
+</div>
 
-3. After submitting the sign-up form, you should receive an email asking you to activate your account. Click the link in the email and a new tab will open up where you’ll create your username and password. Complete the form and click **Get started**.
-
-<p align="center">
+4. After submitting the sign-up form, you should receive an email asking you to activate your account. Click the link in the email and a new tab will open up where you’ll create your username and password. Complete the form and click **Get started**.
+<div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/snowflake_tutorial/snowflake_account_signup.png" title="Snowflake Account Signup" />
-</p>
+</div>
 
-4. Congrats! Your workspace is ready for some data. Feel free to check out any of the getting started tooltips that Snowflake provides in the UI to familiarize yourself before moving on to the next section.
-
+5. Congrats! Your workspace is ready for some data. Feel free to check out any of the getting started tooltips that Snowflake provides in the UI to familiarize yourself before moving on to the next section.
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_workspace.png" title="Snowflake Workspace" />
 </p>
