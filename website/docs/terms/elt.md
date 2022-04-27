@@ -129,7 +129,7 @@ The past few years have been a whirlwind for the data world. The increased acces
 
 ## Further reading
 
-Check out some of our favorite content about the ELT workflow below:
+Here's some of our favorite content about the ELT workflow:
 
 - [The Case for the ELT Workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
 - [A Love Letter to ELT Tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
