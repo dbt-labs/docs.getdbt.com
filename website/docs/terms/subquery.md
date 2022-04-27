@@ -39,7 +39,7 @@ Given the elements of subqueries laid out in the beginning, let’s break down t
 | `SELECT` statement | `select * from {{ ref('orders') }}` | 
 | Main query it is nested in | `select customer_id, count(order_id) as cnt_orders from all_orders group by 1` | 
 
-When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ ref(‘orders’) }}` first. Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
+When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ ref('orders') }}` first. Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
 
 ```note Note
 If you want to learn more about what a `ref` is, [read our documentation on it.](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)
