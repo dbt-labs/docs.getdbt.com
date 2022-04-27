@@ -25,9 +25,7 @@ Let’s take this to an example, using the [sample jaffle_shop dataset](https://
 ```sql
 select customer_id, count(order_id) as cnt_orders
   from (
-
-        select * from {{ ref(`orders`) }}
-
+        select * from {{ ref('orders') }}
        ) all_orders
 group by 1
 ```
@@ -38,7 +36,7 @@ Given the elements of subqueries laid out in the beginning, let’s break down t
 |---|---|
 | Enclosing parentheses | :white_check_mark: |
 | Subquery name | `all_orders` |
-| `SELECT` statement | `select * from {{ ref(`orders`) }}` | 
+| `SELECT` statement | `select * from {{ ref('orders') }}` | 
 | Main query it is nested in | `select customer_id, count(order_id) as cnt_orders from all_orders group by 1` | 
 
 When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ ref(‘orders’) }}` first. Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
@@ -89,7 +87,7 @@ select
     orders.user_id, 
     sum(payments.amount) as lifetime_value
  
-from {{ ref(`raw_orders`) }} as orders
+from {{ ref('raw_orders') }} as orders
 left join (
 
     select
@@ -97,7 +95,7 @@ left join (
         order_id,
         amount
 
-    from {{ ref(`raw_payments`) }}
+    from {{ ref('raw_payments') }}
 
 ) all_payments
 on orders.id = payments.order_id
@@ -110,8 +108,8 @@ Similar to what you saw in the first example, let’s break down the elements of
 |---|---|
 | Enclosing parentheses | :white_check_mark: |
 | Subquery name | `all_payments` |
-| `SELECT` statement | `select order_id, amount from {{ ref(`raw_payments`) }}` |
-| Main query it is nested in | `select orders.user_id, sum(payments.amount) as lifetime_value from {{ ref(`raw_orders`) }} as orders...` | 
+| `SELECT` statement | `select order_id, amount from {{ ref('raw_payments') }}` |
+| Main query it is nested in | `select orders.user_id, sum(payments.amount) as lifetime_value from {{ ref('raw_orders') }} as orders...` | 
 
 In this example, the `all_payments` subquery will execute first. you use the data from this query to join on the `raw_orders` table to calculate lifetime value per user. Unlike the first example, the subquery happens in the join statement. Subqueries can happen in `JOIN`, `FROM`, and `WHERE` clauses.
 
@@ -159,7 +157,7 @@ To demonstrate the similarities and differences between subqueries and CTEs, it�
 select customer_id, count(order_id) as cnt_orders
   from (
 
-        select * from {{ ref(`orders`) }}
+        select * from {{ ref('orders') }}
 
        ) all_orders
 group by 1
@@ -170,7 +168,7 @@ group by 1
 ```sql CTE example
 with all_orders as (
 
-select * from {{ ref(`orders`) }}
+select * from {{ ref('orders') }}
 
 ),
 aggregate_orders as (

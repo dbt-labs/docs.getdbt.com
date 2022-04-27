@@ -9,7 +9,7 @@ Extract, Load, Transform (ELT) is the process of first extracting data from diff
 
 ELT has emerged as a paradigm for how to manage information flows in a modern data warehouse. This represents a fundamental shift from how data previously was handled when <Term id="etl">Extract, Transform, Load (ETL)</Term> was the data workflow most companies implemented.
 
-Transitioning from ETL to ELT means that you no longer have to capture your transformations during the initial loading of the data into your data warehouse. Rather, you are able to load all of your data, then build transformations on top of it. Data teams report that the ELT workflow has several advantages over the traditional ETL workflow which we’ll go over in-depth later in this glossary.
+Transitioning from ETL to ELT means that you no longer have to capture your transformations during the initial loading of the data into your data warehouse. Rather, you are able to load all of your data, then build transformations on top of it. Data teams report that the ELT workflow has several advantages over the traditional ETL workflow which we’ll go over [in-depth later in this glossary](#benefits-of-elt).
 
 ## How ELT works
 
@@ -115,7 +115,7 @@ Data teams can expose the version-controlled code used to transform data for ana
 
 As mentioned earlier, the recent development of certain technologies and products has helped lower the barrier of entry to implementing the ELT workflow. Most of these new products act as one or two parts of the ELT process, but some have crossover across all three parts. We’ll outline some of the current tools in the ELT ecosystem below.
 
-| Product | E, L, or T? | Description | Open-source option? |
+| Product | E/L/T? | Description | Open source option? |
 |---|---|---|---|
 | Fivetran/HVR | E, some T, L | Fivetran is a SaaS company that helps data teams extract, load, and perform some transformation on their data. Fivetran easily integrates with modern data warehouses and dbt. They also offer transformations that leverage dbt Core. | :x: |
 | Stitch by Talend | E, L | Stitch (part of Talend) is another SaaS product that has many data connectors to extract data and load it into data warehouses. | :x: |
@@ -132,7 +132,7 @@ The past few years have been a whirlwind for the data world. The increased acces
 Check out some of our favorite content about the ELT workflow below:
 
 - [The Case for the ELT Workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
-- [A Love Letter to ELT Tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
+- [A Love Letter to ETL Tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
 - [What, exactly, is dbt?](https://blog.getdbt.com/what-exactly-is-dbt/)
 - [What is Analytics Engineering?](https://www.getdbt.com/what-is-analytics-engineering/)
 - [How Fivetran Operationalizes Data Transformations](https://www.getdbt.com/coalesce-2021/how-fivetran-operationalizes-data-transformations/)

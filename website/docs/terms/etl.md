@@ -35,7 +35,7 @@ At this stage, the raw data that has been extracted is normalized and modeled. I
 To actually transform the data, there’s two primary methods teams will use:
 
 - **Custom solutions**: In this solution, data teams (typically data engineers on the team), will write custom scripts and create automated pipelines to transform the data. Unlike ELT transformations that typically use SQL for modeling, ETL transformations are often written in other programming languages such as Python or Scala. Data engineers may leverage technologies such as Apache Spark or Hadoop at this point to help process large volumes of data. 
-- **ETL products**: There are ETL products that will extract, transform, and load your data in one platform. These tools [(link to table below)](#etl-tools) often involve little to no code and instead use Graphical User Interfaces (GUI) to create pipelines and transformations.
+- **ETL products**: There are ETL products that will extract, transform, and load your data in one platform. [These tools](#etl-tools) often involve little to no code and instead use Graphical User Interfaces (GUI) to create pipelines and transformations.
 
 ### Load
 

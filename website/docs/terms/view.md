@@ -30,8 +30,6 @@ A healthy relationship with views is built on expectations.
 
 You shouldn’t expect a view in itself to be your final destination in terms of data modeling (they’re slow + often more costly to query than tables, not great for connecting to a downstream process like reporting), but you should trust them to get you from point A to point B. 
 
-They’re like bus stops that you pass every day, never get out at, but appreciate as landmarks.
-
 ## Further reading 
 
 - [Best practices guide on choosing table vs view materializations](docs/guides/best-practices#choose-your-materializations-wisely)

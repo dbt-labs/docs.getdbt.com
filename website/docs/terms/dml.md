@@ -40,11 +40,11 @@ select
 	payment_method,
 	sum(amount) AS amount
 
-from {{ ref(`raw_payments`) }}
+from {{ ref('raw_payments') }}
 group by 1
 ```
 
-In this example, your selection of the `payment_method` column and summation of the `amount` column is the meat of your query. The `from {{ ref(`raw_payments`) }}` specifies the actual table you want to do the selecting from.
+In this example, your selection of the `payment_method` column and summation of the `amount` column is the meat of your query. The `from {{ ref('raw_payments') }}` specifies the actual table you want to do the selecting from.
 
 ### INSERT
 
@@ -53,7 +53,7 @@ Using the `INSERT` DML command, you can add rows to a table that exists in your 
 You can insert a record for myself [in jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `raw_customers` table like this:
 
 ```sql
-INSERT INTO raw_customers VALUES (101, "Kira", "F.");
+INSERT INTO raw_customers VALUES (101, 'Kira', 'F.');
 ```
 
 As you can see from this example, you clearly set all the column values that exist in your `raw_customers` table. For `INSERT` statements, you can explicitly specify the values you want to insert or use a query result to set the column values.
@@ -67,7 +67,7 @@ For the most part, if you wanted to remove all existing rows in a table, but kee
 You can delete the record for any Henry W. in jaffle_shop’s `customers` table by executing this statement:
 
 ```sql
-DELETE FROM customers WHERE first_name = ‘Henry’ AND last_name = ‘W.’;
+DELETE FROM customers WHERE first_name = 'Henry' AND last_name = 'W.';
 ```
 
 ### UPDATE
@@ -77,7 +77,7 @@ With the `UPDATE` statement, you can change the actual data in existing rows in 
 You can manually update the status column of an order in your orders table like this:
 
 ```sql
-UPDATE orders SET status = `returned` WHERE order_id = 7;
+UPDATE orders SET status = 'returned' WHERE order_id = 7;
 ```
 
 :::tip Tip

@@ -92,7 +92,7 @@ In this query, you're creating three CTEs to ultimately allow you to segment buy
 ```sql
 with import_orders as (
 	
-	select * from {{ ref(‘orders’) }}
+	select * from {{ ref('orders') }}
 
 ),
 aggregate_orders as (
@@ -103,7 +103,7 @@ aggregate_orders as (
 		count(order_id) as count_orders
 
 	from import_orders
-	where status not in (‘returned’, ‘return pending’)
+	where status not in ('returned', 'return pending')
 	group by 1
 
 ),

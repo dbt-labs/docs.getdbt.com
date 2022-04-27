@@ -18,8 +18,6 @@ To be honest, DDL is definitely some of the drier content that exists out there 
 
 ## Types of DDL Statements
 
-![Image of a One Does Not Simply Walk Into Mordor meme prompt that reads: One does not simply drop a table](/img/docs/terms/ddl/drop-a-table-meme.png)
-
 DDL statements are used to create, drop, and manipulate objects in your database. They are often, but not always, unforgiving and irreversible. “With great power comes great responsibility,” is usually the first thing I think of before I execute a DDL command. We’ll highlight some of the primary DDL commands that are used by analytics engineers below.
 
 :::important Important
