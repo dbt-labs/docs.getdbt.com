@@ -1,6 +1,7 @@
 ---
 title: "Enabling CI"
-id: "cloud-enabling-continuous-integration-with-github"
+id: "cloud-enabling-continuous-integration"
+description: "You can enable CI to test every single change prior to deploying the code to production just like in a software development workflow."
 ---
 
 ## Overview
@@ -46,7 +47,7 @@ When the run is complete, dbt Cloud will update the PR in GitHub or MR in GitLab
 
 With Slim CI, you don't have to rebuild and test all your models. You can instruct dbt Cloud to run jobs on only modified or new resources.
 
-When creating or editing a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the drop drop menu to select which **production** job you want to defer to. 
+When creating or editing a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the drop menu to select which **production** job you want to defer to. 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests can select another job from the same project for deferral and comparison"/>
@@ -57,14 +58,55 @@ As example:
 
 ```
 dbt seed --select state:modified+
-dbt run --models state:modified+
-dbt test --models state:modified+
+dbt run --select state:modified+
+dbt test --select state:modified+
 ```
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or newer.
 
 
 To learn more about state comparison and deferral in dbt, read the docs on [state](understanding-state).
+
+## Smart Reruns
+
+As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that failed and had errors.
+
+When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of error/fail resources. In your job commands, you can signal to dbt to run and test only on these error/fail results and their children by including the `result:error+` and `result:fail+` argument. 
+
+As example:
+```bash
+dbt build --select result:error+ result:fail+
+```
+
+## Fresh Rebuilds
+
+As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that are fresher compared to a previous run.
+
+<VersionBlock lastVersion="1.0">
+
+Only supported by v1.1 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+Only supported by v1.1 or newer.
+
+:::caution Experimental functionality
+The `source_status` selection is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
+:::
+
+When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal to dbt to run and test only on these fresher sources and their children by including the `source_status:fresher+` argument. This requires both previous and current state to have the `sources.json` artifact be available. Or plainly said, both job states need to run `dbt source freshness`.
+
+As example:
+```bash
+# Command step order
+dbt source freshness
+dbt build --select source_status:fresher+
+```
+</VersionBlock>
+
+More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
 
 ## Troubleshooting
 

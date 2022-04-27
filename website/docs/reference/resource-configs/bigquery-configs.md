@@ -46,9 +46,9 @@ The `partition_by` config can be supplied as a dictionary with the following for
 
 ```python
 {
-  "field": "<field name",
-  "data_type": "<timestamp | date | datetime | int64 >",
-  "granularity": "< hour | day | month | year >"
+  "field": "<field name>",
+  "data_type": "<timestamp | date | datetime | int64>",
+  "granularity": "<hour | day | month | year>"
 
   # Only required if data_type is "int64"
   "range": {
@@ -376,7 +376,7 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -510,7 +510,7 @@ with events as (
 This example model serves to replace the data in the destination table for both
 _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
 way to incrementally update a table using dbt. If we wanted this to run more dynamically—
-let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
+let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
 
 <Changelog>
 

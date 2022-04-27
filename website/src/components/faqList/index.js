@@ -19,10 +19,10 @@ files.keys().forEach(function(key, i) {
 
   faqs.push(
      <div key={key} style={{marginBottom: '10px'}}>
-        <h3>
-            <a className='hash-link' href={meta.permalink}>#</a>
+        <h2>
+            <a className='hash-link-faq' href={meta.permalink}>#</a>
             {i+1}. {meta.title}
-        </h3>
+        </h2>
         <div>
             {el}
         </div>

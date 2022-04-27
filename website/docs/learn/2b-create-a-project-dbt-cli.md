@@ -25,17 +25,17 @@ $ dbt --version
 
 :::info
 
-dbt should have been installed as part of the  [Setting Up](/learn/setting-up) part of the tutorial. If it was not installed, please follow the [installation instructions](dbt-cli/installation).
+dbt should have been installed as part of the  [Setting Up](/learn/setting-up) part of the tutorial. If it was not installed, please follow the [installation instructions](dbt-cli/install/overview).
 
 :::
 
 2. Run the `init` command:
 ```shell-session
-$ dbt init jaffle-shop
+$ dbt init jaffle_shop
 ```
 3. `cd` into your project:
 ```shell-session
-$ cd jaffle-shop
+$ cd jaffle_shop
 ```
 You can use `pwd` to confirm that you are in the right spot.
 

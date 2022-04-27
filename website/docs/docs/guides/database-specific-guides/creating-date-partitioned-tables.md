@@ -4,9 +4,9 @@ id: "creating-date-partitioned-tables"
 ---
 
 
-:::info New in version 0.10.0!
+:::caution Deprecated
 
-
+The functionality described below was introduced in dbt Core v0.10 (March 2018). In v1.0 (December 2021), it was deprecated in favor of [column-based partitioning](bigquery-configs#partition-clause) and [incremental modeling](configuring-incremental-models).
 
 :::
 
@@ -113,5 +113,5 @@ If a `dates` variable is provided (eg. on the command line with `--vars`), then 
 Here's an example of running this model for the first 3 days of 2018 as a part of a backfill:
 
 ```
-dbt run --models partitioned_yesterday --vars 'dates: "20180101, 20180103"'
+dbt run --select partitioned_yesterday --vars 'dates: "20180101, 20180103"'
 ```

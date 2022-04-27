@@ -106,7 +106,7 @@ Pre- and post-hooks can also call macros that return SQL statements.
 
 <Changelog>
 
-* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the [alternative config syntax]() to apply pre- and post-hooks.
+* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the alternative config syntax to apply pre- and post-hooks.
 
 </Changelog>
 
