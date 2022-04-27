@@ -125,7 +125,7 @@ set status = 'returned'
 where order_id in (
 select order_id 
 from raw_payments 
-where payment_method  = `bank_transfer`)
+where payment_method  = 'bank_transfer')
 ```
 
 ## Subquery vs CTE
