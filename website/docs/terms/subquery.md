@@ -121,7 +121,7 @@ In the following example, you'll attempt to update the status of certain orders 
 
 ```sql
 UPDATE raw_orders
-set status = `returned`
+set status = 'returned'
 where order_id in (
 select order_id 
 from raw_payments 
