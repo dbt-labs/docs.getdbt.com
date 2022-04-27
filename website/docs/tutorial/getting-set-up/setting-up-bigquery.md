@@ -165,6 +165,7 @@ Congratulations! You have successfully completed the following:
 - Set up a new BigQuery instance
 - Replicated sample data for this guide
 - Connected dbt Cloud to BigQuery
+- Initialized your repository in dbt Cloud, and started developing
 
 ## Next steps
 
