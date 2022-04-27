@@ -1,6 +1,3 @@
----
-title: "Presto Profile"
----
 
 :::info Community plugin
 

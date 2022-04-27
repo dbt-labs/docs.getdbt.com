@@ -334,7 +334,7 @@ my-profile:
 ### Dataset locations
 
 The location of BigQuery datasets can be configured using the `location` configuration in a BigQuery profile.
-`location` may be iether a multi-regional location (e.g. `EU`, `US`), or a regional location (e.g. `us-west2` ) as per the [the BigQuery documentation](https://cloud.google.com/bigquery/docs/locations) describes.
+`location` may be either a multi-regional location (e.g. `EU`, `US`), or a regional location (e.g. `us-west2` ) as per [the BigQuery documentation](https://cloud.google.com/bigquery/docs/locations) describes.
 Example:
 
 ```yaml
