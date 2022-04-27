@@ -235,6 +235,7 @@ const sidebarSettings = {
             "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
           ],
         },
+        "docs/dbt-cloud/dbt-cloud-enterprise/audit-log",
       ],
     },
     {
@@ -539,7 +540,6 @@ const sidebarSettings = {
         "reference/warehouse-profiles/redshift-profile",
         "reference/warehouse-profiles/snowflake-profile",
         "reference/warehouse-profiles/mssql-profile",
-        "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
