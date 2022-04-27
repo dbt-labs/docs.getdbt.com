@@ -623,11 +623,11 @@ const sidebarSettings = {
   "Glossary": [
     {
       type: "category",
-      label: "Glossary",
+      label: "Analytics Engineer Glossary",
       link: {
         type: 'generated-index',
-        title: 'Glossary',
-        description: 'Glossary of dbt terms.',
+        title: 'Analytics Engineering Glossary',
+        description: 'The Analytics Engineering Glossary is a living collection of terms & concepts commonly used in the data industry by dbt Labs. You can use and contribute to this resource to educate yourself, your team, and your stakeholders.',
         slug: '/glossary',
       },
       items: [
