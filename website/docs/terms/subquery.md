@@ -119,7 +119,7 @@ In this example, the `all_payments` subquery will execute first. you use the dat
 
 You may also see subqueries used in DML commands. As a jogger, DML commands are a series of SQL statements that you can write to access and manipulate row-level data in database objects. Oftentimes, you’ll want to use a query result in a qualifying `WHERE` clause to only delete, update, or manipulate certain rows of data.
 
-In this example below, you'll attempt to update the status of certain orders based on the payment method used in the `raw_payments` table.
+In the following example, you'll attempt to update the status of certain orders based on the payment method used in the `raw_payments` table.
 
 ```sql
 UPDATE raw_orders
