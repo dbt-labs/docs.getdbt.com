@@ -77,7 +77,7 @@ You may want to use a scalar subquery if you’re interested in passing only a s
 
 ## Subquery examples
 
-You may often see subqueries in joins and DML statements. We’ll run through examples for each of those scenarios below.
+You may often see subqueries in joins and DML statements. The following sections contain examples for each scenario.
 
 ### Subquery in a join
 
