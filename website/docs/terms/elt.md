@@ -19,7 +19,7 @@ In an ELT process, data is extracted from data sources, loaded into a target dat
 
 ### Extract
 
-In the extraction process, data is extracted from multiple data sources. The data that is extracted is, for the most part, data that teams eventually want to use for analytics work. Some examples of data sources can include:
+In the extraction process, data is extracted from multiple data sources. The data extracted is, for the most part, data that teams eventually want to use for analytics work. Some examples of data sources can include:
 
 - Backend application databases 
 - Marketing platforms 
