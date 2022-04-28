@@ -1,7 +1,7 @@
-We don't need the sample files that dbt created for us anymore! Let's delete them.
+You can delete the files that dbt created when you initialized the project.
 
 1. Delete the `models/example/` directory
-2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it
+2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it.
 
 <File name='dbt_project.yml'>
 
