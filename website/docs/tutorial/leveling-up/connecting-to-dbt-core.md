@@ -262,7 +262,6 @@ When you return to the BigQuery console, you can `select` from this model.
 
 One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
 
-
 <Snippet src="tutorial-change-way-model-materialized" />
 
 ### Delete the example models
@@ -280,6 +279,11 @@ One of the most powerful features of dbt is that you can change the way a model 
 ### Next steps
 
 <Snippet src="tutorial-next-steps-1st-model" />
+
+You can also explore:
+
+* The `target` directory to see all of the compiled SQL. The `run` directory shows the create or replace table statements that are running, which are the select statements wrapped in the correct DDL.
+* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the selects statements that are running and the python logging happening when dbt runs. 
 
 <LoomVideo id="2fc44590f2614a68bea402322c36f56e" />
 
