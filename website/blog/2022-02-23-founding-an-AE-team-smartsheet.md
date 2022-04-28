@@ -34,7 +34,7 @@ Smartsheet, in general, has a great analytics setup. Strong data engineering and
 
 ### (1) Multiple undocumented transformation databases
 
-Organic growth of a company usually translates to organic growth of the database. One table became two, became fifteen, became too many to count. Analysts who built key tables left, new analysts joined and re-made or duplicated key tables. Suddenly, “the truth” was hard to find as data sprawl increased.
+Organic growth of a company usually translates to organic growth of the database. One <Term id="table" /> became two, became fifteen, became too many to count. Analysts who built key tables left, new analysts joined and re-made or duplicated key tables. Suddenly, “the truth” was hard to find as data sprawl increased.
 
 Expanding data meant increasing difficulty finding The Truth within the database. Analysts gained knowledge inefficiently and over a long period of time of discussions and trial and error. With limited documentation and a growing database, this challenge continued to expand as more and more analysts came on board.
 

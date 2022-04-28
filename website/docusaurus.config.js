@@ -206,7 +206,7 @@ var siteSettings = {
       path.resolve('plugins/buildGlobalData'),
       { versionedPages }
     ],
-    path.resolve('plugins/buildAuthorPages'),
+    path.resolve('plugins/buildAuthorPages')
   ],
   scripts: [
     {

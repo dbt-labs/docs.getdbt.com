@@ -3,7 +3,7 @@ title: "statement blocks"
 id: "statement-blocks"
 ---
 
-`statement`s are sql queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users table.
+`statement`s are sql queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
 
 <File name='get_states_statement.sql'>
 

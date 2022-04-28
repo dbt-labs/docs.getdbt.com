@@ -17,7 +17,7 @@ If you're using an older version of dbt Core (before v0.21), the old name of the
 
 </Changelog>
 
-If your dbt project is [configured with sources](using-sources), then the `dbt source freshness` command will query all of your defined source tables, determining the "freshness" of these tables. If the tables are stale (based on the `freshness` config specified for your sources) then dbt will report a warning or error accordingly. If a source table is in a stale state, then dbt will exit with a nonzero exit code.
+If your dbt project is [configured with sources](using-sources), then the `dbt source freshness` command will query all of your defined source tables, determining the "freshness" of these tables. If the tables are stale (based on the `freshness` config specified for your sources) then dbt will report a warning or error accordingly. If a source <Term id="table" /> is in a stale state, then dbt will exit with a nonzero exit code.
 
 ### Specifying sources to snapshot
 
