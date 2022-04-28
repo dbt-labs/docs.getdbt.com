@@ -1,4 +1,6 @@
-A best practice is to clean your data in one place before doing additional transformations downstream. the query already uses CTEs to this effect, but now you can experiment using the [ref](ref) function to separate this clean-up into upstream models:
+A best practice is to clean your data in one place before doing additional transformations downstream. The query already uses CTEs to this effect. 
+
+Now you can experiment using the [ref](ref) function to separate this clean up into upstream models:
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
@@ -6,18 +8,18 @@ A best practice is to clean your data in one place before doing additional trans
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query:
 
-        <File name='models/stg_customers.sql'>
+    <File name='models/stg_customers.sql'>
 
-        ```sql
-        select
-            id as customer_id,
-            first_name,
-            last_name
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
 
-        from `dbt-tutorial`.jaffle_shop.customers
-        ```
+    from `dbt-tutorial`.jaffle_shop.customers
+    ```
 
-        </File>
+    </File>
 
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query:
 
@@ -67,7 +69,6 @@ A best practice is to clean your data in one place before doing additional trans
 
     ),
 
-
     final as (
 
         select
@@ -85,6 +86,7 @@ A best practice is to clean your data in one place before doing additional trans
     )
 
     select * from final
+    
     ```
 
     </File>
