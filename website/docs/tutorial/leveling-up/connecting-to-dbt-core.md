@@ -268,8 +268,6 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 <Snippet src="tutorial-delete-example-models" />
 
-<LoomVideo id="db63e6e937594b38bf044c78e720d95d" />
-
 ### Build models on top of other models
 
 <Snippet src="tutorial-build-models-atop-other-models" />

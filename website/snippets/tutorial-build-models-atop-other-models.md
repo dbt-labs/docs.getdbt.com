@@ -1,95 +1,97 @@
-Often, it's a good idea to clean your data in one place, before doing additional transformations downstream. Our query already uses CTEs to this effect, but now we're going to experiment with using the [ref](ref) function to separate this clean-up into upstream models, like so:
+A best practice is to clean your data in one place before doing additional transformations downstream. the query already uses CTEs to this effect, but now you can experiment using the [ref](ref) function to separate this clean-up into upstream models:
 
+<div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
+</div>
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query:
 
-<File name='models/stg_customers.sql'>
+        <File name='models/stg_customers.sql'>
 
-```sql
-select
-    id as customer_id,
-    first_name,
-    last_name
+        ```sql
+        select
+            id as customer_id,
+            first_name,
+            last_name
 
-from `dbt-tutorial`.jaffle_shop.customers
-```
+        from `dbt-tutorial`.jaffle_shop.customers
+        ```
 
-</File>
+        </File>
 
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query:
 
-<File name='models/stg_orders.sql'>
+    <File name='models/stg_orders.sql'>
 
-```sql
-select
-    id as order_id,
-    user_id as customer_id,
-    order_date,
-    status
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
 
-from `dbt-tutorial`.jaffle_shop.orders
-```
+    from `dbt-tutorial`.jaffle_shop.orders
+    ```
 
-</File>
+    </File>
 
 3. Edit the SQL in your `models/customers.sql` file as follows:
 
-<File name='models/customers.sql'>
+    <File name='models/customers.sql'>
 
-```sql
-with customers as (
+    ```sql
+    with customers as (
 
-    select * from {{ ref('stg_customers') }}
+        select * from {{ ref('stg_customers') }}
 
-),
+    ),
 
-orders as (
+    orders as (
 
-    select * from {{ ref('stg_orders') }}
+        select * from {{ ref('stg_orders') }}
 
-),
+    ),
 
-customer_orders as (
+    customer_orders as (
 
-    select
-        customer_id,
+        select
+            customer_id,
 
-        min(order_date) as first_order_date,
-        max(order_date) as most_recent_order_date,
-        count(order_id) as number_of_orders
+            min(order_date) as first_order_date,
+            max(order_date) as most_recent_order_date,
+            count(order_id) as number_of_orders
 
-    from orders
+        from orders
 
-    group by 1
+        group by 1
 
-),
+    ),
 
 
-final as (
+    final as (
 
-    select
-        customers.customer_id,
-        customers.first_name,
-        customers.last_name,
-        customer_orders.first_order_date,
-        customer_orders.most_recent_order_date,
-        coalesce(customer_orders.number_of_orders, 0) as number_of_orders
+        select
+            customers.customer_id,
+            customers.first_name,
+            customers.last_name,
+            customer_orders.first_order_date,
+            customer_orders.most_recent_order_date,
+            coalesce(customer_orders.number_of_orders, 0) as number_of_orders
 
-    from customers
+        from customers
 
-    left join customer_orders using (customer_id)
+        left join customer_orders using (customer_id)
 
-)
+    )
 
-select * from final
-```
+    select * from final
+    ```
 
-</File>
+    </File>
 
 4. Execute `dbt run`
 
-This time when dbt ran, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt was able to infer the order in which to run these models in — `customers` depends on `stg_customers` and `stg_orders`, so gets built last. There's no need to explicitly define these dependencies.
+This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt was able to infer the order in which to run these models in — `customers` depends on `stg_customers` and `stg_orders`, so gets built last. You do not need to explicitly define these dependencies.
 
 ### FAQs
 

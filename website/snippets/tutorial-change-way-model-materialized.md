@@ -40,8 +40,8 @@
 
     </File>
 
-4. Execute `dbt run`. Your model, `customers` should be built as a view. 
-5. Run `dbt run --full-refresh` for this to take effect in your warehouse.
+4. Run the `dbt run` command. Your model, `customers` should be built as a view.
+5. Run `dbt run --full-refresh` command for this to take effect in your warehouse.
 
 ### FAQs
 
