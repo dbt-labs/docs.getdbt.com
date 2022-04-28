@@ -40,9 +40,9 @@ You can start by signing up for a free trial on Snowflake:
 </div>
 
 5. Congrats! Your workspace is ready for some data. Feel free to check out any of the getting started tooltips that Snowflake provides in the UI to familiarize yourself before moving on to the next section.
-<p align="center">
+<div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/snowflake_tutorial/snowflake_workspace.png" title="Snowflake Workspace" />
-</p>
+</div>
 
 ## Loading data
 

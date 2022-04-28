@@ -80,42 +80,6 @@ BigQuery supports public data sets that can be directly queried, so we will show
         - Click `CREATE DATASET`.
         - Repeat steps 1 through 4 for the second dataset, `stripe`.
 
-5. Create views. You will create views within your project to simulate source tables in your project. These will be built on top of the public tables created in previous steps.
-    1. Select the jaffle_shop or stripe project and click **Compose new query**.
-
-    2. Copy the following code and paste it in the blank query editor: 
-
-        ```sql
-        select * from `dbt-tutorial.jaffle_shop.customers`;
-        ```
-
-    3. Click **SAVE** then **Save View**.
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/bigquery/save-view.png" title="Bigquery Save View" />
-    </div>
-    4. Your two datasets, `jaffle_shop` and `stripe` should now show up under `Dataset`.
-    5. Select `jaffle_shop`.  Enter `customers` as the table name. Click **Save**.
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/bigquery/save-view-table.png" title="Bigquery Save View - Table" />
-    </div>
-6. You should now see your database object in the dropdown. If you click on it, BigQuery automatically infers data types and other metadata information for you:
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/bigquery/view-created.png" title="Bigquery View Created" />
-    </div>
-7. You can now query that database object using either `dbt-learn-bigquery-setup.jaffle_shop.customers` or more simply `jaffle_shop.customers`.  Note: `dbt-learn-big-query-setup` will reflect the project ID that you chose earlier in the tutorial.
-8. Repeat steps 5 - 7 for the orders table, naming it "orders" and selecting the jaffle_shop project:
-
-    ```sql
-    select * from `dbt-tutorial.jaffle_shop.orders`;
-    ```
-
-9. Repeat steps 5 - 7 for the payment table, naming it "payment" and selecting the stripe project:
-
-    ```sql
-    select * from `dbt-tutorial.stripe.payment`;
-    ```
-
-You should see a jaffle_shop project and a stripe project in your new BigQuery project.
 ## Connecting to dbt Cloud
 
 You will learn how to connect dbt Cloud to Google BigQuery so that you can leverage the power of dbt to transform data in BigQuery.

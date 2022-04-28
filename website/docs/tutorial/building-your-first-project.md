@@ -5,7 +5,7 @@ description: ""
 sidebar_label: "Building your first project"
 ---
 
-This part of the guide will show you how to build your first dbt project.
+Once you set up your warehouse and connect to dbt Cloud, you are ready to build your first dbt project.
 
 In this guide, you will:
 

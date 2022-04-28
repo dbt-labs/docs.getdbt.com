@@ -603,9 +603,9 @@ const sidebarSettings = {
           label: "Leveling up",
           link: { type: 'doc', id: 'tutorial/leveling-up' },
           items: [
+            "tutorial/leveling-up/connecting-to-dbt-core",
             "tutorial/leveling-up/using-jinja",
             "tutorial/leveling-up/refactoring-legacy-sql",
-            "tutorial/leveling-up/connecting-to-dbt-core",
           ],
     },
           ],
