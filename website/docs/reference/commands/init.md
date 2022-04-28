@@ -43,6 +43,9 @@ fixed:
   type: snowflake
   warehouse: transforming
 prompts:
+  target:
+    type: string
+    hint: your desired target name
   user:
     type: string
     hint: yourname@jaffleshop.com
