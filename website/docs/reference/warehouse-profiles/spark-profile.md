@@ -60,7 +60,10 @@ your_profile_name:
       # optional
       port: [port]              # default 443
       user: [user]
-      
+      server_side_parameters:
+        # cluster configuration parameters, otherwise applied via `SET` statements
+        # for example:
+        # "spark.databricks.delta.schema.autoMerge.enabled": True
 ```
 
 </File>
@@ -86,6 +89,7 @@ your_profile_name:
       user: [user]
       auth: [e.g. KERBEROS]
       kerberos_service_name: [e.g. hive]
+      use_ssl: [true|false]   # value of hive.server2.use.SSL, default false
 ```
 
 </File>
@@ -145,6 +149,28 @@ your_profile_name:
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.0">
+
+## Optional configurations
+
+### Retries
+
+Intermittent errors can crop up unexpectedly while running queries against Apache Spark. If `retry_all` is enabled, dbt-spark will naively retry any query that fails, based on the configuration supplied by `connect_timeout` and `connect_retries`. It does not attempt to determine if the query failure was transient or likely to succeed on retry. This configuration is recommended in production environments, where queries ought to be succeeding.
+
+For instance, this will instruct dbt to retry all failed queries up to 3 times, with a 5 second delay between each retry:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+retry_all: true
+connect_timeout: 5
+connect_retries: 3
+```
+
+</File>
+
+</VersionBlock>
+
 ## Installation and Distribution
 
 dbt's adapter for Apache Spark and Databricks is managed in its own repository, [dbt-spark](https://github.com/dbt-labs/dbt-spark). To use it, 
@@ -188,6 +214,4 @@ on Delta Lake (Databricks).
 Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
 2. [Snapshots](snapshots)
-
-Some dbt features, available on the core adapters, are not yet supported on Spark:
-1. [Persisting](persist_docs) column-level descriptions as database comments
+3. [Persisting](persist_docs) column-level descriptions as database comments
