@@ -1,7 +1,7 @@
 ---
 title: "Audit log"
 description: "Review actions performed by people in your organization."
-slug: 2022-03-10-ide-timeout-message
+slug: 2022-004-26-audit-log-release-note
 
 tags: [release notes]
 hide_table_of_contents: false
