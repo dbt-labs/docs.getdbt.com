@@ -19,10 +19,10 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Create a deployment environment
 
-1. Click the hamburger menu, and then `Home`
-2. Under "Deployment Environments" select "Create a new one"
-3. Name your deployment environment (e.g. "Production")
-4. Add a target dataset (e.g. "analytics") -- this is the dataset that dbt will build into. For other warehouses this is usually named "schema"
+1. Click ![hamburger icon](/img/hamburger-icon.png), then click **Home**.
+2. Under "Deployment Environments" select **Create a new one**.
+3. Name your deployment environment. For example, "Production."
+4. Add a target dataset (for example, "analytics"). dbt will build into this dataset. For some warehouses this will be named "schema."
 
 <LoomVideo id="bb6ea5b628ef4d019f9167f6ddf738cc" />
 
@@ -30,15 +30,15 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run on a schedule.
 
-1. After creating your deployment environment, you should be directed to the page for new environment. If not, select the hamburger menu, and then `Jobs`.
-2. Click `New Job` giving it a name (e.g. "Production run"), and linking it to the Environment you just created.
-3. Check the box for "Generate docs".
+1. After creating your deployment environment, you should be directed to the page for new environment. If not, click ![hamburger icon](/img/hamburger-icon.png), then click **Jobs**.
+2. Click **New Job** and provide a name, for example "Production run", and link to the Environment you just created.
+3. Click **Generate docs**.
 4. Ensure you have the following commands as part of your job:
       * `dbt run`
       * `dbt test`
 5. For this exercise, **do NOT** set a schedule for your project to run -- while your organization's project **should** run regularly, there's no need to run this project on a schedule. You might use up your BigQuery credits if you schedule it.
-6. Select `Save`, and then `Run now` to run your job.
-7. Click into the run to see the progress — once the run is complete, click "View Documentation" to see the docs for your project.
+6. Select **Save**, then click **Run now** to run your job.
+7. Click the run to see the progress — once the run is complete, click **View Documentation** to see the docs for your project.
 
 :::tip
 Congratulations 🎉! You've just deployed your first dbt project!

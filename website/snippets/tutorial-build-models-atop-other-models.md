@@ -1,4 +1,4 @@
-A best practice is to clean your data in one place before doing additional transformations downstream. The query already uses CTEs to this effect. 
+As a best practice, clean your data in one place before doing additional transformations downstream. The query you're using already uses CTEs for this purpose. 
 
 Now you can experiment using the [ref](ref) function to separate this clean up into upstream models:
 

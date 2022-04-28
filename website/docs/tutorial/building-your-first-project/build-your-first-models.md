@@ -8,7 +8,7 @@ Now that you set up your sample project, you can get to the fun part — [buildi
 
 ## Checkout a new git branch
 
-1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`. The master branch should now be set to "read only" mode, so you'll need to create a new branch.
+1. Ensure you're in the Develop interface. If you're not, click ![hamburger icon](/img/hamburger-icon.png), then click `Develop`. The master branch should now be set to "read-only" mode, so you'll need to create a new branch.
 
 2. Click the "create new branch" button, and name your branch `add-customers-model`.
 
@@ -18,7 +18,7 @@ Now that you set up your sample project, you can get to the fun part — [buildi
 
 <LoomVideo id="09919ddb02e44015878c9e93e15fe792" />
 
-1. Ensure you're in the Develop interface. If you're not, click the hamburger menu, and then `Develop`.
+1. Ensure you're in the Develop interface. If you're not, click ![hamburger icon](/img/hamburger-icon.png), and then `Develop`.
 2. Create a new file in the `models` directory named `models/customers.sql`.
 3. Paste the query from the [Setting up](/tutorial/getting-set-up) instructions into the file.
 4. Execute `dbt run` in the command prompt at the bottom of the screen. You should get a successful run, like so:

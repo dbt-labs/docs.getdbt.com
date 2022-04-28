@@ -270,7 +270,6 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 ### Build models on top of other models
 
-
 <Snippet src="tutorial-build-models-atop-other-models" />
 
 <LoomVideo id="39eceeedf69641b5aca6f94c4da172a8" />
