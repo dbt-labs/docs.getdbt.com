@@ -1,53 +1,47 @@
-:::info Using the `+` sign in your `dbt_project.yml`
-These videos were recorded with a slightly older version of dbt (dbt v0.15.0), which did not use the `+` sign in the `dbt_project.yml` file (this was introduced in dbt v0.17.0).
+1. Edit your `dbt_project.yml` file:
 
-We'll try to update the videos soon, but for now, take extra note of the `+` signs in the code samples below, under the `models:` key.
+    <File name='dbt_project.yml'>
 
-:::
+    ```yaml
+    models:
+      jaffle_shop:
+        +materialized: table
+        example:
+          +materialized: view
+    ```
 
-1. Edit the following in your `dbt_project.yml` file:
+    </File>
 
-<File name='dbt_project.yml'>
+2. Run the `dbt run` command. Your `customers` model should now be built as a table!
+    :::info
+    To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
+    :::
 
-```yaml
-models:
-  jaffle_shop:
-    +materialized: table
-    example:
-      +materialized: view
-```
+3. Edit `models/customers.sql` to add following snippet to the top:
 
-</File>
+    <File name='models/customers.sql'>
 
-2. Execute `dbt run`. Your model, `customers` should now be built as a table!
-:::info
-To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
-:::
+    ```sql
+    {{
+      config(
+        materialized='view'
+      )
+    }}
 
-3. Edit `models/customers.sql` to have the following snippet at the top:
+    with customers as (
 
-<File name='models/customers.sql'>
+        select
+            id as customer_id
+            ...
 
-```sql
-{{
-  config(
-    materialized='view'
-  )
-}}
+    )
 
-with customers as (
+    ```
 
-    select
-        id as customer_id
-        ...
+    </File>
 
-)
-
-```
-
-</File>
-
-4. Execute `dbt run`. Your model, `customers` should be built as a view. You may need to run `dbt run --full-refresh` for this to take effect on BigQuery.
+4. Execute `dbt run`. Your model, `customers` should be built as a view. 
+5. Run `dbt run --full-refresh` for this to take effect in your warehouse.
 
 ### FAQs
 

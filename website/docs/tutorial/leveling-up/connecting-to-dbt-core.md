@@ -243,7 +243,7 @@ Check out a new git branch to work on new code:
     select * from final
     ```
 
-4. From the command line, enter `dbt run`. Your output should look like this:
+4. From the command line, enter `dbt run`.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
     </div>
@@ -260,9 +260,8 @@ When you return to the BigQuery console, you can `select` from this model.
 
 ### Change the way your model is materialized
 
-One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value. Let's see this in action.
+One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
 
-<LoomVideo id="22ebdc914426461ea5c617a415cb4c21" />
 
 <Snippet src="tutorial-change-way-model-materialized" />
 
@@ -301,12 +300,12 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 #### Next steps
 
-
 <Snippet src="tutorial-next-steps-tests" />
 
 <LoomVideo id="6db6956adbb04f55b6027c461e9b1792" />
 
-### Commit your changes
+
+### Commit updated changes
 
 You need to commit the changes you made to the project so that the repository has your latest code.
 
