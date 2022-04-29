@@ -8,7 +8,7 @@ title: "Oracle Profile"
 **Source:** [Github](https://github.com/oracle/dbt-oracle)    
 **Core version:** v1.0.5     
 **dbt Cloud:** Not Supported    
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01PWH4TXLY)       
+**dbt Slack channel** [#db-oracle](https://getdbt.slack.com/archives/C01PWH4TXLY)       
 
 ![dbt-oracle stars](https://img.shields.io/github/stars/oracle/dbt-oracle?style=for-the-badge)
 
@@ -16,13 +16,13 @@ title: "Oracle Profile"
 
 dbt-oracle can be installed via the Python Package Index (PyPI) using pip
 
-    pip install -U dbt-oracle
+    pip install dbt-oracle
 
 You will need Oracle client driver installed. Check this [link](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html) for the installation guide for your operating system
 
 ## Connecting to Oracle Database
 
-Define the following mandatory parameters as environment variables and refer them in the connection profile using [env_var](https://docs.getdbt.com/reference/dbt-jinja-functions/env_var) jinja function. Optionally, you can also define these directly in the `profiles.yml` file.
+Define the following mandatory parameters as environment variables and refer them in the connection profile using [env_var](https://docs.getdbt.com/reference/dbt-jinja-functions/env_var) jinja function. Optionally, you can also define these directly in the `profiles.yml` file, but this is not recommended
 
 ```bash
 export DBT_ORACLE_USER=<username>
@@ -93,7 +93,7 @@ export DBT_ORACLE_TNS_NAME=net_service_name
 
 ```yaml
 dbt_test:
-   target: "{{ env_var('DBT_TARGET', 'dev') }}"
+   target: dev
    outputs:
       dev:
          type: oracle
