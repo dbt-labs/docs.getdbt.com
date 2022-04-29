@@ -78,7 +78,7 @@ BigQuery supports public data sets that can be directly queried, so we will show
         - Even though it is unchecked, billing table expiration will be set automatically to 60 days, because billing has not been enabled for this project, so GCP defaults to deprecating tables.
         - Allow Google to manage encryption.
         - Click `CREATE DATASET`.
-        - Repeat steps 1 through 4 for the second dataset, `stripe`.
+        - Repeat steps i through iv for the second dataset, `stripe`.
 
 ## Connecting to dbt Cloud
 
