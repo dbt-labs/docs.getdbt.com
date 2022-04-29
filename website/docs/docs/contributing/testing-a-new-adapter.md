@@ -74,7 +74,7 @@ models:
 
 </File>
 
-2. Use the "fixtures" to define the project for your test case. These fixtures are always scoped to the **class**, where the class represents one test case—that is, one dbt project or scenario. Following the default pytest configurations, the file name must begin with `test_`, and the class name must begin with `Test`.
+2. Use the "fixtures" to define the project for your test case. These fixtures are always scoped to the **class**, where the class represents one test case—that is, one dbt project or scenario. (The same test case can be used for one or more actual tests, which we'll see in step 3.) Following the default pytest configurations, the file name must begin with `test_`, and the class name must begin with `Test`.
 
 <File name="tests/functional/example/test_example_failing_test.py">
 
@@ -127,7 +127,7 @@ class TestExample:
 
 </File>
 
-3. Now that we've set up our project, it's time to define a sequence of dbt commands and assertions. These methods will be defined in the same file, on the same class (`TestExampleFailingTest`). In pytest, the methods defining actual tests must have names that begin with `test_`.
+3. Now that we've set up our project, it's time to define a sequence of dbt commands and assertions. We define one or more methods in the same file, on the same class (`TestExampleFailingTest`), whose names begin with `test_`. These methods share the same setup (project scenario) from above, but they can be run independently by pytest—so they shouldn't depend on each other in any way.
 
 <File name="tests/functional/example/test_example_failing_test.py">
 
