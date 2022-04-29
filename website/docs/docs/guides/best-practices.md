@@ -30,7 +30,7 @@ We've made our [style guide](https://github.com/dbt-labs/corp/blob/master/dbt_st
 
 ## Best practices in dbt projects
 ### Use the ref function
-The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that models are built in the correct order. It also ensures that your current model selects from upstream tables and views in the same environment that you're working in.
+The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that models are built in the correct order. It also ensures that your current model selects from upstream tables and <Term id="view">views</Term> in the same environment that you're working in.
 Always use the `ref` function when selecting from another model, rather than using the direct relation reference (e.g. `my_schema.my_table`).
 
 ### Limit references to raw data
@@ -62,7 +62,7 @@ You can instead find our opinions on how we structure our dbt projects in [this 
 :::
 
 ### Break complex models up into smaller pieces
-Complex models often include multiple Common Table Expressions (CTEs). In dbt, you can instead separate these CTEs into separate models that build on top of each other. It is often a good idea to break up complex models when:
+Complex models often include multiple Common Table Expressions (<Term id="cte">CTEs</Term>). In dbt, you can instead separate these CTEs into separate models that build on top of each other. It is often a good idea to break up complex models when:
 * A CTE is duplicated across two models. Breaking the CTE into a separate model allows you to reference the model from any number of downstream models, reducing duplicated code.
 * A CTE changes the grain of a the data it selects from. It's often useful to test any transformations that change the grain (as in, what one record represents) of your data. Breaking a CTE into a separate model allows you to test this transformation independently of a larger model.
 * The SQL in a query contains many lines. Breaking CTEs into separate models can reduce the cognitive load when another dbt user (or your future self) is looking at the code.
@@ -88,12 +88,12 @@ Our [style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.m
 ### Consider the information architecture of your data warehouse
 When a user connects to a data warehouse via a SQL client, they often rely on the names of schemas, relations, and columns, to understand the data they are presented with. To improve the information architecture of a data warehouse, we:
 * Use [custom schemas](using-custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file.
-* Use prefixes in table names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
+* Use prefixes in <Term id="table" /> names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
 
 ### Choose your materializations wisely
-[Materializations](materializations) determine the way models are built through configuration. As a general rule:
+[<Term id="materialization" />](materializations) determine the way models are built through configuration. As a general rule:
 * Views are faster to build, but slower to query compared to tables.
-* Incremental models provide the same query performance as tables, are faster to build compared to the table materialization, however they introduce complexity into a project.
+* Incremental models provide the same query performance as tables, are faster to build compared to the table <Term id="materialization" />, however they introduce complexity into a project.
 
 We often:
 * Use views by default

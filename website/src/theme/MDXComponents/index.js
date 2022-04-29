@@ -32,6 +32,7 @@ import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
 import VersionBlock from '@site/src/components/versionBlock';
 import Var from '@site/src/components/variable';
+import Term from '@site/src/components/term';
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
@@ -43,24 +44,6 @@ function unwrapMDXElement(element) {
 }
 
 const MDXComponents = {
-  Changelog: Changelog,
-  CloudCore: CloudCore,
-  WHCode: WHCode,
-  Collapsible: Collapsible,
-  FAQ: FAQ,
-  FAQList: FAQList,
-  File: File,
-  Lightbox: Lightbox,
-  Link: Link,
-  LoomVideo: LoomVideo,
-  Tabs: Tabs,
-  TabItem: TabItem,
-  Snippet: Snippet,
-  WistiaVideo: WistiaVideo,
-  YoutubeVideo: YoutubeVideo,
-  VersionBlock: VersionBlock,
-  Var: Var,
-
   head: (props) => {
     const unwrappedChildren = React.Children.map(props.children, (child) =>
       unwrapMDXElement(child),
@@ -114,5 +97,23 @@ const MDXComponents = {
   h4: (props) => <Heading as="h4" {...props} />,
   h5: (props) => <Heading as="h5" {...props} />,
   h6: (props) => <Heading as="h6" {...props} />,
+
+  Changelog: Changelog,
+  CloudCore: CloudCore,
+  Collapsible: Collapsible,
+  FAQ: FAQ,
+  FAQList: FAQList,
+  File: File,
+  Lightbox: Lightbox,
+  Link: Link,
+  LoomVideo: LoomVideo,
+  Tabs: Tabs,
+  TabItem: TabItem,
+  Snippet: Snippet,
+  WistiaVideo: WistiaVideo,
+  YoutubeVideo: YoutubeVideo,
+  VersionBlock: VersionBlock,
+  Var: Var,
+  Term: Term,
 };
 export default MDXComponents;
