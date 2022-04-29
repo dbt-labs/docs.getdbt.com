@@ -59,8 +59,8 @@ You can improve your dbt skills with these fun exercises:
 * Reorganize your project into [how we structure dbt projects](/blog/how-we-structure-our-dbt-projects).
 * Learn about dbt's approach to [Managing environments](/guides/managing-environments).
 
-Here are some ways to [level up your dbt skills](leveling-up):
+Here are some ways to [learn more](learn-more) essential dbt skills:
 
 * Learn how to use Jinja in your project by reading the [Jinja tutorial](using-jinja).
-* Learn how to [connect to dbt Core using the CLI](connecting-to-dbt-core).
+* Learn how to [connect to dbt Core using the CLI](getting-started-dbt-core).
 * Refactor [legacy SQL to dbt SQL](refactoring-legacy-sql).

@@ -574,7 +574,7 @@ const sidebarSettings = {
   tutorial: [
     {
       type: "category",
-      label: "Getting Started with dbt",
+      label: "Getting Started with dbt Cloud",
       link: { type: 'doc', id: 'tutorial/getting-started' },
       items: [
         {
@@ -598,17 +598,17 @@ const sidebarSettings = {
             "tutorial/building-your-first-project/schedule-a-job",
           ],
         },
-        {
-          type: "category",
-          label: "Leveling up",
-          link: { type: 'doc', id: 'tutorial/leveling-up' },
-          items: [
-            "tutorial/leveling-up/connecting-to-dbt-core",
-            "tutorial/leveling-up/using-jinja",
-            "tutorial/leveling-up/refactoring-legacy-sql",
-          ],
+      ],
     },
-          ],
+    {
+      type: "category",
+      label: "Learning more",
+      link: { type: 'doc', id: 'tutorial/learning-more' },
+      items: [
+        "tutorial/learning-more/getting-started-dbt-core",
+        "tutorial/learning-more/using-jinja",
+        "tutorial/learning-more/refactoring-legacy-sql",
+      ],
     },
   ],
 };
