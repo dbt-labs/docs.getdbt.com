@@ -101,7 +101,7 @@ In plain English, these tests translate to:
 * `unique`: the `order_id` column in the `orders` model should be unique
 * `not_null`: the `order_id` column in the `orders` model should not contain null values
 * `accepted_values`: the `status` column in the `orders` should be  one of `'placed'`, `'shipped'`, `'completed'`, or  `'returned'`
-* `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` table (also known as referential integrity)
+* `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` <Term id="table" /> (also known as referential integrity)
 
 Behind the scenes, dbt constructs a `select` query for each test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
