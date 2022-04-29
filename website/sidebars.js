@@ -64,6 +64,7 @@ const sidebarSettings = {
         "docs/guides/building-packages",
         "docs/guides/creating-new-materializations",
         "docs/guides/understanding-state",
+        "docs/guides/airflow-dbt-cloud"
         {
           type: "category",
           label: "Migration guides",
