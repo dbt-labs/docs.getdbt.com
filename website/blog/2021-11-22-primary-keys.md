@@ -16,7 +16,7 @@ We’ve all done it: fanned out data during a join to produce duplicate records 
 
 That time when historical revenue numbers doubled on Monday? Classic fanout. 
 
-Could it have been avoided? Yes, very simply: by defining the uniqueness grain for a table with a primary key and enforcing it with a dbt test.
+Could it have been avoided? Yes, very simply: by defining the uniqueness grain for a <Term id="table" /> with a primary key and enforcing it with a dbt test.
 
 So let’s dive deep into: what primary keys are, which cloud analytics warehouses support them, and how you can test them in your warehouse to enforce uniqueness.
 

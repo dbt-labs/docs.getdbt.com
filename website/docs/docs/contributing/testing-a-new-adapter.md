@@ -216,14 +216,9 @@ In this section, we'll walk through the three steps to start running our basic t
 ### Install dependencies
 
 You should already have a virtual environment with `dbt-core` and your adapter plugin installed. You'll also need to install:
-- `pytest`
-- `dbt-tests-adapter`, the set of basic test cases
+- [`pytest`](https://pypi.org/project/pytest/)
+- [`dbt-tests-adapter`](https://pypi.org/project/dbt-tests-adapter/), the set of common test cases
 - (optional) [`pytest` plugins](https://docs.pytest.org/en/7.0.x/reference/plugin_list.html)--we'll use `pytest-dotenv` below
-
-During initial development, the `dbt-tests-adapter` package is not yet on PyPi, so please install it directly from GitHub:
-```bash
-pip install "git+https://github.com/dbt-labs/dbt-core.git#egg=dbt-tests-adapter&subdirectory=tests/adapter"
-```
 
 Or specify all dependencies in a requirements file like:
 <File name="dev_requirements.txt">
@@ -231,7 +226,7 @@ Or specify all dependencies in a requirements file like:
 ```txt
 pytest
 pytest-dotenv
-git+https://github.com/dbt-labs/dbt-core.git#egg=dbt-tests-adapter&subdirectory=tests/adapter
+dbt-tests-adapter
 ```
 </File>
 
@@ -389,7 +384,7 @@ class TestSnapshotCheckColsRedshift(BaseSnapshotCheckCols):
 
 </File>
 
-As another example, the `dbt-bigquery` adapter asks users to "authorize" replacing a table with a view by supplying the `--full-refresh` flag. The reason: In the table materialization logic, a view by the same name must first be dropped; if the table query fails, the model will be missing.
+As another example, the `dbt-bigquery` adapter asks users to "authorize" replacing a <Term id="table" /> with a <Term id="view" /> by supplying the `--full-refresh` flag. The reason: In the table <Term id="materialization" /> logic, a view by the same name must first be dropped; if the table query fails, the model will be missing.
 
 Knowing this possibility, the "base" test case offers a `require_full_refresh` switch on the `test_config` fixture class. For BigQuery, we'll switch it on:
 

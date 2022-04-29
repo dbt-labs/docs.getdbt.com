@@ -116,7 +116,7 @@ with customers as (
 
 </File>
 
-4. Execute `dbt run`. Your model, `customers` should be built as a view.
+4. Execute `dbt run`. Your model, `customers` should be built as a <Term id="view" />.
 
 ### FAQs
 <FAQ src="available-materializations" />
@@ -164,7 +164,7 @@ models:
 
 
 ## Build models on top of other models
-Often, it's a good idea to clean your data in one place, before doing additional transformations downstream. Our query already uses CTEs to this effect, but now we're going to experiment with using the [ref](ref) function to separate this clean-up into upstream models, like so:
+Often, it's a good idea to clean your data in one place, before doing additional transformations downstream. Our query already uses <Term id="cte">CTEs</Term> to this effect, but now we're going to experiment with using the [ref](ref) function to separate this clean-up into upstream models, like so:
 
 
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />

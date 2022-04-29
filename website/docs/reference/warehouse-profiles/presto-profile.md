@@ -1,6 +1,3 @@
----
-title: "Presto Profile"
----
 
 :::info Community plugin
 
@@ -67,7 +64,7 @@ If you are interested in helping to add support for this functionality in dbt on
 
 ### Required configuration
 
-dbt fundamentally works by dropping and creating tables and views in databases. As such, the following Presto configs must be set for dbt to work properly on Presto:
+dbt fundamentally works by dropping and creating tables and <Term id="view">views</Term> in databases. As such, the following Presto configs must be set for dbt to work properly on Presto:
 
 ```
 hive.metastore-cache-ttl=0s
