@@ -6,7 +6,7 @@
  */
  import React from 'react';
  import clsx from 'clsx';
- import {getInfimaActiveClassName} from './index';
+ import {getInfimaActiveClassName} from '@theme/NavbarItem/utils';
 
  const dropdownLinkActiveClass = 'dropdown__link--active';
  export function NavLink({
@@ -82,4 +82,3 @@
  }
  
  export default DefaultNavbarItem;
- 
