@@ -4,7 +4,7 @@ id: "running-dbt-in-production"
 ---
 
 ## What does running dbt in production mean?
-Running dbt in production simply means **setting up a system to run a dbt job on a schedule**, rather than running dbt commands manually from the command line. These production dbt jobs should create the tables and views that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](managing-environments).
+Running dbt in production simply means **setting up a system to run a dbt job on a schedule**, rather than running dbt commands manually from the command line. These production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](managing-environments).
 
 :::info dbt commands in production
 
