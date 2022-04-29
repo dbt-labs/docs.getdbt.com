@@ -98,7 +98,7 @@ var siteSettings = {
         },
         {
           to: '/dbt-cli/cli-overview',
-          label: 'dbt Core',
+          label: 'dbt CLI',
           position: 'left',
           activeBasePath: 'dbt-cli'
         },
