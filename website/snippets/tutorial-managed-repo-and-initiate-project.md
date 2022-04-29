@@ -11,42 +11,42 @@ Now that we have a repository configured, let's initialize your project and star
 2. Above the file tree to the left, click **Initialize your project**.  This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit**.  Use the commit message `initial commit`.  This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code. 
 4. Now you should be able to **directly query data from your warehouse** and **execute dbt run**.  You can try this out now:
-    - In "Scratchpad 1", delete all text and paste your warehouse specific code into Scratchpad 1:
+    - In "Scratchpad 1", delete all text and paste your warehouse-specific code into Scratchpad 1:
 
-    <WHCode>
+<WHCode>
 
-    <div>
+<div>
 
-    ```sql
-    select * from `dbt-tutorial.jaffle_shop.customers`
-    ```
+```sql
+select * from `dbt-tutorial.jaffle_shop.customers`
+```
 
-    </div>
+</div>
 
-    <div>
+<div>
 
-    ```sql
-    select * from raw.jaffle_shop.customers
-    ```
+```sql
+select * from raw.jaffle_shop.customers
+```
 
-    </div>
+</div>
 
-    <div>
+<div>
 
-    ```sql
-    select * from `dbt-tutorial.jaffle_shop.customers`
-    ```
+```sql
+select * from `dbt-tutorial.jaffle_shop.customers`
+```
 
-    </div>
+</div>
 
-    <div>
+<div>
 
-    ```sql
-    select * from `dbt-tutorial.jaffle_shop.customers`
-    ```
+```sql
+select * from `dbt-tutorial.jaffle_shop.customers`
+```
 
-    </div>
+</div>
 
-    </WHCode>
+</WHCode>
 
-    - In the command line bar at the bottom, type `dbt run` and click **Enter**.  We will explore what happens in the next section of the tutorial.
+- In the command line bar at the bottom, type `dbt run` and click **Enter**.  We will explore what happens in the next section of the tutorial.

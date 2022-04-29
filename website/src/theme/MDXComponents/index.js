@@ -111,6 +111,7 @@ const MDXComponents = {
   TabItem: TabItem,
   Snippet: Snippet,
   WistiaVideo: WistiaVideo,
+  WHCode: WHCode,
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
   Var: Var,
