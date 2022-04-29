@@ -9,6 +9,6 @@ After building your first models, testing and documenting your project, and sche
 
 To learn more:
 
-* Connect to dbt Core
+* Try connecting to dbt Core using the command line interface
 * Refactor legacy SQL
-* Use Jinja
+* Learn how to use Jinja

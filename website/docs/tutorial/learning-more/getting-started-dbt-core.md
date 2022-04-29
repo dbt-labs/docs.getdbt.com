@@ -272,8 +272,6 @@ One of the most powerful features of dbt is that you can change the way a model 
 
 <Snippet src="tutorial-build-models-atop-other-models" />
 
-<LoomVideo id="39eceeedf69641b5aca6f94c4da172a8" />
-
 ### Next steps
 
 <Snippet src="tutorial-next-steps-1st-model" />
@@ -281,9 +279,7 @@ One of the most powerful features of dbt is that you can change the way a model 
 You can also explore:
 
 * The `target` directory to see all of the compiled SQL. The `run` directory shows the create or replace table statements that are running, which are the select statements wrapped in the correct DDL.
-* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the selects statements that are running and the python logging happening when dbt runs. 
-
-<LoomVideo id="2fc44590f2614a68bea402322c36f56e" />
+* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the selects statements that are running and the python logging happening when dbt runs.
 
 ## Test and document your project
 
@@ -291,21 +287,21 @@ You can also explore:
 
 <Snippet src="tutorial-add-tests-to-models" />
 
-<LoomVideo id="61693e928ec94100bef33371aab8296a" />
-
-
 ### Document your models
 
 <Snippet src="tutorial-document-your-models" />
 
-<LoomVideo id="230b30756f674bf7ba38311099070d37" />
+3. Run `dbt docs serve` command to launch the documentation in a local website.
+
+#### FAQs
+
+<FAQ src="long-descriptions" />
+<FAQ src="sharing-documentation" />
+
 
 #### Next steps
 
 <Snippet src="tutorial-next-steps-tests" />
-
-<LoomVideo id="6db6956adbb04f55b6027c461e9b1792" />
-
 
 ### Commit updated changes
 
@@ -315,8 +311,6 @@ You need to commit the changes you made to the project so that the repository ha
 2. Commit your changes: `git commit -m "Add customers model, tests, docs"`
 3. Push your changes to your repository: `git push`
 4. Navigate to your repository, and open a pull request to merge the code into your master branch.
-
-<LoomVideo id="b07d7efe3f054e3bb357b4bccd805e70" />
 
 ## Schedule a job
 

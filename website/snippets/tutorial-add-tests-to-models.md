@@ -1,55 +1,52 @@
-Adding [tests](/docs/building-a-dbt-project/tests) to a project helps validate that your models are working correctly. So let's add some tests to our project!
+Adding [tests](/docs/building-a-dbt-project/tests) to a project helps validate that your models are working correctly. 
+
+To add tests to your project:
 
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
 
-<File name='models/schema.yml'>
+    <File name='models/schema.yml'>
 
-```yaml
-version: 2
+    ```yaml
+    version: 2
 
-models:
-  - name: customers
-    columns:
-      - name: customer_id
-        tests:
-          - unique
-          - not_null
+    models:
+      - name: customers
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
 
-  - name: stg_customers
-    columns:
-      - name: customer_id
-        tests:
-          - unique
-          - not_null
+      - name: stg_customers
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
 
-  - name: stg_orders
-    columns:
-      - name: order_id
-        tests:
-          - unique
-          - not_null
-      - name: status
-        tests:
-          - accepted_values:
-              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
-      - name: customer_id
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_customers')
-              field: customer_id
+      - name: stg_orders
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_customers')
+                  field: customer_id
 
-```
+    ```
 
-</File>
+    </File>
 
-3. Execute `dbt test`, and confirm that all your tests passed.
-
-<CloudCore>
-    <Lightbox src="/img/successful-tests-dbt-cloud.png" title="Passing tests when using dbt Cloud" />
-    <Lightbox src="/img/successful-tests-dbt-cli.png" title="Passing tests when using the dbt CLI" />
-</CloudCore>
+3. Run `dbt test`, and confirm that all your tests passed.
 
 :::info
 

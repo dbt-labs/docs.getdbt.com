@@ -14,7 +14,12 @@ description: Let's test and document our models to build trust in our data.
 
 <Snippet src="tutorial-document-your-models" />
 
-<LoomVideo id="f946321f692747e59bec3b726eccbfd4" />
+3. Click the link above the file tree in the Develop interface to launch documentation in a new tab.
+
+#### FAQs
+
+<FAQ src="long-descriptions" />
+<FAQ src="sharing-documentation" />
 
 ## Next steps
 

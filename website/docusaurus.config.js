@@ -98,7 +98,7 @@ var siteSettings = {
         },
         {
           to: '/dbt-cli/cli-overview',
-          label: 'dbt CLI',
+          label: 'dbt Core',
           position: 'left',
           activeBasePath: 'dbt-cli'
         },
@@ -125,15 +125,15 @@ var siteSettings = {
           position: 'right',
           items: [
             {
-              label: 'Getting Started Tutorial',
+              label: 'Getting started',
               to: '/tutorial/getting-started',
             },
             {
-              label: 'Online Courses',
+              label: 'Online courses',
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Live Courses',
+              label: 'Live courses',
               href: 'https://learn.getdbt.com/public',
             }
           ],
