@@ -6,7 +6,7 @@ title: "Oracle Profile"
 
 **Maintained by:** Oracle    
 **Source:** [Github](https://github.com/oracle/dbt-oracle)    
-**Core version:** v1.0.5     
+**Core version:** v1.0.6     
 **dbt Cloud:** Not Supported    
 **dbt Slack channel** [#db-oracle](https://getdbt.slack.com/archives/C01PWH4TXLY)       
 
@@ -34,7 +34,15 @@ export DBT_ORACLE_SCHEMA=<username>
 
 An Oracle connection profile for dbt can be set using any one of the following methods
 
-### Using Database host
+<Tabs
+  defaultValue="database_hostname"
+  values={[
+    { label: 'Using Database hostname', value: 'database_hostname'},
+    { label: 'Using TNS net service name', value: 'tns_net_service_name'},
+    { label: 'Using Connect string', value:'connect_string'}]
+}>
+
+<TabItem value="database_hostname">
 
 To connect using the database hostname or IP address, you need to specify the following
 - host
@@ -66,8 +74,9 @@ dbt_test:
          threads: 4
 ```
 </File>
+</TabItem>
 
-### Using TNS net service name
+<TabItem value="tns_net_service_name">
 
 The `tnsnames.ora` file is a configuration file that contains network service names mapped to connect descriptors.
 The directory location of `tnsnames.ora` file can be specified using `TNS_ADMIN` environment variable
@@ -105,9 +114,9 @@ dbt_test:
          threads: 4
 ```
 </File>
+</TabItem>
 
-
-### Using Connection string
+<TabItem value="connect_string">
 
 The connection string identifies which database service to connect to. It can be one of the following
 
@@ -135,6 +144,9 @@ dbt_test:
 ```
 
 </File>
+</TabItem>
+
+</Tabs>
 
 ## Connecting to Oracle Autonomous Database in Cloud
 
