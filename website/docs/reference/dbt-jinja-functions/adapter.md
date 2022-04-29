@@ -87,7 +87,7 @@ __Args__:
  * `schema`: The schema of the relation to fetch
  * `identifier`: The identifier of the relation to fetch
 
-Returns a cahched [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
+Returns a cached [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
 
 **Usage**:
 
