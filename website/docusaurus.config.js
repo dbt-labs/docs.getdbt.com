@@ -125,15 +125,15 @@ var siteSettings = {
           position: 'right',
           items: [
             {
-              label: 'Getting Started Tutorial',
-              to: '/tutorial/setting-up',
+              label: 'Getting started',
+              to: '/tutorial/getting-started',
             },
             {
-              label: 'Online Courses',
+              label: 'Online courses',
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Live Courses',
+              label: 'Live courses',
               href: 'https://learn.getdbt.com/public',
             }
           ],
