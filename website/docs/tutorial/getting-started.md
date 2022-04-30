@@ -4,9 +4,9 @@ id: getting-started
 description: "Create your first dbt project using a SQL query."
 ---
 
-By centralizing your work, dbt builds software engineering-style guardrails for data analyst work. dbt enables you to collaborate on SQL queries using Git, then let's you run, test, and document those queries.
+dbt centralizes your analytics code and enables software engineering-style guardrails for data teams. dbt enables you to collaborate on SQL, version it through Git, and test and document your queries before safely deploying them to production and monitoring them.
 
-While taking code, compiling it, and running it against your database, dbt modularizes your code, reducing it to a single source. Having a single source reduces errors when you update it because you no longer need to copy and paste updates to different places.
+dbt takes your analytics code and helps you modularize it before you compile and run against your database. This enables you and your team to collaborate on a single source of truth for metrics and insights. A single source of truth, combined with the ability to define tests for your data, reduces errors when your analytics code is updated due to changes in your business and alerts you when a job fails
 
 This guide will show you how to set up dbt Cloud and perform some key tasks. These tasks will illustrate how dbt establishes standard practices for your work.
 

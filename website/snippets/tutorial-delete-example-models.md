@@ -1,6 +1,6 @@
-You can now delete the files that dbt created when you initialized the project.
+You can now delete the files that dbt created when you initialized the project:
 
-1. Delete the `models/example/` directory
+1. Delete the `models/example/` directory.
 2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it.
 
     <File name='dbt_project.yml'>

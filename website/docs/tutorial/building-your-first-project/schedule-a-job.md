@@ -12,10 +12,8 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 
 Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
 
-1. Click the `commit` button, with a message like "Add customers model, tests, docs"
-2. Click the `merge to master` button
-
-<LoomVideo id="afd55d89abdc4a77b34deaee90da0813" />
+1. Click **Commit** and add a message. For example, "Add customers model, tests, docs."
+2. Click **merge to main** To add these changes to the main branch on your repo.
 
 ## Create a deployment environment
 
@@ -28,15 +26,15 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Create and run a job
 
-Jobs are a set of dbt commands (e.g. `dbt run`, `dbt test`) that you want to run on a schedule.
+Jobs are a set of dbt commands that you want to run on a schedule. For example, `dbt run` and `dbt test`.
 
 1. After creating your deployment environment, you should be directed to the page for new environment. If not, click ![hamburger icon](/img/hamburger-icon.png), then click **Jobs**.
 2. Click **New Job** and provide a name, for example "Production run", and link to the Environment you just created.
 3. Click **Generate docs**.
-4. Ensure you have the following commands as part of your job:
+4. Ensure you include these commands as part of your job:
       * `dbt run`
       * `dbt test`
-5. For this exercise, **do NOT** set a schedule for your project to run -- while your organization's project **should** run regularly, there's no need to run this project on a schedule. You might use up your BigQuery credits if you schedule it.
+5. For this exercise, **do NOT** set a schedule for your project to run -- while your organization's project **should** run regularly, there's no need to run this project on a schedule.
 6. Select **Save**, then click **Run now** to run your job.
 7. Click the run to see the progress — once the run is complete, click **View Documentation** to see the docs for your project.
 

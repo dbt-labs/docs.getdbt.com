@@ -185,63 +185,7 @@ Check out a new git branch to work on new code:
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
 3. Paste the following query into the `models/customers.sql` file.
 
-    ```sql
-    with customers as (
-
-        select
-            id as customer_id,
-            first_name,
-            last_name
-
-        from `dbt-tutorial`.jaffle_shop.customers
-
-    ),
-
-    orders as (
-
-        select
-            id as order_id,
-            user_id as customer_id,
-            order_date,
-            status
-
-        from `dbt-tutorial`.jaffle_shop.orders
-
-    ),
-
-    customer_orders as (
-
-        select
-            customer_id,
-
-            min(order_date) as first_order_date,
-            max(order_date) as most_recent_order_date,
-            count(order_id) as number_of_orders
-
-        from orders
-
-        group by 1
-
-    ),
-
-    final as (
-
-        select
-            customers.customer_id,
-            customers.first_name,
-            customers.last_name,
-            customer_orders.first_order_date,
-            customer_orders.most_recent_order_date,
-            coalesce(customer_orders.number_of_orders, 0) as number_of_orders
-
-        from customers
-
-        left join customer_orders using (customer_id)
-
-    )
-
-    select * from final
-    ```
+    <Snippet src="tutorial-sql-query" />
 
 4. From the command line, enter `dbt run`.
     <div style={{maxWidth: '400px'}}>
@@ -260,7 +204,7 @@ When you return to the BigQuery console, you can `select` from this model.
 
 ### Change the way your model is materialized
 
-One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
+
 
 <Snippet src="tutorial-change-way-model-materialized" />
 

@@ -48,11 +48,7 @@ To add tests to your project:
 
 3. Run `dbt test`, and confirm that all your tests passed.
 
-:::info
-
 When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test. Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
-
-:::
 
 #### FAQs
 
