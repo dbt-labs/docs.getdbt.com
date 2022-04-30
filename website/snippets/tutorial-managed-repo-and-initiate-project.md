@@ -26,23 +26,23 @@ select * from `dbt-tutorial.jaffle_shop.customers`
 <div>
 
 ```sql
+select * from jaffle_shop_customers
+```
+
+</div>
+
+<div>
+
+```sql
+select * from jaffle_shop.customers
+```
+
+</div>
+
+<div>
+
+```sql
 select * from raw.jaffle_shop.customers
-```
-
-</div>
-
-<div>
-
-```sql
-select * from `dbt-tutorial.jaffle_shop.customers`
-```
-
-</div>
-
-<div>
-
-```sql
-select * from `dbt-tutorial.jaffle_shop.customers`
 ```
 
 </div>
