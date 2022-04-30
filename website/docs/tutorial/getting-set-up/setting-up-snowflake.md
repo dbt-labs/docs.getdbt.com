@@ -9,7 +9,7 @@ sidebar_label: "Set up and connect Snowflake"
 
 For the Snowflake project in the getting started guide, you'll learn how to set up Snowflake and connect it to dbt Cloud.
 
-This project will walk you through:
+This guide will walk you through:
 
 * Setting up a Snowflake trial account
 * Loading training data into your Snowflake account

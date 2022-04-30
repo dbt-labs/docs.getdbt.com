@@ -9,7 +9,7 @@ sidebar_label: "Set up and connect BigQuery"
 
 For the BigQuery project in the getting started guide, you'll learn how to set up BigQuery and connect it to dbt Cloud.
 
-This project will walk you through:
+This guide will walk you through:
 
 - Setting up a new BigQuery instance
 - Replicating sample data for this guide
