@@ -1,3 +1,5 @@
+Let's start this section by creating a dbt Cloud account if you haven't already.
+
 1. Navigate to [dbt Cloud](https://cloud.getdbt.com).
 2. If you don't have a dbt account, create a new one and verify your account via email.
 3. If you have a dbt Cloud account, you can create a new project from your existing account:
