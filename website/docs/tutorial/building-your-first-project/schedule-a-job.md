@@ -22,8 +22,6 @@ Now that you've built your customer model, you need to commit the changes you ma
 3. Name your deployment environment. For example, "Production."
 4. Add a target dataset (for example, "analytics"). dbt will build into this dataset. For some warehouses this will be named "schema."
 
-<LoomVideo id="bb6ea5b628ef4d019f9167f6ddf738cc" />
-
 ## Create and run a job
 
 Jobs are a set of dbt commands that you want to run on a schedule. For example, `dbt run` and `dbt test`.
