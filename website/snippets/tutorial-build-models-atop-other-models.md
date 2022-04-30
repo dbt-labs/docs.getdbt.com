@@ -6,7 +6,12 @@ Now you can experiment by separating the logic out into separate models and usin
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
 </div>
 
-1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query:
+1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
+2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
+
+    <WHCode>
+
+    <div>
 
     <File name='models/stg_customers.sql'>
 
@@ -21,8 +26,6 @@ Now you can experiment by separating the logic out into separate models and usin
 
     </File>
 
-2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query:
-
     <File name='models/stg_orders.sql'>
 
     ```sql
@@ -36,6 +39,103 @@ Now you can experiment by separating the logic out into separate models and usin
     ```
 
     </File>
+
+    </div>
+
+    <div>
+
+    <File name='models/stg_customers.sql'>
+
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from jaffle_shop_customers
+    ```
+
+    </File>
+
+    <File name='models/stg_orders.sql'>
+
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from jaffle_shop_orders
+    ```
+
+    </File>
+
+    </div>
+
+    <div>
+
+    <File name='models/stg_customers.sql'>
+
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from jaffle_shop.customers
+    ```
+
+    </File>
+
+    <File name='models/stg_orders.sql'>
+
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from jaffle_shop.orders
+    ```
+
+    </File>
+
+    </div>
+
+    <div>
+
+    <File name='models/stg_customers.sql'>
+
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from raw.jaffle_shop.customers
+    ```
+
+    </File>
+
+    <File name='models/stg_orders.sql'>
+
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from raw.jaffle_shop.orders
+    ```
+
+    </File>
+
+    </div>
+
+    </WHCode>
 
 3. Edit the SQL in your `models/customers.sql` file as follows:
 
