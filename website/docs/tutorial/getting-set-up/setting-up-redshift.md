@@ -13,7 +13,6 @@ This guide will walk you through:
 
 - Setting up a Redshift cluster
 - Loading training data into your Redshift account
-- Configuring a SQL endpoint in Redshift
 - Connecting dbt Cloud and Redshift
 
 ## Prerequisites
@@ -194,7 +193,6 @@ Congratulations! You have successfully completed the following:
 
 - Set up a Redshift cluster
 - Loaded training data into your Redshift account
-- Configured a SQL endpoint in Redshift
 - Connected dbt Cloud and Redshift
 
 ## Next steps
