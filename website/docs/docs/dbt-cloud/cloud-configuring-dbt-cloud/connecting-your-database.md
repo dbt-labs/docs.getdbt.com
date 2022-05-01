@@ -143,6 +143,30 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 
 ## Connecting to Databricks
 
+### Current Databricks Connection Details (to be deprecated June 30, 2022)
+
+dbt Cloud supports connecting to Databricks using
+[a Cluster](https://docs.databricks.com/clusters/index.html) or 
+[a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+Depending on how you connect to Databricks, either one of the `Cluster` or
+`Endpoint` configurations must be provided, but setting _both_ values is not
+allowed.
+
+The following fields are available when creating a Databricks connection:
+
+| Field | Description | Examples |
+| ----- | ----------- | -------- |
+| Host Name | The hostname of the Databricks account to connect to | `avc-def1234ghi-9999.cloud.databricks.com` |
+| Port | The port to connect to Databricks for this connection | 443 |
+| Organization | Optional (default: 0) | 0123456789 |
+| Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
+| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 0123456789 |
+| User | Optional | dbt_cloud_user |
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connection.png" title="Configuring a Databricks connection"/>
+
+### New Databricks Connection Details
+
 dbt Cloud supports connecting to Databricks using
 [a Cluster](https://docs.databricks.com/clusters/index.html) or 
 [a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html). Databricks Clusters provide all the flexibility of Spark. Databricks SQL Endpoints provide an opinionated way of running SQL workloads with optimal performance and price. 
