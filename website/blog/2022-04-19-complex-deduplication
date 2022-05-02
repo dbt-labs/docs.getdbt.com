@@ -1,6 +1,9 @@
 ---
-title: Complex deduplication
-author: TODO: lauren
+title: "How we remove partial duplicates: approaching complex replication issues as an opportunity to refine your models' grain"
+description: "dbt Labs Analytics Engineer Lauren Benezra walks you through an example of how to refine your data's grain, using less-than-ideal data loading issues as an opportunity to improve the clarity of the entities you're modeling and how you express them."
+authors: [lauren_benezra]
+hide_table_of_contents: false
+date: 2022-05-22
 ---
 
 ## Welcome
@@ -8,6 +11,8 @@ author: TODO: lauren
 Hey data champion — so glad you’re here! Sometimes datasets need a **team** of engineers to tackle their deduplification (totz a real word), and that’s why we wrote this down. *For you*, friend, *we wrote it down for you*. You’re welcome!
 
 Let’s get rid of these dupes and send you on your way to do the rest of the *super-fun-analytics-engineering* that you want to be doing, on top of *super-sparkly-clean* data. But first, let’s make sure we’re all on the same page.
+
+<!--truncate-->
 
 You’re here because your duplicates are *special* duplicates. These special dupes are not the basic ones that have same exact values in every column and duplicate primary keys that can be easily fixed by haphazardly throwing in a `distinct` (yeah that’s right, I called using `distinct` haphazard!). These are *partial* duplicates, meaning your entity of concern's primary key is not unique *on purpose* (or perhaps you're just dealing with some less than ideal data syncing). You may be capturing historical, type-two slowly changing dimensional data, or incrementally building a table with an append-only strategy, because you actually want to capture some change over time for the entity your recording (or, as mentioned, your loader may just be appending data indiscriminately on a schedule without much care for your time and sanity). Whatever has brought you here, you know have a table where the *grain* is not your entity’s primary key, but instead the entity’s primary key + the column values that you’re tracking. Confused? Let’s look at an example.
 
