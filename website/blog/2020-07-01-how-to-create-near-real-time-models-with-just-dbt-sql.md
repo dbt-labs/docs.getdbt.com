@@ -37,7 +37,7 @@ Tldr: If you need transformed, operational data to make in-the-moment decisions 
 
 #### 1\. Materialize everything as views
 
-Since views are simply stored queries that do not store data, they are always up to date. This approach works until your transformations take more than 2+ minutes, which wouldn’t meet a “near real-time” SLA. When your data is small enough, this is the preferred approach, however it isn’t scalable.
+Since <Term id="view">views</Term> are simply stored queries that do not store data, they are always up to date. This approach works until your transformations take more than 2+ minutes, which wouldn’t meet a “near real-time” SLA. When your data is small enough, this is the preferred approach, however it isn’t scalable.
 
 #### 2\. Run dbt in micro-batches
 
