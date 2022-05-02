@@ -1,5 +1,5 @@
 ---
-title: "How we remove partial duplicates: complex deduplication to refine your models' grain"
+title: "How we remove partial duplicates: Complex deduplication to refine your models' grain"
 description: "dbt Labs Analytics Engineer Lauren Benezra walks you through an example of how to refine your data's grain, using less-than-ideal data loading issues as an opportunity to improve the clarity of the entities you're modeling and how you express them."
 authors: [lauren_benezra]
 hide_table_of_contents: false
