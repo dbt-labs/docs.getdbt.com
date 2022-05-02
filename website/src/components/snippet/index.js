@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.module.css';
+import WHCore from '@site/src/components/whcode';
 
 {/* 
   The Snippet component works in a similar way as FAQs.

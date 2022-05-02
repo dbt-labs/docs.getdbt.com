@@ -1,10 +1,12 @@
 import React from 'react';
 
-function WistiaVideo({id}) {
+
+
+function WistiaVideo({id, paddingTweak = "56.25%"}) {
   return (
 
   	 <React.Fragment>
-		 <div className="wistia_responsive_padding" style={{padding:"56.25% 0 0 0",position:"relative",marginBottom:"30px"}}>
+		 <div className="wistia_responsive_padding" style={{padding:`${paddingTweak} 0 0 0`,position:"relative",marginBottom:"30px"}}>
 			<div className="wistia_responsive_wrapper" style={{height:"100%",left:0,position:"absolute",top:0,width:"100%"}}>
 				<iframe 
 					src={`https://fast.wistia.net/embed/iframe/${id}?seo=false&videoFoam=true`} 

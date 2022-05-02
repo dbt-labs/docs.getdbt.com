@@ -189,3 +189,21 @@ simon_podhajsky:
       icon: fa-linkedin
     - url: https://twitter.com/sim_pod
       icon: fa-twitter
+
+viraj_parekh:
+  name: Viraj Parekh
+  job_title: Field CTO
+  organization: Astronomer
+  image_url: /img/blog/authors/viraj-parekh.jpeg
+  links:
+    - url: https://www.linkedin.com/in/viraj-parekh-46114689/
+      icon: fa-linkedin
+
+josh_fell:
+  name: Josh Fell
+  job_title: Ecosystem Engineer
+  organization: Astronomer
+  image_url: /img/blog/authors/josh-fell.jpeg
+  links:
+    - url: https://www.linkedin.com/in/josh-fell/
+      icon: fa-linkedin
