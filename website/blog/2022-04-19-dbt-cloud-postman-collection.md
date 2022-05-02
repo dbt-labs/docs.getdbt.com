@@ -47,7 +47,7 @@ Beyond the day-to-day process of managing their dbt Cloud accounts, many organiz
 
 ## Appendix 
 
-###Examples of how to use the Postman Collection
+### Examples of how to use the Postman Collection
 
 Let’s run through some examples on how to make good use of this Postman Collection.
 
