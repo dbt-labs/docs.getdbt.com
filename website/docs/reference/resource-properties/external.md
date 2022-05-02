@@ -32,7 +32,7 @@ sources:
 
 An extensible dictionary of metadata properties specific to sources that point to external tables.
 There are optional built-in properties, with simple type validation, that roughy correspond to 
-the Hive external table spec. You may define and use as many additional properties as you'd like.
+the Hive external <Term id="table" /> spec. You may define and use as many additional properties as you'd like.
 
 You may wish to define the `external` property in order to:
 - Power macros that introspect [`graph.sources`](dbt-jinja-functions/graph)
