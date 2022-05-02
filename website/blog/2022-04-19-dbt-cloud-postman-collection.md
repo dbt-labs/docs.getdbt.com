@@ -88,7 +88,7 @@ We’ll send a GET request to
 
 https://cloud.getdbt.com/api/v3/accounts/28885/projects/86704/environments/75286/
 
-#### Push the Environment to the production project
+#### Push the environment to the production project
 
 We take the response from the GET request above, and then to the following: 
 
@@ -118,7 +118,7 @@ We take the response from the GET request above, and then to the following:
 
 3. Note the environment ID returned in the response, as we’ll use to create a dbt Cloud job in the next step 
 
-#### Pull the Job definition from the dev project
+#### Pull the job definition from the dev project
 
 We send a GET request to:
 
