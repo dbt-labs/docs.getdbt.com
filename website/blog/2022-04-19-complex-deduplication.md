@@ -1,5 +1,5 @@
 ---
-title: "How we remove partial duplicates: approaching complex replication issues as an opportunity to refine your models' grain"
+title: "How we remove partial duplicates: complex deduplication to refine your models' grain"
 description: "dbt Labs Analytics Engineer Lauren Benezra walks you through an example of how to refine your data's grain, using less-than-ideal data loading issues as an opportunity to improve the clarity of the entities you're modeling and how you express them."
 authors: [lauren_benezra]
 hide_table_of_contents: false
@@ -8,8 +8,6 @@ is_featured: true
 slug: how-we-remove-partial-duplicates
 date: 2022-05-02
 ---
-
-## Welcome
 
 Hey data champion — so glad you’re here! Sometimes datasets need a **team** of engineers to tackle their deduplification (totz a real word), and that’s why we wrote this down. *For you*, friend, *we wrote it down for you*. You’re welcome!
 
