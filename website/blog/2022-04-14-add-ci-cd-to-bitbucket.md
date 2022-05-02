@@ -58,7 +58,7 @@ grant create on database [dbname] to role_prod;
 
 -- Grant all permissions required for the production role
 
-create role dev_ci with login password '[password]';
+create role dev_ci with login password [password];
 
 grant role_dev to dev_ci;
 
@@ -68,7 +68,7 @@ grant all on schema dbt_ci to role_dev;
 
 alter schema dbt_ci owner to role_dev;
 
-create role dbt_bitbucket with login password '[password]';
+create role dbt_bitbucket with login password [password];
 
 grant role_prod to dbt_bitbucket;
 ```
