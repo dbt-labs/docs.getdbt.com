@@ -141,7 +141,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Overview",
-      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
+      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' },
       items: [
         'docs/dbt-cloud/cloud-quickstart',
       ],
@@ -285,7 +285,7 @@ const sidebarSettings = {
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposures",
-            ],
+              ],
             },
           ],
         },
@@ -575,49 +575,40 @@ const sidebarSettings = {
   tutorial: [
     {
       type: "category",
-      label: "Getting Started",
-      collapsed: false,
+      label: "Getting Started with dbt Cloud",
+      link: { type: 'doc', id: 'tutorial/getting-started' },
       items: [
-        "tutorial/setting-up",
         {
           type: "category",
-          label: "Create a project",
+          label: "Getting set up",
+          link: { type: 'doc', id: 'tutorial/getting-set-up' },
           items: [
-            "tutorial/create-a-project-dbt-cloud",
-            "tutorial/create-a-project-dbt-cli",
+            "tutorial/getting-set-up/setting-up-bigquery",
+            "tutorial/getting-set-up/setting-up-databricks",
+            "tutorial/getting-set-up/setting-up-redshift",
+            "tutorial/getting-set-up/setting-up-snowflake",
           ],
         },
-        "tutorial/build-your-first-models",
-        "tutorial/test-and-document-your-project",
-        "tutorial/deploy-your-project",
+        {
+          type: "category",
+          label: "Building your first project",
+            link: { type: 'doc', id: 'tutorial/building-your-first-project' },
+          items: [
+            "tutorial/building-your-first-project/build-your-first-models",
+            "tutorial/building-your-first-project/test-and-document-your-project",
+            "tutorial/building-your-first-project/schedule-a-job",
+          ],
+        },
       ],
     },
     {
       type: "category",
-      label: "Leveling up",
-      collapsed: false,
+      label: "Learning more",
+      link: { type: 'doc', id: 'tutorial/learning-more' },
       items: [
-        "tutorial/using-jinja",
-        "tutorial/refactoring-legacy-sql"
-      ],
-    },
-  ],
-  learn: [
-    {
-      type: "category",
-      label: "Getting Started",
-      items: [
-        "learn/setting-up",
-        {
-          type: "category",
-          label: "Create a project",
-          items: [
-            "learn/create-a-project-dbt-cloud",
-            "learn/create-a-project-dbt-cli",
-          ],
-        },
-        "learn/build-your-first-models",
-        "learn/test-and-document-your-project",
+        "tutorial/learning-more/getting-started-dbt-core",
+        "tutorial/learning-more/using-jinja",
+        "tutorial/learning-more/refactoring-legacy-sql",
       ],
     },
   ],
