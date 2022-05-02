@@ -3,7 +3,8 @@ title: Are there any example dbt projects?
 ---
 
 Yes!
-* **Getting Started Tutorial:** You can build your own example dbt project in the [Getting Started Tutorial](tutorial/1-setting-up.md)
+
+* **Getting Started Tutorial:** You can build your own example dbt project in the [Getting Started Tutorial](tutorial/getting-started.md)
 * **Jaffle Shop:** A demonstration project (closely related to the tutorial) for a fictional ecommerce store ([source code](https://github.com/dbt-labs/jaffle_shop))
 * **MRR Playbook:** A demonstration project that models subscription revenue ([source code](https://github.com/dbt-labs/mrr-playbook), [docs](https://www.getdbt.com/mrr-playbook/#!/overview))
 * **Attribution Playbook:** A demonstration project that models marketing attribution  ([source code](https://github.com/dbt-labs/attribution-playbook), [docs](https://www.getdbt.com/attribution-playbook/#!/overview))

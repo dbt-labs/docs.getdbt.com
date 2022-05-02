@@ -55,12 +55,12 @@ materializedview | YES | Creates a [materialized view](https://materialize.com/d
 table | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main). (Actual table support pending [#5266](https://github.com/MaterializeInc/materialize/issues/5266))
 index | YES | Creates an [index](https://materialize.com/docs/sql/create-index/#main).
 sink | YES | Creates a [sink](https://materialize.com/docs/sql/create-sink/#main).
-ephemeral | YES | Executes queries using CTEs.
-incremental | NO | Use the `materializedview` materialization instead. Materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
+ephemeral | YES | Executes queries using <Term id="cte">CTEs</Term>.
+incremental | NO | Use the `materializedview` <Term id="materialization" /> instead. Materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
 
 ### Seeds
 
-Running [`dbt seed`](commands/seed) will create a static materialized view from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
+Running [`dbt seed`](commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
 
 ## Resources
 
