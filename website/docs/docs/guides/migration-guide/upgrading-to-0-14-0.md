@@ -19,7 +19,7 @@ There are a handful of changes to be aware of as you migrate from archives to sn
 - snapshots are specified in .sql files, whereas archives were specified in the `dbt_project.yml` file
 
 ### Snapshot column name changes
-This table shows the differences between the column names produced by `dbt archive` and `dbt snapshot`. **Note:** These new snapshot meta-column names are _unquoted_. If you're using Snowflake, this means that your snapshot column names will be rendered in upper-case, rather than lower-case.
+This <Term id="table" /> shows the differences between the column names produced by `dbt archive` and `dbt snapshot`. **Note:** These new snapshot meta-column names are _unquoted_. If you're using Snowflake, this means that your snapshot column names will be rendered in upper-case, rather than lower-case.
 
 | Archive Column (quoted) | Snapshot Column (unquoted) |
 | ----------------------- | -------------------------- |
@@ -45,7 +45,7 @@ The provided migration script should be run _once_ by a single dbt user. This da
 
 :::caution Custom Materializations
 
-This guide assumes that you are using the built-in archive materialization. If you are using a custom archive materialization, see the section on "Migrating archives manually" below.
+This guide assumes that you are using the built-in archive <Term id="materialization" />. If you are using a custom archive materialization, see the section on "Migrating archives manually" below.
 
 :::
 
@@ -145,7 +145,7 @@ To upgrade this macro (and suppress this warning), add a second argument, `node`
 
 ## Non-Destructive runs
 
-The `--non-destructive` flag was removed from dbt in v0.14.0. This flag existed as a workaround for the lack of late-binding views in Amazon Redshift. With the introduction of the [with no schema binding](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html) clause for Redshift views, non-destructive runs are no longer necessary.
+The `--non-destructive` flag was removed from dbt in v0.14.0. This flag existed as a workaround for the lack of late-binding <Term id="view">views</Term> in Amazon Redshift. With the introduction of the [with no schema binding](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html) clause for Redshift views, non-destructive runs are no longer necessary.
 
 The `--non-destructive` flag was problematic for a few reasons:
 
@@ -162,7 +162,7 @@ Postgres users should ensure that they use table or incremental models for relat
 
 ## Snowflake Incremental Model Changes
 
-In dbt v0.14.0, the implementation of `incremental` models on Snowflake has changed. By default, dbt will use a [merge](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) statement to atomically upsert records into a table incrementally. Previous versions of dbt used a two-step `delete+insert` approach to upsert data.
+In dbt v0.14.0, the implementation of `incremental` models on Snowflake has changed. By default, dbt will use a [merge](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) statement to atomically upsert records into a <Term id="table" /> incrementally. Previous versions of dbt used a two-step `delete+insert` approach to upsert data.
 
 The `merge` statement requires that records participating in the upsert are unique. If these records are not unique, then the statement will fail with a "nondeterministic merge" error. If you see this error after upgrading to 0.14.0, you can resolve it in one of two ways:
 
