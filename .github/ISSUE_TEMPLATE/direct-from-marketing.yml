@@ -7,6 +7,8 @@ body:
     attributes:
       value: |
         Let's get some content up!
+
+        This issue template is for dbt Labs employees who are adding marketing-approved content to the docs repo.
         
   - type: input
     id: contact
@@ -18,26 +20,19 @@ body:
       required: true
 
   - type: checkboxes
-    id: from-discussion
+    id: from-marketing
     attributes:
       label: This issue is being made to create a marketing-approved piece.
       description: >
-        This content will typically fall under glossary pages, community recap events, and devblog content for campaigns. Please reach out to John Blust if there's any confusion here.
+        This content will typically fall under glossary pages, community recap events, and devblog content for campaigns. Please reach out to @johnblust if there's any confusion here.
       options:
-        - label: I am directly creating this issue for a marketing-approved piece.
+        - label: I work for dbt Labs and am creating this issue for a marketing-approved piece.
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: Link to the marketing artifact/source material you are referencing.
-      description: Please link to the artifact (content brief/event recap) you are using to guide your work.
-    validations:
-      required: false
-      
-  - type: textarea
-    attributes:
-      label: Link to the initial outline we will develop through this Issue.
-      description: Please link to the initial outline in FigJam, Notion, or Google Docs
+      label: Link to the initial outlines we will develop through this Issue.
+      description: Please link to intial outline in FigJam, Notion, or Google Docs you are using to guide your work.
     validations:
       required: true
