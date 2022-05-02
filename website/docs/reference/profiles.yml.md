@@ -14,7 +14,7 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
 [config](global-configs):
   [send_anonymous_usage_stats](global-configs#send_anonymous_usage_stats): <true | false>
   [use_colors](global-configs#use_colors): <true | false>
-  [partial_parse](global-configs#partial_parse): <integer>
+  [partial_parse](global-configs#partial_parse): <bool>
   [printer_width](global-configs#printer_width): <true | false>
   [write_json](global-configs#write_json): <true | false>
   [warn_error](global-configs#warn_error): <true | false>
