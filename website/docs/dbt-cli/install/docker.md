@@ -14,7 +14,7 @@ description: "You can use Docker to install dbt and adapter plugins from the com
 
 Official dbt Docker images are hosted on our [GitHub packages page](https://github.com/orgs/dbt-labs/packages?visibility=public).  We maintain images and tags for each database adapter as well as a `latest` and `<major version>.<minor version>.latest` tag.  They can be installed by utilizing the `docker pull` command:
 ```
-docker pull ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>
+docker pull ghcr.io/dbt-labs/dbt-core:latest
 ```
 
 ### Running a dbt Docker image in a container:
