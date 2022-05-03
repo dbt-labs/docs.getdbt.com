@@ -3,7 +3,12 @@ title: "Use Docker to install dbt"
 description: "You can use Docker to install dbt and adapter plugins from the command line."
 ---
 
-You will find dbt Core and all adapter plugins maintained by dbt Labs available as [Docker](https://docs.docker.com/) images. We recommend you use Docker to install dbt in production because it includes dbt Core, one or more database adapters, and all dependencies. You can use Docker to install and develop locally if you don't have a python environment set up.
+ We recommend you use Docker to install dbt in production because it includes dbt Core, one or more database adapters, and all dependencies. You can find `dbt-core` and all dbt Labs-maintained database adapters available as Docker images hosted on our [GitHub packages page](https://github.com/orgs/dbt-labs/packages?visibility=public). Using Docker to install and develop locally does not require you to have a python environment set up. 
+
+### Prerequisites
+* You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site. 
+* You understand which database adapter(s) you need. For more information, see [About dbt adapters](/dbt-cli/install/overview#about-dbt-adapters).
+* You have a general understanding of the dbt, dbt workflow, developing locally in the command line interface (CLI). For more information, see [About dbt](/docs/introduction#how-do-i-use-dbt).
 
 ### Install a dbt Docker image from Github Packages
 
