@@ -26,5 +26,3 @@ Take a look at your Environment Settings - If you **do** have a custom branch fi
 2. In the Environment Settings, remove the custom branch and refresh the IDE 
 
 If you've tried the workarounds above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
-
-</File>

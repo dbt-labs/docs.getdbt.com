@@ -5,4 +5,3 @@ If you'd like to change your billing name, address, or email, just send us a mes
 
 If you'd like to change card details, the account owner can do this by clicking on the hamburger menu —> Account Settings —> Billing.
 
-</File>

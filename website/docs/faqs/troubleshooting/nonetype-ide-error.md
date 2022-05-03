@@ -17,4 +17,3 @@ Usually this errors indicates that you tried connecting your database via [SSH t
 
 If you've tried the step above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
 
-</File>

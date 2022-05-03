@@ -23,5 +23,3 @@ Try updating the old version of the dbt_utils package in your packages.yml to th
 
 If you've tried the workaround above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
 
-</File>
-

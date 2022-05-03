@@ -1,5 +1,6 @@
 ---
 title: Can I store my seeds in a directory other than the `seeds` directory in my project?
+sidebar_label: 'How to name seeds directory'
 ---
 
 <Changelog>

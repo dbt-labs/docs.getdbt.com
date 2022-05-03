@@ -6,6 +6,6 @@ We can absolutely send your managed repository through a zip file in its current
 
 When you're ready to do this, email our Support team at support@getdbt.com with your request and your managed repo URL - you can find this by clicking the hamburger menu > Accounts settings.
 
-</File>
+
 
 

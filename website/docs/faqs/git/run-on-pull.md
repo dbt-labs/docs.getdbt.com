@@ -10,5 +10,3 @@ In order to enable Run on Pull requests, you'll want to remove dbt Cloud from th
 
 If you've tried the workaround above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
 
-</File>
-

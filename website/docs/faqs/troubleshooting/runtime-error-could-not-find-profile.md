@@ -22,5 +22,3 @@ If this is happening in the IDE, you'll want to navigate to the Profile settings
 If this is happening in a job, it might be that you made some sort of change to the deployment environment in which the job is configured and did not re-enter your deployment credentials upon saving those changes. To fix this, you’ll need to go back into the deployment environment settings, re-enter your credentials (either the private key/private key passphrase or the username and password), and kick off a new job run.
 
 If you've tried the step above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
-
-</File>

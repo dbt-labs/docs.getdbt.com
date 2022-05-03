@@ -25,5 +25,4 @@ No worries - this is a current issue the dbt Labs team is working on and we have
 
 If you've tried the workarounds above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
 
-</File>
 

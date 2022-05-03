@@ -1,5 +1,5 @@
 ---
-title: What other model configurations are there?
+title: What model configurations exist?
 ---
 You can also configure:
 * [tags](resource-configs/tags) to support easy categorization and graph selection

@@ -21,4 +21,5 @@ logs/
 
 4. Go back into the Cloud IDE and reclone your repository. This can be done by clicking on the green "ready" in the bottom right corner of the IDE (next to the command bar), and then clicking the orange "reclone repo" button in the pop up.
 
-</File>
+© 2022 GitHub, Inc.
+Terms

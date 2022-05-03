@@ -6,6 +6,6 @@ Presently yes, this is only available to Enterprise users. This is because of th
 
 Check out our [pricing page](https://www.getdbt.com/pricing/) for more information or feel free to [contact us](https://www.getdbt.com/contact) to build your Enterprise pricing.
 
-</File>
+
 
 

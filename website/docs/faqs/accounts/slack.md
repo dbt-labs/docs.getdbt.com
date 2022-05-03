@@ -11,6 +11,3 @@ In general, there are two parts to setting up Slack notifications. The first inv
 - If you **haven't** set up the integration: Watch the entire video below!
 - If you **have** set up the integration: Feel free to skip ahead to 0:40 in the video.
 
-https://www.loom.com/share/80f368e6d03d483282970b2cbc4abf78?t=0 
-
-</File>

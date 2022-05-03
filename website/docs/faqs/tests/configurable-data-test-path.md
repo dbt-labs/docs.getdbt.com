@@ -1,5 +1,6 @@
 ---
 title: Can I store my tests in a directory other than the `tests` directory in my project?
+sidebar_label: 'How to name tests directory'
 ---
 By default, dbt expects your singular test files to be located in the `tests` subdirectory of your project, and generic test definitions to be located in `tests/generic` or `macros`.
 
