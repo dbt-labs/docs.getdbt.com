@@ -1,5 +1,6 @@
 ---
 title: One of my tests failed, how can I debug it?
+id: failed-tests
 ---
 To debug a failing test, find the SQL that dbt ran by:
 * dbt Cloud:

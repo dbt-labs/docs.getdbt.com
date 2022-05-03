@@ -1,5 +1,6 @@
 ---
 title: What happens if the SQL in my query is bad?
+id: sql-errors
 ---
 Or:
 ### I got a Database Error, what does that mean?

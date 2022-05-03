@@ -1,5 +1,6 @@
 ---
 title: Should I use separate files to declare resource properties, or one large file?
+id: multiple-resource-yml-files
 ---
 It's up to you:
 - Some folks find it useful to have one file per model (or source / snapshot / seed etc)

@@ -1,5 +1,6 @@
 ---
 title: How do I run models downstream of one source?
+id: running-model-downstream-of-source
 ---
 To run models downstream of a source, use the `source:` selector:
 

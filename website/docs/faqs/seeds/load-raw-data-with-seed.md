@@ -1,5 +1,6 @@
 ---
 title: Can I use seeds to load raw data?
+id: load-raw-data-with-seed
 ---
 
 Seeds should **not** be used to load raw data (for example, large CSV exports from a production database).

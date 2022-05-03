@@ -1,5 +1,6 @@
 ---
 title: Are there any example dbt projects?
+id: example-projects
 ---
 
 Yes!

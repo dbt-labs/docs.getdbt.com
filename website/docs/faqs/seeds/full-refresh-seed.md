@@ -1,5 +1,6 @@
 ---
 title: The columns of my seed changed, and now I get an error when running the `seed` command, what should I do?
+id: full-refresh-seed
 ---
 If you changed the columns of your seed, you may get a `Database Error`:
 
