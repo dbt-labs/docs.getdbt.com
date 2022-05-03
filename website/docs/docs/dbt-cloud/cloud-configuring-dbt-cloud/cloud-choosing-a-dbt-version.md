@@ -29,12 +29,7 @@ We have always encouraged our customers to upgrade dbt Core versions whenever a 
 
 We will continue to update this table so that customers know when we plan to stop running different versions of Core in Cloud.
 
-<!--- TODO: Replace with a Snippet so that this table always matches the one in Understanding dbt Core versions --->
-
-| dbt Version | Release Date | Deprecation Date |
-| ------------- | -------------- | ------------- | 
-| v0.X.X (major version 0 ) | Various Dates | June 30, 2022 |
-| v1.0.0 | December 2021 | December 2022 |
+<Snippet src="core-versions-table" />
 
 Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may choose to try prereleases of those patch releases before they are generally available.
 

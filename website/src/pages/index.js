@@ -63,7 +63,7 @@ function Home() {
                       <div className="card__footer">
                           <Link
                             className="button button--primary"
-                            to={useBaseUrl('tutorial/setting-up')}>
+                            to={useBaseUrl('tutorial/getting-started')}>
                             Watch Tutorial
                           </Link>
                       </div>
