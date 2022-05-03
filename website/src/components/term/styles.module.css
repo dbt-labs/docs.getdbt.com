@@ -1,0 +1,17 @@
+.term {
+  cursor: pointer;
+  position: relative;
+  text-decoration: underline dotted var(--ifm-font-color-base);
+  color: var(--ifm-font-color-base);
+}
+.term:hover {
+  color: var(--ifm-link-color);
+  text-decoration: underline dotted var(--ifm-link-color);
+}
+.termToolTip {
+  background: var(--color-primary-blue) !important;
+  font-size: .9rem !important;
+  color: #fff !important;
+  max-width: 400px;
+  font-style: normal;
+}

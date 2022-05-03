@@ -75,7 +75,7 @@ The first step was to get all of my raw data into BigQuery. This was the messies
 
 It wasn't immediately clear how to get a message count from each of the Slack communities. The Slack API can provide some of what I need, but I chose instead to use Zapier to load messages into BigQuery in real time.
 
-Zapier is an event-based system that can be used to automate random tasks. It has a collection of connectors with common toolchain components and a straightforward interface for designing actions. I implemented a basic Zap that triggers on each new Slack message, storing a copy of the message in a BigQuery table.
+Zapier is an event-based system that can be used to automate random tasks. It has a collection of connectors with common toolchain components and a straightforward interface for designing actions. I implemented a basic Zap that triggers on each new Slack message, storing a copy of the message in a BigQuery <Term id="table" />.
 
 Before creating the Zap, I created a table called `slack_messages` to act as a destination. The schema is as follows:
 
@@ -333,7 +333,7 @@ from {{ source('metrics', 'dockerhub_pulls') }}
 group by day, image
 ```
 
-I decided to make this a view, since the source table is already pretty svelte and the transformation involved is lightweight. In the future, I'd like to calculate a `new_pulls` field that contains the difference between the current `total_pulls` and the previous day's value. Once I build that, I'm likely to change this model into a table.
+I decided to make this a <Term id="view" />, since the source table is already pretty svelte and the transformation involved is lightweight. In the future, I'd like to calculate a `new_pulls` field that contains the difference between the current `total_pulls` and the previous day's value. Once I build that, I'm likely to change this model into a table.
 
 **PyPI**
 

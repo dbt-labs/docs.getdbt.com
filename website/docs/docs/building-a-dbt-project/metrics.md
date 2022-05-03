@@ -21,9 +21,9 @@ v1.0.0 includes an initial version of metrics, following a [vibrant community di
 v1.0 includes metrics, but they should be considered an _unstable_ API because they are experimental and subject to change. We reserve the right to make breaking changes to the metrics schema in future **minor** versions, but will aim for backwards compatibility when possible.
 :::
 
-## About metrics 
+## About Metrics 
 
-A metric is a timeseries aggregation over a table that supports zero or more dimensions. Some examples of metrics include:
+A metric is a timeseries aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
 - mrr (monthly recurring revenue)
 

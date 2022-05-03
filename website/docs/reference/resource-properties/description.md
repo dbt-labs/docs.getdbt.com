@@ -201,7 +201,7 @@ models:
   - name: dim_customers
     description: >
       One record per customer. Note that a customer must have made a purchase to
-      be included in this table — customer accounts that were created but never
+      be included in this <Term id="table" /> — customer accounts that were created but never
       used have been filtered out.
 
     columns:
