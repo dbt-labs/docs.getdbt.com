@@ -295,4 +295,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /tutorial/deploy-your-project /tutorial/building-your-first-project/deploy-your-project	302
 /tutorial/using-jinja	/tutorial/learning-more/using-jinja	302
 /tutorial/refactoring-legacy-sql	/tutorial/learning-more/refactoring-legacy-sql	302
-/tutorial/tutorial/2b-create-a-project-dbt-cli	/tutorial/learning-more/getting-started-dbt-core	302
+/tutorial/2b-create-a-project-dbt-cli	/tutorial/learning-more/getting-started-dbt-core	302
