@@ -391,3 +391,15 @@ Many community members maintain their adapter plugins under open source licenses
 - Hosting on a public git provider (e.g. GitHub, GitLab)
 - Publishing to [PyPi](https://pypi.org/)
 - Adding to the list of ["Available Adapters"](available-adapters#community-supported)
+
+### Maintaining your new adapter
+
+If your adapter catches on, and people start using it, you may find yourself as the maintainer of an increasingly popular open source project. It's best to communicate your intentions early and often: Is this experimental work that people should use at their own risk? Or is this production-grade code that you're committed to maintaining into the future?
+
+Be aware that new minor version releases of `dbt-core` may include changes to the Python interface for adapter plugins, as well as new or updated test cases. The maintainers of `dbt-core` will clearly communicate these changes in documentation and release notes, and they will aim for backwards compatibility whenever possible. Patch releases of `dbt-core` will _not_ include breaking changes to adapter-facing code. (For more details, see ["About dbt Core versions"](core-versions).)
+
+We strongly encourage you to adopt the following approach when versioning and releasing your plugin:
+- The minor version of your plugin should match the minor version in `dbt-core` (e.g. 1.1.x).
+- Aim to release a new version of your plugin for each new minor version of `dbt-core` (once every three months).
+- While your plugin is new, and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (dbt Core v2).
+- Release patch versions of your plugins whenever needed. These patch releases should contain fixes _only_.
