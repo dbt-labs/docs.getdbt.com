@@ -165,7 +165,7 @@ The following fields are available when creating a Databricks connection:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connection.png" title="Configuring a Databricks connection"/>
 
-### New Databricks Connection Details
+### New Databricks connection details
 
 dbt Cloud supports connecting to Databricks using
 [a Cluster](https://docs.databricks.com/clusters/index.html) or 
