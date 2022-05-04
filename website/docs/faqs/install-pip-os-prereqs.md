@@ -1,5 +1,4 @@
 ---
-id: install-pip-os-prereqs
 title: "Does my operating system have prerequisites?"
 Description: "You can check whether your operating system has prerequisites for installing dbt Core."
 
