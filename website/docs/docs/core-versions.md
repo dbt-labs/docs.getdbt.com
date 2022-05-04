@@ -72,6 +72,10 @@ Like many software projects, dbt Core releases follow [semantic versioning](http
 - **Minor versions**, also called "feature" releases, include a mix of new features, behind-the-scenes improvements, and changes to existing capabilities that are **backwards compatible** with previous minor versions. They will not break code in your project that relies on documented functionality.
 - **Patch versions**, also called "bugfix" or "security" releases, include **fixes _only_**. These fixes could be needed to restore previous (documented) behavior, fix obvious shortcomings of new features, or offer critical fixes for security or installation issues. We are judicious about which fixes are included in patch releases, to minimize the surface area of changes.
 
+We are committed to avoiding breaking changes in minor versions for end users of dbt. There are two types of breaking changes that may be included in minor versions:
+- Changes to the [Python interface for adapter plugins](building-a-new-adapter). These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes.
+- Changes to metadata interfaces, including [artifacts](dbt-artifacts) and [logging](events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](understanding-state).
+
 ### How we version adapter plugins
 
 When you use dbt, you're using `dbt-core` together with an adapter plugin specific to your database. You can see the current list in ["Available adapters"](available-adapters). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
