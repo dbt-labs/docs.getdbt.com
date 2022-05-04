@@ -5,7 +5,7 @@ id: "databricks-profile"
 
 ## Overview of dbt-databricks
 
-**Maintained by:** some dbt loving Bricksters  
+**Maintained by:** dbt-loving Bricksters  
 **Author:** Databricks  
 **Source:** [Github](https://github.com/databricks/dbt-databricks)  
 **dbt Cloud:** Supported  
