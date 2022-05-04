@@ -143,6 +143,8 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 
 ## Connecting to Databricks
 
+You can now connect to Databricks using host and HTTP path of the Databricks cluster or SQL endpoint. For more information, see [New databricks connection details](dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#new-databricks-connection-details).
+
 ### Current Databricks Connection Details (to be deprecated June 30, 2022)
 
 dbt Cloud supports connecting to Databricks using
