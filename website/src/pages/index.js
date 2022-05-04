@@ -57,7 +57,7 @@ function Home() {
                       </div>
                       <div className="card__body">
                         <p>
-                         Follow along with this guide to learn how to build, test, and deploy a new dbt project.
+                         Read this guide to learn how to build, test, and deploy a new dbt project.
                         </p>
                       </div>
                       <div className="card__footer">
