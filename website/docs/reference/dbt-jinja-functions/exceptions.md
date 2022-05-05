@@ -7,7 +7,7 @@ The `exceptions` namespace can be used to raise warnings and errors in dbt users
 
 ## raise_compiler_error
 
-The `exceptions.raise_compiler_error` method will raise a compiler error with the provided message. This is typically only useful in macros or materializations when invalid arguments are provided by the calling model. Note that throwing an exception will cause a model to fail, so please use this variable with care!
+The `exceptions.raise_compiler_error` method will raise a compiler error with the provided message. This is typically only useful in macros or <Term id="materialization">materializations</Term> when invalid arguments are provided by the calling model. Note that throwing an exception will cause a model to fail, so please use this variable with care!
 
 __Example usage__:
 
