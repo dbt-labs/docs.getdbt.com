@@ -4,7 +4,7 @@ id: "running-dbt-in-production"
 ---
 
 ## What does running dbt in production mean?
-Running dbt in production simply means **setting up a system to run a dbt job on a schedule**, rather than running dbt commands manually from the command line. These production dbt jobs should create the tables and views that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](managing-environments).
+Running dbt in production simply means **setting up a system to run a dbt job on a schedule**, rather than running dbt commands manually from the command line. These production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](managing-environments).
 
 :::info dbt commands in production
 
@@ -34,8 +34,10 @@ If you're interested in giving dbt Cloud a spin, you can sign up for a *forever 
 
 ### Using Airflow
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
-* Invoking dbt through the [BashOperator](https://airflow.apache.org/howto/operator/bash.html). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
-* Installing the [airflow-dbt](https://pypi.org/project/airflow-dbt/) python package. This package uses Airflow's operator and hook concept — the source code can be found on [github](https://github.com/gocardless/airflow-dbt).
+* Invoking dbt Core jobs through the [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
+* Installing the [dbt Cloud Provider](https://registry.astronomer.io/providers/dbt-cloud) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud.
+
+For more details on both of these methods, including example implementations, check out [this guide](https://www.astronomer.io/guides/airflow-dbt).
 
 ### Using Prefect
 If your organization is using [Prefect](https://www.prefect.io), use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute and monitor your dbt runs.
