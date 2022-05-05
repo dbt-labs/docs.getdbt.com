@@ -1,7 +1,7 @@
 ---
 title: "Source freshness"
 id: "cloud-snapshotting-source-freshness"
-description: "You can see the state of source data by loking at a recent snapshot."
+description: "Validate that data freshness meets expectations and alert if stale."
 ---
 
 ## Data Source Freshness
@@ -38,7 +38,7 @@ Remember that `dbt build` does _not_ include source freshness checks when it bui
 <Lightbox src="/img/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
 
 ### Source freshness snapshot frequency
-It's important that your freshness jobs run frequently enough to snapshot data latency in accordance with your SLAs. You can imagine that if you have a 1 hour SLA on a particular dataset, snapshotting the freshness of that table once daily would not be appropriate. As a good rule of thumb, you should run your source freshness jobs with at least double the frequency of your lowest SLA.  Here's an example table of some reasonable snapshot frequencies given typical SLAs:
+It's important that your freshness jobs run frequently enough to snapshot data latency in accordance with your SLAs. You can imagine that if you have a 1 hour SLA on a particular dataset, snapshotting the freshness of that <Term id="table" /> once daily would not be appropriate. As a good rule of thumb, you should run your source freshness jobs with at least double the frequency of your lowest SLA.  Here's an example table of some reasonable snapshot frequencies given typical SLAs:
 
 | SLA | Snapshot Frequency |
 | --- | ------------------ |
