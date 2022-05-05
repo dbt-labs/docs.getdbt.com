@@ -26,8 +26,6 @@ In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) m
 | BigQuery     | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅  | ✅  | `pip install dbt-bigquery` |
 | Snowflake    | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ | ✅  | `pip install dbt-snowflake` |
 | Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | ✅ | ✅ | `pip install dbt-spark[PyHive]` |
-| Databricks   | [Profile Setup](spark-profile#odbc), [Configuration](spark-configs#databricks-configurations) | ✅ | ✅ | `pip install dbt-spark[ODBC]` |
-| Presto       | [Profile Setup](presto-profile) | partial support |  | `pip install dbt-presto` |
 
 ### Vendor Supported
 
@@ -35,12 +33,15 @@ These adapter plugins are built and maintained by the same people who build and 
 
 | Adapter for  | Documentation | Install from PyPi |
 | ------------ | ------------- | ----------------- |
-| Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
-| Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
-| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
+| Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks)) | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
-| Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
+| Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
+| Oracle ([dbt-oracle](https://github.com/oracle/dbt-oracle))        | [Profile Setup](oracle-profile)       | `pip install dbt-oracle`     |
+| Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
 | SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
+| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
+| Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
+| TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb)) | [Profile Setup](tidb-profile) | `pip install dbt-tidb` |
 
 
 ### Community Supported
@@ -52,10 +53,10 @@ These adapter plugins are contributed and maintained by members of the community
 | SQL Server & Azure SQL | [Profile Setup](mssql-profile)        | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
 | Azure Synapse          | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+         | `pip install dbt-synapse`    |
 | Exasol Analytics       | [Profile Setup](exasol-profile)       | Exasol 6.x and later      | `pip install dbt-exasol`     |
-| Oracle Database        | [Profile Setup](oracle-profile)       | Oracle 11+                | `pip install dbt-oracle`     |
 | Dremio                 | [Profile Setup](dremio-profile)       | Dremio 4.7+               | `pip install dbt-dremio`     |
 | ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
 | Athena                 | [Profile Setup](athena-profile)       | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
+| Vertica                | [Profile Setup](vertica-profile)      | Vertica 10.0+             | `pip install dbt-vertica`    |
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
 - Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 

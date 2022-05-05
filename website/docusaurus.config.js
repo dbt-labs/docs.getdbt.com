@@ -1,4 +1,5 @@
 const path = require('path');
+const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
 
 /* Debugging */
@@ -33,7 +34,6 @@ if(GIT_BRANCH !== 'current') {
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
-console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
@@ -50,8 +50,8 @@ var siteSettings = {
     colorMode: {
       disableSwitch: true
     },
-    // Adding non-empty strings for Algolia config 
-    // allows Docusaurus to run locally without .env file 
+    // Adding non-empty strings for Algolia config
+    // allows Docusaurus to run locally without .env file
     algolia: {
       apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
       indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
@@ -119,21 +119,21 @@ var siteSettings = {
           label: 'Developer Blog',
           position: 'right',
           activeBasePath: 'blog'
-        },        
+        },
         {
           label: 'Learn',
           position: 'right',
           items: [
             {
-              label: 'Getting Started Tutorial',
-              to: '/tutorial/setting-up',
+              label: 'Getting started',
+              to: '/tutorial/getting-started',
             },
             {
-              label: 'Online Courses',
+              label: 'Online courses',
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Live Courses',
+              label: 'Live courses',
               href: 'https://learn.getdbt.com/public',
             }
           ],
@@ -142,6 +142,10 @@ var siteSettings = {
           label: 'Community',
           position: 'right',
           items: [
+            {
+              label: 'Maintaining a Slack Channel',
+              to: '/community/maintaining-a-channel',
+            },
             {
               label: 'dbt Slack',
               href: 'https://community.getdbt.com/',
@@ -159,7 +163,7 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a>`
     },
   },
   presets: [
@@ -178,7 +182,7 @@ var siteSettings = {
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,
+          sidebarCollapsible: true,     
         },
         blog: {
           blogTitle: 'dbt Developer Blog',
@@ -187,18 +191,22 @@ var siteSettings = {
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
         },
+
       },
     ],
   ],
   plugins: [
     [
-      path.resolve('plugins/insertMetaTags'), 
-      { metatags } 
+      path.resolve('plugins/insertMetaTags'),
+      { metatags }
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
-    path.resolve('plugins/buildBlogData'),
-    path.resolve('plugins/buildAuthorPages'),
+    [
+      path.resolve('plugins/buildGlobalData'),
+      { versionedPages }
+    ],
+    path.resolve('plugins/buildAuthorPages')
   ],
   scripts: [
     {
@@ -222,17 +230,24 @@ var siteSettings = {
   ],
 }
 
-var PRERELEASE = (process.env.PRERELEASE || false);
-
-if (PRERELEASE) {
-  var WARNING_BANNER = {
-    id: 'prerelease', // Any value that will identify this message.
-    content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
-    backgroundColor: '#ffa376', // Defaults to `#fff`.
-    textColor: '#033744', // Defaults to `#000`.
-  }
-  siteSettings.themeConfig.announcementBar = WARNING_BANNER;
+// If versions json file found, add versions dropdown to nav
+if(versions) {
+  siteSettings.themeConfig.navbar.items.push({
+    label: 'Versions',
+    position: 'left',
+    className: 'nav-versioning',
+    items: [
+      ...versions.reduce((acc, version) => {
+        if(version?.version) {
+          acc.push({
+            label: `${version.version}`,
+            href: '#',
+          })
+        }
+        return acc
+      }, [])
+    ]
+  },)
 }
 
 module.exports = siteSettings;
