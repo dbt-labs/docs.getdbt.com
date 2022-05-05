@@ -27,7 +27,7 @@ function Home() {
           	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
           		<div className="col">
           			 <h1>Get started</h1>
-          			 <p>If you’re new to dbt, start here. These resources will get you off to a strong start:</p>
+          			 <p>If you’re new to dbt&trade;, start here. These resources will get you off to a strong start:</p>
 	  			    </div>
 	  		</div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(2vh)"}}>
@@ -63,7 +63,7 @@ function Home() {
                       <div className="card__footer">
                           <Link
                             className="button button--primary"
-                            to={useBaseUrl('tutorial/setting-up')}>
+                            to={useBaseUrl('tutorial/getting-started')}>
                             Watch Tutorial
                           </Link>
                       </div>
@@ -158,7 +158,7 @@ function Home() {
               </div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
           		<div className="col">
-          			 <p>If you’re a dbt Cloud user, these resources may also be helpful:</p>
+          			 <p>If you’re a dbt Cloud&trade; user, these resources may also be helpful:</p>
 	  			</div>
 	  		</div>
 	  		<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>

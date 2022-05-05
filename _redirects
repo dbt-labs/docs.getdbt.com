@@ -1,3 +1,7 @@
+# redirect next
+https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
+
+/img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png	301!
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/install-from-source	/dbt-cli/install/from-source	302
@@ -96,6 +100,9 @@
 /docs/graph	/docs/writing-code-in-dbt/jinja-context/graph	302
 /docs/guides/migration-guide/upgrading-to-014	/docs/guides/migration-guide/upgrading-to-0-14-0	302
 /docs/guides/migration-guide/upgrading-from-0-10-to-0-11	/docs/guides/migration-guide/upgrading-to-0-11-0	302
+/docs/guides/migration-guide/upgrading-to-0-20-0	/docs/guides/migration-guide/upgrading-to-v0.20	302
+/docs/guides/migration-guide/upgrading-to-0-21-0	/docs/guides/migration-guide/upgrading-to-v0.21	302
+/docs/guides/migration-guide/upgrading-to-1-0-0	/docs/guides/migration-guide/upgrading-to-v1.0	302
 /docs/guides/writing-custom-schema-tests    /docs/guides/writing-custom-generic-tests
 /docs/hooks	/docs/building-a-dbt-project/hooks-operations	302
 /docs/init	/reference/commands/init	302
@@ -262,6 +269,7 @@
 /reference/declaring-properties /reference/configs-and-properties	302
 /reference/dbt-artifacts	/reference/artifacts/dbt-artifacts	302
 /reference/environments	/dbt-cloud/api	302
+/reference/events	/reference/events-logging	302
 /reference/jobs	/dbt-cloud/api	302
 /reference/model-selection-syntax    /reference/node-selection/syntax 302
 /reference/project-configs/on-run-end	/reference/project-configs/on-run-start-on-run-end	302
@@ -280,3 +288,9 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/project-configs/data-paths  /reference/project-configs/seed-paths 302
 /reference/project-configs/modules-paths  /reference/project-configs/packages-install-path 302
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
+/reference/warehouse-profiles/presto-profile    /reference/profiles.yml 302
+/tutorial/setting-up	/tutorial/getting-started	302
+/tutorial/test-and-document-your-project	/tutorial/building-your-first-project/test-and-document-your-project	302
+/tutorial/build-your-first-models	/tutorial/building-your-first-project/build-your-first-models	302
+/tutorial/deploy-your-project /tutorial/building-your-first-project/deploy-your-project	302
+/tutorial/using-jinja	/tutorial/learning-more/using-jinja	302

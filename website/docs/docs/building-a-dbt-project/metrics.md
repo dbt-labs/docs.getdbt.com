@@ -21,11 +21,10 @@ v1.0.0 includes an initial version of metrics, following a [vibrant community di
 v1.0 includes metrics, but they should be considered an _unstable_ API because they are experimental and subject to change. We reserve the right to make breaking changes to the metrics schema in future **minor** versions, but will aim for backwards compatibility when possible.
 :::
 
-## About metrics 
+## About Metrics 
 
-A metric is a timeseries aggregation over a table that supports zero or more dimensions. Some examples of metrics include:
+A metric is a timeseries aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
-- churn rate
 - mrr (monthly recurring revenue)
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
@@ -81,6 +80,9 @@ metrics:
       - field: company_name
         operator: '!='
         value: "'Acme, Inc'"
+      - field: signup_date
+        operator: '>='
+        value: "'2020-01-01'"
 
 
     meta: {team: Finance}
@@ -109,7 +111,7 @@ Filters should be defined as a list of dictionaries that define predicates for t
 
 All three properties (`field`, `operator`, `value`) are required for each defined filter.
 
-Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded in quotes inside the query, use `"'nested'"` quotes:
+Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded in quotes inside the query (e.g. text or dates), use `"'nested'"` quotes:
 
 ```yml
     filters:
@@ -122,6 +124,9 @@ Note that `value` must be defined as a string in YAML, because it will be compil
       - field: company_name
         operator: '!='
         value: "'Acme, Inc'"
+      - field: signup_date
+        operator: '>='
+        value: "'2020-01-01'"
 ```
 
 ## Ongoing discussions
