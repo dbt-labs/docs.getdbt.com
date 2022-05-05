@@ -33,7 +33,7 @@ id: "teradata-configs"
 
 ## Models
 
-### Table
+### <Term id="table" />
 * `table_kind` - define the table kind. Legal values are `MULTISET` (default for ANSI transaction mode required by `dbt-teradata`) and `SET`, e.g.:
     ```yaml
     {{
