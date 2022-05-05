@@ -47,6 +47,40 @@ my-snowflake-db:
 
 </File>
 
+### User / Password + DUO MFA authentication
+
+Snowflake integrates the DUO Mobile app to add 2-Factor authentication to basic user/password as seen below.
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id]
+
+      # User/password auth
+      user: [username]
+      password: [password]
+      authenticator: username_password_mfa
+
+      role: [user role]
+      database: [database name]
+      warehouse: [warehouse name]
+      schema: [dbt schema]
+      threads: [1 or more]
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false 
+      retry_all: False  # default: false
+```
+
+Along with adding the `authenticator` parameter, be sure to run `alter account set allow_client_mfa_caching = true;` in your Snowflake warehouse. Together, these will allow you to easily verify authenatication with the DUO Mobile app (skipping this results in push notifications for every model built on every `dbt run`).
+
 ### Key Pair Authentication
 
 To use key pair authentication, omit a `password` and instead provide a `private_key_path` and, optionally, a `private_key_passphrase` in your target. **Note:** Versions of dbt before 0.16.0 required that private keys were encrypted and a `private_key_passphrase` was provided. This behavior was changed in dbt v0.16.0.
@@ -146,7 +180,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | connect_timeout | No | The number of seconds to sleep between failed connection retries |
 
 ### account
-For AWS accounts in the default US West region, this will be something like `abc123` (without any other segments). For AWS accounts *not* in the default US West region and for GCP and Azure-based accounts, you also have to append the cloud platform, such as `aws`, `gcp` or `azure`, respectively (for example: `abc123.us-central1.gcp`) See [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname) for more information.
+For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1.aws`. For GCP and Azure-based accounts, you have to append the region and cloud platform, such as `gcp` or `azure`, respectively. For example, `abc123.us-central1.gcp`. For details, see Snowflake's documention: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)" and "[Account Identifier Formats by Cloud Platform and Region](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#account-identifier-formats-by-cloud-platform-and-region)".
 
 ### client_session_keep_alive
 

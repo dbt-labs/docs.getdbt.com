@@ -5,10 +5,10 @@
     "swizzle": "docusaurus swizzle"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.14",
-    "@docusaurus/plugin-ideal-image": "^2.0.0-beta.14",
-    "@docusaurus/preset-classic": "^2.0.0-beta.14",
-    "@docusaurus/theme-search-algolia": "^2.0.0-beta.14",
+    "@docusaurus/core": "^2.0.0-beta.17",
+    "@docusaurus/plugin-ideal-image": "^2.0.0-beta.17",
+    "@docusaurus/preset-classic": "^2.0.0-beta.17",
+    "@docusaurus/theme-search-algolia": "^2.0.0-beta.17",
     "@mdx-js/react": "^1.6.21",
     "@svgr/webpack": "^5.5.0",
     "classnames": "^2.3.1",
@@ -24,6 +24,7 @@
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-tooltip": "^4.2.21",
     "redoc": "^2.0.0-rc.57",
     "slugify": "^1.6.1",
     "styled-components": "^5.3.3",

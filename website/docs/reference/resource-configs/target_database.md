@@ -26,7 +26,7 @@ snapshots:
 </File>
 
 ## Description
-The database that dbt should build a [snapshot](snapshots) table into.
+The database that dbt should build a [snapshot](snapshots) <Term id="table" /> into.
 
 Notes:
 - The specified database must already exist

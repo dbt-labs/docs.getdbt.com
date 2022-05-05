@@ -16,7 +16,7 @@ seeds:
 
 ## Model Configuration for Fact Tables
 
-A dbt model can be created as a Firebolt fact table and configured using the following syntax:
+A dbt model can be created as a Firebolt fact <Term id="table" /> and configured using the following syntax:
 
 <Tabs
   groupId="config-fact"
@@ -300,3 +300,23 @@ sources:
             - name: <column-name>
               data_type: <type>
 ```
+
+#### Running External tables
+
+The `stage_external_sources` macro is inherited from the [dbt-external-tables package](https://github.com/dbt-labs/dbt-external-tables#syntax) and is the primary point of entry when using thes package. It has two operational modes: standard and "full refresh."
+
+```bash
+# iterate through all source nodes, create if missing, refresh metadata
+$ dbt run-operation stage_external_sources
+
+# iterate through all source nodes, create or replace (no refresh command is required as data is fetched live from remote)
+$ dbt run-operation stage_external_sources --vars "ext_full_refresh: true"
+```  
+  
+## Seeds behavior 
+  
+When running the ```dbt seed``` command we perform a `DROP CASCADE` operation instead of `TRUNCATE`.
+  
+## Practice
+  
+You can look at our modified version of the jaffle_shop, [jaffle_shop_firebolt](https://github.com/firebolt-db/jaffle_shop_firebolt), to see how indexes, as well as external tables, can be set or clone and execute the commands listed in the README.md

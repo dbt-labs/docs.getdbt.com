@@ -29,18 +29,18 @@ Here's how those play in practice:
 Note that test warn statuses will return errors instead if the [`--warn-error`](global-cli-flags#warnings-as-errors) flag is passed. Unless dbt is told to treat warnings as errors, a test with `warn` severity will never return an error.
 
 <Tabs
-  defaultValue="specific"
+  defaultValue="generic"
   values={[
-    { label: 'Specific test', value: 'specific', },
-    { label: 'One-off test', value: 'one_off', },
-    { label: 'Generic test block', value: 'generic', },
+    { label: 'Out-of-the-box generic tests', value: 'generic', },
+    { label: 'Singular tests', value: 'singular', },
+    { label: 'Custom generic tests', value: 'custom-generic', },
     { label: 'Project level', value: 'project', },
   ]
 }>
 
-<TabItem value="specific">
+<TabItem value="generic">
 
-Configure a specific instance of a generic (schema) test:
+Configure a specific instance of a out-of-the-box generic test:
 
 <File name='models/<filename>.yml'>
 
@@ -63,9 +63,9 @@ models:
 
 </TabItem>
 
-<TabItem value="one_off">
+<TabItem value="singular">
 
-Configure a one-off (data) test:
+Configure a singular test:
 
 <File name='tests/<filename>.sql'>
 
@@ -79,9 +79,9 @@ select ...
 
 </TabItem>
 
-<TabItem value="generic">
+<TabItem value="custom-generic">
 
-Set the default for all instances of a generic (schema) test, by setting the config inside its test block (definition):
+Set the default for all instances of a custom generic test, by setting the config inside its test block (definition):
 
 <File name='macros/<filename>.sql'>
 
