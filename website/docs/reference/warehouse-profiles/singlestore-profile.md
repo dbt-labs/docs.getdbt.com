@@ -75,7 +75,7 @@ It is recommended to set optional parameters as well.
 
 SingleStore doesn't have a concept of `schema` that corresponds to one used in `dbt` (namespace within a database). `schema` in your profile is required for `dbt` to work correctly with your project metadata. For example, you will see it on "dbt docs" page, even though it's not present in the database.
 
-In order to support concurrent development, `schema` can be used to prefix table names that `dbt` is building within your database. In order to enable this, add the following macro to your project. This macro will take the `schema` field of your `profiles.yml` file and use it as a table name prefix.
+In order to support concurrent development, `schema` can be used to prefix <Term id="table" /> names that `dbt` is building within your database. In order to enable this, add the following macro to your project. This macro will take the `schema` field of your `profiles.yml` file and use it as a table name prefix.
 
 ```sql
 -- macros/generate_alias_name.sql
