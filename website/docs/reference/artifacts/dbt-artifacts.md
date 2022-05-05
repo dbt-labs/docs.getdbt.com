@@ -10,7 +10,7 @@ With every invocation, dbt generates and saves one or more *artifacts*. Several 
 They could also be used to:
 - calculate project-level test coverage
 - perform longitudinal analysis of run timing
-- identify historical changes in table structure
+- identify historical changes in <Term id="table" /> structure
 - do much, much more
 
 dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in dbt v0.19.0, we are committing to a stable and sustainable way of versioning, documenting, and validating dbt artifacts.

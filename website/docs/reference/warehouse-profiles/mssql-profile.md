@@ -36,13 +36,17 @@ SQL Server credentials are supported for on-prem as well as cloud, and it is the
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-user: username
-password: password
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      user: username
+      password: password
 ```
 
 </File>
@@ -75,14 +79,18 @@ Definitely not ideal, but available
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ActiveDirectoryPassword
-user: bill.gates@microsoft.com
-password: iheartopensource
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ActiveDirectoryPassword
+      user: bill.gates@microsoft.com
+      password: iheartopensource
 ```
 
 </File>
@@ -98,12 +106,16 @@ First, install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/instal
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: CLI
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: CLI
 ```
 This is also the preferred route for using a service principal:
 
@@ -120,13 +132,17 @@ This is also the preferred route for using a service principal:
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ActiveDirectoryInteractive
-user: bill.gates@microsoft.com
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ActiveDirectoryInteractive
+      user: bill.gates@microsoft.com
 ```
 
 </File>
@@ -140,12 +156,16 @@ user: bill.gates@microsoft.com
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ActiveDirectoryIntegrated
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ActiveDirectoryIntegrated
 ```
 
 </File>
@@ -159,15 +179,19 @@ authentication: ActiveDirectoryIntegrated
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ServicePrincipal
-tenant_id: tenant_id
-client_id: clientid
-client_secret: clientsecret
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ServicePrincipal
+      tenant_id: tenant_id
+      client_id: clientid
+      client_secret: clientsecret
 ```
 
 </File>

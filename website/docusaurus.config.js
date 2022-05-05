@@ -1,4 +1,5 @@
 const path = require('path');
+const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
 
 /* Debugging */
@@ -33,7 +34,6 @@ if(GIT_BRANCH !== 'current') {
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
-console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
@@ -41,7 +41,7 @@ var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
   tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
-  title: 'dbt™ Docs',
+  title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
 
@@ -50,8 +50,8 @@ var siteSettings = {
     colorMode: {
       disableSwitch: true
     },
-    // Adding non-empty strings for Algolia config 
-    // allows Docusaurus to run locally without .env file 
+    // Adding non-empty strings for Algolia config
+    // allows Docusaurus to run locally without .env file
     algolia: {
       apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
       indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
@@ -104,7 +104,7 @@ var siteSettings = {
         },
         {
           to: '/docs/dbt-cloud/cloud-overview',
-          label: 'dbt Cloud™',
+          label: 'dbt Cloud',
           position: 'left',
           activeBasePath: 'docs/dbt-cloud'
         },
@@ -119,21 +119,21 @@ var siteSettings = {
           label: 'Developer Blog',
           position: 'right',
           activeBasePath: 'blog'
-        },        
+        },
         {
           label: 'Learn',
           position: 'right',
           items: [
             {
-              label: 'Getting Started Tutorial',
-              to: '/tutorial/setting-up',
+              label: 'Getting started',
+              to: '/tutorial/getting-started',
             },
             {
-              label: 'Online Courses',
+              label: 'Online courses',
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Live Courses',
+              label: 'Live courses',
               href: 'https://learn.getdbt.com/public',
             }
           ],
@@ -182,27 +182,31 @@ var siteSettings = {
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,
+          sidebarCollapsible: true,     
         },
         blog: {
-          blogTitle: 'dbt™ Developer Blog',
+          blogTitle: 'dbt Developer Blog',
           blogDescription: 'Technical tutorials from the dbt Community.',
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
         },
+
       },
     ],
   ],
   plugins: [
     [
-      path.resolve('plugins/insertMetaTags'), 
-      { metatags } 
+      path.resolve('plugins/insertMetaTags'),
+      { metatags }
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
-    path.resolve('plugins/buildBlogData'),
-    path.resolve('plugins/buildAuthorPages'),
+    [
+      path.resolve('plugins/buildGlobalData'),
+      { versionedPages }
+    ],
+    path.resolve('plugins/buildAuthorPages')
   ],
   scripts: [
     {
@@ -226,17 +230,24 @@ var siteSettings = {
   ],
 }
 
-var PRERELEASE = (process.env.PRERELEASE || false);
-
-if (PRERELEASE) {
-  var WARNING_BANNER = {
-    id: 'prerelease', // Any value that will identify this message.
-    content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
-    backgroundColor: '#ffa376', // Defaults to `#fff`.
-    textColor: '#033744', // Defaults to `#000`.
-  }
-  siteSettings.themeConfig.announcementBar = WARNING_BANNER;
+// If versions json file found, add versions dropdown to nav
+if(versions) {
+  siteSettings.themeConfig.navbar.items.push({
+    label: 'Versions',
+    position: 'left',
+    className: 'nav-versioning',
+    items: [
+      ...versions.reduce((acc, version) => {
+        if(version?.version) {
+          acc.push({
+            label: `${version.version}`,
+            href: '#',
+          })
+        }
+        return acc
+      }, [])
+    ]
+  },)
 }
 
 module.exports = siteSettings;
