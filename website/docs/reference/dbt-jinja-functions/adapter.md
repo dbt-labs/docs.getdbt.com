@@ -39,7 +39,7 @@ __Args__:
 
 Returns a list of [Columns](dbt-classes#column) that is the difference of the columns in the `from_table`
 and the columns in the `to_table`, i.e. (`set(from_relation.columns) - set(to_table.columns)`).
-Useful for detecting new columns in a source table.
+Useful for detecting new columns in a source <Term id="table" />.
 
 **Usage**:
 
@@ -53,7 +53,7 @@ Useful for detecting new columns in a source table.
 
 
 {% for col in adapter.get_missing_columns(target_relation, this) %}
-  alter table {{this}} add column "{{col.name}}" {{col.data_type}};
+  alter <Term id="table" /> {{this}} add column "{{col.name}}" {{col.data_type}};
 {% endfor %}
 ```
 
@@ -65,7 +65,7 @@ __Args__:
  * `from_relation`: The source [Relation](dbt-classes#relation) to use as a template
  * `to_relation`: The [Relation](dbt-classes#relation) to mutate
 
-Expand the `to_relation` table's column types to match the schema of `from_relation`. Column expansion is constrained to string and numeric types on supported databases. Typical usage involves expanding column types (from eg. `varchar(16)` to `varchar(32)`) to support insert statements.
+Expand the `to_relation` <Term id="table" />'s column types to match the schema of `from_relation`. Column expansion is constrained to string and numeric types on supported databases. Typical usage involves expanding column types (from eg. `varchar(16)` to `varchar(32)`) to support insert statements.
 
 **Usage**:
 
@@ -137,7 +137,7 @@ __Args__:
 
  * `relation`: The [Relation](dbt-classes#relation) to find the columns for
 
-Returns a list of [Columns](dbt-classes#column) in a table.
+Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
 
 **Usage**:
 
@@ -196,7 +196,7 @@ __Args__:
 
  * `relation`: The Relation to drop
 
-Drops a Relation in the database. If the target relation does not exist, then this method is a no-op. The specific implementation is adapter-dependent, but adapters should implement a cascading drop, such that bound views downstream of the dropped relation are also dropped. **Note**: this adapter method is destructive, so please use it with care!
+Drops a Relation in the database. If the target relation does not exist, then this method is a no-op. The specific implementation is adapter-dependent, but adapters should implement a cascading drop, such that bound <Term id="view">views</Term> downstream of the dropped relation are also dropped. **Note**: this adapter method is destructive, so please use it with care!
 
 The `drop_relation` method will remove the specified relation from dbt's relation cache.
 
@@ -251,9 +251,9 @@ This method is deprecated and will be removed in a future release. Please use [g
 __Args__:
 
  * `schema_name`: The schema to test
- * `table_name`: The table (or view) from which to select columns
+ * `table_name`: The <Term id="table" /> (or view) from which to select columns
 
-Returns a list of [Columns](dbt-classes#column) in a table.
+Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
 
 <File name='models/example.sql'>
 
@@ -280,9 +280,9 @@ This method is deprecated and will be removed in a future release. Please use [g
 __Args__:
 
  * `schema`: The schema to test
- * `table`: The relation to look for
+ * `<Term id="table" />`: The relation to look for
 
-Returns true if a relation named like `table` exists in schema `schema`, false otherwise.
+Returns true if a relation named like `<Term id="table" />` exists in schema `schema`, false otherwise.
 
 <File name='models/example.sql'>
 
