@@ -33,5 +33,5 @@ export default function VersionBlock({ firstVersion = 0, lastVersion = undefined
 
   return loading
     ?  null
-    : <div>{children}</div>
+    : <>{children}</>
 }

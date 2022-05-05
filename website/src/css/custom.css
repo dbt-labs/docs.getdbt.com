@@ -418,7 +418,7 @@ nav.navbar div.navbar__inner {
 /* Docs */
 .docImage_src-components-lightbox-,
 .docImage_src-components-lightbox-styles-module,
-.docImage_2V3X {
+.docImage_2V3X, .docImage_917O {
   max-width: 100%;
 }
 
@@ -816,3 +816,6 @@ code {
   }
 }
 
+.docs-wrapper.docs-doc-page main div.row > article.col--6 {
+  margin-bottom: 1.5rem;
+}
