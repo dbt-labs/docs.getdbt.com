@@ -5,6 +5,92 @@ sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
 
+## dbt Cloud v1.1.46 (March 2nd, 2022)
+
+dbt Cloud now shows "waiting time" and "prep time" for a run, which used to be expressed in aggregate as "queue time". Waiting time captures the time dbt Cloud waits to run your job if there isn't an available run slot or if a previous run of the same job is still running. Prep time represents the time it takes dbt Cloud to ready your job to run in your cloud data warehouse.
+
+<Lightbox src="/img/docs/dbt-cloud/v1.1.46releasenotes_img1.png" title="New prep time and waiting time"/>
+
+## dbt Cloud v1.1.45 (February 16, 2022)
+
+Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens#permissions-for-service-account-tokens).
+
+#### New products and features
+
+- We are joining the [GitHub secret scanning partner program](https://docs.github.com/en/developers/overview/secret-scanning-partner-program) to better secure your token against accidental public exposure and potential fraudulent usage. 
+
+#### Bug fixes
+- Credentials are no longer accidentally deleted when a user updates an environment setting.
+
+
+## dbt Cloud v1.1.44 (February 2nd, 2022)
+Love the DAG in the IDE as much as we do? Now when you click on a node in the DAG, the model or config file will open as a new tab in the IDE, so you can directly view or edit the code. We'll continue to ship better developer ergonomic functionality throughout the year.
+
+#### Performance improvements and enhancements
+
+* Updated recommended dbt commands in the IDE to include dbt Core v1.0 commands, such as "build" and the "--select" argument.  
+
+
+## dbt Cloud v1.1.43 (January 19th, 2022)
+
+Some noteworthy improvements include autocomplete snippets for sql and yaml files in the IDE, which are available for use now! We also added a [new metric layer page](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer) to docs.getdbt.com to help you begin thinking about the metrics layer in dbt Cloud.
+
+#### Performance improvements and enhancements
+
+* Branch names now default to "main" instead of "master" in new managed and unmanaged Git repositories.
+* Update IDE autocomplete snippets.
+
+
+## dbt Cloud v1.1.42 (January 5th, 2022)
+
+#### New products and features
+
+We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
+
+#### Performance improvements and enhancements
+
+* We added client-side naming validation for file or folder creation.
+
+## dbt Cloud v1.1.41 (December 8, 2021)
+
+It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [dbt Core v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
+
+#### New products and features
+
+- dbt v1.0 is now available in dbt Cloud... nbd.
+
+
+#### Performance improvements and enhancements
+
+- Now whenever you log back into dbt Cloud, you'll return to the acccount and project that you most recently were working in!
+
+
+## dbt Cloud v1.1.39 (November 10, 2021)
+We shipped environment variables in dbt Cloud. Environment variables create a way to separate code from configuration - allowing you to set config based on context and keep secrets like git tokens securely stored.
+
+#### New products and features
+- You can now add environment variables to your dbt Cloud project. Why does this matter? Environment variables are a fundamental building block of a dbt project, which until now, we only enabled in dbt Core. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables). 
+
+
+## dbt Cloud v1.1.38 (October 27, 2021)
+Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
+
+
+## dbt Cloud v1.1.37 (October 13, 2021)
+dbt v0.21 is now available in dbt Cloud. The big change with this release is it introduces the `dbt build` command. `dbt build` logically does everything you'd want to do in your DAG. It runs your models, tests your tests, snapshots your snapshots, and seeds your seeds. It does this, resource by resource, from left to right across your DAG. dbt build is an opinionated task. It’s the culmination of all we’ve built- running models with resilient <Term id="materialization">materializations</Term>, prioritizing data quality with tests, updating fixtures with seeds, capturing slowly changing dimensions with snapshot. Give it a try!
+
+#### New products and features
+- We have a new beta feature, which we're calling Model Bottlenecks. It allows you to visually see how long it takes to build models in each run, so you can see clearly which models are taking the longest. If you're interested in learning more, check out #beta-feedback-model-bottlenecks in the dbt community Slack, and we can add you to the beta.
+
+## dbt Cloud v1.1.36 (September 29, 2021)
+Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt Cloud IDE now keeps track of your scroll position - at last!
+
+#### Bug fixes
+- Some Redshift customers were experiencing timeouts on runs. We've since fixed this bug by keeping the session alive longer.
+
+#### Performance improvements and enhancements
+- You won't lose track of the code snippets you were looking at when you switch back and forth between tabs in the dbt Cloud IDE, as we now keep track of your scroll position.
+
 ## dbt Cloud v1.1.35 (September 15, 2021)
 Have you ever been working in the IDE, taken a several hour break from developing, and when you returned to your work, the IDE started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! dbt Cloud now will let you know when you have to refresh your IDE so you can continue to pick up work where you last left off.
 
@@ -59,7 +145,7 @@ We’ve improved the tabbing experience in the IDE. Tabs now work much more intu
 
 #### Performance improvements and enhancements
 - We've been working on some nice improvements to tabs in our IDE. We’ve fixed deficiencies with tabs that caused users to lose work if they didn’t hit save regularly enough. Additionally, opening, closing, and the order of the tabs work much more smoothly.
-- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run `dbt source snapshot-freshness` as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
+- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
 - Added a new endpoint to allow API key rotation via `POST https://cloud.getdbt.com/api/v2/users/{user-id}/apiKey`
 
 
@@ -611,7 +697,7 @@ significantly.
 - Add merge conflict resolution, a merge commit workflow, and merge abort workflow to the IDE
 - Deprecate dbt versions prior to 0.13.0
 - Refactor to cut job scheduler loop time
-- Reduce extra database calls to account table in job scheduler loop
+- Reduce extra database calls to account <Term id="table" /> in job scheduler loop
 - [On-premises] Allow clients to disable authentication for SMTP
 - [On-premises] Allow disabling of TLS for SMTP
 - [On-premises] Making k8s access mode for IDE pods an environment variable
@@ -797,7 +883,7 @@ This release includes bugfixes around how permissions are applied to runs and ru
 - Fixed receiving arbitrary remote_url when creating a git url repository.
 - Fixed issue when handling non-resource specific errors from RPC server in IDE.
 - Fixed a bug where the scheduler would stop if the database went away.
-- Fixed IDE query results table not supporting horizontal scrolling.
+- Fixed IDE query results <Term id="table" /> not supporting horizontal scrolling.
 
 #### Changed
 

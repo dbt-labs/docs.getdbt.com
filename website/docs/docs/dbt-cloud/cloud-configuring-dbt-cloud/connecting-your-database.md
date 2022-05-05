@@ -19,6 +19,8 @@ any database grants.
 
 </Changelog>
 
+Allowing these IP addresses only enables the connection to your data warehouse. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](deployment-architecture)."
+
 
 ## Connecting to Redshift and Postgres
 
@@ -26,7 +28,7 @@ The following fields are required when creating a Redshift connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the Postgres or Redshift database to connect to. This can either be a hostname an IP address. | `xxx.us-east-1.amazonaws.com` |
+| Host Name | The hostname of the Postgres or Redshift database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 

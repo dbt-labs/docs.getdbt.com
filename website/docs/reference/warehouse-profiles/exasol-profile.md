@@ -9,10 +9,11 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 ## Overview of dbt-exasol
-**Maintained by:** Community
-**Author:** Torsten Glunde, Ilija Kutle
-**Source:** https://github.com/tglunde/dbt-exasol
-**Core version:** v0.14.0 and newer
+**Maintained by:** Community    
+**Author:** Torsten Glunde, Ilija Kutle    
+**Source:** https://github.com/tglunde/dbt-exasol    
+**Core version:** v0.14.0 and newer    
+**dbt Cloud:** Not Supported    
 
 ![dbt-exasol stars](https://img.shields.io/github/stars/tglunde/dbt-exasol?style=for-the-badge)
 

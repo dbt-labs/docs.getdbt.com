@@ -11,7 +11,7 @@ id: "snapshots"
 ## Getting started
 
 ### What are snapshots?
-Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable table over time.
+Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable <Term id="table" /> over time.
 
 Snapshots implement [type-2 Slowly Changing Dimensions](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) over mutable source tables. These Slowly Changing Dimensions (or SCDs) identify how a row in a table changes over time. Imagine you have an `orders` table where the `status` field can be overwritten as the order is processed.
 
@@ -56,6 +56,12 @@ select * from {{ source('jaffle_shop', 'orders') }}
 ```
 
 </File>
+
+:::info Preview or Compile Snapshots in IDE
+
+It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud. Instead, run the `dbt snapshot` command in the IDE by completing the following steps.
+
+:::
 
 When you run the [`dbt snapshot` command](snapshot):
 * **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null`.
@@ -287,6 +293,8 @@ A number of other configurations are also supported (e.g. `tags` and `post-hook`
 
 Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](snapshot-configs) for more information.
 
+Note: As of v0.21, BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
+
 
 ### Configuration best practices
 #### Use the `timestamp` strategy where possible
@@ -321,12 +329,12 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 
 ## Snapshot meta-fields
 
-Snapshot tables will be created as a clone of your source dataset, plus some additional meta-fields*.
+Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
 | Field          | Meaning | Usage |
 | -------------- | ------- | ----- |
 | dbt_valid_from | The timestamp when this snapshot row was first inserted | This column can be used to order the different "versions" of a record. |
-| dbt_valid_to   | The timestamp when this row row became invalidated. | The most recent snapshot record will have `dbt_valid_to` set to `null`. |
+| dbt_valid_to   | The timestamp when this row became invalidated. | The most recent snapshot record will have `dbt_valid_to` set to `null`. |
 | dbt_scd_id     | A unique key generated for each snapshotted record. | This is used internally by dbt |
 | dbt_updated_at | The updated_at timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt |
 

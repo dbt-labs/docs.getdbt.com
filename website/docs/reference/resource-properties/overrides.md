@@ -25,14 +25,14 @@ overridden source.
 
 The following source properties can be overridden:
  - [description](resource-properties/description)
- - [meta](resource-properties/meta)
+ - [meta](resource-configs/meta)
  - [database](resource-properties/database)
  - [schema](resource-properties/schema)
  - [loader](resource-properties/loader)
  - [quoting](resource-properties/quoting)
  - [freshness](resource-properties/freshness)
  - [loaded_at_field](resource-properties/freshness#loaded_at_field)
- - [tags](resource-properties/tags)
+ - [tags](resource-configs/tags)
 
 ## Examples
 ### Supply your database and schema name for a source defined in a package
@@ -59,7 +59,7 @@ sources:
 
 ### Configure your own source freshness for a source table in a package
 
-You can override configurations at both the source and the table level
+You can override configurations at both the source and the <Term id="table" /> level
 
 <File name='models/src_github.yml'>
 

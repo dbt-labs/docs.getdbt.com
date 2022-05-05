@@ -1,7 +1,7 @@
 name: Add Issue to Project
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   track_issue:
@@ -30,7 +30,8 @@ jobs:
           org: 'dbt-labs'
           number: 14
           headers: 'GraphQL-Features: projects_next_graphql'
-          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
 
       - uses: octokit/graphql-action@v2.x
         name: Add Issue to Project
@@ -44,10 +45,11 @@ jobs:
                   }
                 }
               }
-          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
           project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
           issue: ${{ github.event.issue.node_id}}
           headers: 'GraphQL-Features: projects_next_graphql'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
 
       - name: create-json
         id: create-json
@@ -75,7 +77,7 @@ jobs:
         id: status_field_value
         with:
           cmd: 
-            jq '.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Todo") |.id' data.json
+            jq '.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Triage") |.id' data.json
       
       - name: Set fields
         id: set_fields
@@ -111,7 +113,7 @@ jobs:
                 }
               }
             }
-          GITHUB_TOKEN: ${{secrets.ProjectsNext}}
+          GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
           project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
           headers: 'GraphQL-Features: projects_next_graphql'
           item: ${{ fromJSON(steps.add_issue.outputs.data).addProjectNextItem.projectNextItem.id }}
