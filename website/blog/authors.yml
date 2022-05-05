@@ -166,3 +166,38 @@ nate_sooter:
       icon: fa-twitter
     - url: https://www.linkedin.com/in/nathansooter
       icon: fa-linkedin
+
+kira_furuichi:
+  name: Kira Furuichi
+  job_title: Technical Writer
+  organization: dbt Labs
+  image_url: /img/blog/authors/kira-furuichi.png
+  links:
+    - url: https://www.linkedin.com/in/kira-furuichi/
+      icon: fa-linkedin
+
+viraj_parekh:
+  name: Viraj Parekh
+  job_title: Field CTO
+  organization: Astronomer
+  image_url: /img/blog/authors/viraj-parekh.jpeg
+  links:
+    - url: https://www.linkedin.com/in/viraj-parekh-46114689/
+      icon: fa-linkedin
+
+josh_fell:
+  name: Josh Fell
+  job_title: Ecosystem Engineer
+  organization: Astronomer
+  image_url: /img/blog/authors/josh-fell.jpeg
+  links:
+    - url: https://www.linkedin.com/in/josh-fell/
+      icon: fa-linkedin
+
+simo_tumelius:
+  name: Simo Tumelius
+  job_title: Freelance Data and Analytics Engineer
+  image_url: /img/blog/authors/simo-tumelius.jpeg
+  links:
+    - url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
+      icon: fa-linkedin

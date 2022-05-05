@@ -218,7 +218,7 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
 
-Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
+Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>
@@ -265,3 +265,32 @@ $ dbt test --select result:fail # run all tests that failed on the prior invocat
 $ dbt build --select 1+result:fail # run all the models associated with failed tests from the prior invocation of dbt build
 $ dbt seed --select result:error # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
+
+### The "source_status" method
+<VersionBlock lastVersion="1.0">
+
+Only supported by v1.1 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+Only supported by v1.1 or newer.
+
+:::caution Experimental functionality
+The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
+:::
+
+Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/docs/reference/artifacts/sources-json) page. 
+
+The following dbt commands produce `sources.json` artifacts whose results can be referenced in subsequent dbt invocations:  
+- `dbt source freshness`
+
+After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
+
+```bash
+# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
+$ dbt source freshness # must be run again to compare current to previous state
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+```
+</VersionBlock>
