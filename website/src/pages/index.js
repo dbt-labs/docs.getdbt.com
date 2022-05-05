@@ -27,7 +27,7 @@ function Home() {
           	<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)"}}>
           		<div className="col">
           			 <h1>Get started</h1>
-          			 <p>If you’re new to dbt, start here. These resources will get you off to a strong start:</p>
+          			 <p>If you’re new to dbt&trade;, start here. These resources will get you off to a strong start:</p>
 	  			    </div>
 	  		</div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(2vh)"}}>
@@ -53,18 +53,18 @@ function Home() {
                   <div className="col col--4">
                     <div className="card large dark darker">
                       <div className="card__header">
-                        <h3>Getting Started Tutorial</h3>
+                        <h3>Getting started guide</h3>
                       </div>
                       <div className="card__body">
                         <p>
-                         Follow along with this tutorial to learn how to build, test, and deploy a new dbt project.
+                         Read this guide to learn how to build, test, and deploy a new dbt project.
                         </p>
                       </div>
                       <div className="card__footer">
                           <Link
                             className="button button--primary"
-                            to={useBaseUrl('tutorial/setting-up')}>
-                            Watch Tutorial
+                            to={useBaseUrl('tutorial/getting-started')}>
+                            Learn more
                           </Link>
                       </div>
                     </div>
@@ -158,7 +158,7 @@ function Home() {
               </div>
               <div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>
           		<div className="col">
-          			 <p>If you’re a dbt Cloud user, these resources may also be helpful:</p>
+          			 <p>If you’re a dbt Cloud&trade; user, these resources may also be helpful:</p>
 	  			</div>
 	  		</div>
 	  		<div className="row" style={{"maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto"}}>

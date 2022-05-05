@@ -1,5 +1,5 @@
 ---
-title: "What is the dbt Metrics Layer?"
+title: "What is the dbt metrics layer?"
 id: "cloud-metrics-layer"
 description: "The dbt metrics layer helps you standardize metrics within your organization."
 keywords:
@@ -15,4 +15,4 @@ The data models that power these metrics already exist in your dbt project. You 
 
 While dbt does not currently provide a BI experience for exploring these metrics, we’re working on a number of integrations with BI partners that will help unlock the full value of the metrics layer.
 
-If you’re interested in taking metrics for a spin or integrating your product with dbt metrics, you can [sign up for the beta!](https://forms.gle/4hi8YQ4mQ35QvYCh7)
+If you’re interested in taking metrics for a spin or integrating your product with dbt metrics, you can [sign up for the beta!](https://docs.google.com/forms/d/1MjVfD3rLg2hpjEbOaaocnjGtUdNY-wNpoyy1aHL_x9o/viewform)
