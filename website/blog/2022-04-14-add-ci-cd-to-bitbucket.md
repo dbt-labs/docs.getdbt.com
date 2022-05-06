@@ -8,7 +8,7 @@ authors: [simon_podhajsky]
 tags: [dbt tutorials]
 hide_table_of_contents: false
 
-date: 2022-05-04
+date: 2022-05-06
 is_featured: true
 ---
 
