@@ -85,7 +85,7 @@ using a key pair.
 
 **Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud. 
 
-In order to successfully fill in the Private Key field, you **must** include the commented lines below when you add the passphrase. Leaving the `PRIVATE KEY PASSPHRASE` field empty will return an error - have a look at our example below:
+In order to successfully fill in the Private Key field, you **must** include the commented lines below when you add the passphrase. Leaving the `PRIVATE KEY PASSPHRASE` field empty will return an error - have a look at the examples below:
 
 
 **Example:**
