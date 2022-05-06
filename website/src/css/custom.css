@@ -44,8 +44,8 @@
 }
 
 .dropdown--version--hide .dropdown__menu {
-  opacity: 0 !important;
-  visibility: hidden !important;
+  opacity: 0;
+  visibility: hidden;
   display: none;
 }
 
