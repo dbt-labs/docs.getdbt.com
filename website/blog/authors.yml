@@ -207,3 +207,11 @@ josh_fell:
   links:
     - url: https://www.linkedin.com/in/josh-fell/
       icon: fa-linkedin
+
+simo_tumelius:
+  name: Simo Tumelius
+  job_title: Freelance Data and Analytics Engineer
+  image_url: /img/blog/authors/simo-tumelius.jpeg
+  links:
+    - url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
+      icon: fa-linkedin
