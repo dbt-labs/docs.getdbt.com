@@ -1,7 +1,6 @@
 ---
-title: Can I build my models in a schema other than my target schema?
+title: Can I build my models in a schema other than my target schema? Or: Can I split my models across multiple schemas?
 ---
-## Or: Can I split my models across multiple schemas?
 
 Yes! Use the [schema](reference/resource-configs/schema.md) configuration in your `dbt_project.yml` file, or using a `config` block:
 
