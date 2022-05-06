@@ -83,7 +83,9 @@ Finally, set the "Private Key" and "Private Key Passphrase" fields in the "Edit
 Credentials" page to finish configuring dbt Cloud to authenticate with Snowflake
 using a key pair.
 
-**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud. In order to successfully fill in the Private Key field, you  **must** include the commented lines below when you add the passphrase. The passphrase you add, will be used to decrypt the and leaving the `PRIVATE KEY PASSPHRASE` field empty will will return an error.
+**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud. 
+
+In order to successfully fill in the Private Key field, you **must** include the commented lines below when you add the passphrase and leaving the `PRIVATE KEY PASSPHRASE` field empty will return an error. Take a look at our example below:
 
 
 **Example:**
