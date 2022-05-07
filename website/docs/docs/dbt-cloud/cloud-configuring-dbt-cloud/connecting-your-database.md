@@ -152,10 +152,34 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Connecting to Databricks
+The Databricks team, in collaboration with dbt Labs, built on top of the foundation that the [dbt-spark](spark-profile) adapter provides, and they added some critical improvements for running dbt on Databricks with the [dbt-databricks](databricks-profile) adapter.  
 
-You can now connect to Databricks using host and HTTP path of the Databricks cluster or SQL endpoint. For more information, see [New databricks connection details](dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#new-databricks-connection-details).
+### New Databricks connection details
 
-### Current Databricks connection details (to be deprecated June 30, 2022)
+dbt Cloud supports connecting to Databricks using a [SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html) or
+a [Cluster](https://docs.databricks.com/clusters/index.html). Databricks SQL Endpoints provide an opinionated way of running SQL workloads with optimal performance and price. Databricks Clusters provide all the flexibility of Spark. 
+
+
+The following fields are available when creating a Databricks connection:
+
+| Field | Description | Examples |
+| ----- | ----------- | -------- |
+| Host | The hostname of the Databricks workspace | `dbc-1234a123-123c.cloud.databricks.com` |
+| HTTP Path | The HTTP path of the Databricks cluster or SQL endpoint | `sql/protocolv1/o/123456789012345/0000-111222-ab9ccdef` |
+
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/connecting-your-database/Databricks Connection.png" title="Configuring a Databricks connection"/>
+
+### Databricks Credentials
+
+See the [Databricks documentation](https://docs.databricks.com/dev-tools/dbt.html#) on how to obtain the credentials for configuring your profile.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/connecting-your-database/Databricks creds.png" title="Adding development credentials"/>
+
+### Current Databricks connection details (to be deprecated July 31, 2022)
+:::info Deprecation warning
+This connection uses the ODBC method of the [dbt-spark](spark-profile) adapter. We are depreciating support for this functionality and are recommending the [dbt-databricks](/connecting-your-database#new-databricks-connection-details) adapter instead. See our migration guides for support.
+:::
 
 dbt Cloud supports connecting to Databricks using
 [a Cluster](https://docs.databricks.com/clusters/index.html) or 
@@ -177,28 +201,6 @@ The following fields are available when creating a Databricks connection:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connection.png" title="Configuring a Databricks connection"/>
 
-### New Databricks connection details
-
-dbt Cloud supports connecting to Databricks using
-[a Cluster](https://docs.databricks.com/clusters/index.html) or 
-[a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html). Databricks Clusters provide all the flexibility of Spark. Databricks SQL Endpoints provide an opinionated way of running SQL workloads with optimal performance and price. 
-
-
-The following fields are available when creating a Databricks connection:
-
-| Field | Description | Examples |
-| ----- | ----------- | -------- |
-| Host | The hostname of the Databricks cluster or SQL endpoint | `dbc-1234a123-123c.cloud.databricks.com` |
-| HTTP Path | The HTTP path of the Databricks cluster or SQL endpoint | `sql/protocolv1/o/123456789012345/0000-111222-ab9ccdef` |
-
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/connecting-your-database/Databricks Connection.png" title="Configuring a Databricks connection"/>
-
-### Databricks Credentials
-
-See the [Databricks documentation](https://docs.databricks.com/dev-tools/dbt.html#) on how to obtain the credentials for configuring your profile.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/connecting-your-database/Databricks creds.png" title="Adding development credentials"/>
 
 ## Connecting to Apache Spark
 
