@@ -48,4 +48,4 @@ It's important that your freshness jobs run frequently enough to snapshot data l
 
 ## Easy access
 
-See [Building and Configuring Artifacts](artifacts) for more information on exposing links to the latest Documentation and Source Freshness reports to your team.
+For more on exposing links to the latest Documentation and Source Freshness reports to your team, see [Building and configuring artifacts](artifacts).
