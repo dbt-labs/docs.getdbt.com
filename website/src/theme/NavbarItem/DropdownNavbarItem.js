@@ -43,6 +43,10 @@ function containsActiveItems(items, localPathname) {
 function DropdownNavbarItemDesktop({items, position, className, versionContext, ...props}) {
   const dropdownRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
+
+  // handle version dropdown state on click
+  const [showVersionDropdown, setShowVersionDropdown] = useState(true);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!dropdownRef.current || dropdownRef.current.contains(event.target)) {
@@ -59,13 +63,28 @@ function DropdownNavbarItemDesktop({items, position, className, versionContext, 
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [dropdownRef]);
-  
+
+  // Hide version dropdown on click
+  // This adds dropdown--version--hide class on line 87
+  const handleVersionMenuClick = () => {
+    setShowVersionDropdown(false)
+  }
+
+  // Run when showVersionDropdown state changes
+  // which occurs during version menu item clicked
+  // This resets version dropdown to original state
+  // and removes the dropdown--version--hide class
+  useEffect(() => {
+    setShowVersionDropdown(true)
+  }, [showVersionDropdown])
+
   return (
     <div
       ref={dropdownRef}
       className={clsx('navbar__item', 'dropdown', 'dropdown--hoverable', {
         'dropdown--right': position === 'right',
         'dropdown--show': showDropdown,
+        'dropdown--version--hide': !showVersionDropdown,
       })}>
       <NavbarNavLink
         href={props.to ? undefined : '#'}
@@ -99,7 +118,10 @@ function DropdownNavbarItemDesktop({items, position, className, versionContext, 
               }}
               activeClassName={dropdownLinkActiveClass}
               {...childItemProps}
-              onClick={(e) => versionContext.updateVersion(e)}
+              onClick={(e) => {
+                handleVersionMenuClick()
+                versionContext.updateVersion(e)}
+              } 
               key={i}
             />
           ) : (
