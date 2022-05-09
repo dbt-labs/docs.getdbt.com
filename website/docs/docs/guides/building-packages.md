@@ -88,7 +88,7 @@ Many datasets have a concept of a "user" or "account" or "session". To make sure
 ### Default to views
 _Modeling packages only_
 
-dbt makes it possible for users of your package to override your model materialization settings. In general, default to materializing models as `view`s instead of `table`s.
+dbt makes it possible for users of your package to override your model <Term id="materialization" /> settings. In general, default to materializing models as `view`s instead of `table`s.
 
 The major exception to this is when working with data sources that benefit from incremental modeling (for example, web page views). Implementing incremental logic on behalf of your end users is likely to be helpful in this case.
 ### Test and document your package

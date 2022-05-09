@@ -15,7 +15,7 @@ To run tests on one source (and all of its tables):
 $ dbt test --select source:jaffle_shop
 ```
 
-And, to run tests on one source table only:
+And, to run tests on one source <Term id="table" /> only:
 
 ```
 $ dbt test --select source:jaffle_shop.orders
