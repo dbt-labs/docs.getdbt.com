@@ -191,7 +191,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_dbt_cloud.png" title="Databricks Partner Connect Connect to dbt Cloud" />
 </div>
-5. After the new tab that pops up loads, you will be bought to a webform. If you have made a dbt Cloud account with your email previously, you will be asked to provide an account name. If you haven't, you will be asked to provide an account name and password. 
+5. After the new tab loads, you will be bought to a webform. If you have made a dbt Cloud account with your email previously, you will be asked to provide an account name. If you haven't, you will be asked to provide an account name and password. 
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
@@ -233,7 +233,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 
 ## Initialize your repository and start development
 
-If you used Partner Connect, you can skip over to initializing your dbt project as the Partner Connect sets you up with an managed repostiory already. If not, you will need to create your managed repository connection. 
+If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect sets you up with an managed repostiory already. If not, you will need to create your managed repository connection. 
 
 ### Setting up an managed repository
 
