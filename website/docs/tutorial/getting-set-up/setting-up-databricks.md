@@ -132,6 +132,7 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/raw_tables_created.png" title="Raw Data Tables" />
     </div>
+    
 ## Enable a SQL endpoint for Databricks
 
 For dbt to connect to the most optimized SQL experience in Databricks, you need to create an SQL Endpoint for our connection.
@@ -178,8 +179,8 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect.png" title="Databricks Partner Connect" />
 </div>
 
-2. Select the dbt tile under Data preparation and transformation.
-3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL Endpoint for the dbt Cloud account to use. 
+2. Select the dbt tile under `Data preparation and transformation`.
+3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL Endpoint for the dbt Cloud account to use. This does mean that you will have two SQL Endpoints at your disposal from the previous step and from using Partner Connect.
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
@@ -190,20 +191,18 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_dbt_cloud.png" title="Databricks Partner Connect Connect to dbt Cloud" />
 </div>
-5. After the new tab that pops up loads, you will be bought to a webform that asks you to fill out the account name. If you have made a dbt Cloud account with your email before, you will be asked to provide an Account Name. If you haven't, you will be asked to provide an Account Name and Password. 
+5. After the new tab that pops up loads, you will be bought to a webform. If you have made a dbt Cloud account with your email previously, you will be asked to provide an account name. If you haven't, you will be asked to provide an account name and password. 
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
 </div>
 
-6. After that, you will be logged into dbt Cloud automatically. 
+6. After you have filled out the form and clicked on `Complete Registration`, you will be logged into dbt Cloud automatically. 
 
 
 ### Option 2: Connect dbt Cloud and Databricks manually
 
-Now let's set up the connection between dbt Cloud and Databricks.
-
-1. To get setup in dbt Cloud, you will now need to get the SQL Endpoint connection information and generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information or keep this window open for the next section.
+1. To get setup in dbt Cloud manually, you will need to get the SQL Endpoint connection information and generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information or keep this window open for the next section.
 
     <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
 
@@ -234,7 +233,15 @@ Now let's set up the connection between dbt Cloud and Databricks.
 
 ## Initialize your repository and start development
 
-<Snippet src="tutorial-managed-repo-and-initiate-project" />
+If you used Partner Connect, you can skip over to initializing your dbt project as the Partner Connect sets you up with an managed repostiory already. If not, you will need to create your managed repository connection. 
+
+### Setting up an managed repository
+
+<Snippet src="tutorial-managed-repo" />
+
+### Initialize your dbt project
+
+<Snippet src="tutorial-initiate-project" />
 
 Congratulations! You have successfully completed the following:
 
