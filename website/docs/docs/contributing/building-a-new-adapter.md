@@ -14,9 +14,9 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
 
 ## Scaffolding a new adapter
-To create a new adapter plugin you can use one of two strategies usually.
+To create a new adapter plugin, you can use one of two strategies:
 1. If your adapter is forked from or compaitiable with a pre exisiting adapter ex. (postgres => redshift, dbt-spark => dbt-databricks) you may be able to tap into a lot of preexisting functionality already cutting a lot of setup from scratch work by creating a wrapper around the existing adapter plugin.
-2. If your making a adapter plugin from scratch can use the [dbt-database-adapter-scaffold](https://github.com/dbt-labs/dbt-database-adapter-scaffold) to trigger an interactive session which will allow to replace default naming, author information, versioning, and be used to augment other variables in the generation of your starting project.
+2. If you're making an adapter plugin from scratch, you can use the [dbt-database-adapter-scaffold](https://github.com/dbt-labs/dbt-database-adapter-scaffold) to trigger an interactive session which will generate a scaffolding for you to build upon.
 
     Example usage:
 
@@ -24,12 +24,12 @@ To create a new adapter plugin you can use one of two strategies usually.
     $ cookiecutter gh:dbt-labs/dbt-database-adapter-scaffold
     ```
 
-The generated boilerplate starting project will include basic adapter plugin file structure, examples of macros, high level method descriptions as seen below in this document.
+The generated boilerplate starting project will include a basic adapter plugin file structure, examples of macros, high level method descriptions, etc.
 
-One of the most important choices you will make during the cookiecutter generation will revolove around the field for `is_sql_adapter` which is a boolean used to correctly apply imports for either a `SQLAdapter` or `BaseAdapter`. Knowing which you will need requires a deeper knowledge of your selected database but a few good guides for the choice are.
-- Does your database have a complete SQL API? Can it perform tasks using SQL such as (creating schemas, droping schemas, querying an `information_schema` for metadata calls) if so it is more likely to be a SQLAdapter where you would say True to `is_sql_adapter`.
+One of the most important choices you will make during the cookiecutter generation will revolve around the field for `is_sql_adapter` which is a boolean used to correctly apply imports for either a `SQLAdapter` or `BaseAdapter`. Knowing which you will need requires a deeper knowledge of your selected database but a few good guides for the choice are.
+- Does your database have a complete SQL API? Can it perform tasks using SQL such as (creating schemas, dropping schemas, querying an `information_schema` for metadata calls)? If so, it is more likely to be a SQLAdapter where you would say True to `is_sql_adapter`.
 - Most adapters do fall under SQL adapters which is why we chose it as the default `True` value.
-- It is very possible to build out a fully functional `BaseAdapter` just will require a little more ground work as it doesn't come with some prebuilt methods the `SQLAdapter` class provides. see `dbt-bigquery` as a good guide.
+- It is very possible to build out a fully functional `BaseAdapter`. This will require a little more ground work as it doesn't come with some prebuilt methods the `SQLAdapter` class provides. See `dbt-bigquery` as a good guide.
 
 ### Editing setup.py
 
@@ -353,7 +353,7 @@ See examples:
 
 To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
 
-It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using that cookiecutter, these files will be included.
+It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
 
 ### Testing your new adapter
 
