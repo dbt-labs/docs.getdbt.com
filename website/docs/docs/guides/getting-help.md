@@ -7,7 +7,7 @@ dbt is open source, and has a generous community behind it. Asking questions wel
 ### 1. Try to solve your problem first before asking for help
 
 #### Check out the existing documentation
-We invest heavily in our docs, so this should be the first place you turn! If you're a new dbt user, spend some time completing the [Getting Started tutorial](/tutorial/setting-up) to get familiar with dbt.
+We invest heavily in our docs, so this should be the first place you turn! If you're a new dbt user, spend some time completing the [Getting Started tutorial](/tutorial/getting-started) to get familiar with dbt.
 
 #### Try to debug the issue yourself
 We have a handy guide on [debugging errors](debugging-errors) to help out! This guide also helps explain why errors occur, and which docs you might need to search for help.
@@ -43,9 +43,10 @@ We use a number of different mediums to share information
 - If your question is roughly "I've hit this error and am stuck", please ask it on [Stack Overflow](https://stackoverflow.com/questions/ask?tags=dbt).
 - If you think you've found a bug, please report it on the relevant GitHub repo (e.g. [dbt repo](https://github.com/dbt-labs/dbt), [dbt-utils repo](https://github.com/dbt-labs/dbt-utils))
 - If you are looking for an opinionated answer (e.g. "What's the best approach to X?", "Why is Y done this way?"), then, feel free to join our [Slack community](https://community.getdbt.com/) and ask it in the correct channel:
-    * **#beginners:** A great channel if you're getting started with dbt and want to understand how it works.
-    * **#modeling:** This channel is most useful when wanting to ask questions about data model design, SQL patterns, and testing.
-    * **#suggestions:** Got an idea for dbt? This is the place!
+    * **#advice-dbt-for-beginners:** A great channel if you're getting started with dbt and want to understand how it works.
+    * **#advice-dbt-for-power-users:** If you’re hitting an error in dbt that you don’t understand, let us know here.
+    * **#advice-data-modeling:** This channel is most useful when wanting to ask questions about data model design, SQL patterns, and testing.
+    * **#dbt-suggestions:** Got an idea for dbt? This is the place!
     * Other channels: We're adding new channels all the time — please take a moment to browse the channels to see if there is a better fit
 
 ## Receiving dedicated support
