@@ -16,6 +16,6 @@ To view the latest documentation for a job, click the "View Latest Documentation
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" title="Click the 'View Latest Documentation' button to see docs in dbt Cloud"/>
 
-## Easy access
+## Further reading
 
-See [Building and Configuring Artifacts](artifacts) for more information on exposing links to the latest Documentation and Source Freshness reports to your team.
+For more on exposing links to the latest documentation and sharing source freshness reports to your team, see [Building and configuring artifacts](artifacts).
