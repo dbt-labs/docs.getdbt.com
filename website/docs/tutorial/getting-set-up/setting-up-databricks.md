@@ -191,7 +191,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_dbt_cloud.png" title="Databricks Partner Connect Connect to dbt Cloud" />
 </div>
-5. After the new tab loads, you will be bought to a webform. If you have made a dbt Cloud account with your email previously, you will be asked to provide an account name. If you haven't, you will be asked to provide an account name and password. 
+5. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password. 
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
@@ -202,7 +202,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 
 ### Option 2: Connect dbt Cloud and Databricks manually
 
-1. To get setup in dbt Cloud manually, you will need to get the SQL Endpoint connection information and generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information or keep this window open for the next section.
+1. To manually setup dbt Cloud, you will need the SQL Endpoint connection information and to generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information because you will need it later.
 
     <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
 
@@ -224,7 +224,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
     - Hostname comes from Server hostname
     - Endpoint comes from the last part of HTTP path after `/endpoints`
      
-6. For your Development Credentials, input:
+6. For your Development Credentials, type:
 
      - `User` input `token` from Step 7 of the previous section 
      - For the schema field, choose a development schema (this will be your default development database to build objects into).  We recommend something in the form of dbt_{{ first initial, last name}} like `dbt_achen`.
@@ -233,9 +233,9 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 
 ## Initialize your repository and start development
 
-If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect sets you up with an managed repostiory already. If not, you will need to create your managed repository connection. 
+If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your managed repository connection. 
 
-### Setting up an managed repository
+### Setting up a managed repository
 
 <Snippet src="tutorial-managed-repo" />
 

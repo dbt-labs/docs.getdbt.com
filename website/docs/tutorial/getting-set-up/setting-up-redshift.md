@@ -185,7 +185,7 @@ For Set up a Database Connection, choose Redshift.
 
 ## Initialize your repository and start development
 
-### Setting up an managed repository
+### Setting up a managed repository
 
 <Snippet src="tutorial-managed-repo" />
 

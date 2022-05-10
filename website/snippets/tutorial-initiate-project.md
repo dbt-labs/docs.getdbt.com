@@ -1,4 +1,4 @@
-Now that we have a repository configured, let's initialize your project and start development in the dbt Cloud IDE:
+Now that you have a repository configured, you can initialize your project and start development in the dbt Cloud IDE:
 
 1. Click **Start Developing**.  You can also navigate to the Develop page from ![hamburger menu](/img/hamburger-icon.png) in the top left. It might take a few minutes for your project to spin up for the first time, as it established your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project**.  This builds out your folder structure with example models.
