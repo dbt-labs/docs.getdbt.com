@@ -224,7 +224,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
     - Hostname comes from Server hostname
     - Endpoint comes from the last part of HTTP path after `/endpoints`
      
-6. For your Development Credentials, input:
+6. For your Development Credentials, type:
 
      - `User` input `token` from Step 7 of the previous section 
      - For the schema field, choose a development schema (this will be your default development database to build objects into).  We recommend something in the form of dbt_{{ first initial, last name}} like `dbt_achen`.
