@@ -235,7 +235,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 
 If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your managed repository connection. 
 
-### Setting up an managed repository
+### Setting up a managed repository
 
 <Snippet src="tutorial-managed-repo" />
 
