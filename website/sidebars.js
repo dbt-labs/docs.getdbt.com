@@ -74,6 +74,7 @@ const sidebarSettings = {
             slug: '/docs/guides/migration-guide',
           },
           items: [
+            "docs/guides/migration-guide/migrating-from-spark-to-databricks.md",
             "docs/guides/migration-guide/upgrading-to-v1.1",
             "docs/guides/migration-guide/upgrading-to-v1.0",
             "docs/guides/migration-guide/upgrading-to-v0.21",
