@@ -175,16 +175,16 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 
 1. In the Databricks workspace, on the left-side console: click on `Partner Connect`. 
 
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect.png" title="Databricks Partner Connect" />
-</div>
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect.png" title="Databricks Partner Connect" />
+    </div>
 
 2. Select the dbt tile under `Data preparation and transformation`.
 3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL Endpoint for the dbt Cloud account to use. This does mean that you will have two SQL Endpoints at your disposal from the previous step and from using Partner Connect.
 
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
-</div>
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+    </div>
 
 
 4. Click on `Connect to dbt Cloud`.
@@ -193,9 +193,9 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 </div>
 5. After the new tab loads, you will be bought to a webform. If you have made a dbt Cloud account with your email previously, you will be asked to provide an account name. If you haven't, you will be asked to provide an account name and password. 
 
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
-</div>
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+    </div>
 
 6. After you have filled out the form and clicked on `Complete Registration`, you will be logged into dbt Cloud automatically. 
 
