@@ -267,15 +267,22 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 
 ## Initialize your repository and start development
 
-<Snippet src="tutorial-managed-repo-and-initiate-project" />
+If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-snowflake#initialize-your-dbt-project) as the Partner Connect sets you up with an managed repostiory already. If not, you will need to create your managed repository connection. 
+
+### Setting up a managed repository
+
+<Snippet src="tutorial-managed-repo" />
+
+### Initialize your dbt project
+
+<Snippet src="tutorial-initiate-project" />
 
 Congratulations! You have successfully completed the following:
 
-* Set up a Snowflake trial account
-* Loaded training data into your Snowflake account
-* Created a dbt Cloud account, either through Partner Connect or through the account flow
-* Connected dbt Cloud and Snowflake
-* Set up the dbt Cloud IDE, queried data, and did your first dbt run
+- Set up a Databricks account
+- Loaded training data into your Databricks account
+- Configured a SQL endpoint in Databricks
+- Connected dbt Cloud and Databricks
 
 ## Next steps
 
