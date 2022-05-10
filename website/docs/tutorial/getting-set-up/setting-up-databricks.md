@@ -191,7 +191,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_dbt_cloud.png" title="Databricks Partner Connect Connect to dbt Cloud" />
 </div>
-5. After the new tab loads, you will be bought to a webform. If you have made a dbt Cloud account with your email previously, you will be asked to provide an account name. If you haven't, you will be asked to provide an account name and password. 
+5. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password. 
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
