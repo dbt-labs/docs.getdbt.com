@@ -16,7 +16,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/). The policie
 
 - We are no longer releasing new patches for minor versions prior to v1.0.
 - As of June 30, 2022, dbt Cloud will remove support for dbt Core versions older than v1.0. At that point, we will also remove v0.20 and v0.21 from the version dropdown on this website.
-- You can read the [specific version migration guides](/guides/migration-guide) to understand changes to each version. Each migration guide will link to pages of documentation that were added or updated. Those pages of documentation will also include "Changelog" notes, which you can toggle to see notes on specific changes from each older version.
+- You can read the [specific version migration guides](/docs/guides/migration-guide) to understand changes to each version. Each migration guide will link to pages of documentation that were added or updated. Those pages of documentation will also include "Changelog" notes, which you can toggle to see notes on specific changes from each older version.
 
 ## Version support starting with v1.0
 
