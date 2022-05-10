@@ -202,7 +202,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 
 ### Option 2: Connect dbt Cloud and Databricks manually
 
-1. To get setup in dbt Cloud manually, you will need to get the SQL Endpoint connection information and generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information or keep this window open for the next section.
+1. To manually setup dbt Cloud, you will need the SQL Endpoint connection information and to generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information because you will need it later.
 
     <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
 
