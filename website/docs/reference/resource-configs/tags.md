@@ -134,10 +134,10 @@ Then, run part of your project like so:
 
 ```
 # Run all models tagged "daily"
-$ dbt run --model tag:daily
+$ dbt run --select tag:daily
 
 # Run all models tagged "daily", except those that are tagged hourly
-$ dbt run --model tag:daily --exclude tag:hourly
+$ dbt run --select tag:daily --exclude tag:hourly
 ```
 
 ### Apply tags to seeds
