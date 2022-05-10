@@ -120,7 +120,7 @@ Now let's set up the connection between dbt Cloud and BigQuery.
 
 ## Initialize your repository and start development
 
-### Setting up an managed repository
+### Setting up a managed repository
 
 <Snippet src="tutorial-managed-repo" />
 
