@@ -1,6 +1,6 @@
 name: New product feature
 description: Make a suggestion to add docs for a new dbt product feature.
-labels: ["content","new dbt feature"]
+labels: ["content","upcoming release"]
 body:
   - type: markdown
     attributes:
