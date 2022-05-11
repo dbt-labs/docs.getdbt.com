@@ -1,7 +1,13 @@
 ---
 title: "dbt Cloud release notes"
 id: "release-notes"
-description: "Release notes for the dbt Cloud application"
+description: "Release notes for dbt Cloud"
 ---
 
-This is the new release notes for dbt Cloud. You can still view our historical changelog, but now we will be providing this information by date instead of release number to help you see when changes were implemented. Occasionally, we will also provide tags to narrow the release notes you see.
+dbt provides release notes for changes to dbt Cloud to provide insight into what's recently changed. Generally, you'll see release notes for these changes to dbt Cloud:
+
+* New products and features (new)
+* Performance improvements and feature enhancements (enhancement)
+* Bug fixes (fix)
+
+Release notes will be grouped by month. For customers using dbt Virtual Private Cloud, you will see a tag for changes available in your versioned release.

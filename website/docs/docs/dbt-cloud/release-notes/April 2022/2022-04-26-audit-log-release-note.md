@@ -2,7 +2,7 @@
 title: "Audit log"
 description: "Review actions performed by people in your organization."
 slug: 2022-04-26-audit-log-release-note
-sidebar_label: "Released: Audit log"
+sidebar_label: "New: Audit log"
 tags: [April-04-2022]
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Email verification"
 description: "dbt Cloud users created via SAML JIT will now confirm identity via email to activate their account."
-sidebar_label: "Released: Email verification"
+sidebar_label: "New: Email verification"
 slug: 2022-04-26-email-verification
 
 tags: [v1.1.1, April-26-2022]
