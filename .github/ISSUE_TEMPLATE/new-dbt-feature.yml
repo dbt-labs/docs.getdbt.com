@@ -1,5 +1,5 @@
 name: New product feature
-description: Make a suggestion to add docs for a new dbt product feature.
+description: For dbt PMs to add docs for their new or updated dbt product features.
 labels: ["content","upcoming release"]
 body:
   - type: markdown
