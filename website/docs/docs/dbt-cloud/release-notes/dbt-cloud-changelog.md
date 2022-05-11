@@ -1,8 +1,10 @@
 ---
-title: "dbt Cloud - Changelog"
-id: "cloud-changelog"
-sidebar_label: Changelog
+title: "Changelog prior to March 2022"
+id: "cloud-changelog-previous"
+sidebar_label: Changelog (previous versions)
 description: "Changelog for the dbt Cloud application"
+
+tags: [v 1.1.1]
 ---
 
 ## dbt Cloud v1.1.46 (March 2nd, 2022)
