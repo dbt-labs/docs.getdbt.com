@@ -27,10 +27,8 @@ body:
 
   - type: textarea
     attributes:
-      label: Why this feature? Why now?
+      label: Link to source material
       description: |
-        - Add any other context or screenshots about the feature here.
-        - How will this feature be helpful?
-        - What is the expected outcome?
+        Use the [source material template](https://docs.google.com/document/d/1lLWGMXJFjkY4p7r8ZKhBX73dOLmIjgXZBYq39LqmAJs/edit) to provide source material for this feature. 
     validations:
       required: true
