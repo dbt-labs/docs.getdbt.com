@@ -1,4 +1,4 @@
-name: New product feature
+name: Start docs process
 description: For dbt PMs to add docs for their new or updated dbt product features.
 labels: ["content","upcoming release"]
 body:
