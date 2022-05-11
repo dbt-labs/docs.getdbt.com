@@ -19,6 +19,16 @@ In the dbt IDE, you can compile dbt code into SQL and execute it against your da
 
 <Lightbox src="/img/docs/dbt-cloud/d6a75a5-Screen_Shot_2019-11-05_at_9.04.02_PM.png" title="Executing dbt SQL in the browser"/>
 
+
+## dbt Cloud IDE keyboard shortcuts
+
+In the dbt Cloud IDE, we like to make things easier for you by using keyboard shortcuts. Pressing the `F1` key on your keyboard will bring up a menu of the dbt Cloud IDE shortcuts.  
+
+**Quick Tip!** 
+To search for a particular file name, you can use the `cmd + o` shortcut on a Mac, which will bring up the full path path of the file(s) it finds with that name.
+
+<Lightbox src="/img/docs/dbt-cloud/keyboard_shortcuts video.mp4" title="Using Keyboard Shortcuts in the IDE"/>
+
 ## Running Projects
 
 In addition to compiling and executing SQL, you can also *run* dbt projects in the dbt IDE. Use dbt's [rich model selection syntax](node-selection/syntax) to [run dbt commands](dbt-commands) directly in your browser.
