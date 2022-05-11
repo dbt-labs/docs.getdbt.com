@@ -5,7 +5,7 @@ id: "config"
 
 ## Overview
 
-The `config` variable exists to handle end-user configuration for custom materializations. Configs like  `unique_key` can be implemented using the `config` variable in your own materializations.
+The `config` variable exists to handle end-user configuration for custom <Term id="materialization">materializations</Term>. Configs like  `unique_key` can be implemented using the `config` variable in your own materializations.
 
 For example, code in the `incremental` materialization like this:
 ```

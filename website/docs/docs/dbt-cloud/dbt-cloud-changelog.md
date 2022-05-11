@@ -4,6 +4,13 @@ id: "cloud-changelog"
 sidebar_label: Changelog
 description: "Changelog for the dbt Cloud application"
 ---
+
+## dbt Cloud v1.1.46 (March 2nd, 2022)
+
+dbt Cloud now shows "waiting time" and "prep time" for a run, which used to be expressed in aggregate as "queue time". Waiting time captures the time dbt Cloud waits to run your job if there isn't an available run slot or if a previous run of the same job is still running. Prep time represents the time it takes dbt Cloud to ready your job to run in your cloud data warehouse.
+
+<Lightbox src="/img/docs/dbt-cloud/v1.1.46releasenotes_img1.png" title="New prep time and waiting time"/>
+
 ## dbt Cloud v1.1.45 (February 16, 2022)
 
 Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens#permissions-for-service-account-tokens).
@@ -70,7 +77,7 @@ Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-clou
 
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
-dbt v0.21 is now available in dbt Cloud. The big change with this release is it introduces the `dbt build` command. `dbt build` logically does everything you'd want to do in your DAG. It runs your models, tests your tests, snapshots your snapshots, and seeds your seeds. It does this, resource by resource, from left to right across your DAG. dbt build is an opinionated task. It’s the culmination of all we’ve built- running models with resilient materializations, prioritizing data quality with tests, updating fixtures with seeds, capturing slowly changing dimensions with snapshot. Give it a try!
+dbt v0.21 is now available in dbt Cloud. The big change with this release is it introduces the `dbt build` command. `dbt build` logically does everything you'd want to do in your DAG. It runs your models, tests your tests, snapshots your snapshots, and seeds your seeds. It does this, resource by resource, from left to right across your DAG. dbt build is an opinionated task. It’s the culmination of all we’ve built- running models with resilient <Term id="materialization">materializations</Term>, prioritizing data quality with tests, updating fixtures with seeds, capturing slowly changing dimensions with snapshot. Give it a try!
 
 #### New products and features
 - We have a new beta feature, which we're calling Model Bottlenecks. It allows you to visually see how long it takes to build models in each run, so you can see clearly which models are taking the longest. If you're interested in learning more, check out #beta-feedback-model-bottlenecks in the dbt community Slack, and we can add you to the beta.
@@ -690,7 +697,7 @@ significantly.
 - Add merge conflict resolution, a merge commit workflow, and merge abort workflow to the IDE
 - Deprecate dbt versions prior to 0.13.0
 - Refactor to cut job scheduler loop time
-- Reduce extra database calls to account table in job scheduler loop
+- Reduce extra database calls to account <Term id="table" /> in job scheduler loop
 - [On-premises] Allow clients to disable authentication for SMTP
 - [On-premises] Allow disabling of TLS for SMTP
 - [On-premises] Making k8s access mode for IDE pods an environment variable
@@ -876,7 +883,7 @@ This release includes bugfixes around how permissions are applied to runs and ru
 - Fixed receiving arbitrary remote_url when creating a git url repository.
 - Fixed issue when handling non-resource specific errors from RPC server in IDE.
 - Fixed a bug where the scheduler would stop if the database went away.
-- Fixed IDE query results table not supporting horizontal scrolling.
+- Fixed IDE query results <Term id="table" /> not supporting horizontal scrolling.
 
 #### Changed
 
