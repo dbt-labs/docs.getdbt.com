@@ -15,7 +15,7 @@ body:
       label: Contributions
       description: This applies to new, unreleased content.
       options:
-        - label: I am a Product manager at dbt who is responsible for this feature. 
+        - label: I am a PM at dbt who is responsible for this feature. 
 
   - type: textarea
     attributes:
