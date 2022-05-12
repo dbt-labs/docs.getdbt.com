@@ -1,6 +1,7 @@
 ---
 title: "What are the best practices for installing dbt Core with pip?"
-description: ""
+sidebar_label: ‘Installing dbt Core with pip’
+id: install-pip-best-practices.md
 ---
 
 Managing Python local environments can be challenging! You can use these best practices to improve the dbt Core installation with pip. 
