@@ -29,12 +29,7 @@ We have always encouraged our customers to upgrade dbt Core versions whenever a 
 
 We will continue to update this table so that customers know when we plan to stop running different versions of Core in Cloud.
 
-<!--- TODO: Replace with a Snippet so that this table always matches the one in Understanding dbt Core versions --->
-
-| dbt Version | Release Date | Deprecation Date |
-| ------------- | -------------- | ------------- | 
-| v0.X.X (major version 0 ) | Various Dates | June 30, 2022 |
-| v1.0.0 | December 2021 | December 2022 |
+<Snippet src="core-versions-table" />
 
 Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may choose to try prereleases of those patch releases before they are generally available.
 
@@ -67,7 +62,7 @@ Additionally upgrading to more recent versions of dbt Core will enable better pe
 
 | dbt Cloud Feature | dbt Core Version Needed |
 | ------------- | -------------- |
-| [Environment variable secret scrubbing](/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#handling-secrets)| v0.21.0+ |
+| [Environment variable secret scrubbing](/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#handling-secrets)| v1.0+ |
 | DAG in the IDE | v0.20.0+|
 | [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview.md) |v0.19.0+|
 | [Dashboard status tiles](/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) | v0.19.0+ |

@@ -27,7 +27,7 @@ sources:
 ## Definition
 Optionally configure whether dbt should quote databases, schemas, and identifiers when resolving a `{{ source() }}` function to a direct relation reference.
 
-This config can be specified for all tables in a source, or for a specific source table. Quoting configs defined for a specific source table override the quoting configs specified for the top-level source.
+This config can be specified for all tables in a source, or for a specific source <Term id="table" />. Quoting configs defined for a specific source table override the quoting configs specified for the top-level source.
 
 :::info BigQuery Terminology
 

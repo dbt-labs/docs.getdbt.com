@@ -62,7 +62,7 @@ If you believe your project might be affected, read more details in the migratio
 
 - Do you select specific sources to check freshness (`dbt snapshot-freshness --select <source_name>`)?
 - Do you have custom scripts that parse dbt JSON artifacts?
-- (Snowflake only) Do you have custom macros or materializations that depend on using transactions, such as statement blocks with `auto_begin=True`?
+- (Snowflake only) Do you have custom macros or <Term id="materialization">materializations</Term> that depend on using transactions, such as statement blocks with `auto_begin=True`?
 
 If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-21-0).
 
