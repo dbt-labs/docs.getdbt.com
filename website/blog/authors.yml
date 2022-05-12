@@ -224,3 +224,13 @@ matt_winkler:
   image_url: /img/blog/authors/matt-winkler.jpeg
   links:
     - url: https://www.linkedin.com/in/matt-winkler-4024263a/
+
+lauren_benezra:
+  name: Lauren Benezra
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/lauren-benezra.jpeg
+  links:
+    - url: https://www.linkedin.com/in/lbenezra/
+      icon: fa-linkedin
+
