@@ -1,7 +1,7 @@
 ---
 title: How do I set up Slack notifications?
 sidebar_label: ‘How to set up Slack’
-id: slack-notifications
+id: slack
 ---
 
 Setting up Slack notifications in dbt Cloud will allow you to receive alerts in a chosen Slack channel when a job run succeeds, fails, or is cancelled.
