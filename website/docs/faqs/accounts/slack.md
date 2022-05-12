@@ -1,5 +1,6 @@
 ---
 title: How do I set up Slack notifications?
+Description: “Instructions on how to set up slack notifications”
 sidebar_label: ‘How to set up Slack’
 id: slack
 ---
