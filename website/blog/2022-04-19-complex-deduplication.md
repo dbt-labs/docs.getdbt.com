@@ -6,7 +6,7 @@ hide_table_of_contents: false
 tags: [analytics craft]
 is_featured: true
 slug: how-we-remove-partial-duplicates
-date: 2022-05-02
+date: 2022-05-12
 ---
 
 Hey data champion — so glad you’re here! Sometimes datasets need a **team** of engineers to tackle their deduplification (totz a real word), and that’s why we wrote this down. *For you*, friend, *we wrote it down for you*. You’re welcome!
