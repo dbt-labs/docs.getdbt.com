@@ -4,7 +4,11 @@ id: "migrating-from-spark-to-databricks"
 ---
 
 
-## Summary
+## Pre-requisites
+
+In order to migrate to dbt-databricks, you must first be using `dbt-spark>1.0.0` as `dbt-databricks` is only supported from `>1.0`.
+
+## Why change to dbt-databricks?
 
 Current users of dbt with Databricks are about to have some new experiences with respect to authentication as well as features available via the delta format.
 
@@ -12,15 +16,24 @@ Current users of dbt with Databricks are about to have some new experiences with
 
 The authentication information has now simplified greatly. Previously you would have to provide a `cluster` or `endpoint` id which was hard to parse out of the http_path provided in the Databricks UI. Now it is simple enough  changes are authentication method is now the same regardless if you are using a Cluster or a SQL endpoint
 
+### Better defaults
+
+With dbt-databricks, by default, you will make use of delta lake and the [photon engine](https://docs.databricks.com/runtime/photon.html). 
+See [the caveats section of Databricks Profile Docs page](https://docs.getdbt.com/reference/warehouse-profiles/databricks-profile#choosing-between-dbt-databricks-and-dbt-spark) for more information.
+
+### Pure Python (Core only)
+
+A huge benefit to the new dbt-databricks adapter in Core, is that you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in pure-python library, `databricks-sql-connector`
 
 
-## dbt Cloud
+## Migration
+### dbt Cloud
 
-### Credentials
+#### Credentials
 
-WHen you initially create a project in dbt Cloud and connect it to a data warehouse, it will ask you for credentials. In the case of Databricks, the credential is a Personal Access Token that is stored for each unique user for a given project. If, as an admin, you remove a data warehouse connection from a project, the users' credentials are not removed.  This makes migrating from dbt-spark to dbt-databricks simple as it only requires deleting the connection and re-adding the cluster/endpoint information. Both the admin and users of the project need not re-enter their personal access tokens.
+When you initially create a project in dbt Cloud and connect it to a data warehouse, it will ask you for credentials. In the case of Databricks, the credential is a Personal Access Token that is stored for each unique user for a given project. If, as an admin, you remove a data warehouse connection from a project, the users' credentials are not removed.  This makes migrating from dbt-spark to dbt-databricks simple as it only requires deleting the connection and re-adding the cluster/endpoint information. Both the admin and users of the project need not re-enter their personal access tokens.
 
-### Procedure
+#### Procedure
 
 An admin of the Databricks-backed dbt project should do perform the following steps to migrate from using the generic Spark adapter to the Databricks-specfic adapter.
 
@@ -43,16 +56,18 @@ After the above steps have been performed, all users will have to refresh their 
 
 
 
-## dbt Core
+### dbt Core
 
-A huge benefit to the new dbt-databricks adapter in Core, is that you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in pure-python library, `databricks-sql-connector`
+In dbt Core, migrating to the dbt-databricks adapter from dbt-spark requires that you:
+1. install the new adapter in your environment, and
+2. modify your target in your `~/.dbt/profiles.yml`
 
-
-### Example
-
-#### SQL Endpoint
+This changes will be needed for all users of your project
+#### Example
 
 If you're using `dbt-spark` today to connect to a Databricks SQL Endpoint, the below examples show a good before and adter of how to authenticate. The cluster example is also effectively the same.
+
+The steps are virtually the same if you're using a Spark cluster.
 
 
 <File name='~/.dbt/profiles.yml'>
