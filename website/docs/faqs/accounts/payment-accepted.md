@@ -1,5 +1,6 @@
 ---
 title: Can I pay via invoice?
+Description: “What payments types are accepted”
 sidebar_label: ‘Can I pay invoice’
 id: payment-accepted
 ---
