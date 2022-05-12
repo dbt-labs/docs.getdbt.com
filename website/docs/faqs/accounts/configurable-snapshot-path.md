@@ -1,5 +1,6 @@
 ---
 title: Can I store my snapshots in a directory other than the `snapshot` directory in my project?
+Description: “You can see how to change snapshots directory in your project”
 sidebar_label: ‘Store snapshot in other directory'’
 id: configurable-snapshot-path
 ---
