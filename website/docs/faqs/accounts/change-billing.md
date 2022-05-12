@@ -1,5 +1,6 @@
 ---
 title: How can I update my billing information?
+sidebar_label: 'How to update billing'
 id: change-billing
 ---
 To change your billing name, address, or email, just send us a message at support@getdbt.com with the newly updated information, and we can make that change for you! 
