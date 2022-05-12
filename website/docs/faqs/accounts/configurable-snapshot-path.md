@@ -1,5 +1,7 @@
 ---
 title: Can I store my snapshots in a directory other than the `snapshot` directory in my project?
+sidebar_label: ‘Store snapshot in other directory'’
+id: snapshot-directory
 ---
 By default, dbt expects your snapshot files to be located in the `snapshots` subdirectory of your project.
 
