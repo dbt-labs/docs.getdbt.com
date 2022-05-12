@@ -1,7 +1,7 @@
 ---
 title: Can I pay via invoice?
 sidebar_label: ‘Can I pay invoice’
-id: invoice-billing
+id: payment-accepted
 ---
 Presently for Team plans, self-service dbt Cloud payments must be made via credit card and by default, they will be billed monthly based on the number of active developer seats.
 
