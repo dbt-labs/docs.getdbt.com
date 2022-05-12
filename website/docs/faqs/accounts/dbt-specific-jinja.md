@@ -1,5 +1,6 @@
 ---
 title: What parts of Jinja are dbt-specific?
+sidebar_label: ‘dbt-specific Jinja’
 id: dbt-specific-jinja
 ---
 
