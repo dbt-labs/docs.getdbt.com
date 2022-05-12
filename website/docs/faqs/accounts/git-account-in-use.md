@@ -1,10 +1,11 @@
 ---
 title: Why am I getting an "account in use" error?
+Description: “What to do when you receive a Git account in use error”
 sidebar_label: ‘Git account in use’
 id: git-account-in-use
 ---
 
-If you're receiving an 'Account in use' error when trying to integrate GitHub in your Profile page, thisis because the Git integration is a 1-to-1 integration, so you can only have your Git account linked to one dbt Cloud user account. 
+If you're receiving an 'Account in use' error when trying to integrate GitHub in your Profile page, this is because the Git integration is a 1-to-1 integration, so you can only have your Git account linked to one dbt Cloud user account. 
 
 Here are some steps to take to get you unstuck:
 
