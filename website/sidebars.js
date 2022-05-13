@@ -294,7 +294,7 @@ const sidebarSettings = {
     "docs/dbt-cloud/cloud-dbt-cloud-support",
     {
       type: "category",
-      label: "dbt Cloud release notes",
+      label: "dbt Cloud Release Notes",
       link: { type: 'doc', id: 'docs/dbt-cloud/release-notes'},
       items: [
         {
