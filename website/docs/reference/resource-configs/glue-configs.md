@@ -6,19 +6,15 @@ id: "glue-configs"
 <!----
 To-do:
 - use the reference doc structure for this article/split into separate articles
-- inherite from spark
 --->
 
 ## Configuring tables
 
-When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](model-configs).
+When materializing a model as `table`, you may include several optional configs that are specific to the dbt-glue plugin, in addition to the [Apache Spark model configuration](spark-configs#configuring-tables).
 
 | Option  | Description                                        | Required?               | Example                  |
 |---------|----------------------------------------------------|-------------------------|--------------------------|
-| file_format | The file format to use when creating tables (`parquet`, `csv`, `json`, `text`, `jdbc` or `orc`). | Optional | `parquet`|
-| partition_by  | Partition the created table by the specified columns. A directory is created for each partition. | Optional                | `date_day`              |
-| clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns. | Optional               | `country_code`              |
-| buckets  | The number of buckets to create while clustering | Required if `clustered_by` is specified                | `8`              |
+| custom_location  | By default, the adapter will store your data in the following path: `location path`/`database`/`table`. If you don't want to follow that default behaviour, you can use this parameter to set your own custom location on S3 | No | `s3://mycustombucket/mycustompath`              |
 
 ## Incremental models
 
@@ -48,7 +44,7 @@ Following the `append` strategy, dbt will perform an `insert into` statement wit
 }>
 <TabItem value="source">
 
-<File name='spark_incremental.sql'>
+<File name='glue_incremental.sql'>
 
 ```sql
 {{ config(
@@ -67,10 +63,10 @@ select * from {{ ref('events') }}
 </TabItem>
 <TabItem value="run">
 
-<File name='spark_incremental.sql'>
+<File name='glue_incremental.sql'>
 
 ```sql
-create temporary view spark_incremental__dbt_tmp as
+create view spark_incremental__dbt_tmp as
 
     select * from analytics.events
 
@@ -81,6 +77,10 @@ create temporary view spark_incremental__dbt_tmp as
 insert into table analytics.spark_incremental
     select `date_day`, `users` from spark_incremental__dbt_tmp
 ```
+
+;
+
+drop view spark_incremental__dbt_tmp
 
 </File>
 </TabItem>
@@ -140,7 +140,7 @@ group by 1
 <File name='spark_incremental.sql'>
 
 ```sql
-create temporary view spark_incremental__dbt_tmp as
+create view spark_incremental__dbt_tmp as
 
     with new_events as (
 
@@ -164,6 +164,10 @@ create temporary view spark_incremental__dbt_tmp as
 insert overwrite table analytics.spark_incremental
     partition (date_day)
     select `date_day`, `users` from spark_incremental__dbt_tmp
+
+;
+
+drop view spark_incremental__dbt_tmp
 ```
 
 </File>
@@ -229,18 +233,8 @@ group by 1
 
 ## Persisting model descriptions
 
-Relation-level docs persistence is supported since dbt v0.17.0. For more
-information on configuring docs persistence, see [the docs](resource-configs/persist_docs).
-
-When the `persist_docs` option is configured appropriately, you'll be able to
-see model descriptions in the `Comment` field of `describe [table] extended`
-or `show table extended in [database] like '*'`.
+Relation-level docs persistence is inherited from dbt-spark, for more details, check [Apache Spark model configuration](spark-configs#persisting-model-descriptions).
 
 ## Always `schema`, never `database`
 
-Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
-`database` to exist at a higher level than `schema`. As such, you should _never_
-use or set `database` as a node config or in the target profile when running dbt-glue.
-
-If you want to control the schema/database in which dbt will materialize models,
-use the `schema` config and `generate_schema_name` macro _only_.
+This section is also inherited from dbt-spark, for more details, check [Apache Spark model configuration](spark-configs#always-schema-never-database).

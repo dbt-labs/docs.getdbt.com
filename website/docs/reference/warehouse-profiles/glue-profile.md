@@ -16,7 +16,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Source:** [Github](https://github.com/aws-samples/dbt-glue)    
 **Core version:** v0.24.0 and newer  
 **dbt Cloud:** Not Supported      
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/todo)     
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C02R4HSMBAT)     
 
 
 ![dbt-glue stars](https://img.shields.io/github/stars/aws-samples/dbt-glue?style=for-the-badg)
@@ -41,13 +41,125 @@ ETL.
 
 Read [this documentation](https://docs.aws.amazon.com/glue/latest/dg/glue-is-security.html) to configure these principals.
 
-To enjoy all features of **`dbt-glue`** adapter, you will need to attach to the Service role the 3 AWS managed policies below:
 
-| Service  | managed policy required  |
+You will find bellow a least privileged policy to enjoy all features of **`dbt-glue`** adapter.
+
+Please to update variables between **`<>`**, here are explanations of these arguments:
+
+|Args	|Description	| 
 |---|---|
-| Amazon S3 | AmazonS3FullAccess |
-| AWS Glue | AWSGlueConsoleFullAccess |
-| AWS Lake formation | AWSLakeFormationDataAdmin |
+|region|The region where you're Glue database is stored |
+|AWS Account|The AWS account where you run your pipeline|
+|dbt output database|The database updated by dbt (this is the database configured in the profile.yml of your dbt environment)|
+|dbt source database|All databases used as source|
+|dbt output bucket|The bucket name where the data will be generate dbt (the location configured in the profile.yml of your dbt environment)|
+|dbt source bucket|The bucket name of source databases (if they are not managed by Lake Formation)|
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Read_and_write_databases",
+            "Action": [
+                "glue:SearchTables",
+                "glue:BatchCreatePartition",
+                "glue:CreatePartitionIndex",
+                "glue:DeleteDatabase",
+                "glue:GetTableVersions",
+                "glue:GetPartitions",
+                "glue:DeleteTableVersion",
+                "glue:UpdateTable",
+                "glue:DeleteTable",
+                "glue:DeletePartitionIndex",
+                "glue:GetTableVersion",
+                "glue:UpdateColumnStatisticsForTable",
+                "glue:CreatePartition",
+                "glue:UpdateDatabase",
+                "glue:CreateTable",
+                "glue:GetTables",
+                "glue:GetDatabases",
+                "glue:GetTable",
+                "glue:GetDatabase",
+                "glue:GetPartition",
+                "glue:UpdateColumnStatisticsForPartition",
+                "glue:CreateDatabase",
+                "glue:BatchDeleteTableVersion",
+                "glue:BatchDeleteTable",
+                "glue:DeletePartition",
+                "lakeformation:ListResources",
+                "lakeformation:BatchGrantPermissions",
+                "lakeformation:ListPermissions"
+            ],
+            "Resource": [
+                "arn:aws:glue:<region>:<AWS Account>:catalog",
+                "arn:aws:glue:<region>:<AWS Account>:table/<dbt output database>/*",
+                "arn:aws:glue:<region>:<AWS Account>:database/<dbt output database>"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Sid": "Read_only_databases",
+            "Action": [
+                "glue:SearchTables",
+                "glue:GetTableVersions",
+                "glue:GetPartitions",
+                "glue:GetTableVersion",
+                "glue:GetTables",
+                "glue:GetDatabases",
+                "glue:GetTable",
+                "glue:GetDatabase",
+                "glue:GetPartition",
+                "lakeformation:ListResources",
+                "lakeformation:ListPermissions"
+            ],
+            "Resource": [
+                "arn:aws:glue:<region>:<AWS Account>:table/<dbt source database>/*",
+                "arn:aws:glue:<region>:<AWS Account>:database/<dbt source database>",
+                "arn:aws:glue:<region>:<AWS Account>:database/default",
+                "arn:aws:glue:<region>:<AWS Account>:database/global_temp"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Sid": "Storage_all_buckets",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<dbt output bucket>",
+                "arn:aws:s3:::<dbt source bucket>"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Sid": "Read_and_write_buckets",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:GetObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<dbt output bucket>"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Sid": "Read_only_buckets",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<dbt source bucket>"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
 
 ### Configuration of the local environment
 
@@ -61,7 +173,6 @@ Configure a Python virtual environment to isolate package version and code depen
 
 ```bash
 $ sudo yum install git
-$ python3 -m pip install --upgrade pip
 $ python3 -m venv dbt_venv
 $ source dbt_venv/bin/activate
 $ python3 -m pip install --upgrade pip
