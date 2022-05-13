@@ -27,7 +27,7 @@ select * from jaffle_shop_customers
 <div>
 
 ```sql
-select * from jaffle_shop.customers
+select * from default.jaffle_shop_customers
 ```
 
 </div>
