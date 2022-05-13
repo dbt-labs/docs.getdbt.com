@@ -3,7 +3,7 @@ title: "Audit log"
 id: "audit-log"
 description: "Review actions performed by people in your organization."
 sidebar_label: "New: Audit log"
-sidebar_class_name: April 2022
+
 tags: [April-26-2022]
 ---
 
