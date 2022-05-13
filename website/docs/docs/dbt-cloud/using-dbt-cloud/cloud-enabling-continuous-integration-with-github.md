@@ -67,17 +67,6 @@ Because dbt Cloud manages deferral and state environment variables, there is no 
 
 To learn more about state comparison and deferral in dbt, read the docs on [state](understanding-state).
 
-## Smart Reruns
-
-As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that failed and had errors.
-
-When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of error/fail resources. In your job commands, you can signal to dbt to run and test only on these error/fail results and their children by including the `result:error+` and `result:fail+` argument. 
-
-As example:
-```bash
-dbt build --select result:error+ result:fail+
-```
-
 ## Fresh Rebuilds
 
 As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that are fresher compared to a previous run.
@@ -106,7 +95,7 @@ dbt build --select source_status:fresher+
 ```
 </VersionBlock>
 
-More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md#pro-tips-for-workflows)
+More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md#pro-tips-for-workflows).
 
 ## Troubleshooting
 
