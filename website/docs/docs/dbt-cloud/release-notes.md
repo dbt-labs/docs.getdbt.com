@@ -1,5 +1,5 @@
 ---
-title: "dbt Cloud release notes"
+title: "dbt Cloud Release Notes"
 id: "release-notes"
 description: "Release notes for dbt Cloud"
 ---
