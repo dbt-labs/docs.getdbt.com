@@ -5,7 +5,7 @@ id: "list"
 
 ## Overview
 
-The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](run). `dbt list` is an alias for `dbt ls`.
+The `dbt ls` command lists resources in your dbt project. It does not require a database connection. It accepts selector arguments that are similar to those provided in [dbt run](run). `dbt list` is an alias for `dbt ls`.
 
 ### Usage
 ```
