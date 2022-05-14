@@ -53,18 +53,18 @@ function Home() {
                   <div className="col col--4">
                     <div className="card large dark darker">
                       <div className="card__header">
-                        <h3>Getting Started Tutorial</h3>
+                        <h3>Getting started guide</h3>
                       </div>
                       <div className="card__body">
                         <p>
-                         Follow along with this tutorial to learn how to build, test, and deploy a new dbt project.
+                         Read this guide to learn how to build, test, and deploy a new dbt project.
                         </p>
                       </div>
                       <div className="card__footer">
                           <Link
                             className="button button--primary"
-                            to={useBaseUrl('tutorial/setting-up')}>
-                            Watch Tutorial
+                            to={useBaseUrl('tutorial/getting-started')}>
+                            Learn more
                           </Link>
                       </div>
                     </div>
