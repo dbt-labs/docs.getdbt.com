@@ -26,7 +26,7 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
   [static_parser](global-configs#static-parser): <true | false>
 
 <profile-name>:
-  target: <target-name>
+  target: <target-name> # this is the default target
   outputs:
     <target-name>:
       type: <bigquery | postgres | redshift | snowflake | other>
