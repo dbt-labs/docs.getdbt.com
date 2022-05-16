@@ -12,7 +12,7 @@ date: 2022-05-17
 is_featured: true
 ---
 
-Analytics engineers are constantly navigating through the names of the models in their project, so naming is important for maintainability in your project in the way you access it and work within it. By default, dbt will use your model file name as the view or table name in the database. But this means the name has a life outside of dbt and supports the many end users who will potentially never know about dbt and where this data came from, but still access the database objects in the database or BI tool.
+Analytics engineers (AEs) are constantly navigating through the names of the models in their project, so naming is important for maintainability in your project in the way you access it and work within it. By default, dbt will use your model file name as the view or table name in the database. But this means the name has a life outside of dbt and supports the many end users who will potentially never know about dbt and where this data came from, but still access the database objects in the database or business intelligence (BI) tool.
 
 Model naming conventions are usually made by AEs, for AEs. While that’s useful for maintainability, it leaves out the people who model naming is supposed to primarily benefit: the end users. **Good model naming conventions should be created with one thing in mind: Assume your end-user will have no other context than the model name.** Folders, schema, and documentation can add additional context, but they may not always be present. Your model names will always be shown in the database.
 
@@ -31,7 +31,7 @@ In this article, we’ll take a deeper look at why model naming conventions are 
 
 Analytics Engineers are often centrally located in the company, sandwiched between data analysts and data engineers. This means everything AEs create might be read and need to be understood by both an analytics or customer-facing team and by teams who spend most of their time in code and the database. Depending on the audience, the scope of access differs, which means the user experience and context changes. Let’s elaborate on what that experience might look like by breaking end-users into two buckets: 
 
-- Analysts / Business Intelligence users
+- Analysts / BI users
 - Analytics engineers / Data engineers
 
 ### The analyst’s user experience
@@ -84,7 +84,7 @@ Analytics Engineers and Data Engineers are often the ones creating analytics cod
 - Within the BI tool
 - Within the data warehouse
 - Within the folder structure of dbt Cloud IDE
-- Within the DAG
+- Within the DAG (Directed Acyclical Graph)
 - Within the Pull Request
 
 #### Within the BI tool
@@ -141,15 +141,15 @@ Practice verbosity in a reproducible way. Extra characters in a name are free. P
 
 #### Use a format like `<type/dag_stage>_<source/topic>__<additional_context>`.
 
-**\`type/dag_stage`**
+**`type/dag_stage`**
 
 Where in the DAG does this model live? This also correlates with whether this model is a modular building block or an output model for analysis. Something like `stg_` or `int_` is likely a cleanup or composable piece used within dbt and isn’t relevant for analysts. Something like `fct_`, `dim_` would be an output model that will be used in the BI Tool by analysts. This should not, however, be a declaration of materialization. You should be free to change the materialization of your model without needing to change the model name.
 
-**\`source/topic`**
+**`source/topic`**
 
 Gives verbose context to the content. `stripe__payments` tells you what source system it comes from and what are the contents of the data.
 
-**\`additional_context`**
+**`additional_context`**
 
 Adding a suffix for optional transformations can add clarity. `__daily` or `__pivoted` will tell you what transformation has happened to some other dataset. This should live at the end of the model name so that they remain together in the alphabetized list (e.g. `fct_paid_orders` and `fct_paid_orders__daily`)
 
@@ -164,4 +164,4 @@ In this part of the series, we talked about why the model name is the center of 
 - How would we name models in the case of:
     - Internet user sessions
     - Orders with customers, line items and payments
-    - SAAS models with ARR/MRR churn etc...
+    - Software as a Service models with Annually Recurring Revenue/Monthly Recurring Revenue churn etc...
