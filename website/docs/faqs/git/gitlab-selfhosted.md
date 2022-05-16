@@ -1,5 +1,8 @@
 ---
 title: Can self-hosted GitLab instances only be connected via dbt Cloud Enterprise plans?
+Description: “Self hosted GitLab instances plan availability”
+sidebar_label: ‘Self-hosted GitLab instances available for dbt Cloud Enterprise’
+id: gitlab-selfhosted
 ---
 
 Presently yes, this is only available to Enterprise users. This is because of the way you have to set up the GitLab app redirect URL for auth, which can only be customized if you’re a user on an Enterprise plan.  
