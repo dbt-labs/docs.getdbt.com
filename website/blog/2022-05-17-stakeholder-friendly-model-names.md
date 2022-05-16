@@ -85,7 +85,7 @@ Analytics Engineers and Data Engineers are often the ones creating analytics cod
 - Within the data warehouse
 - Within the folder structure of dbt Cloud IDE
 - Within the DAG (Directed Acyclical Graph)
-- Within the Pull Request
+- Within the Pull Request (PR)
 
 #### Within the BI tool
 
