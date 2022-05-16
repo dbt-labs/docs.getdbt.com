@@ -55,7 +55,9 @@ Please to update variables between **`<>`**, here are explanations of these argu
 |dbt output bucket|The bucket name where the data will be generate dbt (the location configured in the profile.yml of your dbt environment)|
 |dbt source bucket|The bucket name of source databases (if they are not managed by Lake Formation)|
 
-```yaml
+<File name='sample_IAM_Policy.yml'>
+
+```yml
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -159,7 +161,7 @@ Please to update variables between **`<>`**, here are explanations of these argu
     ]
 }
 ```
-
+</File>
 
 ### Configuration of the local environment
 
@@ -211,6 +213,8 @@ session_provisioning_timeout_in_seconds: 120
 location: "s3://dbt_demo_bucket/dbt_demo_data"
 ```
 
+</File>
+
 The table below describes all the options.
 
 |Option	|Description	| Mandatory |
@@ -240,7 +244,6 @@ Most dbt Core functionality is supported, but some features are only available w
 
 Apache Hudi-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](glue-configs#the-merge-strategy))
-
 
 Some dbt features, available on the core adapters, are not yet supported on Glue:
 1. [Persisting](persist_docs) column-level descriptions as database comments
