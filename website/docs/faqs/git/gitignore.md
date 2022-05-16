@@ -1,5 +1,8 @@
 ---
 title: Why can't I checkout a branch or create a new branch?
+Description: “Add or fill in gitignore file”
+sidebar_label: ‘Unable to checkout or create branch’
+id: gitignore
 ---
 
 If you're finding yourself unable to revert changes, check out a branch or click commit - this is usually do to your project missing a .[gitignore](https://github.com/fishtown-analytics/dbt-starter-project/blob/master/.gitignore) file OR your gitignore file doesn't contain the necessary content inside the fole. 
