@@ -8,7 +8,7 @@ dbt v0.17.0 makes compilation more consistent, improves performance, and fixes a
 
 ## Articles:
 
- - [Changelog](https://github.com/fishtown-analytics/dbt/blob/dev/octavius-catto/CHANGELOG.md)
+ - [Changelog](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/CHANGELOG.md)
 
 ## Notable changes
 

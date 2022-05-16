@@ -6,7 +6,8 @@ title: "Upgrading to 0.19.0"
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/1951)
-- [Changelog](https://github.com/fishtown-analytics/dbt/blob/dev/kiyoshi-kuromiya/CHANGELOG.md)
+- [Release notes](https://github.com/dbt-labs/dbt-core/releases/tag/v0.19.0)
+- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.19.latest/CHANGELOG.md)
 
 ## Breaking changes
 
@@ -36,7 +37,7 @@ As part of this change:
 - the `SQLConnectionManager` method `get_status` has been renamed to `get_response`
 - `execute` now returns a tuple instead of a string
 
-See [dbt#2961](https://github.com/fishtown-analytics/dbt/pull/2961) for full implementation details. While `adapter_response` is not yet populated by tests or source freshness checks, we hope to add those in a future release ([dbt#2964](https://github.com/fishtown-analytics/dbt/issues/2964)).
+See [dbt#2961](https://github.com/dbt-labs/dbt-core/pull/2961) for full implementation details. While `adapter_response` is not yet populated by tests or source freshness checks, we hope to add those in a future release ([dbt#2964](https://github.com/dbt-labs/dbt-core/issues/2964)).
 
 ## New and changed documentation
 

@@ -5,7 +5,7 @@ title: "Upgrading to 0.18.0"
 
 ### Resources
 
-- [Changelog](https://github.com/fishtown-analytics/dbt/blob/dev/marian-anderson/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/dev/marian-anderson/CHANGELOG.md)
 - [Discussion: Prerelease](https://discourse.getdbt.com/t/prerelease-v0-18-0-marian-anderson/1545)
 
 ## Breaking changes
@@ -19,7 +19,7 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 
 ### Data tests
 
-- Data tests are written as CTEs instead of subqueries. Adapter plugins for databases that don't support CTEs may need to override this behavior.
+- Data tests are written as <Term id="cte">CTEs</Term> instead of <Term id="subquery">subqueries</Term>. Adapter plugins for databases that don't support CTEs may need to override this behavior.
 
 ### Python requirements
 - Upgraded `snowflake-connector-python` dependency to 2.2.10 and enabled the SSO token cache
@@ -63,7 +63,7 @@ can override schema test definitions
 - [list (ls)](commands/list)
 - [defer](defer)
 - [adapter.dispatch](adapter#dispatch)
-- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](dbt_project.yml.md) and [description](description))
+- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](reference/dbt_project.yml) and [description](description))
 - [flag for colorized logs](run#enable-or-disable-colorized-logs)
 - [`full_refresh` config](full_refresh)
 

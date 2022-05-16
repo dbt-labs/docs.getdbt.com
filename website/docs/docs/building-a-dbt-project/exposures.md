@@ -5,7 +5,8 @@ id: "exposures"
 
 <Changelog>
 
-* Exposures are new in `v0.18.1`
+* **v0.18.1**: Exposures are new!
+* **v0.20.0**: Exposures support `tags` and `meta` properties
 
 </Changelog>
 
@@ -21,7 +22,7 @@ Exposures make it possible to define and describe a downstream use of your dbt p
 
 ### Declaring an exposure
 
-Exposures are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under an `exposures:` key.
+Exposures are defined in `.yml` files nested under an `exposures:` key.
 
 <File name='models/<filename>.yml'>
 
@@ -62,14 +63,19 @@ _Optional:_
 - **maturity**: one of `high`, `medium`, `low`
 - **owner**: name
 
+_General properties (optional)_
+- **description**
+- **tags**
+- **meta**
+
 We plan to add more subtypes and optional properties in future releases.
 
 ### Referencing exposures
 
 Once an exposure is defined, you can run commands that reference it:
 ```
-dbt run -m +exposure:weekly_jaffle_metrics
-dbt test -m +exposure:weekly_jaffle_metrics
+dbt run -s +exposure:weekly_jaffle_metrics
+dbt test -s +exposure:weekly_jaffle_metrics
 ```
 
 When we generate our documentation site, you'll see the exposure appear:
@@ -79,4 +85,4 @@ When we generate our documentation site, you'll see the exposure appear:
 
 ## Exposures are new!
 
-Exposures were introduced in dbt v0.18.1, with a limited set of supported types and properties. If you're interested in requesting or contributing additional properties, check out issue [dbt#2835](https://github.com/fishtown-analytics/dbt/issues/2835).
+Exposures were introduced in dbt v0.18.1, with a limited set of supported types and properties. If you're interested in requesting or contributing additional properties, check out issue [dbt#2835](https://github.com/dbt-labs/dbt-core/issues/2835).

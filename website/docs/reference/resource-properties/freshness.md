@@ -33,7 +33,7 @@ sources:
 </File>
 
 ## Definition
-A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a table to be considered "fresh".
+A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a <Term id="table" /> to be considered "fresh".
 
 In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
 
@@ -55,6 +55,11 @@ If using a date field, you may have to cast it to a timestamp:
 loaded_at_field: "completed_date::timestamp"
 ```
 
+Or, depending on your SQL variant:
+```yml
+loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
+```
+
 If using a non-UTC timestamp, cast it to UTC first:
 
 ```yml
@@ -74,7 +79,7 @@ The time period used in the freshness calculation. One of `minute`, `hour` or `d
 ## filter
 (optional)
 
-Add a where clause to the query run by `dbt source snapshot-freshness` in order to limit data scanned.
+Add a where clause to the query run by `dbt source freshness` in order to limit data scanned.
 
 This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table.
 
@@ -125,7 +130,7 @@ sources:
 
 </File>
 
-When running `dbt source snapshot-freshness`, the following query will be run:
+When running `dbt source freshness`, the following query will be run:
 
 <Tabs
   defaultValue="compiled"
@@ -160,7 +165,7 @@ where {{ filter }}
 {% endif %}
 ```
 
-_[Source code](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
+_[Source code](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
 
 </TabItem>
 
