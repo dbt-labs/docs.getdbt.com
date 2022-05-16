@@ -35,7 +35,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | ------------ | ------------- | ----------------- |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks)) | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)) | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs) | `pip install dbt-firebolt` |
-| Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile) | `pip install dbt-materialize` |
+| Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize))  | [Profile Setup](materialize-profile), [Configuration](materialize-configs) | `pip install dbt-materialize` |
 | Oracle ([dbt-oracle](https://github.com/oracle/dbt-oracle))        | [Profile Setup](oracle-profile)       | `pip install dbt-oracle`     |
 | Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))  | [Profile Setup](rockset-profile) | `pip install dbt-rockset` |
 | SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore)) | [Profile Setup](singlestore-profile) | `pip install dbt-singlestore` |
