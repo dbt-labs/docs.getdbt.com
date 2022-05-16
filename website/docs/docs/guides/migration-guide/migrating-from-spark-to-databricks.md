@@ -65,7 +65,7 @@ In dbt Core, migrating to the dbt-databricks adapter from dbt-spark requires tha
 This changes will be needed for all users of your project
 #### Example
 
-If you're using `dbt-spark` today to connect to a Databricks SQL Endpoint, the below examples show a good before and adter of how to authenticate. The cluster example is also effectively the same.
+If you're using `dbt-spark` today to connect to a Databricks SQL Endpoint, the below examples show a good before and after of how to authenticate. The cluster example is also effectively the same.
 
 The steps are virtually the same if you're using a Spark cluster.
 
