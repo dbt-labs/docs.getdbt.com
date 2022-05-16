@@ -1,5 +1,8 @@
 ---
 title: Why is Run on Pull request grayed out?
+Description: “Use the GitHub auth method to enable Rull on Pull request”
+sidebar_label: ‘Run on Pull request grayed out’
+id: run-on-pull
 ---
 
 If you're unable to enable Run on Pull requests, you'll want to make sure your existing repo was not added via the Deploy Key auth method.
