@@ -1,6 +1,10 @@
 ---
 title: Why do I need to quote column names in Jinja?
+Description: “Use quotes to pass string”
+sidebar_label: ‘Why quote column names in Jinja’
+id: quoting-column-names
 ---
+
 In the [macro example](jinja-macros#macros) we passed the column name `amount` quotes:
 ```sql
 {{ cents_to_dollars('amount') }} as amount_usd
