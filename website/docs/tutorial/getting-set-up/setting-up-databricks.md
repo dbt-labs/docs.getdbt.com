@@ -132,6 +132,7 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/raw_tables_created.png" title="Raw Data Tables" />
     </div>
+    
 ## Enable a SQL endpoint for Databricks
 
 For dbt to connect to the most optimized SQL experience in Databricks, you need to create an SQL Endpoint for our connection.
@@ -157,48 +158,90 @@ For dbt to connect to the most optimized SQL experience in Databricks, you need 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/query_check.png" title="Query Check" />
     </div>
-6. To get setup in dbt Cloud, you will now need to get the SQL Endpoint connection information and generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information or keep this window open for the next section.
 
-    <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
+6. To ensure any users who might be working on your dbt project has access to your object, run this command.
 
-7. To generate a user token for your development credentials in dbt Cloud, click on `Settings` on the left side console (while still in the SQL part of the workspace). Click on `Personal Access Token` and provide a comment like `dbt Cloud development`. Save the token information somewhere because you will need it for the next part. 
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/Generate_user_token.png" title="Generate User Token" />
-    </div>
+    ```sql 
+    grant all privileges on schema default to users;
+    ```    
 
 Congratulations! At this point, you have created a Databricks account, loaded training data, and successfully set up a SQL end point to query the data.  
 
 ## Connecting to dbt Cloud
 
-Now it’s time to connect dbt Cloud to Databricks in order to develop your dbt Project. 
+ There are two ways to connect dbt Cloud and Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself. If you are looking to get started quickly, we recommend option 1. If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend option 2.
+
+### Option 1: Connect dbt Cloud and Databricks with partner connect
+
+1. In the Databricks workspace, on the left-side console: click on `Partner Connect`. 
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect.png" title="Databricks Partner Connect" />
+    </div>
+
+2. Select the dbt tile under `Data preparation and transformation`.
+3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL Endpoint for the dbt Cloud account to use. This does mean that you will have two SQL Endpoints at your disposal from the previous step and from using Partner Connect.
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+    </div>
+
+
+4. Click on `Connect to dbt Cloud`.
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_dbt_cloud.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+</div>
+5. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password. 
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+    </div>
+
+6. After you have filled out the form and clicked on `Complete Registration`, you will be logged into dbt Cloud automatically. 
+
+
+### Option 2: Connect dbt Cloud and Databricks manually
+
+1. To manually setup dbt Cloud, you will need the SQL Endpoint connection information and to generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information because you will need it later.
+
+    <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
+
+2. To generate a user token for your development credentials in dbt Cloud, click on `Settings` on the left side console (while still in the SQL part of the workspace). Click on `Personal Access Token` and provide a comment like `dbt Cloud development`. Save the token information somewhere because you will need it for the next part. 
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/Generate_user_token.png" title="Generate User Token" />
+    </div>
 
 <Snippet src="tutorial-create-new-dbt-cloud-account" />
 
-### Connect dbt Cloud to Databricks
-
-Now let's set up the connection between dbt Cloud and Databricks.
-
-1. Choose **Databricks** to setup your connection.
+3. Choose **Databricks** to setup your connection.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/setup_databricks_connect.png" title="Databrick Connection" />
     </div>
-2. For the name, write `Databricks` or another simple title.    
-3. For Databricks settings, reference your SQL endpoint connection details from step 6 of the previous section for each of the following fields:
+4. For the name, write `Databricks` or another simple title.    
+5. For Databricks settings, reference your SQL endpoint connection details from step 6 of the previous section for each of the following fields:
 
     - Method will be ODBC
     - Hostname comes from Server hostname
     - Endpoint comes from the last part of HTTP path after `/endpoints`
      
-4. For your Development Credentials, input:
+6. For your Development Credentials, type:
 
-     - `User` input `token` from Step 7 of the previous section 
+     - `User` and `token` that you saved in a previous step.
      - For the schema field, choose a development schema (this will be your default development database to build objects into).  We recommend something in the form of dbt_{{ first initial, last name}} like `dbt_achen`.
   
-4. Then scroll to the top of the page to test your connection. Once successful, click `Continue`.
+7. Then scroll to the top of the page to test your connection. Once successful, click `Continue`.
 
 ## Initialize your repository and start development
 
-<Snippet src="tutorial-managed-repo-and-initiate-project" />
+If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your managed repository connection. 
+
+### Setting up a managed repository
+
+<Snippet src="tutorial-managed-repo" />
+
+### Initialize your dbt project
+
+<Snippet src="tutorial-initiate-project" />
 
 Congratulations! You have successfully completed the following:
 

@@ -185,9 +185,13 @@ For Set up a Database Connection, choose Redshift.
 
 ## Initialize your repository and start development
 
-<Snippet src="tutorial-managed-repo-and-initiate-project" />
+### Setting up a managed repository
 
-### Enter connection credentials
+<Snippet src="tutorial-managed-repo" />
+
+### Initialize your dbt project
+
+<Snippet src="tutorial-initiate-project" />
 
 Congratulations! You have successfully completed the following:
 
