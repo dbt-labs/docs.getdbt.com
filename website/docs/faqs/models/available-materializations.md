@@ -1,5 +1,8 @@
 ---
 title: What materializations are available in dbt?
+Description: “dbt uses 4 materializations”
+sidebar_label: ‘Materializations available’
+id: available-materializations
 ---
 
 dbt ships with four <Term id="materialization">materializations</Term>: `view`, `table`, `incremental` and `ephemeral`. Check out the documentation on [materializations](materializations) for more information on each of these options.
