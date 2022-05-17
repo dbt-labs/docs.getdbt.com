@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: codelytv/pr-size-labeler@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
           xs_label: 'size: x-small'
           xs_max_size: '10'
           s_label: 'size: small'
