@@ -58,7 +58,7 @@ left join {{ source('jaffle_shop', 'customers') }} using (customer_id)
 
 </File>
 
-dbt will compile this to the full table name:
+dbt will compile this to the full <Term id="table" /> name:
 
 <File name='target/compiled/jaffle_shop/models/my_model.sql'>
 
@@ -188,4 +188,4 @@ The results of this query are used to determine whether the source is fresh or n
 ### FAQs
 <FAQ src="exclude-table-from-freshness" />
 <FAQ src="snapshotting-freshness-for-one-source" />
-<FAQ src="snapshot-freshness-output" />
+<FAQ src="dbt-source-freshness" />
