@@ -13,7 +13,7 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 
 This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
 
-For any questionsn you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. Likely there is someone there who has experienced a similar issue to what you are experiencing.
+For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. Likely there is someone there who has experienced a similar issue to what you are experiencing.
 
 ## Pre-Requisite Data Warehouse Features
 
@@ -37,7 +37,7 @@ THe more you can answer Yes to the below questions, the easier your adapter deve
 
 It is easiest to build an adapter for dbt when the following the data warehouse/platform in question has:
 - a conventional ANSI-SQL interface (or as close to it as possible),
-- A mature connection library/SDK that uses ODBC or Python DB 2 API, and
+- a mature connection library/SDK that uses ODBC or Python DB 2 API, and
 - a way to enable developers to iterate rapidly with both quick reads and writes
 
 ## Scaffolding a new adapter
