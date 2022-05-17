@@ -1,6 +1,9 @@
 ---
 title: Can I store my models in a directory other than the `models` directory in my project?
+Description: “How to name models directory”
 sidebar_label: 'How to name models directory'
+id: configurable-model-path
+
 ---
 
 <Changelog>
