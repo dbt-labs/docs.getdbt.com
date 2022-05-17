@@ -20,6 +20,7 @@ The `query-comment` configuration also accepts a dictionary input, like so:
 query-comment:
   comment: string
   append: true | false
+  job-label: true | false  # BigQuery only
 ```
 
 </File>
@@ -33,6 +34,7 @@ The `query-comment` configuration can also call a macro that returns a string.
 
 * `v0.15.0`: The `query-comment` configuration was introduced
 * `v0.16.1`: Dictionary syntax introduced to allow comments to be appended
+* `v0.20.0:` Introduced `job-label` argument for BigQuery job labels
 
 </Changelog>
 
@@ -54,7 +56,7 @@ create view analytics.analytics.orders as (
 ## Using the dictionary syntax
 The dictionary syntax includes two keys:
   * `comment` (optional, see above for default): The string to be injected to a query as a comment.
-  * `append` (optional, default=`false`): Whether a comment should be appended (added to the bottom of a query) or not (i.e. added to the top of a comment). By default, comments are added to the top of queries (i.e. `append: false`).
+  * `append` (optional, default=`false`): Whether a comment should be appended (added to the bottom of a query) or not (i.e. added to the top of a query). By default, comments are added to the top of queries (i.e. `append: false`).
 
 This syntax is useful on databases like Snowflake which [remove leading SQL comments](https://docs.snowflake.com/en/release-notes/2017-04.html#queries-leading-comments-removed-during-execution).
 
@@ -144,6 +146,29 @@ select ...
 /* {"app": "dbt", "dbt_version": "0.16.`0rc2`", "profile_name": "debug", "target_name": "dev", "node_id": "model.dbt2.my_model"} */
 ;
 ```
+
+### BigQuery: include query comment items as job labels
+
+
+<Changelog>
+
+* `v0.20.0:` Introduced `job-label` argument for BigQuery job labels
+
+</Changelog>
+
+If `query-comment.job-label` is set to true, dbt will include the query comment items, if a dictionary, or the comment string, as job labels on the query it executes. These will be included in addition to labels specified in the [BigQuery-specific config](bigquery-configs).
+
+<File name='dbt_project.yml'>
+
+```yaml
+
+query-comment:
+  job-label: True
+```
+
+</File>
+
+<Lightbox src="/img/docs/bigquery-query-comment-job-labels" title=""/>
 
 ### Append a custom comment
 The following example uses the dictionary syntax to append (rather than prepend) a comment that varies based on the configured `user` specified in the active dbt target.

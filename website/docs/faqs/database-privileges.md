@@ -5,7 +5,7 @@ Your user will need to be able to:
 * `select` from raw data in your warehouse (i.e. data to be transformed)
 * `create` schemas, and therefore create tables/views within that
 schema¹
-* read system views to generate documentation (i.e. views in
+* read system <Term id="view">views</Term> to generate documentation (i.e. views in
 `information_schema`)
 
 On Postgres, Redshift, and Snowflake, use a series of `grants` to ensure that

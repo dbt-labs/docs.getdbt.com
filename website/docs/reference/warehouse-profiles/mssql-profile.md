@@ -9,10 +9,13 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 ## Overview of dbt-sqlserver
-**Maintained by:** Community      
-**Author:** Mikael Ene    
-**Source:** https://github.com/dbt-msft/dbt-sqlserver    
-**Core version:** v0.14.0 and newer 
+
+**Maintained by:** Community    
+**Author:** Mikael Ene           
+**Source:** [Github](https://github.com/dbt-msft/dbt-sqlserver)    
+**Core version:** v0.14.0 and newer     
+**dbt Cloud:** Not Supported    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CMRMDDQ9W)      
 
 ![dbt-sqlserver stars](https://img.shields.io/github/stars/mikaelene/dbt-sqlserver?style=for-the-badge)
 
@@ -33,13 +36,17 @@ SQL Server credentials are supported for on-prem as well as cloud, and it is the
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-user: username
-password: password
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      user: username
+      password: password
 ```
 
 </File>
@@ -72,14 +79,18 @@ Definitely not ideal, but available
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ActiveDirectoryPassword
-user: bill.gates@microsoft.com
-password: iheartopensource
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ActiveDirectoryPassword
+      user: bill.gates@microsoft.com
+      password: iheartopensource
 ```
 
 </File>
@@ -95,12 +106,16 @@ First, install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/instal
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: CLI
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: CLI
 ```
 This is also the preferred route for using a service principal:
 
@@ -117,13 +132,17 @@ This is also the preferred route for using a service principal:
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ActiveDirectoryInteractive
-user: bill.gates@microsoft.com
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ActiveDirectoryInteractive
+      user: bill.gates@microsoft.com
 ```
 
 </File>
@@ -137,12 +156,16 @@ user: bill.gates@microsoft.com
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ActiveDirectoryIntegrated
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ActiveDirectoryIntegrated
 ```
 
 </File>
@@ -156,15 +179,19 @@ authentication: ActiveDirectoryIntegrated
 <File name='profiles.yml'>
 
 ```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-schema: schemaname
-authentication: ServicePrincipal
-tenant_id: tenant_id
-client_id: clientid
-client_secret: clientsecret
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
+      port: 1433
+      schema: schemaname
+      authentication: ServicePrincipal
+      tenant_id: tenant_id
+      client_id: clientid
+      client_secret: clientsecret
 ```
 
 </File>
@@ -173,61 +200,3 @@ client_secret: clientsecret
 
 </Tabs>
 
-
-------------------------------------------------------------
-
-## Overview of dbt-mssql
-
-**Maintained by:** Community      
-**Author:** Jacob M. Mastel    
-**Source:** https://github.com/jacobm001/dbt-mssql    
-**Core version:** v0.14.0     
-
-![dbt-mssql stars](https://img.shields.io/github/stars/jacobm001/dbt-mssql?style=for-the-badge)
-
-**dbt-mssql** is a custom adapter for dbt that adds support for Microsoft SQL Server versions 2008 R2 and later. `pyodbc` is used as the connection driver as that is what is [suggested by Microsoft](https://docs.microsoft.com/en-us/sql/connect/python/python-driver-for-sql-server). The adapter supports both windows auth, and specified user accounts.
-
-dbt-mssql is currently in a beta release. It is passing all of the [dbt integration tests](https://github.com/fishtown-analytics/dbt-integration-tests/) on SQL Server 2008 R2. Considering Microsoft's legendary backwards compatibility, it should work on newer versions, but that testing will come in the near future.
-
-### Connecting to SQL Server with **dbt-mssql**
-
-#### User / password authentication
-
-A SQL Server connection can be configured using basic user/password authentication as shown below.
-
-<File name='profiles.yml'>
-
-```yaml
-my-mssql-db:
-  target: dev
-  outputs:
-    dev:
-      type: mssql
-      driver: 'ODBC Driver 17 for SQL Server'
-      host: [host] # like sqlserver.mydomain.com
-      database: [database]
-      schema: [schema]
-      username: [username]
-      password: [password]
-```
-
-</File>
-
-#### Windows login authentication
-
-<File name='profiles.yml'>
-
-```yaml
-my-mssql-db:
-  target: dev
-  outputs:
-    dev:
-      type: mssql
-      driver: 'ODBC Driver 17 for SQL Server'
-      host: [host] # like sqlserver.mydomain.com
-      database: [database]
-      schema: [schema]
-      windows_login: True
-```
-
-</File>

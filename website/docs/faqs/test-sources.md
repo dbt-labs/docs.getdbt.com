@@ -2,10 +2,10 @@
 title: How do I run tests on sources only?
 ---
 
-Because the test selection syntax grew out of the model selection syntax (and pre-dates sources), the syntax here is a little unintuitive, but it is possible!
+It is possible! You need to use the `source:` selection method:
 
 ```
-$ dbt test --models source:*
+$ dbt test --select source:*
 ```
 
 Check out the [model selection syntax documentation](node-selection/test-selection-examples) for more operators and examples.

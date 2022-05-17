@@ -13,8 +13,8 @@ Heads up — developing a package is an **advanced use of dbt**. If you're new t
 
 ## 1. Assess whether a package is the right solution
 Packages typically contain either:
-- macros that solve a particular analytics engineering problem — for example, [auditing the results of a query](https://hub.getdbt.com/fishtown-analytics/audit_helper/latest/), [generating code](https://hub.getdbt.com/fishtown-analytics/codegen/latest/), or [adding additional schema tests to a dbt project](https://hub.getdbt.com/calogica/dbt_expectations/latest/).
-- models for a common dataset — for example a dataset for software products like [MailChimp](https://hub.getdbt.com/fivetran/mailchimp/latest/) or [Snowplow](https://hub.getdbt.com/fishtown-analytics/snowplow/latest/), or even models for metadata about your data stack like [Snowflake query spend](https://hub.getdbt.com/gitlabhq/snowflake_spend/latest/) and [the artifacts produced by `dbt run`](https://hub.getdbt.com/tailsdotcom/dbt_artifacts/latest/). In general, there should be a shared set of industry-standard metrics that you can model (e.g. email open rate).
+- macros that solve a particular analytics engineering problem — for example, [auditing the results of a query](https://hub.getdbt.com/dbt-labs/audit_helper/latest/), [generating code](https://hub.getdbt.com/dbt-labs/codegen/latest/), or [adding additional schema tests to a dbt project](https://hub.getdbt.com/calogica/dbt_expectations/latest/).
+- models for a common dataset — for example a dataset for software products like [MailChimp](https://hub.getdbt.com/fivetran/mailchimp/latest/) or [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), or even models for metadata about your data stack like [Snowflake query spend](https://hub.getdbt.com/gitlabhq/snowflake_spend/latest/) and [the artifacts produced by `dbt run`](https://hub.getdbt.com/tailsdotcom/dbt_artifacts/latest/). In general, there should be a shared set of industry-standard metrics that you can model (e.g. email open rate).
 
 Packages are _not_ a good fit for sharing models that contain business-specific logic, for example, writing code for marketing attribution, or monthly recurring revenue. Instead, consider sharing a blog post and a link to a sample repo, rather than bundling this code as a package (here's our blog post on [marketing attribution](https://blog.getdbt.com/modeling-marketing-attribution/) as an example).
 
@@ -41,7 +41,7 @@ When working on your package, we often find it useful to install a local copy of
 ### Follow our best practices
 _Modeling packages only_
 
-Use our [dbt coding conventions](https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md), our article on [how we structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
+Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md), our article on [how we structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
 
 This is where it comes in especially handy to have worked on your own dbt project previously.
 
@@ -54,13 +54,13 @@ We recommend using [sources](using-sources) and [variables](using-variables) to 
 
 ### Install upstream packages from hub.getdbt.com
 
-If your package relies on another package (for example, you use some of the cross-database macros from [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/)), we recommend you install the package from [hub.getdbt.com](https://hub.getdbt.com), specifying a version range like so:
+If your package relies on another package (for example, you use some of the cross-database macros from [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)), we recommend you install the package from [hub.getdbt.com](https://hub.getdbt.com), specifying a version range like so:
 
 <File name='packages.yml'>
 
 ```yaml
 packages:
-  - package: fishtown-analytics/dbt_utils
+  - package: dbt-labs/dbt_utils
     version: [">0.6.5", "0.7.0"]
 ```
 
@@ -73,8 +73,8 @@ When packages are installed from hub.getdbt.com, dbt is able to handle duplicate
 Many SQL functions are specific to a particular database. For example, the function name and order of arguments to calculate the difference between two dates varies between Redshift, Snowflake and BigQuery, and no similar function exists on Postgres!
 
 If you wish to support multiple warehouses, we have a number of tricks up our sleeve:
-- We've written a number of macros that compile to valid SQL snippets on each of our [fully supported databases](available-adapters) – check them out [here](https://github.com/fishtown-analytics/dbt-utils#cross-database). Where possible, leverage these macros.
-- If you need to implement cross-database compatibility for one of your macros, use the [`adapter.dispatch` macro](dbt-jinja-functions/adapter#dispatch) to achieve this. Check out the cross-database macros in dbt-utils for examples.
+- We've written a number of macros that compile to valid SQL snippets on each of the original four adapters. Where possible, leverage these macros.
+- If you need to implement cross-database compatibility for one of your macros, use the [`adapter.dispatch` macro](dispatch) to achieve this. Check out the cross-database macros in dbt-utils for examples.
 - If you're working on a modeling package, you may notice that you need write different models for each warehouse (for example, if the EL tool you are working with stores data differently on each warehouse). In this case, you can write different versions of each model, and use the [`enabled` config](enabled), in combination with [`target.type`](dbt-jinja-functions/target) to enable the correct models — check out [this package](https://github.com/fivetran/dbt_facebook_ads_creative_history/blob/master/dbt_project.yml#L11-L16) as an example.
 
 
@@ -88,7 +88,7 @@ Many datasets have a concept of a "user" or "account" or "session". To make sure
 ### Default to views
 _Modeling packages only_
 
-dbt makes it possible for users of your package to override your model materialization settings. In general, default to materializing models as `view`s instead of `table`s.
+dbt makes it possible for users of your package to override your model <Term id="materialization" /> settings. In general, default to materializing models as `view`s instead of `table`s.
 
 The major exception to this is when working with data sources that benefit from incremental modeling (for example, web page views). Implementing incremental logic on behalf of your end users is likely to be helpful in this case.
 ### Test and document your package
@@ -98,22 +98,22 @@ Further, adding [documentation](documentation) via descriptions will help commun
 ### Include useful GitHub artifacts
 Over time, we've developed a set of useful GitHub artifacts that make administering our packages easier for us. In particular, we ensure that we include:
 - A useful README, that has:
-    - installation instructions that refer to the latest version of the package on hub.getdbt.com, and includes any configurations requires ([example](https://github.com/fishtown-analytics/segment))
-    - Usage examples for any macros ([example](https://github.com/fishtown-analytics/dbt-audit-helper#macros))
-    - Descriptions of the main models included in the package ([example](https://github.com/fishtown-analytics/snowplow))
-- GitHub templates, including PR templates and issue templates ([example](https://github.com/fishtown-analytics/dbt-audit-helper/tree/master/.github))
+    - installation instructions that refer to the latest version of the package on hub.getdbt.com, and includes any configurations requires ([example](https://github.com/dbt-labs/segment))
+    - Usage examples for any macros ([example](https://github.com/dbt-labs/dbt-audit-helper#macros))
+    - Descriptions of the main models included in the package ([example](https://github.com/dbt-labs/snowplow))
+- GitHub templates, including PR templates and issue templates ([example](https://github.com/dbt-labs/dbt-audit-helper/tree/master/.github))
 
 ## 4. Add integration tests
 _Optional_
 
 We recommend that you implement integration tests to confirm that the package works as expected — this is an even _more_ advanced step, so you may find that you build up to this.
 
-This pattern can be seen most packages, including  the [`audit-helper`](https://github.com/fishtown-analytics/dbt-audit-helper/tree/master/integration_tests) and [`snowplow`](https://github.com/fishtown-analytics/snowplow/tree/master/integration_tests) packages.
+This pattern can be seen most packages, including  the [`audit-helper`](https://github.com/dbt-labs/dbt-audit-helper/tree/master/integration_tests) and [`snowplow`](https://github.com/dbt-labs/snowplow/tree/master/integration_tests) packages.
 
 As a rough guide:
 
 1. Create a subdirectory named `integration_tests`
-2. In this subdirectory, create a new dbt project — you can use the `dbt init` command to do this. However, our preferred method is to copy the files from an existing `integration_tests` project, like the ones [here](https://github.com/fishtown-analytics/dbt-codegen/tree/HEAD/integration_tests) (removing the contents of the `macros`, `models` and `tests` folders since they are project-specific)
+2. In this subdirectory, create a new dbt project — you can use the `dbt init` command to do this. However, our preferred method is to copy the files from an existing `integration_tests` project, like the ones [here](https://github.com/dbt-labs/dbt-codegen/tree/HEAD/integration_tests) (removing the contents of the `macros`, `models` and `tests` folders since they are project-specific)
 2. Install the package in the `integration_tests` subdirectory by using the `local` syntax, and then running `dbt deps`
 
 <File name='packages.yml'>
@@ -127,12 +127,12 @@ packages:
 
 4. Add resources to the package (seeds, models, tests) so that you can successfully run your project, and compare the output with what you expect. The exact appraoch here will vary depending on your packages. In general you will find that you need to:
     - Add mock data via a [seed](seeds) with a few sample (anonymized) records. Configure the `integration_tests` project to point to the seeds instead of raw data tables.
-    - Add more seeds that represent the expected output of your models, and use the [dbt_utils.equality](https://github.com/fishtown-analytics/dbt-utils#equality-source) test to confirm the output of your package, and the expected output matches.
+    - Add more seeds that represent the expected output of your models, and use the [dbt_utils.equality](https://github.com/dbt-labs/dbt-utils#equality-source) test to confirm the output of your package, and the expected output matches.
 
 
 5. Confirm that you can run `dbt run` and `dbt test` from your command line successfully.
 
-5. (Optional) Use a CI tool, like CircleCI or GitHub Actions, to automate running your dbt project when you open a new Pull Request. For inspiration, check out one of our [CircleCI configs](https://github.com/fishtown-analytics/snowplow/blob/master/.circleci/config.yml), which runs tests against our four main warehouses. Note: this is an advanced step — if you are going down this path, you may find it useful to say hi on [dbt Slack](https://community.getdbt.com/).
+5. (Optional) Use a CI tool, like CircleCI or GitHub Actions, to automate running your dbt project when you open a new Pull Request. For inspiration, check out one of our [CircleCI configs](https://github.com/dbt-labs/snowplow/blob/master/.circleci/config.yml), which runs tests against our four main warehouses. Note: this is an advanced step — if you are going down this path, you may find it useful to say hi on [dbt Slack](https://community.getdbt.com/).
 
 ## 5. Deploy the docs for your package
 _Optional_
@@ -155,4 +155,4 @@ In particular, if new changes will cause errors for users of earlier versions of
 The release notes should contain an overview of the changes introduced in the new version. Be sure to call out any changes that break the existing interface!
 
 ## 7. Add the package to hub.getdbt.com
-Our package registry, [hub.getdbt.com](https://hub.getdbt.com/), gets updated by the [hubcap script](https://github.com/fishtown-analytics/hubcap). To add your package to hub.getdbt.com, create a PR on the [hubcap repository](https://github.com/fishtown-analytics/hubcap) to include it in the `hub.json` file.
+Our package registry, [hub.getdbt.com](https://hub.getdbt.com/), gets updated by the [hubcap script](https://github.com/dbt-labs/hubcap). To add your package to hub.getdbt.com, create a PR on the [hubcap repository](https://github.com/dbt-labs/hubcap) to include it in the `hub.json` file.

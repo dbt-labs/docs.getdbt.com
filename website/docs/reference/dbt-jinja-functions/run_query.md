@@ -8,7 +8,7 @@ The `run_query` macro provides a convenient way to run queries and fetch their r
 __Args__:
  * `sql`: The SQL query to execute
 
-Returns a [Table](https://agate.readthedocs.io/page/api/table.html) object with the result of the query. If the specified query does not return results (eg. a DDL, DML, or maintenance query), then the return value will be `none`.
+Returns a [Table](https://agate.readthedocs.io/page/api/table.html) object with the result of the query. If the specified query does not return results (eg. a <Term id="ddl" />, <Term id="dml" />, or maintenance query), then the return value will be `none`.
 
 **Note:** The `run_query` macro will not begin a transaction automatically - if you wish to run your query inside of a transaction, please use `begin` and `commit ` statements as appropriate.
 
@@ -50,7 +50,7 @@ Check out the tutorial on [using Jinja](using-jinja#dynamically-retrieve-the-lis
 
 </File>
 
-Here's an example of using this (though if you're using `run_query` to return the values of a column, check out the [get_column_values](https://github.com/fishtown-analytics/dbt-utils#get_column_values-source) macro in the dbt-utils package).
+Here's an example of using this (though if you're using `run_query` to return the values of a column, check out the [get_column_values](https://github.com/dbt-labs/dbt-utils#get_column_values-source) macro in the dbt-utils package).
 
 <File name='models/my_model.sql'>
 

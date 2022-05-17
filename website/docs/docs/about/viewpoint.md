@@ -7,7 +7,7 @@ id: "viewpoint"
 
 In 2015-2016, a team of folks at RJMetrics had the opportunity to observe, and participate in, a significant evolution of the analytics ecosystem. The seeds of dbt were conceived in this environment, and the viewpoint below was written to reflect what we had learned and how we believed the world should be different. **dbt is our attempt to address the workflow challenges we observed, and as such, this viewpoint is the most foundational statement of the dbt project's goals.**
 
-The remainder of this document is largely unedited from [the original post](https://medium.com/analyst-collective/building-a-mature-analytics-workflow-the-fishtown-analytics-viewpoint-7653473ef05b).
+The remainder of this document is largely unedited from [the original post](https://blog.getdbt.com/building-a-mature-analytics-workflow/).
 
 :::
 
@@ -41,7 +41,7 @@ Bad data can lead to bad analyses, and bad analyses can lead to bad decisions. A
 Your analysis is a software application, and, like every other software application, people are going to have questions about how to use it. Even though it might seem simple, in reality the “Revenue” line you’re showing could mean dozens of things. Your code should come packaged with a basic description of how it should be interpreted, and your team should be able to add to that documentation as additional questions arise.
 
 ### Modularity
-If you build a series of analyses about your company’s revenue, and your colleague does as well, you should use the same input data. Copy-paste is not a good approach here — if the definition of the underlying set changes, it will need to be updated everywhere it was used. Instead, think of the schema of a data set as its public interface. Create tables, views, or other data sets that expose a consistent schema and can be modified if business logic changes.
+If you build a series of analyses about your company’s revenue, and your colleague does as well, you should use the same input data. Copy-paste is not a good approach here — if the definition of the underlying set changes, it will need to be updated everywhere it was used. Instead, think of the schema of a data set as its public interface. Create tables, <Term id="view">views</Term>, or other data sets that expose a consistent schema and can be modified if business logic changes.
 
 ## Analytic code is an asset
 The code, processes, and tooling required to produce that analysis are core organizational investments. We believe a mature analytics organization’s workflow should have the following characteristics so as to protect and grow that investment:

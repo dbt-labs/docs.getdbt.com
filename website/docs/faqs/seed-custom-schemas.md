@@ -16,7 +16,7 @@ seeds:
   jaffle_shop:
     schema: mappings # all seeds in this project will use the mapping schema by default
     marketing:
-      schema: marketing # seeds in the `data/mapping/ subdirectory will use the marketing schema
+      schema: marketing # seeds in the `seeds/mapping/ subdirectory will use the marketing schema
 ```
 
 </File>

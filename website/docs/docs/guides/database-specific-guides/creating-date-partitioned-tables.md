@@ -4,15 +4,15 @@ id: "creating-date-partitioned-tables"
 ---
 
 
-:::info New in version 0.10.0!
+:::caution Deprecated
 
-
+The functionality described below was introduced in dbt Core v0.10 (March 2018). In v1.0 (December 2021), it was deprecated in favor of [column-based partitioning](bigquery-configs#partition-clause) and [incremental modeling](configuring-incremental-models).
 
 :::
 
 dbt supports the creation of [date partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables) in BigQuery.
 
-To configure a dbt model as a date partitioned table, use the `materialized='table'` model configuration in conjunction with a list of `partitions`. dbt will execute your model query once for each specified partition. For example:
+To configure a dbt model as a date partitioned <Term id="table" />, use the `materialized='table'` model configuration in conjunction with a list of `partitions`. dbt will execute your model query once for each specified partition. For example:
 
 <File name='partitioned.sql'>
 
@@ -46,7 +46,7 @@ from `snowplow`.`events_[DBT__PARTITION_DATE]`
 
 </File>
 
-To make this model more dynamic, we can use the `dbt.partition_range` macro to generate a list of 8-digit dates in a specified range. Further, dbt provides a handy macro, `date_sharded_table`, for getting a date-sharded table by its prefix for a given date. Together, this looks like:
+To make this model more dynamic, we can use the `dbt.partition_range` macro to generate a list of 8-digit dates in a specified range. Further, dbt provides a handy macro, `date_sharded_table`, for getting a date-sharded <Term id="table" /> by its prefix for a given date. Together, this looks like:
 
 <File name='partitioned_range.sql'>
 
@@ -113,5 +113,5 @@ If a `dates` variable is provided (eg. on the command line with `--vars`), then 
 Here's an example of running this model for the first 3 days of 2018 as a part of a backfill:
 
 ```
-dbt run --models partitioned_yesterday --vars 'dates: "20180101, 20180103"'
+dbt run --select partitioned_yesterday --vars 'dates: "20180101, 20180103"'
 ```

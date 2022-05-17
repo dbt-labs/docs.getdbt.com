@@ -16,7 +16,7 @@ id: "hooks-operations"
 ## Getting started
 
 Effective database administration sometimes requires additional SQL statements to be run, for example:
-- Granting privileges on an table / view
+- Granting privileges on an <Term id="table" /> / view
 - Creating UDFs
 - Vacuuming tables on Redshift
 - Creating partitions in Redshift Spectrum external tables
@@ -118,10 +118,10 @@ Full usage docs can for the `run-operation` command can be found [here](run-oper
 These examples from the community highlight some of the use-cases for hooks and operations!
 
 * [In-depth discussion of granting privileges using hooks and operations](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
-* [Staging external tables](https://github.com/fishtown-analytics/dbt-external-tables)
+* [Staging external tables](https://github.com/dbt-labs/dbt-external-tables)
 * [Performing a zero copy clone on Snowflake to reset a dev environment](https://discourse.getdbt.com/t/creating-a-dev-environment-quickly-on-snowflake/1151/2)
-* [Running `vacuum` and `analyze` on a Redshift warehouse](https://github.com/fishtown-analytics/redshift/tree/0.2.3/#redshift_maintenance_operation-source)
+* [Running `vacuum` and `analyze` on a Redshift warehouse](https://github.com/dbt-labs/redshift/tree/0.2.3/#redshift_maintenance_operation-source)
 * [Creating a Snowflake share](https://discourse.getdbt.com/t/how-drizly-is-improving-collaboration-with-external-partners-using-dbt-snowflake-shares/1110)
-* [Unloading files to S3 on Redshift](https://github.com/fishtown-analytics/redshift/tree/0.2.3/#unload_table-source)
-* [Creating audit events for model timing](https://github.com/fishtown-analytics/dbt-event-logging)
+* [Unloading files to S3 on Redshift](https://github.com/dbt-labs/redshift/tree/0.2.3/#unload_table-source)
+* [Creating audit events for model timing](https://github.com/dbt-labs/dbt-event-logging)
 * [Creating UDFs](https://discourse.getdbt.com/t/using-dbt-to-manage-user-defined-functions/18)
