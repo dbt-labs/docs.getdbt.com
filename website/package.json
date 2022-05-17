@@ -51,7 +51,7 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.(t|j)sx?$": "@swc/jest"
+      "^.+\\.(js|jsx)$": "@swc/jest"
     },
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
