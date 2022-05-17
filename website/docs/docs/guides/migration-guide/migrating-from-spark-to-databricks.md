@@ -77,7 +77,7 @@ If you're using `dbt-spark` today to connect to a Databricks SQL Endpoint, the b
 
 ```yaml
 your_profile_name:
-  target: my_databricks
+  target: dev
   outputs:
     dev:
       type: spark
