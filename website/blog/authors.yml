@@ -207,7 +207,7 @@ josh_fell:
   links:
     - url: https://www.linkedin.com/in/josh-fell/
       icon: fa-linkedin
-
+      
 simo_tumelius:
   name: Simo Tumelius
   job_title: Freelance Data and Analytics Engineer
@@ -215,3 +215,22 @@ simo_tumelius:
   links:
     - url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
       icon: fa-linkedin
+     
+matt_winkler:
+  name: Matt Winkler
+  job_title: Senior Solutions Architect
+  organization: dbt Labs
+  description: Matt is an ex-data scientist who chose to embrace the simplicity of using SQL to manage and testing data pipelines with dbt. He previously worked as a hands-on ML practitioner, and consulted with Fortune 500 clients to build and maintain ML Ops pipelines using (mostly) AWS Sagemaker. He lives in the Denver area, and you can say hello on dbt Slack or on LinkedIn.
+  image_url: /img/blog/authors/matt-winkler.jpeg
+  links:
+    - url: https://www.linkedin.com/in/matt-winkler-4024263a/
+
+lauren_benezra:
+  name: Lauren Benezra
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/lauren-benezra.jpeg
+  links:
+    - url: https://www.linkedin.com/in/lbenezra/
+      icon: fa-linkedin
+

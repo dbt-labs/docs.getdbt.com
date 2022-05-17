@@ -13,6 +13,33 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 
 This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
 
+For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. Likely there is someone there who has experienced a similar issue to what you are experiencing.
+
+## Pre-Requisite Data Warehouse Features
+
+THe more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
+
+### Training
+- the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) and [Advanced Materializations](https://courses.getdbt.com/courses/advanced-materializations) course.
+
+### Database
+- Does the database complete transactions fast enough for interactive development?
+- Can you execute SQL against the data platform?
+- Is there a concept of schemas?
+- Does the data platform support ANSI SQL, or at least a subset?
+### Driver / Connection Library
+- Is there a Python-based driver for interacting with the database that is db API 2.0 compliant (e.g. Psycopg2 for Postgres, pyodbc for SQL Server)
+- Does it support: prepared statements, multiple statements, or single sign on token authorization to the data platform?
+
+### Open source software
+- Does your organization have an established process for publishing open source software?
+
+
+It is easiest to build an adapter for dbt when the following the data warehouse/platform in question has:
+- a conventional ANSI-SQL interface (or as close to it as possible),
+- a mature connection library/SDK that uses ODBC or Python DB 2 API, and
+- a way to enable developers to iterate rapidly with both quick reads and writes
+
 ## Scaffolding a new adapter
 
 dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/scripts/create_adapter_plugins.py) directory.

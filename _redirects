@@ -299,3 +299,5 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /tutorial/create-a-project-dbt-cli   /tutorial/learning-more/getting-started-dbt-core	302
 /tutorial/2a-create-a-project-dbt-cloud.md   /tutorial/getting-started	302
 /tutorial/create-a-project-dbt-cloud   /tutorial/getting-started	302
+/docs/dbt-cloud/cloud-changelog   /docs/dbt-cloud/release-notes	302
+
