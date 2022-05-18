@@ -1,5 +1,9 @@
 ---
 title: How do I define a column type?
+Description: “Using cast function to define a column type”
+sidebar_label: ‘How to define a column type’
+id: define-a-column-type
+
 ---
 
 Your warehouse's SQL engine automatically assigns a [datatype](https://www.w3schools.com/sql/sql_datatypes.asp) to every column, whether it's found in a source or model. To force SQL to treat a columns a certain datatype, use `cast` functions:
