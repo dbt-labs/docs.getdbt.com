@@ -102,9 +102,9 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
 3. Click **Start** on the Starter Endpoint.  This will take a few minutes to get the necessary resources spun up.
 
 4. While you're waiting, download the three CSV files locally that you will need for this tutorial. You can find them here:
-    - [jaffle_shop_customers.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
-    - [jaffle_shop_orders.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
-    - [stripe_payments.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
+    - [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
+    - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
+    - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
 
 5. Once the SQL Endpoint is up, click on the `Create` and then `Table` on the drop down menu. 
     <div style={{maxWidth: '400px'}}>
