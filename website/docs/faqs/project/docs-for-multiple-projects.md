@@ -1,5 +1,9 @@
 ---
 title: Can I render docs for multiple projects?
+Description: “Using packages to render docs for multiple projects”
+sidebar_label: ‘Render docs for multiple projects’
+id: docs-for-multiple-projects
+
 ---
 
 Yes! To do this, you'll need to create a "super project" that lists each project as a dependent [package](package-management) in a `packages.yml` file. Then run `dbt deps` to install the projects as packages, prior to running `dbt docs generate`.
