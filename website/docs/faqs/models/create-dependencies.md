@@ -1,5 +1,9 @@
 ---
 title: How do I create dependencies between models?
+Description: “Using ref function to create dependencies”
+sidebar_label: ‘Creating dependencies between models’
+id: create-dependencies
+
 ---
 
 When you use the `ref` [function](dbt-jinja-functions/ref), dbt automatically infers the dependencies between models.
