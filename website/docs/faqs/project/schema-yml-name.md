@@ -1,5 +1,9 @@
 ---
 title: Does my `.yml` file containing tests and descriptions need to be named `schema.yml`?
+Description: “Naming your Tests and Descriptions files”
+sidebar_label: ‘How to name your tests and descriptions files’
+id: schema-yml-name
+
 ---
 No! You can name this file whatever you want (including `whatever_you_want.yml`), so long as:
 * The file is in your `models/` directory¹
