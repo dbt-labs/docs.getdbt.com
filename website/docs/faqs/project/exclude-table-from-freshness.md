@@ -1,5 +1,9 @@
 ---
 title: How do I exclude a table from a freshness snapshot?
+Description: “Use null to exclude a table from a freshness snapshot”
+sidebar_label: ‘Exclude a table from freshness snapshot ’
+id: exclude-table-from-freshness
+
 ---
 
 Some tables in a data source may be updated infrequently. If you've set a `freshness` property at the source level, this <Term id="table" /> is likely to fail checks.
