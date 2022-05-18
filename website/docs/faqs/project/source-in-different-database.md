@@ -1,5 +1,9 @@
 ---
 title: What if my source is in a different database to my target database?
+Description: “Use database property to define source in a diff database”
+sidebar_label: ‘Source is in a different database to target database’
+id: source-in-different-database
+
 ---
 
 Use the [`database` property](resource-properties/database) to define the database that the source is in.
