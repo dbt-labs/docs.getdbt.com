@@ -1,5 +1,9 @@
 ---
 title: Do model names need to be unique?
+Description: “Unique model names to build dependencies
+sidebar_label: ‘Model names need to be unique’
+id: unique-model-names
+
 ---
 Yes! To build dependencies between models, you need to use the `ref` function. The `ref` function only takes one argument — the model name (i.e. the filename). As a result, these model names need to be unique, _even if they are in distinct folders_.
 
