@@ -60,7 +60,9 @@ Before starting this tutorial, you will need the following:
     <Lightbox src="/img/databricks_tutorial/images/quick_create_stack.png" title="Create AWS resources" />
     </div>
 
-    *Tip:* If you get a session error and don’t get redirected to this page, do not worry, go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
+:::tip
+If you get a session error and don’t get redirected to this page, do not worry, go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
+:::
 
 8. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
     <div style={{maxWidth: '400px'}}>
@@ -109,7 +111,7 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
     <Lightbox src="/img/databricks_tutorial/images/create_table_using_databricks_SQL.png" title="Create Table Using Databricks SQL" />
     </div>
 
-6. Let's load the Jaffle Shop Customers data first. Drop in the jaffle_shop_customers.csv file into the UI.
+6. Let's load the Jaffle Shop Customers data first. Drop in the `jaffle_shop_customers.csv` file into the UI.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/databricks_table_loader.png" title="Databricks Table Loader" />
     </div>
