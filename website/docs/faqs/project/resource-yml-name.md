@@ -1,5 +1,9 @@
 ---
 title: If I can name these files whatever I'd like, what should I name them?
+Description: “Recommendations on how to name your files”
+sidebar_label: ‘How to name your files’
+id: resource-yml-name
+
 ---
 It's up to you! Here's a few options:
 - Default to the existing terminology: `schema.yml` (though this does make it hard to find the right file over time)
