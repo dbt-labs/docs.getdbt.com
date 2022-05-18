@@ -4,14 +4,22 @@ We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https:
 
 We welcome contributions from community members to this repo:
 - **Fixes**: If you notice an error (there are likely many), use the `Edit this page` button at the bottom of each page to suggest a change. We recommend you contribute small changes directly from the GitHub interface.
-- **New documentation**: If you contributed code in [dbt-core](https://github.com/fishtown-analytics/dbt), we encourage you to also write the docs here!
+- **New documentation**: If you contributed code in [dbt-core](https://github.com/dbt-labs/dbt-core), we encourage you to also write the docs here!
 - **Refactors**: At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
+
+### Usign the style guide
+
+[TBD] a style guide to help you write along the dbt style guidelines. 
 
 ## Versioning
 
 We now provide dynamic versioning in the dbt Labs product documentation. To learn more about how to version the docs for dbt Core, see [Managing available versions](/contributing/versioningdocs.md).
 
-### Running the Docs site locally
+## Adding to the glossary 
+
+[TBD] a how-to guide on the programming behind glossary entries. 
+
+## Running the Docs site locally
 
 You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
