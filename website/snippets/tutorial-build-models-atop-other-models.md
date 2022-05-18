@@ -11,7 +11,7 @@ Now you can experiment by separating the logic out into separate models and usin
 
     <WHCode>
 
-    <div>
+    <div warehouse="BigQuery">
 
     <File name='models/stg_customers.sql'>
 
@@ -42,7 +42,7 @@ Now you can experiment by separating the logic out into separate models and usin
 
     </div>
 
-    <div>
+    <div warehouse="Databricks">
 
     <File name='models/stg_customers.sql'>
 
@@ -73,7 +73,7 @@ Now you can experiment by separating the logic out into separate models and usin
 
     </div>
 
-    <div>
+    <div warehouse="Redshift">
 
     <File name='models/stg_customers.sql'>
 
@@ -104,7 +104,7 @@ Now you can experiment by separating the logic out into separate models and usin
 
     </div>
 
-    <div>
+    <div warehouse="Snowflake">
 
     <File name='models/stg_customers.sql'>
 
