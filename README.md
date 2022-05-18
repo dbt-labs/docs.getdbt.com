@@ -7,7 +7,7 @@ We welcome contributions from community members to this repo:
 - **New documentation**: If you contributed code in [dbt-core](https://github.com/dbt-labs/dbt-core), we encourage you to also write the docs here!
 - **Refactors**: At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
 
-### Usign the style guide
+## Using the style guide
 
 [TBD] a style guide to help you write along the dbt style guidelines. 
 
