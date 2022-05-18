@@ -52,7 +52,7 @@ It is easiest to build an adapter for dbt when the following the data warehouse/
 The generated boilerplate starting project will include a basic adapter plugin file structure, examples of macros, high level method descriptions, etc.
 
 One of the most important choices you will make during the cookiecutter generation will revolve around the field for `is_sql_adapter` which is a boolean used to correctly apply imports for either a `SQLAdapter` or `BaseAdapter`. Knowing which you will need requires a deeper knowledge of your selected database but a few good guides for the choice are.
-- Does your database have a complete SQL API? Can it perform tasks using SQL such as (creating schemas, dropping schemas, querying an `information_schema` for metadata calls)? If so, it is more likely to be a SQLAdapter where you set `is_sql_adapter` to `True`.
+- Does your database have a complete SQL API? Can it perform tasks using SQL such as creating schemas, dropping schemas, querying an `information_schema` for metadata calls? If so, it is more likely to be a SQLAdapter where you set `is_sql_adapter` to `True`.
 - Most adapters do fall under SQL adapters which is why we chose it as the default `True` value.
 - It is very possible to build out a fully functional `BaseAdapter`. This will require a little more ground work as it doesn't come with some prebuilt methods the `SQLAdapter` class provides. See `dbt-bigquery` as a good guide.
 
