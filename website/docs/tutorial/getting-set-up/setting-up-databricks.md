@@ -111,7 +111,7 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
     <Lightbox src="/img/databricks_tutorial/images/create_table_using_databricks_SQL.png" title="Create Table Using Databricks SQL" />
     </div>
 
-6. Let's load the Jaffle Shop Customers data first. Drop in the jaffle_shop_customers.csv file into the UI.
+6. Let's load the Jaffle Shop Customers data first. Drop in the `jaffle_shop_customers.csv` file into the UI.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/databricks_table_loader.png" title="Databricks Table Loader" />
     </div>
