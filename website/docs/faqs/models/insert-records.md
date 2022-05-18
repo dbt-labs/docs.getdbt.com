@@ -1,5 +1,9 @@
 ---
 title: If models can only be `select` statements, how do I insert records?
+Description: “Incremental models to insert records”
+sidebar_label: ‘How to insert records’
+id: insert-records
+
 ---
 
 For those coming from an <Term id="etl" /> (Extract Transform Load) paradigm, there's often a desire to write transformations as `insert` and `update` statements. In comparison, dbt will wrap your `select` query in a `create table as` statement, which can feel counter-productive.
