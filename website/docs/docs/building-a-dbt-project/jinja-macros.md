@@ -160,7 +160,7 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 Just like well-written python is pythonic, well-written dbt code is dbtonic.
 
-### Favor readability over DRY-ness
+### Favor readability over <Term id="dry" />-ness
 Once you learn the power of Jinja, it's common to want to abstract every repeated line into a macro! Remember that using Jinja can make your models harder for other users to interpret — we recommend favoring readability when mixing Jinja with SQL, even if it means repeating some lines of SQL in a few places. If all your models are macros, it might be worth re-assessing.
 
 ### Leverage package macros
