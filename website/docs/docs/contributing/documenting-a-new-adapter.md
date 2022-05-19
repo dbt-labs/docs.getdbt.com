@@ -26,13 +26,7 @@ To simplify things, assume the reader of this documentation already knows how bo
 | Configure            | `reference/resource-configs/{MY-DATA-PLATOFRM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? e.g. table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
 | Discover and Install | `docs/available-adapters.md`                                 | Modify | Is adapter vendor- or community- supported? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
 
-The following three pages need to be modified or created to have your data platform be listed on our documentation. After the corresponding pull request is merged, we ask that you link to these pages from your adapter repo's REAMDE as well as from your product documentation
-
-| How To...               | File within `/website/docs/`                                 | Action |
-|-------------------------|--------------------------------------------------------------|--------|
-| Connect                 | `reference/warehouse-profiles/{MY-DATA-PLATOFRM}-profile.md` | Create |
-| Configure               | `reference/resource-configs/{MY-DATA-PLATOFRM}-configs.md`   | Create |
-| Find Supported Adapters | `docs/available-adapters.md`                                 | Modify |
+The following three pages need to be modified or created to have your data platform be listed on our documentation. After the corresponding pull request is merged, we ask that you link to these pages from your adapter repo's `REAMDE` as well as from your product documentation
 
 ## Example PRs to add new adapter documentation
 
