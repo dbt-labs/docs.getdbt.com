@@ -234,3 +234,8 @@ lauren_benezra:
     - url: https://www.linkedin.com/in/lbenezra/
       icon: fa-linkedin
 
+christine_berger:
+  name: Christine Berger
+  job_title: Senior Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/christine-berger.jpeg
