@@ -47,7 +47,7 @@ Additionally, we have some data that’s waiting to be loaded into Redshift:
 
 You can see there are three <Term id="table">tables</Term> of data here. When you load data into Redshift, the data gets distributed into our two offices. In order to understand how that happens, let’s take a look at distribution styles.
 
-## What are distribution styles?**
+## What are distribution styles?
 
 Distribution styles dictate how data is stored between our two offices from our example above. Redshift has three distribution styles:
 
