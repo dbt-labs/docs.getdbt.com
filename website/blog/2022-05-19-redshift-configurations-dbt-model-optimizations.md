@@ -169,7 +169,7 @@ The con here is that every time data needs to be distributed, it takes extra tim
 
 This is fine if we have data that doesn’t update too frequently.
 
-### **Even**
+### Even
 
 Using `even` distributes our data sets as described in the [What are Distribution Styles?](https://www.notion.so/Optimizing-dbt-Models-with-Redshift-Configurations-3a9c46a0b84c462ebc8a188c562b3499) section (round-robin) to each node. The even distribution results in each node having data that they *may* or *may not* need for their assigned tasks.
 
