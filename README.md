@@ -1,18 +1,25 @@
 We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https://docs.getdbt.com/).
 
-## Versioning with branches
-
-We currently version our docs by using two long-lived branches in this repo:
-- `current`: This branch is what is reflected at at [docs.getdbt.com](https://docs.getdbt.com/)
-- `next`: This branch represent the next release of dbt, and is deployed [next.docs.getdbt.com](https://next.docs.getdbt.com/)
-
 ## Contributing
+
 We welcome contributions from community members to this repo:
 - **Fixes**: If you notice an error (there are likely many), use the `Edit this page` button at the bottom of each page to suggest a change. We recommend you contribute small changes directly from the GitHub interface.
-- **New documentation**: If you contributed code in [dbt-core](https://github.com/fishtown-analytics/dbt), we encourage you to also write the docs here!
+- **New documentation**: If you contributed code in [dbt-core](https://github.com/dbt-labs/dbt-core), we encourage you to also write the docs here!
 - **Refactors**: At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
 
-### Running the Docs site locally
+## Using the style guide
+
+[TBD] a style guide to help you write along the dbt style guidelines. 
+
+## Versioning
+
+We now provide dynamic versioning in the dbt Labs product documentation. To learn more about how to version the docs for dbt Core, see [Managing available versions](/contributing/versioningdocs.md).
+
+## Adding to the glossary 
+
+[TBD] a how-to guide on the programming behind glossary entries. 
+
+## Running the Docs site locally
 
 You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
@@ -32,6 +39,7 @@ Advisory:
 You can also check out [this Loom video](https://www.loom.com/share/7037780b86eb4f16953664b8f15f1e21) that I recorded for co-workers — it covers setting up docs.getdbt.com locally, and adding a page with links and images. Heads up — this was very much something I did on the fly, so is not super polished!
 
 ## Custom components
+
 Check out [docs.getdbt.com/styles](https://docs.getdbt.com/styles) for examples of different components that can be used in these docs.
 
 You can also use components directly from the [docusaurus library](https://v2.docusaurus.io/docs/markdown-features/).

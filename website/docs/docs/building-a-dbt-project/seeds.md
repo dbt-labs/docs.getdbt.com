@@ -21,6 +21,8 @@ Good use-cases for seeds:
 
 Poor use-cases of dbt seeds:
 * Loading raw data that has been exported to CSVs
+* Any kind of production data containing sensitive information. For example 
+personal identifiable information (PII) and passwords.
 
 
 ## Example
@@ -39,7 +41,7 @@ GB,United Kingdom
 
 </File>
 
-2. Run the `dbt seed` [command](seed) command — a new table will be created in your warehouse in your target schema, named `country_codes`
+2. Run the `dbt seed` [command](seed) command — a new <Term id="table" /> will be created in your warehouse in your target schema, named `country_codes`
 ```
 $ dbt seed
 
@@ -59,7 +61,7 @@ Done. PASS=1 ERROR=0 SKIP=0 TOTAL=1
 
 3. Refer to seeds in downstream models using the `ref` function.
 
-<File name='models/orders.csv'>
+<File name='models/orders.sql'>
 
 ```sql
 -- This refers to the table created from seeds/country_codes.csv

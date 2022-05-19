@@ -1,9 +1,9 @@
-module.exports = {
+const sidebarSettings = {
   docs: [
     {
       type: "category",
       label: "Introduction",
-      items: ["docs/introduction", "docs/available-adapters"],
+      items: ["docs/introduction", "docs/available-adapters", "docs/core-versions"],
     },
     {
       type: "category",
@@ -67,20 +67,39 @@ module.exports = {
         {
           type: "category",
           label: "Migration guides",
+          link: {
+            type: 'generated-index',
+            title: 'Migration guides',
+            description: 'Learn how to upgrade to the latest version of dbt Core.',
+            slug: '/docs/guides/migration-guide',
+          },
           items: [
-            "docs/guides/migration-guide/upgrading-to-1-0-0",
-            "docs/guides/migration-guide/upgrading-to-0-21-0",
-            "docs/guides/migration-guide/upgrading-to-0-20-0",
-            "docs/guides/migration-guide/upgrading-to-0-19-0",
-            "docs/guides/migration-guide/upgrading-to-0-18-0",
-            "docs/guides/migration-guide/upgrading-to-0-17-0",
-            "docs/guides/migration-guide/upgrading-to-0-16-0",
-            "docs/guides/migration-guide/upgrading-to-0-15-0",
-            "docs/guides/migration-guide/upgrading-to-0-14-1",
-            "docs/guides/migration-guide/upgrading-to-0-14-0",
-            "docs/guides/migration-guide/upgrading-to-0-13-0",
-            "docs/guides/migration-guide/upgrading-to-0-12-0",
-            "docs/guides/migration-guide/upgrading-to-0-11-0",
+            "docs/guides/migration-guide/upgrading-to-v1.1",
+            "docs/guides/migration-guide/upgrading-to-v1.0",
+            "docs/guides/migration-guide/upgrading-to-v0.21",
+            "docs/guides/migration-guide/upgrading-to-v0.20",
+            {
+              type: "category",
+              label: "Older versions",
+              link: {
+                type: 'generated-index',
+                title: 'Migration guides',
+                description: 'Learn how to upgrade from older versions of dbt Core.',
+                slug: '/docs/guides/migration-guide/older-versions',
+              },
+              items: [
+                "docs/guides/migration-guide/upgrading-to-0-19-0",
+                "docs/guides/migration-guide/upgrading-to-0-18-0",
+                "docs/guides/migration-guide/upgrading-to-0-17-0",
+                "docs/guides/migration-guide/upgrading-to-0-16-0",
+                "docs/guides/migration-guide/upgrading-to-0-15-0",
+                "docs/guides/migration-guide/upgrading-to-0-14-1",
+                "docs/guides/migration-guide/upgrading-to-0-14-0",
+                "docs/guides/migration-guide/upgrading-to-0-13-0",
+                "docs/guides/migration-guide/upgrading-to-0-12-0",
+                "docs/guides/migration-guide/upgrading-to-0-11-0",
+              ],
+            },
           ],
         },
         "docs/guides/videos",
@@ -90,8 +109,10 @@ module.exports = {
       type: "category",
       label: "Contributing",
       items: [
+        "docs/contributing/oss-expectations",
         "docs/contributing/contributor-license-agreements",
         "docs/contributing/building-a-new-adapter",
+        "docs/contributing/testing-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
       ],
     },
@@ -120,7 +141,7 @@ module.exports = {
     {
       type: "category",
       label: "Overview",
-      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' }, 
+      link: { type: 'doc', id: 'docs/dbt-cloud/cloud-overview' },
       items: [
         'docs/dbt-cloud/cloud-quickstart',
       ],
@@ -144,6 +165,15 @@ module.exports = {
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
+        {
+          type: "category",
+          label: "Connecting Azure DevOps",
+          link: { type: 'doc', id: 'docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops' }, 
+          items: [
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure',
+            'docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure',
+          ],
+        }, 
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
@@ -205,6 +235,7 @@ module.exports = {
             "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
           ],
         },
+        "docs/dbt-cloud/dbt-cloud-enterprise/audit-log",
       ],
     },
     {
@@ -254,14 +285,24 @@ module.exports = {
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposures",
-            ],
+              ],
             },
           ],
         },
       ],
     },
     "docs/dbt-cloud/cloud-dbt-cloud-support",
-    "docs/dbt-cloud/cloud-changelog",
+    {
+      type: "category",
+      label: "dbt Cloud Release Notes",
+      link: { type: 'doc', id: 'docs/dbt-cloud/release-notes'},
+      items: [
+        {
+          type: "autogenerated",
+          dirName: "docs/dbt-cloud/release-notes",
+        },
+      ],
+    },
   ],
   reference: [
     {
@@ -301,6 +342,7 @@ module.exports = {
         "reference/resource-configs/redshift-configs",
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/spark-configs",
+        "reference/resource-configs/materialize-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/teradata-configs",
       ],
@@ -480,51 +522,22 @@ module.exports = {
       type: "category",
       label: "Jinja Reference",
       items: [
-        "reference/dbt-jinja-functions",
         {
-          type: "category",
-          label: "List of dbt Jinja functions",
-          items: [
-            "reference/dbt-jinja-functions/adapter",
-            "reference/dbt-jinja-functions/as_bool",
-            "reference/dbt-jinja-functions/as_native",
-            "reference/dbt-jinja-functions/as_number",
-            "reference/dbt-jinja-functions/as_text",
-            "reference/dbt-jinja-functions/builtins",
-            "reference/dbt-jinja-functions/config",
-            "reference/dbt-jinja-functions/dbt_version",
-            "reference/dbt-jinja-functions/debug-method",
-            "reference/dbt-jinja-functions/dispatch",
-            "reference/dbt-jinja-functions/doc",
-            "reference/dbt-jinja-functions/env_var",
-            "reference/dbt-jinja-functions/exceptions",
-            "reference/dbt-jinja-functions/execute",
-            "reference/dbt-jinja-functions/flags",
-            "reference/dbt-jinja-functions/fromjson",
-            "reference/dbt-jinja-functions/fromyaml",
-            "reference/dbt-jinja-functions/graph",
-            "reference/dbt-jinja-functions/invocation_id",
-            "reference/dbt-jinja-functions/log",
-            "reference/dbt-jinja-functions/model",
-            "reference/dbt-jinja-functions/modules",
-            "reference/dbt-jinja-functions/project_name",
-            "reference/dbt-jinja-functions/ref",
-            "reference/dbt-jinja-functions/return",
-            "reference/dbt-jinja-functions/run_query",
-            "reference/dbt-jinja-functions/run_started_at",
-            "reference/dbt-jinja-functions/schema",
-            "reference/dbt-jinja-functions/source",
-            "reference/dbt-jinja-functions/statement-blocks",
-            "reference/dbt-jinja-functions/target",
-            "reference/dbt-jinja-functions/this",
-            "reference/dbt-jinja-functions/tojson",
-            "reference/dbt-jinja-functions/toyaml",
-            "reference/dbt-jinja-functions/var",
-            "reference/dbt-jinja-functions/profiles-yml-context",
-            "reference/dbt-jinja-functions/dbt-project-yml-context",
-            "reference/dbt-jinja-functions/on-run-end-context",
-          ],
+      type: "category",
+      label: "dbt Jinja functions",
+      link: {
+        type: 'generated-index',
+        title: 'dbt Jinja functions',
+        description: 'In addition to the standard Jinja library, we\'ve added additional functions and variables to the Jinja context that are useful when working with a dbt project.',
+        slug: '/reference/dbt-jinja-functions',
+      },
+      items: [
+        {
+          type: "autogenerated",
+          dirName: "reference/dbt-jinja-functions",
         },
+      ],
+    },
         "reference/dbt-classes",
       ],
     },
@@ -538,10 +551,10 @@ module.exports = {
         "reference/warehouse-profiles/redshift-profile",
         "reference/warehouse-profiles/snowflake-profile",
         "reference/warehouse-profiles/mssql-profile",
-        "reference/warehouse-profiles/presto-profile",
         "reference/warehouse-profiles/trino-profile",
         "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
+        "reference/warehouse-profiles/databricks-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
@@ -552,6 +565,8 @@ module.exports = {
         "reference/warehouse-profiles/firebolt-profile",
         "reference/warehouse-profiles/teradata-profile",
         "reference/warehouse-profiles/athena-profile",
+        "reference/warehouse-profiles/vertica-profile",
+        "reference/warehouse-profiles/tidb-profile",
       ],
     },
     {
@@ -570,50 +585,62 @@ module.exports = {
   tutorial: [
     {
       type: "category",
-      label: "Getting Started",
-      collapsed: false,
+      label: "Getting Started with dbt Cloud",
+      link: { type: 'doc', id: 'tutorial/getting-started' },
       items: [
-        "tutorial/setting-up",
         {
           type: "category",
-          label: "Create a project",
+          label: "Getting set up",
+          link: { type: 'doc', id: 'tutorial/getting-set-up' },
           items: [
-            "tutorial/create-a-project-dbt-cloud",
-            "tutorial/create-a-project-dbt-cli",
+            "tutorial/getting-set-up/setting-up-bigquery",
+            "tutorial/getting-set-up/setting-up-databricks",
+            "tutorial/getting-set-up/setting-up-redshift",
+            "tutorial/getting-set-up/setting-up-snowflake",
           ],
         },
-        "tutorial/build-your-first-models",
-        "tutorial/test-and-document-your-project",
-        "tutorial/deploy-your-project",
+        {
+          type: "category",
+          label: "Building your first project",
+            link: { type: 'doc', id: 'tutorial/building-your-first-project' },
+          items: [
+            "tutorial/building-your-first-project/build-your-first-models",
+            "tutorial/building-your-first-project/test-and-document-your-project",
+            "tutorial/building-your-first-project/schedule-a-job",
+          ],
+        },
       ],
     },
     {
       type: "category",
-      label: "Leveling up",
-      collapsed: false,
+      label: "Learning more",
+      link: { type: 'doc', id: 'tutorial/learning-more' },
       items: [
-        "tutorial/using-jinja",
-        "tutorial/refactoring-legacy-sql"
+        "tutorial/learning-more/getting-started-dbt-core",
+        "tutorial/learning-more/using-jinja",
+        "tutorial/learning-more/refactoring-legacy-sql",
       ],
     },
   ],
-  learn: [
+  "Glossary": [
     {
       type: "category",
-      label: "Getting Started",
+      label: "Analytics Engineer Glossary",
+      link: {
+        type: 'generated-index',
+        title: 'Analytics Engineering Glossary',
+        description: 'The Analytics Engineering Glossary is a living collection of terms & concepts commonly used in the data industry by dbt Labs. You can use and contribute to this resource to educate yourself, your team, and your stakeholders.',
+        slug: '/glossary',
+      },
       items: [
-        "learn/setting-up",
         {
-          type: "category",
-          label: "Create a project",
-          items: [
-            "learn/create-a-project-dbt-cloud",
-            "learn/create-a-project-dbt-cli",
-          ],
+          type: 'autogenerated',
+          dirName: 'terms'
         },
-        "learn/build-your-first-models",
-        "learn/test-and-document-your-project",
       ],
     },
   ],
 };
+
+
+module.exports = sidebarSettings

@@ -139,28 +139,20 @@ See [test selection examples](test-selection-examples) for more details about in
 
 Here are two ways to represent:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 <Tabs
   defaultValue="cli_style"
@@ -241,7 +233,7 @@ selectors:
         Excludes resources defined in installed packages.
     default: true
     definition:
-      method: project
+      method: package
       value: <my_root_project_name>
 ```
 

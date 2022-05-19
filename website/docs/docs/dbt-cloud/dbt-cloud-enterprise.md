@@ -18,3 +18,6 @@ This section describes features of the dbt Cloud Enterprise plan. If you’re in
 ### Permissions
 -  [Access Control](/docs/dbt-cloud/access-control/access-control-overview)
 -  [Enterprise Permissions](/docs/dbt-cloud/access-control/enterprise-permissions)
+
+### Audit log
+- [Using the Audit log](/audit-log)
