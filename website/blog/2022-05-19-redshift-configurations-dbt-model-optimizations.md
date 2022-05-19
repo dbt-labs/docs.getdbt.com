@@ -157,7 +157,7 @@ on visitors.person_id = known_visitor_profiles.person_id
 
 Now let’s look at what Redshift does per distribution style. For this, we’ll want to assume that our underlying tables for the above query (`visitors` and `known_visitor_profiles`) are the tables which have been distributed.
 
-### **All**
+### All
 
 Using `all` copies our data sets and stores the entirety of each within each node. 
 
