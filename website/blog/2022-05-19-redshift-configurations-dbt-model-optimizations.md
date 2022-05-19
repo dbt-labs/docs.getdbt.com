@@ -91,7 +91,7 @@ Notice how our first worker received the first rows of our data**,** the second 
 
 This distribution type is great for a well-rounded workload by ensuring that each node has equal amounts of data. We’re not picky about *which* data each node handles, so the data is can be evenly split between the nodes. That also means an equal amount of assignments are passed out resulting in no capacity wasted.
 
-### **Key-based distribution style**
+### Key-based distribution style
 
 dbt Implementation at the top of the `known_visitor_profiles.sql` file:
 
