@@ -1,7 +1,7 @@
 ---
 title: "Optimizing dbt Models with Redshift Configurations"
 description: "How to use the sort and dist configurations to optimize your Redshift query compute times"
-slug: redshift-configurations-dbt-model-optimization
+slug: redshift-configurations-dbt-model-optimizations
 
 authors: [christine_berger]
 
@@ -15,6 +15,8 @@ is_featured: true
 If you're reading this article, it looks like you're wondering how you can better optimize your Redshift queries - and you're *probably* wondering how you can do that in conjunction with dbt.
 
 You’re probably aware of the `sort` and `dist` configurations you can apply to your models if you’ve been using dbt to transform data within Redshift for a while. In order to properly optimize, we need to understand **why** you might be seeing issues with your performance and **how** you can fix it with these dbt configurations.
+
+<!--truncate-->
 
 In this article, we’ll cover:
 
@@ -33,7 +35,7 @@ In order to understand how we should model in dbt for optimal performance on Red
 
 First, let’s visualize an example cluster:
 
-![Cluster.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Cluster.png)
+![Cluster.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Cluster.png)
 
 This Redshift cluster has two nodes, which serve the purpose of storing data and computing some parts of your queries. You could have more than this, but we’ll keep it at two nodes for simplicity.
 
@@ -41,7 +43,7 @@ These two nodes are like the office spaces of two different people who have been
 
 Additionally, we have some data that’s waiting to be loaded into Redshift:
 
-![Source-Data.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Source-Data.png)
+![Source-Data.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Source-Data.png)
 
 You can see there are three <Term id="table">tables</Term> of data here. When you load data into Redshift, the data gets distributed into our two offices. In order to understand how that happens, let’s take a look at distribution styles.
 
@@ -65,7 +67,7 @@ dbt Implementation at the top of each model file:
 
 An `all` distribution means that both workers get the same copies of data. 
 
-![All-Distribution.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/All-Distribution.png)
+![All-Distribution.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/All-Distribution.png)
 
 **When to use `all` distribution**
 
@@ -81,7 +83,7 @@ dbt Implementation at the top of each model file:
 
 An `even` distribution means that both workers get close to equal amounts of data distributed to them. Redshift does this playing-card style (one for you, one for you, one for you...), also known as “round-robin”.
 
-![Even-Distribution.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Even-Distribution.png)
+![Even-Distribution.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Even-Distribution.png)
 
 Notice how our first worker received the first rows of our data**,** the second worker received the second rows, the first worker received the third rows, etc.
 
@@ -99,7 +101,7 @@ dbt Implementation at the top of the `known_visitor_profiles.sql` file:
 
 A key-based distribution means that each worker is assigned data based on a specific identifying value. For example, say that we chose to distribute our `known_visitor_profiles` table by `person_id`:
 
-![Key-Based.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Key-Based.png)
+![Key-Based.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based.png)
 
 It doesn’t look that different from `even`, right? The difference here is that because we’re using `person_id` as our distribution key, that means:
 
@@ -116,7 +118,7 @@ dbt Implementation at the top of the visitors.sql file:
 {{ config(materialized='table', dist='person_id') }}
 ```
 
-![Key-Based-2.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Key-Based-2.png)
+![Key-Based-2.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-2.png)
 
 You can see above that because we distributed `visitors` on `person_id` as well, the nodes received the associated data we outlined above. We did have some null `person_ids`, though. Those will be treated as a key value and distributed to one node.
 
@@ -159,7 +161,7 @@ Now let’s look at what Redshift does per distribution style. For this, we’ll
 
 Using `all` copies our data sets and stores the entirety of each within each node. 
 
-![All-Joining.gif](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/All-Joining.gif)
+![All-Joining.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/All-Joining.gif)
 
 In our offices example, that means our workers can do their load of the work in peace without being interrupted or needing to leave their office, since they each have all the information they need.
 
@@ -171,7 +173,7 @@ This is fine if we have data that doesn’t update too frequently.
 
 Using `even` distributes our data sets as described in the [What are Distribution Styles?](https://www.notion.so/Optimizing-dbt-Models-with-Redshift-Configurations-3a9c46a0b84c462ebc8a188c562b3499) section (round-robin) to each node. The even distribution results in each node having data that they *may* or *may not* need for their assigned tasks.
 
-![Even-Joining.gif](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Even-Joining.gif)
+![Even-Joining.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Even-Joining.gif)
 
 In our scenario of office workers, that means that if our workers can’t find the data they need to complete their assignment in their own office they need to send a request for information to the other office to try to locate the data. This communication takes time!
 
@@ -184,7 +186,7 @@ Our key-based distribution of `person_id` gave our nodes *assigned* data to work
 - Node 1 was distributed data associated with key values null, 1, 3, and 5.
 - Node 2 was distributed data associated with key values 2, 4, and 6
 
-![Key-Based-Joining.gif](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Key-Based-Joining.gif)
+![Key-Based-Joining.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-Joining.gif)
 
 This means that when we join the two tables we distributed, the data is **co-located** on the same node and therefore our workers don’t need leave their offices to collect the data they need to complete their work. Cool, huh?
 
@@ -203,14 +205,14 @@ left join unknown_visitor_profiles
 
 How would you decide to distribute the `anonymous_visitor_profiles` data?
 
-![Key-Based-Joining-2.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Key-Based-Joining-2.png)
+![Key-Based-Joining-2.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-Joining-2.png)
 
 We have a few options:
 
 - **Distribute by `all`**
 If it’s a table that updates frequently this may not be the best route.
     
-![Key-Based-All.gif](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Key-Based-All.gif)
+![Key-Based-All.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-All.gif)
     
 
 - **Distribute by `even`** 
@@ -218,7 +220,7 @@ But then our nodes need to communicate when `visitors` is joined to `anonymous_v
 
 If you decide to do something like this, you should consider what your *largest* datasets are first and distribute using appropriate keys to co-locate that data. Then, benchmark the run times with your additional tables distributed with all or even  - the additional time may be something you can live with!
     
-![Key-Based-Even.gif](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Key-Based-Even.gif)
+![Key-Based-Even.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-Even.gif)
     
 
 - **Distribute by key**
@@ -240,13 +242,13 @@ I won’t get into our modeling methodology at dbt Labs in this article, but the
 
 ### **Staggered joins**
 
-![Staggered-Joins.png](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Staggered-Joins.png)
+![Staggered-Joins.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Staggered-Joins.png)
 
 In this method, you would piece out your joins based on the main table they’re joining to. For example, if you had five tables that were all joined in some way using `person_id`, then you would stage your data (doing your clean up too, of course), distribute those by using `dist='person_id'`, and then marry them up in some table downstream. Now with that new table, you can choose the next distribution key you’ll need for the next process that will happen. In our example above, the next step is joining to the `anonymous_visitor_profiles` table which is distributed by `mask_id`, so the results of our join should also distribute by `mask_id`.
 
 ### **Resolve to a single key**
 
-![Resolve-to-single-key](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Resolve-to-single-key.png)
+![Resolve-to-single-key](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Resolve-to-single-key.png)
 
 This method takes some time to think about, and it may not make sense to do it depending on what you need. This is definitely balance between coherence, usability, and performance.
 
@@ -262,11 +264,11 @@ Imagine that our office workers store the data they’ve been given in filing ca
 
 Let’s take a look at the information in our filing cabinet in both sorted and unsorted formats. Below is our `anonymous_visitor_profiles` table sorted by `mask_id`:
 
-![Sorting.gif](Optimizing%20dbt%20Models%20with%20Redshift%20Configurations%20ba2c1cbce040482b846a58b1a4556740/Sorting.gif)
+![Sorting.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Sorting.gif)
 
 This is equivalent to the information in our filing cabinet being organized into folders, where items with `mask_ids` starting with letters a through c are in located in one folder, `mask_ids` starting with letters d-f are in another folder, and so on. Now our office worker can skip looking through the folder a-c and skip straight to the folder d-f.
 
-![Scanning-Sort.gif](/img/blog/2022-05-18-redshift-configuration-dbt-model-optimization/Scanning-Sort.gif)
+![Scanning-Sort.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Scanning-Sort.gif)
 
 Even without setting an explicit distribution, this can help immensely with optimization. Here are some good places to apply it:
 
