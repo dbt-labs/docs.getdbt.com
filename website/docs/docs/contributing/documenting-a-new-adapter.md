@@ -9,7 +9,7 @@ If you've already [built an adapter](/website/docs/docs/contributing/building-a-
 
 ### Single Source of Truth
 
-We have asked our partner adapter maintainers to use the [docs.getdbt.com repo](https://github.com/dbt-labs/docs.getdbt.com) (i.e. this site) as the single-source-of-truth for documentation rather than having to maintain the same set of information in three different places. Instead, we ask that the adapter repo's `README.md` and the dataplatform's documentation pages simply link to the corresponding page on this docs site.
+We asked our adapter maintainers to use the [docs.getdbt.com repo](https://github.com/dbt-labs/docs.getdbt.com) (i.e. this site) as the single-source-of-truth for documentation rather than having to maintain the same set of information in three different places. The adapter repo's `README.md` and the data platform's documentation pages should simply link to the corresponding page on this docs site.
 
 ### Assumed Knowledge
 
