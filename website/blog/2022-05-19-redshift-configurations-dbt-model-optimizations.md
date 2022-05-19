@@ -246,7 +246,7 @@ I won’t get into our modeling methodology at dbt Labs in this article, but the
 
 In this method, you would piece out your joins based on the main table they’re joining to. For example, if you had five tables that were all joined in some way using `person_id`, then you would stage your data (doing your clean up too, of course), distribute those by using `dist='person_id'`, and then marry them up in some table downstream. Now with that new table, you can choose the next distribution key you’ll need for the next process that will happen. In our example above, the next step is joining to the `anonymous_visitor_profiles` table which is distributed by `mask_id`, so the results of our join should also distribute by `mask_id`.
 
-### **Resolve to a single key**
+### Resolve to a single key
 
 ![Resolve-to-single-key](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Resolve-to-single-key.png)
 
