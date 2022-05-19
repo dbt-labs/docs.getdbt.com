@@ -190,7 +190,7 @@ Our key-based distribution of `person_id` gave our nodes *assigned* data to work
 
 This means that when we join the two tables we distributed, the data is **co-located** on the same node and therefore our workers don’t need leave their offices to collect the data they need to complete their work. Cool, huh?
 
-## **Where it breaks down 🚒** 🔥 **👩🏻‍🚒**
+## Where it breaks down 🚒 🔥 👩🏻‍🚒
 
 You would think the most ideal distribution would be key-based. However, you can only assign **one key** to distribute by and that means if we have a query like this, we run into issues again:
 
