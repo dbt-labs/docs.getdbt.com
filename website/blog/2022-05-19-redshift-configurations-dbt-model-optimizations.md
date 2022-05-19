@@ -240,7 +240,7 @@ The following are some methods I’ve used in order to properly optimize run tim
 I won’t get into our modeling methodology at dbt Labs in this article, but there are [plenty of resources](https://courses.getdbt.com/) to understand what might be happening in the following DAGs!
 :::
 
-### **Staggered joins**
+### Staggered joins
 
 ![Staggered-Joins.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Staggered-Joins.png)
 
