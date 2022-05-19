@@ -179,7 +179,7 @@ In our scenario of office workers, that means that if our workers can’t find t
 
 You can imagine how this would impact how long our query takes to complete — however, even with the extra time taken to communicate this distribution is usually a good starting point because the workload to assemble data is shared in equal amounts and probably not too *skewed* (in other words, one worker isn’t sitting around with nothing to do while the other worker feverishly tries to work through stacks of information).
 
-### **Key-based**
+### Key-based
 
 Our key-based distribution of `person_id` gave our nodes *assigned* data to work with. Here’s a refresher from the [What are Distribution Styles?](https://www.notion.so/Optimizing-dbt-Models-with-Redshift-Configurations-3a9c46a0b84c462ebc8a188c562b3499) section:
 
