@@ -44,11 +44,12 @@ Let's look at the data waiting to be loaded into Redshift:
 
 ![Source-Data.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Source-Data.png)
 
-You can see there are three <Term id="table">tables</Term> of data here. When you load data into Redshift, the data gets distributed into our two offices. In order to understand how that happens, let’s take a look at distribution styles.
+You can see there are three <Term id="table">tables</Term> of data here. When you load data into Redshift, the data gets distributed between the offices. In order to understand how that happens, let’s take a look at distribution styles.
 
 ## What are distribution styles?
 
-Distribution styles dictate how data is stored between our two offices from our example above. Redshift has three distribution styles:
+Distribution styles determine how data will be stored between offices (our nodes).
+Redshift has three distribution styles:
 
 - `all`
 - `even`
