@@ -65,15 +65,15 @@ configuration to each of our models:
 {{ config(materialized='table', dist='all') }}
 ```
 
-An `all` distribution means that both workers get the same copies of data. 
-
+Here's a visualization of the data stored on our nodes:
 ![All-Distribution.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/All-Distribution.png)
 
 **When to use the `all` distribution**:
 
-This type of distribution great for smaller data which doesn’t update frequently. Because `all` puts copies of our tables on all of our nodes, we’ll want to be sure we’re not giving our cluster extra work by needing to do this frequently.
+This type of distribution is great for smaller data which doesn’t update frequently. Because `all` puts copies of our tables on all of our nodes, we’ll want to be sure we’re not giving our cluster extra work by needing to do this frequently.
 
 ### The `even` distribution style
+An `even` distribution means that both workers get close to equal amounts of data distributed to them. Redshift does this in a round-robin playing card style.
 
 To implement this distribution on our tables in dbt, we would apply this
 configuration to each of our models:
@@ -81,17 +81,17 @@ configuration to each of our models:
 {{ config(materialized='table', dist='even') }}
 ```
 
-An `even` distribution means that both workers get close to equal amounts of data distributed to them. Redshift does this playing-card style (one for you, one for you, one for you...), also known as “round-robin”.
-
+Here's a visualization of the data stored on our nodes:
 ![Even-Distribution.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Even-Distribution.png)
 
 Notice how our first worker received the first rows of our data**,** the second worker received the second rows, the first worker received the third rows, etc.
 
 **When to use the `even` distribution**
 
-This distribution type is great for a well-rounded workload by ensuring that each node has equal amounts of data. We’re not picky about *which* data each node handles, so the data is can be evenly split between the nodes. That also means an equal amount of assignments are passed out resulting in no capacity wasted.
+This distribution type is great for a well-rounded workload by ensuring that each node has equal amounts of data. We’re not picky about *which* data each node handles, so the data can be evenly split between the nodes. That also means an equal amount of assignments are passed out resulting in no capacity wasted.
 
-### Key-based distribution style
+### The key-based distribution style
+A key-based distribution means that each worker is assigned data based on a specific identifying value. 
 
 Let's distribute our **known_visitor_profiles** table by `person_id` by applying this configuration to the top of the model in dbt:
 
@@ -99,25 +99,20 @@ Let's distribute our **known_visitor_profiles** table by `person_id` by applying
 {{ config(materialized='table', dist='person_id') }}
 ```
 
-A key-based distribution means that each worker is assigned data based on a specific identifying value. For example, say that we chose to distribute our `known_visitor_profiles` table by `person_id`:
-
+Here's a visualization of the data stored on our nodes:
 ![Key-Based.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based.png)
 
-It doesn’t look that different from `even`, right? The difference here is that because we’re using `person_id` as our distribution key, that means:
+It doesn’t look that different from `even`, right? The difference here is that because we’re using `person_id` as our distribution key, we ensure:
 
 - Node 1 will always get data associated with values 1, 3, 5
 - Node 2 will always get data associated with values 2, 4, 6
 
-**Reminder:** *this is an over-simplified example - key assignments to the nodes in reality probably look very different from this.*
-
-Let’s do this with another table to really see the effects. We’ll do this with our `vistors` table.
-
-dbt Implementation at the top of the visitors.sql file:
+Let’s do this with another table to really see the effects. We'll apply the following configuration to our `visitors.sql` file:
 
 ```python
 {{ config(materialized='table', dist='person_id') }}
 ```
-
+Here's a visualization of the data stored on our nodes:
 ![Key-Based-2.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-2.png)
 
 You can see above that because we distributed `visitors` on `person_id` as well, the nodes received the associated data we outlined above. We did have some null `person_ids`, though. Those will be treated as a key value and distributed to one node.
