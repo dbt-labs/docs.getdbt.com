@@ -203,22 +203,20 @@ How would you decide to distribute the `anonymous_visitor_profiles` data?
 
 We have a few options:
 
-- **Distribute by `all`**
-If it’s a table that updates frequently this may not be the best route.
-    
+- **Distribute by `all`**  
+But if it’s a table that updates frequently, this may not be the best route.
 ![Key-Based-All.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-All.gif)
     
 
-- **Distribute by `even`** 
-But then our nodes need to communicate when `visitors` is joined to `anonymous_visitor_profiles`. 
+- **Distribute by `even`**  
+But then our nodes need to communicate when `visitors` is joined to `anonymous_visitor_profiles`.  
 
-If you decide to do something like this, you should consider what your *largest* datasets are first and distribute using appropriate keys to co-locate that data. Then, benchmark the run times with your additional tables distributed with all or even  - the additional time may be something you can live with!
-    
+  If you decide to do something like this, you should consider what your *largest* datasets are first and distribute using appropriate keys to co-locate that data. Then, benchmark the run times with your additional tables distributed with all or even  - the additional time may be something you can live with!
 ![Key-Based-Even.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-Even.gif)
     
 
-- **Distribute by key**
-Distributing the `anonymous_visitor_profiles` with a key in this situation won’t really do anything, since you’re not co-locating any data! For example, we could change to distribute by `mask_id`, but then we’d have to distribute the `visitors` table by `mask_id` and then you’d end up in the same boat as last time!
+- **Distribute by key**  
+Distributing the `anonymous_visitor_profiles` with a key in this situation won’t really do anything, since you’re not co-locating any data! For example, we could change to distribute by `mask_id`, but then we’d have to distribute the `visitors` table by `mask_id` and then you’d end up in the same boat again with the `known_visitor_profiles` model!
 
 Thankfully with dbt, distributing isn’t our only option.
 
