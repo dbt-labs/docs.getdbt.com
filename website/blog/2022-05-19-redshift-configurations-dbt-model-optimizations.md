@@ -236,7 +236,7 @@ I won’t get into our modeling methodology at dbt Labs in this article, but the
 
 ![Staggered-Joins.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Staggered-Joins.png)
 
-In this method, you would piece out your joins based on the main table they’re joining to. For example, if you had five tables that were all joined in some way using `person_id`, then you would stage your data (doing your clean up too, of course), distribute those by using `dist='person_id'`, and then marry them up in some table downstream. Now with that new table, you can choose the next distribution key you’ll need for the next process that will happen. In our example above, the next step is joining to the `anonymous_visitor_profiles` table which is distributed by `mask_id`, so the results of our join should also distribute by `mask_id`.
+In this method, you piece out your joins based on the main table they’re joining to. For example, if you had five tables that were all joined using `person_id`, then you would stage your data (doing your clean up too, of course), distribute those by using `dist='person_id'`, and then marry them up in some table downstream. Now with that new table, you can choose the next distribution key you’ll need for the next process that will happen. In our example above, the next step is joining to the `anonymous_visitor_profiles` table which is distributed by `mask_id`, so the results of our join should also distribute by `mask_id`.
 
 ### Resolve to a single key
 
@@ -250,9 +250,9 @@ Sometimes the work you’re doing downstream is much easier to do when you do so
 
 # Sort keys
 
-Lastly, let’s talk about sort keys. No matter how we’ve **distributed** our data, we can define how data is sorted within our nodes. By setting a sort key to, we’re telling Redshift to chunk our rows into blocks, which are then assigned a min and max value. Redshift can now use those min and max values to make an informed decision about which data it can skip looking at.
+Lastly, let’s talk about sort keys. No matter how we’ve **distributed** our data, we can define how data is sorted within our nodes. By setting a sort key, we’re telling Redshift to chunk our rows into blocks, which are then assigned a min and max value. Redshift can now use those min and max values to make an informed decision about which data it can skip scanning.
 
-Imagine that our office workers store the data they’ve been given in filing cabinets. Before sorting, there is no **organization** taking place - the papers are just added in the order they’re given. Now, imagine that each worker needs to retrieve all paperwork associated to the person who wore a dog mask to the party. They would need to thumb through every drawer and every paper in their filing cabinets in order to pull out and assemble the information related to the dog-masked person. 
+Imagine that our office workers have no organization taking place with their documents - the papers are just added in the order they’re given. Now imagine that each worker needs to retrieve all paperwork associated to the person who wore a dog mask to the party. They would need to thumb through every drawer and every paper in their filing cabinets in order to pull out and assemble the information related to the dog-masked person. 
 
 Let’s take a look at the information in our filing cabinet in both sorted and unsorted formats. Below is our `anonymous_visitor_profiles` table sorted by `mask_id`:
 
