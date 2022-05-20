@@ -58,9 +58,9 @@ Redshift has three distribution styles:
 Let’s dive into what these mean and how they work.
 
 ### The `all` distribution style
-
-dbt Implementation at the top of each model file:
-
+An `all` distribution means that both workers get the same copies of data. 
+To implement this distribution on our tables in dbt, we would apply this
+configuration to each of our models:
 ```python
 {{ config(materialized='table', dist='all') }}
 ```
@@ -75,8 +75,8 @@ This type of distribution great for smaller data which doesn’t update frequent
 
 ### The `even` distribution style
 
-dbt Implementation at the top of each model file:
-
+To implement this distribution on our tables in dbt, we would apply this
+configuration to each of our models:
 ```python
 {{ config(materialized='table', dist='even') }}
 ```
@@ -93,7 +93,7 @@ This distribution type is great for a well-rounded workload by ensuring that eac
 
 ### Key-based distribution style
 
-dbt Implementation at the top of the `known_visitor_profiles.sql` file:
+Let's distribute our **known_visitor_profiles** table by `person_id` by applying this configuration to the top of the model in dbt:
 
 ```python
 {{ config(materialized='table', dist='person_id') }}
