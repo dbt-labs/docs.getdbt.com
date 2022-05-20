@@ -53,7 +53,7 @@ Redshift has three distribution styles:
 
 - `all`
 - `even`
-- Key-based
+- key-based
 
 Let’s dive into what these mean and how they work.
 
