@@ -171,7 +171,7 @@ Using `even` distributes our data sets as described in the [What are Distributio
 
 In our scenario of office workers, that means that if our workers can’t find the data they need to complete their assignment in their own office they need to send a request for information to the other office to try to locate the data. This communication takes time!
 
-You can imagine how this would impact how long our query takes to complete — however, even with the extra time taken to communicate this distribution is usually a good starting point because the workload to assemble data is shared in equal amounts and probably not too *skewed* (in other words, one worker isn’t sitting around with nothing to do while the other worker feverishly tries to work through stacks of information).
+You can imagine how this would impact how long our query takes to complete. However, this distribution is usually a good starting point even with this impact because the workload to assemble data is shared in equal amounts and probably not too *skewed* - in other words, one worker isn’t sitting around with nothing to do while the other worker feverishly tries to work through stacks of information.
 
 ### Key-based
 
