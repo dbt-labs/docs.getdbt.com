@@ -123,21 +123,20 @@ Key-based distribution is great for when you’re really stepping it up. If we c
 
 ### Things to keep in mind when working with these configurations
 
-**Redshift has defaults**
-
+**Redshift has defaults.**  
 Redshift initially assigns an `all` distribution to your data, but switches seamlessly to an `even` distribution based on the growth of your data. This gives you time to model out your data without worrying too much about optimization. Reference what you learned above when you’re ready to start tweaking your modeling flows!
 
-**Distribution only works on stored data**
+**Distribution only works on stored data.**  
+These configurations don’t work on <Term id="view">views</Term> or ephemeral models.
+This is because the data needs to be stored in order to be distributed. That means that the benefits only happen using table or incremental materializations.
 
-**These configurations don’t work on <Term id="view">views</Term> or ephemeral models.** This is because the data needs to be stored in order to be distributed. That means that the benefits only happen using table or incremental materializations.
-
-**Applying sort and distribution configurations from dbt doesn’t affect how your raw data is sorted and distributed**
+**Applying sort and distribution configurations from dbt doesn’t affect how your raw data is sorted and distributed.**  
 Since dbt operates on top of raw data that’s already loaded into your warehouse, the following examples are geared towards optimizing your models *created with dbt*. 
 
-You can still use what you learn from this guide to choose how to optimize from ingestion**,** however this would need to be implemented via your loading mechanism. For example, if you’re using a tool like Fivetran or Stitch, you’ll want to consult their docs to find out whether you can set the sort and distribution on load through their interfaces.
+You can still use what you learn from this guide to choose how to optimize from ingestion**,** however this would need to be implemented via your loading mechanism. For example if you’re using a tool like Fivetran or Stitch, you’ll want to consult their docs to find out whether you can set the sort and distribution on load through their interfaces.
 
-**Redshift is a columnar-store database**
-It doesn’t actually orient data values per row that it belongs to, but by column they belong to. This isn’t a necessary concept to understand for this guide, but in general columnar stores can be faster at retrieving data the more specific the selection you make. *While being selective of columns can optimize your model, I’ve found that it doesn’t have as tremendous an impact as setting sort and distribution configs.* As such, I won’t be covering this.
+**Redshift is a columnar-store database.**  
+It doesn’t actually orient data values per row that it belongs to, but by column they belong to. This isn’t a necessary concept to understand for this guide, but in general columnar stores can be faster at retrieving data the more specific the selection you make. *While being selective of columns can optimize your model, I’ve found that it doesn’t have as tremendous an impact most of the time as setting sort and distribution configs.* As such, I won’t be covering this.
 
 # Handling joins: Where distribution styles shine
 
