@@ -14,7 +14,7 @@ is_featured: true
 
 If you're reading this article, it looks like you're wondering how you can better optimize your Redshift queries - and you're *probably* wondering how you can do that in conjunction with dbt.
 
-You’re probably aware of the `sort` and `dist` configurations you can apply to your models if you’ve been using dbt to transform data within Redshift for a while. In order to properly optimize, we need to understand **why** you might be seeing issues with your performance and **how** you can fix it with these dbt configurations.
+In order to properly optimize, we need to understand **why** we might be seeing issues with our performance and **how** we can fix these with dbt [sort and dist configurations](https://docs.getdbt.com/reference/resource-configs/redshift-configs#using-sortkey-and-distkey).
 
 <!--truncate-->
 
