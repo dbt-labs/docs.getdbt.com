@@ -63,7 +63,7 @@ Consider the complexity of the problem: you’ve successfully captured the histo
 | 1 | B | 1B | pending | 2021-11-10 10:00:000 | 2021-11-15 15:30:0000 |
 | 2 | C | 2C | available | 2021-11-10 15:00:0000 | NULL  |
 
-This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has $x$ historical rows per `product_id`, and $y$ ids total. That’s $x*y = n$ rows of data. `historical_table_2` has $z$  historical rows per `product_id`, and $w$ ids ($z*w = m$ rows). The subsequent join on product_id then changes the [complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from $O(n)$ to $O(n*m)$ very quickly ($x*y*z*w$ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
+This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has $x$ historical rows per `product_id`, and $y$ ids total. That’s $x*y = n$ rows of data. `historical_table_2` has $z$  historical rows per `product_id`, and $w$ ids ($z*w = m$ rows). The subsequent join on product_id then [changes the complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from $O(n)$ to $O(n*m)$ very quickly ($x*y*z*w$ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
 
 I know what you’re thinking — what a mess! Can’t we just join everything together, and snapshot the resulting table? This is not a bad thought. It would save you the trouble of thinking through a problem with $O(n*m*a*b*c*d*...*q)$ complexity. And in some cases, this may capture all the history you need! 
 
@@ -93,7 +93,9 @@ So let’s dive in! Head first! Step 1 is outlined in this blog post: [How to de
 
 ## Step 1: Ensure your data tables are duplicate free
 
->What happens in this step? Step 1 walks you through how to build a surrogate key from column values using a macro, and then removing said duplicates from your data. No duplicates? Skip to Step 2. 
+:::important What happens in this step? 
+Step 1 walks you through how to build a surrogate key from column values using a macro, and then removing said duplicates from your data. No duplicates? Skip to Step 2.
+:::
 
 Why is this step important? Because you’ll be joining so many rows on the same id, and the valid timestamps for each row will determine the exact place to join one table to another. We cannot do this accurately with duplicates! (But also, you should be checking for dupes anyway because we are analytics engineers, right?)
 
@@ -103,7 +105,9 @@ See [this blog post for deduping partial duplicates](https://docs.getdbt.com/blo
 
 ## Step 2: Snapshot your data
 
->What happens in this step? Step 2 walks you through how to snapshot your data. The example provided assumes you went through Step 1, but if you skipped that step, just snapshot your data based on the links provided below.
+:::important What happens in this step? 
+Step 2 walks you through how to snapshot your data. The example provided assumes you went through Step 1, but if you skipped that step, just snapshot your data based on the links provided below.
+:::
 
 Do you know how to snapshot data? It is a simple Jinja block with some configs specified. There are so many explanations of how to implement these, so I’m not going to bore you. But you know I’ll throw you some links. [Boom.](https://blog.getdbt.com/track-data-changes-with-dbt-snapshots/) [And foobar!](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots)
 
@@ -125,14 +129,14 @@ select * from {{ ref('base_product') }}
 
 ## Step 3: Future-proof your timestamps
 
->What happens in this step? Step 3 walks you through how to replace your snapshot `valid_to = NULL` value with a future-proof date to ensure smooth sailing through the snapshot joins.
+:::important What happens in this step?
+Step 3 walks you through how to replace your snapshot `valid_to = NULL` value with a future-proof date to ensure smooth sailing through the snapshot joins.
+:::
 
 Now that you’ve deduped and you’ve snapped, you need to future-proof! This is a step you cannot skip, because the joins we will do in the next steps will rely on `valid_to` to contain a date, rather than a `NULL`. 
 
 :::note Note 
-
 This is a great place to set a global variable! You can define your future-proof variable in the dbt_project.yml file. 
-
 :::
 
 ```jsx
@@ -150,7 +154,9 @@ You will thank yourself later for building in a global variable. Adding importan
 
 ## Step 4: Join all your tables together to build a fanned out id spine
 
->What happens in this step? Step 4 walks you through how to do your first join, in which you need to fan out the data spine to the finest grain possible and to include all the id onto which we will join the rest of the data. This step is crucial to joining the snapshots in subsequent steps.
+:::important What happens in this step?
+Step 4 walks you through how to do your first join, in which you need to fan out the data spine to the finest grain possible and to include all the id onto which we will join the rest of the data. This step is crucial to joining the snapshots in subsequent steps.
+:::
 
 Let’s look at how we’d do this with an example. You may have many events associated with a single `product_id`. Each `product_id` may have several `order_ids`, and each `order_id` may have another id associated with it. Which means that the grain of each table needs to be identified. The point here is that we need to build in an id at the finest grain. To do so, we’ll add in a [dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/surrogate_key.sql) in the staging models that live on top of the snapshot tables. 
 
@@ -186,14 +192,16 @@ The result will be all the columns from your first table, fanned out as much as 
 
 ## Step 5: Join your snapshots onto id spine
 
->What happens in this step? Step 5 walks you through the logic of the snapshot join, and the macro that will make the joins simpler.
+:::important What happens in this step? 
+Step 5 walks you through the logic of the snapshot join, and the macro that will make the joins simpler.
+:::
 
 Now, I’m going to recommend you build individual CTEs with one join at a time. Why do we build a CTE with a single join, rather than all the joins in one? So many reasons, but there are two big ones.
 
 - **First**, this is complicated. You will need to troubleshoot, and the easiest way to enable troubleshooting is to separate your join logic in individual CTEs. By building your code this way, you can easily throw a `select * from last_cte` to check that your logic is doing what you think it should be doing before adding more complex joins.
 - **Second**, you are using the `valid_from` and `valid_to` values of each newly joined table to determine the new `valid_from` and `valid_to` timestamps for the resulting table – where both rows are valid within the same timespans. While you could accomplish this in one big massive join, it will become very complex and difficult to troubleshoot when you run into funky results.
 
-### **DRY (do not repeat yourself) — it’s macro time!**
+### **<Term id="dry">DRY</Term> — it’s macro time!**
 
 This macro finishes your join CTE, which allows you to add columns from the new table you’re joining before calling the macro. It also assumes you’ve replaced your `valid_to = NULL` with an actual date type with an actual date that indicates a row is currently valid.
 
@@ -246,13 +254,17 @@ Using the produced valid timestamps from the previous join as your new spine tim
 
 ## Step 6: Clean up your final table with a CTE (duh!)
 
->What happens in this step? Step 6 is to finish your code with a final, cleaned up CTE.
+:::important What happens in this step? 
+Step 6 is to finish your code with a final, cleaned up CTE.
+:::
 
 Your final CTE of your table should list only the columns that you want to keep. Clean up all the timestamp columns, and rename the narrowed `valid_from` **and `valid_to` **from your final join to the appropriate name.
 
 ## Step 7: Optional -- add global variable for building historical vs current
 
->What happens in this step? Step 7 walks you through the option of building in a global variable to run only the most current data.
+:::important What happens in this step?
+Step 7 walks you through the option of building in a global variable to run only the most current data.
+:::
 
 It could be useful to add a current records only variable to run your project. This is a fast way to skip the historical data, without having to build out new models, or filter on your historical table. You can have a separate job set up to target a new schema, and build tables with current data only, that are ready for the present-day reports. You’ll know this is right for your project if you a BI tool that doesn’t love to filter on big, history-filled tables (like Tableau), but would prefer to have easily accessible, ready to run tables. To build in this feature, add a global variable in the *dbt_project.yml,* so your `future_proof_date` has a friend:
 
