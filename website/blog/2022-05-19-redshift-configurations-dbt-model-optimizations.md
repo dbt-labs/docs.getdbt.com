@@ -292,16 +292,23 @@ If there are any sort keys or distribution styles already defined, remove those 
 
 Identifying whether you need to change these configurations sometimes isn’t straightforward, especially when you have a lot going on in your model! Here’s some tips to help you out:
 
-- If you have access to look at Redshift’s query optimizer in the Redshift console or have permissions to run an explain/explain analyze yourself, it can be helpful in drilling down to problematic areas.
-- You know we love <Term id="cte">CTEs</Term> - and in this instance they really help! I usually start troubleshooting a complex query by stepping through the CTEs of the problematic model. If the CTEs are executing logic in nicely rounded ways, it’s easy to find out which joins or statements are causing the issues.
-- Sometimes all you need is a little code cleanup - double check that the logic within problematic joins can’t be cleaned up in some way, or that splitting up logic or changing upstream materializations won't help.
-- If it's one join, it’s easy to understand which keys to optimize by. If there’s multiple joins and you don’t have the ease of stepping through CTEs or using the query optimizer, you’ll need to comment out joins to understand which present the most problems. It’s a good idea to document each approach you take and what the results were. Here’s an example workflow:
+- **Use the query optimizer**  
+  If you have access to look at Redshift’s query optimizer in the Redshift console or have permissions to run an explain/explain analyze yourself, it can be helpful in drilling down to problematic areas.
+- **Organize with CTEs**  
+  You know we love <Term id="cte">CTEs</Term> - and in this instance they really help! I usually start troubleshooting a complex query by stepping through the CTEs of the problematic model. If the CTEs are executing logic in nicely rounded ways, it’s easy to find out which joins or statements are causing the issues.
+- **Look for ways to clean up logic**  
+  This can be things like too much logic used on a join key, a model handling too many transformations, or bad materialization assignments.
+  Sometimes all you need is a little code cleanup!
+- **Step through joins one at a time**  
+	If it's one join, it’s easy to understand which keys to optimize by. If there’s multiple joins, you might need to comment out joins in order to understand which present the most problems. It’s a good idea to benchmark each approach you take.  
+	
+	Here’s an example workflow:
     1. Run the problematic model (I do this a couple of times to get a baseline average on runtime). Notate the build time.
     2. Comment out joins and one by one, run the model. Keep doing this until you find which join is causing unideal run times.
-    3. From this point, you can decide on how best to optimize that portion of work:
-        1. Optimizing the logic - for example, if the join is doing a calculation on the value, it might be better to do that calculation in a prior CTE or model before the join.
-        2. Optimizing the distribution - take the join and do it in another model upstream. This will allow you to optimize portions of your flow for a better result. The two tables being joined would be distributed by the join key, and then the resulting data set would be distributed by the key that the rest of the models are joining  to in the downstream model.
-        3. Optimizing the sort - again, sorting can go a long way sometimes, even without distribution!
+	3. Decide on how best to optimize the join:
+        - Optimize the logic or flow, such as moving the calculation on a key to a prior CTE or upstream model before the join.
+        - Optimizing the distribution, such as doing the join in an upstream model so you can facilitate co-location of the data.
+        - Optimizing the sort, such as identifying and assigning a frequently filtered column so that finding data is faster in downstream processing.
             
             
 
