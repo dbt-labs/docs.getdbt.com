@@ -28,7 +28,6 @@ In this article, we’ll cover:
 
 Let’s fix this once and for all! 
 
-
 ## The Redshift cluster
 
 In order to understand how we should model in dbt for optimal performance on Redshift, I’m first going to step through a simplified explanation of the underlying architecture so that we can set up our examples for distributing and sorting.
