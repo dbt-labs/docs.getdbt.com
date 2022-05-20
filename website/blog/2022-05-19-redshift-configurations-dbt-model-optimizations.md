@@ -40,7 +40,7 @@ This cluster has two nodes, which serve the purpose of storing data and computin
 
 These two nodes are like the office spaces of two different people who have been assigned a portion of work for the same assignment based on the information they have in their respective offices. Upon completion of their work, they give their results back to their boss who then assembles the deliverable items and reports the combined information back to the stakeholder. 
 
-Additionally, we have some data that’s waiting to be loaded into Redshift:
+Let's look at the data waiting to be loaded into Redshift:
 
 ![Source-Data.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Source-Data.png)
 
