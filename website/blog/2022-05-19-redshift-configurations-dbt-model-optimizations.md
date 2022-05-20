@@ -36,9 +36,9 @@ First, let’s visualize an example cluster:
 
 ![Cluster.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Cluster.png)
 
-This Redshift cluster has two nodes, which serve the purpose of storing data and computing some parts of your queries. You could have more than this, but we’ll keep it at two nodes for simplicity.
+This cluster has two nodes, which serve the purpose of storing data and computing some parts of your queries. You could have more than this, but for simplicity we’ll keep it at two.
 
-These two nodes are like the office spaces of two different people who have been assigned to complete a portion of work for the same assignment, based on the information they have in their respective offices. Upon completion of their work, they give their results back to their boss who then assembles the deliverable items and reports back to the client who asked for it. 
+These two nodes are like the office spaces of two different people who have been assigned a portion of work for the same assignment based on the information they have in their respective offices. Upon completion of their work, they give their results back to their boss who then assembles the deliverable items and reports the combined information back to the stakeholder. 
 
 Additionally, we have some data that’s waiting to be loaded into Redshift:
 
