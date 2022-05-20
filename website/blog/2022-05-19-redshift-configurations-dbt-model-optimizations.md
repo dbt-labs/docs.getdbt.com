@@ -89,7 +89,7 @@ Notice how our first worker received the first rows of our data**,** the second 
 
 **When to use `even` distribution**
 
-This distribution type is great for a well-rounded workload by ensuring that each node has equal amounts of data. We’re not picky about *which* data each node handles, so the data is can be evenly split between the nodes. That also means an equal amount of assignments are passed out resulting in no capacity wasted.
+This distribution type is great for a well-rounded workload by ensuring that each node has equal amounts of data. We’re not picky about *which* data each node handles, so the data can be evenly split between the nodes. That also means an equal amount of assignments are passed out resulting in no capacity wasted.
 
 ### Key-based distribution style
 
@@ -171,7 +171,7 @@ This is fine if we have data that doesn’t update too frequently.
 
 ### Even
 
-Using `even` distributes our data sets as described in the [What are Distribution Styles?](https://www.notion.so/Optimizing-dbt-Models-with-Redshift-Configurations-3a9c46a0b84c462ebc8a188c562b3499) section (round-robin) to each node. The even distribution results in each node having data that they *may* or *may not* need for their assigned tasks.
+Using `even` distributes our data sets as described in the [What are Distribution Styles?](#what-are-distribution-styles) section (round-robin) to each node. The even distribution results in each node having data that they *may* or *may not* need for their assigned tasks.
 
 ![Even-Joining.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Even-Joining.gif)
 
@@ -181,7 +181,7 @@ You can imagine how this would impact how long our query takes to complete — h
 
 ### Key-based
 
-Our key-based distribution of `person_id` gave our nodes *assigned* data to work with. Here’s a refresher from the [What are Distribution Styles?](https://www.notion.so/Optimizing-dbt-Models-with-Redshift-Configurations-3a9c46a0b84c462ebc8a188c562b3499) section:
+Our key-based distribution of `person_id` gave our nodes *assigned* data to work with. Here’s a refresher from the [What are Distribution Styles?](#what-are-distribution-styles) section:
 
 - Node 1 was distributed data associated with key values null, 1, 3, and 5.
 - Node 2 was distributed data associated with key values 2, 4, and 6
