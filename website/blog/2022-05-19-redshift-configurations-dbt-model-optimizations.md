@@ -260,7 +260,7 @@ Let’s take a look at the information in our filing cabinet in both sorted and 
 
 ![Sorting.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Sorting.gif)
 
-This is equivalent to the information in our filing cabinet being organized into folders, where items with `mask_ids` starting with letters a through c are in located in one folder, `mask_ids` starting with letters d-f are in another folder, and so on. Now our office worker can skip looking through the folder a-c and skip straight to the folder d-f.
+Once sorted, Redshift can keep track of what exists in blocks of information. This is equivalent to the information in our filing cabinet being organized into folders where items with mask ids starting with letters b through c are in located in one folder, mask ids starting with letters d through f are in another folder, and so on. Now our office worker can skip looking through the folder b-c and skip straight to d-f:
 
 ![Scanning-Sort.gif](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Scanning-Sort.gif)
 
