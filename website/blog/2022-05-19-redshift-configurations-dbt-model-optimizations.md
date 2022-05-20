@@ -69,7 +69,7 @@ An `all` distribution means that both workers get the same copies of data.
 
 ![All-Distribution.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/All-Distribution.png)
 
-**When to use `all` distribution**
+**When to use the `all` distribution**:
 
 This type of distribution great for smaller data which doesn’t update frequently. Because `all` puts copies of our tables on all of our nodes, we’ll want to be sure we’re not giving our cluster extra work by needing to do this frequently.
 
@@ -87,7 +87,7 @@ An `even` distribution means that both workers get close to equal amounts of dat
 
 Notice how our first worker received the first rows of our data**,** the second worker received the second rows, the first worker received the third rows, etc.
 
-**When to use `even` distribution**
+**When to use the `even` distribution**
 
 This distribution type is great for a well-rounded workload by ensuring that each node has equal amounts of data. We’re not picky about *which* data each node handles, so the data is can be evenly split between the nodes. That also means an equal amount of assignments are passed out resulting in no capacity wasted.
 
