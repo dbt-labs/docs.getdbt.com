@@ -115,11 +115,11 @@ Let’s do this with another table to really see the effects. We'll apply the fo
 Here's a visualization of the data stored on our nodes:
 ![Key-Based-2.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Key-Based-2.png)
 
-You can see above that because we distributed `visitors` on `person_id` as well, the nodes received the associated data we outlined above. We did have some null `person_ids`, though. Those will be treated as a key value and distributed to one node.
+You can see above that because we distributed `visitors` on `person_id` as well, the nodes received the associated data we outlined above. We did have some null `person_ids` - those will be treated as a key value and distributed to one node.
 
 **When to use key-based distribution**
 
-Key-based distribution is great for when you’re really stepping it up. If we can dial in to our commonly joined data, then we can **leverage** the benefits of **co-locating** the data on the same node. This means our worker can have the data they need to complete the tasks they have **without duplicating** the amount of storage we need.
+Key-based distribution is great for when you’re really stepping it up. If we can dial in to our commonly joined data, then we can leverage the benefits of **co-locating** the data on the same node. This means our worker can have the data they need to complete the tasks they have **without duplicating** the amount of storage we need.
 
 ### Things to keep in mind when working with these configurations
 
