@@ -1,6 +1,9 @@
 ---
 title: How can I see the SQL that dbt is running?
+Description: “Review logs to check the sql dbt is running”
+sidebar_label: ‘reviewing sql that dbt runs’
 id: checking-logs
+
 ---
 
 To check out the SQL that dbt is running, you can look in:
