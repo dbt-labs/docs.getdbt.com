@@ -6,10 +6,11 @@ id: "documenting-a-new-adapter"
 If you've already [built an adapter](/website/docs/docs/contributing/building-a-new-adapter.md), and [tested your adapter]((/website/docs/docs/contributing/testing-a-new-adapter.md)), it's time to document it so the dbt community will know that it exists and how to use it!
 
 ## General Guidelines
+To best inform the dbt community of the new adapter, you will be contribtute to dbt's open-source documentation site, which uses the [Docusauraus project](https://docusaurus.io/).
 
-### Docusaurus conventions
+### Conventions
 
-Each `.md` file you create needs a header that looks like the below. The document id given below will also be need to be added to the config file: `website/sidebars.js`
+Each `.md` file you create needs a header that looks like the below. The document id given below will also be need to be added to the config file: `website/sidebars.js`.
 
 ```
 ---
@@ -29,7 +30,13 @@ To simplify things, assume the reader of this documentation already knows how bo
 
 ## Topics and Pages to Cover
 
-The following subjects need to be addressed across three pages of this docs site to have your data platform be listed on our documentation. After the corresponding pull request is merged, we ask that you link to these pages from your adapter repo's `REAMDE` as well as from your product documentation
+
+The following subjects need to be addressed across three pages of this docs site to have your data platform be listed on our documentation. After the corresponding pull request is merged, we ask that you link to these pages from your adapter repo's `REAMDE` as well as from your product documentation.
+
+ To contribute all you will have to do make the changes listed in the table below.
+
+ For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-profile.md` and add it to the `website/docs/reference/warehouse-profiles/` directory.
+
 
 
 | How To...            | File to change within `/website/docs/`                       | Action | Info to Include                                                                                                                                                                                      |
