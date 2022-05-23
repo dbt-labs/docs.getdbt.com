@@ -10,7 +10,7 @@ In order to migrate to dbt-databricks, your project must be compatible with `dbt
 
 ## Why change to dbt-databricks?
 
-The Databricks team, in collaboration with dbt Labs, built on top of the foundation that the dbt Labs’ dbt-spark adapter provided, and they added some critical improvements. The dbt-databricks adapter offers an easier set up, as it only requires three inputs for authentication, and it also has more features available via the delta format.
+The Databricks team, in collaboration with dbt Labs, built on top of the foundation that the dbt Labs’ dbt-spark adapter provided, and they added some critical improvements. The dbt-databricks adapter offers an easier set up, as it only requires three inputs for authentication, and it also has more features available via the Delta file format.
 
 ### Authentication Simplification
 
@@ -22,11 +22,11 @@ Previously users had to provide a `cluster` or `endpoint` ID which was hard to p
 
 ### Better defaults
 
-With dbt-databricks, by default, dbt models will use the Delta format and expensive queries will be accelerated with the [photon engine](https://docs.databricks.com/runtime/photon.html). See [the caveats section of Databricks Profile documentation](https://docs.getdbt.com/reference/warehouse-profiles/databricks-profile#choosing-between-dbt-databricks-and-dbt-spark) for more information.
+With dbt-databricks, by default, dbt models will use the Delta format and expensive queries will be accelerated with the [Photon engine](https://docs.databricks.com/runtime/photon.html). See [the caveats section of Databricks Profile documentation](https://docs.getdbt.com/reference/warehouse-profiles/databricks-profile#choosing-between-dbt-databricks-and-dbt-spark) for more information.
 
 ### Pure Python (Core only)
 
-A huge benefit to Core only users is that with the new dbt-databricks adapter, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-python library, `databricks-sql-connector`.
+A huge benefit to Core only users is that with the new dbt-databricks adapter, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-Python library, `databricks-sql-connector`.
 
 
 ## Migration
