@@ -1,8 +1,10 @@
 ---
-title: Why can't I just write DML in my transformations?
+title: Why can't I just write DML in my transformations? Or I'm already familiar with DML, and can write these statements manually, why should I use dbt to do this?
+Description: “Using SQL in your transformations instead of DML.”
+sidebar_label: ‘Why not write in DML’
+id: why-not-write-dml
+
 ---
-Or:
-### I'm already familiar with DML, and can write these statements manually, why should I use dbt to do this?
 
 #### `select` statements make transformations accessible
 More people know how to write `select` statements, than <Term id="dml" />, making the transformation layer accessible to more people!
