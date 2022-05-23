@@ -11,7 +11,8 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 2. In the middle: A set of *macros* responsible for generating SQL that is compliant with the target database.
 3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn model files into persisted objects in the database.
 
-This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly. Once you feel it is mostly working, please let the community know that is available to use by adding the adapter to the [Available Adapters](/website/docs/docs/available-adapters.md) page by following the steps given in [Documenting your adapter](/website/docs/docs/contributing/documenting-a-new-adapter.md).
+This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](testing-a-new-adapter)
+), please let the community know that is available to use by adding the adapter to the [Available Adapters](/website/docs/docs/available-adapters.md) page by following the steps given in [Documenting your adapter](/website/docs/docs/contributing/documenting-a-new-adapter.md).
 
 For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. Likely there is someone there who has experienced a similar issue to what you are experiencing.
 
