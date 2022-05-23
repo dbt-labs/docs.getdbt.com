@@ -1,6 +1,9 @@
 ---
 title: The columns of my seed changed, and now I get an error when running the `seed` command, what should I do?
+Description: “Rerun the command with a `--full-refresh` flag”
+sidebar_label: ‘debug error when columns of seed changes’
 id: full-refresh-seed
+
 ---
 If you changed the columns of your seed, you may get a `Database Error`:
 
