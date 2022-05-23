@@ -1,5 +1,9 @@
 ---
 title: How do I preserve leading zeros in a seed?
+Description: “Use column types to include leading zeros in seed”
+sidebar_label: ‘include leading zeroes in your seed file’
+id: leading-zeros-in-seed
+
 ---
 
 If you need to preserve leading zeros (for example in a zipcode or mobile number):
