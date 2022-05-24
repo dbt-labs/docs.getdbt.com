@@ -1,9 +1,11 @@
 ---
-title: What happens if the SQL in my query is bad?
+title: What happens if the SQL in my query is bad? Or I got a Database Error, what does that mean?
+Description: “Use error message and logs to debug”
+sidebar_label: ‘How to debug SQL or database error’
 id: sql-errors
+
 ---
-Or:
-### I got a Database Error, what does that mean?
+
 
 If there's a mistake in your SQL, dbt will return the error that your database returns.
 ```shell-session
