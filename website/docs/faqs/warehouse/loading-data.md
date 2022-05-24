@@ -1,5 +1,9 @@
 ---
 title: How do I load data into my warehouse?
+Description: “Recommendations on tools to load data to warehouse”
+sidebar_label: ‘Recommendations on tools to get data into your warehouse‘
+id: loading-data
+
 ---
 dbt assumes that you already have a copy of your data, in your data warehouse. We recommend you use an off-the-shelf tool like [Stitch](https://www.stitchdata.com/) or [Fivetran](https://fivetran.com/) to get data into your warehouse.
 
