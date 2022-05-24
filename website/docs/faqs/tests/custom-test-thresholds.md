@@ -1,5 +1,9 @@
 ---
 title: Can I set test failure thresholds?
+Description: “Use configs to set custom failure thresholds in tests”
+sidebar_label: 'How to set failure thresholds in test'
+id: custom-test-thresholds
+
 ---
 
 As of `v0.20.0`, you can use the `error_if` and `warn_if` configs to set custom failure thresholds in your tests. For more details, see [reference](reference/resource-configs/severity) for more information.
