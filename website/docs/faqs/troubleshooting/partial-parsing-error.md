@@ -1,5 +1,9 @@
 ---
 title: "I'm getting a \"Partial parsing enabled: 1 files deleted, 0 files added, 2 files changed\" compilation error in dbt Cloud?"
+Description: “Delete partial_parse file"
+sidebar_label: 'partial_parse error in the IDE'
+id: partial-parsing-error
+
 ---
 
 If you're receiving this error, try deleting the `target/partial_parse.msgpack` file from your project and refresh your IDE. 
