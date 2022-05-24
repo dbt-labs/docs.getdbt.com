@@ -1,5 +1,9 @@
 ---
 title: How do I set a datatype for a column in my seed?
+Description: “Use column_types to set a datatype”
+sidebar_label: ‘Set a datatype for a column in seed’
+id: seed-datatypes
+
 ---
 dbt will infer the datatype for each column based on the data in your CSV.
 
