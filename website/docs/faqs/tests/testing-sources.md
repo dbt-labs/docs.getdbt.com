@@ -1,5 +1,9 @@
 ---
 title: How do I run tests on just my sources?
+Description: “Use the select source command to tests sources"
+sidebar_label: 'Run tests on all sources'
+id: testing-sources
+
 ---
 
 To run tests on all sources, use the following command:
