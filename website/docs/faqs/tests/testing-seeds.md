@@ -1,5 +1,9 @@
 ---
 title: How do I test and document seeds?
+Description: “Use a schema file to test and document seeds”
+sidebar_label: 'Test and document seeds'
+id: testing-seeds
+
 ---
 
 <Changelog>The `seeds:` key is new in 0.16.0. Prior to this, use a `models:` key instead.</Changelog>
