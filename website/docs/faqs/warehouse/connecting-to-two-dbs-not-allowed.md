@@ -1,5 +1,9 @@
 ---
 title: Can I connect my dbt project to two databases?
+Description: “Prepare your warehouse for dbt transformations”
+sidebar_label: ‘Can you connect dbt project to two databases?‘
+id: connecting-to-two-dbs-not-allowed
+
 ---
 
 The meaning of the term 'database' varies with each major warehouse manager. Hence, the answer to "can a dbt project connect to more than one database?" depends on the warehouse used in your tech stack.
