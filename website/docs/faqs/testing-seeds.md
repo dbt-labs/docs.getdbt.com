@@ -4,11 +4,11 @@ title: How do I test and document seeds?
 
 <Changelog>The `seeds:` key is new in 0.16.0. Prior to this, use a `models:` key instead.</Changelog>
 
-To test and document seeds, use a [schema file](declaring-properties) and nest the configurations under a `seeds:` key
+To test and document seeds, use a [schema file](configs-and-properties) and nest the configurations under a `seeds:` key
 
 ## Example:
 
-<File name='data/schema.yml'>
+<File name='seeds/schema.yml'>
 
 ```yml
 version: 2

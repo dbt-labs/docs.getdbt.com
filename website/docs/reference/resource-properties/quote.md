@@ -55,7 +55,7 @@ sources:
 
 <TabItem value="seeds">
 
-<File name='data/schema.yml'>
+<File name='seeds/schema.yml'>
 
 ```yml
 version: 2
@@ -128,7 +128,7 @@ The default quoting value is `false`
 This is particularly relevant to those using Snowflake, where quoting can be particularly fickle.
 
 This property is useful when:
-- A source table has a column that needs to be quoted to be selected, for example, to preserve column casing
+- A source <Term id="table" /> has a column that needs to be quoted to be selected, for example, to preserve column casing
 - A seed was created with `quote_columns: true` ([docs](quote_columns)) on Snowflake
 - A model uses quotes in the SQL, potentially to work around the use of reserved words
 ```sql
@@ -161,7 +161,7 @@ sources:
 Without `quote: true`, the following error will occur:
 
 ```
-$ dbt test -m source:stripe.*
+$ dbt test -s source:stripe.*
 Running with dbt=0.16.1
 Found 7 models, 22 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 seed files, 4 sources
 

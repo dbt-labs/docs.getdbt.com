@@ -1,5 +1,5 @@
 ---
-title: "User Tokens"
+title: "User tokens"
 id: "user-tokens"
 ---
 
