@@ -1,6 +1,6 @@
 ---
 title: Can I store my seeds in a directory other than the `seeds` directory in my project?
-Description: “Where to store seeds”
+Description: “Where to store seeds in a directory”
 sidebar_label: 'How to name seeds directory'
 id: configurable-data-path
 
