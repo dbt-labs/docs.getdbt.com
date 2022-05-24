@@ -1,5 +1,9 @@
 ---
 title: How do I snapshot freshness for one source only?
+Description: “Use select flag to snapshot for specific sources”
+sidebar_label: ‘Snapshot freshness for specific sources.’
+id: snapshotting-freshness-for-one-source
+
 ---
 
 
