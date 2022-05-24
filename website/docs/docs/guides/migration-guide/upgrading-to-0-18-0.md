@@ -19,7 +19,7 @@ Please be aware of the following changes in v0.18.0. While breaking, we do not e
 
 ### Data tests
 
-- Data tests are written as CTEs instead of subqueries. Adapter plugins for databases that don't support CTEs may need to override this behavior.
+- Data tests are written as <Term id="cte">CTEs</Term> instead of <Term id="subquery">subqueries</Term>. Adapter plugins for databases that don't support CTEs may need to override this behavior.
 
 ### Python requirements
 - Upgraded `snowflake-connector-python` dependency to 2.2.10 and enabled the SSO token cache

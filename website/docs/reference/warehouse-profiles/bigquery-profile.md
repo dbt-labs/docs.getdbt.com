@@ -451,7 +451,7 @@ BigQuery's permission model is dissimilar from more conventional databases like 
 - BigQuery Data Editor
 - BigQuery User
 
-This set of permissions will permit dbt users to read from and create tables and views in a BigQuery project.
+This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 
 ## Local OAuth gcloud setup
 
