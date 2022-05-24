@@ -1,5 +1,9 @@
 ---
 title: Why am I receiving a Runtime Error in my packages?
+Description: “Update dbt_utils package in packages.yml file”
+sidebar_label: ‘Runtime error in packages.yml file’
+id: runtime-packages.yml
+
 ---
 
 If you're receiving the runtime error below in your packages.yml folder, it may be due to an old version of your dbt_utils package that isn't compatible with your current dbt Cloud version.
