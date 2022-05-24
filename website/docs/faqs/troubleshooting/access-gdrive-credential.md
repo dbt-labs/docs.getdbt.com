@@ -1,5 +1,9 @@
 ---
 title: I'm receiving a "Permission denied while getting Drive credential" error when trying to query from Google Drive?
+Description: “Grant BigQuery service account access"
+sidebar_label: 'Error when trying to query from Google Drive'
+id: access-gdrive-credential
+
 ---
 
 If you're seeing the below error when you try to query a dataset from a Google Drive document in the IDE,  the IDE due to the below error message, we'll do our best to get you unstuck with the below steps! 
