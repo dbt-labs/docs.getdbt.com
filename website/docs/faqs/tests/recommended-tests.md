@@ -1,5 +1,9 @@
 ---
 title: What tests should I add to my project?
+Description: “Recommended tests for project”
+sidebar_label: 'Recommended tests for project'
+id: recommended-tests
+
 ---
 We recommend that every model has a test on a primary key, that is, a column that is `unique` and `not_null`.
 
