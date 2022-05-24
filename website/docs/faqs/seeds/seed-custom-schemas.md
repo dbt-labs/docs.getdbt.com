@@ -1,7 +1,10 @@
 ---
-title: Can I build my seeds in a schema other than my target schema?
+title: Can I build my seeds in a schema other than my target schema? Or: Can I split my seeds across multiple schemas?
+Description: “Use schema config in your dbt_project.yml` file”
+sidebar_label: ‘Build seeds in a schema outside target schema’
+id: seed-custom-schemas
+
 ---
-## Or: Can I split my seeds across multiple schemas?
 
 Yes! Use the [schema](reference/resource-configs/schema.md) configuration in your `dbt_project.yml` file.
 
