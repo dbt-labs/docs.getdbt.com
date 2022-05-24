@@ -1,5 +1,9 @@
 ---
 title: What tests are available for me to use in dbt?
+Description: “Types of tests to use in dbt”
+sidebar_label: ‘Available test to use in dbt’
+id: available-tests
+
 ---
 Out of the box, dbt ships with the following tests:
 * `unique`
