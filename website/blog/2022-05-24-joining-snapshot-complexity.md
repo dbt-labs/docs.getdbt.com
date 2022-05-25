@@ -248,7 +248,7 @@ You should see something like this as your end result:
 | 1 | 1B | B | not_available | pending | 2021-10-01 10:00:000 | 2021-11-10 08:00:000 |
 | 2 | 2C | C | not_available | available | 2021-11-15 15:30:0000 | 9999-12-31 |
 
-### **Continue joining on your tables, and narrowing your valid timespans.**
+### Continue joining on your tables, and narrowing your valid timespans.
 
 Using the produced valid timestamps from the previous join as your new spine timestamps, continue joining the rest of your snapshots in this manner.
 
