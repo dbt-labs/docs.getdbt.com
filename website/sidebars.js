@@ -586,24 +586,52 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Legacy guides",
+      label: "Best practices",
+      link: {
+        type: 'generated-index',
+        title: 'Best practice guides',
+        description: 'Learn how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.',
+        slug: '/guides/best-practices',
+      },
       items: [
-        "guides/legacy/debugging-errors",
-        "guides/legacy/debugging-schema-names",
-        "guides/legacy/navigating-the-docs",
-        "guides/legacy/getting-help",
-        "guides/legacy/best-practices",
-        "guides/legacy/managing-environments",
-        "guides/legacy/writing-custom-generic-tests",
-        "guides/legacy/building-packages",
-        "guides/legacy/creating-new-materializations",
-        "guides/legacy/understanding-state",
-        "guides/legacy/videos",
+        {
+          type: "category",
+          label: "How we structure our dbt projects",
+          link: { type: 'doc', id: 'guides/best-practices/how-we-structure/1-guide-overview' },
+          items: [
+            "guides/best-practices/how-we-structure/2-staging",
+            "guides/best-practices/how-we-structure/3-intermediate",
+            "guides/best-practices/how-we-structure/4-marts",
+            "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
+          ]
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Orchestration",
+      link: {
+        type: 'generated-index',
+        title: 'Orchestration guides',
+        description: 'Learn how to orchestrate your data transformations in dbt, using dbt Cloud, a variety of popular tools, or both working together.',
+        slug: '/guides/orchestration',
+      },
+      items: [
+        {
+          type: "category",
+          label: "Airflow and dbt Cloud",
+          link: { type: 'doc', id: 'guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud' },
+          items: [
+            "guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud",
+            "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
+            "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
+          ]
+        },
       ]
     },
     {
       type: "category",
-      label: "Migration guides",
+      label: "Migration",
       link: {
         type: 'generated-index',
         title: 'Migration guides',
@@ -638,6 +666,23 @@ const sidebarSettings = {
           ],
         },
       ],
+    },
+    {
+      type: "category",
+      label: "Legacy",
+      items: [
+        "guides/legacy/debugging-errors",
+        "guides/legacy/debugging-schema-names",
+        "guides/legacy/navigating-the-docs",
+        "guides/legacy/getting-help",
+        "guides/legacy/best-practices",
+        "guides/legacy/managing-environments",
+        "guides/legacy/writing-custom-generic-tests",
+        "guides/legacy/building-packages",
+        "guides/legacy/creating-new-materializations",
+        "guides/legacy/understanding-state",
+        "guides/legacy/videos",
+      ]
     },
   ],
   "Glossary": [
