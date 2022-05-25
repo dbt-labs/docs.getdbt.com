@@ -63,7 +63,7 @@ Consider the complexity of the problem: you’ve successfully captured the histo
 | 1 | B | 1B | pending | 2021-11-10 10:00:000 | 2021-11-15 15:30:0000 |
 | 2 | C | 2C | available | 2021-11-10 15:00:0000 | NULL  |
 
-This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has _x_ historical rows per `product_id`, and _y_ ids total. That’s _x*y = n_ rows of data. `historical_table_2` has _z_  historical rows per `product_id`, and _w_ ids (`z*w = m` rows). The subsequent join on product_id then [changes the complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from *O(n)* to _O(n*m)_ very quickly (_x*y*z*w_ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
+This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has _x_ historical rows per `product_id`, and _y_ ids total. That’s _x*y = n_ rows of data. `historical_table_2` has _z_  historical rows per `product_id`, and _w_ ids (_z*w = m_ rows). The subsequent join on `product_id` then [changes the complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from *O(n)* to _O(n*m)_ very quickly (_x\*y\*z\*w_ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
 
 I know what you’re thinking — what a mess! Can’t we just join everything together, and snapshot the resulting table? This is not a bad thought. It would save you the trouble of thinking through a problem with _O(n*m*a*b*c*d*...*q)_ complexity. And in some cases, this may capture all the history you need! 
 
