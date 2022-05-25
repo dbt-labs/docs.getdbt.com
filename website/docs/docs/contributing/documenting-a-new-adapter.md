@@ -35,7 +35,6 @@ The following subjects need to be addressed across three pages of this docs site
 
  To contribute, all you will have to do make the changes listed in the table below.
 
- For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-profile.md` and add it to the `website/docs/reference/warehouse-profiles/` directory.
 
 
 
@@ -46,7 +45,7 @@ The following subjects need to be addressed across three pages of this docs site
 | Discover and Install | `docs/available-adapters.md`                                 | Modify | Is it a vendor- or community- supported adapter? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
 | Add link to sidebar  | `website/sidebars.js`                                        | Modify | Add the document id to the correct location in the sidebar menu                                                                                                                                      |
 
-
+For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-profile.md` and add it to the `website/docs/reference/warehouse-profiles/` directory.
 ## Example PRs to add new adapter documentation
 
 Below are some recent pull requests made by partners to document their data platform's adapter:
