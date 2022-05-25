@@ -16,7 +16,7 @@ Let’s set the scene. You are an [analytics engineer](https://www.getdbt.com/wh
 
 But, at some point, your stakeholder wants to know how each entity is changing over time. Perhaps, it is important to understand the trend of a product throughout its lifetime. You need the history of each `entity_id` across all of your datasets, because each related table is updated on its own timeline. 
 
-What is your first though? Well, you’re a seasoned analytics engineer and you *know* the good people of dbt Labs have a solution for you. And then it hits you — the answer is [snapshots](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots)!
+What is your first thought? Well, you’re a seasoned analytics engineer and you *know* the good people of dbt Labs have a solution for you. And then it hits you — the answer is [snapshots](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots)!
 
 <!--truncate-->
 
