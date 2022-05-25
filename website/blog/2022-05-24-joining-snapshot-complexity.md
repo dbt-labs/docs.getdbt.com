@@ -69,7 +69,7 @@ I know what you’re thinking — what a mess! Can’t we just join everything t
 
 However, it does not provide a solution to the problem initially posed. The historical records track when each table is valid, rather than when the joined table is valid, and this history for each dataset will only be reflected when you snapshot each table, and then join them, rather than joining and subsequently snapshotting the table. The `valid_from` and `valid_to` built into the joined-then-snapshotted table will only be built from `updated_at` timestamps where the joined table is updated, and thus changes in the underlying data may not be captured. We want to understand when the records are truly valid across all tables, meaning we need to take into account the valid timestamps from each individual dataset. 
 
-Okay so we’ve ruled out the easy way to solve this question. So let’s tackle that _O(n*m*a*b*c*d*...*q)_ problem! We can do it. 
+Okay so we’ve ruled out the easy way to solve this question. So let’s tackle that _O(n\*m\*a\*b\*c\*d\*...\*q)_ problem! We can do it. 
 
 ### The action plan for our solution
 
