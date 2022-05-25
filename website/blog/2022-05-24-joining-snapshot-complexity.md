@@ -201,7 +201,7 @@ Now, I’m going to recommend you build individual CTEs with one join at a time.
 - **First**, this is complicated. You will need to troubleshoot, and the easiest way to enable troubleshooting is to separate your join logic in individual CTEs. By building your code this way, you can easily throw a `select * from last_cte` to check that your logic is doing what you think it should be doing before adding more complex joins.
 - **Second**, you are using the `valid_from` and `valid_to` values of each newly joined table to determine the new `valid_from` and `valid_to` timestamps for the resulting table – where both rows are valid within the same timespans. While you could accomplish this in one big massive join, it will become very complex and difficult to troubleshoot when you run into funky results.
 
-### **<Term id="dry">DRY</Term> — it’s macro time!**
+### <Term id="dry">DRY</Term> — it’s macro time!
 
 This macro finishes your join CTE, which allows you to add columns from the new table you’re joining before calling the macro. It also assumes you’ve replaced your `valid_to = NULL` with an actual date type with an actual date that indicates a row is currently valid.
 
