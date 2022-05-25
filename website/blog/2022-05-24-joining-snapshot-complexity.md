@@ -258,7 +258,7 @@ Using the produced valid timestamps from the previous join as your new spine tim
 Step 6 is to finish your code with a final, cleaned up CTE.
 :::
 
-Your final CTE of your table should list only the columns that you want to keep. Clean up all the timestamp columns, and rename the narrowed `valid_from` **and `valid_to` **from your final join to the appropriate name.
+Your final CTE of your table should list only the columns that you want to keep. Clean up all the timestamp columns, and rename the narrowed `valid_from` and `valid_to` from your final join to the appropriate name.
 
 ## Step 7: Optional -- add global variable for building historical vs current
 
