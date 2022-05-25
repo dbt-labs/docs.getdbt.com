@@ -268,7 +268,7 @@ select * from ...
 
 ### Using KMS Encryption
 
-To specify the KMS key name for a model (or a group of models), use the `kms_key_name` model configuration. The following example sets the `kms_key_name` for all of the models in the `encrypted/` directory of your dbt project.
+To specify the KMS key name for a model (or a group of models), use the `kms_key_name` model configuration. Snapshots and seeds are also supported. The following example sets the `kms_key_name` for all of the models in the `encrypted/` directory of your dbt project.
 
 <File name='dbt_project.yml'>
 
