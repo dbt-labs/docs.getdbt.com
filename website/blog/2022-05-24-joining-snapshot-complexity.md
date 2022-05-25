@@ -1,6 +1,6 @@
 ---
 title: "Tackling the complexity of joining snapshots"
-description: "Tracking changes in your dataset over time by joining snapshots can be a complex proces. Learn how to tackle that complexity with Lauren Benezra "
+description: "Tracking changes in your dataset over time by joining snapshots can be a complex proces. Learn how to tackle that complexity with Lauren Benezra"
 slug: joining-snapshot-complexity
 
 authors: [lauren_benezra]
