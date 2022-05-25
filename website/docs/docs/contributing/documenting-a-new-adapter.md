@@ -21,11 +21,11 @@ id: "documenting-a-new-adapter"
 
 ### Single Source of Truth
 
-We asked our adapter maintainers to use the [docs.getdbt.com repo](https://github.com/dbt-labs/docs.getdbt.com) (i.e. this site) as the single-source-of-truth for documentation rather than having to maintain the same set of information in three different places. The adapter repo's `README.md` and the data platform's documentation pages should simply link to the corresponding page on this docs site.
+We ask our adapter maintainers to use the [docs.getdbt.com repo](https://github.com/dbt-labs/docs.getdbt.com) (i.e. this site) as the single-source-of-truth for documentation rather than having to maintain the same set of information in three different places. The adapter repo's `README.md` and the data platform's documentation pages should simply link to the corresponding page on this docs site. Keep reading for more information on what should and shouldn't be included on the dbt docs site.
 
 ### Assumed Knowledge
 
-To simplify things, assume the reader of this documentation already knows how both dbt and your data platform works. There's already great material for how to learn dbt and the data platform out there.
+To simplify things, assume the reader of this documentation already knows how both dbt and your data platform works. There's already great material for how to learn dbt and the data platform out there. The documentation we're asking you to add should be what a user who is already profiecient in both dbt and your data platform would need to know in order to use both. Effectively that boils down to two things: how to connect, and how to configure.
 
 
 ## Topics and Pages to Cover
