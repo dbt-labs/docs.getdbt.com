@@ -63,13 +63,13 @@ Consider the complexity of the problem: you’ve successfully captured the histo
 | 1 | B | 1B | pending | 2021-11-10 10:00:000 | 2021-11-15 15:30:0000 |
 | 2 | C | 2C | available | 2021-11-10 15:00:0000 | NULL  |
 
-This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has $x$ historical rows per `product_id`, and $y$ ids total. That’s $x*y = n$ rows of data. `historical_table_2` has $z$  historical rows per `product_id`, and $w$ ids ($z*w = m$ rows). The subsequent join on product_id then [changes the complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from $O(n)$ to $O(n*m)$ very quickly ($x*y*z*w$ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
+This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has _x_ historical rows per `product_id`, and _y_ ids total. That’s _x*y = n_ rows of data. `historical_table_2` has _z_  historical rows per `product_id`, and _w_ ids (`z*w = m` rows). The subsequent join on product_id then [changes the complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from *O(n)* to _O(n*m)_ very quickly (_x*y*z*w_ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
 
-I know what you’re thinking — what a mess! Can’t we just join everything together, and snapshot the resulting table? This is not a bad thought. It would save you the trouble of thinking through a problem with $O(n*m*a*b*c*d*...*q)$ complexity. And in some cases, this may capture all the history you need! 
+I know what you’re thinking — what a mess! Can’t we just join everything together, and snapshot the resulting table? This is not a bad thought. It would save you the trouble of thinking through a problem with _O(n*m*a*b*c*d*...*q)_ complexity. And in some cases, this may capture all the history you need! 
 
 However, it does not provide a solution to the problem initially posed. The historical records track when each table is valid, rather than when the joined table is valid, and this history for each dataset will only be reflected when you snapshot each table, and then join them, rather than joining and subsequently snapshotting the table. The `valid_from` and `valid_to` built into the joined-then-snapshotted table will only be built from `updated_at` timestamps where the joined table is updated, and thus changes in the underlying data may not be captured. We want to understand when the records are truly valid across all tables, meaning we need to take into account the valid timestamps from each individual dataset. 
 
-Okay so we’ve ruled out the easy way to solve this question. So let’s tackle that $O(n*m*a*b*c*d*...*q)$ problem! We can do it. 
+Okay so we’ve ruled out the easy way to solve this question. So let’s tackle that `O(n*m*a*b*c*d*...*q)` problem! We can do it. 
 
 ### The action plan for our solution
 
@@ -205,7 +205,7 @@ Now, I’m going to recommend you build individual CTEs with one join at a time.
 
 This macro finishes your join CTE, which allows you to add columns from the new table you’re joining before calling the macro. It also assumes you’ve replaced your `valid_to = NULL` with an actual date type with an actual date that indicates a row is currently valid.
 
-Your parameters are `cte_join`, the table that is creating the spine of your final model, `cte_join_on`, which is the new table you’re joining onto the spine. The *`valid_to`* and `valid_from` values for both of these tables, and the ids onto which you are joining (named twice in case they have different column names, but in most instances these two parameters will be the same name).
+Your parameters are `cte_join`, the table that is creating the spine of your final model, `cte_join_on`, which is the new table you’re joining onto the spine. The `valid_to` and `valid_from` values for both of these tables, and the ids onto which you are joining (named twice in case they have different column names, but in most instances these two parameters will be the same name).
 
 ```sql
 -- requires any extra columns from table_join_on to be listed prior to using this macro.
