@@ -1,0 +1,43 @@
+name: Contribute to the dbt Developer Blog
+description: >
+  For proposing a new post on the dbt Developer Blog.
+labels: ["content","developer blog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We're excited to hear about your idea for the dbt Developer Blog. This template will help lay out the proposed post and then we will work with on next steps!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you?
+      placeholder: your preferred email and/or dbt Slack handle
+    validations:
+      required: true
+
+
+  - type: checkboxes
+    id: read-contribution
+    attributes:
+      label: I have read the dbt Developer Blog contrubution guidelines.
+      options:
+        - label:I have read the dbt Developer Blog contrubution guidelines.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: >
+        What is the topic of your post?
+      description: |
+        Please provide a short (~ 1 paragraph) summary as well as who this post is targeted towards (ie people interested in learning more about dbt snapshots or advanced Jinja users)
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Link to the initial outline we will develop through this Issue.
+      description: Please link to the inital outline in Notion, or Google Docs
+    validations:
+      required: true
