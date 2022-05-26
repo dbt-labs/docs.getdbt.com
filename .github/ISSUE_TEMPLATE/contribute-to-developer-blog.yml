@@ -24,7 +24,7 @@ body:
         - label:I have read the dbt Developer Blog contrubution guidelines.
     validations:
       required: true
-
+"""
   - type: textarea
     attributes:
       label: >
@@ -40,3 +40,4 @@ body:
       description: Please link to the inital outline in Notion, or Google Docs
     validations:
       required: true
+"""
