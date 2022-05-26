@@ -60,7 +60,9 @@ Before starting this tutorial, you will need the following:
     <Lightbox src="/img/databricks_tutorial/images/quick_create_stack.png" title="Create AWS resources" />
     </div>
 
-    *Tip:* If you get a session error and don’t get redirected to this page, do not worry, go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**`.
+:::tip
+If you get a session error and don’t get redirected to this page, do not worry, go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
+:::
 
 8. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
     <div style={{maxWidth: '400px'}}>
@@ -85,58 +87,11 @@ Congrats! You are now ready to start working in the workspace.
 <Lightbox src="/img/databricks_tutorial/images/welcome_page.png" title="Welcome to the Databricks Workspace" />
 </div>
 
-Next up, you will need a cluster for our training. A spark cluster is going to be your compution resource for running your analytics workloads. We will be using it to run our queries. 
-
-12. Hovering over the Databricks logo on the left, you will see a left hand side console. Click **Compute** and you will see the clusters at your disposal. For this tutorial, you will be using the starter cluster that comes with our workspace but you can always create your own. 
-
-13. Hover your pointer over the space under `Actions` of your starter cluster, click on the play button. Confirm that you do want to start up the cluster.'
-
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/databricks_tutorial/images/start_cluster.png" title="Start the Cluster" />
-</div>
-
-If you ever want to edit the cluster in terms of the name of the cluster and resources allocated, you can click on the cluster name and the `Edit` button. Please note that you cannot edit the cluster when it is starting up or running.
-
 ## Loading data
 
-Our next step is to load some data to transform. Luckily for us, Databricks makes it really easy for us to upload data. 
+Our next step is to load some data to transform. Luckily for us, Databricks makes it really easy for us to upload data.
 
-1. Download the three CSV files locally that you will need for this tutorial. You can find them here:
-    - [jaffle_shop_customers.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
-    - [jaffle_shop_orders.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
-    - [stripe_payments.csv](http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
-
-2. In your workspace, go to `Data` on the left side console. You should still be in the “Data Science & Engineering” part of the workspace. 
-3. Click **Create Table**. You should see that you have one database named `default`. This is where you will be loading our data into.
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/create_table_upload.png" title="Create Table in Databricks" />
-    </div>
-4. Now let's upload our first csv. Drag and drop the `jaffle_shop_customers.csv` file into the UI. 
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/create_new_table.png" title="Upload csv file" />
-    </div>
-5. Click **Create Table with UI**, then select your cluster from the dropdown of available clusters. Click **Preview Table**.
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/select_cluster_to_preview_table.png" title="Select Cluster to Preview Table" />
-    </div>
-6. Update the Table Attributes:
-    - Change the table name to `jaffle_shop_customers`
-    - Check off the `First row is header`. 
-    - Check off `Infer schema`
-    - Click on `Create Table` when you are done.
-7. Congrats you have successfully uploaded your first table! 
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/new_table_created.png" title="Jaffle Shop Customers table" />
-    </div>    
-8. Now let’s do the same for `Jaffle Shop Orders` and `Stripe Payments` by clicking on the Data tab on the left hand console. The end result will be three tables in the default database. While updating the table attributes, follow the same directions as in Step 6.
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/raw_tables_created.png" title="Raw Data Tables" />
-    </div>
-## Enable a SQL endpoint for Databricks
-
-For dbt to connect to the most optimized SQL experience in Databricks, you need to create an SQL Endpoint for our connection.
-
-1. Up to this point, you have been working in the Data Science & Engineering space. Now you need to change over to SQL.  Find the drop down menu and toggle into the SQL space.
+1. First we need a SQL endpoint. Find the drop down menu and toggle into the SQL space.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" title="SQL space" />
     </div>
@@ -145,8 +100,50 @@ For dbt to connect to the most optimized SQL experience in Databricks, you need 
     <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL Endpoints" />
     </div>
 3. Click **Start** on the Starter Endpoint.  This will take a few minutes to get the necessary resources spun up.
-4. Once that's done, make sure you can query the training data that you loaded earlier.  Navigate back to the SQL space through the left hand menu and choose `SQL Editor`.  This will bring you to a query editor.
-5. Ensure that you can run a `select *` from each of the tables with the following code snippets. 
+
+4. While you're waiting, download the three CSV files locally that you will need for this tutorial. You can find them here:
+    - [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
+    - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
+    - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
+
+5. Once the SQL Endpoint is up, click on the `Create` and then `Table` on the drop down menu. 
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/create_table_using_databricks_SQL.png" title="Create Table Using Databricks SQL" />
+    </div>
+
+6. Let's load the Jaffle Shop Customers data first. Drop in the `jaffle_shop_customers.csv` file into the UI.
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_table_loader.png" title="Databricks Table Loader" />
+    </div>
+
+7. Update the Table Attributes at the top:
+
+    - <b>data_catalog</b> = hive_metastore
+    - <b>database</b> = default 
+    - <b>table</b> = jaffle_shop_customers
+    - Make sure that the column data types are correct. The way you can do this is by hovering over the datatype icon next to the column name. 
+        - <b>ID</b> = bigint
+        - <b>FIRST_NAME</b> = string
+        - <b>LAST_NAME</b> = string
+
+    <div style={{maxWidth: '600px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/jaffle_shop_customers_upload.png" title="Load jaffle shop customers" />
+    </div>
+
+8. Click `Create` on the bottom once you’re done. 
+
+9. Now let’s do the same for `Jaffle Shop Orders` and `Stripe Payments`. 
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/jaffle_shop_orders_upload.png" title="Load jaffle shop orders" />
+    </div>
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/stripe_payments_upload.png" title="Load stripe payments" />
+    </div>
+    
+10. Once that's done, make sure you can query the training data.  Navigate to the `SQL Editor` through the left hand menu.  This will bring you to a query editor.
+11. Ensure that you can run a `select *` from each of the tables with the following code snippets. 
 
     ```sql
     select * from default.jaffle_shop_customers
@@ -157,48 +154,90 @@ For dbt to connect to the most optimized SQL experience in Databricks, you need 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/query_check.png" title="Query Check" />
     </div>
-6. To get setup in dbt Cloud, you will now need to get the SQL Endpoint connection information and generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information or keep this window open for the next section.
 
-    <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
+12. To ensure any users who might be working on your dbt project has access to your object, run this command.
 
-7. To generate a user token for your development credentials in dbt Cloud, click on `Settings` on the left side console (while still in the SQL part of the workspace). Click on `Personal Access Token` and provide a comment like `dbt Cloud development`. Save the token information somewhere because you will need it for the next part. 
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/Generate_user_token.png" title="Generate User Token" />
-    </div>
-
+    ```sql 
+    grant all privileges on schema default to users;
+    ```    
+    
 Congratulations! At this point, you have created a Databricks account, loaded training data, and successfully set up a SQL end point to query the data.  
 
 ## Connecting to dbt Cloud
 
-Now it’s time to connect dbt Cloud to Databricks in order to develop your dbt Project. 
+ There are two ways to connect dbt Cloud and Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself. If you are looking to get started quickly, we recommend option 1. If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend option 2.
+
+### Option 1: Connect dbt Cloud and Databricks with partner connect
+
+1. In the Databricks workspace, on the left-side console: click on `Partner Connect`. 
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect.png" title="Databricks Partner Connect" />
+    </div>
+
+2. Select the dbt tile under `Data preparation and transformation`.
+3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL Endpoint for the dbt Cloud account to use. This does mean that you will have two SQL Endpoints at your disposal from the previous step and from using Partner Connect.
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+    </div>
+
+
+4. Click on `Connect to dbt Cloud`.
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_dbt_cloud.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+</div>
+5. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password. 
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
+    </div>
+
+6. After you have filled out the form and clicked on `Complete Registration`, you will be logged into dbt Cloud automatically. 
+
+
+### Option 2: Connect dbt Cloud and Databricks manually
+
+1. To manually setup dbt Cloud, you will need the SQL Endpoint connection information and to generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information because you will need it later.
+
+    <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
+
+2. To generate a user token for your development credentials in dbt Cloud, click on `Settings` on the left side console (while still in the SQL part of the workspace). Click on `Personal Access Token` and provide a comment like `dbt Cloud development`. Save the token information somewhere because you will need it for the next part. 
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/Generate_user_token.png" title="Generate User Token" />
+    </div>
 
 <Snippet src="tutorial-create-new-dbt-cloud-account" />
 
-### Connect dbt Cloud to Databricks
-
-Now let's set up the connection between dbt Cloud and Databricks.
-
-1. Choose **Databricks** to setup your connection.
+3. Choose **Databricks** to setup your connection.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/setup_databricks_connect.png" title="Databrick Connection" />
     </div>
-2. For the name, write `Databricks` or another simple title.    
-3. For Databricks settings, reference your SQL endpoint connection details from step 6 of the previous section for each of the following fields:
+4. For the name, write `Databricks` or another simple title.    
+5. For Databricks settings, reference your SQL endpoint connection details from step 6 of the previous section for each of the following fields:
 
     - Method will be ODBC
     - Hostname comes from Server hostname
     - Endpoint comes from the last part of HTTP path after `/endpoints`
      
-4. For your Development Credentials, input:
+6. For your Development Credentials, type:
 
-     - `User` input `token` from Step 7 of the previous section 
+     - `User` and `token` that you saved in a previous step.
      - For the schema field, choose a development schema (this will be your default development database to build objects into).  We recommend something in the form of dbt_{{ first initial, last name}} like `dbt_achen`.
   
-4. Then scroll to the top of the page to test your connection. Once successful, click `Continue`.
+7. Then scroll to the top of the page to test your connection. Once successful, click `Continue`.
 
 ## Initialize your repository and start development
 
-<Snippet src="tutorial-managed-repo-and-initiate-project" />
+If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your managed repository connection. 
+
+### Setting up a managed repository
+
+<Snippet src="tutorial-managed-repo" />
+
+### Initialize your dbt project
+
+<Snippet src="tutorial-initiate-project" />
 
 Congratulations! You have successfully completed the following:
 
