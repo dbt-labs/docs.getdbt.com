@@ -16,7 +16,6 @@ body:
     validations:
       required: true
 
-
   - type: checkboxes
     id: read-contribution
     attributes:
