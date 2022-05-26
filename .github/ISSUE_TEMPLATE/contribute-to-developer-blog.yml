@@ -20,8 +20,7 @@ body:
   - type: checkboxes
     id: read-contribution
     attributes:
-      label: I have read the dbt Developer Blog contrubution guidelines.
-      description: You can the contribution guide [here](https://github.com/dbt-labs/docs.getdbt.com/blob/dev-blog-contribution-guide/contributing/developer-blog.md)
+      label: I have read the dbt [Developer Blog contribution guidelines](https://github.com/dbt-labs/docs.getdbt.com/blob/dev-blog-contribution-guide/contributing/developer-blog.md).
       options:
         - label: I have read the dbt Developer Blog contribution guidelines.
     validations:
