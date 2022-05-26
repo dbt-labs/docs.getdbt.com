@@ -38,7 +38,7 @@ body:
 
   - type: textarea
     attributes:
-      label: Link to the initial outline we will develop through this Issue.
+      label: Link to an initial outline.
       description: Please link to a short outline in Notion, or Google Docs
     validations:
       required: true
