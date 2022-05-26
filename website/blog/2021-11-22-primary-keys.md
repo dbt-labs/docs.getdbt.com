@@ -16,7 +16,7 @@ We’ve all done it: fanned out data during a join to produce duplicate records 
 
 That time when historical revenue numbers doubled on Monday? Classic fanout. 
 
-Could it have been avoided? Yes, very simply: by defining the uniqueness grain for a <Term id="table" /> with a primary key and enforcing it with a dbt test.
+Could it have been avoided? Yes, very simply: by defining the uniqueness <Term id="grain" /> for a <Term id="table" /> with a primary key and enforcing it with a dbt test.
 
 So let’s dive deep into: what primary keys are, which cloud analytics warehouses support them, and how you can test them in your warehouse to enforce uniqueness.
 
@@ -26,7 +26,7 @@ So let’s dive deep into: what primary keys are, which cloud analytics warehous
 
 ## What’s a primary key?
 
-A primary key is a column in your database that exists to uniquely identify a single row.
+A <Term id="primary-key" /> is a column in your database that exists to uniquely identify a single row.
 
 Primary keys are _critical_ to data modeling. Without a primary key, you’ll find yourself constantly struggling to identify duplicate rows and define the expected grain of your tables. 
 

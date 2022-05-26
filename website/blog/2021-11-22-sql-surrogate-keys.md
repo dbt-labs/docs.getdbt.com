@@ -13,11 +13,11 @@ is_featured: false
 
 ### Why primary keys are important
 
-We all know one of the most fundamental rules in data is that every <Term id="table" /> should have a primary key. Primary keys are critical for many reasons:
+We all know one of the most fundamental rules in data is that every <Term id="table" /> should have a <Term id="primary-key" />. Primary keys are critical for many reasons:
 
 * They ensure that you don’t have duplicate rows in your table
 * They help establish relationships to other tables
-* They allow you to quickly identify the grain of the table (ex: the `customers` table with a PK of `customer_id` has one row per customer)
+* They allow you to quickly identify the <Term id="grain" /> of the table (ex: the `customers` table with a PK of `customer_id` has one row per customer)
 * You can test them in dbt, to ensure that your data is complete and unique
 
 <!--truncate-->

@@ -284,7 +284,7 @@ There are a number of snapshot-specific configurations:
 | [target_database](target_database) | The database that dbt should render the snapshot table into | No | analytics |
 | [target_schema](target_schema) | The schema that dbt should render the snapshot table into | Yes | snapshots |
 | [strategy](strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
-| [unique_key](unique_key) | A primary key column or expression for the record | Yes | id |
+| [unique_key](unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
 | [check_cols](check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
 | [updated_at](updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
