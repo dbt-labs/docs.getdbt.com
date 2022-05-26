@@ -26,3 +26,12 @@ body:
         - label: I have read the dbt Developer Blog contrubution guidelines.
     validations:
       required: true
+
+  - type: textarea
+    attributes:
+      label: >
+        What is the topic of your post?
+      description: |
+        Please provide a short (~ 1 paragraph) summary as well as who this post is targeted towards (ie people interested in learning more about dbt snapshots or advanced Jinja users)
+    validations:
+      required: true
