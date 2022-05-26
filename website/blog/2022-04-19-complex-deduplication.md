@@ -70,7 +70,7 @@ Here’s a brief overview of the steps we’ll take:
 
 The idea in this step is to enable checking for duplicates in the data by attaching a unique key to the hashed values of the columns that make up the entity grain you want to track. It’s important to note here that the *[dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/0.8.2/macros/sql/surrogate_key.sql)* will not create a unique key yet! Instead, it will create a key that will be the same as the key of another row, as long as the column values we’ve selected for our entity grain are the same. *This is intentional and critical!*  The specific non-uniqueness is how we’ll catch our sneaky duplicates.
 
-In our example, you can see that the `surrogate_key` function builds the same `grain_id` or the two rows we know are duplicates, rows 2 and 3, with row 3 being the most recent row.
+In our example, you can see that the <Term id="surrogate-key">`surrogate_key`</Term> function builds the same `grain_id` or the two rows we know are duplicates, rows 2 and 3, with row 3 being the most recent row.
 
 | grain_id                         | entity_grain | entity_id | unimportant_value | important_status | updated_at_date |
 |----------------------------------|--------------|-----------|-------------------|------------------|-----------------|

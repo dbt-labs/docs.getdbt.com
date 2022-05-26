@@ -34,7 +34,7 @@ The question is - in this situation, how are you supposed to set a primary key? 
 
 ### What’s a surrogate key?
 
-A surrogate key is a primary key that, instead of existing in your underlying dataset, is _derived in the analytics layer itself._ 
+A <Term id="surrogate-key">surrogate key</Term> is a primary key that, instead of existing in your underlying dataset, is _derived in the analytics layer itself._ 
 
 Learning when to use surrogate keys and bring them into your project is a critical skill for any analytics professional. 
 

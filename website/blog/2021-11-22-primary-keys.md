@@ -110,7 +110,7 @@ BigQuery does not have a concept of primary key constraints for tables, so inste
 
 Databricks Delta SQL does not support primary keys in a classic SQL sense, and instead offers what they call [constraints](https://docs.databricks.com/delta/delta-constraints.html) for fields (`not null` being one of them).  
 
-Similarly to BigQuery, surrogate keys can be used to get around this limitation.
+Similarly to BigQuery, <Term id="surrogate-key">surrogate keys</Term> can be used to get around this limitation.
 
 
 ### Redshift primary keys

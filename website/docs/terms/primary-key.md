@@ -1,7 +1,7 @@
 ---
 id: primary-key
 title: Primary Key
-displayText: Primary key  
+displayText: primary key  
 hoverSnippet: A primary key is a non-null column in a database object that uniquely identifies each row.
 ---
 

@@ -211,7 +211,7 @@ The `check` strategy requires the following configurations:
 
 :::caution check_cols = 'all'
 
-The `check` snapshot strategy can be configured to track changes to _all_ columns by supplying `check_cols = 'all'`. It is better to explicitly enumerate the columns that you want to check. Consider using a [surrogate key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) to condense many columns into a single column.
+The `check` snapshot strategy can be configured to track changes to _all_ columns by supplying `check_cols = 'all'`. It is better to explicitly enumerate the columns that you want to check. Consider using a <Term id="surrogate-key" /> to condense many columns into a single column.
 
 :::
 
