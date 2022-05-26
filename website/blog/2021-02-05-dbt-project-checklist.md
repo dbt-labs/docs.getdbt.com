@@ -145,7 +145,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 *   Do your models have tests?
-    *   The ideal project has 100% test coverage on all of its models. While there are cases where this doesn’t make sense, our rule of thumb is models should have at least a not\_null/unique test on the primary key.
+    *   The ideal project has 100% test coverage on all of its models. While there are cases where this doesn’t make sense, our rule of thumb is models should have at least a not\_null/unique test on the <Term id="primary-key" />.
 *   What are you testing for? Does it make sense?
 *   What are the assumptions you should be testing for?
     *   Think about your core business logic as well as your understanding of your sources.
