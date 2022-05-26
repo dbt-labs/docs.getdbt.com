@@ -249,7 +249,7 @@ Surrogate keys are unique row identifiers that are created by using columns in a
 
 Want to learn more about keys, dbt, and everything in-between? Check out the following:
 
-* [Glossary: Primary Keys](https://docs.getdbt.com/terms/primary-key)
+* [Glossary: Primary keys](https://docs.getdbt.com/terms/primary-key)
 * [Generating surrogate keys across warehouses](https://docs.getdbt.com/blog/sql-surrogate-keys)
 * [Generating an auto-incrementing ID in dbt](https://discourse.getdbt.com/t/generating-an-auto-incrementing-id-in-dbt/579/2)
 * [The most underutilized function in SQL](https://www.getdbt.com/blog/the-most-underutilized-function-in-sql/)
