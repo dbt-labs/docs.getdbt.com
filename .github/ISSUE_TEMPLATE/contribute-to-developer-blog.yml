@@ -22,6 +22,6 @@ body:
   attributes:
     label: I have read the dbt Developer Blog contrubution guidelines.
     options:
-      - label:I have read the dbt Developer Blog contrubution guidelines.
+      - label: I have read the dbt Developer Blog contrubution guidelines.
   validations:
     required: true
