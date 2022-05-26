@@ -5,7 +5,7 @@ displayText: Primary key
 hoverSnippet: A primary key is a non-null column in a database object that uniquely identifies each row.
 ---
 
-A primary key is a non-null column in a database object that uniquely identifies each row. Primary keys take the form of a natural or </Term id="surrogate-key" />. It’s important to note that for each <Term id="table" /> or <Term id="view" /> in your database, there must only be one primary key column per database object.
+A primary key is a non-null column in a database object that uniquely identifies each row. Primary keys take the form of a natural or <Term id="surrogate-key" />. It’s important to note that for each <Term id="table" /> or <Term id="view" /> in your database, there must only be one primary key column per database object.
 
 At their core, you create and use these row-level unique identifiers to:
 

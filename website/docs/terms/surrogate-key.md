@@ -44,7 +44,7 @@ Let’s take this to an example. Below, there is a table you pull from an ad pla
    </td>
   </tr>
   <tr>
-   <td>
+   <td>2022-05-16
    </td>
    <td>212
    </td>
