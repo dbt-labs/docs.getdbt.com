@@ -23,7 +23,7 @@ body:
       label: I have read the dbt Developer Blog contrubution guidelines.
       description: You can the contribution guide [here](https://github.com/dbt-labs/docs.getdbt.com/blob/dev-blog-contribution-guide/contributing/developer-blog.md)
       options:
-        - label: I have read the dbt Developer Blog contrubution guidelines.
+        - label: I have read the dbt Developer Blog contribution guidelines.
     validations:
       required: true
 
@@ -33,5 +33,12 @@ body:
         What is the topic of your post?
       description: |
         Please provide a short (~ 1 paragraph) summary as well as who this post is targeted towards (ie people interested in learning more about dbt snapshots or advanced Jinja users)
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Link to the initial outline we will develop through this Issue.
+      description: Please link to a short outline in Notion, or Google Docs
     validations:
       required: true
