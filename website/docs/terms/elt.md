@@ -45,7 +45,7 @@ In the final transformation step, the raw data that has been loaded into your da
 - Tables are not joined to other tables
 - Timestamps may be in the incorrect timezone for your reporting
 - JSON fields may need to be unnested
-- Tables may be missing primary keys
+- Tables may be missing <Term id="primary-key">primary keys</Term>
 - And more!
 
 ...hence the need for transformation! During the transformation process, data from your data sources is usually:

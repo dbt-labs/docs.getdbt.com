@@ -46,7 +46,7 @@ The manifest schema version will be updated to v5. The only change is to the def
 
 ### For users of specific adapters
 
-**dbt-bigquery** added Support for finer-grained configuration of query timeout and retry when defining your [connection profile](bigquery-profile).
+**dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](bigquery-profile).
 
 **dbt-spark** added support for a [`session` connection method](spark-profile#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
 
