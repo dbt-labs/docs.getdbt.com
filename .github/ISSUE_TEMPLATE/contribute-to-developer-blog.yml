@@ -16,3 +16,12 @@ body:
       placeholder: your preferred email and/or dbt Slack handle
     validations:
       required: true
+
+- type: checkboxes
+  id: read-contribution
+  attributes:
+    label: I have read the dbt Developer Blog contrubution guidelines.
+    options:
+      - label:I have read the dbt Developer Blog contrubution guidelines.
+  validations:
+    required: true
