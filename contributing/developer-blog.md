@@ -33,6 +33,8 @@ Once a blog is accepted, we’ll ask you for a date when we can expect the draft
 
 Once you submit a draft, we’ll return a first set of edits within 5 business days.
 
+The typical turnaround time from issue creation to going live on the developer blog is ~4 to 6 weeks.
+
 ### What happens after my blog is published?
 
 We’ll share the blog on the dbt Labs social media channels! We also encourage you to share on the dbt Slack in #i-made-this.
@@ -52,7 +54,7 @@ We are very interested in stacks, new tools and integrations and will happily pu
 
 - Feel free to post any questions in #community-writers on the dbt Slack.
 
-##Core Principles
+## Core Principles
 
 - 🧑🏻‍🤝‍🧑🏾 The dbt Developer blog is written by humans  **- individual analytics professionals sharing their insight with the world. To the extent feasible, a community member posting on the developer blog is not staking an official organizational stance, but something that *they* have learned or believe based on their work. This is true for dbt Labs employees as well.
 - 💍 Developer blog content is information rich - these are posts that readers share, bookmark and come back to time and time again.
