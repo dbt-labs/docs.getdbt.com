@@ -12,14 +12,14 @@ The dbt Developer Blog is a place where analytics practitioners can go to share 
     - [Slim CI/CD with Bitbucket](https://docs.getdbt.com/blog/slim-ci-cd-with-bitbucket-pipelines)
     - [So You Want to Build a dbt Package](https://docs.getdbt.com/blog/so-you-want-to-build-a-package)
     - [Founding an Analytics Engineering Team](https://docs.getdbt.com/blog/founding-an-analytics-engineering-team-smartsheet)
-- See the Developer Blog core principles
+- See the [Developer Blog Core Principles](#core-principles)
 
 ### How do I submit a proposed post?
 
 To submit a proposed post, open a `Contribute to the dbt Developer Blog` issue on the [Developer Hub repo](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose). You will be asked for:
 
 - A short (one paragraph) summary of the post you’d like to publish
-- An outline of the post (example)
+- An outline of the post
 
 You’ll hear back from a member of the dbt Labs teams within 7 days with one of three responses:
 
@@ -44,11 +44,11 @@ We’ll share the blog on the dbt Labs social media channels! We also encourage 
 We want to publish as many community contributors as possible, but not every post will be a fit for the Developer Blog. That’s ok! There are many different reasons why we might not be able to publish a post right now and none of them reflect on the quality of the proposed post.
 
 - **dbt Labs capacity**: We’re committed to providing hands-on feedback and coaching throughout the process. Our goal is not just to generate great developer blogs - it’s to help build a community of great writers / practitioners who can share their knowledge with the community for years to come. This necessarily means we will be able to take on a lower absolute number of posts in the short term, but will hopefully be helpful for the community long term.
-- **Posts Should Focus on Narrative / Problem Solving - Not Industry Trends**: The developer blog exists, primarily, to tell the stories of analytics engineering practitioners and how they solve problems. The idea is that reading the developer blog gives a feel for what it is like to be a data practitioner on the ground today. This is not a hard and fast rule, but a good way to approach this is “How I/we solved X problem” rather than “How everyone should solve X problem”.
+- **Focus on Narrative / Problem Solving - Not Industry Trends**: The developer blog exists, primarily, to tell the stories of analytics engineering practitioners and how they solve problems. The idea is that reading the developer blog gives a feel for what it is like to be a data practitioner on the ground today. This is not a hard and fast rule, but a good way to approach this is “How I/we solved X problem” rather than “How everyone should solve X problem”.
 
 We are very interested in stacks, new tools and integrations and will happily publish posts about this - with the caveat that the *focus* of the post should be solving real world problems. Hopefully if you are writing about these, this is something that you have used yourself in a hands on, production implementation.
 
-- **Posts Should Have Right Sized Scope**: We want to be able to cover a topic in-depth and dig into the nuances. Big topics like “How should you structure your data team” or “How to ensure data quality in your organization” will be tough to cover in the scope of a single post. If you have a big idea - try subdividing it! “How should you structure your data team” could become “How we successfully partnered with our RevOps team on improving lead tracking” and “How to ensure data quality in your organization” might be “How we cleaned up our utm tracking”.
+- **Right Sized Scope**: We want to be able to cover a topic in-depth and dig into the nuances. Big topics like “How should you structure your data team” or “How to ensure data quality in your organization” will be tough to cover in the scope of a single post. If you have a big idea - try subdividing it! “How should you structure your data team” could become “How we successfully partnered with our RevOps team on improving lead tracking” and “How to ensure data quality in your organization” might be “How we cleaned up our utm tracking”.
 
 ### What if I need help / have questions:
 
@@ -63,4 +63,3 @@ We are very interested in stacks, new tools and integrations and will happily pu
 - 🏎️  Developer blog content is actionable - readers walk away with a clear sense of how they can use this information to be a more effective practitioner. Posts include code snippets, Loom walkthroughs and hands-on, practical information that can be integrated into daily workflows.
 - 🤏 Nothing is too small to share - what you think is simple has the potential to change someone's week.
 - 🔮 Developer blog content is present focused —posts tell a story of a thing that you've already done or are actively doing, not something that you may do in the future.
-- 🕸️ Developer blog posts build a knowledge graph. Knowledge of advanced concepts and technical skills can be assumed, but it is best to include many, densely linked references to other posts.
