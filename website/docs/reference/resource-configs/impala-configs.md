@@ -32,14 +32,15 @@ Supported modes for incremental model:
  - **`insert_overwrite`**: On new data, insert records. If data is updated or deleted, overwrite the entire table. 
 
 
-Not supported mode:
+Unsupported modes:
  - **`unique_key`** This is not suppored option for incremental models in dbt-impala
- - **`merge`**: Merge is not supported by underlying warehouse, and hence not supported by dbt-impala
+ - **`merge`**: Merge is not supported by the underlying warehouse, and hence not supported by dbt-impala
 
 ## Example: Using partition_by config option
 
 <File name='impala_partition_by.sql'>
-```
+
+```sql
 {{
     config(
         materialized='table',
@@ -60,6 +61,7 @@ with source_data as (
 
 select * from source_data
 ```
+
 </File>
 
 In the above example, a sample table is created with partition_by and other config options. One thing to note when using partition_by option is that the select query should always have the column name used in partition_by option as the last one, as can be seen for the ```city``` column name used in the above query. If the partition_by clause is not the same as the last column in select statement, Impala will flag an error when trying to create the model.
