@@ -20,7 +20,7 @@ Because of the way we configured the dbt Cloud job to run in Airflow, you can le
    - Avoid building your own parsing logic
    - Get clear logs on what models you're rerunning in dbt Cloud (without hard coding step override commands)
 
-<LoomVideo id="a8f3724ee3884414a96943a3d0752b96" />
+<WistiaVideo id="fn3ib5ew8y" />
 
 ## 3. Do you have any best practice recommendations for dbt orchestration with Airflow?
 

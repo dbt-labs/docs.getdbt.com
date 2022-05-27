@@ -5,7 +5,7 @@ id: 2-staging
 
 ### Key principles
 
-- Staging models are where we import our source data using the `[source` macro](<https://docs.getdbt.com/docs/building-a-dbt-project/using-sources/>)
+- Staging models are where we import our source data using the [`source` macro](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources/)
 - One-to-one relationship from a source table to a staging model
 - Apply only the transformations you want in every downstream model
 - Group by source system

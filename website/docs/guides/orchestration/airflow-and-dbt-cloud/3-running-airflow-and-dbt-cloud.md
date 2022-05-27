@@ -3,9 +3,11 @@ title: Running Airflow and dbt Cloud
 id: 3-running-airflow-and-dbt-cloud
 ---
 
-![https://www.loom.com/share/9d192a4cd0014517ad5aa5380a01a6c7](https://www.loom.com/share/9d192a4cd0014517ad5aa5380a01a6c7)
+<WistiaVideo id="wgy7wvgqof" />
 
 Now you have all the working pieces to get up and running with Airflow + dbt Cloud. Let’s dive into make this all work together.  We will **set up a connection** and **run a DAG in Airflow** that kicks off a dbt Cloud job.
+
+<WistiaVideo id="oo1yel115i" />
 
 ## 1. Add your dbt Cloud API token as a secure connection
 
@@ -101,4 +103,4 @@ airflow-dbt-cloud_e3fe3c-scheduler-1    exited
 airflow-dbt-cloud_e3fe3c-postgres-1     exited
 ```
 
-<LoomVideo id="42f9ad3270d6442e9b602a622df03231" />
+<WistiaVideo id="u83nuqegn9" />

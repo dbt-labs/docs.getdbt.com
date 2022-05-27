@@ -13,7 +13,7 @@ In this example, we’re using Homebrew to install Astro CLI. Follow the instruc
 brew install astronomer/cloud/astrocloud
 ```
 
-<LoomVideo id="d45fb5f61bc4443e9e83e996d46b2f9d" />
+<WistiaVideo id="uosszw1qul" />
 
 ## 2. Install and start Docker Desktop
 
@@ -21,8 +21,7 @@ Docker allows us to spin up an environment with all the apps and dependencies we
 
 Follow the instructions [here](https://docs.docker.com/desktop/) to install Docker desktop for your own operating system. Once Docker is installed, ensure you have it up and running for the next steps.
 
-
-<LoomVideo id="43fb0929154c4af9925bc035410e2fa8" />
+<WistiaVideo id="qr84pa8k9f" />
 
 ## 3. Clone the airflow-dbt-cloud repository
 
@@ -33,7 +32,7 @@ git clone https://github.com/sungchun12/airflow-dbt-cloud.git
 cd airflow-dbt-cloud
 ```
 
-<LoomVideo id="77309b4375c640198c5557216642df93" />
+<WistiaVideo id="oo1yel115i" />
 
 ## 4. Start the Docker container
 
@@ -65,13 +64,13 @@ cd airflow-dbt-cloud
 
     ![Airflow login screen](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-login.png)
 
-<LoomVideo id="c6c5e37f042b48adb25f67f8a0db51cb" />
+<WistiaVideo id="2rzsjo0uml" />
 
 ## 5. Create a dbt Cloud service token
 
 Create a service token from within dbt Cloud using the instructions [found here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens). Ensure that you save a copy of the token, as you won’t be able to access this later. In this example we use `Account Admin`, but you can also use `Job Admin` instead for token permissions.
 
-<LoomVideo id="6f02f871a3ae4f6bad302d8e03a1aa72" />
+<WistiaVideo id="amubh6qmwq" />
 
 ## 6. Create a dbt Cloud job
 
@@ -85,4 +84,4 @@ In your dbt Cloud account create a job, paying special attention to the informat
 https://cloud.getdbt.com/#/accounts/{account_id}/projects/{project_id}/jobs/{job_id}/
 ```
 
-<LoomVideo id="93439be726424bbba43f9b7be64d853d" />
+<WistiaVideo id="qiife5rzlp" />

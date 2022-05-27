@@ -94,6 +94,6 @@ There are three interfaces to the organizational knowledge graph we’re encodin
 
     Multiple *inputs* to a model is generally preferable. Several inputs and one output at each node indicates we’re bringing our concepts together into richer, wider entities; forming a healthy DAG shaped like an arrowhead pointing to the right.
 
-::tip Narrow the DAG, widen the tables.
+:::tip Narrow the DAG, widen the tables.
 Until we get to the marts layer and start building our various outputs, we ideally want our DAG to look like an arrowhead pointed right. As we move from source-conformed to business-conformed, we’re also moving from numerous, narrow, isolated concepts to fewer, wider, joined concepts. We’re bringing our components together into wider, richer concepts, and that creates this shape in our DAG. This way when we get to the marts layer we have a robust set of components that can quickly and easily be put into any configuration to answer a variety of questions and serve specific needs. One rule of thumb to ensure you’re following this pattern on an individual model level is allowing multiple *inputs* to a model, but **not** multiple *outputs*. Several arrows going *into* our post-staging models is great and expected, several arrows coming *out* is a red flag. There are absolutely situations where you need to break this rule, but it’s something to be aware of, careful about, and avoid when possible.
-::: tip
+:::
