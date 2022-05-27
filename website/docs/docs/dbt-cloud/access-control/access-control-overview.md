@@ -41,7 +41,7 @@ Role-based access control is a feature of the dbt Cloud Enterprise plan
 
 :::
 
-Role-based access control allows for fine-grained permissioning in the dbt Cloud
+Role-based access control allows for <Term id="grain">fine-grained</Term> permissioning in the dbt Cloud
 application. With role-based access control, users can be assigned varying
 permissions to different projects within a dbt Cloud account. For teams on the
 Enterprise tier, role-based permissions can be generated dynamically from
