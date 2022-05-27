@@ -203,7 +203,7 @@ The `dbt-bigquery` plugin uses the BigQuery Python client library to submit quer
 1. Job creation: Submit the query job to BigQuery, and receive its job ID.
 2. Job execution: Wait for the query job to finish executing, and receive its result.
 
-Some queries inevitably fail, at different points in process. To handle these cases, dbt supports fine-grained configuration for query timeouts and retries.
+Some queries inevitably fail, at different points in process. To handle these cases, dbt supports <Term id="grain">fine-grained</Term> configuration for query timeouts and retries.
 
 #### job_execution_timeout_seconds
 
