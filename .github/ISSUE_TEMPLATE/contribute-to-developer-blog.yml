@@ -24,6 +24,7 @@ body:
       description: You can the contribution guide [here](../../contributing/developer-blog.md)
       options:
         - label: I have read the dbt Developer Blog contribution guidelines.
+        - label: I work for dbt Labs and am creating this issue for a marketing-approved piece.
     validations:
       required: true
 
