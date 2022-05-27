@@ -1,6 +1,6 @@
 ---
 id: surrogate-key
-title: Surrogate Key
+title: Surrogate key
 displayText: surrogate key  
 hoverSnippet: A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row.
 ---
@@ -121,7 +121,7 @@ After executing this, the table would now have the `unique_id` field now uniquel
   <tr>
    <td>62aef884fbe3470ce7d9a92140b09b17
    </td>
-   <td>
+   <td>2022-05-16
    </td>
    <td>212
    </td>
@@ -232,7 +232,7 @@ Because surrogate keys are comprised of the fields that make a uniqueness constr
 
 Making a surrogate key involves a relatively straightforward usage of SQL: maybe some coalescing, concatenation,  and a hashing method. Most, if not all, modern data warehouses support both the ability to concat, coalesce, and hash fields. They may not have the exact same syntax or hashing functions available, but their core functionality is the same.
 
-:::note Note
+:::tip Tip
 dbt supports several macros to help data folks write DRY (don’t repeat yourself) code. The [surrogate_key macro](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) helps you create surrogate keys with the MD5 function without having to worry about coalescing potentially null field values.
 :::
 
