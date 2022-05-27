@@ -21,9 +21,8 @@ The profile your dbt project should use to connect to your data warehouse.
 Often an organization has only one data warehouse, so it is sensible to use your organization's name as a profile name, in `snake_case`. For example:
 * `profile: acme`
 * `profile: jaffle_shop`
-* `profile: evilcorp`
 
-It is also reasonable to include the name of your warehouse technology in your profile name. For example:
+It is also reasonable to include the name of your warehouse technology in your profile name, partiuclarly if you have multiple warehouses. For example:
 * `profile: acme_snowflake`
 * `profile: jaffle_shop_bigquery`
-* `profile: evilcorp_redshift`
+* `profile: jaffle_shop_redshift`
