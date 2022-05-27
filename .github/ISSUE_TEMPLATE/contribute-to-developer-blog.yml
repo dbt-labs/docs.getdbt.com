@@ -24,9 +24,18 @@ body:
       description: You can find the contribution guide [here](../../contributing/developer-blog.md)
       options:
         - label: I have read the dbt Developer Blog contribution guidelines.
-        - label: I work for dbt Labs and am creating this issue for a marketing-approved piece.
     validations:
       required: true
+
+  - type: checkboxes
+    id: author_type
+    attributes:
+      label: Which of these best describes you?
+      options:
+        - label: I am a dbt Community member or partner contributing to the Developer Blog
+        - label: I work for dbt Labs and am creating this issue for a community or marketing approved piece.
+    validations:
+
 
   - type: textarea
     attributes:
