@@ -11,9 +11,9 @@ const VersionContext = createContext({
   updateVersion: () => {},
 })
 
-export const VersionContextProvider = ({ children }) => {
+export const VersionContextProvider = ({ value = "", children }) => {
 
-  const [version, setVersion] = useState('')
+  const [version, setVersion] = useState(value)
 
   useEffect(() => {
     const storageVersion = window.localStorage.getItem('dbtVersion')
