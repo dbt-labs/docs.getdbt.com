@@ -126,7 +126,7 @@ It’s ultimately up to you to check for uniqueness + not null-ness in your data
 
 Snowflake supports a command of [SHOW PRIMARY KEYS](https://docs.snowflake.com/en/sql-reference/sql/show-primary-keys.html), which allows you to query out primary keys for your tables.
 
-Note that Snowflake primary keys are purely declarative--neither uniqueness nor non-nullness constraints are enforced. However, Snowflake supports a separate not null constraint that can be applied to column that is enforced. Regardless, you'll still want to ensure your primary key column values are actually unique (see testing section at the bottom.)
+Note that Snowflake primary keys are purely declarative--neither uniqueness nor non-nullness constraints are enforced. However, Snowflake supports a separate `not null` constraint that can be applied to column that is enforced. Regardless, you'll still want to ensure your primary key column values are actually unique (see testing section at the bottom.)
 
 
 ### Postgres primary keys
