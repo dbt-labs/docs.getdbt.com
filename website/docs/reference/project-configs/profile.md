@@ -27,5 +27,3 @@ It is also reasonable to include the name of your warehouse technology in your p
 * `profile: acme_snowflake`
 * `profile: jaffle_shop_bigquery`
 * `profile: evilcorp_redshift`
-
-If you are working on more than one project, do not use `profile: default` as your profile name (as set by the `dbt init` [command](init)), as it will become hard to manage multiple profiles.
