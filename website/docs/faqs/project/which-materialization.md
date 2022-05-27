@@ -1,7 +1,7 @@
 ---
 title: Which materialization should I use for my model?
-Description: “Recommendations on materializations to use for models”
-sidebar_label: ‘What materializations to use’
+Description: "Recommendations on materializations to use for models"
+sidebar_label: 'What materializations to use'
 id: structure-a-project
 
 ---

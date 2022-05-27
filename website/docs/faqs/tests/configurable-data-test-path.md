@@ -1,6 +1,6 @@
 ---
 title: Can I store my tests in a directory other than the `tests` directory in my project?
-Description: “Where to store tests in a directory”
+Description: "Where to store tests in a directory"
 sidebar_label: 'How to name tests directory'
 id: configurable-data-test-path
 

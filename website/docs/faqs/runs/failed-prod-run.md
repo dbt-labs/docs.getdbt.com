@@ -1,7 +1,7 @@
 ---
 title: What happens if one of my runs fails?
-Description: “Set up notifications to debug failed runs”
-sidebar_label: ‘notifications to debug failed runs’
+Description: "Set up notifications to debug failed runs"
+sidebar_label: 'notifications to debug failed runs'
 id: failed-prod-run
 
 ---

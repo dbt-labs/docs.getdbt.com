@@ -1,7 +1,7 @@
 ---
 title: Can I set a different connection at the environment level?
-Description: “Separate projects for different environments workaround"
-sidebar_label: ‘Set different database connections at environment level’
+Description: "Separate projects for different environments workaround"
+sidebar_label: 'Set different database connections at environment level'
 id: diff-database-environment
 ---
 

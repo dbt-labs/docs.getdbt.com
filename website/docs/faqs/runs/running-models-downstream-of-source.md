@@ -1,7 +1,7 @@
 ---
 title: How do I run models downstream of one source?
-Description: “Use source selector to run models downstream of a source”
-sidebar_label: ‘run  models downstream of one source’
+Description: "Use source selector to run models downstream of a source"
+sidebar_label: 'run  models downstream of one source'
 id: running-model-downstream-of-source
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: What materializations are available in dbt?
-Description: “dbt uses 4 materializations”
-sidebar_label: ‘Materializations available’
+Description: "dbt uses 4 materializations"
+sidebar_label: 'Materializations available'
 id: available-materializations
 ---
 

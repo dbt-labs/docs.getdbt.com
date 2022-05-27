@@ -1,7 +1,7 @@
 ---
 title: Do hooks run with snapshots?
-Description: “Run hooks with snapshots”
-sidebar_label: ‘Use hooks to run with snapshots’
+Description: "Run hooks with snapshots"
+sidebar_label: 'Use hooks to run with snapshots'
 id: snapshot-hooks
 
 ---

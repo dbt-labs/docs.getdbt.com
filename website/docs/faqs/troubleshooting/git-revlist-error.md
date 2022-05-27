@@ -1,7 +1,7 @@
 ---
 title: I'm receiving a git rev-list master error in the IDE?
-Description: “Primary branch not recognized”
-sidebar_label: ‘Primary branch not recognized in the IDE’
+Description: "Primary branch not recognized"
+sidebar_label: 'Primary branch not recognized in the IDE'
 id: git-revlist-error
 ---
 
@@ -20,7 +20,7 @@ Usually this error indicates that the "main" branch name has changed or it is po
 Take a look at your Environment Settings - If you **do not** have a custom branch filled in your Environment Settings:
 
 1. Disconnect and reconnect your repository [connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) on your Project Settings page. This should then allow dbt Cloud to pick up that the "main" branch is now called `main` 
-2. In the Environment Settings, set the custom branch to ‘master’ and refresh the IDE 
+2. In the Environment Settings, set the custom branch to 'master' and refresh the IDE 
 
 **Workaround 2**
 Take a look at your Environment Settings - If you **do** have a custom branch filled in your Environment Settings:

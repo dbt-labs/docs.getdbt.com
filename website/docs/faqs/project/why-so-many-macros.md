@@ -1,7 +1,7 @@
 ---
 title: Why does my dbt output have so many macros in it?
-Description: “Your dbt project includes many macros.”
-sidebar_label: ‘dbt project has a lot of macros’
+Description: "Your dbt project includes many macros."
+sidebar_label: 'dbt project has a lot of macros'
 id: why-so-many-macros
 
 ---

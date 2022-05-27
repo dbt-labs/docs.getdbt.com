@@ -1,7 +1,7 @@
 ---
 title: One of my tests failed, how can I debug it?
-Description: “You can debug failed tests by finding the SQL”
-sidebar_label: ‘debug failed tests’
+Description: "You can debug failed tests by finding the SQL"
+sidebar_label: 'debug failed tests'
 id: failed-tests
 
 ---

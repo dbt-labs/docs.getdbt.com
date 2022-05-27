@@ -1,7 +1,7 @@
 ---
 title: How can I connect dbt to a Google Source repository?
-Description: “Use SSH URL method to connect to Google Source Repo”
-sidebar_label: ‘Connect dbt to a Google Source repository’
+Description: "Use SSH URL method to connect to Google Source Repo"
+sidebar_label: 'Connect dbt to a Google Source repository'
 id: google-cloud-repo
 
 ---

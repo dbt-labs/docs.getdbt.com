@@ -1,7 +1,7 @@
 ---
 title: Can I connect my dbt project to two databases?
-Description: “Prepare your warehouse for dbt transformations”
-sidebar_label: ‘Can you connect dbt project to two databases?‘
+Description: "Prepare your warehouse for dbt transformations"
+sidebar_label: 'Can you connect dbt project to two databases?'
 id: connecting-to-two-dbs-not-allowed
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: If I rerun dbt, will there be any downtime as models are rebuilt?
-Description: “No downtime when re-building models in dbt ”
-sidebar_label: ‘Re-building models in dbt atomically’
+Description: "No downtime when re-building models in dbt "
+sidebar_label: 'Re-building models in dbt atomically'
 id: run-downtime
 
 ---

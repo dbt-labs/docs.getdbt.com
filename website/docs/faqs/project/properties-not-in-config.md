@@ -1,7 +1,7 @@
 ---
 title: Can I add tests and descriptions in a config block?
-Description: “Types of properties defined in config blocks”
-sidebar_label: ‘Types of properties defined in config blocks’
+Description: "Types of properties defined in config blocks"
+sidebar_label: 'Types of properties defined in config blocks'
 id: properties-not-in-config
 
 ---

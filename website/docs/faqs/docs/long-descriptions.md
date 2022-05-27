@@ -1,7 +1,7 @@
 ---
 title: How do I write long-form explanations in my descriptions?
-Description: “Write long descriptions in your documentation”
-sidebar_label: ‘Write long descriptions’
+Description: "Write long descriptions in your documentation"
+sidebar_label: 'Write long descriptions'
 id: long-descriptions
 ---
 If you need more than a sentence to explain a model, you can:

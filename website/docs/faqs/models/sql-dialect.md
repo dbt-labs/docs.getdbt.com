@@ -1,7 +1,7 @@
 ---
 title: Which SQL dialect should I write my models in? Or which SQL dialect does dbt use?
-Description: “Use SQL dialect of your own database”
-sidebar_label: ‘Which SQL dialect to use?’
+Description: "Use SQL dialect of your own database"
+sidebar_label: 'Which SQL dialect to use?'
 id: sql-dialect
 
 ---

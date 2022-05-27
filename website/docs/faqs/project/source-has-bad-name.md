@@ -1,7 +1,7 @@
 ---
 title: What if my source is in a poorly named schema or table?
-Description: “Use schema and identifier properities to define names”
-sidebar_label: ‘Source is in a poorly-named scheme or table’
+Description: "Use schema and identifier properities to define names"
+sidebar_label: 'Source is in a poorly-named scheme or table'
 id: source-has-bad-name
 
 ---

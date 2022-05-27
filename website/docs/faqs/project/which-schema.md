@@ -1,7 +1,7 @@
 ---
 title: How did dbt choose which schema to build my models in?
-Description: “You can change your target schema in your Environment Settings.”
-sidebar_label: ‘dbt builds models in your target schema’
+Description: "You can change your target schema in your Environment Settings."
+sidebar_label: 'dbt builds models in your target schema'
 id: which-schema
 
 ---

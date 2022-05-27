@@ -1,7 +1,7 @@
 ---
 title: Are there any example dbt projects?
-Description: “List of example dbt projects”
-sidebar_label: ‘dbt project examples’
+Description: "List of example dbt projects"
+sidebar_label: 'dbt project examples'
 id: example-projects
 
 ---

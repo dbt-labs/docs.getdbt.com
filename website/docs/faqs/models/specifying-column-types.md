@@ -1,7 +1,7 @@
 ---
 title: How do I specify column types?
-Description: “Specify column types in models”
-sidebar_label: ‘Specify column types in models’
+Description: "Specify column types in models"
+sidebar_label: 'Specify column types in models'
 id: specifying-column-types
 
 ---

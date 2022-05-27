@@ -1,7 +1,7 @@
 ---
 title: Can I render docs for multiple projects?
-Description: “Using packages to render docs for multiple projects”
-sidebar_label: ‘Render docs for multiple projects’
+Description: "Using packages to render docs for multiple projects"
+sidebar_label: 'Render docs for multiple projects'
 id: docs-for-multiple-projects
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: I need to use quotes to select from my source, what should I do?
-Description: “Use quoting property to quote values”
-sidebar_label: ‘How to quote values’
+Description: "Use quoting property to quote values"
+sidebar_label: 'How to quote values'
 id: source-quotes
 
 ---

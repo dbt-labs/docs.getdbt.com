@@ -1,7 +1,7 @@
 ---
 title: Why am I receiving a Runtime Error in my packages?
-Description: “Update dbt_utils package in packages.yml file”
-sidebar_label: ‘Runtime error in packages.yml file’
+Description: "Update dbt_utils package in packages.yml file"
+sidebar_label: 'Runtime error in packages.yml file'
 id: runtime-packages.yml
 
 ---

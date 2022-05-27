@@ -1,6 +1,6 @@
 ---
 title: How do I test and document seeds?
-Description: “Use a schema file to test and document seeds”
+Description: "Use a schema file to test and document seeds"
 sidebar_label: 'Test and document seeds'
 id: testing-seeds
 

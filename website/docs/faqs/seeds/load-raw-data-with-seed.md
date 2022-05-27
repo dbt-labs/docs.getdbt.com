@@ -1,7 +1,7 @@
 ---
 title: Can I use seeds to load raw data?
-Description: “Use seeds to load business specific logic”
-sidebar_label: ‘Seed data files requirements’
+Description: "Use seeds to load business specific logic"
+sidebar_label: 'Seed data files requirements'
 id: load-raw-data-with-seed
 
 ---

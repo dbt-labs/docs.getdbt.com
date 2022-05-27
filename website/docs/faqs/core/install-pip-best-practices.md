@@ -1,7 +1,7 @@
 ---
 title: "What are the best practices for installing dbt Core with pip?"
-Description: “Instructions on how to install dbt Core with pip"
-sidebar_label: ‘Installing dbt Core with pip’
+Description: "Instructions on how to install dbt Core with pip"
+sidebar_label: 'Installing dbt Core with pip'
 id: install-pip-best-practices.md
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Why do I need to quote column names in Jinja?
-Description: “Use quotes to pass string”
-sidebar_label: ‘Why quote column names in Jinja’
+Description: "Use quotes to pass string"
+sidebar_label: 'Why quote column names in Jinja'
 id: quoting-column-names
 ---
 

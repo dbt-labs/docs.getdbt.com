@@ -1,7 +1,7 @@
 ---
 title: Why am I getting an "account in use" error?
-Description: “What to do when you receive a Git account in use error”
-sidebar_label: ‘Git account in use’
+Description: "What to do when you receive a Git account in use error"
+sidebar_label: 'Git account in use'
 id: git-account-in-use
 ---
 

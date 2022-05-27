@@ -1,6 +1,6 @@
 ---
 title: "[Error] Could not find package 'my_project'"
-Description: “Macros missing from packages"
+Description: "Macros missing from packages"
 sidebar_label: 'Could not find package error'
 id: dispatch-could-not-find-package
 

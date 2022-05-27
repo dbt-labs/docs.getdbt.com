@@ -1,6 +1,6 @@
 ---
 title: I'm receiving a "Permission denied while getting Drive credential" error when trying to query from Google Drive?
-Description: “Grant BigQuery service account access"
+Description: "Grant BigQuery service account access"
 sidebar_label: 'Error when trying to query from Google Drive'
 id: access-gdrive-credential
 

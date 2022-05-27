@@ -1,7 +1,7 @@
 ---
 title: What privileges does my database user need to use dbt?
-Description: “Database privileges to use dbt”
-sidebar_label: ‘Database privileges to use dbt‘
+Description: "Database privileges to use dbt"
+sidebar_label: 'Database privileges to use dbt'
 id: database-privileges
 
 ---

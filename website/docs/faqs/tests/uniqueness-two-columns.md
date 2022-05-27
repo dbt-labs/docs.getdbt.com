@@ -1,6 +1,6 @@
 ---
 title: Can I test the uniqueness of two columns?
-Description: “Options to test uniqueness of two columns"
+Description: "Options to test uniqueness of two columns"
 sidebar_label: 'Test the uniqueness of two columns'
 id: uniqueness-two-columns
 

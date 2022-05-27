@@ -1,7 +1,7 @@
 ---
 title: Do model names need to be unique?
-Description: “Unique model names to build dependencies
-sidebar_label: ‘Model names need to be unique’
+Description: "Unique model names to build dependencies
+sidebar_label: 'Model names need to be unique'
 id: unique-model-names
 
 ---

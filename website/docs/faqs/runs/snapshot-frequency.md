@@ -1,7 +1,7 @@
 ---
 title: How often should I run the snapshot command?
-Description: “Snapshot command intended to run on hourly/daily schedule ”
-sidebar_label: ‘snapshot command schedule’
+Description: "Snapshot command intended to run on hourly/daily schedule "
+sidebar_label: 'snapshot command schedule'
 id: snapshot-frequency
 
 ---

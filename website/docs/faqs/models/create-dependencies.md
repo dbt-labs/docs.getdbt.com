@@ -1,7 +1,7 @@
 ---
 title: How do I create dependencies between models?
-Description: “Using ref function to create dependencies”
-sidebar_label: ‘Creating dependencies between models’
+Description: "Using ref function to create dependencies"
+sidebar_label: 'Creating dependencies between models'
 id: create-dependencies
 
 ---

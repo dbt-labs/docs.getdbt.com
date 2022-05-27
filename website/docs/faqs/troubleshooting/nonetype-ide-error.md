@@ -1,6 +1,6 @@
 ---
 title: I'm receiving a NoneType object has no attribute error in the IDE?
-Description: “Copy SSH key to your warehouse"
+Description: "Copy SSH key to your warehouse"
 sidebar_label: 'NoneType error in the IDE'
 id: nonetype-ide-error
 

@@ -1,7 +1,7 @@
 ---
 title: How do I document macros?
-Description: “You can use a schema file to document macros”
-sidebar_label: ‘Document macros’
+Description: "You can use a schema file to document macros"
+sidebar_label: 'Document macros'
 id: documenting-macros
 ---
 

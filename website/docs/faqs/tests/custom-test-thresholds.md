@@ -1,6 +1,6 @@
 ---
 title: Can I set test failure thresholds?
-Description: “Use configs to set custom failure thresholds in tests”
+Description: "Use configs to set custom failure thresholds in tests"
 sidebar_label: 'How to set failure thresholds in test'
 id: custom-test-thresholds
 

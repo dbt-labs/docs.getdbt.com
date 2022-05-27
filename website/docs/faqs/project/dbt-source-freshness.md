@@ -1,7 +1,7 @@
 ---
 title: Are the results of freshness stored anywhere?
-Description: “How to access Source Freshness results”
-sidebar_label: ‘Accessing Source Freshness results’
+Description: "How to access Source Freshness results"
+sidebar_label: 'Accessing Source Freshness results'
 id: dbt-source-freshness
 
 ---

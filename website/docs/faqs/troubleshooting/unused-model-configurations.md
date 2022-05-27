@@ -1,7 +1,7 @@
 ---
 title: I got an "unused model configurations" error message, what does this mean?
-Description: “Model configurations error message”
-sidebar_label: ‘unused model configurations error‘
+Description: "Model configurations error message"
+sidebar_label: 'unused model configurations error'
 id: unused-model-configurations
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: What version of Python can I use?
 description: "Python versions 3.7 and newer can be used with dbt Core"
-sidebar_label: ‘Python version’
+sidebar_label: 'Python version'
 id: install-python-compatibility
 ---
 

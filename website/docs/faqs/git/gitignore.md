@@ -1,13 +1,13 @@
 ---
 title: Why can't I checkout a branch or create a new branch?
-Description: “Add or fill in gitignore file”
-sidebar_label: ‘Unable to checkout or create branch’
+Description: "Add or fill in gitignore file"
+sidebar_label: 'Unable to checkout or create branch'
 id: gitignore
 ---
 
 If you're finding yourself unable to revert changes, check out a branch or click commit - this is usually do to your project missing a .[gitignore](https://github.com/fishtown-analytics/dbt-starter-project/blob/master/.gitignore) file OR your gitignore file doesn't contain the necessary content inside the fole. 
 
-This is what causes that ‘commit’ git action button to display. No worries though - to fix this, you'll need to complete the following steps in order:
+This is what causes that 'commit' git action button to display. No worries though - to fix this, you'll need to complete the following steps in order:
 
 1. In the Cloud IDE, add the missing .gitignore file or contents to your project. You'll want to make sure the .gitignore file includes the following:
 

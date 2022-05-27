@@ -1,7 +1,7 @@
 ---
 title: What happens if the SQL in my query is bad? Or I got a Database Error, what does that mean?
-Description: “Use error message and logs to debug”
-sidebar_label: ‘How to debug SQL or database error’
+Description: "Use error message and logs to debug"
+sidebar_label: 'How to debug SQL or database error'
 id: sql-errors
 
 ---

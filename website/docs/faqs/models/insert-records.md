@@ -1,7 +1,7 @@
 ---
 title: If models can only be `select` statements, how do I insert records?
-Description: “Incremental models to insert records”
-sidebar_label: ‘How to insert records’
+Description: "Incremental models to insert records"
+sidebar_label: 'How to insert records'
 id: insert-records
 
 ---

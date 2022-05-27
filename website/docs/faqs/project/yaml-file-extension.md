@@ -1,7 +1,7 @@
 ---
 title: Can I use a yaml file extension?
-Description: “dbt will only search for files with a `.yml` file extension”
-sidebar_label: ‘.yml file extension search’
+Description: "dbt will only search for files with a `.yml` file extension"
+sidebar_label: '.yml file extension search'
 id: yaml-file-extension
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: How can we move our project from a managed repository, to a self-hosted repository? 
-Description: “Email Support to request your managed repository”
-sidebar_label: ‘How to request your managed repository zipfile’
+Description: "Email Support to request your managed repository"
+sidebar_label: 'How to request your managed repository zipfile'
 id: managed-repo
 ---
 

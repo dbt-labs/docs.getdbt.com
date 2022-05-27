@@ -1,6 +1,6 @@
 ---
 title: How can I update my billing information?
-Description: “Instructions on how to update your billing info”
+Description: "Instructions on how to update your billing info"
 sidebar_label: 'How to update billing'
 id: change-billing
 ---

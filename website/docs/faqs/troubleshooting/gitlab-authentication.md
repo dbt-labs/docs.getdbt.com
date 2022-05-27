@@ -1,7 +1,7 @@
 ---
 title: I'm seeing a Gitlab authentication out of date error loop
-Description: “GitLab and dbt Cloud deploy key mismatch ”
-sidebar_label: ‘GitLab authentication out of date’
+Description: "GitLab and dbt Cloud deploy key mismatch "
+sidebar_label: 'GitLab authentication out of date'
 id: gitlab-authentication
 ---
 
