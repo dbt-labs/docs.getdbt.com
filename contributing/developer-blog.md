@@ -57,7 +57,7 @@ We are very interested in stacks, new tools and integrations and will happily pu
 ## Core Principles
 
 - 🧑🏻‍🤝‍🧑🏾 The dbt Developer blog is written by humans  **- individual analytics professionals sharing their insight with the world. To the extent feasible, a community member posting on the developer blog is not staking an official organizational stance, but something that *they* have learned or believe based on their work. This is true for dbt Labs employees as well.
-- 💍 Developer blog content is information rich - these are posts that readers share, bookmark and come back to time and time again.
+- 💍 Developer blog content is knowledge rich - these are posts that readers share, bookmark and come back to time and time again.
 - ⛹🏼‍♂️ Developer blog content is written by and for *prac*ti*tioners -* end users of analytics tools (and sometimes people that work with practitioners). **
 - ⭐ Developer blog content is best when it is *the story which the author is uniquely positioned to tell.* Authors are encouraged to consider what insight they have that is specific to them and the work they have done.
 - 🏎️  Developer blog content is actionable - readers walk away with a clear sense of how they can use this information to be a more effective practitioner. Posts include code snippets, Loom walkthroughs and hands-on, practical information that can be integrated into daily workflows.
