@@ -261,7 +261,7 @@ function Home() {
                       <div className="card__footer">
                           <Link
                             className="button button--primary"
-                            to={useBaseUrl('/faqs/project/example-projects')}>
+                            to={useBaseUrl('/faqs/example-projects')}>
                             View Projects
                           </Link>
                       </div>
