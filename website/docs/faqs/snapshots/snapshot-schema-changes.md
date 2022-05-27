@@ -1,6 +1,6 @@
 ---
 title: What happens if I add new columns to my snapshot query?
-Description: "Reconcile changes when adding new columns in snapshot query"
+description: "Reconcile changes when adding new columns in snapshot query"
 sidebar_label: 'Snapshot column changes'
 id: snapshot-schema-changes
 

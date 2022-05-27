@@ -1,6 +1,6 @@
 ---
 title: Why is there only one `target_schema` for snapshots?
-Description: "Snapshots build into the same `target_schema`"
+description: "Snapshots build into the same `target_schema`"
 sidebar_label: 'Build snapshots into one `target_schema`'
 id: snapshot-target-schema
 

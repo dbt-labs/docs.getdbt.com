@@ -1,6 +1,6 @@
 ---
 title: Can I use environment variables in my profile?
-Description: "Use env_var in your profile"
+description: "Use env_var in your profile"
 sidebar_label: 'Use env_var in your profile'
 id: profile-env-vars
 ---

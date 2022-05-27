@@ -1,6 +1,6 @@
 ---
 title: Do hooks run with seeds?
-Description: "Run hooks with seeds and configure them in project.yml file"
+description: "Run hooks with seeds and configure them in project.yml file"
 sidebar_label: "Use hooks to run with seeds"
 id: seed-hooks
 

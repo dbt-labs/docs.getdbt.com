@@ -1,6 +1,6 @@
 ---
 title: What is a beta release?
-Description: "How to try out beta features"
+description: "How to try out beta features"
 sidebar_label: 'What is a beta release?'
 id: beta-release
 ---

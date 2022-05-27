@@ -1,6 +1,6 @@
 ---
 title: What should my profiles.yml file look like for my warehouse?
-Description: "Go to Profile Set up to see the structure of a profile"
+description: "Go to Profile Set up to see the structure of a profile"
 sidebar_label: 'Structure of profile for each warehouse'
 id: sample-profiles
 

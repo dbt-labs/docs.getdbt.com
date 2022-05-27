@@ -1,11 +1,9 @@
 ---
 title: Which SQL dialect should I write my models in? Or which SQL dialect does dbt use?
-Description: "Use SQL dialect of your own database"
+description: "Use SQL dialect of your own database"
 sidebar_label: 'Which SQL dialect to use?'
 id: sql-dialect
-
 ---
-
 
 dbt can feel like magic, but it isn't actually magic. Under the hood, it's running SQL in your own warehouse — your data is not processed outside of your warehouse.
 

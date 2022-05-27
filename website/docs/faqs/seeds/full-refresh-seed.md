@@ -1,6 +1,6 @@
 ---
 title: The columns of my seed changed, and now I get an error when running the `seed` command, what should I do?
-Description: "Rerun the command with a `--full-refresh` flag"
+description: "Rerun the command with a `--full-refresh` flag"
 sidebar_label: 'debug error when columns of seed changes'
 id: full-refresh-seed
 
@@ -16,7 +16,7 @@ If you changed the columns of your seed, you may get a `Database Error`:
 }>
 <TabItem value="snowflake">
 
-```
+```shell
 $ dbt seed
 Running with dbt=0.16.0-rc2
 Found 0 models, 0 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 1 seed file, 0 sources
@@ -41,7 +41,7 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 </TabItem>
 <TabItem value="redshift">
 
-```
+```shell
 $ dbt seed
 Running with dbt=0.16.0-rc2
 Found 0 models, 0 tests, 0 snapshots, 0 analyses, 149 macros, 0 operations, 1 seed file, 0 sources
@@ -66,7 +66,8 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 </Tabs>
 
 In this case, you should rerun the command with a `--full-refresh` flag, like so:
-```
+
+```shell
 dbt seed --full-refresh
 ```
 

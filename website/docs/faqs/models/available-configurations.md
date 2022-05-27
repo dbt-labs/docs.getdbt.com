@@ -1,10 +1,11 @@
 ---
 title: What model configurations exist?
-Description: "Learning about model configurations"
+description: "Learning about model configurations"
 sidebar_label: 'Model configurations'
 id: available-configurations
 ---
 You can also configure:
+
 * [tags](resource-configs/tags) to support easy categorization and graph selection
 * [custom schemas](resource-configs/schema) to split your models across multiple schemas
 * [aliases](resource-configs/alias) if your <Term id="view" />/<Term id="table" /> name should differ from the filename

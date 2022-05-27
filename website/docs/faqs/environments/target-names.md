@@ -1,6 +1,6 @@
 ---
 title: What should I name my target?
-Description: "Using targets to clarify development and production runs"
+description: "Using targets to clarify development and production runs"
 sidebar_label: 'Naming your target'
 id: target-names
 ---

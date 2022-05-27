@@ -1,6 +1,6 @@
 ---
 title: If I can name these files whatever I'd like, what should I name them?
-Description: "Recommendations on how to name your files"
+description: "Recommendations on how to name your files"
 sidebar_label: 'How to name your files'
 id: resource-yml-name
 

@@ -1,6 +1,6 @@
 ---
 title: Can I build my models in a schema other than my target schema or split my models across multiple schemas?
-Description: "You can build models outside target schema"
+description: "You can build models outside target schema"
 sidebar_label: 'How to build models in schema(s) outside target schema'
 id: model-custom-schemas
 
@@ -22,7 +22,6 @@ models:
 ```
 
 </File>
-
 
 <File name='models/customers.sql'>
 

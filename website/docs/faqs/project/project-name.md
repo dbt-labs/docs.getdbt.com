@@ -1,6 +1,6 @@
 ---
 title: What should I name my dbt project?
-Description: "Using snake_case to name your dbt project"
+description: "Using snake_case to name your dbt project"
 sidebar_label: 'How to format your dbt project name'
 id: project-name
 

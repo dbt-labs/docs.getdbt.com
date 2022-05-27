@@ -1,6 +1,6 @@
 ---
 title: How do I debug my Jinja?
-Description: "Using target folder or log function to debug Jinja"
+description: "Using target folder or log function to debug Jinja"
 sidebar_label: 'Debugging Jinja'
 id: debugging-jinja
 

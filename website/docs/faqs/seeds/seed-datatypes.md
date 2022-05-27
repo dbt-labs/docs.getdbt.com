@@ -1,6 +1,6 @@
 ---
 title: How do I set a datatype for a column in my seed?
-Description: "Use column_types to set a datatype"
+description: "Use column_types to set a datatype"
 sidebar_label: 'Set a datatype for a column in seed'
 id: seed-datatypes
 

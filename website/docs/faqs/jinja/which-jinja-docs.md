@@ -1,6 +1,6 @@
 ---
 title: Which docs should I use when writing Jinja or creating a macro?
-Description: "Useful Jinja docs"
+description: "Useful Jinja docs"
 sidebar_label: 'Useful Jinja docs'
 id: which-jinja-docs
 ---

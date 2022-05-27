@@ -1,6 +1,6 @@
 ---
 title: What parts of Jinja are dbt-specific?
-Description: "You can check which Jinja functions are dbt-specific"
+description: "You can check which Jinja functions are dbt-specific"
 sidebar_label: 'dbt-specific Jinja'
 id: dbt-specific-jinja
 ---

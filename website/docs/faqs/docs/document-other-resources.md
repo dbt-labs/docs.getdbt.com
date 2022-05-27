@@ -1,6 +1,6 @@
 ---
 title: Can I document things other than models, like sources, seeds, and snapshots?
-Description: "Using the 'description' key to document resources"
+description: "Using the description key to document resources"
 sidebar_label: 'Document other resources'
 id: document-other-resources
 ---

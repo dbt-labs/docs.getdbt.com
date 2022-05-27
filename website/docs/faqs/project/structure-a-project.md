@@ -1,6 +1,6 @@
 ---
 title: How should I structure my project?
-Description: "Recommendations on how to structure project"
+description: "Recommendations on how to structure project"
 sidebar_label: 'How to structure project'
 id: structure-a-project
 

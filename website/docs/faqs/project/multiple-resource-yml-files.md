@@ -1,6 +1,6 @@
 ---
 title: Should I use separate files to declare resource properties, or one large file?
-Description: "Structuring your files and project"
+description: "Structuring your files and project"
 sidebar_label: 'Ways to structure your project/files'
 id: multiple-resource-yml-files
 

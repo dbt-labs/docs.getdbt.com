@@ -1,6 +1,6 @@
 ---
 title: How do I exclude a table from a freshness snapshot?
-Description: "Use null to exclude a table from a freshness snapshot"
+description: "Use null to exclude a table from a freshness snapshot"
 sidebar_label: 'Exclude a table from freshness snapshot '
 id: exclude-table-from-freshness
 

@@ -1,6 +1,6 @@
 ---
 title: How do I document macros?
-Description: "You can use a schema file to document macros"
+description: "You can use a schema file to document macros"
 sidebar_label: 'Document macros'
 id: documenting-macros
 ---
@@ -9,7 +9,7 @@ id: documenting-macros
 
 To document macros, use a [schema file](macro-properties) and nest the configurations under a `macros:` key
 
-## Example:
+## Example
 
 <File name='models/schema.yml'>
 

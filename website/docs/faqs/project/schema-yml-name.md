@@ -1,6 +1,6 @@
 ---
 title: Does my `.yml` file containing tests and descriptions need to be named `schema.yml`?
-Description: "Naming your Tests and Descriptions files"
+description: "Naming your Tests and Descriptions files"
 sidebar_label: 'How to name your tests and descriptions files'
 id: schema-yml-name
 

@@ -1,6 +1,6 @@
 ---
 title: Do I need to create my target schema before running dbt?
-Description: "Target schema is checked or created for you before running dbt"
+description: "Target schema is checked or created for you before running dbt"
 sidebar_label: 'Target schema before running dbt'
 id: create-a-schema
 

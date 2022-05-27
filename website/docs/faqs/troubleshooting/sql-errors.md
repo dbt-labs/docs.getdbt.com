@@ -1,6 +1,6 @@
 ---
-title: What happens if the SQL in my query is bad? Or I got a Database Error, what does that mean?
-Description: "Use error message and logs to debug"
+title: What happens if the SQL in my query is bad or I get a database error?
+description: "Use error message and logs to debug"
 sidebar_label: 'How to debug SQL or database error'
 id: sql-errors
 
@@ -8,7 +8,8 @@ id: sql-errors
 
 
 If there's a mistake in your SQL, dbt will return the error that your database returns.
-```shell-session
+
+```shell
 $ dbt run --select customers
 Running with dbt=0.15.0
 Found 3 models, 9 tests, 0 snapshots, 0 analyses, 133 macros, 0 operations, 0 seed files, 0 sources

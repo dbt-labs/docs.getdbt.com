@@ -1,14 +1,16 @@
 ---
 title: Why do I need to quote column names in Jinja?
-Description: "Use quotes to pass string"
+description: "Use quotes to pass string"
 sidebar_label: 'Why quote column names in Jinja'
 id: quoting-column-names
 ---
 
 In the [macro example](jinja-macros#macros) we passed the column name `amount` quotes:
+
 ```sql
 {{ cents_to_dollars('amount') }} as amount_usd
 ```
+
 We have to use quotes to pass the _string_ `'amount'` to the macro.
 
 Without the quotes, the Jinja parser will look for a variable named `amount`. Since this doesn't exist, it will compile to nothing.

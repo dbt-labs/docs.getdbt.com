@@ -1,6 +1,6 @@
 ---
 title: Why can't I checkout a branch or create a new branch?
-Description: "Add or fill in gitignore file"
+description: "Add or fill in gitignore file"
 sidebar_label: 'Unable to checkout or create branch'
 id: gitignore
 ---
@@ -11,12 +11,12 @@ This is what causes that 'commit' git action button to display. No worries thoug
 
 1. In the Cloud IDE, add the missing .gitignore file or contents to your project. You'll want to make sure the .gitignore file includes the following:
 
-```
-target/
-dbt_modules/
-dbt_packages/
-logs/
-```
+    ```shell
+    target/
+    dbt_modules/
+    dbt_packages/
+    logs/
+    ```
 
 2. Once you've added that, make sure to save and commit.
 
@@ -24,5 +24,3 @@ logs/
 
 4. Go back into the Cloud IDE and reclone your repository. This can be done by clicking on the green "ready" in the bottom right corner of the IDE (next to the command bar), and then clicking the orange "reclone repo" button in the pop up.
 
-© 2022 GitHub, Inc.
-Terms

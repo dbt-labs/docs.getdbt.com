@@ -1,6 +1,6 @@
 ---
 title: What should I name my profile?
-Description: "Use company name for profile name"
+description: "Use company name for profile name"
 sidebar_label: 'Naming your profile'
 id: profile-name
 ---

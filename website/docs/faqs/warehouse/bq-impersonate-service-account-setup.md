@@ -1,6 +1,6 @@
 ---
 title: How can I set up the right permissions in BigQuery?
-Description: "Use service account to set up permissions in BigQuery"
+description: "Use service account to set up permissions in BigQuery"
 sidebar_label: 'Setting up permissions in BigQuery"'
 id: bq-impersonate-service-account-setup
 

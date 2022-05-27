@@ -1,6 +1,6 @@
 ---
 title: How do I specify column types?
-Description: "Specify column types in models"
+description: "Specify column types in models"
 sidebar_label: 'Specify column types in models'
 id: specifying-column-types
 
@@ -37,6 +37,7 @@ create table dbt_alice.my_table as (
 So long as your model queries return the correct column type, the table you create will also have the correct column type.
 
 To define additional column options:
+
 * Rather than enforcing uniqueness and not-null constraints on your column, use dbt's [testing](building-a-dbt-project/tests) functionality to check that your assertions about your model hold true.
 * Rather than creating default values for a column, use SQL to express defaults (e.g. `coalesce(updated_at, current_timestamp()) as updated_at`)
 * In edge-cases where you _do_ need to alter a column (e.g. column-level encoding on Redshift), consider implementing this via a [post-hook](pre-hook-post-hook).

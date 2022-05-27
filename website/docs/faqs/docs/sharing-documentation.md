@@ -1,6 +1,6 @@
 ---
 title: How do I share my documentation with my team members?
-Description: "Use read-only seats to share documentation"
+description: "Use read-only seats to share documentation"
 sidebar_label: 'Share documentation with teammates'
 id: sharing-documentation
 ---

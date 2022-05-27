@@ -1,6 +1,6 @@
 ---
 title: How do I test and document seeds?
-Description: "Use a schema file to test and document seeds"
+description: "Use a schema file to test and document seeds"
 sidebar_label: 'Test and document seeds'
 id: testing-seeds
 
@@ -10,7 +10,7 @@ id: testing-seeds
 
 To test and document seeds, use a [schema file](configs-and-properties) and nest the configurations under a `seeds:` key
 
-## Example:
+## Example
 
 <File name='seeds/schema.yml'>
 

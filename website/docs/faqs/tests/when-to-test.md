@@ -1,6 +1,6 @@
 ---
 title: When should I run my tests?
-Description: "Run tests in production or when writing new code"
+description: "Run tests in production or when writing new code"
 sidebar_label: 'When to run tests'
 id: when-to-test
 

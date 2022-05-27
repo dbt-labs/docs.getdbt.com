@@ -1,20 +1,20 @@
 ---
 title: How do I run models downstream of one source?
-Description: "Use source selector to run models downstream of a source"
+description: "Use source selector to run models downstream of a source"
 sidebar_label: 'run  models downstream of one source'
 id: running-model-downstream-of-source
 
 ---
 To run models downstream of a source, use the `source:` selector:
 
-```
+```shell
 $ dbt run --select source:jaffle_shop+
 ```
 (You can also use the `-s` shorthand here instead of `--select`)
 
 To run models downstream of one source <Term id="table" />:
 
-```
+```shell
 $ dbt run --select source:jaffle_shop.orders+
 ```
 

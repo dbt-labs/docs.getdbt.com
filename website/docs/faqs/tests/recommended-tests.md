@@ -1,6 +1,6 @@
 ---
 title: What tests should I add to my project?
-Description: "Recommended tests for project"
+description: "Recommended tests for project"
 sidebar_label: 'Recommended tests for project'
 id: recommended-tests
 

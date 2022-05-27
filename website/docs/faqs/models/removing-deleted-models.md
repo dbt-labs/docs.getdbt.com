@@ -1,6 +1,6 @@
 ---
 title: How do I remove deleted models from my data warehouse?
-Description: "Remove deleted models directly in your data warehouse"
+description: "Remove deleted models directly in your data warehouse"
 sidebar_label: 'Removing deleted models from your warehouse'
 id: removing-deleted-models
 

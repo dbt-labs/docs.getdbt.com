@@ -1,6 +1,6 @@
 ---
 title: Why are profiles stored outside of my project?
-Description: "Profiles stored outside version control"
+description: "Profiles stored outside version control"
 sidebar_label: 'Profiles stored outside project'
 id: separate-profile
 

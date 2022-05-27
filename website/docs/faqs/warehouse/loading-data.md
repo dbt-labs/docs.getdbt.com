@@ -1,6 +1,6 @@
 ---
 title: How do I load data into my warehouse?
-Description: "Recommendations on tools to load data to warehouse"
+description: "Recommendations on tools to load data to warehouse"
 sidebar_label: 'Recommendations on tools to get data into your warehouse'
 id: loading-data
 

@@ -1,6 +1,6 @@
 ---
 title: Why would I want to impersonate a service account?
-Description: "Build models using dedicated service account"
+description: "Build models using dedicated service account"
 sidebar_label: 'Why impersonate a service account'
 id: bq-impersonate-service-account-why
 

@@ -1,6 +1,6 @@
 ---
 title: My compiled SQL has a lot of spaces and new lines, how can I get rid of it?
-Description: "Managing whitespace control"
+description: "Managing whitespace control"
 sidebar_label: 'Compiled sql has a lot of white space'
 id: jinja-whitespace
 ---

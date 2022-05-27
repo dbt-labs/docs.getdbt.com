@@ -1,6 +1,6 @@
 ---
 title: Do all my tests go in one file?
-Description: "Structuring files for tests"
+description: "Structuring files for tests"
 sidebar_label: 'How to structure files for tests'
 id: multiple-test-files
 

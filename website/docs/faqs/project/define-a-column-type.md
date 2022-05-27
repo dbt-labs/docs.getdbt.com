@@ -1,6 +1,6 @@
 ---
 title: How do I define a column type?
-Description: "Using cast function to define a column type"
+description: "Using cast function to define a column type"
 sidebar_label: 'How to define a column type'
 id: define-a-column-type
 
