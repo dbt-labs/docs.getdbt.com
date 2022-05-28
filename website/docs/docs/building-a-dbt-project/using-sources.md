@@ -26,6 +26,8 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    database: raw
+    schema: jaffle_shop
     tables:
       - name: orders
       - name: customers
@@ -36,6 +38,9 @@ sources:
 ```
 
 </File>
+
+```database``` is used to define the database name of the source.
+```schema``` is used to define the schema name of the source
 
 If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](configs-and-properties) before proceeding.
 
