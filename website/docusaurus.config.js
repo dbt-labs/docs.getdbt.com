@@ -109,12 +109,6 @@ var siteSettings = {
           activeBasePath: 'docs/dbt-cloud'
         },
         {
-          to: '/faqs/',
-          label: 'FAQs',
-          position: 'left',
-          activeBasePath: 'faqs'
-        },
-        {
           to: '/blog/',
           label: 'Developer Blog',
           position: 'right',
