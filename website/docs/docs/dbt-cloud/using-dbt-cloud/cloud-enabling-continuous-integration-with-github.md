@@ -121,7 +121,7 @@ If your dbt project relies the generic git clone method that clones using SSH an
 
 First, make sure you have the [native GitHub authentication](cloud-installing-the-github-application), [native GitLab authentication](connecting-gitlab), or [native Azure DevOps authentication](connecting-azure-devops) set up depending on which git provider you use. After you have gone through those steps, head to **Account Settings**, select **Projects** and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link. 
 
-Once you're in the repository page, you can click the **Edit** button and then the **Disconnect Repository** button at the bottom.
+Once you're in the repository page, click **Edit** and then click **Disconnect Repository** at the bottom.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" title="Disconnect repo"/>
 
 Confirm that you'd like to disconnect your repository. You should then see a new **Configure a repository** link in your old repository's place. Click through to the configuration page:
