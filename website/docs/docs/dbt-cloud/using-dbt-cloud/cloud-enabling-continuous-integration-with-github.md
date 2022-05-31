@@ -85,7 +85,7 @@ In the **Triggers** section of the jobs settings, switch to the **Webhooks** tab
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
 
-This will instruct dbt Cloud to run the job whenever a pull request or commit is made, rather than on a schedule. Be sure to turn the schedule of the job off if you don't want it to also run on a time-based cadence.
+This tells dbt Cloud to run the job whenever a pull request or commit is made, rather than on a schedule. Be sure to turn the schedule of the job off if you don't want it to also run on a time-based cadence.
 
 
 
