@@ -292,7 +292,12 @@ nav.navbar div.navbar__inner {
 
 .menu__link {
   font-size: 1rem;
-  padding: 5px 0px 5px 10px !important;
+}
+
+.menu__caret, .menu__link {
+  display: flex;
+  align-items: center;
+  padding: 6px;
 }
 
 .home .row .col--4 {
