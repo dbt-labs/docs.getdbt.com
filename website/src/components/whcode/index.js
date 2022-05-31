@@ -9,7 +9,7 @@ function WHCode({children}) {
   let value
 
   const tabItems = children.map((child, index) => {
-    if (child.props.warehouse == undefined) {
+    if (child.props.warehouse == undefined || child.props.warehouse == '') {
       throw "Expected warehouse prop to be defined for each child of WHCode component";
     }
 
