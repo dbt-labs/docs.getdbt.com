@@ -6,7 +6,9 @@ description: "You can enable CI to test every single change prior to deploying t
 
 ## Overview
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](cloud-installing-the-github-application), [GitLab account](connecting-gitlab), or [Azure DevOps account](connecting-azure-devops), you can configure jobs to run when new pull requests are opened against your dbt repo. dbt Cloud will build the models affected by the code change in a temp schema, which acts as a quasi-staging environment, and will also run the tests that you've written for these models as a check. When the CI job completes, the run status will be shown directly in the pull request. This makes it possible to deploy new code to production with confidence.
+dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](cloud-installing-the-github-application), [GitLab account](connecting-gitlab), or [Azure DevOps account](connecting-azure-devops), you can configure jobs to run when new pull requests are opened against your dbt repo. 
+
+dbt Cloud will build the models affected by the new pull request code change in a temp schema, which acts as a quasi-staging environment, and will also run the tests that you've written for these models as a check. When the CI job completes, the run status will be shown directly in the pull request. This makes it possible to deploy new code to production with confidence.
 
 :::info Draft Pull Requests
 
