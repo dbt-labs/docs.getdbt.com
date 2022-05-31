@@ -7,8 +7,6 @@ id: 3-running-airflow-and-dbt-cloud
 
 Now you have all the working pieces to get up and running with Airflow + dbt Cloud. Let’s dive into make this all work together.  We will **set up a connection** and **run a DAG in Airflow** that kicks off a dbt Cloud job.
 
-<WistiaVideo id="oo1yel115i" />
-
 ## 1. Add your dbt Cloud API token as a secure connection
 
 1. Navigate to Admin and click on **Connections**
