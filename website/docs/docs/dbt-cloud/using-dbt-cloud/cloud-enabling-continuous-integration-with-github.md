@@ -33,7 +33,9 @@ When a [dbt Cloud CI job is set up](cloud-enabling-continuous-integration#config
 
 When the run is complete, dbt Cloud will update the PR in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run, letting you know if the models and tests ran successfully or not. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your data warehouse.
 
-GitHub Example:
+### GitHub pull request example
+
+The green checkmark means the dbt builds and tests were successful. The *Details* link shown here will navigate you to the relevant CI run in dbt Cloud.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/09c886f-Screen_Shot_2019-02-08_at_4.54.41_PM.png" title="GitHub pull request example"/>
 
 ### GitLab pull request example
