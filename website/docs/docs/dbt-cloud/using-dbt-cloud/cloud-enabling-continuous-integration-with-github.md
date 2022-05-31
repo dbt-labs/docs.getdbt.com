@@ -39,7 +39,7 @@ GitHub Example:
 ### GitLab pull request example
 
 The green checkmark means the dbt builds and tests were successful. Clicking the dbt Cloud pop up will navigate you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" title="The green checkmark means the dbt builds and tests were successful. The 'dbt Cloud' pop up shown here will navigate you to the relevant CI run in dbt Cloud."/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" title="GitLab pull request"/>
 
 ### Azure DevOps pull request example
 
