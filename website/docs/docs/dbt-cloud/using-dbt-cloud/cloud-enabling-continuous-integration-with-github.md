@@ -124,7 +124,7 @@ First, make sure you have the [native GitHub authentication](cloud-installing-th
 Once you're in the repository page, you can click the **Edit** button and then the **Disconnect Repository** button at the bottom.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" title="Disconnect repo"/>
 
-Confirm that you'd like to disconnect your repository. You should then see a new **Configure a repository** link in your old repository's place. Click through to the configuration page, which will look like this:
+Confirm that you'd like to disconnect your repository. You should then see a new **Configure a repository** link in your old repository's place. Click through to the configuration page:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" title="Configure repo"/>
 
