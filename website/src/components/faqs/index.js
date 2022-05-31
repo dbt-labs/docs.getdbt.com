@@ -17,7 +17,7 @@ function FAQ({ children, src, alt_header = null }) {
 
     // If faqFile found with ID, set filePath for this file
     if (faqFile?.id) {
-      const data = faqFile.filePath.match(/(docs\/faqs\/(.*)\.md$)/g)
+      const data = faqFile.filePath.match(/(docs\/docs\/faqs\/(.*)\.md$)/g)
       if (data?.length) {
         setFilePath(data[1])
       }

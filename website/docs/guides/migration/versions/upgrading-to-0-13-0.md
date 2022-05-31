@@ -25,4 +25,4 @@ A number of materialization-specific adapter methods have changed in breaking wa
 
 Version 1 schema.yml specs (deprecated in 0.11.0) are no longer supported. Please use the version 2 spec instead.
 
-See the [0.11.0 migration guide](upgrading-to-0-11-0#schemayml-v2-syntax) for details.
+See the [0.11.0 migration guide](versions/upgrading-to-0-11-0.md#schemayml-v2-syntax) for details.
