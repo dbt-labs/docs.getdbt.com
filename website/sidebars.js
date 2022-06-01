@@ -632,40 +632,73 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Migration",
-      link: {
-        type: 'generated-index',
-        title: 'Migration guides',
-        description: 'Learn how to upgrade to the latest version of dbt Core.',
-        slug: '/guides/migration',
-      },
       items: [
-        "guides/migration/versions/upgrading-to-v1.1",
-        "guides/migration/versions/upgrading-to-v1.0",
-        "guides/migration/versions/upgrading-to-v0.21",
-        "guides/migration/versions/upgrading-to-v0.20",
         {
           type: "category",
-          label: "Older versions",
+          label: "Versions",
           link: {
             type: 'generated-index',
-            title: 'Migration guides',
-            description: 'Learn how to upgrade from older versions of dbt Core.',
-            slug: '/guides/migration/older-versions',
+            title: 'Version migration guides',
+            description: 'Learn how to upgrade to the latest version of dbt Core.',
+            slug: '/guides/migration/versions',
           },
           items: [
-            "guides/migration/versions/upgrading-to-0-19-0",
-            "guides/migration/versions/upgrading-to-0-18-0",
-            "guides/migration/versions/upgrading-to-0-17-0",
-            "guides/migration/versions/upgrading-to-0-16-0",
-            "guides/migration/versions/upgrading-to-0-15-0",
-            "guides/migration/versions/upgrading-to-0-14-1",
-            "guides/migration/versions/upgrading-to-0-14-0",
-            "guides/migration/versions/upgrading-to-0-13-0",
-            "guides/migration/versions/upgrading-to-0-12-0",
-            "guides/migration/versions/upgrading-to-0-11-0",
+            "guides/migration/versions/upgrading-to-v1.1",
+            "guides/migration/versions/upgrading-to-v1.0",
+            "guides/migration/versions/upgrading-to-v0.21",
+            "guides/migration/versions/upgrading-to-v0.20",
+            {
+              type: "category",
+              label: "Older versions",
+              link: {
+                type: 'generated-index',
+                title: 'Older version migration guides',
+                description: 'Learn how to upgrade from older versions of dbt Core.',
+                slug: '/guides/migration/versions/older-versions',
+              },
+              items: [
+                "guides/migration/versions/upgrading-to-0-19-0",
+                "guides/migration/versions/upgrading-to-0-18-0",
+                "guides/migration/versions/upgrading-to-0-17-0",
+                "guides/migration/versions/upgrading-to-0-16-0",
+                "guides/migration/versions/upgrading-to-0-15-0",
+                "guides/migration/versions/upgrading-to-0-14-1",
+                "guides/migration/versions/upgrading-to-0-14-0",
+                "guides/migration/versions/upgrading-to-0-13-0",
+                "guides/migration/versions/upgrading-to-0-12-0",
+                "guides/migration/versions/upgrading-to-0-11-0",
+              ],
+            },
           ],
         },
-      ],
+        {
+          type: "category",
+          label: "Tools",
+          link: {
+            type: 'generated-index',
+            title: 'Tool migration guides',
+            description: 'Learn how to migrate to dbt from other tools and platforms.',
+            slug: '/guides/migration/tools',
+          },
+          items: [
+            {
+              type: "category",
+              label: "Migrating from stored procedures",
+              link: {
+                type: 'doc',
+                id: 'guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures',
+              },
+              items: [
+                'guides/migration/tools/migrating-from-stored-procedures/2-inserts',
+                'guides/migration/tools/migrating-from-stored-procedures/3-updates',
+                'guides/migration/tools/migrating-from-stored-procedures/4-deletes',
+                'guides/migration/tools/migrating-from-stored-procedures/5-merges',
+                'guides/migration/tools/migrating-from-stored-procedures/6-migrating-from-stored-procedures-conclusion',
+              ]
+            }
+          ]
+        },
+      ]
     },
     {
       type: "category",
