@@ -203,7 +203,7 @@ The `dbt-bigquery` plugin uses the BigQuery Python client library to submit quer
 1. Job creation: Submit the query job to BigQuery, and receive its job ID.
 2. Job execution: Wait for the query job to finish executing, and receive its result.
 
-Some queries inevitably fail, at different points in process. To handle these cases, dbt supports fine-grained configuration for query timeouts and retries.
+Some queries inevitably fail, at different points in process. To handle these cases, dbt supports <Term id="grain">fine-grained</Term> configuration for query timeouts and retries.
 
 #### job_execution_timeout_seconds
 
@@ -215,7 +215,7 @@ In older versions of `dbt-bigquery`, this same config was called `timeout_second
 
 :::
   
-The default value is 300 seconds. If any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
+No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set.) When `job_execution_timeout_seconds` is set, if any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
 
 ```
  Operation did not complete within the designated timeout.
@@ -334,7 +334,7 @@ my-profile:
 ### Dataset locations
 
 The location of BigQuery datasets can be configured using the `location` configuration in a BigQuery profile.
-`location` may be iether a multi-regional location (e.g. `EU`, `US`), or a regional location (e.g. `us-west2` ) as per the [the BigQuery documentation](https://cloud.google.com/bigquery/docs/locations) describes.
+`location` may be either a multi-regional location (e.g. `EU`, `US`), or a regional location (e.g. `us-west2` ) as per [the BigQuery documentation](https://cloud.google.com/bigquery/docs/locations) describes.
 Example:
 
 ```yaml
@@ -451,7 +451,7 @@ BigQuery's permission model is dissimilar from more conventional databases like 
 - BigQuery Data Editor
 - BigQuery User
 
-This set of permissions will permit dbt users to read from and create tables and views in a BigQuery project.
+This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 
 ## Local OAuth gcloud setup
 

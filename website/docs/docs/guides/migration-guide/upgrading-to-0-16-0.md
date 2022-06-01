@@ -35,7 +35,7 @@ for an example of how to use the two-argument variant of `generate_schema_name`.
 
 The `partition_by` config for BigQuery models now accepts a dictionary containing
 the following keys:
-- `field`: The field name in the table to partition by
+- `field`: The field name in the <Term id="table" /> to partition by
 - `data_type`: The data type for the partitioning field (`date`, `timestamp`, `datetime`, `int64`)
 - `range`: Only required if the `data_type` is `int64` (for range bucket partitioning)
 

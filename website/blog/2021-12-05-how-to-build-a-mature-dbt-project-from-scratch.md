@@ -63,7 +63,7 @@ Let’s pretend that we are an analytics engineer at Seeq Wellness, a hypothetic
 
 Now, I definitely have no authority to speak on what it takes to raise a child, but I understand that a big part of caring for an infant has to do with taking care of its inputs and outputs. The same can be said about a dbt project in this stage!
 
-The goal here is to learn the very basics of interacting with a dbt project; feeding it SQL, getting data objects out of it. We will build on this later, but right now, the important thing to do is create a model in dbt, give dbt a command, and see that it properly produces the view or table in our warehouse that we expect.
+The goal here is to learn the very basics of interacting with a dbt project; feeding it SQL, getting data objects out of it. We will build on this later, but right now, the important thing to do is create a model in dbt, give dbt a command, and see that it properly produces the <Term id="view" /> or <Term id="table" /> in our warehouse that we expect.
 
 In addition to learning the basic pieces of dbt, we're familiarizing ourselves with the modern, version-controlled analytics engineering workflow, and experimenting with how it feels to use it at our organization.
 
@@ -107,9 +107,9 @@ We’re going to:
 
 **Project Appearance**
 
-Let's check in on the growth of [our projec](https://github.com/dbt-labs/dbt-project-maturity/tree/main/2-toddlerhood)t. We've broken some of our logic into its own model — our original script had repetitive logic in subqueries, now it's following a key principle of analytics engineering: Don't Repeat Yourself (DRY). For more information on how to refactor your SQL queries for Modularity - check out our [free on-demand course](https://courses.getdbt.com/courses/refactoring-sql-for-modularity).
+Let's check in on the growth of [our projec](https://github.com/dbt-labs/dbt-project-maturity/tree/main/2-toddlerhood)t. We've broken some of our logic into its own model — our original script had repetitive logic in <Term id="subquery">subqueries</Term>, now it's following a key principle of analytics engineering: <Term id="dry">Don't Repeat Yourself (DRY)</Term>. For more information on how to refactor your SQL queries for Modularity - check out our [free on-demand course](https://courses.getdbt.com/courses/refactoring-sql-for-modularity).
 
-We also added our first [YML files](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/). Here, we have one yml file to [configure our sources](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/source.yml), and one one yml file to [describe our models](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/schema.yml). We're just starting with basic declarations of our sources, primary key testing using dbt built in tests, and a model-level description -- these are the first steps of a project just learning to walk!
+We also added our first [YML files](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/). Here, we have one yml file to [configure our sources](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/source.yml), and one one yml file to [describe our models](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/schema.yml). We're just starting with basic declarations of our sources, <Term id="primary-key" /> testing using dbt built in tests, and a model-level description -- these are the first steps of a project just learning to walk!
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_4.png)
 

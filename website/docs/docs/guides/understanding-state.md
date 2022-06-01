@@ -9,9 +9,9 @@ title: "Understanding state"
 
 </Changelog>
 
-One of the greatest underlying assumptions about dbt is that its operations should be **stateless** and **idempotent**. That is, it doesn't matter how many times a model has been run before, or if it has ever been run before. It doesn't matter if you run it once or a thousand times. Given the same raw data, you can expect the same transformed result. A given run of dbt doesn't need to "know" about _any other_ run; it just needs to know about the code in the project and the objects in your database as they exist _right now_.
+One of the greatest underlying assumptions about dbt is that its operations should be **stateless** and **<Term id="idempotent" />**. That is, it doesn't matter how many times a model has been run before, or if it has ever been run before. It doesn't matter if you run it once or a thousand times. Given the same raw data, you can expect the same transformed result. A given run of dbt doesn't need to "know" about _any other_ run; it just needs to know about the code in the project and the objects in your database as they exist _right now_.
 
-That said, dbt does store "state"—a detailed, point-in-time view of project resources, database objects, and invocation results—in the form of its [artifacts](dbt-artifacts). If you choose, dbt can use these artifacts to inform certain  operations. Crucially, the operations themselves are still stateless and idempotent: given the same manifest and the same raw data, dbt will produce the same transformed result.
+That said, dbt does store "state"—a detailed, point-in-time view of project resources, database objects, and invocation results—in the form of its [artifacts](dbt-artifacts). If you choose, dbt can use these artifacts to inform certain  operations. Crucially, the operations themselves are still stateless and <Term id="idempotent" />: given the same manifest and the same raw data, dbt will produce the same transformed result.
 
 dbt can leverage artifacts from a prior invocation as long as their file path is passed to the `--state` flag. This is a prerequsite for:
 - [The `state:` selector](methods#the-state-method), whereby dbt can identify resources that are new or modified
@@ -69,3 +69,33 @@ The state and result selectors can also be combined in a single invocation of db
 ```bash
 $ dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
 ```
+
+### The "source_status" status
+<VersionBlock lastVersion="1.0">
+
+Only supported by v1.1 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+Only supported by v1.1 or newer.
+
+:::caution Experimental functionality
+The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
+:::
+
+
+Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/docs/reference/artifacts/sources-json) page. 
+
+The following dbt commands produce `sources.json` artifacts whose results can be referenced in subsequent dbt invocations:  
+- `dbt source freshness`
+
+After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
+
+```bash
+# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
+$ dbt source freshness # must be run again to compare current to previous state
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+```
+</VersionBlock>

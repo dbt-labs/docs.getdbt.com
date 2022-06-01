@@ -2,7 +2,7 @@
 title: How do I exclude a table from a freshness snapshot?
 ---
 
-Some tables in a data source may be updated infrequently. If you've set a `freshness` property at the source level, this table is likely to fail checks.
+Some tables in a data source may be updated infrequently. If you've set a `freshness` property at the source level, this <Term id="table" /> is likely to fail checks.
 
 To work around this, you can set the table's freshness to null (`freshness: null`) to "unset" the freshness for a particular table:
 

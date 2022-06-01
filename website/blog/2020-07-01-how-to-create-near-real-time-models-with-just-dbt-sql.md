@@ -37,7 +37,7 @@ Tldr: If you need transformed, operational data to make in-the-moment decisions 
 
 #### 1\. Materialize everything as views
 
-Since views are simply stored queries that do not store data, they are always up to date. This approach works until your transformations take more than 2+ minutes, which wouldn’t meet a “near real-time” SLA. When your data is small enough, this is the preferred approach, however it isn’t scalable.
+Since <Term id="view">views</Term> are simply stored queries that do not store data, they are always up to date. This approach works until your transformations take more than 2+ minutes, which wouldn’t meet a “near real-time” SLA. When your data is small enough, this is the preferred approach, however it isn’t scalable.
 
 #### 2\. Run dbt in micro-batches
 
@@ -115,7 +115,7 @@ As you start to implement lambda views with more sources, creating a macro for t
 You need to filter often and intentionally on your current view flow. This is because there is usually a lot of data being transformed and you want to transform only what is necessary. There are two main places that filters should be considered.
 
 *   **At the beginning of the current view flow**: This is usually happening at Transformation 1. This filter takes into account how often the historical table is run. If it’s being run every hour, then I filter for only the last 2 hours of “current rows”. The overlap is assurance that if there are any issues with the job run, we don’t miss out on rows.
-*   **At the unioned model**: If you have late-arriving facts, you will want to include a primary key filter to assure that there are no fanouts.
+*   **At the unioned model**: If you have late-arriving facts, you will want to include a <Term id="primary-key" /> filter to assure that there are no fanouts.
 
 As you start to create more lambda views, you will want to make the filter into a macro for drier code. Here is a sample macro for you to use:
 

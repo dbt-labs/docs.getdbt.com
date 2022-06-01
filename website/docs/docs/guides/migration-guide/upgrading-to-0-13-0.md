@@ -13,7 +13,7 @@ Use a variable from the [`{{ target }}` context](target) or [`on-run-end` contex
 
 ### Adapter methods
 
-A number of materialization-specific adapter methods have changed in breaking ways. If you use these adapter methods in your macros or materializations, you may need to update your code accordingly.
+A number of materialization-specific adapter methods have changed in breaking ways. If you use these adapter methods in your macros or <Term id="materialization">materializations</Term>, you may need to update your code accordingly.
   - query_for_existing - **removed**, use [get_relation](adapter#get_relation) instead.
   - [get_missing_columns](adapter#get_missing_columns) - changed to take `Relation`s instead of schemas and identifiers
   - [expand_target_column_types](adapter#expand_target_column_types) - changed to take a `Relation` instead of schema, identifier

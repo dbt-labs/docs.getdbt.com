@@ -25,6 +25,10 @@ sources:
     [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
     [meta](meta): {<dictionary>}
     [tags](resource-configs/tags): [<string>]
+    
+    # requires v1.1+
+    [config](resource-properties/config):
+      [<source_config>](source-configs): <config_value>
 
     [overrides](resource-properties/overrides): <string>
 

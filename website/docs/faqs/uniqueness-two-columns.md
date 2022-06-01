@@ -5,7 +5,7 @@ title: Can I test the uniqueness of two columns?
 Yes, There's a few different options.
 
 
-Consider an orders table that contains records from multiple countries, and the combination of ID and country code is unique:
+Consider an orders <Term id="table" /> that contains records from multiple countries, and the combination of ID and country code is unique:
 
 | order_id | country_code |
 |----------|--------------|

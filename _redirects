@@ -1,3 +1,6 @@
+# redirect next
+https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
+
 /img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png	301!
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
@@ -285,3 +288,16 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/project-configs/data-paths  /reference/project-configs/seed-paths 302
 /reference/project-configs/modules-paths  /reference/project-configs/packages-install-path 302
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
+/reference/warehouse-profiles/presto-profile    /reference/profiles.yml 302
+/tutorial/setting-up	/tutorial/getting-started	302
+/tutorial/test-and-document-your-project  /tutorial/building-your-first-project/test-and-document-your-project	302
+/tutorial/build-your-first-models   /tutorial/building-your-first-project/build-your-first-models	302
+/tutorial/deploy-your-project   /tutorial/building-your-first-project/schedule-a-job	302
+/tutorial/using-jinja   /tutorial/learning-more/using-jinja	302
+/tutorial/refactoring-legacy-sql    /tutorial/learning-more/refactoring-legacy-sql	302
+/tutorial/2b-create-a-project-dbt-cli.md   /tutorial/learning-more/getting-started-dbt-core	302
+/tutorial/create-a-project-dbt-cli   /tutorial/learning-more/getting-started-dbt-core	302
+/tutorial/2a-create-a-project-dbt-cloud.md   /tutorial/getting-started	302
+/tutorial/create-a-project-dbt-cloud   /tutorial/getting-started	302
+/docs/dbt-cloud/cloud-changelog   /docs/dbt-cloud/release-notes	302
+

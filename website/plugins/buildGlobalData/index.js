@@ -1,6 +1,7 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 const slugify = require('slugify')
+const { getDirectoryFiles } = require('./get-directory-files')
 
 // Pass custom data to blog
 module.exports = function buildGlobalDataPlugin(context, options) {
@@ -25,11 +26,16 @@ module.exports = function buildGlobalDataPlugin(context, options) {
       // This controls versioning for sidebar
       const { versionedPages } = options
       
+      // Get all FAQ doc ids
+      // FAQ component uses these to pull file
+      const faqFiles = getDirectoryFiles(`docs/faqs`)
+
       return {
         tagData,
         blogMeta,
         CTAData,
-        versionedPages
+        versionedPages,
+        faqFiles
       }
     },
     async contentLoaded({content, actions}) {

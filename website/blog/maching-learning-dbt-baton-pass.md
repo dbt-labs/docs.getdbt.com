@@ -42,7 +42,7 @@ This happens because the “normal” way of doing things lacks long-term & expl
 
 ### Here’s what happened
 
-After some initial planning, I knew we had this raw data living somewhere in our data warehouse. It was easy to make sense of this starting point for our work together. I wrote dbt transformations to massage this raw data and joined a couple tables together based on intuition of what variables mattered: daily active usage, number of users, amount paid, historical usage, etc.
+After some initial planning, I knew we had this raw data living somewhere in our data warehouse. It was easy to make sense of this starting point for our work together. I wrote dbt transformations to massage this raw data and joined a couple <Term id="table">tables</Term> together based on intuition of what variables mattered: daily active usage, number of users, amount paid, historical usage, etc.
 
 The ML engineer stepped in from here. She was used to doing her statistics and preprocessing in python [pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/index.html). Before she opened up her Jupyter notebook, we had a heart-to-heart conversation and realized the same work could be done through dbt. Preprocessing could be done through this [open source dbt package](https://github.com/omnata-labs/dbt-ml-preprocessing/tree/1.1.0/#dbt-ml-preprocessing) and there were plenty of others like it in the [package registry](https://hub.getdbt.com/).
 
@@ -131,7 +131,7 @@ What if…SQL could do more than what we think it can or even should?
 
 #### How would this change my story?
 
-My ML engineer and I would get to unite on SQL even more. Wherever the pipeline broke in the (ELT-ML) process, **SQL would be our entry-point together** to figure out the problem. For simple machine learning problems (e.g., linear regression, classification), I would more easily understand and even own the full pipeline – with the advice and review of my ML engineer of course. And for Continual, I would elegantly add my machine learning model as an exposure (see below).
+My ML engineer and I would get to unite on SQL even more. Wherever the pipeline broke in the (<Term id="elt" />-ML) process, **SQL would be our entry-point together** to figure out the problem. For simple machine learning problems (e.g., linear regression, classification), I would more easily understand and even own the full pipeline – with the advice and review of my ML engineer of course. And for Continual, I would elegantly add my machine learning model as an exposure (see below).
 
 Beyond fixing problems once they arise, this workflow would avoid much of the complexity involved in building ML Ops pipelines: massive amounts of [extra infrastructure](https://dl.acm.org/doi/10.5555/2969442.2969519) (think: where does my python code run?). As a ML engineer, I want to live in a world where I can manage exploration, training, versioning, and inference from one control plane. **In-warehouse ML has the potential to make that real.**
 

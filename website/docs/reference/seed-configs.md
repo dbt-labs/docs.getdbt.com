@@ -58,15 +58,12 @@ seeds:
 
 ### General configurations
 
-### General configurations
-
 <Tabs
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
   ]
 }>
 

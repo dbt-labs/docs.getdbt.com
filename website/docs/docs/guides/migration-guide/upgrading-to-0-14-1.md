@@ -15,11 +15,11 @@ The following section only applies to Snapshots running against Snowflake or Big
 
 When a [Snapshot](snapshots) is configured to use the `check` strategy, dbt will compare the specified `check_cols` between the source dataset and the snapshotted dataset to determine if a row in the Snapshot has changed. A logic error in the v0.14.0 release of dbt caused this strategy to fail if the values of the specified `check_cols` for a given row cycled back into a previously known state. Importantly, this issue only affects Snowflake and BigQuery due to their respective uses of the `merge` statement in Snapshots.
 
-In this failure mode, dbt would "finalize" existing records by setting a `dbt_valid_to` date for a changed record without correspondingly inserting a new record for the change. **In this state, the finalized records will no longer be tracked in the Snapshot table**.
+In this failure mode, dbt would "finalize" existing records by setting a `dbt_valid_to` date for a changed record without correspondingly inserting a new record for the change. **In this state, the finalized records will no longer be tracked in the Snapshot <Term id="table" />**.
 
 ### Resolution
 
-To determine if your Snapshot table is affected by this issue, you can run a query to find "stuck" records. These "stuck" records:
+To determine if your Snapshot <Term id="table" /> is affected by this issue, you can run a query to find "stuck" records. These "stuck" records:
  - Are the most recent records for a given `unique_key` in the snapshot
  - Have a value for both `dbt_valid_from` and `dbt_valid_to`
 
@@ -79,7 +79,7 @@ This migration is only required for users of the `check` snapshot strategy on Sn
 
 :::
 
-The query shown above will generate a set of rows which are in a "stuck" state. You can use the output of this query to update the records in your snapshot table to become "unstuck". To do this, use an `update` statement that sets the `dbt_valid_to` column to `null` for records identified in the query above. **Use caution when running DML directly against a snapshot table. It is a good idea to make a backup of this table before applying running this migration manually!** A sample query has been provided below: please test this query _thoroughly_ before running it in production.
+The query shown above will generate a set of rows which are in a "stuck" state. You can use the output of this query to update the records in your snapshot table to become "unstuck". To do this, use an `update` statement that sets the `dbt_valid_to` column to `null` for records identified in the query above. **Use caution when running <Term id="dml" /> directly against a snapshot table. It is a good idea to make a backup of this table before applying running this migration manually!** A sample query has been provided below: please test this query _thoroughly_ before running it in production.
 
 <File name='fix_snapshot_stuck_records.sql'>
 
