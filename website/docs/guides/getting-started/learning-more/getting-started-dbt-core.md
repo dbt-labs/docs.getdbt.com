@@ -5,13 +5,13 @@ description: "Connecting your warehouse to dbt Core using the CLI."
 sidebar_label: "Getting started with dbt Core"
 ---
 
-When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to [Getting set up in dbt Cloud](/tutorial/getting-set-up).
+When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to [Getting set up in dbt Cloud](/guides/getting-started/getting-set-up).
 
 ## Prerequisites
 
 * To use the dbt CLI, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install dbt Core using the [installation instructions](/dbt-cli/install/overview) for your operating system.
-* Complete [Setting up (in BigQuery)](/tutorial/getting-set-up/setting-up-bigquery#setting-up) and [Loading data (BigQuery)](/tutorial/getting-set-up/setting-up-bigquery#loading-data).
+* Complete [Setting up (in BigQuery)](/guides/getting-started/getting-set-up/setting-up-bigquery#setting-up) and [Loading data (BigQuery)](/guides/getting-started/getting-set-up/setting-up-bigquery#loading-data).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 ## Create a starter project

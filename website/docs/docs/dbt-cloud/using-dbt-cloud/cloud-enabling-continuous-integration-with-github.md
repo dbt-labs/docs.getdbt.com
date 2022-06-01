@@ -95,7 +95,7 @@ dbt build --select source_status:fresher+
 ```
 </VersionBlock>
 
-More example commands in [Pro-tips for workflows](/docs/guides/best-practices.md#pro-tips-for-workflows).
+More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
 
 ## Troubleshooting
 
