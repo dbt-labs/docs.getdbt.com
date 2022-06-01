@@ -19,9 +19,9 @@ One foundational principle that applies to nearly all dbt projects though, is th
 
 This guide has three main goals:
 
-- thoroughly cover our most up-to-date recommendations on how to structure typical dbt projects
-- illustrate these recommendations with comprehensive examples
-- at each stage, explain *why* we recommend the approach that we do, so that you're equipped to decide when and where to deviate from these recommendations to better fit your organization’s unique needs
+- Thoroughly cover our most up-to-date recommendations on how to structure typical dbt projects
+- Illustrate these recommendations with comprehensive examples
+- At each stage, explain *why* we recommend the approach that we do, so that you're equipped to decide when and where to deviate from these recommendations to better fit your organization’s unique needs
 
 You should walk away from this guide with a deeper mental model of how the components of a dbt project fit together, such that purpose and principles of analytics engineering feel more clear and intuitive.
 

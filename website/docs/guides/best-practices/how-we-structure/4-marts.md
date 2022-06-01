@@ -130,8 +130,8 @@ The most important aspect of marts is that they contain all of the useful data a
 
 - **Troubleshoot via tables.** While stacking views and ephemeral models up until our marts — only building data into the warehouse at the end of a chain when we have the models we really want end users to work with — is ideal in production, it can present some difficulties in development. Particularly, certain errors may seem to be surfacing in our later models that actually stem from much earlier dependencies in our model chain (ancestor models in our DAG that are built before the model throwing the errors). If you’re having trouble pinning down where or what a database error is telling you, it can be helpful to temporarily build a specific chain of models as tables so that the warehouse will throw the error where it’s actually occurring.
 - **After marts: the activation layer.** In the same way that our staging models are building blocks for our marts, that also offer us direct views into specific source data, our marts are building blocks for our final outputs that also offer direct views into specific ideas. You can use marts directly, but they are equally important as components for building models in the *activation layer* after marts. This is a deep and fast-evolving topic, so we’ll cover this in a separate forthcoming guide that dives into:
-  - metrics
-  - reverse ETL
-  - reporting and dashboards
-  - data science and ML
-  - [exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures) (how we tie our dbt DAG into all of the above)
+  - Metrics
+  - Reverse ETL
+  - Reporting and dashboards
+  - Data science and ML
+  - [Exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures) (how we tie our dbt DAG into all of the above)
