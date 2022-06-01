@@ -569,6 +569,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/vertica-profile",
         "reference/warehouse-profiles/tidb-profile",
         "reference/warehouse-profiles/glue-profile",
+        "reference/warehouse-profiles/iomete-profile",
       ],
     },
     {

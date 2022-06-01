@@ -44,7 +44,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino)) | [Profile Setup](trino-profile)  | `pip install dbt-trino` |
 | Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata)) | [Profile Setup](teradata-profile), [Configuration](teradata-configs) | `pip install dbt-teradata` |
 | TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb)) | [Profile Setup](tidb-profile) | `pip install dbt-tidb` |
-
+| iomete ([dbt-iomete](https://github.com/iomete/dbt-iomete)) | [Profile Setup](iomete-profile) | `pip install dbt-iomete`      |
 
 ### Community Supported
 
