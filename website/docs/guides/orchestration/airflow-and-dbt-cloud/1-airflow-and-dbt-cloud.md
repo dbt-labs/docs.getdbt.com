@@ -3,10 +3,10 @@ title: Airflow and dbt Cloud
 id: 1-airflow-and-dbt-cloud
 ---
 
-In some cases, Airflow may be the preferred orchestrator for your organization over working fully within dbt Cloud. There are a few reasons your team might be considering using Airflow to orchestrate your dbt jobs:
+In some cases, [Airflow](https://airflow.apache.org/) may be the preferred orchestrator for your organization over working fully within dbt Cloud. There are a few reasons your team might be considering using Airflow to orchestrate your dbt jobs:
 
 - Your team is already using Airflow to orchestrate other processes
-- Your team needs to ensure that a dbt job kicks off before or after another process outside of dbt Cloud
+- Your team needs to ensure that a [dbt job](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview#schedule-and-run-dbt-jobs-in-production) kicks off before or after another process outside of dbt Cloud
 - Your team needs flexibility to manage more complex scheduling, such as kicking off one dbt job only after another has completed
 - Your team wants to own their own orchestration solution
 - You need code to work right now without starting from scratch
