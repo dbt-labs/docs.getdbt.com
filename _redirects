@@ -303,3 +303,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/dbt-cloud/cloud-changelog   /docs/dbt-cloud/release-notes	302
 /docs/guides/* /guides/legacy/:splat 301
 /faqs/* /docs/faqs/:splat 301
+/faqs/all /docs/faqs 301!
