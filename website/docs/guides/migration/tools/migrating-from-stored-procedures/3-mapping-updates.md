@@ -16,7 +16,7 @@ WHERE total < 0
 The way to look at this is similar to an `INSERT`-`SELECT` statement. The table being updated is the model you want to modify, and since this is an `UPDATE`, that model has likely already been created, and you can either:
 
 - add to it with subsequent transformations
-- create an intermediate model that builds off of the original model – perhaps naming it something like `bar_transformed.sql`.
+- create an intermediate model that builds off of the original model – perhaps naming it something like `int_[entity]_[verb].sql`.
 
 The `SELECT` list should contain all of the columns for the table, but for the specific columns being updated by the DML, you’ll use the computation on the right side of the equals sign as the `SELECT`ed value. Then, you can use the target column name on the left of the equals sign as the column alias.
 

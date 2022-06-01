@@ -13,7 +13,7 @@ INSERT INTO returned_orders (order_id, order_date, total_return)
 SELECT order_id, order_date, total FROM orders WHERE type = ‘return’
 ```
 
-Converting this with a first pass to a dbt model (TODO: link to docs) (in a file called returned_orders.sql) might look something like:
+Converting this with a first pass to a [dbt model](docs/building-a-dbt-project/building-models) (in a file called returned_orders.sql) might look something like:
 
 ```sql
 SELECT
@@ -28,11 +28,11 @@ WHERE type = ‘return’
 
 Functionally, this would create a model (which could be materialized as a table or view depending on needs) called `returned_orders` that contains three columns: `order_id`, `order_date`, `total_return`) predicated on the type column. It achieves the same end as the `INSERT`, just in a declarative fashion, using dbt.
 
-### **A note on `FROM` clauses**
+## **A note on `FROM` clauses**
 
-In dbt, a hard-coded table or view name in a FROM clause is one of the biggest sins you can commit. dbt uses the ref and source macros to discover the ordering that transformations need to execute in, and if you don’t use them, you’ll be unable to benefit from dbt’s built-in lineage generation and pipeline execution. In the sample code throughout the remainder of this article, we’ll use ref statements in the dbt-converted versions of SQL statements, but it is an exercise for the reader to ensure that those models exist in their dbt projects.
+In dbt, using a hard-coded table or view name in a `FROM` clause is one of the most serious mistakes new users make. dbt uses the ref and source macros to discover the ordering that transformations need to execute in, and if you don’t use them, you’ll be unable to benefit from dbt’s built-in lineage generation and pipeline execution. In the sample code throughout the remainder of this article, we’ll use ref statements in the dbt-converted versions of SQL statements, but it is an exercise for the reader to ensure that those models exist in their dbt projects.
 
-### **Sequential `INSERT`s to an existing table can be `UNION ALL`’ed together**
+## **Sequential `INSERT`s to an existing table can be `UNION ALL`’ed together**
 
 Since dbt models effectively perform a single `CREATE TABLE AS SELECT` (or if you break it down into steps, `CREATE`, then an `INSERT`), you may run into complexities if there are multiple `INSERT` statements in your transformation that all insert data into the same table. Fortunately, this is a simple thing to handle in dbt. Effectively, the logic is performing a `UNION ALL` between the `INSERT` queries. If I have a transformation flow that looks something like (ignore the contrived nature of the scenario):
 
