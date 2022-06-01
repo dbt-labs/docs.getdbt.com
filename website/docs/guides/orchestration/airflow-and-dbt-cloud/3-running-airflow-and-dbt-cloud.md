@@ -57,7 +57,7 @@ Now you have all the working pieces to get up and running with Airflow + dbt Clo
 
 If you have worked with dbt Cloud before, you have likely encountered cases where a job fails. In those cases, you have likely logged into dbt Cloud, investigated the error, and then manually restarted the job.
 
-This section of the tutorial will show you how to restart the job directly from Airflow.  This will specifically run *just* the `trigger_dbt_cloud_job_run` and downstream tasks of the Airflow DAG and not the entire DAG.  If only the transformation step fails, you don’t need to re-run the extract and load processes. Let’s jump into how to do that in Airflow.
+This section of the guide will show you how to restart the job directly from Airflow.  This will specifically run *just* the `trigger_dbt_cloud_job_run` and downstream tasks of the Airflow DAG and not the entire DAG.  If only the transformation step fails, you don’t need to re-run the extract and load processes. Let’s jump into how to do that in Airflow.
 
 1. Click on the task
 
@@ -75,7 +75,7 @@ This section of the tutorial will show you how to restart the job directly from 
 
 ## Cleaning up
 
-At the end of this tutorial, make sure you shut down your docker container.  When you’re done using Airflow, use the following command to stop the container:
+At the end of this guide, make sure you shut down your docker container.  When you’re done using Airflow, use the following command to stop the container:
 
 ```bash
 $ astrocloud dev stop

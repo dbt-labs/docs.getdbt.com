@@ -4,7 +4,7 @@ id: add-a-seed
 description: Learn how to add a seed file to your project
 ---
 :::caution Heads up!
-You'll need to have completed the Getting Started part of this tutorial to
+You'll need to have completed the earlier parts of this guide to
 complete this lesson
 :::
 

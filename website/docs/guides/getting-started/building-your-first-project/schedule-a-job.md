@@ -1,7 +1,7 @@
 ---
 title: Schedule a job
 id: schedule-a-job
-description: In this part of the tutorial, we'll go through how you can schedule a job in dbt Cloud.
+description: In this part of the guide, we'll go through how you can schedule a job in dbt Cloud.
 ---
 
 In this part of the guide, you will learn how to schedule a job to be run in your production environment. Scheduling a job is sometimes called _deploying a project_.

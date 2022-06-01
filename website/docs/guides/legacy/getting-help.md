@@ -6,9 +6,8 @@ dbt is open source, and has a generous community behind it. Asking questions wel
 
 ### 1. Try to solve your problem first before asking for help
 
-#### Check out the existing documentation
-We invest heavily in our docs, so this should be the first place you turn! If you're a new dbt user, spend some time completing the [Getting Started tutorial](/tutorial/getting-started) to get familiar with dbt.
-
+#### Search the existing documentation
+The docs site you're on is highly searchable, make sure to explore for the answer here as a first step. If you're new to dbt, try working through the [Getting Started guide](/guides/getting-started/) first to get a firm foundation on the essential concepts.
 #### Try to debug the issue yourself
 We have a handy guide on [debugging errors](debugging-errors) to help out! This guide also helps explain why errors occur, and which docs you might need to search for help.
 

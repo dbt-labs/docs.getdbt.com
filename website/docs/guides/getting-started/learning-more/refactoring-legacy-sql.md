@@ -1,14 +1,14 @@
 ---
-title: Refactoring legacy SQL to dbt SQL
+title: Refactoring legacy SQL to dbt
 id: refactoring-legacy-sql
-description: This tutorial walks through refactoring a long SQL query (perhaps from a stored procedure) into modular dbt data models.
+description: This guide walks through refactoring a long SQL query (perhaps from a stored procedure) into modular dbt data models.
 ---
 
-You may have already learned how to build dbt models from scratch. 
+You may have already learned how to build dbt models from scratch.
 
-But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt. 
+But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt.
 
-There are two parts to accomplish this: migration and refactoring. In this tutorial we’re going to learn a process to help us turn legacy SQL code into modular dbt models.
+There are two parts to accomplish this: migration and refactoring. In this guide we’re going to learn a process to help us turn legacy SQL code into modular dbt models.
 
 When migrating and refactoring code, it’s of course important to stay organized. We'll do this is by following several steps (jump directly from the right sidebar):
 
@@ -21,8 +21,9 @@ When migrating and refactoring code, it’s of course important to stay organize
 
 Let's get into it!
 
-> Note: this tutorial is excerpted from the new dbt Learn On-demand Course, "Refactoring from Procedural SQL to dbt" - if you're curious, pick up the [free refactoring course here](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects.
-
+:::info More resources.
+This guide is excerpted from the new dbt Learn On-demand Course, "Refactoring SQL for Modularity" - if you're curious, pick up the [free refactoring course here](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects. Or for a more in-depth look at migrating DDL and DML from stored procedures check out [this guide](/guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures).
+:::
 ## Migrate your existing SQL code
 
 <WistiaVideo id="5u67ik9t66" />
@@ -37,7 +38,7 @@ To get going, you'll copy your legacy SQL query into your dbt project, by saving
 
 Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
-> If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the [Getting Started tutorial](/tutorial/getting-started) before diving into refactoring.
+> If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [Getting Started guide](/guides/getting-started/) before diving into refactoring.
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 
@@ -92,7 +93,7 @@ Means that you will work directly on the SQL script that you ported over in the 
 
 You'll move it into a `/marts` subfolder within your project's `/models` folder and go to town.
 
-**Pros**: 
+**Pros**:
 - You won't have any old models to delete once refactoring is done.
 
 **Cons**:
@@ -115,7 +116,6 @@ Means that you will copy your model to a `/marts` folder, and work on changes on
 - You'll have the old file(s) in your project until you can deprecate them - running side-by-side like this can feel duplicative, and may be a headache to manage if you're migrating a number of queries in bulk. 
 
 We generally recommend the **alongside** approach, which we'll follow in this tutorial.
-
 
 ## Implement CTE groupings
 Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. This will give you a head start on porting SQL snippets from CTEs into modular [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
@@ -246,4 +246,4 @@ Sure, we could write our own query manually to audit these models, but using the
 ## Ready for refactoring practice?
 Head to the free on-demand course, [Refactoring from Procedural SQL to dbt](https://courses.getdbt.com/courses/refactoring-sql-for-modularity) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
 
-Questions on this tutorial or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).
+Questions on this guide or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).

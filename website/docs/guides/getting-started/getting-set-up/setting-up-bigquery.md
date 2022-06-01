@@ -17,7 +17,7 @@ This guide will walk you through:
 
 ## Prerequisites
 
-Before beginning this tutorial, make sure that you have access to **new or existing Google account**. You can use a personal or work account to set up BigQuery through Google Cloud Platform (GCP).
+Before beginning this guide, make sure that you have access to **new or existing Google account**. You can use a personal or work account to set up BigQuery through Google Cloud Platform (GCP).
 
 ## Setting up
 

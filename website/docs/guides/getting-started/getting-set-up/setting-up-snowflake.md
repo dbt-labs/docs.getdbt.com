@@ -19,7 +19,7 @@ This guide will walk you through:
 
 ## Prerequisites
 
-The only prerequisites for this tutorial are to have access to an email account for signing up for Snowflake and dbt Cloud.
+The only prerequisites for this guide are to have access to an email account for signing up for Snowflake and dbt Cloud.
 
 ## Setting up
 

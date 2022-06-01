@@ -24,6 +24,6 @@ If you want a more in-depth learning experience, we recommend taking the dbt Fun
 
 Before you begin, you will need:
 
-* Warehouse with sample data. If you don't have this, you can use the [Big Query project](tutorial/getting-set-up/setting-up-bigquery), which leverages public data sets.
+* Warehouse with sample data. If you don't have this, you can use the [Big Query project](guides/getting-started/getting-set-up/setting-up-bigquery), which leverages public data sets.
 * Basic understanding of Git.
 * Basic understanding of SQL.

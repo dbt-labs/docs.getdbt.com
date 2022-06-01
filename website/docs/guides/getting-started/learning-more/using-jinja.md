@@ -3,7 +3,7 @@ title: "Using Jinja"
 id: "using-jinja"
 ---
 
-In this tutorial, we're going to take a common pattern used in SQL, and then use Jinja to improve our code.
+In this guide, we're going to take a common pattern used in SQL, and then use Jinja to improve our code.
 
 If you'd like to work through this query, add [this CSV](https://github.com/dbt-labs/jaffle_shop/blob/core-v1.0.0/seeds/raw_payments.csv) to the `seeds/` folder of your dbt project, and then execute `dbt seed`.
 
@@ -15,7 +15,6 @@ While working through the steps of this model, we recommend that you have your c
 Consider a data model in which an `order` can have many `payments`. Each `payment` may have a `payment_method` of `bank_transfer`, `credit_card` or `gift_card`, and therefore each `order` can have multiple `payment_methods`
 
 From an analytics perspective, it's important to know how much of each `order` was paid for with each `payment_method`. In your dbt project, you can create a model, named `order_payment_method_amounts`, with the following SQL:
-
 
 <File name='models/order_payment_method_amounts.sql'>
 

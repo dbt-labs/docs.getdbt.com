@@ -53,6 +53,6 @@ In the future, you would connect your business intelligence (BI) tools to these 
 
 ## Next steps
 
-Once you build your first model, you're ready to [test and document your project](tutorial/building-your-first-project/test-and-document-your-project).
+Once you build your first model, you're ready to [test and document your project](guides/getting-started/building-your-first-project/test-and-document-your-project).
 
 <Snippet src="tutorial-next-steps-1st-model" />

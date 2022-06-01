@@ -32,7 +32,7 @@ Let’s get started by accessing your AWS account and setting up Redshift.
 
     <Lightbox src="/img/redshift_tutorial/images/cloud_formation_in_progress.png" title="Cloud Formation in Progress" />
 
-4. When the stack status changes to “CREATE_COMPLETE”, click on the `Outputs` tab on the top to view information that you will use throughout the rest of this tutorial. Save those credentials for later by keeping this open in a tab.
+4. When the stack status changes to “CREATE_COMPLETE”, click on the `Outputs` tab on the top to view information that you will use throughout the rest of this guide. Save those credentials for later by keeping this open in a tab.
 
 5. Type in `Redshift` to the search bar on the top and click on `Amazon Redshift`
 
