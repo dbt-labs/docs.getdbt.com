@@ -10,7 +10,7 @@
 /website/static/img/docs/dbt-cloud/                    @runleonarun 
 
 # Blog content assigned to Developer experience team
-/website/blog/                       @dbt-labs/devhub 
+/website/blog/                       @dbt-labs/devhub
 
 
 # Partner Related docs assigned to Amy C
