@@ -1,7 +1,6 @@
 ---
 title: "Apache iomete Profile"
-id: "iomete-profile"
- ---
+---
 
 ## Overview of dbt-iomete
 
