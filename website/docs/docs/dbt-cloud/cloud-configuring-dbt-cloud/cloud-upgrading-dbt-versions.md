@@ -51,7 +51,7 @@ clean-targets:
 - Do you have custom scripts that parse dbt JSON artifacts?
 - (BigQuery only) Do you use dbt's legacy capabilities around ingestion-time-partitioned tables?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-1-0-0).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-v1.0).
 
 </details>
 

@@ -423,7 +423,7 @@ def pytest_addoption(parser):
     parser.addoption("--profile", action="store", default="apache_spark", type=str)
 
 
-# Using @pytest.mark.skip_adapter('apache_spark') uses the 'skip_by_adapter_type'
+# Using @pytest.mark.skip_profile('apache_spark') uses the 'skip_by_profile_type'
 # autouse fixture below
 def pytest_configure(config):
     config.addinivalue_line(
@@ -455,6 +455,14 @@ def databricks_sql_endpoint_target():
         "host": os.getenv("DBT_DATABRICKS_HOST_NAME"),
         ...
     }
+
+@pytest.fixture(autouse=True)
+def skip_by_profile_type(request):
+    profile_type = request.config.getoption("--profile")
+    if request.node.get_closest_marker("skip_profile"):
+        for skip_profile_type in request.node.get_closest_marker("skip_profile").args:
+            if skip_profile_type == profile_type:
+                pytest.skip("skipped on '{profile_type}' profile")
 ```
 
 </File>

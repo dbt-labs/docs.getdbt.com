@@ -74,7 +74,7 @@ This section should show something to confirm that your model is doing what you 
 
 ![test validation](/img/blog/pr-template-test-validation.png "dbt test validation")
 
-Adding uniqueness tests shows that you have put thought into the grain of each of your models, and then ensures that those assumptions hold true over time. 
+Adding uniqueness tests shows that you have put thought into the <Term id="grain" /> of each of your models, and then ensures that those assumptions hold true over time. 
 
 By including a screenshot of your dbt test run here, you are confirming that you have done the work.
 
@@ -107,7 +107,7 @@ By standardizing the way your team writes code, your reviewer is able to spend l
 
 **I have added appropriate tests and documentation to any new models.**
 
-By default, all new models should have _at least_ unique and not null tests on the primary key. 
+By default, all new models should have _at least_ unique and not null tests on the <Term id="primary-key" />. 
 
 Documentation follows the same reasoning as the PR description. You will know more **right now** about the intricacies of these models than you will after you’ve developed 50 more models in the coming months.
 

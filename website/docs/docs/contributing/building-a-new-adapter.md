@@ -11,7 +11,35 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 2. In the middle: A set of *macros* responsible for generating SQL that is compliant with the target database.
 3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn model files into persisted objects in the database.
 
-This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
+This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](testing-a-new-adapter)
+), please let the community know that is available to use by adding the adapter to the [Available Adapters](docs/available-adapters) page by following the steps given in [Documenting your adapter](docs/contributing/documenting-a-new-adapter).
+
+For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
+
+## Pre-Requisite Data Warehouse Features
+
+The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
+
+### Training
+- the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) and [Advanced Materializations](https://courses.getdbt.com/courses/advanced-materializations) course.
+
+### Database
+- Does the database complete transactions fast enough for interactive development?
+- Can you execute SQL against the data platform?
+- Is there a concept of schemas?
+- Does the data platform support ANSI SQL, or at least a subset?
+### Driver / Connection Library
+- Is there a Python-based driver for interacting with the database that is db API 2.0 compliant (e.g. Psycopg2 for Postgres, pyodbc for SQL Server)
+- Does it support: prepared statements, multiple statements, or single sign on token authorization to the data platform?
+
+### Open source software
+- Does your organization have an established process for publishing open source software?
+
+
+It is easiest to build an adapter for dbt when the following the data warehouse/platform in question has:
+- a conventional ANSI-SQL interface (or as close to it as possible),
+- a mature connection library/SDK that uses ODBC or Python DB 2 API, and
+- a way to enable developers to iterate rapidly with both quick reads and writes
 
 ## Scaffolding a new adapter
 
@@ -173,7 +201,7 @@ For example:
     def get_response(cls, cursor) -> AdapterResponse:
         code = cursor.sqlstate or "OK"
         rows = cursor.rowcount
-        status_message = f"{code} {rows_affected}"
+        status_message = f"{code} {rows}"
         return AdapterResponse(
             _message=status_message,
             code=code,

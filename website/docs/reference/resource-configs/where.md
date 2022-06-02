@@ -123,7 +123,7 @@ tests:
 
 ### Custom logic
 
-As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt-core/blob/develop/core/dbt/include/global_project/macros/etc/where_subquery.sql).
+As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/materializations/tests/where_subquery.sql).
 
 dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subquery(relation) }}`, where `relation` is a `ref()` or `source()` for the resource being tested. The default implementation of this macro returns:
 - `{{ relation }}` when the `where` config is not defined (`ref()` or `source()`)

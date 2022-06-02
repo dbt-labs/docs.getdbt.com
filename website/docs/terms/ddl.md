@@ -117,8 +117,8 @@ DDL statements allow you to remove, edit, and add database objects. Some of the 
 
 For database-specific DDL resources, check out the following:
 
-- [DDL Commands in Snowflake](https://docs.snowflake.com/en/sql-reference/sql-ddl-summary.html)
-- [SQL Commands in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_commands.html) (contains DDL)
-- [DDL Statements in Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language)
-- [DDL Statements in Databricks](https://docs.databricks.com/sql/language-manual/index.html#ddl-statements)
+- [DDL commands in Snowflake](https://docs.snowflake.com/en/sql-reference/sql-ddl-summary.html)
+- [SQL commands in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_commands.html) (contains DDL)
+- [DDL statements in Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language)
+- [DDL statements in Databricks](https://docs.databricks.com/sql/language-manual/index.html#ddl-statements)
 - [DDL in Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/language-reference.html)
