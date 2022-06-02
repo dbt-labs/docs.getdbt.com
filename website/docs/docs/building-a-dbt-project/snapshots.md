@@ -343,7 +343,7 @@ Snapshot <Term id="table">tables</Term> will be created as a clone of your sourc
 For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
 
 <details>
-<summary>  Details for the `timestamp` strategy </summary>
+<summary>  Details for the timestamp strategy </summary>
 
 Snapshot query results at `2019-01-01 11:00`:
 
@@ -377,7 +377,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 For the `check` strategy, the current timestamp is used to populate each column
 
 <details>
-<summary>  Details for the `check` strategy </summary>
+<summary>  Details for the check strategy </summary>
 
 Snapshot query results at `2019-01-01 11:00`:
 
