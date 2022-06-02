@@ -44,7 +44,7 @@ var siteSettings = {
   title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
-
+  trailingSlash: false,
   themeConfig: {
     image: '/img/avatar.png',
     colorMode: {
