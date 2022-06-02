@@ -21,7 +21,7 @@ let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
 let metatags = []
 // If Not Current Branch, do not index site
-if(GIT_BRANCH !== 'current') {
+if (GIT_BRANCH !== 'current') {
   metatags.push({
     tagName: 'meta',
     attributes: {
@@ -109,10 +109,10 @@ var siteSettings = {
           activeBasePath: 'docs/dbt-cloud'
         },
         {
-          to: '/faqs/all',
-          label: 'FAQs',
+          to: '/guides/getting-started',
+          label: 'Guides',
           position: 'left',
-          activeBasePath: 'faqs'
+          activeBasePath: 'guides'
         },
         {
           to: '/blog/',
@@ -121,13 +121,9 @@ var siteSettings = {
           activeBasePath: 'blog'
         },
         {
-          label: 'Learn',
+          label: 'Courses',
           position: 'right',
           items: [
-            {
-              label: 'Getting started',
-              to: '/tutorial/getting-started',
-            },
             {
               label: 'Online courses',
               href: 'https://courses.getdbt.com',
@@ -182,7 +178,7 @@ var siteSettings = {
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,     
+          sidebarCollapsible: true,
         },
         blog: {
           blogTitle: 'dbt Developer Blog',
@@ -231,14 +227,14 @@ var siteSettings = {
 }
 
 // If versions json file found, add versions dropdown to nav
-if(versions) {
+if (versions) {
   siteSettings.themeConfig.navbar.items.push({
     label: 'Versions',
     position: 'left',
     className: 'nav-versioning',
     items: [
       ...versions.reduce((acc, version) => {
-        if(version?.version) {
+        if (version?.version) {
           acc.push({
             label: `${version.version}`,
             href: '#',
@@ -247,7 +243,7 @@ if(versions) {
         return acc
       }, [])
     ]
-  },)
+  })
 }
 
 module.exports = siteSettings;
