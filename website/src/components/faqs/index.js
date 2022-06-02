@@ -48,7 +48,7 @@ function FAQ({ children, src, alt_header = null }) {
           style={{
             transform: isOn ? null : 'rotateX(180deg)'
           }}>
-        </span >& nbsp;
+        </span >&nbsp;
         <span>{alt_header || fileContent?.meta && fileContent.meta.title}</span>
       </span >
       <div style={{ display: (isOn ? 'block' : 'none') }} className={styles.body}>
