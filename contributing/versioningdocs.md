@@ -99,28 +99,33 @@ Both properties can be used together to set a range where the content should sho
 
 On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer), tabs are used to show different versions of a piece of code. **v0.21.0 and later** shows `--select`, while **v-.20.x and earlier** changes this to `--models`. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cfb22b64-4c39-4d6b-bbac-3d66f8132699/Untitled.png)
+![oldway](https://user-images.githubusercontent.com/3880403/163254165-dea23266-2eea-4e65-b3f0-c7b6d3e51fc3.png)
 
 Below is how we can implement the same versioning using the new **VersionBlock** component:
 
+You see this block when the selected version is >= 0.21:
+
 ```markdown
-// Will show this block when the selected version is >= 0.21
+
 <VersionBlock firstVersion="0.21">
 
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
 $ dbt test --select [...] --defer --state path/to/artifacts
-```
+\```
 
 </VersionBlock>
+```
 
-// Will show this block when the selected version is <= 0.20
+You see this version block when the selected version is <= 0.20
+
+```markdown
 <VersionBlock lastVersion="0.20">
 
 ```shell
 $ dbt run --models [...] --defer --state path/to/artifacts
 $ dbt test --models [...] --defer --state path/to/artifacts
-```
+\```
 
 </VersionBlock>
 ```

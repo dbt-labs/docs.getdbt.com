@@ -11,7 +11,7 @@ In dbt, libraries like these are called _packages_. dbt's packages are so powerf
   * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/) or [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) pageviews into sessions
   * transforming [AdWords](https://hub.getdbt.com/dbt-labs/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
-  * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
+  * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a <Term id="surrogate-key" />
   * creating [custom schema tests](https://github.com/dbt-labs/dbt-utils#schema-tests)
   * writing [audit queries](https://hub.getdbt.com/dbt-labs/audit_helper/latest/)
 * building models and macros for a particular tool used in your data stack, for example:

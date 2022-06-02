@@ -31,7 +31,7 @@ need to select the appropriate directory and then register a new application.
 1. Under **Manage**, select **App registrations**
 2. Click **+ New Registration** to begin creating a new application
 3. Supply configurations for the **Name** and **Supported account types**
-   fields as shown in the table below.
+   fields as shown in the <Term id="table" /> below.
 
 | Field | Value |
 | ----- | ----- |

@@ -13,6 +13,12 @@
 /website/blog/                       @dbt-labs/devhub
 
 
-# Partner Related docs assigned to Amy C
-/website/docs/docs/available-adapters.md/                       @amychen1776 @runleonarun
-/website/docs/reference/warehouse-profiles/                     @amychen1776 @runleonarun
+# Adapter & Package Development Docs
+/website/docs/docs/available-adapters.md/                       @runleonarun @amychen1776 @dataders
+/website/docs/reference/warehouse-profiles/                     @runleonarun @amychen1776 @dataders
+/website/docs/guides/building-packages                          @runleonarun @amychen1776 @dataders @dbeatty10 
+/website/docs/contributing/building-a-new-adapter               @runleonarun @dataders @dbeatty10
+/website/docs/contributing/testing-a-new-adapter                @runleonarun @dataders @dbeatty10
+/website/docs/guides/creating-new-materializations              @runleonarun @dataders @dbeatty10
+/website/docs/docs/dbt-cloud/cloud-configuring-dbt-cloud/       @runleonarun @dataders @dbeatty10
+

@@ -233,7 +233,7 @@ selectors:
         Excludes resources defined in installed packages.
     default: true
     definition:
-      method: project
+      method: package
       value: <my_root_project_name>
 ```
 

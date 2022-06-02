@@ -16,7 +16,7 @@ id: "hooks-operations"
 ## Getting started
 
 Effective database administration sometimes requires additional SQL statements to be run, for example:
-- Granting privileges on an table / view
+- Granting privileges on an <Term id="table" /> / view
 - Creating UDFs
 - Vacuuming tables on Redshift
 - Creating partitions in Redshift Spectrum external tables

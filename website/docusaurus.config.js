@@ -21,7 +21,7 @@ let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
 let metatags = []
 // If Not Current Branch, do not index site
-if(GIT_BRANCH !== 'current') {
+if (GIT_BRANCH !== 'current') {
   metatags.push({
     tagName: 'meta',
     attributes: {
@@ -34,7 +34,6 @@ if(GIT_BRANCH !== 'current') {
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
-console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
@@ -110,10 +109,10 @@ var siteSettings = {
           activeBasePath: 'docs/dbt-cloud'
         },
         {
-          to: '/faqs/all',
-          label: 'FAQs',
+          to: '/guides/getting-started',
+          label: 'Guides',
           position: 'left',
-          activeBasePath: 'faqs'
+          activeBasePath: 'guides'
         },
         {
           to: '/blog/',
@@ -122,19 +121,15 @@ var siteSettings = {
           activeBasePath: 'blog'
         },
         {
-          label: 'Learn',
+          label: 'Courses',
           position: 'right',
           items: [
             {
-              label: 'Getting Started Tutorial',
-              to: '/tutorial/setting-up',
-            },
-            {
-              label: 'Online Courses',
+              label: 'Online courses',
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Live Courses',
+              label: 'Live courses',
               href: 'https://learn.getdbt.com/public',
             }
           ],
@@ -183,7 +178,7 @@ var siteSettings = {
           showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,     
+          sidebarCollapsible: true,
         },
         blog: {
           blogTitle: 'dbt Developer Blog',
@@ -207,7 +202,7 @@ var siteSettings = {
       path.resolve('plugins/buildGlobalData'),
       { versionedPages }
     ],
-    path.resolve('plugins/buildAuthorPages'),
+    path.resolve('plugins/buildAuthorPages')
   ],
   scripts: [
     {
@@ -231,28 +226,15 @@ var siteSettings = {
   ],
 }
 
-var PRERELEASE = (process.env.PRERELEASE || false);
-
-if (PRERELEASE) {
-  var WARNING_BANNER = {
-    id: 'prerelease', // Any value that will identify this message.
-    content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
-    backgroundColor: '#ffa376', // Defaults to `#fff`.
-    textColor: '#033744', // Defaults to `#000`.
-  }
-  siteSettings.themeConfig.announcementBar = WARNING_BANNER;
-}
-
 // If versions json file found, add versions dropdown to nav
-if(versions) {
+if (versions) {
   siteSettings.themeConfig.navbar.items.push({
     label: 'Versions',
     position: 'left',
     className: 'nav-versioning',
     items: [
       ...versions.reduce((acc, version) => {
-        if(version?.version) {
+        if (version?.version) {
           acc.push({
             label: `${version.version}`,
             href: '#',
@@ -261,7 +243,7 @@ if(versions) {
         return acc
       }, [])
     ]
-  },)
+  })
 }
 
 module.exports = siteSettings;

@@ -9,9 +9,37 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 
 1. At the lowest level: An *adapter class* implementing all the methods responsible for connecting to a database and issuing queries.
 2. In the middle: A set of *macros* responsible for generating SQL that is compliant with the target database.
-3. (Optional) At the highest level: A set of *materializations* that tell dbt how to turn model files into persisted objects in the database.
+3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn model files into persisted objects in the database.
 
-This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
+This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](testing-a-new-adapter)
+), please let the community know that is available to use by adding the adapter to the [Available Adapters](docs/available-adapters) page by following the steps given in [Documenting your adapter](docs/contributing/documenting-a-new-adapter).
+
+For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
+
+## Pre-Requisite Data Warehouse Features
+
+The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
+
+### Training
+- the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) and [Advanced Materializations](https://courses.getdbt.com/courses/advanced-materializations) course.
+
+### Database
+- Does the database complete transactions fast enough for interactive development?
+- Can you execute SQL against the data platform?
+- Is there a concept of schemas?
+- Does the data platform support ANSI SQL, or at least a subset?
+### Driver / Connection Library
+- Is there a Python-based driver for interacting with the database that is db API 2.0 compliant (e.g. Psycopg2 for Postgres, pyodbc for SQL Server)
+- Does it support: prepared statements, multiple statements, or single sign on token authorization to the data platform?
+
+### Open source software
+- Does your organization have an established process for publishing open source software?
+
+
+It is easiest to build an adapter for dbt when the following the data warehouse/platform in question has:
+- a conventional ANSI-SQL interface (or as close to it as possible),
+- a mature connection library/SDK that uses ODBC or Python DB 2 API, and
+- a way to enable developers to iterate rapidly with both quick reads and writes
 
 ## Scaffolding a new adapter
 
@@ -173,7 +201,7 @@ For example:
     def get_response(cls, cursor) -> AdapterResponse:
         code = cursor.sqlstate or "OK"
         rows = cursor.rowcount
-        status_message = f"{code} {rows_affected}"
+        status_message = f"{code} {rows}"
         return AdapterResponse(
             _message=status_message,
             code=code,
@@ -271,7 +299,7 @@ The following macros must be implemented, but you can override their behavior fo
 
 ### Adapter dispatch
 
-Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create table") in a database-specific way.
+Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create <Term id="table" />") in a database-specific way.
 
 <File name='adapters.sql'>
 
@@ -347,13 +375,13 @@ See examples:
 
 #### `__version__.py`
 
-To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatiable with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
+To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
 
 It should be noted that both of these files are included in the bootstrapped output of the `create_adapter_plugins.py` so when using that script, these files will be included.
 
 ### Testing your new adapter
 
-You can use a pre-configured [dbt adapter test suite](https://github.com/dbt-labs/dbt-adapter-tests) to test that your new adapter works. These tests include much of dbt's basic functionality, with the option to override or disable functionality that may not be supported on your adapter.
+This has moved to its own page: ["Testing a new adapter"](testing-a-new-adapter)
 
 ### Documenting your new adapter
 

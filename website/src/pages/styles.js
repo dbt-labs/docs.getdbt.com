@@ -11,6 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 import Changelog from '@site/src/components/changelog';
 import CloudCore from '@site/src/components/cloudcore';
+import WHCode from '@site/src/components/whcode';
 import Collapsible from '@site/src/components/collapsible';
 import FAQList from '@site/src/components/faqList';
 import FAQ from '@site/src/components/faqs';

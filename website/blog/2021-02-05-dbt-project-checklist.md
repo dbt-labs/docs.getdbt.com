@@ -35,9 +35,9 @@ This post is the checklist I created to guide our internal work, and I’m shari
         *   Did you keep it as ‘my\_new\_project’ per the init project or renamed it to make sense?
         *   Our recommendation is to name it after your company such as ‘fishtown\_analytics’.
         *   If you have multiple dbt projects, something like ‘fishtown\_analytics\_marketing’ might make more sense.
-*   Do you have unnecessary configurations like materialized: view?
+*   Do you have unnecessary configurations like materialized: <Term id="view" />?
     *   By default, dbt models are materialized as “views”. This removes the need to declare any models as views.
-    *   If all of your models in a folder are tables, define the materialization on the dbt\_project.yml file rather than on the model file. This removes clutter from the model file.
+    *   If all of your models in a folder are <Term id="table">tables</Term>, define the <Term id="materialization" /> on the dbt\_project.yml file rather than on the model file. This removes clutter from the model file.
 *   Do you have a ton of placeholder comments from the init command?
     *   This creates unnecessary clutter.
 *   Do you use post-hooks to grant permissions to other transformers and BI users?
@@ -53,7 +53,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**:
 
-*   [.yml files](/docs/building-a-dbt-project/testing-and-documentation/schemayml-files/#usage)
+*   [.yml files](/docs/building-a-dbt-project/using-sources/#testing-and-documenting-sources)
 *   [Materializations](/docs/building-a-dbt-project/building-models/materializations/#configuring-materializations)
 *   [YAML selectors](/reference/node-selection/yaml-selectors/)
 
@@ -92,7 +92,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 *   Is the code modular? Is it one transformation per one model?
 *   Are you filtering as early as possible?
     *   One of the most common mistakes we have found is not filtering or transforming early enough. This causes multiple models downstream to have the same repeated logic (i.e., wet code) and makes updating business logic more cumbersome.
-*   Are the CTEs modular with one transformation per CTE?
+*   Are the <Term id="cte">CTEs</Term> modular with one transformation per CTE?
 *   If you have macro files, are you naming them in a way that clearly represent the macro(s) contained in the file?
 
 **Useful links**
@@ -145,7 +145,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 *   Do your models have tests?
-    *   The ideal project has 100% test coverage on all of its models. While there are cases where this doesn’t make sense, our rule of thumb is models should have at least a not\_null/unique test on the primary key.
+    *   The ideal project has 100% test coverage on all of its models. While there are cases where this doesn’t make sense, our rule of thumb is models should have at least a not\_null/unique test on the <Term id="primary-key" />.
 *   What are you testing for? Does it make sense?
 *   What are the assumptions you should be testing for?
     *   Think about your core business logic as well as your understanding of your sources.
@@ -200,7 +200,7 @@ Are you using the IDE and if so, how well?
 
 **Useful links**
 
-*   [dbt Cloud as a CI tool](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github/)
+*   [dbt Cloud as a CI tool](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github)
 
 
 ## ✅ DAG Auditing

@@ -10,7 +10,7 @@ or otherwise provide data to models to configure how they are compiled.
 
 To use a variable in a model, hook, or macro, use the `{{ var('...') }}` function. More information on the `var` function can be found [here](dbt-jinja-functions/var).
 
-Variables can defined in two ways:
+Variables can be defined in two ways:
 
 1. In the `dbt_project.yml` file
 2. On the command line
