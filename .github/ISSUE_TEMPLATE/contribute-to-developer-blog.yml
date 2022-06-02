@@ -21,7 +21,7 @@ body:
     id: read-contribution
     attributes:
       label: I have read the dbt Developer Blog contribution guidelines.
-      description: You can find the contribution guide [here](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/developer-blog.md)
+      description: You can find the contribution guide [here](contributing/developer-blog.md)
       options:
         - label: I have read the dbt Developer Blog contribution guidelines.
     validations:
