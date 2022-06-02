@@ -12,8 +12,7 @@ The following functions are available:
 - [adapter.dispatch](dispatch)
 - [adapter.get_missing_columns](#get_missing_columns)
 - [adapter.expand_target_column_types](#expand_target_column_types)
-- [adapter.get_relation](#get_relation)
-- [adapter.load_relation](#load_relation)
+- [adapter.get_relation](#get_relation) or [load_relation](#load_relation)
 - [adapter.get_columns_in_relation](#get_columns_in_relation)
 - [adapter.create_schema](#create_schema)
 - [adapter.drop_schema](#drop_schema)
@@ -88,7 +87,7 @@ __Args__:
  * `schema`: The schema of the relation to fetch
  * `identifier`: The identifier of the relation to fetch
 
-Returns a [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
+Returns a cached [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
 
 **Usage**:
 
@@ -112,7 +111,7 @@ __Args__:
 
  * `relation`: The [Relation](dbt-classes#relation) to try to load
 
-A convenience wrapper for [get_relation](#get_relation). Returns another copy of the same [Relation](dbt-classes#relation) object, or `None` if the relation does not exist.
+A convenience wrapper for [get_relation](#get_relation). Returns the cached version of the [Relation](dbt-classes#relation) object, or `None` if the relation does not exist.
 
 **Usage**:
 
@@ -120,7 +119,7 @@ A convenience wrapper for [get_relation](#get_relation). Returns another copy of
 
 ```sql
 
-{% set relation_exists = (adapter.load_relation(ref('my_model')) is not none %}
+{% set relation_exists = (load_relation(ref('my_model')) is not none %}
 {% if relation_exists %}
       {{ log("my_model has already been built", info=true) }}
 {% else %}

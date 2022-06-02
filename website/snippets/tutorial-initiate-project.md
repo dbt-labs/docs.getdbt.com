@@ -8,7 +8,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 <WHCode>
 
-<div>
+<div warehouse="BigQuery">
 
 ```sql
 select * from `dbt-tutorial.jaffle_shop.customers`
@@ -16,7 +16,7 @@ select * from `dbt-tutorial.jaffle_shop.customers`
 
 </div>
 
-<div>
+<div warehouse="Databricks">
 
 ```sql
 select * from default.jaffle_shop_customers
@@ -24,7 +24,7 @@ select * from default.jaffle_shop_customers
 
 </div>
 
-<div>
+<div warehouse="Redshift">
 
 ```sql
 select * from jaffle_shop_customers
@@ -32,7 +32,7 @@ select * from jaffle_shop_customers
 
 </div>
 
-<div>
+<div warehouse="Snowflake">
 
 ```sql
 select * from raw.jaffle_shop.customers
