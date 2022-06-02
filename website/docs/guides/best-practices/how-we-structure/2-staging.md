@@ -72,7 +72,7 @@ renamed as (
         status,
 
         -- numerics
-    amount as amount_cents,
+        amount as amount_cents,
         amount / 100.0 as amount,
         
         -- booleans
@@ -81,8 +81,8 @@ renamed as (
             else false
         end as is_completed_payment,
 
-    -- dates
-    date_trunc('day', created) as created_date,
+        -- dates
+        date_trunc('day', created) as created_date,
 
         -- timestamps
         created::timestamp_ltz as created_at
