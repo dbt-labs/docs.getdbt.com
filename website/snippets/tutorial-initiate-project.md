@@ -19,7 +19,7 @@ select * from `dbt-tutorial.jaffle_shop.customers`
 <div warehouse="Databricks">
 
 ```sql
-select * from jaffle_shop_customers
+select * from default.jaffle_shop_customers
 ```
 
 </div>
@@ -27,7 +27,7 @@ select * from jaffle_shop_customers
 <div warehouse="Redshift">
 
 ```sql
-select * from jaffle_shop.customers
+select * from jaffle_shop_customers
 ```
 
 </div>

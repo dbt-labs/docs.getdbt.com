@@ -1,0 +1,8 @@
+developer blog:
+- website/blog/**/*
+
+guides:
+- website/docs/docs/guides/**/*
+
+content:
+- website/docs/**/*

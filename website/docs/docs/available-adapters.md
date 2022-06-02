@@ -5,6 +5,8 @@ id: "available-adapters"
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
 
+If you have a new adapter, please add it to this list via a pull request! See [Documenting your adapter](/website/docs/docs/contributing/documenting-a-new-adapter.md)  for more information.
+
 ### Installation
 
 Most adapters can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
@@ -57,6 +59,7 @@ These adapter plugins are contributed and maintained by members of the community
 | ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
 | Athena                 | [Profile Setup](athena-profile)       | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
 | Vertica                | [Profile Setup](vertica-profile)      | Vertica 10.0+             | `pip install dbt-vertica`    |
+| AWS Glue                | [Profile Setup](glue-profile), [Configuration](glue-configs)      | Glue 2.0+          | `pip install dbt-glue`    |
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
 - Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 

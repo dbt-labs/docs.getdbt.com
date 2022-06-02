@@ -1,26 +1,14 @@
-name: labeler
-
-on: [pull_request_target]
+name: "Pull Request Labeler"
+on:
+- pull_request_target
 
 jobs:
-  labeler:
+  triage:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
-    name: Label the PR size
     steps:
-      - uses: codelytv/pr-size-labeler@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          xs_label: 'size: x-small'
-          xs_max_size: '10'
-          s_label: 'size: small'
-          s_max_size: '50'
-          m_label: 'size: medium'
-          m_max_size: '250'
-          l_label: 'size: large'
-          l_max_size: '500'
-          xl_label: 'size: x-large'
-          fail_if_xl: 'false'
-          message_if_xl: >
-            'This PR is pretty big! We recommend breaking it down to under 1000 lines, which makes it easier to review.
-            You can also make it more manageable by only addressing one issue per PR or moving some changes to a separate branch.
-          github_api_url: 'api.github.com'
+    - uses: actions/labeler@v4
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"

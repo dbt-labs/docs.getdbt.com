@@ -81,7 +81,7 @@ The goal of the staging layer is to create staging models. Staging models take r
 *   Datatypes, such as timezones, are consistent.
 *   Light cleansing, such as replacing empty string with NULL values, has occurred.
 *   If useful, flattening of objects might have occurred.
-*   There is a primary key that is both unique and not null (and tested).
+*   There is a <Term id="primary-key" /> that is both unique and not null (and tested).
 
 Staging models can have joins in them to field additional columns for context or enrichment; add rows through unions and remove them through filters; deduplicate a natural key or hash together a [surrogate one](/blog/sql-surrogate-keys).
 

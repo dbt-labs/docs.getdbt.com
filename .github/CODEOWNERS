@@ -10,7 +10,7 @@
 /website/static/img/docs/dbt-cloud/                    @runleonarun 
 
 # Blog content assigned to Developer experience team
-/website/blog/                       @dbt-labs/devex 
+/website/blog/                       @dbt-labs/devhub
 
 
 # Adapter & Package Development Docs
@@ -20,4 +20,5 @@
 /website/docs/contributing/building-a-new-adapter               @runleonarun @dataders @dbeatty10
 /website/docs/contributing/testing-a-new-adapter                @runleonarun @dataders @dbeatty10
 /website/docs/guides/creating-new-materializations              @runleonarun @dataders @dbeatty10
+/website/docs/docs/dbt-cloud/cloud-configuring-dbt-cloud/       @runleonarun @dataders @dbeatty10
 
