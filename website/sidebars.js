@@ -554,12 +554,18 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Getting set up",
-          link: { type: 'doc', id: 'guides/getting-started/getting-set-up' },
+          link: {
+            type: 'generated-index',
+            title: 'Getting set up',
+            description: "If you're using BigQuery, Databricks, Snowflake, or Redshift, you can select your warehouse below to walkthrough the specific setup process with dbt Cloud. If you'll be working with dbt Core via the CLI, which is required if you're using a database adapter not listed below, then make sure to complete that setup as well. If you're not sure, then select BigQuery to get started with a free account.",
+            slug: '/guides/getting-started/getting-set-up/',
+          },
           items: [
             "guides/getting-started/getting-set-up/setting-up-bigquery",
             "guides/getting-started/getting-set-up/setting-up-databricks",
             "guides/getting-started/getting-set-up/setting-up-redshift",
             "guides/getting-started/getting-set-up/setting-up-snowflake",
+            "guides/getting-started/learning-more/getting-started-dbt-core",
           ],
         },
         {
@@ -577,7 +583,6 @@ const sidebarSettings = {
           label: "Learning more",
           link: { type: 'doc', id: 'guides/getting-started/learning-more' },
           items: [
-            "guides/getting-started/learning-more/getting-started-dbt-core",
             "guides/getting-started/learning-more/using-jinja",
             "guides/getting-started/learning-more/refactoring-legacy-sql",
           ],
