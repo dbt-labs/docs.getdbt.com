@@ -5,7 +5,7 @@ displayText: subquery
 hoverSnippet: A subquery is a query within another query. Subqueries are often used when you need to process data in multiple steps.
 ---
 
-A subquery is what the name suggests: a query within another query. The true inception of SQL. Subqueries are often used when you need to process data in several steps. For the majority of subqueries you’ll see in actual practice, the inner query will execute first and pass its result to the outer query it's nested in.
+A subquery is what the name suggests: a query within another query. _The true inception of SQL_. Subqueries are often used when you need to process data in several steps. For the majority of subqueries you’ll see in actual practice, the inner query will execute first and pass its result to the outer query it's nested in.
 
 Subqueries are usually contrasted with <Term id="cte">Common Table Expressions (CTEs)</Term> as they have similar use cases. Unlike CTEs, which are usually separate `SELECT` statements within a query, subqueries are usually `SELECT` statements nested within a `JOIN`, `FROM`, or `WHERE` statement in a query.
 
@@ -42,7 +42,7 @@ Given the elements of subqueries laid out in the beginning, let’s break down t
 When this query is actually executed, it will start by running the innermost query first. In this case, it would run `select * from {{ ref('orders') }}` first. Then, it would pass those results to the outer query, which is where you grab the count of orders by `customer_id`.
 
 ```note Note
-If you want to learn more about what a `ref` is, [read our documentation on it.](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)
+If you want to learn more about what a `ref` is, [check out our documentation on it.](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)
 ```
 
 This is a relatively straightforward example, but should hopefully show you that subqueries start off like most other queries. As you nest more subqueries together, that’s when you unearth the power of subqueries, but also when you start to notice some readability tradeoffs. If you are using subqueries regularly, you'll want to leverage indenting and [strong naming conventions](https://docs.getdbt.com/blog/on-the-importance-of-naming) for your subqueries to clearly distinguish code functionality.
@@ -181,7 +181,7 @@ aggregate_orders as (
 	from all_orders
 	group by 1
 
-),
+)
 select * from aggregate_orders
 ```
 

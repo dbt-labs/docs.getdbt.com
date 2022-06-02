@@ -1,6 +1,6 @@
 ---
 id: primary-key
-title: Primary Key
+title: Primary key
 displayText: primary key  
 hoverSnippet: A primary key is a non-null column in a database object that uniquely identifies each row.
 ---
@@ -27,7 +27,7 @@ Primary keys can be established two ways: naturally or derived through the data 
 
 A note on primary key data types: natural keys will often  take the form of an integer or other numeric value (ex. 45932). Surrogate keys, on the other hand, are usually alphanumeric strings since they are hashed values (ex. ‘62aef884fbe3470ce7d9a92140b09b17’).
 
-:::note Note
+:::tip Tip
 dbt supports [packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management), libraries of open-source macros and data models, to help data teams avoid doing duplicative work. One of these packages, [dbt_utils](https://github.com/dbt-labs/dbt-utils), contains a series of macros that are built to alleviate common struggles in data modeling. The [surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) macro offers a DRY (don’t repeat yourself) solution to creating surrogate keys across different data warehouses in the event that your data doesn’t contain natural keys.
 :::
 
@@ -145,7 +145,7 @@ When we talk about testing our primary keys, we really mean testing their unique
 1. For databases that support primary key enforcement, you should receive failures when your constraints are broken.
 2.  For databases that don’t offer support and enforcement of primary keys, you’re going to need to regularly test that primary keys aren’t violating their golden rule of uniqueness and non-nullness. To do this, we recommend implementing a tool like dbt that allows you to define version-controlled and code-based tests on your data models. Using these tests, you should create <code>[not null](https://docs.getdbt.com/reference/resource-properties/tests#not_null)</code> and <code>[unique](https://docs.getdbt.com/reference/resource-properties/tests#unique)</code> tests for every primary key field throughout your dbt project. Other methods for primary key testing may look like writing custom tests or ad hoc queries that check for uniqueness and non-nullness.
 
-:::note Note
+:::tip Tip
 You can use dbt’s [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) and [testing](https://docs.getdbt.com/reference/resource-properties/tests) capabilities to clearly identify and QA primary keys in your data models. For your primary key column, you should mention that the field is the unique identifier for that table and test for uniqueness and non-nullness.
 :::
 

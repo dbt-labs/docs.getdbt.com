@@ -201,7 +201,7 @@ For example:
     def get_response(cls, cursor) -> AdapterResponse:
         code = cursor.sqlstate or "OK"
         rows = cursor.rowcount
-        status_message = f"{code} {rows_affected}"
+        status_message = f"{code} {rows}"
         return AdapterResponse(
             _message=status_message,
             code=code,
