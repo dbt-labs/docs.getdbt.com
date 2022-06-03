@@ -5,7 +5,7 @@ displayText: idempotent
 hoverSnippet: Idempotent describes a process that gives you the same result no matter how many times you run it.
 ---
 
-Idempotent is a way to describe a particular process.  A process that is idempotent is independent of previous executions of that same process.
+Idempotent is an adjective to describe a process that gives you the same result no matter how many times you run it.
 
 For a mathematical example, adding 1 changes the results, but multiplying by 1 is idempotent. When you add 1 to a number and then add 1 again, you get different results. If you multiply a number by 1 and multiply by 1 again, you do get the same result.
 
