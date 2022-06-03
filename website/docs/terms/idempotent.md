@@ -2,11 +2,8 @@
 id: idempotent
 title: Idempotent
 displayText: idempotent
-hoverSnippet: Idempotent describes a process that is independent of previous executions of that same process.
+hoverSnippet: Idempotent describes a process that gives you the same result no matter how many times you run it.
 ---
-:::important This page could use some love
-This term would benefit from additional depth and examples. Have knowledge to contribute? [Create a discussion in the docs.getdbt.com GitHub repository](https://github.com/dbt-labs/docs.getdbt.com/discussions) to begin the process of becoming a glossary contributor!
-:::
 
 Idempotent is a way to describe a particular process.  A process that is idempotent is independent of previous executions of that same process.
 
@@ -18,4 +15,4 @@ A non-idempotent version of the "_Save_" button might do something like "Append 
 
 If word processors only gave us non-idempotent "Append paragraph" / "Update paragraph" / "Delete paragraph" operations, then saving our document changes would be a lot more difficult! We'd have to keep track of which paragraphs we previously saved, and either make sure to not save them again or have a process in place to regularly clean up duplicate paragraphs. The implementation of the "_Save_" button in word processors takes the collection of low-level non-idempotent filesystem operations (read/append/overwrite/delete), and systematically runs them in a certain order so that the _user_ doesn't have to deal with the non-idempotency. The user can just focus on writing -- choosing words, editing for clarity, ensuring paragraphs aren't too long, etc. -- and the word processor deals with making sure the words get persisted properly to disk.
 
-This word processing analogy is very similar to what dbt does for data transformation: it takes the collection of low-level non-idempotent database operations (`SELECT`/`INSERT`/`UPDATE`/`DELETE` -- collectively known as <Term id="DML">DML</Term> statements), and systematically runs them in a certain order so that analytics engineers don't have to deal with non-idempotency. We can just focus on the data -- [choosing good model and column names](https://docs.getdbt.com/blog/on-the-importance-of-naming), [documenting them](https://docs.getdbt.com/docs/about/viewpoint#documentation), [ensuring data consumers can understand them](https://docs.getdbt.com/docs/guides/best-practices#consider-the-information-architecture-of-your-data-warehouse), etc. -- and [`dbt run`](https://docs.getdbt.com/reference/commands/run) will make sure the database ends up in the right state.
+This word processing analogy is very similar to what dbt does for data transformation: it takes the collection of low-level non-idempotent database operations (`SELECT`/`INSERT`/`UPDATE`/`DELETE` -- collectively known as <Term id="dml">DML</Term> statements), and systematically runs them in a certain order so that analytics engineers don't have to deal with non-idempotency. We can just focus on the data -- [choosing good model and column names](https://docs.getdbt.com/blog/on-the-importance-of-naming), [documenting them](https://docs.getdbt.com/docs/about/viewpoint#documentation), [ensuring data consumers can understand them](https://docs.getdbt.com/docs/guides/best-practices#consider-the-information-architecture-of-your-data-warehouse), etc. -- and [`dbt run`](https://docs.getdbt.com/reference/commands/run) will make sure the database ends up in the right state.
