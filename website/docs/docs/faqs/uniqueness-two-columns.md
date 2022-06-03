@@ -52,6 +52,8 @@ models:
 
 #### 2. Test an expression
 
+Note that this method will likely fail if you try to [store failures](https://docs.getdbt.com/docs/building-a-dbt-project/tests#storing-test-failures) for this test, due to not having a valid column name for the table.
+
 <File name='models/orders.yml'>
 
 ```yml
