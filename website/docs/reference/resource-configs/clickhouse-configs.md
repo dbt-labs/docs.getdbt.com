@@ -3,15 +3,6 @@ title: "ClickHouse configurations"
 id: "clickhouse-configs"
 ---
 
-## Setting `quote_columns`
-
-To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
-
-```yaml
-seeds:
-  +quote_columns: false  #or `true` if you have csv column headers with spaces
-```
-
 ## Models
 
 | Type                        | Supported? | Details                                                                                                                          |
@@ -25,7 +16,7 @@ seeds:
 A dbt model can be created as a [Clickhouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/) and configured using the following syntax:
 
 <Tabs
-    groupId="config-fact"
+    groupId="config-view"
     defaultValue="project-yaml"
     values={[
         { label: 'Project file', value: 'project-yaml', },
@@ -43,6 +34,7 @@ models:
 ```
 
 </File>
+</TabItem>
 
 <TabItem value="config">
 <File name='models/<model_name>.sql'>
@@ -60,7 +52,7 @@ models:
 A dbt model can be created as a [Clickhouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and configured using the following syntax:
 
 <Tabs
-    groupId="config-fact"
+    groupId="config-table"
     defaultValue="project-yaml"
     values={[
         { label: 'Project file', value: 'project-yaml', },
@@ -81,6 +73,7 @@ models:
 ```
 
 </File>
+</TabItem>
 
 <TabItem value="config">
 <File name='models/<model_name>.sql'>
@@ -114,13 +107,13 @@ models:
 Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result sets or complex transformations. To address this challenge and reduce the build time, a dbt model can be created as an incremental Clickhouse table and is configured using the following syntax:
 
 <Tabs
-groupId="config-fact"
-defaultValue="project-yaml"
-values={[
-{ label: 'Project file', value: 'project-yaml', },
-{ label: 'Config block', value: 'config', },
-]
-}>
+    groupId="config-incremental"
+    defaultValue="project-yaml"
+    values={[
+        { label: 'Project file', value: 'project-yaml', },
+        { label: 'Config block', value: 'config', },
+    ]}
+>
 
 <TabItem value="project-yaml">
 <File name='dbt_project.yml'>
@@ -133,10 +126,11 @@ models:
     +engine: <engine-type>
     +partition_by: [ <column-name>, ... ]
     +unique_key: [ <column-name>, ... ]
-    +inserts_only: [ <column-name>, ... ]
+    +inserts_only: [ True|False ]
 ```
 
 </File>
+</TabItem>
 
 <TabItem value="config">
 <File name='models/<model_name>.sql'>
@@ -148,7 +142,7 @@ models:
     order_by = [ "<column-name>", ... ],
     partition_by = [ "<column-name>", ... ],
     unique_key = [ "<column-name>", ... ],
-    inserts_only = [ "<column-name>", ... ],
+    inserts_only = [ True|False ],
       ...
     ]
 ) }}
@@ -167,7 +161,7 @@ models:
 | `engine`       | The table engine to use when creating tables. See list of supported engines below.                                                                                                                                                                                          | Optional (default: `MergeTree()`)                                                    |
 | `order_by`     | A tuple of column names or arbitrary expressions. This allows you to create a small sparse index that helps find data faster.                                                                                                                                               | Optional (default: `tuple()`)                                                        |
 | `partition_by` | A partition is a logical combination of records in a table by a specified criterion. The partition key can be any expression from the table columns.                                                                                                                        | Optional                                                                             |
-| `inserts_only` | If set to True, incremental updates will be inserted directly to the target incremental table without creating intermediate table. Read more about this configuration in our [doc](https://clickhouse.com/docs/en/integrations/dbt/dbt-incremental-model#inserts-only-mode) | Optional                                                                             |
+| `inserts_only` | If set to True, incremental updates will be inserted directly to the target incremental table without creating intermediate table. Read more about this configuration in our [doc](https://clickhouse.com/docs/en/integrations/dbt/dbt-incremental-model#inserts-only-mode) | Optional (default: `False`)                                                          |
 
 ## Snapshot
 
@@ -209,5 +203,14 @@ dbt snapshots allow a record to be made of changes to a mutable model over time.
 | Hive                   | https://clickhouse.com/docs/en/engines/table-engines/integrations/hive                    |
 
 If you encounter issues connecting to ClickHouse from dbt with one of the above engines, please report an issue [here](https://github.com/ClickHouse/dbt-clickhouse/issues).
+
+## Setting `quote_columns`
+
+To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
+
+```yaml
+seeds:
+  +quote_columns: false  #or `true` if you have csv column headers with spaces
+```
 
  

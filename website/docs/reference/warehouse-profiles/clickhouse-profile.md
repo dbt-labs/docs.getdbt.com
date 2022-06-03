@@ -2,11 +2,8 @@
 title: "ClickHouse Profile"
 ---
 
-:::info Community plugin
-
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
-:::
 
 ## Overview of dbt-clickhouse
 **Maintained by:** ClickHouse      
@@ -23,7 +20,7 @@ The package can be installed from PyPI with:
 pip install dbt-clickhouse
 ```
 
-For further (and more likely up-to-date) info, see the [GitHub README](https://github.com/ClickHouse/dbt-clickhouse#readme)
+For further info, see the [GitHub README](https://github.com/ClickHouse/dbt-clickhouse#readme)
 
 ## Connecting to ClickHouse with **dbt-clickhouse**
 
