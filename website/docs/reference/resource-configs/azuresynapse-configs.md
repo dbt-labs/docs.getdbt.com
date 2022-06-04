@@ -11,6 +11,16 @@ Additionally, the configuration options below are available.
 
 The main index and the distribution type can be set for models that are materialized to tables.
 
+<Tabs
+    defaultValue="model"
+    values={[
+        {label: 'Model config', value: 'model'},
+        {label: 'Project config', value: 'project'}
+    ]}
+>
+
+<TabItem value="model">
+
 <File name="models/example.sql">
 
 ```sql
@@ -27,11 +37,13 @@ from ...
 
 </File>
 
-These can also be configured in your project configuration:
+</TabItem>
+
+<TabItem value="project">
 
 <File name="dbt_project.yml">
 
-```yml
+```yaml
 models:
   your_project_name:
     materialized: view
@@ -41,6 +53,10 @@ models:
 ```
 
 </File>
+
+</TabItem>
+
+</Tabs>
 
 The following are the supported index types:
 

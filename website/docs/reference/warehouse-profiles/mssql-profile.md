@@ -55,7 +55,7 @@ When running on Windows, you can also use your Windows credentials to authentica
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -77,7 +77,7 @@ your_profile_name:
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -130,7 +130,7 @@ The automatic authentication setting is in most cases the easiest choice and wor
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -155,7 +155,7 @@ Client ID is often also referred to as Application ID.
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -181,7 +181,7 @@ Both system-assigned and user-assigned managed identities will work.
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -207,7 +207,7 @@ explain the available combinations of environment variables you can use.
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -232,7 +232,7 @@ First, install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/instal
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -263,7 +263,7 @@ The following methods are tried in order:
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -304,7 +304,7 @@ This setting can optionally show Multi-Factor Authentication prompts.
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -328,7 +328,7 @@ This uses the credentials you're logged in with on the current machine.
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:

@@ -53,7 +53,7 @@ Example:
 
 <File name='profiles.yml'>
 
-```yml
+```yaml
 your_profile_name:
   target: dev
   outputs:
