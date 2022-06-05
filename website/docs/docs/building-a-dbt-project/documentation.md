@@ -6,7 +6,7 @@ id: "documentation"
 ## Related documentation
 * [Declaring properties](configs-and-properties)
 * [`dbt docs` command](cmd-docs)
-* [`doc` Jinja function](dbt-jinja-functions/doc)
+* [`doc` Jinja function](/reference/dbt-jinja-functions)
 
 ## Assumed knowledge
 * [Tests](building-a-dbt-project/tests)

@@ -196,7 +196,7 @@ models:
 
 ### Accessing sources in the `graph` object
 
-In previous versions of dbt, the `sources` in a dbt project could be accessed in the compilation context using the [graph.nodes](dbt-jinja-functions/graph) context variable. In dbt v0.17.0, these sources have been moved out of the `graph.nodes` dictionary and into a new `graph.sources` dictionary. This change is also reflected in the `manifest.json` artifact produced by dbt. If you are accessing these sources programmatically, please update any references from `graph.nodes` to `graph.sources` instead.
+In previous versions of dbt, the `sources` in a dbt project could be accessed in the compilation context using the [graph.nodes](/reference/dbt-jinja-functions/graph) context variable. In dbt v0.17.0, these sources have been moved out of the `graph.nodes` dictionary and into a new `graph.sources` dictionary. This change is also reflected in the `manifest.json` artifact produced by dbt. If you are accessing these sources programmatically, please update any references from `graph.nodes` to `graph.sources` instead.
 
 ### BigQuery `locations` removed from Catalog
 
@@ -248,8 +248,8 @@ BigQuery:
 **Core**
 - [`path:` selectors](node-selection/methods#the-path-method)
 - [`--fail-fast`](commands/run#failing-fast)
-- [as_text Jinja filter](dbt-jinja-functions/as_text)
-- [accessing nodes in the `graph` object](dbt-jinja-functions/graph)
+- [as_text Jinja filter](/reference/dbt-jinja-functions/as_text)
+- [accessing nodes in the `graph` object](/reference/dbt-jinja-functions/graph)
 - [persist_docs](resource-configs/persist_docs)
 - [source properties](reference/source-properties)
 - [source overrides](resource-properties/overrides)
