@@ -24,6 +24,8 @@ Previously users had to provide a `cluster` or `endpoint` ID which was hard to p
 
 With dbt-databricks, by default, dbt models will use the Delta format and expensive queries will be accelerated with the [Photon engine](https://docs.databricks.com/runtime/photon.html). See [the caveats section of Databricks Profile documentation](https://docs.getdbt.com/reference/warehouse-profiles/databricks-profile#choosing-between-dbt-databricks-and-dbt-spark) for more information.
 
+Additionally, dbt-databricks's default `incremental_strategy` is now `merge`. If you were using the default version of incremental materializations with dbt-spark, you were using "incremental_strategy=append", and if you'd like to continue doing so, you'll have to set this config specifically on your incremental models. Read more [about `incremental_strategy` in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#about-incremental_strategy). If you had already specified `incremental_strategy=merge` on your incremental models, you do not need to change anything when moving to dbt-databricks, though you could remove the param as it is now the default.
+
 ### Pure Python (Core only)
 
 A huge benefit to Core only users is that with the new dbt-databricks adapter, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-Python library, `databricks-sql-connector`.
