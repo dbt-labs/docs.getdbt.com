@@ -94,10 +94,3 @@ Parameters:
 ## Testing
 
 - Install dev requirements
-```    
-  pip install -r dev_requirements.txt
-```
-- Run pytest
-```    
-  python -m pytest tests/
-```
