@@ -1,0 +1,14 @@
+name: Add size label to PR
+on:
+  pull_request_target
+
+jobs:
+  build:
+    name: Add Size Label to PR
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add Size Label to PR
+      uses: WizardOhio24/label-pr-size-action@v1.0.1
+      with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          size-label-color: '10, size: x-small | 50, size: small | 250, size: medium | 500, size: large | 100000, size: x-large'

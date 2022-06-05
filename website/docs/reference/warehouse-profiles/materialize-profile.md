@@ -10,21 +10,35 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 ## Overview of dbt-materialize
 
-**Maintained by:** Materialize, Inc.      
-**Source:** [Github](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)    
-**Core version:** v0.18.1 and newer      
-**dbt Cloud:** Not Supported    
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01PWAH41A5)      
+**Maintained by:** Materialize, Inc.
+**Source:** [Github](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)
+**Core version:** v0.18.1 and newer
+**dbt Cloud:** Not Supported
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C01PWAH41A5)
 
-The easiest way to install is to use pip:
+## Installation and distribution
 
-    pip install dbt-materialize
+The `dbt-materialize` adapter is managed in the core [Materialize repository](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize). To get started, install `dbt-materialize` using `pip` (and optionally a virtual environment):
 
-## Connecting to Materialize with **dbt-materialize**
+```
+python3 -m venv dbt-venv         # create the virtual environment
+source dbt-venv/bin/activate     # activate the virtual environment
+pip install dbt-materialize      # install the adapter
+```
 
-The dbt profile for Materialize is nearly identical to the [profile configuration for Postgres](postgres-profile):
+To check that the adapter was successfully installed, run:
 
-<File name='profiles.yml'>
+```
+dbt --version
+```
+
+You should see `materialize` listed under “Plugins”. If this is not the case, double-check that the virtual environment is activated!
+
+## Connecting to Materialize
+
+Once you have Materialize [installed and running](https://materialize.com/docs/install/), adapt your `profiles.yml` to connect to your instance using the following reference profile configuration:
+
+<File name='~/.dbt/profiles.yml'>
 
 ```yaml
 dbt-materialize:
@@ -43,20 +57,30 @@ dbt-materialize:
 
 </File>
 
+To test the connection to Materialize, run:
+
+```
+dbt debug
+```
+
+If the output reads "All checks passed!", you’re good to go! Check the [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/) to learn more and get started.
+
 ## Supported Features
 
 ### Materializations
 
+Because Materialize is optimized for transformations on streaming data and the core of dbt is built around batch, the `dbt-materialize` adapter implements a few custom materialization types:
+
 Type | Supported? | Details
 -----|------------|----------------
-source | YES | Creates a [source](https://materialize.com/docs/sql/create-source/).
-view | YES | Creates a [view](https://materialize.com/docs/sql/create-view/#main).
-materializedview | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main).
-table | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main). (Actual table support pending [#5266](https://github.com/MaterializeInc/materialize/issues/5266))
-index | YES | Creates an [index](https://materialize.com/docs/sql/create-index/#main).
-sink | YES | Creates a [sink](https://materialize.com/docs/sql/create-sink/#main).
-ephemeral | YES | Executes queries using <Term id="cte">CTEs</Term>.
-incremental | NO | Use the `materializedview` <Term id="materialization" /> instead. Materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
+`source` | YES | Creates a [source](https://materialize.com/docs/sql/create-source/).
+`view` | YES | Creates a [view](https://materialize.com/docs/sql/create-view/#main).
+`materializedview` | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main).
+`table` | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main). (Actual table support pending [#5266](https://github.com/MaterializeInc/materialize/issues/5266))
+`index` | YES | (Deprecated) Creates an index. Use the [`indexes` config](materialize-configs#indexes) to create indexes on `materializedview`, `view` or `source` relations instead.
+`sink` | YES | Creates a [sink](https://materialize.com/docs/sql/create-sink/#main).
+`ephemeral` | YES | Executes queries using <Term id="cte">CTEs</Term>.
+`incremental` | NO | Use the `materializedview` <Term id="materialization" /> instead. Materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
 
 ### Seeds
 
@@ -65,4 +89,4 @@ Running [`dbt seed`](commands/seed) will create a static materialized <Term id="
 ## Resources
 
 - [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/)
-- [Get started](https://github.com/MaterializeInc/materialize/blob/main/play/wikirecent-dbt/README.md) using dbt and Materialize together
+- [Get started](https://github.com/MaterializeInc/demos/tree/main/dbt-get-started) using dbt and Materialize together

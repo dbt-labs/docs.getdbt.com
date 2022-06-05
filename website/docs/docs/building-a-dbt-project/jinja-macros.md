@@ -172,7 +172,7 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 
 ```sql
 -- 🙅 This works, but can be hard to maintain as your code grows
-{% for payment_methods in ["bank_transfer", "credit_card", "gift_card"] %}
+{% for payment_method in ["bank_transfer", "credit_card", "gift_card"] %}
 ...
 {% endfor %}
 
