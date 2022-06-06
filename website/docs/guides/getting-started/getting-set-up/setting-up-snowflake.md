@@ -279,10 +279,9 @@ If you used Partner Connect, you can skip over to [initializing your dbt project
 
 Congratulations! You have successfully completed the following:
 
-- Set up a Databricks account
-- Loaded training data into your Databricks account
-- Configured a SQL endpoint in Databricks
-- Connected dbt Cloud and Databricks
+- Set up a new Snowflake instance
+- Loaded training data into your Snowflake account
+- Connected dbt Cloud and Snowflake
 
 ## Next steps
 
