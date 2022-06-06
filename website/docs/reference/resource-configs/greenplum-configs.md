@@ -5,21 +5,21 @@ id: "greenplum-configs"
 
 ## Performance Optimizations
     
-Table in greenplum have a few powerful optimizations to improve query perfomance:
+Tables in Greenplum have powerful optimization configurations to improve query performance:
  
  - distribution
  - column orientation
  - compression
- - appendonly toggle
+ - `appendonly` toggle
  - partitions
  
 Supplying these values as model-level configurations apply the corresponding settings in the generated `CREATE TABLE`(except partitions). Note that these settings will have no effect for models set to `view`.
 
 ### Distribution
 
-In greenplum you have opportunity to choose [distribution key](https://gpdb.docs.pivotal.io/6-4/admin_guide/distribution.html), that will be used to sort data by segments. Join-s by this key will be more effective. 
+In Greenplum, you can choose a [distribution key](https://gpdb.docs.pivotal.io/6-4/admin_guide/distribution.html), that will be used to sort data by segments. Joining on the partition will become more performant after specifying distribution.
 
-By default dbt-greenplum distribute data `RANDOMLY`. To implement distribution key you need to specify `distributed_by` parameter in model config:
+By default dbt-greenplum distributes data `RANDOMLY`. To implement a distribution key you need to specify the `distributed_by` parameter in model's config:
 
 ```sql
 {{

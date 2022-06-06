@@ -2,7 +2,7 @@
 title: "Greenplum Profile"
 ---
 
-## Overview of dbt-postgres
+## Overview of dbt-greenplum
 
 **Maintained by:** Community       
 **Author:** Mark Poroshin, Dmitry Bevz       
@@ -19,7 +19,7 @@ For further (and more likely up-to-date) info, see the [README](https://github.c
 
 ## Profile Configuration
 
-Postgres targets should be set up using the following configuration in your `profiles.yml` file.
+Greenplum targets should be set up using the following configuration in your `profiles.yml` file.
 
 <File name='~/.dbt/profiles.yml'>
 
