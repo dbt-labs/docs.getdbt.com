@@ -49,19 +49,20 @@ mindsdb:
 
 ## Usage
 
-- Create dbt project, choose mindsdb database and set up connection
-```    
-    dbt init <project_name>
-```
-- To create predictor add dbt model with "predictor" materialization: 
-Name of the model is used as name of predictor.
-Parameters:
-  - integration - name of used integration to get data from and save result to.
-    In has to be created in mindsdb beforehand
-  - predict - field for prediction
-  - predict_alias [optional] - alias for predicted field
-  - using [optional] - options for configure trained model
-```    
+Create dbt project, choose mindsdb as the database and set up the connection. Verify your connection works `dbt debug`
+
+`dbt init <project_name>`
+
+To create a predictor, create a dbt model with a "predictor" materialization. The name of the model will be the name of predictor.
+
+#### Parameters:
+- `integration` - name of used integration to get data from and save result to. Must be created in mindsdb beforehand
+- `predict` - field for prediction
+- `predict_alias` [optional] - alias for predicted field
+- `using` [optional] - options for configure trained model
+
+```sql
+-- my_first_model.sql    
     {{
         config(
             materialized='predictor',
@@ -75,21 +76,6 @@ Parameters:
         )
     }}
       select * from stores
-```
-
-- To apply predictor add dbt model with "table" materialization. 
-It creates or replaces table in selected integration with results of predictor.
-Name of the model is used as name of the table to store prediction results. 
-If you need to specify schema you can do it with dot separator: schema_name.table_name.sql    
-Parameters:
-  - predictor_name - name of using predictor.
-    It has to be created in mindsdb
-  - integration - name of used integration to get data from and save result to.
-    In has to be created in mindsdb beforehand
-```    
-    {{ config(materialized='table', predictor_name='TEST_PREDICTOR_NAME', integration='int1') }}
-        select a, bc from ddd where name > latest
-```
 
 ## Testing
 
