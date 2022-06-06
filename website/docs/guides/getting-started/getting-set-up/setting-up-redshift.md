@@ -64,9 +64,9 @@ Congrats! You have your Redshift cluster.
 Now we are going to load our sample data into the S3 bucket that our Cloudformation template created. S3 buckets are a cheap and simple way to store data outside of Redshift.
 
 1. The data used in this course is stored as CSVs in a public S3 bucket. You can use the following URLs to download these files. Download these to your computer to use in the following steps.
-- [jaffle_shop_customers.csv](https://www.google.com/url?q=http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv&sa=D&source=editors&ust=1644864530119236&usg=AOvVaw3IVEW44ZbyLKJ5x0GZc_y_)
-- [jaffle_shop_orders.csv](https://www.google.com/url?q=http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv&sa=D&source=editors&ust=1644864530119746&usg=AOvVaw0CjkjBeGxTipTjfbxvmN-_)
-- [stripe_payments.csv](https://www.google.com/url?q=http://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv&sa=D&source=editors&ust=1644864530120240&usg=AOvVaw1nwPSDg9fp-pnzepudMSLm)
+- [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
+- [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
+- [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
 
 2. Now we are going to use the S3 bucket that you created via CloudFormation and upload the files. Go to the search bar at the top and type in `S3` and click on S3. There will be sample data in the file already, feel free to ignore it or use it for other modeling exploration.
 
