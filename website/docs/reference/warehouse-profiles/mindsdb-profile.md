@@ -56,7 +56,7 @@ Create dbt project, choose mindsdb as the database and set up the connection. Ve
 To create a predictor, create a dbt model with a "predictor" materialization. The name of the model will be the name of predictor.
 
 #### Parameters:
-- `integration` - name of used integration to get data from and save result to. Must be created in mindsdb beforehand
+- `integration` - name of used integration to get data from and save result to. Must be created in mindsdb beforehand using the [`CREATE DATABASE` syntax](https://docs.mindsdb.com/sql/create/databases/).
 - `predict` - field for prediction
 - `predict_alias` [optional] - alias for predicted field
 - `using` [optional] - options for configure trained model
