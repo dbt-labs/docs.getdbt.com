@@ -5,7 +5,7 @@ id: "jinja-macros"
 
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
-* [dbt Jinja context](dbt-jinja-functions)
+* [dbt Jinja context](/reference/dbt-jinja-functions)
 * [Macro properties](macro-properties)
 
 ## Overview
@@ -172,7 +172,7 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 
 ```sql
 -- 🙅 This works, but can be hard to maintain as your code grows
-{% for payment_methods in ["bank_transfer", "credit_card", "gift_card"] %}
+{% for payment_method in ["bank_transfer", "credit_card", "gift_card"] %}
 ...
 {% endfor %}
 

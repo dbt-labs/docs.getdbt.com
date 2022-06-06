@@ -5,6 +5,8 @@ id: "available-adapters"
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
 
+If you have a new adapter, please add it to this list via a pull request! See [Documenting your adapter](/website/docs/docs/contributing/documenting-a-new-adapter.md)  for more information.
+
 ### Installation
 
 Most adapters can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
@@ -48,17 +50,17 @@ These adapter plugins are built and maintained by the same people who build and 
 
 These adapter plugins are contributed and maintained by members of the community 🌱
 
-| Adapter for            | Documentation                         | Notes                     | Install with pip             |
-|------------------------|---------------------------------------|---------------------------|------------------------------|
-| SQL Server & Azure SQL | [Profile Setup](mssql-profile)        | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
-| Azure Synapse          | [Profile Setup](azuresynapse-profile) | Azure Synapse 10+         | `pip install dbt-synapse`    |
-| Exasol Analytics       | [Profile Setup](exasol-profile)       | Exasol 6.x and later      | `pip install dbt-exasol`     |
-| Dremio                 | [Profile Setup](dremio-profile)       | Dremio 4.7+               | `pip install dbt-dremio`     |
-| ClickHouse             | [Profile Setup](clickhouse-profile)   | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
-| Athena                 | [Profile Setup](athena-profile)       | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
-| Vertica                | [Profile Setup](vertica-profile)      | Vertica 10.0+             | `pip install dbt-vertica`    |
-| AWS Glue                | [Profile Setup](glue-profile), [Configuration](glue-configs)      | Glue 2.0+          | `pip install dbt-glue`    |
-| Greenplum              | [Profile Setup](greenplum-profile), [Configuration](greenplum-configs)     | Greenplum 6.0+            | `pip install dbt-greenplum`  |
+| Adapter for            | Documentation                                                                | Notes                     | Install with pip             |
+|------------------------|------------------------------------------------------------------------------|---------------------------|------------------------------|
+| SQL Server & Azure SQL | [Profile Setup](mssql-profile), [Configuration](mssql-configs)               | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
+| Azure Synapse          | [Profile Setup](azuresynapse-profile), [Configuration](azuresynapse-configs) | Azure Synapse 10+         | `pip install dbt-synapse`    |
+| Exasol Analytics       | [Profile Setup](exasol-profile)                                              | Exasol 6.x and later      | `pip install dbt-exasol`     |
+| Dremio                 | [Profile Setup](dremio-profile)                                              | Dremio 4.7+               | `pip install dbt-dremio`     |
+| ClickHouse             | [Profile Setup](clickhouse-profile)                                          | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
+| Athena                 | [Profile Setup](athena-profile)                                              | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
+| Vertica                | [Profile Setup](vertica-profile)                                             | Vertica 10.0+             | `pip install dbt-vertica`    |
+| AWS Glue               | [Profile Setup](glue-profile), [Configuration](glue-configs)                 | Glue 2.0+                 | `pip install dbt-glue`       |
+| Greenplum              | [Profile Setup](greenplum-profile), [Configuration](greenplum-configs)       | Greenplum 6.0+            | `pip install dbt-greenplum`  |
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
 - Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 

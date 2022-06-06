@@ -13,7 +13,7 @@ id: "building-models"
 
 :::info Building your first models
 
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/getting-started.md) to build your first dbt project with models.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/guides/getting-started) to build your first dbt project with models.
 
 :::
 

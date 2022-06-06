@@ -10,7 +10,7 @@
 /website/static/img/docs/dbt-cloud/                    @runleonarun 
 
 # Blog content assigned to Developer experience team
-/website/blog/                       @dbt-labs/devex 
+/website/blog/                       @dbt-labs/devhub
 
 
 # Adapter & Package Development Docs
