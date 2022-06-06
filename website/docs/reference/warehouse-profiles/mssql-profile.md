@@ -115,7 +115,7 @@ The following additional methods are available to authenticate to Azure SQL prod
 The automatic authentication setting is in most cases the easiest choice and works for all of the above.
 
 <Tabs
-  defaultValue="aad_password"
+  defaultValue="azure_cli"
   values={[
     {label: 'AAD username & password', value: 'aad_password'},
     {label: 'Service principal', value: 'service_principal'},
