@@ -77,3 +77,16 @@ To create a predictor, create a dbt model with a "predictor" materialization. Th
     }}
       select * from stores
 ```
+
+To apply predictor add dbt model with "table" materialization. It creates or replaces table in selected integration with results of predictor.
+Name of the model is used as name of the table to store prediction results.
+If you need to specify schema you can do it with dot separator: schema_name.table_name.sql  
+
+#### Parameters
+- `predictor_name` - name of the predictor. It has to be created in mindsdb.
+- `integration` - name of used integration to get data from and save result to. Must be created in mindsdb beforehand using the [`CREATE DATABASE` syntax](https://docs.mindsdb.com/sql/create/databases/).
+
+```    
+    {{ config(materialized='table', predictor_name='TEST_PREDICTOR_NAME', integration='photorep') }}
+        select a, bc from ddd where name > latest
+```
