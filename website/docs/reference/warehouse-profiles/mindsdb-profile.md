@@ -76,7 +76,4 @@ To create a predictor, create a dbt model with a "predictor" materialization. Th
         )
     }}
       select * from stores
-
-## Testing
-
-- Install dev requirements
+```
