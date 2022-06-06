@@ -13,7 +13,7 @@ id: "clickhouse-configs"
 
 ### View Materialization
 
-A dbt model can be created as a [Clickhouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/) and configured using the following syntax:
+A dbt model can be created as a [ClickHouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/) and configured using the following syntax:
 
 <Tabs
     groupId="config-view"
@@ -49,7 +49,7 @@ models:
 
 ### Table Materialization
 
-A dbt model can be created as a [Clickhouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and configured using the following syntax:
+A dbt model can be created as a [ClickHouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and configured using the following syntax:
 
 <Tabs
     groupId="config-table"
@@ -104,7 +104,7 @@ models:
 
 ### Incremental Materialization
 
-Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result sets or complex transformations. To address this challenge and reduce the build time, a dbt model can be created as an incremental Clickhouse table and is configured using the following syntax:
+Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result sets or complex transformations. To address this challenge and reduce the build time, a dbt model can be created as an incremental ClickHouse table and is configured using the following syntax:
 
 <Tabs
     groupId="config-incremental"
