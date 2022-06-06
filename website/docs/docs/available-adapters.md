@@ -45,7 +45,6 @@ These adapter plugins are built and maintained by the same people who build and 
 | Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino))                                   | [Profile Setup](trino-profile)                                                                | `pip install dbt-trino` |
 | Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata))                                           | [Profile Setup](teradata-profile), [Configuration](teradata-configs)                          | `pip install dbt-teradata` |
 | TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb))                                                        | [Profile Setup](tidb-profile)                                                                 | `pip install dbt-tidb` |
-| ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse.git))                               | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                      | `pip install dbt-clickhouse` |
 
 
 ### Community Supported
