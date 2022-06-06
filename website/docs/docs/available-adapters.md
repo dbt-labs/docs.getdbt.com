@@ -59,7 +59,8 @@ These adapter plugins are contributed and maintained by members of the community
 | ClickHouse             | [Profile Setup](clickhouse-profile)                                          | ClickHouse 20.11+         | `pip install dbt-clickhouse` |
 | Athena                 | [Profile Setup](athena-profile)                                              | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
 | Vertica                | [Profile Setup](vertica-profile)                                             | Vertica 10.0+             | `pip install dbt-vertica`    |
-| AWS Glue                | [Profile Setup](glue-profile), [Configuration](glue-configs)                 | Glue 2.0+          | `pip install dbt-glue`    |
+| AWS Glue               | [Profile Setup](glue-profile), [Configuration](glue-configs)                 | Glue 2.0+                 | `pip install dbt-glue`       |
+| Greenplum              | [Profile Setup](greenplum-profile), [Configuration](greenplum-configs)       | Greenplum 6.0+            | `pip install dbt-greenplum`  |
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
 - Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 
