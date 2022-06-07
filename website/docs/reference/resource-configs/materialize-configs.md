@@ -5,6 +5,10 @@ id: "materialize-configs"
 
 ## Performance optimizations
 
+### Incremental models
+Materialize, at its core, is a real-time database that delivers incremental view updates without ever compromising on latency or correctness.
+Materialized views are incremental models, defined once. 
+
 ### Indexes
 
 :::info Advanced feature
@@ -49,3 +53,13 @@ models:
 ```
 
 </File>
+
+### Tests
+
+<Changelog>
+
+- **v1.1.1:** Provide support for storing the results of a test query in a materializedview using the store_failures config.
+
+</Changelog>
+
+If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view using the test query. This view is a continuously updating representation of failures.
