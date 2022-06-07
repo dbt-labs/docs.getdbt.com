@@ -53,9 +53,9 @@ Let’s pretend that we are an analytics engineer at Seeq Wellness, a hypothetic
 
 **Key Outcomes**
 
-* Create your first [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models)
+* Create your first [model](/docs/building-a-dbt-project/building-models)
 
-* Execute your first [dbt run](https://docs.getdbt.com/reference/commands/run)
+* Execute your first [dbt run](/reference/commands/run)
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_1.png)
 
@@ -67,13 +67,13 @@ The goal here is to learn the very basics of interacting with a dbt project; fee
 
 In addition to learning the basic pieces of dbt, we're familiarizing ourselves with the modern, version-controlled analytics engineering workflow, and experimenting with how it feels to use it at our organization.
 
-If we decide not to do this, we end up missing out on what the dbt workflow has to offer. If you want to learn more about why we think analytics engineering with dbt is the way to go, I  encourage you to read the [dbt Viewpoint](https://docs.getdbt.com/docs/about/viewpoint)!
+If we decide not to do this, we end up missing out on what the dbt workflow has to offer. If you want to learn more about why we think analytics engineering with dbt is the way to go, I  encourage you to read the [dbt Viewpoint](/docs/about/viewpoint)!
 
-In order to learn the basics, we’re going to [port over the SQL file](https://docs.getdbt.com/tutorial/refactoring-legacy-sql) that powers our existing "patient_claim_summary" report that we use in our KPI dashboard in parallel to our old transformation process. We’re not ripping out the old plumbing just yet. In doing so, we're going to try dbt on for size and get used to interfacing with a dbt project.
+In order to learn the basics, we’re going to [port over the SQL file](/tutorial/refactoring-legacy-sql) that powers our existing "patient_claim_summary" report that we use in our KPI dashboard in parallel to our old transformation process. We’re not ripping out the old plumbing just yet. In doing so, we're going to try dbt on for size and get used to interfacing with a dbt project.
 
 **Project Appearance**
 
-We have one single SQL model in our models folder, and really, that's it. At this stage, the README and dbt_project.yml are just artifacts from the [dbt init command](https://www.google.com/url?q=https://docs.getdbt.com/reference/commands/init&sa=D&source=docs&ust=1636059050382000&usg=AOvVaw3spuGmh9--dlfaGWanf0eZ), and don’t yet have specific documentation or configuration. At this stage of our journey, we just want to get up and running with a functional dbt project.
+We have one single SQL model in our models folder, and really, that's it. At this stage, the README and dbt_project.yml are just artifacts from the [dbt init command](/reference/commands/init), and don’t yet have specific documentation or configuration. At this stage of our journey, we just want to get up and running with a functional dbt project.
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_2.png)
 
@@ -83,11 +83,11 @@ The most important thing we’re introducing when your project is an infant is t
 
 **Key Outcomes**
 
-* Configure your first [sources](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources)
+* Configure your first [sources](/docs/building-a-dbt-project/using-sources)
 
-* Introduce modularity with [{{ ref() }}](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) and [{{ source() }}](https://docs.getdbt.com/reference/dbt-jinja-functions/source)
+* Introduce modularity with [{{ ref() }}](/reference/dbt-jinja-functions/ref) and [{{ source() }}](/reference/dbt-jinja-functions/source)
 
-* [Document](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) and [test](https://docs.getdbt.com/docs/building-a-dbt-project/tests) your first models
+* [Document](/docs/building-a-dbt-project/documentation) and [test](/docs/building-a-dbt-project/tests) your first models
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_3.png)
 
@@ -99,9 +99,9 @@ Specifically, now is when it's useful to introduce **_modularity_** to our proje
 
 We’re going to:
 
-* Break out reused code into separate models and use [{{ ](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)[ref](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)[() }}](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) to build dependencies
+* Break out reused code into separate models and use [{{ ](/reference/dbt-jinja-functions/ref)[ref](/reference/dbt-jinja-functions/ref)[() }}](/reference/dbt-jinja-functions/ref) to build dependencies
 
-* Use the[ {{ source() }}](https://docs.getdbt.com/reference/commands/source) macro to declare our raw data dependencies
+* Use the[ {{ source() }}](/reference/commands/source) macro to declare our raw data dependencies
 
 * Dip our toes into testing and documenting our models
 
@@ -109,7 +109,7 @@ We’re going to:
 
 Let's check in on the growth of [our projec](https://github.com/dbt-labs/dbt-project-maturity/tree/main/2-toddlerhood)t. We've broken some of our logic into its own model — our original script had repetitive logic in <Term id="subquery">subqueries</Term>, now it's following a key principle of analytics engineering: <Term id="dry">Don't Repeat Yourself (DRY)</Term>. For more information on how to refactor your SQL queries for Modularity - check out our [free on-demand course](https://courses.getdbt.com/courses/refactoring-sql-for-modularity).
 
-We also added our first [YML files](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/). Here, we have one yml file to [configure our sources](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/source.yml), and one one yml file to [describe our models](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/schema.yml). We're just starting with basic declarations of our sources, primary key testing using dbt built in tests, and a model-level description -- these are the first steps of a project just learning to walk!
+We also added our first [YML files](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/). Here, we have one yml file to [configure our sources](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/source.yml), and one one yml file to [describe our models](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/schema.yml). We're just starting with basic declarations of our sources, <Term id="primary-key" /> testing using dbt built in tests, and a model-level description -- these are the first steps of a project just learning to walk!
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_4.png)
 
@@ -125,7 +125,7 @@ Leveling up from infant to toddler is a huge jump in terms of feature completene
 
 * Create a PR template to ensure quality and consistency
 
-* [Deploy your project](https://docs.getdbt.com/docs/running-a-dbt-project/running-dbt-in-production)!
+* [Deploy your project](/docs/running-a-dbt-project/running-dbt-in-production)!
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_5.png)
 
@@ -151,11 +151,11 @@ Even though we haven't changed the function of a lot of our features *codifying 
 
 **Key Outcomes**
 
-* Leverage code from dbt [packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management)
+* Leverage code from dbt [packages](/docs/building-a-dbt-project/package-management)
 
 * Increase model flexibility and scope of project
 
-* Reduce dbt production build times with [advanced materializations](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations)
+* Reduce dbt production build times with [advanced materializations](/docs/building-a-dbt-project/building-models/materializations)
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_7.png)
 
@@ -179,7 +179,7 @@ We've spent this level focused on deepening and optimizing our feature set — w
 
 **Key Outcomes**
 
-* Formalize dbt’s relationship to BI with [exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures)!
+* Formalize dbt’s relationship to BI with [exposures](/docs/building-a-dbt-project/exposures)!
 
 * Advanced use of metadata
 

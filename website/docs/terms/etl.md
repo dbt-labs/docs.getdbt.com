@@ -41,7 +41,7 @@ To actually transform the data, there’s two primary methods teams will use:
 
 In the final stage, the transformed data is loaded into your target data warehouse. Once this transformed data is in its final destination, it’s most commonly exposed to end business users either in a BI tool or in the data warehouse directly.
 
-The ETL workflow implies that your raw data does not live in your data warehouyse. *Because transformations occur before load, only transformed data lives in your data warehouse in the ETL process.* This can make it harder to ensure that transformations are performing the correct functionality.
+The ETL workflow implies that your raw data does not live in your data warehouse. *Because transformations occur before load, only transformed data lives in your data warehouse in the ETL process.* This can make it harder to ensure that transformations are performing the correct functionality.
 
 ## ETL use cases and challenges
 
@@ -49,7 +49,7 @@ The ETL workflow implies that your raw data does not live in your data warehouys
 
 While ELT adoption is growing, we still see ETL use cases for processing large volumes of data and adhering to strong data governance principles.
 
-- **Efficiently normal volumes of data**: ETL can be an efficient way to perform simple normalizations across large data sets. Doing these lighter transformations across a large volume of data during loading can help get the data formatted properly and quickly for downstream use. In addition, end business users sometimes need quick access to raw or somewhat normalized data. Through an ETL workflow, data teams can conduct lightweight transformations on data sources and quickly expose them in their target data warehouse and downstream BI tool.
+- **Efficiently normalize large volumes of data**: ETL can be an efficient way to perform simple normalizations across large data sets. Doing these lighter transformations across a large volume of data during loading can help get the data formatted properly and quickly for downstream use. In addition, end business users sometimes need quick access to raw or somewhat normalized data. Through an ETL workflow, data teams can conduct lightweight transformations on data sources and quickly expose them in their target data warehouse and downstream BI tool.
 - **Hash PII prior to load**: Some companies will want to mask, hash, or remove PII values before it enters their data warehouse. In an ETL workflow, teams can transform PII to hashed values or remove them completely during the loading process. This limits where PII is available or accessible in an organization’s data warehouse.
 
 ### ETL drawbacks
