@@ -43,8 +43,6 @@ To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.g
       verify: False
       secure: True
       connect_timeout: 10
-      send_receive_timeout: 300
-      compression: 'lz4' # default '' (disable)
 ```
 
 </File>
@@ -63,9 +61,6 @@ To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.g
 | `verify`                | Optional. For HTTPS (`secure=True`) connections, validate the ClickHouse server TLS certificate, including matching hostname, expiration, and signed by a trusted Certificate Authority. Defaults to True.                                                                        |
 | `secure`                | Optional. Whether the connection is secured (https or http). Defaults to False (http).                                                                                                                                                                                            |
 | `connect_timeout`       | Optional. HTTP connection timeout in seconds. Defaults is 10 seconds.                                                                                                                                                                                                             |
-| `send_receive_timeout`  | Optional. HTTP read timeout in seconds. Defaults is 300 seconds.                                                                                                                                                                                                                  |
-| `compression`           | Optional. Accept compressed data from the ClickHouse server. Defaults is False (disabled).                                                                                                                                                                                        |
-
 
 #### Troubleshooting Connections
 
