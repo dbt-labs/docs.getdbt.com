@@ -10,9 +10,9 @@ This feature is currently in Beta. If you are interested in getting access to th
 You can still use dbt Cloud with Azure DevOps before this feature is generally available by [following these instructions](/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#azure-devops).
 :::
 
-:::important Availability for connecting Azure DevOps accounts
+:::caution Available for dbt Cloud Enterprise
 
-Connecting an Azure DevOps account is available for dbt Cloud Enterprise tier.
+Connecting an Azure DevOps account is available for organizations using the dbt Cloud Enterprise tier.
 
 :::
 
