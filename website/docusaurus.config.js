@@ -1,6 +1,9 @@
 const path = require('path');
+const math = require('remark-math');
+const katex = require('rehype-katex');
 const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
+
 
 /* Debugging */
 var SITE_URL;
@@ -173,6 +176,8 @@ var siteSettings = {
           path: 'docs',
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
 
           editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
           showLastUpdateTime: false,
@@ -186,6 +191,8 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
 
       },
@@ -222,7 +229,14 @@ var siteSettings = {
     '/css/search.css',
     '/css/api.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
-    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
+    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap',
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
 }
 
