@@ -307,6 +307,9 @@ const sidebarSettings = {
         "reference/resource-configs/materialize-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/teradata-configs",
+        "reference/resource-configs/mssql-configs",
+        "reference/resource-configs/azuresynapse-configs",
+        "reference/resource-configs/greenplum-configs",
       ],
     },
     {
@@ -530,6 +533,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/vertica-profile",
         "reference/warehouse-profiles/tidb-profile",
         "reference/warehouse-profiles/glue-profile",
+        "reference/warehouse-profiles/greenplum-profile",
       ],
     },
     {

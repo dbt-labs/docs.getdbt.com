@@ -89,7 +89,7 @@ Pre- and post-hooks can be specified for any model -- be sure that your material
 ```
 ### Executing SQL
 
-Construct your materialization <Term id="dml" /> to account for the different permutations of <Term id="table" /> existence, materialization flags, etc. There are a number of [adapter functions](dbt-jinja-functions/adapter) and context variables that can help you here. Be sure to consult the Reference section of this site for a full list of variables and functions at your disposal.
+Construct your materialization <Term id="dml" /> to account for the different permutations of <Term id="table" /> existence, materialization flags, etc. There are a number of [adapter functions](/reference/dbt-jinja-functions/adapter) and context variables that can help you here. Be sure to consult the Reference section of this site for a full list of variables and functions at your disposal.
 
 ### Run post-hooks
 
@@ -148,7 +148,7 @@ Materializations should [return](return) the list of Relations that they have cr
 
 If a materialization solely creates a single relation, then returning that relation at the end of the materialization is sufficient to synchronize the dbt Relation cache. If the materialization *renames* or *drops* Relations other than the relation returned by the materialization, then additional work is required to keep the cache in sync with the database.
 
-To explicitly remove a relation from the cache, use [adapter.drop_relation](dbt-jinja-functions/adapter). To explicitly rename a relation in the cache, use [adapter.rename_relation](dbt-jinja-functions/adapter). Calling these methods is preferable to executing the corresponding SQL directly, as they will mutate the cache as required. If you do need to execute the SQL to drop or rename relations directly, use the `adapter.cache_dropped` and `adapter.cache_renamed` methods to synchronize the cache.
+To explicitly remove a relation from the cache, use [adapter.drop_relation](/reference/dbt-jinja-functions/adapter). To explicitly rename a relation in the cache, use [adapter.rename_relation](/reference/dbt-jinja-functions/adapter). Calling these methods is preferable to executing the corresponding SQL directly, as they will mutate the cache as required. If you do need to execute the SQL to drop or rename relations directly, use the `adapter.cache_dropped` and `adapter.cache_renamed` methods to synchronize the cache.
 
 ## Materialization Configuration
 
@@ -165,7 +165,7 @@ config.get('optional_config_name', default="the default")
 config.require('required_conifg_name')
 ```
 
-For more information on the `config` dbt Jinja function, see the [config](dbt-jinja-functions/config) reference.
+For more information on the `config` dbt Jinja function, see the [config](/reference/dbt-jinja-functions/config) reference.
 
 ## Materialization precedence
 
