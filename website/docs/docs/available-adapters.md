@@ -33,6 +33,7 @@ In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) m
 
 These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.
 
+
 | Adapter for                                                                                                   | Documentation                                                                                 | Install from PyPi |
 |---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------| ----------------- |
 | ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                      | `pip install dbt-clickhouse` |
