@@ -1,5 +1,5 @@
 ---
-title: "Apache iomete Profile"
+title: "iomete Profile"
 ---
 
 ## Overview of dbt-iomete
@@ -7,6 +7,7 @@ title: "Apache iomete Profile"
 **Maintained by:** iomete
 **Author:** Namig Aliyev
 **Source:** [Github](https://github.com/iomete/dbt-iomete)
+**Documentation** [iomete](https://docs.iomete.com/docs/profile-setup)
 **dbt Cloud:** Currently un-supported
 **dbt Slack channel** [Link to channel]()
 
@@ -15,7 +16,7 @@ title: "Apache iomete Profile"
 
 ## Installation and Distribution
 
-The easiest way to install dbt-databricks is to use `pip`:
+The easiest way to install dbt-iomete is to use `pip`:
 
 
 ```zsh
@@ -41,27 +42,23 @@ iomete:
     dev:
       type: iomete
       cluster: cluster_name
-      host: dwh-<account>.iomete.com
+      host: dwh-<account_number>.iomete.com
       port: 443
       schema: database_name
       user: iomete_user_name
       password: iomete_user_password
-      threads: 1
-      connect_retries: 5
-      connect_timeout: 60
 ```
 
 </File>
 
 ##### Description of Profile Fields
 
-| Field    | Description                                                                                                                           | Required | Example                |
-|----------|---------------------------------------------------------------------------------------------------------------------------------------|----------|------------------------|
-| type     | The specific adapter to use                                                                                                           | Required | `iomete`               |
-| cluster  | The cluster to connect                                                                                                                | Required | `reporting`            |
-| host     | The host name of the connection. It is a combination of <br/>account_number with the prefix `dwh-` <br/>and the suffix `.iomete.com`. | Required | `dwh-12345.iomete.com` |
-| port     | The port to use.                                                                                                                      | Required | `443`                  |
-| schema   | Specify the schema (database) to build models into.                                                                                   | Required | `dbt_finance`          |
-| username | The iomete username to use to connect to the server.                                                                                  | Required | `dbt_user`             |
-| password | The iomete user password to use to connect to the server.                                                                             | Required | `strong_password`      |
-| threads  | The number of threads available to dbt.                                                                                               | Required | `1`                    |
+| Field    | Description                                                                                                                             | Required | Example                |
+|----------|-----------------------------------------------------------------------------------------------------------------------------------------|----------|------------------------|
+| type     | The specific adapter to use                                                                                                             | Required | `iomete`               |
+| cluster  | The cluster to connect                                                                                                                  | Required | `reporting`            |
+| host     | The host name of the connection. It is a combination of <br/>`account_number` with the prefix `dwh-` <br/>and the suffix `.iomete.com`. | Required | `dwh-12345.iomete.com` |
+| port     | The port to use.                                                                                                                        | Required | `443`                  |
+| schema   | Specify the schema (database) to build models into.                                                                                     | Required | `dbt_finance`          |
+| username | The iomete username to use to connect to the server.                                                                                    | Required | `dbt_user`             |
+| password | The iomete user password to use to connect to the server.                                                                               | Required | `strong_password`      |
