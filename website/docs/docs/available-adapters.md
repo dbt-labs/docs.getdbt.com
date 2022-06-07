@@ -35,16 +35,18 @@ These adapter plugins are built and maintained by the same people who build and 
 
 | Adapter for                                                                                                   | Documentation                                                                                 | Install from PyPi |
 |---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------| ----------------- |
-| ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs) | `pip install dbt-clickhouse` |
+| ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                      | `pip install dbt-clickhouse` |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                          | `pip install dbt-firebolt` |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)) | [Profile Setup](materialize-profile), [Configuration](materialize-configs)                    | `pip install dbt-materialize` |
+| MindsDB ([dbt-mindsdb](https://github.com/mindsdb/dbt-mindsdb))                                               | [Profile Setup](mindsdb-profile), [Configuration](mindsdb-configs)                            | `pip install dbt-mindsdb`     |
 | Oracle ([dbt-oracle](https://github.com/oracle/dbt-oracle))                                                   | [Profile Setup](oracle-profile)                                                               | `pip install dbt-oracle`     |
 | Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))                                               | [Profile Setup](rockset-profile)                                                              | `pip install dbt-rockset` |
 | SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore))                                    | [Profile Setup](singlestore-profile)                                                          | `pip install dbt-singlestore` |
 | Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino))                                   | [Profile Setup](trino-profile)                                                                | `pip install dbt-trino` |
 | Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata))                                           | [Profile Setup](teradata-profile), [Configuration](teradata-configs)                          | `pip install dbt-teradata` |
 | TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb))                                                        | [Profile Setup](tidb-profile)                                                                 | `pip install dbt-tidb` |
+
 
 
 ### Community Supported
