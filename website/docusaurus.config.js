@@ -61,6 +61,15 @@ var siteSettings = {
       appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : 'dbt'
       //debug: true,
     },
+    announcementBar: {
+      id: "live_qa",
+      content:
+        "Friday, Jun 10, 2022: Join a live Q&A with dbt experts, who'll answer all your 🌶  questions.",
+      backgroundColor: "#047377",
+      textColor: "#fff",
+      isCloseable: true
+    },
+    announcementBarLink: "https://www.getdbt.com/resources/dbt-live-expert-series-june-na/",
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
