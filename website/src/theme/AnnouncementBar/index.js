@@ -12,9 +12,9 @@ import IconClose from '@theme/IconClose';
 import styles from './styles.module.css';
 export default function AnnouncementBar() {
   const {isActive, close} = useAnnouncementBar();
-  const {announcementBar, announcementBarLink} = useThemeConfig();
+  const {announcementBar, announcementBarActive, announcementBarLink} = useThemeConfig();
 
-  if (!isActive) {
+  if (!isActive || !announcementBarActive) {
     return null;
   }
 
@@ -35,6 +35,10 @@ export default function AnnouncementBar() {
           rel="noopener noreferrer" 
           href={announcementBarLink}
           className={styles.announcementBarLink}
+          style={{
+            backgroundColor,
+            color: textColor,
+          }}
           >
           <AnnouncementBarContent content={content} styles={styles} />
         </a>

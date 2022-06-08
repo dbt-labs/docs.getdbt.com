@@ -69,6 +69,7 @@ var siteSettings = {
       textColor: "#fff",
       isCloseable: true
     },
+    announcementBarActive: true,
     announcementBarLink: "https://www.getdbt.com/resources/dbt-live-expert-series-june-na/",
     prism: {
       theme: (() => {
