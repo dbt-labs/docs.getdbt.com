@@ -17,11 +17,8 @@ jobs:
           m_label: 'size: medium'
           m_max_size: '250'
           l_label: 'size: large'
-          l_max_size: '500'
+          l_max_size: '1000'
           xl_label: 'size: x-large'
           fail_if_xl: 'false'
-          message_if_xl: >
-            This PR is pretty big! We recommend breaking it down to under 1000 lines, which makes it easier to review.
-            You can also make it more manageable by only addressing one issue per PR or moving some changes to a separate branch.
           files_to_ignore: ''
       
