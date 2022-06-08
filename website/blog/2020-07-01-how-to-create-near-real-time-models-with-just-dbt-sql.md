@@ -13,7 +13,6 @@ date: 2020-07-01
 is_featured: false
 ---
 
-
 Before I dive into how to create this, I have to say this. **You probably don’t need this**. I, along with my other Fishtown colleagues, have spent countless hours working with clients that ask for near-real-time streaming data. However, when we start digging into the project, it is often realized that the use case is not there. There are a variety of reasons why near real-time streaming is not a good fit. Two key ones are:
 
 1.  The source data isn’t updating frequently enough.
@@ -146,7 +145,7 @@ As you start to create more lambda views, you will want to make the filter into 
 ```    
     
 
-\*\* Note for the macro above, the timestamp is `var(lambda_timestamp, run_started_at)`. We want to default to the last time the historical models were run but allow for flexibility depending on the situation. It would be useful to note that we used [run\_started\_at timestamp](https://docs.getdbt.com/reference/dbt-jinja-functions/run_started_at/) rather than `current_timestamp()` to avoid any situations where there is a job failure and the historical table hasn’t been updated for the last 5 hours.
+\*\* Note for the macro above, the timestamp is `var(lambda_timestamp, run_started_at)`. We want to default to the last time the historical models were run but allow for flexibility depending on the situation. It would be useful to note that we used [run\_started\_at timestamp](/reference/dbt-jinja-functions/run_started_at/) rather than `current_timestamp()` to avoid any situations where there is a job failure and the historical table hasn’t been updated for the last 5 hours.
 
 ### Write idempotent models
 
