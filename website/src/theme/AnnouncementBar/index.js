@@ -64,7 +64,6 @@ export default function AnnouncementBar() {
 }
 
 function AnnouncementBarContent({ content, styles }) {
-  console.log('styles', styles)
   return (
     <div
       className={styles.announcementBarContent}
