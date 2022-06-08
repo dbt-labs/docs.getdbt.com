@@ -1,3 +1,4 @@
+
 ---
 title: Can I pay via invoice?
 description: "What payments types are accepted"
