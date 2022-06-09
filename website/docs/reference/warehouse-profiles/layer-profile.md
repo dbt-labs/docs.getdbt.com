@@ -11,8 +11,8 @@ title: "Layer Profile"
 **dbt Cloud:** Not Supported      
 **dbt Slack channel** [#db-layer](https://slack.com)
 
-![dbt-synapse stars](https://img.shields.io/github/stars/layerai/dbt-adapters?style=for-the-badge)
-![latest version on PyPI](https://img.shields.io/pypi/v/dbt-layer-bigquery?style=for-the-badge)
+[![dbt-synapse stars](https://img.shields.io/github/stars/layerai/dbt-adapters?style=for-the-badge)](https://github.com/layerai/dbt-adapters)
+[![latest version on PyPI](https://img.shields.io/pypi/v/dbt-layer-bigquery?style=for-the-badge)](https://pypi.org/project/dbt-layer-bigquery)
 
 To immediately start using Layer inside your dbt DAG, install the Layer dbt Adapter for BigQuery.
 
