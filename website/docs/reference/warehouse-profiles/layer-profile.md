@@ -2,12 +2,6 @@
 title: "Layer Profile"
 ---
 
-:::info Vendor-supported plugin
-
-Some [core functionality](https://github.com/pingcap/dbt-tidb/blob/main/README.md#supported-features) may be limited. 
-If you're interested in contributing, check out the source code repository listed below.
-
-:::
 
 ## Overview of dbt-layer
 **Maintained by:** Layer      
