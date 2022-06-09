@@ -63,7 +63,7 @@ The following fields are required:
 
 Parameter               | Default     | Type         | Description
 ----------------------- | ----------- |--------------| ---
-`type`                  |             | string       | Specifies the adapter you want to use. It should be `layer_bigquery`
+`type`                  |             | string       | Specifies the adapter you want to use. It should be `layer_bigquery`.
 `layer_api_key`         |             | string (opt) | Specifies your Layer API key. If you want to make predictions with public ML models from Layer, you don't need to have this key in your profile. It's required if you load ML models from your Layer account or train an AutoML model.
 `layer_project`         |             | string (opt) | Specifies your target Layer project. If you don't specify, Layer will use the project same name with your dbt project.
 `method`              |             | string       | Specifies the authentication type to connect to your BigQuery.
@@ -74,7 +74,7 @@ Rest of the parameters depends on the BigQuery authentication method you specifi
 
 ### Prediction
 
-You can run predictions using any Layer ML model with your dbt models. Layer dbt Adapter helps you score your data within your dbt DAG with SQL.
+You can make predictions using any Layer ML model within your dbt models. Layer dbt Adapter helps you score your data resides on your warehouse within your dbt DAG with SQL.
 
 _Syntax:_
 ```
@@ -103,7 +103,7 @@ FROM
 
 ### AutoML
 
-You can automatically build state-of-art ML models using your own dbt models with plain SQL. To train an AutoML model all you have to do is pass your model type, input data (features) and target column you want to predict to `layer.automl()` in your SQL.
+You can automatically build state-of-art ML models using your own dbt models with plain SQL. To train an AutoML model all you have to do is pass your model type, input data (features) and target column you want to predict to `layer.automl()` in your SQL. The Layer AutoML will pick the best performing model and enable you to call it by its dbt model name to make predictions as shown above. 
 
 _Syntax:_
 ```
