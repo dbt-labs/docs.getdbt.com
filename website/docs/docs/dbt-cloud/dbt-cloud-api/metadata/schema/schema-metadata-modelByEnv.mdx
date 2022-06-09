@@ -1,0 +1,45 @@
+---
+title: "Model By Environment"
+id: "metadata-schema-modelByEnv"
+---
+
+import { ArgsTable, SchemaTable } from "./schema";
+
+## Beta
+
+This functionality is experimental and may change or be removed in the future.  Open to feedback at metadata@dbtlabs.com.
+
+This model by environment object allows you to query information about a particular model based on environmentId.
+
+### Arguments
+
+When querying for `modelByEnvironment`, the following arguments are available.
+
+<ArgsTable queryName="modelByEnvironment" />
+
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this modelByEnvironment object.
+
+### Example Query
+
+Given an `environment_id` and `model_unique_id`, return the model and its execution time for the last 10 times it was run, regardless of which job ran it!
+
+```graphql
+{
+  modelByEnvironment(
+    environmentId: 1,
+    uniqueId:"model.jaffle_shop.dim_user",
+    lastRunCount:10,
+    withCatalog: false
+  ){
+    uniqueId
+    jobId,
+    runId,
+    executionTime
+  }
+}
+```
+
+### Fields
+When querying for `modelByEnvironment`, the following fields are available:
+
+<SchemaTable nodeName="ModelNode" />
