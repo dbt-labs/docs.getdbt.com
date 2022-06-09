@@ -312,6 +312,7 @@ const sidebarSettings = {
         "reference/resource-configs/mssql-configs",
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
+        "reference/resource-configs/impala-configs",
       ],
     },
     {
@@ -537,6 +538,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/glue-profile",        
         "reference/warehouse-profiles/mindsdb-profile",
         "reference/warehouse-profiles/greenplum-profile",
+        "reference/warehouse-profiles/impala-profile",
         "reference/warehouse-profiles/layer-profile",
       ],
     },
