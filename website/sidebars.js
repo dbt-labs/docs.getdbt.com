@@ -537,6 +537,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/glue-profile",        
         "reference/warehouse-profiles/mindsdb-profile",
         "reference/warehouse-profiles/greenplum-profile",
+        "reference/warehouse-profiles/layer-profile",
       ],
     },
     {
