@@ -33,11 +33,11 @@ We will continue to update this table so that customers know when we plan to sto
 
 <Snippet src="core-versions-table" />
 
-:::warning ⚠️ v0.X Non-Support Period
- We are giving accounts until the end of June 2022 to upgrade to dbt 1.0 or later. Pre-dbt 1.0 versions will not receive patch fixes, and our support team will no longer assist with dbt version specific help on non-supported versions of dbt. Additionally, jobs running dbt versions prior to 1.0 will start experiencing service disruptions before the end of the year 2022 and will be removed from the dbt Cloud context by year end 2022. You will receive additional notification before disruption to your production jobs.
+:::warning ⚠️ v0.X Non-Supported Period
+ We are giving accounts until the end of June 2022 to upgrade to dbt 1.0 or later. Pre-dbt 1.0 versions will not receive patch fixes, and our support team will no longer assist with dbt version specific help on non-supported versions of dbt. Additionally, jobs running dbt versions prior to 1.0 will start experiencing service disruptions before the end of the year 2022 and will be removed from the dbt Cloud context by end of the year 2022. You will receive additional email and in app notification before disruption to your production jobs.
 :::
 
-Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may choose to try prereleases of those patch releases before they are generally available.
+Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may choose to try prereleases of those patch releases before they are generally available. 
 
 <!--- TODO: Include language to reflect:
   - notifying users when new minor versions are available
@@ -45,14 +45,11 @@ Starting in v1.0, dbt Cloud will ensure that you're always using the latest comp
   - auto-upgrading users to the subsequent minor version when critical support ends
 --->
 
+For more on version support and future releases, see [Understanding dbt Core versions](core-versions).
 
-For more on version support and future releases, see "[Understanding dbt Core versions](core-versions)."
+#### What will actually happen on the end of support date?
 
-#### What will actually happen on the deprecation date?
-
-- 1 year post a minor version release of v1.X, we will try to run our customers' projects on the latest release of dbt if they have not already upgraded their projects themselves. In a post dbt v1.0 world, there won't be breaking changes between minor versions of dbt, so we might be reasonably successful at upgrading our customers' versions automatically. However, our strong preference is for customers to try to manage the upgrade process themselves which is a more cautious way to prevent failures to their production pipelines. 
-
-We will give customers consistent communication that they're hitting the end of their supported window, so they can plan accordingly. 
+1 year post a minor version release of v1.X, we will try to run our users' projects on the latest release of dbt if they have not already upgraded their projects themselves. In a post dbt v1.0 world, there won't be breaking changes between minor versions of dbt, so we might be reasonably successful at upgrading our users' versions for them. However, our strong preference is for accounts to try to manage the upgrade process themselves which is a more cautious way to prevent failures to their production pipelines. We will give accounts consistent communication that they're hitting the end of their supported window, so they can plan accordingly. 
 
 #### What should you be doing today?
 
@@ -76,4 +73,4 @@ Additionally upgrading to more recent versions of dbt Core will enable better pe
 
 #### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](docs/guides/migration-guide/upgrading-to-0-21-0) and our [upgrading Q&A page](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/guides/migration/versions/upgrading-to-v1.1) and our [upgrading Q&A page](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions).
