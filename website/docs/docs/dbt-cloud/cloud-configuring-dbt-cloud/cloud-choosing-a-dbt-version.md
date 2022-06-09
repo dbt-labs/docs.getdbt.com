@@ -73,4 +73,4 @@ Additionally upgrading to more recent versions of dbt Core will enable better pe
 
 #### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/guides/migration/versions/upgrading-to-v1.1) and our [upgrading Q&A page](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/guides/migration/versions/) and our [upgrading Q&A page](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions).
