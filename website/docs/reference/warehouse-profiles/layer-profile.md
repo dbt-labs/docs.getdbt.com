@@ -20,7 +20,7 @@ To immediately start using Layer inside your dbt DAG, install the Layer dbt Adap
 pip install dbt-layer-bigquery
 ```
 
-You don't need to install dbt separately. Installing `dbt-layer` will also install `dbt-core` and `dbt-bigquery`?
+You don't need to install dbt separately. Installing `dbt-layer` will also install `dbt-core` and `dbt-bigquery`
 
 
 ### Profile Configuration
@@ -63,9 +63,9 @@ The following fields are required:
 
 Parameter               | Default     | Type         | Description
 ----------------------- | ----------- |--------------| ---
-`type`                  |             | string       | Specifices the adapter you want to use. It should be `layer_bigquery`
-`layer_api_key`         |             | string (opt) | Specifieds your Layer API key. If you want to make predictions with public ML models from Layer, you don't need to have this key in your profile. It's required if you load ML models from your Layer account or train an AutoML model.
-`layer_project`         |             | string (opt) | Specifieds your target Layer project. If you don't specify, Layer will use the project same name with your dbt project.
+`type`                  |             | string       | Specifies the adapter you want to use. It should be `layer_bigquery`
+`layer_api_key`         |             | string (opt) | Specifies your Layer API key. If you want to make predictions with public ML models from Layer, you don't need to have this key in your profile. It's required if you load ML models from your Layer account or train an AutoML model.
+`layer_project`         |             | string (opt) | Specifies your target Layer project. If you don't specify, Layer will use the project same name with your dbt project.
 `method`              |             | string       | Specifies the authentication type to connect to your BigQuery.
 
 Rest of the parameters depends on the BigQuery authentication method you specified.
