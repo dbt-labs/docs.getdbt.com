@@ -64,13 +64,13 @@ var siteSettings = {
     announcementBar: {
       id: "live_qa",
       content:
-        "Friday, Jun 10, 2022: Join a live Q&A with dbt experts, who'll answer all your 🌶  questions.",
+        "Have questions you want answered live? Join us for a dbt Live: Expert Series session!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.getdbt.com/resources/dbt-live-expert-series-june-na/",
+    announcementBarLink: "https://www.getdbt.com/events/",
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
