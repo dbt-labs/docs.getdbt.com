@@ -20,7 +20,7 @@ To immediately start using Layer inside your dbt DAG, install the Layer dbt Adap
 pip install dbt-layer-bigquery
 ```
 
-You don't need to install dbt separately. Installing `dbt-layer` will also install `dbt-core` and `dbt-bigquery`
+You don't need to install dbt separately. Installing `dbt-layer` will also install `dbt-core` and `dbt-bigquery`.
 
 
 ### Profile Configuration
