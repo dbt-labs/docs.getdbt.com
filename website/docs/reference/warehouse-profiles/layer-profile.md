@@ -72,35 +72,6 @@ Rest of the parameters depends on the BigQuery authentication method you specifi
 
 ## Usage
 
-### Prediction
-
-You can make predictions using any Layer ML model within your dbt models. Layer dbt Adapter helps you score your data resides on your warehouse within your dbt DAG with SQL.
-
-_Syntax:_
-```
-layer.predict("LAYER_MODEL_PATH", ARRAY[FEATURES])
-```
-
-_Parameters:_
-
-| Syntax    | Description                                                                                                                                                                                        |
-| --------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `LAYER_MODEL_PATH`      | This is the Layer model path in form of `/[organization_name]/[project_name]/models/[model_name]`. You can use only the model name if you want to use an AutoML model within the same dbt project. |
-| `FEATURES` | These are the columns that this model requires to make a prediction. You should pass the columns as a list like `ARRAY[column1, column2, column3]`.                                                |
-
-_Example:_
-
-Check out [Cloth Detection Project](https://github.com/layerai/dbt-layer/tree/mecevit/update-docs/examples/cloth_detector):
-
-```sql
-SELECT
-    id,
-    layer.predict("layer/clothing/models/objectdetection", ARRAY[image])
-FROM
-    {{ ref("products") }}
-```
-
-
 ### AutoML
 
 You can automatically build state-of-art ML models using your own dbt models with plain SQL. To train an AutoML model all you have to do is pass your model type, input data (features) and target column you want to predict to `layer.automl()` in your SQL. The Layer AutoML will pick the best performing model and enable you to call it by its dbt model name to make predictions as shown above. 
@@ -140,4 +111,33 @@ SELECT order_id,
        )
 FROM {{ ref('training_data') }}
 ```
+
+### Prediction
+
+You can make predictions using any Layer ML model within your dbt models. Layer dbt Adapter helps you score your data resides on your warehouse within your dbt DAG with SQL.
+
+_Syntax:_
+```
+layer.predict("LAYER_MODEL_PATH", ARRAY[FEATURES])
+```
+
+_Parameters:_
+
+| Syntax    | Description                                                                                                                                                                                        |
+| --------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `LAYER_MODEL_PATH`      | This is the Layer model path in form of `/[organization_name]/[project_name]/models/[model_name]`. You can use only the model name if you want to use an AutoML model within the same dbt project. |
+| `FEATURES` | These are the columns that this model requires to make a prediction. You should pass the columns as a list like `ARRAY[column1, column2, column3]`.                                                |
+
+_Example:_
+
+Check out [Cloth Detection Project](https://github.com/layerai/dbt-layer/tree/mecevit/update-docs/examples/cloth_detector):
+
+```sql
+SELECT
+    id,
+    layer.predict("layer/clothing/models/objectdetection", ARRAY[image])
+FROM
+    {{ ref("products") }}
+```
+
 
