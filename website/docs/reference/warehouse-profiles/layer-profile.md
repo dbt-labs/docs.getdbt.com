@@ -7,7 +7,7 @@ title: "Layer Profile"
 **Maintained by:** Layer      
 **Authors:** Mehmet Ecevit  
 **Source:** [Github](https://github.com/layerai/dbt-layer)  
-**Core version:** v0.1 and newer      
+**Core version:** `v1.0` and newer      
 **dbt Cloud:** Not Supported      
 **dbt Slack channel** [#db-layer](https://slack.com)
 
