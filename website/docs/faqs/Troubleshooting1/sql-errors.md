@@ -24,7 +24,7 @@ Found 3 models, 9 tests, 0 snapshots, 0 analyses, 133 macros, 0 operations, 0 se
 Completed with 1 error and 0 warnings:
 
 Database Error in model customers (models/customers.sql)
-  Syntax error: Expected ")" but got identifier `grand-highway-265418` at [13:15]
+  Syntax error: Expected ")" but got identifier `your-info-12345` at [13:15]
   compiled SQL at target/run/jaffle_shop/customers.sql
 
 Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
