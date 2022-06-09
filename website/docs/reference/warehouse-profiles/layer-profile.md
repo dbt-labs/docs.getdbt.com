@@ -9,6 +9,7 @@ title: "Layer Profile"
 **Source:** [Github](https://github.com/layerai/dbt-layer)  
 **Core version:** v0.1 and newer      
 **dbt Cloud:** Not Supported      
+**dbt Slack channel** [#db-layer](https://slack.com)
 
 To immediately start using Layer inside your dbt DAG, install the Layer dbt Adapter for BigQuery.
 
