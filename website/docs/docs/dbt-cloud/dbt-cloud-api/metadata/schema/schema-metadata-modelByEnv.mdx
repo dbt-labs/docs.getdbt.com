@@ -5,23 +5,22 @@ id: "metadata-schema-modelByEnv"
 
 import { ArgsTable, SchemaTable } from "./schema";
 
-## Beta
+<Snippet src="available-beta-banner-metadata" />
 
-This functionality is experimental and may change or be removed in the future.  Open to feedback at metadata@dbtlabs.com.
+This model by environment object allows you to query information about a particular model based on `environmentId`.
 
-This model by environment object allows you to query information about a particular model based on environmentId.
+The [example query](#example-query) illustrates a few fields you can query in this `modelByEnvironment` object. Refer to [Fields](#fields) to see the entire schema, which provides all possible fields you can query.
 
 ### Arguments
 
-When querying for `modelByEnvironment`, the following arguments are available.
+When querying for `modelByEnvironment`, you can use the following arguments.
 
 <ArgsTable queryName="modelByEnvironment" />
 
-Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this modelByEnvironment object.
 
 ### Example Query
 
-Given an `environment_id` and `model_unique_id`, return the model and its execution time for the last 10 times it was run, regardless of which job ran it!
+You can use the `environment_id` and `model_unique_id` to return the model and its execution time for the last 10 times it was run, regardless of which job ran it!
 
 ```graphql
 {
@@ -40,6 +39,6 @@ Given an `environment_id` and `model_unique_id`, return the model and its execut
 ```
 
 ### Fields
-When querying for `modelByEnvironment`, the following fields are available:
+When querying for `modelByEnvironment`, you can use the following fields.
 
 <SchemaTable nodeName="ModelNode" />
