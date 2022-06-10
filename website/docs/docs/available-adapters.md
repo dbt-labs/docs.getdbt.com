@@ -5,7 +5,7 @@ id: "available-adapters"
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
 
-If you have a new adapter, please add it to this list via a pull request! See [Documenting your adapter](/website/docs/docs/contributing/documenting-a-new-adapter.md)  for more information.
+If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](/docs/contributing/documenting-a-new-adapter.md)  for more information.
 
 ### Installation
 
@@ -39,6 +39,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                    | `pip install dbt-clickhouse` |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                        | `pip install dbt-firebolt` |
+| Impala ([dbt-impala](https://github.com/cloudera/dbt-impala))                                                 | [Profile Setup](impala-profile), [Configuration](impala-configs)                            | `pip install dbt-impala` |
 | Layer Bigquery ([dbt-layer](https://github.com/layerai/dbt-layer))                                            | [Profile Setup](layer-profile)                                                              | `pip install dbt-layer-bigquery` |
 | Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)) | [Profile Setup](materialize-profile), [Configuration](materialize-configs)                  | `pip install dbt-materialize` |
 | MindsDB ([dbt-mindsdb](https://github.com/mindsdb/dbt-mindsdb))                                               | [Profile Setup](mindsdb-profile), [Configuration](mindsdb-configs)                          | `pip install dbt-mindsdb`     |

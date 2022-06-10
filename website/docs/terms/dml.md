@@ -92,8 +92,8 @@ DML statements allow you to query, edit, add, and remove data stored in database
 
 For more resources on why people who use dbt don’t write DML, check out the following:
 
-- [Why not write DML](https://docs.getdbt.com/faqs/why-not-write-dml)
-- [SQL dialect](https://docs.getdbt.com/faqs/sql-dialect)
+- [Why not write DML](/faqs/Project/why-not-write-dml)
+- [SQL dialect](/faqs/Models/sql-dialect)
 
 For database-specific DML documents, please check out the resources below:
 
