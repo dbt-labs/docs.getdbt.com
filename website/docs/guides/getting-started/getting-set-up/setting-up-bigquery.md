@@ -12,7 +12,7 @@ For the BigQuery project in the getting started guide, you'll learn how to set u
 This guide will walk you through:
 
 - Setting up a new BigQuery instance
-- Accessing sample date in a public data set
+- Accessing sample data in a public data set
 - Connecting dbt Cloud to BigQuery
 
 ## Prerequisites
@@ -132,7 +132,7 @@ Now let's set up the connection between dbt Cloud and BigQuery.
 Congratulations! You have successfully completed the following:
 
 - Set up a new BigQuery instance
-- Accessing sample date in a public data set
+- Accessing sample data in a public data set
 - Connected dbt Cloud to BigQuery
 
 ## Next steps
