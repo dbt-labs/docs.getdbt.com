@@ -9,7 +9,7 @@ title: "iomete Profile"
 **Source:** [Github](https://github.com/iomete/dbt-iomete)
 **Documentation** [iomete](https://docs.iomete.com/docs/profile-setup)
 **dbt Cloud:** Currently un-supported
-**dbt Slack channel** [Link to channel]()
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C03JFG22EP9)
 
 
 ![dbt-iomete stars](https://img.shields.io/github/stars/iomete/dbt-iomete?style=for-the-badge)
@@ -62,3 +62,10 @@ iomete:
 | schema   | Specify the schema (database) to build models into.                                                                                     | Required | `dbt_finance`          |
 | username | The iomete username to use to connect to the server.                                                                                    | Required | `dbt_user`             |
 | password | The iomete user password to use to connect to the server.                                                                               | Required | `strong_password`      |
+
+## Supported Functionality
+
+Most dbt Core functionality is supported. 
+
+Iceberg specific improvements.
+1. Joining the results of `show tables` and `show views`.
