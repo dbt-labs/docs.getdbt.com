@@ -120,7 +120,7 @@ sources:
 
 </File>
 
-You can configure specific source tables, and use [variables](dbt-jinja-functions/var) as the input to that configuration:
+You can configure specific source tables, and use [variables](/reference/dbt-jinja-functions/var) as the input to that configuration:
  
 <File name='models/sources.yml'>
 

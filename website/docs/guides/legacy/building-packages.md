@@ -75,7 +75,7 @@ Many SQL functions are specific to a particular database. For example, the funct
 If you wish to support multiple warehouses, we have a number of tricks up our sleeve:
 - We've written a number of macros that compile to valid SQL snippets on each of the original four adapters. Where possible, leverage these macros.
 - If you need to implement cross-database compatibility for one of your macros, use the [`adapter.dispatch` macro](dispatch) to achieve this. Check out the cross-database macros in dbt-utils for examples.
-- If you're working on a modeling package, you may notice that you need write different models for each warehouse (for example, if the EL tool you are working with stores data differently on each warehouse). In this case, you can write different versions of each model, and use the [`enabled` config](enabled), in combination with [`target.type`](dbt-jinja-functions/target) to enable the correct models — check out [this package](https://github.com/fivetran/dbt_facebook_ads_creative_history/blob/master/dbt_project.yml#L11-L16) as an example.
+- If you're working on a modeling package, you may notice that you need write different models for each warehouse (for example, if the EL tool you are working with stores data differently on each warehouse). In this case, you can write different versions of each model, and use the [`enabled` config](enabled), in combination with [`target.type`](/reference/dbt-jinja-functions/target) to enable the correct models — check out [this package](https://github.com/fivetran/dbt_facebook_ads_creative_history/blob/master/dbt_project.yml#L11-L16) as an example.
 
 
 If your package has only been written to work for one data warehouse, make sure you document this in your package README.
