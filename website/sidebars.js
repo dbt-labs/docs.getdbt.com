@@ -538,6 +538,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/greenplum-profile",
         "reference/warehouse-profiles/impala-profile",
         "reference/warehouse-profiles/layer-profile",
+        "reference/warehouse-profiles/iomete-profile",
       ],
     },
     {
