@@ -27,7 +27,7 @@ Here's a screenshot of an example docs site (you can find the whole site [here](
 Importantly, dbt also provides a way to add **descriptions** to models, columns, sources, and more, to further enhance your documentation.
 
 :::info Creating documentation for the first time
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](building-a-dbt-project/projects#getting-started) to build your first dbt project, complete with documentation.
+If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](guides/getting-started/getting-set-up) to build your first dbt project, complete with documentation.
 :::
 
 ## Adding descriptions to your project
