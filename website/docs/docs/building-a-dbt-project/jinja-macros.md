@@ -148,13 +148,13 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 ## FAQs
 
-<FAQ src="dbt-specific-jinja" />
-<FAQ src="which-jinja-docs" />
-<FAQ src="quoting-column-names" />
-<FAQ src="jinja-whitespace" />
-<FAQ src="debugging-jinja" />
-<FAQ src="documenting-macros" />
-<FAQ src="why-so-many-macros" />
+<FAQ src="accounts/dbt-specific-jinja" />
+<FAQ src="jinja/which-jinja-docs" />
+<FAQ src="jinja/quoting-column-names" />
+<FAQ src="jinja/jinja-whitespace" />
+<FAQ src="project/debugging-jinja" />
+<FAQ src="docs/documenting-macros" />
+<FAQ src="project/why-so-many-macros" />
 
 ## dbtonic Jinja
 

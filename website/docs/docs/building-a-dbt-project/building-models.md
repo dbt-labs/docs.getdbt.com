@@ -94,11 +94,11 @@ Why a _view_ named `dbt_alice.customers`? By default dbt will:
 You can use _configurations_ to change any of these behaviors — more on that below.
 
 ### FAQs
-<FAQ src="Runs/checking-logs" />
-<FAQ src="create-a-schema" />
-<FAQ src="run-downtime" />
-<FAQ src="sql-errors" />
-<FAQ src="sql-dialect" />
+<FAQ src="runs/checking-logs" />
+<FAQ src="models/create-a-schema" />
+<FAQ src="models/run-downtime" />
+<FAQ src="troubleshooting/sql-errors" />
+<FAQ src="models/sql-dialect" />
 
 ## Configuring models
 Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
@@ -148,8 +148,8 @@ Importantly, configurations are applied hierarchically — a configuration appli
 You can learn more about configurations in the [reference docs](model-configs).
 
 ### FAQs
-<FAQ src="Models/available-materializations" />
-<FAQ src="available-configurations" />
+<FAQ src="models/available-materializations" />
+<FAQ src="models/available-configurations" />
 
 
 ## Building dependencies between models
@@ -255,12 +255,12 @@ You can also document and test models — skip ahead to the section on [testing]
 
 
 ## Additional FAQs
-<FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />
+<FAQ src="project/example-projects" alt_header="Are there any example dbt models?" />
 <FAQ src="configurable-model-path" />
 <FAQ src="model-custom-schemas" />
-<FAQ src="unique-model-names" />
-<FAQ src="removing-deleted-models" />
-<FAQ src="structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
-<FAQ src="insert-records" />
-<FAQ src="why-not-write-dml" />
-<FAQ src="specifying-column-types" />
+<FAQ src="models/unique-model-names" />
+<FAQ src="models/removing-deleted-models" />
+<FAQ src="project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ src="models/insert-records" />
+<FAQ src="project/why-not-write-dml" />
+<FAQ src="models/specifying-column-types" />

@@ -31,5 +31,5 @@ You can now delete the files that dbt created when you initialized the project:
 
 #### FAQs
 
-<FAQ src="removing-deleted-models" />
-<FAQ src="unused-model-configurations" />
+<FAQ src="models/removing-deleted-models" />
+<FAQ src="troubleshooting/unused-model-configurations" />

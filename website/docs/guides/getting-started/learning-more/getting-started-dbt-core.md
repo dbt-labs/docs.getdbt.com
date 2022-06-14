@@ -126,9 +126,9 @@ When developing locally, dbt connects to your data warehouse using a [profile](/
 
 #### FAQs
 
-<FAQ src="sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
-<FAQ src="separate-profile" />
-<FAQ src="profile-name" />
+<FAQ src="warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
+<FAQ src="project/separate-profile" />
+<FAQ src="environments/profile-name" />
 <FAQ src="target-names" />
 <FAQ src="profile-env-vars" />
 
@@ -196,11 +196,11 @@ When you return to the BigQuery console, you can `select` from this model.
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="create-a-schema" />
-<FAQ src="run-downtime" />
-<FAQ src="sql-errors" />
+<FAQ src="runs/checking-logs" />
+<FAQ src="project/which-schema" />
+<FAQ src="models/create-a-schema" />
+<FAQ src="models/run-downtime" />
+<FAQ src="troubleshooting/sql-errors" />
 
 ### Change the way your model is materialized
 
@@ -239,8 +239,8 @@ You can also explore:
 
 #### FAQs
 
-<FAQ src="long-descriptions" />
-<FAQ src="sharing-documentation" />
+<FAQ src="docs/long-descriptions" />
+<FAQ src="docs/sharing-documentation" />
 
 
 #### Next steps

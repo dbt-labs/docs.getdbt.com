@@ -258,14 +258,14 @@ Note that, if you elect to store test failures:
 ## FAQs
 
 
-<FAQ src="test-one-model" />
-<FAQ src="failed-tests" />
-<FAQ src="recommended-tests" />
-<FAQ src="when-to-test" />
-<FAQ src="configurable-data-test-path" />
-<FAQ src="test-sources" />
-<FAQ src="custom-test-thresholds" />
-<FAQ src="uniqueness-two-columns" />
+<FAQ src="tests/test-one-model" />
+<FAQ src="runs/failed-tests" />
+<FAQ src="tests/recommended-tests" />
+<FAQ src="tests/when-to-test" />
+<FAQ src="tests/configurable-data-test-path" />
+<FAQ src="tests/testing-sources" />
+<FAQ src="tests/custom-test-thresholds" />
+<FAQ src="tests/uniqueness-two-columns" />
 
 <!--
 Additional FAQs that need Discourse articles:

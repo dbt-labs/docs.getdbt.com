@@ -49,6 +49,6 @@ By default, everything gets created as a view. You can override that by material
 
 ### FAQs
 
-<FAQ src="Models/available-materializations" />
-<FAQ src="which-materialization" />
-<FAQ src="available-configurations" />
+<FAQ src="models/available-materializations" />
+<FAQ src="project/which-materialization" />
+<FAQ src="models/available-configurations" />

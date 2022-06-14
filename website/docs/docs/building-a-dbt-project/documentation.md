@@ -68,10 +68,10 @@ First, run `dbt docs generate` — this command tells dbt to compile relevant in
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
 ## FAQs
-<FAQ src="Project/example-projects" alt_header="Are there any example dbt documentation sites?"/>
+<FAQ src="project/example-projects" alt_header="Are there any example dbt documentation sites?"/>
 <FAQ src="document-all-columns" />
-<FAQ src="long-descriptions" />
-<FAQ src="sharing-documentation" />
+<FAQ src="docs/long-descriptions" />
+<FAQ src="docs/sharing-documentation" />
 <FAQ src="document-other-resources" />
 <FAQ src="docs-for-multiple-projects" />
 

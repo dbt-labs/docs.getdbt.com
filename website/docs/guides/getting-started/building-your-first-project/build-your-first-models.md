@@ -33,11 +33,11 @@ In the future, you would connect your business intelligence (BI) tools to these 
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="create-a-schema" />
-<FAQ src="run-downtime" />
-<FAQ src="sql-errors" />
+<FAQ src="runs/checking-logs" />
+<FAQ src="project/which-schema" />
+<FAQ src="models/create-a-schema" />
+<FAQ src="models/run-downtime" />
+<FAQ src="troubleshooting/sql-errors" />
 
 ## Change the way your model is materialized
 
