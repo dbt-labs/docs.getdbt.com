@@ -70,8 +70,8 @@ This will create a new directory in your current path (i.e. at `./[project-name]
 
 ### FAQs
 
-<FAQ src="project/project-name" />
-<FAQ src="project/structure-a-project" />
+<FAQ src="Project/project-name" />
+<FAQ src="Project/structure-a-project" />
 
 
 ## Using an existing project

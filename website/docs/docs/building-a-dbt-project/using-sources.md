@@ -117,11 +117,11 @@ sources:
 You can find more details on the available properties for sources in the [reference section](source-properties).
 
 ### FAQs
-<FAQ src="project/source-has-bad-name" />
-<FAQ src="project/source-in-different-database" />
-<FAQ src="models/source-quotes" />
-<FAQ src="tests/testing-sources" />
-<FAQ src="runs/running-model-downstream-of-source" />
+<FAQ src="Project/source-has-bad-name" />
+<FAQ src="Project/source-in-different-database" />
+<FAQ src="Models/source-quotes" />
+<FAQ src="Tests/testing-sources" />
+<FAQ src="Runs/running-model-downstream-of-source" />
 
 ## Snapshotting source data freshness
 With a couple of extra configs, dbt can optionally snapshot the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
@@ -186,6 +186,6 @@ The results of this query are used to determine whether the source is fresh or n
 
 
 ### FAQs
-<FAQ src="project/exclude-table-from-freshness" />
-<FAQ src="snapshots/snapshotting-freshness-for-one-source" />
-<FAQ src="project/dbt-source-freshness" />
+<FAQ src="Project/exclude-table-from-freshness" />
+<FAQ src="Snapshots/snapshotting-freshness-for-one-source" />
+<FAQ src="Project/dbt-source-freshness" />

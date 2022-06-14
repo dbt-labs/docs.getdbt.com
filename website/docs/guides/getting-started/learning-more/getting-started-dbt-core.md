@@ -126,11 +126,11 @@ When developing locally, dbt connects to your data warehouse using a [profile](/
 
 #### FAQs
 
-<FAQ src="warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
-<FAQ src="project/separate-profile" />
-<FAQ src="environments/profile-name" />
-<FAQ src="target-names" />
-<FAQ src="profile-env-vars" />
+<FAQ src="Warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
+<FAQ src="Project/separate-profile" />
+<FAQ src="Environments/profile-name" />
+<FAQ src="Environments/target-names" />
+<FAQ src="Environments/profile-env-vars" />
 
 ### Perform your first dbt run
 
@@ -196,11 +196,11 @@ When you return to the BigQuery console, you can `select` from this model.
 
 #### FAQs
 
-<FAQ src="runs/checking-logs" />
-<FAQ src="project/which-schema" />
-<FAQ src="models/create-a-schema" />
-<FAQ src="models/run-downtime" />
-<FAQ src="troubleshooting/sql-errors" />
+<FAQ src="Runs/checking-logs" />
+<FAQ src="Project/which-schema" />
+<FAQ src="Models/create-a-schema" />
+<FAQ src="Models/run-downtime" />
+<FAQ src="Troubleshooting/sql-errors" />
 
 ### Change the way your model is materialized
 
@@ -239,8 +239,8 @@ You can also explore:
 
 #### FAQs
 
-<FAQ src="docs/long-descriptions" />
-<FAQ src="docs/sharing-documentation" />
+<FAQ src="Docs/long-descriptions" />
+<FAQ src="Docs/sharing-documentation" />
 
 
 #### Next steps

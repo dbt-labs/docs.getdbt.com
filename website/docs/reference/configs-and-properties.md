@@ -163,12 +163,12 @@ You can find an exhaustive list of each supported property and config, broken do
 * Exposure [properties](exposure-properties)
 
 ## FAQs
-<FAQ src="project/schema-yml-name" />
-<FAQ src="project/resource-yml-name" />
-<FAQ src="project/multiple-resource-yml-files" />
-<FAQ src="project/properties-not-in-config" />
-<FAQ src="project/why-version-2" />
-<FAQ src="project/yaml-file-extension" />
+<FAQ src="Project/schema-yml-name" />
+<FAQ src="Project/resource-yml-name" />
+<FAQ src="Project/multiple-resource-yml-files" />
+<FAQ src="Project/properties-not-in-config" />
+<FAQ src="Project/why-version-2" />
+<FAQ src="Project/yaml-file-extension" />
 
 ## Troubleshooting common errors
 

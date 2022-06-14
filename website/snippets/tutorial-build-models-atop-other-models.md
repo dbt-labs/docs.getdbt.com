@@ -197,6 +197,6 @@ This time, when you performed a `dbt run`, separate views/tables were created fo
 
 ### FAQs
 
-<FAQ src="runs/run-one-model" />
-<FAQ src="models/unique-model-names" />
-<FAQ src="project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ src="Runs/run-one-model" />
+<FAQ src="Models/unique-model-names" />
+<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />

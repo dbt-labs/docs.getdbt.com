@@ -36,6 +36,6 @@ You do _not_ need to install `dbt-core` before installing an adapter plugin -- t
 
 To install in editable mode, such as while contributing, use `pip install -e .` instead.
 
-<FAQ src="install-pip-os-prereqs" />
-<FAQ src="install-python-compatibility" />
-<FAQ src="install-pip-best-practices" />
+<FAQ src="Core/install-pip-os-prereqs" />
+<FAQ src="Core/install-python-compatibility" />
+<FAQ src="Core/install-pip-best-practices" />
