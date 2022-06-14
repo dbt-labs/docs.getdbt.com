@@ -149,7 +149,7 @@ function Home() {
                 <div className="card__footer">
                   <Link
                     className="button button--primary"
-                    to={useBaseUrl('/faqs/all')}>
+                    to={useBaseUrl('/docs/faqs')}>
                     Get Answers
                   </Link>
                 </div>
