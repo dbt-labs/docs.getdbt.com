@@ -234,6 +234,7 @@ const sidebarSettings = {
               items: [
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
+                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-modelByEnv",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metric",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metrics",
                 "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
@@ -533,7 +534,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/athena-profile",
         "reference/warehouse-profiles/vertica-profile",
         "reference/warehouse-profiles/tidb-profile",
-        "reference/warehouse-profiles/glue-profile",        
+        "reference/warehouse-profiles/glue-profile",
         "reference/warehouse-profiles/mindsdb-profile",
         "reference/warehouse-profiles/greenplum-profile",
         "reference/warehouse-profiles/impala-profile",
