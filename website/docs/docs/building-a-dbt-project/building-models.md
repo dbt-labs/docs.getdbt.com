@@ -94,7 +94,7 @@ Why a _view_ named `dbt_alice.customers`? By default dbt will:
 You can use _configurations_ to change any of these behaviors — more on that below.
 
 ### FAQs
-<FAQ src="checking-logs" />
+<FAQ src="Runs/checking-logs" />
 <FAQ src="create-a-schema" />
 <FAQ src="run-downtime" />
 <FAQ src="sql-errors" />
@@ -148,7 +148,7 @@ Importantly, configurations are applied hierarchically — a configuration appli
 You can learn more about configurations in the [reference docs](model-configs).
 
 ### FAQs
-<FAQ src="available-materializations" />
+<FAQ src="Models/available-materializations" />
 <FAQ src="available-configurations" />
 
 
@@ -255,7 +255,7 @@ You can also document and test models — skip ahead to the section on [testing]
 
 
 ## Additional FAQs
-<FAQ src="example-projects" alt_header="Are there any example dbt models?" />
+<FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />
 <FAQ src="configurable-model-path" />
 <FAQ src="model-custom-schemas" />
 <FAQ src="unique-model-names" />

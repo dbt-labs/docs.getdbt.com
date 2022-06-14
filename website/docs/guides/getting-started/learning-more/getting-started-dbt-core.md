@@ -196,8 +196,8 @@ When you return to the BigQuery console, you can `select` from this model.
 
 #### FAQs
 
-<FAQ src="checking-logs" />
-<FAQ src="which-schema" />
+<FAQ src="Runs/checking-logs" />
+<FAQ src="Project/which-schema" />
 <FAQ src="create-a-schema" />
 <FAQ src="run-downtime" />
 <FAQ src="sql-errors" />
