@@ -293,8 +293,8 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /tutorial/create-a-project-dbt-cloud   /guides/getting-started	302
 /tutorial/getting-started /guides/getting-started 302
 /docs/dbt-cloud/cloud-changelog   /docs/dbt-cloud/release-notes	302
-/faqs/* /docs/faqs/:splat 301
 /faqs/all /docs/faqs 301!
+/faqs/* /docs/faqs/:splat 301
 /tutorial/learning-more/* /guides/getting-started/learning-more/:splat 301
 /tutorial/getting-set-up/* /guides/getting-started/getting-set-up/:splat 301
 /tutorial/building-your-first-project/* /guides/getting-started/building-your-first-project/:splat 301
