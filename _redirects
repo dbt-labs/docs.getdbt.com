@@ -298,8 +298,8 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /tutorial/learning-more/* /guides/getting-started/learning-more/:splat 301
 /tutorial/getting-set-up/* /guides/getting-started/getting-set-up/:splat 301
 /tutorial/building-your-first-project/* /guides/getting-started/building-your-first-project/:splat 301
-<!-- migration and legacy guides -->
-<!-- /docs/guides/* /guides/legacy/:splat 301 -->
+# migration and legacy guides
+# /docs/guides/* /guides/legacy/:splat 301
 /docs/guides/migration-guide/upgrading-from-0-10-to-0-11	/guides/migration/versions/upgrading-to-0-11-0	302
 /docs/guides/migration-guide/upgrading-to-014	/guides/migration/versions/upgrading-to-0-14-0	302
 /docs/upgrading-to-014	/guides/migration/versions/upgrading-to-0-14-0	302
