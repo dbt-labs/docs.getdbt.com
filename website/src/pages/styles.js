@@ -105,9 +105,9 @@ description: "this is \[an escaped link](docs.getdbt.com)"
 
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>FAQ</h1>
-<pre>{`<FAQ src='sql-errors' alt_header="a header" />`}</pre>
-                <FAQ src='sql-errors' />
-                <FAQ src='sql-errors' alt_header="an overriden header" />
+<pre>{`<FAQ src='Troubleshooting/sql-errors' alt_header="a header" />`}</pre>
+                <FAQ src='Troubleshooting/sql-errors' />
+                <FAQ src='Troubleshooting/sql-errors' alt_header="an overriden header" />
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>

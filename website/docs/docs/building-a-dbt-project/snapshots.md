@@ -408,9 +408,9 @@ Snapshot results:
 
 
 ## FAQs
-<FAQ src="run-one-snapshot" />
-<FAQ src="snapshot-frequency" />
-<FAQ src="snapshot-schema-changes" />
-<FAQ src="snapshot-hooks" />
-<FAQ src="snapshot-target-schema" />
-<FAQ src="configurable-snapshot-path" />
+<FAQ src="Runs/run-one-snapshot" />
+<FAQ src="Runs/snapshot-frequency" />
+<FAQ src="Snapshots/snapshot-schema-changes" />
+<FAQ src="Snapshots/snapshot-hooks" />
+<FAQ src="Snapshots/snapshot-target-schema" />
+<FAQ src="Accounts/configurable-snapshot-path" />
