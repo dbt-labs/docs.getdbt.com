@@ -113,6 +113,7 @@ Team Admins can perform the following actions in projects they are assigned to:
 
 Job Admins can perform the following actions in projects they are assigned to:
 - View, edit, and create environments
+- Create, delete, and modify Jobs
 - Trigger runs
 - View historical runs
 
