@@ -12,7 +12,7 @@ The type of license a user is assigned controls which capabilities of dbt
 Cloud the user is permitted to access. Users with a Developer license can be
 granted access to the Deployment and [Development](the-dbt-ide) functionality
 in dbt Cloud, whereas users with Read Only licenses are intended to view the
-[artifacts](using-dbt-cloud/artifacts.md) created in a dbt Cloud account.
+[artifacts](docs/dbt-cloud/using-dbt-cloud/artifacts) created in a dbt Cloud account.
 
 | Functionality | Developer User | Read Only Users |
 | ------------- | -------------- | --------------- |
@@ -31,7 +31,7 @@ Account Settings page in your dbt Cloud account. Note: accounts on the Developer
 plan must upgrade to the Team plan to add additional team members to their
 account.
 
-The table below shows the base number of Developer and Read Only seats for each
+The <Term id="table" /> below shows the base number of Developer and Read Only seats for each
 dbt Cloud plan.
 
 | Plan | Developer Seats | Read Only Seats |

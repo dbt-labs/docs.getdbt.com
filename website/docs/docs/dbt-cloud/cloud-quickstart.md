@@ -17,7 +17,7 @@ Let's get started!
 
 ## Create a connection
 
-dbt Cloud uses this connection to _connect_ to your database when running jobs and transformation queries. Depending on the type of data warehouse you're using, you'll need to supply [different configuration parameters](connecting-your-database.md). dbt Cloud natively supports connections to Snowflake, BigQuery, Redshift, Apache Spark, Databricks, and Postgres.
+dbt Cloud uses this connection to _connect_ to your database when running jobs and transformation queries. Depending on the type of data warehouse you're using, you'll need to supply [different configuration parameters](docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database). dbt Cloud natively supports connections to Snowflake, BigQuery, Redshift, Apache Spark, Databricks, and Postgres.
 
 After picking a data warehouse type, a form will be generated where you can populate your warehouse's credentials. These credentials are encrypted at rest, and dbt Cloud never stores credentials in plaintext.
 
@@ -53,3 +53,7 @@ Now that dbt Cloud is able to clone your dbt repo and connect to your warehouse,
 Job schedules can be configured from the job creation interface. You can either schedule your job using the visual editor, or you can enter a custom cron syntax for your job.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job-schedule.png" title="Setting a job schedule"/>
+
+## Alternatives
+
+If you are interested in trialing dbt Cloud with Snowflake, you can use [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to spin up a dbt Cloud account with all of the key objects created (deployment and development environments, git repository, and sample job). All you need is a Snowflake Account with access to the ACCOUNTADMIN role to go into Partner Connect and find the dbt tile to set up a dedicated environment for test driving. 

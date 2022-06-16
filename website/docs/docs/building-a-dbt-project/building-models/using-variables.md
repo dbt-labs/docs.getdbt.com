@@ -3,14 +3,14 @@ title: "Using variables"
 id: "using-variables"
 ---
 
-dbt provides a mechanism, [variables](dbt-jinja-functions/var), to provide data to models for
-compilation. Variables can be used to [configure timezones](https://github.com/fishtown-analytics/snowplow/blob/0.3.9/dbt_project.yml#L22),
-[avoid hardcoding table names](https://github.com/fishtown-analytics/quickbooks/blob/v0.1.0/dbt_project.yml#L23)
+dbt provides a mechanism, [variables](reference/dbt-jinja-functions/var), to provide data to models for
+compilation. Variables can be used to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22),
+[avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23)
 or otherwise provide data to models to configure how they are compiled.
 
-To use a variable in a model, hook, or macro, use the `{{ var('...') }}` function. More information on the `var` function can be found [here](dbt-jinja-functions/var).
+To use a variable in a model, hook, or macro, use the `{{ var('...') }}` function. More information on the `var` function can be found [here](/reference/dbt-jinja-functions/var).
 
-Variables can defined in two ways:
+Variables can be defined in two ways:
 
 1. In the `dbt_project.yml` file
 2. On the command line

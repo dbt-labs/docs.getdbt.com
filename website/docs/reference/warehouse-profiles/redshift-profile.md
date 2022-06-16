@@ -2,6 +2,14 @@
 title: "Redshift Profile"
 ---
 
+## Overview of dbt-redshift
+**Maintained by:** core dbt maintainers        
+**Author:** dbt Labs        
+**Source:** [Github](https://github.com/dbt-labs/dbt-redshift)       
+**dbt Cloud:** Supported    
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CJARVS0RY)      
+
+
 ## Authentication Methods
 
 ### Password-based authentication
@@ -21,9 +29,11 @@ company-name:
       dbname: analytics
       schema: analytics
       threads: 4
-      keepalives_idle: 0 # default 0, indicating the system default
+      keepalives_idle: 240 # default 240 seconds
+      connect_timeout: 10 # default 10 seconds
       # search_path: public # optional, not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      ra3_node: true # enables cross-database sources
 ```
 
 </File>
@@ -65,9 +75,10 @@ my-redshift-db:
       dbname: analytics
       schema: analytics
       threads: 4
-      keepalives_idle: 0 # default 0, indicating the system default
+      keepalives_idle: 240 # default 240 seconds
       # search_path: public # optional, but not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      ra3_node: true # enables cross-database sources
 
 ```
 
@@ -81,5 +92,10 @@ The `iam_profile` config option for Redshift profiles is new in dbt v0.18.0
 
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
 ## Redshift notes
-
+### `sort` and `dist` keys
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](redshift-configs).
+
+### `keepalives_idle`
+If the database closes its connection while dbt is waiting for data, you may see the error `SSL SYSCALL error: EOF detected`. Lowering the [`keepalives_idle` value](https://www.postgresql.org/docs/9.3/libpq-connect.html) may prevent this, because the server will send a ping to keep the connection active more frequently. 
+
+[dbt's default setting](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/adapters/redshift/connections.py#L51) is 240 (seconds), but can be configured lower (perhaps 120 or 60), at the cost of a chattier network connection.

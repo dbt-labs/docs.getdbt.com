@@ -67,7 +67,7 @@ Optionally set a resource to always or never full-refresh.
 `full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
 - If the `full_refresh` config is `none` or omitted, the resource will use the value of the `--full-refresh` flag.
 
-This logic is encoded in the [`should_full_refresh()`](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/materializations/helpers.sql#L68) macro.
+This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/materializations/helpers.sql#L68) macro.
 
 ## Usage
 

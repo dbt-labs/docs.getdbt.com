@@ -13,7 +13,7 @@ id: "building-models"
 
 :::info Building your first models
 
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/guides/getting-started) to build your first dbt project with models.
 
 :::
 
@@ -56,7 +56,7 @@ left join customer_orders using (customer_id)
 
 </File>
 
-When you execute `dbt run`, dbt will build this as a view named `customers` in your target schema:
+When you execute `dbt run`, dbt will build this as a <Term id="view" /> named `customers` in your target schema:
 
 ```sql
 create view dbt_alice.customers as (
@@ -87,9 +87,9 @@ create view dbt_alice.customers as (
 ```
 
 Why a _view_ named `dbt_alice.customers`? By default dbt will:
-* create models as views
+* create models as <Term id="view">views</Term>
 * build models in a target schema you define
-* use your file name as the view or table name in the database
+* use your file name as the view or <Term id="table" /> name in the database
 
 You can use _configurations_ to change any of these behaviors — more on that below.
 
@@ -102,7 +102,7 @@ You can use _configurations_ to change any of these behaviors — more on that b
 
 ## Configuring models
 Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
-* Change the [materialization](materializations) that a model uses — a materialization determines the SQL that dbt uses to create the model in your warehouse.
+* Change the [materialization](materializations) that a model uses — a <Term id="materialization" /> determines the SQL that dbt uses to create the model in your warehouse.
 * Build models into separate [schemas](using-custom-schemas).
 * Apply [tags](resource-configs/tags) to a model.
 
@@ -156,7 +156,7 @@ You can learn more about configurations in the [reference docs](model-configs).
 By using the [`ref` function](ref) in the place of table names in a query, you can build dependencies between models. Use the name of another model as the argument for `ref`.
 
 <Tabs
-  defaultValue="redshift"
+  defaultValue="model"
   values={[
     {label: 'Model', value: 'model'},
     {label: 'Compiled code in dev', value: 'dev'},
@@ -246,7 +246,7 @@ dbt uses the `ref` function to:
 * Determine the order to run models in by creating a dependent acyclic graph (DAG).
 <Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
 
-* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the table (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from an upstream table in the same schema. Check out the tabs above to see this in action.
+* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the <Term id="table" /> (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from an upstream table in the same schema. Check out the tabs above to see this in action.
 
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 

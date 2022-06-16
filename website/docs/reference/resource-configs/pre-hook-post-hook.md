@@ -106,7 +106,7 @@ Pre- and post-hooks can also call macros that return SQL statements.
 
 <Changelog>
 
-* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the [alternative config syntax]() to apply pre- and post-hooks.
+* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the alternative config syntax to apply pre- and post-hooks.
 
 </Changelog>
 
@@ -190,7 +190,7 @@ If you're using an adapter that makes use of transactions (namely Postgres or Re
 
 There may be occasions where you need to run these hooks _outside_ of a transaction, for example:
 * You want to run a `VACUUM` in a `post-hook`, however this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
-* You want to insert a record into an audit table at the start of a run, and do not want that statement rolled back if the model creation fails.
+* You want to insert a record into an audit <Term id="table" /> at the start of a run, and do not want that statement rolled back if the model creation fails.
 
 To achieve this, you can use one of the following syntaxes:
 

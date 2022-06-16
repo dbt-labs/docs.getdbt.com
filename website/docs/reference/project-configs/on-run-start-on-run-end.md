@@ -16,8 +16,12 @@ on-run-end: sql-statement | [sql-statement]
 ## Definition
 A SQL statement (or list of SQL statements) to be run at the start, or end, of the following commands:
 - `dbt run`
+- `dbt test`
 - `dbt seed`
 - `dbt snapshot`
+- `dbt build`
+- `dbt compile`
+- `dbt docs generate`
 
 `on-run-start` and `on-run-end` hooks can also call macros that return SQL statements
 

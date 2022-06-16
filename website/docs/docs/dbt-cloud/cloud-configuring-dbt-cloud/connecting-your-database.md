@@ -19,6 +19,8 @@ any database grants.
 
 </Changelog>
 
+Allowing these IP addresses only enables the connection to your data warehouse. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](deployment-architecture)."
+
 
 ## Connecting to Redshift and Postgres
 
@@ -26,7 +28,7 @@ The following fields are required when creating a Redshift connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the Postgres or Redshift database to connect to. This can either be a hostname an IP address. | `xxx.us-east-1.amazonaws.com` |
+| Host Name | The hostname of the Postgres or Redshift database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
@@ -69,11 +71,9 @@ to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowfl
 ### Key Pair
 **Available in:** Development environments,  Deployment environments
 
-The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development
-or Deployment credentials for a dbt Cloud project.
+The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development or Deployment credentials for a dbt Cloud project.
 
-After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user
-to authenticate in dbt Cloud:
+After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in dbt Cloud:
 
 ```sql
 alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';
@@ -83,9 +83,17 @@ Finally, set the "Private Key" and "Private Key Passphrase" fields in the "Edit
 Credentials" page to finish configuring dbt Cloud to authenticate with Snowflake
 using a key pair.
 
-**Note:** At the present time, dbt Cloud _must_ be provided with an encrypted
-private key along with an encryption password. A future release of dbt Cloud
-will remove this restriction, and passwordless private keys will be supported.
+**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud, and the keys must be of size 4096 or smaller.
+
+In order to successfully fill in the Private Key field, you **must** include the commented lines below when you add the passphrase. Leaving the `PRIVATE KEY PASSPHRASE` field empty will return an error - have a look at the examples below:
+
+
+**Example:**
+```sql
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+< encrypted private key contents here >
+-----END ENCRYPTED PRIVATE KEY-----
+```
 
 ![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
 
@@ -175,7 +183,7 @@ dbt Cloud supports connecting to an Apache Spark cluster using the HTTP method
 or the Thrift method. Note: While the HTTP method can be used to connect to
 an all-purpose Databricks cluster, the ODBC method is recommended for all
 Databricks connections. For further details on configuring these connection
-parameters, please see the [dbt-spark documentation](https://github.com/fishtown-analytics/dbt-spark#configuring-your-profile)
+parameters, please see the [dbt-spark documentation](https://github.com/dbt-labs/dbt-spark#configuring-your-profile)
 
 The following fields are available when creating an Apache Spark connection using the
 HTTP and Thrift connection methods:

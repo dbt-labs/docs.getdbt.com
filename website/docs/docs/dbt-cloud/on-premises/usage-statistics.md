@@ -12,7 +12,7 @@ We longer support new on-premises deployments, and instead have moved to a [Sing
 ## Overview
 
 On-premises dbt Cloud deployments send high-level dbt Cloud metadata
-for an installation back to Fishtown Analytics. Fishtown Analytics uses this
+for an installation back to dbt Labs. dbt Labs uses this
 information to record license utilization and better assist in supporting
 on-premises deployments of dbt Cloud.
 
@@ -28,7 +28,7 @@ payload looks like:
 {
   "accounts": [
     "id": 1,
-    "name": "Fishtown Analytics",
+    "name": "dbt Labs",
     "develolper_licenses": 20,
     "read_only_licenses": 50,
     "dbt_cloud_version": "1.0.0"

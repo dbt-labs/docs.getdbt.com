@@ -33,9 +33,9 @@ This approach will work with any SAML 2.0 compliant identity provider._
 First, log into your SAML 2.0 identity provider and create a new application.
 When promoted, configure the application with the following details:
  - **Platform:** Web
- - **Sign on method:** SAML 2.0 
+ - **Sign on method:** SAML 2.0
  - **App name:** dbt Cloud
- - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1w_Yj7QK-ULP4ebtKbrbvGo04pWlg0Y7S/view), and use as the logo for this app.
+ - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 #### Configuring the application
 
@@ -49,7 +49,7 @@ substitute cloud.getdbt.com for the url of your instance.
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
-separated with dashes. For example, the login slug for _Fishtown Analytics_ would be _fishtown-analytics_.
+separated with dashes. For example, the login slug for _dbt Labs_ would be _dbt-labs_.
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
 
 When prompted for the SAML 2.0 application configurations, supply the following
@@ -129,7 +129,7 @@ Click **Create** to continue the setup process.
 On the **General Settings** page, enter the following details::
 
 * **App name**: dbt Cloud
-* **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1w_Yj7QK-ULP4ebtKbrbvGo04pWlg0Y7S/view),
+* **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing),
   and upload it to Okta to use as the logo for this app.
 
 Click **Next** to continue.
@@ -262,4 +262,3 @@ Users in your IdP will now be able to log into the application by navigating to 
 ### Setting up RBAC
 After configuring an identity provider, you will be able to set up [role-based
 access control](/access-control/enterprise-permissions) for your account.
-
