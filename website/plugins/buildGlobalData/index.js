@@ -28,7 +28,7 @@ module.exports = function buildGlobalDataPlugin(context, options) {
 
       // Get all FAQ doc ids
       // FAQ component uses these to pull file
-      const faqFiles = getDirectoryFiles(`docs/docs/faqs`)
+      const faqFiles = getDirectoryFiles(`docs/faqs`)
 
       return {
         tagData,

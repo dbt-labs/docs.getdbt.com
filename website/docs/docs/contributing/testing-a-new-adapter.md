@@ -10,10 +10,12 @@ Previously, we offered a packaged suite of tests for dbt adapter functionality: 
 :::
 
 This document has two sections:
-1. ["About the testing framework"](#about-the-testing-framework) describes the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
-2. ["Testing your adapter"](#testing-your-adapter) offers a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
+
+1. "[About the testing framework](#about-the-testing-framework)" describes the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
+2. "[Testing your adapter](#testing-your-adapter)" offers a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
 
 ## Prerequisites
+
 - Your adapter must be compatible with dbt-core **v1.1** or newer
 - You should be familiar with **pytest**: https://docs.pytest.org/
 

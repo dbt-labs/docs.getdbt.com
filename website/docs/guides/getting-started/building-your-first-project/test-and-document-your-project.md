@@ -16,8 +16,8 @@ description: Let's test and document our models to build trust in our data.
 
 #### FAQs
 
-<FAQ src="long-descriptions" />
-<FAQ src="sharing-documentation" />
+<FAQ src="Docs/long-descriptions" />
+<FAQ src="Docs/sharing-documentation" />
 
 ## Next steps
 

@@ -78,12 +78,12 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
 
 ## FAQs
-<FAQ src="load-raw-data-with-seed" />
-<FAQ src="configurable-data-path" />
-<FAQ src="full-refresh-seed" />
-<FAQ src="testing-seeds" />
-<FAQ src="seed-datatypes" />
-<FAQ src="run-downstream-of-seed" />
-<FAQ src="leading-zeros-in-seed" />
-<FAQ src="build-one-seed" />
-<FAQ src="seed-hooks" />
+<FAQ src="Seeds/load-raw-data-with-seed" />
+<FAQ src="Tests/configurable-data-path" />
+<FAQ src="Seeds/full-refresh-seed" />
+<FAQ src="Tests/testing-seeds" />
+<FAQ src="Seeds/seed-datatypes" />
+<FAQ src="Runs/run-downstream-of-seed" />
+<FAQ src="Seeds/leading-zeros-in-seed" />
+<FAQ src="Seeds/build-one-seed" />
+<FAQ src="Seeds/seed-hooks" />
