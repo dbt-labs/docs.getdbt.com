@@ -1,7 +1,12 @@
 exports.versions = [
   {
+    version: "1.2",
+    EOLDate: "2023-07-15",  // TODO estimated for now
+    isPrerelease: True,
+  },
+  {
     version: "1.1",
-    EOLDate: "2023-04-28",  // TODO estimated for now
+    EOLDate: "2023-04-28",
   },
   {
     version: "1.0",
@@ -18,6 +23,10 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
+  {
+    "page": "docs/guides/migration-guide/upgrading-to-v1.2",
+    "firstVersion": "1.2",
+  },
   {
     "page": "docs/contributing/testing-a-new-adapter",
     "firstVersion": "1.1",
