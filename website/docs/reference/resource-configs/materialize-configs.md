@@ -11,10 +11,6 @@ Materialized views are incremental models, defined once.
 
 ### Indexes
 
-:::info Advanced feature
-  Manually creating indexes in Materialize is an advanced feature that most users **do not** need. See the [Materialize documentation](https://materialize.com/docs/sql/create-index/) for more details.
-:::
-
 Materialized views (`materializedview`), views (`view`) and sources (`source`) may have a list of `indexes` defined. Each [Materialize index](https://materialize.com/docs/sql/create-index/) can have the following components:
 
 - `columns` (list, required): one or more columns on which the index is defined
@@ -63,3 +59,14 @@ models:
 </Changelog>
 
 If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view using the test query. This view is a continuously updating representation of failures.
+
+<File name='dbt_project.yml'>
+
+```yaml
+tests:
+  project_name:
+    +store_failures: true
+    +schema: test
+```
+
+</File>
