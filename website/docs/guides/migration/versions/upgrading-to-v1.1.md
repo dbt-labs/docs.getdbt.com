@@ -1,8 +1,6 @@
 ---
 title: "Upgrading to v1.1 (latest)"
-
 ---
-
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.1.latest/CHANGELOG.md)
@@ -37,10 +35,11 @@ The manifest schema version will be updated to v5. The only change is to the def
 
 
 [**dbt-Jinja functions**](/reference/dbt-jinja-functions) have a new landing page, and two new members:
-- [`print`](dbt-jinja-functions/print) exposes the Python `print()` function. It can be used as an alternative to `log()`, and together with the `QUIET` config, for advanced macro-driven workflows.
-- [`selected_resources`](dbt-jinja-functions/selected_resources) exposes, at runtime, the list of DAG nodes selected by the current task.
+- [`print`](/reference/dbt-jinja-functions/print) exposes the Python `print()` function. It can be used as an alternative to `log()`, and together with the `QUIET` config, for advanced macro-driven workflows.
+- [`selected_resources`](/reference/dbt-jinja-functions/selected_resources) exposes, at runtime, the list of DAG nodes selected by the current task.
 
 [**Global configs**](global-configs) include some new additions:
+
 - `QUIET` and `NO_PRINT`, to control which log messages dbt prints to terminal output. For use in advanced macro-driven workflows, such as [codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/).
 - `CACHE_SELECTED_ONLY` is an _experimental_ config that can significantly speed up dbt's start-of-run preparations, in cases where you're running only a few models from a large project that manages many schemas.
 

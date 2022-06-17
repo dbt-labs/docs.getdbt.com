@@ -54,7 +54,7 @@ models:
 
 <Changelog>
 
-- **v1.1.1:** Provide support for storing the results of a test query in a materializedview using the store_failures config.
+- **v1.1.1:** Provide support for storing the results of a test query in a materialized view, using the `store_failures` config.
 
 </Changelog>
 

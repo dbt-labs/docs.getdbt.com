@@ -26,7 +26,7 @@ function FAQ({ children, src, alt_header = null }) {
 
   useEffect(() => {
     try {
-      const file = require(`../../../docs/docs/faqs/${filePath}.md`)
+      const file = require(`../../../docs/faqs/${filePath}.md`)
       if (file) {
         const meta = file.metadata;
         const contents = file.default({});
@@ -48,7 +48,7 @@ function FAQ({ children, src, alt_header = null }) {
           style={{
             transform: isOn ? null : 'rotateX(180deg)'
           }}>
-        </span >& nbsp;
+        </span >&nbsp;
         <span>{alt_header || fileContent?.meta && fileContent.meta.title}</span>
       </span >
       <div style={{ display: (isOn ? 'block' : 'none') }} className={styles.body}>

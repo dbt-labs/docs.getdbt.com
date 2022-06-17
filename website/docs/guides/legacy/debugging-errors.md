@@ -315,7 +315,7 @@ Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers -
 
 Your dbt DAG is not acyclic, and needs to be fixed!
 - Update the `ref` functions to break the cycle.
-- If you need to reference the current model, use the [`{{ this }}` variable](dbt-jinja-functions/this) instead.
+- If you need to reference the current model, use the [`{{ this }}` variable](/reference/dbt-jinja-functions/this) instead.
 
 ## Database Errors
 

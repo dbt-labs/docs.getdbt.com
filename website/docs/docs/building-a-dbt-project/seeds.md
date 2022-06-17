@@ -10,7 +10,7 @@ id: "seeds"
 ## Getting started
 Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your data warehouse using the `dbt seed` command.
 
-Seeds can be referenced in downstream models the same way as referencing models — by using the `ref` [function](dbt-jinja-functions/ref).
+Seeds can be referenced in downstream models the same way as referencing models — by using the [`ref` function](/reference/dbt-jinja-functions/ref).
 
 Because these CSV files are located in your dbt repository, they are version controlled and code reviewable. Seeds are best suited to static data which changes infrequently.
 
@@ -78,12 +78,12 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
 
 ## FAQs
-<FAQ src="load-raw-data-with-seed" />
-<FAQ src="configurable-data-path" />
-<FAQ src="full-refresh-seed" />
-<FAQ src="testing-seeds" />
-<FAQ src="seed-datatypes" />
-<FAQ src="run-downstream-of-seed" />
-<FAQ src="leading-zeros-in-seed" />
-<FAQ src="build-one-seed" />
-<FAQ src="seed-hooks" />
+<FAQ src="Seeds/load-raw-data-with-seed" />
+<FAQ src="Tests/configurable-data-path" />
+<FAQ src="Seeds/full-refresh-seed" />
+<FAQ src="Tests/testing-seeds" />
+<FAQ src="Seeds/seed-datatypes" />
+<FAQ src="Runs/run-downstream-of-seed" />
+<FAQ src="Seeds/leading-zeros-in-seed" />
+<FAQ src="Seeds/build-one-seed" />
+<FAQ src="Seeds/seed-hooks" />

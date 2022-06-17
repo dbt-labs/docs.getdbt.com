@@ -141,7 +141,7 @@ And it’s actually quite a simple 31-line macro ([source here](https://github.c
 
 Enjoy! FYI I've used dateadd macro in dbt-utils on BigQuery, Postgres, Redshift and Snowflake, but it likely works across most other warehouses.
 
-*Note: While `dbt_utils` doesn't support Databricks by default, you can use other packages that [implement overrides](https://docs.getdbt.com/reference/dbt-jinja-functions/dispatch#overriding-package-macros) as a workaround.*
+*Note: While `dbt_utils` doesn't support Databricks by default, you can use other packages that [implement overrides](/reference/dbt-jinja-functions/dispatch#overriding-package-macros) as a workaround.*
 
 *This [spark_utils package](https://github.com/dbt-labs/spark-utils/blob/main/macros/dbt_utils/cross_db_utils/dateadd.sql) can help you implement the override needed to add support for Databricks dateadd*
 

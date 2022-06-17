@@ -6,7 +6,7 @@ title: "Oracle Profile"
 
 **Maintained by:** Oracle    
 **Source:** [Github](https://github.com/oracle/dbt-oracle)    
-**Core version:** v1.0.6     
+**Core version:** v1.0.7     
 **dbt Cloud:** Not Supported    
 **dbt Slack channel** [#db-oracle](https://getdbt.slack.com/archives/C01PWH4TXLY)       
 
@@ -18,7 +18,123 @@ dbt-oracle can be installed via the Python Package Index (PyPI) using pip
 
     pip install dbt-oracle
 
-You will need Oracle client driver installed. Check this [link](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html) for the installation guide for your operating system
+### Install Oracle Instant Client libraries
+
+To use dbt-oracle, you will need the [Oracle Instant Client libraries](https://www.oracle.com/database/technologies/instant-client.html) installed. These provide the necessary network connectivity allowing dbt-oracle to access an Oracle Database instance.
+
+Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where available on Linux, Windows and macOS (Intel x86). It is recommended to use the latest client possible: Oracle’s standard client-server version interoperability allows connection to both older and newer databases.
+
+<Tabs
+  defaultValue="linux"
+  values={[
+    { label: 'Linux', value: 'linux'},
+    { label: 'Windows', value: 'windows'},
+    { label: 'MacOS', value:'macos'}]
+}>
+
+<TabItem value="linux">
+
+1. Download an Oracle 21, 19, 18, 12, or 11.2 “Basic” or “Basic Light” zip file matching your Python 64-bit or 32-bit architecture:
+   1. [x86-64 64-bit](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html)
+   2. [x86 32-bit](https://www.oracle.com/database/technologies/instant-client/linux-x86-32-downloads.html)
+   3. [ARM (aarch64) 64-bit](https://www.oracle.com/database/technologies/instant-client/linux-arm-aarch64-downloads.html)
+
+2. Unzip the package into a single directory that is accessible to your application. For example:
+  ```bash
+  mkdir -p /opt/oracle
+  cd /opt/oracle
+  unzip instantclient-basic-linux.x64-21.1.0.0.0.zip
+  ```
+
+3. Install the libaio package with sudo or as the root user. For example:
+  ```bash
+  sudo yum install libaio
+  ```
+  On some Linux distributions this package is called `libaio1` instead.
+
+
+
+4. if there is no other Oracle software on the machine that will be impacted, permanently add Instant Client to the runtime link path. For example, with sudo or as the root user:
+ 
+ ```bash
+  sudo sh -c "echo /opt/oracle/instantclient_21_1 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+  sudo ldconfig
+ ```
+
+  Alternatively, set the environment variable `LD_LIBRARY_PATH`
+
+  ```bash
+  export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_1:$LD_LIBRARY_PATH
+  ```
+
+</TabItem>
+
+<TabItem value="windows">
+
+1. Download an Oracle 21, 19, 18, 12, or 11.2 “Basic” or “Basic Light” zip file: [64-bit](https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html) or [32-bit](https://www.oracle.com/database/technologies/instant-client/microsoft-windows-32-downloads.html), matching your Python architecture.
+
+:::info Windows 7 users
+Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
+::: 
+
+2. Unzip the package into a directory that is accessible to your application. For example unzip `instantclient-basic-windows.x64-19.11.0.0.0dbru.zip` to `C:\oracle\instantclient_19_11`.
+
+3. Oracle Instant Client libraries require a Visual Studio redistributable with a 64-bit or 32-bit architecture to match Instant Client’s architecture.
+   1. For Instant Client 21 install [VS 2019](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170) or later
+   2. For Instant Client 19 install [VS 2017](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170)
+   3. For Instant Client 18 or 12.2 install [VS 2013](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2013-vc-120)
+   4. For Instant Client 12.1 install [VS 2010](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2010-vc-100-sp1-no-longer-supported)
+   5. For Instant Client 11.2 install [VS 2005 64-bit](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2005-vc-80-sp1-no-longer-supported)
+
+4. Add the Oracle Instant Client directory to the `PATH` environment variable.The directory must occur in `PATH` before any other Oracle directories. Restart any open command prompt windows.
+   
+   ```bash
+   SET PATH=C:\oracle\instantclient_19_9;%PATH%
+   ```
+
+</TabItem>
+
+<TabItem value="macos">
+
+1. Download the instant client DMG package 
+  
+  ```bash
+  cd $HOME/Downloads
+  curl -O https://download.oracle.com/otn_software/mac/instantclient/198000/instantclient-basic-macos.x64-19.8.0.0.0dbru.dmg
+  ```
+
+2. Mount the instant client DMG package
+   
+   ```bash
+   hdiutil mount instantclient-basic-macos.x64-19.8.0.0.0dbru.dmg
+
+   ```
+
+3. Run the install script in the mounted package
+  
+  ```bash
+  /Volumes/instantclient-basic-macos.x64-19.8.0.0.0dbru/install_ic.sh
+  ```
+
+4. Unmount the package
+   
+   ```bash
+   hdiutil unmount /Volumes/instantclient-basic-macos.x64-19.8.0.0.0dbru
+   ```
+   
+5. The Instant Client directory will be `$HOME/Downloads/instantclient_19_8`. You could move it to some place convenient.
+
+6. Add links to `~/lib` or `/usr/local/lib` to enable dbt to find the libraries.
+   
+   ```bash
+   mkdir ~/lib
+   ln -s ~/instantclient_19_8/libclntsh.dylib ~/lib/
+   ```
+
+</TabItem>
+
+
+</Tabs>
 
 ## Connecting to Oracle Database
 
@@ -27,10 +143,20 @@ Define the following mandatory parameters as environment variables and refer the
 ```bash
 export DBT_ORACLE_USER=<username>
 export DBT_ORACLE_PASSWORD=***
-export DBT_ORACLE_DATABASE=ga01d78d2ecd5f1_db202112221108
 export DBT_ORACLE_SCHEMA=<username>
 ```
 
+Starting with `dbt-oracle==1.0.2`, it is **optional** to set the database name
+
+```bash
+export DBT_ORACLE_DATABASE=ga01d78d2ecd5f1_db202112221108
+```
+
+If database name is not set, adapter will retrieve it using the following query. 
+
+```sql
+SELECT SYS_CONTEXT('userenv', 'DB_NAME') FROM DUAL
+```
 
 An Oracle connection profile for dbt can be set using any one of the following methods
 
