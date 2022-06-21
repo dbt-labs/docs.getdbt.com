@@ -9,7 +9,7 @@ id: "impala-profile"
 **Author:** Cloudera    
 **Source:** [Github](https://github.com/cloudera/dbt-impala)    
 **dbt Cloud:** Currently un-supported    
-**dbt Slack channel** [Link to channel](https://slack.com)     
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C03K2PTHHTP)     
 
 
 ![dbt-impala stars](https://img.shields.io/github/stars/cloudera/dbt-impala?style=for-the-badge)
