@@ -8,7 +8,7 @@ title: Can I store my models in a directory other than the `models` directory in
 
 </Changelog>
 
-By default, dbt expects your seed files to be located in the `models` subdirectory of your project.
+By default, dbt expects your model files to be located in the `models` subdirectory of your project.
 
 To change this, update the [model-paths](reference/project-configs/model-paths.md) configuration in your `dbt_project.yml`
 file, like so:
