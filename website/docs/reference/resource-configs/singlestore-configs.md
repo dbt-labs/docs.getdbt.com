@@ -6,7 +6,7 @@ id: "singlestore-configs"
 
 <Changelog>
 
-  - **v1.1.1:** Added support for for `storage_type`, `indexes`, `primary_key`, `sort_key`, `shard_key`, `unique_table_key`, `charset`, `collation`  options for creating SingleStore tables.
+  - **v1.1.2:** Added support for for `storage_type`, `indexes`, `primary_key`, `sort_key`, `shard_key`, `unique_table_key`, `charset`, `collation`  options for creating SingleStore tables.
 
 </Changelog>
 
@@ -29,7 +29,7 @@ select ...
 
 ### Keys
 
-SingleStore tables are [sharded](https://docs.singlestore.com/managed-service/en/getting-started-with-managed-service/about-managed-service/sharding.html) and can be created with various column definitions. The following options are supported by the dbt-singlestore adapter, each of them accepts `column_list` (a string which consists of comma-separated list of column names) as a parameter. Please refer to [Creating a Columnstore Table](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/procedures-for-physical-database-schema-design/creating-a-columnstore-table.html) for more informartion on various key types in SingleStore.
+SingleStore tables are [sharded](https://docs.singlestore.com/managed-service/en/getting-started-with-managed-service/about-managed-service/sharding.html) and can be created with various column definitions. The following options are supported by the dbt-singlestore adapter, each of them accepts `column_list` (a list of column names) as an option value. Please refer to [Creating a Columnstore Table](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/procedures-for-physical-database-schema-design/creating-a-columnstore-table.html) for more informartion on various key types in SingleStore.
 - `primary_key` (translated to `PRIMARY KEY (column_list)`)
 - `sort_key` (translated to `KEY (column_list) USING CLUSTERED COLUMNSTORE`)
 - `shard_key` (translated to `SHARD KEY (column_list)`)
@@ -40,8 +40,8 @@ SingleStore tables are [sharded](https://docs.singlestore.com/managed-service/en
 ```sql
 {{
     config(
-        primary_key='id,user_id',
-        shard_key='id'
+        primary_key=['id', 'user_id'],
+        shard_key=['id']
     )
 }}
 
@@ -56,8 +56,8 @@ select ...
 {{
     config(
         materialized='table',
-        unique_table_key='id',
-        sort_key='status',
+        unique_table_key=['id'],
+        sort_key=['status'],
     )
 }}
 
@@ -80,7 +80,7 @@ As SingleStore tables are sharded, there are certain limitations to indexes crea
 {{
     config(
         materialized='table',
-        shard_key='id',
+        shard_key=['id'],
         indexes=[{'columns': ['order_date', 'id']}, {'columns': ['status'], 'type': 'hash'}]
     )
 }}
