@@ -1,6 +1,6 @@
 ---
-title: "dbt"
-id: "dbt"
+title: "cross-database macros"
+id: "cross-database-macros"
 ---
 
 # Overview
@@ -68,7 +68,6 @@ compatibility. In general, you should not need these macros in your own dbt proj
 - [dbt.date_trunc](#date_trunc)
 - [dbt.last_day](#last_day)
 
-
 # Set functions
 
 ## except
@@ -110,7 +109,7 @@ __Args__:
 ## concat
 __Args__:
 
- * `fields`: Jinja array of [attribute names or expressions](#sql_expressions).
+ * `fields`: Jinja array of [attribute names or expressions](#sql-expressions).
 
 This macro combines a list of strings together.
 
@@ -130,9 +129,9 @@ This macro combines a list of strings together.
 ## hash
 __Args__:
 
- * `field`: [attribute name or expression](#sql_expressions).
+ * `field`: [attribute name or expression](#sql-expressions).
 
-This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of an [expression](#sql_expressions) cast as a string.
+This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of an [expression](#sql-expressions) cast as a string.
 
 **Usage**:
 
@@ -148,7 +147,7 @@ This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of
 ## length
 __Args__:
 
- * `expression`: string [expression](#sql_expressions).
+ * `expression`: string [expression](#sql-expressions).
 
 
 This macro calculates the number of characters in a string.
@@ -166,8 +165,8 @@ This macro calculates the number of characters in a string.
 ## position
 __Args__:
 
- * `substring_text`: [attribute name or expression](#sql_expressions).
- * `string_text`: [attribute name or expression](#sql_expressions).
+ * `substring_text`: [attribute name or expression](#sql-expressions).
+ * `string_text`: [attribute name or expression](#sql-expressions).
 
 This macro searches for the first occurrence of `substring_text` within `string_text` and returns the 1-based position if found.
 
@@ -185,9 +184,9 @@ This macro searches for the first occurrence of `substring_text` within `string_
 ## replace
 __Args__:
 
- * `field`: [attribute name or expression](#sql_expressions).
- * `old_chars`: [attribute name or expression](#sql_expressions).
- * `new_chars`: [attribute name or expression](#sql_expressions).
+ * `field`: [attribute name or expression](#sql-expressions).
+ * `old_chars`: [attribute name or expression](#sql-expressions).
+ * `new_chars`: [attribute name or expression](#sql-expressions).
 
 This macro updates a string and replaces all occurrences of one substring with another. The precise behavior may vary slightly from one adapter to another.
 
@@ -205,8 +204,8 @@ This macro updates a string and replaces all occurrences of one substring with a
 ## right
 __Args__:
 
- * `string_text`: [attribute name or expression](#sql_expressions).
- * `length_expression`: numeric [expression](#sql_expressions).
+ * `string_text`: [attribute name or expression](#sql-expressions).
+ * `length_expression`: numeric [expression](#sql-expressions).
 
 This macro returns the N rightmost characters from a string.
 
@@ -221,13 +220,12 @@ This macro returns the N rightmost characters from a string.
 
 </File>
 
-
 # Aggregate and window functions
 
 ## any_value
 __Args__:
 
- * `expression`: an [expression](#sql_expressions).
+ * `expression`: an [expression](#sql-expressions).
 
 This macro returns some value of the expression from the group. The selected value is non-deterministic (rather than random).
 
@@ -244,7 +242,7 @@ This macro returns some value of the expression from the group. The selected val
 ## bool_or
 __Args__:
 
- * `expression`: [attribute name or expression](#sql_expressions).
+ * `expression`: [attribute name or expression](#sql-expressions).
 
 This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if at least one record in the group evaluates to `true`.
 
@@ -264,7 +262,7 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 ## listagg
 __Args__:
 
- * `measure` (required): The [attribute name or expression](#sql_expressions) that determines the values to be concatenated. To only include distinct values add keyword `DISTINCT` to beginning of expression (example: 'DISTINCT column_to_agg').
+ * `measure` (required): The [attribute name or expression](#sql-expressions) that determines the values to be concatenated. To only include distinct values add keyword `DISTINCT` to beginning of expression (example: 'DISTINCT column_to_agg').
  * `delimiter_text` (required): Text representing the delimiter to separate concatenated values by.
  * `order_by_clause` (optional): An expression (typically one or more column names separated by commas) that determines the order of the concatenated values.
  * `limit_num` (optional): Specifies the maximum number of values to be concatenated.
@@ -283,13 +281,12 @@ Note: If there are instances of `delimiter_text` within your `measure`, you cann
 
 </File>
 
-
 # Cast functions
 
 ## cast_bool_to_text
 __Args__:
 
- * `field`: boolean [attribute name or expression](#sql_expressions).
+ * `field`: boolean [attribute name or expression](#sql-expressions).
 
 This macro casts a boolean value to a string.
 
@@ -311,7 +308,7 @@ This macro casts a boolean value to a string.
 ## safe_cast
 __Args__:
 
- * `field`: [attribute name or expression](#sql_expressions).
+ * `field`: [attribute name or expression](#sql-expressions).
  * `type`: data type to convert to
 
 For databases that support it, this macro will return `NULL` when the cast fails (instead of raising an error).
@@ -327,7 +324,6 @@ For databases that support it, this macro will return `NULL` when the cast fails
 ```
 
 </File>
-
 
 # Non-SQL Jinja functions
 
@@ -370,7 +366,6 @@ select {{ dbt.string_literal("Pennsylvania") }}
 
 </File>
 
-
 # Timestamp functions
 
 ## current_timestamp
@@ -407,15 +402,14 @@ This macro returns the current timestamp expressed in [Coordinated Universal Tim
 
 </File>
 
-
 # Date and time functions
 
 ## dateadd
 __Args__:
 
- * `datepart`: [date or time part](#date_and_time_parts).
+ * `datepart`: [date or time part](#date-and-time-parts).
  * `interval`: integer count of the `datepart` to add (can be positive or negative)
- * `from_date_or_timestamp`: date/time [expression](#sql_expressions).
+ * `from_date_or_timestamp`: date/time [expression](#sql-expressions).
 
 This macro adds a time/day interval to the supplied date/timestamp. Note: The `datepart` argument is database-specific.
 
@@ -433,9 +427,9 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 ## datediff
 __Args__:
 
- * `first_date`: date/time [expression](#sql_expressions).
- * `second_date`: date/time [expression](#sql_expressions).
- * `datepart`: [date or time part](#date_and_time_parts).
+ * `first_date`: date/time [expression](#sql-expressions).
+ * `second_date`: date/time [expression](#sql-expressions).
+ * `datepart`: [date or time part](#date-and-time-parts).
 
 This macro calculates the difference between two dates.
 
@@ -454,10 +448,10 @@ This macro calculates the difference between two dates.
 ## date_trunc
 __Args__:
 
- * `datepart`: [date or time part](#date_and_time_parts).
- * `date`: date/time [expression](#sql_expressions).
+ * `datepart`: [date or time part](#date-and-time-parts).
+ * `date`: date/time [expression](#sql-expressions).
 
-This macro truncates / rounds a timestamp to the first instant for the given [date or time part](#date_and_time_parts).
+This macro truncates / rounds a timestamp to the first instant for the given [date or time part](#date-and-time-parts).
 
 **Usage**:
 
@@ -474,8 +468,8 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 ## last_day
 __Args__:
 
- * `date`: date/time [expression](#sql_expressions).
- * `datepart`: [date or time part](#date_and_time_parts).
+ * `date`: date/time [expression](#sql-expressions).
+ * `datepart`: [date or time part](#date-and-time-parts).
 
 This macro gets the last day for a given date and datepart.
 
@@ -492,7 +486,7 @@ This macro gets the last day for a given date and datepart.
 
 </File>
 
-# Date and time parts
+## Date and time parts
 
 Often supported date and time parts (case insensitive):
 * `year`
@@ -510,14 +504,14 @@ Often supported date and time parts (case insensitive):
 This listing is not meant to be exhaustive, and some of these date and time parts may not be supported for particular adapters.
 Some macros may not support all date and time parts. Some adapters may support more or less precision.
 
-# SQL expressions
+## SQL expressions
 
 A SQL expression may take forms like the following:
 - function
 - column name
 - date literal
 - string literal
-- <other data type> literal (number, etc)
+- &lt;other data type&gt; literal (number, etc)
 - `NULL`
 
 Example:
