@@ -302,6 +302,7 @@ const sidebarSettings = {
         "reference/resource-configs/bigquery-configs",
         "reference/resource-configs/redshift-configs",
         "reference/resource-configs/snowflake-configs",
+        "reference/resource-configs/singlestore-configs",
         "reference/resource-configs/spark-configs",
         "reference/resource-configs/materialize-configs",
         "reference/resource-configs/firebolt-configs",
@@ -540,6 +541,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/impala-profile",
         "reference/warehouse-profiles/layer-profile",
         "reference/warehouse-profiles/iomete-profile",
+        "reference/warehouse-profiles/duckdb-profile",
       ],
     },
     {
