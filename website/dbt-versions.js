@@ -24,6 +24,10 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "docs/reference/dbt-jinja-functions/cross-database-macros",
+    "firstVersion": "1.2",
+  },
+  {
     "page": "docs/guides/migration-guide/upgrading-to-v1.2",
     "firstVersion": "1.2",
   },
