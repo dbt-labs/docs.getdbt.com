@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.2 (latest)"
+title: "Upgrading to v1.2 (prerelease)"
 ---
 ### Resources
 
@@ -14,6 +14,10 @@ dbt Core v1.2 will soon be available as a **beta prerelease.** Join the #dbt-pre
 ## Breaking changes
 
 There are no breaking changes for end users of dbt. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+
+### For maintainers of adapter plugins
+
+We added a collection of ["cross-database macros"](cross-database-macros) to dbt Core v1.2. Default implementations are automatically inherited by adapters and included in the testing suite. Adapter maintainers may need to override the implementation of one or more macros to align with database-specific syntax or optimize performance. For details on the testing suite, see: ["Testing a new adapter"](testing-a-new-adapter).
 
 ## New and changed documentation
 
