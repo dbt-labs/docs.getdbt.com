@@ -6,7 +6,7 @@ id: "documentation"
 ## Related documentation
 * [Declaring properties](configs-and-properties)
 * [`dbt docs` command](cmd-docs)
-* [`doc` Jinja function](dbt-jinja-functions/doc)
+* [`doc` Jinja function](/reference/dbt-jinja-functions)
 
 ## Assumed knowledge
 * [Tests](building-a-dbt-project/tests)
@@ -27,7 +27,7 @@ Here's a screenshot of an example docs site (you can find the whole site [here](
 Importantly, dbt also provides a way to add **descriptions** to models, columns, sources, and more, to further enhance your documentation.
 
 :::info Creating documentation for the first time
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](setting-up) to build your first dbt project, complete with documentation.
+If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](guides/getting-started/getting-set-up) to build your first dbt project, complete with documentation.
 :::
 
 ## Adding descriptions to your project
@@ -68,12 +68,12 @@ First, run `dbt docs generate` — this command tells dbt to compile relevant in
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
 ## FAQs
-<FAQ src="example-projects" alt_header="Are there any example dbt documentation sites?"/>
-<FAQ src="document-all-columns" />
-<FAQ src="long-descriptions" />
-<FAQ src="sharing-documentation" />
-<FAQ src="document-other-resources" />
-<FAQ src="docs-for-multiple-projects" />
+<FAQ src="Project/example-projects" alt_header="Are there any example dbt documentation sites?"/>
+<FAQ src="Docs/document-all-columns" />
+<FAQ src="Docs/long-descriptions" />
+<FAQ src="Docs/sharing-documentation" />
+<FAQ src="Docs/document-other-resources" />
+<FAQ src="Project/docs-for-multiple-projects" />
 
 
 ## Using Docs Blocks

@@ -11,13 +11,14 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 2. In the middle: A set of *macros* responsible for generating SQL that is compliant with the target database.
 3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn model files into persisted objects in the database.
 
-This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
+This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](testing-a-new-adapter)
+), please let the community know that is available to use by adding the adapter to the [Available Adapters](docs/available-adapters) page by following the steps given in [Documenting your adapter](docs/contributing/documenting-a-new-adapter).
 
-For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. Likely there is someone there who has experienced a similar issue to what you are experiencing.
+For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
 
 ## Pre-Requisite Data Warehouse Features
 
-THe more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
+The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
 
 ### Training
 - the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) and [Advanced Materializations](https://courses.getdbt.com/courses/advanced-materializations) course.
@@ -41,18 +42,20 @@ It is easiest to build an adapter for dbt when the following the data warehouse/
 - a way to enable developers to iterate rapidly with both quick reads and writes
 
 ## Scaffolding a new adapter
+ To create a new adapter plugin from scratch, you can use the [dbt-database-adapter-scaffold](https://github.com/dbt-labs/dbt-database-adapter-scaffold) to trigger an interactive session which will generate a scaffolding for you to build upon.
 
-dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/scripts/create_adapter_plugins.py) directory.
+    Example usage:
 
-Example usage:
+    ```
+    $ cookiecutter gh:dbt-labs/dbt-database-adapter-scaffold
+    ```
 
-```
-$ python create_adapter_plugins.py --sql --title-case=MyAdapter ./ myadapter
-```
+The generated boilerplate starting project will include a basic adapter plugin file structure, examples of macros, high level method descriptions, etc.
 
-You will get a folder named 'myadapter' in the local directory, with some subfolders and files created. Your adapter will be named 'MyAdapter' in the generated code - without `--title-case=MyAdapter` it would be 'Myadapter'. You can set other flags to specify dependencies, author, and package information as well. If your adapter implements SQL's `information_schema` (or something similar enough) and supports a cursor() method on its connections, you may pass the `--sql` flag to derive from the SQLAdapter, which is much easier to implement than the BaseAdapter! Compare dbt's native BigQuery adapter with its SnowflakeAdapter to get an idea of the difference between the two.
-
-This rest of this guide will assume that a SQLAdapter is being used.
+One of the most important choices you will make during the cookiecutter generation will revolve around the field for `is_sql_adapter` which is a boolean used to correctly apply imports for either a `SQLAdapter` or `BaseAdapter`. Knowing which you will need requires a deeper knowledge of your selected database but a few good guides for the choice are.
+- Does your database have a complete SQL API? Can it perform tasks using SQL such as creating schemas, dropping schemas, querying an `information_schema` for metadata calls? If so, it is more likely to be a SQLAdapter where you set `is_sql_adapter` to `True`.
+- Most adapters do fall under SQL adapters which is why we chose it as the default `True` value.
+- It is very possible to build out a fully functional `BaseAdapter`. This will require a little more ground work as it doesn't come with some prebuilt methods the `SQLAdapter` class provides. See `dbt-bigquery` as a good guide.
 
 ### Editing setup.py
 
@@ -92,7 +95,7 @@ class MyAdapterCredentials(Credentials):
     @property
     def type(self):
         return 'myadapter'
-        
+
     @property
     def unique_field(self):
         """
@@ -200,12 +203,12 @@ For example:
     def get_response(cls, cursor) -> AdapterResponse:
         code = cursor.sqlstate or "OK"
         rows = cursor.rowcount
-        status_message = f"{code} {rows_affected}"
+        status_message = f"{code} {rows}"
         return AdapterResponse(
             _message=status_message,
             code=code,
             rows_affected=rows
-        )        
+        )
 ```
 
 </File>
@@ -376,7 +379,7 @@ See examples:
 
 To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
 
-It should be noted that both of these files are included in the bootstrapped output of the `create_adapter_plugins.py` so when using that script, these files will be included.
+It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
 
 ### Testing your new adapter
 

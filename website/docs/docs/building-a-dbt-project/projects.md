@@ -18,7 +18,7 @@ A project may also contain a number of other resources, such as [snapshots](snap
 
 :::info Creating your first dbt project
 
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/getting-started.md) to build your first dbt project.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/guides/getting-started) to build your first dbt project.
 
 :::
 
@@ -70,8 +70,8 @@ This will create a new directory in your current path (i.e. at `./[project-name]
 
 ### FAQs
 
-<FAQ src="project-name" />
-<FAQ src="structure-a-project" />
+<FAQ src="Project/project-name" />
+<FAQ src="Project/structure-a-project" />
 
 
 ## Using an existing project

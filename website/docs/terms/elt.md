@@ -45,7 +45,7 @@ In the final transformation step, the raw data that has been loaded into your da
 - Tables are not joined to other tables
 - Timestamps may be in the incorrect timezone for your reporting
 - JSON fields may need to be unnested
-- Tables may be missing primary keys
+- Tables may be missing <Term id="primary-key">primary keys</Term>
 - And more!
 
 ...hence the need for transformation! During the transformation process, data from your data sources is usually:
@@ -76,7 +76,7 @@ Why has ELT adoption grown so quickly in recent years? A few reasons:
 
 ## Benefits of ELT
 
-You often hear about the benefits of the ELT workflow, but you can sometimes forget to talk about the benefits it brings to people. There are a variety of benefits that this workflow brings to the actual data (which we’ll outline in detail below), such as the ability to recreate historical transformations, test data and data models, and more. We'll also want to use this section to emphasize the empowerment the ELT workflow brings to both data team members and business stakeholders.
+You often hear about the benefits of the ELT workflow to data, but you can sometimes forget to talk about the benefits it brings to people. There are a variety of benefits that this workflow brings to the actual data (which we’ll outline in detail below), such as the ability to recreate historical transformations, test data and data models, and more. We'll also want to use this section to emphasize the empowerment the ELT workflow brings to both data team members and business stakeholders.
 
 ### Data as code
 
@@ -131,9 +131,9 @@ The past few years have been a whirlwind for the data world. The increased acces
 
 Here's some of our favorite content about the ELT workflow:
 
-- [The Case for the ELT Workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
-- [A Love Letter to ETL Tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
+- [The case for the ELT workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
+- [A love letter to ETL tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
 - [What, exactly, is dbt?](https://blog.getdbt.com/what-exactly-is-dbt/)
-- [What is Analytics Engineering?](https://www.getdbt.com/what-is-analytics-engineering/)
-- [How Fivetran Operationalizes Data Transformations](https://www.getdbt.com/coalesce-2021/how-fivetran-operationalizes-data-transformations/)
+- [What is analytics engineering?](https://www.getdbt.com/what-is-analytics-engineering/)
+- [How Fivetran operationalizes data transformations](https://www.getdbt.com/coalesce-2021/how-fivetran-operationalizes-data-transformations/)
 
