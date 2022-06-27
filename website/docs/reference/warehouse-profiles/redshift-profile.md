@@ -53,6 +53,8 @@ Authentication, then your aws credentials are likely misconfigured. Try running
 `aws configure` to set up AWS access keys, and pick a default region. If you have any questions,
 please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
+If connecting to Redshift Serverless, set the `serverless` flag to `true`. The `cluster_id` must be the serverless workgroup.
+
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -62,9 +64,10 @@ my-redshift-db:
     dev:
       type: redshift
       method: iam
-      cluster_id: [cluster_id]
+      cluster_id: [cluster_id]   # for serverless: name of the workgroup
       host: hostname.region.redshift.amazonaws.com
       user: alice
+      serverless: false          # optional
       iam_profile: data_engineer # optional
       iam_duration_seconds: 900  # optional
       autocreate: true           # optional
