@@ -99,9 +99,9 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
 Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
 
 ## Connecting a service user
-Azure DevOps' permissions are tightly coupled to a developer's identity. However, in dbt Cloud deployment environments, you should avoid tying runs to an individual's identity as that creates production problems if an individual loses access to a dbt project repository. 
+Azure DevOps forces all authentication to be linked to a user's permissions. For dbt Cloud scheduled runs, it's not ideal to link auth to an individual Azure DevOps user because if that user leaves your organization, your dbt Cloud production runs will start to fail because of lost access to read from the dbt repo. 
 
-Instead, we recommend creating a service account user in Azure DevOps to power headless actions in dbt Cloud deployment environments. This service user must have read access to all dbt repos across projects in the dbt Cloud account. dbt Cloud will refresh the OAuth access token regularly.
+Instead, we recommend that you create a "service user" which is a pseudo user in Azure DevOps that has read access to all dbt repos for the whole dbt Cloud account. This way you can scope permissions appropriately for this service user and ensure that it never loses access. If you don't want to create a separate Azure DevOps user, you can link scheduled runs to an admin's profile who has appropriate read access to the dbt repos, but this is not the recommended approach, as you don't want to overpermission the service user or risk losing read access should the admin leave your organization. dbt Cloud will refresh the service user's OAuth access token regularly behind the scenes.
 
 :::info  Azure DevOps admin must grant read access to the service user
 This service user's permissions will also power which repos a team can select from during dbt project set up, so an Azure DevOps admin must grant read access to the service user before setting up a project in dbt Cloud.
