@@ -3,7 +3,7 @@ One of the most powerful features of dbt is that you can change the way a model 
 By default, everything gets created as a view. You can override that by materializing everything in jaffle_shop as a table.  Everything in the example project will still be materialized as a view.
 
 1. Edit your `dbt_project.yml` file.
-  - Replace the value for `name` with:
+  - Update your project `name` to:
     <File name='dbt_project.yml'>
 
     ```yaml
@@ -11,7 +11,7 @@ By default, everything gets created as a view. You can override that by material
     ```
 
     </File>
-  - Replace the value for `models` with:
+  - Update your project's dbt `models` to:
 
     <File name='dbt_project.yml'>
 
