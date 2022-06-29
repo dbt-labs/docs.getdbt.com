@@ -79,7 +79,7 @@ __Args__:
 {{ except() }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 except
@@ -98,7 +98,7 @@ __Args__:
 {{ intersect() }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 intersect
@@ -123,7 +123,7 @@ This macro combines a list of strings together.
 {{ concat(["first_part_column", "','" , "second_part_column"]) }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 column_1 || column_2
@@ -146,7 +146,7 @@ This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of
 {{ hash("'Pennsylvania'") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 md5(cast(column as 
@@ -171,7 +171,7 @@ This macro calculates the number of characters in a string.
 {{ length("column") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
     length(
@@ -194,7 +194,7 @@ This macro searches for the first occurrence of `substring_text` within `string_
 {{ position("'-'", "text_column") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
     position(
@@ -223,7 +223,7 @@ This macro updates a string and replaces all occurrences of one substring with a
 {{ replace("string_text_column", "'-'", "'_'") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
     replace(
@@ -258,7 +258,7 @@ This macro returns the N rightmost characters from a string.
 {{ right("string_text_column", "3") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
     right(
@@ -291,7 +291,7 @@ To escape quotes for column values, consider a macro like [replace](#replace) or
 {{ escape_single_quotes("ain't ain't a word") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 they''re
@@ -313,7 +313,7 @@ To cast column values to a string, consider a macro like [safe_cast](#safe_cast)
 select {{ string_literal("Pennsylvania") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 select 'Pennsylvania'
@@ -334,7 +334,7 @@ This macro returns some value of the expression from the group. The selected val
 {{ any_value("column_name") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 any(column_name)
@@ -356,7 +356,7 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 {{ bool_or("column1 = column2") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 bool_or(boolean_column)
@@ -383,7 +383,7 @@ Note: If there are instances of `delimiter_text` within your `measure`, you cann
 {{ listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 array_to_string(
@@ -415,7 +415,7 @@ This macro casts a boolean value to a string.
 {{ cast_bool_to_text("null") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
     cast(boolean_column_name as 
@@ -476,7 +476,7 @@ For databases that support it, this macro will return `NULL` when the cast fails
 {{ safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
     cast(column_1 as TEXT)
@@ -508,7 +508,7 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 {{ dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
     '2016-03-09' + ((interval '10 day') * (1))
@@ -536,7 +536,7 @@ This macro calculates the difference between two dates.
 {{ datediff("'2016-03-09'", "column", "year") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
         ((column_2)::date - (column_1)::date)
@@ -567,7 +567,7 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 {{ date_trunc("year", "'2016-03-09'") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 date_trunc('day', updated_at)
@@ -592,7 +592,7 @@ This macro gets the last day for a given date and datepart.
 {{ last_day("'2016-03-09'", "year") }}
 ```
 
-**Default Output**:
+**Sample Output (PostgreSQL)**:
 
 ```sql
 cast(
