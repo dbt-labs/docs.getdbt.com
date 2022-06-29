@@ -830,3 +830,24 @@ code {
 .docs-wrapper.docs-doc-page main div.row > article.col--6 {
   margin-bottom: 1.5rem;
 }
+
+/* OneTrust Cookies Settings Btn in Footer */
+footer #ot-sdk-btn.ot-sdk-show-settings,
+footer #ot-sdk-btn.optanon-show-settings {
+  background: none;
+  border: none;
+  color: var(--ifm-footer-color);
+  text-decoration: none;
+  font-weight: var(--ifm-font-weight-bold);
+  font-family: var(--ifm-font-family-base);
+  padding: 0;
+  line-height: inherit;
+  font-size: 1rem;
+}
+footer #ot-sdk-btn.ot-sdk-show-settings:hover,
+footer #ot-sdk-btn.optanon-show-settings:hover{
+  background: none;
+  border: none;
+  color: var(--ifm-footer-color);
+  text-decoration: underline;
+}
