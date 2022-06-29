@@ -45,6 +45,10 @@ compatibility. In general, you should not need these macros in your own dbt proj
 - [dbt.right](#right)
 - [dbt.split_part](#split_part)
 
+[**String literal functions**](#string-literal-functions)
+- [dbt.escape_single_quotes](#escape_single_quotes)
+- [dbt.string_literal](#string_literal)
+
 [**Aggregate and window functions**](#aggregate-and-window-functions)
 - [dbt.any_value](#any_value)
 - [dbt.bool_or](#bool_or)
@@ -53,10 +57,6 @@ compatibility. In general, you should not need these macros in your own dbt proj
 [**Cast functions**](#cast-functions)
 - [dbt.cast_bool_to_text](#cast_bool_to_text)
 - [dbt.safe_cast](#safe_cast)
-
-[**String literal functions**](#string-literal-functions)
-- [dbt.escape_single_quotes](#escape_single_quotes)
-- [dbt.string_literal](#string_literal)
 
 [**Timestamp functions**](#timestamp-functions)
 - [dbt.current_timestamp](#current_timestamp)
@@ -220,6 +220,47 @@ This macro returns the N rightmost characters from a string.
 
 </File>
 
+# String literal functions
+
+## escape_single_quotes
+__Args__:
+
+ * `value`: Jinja string literal value
+
+This macro adds escape characters for any single quotes within the provided string literal. Note: if given a column, it will only operate on the column _name_, not the values within the column.
+
+To escape quotes for column values, consider a macro like [replace](#replace) or a regular expression replace.
+
+**Usage**:
+
+<File name='models/example.sql'>
+
+```sql
+{{ dbt.escape_single_quotes("they're") }}
+{{ dbt.escape_single_quotes("ain't ain't a word") }}
+```
+
+</File>
+
+## string_literal
+__Args__:
+
+ * `value`: Jinja string value
+
+This macro converts a Jinja string into a SQL string literal.
+
+To cast column values to a string, consider a macro like [safe_cast](#safe_cast) or an ordinary cast.
+
+**Usage**:
+
+<File name='models/example.sql'>
+
+```sql
+select {{ dbt.string_literal("Pennsylvania") }}
+```
+
+</File>
+
 # Aggregate and window functions
 
 ## any_value
@@ -321,47 +362,6 @@ For databases that support it, this macro will return `NULL` when the cast fails
 {{ dbt.safe_cast("column_1", api.Column.translate_type("string")) }}
 {{ dbt.safe_cast("column_2", api.Column.translate_type("integer")) }}
 {{ dbt.safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
-```
-
-</File>
-
-# String literal functions
-
-## escape_single_quotes
-__Args__:
-
- * `value`: Jinja string literal value
-
-This macro adds escape characters for any single quotes within the provided string literal. Note: if given a column, it will only operate on the column _name_, not the values within the column.
-
-To escape quotes for column values, consider a macro like [replace](#replace) or a regular expression replace.
-
-**Usage**:
-
-<File name='models/example.sql'>
-
-```sql
-{{ dbt.escape_single_quotes("they're") }}
-{{ dbt.escape_single_quotes("ain't ain't a word") }}
-```
-
-</File>
-
-## string_literal
-__Args__:
-
- * `value`: Jinja string value
-
-This macro converts a Jinja string into a SQL string literal.
-
-To cast column values to a string, consider a macro like [safe_cast](#safe_cast) or an ordinary cast.
-
-**Usage**:
-
-<File name='models/example.sql'>
-
-```sql
-select {{ dbt.string_literal("Pennsylvania") }}
 ```
 
 </File>
