@@ -32,11 +32,11 @@ compatibility. In general, you should not need these macros in your own dbt proj
 - [dbt.split_part](#split_part)
 - [dbt.string_literal](#string_literal)
 
-## Set functions
+[**Set functions**](#set-functions)
 - [dbt.except](#except)
 - [dbt.intersect](#intersect)
 
-## String functions
+[**String functions**](#string-functions)
 - [dbt.concat](#concat)
 - [dbt.hash](#hash)
 - [dbt.length](#length)
@@ -45,24 +45,24 @@ compatibility. In general, you should not need these macros in your own dbt proj
 - [dbt.right](#right)
 - [dbt.split_part](#split_part)
 
-## Aggregate and window functions
+[**Aggregate and window functions**](#aggregate-and-window-functions)
 - [dbt.any_value](#any_value)
 - [dbt.bool_or](#bool_or)
 - [dbt.listagg](#listagg)
 
-## Cast functions
+[**Cast functions**](#cast-functions)
 - [dbt.cast_bool_to_text](#cast_bool_to_text)
 - [dbt.safe_cast](#safe_cast)
 
-## Non-SQL Jinja functions
+[**Non-SQL Jinja functions**](#non-sql-jinja-functions)
 - [dbt.escape_single_quotes](#escape_single_quotes)
 - [dbt.string_literal](#string_literal)
 
-## Timestamp functions
+[**Timestamp functions**](#timestamp-functions)
 - [dbt.current_timestamp](#current_timestamp)
 - [dbt.current_timestamp_in_utc](#current_timestamp_in_utc)
 
-## Date and time functions
+[**Date and time functions**](#date-and-time-functions)
 - [dbt.dateadd](#dateadd)
 - [dbt.datediff](#datediff)
 - [dbt.date_trunc](#date_trunc)
