@@ -13,8 +13,6 @@ compatibility. In general, you should not need these macros in your own dbt proj
 - [dbt.bool_or](#bool_or)
 - [dbt.cast_bool_to_text](#cast_bool_to_text)
 - [dbt.concat](#concat)
-- [dbt.current_timestamp](#current_timestamp)
-- [dbt.current_timestamp_in_utc](#current_timestamp_in_utc)
 - [dbt.dateadd](#dateadd)
 - [dbt.datediff](#datediff)
 - [dbt.date_trunc](#date_trunc)
@@ -57,10 +55,6 @@ compatibility. In general, you should not need these macros in your own dbt proj
 [**Cast functions**](#cast-functions)
 - [dbt.cast_bool_to_text](#cast_bool_to_text)
 - [dbt.safe_cast](#safe_cast)
-
-[**Timestamp functions**](#timestamp-functions)
-- [dbt.current_timestamp](#current_timestamp)
-- [dbt.current_timestamp_in_utc](#current_timestamp_in_utc)
 
 [**Date and time functions**](#date-and-time-functions)
 - [dbt.dateadd](#dateadd)
@@ -362,42 +356,6 @@ For databases that support it, this macro will return `NULL` when the cast fails
 {{ dbt.safe_cast("column_1", api.Column.translate_type("string")) }}
 {{ dbt.safe_cast("column_2", api.Column.translate_type("integer")) }}
 {{ dbt.safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
-```
-
-</File>
-
-# Timestamp functions
-
-## current_timestamp
-__Args__:
-
- * None
-
-This macro returns the current timestamp.
-
-**Usage**:
-
-<File name='models/example.sql'>
-
-```sql
-{{ dbt.current_timestamp() }}
-```
-
-</File>
-
-## current_timestamp_in_utc
-__Args__:
-
- * None
-
-This macro returns the current timestamp expressed in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).
-
-**Usage**:
-
-<File name='models/example.sql'>
-
-```sql
-{{ dbt.current_timestamp_in_utc() }}
 ```
 
 </File>
