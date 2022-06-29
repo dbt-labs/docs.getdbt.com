@@ -3,27 +3,27 @@ One of the most powerful features of dbt is that you can change the way a model 
 By default, everything gets created as a view. You can override that by materializing everything in jaffle_shop as a table.  Everything in the example project will still be materialized as a view.
 
 1. Edit your `dbt_project.yml` file.
-  - Update your project `name` to:
-    <File name='dbt_project.yml'>
+    - Update your project `name` to:
+      <File name='dbt_project.yml'>
 
-    ```yaml
-    name: 'jaffle_shop'
-    ```
+      ```yaml
+      name: 'jaffle_shop'
+      ```
 
-    </File>
-  - Update your `models` config block to:
+      </File>
+    - Update your `models` config block to:
 
-    <File name='dbt_project.yml'>
+      <File name='dbt_project.yml'>
 
-    ```yaml
-    models:
-      jaffle_shop:
-        +materialized: table
-        example:
-          +materialized: view
-    ```
+      ```yaml
+      models:
+        jaffle_shop:
+          +materialized: table
+          example:
+            +materialized: view
+      ```
 
-    </File>
+      </File>
 
 2. Enter the `dbt run` command. Your `customers` model should now be built as a table!
     :::info
