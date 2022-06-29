@@ -54,7 +54,7 @@ compatibility. In general, you should not need these macros in your own dbt proj
 - [dbt.cast_bool_to_text](#cast_bool_to_text)
 - [dbt.safe_cast](#safe_cast)
 
-[**Non-SQL Jinja functions**](#non-sql-jinja-functions)
+[**String literal functions**](#string-literal-functions)
 - [dbt.escape_single_quotes](#escape_single_quotes)
 - [dbt.string_literal](#string_literal)
 
@@ -325,7 +325,7 @@ For databases that support it, this macro will return `NULL` when the cast fails
 
 </File>
 
-# Non-SQL Jinja functions
+# String literal functions
 
 ## escape_single_quotes
 __Args__:
