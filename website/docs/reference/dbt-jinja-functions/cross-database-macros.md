@@ -5,62 +5,64 @@ id: "cross-database-macros"
 
 # Overview
 
-These macros make it easier for package authors (especially those writing modeling packages) to implement cross-database
-compatibility. In general, you should not need these macros in your own dbt project (unless it is a package or you otherwise desire cross-database compatibility).
+These macros benefit three different user groups:
+- If you maintain a package, your package is more likely to work on other adapters by using these macros (rather than a specific database's SQL syntax)
+- If you maintain an adapter, your adapter is more likely to support more packages by implementing (and testing) these macros.
+- If you're an end user, more packages and adapters are likely to "just work" for you (without you having to do anything).
 
 ## All functions (alphabetical)
-- [dbt.any_value](#any_value)
-- [dbt.bool_or](#bool_or)
-- [dbt.cast_bool_to_text](#cast_bool_to_text)
-- [dbt.concat](#concat)
-- [dbt.dateadd](#dateadd)
-- [dbt.datediff](#datediff)
-- [dbt.date_trunc](#date_trunc)
-- [dbt.escape_single_quotes](#escape_single_quotes)
-- [dbt.except](#except)
-- [dbt.hash](#hash)
-- [dbt.intersect](#intersect)
-- [dbt.last_day](#last_day)
-- [dbt.length](#length)
-- [dbt.listagg](#listagg)
-- [dbt.position](#position)
-- [dbt.replace](#replace)
-- [dbt.right](#right)
-- [dbt.safe_cast](#safe_cast)
-- [dbt.split_part](#split_part)
-- [dbt.string_literal](#string_literal)
+- [any_value](#any_value)
+- [bool_or](#bool_or)
+- [cast_bool_to_text](#cast_bool_to_text)
+- [concat](#concat)
+- [dateadd](#dateadd)
+- [datediff](#datediff)
+- [date_trunc](#date_trunc)
+- [escape_single_quotes](#escape_single_quotes)
+- [except](#except)
+- [hash](#hash)
+- [intersect](#intersect)
+- [last_day](#last_day)
+- [length](#length)
+- [listagg](#listagg)
+- [position](#position)
+- [replace](#replace)
+- [right](#right)
+- [safe_cast](#safe_cast)
+- [split_part](#split_part)
+- [string_literal](#string_literal)
 
 [**Set functions**](#set-functions)
-- [dbt.except](#except)
-- [dbt.intersect](#intersect)
+- [except](#except)
+- [intersect](#intersect)
 
 [**String functions**](#string-functions)
-- [dbt.concat](#concat)
-- [dbt.hash](#hash)
-- [dbt.length](#length)
-- [dbt.position](#position)
-- [dbt.replace](#replace)
-- [dbt.right](#right)
-- [dbt.split_part](#split_part)
+- [concat](#concat)
+- [hash](#hash)
+- [length](#length)
+- [position](#position)
+- [replace](#replace)
+- [right](#right)
+- [split_part](#split_part)
 
 [**String literal functions**](#string-literal-functions)
-- [dbt.escape_single_quotes](#escape_single_quotes)
-- [dbt.string_literal](#string_literal)
+- [escape_single_quotes](#escape_single_quotes)
+- [string_literal](#string_literal)
 
 [**Aggregate and window functions**](#aggregate-and-window-functions)
-- [dbt.any_value](#any_value)
-- [dbt.bool_or](#bool_or)
-- [dbt.listagg](#listagg)
+- [any_value](#any_value)
+- [bool_or](#bool_or)
+- [listagg](#listagg)
 
 [**Cast functions**](#cast-functions)
-- [dbt.cast_bool_to_text](#cast_bool_to_text)
-- [dbt.safe_cast](#safe_cast)
+- [cast_bool_to_text](#cast_bool_to_text)
+- [safe_cast](#safe_cast)
 
 [**Date and time functions**](#date-and-time-functions)
-- [dbt.dateadd](#dateadd)
-- [dbt.datediff](#datediff)
-- [dbt.date_trunc](#date_trunc)
-- [dbt.last_day](#last_day)
+- [dateadd](#dateadd)
+- [datediff](#datediff)
+- [date_trunc](#date_trunc)
+- [last_day](#last_day)
 
 # Set functions
 
@@ -76,7 +78,7 @@ __Args__:
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.except() }}
+{{ except() }}
 ```
 
 </File>
@@ -93,7 +95,7 @@ __Args__:
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.intersect() }}
+{{ intersect() }}
 ```
 
 </File>
@@ -112,10 +114,10 @@ This macro combines a list of strings together.
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.concat(["column_1", "column_2"]) }}
-{{ dbt.concat(["year_column", "'-'" , "month_column", "'-'" , "day_column"]) }}
-{{ dbt.concat(["first_part_column", "'.'" , "second_part_column"]) }}
-{{ dbt.concat(["first_part_column", "','" , "second_part_column"]) }}
+{{ concat(["column_1", "column_2"]) }}
+{{ concat(["year_column", "'-'" , "month_column", "'-'" , "day_column"]) }}
+{{ concat(["first_part_column", "'.'" , "second_part_column"]) }}
+{{ concat(["first_part_column", "','" , "second_part_column"]) }}
 ```
 
 </File>
@@ -132,8 +134,8 @@ This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.hash("column") }}
-{{ dbt.hash("'Pennsylvania'") }}
+{{ hash("column") }}
+{{ hash("'Pennsylvania'") }}
 ```
 
 </File>
@@ -151,7 +153,7 @@ This macro calculates the number of characters in a string.
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.length("column") }}
+{{ length("column") }}
 ```
 
 </File>
@@ -169,8 +171,8 @@ This macro searches for the first occurrence of `substring_text` within `string_
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.position("substring_column", "text_column") }}
-{{ dbt.position("'-'", "text_column") }}
+{{ position("substring_column", "text_column") }}
+{{ position("'-'", "text_column") }}
 ```
 
 </File>
@@ -189,8 +191,8 @@ This macro updates a string and replaces all occurrences of one substring with a
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.replace("string_text_column", "old_chars_column", "new_chars_column") }}
-{{ dbt.replace("string_text_column", "'-'", "'_'") }}
+{{ replace("string_text_column", "old_chars_column", "new_chars_column") }}
+{{ replace("string_text_column", "'-'", "'_'") }}
 ```
 
 </File>
@@ -208,8 +210,8 @@ This macro returns the N rightmost characters from a string.
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.right("string_text_column", "length_column") }}
-{{ dbt.right("string_text_column", "3") }}
+{{ right("string_text_column", "length_column") }}
+{{ right("string_text_column", "3") }}
 ```
 
 </File>
@@ -230,8 +232,8 @@ To escape quotes for column values, consider a macro like [replace](#replace) or
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.escape_single_quotes("they're") }}
-{{ dbt.escape_single_quotes("ain't ain't a word") }}
+{{ escape_single_quotes("they're") }}
+{{ escape_single_quotes("ain't ain't a word") }}
 ```
 
 </File>
@@ -250,7 +252,7 @@ To cast column values to a string, consider a macro like [safe_cast](#safe_cast)
 <File name='models/example.sql'>
 
 ```sql
-select {{ dbt.string_literal("Pennsylvania") }}
+select {{ string_literal("Pennsylvania") }}
 ```
 
 </File>
@@ -269,7 +271,7 @@ This macro returns some value of the expression from the group. The selected val
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.any_value("column_name") }}
+{{ any_value("column_name") }}
 ```
 
 </File>
@@ -286,10 +288,10 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.bool_or("boolean_column") }}
-{{ dbt.bool_or("integer_column = 3") }}
-{{ dbt.bool_or("string_column = 'Pennsylvania'") }}
-{{ dbt.bool_or("column1 = column2") }}
+{{ bool_or("boolean_column") }}
+{{ bool_or("integer_column = 3") }}
+{{ bool_or("string_column = 'Pennsylvania'") }}
+{{ bool_or("column1 = column2") }}
 ```
 
 </File>
@@ -311,7 +313,7 @@ Note: If there are instances of `delimiter_text` within your `measure`, you cann
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
+{{ listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
 ```
 
 </File>
@@ -330,12 +332,12 @@ This macro casts a boolean value to a string.
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.cast_bool_to_text("boolean_column_name") }}
-{{ dbt.cast_bool_to_text("false") }}
-{{ dbt.cast_bool_to_text("true") }}
-{{ dbt.cast_bool_to_text("0 = 1") }}
-{{ dbt.cast_bool_to_text("1 = 1") }}
-{{ dbt.cast_bool_to_text("null") }}
+{{ cast_bool_to_text("boolean_column_name") }}
+{{ cast_bool_to_text("false") }}
+{{ cast_bool_to_text("true") }}
+{{ cast_bool_to_text("0 = 1") }}
+{{ cast_bool_to_text("1 = 1") }}
+{{ cast_bool_to_text("null") }}
 ```
 
 </File>
@@ -353,9 +355,9 @@ For databases that support it, this macro will return `NULL` when the cast fails
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.safe_cast("column_1", api.Column.translate_type("string")) }}
-{{ dbt.safe_cast("column_2", api.Column.translate_type("integer")) }}
-{{ dbt.safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
+{{ safe_cast("column_1", api.Column.translate_type("string")) }}
+{{ safe_cast("column_2", api.Column.translate_type("integer")) }}
+{{ safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
 ```
 
 </File>
@@ -376,8 +378,8 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
-{{ dbt.dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
+{{ dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
+{{ dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
 ```
 
 </File>
@@ -396,9 +398,9 @@ This macro calculates the difference between two dates.
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.datediff("column_1", "column_2", "day") }}
-{{ dbt.datediff("column", "'2016-03-09'", "month") }}
-{{ dbt.datediff("'2016-03-09'", "column", "year") }}
+{{ datediff("column_1", "column_2", "day") }}
+{{ datediff("column", "'2016-03-09'", "month") }}
+{{ datediff("'2016-03-09'", "column", "year") }}
 ```
 
 </File>
@@ -416,9 +418,9 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.date_trunc("day", "updated_at") }}
-{{ dbt.date_trunc("month", "updated_at") }}
-{{ dbt.date_trunc("year", "'2016-03-09'") }}
+{{ date_trunc("day", "updated_at") }}
+{{ date_trunc("month", "updated_at") }}
+{{ date_trunc("year", "'2016-03-09'") }}
 ```
 
 </File>
@@ -438,8 +440,8 @@ This macro gets the last day for a given date and datepart.
 <File name='models/example.sql'>
 
 ```sql
-{{ dbt.last_day("created_at", "month") }}
-{{ dbt.last_day("'2016-03-09'", "year") }}
+{{ last_day("created_at", "month") }}
+{{ last_day("'2016-03-09'", "year") }}
 ```
 
 </File>
