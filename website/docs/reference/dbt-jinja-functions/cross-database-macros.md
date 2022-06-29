@@ -75,13 +75,9 @@ __Args__:
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ except() }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -98,13 +94,9 @@ __Args__:
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ intersect() }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -124,16 +116,12 @@ This macro combines a list of strings together.
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ concat(["column_1", "column_2"]) }}
 {{ concat(["year_column", "'-'" , "month_column", "'-'" , "day_column"]) }}
 {{ concat(["first_part_column", "'.'" , "second_part_column"]) }}
 {{ concat(["first_part_column", "','" , "second_part_column"]) }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -152,8 +140,6 @@ __Args__:
 This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of an [expression](#sql-expressions) cast as a string.
 
 **Usage**:
-
-<File>
 
 ```sql
 {{ hash("column") }}
@@ -181,13 +167,9 @@ This macro calculates the number of characters in a string.
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ length("column") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -207,14 +189,10 @@ This macro searches for the first occurrence of `substring_text` within `string_
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ position("substring_column", "text_column") }}
 {{ position("'-'", "text_column") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -240,14 +218,10 @@ This macro updates a string and replaces all occurrences of one substring with a
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ replace("string_text_column", "old_chars_column", "new_chars_column") }}
 {{ replace("string_text_column", "'-'", "'_'") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -279,14 +253,10 @@ This macro returns the N rightmost characters from a string.
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ right("string_text_column", "length_column") }}
 {{ right("string_text_column", "3") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -316,14 +286,10 @@ To escape quotes for column values, consider a macro like [replace](#replace) or
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ escape_single_quotes("they're") }}
 {{ escape_single_quotes("ain't ain't a word") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -343,13 +309,9 @@ To cast column values to a string, consider a macro like [safe_cast](#safe_cast)
 
 **Usage**:
 
-<File>
-
 ```sql
 select {{ string_literal("Pennsylvania") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -368,13 +330,9 @@ This macro returns some value of the expression from the group. The selected val
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ any_value("column_name") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -391,16 +349,12 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ bool_or("boolean_column") }}
 {{ bool_or("integer_column = 3") }}
 {{ bool_or("string_column = 'Pennsylvania'") }}
 {{ bool_or("column1 = column2") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -425,13 +379,9 @@ This macro returns the concatenated input values from a group of rows separated 
 
 Note: If there are instances of `delimiter_text` within your `measure`, you cannot include a `limit_num`.
 
-<File>
-
 ```sql
 {{ listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -456,8 +406,6 @@ This macro casts a boolean value to a string.
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ cast_bool_to_text("boolean_column_name") }}
 {{ cast_bool_to_text("false") }}
@@ -466,8 +414,6 @@ This macro casts a boolean value to a string.
 {{ cast_bool_to_text("1 = 1") }}
 {{ cast_bool_to_text("null") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -524,15 +470,11 @@ For databases that support it, this macro will return `NULL` when the cast fails
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ safe_cast("column_1", api.Column.translate_type("string")) }}
 {{ safe_cast("column_2", api.Column.translate_type("integer")) }}
 {{ safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -561,14 +503,10 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
 {{ dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -592,15 +530,11 @@ This macro calculates the difference between two dates.
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ datediff("column_1", "column_2", "day") }}
 {{ datediff("column", "'2016-03-09'", "month") }}
 {{ datediff("'2016-03-09'", "column", "year") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -627,15 +561,11 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 
 **Usage**:
 
-<File>
-
 ```sql
 {{ date_trunc("day", "updated_at") }}
 {{ date_trunc("month", "updated_at") }}
 {{ date_trunc("year", "'2016-03-09'") }}
 ```
-
-</File>
 
 **Default Output**:
 
@@ -657,14 +587,10 @@ This macro gets the last day for a given date and datepart.
 - The `datepart` argument is database-specific.
 - This macro currently only supports dateparts of `month` and `quarter`.
 
-<File>
-
 ```sql
 {{ last_day("created_at", "month") }}
 {{ last_day("'2016-03-09'", "year") }}
 ```
-
-</File>
 
 **Default Output**:
 
