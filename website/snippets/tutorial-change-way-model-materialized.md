@@ -11,7 +11,7 @@ By default, everything gets created as a view. You can override that by material
     ```
 
     </File>
-  - Update your project's dbt `models` to:
+  - Update your `models` config block to:
 
     <File name='dbt_project.yml'>
 
