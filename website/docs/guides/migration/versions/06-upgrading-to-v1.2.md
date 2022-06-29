@@ -7,9 +7,7 @@ title: "Upgrading to v1.2 (prerelease)"
 - [CLI Installation guide](/dbt-cli/install/overview)
 - [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
 
-:::info Beta
-dbt Core v1.2 will soon be available as a **beta prerelease.** Join the #dbt-prereleases channel in the Community Slack so that you're the first to know!
-:::
+<Snippet src="available-prerelease-beta-banner" />
 
 ## Breaking changes
 
