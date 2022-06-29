@@ -75,7 +75,7 @@ __Args__:
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ except() }}
@@ -98,7 +98,7 @@ __Args__:
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ intersect() }}
@@ -124,7 +124,7 @@ This macro combines a list of strings together.
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ concat(["column_1", "column_2"]) }}
@@ -153,7 +153,7 @@ This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ hash("column") }}
@@ -181,7 +181,7 @@ This macro calculates the number of characters in a string.
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ length("column") }}
@@ -207,7 +207,7 @@ This macro searches for the first occurrence of `substring_text` within `string_
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ position("substring_column", "text_column") }}
@@ -240,7 +240,7 @@ This macro updates a string and replaces all occurrences of one substring with a
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ replace("string_text_column", "old_chars_column", "new_chars_column") }}
@@ -279,7 +279,7 @@ This macro returns the N rightmost characters from a string.
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ right("string_text_column", "length_column") }}
@@ -316,7 +316,7 @@ To escape quotes for column values, consider a macro like [replace](#replace) or
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ escape_single_quotes("they're") }}
@@ -343,7 +343,7 @@ To cast column values to a string, consider a macro like [safe_cast](#safe_cast)
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 select {{ string_literal("Pennsylvania") }}
@@ -368,7 +368,7 @@ This macro returns some value of the expression from the group. The selected val
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ any_value("column_name") }}
@@ -391,7 +391,7 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ bool_or("boolean_column") }}
@@ -425,7 +425,7 @@ This macro returns the concatenated input values from a group of rows separated 
 
 Note: If there are instances of `delimiter_text` within your `measure`, you cannot include a `limit_num`.
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
@@ -456,7 +456,7 @@ This macro casts a boolean value to a string.
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ cast_bool_to_text("boolean_column_name") }}
@@ -524,7 +524,7 @@ For databases that support it, this macro will return `NULL` when the cast fails
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ safe_cast("column_1", api.Column.translate_type("string")) }}
@@ -561,7 +561,7 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
@@ -592,7 +592,7 @@ This macro calculates the difference between two dates.
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ datediff("column_1", "column_2", "day") }}
@@ -627,7 +627,7 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 
 **Usage**:
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ date_trunc("day", "updated_at") }}
@@ -657,7 +657,7 @@ This macro gets the last day for a given date and datepart.
 - The `datepart` argument is database-specific.
 - This macro currently only supports dateparts of `month` and `quarter`.
 
-<File name='models/example.sql'>
+<File>
 
 ```sql
 {{ last_day("created_at", "month") }}
