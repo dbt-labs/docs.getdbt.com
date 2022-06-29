@@ -104,7 +104,6 @@ __Args__:
 intersect
 ```
 
-
 # String functions
 
 ## concat
@@ -201,7 +200,6 @@ This macro searches for the first occurrence of `substring_text` within `string_
         substring_column in text_column
     )
 
-
     position(
         '-' in text_column
     )
@@ -231,10 +229,6 @@ This macro updates a string and replaces all occurrences of one substring with a
         old_chars_column,
         new_chars_column
     )
-    
-
-
-
 
     replace(
         string_text_column,
@@ -265,7 +259,6 @@ This macro returns the N rightmost characters from a string.
         string_text_column,
         length_column
     )
-
 
     right(
         string_text_column,
@@ -422,42 +415,25 @@ This macro casts a boolean value to a string.
     varchar
 )
 
-
-
-  
     cast(false as 
     varchar
 )
 
-
-
-  
     cast(true as 
     varchar
 )
 
-
-
-  
     cast(0 = 1 as 
     varchar
 )
 
-
-
-  
     cast(1 = 1 as 
     varchar
 )
 
-
-
-  
     cast(null as 
     varchar
 )
-
-
 ```
 
 ## safe_cast
@@ -480,13 +456,7 @@ For databases that support it, this macro will return `NULL` when the cast fails
 
 ```sql
     cast(column_1 as TEXT)
-
-
-    
     cast(column_2 as INT)
-
-
-    
     cast('2016-03-09' as date)
 ```
 
@@ -512,10 +482,6 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 
 ```sql
     '2016-03-09' + ((interval '10 day') * (1))
-
-
-
-
     '2016-03-09' + ((interval '10 month') * (-2))
 ```
 
@@ -540,15 +506,11 @@ This macro calculates the difference between two dates.
 
 ```sql
         ((column_2)::date - (column_1)::date)
-    
 
-        (
-        (date_part('year', ('2016-03-09')::date) - date_part('year', (column)::date))
+        ((date_part('year', ('2016-03-09')::date) - date_part('year', (column)::date))
      * 12 + date_part('month', ('2016-03-09')::date) - date_part('month', (column)::date))
-    
 
         (date_part('year', (column)::date) - date_part('year', ('2016-03-09')::date))
-
 ```
 
 ## date_trunc
@@ -596,26 +558,13 @@ This macro gets the last day for a given date and datepart.
 
 ```sql
 cast(
-        
-
-    
-
     date_trunc('month', created_at) + ((interval '10 month') * (1))
-
  + ((interval '10 day') * (-1))
-
-
         as date)
+
 cast(
-        
-
-    
-
     date_trunc('year', '2016-03-09') + ((interval '10 year') * (1))
-
  + ((interval '10 day') * (-1))
-
-
         as date)
 ```
 
