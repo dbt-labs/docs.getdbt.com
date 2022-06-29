@@ -657,6 +657,7 @@ const sidebarSettings = {
             slug: '/guides/migration/versions',
           },
           items: [
+            "guides/migration/versions/upgrading-to-v1.2",
             "guides/migration/versions/upgrading-to-v1.1",
             "guides/migration/versions/upgrading-to-v1.0",
             "guides/migration/versions/upgrading-to-v0.21",
