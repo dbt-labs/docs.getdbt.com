@@ -24,3 +24,5 @@ We added a collection of ["cross-database macros"](cross-database-macros) to dbt
 _Under construction_
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2
+
+- [Modules](modules): The `itertools` Python module is available in dbt's Jinja templating context.
