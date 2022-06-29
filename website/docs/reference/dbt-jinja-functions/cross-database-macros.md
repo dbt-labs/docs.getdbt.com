@@ -83,6 +83,12 @@ __Args__:
 
 </File>
 
+**Default Output**:
+
+```sql
+except
+```
+
 ## intersect
 __Args__:
 
@@ -99,6 +105,13 @@ __Args__:
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+intersect
+```
+
 
 # String functions
 
@@ -122,6 +135,15 @@ This macro combines a list of strings together.
 
 </File>
 
+**Default Output**:
+
+```sql
+column_1 || column_2
+year_column || '-' || month_column || '-' || day_column
+first_part_column || '.' || second_part_column
+first_part_column || ',' || second_part_column
+```
+
 ## hash
 __Args__:
 
@@ -138,7 +160,16 @@ This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of
 {{ hash("'Pennsylvania'") }}
 ```
 
-</File>
+**Default Output**:
+
+```sql
+md5(cast(column as 
+    varchar
+))
+md5(cast('Pennsylvania' as 
+    varchar
+))
+```
 
 ## length
 __Args__:
@@ -158,6 +189,14 @@ This macro calculates the number of characters in a string.
 
 </File>
 
+**Default Output**:
+
+```sql
+    length(
+        column
+    )
+```
+
 ## position
 __Args__:
 
@@ -176,6 +215,19 @@ This macro searches for the first occurrence of `substring_text` within `string_
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+    position(
+        substring_column in text_column
+    )
+
+
+    position(
+        '-' in text_column
+    )
+```
 
 ## replace
 __Args__:
@@ -197,6 +249,26 @@ This macro updates a string and replaces all occurrences of one substring with a
 
 </File>
 
+**Default Output**:
+
+```sql
+    replace(
+        string_text_column,
+        old_chars_column,
+        new_chars_column
+    )
+    
+
+
+
+
+    replace(
+        string_text_column,
+        '-',
+        '_'
+    )
+```
+
 ## right
 __Args__:
 
@@ -215,6 +287,21 @@ This macro returns the N rightmost characters from a string.
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+    right(
+        string_text_column,
+        length_column
+    )
+
+
+    right(
+        string_text_column,
+        3
+    )
+```
 
 # String literal functions
 
@@ -238,6 +325,13 @@ To escape quotes for column values, consider a macro like [replace](#replace) or
 
 </File>
 
+**Default Output**:
+
+```sql
+they''re
+ain''t ain''t a word
+```
+
 ## string_literal
 __Args__:
 
@@ -256,6 +350,12 @@ select {{ string_literal("Pennsylvania") }}
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+select 'Pennsylvania'
+```
 
 # Aggregate and window functions
 
@@ -276,6 +376,12 @@ This macro returns some value of the expression from the group. The selected val
 
 </File>
 
+**Default Output**:
+
+```sql
+any(column_name)
+```
+
 ## bool_or
 __Args__:
 
@@ -295,6 +401,15 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+bool_or(boolean_column)
+bool_or(integer_column = 3)
+bool_or(string_column = 'Pennsylvania')
+bool_or(column1 = column2)
+```
 
 ## listagg
 __Args__:
@@ -317,6 +432,18 @@ Note: If there are instances of `delimiter_text` within your `measure`, you cann
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+array_to_string(
+        (array_agg(
+            column_to_agg
+            order by order_by_column
+        ))[1:10],
+        ','
+        )
+```
 
 # Cast functions
 
@@ -342,6 +469,51 @@ This macro casts a boolean value to a string.
 
 </File>
 
+**Default Output**:
+
+```sql
+    cast(boolean_column_name as 
+    varchar
+)
+
+
+
+  
+    cast(false as 
+    varchar
+)
+
+
+
+  
+    cast(true as 
+    varchar
+)
+
+
+
+  
+    cast(0 = 1 as 
+    varchar
+)
+
+
+
+  
+    cast(1 = 1 as 
+    varchar
+)
+
+
+
+  
+    cast(null as 
+    varchar
+)
+
+
+```
+
 ## safe_cast
 __Args__:
 
@@ -361,6 +533,20 @@ For databases that support it, this macro will return `NULL` when the cast fails
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+    cast(column_1 as TEXT)
+
+
+    
+    cast(column_2 as INT)
+
+
+    
+    cast('2016-03-09' as date)
+```
 
 # Date and time functions
 
@@ -384,6 +570,17 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 
 </File>
 
+**Default Output**:
+
+```sql
+    '2016-03-09' + ((interval '10 day') * (1))
+
+
+
+
+    '2016-03-09' + ((interval '10 month') * (-2))
+```
+
 ## datediff
 __Args__:
 
@@ -405,6 +602,21 @@ This macro calculates the difference between two dates.
 
 </File>
 
+**Default Output**:
+
+```sql
+        ((column_2)::date - (column_1)::date)
+    
+
+        (
+        (date_part('year', ('2016-03-09')::date) - date_part('year', (column)::date))
+     * 12 + date_part('month', ('2016-03-09')::date) - date_part('month', (column)::date))
+    
+
+        (date_part('year', (column)::date) - date_part('year', ('2016-03-09')::date))
+
+```
+
 ## date_trunc
 __Args__:
 
@@ -424,6 +636,14 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+date_trunc('day', updated_at)
+date_trunc('month', updated_at)
+date_trunc('year', '2016-03-09')
+```
 
 ## last_day
 __Args__:
@@ -445,6 +665,33 @@ This macro gets the last day for a given date and datepart.
 ```
 
 </File>
+
+**Default Output**:
+
+```sql
+cast(
+        
+
+    
+
+    date_trunc('month', created_at) + ((interval '10 month') * (1))
+
+ + ((interval '10 day') * (-1))
+
+
+        as date)
+cast(
+        
+
+    
+
+    date_trunc('year', '2016-03-09') + ((interval '10 year') * (1))
+
+ + ((interval '10 day') * (-1))
+
+
+        as date)
+```
 
 ## Date and time parts
 
