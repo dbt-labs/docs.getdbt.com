@@ -639,14 +639,13 @@ const sidebarSettings = {
             "guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
-          ]
+          ],
         },
         {
           type: "category",
-          label: "Custom CI/CD Pipelines",
-          items: [
-            "guides/orchestration/custom-cicd-pipelines/1-creating-custom-cicd-pipelines"
-          ]
+          label: "Creating Custom CI/CD Pipelines",
+          link: { type: 'doc', id: 'guides/orchestration/custom-cicd-pipelines/1-creating-custom-cicd-pipelines'},
+          items: []
         },
       ]
     },
