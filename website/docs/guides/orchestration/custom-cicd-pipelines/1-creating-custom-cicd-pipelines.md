@@ -9,9 +9,9 @@ id: 1-creating-custom-cicd-pipelines
 
 One of the core tenants of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using dbt Cloud’s [webhook functionality](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization wants to add a bit to this, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project, and trigger a dbt Cloud job via the API.
 
-A note on parlance in this article since each code hosting platform uses different terms for similar concepts. From here on out, anytime you see `pipeline` in this article is interchangeable with `action` (GitHub) and `workflow` (GitLab). Additionally, the terms `pull request` (PR) and `merge request` (MR) are also used interchangeably.
+A note on parlance in this article since each code hosting platform uses different terms for similar concepts. From here on out, anytime you see `pipeline` in this article is interchangeable with `action` (GitHub) and `workflow` (GitLab). Additionally, the terms `pull request` (PR) and `merge request` (MR) are also used interchangeably.  
 
-<br>
+<br> 
 
 ## What are pipelines?
 
@@ -19,20 +19,20 @@ Pipelines are a series of pre-defined jobs that are triggered by specific events
 
 Jobs are executed on [runners](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#runners), which are virtual servers. The runners come pre-configured with Ubuntu Linux, macOS, or Windows. That means the commands you execute are determined by the operating system of your runner. You’ll see how this comes into play later in the setup, but for now just remember that your code is executed on virtual servers that are, typically, hosted by the code hosting platform.
 
-![Diagram of how pipelines work](img/guides/orchestration/custom-cicd-pipelines/pipeline-diagram.png)
+![Diagram of how pipelines work](/img/guides/orchestration/custom-cicd-pipelines/pipeline-diagram.png)
 
 Please note, runners hosted by your code hosting platform provide a certain amount of free time. After that, billing charges may apply depending on how your account is setup. You also have the ability to host your own runners. That is beyond the scope of this article, but checkout the links below for more information if you’re interested in setting that up:
 
 - Repo-hosted runner billing information:
-    - [GitHub](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)
-    - [GitLab](https://docs.gitlab.com/ee/ci/pipelines/cicd_minutes.html)
+  - [GitHub](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)
+  - [GitLab](https://docs.gitlab.com/ee/ci/pipelines/cicd_minutes.html)
 - Self-hosted runner information:
-    - [GitHub](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
-    - [GitLab](https://docs.gitlab.com/runner/)
+  - [GitHub](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
+  - [GitLab](https://docs.gitlab.com/runner/)
 
 Additionally, if you’re using the free tier of GitLab you can still follow this guide, but it may ask you to provide a credit card to verify your account. You’ll see something like this the first time you try to run a pipeline:
 
-![Warning from GitLab showing payment information is required](img/guides/orchestration/custom-cicd-pipelines/gitlab-cicd-payment-warning.png)
+![Warning from GitLab showing payment information is required](/img/guides/orchestration/custom-cicd-pipelines/gitlab-cicd-payment-warning.png)
 
 <br>
 
@@ -44,7 +44,7 @@ Pipelines can be triggered by various events. The [dbt Cloud webhook](https://do
 
 Here’s a quick look at what this pipeline will accomplish:
 
-![Diagram showing the pipelines to be created and the programs involved](img/guides/orchestration/custom-cicd-pipelines/pipeline-programs-diagram.png)
+![Diagram showing the pipelines to be created and the programs involved](/img/guides/orchestration/custom-cicd-pipelines/pipeline-programs-diagram.png)
 
 <br>
 
@@ -159,11 +159,11 @@ After you finish creating the yaml files, commit and push your code. Doing this 
 
 In your repository, click the *Actions* tab
 
-![Image showing the GitHub action for lint on push](img/guides/orchestration/custom-cicd-pipelines/lint-on-push-github.png)
+![Image showing the GitHub action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-github.png)
 
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
-![Image showing the logs in GitHub for the SQLFluff run](img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-github.png)
+![Image showing the logs in GitHub for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-github.png)
 </details>
     
 <details>
@@ -171,12 +171,13 @@ Sample output from SQLFluff in the `Run SQLFluff linter` job:
     
 In the menu option got to *CI/CD > Pipelines*
 
-![Image showing the GitLab action for lint on push](img/guides/orchestration/custom-cicd-pipelines/lint-on-push-gitlab.png)
+![Image showing the GitLab action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-gitlab.png)
 
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
-![Image showing the logs in GitLab for the SQLFluff run](img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-gitlab.png)
+![Image showing the logs in GitLab for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-gitlab.png)
 </details>
+
 <br>
 
 ## Setting up dbt Cloud run on merge to main
@@ -197,7 +198,7 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 - Click the *+Add* button under *Access,* and grant this token the *Job Admin* permission
 - Click *Save* and you’ll see a grey box appear with your token. Copy that and save it somewhere safe (this is a password, and should be treated as such).
 
-![View of the dbt Cloud page where service tokens are created](img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png)
+![View of the dbt Cloud page where service tokens are created](/img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png)
 
 Here’s a video showing the steps as well:
 
@@ -246,7 +247,7 @@ In GitLab:
 - Make sure the check box next to *Protect variable* is unchecked, and the box next to *Mask variable* is selected (see below)
     - “Protected” means that the variable is only available in pipelines that run on protected branches or protected tags - that won’t work for us because we want to run this pipeline on multiple branches. “Masked” means that it will be available to your pipeline runner, but will be masked in the logs.
     
-    ![View of the GitLab window for entering DBT_API_KEY](img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-gitlab.png)
+    ![View of the GitLab window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-gitlab.png)
     
     Here’s a video showing these steps:
     
@@ -290,7 +291,7 @@ In order to call the dbt Cloud API, there are a few pieces of info the script ne
 - `DBT_PROJECT_ID` - this is the number just after `projects/` in the URL
 - `DBT_PR_JOB_ID` - this is the number just after `jobs/` in the URL
 
-![Image of a dbt Cloud job URL with the pieces for account, project, and job highlighted](img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
+![Image of a dbt Cloud job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
 
 <br>
 
@@ -351,6 +352,7 @@ jobs:
         - name: Run dbt Cloud job
         run: "python python/run_and_monitor_dbt_job.py"
 ```
+
 </details>
     
 <details>
@@ -393,6 +395,7 @@ run-dbt-cloud-job:
     script:
     - python python/run_and_monitor_dbt_job.py
 ```
+
 </details>
 <br>
 
@@ -405,17 +408,17 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 <details>
 <summary> GitHub </summary>
     
-![dbt run on merge job in GitHub](img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
+![dbt run on merge job in GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
 
-![dbt Cloud job showing it was triggered by GitHub](img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
+![dbt Cloud job showing it was triggered by GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
 </details>
 
 <details>
 <summary> GitLab </summary>
     
-![dbt run on merge job in GitLub](img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
+![dbt run on merge job in GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
 
-![dbt Cloud job showing it was triggered by GitLub](img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
+![dbt Cloud job showing it was triggered by GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
 </details>
 
 <br>

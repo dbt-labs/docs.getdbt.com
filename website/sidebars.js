@@ -644,7 +644,6 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Custom CI/CD Pipelines",
-          link: { type: 'doc', id: 'guides/orchestration/custom-cicd-pipelines/1-creating-custom-cicd-pipelines' },
           items: [
             "guides/orchestration/custom-cicd-pipelines/1-creating-custom-cicd-pipelines"
           ]
