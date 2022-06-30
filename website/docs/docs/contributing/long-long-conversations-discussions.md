@@ -1,6 +1,7 @@
-# Community Facing GitHub Discussions Guide
-
-## Overview
+---
+title: "Long Lived Conversations: GitHub Discussions Guidelines"
+id: "long-lived-discussions-guidelines"
+---
 
 [GitHub Discussions](https://github.com/dbt-labs/docs.getdbt.com/discussions) are the dbt community’s platform for long-lived discussions about dbt, analytics engineering, and analytics. They’re a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day. Discussions are different from the dbt Community Slack in a few key ways, most importantly they are more:
 
