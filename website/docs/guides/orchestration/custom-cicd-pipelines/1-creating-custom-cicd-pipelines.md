@@ -11,7 +11,7 @@ One of the core tenants of dbt is that analytic code should be version controlle
 
 A note on parlance in this article since each code hosting platform uses different terms for similar concepts. From here on out, anytime you see `pipeline` in this article is interchangeable with `action` (GitHub) and `workflow` (GitLab). Additionally, the terms `pull request` (PR) and `merge request` (MR) are also used interchangeably.  
 
-<br> 
+ 
 
 ## What are pipelines?
 
@@ -34,7 +34,7 @@ Additionally, if you’re using the free tier of GitLab you can still follow thi
 
 ![Warning from GitLab showing payment information is required](/img/guides/orchestration/custom-cicd-pipelines/gitlab-cicd-payment-warning.png)
 
-<br>
+
 
 ## How to setup pipelines
 
@@ -46,13 +46,13 @@ Here’s a quick look at what this pipeline will accomplish:
 
 ![Diagram showing the pipelines to be created and the programs involved](/img/guides/orchestration/custom-cicd-pipelines/pipeline-programs-diagram.png)
 
-<br>
+
 
 ## Setting up lint on push
 
 This section shows a very basic example of linting a project every time a commit is pushed to the repo. While it is simple, it shows the power of CI and can be expanded on to meet the needs of your organization. 
 
-<br>
+
 
 ### 1. Create a yaml file to define your pipeline
 
@@ -60,10 +60,10 @@ The yaml files defined below are what tell your code hosting platform the steps 
 
 <details>
 <summary> GitHub </summary>
-    
+
 In order for GitHub to know that you want to run an action, you need to have a few specific folders in your project. Add a new folder named `.github`, and within that folder add a new one named `workflows`. Your final folder structure will look like this: 
     
-```yaml
+```sql
 my_awesome_project
 ├── .github
 │   ├── workflows
@@ -148,7 +148,7 @@ lint-project:
 
 </details>
 
-<br>
+
 
 ### 2. Commit and push your changes to make sure everything works
 
@@ -178,13 +178,13 @@ Sample output from SQLFluff in the `Run SQLFluff linter` job:
 ![Image showing the logs in GitLab for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-gitlab.png)
 </details>
 
-<br>
+
 
 ## Setting up dbt Cloud run on merge to main
 
 This job will take a bit more to setup, but is a good example of how to call the dbt Cloud API from a CI/CD pipeline. The concepts persented here can be generalized and used in whatever way best suits your use case.
 
-<br>
+
 
 ### 1. Get your dbt Cloud API key
 
@@ -204,7 +204,7 @@ Here’s a video showing the steps as well:
 
 <WistiaVideo id="iub17te9ir" />
 
-<br>
+
 
 ### 2. Put your dbt Cloud API key into your repo
 
@@ -255,7 +255,7 @@ In GitLab:
 
 </details>
 
-<br>
+
 
 ### 3. Copy down the Python script that calls dbt Cloud
 
@@ -293,7 +293,7 @@ In order to call the dbt Cloud API, there are a few pieces of info the script ne
 
 ![Image of a dbt Cloud job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
 
-<br>
+
 
 ### 4. Update your project to include the new API call
 
@@ -397,7 +397,7 @@ run-dbt-cloud-job:
 ```
 
 </details>
-<br>
+
 
 ### 5. Test your new action
 
@@ -407,21 +407,22 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 
 <details>
 <summary> GitHub </summary>
-    
+
 ![dbt run on merge job in GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
 
-![dbt Cloud job showing it was triggered by GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
+![dbt Cloud job showing it was triggered by GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-github-triggered.png)
+
 </details>
 
 <details>
 <summary> GitLab </summary>
-    
+
 ![dbt run on merge job in GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
 
 ![dbt Cloud job showing it was triggered by GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
 </details>
 
-<br>
+
 
 ## Something to Consider
 
