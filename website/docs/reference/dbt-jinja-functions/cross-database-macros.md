@@ -3,7 +3,7 @@ title: "cross-database macros"
 id: "cross-database-macros"
 ---
 
-# Overview
+## Overview
 
 These macros benefit three different user groups:
 - If you maintain a package, your package is more likely to work on other adapters by using these macros (rather than a specific database's SQL syntax)
@@ -78,9 +78,9 @@ These macros benefit three different user groups:
 - [date_trunc](#date_trunc)
 - [last_day](#last_day)
 
-# Data type functions
+## Data type functions
 
-## type_bigint
+### type_bigint
 __Args__:
 
  * None
@@ -99,7 +99,7 @@ This macro yields the database-specific data type for a `BIGINT`.
 bigint
 ```
 
-## type_float
+### type_float
 __Args__:
 
  * None
@@ -118,7 +118,7 @@ This macro yields the database-specific data type for a `FLOAT`.
 FLOAT
 ```
 
-## type_int
+### type_int
 __Args__:
 
  * None
@@ -137,7 +137,7 @@ This macro yields the database-specific data type for an `INT`.
 INT
 ```
 
-## type_numeric
+### type_numeric
 
 __Args__:
 
@@ -157,7 +157,7 @@ This macro yields the database-specific data type for a `NUMERIC`.
 numeric(28,6)
 ```
 
-## type_string
+### type_string
 __Args__:
 
  * None
@@ -176,7 +176,7 @@ This macro yields the database-specific data type for `TEXT`.
 TEXT
 ```
 
-## type_timestamp
+### type_timestamp
 __Args__:
 
  * None
@@ -195,9 +195,9 @@ This macro yields the database-specific data type for a `TIMESTAMP` (which may o
 TIMESTAMP
 ```
 
-# Set functions
+## Set functions
 
-## except
+### except
 __Args__:
 
  * None
@@ -216,7 +216,7 @@ __Args__:
 except
 ```
 
-## intersect
+### intersect
 __Args__:
 
  * None
@@ -235,9 +235,9 @@ __Args__:
 intersect
 ```
 
-# String functions
+## String functions
 
-## concat
+### concat
 __Args__:
 
  * `fields`: Jinja array of [attribute names or expressions](#sql-expressions).
@@ -262,7 +262,7 @@ first_part_column || '.' || second_part_column
 first_part_column || ',' || second_part_column
 ```
 
-## hash
+### hash
 __Args__:
 
  * `field`: [attribute name or expression](#sql-expressions).
@@ -287,7 +287,7 @@ md5(cast('Pennsylvania' as
 ))
 ```
 
-## length
+### length
 __Args__:
 
  * `expression`: string [expression](#sql-expressions).
@@ -309,7 +309,7 @@ This macro calculates the number of characters in a string.
     )
 ```
 
-## position
+### position
 __Args__:
 
  * `substring_text`: [attribute name or expression](#sql-expressions).
@@ -336,7 +336,7 @@ This macro searches for the first occurrence of `substring_text` within `string_
     )
 ```
 
-## replace
+### replace
 __Args__:
 
  * `field`: [attribute name or expression](#sql-expressions).
@@ -368,7 +368,7 @@ This macro updates a string and replaces all occurrences of one substring with a
     )
 ```
 
-## right
+### right
 __Args__:
 
  * `string_text`: [attribute name or expression](#sql-expressions).
@@ -397,7 +397,7 @@ This macro returns the N rightmost characters from a string.
     )
 ```
 
-## split_part
+### split_part
 __Args__:
 
 * `string_text` (required): Text to be split into parts.
@@ -431,9 +431,9 @@ When referencing a column, use one pair of quotes. When referencing a string, us
         )
 ```
 
-# String literal functions
+## String literal functions
 
-## escape_single_quotes
+### escape_single_quotes
 __Args__:
 
  * `value`: Jinja string literal value
@@ -456,7 +456,7 @@ they''re
 ain''t ain''t a word
 ```
 
-## string_literal
+### string_literal
 __Args__:
 
  * `value`: Jinja string value
@@ -477,9 +477,9 @@ select {{ string_literal("Pennsylvania") }}
 select 'Pennsylvania'
 ```
 
-# Aggregate and window functions
+## Aggregate and window functions
 
-## any_value
+### any_value
 __Args__:
 
  * `expression`: an [expression](#sql-expressions).
@@ -498,7 +498,7 @@ This macro returns some value of the expression from the group. The selected val
 any(column_name)
 ```
 
-## bool_or
+### bool_or
 __Args__:
 
  * `expression`: [attribute name or expression](#sql-expressions).
@@ -523,7 +523,7 @@ bool_or(string_column = 'Pennsylvania')
 bool_or(column1 = column2)
 ```
 
-## listagg
+### listagg
 __Args__:
 
  * `measure` (required): The [attribute name or expression](#sql-expressions) that determines the values to be concatenated. To only include distinct values add keyword `DISTINCT` to beginning of expression (example: 'DISTINCT column_to_agg').
@@ -553,9 +553,9 @@ array_to_string(
         )
 ```
 
-# Cast functions
+## Cast functions
 
-## cast_bool_to_text
+### cast_bool_to_text
 __Args__:
 
  * `field`: boolean [attribute name or expression](#sql-expressions).
@@ -601,7 +601,7 @@ This macro casts a boolean value to a string.
 )
 ```
 
-## safe_cast
+### safe_cast
 __Args__:
 
  * `field`: [attribute name or expression](#sql-expressions).
@@ -625,9 +625,9 @@ For databases that support it, this macro will return `NULL` when the cast fails
     cast('2016-03-09' as date)
 ```
 
-# Date and time functions
+## Date and time functions
 
-## dateadd
+### dateadd
 __Args__:
 
  * `datepart`: [date or time part](#date-and-time-parts).
@@ -650,7 +650,7 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
     '2016-03-09' + ((interval '10 month') * (-2))
 ```
 
-## datediff
+### datediff
 __Args__:
 
  * `first_date`: date/time [expression](#sql-expressions).
@@ -678,7 +678,7 @@ This macro calculates the difference between two dates.
         (date_part('year', (column)::date) - date_part('year', ('2016-03-09')::date))
 ```
 
-## date_trunc
+### date_trunc
 __Args__:
 
  * `datepart`: [date or time part](#date-and-time-parts).
@@ -702,7 +702,7 @@ date_trunc('month', updated_at)
 date_trunc('year', '2016-03-09')
 ```
 
-## last_day
+### last_day
 __Args__:
 
  * `date`: date/time [expression](#sql-expressions).
