@@ -31,6 +31,20 @@ These macros benefit three different user groups:
 - [safe_cast](#safe_cast)
 - [split_part](#split_part)
 - [string_literal](#string_literal)
+- [type_bigint](#type_bigint)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
+
+[**Data type functions**](#data-type-functions)
+- [type_bigint](#type_bigint)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
 
 [**Set functions**](#set-functions)
 - [except](#except)
@@ -63,6 +77,123 @@ These macros benefit three different user groups:
 - [datediff](#datediff)
 - [date_trunc](#date_trunc)
 - [last_day](#last_day)
+
+# Data type functions
+
+## type_bigint
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `BIGINT`.
+
+**Usage**:
+
+```sql
+{{ type_bigint() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+bigint
+```
+
+## type_float
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `FLOAT`.
+
+**Usage**:
+
+```sql
+{{ type_float() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+FLOAT
+```
+
+## type_int
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for an `INT`.
+
+**Usage**:
+
+```sql
+{{ type_int() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+INT
+```
+
+## type_numeric
+
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `NUMERIC`.
+
+**Usage**:
+
+```sql
+{{ type_numeric() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+numeric(28,6)
+```
+
+## type_string
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for `TEXT`.
+
+**Usage**:
+
+```sql
+{{ type_string() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+TEXT
+```
+
+## type_timestamp
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `TIMESTAMP` (which may or may not match the behavior of `TIMESTAMP WITHOUT TIMEZONE` from ANSI SQL-92).
+
+**Usage**:
+
+```sql
+{{ type_timestamp() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+TIMESTAMP
+```
 
 # Set functions
 
