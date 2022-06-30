@@ -35,7 +35,7 @@ The ultimate goal of dimensional modeling is to be able to categorize your data 
 
 A fact is a collection of information that typically refers to an action, event, or result of a business process. As such, people typically liken facts to verbs. In terms of a real business, some facts may look like account creations, payments, or emails sent.
 
-It’s important to note that fact tables act as a historical record of those actions. You should almost never overwrite that data when it needs updating. Instead, you add new data as additional rows onto that table.
+It’s important to note that fact <Term id="table">tables</Term> act as a historical record of those actions. You should almost never overwrite that data when it needs updating. Instead, you add new data as additional rows onto that table.
 
 For many businesses, marketing and finance teams need to understand all the touchpoints leading up to a sale or conversion. A fact table for a scenario like this might look like a `fct_account_touchpoints` table:
 
@@ -87,7 +87,7 @@ Below, we’ll dig more into the design process of dimensional modeling, wide ta
 
 ## The dimensional modeling design process
 
-According to the Kimball Group, the official(™) four-step design process is (1) selecting a business process to analyze, (2) declaring the grain, (3) Identifying the dimensions, and (4) Identifying the facts. That makes dimensional modeling sound really easy, but in reality, it’s packed full of nuance.
+According to the Kimball Group, the official(™) four-step design process is (1) selecting a business process to analyze, (2) declaring the <Term id="grain" />, (3) Identifying the dimensions, and (4) Identifying the facts. That makes dimensional modeling sound really easy, but in reality, it’s packed full of nuance.
 
 Coming back down to planet Earth, your design process is how you make decisions about:
 
@@ -112,8 +112,48 @@ A general rule of thumb: go with your gut! If something feels like it should be 
 
 Also, this is why we have data teams. Dimensional modeling and data modeling is usually a collaborative effort; working with folks on your team to understand the data and stakeholder wants will ultimately lead to some rad data marts.
 
+### Should I make a wide table or keep them separate?
+
+Yet again, it depends. Don’t roll your eyes. Strap in for a quick history lesson because the answer to this harkens back to the very inception of dimensional modeling.
+
+Back in the day before cloud technology adoption was accessible and prolific, storing data was expensive and joining data was relatively cheap. Dimensional modeling came about as a solution to these issues. Separating collections of data into smaller, individual tables (star schema-esque) made the data cheaper to store and easier to understand. So, individual tables were the thing to do back then.
+
+Things are different today. Cloud storage costs have gotten really inexpensive. Instead, computing is the primary cost driver. Now, keeping all of your tables separate can be expensive because every time you join those tables, you’re spending usage credits.
+
+Should you just add everything to one, wide table? No. One table will never rule them all. Knowing whether something should be its own fact table or get added on to an existing table generally comes down to understanding who will be your primary end consumers.
+
+For end business users who are writing their own SQL, feel comfortable performing joins, or use a tool that joins tables for them, keeping your data as separate fact and dimension tables is pretty on-par. In this setup, these users have the freedom and flexibility to join and explore as they please.
+
+If your end data consumers are less comfortable with SQL and your BI tool doesn’t handle joins well, you should consider joining several fact and dimension tables into wide tables. Another consideration: these wide, heavily joined tables can tend to wind up pretty specialized and specific to business departments. Would these types of wide tables be helpful for you, your data team, and your business users? Well, that’s for you to unpack.
+
+## Advantages and disadvantages of dimensional modeling
+
+The benefits and drawbacks of dimensional modeling are pretty straightforward. Generally, the main advantages can be boiled down to:
+
+* **More accessibility**: Since the output of good dimensional modeling is a [data mart](https://docs.getdbt.com/guides/best-practices/how-we-structure/4-marts), the tables created are easier to understand and more accessible to end consumers.
+* **More flexibility**: Easy to slice, dice, filter, and view your data in whatever way suits your purpose.
+* **Performance**: Fact and dimension models are typically materialized as tables or [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models). Since these often form the core understanding of a business, they are queried often. Materializing them as tables allows them to be more performant in downstream business intelligence (BI) platforms.
+
+The disadvantages include:
+* **Navigating ambiguity**: You need to rely on your understanding of your data and stakeholder wants to model your data in a comprehensible and useful way. What you know about your data and what people really need out of the data are two of the most fundamental and difficult things to understand and balance as a data person.
+* **Utility limited by your BI tool**: Some BI tools don’t handle joins well, which can make queries from separated fact and dimensional tables painful. Other tools have long query times, which can make querying from ultra-wide tables not fun.
+
+## Conclusion
+
+Dimensional data modeling is a data modeling technique that allows you to organize your data into distinct entities that can be mixed and matched in many ways. That can give your stakeholders a lot of flexibility. [While the exact methodologies have changed](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)—and will continue to, the philosophical principle of having tables that are sources of truth and tables that describe them will continue to be important in the work of analytics engineering practitioners.
+
+
+## Additional Reading
+
+Dimensional modeling is a tough, complex, and opinionated topic in the data world. Below you’ll find some additional resources that may help you identify the data modeling approach that works best for you, your data team, and your end business users:
 
 
 
-
-
+* [Modular data modeling techniques](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
+* [Stakeholder-friendly model naming conventions](https://www.google.com/url?q=https://docs.getdbt.com/blog/stakeholder-friendly-model-names&sa=D&source=docs&ust=1655826977220868&usg=AOvVaw3ONDDNXUcLhvMi1yoKzIap)
+* [How we structure our dbt projects guide](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+* [Grain glossary](https://docs.getdbt.com/terms/grain)
+* [Is Kimball modeling still relevant in modern data warehouses?](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225/7)
+* [Kimball in the context of the cloud data warehouse: what’s worth keeping, and what’s not](https://www.youtube.com/watch?v=3OcS2TMXELU)
+* [Data warehouse glossary](https://docs.getdbt.com/terms/data-warehouse/)
+* [Table glossary](https://docs.getdbt.com/terms/table/)
