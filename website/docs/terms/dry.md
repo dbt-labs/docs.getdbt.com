@@ -43,7 +43,7 @@ dbt v1.0 currently supports the use of experimental metrics, time series aggrega
 
 ## Tools to help you write DRY code
 
-Let’s just say it: Writing DRY code is easier said than done. For classical software engineers, there’s a ton of resources out there to help them write DRY code. In the world of data transformation, there are also some tools and methodologies that can help folks in [the field of analytics engineering](https://www.getdbt.com/what-is-analytics-engineering/) write more DRY and modular code.
+Let’s just say it: Writing DRY code is easier said than done. For classical software engineers, there’s a ton of resources out there to help them write DRY code. In the world of data transformation, there are also some tools and methodologies that can help folks in [the field of analytics engineering](https://www.getdbt.com/what-is-analytics-engineering/) write more DRY and [modular code](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/).
 
 
 ###  Common Table Expressions (CTEs)
