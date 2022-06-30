@@ -3,6 +3,8 @@ title: "cross-database macros"
 id: "cross-database-macros"
 ---
 
+# Cross-database macros
+
 ## Overview
 
 These macros benefit three different user groups:
