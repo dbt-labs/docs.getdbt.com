@@ -4,9 +4,6 @@ datatype: "{<dictionary>}"
 default_value: {}
 ---
 
-
-
-
 ## Definition
 The `grants` field
 
