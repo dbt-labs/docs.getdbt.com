@@ -99,7 +99,7 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
 Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
 
 ## Connecting a service user
-Azure DevOps forces all authentication to be linked to a user's permissions. For dbt Cloud scheduled runs, it's not ideal to link auth to an individual Azure DevOps user because if that user leaves your organization, your dbt Cloud production runs will start to fail because of lost access to read from the dbt repo. 
+Because Azure DevOps forces all authentication to be linked to a user's permissions, we recommend you create a "service user" to manage access to your dbt Cloud account. For dbt Cloud scheduled runs, you should avoid linking authentication to an individual Azure DevOps user. Primarily this prevents your dbt Cloud production runs from failing if the person leaves your organization causing a loss of read access for the dbt repository. 
 
 A "service user" account is a pseudo user account in Azure DevOps with read access to all dbt repos for the whole dbt Cloud account. This account enables you to scope permissions appropriately and preserve access. 
 
