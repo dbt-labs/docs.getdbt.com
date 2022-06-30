@@ -397,6 +397,40 @@ This macro returns the N rightmost characters from a string.
     )
 ```
 
+## split_part
+__Args__:
+
+* `string_text` (required): Text to be split into parts.
+* `delimiter_text` (required): Text representing the delimiter to split by.
+* `part_number` (required): Requested part of the split (1-based). If the value is negative, the parts are counted backward from the end of the string.
+
+This macro splits a string of text using the supplied delimiter and returns the supplied part number (1-indexed).
+
+**Usage**:
+
+When referencing a column, use one pair of quotes. When referencing a string, use single quotes enclosed in double quotes.
+
+```sql
+{{ split_part(string_text='column_to_split', delimiter_text='delimiter_column', part_number=1) }}
+{{ split_part(string_text="'1|2|3'", delimiter_text="'|'", part_number=1) }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+    split_part(
+        column_to_split,
+        delimiter_column,
+        1
+        )
+
+    split_part(
+        '1|2|3',
+        '|',
+        1
+        )
+```
+
 # String literal functions
 
 ## escape_single_quotes
