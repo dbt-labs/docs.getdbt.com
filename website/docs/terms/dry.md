@@ -48,14 +48,14 @@ Let’s just say it: Writing DRY code is easier said than done. For classical so
 
 ###  Common Table Expressions (CTEs)
 
-CTEs are a great way to help you write more DRY code in your data analysis and dbt models. In a formal sense, a CTE is a temporary results set that can be used in a query. In a much more human and practical sense, we like to think of CTEs as separate, smaller queries within the larger query you’re building up. Essentially, you can use CTEs to break up complex queries into simpler blocks of code that are easier to debug and can connect and build off of each other.
+<Term id="cte">CTEs</Term> are a great way to help you write more DRY code in your data analysis and dbt models. In a formal sense, a CTE is a temporary results set that can be used in a query. In a much more human and practical sense, we like to think of CTEs as separate, smaller queries within the larger query you’re building up. Essentially, you can use CTEs to break up complex queries into simpler blocks of code that are easier to debug and can connect and build off of each other.
 
 If you’re referencing a specific query, perhaps for aggregations that join back to an unaggregated view, CTEs can simply be referenced throughout a query with its CTE_EXPRESSION_NAME.
 
 
 ### View materializations
 
-View [materializations](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations) are also extremely useful for abstracting code that might otherwise be repeated often. A view is a defined passthrough SQL query that can be run against a database. Unlike a table, it doesn’t store data, but it defines the logic that you need to use to fetch the underlying data.
+View [materializations](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations) are also extremely useful for abstracting code that might otherwise be repeated often. A <Term id="view" /> is a defined passthrough SQL query that can be run against a database. Unlike a table, it doesn’t store data, but it defines the logic that you need to use to fetch the underlying data.
 
 If you’re referencing the same query, CTE, or block of code, throughout multiple data models, that’s probably a good sign that code should be its own view.
 
