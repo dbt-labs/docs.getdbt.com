@@ -194,9 +194,9 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 
 ![View of the dbt Cloud page where service tokens are created](img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png)
 
-Here’s a Loom showing the steps as well:
+Here’s a video showing the steps as well:
 
-[https://www.loom.com/share/47a5e8f7a2e94000854629d498f7cd9c](https://www.loom.com/share/47a5e8f7a2e94000854629d498f7cd9c)
+<WistiaVideo id="iub17te9ir" />
 
 <br>
 
@@ -221,9 +221,9 @@ In GitHub:
 
 ** A quick note on security: while using a repository secret is the most straightforward way to setup this secret, there are other options available to you in GitHub. They’re beyond the scope of this guide, but could be helpful if you need to create a more secure environment for running actions. Checkout GitHub’s documentation on secrets [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets).*
 
-Here’s a Loom showing these steps:
+Here’s a video showing these steps:
 
-[https://www.loom.com/share/e5681c061ac54f559246711f62d74c0f](https://www.loom.com/share/e5681c061ac54f559246711f62d74c0f)
+<WistiaVideo id="u7mo30puql" />
 
 </details>
 
@@ -243,9 +243,9 @@ In GitLab:
     
     ![View of the GitLab window for entering DBT_API_KEY](img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-gitlab.png)
     
-    Here’s a Loom showing these steps:
+    Here’s a video showing these steps:
     
-    [https://www.loom.com/share/f103134d224f4cf8825b861c931210f2](https://www.loom.com/share/f103134d224f4cf8825b861c931210f2)
+    <WistiaVideo id="rgqs14f816" />
 
 </details>
 
