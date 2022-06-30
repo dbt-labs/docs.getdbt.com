@@ -65,7 +65,7 @@ For example, you might define a SQL view to count new users created in a day:
   select
     created_date,
     count(distinct(user_id)) as new_users
-  from {{ ref(‘users’) }}
+  from {{ ref('users') }}
   group by created_date
 ```
 
