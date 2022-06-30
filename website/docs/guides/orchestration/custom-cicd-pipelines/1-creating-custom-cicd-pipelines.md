@@ -1,3 +1,8 @@
+---
+title: Creating Custom CI/CD Pipelines
+id: 1-creating-custom-cicd-pipelines
+---
+
 # Creating Custom CI/CD Pipelines
 
 ## Background
