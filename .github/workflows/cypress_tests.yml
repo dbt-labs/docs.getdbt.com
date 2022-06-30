@@ -32,6 +32,7 @@ jobs:
         with:
           command: npx cypress run
           browser: chrome
+          working-directory: website
           spec: cypress/e2e/*.cy.js
           wait-on: https://deploy-preview-${{ env.PR_NUMBER }}--docs-getdbt-com.netlify.app/
           wait-on-timeout: 600
