@@ -253,7 +253,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/writing-code-in-dbt/jinja-context/var	/reference/dbt-jinja-functions/var	302
 /docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/using-jinja	/guides/getting-started/learning-more/using-jinja	302
-/faqs/getting-help/	/docs/guides/getting-help/	302
+/faqs/getting-help/	/guides/legacy/getting-help	302
 /reference/accounts	/dbt-cloud/api	302
 /reference/api	/dbt-cloud/api	302
 /reference/connections	/dbt-cloud/api	302
@@ -307,4 +307,5 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/guides/migration-guide/upgrading-to-0-20-0	/guides/migration/versions/upgrading-to-v0.20	302
 /docs/guides/migration-guide/upgrading-to-0-21-0	/guides/migration/versions/upgrading-to-v0.21	302
 /docs/guides/migration-guide/upgrading-to-1-0-0	    /guides/migration/versions/upgrading-to-v1.0	302
+/docs/guides/getting-help	/guides/legacy/getting-help 302
 /docs/guides/migration-guide/*  /guides/migration/versions/:splat 301!
