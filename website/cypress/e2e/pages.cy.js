@@ -36,7 +36,7 @@ describe('docs.getdbt.com', () => {
       cy.url().should('eq', 'https://www.getdbt.com/dbt-learn/')
       cy.get('body').should('not.contain', 'Page Not Found')
       cy.go('back')
-      cy.url().should('eq', 'https://docs.getdbt.com/')
+      cy.url().should('eq', `${Cypress.config('baseUrl')}/`)
       cy.get(':nth-child(2) > :nth-child(2) > :nth-child(1) > .card > .card__footer > .button').click()
       cy.url().should('eq', `${Cypress.config('baseUrl')}/docs/introduction`)
       cy.get('body').should('not.contain', 'Page Not Found')
