@@ -8,12 +8,12 @@ id: "hooks-operations"
 * [on-run-start & on-run-end](on-run-start-on-run-end)
 * [`run-operation` command](run-operation)
 
-## Assumed knowledge
+### Assumed knowledge
 * [Project configurations](reference/dbt_project.yml.md)
 * [Model configurations](model-configs)
 * [Macros](jinja-macros#macros)
 
-## Getting started
+## About hooks and operations
 
 Effective database administration sometimes requires additional SQL statements to be run, for example:
 - Granting privileges on an <Term id="table" /> / view
@@ -27,7 +27,8 @@ Effective database administration sometimes requires additional SQL statements t
 
 dbt provides two different interfaces for you to version control and execute these statements as part of your dbt project — hooks and operations.
 
-### Hooks
+## Hooks
+
 Hooks are snippets of SQL that are executed at different times:
   * `pre-hook`: executed _before_ a model, seed or snapshot is built.
   * `post-hook`: executed _after_ a model, seed or snapshot is built.
@@ -69,13 +70,11 @@ select ...
 
 </File>
 
-:::tip Calling a macro in a hook
+### Calling a macro in a hook
 
 You can also use a [macro](jinja-macros#macros) to bundle up hook logic. Check out some of the examples in the reference sections for [on-run-start and on-run-end hooks](on-run-start-on-run-end) and [pre- and post-hooks](pre-hook-post-hook),
 
-:::
-
-### Operations
+## Operations
 Operations are [macros](jinja-macros#macros) that you can run using the [`run-operation` command](run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a model.
 
 :::info Explicitly execute the SQL in an operation
