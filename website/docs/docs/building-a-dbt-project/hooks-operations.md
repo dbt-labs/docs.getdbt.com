@@ -39,7 +39,7 @@ Hooks are defined in your `dbt_project.yml` file. Pre- and post-hooks can also b
 
 <VersionBlock firstVersion="1.2">
 
-In order to streamline hooks and automatically apply grants when your dbt model runs, we recommend using [`grants` resource-config](/reference/resource-configs/grants) to implement hooks in your dbt project.  
+In order to streamline hooks and automatically apply grants when your dbt model runs, we recommend using [`grants` resource-config](/reference/resource-configs/grants).  
 ### Advanced example for hooks
 
 </VersionBlock>
