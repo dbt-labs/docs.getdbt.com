@@ -8,7 +8,7 @@ default_value: {}
 
 You can now define grants as resource configs on each model, seed, or snapshot instead of using hooks to implement these permissions. You can define default grants in your `dbt_project.yml` and provide model-specific grants by defining them within each model's SQL or YAML file.
 
-The grant resource configs enable you to automatically apply grants when your dbt model runs. If you want to create even more granular permissions, you can still use grants with hooks, but remember that these hooks can be tricky to implement and require a lot of testing to get them working correctly. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
+The grant resource configs enable you to automatically apply grants when your dbt model runs. If you want to create even more granular permissions, you can still use grants with hooks, but these hooks can be complicated to implement and require testing thoroughly to make sure they're working as expected. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
 
 You can set grants in `dbt_project.yml` and as a `config` yaml property that applies to the entire dbt project.
 

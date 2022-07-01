@@ -13,7 +13,7 @@ id: "hooks-operations"
 * [Model configurations](model-configs)
 * [Macros](jinja-macros#macros)
 
-## About hooks and operations
+## Getting started with hooks and operations
 
 Effective database administration sometimes requires additional SQL statements to be run, for example:
 - Granting privileges on an <Term id="table" /> / view
@@ -37,6 +37,12 @@ Hooks are snippets of SQL that are executed at different times:
 
 Hooks are defined in your `dbt_project.yml` file. Pre- and post-hooks can also be defined in a `config` block.
 
+<VersionBlock firstVersion="1.2">
+
+In order to streamline hooks and automatically apply grants when your dbt model runs, we recommend using [`grants` resource-config](/reference/resource-configs/grants) to implement hooks in your dbt project.  
+### Advanced example for hooks
+
+</VersionBlock>
 Here's a minimal example of using hooks to grant privileges. You can find more information in the reference sections for [`on-run-start` and `on-run-end` hooks](on-run-start-on-run-end) and [`pre-hook`s and `post-hook`s](pre-hook-post-hook).
 
 <File name='dbt_project.yml'>
@@ -114,6 +120,7 @@ Full usage docs can for the `run-operation` command can be found [here](run-oper
 
 
 ## Additional examples
+
 These examples from the community highlight some of the use-cases for hooks and operations!
 
 * [In-depth discussion of granting privileges using hooks and operations](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
