@@ -34,10 +34,10 @@ jobs:
           browser: chrome
           working-directory: website
           spec: cypress/e2e/*.cy.js
-          wait-on: https://deploy-preview-${{ env.PR_NUMBER }}--docs-getdbt-com.netlify.app/
+          wait-on: https://deploy-preview-${{ env.PR_NUMBER }}--docs-getdbt-com.netlify.app
           wait-on-timeout: 600
         env:
-          CYPRESS_BASE_URL: https://deploy-preview-${{ env.PR_NUMBER }}--docs-getdbt-com.netlify.app/
+          CYPRESS_BASE_URL: https://deploy-preview-${{ env.PR_NUMBER }}--docs-getdbt-com.netlify.app
 
       - name: Video artifact upload
         uses: actions/upload-artifact@v2
