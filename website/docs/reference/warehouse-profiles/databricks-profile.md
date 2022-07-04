@@ -39,6 +39,7 @@ your_profile_name:
       host: [yourorg.databrickshost.com]
       http_path: [/sql/your/http/path]
       token: [dapiXXXXXXXXXXXXXXXXXXXXXXX] # Personal Access Token (PAT)
+      threads: [1 or more]  # optional, default 1
 ```
 
 </File>

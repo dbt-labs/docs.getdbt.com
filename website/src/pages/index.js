@@ -149,7 +149,7 @@ function Home() {
                 <div className="card__footer">
                   <Link
                     className="button button--primary"
-                    to={useBaseUrl('/faqs/all')}>
+                    to={useBaseUrl('/docs/faqs')}>
                     Get Answers
                   </Link>
                 </div>
@@ -261,7 +261,7 @@ function Home() {
                 <div className="card__footer">
                   <Link
                     className="button button--primary"
-                    to={useBaseUrl('/faqs/example-projects')}>
+                    to={useBaseUrl('/faqs/project/example-projects')}>
                     View Projects
                   </Link>
                 </div>
@@ -273,7 +273,7 @@ function Home() {
           <div className="row" style={{ "maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto" }}>
             <div className="col">
               <h1>Having trouble?</h1>
-              <p>If you&#39;re having trouble, check out our guide on <a href="/docs/guides/getting-help" >Getting Help</a> for information on getting support and asking questions in the community.</p>
+              <p>If you&#39;re having trouble, check out our guide on <a href="/guides/legacy/getting-help" >Getting Help</a> for information on getting support and asking questions in the community.</p>
             </div>
           </div>
         </div>
