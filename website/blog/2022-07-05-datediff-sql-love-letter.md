@@ -89,3 +89,5 @@ from {{ ref(‘orders’) }}
 This would return all fields from the `orders` table and the difference in days between order dates and June 9, 2022.
 
 Under the hood, this macro is taking your inputs and creating the appropriate SQL syntax for the DATEDIFF function *specific to your data warehouse.*
+
+*This post is a part of the SQL love letters—a series on the SQL functions the dbt Labs data team members use and love. You can find [the entire collection here](https://getdbt.com/sql-foundations/top-sql-functions).*
