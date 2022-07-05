@@ -6,6 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: 'https://docs.getdbt.com',
-    chromeWebSecurity: false
+    chromeWebSecurity: false,
+    video: false
   },
 });

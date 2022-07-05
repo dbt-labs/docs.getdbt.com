@@ -39,9 +39,9 @@ jobs:
         env:
           CYPRESS_BASE_URL: https://deploy-preview-${{ env.PR_NUMBER }}--docs-getdbt-com.netlify.app
 
-      - name: Video artifact upload
+      - name: Screenshot artifact upload
         uses: actions/upload-artifact@v2
         if: failure()
         with:
-          name: cypress-videos
-          path: cypress/videos
+          name: cypress-screenshots
+          path: cypress/screenshots
