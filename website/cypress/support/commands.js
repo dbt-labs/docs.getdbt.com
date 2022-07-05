@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('byTestId', (testId) => {`[data-testid=${testId}]`});
+Cypress.Commands.add('checkLinksNotBroken', (desiredPage, originalPage) => {
+  cy.url().should('eq', desiredPage)
+  cy.get('body').should('not.contain', 'Page Not Found')
+  cy.go('back')
+  cy.url().should('eq', originalPage)
+})
