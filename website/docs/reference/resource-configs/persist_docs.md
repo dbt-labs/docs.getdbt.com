@@ -120,7 +120,7 @@ resources as needed.
 
 ## Support
 
-The `persist_docs` config is supported on the most widely used dbt adapters: BigQuery, Redshift, Snowflake, Postgres, and Apache Spark/Databricks. Some databases impose limitations on the types of descriptions that can be added to database objects, so their adapters may not support `persist_docs`, or may offer only partial support. For example, column-level comments are not supported for models materialized as <Term id="view">views</Term> on Spark/Databricks ([issue](https://github.com/dbt-labs/dbt-spark/issues/372)) <VersionBlock lastVersion="0.21">, or Snowflake on versions older than v1.0</VersionBlock>.
+The `persist_docs` config is supported on the most widely used dbt adapters: BigQuery, Redshift, Snowflake, Postgres, and Apache Spark/Databricks. Some databases impose limitations on the types of descriptions that can be added to database objects, so their adapters may not support `persist_docs`, or may offer only partial support. For example, column-level comments are not supported for models materialized as <Term id="view">views</Term> on Spark/Databricks ([issue](https://github.com/dbt-labs/dbt-spark/issues/372))<VersionBlock lastVersion="0.21">, or Snowflake on versions older than v1.0</VersionBlock>.
 
 ## Usage
 
