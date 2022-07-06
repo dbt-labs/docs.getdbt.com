@@ -18,7 +18,7 @@ There are many reasons you, as an analytics engineer, may want to capture the co
 
 - You’re in an industry with a very high standard for data governance
 - You need to track big OKRs over time to report back to your stakeholders
-- You want to build a window to view into history with both forward and backward compatibility
+- You want to build a window to view history with both forward and backward compatibility
 
 These are often high-stakes situations! So accuracy in tracking changes in metrics is key.
 
