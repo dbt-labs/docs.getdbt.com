@@ -193,19 +193,9 @@ variables:
     DBT_JOB_BRANCH: $CI_COMMIT_BRANCH
 
 stages:
-    - pre-build
     - build
 
-# this is the job from the earlier step
-lint-project:
-    stage: pre-build
-    rules:
-    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != 'main'
-    script:
-    - pip install sqlfluff==0.13.1
-    - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
-
-# the second job calls the dbt Cloud API to run a job
+# this job calls the dbt Cloud API to run a job
 run-dbt-cloud-job:
     stage: build
     rules:
