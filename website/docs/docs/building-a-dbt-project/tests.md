@@ -236,7 +236,6 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
-
 ## Storing test failures
 
 <Changelog>
