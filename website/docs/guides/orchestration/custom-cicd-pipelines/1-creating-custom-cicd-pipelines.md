@@ -7,9 +7,9 @@ id: 1-creating-custom-cicd-pipelines
 
 ## Background
 
-One of the core tenants of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using dbt Cloud’s [webhook functionality](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization wants to add a bit to this, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project, and trigger a dbt Cloud job via the API.
+One of the core tenants of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using dbt Cloud’s [webhook functionality](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization needs additional functionality, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project and trigger a dbt Cloud job via the API.
 
-A note on parlance in this article since each code hosting platform uses different terms for similar concepts. From here on out, anytime you see `pipeline` in this article is interchangeable with `action` (GitHub) and `workflow` (GitLab). Additionally, the terms `pull request` (PR) and `merge request` (MR) are also used interchangeably.  
+A note on parlance in this article since each code hosting platform uses different terms for similar concepts. From here on out, anytime you see `pipeline` in this article it is interchangeable with `action` (GitHub) and `workflow` (GitLab). Additionally, the terms `pull request` (PR) and `merge request` (MR) are also used interchangeably to mean the process of merging one branch into another branch.
 
  
 
@@ -204,8 +204,6 @@ Here’s a video showing the steps as well:
 
 <WistiaVideo id="iub17te9ir" />
 
-
-
 ### 2. Put your dbt Cloud API key into your repo
 
 This next part will happen in you code hosting platform. We need to save your API key from above into a repository secret so the job we create can access it. It is **not** recommended to ever save passwords or API keys in your code, so this step ensures that your key stays secure, but is still usable for your pipelines. 
@@ -255,9 +253,7 @@ In GitLab:
 
 </details>
 
-
-
-### 3. Copy down the Python script that calls dbt Cloud
+### 3. Create script to trigger dbt Cloud job via an API call
 
 In your dbt Cloud project, create a new folder at the root level named `python`. In that folder, create a file named `run_and_monitor_dbt_job.py`. You’ll copy/paste the contents from this [gist](https://gist.github.com/b-per/f4942acb8584638e3be363cb87769b48) into that file.
 
@@ -314,7 +310,7 @@ my_awesome_project
 
 The yaml file will look pretty similar to our earlier job, but there is a new section called `env` that we’ll use to pass in the required variables. Update the variables below to match your setup based on the comments in the file.
 
-Since these are so important, it’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
+It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
 
 ```yaml
     
