@@ -60,7 +60,6 @@ const sidebarSettings = {
         "docs/contributing/testing-a-new-adapter",
         "docs/contributing/documenting-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
-        "docs/contributing/long-lived-discussions-guidelines",
       ],
     },
     {
@@ -620,6 +619,7 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ]
         },
+        "guides/best-practices/dbt-style-guide",
       ],
     },
     {
