@@ -47,114 +47,63 @@ const sidebarSettings = {
       label: "Set up dbt",
       collapsed: true,
       items: [
-        "docs/about-setup",
-        {
-          type: "category",
-          label: "dbt Cloud",
-          collapsed: true,
-          items: [
-            "docs/cloud/about-cloud-setup",
-            {
-              type: "category",
-              label: "Connect data platform",
-              items: [
-                "docs/cloud/connect-data-platform/about-connections",
-                "docs/cloud/connect-data-platform/connect-starburst-trino",
-                "docs/cloud/connect-data-platform/connect-snowflake",
-                "docs/cloud/connect-data-platform/connect-bigquery",
-                "docs/cloud/connect-data-platform/connect-databricks",
-                "docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb",
-                "docs/cloud/connect-data-platform/connect-apache-spark",
-              ],
-            },
-            {
-              type: "category",
-              label: "Manage access",
-              items: [
-                "docs/cloud/manage-access/about-user-access",
-                "docs/cloud/manage-access/seats-and-users",
-                {
-                  type: "category",
-                  label: "Permissions",
-                  items: [
-                    "docs/cloud/manage-access/self-service-permissions",
-                    "docs/cloud/manage-access/enterprise-permissions",
-                  ],
-                },
-
-                {
-                  type: "category",
-                  label: "Single sign-on",
-                  items: [
-                    "docs/cloud/manage-access/sso-overview",
-                    "docs/cloud/manage-access/set-up-sso-saml-2.0",
-                    "docs/cloud/manage-access/set-up-sso-okta",
-                    "docs/cloud/manage-access/set-up-sso-google-workspace",
-                    "docs/cloud/manage-access/set-up-sso-azure-active-directory",
-                  ],
-                }, // SSO
-                {
-                  type: "category",
-                  label: "OAuth with data platforms",
-                  items: [
-                    "docs/cloud/manage-access/set-up-snowflake-oauth",
-                    "docs/cloud/manage-access/set-up-bigquery-oauth",
-                  ],
-                }, // oauth
-                "docs/cloud/manage-access/audit-log",
-              ],
-            }, // Manage access
-
-            {
-              type: "category",
-              label: "Configure Git",
-              items: [
-                "docs/cloud/git/connect-github",
-                "docs/cloud/git/connect-gitlab",
-                {
-                  type: "category",
-                  label: "Azure DevOps",
-                  items: [
-                    "docs/cloud/git/connect-azure-devops",
-                    "docs/cloud/git/setup-azure",
-                    "docs/cloud/git/authenticate-azure",
-                  ],
-                },
-                "docs/cloud/git/import-a-project-by-git-url",
-              ],
-            }, // Supported Git providers
-
-            {
-              type: "category",
-              label: "Multi-tenant PrivateLink",
-              items: [
-                "docs/cloud/privatelink/about-privatelink",
-                "docs/cloud/privatelink/snowflake-privatelink",
-                "docs/cloud/privatelink/redshift-privatelink",
-                "docs/cloud/privatelink/databricks-privatelink",
-              ],
-            }, // PrivateLink
-            "docs/cloud/develop-in-the-cloud",
-            "docs/cloud/dbt-cloud-tips",
-          ],
-        },
-        {
-          type: "category",
-          label: "dbt Core",
-          collapsed: true,
-          items: [
-            "docs/core/installation",
-            "docs/core/about-the-cli",
-            "docs/core/homebrew-install",
-            "docs/core/pip-install",
-            "docs/core/docker-install",
-            "docs/core/source-install",
-            "docs/core/connection-profiles",
-          ],
-        },
-        "docs/running-a-dbt-project/run-your-dbt-projects",
+        "docs/running-a-dbt-project/using-the-dbt-ide",
+        "docs/running-a-dbt-project/using-the-cli",
+        "docs/running-a-dbt-project/dbt-api",
+        "docs/running-a-dbt-project/running-dbt-in-production",
       ],
     },
+    {
+      type: "category",
+      label: "Contributing",
+      items: [
+        "docs/contributing/oss-expectations",
+        "docs/contributing/contributor-license-agreements",
+        "docs/contributing/building-a-new-adapter",
+        "docs/contributing/testing-a-new-adapter",
+        "docs/contributing/documenting-a-new-adapter",
+        "docs/contributing/slack-rules-of-the-road",
+      ],
+    },
+    {
+      type: "category",
+      label: "About",
+      items: ["docs/about/license", "docs/about/viewpoint"],
+    },
+    {
+      type: "category",
+      label: "Frequently asked questions",
+      link: {
+        type: "generated-index",
+        title: "Frequently asked questions",
+        description:
+          "Our Frequently Asked Questions (FAQs) section is a space where you can find an answer to some questions we get asked a lot (but that we’re happy to answer!). If you have a question or are still stuck on something, just reach out to us by emailing support@getdbt.com or clicking on the chat widget, and we’ll do our best to help out.",
+        slug: "/docs/faqs",
+      },
+      items: [
+        {
+          type: "autogenerated",
+          dirName: "faqs",
+        },
+      ],
+    },
+  ],
+  "dbt CLI": [
+    "dbt-cli/cli-overview",
+    {
+      type: "category",
+      label: "Installing dbt from the command line",
+      items: [
+        "dbt-cli/install/overview",
+        "dbt-cli/install/homebrew",
+        "dbt-cli/install/pip",
+        "dbt-cli/install/docker",
+        "dbt-cli/install/from-source",
+      ],
+    },
+    "dbt-cli/configure-your-profile",
+  ],
+  "dbt Cloud": [
     {
       type: "category",
       label: "Build dbt projects",
@@ -282,7 +231,10 @@ const sidebarSettings = {
           type: "category",
           label: "Model governance",
           collapsed: true,
-          link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
+          link: {
+            type: "doc",
+            id: "docs/collaborate/govern/about-model-governance",
+          },
           items: [
             "docs/collaborate/govern/model-access",
             "docs/collaborate/govern/model-contracts",
@@ -789,6 +741,7 @@ const sidebarSettings = {
             "guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
+            "guides/best-practices/dbt-style-guide",
           ],
         },
         {
@@ -802,7 +755,7 @@ const sidebarSettings = {
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
             "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
-            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",  
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
         {
@@ -873,7 +826,7 @@ const sidebarSettings = {
               ],
             },
             "guides/migration/tools/migrating-from-spark-to-databricks",
-            "guides/migration/tools/refactoring-legacy-sql"
+            "guides/migration/tools/refactoring-legacy-sql",
           ],
         },
       ],
@@ -940,7 +893,6 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
             "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
-
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
@@ -949,7 +901,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Advanced",
-      items: ["guides/advanced/creating-new-materializations",
+      items: [
+        "guides/advanced/creating-new-materializations",
         "guides/advanced/using-jinja",
       ],
     },
