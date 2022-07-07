@@ -90,7 +90,6 @@ metrics:
 
 </File>
 
-```markdown
 <VersionBlock firstVersion="1.2">
 
 ### Available properties
@@ -110,9 +109,7 @@ metrics:
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
 </VersionBlock>
-```
 
-```markdown
 <VersionBlock firstVersion="1.2">
 
 ### Available types
@@ -128,9 +125,7 @@ metrics:
 | expression     | This metric type is defined as any **non-aggregating** calculation of 1 or more metrics |
 
 </VersionBlock>
-```
 
-```markdown
 <VersionBlock firstVersion="1.2">
 
 ### Expression Metrics
@@ -142,10 +137,12 @@ In v1.2, support was added for `expression` metrics, which are defined as non-ag
 As long as the two+ base metrics (the metrics that comprise the `expression` metric) share the specified `time_grains` and `dimensions`, those attributes can be used in any downstream metrics macro.
 
 An example definition of an `expression` metric is:
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2">
 
 ```yaml
 # models/marts/product/schema.yml
-
 version: 2
 
 models:
@@ -167,11 +164,9 @@ metrics:
       - order_country
 
 ```
-
 </VersionBlock>
 
 
-```markdown
 <VersionBlock lastVersion="1.1">
 
 ### Available properties
@@ -191,7 +186,6 @@ metrics:
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
 </VersionBlock>
-```
 
 ### Filters
 Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric. 
