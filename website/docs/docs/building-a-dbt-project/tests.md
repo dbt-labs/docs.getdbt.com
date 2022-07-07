@@ -257,7 +257,6 @@ Note that, if you elect to store test failures:
 
 ## FAQs
 
-
 <FAQ src="Tests/test-one-model" />
 <FAQ src="Runs/failed-tests" />
 <FAQ src="Tests/recommended-tests" />
