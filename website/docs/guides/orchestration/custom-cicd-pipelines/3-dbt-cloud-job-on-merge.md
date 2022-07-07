@@ -30,9 +30,15 @@ Here’s a video showing the steps as well:
 
 This next part will happen in you code hosting platform. We need to save your API key from above into a repository secret so the job we create can access it. It is **not** recommended to ever save passwords or API keys in your code, so this step ensures that your key stays secure, but is still usable for your pipelines. 
 
-<details>
-<summary> GitHub </summary>
-    
+<Tabs
+  defaultValue="github"
+  values={[
+    { label: 'GitHub', value: 'github', },
+    {label: 'GitLab', value: 'gitlab', },
+  ]
+}>
+<TabItem value="github">
+
 In GitHub:
 
 - Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
@@ -51,11 +57,9 @@ Here’s a video showing these steps:
 
 <WistiaVideo id="u7mo30puql" />
 
-</details>
+</TabItem>
+<TabItem value="gitlab">
 
-<details>
-<summary> GitLab </summary>
-    
 In GitLab:
 
 - Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
@@ -73,7 +77,8 @@ In GitLab:
     
     <WistiaVideo id="rgqs14f816" />
 
-</details>
+</TabItem>
+</Tabs>
 
 ### 3. Create script to trigger dbt Cloud job via an API call
 
@@ -115,9 +120,15 @@ In order to call the dbt Cloud API, there are a few pieces of info the script ne
 
 ### 4. Update your project to include the new API call
 
-<details>
-<summary> GitHub </summary>
-    
+<Tabs
+  defaultValue="github"
+  values={[
+    { label: 'GitHub', value: 'github', },
+    {label: 'GitLab', value: 'gitlab', },
+  ]
+}>
+<TabItem value="github">
+
 For this new job, we’ll add a file for the dbt Cloud API call named `dbt_run_on_merge.yml`.
 
 ```yaml
@@ -142,70 +153,120 @@ name: run dbt Cloud job on push
 # This works off the assumption that you've restrictred this branch to only all PRs to push to the deafult branch
 # Update the name to match the name of your default branch
 on:
-    push:
+  push:
     branches:
-        - 'main'
+      - 'main'
 
 jobs:
 
-    # the job calls the dbt Cloud API to run a job
-    run_dbt_cloud_job:
+  # the job calls the dbt Cloud API to run a job
+  run_dbt_cloud_job:
     name: Run dbt Cloud Job
     runs-on: ubuntu-latest
 
-    # Set the environment variables needed for the run
+  # Set the environment variables needed for the run
     env:
-        DBT_ACCOUNT_ID: 00000 # enter your account id
-        DBT_PROJECT_ID: 00000 # enter your project id
-        DBT_PR_JOB_ID:  00000 # enter your job id
-        DBT_API_KEY: ${{ secrets.DBT_API_KEY }}
-        DBT_JOB_CAUSE: 'GitHub Pipeline CI Job' 
-        DBT_JOB_BRANCH: ${{ github.ref_name }}
+      DBT_ACCOUNT_ID: 00000 # enter your account id
+      DBT_PROJECT_ID: 00000 # enter your project id
+      DBT_PR_JOB_ID:  00000 # enter your job id
+      DBT_API_KEY: ${{ secrets.DBT_API_KEY }}
+      DBT_JOB_CAUSE: 'GitHub Pipeline CI Job' 
+      DBT_JOB_BRANCH: ${{ github.ref_name }}
 
     steps:
-        - uses: "actions/checkout@v3"
-        - uses: "actions/setup-python@v2"
+      - uses: "actions/checkout@v3"
+      - uses: "actions/setup-python@v2"
         with:
-            python-version: "3.9"
-        - name: Run dbt Cloud job
+          python-version: "3.9"
+      - name: Run dbt Cloud job
         run: "python python/run_and_monitor_dbt_job.py"
 ```
 
-</details>
-    
-<details>
-<summary> GitLab </summary>
+</TabItem>
+<TabItem value="gitlab">
 
-For this new job we just need to add some info to the existing `gitlab-ci.yml` file. The yaml file will look pretty similar to our earlier job, but there is a new section called `variables` that we’ll use to pass in the required variables to the Python script. Update this section to match your setup based on the comments in the file.
+For this job, we'll set it up using the `gitlab-ci.yml` file as in the prior step (see Step 1 of the linting setup for more info). The yaml file will look pretty similar to our earlier job, but there is a new section called `variables` that we’ll use to pass in the required variables to the Python script. Update this section to match your setup based on the comments in the file.
 
-It’s worth noting that we changed the `rules:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitLab’s docs](https://docs.gitlab.com/ee/ci/yaml/#rules) on these filters for additional use cases.
+Please note that the `rules:` section now says to run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitLab’s docs](https://docs.gitlab.com/ee/ci/yaml/#rules) on these filters for additional use cases.
+
+<Tabs
+  defaultValue="single-job"
+  values={[
+    { label: 'Only dbt Cloud job', value: 'single-job', },
+    {label: 'Lint and dbt Cloud job', value: 'multi-job', },
+  ]
+}>
+<TabItem value="single-job">
 
 ```yaml
 image: python:3.9
 
 variables:
-    DBT_ACCOUNT_ID: 00000 # enter your account id
-    DBT_PROJECT_ID: 00000 # enter your project id
-    DBT_PR_JOB_ID:  00000 # enter your job id
-    DBT_API_KEY: $DBT_API_KEY # secret variable in gitlab account
-    DBT_URL: https://cloud.getdbt.com 
-    DBT_JOB_CAUSE: 'GitLab Pipeline CI Job' 
-    DBT_JOB_BRANCH: $CI_COMMIT_BRANCH
+  DBT_ACCOUNT_ID: 00000 # enter your account id
+  DBT_PROJECT_ID: 00000 # enter your project id
+  DBT_PR_JOB_ID:  00000 # enter your job id
+  DBT_API_KEY: $DBT_API_KEY # secret variable in gitlab account
+  DBT_URL: https://cloud.getdbt.com 
+  DBT_JOB_CAUSE: 'GitLab Pipeline CI Job' 
+  DBT_JOB_BRANCH: $CI_COMMIT_BRANCH
 
 stages:
-    - build
+  - build
 
 # this job calls the dbt Cloud API to run a job
 run-dbt-cloud-job:
-    stage: build
-    rules:
+  stage: build
+  rules:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
-    script:
+  script:
     - python python/run_and_monitor_dbt_job.py
 ```
 
-</details>
+</TabItem>
+<TabItem value="multi-job">
 
+```yaml
+image: python:3.9
+
+variables:
+  DBT_ACCOUNT_ID: 00000 # enter your account id
+  DBT_PROJECT_ID: 00000 # enter your project id
+  DBT_PR_JOB_ID:  00000 # enter your job id
+  DBT_API_KEY: $DBT_API_KEY # secret variable in gitlab account
+  DBT_URL: https://cloud.getdbt.com 
+  DBT_JOB_CAUSE: 'GitLab Pipeline CI Job' 
+  DBT_JOB_BRANCH: $CI_COMMIT_BRANCH
+
+stages:
+  - pre-build
+  - build
+
+# this job runs SQLFluff with a specific set of rules
+# note the dialect is set to Snowflake, so make that specific to your setup
+# details on linter rules: https://docs.sqlfluff.com/en/stable/rules.html
+lint-project:
+  stage: pre-build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != 'main'
+  script:
+    - pip install sqlfluff==0.13.1
+    - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
+
+# this job calls the dbt Cloud API to run a job
+run-dbt-cloud-job:
+  stage: build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
+  script:
+    - python python/run_and_monitor_dbt_job.py
+```
+
+</TabItem>
+</Tabs>
+
+
+</TabItem>
+</Tabs>
 
 ### 5. Test your new action
 
@@ -213,19 +274,25 @@ Now that you have a shiny new action, it’s time to test it out! Since this cha
 
 Additionally, you’ll see the job in the run history of dbt Cloud. It should be fairly easy to spot because it will say it was triggered by the API, and the *INFO* section will have the branch you used for this guide.
 
-<details>
-<summary> GitHub </summary>
+<Tabs
+  defaultValue="github"
+  values={[
+    { label: 'GitHub', value: 'github', },
+    {label: 'GitLab', value: 'gitlab', },
+  ]
+}>
+<TabItem value="github">
 
 ![dbt run on merge job in GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
 
 ![dbt Cloud job showing it was triggered by GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-github-triggered.png)
 
-</details>
-
-<details>
-<summary> GitLab </summary>
+</TabItem>
+<TabItem value="gitlab">
 
 ![dbt run on merge job in GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
 
 ![dbt Cloud job showing it was triggered by GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
-</details>
+
+</TabItem>
+</Tabs>

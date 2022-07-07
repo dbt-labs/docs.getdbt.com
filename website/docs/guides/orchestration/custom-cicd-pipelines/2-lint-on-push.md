@@ -11,8 +11,14 @@ The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan you
 
 The yaml files defined below are what tell your code hosting platform the steps to run. In this setup, you’re telling the platform to run a SQLFluff lint job every time a commit is pushed.
 
-<details>
-<summary> GitHub </summary>
+<Tabs
+  defaultValue="github"
+  values={[
+    { label: 'GitHub', value: 'github', },
+    {label: 'GitLab', value: 'gitlab', },
+  ]
+}>
+<TabItem value="github">
 
 In order for GitHub to know that you want to run an action, you need to have a few specific folders in your project. Add a new folder named `.github`, and within that folder add a new one named `workflows`. Your final folder structure will look like this: 
     
@@ -38,34 +44,32 @@ Below I touch on the important pieces for running a dbt Cloud job, but if you wa
 name: lint dbt project on push
 
 on:
-    push:
+  push:
     branches-ignore:
-        - 'main'
+      - 'main'
 
 jobs:
-    # this job runs SQLFluff with a specific set of rules
-    # note the dialect is set to Snowflake, so make that specific to your setup
-    # details on linter rules: https://docs.sqlfluff.com/en/stable/rules.html
-    lint_project:
+# this job runs SQLFluff with a specific set of rules
+  # note the dialect is set to Snowflake, so make that specific to your setup
+  # details on linter rules: https://docs.sqlfluff.com/en/stable/rules.html
+  lint_project:
     name: Run SQLFluff linter
     runs-on: ubuntu-latest
-
+  
     steps:
-        - uses: "actions/checkout@v3"
-        - uses: "actions/setup-python@v2"
+      - uses: "actions/checkout@v3"
+      - uses: "actions/setup-python@v2"
         with:
-            python-version: "3.9"
-        - name: Install SQLFluff
+          python-version: "3.9"
+      - name: Install SQLFluff
         run: "pip install sqlfluff==0.13.1"
-        - name: Lint project
+      - name: Lint project
         run: "sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022"
 
 ```
 
-</details>   
-
-<details>
-<summary> GitLab </summary>
+</TabItem>
+<TabItem value="gitlab">
 
 Create a `.gitlab-ci.yml` file in your **root directory** to define the triggers for when to execute the script above. You’ll put the code below into this file.
 
@@ -85,30 +89,35 @@ my_awesome_project
 image: python:3.9
 
 stages:
-    - pre-build
+  - pre-build
 
 # this job runs SQLFluff with a specific set of rules
 # note the dialect is set to Snowflake, so make that specific to your setup
 # details on linter rules: https://docs.sqlfluff.com/en/stable/rules.html
 lint-project:
-    stage: pre-build
-    rules:
+  stage: pre-build
+  rules:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != 'main'
-    script:
+  script:
     - pip install sqlfluff==0.13.1
     - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 ```
 
-</details>
-
-
+</TabItem>
+</Tabs>
 
 ### 2. Commit and push your changes to make sure everything works
 
 After you finish creating the yaml files, commit and push your code. Doing this will trigger your pipeline for the first time! If everything goes well, you should see the pipeline in your code platform. When you click into the job you’ll get a log showing that SQLFluff was run. If your code failed linting you’ll get an error in the job with a description of what needs to be fixed. If everything passed the lint check, you’ll see a successful job run.
 
-<details>
-<summary> GitHub </summary>
+<Tabs
+  defaultValue="github"
+  values={[
+    { label: 'GitHub', value: 'github', },
+    {label: 'GitLab', value: 'gitlab', },
+  ]
+}>
+<TabItem value="github">
 
 In your repository, click the *Actions* tab
 
@@ -117,11 +126,10 @@ In your repository, click the *Actions* tab
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
 ![Image showing the logs in GitHub for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-github.png)
-</details>
-    
-<details>
-<summary> GitLab </summary>
-    
+
+</TabItem>
+<TabItem value="gitlab">
+
 In the menu option got to *CI/CD > Pipelines*
 
 ![Image showing the GitLab action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-gitlab.png)
@@ -129,4 +137,6 @@ In the menu option got to *CI/CD > Pipelines*
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
 ![Image showing the logs in GitLab for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-gitlab.png)
-</details>
+
+</TabItem>
+</Tabs>
