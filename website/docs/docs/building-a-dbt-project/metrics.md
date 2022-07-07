@@ -90,6 +90,90 @@ metrics:
 
 </File>
 
+```markdown
+<VersionBlock firstVersion="1.2">
+
+### Available properties
+
+| Field       | Description                                                 | Example                         | Required? |
+|-------------|-------------------------------------------------------------|---------------------------------|-----------|
+| name        | A unique identifier for the metric                          | new_customers                   | yes       |
+| model       | The dbt model that powers this metric                       | dim_customers                   |     yes (no for `expression` metrics)    |
+| label       | A short for name / label for the metric                     | New Customers                   | no        |
+| description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
+| type        | The type of calculation to perform when evaluating a metric | count_distinct                  | yes       |
+| sql         | The expression to aggregate/calculate over                  | user_id                         | yes       |
+| timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
+| dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
+| filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
+| meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
+
+</VersionBlock>
+```
+
+```markdown
+<VersionBlock firstVersion="1.2">
+
+### Available types
+
+| Metric Type    |  Description                                                               |
+|----------------|----------------------------------------------------------------------------|
+| count          | This metric type will apply the `count` aggregation to the specified field |
+| count_distinct | This metric type will apply the `count` aggregation to the specified field, with an additional distinct statement inside the aggregation |
+| sum            | This metric type will apply the `sum` aggregation to the specified field |
+| average        | This metric type will apply the `average` aggregation to the specified field |
+| min            | This metric type will apply the `min` aggregation to the specified field |
+| max            | This metric type will apply the `max` aggregation to the specified field |
+| expression     | This metric type is defined as any **non-aggregating** calculation of 1 or more metrics |
+
+</VersionBlock>
+```
+
+```markdown
+<VersionBlock firstVersion="1.2">
+
+### Expression Metrics
+In v1.2, support was added for `expression` metrics, which are defined as non-aggregating calculations of 1 or more metrics. By defining these metrics, you are able to create metrics like:
+- ratios
+- subtractions 
+- any arbitrary calculation
+
+As long as the two+ base metrics (the metrics that comprise the `expression` metric) share the specified `time_grains` and `dimensions`, those attributes can be used in any downstream metrics macro.
+
+An example definition of an `expression` metric is:
+
+```yaml
+# models/marts/product/schema.yml
+
+version: 2
+
+models:
+ - name: dim_customers
+   ...
+
+metrics:
+  - name: average_revenue_per_customer
+    label: Average Revenue Per Customer
+    description: "The average revenue received per customer"
+
+    type: expression
+    sql: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
+
+    timestamp: order_date
+    time_grains: [day, week, month]
+    dimensions:
+      - had_discount
+      - order_country
+
+```
+
+</VersionBlock>
+
+
+```markdown
+<VersionBlock lastVersion="1.1">
+
 ### Available properties
 
 | Field       | Description                                                 | Example                         | Required? |
@@ -105,6 +189,9 @@ metrics:
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
+
+</VersionBlock>
+```
 
 ### Filters
 Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric. 
