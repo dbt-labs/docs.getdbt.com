@@ -56,7 +56,6 @@ In GitHub:
 Here’s a video showing these steps:
 
 <WistiaVideo id="u7mo30puql" />
-
 </TabItem>
 <TabItem value="gitlab">
 
@@ -76,7 +75,7 @@ In GitLab:
     Here’s a video showing these steps:
     
     <WistiaVideo id="rgqs14f816" />
-
+    
 </TabItem>
 </Tabs>
 
@@ -115,8 +114,6 @@ In order to call the dbt Cloud API, there are a few pieces of info the script ne
 - `DBT_PR_JOB_ID` - this is the number just after `jobs/` in the URL
 
 ![Image of a dbt Cloud job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
-
-
 
 ### 4. Update your project to include the new API call
 
