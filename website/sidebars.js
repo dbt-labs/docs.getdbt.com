@@ -643,9 +643,13 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Creating Custom CI/CD Pipelines",
-          link: { type: 'doc', id: 'guides/orchestration/custom-cicd-pipelines/1-creating-custom-cicd-pipelines'},
-          items: []
+          label: "Customizing CI/CD",
+          link: { type: 'doc', id: 'guides/orchestration/custom-cicd-pipelines/1-cicd-background' },
+          items: [
+            "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
+            "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
+            "guides/orchestration/custom-cicd-pipelines/4-something-to-consider",
+          ],
         },
       ]
     },
