@@ -19,6 +19,7 @@ We added a collection of ["cross-database macros"](cross-database-macros) to dbt
 
 ## New and changed documentation
 
-_Under construction_
+- **[Grants](/reference/resource-configs/grants)**: You should now manage access to the datasets you're producing with dbt by using grants instead of using hooks.  If you already use post-hook to apply simple grants, moving to the grants feature will allow you to [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) up your duplicated or boilerplate code.
+
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2

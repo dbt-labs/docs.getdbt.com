@@ -27,7 +27,7 @@ Effective database administration sometimes requires additional SQL statements t
 
 dbt provides two different interfaces for you to version control and execute these statements as part of your dbt project — hooks and operations.
 
-## Hooks
+## About hooks
 
 Hooks are snippets of SQL that are executed at different times:
   * `pre-hook`: executed _before_ a model, seed or snapshot is built.
@@ -35,14 +35,110 @@ Hooks are snippets of SQL that are executed at different times:
   * `on-run-start`: executed at the _start_ of `dbt run`, `dbt seed` or `dbt snapshot`
   * `on-run-end`: executed at the _end_ of `dbt run`, `dbt seed` or `dbt snapshot`
 
-Hooks are defined in your `dbt_project.yml` file. Pre- and post-hooks can also be defined in a `config` block.
+Hooks can help you leverage database-specific actions to expand dbt.
+
+You can define hooks in your `dbt_project.yml` file. Pre- and post-hooks can also be defined in a `config` block.
 
 <VersionBlock firstVersion="1.2">
 
 In order to streamline hooks and automatically apply grants when your dbt model runs, we recommend using [`grants` resource-config](/reference/resource-configs/grants).  
-### Advanced example for hooks
+
+### Examples using hooks
+
+You can use hooks to trigger actions at certain times when running an operation or building a model, seed, or snapshot.
+
+For more information about when hooks can be triggered, see reference sections for [`on-run-start` and `on-run-end` hooks](on-run-start-on-run-end) and [`pre-hook`s and `post-hook`s](pre-hook-post-hook).
+
+You can use hooks to provide database-specific functionality not available out-of-the-box with dbt. 
+
+For example, you can use a `config` block to run an `ALTER TABLE` statement right after building an individual model using a `post-hook`:
+
+<WHCode>
+
+<div warehouse="BigQuery">
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    post_hook=[
+      "grant select on {{ this }} to role reporter"
+    ]
+) }}
+
+select ...
+
+```
+
+</File>
+
+</div>
+
+<div warehouse="Databricks">
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    post_hook=[
+      "grant select on {{ this }} to role reporter"
+    ]
+) }}
+
+select ...
+
+```
+
+</File>
+
+</div>
+
+<div warehouse="Redshift">
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    post_hook=[
+      "grant select on {{ this }} to role reporter"
+    ]
+) }}
+
+select ...
+
+```
+
+</File>
+
+</div>
+
+<div warehouse="Snowflake">
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    post_hook=[
+      "grant select on {{ this }} to role reporter"
+    ]
+) }}
+
+select ...
+
+```
+
+</File>
+
+</div>
+
+</WHCode>
 
 </VersionBlock>
+
+<VersionBlock lastVersion="1.1">
+
+### Examples using hooks
+
 Here's a minimal example of using hooks to grant privileges. You can find more information in the reference sections for [`on-run-start` and `on-run-end` hooks](on-run-start-on-run-end) and [`pre-hook`s and `post-hook`s](pre-hook-post-hook).
 
 <File name='dbt_project.yml'>
@@ -75,12 +171,14 @@ select ...
 ```
 
 </File>
+</VersionBlock>
 
 ### Calling a macro in a hook
 
-You can also use a [macro](jinja-macros#macros) to bundle up hook logic. Check out some of the examples in the reference sections for [on-run-start and on-run-end hooks](on-run-start-on-run-end) and [pre- and post-hooks](pre-hook-post-hook),
+You can also use a [macro](jinja-macros#macros) to bundle up hook logic. Check out some of the examples in the reference sections for [on-run-start and on-run-end hooks](on-run-start-on-run-end) and [pre- and post-hooks](pre-hook-post-hook).
 
-## Operations
+## About operations
+
 Operations are [macros](jinja-macros#macros) that you can run using the [`run-operation` command](run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a model.
 
 :::info Explicitly execute the SQL in an operation

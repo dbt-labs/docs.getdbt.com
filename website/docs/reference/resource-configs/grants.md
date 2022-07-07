@@ -2,17 +2,18 @@
 resource_types: [models,seeds,snapshots]
 datatype: "string"
 default_value: {}
+id: "grants"
 ---
 
 <Snippet src="available-prerelease-beta-banner" />
 
-You can manage access to the datasets you're producing with dbt by using grants. Define these grants as resource configs on each model, seed, or snapshot instead of using hooks to implement these permissions. You can define default grants in your `dbt_project.yml` and provide model-specific grants by defining them within each model's SQL or YAML file.
+You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
 
+The grant resource configs enable you to apply permissions to a specific model and set of recipients as soon as the model finishes building.
 
+Use grants with hooks when you have a more advanced problem to solve. For example, if you want to create more granular row- and column-level access, use masking policies, or apply future grants. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
 
-The grant resource configs enable you to automatically apply grants when your dbt model runs. If you want to create even more granular permissions, you can still use grants with hooks, but these hooks can be complicated to implement and require testing thoroughly to make sure they're working as expected. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
-
-You can set grants in `dbt_project.yml` and as a `config` yaml property that applies to the entire dbt project. 
+You can set grants in `dbt_project.yml` and as a `config` yaml property that applies to the entire dbt project.
 
 <Tabs
   defaultValue="models"
@@ -71,6 +72,7 @@ The `grants` config can also be defined under the `seeds` config block in `dbt_p
 ```yml
 snapshots:
   - name: snapshot_name
+    config:  
       grants:
         select: ['reporter', 'bi']
 ```
@@ -93,9 +95,20 @@ You can use the `grants` field to set permissions or grants for a resource. Thes
 
 ## Examples
 
+Granting a single user a permission:
+
 ```sql
 {{ config(materialized = 'incremental', grants = {
-    'select': ['other_user']
+    'select': 'other_user'
+}) }}
+
+```
+
+Granting multiple users the same permission:
+
+```sql
+{{ config(materialized = 'incremental', grants = {
+    'select': ['other_user','this_user']
 }) }}
 
 ```
