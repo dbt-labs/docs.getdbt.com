@@ -127,7 +127,7 @@ Some dbt users prefer to have one `.yml` file per model (e.g. `stg_braintree__cu
 
 Earlier versions of the dbt documentation recommended implementing “base models” as the first layer of transformation – and we used to organize and name our models in this way, for example `models/braintree/base/base_payments.sql`.
 
-We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/docs/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
+We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
 
 That being said, in our dbt projects every source flows through exactly one model of the following form:
 
