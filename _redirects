@@ -15,7 +15,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/api-variable	/docs/writing-code-in-dbt/api-variable	302
 /docs/archival	/docs/building-a-dbt-project/archival	302
 /docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts	302
-/docs/best-practices	/docs/guides/best-practices	302
+/docs/best-practices	/guides/best-practices	302
 /docs/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/configuring-models	/reference/model-configs
