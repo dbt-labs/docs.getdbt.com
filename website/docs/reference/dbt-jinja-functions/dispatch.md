@@ -249,4 +249,4 @@ In rare cases, the child adapter may prefer the default implementation to its pa
 
 ## FAQs
 
-<FAQ src="dispatch-could-not-find-package" />
+<FAQ src="Troubleshooting/dispatch-could-not-find-package" />

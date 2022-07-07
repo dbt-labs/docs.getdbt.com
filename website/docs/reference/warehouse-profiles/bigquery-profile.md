@@ -203,7 +203,7 @@ The `dbt-bigquery` plugin uses the BigQuery Python client library to submit quer
 1. Job creation: Submit the query job to BigQuery, and receive its job ID.
 2. Job execution: Wait for the query job to finish executing, and receive its result.
 
-Some queries inevitably fail, at different points in process. To handle these cases, dbt supports fine-grained configuration for query timeouts and retries.
+Some queries inevitably fail, at different points in process. To handle these cases, dbt supports <Term id="grain">fine-grained</Term> configuration for query timeouts and retries.
 
 #### job_execution_timeout_seconds
 
@@ -421,8 +421,8 @@ my-profile:
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
 
-<FAQ src="bq-impersonate-service-account-why" />
-<FAQ src="bq-impersonate-service-account-setup" />
+<FAQ src="Warehouse/bq-impersonate-service-account-why" />
+<FAQ src="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
 <Changelog>New in v0.21.0</Changelog>

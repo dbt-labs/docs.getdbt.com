@@ -64,6 +64,8 @@ For certain configurations, you can use "secret" env vars. Any env var named wit
 
 The primary use case of secret env vars is git access tokens for [private packages](package-management#private-packages).
 
+**Note:** When dbt is loading profile credentials and package configuration, secret env vars will be replaced with the string value of the environment variable. You cannot modify secrets using Jinja filters, including type-casting filters such as [`as_number`](as_number) or [`as_bool`](as_bool), or pass them as arguments into other Jinja macros.
+
 ### Custom metadata
 
 <Changelog>

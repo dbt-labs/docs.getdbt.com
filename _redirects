@@ -15,7 +15,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/api-variable	/docs/writing-code-in-dbt/api-variable	302
 /docs/archival	/docs/building-a-dbt-project/archival	302
 /docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts	302
-/docs/best-practices	/docs/guides/best-practices	302
+/docs/best-practices	/guides/best-practices	302
 /docs/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/configuring-models	/reference/model-configs
@@ -98,11 +98,6 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
 /docs/global-cli-flags	/reference/global-cli-flags	302
 /docs/graph	/docs/writing-code-in-dbt/jinja-context/graph	302
-/docs/guides/migration-guide/upgrading-to-014	/docs/guides/migration-guide/upgrading-to-0-14-0	302
-/docs/guides/migration-guide/upgrading-from-0-10-to-0-11	/docs/guides/migration-guide/upgrading-to-0-11-0	302
-/docs/guides/migration-guide/upgrading-to-0-20-0	/docs/guides/migration-guide/upgrading-to-v0.20	302
-/docs/guides/migration-guide/upgrading-to-0-21-0	/docs/guides/migration-guide/upgrading-to-v0.21	302
-/docs/guides/migration-guide/upgrading-to-1-0-0	/docs/guides/migration-guide/upgrading-to-v1.0	302
 /docs/guides/writing-custom-schema-tests    /docs/guides/writing-custom-generic-tests
 /docs/hooks	/docs/building-a-dbt-project/hooks-operations	302
 /docs/init	/reference/commands/init	302
@@ -201,15 +196,12 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/this	/docs/writing-code-in-dbt/jinja-context/this	302
 /docs/tojson	/docs/writing-code-in-dbt/jinja-context/tojson	302
 /docs/ubuntu-debian	/dbt-cli/installation	302
-/docs/upgrading-to-0-14-1	/docs/guides/migration-guide/upgrading-to-0-14-1	302
-/docs/upgrading-to-0-16-0	/docs/guides/migration-guide/upgrading-to-0-16-0	302
-/docs/upgrading-to-014	/docs/guides/migration-guide/upgrading-to-014	302
 /docs/use-an-existing-project	/docs/building-a-dbt-project/dbt-projects/use-an-existing-project	302
 /docs/using-custom-aliases	/docs/building-a-dbt-project/building-models/using-custom-aliases	302
 /docs/using-custom-database	/docs/building-a-dbt-project/building-models/using-custom-databases	302
 /docs/using-custom-schemas	/docs/building-a-dbt-project/building-models/using-custom-schemas	302
 /docs/using-dbt-cloud	/docs/dbt-cloud/using-dbt-cloud	302
-/docs/using-jinja	/tutorial/using-jinja	302
+/docs/using-jinja	/guides/getting-started/learning-more/using-jinja	302
 /docs/using-operations	/docs/building-a-dbt-project/hooks-operations	302
 /docs/using-sources	/docs/building-a-dbt-project/using-sources	302
 /docs/using-sql-headers	/reference/resource-configs/sql_header	302
@@ -260,8 +252,8 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/writing-code-in-dbt/jinja-context/toyaml	/reference/dbt-jinja-functions/toyaml	302
 /docs/writing-code-in-dbt/jinja-context/var	/reference/dbt-jinja-functions/var	302
 /docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302
-/docs/writing-code-in-dbt/using-jinja	/tutorial/using-jinja	302
-/faqs/getting-help/	/docs/guides/getting-help/	302
+/docs/writing-code-in-dbt/using-jinja	/guides/getting-started/learning-more/using-jinja	302
+/faqs/getting-help/	/guides/legacy/getting-help	302
 /reference/accounts	/dbt-cloud/api	302
 /reference/api	/dbt-cloud/api	302
 /reference/connections	/dbt-cloud/api	302
@@ -289,15 +281,33 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/project-configs/modules-paths  /reference/project-configs/packages-install-path 302
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
 /reference/warehouse-profiles/presto-profile    /reference/profiles.yml 302
-/tutorial/setting-up	/tutorial/getting-started	302
-/tutorial/test-and-document-your-project  /tutorial/building-your-first-project/test-and-document-your-project	302
-/tutorial/build-your-first-models   /tutorial/building-your-first-project/build-your-first-models	302
-/tutorial/deploy-your-project   /tutorial/building-your-first-project/schedule-a-job	302
-/tutorial/using-jinja   /tutorial/learning-more/using-jinja	302
-/tutorial/refactoring-legacy-sql    /tutorial/learning-more/refactoring-legacy-sql	302
-/tutorial/2b-create-a-project-dbt-cli.md   /tutorial/learning-more/getting-started-dbt-core	302
-/tutorial/create-a-project-dbt-cli   /tutorial/learning-more/getting-started-dbt-core	302
-/tutorial/2a-create-a-project-dbt-cloud.md   /tutorial/getting-started	302
-/tutorial/create-a-project-dbt-cloud   /tutorial/getting-started	302
+/tutorial/setting-up	/guides/getting-started	302
+/tutorial/test-and-document-your-project  /guides/getting-started/building-your-first-project/test-and-document-your-project	302
+/tutorial/build-your-first-models   /guides/getting-started/building-your-first-project/build-your-first-models	302
+/tutorial/deploy-your-project   /guides/getting-started/building-your-first-project/schedule-a-job	302
+/tutorial/using-jinja   /guides/getting-started/learning-more/using-jinja	302
+/tutorial/refactoring-legacy-sql    /guides/getting-started/learning-more/refactoring-legacy-sql	302
+/tutorial/2b-create-a-project-dbt-cli.md   /guides/getting-started/learning-more/getting-started-dbt-core	302
+/tutorial/create-a-project-dbt-cli   /guides/getting-started/learning-more/getting-started-dbt-core	302
+/tutorial/2a-create-a-project-dbt-cloud.md   /guides/getting-started	302
+/tutorial/create-a-project-dbt-cloud   /guides/getting-started	302
+/tutorial/getting-started /guides/getting-started 302
 /docs/dbt-cloud/cloud-changelog   /docs/dbt-cloud/release-notes	302
-
+/faqs/all /docs/faqs 301!
+/faqs/* /docs/faqs/:splat 301
+/tutorial/learning-more/* /guides/getting-started/learning-more/:splat 301
+/tutorial/getting-set-up/* /guides/getting-started/getting-set-up/:splat 301
+/tutorial/building-your-first-project/* /guides/getting-started/building-your-first-project/:splat 301
+# migration and legacy guides
+/docs/guides/migration-guide/upgrading-from-0-10-to-0-11	/guides/migration/versions/upgrading-to-0-11-0	302
+/docs/guides/migration-guide/upgrading-to-014	/guides/migration/versions/upgrading-to-0-14-0	302
+/docs/upgrading-to-014	/guides/migration/versions/upgrading-to-0-14-0	302
+/docs/upgrading-to-0-14-1	/guides/migration/versions/upgrading-to-0-14-1	302
+/docs/upgrading-to-0-16-0	/guides/migration/versions/upgrading-to-0-16-0	302
+/docs/guides/migration-guide/upgrading-to-0-20-0	/guides/migration/versions/upgrading-to-v0.20	302
+/docs/guides/migration-guide/upgrading-to-0-21-0	/guides/migration/versions/upgrading-to-v0.21	302
+/docs/guides/migration-guide/upgrading-to-1-0-0	    /guides/migration/versions/upgrading-to-v1.0	302
+/docs/guides/getting-help	/guides/legacy/getting-help 302
+/docs/guides/migration-guide/*  /guides/migration/versions/:splat 301!
+/docs/guides/best-practices  /guides/best-practices
+/docs/guides/* /guides/legacy/:splat 301!
