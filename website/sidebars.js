@@ -60,6 +60,7 @@ const sidebarSettings = {
         "docs/contributing/testing-a-new-adapter",
         "docs/contributing/documenting-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
+        "docs/contributing/long-lived-discussions-guidelines",
       ],
     },
     {
@@ -542,6 +543,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/layer-profile",
         "reference/warehouse-profiles/iomete-profile",
         "reference/warehouse-profiles/duckdb-profile",
+        "reference/warehouse-profiles/sqlite-profile",
       ],
     },
     {
@@ -656,6 +658,7 @@ const sidebarSettings = {
             slug: '/guides/migration/versions',
           },
           items: [
+            "guides/migration/versions/upgrading-to-v1.2",
             "guides/migration/versions/upgrading-to-v1.1",
             "guides/migration/versions/upgrading-to-v1.0",
             "guides/migration/versions/upgrading-to-v0.21",
