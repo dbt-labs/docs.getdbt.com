@@ -619,7 +619,15 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ]
         },
-        "guides/best-practices/dbt-style-guide",
+        {
+          type: "category",
+          label: "How we style our dbt projects",
+          link: { type: 'doc', id: 'guides/best-practices/how-we-style/1-models' },
+          items: [
+            "guides/best-practices/how-we-style/1-models",
+            "guides/best-practices/how-we-style/2-yaml",
+          ]
+        }
       ],
     },
     {
