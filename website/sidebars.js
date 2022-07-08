@@ -732,32 +732,43 @@ const sidebarSettings = {
       items: [
         {
           type: "category",
-          label: "Airflow and dbt Cloud",
+          label: "How we structure our dbt projects",
           link: {
             type: "doc",
-            id: "guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud",
+            id: "guides/best-practices/how-we-structure/1-guide-overview",
           },
           items: [
-            "guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud",
-            "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
-            "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
-            "guides/best-practices/dbt-style-guide",
+            "guides/best-practices/how-we-structure/2-staging",
+            "guides/best-practices/how-we-structure/3-intermediate",
+            "guides/best-practices/how-we-structure/4-marts",
+            "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
         {
           type: "category",
-          label: "Customizing CI/CD",
+          label: "How we style our dbt projects",
           link: {
             type: "doc",
-            id: "guides/orchestration/custom-cicd-pipelines/1-cicd-background",
+            id: "guides/best-practices/how-we-style/1-models",
           },
           items: [
-            "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
-            "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
-            "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
-            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
+            "guides/best-practices/how-we-style/1-models",
+            "guides/best-practices/how-we-style/2-yaml",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Orchestration",
+      link: {
+        type: "generated-index",
+        title: "Orchestration guides",
+        description:
+          "Learn how to orchestrate your data transformations in dbt, using dbt Cloud, a variety of popular tools, or both working together.",
+        slug: "/guides/orchestration",
+      },
+      items: [
         {
           type: "category",
           label: "Webhooks with dbt Cloud and SaaS apps",
