@@ -93,9 +93,72 @@ See [configs and properties](configs-and-properties) for details.
 
 You can use the `grants` field to set permissions or grants for a resource. These grants will be compiled into the `manifest.json` file complied by dbt, which you can view in the automatically generated documentation.
 
-## Examples
+## Adapter-specific requirements and notes
 
-Granting a single user a permission:
+<WHCode>
+
+<div warehouse="BigQuery">
+
+- Be aware that the `grants` config is unrelated to the `grant_access_to` config:
+  - **`grants_access_to`:** Enables you to set up authorized views. When configured, dbt provides authorized view access to other datasets, without leaking additional data from those datasets. Fore more on this, see [BigQuery configurations: Authorized views](/reference/resource-configs/bigquery-configs#authorized-views)
+  - **`grants`:** Provides specific permissions to users, groups, or service accounts for managing access to datasets you're producing with dbt.You could grant a user, group or service account access to an authorized view set up by the `grants_access_to` feature.
+- Use BigQuery-specific grantee and privilege names. 
+  * Use `user:jeremy@dbtlabs.com`, not `jerco_user`
+  * Use  `roles/bigquery.dataViewer`, not `select`
+
+
+## BigQuery examples
+
+Granting permission using SQL and BigQuery:
+
+```sql
+{{ config(grants = {'roles/bigquery.dataViewer': ['user:someone@yourcompany.com']}) }}
+```
+
+Granting permission in a model schema using BigQuery:
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: specific_model
+    config:
+      grants:
+        roles/bigquery.dataViewer: ['user:someone@yourcompany.com']
+```
+
+</File>
+
+</div>
+
+<div warehouse="Databricks">
+
+- OSS Apache Spark / Delta Lake do not support `grants`.
+- Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in teh Dataabricks documentation:
+  - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
+  - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
+
+</div>
+
+<div warehouse="Redshift">
+
+* No special requirements at this time.
+
+</div>
+
+<div warehouse="Snowflake">
+
+* dbt recognizes the `copy_grants` when calculating which grants need to be added or removed.
+
+</div>
+
+</WHCode>
+
+## General examples
+
+When granting permissions, you can optimize for single or multiple users.
+
+Granting a single permission:
 
 ```sql
 {{ config(materialized = 'incremental', grants = {

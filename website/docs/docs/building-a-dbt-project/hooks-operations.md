@@ -35,9 +35,7 @@ Hooks are snippets of SQL that are executed at different times:
   * `on-run-start`: executed at the _start_ of `dbt run`, `dbt seed` or `dbt snapshot`
   * `on-run-end`: executed at the _end_ of `dbt run`, `dbt seed` or `dbt snapshot`
 
-Hooks can help you leverage database-specific actions to expand dbt.
-
-You can define hooks in your `dbt_project.yml` file. Pre- and post-hooks can also be defined in a `config` block.
+Hooks can help you leverage database-specific actions to expand dbt. You can define hooks in your `dbt_project.yml` file. Pre- and post-hooks can also be defined in a `config` block.
 
 <VersionBlock firstVersion="1.2">
 
@@ -62,7 +60,7 @@ For example, you can use a `config` block to run an `ALTER TABLE` statement righ
 ```sql
 {{ config(
     post_hook=[
-      "grant select on {{ this }} to role reporter"
+      'grant `roles/bigquery.dataViewer` on {{ this.type }} {{ this }} to "user:someone@yourcompany.com"'
     ]
 ) }}
 
@@ -81,7 +79,7 @@ select ...
 ```sql
 {{ config(
     post_hook=[
-      "grant select on {{ this }} to role reporter"
+      "grant select on {{ this }} to `someone@yourcompany.com`"
     ]
 ) }}
 
@@ -100,7 +98,7 @@ select ...
 ```sql
 {{ config(
     post_hook=[
-      "grant select on {{ this }} to role reporter"
+      "grant select on {{ this }} to reporter"
     ]
 ) }}
 
