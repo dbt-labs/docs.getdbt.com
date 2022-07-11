@@ -91,7 +91,7 @@ See [configs and properties](configs-and-properties) for details.
 
 ## Definition
 
-You can use the `grants` field to set permissions or grants for a resource. These grants will be compiled into the `manifest.json` file complied by dbt, which you can view in the automatically generated documentation.
+You can use the `grants` field to set permissions or grants for a resource. These grants will be compiled into the `manifest.json` file complied by dbt.
 
 ## Database-specific requirements and notes
 
