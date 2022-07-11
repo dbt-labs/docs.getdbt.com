@@ -9,9 +9,11 @@ id: "grants"
 
 You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
 
-The grant resource configs enable you to apply permissions to a specific model and set of recipients as soon as the model finishes building.
+The grant resource configs enable you to apply permissions at build time to a specific set of recipients and model, seed, or snapshot. When your model, seed, or snapshot finishes building, dbt ensures that the grants on its view or table match exactly the grants you have configured.
 
-Use grants with hooks when you have a more advanced problem to solve. For example, if you want to create more granular row- and column-level access, use masking policies, or apply future grants. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
+dbt always finds the most efficient approach when updating grants, which varies based on the adapter you're using, and whether dbt is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that dbt runs.
+
+When you have a more advanced problem to solve, you might instead use grants with hooks instead of grants as resource configs. For example, if you want to create more granular row- and column-level access, use masking policies, or apply future grants. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
 
 You can set grants in `dbt_project.yml` and as a `config` yaml property that applies to the entire dbt project.
 
@@ -180,7 +182,7 @@ Granting multiple users the same permission:
 
 ```sql
 {{ config(materialized = 'incremental', grants = {
-    'select': ['other_user','this_user']
+    'select': ['other_user','admin_user']
 }) }}
 
 ```
