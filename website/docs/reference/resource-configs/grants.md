@@ -93,7 +93,16 @@ See [configs and properties](configs-and-properties) for details.
 
 You can use the `grants` field to set permissions or grants for a resource. These grants will be compiled into the `manifest.json` file complied by dbt, which you can view in the automatically generated documentation.
 
-## Adapter-specific requirements and notes
+## Database-specific requirements and notes
+
+While we try to standardize the terms we use to describe different features, you will always find nuances in different databases. This section outlines some of those database-specific requirements and notes.
+
+### Common syntax 
+
+In our examples, you find terms like `select` and `another_user` because many databases use these terms, but be aware of the syntax your own database supports:
+
+* Privileges: A right to perform an action in a database.
+* Grantees: A way to manage privileges. Recipients of granted privileges, also called "principals." Grantees can be a user, a group of users, a role held by users (Snowflake), a service account (GCP), and more.
 
 <WHCode>
 
@@ -103,8 +112,8 @@ You can use the `grants` field to set permissions or grants for a resource. Thes
   - **`grants_access_to`:** Enables you to set up authorized views. When configured, dbt provides authorized view access to other datasets, without leaking additional data from those datasets. Fore more on this, see [BigQuery configurations: Authorized views](/reference/resource-configs/bigquery-configs#authorized-views)
   - **`grants`:** Provides specific permissions to users, groups, or service accounts for managing access to datasets you're producing with dbt.You could grant a user, group or service account access to an authorized view set up by the `grants_access_to` feature.
 - Use BigQuery-specific grantee and privilege names. 
-  * Use `user:jeremy@dbtlabs.com`, not `jerco_user`
-  * Use  `roles/bigquery.dataViewer`, not `select`
+  * Use `user:jeremy@dbtlabs.com` (do not use `jerco_user`)
+  * Use  `roles/bigquery.dataViewer` (do not use `select`)
 
 
 ## BigQuery examples
