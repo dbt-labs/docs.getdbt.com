@@ -29,6 +29,8 @@ A metric is a timeseries aggregation over a <Term id="table" /> that supports ze
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
+For more information on query the metrics that are defined, please reference the [dbt_metrics package.](https://github.com/dbt-labs/dbt_metrics)
+
 ### Benefits of defining metrics
 
 **Use metric specifications in downstream tools**  
