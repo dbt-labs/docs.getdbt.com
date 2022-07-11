@@ -41,15 +41,18 @@ Hooks can help you leverage database-specific actions to expand dbt. You can def
 
 In order to streamline hooks and automatically apply grants when your dbt model runs, we recommend using [`grants` resource-config](/reference/resource-configs/grants).  
 
+If (and only if) you can't leverage the [`grants` resource-config](/reference/resource-configs/grants), you can use `post-hook` to perform more advanced workflows:
+
+* Need to apply `grants` in a more complex way, which the dbt Core v1.2 `grants` config does not (yet) support.
+* Need to perform post-processing that dbt does not support out-of-the-box. For example, `analyze table`, `alter table set property`, `alter table ... add row access policy`, etc.
+
 ### Examples using hooks
 
 You can use hooks to trigger actions at certain times when running an operation or building a model, seed, or snapshot.
 
 For more information about when hooks can be triggered, see reference sections for [`on-run-start` and `on-run-end` hooks](on-run-start-on-run-end) and [`pre-hook`s and `post-hook`s](pre-hook-post-hook).
 
-You can use hooks to provide database-specific functionality not available out-of-the-box with dbt. 
-
-For example, you can use a `config` block to run an `ALTER TABLE` statement right after building an individual model using a `post-hook`:
+You can use hooks to provide database-specific functionality not available out-of-the-box with dbt. For example, you can use a `config` block to run an `ALTER TABLE` statement right after building an individual model using a `post-hook`:
 
 <WHCode>
 
