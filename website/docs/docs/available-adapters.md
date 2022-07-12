@@ -68,6 +68,7 @@ These adapter plugins are contributed and maintained by members of the community
 | DuckDB                 | [Profile Setup](duckdb-profile)                                              | DuckDB 0.3.2              | `pip install dbt-duckdb`     |
 | SQLite                 | [Profile Setup](sqlite-profile)                                              | SQlite Version 3.0+       | `pip install dbt-sqlite`     |
 | MySQL                  | [Profile Setup](mysql-profile)                                               | MySQL 5.7 and 8.0         | `pip install dbt-mysql`      |
+| IBM DB2                | [Profile Setup](ibmdb2-profile)                                              | IBM DB2 V9fp2+            | `pip install dbt-ibmdb2`     |
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
 - Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 
