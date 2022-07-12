@@ -35,7 +35,7 @@ Hooks are snippets of SQL that are executed at different times:
   * `on-run-start`: executed at the _start_ of `dbt run`, `dbt seed` or `dbt snapshot`
   * `on-run-end`: executed at the _end_ of `dbt run`, `dbt seed` or `dbt snapshot`
 
-Hooks can help you leverage database-specific actions to expand dbt. You can define hooks in your `dbt_project.yml` file. Pre- and post-hooks can also be defined in a `config` block.
+Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what dbt makes available out-of-the-box with standard materializations and configurations.
 
 <VersionBlock firstVersion="1.2">
 
