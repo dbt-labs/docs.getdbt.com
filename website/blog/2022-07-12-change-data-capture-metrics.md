@@ -282,7 +282,7 @@ select * from {{ source('source', 'costs') }}
 {% endsnapshot %}
 ```
 
-| id | month_year | cost | updated_at | dbt_valid_from | dbt_valid_to |
+| cost_id | month_year | cost | updated_at | dbt_valid_from | dbt_valid_to |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | 1 | Junkuary 2022 | 50 | 01/15/22 12:00:00 | 01/15/22 12:00:00 | 02/03/22 12:00:00 |
 | 1 | January 2022 | 50 | 02/03/22 12:00:00 | 02/03/22 12:00:00 | NULL |
