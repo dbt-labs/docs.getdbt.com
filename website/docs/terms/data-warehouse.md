@@ -56,7 +56,7 @@ When anyone in your org can easily access your data, bad things can happen. You 
 
 ### Fast reporting
 
-Because all of your data is located in the same place, it allows for faster reporting compared to pulling data from many different sources. You don’t need to make a bunch of data pulls, upload them to a central location, and then somehow join the datasets. Not to mention the slow speed at which that occurs. A central location allows for you to quickly access and query millions of rows of data, allowing transformations and reporting to be done much faster. 
+Because all of your data is located in the same place, it allows for faster reporting compared to pulling data from many different sources. A central location allows for you to quickly access and query millions of rows of data, allowing transformations and reporting to be done much faster. 
 
 ## Data platforms that support data warehousing workloads
 
