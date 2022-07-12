@@ -112,7 +112,7 @@ Example PRs:
 
 ### More python functions now available in the dbt jinja context
 
-python’s `set` and `zip` , and the most of the `itertools`  are available in the dbt-jinja context. Yay! ([dbt-core#5107](https://github.com/dbt-labs/dbt-core/pull/5107 ) and [dbt-core#5140](https://github.com/dbt-labs/dbt-core/pull/5140))
+python’s `set` and `zip` , and the most of the `itertools`  are available in the dbt-jinja context. Yay! ([dbt-core#5107](https://github.com/dbt-labs/dbt-core/pull/5107 ) and [dbt-core#5140](https://github.com/dbt-labs/dbt-core/pull/5140)). THere's no explicit action needed here, only mentioning in case it enables some jinja simplifications.
 
 ### Slight change to the default seed materialization
 
