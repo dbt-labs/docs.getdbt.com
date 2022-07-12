@@ -157,7 +157,7 @@ models:
 
 <div warehouse="Snowflake">
 
-* dbt recognizes the `copy_grants` when calculating which grants need to be added or removed.
+* dbt accounts for the [`copy_grants` configuration](/reference/resource-configs/snowflake-configs#copying-grants) when calculating which grants need to be added or removed.
 
 </div>
 
