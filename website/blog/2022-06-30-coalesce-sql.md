@@ -18,7 +18,7 @@ COALESCE is an incredibly useful function that allows you to fill in unhelpful b
 
 > **What is a SQL Function?**
 >
-> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are EXTRACT, LOWER, and DATEDIFF. For example, the LOWER function takes a string value and returns an all lower-case version of that input string.
+> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [EXTRACT](https://docs.getdbt.com/blog/extract-sql-love-letter/), [LOWER](https://docs.getdbt.com/blog/lower-sql-love-letter/), and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the LOWER function takes a string value and returns an all lower-case version of that input string.
 
 ## How to use the COALESCE function
 
