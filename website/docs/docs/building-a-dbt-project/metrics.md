@@ -99,7 +99,7 @@ metrics:
 | Field       | Description                                                 | Example                         | Required? |
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
-| model       | The dbt model that powers this metric                       | dim_customers                   |     yes (no for `expression` metrics)    |
+| model       | The dbt model that powers this metric                       | dim_customers                   | <VersionBlock firstVersion="1.2">yes (no for `expression` metrics)</VersionBlock><VersionBlock lastVersion="1.1">yes</VersionBlock> |
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | type        | The type of calculation to perform when evaluating a metric | count_distinct                  | yes       |
