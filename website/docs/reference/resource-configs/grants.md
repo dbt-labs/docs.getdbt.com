@@ -1,71 +1,56 @@
 ---
-resource_types: all
+resource_types: [models,seeds,snapshots]
 datatype: "{<dictionary>}"
 default_value: {}
+id: "grants"
 ---
+
+<Snippet src="available-prerelease-beta-banner" />
+
+You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
+
+The grant resource configs enable you to apply permissions at build time to a specific set of recipients and model, seed, or snapshot. When your model, seed, or snapshot finishes building, dbt ensures that the grants on its view or table match exactly the grants you have configured.
+
+dbt aims to use the most efficient approach when updating grants, which varies based on the adapter you're using, and whether dbt is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that dbt runs.
+
+We encourage you to use grants as resource configs whenever possible now that they are available. In versions prior to v1.2, you were limited to using hooks for grants. Currently, you still might need to write grants statements manually and run them using hooks. For example, when you want to:
+* Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
+* Apply grants on other database objects besides views and tables.
+* Take advantage of more-advanced permission capabilities offered by your data platform, for which dbt does not (yet!) offer out-of-the-box support via resource configuration
+
+For example, if you want to create more granular row- and column-level access, use masking policies, or apply future grants. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
+
+You can set grants in `dbt_project.yml` and as a `config` yaml property that applies to the entire dbt project.
 
 <Tabs
   defaultValue="models"
   values={[
     { label: 'Models', value: 'models', },
-    { label: 'Sources', value: 'sources', },
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
-    { label: 'Tests', value: 'tests', },
-    { label: 'Analyses', value: 'analyses', },
-    { label: 'Macros', value: 'macros', },
   ]
 }>
+
 <TabItem value="models">
 
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
-
 models:
-  - name: model_name
+  - name: specific_model
     config:
-      meta: {<dictionary>}
-
-    columns:
-      - name: column_name
-        meta: {<dictionary>}
-
+      grants:
+        select: ['reporter', 'bi']
 ```
 
 </File>
 
-The `meta` config can also be defined:
+The `grants` config can also be defined:
+
 - under the `models` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a model's SQL file
 
 See [configs and properties](configs-and-properties) for details.
-
-</TabItem>
-
-<TabItem value="sources">
-
-<File name='models/schema.yml'>
-
-```yml
-version: 2
-
-sources:
-  - name: model_name
-    meta: {<dictionary>}
-
-    tables:
-      - name: table_name
-        meta: {<dictionary>}
-
-        columns:
-          - name: column_name
-            meta: {<dictionary>}
-
-```
-
-</File>
 
 </TabItem>
 
@@ -74,22 +59,16 @@ sources:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
-
 seeds:
   - name: seed_name
     config:
-      meta: {<dictionary>}
-
-    columns:
-      - name: column_name
-        meta: {<dictionary>}
-
+      grants:
+        select: ['reporter', 'bi']
 ```
 
 </File>
 
-The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](configs-and-properties) for details.
+The `grants` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](configs-and-properties) for details.
 
 </TabItem>
 
@@ -98,152 +77,115 @@ The `meta` config can also be defined under the `seeds` config block in `dbt_pro
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
-
 snapshots:
   - name: snapshot_name
-    config:
-      meta: {<dictionary>}
-
-    columns:
-      - name: column_name
-        meta: {<dictionary>}
-
+    config:  
+      grants:
+        select: ['reporter', 'bi']
 ```
 
 </File>
 
-The `meta` config can also be defined:
+The `grants` config can also be defined:
+
 - under the `snapshots` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a snapshot's SQL block
 
 See [configs and properties](configs-and-properties) for details.
 
 </TabItem>
-
-<TabItem value="analyses">
-
-The `meta` config is not currently supported for analyses.
-
-</TabItem>
-
-<TabItem value="macros">
-
-<File name='macros/schema.yml'>
-
-```yml
-version: 2
-
-macros:
-  - name: macro_name
-    meta: {<dictionary>}
-
-    arguments:
-      - name: argument_name
-        meta: {<dictionary>}
-
-```
-
-</File>
-
-</TabItem>
-
-<TabItem value="exposures">
-
-<File name='models/exposures.yml'>
-
-```yml
-version: 2
-
-exposures:
-  - name: exposure_name
-    meta: {<dictionary>}
-
-```
-
-</File>
-
-</TabItem>
-
 </Tabs>
 
 ## Definition
-The `meta` field can be used to set metadata for a resource. This metadata is compiled into the `manifest.json` file generated by dbt, and is viewable in the auto-generated documentation.
 
-Depending on the resource you're configuring, `meta` may be available within the `config` property, or as a top-level key. (For backwards compatibility, `meta` is always supported as a top-level key, though without the capabilities of config inheritance.)
+You can use the `grants` field to set permissions or grants for a resource. These grants will be compiled into the `manifest.json` file complied by dbt.
 
-<Changelog>
+## Database-specific requirements and notes
 
-* `v0.16.0`: This property was introduced
-* `v0.21.0`: Introduced the `config` property, and gave `meta` the capabilities of a config
+While we try to standardize the terms we use to describe different features, you will always find nuances in different databases. This section outlines some of those database-specific requirements and notes.
 
-</Changelog>
+### Common syntax 
 
-## Examples
-### Designate a model owner
-Additionally, indicate the maturity of a model using a `model_maturity:` key.
+In our examples, you will find terms like `select` and `another_user` because many databases use these terms, but be aware of the syntax your own database supports:
 
-<File name='models/schema.yml'>
+* Privileges: A right to perform an action in a database.
+* Grantees: A way to manage privileges. Recipients of granted privileges, also called "principals." Grantees can be a user, a group of users, a role held by users (Snowflake), a service account (GCP), and more.
 
-```yml
-version: 2
+<WHCode>
 
-models:
-  - name: users
-    meta:
-      owner: "@alice"
-      model_maturity: in dev
+<div warehouse="BigQuery">
 
-```
+- Use BigQuery-specific grantee and privilege names:
+  - Use `user:jeremy@dbtlabs.com` (do not use `jerco_user`)
+  - Use  `roles/bigquery.dataViewer` (do not use `select`)
 
-</File>
+<Snippet src="grants-vs-access-to" />
 
+## BigQuery examples
 
-### Designate a source column as containing PII
-
-<File name='models/schema.yml'>
-
-```yml
-version: 2
-
-sources:
-  - name: salesforce
-
-    tables:
-      - name: account
-        meta:
-          contains_pii: true
-        columns:
-          - name: email
-            meta:
-              contains_pii: true
-
-```
-
-</File>
-
-### Configure one meta attribute for all seeds
-
-<File name='dbt_project.yml'>
-
-```yml
-seeds:
-  +meta:
-    favorite_color: red
-```
-
-</File>
-
-### Override one meta attribute for a single model
-
-<File name='models/my_model.yml'>
+Granting permission using SQL and BigQuery:
 
 ```sql
-{{ config(meta = {
-    'single_key': 'override'
-}) }}
+{{ config(grants = {'roles/bigquery.dataViewer': ['user:someone@yourcompany.com']}) }}
+```
 
-select 1 as id
+Granting permission in a model schema using BigQuery:
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: specific_model
+    config:
+      grants:
+        roles/bigquery.dataViewer: ['user:someone@yourcompany.com']
 ```
 
 </File>
+
+</div>
+
+<div warehouse="Databricks">
+
+- OSS Apache Spark / Delta Lake do not support `grants`.
+- Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
+  - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
+  - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
+
+</div>
+
+<div warehouse="Redshift">
+
+* No special requirements at this time.
+
+</div>
+
+<div warehouse="Snowflake">
+
+* dbt accounts for the [`copy_grants` configuration](/reference/resource-configs/snowflake-configs#copying-grants) when calculating which grants need to be added or removed.
+
+</div>
+
+</WHCode>
+
+## General examples
+
+When granting permissions, you can optimize for single or multiple users.
+
+Granting a single permission:
+
+```sql
+{{ config(materialized = 'incremental', grants = {
+    'select': 'bi'
+}) }}
+
+```
+
+Granting multiple users the same permission:
+
+```sql
+{{ config(materialized = 'incremental', grants = {
+    'select': ['bi','reporter']
+}) }}
+
+```
