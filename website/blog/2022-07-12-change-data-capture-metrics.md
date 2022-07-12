@@ -336,7 +336,7 @@ However, each has its advantages and disadvantages.
 | Pros | Cons |
 |:---:|:---:|
 | Joanne doesn't have to worry about losing historical data | snapshots are highly complex and require more institutional knowledge for Joanne's team |
-|  | every time Joanne wants to make a code change that affects her metric calculations, she'll have to remember to write the change as a case/when statement |
+|  | every time Joanne wants to make a code change that affects her metric calculations, she'll have to remember to apply the change to each set of relevant records and union the outputs together |
 
 When deciding between the two solutions, you should consider the following:
 
