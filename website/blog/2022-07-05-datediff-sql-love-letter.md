@@ -1,7 +1,7 @@
 ---
 title: "DATEDIFF SQL function: Why we love it"
 description: "The DATEDIFF function will return the difference in specified units (ex. days, weeks, years) between a start date/time and an end date/time. It’s a simple and widely used function that you’ll find yourself using more often than you expect."
-slug: datediff-sql
+slug: datediff-sql-love-letter
 
 authors: [kira_furuichi]
 
