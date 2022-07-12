@@ -44,8 +44,8 @@ To set up a Redshift profile using IAM Authentication, set the `method`
 parameter to `iam` as shown below. Note that a password is not required when
 using IAM Authentication. For more information on this type of authentication,
 consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
-and [boto3
-docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
+and [boto3 docs for Redshift](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
+and [Redshift Serverless](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift-serverless.html#RedshiftServerless.Client.get_credentials)
 on generating user credentials with IAM Auth.
 
 If you receive the "You must specify a region" error when using IAM
