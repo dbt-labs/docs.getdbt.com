@@ -245,7 +245,7 @@ The final output of `fct_income_history` would look identical to `stg_snapshot_f
 
 ## Solution #2: Upstream Snapshots
 
-Alternatively, Joanne could snapshot her source data and add flexibility to her modeling so that all historical versions are calculated `at the same time`. Let’s look at our example.
+Alternatively, Joanne could snapshot her source data and add flexibility to her modeling so that all historical versions are calculated *at the same time*. Let’s look at our example.
 
 Joanne could track changes in the source data by adding snapshots directly on top of her raw data.
 
