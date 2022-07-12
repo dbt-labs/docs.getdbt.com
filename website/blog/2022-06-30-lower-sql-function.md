@@ -27,7 +27,7 @@ So how do you create uniformity for string values that you collect across all yo
 Using the LOWER function on a string value will return the input as an all lowercase string. It’s an effective way to create consistent capitalization for string values across your data.
 
 > **What is a SQL function?** 
-> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://docs.getdbt.com/blog/coalesce-sql-love-letter/), [EXTRACT](https://docs.getdbt.com/blog/extract-sql-love-letter), and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the `COALESCE` function takes a group of values and returns the first non-null value from that group.
+> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://docs.getdbt.com/blog/coalesce-sql-love-letter/), [EXTRACT](https://docs.getdbt.com/blog/extract-sql-love-letter), and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
 
 ## How to use the LOWER function
 
