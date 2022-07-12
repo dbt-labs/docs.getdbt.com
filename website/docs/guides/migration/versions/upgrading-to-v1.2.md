@@ -17,9 +17,9 @@ There are no breaking changes for end users of dbt. We are committed to providin
 
 ## For maintainers of adapter plugins
 
-### Cross Database Macros
+### Cross-database Macros
 
-In [https://github.com/dbt-labs/dbt-core/pull/5298](https://github.com/dbt-labs/dbt-core/pull/5298), we migrated a collection of ["cross-database macros"](cross-database-macros) from [dbt-utils](https://github.com/dbt-labs/dbt-utils) to dbt-core. Default implementations are automatically inherited by adapters and included in the testing suite. Adapter maintainers may need to override the implementation of one or more macros to align with database-specific syntax or optimize performance. For details on the testing suite, see: ["Testing a new adapter"](testing-a-new-adapter).
+In [dbt-core#5298](https://github.com/dbt-labs/dbt-core/pull/5298), we migrated a collection of ["cross-database macros"](cross-database-macros) from [dbt-utils](https://github.com/dbt-labs/dbt-utils) to dbt-core. Default implementations are automatically inherited by adapters and included in the testing suite. Adapter maintainers may need to override the implementation of one or more macros to align with database-specific syntax or optimize performance. For details on the testing suite, see: ["Testing a new adapter"](testing-a-new-adapter).
 
 The TL;DR rationale for this work is:
 1. Simplify dbt-utils development
@@ -52,7 +52,7 @@ The two macros below are simple Boolen-toggles (i.e. `True/False` value) indicat
 | `copy_grants()` | when an object is fully replaced on your database, do grants copy over? e.g. on Postgres this is never true, on Spark this is different for views vs. non-Delta tables vs. Delta tables, on Snowflake it depends on the user-supplied `copy_grants` configuration. true by default, which means “play it safe”: grants MIGHT have copied over, so dbt will run an extra query to check them + calculate diffs. | [`default__copy_grants()`](https://github.com/dbt-labs/dbt-core/blob/c25260e5dd2afa237a30db115605ece9629443d1/core/dbt/include/global_project/macros/adapters/apply_grants.sql#L3-L21)| [`snowflake__copy_grants()`](https://github.com/dbt-labs/dbt-snowflake/blob/d53c327e20c91522b4792ede75bbe50e16a9d9c3/dbt/include/snowflake/macros/adapters.sql#L297-L300) |
 | `support_multiple_grantees_per_dcl_statement()` | does this database support `grant {privilege} to user_a, user_b, ...`? or do `user_a` + `user_b` need their own separate grant statements? | [`default__support_multiple_grantees_per_dcl_statement()`](https://github.com/dbt-labs/dbt-core/blob/c25260e5dd2afa237a30db115605ece9629443d1/core/dbt/include/global_project/macros/adapters/apply_grants.sql#L24-L39) |  |
 
-If the above macros do not suffice, these `get_*_sql()` macros will need to be overwritten. They're all one-liners and might need small syntax tweaks to work on your database.
+If the above macros do not suffice, then at least one of these `get_*_sql()` macros will need to be overwritten. They're all one-liners and might need small syntax tweaks to work on your database.
 
 | macro | description | global project’s version | example override |
 | --- | --- | --- | --- |
@@ -61,7 +61,7 @@ If the above macros do not suffice, these `get_*_sql()` macros will need to be o
 | `get_revoke_sql()` | generate a REVOKE statement for a given relation given a privilege-grantee(s) pairing. grantees will be a list of grantees if supported by this database, otherwise just one. | [`default__get_revoke_sql()`](https://github.com/dbt-labs/dbt-core/blob/c25260e5dd2afa237a30db115605ece9629443d1/core/dbt/include/global_project/macros/adapters/apply_grants.sql#L81-L83) | [`bigquery__get_revoke_sql()`](https://github.com/dbt-labs/dbt-bigquery/blob/942d460fc60beb87325871903b26afee7e5f4d85/dbt/include/bigquery/macros/adapters/apply_grants.sql#L18-L20) |
 | any custom materialization (or override of a default materialization) | you have to add the lines for fetching and applying the grants `{% set grant_config = config.get('grants') %}` and `{% do apply_grants(target_relation, grant_config) %}` by default, the `should_revoke` argument of `apply_grants` is `True`. dbt will first run a query to “show” grants, then calculate diffs, then apply revoke/grant statements. you can use the `should_revoke` macro to determine whether this extra step is necessary. in cases where dbt is fully replacing an object, or creating one for the first time, grants may not be carried over — so it may be more efficient to skip the “show” step and just add the grants. |  | BigQuery’s [custom](https://github.com/dbt-labs/dbt-bigquery/blob/942d460fc60beb87325871903b26afee7e5f4d85/dbt/include/bigquery/macros/materializations/incremental.sql#L155-L156) incremental [materialization](https://github.com/dbt-labs/dbt-bigquery/blob/942d460fc60beb87325871903b26afee7e5f4d85/dbt/include/bigquery/macros/materializations/incremental.sql#L204) |
 
-if the above sets of macros still aren't cutting it, here's the final depth of complexity in which to wade.
+If the above sets of macros still aren't cutting it, here's the final depth of complexity in which to wade.
 
 | macro | description | global project’s version | example override |
 | --- | --- | --- | --- |
@@ -69,9 +69,9 @@ if the above sets of macros still aren't cutting it, here's the final depth of c
 | `call_dcl_statements()` | Call all DCL statements, i.e. actually run them against the database. This is the culmination of apply_grants. By default, this generates one big string (every grant/revoke statement, separated by ;), but some adapters will need to execute these differently. | [`default__call_dcl_statements()`](https://github.com/dbt-labs/dbt-core/blob/c25260e5dd2afa237a30db115605ece9629443d1/core/dbt/include/global_project/macros/adapters/apply_grants.sql#L119-L132) |  |
 | `Adapter.standardize_grants_dict()` | Input: result from query to “show grants” Returns: a dictionary of structure `{"privilege_name": [list, of, grantees], ...}` —> matches the structure of the user-supplied `grant_config` | (this is a python method in the  `core/dbt/adapters/base/impl.py`'s [`BaseAdapter.standardize_grants_dict()`](https://github.com/dbt-labs/dbt-core/blob/c25260e5dd2afa237a30db115605ece9629443d1/core/dbt/adapters/base/impl.py#L542-L567) |  |
 
-##### testing grants for your adapter
+##### Testing grants with your adapter
 
-the grants tests are implemented in the same way as the pytest tests that were introduced in dbt-core v1.1.0, in that they are importable and can you create adapter-specifc child classes of each test in your repo. for example see how [dbt-bigquery implements the tests](https://github.com/dbt-labs/dbt-bigquery/blob/main/tests/functional/adapter/test_grants.py). Notice the `BaseGrantsBigQuery` in which the mapping dict of standard privileges to BigQuery-specific prvilege names.
+The tests for grants are implemented in the same way as the pytest tests that were introduced in dbt-core v1.1.0, in that they are importable and can you create adapter-specifc child classes of each test in your repo. for example see how [dbt-bigquery implements the tests](https://github.com/dbt-labs/dbt-bigquery/blob/main/tests/functional/adapter/test_grants.py). Notice the `BaseGrantsBigQuery` in which the mapping dict of standard privileges to BigQuery-specific prvilege names.
 
 ```python
 class BaseGrantsBigQuery(BaseGrants):
@@ -95,17 +95,17 @@ DBT_TEST_USER_2=dbt_test_role_2
 DBT_TEST_USER_3=dbt_test_role_3
 ```
 
-### materializations inheritance!
+### Materialization inheritance!
 
 Via a community contribution from the folks at Layer.ai, [dbt-core#5348](https://github.com/dbt-labs/dbt-core/pull/5348) enables materializations to be inherited from parent adapters in much the same was as macros are dispatched.
 
 this is a big deal for folks who are inheriting adapters, e.g. as dbt-synapse does with dbt-sqlserver, and for the family of adapters inherit from dbt-spark today.
 
-### more python function available in the dbt jinja context
+### More python functions now available in the dbt jinja context
 
 python’s `set` and `zip` , and the most of the `itertools`  are available in the dbt-jinja context. Yay! ([dbt-core#5107](https://github.com/dbt-labs/dbt-core/pull/5107 ) and [dbt-core#5140](https://github.com/dbt-labs/dbt-core/pull/5140))
 
-### change to default seed materialization
+### Slight change to the default seed materialization
 
 **who:** folks who override the entire seed materialization, and anyone who overrides materializations for small reasons. this is a great example of how the global_project can be modified to reduce boiler plate within adapters.
 
