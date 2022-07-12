@@ -45,7 +45,7 @@ Google BigQuery, Amazon Redshift, Snowflake, Postgres, and Databricks all suppor
 
 ## LOWER SQL function example
 
-Let’s take this to an actual example! Below, you’ll see the first three rows from the `customers` <Term id="table" /> in the jaffle_shop, a simple dataset and dbt project, that has three columns: `customer_id`, `first_name`, and `last_name`.
+Let’s take this to an actual example! Below, you’ll see the first three rows from the `customers` <Term id="table" /> in the [jaffle_shop](https://github.com/dbt-labs/jaffle_shop), a simple dataset and dbt project, that has three columns: `customer_id`, `first_name`, and `last_name`.
 
 | **customer_id** | **first_name** | **last_name** |
 | --------------- | -------------- | ------------- |
