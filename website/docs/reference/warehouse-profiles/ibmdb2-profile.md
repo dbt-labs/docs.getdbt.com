@@ -13,7 +13,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Maintained by:** Community  
 **Author:** [Rasmus Nyberg](https://github.com/aurany)   
 **Source:** [GitHub](https://github.com/aurany/dbt-ibmdb2)  
-**Core version:** v1.0.8   
+**Core version:** v1.0.4   
 **dbt Cloud:** Not Supported     
 
 ![dbt-ibmdb2 stars](https://img.shields.io/github/stars/aurany/dbt-ibmdb2?style=for-the-badge)
