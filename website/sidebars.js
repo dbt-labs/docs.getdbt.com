@@ -60,6 +60,7 @@ const sidebarSettings = {
         "docs/contributing/testing-a-new-adapter",
         "docs/contributing/documenting-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
+        "docs/contributing/long-lived-discussions-guidelines",
       ],
     },
     {
@@ -543,6 +544,8 @@ const sidebarSettings = {
         "reference/warehouse-profiles/iomete-profile",
         "reference/warehouse-profiles/duckdb-profile",
         "reference/warehouse-profiles/sqlite-profile",
+        "reference/warehouse-profiles/mysql-profile",
+        "reference/warehouse-profiles/ibmdb2-profile",
       ],
     },
     {
@@ -639,7 +642,17 @@ const sidebarSettings = {
             "guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
-          ]
+          ],
+        },
+        {
+          type: "category",
+          label: "Customizing CI/CD",
+          link: { type: 'doc', id: 'guides/orchestration/custom-cicd-pipelines/1-cicd-background' },
+          items: [
+            "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
+            "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
+            "guides/orchestration/custom-cicd-pipelines/4-something-to-consider",
+          ],
         },
       ]
     },
@@ -657,6 +670,7 @@ const sidebarSettings = {
             slug: '/guides/migration/versions',
           },
           items: [
+            "guides/migration/versions/upgrading-to-v1.2",
             "guides/migration/versions/upgrading-to-v1.1",
             "guides/migration/versions/upgrading-to-v1.0",
             "guides/migration/versions/upgrading-to-v0.21",

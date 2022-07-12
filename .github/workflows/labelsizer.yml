@@ -17,7 +17,7 @@ jobs:
           m_label: 'size: medium'
           m_max_size: '250'
           l_label: 'size: large'
-          l_max_size: '1000'
+          l_max_size: '100000'
           xl_label: 'size: x-large'
           fail_if_xl: 'false'
           files_to_ignore: ''
