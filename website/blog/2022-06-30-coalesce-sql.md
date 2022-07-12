@@ -18,7 +18,7 @@ COALESCE is an incredibly useful function that allows you to fill in unhelpful b
 
 > **What is a SQL Function?**
 >
-> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are EXTRACT, LOWER, and DATEDIFF. For example, the `LOWER` function takes a string value and returns an all lower-case version of that input string.
+> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are EXTRACT, LOWER, and DATEDIFF. For example, the LOWER function takes a string value and returns an all lower-case version of that input string.
 
 ## How to use the COALESCE function
 
@@ -58,7 +58,7 @@ In this `orders` table, you can assume here that any NULL `order_status` value m
 select
 	order_id,
 	order_date,
-	coalesce(order_status, ‘not_returned’) as order_status
+	coalesce(order_status, 'not_returned') as order_status
 from orders
 ```
 
