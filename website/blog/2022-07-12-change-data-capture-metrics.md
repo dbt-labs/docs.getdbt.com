@@ -77,7 +77,11 @@ She gets the following output:
 
 But a few days later, her source data changes for January - a manufacturing cost was dated incorrectly, and now has been updated in the source. Joanne executes a `dbt run` again on February 3rd. Now when she queries `fct_income`, she gets the following output:
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/table-2.png)
+| month_year | product_category | revenue | run_timestamp |
+|:---:|:---:|:---:|:---:|
+| January 2022 | clothing | 50 | 02/03/22 16:00:00 | 
+| January 2022 | electronics | 150 | 02/03/22 16:00:00 | 
+| January 2022 | books | 200 | 02/03/22 16:00:00 | 
 
 A few days later, Joanne finds a bug in her `dbt code`. She fixes the bug and executes a dbt run again on February 10th. Now, when she queries `fct_income`, she gets the following output:
 
