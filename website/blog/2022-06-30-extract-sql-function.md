@@ -50,9 +50,9 @@ You may also see the DATE_PART function used in place of the EXTRACT function. B
 
 ## EXTRACT function example
 
-Let’s take this to an actual example! We’re going to use the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models/orders.sql), a simple dataset and dbt project, to help us. The jaffle shop’s \`orders\` <Term id="table" /> has some fields around an order’s status, order date, and order amount.
+Let’s take this to an actual example! We’re going to use the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models/orders.sql), a simple dataset and dbt project, to help us. The jaffle shop’s `orders` <Term id="table" /> has some fields around an order’s status, order date, and order amount.
 
-You can extract different time-based values (weeks, months, years, etc.) from the \`order_date\` in  \`orders\` model using the following code:
+You can extract different time-based values (weeks, months, years, etc.) from the `order_date` in  the `orders` model using the following code:
 
 ```sql
 select 
@@ -61,7 +61,7 @@ select
 extract(week from order_date) as order_week,
 	extract(month from order_date) as order_month,
 	extract(year from order_date) as order_year
-from {{ ref(‘orders’) }}
+from {{ ref('orders') }}
 ```
 
 After running this query, your results would look a little something like this:
