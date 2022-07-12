@@ -293,38 +293,30 @@ Because snapshots only capture changes detected at the time the dbt snapshot com
 
 The original `fct_income` model now calculates the metrics for each version of source data, every time Joanne executes a `dbt run`. In other words, the downstream `fct_` models are **version-aware**. Because of this, Joanne changes the name of `fct_income` to `fct_income_history` to be more descriptive.
 
-In order to track changes in business logic, she can create case-statements in her models that depend on the valid date of a given field. 
+In order to track changes in business logic, she can apply each version of logic to the relevant records and union together. 
+
+Remember the bug Joanne found in her dbt code. With this solution, she can track this change in business logic in the `stg_costs` model:
 
 ```sql
-case
-   when dbt_valid_to < some_date
-      then <original_logic>
-   when dbt_valid_to between some_date and next_date
-      then <new_logic>
-   else 
-       <current_logic> 
-end as metric_x
-```
+-- apply the old logic for any records that were valid on or before the logic change
+select 
+	cost_id,
+	...,
+	cost + tax as final_cost, -- old logic
+       1 || ‘-’ || dbt_valid_from as version
+from costs_snapshot
+where dbt_valid_from <= to_timestamp('02/10/22 08:00:00')
 
-*Note: This case-statement can even be pulled out into a macro if the number of changes becomes substantial.*
+union all
 
-After joining in the seed file to determine which versions are “correct” (check out [Tackling the complexity of joining snapshots](https://docs.getdbt.com/blog/joining-snapshot-complexity)), her new DAG looks like this:
-
-![](/img/blog/2022-07-12-change-data-capture-metrics/final-dag.png)
-
-Again, the final output of `fct_income_history` would look identical to `stg_snapshot_fct_income` from her initial approach: 
-
-| month_year | product_category | revenue | run_timestamp | correct_version |
-|:---:|:---:|:---:|:---:|:---:|
-| January 2022 | clothing | 100 | 01/30/22 12:00:00 | FALSE |
-| January 2022 | electronics | 200 | 01/30/22 12:00:00 | FALSE |
-| January 2022 | books | 300 | 01/30/22 12:00:00 | FALSE |
-| January 2022 | clothing | 50 | 02/03/22 16:00:00 | FALSE |
-| January 2022 | electronics | 150 | 02/03/22 16:00:00 | FALSE |
-| January 2022 | books | 200 | 02/03/22 16:00:00 | FALSE |
-| January 2022 | clothing | 52 | 02/10/22 08:00:00 | TRUE |
-| January 2022 | electronics | 152 | 02/10/22 08:00:00 | TRUE |
-| January 2022 | books | 202 | 02/10/22 08:00:00 | TRUE |
+-- apply the new logic for any records that were valid after the logic change
+select 
+	cost_id,
+	...,
+	cost as final_cost, -- new logic
+       2 || ‘-’ || dbt_valid_from as version
+from costs_snapshot
+where to_timestamp('02/10/22 08:00:00') between dbt_valid_to and coalesce(dbt_valid_from, to_timestamp('01/01/99 00:00:00'))
 
 ## Final thoughts
 
