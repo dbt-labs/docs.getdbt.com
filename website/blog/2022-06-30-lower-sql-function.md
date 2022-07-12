@@ -34,7 +34,7 @@ Using the LOWER function on a string value will return the input as an all lower
 The syntax for using the LOWER function looks like the following:
 
 ```sql
-lower(‘<string_value>’)
+lower('<string_value>')
 ```
 
 Executing this command in a SELECT statement will return the lowercase version of the input string. You may additionally use the LOWER function in WHERE clauses and joins.
