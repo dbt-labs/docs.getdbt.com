@@ -14,7 +14,7 @@ is_featured: true
 
 It’s inevitable in the field of analytics engineering: you’re going to encounter moments when there’s mysterious or unhelpful blank values in your data. Null values surely have their time and place, but when you need those null values filled with more meaningful data, COALESCE comes to the rescue.
 
-COALESCE is an incredibly useful function that allows you to fill in unhelpful blank values that may show up in your data. In the words of analytics engineer [Lauren Benezra](https://docs.getdbt.com/author/lauren_benezra), you will probably almost never see a data model that doesn’t use `COALESCE` somewhere.
+COALESCE is an incredibly useful function that allows you to fill in unhelpful blank values that may show up in your data. In the words of analytics engineer [Lauren Benezra](https://docs.getdbt.com/author/lauren_benezra), you will probably almost never see a data model that doesn’t use COALESCE somewhere.
 
 > **What is a SQL Function?**
 >
