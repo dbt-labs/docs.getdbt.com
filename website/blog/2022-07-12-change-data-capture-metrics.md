@@ -71,9 +71,9 @@ She gets the following output:
 
 | month_year | product_category | revenue | run_timestamp |
 |:---:|:---:|:---:|:---:|
-| January 2022 | clothing | 100 | 01/30/22 12:00:00 | 2018-01-01 |
-| January 2022 | electronics | 200 | 01/30/22 12:00:00 | 2018-01-01 |
-| January 2022 | books | 100 | 01/30/22 12:00:00 | 2018-01-01 |
+| January 2022 | clothing | 100 | 01/30/22 12:00:00 | 
+| January 2022 | electronics | 200 | 01/30/22 12:00:00 | 
+| January 2022 | books | 100 | 01/30/22 12:00:00 | 
 
 But a few days later, her source data changes for January - a manufacturing cost was dated incorrectly, and now has been updated in the source. Joanne executes a `dbt run` again on February 3rd. Now when she queries `fct_income`, she gets the following output:
 
