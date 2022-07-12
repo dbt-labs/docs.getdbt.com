@@ -270,7 +270,7 @@ Remember the source data change Joanne noticed — a manufacturing cost was date
     config(
       target_database='analytics',
       target_schema='snapshots',
-      unique_key='id',
+      unique_key='cost_id',
 
       strategy='timestamp',
       updated_at='updated_at',
