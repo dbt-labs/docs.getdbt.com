@@ -110,13 +110,11 @@ In our examples, you find terms like `select` and `another_user` because many da
 
 <div warehouse="BigQuery">
 
-- Be aware that the `grants` config is unrelated to the `grant_access_to` config:
-  - **`grants_access_to`:** Enables you to set up authorized views. When configured, dbt provides authorized view access to other datasets, without leaking additional data from those datasets. Fore more on this, see [BigQuery configurations: Authorized views](/reference/resource-configs/bigquery-configs#authorized-views)
-  - **`grants`:** Provides specific permissions to users, groups, or service accounts for managing access to datasets you're producing with dbt.You could grant a user, group or service account access to an authorized view set up by the `grants_access_to` feature.
-- Use BigQuery-specific grantee and privilege names. 
-  * Use `user:jeremy@dbtlabs.com` (do not use `jerco_user`)
-  * Use  `roles/bigquery.dataViewer` (do not use `select`)
+- Use BigQuery-specific grantee and privilege names:
+  - Use `user:jeremy@dbtlabs.com` (do not use `jerco_user`)
+  - Use  `roles/bigquery.dataViewer` (do not use `select`)
 
+<Snippet src="grants-vs-access-to" />
 
 ## BigQuery examples
 
