@@ -113,7 +113,7 @@ seeds:
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
-      [grant](grant): {<dictionary>}
+      [grants](grants): {<dictionary>}
 
 ```
 
