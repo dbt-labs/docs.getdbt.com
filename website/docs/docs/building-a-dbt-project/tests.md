@@ -236,7 +236,6 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
-
 ## Storing test failures
 
 <Changelog>
@@ -256,7 +255,6 @@ Note that, if you elect to store test failures:
 - A test's results will always **replace** previous failures for the same test.
 
 ## FAQs
-
 
 <FAQ src="Tests/test-one-model" />
 <FAQ src="Runs/failed-tests" />
