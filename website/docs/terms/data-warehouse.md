@@ -80,5 +80,5 @@ Data warehouses have come a long way [in the last 40 years](https://www.getdbt.c
 
 - [Operational analytics](https://www.notion.so/dbtlabs/Glossary-Data-warehouse-b6ac46004f3a4813bc34e33efeb4c773#6e658bc658f44036979c4d96b46620f3)
 - [Glossary: ETL](https://docs.getdbt.com/terms/etl/)
-- [Glossary: ELT](https://docs.getdbt.com/terms/elt/)]
+- [Glossary: ELT](https://docs.getdbt.com/terms/elt/)
 
