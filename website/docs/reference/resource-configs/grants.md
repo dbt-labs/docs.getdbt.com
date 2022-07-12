@@ -101,7 +101,7 @@ While we try to standardize the terms we use to describe different features, you
 
 ### Common syntax 
 
-In our examples, you find terms like `select` and `another_user` because many databases use these terms, but be aware of the syntax your own database supports:
+In our examples, you will find terms like `select` and `another_user` because many databases use these terms, but be aware of the syntax your own database supports:
 
 * Privileges: A right to perform an action in a database.
 * Grantees: A way to manage privileges. Recipients of granted privileges, also called "principals." Grantees can be a user, a group of users, a role held by users (Snowflake), a service account (GCP), and more.
@@ -143,7 +143,7 @@ models:
 <div warehouse="Databricks">
 
 - OSS Apache Spark / Delta Lake do not support `grants`.
-- Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in teh Dataabricks documentation:
+- Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
   - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
   - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
 

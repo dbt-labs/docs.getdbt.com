@@ -25,7 +25,7 @@ Effective database administration sometimes requires additional SQL statements t
 - Create a share on Snowflake
 - Cloning a database on Snowflake
 
-dbt provides two different interfaces for you to version control and execute these statements as part of your dbt project — hooks and operations.
+dbt provides hooks and operations so you can version control and execute these statements as part of your dbt project.
 
 ## About hooks
 
@@ -53,6 +53,60 @@ You can use hooks to trigger actions at certain times when running an operation 
 For more information about when hooks can be triggered, see reference sections for [`on-run-start` and `on-run-end` hooks](on-run-start-on-run-end) and [`pre-hook`s and `post-hook`s](pre-hook-post-hook).
 
 You can use hooks to provide database-specific functionality not available out-of-the-box with dbt. For example, you can use a `config` block to run an `ALTER TABLE` statement right after building an individual model using a `post-hook`:
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    post_hook=[
+      "alter table {{ this }} ..."
+    ]
+) }}
+```
+
+</File>
+
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.1">
+
+### Examples using hooks
+
+Here's a minimal example of using hooks to grant privileges. For more information, see [`on-run-start` & `on-run-end` hooks](on-run-start-on-run-end) and [`pre-hook` & `post-hook`](pre-hook-post-hook) reference sections.
+
+<File name='dbt_project.yml'>
+
+```yml
+on-run-end:
+  - "grant usage on {{ target.schema }} to role reporter"
+
+models:
+  +post-hook:
+    - "grant select on {{ this }} to role reporter"
+
+```
+
+</File>
+
+You can also apply the `post-hook` to individual models using a `config` block:
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    post_hook=[
+      "grant select on {{ this }} to role reporter"
+    ]
+) }}
+
+select ...
+
+```
+
+</File>
+
+You should use database-specific syntax when appropriate:
 
 <WHCode>
 
@@ -134,44 +188,6 @@ select ...
 
 </WHCode>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.1">
-
-### Examples using hooks
-
-Here's a minimal example of using hooks to grant privileges. You can find more information in the reference sections for [`on-run-start` and `on-run-end` hooks](on-run-start-on-run-end) and [`pre-hook`s and `post-hook`s](pre-hook-post-hook).
-
-<File name='dbt_project.yml'>
-
-```yml
-on-run-end:
-  - "grant usage on {{ target.schema }} to role reporter"
-
-models:
-  +post-hook:
-    - "grant select on {{ this }} to role reporter"
-
-```
-
-</File>
-
-You can also apply the `post-hook` to individual models using a `config` block:
-
-<File name='models/<model_name>.sql'>
-
-```sql
-{{ config(
-    post_hook=[
-      "grant select on {{ this }} to role reporter"
-    ]
-) }}
-
-select ...
-
-```
-
-</File>
 </VersionBlock>
 
 ### Calling a macro in a hook
