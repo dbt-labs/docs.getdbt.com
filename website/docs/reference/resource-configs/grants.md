@@ -176,7 +176,7 @@ Granting a single permission:
 
 ```sql
 {{ config(materialized = 'incremental', grants = {
-    'select': 'other_user'
+    'select': 'bi'
 }) }}
 
 ```
@@ -185,7 +185,7 @@ Granting multiple users the same permission:
 
 ```sql
 {{ config(materialized = 'incremental', grants = {
-    'select': ['other_user','admin_user']
+    'select': ['bi','reporter']
 }) }}
 
 ```
