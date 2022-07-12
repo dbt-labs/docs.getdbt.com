@@ -55,7 +55,7 @@ Let’s take this to an actual example! Below, you’ll see the first three rows
 
 You can lower the first name and last name of the `customers` model using the following code:
 
-```
+```sql
 select 
 	customer_id,
 	lower(first_name) as first_name,
