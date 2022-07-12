@@ -6,7 +6,7 @@ title: "Oracle Profile"
 
 **Maintained by:** Oracle    
 **Source:** [Github](https://github.com/oracle/dbt-oracle)    
-**Core version:** v1.0.7     
+**Core version:** v1.1.1     
 **dbt Cloud:** Not Supported    
 **dbt Slack channel** [#db-oracle](https://getdbt.slack.com/archives/C01PWH4TXLY)       
 
@@ -18,9 +18,54 @@ dbt-oracle can be installed via the Python Package Index (PyPI) using pip
 
     pip install dbt-oracle
 
+### Configure the Python driver mode
+
+:::info 
+[python-oracledb](https://oracle.github.io/python-oracledb/) is the renamed, major release of Oracle's popular cx_Oracle interface
+:::
+
+[python-oracledb](https://oracle.github.io/python-oracledb/) makes it optional to install the Oracle Client libraries. 
+This driver supports 2 modes
+
+1. **Thin mode (preferred) ** : Python process directly connects to the Oracle database. This mode does not need the Oracle Client libraries
+2. **Thick mode** : Python process links with the Oracle Client libraries. Some advanced Oracle database functionalities (for e.g. Advanced Queuing and Scrollable cursors) are currently available via Oracle Client libraries
+
+It is highly recommended to use the **thin** mode as it vastly simplifies installation. You can configure the driver mode using the environment variable `ORA_PYTHON_DRIVER_TYPE`
+
+| Driver Mode            | Oracle Client libraries required? | Configuration |
+|------------------------|-----------------------------------| ------------- |
+| Thin                   | No                                | `ORA_PYTHON_DRIVER_TYPE=thin`|
+| Thick                  | Yes                               | `ORA_PYTHON_DRIVER_TYPE=thick` |
+| cx_oracle (old driver) | Yes                               | `ORA_PYTHON_DRIVER_TYPE=cx` |
+
+The default value of `ORA_PYTHON_DRIVER_TYPE` is `cx`. This might change in the future as more users migrate towards the new python driver.
+
+<Tabs
+defaultValue="thin"
+  values={[
+    { label: 'Thin', value: 'thin'},
+    { label: 'Thick', value: 'thick_or_cx'}]
+}>
+
+<TabItem value="thin">
+
+  ```bash
+  export ORA_PYTHON_DRIVER_TYPE=thin
+  ```
+
+</TabItem>
+
+<TabItem value="thick_or_cx">
+
+  ```bash
+  export ORA_PYTHON_DRIVER_TYPE=thick
+  # or 
+  export ORA_PYTHON_DRIVER_TYPE=cx # default
+  ```
+
 ### Install Oracle Instant Client libraries
 
-To use dbt-oracle, you will need the [Oracle Instant Client libraries](https://www.oracle.com/database/technologies/instant-client.html) installed. These provide the necessary network connectivity allowing dbt-oracle to access an Oracle Database instance.
+In thick mode or the old cx_oracle mode, you will need the [Oracle Instant Client libraries](https://www.oracle.com/database/technologies/instant-client.html) installed. These provide the necessary network connectivity allowing dbt-oracle to access an Oracle Database instance.
 
 Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where available on Linux, Windows and macOS (Intel x86). It is recommended to use the latest client possible: Oracle’s standard client-server version interoperability allows connection to both older and newer databases.
 
@@ -135,6 +180,101 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
 
 
 </Tabs>
+</TabItem>
+</Tabs>
+
+## Configure wallet for Oracle Autonomous Database in Cloud
+
+dbt can connect to Oracle Autonomous Database (ADB) in Oracle Cloud using either one-way TLS (Transport Layer Security) or mutual TLS (mTLS). One-way TLS and mTLS provide enhanced security for authentication and encryption.
+A database username and password is still required for dbt connections which can be configured as explained in the next section [Connecting to Oracle Database](#connecting-to-oracle-database).
+
+<Tabs
+  defaultValue="one-way-tls"
+  values={[
+    { label: 'One-way TLS', value: 'one-way-tls'},
+    { label: 'Mutual TLS', value: 'm-tls'}]
+}>
+
+<TabItem value="one-way-tls">
+
+With one-way TLS, dbt can connect to Oracle ADB without using a wallet. Both Thin and Thick modes of the python-oracledb driver support one-way TLS. 
+
+:::info
+In Thick mode, dbt can connect through one-way TLS only when using Oracle Client library versions 19.14 (or later) or 21.5 (or later).
+:::
+
+Refer to the blog post [Easy wallet-less connections to Oracle Autonomous Databases in Python](https://blogs.oracle.com/opal/post/easy-way-to-connect-python-applications-to-oracle-autonomous-databases) to enable one-way TLS for your Oracle ADB instance.
+</TabItem>
+
+<TabItem value="m-tls">
+
+For mutual TLS connections, a wallet needs be downloaded from the OCI console and the python driver needs to be configured to use it. 
+
+#### Install the Wallet and Network Configuration Files
+
+From the Oracle Cloud console for the database, download the wallet zip file using the `DB Connection` button. The zip contains the wallet and network configuration files. 
+
+:::warning Note
+Keep wallet files in a secure location and share them only with authorized users.
+:::
+
+Unzip the wallet zip file.
+
+<Tabs
+defaultValue="thin"
+  values={[
+    { label: 'Thin', value: 'thin'},
+    { label: 'Thick', value: 'thick_or_cx'}]
+}>
+
+<TabItem value="thin">
+In Thin mode, only two files from the zip are needed:
+
+- `tnsnames.ora` - Maps net service names used for application connection strings to your database services
+
+- `ewallet.pem` - Enables SSL/TLS connections in Thin mode. Keep this file secure
+
+After unzipping the files in a secure directory, set the **TNS_ADMIN** and **WALLET_LOCATION** environment variables to the directory name.
+
+```bash
+export WALLET_LOCATION=/path/to/directory_containing_ewallet.pem
+export WALLET_PASSWORD=***
+export TNS_ADMIN=/path/to/directory_containing_tnsnames.ora
+```
+Optionally, if `ewallet.pem` file is encrypted using a wallet password, specify the password using environment variable **WALLET_PASSWORD**
+
+</TabItem>
+
+<TabItem value="thick_or_cx">
+In Thick mode, the following files from the zip are needed:
+
+- `tnsnames.ora` - Maps net service names used for application connection strings to your database services
+- `sqlnet.ora` - Configures Oracle Network settings
+- `cwallet.sso` - Enables SSL/TLS connections
+
+After unzipping the files in a secure directory, set the **TNS_ADMIN** environment variable to that directory name. 
+
+```bash
+export TNS_ADMIN=/path/to/directory_containing_tnsnames.ora
+```
+
+Next, edit the `sqlnet.ora` file to point to the wallet directory.
+
+<File name='sqlnet.ora'>
+
+```text
+WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="/path/to/wallet/directory")))
+SSL_SERVER_DN_MATCH=yes
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
 
 ## Connecting to Oracle Database
 
@@ -273,37 +413,6 @@ dbt_test:
 </TabItem>
 
 </Tabs>
-
-## Connecting to Oracle Autonomous Database in Cloud
-
-To enable connection to Oracle Autonomous Database in Oracle Cloud, a wallet needs be downloaded from the cloud, and cx_Oracle needs to be configured to use it. The wallet gives mutual TLS which provides enhanced security for authentication and encryption. A database username and password is still required for your application connections.
-
-### Install the Wallet and Network Configuration Files
-
-From the Oracle Cloud console for the database, download the wallet zip file. It contains the wallet and network configuration files. Note: keep wallet files in a secure location and share them only with authorized users.
-
-Unzip the wallet zip file. For cx_Oracle, only these files from the zip are needed:
-
-- `tnsnames.ora` - Maps net service names used for application connection strings to your database services
-- `sqlnet.ora` - Configures Oracle Network settings
-- `cwallet.sso` - Enables SSL/TLS connections
-
-After downloading the wallet, put the unzipped wallet files in a secure directory and set the TNS_ADMIN environment variable to that directory name. Next, edit the sqlnet.ora file to point to the wallet directory.
-
-<File name='sqlnet.ora'>
-
-```text
-WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="/path/to/wallet/directory")))
-SSL_SERVER_DN_MATCH=yes
-```
-
-</File>
-
-:::info TLS v/s mTLS
-
-If you have enabled TLS connections on your Database instance then dbt can connect using only database username, password and the Oracle Net connect name given in the unzipped tnsnames.ora file.
-
-:::
 
 
 ## Supported Features
