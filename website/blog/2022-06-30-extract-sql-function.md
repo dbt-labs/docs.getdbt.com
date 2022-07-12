@@ -28,7 +28,7 @@ One of our favorite things about the EXTRACT function is how readable it is. Som
 
 To use the EXTRACT function, you’ll simply specify the date part you want extracted out and the field you want to extract from. You can extract many different date parts, but you’ll most commonly see year, month, week of year, or quarter extracted from a date.
 
-```sql
+```yaml
 extract(<date_part> from <date/time field>)
 ```
 
@@ -58,7 +58,7 @@ You can extract different time-based values (weeks, months, years, etc.) from th
 select 
 	order_id,
 	order_date,
-extract(week from order_date) as order_week,
+	extract(week from order_date) as order_week,
 	extract(month from order_date) as order_month,
 	extract(year from order_date) as order_year
 from {{ ref('orders') }}
