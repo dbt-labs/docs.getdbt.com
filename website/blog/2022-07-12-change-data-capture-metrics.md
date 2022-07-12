@@ -79,17 +79,17 @@ But a few days later, her source data changes for January - a manufacturing cost
 
 | month_year | product_category | revenue | run_timestamp |
 |:---:|:---:|:---:|:---:|
-| January 2022 | clothing | 50 | 02/03/22 16:00:00 | 
-| January 2022 | electronics | 150 | 02/03/22 16:00:00 | 
-| January 2022 | books | 200 | 02/03/22 16:00:00 | 
+| January 2022 | clothing | **50** | 02/03/22 16:00:00 | 
+| January 2022 | electronics | **150** | 02/03/22 16:00:00 | 
+| January 2022 | books | **200** | 02/03/22 16:00:00 | 
 
 A few days later, Joanne finds a bug in her `dbt code`. She fixes the bug and executes a dbt run again on February 10th. Now, when she queries `fct_income`, she gets the following output:
 
 | month_year | product_category | revenue | run_timestamp |
 |:---:|:---:|:---:|:---:|
-| January 2022 | clothing | 52 | 02/10/22 08:00:00 | 
-| January 2022 | electronics | 152 | 02/10/22 08:00:00 | 
-| January 2022 | books | 202 | 02/10/22 08:00:00 | 
+| January 2022 | clothing | **52** | 02/10/22 08:00:00 | 
+| January 2022 | electronics | **152** | 02/10/22 08:00:00 | 
+| January 2022 | books | **202** | 02/10/22 08:00:00 | 
 
 When the head of sales messages Joanne the following question: “Can you tell me the revenue for January 2022 for all clothing products?”, she’s unsure which number to give: 100, 50, or 52.
 
@@ -317,6 +317,7 @@ select
        2 || ‘-’ || dbt_valid_from as version
 from costs_snapshot
 where to_timestamp('02/10/22 08:00:00') between dbt_valid_to and coalesce(dbt_valid_from, to_timestamp('01/01/99 00:00:00'))
+```
 
 ## Final thoughts
 
