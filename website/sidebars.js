@@ -546,6 +546,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/duckdb-profile",
         "reference/warehouse-profiles/sqlite-profile",
         "reference/warehouse-profiles/mysql-profile",
+        "reference/warehouse-profiles/ibmdb2-profile",
       ],
     },
     {
