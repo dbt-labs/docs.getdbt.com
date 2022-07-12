@@ -52,7 +52,7 @@ Not to mention, you will save your analytics engineer and data analyst a few hea
 
 Data warehouses have extensive security features which allow you to control who has access to what. You have the ability to give someone as little or extensive permissions as you wish. Warehouses give you the ability to create users and assign them roles. Each role has its own set of permissions to which databases and <Term id="table">tables</Term> it can see. Then, you can also choose who is allowed to query those tables or even update and delete them. 
 
-When anyone in your org can easily access your data, bad things can happen. You riskthe potential of important data being deleted or incorrectly edited. If you are using Excel spreadsheets for data pulls, this is especially prone to human error. 
+When anyone in your organization can easily access your data, bad things can happen. You risk the potential of important data being deleted, incorrectly edited, or inappropriately accessed. Data warehouses users, roles, policies, and security measures can help ensure data is in the right hands of the right people.
 
 ### Fast reporting
 
