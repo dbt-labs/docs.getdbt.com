@@ -15,13 +15,25 @@ dbt Core v1.2 will soon be available as a **beta prerelease.** Join the #dbt-pre
 
 There are no breaking changes for end users of dbt. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-### For maintainers of adapter plugins
+## For maintainers of adapter plugins
 
-#### Cross Database Macros
+### Cross Database Macros
 
-We added a collection of ["cross-database macros"](cross-database-macros) to dbt Core v1.2. Default implementations are automatically inherited by adapters and included in the testing suite. Adapter maintainers may need to override the implementation of one or more macros to align with database-specific syntax or optimize performance. For details on the testing suite, see: ["Testing a new adapter"](testing-a-new-adapter).
+In [https://github.com/dbt-labs/dbt-core/pull/5298](https://github.com/dbt-labs/dbt-core/pull/5298), we migrated a collection of ["cross-database macros"](cross-database-macros) from [dbt-utils](https://github.com/dbt-labs/dbt-utils) to dbt-core. Default implementations are automatically inherited by adapters and included in the testing suite. Adapter maintainers may need to override the implementation of one or more macros to align with database-specific syntax or optimize performance. For details on the testing suite, see: ["Testing a new adapter"](testing-a-new-adapter).
 
-#### Grants
+The TL;DR rationale for this work is:
+1. Simplify dbt-utils development
+2. Allow some packages to no longer depend on dbt-utils as a package
+3. Provide adapter maintainers tests that can but used in the adapter repo CI, as opposed to in a shim package
+
+As for how to make it happen, looking at the following PRs for dbt-Labs-maintained adapters show it clearly:
+
+- [dbt-bigquery#192](https://github.com/dbt-labs/dbt-bigquery/pull/192) 
+- [dbt-redshift#120](https://github.com/dbt-labs/dbt-redshift/pull/120) 
+- [dbt-snowflake#162](https://github.com/dbt-labs/dbt-snowflake/pull/162) 
+
+
+### Grants
 
 Managing access grants are one of the most asked for features from dbt users. We’re delivering this capability, but naturally there’s variance across data platforms as to how grants work, so time for adapter maintainers to roll their sleeves up. You might get lucky and not have to override any of them, but in case you do, below are descriptions of the new methods and macros, grouped into level of complexity (start with the easy ones first!)
 
@@ -31,7 +43,7 @@ this new functionality does not add users, only grants access. You'll have to ha
 
 PRs for adding grants for dbt Labs maintained adapters should be very useful as a reference, e.g. [dbt-bigquery#212](https://github.com/dbt-labs/dbt-bigquery/pull/212).
 
-##### Overrideable macros and methods
+#### Overrideable macros and methods
 
 The two macros below are simple Boolen-toggles (i.e. `True/False` value) indicating whether certain features are available for your database. The default of both of these macros are `True`, because we believe that all databases should support these ergonomic features. However, we've built for flexibility, so overriding these macros for your adapter, will handle the case where your database doesn't support these features.
 
@@ -83,9 +95,25 @@ DBT_TEST_USER_2=dbt_test_role_2
 DBT_TEST_USER_3=dbt_test_role_3
 ```
 
-### Example PRs
+### materializations inheritance!
 
-- https://github.com/dbt-labs/dbt-bigquery/pull/212/
+Via a community contribution from the folks at Layer.ai, [dbt-core#5348](https://github.com/dbt-labs/dbt-core/pull/5348) enables materializations to be inherited from parent adapters in much the same was as macros are dispatched.
+
+this is a big deal for folks who are inheriting adapters, e.g. as dbt-synapse does with dbt-sqlserver, and for the family of adapters inherit from dbt-spark today.
+
+### more python function available in the dbt jinja context
+
+python’s `set` and `zip` , and the most of the `itertools`  are available in the dbt-jinja context. Yay! ([dbt-core#5107](https://github.com/dbt-labs/dbt-core/pull/5107 ) and [dbt-core#5140](https://github.com/dbt-labs/dbt-core/pull/5140))
+
+### change to default seed materialization
+
+**who:** folks who override the entire seed materialization, and anyone who overrides materializations for small reasons. this is a great example of how the global_project can be modified to reduce boiler plate within adapters.
+
+**what:** a new macro,  [`get_csv_sql()`](https://github.com/dbt-labs/dbt-core/blob/0cacfd0f8898434bf97386742453a4f61378a732/core/dbt/include/global_project/macros/materializations/seeds/helpers.sql#L47-L55), was added to `macros/materializations/seeds/helpers.sql` 
+
+**why**  transactions are no longer the default behavior for dbt-snowflake, however, they’re still needed for bundling the seed table creation and insertion. So now we have a new default macro so that dbt-snowflake can implement a version that makes the two statements happen in the same transaction
+
+**more info** check out the issue ([dbt-core#5206](https://github.com/dbt-labs/dbt-core/issues/5206)) and PR ([dbt-core#5207](https://github.com/dbt-labs/dbt-core/pull/5207))
 
 ## New and changed documentation
 
