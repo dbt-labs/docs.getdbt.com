@@ -70,7 +70,7 @@ Because all of your data is located in the same place, it allows for faster repo
 
 ## Data warehouse vs data lake
 
-It is easy to confuse a data warehouse for a data lake. Unlike a data warehouse, a data lake is a system where you store, process, and query unstructured, semi-structured, and structured data at any scale. The main difference is between the type of data that is stored. Data warehouses contain structured data such as integers, strings, and timestamps to name a few. Data lakes can contain any kind of data- structured or unstructured. Unstructured data can include text files, audio files, video files, and images. Data warehouses store data to be used for analytics purposes. If it can’t be used for analysis, it won’t be stored in a warehouse. Data lakes store all data, whether it is used for analytics or not. 
+A data lake is a system where you store, process, and query unstructured, semi-structured, and structured data at almost any scale. The main difference between a data warehouse and a data lake is the type and way data is stored. Data warehouses contain structured data that is meant to organize data for analytics use. Data lakes can contain pretty much any kind of data--structured or unstructured--and data is usually left it its raw format until it's ready to use. Compare that to data warehouses, whose primary goal is to be a place for data teams to store both raw and transformed, usable data.
 
 ## Conclusion
 
