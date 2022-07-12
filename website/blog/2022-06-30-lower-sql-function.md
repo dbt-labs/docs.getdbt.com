@@ -41,7 +41,7 @@ Executing this command in a SELECT statement will return the lowercase version o
 
 ### Data warehouse support for the LOWER function
 
-Google BigQuery, Amazon Redshift, Snowflake, Postgres, and Databricks all support the LOWER function. In addition, the syntax to use LOWER is the same across all of them.
+[Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#lower), [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_LOWER.html), [Snowflake](https://docs.snowflake.com/en/sql-reference/functions/lower.html), [Postgres](https://www.postgresqltutorial.com/postgresql-string-functions/postgresql-letter-case-functions/), and [Databricks](https://docs.databricks.com/sql/language-manual/functions/lower.html) all support the LOWER function. In addition, the syntax to use LOWER is the same across all of them.
 
 ## LOWER SQL function example
 
