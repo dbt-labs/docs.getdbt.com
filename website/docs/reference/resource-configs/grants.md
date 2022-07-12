@@ -13,12 +13,14 @@ The grant resource configs enable you to apply permissions at build time to a sp
 
 dbt aims to use the most efficient approach when updating grants, which varies based on the adapter you're using, and whether dbt is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that dbt runs.
 
-We encourage you to use grants as resource configs whenever possible now that they are available. In versions prior to v1.2, you were limited to using hooks for grants. Currently, you still might need to write grants statements manually and run them using hooks. For example, when you want to:
+dbt encourages you to use grants as resource configs whenever possible in Core v1.2 and higher. In versions prior to Core v1.2, you were limited to using hooks for grants. Occasionally, you still might need to write grants statements manually and run them using hooks. For example, hooks may be appropriate if you want to:
+
 * Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
 * Apply grants on other database objects besides views and tables.
-* Take advantage of more-advanced permission capabilities offered by your data platform, for which dbt does not (yet!) offer out-of-the-box support via resource configuration
-
-For example, if you want to create more granular row- and column-level access, use masking policies, or apply future grants. For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
+* Take advantage of more-advanced permission capabilities offered by your data platform, for which dbt does not (yet!) offer out-of-the-box support using resource configuration.
+* Create more granular row- and column-level access, use masking policies, or apply future grants.
+ 
+For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
 
 You can set grants in `dbt_project.yml` and as a `config` yaml property that applies to the entire dbt project.
 
