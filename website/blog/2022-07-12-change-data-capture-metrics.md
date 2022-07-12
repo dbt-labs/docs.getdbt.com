@@ -291,7 +291,7 @@ select * from {{ source('source', 'costs') }}
 Because snapshots only capture changes detected at the time the dbt snapshot command is executed, it is technically possible to miss some changes to your source data. You will have to consider how often you want to run this snapshot command in order to capture the history you need.
 :::
 
-`fct_income_history` now calculates the metrics for each version of source data, every time Joanne executes a `dbt run`. In other words, the downstream `fct_` models are **version-aware**.
+The original `fct_income` model now calculates the metrics for each version of source data, every time Joanne executes a `dbt run`. In other words, the downstream `fct_` models are **version-aware**. Because of this, Joanne changes the name of `fct_income` to `fct_income_history` to be more descriptive.
 
 In order to track changes in business logic, she can create case-statements in her models that depend on the valid date of a given field. 
 
