@@ -318,6 +318,34 @@ select
 from costs_snapshot
 where to_timestamp('02/10/22 08:00:00') between dbt_valid_to and coalesce(dbt_valid_from, to_timestamp('01/01/99 00:00:00'))
 ```
+| cost_id | month_year | cost | tax | final_cost | version |
+|:---:|:---:|:---:|:---:|:---:| :---:|
+| 1 | Junkuary 2022 | 50 | 1 | 51 | 1 - 01/15/22 12:00:00 |
+| 1 | January 2022 | 50 | 1 | 51 | 1 - 02/03/22 12:00:00 |
+| 1 | January 2022 | 50 | 1 | 50 | 1 - 02/03/22 12:00:00 |
+
+The contents of the seed `income_report_versions` would look slightly different to match the change in version definition:
+| month_year | correct_version | comment |
+|:---:|:---:|:---:|
+| January 2022 | 2 - 02/03/22 12:00:00 | Approved by Lucy |
+
+After joining in the seed file (check out [Tackling the complexity of joining snapshots](https://docs.getdbt.com/blog/joining-snapshot-complexity)), her new DAG looks like this:
+
+![](/img/blog/2022-07-12-change-data-capture-metrics/final-dag.png)
+
+The final output of `fct_income_history` would accomplish the same goal as `stg_snapshot_fct_income` from her initial approach: 
+
+| month_year | product_category | revenue | version | correct_version |
+|:---:|:---:|:---:|:---:|:---:|
+| January 2022 | clothing | 100 | 1 - 01/15/22 12:00:00 | FALSE |
+| January 2022 | electronics | 200 | 1 - 01/15/22 12:00:00 | FALSE |
+| January 2022 | books | 300 | 1 - 01/15/22 12:00:00 | FALSE |
+| January 2022 | clothing | 50 | 1 - 02/03/22 12:00:00 | FALSE |
+| January 2022 | electronics | 150 | 1 - 02/03/22 12:00:00 | FALSE |
+| January 2022 | books | 200 | 1 - 02/03/22 12:00:00 | FALSE | 
+| January 2022 | clothing | 52 | 2 - 02/03/22 12:00:00 | TRUE |
+| January 2022 | electronics | 152 | 2 - 02/03/22 12:00:00 | TRUE |
+| January 2022 | books | 202 | 2 - 02/03/22 12:00:00 | TRUE |
 
 ## Final thoughts
 
