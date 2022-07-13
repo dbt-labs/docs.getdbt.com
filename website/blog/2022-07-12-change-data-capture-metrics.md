@@ -325,6 +325,7 @@ where to_timestamp('02/10/22 08:00:00') between dbt_valid_to and coalesce(dbt_va
 | 1 | January 2022 | 50 | 1 | 50 | 1 - 02/03/22 12:00:00 |
 
 The contents of the seed `income_report_versions` would look slightly different to match the change in version definition:
+
 | month_year | correct_version | comment |
 |:---:|:---:|:---:|
 | January 2022 | 2 - 02/03/22 12:00:00 | Approved by Lucy |
