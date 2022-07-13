@@ -150,10 +150,5 @@ Dimensional modeling is a tough, complex, and opinionated topic in the data worl
 
 
 * [Modular data modeling techniques](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-* [Stakeholder-friendly model naming conventions](https://www.google.com/url?q=https://docs.getdbt.com/blog/stakeholder-friendly-model-names&sa=D&source=docs&ust=1655826977220868&usg=AOvVaw3ONDDNXUcLhvMi1yoKzIap)
+* [Stakeholder-friendly model naming conventions](https://docs.getdbt.com/blog/stakeholder-friendly-model-names/)
 * [How we structure our dbt projects guide](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
-* [Grain glossary](https://docs.getdbt.com/terms/grain)
-* [Is Kimball modeling still relevant in modern data warehouses?](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225/7)
-* [Kimball in the context of the cloud data warehouse: what’s worth keeping, and what’s not](https://www.youtube.com/watch?v=3OcS2TMXELU)
-* [Data warehouse glossary](https://docs.getdbt.com/terms/data-warehouse/)
-* [Table glossary](https://docs.getdbt.com/terms/table/)
