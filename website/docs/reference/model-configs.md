@@ -137,7 +137,7 @@ models:
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
-      [grant](grant): {<dictionary>}
+      [grants](grants): {<dictionary>}
 ```
 
 </File>
@@ -162,7 +162,7 @@ models:
     [alias](resource-configs/alias)="<string>",
     [persist_docs](persist_docs)={<dict>},
     [meta](meta)={<dict>}
-    [grant](grant)={<dict>}
+    [grants](grants)={<dict>}
 ) }}
 
 ```
