@@ -314,7 +314,7 @@ select
 	cost_id,
 	...,
 	cost as final_cost, -- new logic
-       2 || ‘-’ || dbt_valid_from as version
+        2 || ‘-’ || dbt_valid_from as version
 from costs_snapshot
 where to_timestamp('02/10/22 08:00:00') between dbt_valid_to and coalesce(dbt_valid_from, to_timestamp('01/01/99 00:00:00'))
 ```
