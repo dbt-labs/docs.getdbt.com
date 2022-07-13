@@ -20,7 +20,7 @@ Variables can be defined in two ways:
 :::info New in v0.17.0
 
 The syntax for specifying vars in the `dbt_project.yml` file has changed in
-dbt v0.17.0. See the [migration guide](/guides/migration/versions/upgrading-to-0-17-0)
+dbt v0.17.0. See the [migration guide](/guides/migration/versions)
 for more information on these changes.
 
 :::
