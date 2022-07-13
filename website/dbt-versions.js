@@ -24,7 +24,11 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "docs/reference/dbt-jinja-functions/cross-database-macros",
+    "page": "reference/dbt-jinja-functions/cross-database-macros",
+    "firstVersion": "1.2",
+  },
+    {
+    "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
   },
   {
