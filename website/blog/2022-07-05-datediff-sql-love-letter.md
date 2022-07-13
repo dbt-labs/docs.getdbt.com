@@ -83,7 +83,7 @@ Using the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models
 select
 	*,
 {{ datediff("order_date", "'2022-06-09'", "day") }}
-from {{ ref(‘orders’) }}
+from {{ ref('orders') }}
 ```
 
 This would return all fields from the `orders` table and the difference in days between order dates and June 9, 2022.
