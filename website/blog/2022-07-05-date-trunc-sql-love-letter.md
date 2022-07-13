@@ -65,7 +65,7 @@ Why Snowflake, Amazon Redshift, Databricks, and Google BigQuery decided to use d
 
 With dbt v1.2, [adapters](https://docs.getdbt.com/docs/available-adapters) now support [cross-database macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like [DATE_TRUNC](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#date_trunc) and [DATEDIFF](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#datediff), without having to memorize sticky function syntax.
 
-> **Note**
+> **Note:**
 > Previously, [dbt_utils](https://github.com/dbt-labs/dbt-utils), a package of macros and tests that data folks can use to help write more DRY code in their dbt project, powered cross-database macros. Now, cross-database macros are available **regardless if dbt utils is installed or not.**
 
 Using the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models/orders.sql), a simple dataset and dbt project, you can truncate the `order_date` from the `orders` table using the dbt [DATE_TRUNC macro](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#date_trunc):
