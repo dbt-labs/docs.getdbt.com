@@ -72,7 +72,7 @@ Luckily, [dbt-core](https://github.com/dbt-labs/dbt-core) has your back! dbt Cor
 
 With dbt v1.2, [adapters](https://docs.getdbt.com/docs/available-adapters) now support [cross-database macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like [DATE_TRUNC](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#date_trunc) and [DATEDIFF](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#datediff), without having to memorize sticky function syntax.
 
-> **Note**
+> **Note:**
 > Previously, [dbt_utils](https://github.com/dbt-labs/dbt-utils), a package of macros and tests that data folks can use to help write more DRY code in their dbt project, powered cross-database macros. Now, cross-database macros are available **regardless if dbt utils is installed or not.**
 
 Using the [DATEDIFF macro](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#datediff), you can calculate the difference between two dates without having to worry about finicky syntax. Specifically, this means you could successfully run the *same code* across multiple databases without having to worry about the finicky differences in syntax.
