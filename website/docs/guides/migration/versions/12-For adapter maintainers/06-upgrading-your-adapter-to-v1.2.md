@@ -89,13 +89,3 @@ this is a big deal for folks who are inheriting adapters, e.g. as dbt-synapse do
 ### More python functions now available in the dbt jinja context
 
 python’s `set` and `zip` , and the most of the `itertools`  are available in the dbt-jinja context. Yay! ([dbt-core#5107](https://github.com/dbt-labs/dbt-core/pull/5107 ) and [dbt-core#5140](https://github.com/dbt-labs/dbt-core/pull/5140))
-
-### Slight change to the default seed materialization
-
-**who:** folks who override the entire seed materialization, and anyone who overrides materializations for small reasons. this is a great example of how the global_project can be modified to reduce boiler plate within adapters.
-
-**what:** a new macro,  [`get_csv_sql()`](https://github.com/dbt-labs/dbt-core/blob/0cacfd0f8898434bf97386742453a4f61378a732/core/dbt/include/global_project/macros/materializations/seeds/helpers.sql#L47-L55), was added to `macros/materializations/seeds/helpers.sql` 
-
-**why**  transactions are no longer the default behavior for dbt-snowflake, however, they’re still needed for bundling the seed table creation and insertion. So now we have a new default macro so that dbt-snowflake can implement a version that makes the two statements happen in the same transaction
-
-**more info** check out the issue ([dbt-core#5206](https://github.com/dbt-labs/dbt-core/issues/5206)) and PR ([dbt-core#5207](https://github.com/dbt-labs/dbt-core/pull/5207))
