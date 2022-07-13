@@ -226,9 +226,9 @@ The final config block for `int_income_history` might look something like this:
 {{
     config(
         materialized='incremental',
-	  full_refresh=false,
-	  schema='history',
-	  on_schema_change='sync_all_columns'
+	full_refresh=false,
+	schema='history',
+	on_schema_change='sync_all_columns'
     )
 }}
 ```
