@@ -101,7 +101,7 @@ Via a community contribution from the folks at Layer.ai, [dbt-core#5348](https:/
 
 this is a big deal for folks who are inheriting adapters, e.g. as dbt-synapse does with dbt-sqlserver, and for the family of adapters inherit from dbt-spark today.
 
-### New basic test: `TestDocsGenerate`
+### New basic tests to implement in adapterland: `BaseDocsGenerate` and `BaseDocsGenReferences`
 
 [dbt-core#5058](https://github.com/dbt-labs/dbt-core/pull/5058) is another step along [the path of converting all our functional tests](https://github.com/dbt-labs/dbt-core/issues/4788) to the new framework in order to empower  adapter maintainers and other contributors to make use of the same tests that the core team uses for their own adapters. Effectively, this test is validates an adapter's ability to correctly generate the catalog that serves as the static backend of a project docs site.
 If your adapter does not add extra relation-level metadata (e.g. table size (rows + bytes), last modified timestamp) which is the case by default, then you can follow the same inherit and `pass` pattern to enable your version of `BaseDocsGenerate` and `BaseDocsGenReferences`. However, if you are supplementing the catalog with more metadata, you'll have to:
