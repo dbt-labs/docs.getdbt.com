@@ -104,7 +104,10 @@ this is a big deal for folks who are inheriting adapters, e.g. as dbt-synapse do
 ### New basic test: `TestDocsGenerate`
 
 [dbt-core#5058](https://github.com/dbt-labs/dbt-core/pull/5058) is another step along [the path of converting all our functional tests](https://github.com/dbt-labs/dbt-core/issues/4788) to the new framework in order to empower  adapter maintainers and other contributors to make use of the same tests that the core team uses for their own adapters. Effectively, this test is validates an adapter's ability to correctly generate the catalog that serves as the static backend of a project docs site.
-PLACEHOLDER ABOUT `adapter_stats()` and `base_generate_catalog()`
+If your adapter does not add extra relation-level metadata (e.g. table size (rows + bytes), last modified timestamp) which is the case by default, then you can follow the same inherit and `pass` pattern to enable your version of `BaseDocsGenerate` and `BaseDocsGenReferences`. However, if you are supplementing the catalog with more metadata, you'll have to:
+- Add a method that defines stats for this adapter [e.g. dbt-bigquerys](https://github.com/dbt-labs/dbt-bigquery/blob/main/tests/functional/adapter/expected_stats.py)
+- Reimplement the `expected_catalog` fixture, [passing the above into `model_stats` and `seed_stats`](https://github.com/dbt-labs/dbt-bigquery/blob/0212fd621ede4c24929a008de718a7e45bc32cec/tests/functional/adapter/test_basic.py#L68-L81)
+
 
 Example PRs:
 - [dbt-bigquery#190](https://github.com/dbt-labs/dbt-bigquery/pull/190)
