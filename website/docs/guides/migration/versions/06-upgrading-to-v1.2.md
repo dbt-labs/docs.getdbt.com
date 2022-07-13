@@ -7,9 +7,7 @@ title: "Upgrading to v1.2 (prerelease)"
 - [CLI Installation guide](/dbt-cli/install/overview)
 - [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
 
-:::info Beta
-dbt Core v1.2 will soon be available as a **beta prerelease.** Join the #dbt-prereleases channel in the Community Slack so that you're the first to know!
-:::
+<Snippet src="available-prerelease-beta-banner" />
 
 ## Breaking changes
 
@@ -35,17 +33,17 @@ As for how to make it happen, looking at the following PRs for dbt-Labs-maintain
 
 ### Grants
 
-Managing access grants are one of the most asked for features from dbt users. We’re delivering this capability, but naturally there’s variance across data platforms as to how grants work, so time for adapter maintainers to roll their sleeves up. You might get lucky and not have to override any of them, but in case you do, below are descriptions of the new methods and macros, grouped into level of complexity (start with the easy ones first!)
+Managing access grants is one of the most asked for features from dbt users. We’re delivering this capability, but naturally there’s variance across data platforms as to how grants work, so time for adapter maintainers to roll their sleeves up. You might get lucky and not have to override any of them, but in case you do, below are descriptions of the new methods and macros, grouped into level of complexity (start with the easy ones first!)
 
-:::info
-this new functionality does not add users, only grants access. You'll have to handle that elsewhere, and it has [implications for the GRANT adapter tests](#testing-grants-for-your-adapter).
+:::info Note
+This new functionality does not add users, only grants access. You'll have to handle adding users elsewhere, and it has [implications for the GRANT adapter tests](#testing-grants-for-your-adapter).
 :::
 
-PRs for adding grants for dbt Labs maintained adapters should be very useful as a reference, e.g. [dbt-bigquery#212](https://github.com/dbt-labs/dbt-bigquery/pull/212).
+Pull requests for adding grants for dbt Labs-maintained adapters should be very useful as a reference, for example [dbt-bigquery#212](https://github.com/dbt-labs/dbt-bigquery/pull/212).
 
 #### Overrideable macros and methods
 
-The two macros below are simple Boolen-toggles (i.e. `True/False` value) indicating whether certain features are available for your database. The default of both of these macros are `True`, because we believe that all databases should support these ergonomic features. However, we've built for flexibility, so overriding these macros for your adapter, will handle the case where your database doesn't support these features.
+The two macros below are simple Boolean-toggles (i.e. `True/False` value) indicating whether certain features are available for your database. The default of both of these macros are `True`, because we believe that all databases should support these ergonomic features. However, we've built for flexibility, so overriding these macros for your adapter, will handle the case where your database doesn't support these features.
 
 | macro | description | global project’s default | example override |
 | --- | --- | --- | --- |
@@ -71,7 +69,7 @@ If the above sets of macros still aren't cutting it, here's the final depth of c
 
 ##### Testing grants with your adapter
 
-The tests for grants are implemented in the same way as the pytest tests that were introduced in dbt-core v1.1.0, in that they are importable and can you create adapter-specifc child classes of each test in your repo. for example see how [dbt-bigquery implements the tests](https://github.com/dbt-labs/dbt-bigquery/blob/main/tests/functional/adapter/test_grants.py). Notice the `BaseGrantsBigQuery` in which the mapping dict of standard privileges to BigQuery-specific prvilege names.
+The tests for grants are implemented in the same way as the pytest tests that were introduced in dbt-core v1.1.0, in that they are importable and can you create adapter-specific child classes of each test in your repo. for example see how [dbt-bigquery implements the tests](https://github.com/dbt-labs/dbt-bigquery/blob/main/tests/functional/adapter/test_grants.py). Notice the `BaseGrantsBigQuery` in which the mapping dict of standard privileges to BigQuery-specific privilege names.
 
 ```python
 class BaseGrantsBigQuery(BaseGrants):
@@ -84,7 +82,7 @@ class BaseGrantsBigQuery(BaseGrants):
         }
 ```
 
-It is also worth noting that in your test database, you need to have create three users. If your integration test database is persistent, you'll only need to add the users to the databse once, if the database is set up and torn down within the CI testing, you'll need to have the users added as part of your CI testing (or even the docker image).
+It is also worth noting that in your test database, you need to have create three users. If your integration test database is persistent, you'll only need to add the users to the database once, if the database is set up and torn down within the CI testing, you'll need to have the users added as part of your CI testing (or even the docker image).
 
 
 In the example test.env, the users are [prescribed as environment variables](https://github.com/dbt-labs/dbt-snowflake/blob/1247bbabad12f264b1880d429e6fd025544ffe38/test.env.example#L33-L35) as follows:
@@ -117,6 +115,7 @@ python’s `set` and `zip` , and the most of the `itertools`  are available in t
 
 ## New and changed documentation
 
-_Under construction_
+- **[Grants](/reference/resource-configs/grants)**: You should now manage access to the datasets you're producing with dbt by using grants instead of using hooks.  If you already use post-hook to apply simple grants, moving to the grants feature will allow you to [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) up your duplicated or boilerplate code.
+
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2
