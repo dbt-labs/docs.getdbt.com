@@ -92,8 +92,6 @@ metrics:
 
 </File>
 
-<VersionBlock firstVersion="1.2">
-
 ### Available properties
 
 | Field       | Description                                                 | Example                         | Required? |
@@ -110,10 +108,6 @@ metrics:
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.2">
-
 ### Available types
 
 | Metric Type    |  Description                                                               |
@@ -124,9 +118,7 @@ metrics:
 | average        | This metric type will apply the `average` aggregation to the specified field |
 | min            | This metric type will apply the `min` aggregation to the specified field |
 | max            | This metric type will apply the `max` aggregation to the specified field |
-| expression     | This metric type is defined as any **non-aggregating** calculation of 1 or more metrics |
-
-</VersionBlock>
+| expression     | <VersionBlock firstVersion="1.2">This metric type is defined as any **non-aggregating** calculation of 1 or more metrics</VersionBlock><VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
 
 <VersionBlock firstVersion="1.2">
 
@@ -168,26 +160,6 @@ metrics:
 ```
 </VersionBlock>
 
-
-<VersionBlock lastVersion="1.1">
-
-### Available properties
-
-| Field       | Description                                                 | Example                         | Required? |
-|-------------|-------------------------------------------------------------|---------------------------------|-----------|
-| name        | A unique identifier for the metric                          | new_customers                   | yes       |
-| model       | The dbt model that powers this metric                       | dim_customers                   | yes       |
-| label       | A short for name / label for the metric                     | New Customers                   | no        |
-| description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-| type        | The type of calculation to perform when evaluating a metric | count_distinct                  | yes       |
-| sql         | The expression to aggregate/calculate over                  | user_id                         | yes       |
-| timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
-| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
-| dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
-| filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
-| meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
-
-</VersionBlock>
 
 ### Filters
 Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric. 
