@@ -13,7 +13,7 @@ is_featured: false
 ---
 In general, data people prefer the more granular over the less granular. [Timestamps > dates](https://docs.getdbt.com/blog/when-backend-devs-spark-joy#signs-the-data-is-sparking-joy), daily data > weekly data, etc.; having data at a more granular level always allows you to zoom in. However, you’re likely looking at your data at a somewhat zoomed-out level—weekly, monthly, or even yearly. To do that, you’re going to need a handy dandy function that helps you round out date or time fields.
 
-The DATE_TRUNC function will truncate a date or time to the first instance for a given date part maintaining a date format. Wordy, wordy, wordy! What does this really mean? If you were to truncate ‘2021-12-13’ out to its month, it would return ‘2021-12-01’.
+The DATE_TRUNC function will truncate a date or time to the first instance of a given date part. Wordy, wordy, wordy! What does this really mean? If you were to truncate `2021-12-13` out to its month, it would return `2021-12-01` (the first day of the month).
 
 Using the DATE_TRUNC function, you can truncate to the weeks, months, years, or other date parts for a date or time field. This can make date/time fields easier to read, as well as help perform cleaner time-based analyses.
 
@@ -75,9 +75,9 @@ select
 	order_id,
 	order_date,
 	{{ date_trunc("week", "order_date") }} as order_week,
-	{{ date_trunc(‘month’, order_date) }} as order_month,
-	{{ date_trunc(‘year’, order_date) }} as order_year
-from {{ ref(‘orders’) }}
+	{{ date_trunc("month", "order_date") }} as order_month,
+	{{ date_trunc("year", "order_date") }} as order_year
+from {{ ref('orders') }}
 ```
 
 Running the above would product the following sample results:
