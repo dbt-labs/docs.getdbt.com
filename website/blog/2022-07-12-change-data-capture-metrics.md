@@ -303,7 +303,7 @@ select
 	cost_id,
 	...,
 	cost + tax as final_cost, -- old logic
-       1 || ‘-’ || dbt_valid_from as version
+        1 || ‘-’ || dbt_valid_from as version
 from costs_snapshot
 where dbt_valid_from <= to_timestamp('02/10/22 08:00:00')
 
