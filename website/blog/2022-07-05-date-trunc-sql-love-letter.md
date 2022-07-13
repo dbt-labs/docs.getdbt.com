@@ -6,7 +6,7 @@ slug: date-trunc-sql
 authors: [kira_furuichi]
 
 tags: [sql magic]
-hide_table_of_contents: false
+hide_table_of_contents: true
 
 date: 2022-07-05
 is_featured: false
