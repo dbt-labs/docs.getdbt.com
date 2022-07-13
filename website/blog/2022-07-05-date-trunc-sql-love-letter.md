@@ -74,7 +74,7 @@ Using the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models
 select
 	order_id,
 	order_date,
-	{{ date_trunc(‘week’, order_date) }} as order_week,
+	{{ date_trunc("week", "order_date") }} as order_week,
 	{{ date_trunc(‘month’, order_date) }} as order_month,
 	{{ date_trunc(‘year’, order_date) }} as order_year
 from {{ ref(‘orders’) }}
