@@ -64,11 +64,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you have custom scripts that parse dbt JSON artifacts?
 - (Snowflake only) Do you have custom macros or <Term id="materialization">materializations</Term> that depend on using transactions, such as statement blocks with `auto_begin=True`?
 
-<<<<<<< HEAD
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-v0.21).
-=======
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
->>>>>>> 58105fa4a4898fac0dffa26abceddbbeedb05f65
 
 </details>
 
@@ -82,11 +78,7 @@ If you believe your project might be affected, read more details in the migratio
 - Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
 
-<<<<<<< HEAD
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-v0.20).
-=======
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
->>>>>>> 58105fa4a4898fac0dffa26abceddbbeedb05f65
 
 </details>
 
@@ -120,11 +112,7 @@ If you believe your project might be affected, read more details in the migratio
 
 - Do you directly call `adapter_macro`?
 
-<<<<<<< HEAD
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-0-18-0).
-=======
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
->>>>>>> 58105fa4a4898fac0dffa26abceddbbeedb05f65
 
 </details>
 
@@ -202,11 +190,7 @@ models:
 ```
 </File>
 
-<<<<<<< HEAD
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-0-17-0).
-=======
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
->>>>>>> 58105fa4a4898fac0dffa26abceddbbeedb05f65
 
 </details>
 
@@ -218,11 +202,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use `partition_by` config for BigQuery models?
 
-<<<<<<< HEAD
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-0-16-0).
-=======
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
->>>>>>> 58105fa4a4898fac0dffa26abceddbbeedb05f65
 </details>
 
 
@@ -234,11 +214,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you have a custom materialization?
 - Do you have a macro that accesses `Relations` directly?
 
-<<<<<<< HEAD
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-0-15-0).
-=======
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
->>>>>>> 58105fa4a4898fac0dffa26abceddbbeedb05f65
 </details>
 
 <details>
@@ -249,11 +225,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use the `—non-destructive` flag?
 
-<<<<<<< HEAD
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-0-14-0).
-=======
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
->>>>>>> 58105fa4a4898fac0dffa26abceddbbeedb05f65
 </details>
 
 
