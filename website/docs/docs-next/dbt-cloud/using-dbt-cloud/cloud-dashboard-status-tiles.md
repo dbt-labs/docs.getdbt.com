@@ -10,11 +10,11 @@ In dbt Cloud, the [Metadata API](dbt-cloud/dbt-cloud-api/metadata/metadata-overv
 ## Functionality
 The dashboard status tile looks like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/passing-tile.jpeg"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/passing-tile.jpeg"/>
 
 The data freshness check fails if any sources feeding into the exposure are stale. The data quality check fails if any dbt tests fail. A failure state could look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/failing-tile.jpeg"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/failing-tile.jpeg"/>
 
 Clicking into **see details** from the Dashboard Status Tile takes you to a landing page where you can learn more about the specific sources, models, and tests feeding into this exposure.
 
@@ -47,8 +47,8 @@ Note that Mode has also built their own [integration](https://mode.com/get-dbt/)
 Looker does not allow you to directly embed HTML, and instead requires creating a [custom visualization](https://docs.looker.com/admin-options/platform/visualizations). One way to do this for admins is to:
 - Add a [new visualization](https://fishtown.looker.com/admin/visualizations) on the visualization page for Looker admins. You can use [this URL](https://metadata.cloud.getdbt.com/static/looker-viz.js) to configure a Looker visualization powered by the iFrame.  It will look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/looker-visualization.jpeg"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/looker-visualization.jpeg"/>
 
 - Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, jobID, and token relevant to that dashboard.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg"/>

@@ -9,7 +9,7 @@ This page is intended to help both practitioners seeking to understand the archi
 
 The dbt Cloud application is comprised of a set of static components, as well as a set of dynamic components. The static components are constantly running to serve highly available dbt Cloud functionality, for example, the dbt Cloud web application. The dynamic components are created just-in-time to fill background jobs or a user request to use the IDE. These components are enumerated below.
 
-<img src="/img/docs/dbt-cloud/on-premises/data-flows.png" />
+<img src="/img-next/docs/dbt-cloud/on-premises/data-flows.png" />
 
 #### Static Application Components
 
@@ -42,7 +42,7 @@ The following two sections describe the network architectures for dbt Cloud depl
 
 The following diagram shows the network architecture for the hosted _Multi Tenant_ and _Single Tenant_ deployment types. While many of the specifications differ between the Multi Tenant and Single Tenant offerings the basic types of components illustrated below are mostly the same. Read below for more information on each of the components and how they might differ between the two deployment models. 
 
-<img src="/img/docs/dbt-cloud/deployment/aws-network-architecture.png" />
+<img src="/img-next/docs/dbt-cloud/deployment/aws-network-architecture.png" />
 
 - **VPC**: In both hosted deployments, the dbt Cloud application infrastructure lives in an [AWS VPC](https://aws.amazon.com/vpc/) managed by dbt Labs. One of the key differences between the Production and Single Tenant deployment is that the Single Tenant deployment provides a dedicated VPC for a single customer.
 - **EKS**: Hosted environments leverage [AWS Elastic Kubernetes Service](https://aws.amazon.com/eks/) to manage dbt Cloud application resources. EKS provides a high degree of reliability and scalability for the dbt Cloud application.

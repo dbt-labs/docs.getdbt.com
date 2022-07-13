@@ -9,7 +9,7 @@ To create a managed repository, choose the "Managed" option when creating a repo
 
 Once saved, dbt Cloud will host and manage this repository for you. If in the future you choose to host this repository yourself, you can contact support to have the contents of your repo transferred to you.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/managed-repo.png" title="Adding a managed repository"/>
+<Lightbox src="/img-next/docs/dbt-cloud/cloud-configuring-dbt-cloud/managed-repo.png" title="Adding a managed repository"/>
 
 
 ** We do not recommend productionizing with a managed repository. This is because you will not be able to use git features like pull requests which are part of our recommended version control best practices. 

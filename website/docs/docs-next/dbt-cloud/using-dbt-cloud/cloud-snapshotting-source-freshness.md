@@ -8,7 +8,7 @@ description: "Validate that data freshness meets expectations and alert if stale
 
 dbt Cloud provides a helpful interface around dbt's [source data freshness](using-sources#snapshotting-source-data-freshness) calculations. When a dbt Cloud job is configured to snapshot source data freshness, dbt Cloud will render a user interface showing you the state of the most recent snapshot. This interface is intended to help you determine if your source data freshness is meeting the SLAs that you've defined for your organization.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/3c3c1ca-Screen_Shot_2019-03-21_at_11.05.28_AM.png" title="Data Sources in dbt Cloud"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/3c3c1ca-Screen_Shot_2019-03-21_at_11.05.28_AM.png" title="Data Sources in dbt Cloud"/>
 
 ### Enabling source freshness snapshots
 
@@ -22,7 +22,7 @@ First, make sure to configure your sources to [snapshot freshness information](u
 
 Then, to enable source freshness snapshots in dbt Cloud, add a `dbt source freshness` step to one of your jobs, or create a new job to snapshot source freshness. **Note:** If you're using an older version of dbt Core (before v0.21), you'll need to use the old name of this command instead: `dbt source snapshot-freshness`. See [`source` command docs](commands/source) for details.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-step-source-freshness.png" title="Adding a step to snapshot source freshness"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/job-step-source-freshness.png" title="Adding a step to snapshot source freshness"/>
 
 You can add `dbt source freshness` anywhere in your list of run steps, but note that if your source data is out of date, this step will "fail', and subsequent steps will not run. dbt Cloud will trigger email notifications (if configured) based on the end state of this step.
 
@@ -35,7 +35,7 @@ Remember that `dbt build` does _not_ include source freshness checks when it bui
 - check box for generating docs
 - check box for source freshness
 
-<Lightbox src="/img/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
+<Lightbox src="/img-next/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
 
 ### Source freshness snapshot frequency
 It's important that your freshness jobs run frequently enough to snapshot data latency in accordance with your SLAs. You can imagine that if you have a 1 hour SLA on a particular dataset, snapshotting the freshness of that <Term id="table" /> once daily would not be appropriate. As a good rule of thumb, you should run your source freshness jobs with at least double the frequency of your lowest SLA.  Here's an example table of some reasonable snapshot frequencies given typical SLAs:

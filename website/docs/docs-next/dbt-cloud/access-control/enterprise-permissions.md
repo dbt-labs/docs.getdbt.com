@@ -158,7 +158,7 @@ Stakeholders can perform the following actions in projects they are assigned to:
 
 ## Diagram of the Permission Sets
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
 
 ## How to Set Up RBAC Groups in dbt Cloud
  

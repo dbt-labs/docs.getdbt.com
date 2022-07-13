@@ -20,7 +20,7 @@ Select the User you'd like to set notifications for. Select **Edit** and select 
 
 Finally press **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/email-notifications.png" title="Configuring Email Notifications"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/email-notifications.png" title="Configuring Email Notifications"/>
 
 ### Slack
 

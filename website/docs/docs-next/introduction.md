@@ -107,7 +107,7 @@ When compiled to executable SQL, dbt will replace the model specified in the `re
 
 Importantly, dbt also uses the `ref` function to determine the sequence in which to execute the models – in the above example, `base_orders` and `base_payments` need to be built prior to building the `orders` model.
 
-<Lightbox src="/img/docs/2ce8dce-Screen_Shot_2018-09-16_at_11.46.12_AM.png" title="A DAG for a simple dbt project"/>
+<Lightbox src="/img-next/docs/2ce8dce-Screen_Shot_2018-09-16_at_11.46.12_AM.png" title="A DAG for a simple dbt project"/>
 
 dbt builds a directed acyclic graph (DAG) based on the interdependencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
 

@@ -37,7 +37,7 @@ dbt's compilation context can access metrics via the [`graph.metrics` variable](
 **See and select dependencies**   
 As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation). For more information, see "[The `metric:` selection method](node-selection/methods#the-metric-method)."
 
-<Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
+<Lightbox src="/img-next/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 
 ## Declaring a metric
 

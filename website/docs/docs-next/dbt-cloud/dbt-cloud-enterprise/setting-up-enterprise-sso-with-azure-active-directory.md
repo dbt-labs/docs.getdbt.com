@@ -55,8 +55,8 @@ the **Redirect URI** input.
 
 5. Save the App registration to continue setting up Azure AD SSO
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration"/>
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" title="Creating a new app registration"/>
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" title="Configuring a new app registration"/>
 
 
 **Configuration with the new Azure AD interface (optional)**
@@ -74,7 +74,7 @@ the Redirect URI in the steps above, then skip ahead to step 8.
    step 4 above for more information on the correct Redirect URI value for your
    dbt Cloud application.
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
 ### Azure <-> dbt Cloud User and Group mapping 
 
@@ -90,7 +90,7 @@ Once you've registered the application, the next step is to assign users to it. 
 11. Click **Add User/Group**
 12. Assign additional users and groups as-needed
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
 
 :::info User assignment required?
 Under **Properties** check the toggle setting for **User assignment required?** and confirm it aligns to your requirements. Most customers will want this toggled to **Yes** so that only users/groups explicitly assigned to dbt Cloud will be able to sign in. If this setting is toggled to **No** any user will be able to access the application if they have a direct link to the application per [Azure AD Documentation](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/assign-user-or-group-access-portal#configure-an-application-to-require-user-assignment)
@@ -110,7 +110,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 15. Save these permissions, then click **Grant admin consent** to grant admin
    consent for this directory on behalf of all of your users.
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-permissions-overview.png" title="Configuring application permissions" />
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-permissions-overview.png" title="Configuring application permissions" />
 
 ### Creating a client secret
 
@@ -123,8 +123,8 @@ Under **Properties** check the toggle setting for **User assignment required?** 
    we'll use this client secret in dbt Cloud to finish configuring the
    integration.
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-config.png" title="Configuring certificates & secrets" />
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-saved.png" title="Recording the client secret" />
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-config.png" title="Configuring certificates & secrets" />
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-saved.png" title="Recording the client secret" />
 
 ### Collect client credentials
 
@@ -133,7 +133,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
    this form and record them along with your client secret. We'll use these keys
    in the steps below to finish configuring the integration in dbt Cloud.
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-overview.png" title="Collecting credentials. Store these somewhere safe!" />
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-overview.png" title="Collecting credentials. Store these somewhere safe!" />
 
 ## Configuring dbt Cloud
 
@@ -162,7 +162,7 @@ Settings.
 | **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring credentials in dbt Cloud" />
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring credentials in dbt Cloud" />
 
 26. Click **Save** to complete setup for the Azure AD SSO integration. From
     here, you can navigate to the URL generated for your account's _slug_ to
@@ -186,5 +186,5 @@ Now you have completed setting up SSO with Azure AD, the next steps will be to s
 
 Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-domain-in-dbt.png" title="Adding the user domain to dbt cloud" />
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
+<Lightbox collapsed="true" src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-domain-in-dbt.png" title="Adding the user domain to dbt cloud" />

@@ -20,4 +20,4 @@ If you need help coming up with the right cron syntax, we recommend using a tool
 
 A custom cron schedule can be specified in the Triggers section of the Job Settings page.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/d43d5e6-job-schedule.gif" title="Select 'custom cron schedule' to supply a cron schedule for your dbt job."/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/d43d5e6-job-schedule.gif" title="Select 'custom cron schedule' to supply a cron schedule for your dbt job."/>

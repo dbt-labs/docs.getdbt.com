@@ -66,7 +66,7 @@ You can view the groups in your account or create new groups from the **Team > G
 page in your Account Settings.
 
 <Lightbox
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list.png"
     title="Viewing a list of groups in the Account Settings page."
 />
 
@@ -89,7 +89,7 @@ groups.
 :::
 
 <Lightbox
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-detail.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-detail.png"
     title="Users in the 'data-team-dbt-analysts' or 'data-team-dbt-admins' groups will be assigned to the Analysts dbt Cloud group when they log into dbt Cloud"
 />
 
@@ -113,7 +113,7 @@ In the following example, the _Analysts_ group is configured with the
 set on the _BQ test_ project.
 
 <Lightbox
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-permissions.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-permissions.png"
     title="Configuring permissions for the Analysts group"
 />
 

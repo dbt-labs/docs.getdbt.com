@@ -35,4 +35,4 @@ There are several illustrative example queries in this documentation (examples o
 ## GraphiQL
 You can also experiment and run queries directly in the [GraphiQL interface](https://metadata.cloud.getdbt.com/graphiql), which is convenient for exploration. On the right hand side, there is a document explorer where you can see all possible nodes and fields.  Below is an example of what a query looks like in GraphiQL.  Note that you must authenticate via bearer auth with your token.
 
-<Lightbox src="/img/docs/dbt-cloud/GraphiQL.png" title=""/>
+<Lightbox src="/img-next/docs/dbt-cloud/GraphiQL.png" title=""/>

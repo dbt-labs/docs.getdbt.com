@@ -17,7 +17,7 @@ To access audit log, click **Account Settings** and **Audit Log**.
 
 <div style={{maxWidth: '150px'}}>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" title="Audit log menu"/>
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" title="Audit log menu"/>
 
 </div>
 
@@ -160,7 +160,7 @@ You can search the audit log to find a specific event or actor, which is limited
 
 <div style={{maxWidth: '600px'}}>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" title="Use search bar to find content in the audit log"/>
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" title="Use search bar to find content in the audit log"/>
 
 </div>
 
@@ -170,6 +170,6 @@ You can use the audit log to export historical audit results for security, compl
 
 <div style={{maxWidth: '200px'}}>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-export-csv.png" title="Download a CSV file"/>
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-export-csv.png" title="Download a CSV file"/>
 
 </div>

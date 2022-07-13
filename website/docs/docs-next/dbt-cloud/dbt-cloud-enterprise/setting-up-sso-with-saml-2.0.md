@@ -108,7 +108,7 @@ First, log into your Okta account. Using the Admin dashboard, create a new app.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app.png"
     title="Create a new app"
 />
 
@@ -120,7 +120,7 @@ Click **Create** to continue the setup process.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
     title="Configure a new app"
 />
 
@@ -136,7 +136,7 @@ Click **Next** to continue.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
     title="Configure the app's General Settings"
 />
 
@@ -150,7 +150,7 @@ On the **SAML Settings** page, enter the following values:
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png"
     title="Configure the app's SAML Settings"
 />
 
@@ -183,7 +183,7 @@ support if you have any questions.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
     title="Configure the app's User and Group Attribute Statements"
 />
 
@@ -197,7 +197,7 @@ app.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-4-feedback.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-4-feedback.png"
     title="Finishing setup in Okta"
 />
 
@@ -209,13 +209,13 @@ the integration between Okta and dbt Cloud.
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
     title="Viewing the configured application"
 />
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-instructions.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-instructions.png"
     title="Application setup instructions"
 />
 
@@ -244,7 +244,7 @@ the **Edit** button and supply the following SSO details:
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+    src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
     title="Configuring the application in dbt Cloud"
 />
 

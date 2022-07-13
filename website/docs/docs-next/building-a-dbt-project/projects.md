@@ -46,7 +46,7 @@ To create a new dbt project when developing in dbt Cloud:
     * Connect to your data warehouse
     * Add a repository — either choose a managed repository, or connect to an existing, but bare, repository.
 
-<Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
+<Lightbox src="/img-next/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
 
 4. Go to the `Develop` interface by either:
     * Selecting `Start Developing`, or

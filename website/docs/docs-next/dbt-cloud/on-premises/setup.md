@@ -17,7 +17,7 @@ dbt Cloud ships with a configuration console that lets you self-manage settings,
 
 Note that the version of the configuration console installation can be viewed on the bottom of the UI.
 
-<img src="/img/docs/dbt-cloud/deployment/kotsadm-login.png" />
+<img src="/img-next/docs/dbt-cloud/deployment/kotsadm-login.png" />
 
 This version corresponds with the kots installation from the previous step and can alternatively be viewed by running the following command.
 
@@ -31,11 +31,11 @@ This version should be kept up to date with the latest release which will have t
 
 During the installation process, the application bundle will generate a self-signed certificate for connecting securely to the configuration console. You will need to follow the instructions to temporarily trust this self-signed certificate. This self-signed TLS certificate is only used during the initial setup. 
 
-<img src="/img/docs/dbt-cloud/on-premises/self-signed-cert.png" />
+<img src="/img-next/docs/dbt-cloud/on-premises/self-signed-cert.png" />
 
 Next, you'll be asked to upload a TLS certificate to secure both the configuration console and the application itself. If you have not already generated this certificate, you should do so now, otherwise your users will see a warning in their browser every time they try to access the application. Note that this hostname must be a DNS name, and not an IP address, for routing to work properly. In addition, you will need to create a DNS record from your desired hostname to this Linux instance to route traffic via DNS.
 
-<img src="/img/docs/dbt-cloud/on-premises/tls.png" />
+<img src="/img-next/docs/dbt-cloud/on-premises/tls.png" />
 
 Enter the desired hostname, and upload your TLS certificate to establish secure connections to this host. Then, press "Upload & Continue" to continue with setup.
 
@@ -43,7 +43,7 @@ Enter the desired hostname, and upload your TLS certificate to establish secure 
 
 The first time you log into the configuration console, you will need to upload your license file. This contains information about your subscription, as well as configuration for your specific installation. If you don't already have a license file, [contact your account manager or support](mailto:support@getdbt.com).
 
-<img src="/img/docs/dbt-cloud/deployment/kotsadm-license.png" />
+<img src="/img-next/docs/dbt-cloud/deployment/kotsadm-license.png" />
 
 After you upload the license, you will be redirected to the Config page. You can access this page at any time to reconfigure your dbt Cloud installation.
 
@@ -51,13 +51,13 @@ After you upload the license, you will be redirected to the Config page. You can
 
 On the Config screen, you'll be prompted to provide configuration details for your dbt Cloud application. Follow the instructions on this page to configure the application. Most of the configuration values should be established from the [prerequisites section](/docs/dbt-cloud/on-premises/prerequisites). If anything is missing, please contact sales or the person on your team that set up the prerequisites.
 
-<img src="/img/docs/dbt-cloud/deployment/kotsadm-config.png" />
+<img src="/img-next/docs/dbt-cloud/deployment/kotsadm-config.png" />
 
 ### Deploy the Application
 
 After configuring the application, you will be taken to the **Version History** page where you can manage which version of dbt Cloud is deployed. A series of preflight checks will run on your newly configured version. If everything is configured correctly, it will say "Ready to Deploy." Click Deploy to start the application.
 
-<img src="/img/docs/dbt-cloud/on-premises/version-history.png" />
+<img src="/img-next/docs/dbt-cloud/on-premises/version-history.png" />
 
 You can skip to the Deploying Application Updates section below to learn more about how dbt Cloud deployment management works.
 
@@ -89,11 +89,11 @@ A new version of dbt Cloud will appear on the Version History page in your Confi
 - Any configuration change is applied to your application via the Configuration Console.
 - Anytime an edit is applied to your Kubernetes configs via the overlays mechanism built into kots.
 
-<img src="/img/docs/dbt-cloud/deployment/kotsadm-version-history.png" />
+<img src="/img-next/docs/dbt-cloud/deployment/kotsadm-version-history.png" />
 
 You can apply or roll back these changes at any time by clicking the Deploy and Rollback buttons on the right side of this screen.
 
-<img src="/img/docs/dbt-cloud/deployment/kotsadm-deploy.png" />
+<img src="/img-next/docs/dbt-cloud/deployment/kotsadm-deploy.png" />
 
 ### Github Setup
 

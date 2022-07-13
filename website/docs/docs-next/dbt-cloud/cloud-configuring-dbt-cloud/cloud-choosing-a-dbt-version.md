@@ -9,7 +9,7 @@ In dbt Cloud, both jobs and environments are configured to use a specific versio
 
 Navigate to the settings page of an environment, then click **edit**. Click the 'dbt version' dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
 
-<Lightbox src="/img/dbt-cloud-environment-parameters.png" title="settings of a dbt Cloud Environment"/>
+<Lightbox src="/img-next/dbt-cloud-environment-parameters.png" title="settings of a dbt Cloud Environment"/>
 
 Be sure to save your changes before navigating away.
 
@@ -17,7 +17,7 @@ Be sure to save your changes before navigating away.
 
 Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
 
-<Lightbox src="/img/dbt-cloud-job-parameters.png" title="settings of a dbt Cloud Job"/>
+<Lightbox src="/img-next/dbt-cloud-job-parameters.png" title="settings of a dbt Cloud Job"/>
 
 The example job seen in the screenshot above belongs to the environment "Redshift - Maintenance." It inherits the dbt version of its environment using the `inherit from <environment name>` option. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud.
 

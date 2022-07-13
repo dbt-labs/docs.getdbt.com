@@ -236,7 +236,7 @@ Once you have your project compiling and running on the latest version of dbt in
 
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/custom-branch.png" title="Setting your testing environment" />
+<Lightbox src="/img-next/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/custom-branch.png" title="Setting your testing environment" />
 
 
 Then add a job to the new testing environment that replicates one of the production jobs your team relies on. If that job runs smoothly, you should be all set to merge your branch into main and change your development and deployment environments in your main dbt project to run off the newest version of dbt Core.

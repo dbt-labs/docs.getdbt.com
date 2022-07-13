@@ -248,7 +248,7 @@ Normally, a test query will calculate failures as part of its execution. If you 
 
 This workflow allows you to query and examine failing records much more quickly in development:
 
-<Lightbox src="/img/docs/building-a-dbt-project/test-store-failures.gif" title="Store test failures in the database for faster development-time debugging."/>
+<Lightbox src="/img-next/docs/building-a-dbt-project/test-store-failures.gif" title="Store test failures in the database for faster development-time debugging."/>
 
 Note that, if you elect to store test failures:
 - Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](using-custom-schemas).)

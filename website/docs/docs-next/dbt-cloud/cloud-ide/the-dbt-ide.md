@@ -17,7 +17,7 @@ The dbt Integrated Development Environment (IDE) provides a realtime editing and
 
 In the dbt IDE, you can compile dbt code into SQL and execute it against your database directly. The IDE leverages the open-source [dbt server](rpc) to intelligently recompile only the parts of your project that have changed. This brings the cycle time for dbt project development down from minutes to seconds.
 
-<Lightbox src="/img/docs/dbt-cloud/d6a75a5-Screen_Shot_2019-11-05_at_9.04.02_PM.png" title="Executing dbt SQL in the browser"/>
+<Lightbox src="/img-next/docs/dbt-cloud/d6a75a5-Screen_Shot_2019-11-05_at_9.04.02_PM.png" title="Executing dbt SQL in the browser"/>
 
 ## Running Projects
 
@@ -25,17 +25,17 @@ In addition to compiling and executing SQL, you can also *run* dbt projects in t
 
 The dbt IDE updates in real-time as models, tests, seeds, and operations are run. If a model or tests fails, you can dig into the logs to find and fix the issue.
 
-<Lightbox src="/img/docs/dbt-cloud/50e939e-Screen_Shot_2019-11-05_at_9.08.38_PM.png" title="Running jobs and viewing results in the dbt IDE"/>
+<Lightbox src="/img-next/docs/dbt-cloud/50e939e-Screen_Shot_2019-11-05_at_9.08.38_PM.png" title="Running jobs and viewing results in the dbt IDE"/>
 
 ## Version Control
 
 Leverage git directly from the dbt IDE to version control your code from your browser. You can branch, commit, push, and pull code with a couple of clicks - no command line required.
 
-<Lightbox src="/img/docs/dbt-cloud/8959807-Screen_Shot_2019-11-05_at_9.15.46_PM.png" title="Creating a new git branch in the IDE"/>
+<Lightbox src="/img-next/docs/dbt-cloud/8959807-Screen_Shot_2019-11-05_at_9.15.46_PM.png" title="Creating a new git branch in the IDE"/>
 
 ## Dark mode
 As Ben Franklin once said:
 
 > In matters of principle, stand like a rock; in matters of taste, swim with the current.
 
-<Lightbox src="/img/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/>
+<Lightbox src="/img-next/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/>

@@ -21,11 +21,11 @@ To enable BigQuery OAuth, you will need a Client ID & Secret for [authentication
 
 In the BigQuery console you'll want to navigate to the Credentials page:
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_creds_bq_sidebar.png" title="BigQuery Sidebar Menu to Credentials Page" />
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_creds_bq_sidebar.png" title="BigQuery Sidebar Menu to Credentials Page" />
 
 There you'll see your existing Keys, Client IDs and Service Accounts - you'll want to click the "Create Credentials" button at the top and follow the steps, like this:
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/create_creds_bq_oauth.gif" title="Creating OAuth Credentials in BigQuery" />
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/create_creds_bq_oauth.gif" title="Creating OAuth Credentials in BigQuery" />
 
 For the fields we recommend the following:
 
@@ -52,6 +52,6 @@ Then, click the blue Create button, which will display your Client ID and Client
 
 Back in dbt Cloud, you'll want to navigate to your Connection page for BigQuery. There you'll be able to click the Edit button in the top corner to enable writing into the OAuth 2.0 Settings boxes near the bottom.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/dbt_cloud_bq_cred_edit.png" title="Edit Button in dbt Cloud BQ Connection" />
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/dbt_cloud_bq_cred_edit.png" title="Edit Button in dbt Cloud BQ Connection" />
 
 With Editing enabled, you can copy paste the Client ID and the Client Secret you created in BigQuery into their respective boxes, and return to the top of the page, to Save your new OAuth Credentials. 

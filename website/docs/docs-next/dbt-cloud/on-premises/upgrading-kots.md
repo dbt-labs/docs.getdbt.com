@@ -21,7 +21,7 @@ kubectl kots version
 
 The KOTS version is also visible at the bottom of the Admin Console UI next to "Terms" and "Privacy".
 
-<img src="/img/docs/dbt-cloud/deployment/kotsadm-version.png" />
+<img src="/img-next/docs/dbt-cloud/deployment/kotsadm-version.png" />
 
 For newer versions of KOTS, the following command may be run to upgrade your installation to the latest stable version in place:
 

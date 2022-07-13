@@ -45,7 +45,7 @@ Follow the steps below for each of the Owner and Member groups in turn:
 1) Click the Hamburger icon at the top left of the Cloud Console, then Account Settings >> Groups >> <Owner/Member>  
 2) Click "Edit" in the upper right corner
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-group.png" title="Editing a Group"/>
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-group.png" title="Editing a Group"/>
 
 3) Scroll to the bottom of the group page  
 4) Click "Delete"

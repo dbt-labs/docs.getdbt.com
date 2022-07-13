@@ -67,7 +67,7 @@ from
 
 Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection. 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/1bd0c42-Screen_Shot_2020-03-10_at_6.20.05_PM.png" title="Configuring OAuth credentials in the dbt Cloud UI" />
+<Lightbox src="/img-next/docs/dbt-cloud/dbt-cloud-enterprise/1bd0c42-Screen_Shot_2020-03-10_at_6.20.05_PM.png" title="Configuring OAuth credentials in the dbt Cloud UI" />
 
 ### Authorize Developer Credentials
 

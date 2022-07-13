@@ -77,7 +77,7 @@ left join raw.jaffle_shop.customers using (customer_id)
 
 Using the `{{ source () }}` function also creates a dependency between the model and the source table.
 
-<Lightbox src="/img/docs/building-a-dbt-project/sources-dag.png" title="The source function tells dbt a model is dependent on a source "/>
+<Lightbox src="/img-next/docs/building-a-dbt-project/sources-dag.png" title="The source function tells dbt a model is dependent on a source "/>
 
 ### Testing and documenting sources
 You can also:
@@ -182,7 +182,7 @@ from raw.jaffle_shop.orders
 
 The results of this query are used to determine whether the source is fresh or not:
 
-<Lightbox src="/img/docs/building-a-dbt-project/snapshot-freshness.png" title="Uh oh! Not everything is as fresh as we'd like!"/>
+<Lightbox src="/img-next/docs/building-a-dbt-project/snapshot-freshness.png" title="Uh oh! Not everything is as fresh as we'd like!"/>
 
 
 ### FAQs

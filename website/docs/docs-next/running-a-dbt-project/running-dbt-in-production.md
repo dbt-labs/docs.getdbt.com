@@ -30,15 +30,15 @@ We've built [dbt Cloud](https://www.getdbt.com/signup/) from the ground up to em
 
 If you're interested in giving dbt Cloud a spin, you can sign up for a *forever free* account [here](https://cloud.getdbt.com/signup/).
 
-<Lightbox src="/img/docs/running-a-dbt-project/8e7a6eb-cloud-img.png" title="dbt Cloud in action"/>
+<Lightbox src="/img-next/docs/running-a-dbt-project/8e7a6eb-cloud-img.png" title="dbt Cloud in action"/>
 
 ### Using Airflow
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
 
 * Installing the [dbt Cloud Provider](https://registry.astronomer.io/providers/dbt-cloud) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud. See an [example airflow DAG](https://registry.astronomer.io/dags/example-dbt-cloud) to get started!
 
-<Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
-<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
+<Lightbox src="/img-next/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
+<Lightbox src="/img-next/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
 
 * Invoking dbt Core jobs through the [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
 

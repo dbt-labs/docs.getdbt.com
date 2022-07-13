@@ -29,24 +29,24 @@ If you previously configured your dbt project by providing a generic git URL tha
 ## Understanding dbt Cloud Slim CI 
 When a [dbt Cloud CI job is set up](cloud-enabling-continuous-integration#configuring-a-dbt-cloud-ci-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. Crucially, this run will build into a temporary schema using the prefix `dbt_cloud_pr_`. This schema isolation acts as a quasi-staging environment, so that you can see the builds resulting from the code associated with the PR's commit sha. The unique schema name can be found in the run details for the given run, as shown below.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
 When the run is complete, dbt Cloud will update the PR in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run, letting you know if the models and tests ran successfully or not. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your data warehouse.
 
 ### GitHub pull request example
 
 The green checkmark means the dbt builds and tests were successful. The *Details* link shown here will navigate you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/09c886f-Screen_Shot_2019-02-08_at_4.54.41_PM.png" title="GitHub pull request example"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/09c886f-Screen_Shot_2019-02-08_at_4.54.41_PM.png" title="GitHub pull request example"/>
 
 ### GitLab pull request example
 
 The green checkmark means the dbt builds and tests were successful. Clicking the dbt Cloud pop up will navigate you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" title="GitLab pull request"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" title="GitLab pull request"/>
 
 ### Azure DevOps pull request example
 
 The green checkmark means the dbt builds and tests were successful. Clicking **pipeline** navigates you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI.png" title="Azure DevOps pull request"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI.png" title="Azure DevOps pull request"/>
 
 ## Configuring a dbt Cloud CI job
 
@@ -61,7 +61,7 @@ There are a few components that define a Slim CI job.
 
 When creating a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the dropdown menu to select which *production* job you want to defer to. 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests can select another job from the same project for deferral and comparison"/>
 
 When a job is selected, dbt Cloud will look at the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of new and modified resources. 
@@ -83,7 +83,7 @@ To learn more about state comparison and deferral in dbt, read the docs on [stat
 
 In the **Triggers** section of the jobs settings, switch to the **Webhooks** tab, and then check the box next to **Run on Pull Requests?** as shown below.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
 
 This tells dbt Cloud to run the job whenever a pull request or commit is made, rather than on a schedule. Be sure to turn the schedule of the job off if you don't want it to also run on a time-based cadence.
 
@@ -128,11 +128,11 @@ If your dbt project relies the generic git clone method that clones using SSH an
 First, make sure you have the [native GitHub authentication](cloud-installing-the-github-application), [native GitLab authentication](connecting-gitlab), or [native Azure DevOps authentication](connecting-azure-devops) set up depending on which git provider you use. After you have gone through those steps, head to **Account Settings**, select **Projects** and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link. 
 
 Once you're in the repository page, click **Edit** and then click **Disconnect Repository** at the bottom.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" title="Disconnect repo"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" title="Disconnect repo"/>
 
 Confirm that you'd like to disconnect your repository. You should then see a new **Configure a repository** link in your old repository's place. Click through to the configuration page:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" title="Configure repo"/>
+<Lightbox src="/img-next/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" title="Configure repo"/>
 
 Select the **GitHub**, **GitLab**, or **AzureDevOps** tab and reselect your repository. That should complete the setup of the project and enable you to set up a dbt Cloud CI job.
 
