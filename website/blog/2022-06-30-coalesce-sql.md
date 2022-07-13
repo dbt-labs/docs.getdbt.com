@@ -16,6 +16,8 @@ It’s inevitable in the field of analytics engineering: you’re going to encou
 
 COALESCE is an incredibly useful function that allows you to fill in unhelpful blank values that may show up in your data. In the words of analytics engineer [Lauren Benezra](https://docs.getdbt.com/author/lauren_benezra), you will probably almost never see a data model that doesn’t use COALESCE somewhere.
 
+<!--truncate-->
+
 > **What is a SQL Function?**
 >
 > At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [EXTRACT](https://docs.getdbt.com/blog/extract-sql-love-letter/), [LOWER](https://docs.getdbt.com/blog/lower-sql-love-letter/), and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the LOWER function takes a string value and returns an all lower-case version of that input string.
