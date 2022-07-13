@@ -22,6 +22,6 @@ We added a collection of ["cross-database macros"](cross-database-macros) to dbt
 ## New and changed documentation
 
 _Under construction_
-- Updated `metrics.md` to reflect the addition of the `metric` function and support for `expression` metrics.
+- [**Metrics**](building-a-dbt-project/metrics) now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information how to use expression metrics, please reference the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2

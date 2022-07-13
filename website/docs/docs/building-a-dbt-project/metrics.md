@@ -92,8 +92,6 @@ metrics:
 
 </File>
 
-<VersionBlock firstVersion="1.2">
-
 ### Available properties
 
 | Field       | Description                                                 | Example                         | Required? |
@@ -110,9 +108,6 @@ metrics:
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.2">
 
 ### Available types
 
@@ -124,9 +119,7 @@ metrics:
 | average        | This metric type will apply the `average` aggregation to the specified field |
 | min            | This metric type will apply the `min` aggregation to the specified field |
 | max            | This metric type will apply the `max` aggregation to the specified field |
-| expression     | This metric type is defined as any **non-aggregating** calculation of 1 or more metrics |
-
-</VersionBlock>
+| expression     | <VersionBlock firstVersion="1.2"> This metric type is defined as any **non-aggregating** calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
 
 <VersionBlock firstVersion="1.2">
 
