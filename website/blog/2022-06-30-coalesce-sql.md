@@ -9,7 +9,7 @@ tags: [SQL Magic]
 hide_table_of_contents: false
 
 date: 2022-06-30
-is_featured: true
+is_featured: false
 ---
 
 It’s inevitable in the field of analytics engineering: you’re going to encounter moments when there’s mysterious or unhelpful blank values in your data. Null values surely have their time and place, but when you need those null values filled with more meaningful data, COALESCE comes to the rescue.
