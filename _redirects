@@ -9,7 +9,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /dbt-cli/installation-guides/ubuntu-debian	/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/windows	/dbt-cli/install/overview	302
 /dbt-cli/installation		/dbt-cli/install/overview	302
-/dbt-jinja-functions		/docs/building-a-dbt-project/jinja-macros#related-reference-docs    302
+/dbt-jinja-functions		/reference/dbt-jinja-functions    302
 /docs	/docs/introduction	302
 /docs/adapter	/docs/writing-code-in-dbt/jinja-context/adapter	302
 /docs/analyses	/docs/building-a-dbt-project/analyses	302
@@ -297,7 +297,7 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/project-configs/modules-paths  /reference/project-configs/packages-install-path 302
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
 /reference/warehouse-profiles/presto-profile    /reference/profiles.yml 302
-/setting-up#generate-bigquery-credentials    /guides/getting-started/getting-set-up/setting-up-bigquery#generate-bigquery-credentials   302
+/setting-up/#generate-bigquery-credentials    /guides/getting-started/getting-set-up/setting-up-bigquery#generate-bigquery-credentials   302
 /tutorial/setting-up	/guides/getting-started	302
 /tutorial/test-and-document-your-project  /guides/getting-started/building-your-first-project/test-and-document-your-project	302
 /tutorial/build-your-first-models   /guides/getting-started/building-your-first-project/build-your-first-models	302
