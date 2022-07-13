@@ -185,25 +185,25 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
 
 ## Configure wallet for Oracle Autonomous Database in Cloud
 
-dbt can connect to Oracle Autonomous Database (ADB) in Oracle Cloud using either one-way TLS (Transport Layer Security) or mutual TLS (mTLS). One-way TLS and mTLS provide enhanced security for authentication and encryption.
+dbt can connect to Oracle Autonomous Database (ADB) in Oracle Cloud using either TLS (Transport Layer Security) or mutual TLS (mTLS). TLS and mTLS provide enhanced security for authentication and encryption.
 A database username and password is still required for dbt connections which can be configured as explained in the next section [Connecting to Oracle Database](#connecting-to-oracle-database).
 
 <Tabs
-  defaultValue="one-way-tls"
+  defaultValue="tls"
   values={[
-    { label: 'One-way TLS', value: 'one-way-tls'},
+    { label: 'TLS', value: 'tls'},
     { label: 'Mutual TLS', value: 'm-tls'}]
 }>
 
-<TabItem value="one-way-tls">
+<TabItem value="tls">
 
-With one-way TLS, dbt can connect to Oracle ADB without using a wallet. Both Thin and Thick modes of the python-oracledb driver support one-way TLS. 
+With TLS, dbt can connect to Oracle ADB without using a wallet. Both Thin and Thick modes of the python-oracledb driver support TLS. 
 
 :::info
-In Thick mode, dbt can connect through one-way TLS only when using Oracle Client library versions 19.14 (or later) or 21.5 (or later).
+In Thick mode, dbt can connect through TLS only when using Oracle Client library versions 19.14 (or later) or 21.5 (or later).
 :::
 
-Refer to the blog post [Easy wallet-less connections to Oracle Autonomous Databases in Python](https://blogs.oracle.com/opal/post/easy-way-to-connect-python-applications-to-oracle-autonomous-databases) to enable one-way TLS for your Oracle ADB instance.
+Refer to Oracle documentation to [connect to an ADB instance using TLS authentication](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/connecting-nodejs-tls.html#GUID-B3809B88-D2FB-4E08-8F9B-65A550F93A07) and the blog post [Easy wallet-less connections to Oracle Autonomous Databases in Python](https://blogs.oracle.com/opal/post/easy-way-to-connect-python-applications-to-oracle-autonomous-databases) to enable TLS for your Oracle ADB instance.
 </TabItem>
 
 <TabItem value="m-tls">
@@ -289,7 +289,7 @@ export DBT_ORACLE_SCHEMA=<username>
 Starting with `dbt-oracle==1.0.2`, it is **optional** to set the database name
 
 ```bash
-export DBT_ORACLE_DATABASE=ga01d78d2ecd5f1_db202112221108
+export DBT_ORACLE_DATABASE=example_db2022adb
 ```
 
 If database name is not set, adapter will retrieve it using the following query. 
@@ -301,46 +301,12 @@ SELECT SYS_CONTEXT('userenv', 'DB_NAME') FROM DUAL
 An Oracle connection profile for dbt can be set using any one of the following methods
 
 <Tabs
-  defaultValue="database_hostname"
+  defaultValue="tns_net_service_name"
   values={[
-    { label: 'Using Database hostname', value: 'database_hostname'},
-    { label: 'Using TNS net service name', value: 'tns_net_service_name'},
-    { label: 'Using Connect string', value:'connect_string'}]
+    { label: 'Using TNS alias', value: 'tns_net_service_name'},
+    { label: 'Using Connect string', value:'connect_string'},
+    { label: 'Using Database hostname', value: 'database_hostname'}]
 }>
-
-<TabItem value="database_hostname">
-
-To connect using the database hostname or IP address, you need to specify the following
-- host
-- port (1521 or 1522)
-- protocol (tcp or tcps)
-- service
-
-```bash
-export DBT_ORACLE_HOST=adb.us-ashburn-1.oraclecloud.com
-export DBT_ORACLE_SERVICE=ga01d78d2ecd5f1_db202112221108_high.adb.oraclecloud.com
-```
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-dbt_test:
-   target: "{{ env_var('DBT_TARGET', 'dev') }}"
-   outputs:
-      dev:
-         type: oracle
-         user: "{{ env_var('DBT_ORACLE_USER') }}"
-         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
-         protocol: "tcps"
-         host: "{{ env_var('DBT_ORACLE_HOST') }}"
-         port: 1522
-         service: "{{ env_var('DBT_ORACLE_SERVICE') }}"
-         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
-         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
-         threads: 4
-```
-</File>
-</TabItem>
 
 <TabItem value="tns_net_service_name">
 
@@ -350,18 +316,21 @@ The directory location of `tnsnames.ora` file can be specified using `TNS_ADMIN`
 <File name="tnsnames.ora">
 
 ```text
-net_service_name= 
- (DESCRIPTION=
-    (ADDRESS=(PROTOCOL=TCP)(HOST=dbhost.example.com)(PORT=1521))
-    (CONNECT_DATA=(SERVICE_NAME=orclpdb1)))
+db2022adb_high = (description = ( 
+                 address=(protocol=tcps)
+                 (port=1522)
+                 (host=adb.example.oraclecloud.com))
+                 (connect_data=(service_name=example_high.adb.oraclecloud.com))
+                 (security=(ssl_server_cert_dn="CN=adb.example.oraclecloud.com,
+                 OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US")))
 ```
 
 </File>
 
-The `net_service_name` can be defined as environment variable and referred in `profiles.yml`
+The TNS alias `db2022adb_high` can be defined as environment variable and referred in `profiles.yml`
 
 ```bash
-export DBT_ORACLE_TNS_NAME=net_service_name
+export DBT_ORACLE_TNS_NAME=db2022adb_high
 ```
 
 <File name='~/.dbt/profiles.yml'>
@@ -391,7 +360,10 @@ The connection string identifies which database service to connect to. It can be
 - A Net Service Name mapping to a connect descriptor
 
 ```bash
-export DBT_ORACLE_CONNECT_STRING="(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=dbhost.example.com)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orclpdb1)))"
+export DBT_ORACLE_CONNECT_STRING="(description=(address=(protocol=tcps)(port=1522)
+                                  (host=adb.example.oraclecloud.com))(connect_data=(service_name=example_high.adb.oraclecloud.com))
+                                  (security=(ssl_server_cert_dn=\"CN=adb.example.oraclecloud.com,
+                                  OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US\")))"
 ```
 
 <File name='~/.dbt/profiles.yml'>
@@ -411,6 +383,41 @@ dbt_test:
 
 </File>
 </TabItem>
+
+<TabItem value="database_hostname">
+
+To connect using the database hostname or IP address, you need to specify the following
+- host
+- port (1521 or 1522)
+- protocol (tcp or tcps)
+- service
+
+```bash
+export DBT_ORACLE_HOST=adb.example.oraclecloud.com
+export DBT_ORACLE_SERVICE=example_high.adb.oraclecloud.com
+```
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+dbt_test:
+   target: "{{ env_var('DBT_TARGET', 'dev') }}"
+   outputs:
+      dev:
+         type: oracle
+         user: "{{ env_var('DBT_ORACLE_USER') }}"
+         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         protocol: "tcps"
+         host: "{{ env_var('DBT_ORACLE_HOST') }}"
+         port: 1522
+         service: "{{ env_var('DBT_ORACLE_SERVICE') }}"
+         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
+         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
+         threads: 4
+```
+</File>
+</TabItem>
+
 
 </Tabs>
 
