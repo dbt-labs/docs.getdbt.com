@@ -104,15 +104,6 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/guides/best-practices    /guides/best-practices
 /docs/guides/best-practices#choose-your-materializations-wisely    /guides/best-practices   302
 /docs/guides/best-practices#version-control-your-dbt-project       /guides/legacy/best-practices#version-control-your-dbt-project    302    
-/docs/guides/migration-guide/upgrading-to-v1.0       /guides/migration/versions    302    
-/docs/guides/migration-guide/upgrading-to-0-14-0     /guides/migration/versions    302
-/docs/guides/migration-guide/upgrading-to-0-15-0    /guides/migration/versions    302
-/docs/guides/migration-guide/upgrading-to-0-16-0    /guides/migration/versions  302
-/docs/guides/migration-guide/upgrading-to-0-17-0      /guides/migration/versions    302
-/docs/guides/migration-guide/upgrading-to-0-18-0     /guides/migration/versions    302
-/docs/guides/migration-guide/upgrading-to-0-19-0     /guides/migration/versions    302    
-/docs/guides/migration-guide/upgrading-to-0-20-0     /guides/migration/versions    302    
-/docs/guides/migration-guide/upgrading-to-0-21-0     /guides/migration/versions    302    
 /docs/hooks	/docs/building-a-dbt-project/hooks-operations	302
 /docs/init	/reference/commands/init	302
 /docs/install-from-source	/dbt-cli/installation	302
@@ -268,8 +259,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/using-jinja	/guides/getting-started/learning-more/using-jinja	302
 /faqs/getting-help/	/guides/legacy/getting-help	302
-/migration-guide/upgrading-to-0-17-0    /guides/migration/versions    302
-/migration-guide/upgrading-to-0-18-0	/guides/migration/versions    302
+/migration-guide/*    /guides/migration/versions/:splat    302
 /reference/accounts	/dbt-cloud/api	302
 /reference/api	/dbt-cloud/api	302
 /reference/connections	/dbt-cloud/api	302
