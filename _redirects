@@ -1,6 +1,3 @@
-# redirect next
-https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
-
 /img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png	301!
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
@@ -15,7 +12,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/api-variable	/docs/writing-code-in-dbt/api-variable	302
 /docs/archival	/docs/building-a-dbt-project/archival	302
 /docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts	302
-/docs/best-practices	/docs/guides/best-practices	302
+/docs/best-practices	/guides/best-practices	302
 /docs/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/configuring-models	/reference/model-configs
@@ -309,3 +306,5 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/guides/migration-guide/upgrading-to-1-0-0	    /guides/migration/versions/upgrading-to-v1.0	302
 /docs/guides/getting-help	/guides/legacy/getting-help 302
 /docs/guides/migration-guide/*  /guides/migration/versions/:splat 301!
+/docs/guides/best-practices  /guides/best-practices
+/docs/guides/* /guides/legacy/:splat 301!
