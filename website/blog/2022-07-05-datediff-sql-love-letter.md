@@ -82,7 +82,7 @@ Using the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models
 ```sql
 select
 	*,
-{{ datediff("order_date", "'2022-06-09'", "day") }}
+	{{ datediff("order_date", "'2022-06-09'", "day") }}
 from {{ ref('orders') }}
 ```
 
