@@ -15,7 +15,7 @@ There are no breaking changes for end users of dbt. We are committed to providin
 
 ## For maintainers of adapter plugins
 
-see discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-core/discussions/5468) for detailed information
+See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-core/discussions/5468) for detailed information
 
 ## New and changed documentation
 
