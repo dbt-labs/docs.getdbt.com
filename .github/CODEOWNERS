@@ -14,8 +14,9 @@
 
 
 # Adapter & Package Development Docs
-/website/docs/docs/available-adapters.md/                       @runleonarun @amychen1776 @dataders
-/website/docs/reference/warehouse-profiles/                     @runleonarun @amychen1776 @dataders
+/website/docs/docs/available-adapters.md/                       @runleonarun @dataders
+/website/docs/reference/warehouse-profiles/                     @runleonarun @dataders
+/website/docs/reference/resource-configs/                       @runleonarun @dataders
 /website/docs/guides/building-packages                          @runleonarun @amychen1776 @dataders @dbeatty10 
 /website/docs/contributing/building-a-new-adapter               @runleonarun @dataders @dbeatty10
 /website/docs/contributing/testing-a-new-adapter                @runleonarun @dataders @dbeatty10
