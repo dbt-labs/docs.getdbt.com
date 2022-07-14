@@ -31,5 +31,7 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 - **[dbt-Jinja functions](reference/dbt-jinja-functions)** now include the [`itertools` Python module](dbt-jinja-functions/modules#itertools), as well as the [set](dbt-jinja-functions/set) and [zip](dbt-jinja-functions/zip) functions.
 - **[Node selection](node-selection/syntax)** includes a [file selection method](node-selection/methods#the-file-method) (`-s model.sql`), and [yaml selector](node-selection/yaml-selectors) inheritance.
 - **[Global configs](global-configs)** now include CLI flag and environment variable settings for [`target-path`](target-path) and [`log-path`](log-path), which can be used to override the values set in `dbt_project.yml`
+- **[Metrics](building-a-dbt-project/metrics)** now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information how to use expression metrics, please reference the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
+
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2
