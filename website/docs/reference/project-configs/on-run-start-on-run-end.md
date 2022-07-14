@@ -29,6 +29,15 @@ A SQL statement (or list of SQL statements) to be run at the start, or end, of t
 * The `on-run-end` hook has additional jinja variables available in the context — check out the [docs](on-run-end-context).
 
 ## Examples
+
+<VersionBlock firstVersion="1.2">
+
+In previous versions of dbt, the most common use of hooks was to execute `grant` statements, to apply database permissions to models right after creating them. Starting in v1.2, we encourage you to use the [`grants` config](resource-configs/grants) instead.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.1">
+
 ### Grant privileges at the end of a run
 
 <File name='dbt_project.yml'>
@@ -52,6 +61,8 @@ on-run-end:
 ```
 
 </File>
+
+</VersionBlock>
 
 ### Grant privileges on all schemas that dbt uses at the end of a run
 This leverages the [schemas](schemas) variable that is only available in an `on-run-end` hook.
