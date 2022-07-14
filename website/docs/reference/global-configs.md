@@ -269,6 +269,27 @@ config:
 
 </File>
 
+<VersionBlock firstVersion="1.2">
+
+### Project paths
+
+By default, dbt will write logs to a directory named `logs/` and all other artifacts to a directory named `target/`, both as relative paths to `dbt_project.yml` of the active project—that is, the root directory from which dbt is run.
+
+Unlike other global configs, project paths are configured in `dbt_project.yml` rather than the `config:` block in `profiles.yml`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+[target-path](target-path): "other-target"
+[log-path](log-path): "other-logs"
+```
+
+Just like other global configs, it is possible to override these values for your environment or invocation by using CLI flags (`--target-path`, `--log-path`) or environment variables (`DBT_TARGET_PATH`, `DBT_LOG_PATH`).
+
+</File>
+
+</VersionBlock>
+
 ### Send anonymous usage stats
 
 We want to build the best version of dbt possible, and a crucial part of that is understanding how users work with dbt. To this end, we've added some simple event tracking to dbt (using Snowplow). We do not track credentials, model contents or model names (we consider these private, and frankly none of our business).
