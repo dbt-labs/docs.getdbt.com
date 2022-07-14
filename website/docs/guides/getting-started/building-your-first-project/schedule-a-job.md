@@ -17,8 +17,8 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Create a deployment environment
 
-1. Click ![hamburger icon](/img/hamburger-icon.png), then click **Home**.
-2. Under "Deployment Environments" select **Create a new one**.
+1. In the upper left, select **Deploy**, then click **Environments**.
+2. Click **Create Environment**.
 3. Name your deployment environment. For example, "Production."
 4. Add a target dataset (for example, "analytics"). dbt will build into this dataset. For some warehouses this will be named "schema."
 
