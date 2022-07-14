@@ -21,5 +21,7 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 
 - **[Grants](/reference/resource-configs/grants)**: You should now manage access to the datasets you're producing with dbt by using grants instead of using hooks.  If you already use post-hook to apply simple grants, moving to the grants feature will allow you to [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) up your duplicated or boilerplate code.
 
+- **[Metrics](building-a-dbt-project/metrics)** now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information how to use expression metrics, please reference the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
+
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2
