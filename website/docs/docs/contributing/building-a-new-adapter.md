@@ -274,6 +274,36 @@ If you use the (highly recommended) `@contextmanager` decorator, you only have t
 
 </File>
 
+##### `standardize_grants_dict(self, grants_table: agate.Table) -> dict`
+
+`standardize_grants_dict` is an method that returns the dbt-standardized grants dictionary that matches how users configure grants now in dbt. The input is the result of `SHOW GRANTS ON {{model}}` call loaded into an agate table.
+
+If there's any massaging of agate table containing the results, of `SHOW GRANTS ON {{model}}`, that can't easily be accomplished in SQL, it can be done here. For example, the SQL to show grants *should* filter OUT any grants TO the current user/role (e.g. OWNERSHIP). If that's not possible in SQL, it can be done in this method instead.
+
+<File name='impl.py'>
+
+```python
+    @available
+    def standardize_grants_dict(self, grants_table: agate.Table) -> dict:
+        """
+        :param grants_table: An agate table containing the query result of
+            the SQL returned by get_show_grant_sql
+        :return: A standardized dictionary matching the `grants` config
+        :rtype: dict
+        """
+        grants_dict: Dict[str, List[str]] = {}
+        for row in grants_table:
+            grantee = row["grantee"]
+            privilege = row["privilege_type"]
+            if privilege in grants_dict.keys():
+                grants_dict[privilege].append(grantee)
+            else:
+                grants_dict.update({privilege: [grantee]})
+        return grants_dict
+```
+
+</File>
+
 ### Editing the adapter implementation
 
 Edit the connection manager at `myadapter/dbt/adapters/myadapter/impl.py`
@@ -380,6 +410,9 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 </File>
 
+#### Grants Macros
+
+See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/5468) for information on the macros required for `GRANT` statements: 
 ### Other files
 
 #### `profile_template.yml`
@@ -403,6 +436,8 @@ It should be noted that both of these files are included in the bootstrapped out
 This has moved to its own page: ["Testing a new adapter"](testing-a-new-adapter)
 
 ## Documenting your new adapter
+
+This has moved to its own page: ["Documenting a new adapter"](documenting-a-new-adapter)
 
 Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
 - Hosting on a public git provider (e.g. GitHub, GitLab)
