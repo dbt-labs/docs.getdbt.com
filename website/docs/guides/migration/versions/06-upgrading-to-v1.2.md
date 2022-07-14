@@ -28,6 +28,6 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 ## New and changed documentation
 
 - **[Grants](/reference/resource-configs/grants)**: You should now manage access to the datasets you're producing with dbt by using grants instead of using hooks.  If you already use post-hook to apply simple grants, moving to the grants feature will allow you to [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) up your duplicated or boilerplate code.
-- **[Modules](modules)**: The `itertools` Python module is available in dbt's Jinja templating context.
+- **[dbt-Jinja functions](reference/dbt-jinja-functions)** now include the [`itertools` Python module](dbt-jinja-functions/modules#itertools), as well as the [set](dbt-jinja-functions/set) and [zip](dbt-jinja-functions/zip) functions.
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2
