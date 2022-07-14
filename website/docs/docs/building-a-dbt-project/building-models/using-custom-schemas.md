@@ -50,8 +50,9 @@ models:
 
 </File>
 
-# Understanding custom schemas
-## Why does dbt concatenate the custom schema to the target schema?
+## Understanding custom schemas
+
+### Why does dbt concatenate the custom schema to the target schema?
 When first using custom schemas, it's common to assume that a model will be built in schema that matches the `schema` configuration exactly, for example, a model that has the configuration `schema: marketing`, would be built in the `marketing` schema. However, dbt instead creates it in a schema like `<target_schema>_marketing` by default – there's good reason for this!
 
 In a typical setup of dbt, each dbt user will use a separate target schema (see [Managing Environments](using-custom-schemas#managing-environments)). If dbt created models in a schema that matches a model's custom schema exactly, every dbt user would create models in the same schema.
@@ -60,7 +61,7 @@ Further, the schema that your development models are built in would be the same 
 
 If you prefer to use different logic for generating a schema name, you can change the way dbt generates a schema name (see below).
 
-## How does dbt generate a model's schema name?
+### How does dbt generate a model's schema name?
 Under the hood, dbt uses a macro called `generate_schema_name` to determine the name of the schema that a model should be built in. The code for the macro that expresses the current logic follows:
 
 ```sql
@@ -80,15 +81,16 @@ Under the hood, dbt uses a macro called `generate_schema_name` to determine the 
 {%- endmacro %}
 ```
 
-# Advanced custom schema configuration
-## Changing the way dbt generates a schema name
+## Advanced custom schema configuration
+
+### Changing the way dbt generates a schema name
 If your dbt project includes a macro that is also named `generate_schema_name`, dbt will _always use the macro in your dbt project_ instead of the default macro.
 
 Therefore, to change the way dbt generates a schema name, you should add a macro named `generate_schema_name` to your project, where you can then define your own logic.
 
 Note: dbt ignores any custom `generate_schema_name` macros that are part of a package installed in your project.
 
-## An alternative pattern for generating schema names
+### An alternative pattern for generating schema names
 A frequently used pattern for generating schema names is to change the behavior based on dbt's environment, such that:
 
 - In prod:
@@ -116,14 +118,14 @@ If you want to use this pattern, you'll need a `generate_schema_name` macro in y
 
 **Note:** When using this macro, you'll need to set the target name in your job specifically to "prod" if you want custom schemas to be applied.
 
-## generate_schema_name arguments
+### generate_schema_name arguments
 
 | Argument | Description | Example |
 | -------- | ----------- | ------- |
 | custom_schema_name | The configured value of `schema` in the specified node, or `none` if a value is not supplied | `marketing` |
 | node | The `node` that is currently being processed by dbt | `{"name": "my_model", "resource_type": "model",...}` |
 
-## Jinja context available in generate_schema_name
+### Jinja context available in generate_schema_name
 If you choose to write custom logic to generate a schema name, it's worth noting that not all variables and methods are available to you when defining this logic. In other words: the `generate_schema_name` macro is compiled with a limited Jinja context.
 
 The following context methods _are_ available in the `generate_schema_name` macro:
@@ -139,11 +141,11 @@ The following context methods _are_ available in the `generate_schema_name` macr
 | Other macros in your packages | Macro | ✅ |
 
 
-### Which vars are available in generate_schema_name?
+#### Which vars are available in generate_schema_name?
 
 <Changelog>
 
-Variable semantics have changed in dbt v0.17.0. See the [migration guide](upgrading-to-0-17-0)
+Variable semantics have changed in dbt v0.17.0. See the [migration guide](/guides/migration/versions)
 for more information on these changes.
 
 </Changelog>
@@ -151,7 +153,7 @@ for more information on these changes.
 Globally-scoped variables and variables defined on the command line with
 [--vars](using-variables) are accessible in the `generate_schema_name` context. 
 
-# Managing environments
+## Managing environments
 
 In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
  - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.

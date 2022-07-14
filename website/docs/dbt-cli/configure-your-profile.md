@@ -101,7 +101,7 @@ To ensure the user credentials you use in your target allow dbt to run, you will
 
 * read source data
 * create schemas¹
-* read system tables
+* read system <Term id="table">tables</Term>
 
 :::info Running dbt without create schema privileges
 

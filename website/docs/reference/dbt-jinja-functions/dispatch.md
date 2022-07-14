@@ -12,7 +12,7 @@ title: "dispatch"
     
 </Changelog>
 
-dbt can extend functionality across [its many supported adapters](available-adapters) through a system of [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). Because SQL syntax, data types, and DDL/DML support vary across adapters, dbt can define and call generic functional macros, and then "dispatch" that macro to the appropriate implementation for the current adapter.
+dbt can extend functionality across [its many supported adapters](available-adapters) through a system of [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). Because SQL syntax, data types, and <Term id="ddl" />/<Term id="dml" /> support vary across adapters, dbt can define and call generic functional macros, and then "dispatch" that macro to the appropriate implementation for the current adapter.
 
 ## Syntax
 
@@ -249,4 +249,4 @@ In rare cases, the child adapter may prefer the default implementation to its pa
 
 ## FAQs
 
-<FAQ src="dispatch-could-not-find-package" />
+<FAQ src="Troubleshooting/dispatch-could-not-find-package" />

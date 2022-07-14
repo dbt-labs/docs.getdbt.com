@@ -9,4 +9,4 @@ It _is_ possible to import and invoke dbt as a Python module. This API is still 
 
 We aim to contract and document an increasing number of Python interfaces within `dbt-core`. Today, those interfaces are:
 - [Adapter plugin](building-a-new-adapter) classes and methods. These are liable to change in minor versions _only_, and we will aim for backwards compatibility whenever possible.
-- [Events](events), Python objects that dbt emits as log messages.
+- [Events](events-logging), Python objects that dbt emits as log messages.
