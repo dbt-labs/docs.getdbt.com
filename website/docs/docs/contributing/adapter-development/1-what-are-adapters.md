@@ -15,3 +15,7 @@ This guide will walk you through the first two steps, and provide some resources
 ), please let the community know that is available to use by adding the adapter to the [Available Adapters](docs/available-adapters) page by following the steps given in [Documenting your adapter](docs/contributing/documenting-a-new-adapter).
 
 For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
+
+Below is a diagram of how dbt-postgres, the adapter at the center of dbt-core, works.
+
+![adapter architecture diagram](/img/adapter-guide/adapter architecture - postgres.png)
