@@ -41,8 +41,7 @@ Depending on the data warehouse you use, the value returned from an EXTRACT func
 
 You may also see the DATE_PART function used in place of the EXTRACT function. Both DATE_PART and EXTRACT perform the same functionality, it’s just a matter of preference on which one you want to use.
 
-> **Postgres & DATE_PART**
->
+> **Postgres & DATE_PART:**
 > This is overly pedantic and you’ll likely never encounter an issue with DATE_PART and EXTRACT evaluating to differences in values that truly matter, but it’s worth noting. Postgres’ DATE_PART and EXTRACT functions would previously evaluate to the same output. However, with Postgres 14, the [EXTRACT function now returns a numeric type instead of an 8-byte float.](https://stackoverflow.com/questions/38442340/difference-between-extractyear-from-timestamp-function-and-date-partyear-t)
 
 ### Data warehouse support for the EXTRACT function
