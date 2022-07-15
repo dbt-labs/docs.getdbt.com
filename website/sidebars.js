@@ -61,6 +61,10 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Adapter development",
+          link: {
+            type: 'doc',
+            id: 'docs/contributing/adapter-development/1-what-are-adapters',
+          },
           items: [
             'docs/contributing/adapter-development/2-building-a-new-adapter',
             'docs/contributing/adapter-development/3-testing-a-new-adapter',
