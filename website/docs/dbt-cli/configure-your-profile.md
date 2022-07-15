@@ -9,7 +9,7 @@ description: "Configure your profile using the command line."
 
 ## Connecting to your warehouse using the command line
 
-When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your data warehouse.
+When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
 
 <File name='dbt_project.yml'>
 
