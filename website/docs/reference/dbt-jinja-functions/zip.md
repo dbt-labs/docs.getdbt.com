@@ -29,7 +29,7 @@ __Args__:
 {% do log(my_zip) %}  {# [] #}
 ```
 
-### try_set
+### try_zip
 
 The `try_zip` context method can be used to used to return an iterator of tuples, just like `zip`. The difference to the `zip` context method is that the `try_zip` method will raise an exception on a `TypeError`, if one of the provided values is not a valid iterable.
 
