@@ -5,7 +5,7 @@ id: "set"
 
 ### set
 
-_Not to be confused with the `{% set = ... %}` expression in Jinja!_
+_Not to be confused with the `{% set foo = "bar" ... %}` expression in Jinja!_
 
 The `set` context method can be used to convert any iterable to a sequence of iterable elements that are unique (a set).
         
