@@ -1,6 +1,3 @@
-# redirect next
-https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
-
 /img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png	301!
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
