@@ -154,7 +154,7 @@ As a package maintainer, this functionality enables users of my package to exten
 
 I maintain an internal utility package at my organization, named `my_org_dbt_helpers`. I use this package to reimplement built-in dbt macros on behalf of all my dbt-using colleagues, who work across a number of dbt projects.
 
-My package can define custom versions of any dispatched global macro I choose, from `generate_schema_name` to `test_unique`. I can define a new default version of that macro (e.g. `default__generate_schema_name`), or custom versions for specific data warehouse adapters (e.g. `spark__generate_schema_name`).
+My package can define custom versions of any dispatched global macro I choose, from `generate_schema_name` to `test_unique`. I can define a new default version of that macro (e.g. `default__generate_schema_name`), or custom versions for specific <Term id="data-warehouse" /> adapters (e.g. `spark__generate_schema_name`).
 
 Each root project installing my package simply needs to include the [project-level `dispatch` config](project-configs/dispatch-config) that searches my package ahead of `dbt` for the `dbt` global namespace:
 
