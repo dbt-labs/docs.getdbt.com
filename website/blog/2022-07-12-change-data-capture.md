@@ -92,7 +92,7 @@ A few days later, Joanne finds a bug in her `dbt code`. She fixes the bug and ex
 
 When the head of sales messages Joanne the following question: “Can you tell me the revenue for January 2022 for all clothing products?”, she’s unsure which number to give: 100, 50, or 52.
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/revenue-meme.png)
+![](/img/blog/2022-07-12-change-data-capture-metrics/income-meme.png)
 
 Because of this complexity, she decides to capture the history of her income report so that she can easily swap between versions in her BI tool.
 
