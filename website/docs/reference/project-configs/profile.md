@@ -10,7 +10,7 @@ profile: string
 </File>
 
 ## Definition
-The profile your dbt project should use to connect to your data warehouse.
+The profile your dbt project should use to connect to your <Term id="data-warehouse" />.
 * If you are developing in dbt Cloud: This configuration is optional
 * If you are developing locally: This configuration is required, unless a command-line option (i.e. `--profile`) is supplied.
 
@@ -18,7 +18,7 @@ The profile your dbt project should use to connect to your data warehouse.
 * [Connecting to your warehouse](dbt-cli/configure-your-profile)
 
 ## Recommendation
-Often an organization has only one data warehouse, so it is sensible to use your organization's name as a profile name, in `snake_case`. For example:
+Often an organization has only one <Term id="data-warehouse" />, so it is sensible to use your organization's name as a profile name, in `snake_case`. For example:
 * `profile: acme`
 * `profile: jaffle_shop`
 
