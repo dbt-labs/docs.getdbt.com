@@ -239,3 +239,12 @@ christine_berger:
   job_title: Senior Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/christine-berger.jpeg
+
+grace_goheen:
+  name: Grace Goheen
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/grace-goheen.jpeg
+  links:
+    - url: https://www.linkedin.com/in/gracegoheen/
+      icon: fa-linkedin
