@@ -1,6 +1,6 @@
 ---
 title: "Building a new adapter"
-id: "building-a-new-adapter"
+id: "2-building-a-new-adapter"
 ---
 
 To learn what an adapter is and they role they serve, see [What are adapters?](1-what-are-adapters.md)

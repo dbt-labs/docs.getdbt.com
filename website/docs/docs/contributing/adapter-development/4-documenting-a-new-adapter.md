@@ -1,6 +1,6 @@
 ---
 title: "Documenting a new adapter"
-id: "documenting-a-new-adapter"
+id: "4-documenting-a-new-adapter"
 ---
 
 If you've already [built](/docs/contributing/building-a-new-adapter.md), and [tested](/docs/contributing/testing-a-new-adapter.md) your adapter, it's time to document it so the dbt community will know that it exists and how to use it!
