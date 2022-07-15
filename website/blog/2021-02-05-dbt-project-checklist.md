@@ -87,7 +87,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 ## ✅ Project structure
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-*   If you are using dimensional modeling techniques, do you have staging and marts models?
+*   If you are using <Term id="dimensional-modeling" /> techniques, do you have staging and marts models?
     *   Do they use table prefixes like ‘fct\_’ and ‘dim\_’?
 *   Is the code modular? Is it one transformation per one model?
 *   Are you filtering as early as possible?

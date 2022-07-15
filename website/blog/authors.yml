@@ -239,3 +239,24 @@ christine_berger:
   job_title: Senior Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/christine-berger.jpeg
+
+grace_goheen:
+  name: Grace Goheen
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/grace-goheen.jpeg
+  links:
+    - url: https://www.linkedin.com/in/gracegoheen/
+      icon: fa-linkedin
+
+jonathan_natkin:
+  name: Jon "Natty" Natkins
+  job_title: Regional Director, Solutions Architecture
+  organization: dbt Labs
+  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
+  image_url: /img/blog/authors/jonathan-natkins.jpeg
+  links:
+    - url: https://www.linkedin.com/in/nattyice/
+      icon: fa-linkedin
+    - url: https://twitter.com/nattyice
+      icon: fa-twitter
