@@ -115,7 +115,7 @@ See [configs and properties](configs-and-properties) for details.
 
 ### Grant config inheritance
 
-If `grants` are set for the same model in multiple places, such as in `dbt_project.yml` and in a more-specific `.sql` or `.yml` file, the default behavior is to "merge and clobber" each privilege. That is, dbt will replace the less-specific set of grantees with the more-specific set of grantees.
+When you set `grants` for the same model in multiple places, such as in `dbt_project.yml` and in a more-specific `.sql` or `.yml` file, dbt's default behavior replaces the less-specific set of grantees with the more-specific set of grantees.  This "merge and clobber" behavior updates each privilege when dbt parses your project. 
 
 For example:
 
@@ -137,7 +137,7 @@ models:
 
 </File>
 
-As a result of this configuration, `specific_model` will grant the `select` privilege to `user_c` ONLY.
+As a result of this configuration, `specific_model` will be configured to grant the `select` privilege to `user_c` _only_. After you run `specific_model`, that is the only granted privilege you would see in the database, and the only `grant` statement you would find in dbt's logs.
 
 Let's say we wanted to _add_ `user_c` to the existing list of grantees receiving the `select` privilege on `specific_model`, rather than _replacing_ that list entirely. To accomplish that, we can use the `+` ("addition") symbol, prefixing the name of the privilege:
 

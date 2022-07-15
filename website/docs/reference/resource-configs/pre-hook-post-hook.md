@@ -119,7 +119,7 @@ dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out
 
 <VersionBlock firstVersion="1.2">
 
-In previous versions of dbt, the most common use of `post-hook` was to execute `grant` statements, to apply database permissions to models right after creating them. Starting in v1.2, we encourage you to use the [`grants` config](resource-configs/grants) instead.
+<Snippet src="hooks-to-grants" />
 
 ### [Redshift] Unload one model to S3
 

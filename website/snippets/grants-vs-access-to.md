@@ -1,5 +1,5 @@
 :::info Note
-The [`grants` config](grants) and the [`grant_access_to` config](bigquery-configs#authorized-views) are distinct.
+The [`grants` config](resource-configs/grants) and the [`grant_access_to` config](bigquery-configs#authorized-views) are distinct.
 
 - **`grants_access_to`:** Enables you to set up authorized views. When configured, dbt provides an authorized view access to show partial information from other datasets, without providing end users with full access to those underlying datasets. For more information, see [BigQuery configurations: Authorized views](/reference/resource-configs/bigquery-configs#authorized-views)
 - **`grants`:** Provides specific permissions to users, groups, or service accounts for managing access to datasets you're producing with dbt.

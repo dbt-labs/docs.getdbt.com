@@ -32,7 +32,7 @@ A SQL statement (or list of SQL statements) to be run at the start, or end, of t
 
 <VersionBlock firstVersion="1.2">
 
-In previous versions of dbt, the most common use of hooks was to execute `grant` statements, to apply database permissions to models right after creating them. Starting in v1.2, we encourage you to use the [`grants` config](resource-configs/grants) instead.
+<Snippet src="hooks-to-grants" />
 
 </VersionBlock>
 
