@@ -42,7 +42,7 @@ Once you've copied it over, you'll want to `dbt run` to execute the query and po
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 
-This will commonly happen if you're migrating from a [stored procedure workflow on a legacy database](https://getdbt.com/analytics-engineering/case-for-elt-workflow/) into dbt + a cloud data warehouse.
+This will commonly happen if you're migrating from a [stored procedure workflow on a legacy database](https://getdbt.com/analytics-engineering/case-for-elt-workflow/) into dbt + a cloud <Term id="data-warehouse" />.
 
 Functions that you were using previously may not exist, or their syntax may shift slightly between SQL dialects. 
 

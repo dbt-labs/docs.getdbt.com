@@ -319,7 +319,7 @@ Your dbt DAG is not acyclic, and needs to be fixed!
 
 ## Database Errors
 
-The thorniest errors of all! These errors come from your data warehouse, and dbt passes the message on. You may need to use your warehouse docs (i.e. the Snowflake docs, or BigQuery docs) to debug these.
+The thorniest errors of all! These errors come from your <Term id="data-warehouse" />, and dbt passes the message on. You may need to use your warehouse docs (i.e. the Snowflake docs, or BigQuery docs) to debug these.
 
 ```
 $ dbt run

@@ -36,7 +36,7 @@ The more you can answer Yes to the below questions, the easier your adapter deve
 - Does your organization have an established process for publishing open source software?
 
 
-It is easiest to build an adapter for dbt when the following the data warehouse/platform in question has:
+It is easiest to build an adapter for dbt when the following the <Term id="data-warehouse" />/platform in question has:
 - a conventional ANSI-SQL interface (or as close to it as possible),
 - a mature connection library/SDK that uses ODBC or Python DB 2 API, and
 - a way to enable developers to iterate rapidly with both quick reads and writes

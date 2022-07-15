@@ -49,7 +49,7 @@ In this example, you have to rename the `last_name` column [in jaffle_shop’s](
 
 ### DROP
 
-The `DROP` command. Probably the most high-stakes DDL statement one can execute. One that should be used with the *utmost* of care. At its core, an executed `DROP` statement will remove that object from the data warehouse. You can drop tables, views, schemas, databases, users, functions, and more.
+The `DROP` command. Probably the most high-stakes DDL statement one can execute. One that should be used with the *utmost* of care. At its core, an executed `DROP` statement will remove that object from the <Term id="data-warehouse" />. You can drop tables, views, schemas, databases, users, functions, and more.
 
 Some data warehouses such as Snowflake allow you to add restrictions to `DROP` statements to caution you about the impact of dropping a table, view, or schema before it’s actually dropped. In practice, we recommend you never drop raw source tables as they are often your baseline of truth. Your database user also usually needs the correct permissions to drop database objects.
  
