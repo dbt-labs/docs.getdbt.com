@@ -1,5 +1,5 @@
 ---
-title: "The 'star' dbt macro: A star (generator) is born"
+title: "A star (generator) is born"
 description: "One of the macros dbt utils offers is the `star` generator. This dbt macro is one of our favorites because it lets you select all the fields you want without writing the columns you don't."
 slug: star-sql-love-letter
 
@@ -21,7 +21,7 @@ select
 	column_2,
 	column_3,
 	please_save_me…
-from {{ ref(‘table_a’) }}
+from {{ ref('table_a') }}
 ```
 
 At this point, you realize your will to continue typing out the next 52 columns has essentially dwindled down to nothing and you’re probably questioning the life choices that led you here.
@@ -77,6 +77,5 @@ It’s no hidden fact: the Data Team at dbt Labs loves to use dbt util’s macro
 
 ![](/img/blog/2022-07-13-star-sql-love-letter/utils-madness-1.png)
 
-![](/img/blog/2022-07-13-star-sql-love-letter/utils-madness-2.png)
 
 Overall, the `star` macro is a great way to dip your toes into the dbt utils package, write DRY code, and reduce your carpal tunnel.
