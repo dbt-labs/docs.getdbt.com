@@ -56,11 +56,17 @@ const sidebarSettings = {
       items: [
         "docs/contributing/oss-expectations",
         "docs/contributing/contributor-license-agreements",
-        "docs/contributing/building-a-new-adapter",
-        "docs/contributing/testing-a-new-adapter",
-        "docs/contributing/documenting-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
         "docs/contributing/long-lived-discussions-guidelines",
+        {
+          type: "category",
+          label: "Adapter development",
+          items: [
+            'docs/contributing/adapter-development/2-building-a-new-adapter',
+            'docs/contributing/adapter-development/3-testing-a-new-adapter',
+            'docs/contributing/adapter-development/4-documenting-a-new-adapter'
+          ]
+        }
       ],
     },
     {
