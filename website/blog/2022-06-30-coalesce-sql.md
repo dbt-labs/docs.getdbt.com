@@ -35,7 +35,6 @@ coalesce(<input_1>, <input_2>,...<input_n>)
 You can have as many input values/columns to the COALESCE function as you like, but remember: order is important here since the first non-null value is the one that is returned. In practice, you’ll likely only ever use the COALESCE function with two inputs: a column and the value you want to fill null values of that column with.
 
 > **Fun Fact**
->
 > The COALESCE function is used in the [surrogate_key](https://docs.getdbt.com/blog/sql-surrogate-keys) macro to replace null column values.
 
 ### Data warehouse support for the COALESCE function
@@ -74,8 +73,7 @@ Running this query would return the following:
 
 Now, there are no null values in the `order_status` column since any null value was replaced by a `not_returned` string. Order 34553’s `order_status` remained unchanged because its original `order_status` was the first non-null value passed in the COALESCE function. By providing more context into what these null values mean, anyone who looks at this table can quickly understand the order status for a specific order.
 
-> **Important**
->
+> **Important:**
 > COALESCE has a straightforward use case—fill missing values with values you specify—but you also want to ensure you’re not changing non-empty values when using it. This is where the order of the input values to the COALESCE function are important: from left to right, the first non-null value is the one that’s returned.
 
 ## Why we love it
