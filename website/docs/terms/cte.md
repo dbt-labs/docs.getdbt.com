@@ -158,7 +158,7 @@ A <Term id="subquery" /> is a nested query that can oftentimes be used in place 
 
 ## Data warehouse support for CTEs
 
-CTEs are likely to be supported across most, if not all, [modern data warehouses](https://blog.getdbt.com/future-of-the-modern-data-stack/). Please use this table to see more information about using CTEs in your specific data warehouse.
+CTEs are likely to be supported across most, if not all, [modern data warehouses](https://blog.getdbt.com/future-of-the-modern-data-stack/). Please use this table to see more information about using CTEs in your specific <Term id="data-warehouse" />.
 
 | Data Warehouse | Support CTEs? |
 |---|---|
