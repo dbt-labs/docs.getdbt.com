@@ -50,3 +50,21 @@ Advisory:
 - Currently an `npm install` produces a number of dependency warnings, in particular several claiming that `docusaurus/core` is missing. Rest assured, this message is a red herring. As of writing this, no 2.0.0 package exists, so you won't have much luck trying to install it. Feel free to ignore those warnings.
 - If you run into an `fatal error: 'vips/vips8' file not found` error when you run `npm install`, you may need to run `brew install vips`. Warning: this one will take a while -- go ahead and grab some coffee!
 
+## Running the Cypress tests locally
+
+Method 1: Utilizing the Cypress GUI
+1. Install `node`: `brew install node`
+2. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
+3. `cd` into the repo: `cd docs.getdbt.com`
+4. `cd` into the `website` subdirectory: `cd website`
+5. Install the required node packages: `npm install`
+6. Run `npx cypress open` to open the Cypress GUI, and choose `E2E Testing` as the Testing Type, before finally selecting your browser and clicking `Start E2E testing in {broswer}`
+7. Click on a test and watch it run!
+
+Method 2: Running the Cypress E2E tests headlessly
+1. Install `node`: `brew install node`
+2. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
+3. `cd` into the repo: `cd docs.getdbt.com`
+4. `cd` into the `website` subdirectory: `cd website`
+5. Install the required node packages: `npm install`
+6. Run `npx cypress run` 
