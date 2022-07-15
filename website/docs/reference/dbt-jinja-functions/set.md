@@ -29,6 +29,10 @@ __Args__:
 
 ### try_set
 
+:::info To be renamed
+**Note:** We are planning to rename `try_set` to `set_strict` ahead of the v1.2 final release: [dbt-labs/dbt-core#5475](https://github.com/dbt-labs/dbt-core/issues/5475)
+:::
+
 The `try_set` context method can be used to convert any iterable to a sequence of iterable elements that are unique (a set). The difference to the `set` context method is that the `try_set` method will raise an exception on a `TypeError`, if the provided value is not a valid iterable and cannot be converted to a set.
 
 __Args__:

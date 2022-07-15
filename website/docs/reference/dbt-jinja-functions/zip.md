@@ -31,6 +31,10 @@ __Args__:
 
 ### try_zip
 
+:::info To be renamed
+**Note:** We are planning to rename `try_zip` to `zip_strict` ahead of the v1.2 final release: [dbt-labs/dbt-core#5475](https://github.com/dbt-labs/dbt-core/issues/5475)
+:::
+
 The `try_zip` context method can be used to used to return an iterator of tuples, just like `zip`. The difference to the `zip` context method is that the `try_zip` method will raise an exception on a `TypeError`, if one of the provided values is not a valid iterable.
 
 __Args__:
