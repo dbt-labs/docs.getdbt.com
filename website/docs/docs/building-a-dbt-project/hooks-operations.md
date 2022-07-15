@@ -39,7 +39,7 @@ Hooks are a more-advanced capability that enable you to run custom SQL, and leve
 
 <VersionBlock firstVersion="1.2">
 
-In order to streamline hooks and automatically apply grants when your dbt model runs, we recommend using [`grants` resource-config](/reference/resource-configs/grants).  
+<Snippet src="hooks-to-grants" />
 
 If (and only if) you can't leverage the [`grants` resource-config](/reference/resource-configs/grants), you can use `post-hook` to perform more advanced workflows:
 
@@ -238,7 +238,7 @@ Full usage docs can for the `run-operation` command can be found [here](run-oper
 
 These examples from the community highlight some of the use-cases for hooks and operations!
 
-* [In-depth discussion of granting privileges using hooks and operations](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
+* [In-depth discussion of granting privileges using hooks and operations, for dbt Core versions prior to 1.2](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
 * [Staging external tables](https://github.com/dbt-labs/dbt-external-tables)
 * [Performing a zero copy clone on Snowflake to reset a dev environment](https://discourse.getdbt.com/t/creating-a-dev-environment-quickly-on-snowflake/1151/2)
 * [Running `vacuum` and `analyze` on a Redshift warehouse](https://github.com/dbt-labs/redshift/tree/0.2.3/#redshift_maintenance_operation-source)

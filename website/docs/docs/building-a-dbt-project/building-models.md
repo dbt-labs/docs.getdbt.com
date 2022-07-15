@@ -22,7 +22,7 @@ A model is a `select` statement. Models are defined in `.sql` files (typically i
 - The name of the file is used as the model name
 - Models can be nested in subdirectories within the `models` directory
 
-When you execute the [`dbt run` command](run), dbt will build this model in your data warehouse by wrapping it in a `create view as` or `create table as` statement.
+When you execute the [`dbt run` command](run), dbt will build this model in your <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
 
 For example, consider this `customers` model:
 
