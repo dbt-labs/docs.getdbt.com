@@ -89,7 +89,7 @@ Having tests configured and running in production using the [`dbt test`](https:/
 
 Does your warehouse even _support_ primary keys at all? If it does, how can you actually find out if a table has a primary key set, and what that primary key is?
 
-Let’s walk through primary key support + access across the major cloud data warehouse platforms.
+Let’s walk through primary key support + access across the major cloud <Term id="data-warehouse" /> platforms.
 
 
 ### TL;DR on primary key support across warehouses

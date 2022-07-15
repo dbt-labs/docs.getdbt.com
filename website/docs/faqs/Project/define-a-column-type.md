@@ -20,7 +20,7 @@ from {{ ref('stg_orders') }}
 
 </File>
 
-Many modern data warehouses now support `::` syntax as a shorthand for `cast( as )`.
+Many modern <Term id="data-warehouse" />s now support `::` syntax as a shorthand for `cast( as )`.
 
 <File name='models/orders_prices_colon_syntax.sql'>
 
