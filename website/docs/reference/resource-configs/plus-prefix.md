@@ -62,3 +62,9 @@ models:
 </File>
 
 Since it doesn't hurt to use the `+` prefix, we recommend you use it whenever adding configs to your `dbt_project.yml` file.
+
+<VersionBlock firstVersion="1.2">
+
+**Note:** This use of the `+` prefix, in `dbt_project.yml`, is distinct from the use of `+` to control config merge behavior (clobber vs. add) in other config settings (specific resource `.yml` and `.sql` files). Currently, the only config which supports `+` for controlling config merge behavior is [`grants`](grants#grant-config-inheritance).
+
+</VersionBlock>

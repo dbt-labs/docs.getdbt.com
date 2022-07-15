@@ -28,7 +28,7 @@ It’s important to note that **this is not the only, or the objectively best, w
 
 Our opinions are **almost guaranteed to change over time** as we update our views on modeling, are exposed to more analytics problems, and data stacks evolve. It’s also worth clearly stating here: the way we structure dbt projects makes sense for our projects, but may not be the best fit for yours! This article exists on Discourse so that we can have a conversation – I would love to know how others in the community are structuring their projects.
 
-In comparison, the (recently updated) [best practices](/docs/guides/best-practices) reflect principles that we believe to be true for any dbt project. Of course, these two documents go hand in hand – our projects are structured in such a way that makes the those principles easy to observe, in particular:
+In comparison, the (recently updated) [best practices](/guides/best-practices) reflect principles that we believe to be true for any dbt project. Of course, these two documents go hand in hand – our projects are structured in such a way that makes the those principles easy to observe, in particular:
 
 *   Limit references to raw data
 *   Rename and recast fields once
@@ -127,7 +127,7 @@ Some dbt users prefer to have one `.yml` file per model (e.g. `stg_braintree__cu
 
 Earlier versions of the dbt documentation recommended implementing “base models” as the first layer of transformation – and we used to organize and name our models in this way, for example `models/braintree/base/base_payments.sql`.
 
-We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/docs/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
+We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
 
 That being said, in our dbt projects every source flows through exactly one model of the following form:
 

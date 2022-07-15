@@ -145,7 +145,7 @@ The following context methods _are_ available in the `generate_schema_name` macr
 
 <Changelog>
 
-Variable semantics have changed in dbt v0.17.0. See the [migration guide](upgrading-to-0-17-0)
+Variable semantics have changed in dbt v0.17.0. See the [migration guide](/guides/migration/versions)
 for more information on these changes.
 
 </Changelog>
