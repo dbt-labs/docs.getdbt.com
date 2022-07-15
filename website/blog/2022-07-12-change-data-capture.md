@@ -56,7 +56,7 @@ Finally, I’ll discuss the pros and cons of each solution to give you a head st
 
 Let’s return to Joanne. Using dbt and her favorite BI tool, Joanne has created an income report to track monthly revenue for each product category.
 
-You can imagine her DAG as shown below, where `fct_income` captures revenue amounts per month for each product category.
+You can imagine her DAG as shown below, where `fct_income` captures income per month for each product category.
 
 ![](/img/blog/2022-07-12-change-data-capture-metrics/fct-income-dag.png)
 
