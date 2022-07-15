@@ -27,9 +27,9 @@ If you’ve encountered this problem before, you know it’s a tricky one. dbt i
 
 Let’s imagine a specific scenario. Joanne is an analytics engineer for a large e-commerce company. The head of sales just messaged her the following question:
 
-“Can you tell me the revenue for January 2022 for all clothing products?”
+“Can you tell me the income for January 2022 for all clothing products?”
 
-On the surface, this may seem like a simple question. But what if the calculation of revenue has changed since January 2022? Should Joanne calculate the revenue using the current formula or the formula that was used in January 2022? What if the source data for January changed after the month closed? Should Joanne use the source data as it was on January 30th, 2022 or the source data as it is now?
+On the surface, this may seem like a simple question. But what if the calculation of income has changed since January 2022? Should Joanne calculate the income using the current formula or the formula that was used in January 2022? What if the source data for January changed after the month closed? Should Joanne use the source data as it was on January 30th, 2022 or the source data as it is now?
 
 All of these questions bubble up to our main theme: *How can you capture historical versions of our data using dbt?*
 
@@ -54,7 +54,7 @@ Finally, I’ll discuss the pros and cons of each solution to give you a head st
 
 ## Scenario
 
-Let’s return to Joanne. Using dbt and her favorite BI tool, Joanne has created an income report to track monthly revenue for each product category.
+Let’s return to Joanne. Using dbt and her favorite BI tool, Joanne has created an income report to track monthly income for each product category.
 
 You can imagine her DAG as shown below, where `fct_income` captures income per month for each product category.
 
@@ -68,7 +68,7 @@ select * from fct_income where month_year = "January 2022"
 
 She gets the following output:
 
-| month_year | product_category | revenue | run_timestamp |
+| month_year | product_category | income | run_timestamp |
 |:---:|:---:|:---:|:---:|
 | January 2022 | clothing | 100 | 01/30/22 12:00:00 |
 | January 2022 | electronics | 200 | 01/30/22 12:00:00 |
@@ -76,7 +76,7 @@ She gets the following output:
 
 But a few days later, her source data changes for January - a manufacturing cost was dated incorrectly, and now has been updated in the source. Joanne executes a `dbt run` again on February 3rd. Now when she queries `fct_income`, she gets the following output:
 
-| month_year | product_category | revenue | run_timestamp |
+| month_year | product_category | income | run_timestamp |
 |:---:|:---:|:---:|:---:|
 | January 2022 | clothing | **50** | 02/03/22 16:00:00 |
 | January 2022 | electronics | **150** | 02/03/22 16:00:00 |
@@ -84,13 +84,13 @@ But a few days later, her source data changes for January - a manufacturing cost
 
 A few days later, Joanne finds a bug in her `dbt code`. She fixes the bug and executes a dbt run again on February 10th. Now, when she queries `fct_income`, she gets the following output:
 
-| month_year | product_category | revenue | run_timestamp |
+| month_year | product_category | income | run_timestamp |
 |:---:|:---:|:---:|:---:|
 | January 2022 | clothing | **52** | 02/10/22 08:00:00 |
 | January 2022 | electronics | **152** | 02/10/22 08:00:00 |
 | January 2022 | books | **202** | 02/10/22 08:00:00 |
 
-When the head of sales messages Joanne the following question: “Can you tell me the revenue for January 2022 for all clothing products?”, she’s unsure which number to give: 100, 50, or 52.
+When the head of sales messages Joanne the following question: “Can you tell me the income for January 2022 for all clothing products?”, she’s unsure which number to give: 100, 50, or 52.
 
 ![](/img/blog/2022-07-12-change-data-capture-metrics/income-meme.png)
 
@@ -98,7 +98,7 @@ Because of this complexity, she decides to capture the history of her income rep
 
 Her goal is to capture **all** versions of the `fct_income` model for January. Something like this:
 
-| month_year | product_category | revenue | run_timestamp |
+| month_year | product_category | income | run_timestamp |
 |:---:|:---:|:---:|:---:|
 | January 2022 | clothing | 100 | 01/30/22 12:00:00 |
 | January 2022 | electronics | 200 | 01/30/22 12:00:00 |
@@ -122,7 +122,7 @@ In order to achieve this **long table of history**, she decides to start [snapsh
       unique_key='id',
 
       strategy='check',
-      check_cols=['revenue'],
+      check_cols=['income'],
     )
 }}
 
@@ -136,7 +136,7 @@ from {{ ref('fct_income') }}
 
 The output of `snapshot_fct_income` looks like this:
 
-| id | month_year | product_category | revenue | run_timestamp | dbt_valid_from | dbt_valid_to |
+| id | month_year | product_category | income | run_timestamp | dbt_valid_from | dbt_valid_to |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | January 2022 - clothing | January 2022 | clothing | 100 | 01/30/22 12:00:00 | 01/30/22 12:00:00 | 02/03/22 16:00:00 |
 | January 2022 - electronics | January 2022 | electronics | 200 | 01/30/22 12:00:00 | 01/30/22 12:00:00 | 02/03/22 16:00:00 |
@@ -148,7 +148,7 @@ The output of `snapshot_fct_income` looks like this:
 | January 2022 - electronics | January 2022 | electronics | 152 | 02/10/22 08:00:00 | 02/10/22 08:00:00 | NULL |
 | January 2022 - books | January 2022 | books | 202 | 02/10/22 08:00:00 | 02/10/22 08:00:00 | NULL |
 
-Each month now has multiple versions of revenue, and the sales department is responsible for determining which version is “correct.”
+Each month now has multiple versions of income, and the sales department is responsible for determining which version is “correct.”
 In order to keep track of which version has been marked as “correct” by the sales department, Joanne creates a seed file to capture which version of the `fct_income` model is the correct one for each month. The output of her seed `income_report_versions` looks like this:
 
 | month_year | correct_version | comment |
@@ -161,7 +161,7 @@ Her final DAG now looks like this:
 
 She's snapshotting `fct_income`, joining the seed file with the snapshot, then exposing the final output to her BI tool. The final output of `stg_snapshot_fct_income` looks like this:
 
-| month_year | product_category | revenue | run_timestamp | correct_version |
+| month_year | product_category | income | run_timestamp | correct_version |
 |:---:|:---:|:---:|:---:|:---:|
 | January 2022 | clothing | 100 | 01/30/22 12:00:00 | FALSE |
 | January 2022 | electronics | 200 | 01/30/22 12:00:00 | FALSE |
@@ -238,7 +238,7 @@ As a final step, Joanne would create `fct_income_history` to join in the seed fi
 
 The final output of `fct_income_history` would look identical to `stg_snapshot_fct_income` from her initial approach:
 
-| month_year | product_category | revenue | run_timestamp | correct_version |
+| month_year | product_category | income | run_timestamp | correct_version |
 |:---:|:---:|:---:|:---:|:---:|
 | January 2022 | clothing | 100 | 01/30/22 12:00:00 | FALSE |
 | January 2022 | electronics | 200 | 01/30/22 12:00:00 | FALSE |
@@ -335,7 +335,7 @@ After joining in the seed file (check out [Tackling the complexity of joining sn
 
 The final output of `fct_income_history` would accomplish the same goal as `stg_snapshot_fct_income` from her initial approach:
 
-| month_year | product_category | revenue | version | correct_version |
+| month_year | product_category | income | version | correct_version |
 |:---:|:---:|:---:|:---:|:---:|
 | January 2022 | clothing | 100 | 1 - 01/15/22 12:00:00 | FALSE |
 | January 2022 | electronics | 200 | 1 - 01/15/22 12:00:00 | FALSE |
