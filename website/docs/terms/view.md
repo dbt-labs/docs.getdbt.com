@@ -32,4 +32,4 @@ You shouldn’t expect a view in itself to be your final destination in terms of
 
 ## Further reading 
 
-- [Best practices guide on choosing table vs view materializations](docs/guides/best-practices#choose-your-materializations-wisely)
+- [Best practices guide on choosing table vs view materializations](/guides/best-practices)
