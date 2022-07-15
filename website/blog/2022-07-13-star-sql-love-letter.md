@@ -12,7 +12,6 @@ date: 2022-07-13
 is_featured: false
 ---
 
-![A meme based off the movie "A Star Is Born"](/img/blog/2022-07-13-star-sql-love-letter/star-is-born.jpg)
 
 We’ve likely been here: Table A has 56 columns and we want to select all but one of them (`column_56`). So here we go, let’s get started…
 
