@@ -5,7 +5,7 @@ displayText: ETL
 hoverSnippet: Extract, Transform, Load (ETL)is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 ---
 
-ETL, or “Extract, Transform, Load”, is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse. In ETL workflows, much of the meaningful data transformation occurs outside this primary pipeline in a downstream business intelligence (BI) platform.
+ETL, or “Extract, Transform, Load”, is the process of first extracting data from a data source, transforming it, and then loading it into a target <Term id="data-warehouse" />. In ETL workflows, much of the meaningful data transformation occurs outside this primary pipeline in a downstream business intelligence (BI) platform.
 
 ETL is contrasted with the newer <Term id="elt" /> (Extract, Load, Transform) workflow, where transformation occurs after data has been loaded into the target data warehouse. In many ways, the ETL workflow could have been renamed the ETLT workflow, because a considerable portion of meaningful data transformations happen outside the data pipeline. The same transformations can occur in both ETL and ELT workflows, the primary difference is *when* (inside or outside the primary ETL workflow) and *where* the data is transformed (ETL platform/BI tool/data warehouse).
 
