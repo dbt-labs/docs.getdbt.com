@@ -1,6 +1,6 @@
 ---
 title: "Strategies for change data capture in dbt"
-description: "Capturing a historical view of your data is comlex. Grace Goheen walks you through how to do it in this blog!"
+description: "Capturing a historical view of your data is complex. Grace Goheen walks you through how to do it in this blog!"
 slug: change-data-capture
 
 authors: [grace_goheen]
