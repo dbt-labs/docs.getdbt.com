@@ -19,9 +19,10 @@ By default, dbt will write to the `logs` directory, i.e. `log-path: logs`
 <VersionBlock firstVersion="1.2">
 ## Configuration
 
-The log path can also be set, in the manner of a ["global" config](global-configs), via:
-- `--log-path` CLI flag
-- `DBT_LOG_PATH` environment variable
+In the manner of a ["global" config](global-configs), the log path can be set in three places:
+1. `--log-path` CLI flag
+2. `DBT_LOG_PATH` environment variable
+3. `log-path` in `dbt_project.yml`
 
 The precedence order is: CLI flag > env var > `dbt_project.yml`
 
