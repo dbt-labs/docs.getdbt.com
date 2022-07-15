@@ -24,7 +24,7 @@ It’s important to note that **this is not the only, or the objectively best, w
 
 *   our views on data model design; which in turn are influenced by:
 *   the kinds of analytics problems we are solving for clients
-*   the data stack we typically work within, in which multiple data sources are loaded by third party tools, and the data warehouse is optimized for analytical queries (therefore we aren’t tightly bounded by performance optimization considerations).
+*   the data stack we typically work within, in which multiple data sources are loaded by third party tools, and the <Term id="data-warehouse" /> is optimized for analytical queries (therefore we aren’t tightly bounded by performance optimization considerations).
 
 Our opinions are **almost guaranteed to change over time** as we update our views on modeling, are exposed to more analytics problems, and data stacks evolve. It’s also worth clearly stating here: the way we structure dbt projects makes sense for our projects, but may not be the best fit for yours! This article exists on Discourse so that we can have a conversation – I would love to know how others in the community are structuring their projects.
 
