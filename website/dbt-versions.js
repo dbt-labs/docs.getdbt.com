@@ -1,8 +1,12 @@
 exports.versions = [
   {
+    version: "1.2",
+    EOLDate: "2023-07-15",  // TODO estimated for now
+    isPrerelease: true,
+  },
+  {
     version: "1.1",
-    EOLDate: "2023-04-27",  // TODO estimated for now
-    isPrerelease: true
+    EOLDate: "2023-04-28",
   },
   {
     version: "1.0",
@@ -20,11 +24,23 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "reference/dbt-jinja-functions/cross-database-macros",
+    "firstVersion": "1.2",
+  },
+    {
+    "page": "reference/resource-configs/grants",
+    "firstVersion": "1.2",
+  },
+  {
+    "page": "guides/migration/versions/upgrading-to-v1.2",
+    "firstVersion": "1.2",
+  },
+  {
     "page": "docs/contributing/testing-a-new-adapter",
     "firstVersion": "1.1",
   },
   {
-    "page": "docs/guides/migration-guide/upgrading-to-v1.1",
+    "page": "guides/migration/versions/upgrading-to-v1.1",
     "firstVersion": "1.1",
   },
   {

@@ -39,6 +39,7 @@ your_profile_name:
       host: [yourorg.databrickshost.com]
       http_path: [/sql/your/http/path]
       token: [dapiXXXXXXXXXXXXXXXXXXXXXXX] # Personal Access Token (PAT)
+      threads: [1 or more]  # optional, default 1
 ```
 
 </File>
@@ -59,7 +60,7 @@ Delta-only features:
 
 ### Choosing between dbt-databricks and dbt-spark
 
-While `dbt-spark` can be connect to Databricks, `dbt-databricks` was created to make it
+While `dbt-spark` can be used to connect to Databricks, `dbt-databricks` was created to make it
 even easier to use dbt with the Databricks Lakehouse.
 
 `dbt-databricks` includes:

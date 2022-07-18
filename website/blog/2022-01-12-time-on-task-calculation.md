@@ -41,7 +41,7 @@ This strategy does a great job in being able to account for nights, weekends and
 
 2. Bespoke and customizable with a subquery
 
-Our current production Time on Task calculation is able to be both powerful and flexible by bringing in a construct you rarely see at dbt Labs - a _[gasp]_ subquery. By using an hourly-grain date table, you are able to standardize your organization's unique definition of business hours vs. non business hours in a fully customizable way.
+Our current production Time on Task calculation is able to be both powerful and flexible by bringing in a construct you rarely see at dbt Labs - a _[gasp]_ <Term id="subquery" />. By using an <Term id="grain">hourly-grain</Term> date <Term id="table" />, you are able to standardize your organization's unique definition of business hours vs. non business hours in a fully customizable way.
 
 You can find example code for each of these approaches in [an example repo](https://github.com/dbt-labs/dbt-labs-experimental-features/tree/master/business-hours).
 
@@ -109,7 +109,7 @@ We realized that since we were already maintaining an hourly-grain date dimensio
 
 Given that we were actually calculating several of these metrics on one single table of tickets (think: time to first touch, time to first close, time to last touch, etc), direct joining would cause *a lot* of competing fanout that we decided would be too difficult to manage.
 
-Generally speaking, the dbt Labs team tends to opt for use of CTEs rather than subqueries, but this was one of the few times where the benefits seemed to outweigh the tradeoffs. A subquery allowed us to perform our business hours calculation on any two date fields without changing the grain of our tickets model.
+Generally speaking, the dbt Labs team tends to opt for use of <Term id="cte">CTEs</Term> rather than subqueries, but this was one of the few times where the benefits seemed to outweigh the tradeoffs. A subquery allowed us to perform our business hours calculation on any two date fields without changing the grain of our tickets model.
 
 Here’s an example to explain our subquery approach:If working hours for our team are 8AM - 8PM, and a ticket was opened at 8:46 AM Tues, closed 1:13PM Wed on an 8-8 schedule to measure the business hours from open to close, you’d need to include:
 
