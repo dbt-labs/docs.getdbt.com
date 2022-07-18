@@ -15,4 +15,4 @@ For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem
 
 Below is a diagram of how dbt-postgres, the adapter at the center of dbt-core, works.
 
-![adapter architecture diagram](/img/adapter-guide/adapter architecture - postgres.png)
+<Lightbox src="/img/adapter-guide/adapter architecture - postgres.png" title="adapter architecture diagram"/>

@@ -100,14 +100,14 @@ This can vary substantially depending on the nature of the release but a good ba
 Breaking this down:
 
 - Visually distinctive announcement - make it clear this is a release
-    ![title](/img/adapter-guide/1-announcement.png)
+    <Lightbox src="/img/adapter-guide/1-announcement.png" title="title"/>
 - Short written description of what is in the release
-    ![description](/img/adapter-guide/2-short-description.png)
+    <Lightbox src="/img/adapter-guide/2-short-description.png" title="description"/>
 - Links to additional resources
-    ![more resources](/img/adapter-guide/3-additional-resources.png)
+   <Lightbox src="/img/adapter-guide/3-additional-resources.png" title="more resources"/>
 - Implementation instructions:
-    ![installation](/img/adapter-guide/4-installation.png)
+    <Lightbox src="/img/adapter-guide/4-installation.png" title="more installation"/>
 - Future plans
-    ![coming soon](/img/adapter-guide/5-coming-up.png)
+    <Lightbox src="/img/adapter-guide/5-coming-up.png" title="coming soon"/>
 - Contributor recognition (if applicable)
-    ![thank yous](/img/adapter-guide/6-thank-contribs.png)
+    <Lightbox src="/img/adapter-guide/6-thank-contribs.png" title="thank yous"/>
