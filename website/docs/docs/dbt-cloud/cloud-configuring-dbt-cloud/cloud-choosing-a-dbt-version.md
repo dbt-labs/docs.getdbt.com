@@ -19,7 +19,7 @@ Each job in dbt Cloud can be configured to inherit parameters from the environme
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" title="Settings of a dbt Cloud job"/>
 
-The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the `Inherited from ENVIRONMENT_NAME (DBT_VERSION)` selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
+The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
 
 ## Supported Versions
 
