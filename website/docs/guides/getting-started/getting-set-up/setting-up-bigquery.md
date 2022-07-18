@@ -83,7 +83,7 @@ You will learn how to connect dbt Cloud to Google BigQuery so that you can lever
 
 <WistiaVideo id="o9a2bawwl6" paddingTweak="62.5%" />
 
-In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
+In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other <Term id="data-warehouse">data warehouses</Term>.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify your are using the correct email account.
 2. Select **+ Create Credentials** then select **Service account**.
