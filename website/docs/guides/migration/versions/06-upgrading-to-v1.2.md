@@ -13,7 +13,7 @@ title: "Upgrading to v1.2 (prerelease)"
 
 Using `pip`, install `dbt-core` and your `<adapter>` (for example, `dbt-postgres`):
 ```sh
-pip install dbt-core~=1.2.0rc1 dbt-<adapter>~=1.2.0rc1
+pip install --upgrade dbt-<adapter>~=1.2.0rc1
 ```
 
 ## Breaking changes

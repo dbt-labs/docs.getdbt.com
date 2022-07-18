@@ -1,3 +1,5 @@
+<VersionBlock firstVersion="1.2">
+
 :::info Note
 The `grants` config and the `grant_access_to` config are distinct.
 
@@ -6,3 +8,5 @@ The `grants` config and the `grant_access_to` config are distinct.
 
 You can use the two features together: "authorize" a view model with the `grants_access_to` configuration, and then add `grants` to that view model to share its query results (and _only_ its query results) with other users, groups, or service accounts.
 :::
+
+</VersionBlock>
