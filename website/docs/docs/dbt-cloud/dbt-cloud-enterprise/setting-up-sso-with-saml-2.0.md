@@ -243,7 +243,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 
 ### Configuring SAML endpoints in AD
 
-- Navigate to **Single sign-on > Set up single sign on**.
+1. Select **Single sign-on** in the left navigation and click **Set up single sign on**.
 2. Click **SAML** in "Select a single sign-on method" section.
 3. Click **Edit** in "Basic SAML Configuration." 
 4. Use the following table to help you fill out the key fields required to connect to dbt:
@@ -253,7 +253,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 | **Identifier (Entity ID)** | Base URL for dbt Cloud. Use `https://cloud.getdbt.com/` or `https://YOUR_COMPANY.getdbt.com/` for a single tenant instance. |
 | **Reply URL (Assertion Consumer Service URL)** | Use `https://cloud.getdbt.com/complete/saml` or `https://YOUR_COMPANY.getdbt.com/complete/saml` for a single tenant instance. |
 | **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
-
+5. Click **Save** at the top of the form.
 #### Creating SAML Attributes in AD
 
 - Edit the **User Attributes & Claims**.
