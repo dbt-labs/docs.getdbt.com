@@ -139,13 +139,6 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 
 To complete setup, follow the steps below in the dbt Cloud application.
 
-### Enable Azure AD Native Auth (beta)
-
-- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
-  gain access to the Azure AD Native auth configuration UI
-- For users accessing dbt Cloud deployed in a VPC, enable the `native_azure`
-  feature flag in the dbt Cloud admin backend.
-
 ### Supplying credentials
 
 24. Navigate to the **Enterprise &gt; Single Sign On** page under Account
