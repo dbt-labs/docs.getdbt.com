@@ -230,27 +230,29 @@ _Use this section if you are configuring Azure AD as your identity provider_.
 
 ### Create Azure AD Enterprise Application
 
-First, log into your Azure account. Follow the steps below to set up single sign-on with dbt Cloud.
+Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 
-- In the Azure AD portal, choose **Enterprise applications** and create a new application.
-- Select **Create your own application**.
+1. Log into your Azure account. 
+2. In the Azure AD portal, select **Enterprise applications** and click **+ New application**.
+3. Select **Create your own application**.
+4. Name the application "dbt Cloud" or another descriptive name.
+5. Select **Integrate any other application you don't find in the gallery (Non-gallery)** as the application type.
+6. Click **Create**.
+7. You can find the new application by clicking **Enterprise applications** and selecting **All applications**.
+8. Click the application you just created and follow the instructions for configuring it in [Configuring SAML endpoints in AD](#configuring-saml-endpoints-in-ad). 
 
-- Name the application **dbt Cloud** or some other descriptive name.
-- Select the **Non-gallery** option for application type.
-- When the application is done being created, find it in the **Enterprise applications > All applications** view.
-- Click the application to configure.
-
-### Configurating SAML Endpoints in AD
+### Configuring SAML endpoints in AD
 
 - Navigate to **Single sign-on > Set up single sign on**.
-- Under **Select a single sign-on method**, choose **SAML**.
-- Edit the **Basic SAML Configuration**.
+2. Click **SAML** in "Select a single sign-on method" section.
+3. Click **Edit** in "Basic SAML Configuration." 
+4. Use the following table to help you fill out the key fields required to connect to dbt:
 
 | Field | Value |
 | ----- | ----- |
-| **Identifier (Entity ID)** | This is the base URL for dbt Cloud (https://cloud.getdbt.com/ or https://yourcompany.getdbt.com/ for a single tenant instance). |
-| **Reply URL (Assertion Consumer Service URL)** | https://cloud.getdbt.com/complete/saml or https://yourcompany.getdbt.com/complete/saml for a single tenant instance. |
-| **Relay State** | This is the slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
+| **Identifier (Entity ID)** | Base URL for dbt Cloud. Use `https://cloud.getdbt.com/` or `https://YOUR_COMPANY.getdbt.com/` for a single tenant instance. |
+| **Reply URL (Assertion Consumer Service URL)** | Use `https://cloud.getdbt.com/complete/saml` or `https://YOUR_COMPANY.getdbt.com/complete/saml` for a single tenant instance. |
+| **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
 
 #### Creating SAML Attributes in AD
 
