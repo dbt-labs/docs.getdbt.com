@@ -10,16 +10,16 @@ You can enable Documentation for a job in dbt Cloud when you edit your job setti
 
 1. In the top left, click **Deploy** and select **Jobs**.
 2. Select an existing job and click **Settings** or create a new job.
-2. Under "Execution Settings," select **Generate docs on run**.
-3. Click **Save**.
+3. Under "Execution Settings," select **Generate docs on run**.
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/568adab-Screen_Shot_2019-02-08_at_9.13.09_PM.png" title="Enabling docs generation in dbt Cloud"/>
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/568adab-Screen_Shot_2019-02-08_at_9.13.09_PM.png" title="Enabling docs generation in dbt Cloud"/>
+4. Click **Save**.
 
 ## Viewing documentation
 
 If you have a job set up to generate documentation for your project, then click **Documentation** in the top left. Your project's documentation should open. This link will always navigate you to the most recent version of your project's documentation in dbt Cloud.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" title="Click the 'View Latest Documentation' button to see docs in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" title="Project documentation"/>
 
 ## Easy access
 
