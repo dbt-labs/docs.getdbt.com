@@ -436,7 +436,7 @@ $ dbt test
 
 ### Alternative format for defining tests
 
-When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
+When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
 
 This example is identical to the one above:
 
