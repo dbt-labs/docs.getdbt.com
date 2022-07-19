@@ -42,11 +42,6 @@ need to select the appropriate directory and then register a new application.
    Redirect URI values for single-tenant and multi-tenant deployments. For most
    enterprise use-cases, you will want to use the single-tenant Redirect URI.
 
-:::note VPC Deployment
-If you are deploying dbt Cloud into a VPC, you should use the hostname where
-the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the **Redirect URI** input.
-:::
 
 | Application Type | Redirect URI |
 | ----- | ----- |
