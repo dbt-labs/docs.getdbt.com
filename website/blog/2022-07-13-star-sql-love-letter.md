@@ -8,8 +8,8 @@ authors: [kira_furuichi]
 tags: [sql magic]
 hide_table_of_contents: false
 
-date: 2022-07-13
-is_featured: false
+date: 2022-05-23
+is_featured: true
 ---
 
 
@@ -27,6 +27,8 @@ from {{ ref('table_a') }}
 At this point, you realize your will to continue typing out the next 52 columns has essentially dwindled down to nothing and you’re probably questioning the life choices that led you here.
 
 But what if there was a way to make these 56+ lines of code come down to a handful? Well, that’s where a handy [dbt macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) comes into play.
+
+<!--truncate-->
 
 ## The `star` dbt macro
 
@@ -57,9 +59,9 @@ select
 from table_a
 ```
 
-With the `star` function, all of the columns except `column_56` are generated in a comma-separated list within the `select` statement. What was once 56+ lines of tedious, mind-numbing SQL becomes 3 lines using the `star` macro. You can also exclude multiple columns by passing in the column names to the `except` argument.
+With the `star` macro, all of the columns except `column_56` are generated in a comma-separated list within the `select` statement. What was once 56+ lines of tedious, mind-numbing SQL becomes 3 lines using the `star` macro. You can also exclude multiple columns by passing in the column names to the `except` argument.
 
-If you want to alias all fields in a model with the same alias without having to explicitly rename all of them, you can also use the `star` macro with the `relation_alias` argument passed in:
+If you want to alias all fields in a model with the same alias without having to explicitly rename them all, you can also use the `star` macro with the `relation_alias` argument passed in:
 
 ```sql
 select
