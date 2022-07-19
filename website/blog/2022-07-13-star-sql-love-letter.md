@@ -28,6 +28,8 @@ At this point, you realize your will to continue typing out the next 52 columns 
 
 But what if there was a way to make these 56+ lines of code come down to a handful? Well, that’s where a handy [dbt macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) comes into play.
 
+<!--truncate-->
+
 ## The `star` dbt macro
 
 dbt supports [dbt_utils](https://github.com/dbt-labs/dbt-utils), a [package of macros and tests](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) that data folks can use to help them write more <Term id="dry" /> code in their dbt project. One of the macros dbt utils offers is the `star` generator.
@@ -57,9 +59,9 @@ select
 from table_a
 ```
 
-With the `star` function, all of the columns except `column_56` are generated in a comma-separated list within the `select` statement. What was once 56+ lines of tedious, mind-numbing SQL becomes 3 lines using the `star` macro. You can also exclude multiple columns by passing in the column names to the `except` argument.
+With the `star` macro, all of the columns except `column_56` are generated in a comma-separated list within the `select` statement. What was once 56+ lines of tedious, mind-numbing SQL becomes 3 lines using the `star` macro. You can also exclude multiple columns by passing in the column names to the `except` argument.
 
-If you want to alias all fields in a model with the same alias without having to explicitly rename all of them, you can also use the `star` macro with the `relation_alias` argument passed in:
+If you want to alias all fields in a model with the same alias without having to explicitly rename them all, you can also use the `star` macro with the `relation_alias` argument passed in:
 
 ```sql
 select

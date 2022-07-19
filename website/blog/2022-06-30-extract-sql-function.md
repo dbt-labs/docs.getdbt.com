@@ -20,7 +20,7 @@ In this post, we’re going to give a deep dive into the EXTRACT function, how i
 The EXTRACT function allows you to extract a specified date part from a date/time. For example, if you were to extract the month from the date February 14, 2022, it would return 2 since February is the second month in the year.
 
 > **What is a SQL function?**
-> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://docs.getdbt.com/blog/coalesce-sql-love-letter/), [LOWER],(https://docs.getdbt.com/blog/lower-sql-love-letter/) and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
+> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://docs.getdbt.com/blog/coalesce-sql-love-letter/), [LOWER](https://docs.getdbt.com/blog/lower-sql-love-letter/) and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
 
 ## How to use the EXTRACT function
 
