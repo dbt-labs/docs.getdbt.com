@@ -6,7 +6,12 @@ description: "Automatically generate project documentation as you run jobs."
 
 ## Enabling documentation
 
-Documentation can be enabled for a job in dbt Cloud by checking the "Generate docs?" checkbox on the Job Settings page, as shown below. Once this setting is enabled, subsequent runs of the job will automatically include a step to generate documentation. When you edit your job settings or create a new job, go to the Execution settings section and select **Generate docs on run**.
+You can enable Documentation for a job in dbt Cloud when you edit your job settings or create a new job. Once you enable this setting, subsequent runs of the job will automatically include a step to generate documentation.
+
+1. In the top left, click **Deploy** and select **Jobs**.
+2. Edit an existing or create a new job.
+2. Under "Execution Settings," select **Generate docs on run**.
+3. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/568adab-Screen_Shot_2019-02-08_at_9.13.09_PM.png" title="Enabling docs generation in dbt Cloud"/>
 
