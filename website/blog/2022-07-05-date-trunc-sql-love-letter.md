@@ -8,7 +8,7 @@ authors: [kira_furuichi]
 tags: [sql magic]
 hide_table_of_contents: true
 
-date: 2022-07-05
+date: 2022-07-13
 is_featured: false
 ---
 In general, data people prefer the more granular over the less granular. [Timestamps > dates](https://docs.getdbt.com/blog/when-backend-devs-spark-joy#signs-the-data-is-sparking-joy), daily data > weekly data, etc.; having data at a more granular level always allows you to zoom in. However, you’re likely looking at your data at a somewhat zoomed-out level—weekly, monthly, or even yearly. To do that, you’re going to need a handy dandy function that helps you round out date or time fields.

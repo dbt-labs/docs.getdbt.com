@@ -8,8 +8,8 @@ authors: [kira_furuichi]
 tags: [sql magic]
 hide_table_of_contents: false
 
-date: 2022-07-13
-is_featured: false
+date: 2022-05-23
+is_featured: true
 ---
 
 
