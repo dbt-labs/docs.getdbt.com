@@ -331,5 +331,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/guides/migration-guide/upgrading-to-v1.0       /guides/migration/versions/upgrading-to-v1.0    302    
 /docs/guides/getting-help	/guides/legacy/getting-help 302
 /docs/guides/migration-guide/*  /guides/migration/versions/:splat 301!
-/docs/guides/best-practices  /guides/best-practices
 /docs/guides/* /guides/legacy/:splat 301!
