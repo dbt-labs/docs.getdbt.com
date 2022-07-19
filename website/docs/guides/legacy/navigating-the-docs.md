@@ -46,7 +46,7 @@ How analytics engineers use dbt to solve their tactical problems, e.g.:
 * Version controlling UDFs
 * Writing a custom schema test for not null
 * Snowflake shares + dbt
-* Permission schemes in a data warehouse
+* Permission schemes in a <Term id="data-warehouse" />
 
 Usually these are write-ups where there is no one perfect answer (unlike the “I’m stuck” questions on Stack Overflow), instead, you might need to dig into the “why” or discuss tradeoffs of your approach in these articles.
 

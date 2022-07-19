@@ -75,7 +75,7 @@ JaffleGaggle has to keep track of information about their interactions with thei
 
 All of these questions require aggregating + syncing data from application usage, workspace information, and orders into the CRM for the sales team to have at their fingertips.
 
-This aggregation process requires an analytics warehouse, as all of these things need to be synced together outside of the application database itself to incorporate other data sources (billing / events information, past touchpoints in the CRM, etc). Thus, we can create our fancy customer 360 within JaffleGaggle’s data warehouse, which is a standard project for a B2B company’s data team.
+This aggregation process requires an analytics warehouse, as all of these things need to be synced together outside of the application database itself to incorporate other data sources (billing / events information, past touchpoints in the CRM, etc). Thus, we can create our fancy customer 360 within JaffleGaggle’s <Term id="data-warehouse" />, which is a standard project for a B2B company’s data team.
 
 **Diving into data modeling**
 

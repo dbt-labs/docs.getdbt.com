@@ -23,7 +23,7 @@ The manifest schema version will be updated to v5. The only change is to the def
 
 ## New and changed documentation
 
-[**Incremental models**](configuring-incremental-models) can now accept a list of multiple columns as their `unique_key`, for models that need a combination of columns to uniquely identify each row. This is supported by the most common data warehouses, for incremental strategies that make use of the `unique_key` config (`merge` and `delete+insert`).
+[**Incremental models**](configuring-incremental-models) can now accept a list of multiple columns as their `unique_key`, for models that need a combination of columns to uniquely identify each row. This is supported by the most common <Term id="data-warehouse">data warehouses</Term>, for incremental strategies that make use of the `unique_key` config (`merge` and `delete+insert`).
 
 [**Generic tests**](resource-properties/tests) can define custom names. This is useful to "prettify" the synthetic name that dbt applies automatically. It's needed to disambiguate the case when the same generic test is defined multiple times with different configurations.
 
