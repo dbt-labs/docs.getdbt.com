@@ -33,5 +33,8 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 - **[Global configs](global-configs)** now include CLI flag and environment variable settings for [`target-path`](target-path) and [`log-path`](log-path), which can be used to override the values set in `dbt_project.yml`
 - **[Metrics](building-a-dbt-project/metrics)** now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information how to use expression metrics, please reference the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
 
+### Specific adapters
+
+- [Postgres](postgres-profile) and [Redshift](redshift-profile) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.
 
 https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.2
