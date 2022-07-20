@@ -8,7 +8,7 @@ authors: [matt_winkler]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-07-19
+date: 2022-07-20
 is_featured: true
 ---
 
@@ -22,9 +22,9 @@ If your team works heavily with stored procedures, and you ever find yourself wi
 
 It’s worth considering if an alternative approach with dbt might help.
 
-## Why use dbt instead of stored procedures?
-
 <!--truncate-->
+
+## Why use dbt instead of stored procedures?
 
 We work with many analytics teams to refactor their stored procedure code into dbt. Many of them come in thinking that the upfront effort to modernize their approach to data transformation will be too much to justify. However, we see that in the long term this isn’t the case. 
 
