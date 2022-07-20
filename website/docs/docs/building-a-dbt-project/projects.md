@@ -39,7 +39,7 @@ To create a new dbt project when developing in dbt Cloud:
 1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
 2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
     * Click the gear icon to the top right, then **Projects** under Account Settings.
-    * Name your project, and click `Continue`. There's no need to fill in the other details.
+    * Name your project, and click **Continue**. There's no need to fill in the other details.
 3. Complete the project setup flow:
     * Connect to your <Term id="data-warehouse" />
     * Add a repository — either choose a managed repository, or connect to an existing, but bare, repository.
