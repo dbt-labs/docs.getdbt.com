@@ -22,6 +22,7 @@ const sidebarSettings = {
             "docs/building-a-dbt-project/building-models/using-custom-schemas",
             "docs/building-a-dbt-project/building-models/using-custom-databases",
             "docs/building-a-dbt-project/building-models/using-variables",
+            "docs/building-a-dbt-project/building-models/python-models",
           ],
         },
         "docs/building-a-dbt-project/tests",

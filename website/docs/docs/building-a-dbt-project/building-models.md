@@ -17,6 +17,14 @@ If you're new to dbt, we recommend that you check out our [Getting Started guide
 
 :::
 
+<VersionBlock firstVersion="1.3">
+
+In v1.3, dbt Core is adding support for **Python models**.
+
+dbt's Python capabilities are an extension of its capabilities with SQL models. We recommend that you read this page first, and then read: ["dbt Models (Python)"](building-models-python)
+
+</VersionBlock>
+
 A model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
 - The name of the file is used as the model name
