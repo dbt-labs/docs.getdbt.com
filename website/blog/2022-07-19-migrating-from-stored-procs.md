@@ -1,6 +1,6 @@
 ---
 title: "Migrating from Stored Procedures to dbt"
-description: "Stored procedures are great, but they eventually become hard to scale. dbt fixes that, but the migration process can seem daunting. Matt Winkler and Natty demystify the process in this blog!"
+description: "Stored procedures are great, but they eventually become hard to scale. dbt fixes that, but the migration process can seem daunting. Matt Winkler demystifies the process in this blog!"
 slug: migrating-from-stored-procs
 
 authors: [matt_winkler]
