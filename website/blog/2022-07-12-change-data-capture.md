@@ -110,7 +110,11 @@ Her goal is to capture **all** versions of the `fct_income` model for January. S
 | January 2022 | electronics | 152 | 02/10/22 08:00:00 |
 | January 2022 | books | 202 | 02/10/22 08:00:00 |
 
-In order to achieve this **long table of history**, she decides to do something that ⚠️ goes against dbt Lab's best practices ⚠️ - [snapshotting](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots) her final model, `fct_income`.
+In order to achieve this **long table of history**, she decides to start [snapshotting](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots) her final model, `fct_income`.
+
+:::caution Don't be like Joanne
+I'm including the code samples for completeness, but remember: the method described in this scenario of snapshotting a final model contradicts dbt Labs' best practices. Either of the solutions detailed later is a better approach.
+:::
 
 ```sql
 {% snapshot snapshot_fct_income %}
