@@ -7,8 +7,7 @@ authors: [kira_furuichi]
 
 tags: [SQL Magic]
 hide_table_of_contents: false
-
-date: 2022-06-30
+date: 2022-05-08
 is_featured: false
 ---
 
@@ -19,7 +18,6 @@ COALESCE is an incredibly useful function that allows you to fill in unhelpful b
 <!--truncate-->
 
 > **What is a SQL Function?**
->
 > At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [EXTRACT](https://docs.getdbt.com/blog/extract-sql-love-letter/), [LOWER](https://docs.getdbt.com/blog/lower-sql-love-letter/), and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the LOWER function takes a string value and returns an all lower-case version of that input string.
 
 ## How to use the COALESCE function
@@ -34,7 +32,7 @@ coalesce(<input_1>, <input_2>,...<input_n>)
 
 You can have as many input values/columns to the COALESCE function as you like, but remember: order is important here since the first non-null value is the one that is returned. In practice, you’ll likely only ever use the COALESCE function with two inputs: a column and the value you want to fill null values of that column with.
 
-> **Fun Fact**
+> **See it in action:**
 > The COALESCE function is used in the [surrogate_key](https://docs.getdbt.com/blog/sql-surrogate-keys) macro to replace null column values.
 
 ### Data warehouse support for the COALESCE function
@@ -60,7 +58,7 @@ select
 	order_id,
 	order_date,
 	coalesce(order_status, 'not_returned') as order_status
-from orders
+from {{ ref('orders') }}
 ```
 
 Running this query would return the following:
@@ -73,7 +71,7 @@ Running this query would return the following:
 
 Now, there are no null values in the `order_status` column since any null value was replaced by a `not_returned` string. Order 34553’s `order_status` remained unchanged because its original `order_status` was the first non-null value passed in the COALESCE function. By providing more context into what these null values mean, anyone who looks at this table can quickly understand the order status for a specific order.
 
-> **Important:**
+> **To replace or not to replace:**
 > COALESCE has a straightforward use case—fill missing values with values you specify—but you also want to ensure you’re not changing non-empty values when using it. This is where the order of the input values to the COALESCE function are important: from left to right, the first non-null value is the one that’s returned.
 
 ## Why we love it

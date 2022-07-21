@@ -8,7 +8,7 @@ authors: [kira_furuichi]
 tags: [sql magic]
 hide_table_of_contents: false
 
-date: 2022-07-05
+date: 2022-07-13
 is_featured: false
 ---
 
@@ -51,7 +51,7 @@ The syntax for using the DATEDIFF function in [Snowflake](https://docs.snowflake
 datediff(<date part>, <start date/time>, <end date/time>)
 ```
 
-> **Info:**
+> **A note on Databricks:**
 > Databricks additionally supports a separate [DATEDIFF function](https://docs.databricks.com/sql/language-manual/functions/datediff.html) that takes only two arguments: a start date and an end date. The function will always return the difference between two dates in days.
 
 ### DATEDIFF in Google BigQuery
