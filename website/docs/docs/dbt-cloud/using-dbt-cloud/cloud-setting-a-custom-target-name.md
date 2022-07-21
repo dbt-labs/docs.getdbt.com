@@ -21,9 +21,9 @@ where created_at > date_trunc('month', current_date)
 
 To set a custom target name for a job in dbt Cloud, configure the "Target Name" field for your job in the Job Settings page.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/60f3fa2-Screen_Shot_2019-02-08_at_10.33.20_PM.png" title="Overriding the target name to 'prod'"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/jobs-settings-target-name.png" title="Overriding the target name to 'prod'"/>
 
 ## dbt Cloud IDE
-When developing in dbt Cloud, you can set a custom target name in your development credentials. Head to your account (via your profile image in the top right hand corner), select the project under "Credentials" and update the target name.
+When developing in dbt Cloud, you can set a custom target name in your development credentials. Head to your account (via the gear in the top right hand corner), select the project under "Credentials" and update the target name.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/development-credentials.png" title="Overriding the target name to 'dev'"/>
