@@ -7,9 +7,9 @@ In dbt Cloud, both jobs and environments are configured to use a specific versio
 
 ### Environments
 
-Navigate to the settings page of an environment, then click **edit**. Click the **dbt Version** dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
+Navigate to the settings page of an environment, then click **edit**. Click the 'dbt version' dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/Environment-settings.png" title="Settings of a dbt Cloud environment"/>
+<Lightbox src="/img/dbt-cloud-environment-parameters.png" title="settings of a dbt Cloud Environment"/>
 
 Be sure to save your changes before navigating away.
 
@@ -17,28 +17,27 @@ Be sure to save your changes before navigating away.
 
 Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" title="Settings of a dbt Cloud job"/>
+<Lightbox src="/img/dbt-cloud-job-parameters.png" title="settings of a dbt Cloud Job"/>
 
-The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
+The example job seen in the screenshot above belongs to the environment "Redshift - Maintenance." It inherits the dbt version of its environment using the `inherit from <environment name>` option. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud.
 
 ## Supported Versions
 
-We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
+We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt v1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support running in dbt Cloud.
 
 
 
- > **Starting with v1.0, any subsequent minor versions will be supported in dbt Cloud for 1 year post release. At the end of the 1 year window, accounts must upgrade to a supported version of dbt or risk service disruption.**
+ > **Starting with v1.0, any subsequent minor versions will be allowed to run in dbt Cloud for 1 year post release. At the end of the 1 year supported window in dbt Cloud, accounts must upgrade to a supported version of dbt or risk service disruption.**
 
-We will continue to update this table so that customers know when we plan to stop supporting different versions of Core in dbt Cloud.
+We will continue to update this table so that customers know when we plan to stop running different versions of Core in dbt Cloud.
 
 <Snippet src="core-versions-table" />
 
-
 :::warning ⚠️ v0.X Non-Supported Period
- Accounts had until the end of June 2022 to upgrade to dbt 1.0 or later. Pre-dbt 1.0 versions will no longer receive patch fixes, and our support team will no longer assist with dbt version specific help on non-supported versions of dbt. Additionally, jobs running dbt versions prior to 1.0 may experience service disruptions before the end of the year and may be removed from the dbt Cloud context by year end. You will receive additional notification before any planned disruption to your production jobs.
+ We are giving accounts until the end of June 2022 to upgrade to dbt 1.0 or later. Pre-dbt 1.0 versions will not receive patch fixes, and our support team will no longer assist with dbt version specific help on non-supported versions of dbt. Additionally, jobs running dbt versions prior to 1.0 may experience service disruptions before the end of the year and will likely be removed from the dbt Cloud context by year end. You will receive additional notification before any planned disruption to your production jobs.
 :::
 
-Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may also choose to try prereleases of those patch releases before they are generally available. 
+Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may choose to try prereleases of those patch releases before they are generally available. 
 
 <!--- TODO: Include language to reflect:
   - notifying users when new minor versions are available

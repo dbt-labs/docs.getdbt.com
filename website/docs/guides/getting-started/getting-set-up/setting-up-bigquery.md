@@ -32,10 +32,15 @@ Before jumping into the steps below, login to your Google account.
 2. Create a new project for this tutorial:
    - If you've just created a BigQuery account, you'll be prompted to create a new project straight away.
    - If you already have an existing organization, you can select the project drop down in the header bar, and create a new project from there.
+   <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/bigquery/project-dropdown.png" title="Bigquery Project Dropdown" />
+   </div>
 
 3. Select **NEW PROJECT**. You should see a project name automatically populate. You can change the name to something more relevant, for example "dbt Learn - Bigquery Setup."
-<Lightbox src="/img/bigquery/new-project-creation.png" title="Bigquery New Project Creation" />
+
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/bigquery/new-project-creation.png" title="Bigquery New Project Creation" />
+    </div>
 
 4. Click **Create**.
 
