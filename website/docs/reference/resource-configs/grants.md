@@ -5,7 +5,7 @@ default_value: {}
 id: "grants"
 ---
 
-<Snippet src="available-prerelease-beta-banner" />
+<Snippet src="available-prerelease-banner" />
 
 You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
 

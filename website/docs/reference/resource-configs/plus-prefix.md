@@ -61,7 +61,7 @@ models:
 
 </File>
 
-Since it doesn't hurt to use the `+` prefix, we recommend you use it whenever adding configs to your `dbt_project.yml` file.
+When adding configs in `dbt_project.yml`, it doesn't hurt to use the `+` prefix, so we recommend you use it always.
 
 <VersionBlock firstVersion="1.2">
 
