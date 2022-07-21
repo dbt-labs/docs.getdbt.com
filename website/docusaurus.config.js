@@ -44,7 +44,7 @@ console.log("DEBUG: metatags = ", metatags);
 var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
-  tagline: 'End user documentation, guides and technical reference for dbt',
+  tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
   title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',

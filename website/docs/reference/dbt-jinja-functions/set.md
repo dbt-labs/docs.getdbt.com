@@ -27,9 +27,9 @@ __Args__:
 {% do log(my_set) %}  {# None #}
 ```
 
-### set_strict
+### try_set
 
-The `set_strict` context method can be used to convert any iterable to a sequence of iterable elements that are unique (a set). The difference to the `set` context method is that the `set_strict` method will raise an exception on a `TypeError`, if the provided value is not a valid iterable and cannot be converted to a set.
+The `try_set` context method can be used to convert any iterable to a sequence of iterable elements that are unique (a set). The difference to the `set` context method is that the `try_set` method will raise an exception on a `TypeError`, if the provided value is not a valid iterable and cannot be converted to a set.
 
 __Args__:
 - `value`: The iterable to convert (e.g. a list)
@@ -42,7 +42,7 @@ __Args__:
 
 ```
 {% set my_invalid_iterable = 1234 %}
-{% set my_set = set_strict(my_invalid_iterable) %}
+{% set my_set = try_set(my_invalid_iterable) %}
 {% do log(my_set) %}
 
 Compilation Error in ... (...)

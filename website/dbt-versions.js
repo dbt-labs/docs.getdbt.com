@@ -24,14 +24,6 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "reference/dbt-jinja-functions/set",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/zip",
-    "firstVersion": "1.2",
-  },
-  {
     "page": "reference/dbt-jinja-functions/cross-database-macros",
     "firstVersion": "1.2",
   },

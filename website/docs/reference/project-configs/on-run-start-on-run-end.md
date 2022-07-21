@@ -30,7 +30,11 @@ A SQL statement (or list of SQL statements) to be run at the start, or end, of t
 
 ## Examples
 
+<VersionBlock firstVersion="1.2">
+
 <Snippet src="hooks-to-grants" />
+
+</VersionBlock>
 
 <VersionBlock lastVersion="1.1">
 

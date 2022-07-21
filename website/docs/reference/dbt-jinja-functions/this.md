@@ -13,10 +13,6 @@ id: "this"
 
 ## Examples
 
-<Snippet src="hooks-to-grants" />
-
-<VersionBlock lastVersion="1.1">
-
 ### Grant permissions on a model in a post-hook
 
 <File name='dbt_project.yml'>
@@ -29,8 +25,6 @@ models:
 ```
 
 </File>
-
-</VersionBlock>
 
 
 ### Configuring incremental models

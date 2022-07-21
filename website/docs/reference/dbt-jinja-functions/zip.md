@@ -29,9 +29,9 @@ __Args__:
 {% do log(my_zip) %}  {# [] #}
 ```
 
-### zip_strict
+### try_zip
 
-The `zip_strict` context method can be used to used to return an iterator of tuples, just like `zip`. The difference to the `zip` context method is that the `zip_strict` method will raise an exception on a `TypeError`, if one of the provided values is not a valid iterable.
+The `try_zip` context method can be used to used to return an iterator of tuples, just like `zip`. The difference to the `zip` context method is that the `try_zip` method will raise an exception on a `TypeError`, if one of the provided values is not a valid iterable.
 
 __Args__:
 - `value`: The iterable to convert (e.g. a list)
@@ -39,14 +39,14 @@ __Args__:
 ```
 {% set my_list_a = [1, 2] %}
 {% set my_list_b = ['alice', 'bob'] %}
-{% set my_zip = zip_strict(my_list_a, my_list_b) | list %}
+{% set my_zip = try_zip(my_list_a, my_list_b) | list %}
 {% do log(my_zip) %}  {# [(1, 'alice'), (2, 'bob')] #}
 ```
 
 ```
 {% set my_list_a = 12 %}
 {% set my_list_b = ['alice', 'bob'] %}
-{% set my_zip = zip_strict(my_list_a, my_list_b) %}
+{% set my_zip = try_zip(my_list_a, my_list_b) %}
 
 Compilation Error in ... (...)
   'int' object is not iterable
