@@ -23,7 +23,7 @@ These are often high-stakes situations! So accuracy in tracking changes in your 
 
 <!--truncate-->
 
-If you’ve encountered this problem before, you know it’s a tricky one. dbt is [idempotent](https://discourse.getdbt.com/t/understanding-idempotent-data-transformations/518) - it recreates <Term id="table">tables</Term> at runtime with the `CREATE TABLE AS` syntax. Because of this, the concepts of “version history” and “backups” aren’t intrinsic to dbt.
+If you’ve encountered this problem before, you know it’s a tricky one. dbt is [idempotent](https://discourse.getdbt.com/t/understanding-idempotent-data-transformations/518) - it recreates <Term id="table">tables</Term> at runtime with the `CREATE TABLE AS` syntax. Because of this, the ability to access a full picture of historical outputs isn't intrinsic to dbt.
 
 Let’s imagine a specific scenario. Joanne is an analytics engineer for a large e-commerce company. The head of sales just messaged her the following question:
 
@@ -45,7 +45,7 @@ and
 
 The goal of this article is to eliminate step one – to provide you with a menu of solutions I’ve encountered so you can spend less time ideating and more time considering the nuances of your specific use-case.
 
-I’ll start by discussing a basic version of the scenario I first encountered – a misapplication of dbt’s snapshot functionality. Then, I’ll outline a couple of solutions:
+I’ll start by discussing a basic version of the scenario I first encountered – a ⚠️ misapplication ⚠️ of dbt’s snapshot functionality. Then, I’ll outline a couple of solutions:
 
 - **Downstream Incremental Model**: Build an incremental model downstream of the model which contains your business logic to “grab” every point-in-time version
 - **Upstream Snapshots**: Build snapshots on all of your sources to capture changes in your raw data and calculate all versions of history every time you execute a `dbt run`
@@ -110,7 +110,7 @@ Her goal is to capture **all** versions of the `fct_income` model for January. S
 | January 2022 | electronics | 152 | 02/10/22 08:00:00 |
 | January 2022 | books | 202 | 02/10/22 08:00:00 |
 
-In order to achieve this **long table of history**, she decides to start [snapshotting](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots) `fct_income`.
+In order to achieve this **long table of history**, she decides to do something that ⚠️ goes against dbt Lab's best practices ⚠️ - [snapshotting](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots) her final model, `fct_income`.
 
 ```sql
 {% snapshot snapshot_fct_income %}
@@ -120,9 +120,8 @@ In order to achieve this **long table of history**, she decides to start [snapsh
       target_database='analytics',
       target_schema='snapshots',
       unique_key='id',
-
       strategy='check',
-      check_cols=['income'],
+      check_cols=['income']
     )
 }}
 
@@ -149,6 +148,7 @@ The output of `snapshot_fct_income` looks like this:
 | January 2022 - books | January 2022 | books | 202 | 02/10/22 08:00:00 | 02/10/22 08:00:00 | NULL |
 
 Each month now has multiple versions of income, and the sales department is responsible for determining which version is “correct.”
+
 In order to keep track of which version has been marked as “correct” by the sales department, Joanne creates a seed file to capture which version of the `fct_income` model is the correct one for each month. The output of her seed `income_report_versions` looks like this:
 
 | month_year | correct_version | comment |
@@ -191,7 +191,7 @@ Instead of using snapshots, Joanne could create an [incremental model](https://d
 ```sql
 {{
     config(
-        materialized='incremental'
+      materialized='incremental'
     )
 }}
 ```
@@ -224,10 +224,10 @@ The final config block for `int_income_history` might look something like this:
 ```sql
 {{
     config(
-        materialized='incremental',
-	full_refresh=false,
-	schema='history',
-	on_schema_change='sync_all_columns'
+      materialized='incremental',
+	  full_refresh=false,
+	  schema='history',
+	  on_schema_change='sync_all_columns'
     )
 }}
 ```
@@ -270,9 +270,8 @@ Remember the source data change Joanne noticed — a manufacturing cost was date
       target_database='analytics',
       target_schema='snapshots',
       unique_key='cost_id',
-
       strategy='timestamp',
-      updated_at='updated_at',
+      updated_at='updated_at'
     )
 }}
 
@@ -290,7 +289,7 @@ select * from {{ source('source', 'costs') }}
 Because snapshots only capture changes detected at the time the dbt snapshot command is executed, it is technically possible to miss some changes to your source data. You will have to consider how often you want to run this snapshot command in order to capture the history you need.
 :::
 
-The original `fct_income` model now calculates the amounts for each version of source data, every time Joanne executes a `dbt run`. In other words, the downstream `fct_` models are **version-aware**. Because of this, Joanne changes the name of `fct_income` to `fct_income_history` to be more descriptive.
+The original `fct_income` model now calculates the income for each version of source data, every time Joanne executes a `dbt run`. In other words, the downstream `fct_` models are **version-aware**. Because of this, Joanne changes the name of `fct_income` to `fct_income_history` to be more descriptive.
 
 In order to track changes in business logic, she can apply each version of logic to the relevant records and union together.
 
@@ -349,7 +348,7 @@ The final output of `fct_income_history` would accomplish the same goal as `stg_
 
 ## Final thoughts
 
-Both of these solutions allow Joanne to achieve her desired output – a table containing all versions of income amounts for a given month – while improving the workflow and the efficiency of the final model.
+Both of these solutions allow Joanne to achieve her desired output – a table containing all versions of income for a given month – while improving the workflow and the efficiency of the final model.
 
 However, each has its advantages and disadvantages.
 
