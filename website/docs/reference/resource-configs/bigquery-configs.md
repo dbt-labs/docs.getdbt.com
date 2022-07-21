@@ -446,7 +446,7 @@ declare dbt_partitions_for_replacement array<date>;
 set (dbt_partitions_for_replacement) = (
     select as struct
         array_agg(distinct date(max_tstamp))
-    from `my_project`.`my_dataset`.{{ model_name }}__dbt_tmp
+    from `my_project`.`my_dataset`.`sessions`
 );
 
 /*

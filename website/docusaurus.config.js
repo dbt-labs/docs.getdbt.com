@@ -191,7 +191,7 @@ var siteSettings = {
           rehypePlugins: [katex],
 
           editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
-          showLastUpdateTime: true,
+          showLastUpdateTime: false,
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
