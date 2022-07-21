@@ -117,9 +117,9 @@ dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out
 
 ## Examples
 
-<VersionBlock firstVersion="1.2">
-
 <Snippet src="hooks-to-grants" />
+
+<VersionBlock firstVersion="1.2">
 
 ### [Redshift] Unload one model to S3
 
