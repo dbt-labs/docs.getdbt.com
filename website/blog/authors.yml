@@ -268,3 +268,9 @@ jonathan_natkin:
       icon: fa-linkedin
     - url: https://twitter.com/nattyice
       icon: fa-twitter
+
+benoit_perigaud:
+  name: Benoit Perigaud
+  job_title: Senior Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/benoit-perigaud.jpeg
