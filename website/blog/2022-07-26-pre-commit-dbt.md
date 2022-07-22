@@ -1,7 +1,7 @@
 ---
-title: "Enforcing rules at scale with `pre-commit-dbt`"
+title: "Enforcing rules at scale with pre-commit-dbt"
 description: "Making sure everyone is following best practices on large dbt projects is hard. How can you enforce rules at scale? Benoit Perigaud shares a dbt package to help you do just that."
-slug: how-we-structure-our-dbt-projects
+slug: enforcing-rules-pre-commit-dbt
 authors: [benoit_perigaud]
 tags: [analytics craft]
 hide_table_of_contents: false
