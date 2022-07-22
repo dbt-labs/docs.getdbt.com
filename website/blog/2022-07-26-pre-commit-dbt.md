@@ -226,7 +226,7 @@ Once we push those changes to our repo to a custom branch and create a PR to mai
 
 The GitHub action is running:
 
-![Screenshot of a GitHub action executing on a PR that is running the pre-commit-check test](/img/blog/2022-07-26-pre-commit-dbt/test-running.png)
+![Screenshot of a GitHub action executing on a PR that is running the pre-commit-check test](/img/blog/2022-07-26-pre-commit-dbt/testing-running.png)
 
 The step fails because I missed some tests and it tells me what model is failing:
 
