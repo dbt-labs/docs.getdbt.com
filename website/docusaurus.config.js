@@ -24,7 +24,6 @@ let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
 let metatags = []
 // If Not Current Branch, do not index site
-// This adds noindex for branch deploys
 if (GIT_BRANCH !== 'current') {
   metatags.push({
     tagName: 'meta',
@@ -44,7 +43,7 @@ console.log("DEBUG: metatags = ", metatags);
 var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
-  tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
+  tagline: 'End user documentation, guides and technical reference for dbt',
   title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
@@ -191,7 +190,7 @@ var siteSettings = {
           rehypePlugins: [katex],
 
           editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
-          showLastUpdateTime: false,
+          showLastUpdateTime: true,
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
