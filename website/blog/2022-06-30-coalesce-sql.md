@@ -7,6 +7,7 @@ authors: [kira_furuichi]
 
 tags: [SQL Magic]
 hide_table_of_contents: false
+
 date: 2022-05-08
 is_featured: false
 ---
