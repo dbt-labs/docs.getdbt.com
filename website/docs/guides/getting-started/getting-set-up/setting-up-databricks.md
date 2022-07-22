@@ -216,9 +216,7 @@ To generate a user token for your development credentials in dbt Cloud, click on
 #### Connect dbt Cloud to Databricks
 
 1. Choose **Databricks** to setup your connection.
-    <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/dbt_cloud_setup_databricks_connection_start.png" title="dbt Cloud - Choose Databricks Connection" />
-    </div>
     
 2. For the name, write `Databricks` or another simple title.    
 3. For Databricks settings, reference your SQL endpoint connection details from step 6 of the previous section for each of the following fields:
