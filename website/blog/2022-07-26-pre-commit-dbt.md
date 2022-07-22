@@ -6,7 +6,7 @@ authors: [benoit_perigaud]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-07-22
+date: 2022-07-26
 is_featured: true
 ---
 

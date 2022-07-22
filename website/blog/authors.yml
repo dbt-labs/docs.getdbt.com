@@ -274,3 +274,6 @@ benoit_perigaud:
   job_title: Senior Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/benoit-perigaud.jpeg
+  links:
+    - url: https://www.linkedin.com/in/benoit-perigaud/
+      icon: fa-linkedin
