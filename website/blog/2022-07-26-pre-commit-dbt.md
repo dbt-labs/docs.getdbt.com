@@ -14,6 +14,8 @@ At dbt Labs, we have [best practices](https://docs.getdbt.com/docs/guides/best-p
 
 That question becomes difficult to answer in large dbt projects. Developers might not follow the same conventions. They might not be aware of past decisions, and reviewing pull requests in git can become more complex. When dbt projects have hundreds of models, it's hard to know which models do not have any tests defined and aren't enforcing your conventions. 
 
+<!--truncate-->
+
 One potential solution is to leverage the open-source package [pre-commit-dbt](https://github.com/offbi/pre-commit-dbt), created by dbt community members, that can be used to automatically run tests before committing files to git or as part of CI steps. In this article, I'll walk you through the strategy I use to implement this package and enforce rules at scale.
 
 ## What are pre-commit and pre-commit-dbt?
