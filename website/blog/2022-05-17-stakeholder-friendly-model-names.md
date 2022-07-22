@@ -40,7 +40,7 @@ Analysts are interfacing with data from the outside in. They are in meetings wit
 
 - Precomputed views/tables in a BI tool
 - Read-only access to the dbt Cloud IDE docs
-- Full list of tables and views in their data warehouse
+- Full list of tables and views in their <Term id="data-warehouse" />
 
 #### Precomputed views/tables in a BI tool
 

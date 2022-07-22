@@ -5,7 +5,7 @@ default_value: {}
 id: "grants"
 ---
 
-<Snippet src="available-prerelease-beta-banner" />
+<Snippet src="available-prerelease-banner" />
 
 You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
 
@@ -22,7 +22,22 @@ dbt encourages you to use grants as resource configs whenever possible in Core v
  
 For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
 
-You can set grants in `dbt_project.yml` and as a `config` yaml property that applies to the entire dbt project.
+## Definition
+
+You can use the `grants` field to set permissions or grants for a resource. When you run a model, seed or seed, or snapshot a snapshot, dbt will run `grant` and/or `revoke` statements to ensure that the permissions on the database object match the `grants` you have configured on the resource.
+
+Like all configurations, `grants` will be included in dbt project metadata, including [the manifest artifact](dbt-artifacts/manifest-json).
+
+### Common syntax 
+
+Grants have two key components:
+
+* **Privilege:** A right to perform a specific action or set of actions on an object in the database, such as selecting data from a table.
+* **Grantees:** One or more recipients of granted privileges. Some platforms also call these "principals." For example, a grantee could be a user, a group of users, a role held by one or more users (Snowflake), or a service account (BigQuery/GCP).
+
+## Configuring grants
+
+You can configure `grants` in `dbt_project.yml` to apply grants to many resources at once—all models in your project, a package, or a subfolder—and you can also configure `grants` one-by-one for specific resources, in yaml `config:` blocks or right within their `.sql` files.
 
 <Tabs
   defaultValue="models"
@@ -98,32 +113,109 @@ See [configs and properties](configs-and-properties) for details.
 </TabItem>
 </Tabs>
 
-## Definition
+### Grant config inheritance
 
-You can use the `grants` field to set permissions or grants for a resource. These grants will be compiled into the `manifest.json` file complied by dbt.
+When you set `grants` for the same model in multiple places, such as in `dbt_project.yml` and in a more-specific `.sql` or `.yml` file, dbt's default behavior replaces the less-specific set of grantees with the more-specific set of grantees.  This "merge and clobber" behavior updates each privilege when dbt parses your project. 
+
+For example:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  +grants:
+    select: ['user_a', 'user_b']
+```
+
+</File>
+
+<File name='models/specific_model.sql'>
+
+```sql
+{{ config(grants = {'select': ['user_c']}) }}
+```
+
+</File>
+
+As a result of this configuration, `specific_model` will be configured to grant the `select` privilege to `user_c` _only_. After you run `specific_model`, that is the only granted privilege you would see in the database, and the only `grant` statement you would find in dbt's logs.
+
+Let's say we wanted to _add_ `user_c` to the existing list of grantees receiving the `select` privilege on `specific_model`, rather than _replacing_ that list entirely. To accomplish that, we can use the `+` ("addition") symbol, prefixing the name of the privilege:
+
+<File name='models/specific_model.sql'>
+
+```sql
+{{ config(grants = {'+select': ['user_c']}) }}
+```
+
+</File>
+
+Now, the model will grant select to `user_a`, `user_b`, AND `user_c`!
+
+**Notes:**
+- This will only take effect for privileges which include the `+` prefix. Each privilege controls that behavior separately. If we were granting other privileges, in addition to `select`, and those privilege names lacked the `+` prefix, they would continue to "clobber" rather than "add" new grantees.
+- This use of `+`, controlling clobber vs. add merge behavior, is distinct from the use of `+` in `dbt_project.yml` (shown in the example above) for defining configs with dictionary values. For more information, see [the plus prefix](https://docs.getdbt.com/reference/resource-configs/plus-prefix).
+- `grants` is the first config to support a `+` prefix for controlling config merge behavior. Currently, it's the only one. If it proves useful, we may extend this capability to new and existing configs in the future.
+
+## General examples
+
+You can grant each permission to a single grantee, or a set of multiple grantees. In this example, we're granting `select` on this model to just `bi_user`, so that it can be queried in our Business Intelligence (BI) tool.
+
+<File name='models/table_model.sql'>
+
+```sql
+{{ config(materialized = 'table', grants = {
+    'select': 'bi_user'
+}) }}
+```
+
+</File>
+
+When dbt runs this model for the first time, it will create the table, and then run code like:
+```sql
+grant select on schema_name.table_model to bi_user;
+```
+
+In this case, we're creating an incremental model, and granting the `select` privilege to two recipients: `bi_user` and `reporter`.
+
+<File name='models/incremental_model.sql'>
+
+```sql
+{{ config(materialized = 'incremental', grants = {
+    'select': ['bi_user', 'reporter']
+}) }}
+```
+
+</File>
+
+When dbt runs this model for the first time, it will create the table, and then run code like:
+```sql
+grant select on schema_name.incremental_model to bi_user, reporter;
+```
+
+In subsequent runs, dbt will use database-specific SQL to show the grants already on `incremental_model`, and then determine if any `revoke` or `grant` statements are needed.
+
 
 ## Database-specific requirements and notes
 
 While we try to standardize the terms we use to describe different features, you will always find nuances in different databases. This section outlines some of those database-specific requirements and notes.
 
-### Common syntax 
-
-In our examples, you will find terms like `select` and `another_user` because many databases use these terms, but be aware of the syntax your own database supports:
-
-* Privileges: A right to perform an action in a database.
-* Grantees: A way to manage privileges. Recipients of granted privileges, also called "principals." Grantees can be a user, a group of users, a role held by users (Snowflake), a service account (GCP), and more.
+In our examples above and below, you will find us referring to a privilege named `select`, and a grantee named `another_user`. Many databases use these or similar terms. Be aware that your database may require different syntax for privileges and grantees; you must configure `grants` in dbt with the appropriate names for both.
 
 <WHCode>
 
 <div warehouse="BigQuery">
 
-- Use BigQuery-specific grantee and privilege names:
-  - Use `user:jeremy@dbtlabs.com` (do not use `jerco_user`)
-  - Use  `roles/bigquery.dataViewer` (do not use `select`)
+On BigQuery, "privileges" are called "roles," and they take the form `roles/service.roleName`. For instance, instead of granting `select` on a model, you would grant `roles/bigquery.dataViewer`.
+
+Grantees can be users, groups, service accounts, domains—and each needs to be clearly demarcated as such with a prefix. For instance, to grant access on a model to `someone@yourcompany.com`, you need to specify them as `user:someone@yourcompany.com`.
+
+We encourage you to read Google's documentation for more context:
+- [Understanding GCP roles](https://cloud.google.com/iam/docs/understanding-roles)
+- [How to format grantees](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#user_list)
 
 <Snippet src="grants-vs-access-to" />
 
-## BigQuery examples
+### BigQuery examples
 
 Granting permission using SQL and BigQuery:
 
@@ -169,25 +261,3 @@ models:
 </div>
 
 </WHCode>
-
-## General examples
-
-When granting permissions, you can optimize for single or multiple users.
-
-Granting a single permission:
-
-```sql
-{{ config(materialized = 'incremental', grants = {
-    'select': 'bi'
-}) }}
-
-```
-
-Granting multiple users the same permission:
-
-```sql
-{{ config(materialized = 'incremental', grants = {
-    'select': ['bi','reporter']
-}) }}
-
-```

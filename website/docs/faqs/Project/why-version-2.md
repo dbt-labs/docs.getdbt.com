@@ -1,7 +1,7 @@
 ---
 title: "Why do model and source yml files always start with `version: 2`?"
 description: ".yml file structure more extensible with version 2."
-sidebar_label: 'why does yml file start with version 2'
+sidebar_label: 'Why does yml file start with version 2'
 id: why-version-2
 
 ---
