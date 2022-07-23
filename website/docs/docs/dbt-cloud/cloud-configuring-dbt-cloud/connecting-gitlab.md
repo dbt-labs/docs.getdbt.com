@@ -62,7 +62,7 @@ In GitLab, when creating your Group Application, input the following:
 | **Confidential** | ✔️ |
 | **Scopes** | ✔️ api |
 
-Note, if you're a dbt Cloud single tenant customer, you'll need to replace **cloud.getdbt.com** with the hostname of
+dbt Cloud single tenant customers need to replace **cloud.getdbt.com** with the hostname of
 your dbt Cloud instance.
 
 The application form in GitLab should look as follows when completed:
