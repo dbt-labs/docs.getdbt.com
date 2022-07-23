@@ -8,7 +8,7 @@ sidebar_label: "Connecting GitHub"
 
 Connecting your GitHub account to dbt Cloud provides convenience and another layer of security to dbt Cloud:
 - Log into dbt Cloud via OAuth through GitHub.
-- Import new GitHub repos with a couple clicks during dbt Cloud project setup.
+- Import new GitHub repositories with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
 - Trigger [Continuous integration](cloud-enabling-continuous-integration-with-github) builds when pull requests are opened in GitHub.
 
