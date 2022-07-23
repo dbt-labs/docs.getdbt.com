@@ -12,7 +12,7 @@ Connecting your GitLab account to dbt Cloud provides convenience and another lay
 - Clone repos using HTTPS rather than SSH.
 - Trigger [Continuous integration](cloud-enabling-continuous-integration-with-github) builds when merge requests are opened in GitLab.
 
-The steps to integrate GitLab in dbt Cloud depends on your plan. 
+The steps to integrate GitLab in dbt Cloud depend on your plan:
 If you are on:
 - the Developer or Team plan, read these [instructions](/connecting-gitlab#for-dbt-cloud-developer-and-team-tiers).
 - the Enterprise plan, jump ahead to these [instructions](/connecting-gitlab#for-the-dbt-cloud-enterprise-tier).
