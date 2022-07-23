@@ -43,7 +43,7 @@ The dbt Cloud GitHub App requires the following permissions:
 Once you grant access to the app, you will be redirected back to dbt Cloud and shown a linked account success state. You are now personally authenticated too, and your team members can begin [connecting their profiles](/cloud-installing-the-github-application#personally-authenticate-with-github).
 
 ## Configuring the dbt Cloud app in your GitHub account
-If you are your GitHub organization owner, you can also configure the dbt Cloud GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link to start the process in dbt Cloud. 
+If you are your GitHub organization owner, you can also configure the dbt Cloud GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in dbt Cloud to start this process. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/configure-github.png" title="Configuring the dbt Cloud app"/>
 
 ## Personally authenticate with GitHub
