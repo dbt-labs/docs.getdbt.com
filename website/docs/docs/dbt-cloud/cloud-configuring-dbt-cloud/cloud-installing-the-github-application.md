@@ -32,7 +32,7 @@ To link your dbt Cloud account to your team's GitHub account, navigate to Your P
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-connect.gif" title="Navigated to Linked Accounts under your profile"/>
 
-Once in this section, you'll be able to set up your GitHub account connection to dbt Cloud by clicking on the **Link** button for GitHub. This will redirect you to your GitHub account where you will be asked to install and configure the dbt Cloud application. Select the GitHub organization you want dbt Cloud to have access to and which repositories you wish to grant access to.
+In the Linked Accounts section, you can set up your GitHub account connection to dbt Cloud by clicking **Link** to the right of GitHub. This redirects you to your account on GitHub where you will be asked to install and configure the dbt Cloud application. Select the GitHub organization and repositories dbt Cloud should access.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-app-install.png" title="Installing the dbt Cloud application into a GitHub organization"/>
 
