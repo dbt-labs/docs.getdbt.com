@@ -19,7 +19,10 @@ If you are on:
 
 ## For dbt Cloud Developer and Team tiers
 
-To connect your GitLab account, navigate to **Your Profile** settings, and select **Linked Accounts** from the left navigation pane. There you'll see a **link** to connect your GitLab account.
+To connect your GitLab account: 
+1. Navigate to Your Profile settings by clicking the gear icon in the top right. 
+2. Select **Linked Accounts** in the left menu. 
+3. Click **Link** to the right of your GitLab account.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/gitlab redirect.gif" title="Link your GitLab" />
 
