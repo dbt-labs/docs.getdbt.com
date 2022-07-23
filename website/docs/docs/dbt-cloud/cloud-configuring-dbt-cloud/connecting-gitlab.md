@@ -6,7 +6,7 @@ sidebar_label: "Connecting GitLab"
 
 ## Overview
 
-Connecting your GitLab account to dbt Cloud unlocks exciting and compelling functionality in dbt Cloud. Once your GitLab account is connected, you can:
+Connecting your GitLab account to dbt Cloud provides convenience and another layer of security to dbt Cloud:
 - Log into dbt Cloud via OAuth through GitLab.
 - Import new GitLab repos with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
