@@ -28,7 +28,7 @@ There are four levels of environment variables:
 
 **Setting environment variables at the project and environment level**
 
-To set environment variables at the project and environment level, head over to the Environments section in your main navigation pane. You'll see a <Term id="view" /> to list all your environments and a view to set and update environment variables. Make sure you're in the environment variable view.
+To set environment variables at the project and environment level, head over to the Environments section under Deploy in your top navigation. You'll see a view to list all your environments and a view to set and update environment variables. Make sure you're in the environment variable view.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/navigate-to-env-vars.gif" title="Environment variables tab"/>
 
@@ -47,7 +47,7 @@ To the right of the `Project Default` column are all your environments. Values s
 
 You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpretted differently depending on the job. 
 
-When setting up or editing a job, you will see a button in the Environment section to `Set Environment Variables`. Clicking on that button will take you to a section where you can override environment variable values set at the environment or project level. 
+When setting up or editing a job, you will see a section where you can override environment variable values defined at the environment or project level.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.gif" title="Navigating to environment variables job override settings"/>
 
@@ -60,7 +60,7 @@ Every job runs in a specific, deployment environment, and by default, a job will
 **Overriding environment variables at the personal level**
 
 
-Developers may also want to set a personal value override for an environment variable while developing in the dbt IDE. By default, dbt Cloud will look to use environment variable values set in the project's development environment. To see and override these values, developers should head to their Profile and then select their project under Credentials and scroll to the Environment Variables section. 
+Developers may also want to set a personal value override for an environment variable while developing in the dbt IDE. By default, dbt Cloud will look to use environment variable values set in the project's development environment. To see and override these values, developers should head to the Settings page. Under Your Profile section, developers can select their project under Credentials and scroll to the Environment Variables section. 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.gif" title="Navigating to environment variables personal override settings"/>
 
