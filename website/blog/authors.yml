@@ -268,3 +268,15 @@ jonathan_natkin:
       icon: fa-linkedin
     - url: https://twitter.com/nattyice
       icon: fa-twitter
+
+callum_mccann:
+  name: Callum McCann
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  description: Callum works on metrics and is either talking about that or obsessing about his dog. 
+  image_url: /img/blog/authors/callum_mccann.jpeg
+  links:
+    - url: https://www.linkedin.com/in/callum-mccann-38628a89/
+      icon: fa-linkedin
+    - url: https://twitter.com/callumpmccann
+      icon: fa-twitter
