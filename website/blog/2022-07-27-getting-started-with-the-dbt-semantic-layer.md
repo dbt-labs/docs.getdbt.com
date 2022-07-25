@@ -14,12 +14,8 @@ is_featured: true
 
 # Getting Started With The dbt Semantic Layer
 
-## Intro
+> TLDR: The Semantic Layer is made up of a combination of open-source and SaaS offerings and is going to change how you consume and define metrics.
 
-<aside>
-📔 TLDR: The Semantic Layer is made up of a combination of open-source and SaaS offerings and is going to change how you consume and define metrics.
-
-</aside>
 
 In recent months, we’ve seen a lot of excitement (and some understandable confusion) in the community around what the dbt Semantic Layer is. This is completely understandable, as elements of this “layer” are currently available while others aren’t. To those who aren’t following this saga with the intensity of [someone watching their investments on the crypto market](https://mobile.twitter.com/scannergr1/status/1536198701215109122/photo/1), we hope this blog can provide clarification on the following things:
 
@@ -30,10 +26,9 @@ In recent months, we’ve seen a lot of excitement (and some understandable conf
 
 With that, lets get into it!
 
-<aside>
-❗ Some of you might be confused - you’ve seen us talk about the Metrics Layer in the past and now we’re talking about the Semantic Layer. Well, what was previously called the Metrics Layer has been re-branded to the “Semantic Layer” in order to better reflect our long term plans. Today’s functionality focus largely on metrics but tomorrow’s will expand to be a programmatic interface to the DAG, to better understand entities and what models represent, and much more. Drew’s post about the future of the Semantic Layer explains this far better.
+<!--truncate-->
 
-</aside>
+> Some of you might be confused - you’ve seen us talk about the Metrics Layer in the past and now we’re talking about the Semantic Layer. Well, what was previously called the Metrics Layer has been re-branded to the “Semantic Layer” in order to better reflect our long term plans. Today’s functionality focus largely on metrics but tomorrow’s will expand to be a programmatic interface to the DAG, to better understand entities and what models represent, and much more. Drew’s post about the future of the Semantic Layer explains this far better.
 
 ## What is the dbt Semantic Layer?
 
@@ -47,7 +42,7 @@ An example that we’ve found helpful is [ARR](https://www.zuora.com/billing-top
 
 ***That’s good and all, but what does this look like for practitioners to use?*** 
 
-We’re building it with the following components:
+We’re building it with the following components[^1]:
 
 **Available Today**
 
@@ -108,10 +103,7 @@ This metric has now been defined in the dbt metadata and can be seen in the DAG!
 
 **Running The Metric Package To Calculate the Metric**
 
-<aside>
-❗ In the future, this is where Jim and Pam would directly query the proxy server to obtain the metric data (aka revenue). We will now cover what you can do with metrics today.
-
-</aside>
+> ❗ In the future, this is where Jim and Pam would directly query the proxy server to obtain the metric data (aka revenue). We will now cover what you can do with metrics today.
 
 In order to ensure that both Jim and Pam are pulling from the same dataset with the same definition, we’ll want to create a model that materializes this metric for them - this ensures that they’ll always get the same answer for ARR.
 
@@ -135,7 +127,7 @@ This would return a dataset that looks like this:
 | 2018-01-01 | Healthy | 26 |
 | 2018-01-08 | Churn Risk | 27 |
 
-Jim and Pam would then be able to reference the `revenue` column within the newly created dataset and never have to worry about the calculation of revenue ever again! The world is perfect and [balance has been restored.](https://www.youtube.com/watch?v=d1EnW4kn1kg) 
+Jim and Pam would then be able to reference the `revenue` column within the newly created dataset and never have to worry about the calculation of revenue ever again[^2]! The world is perfect and [balance has been restored.](https://www.youtube.com/watch?v=d1EnW4kn1kg) 
 
 **In the near Future with dbt Server and dbt Cloud proxy Server**
 
@@ -168,56 +160,6 @@ Both the dbt Cloud proxy server and dbt Server are currently in development, wit
 If you have any questions about those components, or metrics in general, please feel free to post in the #dbt-metrics-and-server channel on dbt Slack! The author of this post hangs around there and is always willing to chat metrics!
 
 ### Footnotes
+[^1]: We’re specifically calling out the licensing because there is a lot of confusion in the community around what is open-source and what isn’t. This is only becoming trickier with the introduction of the BSL licensing, which ensures users can run their own server but it cannot be sold as a cloud service. For more information on why these licensing types were picked, we recommend [Tristan’s blog around licensing dbt.](https://www.getdbt.com/blog/licensing-dbt/). The big takeaway around licensing is that you can still run components of the semantic layer even if you aren’t a dbt Cloud customer! 
 
----
-
----
-
-We’re specifically calling out the licensing because there is a lot of confusion in the community around what is open-source and what isn’t. This is only becoming trickier with the introduction of the BSL licensing, which ensures users can run their own server but it cannot be sold as a cloud service. For more information on why these licensing types were picked, we recommend [Tristan’s blog around licensing dbt.](https://www.getdbt.com/blog/licensing-dbt/) 
-
-The big takeaway around licensing is that you can still run components of the semantic layer even if you aren’t a dbt Cloud customer! More on that later.
-
-**Referencing the Metadata (API)**
-
-Psych! They’re definitely interested in the calculation of ARR. In fact, they don’t really trust the numbers **unless** they understand how it’s calculated. This is where they could use the Metadata API in order to query all the information about the metric, such as definition, run-time, acceptable dimensions, etc. 
-
-Right now Jim and Pam would need to query the API directly but in the future we expect there to be a number of different ways to obtain this information, ranging from [direct integration with the BI tool](https://hex.tech/integrations/dbt) all the way to having that information materialized in a dbt information schema!
-
-*For current tabular alternatives, there are some interesting macros in the newly released [dbt-project-evaluator package](https://github.com/dbt-labs/dbt-project-evaluator). Take a look there if you’re curious about materializing your metric information!*
-
-- **Memes**
-    
-    **Memes:**
-    
-    ![Screen Shot 2022-06-21 at 1.42.58 PM.png](Getting%20Started%20With%20The%20dbt%20Semantic%20Layer%20To%20Met%20e7cb105269474558a812c9e8aab07c42/Screen_Shot_2022-06-21_at_1.42.58_PM.png)
-    
-    **Voltron Combine:**
-    
-    [https://www.youtube.com/watch?v=5rPSLQxMT8w](https://www.youtube.com/watch?v=5rPSLQxMT8w)
-    
-    **Bringing Balance**
-    
-    [https://www.youtube.com/watch?v=d1EnW4kn1kg](https://www.youtube.com/watch?v=d1EnW4kn1kg)
-    
-    - Pasta Section
-        
-        Wow thats a lot of components. How will we keep all of them straight? Let’s follow the example of prophet, Benn Stancil, and break this down with a food metaphor. Is this metaphor a thinly veiled excuse to introduce you all to the best food youtuber? Perhaps. 
-        
-        **The dbt Metrics Layer, is a [5 Ingredient Risotto Style Pasta.](https://www.youtube.com/watch?v=vKvosQcfh8U)** 
-        
-        We’ve got the Pasta (dbt-core), some Chicken Broth (dbt_metrics), a handful of Broccolini (dbt Server), a good Italian Sausage (proxy server), and finally some amazing Parmesan Cheese (dbt Cloud API).
-        
-        We begin with the Pasta of `dbt-core` and chicken broth of `dbt_metrics`. These are the base components of our fledgling pasta server - they’re easy to obtain, affordable/free to all, and great even without all the other ingredients that we’re adding. Together they allow you to define your metric and materialize the dataset all through the lens of dbt macros and yml definitions. These two pieces alone would be a solid meal that would leave you feeling full. The secret is that you cook them both together at the same time, almost like a Risotto. This lets the starch, or all the value of dbt-core, stick around in the dish and not get washed out like normal pasta.
-        
-        But now we take that great meal and add so much more. 
-        
-        Next, we add the freshly grated Parmesan cheese of the `dbt Cloud API`. This thickens the sauce of our ‘pasta’ and binds everything together. It helps us query the metrics, understand our run times, get metadata about our projects or environments, and so much more. It tastes great with everything and every dish (data product) could do with a [little bit of dbt Metadata sprinkled on top](https://hex.tech/integrations/dbt).
-        
-        I’m well aware that this metaphor is running out of legs but you best believe I’m gonna finish on it. 
-        
-        Finally, we finish up with the hearty parts of our dish. The Brocollini of `dbt Server` and the Italian Sausage of the `proxy Server`. These two take a dish that you’ve had before (but not nearly as good as the style above) and take it to a new level of culinary satisfaction - elevate it to a new audience of consumers who wouldn’t have considered a bowl of data before. They’ve always consumed their metrics on a plate. With the two server components, we can serve it in a bowl, on a plate, or even straight onto the *google* sheet. 
-        
-        We lost it a bit there at the end but the promise of the metric layer is that it standardizes the entire data experience across whatever method the consumer is most familiar with. And dbt is able to accomplish this with the preceding 5 components!
-        
-
-![Untitled](Getting%20Started%20With%20The%20dbt%20Semantic%20Layer%20To%20Met%20e7cb105269474558a812c9e8aab07c42/Untitled%202.png)
+[^2]: Psych! They’re definitely interested in the calculation of ARR. In fact, they don’t really trust the numbers **unless** they understand how it’s calculated. This is where they could use the Metadata API in order to query all the information about the metric, such as definition, run-time, acceptable dimensions, etc. Right now Jim and Pam would need to query the API directly but in the future we expect there to be a number of different ways to obtain this information, ranging from [direct integration with the BI tool](https://hex.tech/integrations/dbt) all the way to having that information materialized in a dbt information schema! *For current tabular alternatives, there are some interesting macros in the newly released [dbt-project-evaluator package](https://github.com/dbt-labs/dbt-project-evaluator). Take a look there if you’re curious about materializing your metric information!*
