@@ -268,3 +268,13 @@ jonathan_natkin:
       icon: fa-linkedin
     - url: https://twitter.com/nattyice
       icon: fa-twitter
+
+jeremy_cohen:
+  name: Jeremy Cohen
+  job_title: Product Manager
+  organization: dbt Labs
+
+doug_beatty:
+  name: Doug Beatty
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
