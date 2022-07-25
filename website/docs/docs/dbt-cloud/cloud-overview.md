@@ -13,15 +13,13 @@ You can get started with dbt Cloud by [Signing up](https://www.getdbt.com/signup
 
 ## Develop dbt projects
 
-Using the [dbt IDE](the-dbt-ide), you can develop, run, and version control dbt projects on the web.
-
-<LoomVideo id="05f9c34b17c74c97b98286683dafd420" />
+You can use the [dbt IDE](the-dbt-ide) to develop, run, and version control dbt projects on the web.
 
 ## Schedule and run dbt jobs in production
 
 Set up custom schedules to run your production dbt jobs. dbt Cloud's comprehensive scheduling interface makes it possible to schedule jobs by day of week, time of day, or a recurring interval.
 
-<Lightbox src="/img/docs/dbt-cloud/28f97e6-job-schedule.gif" title="Scheduling jobs with dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/overview-job-schedule.gif" title="Scheduling jobs with dbt Cloud"/>
 
 ## Democratize access to logs
 
