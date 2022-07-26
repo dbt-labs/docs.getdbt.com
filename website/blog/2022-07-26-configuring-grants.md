@@ -170,7 +170,7 @@ Now that `grants` is a real config in dbt, available via dbt metadata, you can d
 {% endmacro %}
 ```
 
-This might be too clever -- but you get the idea!
+This is certainly too clever -- but you get the idea, and an illustration of what's possible!
 
 You can even do this at the *start* of the run, right after dbt creates its schemas, rather than waiting until the end. (Although it’s not a huge deal to wait.)
 
