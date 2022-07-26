@@ -24,7 +24,6 @@ let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
 let metatags = []
 // If Not Current Branch, do not index site
-// This adds noindex for branch deploys
 if (GIT_BRANCH !== 'current') {
   metatags.push({
     tagName: 'meta',
