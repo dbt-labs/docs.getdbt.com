@@ -14,7 +14,7 @@ is_featured: true
 
 # Getting started with the dbt Semantic Layer
 
-> TLDR: The Semantic Layer is made up of a combination of open-source and SaaS offerings and is going to change how your team defines and consumes metrics.
+> TLDR: The Semantic Layer is made up of a combination of open-source and SaaS offerings and is going to change how your team defines and consumes metrics. For information on where its headed, [see Drew's post here](https://www.getdbt.com/blog/dbt-semantic-layer).
 
 In recent months, we’ve seen a lot of excitement in the community around what the dbt Semantic Layer is. To those who aren’t following this saga with the intensity of [someone watching their investments on the crypto market](https://mobile.twitter.com/scannergr1/status/1536198701215109122/photo/1), we're rolling out this new resource to help you better understand the dbt Semantic Layer and provide clarification on the following things:
 
@@ -31,7 +31,7 @@ With that, lets get into it!
 
 ## What is the dbt Semantic Layer?
 
-The dbt Semantic Layer is a new part of dbt to help improve precision and consistency while expanding flexibility and capability in the modern data stack. Our maestro of metrics, Drew Banin, released a blog post detailing the vision of where we're going. The first use case that we are addressing is one that most practicioners **and** stakeholders are familiar with - metrics. We'll walk through what this looks like in practice later on in this post.
+The dbt Semantic Layer is a new part of dbt to help improve precision and consistency while expanding flexibility and capability in the modern data stack. Our maestro of metrics, Drew Banin, [released a blog post detailing the vision of where we're going here](https://www.getdbt.com/blog/dbt-semantic-layer). The first use case that we are addressing is one that most practicioners **and** stakeholders are familiar with - metrics. We'll walk through what this looks like in practice later on in this post.
 
 Under the hood, the dbt Semantic layer is collection of several components - some of these are part of dbt Core, some part of dbt Cloud, and some are net new functionality. They all [combine together like Voltron](https://www.youtube.com/watch?v=5rPSLQxMT8w) to create a single experience through which business users can query data in the context of the metric that is most familiar to them. And the best part is that they can do it in systems they are already comfortable using.
 
