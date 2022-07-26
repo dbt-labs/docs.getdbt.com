@@ -30,7 +30,7 @@ These options were the state of the art... until today!
 
 ## What’s changed?
 
-In v1.2, we introduced a [`grants` config](https://docs.getdbt.com/reference/resource-configs/grants) that works a lot like `post-hook`, with two key differences:
+In v1.2, we [introduced](https://www.getdbt.com/blog/teaching-dbt-about-grants) a [`grants` config](https://docs.getdbt.com/reference/resource-configs/grants) that works a lot like `post-hook`, with two key differences:
 
 - You configure `grants` as a structured dictionary rather than writing all the SQL yourself
 - dbt will take *the most efficient path* to apply those grants
