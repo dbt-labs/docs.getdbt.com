@@ -273,8 +273,11 @@ jeremy_cohen:
   name: Jeremy Cohen
   job_title: Product Manager
   organization: dbt Labs
+  image_url: /img/blog/authors/jerco.jpeg
+
 
 doug_beatty:
   name: Doug Beatty
   job_title: Senior Developer Experience Advocate
   organization: dbt Labs
+  image_url: /img/blog/authors/dbeatty.jpeg
