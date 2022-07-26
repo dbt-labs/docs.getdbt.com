@@ -226,12 +226,16 @@ matt_winkler:
     - url: https://www.linkedin.com/in/matt-winkler-4024263a/
 
 jonathan_natkins:
-  name: (Natty) Jon Natkins
-  job_title: Regional Director of Solutions Architecture - Enterprise West
+  name: Jon "Natty" Natkins
+  job_title: Regional Director, Solutions Architecture
   organization: dbt Labs
+  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
   image_url: /img/blog/authors/jonathan-natkins.jpeg
   links:
     - url: https://www.linkedin.com/in/nattyice/
+      icon: fa-linkedin
+    - url: https://twitter.com/nattyice
+      icon: fa-twitter
 
 lauren_benezra:
   name: Lauren Benezra
@@ -256,18 +260,6 @@ grace_goheen:
   links:
     - url: https://www.linkedin.com/in/gracegoheen/
       icon: fa-linkedin
-
-jonathan_natkin:
-  name: Jon "Natty" Natkins
-  job_title: Regional Director, Solutions Architecture
-  organization: dbt Labs
-  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
-  image_url: /img/blog/authors/jonathan-natkins.jpeg
-  links:
-    - url: https://www.linkedin.com/in/nattyice/
-      icon: fa-linkedin
-    - url: https://twitter.com/nattyice
-      icon: fa-twitter
 
 jeremy_cohen:
   name: Jeremy Cohen
