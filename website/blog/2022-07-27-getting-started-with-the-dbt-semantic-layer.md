@@ -131,7 +131,7 @@ Jim and Pam would then be able to reference the `revenue` column within the newl
 
 **In the near Future with dbt Server and dbt Cloud proxy Server**
 
-When dbt Server and the dbt Cloud proxy Server release later this year, the flow of how metrics are consumed will potentially change significantly. Your organization will no longer need to materialize each metric within a model in order to take advantage of the metric definition. Instead, you’ll be able to directly query the proxy server with the metric code provided and have the correct dataset returned to your BI tool of choice. 
+When dbt Server and the dbt Cloud proxy Server release later this year, the flow of how metrics are consumed will change significantly. Your organization will no longer need to materialize each metric within a model in order to take advantage of the metric definition. Instead, you’ll be able to directly query the proxy server with the metric code provided and have the correct dataset returned to your BI tool of choice. 
 
 Additionally, integration partners will have built out experiences around Metrics using the Metadata API to create unique and creative ways for consumers to obtain metric data while abstracting away complexity. For example, a box that allows the user to select from a list of metrics, time grains, dimensions, and secondary calculation and then have the correct information returned to them regardless of the selection!
 
