@@ -93,8 +93,6 @@ Instead, we can do a `pre-commit run --all-files`, which will run all the tests 
 
 ![Image of an output in the Terminal after running the above commands](/img/blog/2022-07-26-pre-commit-dbt/install-pre-commit.png)
 
-*(asciinema link we could put in the post https://asciinema.org/a/lTmefht77ZEr6kmP7DymaxjRF)*
-
 In my case, I can see that my model called `customers.sql` has not been added to any YAML file and has no test defined.
 
 In the case of a large project, the number of issues might be much bigger. If we use zsh as our shell, wildcard expansion can be used and we could run `pre-commit run –files models/mart/*` if we wanted to run all the checks only in the models stored under mart.
