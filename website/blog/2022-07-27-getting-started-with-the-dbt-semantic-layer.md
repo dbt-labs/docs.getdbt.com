@@ -60,6 +60,8 @@ The dbt Semantic layer is comprised of the following components[^1]:
 
 ### Understanding how and when to use metrics?
 
+> Use of metrics and the metrics package is recommended for experienced dbt users and early adopters who want to explore this functionality.
+
 Let's walk through an example of how you can use the components above to get started today using our old friend - [the Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics). We'll take a look at how you can start defining and testing metrics today as well as how you'll interact with them once the new components are released.
 
 **When to use Metrics**
