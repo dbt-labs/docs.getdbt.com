@@ -14,9 +14,11 @@ is_featured: true
 
 # Getting started with the dbt Semantic Layer
 
-> TLDR: The Semantic Layer is made up of a combination of open-source and SaaS offerings and is going to change how your team defines and consumes metrics. For information on where its headed, [see Drew's post here](https://www.getdbt.com/blog/dbt-semantic-layer).
+> TLDR: The Semantic Layer is made up of a combination of open-source and SaaS offerings and is going to change how your team defines and consumes metrics.
 
-In recent months, we’ve seen a lot of excitement in the community around what the dbt Semantic Layer is. To those who aren’t following this saga with the intensity of [someone watching their investments on the crypto market](https://mobile.twitter.com/scannergr1/status/1536198701215109122/photo/1), we're rolling out this new resource to help you better understand the dbt Semantic Layer and provide clarification on the following things:
+At last year's Coalesce, Drew showed us the future[^1] - a vision of what metrics in dbt could look like. Since then, we've been getting the infrastructure in place to make that vision a reality. We wanted to share with you where we are today and how it fits into the broader picture of [where we're going](https://www.getdbt.com/blog/dbt-semantic-layer).
+
+To those who haven't followed this sage with the intensity of [someone watching their investments on the crypto market](https://mobile.twitter.com/scannergr1/status/1536198701215109122/photo/1), we're rolling out this new resource to help you better understand the dbt Semantic Layer and provide clarification on the following things:
 
 1. What is the dbt Semantic Layer?
 2. How do I use it?
@@ -43,7 +45,7 @@ An example that we’ve found helpful is [ARR](https://www.zuora.com/billing-top
 
 ***That’s good and all, but what does this look like for practitioners to use?*** 
 
-The dbt Semantic layer is comprised of the following components[^1]:
+The dbt Semantic layer is comprised of the following components[^2]:
 
 **Available Today**
 
@@ -70,7 +72,7 @@ The first question you need to ask is, *Should we be using metrics?*
 
 It is our belief that metrics are not a one-size fits all solution. They are designed for core business metrics where consistency and precision are of key importance, not for exploratory use cases or ad hoc analysis. Our shorthand way of determining whether the metric should be defined in dbt has been - *is this something our teams need to report on?*
 
-So, let’s say the CFO of our Jaffle comes to us on a Monday morning and commands the data team to overhaul how we're reporting on Revenue. Our Regional Manager Jim and Sales Director Pam[^2] have been giving him different reports! Right now its a mess of tools and inconsistencies - Jim’s numbers are defined in Tableau and say one thing, Pam’s within Hex and say another! The CFO is frustrated with it and wants a cohesive experience across the company where everyone has the same numbers for revenue. It passes the report test, it’s an important business metric; away we go!
+So, let’s say the CFO of our Jaffle comes to us on a Monday morning and commands the data team to overhaul how we're reporting on Revenue. Our Regional Manager Jim and Sales Director Pam[^3] have been giving him different reports! Right now its a mess of tools and inconsistencies - Jim’s numbers are defined in Tableau and say one thing, Pam’s within Hex and say another! The CFO is frustrated with it and wants a cohesive experience across the company where everyone has the same numbers for revenue. It passes the report test, it’s an important business metric; away we go!
 
 **Defining the Metric with Metric Node**
 
@@ -131,7 +133,7 @@ This would return a dataset that looks like this:
 | 2018-01-01 | Healthy | 26 |
 | 2018-01-08 | Churn Risk | 27 |
 
-Jim and Pam would then be able to reference the `revenue` column within the newly created dataset and never have to worry about the calculation of revenue ever again[^3]! The world is perfect and [balance has been restored.](https://www.youtube.com/watch?v=d1EnW4kn1kg) 
+Jim and Pam would then be able to reference the `revenue` column within the newly created dataset and never have to worry about the calculation of revenue ever again[^4]! The world is perfect and [balance has been restored.](https://www.youtube.com/watch?v=d1EnW4kn1kg) 
 
 **In the near future with dbt Server**
 
@@ -162,8 +164,10 @@ Both the dbt Cloud proxy server and dbt Server are currently in development, wit
 If you have any questions about those components, or metrics in general, please feel free to post in the #dbt-metrics-and-server channel on dbt Slack! I hang around there and am always willing to chat metrics!
 
 ### Footnotes
-[^1]: We’re specifically calling out the licensing because there is a lot of confusion in the community around what is open-source and what isn’t. This is only becoming trickier with the introduction of the BSL licensing, which ensures users can run their own server but it cannot be sold as a cloud service. For more information on why these licensing types were picked, we recommend [Tristan’s blog around licensing dbt.](https://www.getdbt.com/blog/licensing-dbt/). The big takeaway around licensing is that you can still run components of the dbt Semantic Layer even if you aren’t a dbt Cloud customer! 
+[^1]: That future may not have mentioned robots but I'm holding out for [Jetson's style morning machine](https://www.youtube.com/watch?v=-0S3Jf-NxdI) to help me get ready in the morning.
 
-[^2]: Full transparency, I've never seen the Office. The awkward humor makes me so uncomfortable that I have to turn off the TV. Apologies if the titles of the characters are incorrect.
+[^2]: We’re specifically calling out the licensing because there is a lot of confusion in the community around what is open-source and what isn’t. This is only becoming trickier with the introduction of the BSL licensing, which ensures users can run their own server but it cannot be sold as a cloud service. For more information on why these licensing types were picked, we recommend [Tristan’s blog around licensing dbt.](https://www.getdbt.com/blog/licensing-dbt/). The big takeaway around licensing is that you can still run components of the dbt Semantic Layer even if you aren’t a dbt Cloud customer! 
 
-[^3]: Psych! They’re definitely interested in the calculation of ARR. In fact, they don’t really trust the numbers **unless** they understand how it’s calculated. This is where they could use the Metadata API in order to query all the information about the metric, such as definition, run-time, acceptable dimensions, etc. Right now Jim and Pam would need to query the API directly but in the future we expect there to be a number of different ways to obtain this information, ranging from [direct integration with the BI tool](https://hex.tech/integrations/dbt) all the way to having that information materialized in a dbt information schema! *For current tabular alternatives, there are some interesting macros in the newly released [dbt-project-evaluator package](https://github.com/dbt-labs/dbt-project-evaluator). Take a look there if you’re curious about materializing your metric information!*
+[^3]: Full transparency, I've never seen the Office. The awkward humor makes me so uncomfortable that I have to turn off the TV. Apologies if the titles of the characters are incorrect.
+
+[^4]: Psych! They’re definitely interested in the calculation of ARR. In fact, they don’t really trust the numbers **unless** they understand how it’s calculated. This is where they could use the Metadata API in order to query all the information about the metric, such as definition, run-time, acceptable dimensions, etc. Right now Jim and Pam would need to query the API directly but in the future we expect there to be a number of different ways to obtain this information, ranging from [direct integration with the BI tool](https://hex.tech/integrations/dbt) all the way to having that information materialized in a dbt information schema! *For current tabular alternatives, there are some interesting macros in the newly released [dbt-project-evaluator package](https://github.com/dbt-labs/dbt-project-evaluator). Take a look there if you’re curious about materializing your metric information!*
