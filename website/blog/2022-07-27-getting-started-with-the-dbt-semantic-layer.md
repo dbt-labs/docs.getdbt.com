@@ -131,7 +131,7 @@ This would return a dataset that looks like this:
 
 Jim and Pam would then be able to reference the `revenue` column within the newly created dataset and never have to worry about the calculation of revenue ever again[^3]! The world is perfect and [balance has been restored.](https://www.youtube.com/watch?v=d1EnW4kn1kg) 
 
-**In the near Future with dbt Server**
+**In the near future with dbt Server**
 
 When dbt Server releases later this year, the flow of how metrics are consumed will change significantly. Your organization will no longer need to materialize each metric within a model in order to take advantage of the metric definition. Instead, you’ll be able to directly query dbt Server with the metric code provided and have the correct dataset returned to your BI tool of choice. 
 
