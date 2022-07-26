@@ -68,7 +68,7 @@ The first question you need to ask is, *Should we be using metrics?*
 
 It is our belief that metrics are not a one-size fits all solution. They are designed for core business metrics where consistency and precision are of key importance, not for exploratory use cases or ad hoc analysis. Our shorthand way of determining whether the metric should be defined in dbt has been - *is this something our teams need to report on?*
 
-So, let’s say the CFO of our Jaffle comes to us on a Monday morning and commands the data team to overhaul how we're reporting on Revenue. Our regional manager Jim and Sales Director Pam[^3] have been giving him different reports! Right now its a mess of tools and inconsistencies - Jim’s numbers are defined in Tableau and say one thing, Pam’s within Hex and say another! The CFO is frustrated with it and wants a cohesive experience across the company where everyone has the same numbers for revenue. It passes the report test, it’s an important business metric; away we go!
+So, let’s say the CFO of our Jaffle comes to us on a Monday morning and commands the data team to overhaul how we're reporting on Revenue. Our regional manager Jim and Sales Director Pam[^2] have been giving him different reports! Right now its a mess of tools and inconsistencies - Jim’s numbers are defined in Tableau and say one thing, Pam’s within Hex and say another! The CFO is frustrated with it and wants a cohesive experience across the company where everyone has the same numbers for revenue. It passes the report test, it’s an important business metric; away we go!
 
 **Defining the Metric with Metric Node**
 
@@ -129,7 +129,7 @@ This would return a dataset that looks like this:
 | 2018-01-01 | Healthy | 26 |
 | 2018-01-08 | Churn Risk | 27 |
 
-Jim and Pam would then be able to reference the `revenue` column within the newly created dataset and never have to worry about the calculation of revenue ever again[^2]! The world is perfect and [balance has been restored.](https://www.youtube.com/watch?v=d1EnW4kn1kg) 
+Jim and Pam would then be able to reference the `revenue` column within the newly created dataset and never have to worry about the calculation of revenue ever again[^3]! The world is perfect and [balance has been restored.](https://www.youtube.com/watch?v=d1EnW4kn1kg) 
 
 **In the near Future with dbt Server**
 
@@ -162,6 +162,6 @@ If you have any questions about those components, or metrics in general, please 
 ### Footnotes
 [^1]: We’re specifically calling out the licensing because there is a lot of confusion in the community around what is open-source and what isn’t. This is only becoming trickier with the introduction of the BSL licensing, which ensures users can run their own server but it cannot be sold as a cloud service. For more information on why these licensing types were picked, we recommend [Tristan’s blog around licensing dbt.](https://www.getdbt.com/blog/licensing-dbt/). The big takeaway around licensing is that you can still run components of the dbt Semantic Layer even if you aren’t a dbt Cloud customer! 
 
-[^2]: Psych! They’re definitely interested in the calculation of ARR. In fact, they don’t really trust the numbers **unless** they understand how it’s calculated. This is where they could use the Metadata API in order to query all the information about the metric, such as definition, run-time, acceptable dimensions, etc. Right now Jim and Pam would need to query the API directly but in the future we expect there to be a number of different ways to obtain this information, ranging from [direct integration with the BI tool](https://hex.tech/integrations/dbt) all the way to having that information materialized in a dbt information schema! *For current tabular alternatives, there are some interesting macros in the newly released [dbt-project-evaluator package](https://github.com/dbt-labs/dbt-project-evaluator). Take a look there if you’re curious about materializing your metric information!*
+[^2] Full transparency, I've never seen the Office. The awkward humor makes me so uncomfortable that I have to turn off the TV. Apologies if the titles of the characters are incorrect.
 
-[^3] Full transparency, I've never seen the Office. The awkward humor makes me so uncomfortable that I have to turn off the TV. Apologies if the titles of the characters are incorrect.
+[^3]: Psych! They’re definitely interested in the calculation of ARR. In fact, they don’t really trust the numbers **unless** they understand how it’s calculated. This is where they could use the Metadata API in order to query all the information about the metric, such as definition, run-time, acceptable dimensions, etc. Right now Jim and Pam would need to query the API directly but in the future we expect there to be a number of different ways to obtain this information, ranging from [direct integration with the BI tool](https://hex.tech/integrations/dbt) all the way to having that information materialized in a dbt information schema! *For current tabular alternatives, there are some interesting macros in the newly released [dbt-project-evaluator package](https://github.com/dbt-labs/dbt-project-evaluator). Take a look there if you’re curious about materializing your metric information!*
