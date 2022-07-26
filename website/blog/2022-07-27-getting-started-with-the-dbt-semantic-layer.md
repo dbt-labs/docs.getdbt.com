@@ -68,7 +68,7 @@ The first question you need to ask is, *Should we be using metrics?*
 
 It is our belief that metrics are not a one-size fits all solution. They are designed for core business metrics where consistency and precision are of key importance, not for exploratory use cases or ad hoc analysis. Our shorthand way of determining whether the metric should be defined in dbt has been - *is this something our teams need to report on?*
 
-So, let’s say the CFO of our Jaffle comes to us on a Monday morning and commands the data team to overhaul how we're reporting on Revenue. Our regional manager Jim and Sales Director Pam[^2] have been giving him different reports! Right now its a mess of tools and inconsistencies - Jim’s numbers are defined in Tableau and say one thing, Pam’s within Hex and say another! The CFO is frustrated with it and wants a cohesive experience across the company where everyone has the same numbers for revenue. It passes the report test, it’s an important business metric; away we go!
+So, let’s say the CFO of our Jaffle comes to us on a Monday morning and commands the data team to overhaul how we're reporting on Revenue. Our Regional Manager Jim and Sales Director Pam[^2] have been giving him different reports! Right now its a mess of tools and inconsistencies - Jim’s numbers are defined in Tableau and say one thing, Pam’s within Hex and say another! The CFO is frustrated with it and wants a cohesive experience across the company where everyone has the same numbers for revenue. It passes the report test, it’s an important business metric; away we go!
 
 **Defining the Metric with Metric Node**
 
