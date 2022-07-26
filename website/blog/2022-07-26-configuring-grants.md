@@ -1,6 +1,6 @@
 ---
 title: "Configuring Grants"
-description: "End consumers (like users and BI tools) will need to be granted the privilege to read the tables and views dbt creates in your warehouse. In v1.2, we introduced a `grants` config that is easier to than hooks and uses syntax that is database agnostic."
+description: "End consumers (like users and BI tools) will need to be granted the privilege to read the tables and views dbt creates in your warehouse. In v1.2, we introduced a `grants` config that is easier to use than hooks and uses syntax that is database agnostic."
 
 slug: configuring-grants
 
@@ -138,7 +138,7 @@ Now that `grants` is a real config in dbt, available via dbt metadata, you can d
 -- macros/operations/reporting_grants.sql
 {% macro grant_usage_on_schemas_where_select() %}
     /*
-      TOTALLY UNTESTED!!!
+      Note: This is pseudo code only, for demonstration purposes
       For every role that can access at least one object in a schema,
       grant 'usage' on that schema to the role.
       That way, users with the role can run metadata queries showing objects
