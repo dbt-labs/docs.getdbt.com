@@ -1,5 +1,5 @@
 ---
-title: "Configuring Grants"
+title: "Updating our permissioning guidelines: grants as configs in dbt Core v1.2"
 description: "End consumers (like users and BI tools) will need to be granted the privilege to read the tables and views dbt creates in your warehouse. In v1.2, we introduced a `grants` config that is easier to use than hooks and uses syntax that is database agnostic."
 
 slug: configuring-grants
