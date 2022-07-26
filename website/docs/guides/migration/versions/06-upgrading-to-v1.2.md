@@ -1,20 +1,11 @@
 ---
-title: "Upgrading to v1.2 (prerelease)"
+title: "Upgrading to v1.2 (latest)"
 ---
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
 - [CLI Installation guide](/dbt-cli/install/overview)
 - [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
-
-<Snippet src="available-prerelease-banner" />
-
-## Installation
-
-Using `pip`, install `dbt-core` and your `<adapter>` (for example, `dbt-postgres`):
-```sh
-python -m pip install --upgrade dbt-<adapter>~=1.2.0rc1
-```
 
 ## Breaking changes
 
