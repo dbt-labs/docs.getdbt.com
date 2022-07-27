@@ -8,7 +8,7 @@ authors: [kira_furuichi]
 tags: [sql magic]
 hide_table_of_contents: true
 
-date: 2022-07-05
+date: 2022-07-13
 is_featured: false
 ---
 In general, data people prefer the more granular over the less granular. [Timestamps > dates](https://docs.getdbt.com/blog/when-backend-devs-spark-joy#signs-the-data-is-sparking-joy), daily data > weekly data, etc.; having data at a more granular level always allows you to zoom in. However, you’re likely looking at your data at a somewhat zoomed-out level—weekly, monthly, or even yearly. To do that, you’re going to need a handy dandy function that helps you round out date or time fields.
@@ -20,10 +20,9 @@ Using the DATE_TRUNC function, you can truncate to the weeks, months, years, or 
 <!--truncate-->
 
 > **What is a SQL function?**
->
 > At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://getdbt.com/sql-foundations/coalesce-sql-love-letter/), [LOWER](https://getdbt.com/sql-foundations/lower-sql-love-letter/), and [EXTRACT](https://getdbt.com/sql-foundations/extract-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
 
-Overall, it’s a great function to use to help you aggregate your data into specific date parts while keeping a date format. However, the DATE_TRUNC function isn’t your swiss army knife–it’s not able to do magic or solve all of your problems (we’re looking at you [star](https://getdbt.com/sql-foundations/star-sql-love-letter/). Instead, DATE_TRUNC is your standard kitchen knife—it’s simple and efficient, and you almost never start cooking (data modeling) without it.
+Overall, it’s a great function to use to help you aggregate your data into specific date parts while keeping a date format. However, the DATE_TRUNC function isn’t your swiss army knife–it’s not able to do magic or solve all of your problems (we’re looking at you [star](https://getdbt.com/sql-foundations/star-sql-love-letter/)). Instead, DATE_TRUNC is your standard kitchen knife—it’s simple and efficient, and you almost never start cooking (data modeling) without it.
 
 ## How to use the DATE_TRUNC function
 
@@ -56,7 +55,7 @@ In [Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-s
 date_trunc(<date/time field>, <date part>)
 ```
 
-> **Note:**
+> **A note on BigQuery:**
 > BigQuery’s DATE_TRUNC function supports the truncation of date types, whereas Snowflake, Redshift, and Databricks’ <date/time field> can be a date or timestamp data type. BigQuery also supports DATETIME_TRUNC and TIMESTAMP_TRUNC functions to support truncation of more granular date/time types.
 
 ## A dbt macro to remember
