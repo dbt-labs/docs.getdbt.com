@@ -7,7 +7,7 @@ The dbt Integrated Development Environment (IDE) is a single interface for build
 
 ### Requirements
 
-- The dbt IDE is powered by the [dbt-rpc](rpc) which has been overhauled in dbt v0.15.0. In order to use the IDE, your dbt project must be compatible with dbt v0.15.0.
+- The dbt IDE is powered by [dbt-rpc](rpc) which has been overhauled in dbt v0.15.0. In order to use the IDE, your dbt project must be compatible with dbt v0.15.0.
 - To use the IDE, you must have a [Developer License](cloud-seats-and-users). 
 - Write access must be enabled for your dbt repository in dbt Cloud. See [Connecting your GitHub Account](cloud-installing-the-github-application) and [Importing a project by git URL](cloud-import-a-project-by-git-url) for detailed setup instructions.
 
