@@ -240,13 +240,16 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 
 Now let's formally set up the connection between dbt Cloud and Snowflake.
 
-1. Click on the "Snowflake" icon to set up your connection.
+1. Choose **Snowflake** to setup your connection.
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt Cloud - Choose Snowflake Connection" />
+</div>
+2. For the name, write `Snowflake` or another simple title.    
 2. Enter the following information under Snowflake settings.
     * **Account:** Your account is going to be the url of your Snowflake trial account up to the period before snowflakecomputing.com. So, if this is the full url of my trial account: `oq65696.west-us-2.azure.snowflakecomputing.com` then the account will be: `oq65696.west-us-2.azure`. You can read more about Snowflake account identifiers [here](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html).
     * **Role:** Leave blank for now. You can update this to a default Snowflake role in the future.
     * **Database:** `analytics`.  This tells dbt to create new models in the analytics database.
     * **Warehouse:** `transforming`. This tells dbt to use the transforming warehouse we created earlier.
-
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
     </div>
@@ -254,16 +257,15 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 3. Enter the following information under Development credentials.
     * **Username:** The username you created for Snowflake. Note: The username is not your email address and is usually your first and last name together in one word. 
     * **Password:** The password you set when creating your Snowflake account
-    * **Schema:** You’ll notice that the schema name has been auto created for you and is `dbt_` followed by your first initial and last name. This is the schema connected directly to your development environment and is where your models will be built when running dbt within the Cloud IDE.
+    * **Schema:** You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
     * **Target name:** leave as default
     * **Threads:** Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurently.
-
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
     </div>
 
-4. Click **Test** at the top. This will check that dbt Cloud can access your Snowflake account.
-5. If test successful, click **Continue**.
+4. Click **Test Connection** at the bottom. This verifies that dbt Cloud can access your Snowflake account.
+5. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
 
 ## Initialize your repository and start development
 
