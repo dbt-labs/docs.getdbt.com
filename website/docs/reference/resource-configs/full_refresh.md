@@ -78,7 +78,7 @@ This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-la
 
 ### Seeds
 
-<FAQ src="full-refresh-seed" />
+<FAQ src="Seeds/full-refresh-seed" />
 
 ## Recommendation
 Set `full_refresh: false` for models of especially large datasets, which you would _never_ want dbt to fully drop and recreate.

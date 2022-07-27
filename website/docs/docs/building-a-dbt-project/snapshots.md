@@ -11,7 +11,7 @@ id: "snapshots"
 ## Getting started
 
 ### What are snapshots?
-Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable table over time.
+Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable <Term id="table" /> over time.
 
 Snapshots implement [type-2 Slowly Changing Dimensions](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) over mutable source tables. These Slowly Changing Dimensions (or SCDs) identify how a row in a table changes over time. Imagine you have an `orders` table where the `status` field can be overwritten as the order is processed.
 
@@ -57,6 +57,12 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 </File>
 
+:::info Preview or Compile Snapshots in IDE
+
+It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud. Instead, run the `dbt snapshot` command in the IDE by completing the following steps.
+
+:::
+
 When you run the [`dbt snapshot` command](snapshot):
 * **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null`.
 * **On subsequent runs:** dbt will check which records have changed or if any new records have been created:
@@ -66,6 +72,7 @@ When you run the [`dbt snapshot` command](snapshot):
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](ref) function.
 
 ## Example
+
 To add a snapshot to your project:
 
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
@@ -205,7 +212,7 @@ The `check` strategy requires the following configurations:
 
 :::caution check_cols = 'all'
 
-The `check` snapshot strategy can be configured to track changes to _all_ columns by supplying `check_cols = 'all'`. It is better to explicitly enumerate the columns that you want to check. Consider using a [surrogate key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) to condense many columns into a single column.
+The `check` snapshot strategy can be configured to track changes to _all_ columns by supplying `check_cols = 'all'`. It is better to explicitly enumerate the columns that you want to check. Consider using a <Term id="surrogate-key" /> to condense many columns into a single column.
 
 :::
 
@@ -278,7 +285,7 @@ There are a number of snapshot-specific configurations:
 | [target_database](target_database) | The database that dbt should render the snapshot table into | No | analytics |
 | [target_schema](target_schema) | The schema that dbt should render the snapshot table into | Yes | snapshots |
 | [strategy](strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
-| [unique_key](unique_key) | A primary key column or expression for the record | Yes | id |
+| [unique_key](unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
 | [check_cols](check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
 | [updated_at](updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
@@ -323,7 +330,7 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 
 ## Snapshot meta-fields
 
-Snapshot tables will be created as a clone of your source dataset, plus some additional meta-fields*.
+Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
 | Field          | Meaning | Usage |
 | -------------- | ------- | ----- |
@@ -337,6 +344,7 @@ Snapshot tables will be created as a clone of your source dataset, plus some add
 For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
 
 <details>
+<summary>  Details for the timestamp strategy </summary>
 
 Snapshot query results at `2019-01-01 11:00`:
 
@@ -370,6 +378,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 For the `check` strategy, the current timestamp is used to populate each column
 
 <details>
+<summary>  Details for the check strategy </summary>
 
 Snapshot query results at `2019-01-01 11:00`:
 
@@ -400,9 +409,9 @@ Snapshot results:
 
 
 ## FAQs
-<FAQ src="run-one-snapshot" />
-<FAQ src="snapshot-frequency" />
-<FAQ src="snapshot-schema-changes" />
-<FAQ src="snapshot-hooks" />
-<FAQ src="snapshot-target-schema" />
-<FAQ src="configurable-snapshot-path" />
+<FAQ src="Runs/run-one-snapshot" />
+<FAQ src="Runs/snapshot-frequency" />
+<FAQ src="Snapshots/snapshot-schema-changes" />
+<FAQ src="Snapshots/snapshot-hooks" />
+<FAQ src="Snapshots/snapshot-target-schema" />
+<FAQ src="Accounts/configurable-snapshot-path" />

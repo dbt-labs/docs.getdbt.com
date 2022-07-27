@@ -8,10 +8,10 @@ id: "using-custom-aliases"
 When dbt runs a model, it will generally create a relation (either a `table` or a `view`) in the database. By default, dbt uses the filename of the model as the identifier for this relation in the database. This identifier can optionally be overridden using the `alias` model configuration.
 
 ### Why alias model names?
-The names of schemas and tables are effectively the "user interface" of your data warehouse. Well-named schemas and tables can help provide clarity and direction for consumers of this data. In combination with [custom schemas](using-custom-schemas), model aliasing is a powerful mechanism for designing your warehouse.
+The names of schemas and tables are effectively the "user interface" of your <Term id="data-warehouse" />. Well-named schemas and tables can help provide clarity and direction for consumers of this data. In combination with [custom schemas](using-custom-schemas), model aliasing is a powerful mechanism for designing your warehouse.
 
 ### Usage
-The `alias` config can be used to change the name of a model's identifier in the database. The following table shows examples of database identifiers for models both with, and without, a supplied `alias`.
+The `alias` config can be used to change the name of a model's identifier in the database. The following <Term id="table" /> shows examples of database identifiers for models both with, and without, a supplied `alias`.
 
 | Model | Config | Database Identifier |
 | ----- | ------ | ------------------- |
@@ -84,7 +84,7 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 
 #### Ambiguous database identifiers
 
-Using aliases, it's possible to accidentally create models with ambiguous identifiers. Given the following two models, dbt would attempt to create two views with _exactly_ the same names in the database (ie. `sessions`):
+Using aliases, it's possible to accidentally create models with ambiguous identifiers. Given the following two models, dbt would attempt to create two <Term id="view">views</Term> with _exactly_ the same names in the database (ie. `sessions`):
 
 ```sql
 -- models/snowplow_sessions.sql
