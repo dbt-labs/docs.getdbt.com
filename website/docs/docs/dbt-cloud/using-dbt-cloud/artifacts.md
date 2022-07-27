@@ -22,6 +22,6 @@ Once a job has been selected from the Documentation drop-down menu in your proje
 
 ### Source Freshness
 
-As with Documentation, configuring a job for the Source Freshness artifact setting will update the "Data Sources" link under the "Deploy" tab to point to the latest Source Freshness report for the selected job.
+As with Documentation, configuring a job for the Source Freshness artifact setting will update the "Data Sources" link under "Deploy" to point to the latest Source Freshness report for the selected job.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources.png" title="A link to the latest source freshness snapshot for the selected job"/>
