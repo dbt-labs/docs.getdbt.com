@@ -267,9 +267,20 @@ jeremy_cohen:
   organization: dbt Labs
   image_url: /img/blog/authors/jerco.jpeg
 
-
 doug_beatty:
   name: Doug Beatty
   job_title: Senior Developer Experience Advocate
   organization: dbt Labs
   image_url: /img/blog/authors/dbeatty.jpeg
+
+callum_mccann:
+  name: Callum McCann
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  description: Callum works on metrics and is either talking about that or obsessing about his dog. 
+  image_url: /img/blog/authors/callum-mccann.jpg
+  links:
+    - url: https://www.linkedin.com/in/callum-mccann-38628a89/
+      icon: fa-linkedin
+    - url: https://twitter.com/callumpmccann
+      icon: fa-twitter
