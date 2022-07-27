@@ -112,9 +112,24 @@ Team Admins can perform the following actions in projects they are assigned to:
 - **License restrictions:** must have a developer license
 
 Job Admins can perform the following actions in projects they are assigned to:
-- View, edit, and create environments
-- Trigger runs
-- View historical runs
+
+**Read Actions:**
+- invitations_read
+- license_read
+- projects_read
+- environments_read
+- jobs_read
+- runs_read
+- metadata_read
+- custom_environment_variables_read
+
+**Write Actions:**
+- credentials_write
+- environments_write
+- jobs_write
+- runs_trigger
+- runs_write
+- custom_environment_variables_write
 
 ### Job Viewer
 - **Has permissions on:** Authorized projects
