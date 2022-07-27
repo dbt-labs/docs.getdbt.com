@@ -152,7 +152,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Azure AD SSO in dbt Cloud" />
 
 26. Click **Save** to complete setup for the Azure AD SSO integration. From
-    here, you can navigate to the Login URL generated for your account's _slug_ to
+    here, you can navigate to the login URL generated for your account's _slug_ to
     test logging in with Azure AD.
 
 :::success Logging in
