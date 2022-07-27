@@ -226,12 +226,16 @@ matt_winkler:
     - url: https://www.linkedin.com/in/matt-winkler-4024263a/
 
 jonathan_natkins:
-  name: (Natty) Jon Natkins
-  job_title: Regional Director of Solutions Architecture - Enterprise West
+  name: Jon "Natty" Natkins
+  job_title: Regional Director, Solutions Architecture
   organization: dbt Labs
+  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
   image_url: /img/blog/authors/jonathan-natkins.jpeg
   links:
     - url: https://www.linkedin.com/in/nattyice/
+      icon: fa-linkedin
+    - url: https://twitter.com/nattyice
+      icon: fa-twitter
 
 lauren_benezra:
   name: Lauren Benezra
@@ -257,14 +261,26 @@ grace_goheen:
     - url: https://www.linkedin.com/in/gracegoheen/
       icon: fa-linkedin
 
-jonathan_natkin:
-  name: Jon "Natty" Natkins
-  job_title: Regional Director, Solutions Architecture
+jeremy_cohen:
+  name: Jeremy Cohen
+  job_title: Product Manager
   organization: dbt Labs
-  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
-  image_url: /img/blog/authors/jonathan-natkins.jpeg
+  image_url: /img/blog/authors/jerco.jpeg
+
+doug_beatty:
+  name: Doug Beatty
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  image_url: /img/blog/authors/dbeatty.jpeg
+
+callum_mccann:
+  name: Callum McCann
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  description: Callum works on metrics and is either talking about that or obsessing about his dog. 
+  image_url: /img/blog/authors/callum-mccann.jpg
   links:
-    - url: https://www.linkedin.com/in/nattyice/
+    - url: https://www.linkedin.com/in/callum-mccann-38628a89/
       icon: fa-linkedin
-    - url: https://twitter.com/nattyice
+    - url: https://twitter.com/callumpmccann
       icon: fa-twitter
