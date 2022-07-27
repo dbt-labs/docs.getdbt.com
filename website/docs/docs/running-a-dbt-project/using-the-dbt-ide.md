@@ -30,7 +30,7 @@ New dbt Cloud accounts should have developer credentials created automatically a
 
 <Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/dev-cred-project-setup.png" title="Developer credentials are created during project setup"/>
 
-New users on existing accounts *may not* have development credentials configured already. To manage your development credentials, navigate to your `Settings` in dbt Cloud and under `Your Profile` section, you can find the relevant Project under the **Credentials** header. After entering your developer credentials, you'll be able to access the dbt IDE.
+New users on existing accounts *might not* have their development credentials already configured. To manage your development credentials, go to the [Credentials](https://cloud.getdbt.com/next/settings/profile#credentials) section. Select the relevant project in the list. After entering your developer credentials, you'll be able to access the dbt IDE.
 
 <Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/dev-cred-edit-proj.png" title="Configure developer credentials in your Profile."/>
 
