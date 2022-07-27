@@ -14,11 +14,11 @@ The dbt Integrated Development Environment (IDE) is a single interface for build
 ### Creating a development environment
 New dbt Cloud accounts will automatically be created with a Development Environment for the project created during setup. If you have an existing dbt Cloud account, you may need to create a Development Environment manually to use the dbt IDE.
 
-To create a Development Environment, navigate to the Environments page for your Project and click the "New Environment" button.
+To create a development environment, choose **Deploy** > **Environments** from the top left. Then, click **Create Environment**.
 
 <Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/empty-env-page.png" title="Creating a new environment for the Analytics project"/>
 
-To create a Development Environment, change the environment `Environment Type` to `Development`. Enter a name like "Dev" for the environment to help identify it amongst your other environments. During this step, you can also use a dbt Version. We recommend you selecting the same dbt Version that you're planning to use in `Deployment` environment. Finally, click "Save" to finish creating your Development Environment.
+Enter an environment **Name** that would help you identify it among your other environments (for example, `Nate's Development Environment`). Choose **Development** as the **Environment Type**. You can also select which **dbt Version** to use at this time. For compatibility reasons, we recommend that you select the same dbt version that you plan to use in your deployment environment. Finally, click **Save** to finish creating your development environment.
 
 <Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/create-dev-env.png" title="Creating a development environment"/>
 
