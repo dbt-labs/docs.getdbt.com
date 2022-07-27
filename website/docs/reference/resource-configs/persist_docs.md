@@ -156,7 +156,7 @@ Some known issues and limitations:
 
 <VersionBlock lastVersion="0.21">
 
-- Column-level comments are not supported for models materialized as <Term id="view">views</Term>
+- Column-level comments aren't supported for models materialized as <Term id="view">views</Term>
 
 </VersionBlock>
 
