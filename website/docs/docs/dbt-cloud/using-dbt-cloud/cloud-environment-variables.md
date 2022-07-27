@@ -36,8 +36,7 @@ To set environment variables at the project and environment level, head over to 
 
 You'll notice there is a `Project Default` column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
 
-
-To the right of the `Project Default` column are all your environments. Values set at the environment level take priority over the project level default value. This is where you can tell dbt Cloud to intepret an environment value differently in your Staging vs. Production environment, as example.
+To the right of the `Project Default` column are all your environments. Values set at the environment level take priority over the project level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as example.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
