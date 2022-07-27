@@ -127,7 +127,7 @@ The `persist_docs` config is supported on the most widely used dbt adapters:
 - BigQuery
 - Apache Spark & Databricks
 
-However, some database limit where and how descriptions can be added to database objects. Those database adapters may not support `persist_docs`, or may offer only partial support.
+However, some databases limit where and how descriptions can be added to database objects. Those database adapters might not support `persist_docs`, or might offer only partial support.
 
 Some known issues and limitations:
 
