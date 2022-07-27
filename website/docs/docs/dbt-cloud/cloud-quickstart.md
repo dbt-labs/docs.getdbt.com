@@ -40,13 +40,13 @@ Environments specify the information required to run dbt for your project. New d
 
 Scheduled dbt jobs can be configured in Deployment environments. These deployment environments must be configured with deployment credentials. Unlike Development credentials which run with the permissions of a human being, deployment credentials should be configured with a service account database user. We recommend configuring deployment environments to run as a user named dbt_cloud (or similar) in your database.
 
-To create an Environment, click the "Deploy" navigation link and select "Environments" from the menu. You can then click the “Create Environment” button where you can specify the dbt version and custom branch (if applicable) that dbt Cloud should use to build your project. Additionally, the deployment credentials for the Environment can be configured on this page.
+To create an environment, click **Deploy** in the upper left and select **Environments** from the menu. You can then click **Create Environment** where you can specify the dbt version and custom branch (if applicable) that dbt Cloud should use to build your project. Additionally, the deployment credentials for the environment can be configured on this page.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-environment.png" title="Creating a new deployment environment"/>
 
 ## Create a new job
 
-Now that dbt Cloud is able to clone your dbt repo and connect to your warehouse, you're ready to create a new job! To create a job, click the "Deploy" navigation link and select "Jobs" from the menu. On the next page, click the "Create Job" button. In the job creation interface, you can specify the environment that the job should use, as well as commands and configuration for your new job.
+Now that dbt Cloud is able to clone your dbt repo and connect to your warehouse, you're ready to create a new job! To create a job, click **Deploy** in the upper left and select **Jobs**. On the next page, click **Create Job**. In the Create New Job page, you can specify the environment that the job should use, as well as commands and configuration for your new job.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job.png" title="An example job definition"/>
 
@@ -54,7 +54,7 @@ Job schedules can be configured from the job creation interface. You can either 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job-schedule.png" title="Setting a job schedule"/>
 
-## Alternatives
+## Other ways to quickly connect dbt Cloud 
 
 You may also jump-start your dbt Cloud onboarding by using one of the following Partner Connect integrations:
  - [Snowflake Partner Connect](setting-up-snowflake#option-1-connect-dbt-cloud-and-snowflake-with-partner-connect)
