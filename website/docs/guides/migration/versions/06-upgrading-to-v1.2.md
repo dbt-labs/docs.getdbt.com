@@ -3,7 +3,7 @@ title: "Upgrading to v1.2 (latest)"
 ---
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.2.latest/CHANGELOG.md)
 - [CLI Installation guide](/dbt-cli/install/overview)
 - [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
 
