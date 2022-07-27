@@ -136,7 +136,7 @@ Some known issues and limitations:
 <div warehouse="Databricks">
 
 - Column-level comments require `file_format: delta` (or another "v2 file format")
-- Column-level comments are not supported for models materialized as <Term id="view">views</Term> ([issue](https://github.com/dbt-labs/dbt-spark/issues/372)
+- Column-level comments aren't supported for models materialized as <Term id="view">views</Term> ([issue](https://github.com/dbt-labs/dbt-spark/issues/372))
 
 </div>
 
