@@ -104,7 +104,7 @@ For a full list of enterprise permission sets, see [Enterprise Permissions](/doc
 These permission sets are available for assignment to groups and control the ability
 for users in these groups to take specific actions in the dbt Cloud application.
 
-In the following example, the _Admins_ group is configured with the
+In the following example, the _dbt Cloud Owners_ group is configured with the
 **Account Admin** permission set on _All Projects_ and the **Job Admin** permission
 set on the _Internal Analytics_ project.
 
