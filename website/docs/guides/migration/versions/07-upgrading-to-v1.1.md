@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.1 (latest)"
+title: "Upgrading to v1.1"
 ---
 ### Resources
 
