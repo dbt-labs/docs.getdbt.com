@@ -4,16 +4,14 @@
     width: 100%;
 }
 
-
 :local(.docImage) {
-    filter: drop-shadow(1px 4px 10px #aaaaaa33);
-    margin: 10px auto;
+    filter: drop-shadow(4px 4px 6px #aaaaaa33);
     display: block;
-    width: 600px;
-    max-width: 100%;
+    max-width: 400px;
+    border-top: .25px solid #5f5f5f19;
 }
 
 :local(.collapsed) {
-    max-width: 300px !important;
-    display: inline-block;
+    max-width: 400px !important;
+    display: block;
 }

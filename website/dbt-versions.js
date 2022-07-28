@@ -1,8 +1,7 @@
 exports.versions = [
   {
     version: "1.2",
-    EOLDate: "2023-07-15",  // TODO estimated for now
-    isPrerelease: true,
+    EOLDate: "2023-07-26",
   },
   {
     version: "1.1",
@@ -23,6 +22,14 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
+  {
+    "page": "reference/dbt-jinja-functions/set",
+    "firstVersion": "1.2",
+  },
+  {
+    "page": "reference/dbt-jinja-functions/zip",
+    "firstVersion": "1.2",
+  },
   {
     "page": "reference/dbt-jinja-functions/cross-database-macros",
     "firstVersion": "1.2",

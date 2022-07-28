@@ -45,4 +45,3 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 
 To learn more about building a dbt project, we recommend you complete the [Getting Started guide](/guides/getting-started).
-
