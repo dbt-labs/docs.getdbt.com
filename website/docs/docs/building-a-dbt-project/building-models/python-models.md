@@ -211,7 +211,7 @@ def model(dbt, session):
 
 ### Using PyPI packages
 
-You can also define functions that depend on installed packages. The example below uses the Pandas API for simplicity and portability:
+You can also define functions that depend on installed packages. In this example, we use the `holidays` package to determine if a given date fell on a holiday in France. For simplicity and consistency across platforms, the code uses the Pandas API—it would need to be refactored for scale.
 
 <File name='models/my_python_model.py'>
 
@@ -249,7 +249,7 @@ def model(dbt, session):
 
 #### Configuring packages
 
-We encourage you to explicitly configure required packages and versions, so that dbt can track them in project metadata. If you need specific versions of packages, specify them.
+We encourage you to explicitly configure required packages and versions, so that dbt can track them in project metadata. This configuration is required for the implementation on some platforms. If you need specific versions of packages, specify them.
 
 <File name='models/my_python_model.py'>
 
@@ -314,6 +314,8 @@ Python models have capabilities that SQL models do not. They also have some draw
 - **Time and cost.** Python models are slower to run than SQL models, and the cloud resources that run them can be more expensive. Running Python requires more general-purpose compute, and in some cases that compute may live on a separate service or architecture from your SQL models. However, we believe that deploying Python models via dbt is **dramatically** faster and cheaper than spinning up separate tooling and infrastructure to orchestrate Python transformations in production.
 - **Syntax differences** are even more pronounced. Over the years, dbt has done a lot, via dispatch patterns and packages such as `dbt_utils`, to abstract over differences in SQL dialects across popular data warehouses. Python offers a **much** wider field of play. If there are 5 ways to do something in SQL, there are 50 ways to write it in Python, all with varying performance and adherence to standards. Those options can be overwhelming. As the maintainers of dbt, we will be learning from state-of-the-art projects that are tackling this problem, and sharing opinionated guidance as we develop it.
 - **These capabilities are very new.** As data warehouses release new features, we reserve the right to change the underlying implementation for executing Python models. Our commitment to you is around the code in your Python models, following the guidance above, rather than specific implementation details.
+
+As a general rule, if there's a transformation you could write equally well in SQL or in Python, we believe that well-written SQL is preferable: it's more accessible to a greater number of colleagues, and it's easier to write code that's performant at scale.
 
 ## Specific data warehouses
 
