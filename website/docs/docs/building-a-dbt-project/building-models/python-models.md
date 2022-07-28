@@ -280,8 +280,8 @@ models:
 #### UDFs
 
 You can use the `@udf` decorator or `udf` function to define an "anonymous" function, and call it within your `model` function's dataframe transformation. This is a common pattern for applying more complex functions as data frame operations, especially if those functions require inputs from third-party packages.
-- https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html
-- https://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.functions.udf.html
+- [Snowpark Python: Creating UDFs](https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html)
+- ["PySpark functions: udf"](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html)
 
 :::info ❔ Our questions
 The process of creating and registering a "named" UDF is different across data platforms. Snowpark also supports ["vectorized" UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html): Pandas-like functions that can be executed in parallel.
