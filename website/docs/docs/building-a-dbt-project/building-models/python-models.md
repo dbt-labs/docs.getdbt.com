@@ -8,7 +8,7 @@ This feature is arriving in dbt Core v1.3, which is currently in beta. We encour
 - Read [the discussion](https://github.com/dbt-labs/dbt-core/discussions/5261)
 - Join the **#beta-feedback-python-models** channel in the dbt Community Slack
 
-Below, you'll see sections entitled "Our questions." These are things we're wondering now, with plans to develop opinionated guidance and recommendations ahead of the final release of v1.3 this October.
+Below, you'll see sections entitled "Our questions." We're working to develop our opinionated recommendations ahead of the final release this October—and you can help!
 :::
 
 ## What is a Python model in dbt?
@@ -17,16 +17,16 @@ A dbt Python model is a function that reads in dbt sources or models, applies a 
 
 Unlike SQL models, which return a `select` statement, each Python model returns a single <Term id="dataframe">data frame</Term>. When you run a Python model, the result of that data frame will be saved as a table in your data warehouse.
 
-Each Python model lives in a `.py` file in your `models/` folder. It defines a function named `model()`, which accepts two arguments:
+Each Python model lives in a `.py` file in your `models/` folder. It defines a function named **`model()`**, which has two parameters:
 - **`dbt`**: A class compiled by dbt Core, unique to each model, that enables you to run your Python code in the context of your dbt project and DAG.
-- **`session`**: Represents the current Python application session, which allows you to interact with the data platform, such as reading in tables as data frames and writing data frames back to tables. In PySpark, by convention, the SparkSession variable is named `spark` and available globally. For consistency across platforms, we always pass it into the `model` function as an explicit argument named `session`.
+- **`session`**: A class representing the connection to the backing engine, which allows you to interact with the data platform. The session is needed to read in tables as data frames, and to writ data frames back to tables. In PySpark, by convention, the `SparkSession` is named `spark`, and available globally. For consistency across platforms, we always pass it into the `model` function as an explicit argument named `session`.
 - returns: a data frame (Snowpark, PySpark, or Pandas)
 
-dbt Python models have access to all of the same configuration options as SQL models. You can test them, document them, add `tags` and `meta` properties to them, persist their descriptions as database comments, grant access on their results to other users, and so on. You can select them by their name, their file path, their configurations, whether they are upstream or downstream of another model.
+dbt Python models have access to almost all of the same configuration options as SQL models. You can test them, document them, add `tags` and `meta` properties to them, persist their descriptions as database comments, grant access on their results to other users, and so on. You can select them by their name, their file path, their configurations, whether they are upstream or downstream of another model, or whether they have been modified compared to a previous project state.
 
 ### Referencing other models
 
-Your Python model will want to read data from other SQL models, using the `dbt.ref()` function. The same idea applies for `dbt.source()`. Those functions return data frames, pointing to the upstream source, model, seed, or snapshot. 
+Your Python model will want to read data from other models (SQL or Python). Do this using the `dbt.ref()` function. The same idea applies for raw source tables, via `dbt.source()`. Those functions return data frames, pointing to the upstream source, model, seed, or snapshot. 
 
 <File name='models/my_python_model.py'>
 
@@ -209,20 +209,6 @@ def model(dbt, session):
 
 </File>
 
-#### UDFs
-
-You can use the `@udf` decorator or `udf` function to define an "anonymous" function, and call it within your `model` function's dataframe transformation. This is one means of applying more complex functions as data frame operations:
-- https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html
-- https://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.functions.udf.html
-
-:::info ❔ Our questions
-The process of creating and registering a "named" UDF is different across data platforms. Snowpark also supports ["vectorized" UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html): Pandas-like functions that can be executed in parallel.
-
-Questions:
-- Should dbt have a role in abstracting over UDFs? Should dbt support a new type of DAG node, `function`?
-- Is the primary motivation for code reuse across Python models, or defining Python-language functions that can be called from SQL models?
-:::
-
 ### Using PyPI packages
 
 You can also define functions that depend on installed packages. The example below uses the Pandas API for simplicity and portability:
@@ -291,6 +277,19 @@ models:
 
 </File>
 
+#### UDFs
+
+You can use the `@udf` decorator or `udf` function to define an "anonymous" function, and call it within your `model` function's dataframe transformation. This is a common pattern for applying more complex functions as data frame operations, especially if those functions require inputs from third-party packages.
+- https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html
+- https://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.functions.udf.html
+
+:::info ❔ Our questions
+The process of creating and registering a "named" UDF is different across data platforms. Snowpark also supports ["vectorized" UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html): Pandas-like functions that can be executed in parallel.
+
+- Should dbt have a role in abstracting over UDFs? Should dbt support a new type of DAG node, `function`?
+- Is the primary motivation for code reuse across Python models, or defining Python-language functions that can be called from SQL models?
+:::
+
 ### Data frame API + syntax
 
 Over the past decade, most people writing data transformations in Python have adopted <Term id="dataframe">data frame</Term> as their common abstraction. dbt follows this convention by returning `ref()` and `source()` as data frames, and it expects all Python models to return a data frame.
@@ -306,11 +305,12 @@ When developing a Python model, you will find yourself asking these questions:
 **Why _not_ Pandas?** Performance. Pandas runs "single-node" transformations, which cannot benefit from the parallelism and distributed compute offered by modern data warehouses. This quickly becomes a problem as you operate on larger datasets. Some data platforms do support optimizations for code written using Pandas' data frame API, preventing the need for major refactors. For example, ["Pandas on PySpark"](https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_ps.html) offers support for 95% of Pandas functionality using the same API.
 
 :::info ❔ Our questions
-During the beta period of Python models, we'd like your help answering this questions. How should new dbt Python models take shape? Which open source libraries provide compelling abstractions across different data engines and vendor-specific APIs? Should dbt attempt to play a longer-term role in standardizing across them?
+When developing a new dbt Python model, should we recommend Pandas-style syntax for rapid iteration, and then refactor? Which open source libraries provide compelling abstractions across different data engines and vendor-specific APIs? Should dbt attempt to play a longer-term role in standardizing across them?
 :::
 
 ### Limitations
 
+Python models have capabilities that SQL models do not. They also have some drawbacks compared to SQL models:
 - **Time and cost.** Python models are slower to run than SQL models, and the cloud resources that run them can be more expensive. Running Python requires more general-purpose compute, and in some cases that compute may live on a separate service or architecture from your SQL models. However, we believe that deploying Python models via dbt is **dramatically** faster and cheaper than spinning up separate tooling and infrastructure to orchestrate Python transformations in production.
 - **Syntax differences** are even more pronounced. Over the years, dbt has done a lot, via dispatch patterns and packages such as `dbt_utils`, to abstract over differences in SQL dialects across popular data warehouses. Python offers a **much** wider field of play. If there are 5 ways to do something in SQL, there are 50 ways to write it in Python, all with varying performance and adherence to standards. Those options can be overwhelming. As the maintainers of dbt, we will be learning from state-of-the-art projects that are tackling this problem, and sharing opinionated guidance as we develop it.
 - **These capabilities are very new.** As data warehouses release new features, we reserve the right to change the underlying implementation for executing Python models. Our commitment to you is around the code in your Python models, following the guidance above, rather than specific implementation details.
@@ -325,25 +325,23 @@ Currently, Python models are supported for users of `dbt-snowflake`, `dbt-spark`
 
 **Additional setup:** None needed. Snowpark Python is in Public Preview - Open, and enabled by default for all accounts.
 
-**Docs:** https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html
+**Installing packages:** Snowpark supports a number of popular packages via Anaconda. The full list is at https://repo.anaconda.com/pkgs/snowflake/. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, for better performance, Snowflake recommends using a dedicated virtual warehouse, rather than one that's likely to have many concurrent users.
 
-**Installing packages:** Snowpark supports a number of popular packages via Anaconda. The full list is at https://repo.anaconda.com/pkgs/snowflake/. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, Snowflake recommends using a dedicated virtual warehouse, rather than one with many concurrent users. Full docs: https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html
+**Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
 
 </div>
 
 <div warehouse="Databricks">
 
-**Additional setup:**
-- The `user` field in the `dbt-spark` profile, usually optional, is required for Python modeling.
+**Additional setup:** The `user` field in the `dbt-spark` profile, usually optional, is required for Python modeling.
 
-**Notes:**
-- Python models will be created and run as notebooks in your Databricks workspace. The notebooks will be created within the personal workspace of the `user` running dbt.
+**Note:** Python models will be created and run as notebooks in your Databricks workspace. The notebooks will be created within the personal workspace of the `user` running dbt.
 
 **Installing packages:** We recommend configuring packages on the interactive cluster which you will be using to run your Python models.
 
 **Docs:**
-- https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html
-- https://docs.databricks.com/spark/latest/dataframes-datasets/introduction-to-dataframes-python.html
+- [PySpark dataframe syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
+- [Databricks: Introduction to DataFrames - Python](https://docs.databricks.com/spark/latest/dataframes-datasets/introduction-to-dataframes-python.html)
 
 </div>
 
@@ -360,10 +358,10 @@ Add these attributes to your BigQuery profile:
 - `dataproc_region`
 - `dataproc_cluster_name`
 
-The user or service account running dbt needs the following permissions, in addition to `BigQuery User`:
-- `Dataproc Worker` / `Dataproc Editor`
-- `Editor` (GCP project)
-- `Storage Object Creator`
+The user or service account running dbt needs the following permissions, in addition to **BigQuery User** ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
+- Dataproc Worker / Dataproc Editor
+- Editor (GCP project)
+- Storage Object Creator
 
 **Installing packages:** Google recommends installing Python packages on Dataproc clusters via initialization actions:
 - ["How initialization actions are used"](https://github.com/GoogleCloudDataproc/initialization-actions/blob/master/README.md#how-initialization-actions-are-used)

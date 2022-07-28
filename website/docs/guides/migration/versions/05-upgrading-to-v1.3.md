@@ -13,9 +13,10 @@ There are no breaking changes for end users of dbt. We are committed to providin
 
 ### For consumers of dbt artifacts (metadata)
 
-The manifest schema version will be updated to `v7` to reflect two changes associated with Python models:
+The manifest schema version will be updated to `v7` to reflect three changes associated with Python models:
 - Renamed `raw_sql` to `raw_code`
 - Renamed `compiled_sql` to `compiled_code`
+- A new top-level node property, `language` (`'sql'` or `'python'`)
 
 For users of [state-based selection](understanding-state): This release includes logic providing backwards and forwards compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0+.
 
