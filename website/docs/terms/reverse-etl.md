@@ -72,7 +72,7 @@ Reverse ETL tools typically establish the connection between your data warehouse
 |:---:|:---:|:---:|
 | Hightouch | A platform to sync data models and create custom audiences for downstream business platforms. | :x: |
 | Census | Another reverse ETL tool that can sync data from your data warehouse to your go-to-market tools. | :x: |
-| Rudderstack | Also a CDP (customer data platform), Rudderstack additionally supports pushing down data and audience to external tools, such as ad platforms and email CRMs. | :x: |
+| Rudderstack | Also a CDP (customer data platform), Rudderstack additionally supports pushing down data and audience to external tools, such as ad platforms and email CRMs. | :white_check_mark: |
 | Grouparoo | Grouparoo, part of Airbyte, is an open source framework to move data from data warehouses to different cloud-based tools. | :white_check_mark: |
 
 ## Conclusion
@@ -83,6 +83,6 @@ Reverse ETL enables you to sync your transformed data stored in your data wareho
 
 If you’re interested learning more about reverse ETL and the impact it could have on your team, check out the following:
 
-- [How dbt Labs’s Data Team Approaches Reverse ETL](https://getdbt.com/open-source-data-culture/reverse-etl-playbook/)
-- [The Operational Data Warehouse in Action: Reverse ETL, CDPs, and the Future of Data Activation](https://www.getdbt.com/coalesce-2021/operational-data-warehouse-reverse-etl-cdp-data-activation/)
-- [The Analytics Engineering Guide: Operational Analytics](https://www.getdbt.com/analytics-engineering/use-cases/operational-analytics/)
+- [How dbt Labs’s data team approaches reverse ETL](https://getdbt.com/open-source-data-culture/reverse-etl-playbook/)
+- [The operational data warehouse in action: Reverse ETL, CDPs, and the future of data activation](https://www.getdbt.com/coalesce-2021/operational-data-warehouse-reverse-etl-cdp-data-activation/)
+- [The analytics engineering guide: Operational analytics](https://www.getdbt.com/analytics-engineering/use-cases/operational-analytics/)
