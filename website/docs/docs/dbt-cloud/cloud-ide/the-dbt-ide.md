@@ -1,5 +1,5 @@
 ---
-title: "The dbt IDE"
+title: "Overview"
 id: "the-dbt-ide"
 ---
 
