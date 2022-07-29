@@ -20,7 +20,7 @@ A dbt Python model is a function that reads in dbt sources or models, applies a 
 
 Unlike SQL models, which return a `select` statement, each Python model returns a single <Term id="dataframe">DataFrame</Term>. When you run a Python model, the result of that DataFrame will be saved as a table in your data warehouse.
 
-dbt Python models have access to almost all of the same configuration options as SQL models. You can test them, document them, add `tags` and `meta` properties to them, persist their descriptions as database comments, grant access on their results to other users, and so on. You can select them by their name, their file path, their configurations, whether they are upstream or downstream of another model, or whether they have been modified compared to a previous project state.
+dbt Python models have access to almost all of the same configuration options as SQL models. You can test them, document them, add `tags` and `meta` properties to them, grant access on their results to other users, and so on. You can select them by their name, their file path, their configurations, whether they are upstream or downstream of another model, or whether they have been modified compared to a previous project state.
 
 ### Defining a Python model
 
@@ -250,13 +250,16 @@ At present, Python functions defined in one dbt model cannot be imported and reu
 
 ### Using PyPI packages
 
-You can also define functions that depend on installed packages. In this example, we use the `holidays` package to determine if a given date fell on a holiday in France. For simplicity and consistency across platforms, the code uses the Pandas API—it would need to be refactored for scale.
+You can also define functions that depend on installed packages. In this example, we use the `holidays` package to determine if a given date fell on a holiday in France. For simplicity and consistency across platforms, the code below uses the Pandas API. The exact syntax, and the need to refactor for multi-node processing, still varies.
+
+<WHCode>
+
+<div warehouse="Snowpark">
 
 <File name='models/my_python_model.py'>
 
 ```python
 import holidays
-import pandas
 
 def is_holiday(date_col):
     # Chez Jaffle
@@ -272,19 +275,60 @@ def model(dbt, session):
     
     orders_df = dbt.ref("stg_orders")
     
-    # convert to pandas + lowercase all column names
-    # (uppercase by default on Snowflake)
     df = orders_df.to_pandas()
-    df.columns= df.columns.str.lower()
     
     # apply our function
-    df["is_holiday"] = df["order_date"].apply(is_holiday)
+    # (columns need to be in uppercase on Snowpark)
+    df["IS_HOLIDAY"] = df["ORDER_DATE"].apply(is_holiday)
     
-    # return final dataset
+    # return final dataset (Pandas DataFrame)
     return df
 ```
 
 </File>
+
+</div>
+
+<div warehouse="PySpark">
+
+<File name='models/my_python_model.py'>
+
+```python
+import holidays
+
+def is_holiday(date_col):
+    # Chez Jaffle
+    french_holidays = holidays.France()
+    is_holiday = (date_col in french_holidays)
+    return is_holiday
+
+def model(dbt, session):
+    dbt.config(
+        materialized = "table",
+        packages = ["holidays"]
+    )
+    
+    orders_df = dbt.ref("stg_orders")
+    
+    df = orders_df.to_pandas_on_spark()  # Spark 3.2+
+    # df = orders_df.toPandas() in earlier versions
+    
+    # apply our function
+    df["is_holiday"] = df["order_date"].apply(is_holiday)
+    
+    # convert back to PySpark
+    df = df.to_spark()               # Spark 3.2+
+    # df = session.createDataFrame(df) in earlier versions
+    
+    # return final dataset (PySpark DataFrame)
+    return df
+```
+
+</File>
+
+</div>
+
+</WHCode>
 
 #### Configuring packages
 
@@ -441,6 +485,14 @@ As a general rule, if there's a transformation you could write equally well in S
 
 Currently, Python models are supported for users of `dbt-snowflake`, `dbt-spark` (Databricks), and `dbt-bigquery`. Both Databricks and BigQuery use PySpark as the processing framework. Snowflake uses its own framework, Snowpark, which has many similarities to PySpark.
 
+:::caution
+
+The implementation for Python models on GCP (BigQuery + Dataproc) is the roughest of the three. Running PySpark on Dataproc requires more manual setup and configuration. Clusters require sufficient resources or auto-scaling policies to handle concurrent Python model runs.
+
+We have made the code available for the beta, but we are reserving the right to leave it out of the final v1.3 release if the experience is too unfriendly to end users. If you're a GCP expert, we're very open to hearing your thoughts in Slack or the GitHub discussions!
+
+:::
+
 <WHCode>
 
 <div warehouse="Snowflake">
@@ -472,8 +524,10 @@ Currently, Python models are supported for users of `dbt-snowflake`, `dbt-spark`
 The `dbt-bigquery` adapter uses a service called Dataproc to submit your Python models as PySpark jobs. That Python/PySpark code will read from your tables and views in BigQuery, and saves its final result back to BigQuery.
 
 **Additional setup:**
-- Create or use an existing Dataproc cluster: https://cloud.google.com/dataproc/docs/guides/create-cluster
-- Create or use an existing Cloud Storage bucket: https://cloud.google.com/storage/docs/creating-buckets
+- Create or use an existing [Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets)
+- Create or use an existing [Dataproc cluster](https://cloud.google.com/dataproc/docs/guides/create-cluster), with the [Spark BigQuery connector initialization action](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/connectors#bigquery-connectors). (Google recommends copying the action into your own Cloud Storage bucket, rather than using the example version shown in the screenshot below.)
+
+<Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-connector-initialization.png" title="Add the Spark BigQuery connector as an initialization action"/>
 
 Add these attributes to your [BigQuery profile](bigquery-profile):
 - `gcs_bucket`: Storage bucket to which dbt will submit PySpark code, and the Dataproc cluster will stream back execution logs.
@@ -492,6 +546,10 @@ The user or service account running dbt needs the following permissions, in addi
 **Installing packages:** Google recommends installing Python packages on Dataproc clusters via initialization actions:
 - ["How initialization actions are used"](https://github.com/GoogleCloudDataproc/initialization-actions/blob/master/README.md#how-initialization-actions-are-used)
 - [Actions for installing via `pip` or `conda`](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/python)
+
+You can also install packages at cluster creation time by [defining cluster properties](https://cloud.google.com/dataproc/docs/tutorials/python-configuration#image_version_20): `dataproc:pip.packages` or `dataproc:conda.packages`.
+
+<Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-pip-packages.png" title="Adding packages to install via pip at cluster startup"/>
 
 **Docs:**
 - [Dataproc overview](https://cloud.google.com/dataproc/docs/concepts/overview)
