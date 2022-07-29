@@ -21,7 +21,7 @@ If you're new to dbt, we recommend that you check out our [Getting Started guide
 
 In v1.3, dbt Core is adding support for **Python models**.
 
-dbt's Python capabilities are an extension of its capabilities with SQL models. We recommend that you read this page first, and then read: ["dbt Models (Python)"](python-models)
+dbt's Python capabilities are an extension of its capabilities with SQL models, which are introduced in the discussion and examples below. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](python-models)
 
 </VersionBlock>
 
