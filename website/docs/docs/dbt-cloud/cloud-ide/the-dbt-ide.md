@@ -41,7 +41,7 @@ That’s a great question! There are two main ways of working with dbt -- using 
 
 **dbt Cloud IDE** - dbt Cloud is an application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and is an easy way to share dbt documentation with your team. You can build, test, run and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project
 
-**CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s free to use.You can build your dbt project in a code editor, like Jetbrains or VSCode, and execute dbt commands using a terminal program. 
+**CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s free to use. You can build your dbt project in a code editor, like Jetbrains or VSCode, and execute dbt commands using a terminal program. 
 
 **What type of support is provided?** 
 
