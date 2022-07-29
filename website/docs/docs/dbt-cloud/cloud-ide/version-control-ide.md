@@ -13,7 +13,9 @@ You can create a separate branch to develop and make changes. The changes aren�
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/git-overview.png" title: "Git Workflow />
 </p>
                                                                        
-
+::: info Note: In order to use version control when you Develop in the IDE, the project needs to be connected to a repository. 
+:::
+                                                                       
 **dbt Cloud Git IDE Button**
 The git button in the IDE allows you to apply the concept of version control to your project. This page provides descriptions of each git button command and what they do:
 
