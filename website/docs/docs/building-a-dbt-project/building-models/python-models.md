@@ -362,7 +362,7 @@ models:
 
 #### UDFs
 
-You can use the `@udf` decorator or `udf` function to define an "anonymous" function, and call it within your `model` function's dataframe transformation. This is a common pattern for applying more complex functions as DataFrame operations, especially if those functions require inputs from third-party packages.
+You can use the `@udf` decorator or `udf` function to define an "anonymous" function, and call it within your `model` function's DataFrame transformation. This is a common pattern for applying more complex functions as DataFrame operations, especially if those functions require inputs from third-party packages.
 - [Snowpark Python: Creating UDFs](https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html)
 - ["PySpark functions: udf"](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html)
 
@@ -514,7 +514,7 @@ We have made the code available for the beta, but we are reserving the right to 
 **Installing packages:** We recommend configuring packages on the interactive cluster which you will be using to run your Python models.
 
 **Docs:**
-- [PySpark dataframe syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
+- [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
 - [Databricks: Introduction to DataFrames - Python](https://docs.databricks.com/spark/latest/dataframes-datasets/introduction-to-dataframes-python.html)
 
 </div>
@@ -553,7 +553,7 @@ You can also install packages at cluster creation time by [defining cluster prop
 
 **Docs:**
 - [Dataproc overview](https://cloud.google.com/dataproc/docs/concepts/overview)
-- [PySpark dataframe syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
+- [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
 
 </div>
 
