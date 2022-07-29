@@ -110,12 +110,13 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "dbt Cloud IDE",
+      label: "Develop in the dbt Cloud IDE",
       items: [
         "docs/dbt-cloud/cloud-ide/the-dbt-ide",
-        "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
-        "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
+        "docs/dbt-cloud/cloud-ide/learn-dbt-ide",
+        "docs/dbt-cloud/cloud-ide/use-cloud-ide",
+        "docs/dbt-cloud/cloud-ide/version-control-ide",
+       //docs/dbt-cloud/cloud-ide/handling-merge-conflicts
       ],
     },
     {
