@@ -82,6 +82,14 @@ If only one variable is being set, the brackets are optional, eg:
 $ dbt run --vars 'key: value'
 ```
 
+The following is valid too (can increase readability if many variables are used):
+```
+$ dbt run --vars '
+  key: value
+  date: 20180101
+'
+```
+
 You can find more information on defining dictionaries with YAML [here](https://github.com/Animosity/CraftIRC/wiki/Complete-idiot%27s-introduction-to-yaml).
 
 ### Variable precedence
