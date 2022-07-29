@@ -31,7 +31,7 @@ Before starting this tutorial, you will need the following:
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
     </div>
 
-2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar.
+2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP ([five steps to get started](https://databricks.com/blog/2021/10/08/5-steps-to-get-started-with-databricks-on-google-cloud.html)) internally, please choose one of them. The setup process will be similar.
 3. Check your email to complete the verification process.
 4. After setting up your password, you will be guided to choose a subscription plan. You will need to select either the `Premium` or `Enterprise` plan to access the SQL Compute functionality, required for using the SQL Endpoint for dbt. We have chosen `Premium` for this tutorial. Click `Continue` after selecting your plan.
     
