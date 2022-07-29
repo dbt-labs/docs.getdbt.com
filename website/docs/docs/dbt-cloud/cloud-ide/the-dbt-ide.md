@@ -39,14 +39,12 @@ We’d love for you to contribute! And whether it's a dbt package, a plugin, `d
 
 That’s a great question! There are two main ways of working with dbt -- using the web-based IDE in dbt Cloud, or using the Command Line Interface (CLI)
 
-**dbt Cloud IDE** - dbt Cloud is an application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and is an easy way to share dbt documentation with your team. You can build, test, run and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project
+- **dbt Cloud IDE** - dbt Cloud is an application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and is an easy way to share dbt documentation with your team. You can build, test, run and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project
 
-**CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s free to use. You can build your dbt project in a code editor, like Jetbrains or VSCode, and execute dbt commands using a terminal program. 
+- **CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s free to use. You can build your dbt project in a code editor, like Jetbrains or VSCode, and execute dbt commands using a terminal program. 
 
 **What type of support is provided?** 
 
-The global dbt Support team is happy to help and available to dbt Cloud customers by email or in-product live chat. Developer and Team accounts offer 24x5 support, while Enterprise customers have priority access and options for custom coverage.
-
-Additionally, Enterprise plan customers receive implementation assistance, dedicated account management, and a dbt Labs Security and Legal review.
+The global dbt Support team is happy to help and available to dbt Cloud customers by email or in-product live chat. 
 
 If you have project-related or modeling questions, our dedicated [GitHub Discussions](docs/contributing/long-lived-discussions-guidelines) or [dbt Community Slack](http://getdbt.slack.com) are great resources to use as well.
