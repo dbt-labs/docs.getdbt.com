@@ -333,3 +333,5 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /docs/guides/getting-help	/guides/legacy/getting-help 302
 /docs/guides/migration-guide/*  /guides/migration/versions/:splat 301!
 /docs/guides/* /guides/legacy/:splat 301!
+/docs/dbt-cloud/cloud-ide/the-ide-git-button /docs/dbt-cloud/cloud-ide/version-control-ide 301
+/docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide /docs/dbt-cloud/cloud-ide/use-cloud-ide 301
