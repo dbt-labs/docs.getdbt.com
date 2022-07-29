@@ -3,8 +3,6 @@ title: "Learn the dbt Cloud IDE"
 id: "learn-dbt-ide"
 ---
 
-**Learn the dbt Cloud IDE**  
-
 The dbt Cloud IDE includes robust features to:
 
 - Write modular SQL models with SELECT statements and the `ref()` function– dbt handles the chore of dependency management,
