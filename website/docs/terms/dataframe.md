@@ -12,9 +12,9 @@ This term would benefit from additional depth and examples. Have knowledge to co
 
 A DataFrame is a way of storing and manipulating tabular data in Python. (It's also used in other languages popular for data processing, such as R and Scala.)
 
-It's possible to string together a number of DataFrame transformations. For example, if `df` represents a DataFrame containing one row per person living in the Eastern United States over the last decade, we can calculate the number of people living in Philly each year:
+It's possible to string together a number of DataFrame transformations. For example, if `df` represents a DataFrame containing one row per person living in the Eastern United States over the last decade, we can calculate the number of people living in Philadelphia each year:
 ```python
-df.filter("city == 'philly'")
+df.filter("city == 'Philadelphia'")
   .withColumn("population", count("name"))
   .group_by("year")
 ```

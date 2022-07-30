@@ -24,6 +24,9 @@ For users of [state-based selection](understanding-state): This release includes
 
 _GitHub discussion forthcoming_
 
+**Notes:**
+- The `statement` and `create_table_as` macros accept a new argument, `language`, with a default value of `'sql'`
+
 ## New and changed documentation
 
 - **[Python models](building-models-with-python)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
