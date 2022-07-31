@@ -50,7 +50,7 @@ In this example, your selection of the `payment_method` column and summation of 
 
 Using the `INSERT` DML command, you can add rows to a table that exists in your database. To be honest, data folks are rarely inserting data into tables manually with the `INSERT` command. Instead, data team members will most often use data that’s already been inserted by an <Term id="elt" /> tool or other data ingestion process.
 
-You can insert a record for myself [in jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `raw_customers` table like this:
+You can insert a record [in jaffle_shop’s](https://github.com/dbt-labs/jaffle_shop) `raw_customers` table like this:
 
 ```sql
 INSERT INTO raw_customers VALUES (101, 'Kira', 'F.');
@@ -92,8 +92,8 @@ DML statements allow you to query, edit, add, and remove data stored in database
 
 For more resources on why people who use dbt don’t write DML, check out the following:
 
-- [Why not write DML](https://docs.getdbt.com/faqs/why-not-write-dml)
-- [SQL dialect](https://docs.getdbt.com/faqs/sql-dialect)
+- [Why not write DML](/faqs/project/why-not-write-dml)
+- [SQL dialect](/faqs/models/sql-dialect)
 
 For database-specific DML documents, please check out the resources below:
 

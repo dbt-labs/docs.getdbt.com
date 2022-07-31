@@ -6,7 +6,7 @@ id: "cloud-dbt-cloud-support"
 Welcome to dbt Cloud Support!
 
 Our purpose is to assist dbt Cloud users as they work through implementing and utilizing dbt Cloud at their organizations. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/), [dbt discourse](https://discourse.getdbt.com/), or [Stack Overflow](https://stackoverflow.com/questions/tagged/dbt)? dbt Support is here to `dbt help` you!
-Check out our guide on [getting help](https://docs.getdbt.com/docs/guides/getting-help) - half of the problem is often knowing where to look... and how to ask good questions!
+Check out our guide on [getting help](/guides/legacy/getting-help) - half of the problem is often knowing where to look... and how to ask good questions!
 Types of questions dbt Support will assist you with:
 - **How do I...**
     - set up a dbt Cloud project?
