@@ -4,31 +4,92 @@ title: "Python models"
 
 :::info Beta
 
-This feature is arriving in dbt Core v1.3, which is currently in beta. Note that only [specific data warehouses](#specific-data-warehouses) support dbt Python models. Support in dbt Cloud will be limited to start, and improve over the course of the beta.
+dbt Core v1.3, currently in beta, adds Python models to dbt. Note that only [specific data warehouses](#specific-data-warehouses) support dbt Python models. Support in dbt Cloud will be limited to start, and improve over the course of the beta.
 
 We encourage you to:
-- [Read the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261)
-- [Weigh in on our developing best practices](https://github.com/dbt-labs/docs.getdbt.com/discussions/1811)
-- Join the **#beta-feedback-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/)
+- Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.
+- Contribute to [best practices for developing Python models in dbt](https://github.com/dbt-labs/docs.getdbt.com/discussions/1811).
+- Join the **#beta-feedback-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 
-Below, you'll see sections entitled "❓ **Our questions**." We're working to develop our opinionated recommendations ahead of the final release this October—and you can help! Comment in the GitHub discussions, leave thoughts in Slack, talk about it with colleagues and friends.
+Below, you'll see sections entitled "❓ **Our questions**." We're working to develop opinionated recommendations on how to use this feature, ahead of the final release in October—and you can help! Comment in the GitHub discussions; leave thoughts in Slack; bring up dbt + Python in casual conversation with colleagues and friends.
 :::
 
-## What is a Python model in dbt?
+## About Python models in dbt
 
-A dbt Python model is a function that reads in dbt sources or models, applies a series of transformations, and returns a transformed dataset. Just like SQL models!
+dbt Python models will help you solve use cases that you can't solve with SQL. You can perform analyses using tools available in the open source Python ecosystem, including state-of-the-art packages for data science and statistics. Before, you would have needed separate infrastructure and orchestration to run Python transformations in production. By defining your Python transformations in dbt, they're just models in your project—with all the same capabilities around testing, documentation, and lineage.
 
-Unlike SQL models, which return a `select` statement, each Python model returns a single <Term id="dataframe">DataFrame</Term>. When you run a Python model, the result of that DataFrame will be saved as a table in your data warehouse.
+<File name='models/my_python_model.py'>
+
+```python
+import ...
+
+def model(dbt, session):
+  
+    my_sql_model_df = dbt.ref("my_sql_model")
+    
+    final_df = ...  # stuff you can't write in SQL!
+    
+    return final_df
+```
+
+</File>
+
+<File name='models/config.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: my_python_model
+  
+    # Document within the same codebase
+    description: My transformation written in Python
+    
+    # Configure in ways that feel intuitive and familiar
+    config:
+      materialized: table
+      tags: ['python']
+    
+    # Test the results of my Python transformation
+    columns:
+      - name: id
+        # Standard validation for 'grain' of Python results
+        tests:
+          - unique
+          - not_null
+    tests:
+      # Write your own validation logic (in SQL) for Python results
+      - [custom_generic_test](writing-custom-generic-tests)
+```
+
+</File>
+
+<!--- TODO: how to make this image preview bigger? --->
+<Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/python-model-dag.png" title="SQL + Python, together at last"/>
+
+The prerequisite for dbt Python models is using an adapter for a data warehouse or platform that supports a fully featured Python runtime. In a dbt Python model, all Python code is executed remotely in the platform. None of it is executed by dbt locally. This is a very good thing! We believe in the clear separation of _model definition_ from _model execution_. In this and many other ways, you'll find that dbt's approach to Python models mirrors its longstanding approach to modeling data in SQL.
+
+We've written this guide assuming that you have some familiarity with dbt. If you've never before written a dbt model, we'd encourage you to start by first reading ["dbt Models"](building-models). Throughout, we'll be drawing connections between Python models and SQL models, as well as making clear their differences.
+
+### What is a Python model, actually?
+
+A dbt Python model is a function that reads in dbt sources or models, applies a series of transformations, and returns a transformed dataset. <Term id="dataframe">DataFrame</Term> operations define the starting points, the end state, and each step along the way.
+
+This is similar to the role of <Term id="cte">CTEs</Term> in dbt SQL models. We use CTEs to pull in upstream datasets, to define (and name) a series of meaningful transformations, and to end with a final `select` statement. You can run the compiled version of a dbt SQL model to see the data that will be included in the resulting view or table. When you `dbt run`, dbt actually wraps that query in `create view`, `create view`, or more complex DDL, to save its results in the database.
+
+Instead of a final `select` statement, each Python model returns a final DataFrame. Each DataFrame operation is "lazily evaluated." In development, you can preview its data, using methods like `.show()` or `.head()`. When you run a Python model, the full result of the final DataFrame will be saved as a table in your data warehouse.
 
 dbt Python models have access to almost all of the same configuration options as SQL models. You can test them, document them, add `tags` and `meta` properties to them, grant access on their results to other users, and so on. You can select them by their name, their file path, their configurations, whether they are upstream or downstream of another model, or whether they have been modified compared to a previous project state.
 
 ### Defining a Python model
 
-Each Python model lives in a `.py` file in your `models/` folder. It defines a function named **`model()`**, which has two parameters:
+Each Python model lives in a `.py` file in your `models/` folder. It defines a function named **`model()`**, which takes two parameters:
 - **`dbt`**: A class compiled by dbt Core, unique to each model, that enables you to run your Python code in the context of your dbt project and DAG.
 - **`session`**: A class representing the connection to the Python backend on your data platform. The session is needed to read in tables as DataFrames, and to write DataFrames back to tables. In PySpark, by convention, the `SparkSession` is named `spark`, and available globally. For consistency across platforms, we always pass it into the `model` function as an explicit argument named `session`.
 
 The `model()` function must return a single DataFrame. On Snowpark (Snowflake), this can be a Snowpark or Pandas DataFrame. On PySpark (Databricks + BigQuery), this should be a PySpark DataFrame (converted back from Pandas if needed). For more about choosing between Pandas and native DataFrames, see ["DataFrame API + syntax"](#dataframe-api--syntax).
+
+When you `dbt run --select python_model`, dbt will prepare and pass in both arguments (`dbt` and `session`). All you have to do is define the function. This is how every single Python model should look:
 
 <File name='models/my_python_model.py'>
 
@@ -42,7 +103,6 @@ def model(dbt, session):
 
 </File>
 
-When you `dbt run --select python_model`, dbt will prepare and pass in both arguments (`dbt` and `session`). All you have to do is define the `model()` function that accepts them.
 
 ### Referencing other models
 
@@ -87,7 +147,7 @@ Just like SQL models, there are three ways to configure Python models:
 2. In a dedicated `.yml` file, within the `models/` directory
 3. Within the model's `.py` file, using the `dbt.config()` method
 
-The `dbt.config()` method allows you to set configurations for your model within your Python file:
+Calling the `dbt.config()` method will set configurations for your model right within your `.py` file, similar to the `{{ config() }}` macro in `.sql` model files:
 
 <File name='models/my_python_model.py'>
 
@@ -100,7 +160,7 @@ def model(dbt, session):
 
 </File>
 
-The `dbt.config()` method accepts _only_ literal values (strings, booleans, and numeric types). It's not possible to pass another function or a more complex data structure. The reason is because dbt statically analyzes the arguments to `config()` while parsing your model, without actually executing any of your Python code.
+There's a limit to how fancy you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types). It's not possible to pass another function or a more complex data structure. The reason is because dbt statically analyzes the arguments to `config()` while parsing your model, without actually executing any of your Python code. If you need to set more complex configuration, 
 
 #### Accessing project context
 
@@ -122,7 +182,7 @@ models:
   - name: my_python_model
     config:
       materialized: table
-      target_name: "{{ target.name }}"\
+      target_name: "{{ target.name }}"
       specific_var: "{{ var('SPECIFIC_VAR') }}"
       specific_env_var: "{{ env_var('SPECIFIC_ENV_VAR') }}"
 ```
@@ -504,7 +564,11 @@ Currently, Python models are supported for users of `dbt-snowflake`, `dbt-spark`
 
 **Additional setup:** The `user` field in your [Spark connection profile](spark-profile) (which is usually optional) is required for running Python models. In the current implementation, this should be your email login to your Databricks workspace (`yourname@company.com`).
 
-**Note:** Python models will be created and run as notebooks in your Databricks workspace. The notebook will be created within the personal workspace of the `user` running dbt, and named after the model it is executing. dbt will update the notebooks on subsequent runs of the same model, but it will not delete it—so you can use the notebook for quicker interactive development. Just remember to update the code in your dbt model, based on your in-notebook iteration, before the next `dbt run`.
+**Note:** Python models will be created and run as notebooks in your Databricks workspace. The notebook will be created within the personal workspace of the `user` running dbt, and named after the model it is executing. dbt will update the notebooks on subsequent runs of the same model, but it will not delete it. We're thinking of this as a feature, rather than a bug, on the platforms where we can make it available. The big idea:
+  1. Scaffold a simple version of the model and `dbt run` it, which will create a notebook in Databricks
+  2. Open the notebook in Databricks, iteratively develop or fine-tune your transformation code
+  3. Copy your changes back into your dbt `.py` model
+  4. Call `dbt run` again, repeat as needed
 
 **Installing packages:** We recommend configuring packages on the interactive cluster which you will be using to run your Python models.
 
@@ -539,7 +603,7 @@ Add these attributes to your [BigQuery profile](bigquery-profile):
 - `dataproc_cluster_name`: Name of Dataproc cluster to use for running Python model (executing PySpark job)
 - `dataproc_region`: GCP region of that Dataproc cluster (e.g. `us-central1`)
 
-The user or service account running dbt needs the following permissions, in addition to those needed for BigQuery ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
+Any user or service account that runs dbt Python models will need the following permissions, in addition to permissions needed for BigQuery ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
 ```
 dataproc.clusters.use
 dataproc.jobs.create
