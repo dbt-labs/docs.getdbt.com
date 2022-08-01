@@ -122,7 +122,7 @@ The example below will assume GitHub actions as the CI engine but similar behavi
 
 As described before, we need to run a `dbt docs generate` in order to create updated JSON artifacts used in the pre-commit hooks.
 
-For that reason, we will need our CI step to execute this command, which will require setting up a `profiles.yml` file providing dbt the information to connect to the DW. Profiles files will be different for each data warehouse ([example here](https://docs.getdbt.com/reference/warehouse-profiles/snowflake-profile)).
+For that reason, we will need our CI step to execute this command, which will require setting up a `profiles.yml` file providing dbt the information to connect to the data warehouse. Profiles files will be different for each data warehouse ([example here](https://docs.getdbt.com/reference/warehouse-profiles/snowflake-profile)).
 
 In our case, let’s create a file called `profiles.yml` at the root of our dbt project, with the following information:
 
