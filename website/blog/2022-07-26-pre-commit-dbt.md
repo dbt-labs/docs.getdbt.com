@@ -71,7 +71,7 @@ A few notes about this file:
 
 Now that we have defined our configuration file, the next step will depend on whether we are using dbt via dbt Cloud or dbt Core via the CLI.
 
-If we are using dbt Cloud, let’s jump to step 4, where we will set up pre-commit-dbt as part of the CI process, otherwise, with dbt Core we can go to step 2.
+If we are using dbt Cloud, let’s jump to [step 4](#4-make-it-part-of-the-periodic-checks), where we will set up pre-commit-dbt as part of the CI process, otherwise, with dbt Core we can go to step 2.
 
 ### 2. Understand the scope of the changes required
 
