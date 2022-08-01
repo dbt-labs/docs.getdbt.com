@@ -3,7 +3,8 @@ title: "Develop in the dbt Cloud IDE (Beta)"
 id: "ide-beta"
 ---
 
-:::info The dbt Cloud IDE is now in Beta! This documentation is for the IDE Beta version only and to trial and sign up for the IDE Beta group, submit your interest [here](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform)!
+:::info 
+The dbt Cloud IDE is now in Beta! This documentation is for the IDE Beta version only and to trial and sign up for the IDE Beta group, submit your interest [here](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform)!
 :::
 
 ## Overview
@@ -26,9 +27,9 @@ To access and develop in the dbt Cloud IDE, you need to create/log in with a dbt
 
 You might find it helpful to read our [Getting Started with dbt Cloud](https://docs.getdbt.com/guides/getting-started) guide to set up dbt Cloud and perform some key tasks. For more information, see the following articles.
 
-- [What is dbt?](https://next.docs.getdbt.com/docs/introduction#what-else-can-dbt-do)
-- [Getting Started with dbt Cloud](https://docs.getdbt.com/guides/getting-started/getting-set-up)
-- [Building your first project](https://docs.getdbt.com/guides/getting-started/building-your-first-project)
+- [What is dbt?](docs/introduction#what-else-can-dbt-do)
+- [Getting Started with dbt Cloud](guides/getting-started/getting-set-up)
+- [Building your first project](guides/getting-started/building-your-first-project)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [Using Git](https://docs.github.com/en/github/getting-started-with-github/using-git)
 
