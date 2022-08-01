@@ -116,8 +116,6 @@ Here's a couple ways you could approach it:
 - Option A -- simple and familiar -- hooks to the rescue
 - Option B -- too clever by half -- use the dbt graph to infer which schemas need "usage"
 
-Both examples: [https://github.com/dbt-labs/internal-analytics/compare/jerco/refactor-grants](https://github.com/dbt-labs/internal-analytics/compare/jerco/refactor-grants)
-
 #### Option A: simple and familiar
 
 ```yaml
