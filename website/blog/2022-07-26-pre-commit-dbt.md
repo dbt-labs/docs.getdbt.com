@@ -41,7 +41,7 @@ To remediate this let’s follow those 4 steps:
 
 ### 1. Define our rules and create a pre-commit config file
 
-pre-commit-dbt provides a range of tests that can be run on the models of our dbt project. In the case of a project which has existed for some time and which might not be following entirely best practices, I would recommend selecting a small subset of tests, fixing the project and adding more tests later on.
+pre-commit-dbt provides a range of tests that can be run on the models of our dbt project. In the case of a project which has existed for some time and which might not be entirely following best practices, I would recommend selecting a small subset of tests, fixing the project and adding more tests later on.
 
 In our example, let’s just start by saying that we want:
 - all our models to have been added to a YAML file
