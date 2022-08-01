@@ -143,7 +143,7 @@ In our case, let’s create a file called `profiles.yml` at the root of our dbt 
 
 We don’t want to save the password of our user in a clear text file. For that purpose, we use the ability to read it from an environment variable. The next step is to save the value of our password as a secret in GitHub. In our GitHub repository, under Settings > Security > Secrets > Action, let’s create a secret called DB_PASSWORD to store our sensitive password.
 
-Finally, we can create a new YAML file to define our GitHub action. The name is not important but this file must be saved  under the folders `.github/workflows/` (create those if they don’t exist yet)
+Finally, we can create a new YAML file to define our GitHub action. e.g. `.github/workflows/pre_commit_checks.yml` The name is not important but this file must be saved  under the folders `.github/workflows/` (create those if they don’t exist yet)
 
 ```yaml
 name: pre-commit-check
