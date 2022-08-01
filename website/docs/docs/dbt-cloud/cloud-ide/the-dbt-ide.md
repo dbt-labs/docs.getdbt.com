@@ -1,50 +1,41 @@
 ---
-title: "Overview"
+title: "The dbt IDE"
 id: "the-dbt-ide"
 ---
 
-**What is the dbt Cloud IDE?** 
 
-The dbt Cloud IDE is an integrated development environment (IDE) where you can build, test, run and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project -- no command line use required. 
+:::info Prerequisites
 
-To develop in the dbt Cloud IDE, you’ll want to meet the below requirements: 
+You must have a dbt Cloud account to use the IDE. Consult the guide on [using the dbt IDE](using-the-dbt-ide). Don't have an account? You can get started for free [here](https://www.getdbt.com/signup).
 
-- The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc) which was overhauled in dbt v0.15.0. In order to use the IDE, your dbt project must be compatible with dbt v0.15.0.
-- To use the IDE, you must have a [Developer License](docs/dbt-cloud/access-control/cloud-seats-and-users).
-- Write access must be enabled for your dbt repository in dbt Cloud. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
+:::
 
-**Why use the dbt Cloud IDE?**
 
-The IDE is a single interface for building, testing, running, and version controlling dbt projects from your browser. The IDE can be used by everyone - from new dbt developers to the most seasoned practitioners. 
+The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
 
-To access and develop in the dbt Cloud IDE, you need to create/log in with a dbt Cloud account and click the ‘**Develop**’ button found in the header. 
+## Compiling and Running SQL
 
-You might find it helpful to read our [Getting Started with dbt Cloud](guides/getting-started) guide to set up dbt Cloud and perform some key tasks. For more information, see the following articles.
+In the dbt IDE, you can compile dbt code into SQL and execute it against your database directly. The IDE leverages the open-source [dbt server](rpc) to intelligently recompile only the parts of your project that have changed. This brings the cycle time for dbt project development down from minutes to seconds.
 
-- [What is dbt?](https://docs.getdbt.com/docs/introduction)
-- [Getting Started with dbt Cloud](guides/getting-started/getting-set-up)
-- [Building your first project](guides/getting-started/building-your-first-project)
-- [dbt Learn courses](https://courses.getdbt.com/collections)
-- [Using Git](https://docs.github.com/en/github/getting-started-with-github/using-git)
+<Lightbox src="/img/docs/dbt-cloud/d6a75a5-Screen_Shot_2019-11-05_at_9.04.02_PM.png" title="Executing dbt SQL in the browser"/>
 
-**Is there a cost of using the dbt Cloud IDE cost?** 
+## Running Projects
 
-Not at all! You can enjoy dbt Cloud and sign up for our Free [Developer plan](https://www.getdbt.com/pricing/), which comes with one developer seat. If you’d like to access more features or have more developer seats, you can upgrade your account to our Team or Enterprise plan. Our dedicated [pricing page](https://www.getdbt.com/pricing/) has more details on our plans and features!
+In addition to compiling and executing SQL, you can also *run* dbt projects in the dbt IDE. Use dbt's [rich model selection syntax](node-selection/syntax) to [run dbt commands](dbt-commands) directly in your browser.
 
-**How can I contribute to dbt Cloud?** 
+The dbt IDE updates in real-time as models, tests, seeds, and operations are run. If a model or tests fails, you can dig into the logs to find and fix the issue.
 
-We’d love for you to contribute! And whether it's a dbt package, a plugin, `dbt-core`, or this very documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. Our [Contributing](docs/contributing/oss-expectations) page provides more detail on what to expect when contributing to dbt open source software (OSS). 
+<Lightbox src="/img/docs/dbt-cloud/50e939e-Screen_Shot_2019-11-05_at_9.08.38_PM.png" title="Running jobs and viewing results in the dbt IDE"/>
 
-**What is the difference between developing on the dbt Cloud IDE and on the CLI?**
+## Version Control
 
-That’s a great question! There are two main ways of working with dbt -- using the web-based IDE in dbt Cloud, or using the Command Line Interface (CLI)
+Leverage git directly from the dbt IDE to version control your code from your browser. You can branch, commit, push, and pull code with a couple of clicks - no command line required.
 
-- **dbt Cloud IDE** - dbt Cloud is an application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and is an easy way to share dbt documentation with your team. You can build, test, run and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project
+<Lightbox src="/img/docs/dbt-cloud/8959807-Screen_Shot_2019-11-05_at_9.15.46_PM.png" title="Creating a new git branch in the IDE"/>
 
-- **CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s free to use. You can build your dbt project in a code editor, like Jetbrains or VSCode, and execute dbt commands using a terminal program. 
+## Dark mode
+As Ben Franklin once said:
 
-**What type of support is provided?** 
+> In matters of principle, stand like a rock; in matters of taste, swim with the current.
 
-The global dbt Support team is happy to help and available to dbt Cloud customers by email or in-product live chat. 
-
-If you have project-related or modeling questions, our dedicated [GitHub Discussions](docs/contributing/long-lived-discussions-guidelines) or [dbt Community Slack](http://getdbt.slack.com) are great resources to use as well.
+<Lightbox src="/img/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/>
