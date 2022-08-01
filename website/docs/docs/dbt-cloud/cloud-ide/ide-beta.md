@@ -3,10 +3,7 @@ title: "Develop in the dbt Cloud IDE (Beta)"
 id: "ide-beta"
 ---
 
-# Develop in the dbt Cloud IDE
-
-:::info 📌 The dbt Cloud IDE is now in beta! This documentation is for the IDE beta version only and if you would like to sign up for the IDE beta group, submit your interest `here`!
-
+:::info The dbt Cloud IDE is now in beta! This documentation is for the IDE beta version only and if you would like to sign up for the IDE beta group, submit your interest `here`!
 :::
 
 ## Overview
@@ -108,7 +105,7 @@ You can invoke dbt commands, compile jinja into query, preview data from warehou
 There are two different types of startup processes for the IDE:
 
 - **Cold start:** The process of accessing the IDE for the first time (in 3 hours). Cold starting the IDE can take about 30 seconds for load time. Behind the scene, dbt is provisioning a dedicated server for you to build a dbt project. After this step finishes, the IDE is ready for use. In the meantime, dbt is also starting up the dbt-rpc container to interact with dbt-core. You don’t need to wait for this to finish before the IDE is ready for edit.
-- **Hot start:** The process of resuming an existing IDE session (within 3 hours of the last activity). Hot starting the IDE is much faster and takes <3 seconds for load time. The is because the environment is already available, and you’re simply resuming the session there.
+- **Hot start:** The process of resuming an existing IDE session (within 3 hours of the last activity). Hot starting the IDE is much faster and takes less than 3 seconds for load time. The is because the environment is already available, and you’re simply resuming the session there.
 
 These two startup processes are key performance metrics dbt Labs monitor to ensure consistent and reliable experiences.
 
@@ -158,7 +155,7 @@ The status icon on the bottom-right side of the IDE gives you an indicator of th
 
 To generate documentation (docs) in the IDE, type `docs generate` in the Command Bar in the IDE. This command will generate the docs for your dbt project as it exists in development in your IDE session. 
 
-:::info 📌 Note: Don’t worry about typing `dbt` at the start of your command. The IDE will automatically include the prefix ‘`dbt`’, allowing you to only type in the necessary command.
+:::info Don’t worry about typing `dbt` at the start of your command. The IDE will automatically include the prefix ‘`dbt`’, allowing you to only type in the necessary command.
 :::
 
 Once you generate a successful run,  the dbt Cloud IDE makes it possible to view [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
@@ -177,7 +174,7 @@ You can create a separate branch to develop and make changes. The changes aren�
 
 ![git overview.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f25de38f-88f5-4073-aa8e-24a79625a957/git_overview.jpg)
 
-:::info 📌 **Note:** In order to use version control when you Develop in the IDE, the project needs to be connected to a repository.
+:::info In order to use version control when you Develop in the IDE, the project needs to be connected to a repository.
 :::
 
 **Common Git Terminology**
