@@ -239,7 +239,7 @@ The result of the check is also shown in the PR directly:
 
 With that information, I could now go back to dbt, document my model customers and push those new changes to my repo for another check to be performed.
 
-This action step can be defined in GitHub as being just here to inform or we could setup rules preventing any change to be merged in case the GitHub action fails.
+We could setup rules that preventing any change to be merged if the GitHub action fails. Alternatively, this action step can be defined as merely informational. 
 
 #### b) Installing the pre-commit git hooks (for dbt CLI users)
 
