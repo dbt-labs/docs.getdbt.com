@@ -3,7 +3,7 @@ title: "Develop in the dbt Cloud IDE (Beta)"
 id: "ide-beta"
 ---
 
-:::info The dbt Cloud IDE is now in beta! This documentation is for the IDE beta version only and if you would like to sign up for the IDE beta group, submit your interest [here](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform)!
+:::info The dbt Cloud IDE is now in Beta! This documentation is for the IDE Beta version only and to trial and sign up for the IDE Beta group, submit your interest [here](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform)!
 :::
 
 ## Overview
@@ -14,9 +14,9 @@ The dbt Cloud IDE is an integrated development environment (IDE) where you can b
 
 To develop in the dbt Cloud IDE, you’ll want to meet the below requirements: 
 
-- The dbt IDE is powered by the [dbt-rpc](https://docs.getdbt.com/reference/commands/rpc) which was overhauled in dbt v0.15.0. In order to use the IDE, your dbt project must be compatible with dbt v0.15.0.
-- To use the IDE, you must have a [Developer License](https://docs.getdbt.com/docs/dbt-cloud/access-control/cloud-seats-and-users).
-- Write access must be enabled for your dbt repository in dbt Cloud. See [Connecting your GitHub Account](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
+- The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc) which was overhauled in dbt v0.15.0. In order to use the IDE, your dbt project must be compatible with dbt v0.15.0.
+- To use the IDE, you must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users).
+- Write access must be enabled for your dbt repository in dbt Cloud. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
 
 **Why use the dbt Cloud IDE?**
 
@@ -46,7 +46,7 @@ That’s a great question! There are two main ways of working with dbt -- using 
 
 **dbt Cloud IDE** - dbt Cloud is an application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and is an easy way to share dbt documentation with your team. You can build, test, run and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project
 
-**CLI** - The CLI uses [dbt Core](https://next.docs.getdbt.com/docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s free to use. You can build your dbt project in a code editor, like Jetbrains or VSCode, and execute dbt commands using a terminal program. 
+**CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s free to use. You can build your dbt project in a code editor, like Jetbrains or VSCode, and execute dbt commands using a terminal program. 
 
 **What type of support is provided?** 
 
