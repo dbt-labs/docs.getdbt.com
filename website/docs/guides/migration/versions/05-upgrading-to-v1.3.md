@@ -29,6 +29,6 @@ _GitHub discussion forthcoming_
 
 ## New and changed documentation
 
-- **[Python models](building-models-with-python)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
+- **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
 
-https://github.com/dbt-labs/docs.getdbt.com/labels/dbt-core%20v1.3
+Docs in progress: [Issues labeled "dbt-core v1.3"](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.3%22+)
