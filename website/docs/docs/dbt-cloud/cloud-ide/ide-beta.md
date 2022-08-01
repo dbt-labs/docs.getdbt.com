@@ -3,7 +3,7 @@ title: "Develop in the dbt Cloud IDE (Beta)"
 id: "ide-beta"
 ---
 
-:::info The dbt Cloud IDE is now in beta! This documentation is for the IDE beta version only and if you would like to sign up for the IDE beta group, submit your interest `here`!
+:::info The dbt Cloud IDE is now in beta! This documentation is for the IDE beta version only and if you would like to sign up for the IDE beta group, submit your interest [here](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform)!
 :::
 
 ## Overview
