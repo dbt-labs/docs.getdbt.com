@@ -10,6 +10,10 @@ You must have a dbt Cloud account to use the IDE. Consult the guide on [using th
 
 :::
 
+:::info The dbt Cloud IDE is now in beta! To access the beta version documentation and request to join the IDE beta group, submit your interest [here](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform)
+
+:::
+
 
 The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
 
