@@ -10,7 +10,7 @@ You must have a dbt Cloud account to use the IDE. Consult the guide on [using th
 
 :::
 
-:::Note 
+:::info Note 
 The dbt Cloud IDE is now in beta! You can access the [IDE Beta documentation](docs/dbt-cloud/cloud-ide/ide-beta) and request to join the IDE beta group, submit your interest [here](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform)
 
 :::
