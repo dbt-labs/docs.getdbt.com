@@ -296,7 +296,7 @@ Unlike the other global configs documented on this page, which can be set in `pr
 
 ### Send anonymous usage stats
 
-We want to build the best version of dbt possible, and a crucial part of that is understanding how users work with dbt. To this end, we've added some simple event tracking to dbt (using Snowplow). We do not track credentials, model contents or model names (we consider these private, and frankly none of our business).
+We want to build the best version of dbt possible, and a crucial part of that is understanding how users work with dbt. To this end, we've added some simple event tracking to dbt (using Snowplow). We do not track credentials, raw model contents or model names (we consider these private, and frankly none of our business).
 
 Usage statistics are fired when dbt is invoked and when models are run. These events contain basic platform information (OS + python version). You can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
 
