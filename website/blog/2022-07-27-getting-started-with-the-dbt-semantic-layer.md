@@ -18,7 +18,7 @@ is_featured: true
 
 At last year's Coalesce, Drew showed us the future[^1] - a vision of what metrics in dbt could look like. Since then, we've been getting the infrastructure in place to make that vision a reality. We wanted to share with you where we are today and how it fits into the broader picture of [where we're going](https://www.getdbt.com/blog/dbt-semantic-layer).
 
-To those who haven't followed this sage with the intensity of [someone watching their investments on the crypto market](https://mobile.twitter.com/scannergr1/status/1536198701215109122/photo/1), we're rolling out this new resource to help you better understand the dbt Semantic Layer and provide clarification on the following things:
+To those who haven't followed this saga with the intensity of [someone watching their investments on the crypto market](https://mobile.twitter.com/scannergr1/status/1536198701215109122/photo/1), we're rolling out this new resource to help you better understand the dbt Semantic Layer and provide clarification on the following things:
 
 1. What is the dbt Semantic Layer?
 2. How do I use it?
