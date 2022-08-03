@@ -60,7 +60,7 @@ The global dbt Support team is happy to help and available to dbt Cloud customer
 
 If you have project-related or modeling questions, our dedicated [GitHub Discussions](https://docs.getdbt.com/docs/contributing/long-lived-discussions-guidelines) or [dbt Community Slack](http://getdbt.slack.com) are great resources to use as well.
 
-## Learn the dbt Cloud IDE
+## dbt Cloud IDE Features
 
 The dbt Cloud IDE includes robust features to:
 
@@ -98,7 +98,7 @@ The IDE has a File Explorer, which allows you to organize your project and manag
 
 ![Screenshot 2022-07-28 at 08.08.19.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/688d2b1b-4f0d-4f1d-94a9-e535570dc7b2/Screenshot_2022-07-28_at_08.08.19.png)
 
-## Use the dbt Cloud IDE
+## Development in the dbt Cloud IDE
 
 Developing in the IDE means you can compile dbt code into SQL and execute it against your database directly. The IDE leverages the open-source [dbt-rpc](https://docs.getdbt.com/reference/commands/rpc) to intelligently recompile only the parts of your project that have changed. This brings the cycle time for dbt project development down from minutes to seconds.
 
@@ -170,7 +170,7 @@ In the IDE, you can click the "View Docs" button on top of the File Explorer to 
 
 ![Screenshot 2022-07-27 at 12.21.53.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cf5a4b18-8017-46cf-ac1a-19f054d4c803/Screenshot_2022-07-27_at_12.21.53.png)
 
-## **Version control in the dbt Cloud IDE**
+## Version control in the dbt Cloud IDE
 
 A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the dbt Cloud IDE. 
 
