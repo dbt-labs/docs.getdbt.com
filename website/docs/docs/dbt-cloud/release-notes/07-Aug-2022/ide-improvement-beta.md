@@ -1,5 +1,5 @@
 ---
-title: "Enhancement: New IDE with performance and reliability improvements"
+title: "Enhancement: New IDE Beta version improvements"
 id: "ide-improvements-beta.md"
 description: "Adding IDE performance and reliability improvements"
 sidebar_label: "Enhancement: New IDE performance and reliability improvements"
