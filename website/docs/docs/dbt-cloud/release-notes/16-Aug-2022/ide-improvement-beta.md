@@ -19,8 +19,8 @@ Our focus is on performance and reliability, particularly around the following f
 
 **Improvements:**
 
-To address the issue, we rebuilt the IDE and made some significant architectural changes to the way we work. In the new IDE, the architectural changes made will help improve the IDE performance and reliability:
+To address the issue, we rebuilt the IDE and made some significant architectural changes to the way we work. These changes will help improve the IDE performance and reliability:
 
-- Your IDE start-up and interaction will be faster, regardless of the size of your dbt project.
-    - Instead of fetching and downloading all the contents for the files during any change, we only need the file tree/name. This means that starting up the IDE should no longer depend on the size of the dbt project (the larger the project, the slower it is). This also helps make the interaction with the IDE (saving files and committing changes) more snappy.
-- Your IDE load-up time will be quicker and you can access it without needing to wait for the rpc server to finish getting ready.
+- Your IDE spinner and interaction time will be faster, regardless of the size of your dbt project.
+    - Instead of fetching and downloading all the contents for the files during any change, the IDE only needs the file tree/name. This means that starting up the IDE should no longer depend on the size of the dbt project (the larger the project, the slower it is). This also helps make the interaction with the IDE (saving files and committing changes) more snappy.
+- Your IDE spinner time will be quicker and you can access it without needing to wait for the rpc server to finish getting ready.
