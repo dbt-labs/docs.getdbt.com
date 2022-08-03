@@ -3,10 +3,13 @@ title: "New IDE with performance and reliability improvements"
 id: "ide-improvements-beta.md"
 description: "Adding IDE performance and reliability improvements"
 sidebar_label: "Enhancement: New IDE performance and reliability improvements"
-tags: [Aug-16-2022, v1.1.52]
+tags: [Aug-16-2022]
 ---
 
-Building code on the dbt Cloud integrated development environment (IDE) should be seamless, and the tool that you’re using should not add more distractions to the data work that is often already confusing and difficult. 
+Building code on the dbt Cloud integrated development environment (IDE) should be seamless, and the tool that you’re using should not add more distractions 
+to the data work that is often already confusing and difficult. 
+
+We're now excited to start rolling out the IDE Beta version, which focuses on performance and reliability improvements. 
 
 The Classic IDE currently has severe performance and reliability issues. It takes a long time to start up the IDE, and the interactions (saving or committing) are slow.
 
