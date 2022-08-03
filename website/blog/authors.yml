@@ -284,3 +284,12 @@ callum_mccann:
       icon: fa-linkedin
     - url: https://twitter.com/callumpmccann
       icon: fa-twitter
+
+benoit_perigaud:
+  name: Benoit Perigaud
+  job_title: Senior Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/benoit-perigaud.jpeg
+  links:
+    - url: https://www.linkedin.com/in/benoit-perigaud/
+      icon: fa-linkedin
