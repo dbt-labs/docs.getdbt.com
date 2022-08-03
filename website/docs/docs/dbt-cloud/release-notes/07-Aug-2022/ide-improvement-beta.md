@@ -1,8 +1,8 @@
 ---
-title: "Enhancement: New IDE Beta version improvements"
+title: "Enhancement: New Cloud IDE Beta"
 id: "ide-improvements-beta.md"
 description: "Adding IDE performance and reliability improvements"
-sidebar_label: "Enhancement: New IDE performance and reliability improvements"
+sidebar_label: "Enhancement: New Cloud IDE Beta"
 tags: [Aug-16-2022]
 ---
 
@@ -25,5 +25,5 @@ Our focus is on performance and reliability, particularly around the following f
 To address the issue, we rebuilt the IDE and made some significant architectural changes to the way we work. These changes will help improve the IDE performance and reliability:
 
 - Your IDE spinner and interaction time will be faster, regardless of the size of your dbt project.
-    - Instead of fetching and downloading all the contents for the files during any change, the IDE only needs the file tree/name. This means that starting up the IDE should no longer depend on the size of the dbt project (the larger the project, the slower it is). This also helps make the interaction with the IDE (saving files and committing changes) more snappy.
-- Your IDE spinner time will be quicker and you can access it without needing to wait for the rpc server to finish getting ready.
+    - Instead of fetching and downloading all the contents for the files during any change, the IDE only needs the file tree/name. This means that starting up the IDE should no longer depend on the size of the dbt project. This also helps make the interaction with the IDE (saving files and committing changes) more snappy.
+- Your IDE spinner time will be quicker as you can access it without needing to wait for the rpc server to finish getting ready.
