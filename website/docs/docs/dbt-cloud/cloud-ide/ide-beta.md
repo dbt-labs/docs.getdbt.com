@@ -7,7 +7,7 @@ id: "ide-beta"
 
 :::info Beta Feature
 
-The dbt Cloud IDE is now in Beta! This documentation is for the IDE Beta version only; to trial the Beta IDE [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform).
+The dbt Cloud IDE is now in Beta! This documentation is for the new Cloud IDE Beta version and if you'd like to trial the beta IDE, [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform).
 
 :::
 
