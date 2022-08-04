@@ -17,7 +17,7 @@ Stored procedures are widely used throughout the data warehousing world. They’
 If your team works heavily with stored procedures, and you ever find yourself with the following or related issues:
 
 - dashboards that aren’t refreshed on time
-- It feels to slow and risky to modify pipeline code based on requests from your data consumers
+- It feels too slow and risky to modify pipeline code based on requests from your data consumers
 - It’s hard to trace the origins of data in your production reporting
 
 It’s worth considering if an alternative approach with dbt might help.
@@ -32,7 +32,7 @@ For example, a dbt Cloud user achieved the following results when moving away fr
 
 ### Improved Uptime
 
-Before migrating the dbt, the team was spending 6 - 8 hours per day on pipeline refreshes, making their investment in their data warehouse essentially worthless during that downtime. After migration, their uptime increased from 65% to 99.9%. This also has a drastic impact on data consumers’ confidence in the underlying pipelines.
+Before migrating to dbt, the team was spending 6 - 8 hours per day on pipeline refreshes, making their investment in their data warehouse essentially worthless during that downtime. After migration, their uptime increased from 65% to 99.9%. This also has a drastic impact on data consumers’ confidence in the underlying pipelines.
 
 ### Tackling New Use Cases
 The team was able to support new mission-critical use cases, such as real time data reporting using a modeling technique called [lambda views](https://docs.getdbt.com/blog/how-to-create-near-real-time-models-with-just-dbt-sql#what-are-lambda-views). This simply wouldn’t have been possible had the team continued using the same techniques they had historically.
