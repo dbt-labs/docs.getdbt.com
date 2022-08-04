@@ -160,7 +160,7 @@ def model(dbt, session):
 
 </File>
 
-There's a limit to how fancy you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types). It's not possible to pass another function or a more complex data structure. The reason is because dbt statically analyzes the arguments to `config()` while parsing your model, without actually executing any of your Python code. If you need to set more complex configuration, 
+There's a limit to how fancy you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types). It's not possible to pass another function or a more complex data structure. The reason is because dbt statically analyzes the arguments to `config()` while parsing your model, without actually executing any of your Python code. If you need to set more complex configuration, we recommend you define it using the [`config` property](resource-properties/config) in a yaml file.
 
 #### Accessing project context
 

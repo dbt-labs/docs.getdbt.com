@@ -28,7 +28,7 @@ pip install dbt-ibmdb2
 This is an experimental plugin:
 - We have not tested it extensively
 - Tested with [dbt-adapter-tests](https://pypi.org/project/pytest-dbt-adapter/) and DB2 LUW on Mac OS+RHEL8
-- Compatibility with other [dbt packages](https://hub.getdbt.com/) (like [dbt_utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/)) is only partially tested
+- Compatibility with other [dbt packages](https://hub.getdbt.com/) (like [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)) is only partially tested
 
 ## Connecting to IBM DB2 with dbt-ibmdb2
 
