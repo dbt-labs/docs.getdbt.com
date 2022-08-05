@@ -2,7 +2,7 @@
 title: "Querying the Metadata API"
 id: "metadata-querying"
 ---
-Accounts on the _Team_ and _Enterprise_ plans can query the dbt Metadata API.
+Accounts on the _Team_ and _Multi-Tenant Enterprise_ plans can query the dbt Metadata API.
 
 ## Authorization
 
