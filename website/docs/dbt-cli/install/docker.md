@@ -3,22 +3,32 @@ title: "Use Docker to install dbt"
 description: "You can use Docker to install dbt and adapter plugins from the command line."
 ---
 
- We recommend you use Docker to install dbt in production because it includes dbt Core, one or more database adapters, and all dependencies. You can find `dbt-core` and all dbt Labs-maintained database adapters available as Docker images hosted on our [GitHub packages page](https://github.com/orgs/dbt-labs/packages?visibility=public). Using Docker to install and develop locally does not require you to have a python environment set up. 
+dbt Core and all adapter plugins maintained by dbt Labs are available as [Docker](https://docs.docker.com/) images, and distributed via [GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages).
+
+Using a prebuilt Docker image to install dbt Core in production has a few benefits: it already includes dbt-core, one or more database adapters, and pinned versions of all their dependencies. By contrast, `pip install dbt-core dbt-<adapter>` takes longer to run, and will always install the latest compatible versions of every dependency.
+
+You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install dbt Core via [Homebrew](homebrew) or [pip](pip) instead.
 
 ### Prerequisites
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site. 
 * You understand which database adapter(s) you need. For more information, see [About dbt adapters](/dbt-cli/install/overview#about-dbt-adapters).
+* You understand how dbt Core is versioned. For more information, see [About dbt Core versions](core-versions).
 * You have a general understanding of the dbt, dbt workflow, developing locally in the command line interface (CLI). For more information, see [About dbt](/docs/introduction#how-do-i-use-dbt).
 
 ### Install a dbt Docker image from Github Packages
 
-Official dbt Docker images are hosted on our [GitHub packages page](https://github.com/orgs/dbt-labs/packages?visibility=public).  We maintain images and tags for each database adapter as well as a `latest` and `<major version>.<minor version>.latest` tag.  They can be installed by utilizing the `docker pull` command:
+Offical dbt docker images are hosted as [packages in the `dbt-labs` GitHub organization](https://github.com/orgs/dbt-labs/packages?visibility=public). We maintain images and tags for every version of every database adapter, as well as two tags that update as new versions as released:
+- `latest`: Latest overall version of dbt-core + this adapter
+- `<Major>.<Minor>.latest`: Latest patch of dbt-core + this adapter for `<Major>.<Minor>` version family. For example, `1.1.latest` includes the latest patches for dbt Core v1.1.
+
+Install an image using the `docker pull` command:
 ```
-docker pull ghcr.io/dbt-labs/dbt-core:latest
+docker pull ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>
 ```
 
-### Running a dbt Docker image in a container:
-The `ENTRYPOINT` for dbt Docker images is the command `dbt` so you can bind-mount your project to `/usr/app` and use dbt as normal:
+### Running a dbt Docker image in a container
+
+The `ENTRYPOINT` for dbt Docker images is the command `dbt`. You can bind-mount your project to `/usr/app` and use dbt as normal:
 ```
 docker run \
 --network=host
@@ -27,98 +37,18 @@ docker run \
 <dbt_image_name> \
 ls
 ```
-> Notes: 
-> * Bind-mount sources _must_ be an absolute path
-> * You may need to make adjustments to the docker networking setting depending on the specifics of your data warehouse/database host.
+
+Notes:
+* Bind-mount sources _must_ be an absolute path
+* You may need to make adjustments to the docker networking setting depending on the specifics of your data warehouse or database host.
 
 ### Building your own dbt Docker image
 
-If the pre-made images don't fit your use case we also provide a [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/main/docker/Dockerfile) that can be used to build custom images in a variety of different ways.
+If the pre-made images don't fit your use case, we also provide a [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/main/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/main/docker/README.md) that can be used to build custom images in a variety of ways.
 
-The  Dockerfile can create images for the following targets, each named after the database they support:
-* `dbt-core` _(no db-adapter support)_
-* `dbt-postgres`
-* `dbt-redshift`
-* `dbt-bigquery`
-* `dbt-snowflake`
-* `dbt-spark`
-* `dbt-all` _(installs all of the above in a single image)_
-* `dbt-third-party` _(requires additional build-arg)_
+In particular, the Dockerfile supports building images:
+- Images that all adapters maintained by dbt Labs
+- Images that install one or more third-party adapters
+- Images against another system architecture
 
-In order to build a new image, run the following docker command.
-```
-docker build --tag <your_image_name>  --target <target_name> <path/to/dockerfile>
-```
-By default the images will be populated with the most recent release of `dbt-core` and whatever database adapter you select.  If you need to use a different version you can specify it by git ref using the `--build-arg` flag:
-```
-docker build --tag <your_image_name> \
-  --target <target_name> \
-  --build-arg <arg_name>=<git_ref> \
-  <path/to/dockerfile>
-```
-valid arg names for versioning are:
-* `dbt_core_ref`
-* `dbt_postgres_ref`
-* `dbt_redshift_ref`
-* `dbt_bigquery_ref`
-* `dbt_snowflake_ref`
-* `dbt_spark_ref`
-
-> Note: Only overide a _single_ build arg for each build. Using multiple overides may lead to a non-functioning image.
-
-If you wish to build an image with a third-party adapter you can use the `dbt-third-party` target.  This target requires you provide a path to the adapter that can be processed by `pip` by using the `dbt_third_party` build arg:
-```
-docker build --tag <your_image_name> \
-  --target dbt-third-party \ 
-  --build-arg dbt_third_party=<pip_parsable_install_string> \ 
-  <path/to/dockerfile>
-```
-
-## Examples:
-To build an image named "my-dbt" that supports redshift using the latest releases:
-```
-cd dbt-core/docker
-docker build --tag my-dbt  --target dbt-redshift .
-```
-
-To build an image named "my-other-dbt" that supports bigquery using `dbt-core` version 0.21.latest and the bigquery adapter version 1.0.0b1:
-```
-cd dbt-core/docker
-docker build \
-  --tag my-other-dbt  \
-  --target dbt-bigquery \
-  --build-arg dbt_bigquery_ref=dbt-bigquery@v1.0.0b1 \
-  --build-arg dbt_core_ref=dbt-core@0.21.latest  \
- .
-```
-
-To build an image named "my-third-party-dbt" that includes [the dbt adapter for Materialize](warehouse-profiles/materialize-profile) and the latest release of `dbt-core`:
-```
-cd dbt-core/docker
-docker build --tag my-third-party-dbt \
-  --target dbt-third-party \
-  --build-arg dbt_third_party=dbt-materialize \
-  .
-```
-
-
-## Special cases
-There are a few special cases worth noting:
-* The `dbt-spark` database adapter comes in three different versions named `PyHive`, `ODBC`, and the default `all`.  If you wish to overide this you can use the `--build-arg` flag with the value of `dbt_spark_version=<version_name>`.  See the [docs](https://docs.getdbt.com/reference/warehouse-profiles/spark-profile) for more information.
-
-* The `dbt-postgres` database adapter is released as part of the `dbt-core` codebase.  If you wish to overide the version used, make sure you use the gitref for `dbt-core`: 
-```
-docker build --tag my_dbt \
-  --target dbt-postgres \
-  --build-arg dbt_postgres_ref=dbt-core@1.0.0b1 \
-  <path/to/dockerfile> \
-  ```
-
-* If you need to build against another architecture (linux/arm64 in this example) you can overide the `build_for` build arg:
-```
-docker build --tag my_dbt \
-  --target dbt-postgres \
-  --build-arg build_for=linux/arm64 \
-  <path/to/dockerfile> \
-  ```
-Supported architectures can be found in the python docker [dockerhub page](https://hub.docker.com/_/python).
+Please note that, if you go the route of building your own Docker images, we are unable to offer dedicated support for custom use cases. If you run into problems, you are welcome to [ask the community for help](getting-help) or [open an issue](oss-expectations#issues) in the `dbt-core` repository. If many users are requesting the same enhancement, we will tag the issue `help_wanted` and invite community contribution.
