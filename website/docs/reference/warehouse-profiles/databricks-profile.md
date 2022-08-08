@@ -35,6 +35,7 @@ your_profile_name:
   outputs:
     dev:
       type: databricks
+      catalog: [optional catalog name, if you are using Unity Catalog, only available in dbt-databricks>=1.1.1]
       schema: [schema name]
       host: [yourorg.databrickshost.com]
       http_path: [/sql/your/http/path]
