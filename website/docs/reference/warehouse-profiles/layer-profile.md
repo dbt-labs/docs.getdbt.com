@@ -47,7 +47,7 @@ You don't need to install `dbt-bigquery` separately. Installing `dbt-layer[bigqu
 
 #### Authentication
 
-You can use any [authentication method](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile) supported in the official dbt BigQuery adapter since Layer uses `dbt-bigquery` adapter to connect to your BigQuery instance.
+You can use any [authentication method](bigquery-profile#authentication-methods) supported in the official dbt BigQuery adapter since Layer uses `dbt-bigquery` adapter to connect to your BigQuery instance.
 
 A sample profile:
 
@@ -62,11 +62,10 @@ layer-profile:
       # Layer configuration
       layer_api_key: [the API Key to access your Layer account (opt)]
       # BigQuery configuration
-      method: service-account
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      keyfile: [/path/to/bigquery/keyfile.json]
+      method: ...
+      project: ...
+      dataset: ...
+      ...
 ```
 
 </File>
@@ -75,13 +74,60 @@ layer-profile:
 
 The following fields are used by Layer:
 
-| Parameter       | Default | Type         | Description                                                                                                                                                                                                                            |
-| --------------- | ------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`          |         | string       | Specifies the adapter you want to use. It should be `layer_bigquery`.                                                                                                                                                                  |
-| `layer_api_key` |         | string (opt) | Specifies your Layer API key. If you want to make predictions with public ML models from Layer, you don't need to have this key in your profile. It's required if you load ML models from your Layer account or train an AutoML model. |
-| `layer_project` |         | string (opt) | Specifies your target Layer project. If you don't specify, Layer will use the same project name with your dbt project.                                                                                                                 |
+| Parameter       | Required? | Description                                                                                                                                                                                                                                    |
+| --------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`          | Yes       | Specifies the adapter you want to use. It must be `layer_bigquery`.                                                                                                                                                                            |
+| `layer_api_key` | No        | Specifies your Layer API key. If you want to make predictions with public ML models from Layer, you don't need to have this key in your profile. It's required if you load private ML models from your Layer account or train an AutoML model. |
+| `layer_project` | No        | Specifies your target Layer project. If you don't specify, Layer will use the same project name with your dbt project.                                                                                                                         |
 
-The rest of the parameters are documented on the [BigQuery adapter page](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-profile).
+The rest of the parameters are documented on the [BigQuery adapter page](bigquery-profile).
+
+### Snowflake
+
+To install Snowflake support, install `dbt-layer` with:
+
+```
+pip install dbt-layer[snowflake]
+```
+
+You don't need to install `dbt-snowflake` separately. Installing `dbt-layer[snowflake]` will also install `dbt-snowflake`.
+
+#### Authentication
+
+You can use any [authentication method](snowflake-profile#authentication-methods) supported in the official dbt Snowflake adapter since Layer uses `dbt-snowflake` adapter to connect to your Snowflake instance.
+
+A sample profile:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+layer-profile:
+  target: dev
+  outputs:
+    dev:
+      type: layer_snowflake
+      # Layer configuration
+      layer_api_key: [the API Key to access your Layer account (opt)]
+      # Snowflake configuration
+      account: ...
+      user: ...
+      password: ...
+      ...
+```
+
+</File>
+
+#### Description of Layer Snowflake Profile Fields
+
+The following fields are used by Layer:
+
+| Parameter       | Required? | Description                                                                                                                                                                                                                                    |
+| --------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`          | Yes       | Specifies the adapter you want to use. It must be `layer_snowflake`.                                                                                                                                                                           |
+| `layer_api_key` | No        | Specifies your Layer API key. If you want to make predictions with public ML models from Layer, you don't need to have this key in your profile. It's required if you load private ML models from your Layer account or train an AutoML model. |
+| `layer_project` | No        | Specifies your target Layer project. If you don't specify, Layer will use the same project name with your dbt project.                                                                                                                         |
+
+The rest of the parameters are documented on the [Snowflake adapter page](snowflake-profile#configurations).
 
 ## Usage
 
