@@ -10,7 +10,7 @@ To really break it down, let’s consider a simple example:
 ```sql
 INSERT INTO returned_orders (order_id, order_date, total_return)
 
-SELECT order_id, order_date, total FROM orders WHERE type = `return`
+SELECT order_id, order_date, total FROM orders WHERE type = 'return'
 ```
 
 Converting this with a first pass to a [dbt model](docs/building-a-dbt-project/building-models) (in a file called returned_orders.sql) might look something like:
