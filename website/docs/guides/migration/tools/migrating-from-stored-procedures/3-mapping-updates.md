@@ -52,4 +52,4 @@ SELECT
 FROM {{ ref(‘stg_orders’) }}
 ```
 
-The `dbt_utils.star()` macro will print out the full list of columns in the table, but skip the ones I’ve listed in the except list, which allows me to perform the same logic while writing fewer lines of code. (Read more about the [dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [star macro](https://github.com/dbt-labs/dbt-utils/tree/0.8.6/#star-source).) This is a simple example of using dbt macros to simplify and shorten your code, and dbt can get a lot more sophisticated as you learn more techniques.
+The `dbt_utils.star()` macro will print out the full list of columns in the table, but skip the ones I’ve listed in the except list, which allows me to perform the same logic while writing fewer lines of code. This is a simple example of using dbt macros to simplify and shorten your code, and dbt can get a lot more sophisticated as you learn more techniques. Read more about the [dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and the [star macro here](https://github.com/dbt-labs/dbt-utils/tree/0.8.6/#star-source).
