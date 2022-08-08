@@ -33,7 +33,7 @@ soft_deletes AS (
             ELSE false
         END AS to_delete
 
-    FROM {{ ref(`stg_orders`) }}
+    FROM {{ ref('stg_orders') }}
 
 )
 
