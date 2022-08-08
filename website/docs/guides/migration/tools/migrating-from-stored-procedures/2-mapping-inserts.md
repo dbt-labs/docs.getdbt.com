@@ -21,7 +21,7 @@ SELECT
     order_date as order_date,
     total as total_return
 
-FROM {{ ref(`orders`) }}
+FROM {{ ref('orders') }}
 
 WHERE type = `return`
 ```
