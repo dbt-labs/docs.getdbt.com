@@ -23,7 +23,7 @@ SELECT
 
 FROM {{ ref('orders') }}
 
-WHERE type = `return`
+WHERE type = 'return'
 ```
 
 Functionally, this would create a model (which could be materialized as a table or view depending on needs) called `returned_orders` that contains three columns: `order_id`, `order_date`, `total_return`) predicated on the type column. It achieves the same end as the `INSERT`, just in a declarative fashion, using dbt.
