@@ -72,6 +72,7 @@ When you run the [`dbt snapshot` command](snapshot):
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](ref) function.
 
 ## Example
+
 To add a snapshot to your project:
 
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`

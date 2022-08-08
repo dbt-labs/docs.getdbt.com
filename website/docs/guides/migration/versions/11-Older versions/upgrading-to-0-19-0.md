@@ -7,7 +7,7 @@ title: "Upgrading to 0.19.0"
 
 - [Discourse](https://discourse.getdbt.com/t/1951)
 - [Release notes](https://github.com/dbt-labs/dbt-core/releases/tag/v0.19.0)
-- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.19.latest/CHANGELOG.md)
+- [Full changelog](https://github.com/dbt-labs/dbt-core/blob/0.19.latest/CHANGELOG.md)
 
 ## Breaking changes
 
@@ -23,7 +23,7 @@ See the docs below for more details. We don't expect these to require action in 
 
 #### Deprecations
 
-Removed support for `config-version: 1` of dbt_project.yml, which was deprecated in v0.17.0. Use `config-version: 2` in all projects and installed packages. Otherwise, dbt will raise an error. See docs on [config-version](config-version) and the [v0.17.0 Migration Guide](versions/upgrading-to-0-17-0.md) for details.
+Removed support for `config-version: 1` of dbt_project.yml, which was deprecated in v0.17.0. Use `config-version: 2` in all projects and installed packages. Otherwise, dbt will raise an error. See docs on [config-version](config-version) and the [v0.17.0 Migration Guide](/guides/migration/versions) for details.
 
 ### For dbt plugin maintainers
 

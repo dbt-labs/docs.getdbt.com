@@ -11,7 +11,7 @@ dbt Core v0.21 has reached the end of critical support. No new patch versions wi
 
 - [Discourse](https://discourse.getdbt.com/t/3077)
 - [Release notes](https://github.com/dbt-labs/dbt-core/releases/tag/v0.21.0)
-- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.21.latest/CHANGELOG.md)
+- [Full changelog](https://github.com/dbt-labs/dbt-core/blob/0.21.latest/CHANGELOG.md)
 
 ## Breaking changes
 

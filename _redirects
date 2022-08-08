@@ -1,6 +1,3 @@
-# redirect next
-https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
-
 /img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png	301!
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/centos	/dbt-cli/install/overview	302
@@ -9,13 +6,13 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /dbt-cli/installation-guides/ubuntu-debian	/dbt-cli/install/overview	302
 /dbt-cli/installation-guides/windows	/dbt-cli/install/overview	302
 /dbt-cli/installation		/dbt-cli/install/overview	302
+/dbt-jinja-functions		/reference/dbt-jinja-functions    302
 /docs	/docs/introduction	302
 /docs/adapter	/docs/writing-code-in-dbt/jinja-context/adapter	302
 /docs/analyses	/docs/building-a-dbt-project/analyses	302
 /docs/api-variable	/docs/writing-code-in-dbt/api-variable	302
 /docs/archival	/docs/building-a-dbt-project/archival	302
 /docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts	302
-/docs/best-practices	/docs/guides/best-practices	302
 /docs/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/configuring-models	/reference/model-configs
@@ -40,7 +37,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/building-a-dbt-project/using-operations	/docs/building-a-dbt-project/hooks-operations	302
 /docs/building-a-new-adapter	/docs/contributing/building-a-new-adapter	302
 /docs/building-models	/docs/building-a-dbt-project/building-models	302
-/docs/building-packages	/docs/guides/building-packages	302
+/docs/building-packages	/guides/legacy/building-packages	302
 /docs/centos	/dbt-cli/installation	302
 /docs/clean	/reference/commands/clean	302
 /docs/cloud-choosing-a-dbt-version	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version	302
@@ -71,8 +68,8 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/connecting-your-database	/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database	302
 /docs/contributor-license-agreements	/docs/contributing/contributor-license-agreements	302
 /docs/creating-a-project	/docs/building-a-dbt-project/dbt-projects/creating-a-project	302
-/docs/creating-new-materializations	/docs/guides/creating-new-materializations	302
-/docs/custom-schema-tests	/docs/guides/writing-custom-schema-tests	302
+/docs/creating-new-materializations	/guides/legacy/creating-new-materializations	302
+/docs/custom-schema-tests	/guides/legacy/writing-custom-generic-tests	302
 /docs/dbt-api	/docs/running-a-dbt-project/dbt-api	302
 /docs/dbt-cloud-enterprise	/docs/dbt-cloud/dbt-cloud-enterprise	302
 /docs/dbt-cloud/cloud-configuring-repositories	/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories	302
@@ -98,7 +95,21 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
 /docs/global-cli-flags	/reference/global-cli-flags	302
 /docs/graph	/docs/writing-code-in-dbt/jinja-context/graph	302
-/docs/guides/writing-custom-schema-tests    /docs/guides/writing-custom-generic-tests
+/docs/guides/building-packages  /guides/legacy/building-packages	302
+/docs/guides/creating-new-materializations  /guides/legacy/creating-new-materializations	302
+/docs/guides/debugging-errors /guides/legacy/debugging-errors	302
+/docs/guides/debugging-schema-names /guides/legacy/debugging-schema-names	302
+/docs/guides/getting-help /guides/legacy/getting-help	302
+/docs/guides/managing-environments  /guides/legacy/managing-environments	302
+/docs/guides/navigating-the-docs  /guides/legacy/navigating-the-docs	302
+/docs/guides/understanding-state  /guides/legacy/understanding-state	302
+/docs/guides/videos /guides/legacy/videos	302
+/docs/guides/writing-custom-generic-tests /guides/legacy/writing-custom-generic-tests	302
+/docs/guides/writing-custom-schema-tests  /guides/legacy/writing-custom-generic-tests 302
+/docs/guides/best-practices#choose-your-materializations-wisely    /guides/legacy/best-practices#choose-your-materializations-wisely   302
+/docs/guides/best-practices#version-control-your-dbt-project       /guides/legacy/best-practices#version-control-your-dbt-project    302    
+/docs/best-practices	/guides/legacy/best-practices	302
+/docs/guides/best-practices /guides/best-practices 302
 /docs/hooks	/docs/building-a-dbt-project/hooks-operations	302
 /docs/init	/reference/commands/init	302
 /docs/install-from-source	/dbt-cli/installation	302
@@ -110,7 +121,7 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/log	/docs/writing-code-in-dbt/jinja-context/log	302
 /docs/macos	/dbt-cli/installation	302
 /docs/macros	/docs/building-a-dbt-project/macros	302
-/docs/managing-environments	/docs/guides/managing-environments	302
+/docs/managing-environments	/guides/legacy/managing-environments	302
 /docs/materializations	/docs/building-a-dbt-project/building-models/materializations	302
 /docs/model-selection-syntax	/reference/node-selection/syntax	302
 /docs/modules	/docs/writing-code-in-dbt/jinja-context/modules	302
@@ -210,12 +221,12 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/using-variables	/docs/building-a-dbt-project/building-models/using-variables	302
 /docs/var	/docs/writing-code-in-dbt/jinja-context/var	302
 /docs/version	/reference/global-cli-flags#version	302
-/docs/videos	/docs/guides/videos	302
+/docs/videos	/guides/legacy/videos	302
 /docs/viewpoint	/docs/about/viewpoint	302
 /docs/windows	/dbt-cli/installation	302
 /docs/writing-code-in-dbt/class-reference	/reference/dbt-classes	302
-/docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations	/docs/guides/creating-new-materializations	302
-/docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests	/docs/guides/writing-custom-schema-tests	302
+/docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations	/guides/legacy/creating-new-materializations	302
+/docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests	/guides/legacy/writing-custom-schema-tests	302
 /docs/writing-code-in-dbt/getting-started-with-jinja	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/jinja-context/adapter	/reference/dbt-jinja-functions/adapter	302
 /docs/writing-code-in-dbt/jinja-context/as_text	/reference/dbt-jinja-functions/as_text	302
@@ -253,7 +264,9 @@ https://next.docs.getdbt.com/*     https://docs.getdbt.com/:splat 301!
 /docs/writing-code-in-dbt/jinja-context/var	/reference/dbt-jinja-functions/var	302
 /docs/writing-code-in-dbt/macros	/docs/building-a-dbt-project/jinja-macros	302
 /docs/writing-code-in-dbt/using-jinja	/guides/getting-started/learning-more/using-jinja	302
-/faqs/getting-help/	/docs/guides/getting-help/	302
+/faqs/getting-help/	/guides/legacy/getting-help	302
+/migration-guide/upgrading-to-0-17-0    /guides/migration/versions    302
+/migration-guide/upgrading-to-0-18-0	/guides/migration/versions    302
 /reference/accounts	/dbt-cloud/api	302
 /reference/api	/dbt-cloud/api	302
 /reference/connections	/dbt-cloud/api	302
@@ -281,6 +294,7 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /reference/project-configs/modules-paths  /reference/project-configs/packages-install-path 302
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications   /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 302
 /reference/warehouse-profiles/presto-profile    /reference/profiles.yml 302
+/setting-up    /guides/getting-started/getting-set-up/setting-up-bigquery   302
 /tutorial/setting-up	/guides/getting-started	302
 /tutorial/test-and-document-your-project  /guides/getting-started/building-your-first-project/test-and-document-your-project	302
 /tutorial/build-your-first-models   /guides/getting-started/building-your-first-project/build-your-first-models	302
@@ -298,13 +312,24 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /tutorial/learning-more/* /guides/getting-started/learning-more/:splat 301
 /tutorial/getting-set-up/* /guides/getting-started/getting-set-up/:splat 301
 /tutorial/building-your-first-project/* /guides/getting-started/building-your-first-project/:splat 301
+/tutorial/refactoring-legacy-sql /guides/getting-started/learning-more/refactoring-legacy-sql   302
+/blog/change-data-capture-metrics /blog/change-data-capture 301
 # migration and legacy guides
-/docs/guides/migration-guide/upgrading-from-0-10-to-0-11	/guides/migration/versions/upgrading-to-0-11-0	302
-/docs/guides/migration-guide/upgrading-to-014	/guides/migration/versions/upgrading-to-0-14-0	302
-/docs/upgrading-to-014	/guides/migration/versions/upgrading-to-0-14-0	302
-/docs/upgrading-to-0-14-1	/guides/migration/versions/upgrading-to-0-14-1	302
-/docs/upgrading-to-0-16-0	/guides/migration/versions/upgrading-to-0-16-0	302
+/docs/guides/migration-guide/upgrading-to-0-14-0     /guides/migration/versions    302
+/docs/guides/migration-guide/upgrading-to-0-15-0    /guides/migration/versions    302
+/docs/guides/migration-guide/upgrading-to-0-16-0    /guides/migration/versions  302
+/docs/guides/migration-guide/upgrading-to-0-17-0      /guides/migration/versions    302
+/docs/guides/migration-guide/upgrading-to-0-18-0     /guides/migration/versions    302
+/docs/guides/migration-guide/upgrading-to-0-19-0     /guides/migration/versions    302    
+/docs/guides/migration-guide/upgrading-from-0-10-to-0-11	/guides/migration/versions 	302
+/docs/guides/migration-guide/upgrading-to-014	/guides/migration/versions 	302
+/docs/upgrading-to-014	/guides/migration/versions 	302
+/docs/upgrading-to-0-14-1	/guides/migration/versions 	302
+/docs/upgrading-to-0-16-0	/guides/migration/versions 	302
 /docs/guides/migration-guide/upgrading-to-0-20-0	/guides/migration/versions/upgrading-to-v0.20	302
 /docs/guides/migration-guide/upgrading-to-0-21-0	/guides/migration/versions/upgrading-to-v0.21	302
 /docs/guides/migration-guide/upgrading-to-1-0-0	    /guides/migration/versions/upgrading-to-v1.0	302
+/docs/guides/migration-guide/upgrading-to-v1.0       /guides/migration/versions/upgrading-to-v1.0    302    
+/docs/guides/getting-help	/guides/legacy/getting-help 302
 /docs/guides/migration-guide/*  /guides/migration/versions/:splat 301!
+/docs/guides/* /guides/legacy/:splat 301!

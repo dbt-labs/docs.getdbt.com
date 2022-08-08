@@ -31,7 +31,7 @@ When a [dbt Cloud CI job is set up](cloud-enabling-continuous-integration#config
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
-When the run is complete, dbt Cloud will update the PR in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run, letting you know if the models and tests ran successfully or not. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your data warehouse.
+When the run is complete, dbt Cloud will update the PR in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run, letting you know if the models and tests ran successfully or not. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
 
 ### GitHub pull request example
 
