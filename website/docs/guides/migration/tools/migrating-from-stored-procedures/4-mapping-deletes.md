@@ -14,7 +14,7 @@ DELETE FROM stg_orders WHERE order_status IS NULL
 In a dbt model, you’ll need to first identify the records that should be deleted and then filter them out. There are really two primary ways you might translate this query:
 
 ```sql
-SELECT * FROM {{ ref(`stg_orders`) }} WHERE order_status IS NOT NULL
+SELECT * FROM {{ ref('stg_orders') }} WHERE order_status IS NOT NULL
 ```
 
 This first approach just inverts the logic of the DELETE to describe the set of records that should remain, instead of the set of records that should be removed. This ties back to the way dbt declaratively describes datasets. You reference the data that should be in a dataset, and the table or view gets created with that set of data.

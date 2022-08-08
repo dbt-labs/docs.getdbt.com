@@ -49,7 +49,7 @@ using_clause AS (
         subtotal,
         tip
 
-    FROM {{ ref(`rides_to_load`) }}
+    FROM {{ ref('rides_to_load') }}
 
 ),
 
@@ -97,16 +97,16 @@ We can add the following `config()` block to the top of our model to specify how
 ```sql
 {{
     config(
-        materialized=`incremental`,
-        unique_key=`ride_id`,
-        incremental_strategy=`merge`
+        materialized='incremental',
+        unique_key='ride_id',
+        incremental_strategy='merge'
     )
 }}
 ```
 
 The three configuration fields in this example are the most important ones.
 
-- Setting `materialized=`incremental`` tells dbt to apply UPSERT logic to the target table.
+- Setting `materialized='incremental'` tells dbt to apply UPSERT logic to the target table.
 - The `unique_key` should be a primary key of the target table. This is used to match records with the existing table.
 - `incremental_strategy` here is set to MERGE any existing rows in the target table with a value for the `unique_key` which matches the incoming batch of data. There are [various incremental strategies](docs/building-a-dbt-project/building-models/configuring-incremental-models#about-incremental_strategy) for different situations and warehouses.
 
@@ -132,7 +132,7 @@ using_clause AS (
         tip,
         max(load_timestamp) as load_timestamp
 
-    FROM {{ ref(`rides_to_load`) }}
+    FROM {{ ref('rides_to_load') }}
 
 
     {% if is_incremental() %}

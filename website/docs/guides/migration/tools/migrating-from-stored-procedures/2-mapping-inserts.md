@@ -47,11 +47,11 @@ INSERT INTO all_customers SELECT * FROM eu_customers
 The dbt-ified version of this would end up looking something like:
 
 ```sql
-SELECT * FROM {{ ref(`us_customers`) }}
+SELECT * FROM {{ ref('us_customers') }}
 
 UNION ALL
 
-SELECT * FROM {{ ref(`eu_customers`) }}
+SELECT * FROM {{ ref('eu_customers') }}
 ```
 
 The logic is functionally equivalent. So if there’s another statement that `INSERT`s into a model that I’ve already created, I can just add that logic into a second `SELECT` statement that is just `UNION ALL`'ed with the first. Easy!
