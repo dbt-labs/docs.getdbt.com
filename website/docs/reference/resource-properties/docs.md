@@ -139,3 +139,27 @@ models:
     docs:
       show: false
 ```
+<VersionBlock firstVersion="1.3">
+The `docs` attribute now supports `node_color` to customize the color of the node in the DAG.
+
+## Examples
+### Add custom node colors to models within subdirectories based on hex codes or a plain color name
+
+```yml
+models:
+  tpch:
+    staging:
+      +materialized: view
+      +docs:
+        node_color: "#cd7f32"
+
+    marts:
+      core:
+        materialized: table
+        +docs:
+          node_color: "gold"
+```
+
+![Example](website/static/img/node_color_example.png)
+</VersionBlock>
+
