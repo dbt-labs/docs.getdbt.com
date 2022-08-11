@@ -186,7 +186,7 @@ models:
     config(
         materialized = 'view',
         tags=['finance'],
-        docs={"node_color": 'red' }
+        docs={"node_color": 'red'}
     )
 }}
 
