@@ -140,17 +140,21 @@ models:
       show: false
 ```
 <VersionBlock firstVersion="1.3">
-The `docs` attribute now supports `node_color` to customize the color of the node in the DAG.
+
+## `node_color` is now a supported `docs` attribute
+
+The `docs` attribute now supports `node_color` to customize the color of the node in the DAG. Add custom node colors to models within subdirectories based on hex codes or a plain color name
+
+Custom `node_color` hiearchy overrides:
+
+`<example-sql-file.sql>` overrides `schema.yml` overrides `dbt_project.yml`
+
 
 ## Examples
-### Add custom node colors to models within subdirectories based on hex codes or a plain color name
-
-Custom node color hiearchy overrides:
-
-`<example-sql-file.sql>` > `schema.yml` > `dbt_project.yml`
 
 ```yml
 # dbt_project.yml
+
 models:
   tpch:
     staging:
@@ -166,7 +170,8 @@ models:
 ```
 
 ```yml
-# core/schema.yml
+# marts/core/schema.yml
+
 models:
   - name: dim_customers
     description: Customer dimensions table
@@ -175,6 +180,8 @@ models:
 ```
 
 ```sql
+-- marts/core/fct_orders.sql
+
 {{
     config(
         materialized = 'view',
