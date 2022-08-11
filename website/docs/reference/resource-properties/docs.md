@@ -143,9 +143,9 @@ models:
 
 ## `node_color` is now a supported `docs` attribute
 
-The `docs` attribute now supports `node_color` to customize the color of the node in the DAG. Add custom node colors to models within subdirectories based on hex codes or a plain color name
+The `docs` attribute now supports `node_color` to customize the color of the node in the DAG. Add custom node colors to models within subdirectories based on hex codes or a plain color name. You can define node colors in the files below and maintain proper node color hierarchies!
 
-Custom `node_color` hiearchy overrides:
+Custom `node_color` hiearchy:
 
 `<example-sql-file.sql>` overrides `schema.yml` overrides `dbt_project.yml`
 
