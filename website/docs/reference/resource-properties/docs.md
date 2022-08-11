@@ -143,15 +143,22 @@ models:
 
 ## `node_color` is now a supported `docs` attribute
 
-The `docs` attribute now supports `node_color` to customize the color of the node in the DAG. Add custom node colors to models within subdirectories based on hex codes or a plain color name. You can define node colors in the files below and maintain proper node color hierarchies!
+The `docs` attribute now supports `node_color` to customize the node color in the DAG within dbt docs. You can define node colors in the files below and apply overrides where needed!
 
-Custom `node_color` hiearchy:
+`node_color` hiearchy:
 
 `<example-sql-file.sql>` overrides `schema.yml` overrides `dbt_project.yml`
 
 
 ## Examples
+
+Add custom node colors to models within subdirectories based on hex codes or a plain color name.
+
 ![Example](../../../../website/static/img/node_color_example.png)
+
+`marts/core/fct_orders.sql` with `node_color: red` overrides `dbt_project.yml` with `node_color: gold`
+
+`marts/core/schema.yml` with `node_color: #000000` overrides `dbt_project.yml` with `node_color: gold`
 
 ```yml
 # dbt_project.yml
@@ -187,7 +194,7 @@ models:
     config(
         materialized = 'view',
         tags=['finance'],
-        docs={"node_color": 'red'}
+        docs={'node_color': 'red'}
     )
 }}
 
