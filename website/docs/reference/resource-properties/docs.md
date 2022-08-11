@@ -151,6 +151,7 @@ Custom `node_color` hiearchy:
 
 
 ## Examples
+![Example](../../../../website/static/img/node_color_example.png)
 
 ```yml
 # dbt_project.yml
@@ -243,7 +244,5 @@ order by
     order_date
 
 ```
-
-![Example](../../../../website/static/img/node_color_example.png)
 
 </VersionBlock>
