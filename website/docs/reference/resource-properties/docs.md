@@ -252,4 +252,22 @@ order by
 
 ```
 
+If a `node_color` is not compatible with dbt docs, you will see a compile error like the example below.
+
+```shell
+Invalid color name for docs.node_color: aweioohafio23f. It is neither a valid HTML color name nor a valid HEX code.
+```
+
+```yml
+# dbt_project.yml
+
+models:
+  tpch:
+    marts:
+      core:
+        materialized: table
+        +docs:
+          node_color: "aweioohafio23f"
+```
+
 </VersionBlock>
