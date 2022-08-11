@@ -36,15 +36,15 @@ dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud
 
 ### Deployment Architecture
 
-The following two sections describe the network architectures for dbt Cloud deployments. Hosted deployments leverage AWS infrastructure.
+The following two sections describe the network architectures for dbt Cloud deployments managed by dbt Labs on AWS infrastructure.
 
 #### Hosted Network Architecture
 
-The following diagram shows the network architecture for the hosted _Multi Tenant_ and _Single Tenant_ deployment types. While many of the specifications differ between the Multi Tenant and Single Tenant offerings the basic types of components illustrated below are mostly the same. Read below for more information on each of the components and how they might differ between the two deployment models. 
+The following diagram shows the network architecture for the hosted _Multi Tenant_ and _Virtual Private dbt_ deployment types. While many of the specifications differ between the Multi Tenant and Virtual Private dbt offerings the basic types of components illustrated below are mostly the same. Read below for more information on each of the components and how they might differ between the two deployment models. 
 
 <img src="/img/docs/dbt-cloud/deployment/aws-network-architecture.png" />
 
-- **VPC**: In both hosted deployments, the dbt Cloud application infrastructure lives in an [AWS VPC](https://aws.amazon.com/vpc/) managed by dbt Labs. One of the key differences between the Production and Single Tenant deployment is that the Single Tenant deployment provides a dedicated VPC for a single customer.
+- **VPC**: In both hosted deployments, the dbt Cloud application infrastructure lives in an [AWS VPC](https://aws.amazon.com/vpc/) managed by dbt Labs. One of the key differences between the Multi Tenant and Virtual Private dbt deployment is that the Virtual Private dbt deployment provides a dedicated VPC for a single customer.
 - **EKS**: Hosted environments leverage [AWS Elastic Kubernetes Service](https://aws.amazon.com/eks/) to manage dbt Cloud application resources. EKS provides a high degree of reliability and scalability for the dbt Cloud application.
 - **CLB**: One or more [AWS Classic Load Balancers](https://aws.amazon.com/elasticloadbalancing/) living in a public subnet are leveraged in the hosted deployment environments to distribute incoming traffic across multple EC2 instances in the EKS cluster.
 - **EC2**: The hosted dbt Cloud deployments leverage a cluster of [AWS EC2](https://aws.amazon.com/ec2/) worker nodes to run the dbt Cloud application.
