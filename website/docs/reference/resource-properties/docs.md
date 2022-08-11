@@ -139,6 +139,30 @@ models:
     docs:
       show: false
 ```
+
+<VersionBlock firstVersion="1.3">
+
+### Mark a subfolder of models as hidden
+
+**Note:** This can also hide dbt packages!
+
+```yml
+models:
+  # hiding models within the staging subfolder
+  tpch:
+    staging:
+      +materialized: view
+      +docs:
+        show: false
+  
+  # hiding a dbt package
+  dbt_artifacts:
+    +docs:
+      show: false
+```
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.3">
 
 ## `node_color` is now a supported `docs` attribute
