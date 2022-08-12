@@ -31,7 +31,7 @@ By default, everything gets created as a view. You can override that by material
     To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
     :::
 
-3. Edit `models/customers.sql`  to override the `dbt_project.yml` for the `customers` model only by adding the following snippet to the top:  
+3. Edit `models/customers.sql`  to override the `dbt_project.yml` for the `customers` model only by adding the following snippet to the top, and click **save**:  
 
     <File name='models/customers.sql'>
 
