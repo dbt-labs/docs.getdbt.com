@@ -68,3 +68,7 @@ even easier to use dbt with the Databricks Lakehouse.
 - No need to install additional drivers or dependencies for use on the CLI
 - Use of Delta Lake for all models out of the box
 - SQL macros that are optimzed to run with [Photon](https://docs.databricks.com/runtime/photon.html)
+
+### Support for Unity Catalog
+
+The adapter `dbt-databricks>=1.1.1` supports the 3-level namespace of Unity Catalog (catalog / schema / relations) so you can organize and secure your data the way you like.
