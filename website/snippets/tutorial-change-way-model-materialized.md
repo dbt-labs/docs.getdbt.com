@@ -24,6 +24,7 @@ By default, everything gets created as a view. You can override that by material
       ```
 
       </File>
+    - Click **save**.
 
 2. Enter the `dbt run` command. Your `customers` model should now be built as a table!
     :::info
