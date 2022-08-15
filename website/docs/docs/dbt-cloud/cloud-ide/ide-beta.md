@@ -86,13 +86,13 @@ The IDE supports multiple selections for quick and simultaneous edits. The below
 - **⌥⌘↑,**
 - **⌥ +** click on the area
 
-<Lightbox src=“/img/docs/dbt-cloud/cloud-ide/multi-selector.gif” title="Multiple Selections"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/multi-selector.gif" title="Multiple Selections"/>
 
 **File Explorer** 
 
 The IDE has a File Explorer, which allows you to organize your project and manage your files/folders. You can create, edit or delete files/folders by clicking the 3 dots in the File explorer section. You can also drag and drop files with ease and use the file breadcrumb for quick, linear navigation.
 
-<Lightbox src=“/img/docs/dbt-cloud/cloud-ide/file-explorer.png” title=“File Explorer”/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/file-explorer.png" title="File Explorer"/> 
 
 ## Development in the dbt Cloud IDE
 
@@ -133,7 +133,7 @@ In addition to compiling and executing SQL, you can also *run* *and test* dbt 
 
 The IDE updates in real-time as models, tests, seeds, and operations are run. If a model or test fails, you can dig into the logs to find and fix the issue.
 
-<Lightbox src=“/img/docs/dbt-cloud/using-dbt-cloud/cloud-ide/build.png” title=“Building”/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/cloud-ide/build.png" title="Building"/>
 
 **Lineage Tab**
 
