@@ -20,7 +20,7 @@ To develop in the dbt Cloud IDE, you need to meet these requirements:
 
 
 - Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](https://github.com/dbt-labs/docs.getdbt.com/blob/beta-ide-refresh/website/docs/docs/dbt-cloud/cloud-ide/reference/commands/rpc) which was overhauled in dbt v0.15.0.
-- You must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users) and have a multi- tenant instance.
+- You must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users) and have a multi-tenant instance.
 - Your dbt repository (in dbt Cloud) must have write access enabled. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
 
 
