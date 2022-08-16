@@ -50,7 +50,7 @@ If you’re running Python in Snowflake via Snowpark, you would typically be wor
 It's also possible and common practice to string together a number of DataFrame transformations. For example, if `df` represents a DataFrame containing one row per person living in the Eastern United States over the last decade, you can calculate the number of people living in Philadelphia each year:
 
 ```python
-df.filter("city == Philadelphia")
+df.filter("city == 'Philadelphia'")
   .withColumn("population", count("name"))
   .group_by("year")
 ```
