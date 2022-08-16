@@ -10,7 +10,7 @@ date: 2022-08-19
 is_featured: true
 ---
 
-When running a job that has over 1,700 models, how do you know what a “good” runtime is? If the total process takes 3 hours, is that fantastic or terrible? While there are many possible answers depending on dataset size, complexity of modeling, and historical run times, the crux of the matter is normally “did you hit your SLAs”? However, in the cloud computing world where bills are based on usage, the question is really “did you hit your SLAs and stay within budget”? 
+When running a job that has over 1,700 models, how do you know what a “good” runtime is? If the total process takes 3 hours, is that fantastic or terrible? While there are many possible answers depending on dataset size, complexity of modeling, and historical run times, the crux of the matter is normally “did you hit your SLAs”? However, in the cloud computing world where bills are based on usage, the question is really “did you hit your SLAs _and stay within budget_”? 
 
 Here at dbt Labs, we used the Model Timing Tab in our internal analytics dbt project to help us identify inefficiencies in our incremental dbt Cloud job that eventually led to major financial savings, and a path forward for periodic improvement checks.
 
