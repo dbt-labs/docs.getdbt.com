@@ -24,7 +24,9 @@ In the world of analytics engineering, most teams have one central data warehous
 ### Why is this distinction necessary? 
 
 One of the main distinctions is in an organization’s users and distribution. If an organization has multiple databases, a central data warehouse is used to create separate entities between raw and source data, staging work, and ready-for-use analytics datasets. In this EDW and classic data warehouse setup, data is accessible across an organization, data teams can create <Term id="table">tables</Term> that join data from multiple sources, and users can gain enriched perspectives into their data.
+
 If a company has very siloed departments that manage their own data, budgets, and have little need for crossover with other departments or data sources, emphasizing the difference between a central EDW data warehouse and their own data warehouse could be a necessity for budgeting and governance reasons.
+
 Lastly, the somewhat exponential adoption of cloud data warehouses in the last decade has shifted the terminology from what many people called an EDW to a data warehouse.
 
 
@@ -50,6 +52,7 @@ An enterprise data warehouse is, in general, like any other data warehouse; it a
 
 
 ## Additional reading
+EDW, data warehouse, or something different altogether? Check out some of our favorite resources on the fundamental of data storage and organization:
 
 - [Glossary: Dimensional modeling](https://docs.getdbt.com/terms/dimensional-modeling)
 - [Glossary: Data warehouse](https://docs.getdbt.com/terms/data-warehouse)
