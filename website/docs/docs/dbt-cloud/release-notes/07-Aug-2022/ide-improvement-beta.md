@@ -28,4 +28,4 @@ To address the issue, we rebuilt the IDE and made some significant architectural
 
 - Your IDE spinner time will be quicker as you can access it without needing to wait for the rpc server to finish getting ready.
 
-Read more about it [here](https://www.getdbt.com/blog/staging-highlights-the-latest-from-dbt-labs/)
+You can read more about it [here](https://www.getdbt.com/blog/staging-highlights-the-latest-from-dbt-labs/)
