@@ -1,12 +1,12 @@
 ---
 title: "Rooting out resource hogs with the Model Timing tab"
-description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing Tab in dbt Cloud."
+description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing tab in dbt Cloud."
 slug: model-timing-tab
 authors: [bennie_regenold, barr_yaron]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-08-19
+date: 2022-08-18
 is_featured: true
 ---
 
