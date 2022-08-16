@@ -1,5 +1,5 @@
 ---
-title: "Develop in the dbt Cloud IDE"
+title: "Develop in the dbt Cloud IDE beta"
 id: "ide-beta"
 ---
 
