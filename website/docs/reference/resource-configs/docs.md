@@ -146,6 +146,8 @@ models:
 
 **Note:** This can also hide dbt packages!
 
+<File name='dbt_project.yml'>
+
 ```yml
 models:
   # hiding models within the staging subfolder
@@ -160,6 +162,8 @@ models:
     +docs:
       show: false
 ```
+
+</File>
 
 </VersionBlock>
 
@@ -183,10 +187,9 @@ Add custom node colors to models within subdirectories based on hex codes or a p
 `marts/core/fct_orders.sql` with `node_color: red` overrides `dbt_project.yml` with `node_color: gold`
 
 `marts/core/schema.yml` with `node_color: #000000` overrides `dbt_project.yml` with `node_color: gold`
+<File name='dbt_project.yml'>
 
 ```yml
-# dbt_project.yml
-
 models:
   tpch:
     staging:
@@ -201,9 +204,11 @@ models:
           node_color: "gold"
 ```
 
-```yml
-# marts/core/schema.yml
+</File>
 
+<File name='marts/core/schema.yml'>
+
+```yml
 models:
   - name: dim_customers
     description: Customer dimensions table
@@ -211,9 +216,11 @@ models:
       node_color: '#000000'
 ```
 
-```sql
--- marts/core/fct_orders.sql
+</File>
 
+<File name='marts/core/fct_orders.sql'>
+
+```sql
 {{
     config(
         materialized = 'view',
@@ -276,15 +283,17 @@ order by
 
 ```
 
+</File>
+
 If a `node_color` is not compatible with dbt docs, you will see a compile error like the example below.
 
 ```shell
 Invalid color name for docs.node_color: aweioohafio23f. It is neither a valid HTML color name nor a valid HEX code.
 ```
 
-```yml
-# dbt_project.yml
+<File name='dbt_project.yml'>
 
+```yml
 models:
   tpch:
     marts:
@@ -293,5 +302,7 @@ models:
         +docs:
           node_color: "aweioohafio23f"
 ```
+
+</File>
 
 </VersionBlock>
