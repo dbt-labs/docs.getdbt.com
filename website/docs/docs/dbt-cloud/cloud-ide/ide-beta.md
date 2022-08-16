@@ -15,12 +15,13 @@ If you’d like to try the dbt Cloud IDE for multi-tenant instances, please [sig
 
 The dbt Cloud integrated development environment (IDE) is where you can build, test, run, and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project -- no command line use required.
 
-To develop in the dbt Cloud IDE, you need to meet these requirements:
+To develop in dbt Cloud IDE (beta), you need to meet these requirements:
 
 
 - Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc) which was overhauled in dbt v0.15.0.
-- You must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users) and have a multi-tenant instance.
-- Your dbt repository (in dbt Cloud) must have write access enabled. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
+- You must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users).  
+- Currently only multi-tenant instances of dbt Cloud can develop in the updated beta version of the Cloud IDE. Single-tenant instances will soon be able to opt into this Beta release.
+- Your dbt repository (in dbt Cloud) must have `write` access enabled. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
 
 
 The IDE is a single interface for building, testing, running, and version controlling dbt projects from your browser. Anyone can use the IDE, from new dbt developers to seasoned practitioners.
@@ -139,7 +140,7 @@ You can also *build*, *run* *and test* dbt projects directly in the dbt IDE us
 
 The IDE updates in real-time as models, tests, seeds, and operations are run. If a model or test fails, you can review  the logs to find and fix the issue.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/cloud-ide/build.png" title="Building"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Building"/>
 
 **Lineage tab**
 
