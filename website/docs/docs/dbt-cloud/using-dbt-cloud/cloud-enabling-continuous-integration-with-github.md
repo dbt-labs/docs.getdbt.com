@@ -141,3 +141,11 @@ Select the **GitHub**, **GitLab**, or **AzureDevOps** tab and reselect your repo
 If you receive a schema-related error message referencing a *previous* PR, this is usually an indicator that you are not using a production job for your deferral and are instead using *self*.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.
 
 To fix this issue, select a production job run to defer to instead of self.
+
+## Limitations
+
+If your temporary PR schemas are not dropping after a merge/close of the PR, it could be one of the following:
+
+- You have used dbt Cloud environment variables in your connection settings page.
+- You have an empty/blank default schema.
+- You have overridden the `generate_schema_name` macro.
