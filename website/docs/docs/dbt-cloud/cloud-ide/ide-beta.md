@@ -18,7 +18,7 @@ The dbt Cloud integrated development environment (IDE) is where you can build, t
 To develop in the dbt Cloud IDE, you need to meet these requirements:
 
 
-- Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](https://github.com/dbt-labs/docs.getdbt.com/blob/beta-ide-refresh/website/docs/docs/dbt-cloud/cloud-ide/reference/commands/rpc) which was overhauled in dbt v0.15.0.
+- Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc)which was overhauled in dbt v0.15.0.
 - You must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users) and have a multi-tenant instance.
 - Your dbt repository (in dbt Cloud) must have write access enabled. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
 
@@ -28,7 +28,7 @@ The IDE is a single interface for building, testing, running, and version contro
 
 To use the dbt Cloud IDE, you need to log in with a dbt Cloud account and click  **Develop** at the top of the page.
 
-You can refer to [Getting Started with dbt Cloud](https://docs.getdbt.com/guides/getting-started) to quickly get set up and perform some key tasks. For more information, see the following articles.
+You can refer to [Getting Started with dbt Cloud](guides/getting-started) to quickly get set up and perform some key tasks. For more information, see the following articles.
 
 - [What is dbt?](docs/introduction#what-else-can-dbt-do)
 - [Building your first project](guides/getting-started/building-your-first-project)
@@ -92,17 +92,17 @@ You can make multiple selections for quick and simultaneous edits. The below com
 
 The File explorer on the left side of the IDE allows you to organize your project and manage your files and folders. Click the three dot menu associated with the file or folder to  create, rename, and delete it.  
 
-You can 
-
 **Drag and drop** 
-You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDe for quick, linear navigation. You can access adjacent files in the same file by rigt clicking on the breadcrumb file.
+
+You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by rigt clicking on the breadcrumb file.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/file-explorer.png" title="File Explorer"/> 
 
 **Organize tabs**
+
 You can move your tabs around to reorganize your work in the IDE. You can also right click on a tab to view and select a list of actions to take.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/tab-options.png" title="Tab options"/> 
+<Lightbox src="img/docs/dbt-cloud/cloud-ide/tab-options.png" title="Tab options"/> 
 
 ## Development in the dbt Cloud IDE Beta
 
@@ -158,7 +158,7 @@ You can enter and run commands from the command bar at the bottom of the IDE.  U
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command_bar.png" title="Command Bar"/>
           
-The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
+The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**
 
 **Generating and viewing documentation** 
 
