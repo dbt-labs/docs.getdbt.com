@@ -1,5 +1,5 @@
 ---
-title: "Develop in the dbt Cloud IDE beta"
+title: "Develop in the dbt Cloud IDE (beta)"
 id: "ide-beta"
 ---
 
@@ -18,7 +18,7 @@ The dbt Cloud integrated development environment (IDE) is where you can build, t
 To develop in the dbt Cloud IDE, you need to meet these requirements:
 
 
-- Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc)which was overhauled in dbt v0.15.0.
+- Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc) which was overhauled in dbt v0.15.0.
 - You must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users) and have a multi-tenant instance.
 - Your dbt repository (in dbt Cloud) must have write access enabled. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
 
@@ -28,7 +28,7 @@ The IDE is a single interface for building, testing, running, and version contro
 
 To use the dbt Cloud IDE, you need to log in with a dbt Cloud account and click  **Develop** at the top of the page.
 
-You can refer to [Getting Started with dbt Cloud](guides/getting-started) to quickly get set up and perform some key tasks. For more information, see the following articles.
+You can refer to [Getting Started with dbt Cloud](https://docs.getdbt.com/guides/getting-started) to quickly get set up and perform some key tasks. For more information, see the following articles.
 
 - [What is dbt?](docs/introduction#what-else-can-dbt-do)
 - [Building your first project](guides/getting-started/building-your-first-project)
@@ -46,7 +46,7 @@ Anyone can contribute to the dbt project. And whether it's a dbt package, a plug
 
 TThere are two main ways to develop with dbt: using the web-based IDE in dbt Cloud or using the command-line interface (CLI) in dbt Core.
 
-- **dbt Cloud IDE** -dbt Cloud is a Web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models, and provides a real-time editing and execution environment for your dbt project.
+- **dbt Cloud IDE** - dbt Cloud is a Web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models, and provides a real-time editing and execution environment for your dbt project.
 
 - **dbt Core CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s freely available. You can build your dbt project in a code editor, like Jetbrains or VSCode, and run dbt commands from the command line.
 
@@ -76,7 +76,7 @@ You can quickly search over all files in the IDE on your current project. To sea
 
 **Keyboard shortcuts** 
 
-There are default keyboard shortcuts that can help make development more productive and easier for everyone. Press Fn-F1 to view a list of all of them..
+There are default keyboard shortcuts that can help make development more productive and easier for everyone. Press Fn-F1 to view a list of all of them.
 
 **Multiple selections** 
 
@@ -128,9 +128,9 @@ dbt Labs closely monitors these two start modes as key performance metrics to he
 
 You must save your work to avoid losing it. The dbt Cloud IDE needs an explicit action to save your changes. There are three ways your work is stored:
 
-- **Unsaved, local code:**  Any code you write is automatically  available from your browser’s storage. You can see your changes but will lose it if you switch branches or browsers (another device or browser).
-- **Saved but uncommitted code:** When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t _commit_ your saved changes, you will lose your changes
-- **Committed code:** Your git branch repository contains all your changes. You can check out other branches or switch browsers without losing your changes.
+- **Unsaved, local code** -  Any code you write is automatically  available from your browser’s storage. You can see your changes but will lose it if you switch branches or browsers (another device or browser).
+- **Saved but uncommitted code** - When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t _commit_ your saved changes, you will lose your changes
+- **Committed code** - Your git branch repository contains all your changes. You can check out other branches or switch browsers without losing your changes.
 
 
 **Run projects**
@@ -153,10 +153,14 @@ You can access files in the lineage tab in the IDE by double clicking on a parti
 
 You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**. 
 
-:::info For your convenience, dbt Cloud automatically includes ‘`dbt`’ as a prefix to your command so you don’t need to enter it. You can also type the ‘`dbt`’ prefix in your command.
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/command_bar.png" title="Command Bar"/>
+
+:::info 
+
+For your convenience, dbt Cloud automatically includes ‘`dbt`’ as a prefix to your command so you don’t need to enter it. You can also type the ‘`dbt`’ prefix in your command.
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/command_bar.png" title="Command Bar"/>
+
           
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**
 
@@ -164,9 +168,7 @@ The status icon on the lower right corner of the IDE gives you an indicator of t
 
 To generate your project’s documentation (docs) in the IDE, enter `docs generate` in the Command Bar in the IDE.  This command generates the docs for your dbt project as it currently exists in development.
 
-
 After you generate a successful run, you can view your [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.
-
 
 Click **View Docs** on top of the file explorer to see the latest version of your documentation rendered in a new browser window.
 
@@ -182,7 +184,8 @@ You can create a separate branch to develop and make changes. The changes you ma
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/git-overview.png" title="Git overview"/>
 
-:::info To use version control, make sure you are connected to a Git repository in the IDE.
+:::info 
+To use version control, make sure you are connected to a Git repository in the IDE.
 :::
 
 **Common git terms** (below is a table)
