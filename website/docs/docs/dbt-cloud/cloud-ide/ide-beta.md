@@ -139,7 +139,7 @@ You can also *build*, *run* *and test* dbt projects directly in the dbt IDE us
 
 The IDE updates in real-time as models, tests, seeds, and operations are run. If a model or test fails, you can review  the logs to find and fix the issue.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/cloud-ide/build.png" title="Building"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Building"/>
 
 **Lineage tab**
 
