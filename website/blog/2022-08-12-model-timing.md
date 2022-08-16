@@ -121,7 +121,7 @@ The window functions referenced above are answering the following questions:
 
 Given the size and complexity of this query, the first few approaches we took didn’t focus on changing the query as much as optimizing our objects and materializations. 
 
-The two window functions (`row_number()` and `mode()` in the `diffed` CTE above) were in an [ephemeral model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral) which isn’t stored in the data warehouse, but is instead executed in-memory at run time. Since it was obvious our virtual warehouse was running out of memory (remote storage spillage), we tried swapping that to a view, then a table materialization. Neither of these improved the run time significantly, so we tried clustering the table. However, since our two window functions are at different grains there wasn’t a great clustering key we found for this.
+The two window functions (`row_number()` and `mode()` in the `diffed` <Term id="cte" /> above) were in an [ephemeral model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral) which isn’t stored in the data warehouse, but is instead executed in-memory at run time. Since it was obvious our virtual warehouse was running out of memory (remote storage spillage), we tried swapping that to a view, then a table materialization. Neither of these improved the run time significantly, so we tried clustering the table. However, since our two window functions are at different grains there wasn’t a great clustering key we found for this.
 
 ### Attempt #2: Moving to an incremental model
 
