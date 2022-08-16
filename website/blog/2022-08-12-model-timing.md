@@ -115,7 +115,7 @@ The window functions referenced above are answering the following questions:
     - *Is this the most frequent version of the model that ran today (based on the hashed contents)?*
     - Note: this grain is at the model + run date level
 
-## Moving to Solutions
+## Moving to solutions
 
 ### Attempt #1: Optimizing our objects and materializations
 
