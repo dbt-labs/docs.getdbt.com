@@ -15,7 +15,7 @@ is_featured: true
 
 Those who have been building data warehouses for a long time have undoubtedly encountered the challenge of building surrogate keys on their data models. Having a column that uniquely represents each entity helps ensure your data model is complete, does not contain duplicates, and able to join across different data models in your warehouse.  
 
-Sometimes, we are lucky enough to have data sources with these keys built right in — Shopify data synced via their API, for example, has easy-to-use keys on all the tables written to your warehouse. If this is not the case, or if you build a data model with a compound key (aka the data is unique across multiple dimensions), you will have to rely on some strategy for creating and maintaining these keys yourself. How can you do this with dbt? Let’s dive in:
+Sometimes, we are lucky enough to have data sources with these keys built right in — Shopify data synced via their API, for example, has easy-to-use keys on all the tables written to your warehouse. If this is not the case, or if you build a data model with a compound key (aka the data is unique across multiple dimensions), you will have to rely on some strategy for creating and maintaining these keys yourself. How can you do this with dbt? Let’s dive in.
 
 ### How were surrogate keys managed in the past?
 
