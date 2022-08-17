@@ -11,15 +11,6 @@ hide_table_of_contents: false
 date: 2022-08-17
 is_featured: true
 ---
-
-# Surrogate Keys
-
-Asana Card: https://app.asana.com/0/1200481439570425/1202527224263725/f
-Created At: June 30, 2022 3:05 PM
-Last Edited At: August 17, 2022 12:22 PM
-Owner: Anonymous
-Type: External Article
-
 ## Introduction
 
 Those who have been building data warehouses for a long time have undoubtedly encountered the challenge of building surrogate keys on their data models. Having a column that uniquely represents each entity helps ensure your data model is complete, does not contain duplicates, and able to join across different data models in your warehouse.  
