@@ -9,13 +9,16 @@ dbt Cloud will always connect to your warehouse from the following IP addresses.
 Be sure to allow traffic from these IPs in your firewall, and include them in
 any database grants.
 
-- 52.45.144.63
-- 54.81.134.249
-- 52.22.161.231
+| Region/Deployment | IP Addresses |
+| ------ | ----------- |
+| US (cloud.getdbt.com) |  52.45.144.63 <br> 54.81.134.249 <br> 52.22.161.231 |
+| EMEA (emea.dbt.com) |  3.123.45.39 <br> 3.126.140.248 <br> 3.72.153.148 |
+| Virtual Private dbt | Ask [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) for your  IPs | 
 
 <Changelog>
 
 - `54.81.134.249` and `52.22.161.231` were added in November, 2020
+- EMEA was added in September, 2022
 
 </Changelog>
 
