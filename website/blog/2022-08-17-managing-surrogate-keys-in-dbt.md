@@ -206,7 +206,7 @@ final as (
 select * from final
 ```
 
-Using hashed keys makes our transformations idempotent — every dbt run results in the same exact outputs every time. I can safely delete all my non-source objects in my warehouse, execute a dbt run and be right back where I started (though I wouldn’t necessarily recommend this 😅).  
+Using hashed keys makes our transformations <Term id="idempotent" /> — every dbt run results in the same exact outputs every time. I can safely delete all my non-source objects in my warehouse, execute a dbt run and be right back where I started (though I wouldn’t necessarily recommend this 😅).  
 
 The analytical warehouses we use now no longer have the same constraints that traditional warehouses had  — joins on strings aren’t notably less performant than those on integers, and storing slightly larger values in the surrogate key column is peanuts given the relative cost of storage on these platforms. This strategy also removes the need for tight coupling of transformations to propagate the surrogate key values across our project — anywhere the inputs for the surrogate keys are present, the hashing function produces the same keys, so we can take advantage of parallel processing in our warehouse and avoid the bottlenecks we had before. 
 
