@@ -1,5 +1,5 @@
 ---
-title: "Managing Surrogate Keys in dbt"
+title: "Managing surrogate keys in dbt"
 description: "Wondering how to build a data model with surrogate keys? Dave Connors walks you through two strategies."
 slug: managing-surrogate-keys
 
