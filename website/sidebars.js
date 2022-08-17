@@ -22,6 +22,7 @@ const sidebarSettings = {
             "docs/building-a-dbt-project/building-models/using-custom-schemas",
             "docs/building-a-dbt-project/building-models/using-custom-databases",
             "docs/building-a-dbt-project/building-models/using-variables",
+            "docs/building-a-dbt-project/building-models/python-models",
           ],
         },
         "docs/building-a-dbt-project/tests",
@@ -115,6 +116,7 @@ const sidebarSettings = {
         "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
         "docs/dbt-cloud/cloud-ide/the-ide-git-button",
+        "docs/dbt-cloud/cloud-ide/ide-beta",
       ],
     },
     {

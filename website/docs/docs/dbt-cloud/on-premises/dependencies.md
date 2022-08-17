@@ -33,7 +33,7 @@ During initial installation, the KOTS appliance can be directly downloaded from 
 - `quay.io`: Some dependencies of Replicated are hosted as public images in the Quay.io registry.
 - `hub.docker.com`: Some dependencies of Replicated are hosted as public images in Docker Hub.
 
-Replicated maintains a list of Replicated-owned IPs for IP access restriction purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
+Replicated maintains a list of Replicated-owned IPs for IP access restriction purposes at https://github.com/replicatedhq/ips/blob/main/ip_addresses.json.
 
 #### dbt Cloud Appliance Installation and Upgrades
 
@@ -61,7 +61,7 @@ To install the dbt Cloud appliance or perform updates, some external connections
 
 ```
 
-Replicated maintains a list of Replicated-owned IPs for IP access restriction purposes at https://github.com/replicatedhq/ips/blob/master/ip_addresses.json.
+Replicated maintains a list of Replicated-owned IPs for IP access restriction purposes at https://github.com/replicatedhq/ips/blob/main/ip_addresses.json.
 
 #### Ongoing Access
 

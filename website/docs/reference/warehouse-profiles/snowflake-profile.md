@@ -171,10 +171,10 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | warehouse | Yes | The warehouse to use when building models |
 | schema | Yes | The schema to build models into by default. Can be overridden with [custom schemas](using-custom-schemas) |
 | role | No (but recommended) | The role to assume when running queries as the specified user. |
-| client_session_keep_alive | No | If provided, issue a periodic `select` statement to keep the connection open when particularly long-running queries are executing (&gt; 4 hours). Default: False (see note below) |
+| client_session_keep_alive | No | If `True`, the snowflake client will keep connections for longer than the default 4 hours. This is helpful when particularly long-running queries are executing (&gt; 4 hours). Default: False (see [note below](#client_session_keep_alive)) |
 | threads | No | The number of concurrent models dbt should build. Set this to a higher number if using a bigger warehouse. Default=1 |
 | query_tag | No | A value with which to tag all queries, for later searching in [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html) |
-| retry_all | No | A boolean flag indicating whether to retry on all [Snowflake connector errors](https://github.com/snowflakedb/snowflake-connector-python/blob/master/src/snowflake/connector/errors.py) |
+| retry_all | No | A boolean flag indicating whether to retry on all [Snowflake connector errors](https://github.com/snowflakedb/snowflake-connector-python/blob/main/src/snowflake/connector/errors.py) |
 | retry_on_database_errors | No | A boolean flag indicating whether to retry after encountering errors of type [snowflake.connector.errors.DatabaseError](https://github.com/snowflakedb/snowflake-connector-python/blob/ffdd6b3339aa71885878d047141fe9a77c4a4ae3/src/snowflake/connector/errors.py#L361-L364) |
 | connect_retries | No | The number of times to retry after an unsuccessful connection |
 | connect_timeout | No | The number of seconds to sleep between failed connection retries |

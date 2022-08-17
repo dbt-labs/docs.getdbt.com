@@ -8,7 +8,7 @@ authors: [kira_furuichi]
 tags: [SQL Magic]
 hide_table_of_contents: false
 
-date: 2022-06-30
+date: 2022-05-15
 is_featured: false
 ---
 There are so many different date functions in SQL—you have [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/), [DATEADD](https://docs.getdbt.com/blog/sql-dateadd), DATE_PART, and [DATE_TRUNC](https://docs.getdbt.com/date-trunc-sql) to name a few. They all have their different use cases and understanding how and when they should be used is a SQL fundamental to get down. Are any of those as easy to use as the EXTRACT function? Well, that debate is for another time…
@@ -20,7 +20,7 @@ In this post, we’re going to give a deep dive into the EXTRACT function, how i
 The EXTRACT function allows you to extract a specified date part from a date/time. For example, if you were to extract the month from the date February 14, 2022, it would return 2 since February is the second month in the year.
 
 > **What is a SQL function?**
-> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://docs.getdbt.com/blog/coalesce-sql-love-letter/), [LOWER],(https://docs.getdbt.com/blog/lower-sql-love-letter/) and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
+> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://docs.getdbt.com/blog/coalesce-sql-love-letter/), [LOWER](https://docs.getdbt.com/blog/lower-sql-love-letter/) and [DATEDIFF](https://docs.getdbt.com/blog/datediff-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
 
 ## How to use the EXTRACT function
 

@@ -8,7 +8,7 @@ dbt Core and almost all of its adapter plugins are open source software. As such
 
 To download form source, you would clone the repositories from GitHub, making a local copy, and then install the local version using `pip`.
 
-Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
+Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
 
 ### Installing dbt Core
 
