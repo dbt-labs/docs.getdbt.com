@@ -16,7 +16,7 @@ Those who have been building <Term id="data-warehouse">data warehouses</Term> fo
 
 Sometimes, we are lucky enough to have data sources with these keys built right in — Shopify data synced via their API, for example, has easy-to-use keys on all the tables written to your warehouse. If this is not the case, or if you build a data model with a compound key (aka the data is unique across multiple dimensions), you will have to rely on some strategy for creating and maintaining these keys yourself. How can you do this with dbt? Let’s dive in.
 
-### How were surrogate keys managed in the past?
+## How were surrogate keys managed in the past?
 
 Before the advent of the analytical warehouse tools we use today, the data warehouse architecture had a few key constraints that led to the rise of the Kimball-style warehouse with a snowflake schema. This was because storage was expensive — it was more efficient to store data as few times as possible, and rely on joins to connect data tog   ether when a report required it. And to make those joins efficient, it became standard practice to use **monotonically increasing integer surrogate keys (MIISKs)**, a fancy way to say “count each record starting at one” so that your data model would look something like this (you are a cheesemonger):
 
