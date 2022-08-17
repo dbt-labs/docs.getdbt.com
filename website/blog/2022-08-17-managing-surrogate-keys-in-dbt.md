@@ -1,5 +1,5 @@
 ---
-title: "Managing Surrogate Keys in dbt"
+title: "Managing surrogate keys in dbt"
 description: "Wondering how to build a data model with surrogate keys? Dave Connors walks you through two strategies."
 slug: managing-surrogate-keys
 
@@ -11,13 +11,12 @@ hide_table_of_contents: false
 date: 2022-08-18
 is_featured: true
 ---
-## Introduction
 
-Those who have been building data warehouses for a long time have undoubtedly encountered the challenge of building surrogate keys on their data models. Having a column that uniquely represents each entity helps ensure your data model is complete, does not contain duplicates, and able to join across different data models in your warehouse.  
+Those who have been building <Term id="data-warehouse">data warehouses</Term> for a long time have undoubtedly encountered the challenge of building <Term id="surrogate-key">surrogate keys</Term> on their data models. Having a column that uniquely represents each entity helps ensure your data model is complete, does not contain duplicates, and able to join across different data models in your warehouse.  
 
-Sometimes, we are lucky enough to have data sources with these keys built right in — Shopify data synced via their API, for example, has easy-to-use keys on all the tables written to your warehouse. If this is not the case, or if you build a data model with a compound key (aka the data is unique across multiple dimensions), you will have to rely on some strategy for creating and maintaining these keys yourself. How can you do this with dbt? Let’s dive in:
+Sometimes, we are lucky enough to have data sources with these keys built right in — Shopify data synced via their API, for example, has easy-to-use keys on all the tables written to your warehouse. If this is not the case, or if you build a data model with a compound key (aka the data is unique across multiple dimensions), you will have to rely on some strategy for creating and maintaining these keys yourself. How can you do this with dbt? Let’s dive in.
 
-### How were surrogate keys managed in the past?
+## How were surrogate keys managed in the past?
 
 Before the advent of the analytical warehouse tools we use today, the data warehouse architecture had a few key constraints that led to the rise of the Kimball-style warehouse with a snowflake schema. This was because storage was expensive — it was more efficient to store data as few times as possible, and rely on joins to connect data tog   ether when a report required it. And to make those joins efficient, it became standard practice to use **monotonically increasing integer surrogate keys (MIISKs)**, a fancy way to say “count each record starting at one” so that your data model would look something like this (you are a cheesemonger):
 
@@ -161,13 +160,13 @@ Despite the relative simplicity of this strategy, there are a handful of drawbac
     
     In fact, most cloud platforms [can’t guarantee](https://docs.snowflake.com/en/user-guide/querying-sequences.html#:~:text=Snowflake%20does%20not%20guarantee%20generating%20sequence%20numbers%20without%20gaps.%20The%20generated%20numbers%20consistently%20increase%20in%20value%20(or%20decrease%20in%20value%20if%20the%20step%20size%20is%20negative)%20but%20are%20not%20necessarily%20contiguous) that sequences will be generated without gaps because of their use of parallel processing, even if we *don’t* have a dbt run error — because queries will be spread across multiple compute clusters, each step might query the sequence at different times, which makes it possible to have an out of order sequence result. This is a major consideration in using sequences — if that’s a deal breaker, you may need additional SQL logic in our models (like a `row_number()` function) to guarantee your keys are monotonically increasing. 
     
-- **Views -** Because sequences in Snowflake increment on every query, using them as the surrogate keys for views would mean every time the view is queried, the sequence would increment and therefore change. This strategy would only work for table or incremental models.
+- **<Term id="view">Views</Term> -** Because sequences in Snowflake increment on every query, using them as the surrogate keys for views would mean every time the view is queried, the sequence would increment and therefore change. This strategy would only work for table or incremental models.
 - **Ordering -** Since sequences will be regenerated on every run for tables, and every time an incremental model is regenerated, the order of the resulting query determines which records get assigned to each key. In order to maintain referential integrity (i.e. product_id 1 always means mozzarella), you need to build in `ORDER BY` statements to your models. This can cause adverse performance during table builds.
 - **“Load your dims before your facts” -** This strategy can also lead to some very messy DAGs in order to keep relationships intact in your project. As mentioned above, it’s imperative that each product record results in the same surrogate key value every time dbt is run. Additionally, this means that any table that needs to read from this table needs to run downstream of that initial process. This can lead to bottlenecks at runtime.
 
 Even though configuring MIISKs with sequences can be pretty well automated, it’s a bit of a brittle process that relies on a lot of assumptions and requires a whole lot of bandwidth from the data team to recreate the warehouse should anything go haywire. 
 
-## Hashed keys
+## Hashed surrogate keys
 
 An alternative to using the traditional MIISK strategy is to use cryptographic hashing functions to *derive the surrogate key values from the data itself,* a fancy way of saying “create a random string for every unique combination of values you find in my table”. These hashing functions are **deterministic**, meaning the same set of inputs will always produce the same output. In our SQL models, we can pass the column or columns that represent to the grain to this hashing function and viola, a consistent, unique identifier is generated automatically! This has been packaged up in the `surrogate_key()` macro in the `dbt_utils` package ([source](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)), and works across warehouse providers! Check out our SQL Magic post that dives deeper into this function [here](https://docs.getdbt.com/blog/sql-surrogate-keys).  
 
@@ -206,7 +205,7 @@ final as (
 select * from final
 ```
 
-Using hashed keys makes our transformations idempotent — every dbt run results in the same exact outputs every time. I can safely delete all my non-source objects in my warehouse, execute a dbt run and be right back where I started (though I wouldn’t necessarily recommend this 😅).  
+Using hashed keys makes our transformations <Term id="idempotent" /> — every dbt run results in the same exact outputs every time. I can safely delete all my non-source objects in my warehouse, execute a dbt run and be right back where I started (though I wouldn’t necessarily recommend this 😅).  
 
 The analytical warehouses we use now no longer have the same constraints that traditional warehouses had  — joins on strings aren’t notably less performant than those on integers, and storing slightly larger values in the surrogate key column is peanuts given the relative cost of storage on these platforms. This strategy also removes the need for tight coupling of transformations to propagate the surrogate key values across our project — anywhere the inputs for the surrogate keys are present, the hashing function produces the same keys, so we can take advantage of parallel processing in our warehouse and avoid the bottlenecks we had before. 
 
@@ -214,9 +213,10 @@ The analytical warehouses we use now no longer have the same constraints that tr
 
 This strategy is not without its caveats either!
 
-- **Collisions -** Although it is exceedingly rare, it is possible for two different sets of inputs to produce the same outputs, causing erroneous duplicate records in your dataset. Using an MD5 hash (the default for the `dbt_utils.surrogate_key` macro), you have a 50% of a collision when you get up to 2^64 records (1.84 x 10E19 aka a whole lot of data). While very unlikely, it’s certainly something to consider for truly massive datasets.
+
+- **Collisions -** Although it's *exceedingly* rare, depending on the hashing algorithm you use, it's possible for two different sets of inputs to produce the same outputs, causing erroneous duplicate records in your dataset. Using an MD5 hash (the default for the `dbt_utils.surrogate_key` macro), you have a 50% of a collision when you get up to 2^64 records (1.84 x 10E19 aka a whole lot of data). While [very very very unlikely](https://docs.getdbt.com/terms/surrogate-key#a-note-on-hashing-algorithms), it’s certainly something to consider for truly massive datasets.
 - **Datatypes -** If you’re in the process of migrating legacy code to a new warehouse provider, you likely have some constraints on the datatype of your keys from the consumers of your datasets, and may have some issues converting to a string-based key. Luckily, some warehouse providers have hash functions that output integer values (like Snowflake’s `MD5_UPPER/LOWER_64` functions). However, these have fewer bits in the hashing function, so may lead to collision issues on big data sets.
-- **Performance -** Hashed keys generally result in long string-type values. On truly massive datasets, this can cause some performance issues. Unlike MIISKs, string values can’t be easily partitioned to improve query performance. Luckily, as described in the above bullet point, you can choose to utilize hashing functions that output other, more performant datatypes!
+- **Performance -** Hashed keys generally result in long string-type values. On massive datasets on some warehouses, this could cause some performance issues. Unlike MIISKs, string values can’t be easily partitioned to improve query performance. Luckily, as described in the above bullet point, you can choose to utilize hashing functions that output other, more performant datatypes!
 - **Storage -** As mentioned above, hash keys will end up with higher storage costs than their MIISK counterparts. Given that the cost of storage in cloud warehouses is extremely cheap, it’s unlikely to be worth the effort to optimize for storage costs.
 
 ## OK, so which one?
