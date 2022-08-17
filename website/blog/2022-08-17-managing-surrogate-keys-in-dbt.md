@@ -51,7 +51,7 @@ However, there are also some clear maintenance issues here. Making updates to, s
 
 If this is your preferred modeling approach, dbt can absolutely support this workflow! This will likely require you to take advantage of built-in warehouse functionality to generate these MIISKs — in Snowflake, we can use [sequences](https://docs.snowflake.com/en/user-guide/querying-sequences.html), which are objects built exactly for this purpose. We’ll use Snowflake as the example here, but this approach can likely be adapted for other warehouses as well. 
 
-### Creating and Maintaining Sequences
+### Creating and maintaining sequences
 
 In order to properly maintain the sequence of the surrogate keys in your data models, we’ll need to build and maintain a sequence for each table that needs one. In order to do this at scale, we’ll make use of the [meta](https://docs.getdbt.com/reference/resource-configs/meta) config of dbt model. This configuration allows you to define any metadata dictionary that you want. Using this, we can programmatically apply a surrogate key configuration for each model that needs one, and reference that configuration in a macro to properly create and update surrogate keys when necessary. 
 
@@ -215,8 +215,8 @@ The analytical warehouses we use now no longer have the same constraints that tr
 This strategy is not without its caveats either!
 
 - **Collisions -** Although it is exceedingly rare, it is possible for two different sets of inputs to produce the same outputs, causing erroneous duplicate records in your dataset. Using an MD5 hash (the default for the `dbt_utils.surrogate_key` macro), you have a 50% of a collision when you get up to 2^64 records (1.84 x 10E19 aka a whole lot of data). While very unlikely, it’s certainly something to consider for truly massive datasets.
-- **Performance -** As mentioned above, hashed keys result in long string-type values. On truly massive datasets, this can cause some performance issues. Unlike MIISKs, string values can’t be easily partitioned to improve query performance.
 - **Datatypes -** If you’re in the process of migrating legacy code to a new warehouse provider, you likely have some constraints on the datatype of your keys from the consumers of your datasets, and may have some issues converting to a string-based key. Luckily, some warehouse providers have hash functions that output integer values (like Snowflake’s `MD5_UPPER/LOWER_64` functions). However, these have fewer bits in the hashing function, so may lead to collision issues on big data sets.
+- **Performance -** Hashed keys generally result in long string-type values. On truly massive datasets, this can cause some performance issues. Unlike MIISKs, string values can’t be easily partitioned to improve query performance. Luckily, as described in the above bullet point, you can choose to utilize hashing functions that output other, more performant datatypes!
 - **Storage -** As mentioned above, hash keys will end up with higher storage costs than their MIISK counterparts. Given that the cost of storage in cloud warehouses is extremely cheap, it’s unlikely to be worth the effort to optimize for storage costs.
 
 ## OK, so which one?
