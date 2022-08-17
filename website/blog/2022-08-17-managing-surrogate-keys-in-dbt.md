@@ -11,7 +11,6 @@ hide_table_of_contents: false
 date: 2022-08-17
 is_featured: true
 ---
-## Introduction
 
 Those who have been building <Term id="data-warehouse">data warehouses</Term> for a long time have undoubtedly encountered the challenge of building <Term id="surrogate-key">surrogate keys</Term> on their data models. Having a column that uniquely represents each entity helps ensure your data model is complete, does not contain duplicates, and able to join across different data models in your warehouse.  
 
