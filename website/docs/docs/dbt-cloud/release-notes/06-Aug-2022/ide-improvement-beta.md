@@ -6,7 +6,7 @@ sidebar_label: "Enhancement: New cloud IDE beta"
 tags: [Aug-16-2022]
 ---
 
-:::info Beta Feature 
+:::info Beta feature 
 Read more about the [Cloud IDE beta](https://www.getdbt.com/blog/staging-highlights-the-latest-from-dbt-labs/) and [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the new Cloud IDE beta group.
 
 :::
