@@ -19,8 +19,8 @@ control (RBAC).
 
 ## Permission Sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
-can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group 
+The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They
+can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
 can be associated with more than one permission sets.
 
 ### Account Admin
@@ -45,7 +45,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can: 
+Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can:
 - View all projects in an account
 - View Account Settings
 - View Repositories
@@ -111,6 +111,7 @@ Team Admins can perform the following actions in projects they are assigned to:
 
 Job Admins can perform the following actions in projects they are assigned to:
 - View, edit, and create environments
+- View connections
 - Trigger runs
 - View historical runs
 
@@ -140,6 +141,7 @@ Developers can perform the following actions in projects they are assigned to:
 Analysts can perform the following actions in projects they are assigned to:
 - Use the IDE
 - Configure personal developer credentials
+- View connections
 - View environments
 - View job definitions
 - View historical runs
@@ -160,11 +162,10 @@ Stakeholders can perform the following actions in projects they are assigned to:
 static/
 
 ## How to Set Up RBAC Groups in dbt Cloud
- 
+
 - **If you are on a Fishtown Hosted dbt Cloud instance:**
-Contact support via the Intercom button or support@getdbt.com to turn on this feature. 
+Contact support via the Intercom button or support@getdbt.com to turn on this feature.
 - **If you are on a customer deployed dbt Cloud instance:**
 Contact your account manager for instructions on how to turn on this feature.
 
 <LoomVideo id="8e2e00c57bde4fbfa4b519bf35d7632d" />
-
