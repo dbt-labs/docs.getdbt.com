@@ -1,5 +1,5 @@
 ---
-title: "Rooting out resource hogs with the Model Timing tab"
+title: "How we shaved 90 minutes of runtime off our longest running model"
 description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing tab in dbt Cloud."
 slug: model-timing-tab
 authors: [bennie_regenold, barr_yaron]
@@ -18,9 +18,7 @@ Here at dbt Labs, we used the Model Timing tab in our internal analytics dbt pro
 
 ## Your new best friend: The Model Timing tab
 
-The dbt Labs internal project is a beast. Our daily incremental dbt Cloud job runs 4x/day and invokes over 1,700 models.
-
-Sifting through this big run is easy with the [Model Timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. The `Model Timing` dashboard displays the model composition, order, and run time for every job run in dbt Cloud (for team and enterprise plans). The top 1% of model durations are automatically highlighted for quick reference. Here's an example of our incremental job before a fix was applied to our longest running model:
+The dbt Labs internal project is a beast! Our daily incremental dbt Cloud job runs 4x/day and invokes over 1,700 models. We like to sift through our dbt Cloud job using the [Model Timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. The `Model Timing` dashboard displays the model composition, order, and run time for every job run in dbt Cloud (for team and enterprise plans). The top 1% of model durations are automatically highlighted, which makes it easy to find bottlenecks in our runs. You can see that our longest running model stuck out like a sore thumb -- here's an example of our incremental job before a fix was applied:
 
 ![Model Timing tab before picture](/img/blog/2022-08-12-model-timing/model_timing_before.png)
 
