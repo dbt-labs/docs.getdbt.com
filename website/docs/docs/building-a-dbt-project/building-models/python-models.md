@@ -479,7 +479,7 @@ import pyspark.sql.functions as F
 import numpy
 
 # use a 'decorator' for more readable code
-@udf(returnType=T.DoubleType())
+@F.udf(returnType=T.DoubleType())
 def add_random(x):
     random_number = numpy.random.normal()
 
