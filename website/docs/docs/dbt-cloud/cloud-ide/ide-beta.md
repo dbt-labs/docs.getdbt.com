@@ -119,9 +119,9 @@ You can invoke dbt commands, compile jinja into query, preview data from the war
 
 You can launch the dbt Cloud IDE from a cold start or a hot start. 
 
-- **Cold start** - The process of starting an IDE session for the first time. Cold starting the IDE can take about 30 seconds to load. Behind the scene, dbt is provisioning a dedicated server for you to build a dbt project. After this step finishes, the IDE is ready for use. In the meantime, dbt is also starting up the dbt-rpc container to interact with dbt-core. You don’t need to wait for this to finish before the IDE is ready for editing.
+- **Cold start** -- The process of starting an IDE session for the first time. Cold starting the IDE can take about 30 seconds to load. Behind the scene, dbt is provisioning a dedicated server for you to build a dbt project. After this step finishes, the IDE is ready for use. In the meantime, dbt is also starting up the dbt-rpc container to interact with dbt-core. You don’t need to wait for this to finish before the IDE is ready for editing.
 
-- **Hot start** - The process of resuming an existing IDE session (within 3 hours of the last activity).  The process of resuming an existing IDE session (within 3 hours of the last activity). Hot starting is faster and takes less than 3 seconds to load. This is because the environment is already available and you’re simply resuming your session.
+- **Hot start** -- The process of resuming an existing IDE session (within 3 hours of the last activity). Hot starting is faster and takes less than 3 seconds to load. This is because the environment is already available and you’re simply resuming your session.
 
 dbt Labs closely monitors these two start modes as key performance metrics to help ensure consistent and reliable experiences. 
 
@@ -129,9 +129,9 @@ dbt Labs closely monitors these two start modes as key performance metrics to he
 
 You must save your work to avoid losing it. The dbt Cloud IDE needs an explicit action to save your changes. There are three ways your work is stored:
 
-- **Unsaved, local code** -  Any code you write is automatically  available from your browser’s storage. You can see your changes but will lose it if you switch branches or browsers (another device or browser).
-- **Saved but uncommitted code** - When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t _commit_ your saved changes, you will lose your changes
-- **Committed code** - Your git branch repository contains all your changes. You can check out other branches or switch browsers without losing your changes.
+- **Unsaved, local code** --  Any code you write is automatically  available from your browser’s storage. You can see your changes but will lose it if you switch branches or browsers (another device or browser).
+- **Saved but uncommitted code** -- When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t _commit_ your saved changes, you will lose your changes.
+- **Committed code** -- Your git branch repository contains all your changes. You can check out other branches or switch browsers without losing your changes.
 
 
 **Run projects**
@@ -160,11 +160,11 @@ For your convenience, dbt Cloud automatically includes ‘`dbt`’ as a prefix t
 :::
 
 
-The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**
+The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
 **Generating and viewing documentation** 
 
-To generate your project’s documentation (docs) in the IDE, enter `docs generate` or `dbt docs generate` in the Command bar.  This command generates the docs for your dbt project as it currently exists in development.
+To generate your project’s documentation (docs) in the IDE, enter `docs generate` or `dbt docs generate` in the command bar.  This command generates the docs for your dbt project as it currently exists in development.
 
 After you generate a successful run, you can view your [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.
 
