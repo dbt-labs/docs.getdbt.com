@@ -7,7 +7,7 @@ The `doc` function is used to reference docs blocks in the description field of 
 
 Usage:
 
-<File name='orders.md'>
+<File name='orders.sql'>
 
 ```jinja2
 
