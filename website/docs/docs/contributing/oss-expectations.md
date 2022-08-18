@@ -4,7 +4,7 @@ title: "Expectations for OSS Contributors"
 
 Whether it's a dbt package, a plugin, `dbt-core`, or this very documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt open source software (OSS). While we can only speak for our own experience as open source maintainers, many of these guidelines apply when contributing to other open source projects, too.
 
-Have you seen things in other OSS projects that you quite like, and think we could learn from? [Open a discussion on docs.dbt.com](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), or start a conversation in the dbt Community Slack (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
+Have you seen things in other OSS projects that you quite like, and think we could learn from? [Open a discussion on the Developer Hub](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), or start a conversation in the dbt Community Slack (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
 
 ## Principles
 
@@ -41,7 +41,7 @@ Discussions are a relatively new GitHub feature, and we really like them!
 
 A discussion is best suited to propose a Big Idea, such as brand-new capability in dbt Core, or a new section of the product docs. Anyone can open a discussion, add a comment to an existing one, or reply in a thread.
 
-What to expect from a new Discussion? Hopefully, comments from other members of the community, who like your idea or have their own ideas for how it could be improved. The most helpful comments are ones that describe the kinds of experiences users and readers should have. Unlike an **issue**, there is no specific code change that would “resolve” a Discussion.
+What can you expect from a new Discussion? Hopefully, comments from other members of the community, who like your idea or have their own ideas for how it could be improved. The most helpful comments are ones that describe the kinds of experiences users and readers should have. Unlike an **issue**, there is no specific code change that would “resolve” a Discussion.
 
 If, over the course of a discussion, we do manage to reach consensus on a way forward, we’ll open a new issue that references the discussion for context. That issue will connect desired outcomes to specific implementation details, as well as perceived limitations and open questions. It will serve as a formal proposal and request for comment.
 
@@ -51,7 +51,7 @@ An issue could be a bug you’ve identified while using the product or reading t
 
 ### Best practices for issues
 
-- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-for-beginners` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
+- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on the Developer Hub](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-for-beginners` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
 - Many repositories offer templates for creating issues, such as when reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This will help other people understand your issue and respond.
 
