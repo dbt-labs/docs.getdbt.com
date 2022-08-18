@@ -9,23 +9,53 @@ dbt "adapters" are responsible for _adapting_ dbt's functionality to a given dat
 
 1. At the lowest level: An *adapter class* implementing all the methods responsible for connecting to a database and issuing queries.
 2. In the middle: A set of *macros* responsible for generating SQL that is compliant with the target database.
-3. (Optional) At the highest level: A set of *materializations* that tell dbt how to turn model files into persisted objects in the database.
+3. (Optional) At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn model files into persisted objects in the database.
 
-This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly.
+This guide will walk you through the first two steps, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](testing-a-new-adapter)
+), please let the community know that is available to use by adding the adapter to the [Available Adapters](docs/available-adapters) page by following the steps given in [Documenting your adapter](docs/contributing/documenting-a-new-adapter).
+
+For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
+
+## Pre-Requisite Data Warehouse Features
+
+The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
+
+### Training
+- the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) and [Advanced Materializations](https://courses.getdbt.com/courses/advanced-materializations) course.
+
+### Database
+- Does the database complete transactions fast enough for interactive development?
+- Can you execute SQL against the data platform?
+- Is there a concept of schemas?
+- Does the data platform support ANSI SQL, or at least a subset?
+### Driver / Connection Library
+- Is there a Python-based driver for interacting with the database that is db API 2.0 compliant (e.g. Psycopg2 for Postgres, pyodbc for SQL Server)
+- Does it support: prepared statements, multiple statements, or single sign on token authorization to the data platform?
+
+### Open source software
+- Does your organization have an established process for publishing open source software?
+
+
+It is easiest to build an adapter for dbt when the following the <Term id="data-warehouse" />/platform in question has:
+- a conventional ANSI-SQL interface (or as close to it as possible),
+- a mature connection library/SDK that uses ODBC or Python DB 2 API, and
+- a way to enable developers to iterate rapidly with both quick reads and writes
 
 ## Scaffolding a new adapter
+ To create a new adapter plugin from scratch, you can use the [dbt-database-adapter-scaffold](https://github.com/dbt-labs/dbt-database-adapter-scaffold) to trigger an interactive session which will generate a scaffolding for you to build upon.
 
-dbt comes equipped with a script which will automate a lot of the legwork in building a new adapter. This script will generate a standard folder structure, set up the various import dependencies and references, and create namespace packages so the plugin can interact with dbt. You can find this script in the dbt repo in dbt's [scripts/](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/scripts/create_adapter_plugins.py) directory.
+    Example usage:
 
-Example usage:
+    ```
+    $ cookiecutter gh:dbt-labs/dbt-database-adapter-scaffold
+    ```
 
-```
-$ python create_adapter_plugins.py --sql --title-case=MyAdapter ./ myadapter
-```
+The generated boilerplate starting project will include a basic adapter plugin file structure, examples of macros, high level method descriptions, etc.
 
-You will get a folder named 'myadapter' in the local directory, with some subfolders and files created. Your adapter will be named 'MyAdapter' in the generated code - without `--title-case=MyAdapter` it would be 'Myadapter'. You can set other flags to specify dependencies, author, and package information as well. If your adapter implements SQL's `information_schema` (or something similar enough) and supports a cursor() method on its connections, you may pass the `--sql` flag to derive from the SQLAdapter, which is much easier to implement than the BaseAdapter! Compare dbt's native BigQuery adapter with its SnowflakeAdapter to get an idea of the difference between the two.
-
-This rest of this guide will assume that a SQLAdapter is being used.
+One of the most important choices you will make during the cookiecutter generation will revolve around the field for `is_sql_adapter` which is a boolean used to correctly apply imports for either a `SQLAdapter` or `BaseAdapter`. Knowing which you will need requires a deeper knowledge of your selected database but a few good guides for the choice are.
+- Does your database have a complete SQL API? Can it perform tasks using SQL such as creating schemas, dropping schemas, querying an `information_schema` for metadata calls? If so, it is more likely to be a SQLAdapter where you set `is_sql_adapter` to `True`.
+- Most adapters do fall under SQL adapters which is why we chose it as the default `True` value.
+- It is very possible to build out a fully functional `BaseAdapter`. This will require a little more ground work as it doesn't come with some prebuilt methods the `SQLAdapter` class provides. See `dbt-bigquery` as a good guide.
 
 ### Editing setup.py
 
@@ -39,7 +69,7 @@ Edit the connection manager at `myadapter/dbt/adapters/myadapter/connections.py`
 
 ### The Credentials class
 
-The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need to add to `profiles.yml` to use your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
+The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need in the [connection profile](configure-your-profile) for your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
 
 Note that the base class includes required database and schema fields, as dbt uses those values internally.
 
@@ -66,6 +96,14 @@ class MyAdapterCredentials(Credentials):
     def type(self):
         return 'myadapter'
 
+    @property
+    def unique_field(self):
+        """
+        Hashed and included in anonymous telemetry to track adapter adoption.
+        Pick a field that can uniquely identify one team/organization building with this adapter
+        """
+        return self.host
+
     def _connection_keys(self):
         """
         List of keys to display in the `dbt debug` output.
@@ -75,9 +113,10 @@ class MyAdapterCredentials(Credentials):
 
 </File>
 
-Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
-
-You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
+There are a few things you can do to make it easier for users when connecting to your database:
+- Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
+- Create a `profile_template.yml` to enable configuration prompts for a brand-new user setting up a connection profile via the [`dbt init` command](init). See more details [below](#other-files).
+- You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
 
 <File name='connections.py'>
 
@@ -155,14 +194,21 @@ For example:
 
 #### get_response(cls, cursor)
 
-get_response is a classmethod that gets a cursor object and returns adapter-specific information about the last executed command. Ideally, the return value is an `AdapterResponse` object that includes items such as `code`, `rows_affected`, `bytes_processed`, and a summary `_message` for logging to stdout. Or, get_response can just return a string `'OK'` if your connection cursor does not provide richer metadata.
+`get_response` is a classmethod that gets a cursor object and returns adapter-specific information about the last executed command. The return value should be an `AdapterResponse` object that includes items such as `code`, `rows_affected`, `bytes_processed`, and a summary `_message` for logging to stdout.
 
 <File name='connections.py'>
 
 ```python
     @classmethod
-    def get_response(cls, cursor):
-        return cursor.status_message
+    def get_response(cls, cursor) -> AdapterResponse:
+        code = cursor.sqlstate or "OK"
+        rows = cursor.rowcount
+        status_message = f"{code} {rows}"
+        return AdapterResponse(
+            _message=status_message,
+            code=code,
+            rows_affected=rows
+        )
 ```
 
 </File>
@@ -241,20 +287,21 @@ dbt implements specific SQL operations using jinja macros. While reasonable defa
 
 The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
-- `alter_column_type` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L140))
-- `check_schema_exists` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L224))
-- `create_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L21))
-- `drop_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L164))
-- `drop_schema` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L31))
-- `get_columns_in_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L95)) (required)
-- `list_relations_without_caching` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L240)) (required)
-- `list_schemas` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L210))
-- `rename_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L185))
-- `truncate_relation` ([source](https://github.com/fishtown-analytics/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L175))
+- `alter_column_type` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L140))
+- `check_schema_exists` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L224))
+- `create_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L21))
+- `drop_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L164))
+- `drop_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L31))
+- `get_columns_in_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L95)) (required)
+- `list_relations_without_caching` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L240)) (required)
+- `list_schemas` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L210))
+- `rename_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L185))
+- `truncate_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L175))
+- `current_timestamp` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L269)) (required)
 
 ### Adapter dispatch
 
-Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create table") in a database-specific way.
+Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create <Term id="table" />") in a database-specific way.
 
 <File name='adapters.sql'>
 
@@ -294,8 +341,8 @@ Most modern databases support a majority of the standard SQL spec. There are som
 </File>
 
 The `adapter.dispatch()` macro takes a second argument, `packages`, which represents a set of "search namespaces" in which to find potential implementations of a dispatched macro. This allows users of community-supported adapters to extend or "shim" dispatched macros from common packages, such as `dbt-utils`, with adapter-specific versions in their own project or other installed packages. See:
-- "Shim" package examples: [`spark-utils`](https://github.com/fishtown-analytics/spark-utils), [`tsql-utils`](https://github.com/dbt-msft/tsql-utils)
-- [`adapter.dispatch` docs](adapter#dispatch)
+- "Shim" package examples: [`spark-utils`](https://github.com/dbt-labs/spark-utils), [`tsql-utils`](https://github.com/dbt-msft/tsql-utils)
+- [`adapter.dispatch` docs](dispatch)
 
 ### Overriding adapter methods
 
@@ -316,13 +363,31 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 </File>
 
+### Other files
+
+#### `profile_template.yml`
+
+In order to enable the [`dbt init` command](/reference/commands/init) to prompt users when setting up a new project and connection profile, you should include a **profile template**. The filepath needs to be `dbt/include/<adapter_name>/profile_template.yml`. It's possible to provide hints, default values, and conditional prompts based on connection methods that require different supporting attributes. Users will also be able to include custom versions of this file in their own projects, with fixed values specific to their organization, to support their colleagues when using your dbt adapter for the first time.
+
+See examples:
+- [dbt-postgres](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml)
+- [dbt-redshift](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/include/redshift/profile_template.yml)
+- [dbt-snowflake](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/include/snowflake/profile_template.yml)
+- [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/bigquery/profile_template.yml)
+
+#### `__version__.py`
+
+To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-core/blob/develop/plugins/snowflake/dbt/adapters/snowflake/__version__.py).
+
+It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
+
 ### Testing your new adapter
 
-You can use a pre-configured [dbt adapter test suite](https://github.com/fishtown-analytics/dbt-adapter-tests) to test that your new adapter works. These tests include much of dbt's basic functionality, with the option to override or disable functionality that may not be supported on your adapter.
+This has moved to its own page: ["Testing a new adapter"](testing-a-new-adapter)
 
 ### Documenting your new adapter
 
 Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
 - Hosting on a public git provider (e.g. GitHub, GitLab)
 - Publishing to [PyPi](https://pypi.org/)
-- Adding to the list of ["Available Adapters"](available-adapters#community-plugins)
+- Adding to the list of ["Available Adapters"](available-adapters#community-supported)

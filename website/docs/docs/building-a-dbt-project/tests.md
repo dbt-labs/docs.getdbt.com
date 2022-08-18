@@ -5,36 +5,76 @@ title: "Tests"
 ## Related reference docs
 * [Test command](commands/test)
 * [Test properties](resource-properties/tests)
-* [Data test configurations](data-test-configs)
-
-<!---
-* [Test selection syntax](node-selection/syntax)
---->
+* [Test configurations](test-configs)
+* [Test selection examples](test-selection-examples)
 
 ## Getting started
 
 Tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
 
-There are two type of tests:
-* **schema tests** (more common): applied in YAML, returns the number of records that _do not_ pass an assertion — when this number is 0, all records pass, therefore, your test passes
-* **data tests**: specific queries that return 0 records
+<Changelog>
 
-Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes.
+* `v0.20.0`: Both types of tests return a set of failing records. Previously, generic/schema tests returned a numeric value representing failures. Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`.
+
+</Changelog>
+
+Like almost everything in dbt, tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
+
+There are two ways of defining tests in dbt:
+* A **singular** test is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](test-paths). It's now a test, and it will be executed by the `dbt test` command.
+* A **generic** test is a parametrized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic tests built in, and we think you should use them!
+
+Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
 :::tip Creating your first tests
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models and tests.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/guides/getting-started) to build your first dbt project with models and tests.
 :::
 
-## Schema tests
-Schema tests are added as _properties_ for an existing model (or source, seed, or snapshot).
+## Singular tests
 
-These properties are added in  `.yml` files in the same directory as your resource.
+The simplest way to define a test is by writing the exact SQL that will return failing records. We call these "singular" tests, because they're one-off assertions usable for a single purpose.
+
+These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one test:
+
+<File name='tests/assert_total_payment_amount_is_positive.sql'>
+
+```sql
+-- Refunds have a negative amount, so the total amount should always be >= 0.
+-- Therefore return records where this isn't true to make the test fail
+select
+    order_id,
+    sum(amount) as total_amount
+from {{ ref('fct_payments' )}}
+group by 1
+having not(total_amount >= 0)
+```
+
+</File>
+
+The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
+
+Singular tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
+
+## Generic tests
+Certain tests are generic: they can be reused over and over again. A generic test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
+
+```sql
+{% test not_null(model, column_name) %}
+
+    select *
+    from {{ model }}
+    where {{ column_name }} is null
+
+{% endtest %}
+```
+
+You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
 
 :::info
-If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](declaring-properties).
+If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](configs-and-properties).
 :::
 
-Out of the box, dbt ships with the `unique`, `not_null`, `accepted_values` and `relationships` tests. Here's a full example:
+Out of the box, dbt ships with four generic tests already defined: `unique`, `not_null`, `accepted_values` and `relationships`. Here's a full example using those tests on an `orders` model:
 
 ```yml
 version: 2
@@ -61,20 +101,22 @@ In plain English, these tests translate to:
 * `unique`: the `order_id` column in the `orders` model should be unique
 * `not_null`: the `order_id` column in the `orders` model should not contain null values
 * `accepted_values`: the `status` column in the `orders` should be  one of `'placed'`, `'shipped'`, `'completed'`, or  `'returned'`
-* `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` table (also known as referential integrity)
+* `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` <Term id="table" /> (also known as referential integrity)
 
-Behind the scenes, dbt constructs a `select` query for each schema test. These queries return the number `0` when your assertion is true, otherwise the test fails
+Behind the scenes, dbt constructs a `select` query for each test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
-You can find more information about these tests, and additional configurations (including [`severity`](resource-properties/tests#severity) and [`tags`](resource-properties/tags)) in the [reference section](resource-properties/tests).
+You can find more information about these tests, and additional configurations (including [`severity`](severity) and [`tags`](resource-configs/tags)) in the [reference section](resource-properties/tests).
 
-You can also write your own custom schema tests to use in your dbt project — check out the [guide](custom-schema-tests) for more information.
+### More generic tests
+
+Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](custom-generic-tests) for more information.
 
 :::info
-We've open sourced some useful schema tests in [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) — skip ahead to the docs on [packages](package-management) to learn more!
+There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](package-management) to learn more!
 :::
 
 ### Example
-To add a schema test to your project:
+To add a generic (or "schema") test to your project:
 
 1. Add a `.yml` file to your `models` directory, e.g. `models/schema.yml`, with the following content (you may need to adjust the `name:` values for an existing model)
 
@@ -131,7 +173,7 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
   <TabItem value="compiled">
 
 ```sql
-select count(*) as validation_errors
+select *
 from (
 
     select
@@ -143,14 +185,13 @@ from (
     having count(*) > 1
 
 ) validation_errors
-
 ```
 
   </TabItem>
   <TabItem value="templated">
 
 ```sql
-select count(*) as validation_errors
+select *
 from (
 
     select
@@ -162,8 +203,6 @@ from (
     having count(*) > 1
 
 ) validation_errors
-
-
 ```
 
   </TabItem>
@@ -180,66 +219,51 @@ from (
   <TabItem value="compiled">
 
 ```sql
-select
-    count(*) as validation_errors
+select *
 from analytics.orders
 where order_id is null
-
 ```
 
   </TabItem>
   <TabItem value="templated">
 
 ```sql
-select
-    count(*) as validation_errors
+select *
 from {{ model }}
 where {{ column_name }} is null
-
 ```
 
   </TabItem>
 </Tabs>
 
+## Storing test failures
 
+<Changelog>
 
-## Data tests
-A data test is a `select` statement that returns `0` records when the test is successful. Note: this differs from schema tests that return the number `0`.
+* `v0.20.0`: Introduced storing test failures in the database
 
-Data tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](test-paths)). Each `.sql` file contains one data test / one `select` statement:
+</Changelog>
 
-<File name='tests/assert_total_payment_amount_is_positive.sql'>
+Normally, a test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
 
-```sql
--- Refunds have a negative amount, so the total amount should always be >= 0.
--- Therefore return records where this isn't true to make the test fail
-select
-    order_id,
-    sum(amount) as total_amount
-from {{ ref('fct_payments' )}}
-group by 1
-having not(total_amount >= 0)
+This workflow allows you to query and examine failing records much more quickly in development:
 
-```
+<Lightbox src="/img/docs/building-a-dbt-project/test-store-failures.gif" title="Store test failures in the database for faster development-time debugging."/>
 
-</File>
-
-
-Data tests are also run by the `dbt test` command. To _only_ run data tests, run `dbt test --data`.
-
+Note that, if you elect to store test failures:
+- Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](using-custom-schemas).)
+- A test's results will always **replace** previous failures for the same test.
 
 ## FAQs
 
-
-<FAQ src="test-one-model" />
-<FAQ src="failed-tests" />
-<FAQ src="recommended-tests" />
-<FAQ src="when-to-test" />
-<FAQ src="records-from-failed-tests" />
-<FAQ src="configurable-data-test-path" />
-<FAQ src="test-sources" />
-<FAQ src="custom-test-thresholds" />
-<FAQ src="uniqueness-two-columns" />
+<FAQ src="Tests/test-one-model" />
+<FAQ src="Runs/failed-tests" />
+<FAQ src="Tests/recommended-tests" />
+<FAQ src="Tests/when-to-test" />
+<FAQ src="Tests/configurable-data-test-path" />
+<FAQ src="Tests/testing-sources" />
+<FAQ src="Tests/custom-test-thresholds" />
+<FAQ src="Tests/uniqueness-two-columns" />
 
 <!--
 Additional FAQs that need Discourse articles:

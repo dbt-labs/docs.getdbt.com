@@ -18,11 +18,11 @@ A project may also contain a number of other resources, such as [snapshots](snap
 
 :::info Creating your first dbt project
 
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/guides/getting-started) to build your first dbt project.
 
 :::
 
-If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/fishtown-analytics/dbt-starter-project) contains default configurations as well as helpful notes.
+If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/dbt-labs/dbt-starter-project) contains default configurations as well as helpful notes.
 
 
 <Tabs
@@ -43,7 +43,7 @@ To create a new dbt project when developing in dbt Cloud:
     * Click the hamburger menu, and then `Home`.
     * Switch the project in the header bar to your new "dbt Tutorial" project.
 3. Complete the project setup flow:
-    * Connect to your data warehouse
+    * Connect to your <Term id="data-warehouse" />
     * Add a repository — either choose a managed repository, or connect to an existing, but bare, repository.
 
 <Lightbox src="/img/dbt-cloud-project-setup-flow.png" title="dbt Cloud Project Setup flow" />
@@ -59,7 +59,7 @@ To create a new dbt project when developing in dbt Cloud:
 To create a new dbt project, run:
 
 ```bash
-$ dbt init [project-name]
+$ dbt init [project_name]
 ```
 
 This will create a new directory in your current path (i.e. at `./[project-name]`.
@@ -70,8 +70,8 @@ This will create a new directory in your current path (i.e. at `./[project-name]
 
 ### FAQs
 
-<FAQ src="project-name" />
-<FAQ src="structure-a-project" />
+<FAQ src="Project/project-name" />
+<FAQ src="Project/structure-a-project" />
 
 
 ## Using an existing project

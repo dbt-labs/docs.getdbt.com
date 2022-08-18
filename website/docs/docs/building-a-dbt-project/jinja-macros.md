@@ -5,7 +5,7 @@ id: "jinja-macros"
 
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
-* [dbt Jinja context](dbt-jinja-functions)
+* [dbt Jinja context](/reference/dbt-jinja-functions)
 * [Macro properties](macro-properties)
 
 ## Overview
@@ -22,7 +22,7 @@ Using Jinja turns your dbt project into a programming environment for SQL, givin
 
 In fact, if you've used the [`{{ ref() }}` function](ref), you're already using Jinja!
 
-Jinja can be used in any SQL in a dbt project, including [models](building-models), [analyses](analyses), [tests](custom-schema-tests), and even [hooks](hooks-operations).
+Jinja can be used in any SQL in a dbt project, including [models](building-models), [analyses](analyses), [tests](building-a-dbt-project/tests), and even [hooks](hooks-operations).
 
 
 :::info Ready to get started with Jinja and macros?
@@ -126,7 +126,7 @@ from app_data.payments
 
 
 ### Using a macro from a package
-A number of useful macros have also been grouped together into [packages](package-management) — our most popular package is [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/).
+A number of useful macros have also been grouped together into [packages](package-management) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
 
 After installing a package into your project, you can use any of the macros in your own project — make sure you qualify the macro by prefixing it with the [package name](project-configs/name):
 
@@ -148,23 +148,23 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 ## FAQs
 
-<FAQ src="dbt-specific-jinja" />
-<FAQ src="which-jinja-docs" />
-<FAQ src="quoting-column-names" />
-<FAQ src="jinja-whitespace" />
-<FAQ src="debugging-jinja" />
-<FAQ src="documenting-macros" />
-<FAQ src="why-so-many-macros" />
+<FAQ src="Accounts/dbt-specific-jinja" />
+<FAQ src="Jinja/which-jinja-docs" />
+<FAQ src="Jinja/quoting-column-names" />
+<FAQ src="Jinja/jinja-whitespace" />
+<FAQ src="Project/debugging-jinja" />
+<FAQ src="Docs/documenting-macros" />
+<FAQ src="Project/why-so-many-macros" />
 
 ## dbtonic Jinja
 
 Just like well-written python is pythonic, well-written dbt code is dbtonic.
 
-### Favor readability over DRY-ness
+### Favor readability over <Term id="dry" />-ness
 Once you learn the power of Jinja, it's common to want to abstract every repeated line into a macro! Remember that using Jinja can make your models harder for other users to interpret — we recommend favoring readability when mixing Jinja with SQL, even if it means repeating some lines of SQL in a few places. If all your models are macros, it might be worth re-assessing.
 
 ### Leverage package macros
-Writing a macro for the first time? Check whether we've open sourced one in [dbt-utils](https://hub.getdbt.com/fishtown-analytics/dbt_utils/latest/) that you can use, and save yourself some time!
+Writing a macro for the first time? Check whether we've open sourced one in [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) that you can use, and save yourself some time!
 
 ### Set variables at the top of a model
 `{% set ... %}` can be used to create a new variable, or update an existing one. We recommend setting variables at the top of a model, rather than hardcoding it inline. This is a practice borrowed from many other coding languages, since it helps with readability, and comes in handy if you need to reference the variable in two places:
@@ -172,7 +172,7 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 
 ```sql
 -- 🙅 This works, but can be hard to maintain as your code grows
-{% for payment_methods in ["bank_transfer", "credit_card", "gift_card"] %}
+{% for payment_method in ["bank_transfer", "credit_card", "gift_card"] %}
 ...
 {% endfor %}
 
