@@ -482,6 +482,7 @@ import numpy
 @F.udf(returnType=T.DoubleType())
 def add_random(x):
     random_number = numpy.random.normal()
+    return x + random_number
 
 def model(dbt, session):
     dbt.config(
