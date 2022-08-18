@@ -32,6 +32,8 @@ After refactoring this code, we ended up swapping the ephemeral model `dbt_model
 
 This project runs on Snowflake, so all the examples below show the Snowflake UI. However, it is possible to do a similar style of analysis in any data warehouse.
 
+Also, this blog post represents a pretty technical deep dive. If everything you read here doesn't line up immediately, that's ok! We recommend reading through this article, then brushing up on cloud <Term id="data-warehouse">data warehouses</Term> and query optimization to help supplement the learnings here.
+
 ### Unpacking the query plan
 
 Finding this long running query was step one. Since it was so dominant in the Model Timing tab, it was easy to go straight to the problematic model and start looking for ways to improve it. The next step was to check out what the Snowflake query plan looked like. 
