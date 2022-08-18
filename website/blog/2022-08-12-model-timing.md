@@ -1,5 +1,5 @@
 ---
-title: "How we shaved 90 minutes of runtime off our longest running model"
+title: "How we shaved 90 minutes off our longest running model"
 description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing tab in dbt Cloud."
 slug: model-timing-tab
 authors: [bennie_regenold, barr_yaron]
