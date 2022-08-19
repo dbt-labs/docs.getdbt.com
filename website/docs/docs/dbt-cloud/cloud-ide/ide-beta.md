@@ -95,7 +95,7 @@ The File explorer on the left side of the IDE allows you to organize your projec
 
 **Drag and drop** 
 
-You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by rigt clicking on the breadcrumb file.
+You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right clicking on the breadcrumb file.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/file-explorer.png" title="File Explorer"/> 
 
@@ -103,11 +103,11 @@ You can also drag and drop files located in the file explorer. Use the file brea
 
 You can move your tabs around to reorganize your work in the IDE. You can also right click on a tab to view and select a list of actions to take.
 
-<Lightbox src="img/docs/dbt-cloud/cloud-ide/tab-options.png" title="Tab options"/> 
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/tab-options.png" title="Tab options"/>
 
 ## Development in the dbt Cloud IDE Beta
 
-With the IDE, you can compile dbt code into SQL and run it against your database directly. It leverages the open-source [dbt-rpc](https://docs.getdbt.com/reference/commands/rpc)plugin to intelligently recompile only the changes  in your project. 
+With the IDE, you can compile dbt code into SQL and run it against your database directly. It leverages the open-source [dbt-rpc](https://docs.getdbt.com/reference/commands/rpc) plugin to intelligently recompile only the changes  in your project. 
 
 The dbt Cloud IDE Beta brings the startup and interaction time for dbt project development down from minutes to seconds.
 
@@ -119,9 +119,9 @@ You can invoke dbt commands, compile jinja into query, preview data from the war
 
 You can launch the dbt Cloud IDE from a cold start or a hot start. 
 
-- **Cold start** - The process of starting an IDE session for the first time. Cold starting the IDE can take about 30 seconds to load. Behind the scene, dbt is provisioning a dedicated server for you to build a dbt project. After this step finishes, the IDE is ready for use. In the meantime, dbt is also starting up the dbt-rpc container to interact with dbt-core. You don’t need to wait for this to finish before the IDE is ready for editing.
+- **Cold start** -- The process of starting an IDE session for the first time. Cold starting the IDE can take about 30 seconds to load. Behind the scene, dbt is provisioning a dedicated server for you to build a dbt project. After this step finishes, the IDE is ready for use. In the meantime, dbt is also starting up the dbt-rpc container to interact with dbt-core. You don’t need to wait for this to finish before the IDE is ready for editing.
 
-- **Hot start** - The process of resuming an existing IDE session (within 3 hours of the last activity).  The process of resuming an existing IDE session (within 3 hours of the last activity). Hot starting is faster and takes less than 3 seconds to load. This is because the environment is already available and you’re simply resuming your session.
+- **Hot start** -- The process of resuming an existing IDE session (within 3 hours of the last activity). Hot starting is faster and takes less than 3 seconds to load. This is because the environment is already available and you’re simply resuming your session.
 
 dbt Labs closely monitors these two start modes as key performance metrics to help ensure consistent and reliable experiences. 
 
@@ -129,9 +129,9 @@ dbt Labs closely monitors these two start modes as key performance metrics to he
 
 You must save your work to avoid losing it. The dbt Cloud IDE needs an explicit action to save your changes. There are three ways your work is stored:
 
-- **Unsaved, local code** -  Any code you write is automatically  available from your browser’s storage. You can see your changes but will lose it if you switch branches or browsers (another device or browser).
-- **Saved but uncommitted code** - When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t _commit_ your saved changes, you will lose your changes
-- **Committed code** - Your git branch repository contains all your changes. You can check out other branches or switch browsers without losing your changes.
+- **Unsaved, local code** --  Any code you write is automatically  available from your browser’s storage. You can see your changes but will lose it if you switch branches or browsers (another device or browser).
+- **Saved but uncommitted code** -- When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t _commit_ your saved changes, you will lose your changes.
+- **Committed code** -- Your git branch repository contains all your changes. You can check out other branches or switch browsers without losing your changes.
 
 
 **Run projects**
@@ -148,26 +148,23 @@ The visual in the Lineage tab adds more context to your dependencies and directi
 
 You get to see how models are used as building blocks from left to right to transform your data from crude or normalized raw sources, into cleaned-up modular derived pieces, and finally into the final outputs on the far right of the DAG, ready to be used by the analyst in infinite combinations to present it in ways to help clients, customers, and organizations make better decisions.
 
-You can access files in the lineage tab in the IDE by double clicking on a particular model in the lineage.
+You can access files in the lineage tab by double clicking on a particular model.
 
 **Command bar + status** 
 
 You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/command_bar.png" title="Command Bar"/>
-
-:::info 
+:::info Note
 
 For your convenience, dbt Cloud automatically includes ‘`dbt`’ as a prefix to your command so you don’t need to enter it. You can also type the ‘`dbt`’ prefix in your command.
 :::
 
 
-          
-The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**
+The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
 **Generating and viewing documentation** 
 
-To generate your project’s documentation (docs) in the IDE, enter `docs generate` in the Command Bar in the IDE.  This command generates the docs for your dbt project as it currently exists in development.
+To generate your project’s documentation (docs) in the IDE, enter `docs generate` or `dbt docs generate` in the command bar.  This command generates the docs for your dbt project as it currently exists in development.
 
 After you generate a successful run, you can view your [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.
 
@@ -185,11 +182,11 @@ You can create a separate branch to develop and make changes. The changes you ma
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/git-overview.png" title="Git overview"/>
 
-:::info 
+:::info Note
 To use version control, make sure you are connected to a Git repository in the IDE.
 :::
 
-**Common git terms** (below is a table)
+**Common git terms** 
  
 
 | Name | Definition |
@@ -219,5 +216,5 @@ The git button in the dbt Cloud IDE allows you to apply the concept of version c
 | Open pull request | This allows you to open a pull request in Git for peers to review changes before merging into the base branch.|
 | Pull changes from master/main | This option is available if you are on any local branch that is behind the remote version of the base branch or the remote version of the branch that you're currently on. |
 | Pull from remote | This option is available if you’re on the local base branch and changes have recently been pushed to the remote version of the branch. As such, pulling in changes from the remote repo will allow you to pull in the most recent version of the base branch. |
-| Reclone Your Repository | This allows you to reset your repository back to a fresh clone from your remote. You can use this option when you need to reclone your repo or if there are any git-related errors you’re experiencing in the dbt Cloud IDE. |
+| Reclone Your Repository | This allows you to reset your repository back to a fresh clone from your remote. You can use this option when you need to reclone your repo or if there are any git-related errors you’re experiencing in the dbt Cloud IDE. Reclone your repository is not available in the beta launch |
 | Refresh git state | This enables you to pull new branches from a different remote branch to your local branch with just one command.  |

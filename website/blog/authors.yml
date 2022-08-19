@@ -293,3 +293,21 @@ benoit_perigaud:
   links:
     - url: https://www.linkedin.com/in/benoit-perigaud/
       icon: fa-linkedin
+
+bennie_regenold:
+  name: Bennie Regenold
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/bennie-regenold.png
+  links:
+    - url: https://www.linkedin.com/in/benjaminregenold/
+      icon: fa-linkedin
+
+barr_yaron:
+  name: Barr Yaron
+  job_title: Product Manager
+  organization: dbt Labs
+  image_url: /img/blog/authors/barr-yaron.png
+  links:
+    - url: https://www.linkedin.com/in/barryaron/
+      icon: fa-linkedin
