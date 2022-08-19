@@ -14,7 +14,7 @@ is_featured: true
 
 Those who have been building <Term id="data-warehouse">data warehouses</Term> for a long time have undoubtedly encountered the challenge of building <Term id="surrogate-key">surrogate keys</Term> on their data models. Having a column that uniquely represents each entity helps ensure your data model is complete, does not contain duplicates, and able to join across different data models in your warehouse.  
 
-Sometimes, we are lucky enough to have data sources with these keys built right in — Shopify data synced via their API, for example, has easy-to-use keys on all the tables written to your warehouse. If this is not the case, or if you build a data model with a compound key (aka the data is unique across multiple dimensions), you will have to rely on some strategy for creating and maintaining these keys yourself. How can you do this with dbt? Let’s dive in.
+Sometimes, we are lucky enough to have data sources with these keys built right in — Shopify data synced via their API, for example, has easy-to-use keys on all the <Term id="table">tables</Term> written to your warehouse. If this is not the case, or if you build a data model with a compound key (aka the data is unique across multiple dimensions), you will have to rely on some strategy for creating and maintaining these keys yourself. How can you do this with dbt? Let’s dive in.
 
 ## How were surrogate keys managed in the past?
 
@@ -168,7 +168,7 @@ Even though configuring MIISKs with sequences can be pretty well automated, it�
 
 ## Hashed surrogate keys
 
-An alternative to using the traditional MIISK strategy is to use cryptographic hashing functions to *derive the surrogate key values from the data itself,* a fancy way of saying “create a random string for every unique combination of values you find in my table”. These hashing functions are **deterministic**, meaning the same set of inputs will always produce the same output. In our SQL models, we can pass the column or columns that represent to the grain to this hashing function and viola, a consistent, unique identifier is generated automatically! This has been packaged up in the `surrogate_key()` macro in the `dbt_utils` package ([source](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)), and works across warehouse providers! Check out our SQL Magic post that dives deeper into this function [here](https://docs.getdbt.com/blog/sql-surrogate-keys).  
+An alternative to using the traditional MIISK strategy is to use cryptographic hashing functions to *derive the surrogate key values from the data itself,* a fancy way of saying “create a random string for every unique combination of values you find in my table”. These hashing functions are **deterministic**, meaning the same set of inputs will always produce the same output. In our SQL models, we can pass the column or columns that represent to the <Term id="grain">grain</Term> to this hashing function and viola, a consistent, unique identifier is generated automatically! This has been packaged up in the `surrogate_key()` macro in the `dbt_utils` package ([source](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)), and works across warehouse providers! Check out our SQL Magic post that dives deeper into this function [here](https://docs.getdbt.com/blog/sql-surrogate-keys).  
 
 ```sql
 # in models/reports/daily_user_orders.sql
