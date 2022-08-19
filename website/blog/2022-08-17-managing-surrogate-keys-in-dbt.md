@@ -8,7 +8,7 @@ authors: [dave_connors]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-08-19
+date: 2022-08-24
 is_featured: true
 ---
 
