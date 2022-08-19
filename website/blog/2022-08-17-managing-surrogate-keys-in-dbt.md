@@ -1,5 +1,5 @@
 ---
-title: "Managing surrogate keys in dbt"
+title: "Surrogate keys in dbt: To monotonically increase or hash"
 description: "Wondering how to build a data model with surrogate keys? Dave Connors walks you through two strategies."
 slug: managing-surrogate-keys
 
