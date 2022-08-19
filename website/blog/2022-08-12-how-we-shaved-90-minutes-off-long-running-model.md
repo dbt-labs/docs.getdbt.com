@@ -1,7 +1,7 @@
 ---
 title: "How we shaved 90 minutes off our longest running model"
 description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing tab in dbt Cloud."
-slug: model-timing-tab
+slug: how-we-shaved-90-minutes-off-model
 authors: [bennie_regenold, barr_yaron]
 tags: [analytics craft]
 hide_table_of_contents: false
@@ -10,7 +10,7 @@ date: 2022-08-18
 is_featured: true
 ---
 
-When running a job that has over 1,700 models, how do you know what a “good” runtime is? If the total process takes 3 hours, is that fantastic or terrible? While there are many possible answers depending on dataset size, complexity of modeling, and historical run times, the crux of the matter is normally “did you hit your SLAs”? However, in the cloud computing world where bills are based on usage, the question is really “did you hit your SLAs _and stay within budget_”? 
+When running a job that has over 1,700 models, how do you know what a “good” runtime is? If the total process takes 3 hours, is that fantastic or terrible? While there are many possible answers depending on dataset size, complexity of modeling, and historical run times, the crux of the matter is normally “did you hit your SLAs”? However, in the cloud computing world where bills are based on usage, the question is really “did you hit your SLAs _and stay within budget_”?
 
 Here at dbt Labs, we used the Model Timing tab in our internal analytics dbt project to help us identify inefficiencies in our incremental dbt Cloud job that eventually led to major financial savings, and a path forward for periodic improvement checks.
 
@@ -36,7 +36,7 @@ Also, this blog post represents a pretty technical deep dive. If everything you 
 
 ### Unpacking the query plan
 
-Finding this long running query was step one. Since it was so dominant in the Model Timing tab, it was easy to go straight to the problematic model and start looking for ways to improve it. The next step was to check out what the Snowflake query plan looked like. 
+Finding this long running query was step one. Since it was so dominant in the Model Timing tab, it was easy to go straight to the problematic model and start looking for ways to improve it. The next step was to check out what the Snowflake query plan looked like.
 
 There are a few ways you can do this: either find the executed query in the `History` tab of the Snowflake UI, or grab the compiled code from dbt and run it in a worksheet. As it’s running, you can click on the `Query ID` link to see the plan. More details on this process are available in your provider’s documentation ([Snowflake](https://docs.snowflake.com/en/user-guide/ui-query-profile.html), [BigQuery](https://cloud.google.com/bigquery/docs/query-plan-explanation), [Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c-the-query-plan.html), [Databricks](https://docs.databricks.com/sql/admin/query-profile.html)).
 
@@ -66,7 +66,7 @@ with model_execution as (
 diffed as (
 
     select *,
-    
+
         row_number() over (
             partition by project_id, model_id
             order by dvce_created_tstamp
@@ -75,16 +75,16 @@ diffed as (
         /*
             The `mode` window function returns the most common content hash for a
             given model on a given day. We use this a proxy for the 'production'
-            version of the model, running in deployment. When a different hash 
+            version of the model, running in deployment. When a different hash
             is run, it likely reflects that the model is undergoing development.
         */
-        
+
         contents != mode(contents) over (
             partition by project_id, model_id, dvce_created_tstamp::date
         ) as is_changed
-        
+
     from model_execution
-    
+
 ),
 
 final as (
@@ -119,17 +119,17 @@ The window functions referenced above are answering the following questions:
 
 ### Attempt #1: Optimizing our objects and materializations
 
-Given the size and complexity of this query, the first few approaches we took didn’t focus on changing the query as much as optimizing our objects and materializations. 
+Given the size and complexity of this query, the first few approaches we took didn’t focus on changing the query as much as optimizing our objects and materializations.
 
 The two window functions (`row_number()` and `mode()` in the `diffed` <Term id="cte" /> above) were in an [ephemeral model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral) which isn’t stored in the data warehouse, but is instead executed in-memory at run time. Since it was obvious our virtual warehouse was running out of memory (remote storage spillage), we tried swapping that to a view, then a table materialization. Neither of these improved the run time significantly, so we tried clustering the table. However, since our two window functions are at different grains there wasn’t a great clustering key we found for this.
 
 ### Attempt #2: Moving to an incremental model
 
-The final strategy we tried, which ended up being the solution we implemented, was to swap the ephemeral model (`dbt_model_summary`) to an [incremental model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models). Since we’re calculating metrics based on historical events (**first** model run, most frequent model run **today**), an incremental model let us perform the calculation for all of history once in an initial build, then every subsequent build only needs to look at a much smaller subset of the data to run it’s calculations. 
+The final strategy we tried, which ended up being the solution we implemented, was to swap the ephemeral model (`dbt_model_summary`) to an [incremental model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models). Since we’re calculating metrics based on historical events (**first** model run, most frequent model run **today**), an incremental model let us perform the calculation for all of history once in an initial build, then every subsequent build only needs to look at a much smaller subset of the data to run it’s calculations.
 
 One of the biggest problems with the ephemeral model was remote spillage due to lack of memory, so having a smaller dataset to run the calculation against made a massive impact. Snowflake can easily calculate a daily mode or a first model run when we only had to look at a sliver of the data each time.
 
-Swapping from ephemeral to incremental can be simple, but in this case we are calculating at two grains and need more than just the data loaded since the prior run. 
+Swapping from ephemeral to incremental can be simple, but in this case we are calculating at two grains and need more than just the data loaded since the prior run.
 
 - `row_number()`
     - To get the first time a model was run, we need every invocation of that model to see if this is the first one. Still, we don’t need the full history, just the subset that changed today. This is handled in the `new_models` CTE you can see below.
@@ -143,7 +143,7 @@ This let to slightly more complex logic in the model, as you can see below:
 
 with model_execution as (
 
-    select * 
+    select *
     from {{ ref('stg_dbt_run_model_events') }}
     where
         1=1
@@ -173,15 +173,15 @@ new_models as (
     from {{ ref('stg_dbt_run_model_events') }} as base_table
     where
         exists (
-                select 1 
-                from model_execution 
-                where 
+                select 1
+                from model_execution
+                where
                     base_table.project_id = model_execution.project_id
                     and base_table.model_id = model_execution.model_id
             )
     qualify
         row_number() over(partition by project_id, model_id order by dvce_created_tstamp) = 1
-    
+
 
 ),
 {% endif %}
@@ -191,7 +191,7 @@ diffed as (
     select model_execution.*,
 
         {% if is_incremental() %}
-    
+
             new_models.is_new,
 
         {% else %}
@@ -206,23 +206,23 @@ diffed as (
         /*
             The `mode` window function returns the most common content hash for a
             given model on a given day. We use this a proxy for the 'production'
-            version of the model, running in deployment. When a different hash 
+            version of the model, running in deployment. When a different hash
             is run, it likely reflects that the model is undergoing development.
         */
-        
+
         model_execution.contents != mode(model_execution.contents) over (
             partition by model_execution.project_id, model_execution.model_id, model_execution.dvce_created_tstamp::date
         ) as is_changed
-        
+
     from model_execution
         {% if is_incremental() %}
-            left join new_models on 
-                model_execution.project_id = new_models.project_id 
+            left join new_models on
+                model_execution.project_id = new_models.project_id
                 and model_execution.model_id = new_models.model_id
                 and model_execution.invocation_id = new_models.invocation_id
                 and model_execution.dvce_created_tstamp = new_models.dvce_created_tstamp
         {% endif %}
-    
+
 ),
 
 final as (
@@ -251,9 +251,9 @@ The astute reader will notice that the entire `new_models` CTE is wrapped in an 
 
 A major challenge in testing and implementing our changes was the volume of data needed for comparison testing. Again, the biggest problem we had was that our virtual warehouse was running out of memory, so trying to do performance testing on a subset of the data had misleading results (our testing was a subset of 10 million records). Since this query runs just fine on a small set of data (think the incremental runs), when we were initially trying to performance test the new vs old it looked like there was no real benefit to the incremental model. This led to many wasted hours of trying to figure out why we weren’t seeing an improvement.
 
-Eventually, we figured out that we needed to test this on the full dataset to see the impact. In the cloud warehousing world where you pay-for-use this has very easy to track cost implications. However, you have to spend money to make money, so we decided the increased cost associated with testing this on the full dataset was worth the expense. 
+Eventually, we figured out that we needed to test this on the full dataset to see the impact. In the cloud warehousing world where you pay-for-use this has very easy to track cost implications. However, you have to spend money to make money, so we decided the increased cost associated with testing this on the full dataset was worth the expense.
 
-To start with, we [cloned](https://docs.snowflake.com/en/sql-reference/sql/create-clone.html) the entire prod schema to a testing schema, which is a free operation in Snowflake. Then, we did an initial build of the new `dbt_model_summary` model since it was switching from ephemeral to incremental. Once that was complete, we were able to delete out a few days worth of data from both `dbt_model_summary` and `fct_dbt_invocations` to see how long an incremental run would take. This represented the true day-to-day runs, and the results were fantastic! The combined run time of both models dropped from 1.5 hours to 15-20 minutes for incremental runs. 
+To start with, we [cloned](https://docs.snowflake.com/en/sql-reference/sql/create-clone.html) the entire prod schema to a testing schema, which is a free operation in Snowflake. Then, we did an initial build of the new `dbt_model_summary` model since it was switching from ephemeral to incremental. Once that was complete, we were able to delete out a few days worth of data from both `dbt_model_summary` and `fct_dbt_invocations` to see how long an incremental run would take. This represented the true day-to-day runs, and the results were fantastic! The combined run time of both models dropped from 1.5 hours to 15-20 minutes for incremental runs.
 
 ## Benefits of the improvement
 
@@ -269,26 +269,25 @@ The cost savings are great, but there are two other “time based” benefits th
 Developing an analytic code base is an ever-evolving process. What worked well when the dataset was a few million records may not work as well on billions of records. As your code base and data evolve, be on the lookout for areas of improvement. This article showed a very specific example around two models, but the general principals can be applied to any code base:
 
 1. **Periodically review your run times**
-    
+
     This is made easy with the [Model Timing tab](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) in dbt Cloud. You can quickly go to any run to see the model composition, order, and run time for every run in dbt Cloud. The longest running models stick out like a sore thumb!
-    
+
 2. **Use the query analyzer from your data warehouse**
-    
+
     Once you’ve found the problematic model (or models!), use the query analyzer to find which part of the model takes the longest to run. The graphical tree provided gives you a more fine grained view into what is going on. Some tips to look out for:
-    
+
     - Window functions on large data sets
     - Cross joins
     - OR joins
     - Snowflake specifically: spilling to remote disk
 3. **Try a few different approaches**
-    
-    There is seldom one solution to a problem, especially in a system as complex as a data warehouse. Don’t get too bogged down on a single solution, and instead try a few different strategies to see their impact. If you can’t commit to fully rewriting the logic, see if clustering/partitioning the table will help. Sometimes a bigger warehouse really is the solution. If you don’t try, you’ll never know. 
-    
+
+    There is seldom one solution to a problem, especially in a system as complex as a data warehouse. Don’t get too bogged down on a single solution, and instead try a few different strategies to see their impact. If you can’t commit to fully rewriting the logic, see if clustering/partitioning the table will help. Sometimes a bigger warehouse really is the solution. If you don’t try, you’ll never know.
+
 4. **Test on representative data**
-    
-    Testing on a [subset of data](https://docs.getdbt.com/guides/legacy/best-practices#limit-the-data-processed-when-in-development) is a great general practice. It allows you to iterate quickly, and doesn’t waste resources. However, there are times when you need to test on a larger dataset for problems like disk spillage to come to the fore. Testing on large data is hard and expensive, so make sure you have a good idea of the solution before you commit to this step. 
-    
+
+    Testing on a [subset of data](https://docs.getdbt.com/guides/legacy/best-practices#limit-the-data-processed-when-in-development) is a great general practice. It allows you to iterate quickly, and doesn’t waste resources. However, there are times when you need to test on a larger dataset for problems like disk spillage to come to the fore. Testing on large data is hard and expensive, so make sure you have a good idea of the solution before you commit to this step.
+
 5. **Repeat**
-    
+
     Remember that your code and data evolves and grows. Be sure to keep an eye on run times, and repeat this process as needed. Also, keep in mind that a developer’s time and energy are a cost as well, so going after a handful of big-hitting items less frequently may be better than constantly rewriting code for incremental gains.
-    
