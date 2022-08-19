@@ -75,7 +75,7 @@ We've written this guide assuming that you have some familiarity with dbt. If yo
 
 A dbt Python model is a function that reads in dbt sources or models, applies a series of transformations, and returns a transformed dataset. <Term id="dataframe">DataFrame</Term> operations define the starting points, the end state, and each step along the way.
 
-This is similar to the role of <Term id="cte">CTEs</Term> in dbt SQL models. We use CTEs to pull in upstream datasets, to define (and name) a series of meaningful transformations, and to end with a final `select` statement. You can run the compiled version of a dbt SQL model to see the data that will be included in the resulting view or table. When you `dbt run`, dbt actually wraps that query in `create view`, `create view`, or more complex DDL, to save its results in the database.
+This is similar to the role of <Term id="cte">CTEs</Term> in dbt SQL models. We use CTEs to pull in upstream datasets, to define (and name) a series of meaningful transformations, and to end with a final `select` statement. You can run the compiled version of a dbt SQL model to see the data that will be included in the resulting view or table. When you `dbt run`, dbt actually wraps that query in `create view`, `create table`, or more complex DDL, to save its results in the database.
 
 Instead of a final `select` statement, each Python model returns a final DataFrame. Each DataFrame operation is "lazily evaluated." In development, you can preview its data, using methods like `.show()` or `.head()`. When you run a Python model, the full result of the final DataFrame will be saved as a table in your data warehouse.
 

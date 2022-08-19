@@ -48,15 +48,7 @@ exports.versionedPages = [
     "firstVersion": "1.2",
   },
   {
-    "page": "guides/migration/versions/upgrading-to-v1.2",
-    "firstVersion": "1.2",
-  },
-  {
     "page": "docs/contributing/testing-a-new-adapter",
-    "firstVersion": "1.1",
-  },
-  {
-    "page": "guides/migration/versions/upgrading-to-v1.1",
     "firstVersion": "1.1",
   },
   {
