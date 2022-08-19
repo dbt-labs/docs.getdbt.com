@@ -6,6 +6,11 @@ sidebar_label: "Enhancement: New cloud IDE beta"
 tags: [Aug-16-2022]
 ---
 
+:::info Beta feature 
+Read more about the [Cloud IDE beta](https://www.getdbt.com/blog/staging-highlights-the-latest-from-dbt-labs/) and [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the new Cloud IDE beta group.
+
+:::
+
 Building code on the dbt Cloud integrated development environment (IDE) should be seamless, and the tool that you’re using should not add more distractions to the data work that is often already confusing and difficult.
 
 We're now excited to start rolling out the IDE Beta version, which focuses on performance and reliability improvements.
@@ -28,4 +33,4 @@ To address the issue, we rebuilt the IDE and made some significant architectural
 
 - Your IDE spinner time will be quicker as you can access it without needing to wait for the rpc server to finish getting ready.
 
-You can read more about it [here](https://www.getdbt.com/blog/staging-highlights-the-latest-from-dbt-labs/)
+
