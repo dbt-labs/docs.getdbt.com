@@ -58,7 +58,7 @@ your_profile_name:
 
 LDAP allows you to authenticate with a username & password when Impala is [configured with LDAP Auth](https://impala.apache.org/docs/build/html/topics/impala_ldap.html). LDAP is supported over Binary & HTTP connection mechanisms.
 
-This is the recommended authentication mechanism to use with Cloudera Data Platform.
+This is the recommended authentication mechanism to use with Cloudera Data Platform (CDP).
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -76,11 +76,13 @@ your_profile_name:
      use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials
      username: [username]
      password: [password]
-     dbname: [db name]  # this should be same as schema name provided below
+     dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
      schema: [schema name]
 ```
 
 </File>
+
+Note: When creating workload user in CDP ensure that the user has CREATE, SELECT and INSERT permissions. If the user is required to execute GRANT statments, see for instance (https://docs.getdbt.com/reference/resource-configs/grants) or (https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) appropriate GRANT perssmisions should be configured. 
 
 ### Kerberos
 
@@ -100,12 +102,19 @@ your_profile_name:
       kerberos_service_name: [kerberos service name]
       use_http_transport: true
       use_ssl: true # TLS should always be used with LDAP to ensure secure transmission of credentials
-      dbname: [db name]  # this should be same as schema name provided below
+      dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
       schema: [schema name]
 
 ```
 
 </File>
+
+Note: A typical setup of Cloudera EDH will invlove the following steps to setup Kerberos before one can execute dbt commands:
+- Get the correct relm config file for your installation (krb5.conf)
+- Set environemnt variable to point to the config file (export KRB5_CONFIG=/path/to/krb5.conf)
+- Set correct permissions for config file (sudo chmod 644 /path/to/krb5.conf)
+- Obtain keytab using kinit (kinit username@YOUR_RELEM.YOUR_DOMAIN)
+- The keytab is valid for certain period after which you will need to run kinit again to renew validity of the keytab.
 
 ## Installation and Distribution
 
