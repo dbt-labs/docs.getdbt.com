@@ -96,7 +96,7 @@ Initially, it might seem as though these should just be fields on `order_placed`
 - `items_fulfilled`
 - `days_to_fulfillment`
 
-One can imagine a stakeholder wanting to know all five of these data points, but the context for them comes from multiple events in the order’s flow. A`_details` table allows us to assemble a broad bank of knowledge about a given entity (in this case, an order) in one place. If data refresh is performant enough, this could even be the place to surface true snapshot fields like `status` or`current_location`.
+One can imagine a stakeholder wanting to know all five of these data points, but the context for them comes from multiple events in the order’s flow. A `_details` table allows us to assemble a broad bank of knowledge about a given entity (in this case, an order) in one place. If data refresh is performant enough, this could even be the place to surface true snapshot fields like `status` or`current_location`.
 
 So we have everything that happened to our order and everything we’d want to know about it. Now let’s put it all together…literally.
 
