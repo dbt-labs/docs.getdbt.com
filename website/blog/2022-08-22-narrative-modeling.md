@@ -1,3 +1,14 @@
+---
+title: "Narrative modeling: how structure can tell a story
+description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing tab in dbt Cloud."
+slug: narrative-modeling
+authors: [ian-fahey]
+tags: 
+hide_table_of_contents: false
+
+date: 2022-08-18
+is_featured: true
+---
 
 The larger a data ecosystem gets, the more its users and stakeholders expect consistency. As the ratio of data models to team members (to say nothing of stakeholders to team members) skyrockets, an agreed-upon modeling pattern often acts as scaffolding around that growth. 
 
