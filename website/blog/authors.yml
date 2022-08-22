@@ -181,7 +181,7 @@ simon_podhajsky:
   job_title: Data Lead
   organization: iLife Technologies
   description: >
-    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife 
+    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife
     Technologies, a startup that seeks to digitize the life insurance agency.
   image_url: /img/blog/authors/simon-podhajsky.jpeg
   links:
@@ -207,7 +207,7 @@ josh_fell:
   links:
     - url: https://www.linkedin.com/in/josh-fell/
       icon: fa-linkedin
-      
+
 simo_tumelius:
   name: Simo Tumelius
   job_title: Freelance Data and Analytics Engineer
@@ -215,7 +215,7 @@ simo_tumelius:
   links:
     - url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
       icon: fa-linkedin
-     
+
 matt_winkler:
   name: Matt Winkler
   job_title: Senior Solutions Architect
@@ -277,7 +277,7 @@ callum_mccann:
   name: Callum McCann
   job_title: Senior Developer Experience Advocate
   organization: dbt Labs
-  description: Callum works on metrics and is either talking about that or obsessing about his dog. 
+  description: Callum works on metrics and is either talking about that or obsessing about his dog.
   image_url: /img/blog/authors/callum-mccann.jpg
   links:
     - url: https://www.linkedin.com/in/callum-mccann-38628a89/
@@ -311,3 +311,12 @@ barr_yaron:
   links:
     - url: https://www.linkedin.com/in/barryaron/
       icon: fa-linkedin
+
+yu_ishikawa:
+   name: Yu Ishikawa
+   job_title: Senior Data Privacy Engineer
+   organization: Ubie
+   image_url: /img/blog/authors/yu-ishikawa.jpg
+   links:
+   - url: https://www.linkedin.com/in/yuishikawa0301
+     icon: fa-linkedin
