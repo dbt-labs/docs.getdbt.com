@@ -212,17 +212,17 @@ There’s a classic movie called Desk Set in which Katharine Hepburn runs the re
 
 **Bunny Watson:** I associate many things with many things.
 
-Richard Sumner: I see. Hmm.
+**Richard Sumner:** I see. Hmm.
 
-Bunny Watson: Aren't you going to ask me how many people got off at White Plains? Three.
+**Bunny Watson:** Aren't you going to ask me how many people got off at White Plains? Three.
 
-Richard Sumner: But there are ten letters in White Plains.
+**Richard Sumner:** But there are ten letters in White Plains.
 
-Bunny Watson: No. Eleven.
+**Bunny Watson:** No. Eleven.
 
-Richard Sumner: [beat] But only three got off there.
+**Richard Sumner:** [beat] But only three got off there.
 
-Bunny Watson: You see, I've only ever been to White Plains three times in my whole life.
+**Bunny Watson:** You see, I've only ever been to White Plains three times in my whole life.
 
 Much like Mr. Sumner, we would be hard-pressed to teach a computer to answer questions the way Bunny does. Her accumulated knowledge and how she accesses it is deeply human. Why, then, do we so often take the accumulated knowledge of subject matter experts across our business and abstract it AWAY from its context to capture it in a data model? Put another way, why do we store business answers in a way that, over time, forgets the questions? 
 
