@@ -80,7 +80,7 @@ In the example of orders, an `order_details` table might contain fields like:
 - `items_ordered`
 - `payment_method`
 
-Initially, it might seem as though these should just be fields on `order_placed` and, for those examples, it’s a reasonable point. Consider instead the following:
+Initially, it might seem as though these should just be fields on `order_placed` and, for those examples, it’s a reasonable point[^1]. Consider instead the following:
 
 - `items_fulfilled`
 - `days_to_fulfillment`
@@ -117,7 +117,7 @@ Grouping the models for each entity under a schema named for that entity builds 
         - `order_fulfilled`
         - `order_placed`
 
-This structuring principle can also help address the boogeyman of business entity resolution, overlapping names. If you’re a business that orders parts regularly and then fulfills customer orders, the question *How many orders came in last week?* can get a lot more confusing. At a fast-moving company, a new hire could be asked the question and answer in the wrong context completely, because the tenured stakeholder can no longer imagine mixing them up. 
+This structuring principle can also help address the boogeyman of business entity resolution, overlapping names. If you’re a business that orders parts regularly and then fulfills customer orders, the question *How many orders came in last week?* can get a lot more confusing. At a fast-moving company, a new hire could be asked the question and answer in the wrong context completely[^2], because the tenured stakeholder can no longer imagine mixing them up. 
 
 If instead, the database had schemas for`parts_order` and`customer_order`, that same new hire hits the database, sees those schemas, and thinks “Oh, there are two types…I should probably ask which.” That distinction can be a lot harder to spot in a single analytics schema.
 
@@ -218,3 +218,8 @@ Much like Mr. Sumner, we would be hard-pressed to teach a computer to answer que
 Narrative modeling can help structure the data with questions and answers stored side-by-side, allowing us to be reference librarians with a killer card catalog. We can model out the expertise of the finance team or the marketing team or the product team in their own words, which keeps the context for not only the next person to join *those* teams, but also the next person to join our own. 
 
 And so, in the face of battalions of business questions, we can become a host unto ourselves.
+
+### Footnotes
+[^1]: However, in terms of the upstream commerce data, it’s conceivable for items to be added to an order as discrete events first before a final order placement event. An API endpoint for an order being placed might not need to know what’s in the cart, but rather just the who and the when. At that point, it’s dealer’s choice whether to join in items for order_placed or order_details
+
+[^2]: Ask me how I know!
