@@ -2,11 +2,11 @@
 title: "Narrative modeling: how structure can tell a story
 description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing tab in dbt Cloud."
 slug: narrative-modeling
-authors: [ian-fahey]
+authors: [ian_fahey]
 tags: 
 hide_table_of_contents: false
 
-date: 2022-08-18
+date: 2022-08-22
 is_featured: true
 ---
 
