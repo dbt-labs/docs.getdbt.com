@@ -12,7 +12,7 @@ date: 2022-07-20
 is_featured: true
 ---
 
-Stored procedures are widely used throughout the data warehousing world. They’re great for encapsulating complex transformations into units that can be scheduled and respond to conditional logic via parameters. However, as team’s continue building their transformation logic using the stored procedure approach, we see more data downtime, increased data warehouse costs, and incorrect / unavailable data in production. All of this leads to more stressed and unhappy developers, and consumers who have a hard time trusting their data.
+Stored procedures are widely used throughout the data warehousing world. They’re great for encapsulating complex transformations into units that can be scheduled and respond to conditional logic via parameters. However, as teams continue building their transformation logic using the stored procedure approach, we see more data downtime, increased data warehouse costs, and incorrect / unavailable data in production. All of this leads to more stressed and unhappy developers, and consumers who have a hard time trusting their data.
 
 If your team works heavily with stored procedures, and you ever find yourself with the following or related issues:
 
@@ -60,7 +60,7 @@ Tight [version control integration](https://docs.getdbt.com/docs/guides/best-pra
 
 Whether you’re working with T-SQL, PL/SQL, BTEQ, or some other SQL dialect, the process of migrating from the stored procedure approach to the dbt approach can typically be broken down into similar steps. Over the years, we’ve worked with many customers to convert confusing and hard-to-manage stored procedure code into modular dbt pipelines. Through our work, we’ve arrived at a few key best practices in undertaking this process, which we present below.
 
-We provide a simple illustrative example of how this process works below. If you’re interested in diving into further detail on this topic, please visit our [companion guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-stored-procedures/4-deletes) on the refactoring process.
+If you’re interested in diving into further detail on this topic, please visit our [companion guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures) on the refactoring process.
 
 ### Step 0: Understand a bit about how dbt works
 
