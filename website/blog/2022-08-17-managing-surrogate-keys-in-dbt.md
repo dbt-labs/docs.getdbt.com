@@ -1,5 +1,5 @@
 ---
-title: "Surrogate keys in dbt: Integers or hash"
+title: "Surrogate keys in dbt: Integers or hashes?"
 description: "Wondering how to build a data model with surrogate keys? Dave Connors walks you through two strategies."
 slug: managing-surrogate-keys
 
