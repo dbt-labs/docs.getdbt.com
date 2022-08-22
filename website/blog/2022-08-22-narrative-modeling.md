@@ -1,5 +1,5 @@
 ---
-title: "Narrative modeling: how structure can tell a story
+title: "Narrative modeling: How structure can tell a story"
 description: "Analytics engineers work in the space between technical and business understanding, but tried-and-true modeling patterns often default to the technical. In this article, Ian Fahey makes a case for a pattern of modeling that follows the narrative of the business it represents."
 slug: narrative-modeling
 authors: [ian_fahey]
