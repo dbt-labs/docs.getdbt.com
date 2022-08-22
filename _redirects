@@ -14,6 +14,7 @@
 /docs/archival	/docs/building-a-dbt-project/archival	302
 /docs/artifacts	/docs/dbt-cloud/using-dbt-cloud/artifacts	302
 /docs/bigquery-configs	/reference/resource-configs/bigquery-configs	302
+/reference/resource-properties/docs	/reference/resource-configs/docs	302
 /docs/building-a-dbt-project/building-models/bigquery-configs	/reference/resource-configs/bigquery-configs	302
 /docs/building-a-dbt-project/building-models/configuring-models	/reference/model-configs
 /docs/building-a-dbt-project/building-models/enable-and-disable-models	/reference/resource-configs/enabled	302
