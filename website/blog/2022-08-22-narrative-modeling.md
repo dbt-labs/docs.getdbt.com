@@ -15,7 +15,7 @@ The larger a data ecosystem gets, the more its users and stakeholders expect con
 The biggest tool in the toolbox today, dimensional modeling, offers enough consistency to make it the dominant approach in the space, but what might be possible if we shut that toolbox, took a break from our workbench, and instead strolled over to our bookshelf?
 
 In other words, what if we told a story?
-
+<!--truncate-->
 # The stakeholder’s hydra
 
 “When ***business questions*** come, they come not single spies, but in battalions.” - noted data professional William Shakespeare
