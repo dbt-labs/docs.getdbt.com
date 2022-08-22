@@ -1,6 +1,6 @@
 ---
 title: "Narrative modeling: how structure can tell a story
-description: "Monitoring large, complex projects can be difficult. When you're running 1,000+ models in a day, how do you know which of those consistently take the longest to run? In this article, Bennie Regenold and Barr Yaron show the benefits of the Model Timing tab in dbt Cloud."
+description: "Analytics engineers work in the space between technical and business understanding, but tried-and-true modeling patterns often default to the technical. In this article, Ian Fahey makes a case for a pattern of modeling that follows the narrative of the business it represents."
 slug: narrative-modeling
 authors: [ian_fahey]
 tags: 
