@@ -82,7 +82,7 @@ your_profile_name:
 
 </File>
 
-Note: When creating workload user in CDP ensure that the user has CREATE, SELECT and INSERT permissions. If the user is required to execute GRANT statments, see for instance (https://docs.getdbt.com/reference/resource-configs/grants) or (https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) appropriate GRANT perssmisions should be configured. 
+Note: When creating workload user in CDP ensure that the user has CREATE, SELECT and INSERT permissions. If the user is required to execute GRANT statements, see for instance (https://docs.getdbt.com/reference/resource-configs/grants) or (https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. 
 
 ### Kerberos
 
@@ -109,11 +109,11 @@ your_profile_name:
 
 </File>
 
-Note: A typical setup of Cloudera EDH will invlove the following steps to setup Kerberos before one can execute dbt commands:
-- Get the correct relm config file for your installation (krb5.conf)
-- Set environemnt variable to point to the config file (export KRB5_CONFIG=/path/to/krb5.conf)
+Note: A typical setup of Cloudera EDH will involve the following steps to setup Kerberos before one can execute dbt commands:
+- Get the correct realm config file for your installation (krb5.conf)
+- Set environment variable to point to the config file (export KRB5_CONFIG=/path/to/krb5.conf)
 - Set correct permissions for config file (sudo chmod 644 /path/to/krb5.conf)
-- Obtain keytab using kinit (kinit username@YOUR_RELEM.YOUR_DOMAIN)
+- Obtain keytab using kinit (kinit username@YOUR_REALM.YOUR_DOMAIN)
 - The keytab is valid for certain period after which you will need to run kinit again to renew validity of the keytab.
 
 ## Installation and Distribution
