@@ -70,7 +70,7 @@ First, the backbone of a good narrative is the plot: what happened? In our examp
 
 To answer this question, we still need one row per order placed, with timestamps so that we can filter down to specific time periods (e.g. last week). But what should we name it?
 
-Every principle of narrative modeling included the work “intuitive”. With that in mind, let’s call this table `order_placed`.
+Every principle of narrative modeling included the word “intuitive”. With that in mind, let’s call this table `order_placed`.
 
 In narrative modeling, we’d call `order_placed`  an *event table*. Event tables have the naming convention of `subject_verb` . 
 
