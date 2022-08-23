@@ -126,7 +126,7 @@ We can then select unit tests based on the specified adapter. Let’s assume we 
 ```sql
 # Run unit tests on BigQuery
 # `default__test_to_literal` is internally called.
-dbt -operation run_unit_tests --profile bigquery
+dbt run-operation run_unit_tests --profile bigquery
 # Run unit tests on postgres
 # `postgres__test_to_literal` is internally called.
 dbt -operation run_unit_tests --profile postgres
