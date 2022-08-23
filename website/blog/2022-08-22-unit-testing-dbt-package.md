@@ -13,7 +13,7 @@ is_featured: true
 
 It’s important to be able to test any dbt Project, but it’s even more important to make sure you have robust testing if you are developing a [dbt Package](https://docs.getdbt.com/docs/building-a-dbt-project/package-management).
 
-I love dbt packages, because it makes it easy to extend dbt’s functionality and create reusable analytics resources. Even better, we can find and share dbt packages which others developed, finding great packages in [dbt hub](https://hub.getdbt.com/). However, it is a bit difficult to develop complicated dbt macros, because dbt on top of [Jinja2](https://palletsprojects.com/p/jinja/) is lacking some of the functionality you’d expect for software development - like unit testing.
+I love dbt packages, because they make it easy to extend dbt’s functionality and create reusable analytics resources. Even better, we can find and share dbt packages which others have developed, finding great packages in the [dbt Package Hub](https://hub.getdbt.com/). However, it is a bit difficult to develop complicated dbt macros, because dbt on top of [Jinja2](https://palletsprojects.com/p/jinja/) is lacking some of the functionality you’d expect for software development—like unit testing.
 
 In this article, I would like to share options for unit testing your dbt Package - first through discussing the commonly used pattern of integration testing and then by showing how we can implement unit tests as part of our testing arsenal.
 <!--truncate-->
