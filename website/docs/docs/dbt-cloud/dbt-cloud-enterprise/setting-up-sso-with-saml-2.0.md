@@ -23,24 +23,22 @@ provider in order to configure Single Sign On and [role-based access control](ac
 
 You can use the instructions in this section to configure an identity provider besides Okta.
 
-### Configuration in your identity provider
+### Configure your identity provider
 
-_Note: You'll need administrator access to your SAML 2.0 compliant identity provider to follow this guide.
-This approach will work with any SAML 2.0 compliant identity provider._
+You'll need administrator access to your SAML 2.0 compliant identity provider to configure the identity provider. You can use the following instrucitons with any SAML 2.0 compliant identity provider.
 
 ### Creating the application
 
-First, log into your SAML 2.0 identity provider and create a new application.
-When promoted, configure the application with the following details:
- - **Platform:** Web
- - **Sign on method:** SAML 2.0
- - **App name:** dbt Cloud
- - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
+1. Log into your SAML 2.0 identity provider and create a new application.
+2. When promoted, configure the application with the following details:
+   - **Platform:** Web
+   - **Sign on method:** SAML 2.0
+   - **App name:** dbt Cloud
+   - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 #### Configuring the application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your deployment is running at a different url, then
-substitute ` cloud.getdbt.com` for the url of your instance.
+The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your deployment is running at a different url, then substitute ` cloud.getdbt.com` for the url of your instance.
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
@@ -72,7 +70,7 @@ provider to provide group membership information in user attribute called
 | ---- | ----------- | ----- | ----------- |
 | groups | Unspecified | `<IdP-specific>` | The groups a user belongs to in the IdP |
 
-:::info Note:
+:::info Note
 You may use a restricted group attribute statement to limit the groups set
 to dbt Cloud for each authenticated user. For example, if all of your dbt Cloud groups start
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
@@ -161,8 +159,8 @@ dbt Cloud expects by using the Attribute Statements and Group Attribute Statemen
    | `groups` | Unspecified | Matches regex | `.*`  | _The groups that the user belongs to_ |
 
 
-**Note:** You may use a more restrictive Group Attribute Statement than the
-example shown above. For example, if all of your dbt Cloud groups start with
+You can instead use a more restrictive Group Attribute Statement than the
+example shown in the previous steps. For example, if all of your dbt Cloud groups start with
 `DBT_CLOUD_`, you may use a filter like `Starts With: DBT_CLOUD_`. **Okta
 only returns 100 groups for each user, so if your users belong to more than 100
 IdP groups, you will need to use a more restrictive filter**. Please contact
