@@ -320,3 +320,14 @@ yu_ishikawa:
    links:
    - url: https://www.linkedin.com/in/yuishikawa0301
      icon: fa-linkedin
+      
+ian_fahey:
+  name: Ian Fahey
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/ian-fahey.png
+  links:
+    - url: https://www.linkedin.com/in/ianmfahey/
+      icon: fa-linkedin
+    - url: https://twitter.com/Cavorax
+      icon: fa-twitter
