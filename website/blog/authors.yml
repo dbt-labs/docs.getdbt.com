@@ -312,15 +312,6 @@ barr_yaron:
     - url: https://www.linkedin.com/in/barryaron/
       icon: fa-linkedin
 
-yu_ishikawa:
-   name: Yu Ishikawa
-   job_title: Senior Data Privacy Engineer
-   organization: Ubie
-   image_url: /img/blog/authors/yu-ishikawa.jpg
-   links:
-   - url: https://www.linkedin.com/in/yuishikawa0301
-     icon: fa-linkedin
-      
 ian_fahey:
   name: Ian Fahey
   job_title: Analytics Engineer
@@ -331,3 +322,12 @@ ian_fahey:
       icon: fa-linkedin
     - url: https://twitter.com/Cavorax
       icon: fa-twitter
+
+yu_ishikawa:
+   name: Yu Ishikawa
+   job_title: Senior Data Privacy Engineer
+   organization: Ubie
+   image_url: /img/blog/authors/yu-ishikawa.jpg
+   links:
+   - url: https://www.linkedin.com/in/yuishikawa0301
+     icon: fa-linkedin
