@@ -10,6 +10,7 @@ date: 2022-08-25
 is_featured: true
 ---
 
+_Editors note - this post assumes working knowledge of dbt Package development. For an introduction to dbt Packages check out [So You Want to Build a dbt Package](https://docs.getdbt.com/blog/so-you-want-to-build-a-package)._
 
 It’s important to be able to test any dbt Project, but it’s even more important to make sure you have robust testing if you are developing a [dbt Package](https://docs.getdbt.com/docs/building-a-dbt-project/package-management).
 
@@ -23,6 +24,11 @@ In this article, I would like to share options for unit testing your dbt Package
 <!--truncate-->
 
 ## Unit Testing vs. Integration Testing
+
+Unit testing and integration testing are two common paradigms in create well-tested code. For a great deep dive into the difference between the two check out [this article](https://circleci.com/blog/unit-testing-vs-integration-testing/) from the CircleCI team. At a high level:
+
+- **Integration tests** are tests which operate against the entire integrated project or application.
+- **Unit tests** are tests which verify a single element within a software project, such as an individual function or macro.
 
 Many dbt packages use integration tests as their primary testing methodology. For example [dbt-utils](https://github.com/dbt-labs/dbt-utils) has [the integration_tests directory](https://github.com/dbt-labs/dbt-utils/tree/main/integration_tests) so that we can run integration tests by using the generic tests and macros contained within the package. The integration tests directory is essentially a standard dbt project within the dbt-utils package that is tested much the same way any dbt project would be.
 
