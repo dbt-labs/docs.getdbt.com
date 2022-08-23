@@ -22,7 +22,7 @@ The dbt Labs internal project is a beast! Our daily incremental dbt Cloud job ru
 
 ![Model Timing tab before picture](/img/blog/2022-08-12-model-timing/model_timing_before.png)
 
-As you can see, it's straightforward to identify the model that's causing the long run times and holding up other models. The model `fct_dbt_invocations` takes, on average, 1.5 hours to run. This isn't surprising, given that it's a relatively large dataset (~5B records) and that we're performing several intense SQL calculations. Additionally, this model calls an ephemeral model named `dbt_model_summary` that also does some heavy lifting. Still, we decided to explore if we could refactor this model and make it faster.
+As you can see, it's straightforward to identify the model that's causing the long run times and holding up other models. The model `fct_dbt_invocations` takes, on average, 1.5 hours to run. This isn't surprising, given that it's a relatively large dataset (~5B records) and that we're performing several intense SQL calculations. Additionally, this model calls an [ephemeral model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral) named `dbt_model_summary` that also does some heavy lifting. Still, we decided to explore if we could refactor this model and make it faster.
 
 After refactoring this code, we ended up swapping the ephemeral model `dbt_model_summary` to an incremental model that took the bulk of the processing out of the main `fct_dbt_invocations` model. Instead of recalculating this complex logic every run, we pull only new data and run that logic on the smaller subset of those records. The combined run time of the new `dbt_model_summary` and `fct_dbt_invocations` is now ~15-20 minutes, a savings of over an hour per run!
 
@@ -262,7 +262,7 @@ The end result of this improvement saves a nice chunk of change. Since this quer
 The cost savings are great, but there are two other “time based” benefits that come from faster runs:
 
 1. Since this process runs 4 times daily, there is a limit to the length any given run can take, and in turn how many metrics we can calculate. By saving time on the longest running metrics it frees up runtime for us to add new logic to our runs. This generally leads to happier end consumers because they get more information to work with.
-2. If the need ever arrises to refresh our data more frequently, we now have some runway to do that. While these particular models will never be near-real-time, we could realistically get more up-to-date information since we can now process the data faster.
+2. If the need ever arises to refresh our data more frequently, we now have some runway to do that. While these particular models will never be near-real-time, we could realistically get more up-to-date information since we can now process the data faster.
 
 ## Conclusion
 
