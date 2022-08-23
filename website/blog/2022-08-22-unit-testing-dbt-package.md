@@ -69,6 +69,7 @@ If we want to run all tests with a single command, it would be good to bundle th
 -- integration_tests/macros/run_unit_tests.sql
 {% macro run_unit_tests() %}
 	{% do test_to_literal() %}
+	{% do another_test() %}
 {% endmacro %}
 ```
 
