@@ -45,8 +45,7 @@ your_profile_name:
     dev:
       type: hive
       host: localhost
-      port: 21050
-      dbname: [db name]  # this should be same as schema name provided below
+      port: [port]
       schema: [schema name]
       
 ```
