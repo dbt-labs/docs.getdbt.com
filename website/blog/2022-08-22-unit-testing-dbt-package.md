@@ -58,7 +58,7 @@ Then we call the `to_literal` macro in the testing macro. and if the result isnâ
 By doing that, we can call the testing macro in the dbt project of integration tests using `dbt run-operation`.
 
 ```sql
-dbt -operation test_to_literal
+dbt run-operation test_to_literal
 ```
 
 ---
