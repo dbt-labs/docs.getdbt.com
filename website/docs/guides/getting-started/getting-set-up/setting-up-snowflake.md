@@ -3,6 +3,8 @@ title: "Set up and connect Snowflake"
 id: setting-up-snowflake
 description: "Set up Snowflake with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect Snowflake"
+pagination_prev: guides/getting-started/getting-set-up
+pagination_next: guides/getting-started/building-your-first-project/build-your-first-models
 ---
 
 ## Introduction
