@@ -28,7 +28,7 @@ The default mechanism is `binary`. To use HTTP transport, use the boolean option
 
 ## Authentication Methods
 
-dbt-hive supports three authentication mechanisms:
+dbt-hive supports two authentication mechanisms:
 - [`insecure`](#Insecure) No authentication is used, only recommended for testing.
 - [`ldap`](#ldap) Authentication via LDAP
 
