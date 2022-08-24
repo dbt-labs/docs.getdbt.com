@@ -23,7 +23,7 @@ How can you make these complexities in your code more digestible and usable? CTE
 
 ## CTE Syntax: How it works
 
-To use CTEs, you begin by defining your first CTE using the `WITH` statement followed by a `SELECT`, `INSERT`, `UPDATE`, `DELETE`, or `MERGE` statement.
+To use CTEs, you begin by defining your first CTE using the `WITH` statement followed by a `SELECT` statement.
 
 Let’s break down this example involving a `rename_columns` CTE below:
 
