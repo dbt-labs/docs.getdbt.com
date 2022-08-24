@@ -14,11 +14,7 @@ _Editors note - this post assumes working knowledge of dbt Package development. 
 
 It’s important to be able to test any dbt Project, but it’s even more important to make sure you have robust testing if you are developing a [dbt Package](https://docs.getdbt.com/docs/building-a-dbt-project/package-management).
 
-<<<<<<< HEAD
-I love dbt packages, because they make it easy to extend dbt’s functionality and create reusable analytics resources. Even better, we can find and share dbt packages which others have developed, finding great packages in the [dbt Package Hub](https://hub.getdbt.com/). However, it is a bit difficult to develop complicated dbt macros, because dbt on top of [Jinja2](https://palletsprojects.com/p/jinja/) is lacking some of the functionality you’d expect for software development—like unit testing.
-=======
 I love dbt packages, because it makes it easy to extend dbt’s functionality and create reusable analytics resources. Even better, we can find and share dbt packages which others developed, finding great packages in [dbt hub](https://hub.getdbt.com/). However, it is a bit difficult to develop complicated dbt macros, because dbt on top of [Jinja2](https://palletsprojects.com/p/jinja/) is lacking some of the functionality you’d expect for software development - like unit testing.
->>>>>>> 87760d85 (load unit testing post)
 
 In this article, I would like to share options for unit testing your dbt Package - first through discussing the commonly used pattern of integration testing and then by showing how we can implement unit tests as part of our testing arsenal.
 <!--truncate-->
@@ -41,9 +37,11 @@ In this scenario it can be helpful to go beyond integration tests and implement 
 Consider a dbt package called dbt_sample_package . We would like to implement a simple macro to create a string literal from a string text in a macro named `to_literal` in the file `macros/to_literal.sql`.
 
 ```sql
-- macros/to_literal.sql
-{% to_literal(text) %}
-'{{- text -}}'
+-- macros/to_literal.sql
+{% macro to_literal(text) %}
+    
+    '{{- text -}}'
+
 {% endmacro %}
 ```
 
@@ -55,11 +53,16 @@ Then we call the `to_literal` macro in the testing macro. and if the result isn�
 
 ```sql
 -- integration_tests/macros/test_to_literal.sql
-{% test_to_literal() %}
-	{% = dbt_sample_package.to_literal('test string') %}
-	{% if result != "'test string'" %}
-		{{ exceptions.raise_compiler_error('The test is failed') }}
-	{% endif %}
+{% macro test_to_literal() %}
+    
+    {% = dbt_sample_package.to_literal('test string') %}
+    
+    {% if result != "'test string'" %}
+        
+        {{ exceptions.raise_compiler_error('The test is failed') }}
+
+    {% endif %}
+
 {% endmacro %}
 ```
 
@@ -67,12 +70,8 @@ Then we call the `to_literal` macro in the testing macro. and if the result isn�
 
 By doing that, we can call the testing macro in the dbt project of integration tests using `dbt run-operation`.
 
-```sql
-<<<<<<< HEAD
+```shell
 dbt run-operation test_to_literal
-=======
-dbt -operation test_to_literal
->>>>>>> 87760d85 (load unit testing post)
 ```
 
 ---
@@ -82,11 +81,11 @@ If we want to run all tests with a single command, it would be good to bundle th
 ```sql
 -- integration_tests/macros/run_unit_tests.sql
 {% macro run_unit_tests() %}
-	{% do test_to_literal() %}
-<<<<<<< HEAD
-	{% do another_test() %}
-=======
->>>>>>> 87760d85 (load unit testing post)
+
+    {% do test_to_literal() %}
+
+    {% do another_test() %}
+
 {% endmacro %}
 ```
 
@@ -99,15 +98,21 @@ Your dbt package may support multiple adapters. If you are a postgres user, you 
 ```sql
 -- macros/to_literal.sql
 {% macro to_literal(text) %}
-	{{ return(adapter.dispatch('literal_string', 'dbt_sample_package')(text)) }}
+    
+    {{ return(adapter.dispatch('literal_string', 'dbt_sample_package')(text)) }}
+
 {% endmacro %}
 
 {% macro default__to_literal(text) %}
-	'{{- text -}}'
+    
+    '{{- text -}}'
+
 {% endmacro %}
 
 {% macro postgress__to_literal(text) %}
-	E'{{- text -}}'
+
+    '{{- text -}}'
+
 {% endmacro %}
 ```
 
@@ -118,21 +123,33 @@ You may think of how we can implement unit testing macros efficiently. We can us
 ```sql
 -- integration_tests/macros/test_to_literal.sql
 {% macro test_to_literal() %}
-	{{ return(adapter.dispatch('test_to_literal', 'integration_tests')(text)) }}
+
+    {{ return(adapter.dispatch('test_to_literal', 'integration_tests')(text)) }}
+
 {% endmacro %}
 
 {% macro default__test_to_literal() %}
-	{% result = dbt_sample_package.to_literal('test string') %}
-	{% if result != "'test string'" %}
-		{{ exceptions.raise_compiler_error('The test is failed') }}
-	{% endif %}
+
+    {% result = dbt_sample_package.to_literal('test string') %}
+
+    {% if result != "'test string'" %}
+
+        {{ exceptions.raise_compiler_error('The test is failed') }}
+
+    {% endif %}
+
 {% endmacro %}
 
 {% macro postgres__test_to_literal() %}
-	{% result = dbt_sample_package.to_literal('test string') %}
-	{% if result != "E'test string'" %}
-		{{ exceptions.raise_compiler_error('The test is failed') }}
-	{% endif %}
+
+    {% result = dbt_sample_package.to_literal('test string') %}
+
+    {% if result != "E'test string'" %}
+
+        {{ exceptions.raise_compiler_error('The test is failed') }}
+
+    {% endif %}
+
 {% endmacro%}
 ```
 
@@ -140,20 +157,14 @@ You may think of how we can implement unit testing macros efficiently. We can us
 
 We can then select unit tests based on the specified adapter. Let’s assume we have different dbt profiles corresponding to BigQuery and postgres. By specifying a dbt profile based on the adapter, we can select what testing macros are called internally.
 
-```sql
+```shell
 # Run unit tests on BigQuery
-# `default__test_to_literal` is internally called.
-<<<<<<< HEAD
 dbt run-operation run_unit_tests --profile bigquery
+# `default__test_to_literal` is internally called.
+
 # Run unit tests on postgres
-# `postgres__test_to_literal` is internally called.
 dbt run-operation run_unit_tests --profile postgres
-=======
-dbt -operation run_unit_tests --profile bigquery
-# Run unit tests on postgres
 # `postgres__test_to_literal` is internally called.
-dbt -operation run_unit_tests --profile postgres
->>>>>>> 87760d85 (load unit testing post)
 ```
 
 ---
@@ -164,22 +175,30 @@ It’s historically been a challenge to do unit testing in your dbt packaging as
 
 [GitHub - yu-iskw/dbt-unittest: A dbt package provides macros for unit testing](https://github.com/yu-iskw/dbt-unittest)
 
-Using this, we can re-implement the example using the 	`dbt_unittest.assert_equals` macro and the implementation gets much simpler.
+Using this, we can re-implement the example using the `dbt_unittest.assert_equals` macro and the implementation gets much simpler.
 
 ```sql
 -- integration_tests/macros/test_to_literal.sql
 {% macro test_to_literal() %}
-	{{ return(adapter.dispatch('test_to_literal', 'integration_tests')(text)) }}
+
+    {{ return(adapter.dispatch('test_to_literal', 'integration_tests')(text)) }}
+
 {% endmacro %}
 
 {% macro default__test_to_literal() %}
-	{% result = dbt_sample_package.to_literal('test string') %}
-	{{ dbt_unittest.assert_equals(result, "'test string'") }}
+
+    {% result = dbt_sample_package.to_literal('test string') %}
+
+    {{ dbt_unittest.assert_equals(result, "'test string'") }}
+
 {% endmacro %}
 
 {% macro postgres__test_to_literal() %}
-	{% result = dbt_sample_package.to_literal('test string') %}
-	{{ dbt_unittest.assert_equals(result, "E'test string'") }}
+
+    {% result = dbt_sample_package.to_literal('test string') %}
+
+    {{ dbt_unittest.assert_equals(result, "E'test string'") }}
+
 {% endmacro %}
 ```
 
