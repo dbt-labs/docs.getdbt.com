@@ -9,7 +9,7 @@ description: "Configure your profile using the command line."
 
 ## Connecting to your warehouse using the command line
 
-When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your data warehouse.
+When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
 
 <File name='dbt_project.yml'>
 
@@ -101,7 +101,7 @@ To ensure the user credentials you use in your target allow dbt to run, you will
 
 * read source data
 * create schemas¹
-* read system tables
+* read system <Term id="table">tables</Term>
 
 :::info Running dbt without create schema privileges
 

@@ -56,7 +56,7 @@ If you ever get into a bad state, you can disable partial parsing and trigger a 
 
 ## Static parser
 
-At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `config()` from all models in the project. Traditionally, dbt has extracted those values by rendering the Jinja in every model file, which can be slow. In v0.20, we introduced a new way to statically analyze model files, leveraging [`tree-sitter`](https://github.com/tree-sitter/tree-sitter), which we're calling an "experimental parser". You can see the code for an initial Jinja2 grammar [here](https://github.com/fishtown-analytics/tree-sitter-jinja2).
+At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `config()` from all models in the project. Traditionally, dbt has extracted those values by rendering the Jinja in every model file, which can be slow. In v0.20, we introduced a new way to statically analyze model files, leveraging [`tree-sitter`](https://github.com/tree-sitter/tree-sitter), which we're calling an "experimental parser". You can see the code for an initial Jinja2 grammar [here](https://github.com/dbt-labs/tree-sitter-jinja2).
 
 Starting in v1.0, the experimental parser is **on** by default. We believe it can offer *some* speedup to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](global-configs#static-parser).
 
