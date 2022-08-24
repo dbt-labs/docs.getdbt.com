@@ -259,9 +259,8 @@ From the Set up Single Sign-On with SAML page:
 
 **Note:** Keep in mind that the Group ID in Azure AD maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
 
-### Finish setup
 
-After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
 ## dbt Cloud Setup
