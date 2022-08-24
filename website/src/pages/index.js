@@ -64,7 +64,7 @@ function Home() {
                   <Link
                     className="button button--primary"
                     to={useBaseUrl('guides/getting-started')}>
-                    Learn more
+                    Learn More
                   </Link>
                 </div>
               </div>
