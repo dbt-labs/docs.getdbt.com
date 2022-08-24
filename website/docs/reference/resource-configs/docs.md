@@ -285,7 +285,7 @@ order by
 
 </File>
 
-If a `node_color` is not compatible with dbt docs, you will see a compile error like the example below.
+If a `node_color` is incompatible with dbt docs, you will see a compile error, as in the example below.
 
 ```shell
 Invalid color name for docs.node_color: aweioohafio23f. It is neither a valid HTML color name nor a valid HEX code.
