@@ -144,7 +144,7 @@ models:
 
 ### Mark a subfolder of models as hidden
 
-**Note:** This can also hide dbt packages!
+**Note:** This can also hide dbt packages.
 
 <File name='dbt_project.yml'>
 
