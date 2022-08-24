@@ -224,27 +224,27 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 6. Click **Create**.
 7. You can find the new application by clicking **Enterprise applications** and selecting **All applications**.
 8. Click the application you just created and follow the instructions for configuring it in [Configuring SAML endpoints in AD](#configuring-saml-endpoints-in-ad). 
-
-### Configuring SAML endpoints in AD
-
-1. Select **Single sign-on** in the left navigation and click **Set up single sign on**.
-2. Click **SAML** in "Select a single sign-on method" section.
-3. Click **Edit** in "Basic SAML Configuration." 
-4. Use the following table to help you fill out the key fields required to connect to dbt:
+9. Select **Single sign-on** under Manage in the left navigation.
+10. Click **Set up single sign on** under Getting Started.
+11. Click **SAML** in "Select a single sign-on method" section.
+12. Click **Edit** in the Basic SAML Configuration section.
+13. Use the following table to complete the required fields and connect to dbt:
 
    | Field | Value |
    | ----- | ----- |
    | **Identifier (Entity ID)** | Base URL for dbt Cloud. Use `https://cloud.getdbt.com/` or `https://YOUR_COMPANY.getdbt.com/` for a single tenant instance. |
    | **Reply URL (Assertion Consumer Service URL)** | Use `https://cloud.getdbt.com/complete/saml` or `https://YOUR_COMPANY.getdbt.com/complete/saml` for a single tenant instance. |
    | **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
-5. Click **Save** at the top of the form.
+14. Click **Save** at the top of the form.
 
 #### Creating SAML Attributes in AD
 
-1. Edit the **User Attributes & Claims**.
-2. Delete all of the **Additional claims**.
-3. Leave the **Required claim** as is.
-4. Add the three claims below.
+From the Set up Single Sign-On with SAML page:
+
+1. Click *Edit* in the User Attributes & Claims section.
+2. Leave the claim under "Required claim" as is.
+3. Delete all claims under "Additional claims."
+4. Click **Add new claim** and add these three new claims:
 
    | Name | Source attribute |
    | ----- | ----- |
@@ -252,7 +252,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
    | **first_name** | user.givenname |
    | **last_name** | user.surname |
 
-5. Select **Add a group claim**.
+5. Click **Add a group claim** from User Attributes and Claims.
 6. If you'll assign users directly to the enterprise application, select **Security Groups**. If not, select **Groups assigned to the application**.
 7. Set **Source attribute** to **Group ID**.
 8. Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
