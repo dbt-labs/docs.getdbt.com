@@ -60,7 +60,7 @@ Tight [version control integration](https://docs.getdbt.com/docs/guides/best-pra
 
 Whether you’re working with T-SQL, PL/SQL, BTEQ, or some other SQL dialect, the process of migrating from the stored procedure approach to the dbt approach can typically be broken down into similar steps. Over the years, we’ve worked with many customers to convert confusing and hard-to-manage stored procedure code into modular dbt pipelines. Through our work, we’ve arrived at a few key best practices in undertaking this process, which we present below.
 
-We provide a simple illustrative example of how this process works below. If you’re interested in diving into further detail on this topic, please visit our [companion guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-stored-procedures/4-deletes) on the refactoring process.
+We provide a simple illustrative example of how this process works below. If you’re interested in diving into further detail on this topic, please visit our [companion guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures) on the refactoring process.
 
 ### Step 0: Understand a bit about how dbt works
 
