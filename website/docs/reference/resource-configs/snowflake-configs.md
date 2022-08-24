@@ -93,12 +93,7 @@ In this example, you can set up a query tag to be applied to every query with th
 
 ```
 
-**Note:** query tags are set at the _session_ level. At the start of each model
-<Term id="materialization" />, if the model has a custom `query_tag`
-configured, dbt will run `alter session set query_tag` to set the new value.
-At the end of the materialization, dbt will run another `alter` statement to reset
-the tag to its default value. As such, build failures midway through a materialization may result in subsequent
-queries running with an incorrect tag.
+**Note:** query tags are set at the _session_ level. At the start of each model <Term id="materialization" />, if the model has a custom `query_tag` configured, dbt will run `alter session set query_tag` to set the new value. At the end of the materialization, dbt will run another `alter` statement to reset the tag to its default value. As such, build failures midway through a materialization may result in subsequent queries running with an incorrect tag.
 
 </File>
 
