@@ -8,7 +8,7 @@ dbt Core and almost all of its adapter plugins are open source software. As such
 
 To download form source, you would clone the repositories from GitHub, making a local copy, and then install the local version using `pip`.
 
-Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md).
+Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
 
 ### Installing dbt Core
 
@@ -36,6 +36,6 @@ You do _not_ need to install `dbt-core` before installing an adapter plugin -- t
 
 To install in editable mode, such as while contributing, use `pip install -e .` instead.
 
-<FAQ src="install-pip-os-prereqs" />
-<FAQ src="install-python-compatibility" />
-<FAQ src="install-pip-best-practices" />
+<FAQ src="Core/install-pip-os-prereqs" />
+<FAQ src="Core/install-python-compatibility" />
+<FAQ src="Core/install-pip-best-practices" />
