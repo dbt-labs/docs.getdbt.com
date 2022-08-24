@@ -117,9 +117,9 @@ macros:
 </Tabs>
 
 ## Definition
-The `docs` field can be used to provide documentation-specific configuration to models. The only currently supported `docs` attribute is `show`, which controls whether or not models are shown in the auto-generated documentation website.
+The docs field can be used to provide documentation-specific configuration to models. The only currently supported docs attribute is shown, which controls whether or not models are shown in the auto-generated documentation website.
 
-**Note:** hidden models will still appear in the dbt DAG visualization, but will be identified as "hidden".
+**Note:** hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
 <Changelog>
 
@@ -171,7 +171,7 @@ models:
 
 ## Custom node colors
 
-The `docs` attribute now supports `node_color` to customize the node color in the DAG within dbt docs. You can define node colors in the files below and apply overrides where needed!
+The `docs` attribute now supports `node_color` to customize the node color in the DAG within dbt docs. You can define node colors in the files below and apply overrides where needed.
 
 `node_color` hiearchy:
 
