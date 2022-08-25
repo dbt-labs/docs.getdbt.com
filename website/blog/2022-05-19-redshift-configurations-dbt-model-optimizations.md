@@ -244,7 +244,7 @@ In this method, you piece out your joins based on the main table they’re joini
 
 This method takes some time to think about, and it may not make sense to do it depending on what you need. This is definitely balance between coherence, usability, and performance.
 
-The main point here is that you’re resolving the various keys and grains before the details are joined in. Because we’re not joining until the end, this means that only our intermediate tables get distributed based on the resolved keys and finally joined up in `dim_all_visitors`.
+The main point here is that you’re resolving the various keys and <Term id="grain">grains</Term> before the details are joined in. Because we’re not joining until the end, this means that only our intermediate tables get distributed based on the resolved keys and finally joined up in `dim_all_visitors`.
 
 Sometimes the work you’re doing downstream is much easier to do when you do some complex modeling up front! When you want or need it, you’ll know.
 
