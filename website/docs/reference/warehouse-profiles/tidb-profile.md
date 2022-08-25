@@ -12,9 +12,9 @@ If you're interested in contributing, check out the source code repository liste
 ## Overview of dbt-tidb
 
 **Maintained by:** PingCAP      
-**Author:** Xiang Zhang, Qiang Wu, Yuhang Shi
-**dbt Slack Channel**: [#db-tidb](https://getdbt.slack.com/archives/C03CC86R1NY)
-**Source:** https://github.com/pingcap/dbt-tidb   
+**Author:** Xiang Zhang, Qiang Wu, Yuhang Shi  
+**dbt Slack Channel:** [#db-tidb](https://getdbt.slack.com/archives/C03CC86R1NY)   
+**Source:** [Github](https://github.com/pingcap/dbt-tidb)   
 **Core version:** v1.0.0 and newer   
 **dbt Cloud:** Not Supported
 
