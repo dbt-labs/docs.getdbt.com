@@ -29,25 +29,23 @@ By default, new users are added to the Member and Owner groups when they onboard
 
 After onboarding Administrative users and configuring RBAC/SSO groups, we recommend the following steps for onboarding users to a dbt Cloud Enterprise account.
 
-### Create Account Admins Group
+### Prerequisites
 
-**Important:** Do this BEFORE proceeding to the next section
+You need to create an Account Admins group before removing any other groups.
 
-1) Create an Account Admins group  
-2) Assign at least one user to the Account Admins
-
-The assigned user will manage future group, SSO mapping and user / group assignment.
+1. Create an Account Admins group  
+2. Assign at least one user to the Account Admins group. The assigned user can manage future group, SSO mapping, and user or group assignment.
 
 ### Remove the Owner and Member groups
 
-Follow the steps below for each of the Owner and Member groups in turn:
+Follow these steps for both Owner and Member groups:
 
-1) Click the Hamburger icon at the top left of the Cloud Console, then Account Settings >> Groups >> <Owner/Member>  
-2) Click "Edit" in the upper right corner
+1. Log into dbt Cloud.
+2. Click the gear icon at the top right and select **Account settings**.
+3. Select **Groups** then select **<Owner/Member>**.  
+4. Click **Edit**.
+   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-group.png" title="Editing a Group"/>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-group.png" title="Editing a Group"/>
+5. At the bottom of the Group page, click **Delete**.
 
-3) Scroll to the bottom of the group page  
-4) Click "Delete"
-
-From here, the Account Admin can add additional SSO mapping groups, permission sets and users as needed.
+The Account Admin can add additional SSO mapping groups, permission sets, and users as needed.

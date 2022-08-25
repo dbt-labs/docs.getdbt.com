@@ -16,7 +16,7 @@ Jobs will _not_ be triggered by draft pull requests. If you would like jobs to r
 
 :::
 
-:::info GitLab Compatability
+:::info GitLab compatibility
 
 GitLab Webhooks are available to only GitLab users who have a paid or self-hosted GitLab account.
 
