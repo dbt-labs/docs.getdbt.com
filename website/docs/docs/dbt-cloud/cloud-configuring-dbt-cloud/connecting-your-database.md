@@ -17,8 +17,8 @@ any database grants.
 
 <Changelog>
 
-- `54.81.134.249` and `52.22.161.231` were added in November, 2020
-- EMEA was added in September, 2022
+- November 2020 &mdash; add the IPs `54.81.134.249` and `52.22.161.231` 
+- September 2022 &mdash; Add EMEA IPs
 
 </Changelog>
 
