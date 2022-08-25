@@ -208,11 +208,11 @@ the integration between Okta and dbt Cloud.
 3. After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
-## Azure integration
+## Azure Active Directory integration
 
-Use this section if you are configuring Azure AD as your identity provider.
+If you're using Azure Active Directory (Azure AD), the instructions below will help you configure it as your identity provider.
 
-### Create Azure AD Enterprise Application
+### Create Azure AD Enterprise application
 
 Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 
@@ -272,6 +272,7 @@ To complete setup, follow the steps below in dbt Cloud:
 1. Navigate to the Enterprise &gt; Single Sign On page under Account Settings. 
 2. Click **Edit**.
 3. Provide the following SSO details:
+
    | Field | Value |
    | ----- | ----- |
    | Log&nbsp;in&nbsp;with | SAML 2.0 |
