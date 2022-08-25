@@ -208,7 +208,7 @@ the integration between Okta and dbt Cloud.
 3. After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
-## Azure Active Directory integration
+## Azure integration
 
 If you're using Azure Active Directory (Azure AD), the instructions below will help you configure it as your identity provider.
 
