@@ -11,7 +11,7 @@ When materializing a model as `table`, you may include several optional configs 
 |---------|----------------------------------------------------|-------------------------|--------------------------|
 | partition_by | partition by a column, typically a directory per partition is created | No | partition_by=['name'] |
 | clustered_by | second level division of a partitioned column  | No | clustered_by=['age'] |
-| file_format | underlying storage format of the table | No | file_format='PARQUET' |
+| file_format | underlying storage format of the table, see https://cwiki.apache.org/confluence/display/Hive/FileFormats for supported formats | No | file_format='PARQUET' |
 | location | storage location, typically an hdfs path | No | LOCATION='/user/etl/destination' |
 | comment | comment for the table | No | comment='this is the cleanest model' |
 
