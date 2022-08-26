@@ -117,7 +117,7 @@ A service user account must have the following Azure DevOps permissions for all 
 
 Some of these permissions are only accessible via the Azure DevOps API, for which documentation can be found [here](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops). We’ve also detailed more information on Azure DevOps API usage below to help accelerate the set up. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
 
-:::info  The service user must have these permissions before dbt Cloud Project set up
+:::info  Provide the service user with required permissions before setting up a dbt Cloud project
 This service user's permissions will also power which repos a team can select from during dbt project set up, so an Azure DevOps admin must grant at minimum Project Reader access to the service user before setting up a project in dbt Cloud.
 :::
 
