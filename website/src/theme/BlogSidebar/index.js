@@ -15,8 +15,6 @@ export default function BlogSidebar({sidebar, tagData}) {
     return null;
   }
 
-  console.log('tagData', tagData)
-
   return (
     <nav
       className={clsx(styles.sidebar, 'thin-scrollbar')}
