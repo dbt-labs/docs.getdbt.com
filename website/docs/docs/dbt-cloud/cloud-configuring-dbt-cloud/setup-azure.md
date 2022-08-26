@@ -71,7 +71,7 @@ You also need to add another redirect URI to your Azure AD application. This red
 
 
 ## Connect Azure DevOps to your new app
-If your Azure DevOps account is already connected to your Active Directory, then you can skip this step. However, if you're just getting set up, connect Azure DevOps to the Active Directory App you just created:
+If you have already connected your Azure DevOps account to Active Directory, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Active Directory App you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
 2. Navigate to Azure Active Directory.
