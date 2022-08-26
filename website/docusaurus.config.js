@@ -64,7 +64,7 @@ var siteSettings = {
     announcementBar: {
       id: "live_qa",
       content:
-        "Register now for Coalesce 2022. The annual Analytics Engineering conference.",
+        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true
