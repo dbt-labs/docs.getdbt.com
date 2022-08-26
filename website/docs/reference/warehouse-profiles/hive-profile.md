@@ -16,11 +16,9 @@ id: "hive-profile"
 
 ## Connection Methods
 
-dbt-hive can connect to Apache Hive and Cloudera Data Platform clusters.
+dbt-hive can connect to Apache Hive and Cloudera Data Platform clusters. The [Impyla](https://github.com/cloudera/impyla/) library is used to establish connections to Hive.
 
-The [Impyla](https://github.com/cloudera/impyla/) library is used to establish connections to Hive.
-
-Two transport mechanisms are supported:
+dbt-hive supports two transport mechanisms:
 - binary
 - HTTP(S)
 
@@ -79,7 +77,7 @@ your_profile_name:
 
 </File>
 
-Note: When creating workload user in CDP ensure that the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If the user is required to execute GRANT statements, see for instance (https://docs.getdbt.com/reference/resource-configs/grants) or (https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. 
+Note: When creating workload user in CDP, make sure the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If you need the user to execute GRANT statements, you should also configure the appropriate GRANT permissions for them. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. For more information, see [`grants`](/reference/resource-configs/grants) and [on-run-start & on-run-end](/reference/project-configs/on-run-start-on-run-en).
 
 ## Installation and Distribution
 
