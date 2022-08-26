@@ -41,7 +41,7 @@ The default values vary by database.
 
 For most adapters, quoting is set to _true_ by default.
 
-This is because creating relations with quoted identifiers does not inhibit the ability to select from them, and quoting allows you to use reserved words as object names (though that should probably be avoided)
+Why? It's equally easy to select from relations with quoted or unquoted identifiers. Quoting allows you to use reserved words and special characters in those identifiers, though we recommend avoiding this whenever possible.
 
 On Snowflake, quoting is set to _false_ by default.
 
