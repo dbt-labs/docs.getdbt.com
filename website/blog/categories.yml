@@ -6,7 +6,7 @@
 - name: analytics craft
   display_title: Analytics craft
   description: The art of being an analytics practitioner.
-  is_featured: true
+  is_featured: false
 - name: data ecosystem
   display_title: Data ecosystem
   description: Walkthroughs of how top data practitioners use tools in the modern data stack.
@@ -22,4 +22,4 @@
 - name: SQL magic
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses.
-  is_featured: true
+  is_featured: false

@@ -15,6 +15,8 @@ export default function BlogSidebar({sidebar, tagData}) {
     return null;
   }
 
+  console.log('tagData', tagData)
+
   return (
     <nav
       className={clsx(styles.sidebar, 'thin-scrollbar')}
@@ -29,7 +31,7 @@ export default function BlogSidebar({sidebar, tagData}) {
           Categories
         </div>
         <ul className={styles.sidebarItemList}>
-          {tagData && tagData.map((tag, i) => {
+          {tagData && tagData.filter(tag => tag.is_featured)?.map((tag, i) => {
             if(!tag)
               return null
             return (
