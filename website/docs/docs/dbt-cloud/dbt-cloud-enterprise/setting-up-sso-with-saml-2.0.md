@@ -223,9 +223,9 @@ Click **Next** to continue.
 
 On the **App Details** page:
 
-* ** Name the custom app
-* ** Upload an app logo (optional)
-* ** Click **Continue**.
+* Name the custom app
+* Upload an app logo (optional)
+* Click **Continue**.
 
 ### Configure SAML Settings
 
