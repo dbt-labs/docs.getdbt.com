@@ -104,7 +104,7 @@ Because Azure DevOps forces all authentication to be linked to a user's permissi
 
 ### More on Service Users
 
-A service user account must have the following permissions for all Azure DevOps projects/repos you want accessible in dbt Cloud:
+A service user account must have the following Azure DevOps permissions for all Azure DevOps projects and repos you want accessible in dbt Cloud. Read more about how dbt Cloud uses each permission in the following paragraphs. 
 
  - **Project Reader**
  - **ViewSubscriptions**
