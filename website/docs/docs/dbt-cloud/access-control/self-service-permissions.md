@@ -25,9 +25,11 @@ Users configured with Read Only license types will experience a restricted set o
 
 ## Owner and Member Groups in dbt Cloud Enterprise  
 
-By default, new users are added to the Member and Owner groups when they onboard to a new dbt Cloud. Member and Owner groups are included with every new dbt Cloud account. They're used to provide access for Administrators to add additional users, groups and apply permission sets. This is necessary for account onboarding but can create confusion when initially setting up SSO and RBAC for dbt Cloud Enterprise accounts as described in the [Enterprise Permissions](enterprise-permissions) guide. Owner and Member groups are **account level** groups, so their permissions override any project-level permissions you wish to apply.
+By default, new users are added to the Member and Owner groups when they onboard to a new dbt Cloud. Member and Owner groups are included with every new dbt Cloud account because they provide access for administrators to add users and groups, and to apply permission sets. 
 
-After onboarding Administrative users and configuring RBAC/SSO groups, we recommend the following steps for onboarding users to a dbt Cloud Enterprise account.
+You will need owner and member groups to help with account onboarding but these groups can create confusion when initially setting up SSO and RBAC for dbt Cloud Enterprise accounts as described in the [Enterprise Permissions](enterprise-permissions) guide. Owner and Member groups are **account level** groups, so their permissions override any project-level permissions you wish to apply.
+
+After onboarding administrative users and configuring RBAC/SSO groups, we recommend the following steps for onboarding users to a dbt Cloud Enterprise account.
 
 ### Prerequisites
 
@@ -42,10 +44,8 @@ Follow these steps for both Owner and Member groups:
 
 1. Log into dbt Cloud.
 2. Click the gear icon at the top right and select **Account settings**.
-3. Select **Groups** then select **<Owner/Member>**.  
+3. Select **Groups** then select **OWNER** or **MEMBER**** group.  
 4. Click **Edit**.
-   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-group.png" title="Editing a Group"/>
-
 5. At the bottom of the Group page, click **Delete**.
 
 The Account Admin can add additional SSO mapping groups, permission sets, and users as needed.
