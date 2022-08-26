@@ -527,6 +527,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
         "reference/warehouse-profiles/databricks-profile",
+        "reference/warehouse-profiles/hive-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
