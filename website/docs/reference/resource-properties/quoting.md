@@ -45,7 +45,7 @@ This is because creating relations with quoted identifiers does not inhibit the 
 
 On Snowflake, quoting is set to _false_ by default.
 
-This is because creating relations with quoted identifiers inhibits your ability to select from the them.
+Creating relations with quoted identifiers also makes those identifiers case sensitive. It's much more difficult to select from them. You can re-enable quoting for relations identifiers that are case sensitive, reserved words, or contain special characters, but we recommend you avoid this as much as possible.
 
 ## Example
 
