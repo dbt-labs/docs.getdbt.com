@@ -51,7 +51,7 @@ Provide your new app access to Azure DevOps:
 2. Remove the **Microsoft Graph / User Read** permission.
 3. Click **Add a permission**.
 4. Select **Azure DevOps**.
-5. Select the **user_impersonation** permission. This is the least scoped and only permission available for Azure DevOps.
+5. Select the **user_impersonation** permission. This is the only permission available for Azure DevOps.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" title="Adding permissions to the app"/>
 
