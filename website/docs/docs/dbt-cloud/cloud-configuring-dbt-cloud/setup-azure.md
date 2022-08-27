@@ -32,7 +32,7 @@ Once the Azure AD app is added to dbt Cloud and the service user is connected, t
 3. Select **New registration**. The form for creating a new Active Directory app opens.
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
 5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types. 
-Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (fka Visual Studio) and Azure Active Directory as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
+Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Azure Active Directory as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
 6. Add a redirect URI by selecting **Web** and typing in `https://cloud.getdbt.com/complete/azure_active_directory`. If you have a custom dbt Cloud URL be sure to use the appropriate domain.
 7. Click **Register**.
 
@@ -100,7 +100,7 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
 Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
 
 ## Connecting a service user
-Because Azure DevOps forces all authentication to be linked to a user's permissions, we recommend you create a "service user" in Azure DevOps whose permissions which will be used to power headless actions in dbt Cloud such as deployment runs and CI. A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, dbt Cloud will lose privileges to the dbt Azure DevOps repositories, causing production runs to fail.
+Because Azure DevOps forces all authentication to be linked to a user's permissions, we recommend you create a "service user" in Azure DevOps whose permissions will be used to power headless actions in dbt Cloud such as deployment runs and CI. A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, dbt Cloud will lose privileges to the dbt Azure DevOps repositories, causing production runs to fail.
 
 ### More on Service Users
 
