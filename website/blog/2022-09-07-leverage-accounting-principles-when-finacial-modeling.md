@@ -35,12 +35,12 @@ These packages generate the three basic financial statement reports (plus a few 
 - Balance Sheet: a summary of the financial balances within an organization. The quintessential accounting calculation (Assets = Liabilities + Equity).
 - Profit and Loss/Income Statement: a report detailing the revenues and expenses within an organization.
 
-By simply installing the package you can get those reports in your warehouse in a matter of minutes, allowing you to bypass the cycle outlined prior. However, if you do not utilize one of these sources with Fivetran, there is nothing to fear! I will detail the modeling principles used in each of these packages.
+By simply installing the package you can get those reports in your <Term id="data-warehouse" /> in a matter of minutes, allowing you to bypass the cycle outlined prior. However, if you do not utilize one of these sources with Fivetran, there is nothing to fear! I will detail the modeling principles used in each of these packages.
 
 Below are the modeling principles I leverage whenever I begin a new financial data modeling adventure. These steps are in order and should be followed as such.
 
 ## Step 1: Understanding the Source Schema
-Each normalized financial data source I have worked with is structured in either one of two ways: a single table that contains all transactions for the company **OR** a header and line item detail table for each transaction type. Both schema designs have their pros and cons. 
+Each normalized financial data source I have worked with is structured in either one of two ways: a single <Term id="table" /> that contains all transactions for the company **OR** a header and line item detail table for each transaction type. Both schema designs have their pros and cons. 
 
 The single transaction table makes it easier to get started with your financial modeling and generating your end reports. However, it doesn’t give you a good view of what type of transactions are included within the table. In order to gain an understanding of the transaction types, you will need to spend some time querying the table to identify what transactions are (and are not) included. See the [Fivetran Netsuite ERD](https://fivetran.com/docs/applications/netsuite-suiteanalytics#schemainformation) as an example of the single transaction table schema.
 
@@ -88,7 +88,7 @@ from bill_join
 
 Once you ensure you’re properly accounting for the double entry method in the individual transaction type models, you can union all the transaction type models together to create a single table with all transaction types. 
 
-At this point, regardless of which schema design you began with, you should be at the same place with a single table that contains all your transactions (and their offsetting entry) across the company! Now you can start joining in your dimensional fields such as vendor name, account name, account type, and account classification to name a few. Okay, now that I mention account classification, it is a crucial component for building your end financial models and I should talk more about it.
+At this point, regardless of which schema design you began with, you should be at the same place with a single table that contains all your transactions (and their offsetting entry) across the company! Now you can start joining in your <Term id="dimensional-modeling">dimensional fields</Term> such as vendor name, account name, account type, and account classification to name a few. Okay, now that I mention account classification, it is a crucial component for building your end financial models and I should talk more about it.
 
 ![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/top-gun-classified.gif)
 
@@ -108,7 +108,7 @@ Using a combination of jinja and the date spine macros, you will be able to crea
 
 Once the date spine is created, you should generate a new model to aggregate your General Ledger data by month. In addition to simply aggregating your General Ledger data by month, you will want to make sure you consider the accounts beginning, ending, and net change balance month over month. Calculating these extra fields makes for a seamless Balance Sheet and Income Statement reporting down the line.
 
-Before generating the beginning, ending, and net change balances for each month, it is important to know that not all classifications will have the same behavior for these fields. Asset, Liability, and Equity accounts will always have a beginning, ending, and net change balance as the accounts have rolling totals that change over time. Conversely, Revenue and Expense accounts only have a net change balance. Calculating these fields can be a multi-cte/model process. The process should look something along the lines of the following:
+Before generating the beginning, ending, and net change balances for each month, it is important to know that not all classifications will have the same behavior for these fields. Asset, Liability, and Equity accounts will always have a beginning, ending, and net change balance as the accounts have rolling totals that change over time. Conversely, Revenue and Expense accounts only have a net change balance. Calculating these fields can be a multi-<Term id="cte" />/model process. The process should look something along the lines of the following:
 
 - Aggregate your General Ledger data by month
 - Create a cumulative balance for balance sheet accounts
