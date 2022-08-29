@@ -9,7 +9,7 @@ id: "hive-profile"
 **Author:** Cloudera    
 **Source:** [Github](https://github.com/cloudera/dbt-hive)    
 **dbt Cloud:** Currently un-supported    
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/)     
+**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C0401DTNSKW)
 
 
 ![dbt-hive stars](https://img.shields.io/github/stars/cloudera/dbt-hive?style=for-the-badge)
