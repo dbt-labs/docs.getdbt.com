@@ -323,7 +323,7 @@ ian_fahey:
     - url: https://twitter.com/Cavorax
       icon: fa-twitter
 
-joe-markiewicz:
+joe_markiewicz:
   name: Joe Markiewicz
   job_title: Analytics Engineering Manager (Fivetran dbt package maintainer)
   description: Joe is a dbt package maintainer/manager at Fivetran by day, and a cat obsessed video game developer by night. Actually, Joe is cat obsessed all day.
