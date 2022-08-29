@@ -1,4 +1,7 @@
 ---
+title: "Configuring test `severity`"
+id: "from-source"
+description: "You can use error thresholds in dbt to configure the severity of test results, or how many failed tests will produce an error or warning."
 resource_types: [tests]
 datatype: string
 ---
@@ -108,7 +111,7 @@ Set the default for all tests in a package or project:
 ```yaml
 tests:
   +severity: warn  # all tests
-  
+
   <package_name>:
     +warn_if: >10 # tests in <package_name>
 ```
