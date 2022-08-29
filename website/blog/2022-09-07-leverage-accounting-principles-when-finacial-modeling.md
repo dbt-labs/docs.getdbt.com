@@ -97,7 +97,7 @@ All financial data sources will have some variation of the company chart of acco
 
 Sometimes you will get lucky and the account classification will be provided within the accounts table (like in [dbt_xero](https://github.com/fivetran/dbt_xero_source/blob/0d1d2c02dbb8e1f8371e703651a704127181c88f/models/stg_xero__account.sql#L30)). If it is not, then you will need to add some logic to your accounts model to accurately set the classification. Typically, the logic involves referencing the account type to determine the classification (for example, an Accounts Payable account type should map to a Liability classification). Thankfully, this has been applied to a number of open source projects and can be leveraged by your team! I recommend taking a look at how the [dbt_quickbooks](https://github.com/fivetran/dbt_quickbooks/blob/43282a8cf77670f6e2ac657167dd19c1014ba111/models/intermediate/int_quickbooks__account_classifications.sql#L23-L35) packages map classifications. Likewise, the [dbt_sage_intacct](https://github.com/fivetran/dbt_sage_intacct/blob/4feec47da41fcc28325913dbae5597132ddccd66/models/intermediate/int_sage_intacct__account_classifications.sql#L12-L22) implementation follows the same logic, but instead allows for more flexibility in the form of variables that can be modified and edited if the Chart of Accounts on the finance side changes.
 
-Once you verify, or create, the account classification field, you are safe to join the account (and other dimensional) table(s) with your General Ledger table. Now that everything is joined together, you will start to see the tapestry of the financial history unfolding before your eyes. Beautiful, isn’t it. Time really flies when you are having fun. Actually, now that I am on the topic of time, I can’t wait to talk about the next step. Aggregating your General Ledger data by a date period!
+Once you verify, or create, the account classification field, you are safe to join the account (and other dimensional) tables with your General Ledger table. Now that everything is joined together, you will start to see the tapestry of the financial history unfolding before your eyes. Beautiful, isn’t it. Time really flies when you are having fun. Actually, now that I am on the topic of time, I can’t wait to talk about the next step. Aggregating your General Ledger data by a date period!
 
 ![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/office-its-a-date.gif)
 
@@ -130,7 +130,7 @@ Thankfully, the bulk of the heavy lifting has already been completed in Step 4 a
 
 With that, you are finally at the last piece of aggregating the General Ledger by Period! Combining the Retained Earnings/Adjusted Income model with the General Ledger by Period model.
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/crown-adjustment.gif)
+![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/captain-planet-combine.gif)
 
 ## Step 6: Finish the General Ledger by Period Model
 
