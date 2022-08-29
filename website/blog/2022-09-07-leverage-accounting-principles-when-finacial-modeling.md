@@ -2,7 +2,7 @@
 title: "Leverage Accounting Principles when Modeling Financial Data"
 description: "Modeling financial data is rarely ever easy (or fun). Thankfully, there are accounting principles that can be leveraged to ensure your financial models are complete and accurate."
 slug: narrative-modeling
-authors: [fivetran-joemarkiewicz]
+authors: [joe_markiewicz]
 tags: [analytics craft]
 hide_table_of_contents: false
 
