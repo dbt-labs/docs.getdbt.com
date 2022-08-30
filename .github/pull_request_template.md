@@ -14,8 +14,8 @@ Include any notes about things that need to happen before this PR is merged, e.g
 
 ## Prerelease docs
 If this change is related to functionality in a prerelease version of dbt (delete if not applicable):
-- [ ] I've added versioning components, as described in ["Versioning Docs"](../contributing/versioningdocs.md)
-- [ ] I've added a note to the prerelease version's [Migration Guide](../website/docs/docs/guides/migration-guide)
+- [ ] I've added versioning components, as described in ["Versioning Docs"](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/versioningdocs.md)
+- [ ] I've added a note to the prerelease version's [Migration Guide](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs/guides/migration/versions)
 
 ## Checklist
 If you added new pages (delete if not applicable):

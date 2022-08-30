@@ -64,7 +64,7 @@ function Home() {
                   <Link
                     className="button button--primary"
                     to={useBaseUrl('guides/getting-started')}>
-                    Learn more
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -273,7 +273,7 @@ function Home() {
           <div className="row" style={{ "maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto" }}>
             <div className="col">
               <h1>Having trouble?</h1>
-              <p>If you&#39;re having trouble, check out our guide on <a href="/docs/guides/getting-help" >Getting Help</a> for information on getting support and asking questions in the community.</p>
+              <p>If you&#39;re having trouble, check out our guide on <a href="/guides/legacy/getting-help" >Getting Help</a> for information on getting support and asking questions in the community.</p>
             </div>
           </div>
         </div>

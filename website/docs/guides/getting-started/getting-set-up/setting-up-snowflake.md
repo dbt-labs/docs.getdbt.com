@@ -3,6 +3,8 @@ title: "Set up and connect Snowflake"
 id: setting-up-snowflake
 description: "Set up Snowflake with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect Snowflake"
+pagination_prev: guides/getting-started/getting-set-up
+pagination_next: guides/getting-started/building-your-first-project/build-your-first-models
 ---
 
 ## Introduction
@@ -242,7 +244,7 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 
 1. Click on the "Snowflake" icon to set up your connection.
 2. Enter the following information under Snowflake settings.
-    * **Account:** Your account is going to be the url of your Snowflake trial account up to the period before snowflakecomputing.com. So, if this is the full url of my trial account: `oq65696.west-us-2.azure.snowflakecomputing.com` then the account will be: `oq65696.west-us-2.azure`. You can read more about Snowflake account identifiers [here](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html).
+    * **Account:** Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see "[Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html)" in the Snowflake documentation.
     * **Role:** Leave blank for now. You can update this to a default Snowflake role in the future.
     * **Database:** `analytics`.  This tells dbt to create new models in the analytics database.
     * **Warehouse:** `transforming`. This tells dbt to use the transforming warehouse we created earlier.

@@ -357,7 +357,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt/develop/etc/dbt-logo.svg)"
+    description: "!\[dbt Logo](https://github.com/dbt-labs/dbt-core/blob/main/etc/dbt-core.svg)"
 
     columns:
       - name: customer_id
