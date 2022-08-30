@@ -2,7 +2,6 @@
 title: "Self-Service Permissions"
 id: "self-service-permissions"
 ---
-
 ## Overview
 
 dbt Cloud supports two different permission sets to manage permissions for self-service accounts: **Member** and **Owner**.  
