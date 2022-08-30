@@ -148,7 +148,7 @@ This approach is nearly identical to the former (completely separate repositorie
 *   Does not prevent conflicting business logic or duplicate macros
 *   All models must have unique names across all packages
 
-\*\* The project will include the information from the dbt projects but might be missing information that is pulled from your data warehouse if you are on multiple Snowflake accounts/Redshift instances. This is because dbt is only able to query the information schema from that one connection.
+\*\* The project will include the information from the dbt projects but might be missing information that is pulled from your <Term id="data-warehouse" /> if you are on multiple Snowflake accounts/Redshift instances. This is because dbt is only able to query the information schema from that one connection.
 
 ## So… to mono-repo or not to mono-repo?
 -------------------------------------------------------------------------------

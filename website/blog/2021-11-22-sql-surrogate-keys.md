@@ -13,11 +13,11 @@ is_featured: false
 
 ### Why primary keys are important
 
-We all know one of the most fundamental rules in data is that every table should have a primary key. Primary keys are critical for many reasons:
+We all know one of the most fundamental rules in data is that every <Term id="table" /> should have a <Term id="primary-key" />. Primary keys are critical for many reasons:
 
 * They ensure that you don’t have duplicate rows in your table
 * They help establish relationships to other tables
-* They allow you to quickly identify the grain of the table (ex: the `customers` table with a PK of `customer_id` has one row per customer)
+* They allow you to quickly identify the <Term id="grain" /> of the table (ex: the `customers` table with a PK of `customer_id` has one row per customer)
 * You can test them in dbt, to ensure that your data is complete and unique
 
 <!--truncate-->
@@ -34,7 +34,7 @@ The question is - in this situation, how are you supposed to set a primary key? 
 
 ### What’s a surrogate key?
 
-A surrogate key is a primary key that, instead of existing in your underlying dataset, is _derived in the analytics layer itself._ 
+A <Term id="surrogate-key">surrogate key</Term> is a primary key that, instead of existing in your underlying dataset, is _derived in the analytics layer itself._ 
 
 Learning when to use surrogate keys and bring them into your project is a critical skill for any analytics professional. 
 
@@ -49,21 +49,12 @@ Turns out this is a relatively well-solved problem. To create a surrogate key, y
 
 While the process of creating a surrogate key is relatively well understood, you will be shocked (SHOCKED I SAY) to hear that SQL syntax can have subtle differences across dialects and databases. 
 
-#### The null value problem in surrogate keys
-
-The primary annoyance when doing this comes when you try and concatenate a row that has a null value for one or more columns.  If any value is null, then often the entire concatenated string is returned as null - no good! 
-
-You can get around this by wrapping each of your columns in a `coalesce` function to default nulls to blank (‘’), which is pretty tedious.
-
-Let’s take a look at how generating surrogate keys specifically looks in practice across data warehouses, and how you can use one simple dbt macro ([dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)) to abstract away the null value problem.
-
-
 #### Surrogate keys in BigQuery, Databricks, Redshift and Snowflake
 
 [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#concat), [Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_CONCAT.html) and [Snowflake’s](https://docs.snowflake.com/en/sql-reference/functions/concat.html) concat functions returns null if any of the referenced columns for that row returns a null, so to create a proper surrogate key you’d need to wrap each column in a `coalesce` before hashing with an md5 function:
 
 ```sql
-md5 ( concat ( coalesce(column1, ‘’), coalesce(column2, ‘’) ) )
+md5 ( concat ( coalesce(column1, ''), coalesce(column2, '') ) )
 ```
 
 [Databricks](https://docs.databricks.com/sql/language-manual/functions/concat.html)’ concat function docs don’t specifically reference returning null for the concat if one column is null, but I believe that’s what’s meant by `The result type matches the argument types`.
@@ -84,18 +75,110 @@ md5 ( concat (column1, column2) )
 ```
 
 
+#### The null value problem in surrogate keys
+The primary annoyance when creating surrogate keys comes when you try and concatenate a row that has a null value for one or more columns.  If any value is null, then often the entire concatenated string is returned as null - no good! 
+```sql
+with 
+
+example_ids as (
+  123 as user_id,
+  123 as product_id
+
+  union all
+
+  select
+  123 as user_id,
+  null as product_id
+
+  union all
+
+  select
+  null as user_id,
+  123 as product_id
+
+)
+
+select
+  *,
+  concat(user_id, product_id) as _surrogate_key
+from example_ids
+```
+output:
+
+| USER_ID | PRODUCT_ID | _SURROGATE_KEY |
+|---------|------------|----------------|
+| 123     | 123        | 123123         |
+| 123     | `null`     | `null`         |
+| `null`  | 123        | `null`         |
+
+
+You can get around this by wrapping each of your columns in a `coalesce` function to default nulls to blank (''), which is pretty tedious.  You can also run into problems if the fields are different datatypes (string vs numeric), so sometimes you need to cast as well.
+
+```sql
+...
+select
+  *,
+  concat(
+    coalesce(cast(user_id as string), ''),
+    coalesce(cast(product_id as string), '')
+    ) as _surrogate_key
+from example_ids
+```
+output:
+
+| USER_ID | PRODUCT_ID | _SURROGATE_KEY |
+|---------|------------|----------------|
+| 123     | 123        | 123123         |
+| 123     | `null`     | 123            |
+| `null`  | 123        | 123            |
+
+At first glance, this looks like it works, but in reality, there should be three unique IDs and instead, there are two: `123123` & `123`, which could be a problem in the off chance there is any potential overlap in the sequencing used by the two IDs.
+
+To remedy this, you need to add a separator between fields you wish to concatenate.
+
+```sql
+...
+select
+  *,
+  concat(
+    coalesce(cast(user_id as string), ''),
+    '|',
+    coalesce(cast(product_id as string), '')
+    ) as _surrogate_key
+from example_ids
+```
+output:
+
+| USER_ID | PRODUCT_ID | _SURROGATE_KEY |
+|---------|------------|----------------|
+| 123     | 123        | 123\|123       |
+| 123     | `null`     | 123\|          |
+| `null`  | 123        | \|123          |
+
+
+Let’s take a look at how generating surrogate keys specifically looks in practice across <Term id="data-warehouse">data warehouses</Term>, and how you can use one simple dbt macro ([dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)) to abstract away the null value problem.
+
+
 ### A surrogate_key macro to the rescue
 
 Thanks to a handy function called [surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) in the [dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/), you can fire yourself from the business of wrapping your columns in `coalesce` every time you want to generate a surrogate key.
 
-Forming your surrogate keys with this macro has the benefit of **elegant + DRY null handling**. 
+Forming your surrogate keys with this macro has the benefit of **elegant + <Term id="dry" /> null handling**. 
 
 Rather than wrapping your columns in a `coalesce` function when concatenating them, the macro loops through your columns and _coalesces_ on your behalf, so that you can avoid repeating yourself.
 
-When you call `{{ dbt_utils.surrogate_key(['field_a', 'field_b'[,...]]) }}`, behind the scenes dbt compiles SQL on your behalf, looping through each field and generating the correct number of `coalesce` statements:
+When you call `{{ dbt_utils.surrogate_key(['field_a', 'field_b'[,...]]) }}`, behind the scenes dbt compiles SQL on your behalf, looping through each field and generating the correct number of `coalesce` statements with type casting:
 
 ```sql
-    coalesce(cast(" ~ field ~ " as " ~ dbt_utils.type_string() ~ "), '')
+  coalesce(cast(" ~ field ~ " as " ~ dbt_utils.type_string() ~ "), '')
+```
+
+and with conditional logic, adding separator between fields:
+
+```sql
+  {%- if not loop.last %}
+    {%- set _ = fields.append("'-'") -%}
+  {%- endif -%}
 ```
 
 What does this mean in practice? 

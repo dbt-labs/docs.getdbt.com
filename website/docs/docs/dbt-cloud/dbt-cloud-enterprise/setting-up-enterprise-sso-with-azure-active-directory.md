@@ -31,7 +31,7 @@ need to select the appropriate directory and then register a new application.
 1. Under **Manage**, select **App registrations**
 2. Click **+ New Registration** to begin creating a new application
 3. Supply configurations for the **Name** and **Supported account types**
-   fields as shown in the table below.
+   fields as shown in the <Term id="table" /> below.
 
 | Field | Value |
 | ----- | ----- |
@@ -42,11 +42,6 @@ need to select the appropriate directory and then register a new application.
    Redirect URI values for single-tenant and multi-tenant deployments. For most
    enterprise use-cases, you will want to use the single-tenant Redirect URI.
 
-:::note VPC Deployment
-If you are deploying dbt Cloud into a VPC, you should use the hostname where
-the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the **Redirect URI** input.
-:::
 
 | Application Type | Redirect URI |
 | ----- | ----- |
@@ -138,13 +133,6 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 ## Configuring dbt Cloud
 
 To complete setup, follow the steps below in the dbt Cloud application.
-
-### Enable Azure AD Native Auth (beta)
-
-- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
-  gain access to the Azure AD Native auth configuration UI
-- For users accessing dbt Cloud deployed in a VPC, enable the `native_azure`
-  feature flag in the dbt Cloud admin backend.
 
 ### Supplying credentials
 

@@ -1,6 +1,6 @@
 ---
-title: "The Exact Pull Request Template We Use at dbt Labs"
-description: "Having a PR template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow."
+title: "The Exact GitHub Pull Request Template We Use at dbt Labs"
+description: "Having a GitHub PR template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow."
 slug: analytics-pull-request-template
 
 authors: [jess_williams]
@@ -12,9 +12,9 @@ date: 2021-11-29
 is_featured: false
 ---
 
-Having a PR template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow. Opening a pull request is the final step of your modeling process - a process which typically involves a lot of complex work! 
+Having a GitHub pull request template is one of the most important and frequently overlooked aspects of creating an efficient and scalable dbt-centric analytics workflow. Opening a pull request is the final step of your modeling process - a process which typically involves a lot of complex work! 
 
-For you, the dbt developer, the pull request serves as a final checkpoint in your modeling process, ensuring that no key elements are missing from your code or project. 
+For you, the dbt developer, the pull request (PR for short) serves as a final checkpoint in your modeling process, ensuring that no key elements are missing from your code or project. 
 
 <!--truncate-->
 
@@ -27,7 +27,7 @@ Now imagine you are paired with 2-3 different people on 2-3 projects. Absent som
 Let’s jump into the exact PR template we use internally at dbt Labs. 
 
 
-## The dbt Labs’ pull request template
+## The GitHub PR template we use
 
 <WistiaVideo id="r3u04isgxf" />
 
@@ -40,9 +40,11 @@ Our PR template ([view markdown file in GitHub](https://github.com/dbt-labs/dbt-
 * Changes to existing models
 * Checklist
 
-Having each of these sections written down significantly limits the communication overhead on our team, and limits the chances of us shipping low-quality analytics code. 
+### How and why this GitHub PR template works
 
-### Description & motivation:
+Having each of these sections written down significantly limits the communication overhead on our team, and limits the chances of us shipping low-quality analytics code. Let's explore how to use each section and its benefits.
+
+#### Description & motivation:
 
 This is the intro to your PR and should allow the reviewer to quickly be able to understand the reason for opening this PR. If your actual code is the “how”, the description is the “what” and “why.”  As an example from a recent project:
 
@@ -55,7 +57,7 @@ This is the intro to your PR and should allow the reviewer to quickly be able to
 Remember, you know more about this PR **right now** than you will in a couple of months. If you or your team ships 30+ PRs and need to go back to one of those early ones to reference something, you’re going to be bummed when your description says “added a model”. 
 
 
-### Screenshots:
+#### Screenshots:
 
 This is where we add the relevant sections from our DAG! This is one of my favorite features of dbt, as I’m a very visual learner. So when I open a PR, I take a quick look at the relevant sections of the DAG (aka dependency graph) to help me conceptualize the modeling.
 
@@ -66,24 +68,24 @@ Checking for things like modularity and 1:1 relationships between sources and st
 > Note: my colleagues Christine Berger + Randy Pitcher published an excellent walkthrough of [modular data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) if you’re interested in learning more.
 
 
-### Validation of models:
+#### Validation of models:
 
 This section should show something to confirm that your model is doing what you intended it to do. This could be a [dbt test](https://docs.getdbt.com/docs/building-a-dbt-project/tests) like uniqueness or not null, or could be an ad-hoc query that you wrote to validate your data. Here is a screenshot from a test run on a local development branch:
 
 ![test validation](/img/blog/pr-template-test-validation.png "dbt test validation")
 
-Adding uniqueness tests shows that you have put thought into the grain of each of your models, and then ensures that those assumptions hold true over time. 
+Adding uniqueness tests shows that you have put thought into the <Term id="grain" /> of each of your models, and then ensures that those assumptions hold true over time. 
 
 By including a screenshot of your dbt test run here, you are confirming that you have done the work.
 
-### Changes to existing models:
+#### Changes to existing models:
 
 This is a place to leave post-merge instructions. Maybe you updated your existing [incremental model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) with an additional column and need to run a [full refresh](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-i-rebuild-an-incremental-model). 
 
 Or, maybe you have a corresponding PR for your BI tool that needs to be merged to accommodate your dbt modeling changes.
 
 
-### Checklist:
+#### Checklist:
 
 The launch checklist is probably the most important piece of the PR template—it ensures that you’ve followed the QC steps required to push your PR into production.
 
@@ -105,7 +107,7 @@ By standardizing the way your team writes code, your reviewer is able to spend l
 
 **I have added appropriate tests and documentation to any new models.**
 
-By default, all new models should have _at least_ unique and not null tests on the primary key. 
+By default, all new models should have _at least_ unique and not null tests on the <Term id="primary-key" />. 
 
 Documentation follows the same reasoning as the PR description. You will know more **right now** about the intricacies of these models than you will after you’ve developed 50 more models in the coming months.
 
@@ -122,11 +124,9 @@ Last but not least, the README. This doesn’t need to be updated with every sin
 In general, your README contains information about things such as how to get going with contributing to your dbt project, who to go to for database access, additional development resources, etc. If any of this changes as a result of your PR, make sure to update the README!
 
 
-## The full PR template
+## Adding the full GitHub PR template to your repository
 
-If you haven’t already picked it up from GitHub, the full markdown code of the dbt Labs PR template is below. 
-
-To dive deeper into how we use it as part of the analytics engineering workflow, check out the free [dbt Fundamentals on-demand course](https://courses.getdbt.com/courses/fundamentals).
+If you haven’t already picked it up from GitHub, the full markdown code of the dbt Labs PR template is below. After copying the PR template to your clipboard, let's walk through how to add it to your repository.
 
 ```
 
@@ -237,3 +237,19 @@ addressed, and remove any items that are not relevant to this PR.
 {% endif %}
 
 ```
+
+### Create a markdown file
+
+Copy the full PR template text above and copy it into your favorite text editor. Once you’ve done that, export the document as an `.md` file.
+
+### Add the `.md` file to your GitHub repository
+
+Now that you have your pull request template markdown file, navigate to the main page of your repository on GitHub. Above the list of files, using the **Add file** dropdown, click on **Create new file**. 
+
+Once the file is added, name it whatever you want to make it clear that it’s your pull request template. A good name for the file might be `pull_request_template.md`.
+
+### And that’s it!
+
+With that, you now have a pull request template in your GitHub repository that can help your team follow analytics engineering best practices.
+
+To dive deeper into how we use it as part of the analytics engineering workflow, check out the free [dbt Fundamentals on-demand course](https://courses.getdbt.com/courses/fundamentals).
