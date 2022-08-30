@@ -16,7 +16,7 @@ Jobs will _not_ be triggered by draft pull requests. If you would like jobs to r
 
 :::
 
-:::info GitLab compatibility
+:::info GitLab Compatibility
 
 GitLab Webhooks are available to only GitLab users who have a paid or self-hosted GitLab account.
 
@@ -31,7 +31,7 @@ When a [dbt Cloud CI job is set up](cloud-enabling-continuous-integration#config
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
-When the run is complete, dbt Cloud will update the PR in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run, letting you know if the models and tests ran successfully or not. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
+After completing the dbt run, dbt Cloud will update the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message will state whether the models and tests ran successfully or not. You can enable a setting in your git provider that makes "successful pull request checks" a requirement to merge code. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
 
 ### GitHub pull request example
 
