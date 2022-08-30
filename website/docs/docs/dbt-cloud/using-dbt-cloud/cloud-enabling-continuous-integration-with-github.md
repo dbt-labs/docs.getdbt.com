@@ -30,17 +30,17 @@ GitLab Example:
 
 ## Enabling Continuous Integration (CI)
 
-To enable runs on Pull Requests, navigate to the Job Settings page for the relevant job. In the "Triggers" section of the page, switch to the "Webhooks" tab, and then click the checkbox next to `RUN ON PULL REQUESTS?` as shown below.
+To enable runs on pull requests, navigate to the Job Settings page for the relevant job. In the "Triggers" section of the page, switch to the "Webhooks" tab, and then click the checkbox next to `RUN ON PULL REQUESTS?` as shown below.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title=""/>
 
-:::info Note
 
-To disable runs on Pull Requests and remove the webhook, make sure you perform the following steps:
-- As described above, navigate to the Job Settings page for the relevant job. In the "Triggers" section of the page, switch to the "Webhooks" tab, and then uncheck the checkbox next to `RUN ON PULL REQUESTS?`
-- In your Git settings, you'll want to delete your [Branch Protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule#deleting-a-branch-protection-rule) to remove the checks for dbtCloud. 
+To disable run on pull requests and remove the webhook, perform the following steps:
 
-:::
+- Navigate to the Job settings page for the relevant job. 
+- Navigate to the **Triggers** section and select the **Webhooks** tab
+- Uncheck the **RUN ON PULL REQUESTS?** checkbox
+- In your Git settings, delete your [branch Protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule#deleting-a-branch-protection-rule) to remove the checks for dbtCloud. 
 
 
 ## Understanding CI in dbt Cloud
