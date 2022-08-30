@@ -3,7 +3,7 @@ In these frequently asked questions, you will find answers to common questions.
 If you have a question or are still stuck on something, you can always reach out to support by emailing [support@getdbt.com](mailto:support@getdbt.com) or using the chat widget in dbt Cloud, and we'll do our best to help out.
 
 ### What is dbt?
-dbt (data build tool) enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into tables and views.
+dbt enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into tables and views.
 
 dbt does the T in ELT (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
 
