@@ -1,7 +1,7 @@
 ---
 title: "Configuring test `severity`"
 id: "severity"
-description: "You can use error thresholds in dbt to configure the severity of test results, or how many failed tests will produce an error or warning."
+description: "You can use error thresholds to configure the severity of test results and set when to produce an error or warning based on the number of failed tests."
 resource_types: [tests]
 datatype: string
 ---
