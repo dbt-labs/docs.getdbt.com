@@ -17,5 +17,5 @@ dbt Core is the software that takes a [dbt project](https://docs.getdbt.com/docs
 
 dbt Cloud is an application that helps teams use dbt. dbt Cloud provides a web-based IDE to develop dbt projects, a purpose-built scheduler, and a way to share dbt documentation with your team. dbt Cloud offers a number of features for free, as well as additional features in paid tiers (check out the [pricing here](https://www.getdbt.com/pricing/)).
 
-### dbt On Demand courses
+### dbt on demand courses
 Want to learn dbt in more detail? The dbt Labs team has published [five online courses](https://courses.getdbt.com/collections) to level up your analytics engineering skills on your own time. 
