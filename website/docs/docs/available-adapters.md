@@ -36,6 +36,7 @@ These adapter plugins are built and maintained by the same people who build and 
 
 | Adapter for                                                                                                   | Documentation                                                                               | Install from PyPi |
 |---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------| ----------------- |
+| AlloyDB (via [dbt-postgres](https://github.com/dbt-labs/dbt-postgres))                                        | [Profile Setup](alloydb-profile)                                                           | `pip install dbt-postgres` |
 | ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                    | `pip install dbt-clickhouse` |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                        | `pip install dbt-firebolt` |
