@@ -30,17 +30,17 @@ Let’s take this to an example. Below, there is a table you pull from an ad pla
 
 <table>
   <tr>
-   <td>calendar_date
+   <td><b>calendar_date</b>
    </td>
-   <td>ad_id
+   <td><b>ad_id</b>
    </td>
-   <td>impressions
+   <td><b>impressions</b>
    </td>
-   <td>spend
+   <td><b>spend</b>
    </td>
-   <td>clicks
+   <td><b>clicks</b>
    </td>
-   <td>conversions
+   <td><b>conversions</b>
    </td>
   </tr>
   <tr>
@@ -103,19 +103,19 @@ After executing this, the table would now have the `unique_id` field now uniquel
 
 <table>
   <tr>
-   <td>unique_id
+   <td><b>unique_id</b>
    </td>
-   <td>calendar_date
+   <td><b>calendar_date</b>
    </td>
-   <td>ad_id
+   <td><b>ad_id</b>
    </td>
-   <td>impressions
+   <td><b>impressions</b>
    </td>
-   <td>spend
+   <td><b>spend</b>
    </td>
-   <td>clicks
+   <td><b>clicks</b>
    </td>
-   <td>conversions
+   <td><b>conversions</b>
    </td>
   </tr>
   <tr>
