@@ -6,7 +6,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import classnames from 'classnames';
 import Head from '@docusaurus/Head';
-import EventsFeed from '../components/events'
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
@@ -24,7 +23,6 @@ function Home() {
       </Head>
 
       <Layout permalink="/">
-        <EventsFeed />
         <div className="container container--fluid home" style={{ "padding": "10px 0" }}>
           <div className="row" style={{ "maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)" }}>
             <div className="col">
