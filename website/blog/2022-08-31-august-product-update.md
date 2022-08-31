@@ -1,6 +1,6 @@
 ---
 title: "August 2022 dbt Update: v1.3 beta, Tech Partner Program, and Coalesce!"
-description: "Also flagging that Coalesce is less than 3 weeks away! 😱"
+description: "Coalesce is less than 2 months away!"
 slug: dbt-product-update-2022-august
 authors: [lauren_craigie] 
 
