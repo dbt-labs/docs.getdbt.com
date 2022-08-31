@@ -52,7 +52,7 @@ Once the connection is saved, a public key will be generated and displayed for t
 The following fields are required when creating a Snowflake connection:
 
 | Field | Description | Examples |
-| ----- | ----------- | -------- |
+| ----- | ----------- | ---------------- |
 | Account | The Snowflake account to connect to. Take a look [here](snowflake-profile#account) to determine what the account field should look like based on your region.| <Snippet src="snowflake-acct-name" />  |
 | Role | An optional field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
