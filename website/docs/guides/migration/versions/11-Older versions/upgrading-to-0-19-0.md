@@ -7,7 +7,7 @@ title: "Upgrading to 0.19.0"
 
 - [Discourse](https://discourse.getdbt.com/t/1951)
 - [Release notes](https://github.com/dbt-labs/dbt-core/releases/tag/v0.19.0)
-- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.19.latest/CHANGELOG.md)
+- [Full changelog](https://github.com/dbt-labs/dbt-core/blob/0.19.latest/CHANGELOG.md)
 
 ## Breaking changes
 

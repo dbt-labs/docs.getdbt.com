@@ -39,7 +39,7 @@ You can click a link available in a netlify bot PR comment to see and review you
 * Install [homebrew](https://brew.sh/). 
 
 1. Install `node`: `brew install node`
-2. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
+2. Clone this repo: `git clone git@github.com:dbt-labs/docs.getdbt.com.git`
 3. `cd` into the repo: `cd docs.getdbt.com`
 4. `cd` into the `website` subdirectory: `cd website`
 5. Install the required node packages: `npm install`
@@ -54,7 +54,7 @@ Advisory:
 
 Method 1: Utilizing the Cypress GUI
 1. Install `node`: `brew install node`
-2. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
+2. Clone this repo: `git clone git@github.com:dbt-labs/docs.getdbt.com.git`
 3. `cd` into the repo: `cd docs.getdbt.com`
 4. `cd` into the `website` subdirectory: `cd website`
 5. Install the required node packages: `npm install`
@@ -63,7 +63,7 @@ Method 1: Utilizing the Cypress GUI
 
 Method 2: Running the Cypress E2E tests headlessly
 1. Install `node`: `brew install node`
-2. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
+2. Clone this repo: `git clone git@github.com:dbt-labs/docs.getdbt.com.git`
 3. `cd` into the repo: `cd docs.getdbt.com`
 4. `cd` into the `website` subdirectory: `cd website`
 5. Install the required node packages: `npm install`
