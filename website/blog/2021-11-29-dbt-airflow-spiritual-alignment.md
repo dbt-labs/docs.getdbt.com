@@ -232,7 +232,7 @@ To set up Airflow and dbt Cloud, you can:
 
 ![airflow dbt run select](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/airflow-connection-ID.png)
 
-3. Set up your Airflow DAG similar to [this example](https://github.com/apache/airflow/blob/main/airflow/providers/dbt/cloud/example_dags/example_dbt_cloud.py).
+3. Set up your Airflow DAG similar to [this example](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py).
 
 4. You can use Airflow to call the dbt Cloud API via the new `DbtCloudRunJobOperator` to run the job and monitor it in real time through the dbt Cloud interface.
 
