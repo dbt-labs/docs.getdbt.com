@@ -103,4 +103,4 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 
 ## Get advice from the dbt Community
 
-<DiscourseTopicList categoryID="12"/>
+<DiscourseTopicList categoryID="12" createNew="true" orderBy="views"/>

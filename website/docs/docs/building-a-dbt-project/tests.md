@@ -272,4 +272,4 @@ Additional FAQs that need Discourse articles:
 
 ## Get advice from the dbt Community
 
-<DiscourseTopicList categoryID="11" templateStyle="complete"/>
+<DiscourseTopicList categoryID="11" templateStyle="complete" orderBy="views"/>
