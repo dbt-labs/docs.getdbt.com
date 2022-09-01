@@ -269,3 +269,7 @@ Note that, if you elect to store test failures:
 Additional FAQs that need Discourse articles:
 - How can I run my tests before a model is created?
 -->
+
+## Get advice from the dbt Community
+
+<DiscourseTopicList categoryID="11" templateStyle="complete"/>
