@@ -28,8 +28,34 @@ Finally press **Save**.
 
 In general, there are two parts to setting up Slack notifications. The first involves setting up the dbt Cloud integration with Slack, while the second involves setting up the notifications themselves.
 
- - If you **haven't** set up the integration: Watch the entire video below!
+### Setup the integration
 
- - If you **have** set up the integration: Feel free to skip ahead to 0:40 in the video.
+Click on your profile in the top right corner of the dbt Cloud UI and click **Profile**.
 
- <LoomVideo id="80f368e6d03d483282970b2cbc4abf78" />
+Click **Integrations** on the left-hand side menu.
+
+<Lightbox src="/img/docs/dbt-cloud/Navigate-to-integrations.png" title="Navigate to integrations"/>
+
+Click **Link your Slack profile**
+
+<Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" title="Link your Slack profile"/>
+
+Allow dbt Labs to access the Slack workspace. If you are a member of multiple, you can select the appropriate workspace from the dropdown menu in the top right corner.
+
+<Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" title="Allow dbt access to Slack"/>
+
+### Configure the notifications
+
+Open the main menu and click **Account Settings**.
+
+Click **Notifications** from the left-hand menu and **Edit** from the top right-hand side of the notifications pane.
+
+<Lightbox src="/img/docs/dbt-cloud/Navigate-to-notifications.png" title="Navigate to notifications"/>
+
+Slack notification settings will be towards the bottom of the page (you may have to scroll down).
+
+<Lightbox src="img/docs/dbt-cloud/Configure-Slack-notifications.png" title="Configure Slack notifications"/>
+
+### Disable the Slack integration
+
+To disable the integration entirely, navigate back to the Integrations page and click **Disconnect Account** in the Slack pane. Confirm the disconnect, and the option will revert to its original state.
