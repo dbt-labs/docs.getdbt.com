@@ -15,7 +15,7 @@ There are two options for setting up email notifications. As a **user**, you can
 \
 Next select **Edit** and select the type of Notification (Succeeds, Fails, or Is Cancelled) for each Job for which you would like to be notified.
 
-* **As an admin:**  Navigate to Account Settings (in the hamburger menu) > Notifications.
+* **As an admin:**  Navigate to Account Settings > Notifications.
 Select the User you'd like to set notifications for. Select **Edit** and select the type of Notification (Succeeds, Fails, or Is Cancelled) for each Job for which they will be notified.
 
 Finally press **Save**.
@@ -59,3 +59,4 @@ Slack notification settings will be towards the bottom of the page (you may have
 ### Disable the Slack integration
 
 To disable the integration entirely, navigate back to the Integrations page and click **Disconnect Account** in the Slack pane. Confirm the disconnect, and the option will revert to its original state.
+
