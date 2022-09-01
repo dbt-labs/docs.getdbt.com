@@ -139,6 +139,8 @@ group by 1
 
 Building this model incrementally without the `unique_key` parameter would result in multiple rows in the target table for a single day – one row for each time dbt runs on that day. Instead, the inclusion of the `unique_key` parameter ensures the existing row is updated instead.
 
+An `unique_key` is useful when using **`merge`** as a strategy for incremental model. [Learn more about](https://docs.getdbt.com/reference/resource-configs/spark-configs#incremental-models) - for Apache Spark configurations.
+
 ## How do I rebuild an incremental model?
 If your incremental model logic has changed, the transformations on your new rows of data may diverge from the historical transformations, which are stored in your target table. In this case, you should rebuild your incremental model.
 
