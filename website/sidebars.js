@@ -70,7 +70,7 @@ const sidebarSettings = {
             'docs/contributing/adapter-development/2-building-a-new-adapter',
             'docs/contributing/adapter-development/3-testing-a-new-adapter',
             'docs/contributing/adapter-development/4-documenting-a-new-adapter',
-            'docs/contributing/adapter-development/5-promoting-a-new-adapter'
+            'docs/contributing/adapter-development/5-promoting-a-new-adapter',
             'docs/contributing/adapter-development/6-verifying-a-new-adapter'
           ]
         }
