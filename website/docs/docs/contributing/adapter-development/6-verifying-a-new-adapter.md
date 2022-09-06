@@ -34,7 +34,7 @@ The adapter verification program aims to quickly indicate to users which adapter
 4. assuring that it works for us internally and ideally an existing team using the adapter in production .
 
 
-Every major & minor version of a adapter will be verified internally and given an official :white_check_mark: (custom emoji coming soon), on the [Available Adapters](docs/../../../available-adapters.md) page.
+Every major & minor version of a adapter will be verified internally and given an official :white_check_mark: (custom emoji coming soon), on the [Available Adapters](available-adapters) page.
 
 ## How to get an adapter verified?
 

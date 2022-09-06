@@ -3,7 +3,7 @@ title: "Building a new adapter"
 id: "2-building-a-new-adapter"
 ---
 
-To learn what an adapter is and they role they serve, see [What are adapters?](1-what-are-adapters.md)
+To learn what an adapter is and they role they serve, see [What are adapters?](1-what-are-adapters)
 
 This guide will walk you through the first creating the necessary adapter classes and macros, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](testing-a-new-adapter)
 ), please let the community know that is available to use by adding the adapter to the [Available Adapters](docs/available-adapters) page by following the steps given in [Documenting your adapter](docs/contributing/documenting-a-new-adapter).
