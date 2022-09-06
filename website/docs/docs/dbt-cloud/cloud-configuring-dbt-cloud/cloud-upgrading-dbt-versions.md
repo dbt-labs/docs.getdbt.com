@@ -51,7 +51,7 @@ clean-targets:
 - Do you have custom scripts that parse dbt JSON artifacts?
 - (BigQuery only) Do you use dbt's legacy capabilities around ingestion-time-partitioned tables?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-v1.0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-v1.0).
 
 </details>
 
@@ -64,7 +64,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you have custom scripts that parse dbt JSON artifacts?
 - (Snowflake only) Do you have custom macros or <Term id="materialization">materializations</Term> that depend on using transactions, such as statement blocks with `auto_begin=True`?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-21-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -78,7 +78,7 @@ If you believe your project might be affected, read more details in the migratio
 - Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-20-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -101,7 +101,7 @@ See **Upgrading to v0.17.latest from v0.16** below for more details.
 - Do you have custom scripts that parse dbt JSON artifacts?
 - Do you have any custom materializations?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-19-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -112,7 +112,7 @@ If you believe your project might be affected, read more details in the migratio
 
 - Do you directly call `adapter_macro`?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-18-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -190,7 +190,7 @@ models:
 ```
 </File>
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-17-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -202,7 +202,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use `partition_by` config for BigQuery models?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-16-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 </details>
 
 
@@ -214,7 +214,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you have a custom materialization?
 - Do you have a macro that accesses `Relations` directly?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-15-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 </details>
 
 <details>
@@ -225,7 +225,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use the `—non-destructive` flag?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-14-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 </details>
 
 

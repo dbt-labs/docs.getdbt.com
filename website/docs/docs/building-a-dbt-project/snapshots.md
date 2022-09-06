@@ -72,6 +72,7 @@ When you run the [`dbt snapshot` command](snapshot):
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](ref) function.
 
 ## Example
+
 To add a snapshot to your project:
 
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
@@ -211,7 +212,7 @@ The `check` strategy requires the following configurations:
 
 :::caution check_cols = 'all'
 
-The `check` snapshot strategy can be configured to track changes to _all_ columns by supplying `check_cols = 'all'`. It is better to explicitly enumerate the columns that you want to check. Consider using a [surrogate key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) to condense many columns into a single column.
+The `check` snapshot strategy can be configured to track changes to _all_ columns by supplying `check_cols = 'all'`. It is better to explicitly enumerate the columns that you want to check. Consider using a <Term id="surrogate-key" /> to condense many columns into a single column.
 
 :::
 
@@ -284,7 +285,7 @@ There are a number of snapshot-specific configurations:
 | [target_database](target_database) | The database that dbt should render the snapshot table into | No | analytics |
 | [target_schema](target_schema) | The schema that dbt should render the snapshot table into | Yes | snapshots |
 | [strategy](strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
-| [unique_key](unique_key) | A primary key column or expression for the record | Yes | id |
+| [unique_key](unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
 | [check_cols](check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
 | [updated_at](updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
@@ -343,6 +344,7 @@ Snapshot <Term id="table">tables</Term> will be created as a clone of your sourc
 For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
 
 <details>
+<summary>  Details for the timestamp strategy </summary>
 
 Snapshot query results at `2019-01-01 11:00`:
 
@@ -376,6 +378,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 For the `check` strategy, the current timestamp is used to populate each column
 
 <details>
+<summary>  Details for the check strategy </summary>
 
 Snapshot query results at `2019-01-01 11:00`:
 
@@ -406,9 +409,9 @@ Snapshot results:
 
 
 ## FAQs
-<FAQ src="run-one-snapshot" />
-<FAQ src="snapshot-frequency" />
-<FAQ src="snapshot-schema-changes" />
-<FAQ src="snapshot-hooks" />
-<FAQ src="snapshot-target-schema" />
-<FAQ src="configurable-snapshot-path" />
+<FAQ src="Runs/run-one-snapshot" />
+<FAQ src="Runs/snapshot-frequency" />
+<FAQ src="Snapshots/snapshot-schema-changes" />
+<FAQ src="Snapshots/snapshot-hooks" />
+<FAQ src="Snapshots/snapshot-target-schema" />
+<FAQ src="Accounts/configurable-snapshot-path" />
