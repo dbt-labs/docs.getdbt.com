@@ -40,10 +40,10 @@ Even amongst ANSI compliant databases, there are virtually always difference in 
 
 | category                                     | specific area of differences                                                                     | examples                                                                                                                                                                                           |
 |----------------------------------------------|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| statement syntax                             | the grammar of using `IF EXISTS`                                                                 | `IF <TABLE> EXISTS, DROP TABLE`<br>vs<br>`DROP <TABLE> IF EXISTS`                                                                                                                                  |
+| statement syntax                             | the grammar of using `IF EXISTS`                                                                 | `IF <TABLE> EXISTS, DROP TABLE`<br></br>vs<br></br>`DROP <TABLE> IF EXISTS`                                                                                                                                  |
 | workflow definition & semantics              | incremental updates                                                                              | `MERGE` vs. `DELETE; INSERT`                                                                                                                                                                       |
-| relation and column attributes/configuration | database-specifc materialization configs           | `DIST = ROUND_ROBIN` (Synapse)<br>vs<br>`DIST = EVEN` (Redshift)                                                                                                                                   |
-| permissioning                                | grant statements that can only take one grantee at a time vs those that accept lists of grantees | `grant SELECT on table hogwarts.house_pts to dumbledore, snape` <br> ```<br>grant SELECT on table hogwarts.house_pts to dumbledore<br>grant SELECT on table hogwarts.house_pts to snape<br>``` |
+| relation and column attributes/configuration | database-specifc materialization configs           | `DIST = ROUND_ROBIN` (Synapse)<br></br>vs<br></br>`DIST = EVEN` (Redshift)                                                                                                                                   |
+| permissioning                                | grant statements that can only take one grantee at a time vs those that accept lists of grantees | `grant SELECT on table hogwarts.house_pts to dumbledore, snape` <br></br> ```<br></br>grant SELECT on table hogwarts.house_pts to dumbledore<br></br>grant SELECT on table hogwarts.house_pts to snape<br></br>``` |
 
 ### Client Library & Connection Manager
 
@@ -51,9 +51,9 @@ The other big category of inter-database differences comes with how the client c
 
 | category                     | specific area of differences              | examples                                                                                                    |
 |------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| credentials & authentication | authenication                             | user name & password<br>vs<br>MFA with `boto3` or Okta token                                                |
-| connection opening/closing   | create a new connection to db             | `psycopg2.connect(connection_string)`<br>vs<br>`google.cloud.bigquery.Client( ... )`                        |
-| inserting local data         | load seed .`csv` files into Python memory | `Adapter.upload_file()` (BigQuery)<br>`INSERT ... INTO VALUES ...` prepared statement (all other databases) |
+| credentials & authentication | authenication                             | user name & password<br></br>vs<br></br>MFA with `boto3` or Okta token                                                |
+| connection opening/closing   | create a new connection to db             | `psycopg2.connect(connection_string)`<br></br>vs<br></br>`google.cloud.bigquery.Client( ... )`                        |
+| inserting local data         | load seed .`csv` files into Python memory | `Adapter.upload_file()` (BigQuery)<br></br>`INSERT ... INTO VALUES ...` prepared statement (all other databases) |
 
 
 ## How does dbt encapsulate and abstract these differences?
