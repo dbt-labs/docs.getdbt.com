@@ -97,7 +97,7 @@ claire_carroll:
 
 dave_connors:
   name: Dave Connors
-  job_title: Analytics Engineer
+  job_title: Senior Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/dconnors.jpeg
   links:
@@ -181,7 +181,7 @@ simon_podhajsky:
   job_title: Data Lead
   organization: iLife Technologies
   description: >
-    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife 
+    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife
     Technologies, a startup that seeks to digitize the life insurance agency.
   image_url: /img/blog/authors/simon-podhajsky.jpeg
   links:
@@ -215,3 +215,119 @@ simo_tumelius:
   links:
     - url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
       icon: fa-linkedin
+
+matt_winkler:
+  name: Matt Winkler
+  job_title: Senior Solutions Architect
+  organization: dbt Labs
+  description: Matt is an ex-data scientist who chose to embrace the simplicity of using SQL to manage and testing data pipelines with dbt. He previously worked as a hands-on ML practitioner, and consulted with Fortune 500 clients to build and maintain ML Ops pipelines using (mostly) AWS Sagemaker. He lives in the Denver area, and you can say hello on dbt Slack or on LinkedIn.
+  image_url: /img/blog/authors/matt-winkler.jpeg
+  links:
+    - url: https://www.linkedin.com/in/matt-winkler-4024263a/
+
+jonathan_natkins:
+  name: Jon "Natty" Natkins
+  job_title: Regional Director, Solutions Architecture
+  organization: dbt Labs
+  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
+  image_url: /img/blog/authors/jonathan-natkins.jpeg
+  links:
+    - url: https://www.linkedin.com/in/nattyice/
+      icon: fa-linkedin
+    - url: https://twitter.com/nattyice
+      icon: fa-twitter
+
+lauren_benezra:
+  name: Lauren Benezra
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/lauren-benezra.jpeg
+  links:
+    - url: https://www.linkedin.com/in/lbenezra/
+      icon: fa-linkedin
+
+christine_berger:
+  name: Christine Berger
+  job_title: Senior Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/christine-berger.jpeg
+
+grace_goheen:
+  name: Grace Goheen
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/grace-goheen.jpeg
+  links:
+    - url: https://www.linkedin.com/in/gracegoheen/
+      icon: fa-linkedin
+
+jeremy_cohen:
+  name: Jeremy Cohen
+  job_title: Product Manager
+  organization: dbt Labs
+  image_url: /img/blog/authors/jerco.jpeg
+
+doug_beatty:
+  name: Doug Beatty
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  image_url: /img/blog/authors/dbeatty.jpeg
+
+callum_mccann:
+  name: Callum McCann
+  job_title: Senior Developer Experience Advocate
+  organization: dbt Labs
+  description: Callum works on metrics and is either talking about that or obsessing about his dog.
+  image_url: /img/blog/authors/callum-mccann.jpg
+  links:
+    - url: https://www.linkedin.com/in/callum-mccann-38628a89/
+      icon: fa-linkedin
+    - url: https://twitter.com/callumpmccann
+      icon: fa-twitter
+
+benoit_perigaud:
+  name: Benoit Perigaud
+  job_title: Senior Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/benoit-perigaud.jpeg
+  links:
+    - url: https://www.linkedin.com/in/benoit-perigaud/
+      icon: fa-linkedin
+
+bennie_regenold:
+  name: Bennie Regenold
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/bennie-regenold.png
+  links:
+    - url: https://www.linkedin.com/in/benjaminregenold/
+      icon: fa-linkedin
+
+barr_yaron:
+  name: Barr Yaron
+  job_title: Product Manager
+  organization: dbt Labs
+  image_url: /img/blog/authors/barr-yaron.png
+  links:
+    - url: https://www.linkedin.com/in/barryaron/
+      icon: fa-linkedin
+
+ian_fahey:
+  name: Ian Fahey
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/ian-fahey.png
+  links:
+    - url: https://www.linkedin.com/in/ianmfahey/
+      icon: fa-linkedin
+    - url: https://twitter.com/Cavorax
+      icon: fa-twitter
+
+yu_ishikawa:
+   name: Yu Ishikawa
+   job_title: Senior Data Privacy Engineer
+   organization: Ubie
+   image_url: /img/blog/authors/yu-ishikawa.jpg
+   links:
+   - url: https://www.linkedin.com/in/yuishikawa0301
+     icon: fa-linkedin

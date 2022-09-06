@@ -53,7 +53,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**:
 
-*   [.yml files](/docs/building-a-dbt-project/testing-and-documentation/schemayml-files/#usage)
+*   [.yml files](/docs/building-a-dbt-project/using-sources/#testing-and-documenting-sources)
 *   [Materializations](/docs/building-a-dbt-project/building-models/materializations/#configuring-materializations)
 *   [YAML selectors](/reference/node-selection/yaml-selectors/)
 
@@ -87,7 +87,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 ## ✅ Project structure
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-*   If you are using dimensional modeling techniques, do you have staging and marts models?
+*   If you are using <Term id="dimensional-modeling" /> techniques, do you have staging and marts models?
     *   Do they use table prefixes like ‘fct\_’ and ‘dim\_’?
 *   Is the code modular? Is it one transformation per one model?
 *   Are you filtering as early as possible?
@@ -145,7 +145,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 *   Do your models have tests?
-    *   The ideal project has 100% test coverage on all of its models. While there are cases where this doesn’t make sense, our rule of thumb is models should have at least a not\_null/unique test on the primary key.
+    *   The ideal project has 100% test coverage on all of its models. While there are cases where this doesn’t make sense, our rule of thumb is models should have at least a not\_null/unique test on the <Term id="primary-key" />.
 *   What are you testing for? Does it make sense?
 *   What are the assumptions you should be testing for?
     *   Think about your core business logic as well as your understanding of your sources.
@@ -156,7 +156,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**
 
-*   [Version control](/docs/guides/best-practices/#version-control-your-dbt-project)
+*   [Version control](/guides/legacy/best-practices#version-control-your-dbt-project)
 *   [dbt Labs' PR Template](/blog/analytics-pull-request-template)
 
 ## ✅ Documentation
@@ -200,7 +200,7 @@ Are you using the IDE and if so, how well?
 
 **Useful links**
 
-*   [dbt Cloud as a CI tool](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github/)
+*   [dbt Cloud as a CI tool](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github)
 
 
 ## ✅ DAG Auditing

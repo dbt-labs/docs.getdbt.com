@@ -18,8 +18,8 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ## When are artifacts produced?
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
-- [manifest](manifest-json): produced by `compile`, `run`, `test`, `docs generate`, `ls`
-- [run results](run-results-json): produced by `run`, `test`, `seed`, `snapshot`, `docs generate`
+- [manifest](manifest-json): produced by `build`, `compile`, `run`, `test`, `docs generate`, `ls`
+- [run results](run-results-json): produced by `build`, `run`, `test`, `seed`, `snapshot`, `docs generate`
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](sources-json): produced by `source freshness`
 
@@ -43,9 +43,4 @@ In the manifest, the `metadata` may also include:
 
 #### Notes:
 - The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at **schemas.getdbt.com**.
-- As of v0.20.0, the current schema for each artifact is:
-    - https://schemas.getdbt.com/dbt/manifest/v4.json
-    - https://schemas.getdbt.com/dbt/run-results/v4.json
-    - https://schemas.getdbt.com/dbt/catalog/v1.json
-    - https://schemas.getdbt.com/dbt/sources/v3.json
-- Artifact versions may change in any minor version of dbt (`v0.x.0`). Each artifact is versioned independently.
+- Artifact versions may change in any minor version of dbt (`v1.x.0`). Each artifact is versioned independently.

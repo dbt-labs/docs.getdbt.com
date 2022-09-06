@@ -30,7 +30,7 @@ Enter this story. I’m Nate and I manage the Analytics Engineering team at [Sma
 
 ## State of Analytics Before Analytics Engineering
 
-Smartsheet, in general, has a great analytics setup. Strong data engineering and data analytics teams. A cloud data warehouse and an on-prem BI tool for front-end data visibility.  However, even with that foundation, there were some limitations under the hood requiring action:
+Smartsheet, in general, has a great analytics setup. Strong data engineering and data analytics teams. A cloud <Term id="data-warehouse" /> and an on-prem BI tool for front-end data visibility.  However, even with that foundation, there were some limitations under the hood requiring action:
 
 ### (1) Multiple undocumented transformation databases
 
