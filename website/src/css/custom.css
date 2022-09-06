@@ -130,11 +130,11 @@ footer a.footer__link-item {
   color: var(--ifm-footer-color);
 }
 
-footer a {
+.footer a {
   color: var(--ifm-footer-color);
   text-decoration: none;
 }
-footer a:hover {
+.footer a:hover {
   text-decoration: underline;
   color: var(--ifm-footer-color);
 }
