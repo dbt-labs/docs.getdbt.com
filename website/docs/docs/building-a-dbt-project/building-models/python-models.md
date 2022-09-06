@@ -552,7 +552,7 @@ Currently, Python models are supported for users of `dbt-snowflake`, `dbt-spark`
 
 <div warehouse="Snowflake">
 
-**Additional setup:** None needed. Snowpark Python is in Public Preview - Open, and enabled by default for all accounts.
+**Additional setup:** Snowpark Python is in Public Preview - Open, and enabled by default for all accounts. You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) in order to use Anaconda packages.
 
 **Installing packages:** Snowpark supports a number of popular packages via Anaconda. The full list is at https://repo.anaconda.com/pkgs/snowflake/. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance, rather than one with many concurrent users.
 
