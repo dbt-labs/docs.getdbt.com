@@ -16,6 +16,7 @@
   --ifm-h4-font-size: 1.063rem;
   --ifm-h5-font-size: 0.938rem;
   --ifm-navbar-height: 94px;
+  --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 3.75);
   --ifm-footer-background-color: #4f5d75;
   --ifm-footer-color: #fff;
   --ifm-link-color: #009999;
@@ -45,6 +46,7 @@
   --color-off-white: #eff2f3;
   --color-nav-text: #bfc0c0;
   --color-nav-sub-level-text: #545A66;
+  --color-footer-accent: #979EAB;
   --pagination-icon-next: '\2192';
   --pagination-icon-prev: '\2190';
 }
@@ -116,20 +118,61 @@ a.hash-link:hover {
   color: black;
 }
 
-footer {
-  font-weight: var(--ifm-font-weight-bold);
+/* footer styles */
+.footer {
+  font-weight: var(--ifm-font-weight-narrow);
+  font-size: 20px;
+  padding-top: var(--ifm-footer-padding-vertical);
+  padding-bottom: var(--ifm-footer-padding-vertical);
 }
 
 footer a.footer__link-item {
   color: var(--ifm-footer-color);
 }
 
-footer .footer__copyright a {
+footer a {
   color: var(--ifm-footer-color);
   text-decoration: none;
 }
-footer .footer__copyright a:hover {
+footer a:hover {
   text-decoration: underline;
+  color: var(--ifm-footer-color);
+}
+
+.footer__links {
+  margin-bottom: 1.25em;
+}
+
+.footer__link-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__items {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  gap: 1.5em;
+  display: flex;
+}
+
+/* social media icons in footer */
+.footer__items--right {
+  display: flex;
+  gap: 1.5em;
+}
+
+/* fontawesome icons in footer */
+.footer .fa-brands {
+  color: var(--color-footer-accent);
+  font-size: 1.5rem;
+}
+
+/* copyright */
+.footer__bottom {
+  text-align: left;
+  color: var(--color-footer-accent);
+  font-size: 1rem;
 }
 
 /* Fix for nav links that break (like dbt Cloud) */
@@ -597,6 +640,13 @@ nav.navbar div.navbar__inner {
   }
 }
 
+@media (max-width: 910px) {
+  .footer__items {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .card.large {
     height: auto;
@@ -988,7 +1038,8 @@ footer #ot-sdk-btn.optanon-show-settings {
   font-family: var(--ifm-font-family-base);
   padding: 0;
   line-height: inherit;
-  font-size: 1rem;
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
 }
 footer #ot-sdk-btn.ot-sdk-show-settings:hover,

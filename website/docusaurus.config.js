@@ -172,7 +172,28 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a> | <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>`
+      links: [
+          {
+            html: `
+            <div class='footer__items'>
+              <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+              <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
+              <a href='https://www.getdbt.com/security/'>Security</a>
+              <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+              <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
+            </div>
+
+            <div class='footer__items--right'>
+              <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
+              <a href='https://www.getdbt.com/community/'><i class="fa-brands fa-slack"></i></a>
+              <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
+            </div>
+            `
+          },
+          
+      ],
+
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`
     },
   },
   presets: [
