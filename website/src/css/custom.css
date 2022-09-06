@@ -17,7 +17,7 @@
   --ifm-h5-font-size: 0.938rem;
   --ifm-navbar-height: 94px;
   --ifm-footer-background-color: #4f5d75;
-  --ifm-footer-color: #bfc0c0;
+  --ifm-footer-color: #fff;
   --ifm-link-color: #009999;
   --ifm-color-primary: #047377;
   --ifm-link-hover-color: #047377;
@@ -119,6 +119,11 @@ a.hash-link:hover {
 footer {
   font-weight: var(--ifm-font-weight-bold);
 }
+
+footer a.footer__link-item {
+  color: var(--ifm-footer-color);
+}
+
 footer .footer__copyright a {
   color: var(--ifm-footer-color);
   text-decoration: none;
@@ -350,7 +355,6 @@ nav.navbar div.navbar__inner {
 
 /* < icon */
 .menu__link--sublist::after,
-.clean-btn::after,
 .menu__caret::before {
   min-width: 6px;
   transform: rotate(-90deg);
