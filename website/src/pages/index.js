@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import classnames from 'classnames';
 import Head from '@docusaurus/Head';
-import pythonScript from '../utils/main.py';
+import pythonScript from '../python/main.py';
 console.log('pythonScript', pythonScript)
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
