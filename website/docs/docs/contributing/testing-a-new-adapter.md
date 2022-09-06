@@ -10,10 +10,12 @@ Previously, we offered a packaged suite of tests for dbt adapter functionality: 
 :::
 
 This document has two sections:
-1. ["About the testing framework"](#about-the-testing-framework) describes the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
-2. ["Testing your adapter"](#testing-your-adapter) offers a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
+
+1. "[About the testing framework](#about-the-testing-framework)" describes the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
+2. "[Testing your adapter](#testing-your-adapter)" offers a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
 
 ## Prerequisites
+
 - Your adapter must be compatible with dbt-core **v1.1** or newer
 - You should be familiar with **pytest**: https://docs.pytest.org/
 
@@ -28,7 +30,7 @@ Those utilities allow you to do three basic things:
 2. **Define a sequence of dbt commands.** The most important utility  is `run_dbt()`, which returns the [results](dbt-classes#result-objects) of each dbt command. It takes a list of CLI specifiers (subcommand + flags), as well as an optional second argument, `expect_pass=False`, for cases where you expect the command to fail.
 3. **Validate the results of those dbt commands.** For example, `check_relations_equal()` asserts that two database objects have the same structure and content. You can also write your own `assert` statements, by inspecting the results of a dbt command, or querying arbitrary database objects with `project.run_sql()`.
 
-While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
+You can see the full suite of utilities, with arguments and annotations, in [`util.py`](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/tests/util.py). You'll also see them crop up across a number of test cases. While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
 
 ### Example: a simple test case
 
@@ -74,7 +76,7 @@ models:
 
 </File>
 
-2. Use the "fixtures" to define the project for your test case. Following the default pytest configurations, the file name must begin with `test_`, and the class name must begin with `Test`.
+2. Use the "fixtures" to define the project for your test case. These fixtures are always scoped to the **class**, where the class represents one test case—that is, one dbt project or scenario. (The same test case can be used for one or more actual tests, which we'll see in step 3.) Following the default pytest configurations, the file name must begin with `test_`, and the class name must begin with `Test`.
 
 <File name="tests/functional/example/test_example_failing_test.py">
 
@@ -127,7 +129,7 @@ class TestExample:
 
 </File>
 
-3. Now that we've set up our project, it's time to define a sequence of dbt commands and assertions. These methods will be defined in the same file, on the same class (`TestExampleFailingTest`). In pytest, the methods defining actual tests must have names that begin with `test_`.
+3. Now that we've set up our project, it's time to define a sequence of dbt commands and assertions. We define one or more methods in the same file, on the same class (`TestExampleFailingTest`), whose names begin with `test_`. These methods share the same setup (project scenario) from above, but they can be run independently by pytest—so they shouldn't depend on each other in any way.
 
 <File name="tests/functional/example/test_example_failing_test.py">
 
@@ -197,11 +199,11 @@ For the time being, this package is also located within the `dbt-core` repositor
 
 In the course of creating and maintaining your adapter, it's likely that you will end up implementing tests that fall into three broad categories:
 
-1. **Basic tests** that every adapter plugin is expected to pass, defined in `tests.adapter.basic`. Given differences across data platforms, these may require slight modification or reimplementation. Significantly overriding or disabling these tests should be with good reason, since each represents basic functionality that dbt users are accustomed to having. For example, if your adapter does not support incremental models, you should disable the test _and_ note that limitation in documentation, READMEs, and usage guides that accompany your adapter.
+1. **Basic tests** that every adapter plugin is expected to pass. These are defined in `tests.adapter.basic`. Given differences across data platforms, these may require slight modification or reimplementation. Significantly overriding or disabling these tests should be with good reason, since each represents basic functionality expected by dbt users. For example, if your adapter does not support incremental models, you should disable the test, [by marking it with `skip` or `xfail`](https://docs.pytest.org/en/latest/how-to/skipping.html), as well as noting that limitation in any documentation, READMEs, and usage guides that accompany your adapter.
 
-2. **Optional tests**, for second-order functionality that is common across plugins, but not required for basic use. Your plugin can opt into these test cases by inheriting existing ones, or reimplementing them with adjustments. More tests will be added as we convert older tests defined on dbt-core and mature plugins to use the standard framework.
+2. **Optional tests**, for second-order functionality that is common across plugins, but not required for basic use. Your plugin can opt into these test cases by inheriting existing ones, or reimplementing them with adjustments. For now, this category includes all tests located outside the `basic` subdirectory. More tests will be added as we convert older tests defined on dbt-core and mature plugins to use the standard framework.
 
-3. **Custom tests**, for behavior that is specific to your adapter / data platform. Each data warehouse has its own specialties and idiosyncracies. We encourage you to use the same `pytest`-based framework, utilities, and fixtures to write your own custom tests for functionality that is unique to your adapter.
+3. **Custom tests**, for behavior that is specific to your adapter / data platform. Each <Term id="data-warehouse" /> has its own specialties and idiosyncracies. We encourage you to use the same `pytest`-based framework, utilities, and fixtures to write your own custom tests for functionality that is unique to your adapter.
 
 If you run into an issue with the core framework, or the basic/optional test cases—or if you've written a custom test that you believe would be relevant and useful for other adapter plugin developers—please open an issue or PR in the `dbt-core` repository on GitHub.
 
@@ -301,6 +303,7 @@ from dbt.tests.adapter.basic.test_incremental import BaseIncremental
 from dbt.tests.adapter.basic.test_generic_tests import BaseGenericTests
 from dbt.tests.adapter.basic.test_snapshot_check_cols import BaseSnapshotCheckCols
 from dbt.tests.adapter.basic.test_snapshot_timestamp import BaseSnapshotTimestamp
+from dbt.tests.adapter.basic.test_adapter_methods import BaseAdapterMethod
 
 class TestSimpleMaterializationsMyAdapter(BaseSimpleMaterializations):
     pass
@@ -335,6 +338,10 @@ class TestSnapshotCheckColsMyAdapter(BaseSnapshotCheckCols):
 
 
 class TestSnapshotTimestampMyAdapter(BaseSnapshotTimestamp):
+    pass
+
+
+class TestBaseAdapterMethod(BaseAdapterMethod):
     pass
 ```
 
@@ -384,7 +391,7 @@ class TestSnapshotCheckColsRedshift(BaseSnapshotCheckCols):
 
 </File>
 
-As another example, the `dbt-bigquery` adapter asks users to "authorize" replacing a table with a view by supplying the `--full-refresh` flag. The reason: In the table materialization logic, a view by the same name must first be dropped; if the table query fails, the model will be missing.
+As another example, the `dbt-bigquery` adapter asks users to "authorize" replacing a <Term id="table" /> with a <Term id="view" /> by supplying the `--full-refresh` flag. The reason: In the table <Term id="materialization" /> logic, a view by the same name must first be dropped; if the table query fails, the model will be missing.
 
 Knowing this possibility, the "base" test case offers a `require_full_refresh` switch on the `test_config` fixture class. For BigQuery, we'll switch it on:
 
@@ -418,7 +425,7 @@ def pytest_addoption(parser):
     parser.addoption("--profile", action="store", default="apache_spark", type=str)
 
 
-# Using @pytest.mark.skip_adapter('apache_spark') uses the 'skip_by_adapter_type'
+# Using @pytest.mark.skip_profile('apache_spark') uses the 'skip_by_profile_type'
 # autouse fixture below
 def pytest_configure(config):
     config.addinivalue_line(
@@ -450,6 +457,14 @@ def databricks_sql_endpoint_target():
         "host": os.getenv("DBT_DATABRICKS_HOST_NAME"),
         ...
     }
+
+@pytest.fixture(autouse=True)
+def skip_by_profile_type(request):
+    profile_type = request.config.getoption("--profile")
+    if request.node.get_closest_marker("skip_profile"):
+        for skip_profile_type in request.node.get_closest_marker("skip_profile").args:
+            if skip_profile_type == profile_type:
+                pytest.skip("skipped on '{profile_type}' profile")
 ```
 
 </File>

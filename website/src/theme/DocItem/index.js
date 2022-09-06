@@ -46,6 +46,9 @@ export default function DocItem(props) {
     canRenderTOC && (windowSize === 'desktop' || windowSize === 'ssr');
 
   // dbt Custom
+  // If term has cta property set, show that cta
+  const termCTA = frontMatter?.cta && frontMatter.cta
+
   // This hides any TOC items not in
   // html markdown headings for current version. 
   const { version: dbtVersion } = useContext(VersionContext)
@@ -161,6 +164,7 @@ export default function DocItem(props) {
                 minHeadingLevel={tocMinHeadingLevel}
                 maxHeadingLevel={tocMaxHeadingLevel}
                 className={ThemeClassNames.docs.docTocDesktop}
+                featured_cta={termCTA && termCTA}
               />
             ) : (
               <img

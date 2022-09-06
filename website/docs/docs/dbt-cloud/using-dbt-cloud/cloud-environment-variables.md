@@ -5,7 +5,7 @@ description: "Use environment variables to customize the behavior of your dbt pr
 ---
 
 Environment variables can be used to customize the behavior of a dbt project depending on where the project is running. See the docs on
-[env_var](dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
+[env_var](/reference/dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
 
 :::info Environment Variable Naming and Prefixing
 Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
@@ -28,7 +28,7 @@ There are four levels of environment variables:
 
 **Setting environment variables at the project and environment level**
 
-To set environment variables at the project and environment level, head over to the Environments section in your main navigation pane. You'll see a view to list all your environments and a view to set and update environment variables. Make sure you're in the environment variable view.
+To set environment variables at the project and environment level, head over to the Environments section in your main navigation pane. You'll see a <Term id="view" /> to list all your environments and a view to set and update environment variables. Make sure you're in the environment variable view.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/navigate-to-env-vars.gif" title="Environment variables tab"/>
 
@@ -102,7 +102,7 @@ dbt Cloud has a number of pre-defined variables built in. The following environm
 - `DBT_CLOUD_PROJECT_ID`: The ID of the dbt Cloud Project for this run
 - `DBT_CLOUD_JOB_ID`: The ID of the dbt Cloud Job for this run
 - `DBT_CLOUD_RUN_ID`: The ID of this particular run
-- `DBT_CLOUD_RUN_REASON_CATEGORY`: The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `other`)
+- `DBT_CLOUD_RUN_REASON_CATEGORY`: The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `azure_pull_request`, `other`)
 - `DBT_CLOUD_RUN_REASON`: The specific trigger for this run (eg. `Scheduled`, `Kicked off by <email>`, or custom via `API`)
 
 **Git details**
