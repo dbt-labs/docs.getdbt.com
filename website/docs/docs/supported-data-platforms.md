@@ -1,6 +1,6 @@
 ---
-title: "Available adapters"
-id: "available-adapters"
+title: "Supported Data Platforms"
+id: "supported-data-platforms"
 ---
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
