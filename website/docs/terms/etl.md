@@ -5,7 +5,7 @@ displayText: ETL
 hoverSnippet: Extract, Transform, Load (ETL)is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 ---
 
-ETL, or “Extract, Transform, Load”, is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse. In ETL workflows, much of the meaningful data transformation occurs outside this primary pipeline in a downstream business intelligence (BI) platform.
+ETL, or “Extract, Transform, Load”, is the process of first extracting data from a data source, transforming it, and then loading it into a target <Term id="data-warehouse" />. In ETL workflows, much of the meaningful data transformation occurs outside this primary pipeline in a downstream business intelligence (BI) platform.
 
 ETL is contrasted with the newer <Term id="elt" /> (Extract, Load, Transform) workflow, where transformation occurs after data has been loaded into the target data warehouse. In many ways, the ETL workflow could have been renamed the ETLT workflow, because a considerable portion of meaningful data transformations happen outside the data pipeline. The same transformations can occur in both ETL and ELT workflows, the primary difference is *when* (inside or outside the primary ETL workflow) and *where* the data is transformed (ETL platform/BI tool/data warehouse).
 
@@ -41,7 +41,7 @@ To actually transform the data, there’s two primary methods teams will use:
 
 In the final stage, the transformed data is loaded into your target data warehouse. Once this transformed data is in its final destination, it’s most commonly exposed to end business users either in a BI tool or in the data warehouse directly.
 
-The ETL workflow implies that your raw data does not live in your data warehouyse. *Because transformations occur before load, only transformed data lives in your data warehouse in the ETL process.* This can make it harder to ensure that transformations are performing the correct functionality.
+The ETL workflow implies that your raw data does not live in your data warehouse. *Because transformations occur before load, only transformed data lives in your data warehouse in the ETL process.* This can make it harder to ensure that transformations are performing the correct functionality.
 
 ## ETL use cases and challenges
 
@@ -49,7 +49,7 @@ The ETL workflow implies that your raw data does not live in your data warehouys
 
 While ELT adoption is growing, we still see ETL use cases for processing large volumes of data and adhering to strong data governance principles.
 
-- **Efficiently normal volumes of data**: ETL can be an efficient way to perform simple normalizations across large data sets. Doing these lighter transformations across a large volume of data during loading can help get the data formatted properly and quickly for downstream use. In addition, end business users sometimes need quick access to raw or somewhat normalized data. Through an ETL workflow, data teams can conduct lightweight transformations on data sources and quickly expose them in their target data warehouse and downstream BI tool.
+- **Efficiently normalize large volumes of data**: ETL can be an efficient way to perform simple normalizations across large data sets. Doing these lighter transformations across a large volume of data during loading can help get the data formatted properly and quickly for downstream use. In addition, end business users sometimes need quick access to raw or somewhat normalized data. Through an ETL workflow, data teams can conduct lightweight transformations on data sources and quickly expose them in their target data warehouse and downstream BI tool.
 - **Hash PII prior to load**: Some companies will want to mask, hash, or remove PII values before it enters their data warehouse. In an ETL workflow, teams can transform PII to hashed values or remove them completely during the loading process. This limits where PII is available or accessible in an organization’s data warehouse.
 
 ### ETL drawbacks

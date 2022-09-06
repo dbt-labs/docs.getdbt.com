@@ -16,7 +16,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/). The policie
 
 - We are no longer releasing new patches for minor versions prior to v1.0.
 - As of June 30, 2022, dbt Cloud will remove support for dbt Core versions older than v1.0. At that point, we will also remove v0.20 and v0.21 from the version dropdown on this website.
-- You can read the [specific version migration guides](/docs/guides/migration-guide) to understand changes to each version. Each migration guide will link to pages of documentation that were added or updated. Those pages of documentation will also include "Changelog" notes, which you can toggle to see notes on specific changes from each older version.
+- You can read the [specific version migration guides](/guides/migration/versions) to understand changes to each version. Each migration guide will link to pages of documentation that were added or updated. Those pages of documentation will also include "Changelog" notes, which you can toggle to see notes on specific changes from each older version.
 
 ## Version support starting with v1.0
 
@@ -43,6 +43,10 @@ After a minor version reaches the end of its critical support period, one year a
 We aim to release a new minor "feature" every 3 months. _This is an indicative timeline ONLY._ For the latest information about upcoming releases, including their planned release dates and which features and fixes might be included in each, always consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones).
 
 <Snippet src="core-versions-table" />
+
+:::warning ⚠️ v0.X Non-Supported Period
+We are giving accounts until the end of June 2022 to upgrade to dbt 1.0 or later. Pre-dbt 1.0 versions will not receive patch fixes, and our support team will no longer assist with dbt version specific help on non-supported versions of dbt. Additionally, jobs running dbt versions prior to 1.0 will start experiencing service disruptions before the end of the year 2022 and will be removed from the dbt Cloud context by end of the year 2022. You will receive additional email and in app notification before disruption to your production jobs.
+:::
 
 ## Best practices for upgrading
 

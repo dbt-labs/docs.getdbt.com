@@ -1,7 +1,7 @@
 <WHCode>
 
 <!-- Bigquery snippet -->
-<div>
+<div warehouse="BigQuery">
 
 ```sql
 with customers as (
@@ -65,7 +65,7 @@ select * from final
 
 <!-- Databricks snippet -->
 
-<div>
+<div warehouse="Databricks">
 
 ```sql
 with customers as (
@@ -129,7 +129,7 @@ select * from final
 
 <!-- Redshift snippet -->
 
-<div>
+<div warehouse="Redshift">
 
 ```sql
 with customers as (
@@ -193,7 +193,7 @@ select * from final
 
 <!-- Snowflake snippet -->
 
-<div>
+<div warehouse="Snowflake">
 
 ```sql
 with customers as (

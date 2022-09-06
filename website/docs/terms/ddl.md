@@ -49,7 +49,7 @@ In this example, you have to rename the `last_name` column [in jaffle_shop’s](
 
 ### DROP
 
-The `DROP` command. Probably the most high-stakes DDL statement one can execute. One that should be used with the *utmost* of care. At its core, an executed `DROP` statement will remove that object from the data warehouse. You can drop tables, views, schemas, databases, users, functions, and more.
+The `DROP` command. Probably the most high-stakes DDL statement one can execute. One that should be used with the *utmost* of care. At its core, an executed `DROP` statement will remove that object from the <Term id="data-warehouse" />. You can drop tables, views, schemas, databases, users, functions, and more.
 
 Some data warehouses such as Snowflake allow you to add restrictions to `DROP` statements to caution you about the impact of dropping a table, view, or schema before it’s actually dropped. In practice, we recommend you never drop raw source tables as they are often your baseline of truth. Your database user also usually needs the correct permissions to drop database objects.
  
@@ -117,8 +117,8 @@ DDL statements allow you to remove, edit, and add database objects. Some of the 
 
 For database-specific DDL resources, check out the following:
 
-- [DDL Commands in Snowflake](https://docs.snowflake.com/en/sql-reference/sql-ddl-summary.html)
-- [SQL Commands in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_commands.html) (contains DDL)
-- [DDL Statements in Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language)
-- [DDL Statements in Databricks](https://docs.databricks.com/sql/language-manual/index.html#ddl-statements)
+- [DDL commands in Snowflake](https://docs.snowflake.com/en/sql-reference/sql-ddl-summary.html)
+- [SQL commands in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_commands.html) (contains DDL)
+- [DDL statements in Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language)
+- [DDL statements in Databricks](https://docs.databricks.com/sql/language-manual/index.html#ddl-statements)
 - [DDL in Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/language-reference.html)
