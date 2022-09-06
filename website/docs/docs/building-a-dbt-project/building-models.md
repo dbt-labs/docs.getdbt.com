@@ -17,12 +17,20 @@ If you're new to dbt, we recommend that you check out our [Getting Started guide
 
 :::
 
+<VersionBlock firstVersion="1.3">
+
+In v1.3, dbt Core is adding support for **Python models**.
+
+dbt's Python capabilities are an extension of its capabilities with SQL models, which are introduced in the discussion and examples below. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](python-models)
+
+</VersionBlock>
+
 A model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
 - The name of the file is used as the model name
 - Models can be nested in subdirectories within the `models` directory
 
-When you execute the [`dbt run` command](run), dbt will build this model in your data warehouse by wrapping it in a `create view as` or `create table as` statement.
+When you execute the [`dbt run` command](run), dbt will build this model in your <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
 
 For example, consider this `customers` model:
 

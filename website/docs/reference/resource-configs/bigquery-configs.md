@@ -446,7 +446,7 @@ declare dbt_partitions_for_replacement array<date>;
 set (dbt_partitions_for_replacement) = (
     select as struct
         array_agg(distinct date(max_tstamp))
-    from `my_project`.`my_dataset`.`sessions`
+    from `my_project`.`my_dataset`.{{ model_name }}__dbt_tmp
 );
 
 /*
@@ -598,12 +598,15 @@ select ...
 </File>
 
 ## Authorized Views
+
 <Changelog>New in v0.18.0</Changelog>
 
 If the `grant_access_to` config is specified for a model materialized as a
 view, dbt will grant the view model access to select from the list of datasets
 provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
 for more details.
+
+<Snippet src="grants-vs-access-to" />
 
 <File name='dbt_project.yml'>
 
@@ -633,10 +636,8 @@ models:
 
 </File>
 
-Views with this configuration will be able to select from objects in 
-`project_1.dataset_1` and `project_2.dataset_2`, even when they are located
-elsewhere and queried by users who do not otherwise have
-access to `project_1.dataset_1` and `project_2.dataset_2`.
+Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
 #### Limitations
+
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.

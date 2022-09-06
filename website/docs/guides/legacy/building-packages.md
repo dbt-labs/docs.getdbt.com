@@ -41,7 +41,7 @@ When working on your package, we often find it useful to install a local copy of
 ### Follow our best practices
 _Modeling packages only_
 
-Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md), our article on [how we structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
+Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
 
 This is where it comes in especially handy to have worked on your own dbt project previously.
 
@@ -50,7 +50,7 @@ _Modeling packages only_
 
 Not every user of your package is going to store their Mailchimp data in a schema named `mailchimp`. As such, you'll need to make the location of raw data configurable.
 
-We recommend using [sources](using-sources) and [variables](using-variables) to achieve this. Check out [this package](https://github.com/fivetran/dbt_facebook_ads_source/blob/master/models/src_facebook_ads.yml#L5-L6) for an example — notably, the README [includes instructions](https://github.com/fivetran/dbt_facebook_ads_source#configuration) on how to override the default schema from a `dbt_project.yml` file.
+We recommend using [sources](using-sources) and [variables](using-variables) to achieve this. Check out [this package](https://github.com/fivetran/dbt_facebook_ads_source/blob/main/models/src_facebook_ads.yml#L5-L6) for an example — notably, the README [includes instructions](https://github.com/fivetran/dbt_facebook_ads_source#configuration) on how to override the default schema from a `dbt_project.yml` file.
 
 ### Install upstream packages from hub.getdbt.com
 
@@ -75,10 +75,10 @@ Many SQL functions are specific to a particular database. For example, the funct
 If you wish to support multiple warehouses, we have a number of tricks up our sleeve:
 - We've written a number of macros that compile to valid SQL snippets on each of the original four adapters. Where possible, leverage these macros.
 - If you need to implement cross-database compatibility for one of your macros, use the [`adapter.dispatch` macro](dispatch) to achieve this. Check out the cross-database macros in dbt-utils for examples.
-- If you're working on a modeling package, you may notice that you need write different models for each warehouse (for example, if the EL tool you are working with stores data differently on each warehouse). In this case, you can write different versions of each model, and use the [`enabled` config](enabled), in combination with [`target.type`](/reference/dbt-jinja-functions/target) to enable the correct models — check out [this package](https://github.com/fivetran/dbt_facebook_ads_creative_history/blob/master/dbt_project.yml#L11-L16) as an example.
+- If you're working on a modeling package, you may notice that you need write different models for each warehouse (for example, if the EL tool you are working with stores data differently on each warehouse). In this case, you can write different versions of each model, and use the [`enabled` config](enabled), in combination with [`target.type`](/reference/dbt-jinja-functions/target) to enable the correct models — check out [this package](https://github.com/fivetran/dbt_facebook_ads_creative_history/blob/main/dbt_project.yml#L11-L16) as an example.
 
 
-If your package has only been written to work for one data warehouse, make sure you document this in your package README.
+If your package has only been written to work for one <Term id="data-warehouse" />, make sure you document this in your package README.
 
 ### Use specific model names
 _Modeling packages only_
@@ -132,7 +132,7 @@ packages:
 
 5. Confirm that you can run `dbt run` and `dbt test` from your command line successfully.
 
-5. (Optional) Use a CI tool, like CircleCI or GitHub Actions, to automate running your dbt project when you open a new Pull Request. For inspiration, check out one of our [CircleCI configs](https://github.com/dbt-labs/snowplow/blob/master/.circleci/config.yml), which runs tests against our four main warehouses. Note: this is an advanced step — if you are going down this path, you may find it useful to say hi on [dbt Slack](https://community.getdbt.com/).
+5. (Optional) Use a CI tool, like CircleCI or GitHub Actions, to automate running your dbt project when you open a new Pull Request. For inspiration, check out one of our [CircleCI configs](https://github.com/dbt-labs/snowplow/blob/main/.circleci/config.yml), which runs tests against our four main warehouses. Note: this is an advanced step — if you are going down this path, you may find it useful to say hi on [dbt Slack](https://community.getdbt.com/).
 
 ## 5. Deploy the docs for your package
 _Optional_
