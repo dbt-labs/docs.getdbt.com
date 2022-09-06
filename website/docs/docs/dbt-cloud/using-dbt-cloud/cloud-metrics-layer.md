@@ -1,5 +1,5 @@
 ---
-title: "What is the dbt Metrics Layer?"
+title: "What is the dbt metrics layer?"
 id: "cloud-metrics-layer"
 description: "The dbt metrics layer helps you standardize metrics within your organization."
 keywords:

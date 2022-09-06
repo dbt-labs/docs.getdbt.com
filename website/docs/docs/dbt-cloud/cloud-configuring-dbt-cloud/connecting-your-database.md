@@ -9,17 +9,20 @@ dbt Cloud will always connect to your warehouse from the following IP addresses.
 Be sure to allow traffic from these IPs in your firewall, and include them in
 any database grants.
 
-- 52.45.144.63
-- 54.81.134.249
-- 52.22.161.231
+| Region/Deployment | IP Addresses |
+| ------ | ----------- |
+| US (cloud.getdbt.com) |  52.45.144.63 <br /> 54.81.134.249 <br /> 52.22.161.231 |
+| EMEA (emea.dbt.com) |  3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 |
+| Virtual Private dbt | Ask [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) for your  IPs | 
 
 <Changelog>
 
-- `54.81.134.249` and `52.22.161.231` were added in November, 2020
+- November 2020 &mdash; add the IPs `54.81.134.249` and `52.22.161.231` 
+- September 2022 &mdash; Add EMEA IPs
 
 </Changelog>
 
-Allowing these IP addresses only enables the connection to your data warehouse. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](deployment-architecture)."
+Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](deployment-architecture)."
 
 
 ## Connecting to Redshift and Postgres
@@ -85,7 +88,17 @@ Finally, set the "Private Key" and "Private Key Passphrase" fields in the "Edit
 Credentials" page to finish configuring dbt Cloud to authenticate with Snowflake
 using a key pair.
 
-**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud -- you **must** add the passphrase that will be used to decrypt the and will receive an error if the `PRIVATE KEY PASSPHRASE` field is empty.
+**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud, and the keys must be of size 4096 or smaller.
+
+In order to successfully fill in the Private Key field, you **must** include the commented lines below when you add the passphrase. Leaving the `PRIVATE KEY PASSPHRASE` field empty will return an error - have a look at the examples below:
+
+
+**Example:**
+```sql
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+< encrypted private key contents here >
+-----END ENCRYPTED PRIVATE KEY-----
+```
 
 ![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
 

@@ -1,18 +1,19 @@
 import React, { useState, useEffect, createContext } from "react"
 import { versions } from '../../dbt-versions'
 
-const lastReleasedVersion = versions && versions.find(ver => ver.version && ver.version != "");
+const lastReleasedVersion = versions && versions.find(ver => ver.version && ver.version != "" && !ver.isPrerelease);
 
 const VersionContext = createContext({
   version: lastReleasedVersion.version,
   EOLDate: lastReleasedVersion.EOLDate || undefined, 
+  isPrerelease: lastReleasedVersion.isPrerelease || false,
   latestStableRelease: lastReleasedVersion.version,
   updateVersion: () => {},
 })
 
-export const VersionContextProvider = ({ children }) => {
+export const VersionContextProvider = ({ value = "", children }) => {
 
-  const [version, setVersion] = useState('')
+  const [version, setVersion] = useState(value)
 
   useEffect(() => {
     const storageVersion = window.localStorage.getItem('dbtVersion')
@@ -57,14 +58,14 @@ export const VersionContextProvider = ({ children }) => {
     updateVersion
   }
 
-  // Get End of Life date for current version
+  // Determine isPrerelease status + End of Life date for current version
   const currentVersion = versions.find(ver => ver.version === version)
   if(currentVersion)
     context.EOLDate = currentVersion.EOLDate
+    context.isPrerelease = currentVersion?.isPrerelease
   
   // Get latest stable release
-  const latestStableRelease = versions.find(ver => new Date(ver.EOLDate) > new Date())
-  if(latestStableRelease?.version)
+  const latestStableRelease = versions.find(ver => !ver?.isPrerelease)
     context.latestStableRelease = latestStableRelease.version
 
   return (

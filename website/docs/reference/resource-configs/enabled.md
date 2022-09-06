@@ -148,7 +148,7 @@ If you are disabling models because they are no longer being used, but you want 
 
 ## Examples
 ### Disable a model in a package in order to use your own version of the model.
-This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/dbt-labs/segment/blob/master/models/base/segment_web_page_views.sql)):
+This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/dbt-labs/segment/blob/main/models/base/segment_web_page_views.sql)):
 1. Add a model named `segment_web_page_views` the same name to your own project.
 2. To avoid a compilation error due to duplicate models, disable the segment package's version of the model like so:
 
