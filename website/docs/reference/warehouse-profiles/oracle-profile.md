@@ -398,6 +398,7 @@ export DBT_ORACLE_HOST=adb.example.oraclecloud.com
 export DBT_ORACLE_SERVICE=example_high.adb.oraclecloud.com
 ```
 
+<VersionBlock firstVersion="1.2">
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -419,7 +420,29 @@ dbt_test:
          threads: 4
 ```
 </File>
+</VersionBlock>
 
+<VersionBlock lastVersion="1.1">
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+dbt_test:
+   target: "{{ env_var('DBT_TARGET', 'dev') }}"
+   outputs:
+      dev:
+         type: oracle
+         user: "{{ env_var('DBT_ORACLE_USER') }}"
+         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         protocol: "tcps"
+         host: "{{ env_var('DBT_ORACLE_HOST') }}"
+         port: 1522
+         service: "{{ env_var('DBT_ORACLE_SERVICE') }}"
+         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
+         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
+         threads: 4
+```
+</File>
+</VersionBlock>
 </TabItem>
 
 
