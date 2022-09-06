@@ -87,3 +87,6 @@ You can document and test seeds in yaml by declaring properties — check out th
 <FAQ src="Seeds/leading-zeros-in-seed" />
 <FAQ src="Seeds/build-one-seed" />
 <FAQ src="Seeds/seed-hooks" />
+
+## Get advice from the dbt Community
+<DiscourseTopicList templateStyle="complete" orderBy="views" tags="seeds" topPeriod="all"/>
