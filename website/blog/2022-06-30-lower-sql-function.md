@@ -8,13 +8,13 @@ authors: [kira_furuichi]
 tags: [SQL Magic]
 hide_table_of_contents: false
 
-date: 2022-06-30
+date: 2022-05-11
 is_featured: false
 ---
 
 We’ve all been there:
 
-* In a user signup form, user A typed in their name as Kira Furuichi, user B typed it in as john blust, and user C wrote DAvid KrevitT (what’s up with that, David??)
+* In a user signup form, user A typed in their name as `Kira Furuichi`, user B typed it in as `john blust`, and user C wrote `DAvid KrevitT` (what’s up with that, David??)
 * Your backend application engineers are adamant customer emails are in all caps
 * All of your event tracking names are lowercase
 
@@ -73,7 +73,7 @@ After running this query, the `customers` table will look a little something lik
 
 Now, all characters in the `first_name` and `last_name` columns are lowercase.
 
-> **Note:**
+> **Where do you lower?**
 > Changing all string columns to lowercase to create uniformity across data sources typically happens in our dbt project’s [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging). There are a few reasons for that: data cleanup and standardization, such as aliasing, casting, and lowercasing, should ideally happen in staging models to create downstream uniformity. It’s also more performant in downstream models that join on string values to join on strings that are of all the same casing versus having to join and perform lowercasing at the same time.
 
 ## Why we love it

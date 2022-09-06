@@ -3,7 +3,7 @@ title: "What is dbt?"
 id: "introduction"
 ---
 
-dbt (data build tool) enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into <Term id="table">tables</Term> and <Term id="view">views</Term>.
+dbt enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into <Term id="table">tables</Term> and <Term id="view">views</Term>.
 
 dbt does the `T` in <Term id="elt" /> (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
 
