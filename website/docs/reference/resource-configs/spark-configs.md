@@ -28,7 +28,9 @@ When materializing a model as `table`, you may include several optional configs 
 
 </Changelog>
 
-dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta file format and custom runtime or Hudi file format with Apache Spark runtime —making sense of all the available options is an undertaking in its own right.
+dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta file format and custom runtime—making sense of all the available options is an undertaking in its own right.
+
+Alternatively, you can use Apache Hudi file format with Apache Spark runtime for building incremental models.
 
 For that reason, the dbt-spark plugin leans heavily on the [`incremental_strategy` config](configuring-incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
@@ -198,22 +200,20 @@ insert overwrite table analytics.spark_incremental
 dbt will run an [atomic `merge` statement](https://docs.databricks.com/spark/latest/spark-sql/language-manual/merge-into.html) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match on the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
 
 <Tabs
-  defaultValue="delta_source"
+  defaultValue="source"
   values={[
-    { label: 'Delta Source code', value: 'delta_source', },
-    { label: 'Delta Run code', value: 'delta_run', },
-    { label: 'Hudi Source code', value: 'hudi_source', },
-    { label: 'Hudi Run code', value: 'hudi_run', },
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
 ]
 }>
-<TabItem value="delta_source">
+<TabItem value="source">
 
-<File name='delta_incremental.sql'>
+<File name='merge_incremental.sql'>
 
 ```sql
 {{ config(
     materialized='incremental',
-    file_format='delta',
+    file_format='delta', # or 'hudi'
     unique_key='user_id',
     incremental_strategy='merge'
 ) }}
@@ -238,12 +238,12 @@ group by 1
 
 </File>
 </TabItem>
-<TabItem value="delta_run">
+<TabItem value="run">
 
-<File name='delta_incremental.sql'>
+<File name='target/run/merge_incremental.sql'>
 
 ```sql
-create temporary view delta_incremental__dbt_tmp as
+create temporary view merge_incremental__dbt_tmp as
 
     with new_events as (
 
@@ -264,76 +264,8 @@ create temporary view delta_incremental__dbt_tmp as
 
 ;
 
-merge into analytics.delta_incremental as DBT_INTERNAL_DEST
-    using delta_incremental__dbt_tmp as DBT_INTERNAL_SOURCE
-    on DBT_INTERNAL_SOURCE.user_id = DBT_INTERNAL_DEST.user_id
-    when matched then update set *
-    when not matched then insert *
-```
-
-</File>
-
-</TabItem>
-<TabItem value="hudi_source">
-
-<File name='hudi_incremental.sql'>
-
-```sql
-{{ config(
-    materialized='incremental',
-    file_format='hudi',
-    unique_key='user_id',
-    incremental_strategy='merge'
-) }}
-
-with new_events as (
-
-    select * from {{ ref('events') }}
-
-    {% if is_incremental() %}
-    where date_day >= date_add(current_date, -1)
-    {% endif %}
-
-)
-
-select
-    user_id,
-    max(date_day) as last_seen
-
-from events
-group by 1
-```
-
-</File>
-</TabItem>
-<TabItem value="hudi_run">
-
-<File name='hudi_incremental.sql'>
-
-```sql
-create temporary view hudi_incremental__dbt_tmp as
-
-    with new_events as (
-
-        select * from analytics.events
-
-
-        where date_day >= date_add(current_date, -1)
-
-
-    )
-
-    select
-        user_id,
-        max(date_day) as last_seen
-
-    from events
-    group by 1
-
-;
-
-merge into analytics.hudi_incremental as DBT_INTERNAL_DEST
-    using hudi_incremental__dbt_tmp as DBT_INTERNAL_SOURCE
+merge into analytics.merge_incremental as DBT_INTERNAL_DEST
+    using merge_incremental__dbt_tmp as DBT_INTERNAL_SOURCE
     on DBT_INTERNAL_SOURCE.user_id = DBT_INTERNAL_DEST.user_id
     when matched then update set *
     when not matched then insert *
@@ -368,11 +300,11 @@ use or set `database` as a node config or in the target profile when running dbt
 If you want to control the schema/database in which dbt will materialize models,
 use the `schema` config and `generate_schema_name` macro _only_.
 
-## Databricks configurations
+## Default file format configurations
 
-To access features exclusive to Databricks runtimes, such as 
+To access advanced incremental strategies features, such as 
 [snapshots](snapshots) and the `merge` incremental strategy, you will want to
-use the Delta file format when materializing models as tables.
+use the Delta or Hudi file format as the default file format when materializing models as tables.
 
 It's quite convenient to do this by setting a top-level configuration in your
 project file:
@@ -381,38 +313,13 @@ project file:
 
 ```yml
 models:
-  +file_format: delta
+  +file_format: delta # or hudi
   
 seeds:
-  +file_format: delta
+  +file_format: delta # or hudi
   
 snapshots:
-  +file_format: delta
-```
-
-</File>
-
-
-## Apache Hudi configurations
-
-To access features exclusive to Apache Hudi features, such as
-[snapshots](snapshots), `append`, `insert`, `insert_overwrite` and the `merge` incremental strategy, you will want to
-use the Hudi file format when materializing models as tables.
-
-It's quite convenient to do this by setting a top-level configuration in your
-project file:
-
-<File name='dbt_project.yml'>
-
-```yml
-models:
-  +file_format: hudi
-  
-seeds:
-  +file_format: hudi
-  
-snapshots:
-  +file_format: hudi
+  +file_format: delta # or hudi
 ```
 
 </File>
