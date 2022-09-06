@@ -16,7 +16,7 @@ Optionally specify a custom list of directories to copy to the `target` director
 
 <Changelog>
 
-* `v0.18.0`: This configuration was introduced — see the [migration guide for 0.18.0](upgrading-to-0-18-0) for more details.
+* `v0.18.0`: This configuration was introduced — see the [migration guide](/guides/migration/versions) for more details.
 
 </Changelog>
 

@@ -12,6 +12,10 @@ These macros benefit three different user groups:
 - If you maintain an adapter, your adapter is more likely to support more packages by implementing (and testing) these macros.
 - If you're an end user, more packages and adapters are likely to "just work" for you (without you having to do anything).
 
+:::note Note
+Please make sure to take a look at the [SQL expressions section](#sql-expressions) to understand quoting syntax for string values and date literals.
+:::
+
 ## All functions (alphabetical)
 - [any_value](#any_value)
 - [bool_or](#bool_or)

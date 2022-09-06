@@ -39,6 +39,7 @@ These adapter plugins are built and maintained by the same people who build and 
 | ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                    | `pip install dbt-clickhouse` |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                        | `pip install dbt-firebolt` |
+| Hive ([dbt-hive](https://github.com/cloudera/dbt-hive))                                                     | [Profile Setup](hive-profile), [Configuration](hive-configs)                                | `pip install dbt-hive` |
 | Impala ([dbt-impala](https://github.com/cloudera/dbt-impala))                                                 | [Profile Setup](impala-profile), [Configuration](impala-configs)                            | `pip install dbt-impala` |
 | iomete ([dbt-iomete](https://github.com/iomete/dbt-iomete))                                                   | [Profile Setup](iomete-profile)                                                             | `pip install dbt-iomete` |
 | Layer Bigquery ([dbt-layer](https://github.com/layerai/dbt-layer))                                            | [Profile Setup](layer-profile)                                                              | `pip install dbt-layer-bigquery` |
@@ -67,6 +68,8 @@ These adapter plugins are contributed and maintained by members of the community
 | Greenplum              | [Profile Setup](greenplum-profile), [Configuration](greenplum-configs)       | Greenplum 6.0+            | `pip install dbt-greenplum`  |
 | DuckDB                 | [Profile Setup](duckdb-profile)                                              | DuckDB 0.3.2              | `pip install dbt-duckdb`     |
 | SQLite                 | [Profile Setup](sqlite-profile)                                              | SQlite Version 3.0+       | `pip install dbt-sqlite`     |
+| MySQL                  | [Profile Setup](mysql-profile)                                               | MySQL 5.7 and 8.0         | `pip install dbt-mysql`      |
+| IBM DB2                | [Profile Setup](ibmdb2-profile)                                              | IBM DB2 V9fp2+            | `pip install dbt-ibmdb2`     |
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
 - Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 
