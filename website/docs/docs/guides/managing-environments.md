@@ -29,4 +29,3 @@ In practice, this means that most of the details in a target will be consistent 
 
 A quick note on deleting Environments. Deleting an Environment will not automically delete the job(s) associated to it. Before you completely delete your Environment, remember to delete any jobs associated to that Environment first. Once you've deleted the job, you can delete the Environment fully. 
 
-:::
