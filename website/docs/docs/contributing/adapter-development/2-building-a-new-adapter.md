@@ -61,7 +61,7 @@ You can skip this step if you passed the arguments for `email`, `url`, `author`,
 
 Edit the connection manager at `myadapter/dbt/adapters/myadapter/connections.py`. This file is defined in the sections below.
 
-### The Credentials class
+#### The Credentials class
 
 The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need in the [connection profile](configure-your-profile) for your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
 
@@ -131,7 +131,7 @@ class MyAdapterCredentials(Credentials):
 
 Then users can use `collection` OR `database` in their `profiles.yml`, `dbt_project.yml`, or `config()` calls to set the database.
 
-### Connection methods
+#### `ConnectionManager` class methods
 
 Once credentials are configured, you'll need to implement some connection-oriented methods. They are enumerated in the SQLConnectionManager docstring, but an overview will also be provided here.
 
@@ -141,7 +141,7 @@ Once credentials are configured, you'll need to implement some connection-orient
 - cancel
 - exception_handler
 
-#### open(cls, connection)
+##### `open(cls, connection)`
 
 `open()` is a classmethod that gets a connection object (which could be in any state, but will have a `Credentials` object with the attributes you defined above) and moves it to the 'open' state.
 
@@ -186,7 +186,7 @@ For example:
 
 </File>
 
-#### get_response(cls, cursor)
+##### `get_response(cls, cursor)`
 
 `get_response` is a classmethod that gets a cursor object and returns adapter-specific information about the last executed command. The return value should be an `AdapterResponse` object that includes items such as `code`, `rows_affected`, `bytes_processed`, and a summary `_message` for logging to stdout.
 
@@ -207,7 +207,7 @@ For example:
 
 </File>
 
-#### cancel(self, connection)
+##### `cancel(self, connection)`
 
 cancel is an instance method that gets a connection object and attempts to cancel any ongoing queries, which is database dependent. Some databases don't support the concept of cancellation, they can simply implement it via 'pass' and their adapter classes should implement an `is_cancelable` that returns False - On ctrl+c connections may remain running. This method must be implemented carefully, as the affected connection will likely be in use in a different thread.
 
@@ -225,7 +225,7 @@ cancel is an instance method that gets a connection object and attempts to cance
 
 </File>
 
-#### exception_handler(self, sql, connection_name='master')
+##### `exception_handler(self, sql, connection_name='master')`
 
 exception_handler is an instance method that returns a context manager that will handle exceptions raised by running queries, catch them, log appropriately, and then raise exceptions dbt knows how to handle.
 
@@ -256,12 +256,12 @@ If you use the (highly recommended) `@contextmanager` decorator, you only have t
 
 Edit the connection manager at `myadapter/dbt/adapters/myadapter/impl.py`
 
-Very little is required to implement the adapter itself. On some adapters, you will not need to override anything. On others, you'll likely need to override some of the convert_* classmethods, or override the `is_cancelable` classmethod on others to return False.
+Very little is required to implement the adapter itself. On some adapters, you will not need to override anything. On others, you'll likely need to override some of the `convert_*` classmethods, or override the `is_cancelable` classmethod on others to return False.
 
 
-#### datenow()
+#### `datenow()`
 
-This classmethod provides the adapter's canonical date function. This is not used but is required anyway on all adapters.
+This classmethod provides the adapter's canonical date function. This is not used but is required– anyway on all adapters.
 
 <File name='impl.py'>
 
@@ -277,7 +277,7 @@ This classmethod provides the adapter's canonical date function. This is not use
 
 dbt implements specific SQL operations using jinja macros. While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, etc), you may need to override one or more of macros when building a new adapter.
 
-### Required macros
+#### Required macros
 
 The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
@@ -293,7 +293,7 @@ The following macros must be implemented, but you can override their behavior fo
 - `truncate_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L175))
 - `current_timestamp` ([source](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L269)) (required)
 
-### Adapter dispatch
+#### Adapter dispatch
 
 Most modern databases support a majority of the standard SQL spec. There are some databases that _do not_ support critical aspects of the SQL spec however, or they provide their own nonstandard mechanisms for implementing the same functionality. To account for these variations in SQL support, dbt provides a mechanism called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) for macros. With this feature, macros can be overridden for specific adapters. This makes it possible to implement high-level methods (like "create <Term id="table" />") in a database-specific way.
 
@@ -338,7 +338,7 @@ The `adapter.dispatch()` macro takes a second argument, `packages`, which repres
 - "Shim" package examples: [`spark-utils`](https://github.com/dbt-labs/spark-utils), [`tsql-utils`](https://github.com/dbt-msft/tsql-utils)
 - [`adapter.dispatch` docs](dispatch)
 
-### Overriding adapter methods
+#### Overriding adapter methods
 
 While much of dbt's adapter-specific functionality can be modified in adapter macros, it can also make sense to override adapter methods directly. In this example, assume that a database does not support a `cascade` parameter to `drop schema`. Instead, we can implement an approximation where we drop each relation and then drop the schema.
 
@@ -375,28 +375,25 @@ To assure that `dbt --version` provides the latest dbt core version the adapter 
 
 It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
 
-### Testing your new adapter
+## Testing your new adapter
 
-This has moved to its own page: ["Testing a new adapter"](testing-a-new-adapter)
+This has moved to its own page: ["Testing a new adapter"](3-testing-a-new-adapter)
 
-### Documenting your new adapter
+## Documenting your new adapter
 
-Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
-- Hosting on a public git provider (e.g. GitHub, GitLab)
-- Publishing to [PyPi](https://pypi.org/)
-- Adding to the list of ["Available Adapters"](available-adapters#community-supported)
+This has moved to its own page: ["Documenting a new adapter"](4-documenting-a-new-adapter)
 
-### Maintaining your new adapter
+## Maintaining your new adapter
 
 When your adapter becomes more popular, and people start using it, you may quickly become the maintainer of an increasingly popular open source project. With this new role, comes some unexpected responsibilities that not only include code maintenance, but also working with a community of users and contributors. To help people understand what to expect of your project, you should communicate your intentions early and often in your adapter documentation or README. Answer questions like, Is this experimental work that people should use at their own risk? Or is this production-grade code that you're committed to maintaining into the future?
 
-#### Keeping the code compatible with dbt Core
+### Keeping the code compatible with dbt Core
 
 New minor version releases of `dbt-core` may include changes to the Python interface for adapter plugins, as well as new or updated test cases. The maintainers of `dbt-core` will clearly communicate these changes in documentation and release notes, and they will aim for backwards compatibility whenever possible.
 
 Patch releases of `dbt-core` will _not_ include breaking changes to adapter-facing code. For more details, see ["About dbt Core versions"](core-versions).
 
-#### Versioning and releasing your adapter
+### Versioning and releasing your adapter
 
 We strongly encourage you to adopt the following approach when versioning and releasing your plugin:
 - The minor version of your plugin should match the minor version in `dbt-core` (e.g. 1.1.x).
