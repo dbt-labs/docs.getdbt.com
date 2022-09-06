@@ -81,7 +81,7 @@ I am sorry - that’s just a blank 2x2 matrix. I've surrendered to just searchin
 
 But couldn’t we be doing something better with those keystrokes, like typing out and then deleting a tweet?
 
-dbt (and the [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/#dateadd-source-macros-cross_db_utils-dateadd-sql-) macro package) helps us smooth out these wrinkles of writing SQL across data warehouses.
+dbt (and the [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/#dateadd-source-macros-cross_db_utils-dateadd-sql-) macro package) helps us smooth out these wrinkles of writing SQL across <Term id="data-warehouse">data warehouses</Term>.
 
 Instead of looking up the syntax each time you use it, you can just write it the same way each time, and the macro compiles it to run on your chosen warehouse:
 

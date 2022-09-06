@@ -45,7 +45,6 @@ To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.get
       threads: 1
       #optional fields
       jar_path: <path-to-local-jdbc-driver>
-      api_endpoint: "<endpoint>"
       host: "<hostname>"
       account_name: "<account-name>"
 ```
@@ -67,7 +66,6 @@ To specify values as environment variables, use the format `{{ env_var('<variabl
 | `schema`                 | Recommended. A string to add as a prefix to the names of generated tables when using the [custom schemas workaround](https://docs.getdbt.com/reference/warehouse-profiles/firebolt-profile#supporting-concurrent-development). |
 | `threads`                | Required. Must be set to `1`. Multi-threading is not currently supported. |
 | `jar_path`               | Required only with versions earlier than 0.21.0. Ignored in 0.21.0 and later. The path to your JDBC driver on your local drive. |
-| `api_endpoint`	   | Optional. For all customers, this is `api.app.firebolt.io`, which will be used if omitted.|
 | `host`                   | Optional. The host name of the connection. For all customers it is `api.app.firebolt.io`, which will be used if omitted. |
 | `account_name`           | Required if more than one account is associated with the specified `user1`. Specifies the account name (not the account ID) under which the specified `database` exists. If omitted, the default account is assumed. |
 

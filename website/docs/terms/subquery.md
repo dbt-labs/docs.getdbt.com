@@ -194,7 +194,7 @@ Again, choosing to use CTEs over subqueries is a personal choice. It may help to
 
 ## Data warehouse support for subqueries
 
-Subqueries are likely to be supported across most, if not all, modern data warehouses. Please use this table to see more information about using subqueries in your specific data warehouse.
+Subqueries are likely to be supported across most, if not all, modern <Term id="data-warehouse">data warehouses</Term>. Please use this table to see more information about using subqueries in your specific data warehouse.
 
 | Data warehouse | Supports subqueries? |
 |---|---|

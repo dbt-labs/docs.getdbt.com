@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.1 (latest)"
+title: "Upgrading to v1.1"
 ---
 ### Resources
 
@@ -9,7 +9,7 @@ title: "Upgrading to v1.1 (latest)"
 
 ## Breaking changes
 
-There are no breaking changes for end users of dbt. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### For maintainers of adapter plugins
 
@@ -21,9 +21,19 @@ The abstract methods `get_response` and `execute` now only return `connection.Ad
 
 The manifest schema version will be updated to v5. The only change is to the default value of `config` for parsed nodes.
 
+For users of [state-based functionality](understanding-state), such as the `state:modified` selector, recall that:
+
+> The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
+
+If you have two jobs, whereby one job compares or defers to artifacts produced by the other, you'll need to upgrade both at the same time. If there's a mismatch, dbt will alert you with this error message:
+
+```
+Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" in <state-path>/manifest.json, but found "https://schemas.getdbt.com/dbt/manifest/v4.json". Are you running with a different version of dbt?
+```
+
 ## New and changed documentation
 
-[**Incremental models**](configuring-incremental-models) can now accept a list of multiple columns as their `unique_key`, for models that need a combination of columns to uniquely identify each row. This is supported by the most common data warehouses, for incremental strategies that make use of the `unique_key` config (`merge` and `delete+insert`).
+[**Incremental models**](configuring-incremental-models) can now accept a list of multiple columns as their `unique_key`, for models that need a combination of columns to uniquely identify each row. This is supported by the most common <Term id="data-warehouse">data warehouses</Term>, for incremental strategies that make use of the `unique_key` config (`merge` and `delete+insert`).
 
 [**Generic tests**](resource-properties/tests) can define custom names. This is useful to "prettify" the synthetic name that dbt applies automatically. It's needed to disambiguate the case when the same generic test is defined multiple times with different configurations.
 

@@ -16,7 +16,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/). The policie
 
 - We are no longer releasing new patches for minor versions prior to v1.0.
 - As of June 30, 2022, dbt Cloud will remove support for dbt Core versions older than v1.0. At that point, we will also remove v0.20 and v0.21 from the version dropdown on this website.
-- You can read the [specific version migration guides](/docs/guides/migration-guide) to understand changes to each version. Each migration guide will link to pages of documentation that were added or updated. Those pages of documentation will also include "Changelog" notes, which you can toggle to see notes on specific changes from each older version.
+- You can read the [specific version migration guides](/guides/migration/versions) to understand changes to each version. Each migration guide will link to pages of documentation that were added or updated. Those pages of documentation will also include "Changelog" notes, which you can toggle to see notes on specific changes from each older version.
 
 ## Version support starting with v1.0
 
@@ -71,6 +71,10 @@ Like many software projects, dbt Core releases follow [semantic versioning](http
 - **Major versions:** To date, dbt Core has had one major version release: v1.0.0. When v2.0.0 is released, it will introduce new features and break backwards compatibility for functionality that has been deprecated.
 - **Minor versions**, also called "feature" releases, include a mix of new features, behind-the-scenes improvements, and changes to existing capabilities that are **backwards compatible** with previous minor versions. They will not break code in your project that relies on documented functionality.
 - **Patch versions**, also called "bugfix" or "security" releases, include **fixes _only_**. These fixes could be needed to restore previous (documented) behavior, fix obvious shortcomings of new features, or offer critical fixes for security or installation issues. We are judicious about which fixes are included in patch releases, to minimize the surface area of changes.
+
+We are committed to avoiding breaking changes in minor versions for end users of dbt. There are two types of breaking changes that may be included in minor versions:
+- Changes to the [Python interface for adapter plugins](building-a-new-adapter). These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes.
+- Changes to metadata interfaces, including [artifacts](dbt-artifacts) and [logging](events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](understanding-state).
 
 ### How we version adapter plugins
 
