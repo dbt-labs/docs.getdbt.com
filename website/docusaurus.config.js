@@ -231,7 +231,8 @@ var siteSettings = {
       defer: true
     },
     '/js/gtm.js',
-    'https://kit.fontawesome.com/7110474d41.js'
+    'https://kit.fontawesome.com/7110474d41.js',
+    'https://cdn.jsdelivr.net/pyodide/v0.21.2/full/pyodide.js'
   ],
   stylesheets: [
     '/css/fonts.css',

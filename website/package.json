@@ -44,6 +44,7 @@
     "css-loader": "^3.4.2",
     "cypress": "^10.3.0",
     "dotenv": "^10.0.0",
+    "ignore-loader": "^0.1.2",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
     "path-browserify": "^1.0.1",
