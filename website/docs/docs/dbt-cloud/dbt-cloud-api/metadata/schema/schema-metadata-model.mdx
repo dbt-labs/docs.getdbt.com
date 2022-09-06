@@ -56,6 +56,27 @@ The example query below could be useful if we wanted to understand information a
 }
 ```
 
+#### Column-level information
+
+You can use the following example query to understand more about the columns of a given model.  Note that this will only work if the job has generated documentation. For example it will work with the command `dbt docs generate`.
+
+```graphql
+{
+  model(jobId: 123, uniqueId: "model.jaffle_shop.dim_user")  {
+    columns{
+      name
+      index
+      type
+      comment
+      description
+      tags
+      meta
+    }
+  }
+}
+```
+
+
 ### Fields
 When querying for a `model`, the following fields are available:
 

@@ -3,7 +3,7 @@ title: "dbt Slack: Rules of the Road"
 id: "slack-rules-of-the-road"
 ---
 
-As of July 2020, the dbt Slack community includes 6000+ data professionals and is growing 12% month-over-month. People genuinely love this community. It’s filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
+As of February 2022, the dbt Slack community includes 25,000+ data professionals and is growing month-over-month. People genuinely love this community. It’s filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
 
 We are committed to maintaining the spirit of this community, and as such have written these rules to help new members understand how to best participate in our community.
 
