@@ -27,5 +27,5 @@ In practice, this means that most of the details in a target will be consistent 
 
 ## Deleting environments
 
-A quick note on deleting Environments. Deleting an Environment will not automically delete the job(s) associated to it. Before you completely delete your Environment, remember to delete any jobs associated to that Environment first. Once you've deleted the job, you can delete the Environment fully. 
+Deleting an environment will not automatically delete the associated job(s). Before you completely delete your environment, first delete any jobs associated to that environment. Once you've deleted the job(s), you can completely delete the environment. 
 
