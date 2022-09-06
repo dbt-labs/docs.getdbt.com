@@ -1,5 +1,9 @@
 const path = require('path');
+const math = require('remark-math');
+const katex = require('rehype-katex');
+const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
+
 
 /* Debugging */
 var SITE_URL;
@@ -20,7 +24,7 @@ let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
 let metatags = []
 // If Not Current Branch, do not index site
-if(GIT_BRANCH !== 'current') {
+if (GIT_BRANCH !== 'current') {
   metatags.push({
     tagName: 'meta',
     attributes: {
@@ -33,31 +37,40 @@ if(GIT_BRANCH !== 'current') {
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
-console.log("DEBUG: PRERELEASE = ", PRERELEASE);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
 var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
-  tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
+  tagline: 'End user documentation, guides and technical reference for dbt',
   title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
-
+  trailingSlash: false,
   themeConfig: {
     image: '/img/avatar.png',
     colorMode: {
       disableSwitch: true
     },
-    // Adding non-empty strings for Algolia config 
-    // allows Docusaurus to run locally without .env file 
+    // Adding non-empty strings for Algolia config
+    // allows Docusaurus to run locally without .env file
     algolia: {
       apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
       indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
       appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : 'dbt'
       //debug: true,
     },
+    announcementBar: {
+      id: "live_qa",
+      content:
+        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
+      backgroundColor: "#047377",
+      textColor: "#fff",
+      isCloseable: true
+    },
+    announcementBarActive: true,
+    announcementBarLink: "https://coalesce.getdbt.com/",
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
@@ -109,31 +122,27 @@ var siteSettings = {
           activeBasePath: 'docs/dbt-cloud'
         },
         {
-          to: '/faqs/all',
-          label: 'FAQs',
+          to: '/guides/getting-started',
+          label: 'Guides',
           position: 'left',
-          activeBasePath: 'faqs'
+          activeBasePath: 'guides'
         },
         {
           to: '/blog/',
           label: 'Developer Blog',
           position: 'right',
           activeBasePath: 'blog'
-        },        
+        },
         {
-          label: 'Learn',
+          label: 'Courses',
           position: 'right',
           items: [
             {
-              label: 'Getting Started Tutorial',
-              to: '/tutorial/setting-up',
-            },
-            {
-              label: 'Online Courses',
+              label: 'Online courses',
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Live Courses',
+              label: 'Live courses',
               href: 'https://learn.getdbt.com/public',
             }
           ],
@@ -142,6 +151,10 @@ var siteSettings = {
           label: 'Community',
           position: 'right',
           items: [
+            {
+              label: 'Maintaining a Slack Channel',
+              to: '/community/maintaining-a-channel',
+            },
             {
               label: 'dbt Slack',
               href: 'https://community.getdbt.com/',
@@ -159,7 +172,7 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a> | <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>`
     },
   },
   presets: [
@@ -173,9 +186,11 @@ var siteSettings = {
           path: 'docs',
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
 
           editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
-          showLastUpdateTime: false,
+          showLastUpdateTime: true,
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
@@ -186,19 +201,25 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
+
       },
     ],
   ],
   plugins: [
     [
-      path.resolve('plugins/insertMetaTags'), 
-      { metatags } 
+      path.resolve('plugins/insertMetaTags'),
+      { metatags }
     ],
     path.resolve('plugins/svg'),
     path.resolve('plugins/customWebpackConfig'),
-    path.resolve('plugins/buildBlogData'),
-    path.resolve('plugins/buildAuthorPages'),
+    [
+      path.resolve('plugins/buildGlobalData'),
+      { versionedPages }
+    ],
+    path.resolve('plugins/buildAuthorPages')
   ],
   scripts: [
     {
@@ -218,21 +239,35 @@ var siteSettings = {
     '/css/search.css',
     '/css/api.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
-    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
+    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap',
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
 }
 
-var PRERELEASE = (process.env.PRERELEASE || false);
-
-if (PRERELEASE) {
-  var WARNING_BANNER = {
-    id: 'prerelease', // Any value that will identify this message.
-    content:
-      'CAUTION: Prerelease! This documentation reflects the next minor version of dbt. <a href="https://docs.getdbt.com">View current docs</a>.',
-    backgroundColor: '#ffa376', // Defaults to `#fff`.
-    textColor: '#033744', // Defaults to `#000`.
-  }
-  siteSettings.themeConfig.announcementBar = WARNING_BANNER;
+// If versions json file found, add versions dropdown to nav
+if (versions) {
+  siteSettings.themeConfig.navbar.items.push({
+    label: 'Versions',
+    position: 'left',
+    className: 'nav-versioning',
+    items: [
+      ...versions.reduce((acc, version) => {
+        if (version?.version) {
+          acc.push({
+            label: `${version.version}`,
+            href: '#',
+          })
+        }
+        return acc
+      }, [])
+    ]
+  })
 }
 
 module.exports = siteSettings;

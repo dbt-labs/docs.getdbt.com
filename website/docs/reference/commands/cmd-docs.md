@@ -11,7 +11,7 @@ The command is responsible for generating your project's documentation website b
 
 1. copying the website `index.html` file into the `target/` directory 
 2. compiling the project to `target/manifest.json`
-3. producing the `target/catalog.json` file, which contains metadata about the tables and views produced by the models in your project.
+3. producing the `target/catalog.json` file, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project.
 
 **Example**:
 ```
