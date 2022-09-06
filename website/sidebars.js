@@ -3,7 +3,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Introduction",
-      items: ["docs/introduction", "docs/available-adapters", "docs/core-versions"],
+      items: ["docs/introduction", "docs/supported-data-platforms", "docs/core-versions"],
     },
     {
       type: "category",
