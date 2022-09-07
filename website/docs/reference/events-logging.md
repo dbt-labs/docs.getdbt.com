@@ -43,10 +43,10 @@ Each log line will have the following JSON properties:
 | [`invocation_id`](invocation_id) | A unique identifier for this invocation of dbt |
 | `level` | A string representation of the log level (`debug`, `info`, `warn`, `error`) |
 | `log_version` | Integer indicating version |
-| `msg` | The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are bject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`. |
+| `msg` | The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are subject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`. |
 | `node_info` | If applicable, a dictionary of human- and machine-friendly information about a currently running resource |
 | `pid` | The process ID for the running dbt invocation which produced this log message |
-| `thread_name` | The thread in which the log message was produced, helpful for tracking queries when dbt is run with ltiple threads |
+| `thread_name` | The thread in which the log message was produced, helpful for tracking queries when dbt is run with multiple threads |
 | `ts` | When the log line was printed |
 | `type` | Always `log_line` |
 
