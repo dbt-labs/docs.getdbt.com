@@ -313,7 +313,7 @@ Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a sep
 Your models should then select from these snapshots, treating them like regular data sources. As much as possible, snapshot your source data in its raw form and use downstream models to clean up the data
 
 #### Use the `source` function in your query.
-This helps when understanding data lineage in your project.
+This helps when understanding <Term id="data-lineage">data lineage</Term> in your project.
 
 #### Include as many columns as possible.
 In fact, go for `select *` if performance permits! Even if a column doesn't feel useful at the moment, it might be better to snapshot it in case it becomes useful – after all, you won't be able to recreate the column later.
