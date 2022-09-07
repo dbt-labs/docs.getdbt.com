@@ -69,6 +69,8 @@ Development or Deployment credentials in a dbt project. Simply enter your Snowfl
 username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
 to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowflake user.
 
+**Note**: The schema field in the **Developer Credentials** section is a required field.
+
 ![Snowflake username/password auth](/img/docs/dbt-cloud/snowflake-userpass-auth.png)
 
 ### Key Pair
