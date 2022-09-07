@@ -548,7 +548,7 @@ blockquote {
   font-size: 0.813rem !important;
 }
 .markdown h1:first-child {
-  font-size: clamp(var(--ifm-h1-font-size) * .75, 1vw, var(--ifm-h1-font-size));
+  font-size: clamp(var(--ifm-h1-font-size) * .9375, 1vw, var(--ifm-h1-font-size));
 }
 
 /* Docs */
