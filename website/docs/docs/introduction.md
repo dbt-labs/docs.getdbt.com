@@ -45,6 +45,19 @@ When you issue a dbt command, such as `run`, dbt:
 
 A list of commands can be found in the [Command reference](dbt-commands) section of these docs.
 
+
+### dbt Semantic Layer
+
+The dbt Semantic Layer enables data teams to centrally define important business metrics like `revenue`, `customer`, and`churn`, in the modeling layer, for consistent application within downstream data tools, including BI and metadata management solutions. The result? Less duplicative coding for data teams, and fresher insights for data consumers.
+
+The Semantic Layer has 3 major features:
+
+- Connect to dbt via the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-querying) to import metric definitions
+- Explore metrics that are pre-defined in dbt projects
+- Query metrics via the dbt Server and analyze their data
+
+See [dbt Semantic Layer](https://docs.getdbt.com/docs/introduction#dbt-commands) for more information on defining metrics and partner integrations. 
+
 ## What does the workflow for using dbt look like?
 There’s two main ways of working with dbt -- using the web-based Integrated Development Environment (IDE) in dbt Cloud, or using the Command Line Interface (CLI).
 
@@ -188,3 +201,5 @@ dbt is appropriate for anyone who interacts with a data warehouse. It can be use
 For dbt users that are new to programming, you may also need to spend some time getting to know the basics of the command line, and familiarizing yourself with git.
 
 To make full use of dbt, it may also be beneficial to know some programming basics, such as `for` loops and `if` statements, to use Jinja effectively in your models.
+
+
