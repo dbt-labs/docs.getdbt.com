@@ -7,7 +7,7 @@ This is a quick intro as to why adapters need to exist and how they are currentl
 
 ## No one ever: "Aren't all databases the same?"
 
-There's a huge amount of work that goes into creating a database. At a high level, here's the "layers" that go into a data base (outermost inwards):
+There's a huge amount of work that goes into creating a database. At a high level, here's the "layers" that go into a database (outermost inwards):
 - SQL API
 - Client Library / Driver
 - Server Connection Manager
@@ -23,7 +23,7 @@ Enter the radical notion that is dbt. By further abstracting and standardizing t
 1. opens database technology to less technical users (webmaster -> web developer), and
 2. enables more meaningful conversations about how data warehousing should be done.
 
-Even if we only abstract the outermost layers, this is no easy task. Enter dbt adapters.
+Enter dbt adapters.
 
 ## What exactly needs to be adapted?
 
@@ -35,7 +35,7 @@ The outermost layers of a database mentioned above map roughly to the areas in w
 
 ### SQL API
 
-Even amongst ANSI compliant databases, there are virtually always difference in the SQL grammar. Here's some categories and specific examples of SQL statements can be constructed differently.
+Even amongst ANSI compliant databases, there are virtually always differences in the SQL grammar. Here's some categories and specific examples of SQL statements that can be constructed differently.
 
 
 | category                                     | specific area of differences                                                                     | examples                                                                                                                                                                                           |
@@ -45,13 +45,13 @@ Even amongst ANSI compliant databases, there are virtually always difference in 
 | relation and column attributes/configuration | database-specifc materialization configs           | `DIST = ROUND_ROBIN` (Synapse)<br></br>vs<br></br>`DIST = EVEN` (Redshift)                                                                                                                                   |
 | permissioning                                | grant statements that can only take one grantee at a time vs those that accept lists of grantees | `grant SELECT on table hogwarts.house_pts to dumbledore, snape` <br></br> ```<br></br>grant SELECT on table hogwarts.house_pts to dumbledore<br></br>grant SELECT on table hogwarts.house_pts to snape<br></br>``` |
 
-### Client Library & Connection Manager
+### Python Client Library & Connection Manager
 
-The other big category of inter-database differences comes with how the client connects to the database, and executes queries against said connection. Here's a few differences that justify the abstraction.
+The other big category of inter-database differences comes with how the client connects to the database, and executes queries against said connection. In order to integrate with dbt, a data platform needs to have a pre-existing python client library, or at least support ODBC in which case a generic python library like pyodbc can be used.
 
 | category                     | specific area of differences              | examples                                                                                                    |
 |------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| credentials & authentication | authenication                             | user name & password<br></br>vs<br></br>MFA with `boto3` or Okta token                                                |
+| credentials & authentication | authentication                             | username & password<br></br>vs<br></br>MFA with `boto3` or Okta token                                                |
 | connection opening/closing   | create a new connection to db             | `psycopg2.connect(connection_string)`<br></br>vs<br></br>`google.cloud.bigquery.Client( ... )`                        |
 | inserting local data         | load seed .`csv` files into Python memory | `Adapter.upload_file()` (BigQuery)<br></br>`INSERT ... INTO VALUES ...` prepared statement (all other databases) |
 
@@ -87,7 +87,7 @@ A set of *macros* responsible for generating SQL that is compliant with the targ
 
 ### Materializations
 
-At the highest level: A set of *<Term id="materialization">materializations</Term>* that tell dbt how to turn model files into persisted objects in the database.
+At the highest level: a set of *<Term id="materialization">materializations</Term>* and their corresponding helper macros that are defined in dbt using jinja and SQL. They codify for dbt how model files should be persisted into the database (i.e. materialized).
 
 ## Adapter Architecture
 
