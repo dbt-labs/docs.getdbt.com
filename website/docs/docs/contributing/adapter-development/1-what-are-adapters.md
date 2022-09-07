@@ -3,7 +3,7 @@ title: "What are adapters? Why do we need them?"
 id: "1-what-are-adapters"
 ---
 
-Below's a quick intro to why adapters need to exist and how they are currently constructed. For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
+This is a quick intro as to why adapters need to exist and how they are currently constructed. For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
 
 ## No one ever: "Aren't all databases the same?"
 
@@ -17,7 +17,7 @@ There's a huge amount of work that goes into creating a database. At a high leve
 - Storage Access Layer
 - Storage
 
-There's a lot more there than just SQL as a language (no insult intended to Donald Chamberlain). Ultimately, the reason that databases (and later data warehouses ) are so popular, you basically abstract away a great deal of the complexity to the database itself.
+There's a lot more there than just SQL as a language (no insult intended to Donald Chamberlain). Ultimately, the reason that databases (and later data warehouses ) are so popular is that you can abstract away a great deal of the complexity from your brain to the database itself. This leaves you to focus more on the data
 
 Enter the radical notion that is dbt. By further abstracting and standardizing the outermost layers of a database (SQL API, client library, connection manager), into a framework, it both:
 1. opens database technology to less technical users (webmaster -> web developer), and
