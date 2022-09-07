@@ -37,7 +37,7 @@ dbt Cloud plan.
 | Plan | Developer Seats | Read Only Seats |
 | ---- | --------------- | --------------- |
 | Developer (free) | 1 | 0 |
-| Team | $50/developer/mo | 50 ($0/mo) |
+| Team | $50/developer/mo | 5 ($0/mo) |
 | Enterprise | Custom | Custom |
 
 ## Managing license types

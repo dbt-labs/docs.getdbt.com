@@ -16,7 +16,7 @@ At their core, you create and use these row-level unique identifiers to:
 
 One of the great things about data modeling is that there are very few rules to it. You have the flexibility to create the models and columns that are applicable to your business and the SQL you use to accomplish that is pretty much up to you and your team. _Having a primary key in each data model is pretty much the one rule you can’t break._ Without primary keys that are tested for non-nullness and uniqueness, duplicate or null records can slip undetected into your data models and cause counts to be incorrect. These two reasons coupled together can create a sense of distrust in the data and data team.
 
-Use this glossary page to understand the importance of primary keys, how natural keys and surrogate keys differ, and how data warehouse support for primary keys varies.
+Use this glossary page to understand the importance of primary keys, how natural keys and surrogate keys differ, and how <Term id="data-warehouse" /> support for primary keys varies.
 
 ## Types of primary keys
 

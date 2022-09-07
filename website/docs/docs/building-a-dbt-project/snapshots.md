@@ -72,6 +72,7 @@ When you run the [`dbt snapshot` command](snapshot):
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](ref) function.
 
 ## Example
+
 To add a snapshot to your project:
 
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
@@ -343,6 +344,7 @@ Snapshot <Term id="table">tables</Term> will be created as a clone of your sourc
 For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
 
 <details>
+<summary>  Details for the timestamp strategy </summary>
 
 <summary>Snapshot query results at `2019-01-01 11:00`</summary>
     
@@ -376,6 +378,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 For the `check` strategy, the current timestamp is used to populate each column
 
 <details>
+<summary>  Details for the check strategy </summary>
 
 <summary>Snapshot query results at `2019-01-01 11:00`</summary>
 
@@ -406,9 +409,9 @@ Snapshot results:
 
 
 ## FAQs
-<FAQ src="run-one-snapshot" />
-<FAQ src="snapshot-frequency" />
-<FAQ src="snapshot-schema-changes" />
-<FAQ src="snapshot-hooks" />
-<FAQ src="snapshot-target-schema" />
-<FAQ src="configurable-snapshot-path" />
+<FAQ src="Runs/run-one-snapshot" />
+<FAQ src="Runs/snapshot-frequency" />
+<FAQ src="Snapshots/snapshot-schema-changes" />
+<FAQ src="Snapshots/snapshot-hooks" />
+<FAQ src="Snapshots/snapshot-target-schema" />
+<FAQ src="Accounts/configurable-snapshot-path" />

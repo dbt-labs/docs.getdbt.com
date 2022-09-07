@@ -3,16 +3,17 @@ title: "Documenting a new adapter"
 id: "documenting-a-new-adapter"
 ---
 
-If you've already [built](/website/docs/docs/contributing/building-a-new-adapter.md), and [tested]((/website/docs/docs/contributing/testing-a-new-adapter.md)) your adapter, it's time to document it so the dbt community will know that it exists and how to use it!
+If you've already [built](/docs/contributing/building-a-new-adapter.md), and [tested](/docs/contributing/testing-a-new-adapter.md) your adapter, it's time to document it so the dbt community will know that it exists and how to use it!
 
 ## General Guidelines
-To best inform the dbt community of the new adapter, you should contribute to the dbt's open-source documentation site, which uses the [Docusauraus project](https://docusaurus.io/). This is the site you're currently on!
+
+To best inform the dbt community of the new adapter, you should contribute to the dbt's open-source documentation site, which uses the [Docusaurus project](https://docusaurus.io/). This is the site you're currently on!
 
 ### Conventions
 
 Each `.md` file you create needs a header as shown below. The document id will also need to be added to the config file: `website/sidebars.js`.
 
-```
+```md
 ---
 title: "Documenting a new adapter"
 id: "documenting-a-new-adapter"
