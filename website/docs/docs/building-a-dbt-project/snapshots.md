@@ -346,8 +346,8 @@ For the `timestamp` strategy, the configured `updated_at` column is used to popu
 <details>
 <summary>  Details for the timestamp strategy </summary>
 
-Snapshot query results at `2019-01-01 11:00`:
-
+<summary>Snapshot query results at `2019-01-01 11:00`</summary>
+    
 | id | status  | updated_at       |
 | -- | ------- | ---------------- |
 | 1        | pending | 2019-01-01 10:47 |
@@ -380,7 +380,7 @@ For the `check` strategy, the current timestamp is used to populate each column
 <details>
 <summary>  Details for the check strategy </summary>
 
-Snapshot query results at `2019-01-01 11:00`:
+<summary>Snapshot query results at `2019-01-01 11:00`</summary>
 
 | id | status  |
 | -- | ------- |

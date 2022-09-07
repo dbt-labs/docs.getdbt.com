@@ -12,8 +12,9 @@ If you're interested in contributing, check out the source code repository liste
 ## Overview of dbt-tidb
 
 **Maintained by:** PingCAP      
-**Author:** Xiang Zhang and Qiang Wu  
-**Source:** https://github.com/pingcap/dbt-tidb   
+**Author:** Xiang Zhang, Qiang Wu, Yuhang Shi  
+**dbt Slack Channel:** [#db-tidb](https://getdbt.slack.com/archives/C03CC86R1NY)   
+**Source:** [Github](https://github.com/pingcap/dbt-tidb)   
 **Core version:** v1.0.0 and newer   
 **dbt Cloud:** Not Supported
 
@@ -43,20 +44,24 @@ dbt-tidb:
       schema: database_name
       username: tidb_username
       password: tidb_password
+
+      # optional
+      retries: 3 # default 1
 ```
 
 </File>
 
 ##### Description of Profile Fields
 
-| Option          | Description                                            | Required? | Example            |
-| --------------- | ------------------------------------------------------ |-----------|--------------------|
-| type            | The specific adapter to use                            | Required  | `tidb`             |
-| server          | The server (hostname) to connect to                    | Required  | `yourorg.tidb.com` |
-| port            | The port to use                                        | Required  | `4000`             |
-| schema          | Specify the schema (database) to build models into     | Required  | `analytics`        |
-| username        | The username to use to connect to the server           | Required  | `dbt_admin`        |
-| password        | The password to use for authenticating to the server   | Required  | `awesome_password` |
+| Option   | Description                                          | Required? | Example             |
+|----------|------------------------------------------------------|-----------|---------------------|
+| type     | The specific adapter to use                          | Required  | `tidb`              |
+| server   | The server (hostname) to connect to                  | Required  | `yourorg.tidb.com`  |
+| port     | The port to use                                      | Required  | `4000`              |
+| schema   | Specify the schema (database) to build models into   | Required  | `analytics`         |
+| username | The username to use to connect to the server         | Required  | `dbt_admin`         |
+| password | The password to use for authenticating to the server | Required  | `awesome_password`  |
+| retries  | The retry times after an unsuccessful connection     | Optional  | `default 1`         |
 
 #### Database User Privileges
 
@@ -77,17 +82,19 @@ You can find some help [here](https://docs.pingcap.com/tidb/v4.0/privilege-manag
 
 ### Supported features
 
-|    TiDB 4.X    | TiDB 5.0 ~ 5.2 |   TiDB >= 5.3    |            Feature             |
-|:--------------:|:--------------:|:----------------:|:------------------------------:|
-|       ✅        |       ✅       |        ✅        |     Table materialization      |
-|       ✅        |       ✅       |        ✅        |      View materialization      |
-|       ✅        |       ✅       |        ✅        |  Incremental materialization   |
-|       ❌        |       ❌       |        ✅        |   Ephemeral materialization    |
-|       ✅        |       ✅       |        ✅        |             Seeds              |
-|       ✅        |       ✅       |        ✅        |            Sources             |
-|       ✅        |       ✅       |        ✅        |       Custom data tests        |
-|       ✅        |       ✅       |        ✅        |         Docs generate          |
-|       ❌        |       ❌       |        ✅        |           Snapshots            |
+| TiDB 4.X | TiDB 5.0 ~ 5.2 | TiDB >= 5.3 |           Feature           |
+|:--------:|:--------------:|:-----------:|:---------------------------:|
+|    ✅     |       ✅        |      ✅      |    Table materialization    |
+|    ✅     |       ✅        |      ✅      |    View materialization     |
+|    ❌     |       ❌        |      ✅      | Incremental materialization |
+|    ❌     |       ✅        |      ✅      |  Ephemeral materialization  |
+|    ✅     |       ✅        |      ✅      |            Seeds            |
+|    ✅     |       ✅        |      ✅      |           Sources           |
+|    ✅     |       ✅        |      ✅      |      Custom data tests      |
+|    ✅     |       ✅        |      ✅      |        Docs generate        |
+|    ❌     |       ❌        |      ✅      |          Snapshots          |
+|    ✅     |       ✅        |      ✅      |            Grant            |
+|    ✅     |       ✅        |      ✅      |      Connection retry       |
 
 **Note:**
 
