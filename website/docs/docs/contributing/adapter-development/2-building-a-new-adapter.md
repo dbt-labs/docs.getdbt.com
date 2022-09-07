@@ -338,7 +338,7 @@ The following macros must be implemented, but you can override their behavior fo
 - `rename_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L56-L65))
 - `truncate_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L45-L53))
 - `current_timestamp` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/freshness.sql#L1-L8)) (required)
-- copy_grants
+- `copy_grants` 
 
 #### Adapter dispatch
 
