@@ -3,7 +3,7 @@ title: "What are adapters? Why do we need them?"
 id: "1-what-are-adapters"
 ---
 
-Below's a quick intro to why adapters need to exist and how they are currently constructed. For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
+Below is a quick intro to why adapters need to exist and how they are currently constructed. For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
 
 ## No one ever: "Aren't all databases the same?"
 
