@@ -45,7 +45,7 @@ Before you build, you need to plan. And before you plan, you need to get everyon
 
 ## Step 1: Commit yourself and stakeholders to tidying up this project
 
-This may feel like an unnecessary step, but haven’t you ever started migrating a new query, only to find out that it was no longer being used, or people found it so difficult to consume that they instead created their own queries? Or you carved out precious time for this project, but the people you need to be involved have not?  Or maybe your consumers expected you to have completed this project **yesterday** — *Initiate anxiety-stomachache now.* 
+This may feel like an unnecessary step, but haven’t you ever started migrating a new query, only to find out that it was no longer being used, or people found it so difficult to consume that they instead created their own queries? Or you carved out precious time for this project, but the people you need to be involved have not?  Or maybe your consumers expected you to have completed this project yesterday — *Initiate anxiety-stomachache now*. 
 
 Take the opportunity to meet with your stakeholders, and get everyone on the same page. These are likely your report-readers, and your report-builders. 
 
@@ -88,9 +88,7 @@ Perhaps your redesigned DAG looks something like this — you have intermediate 
 
 **Before you accuse me of wishful thinking, this is the result of a real client project! We broke up almost 1500 lines of code in a single query into this beautiful waterfall. Marie Kondo would be proud.* 
 
-![fully konmari'd project](/img/blog/2022-09-08-konmari-your-query-migration/fully-konmarid-project.png)
-
-![Screen Shot 2022-08-22 at 12.44.19 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4eecafa7-5950-4696-beba-8837fe9f7d3a/Screen_Shot_2022-08-22_at_12.44.19_PM.png)
+![fully konmarid project](/img/blog/2022-09-08-konmari-your-query-migration/fully-konmarid-project.png)
 
 While you don’t *have to* design your flow this way, it is incredibly important to consider modularity, readability, scalability, and performance in your design. Design with intention! Remember, don’t put your forks too far from the dishwasher. 
 
