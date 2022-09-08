@@ -6,7 +6,7 @@ description: "Now that you've set up the starter project, you can get to the fun
 
 Now that you set up your sample project and had a successful run, you can get to the fun part — [building models](building-models)! You will take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 
-Some test text. 
+Some test text. Another push test. 
 
 ## Checkout a new git branch
 
