@@ -1,5 +1,5 @@
 ---
-title: "KonMari your Data: Planning a Query Migration using the Marie Kondo Method"
+title: "KonMari your Data: Planning a Query Migration Using the Marie Kondo Method"
 description: "Do your data models spark joy? Let’s talk about how to apply the KonMari Method to a new data migration project."
 slug: marie-kondo-query-migration
 authors: [lauren_benezra]
