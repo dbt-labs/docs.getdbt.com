@@ -106,7 +106,7 @@ Here are a few things to look for:
 - Where you can, do the same with rows! Is a filter being applied in the final query, that could be moved to a CTE, or maybe even an intermediate model?
 - Remember that in most cases, it is more performant to filter and truncate the data before the joins take place.
 
-## Steps 4 & 5: Tidy by category & Follow the right order—upstream to downstream
+## Steps 4 & 5: Tidy by category and follow the right order—upstream to downstream
 
 We are ready to unpack our kitchen. Use your design as a guideline for [modularization](/guides/best-practices/how-we-structure/1-guide-overview). 
 
