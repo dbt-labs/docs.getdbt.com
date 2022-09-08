@@ -3,7 +3,7 @@ import React from 'react';
 function DiscourseTopicList({ categoryID, tags, numResults = 3, templateStyle, createNew = false, orderBy = "default", topPeriod = "quarterly" }) {
   var params = [];
   if (categoryID) {
-    params.push(`categoryID=${categoryID}`);
+    params.push(`category=${categoryID}`);
   }
   if (tags && tags.length > 0) {
     params.push(`tags=${tags.replace(",", "+")}`);
