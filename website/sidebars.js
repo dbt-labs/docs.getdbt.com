@@ -550,6 +550,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/sqlite-profile",
         "reference/warehouse-profiles/mysql-profile",
         "reference/warehouse-profiles/ibmdb2-profile",
+        "reference/warehouse-profiles/alloydb-profile",
       ],
     },
     {
