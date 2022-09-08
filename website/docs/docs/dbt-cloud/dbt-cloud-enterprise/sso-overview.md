@@ -41,25 +41,29 @@ Then, assign all of these (and only these) to the user license. This step will a
 
 :::info Security Update
 
-This section outlines changes that will be released after September 15, 2022. If you have SSO enabled but have non-admin end-users that are logging in with a password, please read the section below carefully
+Please read the following update if you have SSO enabled but non-admin end users log in with a password. The changes outlined here will be released after September 15, 2022. 
 
 :::
 
-Starting September 15, 2022, we will be making some security changes to SSO that will  increase the security posture of your environment. We are making two main changes: 
+Starting September 15, 2022, we will be making these security changes to SSO to increase the security posture of your environment:
 
-1. **SSO Enforcement:** If you have SSO turned on in your org, dbt Cloud will enforce SSO-only logins for all non-admin users. If an Account Admin already has a password, they can continue logging in with a password
-2. **SSO Re-Authentication:** dbt Cloud will prompt you to re-authenticate using your SSO provider every 24 hours to ensure high security. 
+* **SSO Enforcement:** If you have SSO turned on in your organization, dbt Cloud will enforce SSO-only logins for all non-admin users. If an Account Admin already has a password, they can continue logging in with a password.
+* **SSO Re-Authentication:** dbt Cloud will prompt you to re-authenticate using your SSO provider every 24 hours to ensure high security. 
 
-Non-admin users that currently login with a password will no longer be able to do so. They must login via the IdP (Okta, Azure AD, etc) or via the dbt Enterprise Login URL. 
+### How should non-admin users log in?
+Non-admin users that currently login with a password will no longer be able to do so. They must login using the dbt Enterprise Login URL or an identity provider (IdP). For example, Okta, Azure AD, etc.
 
-There are a few scenarios where you may need to login via a password, we recommend the following security best-practices for the two most common scenarios:
-1. **Onboarding partners and contractors** - We highly recommend that you add partners and contractors to your Identity Provider. IdPs like Okta and AAD offer capabilities explicitly for temporary employees. We highly recommend that you reach out to your IT team to provision them an SSO license. This is highly secure, reduces any breach risk, and significantly increases the security posture of your dbt Cloud environment. 
-2. **Identity Provider is down -** Account admins will continue to be able to log in with a password which would allow them to work with your Identity Provider to troubleshoot the problem.
+### Security best practices
 
-If you are reading this and you have any non-admin users that are logging in to dbt Cloud with a password today, we recommend the following actions: 
+There are a few scenarios that might require you to login with a password. We recommend these security best-practices for the two most common scenarios:
+* **Onboarding partners and contractors** - We highly recommend that you add partners and contractors to your Identity Provider. IdPs like Okta and Azure Active Directory (AAD) offer capabilities explicitly for temporary employees. We highly recommend that you reach out to your IT team to provision an SSO license for these situations. Using an IdP highly secure, reduces any breach risk, and significantly increases the security posture of your dbt Cloud environment. 
+* **Identity Provider is down -** Account admins will continue to be able to log in with a password which would allow them to work with your Identity Provider to troubleshoot the problem.
 
-1. Ensure that all users have a user account in your Identity Provider and are assigned dbt Cloud to ensure they don’t lose access. 
-2. Alert all dbt Cloud users that they won’t be able to use a password for login anymore unless they are already an Admin and have already set a password. 
+### Next steps for non-admin users logging in with passwords
+If you have any non-admin users logging into dbt Cloud with a password today:
 
-**We DO NOT recommend promoting any users to Admins just to preserve password-based logins.
+1. Ensure that all users have a user account in your identity provider and are assigned dbt Cloud so they won’t lose access. 
+2. Alert all dbt Cloud users that they won’t be able to use a password for logging in anymore unless they are already an Admin with a password. 
+
+3. We **DO NOT** recommend promoting any users to Admins just to preserve password-based logins because you will reduce security of your dbt Cloud environment.
 **
