@@ -5,7 +5,6 @@ id: "introduction"
 
 dbt enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into <Term id="table">tables</Term> and <Term id="view">views</Term>.
 
-<EventsFeed />
 dbt does the `T` in <Term id="elt" /> (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
 
 The role of dbt within a modern data stack is discussed in more detail [here](https://blog.fishtownanalytics.com/what-exactly-is-dbt-47ba57309068).
