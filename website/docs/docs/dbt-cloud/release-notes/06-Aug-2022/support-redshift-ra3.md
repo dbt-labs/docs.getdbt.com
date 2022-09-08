@@ -7,7 +7,7 @@ tags: [Aug-31-2022, 1.1.61.5]
 
 ---
 
-Cross-database queries for RA3 instances are now supported by dbt Cloud projects that use a Redshift connection. 
+Cross-database queries for RA3 instances are now supported by dbt Cloud projects using a Redshift connection. 
 
 With cross-database queries, you can seamlessly query data from any database in the cluster, regardless of which database you are connected to with dbt. 
 
