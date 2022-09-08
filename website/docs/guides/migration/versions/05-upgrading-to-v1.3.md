@@ -20,6 +20,13 @@ The manifest schema version will be updated to `v7` to reflect three changes ass
 
 For users of [state-based selection](understanding-state): This release includes logic providing backwards and forwards compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0+.
 
+### For users of dbt Metrics
+
+The metric spec used to define metrics in dbt has been changed. Those changes are:
+- Renamed `type` to `calculation_method`
+- Renamed `sql` to `expression` 
+- Added `window` as an attribute 
+
 ## For maintainers of adapter plugins
 
 _GitHub discussion forthcoming_
@@ -30,6 +37,8 @@ _GitHub discussion forthcoming_
 ## New and changed documentation
 
 - **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
+
+- **[Metrics](building-a-dbt-project/metrics)** have been updated to reflect their new syntax for definition, as well as additional attributes that are now available.
 
 Docs in progress: [Issues labeled "dbt-core v1.3"](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.3%22+)
 
