@@ -41,7 +41,7 @@ Then, assign all of these (and only these) to the user license. This step will a
 
 :::info Security Update
 
-Please read the following update if you have SSO enabled but non-admin end users log in with a password. The changes outlined here will be released after September 15, 2022. 
+Please read the following update if you've enabled SSO but still have non-admin users logging in with a password. The changes outlined here will be released after September 15, 2022. 
 
 :::
 
@@ -60,7 +60,7 @@ There are a few scenarios that might require you to login with a password. We re
 * **Onboarding partners and contractors** - We highly recommend that you add partners and contractors to your Identity Provider. IdPs like Okta and Azure Active Directory (AAD) offer capabilities explicitly for temporary employees. We highly recommend that you reach out to your IT team to provision an SSO license for these situations. Using an IdP highly secure, reduces any breach risk, and significantly increases the security posture of your dbt Cloud environment. 
 * **Identity Provider is down -** Account admins will continue to be able to log in with a password which would allow them to work with your Identity Provider to troubleshoot the problem.
 
-### Next steps for non-admin users logging in with passwords
+### Next steps for non-admin users currently logging in with passwords
 
 If you have any non-admin users logging into dbt Cloud with a password today:
 
