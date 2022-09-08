@@ -1,9 +1,14 @@
 ---
 id: cte
 title: CTE in SQL
+description: Testing custom meta descriptions
 displayText: CTE  
 hoverSnippet: A Common Table Expression (CTE) is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other.
 ---
+
+<head>
+	<title>This is a custom title</title>
+</head>
 
 In a formal sense, a Common Table Expression (CTE), is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other. In a less formal, more human-sense, you can think of a CTE as a separate, smaller query within the larger query you’re building up. Creating a CTE is essentially like making a temporary <Term id="view" /> that you can access throughout the rest of the query you are writing.
 
