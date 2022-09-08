@@ -51,6 +51,7 @@ Starting September 15, 2022, we will be making these security changes to SSO to 
 * **SSO Re-Authentication:** dbt Cloud will prompt you to re-authenticate using your SSO provider every 24 hours to ensure high security. 
 
 ### How should non-admin users log in?
+
 Non-admin users that currently login with a password will no longer be able to do so. They must login using the dbt Enterprise Login URL or an identity provider (IdP). For example, Okta, Azure AD, etc.
 
 ### Security best practices
