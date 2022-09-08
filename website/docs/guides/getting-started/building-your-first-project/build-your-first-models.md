@@ -6,6 +6,8 @@ description: "Now that you've set up the starter project, you can get to the fun
 
 Now that you set up your sample project and had a successful run, you can get to the fun part — [building models](building-models)! You will take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 
+Some test text. 
+
 ## Checkout a new git branch
 
 1. Make sure you're in the Develop interface. If you're not, click ![hamburger icon](/img/hamburger-icon.png), then click `Develop`. The master branch should now be set to read-only mode, so you'll need to create a new branch.
@@ -21,7 +23,7 @@ Now that you set up your sample project and had a successful run, you can get to
 2. Click the `models` directory, then click ![kebob icon](/img/kebob-menu.png), then select **New file**.  
 3. Name the file `models/customers.sql`, then click **Create**.
 4. Paste the following query into the file and click **save**.
-    
+
     <Snippet src="tutorial-sql-query" />
 
 5. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see three models under DETAILS:
