@@ -17,15 +17,11 @@ keywords:
 v1.0.0 includes an initial version of metrics, following a [vibrant community discussion](https://github.com/dbt-labs/dbt-core/issues/4071). Try them out, and let us know what you think!
 :::
 
-:::caution Metrics are experimental
-v1.0 includes metrics, but they should be considered an _unstable_ API because they are experimental and subject to change. We reserve the right to make breaking changes to the metrics schema in future **minor** versions, but will aim for backwards compatibility when possible.
-:::
-
 ## About Metrics 
 
 A metric is a timeseries aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
-- mrr (monthly recurring revenue)
+- monthly recurring revenue (mrr)
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
@@ -47,6 +43,8 @@ You can define metrics in `.yml` files nested under a `metrics:` key.
 
 <File name='models/<filename>.yml'>
 
+<VersionBlock firstVersion="1.3">
+
 ```yaml
 # models/marts/product/schema.yml
 
@@ -57,12 +55,60 @@ models:
    ...
 
 metrics:
-  - name: new_customers
+  - name: rolling_new_customers
     label: New Customers
     model: ref('dim_customers')
-    description: "The number of paid customers using the product"
+    description: "The 14 day rolling count of paying customers using the product"
 
-    type: count
+    calculation_method: count_distinct
+    expression: user_id # superfluous here, but shown as an example
+
+    timestamp: signup_date
+    time_grains: [day, week, month]
+
+    dimensions:
+      - plan
+      - country
+    
+    window: 14 days
+
+    filters:
+      - field: is_paying
+        operator: 'is'
+        value: 'true'
+      - field: lifetime_value
+        operator: '>='
+        value: '100'
+      - field: company_name
+        operator: '!='
+        value: "'Acme, Inc'"
+      - field: signup_date
+        operator: '>='
+        value: "'2020-01-01'"
+
+
+    meta: {team: Finance}
+```
+</VersionBlock> 
+
+<VersionBlock lastVersion="1.2">
+
+```yaml
+# models/marts/product/schema.yml
+
+version: 2
+
+models:
+ - name: dim_customers
+   ...
+
+metrics:
+  - name: rolling_new_customers
+    label: New Customers
+    model: ref('dim_customers')
+    description: "The 14 day rolling count of paying customers using the product"
+
+    type: count_distinct
     sql: user_id # superfluous here, but shown as an example
 
     timestamp: signup_date
@@ -89,25 +135,27 @@ metrics:
 
     meta: {team: Finance}
 ```
+</VersionBlock> 
 
-</File>
+</File>   
+
 
 ### Available properties
 
 | Field       | Description                                                 | Example                         | Required? |
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
-| model       | The dbt model that powers this metric                       | dim_customers                   | <VersionBlock firstVersion="1.2">yes (no for `expression` metrics)</VersionBlock><VersionBlock lastVersion="1.1">yes</VersionBlock> |
+| model       | The dbt model that powers this metric                       | dim_customers                   | <VersionBlock firstVersion="1.3">yes (no for `derived` metrics)</VersionBlock><VersionBlock lastVersion="1.2">yes (no for `expression` metrics)</VersionBlock><VersionBlock lastVersion="1.1">yes</VersionBlock> |
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-| type        | The type of calculation to perform when evaluating a metric | count_distinct                  | yes       |
-| sql         | The expression to aggregate/calculate over                  | user_id                         | yes       |
+| <VersionBlock firstVersion="1.3">calculation_method</VersionBlock><VersionBlock lastVersion="1.1">type </VersionBlock> | <VersionBlock firstVersion="1.3">The method of calculation (aggregation or derived) that is applied to the expression</VersionBlock><VersionBlock lastVersion="1.1">The type of calculation to perform when evaluating a metric</VersionBlock>  | count_distinct | yes       |
+| <VersionBlock firstVersion="1.3">expression</VersionBlock><VersionBlock lastVersion="1.1">sql</VersionBlock> | The expression to aggregate/calculate over | user_id | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
-
+|<VersionBlock firstVersion="1.3"> window </VersionBlock> <VersionBlock lastVersion="1.2">Not yet available - added in v1.3 </VersionBlock>     | <VersionBlock firstVersion="1.3"> Used for rolling/cumulative metrics where the calculation method is applied across a range of time  </VersionBlock> <VersionBlock lastVersion="1.2">Not yet available — added in v1.3</VersionBlock>  | <VersionBlock firstVersion="1.3"> 14 days  </VersionBlock> <VersionBlock lastVersion="1.2">Not yet available — added in v1.3</VersionBlock>   | no |
 
 ### Available types
 
@@ -119,9 +167,50 @@ metrics:
 | average        | This metric type will apply the `average` aggregation to the specified field |
 | min            | This metric type will apply the `min` aggregation to the specified field |
 | max            | This metric type will apply the `max` aggregation to the specified field |
-| expression     | <VersionBlock firstVersion="1.2"> This metric type is defined as any **non-aggregating** calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
+|<VersionBlock firstVersion="1.3">derived </VersionBlock> <VersionBlock lastVersion="1.2">expression </VersionBlock>  <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock>   | <VersionBlock firstVersion="1.2"> This metric type is defined as any **non-aggregating** calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
 
-<VersionBlock firstVersion="1.2">
+<VersionBlock firstVersion="1.3">
+
+### Derived Metrics
+In v1.2, support was added for `derived` (previously named expression) metrics, which are defined as non-aggregating calculations of 1 or more metrics. By defining these metrics, you are able to create metrics like:
+- ratios
+- subtractions 
+- any arbitrary calculation
+
+As long as the two+ base metrics (the metrics that comprise the `derived` metric) share the specified `time_grains` and `dimensions`, those attributes can be used in any downstream metrics macro.
+
+An example definition of an `derived` metric is:
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+```yaml
+# models/marts/product/schema.yml
+version: 2
+
+models:
+ - name: dim_customers
+   ...
+
+metrics:
+  - name: average_revenue_per_customer
+    label: Average Revenue Per Customer
+    description: "The average revenue received per customer"
+
+    calculation_method: derived
+    expression: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
+
+    timestamp: order_date
+    time_grains: [day, week, month]
+    dimensions:
+      - had_discount
+      - order_country
+
+```
+
+</VersionBlock> 
+
+<VersionBlock lastVersion="1.2">
 
 ### Expression Metrics
 In v1.2, support was added for `expression` metrics, which are defined as non-aggregating calculations of 1 or more metrics. By defining these metrics, you are able to create metrics like:
@@ -134,7 +223,7 @@ As long as the two+ base metrics (the metrics that comprise the `expression` met
 An example definition of an `expression` metric is:
 </VersionBlock>
 
-<VersionBlock firstVersion="1.2">
+<VersionBlock lastVersion="1.2">
 
 ```yaml
 # models/marts/product/schema.yml
