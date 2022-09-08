@@ -61,6 +61,7 @@ There are a few scenarios that might require you to login with a password. We re
 * **Identity Provider is down -** Account admins will continue to be able to log in with a password which would allow them to work with your Identity Provider to troubleshoot the problem.
 
 ### Next steps for non-admin users logging in with passwords
+
 If you have any non-admin users logging into dbt Cloud with a password today:
 
 1. Ensure that all users have a user account in your identity provider and are assigned dbt Cloud so they won’t lose access. 
