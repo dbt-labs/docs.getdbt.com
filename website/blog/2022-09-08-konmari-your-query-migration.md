@@ -16,17 +16,11 @@ As an analytics engineer at your company, doesn’t that last sentence describe 
 
 Let’s talk about how to apply the KonMari Method to a new migration project. Perhaps you’ve been tasked with unpacking the kitchen in your new house; AKA, you’re the engineer hired to move your legacy SQL  queries into dbt and get everything working smoothly. That might mean you’re grabbing a query that is 1500 lines of SQL and reworking it into modular pieces. /when you’re finished, you have a performant, scalable, easy-to-navigate data flow. <!--truncate--> That does take a bit of planning, but you’ll see that we can take this… 
 
-
-
-![Screen Shot 2022-08-17 at 1.45.32 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/28fb70c7-9624-4aa8-9836-3f96ca0b2098/Screen_Shot_2022-08-17_at_1.45.32_PM.png)
-
-![buried-in-boxes.webp](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/99f6caad-1417-4de2-b4ef-9c17b0703462/buried-in-boxes.webp)
+![buried in boxes](/img/blog/2022-09-08-konmari-your-query-migration/buried-in-boxes.webp)
 
 to THIS!
 
-![Screen Shot 2022-08-22 at 12.44.19 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4eecafa7-5950-4696-beba-8837fe9f7d3a/Screen_Shot_2022-08-22_at_12.44.19_PM.png)
-
-![cat_kitchen.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fd9979a4-ce35-4acc-aaed-41d825bb1814/cat_kitchen.jpeg)
+![cat perched in kitchen](/img/blog/2022-09-08-konmari-your-query-migration/cat_kitchen.jpeg)
 
 That’s the power of the KonMari Method. Let’s apply the method specifically to data:  
 
@@ -41,17 +35,17 @@ That’s the power of the KonMari Method. Let’s apply the method specifically 
 
 Are you ready to tidy?! Summon Marie Kondo! 
 
-![mariekondo.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db474209-bc66-4484-bf94-92a5e72b29d6/mariekondo.gif)
+![Marie Kondo](/img/blog/2022-09-08-konmari-your-query-migration/mariekondo.gif)
 
 Think about when you moved to a new house. Maybe, at some point during the packing process, you got annoyed and just started labeling everything as “kitchen stuff”, rather than what was actually put in the boxes. (Isn’t this…everyone?!) So now, in your new kitchen, you’ve got tons of boxes labeled “kitchen stuff” and you don’t know where everything goes, or how to organize everything. You start to unpack, and your housemates come into the kitchen and ask, why is the Tupperware above the fridge? And why the cooking utensils are in the drawer furthest from the stove? 
 
-![nachka-cat.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d6daf7ed-6162-41f7-984b-b879795d0082/nachka-cat.gif)
+![nachka-cat.gif](/img/blog/2022-09-08-konmari-your-query-migration/nachka-cat.gif)
 
 Before you build, you need to plan. And before you plan, you need to get everyone on the same page to understand how they use the kitchen, so we can organize a kitchen that makes sense to the people who use it. So let’s jump into step one. 
 
 ## Step 1: Commit yourself and stakeholders to tidying up this project
 
-This may feel like an unnecessary step, but haven’t you ever started migrating a new query, only to find out that it was no longer being used, or people found it so difficult to consume that they instead created their own queries? Or you carved out precious time for this project, but the people you need to be involved have not?  Or maybe your consumers expected you to have completed this project *yesterday — *Initiate anxiety-stomachache now.** 
+This may feel like an unnecessary step, but haven’t you ever started migrating a new query, only to find out that it was no longer being used, or people found it so difficult to consume that they instead created their own queries? Or you carved out precious time for this project, but the people you need to be involved have not?  Or maybe your consumers expected you to have completed this project **yesterday** — *Initiate anxiety-stomachache now.* 
 
 Take the opportunity to meet with your stakeholders, and get everyone on the same page. These are likely your report-readers, and your report-builders. 
 
@@ -76,11 +70,11 @@ This is my favorite part. If you dive in to all the boxes labeled “kitchen stu
 
 Let’s plan how to unpack our query. This may be what you’re working with: 30+ sources all packed into one SUPER query 🦸. 
 
-![Screen Shot 2022-08-17 at 1.45.32 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/28fb70c7-9624-4aa8-9836-3f96ca0b2098/Screen_Shot_2022-08-17_at_1.45.32_PM.png)
+![many-to-one DAG](/img/blog/2022-09-08-konmari-your-query-migration/many-to-one-dag.png)
 
 Or, perhaps you’re migrating a stored procedure, and you have DAG Spaghetti that you’re contending with, as [Matt talks through in this article](/blog/migrating-from-stored-procs).
 
-![Screen Shot 2022-08-22 at 11.17.21 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cacfe93d-11ec-4168-88e4-7918a0fcab25/Screen_Shot_2022-08-22_at_11.17.21_AM.png)
+![spaghetti data DAG](/img/blog/2022-09-08-konmari-your-query-migration/spaghetti-data-dag.png)
 
 Now we can look at the details of this code, and start to categorize. You can start building out what this may look like as a DAG in a process mapping tool, like [Whimsical](https://whimsical.com/). 
 
@@ -93,6 +87,8 @@ Where can you break a massive query apart, and pull pieces out to create modular
 Perhaps your redesigned DAG looks something like this — you have intermediate models and joins carved out, creating modular, reusable pieces of code ([read more on that here!](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)). You’ve created a data flow devoid of circular logic, and your end-table has all the necessary components to answer your stakeholders’ questions. 
 
 **Before you accuse me of wishful thinking, this is the result of a real client project! We broke up almost 1500 lines of code in a single query into this beautiful waterfall. Marie Kondo would be proud.* 
+
+![fully konmari'd project](/img/blog/2022-09-08-konmari-your-query-migration/fully-konmarid-project.png)
 
 ![Screen Shot 2022-08-22 at 12.44.19 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4eecafa7-5950-4696-beba-8837fe9f7d3a/Screen_Shot_2022-08-22_at_12.44.19_PM.png)
 
