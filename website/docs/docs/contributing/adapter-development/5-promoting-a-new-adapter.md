@@ -3,7 +3,7 @@ title: "Promoting a new adapter"
 id: "5-promoting-a-new-adapter"
 ---
 
-## What is the model for engagement in the dbt Community?
+## Model for engagement in the dbt community
 
 The most important thing here is recognizing that people are successful in the community when they join, first and foremost, to engage authentically. 
 
@@ -15,7 +15,7 @@ Contributors to the community should think of contribution *as the end itself,* 
 - Imagine you didn’t work at the org you do &mdash; can you imagine yourself still writing this?
 - Is it written in formal / marketing language, or does it sound like you, the human?
 
-## Who should join the dbt community slack?
+## Who should join the dbt community slack
 
 ### People who have insight into what it means to do hands-on [analytics engineering](https://www.getdbt.com/analytics-engineering/) work
 
