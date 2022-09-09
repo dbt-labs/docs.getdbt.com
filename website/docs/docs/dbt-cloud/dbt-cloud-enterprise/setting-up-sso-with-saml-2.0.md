@@ -259,7 +259,7 @@ Click **Finish** to continue.
 
 ### Finish Google setup
 
-* From the Admin console Home page, go to **Apps** > **Web and mobile apps**.
+* From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
 * Select your SAML app.
 * Click **User access**.
 * To turn on or off a service for everyone in your organization, click **On for everyone** or **Off for everyone**, and then click **Save**.
