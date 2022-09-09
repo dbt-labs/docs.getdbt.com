@@ -320,8 +320,8 @@ From the Set up Single Sign-On with SAML page:
 
 To complete setup, follow the steps below in dbt Cloud:
 
-1. Navigate to the Enterprise &gt; Single Sign On page under Account Settings. 
-2. Click **Edit**.
+1. Navigate to the **Account Settings** and then click on **Single Sign On**.
+2. Click **Edit** on the upper right corner. 
 3. Provide the following SSO details:
 
    | Field | Value |
