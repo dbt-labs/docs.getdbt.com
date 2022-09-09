@@ -70,7 +70,7 @@ With dbt Cloud IDE, you can:
 
 **Find and replace** 
 
-Press Command-F (Ctrl-F) to open the find and replace bar in the upper right corner of the current file in the IDE.  The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow.
+Press Command-F or Ctrl-F to open the find and replace bar in the upper right corner of the current file in the IDE.  The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow.
 
 **Search across files** 
 
