@@ -14,7 +14,7 @@ If you’ve ever heard of Marie Kondo, you’ll know she has an incredibly sooth
 
 As an analytics engineer at your company, doesn’t that last sentence describe your job perfectly?! I like to think of the practice of analytics engineering as applying the KonMari Method to data modeling. Our goal as Analytics Engineers is not only to organize and clean up data, but to design a sustainable and scalable transformation project that is easy to navigate, grow, and consume by downstream customers. 
 
-Let’s talk about how to apply the KonMari Method to a new migration project. Perhaps you’ve been tasked with unpacking the kitchen in your new house; AKA, you’re the engineer hired to move your legacy SQL  queries into dbt and get everything working smoothly. That might mean you’re grabbing a query that is 1500 lines of SQL and reworking it into modular pieces. /when you’re finished, you have a performant, scalable, easy-to-navigate data flow. <!--truncate--> That does take a bit of planning, but you’ll see that we can take this… 
+Let’s talk about how to apply the KonMari Method to a new migration project. Perhaps you’ve been tasked with unpacking the kitchen in your new house; AKA, you’re the engineer hired to move your legacy SQL  queries into dbt and get everything working smoothly. That might mean you’re grabbing a query that is 1500 lines of SQL and reworking it into modular pieces. When you’re finished, you have a performant, scalable, easy-to-navigate data flow. <!--truncate--> That does take a bit of planning, but you’ll see that we can take this… 
 
 ![buried in boxes](/img/blog/2022-09-08-konmari-your-query-migration/buried-in-boxes.webp)
 
@@ -41,11 +41,11 @@ Think about when you moved to a new house. Maybe, at some point during the packi
 
 ![nachka-cat.gif](/img/blog/2022-09-08-konmari-your-query-migration/nachka-cat.gif)
 
-Before you build, you need to plan. And before you plan, you need to get everyone on the same page to understand how they use the kitchen, so we can organize a kitchen that makes sense to the people who use it. So let’s jump into step one. 
+Before you build, you need to plan. And before you plan, you need to get everyone on the same page to understand how they use the kitchen, so you can organize a kitchen that makes sense to the people who use it. So let’s jump into step one. 
 
 ## Step 1: Commit yourself and stakeholders to tidying up this project
 
-This may feel like an unnecessary step, but haven’t you ever started migrating a new query, only to find out that it was no longer being used, or people found it so difficult to consume that they instead created their own queries? Or you carved out precious time for this project, but the people you need to be involved have not?  Or maybe your consumers expected you to have completed this project yesterday — *Initiate anxiety-stomachache now*. 
+This may feel like an unnecessary step, but haven’t you ever started migrating a new query, only to find out that it was no longer being used? Or people found it so difficult to consume that they instead created their own queries? Or you carved out precious time for this project, but the people you need to be involved have not?  Or maybe your consumers expected you to have completed this project yesterday...*Initiate anxiety-stomachache now*. 
 
 Take the opportunity to meet with your stakeholders, and get everyone on the same page. These are likely your report-readers, and your report-builders. 
 
@@ -104,7 +104,7 @@ Here are a few things to look for:
 - Remove columns that are being brought in with import <Term id="cte">CTEs</Term>, but are just clogging your query
 - Only bring in the columns you need (this is especially true for BigQuery and Redshift for performance purposes)
 - Where you can, do the same with rows! Is a filter being applied in the final query, that could be moved to a CTE, or maybe even an intermediate model?
-- Remember that in most cases, it is more performant to filter and truncate the data before the joins take place.
+- Remember that in most cases, it is more performant to filter and truncate the data before the joins take place
 
 ## Steps 4 & 5: Tidy by category and follow the right order—upstream to downstream
 
@@ -112,11 +112,11 @@ We are ready to unpack our kitchen. Use your design as a guideline for [modulari
 
 - Build your staging tables first, and then your intermediate tables in your pre-planned buckets.
 - Important, reusable joins that are performed in the final query should be moved upstream into their own modular models, as well as any joins that are repeated in your query.
-- Remember that you don’t want to make these intermediate tables *too* specific. Don’t apply filters if it causes the model to be consumable by only one query downstream. If you do this, you aren’t creating a scalable project, you’re just recreating the same issue as your main query, but spread apart, which will be hard to untangle later.
+- Remember that you don’t want to make these intermediate tables *too* specific. Don’t apply filters if it causes the model to be consumable by only one query downstream. If you do this, you aren’t creating a scalable project, you’re just recreating the same issue as your original query, but spread amongst mulitple models, which will be hard to untangle later.
 
 Your final query should be concretely defined — is it a <Term id="dimensional-modeling">fact or dimension</Term> table? Is it a report table? What are the stepping stones to get there? What’s the most performant way to [materialize](/docs/building-a-dbt-project/building-models/materializations)?
 
-Build with the goal to scale — when might you need these int models again? Will you need to repeat the same joins? Hopefully you’ve designed with enough intention to know the answer to that last one is “no.” 
+Build with the goal to scale — when might you need these intermediate models again? Will you need to repeat the same joins? Hopefully you’ve designed with enough intention to know the answer to that last one is “no.” Avoid repeating joins! 
 
 ## Step 6: Validate that the result *sparks joy*, AKA, satisfies all of the consumers’ needs
 
