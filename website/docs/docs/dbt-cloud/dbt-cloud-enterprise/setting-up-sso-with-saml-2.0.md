@@ -250,7 +250,7 @@ Expected **Attributes**:
 
 | Name           | Name format | Value                | Description                |
 | -------------- | ----------- | -------------------- | -------------------------- |
-| `First name`   | Unspecified | `first_name`         | _The user's first name_    |
+| `First name`   | Unspecified | `first_name`         | The user's first name.  |
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
 
