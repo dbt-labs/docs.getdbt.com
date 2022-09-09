@@ -252,7 +252,7 @@ Expected **Attributes**:
 | -------------- | ----------- | -------------------- | -------------------------- |
 | `First name`   | Unspecified | `first_name`         | _The user's first name_    |
 | `Last name`    | Unspecified | `last_name`          | _The user's last name_     |
-| `Primary email`| Unspecified | `email`              | _The user's email address_ |
+| `Primary email`| Unspecified | `email`              |  The user's email address. |
 
 Click **Finish** to continue.
 
