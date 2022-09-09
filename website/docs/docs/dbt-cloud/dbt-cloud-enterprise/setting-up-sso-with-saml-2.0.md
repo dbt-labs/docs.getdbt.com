@@ -214,37 +214,28 @@ Use this section if you are configuring Google as your identity provider.
 
 ### Configure the Google application
 
-Sign into your **Google Admin Console** via an account with super administrator privileges.
-
-* From the Admin console Home page, go to **Apps** > **Web and mobile apps**.
-* Click **Add** > **Add custom SAML app**.
-
-Click **Next** to continue.
-
-Make these changes on the App Details page:
-
-* Name the custom app
-* Upload an app logo (optional)
-* Click **Continue**.
+1. Sign into your **Google Admin Console** via an account with super administrator privileges.
+2. From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
+3. Click **Add**, then click **Add custom SAML app**.
+4. Click **Next** to continue.
+5. Make these changes on the App Details page:
+    - Name the custom app
+    - Upload an app logo (optional)
+    - Click **Continue**.
 
 ### Configure SAML Settings
 
-On the **Google Identity Provider details** page:
-
-* Download the **IDP metadata**.
-* Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
-
-On the **Service Provider Details** window, enter the following values:
-
-* **ACS URL**: `https://cloud.getdbt.com/complete/saml`
-* **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
-* **Start URL**: (if needed)
-
-The default **Name ID** is the primary email. Multi-value input is not supported.
-
-Use the **Attribute mapping** page to
-map your organization's Google Directory Attributes to the format that
-dbt Cloud expects; click **Add another mapping** to map additional attributes.
+1. Go to the **Google Identity Provider details** page.
+2. Download the **IDP metadata**.
+3. Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
+4. Enter the following values on the **Service Provider Details** window:
+   - **ACS URL**: `https://cloud.getdbt.com/complete/saml`
+   - **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
+   - **Start URL**: (if needed)
+5. The default **Name ID** is the primary email. Multi-value input is not supported.
+6. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
+dbt Cloud expects.
+7. Click **Add another mapping** to map additional attributes.
 
 Expected **Attributes**:
 
@@ -254,16 +245,16 @@ Expected **Attributes**:
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
 
-Click **Finish** to continue.
+8. Click **Finish** to continue.
 
 
 ### Finish Google setup
 
-* From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
-* Select your SAML app.
-* Click **User access**.
-* To turn on or off a service for everyone in your organization, click **On for everyone** or **Off for everyone**, and then click **Save**.
-* Ensure that the email addresses your users use to sign in to the SAML app match the email addresses they use to sign in to your Google domain (Changes typically take effect in minutes, but can take up to 24 hours).
+1. From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
+2. Select your SAML app.
+3. Click **User access**.
+4. To turn on or off a service for everyone in your organization, click **On for everyone** or **Off for everyone**, and then click **Save**.
+5. Ensure that the email addresses your users use to sign in to the SAML app match the email addresses they use to sign in to your Google domain (Changes typically take effect in minutes, but can take up to 24 hours).
 
 ### Finish setup
 
