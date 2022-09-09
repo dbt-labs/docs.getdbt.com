@@ -41,11 +41,12 @@ You can refer to [Getting Started with dbt Cloud](https://docs.getdbt.com/guides
 Not at all! You can use dbt Cloud when you sign up for the Free [Developer plan](https://www.getdbt.com/pricing/), which comes with one developer seat. If you’d like to access more features or have more developer seats, you can upgrade your account to the Team or Enterprise plan. See dbt [Pricing plans](https://www.getdbt.com/pricing/) for more details.
 
 **Can I be a contributor to dbt Cloud?** 
+
 Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See [Contributing](/docs/contributing/oss-expectations) for details on what to expect when contributing to the dbt open source software (OSS).
 
 **What is the difference between developing on the dbt Cloud IDE and on the CLI?**
 
-TThere are two main ways to develop with dbt: using the web-based IDE in dbt Cloud or using the command-line interface (CLI) in dbt Core.
+There are two main ways to develop with dbt: using the web-based IDE in dbt Cloud or using the command-line interface (CLI) in dbt Core.
 
 - **dbt Cloud IDE** - dbt Cloud is a Web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models, and provides a real-time editing and execution environment for your dbt project.
 
@@ -69,11 +70,11 @@ With dbt Cloud IDE, you can:
 
 **Find and replace** 
 
-Press Command-F  to open the find and replace bar in the upper right corner of the current file in the IDE.  The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow.
+Press Command-F or Ctrl-F to open the find and replace bar in the upper right corner of the current file in the IDE.  The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow.
 
 **Search across files** 
 
-You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O to find text across all files in your current project. and write your file name. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view it in the IDE.
+You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O or Ctrl-O to find text across all files in your current project. and write your file name. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view it in the IDE.
 
 **Keyboard shortcuts** 
 
