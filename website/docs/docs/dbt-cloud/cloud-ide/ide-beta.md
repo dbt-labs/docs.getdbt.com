@@ -74,7 +74,7 @@ Press Command-F or Ctrl-F to open the find and replace bar in the upper right co
 
 **Search across files** 
 
-You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O (Ctrl-O) to find text across all files in your current project. and write your file name. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view it in the IDE.
+You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O or Ctrl-O to find text across all files in your current project. and write your file name. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view it in the IDE.
 
 **Keyboard shortcuts** 
 
