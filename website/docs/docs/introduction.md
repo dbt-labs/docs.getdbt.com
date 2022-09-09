@@ -11,6 +11,8 @@ The role of dbt within a modern data stack is discussed in more detail [here](ht
 
 dbt also enables analysts to work more like software engineers, in line with the dbt [Viewpoint](viewpoint).
 
+test
+
 ## How do I use dbt?
 
 ### dbt Projects
