@@ -25,13 +25,13 @@ any database grants.
 Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](deployment-architecture)."
 
 
-## Connecting to Redshift and Postgres
+## Connecting to Postgres, Redshift, and AlloyDB
 
-The following fields are required when creating a Redshift connection:
+The following fields are required when creating a Postgres, Redshift, or AlloyDB connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the Postgres or Redshift database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
+| Host Name | The hostname of the Postgres, Redshift, or AlloyDB database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
@@ -41,7 +41,7 @@ The following fields are required when creating a Redshift connection:
 
 ### Connecting via an SSH Tunnel
 
-To connect to a Postgres or Redshift instance via an SSH tunnel, check the "Use SSH Tunnel" option when creating your connection. When configuring the tunnel, you'll need to supply the hostname, username, and port for the bastion server.
+To connect to a Postgres, Redshift, or AlloyDB instance via an SSH tunnel, select the **Use SSH Tunnel** option when creating your connection. When configuring the tunnel, you must supply the hostname, username, and port for the bastion server.
 
 Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize dbt Cloud to connect to your database via the bastion server.
 
@@ -51,9 +51,9 @@ Once the connection is saved, a public key will be generated and displayed for t
 
 The following fields are required when creating a Snowflake connection:
 
-| Field | Description | Examples |
-| ----- | ----------- | -------- |
-| Account | The Snowflake account to connect to. Take a look [here](snowflake-profile#account) to determine what the account field should look like based on your region.| `db5261993`,`db5261993.east-us-2.azure` |
+| Field | Description | Examples                                                                                  |
+| ----- | ----------- | ------------------------------------------------------------------------------------------|
+| Account | The Snowflake account to connect to. Take a look [here](snowflake-profile#account) to determine what the account field should look like based on your region.|  <Snippet src="snowflake-acct-name" /> |
 | Role | An optional field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
