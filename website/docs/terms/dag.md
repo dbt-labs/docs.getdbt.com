@@ -93,7 +93,7 @@ A Directed acyclic graphs (DAG) is a visual representation of your data models a
 
 ## Further reading
 
-Ready to restructure (or create your first!) DAG? Check out some the resources below to better understand data modularity, data lineage, and how dbt helps bring it all together:
+Ready to restructure (or create your first) DAG? Check out some of the resources below to better understand data modularity, data lineage, and how dbt helps bring it all together:
 
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 - [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
