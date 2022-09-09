@@ -84,6 +84,7 @@ seeds:
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
+    [+](plus-prefix)[grants](grants): {<dictionary>}
 
 ```
 
@@ -112,6 +113,7 @@ seeds:
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
+      [grants](grants): {<dictionary>}
 
 ```
 

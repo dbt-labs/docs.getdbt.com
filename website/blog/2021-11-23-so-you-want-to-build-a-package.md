@@ -39,7 +39,7 @@ The problem: Analysts often need to add an interval to a timestamp/date. To make
 
 ```
 
-In this section, we are using the [dispatch](https://docs.getdbt.com/reference/dbt-jinja-functions/dispatch) Jinja reference to enable the right macro from the rest of the file is called (since they are specific to the adapter) when a user called the macro. This means the user doesn’t have to think about what to call based on the adapter, they just need to call one macro, dbt handles it all behind the scene.
+In this section, we are using the [dispatch](/reference/dbt-jinja-functions/dispatch) Jinja reference to enable the right macro from the rest of the file is called (since they are specific to the adapter) when a user called the macro. This means the user doesn’t have to think about what to call based on the adapter, they just need to call one macro, dbt handles it all behind the scene.
 
 ```sql
 
