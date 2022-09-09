@@ -210,7 +210,7 @@ section to complete the integration.
 
 ## Google integration
 
-_Use this section if you are configuring Google as your identity provider_.
+Use this section if you are configuring Google as your identity provider.
 
 ### Configure the Google application
 
