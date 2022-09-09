@@ -221,7 +221,7 @@ Sign into your **Google Admin Console** via an account with super administrator 
 
 Click **Next** to continue.
 
-On the **App Details** page:
+Make these changes on the App Details page:
 
 * Name the custom app
 * Upload an app logo (optional)
