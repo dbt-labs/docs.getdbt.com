@@ -2,7 +2,7 @@
 
 A DAG is a **D**irected **A**cyclic **G**raph, a type of graph whose nodes are directionally related to each other and don’t form a directional closed loop. In the practice of analytics engineering, DAGs are often used to visually represent the relationships between your data models.
 
-While the concept of a DAG originated in mathematics and gained popularity in computational work, DAGs have found a home in the modern data world. They offer a great way to visualize data pipelines and <Term id="data-lineage">lineage</Term>, as well as offer an easy way to understand dependencies between data models.
+While the concept of a DAG originated in mathematics and gained popularity in computational work, DAGs have found a home in the modern data world. They offer a great way to visualize data pipelines and <Term id="data-lineage">lineage</Term>, and they offer an easy way to understand dependencies between data models.
 
 ## DAG use cases and best practices
 
