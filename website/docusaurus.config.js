@@ -51,7 +51,9 @@ var siteSettings = {
   themeConfig: {
     image: '/img/avatar.png',
     colorMode: {
-      disableSwitch: true
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
     },
     // Adding non-empty strings for Algolia config
     // allows Docusaurus to run locally without .env file
@@ -93,7 +95,8 @@ var siteSettings = {
     },
     navbar: {
       logo: {
-        src: '/img/dbt-logo-light.svg',
+        src: '/img/dbt-logo.svg',
+        srcDark: 'img/dbt-logo-light.svg',
         alt: 'dbt Logo',
       },
       items: [
@@ -173,24 +176,23 @@ var siteSettings = {
     },
     footer: {
       links: [
-          {
-            html: `
-            <div class='footer__items'>
-              <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
-              <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
-              <a href='https://www.getdbt.com/security/'>Security</a>
-              <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
-              <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
-            </div>
+        {
+          html: `
+          <div class='footer__items'>
+            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+            <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
+            <a href='https://www.getdbt.com/security/'>Security</a>
+            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+            <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
+          </div>
 
-            <div class='footer__items--right'>
-              <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
-              <a href='https://www.getdbt.com/community/'><i class="fa-brands fa-slack"></i></a>
-              <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
-            </div>
-            `
-          },
-          
+          <div class='footer__items--right'>
+            <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
+            <a href='https://www.getdbt.com/community/'><i class="fa-brands fa-slack"></i></a>
+            <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
+          </div>
+          `
+        },
       ],
 
       copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`
