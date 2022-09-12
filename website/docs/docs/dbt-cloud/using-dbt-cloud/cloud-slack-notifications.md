@@ -13,7 +13,7 @@ Click **Integrations** on the left-hand side menu.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-integrations.png" title="Navigate to integrations"/>
 
-Click **Link your Slack profile**
+3. Click **Link your Slack profile**
 
 <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" title="Link your Slack profile"/>
 
