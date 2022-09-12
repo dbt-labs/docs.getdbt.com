@@ -1,7 +1,10 @@
 Setting up Slack notifications in dbt Cloud enables you to receive alerts in a chosen Slack channel when a job run succeeds, fails, or is cancelled.
 
-**Note**: Currently, Slack notifications can only be configured by one user to one Slack channel. Additionally, you must be an admin of the Slack workspace in order to configure Slack notifications. If there have been changes to the user roles and you need to move ownership, please reach out to support@getdbt.com and provide the support team with the necessary information needed to make this change for you.
+:::info Note
+Currently, Slack notifications can only be configured by one user to one Slack channel. Additionally, you must be an admin of the Slack workspace in order to configure Slack notifications. 
 
+If there have been changes to the user roles and you need to move ownership, please reach out to support@getdbt.com and provide the support team with the necessary information needed to make this change for you.
+:::
 ### Setup the integration
 
 1. Click the gear in the top right and select **Profile**.
