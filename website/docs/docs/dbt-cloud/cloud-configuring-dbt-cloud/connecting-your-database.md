@@ -58,7 +58,6 @@ The following fields are required when creating a Snowflake connection:
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
-![Snowflake connection details](/img/docs/dbt-cloud/snowflake-conn-details.png)
 
 ### Username / Password
 
