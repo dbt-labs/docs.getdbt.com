@@ -120,8 +120,10 @@ Settings.
    redirected back to the dbt Cloud application.
 4. On the **Credentials** page, verify that a `groups` entry is
    present, and that it reflects the groups you are a member of in GSuite. If
-   you do not see a `groups` entry in the IdP attribute list, consult the
-   Troubleshooting steps below.
+   you do not see a `groups` entry in the IdP attribute list, consult the following
+   Troubleshooting steps.
+
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite verify groups"/>
 
 If the verification information looks appropriate, then you have completed
 the configuration of GSuite SSO. Members of your team should now be able to log
@@ -139,7 +141,6 @@ Now you have completed setting up SSO with GSuite, the next steps will be to set
 If you experience an `Error 401: invalid_client` when authorizing with GSuite, double check that:
  - The Client ID provided matches the value generated in the GCP API Credentials page.
  - Ensure the Domain Name(s) provided matches the one(s) for your GSuite account.
-
 
 ### OAuth errors
 

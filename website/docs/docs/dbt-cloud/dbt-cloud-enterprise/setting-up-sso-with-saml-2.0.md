@@ -25,7 +25,7 @@ You can use the instructions in this section to configure an identity provider b
 
 ### Configure your identity provider
 
-You'll need administrator access to your SAML 2.0 compliant identity provider to configure the identity provider. You can use the following instrucitons with any SAML 2.0 compliant identity provider.
+You'll need administrator access to your SAML 2.0 compliant identity provider to configure the identity provider. You can use the following instructions with any SAML 2.0 compliant identity provider.
 
 ### Creating the application
 
@@ -280,15 +280,10 @@ To complete setup, follow the steps below in dbt Cloud:
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
    | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions |
    | Slug | Enter your desired login slug. |
-
-<Lightbox
-    collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
-    title="Configuring the application in dbt Cloud"
-/>
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+        title="Configuring the application in dbt Cloud" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
-
 5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to
 test logging in with your identity provider. Additionally, users added the the SAML 2.0 app
 will be able to log in to dbt Cloud from the IdP directly.
