@@ -36,6 +36,7 @@ These adapter plugins are built and maintained by the same people who build and 
 
 | Adapter for                                                                                                   | Documentation                                                                               | Install from PyPi |
 |---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------| ----------------- |
+| AlloyDB (via [dbt-postgres](https://github.com/dbt-labs/dbt-postgres))                                        | [Profile Setup](alloydb-profile)                                                           | `pip install dbt-postgres` |
 | ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                    | `pip install dbt-clickhouse` |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                        | `pip install dbt-firebolt` |
@@ -62,7 +63,7 @@ These adapter plugins are contributed and maintained by members of the community
 | Azure Synapse          | [Profile Setup](azuresynapse-profile), [Configuration](azuresynapse-configs) | Azure Synapse 10+         | `pip install dbt-synapse`    |
 | Exasol Analytics       | [Profile Setup](exasol-profile)                                              | Exasol 6.x and later      | `pip install dbt-exasol`     |
 | Dremio                 | [Profile Setup](dremio-profile)                                              | Dremio 4.7+               | `pip install dbt-dremio`     |
-| Athena                 | [Profile Setup](athena-profile)                                              | Athena engine version 2   | `pip install git+https://github.com/Tomme/dbt-athena.git` |
+| Athena                 | [Profile Setup](athena-profile)                                              | Athena engine version 2   | `pip install dbt-athena-adapter` |
 | Vertica                | [Profile Setup](vertica-profile)                                             | Vertica 10.0+             | `pip install dbt-vertica`    |
 | AWS Glue               | [Profile Setup](glue-profile), [Configuration](glue-configs)                 | Glue 2.0+                 | `pip install dbt-glue`       |
 | Greenplum              | [Profile Setup](greenplum-profile), [Configuration](greenplum-configs)       | Greenplum 6.0+            | `pip install dbt-greenplum`  |
