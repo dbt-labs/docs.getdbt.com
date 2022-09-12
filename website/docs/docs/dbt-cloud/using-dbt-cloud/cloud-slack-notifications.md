@@ -7,9 +7,9 @@ Setting up Slack notifications in dbt Cloud will allow you to receive alerts in 
 
 ### Setup the integration
 
-Click on your profile in the top right corner of the dbt Cloud UI and click **Profile**.
+1. Click the gear in the top right and select **Profile**.
 
-Click **Integrations** on the left-hand side menu.
+2. Click **Integrations**  to the left.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-integrations.png" title="Navigate to integrations"/>
 
@@ -23,13 +23,13 @@ Click **Integrations** on the left-hand side menu.
 
 ### Configure the notifications
 
-Open the main menu and click **Account Settings**.
+1. Click the gear in the top right and select **Account Settings**.
 
-Click **Notifications** from the left-hand menu and **Edit** from the top right-hand side of the notifications pane.
+2. Click **Slack Notifications** to the left and click **Edit** to the right.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-notifications.png" title="Navigate to notifications"/>
 
-Slack notification settings will be towards the bottom of the page (you may have to scroll down).
+3. You can find the Slack notification settings at the bottom of the page.
 
 
 ### Disabling the Slack integration

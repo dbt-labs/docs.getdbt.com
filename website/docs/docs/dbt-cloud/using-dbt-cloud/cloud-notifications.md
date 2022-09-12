@@ -40,21 +40,20 @@ In general, there are two parts to setting up Slack notifications. The first inv
 
 <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" title="Link your Slack profile"/>
 
-Allow dbt Labs to access the Slack workspace. If you are a member of multiple, you can select the appropriate workspace from the dropdown menu in the top right corner.
+4. Allow dbt Labs to access the Slack workspace. If you are a member of multiple, you can select the appropriate workspace from the dropdown menu in the top right corner.
 
 <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" title="Allow dbt access to Slack"/>
 
 ### Configure the notifications
 
-Open the main menu and click **Account Settings**.
+1. Click the gear to the top right and select **Notification Settings**.
 
-Click **Notifications** from the left-hand menu and **Edit** from the top right-hand side of the notifications pane.
+2. Click **Slack Notifications** to the left and click **Edit** to the right.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-notifications.png" title="Navigate to notifications"/>
 
 3. You can find the Slack notification settings at the bottom of the page.
 
-<Lightbox src="img/docs/dbt-cloud/Configure-Slack-notifications.png" title="Configure Slack notifications"/>
 
 ### Disable the Slack integration
 
