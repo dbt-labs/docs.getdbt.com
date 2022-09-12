@@ -19,7 +19,7 @@ Currently supported features include:
 
 ## Configuration
 
-dbt Cloud supports both single tenant and multitenant Azure Active Directory SSO
+dbt Cloud supports both single tenant and multi-tenant Azure Active Directory SSO
 Connections. For most Enterprise purposes, you will want to use the single
 tenant flow when creating an Azure AD Application.
 
@@ -171,7 +171,7 @@ Now you have completed setting up SSO with Azure AD, the next steps will be to s
 
 ## Troubleshooting Tips
 
-Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
+Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-domain-in-dbt.png" title="Adding the user domain to dbt cloud" />
+
