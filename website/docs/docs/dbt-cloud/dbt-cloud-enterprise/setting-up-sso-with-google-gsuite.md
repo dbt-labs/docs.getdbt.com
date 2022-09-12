@@ -135,6 +135,13 @@ Now you have completed setting up SSO with GSuite, the next steps will be to set
 ## Troubleshooting
 
 
+### Invalid client error
+
+If you experience an `Error 401: invalid_client` when authorizing with GSuite, double check that:
+ - The Client ID provided matches the value generated in the GCP API Credentials page.
+ - Ensure the Domain Name(s) provided matches the one(s) for your GSuite account.
+
+
 ### OAuth errors
 
 If OAuth verification does not complete successfully, double check that:
