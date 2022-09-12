@@ -3,11 +3,11 @@ title: "What are adapters? Why do we need them?"
 id: "1-what-are-adapters"
 ---
 
-Here is a quick intro as to why adapters need to exist and how they are currently constructed. For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
+Adapters are an essential component of dbt integration with various databases (and data warehouses). Navigating the nuances of different databases can be daunting, but you are not alone. Visit [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond the documentation.
 
-## No one ever: "Aren't all databases the same?"
+## All databases are not the same
 
-There's a huge amount of work that goes into creating a database. At a high level, here's the "layers" that go into a database (outermost inwards):
+There's a tremendous amount of work that goes into creating a database. Here is a high-level list of typical database layers (from the outermost layer moving inwards):
 - SQL API
 - Client Library / Driver
 - Server Connection Manager
@@ -17,69 +17,70 @@ There's a huge amount of work that goes into creating a database. At a high leve
 - Storage Access Layer
 - Storage
 
-There's a lot more there than just SQL as a language (no insult intended to Donald Chamberlain). Ultimately, the reason that databases (and later data warehouses ) are so popular is that you can abstract away a great deal of the complexity from your brain to the database itself. This leaves you to focus more on the data
+There's a lot more there than just SQL as a language. Databases (and data warehouses) are so popular because you can abstract away a great deal of the complexity from your brain to the database itself. This enables you to focus more on the data.
 
-Enter the radical notion that is dbt. By further abstracting and standardizing the outermost layers of a database (SQL API, client library, connection manager), into a framework, it both:
-1. opens database technology to less technical users (webmaster -> web developer), and
-2. enables more meaningful conversations about how data warehousing should be done.
+dbt allows for further abstraction and standardization of the outermost layers of a database (SQL API, client library, connection manager) into a framework that both:
+ - Opens database technology to less technical users (webmaster -> web developer).
+ - Enables more meaningful conversations about how data warehousing should be done.
 
-Enter dbt adapters.
+This is where dbt adapters become critical.
 
-## What exactly needs to be adapted?
+## What needs to be adapted?
 
-dbt "adapters" are responsible for _adapting_ dbt's "standard" functionality to a given database. For a variety of reasons, our prototypical database and adapter is PostgreSQL and dbt-postgres, and most of our adapters are somewhat based on the functionality described in dbt-postgres.
+dbt adapters are responsible for _adapting_ dbt's standard functionality to a particular database. Our prototypical database and adapter are PostgreSQL and dbt-postgres, and most of our adapters are somewhat based on the functionality described in dbt-postgres.
 
- If there's a new database with which you'd like dbt to work, chances are that you'll need to either build a new adapter, or extend an existing one.
+Connecting dbt to a new database will require a new adapter to be built or an existing adapter to be extended.
 
-The outermost layers of a database mentioned above map roughly to the areas in which the dbt adapter framework encapsulates inter-database differences:
+The outermost layers of a database map roughly to the areas in which the dbt adapter framework encapsulates inter-database differences.
 
 ### SQL API
 
-Even amongst ANSI compliant databases, there are virtually always differences in the SQL grammar. Here's some categories and specific examples of SQL statements that can be constructed differently.
+Even amongst ANSI-compliant databases, there are differences in the SQL grammar. 
+Here are some categories and examples of SQL statements that can be constructed differently:
 
 
-| category                                     | specific area of differences                                                                     | examples                                                                                                                                                                                           |
+| Category                                     | Area of differences                                                                     | Examples                                                                                                                                                                                           |
 |----------------------------------------------|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| statement syntax                             | the grammar of using `IF EXISTS`                                                                 | `IF <TABLE> EXISTS, DROP TABLE`<br></br>vs<br></br>`DROP <TABLE> IF EXISTS`                                                                                                                                  |
-| workflow definition & semantics              | incremental updates                                                                              | `MERGE` vs. `DELETE; INSERT`                                                                                                                                                                       |
-| relation and column attributes/configuration | database-specifc materialization configs           | `DIST = ROUND_ROBIN` (Synapse)<br></br>vs<br></br>`DIST = EVEN` (Redshift)                                                                                                                                   |
-| permissioning                                | grant statements that can only take one grantee at a time vs those that accept lists of grantees | `grant SELECT on table dinner.corn to corn_kid, everyone` <br></br> <br></br>```grant SELECT on table dinner.corn to corn_kid```<br></br>```grant SELECT on table dinner.corn to everyone<br></br>``` |
+| Statement syntax                             | The use of `IF EXISTS`                                                                 | <li>`IF <TABLE> EXISTS, DROP TABLE`</li><li>`DROP <TABLE> IF EXISTS`</li>                                                                                                                                  |
+| Workflow definition & semantics              | Incremental updates                                                                              | <li>`MERGE`</li><li>`DELETE; INSERT`</li>                                                                                                                                                                       |
+| Relation and column attributes/configuration | Database-specific materialization configs | <li>`DIST = ROUND_ROBIN` (Synapse)</li><li>`DIST = EVEN` (Redshift)</li> |
+| Permissioning                                | Grant statements that can only take one grantee at a time vs those that accept lists of grantees | <li>`grant SELECT on table dinner.corn to corn_kid, everyone` </li><li>`grant SELECT on table dinner.corn to corn_kid; grant SELECT on table dinner.corn to everyone`</li> |
 
 ### Python Client Library & Connection Manager
 
-The other big category of inter-database differences comes with how the client connects to the database, and executes queries against said connection. In order to integrate with dbt, a data platform needs to have a pre-existing python client library, or at least support ODBC in which case a generic python library like pyodbc can be used.
+The other big category of inter-database differences comes with how the client connects to the database and executes queries against the connection. To integrate with dbt, a data platform must have a pre-existing python client library or support ODBC, using a generic python library like pyodbc.
 
-| category                     | specific area of differences              | examples                                                                                                    |
+| Category                     | Area of differences              | Examples                                                                                                    |
 |------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| credentials & authentication | authentication                             | username & password<br></br>vs<br></br>MFA with `boto3` or Okta token                                                |
-| connection opening/closing   | create a new connection to db             | `psycopg2.connect(connection_string)`<br></br>vs<br></br>`google.cloud.bigquery.Client( ... )`                        |
-| inserting local data         | load seed .`csv` files into Python memory | `Adapter.upload_file()` (BigQuery)<br></br>`INSERT ... INTO VALUES ...` prepared statement (all other databases) |
+| Credentials & authentication | Authentication                             | <li>Username & password</li><li>MFA with `boto3` or Okta token</li>                                                |
+| Connection opening/closing   | Create a new connection to db             |<li>`psycopg2.connect(connection_string)`</li><li>`google.cloud.bigquery.Client(...)`</li>                        |
+| Inserting local data         | Load seed .`csv` files into Python memory |<li> `Adapter.upload_file()` (BigQuery)</li><li>`INSERT ... INTO VALUES ...` prepared statement (all other databases)</li> |
 
 
-## How does dbt encapsulate and abstract these differences?
+## How dbt encapsulates and abstracts these differences
 
 Differences between databases are encoded into discrete areas:
 
 | Components       | Code Path                                         | Function                                                                      |
 |------------------|---------------------------------------------------|-------------------------------------------------------------------------------|
 | Python Classes   | `adapters/<adapter_name>`                         | Configuration (See above [Python classes](##python classes)                   |
-| Macros           | `include/<adapter_name>/macros/adapters/`         | SQL API & statement syntax (e.g. how to create schema, how to get table info) |
-| Materializations | `include/<adapter_name>/macros/materializations/` | table/view/snapshot/ workflow definitions                                     |
- 
+| Macros           | `include/<adapter_name>/macros/adapters/`         | SQL API & statement syntax (for example, how to create schema or how to get table info) |
+| Materializations | `include/<adapter_name>/macros/materializations/` | Table/view/snapshot/ workflow definitions                                     |
+
 
 ### Python Classes
 
-These classes implement all the methods responsible for
-1. connecting to a database and issuing queries, and
-2. providing dbt with database-specific configuration information 
+These classes implement all the methods responsible for:
+- Connecting to a database and issuing queries.
+- Providing dbt with database-specific configuration information.
 
 | Class                    | Description                                                                                                                                                                                 |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AdapterClass             | high-level configuration type conversion and any database-specifc python methods needed                                                                                                     |
-| AdapterCredentials       | typed dictionary of possible profiles and associated methods                                                                                                                                |
-| AdapterConnectionManager | all the methods responsible for connecting to a database and issuing queries                                                                                                                |
-| AdapterRelation          | how relation names should be rendered, printed, and/or quoted? Do relation names use all three parts?`catalog.model_name` (two-part name) or `database.schema.model_name` (three-part name) |
-| AdapterColumn            | how names should be rendered, and database-specific properties                                                                                                                              |
+| AdapterClass | High-level configuration type conversion and any database-specific python methods needed |
+| AdapterCredentials       | Typed dictionary of possible profiles and associated methods                                                                                                                                |
+| AdapterConnectionManager | All the methods responsible for connecting to a database and issuing queries                                                                                                                |
+| AdapterRelation          | How relation names should be rendered, printed, and quoted. Do relation names use all three parts? `catalog.model_name` (two-part name) or `database.schema.model_name` (three-part name) |
+| AdapterColumn            | How names should be rendered, and database-specific properties                                                                                                                              |
 
 ### Macros
 
@@ -87,7 +88,7 @@ A set of *macros* responsible for generating SQL that is compliant with the targ
 
 ### Materializations
 
-At the highest level: a set of *<Term id="materialization">materializations</Term>* and their corresponding helper macros that are defined in dbt using jinja and SQL. They codify for dbt how model files should be persisted into the database (i.e. materialized).
+A set of *materializations* and their corresponding helper macros defined in dbt using jinja and SQL. They codify for dbt how model files should be persisted into the database.
 
 ## Adapter Architecture
 
