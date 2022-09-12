@@ -31,7 +31,6 @@ Click **Notifications** from the left-hand menu and **Edit** from the top right-
 
 Slack notification settings will be towards the bottom of the page (you may have to scroll down).
 
-<Lightbox src="img/docs/dbt-cloud/Configure-Slack-notifications.png" title="Configure Slack notifications"/>
 
 ### Disabling the Slack integration
 
