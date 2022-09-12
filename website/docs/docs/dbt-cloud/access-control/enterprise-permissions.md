@@ -177,7 +177,7 @@ Click the gear icon to the top right and select **Account Settings**. From the *
 
 <Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
 
-Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups), and then configure the SSO provider groups you want to add RBAC (these fields are case sensitive and must match the source group formatting) by clicking **Add** in the **SSO Mapping** section.
+Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups), and then configure the SSO provider groups you want to add RBAC (these fields are case sensitive and must match the source group formatting) by clicking **Add** in the **SSO** section.
 
 Next, configure the permissions for users within those groups by clicking **Add** in the **Access** section of the window.
 
