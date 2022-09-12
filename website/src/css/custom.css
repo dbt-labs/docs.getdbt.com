@@ -839,6 +839,7 @@ code {
     position: relative;
   }
   
+  /* temporary hack to show the logo in the aside */
   html.docs-version-current aside .menu::before {
     content: '';
     background: url(https://docs.getdbt.com/img/dbt-logo.svg);
@@ -850,6 +851,18 @@ code {
     background-repeat: no-repeat;
     top: 35px;
   }
+
+  html.docs-version-current[data-theme='dark'] aside .menu::before {
+    background: url(https://docs.getdbt.com/img/dbt-logo-light.svg);
+    width: 90px;
+    height: 100%;
+    background-position: top;
+    background-size: contain;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 35px;
+  }
+
 
   .navbar__item.navbar__link {
     display: flex;
