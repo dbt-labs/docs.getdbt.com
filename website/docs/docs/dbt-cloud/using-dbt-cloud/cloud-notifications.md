@@ -32,7 +32,7 @@ In general, there are two parts to setting up Slack notifications. The first inv
 
 1. Click the gear icon to the top right and select **Profile**.
 
-Click **Integrations** on the left-hand side menu.
+2. Click **Integrations** to the left.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-integrations.png" title="Navigate to integrations"/>
 
