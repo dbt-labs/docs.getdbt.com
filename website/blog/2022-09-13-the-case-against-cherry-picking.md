@@ -15,9 +15,9 @@ is_featured: true
 The simplest branching strategy for making code changes to your dbt project repository is to have a **single main branch** with your production-level code. To update the `main` branch, a developer will:
 
 1. Create a new feature branch directly from the `main` branch
-2. Make changes on said feature branch
-3. Test locally
-4. When ready, open a pull request to merge their changes back into the `main` branch
+1. Make changes on said feature branch
+1. Test locally
+1. When ready, open a pull request to merge their changes back into the `main` branch
 
 ![Basic git workflow](/img/blog/2022-09-13-the-case-against-cherry-picking/1_basic_git_workflow.png)
 
@@ -33,9 +33,9 @@ The main risk, however, is that your `main` branch can become susceptible to bug
 In order to have more intensive testing and QA before merging code changes into production, some organizations may decide to **create one or more branches between the feature branches and `main`**. For example, a single dbt project repository might have a hierarchy of 3 primary branches: `dev`, `staging`, and `prod`. To update the prod branch, a developer will:
 
 1. Create a new feature branch directly from the `dev` branch
-2. Make changes on that feature branch
-3. Test locally
-4. When ready, open a pull request to merge their changes back into the `dev` branch
+1. Make changes on that feature branch
+1. Test locally
+1. When ready, open a pull request to merge their changes back into the `dev` branch
 
 In this hierarchical promotion, once a set of feature branches are vetted in `dev`:
 
@@ -74,15 +74,15 @@ If you’ve attempted a branching strategy that involves cherry picking into upp
 ![Feature branches tested in combination with others](/img/blog/2022-09-13-the-case-against-cherry-picking/4_scenario_1.png)
 
 1. Alex wants to make a code change, so they create a new branch from `dev` called `feature_alex`
-2. Becca has a different code change she’s working on, so she creates a new branch from dev called `feature_becca`
-3. Alex’s changes are approved, so they merge `feature_alex` into `dev`.
-4. Becca’s changes are approved, so she merges `feature_becca` into `dev`.
-5. Carol is working on something else, so she creates a new branch from `dev` called `feature_carol`.
-6. Carol’s changes are approved, so she merges `feature_carol` into `dev`.
-7. The testing team notices an issue with Carol’s new addition to `dev`.
-8. Alex and Becca’s changes are urgent and need to be promoted soon, they can’t wait for Carol to fix her work. Alex and Becca cherry-pick their changes from `dev` into `staging`.
-9. During final checks, the team notices an issue with Alex’s changes in `staging`.
-10. Becca is adamant that her changes need to be promoted to production immediately. She can’t wait for Alex to fix their work. Becca cherry-picks her changes from `staging` into `prod`.
+1. Becca has a different code change she’s working on, so she creates a new branch from dev called `feature_becca`
+1. Alex’s changes are approved, so they merge `feature_alex` into `dev`.
+1. Becca’s changes are approved, so she merges `feature_becca` into `dev`.
+1. Carol is working on something else, so she creates a new branch from `dev` called `feature_carol`.
+1. Carol’s changes are approved, so she merges `feature_carol` into `dev`.
+1. The testing team notices an issue with Carol’s new addition to `dev`.
+1. Alex and Becca’s changes are urgent and need to be promoted soon, they can’t wait for Carol to fix her work. Alex and Becca cherry-pick their changes from `dev` into `staging`.
+1. During final checks, the team notices an issue with Alex’s changes in `staging`.
+1. Becca is adamant that her changes need to be promoted to production immediately. She can’t wait for Alex to fix their work. Becca cherry-picks her changes from `staging` into `prod`.
 
 **What’s the problem?**
 
@@ -95,15 +95,15 @@ Let’s imagine another version of the story, where Carol’s changes are the on
 ![Feature branches contain more than meets the eye...](/img/blog/2022-09-13-the-case-against-cherry-picking/5_scenario_2.png)
 
 1. Alex wants to make a code change, so they create a new branch from `dev` called `feature_alex`.
-2. Becca has a different code change she’s working on, so she creates a new branch from `dev` called `feature_becca`.
-3. Alex’s changes are approved, so they merge `feature_alex` into `dev`.
-4. Becca’s changes are approved, so she merges `feature_becca` into `dev`.
-5. Carol is working on something else, so she creates a new branch from `dev` called `feature_carol`.
-6. Carol’s changes are approved, so she merges `feature_carol` into `dev`.
-7. The testing team approves the entire `dev` branch.
-8. `dev` is merged into `staging`.
-9. During final checks, the team notices an issue with Alex and Becca’s changes in `staging`.
-10. Carol is adamant that her changes need to be promoted to production immediately. She can’t wait for Alex or Becca to fix their work. Carol cherry-picks her changes from `staging` into `prod`.
+1. Becca has a different code change she’s working on, so she creates a new branch from `dev` called `feature_becca`.
+1. Alex’s changes are approved, so they merge `feature_alex` into `dev`.
+1. Becca’s changes are approved, so she merges `feature_becca` into `dev`.
+1. Carol is working on something else, so she creates a new branch from `dev` called `feature_carol`.
+1. Carol’s changes are approved, so she merges `feature_carol` into `dev`.
+1. The testing team approves the entire `dev` branch.
+1. `dev` is merged into `staging`.
+1. During final checks, the team notices an issue with Alex and Becca’s changes in `staging`.
+1. Carol is adamant that her changes need to be promoted to production immediately. She can’t wait for Alex or Becca to fix their work. Carol cherry-picks her changes from `staging` into `prod`.
 
 **What’s the difference?**
 
@@ -173,4 +173,4 @@ Now I’ll admit it: this blog post was mostly just a venting session, providing
 
 And you may be left thinking… ok, jeez Grace, I won’t cherry pick into upper branches. But how do I *actually* set up my dbt project to properly use hierarchical branch promotion?
 
-Don’t worry, a guide is on the way ;)
+Don’t worry, a guide and training course are on the way ;)
