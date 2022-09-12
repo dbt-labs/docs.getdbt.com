@@ -208,6 +208,58 @@ the integration between Okta and dbt Cloud.
 3. After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
+## Google integration
+
+Use this section if you are configuring Google as your identity provider.
+
+### Configure the Google application
+
+1. Sign into your **Google Admin Console** via an account with super administrator privileges.
+2. From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
+3. Click **Add**, then click **Add custom SAML app**.
+4. Click **Next** to continue.
+5. Make these changes on the App Details page:
+    - Name the custom app
+    - Upload an app logo (optional)
+    - Click **Continue**.
+
+### Configure SAML Settings
+
+1. Go to the **Google Identity Provider details** page.
+2. Download the **IDP metadata**.
+3. Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
+4. Enter the following values on the **Service Provider Details** window:
+   - **ACS URL**: `https://cloud.getdbt.com/complete/saml`
+   - **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
+   - **Start URL**: (if needed)
+5. The default **Name ID** is the primary email. Multi-value input is not supported.
+6. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
+dbt Cloud expects.
+7. Click **Add another mapping** to map additional attributes.
+
+Expected **Attributes**:
+
+| Name           | Name format | Value                | Description                |
+| -------------- | ----------- | -------------------- | -------------------------- |
+| `First name`   | Unspecified | `first_name`         | The user's first name.  |
+| `Last name`    | Unspecified | `last_name`          | The user's last name.     |
+| `Primary email`| Unspecified | `email`              |  The user's email address. |
+
+8. Click **Finish** to continue.
+
+
+### Finish Google setup
+
+1. From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
+2. Select your SAML app.
+3. Click **User access**.
+4. To turn on or off a service for everyone in your organization, click **On for everyone** or **Off for everyone**, and then click **Save**.
+5. Ensure that the email addresses your users use to sign in to the SAML app match the email addresses they use to sign in to your Google domain (Changes typically take effect in minutes, but can take up to 24 hours).
+
+### Finish setup
+
+After creating the Google application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+
 ## Azure integration
 
 If you're using Azure Active Directory (Azure AD), the instructions below will help you configure it as your identity provider.
@@ -260,8 +312,7 @@ From the Set up Single Sign-On with SAML page:
 **Note:** Keep in mind that the Group ID in Azure AD maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
 
 
-9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
-section to complete the integration.
+9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration.
 
 ## dbt Cloud Setup
 
@@ -269,8 +320,8 @@ section to complete the integration.
 
 To complete setup, follow the steps below in dbt Cloud:
 
-1. Navigate to the Enterprise &gt; Single Sign On page under Account Settings. 
-2. Click **Edit**.
+1. Navigate to the **Account Settings** and then click on **Single Sign On**.
+2. Click **Edit** on the upper right corner. 
 3. Provide the following SSO details:
 
    | Field | Value |
@@ -296,3 +347,4 @@ Users in your IdP will now be able to log into the application by navigating to 
 
 After configuring an identity provider, you will be able to set up [role-based
 access control](/access-control/enterprise-permissions) for your account.
+
