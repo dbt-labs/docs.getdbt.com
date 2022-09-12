@@ -173,7 +173,7 @@ Contact support via the webapp button or support@getdbt.com to turn on this feat
 - **If you are on a customer deployed dbt Cloud instance:**
 Contact your account manager for instructions on how to turn on this feature.
 
-Open the **Main Menu** and click **Account Settings**. From the **Team** section, click **Groups**
+Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
 
 <Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
 
