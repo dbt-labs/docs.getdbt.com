@@ -30,7 +30,7 @@ In general, there are two parts to setting up Slack notifications. The first inv
 
 ### Setup the integration
 
-Click on your profile in the top right corner of the dbt Cloud UI and click **Profile**.
+1. Click the gear icon to the top right and select **Profile**.
 
 Click **Integrations** on the left-hand side menu.
 
