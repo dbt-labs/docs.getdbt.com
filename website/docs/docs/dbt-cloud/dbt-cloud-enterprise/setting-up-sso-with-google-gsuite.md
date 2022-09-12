@@ -105,10 +105,10 @@ Settings.
     - **Log in with**: GSuite
     - **Client ID**: Paste the Client ID generated in the steps above
     - **Client Secret**: Paste the Client Secret generated in the steps above
-    - **Domain in GSuite**: Enter the domain name for your GSuite account (eg. `fishtownanalytics.com`).
+    - **Domain in GSuite**: Enter the domain name for your GSuite account (eg. `dbtlabs.com`).
       Only users with an email address from this domain will be able to log into your dbt Cloud
       account using GSuite auth. Optionally, you may specify a CSV of domains
-      which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`)
+      which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
       Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely
@@ -118,11 +118,10 @@ Settings.
    dropped into the GSuite OAuth flow and prompted to log into dbt Cloud with
    your work email address. If authentication is successful, you will be
    redirected back to the dbt Cloud application.
-4. On the **Verify SSO Credentials** page, verify that a `groups` entry is
+4. On the **Credentials** page, verify that a `groups` entry is
    present, and that it reflects the groups you are a member of in GSuite. If
    you do not see a `groups` entry in the IdP attribute list, consult the
    Troubleshooting steps below.
-    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite SSO Verification"/>
 
 If the verification information looks appropriate, then you have completed
 the configuration of GSuite SSO. Members of your team should now be able to log
@@ -150,7 +149,7 @@ If OAuth verification does not complete successfully, double check that:
    GCP Credentials page
  - An Authorized Domain was provided in the OAuth Consent Screen configuration
 If authentication with the GSuite API succeeds but you do not see a
-`groups` entry on the **Verify SSO Credentials** page, then you may not have
+`groups` entry on the **Credentials** page, then you may not have
 permissions to access Groups in your GSuite account. Either request that your
 GSuite user is granted the ability to request groups from an administrator, or
 have an administrator log into dbt Cloud and authorize the GSuite integration.
