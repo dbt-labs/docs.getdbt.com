@@ -185,4 +185,3 @@ Next, configure the permissions for users within those groups by clicking **Add*
 
 When you've completed your configurations, click **Save**. Users will begin to populate the group automatically once they have signed in to dbt Cloud with their SSO credentials.
 
-<Lightbox src="/img/docs/dbt-cloud/Save-Group-Information.png" title="Save group configuration"/>
