@@ -40,7 +40,6 @@
   --ifm-navbar-item-padding-horizontal: 1rem;
   --ifm-alert-color: var(--ifm-font-color-base-inverse);
   --ifm-toc-padding-vertical: 1rem;
-  --doc-sidebar-width: max-content;
   --color-primary-blue: #262a38;
   --color-green-blue: #047377;
   --color-light-teal: #009999;
@@ -824,9 +823,8 @@ code {
     width: auto;
   }
 
-  html.docs-version-current aside .sidebar_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
-    padding-top: 1em;
-    /* width: max-content; */
+  html.docs-version-current .navbar__brand {
+    display: none;
   }
 
   html.docs-version-current .navbar {
@@ -835,6 +833,22 @@ code {
   
   html.docs-version-current .navbar--fixed-top {
     margin-left: auto;
+  }
+
+  html.docs-version-current aside html.docs-version-current .sidebar_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
+    position: relative;
+  }
+  
+  html.docs-version-current aside .menu::before {
+    content: '';
+    background: url(https://docs.getdbt.com/img/dbt-logo.svg);
+    width: 90px;
+    height: 100%;
+    background-position: top;
+    background-size: contain;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 35px;
   }
 
   .navbar__item.navbar__link {
