@@ -183,6 +183,6 @@ Next, configure the permissions for users within those groups by clicking **Add*
 
 <Lightbox src="/img/docs/dbt-cloud/Configure-SSO-Access.png" title="Configure SSO groups and Access permissions"/>
 
-When you've completed your configurations, scroll up and click **Save** in the top right-hand corner. Users will begin to populate the group automatically once they have signed in to dbt Cloud with their SSO credentials.
+When you've completed your configurations, click **Save**. Users will begin to populate the group automatically once they have signed in to dbt Cloud with their SSO credentials.
 
 <Lightbox src="/img/docs/dbt-cloud/Save-Group-Information.png" title="Save group configuration"/>
