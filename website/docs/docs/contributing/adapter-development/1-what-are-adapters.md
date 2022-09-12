@@ -43,7 +43,7 @@ Here are some categories and examples of SQL statements that can be constructed 
 |----------------------------------------------|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Statement syntax                             | The use of `IF EXISTS`                                                                 | <li>`IF <TABLE> EXISTS, DROP TABLE`</li><li>`DROP <TABLE> IF EXISTS`</li>                                                                                                                                  |
 | Workflow definition & semantics              | Incremental updates                                                                              | <li>`MERGE`</li><li>`DELETE; INSERT`</li>                                                                                                                                                                       |
-| Relation and column attributes/configuration | Database-specifc materialization configs           | <li>`DIST = ROUND_ROBIN` (Synapse)</li><li>`DIST = EVEN` (Redshift)</li>                                                                                                                                   |
+| Relation and column attributes/configuration | Database-specific materialization configs | <li>`DIST = ROUND_ROBIN` (Synapse)</li><li>`DIST = EVEN` (Redshift)</li> |
 | Permissioning                                | Grant statements that can only take one grantee at a time vs those that accept lists of grantees | <li>`grant SELECT on table hogwarts.house_pts to dumbledore, snape` </li><li>`grant SELECT on table hogwarts.house_pts to dumbledore`<br></br>`grant SELECT on table hogwarts.house_pts to snape`</li> |
 
 ### Python Client Library & Connection Manager
@@ -76,7 +76,7 @@ These classes implement all the methods responsible for:
 
 | Class                    | Description                                                                                                                                                                                 |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AdapterClass             | High-level configuration type conversion and any database-specifc python methods needed                                                                                                     |
+| AdapterClass | High-level configuration type conversion and any database-specific python methods needed |
 | AdapterCredentials       | Typed dictionary of possible profiles and associated methods                                                                                                                                |
 | AdapterConnectionManager | All the methods responsible for connecting to a database and issuing queries                                                                                                                |
 | AdapterRelation          | How relation names should be rendered, printed, and quoted. Do relation names use all three parts? `catalog.model_name` (two-part name) or `database.schema.model_name` (three-part name) |
