@@ -52,7 +52,7 @@ Click **Notifications** from the left-hand menu and **Edit** from the top right-
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-notifications.png" title="Navigate to notifications"/>
 
-Slack notification settings will be towards the bottom of the page (you may have to scroll down).
+3. You can find the Slack notification settings at the bottom of the page.
 
 <Lightbox src="img/docs/dbt-cloud/Configure-Slack-notifications.png" title="Configure Slack notifications"/>
 
