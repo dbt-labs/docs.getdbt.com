@@ -1,6 +1,6 @@
 In these frequently asked questions, you will find answers to common questions. 
 
-If you have a question or are still stuck on something, you can always reach out to support by emailing [support@getdbt.com](mailto:support@getdbt.com) or using the chat widget in dbt Cloud, and we'll do our best to help out.
+If you have a question or need clarity, you can always reach out to support by emailing [support@getdbt.com](mailto:support@getdbt.com) or using the chat widget in dbt Cloud, and we'll do our best to help out.
 ### What is dbt?
 dbt enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into tables and views.
 
