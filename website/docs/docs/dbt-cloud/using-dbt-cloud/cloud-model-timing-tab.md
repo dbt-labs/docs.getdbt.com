@@ -16,4 +16,4 @@ This is a very visual way to explore your run and surface model bottlenecks. Lon
 
 Note that this is currently only available on multi-tenant Team and Enterprise accounts.
 
-<LoomVideo id="28a49a5c511c4063b4a3381cb81a03cf" />
+<Lightbox src="/img/docs/dbt-cloud/Model-timing-tab.png" title="Model timing tab"/>
