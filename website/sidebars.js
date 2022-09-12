@@ -47,7 +47,6 @@ const sidebarSettings = {
       items: [
         "docs/running-a-dbt-project/using-the-dbt-ide",
         "docs/running-a-dbt-project/using-the-cli",
-        "docs/running-a-dbt-project/dbt-api",
         "docs/running-a-dbt-project/running-dbt-in-production",
       ],
     },
@@ -550,6 +549,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/sqlite-profile",
         "reference/warehouse-profiles/mysql-profile",
         "reference/warehouse-profiles/ibmdb2-profile",
+        "reference/warehouse-profiles/alloydb-profile",
       ],
     },
     {
