@@ -3,9 +3,9 @@ title: "What is dbt?"
 id: "introduction"
 ---
 
-dbt (data build tool) enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into tables and views.
+dbt enables analytics engineers to transform data in their warehouses by simply writing select statements. dbt handles turning these select statements into <Term id="table">tables</Term> and <Term id="view">views</Term>.
 
-dbt does the `T` in `ELT` (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
+dbt does the `T` in <Term id="elt" /> (Extract, Load, Transform) processes – it doesn’t extract or load data, but it’s extremely good at transforming data that’s already loaded into your warehouse.
 
 The role of dbt within a modern data stack is discussed in more detail [here](https://blog.fishtownanalytics.com/what-exactly-is-dbt-47ba57309068).
 
@@ -29,9 +29,9 @@ Want to check out a sample project? Have a look at our [Jaffle Shop](https://git
 :::
 
 ### Database Connections
-dbt connects to your data warehouse to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [docs](available-adapters)).
+dbt connects to your <Term id="data-warehouse" /> to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [Supported Data Platforms](supported-data-platforms)).
 
-When you define your connection, you’ll also be able to specify the target schema where dbt should create your models as tables and views. See [Managing environments](managing-environments)  for more information on picking target schema names.
+When you define your connection, you’ll also be able to specify the target schema where dbt should create your models as tables and <Term id="view">views</Term>. See [Managing environments](managing-environments)  for more information on picking target schema names.
 
 
 ### dbt Commands
@@ -40,7 +40,7 @@ A command is an instruction to execute dbt which compiles and runs SQL against t
 When you issue a dbt command, such as `run`, dbt:
 
 1. Determines the order to execute the models in your project in.
-2. Generates the DDL required to build the model, as per the model's *materialization*
+2. Generates the <Term id="ddl" /> required to build the model, as per the model's *<Term id="materialization" />*
 3. Executes the compiled queries against your data warehouse, using the credentials specified in the *target* defined in your *profile*. Executing these queries creates relations in the target schema in your data warehouse. These relations contain transformed data, ready for analysis.
 
 A list of commands can be found in the [Command reference](dbt-commands) section of these docs.
@@ -76,7 +76,7 @@ A materialization represents a build strategy for your select query – the code
 dbt ships with the following built-in materializations:
 * `view` (default): The model is built as a view in the database.
 * `table`: The model is built as a table in the database.
-* `ephemeral`: The model is not directly built in the database, but is instead pulled into dependent models as common table expressions.
+* `ephemeral`: The model is not directly built in the database, but is instead pulled into dependent models as common <Term id="table" /> expressions.
 * `incremental`: The model is initially built as a table, and in subsequent runs, dbt inserts new rows and updates changed rows in the table.
 
 Custom materializations can also be built if required.
@@ -109,7 +109,7 @@ Importantly, dbt also uses the `ref` function to determine the sequence in which
 
 <Lightbox src="/img/docs/2ce8dce-Screen_Shot_2018-09-16_at_11.46.12_AM.png" title="A DAG for a simple dbt project"/>
 
-dbt builds a directed acyclic graph (DAG) based on the interdepencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
+dbt builds a directed acyclic graph (DAG) based on the interdependencies between models – each node of the graph represents a model, and edges between the nodes are defined by `ref` functions, where a model specified in a `ref` function is recognized as a predecessor of the current model.
 
 When dbt runs, models are executed in the order specified by the DAG – there’s no need to explicitly define the order of execution of your models. Building models in staged transformations also reduces the need to repeat SQL, as a single transformation (for example, renaming a column) can be shared as a predecessor for a number of downstream models.
 

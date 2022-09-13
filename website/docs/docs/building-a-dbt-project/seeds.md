@@ -8,9 +8,9 @@ id: "seeds"
 * [`seed` command](seed)
 
 ## Getting started
-Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your data warehouse using the `dbt seed` command.
+Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your <Term id="data-warehouse" /> using the `dbt seed` command.
 
-Seeds can be referenced in downstream models the same way as referencing models — by using the `ref` [function](dbt-jinja-functions/ref).
+Seeds can be referenced in downstream models the same way as referencing models — by using the [`ref` function](/reference/dbt-jinja-functions/ref).
 
 Because these CSV files are located in your dbt repository, they are version controlled and code reviewable. Seeds are best suited to static data which changes infrequently.
 
@@ -21,6 +21,8 @@ Good use-cases for seeds:
 
 Poor use-cases of dbt seeds:
 * Loading raw data that has been exported to CSVs
+* Any kind of production data containing sensitive information. For example 
+personal identifiable information (PII) and passwords.
 
 
 ## Example
@@ -39,7 +41,7 @@ GB,United Kingdom
 
 </File>
 
-2. Run the `dbt seed` [command](seed) command — a new table will be created in your warehouse in your target schema, named `country_codes`
+2. Run the `dbt seed` [command](seed) command — a new <Term id="table" /> will be created in your warehouse in your target schema, named `country_codes`
 ```
 $ dbt seed
 
@@ -59,7 +61,7 @@ Done. PASS=1 ERROR=0 SKIP=0 TOTAL=1
 
 3. Refer to seeds in downstream models using the `ref` function.
 
-<File name='models/orders.csv'>
+<File name='models/orders.sql'>
 
 ```sql
 -- This refers to the table created from seeds/country_codes.csv
@@ -76,12 +78,12 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
 
 ## FAQs
-<FAQ src="load-raw-data-with-seed" />
-<FAQ src="configurable-data-path" />
-<FAQ src="full-refresh-seed" />
-<FAQ src="testing-seeds" />
-<FAQ src="seed-datatypes" />
-<FAQ src="run-downstream-of-seed" />
-<FAQ src="leading-zeros-in-seed" />
-<FAQ src="build-one-seed" />
-<FAQ src="seed-hooks" />
+<FAQ src="Seeds/load-raw-data-with-seed" />
+<FAQ src="Tests/configurable-data-path" />
+<FAQ src="Seeds/full-refresh-seed" />
+<FAQ src="Tests/testing-seeds" />
+<FAQ src="Seeds/seed-datatypes" />
+<FAQ src="Runs/run-downstream-of-seed" />
+<FAQ src="Seeds/leading-zeros-in-seed" />
+<FAQ src="Seeds/build-one-seed" />
+<FAQ src="Seeds/seed-hooks" />

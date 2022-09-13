@@ -14,13 +14,12 @@
  import Head from '@docusaurus/Head';
  import Link from '@docusaurus/Link';
  import {usePluginData} from '@docusaurus/useGlobalData';
- import CTA from '../../components/cta';
  
  function BlogLayout(props) {
    const {title, description, blogPageTitle, sidebar, toc, children, ...layoutProps} = props;
       
    // dbt Custom 
-   const { blogMeta, tagData } = usePluginData('docusaurus-build-blog-data-plugin');
+   const { blogMeta, tagData } = usePluginData('docusaurus-build-global-data-plugin');
    const { 
      featured_image, 
      featured_cta, 
@@ -90,7 +89,7 @@
          ((show_title || show_description) && (title || description)) && (
            <div className="blog-index-header">
              <div className="container margin-vert--lg">
-               <div className="admonition alert card large light blog-hero-card">
+               <div className="card large light blog-hero-card">
                  <div className="blog-hero-card-content">
                    {title && show_title && <h1>{title}</h1>}
                    {description && show_description && <p>{description}</p>}
@@ -164,10 +163,7 @@
                {layoutProps.pageClassName &&
                  <div className="col col--3 blog-right-sidebar">
                    {toc && (
-                     <TOC toc={toc} />
-                   )}
-                   {featured_cta && (
-                     <CTA cta={featured_cta} />
+                     <TOC toc={toc} featured_cta={featured_cta} />
                    )}
                  </div>
                }
