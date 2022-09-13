@@ -59,7 +59,7 @@ sources:
 
 ### Configure your own source freshness for a source table in a package
 
-You can override configurations at both the source and the table level
+You can override configurations at both the source and the <Term id="table" /> level
 
 <File name='models/src_github.yml'>
 

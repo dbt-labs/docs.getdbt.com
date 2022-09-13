@@ -5,7 +5,7 @@ id: "overview"
 
 # What is dbt?
 
-dbt (data build tool) is a productivity tool that helps analysts get more done and produce higher quality results.
+dbt is a productivity tool that helps analysts get more done and produce higher quality results.
 
 Analysts commonly spend 50-80% of their time modeling raw data—cleaning, reshaping, and applying fundamental business logic to it. dbt empowers analysts to do this work better and faster.
 
@@ -13,9 +13,9 @@ dbt's primary interface is its CLI. Using dbt is a combination of editing code i
 
 # How does dbt work?
 
-dbt has two core workflows: building data models and testing data models. (We call any transformed view of raw data a data model.)
+dbt has two core workflows: building data models and testing data models. (We call any transformed <Term id="view" /> of raw data a data model.)
 
-To create a data model, an analyst simply writes a SQL `SELECT` statement. dbt then takes that statement and builds it in the database, materializing it as either a view or a table. This model can then be queried by other models or by other analytics tools.
+To create a data model, an analyst simply writes a SQL `SELECT` statement. dbt then takes that statement and builds it in the database, materializing it as either a view or a <Term id="table" />. This model can then be queried by other models or by other analytics tools.
 
 To test a data model, an analyst asserts something to be true about the underlying data. For example, an analyst can assert that a certain field should never be null, should always hold unique values, or should always map to a field in another table. Analysts can also write assertions that express much more customized logic, such as “debits and credits should always be equal within a given journal entry”. dbt then tests all assertions against the database and returns success or failure responses.
 
@@ -23,7 +23,7 @@ To test a data model, an analyst asserts something to be true about the underlyi
 
 One dbt user has this to say: *“At this point when I have a new question, I can answer it 10-100x faster than I could before.”*  Here’s how:
 
-- dbt allows analysts avoid writing boilerplate DML and DDL: managing transactions, dropping tables, and managing schema changes. All business logic is expressed in SQL `SELECT` statements, and dbt takes care of materialization.
+- dbt allows analysts avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" />: managing transactions, dropping tables, and managing schema changes. All business logic is expressed in SQL `SELECT` statements, and dbt takes care of <Term id="materialization" />.
 - dbt creates leverage. Instead of starting at the raw data with every analysis, analysts instead build up reusable data models that can be referenced in subsequent work.
 - dbt includes optimizations for data model materialization, allowing analysts to dramatically reduce the time their queries take to run.
 
@@ -48,7 +48,7 @@ While there are a large number of great languages for manipulating data, we’ve
 
 # What databases does dbt currently support?
 
-View the full list of supported databases, warehouses, and query engines [here](available-adapters).
+See [Supported Data Platforms](supported-data-platforms) to view the full list of supported databases, warehouses, and query engines.
 
 # How do I get started?
 

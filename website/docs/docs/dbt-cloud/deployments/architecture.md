@@ -13,7 +13,7 @@ The dbt Cloud application is comprised of a set of static components, as well as
 
 #### Static Application Components
 
-- **api gateway**: The api gateway is the entrypoint for all client requests to dbt Cloud. The api gateway serves static content, and contains logic for routing requests within the dbt Cloud application.
+- **api gateway**: The API gateway is the entrypoint for all client requests to dbt Cloud. The api gateway serves static content, and contains logic for routing requests within the dbt Cloud application.
 - **app**: The app is the dbt Cloud application server. It consists of a Django application capable of serving dbt Cloud REST API requests.
 - **scheduler**: The scheduler is a continuously running process that orchestrates background jobs in dbt Cloud. It consists of two components: the scheduler container which provisions dynamic resources just-in-time, and the background cleanup container which performs maintenance tasks on the dbt Cloud database, including flushing logs from dbt runs out into the object store.
 
@@ -32,7 +32,7 @@ In addition to the application components, there are a few critical dependencies
 
 ### Data Warehouse Interaction
 
-dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation purposes. However, it is possible for users to dispatch SQL that returns customer data into the dbt Cloud application. This data is never persisted and will only exist in memory on the instance in question. In order to properly lock down customer data, it is critical that proper data warehouse permissioning is applied to prevent improper access or storage of sensitive data.
+dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation purposes. However, it is possible for users to dispatch SQL that returns customer data into the dbt Cloud application. This data is never persisted and will only exist in memory on the instance in question. In order to properly lock down customer data, it is critical that proper <Term id="data-warehouse" /> permissioning is applied to prevent improper access or storage of sensitive data.
 
 ### Deployment Architecture
 
