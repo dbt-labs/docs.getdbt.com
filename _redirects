@@ -130,7 +130,6 @@
 /docs/on-run-end-context	/docs/writing-code-in-dbt/jinja-context/on-run-end-context	302
 /docs/overview	/docs/introduction	302
 /docs/package-management	/docs/building-a-dbt-project/package-management	302
-/docs/profile	/docs/available-adapters	302
 /docs/profile-bigquery	/reference/warehouse-profiles/bigquery-profile	302
 /docs/profile-mssql	/reference/warehouse-profiles/mssql-profile	302
 /docs/profile-postgres	/reference/warehouse-profiles/postgres-profile	302
@@ -192,7 +191,6 @@
 /docs/snowflake-configs	/reference/resource-configs/snowflake-configs	302
 /docs/source	/reference/commands/source	302
 /docs/statement-blocks	/docs/writing-code-in-dbt/jinja-context/statement-blocks	302
-/docs/supported-databases	/docs/available-adapters	302
 /docs/supported-databases/profile-bigquery	/reference/bigquery-profile	302
 /docs/supported-databases/profile-mssql	/reference/mssql-profile	302
 /docs/supported-databases/profile-postgres	/reference/postgres-profile	302
@@ -317,6 +315,10 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 /tutorial/refactoring-legacy-sql /guides/getting-started/learning-more/refactoring-legacy-sql   302
 /blog/change-data-capture-metrics /blog/change-data-capture 301
 /blog/model-timing-tab /blog/how-we-shaved-90-minutes-off-model 301
+# supported data platforms page
+/docs/profile	/docs/supported-data-platforms	302
+/docs/available-adapters /docs/supported-data-platforms 302
+/docs/supported-databases	/docs/supported-data-platforms	302
 # migration and legacy guides
 /docs/guides/migration-guide/upgrading-to-0-14-0     /guides/migration/versions    302
 /docs/guides/migration-guide/upgrading-to-0-15-0    /guides/migration/versions    302

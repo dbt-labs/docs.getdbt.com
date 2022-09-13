@@ -10,7 +10,7 @@ If you've already [built](3-building-a-new-adapter), and [tested](4-testing-a-ne
 Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
 - Hosting on a public git provider (for example, GitHub or Gitlab)
 - Publishing to [PyPi](https://pypi.org/)
-- Adding to the list of ["Available Adapters"](available-adapters#community-supported) (more info below)
+- Adding to the list of ["Supported Data Platforms"](supported-data-platforms#community-supported) (more info below)
 
 ## General Guidelines
 
@@ -50,7 +50,7 @@ The following subjects need to be addressed across three pages of this docs site
 |----------------------|--------------------------------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Connect              | `reference/warehouse-profiles/{MY-DATA-PLATOFRM}-profile.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.                |
 | Configure            | `reference/resource-configs/{MY-DATA-PLATOFRM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? e.g. table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
-| Discover and Install | `docs/available-adapters.md`                                 | Modify | Is it a vendor- or community- supported adapter? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
+| Discover and Install | `docs/supported-data-platforms.md`                                 | Modify | Is it a vendor- or community- supported adapter? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
 | Add link to sidebar  | `website/sidebars.js`                                        | Modify | Add the document id to the correct location in the sidebar menu                                                                                                                                      |
 
 For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-profile.md` and add it to the `website/docs/reference/warehouse-profiles/` directory.
