@@ -91,7 +91,19 @@ export const SchemaTable = ({ nodeName }) => {
             fields {
               name
               description
-              type { name description kind ofType { name description} }
+              type { 
+                name 
+                description 
+                kind 
+                ofType { 
+                  name 
+                  description
+                  ofType { 
+                    name 
+                    description
+                  }                   
+                } 
+              }
             }
           }
         }`}),        
@@ -121,8 +133,11 @@ export const SchemaTable = ({ nodeName }) => {
             <tr key={name}>
               <td><code>{name}</code></td>
               {type.kind==='LIST' ? 
-                <td><code title={type.description}>[{type.ofType.name}]</code></td> :
-                <td><code title={type.description}>{type.name}</code></td> 
+                <td><code title={type.description}>[{type.ofType.ofType ? type.ofType.ofType.name : type.ofType.name }]</code></td> :
+                (type.ofType ? 
+                  <td><code title={type.description}>{type.ofType.name}</code></td> :
+                  <td><code title={type.description}>{type.name}</code></td> 
+                ) 
               }
               <td>{description}</td>
             </tr>

@@ -2,13 +2,13 @@
 title: "dbt Classes"
 ---
 
-dbt has a number of classes it uses to represent objects in a data warehouse, parts of a dbt project, and the results of a command.
+dbt has a number of classes it uses to represent objects in a <Term id="data-warehouse" />, parts of a dbt project, and the results of a command.
 
 These classes are often useful when building advanced dbt models and macros.
 
 ## Relation
 
-The `Relation` object is used to interpolate schema and table names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config][quoting].
+The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config][quoting].
 
 ### Creating Relations
 
@@ -52,7 +52,7 @@ class Relation:
 -- Return true if the relation is a table
 {{ relation.is_table }}
 
--- Return true if the relation is a view
+-- Return true if the relation is a <Term id="table" />
 {{ relation.is_view }}
 
 -- Return true if the relation is a cte
@@ -120,8 +120,8 @@ col.string_type() # character varying (255)
 The `Column` type is overridden as a `BigQueryColumn` in BigQuery dbt projects. This object works the same as the `Column` type described above, with the exception of extra properties and methods:
 
 ### Properties
-**fields**: Returns the list of subfields contained within a field (if the column is a STRUCT)
-**mode**: Returns the "mode" of the column, eg. `REPEATED`
+- **fields**: Returns the list of subfields contained within a field (if the column is a STRUCT)
+- **mode**: Returns the "mode" of the column, eg. `REPEATED`
 
 ### Instance methods
 **flatten()**: Return a flattened list of `BigQueryColumns` in which subfields are expanded into their own columns. For example, this nested field:

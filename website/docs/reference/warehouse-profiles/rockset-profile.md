@@ -47,3 +47,8 @@ view | YES | Creates a [view](https://rockset.com/docs/views/#gatsby-focus-wrapp
 table | YES | Creates a [collection](https://rockset.com/docs/collections/#gatsby-focus-wrapper).
 ephemeral | YES | Executes queries using CTEs.
 incremental | YES | Creates a [collection](https://rockset.com/docs/collections/#gatsby-focus-wrapper) if it doesn't exist, and then writes results to it.
+
+## Caveats
+1. `unique_key` is not supported with incremental, unless it is set to [_id](https://rockset.com/docs/special-fields/#the-_id-field), which acts as a natural `unique_key` in Rockset anyway.
+2. The `table` <Term id="materialization" /> is slower in Rockset than most due to Rockset's architecture as a low-latency, real-time database. Creating new collections requires provisioning hot storage to index and serve fresh data, which takes about a minute.
+3. Rockset queries have a two-minute timeout. Any model which runs a query that takes longer to execute than two minutes will fail.

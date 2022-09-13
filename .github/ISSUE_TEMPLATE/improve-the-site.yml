@@ -1,0 +1,42 @@
+name: Improve the docs.getdbt.com site
+description: Make a suggestion or report a problem about the technical implementation of docs.getdbt.com.
+labels: ["engineering"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        * You can ask questions or submit ideas for the dbt docs in [Discussions](https://github.com/dbt-labs/docs.getdbt.com/discussions)
+        * Before you file an issue read the [Contributing guide](https://github.com/dbt-labs/docs.getdbt.com#contributing).
+        * Check to make sure someone hasn't already opened a similar [issue](https://github.com/dbt-labs/docs.getdbt.com/issues).
+
+  - type: checkboxes
+    id: contributions
+    attributes:
+      label: Contributions
+      description: Please read the contribution docs before opening an issue or pull request.
+      options:
+        - label: I have read the contribution docs, and understand what's expected of me. 
+
+  - type: textarea
+    attributes:
+      label: What page(s) or areas on docs.getdbt.com are affected?
+      description: Include links to pages where you're seeing a problem or making a suggestion. Also include screenshots, what browser you're using, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What changes are you suggesting?
+      description: |
+        - Give as much detail as you can to help us understand the change you want to see. 
+        - Why should the docs be changed? 
+        - What is the expected outcome?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: Any additional information, configuration, or data that might be necessary to reproduce the issue.
+    validations:
+      required: false
