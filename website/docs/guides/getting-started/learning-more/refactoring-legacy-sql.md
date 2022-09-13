@@ -42,7 +42,7 @@ Once you've copied it over, you'll want to `dbt run` to execute the query and po
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 
-This will commonly happen if you're migrating from a [stored procedure workflow on a legacy database](https://getdbt.com/analytics-engineering/case-for-elt-workflow/) into dbt + a cloud data warehouse.
+This will commonly happen if you're migrating from a [stored procedure workflow on a legacy database](https://getdbt.com/analytics-engineering/case-for-elt-workflow/) into dbt + a cloud <Term id="data-warehouse" />.
 
 Functions that you were using previously may not exist, or their syntax may shift slightly between SQL dialects. 
 
@@ -201,7 +201,7 @@ After you have moved everything into CTEs, you'll want to write a `select * from
 
 This allows anyone after us to easily step through the CTEs when troubleshooting, rather than having to untangle nested queries.
 
-> For more background on CTEs, check out the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md#ctes).
+> For more background on CTEs, check out the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md#ctes).
 
 ## Port CTEs to individual data models
 Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
@@ -237,7 +237,7 @@ Our final model accomplishes the result set we want, and it uses the components 
 
 <WistiaVideo id="dymp75cwh6" />
 
-We'll want to audit our results using the dbt [audit_helper package](https://hub.getdbt.com/fishtown-analytics/audit_helper/latest/). 
+We'll want to audit our results using the dbt [audit_helper package](https://hub.getdbt.com/dbt-labs/audit_helper/latest/). 
 
 Under the hood, it generates comparison queries between our before and after states, so that we can compare our original query results to our refactored results to identify differences.
 

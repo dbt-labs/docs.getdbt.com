@@ -43,7 +43,7 @@ console.log("DEBUG: metatags = ", metatags);
 var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
-  tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
+  tagline: 'End user documentation, guides and technical reference for dbt',
   title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
@@ -64,13 +64,13 @@ var siteSettings = {
     announcementBar: {
       id: "live_qa",
       content:
-        "Have questions you want answered live? Join us for a dbt Live: Expert Series session!",
+        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.getdbt.com/events/",
+    announcementBarLink: "https://coalesce.getdbt.com/",
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
@@ -172,7 +172,7 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a>`
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a> | <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>`
     },
   },
   presets: [
@@ -190,7 +190,7 @@ var siteSettings = {
           rehypePlugins: [katex],
 
           editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
-          showLastUpdateTime: false,
+          showLastUpdateTime: true,
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,

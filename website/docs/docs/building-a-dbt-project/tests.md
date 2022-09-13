@@ -236,7 +236,6 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
-
 ## Storing test failures
 
 <Changelog>
@@ -257,15 +256,14 @@ Note that, if you elect to store test failures:
 
 ## FAQs
 
-
-<FAQ src="test-one-model" />
-<FAQ src="failed-tests" />
-<FAQ src="recommended-tests" />
-<FAQ src="when-to-test" />
-<FAQ src="configurable-data-test-path" />
-<FAQ src="test-sources" />
-<FAQ src="custom-test-thresholds" />
-<FAQ src="uniqueness-two-columns" />
+<FAQ src="Tests/test-one-model" />
+<FAQ src="Runs/failed-tests" />
+<FAQ src="Tests/recommended-tests" />
+<FAQ src="Tests/when-to-test" />
+<FAQ src="Tests/configurable-data-test-path" />
+<FAQ src="Tests/testing-sources" />
+<FAQ src="Tests/custom-test-thresholds" />
+<FAQ src="Tests/uniqueness-two-columns" />
 
 <!--
 Additional FAQs that need Discourse articles:

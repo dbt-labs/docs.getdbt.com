@@ -34,7 +34,7 @@ On **BigQuery**, this is analogous to a `dataset`.
 This is a **required** parameter, no default is provided.
 
 ## FAQs
-<FAQ src="snapshot-target-schema" />
+<FAQ src="Snapshots/snapshot-target-schema" />
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`

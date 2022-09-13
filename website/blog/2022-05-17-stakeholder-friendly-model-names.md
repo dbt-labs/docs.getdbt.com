@@ -1,5 +1,5 @@
 ---
-title: "Stakeholder-friendly model names: model naming conventions that give context"
+title: "Stakeholder-friendly model names: Model naming conventions that give context"
 description: "Your model names are usually made by engineers, for engineers. While that's great for maintainability, your end users won't have the same context into those model names as you do."
 slug: stakeholder-friendly-model-names
 
@@ -40,14 +40,14 @@ Analysts are interfacing with data from the outside in. They are in meetings wit
 
 - Precomputed views/tables in a BI tool
 - Read-only access to the dbt Cloud IDE docs
-- Full list of tables and views in their data warehouse
+- Full list of tables and views in their <Term id="data-warehouse" />
 
 #### Precomputed views/tables in a BI tool
 
 Here we have drag and drop functionality and a skin over top of the underlying `database.schema.table` where the database object is stored. The BI Tool has been configured by an Analytics Engineer or Data Engineer to automatically join datasets as you click/drag/drop fields into your exploration.
 
 **How model names can make this painful:**
-The end users might not even know what tables the data refers to, as potentially everything is joined by the system and they don’t need to write their own queries. If model names are chosen poorly, there is a good chance that the BI layer on top of the database tables has been renamed to something more useful for the analysts. This adds an extra step of mental complexity in tracing the lineage from data model to BI.
+The end users might not even know what tables the data refers to, as potentially everything is joined by the system and they don’t need to write their own queries. If model names are chosen poorly, there is a good chance that the BI layer on top of the database tables has been renamed to something more useful for the analysts. This adds an extra step of mental complexity in tracing the <Term id="data-lineage">lineage</Term> from data model to BI.
 
 #### Read only access to the dbt Cloud IDE docs 
 If Analysts want more context via documentation, they may traverse back to the dbt layer and check out the data models in either the context of the Project or Database. In the Project view, they will see the data models in the folder hierarchy present in your project’s repository. In the Database view you will see the output of the data models as present in your database, ie. `database / schema / object`.
