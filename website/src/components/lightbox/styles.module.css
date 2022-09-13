@@ -7,11 +7,11 @@
 
 :local(.docImage) {
     filter: drop-shadow(4px 4px 6px #aaaaaa33);
-    display: inline-block;
+    display: block;
     max-width: 400px;
 }
 
 :local(.collapsed) {
     max-width: 400px !important;
-    display: inline-block;
+    display: block;
 }
