@@ -27,7 +27,7 @@ There are two ways of defining tests in dbt:
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
 :::tip Creating your first tests
-If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](tutorial/1-setting-up.md) to build your first dbt project with models and tests.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/guides/getting-started) to build your first dbt project with models and tests.
 :::
 
 ## Singular tests
@@ -101,7 +101,7 @@ In plain English, these tests translate to:
 * `unique`: the `order_id` column in the `orders` model should be unique
 * `not_null`: the `order_id` column in the `orders` model should not contain null values
 * `accepted_values`: the `status` column in the `orders` should be  one of `'placed'`, `'shipped'`, `'completed'`, or  `'returned'`
-* `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` table (also known as referential integrity)
+* `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` <Term id="table" /> (also known as referential integrity)
 
 Behind the scenes, dbt constructs a `select` query for each test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
@@ -236,7 +236,6 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
-
 ## Storing test failures
 
 <Changelog>
@@ -257,15 +256,14 @@ Note that, if you elect to store test failures:
 
 ## FAQs
 
-
-<FAQ src="test-one-model" />
-<FAQ src="failed-tests" />
-<FAQ src="recommended-tests" />
-<FAQ src="when-to-test" />
-<FAQ src="configurable-data-test-path" />
-<FAQ src="test-sources" />
-<FAQ src="custom-test-thresholds" />
-<FAQ src="uniqueness-two-columns" />
+<FAQ src="Tests/test-one-model" />
+<FAQ src="Runs/failed-tests" />
+<FAQ src="Tests/recommended-tests" />
+<FAQ src="Tests/when-to-test" />
+<FAQ src="Tests/configurable-data-test-path" />
+<FAQ src="Tests/testing-sources" />
+<FAQ src="Tests/custom-test-thresholds" />
+<FAQ src="Tests/uniqueness-two-columns" />
 
 <!--
 Additional FAQs that need Discourse articles:
