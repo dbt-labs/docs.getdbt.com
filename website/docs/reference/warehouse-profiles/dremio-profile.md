@@ -12,7 +12,8 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Maintained by:** Community      
 **Author:** Fabrice Etanchaud (Maif-vie)    
 **Source:** https://github.com/fabrice-etanchaud/dbt-dremio    
-**Core version:** v0.18.0 and newer
+**Core version:** v0.18.0 and newer    
+**dbt Cloud:** Not Supported    
 
 ![dbt-dremio stars](https://img.shields.io/github/stars/fabrice-etanchaud/dbt-dremio?style=for-the-badge)
 

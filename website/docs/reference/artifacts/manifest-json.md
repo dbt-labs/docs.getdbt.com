@@ -2,7 +2,7 @@
 title: Manifest
 ---
 
-_Current schema_: [`v1`](https://schemas.getdbt.com/dbt/manifest/v1.json)
+_Current schema_: [`v6`](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
 
 _Produced by:_
 - `dbt compile`
@@ -11,8 +11,9 @@ _Produced by:_
 - `dbt seed`
 - `dbt snapshot`
 - `dbt docs generate`
-- `dbt source snapshot-freshness`
+- `dbt source freshness`
 - `dbt ls`
+- `dbt build`
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
@@ -39,7 +40,7 @@ All resources nested within `nodes`, `sources`, `exposures`, `macros`, and `docs
 - `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key
 - `package_name`: Name of package that defines this resource.
 - `root_path`: Absolute file path of this resource's package.
-- `path`: Relative file path of this resource's definition within its "resource path" (`source-paths`, `data-paths`, etc.).
+- `path`: Relative file path of this resource's definition within its "resource path" (`model-paths`, `seed-paths`, etc.).
 - `original_file_path`: Relative file path of this resource's definition, including its resource path.
 
 Each has several additional properties related to its resource type.

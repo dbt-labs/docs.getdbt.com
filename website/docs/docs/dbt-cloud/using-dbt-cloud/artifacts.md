@@ -1,6 +1,7 @@
 ---
-title: "Building and Configuring Artifacts"
+title: "Building and configuring artifacts"
 id: "artifacts"
+description: "Use artifacts to power your automated docs site and source freshness data." 
 ---
 
 ## dbt Cloud Artifacts

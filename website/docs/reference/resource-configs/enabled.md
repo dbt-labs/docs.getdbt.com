@@ -10,6 +10,7 @@ default_value: true
     { label: 'Models', value: 'models', },
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
+    { label: 'Tests', value: 'tests', },
   ]
 }>
 <TabItem value="models">
@@ -90,10 +91,52 @@ snapshots:
 
 </TabItem>
 
+<TabItem value="tests">
+
+<File name='tests/<filename>.sql'>
+
+```sql
+{% test <testname>() %}
+
+{{ config(
+  enabled=true | false
+) }}
+
+select ...
+
+{% endtest %}
+
+```
+
+</File>
+
+<File name='tests/<filename>.sql'>
+
+```sql
+{{ config(
+  enabled=true | false
+) }}
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+tests:
+  [<resource-path>](resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, and snapshots.
+An optional configuration for disabling models, seeds, snapshots, and tests.
 
 * Default: true
 
@@ -105,7 +148,7 @@ If you are disabling models because they are no longer being used, but you want 
 
 ## Examples
 ### Disable a model in a package in order to use your own version of the model.
-This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/fishtown-analytics/segment/blob/master/models/base/segment_web_page_views.sql)):
+This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/dbt-labs/segment/blob/main/models/base/segment_web_page_views.sql)):
 1. Add a model named `segment_web_page_views` the same name to your own project.
 2. To avoid a compilation error due to duplicate models, disable the segment package's version of the model like so:
 
