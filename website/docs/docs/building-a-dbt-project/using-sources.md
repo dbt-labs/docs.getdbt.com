@@ -6,8 +6,8 @@ id: "using-sources"
 ## Related reference docs
 * [Source properties](source-properties)
 * [Source configurations](source-configs)
-* [`{{ source() }}` jinja function](dbt-jinja-functions/source)
-* [`source snapshot-freshness` command](commands/source)
+* [`{{ source() }}` jinja function](/reference/dbt-jinja-functions/source)
+* [`source freshness` command](commands/source)
 
 ## Using sources
 Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
@@ -17,7 +17,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 ### Declaring a source
 
-Sources are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under a `sources:` key.
+Sources are defined in `.yml` files nested under a `sources:` key.
 
 <File name='models/<filename>.yml'>
 
@@ -37,11 +37,11 @@ sources:
 
 </File>
 
-If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](declaring-properties) before proceeding.
+If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](configs-and-properties) before proceeding.
 
 ### Selecting from a source
 
-Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](dbt-jinja-functions/source).
+Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](/reference/dbt-jinja-functions/source).
 
 
 <File name='models/orders.sql'>
@@ -58,7 +58,7 @@ left join {{ source('jaffle_shop', 'customers') }} using (customer_id)
 
 </File>
 
-dbt will compile this to the full table name:
+dbt will compile this to the full <Term id="table" /> name:
 
 <File name='target/compiled/jaffle_shop/models/my_model.sql'>
 
@@ -117,11 +117,11 @@ sources:
 You can find more details on the available properties for sources in the [reference section](source-properties).
 
 ### FAQs
-<FAQ src="source-has-bad-name" />
-<FAQ src="source-in-different-database" />
-<FAQ src="source-quotes" />
-<FAQ src="testing-sources" />
-<FAQ src="running-models-downstream-of-source" />
+<FAQ src="Project/source-has-bad-name" />
+<FAQ src="Project/source-in-different-database" />
+<FAQ src="Models/source-quotes" />
+<FAQ src="Tests/testing-sources" />
+<FAQ src="Runs/running-model-downstream-of-source" />
 
 ## Snapshotting source data freshness
 With a couple of extra configs, dbt can optionally snapshot the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
@@ -163,11 +163,11 @@ Additionally, the `loaded_at_field` is required to calculate freshness for a tab
 
 These configs are applied hierarchically, so `freshness` and `loaded_at` field values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
-### Snapshotting source freshness
-To snapshot freshness information for your sources, use the `dbt source snapshot-freshness` command ([reference docs](commands/source)):
+### Checking source freshness
+To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](commands/source)):
 
 ```
-$ dbt source snapshot-freshness
+$ dbt source freshness
 ```
 
 Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the logs.
@@ -186,6 +186,6 @@ The results of this query are used to determine whether the source is fresh or n
 
 
 ### FAQs
-<FAQ src="exclude-table-from-freshness" />
-<FAQ src="snapshotting-freshness-for-one-source" />
-<FAQ src="snapshot-freshness-output" />
+<FAQ src="Project/exclude-table-from-freshness" />
+<FAQ src="Snapshots/snapshotting-freshness-for-one-source" />
+<FAQ src="Project/dbt-source-freshness" />
