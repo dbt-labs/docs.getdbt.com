@@ -143,7 +143,7 @@ models:
 
 It is possible to include a `config()` block in a generic test definition. Values set there will set defaults for all specific instances of that generic test, unless overridden within the specific instance's `.yml` properties.
 
-<File name='tests/generic/warn_if_null.sql'>
+<File name='tests/generic/warn_if_odd.sql'>
 
 ```sql
 {% test warn_if_odd(model, column_name) %}
