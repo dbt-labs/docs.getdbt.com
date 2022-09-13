@@ -5,7 +5,7 @@ id: "supported-data-platforms"
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
 
-If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](/docs/contributing/documenting-a-new-adapter.md)  for more information.
+If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter)  for more information.
 
 ### Installation
 
@@ -36,6 +36,7 @@ These adapter plugins are built and maintained by the same people who build and 
 
 | Adapter for                                                                                                   | Documentation                                                                               | Install from PyPi |
 |---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------| ----------------- |
+| AlloyDB (via [dbt-postgres](https://github.com/dbt-labs/dbt-postgres))                                        | [Profile Setup](alloydb-profile)                                                           | `pip install dbt-postgres` |
 | ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                    | `pip install dbt-clickhouse` |
 | Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
 | Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                        | `pip install dbt-firebolt` |
