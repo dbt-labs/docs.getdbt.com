@@ -9,7 +9,7 @@ Before you build your adapter, we strongly encourage you to first learn dbt as a
 
 
 This guide will walk you through the first creating the necessary adapter classes and macros, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](4-testing-a-new-adapter)
-), please let the community know that is available to use by adding the adapter to the [Available Adapters](available-adapters) page by following the steps given in [Documenting your adapter](5-documenting-a-new-adapter).
+), please let the community know that is available to use by adding the adapter to the ["Supported Data Platforms"](supported-data-platforms) page by following the steps given in [Documenting your adapter](5-documenting-a-new-adapter).
 
 For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
 
