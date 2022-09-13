@@ -21,16 +21,20 @@ The simplest branching strategy for making code changes to your dbt project repo
 
 ![Basic git workflow](/img/blog/2022-09-13-the-case-against-cherry-picking/1_basic_git_workflow.png)
 
-This approach – often referred to as “continuous deployment” or “direct promotion” – provides many benefits including:
+If you are just getting started in dbt and deciding which branching strategy to use, this approach–often referred to as “continuous deployment” or “direct promotion”–is the way to go. It provides many benefits including:
 
 - Fast promotion process to get new changes into production
 - Simple branching strategy to manage
 
-The main risk, however, is that your `main` branch can become susceptible to bugs that slip through the pull request approval process.
+The main risk, however, is that your `main` branch can become susceptible to bugs that slip through the pull request approval process. In order to have more intensive testing and QA before merging code changes into production, some organizations may decide to **create one or more branches between the feature branches and `main`**. 
 
-<!--truncate-->
+<!--truncate--> 
 
-In order to have more intensive testing and QA before merging code changes into production, some organizations may decide to **create one or more branches between the feature branches and `main`**. For example, a single dbt project repository might have a hierarchy of 3 primary branches: `dev`, `staging`, and `prod`. To update the prod branch, a developer will:
+:::caution Don't over-engineer your branching strategy
+Before adding additional primary branches, ask yourself - "is this risk *really* worth adding additional complexity to my developpers workflow"? Most of the time, the answer is no. Organizations that use a simple, single-main-branch strategy are (almost always) more successful long term. This article is for those who *really absolutely must* use a multi-environment dbt project.
+:::
+
+For example, a single dbt project repository might have a hierarchy of 3 primary branches: `dev`, `staging`, and `prod`. To update the prod branch, a developer will:
 
 1. Create a new feature branch directly from the `dev` branch
 1. Make changes on that feature branch
