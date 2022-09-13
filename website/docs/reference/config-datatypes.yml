@@ -8,7 +8,7 @@
   description: A valid semantic version number, for example, 0.0.1
 
 - name: directorypath
-  description: A valid path to a directory, relative to the `dbt_project.yml` file. For example, `data` would point to a subdirectory named `data`
+  description: A valid path to a directory, relative to the `dbt_project.yml` file. For example, `seeds` would point to a subdirectory named `seeds`
 
 - name: [directorypath]
   description: An array of directory paths

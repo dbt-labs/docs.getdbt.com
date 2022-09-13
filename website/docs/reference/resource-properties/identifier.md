@@ -20,7 +20,7 @@ sources:
 </File>
 
 ## Definition
-The table name as stored in the database.
+The <Term id="table" /> name as stored in the database.
 
 This parameter is useful if you want to use a source table name that differs from the table name in the database.
 

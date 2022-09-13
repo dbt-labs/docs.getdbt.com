@@ -1,0 +1,25 @@
+# Note
+# These are not required to add tags to blog posts
+# This adds the tag to the Categories sidebar
+# and allows to add custom descriptions for tags
+
+- name: analytics craft
+  display_title: Analytics craft
+  description: The art of being an analytics practitioner.
+  is_featured: true
+- name: data ecosystem
+  display_title: Data ecosystem
+  description: Walkthroughs of how top data practitioners use tools in the modern data stack.
+  is_featured: true
+- name: dbt tutorials
+  display_title: dbt tutorials
+  description: Best practices in the usage of our favorite data transformation tool.
+  is_featured: true    
+- name: dbt updates
+  display_title: dbt product updates
+  description: An archive of monthly product updates from the dbt Labs team.
+  is_featured: true
+- name: SQL magic
+  display_title: SQL magic
+  description: Stories of dbt developers making SQL sing across warehouses.
+  is_featured: true
