@@ -72,6 +72,11 @@ Once you've created the key, you'll see an "SSH key ID" for it. You'll need to w
 You're all set! Once support handles your request, your project is set up and you can begin executing dbt runs from dbt Cloud.
 
 ### Azure DevOps
+:::info Use Azure DevOps?
+
+If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](connecting-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](cloud-enabling-continuous-integration-with-github).
+
+:::
 
 To add a deploy key to an Azure DevOps account, navigate to the "SSH public keys" page in the User Settings of your user's Azure DevOps account or a service user's account. We recommend using a dedicated service user for the integration to ensure that dbt Cloud's connection to Azure DevOps is not interrupted by changes to user permissions.
 
