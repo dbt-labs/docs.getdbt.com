@@ -51,14 +51,16 @@ Once the connection is saved, a public key will be generated and displayed for t
 
 The following fields are required when creating a Snowflake connection:
 
-| Field | Description | Examples |
-| ----- | ----------- | -------- |
-| Account | The Snowflake account to connect to. Take a look [here](snowflake-profile#account) to determine what the account field should look like based on your region.| `db5261993`,`db5261993.east-us-2.azure` |
+| Field | Description | Examples                                                                                  |
+| ----- | ----------- | ------------------------------------------------------------------------------------------|
+| Account | The Snowflake account to connect to. Take a look [here](snowflake-profile#account) to determine what the account field should look like based on your region.|  <Snippet src="snowflake-acct-name" /> |
 | Role | An optional field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
 ![Snowflake connection details](/img/docs/dbt-cloud/snowflake-conn-details.png)
+
+**Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of the [dbt Labs recommended Snowflake permissions](snowflake-permissions).
 
 ### Username / Password
 

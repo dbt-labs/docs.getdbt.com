@@ -47,7 +47,6 @@ const sidebarSettings = {
       items: [
         "docs/running-a-dbt-project/using-the-dbt-ide",
         "docs/running-a-dbt-project/using-the-cli",
-        "docs/running-a-dbt-project/dbt-api",
         "docs/running-a-dbt-project/running-dbt-in-production",
       ],
     },
@@ -563,6 +562,14 @@ const sidebarSettings = {
         "reference/artifacts/catalog-json",
         "reference/artifacts/sources-json",
         "reference/artifacts/other-artifacts",
+      ],
+    },
+    ,
+    {
+      type: "category",
+      label: "Database Permissions",
+      items: [
+        "reference/snowflake-permissions",
       ],
     },
   ],
