@@ -28,7 +28,7 @@ If you are just getting started in dbt and deciding which branching strategy to 
 
 The main risk, however, is that your `main` branch can become susceptible to bugs that slip through the pull request approval process. In order to have more intensive testing and QA before merging code changes into production, some organizations may decide to **create one or more branches between the feature branches and `main`**. 
 
-<!--truncate--> 
+<!--truncate-->
 
 :::caution Don't over-engineer your branching strategy
 Before adding additional primary branches, ask yourself - "is this risk *really* worth adding additional complexity to my developpers workflow"? Most of the time, the answer is no. Organizations that use a simple, single-main-branch strategy are (almost always) more successful long term. This article is for those who *really absolutely must* use a multi-environment dbt project.
