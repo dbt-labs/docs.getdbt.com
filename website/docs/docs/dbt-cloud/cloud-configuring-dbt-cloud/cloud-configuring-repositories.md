@@ -3,7 +3,7 @@ title: "Configuring repositories"
 id: "cloud-configuring-repositories"
 ---
 
-### Configuring Pull Request (PR) template URLs
+## Configure pull request (PR) template URLs
 
 When changes are committed on a branch in the IDE, dbt Cloud can prompt users to
 open a new Pull Request for the code changes. To enable this functionality, ensure
@@ -44,7 +44,7 @@ https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
 </TabItem>
 </Tabs>
 
-## Configuring Custom Branches on Repositories
+## Configure custom branches
 
 By default in Development Environments, dbt Cloud attempts to reference the `main` branch in connected repositories. If you want to use a different default branch name, you can configure dbt Cloud with a custom branch setting. 
 
