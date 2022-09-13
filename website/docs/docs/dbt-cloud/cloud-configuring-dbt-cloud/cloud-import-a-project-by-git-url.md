@@ -63,6 +63,8 @@ Open the AWS CodeCommit console and choose your repository. Copy the SSH URL fro
 
 In the newly created Repository details page, you'll see a "Deploy Key" field. Copy the contents of this field as you'll need it for step 3.
 
+**Note:** The dbt Cloud-generated public key is the only key that will work in the next step. Any other key that has been generated outside of dbt Cloud will not work.
+
 #### Step 3: Grant dbt Cloud AWS User access
 
 Open up the newly created dbt Cloud user in the AWS IAM Console. Choose the "Security Credentials" tab and then click "Upload SSH public key". Paste in the contents of the "Public Key" field from the dbt Cloud Repository page.
@@ -72,6 +74,11 @@ Once you've created the key, you'll see an "SSH key ID" for it. You'll need to w
 You're all set! Once support handles your request, your project is set up and you can begin executing dbt runs from dbt Cloud.
 
 ### Azure DevOps
+:::info Use Azure DevOps?
+
+If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](connecting-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](cloud-enabling-continuous-integration-with-github).
+
+:::
 
 To add a deploy key to an Azure DevOps account, navigate to the "SSH public keys" page in the User Settings of your user's Azure DevOps account or a service user's account. We recommend using a dedicated service user for the integration to ensure that dbt Cloud's connection to Azure DevOps is not interrupted by changes to user permissions.
 
