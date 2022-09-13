@@ -58,15 +58,12 @@ seeds:
 
 ### General configurations
 
-### General configurations
-
 <Tabs
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
   ]
 }>
 
@@ -87,6 +84,7 @@ seeds:
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
+    [+](plus-prefix)[grants](grants): {<dictionary>}
 
 ```
 
@@ -115,6 +113,7 @@ seeds:
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
+      [grants](grants): {<dictionary>}
 
 ```
 
@@ -178,7 +177,7 @@ seeds:
 
 </File>
 
-In older versions of dbt, you must define configurations in `dbt_project.yml` and include the full resource path (including the project name, and subdirectories). For a project named `jaffle_shop`, with a seed file at `data/marketing/utm_parameters.csv`, this would look like:
+In older versions of dbt, you must define configurations in `dbt_project.yml` and include the full resource path (including the project name, and subdirectories). For a project named `jaffle_shop`, with a seed file at `seeds/marketing/utm_parameters.csv`, this would look like:
 
 <File name='dbt_project.yml'>
 
@@ -196,8 +195,8 @@ seeds:
 ## Example seed configuration
 The following is a valid seed configuration for a project with:
 * `name: jaffle_shop`
-* A seed file at `data/country_codes.csv`, and
-* A seed file at `data/marketing/utm_parameters.csv`
+* A seed file at `seeds/country_codes.csv`, and
+* A seed file at `seeds/marketing/utm_parameters.csv`
 
 
 <File name='dbt_project.yml'>
@@ -209,7 +208,7 @@ seeds:
   jaffle_shop:
     +enabled: true
     +schema: seed_data
-    # This configures data/country_codes.csv
+    # This configures seeds/country_codes.csv
     country_codes:
       # Override column types
       +column_types:

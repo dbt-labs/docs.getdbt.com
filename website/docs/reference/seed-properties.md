@@ -4,15 +4,14 @@ title: Seed properties
 
 <Changelog>
     - **v0.21.0** introduced the `config` property, thereby allowing you to configure seeds in all `.yml` files
+    - **v1.0.0:** The default path for [`seed-paths`](seed-paths) (formerly `data-paths`) is now `seeds`.
 </Changelog>
 
-Seed properties can be declared in `.yml` files in:
-- your `data/` directory (as defined by the [`data-paths` config](data-paths))
-- your `models/` directory (as defined by the [`source-paths` config](source-paths)), for backwards compatibility
+Seed properties can be declared in `.yml` files under a `seed` key.
 
-We recommend that you put them in the `data/` directory. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within that directory.
+We recommend that you put them in the `seeds/` directory. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within that directory.
 
-<File name='data/<filename>.yml'>
+<File name='seeds/<filename>.yml'>
 
 ```yml
 version: 2

@@ -76,8 +76,8 @@ definition:
   parents_depth: 1     # if parents: true, degrees to include
 
   childrens_parents: true | false     # @ operator
-
-  greedy: true | false  # include all tests selected indirectly? false by default
+  
+  indirect_selection: eager | cautious  # include all tests selected indirectly? eager by default
 ```
 
 The `*` operator to select all nodes can be written as:
@@ -116,53 +116,43 @@ and it is always applied _last_ within its scope.
 This gets us more intricate subset definitions than what's available on the CLI,
 where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`).
 
-#### Greedy
+#### Indirect selection
 
-As a general rule, dbt will indirectly select tests if they touch resources that you're selecting directly,
-but not tests that also touch unselected resources (e.g. a `relationships` test, with one parent selected and one parent
-not selected). Starting in v0.21, you can optionally turn this on by setting `greedy: true` for a specific criterion:
+As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" by setting `indirect_selection` for a specific criterion:
 
 ```yml
 - union:
     - method: fqn
       value: model_a
-      greedy: true  # will include all tests that touch model_a
+      greedy: eager  # default: will include all tests that touch model_a
     - method: fqn
       value: model_b
-      greedy: false  # default: will not include tests touching model_b
-                     # if they have other unselected parents
+      greedy: cautious  # will not include tests touching model_b
+                        # if they have other unselected parents
 ```
 
-In CLI-based selection, dbt will warn you about tests that aren't greedily included. Here, you're in "full control" mode—dbt will not warn you about which tests your yaml selector definition does or does not include. Remember that you can always use [`list`](commands/list) to check.
+If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
 
-See [test selection examples](test-selection-examples) for more details about greediness and indirect selection.
+See [test selection examples](test-selection-examples) for more details about indirect selection.
 
 ## Example
 
 Here are two ways to represent:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 <Tabs
   defaultValue="cli_style"
@@ -243,7 +233,7 @@ selectors:
         Excludes resources defined in installed packages.
     default: true
     definition:
-      method: project
+      method: package
       value: <my_root_project_name>
 ```
 
@@ -271,3 +261,31 @@ selectors:
     default: "{{ target.name == 'prod' | as_bool }}"
     definition: ...
 ```
+
+<VersionBlock firstVersion="1.2">
+
+### Selector inheritance
+
+Selectors can reuse and extend definitions from other selectors, via the `selector` method.
+
+```yml
+selectors:
+  - name: foo_and_bar
+    definition:
+      intersection:
+        - tag: foo
+        - tag: bar
+
+  - name: foo_bar_less_buzz
+    definition:
+      intersection:
+        # reuse the definition from above
+        - method: selector
+          value: foo_and_bar
+        # with a modification!
+        - exclude:
+            - method: tag
+              value: buzz
+```
+
+</VersionBlock>
