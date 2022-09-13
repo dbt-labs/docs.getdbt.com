@@ -1,4 +1,7 @@
 ---
+title: "Configuring test `severity`"
+id: "severity"
+description: "You can use error thresholds to configure the severity of test results and set when to produce an error or warning based on the number of failed tests."
 resource_types: [tests]
 datatype: string
 ---
@@ -108,7 +111,7 @@ Set the default for all tests in a package or project:
 ```yaml
 tests:
   +severity: warn  # all tests
-  
+
   <package_name>:
     +warn_if: >10 # tests in <package_name>
 ```

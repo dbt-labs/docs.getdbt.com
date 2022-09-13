@@ -21,13 +21,15 @@ v1.0.0 includes an initial version of metrics, following a [vibrant community di
 v1.0 includes metrics, but they should be considered an _unstable_ API because they are experimental and subject to change. We reserve the right to make breaking changes to the metrics schema in future **minor** versions, but will aim for backwards compatibility when possible.
 :::
 
-## About metrics 
+## About Metrics 
 
-A metric is a timeseries aggregation over a table that supports zero or more dimensions. Some examples of metrics include:
+A metric is a timeseries aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
 - mrr (monthly recurring revenue)
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+
+For more information on querying the metrics defined in your dbt project, please reference the readme in the [dbt_metrics package.](https://github.com/dbt-labs/dbt_metrics)
 
 ### Benefits of defining metrics
 
@@ -95,7 +97,7 @@ metrics:
 | Field       | Description                                                 | Example                         | Required? |
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
-| model       | The dbt model that powers this metric                       | dim_customers                   | yes       |
+| model       | The dbt model that powers this metric                       | dim_customers                   | <VersionBlock firstVersion="1.2">yes (no for `expression` metrics)</VersionBlock><VersionBlock lastVersion="1.1">yes</VersionBlock> |
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | type        | The type of calculation to perform when evaluating a metric | count_distinct                  | yes       |
@@ -105,6 +107,59 @@ metrics:
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
+
+
+### Available types
+
+| Metric Type    |  Description                                                               |
+|----------------|----------------------------------------------------------------------------|
+| count          | This metric type will apply the `count` aggregation to the specified field |
+| count_distinct | This metric type will apply the `count` aggregation to the specified field, with an additional distinct statement inside the aggregation |
+| sum            | This metric type will apply the `sum` aggregation to the specified field |
+| average        | This metric type will apply the `average` aggregation to the specified field |
+| min            | This metric type will apply the `min` aggregation to the specified field |
+| max            | This metric type will apply the `max` aggregation to the specified field |
+| expression     | <VersionBlock firstVersion="1.2"> This metric type is defined as any **non-aggregating** calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
+
+<VersionBlock firstVersion="1.2">
+
+### Expression Metrics
+In v1.2, support was added for `expression` metrics, which are defined as non-aggregating calculations of 1 or more metrics. By defining these metrics, you are able to create metrics like:
+- ratios
+- subtractions 
+- any arbitrary calculation
+
+As long as the two+ base metrics (the metrics that comprise the `expression` metric) share the specified `time_grains` and `dimensions`, those attributes can be used in any downstream metrics macro.
+
+An example definition of an `expression` metric is:
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2">
+
+```yaml
+# models/marts/product/schema.yml
+version: 2
+
+models:
+ - name: dim_customers
+   ...
+
+metrics:
+  - name: average_revenue_per_customer
+    label: Average Revenue Per Customer
+    description: "The average revenue received per customer"
+
+    type: expression
+    sql: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
+
+    timestamp: order_date
+    time_grains: [day, week, month]
+    dimensions:
+      - had_discount
+      - order_country
+
+```
+</VersionBlock>
 
 ### Filters
 Filters should be defined as a list of dictionaries that define predicates for the metric. Filters are combined using AND clauses. For more control, users can (and should) include the complex logic in the model powering the metric. 
