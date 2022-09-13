@@ -22,7 +22,7 @@ Exposures make it possible to define and describe a downstream use of your dbt p
 
 ### Declaring an exposure
 
-Exposures are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under an `exposures:` key.
+Exposures are defined in `.yml` files nested under an `exposures:` key.
 
 <File name='models/<filename>.yml'>
 
@@ -51,7 +51,7 @@ exposures:
 ### Available properties
 
 _Required:_
-- **name** (must be unique among exposures): use underscores so as to populate the lineage graph
+- **name** (must be unique among exposures and you must use the [snake case](https://en.wikipedia.org/wiki/Snake_case) naming convention)
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
 - **owner**: email
 
@@ -85,4 +85,4 @@ When we generate our documentation site, you'll see the exposure appear:
 
 ## Exposures are new!
 
-Exposures were introduced in dbt v0.18.1, with a limited set of supported types and properties. If you're interested in requesting or contributing additional properties, check out issue [dbt#2835](https://github.com/dbt-labs/dbt/issues/2835).
+Exposures were introduced in dbt v0.18.1, with a limited set of supported types and properties. If you're interested in requesting or contributing additional properties, check out issue [dbt#2835](https://github.com/dbt-labs/dbt-core/issues/2835).

@@ -12,7 +12,7 @@ dbt Cloud supports [OAuth authentication](https://cloud.google.com/bigquery/docs
 
 :::info Some Pre-Work Required
 
-Before setting up a Client ID & Secret, you'll have to have your existing BigQuery Settings in order. We recommend using a Service Account JSON file, and have a walkthrough for that [here](setting-up#generate-bigquery-credentials) - you will also need to set up an [OAuth Consent Screen](https://support.google.com/cloud/answer/6158849) if you haven't already!
+Before setting up a Client ID & Secret, you'll have to have your existing BigQuery Settings in order. We recommend using a Service Account JSON file, and have a walkthrough for that [here](/guides/getting-started/getting-set-up/setting-up-bigquery#generate-bigquery-credentials) - you will also need to set up an [OAuth Consent Screen](https://support.google.com/cloud/answer/6158849) if you haven't already!
 
 :::
 
