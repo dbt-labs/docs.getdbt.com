@@ -16,6 +16,6 @@ This is a very visual way to explore your run and surface model bottlenecks. Lon
 
 Notes:
 - The model timing dashboard is currently only available on multi-tenant Team and Enterprise accounts.
-- The model timing dashboard can only be viewed for jobs that have successfully completed
+- The model timing dashboard can only be viewed for jobs that have successfully completed.
 
 <LoomVideo id="28a49a5c511c4063b4a3381cb81a03cf" />
