@@ -1,6 +1,6 @@
 ---
 title: "Verifying a new adapter"
-id: "6-verifying-a-new-adapter"
+id: "7-verifying-a-new-adapter"
 ---
 
 ## Why verify an adapter?
@@ -29,7 +29,7 @@ There has been a tendency to trust the dbt Labs-maintained adapters over communi
 
 The adapter verification program aims to quickly indicate to users which adapters can be trusted to use in production. Previously, doing so was uncharted territory for new users and complicated making the business case to their leadership team. We plan to give quality assurances by:
 1. appointing a key stakeholder for the adapter repository,
-2. ensuring that the chosen stakeholder fixes bugs and cuts new releases in a timely manner,
+2. ensuring that the chosen stakeholder fixes bugs and cuts new releases in a timely manner see maintainer your adapter (["Maintaining your new adapter"](2-prerequisites-for-a-new-adapter#maintaining-your-new-adapter)),
 3. demonstrating that it passes our adapter pytest suite tests,
 4. assuring that it works for us internally and ideally an existing team using the adapter in production .
 

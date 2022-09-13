@@ -1,9 +1,9 @@
 ---
 title: "Documenting a new adapter"
-id: "4-documenting-a-new-adapter"
+id: "5-documenting-a-new-adapter"
 ---
 
-If you've already [built](2-building-a-new-adapter), and [tested](3-testing-a-new-adapter) your adapter, it's time to document it so the dbt community will know that it exists and how to use it.
+If you've already [built](3-building-a-new-adapter), and [tested](4-testing-a-new-adapter) your adapter, it's time to document it so the dbt community will know that it exists and how to use it.
 
 ## Making your adapter available
 

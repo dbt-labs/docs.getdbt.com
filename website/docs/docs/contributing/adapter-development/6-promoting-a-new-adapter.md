@@ -1,6 +1,6 @@
 ---
 title: "Promoting a new adapter"
-id: "5-promoting-a-new-adapter"
+id: "6-promoting-a-new-adapter"
 ---
 
 ## Model for engagement in the dbt community

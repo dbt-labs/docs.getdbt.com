@@ -63,15 +63,19 @@ const sidebarSettings = {
           type: "category",
           label: "Adapter development",
           link: {
-            type: 'doc',
-            id: 'docs/contributing/adapter-development/1-what-are-adapters',
+            type: 'generated-index',
+            title: 'Adapter Development',
+            description: 'Learn what an adapter is what what\'s required to make one. Also how to build, test, document, promote, and verify your new adapter. Visit the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond this section.',
+            
           },
           items: [
-            'docs/contributing/adapter-development/2-building-a-new-adapter',
-            'docs/contributing/adapter-development/3-testing-a-new-adapter',
-            'docs/contributing/adapter-development/4-documenting-a-new-adapter',
-            'docs/contributing/adapter-development/5-promoting-a-new-adapter',
-            'docs/contributing/adapter-development/6-verifying-a-new-adapter'
+            'docs/contributing/adapter-development/1-what-are-adapters',
+            'docs/contributing/adapter-development/2-prerequisites-for-a-new-adapter',
+            'docs/contributing/adapter-development/3-building-a-new-adapter',
+            'docs/contributing/adapter-development/4-testing-a-new-adapter',
+            'docs/contributing/adapter-development/5-documenting-a-new-adapter',
+            'docs/contributing/adapter-development/6-promoting-a-new-adapter',
+            'docs/contributing/adapter-development/7-verifying-a-new-adapter'
           ]
         }
       ],
