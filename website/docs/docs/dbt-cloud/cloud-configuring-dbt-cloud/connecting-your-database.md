@@ -60,7 +60,7 @@ The following fields are required when creating a Snowflake connection:
 
 ![Snowflake connection details](/img/docs/dbt-cloud/snowflake-conn-details.png)
 
-**Note:** A crucial part of working with dbt atop snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of the [dbt Labs recommended Snowflake permissions](snowflake-permissions).
+**Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of the [dbt Labs recommended Snowflake permissions](snowflake-permissions).
 
 ### Username / Password
 
