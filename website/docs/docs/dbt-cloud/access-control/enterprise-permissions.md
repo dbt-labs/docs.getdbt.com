@@ -171,8 +171,9 @@ Contact support via the webapp button or support@getdbt.com to turn on this feat
 - **If you are on a customer deployed dbt Cloud instance:**
 Contact your account manager for instructions on how to turn on this feature.
 
+*Note: If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group as shown in the video below.*
+
 <LoomVideo id="8e2e00c57bde4fbfa4b519bf35d7632d" />
 
 
-*Note: If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group as shown in the video above.*
 
