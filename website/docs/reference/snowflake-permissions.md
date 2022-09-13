@@ -21,4 +21,3 @@ grant usage on all schemas in database database_name to role role_name;
 grant select on all tables in database database_name to role role_name;
 grant select on all views in database database_name to role role_name;
 ```
-Disclaimer
