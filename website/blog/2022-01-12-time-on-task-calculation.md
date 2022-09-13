@@ -41,7 +41,7 @@ This strategy does a great job in being able to account for nights, weekends and
 
 2. Bespoke and customizable with a subquery
 
-Our current production Time on Task calculation is able to be both powerful and flexible by bringing in a construct you rarely see at dbt Labs - a _[gasp]_ <Term id="subquery" />. By using an hourly-grain date <Term id="table" />, you are able to standardize your organization's unique definition of business hours vs. non business hours in a fully customizable way.
+Our current production Time on Task calculation is able to be both powerful and flexible by bringing in a construct you rarely see at dbt Labs - a _[gasp]_ <Term id="subquery" />. By using an <Term id="grain">hourly-grain</Term> date <Term id="table" />, you are able to standardize your organization's unique definition of business hours vs. non business hours in a fully customizable way.
 
 You can find example code for each of these approaches in [an example repo](https://github.com/dbt-labs/dbt-labs-experimental-features/tree/master/business-hours).
 
