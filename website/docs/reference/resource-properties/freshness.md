@@ -33,7 +33,7 @@ sources:
 </File>
 
 ## Definition
-A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a table to be considered "fresh".
+A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a <Term id="table" /> to be considered "fresh".
 
 In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
 
@@ -165,7 +165,7 @@ where {{ filter }}
 {% endif %}
 ```
 
-_[Source code](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
+_[Source code](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
 
 </TabItem>
 
