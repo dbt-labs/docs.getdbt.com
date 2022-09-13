@@ -6,7 +6,7 @@ _Current schema_: [`v1`](https://schemas.getdbt.com/dbt/catalog/v1.json)
     
 _Produced by:_ `dbt docs generate`
 
-This file contains information from your data warehouse about the tables and views produced and defined by the resources in your project. Today, dbt uses this file to populate metadata, such as column types and table statistics, in the [docs site](documentation).
+This file contains information from your <Term id="data-warehouse" /> about the tables and <Term id="view">views</Term> produced and defined by the resources in your project. Today, dbt uses this file to populate metadata, such as column types and <Term id="table" /> statistics, in the [docs site](documentation).
 
 ### Top-level keys
 

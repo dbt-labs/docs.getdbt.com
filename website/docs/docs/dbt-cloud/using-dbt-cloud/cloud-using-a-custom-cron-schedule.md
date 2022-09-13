@@ -1,6 +1,7 @@
 ---
 title: "Custom cron schedules"
 id: "cloud-using-a-custom-cron-schedule"
+description: "You can use cron syntax to specify when you want to run a job."
 ---
 
 ### Overview
