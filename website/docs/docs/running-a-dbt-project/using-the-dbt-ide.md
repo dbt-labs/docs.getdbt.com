@@ -49,6 +49,6 @@ This video explores running dbt projects in the dbt IDE. For a full list of the 
 
 ### Version control
 
-This videos explores version controlling changes to dbt projects with git in the dbt IDE.
+This video explores version controlling changes to dbt projects with git in the dbt IDE.
 
 <LoomVideo id="efa64fa9db6346c4b0f4c64999146445" />

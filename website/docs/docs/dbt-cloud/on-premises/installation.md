@@ -1,6 +1,6 @@
 ---
 id: installation
-title: Installation
+title: On-Premises Installation (dbt Cloud)
 ---
 
 :::note

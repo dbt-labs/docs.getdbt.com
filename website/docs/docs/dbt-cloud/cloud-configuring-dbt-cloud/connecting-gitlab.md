@@ -7,9 +7,9 @@ sidebar_label: "Connecting GitLab"
 ## Overview
 
 Connecting your GitLab account to dbt Cloud unlocks exciting and compelling functionality in dbt Cloud. Once your GitLab account is connected, you can:
-- [Trigger CI builds](cloud-enabling-continuous-integration-with-github) when Merge Requests are opened in GitLab
+- [Trigger CI builds](cloud-enabling-continuous-integration-with-github) when Merge Requests are opened in GitLab.
 - Import new repos with one click
-- Carry GitLab permissions through to dbt Cloud IDE's git actions
+- Carry GitLab user permissions through to dbt Cloud IDE's git actions.
 ## For Developer and Team tiers
 
 To connect your personal GitLab account, navigate to your [Profile](https://cloud.getdbt.com/#/profile/) and select [Integrations](https://cloud.getdbt.com/#/profile/integrations/) from the left sidebar. 
@@ -24,6 +24,8 @@ You should be redirected to GitLab and prompted to sign into your account. GitLa
 Once you've accepted, you should be redirected back to dbt Cloud, and you'll see that your account has been linked.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/connected.png" title="GitLab connected" />
+
+Now that you've linked to your account from your Profile page, you should verify that your Project Settings page also shows your deploy token. 
 
 ## For Enterprise tier
 
