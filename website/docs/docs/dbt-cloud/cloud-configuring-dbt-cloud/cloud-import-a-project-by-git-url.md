@@ -63,6 +63,8 @@ Open the AWS CodeCommit console and choose your repository. Copy the SSH URL fro
 
 In the newly created Repository details page, you'll see a "Deploy Key" field. Copy the contents of this field as you'll need it for step 3.
 
+**Note:** The dbt Cloud-generated public key is the only key that will work in the next step. Any other key that has been generated outside of dbt Cloud will not work.
+
 #### Step 3: Grant dbt Cloud AWS User access
 
 Open up the newly created dbt Cloud user in the AWS IAM Console. Choose the "Security Credentials" tab and then click "Upload SSH public key". Paste in the contents of the "Public Key" field from the dbt Cloud Repository page.
