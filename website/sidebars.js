@@ -564,6 +564,14 @@ const sidebarSettings = {
         "reference/artifacts/other-artifacts",
       ],
     },
+    ,
+    {
+      type: "category",
+      label: "Database Permissions",
+      items: [
+        "reference/snowflake-permissions",
+      ],
+    },
   ],
   guides: [
     {

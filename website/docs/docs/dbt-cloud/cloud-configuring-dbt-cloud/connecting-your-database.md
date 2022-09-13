@@ -58,6 +58,8 @@ The following fields are required when creating a Snowflake connection:
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
 
+**Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of the [dbt Labs recommended Snowflake permissions](snowflake-permissions).
+
 ### Username / Password
 
 **Available in:** Development environments, Deployment environments
