@@ -14,12 +14,15 @@ async function getDiscoursePosts() {
 
     // Get events from Discourse
     let { data } = await axios.get(`${discourse_endpoint}/posts`, { headers })
-    console.log('data', data)
+    
     if(!data)
       throw new Error('Unable to get results from api request.')
 
+    // Filter posts by user: "system"
+    const filteredPosts = data?.latest_posts?.filter(post => post?.username !== 'system')
+    
     // Return posts 
-    return await returnResponse(200, data)
+    return await returnResponse(200, filteredPosts)
   } catch(err) {
     // Log and return the error
     console.log('err', err)
