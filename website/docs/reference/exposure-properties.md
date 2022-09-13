@@ -13,7 +13,7 @@ title: Exposure properties
 - [Declaring resource properties](configs-and-properties)
 
 ## Overview
-Exposures are defined in `.yml` files in your `models` directory (as defined by the [`source-paths` config](source-paths)), nested under an `exposures:` key. You may define `exposures` in YAML files that also define define `sources` or `models`.
+Exposures are defined in `.yml` files nested under an `exposures:` key. You may define `exposures` in YAML files that also define define `sources` or `models`.
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
