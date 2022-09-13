@@ -31,15 +31,15 @@ The main risk, however, is that your `main` branch can become susceptible to bug
 <!--truncate-->
 
 :::caution Don't over-engineer your branching strategy
-Before adding additional primary branches, ask yourself - "is this risk *really* worth adding additional complexity to my developpers workflow"? Most of the time, the answer is no. Organizations that use a simple, single-main-branch strategy are (almost always) more successful long term. This article is for those who *really absolutely must* use a multi-environment dbt project.
+Before adding additional primary branches, ask yourself - "is this risk *really* worth adding complexity to my developers' workflow"? Most of the time, the answer is no. Organizations that use a simple, single-main-branch strategy are (almost always) more successful long term. This article is for those who *really absolutely must* use a multi-environment dbt project.
 :::
 
 For example, a single dbt project repository might have a hierarchy of 3 primary branches: `dev`, `staging`, and `prod`. To update the prod branch, a developer will:
 
 1. Create a new feature branch directly from the `dev` branch
-1. Make changes on that feature branch
-1. Test locally
-1. When ready, open a pull request to merge their changes back into the `dev` branch
+2. Make changes on that feature branch
+3. Test locally
+4. When ready, open a pull request to merge their changes back into the `dev` branch
 
 In this hierarchical promotion, once a set of feature branches are vetted in `dev`:
 
