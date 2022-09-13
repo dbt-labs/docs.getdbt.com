@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './styles.module.css';
 
 const files = require.context(
-    '../../../docs/faqs',
-    true,
-    /\.md$/
+  '../../../docs/faqs',
+  true,
+  /\.md$/
 );
 
 var faqs = [];
-files.keys().forEach(function(key, i) {
+files.keys().forEach(function (key, i) {
   if (key.endsWith('index.md')) {
     return;
   }
@@ -18,22 +18,22 @@ files.keys().forEach(function(key, i) {
   var el = faq.default({});
 
   faqs.push(
-     <div key={key} style={{marginBottom: '10px'}}>
-        <h3>
-            <a className='hash-link' href={meta.permalink}>#</a>
-            {i+1}. {meta.title}
-        </h3>
-        <div>
-            {el}
-        </div>
+    <div key={key} style={{ marginBottom: '10px' }}>
+      <h2>
+        <a className='hash-link-faq' href={meta.permalink}>#</a>
+        {i + 1}. {meta.title}
+      </h2>
+      <div>
+        {el}
+      </div>
     </div>
   );
 });
 
-function FAQList({children, style}) {
+function FAQList({ children, style }) {
   return (
     <div style={style}>
-        {faqs}
+      {faqs}
     </div>
   );
 }

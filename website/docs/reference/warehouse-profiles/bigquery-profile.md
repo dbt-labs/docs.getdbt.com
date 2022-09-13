@@ -6,7 +6,6 @@ title: "BigQuery Profile"
 **Maintained by:** core dbt maintainers    
 **Author:** dbt Labs    
 **Source:** [Github](https://github.com/dbt-labs/dbt-bigquery)   
-**Core version:** v0.13.0 and newer   
 **dbt Cloud:** Supported   
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C99SNSRTK)      
 
@@ -196,7 +195,93 @@ my-profile:
       priority: interactive
 ```
 
-### Timeouts
+### Timeouts and Retries
+
+<VersionBlock firstVersion="1.1">
+
+The `dbt-bigquery` plugin uses the BigQuery Python client library to submit queries. Each query requires two steps:
+1. Job creation: Submit the query job to BigQuery, and receive its job ID.
+2. Job execution: Wait for the query job to finish executing, and receive its result.
+
+Some queries inevitably fail, at different points in process. To handle these cases, dbt supports <Term id="grain">fine-grained</Term> configuration for query timeouts and retries.
+
+#### job_execution_timeout_seconds
+
+Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete, after being submitted successfully. Of the four configurations that control timeout and retries, this one is the most common to use.
+
+:::info Renamed config
+
+In older versions of `dbt-bigquery`, this same config was called `timeout_seconds`.
+
+:::
+  
+No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set.) When `job_execution_timeout_seconds` is set, if any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
+
+```
+ Operation did not complete within the designated timeout.
+```
+  
+You can change the timeout seconds for the job execution step by configuring `job_execution_timeout_seconds` in the BigQuery profile:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      job_execution_timeout_seconds: 600 # 10 minutes
+```
+
+#### job_creation_timeout_seconds
+
+It is also possible for a query job to fail to submit in the first place. You can configure the maximum timeout for the job creation step by configuring  `job_creation_timeout_seconds`. No timeout is set by default.
+
+In the job creation step, dbt is simply submitting a query job to BigQuery's `Jobs.Insert` API, and receiving a query job ID in return. It should take a few seconds at most. In some rare situations, it could take longer.
+
+#### job_retries
+
+Google's BigQuery Python client has native support for retrying query jobs that time out, or queries that run into transient errors and are likely to succeed if run again. You can configure the maximum number of retries by configuring `job_retries`.
+
+:::info Renamed config
+
+In older versions of `dbt-bigquery`, the `job_retries` config was just called `retries`.
+
+:::
+
+The default value is 1, meaning that dbt will retry failing queries exactly once. You can set the configuration to 0 to disable retries entirely.
+
+#### job_retry_deadline_seconds
+
+After a query job times out, or encounters a transient error, dbt will wait one second before retrying the same query. In cases where queries are repeatedly timing out, this can add up to a long wait. You can set the `job_retry_deadline_seconds` configuration to set the total number of seconds you're willing to wait ("deadline") while retrying the same query. If dbt hits the deadline, it will give up and return an error.
+
+Combining the four configurations above, we can maximize our chances of mitigating intermittent query errors. In the example below, we will wait up to 30 seconds for initial job creation. Then, we'll wait up to 10 minutes (600 seconds) for the query to return results. If the query times out, or encounters a transient error, we will retry it up to 5 times. The whole process cannot take longer than 20 minutes (1200 seconds). At that point, dbt will raise an error.
+
+<File name='profiles.yml'>
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      job_creation_timeout_seconds: 30
+      job_execution_timeout_seconds: 600
+      job_retries: 5
+      job_retry_deadline_seconds: 1200
+
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.0">
 
 BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
 
@@ -205,6 +290,8 @@ BigQuery supports query timeouts. By default, the timeout is set to 300 seconds.
 ```
 
 To change this timeout, use the `timeout_seconds` configuration:
+
+<File name='profiles.yml'>
 
 ```yaml
 my-profile:
@@ -218,7 +305,7 @@ my-profile:
       timeout_seconds: 600 # 10 minutes
 ```
 
-### Retries
+</File>
 
 The `retries` profile configuration designates the number of times dbt should retry queries that result in unhandled server errors. This configuration is only specified for BigQuery targets. Example:
 
@@ -242,10 +329,12 @@ my-profile:
 
 </File>
 
+</VersionBlock>
+
 ### Dataset locations
 
 The location of BigQuery datasets can be configured using the `location` configuration in a BigQuery profile.
-`location` may be iether a multi-regional location (e.g. `EU`, `US`), or a regional location (e.g. `us-west2` ) as per the [the BigQuery documentation](https://cloud.google.com/bigquery/docs/locations) describes.
+`location` may be either a multi-regional location (e.g. `EU`, `US`), or a regional location (e.g. `us-west2` ) as per [the BigQuery documentation](https://cloud.google.com/bigquery/docs/locations) describes.
 Example:
 
 ```yaml
@@ -296,6 +385,23 @@ Database Error in model debug_table (models/debug_table.sql)
   compiled SQL at target/run/bq_project/models/debug_table.sql
 ```
 
+### OAuth 2.0 Scopes for Google APIs
+
+By default, the BigQuery connector requests three OAuth scopes, namely `https://www.googleapis.com/auth/bigquery`, `https://www.googleapis.com/auth/cloud-platform`, and `https://www.googleapis.com/auth/drive`. These scopes were originally added to provide access for the models that are reading from Google Sheets. However, in some cases, a user may need to customize the default scopes (for example, to reduce them down to the minimal set needed). By using the `scopes` profile configuration you are able to set up your own OAuth scopes for dbt. Example:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      scopes:
+        - https://www.googleapis.com/auth/bigquery
+```
+
 ### Service Account Impersonation
 <Changelog>New in v0.18.0</Changelog>
 
@@ -315,8 +421,8 @@ my-profile:
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
 
-<FAQ src="bq-impersonate-service-account-why" />
-<FAQ src="bq-impersonate-service-account-setup" />
+<FAQ src="Warehouse/bq-impersonate-service-account-why" />
+<FAQ src="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
 <Changelog>New in v0.21.0</Changelog>
@@ -339,13 +445,41 @@ my-profile:
       execution_project: buck-stops-here-456
 ```
 
+<VersionBlock firstVersion="1.3">
+
+### Running Python models on Dataproc
+
+To run dbt Python models on GCP, dbt uses companion services, Dataproc and Cloud Storage, that offer tight integrations with BigQuery. You may use an existing Dataproc cluster and Cloud Storage bucket, or create new ones:
+- https://cloud.google.com/dataproc/docs/guides/create-cluster
+- https://cloud.google.com/storage/docs/creating-buckets
+
+Then, add the bucket name, cluster name, and cluster region to your connection profile:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      
+      # for dbt Python models
+      gcs_bucket: dbt-python
+      dataproc_cluster_name: dbt-python
+      dataproc_region: us-central1
+```
+
+</VersionBlock>
+
 ## Required permissions
 
 BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
 - BigQuery Data Editor
 - BigQuery User
 
-This set of permissions will permit dbt users to read from and create tables and views in a BigQuery project.
+This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 
 ## Local OAuth gcloud setup
 
@@ -361,6 +495,6 @@ https://www.googleapis.com/auth/drive.readonly,\
 https://www.googleapis.com/auth/iam.test
 ```
 
-A browser window should open, and you should be promoted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
+A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
 
 This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.

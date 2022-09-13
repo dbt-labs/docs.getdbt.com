@@ -31,13 +31,13 @@ Account Settings page in your dbt Cloud account. Note: accounts on the Developer
 plan must upgrade to the Team plan to add additional team members to their
 account.
 
-The table below shows the base number of Developer and Read Only seats for each
+The <Term id="table" /> below shows the base number of Developer and Read Only seats for each
 dbt Cloud plan.
 
 | Plan | Developer Seats | Read Only Seats |
 | ---- | --------------- | --------------- |
 | Developer (free) | 1 | 0 |
-| Team | $50/developer/mo | 50 ($0/mo) |
+| Team | $50/developer/mo | 5 ($0/mo) |
 | Enterprise | Custom | Custom |
 
 ## Managing license types
