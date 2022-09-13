@@ -1,9 +1,16 @@
 ---
 title: "Documenting a new adapter"
-id: "documenting-a-new-adapter"
+id: "5-documenting-a-new-adapter"
 ---
 
-If you've already [built](/docs/contributing/building-a-new-adapter.md), and [tested](/docs/contributing/testing-a-new-adapter.md) your adapter, it's time to document it so the dbt community will know that it exists and how to use it!
+If you've already [built](3-building-a-new-adapter), and [tested](4-testing-a-new-adapter) your adapter, it's time to document it so the dbt community will know that it exists and how to use it.
+
+## Making your adapter available
+
+Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
+- Hosting on a public git provider (for example, GitHub or Gitlab)
+- Publishing to [PyPi](https://pypi.org/)
+- Adding to the list of ["Available Adapters"](available-adapters#community-supported) (more info below)
 
 ## General Guidelines
 
