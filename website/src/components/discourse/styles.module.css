@@ -1,3 +1,30 @@
 .discourseSection {
   padding: 4rem 0;
 }
+
+.discourseSection .discoursePosts {
+  margin-bottom: 3rem;
+}
+.discourseSection .discoursePosts:last-of-type {
+  margin-bottom: 0;
+}
+.discourseSection .discoursePosts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.discourseSection .discoursePosts ul li {
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--color-off-white);
+}
+.discourseSection .discoursePosts ul li:last-of-type {
+  border-bottom: none;
+}
+
+.discourseCta {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+.discourseCta:hover {
+  background: var(--color-light-teal);
+}
