@@ -48,7 +48,7 @@ https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
 
 By default in Development Environments, dbt Cloud attempts to reference the `main` branch in connected repositories. If you want to use a different default branch name, you can configure dbt Cloud with a custom branch setting. 
 
-For example, the environment below is configured to use the `develop` branch of the connected repository: 
+For example, you can use the `develop` branch of a connected repository. Edit an environment, then in "General settings" select  **Only run on a custom branch** , and in "Custom branch" type **develop** or the name of your custom branch.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="Configuring a custom base repository branch"/>
 
