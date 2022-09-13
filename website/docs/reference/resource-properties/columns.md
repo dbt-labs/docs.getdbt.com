@@ -69,7 +69,7 @@ sources:
 
 <TabItem value="seeds">
 
-<File name='data/<filename>.yml'>
+<File name='seeds/<filename>.yml'>
 
 ```yml
 version: 2
