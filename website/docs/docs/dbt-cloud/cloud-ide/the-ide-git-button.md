@@ -1,6 +1,8 @@
 ---
 title: "The IDE Git Button"
+id: the-ide-git-button
 ---
+
 
 The git button in the IDE allows you to apply the concept of [version control](dbt-cloud/cloud-ide/the-dbt-ide#version-control) to your project. This page provides descriptions of each git button command and what they do.
 
