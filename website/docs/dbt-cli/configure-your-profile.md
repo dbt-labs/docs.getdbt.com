@@ -1,12 +1,15 @@
 ---
-title: "Configure your profile"
+title: "Configuring your profile"
+description: "Configure your profile using the command line."
 ---
 
 ## Related documentation
-* [`profiles.yml` reference](/reference/profiles.yml)
 
-## How to connect to your warehouse when using the CLI
-When you invoke dbt from the CLI, dbt parses your `dbt_project.yml` for the name of the `profile` to use to connect to your data warehouse.
+* [`profiles.yml` reference](/reference/profiles.yml): Learn more about profile configuration.
+
+## Connecting to your warehouse using the command line
+
+When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
 
 <File name='dbt_project.yml'>
 
@@ -44,23 +47,26 @@ jaffle_shop:
 </File>
 
 
+## About the `profiles.yml` file
 
-## What goes in my `profiles.yml` file?
-In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use – for most organizations, this means you would only have one profile.
+In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile.
 
-You can also configure some advanced dbt options in your `profiles.yml` file, see [the reference docs for `profiles.yml` files](reference/profiles.yml.md).
+For information about configuring advanced options, see [the `profiles.yml` reference page](reference/profiles.yml.md).
 
-## What goes in a profile?
+## About profiles
+
 A profile consists of _targets_, and a specified _default target_.
 
 Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
-The credentials you need to provide in your target varies across warehouses – sample profiles for each supported warehouse are available in the [Supported Adapters](available-adapters) section.
+The credentials you need to provide in your target varies across warehouses &mdash sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
 
 **Pro Tip:** You may need to surround your password in quotes if it contains special characters. More details [here](https://stackoverflow.com/a/37015689/10415173).
 
-## Populating your profile
-To populate your profile, copy the correct sample profile for your warehouse into your `profiles.yml` file and update the details as follows:
+## Setting up your profile
+
+To set up your profile, copy the correct sample profile for your warehouse into your `profiles.yml` file and update the details as follows:
+
 * Profile name: Replace the name of the profile with a sensible name – it’s often a good idea to use the name of your organization. Make sure that this is the same name as the `profile` indicated in your `dbt_project.yml` file.
 * `target`: This is the default target your dbt project will use. It must be one of the targets you define in your profile. Commonly it is set to `dev`.
 * Populating your target:
@@ -77,8 +83,8 @@ Use the [debug](debug) command to check whether you can successfully connect to 
 
 :::
 
-# Understanding profiles
-## Understanding targets
+## Understanding targets in profiles
+
 dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [Managing Environments](managing-environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
@@ -88,12 +94,14 @@ You may also have a `prod` target within your profile, which creates the objects
 If you do have multiple targets in your profile, and want to use a target other than the default, you can do this using the `--target` option when issuing a dbt command.
 
 ## Understanding warehouse credentials
+
 We recommend that each dbt user has their own set of database credentials, including a separate user for production runs of dbt – this helps debug rogue queries, simplifies ownerships of schemas, and improves security.
 
 To ensure the user credentials you use in your target allow dbt to run, you will need to ensure the user has appropriate privileges. While the exact privileges needed varies between data warehouses, at a minimum your user must be able to:
+
 * read source data
 * create schemas¹
-* read system tables
+* read system <Term id="table">tables</Term>
 
 :::info Running dbt without create schema privileges
 
@@ -102,6 +110,7 @@ If your user is unable to be granted the privilege to create schemas, your dbt r
 :::
 
 ## Understanding target schemas
+
 The target schema represents the default schema that dbt will build objects into, and is often used as the differentiator between separate environments within a warehouse.
 
 :::info Schemas in BigQuery
@@ -119,6 +128,7 @@ Note that there’s no need to create your target schema beforehand – dbt will
 While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](using-custom-schemas).
 
 ## Understanding threads
+
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
 
 For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
@@ -131,15 +141,17 @@ Generally the optimal number of threads depends on your data warehouse and its c
 
 You can use a different number of threads than the value defined in your target by using the `--threads` option when executing a dbt command.
 
-# Advanced profile configuration
-## Using a custom profile directory
+## Advanced: Customizing a profile directory
+
 By default, dbt expects your `profiles.yml` file to be located in the `~/.dbt/` directory. To check the expected location of your `profiles.yml` file for your installation of dbt, you can run the following:
+
 ```bash
 $ dbt debug --config-dir
 To view your profiles.yml file, run:
 
 open /Users/alice/.dbt
 ```
+
 You may want to have your `profiles.yml` file stored in a different directory – for example, if you are using environment variables to load your credentials, you might choose to include this file in your version controlled dbt project, and direct dbt to load the file from there.
 
 Note that the file always needs to be called `profiles.yml`, regardless of which directory it is in.
@@ -148,9 +160,11 @@ There are two ways to direct dbt to a different location for your `profiles.yml`
 
 **1. Use the `--profiles-dir` option when executing a dbt command**
 This option can be used as follows:
+
  ```
 $ dbt run --profiles-dir path/to/directory
  ```
+
 If using this method, the `--profiles-dir` option needs to be provided every time you run a dbt command.
 
 **2. Use the `DBT_PROFILES_DIR` environment variable to change the default location**
@@ -160,5 +174,6 @@ $ export DBT_PROFILES_DIR=path/to/directory
 ```
 If the `--profiles-dir` option is used in a dbt command, it will take precedence over this environment variable.
 
-## Using environment variables in your profile
+## Advanced: Using environment variables
+
 Credentials can either be placed directly into the `profiles.yml` file, or they can be loaded from environment variables. This is especially useful for production deployments of dbt. You can find more information about using environment variables [here](env_var).

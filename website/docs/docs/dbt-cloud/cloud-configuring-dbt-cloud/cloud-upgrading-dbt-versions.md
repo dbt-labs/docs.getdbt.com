@@ -16,13 +16,44 @@ Below we try to help you answer the question of whether a known breaking change 
 
 :::info An Important Note on Packages
 
-If you use any packages from [dbt Hub]([https://hub.getdbt.com/](https://hub.getdbt.com/)), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on GitHub.
+If you use any packages from [dbt Hub](https://hub.getdbt.com/), make sure you also upgrade to a version of the package that supports the dbt version you intend to upgrade to. You can see which dbt versions a package supports by checking on the `require-dbt-version:` in the package's dbt_project.yml file on GitHub.
 
-As an example, dbt-utils version 0.7.1 supports dbt v0.20 and v0.21, as described in its [dbt_project.yml](https://github.com/dbt-labs/dbt-utils/blob/0.7.1/dbt_project.yml).
+As an example, dbt-utils version 0.7.6 supports dbt v0.20, v0.21, and v1.0, as described in its [dbt_project.yml](https://github.com/dbt-labs/dbt-utils/blob/0.7.6/dbt_project.yml).
 
 After you've changed the package version in your packages.yml file, be sure to run `dbt deps` in the IDE to install the updated version.
 
 :::
+
+<details>
+<summary>  Upgrading to v1.0.latest from v0.21 </summary>
+<br></br>
+
+:::info Universal change
+Certain configurations in dbt_project.yml have been renamed
+:::
+
+Existing projects will see non-breaking deprecation warnings. You can change three lines in most projects to remove the warnings:
+
+<File name='dbt_project.yml'>
+
+```yml
+model-paths: ["models"] # formerly named "source-paths"
+seed-paths: ["data"]    # formerly named "data-paths"
+clean-targets:
+  - "target"
+  - "dbt_packages"      # formerly named "dbt_modules"
+```
+
+</File>
+
+- Do you select tests using the old names for test types? (`test_type:schema`, `test_type:data`, `--schema`, `--data`)
+- Do you have custom macro code that calls the (undocumented) global macros `column_list`, `column_list_for_create_table`, `incremental_upsert`?
+- Do you have custom scripts that parse dbt JSON artifacts?
+- (BigQuery only) Do you use dbt's legacy capabilities around ingestion-time-partitioned tables?
+
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-v1.0).
+
+</details>
 
 
 <details>
@@ -31,9 +62,9 @@ After you've changed the package version in your packages.yml file, be sure to r
 
 - Do you select specific sources to check freshness (`dbt snapshot-freshness --select <source_name>`)?
 - Do you have custom scripts that parse dbt JSON artifacts?
-- (Snowflake only) Do you have custom macros or materializations that depend on using transactions, such as statement blocks with `auto_begin=True`?
+- (Snowflake only) Do you have custom macros or <Term id="materialization">materializations</Term> that depend on using transactions, such as statement blocks with `auto_begin=True`?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-21-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -47,7 +78,7 @@ If you believe your project might be affected, read more details in the migratio
 - Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-20-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -70,7 +101,7 @@ See **Upgrading to v0.17.latest from v0.16** below for more details.
 - Do you have custom scripts that parse dbt JSON artifacts?
 - Do you have any custom materializations?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-19-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -81,7 +112,7 @@ If you believe your project might be affected, read more details in the migratio
 
 - Do you directly call `adapter_macro`?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-18-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -159,7 +190,7 @@ models:
 ```
 </File>
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-17-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 
 </details>
 
@@ -171,7 +202,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use `partition_by` config for BigQuery models?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-16-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 </details>
 
 
@@ -183,7 +214,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you have a custom materialization?
 - Do you have a macro that accesses `Relations` directly?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-15-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 </details>
 
 <details>
@@ -194,7 +225,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use the `—non-destructive` flag?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/guides/migration-guide/upgrading-to-0-14-0).
+If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
 </details>
 
 

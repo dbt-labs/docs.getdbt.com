@@ -100,18 +100,68 @@ select ...
 </Tabs>
 
 ## Definition
-A SQL statement (or list of SQL statements) to be run before or after a model, seed or snapshot is built.
+A SQL statement (or list of SQL statements) to be run before or after a model, seed, or snapshot is built.
 
-Pre- and post-hooks can also call macros that return SQL statements.
+Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](dont-nest-your-curlies#an-exception).
+
+### Why would I use hooks?
+
+dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out-of-the-box functionality, which you can configure quickly and concisely. In some cases, there may be SQL that you want or need to run, specific to functionality in your data platform, which dbt does not (yet) offer as a built-in feature. In those cases, you can write the exact SQL you need, using dbt's compilation context, and pass it into a `pre-` or `post-` hook to run before or after your model, seed, or snapshot.
 
 <Changelog>
 
-* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the [alternative config syntax]() to apply pre- and post-hooks.
+* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the alternative config syntax to apply pre- and post-hooks.
 
 </Changelog>
 
 
 ## Examples
+
+<Snippet src="hooks-to-grants" />
+
+<VersionBlock firstVersion="1.2">
+
+### [Redshift] Unload one model to S3
+
+<File name='model.sql'>
+
+```sql
+{{ config(
+  post_hook = "unload ('select from {{ this }}') to 's3:/bucket_name/{{ this }}"
+) }}
+
+select ...
+```
+
+</File>
+
+See: [Redshift docs on `UNLOAD`](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html)
+
+### [Apache Spark] Analyze tables after creation
+
+<File name='dbt_project.yml'>
+
+```yml
+
+model:
+  jaffle_shop: # this is the project name
+    marts:
+      finance:
+        +post-hook:
+          # this can be a list
+          - "analyze table {{ this }} compute statistics for all columns"
+          # or call a macro instead
+          - "{{ analyze_table() }}"
+```
+
+See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest/sql-ref-syntax-aux-analyze-table.html)
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.1">
+
 ### Grant privileges on a model
 
 <File name='dbt_project.yml'>
@@ -171,6 +221,8 @@ model:
 
 </File>
 
+</VersionBlock>
+
 ### Additional examples
 We've compiled some more in-depth examples [here](hooks-operations#additional-examples).
 
@@ -190,9 +242,9 @@ If you're using an adapter that makes use of transactions (namely Postgres or Re
 
 There may be occasions where you need to run these hooks _outside_ of a transaction, for example:
 * You want to run a `VACUUM` in a `post-hook`, however this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
-* You want to insert a record into an audit table at the start of a run, and do not want that statement rolled back if the model creation fails.
+* You want to insert a record into an audit <Term id="table" /> at the start of a run, and do not want that statement rolled back if the model creation fails.
 
-To achieve this, you can use one of the following syntaxes:
+To achieve this, you can use one of the following syntaxes. (Note: You should NOT use this syntax if using a database where dbt does not use transactions by default, including Snowflake, BigQuery, and Spark/Databricks.)
 
 #### Config block: use the `before_begin` and `after_commit` helper macros
 
