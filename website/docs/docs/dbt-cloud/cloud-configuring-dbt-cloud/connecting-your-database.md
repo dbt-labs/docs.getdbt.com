@@ -3,6 +3,8 @@ title: "Connecting your database"
 id: "connecting-your-database"
 ---
 
+You can connect to your database in dbt Cloud by clicking the gear  in the top right and then selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
+
 ## IP Restrictions
 
 dbt Cloud will always connect to your warehouse from the following IP addresses.
@@ -34,9 +36,6 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Host Name | The hostname of the Postgres, Redshift, or AlloyDB database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
-
-
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" title="Configuring a Redshift connection"/>
 
 ### Connecting via an SSH Tunnel
