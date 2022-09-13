@@ -5,7 +5,8 @@ title: "Snowflake Permissions"
 ## dbt Labs recommended Snowflake permissions
 
 ```
--- NOTE: warehouse_name, database_name, and role_name are placeholders! Replace as-needed for your organization's naming convention!
+-- NOTE: warehouse_name, database_name, and role_name are placeholders!
+-- Replace as-needed for your organization's naming convention!
 
 grant all on warehouse warehouse_name to role role_name;
 grant usage on database database_name to role role_name;
