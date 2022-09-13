@@ -18,14 +18,14 @@ export default function DiscourseFeed(styles = {}) {
           ? 'http://localhost:8888/.netlify/functions/get-discourse-posts'
           : '/.netlify/functions/get-discourse-posts'
 
-        // Get Discourse posts data
-        const { data: latest_posts } = await axios.get(endpoint)
+        // Get Discourse topics data
+        const { data: { topics } } = await axios.get(endpoint)
 
         // Set error state if data not available
-        if(!latest_posts) throw new Error('Unable to get latest posts.')
+        if(!topics) throw new Error('Unable to get latest topics.')
 
         // Set 5 latest posts
-        setPosts(latest_posts.slice(0, 5))
+        setPosts(topics.slice(0, 5))
         setLoading(false)
       } catch(err) {
         setIsError(true)
@@ -47,8 +47,8 @@ export default function DiscourseFeed(styles = {}) {
           <ul>
             {posts.map(post => (
               <li>
-                <PostWrapper post={post}>{post.topic_title}</PostWrapper>
-                <span> - by {post.username}</span>
+                <PostWrapper post={post}>{post.title}</PostWrapper>
+                <span> {post.username && `- by ${post.username}`}</span>
               </li>
             ))}
           </ul>
@@ -62,9 +62,9 @@ export default function DiscourseFeed(styles = {}) {
 }
 
 function PostWrapper({ post, children }) {
-  if(post?.topic_slug) {
+  if(post?.slug) {
     return (
-      <a href={`https://discourse.getdbt.com/t/${post.topic_slug}`} title="title" target="_blank">{children}</a>
+      <a href={`https://discourse.getdbt.com/t/${post.slug}`} title={post.title} target="_blank">{children}</a>
     )
   } else {
     return (
