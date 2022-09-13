@@ -8,7 +8,7 @@ datatype: string | [string]
 </Changelog>
 
 <Tabs
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Config property', value: 'other-yaml', },
@@ -134,10 +134,10 @@ Then, run part of your project like so:
 
 ```
 # Run all models tagged "daily"
-$ dbt run --model tag:daily
+$ dbt run --select tag:daily
 
 # Run all models tagged "daily", except those that are tagged hourly
-$ dbt run --model tag:daily --exclude tag:hourly
+$ dbt run --select tag:daily --exclude tag:hourly
 ```
 
 ### Apply tags to seeds

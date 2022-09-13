@@ -12,14 +12,10 @@ Include any notes about things that need to happen before this PR is merged, e.g
 - [ ] Ensure PR #56 is merged
 -->
 
-## Pre-release docs
-Is this change related to an unreleased version of dbt?
-- [ ] Yes: please
-    - update the base branch to `next`
-    - add Changelog components: `<Changelog>[New/Changed] in v0.x.0</Changelog>`
-    - add links to the "New and changed documentation" section of the latest [Migration Guide](../website/docs/docs/guides/migration-guide)
-- [ ] No: please ensure the base branch is `current`
-- [ ] Unsure: we'll let you know!
+## Prerelease docs
+If this change is related to functionality in a prerelease version of dbt (delete if not applicable):
+- [ ] I've added versioning components, as described in ["Versioning Docs"](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/versioningdocs.md)
+- [ ] I've added a note to the prerelease version's [Migration Guide](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs/guides/migration/versions)
 
 ## Checklist
 If you added new pages (delete if not applicable):
