@@ -8,10 +8,10 @@ Software engineers frequently modularize code into libraries. These libraries he
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
-  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) or [Heap](https://hub.getdbt.com/dbt-labs/heap/latest/) pageviews into sessions
+  * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/) or [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) pageviews into sessions
   * transforming [AdWords](https://hub.getdbt.com/dbt-labs/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/) spend data into a consistent format.
 * writing dbt macros that perform similar functions, for example:
-  * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a surrogate key
+  * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a <Term id="surrogate-key" />
   * creating [custom schema tests](https://github.com/dbt-labs/dbt-utils#schema-tests)
   * writing [audit queries](https://hub.getdbt.com/dbt-labs/audit_helper/latest/)
 * building models and macros for a particular tool used in your data stack, for example:
@@ -42,7 +42,13 @@ packages:
 
 </File>
 
-3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_modules` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
+<Changelog>
+
+- **v1.0.0:** The default [`packages-install-path`](packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
+
+</Changelog>
+
+3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
 ## How do I specify a package?
 You can specify a package using one of the following methods, depending on where your package is stored.
@@ -80,23 +86,33 @@ In comparison, other package installation methods are unable to handle the dupli
 <Changelog>
 
 * `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
+* `v1.0.0`: When you provide an explicit prerelease version, dbt will install that version.
 
 </Changelog>
 
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
-By default, `dbt deps` will not install prerelease versions of packages. You can enable the installation of prereleases with the `install-prerelease` parameter.
+By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
+- Explicitly specifying a prerelease version in your `version` criteria
+- Setting `install-prerelease` to `true`, and providing a compatible version range
+
+Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
 
 ```yaml
 packages:
-  - package: tailsdotcom/dbt_artifacts
+  - package: brooklyn-data/dbt_artifacts
     version: 0.4.5a2
+```
+
+```yaml
+packages:
+  - package: brooklyn-data/dbt_artifacts
+    version: [">=0.4.4", "<0.4.6"]
     install-prerelease: true
 ```
 
 ### Git packages
 Packages stored on a Git server can be installed using the `git` syntax, like so:
-
 
 <File name='packages.yml'>
 
@@ -129,8 +145,10 @@ As of v0.14.0, dbt will warn you if you install a package using the `git` syntax
 
 ### Private packages
 
-#### SSH Key Method
-Private packages can be cloned via SSH and an SSH key. When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/ssh/).
+#### SSH Key Method (Command Line only)
+If you're using the Command Line, private packages can be cloned via SSH and an SSH key. 
+
+When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/ssh/).
 
 
 <File name='packages.yml'>
@@ -142,9 +160,16 @@ packages:
 
 </File>
 
+If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/building-a-dbt-project/package-management#git-token-method).
+
+
 #### Git Token Method
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
+
+:::info dbt Cloud Usage
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+:::
 
 In GitHub:
 
@@ -152,7 +177,7 @@ In GitHub:
 
 ```yaml
 packages:
-  - git: "https://{{env_var('GIT_CREDENTIALS')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+  - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
@@ -165,7 +190,7 @@ In GitLab:
 
 ```yaml
 packages:
-  - git: "https://{{env_var('USER_NAME')}}:{{env_var('DEPLOY_TOKEN')}}@gitlab.example.com/dbt-labs/awesome_project.git" # git HTTPS URL
+  - git: "https://{{env_var('DBT_USER_NAME')}}:{{env_var('DBT_ENV_SECRET_DEPLOY_TOKEN')}}@gitlab.example.com/dbt-labs/awesome_project.git" # git HTTPS URL
 ```
 
 </File>
@@ -178,7 +203,7 @@ In Azure DevOps:
 
 ```yaml
 packages:
-  - git: "https://{{env_var('PERSONAL_ACCESS_TOKEN')}}@dev.azure.com/dbt-labs/awesome_project/_git/awesome_repo" # git HTTPS URL
+  - git: "https://{{env_var('DBT_ENV_SECRET_PERSONAL_ACCESS_TOKEN')}}@dev.azure.com/dbt-labs/awesome_project/_git/awesome_repo" # git HTTPS URL
 ```
 
 </File>
@@ -191,7 +216,7 @@ In Bitbucket:
 
 ```yaml
 packages:
-  - git: "https://{{env_var('USER_NAME')}}:{{env_var('PERSONAL_ACCESS_TOKEN')}}@bitbucketserver.com/scm/awesome_project/awesome_repo.git" # for Bitbucket Server
+  - git: "https://{{env_var('DBT_USER_NAME')}}:{{env_var('DBT_ENV_SECRET_PERSONAL_ACCESS_TOKEN')}}@bitbucketserver.com/scm/awesome_project/awesome_repo.git" # for Bitbucket Server
 ```
 
 </File>
@@ -199,9 +224,7 @@ packages:
 Read more about creating a Personal Access Token [here](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html).
 
 
-:::info Beta Feature
-Environment variables, which enable private packages, are now supported in dbt Cloud! To get access to the beta, reach out to support@getdbt.com.
-:::
+
 #### Project subdirectories
 
 <Changelog>
@@ -244,8 +267,8 @@ Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt 
 When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](run) of the models in this package.
 
 ### Uninstalling a package
-When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_modules/` directory. If you want to completely uninstall a package, you should either:
-* delete the package directory in `dbt_modules/`;  or
+When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:
+* delete the package directory in `dbt_packages/`;  or
 * run `dbt clean` to delete _all_ packages (and any compiled models), followed by `dbt deps`.
 
 ### Configuring packages

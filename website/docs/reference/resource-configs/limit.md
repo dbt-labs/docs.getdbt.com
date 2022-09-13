@@ -6,6 +6,7 @@ datatype: integer
 <Changelog>
 
 * `v0.20.0`: Introduced `limit` config
+* `v0.21.0`: Introduced `config` property for tests
 
 </Changelog>
 
@@ -37,7 +38,8 @@ models:
         tests:
           - accepted_values:
               values: ["a", "b", "c"]
-              limit: 1000  # will only include the first 1000 failures
+              config:
+                limit: 1000  # will only include the first 1000 failures
 ```
 
 </File>

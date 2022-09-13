@@ -2,9 +2,7 @@
 title: Analysis properties
 ---
 
-Analysis properties can be declared in `.yml` files in:
-- your `analyses/` directory (as defined by the [`analysis-paths` config](analysis-paths))
-- your `models/` directory (as defined by the [`source-paths` config](source-paths))
+We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](analysis-paths) configuration.
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `analyses/` or `models/` directory.
 
@@ -18,6 +16,8 @@ analyses:
     [description](description): <markdown_string>
     [docs](resource-properties/docs):
       show: true | false
+    config:
+      [tags](resource-configs/tags): <string> | [<string>]
     columns:
       - name: <column_name>
         [description](description): <markdown_string>
