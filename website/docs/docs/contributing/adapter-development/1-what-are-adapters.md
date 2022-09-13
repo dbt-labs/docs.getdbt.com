@@ -20,7 +20,7 @@ There's a tremendous amount of work that goes into creating a database. Here is 
 There's a lot more there than just SQL as a language. Databases (and data warehouses) are so popular because you can abstract away a great deal of the complexity from your brain to the database itself. This enables you to focus more on the data.
 
 dbt allows for further abstraction and standardization of the outermost layers of a database (SQL API, client library, connection manager) into a framework that both:
- - Opens database technology to less technical users (webmaster -> web developer).
+ - Opens database technology to less technical users (a large swath of a DBA's role has been automated, similar to how the vast majority of folks with websites today no longer be be "[webmasters](https://en.wikipedia.org/wiki/Webmaster)").
  - Enables more meaningful conversations about how data warehousing should be done.
 
 This is where dbt adapters become critical.
@@ -54,7 +54,7 @@ The other big category of inter-database differences comes with how the client c
 |------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | Credentials & authentication | Authentication                             | <li>Username & password</li><li>MFA with `boto3` or Okta token</li>                                                |
 | Connection opening/closing   | Create a new connection to db             |<li>`psycopg2.connect(connection_string)`</li><li>`google.cloud.bigquery.Client(...)`</li>                        |
-| Inserting local data         | Load seed .`csv` files into Python memory |<li> `Adapter.upload_file()` (BigQuery)</li><li>`INSERT ... INTO VALUES ...` prepared statement (all other databases)</li> |
+| Inserting local data         | Load seed .`csv` files into Python memory |<li> `google.cloud.bigquery.Client.load_table_from_file(...)` (BigQuery)</li><li>`INSERT ... INTO VALUES ...` prepared statement (most other databases)</li> |
 
 
 ## How dbt encapsulates and abstracts these differences
