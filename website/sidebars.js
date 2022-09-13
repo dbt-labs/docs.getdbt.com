@@ -47,7 +47,6 @@ const sidebarSettings = {
       items: [
         "docs/running-a-dbt-project/using-the-dbt-ide",
         "docs/running-a-dbt-project/using-the-cli",
-        "docs/running-a-dbt-project/dbt-api",
         "docs/running-a-dbt-project/running-dbt-in-production",
       ],
     },
