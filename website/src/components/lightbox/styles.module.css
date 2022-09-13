@@ -9,8 +9,7 @@
     filter: drop-shadow(1px 4px 10px #aaaaaa33);
     margin: 10px auto;
     display: block;
-    width: 600px;
-    max-width: 100%;
+    max-width: 400px;
 }
 
 :local(.collapsed) {

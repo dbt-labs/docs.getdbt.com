@@ -31,7 +31,7 @@ Here’s an example of a dataset.
 | 1 | available | 2021-11-15 16:00:0000 |
 | 2 | not_available | 2021-11-15 15:30:0000 |
 
-When you apply snapshot this data, you’ll see the history of the data, and the `valid_from` and `valid_to` timestamps to capture when the row values were valid, and the values during those timespans.  
+When you apply a snapshot to this data, you’ll see the history of the data, and the `valid_from` and `valid_to` timestamps to capture when the row values were valid, and the values during those timespans.  
 
 | entity_id | important_status | dbt_valid_from | dbt_valid_to |
 | --- | --- | --- | --- |
@@ -63,9 +63,9 @@ Consider the complexity of the problem: you’ve successfully captured the histo
 | 1 | B | 1B | pending | 2021-11-10 10:00:000 | 2021-11-15 15:30:0000 |
 | 2 | C | 2C | available | 2021-11-10 15:00:0000 | NULL  |
 
-This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has _x_ historical rows per `product_id`, and _y_ ids total. That’s _x*y = n_ rows of data. `historical_table_2` has _z_  historical rows per `product_id`, and _w_ ids (_z*w = m_ rows). The subsequent join on `product_id` then [changes the complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from *O(n)* to _O(n*m)_ very quickly (_x\*y\*z\*w_ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
+This doesn’t look so bad. How complex can this get? Let’s take a look at the math. Say `historical_table_1` has _x_ historical rows per `product_id`, and _y_ ids total. That’s _x*y = n_ rows of data. `historical_table_2` has _z_  historical rows per `product_id`, and _w_ ids (_z*w = m_ rows). The subsequent join on `product_id` then [changes the complexity](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/) from _O(n)_ to _O(n\*m)_ very quickly (_x\*y\*z\*w_ possibilities!). The complexity continues to increase as we join together more and more historical tables. 
 
-I know what you’re thinking — what a mess! Can’t we just join everything together, and snapshot the resulting table? This is not a bad thought. It would save you the trouble of thinking through a problem with _O(n*m*a*b*c*d*...*q)_ complexity. And in some cases, this may capture all the history you need! 
+I know what you’re thinking — what a mess! Can’t we just join everything together, and snapshot the resulting table? This is not a bad thought. It would save you the trouble of thinking through a problem with _O(n\*m\*a\*b\*c\*d\*...\*q)_ complexity. And in some cases, this may capture all the history you need! 
 
 However, it does not provide a solution to the problem initially posed. The historical records track when each table is valid, rather than when the joined table is valid, and this history for each dataset will only be reflected when you snapshot each table, and then join them, rather than joining and subsequently snapshotting the table. The `valid_from` and `valid_to` built into the joined-then-snapshotted table will only be built from `updated_at` timestamps where the joined table is updated, and thus changes in the underlying data may not be captured. We want to understand when the records are truly valid across all tables, meaning we need to take into account the valid timestamps from each individual dataset. 
 
@@ -111,7 +111,7 @@ Step 2 walks you through how to snapshot your data. The example provided assumes
 
 Do you know how to snapshot data? It is a simple Jinja block with some configs specified. There are so many explanations of how to implement these, so I’m not going to bore you. But you know I’ll throw you some links. [Boom.](https://blog.getdbt.com/track-data-changes-with-dbt-snapshots/) [And foobar!](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots)
 
-You can snapshot by checking your `change_id` if you’ve implemented the removing-dupes logic from Step 1, or using the timestamp strategy, if you have a **reliable timestamp.
+You can snapshot by checking your `change_id` if you’ve implemented the removing-dupes logic from Step 1, or using the timestamp strategy, if you have a reliable timestamp.
 
 ```sql
 {% snapshot snp_product %}
@@ -150,7 +150,7 @@ And coalesce!
 coalesce(dbt_valid_to, cast('{{ var("future_proof_date") }}' as timestamp)) as valid_to
 ```
 
-You will thank yourself later for building in a global variable. Adding important global variables will set your future-self up for success. Now, you can filter all your data to the current state by just filtering on `where valid_to = future_proof_date`*.* You can also ensure that all the data-bears with their data-paws in the data-honey jar are referencing the **same** `future_proof_date`, rather than `9998-12-31`, or `9999-12-31`, or `10000-01-01`, which will inevitably break something eventually. You know it will; don’t argue with me! Global_vars for the win!
+You will thank yourself later for building in a global variable. Adding important global variables will set your future-self up for success. Now, you can filter all your data to the current state by just filtering on `where valid_to = future_proof_date`*.* You can also ensure that all the data-bears with their data-paws in the data-honey jar are referencing the **same** `future_proof_date`, rather than `9998-12-31`, or `9999-12-31`, or `10000-01-01`, which will inevitably break something eventually. You know it will; don’t argue with me! Global vars for the win!
 
 ## Step 4: Join all your tables together to build a fanned out id spine
 
