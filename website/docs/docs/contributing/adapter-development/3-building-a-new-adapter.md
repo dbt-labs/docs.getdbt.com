@@ -4,7 +4,7 @@ id: "3-building-a-new-adapter"
 ---
 
 :::tip
-Before you build your adapter, we strongly encourage you to first learn dbt as an end user, learn [what an adapter is and they role they serve](1-what-are-adapters), as well as [data platform prerequisites](2-prerequisites-for-a-new-adapter)
+Before you build your adapter, we strongly encourage you to first learn dbt as an end user, learn [what an adapter is and the role they serve](1-what-are-adapters), as well as [data platform prerequisites](2-prerequisites-for-a-new-adapter)
 :::
 
 
