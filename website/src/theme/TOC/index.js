@@ -7,6 +7,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import TOCItems from '@theme/TOCItems';
+import EditThisPage from '@theme/EditThisPage';
 import styles from './styles.module.css'; // Using a custom className
 // This prevents TOC highlighting to highlight TOCInline/TOCCollapsible by mistake
 
@@ -15,8 +16,10 @@ import CTA from '../../components/cta';
 
 const LINK_CLASS_NAME = 'table-of-contents__link toc-highlight';
 const LINK_ACTIVE_CLASS_NAME = 'table-of-contents__link--active';
+const editUrl = 'https://github.com/dbt-labs/docs.getdbt.com/edit/current/website/docs/docs/introduction.md';
 
 function TOC({className, featured_cta, ...props}) {
+
   return (
     <div className={clsx(styles.tableOfContents, 'thin-scrollbar', className)}>
       <TOCItems
@@ -24,6 +27,12 @@ function TOC({className, featured_cta, ...props}) {
         linkClassName={LINK_CLASS_NAME}
         linkActiveClassName={LINK_ACTIVE_CLASS_NAME}
       />
+
+      {editUrl && (
+        <div className="col margin-top--sm">
+          <EditThisPage editUrl={editUrl} />
+        </div>)}
+
       {featured_cta && (
       <CTA cta={featured_cta} />
     )}

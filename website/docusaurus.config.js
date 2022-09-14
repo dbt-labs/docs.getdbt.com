@@ -94,6 +94,7 @@ var siteSettings = {
       additionalLanguages: ['bash'],
     },
     navbar: {
+      hideOnScroll: true,
       logo: {
         src: '/img/dbt-logo.svg',
         srcDark: 'img/dbt-logo-light.svg',
@@ -111,24 +112,6 @@ var siteSettings = {
           label: 'Reference',
           position: 'left',
           activeBasePath: 'reference'
-        },
-        {
-          to: '/dbt-cli/cli-overview',
-          label: 'dbt CLI',
-          position: 'left',
-          activeBasePath: 'dbt-cli'
-        },
-        {
-          to: '/docs/dbt-cloud/cloud-overview',
-          label: 'dbt Cloud',
-          position: 'left',
-          activeBasePath: 'docs/dbt-cloud'
-        },
-        {
-          to: '/guides/getting-started',
-          label: 'Guides',
-          position: 'left',
-          activeBasePath: 'guides'
         },
         {
           to: '/blog/',
