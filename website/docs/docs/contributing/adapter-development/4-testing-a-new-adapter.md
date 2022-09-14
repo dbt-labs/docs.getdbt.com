@@ -1,6 +1,6 @@
 ---
 title: "Testing a new adapter"
-id: "testing-a-new-adapter"
+id: "4-testing-a-new-adapter"
 ---
 
 :::info
