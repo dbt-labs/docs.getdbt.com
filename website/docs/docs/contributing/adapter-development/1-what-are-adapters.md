@@ -22,7 +22,7 @@ There's a tremendous amount of work that goes into creating a database. Here is 
 There's a lot more there than just SQL as a language. Databases (and data warehouses) are so popular because you can abstract away a great deal of the complexity from your brain to the database itself. This enables you to focus more on the data.
 
 dbt allows for further abstraction and standardization of the outermost layers of a database (SQL API, client library, connection manager) into a framework that both:
- - Opens database technology to less technical users (a large swath of a DBA's role has been automated, similar to how the vast majority of folks with websites today no longer be be "[webmasters](https://en.wikipedia.org/wiki/Webmaster)").
+ - Opens database technology to less technical users (a large swath of a DBA's role has been automated, similar to how the vast majority of folks with websites today no longer have to be "[webmasters](https://en.wikipedia.org/wiki/Webmaster)").
  - Enables more meaningful conversations about how data warehousing should be done.
 
 This is where dbt adapters become critical.
