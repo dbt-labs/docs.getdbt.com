@@ -9,7 +9,7 @@ title: "Trying out v1.3 (beta)"
 
 ## Breaking changes
 
-There are no breaking changes for end users of dbt. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -32,3 +32,5 @@ _GitHub discussion forthcoming_
 - **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
 
 Docs in progress: [Issues labeled "dbt-core v1.3"](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.3%22+)
+
+- **[`node_color` now a supported `docs` attribute](/docs/reference/resource-configs/docs.md)**: You can add custom colors to the dbt docs lineage(DAG) graph. For the first time, you can physically visualize layers within the DAG, such as bronze, silver, and gold.

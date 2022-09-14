@@ -252,7 +252,7 @@ You can also define some common configs in a snapshot's `config` block. We don't
 version: 2
 
 snapshots:
-  - name: orders_snapshot:
+  - name: orders_snapshot
     config:
       persist_docs:
         relation: true
