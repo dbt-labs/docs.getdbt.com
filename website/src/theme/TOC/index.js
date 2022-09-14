@@ -16,14 +16,14 @@ import CTA from '../../components/cta';
 
 const LINK_CLASS_NAME = 'table-of-contents__link toc-highlight';
 const LINK_ACTIVE_CLASS_NAME = 'table-of-contents__link--active';
-const editUrl = 'https://github.com/dbt-labs/docs.getdbt.com/edit/current/website/docs/docs/introduction.md';
 
-function TOC({className, featured_cta, ...props}) {
+function TOC({className, featured_cta, editUrl, ...props}) {
 
   return (
     <div className={clsx(styles.tableOfContents, 'thin-scrollbar', className)}>
       <TOCItems
         {...props}
+        
         linkClassName={LINK_CLASS_NAME}
         linkActiveClassName={LINK_ACTIVE_CLASS_NAME}
       />
