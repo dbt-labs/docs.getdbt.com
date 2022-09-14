@@ -840,6 +840,7 @@ filter: opacity(.75);
 
   .navbar-sidebar__brand > div:first-of-type {
     order: 1;
+    margin-right: 0;
   }
 
   button.DocSearch-Button {
