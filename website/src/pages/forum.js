@@ -7,7 +7,7 @@ function Events() {
   return (
     <Layout>
         <div className="container discourse-forum-page">
-            <DiscourseFeed />
+            <DiscourseFeed title="Open topics" status='weee' order='latest' category='#modeling' />
         </div>
     </Layout>
   );
