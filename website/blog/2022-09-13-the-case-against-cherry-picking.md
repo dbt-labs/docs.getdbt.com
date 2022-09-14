@@ -90,7 +90,7 @@ If you’ve attempted a branching strategy that involves cherry picking into upp
 
 **What’s the problem?**
 
-In the example above, the team has only ever tested `feature_becca` *in combination with* `feature_alex` —so there’s no guarantee that `feature_becca`’s changes will be successful on their own. What if `feature_becca` were relying on a change included in `feature_alex`? Because testing of branches is not conducted independently, it’s risky to merge independently.
+In the example above, the team has only ever tested `feature_becca` *in combination with* `feature_alex` —so there’s no guarantee that `feature_becca`’s changes will be successful on their own. What if `feature_becca` was relying on a change included in `feature_alex`? Because testing of branches is not conducted independently, it’s risky to merge independently.
 
 ## Feature branches contain more than meets the eye
 
@@ -150,12 +150,12 @@ Instead, if you decide to use a branching strategy that involves multiple primar
 
 ![Hierarchical branching strategy](/img/blog/2022-09-13-the-case-against-cherry-picking/2_multienvironment.png)
 
-If issues arise during testing on the dev or staging branch, the developers should create additional branches as necessary to fix the bugs until the *entire* branch is ready to be promoted.
+If issues arise during testing on the `dev` or `staging` branch, the developers should create additional branches as necessary to fix the bugs until the *entire* branch is ready to be promoted.
 
 As mentioned previously, this approach does have a clear disadvantage—it might take longer to fix all of the bugs found during testing, which can lead to:
 
 - Delayed deployments
-- Code freezes on dev, creating a backup of out-dated feature branches waiting to be merged
+- Code freezes on `dev`, creating a backup of out-dated feature branches waiting to be merged
 
 Thankfully, we can mitigate these delays by doing rigorous testing on the *individual* feature branches, ensuring the team is extremely confident about the change *prior* to merging the feature branch into `dev`.
 
