@@ -17,7 +17,7 @@
   --ifm-h3-font-size: 1.563rem;
   --ifm-h4-font-size: 1.063rem;
   --ifm-h5-font-size: 0.938rem;
-  --ifm-navbar-height: 94px;
+  --ifm-navbar-height: 85px;
   --ifm-navbar-link-hover-color: var(--color-orange);
   --ifm-navbar-link-active-color: var(--color-orange);
   --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 3.75);
@@ -129,6 +129,11 @@ code {
   color: var(--ifm-color-emphasis-900);
 }
 
+
+html[data-theme='dark'] a code {
+  color: white;
+}
+
 .main-wrapper .home .col > p {
   font-size: 1.25rem;
 }
@@ -182,10 +187,6 @@ a.code-link:hover {
   color: #505d73;
   font-weight: var(--ifm-font-weight-semibold);
   font-size: 1rem;
-}
-
-.navbar {
-  padding: 0 var(--ifm-navbar-padding-horizontal);
 }
 
 .navbar__link {
@@ -433,9 +434,9 @@ html[data-theme=light] [class^=toggle_]:after {
   font-size: 1.5rem;
 }
 
-.admonition h5,
-.admonition .admonition-content,
-.admonition-content a {
+.admonition:not(.admonition-note) h5,
+.admonition:not(.admonition-note) .admonition-content,
+.admonition:not(.admonition-note) .admonition-content a {
   color: var(--ifm-color-gray-900);
 }
 
@@ -469,18 +470,30 @@ html[data-theme=light] [class^=toggle_]:after {
 .alert--info {
   --ifm-alert-background-color: var(--ifm-color-info-light);
   --ifm-alert-border-color: var(--ifm-color-info);
+  color: var(--ifm-color-gray-900);
 }
 .alert--success {
   --ifm-alert-background-color: var(--ifm-color-success-light);
   --ifm-alert-border-color: var(--ifm-color-success);
+  color: var(--ifm-color-gray-900);
 }
 .alert--danger {
   --ifm-alert-background-color: var(--ifm-color-danger-light);
   --ifm-alert-border-color: var(--ifm-color-danger);
+  color: var(--ifm-color-gray-900);
 }
 .alert--warning {
   --ifm-alert-background-color: var(--ifm-color-warning-light);
   --ifm-alert-border-color: var(--ifm-color-warning);
+  color: var(--ifm-color-gray-900);
+}
+
+/* for dark mode */
+.alert--info a,
+.alert--success a,
+.alert--danger a,
+.alert--warning a {
+  color: var(--ifm-color-gray-900);
 }
 
 .linkout {
@@ -586,6 +599,7 @@ div .toggle_src-components-faqs-styles-module {
 }
 
 .card.large .button {
+  color: #fff;
   font-size: 1.25rem;
   font-weight: var(--ifm-font-weight-semibold);
   margin-top: 0.25rem;
@@ -707,6 +721,10 @@ blockquote {
   padding: .5rem 0;
 }
 
+html[data-theme='dark'] .blog-breadcrumbs {
+  background-color: transparent;
+}
+
 .blog-breadcrumbs a {
   margin-right: 1.5rem;
   position: relative;
@@ -714,8 +732,18 @@ blockquote {
 
 .blog-breadcrumbs a[href="#"] {
   cursor: initial;
-  color: var(--color-primary-blue);
   pointer-events: none;
+}
+
+/* darkmode breadcrumbs */
+html[data-theme='dark'] .blog-breadcrumbs a[href="#"],
+html[data-theme='dark'] .blog-breadcrumbs a:not(:last-of-type):after {
+  filter: brightness(2.5);
+}
+
+html[data-theme='dark'] .blog-breadcrumbs a:not(:last-of-type):after {
+  filter: brightness(2.5);
+  color: var(--ifm-link-color);
 }
 
 .blog-breadcrumbs a:not(:last-of-type):after {
@@ -753,9 +781,13 @@ blockquote {
 /* footer styles */
 .footer {
   font-weight: var(--ifm-font-weight-narrow);
-  font-size: 20px;
+  font-size: 1.2rem;
   padding-top: var(--ifm-footer-padding-vertical);
   padding-bottom: var(--ifm-footer-padding-vertical);
+}
+
+.footer button {
+  font-size: 1.2rem;
 }
 
 .footer a.footer__link-item {
@@ -798,7 +830,7 @@ blockquote {
 /* fontawesome icons in footer */
 .footer .fa-brands {
   color: var(--color-footer-accent);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   transition: all .3s ease-in-out;
 }
 
@@ -816,7 +848,7 @@ filter: opacity(.75);
 /* Begin @Media Queries */
 @media (min-width: 997px) and (max-width: 1150px) {
   nav.navbar a.navbar__link {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .navbar__search .navbar__search-input {
@@ -842,17 +874,9 @@ filter: opacity(.75);
     order: 1;
     margin-right: 0;
   }
-
-  button.DocSearch-Button {
-    background: var(--ifm-color-gray-100);
-  }
-
-  [data-theme='dark'] button.DocSearch-Button {
-    background-color: black;
-  }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .card.large {
     height: auto;
     text-align: center;
@@ -863,27 +887,99 @@ filter: opacity(.75);
   }
 }
 
+@media  screen and (max-width: 1199px) {
+  button.DocSearch-Button {
+    background: var(--ifm-color-gray-100);
+  }
+
+  [data-theme='dark'] button.DocSearch-Button {
+    background-color: #ffffff20;
+  }
+
+  .DocSearch-Button .DocSearch-Search-Icon {
+    color: var(--docsearch-muted-color);
+  }
+
+  /* hide search text and keys until 1201px */
+  button .DocSearch-Button-Placeholder,
+  button .DocSearch-Button-Keys {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+    /* search bar styles */
+    button.DocSearch-Button {
+      border: 1px solid #95a0b1;
+      border-radius: 5px;
+    }
+    
+    button.DocSearch-Button:active, 
+    button.DocSearch-Button:focus, 
+    button.DocSearch-Button:hover {
+      color: var(--docsearch-muted-color);
+      background: white; 
+      box-shadow: var(--docsearch-searchbox-shadow);
+      border: 1px solid var(--ifm-link-color);
+    }
+    
+    button .DocSearch-Button-Placeholder {
+      font-size: .875rem;
+      font-weight: 600;
+      padding: 0 12px 0 8px;
+    }
+    
+    /* magnifying glass icon */
+    button.DocSearch-Button .DocSearch-Search-Icon {
+      color: var(--docsearch-muted-color);
+      stroke-width: 2px;
+      width: 1em;
+      height: 1em;
+    }
+    
+    /* keys wrapper */
+    button .DocSearch-Button-Keys {
+      border: 1px solid var(--docsearch-muted-color-for-keys);
+      border-radius: 5px;
+      padding: 0.24em 0.5em;
+      gap: 0.1em;
+    }
+    
+    /* single key */
+    button .DocSearch-Button-Key {
+      font-size: 1.25rem;
+      margin-right: 0;
+      padding: 4px 4px 2px;
+    }
+}
+
 @media (min-width: 1440px) {
   .container--fluid {
     max-width: inherit;
   }
+
+  button.DocSearch-Button {
+    min-width: 175px;
+  }
 }
 
 @media (min-width: 997px) {
-  html.docs-version-current aside.docSidebarContainer_src-theme-DocPage-styles-module {
-    width: auto;
-  }
-
   html.docs-version-current .navbar__brand {
-    display: none;
-  }
+    padding: 0 var(--ifm-navbar-padding-horizontal);
+    min-height: var(--ifm-navbar-height);
+    max-height: var(--ifm-navbar-height);
+    color: inherit !important;
+    text-decoration: none !important;
+    background-color: var(--ifm-background-color);
+    width: 300px;
+    min-width: 150px;
+    border-right: 1px solid var(--ifm-toc-border-color);
+}
 
   html.docs-version-current .navbar {
-    width: calc(99.95% - var(--doc-sidebar-width));
-  }
-  
-  html.docs-version-current .navbar--fixed-top {
-    margin-left: auto;
+    width: 100%;
+    margin-left: 0; 
+    padding: 0 var(--ifm-navbar-padding-horizontal) 0 0; 
   }
 
   html.docs-version-current aside html.docs-version-current .sidebar_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
@@ -905,51 +1001,6 @@ filter: opacity(.75);
 
   .navbar__items--right > :last-child {
     padding: var(--ifm-navbar-item-padding-vertical) 1em var(--ifm-navbar-item-padding-vertical) .5em;
-  }
-
-  /* search bar styles */
-  button.DocSearch-Button {
-    border: 1px solid #95a0b1;
-    border-radius: 5px;
-    min-width: 175px;
-  }
-  
-  button.DocSearch-Button:active, 
-  button.DocSearch-Button:focus, 
-  button.DocSearch-Button:hover {
-    color: var(--docsearch-muted-color);
-    background: white; 
-    box-shadow: var(--docsearch-searchbox-shadow);
-    border: 1px solid var(--ifm-link-color);
-  }
-  
-  button .DocSearch-Button-Placeholder {
-    font-size: .875rem;
-    font-weight: 600;
-    padding: 0 12px 0 8px;
-  }
-  
-  /* magnifying glass icon */
-  button.DocSearch-Button .DocSearch-Search-Icon {
-    color: var(--docsearch-muted-color);
-    stroke-width: 2px;
-    width: 1em;
-    height: 1em;
-  }
-  
-  /* keys wrapper */
-  button .DocSearch-Button-Keys {
-    border: 1px solid var(--docsearch-muted-color-for-keys);
-    border-radius: 5px;
-    padding: 0.24em 0.5em;
-    gap: 0.1em;
-  }
-  
-  /* single key */
-  button .DocSearch-Button-Key {
-    font-size: 1.25rem;
-    margin-right: 0;
-    padding: 4px 4px 2px;
   }
 
   .blog-main-row > main {

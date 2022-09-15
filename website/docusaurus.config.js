@@ -114,6 +114,24 @@ var siteSettings = {
           activeBasePath: 'reference'
         },
         {
+          to: '/dbt-cli/cli-overview',
+          label: 'dbt CLI',
+          position: 'left',
+          activeBasePath: 'dbt-cli'
+        },
+        {
+          to: '/docs/dbt-cloud/cloud-overview',
+          label: 'dbt Cloud',
+          position: 'left',
+          activeBasePath: 'docs/dbt-cloud'
+        },
+        {
+          to: '/guides/getting-started',
+          label: 'Guides',
+          position: 'left',
+          activeBasePath: 'guides'
+        },
+        {
           to: '/blog/',
           label: 'Developer Blog',
           position: 'right',
