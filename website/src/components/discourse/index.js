@@ -18,7 +18,8 @@ export default function DiscourseFeed({
   title = undefined,
   link_text = "See latest topics",
   link_href = "https://discourse.getdbt.com/",
-  post_count = 5
+  post_count = 5,
+  styles = {minHeight: 414}
 }) {
 
   const [posts, setPosts] = useState([])
@@ -68,7 +69,7 @@ export default function DiscourseFeed({
   }, [])
 
   return (
-    <div className={feedStyles.discoursePosts}>
+    <div className={feedStyles.discoursePosts} style={styles}>
       {title && (
         <h2>{title}</h2>
       )}
