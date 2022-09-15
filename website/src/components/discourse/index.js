@@ -68,39 +68,36 @@ export default function DiscourseFeed({
   }, [])
 
   return (
-    <section className={feedStyles.discourseSection}>
-      <h1>dbt Discourse</h1>
-      <div className={feedStyles.discoursePosts}>
-        {title && (
-          <h2>{title}</h2>
-        )}
-        {loading ? (
-          <img src="img/loader-icon.svg" alt="Loading" className={feedStyles.loadingIcon} />
-        ) : isError || !posts?.length > 0 ? (
-          <p>Unable to load Discourse posts at this time.</p>
-        ) : (
-          <ul>
-            {posts.map(post => (
-              <li>
-                <PostWrapper post={post}>{post.title}</PostWrapper>
-                {/* <span> {post.username && `- by ${post.username}`}</span> */}
-                {post?.username || post?.posts_count && (
-                  <>
-                    {' '}-
-                    <span>
-                      {post?.username && `by ${post.username}${post?.posts_count && ','}`}
-                      {' '}
-                      {post?.posts_count && `${post.posts_count} comments`}
-                    </span>
-                  </>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank">{link_text}</a>
-      </div>
-    </section>
+    <div className={feedStyles.discoursePosts}>
+      {title && (
+        <h2>{title}</h2>
+      )}
+      {loading ? (
+        <img src="img/loader-icon.svg" alt="Loading" className={feedStyles.loadingIcon} />
+      ) : isError || !posts?.length > 0 ? (
+        <p>Unable to load Discourse posts at this time.</p>
+      ) : (
+        <ul>
+          {posts.map(post => (
+            <li>
+              <PostWrapper post={post}>{post.title}</PostWrapper>
+              {/* <span> {post.username && `- by ${post.username}`}</span> */}
+              {post?.username || post?.posts_count && (
+                <>
+                  {' '}-
+                  <span>
+                    {post?.username && `by ${post.username}${post?.posts_count && ','}`}
+                    {' '}
+                    {post?.posts_count && `${post.posts_count} comments`}
+                  </span>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+      <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank">{link_text}</a>
+    </div>
   )
 }
 

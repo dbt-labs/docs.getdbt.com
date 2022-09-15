@@ -852,3 +852,8 @@ footer #ot-sdk-btn.optanon-show-settings:hover{
   color: var(--ifm-footer-color);
   text-decoration: underline;
 }
+
+/* Discourse Forum Page */
+section.discourse-forum-page {
+  padding: 4rem 0;
+}

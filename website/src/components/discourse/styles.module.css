@@ -1,32 +1,25 @@
-.discourseSection {
-  padding: 4rem 0 0;
-}
-.discourseSection:last-of-type {
-  padding-bottom: 4rem;
-}
-
-/* Posts */
-.discourseSection .discoursePosts {
+/* Posts Section */
+.discoursePosts {
   margin-bottom: 3rem;
   min-height: 414px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.discourseSection .discoursePosts:last-of-type {
+.discoursePosts:last-of-type {
   margin-bottom: 0;
 }
-.discourseSection .discoursePosts ul {
+.discoursePosts ul {
   list-style: none;
   margin: 0 0 1rem;
   padding: 0;
   width: 100%;
 }
-.discourseSection .discoursePosts ul li {
+.discoursePosts ul li {
   padding: 1rem 0;
   border-bottom: 2px solid var(--color-off-white);
 }
-.discourseSection .discoursePosts ul li:last-of-type {
+.discoursePosts ul li:last-of-type {
   border-bottom: none;
 }
 
@@ -40,7 +33,7 @@
 }
 
 /* Loading icon */
-.discourseSection .loadingIcon {
+.discoursePosts .loadingIcon {
   max-width: 100px;
   display: block;
 }
