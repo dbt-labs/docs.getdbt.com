@@ -65,10 +65,6 @@ export default function DiscourseFeed({
       }
     }
     fetchData()
-
-    // return () => {
-    //   setPosts([])
-    // }
   }, [])
 
   return (
@@ -87,13 +83,21 @@ export default function DiscourseFeed({
             {posts.map(post => (
               <li>
                 <PostWrapper post={post}>{post.title}</PostWrapper>
-                <span> {post.username && `- by ${post.username}`}</span>
+                {/* <span> {post.username && `- by ${post.username}`}</span> */}
+                {post?.username || post?.posts_count && (
+                  <>
+                    {' '}-
+                    <span>
+                      {post?.username && `by ${post.username}${post?.posts_count && ','}`}
+                      {' '}
+                      {post?.posts_count && `${post.posts_count} comments`}
+                    </span>
+                  </>
+                )}
               </li>
             ))}
           </ul>
         )}
-        
-       
         <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank">{link_text}</a>
       </div>
     </section>
