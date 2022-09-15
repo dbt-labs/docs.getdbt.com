@@ -10,7 +10,7 @@
 
 :local(.toggle) {
     background-image: var(--ifm-menu-link-sublist-icon);
-    background-size: 2rem 2rem;
+    background-size: 1.25rem 1.25rem;
     background-position: center;
     content: ' ';
     display: inline-block;
