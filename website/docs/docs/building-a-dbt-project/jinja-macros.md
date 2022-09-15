@@ -5,7 +5,7 @@ id: "jinja-macros"
 
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
-* [dbt Jinja context](dbt-jinja-functions)
+* [dbt Jinja context](/reference/dbt-jinja-functions)
 * [Macro properties](macro-properties)
 
 ## Overview
@@ -148,19 +148,19 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 ## FAQs
 
-<FAQ src="dbt-specific-jinja" />
-<FAQ src="which-jinja-docs" />
-<FAQ src="quoting-column-names" />
-<FAQ src="jinja-whitespace" />
-<FAQ src="debugging-jinja" />
-<FAQ src="documenting-macros" />
-<FAQ src="why-so-many-macros" />
+<FAQ src="Accounts/dbt-specific-jinja" />
+<FAQ src="Jinja/which-jinja-docs" />
+<FAQ src="Jinja/quoting-column-names" />
+<FAQ src="Jinja/jinja-whitespace" />
+<FAQ src="Project/debugging-jinja" />
+<FAQ src="Docs/documenting-macros" />
+<FAQ src="Project/why-so-many-macros" />
 
 ## dbtonic Jinja
 
 Just like well-written python is pythonic, well-written dbt code is dbtonic.
 
-### Favor readability over DRY-ness
+### Favor readability over <Term id="dry" />-ness
 Once you learn the power of Jinja, it's common to want to abstract every repeated line into a macro! Remember that using Jinja can make your models harder for other users to interpret — we recommend favoring readability when mixing Jinja with SQL, even if it means repeating some lines of SQL in a few places. If all your models are macros, it might be worth re-assessing.
 
 ### Leverage package macros
@@ -172,7 +172,7 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 
 ```sql
 -- 🙅 This works, but can be hard to maintain as your code grows
-{% for payment_methods in ["bank_transfer", "credit_card", "gift_card"] %}
+{% for payment_method in ["bank_transfer", "credit_card", "gift_card"] %}
 ...
 {% endfor %}
 

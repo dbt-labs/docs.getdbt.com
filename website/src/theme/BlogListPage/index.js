@@ -26,28 +26,37 @@ function BlogListPage(props) {
   const { 
     blogMeta,
     tagData
-    } = usePluginData('docusaurus-build-blog-data-plugin');
+    } = usePluginData('docusaurus-build-global-data-plugin');
   const { 
     featured_posts_count,
-    featured_tag_posts_count
+    regular_posts_count
   } = blogMeta
+
+  // Sort posts by date then title
+  const handlePostsSort = (a, b) => {
+    const { date: a_date, title: a_title } = a.content.frontMatter
+    const { date: b_date, title: b_title } = b.content.frontMatter
+    return b_date - a_date || a_title.localeCompare(b_title)
+  }
 
   // Set Featured Posts
   const featuredPosts = items
     .filter(post => post.content.frontMatter.is_featured)
     .slice(0, featured_posts_count ? featured_posts_count : 2)
   
+  // Get all non-featured posts
   let allOtherPosts = items
     .filter(post => !post.content.frontMatter.is_featured)
-
+  
+  // Get all featured posts 
+  // which aren't included in featured posts section
   const allOtherFeaturedPosts = items
     .filter(post => post.content.frontMatter.is_featured)
     .slice(featured_posts_count ? featured_posts_count : 2)
   
-  allOtherPosts = allOtherPosts.concat(allOtherFeaturedPosts)
+  // Group together all posts not featured
+  allOtherPosts = allOtherPosts.concat(allOtherFeaturedPosts)    
 
-  // Set Featured Categories
-  const featuredCategories = tagData.filter(tag => tag && tag.is_featured)
   return (
     <BlogLayout
       title={title}
@@ -64,52 +73,39 @@ function BlogListPage(props) {
       <section className="blog-index-posts-section">
         <h3>Featured Posts</h3>
         <div>
-          {featuredPosts.map(({content: BlogPostContent}) => (
-            <BlogPostItem
-              key={BlogPostContent.metadata.permalink}
-              frontMatter={BlogPostContent.frontMatter}
-              assets={BlogPostContent.assets}
-              metadata={BlogPostContent.metadata}
-              truncated={BlogPostContent.metadata.truncated}>
-              <BlogPostContent />
-            </BlogPostItem>
+          {featuredPosts
+            .sort(handlePostsSort)
+            .map(({content: BlogPostContent}) => (
+              <BlogPostItem
+                key={BlogPostContent.metadata.permalink}
+                frontMatter={BlogPostContent.frontMatter}
+                assets={BlogPostContent.assets}
+                metadata={BlogPostContent.metadata}
+                truncated={BlogPostContent.metadata.truncated}>
+                <BlogPostContent />
+              </BlogPostItem>
             ))}
         </div>
       </section>
-
-      {/* Posts by Featured Tags */}
-      {featuredCategories && featuredCategories.map(category => {
-        const recentPosts = allOtherPosts
-          .filter(post => {
-            const lowercaseTags = post.content.frontMatter.tags.map(tag => tag.toLowerCase())
-            if(lowercaseTags.includes(category.name.toLowerCase()))
-              return true
-          })
-        if(!category || recentPosts.length <= 0)
-          return null
-
-        const { name, display_title, description, slug } = category
-        return (
-          <section className="blog-index-posts-section" key={display_title ? display_title : name}>
-            <h3>
-              <Link to={`/blog/tags/${slug}`}>{display_title ? display_title : name}</Link>
-            </h3>
-            <p>{description}</p>
-            <div>
-              {recentPosts.slice(0, featured_tag_posts_count ? featured_tag_posts_count : 4).map(({content: BlogPostContent}) => (
-                <BlogPostItem
-                  key={BlogPostContent.metadata.permalink}
-                  frontMatter={BlogPostContent.frontMatter}
-                  assets={BlogPostContent.assets}
-                  metadata={BlogPostContent.metadata}
-                  truncated={BlogPostContent.metadata.truncated}>
-                  <BlogPostContent />
-                </BlogPostItem>
-                ))}
-            </div>
-          </section>
-        )}
-      )}
+      
+      <section className="blog-index-posts-section blog-index-other-posts">
+        <h3>Recent Posts</h3>
+        <div>
+          {allOtherPosts
+            .sort(handlePostsSort)
+            .slice(0, regular_posts_count ? regular_posts_count : 15)
+            .map(({content: BlogPostContent}) => (
+              <BlogPostItem
+                key={BlogPostContent.metadata.permalink}
+                frontMatter={BlogPostContent.frontMatter}
+                assets={BlogPostContent.assets}
+                metadata={BlogPostContent.metadata}
+                truncated={BlogPostContent.metadata.truncated}>
+                <BlogPostContent />
+              </BlogPostItem>
+            ))}
+        </div>
+      </section>
 
       {/* <BlogListPaginator metadata={metadata} /> */}
     </BlogLayout>
