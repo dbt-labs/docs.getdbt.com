@@ -88,7 +88,7 @@ You can add an upper bound of supported versions like this: `[">=0.20.0", "<=1.0
 
 ## Step 3: Upgrade dbt
 
-If you use dbt Cloud, you can upgrade [as described here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version). Take note of the recommendation to create a second "sandbox" project, so that your experimentation doesn’t impact the rest of the team. For dbt Core, upgrade instructions will vary based on your [original installation method](https://docs.getdbt.com/dbt-cli/installation).
+If you use dbt Cloud, you can upgrade [as described here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version). We recommend that you [create a second "sandbox" project](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions#testing-your-changes-before-upgrading), so that your experimentation doesn’t impact the rest of the team. For dbt Core, upgrade instructions will vary based on your [original installation method](https://docs.getdbt.com/dbt-cli/installation).
 
 ## Step 4: Try to run `dbt compile`
 

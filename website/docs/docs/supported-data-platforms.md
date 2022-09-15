@@ -1,11 +1,11 @@
 ---
-title: "Available adapters"
-id: "available-adapters"
+title: "Supported Data Platforms"
+id: "supported-data-platforms"
 ---
 
 dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
 
-If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](/docs/contributing/documenting-a-new-adapter.md)  for more information.
+If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter)  for more information.
 
 ### Installation
 
@@ -80,4 +80,4 @@ Note that, while no community plugins are currently supported in dbt Cloud, we e
 
 ## Creating a new adapter
 
-dbt can be extended to any SQL-speaking database, warehouse, data lake, query engine, or analytical platform by means of an _adapter plugin_. These plugins can be built as separate Python modules, and dbt will discover them if they are installed on your system. If you see something missing from the lists above, and you're interested in developing an integration, read more about [building a new adapter](building-a-new-adapter).
+dbt can be extended to any SQL-speaking database, warehouse, data lake, query engine, or analytical platform by means of an _adapter plugin_. These plugins can be built as separate Python modules, and dbt will discover them if they are installed on your system. If you see something missing from the lists above, and you're interested in developing an integration, read more about [building a new adapter](/docs/contributing/adapter-development/3-building-a-new-adapter).

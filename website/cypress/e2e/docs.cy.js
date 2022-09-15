@@ -13,7 +13,7 @@ describe('docs.getdbt.com docs tab', () => {
 
   it('verifies all the introduction page links work and go to the correct pages', () => {
     cy.get(':nth-child(2) > .menu__link').click()
-    cy.checkLinksNotBroken(`${Cypress.config('baseUrl')}/docs/available-adapters`, `${Cypress.config('baseUrl')}/docs/introduction`)
+    cy.checkLinksNotBroken(`${Cypress.config('baseUrl')}/docs/supported-data-platforms`, `${Cypress.config('baseUrl')}/docs/introduction`)
     
     cy.get(':nth-child(1) > .menu__list > :nth-child(3) > .menu__link').click()
     cy.checkLinksNotBroken(`${Cypress.config('baseUrl')}/docs/core-versions`, `${Cypress.config('baseUrl')}/docs/introduction`)
