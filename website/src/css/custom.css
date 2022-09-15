@@ -183,6 +183,10 @@ a.code-link:hover {
   background-color: var(--ifm-navbar-background-color);
 }
 
+.navbar__logo {
+  margin-left: .rem;
+}
+
 .navbar__search-input {
   color: #505d73;
   font-weight: var(--ifm-font-weight-semibold);
@@ -957,6 +961,11 @@ filter: opacity(.75);
   .container--fluid {
     max-width: inherit;
   }
+  
+  html.docs-version-current .navbar__brand {
+    background-color: var(--ifm-background-color);
+    border-right: 1px solid var(--ifm-toc-border-color);
+}
 
   button.DocSearch-Button {
     min-width: 175px;
@@ -968,12 +977,8 @@ filter: opacity(.75);
     padding: 0 var(--ifm-navbar-padding-horizontal);
     min-height: var(--ifm-navbar-height);
     max-height: var(--ifm-navbar-height);
-    color: inherit !important;
-    text-decoration: none !important;
-    background-color: var(--ifm-background-color);
     width: 300px;
     min-width: 150px;
-    border-right: 1px solid var(--ifm-toc-border-color);
 }
 
   html.docs-version-current .navbar {
