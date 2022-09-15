@@ -15,12 +15,13 @@
 
 
 # Adapter & Package Development Docs
-/website/docs/docs/available-adapters.md/                       @runleonarun  
-/website/docs/reference/warehouse-profiles/                     @runleonarun  
-/website/docs/reference/resource-configs/                       @runleonarun  
-/website/docs/guides/building-packages                          @runleonarun
-/website/docs/contributing/building-a-new-adapter               @runleonarun  
-/website/docs/contributing/testing-a-new-adapter                @runleonarun  
-/website/docs/guides/creating-new-materializations              @runleonarun  
-/website/docs/docs/dbt-cloud/cloud-configuring-dbt-cloud/       @runleonarun  
+/website/docs/docs/supported-data-platforms.md/                       @runleonarun @dataders
+/website/docs/reference/warehouse-profiles/                     @runleonarun @dataders
+/website/docs/reference/resource-configs/                       @runleonarun @dataders
+/website/docs/guides/building-packages                          @runleonarun @amychen1776 @dataders @dbeatty10
+/website/docs/contributing/building-a-new-adapter               @runleonarun @dataders @dbeatty10
+/website/docs/contributing/testing-a-new-adapter                @runleonarun @dataders @dbeatty10
+/website/docs/guides/creating-new-materializations              @runleonarun @dataders @dbeatty10
+/website/docs/docs/dbt-cloud/cloud-configuring-dbt-cloud/       @runleonarun @dataders @dbeatty10
+
 
