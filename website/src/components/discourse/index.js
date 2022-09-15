@@ -68,8 +68,15 @@ export default function DiscourseFeed({
     fetchData()
   }, [])
 
+  // Set initial min-height
+  // This is to avoid layout shifts
+  // which affects Lighthouse performance scores
+  const setMinHeight = isError
+    ? 'auto'
+    : 414
+
   return (
-    <div className={feedStyles.discoursePosts} style={{minHeight: 414, ...styles}}>
+    <div className={feedStyles.discoursePosts} style={{minHeight: setMinHeight, ...styles}}>
       {title && (
         <h2>{title}</h2>
       )}
