@@ -16,7 +16,6 @@ async function getDiscoursePosts({ body }) {
     const query = buildQueryString(body)
     if(!query) throw new Error('Unable to build query string.')
     
-    console.log('hitting:', `${discourse_endpoint}/search?q=${query}`)
     // Get topics from Discourse
     let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
     
