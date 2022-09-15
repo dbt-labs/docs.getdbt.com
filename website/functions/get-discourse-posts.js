@@ -13,16 +13,19 @@ async function getDiscoursePosts({ body }) {
       'Api-Username': DISCOURSE_USER,
     }
 
-    buildQueryString(body)
-
-    // Get topics from Discourse
-    let { data: { topic_list } } = await axios.get(`${discourse_endpoint}/latest`, { headers })
+    const query = buildQueryString(body)
+    if(!query) throw new Error('Unable to build query string.')
+    console.log('query ready', query)
     
-    if(!topic_list)
+    console.log('hitting:', `${discourse_endpoint}/search?q=${query}`)
+    // Get topics from Discourse
+    let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
+    
+    if(!topics)
       throw new Error('Unable to get results from api request.')
 
     // Return posts 
-    return await returnResponse(200, topic_list)
+    return await returnResponse(200, topics)
   } catch(err) {
     // Log and return the error
     console.log('err', err)
@@ -46,21 +49,6 @@ async function returnResponse(status, res) {
 }
 
 function buildQueryString(body) {
-  // const {
-  //   status,
-  //   order,
-  //   after,
-  //   before,
-  //   inString, 
-  //   min_posts,
-  //   max_posts,
-  //   min_views,
-  //   max_views,
-  //   tags, 
-  //   term,
-  //   category,
-  // } = body
-
   if(!body) return null
 
   // start with empty query string
@@ -73,13 +61,18 @@ function buildQueryString(body) {
     // validate categories
     // if valid, add to query string
     if(validateItem({ key, value })) {
-      key === 'category'
-        ?query += `${value} `
-        : query += `${key}:${value} `
+      if(key === 'category') {
+        query += `#${value} `
+      } else if(key === 'inString') {
+        query += `in:${value}`
+      } else {
+        query += `${key}:${value} `
+      }
     }
   }
 
-  console.log('full query', query)
+  if(query) return query
+  return query
 }
 
 function validateItem({ key, value }) {
@@ -90,11 +83,7 @@ function validateItem({ key, value }) {
   const statusValues = ['open', 'closed', 'public', 'archived', 'noreplies', 'single_user', 'solved', 'unsolved']
 
   // validate keys
-  if(key === 'category') {
-    return value.slice(0, 1) === '#'
-      ? true
-      : false
-  } else if(key === 'inString') {
+  if(key === 'inString') {
     return inStringValues.includes(value)
       ? true
       : false

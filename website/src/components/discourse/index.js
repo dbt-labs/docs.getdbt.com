@@ -3,8 +3,8 @@ import axios from 'axios'
 import feedStyles from './styles.module.css';
 
 export default function DiscourseFeed({
-  status = 'unsolved',
   order = 'latest_topic',
+  status = undefined,
   after = undefined,
   before = undefined,
   inString = undefined, 
@@ -14,10 +14,11 @@ export default function DiscourseFeed({
   max_views = undefined,
   tags = undefined, 
   term = undefined,
-  category = '#help',
+  category = undefined,
   title = undefined,
   link_text = "See latest topics",
-  link_href = "https://discourse.getdbt.com/"
+  link_href = "https://discourse.getdbt.com/",
+  post_count = 5
 }) {
 
   const [posts, setPosts] = useState([])
@@ -37,7 +38,7 @@ export default function DiscourseFeed({
           : '/.netlify/functions/get-discourse-posts'
 
         // Get Discourse topics data
-        const { data: { topics } } = await axios.post(endpoint, {
+        const { data } = await axios.post(endpoint, {
           status,
           order,
           after,
@@ -53,10 +54,10 @@ export default function DiscourseFeed({
         })
 
         // Set error state if data not available
-        if(!topics) throw new Error('Unable to get latest topics.')
+        if(!data) throw new Error('Unable to get latest topics.')
 
         // Set 5 latest posts
-        setPosts(topics.slice(0, 5))
+        setPosts(data.slice(0, post_count))
         setLoading(false)
       } catch(err) {
         setIsError(true)
@@ -64,6 +65,10 @@ export default function DiscourseFeed({
       }
     }
     fetchData()
+
+    // return () => {
+    //   setPosts([])
+    // }
   }, [])
 
   return (
