@@ -1,7 +1,6 @@
 const axios = require('axios')
 
 async function getDiscoursePosts({ body }) {
-  console.log('body', body)
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
   try {
@@ -54,8 +53,6 @@ function buildQueryString(body) {
 
   // check param and apply to query if set
   for(const [key, value] of Object.entries(JSON.parse(body))) {
-    console.log(`${key}: ${value}`);
-
     // validate categories
     // if valid, add to query string
     if(validateItem({ key, value })) {

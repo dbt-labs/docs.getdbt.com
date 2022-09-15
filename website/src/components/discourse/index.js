@@ -19,7 +19,7 @@ export default function DiscourseFeed({
   link_text = "See latest topics",
   link_href = "https://discourse.getdbt.com/",
   post_count = 5,
-  styles = {minHeight: 414}
+  styles = {}
 }) {
 
   const [posts, setPosts] = useState([])
@@ -69,12 +69,12 @@ export default function DiscourseFeed({
   }, [])
 
   return (
-    <div className={feedStyles.discoursePosts} style={styles}>
+    <div className={feedStyles.discoursePosts} style={{minHeight: 414, ...styles}}>
       {title && (
         <h2>{title}</h2>
       )}
       {loading ? (
-        <img src="img/loader-icon.svg" alt="Loading" className={feedStyles.loadingIcon} />
+        <img src="/img/loader-icon.svg" alt="Loading" className={feedStyles.loadingIcon} />
       ) : isError || !posts?.length > 0 ? (
         <p>Unable to load Discourse posts at this time.</p>
       ) : (
