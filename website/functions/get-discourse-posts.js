@@ -15,7 +15,6 @@ async function getDiscoursePosts({ body }) {
 
     const query = buildQueryString(body)
     if(!query) throw new Error('Unable to build query string.')
-    console.log('query ready', query)
     
     console.log('hitting:', `${discourse_endpoint}/search?q=${query}`)
     // Get topics from Discourse
@@ -71,8 +70,10 @@ function buildQueryString(body) {
     }
   }
 
-  if(query) return query
-  return query
+  if(query) {
+    const encodedQuery = encodeURIComponent(query)
+    return encodedQuery
+  }
 }
 
 function validateItem({ key, value }) {
