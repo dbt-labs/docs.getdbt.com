@@ -22,7 +22,7 @@
   --ifm-navbar-link-active-color: var(--color-orange);
   --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 3.75);
   --ifm-footer-background-color: #4f5d75;
-  --ifm-footer-color: #fff;
+  --ifm-footer-color: var(--color-white);
   --ifm-link-color: #009999;
   --ifm-color-primary: #047377;
   --ifm-link-hover-color: #047377;
@@ -48,6 +48,7 @@
   --color-light-blue: #96d7d1;
   --color-orange: #ff694a;
   --color-off-white: #eff2f3;
+  --color-white: white;
   --color-nav-text: #bfc0c0;
   --color-nav-sub-level-text: #545A66;
   --color-footer-accent: #979EAB;
@@ -56,13 +57,12 @@
 
   --light-dark-toggle: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQuMzA4IDMuMzg1YzAtMS4xNzguMTczLTIuMzcuNjE1LTMuMzg1QzEuOTgzIDEuMjggMCA0LjI4MiAwIDcuNjkyQTguMzA4IDguMzA4IDAgMCAwIDguMzA4IDE2YzMuNDEgMCA2LjQxMi0xLjk4MyA3LjY5Mi00LjkyMy0xLjAxNS40NDItMi4yMDcuNjE1LTMuMzg1LjYxNWE4LjMwOCA4LjMwOCAwIDAgMS04LjMwNy04LjMwN1oiIGZpbGw9IiM5MkEwQjMiLz48L3N2Zz4=';
 
-
   /* search overrides */
-  --docsearch-searchbox-background: white !important;
-  --docsearch-searchbox-focus-background: white !important;
+  --docsearch-searchbox-background: var(--color-white) !important;
+  --docsearch-searchbox-focus-background: var(--color-white) !important;
   --docsearch-searchbox-shadow: inset 0 0 0 0 var(--docsearch-primary-color) !important;
 
-  --docsearch-modal-background: white !important;
+  --docsearch-modal-background: var(--color-white) !important;
   --docsearch-modal-shadow: none;
   --docsearch-muted-color-for-keys: #EFF2F3;
 
@@ -79,7 +79,7 @@
 html[data-theme='dark'] {
   --ifm-navbar-background-color: var(--color-primary-blue);
   --ifm-menu-color-background-active: var(--color-primary-blue);
-  --ifm-menu-color: white;
+  --ifm-menu-color: var(--color-white);
 
   /* search button darkmode */
   --docsearch-muted-color: var(--color-off-white);
@@ -109,7 +109,7 @@ html[data-theme='dark'] .container.home {
 
 /* For /dbt-cloud/api redoc page */
 div.collapser {
-  color: white;
+  color: var(--color-white);
 }
 
 h1,
@@ -131,7 +131,11 @@ code {
 
 
 html[data-theme='dark'] a code {
-  color: white;
+  color: var(--color-white);
+}
+
+html[data-theme='dark'] .main-wrapper a {
+  filter:brightness(1.5);
 }
 
 .main-wrapper .home .col > p {
@@ -151,17 +155,17 @@ a.hash-link-faq:link {
 
 a.hash-link-faq:visited,
 a.hash-link-faq:hover {
-  color: black;
+  color: var(--docsearch-text-color);
 }
 
 a.hash-link-faq:active {
-  color: black;
+  color: var(--docsearch-text-color);
 }
 
 a.hash-link:link,
 a.hash-link:visited,
 a.hash-link:hover {
-  color: black;
+  color: var(--docsearch-text-color);
 }
 
 pre {
@@ -324,7 +328,7 @@ html[data-theme=light] [class^=toggle_]:after {
 /* level2 */
 .menu__list .menu__list {
   font-weight: var(--ifm-font-weight-narrow);
-  padding-left: 0;
+  padding-left: 1.5rem;
 }
 
 .menu__list .menu__list .menu__link {
@@ -333,7 +337,7 @@ html[data-theme=light] [class^=toggle_]:after {
 }
 
 .menu__list-item .menu__list-item .menu__link {
-  padding-left: 1.5rem;
+  padding-left: 1rem;
 }
 
 .menu__list-item-collapsible a {
@@ -355,15 +359,15 @@ html[data-theme=light] [class^=toggle_]:after {
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-link :not(.menu__list-item-collapsible .menu__link:first-of-type) {
-  color: white;
+  color: var(--color-white);
 }
 
 .theme-doc-sidebar-item-link .menu__link--active {
-  color: var(--ifm-link-color) !important;
+  color: var(--ifm-link-color);
 }
 
-.menu__link--active:not(.menu__link--sublist) {
-  background: var(--ifm-menu-color-background-active);
+html[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  filter: brightness(2);
 }
 
 /* set < icon to left side */
@@ -599,11 +603,11 @@ div .toggle_src-components-faqs-styles-module {
 
 .home .card {
   background: var(--ifm-footer-background-color);
-  color: #fff;
+  color: var(--color-white);
 }
 
 .card.large .button {
-  color: #fff;
+  color: var(--color-white);
   font-size: 1.25rem;
   font-weight: var(--ifm-font-weight-semibold);
   margin-top: 0.25rem;
@@ -617,14 +621,14 @@ div .toggle_src-components-faqs-styles-module {
 
 .card.large .button:hover {
   background: #fff;
-  border-color: #fff;
+  border-color: var(--color-white);
   color: var(--color-green-blue);
 }
 
 .card.large.dark .button:hover {
   background: var(--color-light-teal);
   border-color: var(--color-light-teal);
-  color: #fff;
+  color: var(--color-white);
 }
 
 .card.large.light .button,
@@ -636,7 +640,7 @@ div .toggle_src-components-faqs-styles-module {
 .card.large.light .button:hover {
   background: #de5d43;
   border-color: #de5d43;
-  color: #fff;
+  color: var(--color-white);
 }
 
 .card.large.light-blue .button {
@@ -709,11 +713,11 @@ blockquote {
 }
 
 .generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module, .generatedIndexPage_aEAk .card {
-  color: #fff;
+  color: var(--color-white);
   background: var(--ifm-footer-background-color);
 }
 .generatedIndexPage_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCategoryGeneratedIndexPage-styles-module .cardContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocCard-styles-module:hover, .generatedIndexPage_aEAk .card:hover {
-  color: #fff;
+  color: var(--color-white);
   background: var(--color-primary-blue);
 }
 
@@ -748,6 +752,10 @@ html[data-theme='dark'] .blog-breadcrumbs a:not(:last-of-type):after {
 html[data-theme='dark'] .blog-breadcrumbs a:not(:last-of-type):after {
   filter: brightness(2.5);
   color: var(--ifm-link-color);
+}
+
+html[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
+  filter: brightness(2);
 }
 
 .blog-breadcrumbs a:not(:last-of-type):after {
@@ -791,11 +799,7 @@ html[data-theme='dark'] .blog-breadcrumbs a:not(:last-of-type):after {
 }
 
 .footer button {
-  font-size: 1.2rem;
-}
-
-.footer a.footer__link-item {
-  color: var(--ifm-footer-color);
+  font-size: 1.125rem;
 }
 
 .footer a {
@@ -809,17 +813,18 @@ html[data-theme='dark'] .blog-breadcrumbs a:not(:last-of-type):after {
 }
 
 .footer__links {
-  margin-bottom: 1.25em;
+  margin-bottom: 0;
 }
 
 .footer__link-item {
+  color: var(--ifm-footer-color);
   display: flex;
   justify-content: space-between;
 }
 
 .footer__items {
   list-style: none;
-  margin-bottom: 0;
+  margin-bottom: 1em;
   padding-left: 0;
   gap: 1.5em;
   display: flex;
@@ -849,6 +854,10 @@ filter: opacity(.75);
   font-size: 1rem;
 }
 
+.footer__copyright {
+  margin-top: .75em;
+}
+
 /* Begin @Media Queries */
 @media (min-width: 997px) and (max-width: 1150px) {
   nav.navbar a.navbar__link {
@@ -868,7 +877,6 @@ filter: opacity(.75);
 }
 
 @media (max-width: 996px) {
-
   .navbar-sidebar__brand .navbarSidebarToggle_node_modules-\@docusaurus-theme-classic-lib-next-theme-Navbar-styles-module {
     margin-right: 0;
     margin-left: .25em;
@@ -877,6 +885,14 @@ filter: opacity(.75);
   .navbar-sidebar__brand > div:first-of-type {
     order: 1;
     margin-right: 0;
+  }
+
+  .footer__link-item {
+    flex-direction: column;
+  }
+
+  .footer__copyright {
+    margin-top: 1em;
   }
 }
 
@@ -1023,11 +1039,15 @@ filter: opacity(.75);
   }
 
   [data-theme='dark'] .table-of-contents::before {
-    color: white;
+    color: var(--color-white);
   }
 
   nav.menu_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
     padding: 1rem;
+  }
+
+  .docSidebarContainer_src-theme-DocPage-styles-module {
+    margin-top: calc(-.8 * var(--ifm-navbar-height)) !important;
   }
 }
 
@@ -1123,7 +1143,7 @@ filter: opacity(.75);
 }
 .blog-hero-card {
   background: var(--ifm-footer-background-color);
-  color: white;
+  color: var(--color-white);
 }
 .blog-hero-card .button {
   text-decoration: none;
@@ -1246,7 +1266,7 @@ filter: opacity(.75);
 }
 .docs-cta .docs-cta-btn {
   background: var(--ifm-color-primary);
-  color: #fff;
+  color: var(--color-white);
   border-radius: 5px;
   border: none;
   text-decoration: none;

@@ -19,6 +19,11 @@
     vertical-align: middle;
 }
 
+/* hack for unswizzled FAQ arrows */
+:local(html[data-theme='dark'] .toggle) {
+    filter: invert(1);
+}
+
 :local(.body) {
     margin-left: 2em;
     margin-bottom: 10px;
