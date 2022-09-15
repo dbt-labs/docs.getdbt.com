@@ -5,14 +5,19 @@
 /* Posts */
 .discourseSection .discoursePosts {
   margin-bottom: 3rem;
+  min-height: 414px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .discourseSection .discoursePosts:last-of-type {
   margin-bottom: 0;
 }
 .discourseSection .discoursePosts ul {
   list-style: none;
-  margin: 0;
+  margin: 0 0 1rem;
   padding: 0;
+  width: 100%;
 }
 .discourseSection .discoursePosts ul li {
   padding: 1rem 0;
@@ -25,7 +30,7 @@
 /* Cta */
 .discourseCta {
   font-size: 1.1rem;
-  margin-top: 1rem;
+  margin-top: auto;
 }
 .discourseCta:hover {
   background: var(--color-light-teal);
