@@ -692,7 +692,7 @@ div .toggle_src-components-faqs-styles-module {
 .markdown > p,
 .markdown li,
 blockquote {
-  font-size: clamp(.875rem, 1.5vw, 1.25rem);
+  font-size: clamp(.875rem, 1.5vw, 1.125rem);
   line-height: 1.4;
 }
 .pagination-nav__link {
