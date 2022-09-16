@@ -220,7 +220,7 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
 </p>
 
-6. We have one slight tweak to make to dbt Cloud interface to account for the `analytics` database and `transforming` warehouse created earlier.  Click the hamburger menu in the top left and choose account settings.  Select the project titled, "Partner Connection Trial" and select `snowflake` in the overview table.  Select edit and update the fields `database` and `warehouse` to be `analytics` and `transforming` respectively.
+6. We have one slight tweak to make to dbt Cloud interface to account for the `analytics` database and `transforming` warehouse created earlier.  Click the gear icon in the top right and Select *Account Settings*.  Select the project titled, "Partner Connection Trial" and select `snowflake` in the overview table.  Select edit and update the fields `database` and `warehouse` to be `analytics` and `transforming` respectively.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
@@ -262,7 +262,7 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
     * **Password:** The password you set when creating your Snowflake account
     * **Schema:** You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
     * **Target name:** leave as default
-    * **Threads:** Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurently.
+    * **Threads:** Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurrently.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
     </div>

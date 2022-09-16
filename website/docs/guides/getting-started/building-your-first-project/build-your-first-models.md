@@ -8,20 +8,20 @@ Now that you set up your sample project and had a successful run, you can get to
 
 ## Checkout a new git branch
 
-1. Make sure you're in the Develop interface. If you're not, click ![hamburger icon](/img/hamburger-icon.png), then click `Develop`. The master branch should now be set to read-only mode, so you'll need to create a new branch.
+1. Click **Develop** from the top left of dbt Cloud. The master branch should now be set to read-only mode, so you'll need to create a new branch.
 
-2. Click **+ create new branch**, and name your branch `add-customers-model`.
+2. Click **Create branch**, and name your branch `add-customers-model`.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/checkout-branch-dbt-cloud.png" title="Checkout a new branch" />
     </div>
 
 ## Build your first model
 
-1. If you're not already in the Develop interface, click ![hamburger icon](/img/hamburger-icon.png), and then `Develop`.
-2. Click the `models` directory, then click ![kebob icon](/img/kebob-menu.png), then select **New file**.  
+1. Click **Develop** from the top left of dbt Cloud.
+2. Click the **...** next to the Models directory, then select **Create file**.  
 3. Name the file `models/customers.sql`, then click **Create**.
-4. Paste the following query into the file and click **save**.
-    
+4. Paste the following query into the file and click **Save File**.
+
     <Snippet src="tutorial-sql-query" />
 
 5. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see three models under DETAILS:
