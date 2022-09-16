@@ -92,8 +92,6 @@ export default function DiscourseFeed({
     ? 'auto'
     : 414
 
-  console.log('posts', posts)
-
   return (
     <div className={feedStyles.discoursePosts} style={{minHeight: setMinHeight, ...styles}}>
       {title && (
