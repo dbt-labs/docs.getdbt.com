@@ -114,7 +114,7 @@ export default function DiscourseFeed({
                 <>
                   {' '}-
                   <span>
-                    {post?.username && `by ${post.username}${post?.posts_count && ','}`}
+                    {post?.author && `by ${post.author}${post?.posts_count && ','}`}
                     {' '}
                     {post?.posts_count && `${post.posts_count} comments`}
                   </span>

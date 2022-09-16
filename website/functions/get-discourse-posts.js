@@ -16,13 +16,24 @@ async function getDiscoursePosts({ body }) {
     if(!query) throw new Error('Unable to build query string.')
     
     // Get topics from Discourse
-    let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
+    let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
     
-    if(!topics)
+    if(!topics || topics?.length <= 0)
       throw new Error('Unable to get results from api request.')
 
+    // Set author for topics if not querying by specific term
+    let allTopics = topics
+    if(!body?.term) {
+      allTopics = topics.reduce((topicsArr, topic) => {
+        const firstTopicPost = posts?.find(post => post?.post_number === 1 && post?.topic_id === topic?.id)
+        firstTopicPost && (topic.author = firstTopicPost.username)
+        topicsArr.push(topic)
+        return topicsArr
+      }, [])
+    }
+
     // Return posts 
-    return await returnResponse(200, topics)
+    return await returnResponse(200, allTopics)
   } catch(err) {
     // Log and return the error
     console.log('err', err)
