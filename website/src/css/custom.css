@@ -7,7 +7,6 @@
   --ifm-color-info-light: #d9f6f4 !important;
   --ifm-color-warning-light: #ffe1be !important;
   --ifm-color-danger-light: #f9d3d4 !important;
-  --docsearch-text-color: #262a38;
   --ifm-color-gray-900: #262a38;
   --ifm-font-weight-narrow: 400;
   --ifm-font-weight-semibold: 600;
@@ -52,6 +51,7 @@
   --color-nav-text: #bfc0c0;
   --color-nav-sub-level-text: #545A66;
   --color-footer-accent: #979EAB;
+  --docsearch-text-color: #262a38;
   --pagination-icon-next: '\2192';
   --pagination-icon-prev: '\2190';
   --filter-brightness-low: 1.1;
@@ -744,8 +744,7 @@ blockquote {
 }
 
 html[data-theme='dark'] .blog-breadcrumbs {
-  background-color: var(--color-off-white);
-  background-color: rgba(9,10,17,0.8);
+  background-color: rgba(20,20,20,0.5);
 }
 
 .blog-breadcrumbs a {
