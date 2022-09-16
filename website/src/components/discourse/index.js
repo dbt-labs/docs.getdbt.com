@@ -92,6 +92,7 @@ export default function DiscourseFeed({
     ? 'auto'
     : 414
 
+  console.log('topics', topics)
   return (
     <div className={feedStyles.discourseTopics} style={{minHeight: setMinHeight, ...styles}}>
       {title && (
@@ -109,8 +110,7 @@ export default function DiscourseFeed({
                 <span className={feedStyles.solvedTopic} title="Solved">✅ </span>
               )}
               <TopicWrapper topic={topic}>{topic.title}</TopicWrapper>
-              {/* <span> {topic.username && `- by ${topic.username}`}</span> */}
-              {topic?.username || topic?.posts_count && (
+              {(topic?.author || topic?.posts_count) && (
                 <>
                   {' '}-
                   <span>
