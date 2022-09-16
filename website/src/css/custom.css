@@ -133,10 +133,6 @@ html[data-theme='dark'] a code {
   color: var(--color-white);
 }
 
-html[data-theme='dark'] .main-wrapper a {
-  filter:brightness(1.5);
-}
-
 .main-wrapper .home .col > p {
   font-size: 1.25rem;
 }
@@ -381,7 +377,7 @@ a.navbar__item.navbar__link.btn:hover {
 }
 
 html[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
-  filter: brightness(2);
+  filter: brightness(1.2);
 }
 
 /* set < icon to left side */
@@ -769,7 +765,7 @@ html[data-theme='dark'] .blog-breadcrumbs a:not(:last-of-type):after {
 }
 
 html[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
-  filter: brightness(2);
+  filter: brightness(1.5);
 }
 
 .blog-breadcrumbs a:not(:last-of-type):after {
