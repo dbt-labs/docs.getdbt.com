@@ -3,7 +3,7 @@
 Describe your changes, and why you're making them. Is this linked to an open
 issue, a pull request on dbt core, etc?
 
-To learn more about the writing conventions used in the dbt Labs docs, see the [Content style guide](https://github.com/dbt-labs/docs.getdbt.com/tree/current/contributing/content-style-guide.md). 
+To learn more about the writing conventions used in the dbt Labs docs, see the [Content style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md).
 -->
 
 ## To-do before merge
