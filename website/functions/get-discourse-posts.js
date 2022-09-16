@@ -26,7 +26,7 @@ async function getDiscoursePosts({ body }) {
   } catch(err) {
     // Log and return the error
     console.log('err', err)
-    return await returnResponse(500, { error: 'Unable to get events from Discourse.'})
+    return await returnResponse(500, { error: 'Unable to get topics from Discourse.'})
   }
 }
 
