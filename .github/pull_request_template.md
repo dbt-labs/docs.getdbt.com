@@ -2,6 +2,8 @@
 <!---
 Describe your changes, and why you're making them. Is this linked to an open
 issue, a pull request on dbt core, etc?
+
+To learn more about the writing conventions used in the dbt Labs docs, see the [Content style guide](/contributing/content-style-guide). 
 -->
 
 ## To-do before merge
