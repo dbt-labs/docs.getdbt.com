@@ -22,7 +22,7 @@ You can use components documented in the [docusaurus library](https://v2.docusau
 
 # Writing content
 
-When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md#Callouts) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentaion.
+When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.
 
 ## Versioning content
 
