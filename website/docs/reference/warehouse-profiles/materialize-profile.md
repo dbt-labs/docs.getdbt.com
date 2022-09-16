@@ -86,6 +86,10 @@ Type | Supported? | Details
 
 Running [`dbt seed`](commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
 
+### Tests
+
+Running [`dbt test`](commands/test) with the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures) will create a materialized view for each test you've chosen to store. This view is a continuously updating representation of failures.
+
 ## Resources
 
 - [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/)
