@@ -116,7 +116,7 @@ export default function DiscourseFeed({
                   <span>
                     {topic?.author && `by ${topic.author}${topic?.posts_count && ','}`}
                     {' '}
-                    {topic?.posts_count && `${topic.posts_count} comments`}
+                    {topic?.posts_count && `${topic.posts_count - 1} ${(topic.posts_count - 1) === 1 ? 'reply' : 'replies'}`}
                   </span>
                 </>
               )}
