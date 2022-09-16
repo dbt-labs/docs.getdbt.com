@@ -1,3 +1,4 @@
+
 ---
 title: "Starburst & Trino Profile"
 ---
@@ -95,12 +96,4 @@ A dbt-trino profile can be configured to run against Trino or Starburst using th
 | port                           | The port to connect to the host on                                                                           | Required                                                                                                         | `8080`                           |
 | threads                        | How many threads dbt should use                                                                              | Optional (default is `1`)                                                                                        | `8`                              |
 | prepared_statements_enabled    | Enable usage of Trino prepared statements (used in `dbt seed` commands)                                      | Optional (default is `true`)                                                                                     | `true` or `false`                |
-| retries                        | Configure how many times a database operation is retried when connection issues arise                        | Optional (default is `3`)  
-## Caveats
-
-### Unsupported Functionality
-
-Due to the nature of Trino, not all core dbt functionality is supported. The following features of dbt are not implemented on Trino:
-
-1. [Snapshots](snapshots)
-
+| retries                        | Configure how many times a database operation is retried when connection issues arise                        | Optional (default is `3`)
