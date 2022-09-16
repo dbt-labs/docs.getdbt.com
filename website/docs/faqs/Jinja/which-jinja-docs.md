@@ -12,4 +12,4 @@ If you are stuck with a Jinja issue, it can get confusing where to check for mor
 3. [Agate's table docs](https://agate.readthedocs.io/page/api/table.html): If you're operating on the result of a query, dbt will pass it back to you as an agate table. This means that the methods you call on the <Term id="table" /> belong to the Agate library rather than Jinja or dbt.
 
 <!-- EXAMPLE: DELETE BEFORE TAKE-LIVE -->
-<DiscourseFeed title='Discourse Jinja topics' category='help' tags='jinja,testing' />
+<DiscourseFeed title='Discourse Jinja topics' status={['open', 'public']} category='help' tags='jinja,testing' />

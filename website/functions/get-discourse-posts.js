@@ -60,6 +60,10 @@ function buildQueryString(body) {
         query += `#${value} `
       } else if(key === 'inString') {
         query += `in:${value}`
+      } else if(key === 'status' && Array.isArray(value)) {
+        value?.map(item => {
+          query += `${key}:${item} `
+        })
       } else {
         query += `${key}:${value} `
       }
@@ -89,9 +93,17 @@ function validateItem({ key, value }) {
       ? true
       : false
   } else if(key === 'status') {
-    return statusValues.includes(value)
-      ? true
-      : false
+    if(Array.isArray(value)) {
+      let isValid = true
+      value?.map(item => {
+        if(!statusValues.includes(item)) isValid = false
+      })
+      return isValid
+    } else {
+      return statusValues.includes(value)
+        ? true
+        : false
+    }
   } else {
     return true
   }
