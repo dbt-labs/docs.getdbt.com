@@ -9,8 +9,8 @@ function Events() {
   return (
     <Layout>
         <Head>
-          <title>Title here</title>
-          <meta name="description" content="Description here" />
+          <title>dbt Community Events</title>
+          <meta name="description" content="Join us for upcoming meetups, conferences, or office hours with the dbt Labs team." />
         </Head>
         <div className="container events-page">
            <section>
