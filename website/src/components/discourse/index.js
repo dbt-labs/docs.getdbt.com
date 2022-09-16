@@ -83,7 +83,7 @@ export default function DiscourseFeed({
       {loading ? (
         <img src="/img/loader-icon.svg" alt="Loading" className={feedStyles.loadingIcon} />
       ) : isError || !posts?.length > 0 ? (
-        <p>Unable to load Discourse posts at this time.</p>
+        <p>Unable to load forum posts at this time.</p>
       ) : (
         <ul>
           {posts.map(post => (
