@@ -744,7 +744,7 @@ blockquote {
 }
 
 html[data-theme='dark'] .blog-breadcrumbs {
-  background-color: rgba(20,20,20,0.5);
+  background-color: rgba(20,20,10,0.75);
 }
 
 .blog-breadcrumbs a {
@@ -872,7 +872,6 @@ filter: opacity(.75);
 
 @media (min-width: 997px) and (max-width: 1045px) {
   .navbar__link.nav-versioning {
-    transform: translateY(-25px);
     transition: all .3s ease-in-out;
   }
 }
@@ -1013,7 +1012,7 @@ filter: opacity(.75);
     min-height: var(--ifm-navbar-height);
     max-height: var(--ifm-navbar-height);
     width: 300px;
-    min-width: 150px;
+    min-width: 5.5em;
 }
 
   html.docs-version-current .navbar {
