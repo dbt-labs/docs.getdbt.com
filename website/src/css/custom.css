@@ -693,7 +693,7 @@ div .toggle_src-components-faqs-styles-module {
 .markdown li,
 blockquote {
   font-size: clamp(.875rem, 1.5vw, 1.125rem);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 .pagination-nav__link {
   font-size: clamp(.875rem, 1.5vw, 1.25rem);
@@ -855,7 +855,7 @@ filter: opacity(.75);
 }
 
 .footer__copyright {
-  margin-top: .75em;
+  margin-top: .5em;
 }
 
 /* Begin @Media Queries */
