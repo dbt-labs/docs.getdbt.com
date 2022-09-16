@@ -25,3 +25,4 @@ If you added new pages (delete if not applicable):
 If you removed existing pages (delete if not applicable):
 - [ ] The page has been removed from `website/sidebars.js`
 - [ ] An entry has been added to `_redirects`
+- [ ] [Run link testing](https://github.com/dbt-labs/docs.getdbt.com#running-the-cypress-tests-locally) to update the links that point to the deleted page
