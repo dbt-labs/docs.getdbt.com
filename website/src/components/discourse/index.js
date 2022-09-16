@@ -16,8 +16,9 @@ export default function DiscourseFeed({
   term = undefined,
   category = undefined,
   title = undefined,
-  link_text = "See latest topics",
-  link_href = "https://discourse.getdbt.com/",
+  link_text = "Ask the Community",
+  link_href = `https://discourse.getdbt.com/new-topic${category ? `?category=${category}` : ''}${tags ? (!category ? `?tags=${tags}` : `&tags=${tags}`) : ''}`,
+  hide_cta = false,
   post_count = 5,
   styles = {}
 }) {
@@ -104,7 +105,9 @@ export default function DiscourseFeed({
           ))}
         </ul>
       )}
-      <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank">{link_text}</a>
+      {!hide_cta && (
+        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank">{link_text}</a>
+      )}
     </div>
   )
 }
