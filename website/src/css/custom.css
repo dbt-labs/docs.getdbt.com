@@ -740,7 +740,7 @@ blockquote {
 }
 
 html[data-theme='dark'] .blog-breadcrumbs {
-  background-color: transparent;
+  background-color: var(--color-primary-blue);
 }
 
 .blog-breadcrumbs a {
