@@ -58,7 +58,7 @@ Example of how to version a page in the `dbt-versions.js` file:
 ```jsx
 exports.versionedPages = [
     {
-      "page": "docs/available-adapters",
+      "page": "docs/supported-data-platforms",
       "firstVersion": "0.21",
     }
 ]

@@ -92,7 +92,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 `ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from this model into dependent models as a common <Term id="table" /> expression.
 * **Pros:**
     * You can still write reusable logic
-    * Ephemeral models can help keep your data warehouse clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](using-custom-schemas)).
+    * Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](using-custom-schemas)).
 * **Cons:**
     * You cannot select directly from this model.
     * Operations (e.g. macros called via `dbt run-operation` cannot `ref()` ephemeral nodes)
