@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-async function getDiscoursePosts({ body }) {
+async function getDiscourseTopics({ body }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
   try {
@@ -32,7 +32,7 @@ async function getDiscoursePosts({ body }) {
       }, [])
     }
 
-    // Return posts 
+    // Return topics 
     return await returnResponse(200, allTopics)
   } catch(err) {
     // Log and return the error
@@ -120,4 +120,4 @@ function validateItem({ key, value }) {
   }
 }
 
-exports.handler = getDiscoursePosts
+exports.handler = getDiscourseTopics

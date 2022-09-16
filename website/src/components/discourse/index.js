@@ -19,11 +19,11 @@ export default function DiscourseFeed({
   link_text = "Ask the Community",
   link_href = `https://discourse.getdbt.com/new-topic${category ? `?category=${category}` : ''}${tags ? (!category ? `?tags=${tags}` : `&tags=${tags}`) : ''}`,
   hide_cta = false,
-  post_count = 5,
+  topic_count = 5,
   styles = {}
 }) {
 
-  const [posts, setPosts] = useState([])
+  const [topics, setTopics] = useState([])
   const [loading, setLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
@@ -37,8 +37,8 @@ export default function DiscourseFeed({
 
         // Build Netlify Function endpoint
         const endpoint = window?.location?.hostname?.includes('localhost')
-          ? 'http://localhost:8888/.netlify/functions/get-discourse-posts'
-          : '/.netlify/functions/get-discourse-posts'
+          ? 'http://localhost:8888/.netlify/functions/get-discourse-topics'
+          : '/.netlify/functions/get-discourse-topics'
 
         // If 'after' prop not passed in, set relative
         // after date for 'help' & 'discussions' categories
@@ -74,8 +74,8 @@ export default function DiscourseFeed({
         // Set error state if data not available
         if(!data) throw new Error('Unable to get latest topics.')
 
-        // Set 5 latest posts
-        setPosts(data.slice(0, post_count))
+        // Set 5 latest toics
+        setTopics(data.slice(0, topic_count))
         setLoading(false)
       } catch(err) {
         setIsError(true)
@@ -93,30 +93,30 @@ export default function DiscourseFeed({
     : 414
 
   return (
-    <div className={feedStyles.discoursePosts} style={{minHeight: setMinHeight, ...styles}}>
+    <div className={feedStyles.discourseTopics} style={{minHeight: setMinHeight, ...styles}}>
       {title && (
         <h2>{title}</h2>
       )}
       {loading ? (
         <img src="/img/loader-icon.svg" alt="Loading" className={feedStyles.loadingIcon} />
-      ) : isError || !posts?.length > 0 ? (
-        <p>Unable to load forum posts at this time.</p>
+      ) : isError || !topics?.length > 0 ? (
+        <p>Unable to load forum topics at this time.</p>
       ) : (
         <ul>
-          {posts.map(post => (
-            <li key={post.id}>
-              {post?.has_accepted_answer && (
-                <span className={feedStyles.solvedPost} title="Solved">✅ </span>
+          {topics.map(topic => (
+            <li key={topic.id}>
+              {topic?.has_accepted_answer && (
+                <span className={feedStyles.solvedTopic} title="Solved">✅ </span>
               )}
-              <PostWrapper post={post}>{post.title}</PostWrapper>
-              {/* <span> {post.username && `- by ${post.username}`}</span> */}
-              {post?.username || post?.posts_count && (
+              <TopicWrapper topic={topic}>{topic.title}</TopicWrapper>
+              {/* <span> {topic.username && `- by ${topic.username}`}</span> */}
+              {topic?.username || topic?.posts_count && (
                 <>
                   {' '}-
                   <span>
-                    {post?.author && `by ${post.author}${post?.posts_count && ','}`}
+                    {topic?.author && `by ${topic.author}${topic?.posts_count && ','}`}
                     {' '}
-                    {post?.posts_count && `${post.posts_count} comments`}
+                    {topic?.posts_count && `${topic.posts_count} comments`}
                   </span>
                 </>
               )}
@@ -131,10 +131,10 @@ export default function DiscourseFeed({
   )
 }
 
-function PostWrapper({ post, children }) {
-  if(post?.slug) {
+function TopicWrapper({ topic, children }) {
+  if(topic?.slug) {
     return (
-      <a href={`https://discourse.getdbt.com/t/${post.slug}`} title={post.title} target="_blank">{children}</a>
+      <a href={`https://discourse.getdbt.com/t/${topic.slug}`} title={topic.title} target="_blank">{children}</a>
     )
   } else {
     return (

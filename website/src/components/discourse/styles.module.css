@@ -1,30 +1,30 @@
-/* Posts Section */
-.discoursePosts {
+/* Topics Section */
+.discourseTopics {
   margin: 2rem 0 3rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.discoursePosts:last-of-type {
+.discourseTopics:last-of-type {
   margin-bottom: 0;
 }
-.discoursePosts .solvedPost {
+.discourseTopics .solvedTopic {
   font-size: .8rem;
 }
-.discoursePosts .solvedPost:hover {
+.discourseTopics .solvedTopic:hover {
   cursor: default;
 }
-.discoursePosts ul {
+.discourseTopics ul {
   list-style: none;
   margin: 0 0 1rem;
   padding: 0;
   width: 100%;
 }
-.discoursePosts ul li {
+.discourseTopics ul li {
   padding: 1rem 0;
   border-bottom: 2px solid var(--color-off-white);
 }
-.discoursePosts ul li:last-of-type {
+.discourseTopics ul li:last-of-type {
   border-bottom: none;
 }
 
@@ -38,7 +38,7 @@
 }
 
 /* Loading icon */
-.discoursePosts .loadingIcon {
+.discourseTopics .loadingIcon {
   max-width: 100px;
   display: block;
 }
