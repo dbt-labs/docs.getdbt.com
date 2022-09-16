@@ -28,6 +28,7 @@ export default function DiscourseFeed({
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
+    // Get topics from Discourse API
     const fetchData = async () => {
       try {
         // Ensure error state is false and loading true
@@ -39,11 +40,26 @@ export default function DiscourseFeed({
           ? 'http://localhost:8888/.netlify/functions/get-discourse-posts'
           : '/.netlify/functions/get-discourse-posts'
 
+        // If 'after' prop not passed in, set relative
+        // after date for 'help' & 'discussions' categories
+        let afterDate = after
+        if(!afterDate) {
+          // Today's date
+          let today = new Date();
+          if(category === 'help') {
+            const relativeDate = new Date(today.setDate(today.getDate() - 30));
+            afterDate = formatDate(relativeDate)
+          } else if(category === 'discussions') {
+            const relativeDate = new Date(today.setDate(today.getDate() - 90));
+            afterDate = formatDate(relativeDate)
+          }
+        }
+        
         // Get Discourse topics data
         const { data } = await axios.post(endpoint, {
           status,
           order,
-          after,
+          after: afterDate,
           before,
           inString, 
           min_posts,
@@ -90,7 +106,7 @@ export default function DiscourseFeed({
       ) : (
         <ul>
           {posts.map(post => (
-            <li>
+            <li key={post.id}>
               {post?.has_accepted_answer && (
                 <span className={feedStyles.solvedPost} title="Solved">✅ </span>
               )}
@@ -127,4 +143,8 @@ function PostWrapper({ post, children }) {
       <div>{children}</div>
     )
   }
+}
+
+function formatDate(date) {
+  return `${date.getFullYear()}-${('0'+ (date.getMonth()+1)).slice(-2)}-${('0'+ date.getDate()).slice(-2)}`
 }
