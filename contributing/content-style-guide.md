@@ -5,7 +5,7 @@ Welcome to the content style guide for docs.getdbt.com! We aim to provide docs t
 This guide includes standards we want to emphasize, likely because we've made deliberate decisions about them. You can refer to [_The Microsoft Writing Style Guide_](https://docs.microsoft.com/en-us/style-guide/welcome/) and the [_Chicago Manual of Style_](https://www.chicagomanualofstyle.org/home.html) for those nagging questions like, "[Should I use an Em dash, En dash or hyphen?](https://docs.microsoft.com/en-us/style-guide/punctuation/dashes-hyphens/)"
 
 ### Table of Contents
-* [Callouts](#Callouts)
+* [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
 * [Titles](#Titles)
