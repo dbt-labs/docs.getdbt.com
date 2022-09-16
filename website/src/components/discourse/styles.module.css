@@ -8,6 +8,12 @@
 .discoursePosts:last-of-type {
   margin-bottom: 0;
 }
+.discoursePosts .solvedPost {
+  font-size: .8rem;
+}
+.discoursePosts .solvedPost:hover {
+  cursor: default;
+}
 .discoursePosts ul {
   list-style: none;
   margin: 0 0 1rem;

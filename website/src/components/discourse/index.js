@@ -76,6 +76,8 @@ export default function DiscourseFeed({
     ? 'auto'
     : 414
 
+  console.log('posts', posts)
+
   return (
     <div className={feedStyles.discoursePosts} style={{minHeight: setMinHeight, ...styles}}>
       {title && (
@@ -89,6 +91,9 @@ export default function DiscourseFeed({
         <ul>
           {posts.map(post => (
             <li>
+              {post?.has_accepted_answer && (
+                <span className={feedStyles.solvedPost} title="Solved">✅ </span>
+              )}
               <PostWrapper post={post}>{post.title}</PostWrapper>
               {/* <span> {post.username && `- by ${post.username}`}</span> */}
               {post?.username || post?.posts_count && (
