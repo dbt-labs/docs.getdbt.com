@@ -4,7 +4,7 @@ import feedStyles from './styles.module.css';
 
 export default function DiscourseFeed({
   order = 'latest_topic',
-  status = undefined,
+  status = 'solved',
   after = undefined,
   before = undefined,
   inString = undefined, 
@@ -14,7 +14,7 @@ export default function DiscourseFeed({
   max_views = undefined,
   tags = undefined, 
   term = undefined,
-  category = undefined,
+  category = 'help',
   title = undefined,
   link_text = "Ask the Community",
   link_href = `https://discourse.getdbt.com/new-topic${category ? `?category=${category}` : ''}${tags ? (!category ? `?tags=${tags}` : `&tags=${tags}`) : ''}`,
