@@ -26,7 +26,7 @@ async function getDiscoursePosts({ body }) {
   } catch(err) {
     // Log and return the error
     console.log('err', err)
-    return await returnResponse(500, { error: 'Unable to get events from Discourse.'})
+    return await returnResponse(500, { error: 'Unable to get topics from Discourse.'})
   }
 }
 
@@ -75,7 +75,7 @@ function buildQueryString(body) {
 function validateItem({ key, value }) {
   // predefined Discourse values
   // https://docs.discourse.org/#tag/Search/operation/search
-  const inStringValues = ['title', 'likes', 'personal', 'messages', 'seen', 'unseen', 'posted', 'created, watching', 'tracking', 'bookmarks', 'assigned', 'unassigned', 'first', 'pinned', 'wiki']
+  const inStringValues = ['title', 'likes', 'personal', 'messages', 'seen', 'unseen', 'posted', 'created', 'watching', 'tracking', 'bookmarks', 'assigned', 'unassigned', 'first', 'pinned', 'wiki']
   const orderValues = ['latest', 'likes', 'views', 'latest_topic']
   const statusValues = ['open', 'closed', 'public', 'archived', 'noreplies', 'single_user', 'solved', 'unsolved']
 
