@@ -141,7 +141,7 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - PublisherSecurity for access to all projects
-- PublishSecurity/<azure_devops_project_object_id> for tightly scoped access
+- PublisherSecurity/<azure_devops_project_object_id> for per project access
 
 **UI/API:** API only
 
@@ -169,7 +169,7 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - PublisherSecurity for access to all projects
-- PublishSecurity/<azure_devops_project_object_id> for tightly scoped access
+- PublisherSecurity/<azure_devops_project_object_id> for per project access
 
 **UI/API:** API only
 
@@ -199,7 +199,7 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - PublisherSecurity for access to all projects
-- PublishSecurity/<azure_devops_project_object_id> for tightly scoped access
+- PublisherSecurity/<azure_devops_project_object_id> for per project access
 
 **UI/API:** API only
 
@@ -231,8 +231,8 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for access to a single project at a time
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time
+- repoV2/<azure_devops_project_object_id> for per project access
+- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
 
 
 **UI/API:** UI and API
