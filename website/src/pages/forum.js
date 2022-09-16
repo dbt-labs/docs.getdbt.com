@@ -1,10 +1,15 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import DiscourseFeed from '@site/src/components/discourse';
 
 function Events() {
   return (
     <Layout>
+      <Head>
+        <title>dbt Discourse</title>
+        <meta name="description" content="Description here" />
+      </Head>
       <section className='discourse-forum-page'>
         <div className='container'>   
           <h1>dbt Discourse</h1>
