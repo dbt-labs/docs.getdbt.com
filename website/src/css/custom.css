@@ -26,7 +26,7 @@
   --ifm-link-color: #009999;
   --ifm-color-primary: #047377;
   --ifm-link-hover-color: #047377;
-  --ifm-button-border-radius: 4px;
+  --ifm-button-border-radius: 5px;
   --ifm-menu-color: #262a38;
   --ifm-menu-color-active: #009999;
   --ifm-pagination-nav-color-hover: #047377;
@@ -128,7 +128,6 @@ code {
   background-color: var(--ifm-color-emphasis-200);
   color: var(--ifm-color-emphasis-900);
 }
-
 
 html[data-theme='dark'] a code {
   color: var(--color-white);
@@ -296,6 +295,21 @@ html[data-theme=light] [class^=toggle_]:after {
   content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQuMzA4IDMuMzg1YzAtMS4xNzguMTczLTIuMzcuNjE1LTMuMzg1QzEuOTgzIDEuMjggMCA0LjI4MiAwIDcuNjkyQTguMzA4IDguMzA4IDAgMCAwIDguMzA4IDE2YzMuNDEgMCA2LjQxMi0xLjk4MyA3LjY5Mi00LjkyMy0xLjAxNS40NDItMi4yMDcuNjE1LTMuMzg1LjYxNWE4LjMwOCA4LjMwOCAwIDAgMS04LjMwNy04LjMwN1oiIGZpbGw9IiM5MkEwQjMiLz48L3N2Zz4=);
 } */
 
+/* navbar buttons */
+a.navbar__item.navbar__link.btn {
+  border: none;
+  color: var(--color-white);
+  background-color: var(--ifm-tabs-color-active);
+  align-self: center;
+  padding: 0.5em 1em;
+  border-radius: var(--ifm-button-border-radius);
+}
+
+a.navbar__item.navbar__link.btn:hover {
+  filter: brightness(1.5);
+  transition: all .3s ease;
+}
+
 /* sidebar menu */
 .menu__link {
   font-size: .875rem;
@@ -458,7 +472,7 @@ html[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
   margin-top: 2.125em;
   margin-bottom: 1.8em;
   /* border: 1px solid transparent; */
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .alert h4 {
   margin-top: 0;
@@ -990,7 +1004,7 @@ filter: opacity(.75);
 
 @media (min-width: 997px) {
   html.docs-version-current .navbar__brand {
-    padding: 0 var(--ifm-navbar-padding-horizontal);
+    padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
     min-height: var(--ifm-navbar-height);
     max-height: var(--ifm-navbar-height);
     width: 300px;
@@ -1000,7 +1014,10 @@ filter: opacity(.75);
   html.docs-version-current .navbar {
     width: 100%;
     margin-left: 0; 
-    padding: 0 var(--ifm-navbar-padding-horizontal) 0 0; 
+  }
+
+  .navbar {
+    padding: 0 var(--ifm-navbar-padding-horizontal) 0; 
   }
 
   html.docs-version-current aside html.docs-version-current .sidebar_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
