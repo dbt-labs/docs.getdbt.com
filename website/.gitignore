@@ -8,6 +8,10 @@
 .docusaurus
 .cache-loader
 
+# cypress artifacts
+/cypress/videos
+/cypress/screenshots
+
 # misc
 .DS_Store
 .env

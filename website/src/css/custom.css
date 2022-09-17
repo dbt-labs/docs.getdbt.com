@@ -43,6 +43,12 @@
   --color-nav-text: #bfc0c0;
 }
 
+.dropdown--version--hide .dropdown__menu {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
 .container.home:nth-child(odd) {
   background: var(--color-off-white);
 }
@@ -286,7 +292,12 @@ nav.navbar div.navbar__inner {
 
 .menu__link {
   font-size: 1rem;
-  padding: 5px 0px 5px 10px !important;
+}
+
+.menu__caret, .menu__link {
+  display: flex;
+  align-items: center;
+  padding: 6px;
 }
 
 .home .row .col--4 {
@@ -818,4 +829,26 @@ code {
 
 .docs-wrapper.docs-doc-page main div.row > article.col--6 {
   margin-bottom: 1.5rem;
+}
+
+/* OneTrust Cookies Settings Btn in Footer */
+footer #ot-sdk-btn.ot-sdk-show-settings,
+footer #ot-sdk-btn.optanon-show-settings {
+  background: none;
+  border: none;
+  color: var(--ifm-footer-color);
+  text-decoration: none;
+  font-weight: var(--ifm-font-weight-bold);
+  font-family: var(--ifm-font-family-base);
+  padding: 0;
+  line-height: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+footer #ot-sdk-btn.ot-sdk-show-settings:hover,
+footer #ot-sdk-btn.optanon-show-settings:hover{
+  background: none;
+  border: none;
+  color: var(--ifm-footer-color);
+  text-decoration: underline;
 }

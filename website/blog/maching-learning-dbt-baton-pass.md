@@ -42,7 +42,7 @@ This happens because the “normal” way of doing things lacks long-term & expl
 
 ### Here’s what happened
 
-After some initial planning, I knew we had this raw data living somewhere in our data warehouse. It was easy to make sense of this starting point for our work together. I wrote dbt transformations to massage this raw data and joined a couple <Term id="table">tables</Term> together based on intuition of what variables mattered: daily active usage, number of users, amount paid, historical usage, etc.
+After some initial planning, I knew we had this raw data living somewhere in our <Term id="data-warehouse" />. It was easy to make sense of this starting point for our work together. I wrote dbt transformations to massage this raw data and joined a couple <Term id="table">tables</Term> together based on intuition of what variables mattered: daily active usage, number of users, amount paid, historical usage, etc.
 
 The ML engineer stepped in from here. She was used to doing her statistics and preprocessing in python [pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/index.html). Before she opened up her Jupyter notebook, we had a heart-to-heart conversation and realized the same work could be done through dbt. Preprocessing could be done through this [open source dbt package](https://github.com/omnata-labs/dbt-ml-preprocessing/tree/1.1.0/#dbt-ml-preprocessing) and there were plenty of others like it in the [package registry](https://hub.getdbt.com/).
 
@@ -106,7 +106,7 @@ Also, I would create a data app (in Hex) where users plug in different input sce
 
 #### What are the tradeoffs?
 
-I’d still have to export my predictive results back to the database and configure them as sources for dbt docs(depends if Modelbit is involved). People wouldn’t know at a glance the data lineage to power this notebook. But my gut tells me the tradeoff would be worth it because the ML engineer knows where to start problem solving even if the solution wasn’t readily available through SQL.
+I’d still have to export my predictive results back to the database and configure them as sources for dbt docs(depends if Modelbit is involved). People wouldn’t know at a glance the <Term id="data-lineage">data lineage</Term> to power this notebook. But my gut tells me the tradeoff would be worth it because the ML engineer knows where to start problem solving even if the solution wasn’t readily available through SQL.
 
 ### Bring machine learning to the SQL workflow
 

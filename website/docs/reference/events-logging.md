@@ -46,7 +46,7 @@ Each log line will have the following JSON properties:
 | `msg` | The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are subject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`. |
 | `node_info` | If applicable, a dictionary of human- and machine-friendly information about a currently running resource |
 | `pid` | The process ID for the running dbt invocation which produced this log message |
-| `thread_name` | The thread in which the log message was produced, helpful for tracking queries when dbt is run with ltiple threads |
+| `thread_name` | The thread in which the log message was produced, helpful for tracking queries when dbt is run with multiple threads |
 | `ts` | When the log line was printed |
 | `type` | Always `log_line` |
 
