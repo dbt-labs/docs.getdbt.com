@@ -4,15 +4,18 @@ id: "connecting-azure-devops"
 sidebar_label: "Connecting Azure DevOps"
 ---
 
-:::info Beta feature
-This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com.
+<Snippet src="available-beta-banner" />
 
-You can still use dbt Cloud with Azure DevOps before this feature is generally available by [following these instructions](/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#azure-devops).
+:::info
+You can still use dbt Cloud with Azure DevOps before this feature is generally available by [following these instructions](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#azure-devops).
 :::
+
+<Snippet src="available-enterprise-tier-only" />
+
 
 ## About Azure DevOps and dbt Cloud
 
-You can connect your Azure DevOps account in dbt Cloud to unlock new product experiences such as the ability to:
+You can connect your Azure DevOps account in dbt Cloud to unlock new product experiences:
 
 - Import new Azure DevOps repos with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH

@@ -1,6 +1,9 @@
 const path = require('path');
+const math = require('remark-math');
+const katex = require('rehype-katex');
 const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
+
 
 /* Debugging */
 var SITE_URL;
@@ -40,7 +43,7 @@ console.log("DEBUG: metatags = ", metatags);
 var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
-  tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
+  tagline: 'End user documentation, guides and technical reference for dbt',
   title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
@@ -58,6 +61,16 @@ var siteSettings = {
       appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : 'dbt'
       //debug: true,
     },
+    announcementBar: {
+      id: "live_qa",
+      content:
+        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
+      backgroundColor: "#047377",
+      textColor: "#fff",
+      isCloseable: true
+    },
+    announcementBarActive: true,
+    announcementBarLink: "https://coalesce.getdbt.com/",
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
@@ -159,7 +172,7 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a>`
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a> | <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>`
     },
   },
   presets: [
@@ -173,9 +186,11 @@ var siteSettings = {
           path: 'docs',
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
 
           editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
-          showLastUpdateTime: false,
+          showLastUpdateTime: true,
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
@@ -186,6 +201,8 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
 
       },
@@ -222,7 +239,14 @@ var siteSettings = {
     '/css/search.css',
     '/css/api.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
-    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
+    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap',
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
 }
 

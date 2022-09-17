@@ -72,6 +72,7 @@ When you run the [`dbt snapshot` command](snapshot):
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](ref) function.
 
 ## Example
+
 To add a snapshot to your project:
 
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
@@ -312,7 +313,7 @@ Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a sep
 Your models should then select from these snapshots, treating them like regular data sources. As much as possible, snapshot your source data in its raw form and use downstream models to clean up the data
 
 #### Use the `source` function in your query.
-This helps when understanding data lineage in your project.
+This helps when understanding <Term id="data-lineage">data lineage</Term> in your project.
 
 #### Include as many columns as possible.
 In fact, go for `select *` if performance permits! Even if a column doesn't feel useful at the moment, it might be better to snapshot it in case it becomes useful – after all, you won't be able to recreate the column later.
@@ -345,8 +346,8 @@ For the `timestamp` strategy, the configured `updated_at` column is used to popu
 <details>
 <summary>  Details for the timestamp strategy </summary>
 
-Snapshot query results at `2019-01-01 11:00`:
-
+<summary>Snapshot query results at `2019-01-01 11:00`</summary>
+    
 | id | status  | updated_at       |
 | -- | ------- | ---------------- |
 | 1        | pending | 2019-01-01 10:47 |
@@ -379,7 +380,7 @@ For the `check` strategy, the current timestamp is used to populate each column
 <details>
 <summary>  Details for the check strategy </summary>
 
-Snapshot query results at `2019-01-01 11:00`:
+<summary>Snapshot query results at `2019-01-01 11:00`</summary>
 
 | id | status  |
 | -- | ------- |
@@ -408,9 +409,9 @@ Snapshot results:
 
 
 ## FAQs
-<FAQ src="run-one-snapshot" />
-<FAQ src="snapshot-frequency" />
-<FAQ src="snapshot-schema-changes" />
-<FAQ src="snapshot-hooks" />
-<FAQ src="snapshot-target-schema" />
-<FAQ src="configurable-snapshot-path" />
+<FAQ src="Runs/run-one-snapshot" />
+<FAQ src="Runs/snapshot-frequency" />
+<FAQ src="Snapshots/snapshot-schema-changes" />
+<FAQ src="Snapshots/snapshot-hooks" />
+<FAQ src="Snapshots/snapshot-target-schema" />
+<FAQ src="Accounts/configurable-snapshot-path" />

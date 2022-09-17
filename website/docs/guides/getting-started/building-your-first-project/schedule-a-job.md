@@ -42,11 +42,11 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 ### FAQs
 
-<FAQ src="failed-prod-run" />
+<FAQ src="Runs/failed-prod-run" />
 
 ## Next steps
 
-Congratulations! Now that you've got a working dbt project, you can read about dbt [best practices](/docs/guides/best-practices).
+Congratulations! Now that you've got a working dbt project, you can read about dbt [best practices](/guides/best-practices).
 
 You can improve your dbt skills with these fun exercises:
 

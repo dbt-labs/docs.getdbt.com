@@ -3,6 +3,7 @@ title: "Set up and connect BigQuery"
 id: setting-up-bigquery
 description: "Set up BigQuery with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect BigQuery"
+pagination_next: guides/getting-started/building-your-first-project/build-your-first-models
 ---
 
 ## Introduction
@@ -12,7 +13,7 @@ For the BigQuery project in the getting started guide, you'll learn how to set u
 This guide will walk you through:
 
 - Setting up a new BigQuery instance
-- Accessing sample date in a public data set
+- Accessing sample data in a public data set
 - Connecting dbt Cloud to BigQuery
 
 ## Prerequisites
@@ -88,7 +89,7 @@ You will learn how to connect dbt Cloud to Google BigQuery so that you can lever
 
 <WistiaVideo id="o9a2bawwl6" paddingTweak="62.5%" />
 
-In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other data warehouses.
+In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other <Term id="data-warehouse">data warehouses</Term>.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify your are using the correct email account.
 2. Select **+ Create Credentials** then select **Service account**.
@@ -132,7 +133,7 @@ Now let's set up the connection between dbt Cloud and BigQuery.
 Congratulations! You have successfully completed the following:
 
 - Set up a new BigQuery instance
-- Accessing sample date in a public data set
+- Accessing sample data in a public data set
 - Connected dbt Cloud to BigQuery
 
 ## Next steps

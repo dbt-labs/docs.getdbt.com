@@ -9,7 +9,7 @@ description: "Configure your profile using the command line."
 
 ## Connecting to your warehouse using the command line
 
-When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your data warehouse.
+When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
 
 <File name='dbt_project.yml'>
 
@@ -59,7 +59,7 @@ A profile consists of _targets_, and a specified _default target_.
 
 Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
-The credentials you need to provide in your target varies across warehouses – sample profiles for each supported warehouse are available in the [Supported Adapters](available-adapters) section.
+The credentials you need to provide in your target varies across warehouses &mdash sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
 
 **Pro Tip:** You may need to surround your password in quotes if it contains special characters. More details [here](https://stackoverflow.com/a/37015689/10415173).
 
@@ -89,7 +89,7 @@ dbt supports multiple targets within one profile to encourage the use of separat
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 
-You may also have a `prod` target within your profile, which creates the objects in your production schema. However, since it's often desirable to perform production runs on a schedule, we recommend deploying your dbt project on a separate machine to your local machine. As such, most dbt users will only have a dev target in their profile on their local machine.
+You may also have a `prod` target within your profile, which creates the objects in your production schema. However, since it's often desirable to perform production runs on a schedule, we recommend deploying your dbt project to a separate machine other than your local machine. Most dbt users only have a `dev` target in their profile on their local machine.
 
 If you do have multiple targets in your profile, and want to use a target other than the default, you can do this using the `--target` option when issuing a dbt command.
 
