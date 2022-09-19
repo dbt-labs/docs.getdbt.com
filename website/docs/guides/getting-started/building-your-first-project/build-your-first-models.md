@@ -8,7 +8,7 @@ Now that you set up your sample project and had a successful run, you can get to
 
 ## Checkout a new git branch
 
-1. Click **Develop** from the top left of dbt Cloud. The master branch should now be set to read-only mode, so you'll need to create a new branch.
+1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
 
 2. Click **Create branch**, and name your branch `add-customers-model`.
     <div style={{maxWidth: '400px'}}>
@@ -17,10 +17,10 @@ Now that you set up your sample project and had a successful run, you can get to
 
 ## Build your first model
 
-1. Click **Develop** from the top left of dbt Cloud.
+1. Click **Develop** from the upper left of dbt Cloud.
 2. Click the **...** next to the Models directory, then select **Create file**.  
 3. Name the file `models/customers.sql`, then click **Create**.
-4. Paste the following query into the file and click **Save File**.
+4. Copy the following query into the file and click **Save File**.
 
     <Snippet src="tutorial-sql-query" />
 

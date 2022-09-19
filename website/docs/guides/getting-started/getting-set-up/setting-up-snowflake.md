@@ -220,7 +220,7 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
 </p>
 
-6. We have one slight tweak to make to dbt Cloud interface to account for the `analytics` database and `transforming` warehouse created earlier.  Click the gear icon in the top right and Select *Account Settings*.  Select the project titled, "Partner Connection Trial" and select `snowflake` in the overview table.  Select edit and update the fields `database` and `warehouse` to be `analytics` and `transforming` respectively.
+6. We have one slight tweak to make to the dbt Cloud interface to account for the `analytics` database and `transforming` warehouse created earlier. Click the gear icon in the upper right and select **Account Settings**. Choose the "Partner Connection Trial" project and select `snowflake` in the overview table. Select edit and update the fields `database` and `warehouse` to be `analytics` and `transforming`, respectively.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
