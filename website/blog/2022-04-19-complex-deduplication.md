@@ -88,7 +88,7 @@ To build our `grain_id` key, we use the pure gold of the *[dbt_utils package](ht
 ```sql
 {% macro build_key_from_columns(table_name, exclude=[]) %}
 
-{% set cols = {{ dbt_utils.star(from=ref('table_name'), except = exclude) }} %}
+{% set cols =  dbt_utils.star(from=ref('table_name'), except = exclude)  %}
  
 {%- for col in cols -%}
 
