@@ -42,7 +42,7 @@ function FAQ({ children, src, alt_header = null }) {
   }
 
   return (
-    <div>
+    <div className='faqs'>
       <span className={styles.link} onClick={toggleOn}>
         <span className={styles.toggle}
           style={{
