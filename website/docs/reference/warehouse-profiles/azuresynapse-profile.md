@@ -29,17 +29,19 @@ pip install dbt-synapse
 :::info Dedicated SQL only
 
 Azure Synapse offers both Dedicated SQL Pools and Serverless SQL Pools.
-**Only Dedicated SQL Pools are supported by this adapter. If you really insist on using serverless pools, check out the neglected, experimental project: [dbt-synapse-serverless](https://github.com/dbt-msft/dbt-synapse-serverless)** 
+**Only Dedicated SQL Pools are supported by this adapter. If you really insist on using serverless pools, check out the neglected, experimental project: [dbt-synapse-serverless](https://github.com/dbt-msft/dbt-synapse-serverless)**
 
 :::
 
 ### Prerequisites
 
-On Ubuntu make sure you have the ODBC header files before installing
+On Debian/Ubuntu make sure you have the ODBC header files before installing
 
-    sudo apt install unixodbc-dev
+```bash
+sudo apt install unixodbc-dev
+```
 
-Download and install the [Microsoft ODBC Driver 17 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
+Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
 
 ### Authentication methods
 
@@ -62,6 +64,7 @@ your_profile_name:
       driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
       server: workspacename.sql.azuresynapse.net # (Dedicated SQL endpoint of your workspace here)
       port: 1433
+      database: exampledb
       schema: schema_name
       user: username
       password: password
@@ -69,4 +72,4 @@ your_profile_name:
 
 </File>
 
-You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](mssql-profile#connecting-to-azure-sql-server-with-dbt-sqlserver).
+You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](mssql-profile).

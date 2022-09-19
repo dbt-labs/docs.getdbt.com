@@ -28,17 +28,44 @@ pip install dbt-sqlserver
 
 ### Prerequisites
 
-On Ubuntu make sure you have the ODBC header files before installing
+On Debian/Ubuntu make sure you have the ODBC header files before installing
 
-    sudo apt install unixodbc-dev
+```bash
+sudo apt install unixodbc-dev
+```
 
-Download and install the [Microsoft ODBC Driver 17 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
+Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
 
-### Authentication methods
+The adapter is tested with SQL Server 2017, SQL Server 2019, SQL Server 2022 and Azure SQL Database. These versions are tested with Microsoft ODBC Driver 17 and Microsoft ODBC Driver 18.
 
-#### Standard SQL Server authentication
+## Authentication methods & profile configuration
 
-SQL Server credentials are supported for on-prem as well as Azure,
+### Common configuration
+
+For all the authentication methods below, the following configuration options can be set in your `profiles.yml` file:
+
+* `driver`: The ODBC driver to use. E.g. `ODBC Driver 18 for SQL Server`
+* `server`: The server hostname. E.g. `localhost`
+* `port`: The server port. E.g. `1433`
+* `database`: The database name.
+* `schema`: The schema name. E.g. `dbo`
+* `retries`: The number of automatic times to retry a query before failing. Defaults to `1`. Note that queries with syntax errors will not be retried. This setting can be used to overcome intermittent network issues.
+* `encrypt`: Whether to encrypt the connection to the server. Defaults to `true`. Read more about encryption [below](#connection-encryption).
+* `trust_cert`: Whether to trust the server certificate. Defaults to `false`. Read more about encryption [below](#connection-encryption).
+
+### Connection encryption
+
+Microsoft made several changes in the release of ODBC Driver 18 that affects how connection encryption is configured. To accomodate these changes, dbt-sqlserver 1.2.0 or newer also changed the defaults for the `encrypt` and `trust_cert` configuration options. Both options are now always included in the connection string to the database.
+
+The default value of `encrypt` is `true`, meaning that connections are encrypted by default.
+
+The default value of `trust_cert` is `false`, meaning that the server certificate will be validated. By setting this to `true`, a self-signed certificate will be accepted.
+
+More details about how these values affect your connection and how they are used differently in versions of the ODBC driver can be found in the [Microsoft documentation](https://learn.microsoft.com/en-us/sql/connect/odbc/dsn-connection-string-attribute?view=sql-server-ver16#encrypt).
+
+### Standard SQL Server authentication
+
+SQL Server credentials are supported for on-premise servers as well as Azure,
 and it is the default authentication method for `dbt-sqlserver`.
 
 When running on Windows, you can also use your Windows credentials to authenticate.
@@ -61,8 +88,9 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
+      database: exampledb
       port: 1433
       schema: schema_name
       user: username
@@ -83,9 +111,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       windows_login: True
 ```
@@ -96,21 +125,21 @@ your_profile_name:
 
 </Tabs>
 
-#### Azure Active Directory Authentication (AAD)
+### Azure Active Directory Authentication (AAD)
 
 While you can use the SQL username and password authentication as mentioned above,
 you might opt to use one of the authentication methods below for Azure SQL.
 
 The following additional methods are available to authenticate to Azure SQL products:
 
-- AAD username and password
-- Service principal (a.k.a. AAD Application)
-- Managed Identity
-- Environment-based authentication
-- Azure CLI authentication
-- VS Code authentication (available through the automatic option below)
-- Azure PowerShell module authentication (available through the automatic option below)
-- Automatic authentication
+* AAD username and password
+* Service principal (a.k.a. AAD Application)
+* Managed Identity
+* Environment-based authentication
+* Azure CLI authentication
+* VS Code authentication (available through the automatic option below)
+* Azure PowerShell module authentication (available through the automatic option below)
+* Automatic authentication
 
 The automatic authentication setting is in most cases the easiest choice and works for all of the above.
 
@@ -136,9 +165,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: ActiveDirectoryPassword
       user: bill.gates@microsoft.com
@@ -161,9 +191,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: ServicePrincipal
       tenant_id: 00000000-0000-0000-0000-000000001234
@@ -187,9 +218,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: MSI
 ```
@@ -213,9 +245,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: environment
 ```
@@ -238,9 +271,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: CLI
 ```
@@ -254,6 +288,7 @@ your_profile_name:
 This authentication option will automatically try to use all available authentication methods.
 
 The following methods are tried in order:
+
 1. Environment-based authentication
 2. Managed Identity authentication
 3. Visual Studio authentication (*Windows only, ignored on other operating systems*)
@@ -269,9 +304,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: auto
 ```
@@ -286,9 +322,9 @@ your_profile_name:
 
 On Windows systems, the following additional authentication methods are also available for Azure SQL:
 
-- AAD interactive
-- AAD integrated
-- Visual Studio authentication (available through the automatic option above)
+* AAD interactive
+* AAD integrated
+* Visual Studio authentication (available through the automatic option above)
 
 <Tabs
   defaultValue="aad_interactive"
@@ -310,9 +346,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: ActiveDirectoryInteractive
       user: bill.gates@microsoft.com
@@ -334,9 +371,10 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
+      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: exampledb
       schema: schema_name
       authentication: ActiveDirectoryIntegrated
 ```
@@ -346,3 +384,41 @@ your_profile_name:
 </TabItem>
 
 </Tabs>
+
+### Automatic AAD principal provisioning for grants
+
+In dbt 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups. This is fully supported in this adapter and comes with an additional feature.
+
+By setting `auto_provision_aad_principals` to `true` in your `profiles.yml` file, you can automatically provision Azure Active Directory (AAD) principals (users or groups) that don't exist yet.
+
+In Azure SQL, you can sign in using AAD authentication, but to be able to grant an AAD principal certain permissions, it needs to be linked in the database first. ([Microsoft documentation](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql))
+
+Note that principals will not be deleted automatically when they are removed from the `grants` block.
+
+### Reference of all connection options
+
+* `driver`: The ODBC driver to use. This is required for all databases.
+* `host`: The hostname of the database server. This is required for all databases.
+* `port`: The port of the database server. This defaults to `1433`.
+* `database`: The name of the database to connect to. This is required for all databases.
+* `schema`: The schema to use. This is required for all databases.
+* `authentication`: The authentication method to use. This is not required for Windows authentication. This defaults to `sql`. Valid values are:
+  * `sql`: SQL authentication using username and password
+  * `ActiveDirectoryPassword`: Active Directory authentication using username and password
+  * `ActiveDirectoryInteractive`: Active Directory authentication using a username and MFA prompts
+  * `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
+  * `ServicePrincipal`: Azure Active Directory authentication using a service principal
+  * `CLI`: Azure Active Directory authentication using the account you're logged in with in the Azure CLI
+  * `MSI`: Azure Active Directory authentication using a managed identity available on the system
+  * `environment`: Azure Active Directory authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
+  * `auto`: Azure Active Directory authentication trying the previous authentication methods until it finds one that works
+* `UID`: Username used to authenticate. This can be left out depending on the authentication method.
+* `PWD`: Password used to authenticate. This can be left out depending on the authentication method.
+* `windows_login`: Set this to `true` to use Windows authentication. This is only available for SQL Server.
+* `tenant_id`: The tenant ID of the Azure Active Directory instance. This is only used when connecting to Azure SQL with a service principal.
+* `client_id`: The client ID of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.
+* `client_secret`: The client secret of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.
+* `encrypt`: Set this to `false` to disable the use of encryption. Defaults to `true`. See [above](#connection-encryption).
+* `trust_cert`: Set this to `true` to trust the server certificate. Defaults to `false`. See [above](#connection-encryption).
+* `retries`: The number of times to retry a failed connection. Defaults to `1`.
+* `auto_provision_aad_principals`: Set this to `true` to automatically provision AAD principals for Azure SQL. Defaults to `false`. See [above](#automatic-aad-principal-provisioning-for-grants).

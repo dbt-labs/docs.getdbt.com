@@ -5,7 +5,7 @@ id: "mssql-configs"
 
 ## Materializations
 
-Ephemeral materialization is not supported.
+Ephemeral materialization is not supported due to T-SQL not supporting nested CTEs. It may work in some cases when you're working with very simple ephemeral models.
 
 ### Tables
 
@@ -98,7 +98,7 @@ Some examples:
 ```sql
 {{
     config({
-        "as_columnstore": false, 
+        "as_columnstore": false,
         "materialized": 'table',
         "post-hook": [
             "{{ create_clustered_index(columns = ['row_id', 'row_id_complement'], unique=True) }}",
@@ -106,7 +106,7 @@ Some examples:
             "{{ create_nonclustered_index(columns = ['row_id'], includes = ['modified_date']) }}",
         ]
     })
-    
+
 }}
 
 select *
