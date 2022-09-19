@@ -278,6 +278,7 @@ function Home() {
           </div>
         </div>
         <div className="banner-animation" dangerouslySetInnerHTML={getBanner()}></div>
+        <p>test</p>
       </Layout>
     </>
   );
