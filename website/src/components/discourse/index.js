@@ -2,26 +2,26 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import feedStyles from './styles.module.css';
 
-export default function DiscourseFeed({
-  order = 'latest_topic',
-  status = 'solved',
-  after = undefined,
-  before = undefined,
-  inString = undefined, 
-  min_posts = undefined,
-  max_posts = undefined,
-  min_views = undefined,
-  max_views = undefined,
-  tags = undefined, 
-  term = undefined,
-  category = 'help',
-  title = undefined,
-  link_text = "Ask the Community",
-  link_href = `https://discourse.getdbt.com/new-topic${category ? `?category=${category}` : ''}${tags ? (!category ? `?tags=${tags}` : `&tags=${tags}`) : ''}`,
-  hide_cta = false,
+export const DiscourseFeed = ({
+  order,
+  status,
+  after,
+  before,
+  inString, 
+  min_posts,
+  max_posts,
+  min_views,
+  max_views,
+  tags, 
+  term,
+  category,
+  title,
+  link_text,
+  link_href,
+  show_cta,
   topic_count = 5,
   styles = {}
-}) {
+}) => {
 
   const [topics, setTopics] = useState([])
   const [loading, setLoading] = useState(true)
@@ -54,6 +54,20 @@ export default function DiscourseFeed({
           }
         }
         
+        console.log('wee', {
+          status,
+          order,
+          after: afterDate,
+          before,
+          inString, 
+          min_posts,
+          max_posts,
+          min_views,
+          max_views,
+          tags, 
+          term,
+          category,
+        })
         // Get Discourse topics data
         const { data } = await axios.post(endpoint, {
           status,
@@ -122,13 +136,25 @@ export default function DiscourseFeed({
           ))}
         </ul>
       )}
-      {!hide_cta && (
+      {show_cta && (
         <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank">{link_text}</a>
       )}
     </div>
   )
 }
 
+export const DiscourseHelpFeed = () => {
+  return <DiscourseFeed 
+    order='latest_topic' 
+    status='solved'
+    category='help'
+    link_text='Ask the Community'
+    link_href='https://discourse.getdbt.com/new-topic?category=help'
+    show_cta={true}
+  />
+}
+
+// Helpers
 function TopicWrapper({ topic, children }) {
   if(topic?.slug) {
     return (
@@ -144,3 +170,4 @@ function TopicWrapper({ topic, children }) {
 function formatDate(date) {
   return `${date.getFullYear()}-${('0'+ (date.getMonth()+1)).slice(-2)}-${('0'+ date.getDate()).slice(-2)}`
 }
+
