@@ -53,11 +53,6 @@ Note that, while no community plugins are currently supported in dbt Cloud, we e
 
 ### Community Adapters
 
-Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
-
-- Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena)
-- Check out the open issues in the plugin's source repository
-
 | Data Platform          | Adapter Repository                                                                              | Profile Setup                              | Configuration                              | Slack Channel                                                     | Maintained By | Notes                     |
 | ---------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------ | ----------------------------------------------------------------- | ------------- | ------------------------- |
 | Athena                 | [dbt-athena](https://github.com/Tomme/dbt-athena)                                               | [Athena Profile](athena-profile)           |                                            | [#db-athena](https://getdbt.slack.com/archives/C013MLFR7BQ)       | Community     | Athena engine version 2   |
