@@ -53,21 +53,7 @@ export const DiscourseFeed = ({
             afterDate = formatDate(relativeDate)
           }
         }
-        
-        console.log('wee', {
-          status,
-          order,
-          after: afterDate,
-          before,
-          inString, 
-          min_posts,
-          max_posts,
-          min_views,
-          max_views,
-          tags, 
-          term,
-          category,
-        })
+
         // Get Discourse topics data
         const { data } = await axios.post(endpoint, {
           status,
@@ -143,14 +129,46 @@ export const DiscourseFeed = ({
   )
 }
 
-export const DiscourseHelpFeed = () => {
+// Same props can be passed into
+// DiscourseHelpFeed to customize further
+export const DiscourseHelpFeed = ({
+  order = 'latest_topic',
+  status = 'solved',
+  category = 'help',
+  link_text = 'Ask the Community',
+  link_href = `https://discourse.getdbt.com/new-topic${category ? `?category=${category}` : ''}${tags ? (!category ? `?tags=${tags}` : `&tags=${tags}`) : ''}`,
+  show_cta = true,
+  tags, 
+  after,
+  before,
+  inString, 
+  min_posts,
+  max_posts,
+  min_views,
+  max_views,
+  term,
+  title,
+  topic_count = 5,
+  styles = {}
+}) => {
   return <DiscourseFeed 
-    order='latest_topic' 
-    status='solved'
-    category='help'
-    link_text='Ask the Community'
-    link_href='https://discourse.getdbt.com/new-topic?category=help'
-    show_cta={true}
+    order={order}
+    status={status}
+    category={category}
+    link_text={link_text}
+    link_href={link_href}
+    show_cta={show_cta}
+    after={after}
+    before={before}
+    inString={inString}
+    min_posts={min_posts}
+    max_posts={max_posts}
+    min_views={min_views}
+    max_views={max_views}
+    term={term}
+    title={title}
+    topic_count={topic_count}
+    styles={styles}
   />
 }
 

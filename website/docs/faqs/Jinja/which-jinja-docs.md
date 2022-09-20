@@ -11,5 +11,7 @@ If you are stuck with a Jinja issue, it can get confusing where to check for mor
 2. [Our Jinja function reference](/docs/building-a-dbt-project/jinja-macros#related-reference-docs): This documents any additional functionality we've added to Jinja in dbt.
 3. [Agate's table docs](https://agate.readthedocs.io/page/api/table.html): If you're operating on the result of a query, dbt will pass it back to you as an agate table. This means that the methods you call on the <Term id="table" /> belong to the Agate library rather than Jinja or dbt.
 
-<!-- EXAMPLE: DELETE BEFORE TAKE-LIVE -->
+<!-- EXAMPLES: DELETE BEFORE TAKE-LIVE -->
 <DiscourseFeed title='Discourse Jinja topics' status={['open', 'public']} category='help' tags='jinja,testing' />
+
+<DiscourseHelpFeed title='Help feed' />
