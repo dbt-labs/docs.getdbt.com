@@ -114,12 +114,8 @@ var siteSettings = {
           position: 'right',
           items: [
             {
-              label: 'Online courses',
+              label: 'Courses',
               href: 'https://courses.getdbt.com',
-            },
-            {
-              label: 'Live courses',
-              href: 'https://learn.getdbt.com/public',
             },
             {
               label: 'Guides',
