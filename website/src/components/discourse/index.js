@@ -40,8 +40,7 @@ export default function DiscourseFeed({
           ? 'http://localhost:8888/.netlify/functions/get-discourse-topics'
           : '/.netlify/functions/get-discourse-topics'
 
-        // If 'after' prop not passed in, set relative
-        // after date for 'help' & 'discussions' categories
+        // If 'after' prop not passed in, set relative after date
         let afterDate = after
         if(!afterDate) {
           // Today's date
@@ -49,7 +48,7 @@ export default function DiscourseFeed({
           if(category === 'help') {
             const relativeDate = new Date(today.setDate(today.getDate() - 30));
             afterDate = formatDate(relativeDate)
-          } else if(category === 'discussions') {
+          } else {
             const relativeDate = new Date(today.setDate(today.getDate() - 90));
             afterDate = formatDate(relativeDate)
           }
