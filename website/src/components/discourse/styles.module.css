@@ -27,6 +27,10 @@
 .discourseTopics ul li:last-of-type {
   border-bottom: none;
 }
+.discourseTopics ul li a {
+  font-weight: 600;
+  font-size: 18px;
+}
 
 /* Cta */
 .discourseCta {

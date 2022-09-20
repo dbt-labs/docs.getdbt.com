@@ -110,7 +110,7 @@ export const DiscourseFeed = ({
               <TopicWrapper topic={topic}>{topic.title}</TopicWrapper>
               {(topic?.author || topic?.posts_count) && (
                 <>
-                  {' '}-
+                  {' '}
                   <span>
                     {topic?.author && `by ${topic.author}${topic?.posts_count && ','}`}
                     {' '}
