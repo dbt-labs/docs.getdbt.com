@@ -1,5 +1,13 @@
 ---
 title: "Vertica Profile"
+meta:
+  maintained_by: Community
+  authors: Matthew Carter, Andy Regan, Andrew Hedengren
+  github_repo: '[dbt-vertica](https://github.com/mpcarter/dbt-vertica)'
+  core_version: `v0.21.0 and newer`
+  cloud_support: Not Supported
+  supported_version: Vertica 10.0+
+
 ---
 
 :::info Community plugin
@@ -8,10 +16,21 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
+
+| Attribute                           | Value                                       |
+| ----------------------------------- | ------------------------------------------- |
+| **Maintained by**                   | <p>{frontMatter.meta.maintained_by}</p>     |
+| **Authors**                         | <p>{frontMatter.meta.authors}</p>           |
+| **Github Repo**                     | <p>{frontMatter.meta.github_repo}</p>       |
+| **Supported dbt Core version**      | <p>{frontMatter.meta.core_version}</p>      |
+| **dbt Cloud support**               | <p>{frontMatter.meta.cloud_support}</p>     |
+| **Supported data platform version** | <p>{frontMatter.meta.supported_version}</p> |
+
+
 ## Overview of dbt-vertica
 **Maintained by:** Community      
 **Authors:** Matthew Carter, Andy Regan, Andrew Hedengren  
-**Source:** [Github](https://github.com/mpcarter/dbt-vertica)  
+**Source:** [dbt-vertica](https://github.com/mpcarter/dbt-vertica)  
 **Core version:** v0.21.0 and newer      
 **dbt Cloud:** Not Supported      
 **Supported Version:** Vertica 10.0+
