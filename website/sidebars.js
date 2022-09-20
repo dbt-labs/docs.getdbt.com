@@ -64,6 +64,7 @@ const sidebarSettings = {
           link: {
             type: 'generated-index',
             title: 'Adapter Development',
+            id: 'adapter-development',
             description: 'Learn what an adapter is what what\'s required to make one. Also how to build, test, document, promote, and verify your new adapter. Visit the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond this section.',
             
           },
