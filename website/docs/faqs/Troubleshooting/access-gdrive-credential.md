@@ -19,6 +19,6 @@ If you are experiencing this error when using oAuth, and you have verified that 
 ```
 gcloud auth application-default login --scopes=openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/sqlservice.login,https://www.googleapis.com/auth/drive
 ```
-For more info see [application-default docs](https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login)
+For more info see the [gcloud auth application-default documentation](https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login)
 
 If you've tried the steps above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
