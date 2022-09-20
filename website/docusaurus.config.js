@@ -138,6 +138,12 @@ var siteSettings = {
           activeBasePath: 'blog'
         },
         {
+          to: '/community/',
+          label: 'Community',
+          position: 'right',
+          activeBasePath: 'community'
+        },
+        {
           label: 'Courses',
           position: 'right',
           items: [
@@ -150,28 +156,6 @@ var siteSettings = {
               href: 'https://learn.getdbt.com/public',
             }
           ],
-        },
-        {
-          label: 'Community',
-          position: 'right',
-          items: [
-            {
-              label: 'Maintaining a Slack Channel',
-              to: '/community/maintaining-a-channel',
-            },
-            {
-              label: 'dbt Slack',
-              href: 'https://community.getdbt.com/',
-            },
-            {
-              label: 'Blog',
-              href: 'https://blog.getdbt.com',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/dbt-labs/dbt-core',
-            },
-          ]
         },
       ],
     },
