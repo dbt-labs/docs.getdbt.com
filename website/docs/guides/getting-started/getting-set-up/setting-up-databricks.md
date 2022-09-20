@@ -150,7 +150,7 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
     ```sql
     select * from default.jaffle_shop_customers
     select * from default.jaffle_shop_orders
-    select * from default.stripe.payments
+    select * from default.stripe_payments
     ```
 
     <div style={{maxWidth: '400px'}}>
