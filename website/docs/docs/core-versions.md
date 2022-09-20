@@ -78,7 +78,7 @@ We are committed to avoiding breaking changes in minor versions for end users of
 
 ### How we version adapter plugins
 
-When you use dbt, you're using `dbt-core` together with an adapter plugin specific to your database. You can see the current list in ["Available adapters"](available-adapters). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
+When you use dbt, you're using `dbt-core` together with an adapter plugin specific to your database. You can see the current list in [Supported Data Platforms](supported-data-platforms). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
 
 `dbt-core` and adapter plugins coordinate new features and behind-the-scenes changes in minor releases. When it comes to fixing bugs, sooner is better—so patch versions are released independently for `dbt-core` and plugins.
 

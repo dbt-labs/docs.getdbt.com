@@ -3,7 +3,9 @@ title: "What are adapters? Why do we need them?"
 id: "1-what-are-adapters"
 ---
 
-Adapters are an essential component of dbt integration with various databases (and data warehouses). Navigating the nuances of different databases can be daunting, but you are not alone. Visit [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond the documentation.
+Adapters are an essential component of dbt. At their most basic level, they are how dbt Core connects with the various supported data platforms. At a higher-level, dbt Core adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt Core.
+ 
+ Navigating and developing around the nuances of different databases can be daunting, but you are not alone. Visit [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond the documentation.
 
 ## All databases are not the same
 
@@ -20,7 +22,7 @@ There's a tremendous amount of work that goes into creating a database. Here is 
 There's a lot more there than just SQL as a language. Databases (and data warehouses) are so popular because you can abstract away a great deal of the complexity from your brain to the database itself. This enables you to focus more on the data.
 
 dbt allows for further abstraction and standardization of the outermost layers of a database (SQL API, client library, connection manager) into a framework that both:
- - Opens database technology to less technical users (webmaster -> web developer).
+ - Opens database technology to less technical users (a large swath of a DBA's role has been automated, similar to how the vast majority of folks with websites today no longer have to be "[webmasters](https://en.wikipedia.org/wiki/Webmaster)").
  - Enables more meaningful conversations about how data warehousing should be done.
 
 This is where dbt adapters become critical.
@@ -44,7 +46,7 @@ Here are some categories and examples of SQL statements that can be constructed 
 | Statement syntax                             | The use of `IF EXISTS`                                                                 | <li>`IF <TABLE> EXISTS, DROP TABLE`</li><li>`DROP <TABLE> IF EXISTS`</li>                                                                                                                                  |
 | Workflow definition & semantics              | Incremental updates                                                                              | <li>`MERGE`</li><li>`DELETE; INSERT`</li>                                                                                                                                                                       |
 | Relation and column attributes/configuration | Database-specific materialization configs | <li>`DIST = ROUND_ROBIN` (Synapse)</li><li>`DIST = EVEN` (Redshift)</li> |
-| Permissioning                                | Grant statements that can only take one grantee at a time vs those that accept lists of grantees | <li>`grant SELECT on table hogwarts.house_pts to dumbledore, snape` </li><li>`grant SELECT on table hogwarts.house_pts to dumbledore`<br></br>`grant SELECT on table hogwarts.house_pts to snape`</li> |
+| Permissioning                                | Grant statements that can only take one grantee at a time vs those that accept lists of grantees | <li>`grant SELECT on table dinner.corn to corn_kid, everyone` </li><li>`grant SELECT on table dinner.corn to corn_kid; grant SELECT on table dinner.corn to everyone`</li> |
 
 ### Python Client Library & Connection Manager
 
@@ -54,7 +56,7 @@ The other big category of inter-database differences comes with how the client c
 |------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | Credentials & authentication | Authentication                             | <li>Username & password</li><li>MFA with `boto3` or Okta token</li>                                                |
 | Connection opening/closing   | Create a new connection to db             |<li>`psycopg2.connect(connection_string)`</li><li>`google.cloud.bigquery.Client(...)`</li>                        |
-| Inserting local data         | Load seed .`csv` files into Python memory |<li> `Adapter.upload_file()` (BigQuery)</li><li>`INSERT ... INTO VALUES ...` prepared statement (all other databases)</li> |
+| Inserting local data         | Load seed .`csv` files into Python memory |<li> `google.cloud.bigquery.Client.load_table_from_file(...)` (BigQuery)</li><li>`INSERT ... INTO VALUES ...` prepared statement (most other databases)</li> |
 
 
 ## How dbt encapsulates and abstracts these differences

@@ -8,7 +8,7 @@ id: "target"
 * **dbt CLI:** These values are based on the target defined in your [`profiles.yml` file](reference/profiles.yml.md)
 * **dbt Cloud Scheduler:**
     * `target.name` is defined per job as described [here](cloud-setting-a-custom-target-name).
-    * For all other attributes, the values are defined by the deployment connection. To check any of these values, head to `Environments` (via the hamburger menu), select the relevant deployment environment, and select settings.
+    * For all other attributes, the values are defined by the deployment connection. To check these values, click **Deploy** from the upper left and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
 * **dbt Cloud IDE:** The values are defined by your connection and credentials. To check any of these values, head to your account (via your profile image in the top right hand corner), and select the project under "Credentials".
 
 
