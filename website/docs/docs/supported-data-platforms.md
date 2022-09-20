@@ -17,20 +17,20 @@ With two exceptions [^1], all adapters listed below can be installed from PyPI u
 
 We have two tiers for dbt-core adapters: "Verified" and "Community".
 
-| Tier      | Relevant adapters                                                                                                                                                                                                                                                                      |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Verified  | The adapters: <li>maintained by dbt Labs as well as</li><li> partner-maintained adapters that have been verified by dbt Labs</li>                                                                                                                                                |
+| Tier      | Relevant adapters                                                                                                                                                                                                                                                                                  |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Verified  | The adapters: <li>maintained by dbt Labs as well as</li><li> partner-maintained adapters that have been verified by dbt Labs</li>                                                                                                                                                                  |
 | Community | <li>All other partner-maintained adapters as well as</li> <li>all community adapters.</li> Community adapters in particular tend to be works-in-progress. Contributions from users are highly encouraged (see ["Contributing to a pre-existing adapter"](#contributing-to-a-pre-existing-adapter)) |
 
 ### Maintainers
 
 Who made and maintains and adapter is certainly relevant, but we recommend using an adapter's verification status to determine quality and health of an adapter. So far we have three categories of maintainers:
 
-| Supported by | Description                                                                                                                           |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| dbt Labs     | dbt Labs maintains a set of adapters for some of the most common databases, warehouses, and platforms. |
-| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology            |
-| Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                                  |
+| Supported by | Description                                                                                                                |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| dbt Labs     | dbt Labs maintains a set of adapters for some of the most common databases, warehouses, and platforms.                     |
+| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology |
+| Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                       |
 
 Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in the near future.
 
