@@ -12,6 +12,7 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
 
 ```yml
 [config](global-configs):
+
   [send_anonymous_usage_stats](global-configs#send_anonymous_usage_stats): <true | false>
   [use_colors](global-configs#use_colors): <true | false>
   [partial_parse](global-configs#partial_parse): <integer>
@@ -25,8 +26,9 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
   [use_experimental_parser](global-configs#use_experimental_parser): <true | false>
   [static_parser](global-configs#static_parser): <true | false>
 
+
 <profile-name>:
-  target: <target-name>
+  target: <target-name> # this is the default target
   outputs:
     <target-name>:
       type: <bigquery | postgres | redshift | snowflake | other>
