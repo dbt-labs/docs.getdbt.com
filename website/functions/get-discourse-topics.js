@@ -17,17 +17,32 @@ async function getDiscourseTopics({ body }) {
     
     // Get topics from Discourse
     let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
-    
+
     if(!topics || topics?.length <= 0)
       throw new Error('Unable to get results from api request.')
 
-    // Set author for topics if not querying by specific term
+    // Set author and like_count for topics if not querying by specific term
     let allTopics = topics
     if(!body?.term) {
       allTopics = topics.reduce((topicsArr, topic) => {
-        const firstTopicPost = posts?.find(post => post?.post_number === 1 && post?.topic_id === topic?.id)
-        firstTopicPost && (topic.author = firstTopicPost.username)
+        // Get first post in topic
+        const firstTopicPost = posts?.find(post => 
+          post?.post_number === 1 && 
+          post?.topic_id === topic?.id
+        )
+        // If post found
+        // Get username
+        if(firstTopicPost?.username) {
+          topic.author = firstTopicPost.username
+        }
+        // Get like count
+        if(firstTopicPost?.like_count) {
+          topic.like_count = firstTopicPost.like_count
+        }
+
+        // Push updated topic to array
         topicsArr.push(topic)
+          
         return topicsArr
       }, [])
     }

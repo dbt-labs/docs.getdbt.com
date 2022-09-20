@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import feedStyles from './styles.module.css';
 
+// Bare component with no default props set
 export const DiscourseFeed = ({
   order,
   status,
@@ -73,7 +74,7 @@ export const DiscourseFeed = ({
         // Set error state if data not available
         if(!data) throw new Error('Unable to get latest topics.')
 
-        // Set 5 latest toics
+        // Set topics count
         setTopics(data.slice(0, topic_count))
         setLoading(false)
       } catch(err) {
@@ -108,13 +109,15 @@ export const DiscourseFeed = ({
                 <span className={feedStyles.solvedTopic} title="Solved">✅ </span>
               )}
               <TopicWrapper topic={topic}>{topic.title}</TopicWrapper>
-              {(topic?.author || topic?.posts_count) && (
+              {(topic?.author || topic?.posts_count || topic?.like_count) && (
                 <>
                   {' '}
                   <span>
-                    {topic?.author && `by ${topic.author}${topic?.posts_count && ','}`}
+                    {topic?.author && `by ${topic.author}${topic?.posts_count ? ',' : ''}`}
                     {' '}
-                    {topic?.posts_count && `${topic.posts_count - 1} ${(topic.posts_count - 1) === 1 ? 'reply' : 'replies'}`}
+                    {topic?.posts_count && `${topic.posts_count - 1} ${(topic.posts_count - 1) === 1 ? 'reply' : 'replies'}${topic?.like_count ? ',' : ''}`}
+                    {' '}
+                    {topic?.like_count ? `${topic.like_count} ${(topic.like_count) === 1 ? 'like' : 'likes'}` : ''}
                   </span>
                 </>
               )}
@@ -129,8 +132,8 @@ export const DiscourseFeed = ({
   )
 }
 
-// Same props can be passed into
-// DiscourseHelpFeed to customize further
+// A more specific version of DiscourseFeed
+// with default props set. Same props can be used
 export const DiscourseHelpFeed = ({
   order = 'latest_topic',
   status = 'solved',
