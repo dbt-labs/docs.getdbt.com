@@ -13,5 +13,5 @@
 
 :local(.collapsed) {
     max-width: 400px !important;
-    display: block;
+    display: inline-block;
 }
