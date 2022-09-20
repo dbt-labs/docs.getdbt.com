@@ -7,6 +7,7 @@
 
 :local(.docImage) {
     filter: drop-shadow(4px 4px 6px #aaaaaa33);
+    margin: 10px auto;
     display: block;
     max-width: 400px;
 }
