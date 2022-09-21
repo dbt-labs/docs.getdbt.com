@@ -3,7 +3,8 @@ title: "Vertica Profile"
 meta:
   maintained_by: Community
   authors: Matthew Carter, Andy Regan, Andrew Hedengren
-  github_repo: '[dbt-vertica](https://github.com/mpcarter/dbt-vertica)'
+  github_repo: 'https://github.com/mpcarter/dbt-vertica'
+  link_text: 'dbt-vertica'
   core_version: 'v0.21.0 and newer'
   cloud_support: Not Supported
   supported_version: Vertica 10.0+
@@ -16,24 +17,41 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
-
-| Attribute                           | Value                                       |
-| ----------------------------------- | ------------------------------------------- |
-| **Maintained by**                   | <p>{frontMatter.meta.maintained_by}</p>     |
-| **Authors**                         | <p>{frontMatter.meta.authors}</p>           |
-| **Github Repo**                     | <p>{frontMatter.meta.github_repo}</p>       |
-| **Supported dbt Core version**      | <p>{frontMatter.meta.core_version}</p>      |
-| **dbt Cloud support**               | <p>{frontMatter.meta.cloud_support}</p>     |
-| **Supported data platform version** | <p>{frontMatter.meta.supported_version}</p> |
-
-
 ## Overview of dbt-vertica
-**Maintained by:** Community      
-**Authors:** Matthew Carter, Andy Regan, Andrew Hedengren  
-**Source:** [dbt-vertica](https://github.com/mpcarter/dbt-vertica)  
-**Core version:** v0.21.0 and newer      
-**dbt Cloud:** Not Supported      
-**Supported Version:** Vertica 10.0+
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th><th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Maintained by</strong></td>
+      <td><p>{frontMatter.meta.maintained_by}</p></td>
+    </tr>
+    <tr>
+      <td><strong>Authors</strong></td>
+      <td><p>{frontMatter.meta.authors}</p></td>
+    </tr>
+    <tr>
+      <td><strong>Github Repo</strong></td>
+      <td><p><a href={frontMatter.meta.github_repo}>{frontMatter.meta.link_text}</a></p></td>
+    </tr>
+    <tr>
+      <td><strong>Supported dbt Core version</strong></td>
+      <td><p>{frontMatter.meta.core_version}</p></td>
+    </tr>
+      <tr><td><strong>dbt Cloud support</strong></td>
+      <td><p>{frontMatter.meta.cloud_support}</p></td>
+    </tr>
+    <tr>
+      <td><strong>Supported data platform version</strong></td>
+      <td><p>{frontMatter.meta.supported_version}</p></td>
+    </tr>
+  </tbody>
+</table>
+
 
 ![dbt-vertica stars](https://img.shields.io/github/stars/mpcarter/dbt-vertica)
 
