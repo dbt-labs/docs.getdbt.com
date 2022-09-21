@@ -54,7 +54,7 @@ Looker does not allow you to directly embed HTML, and instead requires creating 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg"/>
 
 ### Tableau
-Tableau does not require you to embed an iFrame, instead you only need to use a Web Page object on your Tableau Dashboard, and use a URL in the following format.
+Tableau does not require you to embed an iFrame. You only need to use a Web Page object on your Tableau Dashboard and a URL in the following format:
 
 ```
 https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
