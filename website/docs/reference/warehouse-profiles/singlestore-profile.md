@@ -33,11 +33,11 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 ## Installation and Distribution
 
-SingleStore dbt adapter is managed in its own repository, [dbt-singlestore](https://github.com/memsql/dbt-singlestore). You can use `pip` to install the SingleStore adapter:
+The easiest way to install the adapter is to use pip:
 
-```zsh
-pip install dbt-singlestore
-```
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 Alternatively, you can install the package from GitHub with:
 

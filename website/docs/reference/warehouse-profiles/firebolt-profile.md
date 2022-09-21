@@ -29,11 +29,11 @@ Some core functionality may be limited. If you're interested in contributing, ch
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
-The package can be installed from PyPI with:
+The easiest way to install the adapter is to use pip:
 
-```
-pip install dbt-firebolt
-```
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 For other information including Firebolt feature support, see the [GitHub README](https://github.com/firebolt-db/dbt-firebolt/blob/main/README.md) and the [changelog](https://github.com/firebolt-db/dbt-firebolt/blob/main/CHANGELOG.md).
 

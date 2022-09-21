@@ -26,6 +26,12 @@ meta:
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
+The easiest way to install the adapter is to use pip:
+
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
+
 ## Connection Methods
 
 dbt-impala can connect to Apache Impala and Cloudera Data Platform clusters.
@@ -127,18 +133,6 @@ Note: A typical setup of Cloudera EDH will involve the following steps to setup 
 - Set correct permissions for config file (sudo chmod 644 /path/to/krb5.conf)
 - Obtain keytab using kinit (kinit username@YOUR_REALM.YOUR_DOMAIN)
 - The keytab is valid for certain period after which you will need to run kinit again to renew validity of the keytab.
-
-## Installation and Distribution
-
-dbt's adapter for Apache Impala is managed in its own repository, [dbt-impala](https://github.com/cloudera/dbt-impala). To use it, 
-you must install the `dbt-impala` plugin.
-
-### Using pip
-The following commands will install the latest version of `dbt-impala` as well as the requisite version of `dbt-core` and `impyla` driver used for connections.
-
-```
-pip install dbt-impala
-```
 
 ### Supported Functionality
 

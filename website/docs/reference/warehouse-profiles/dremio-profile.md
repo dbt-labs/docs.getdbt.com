@@ -31,9 +31,11 @@ Some core functionality may be limited. If you're interested in contributing, ch
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
-The easiest way to install it is to use pip:
+The easiest way to install the adapter is to use pip:
 
-    pip install dbt-dremio
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p> dbt-dremio
 
 Follow the repository's link for os dependencies.
 

@@ -32,12 +32,11 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 ## Installation and distribution
 
-The `dbt-materialize` adapter is managed in the core [Materialize repository](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize). To get started, install `dbt-materialize` using `pip` (and optionally a virtual environment):
+The easiest way to install the adapter is to use pip:
 
-```
-python3 -m venv dbt-venv         # create the virtual environment
-source dbt-venv/bin/activate     # activate the virtual environment
-pip install dbt-materialize      # install the adapter
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 ```
 
 To check that the adapter was successfully installed, run:

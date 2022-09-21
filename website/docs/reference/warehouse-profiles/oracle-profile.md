@@ -27,9 +27,11 @@ meta:
 
 ## Installation
 
-dbt-oracle can be installed via the Python Package Index (PyPI) using pip
+The easiest way to install the adapter is to use pip:
 
-    pip install dbt-oracle
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 ### Configure the Python driver mode
 

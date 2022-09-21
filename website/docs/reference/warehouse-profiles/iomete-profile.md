@@ -27,12 +27,11 @@ meta:
 
 ## Installation and Distribution
 
-The easiest way to install dbt-iomete is to use `pip`:
+The easiest way to install the adapter is to use pip:
 
+<code>pip install {frontMatter.meta.pypi_package}</code>
 
-```zsh
-pip install dbt-iomete
-```
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 Alternatively, you can install the package from GitHub with:
 

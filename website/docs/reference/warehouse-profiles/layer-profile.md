@@ -26,11 +26,12 @@ meta:
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
-To immediately start using Layer inside your dbt DAG, install the Layer dbt Adapter for BigQuery.
 
-```
-pip install dbt-layer-bigquery
-```
+The easiest way to install the adapter is to use pip:
+
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 You don't need to install dbt separately. Installing `dbt-layer` will also install `dbt-core` and `dbt-bigquery`.
 

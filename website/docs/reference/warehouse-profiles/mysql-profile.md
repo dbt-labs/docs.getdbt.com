@@ -20,11 +20,11 @@ Some core functionality may be limited. If you're interested in contributing, ch
 ![dbt-mysql stars](https://img.shields.io/github/stars/dbeatty10/dbt-mysql?style=for-the-badge)
 ![latest version on PyPI](https://img.shields.io/pypi/v/dbt-mysql?style=for-the-badge)
 
-The package can be installed from PyPI with:
+The easiest way to install the adapter is to use pip:
 
-```python
-pip install dbt-mysql
-```
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 This is an experimental plugin:
 - It has not been tested extensively.

@@ -34,11 +34,12 @@ Certain core functionality may vary. If you would like to report a bug, request 
 dbt's Trino adapter is managed in its own repository, [dbt-trino](https://github.com/starburstdata/dbt-trino). To use the Trino adapter, you must install the `dbt-trino` plugin:
 
 ### Using pip
-The following command will install the latest version of `dbt-trino` as well as the requisite version of `dbt-core`:
 
-```
-pip install dbt-trino
-```
+The easiest way to install the adapter is to use pip:
+
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 
 ## Set up a Trino or Starburst Target

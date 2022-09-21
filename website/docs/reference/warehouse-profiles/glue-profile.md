@@ -32,12 +32,11 @@ Some core functionality may be limited. If you're interested in contributing, ch
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
+The easiest way to install the adapter is to use pip:
 
-The package can be installed from PyPI with:
+<code>pip install {frontMatter.meta.pypi_package}</code>
 
-```bash
-$ pip install dbt-glue
-```
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 For further (and more likely up-to-date) info, see the [README](https://github.com/aws-samples/dbt-glue#readme)
 
 

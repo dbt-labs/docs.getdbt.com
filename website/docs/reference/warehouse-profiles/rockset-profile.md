@@ -31,9 +31,11 @@ Certain core functionality may vary. If you would like to report a bug, request 
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
-The easiest way to install is to use pip:
+The easiest way to install the adapter is to use pip:
 
-    pip install dbt-rockset
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p> dbt-rockset
 
 ## Connecting to Rockset with **dbt-rockset**
 

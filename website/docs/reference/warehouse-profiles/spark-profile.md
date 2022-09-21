@@ -189,7 +189,12 @@ dbt's adapter for Apache Spark and Databricks is managed in its own repository, 
 you must install the `dbt-spark` plugin.
 
 ### Using pip
-The following commands will install the latest version of `dbt-spark` as well as the requisite version of `dbt-core`.
+
+The easiest way to install the adapter is to use pip:
+
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 If connecting to Databricks via ODBC driver, it requires `pyodbc`. Depending on your system, you can install it seperately or via pip. See the [`pyodbc` wiki](https://github.com/mkleehammer/pyodbc/wiki/Install) for OS-specific installation details.
 
