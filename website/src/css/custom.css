@@ -273,7 +273,19 @@ a.code-link:hover {
   margin-right: .75em;
 }
 
-/* moon/sun icons for dark/light mode - HIDE UNTIL SWIZZLE - These styles get overridden on live site */
+/* moon/sun icons for dark/light mode */
+html[data-theme=light] svg[class^="lightToggleIcon_"] {
+  display: none;
+}
+html[data-theme=light] svg[class^="darkToggleIcon_"] {
+  display: block;
+}
+html[data-theme=dark] svg[class^="lightToggleIcon_"] {
+  display: block;
+}
+html[data-theme=dark] svg[class^="darkToggleIcon_"] {
+  display: none;
+}
 /* input.toggleScreenReader_node_modules-\@docusaurus-theme-classic-lib-next-theme-ColorModeToggle-styles-module::after {
   width: 100%;
   height: 100%;
