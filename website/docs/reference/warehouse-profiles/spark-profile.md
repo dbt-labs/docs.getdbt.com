@@ -1,18 +1,28 @@
 ---
 title: "Apache Spark Profile"
 id: "spark-profile"
+meta:
+  maintained_by: dbt Labs
+  authors: 'core dbt maintainers'
+  github_repo: 'dbt-labs/dbt-spark'
+  min_core_version: 'v0.15.0'
+  cloud_support: Supported
+  min_supported_version: 'n/a'
+  slack_channel_name: 'db-databricks-and-spark'
+  slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
 ---
 
 ## Overview of dbt-spark
 
-**Maintained by:** core dbt maintainers    
-**Author:** dbt Labs    
-**Source:** [Github](https://github.com/dbt-labs/dbt-spark)    
-**dbt Cloud:** Supported    
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNGCW8HKL)     
-
-
-![dbt-spark stars](https://img.shields.io/github/stars/dbt-labs/dbt-spark?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 ## Connection Methods
 

@@ -1,18 +1,30 @@
 ---
 title: "ClickHouse Profile"
+meta:
+  maintained_by: Community
+  authors: 'Geoff Genz'
+  github_repo: 'ClickHouse/dbt-clickhouse'
+  min_core_version: 'v0.19.0'
+  cloud_support: Not Supported
+  min_supported_version: '?'
+  slack_channel_name: '#db-clickhouse'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
 ---
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 
 ## Overview of dbt-clickhouse
-**Maintained by:** ClickHouse      
-**Author:** Geoff Genz   
-**Source:** https://github.com/ClickHouse/dbt-clickhouse    
-**Core version:** v0.19.0 and newer    
-**dbt Cloud:** Not Supported    
 
-![dbt-clickhouse stars](https://img.shields.io/github/stars/ClickHouse/dbt-clickhouse?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 The package can be installed from PyPI with:
 

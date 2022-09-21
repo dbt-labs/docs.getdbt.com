@@ -1,15 +1,27 @@
 ---
 title: "Athena Profile"
+meta:
+  maintained_by: Community
+  authors: 'Tomme'
+  github_repo: 'Tomme/dbt-athena'
+  min_core_version: 'v1.0.1'
+  cloud_support: Not Supported
+  min_supported_version: 'engine version 2'
+  slack_channel_name: '#db-athena'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C013MLFR7BQ'
 ---
 
 ## Overview of dbt-athena
 
-**Maintained by:** Community
-**Author:** Tomme
-**Source:** [Github](https://github.com/Tomme/dbt-athena)
-**dbt Cloud:** Not Supported  
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C013MLFR7BQ)
-**Supported Version:** Athena engine version 2
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 The easiest way to install is to use pip:
 

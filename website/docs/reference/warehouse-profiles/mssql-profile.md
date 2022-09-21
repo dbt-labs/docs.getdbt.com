@@ -1,5 +1,14 @@
 ---
 title: "Microsoft SQL Server Profile"
+meta:
+  maintained_by: Community
+  authors: 'dbt-msft community (https://github.com/dbt-msft)'
+  github_repo: 'dbt-msft/dbt-sqlserver'
+  min_core_version: 'v0.14.0'
+  cloud_support: Not Supported
+  min_supported_version: 'SQL Server 2016'
+  slack_channel_name: '#db-sqlserver'
+  slack_channel_link: 'https://getdbt.slack.com/archives/CMRMDDQ9W'
 ---
 
 :::info Community plugin
@@ -10,16 +19,15 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-sqlserver
 
-**Maintained by:** Community    
-**Author:** [dbt-msft community](https://github.com/dbt-msft)   
-**Source:** [GitHub](https://github.com/dbt-msft/dbt-sqlserver)    
-**Core version:** v0.14.0 and newer     
-**dbt Cloud:** Not Supported     
-**dbt Slack channel:** [Link to channel](https://getdbt.slack.com/archives/CMRMDDQ9W)
-**Supported Version:** SQL Server 2016 and later
-
-![dbt-sqlserver stars](https://img.shields.io/github/stars/dbt-msft/dbt-sqlserver?style=for-the-badge)
-![latest version on PyPI](https://img.shields.io/pypi/v/dbt-sqlserver?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 The package can be installed from PyPI with:
 

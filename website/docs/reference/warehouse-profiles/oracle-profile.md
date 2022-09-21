@@ -1,16 +1,27 @@
 ---
 title: "Oracle Profile"
+meta:
+  maintained_by: Oracle
+  authors: 'Oracle'
+  github_repo: 'oracle/dbt-oracle'
+  min_core_version: 'v1.2.1'
+  cloud_support: Not Supported
+  min_supported_version: 'SQlite Version 3.0'
+  slack_channel_name: '#db-oracle'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C01PWH4TXLY'
 ---
 
 ## Overview of dbt-oracle
 
-**Maintained by:** Oracle    
-**Source:** [Github](https://github.com/oracle/dbt-oracle)    
-**Core version:** v1.2.1     
-**dbt Cloud:** Not Supported    
-**dbt Slack channel** [#db-oracle](https://getdbt.slack.com/archives/C01PWH4TXLY)       
-
-![dbt-oracle stars](https://img.shields.io/github/stars/oracle/dbt-oracle?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 ## Installation
 

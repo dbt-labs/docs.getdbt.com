@@ -1,5 +1,14 @@
 ---
 title: "SQLite Profile"
+meta:
+  maintained_by: Community
+  authors: 'Jeff Chiu (https://github.com/codeforkjeff)'
+  github_repo: 'codeforkjeff/dbt-sqlite'
+  min_core_version: 'v1.1.0'
+  cloud_support: Not Supported
+  min_supported_version: 'SQlite Version 3.0'
+  slack_channel_name: 'n/a'
+  slack_channel_link: 'https://www.getdbt.com/community'
 ---
 
 :::info Community plugin
@@ -10,15 +19,15 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-sqlite
 
-**Maintained by:** Community  
-**Author:** [Jeff Chiu](https://github.com/codeforkjeff)   
-**Source:** [GitHub](https://github.com/codeforkjeff/dbt-sqlite)  
-**Core version:** v1.1.0     
-**dbt Cloud:** Not Supported     
-**Supported Version:** SQlite Version 3.0+
-
-![dbt-sqlite stars](https://img.shields.io/github/stars/codeforkjeff/dbt-sqlite?style=for-the-badge)
-![latest version on PyPI](https://img.shields.io/pypi/v/dbt-sqlite?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 The package can be installed from PyPI with:
 

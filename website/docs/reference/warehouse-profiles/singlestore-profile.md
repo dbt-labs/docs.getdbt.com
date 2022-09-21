@@ -1,5 +1,14 @@
 ---
 title: "SingleStore Profile"
+meta:
+  maintained_by: SingleStore, Inc.
+  authors: 'SingleStore, Inc.'
+  github_repo: 'memsql/dbt-singlestore'
+  min_core_version: 'v1.0.0'
+  cloud_support: Supported
+  min_supported_version: 'v7.5'
+  slack_channel_name: 'db-singlestore'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C02V2QHFF7U'
 ---
 
 :::info Vendor-supported plugin
@@ -10,13 +19,15 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 ## Overview of dbt-singlestore
 
-**Maintained by:** SingleStore, Inc.  
-**Source:** [Github](https://github.com/memsql/dbt-singlestore)  
-**Core version:** v1.0.0 and newer  
-**dbt Cloud:** Not Supported  
-**dbt Slack channel:** [Slack](https://getdbt.slack.com/archives/C02V2QHFF7U)  
-**SingleStore version:** v7.5 and newer  
-
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 ## Installation and Distribution
 

@@ -1,17 +1,28 @@
 ---
 title: "Databricks Profile"
 id: "databricks-profile"
+meta:
+  maintained_by: Databricks
+  authors: 'some dbt loving Bricksters'
+  github_repo: 'databricks/dbt-databricks'
+  min_core_version: 'v0.18.0'
+  cloud_support: Coming Soon
+  min_supported_version: 'n/a'
+  slack_channel_name: '#db-databricks-and-spark'
+  slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
 ---
 
 ## Overview of dbt-databricks
 
-**Maintained by:** some dbt loving Bricksters  
-**Author:** Databricks  
-**Source:** [Github](https://github.com/databricks/dbt-databricks)  
-**dbt Cloud:** Coming Soon  
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/CNGCW8HKL)  
-
-![dbt-databricks stars](https://img.shields.io/github/stars/databricks/dbt-databricks?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 ## Installation and Distribution
 

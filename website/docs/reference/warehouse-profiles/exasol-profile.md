@@ -1,5 +1,14 @@
 ---
 title: "Exasol Profile"
+meta:
+  maintained_by: Community
+  authors: 'Torsten Glunde, Ilija Kutle'
+  github_repo: 'tglunde/dbt-exasol'
+  min_core_version: 'v0.14.0'
+  cloud_support: Not Supported
+  min_supported_version: 'Exasol 6.x'
+  slack_channel_name: 'n/a'
+  slack_channel_link: 'https://www.getdbt.com/community'
 ---
 
 :::info Community plugin
@@ -9,14 +18,16 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 ## Overview of dbt-exasol
-**Maintained by:** Community    
-**Author:** Torsten Glunde, Ilija Kutle    
-**Source:** https://github.com/tglunde/dbt-exasol    
-**Core version:** v0.14.0 and newer    
-**dbt Cloud:** Not Supported    
-**Supported Version:** Exasol 6.x and later
 
-![dbt-exasol stars](https://img.shields.io/github/stars/tglunde/dbt-exasol?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 Easiest install is to use pip:
 

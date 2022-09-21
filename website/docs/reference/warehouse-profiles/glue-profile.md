@@ -1,6 +1,15 @@
 ---
 title: "AWS Glue Profile"
 id: "glue-profile"
+meta:
+  maintained_by: Community
+  authors: 'Benjamin Menuet, Moshir Mikael, Armando Segnini and Amine El Mallem'
+  github_repo: 'aws-samples/dbt-glue'
+  min_core_version: 'v0.24.0'
+  cloud_support: Not Supported
+  min_supported_version: 'Glue 2.0'
+  slack_channel_name: '#db-glue'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C02R4HSMBAT'
 ---
 
 :::info Community plugin
@@ -11,16 +20,16 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-glue
 
-**Maintained by:** Community  
-**Author:** Benjamin Menuet, Moshir Mikael, Armando Segnini and Amine El Mallem
-**Source:** [Github](https://github.com/aws-samples/dbt-glue)    
-**Core version:** v0.24.0 and newer  
-**dbt Cloud:** Not Supported      
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C02R4HSMBAT)     
-**Supported Version:** Glue 2.0+
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
-
-![dbt-glue stars](https://img.shields.io/github/stars/aws-samples/dbt-glue?style=for-the-badg)
 
 The package can be installed from PyPI with:
 

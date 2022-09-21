@@ -3,10 +3,11 @@ title: "TiDB Profile"
 meta:
   maintained_by: PingCAP
   authors: Xiang Zhang, Qiang Wu, Yuhang Shi
-  github_repo: 'https://github.com/pingcap/dbt-tidb'
-  link_text: 'dbt-tidb'
+  github_repo: 'pingcap/dbt-tidb'
   core_version: 'v1.0.0 and newer'
   cloud_support: Not Supported
+  slack_channel_name: '#db-tidb'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C03CC86R1NY'
 ---
 
 :::info Vendor-supported plugin
@@ -18,12 +19,15 @@ If you're interested in contributing, check out the source code repository liste
 
 ## Overview of dbt-tidb
 
-- **Maintained by** : <p>{frontMatter.meta.maintained_by}</p>
-- **Authors**: <p>{frontMatter.meta.authors}</p>|
-- **Github Repo**: <p>{frontMatter.meta.github_repo}</p>
-- **Supported dbt Core version**: <p>{frontMatter.meta.core_version}</p>
-- **dbt Cloud support**: <p>{frontMatter.meta.cloud_support}</p>
-- **Supported data platform version**: <p>{frontMatter.meta.supported_version}</p>
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 The easiest way to install it is to use pip:
 

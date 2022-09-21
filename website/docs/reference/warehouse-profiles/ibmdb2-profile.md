@@ -1,5 +1,14 @@
 ---
 title: "IBM DB2 Profile"
+meta:
+  maintained_by: Community
+  authors: 'Rasmus Nyberg (https://github.com/aurany)'
+  github_repo: 'dbt-msft/dbt-synapse'
+  min_core_version: 'v1.0.4'
+  cloud_support: Not Supported
+  min_supported_version: 'IBM DB2 V9fp2'
+  slack_channel_name: 'n/a'
+  slack_channel_link: 'https://www.getdbt.com/community'
 ---
 
 :::info Community plugin
@@ -10,15 +19,15 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-ibmdb2
 
-**Maintained by:** Community  
-**Author:** [Rasmus Nyberg](https://github.com/aurany)   
-**Source:** [GitHub](https://github.com/aurany/dbt-ibmdb2)  
-**Core version:** v1.0.4   
-**dbt Cloud:** Not Supported     
-**Supported Version:**  IBM DB2 V9fp2+
-
-![dbt-ibmdb2 stars](https://img.shields.io/github/stars/aurany/dbt-ibmdb2?style=for-the-badge)
-![latest version on PyPI](https://img.shields.io/pypi/v/dbt-ibmdb2?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 The package can be installed from PyPI with:
 

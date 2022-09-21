@@ -1,14 +1,27 @@
 ---
 title: "BigQuery Profile"
+meta:
+  maintained_by: dbt Labs
+  authors: 'core dbt maintainers'
+  github_repo: 'dbt-labs/dbt-bigquery'
+  min_core_version: 'v0.10.0'
+  cloud_support: Supported
+  min_supported_version: 'n/a'
+  slack_channel_name: '#db-bigquery'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
 ---
 
 ## Overview of dbt-bigquery
-**Maintained by:** core dbt maintainers    
-**Author:** dbt Labs    
-**Source:** [Github](https://github.com/dbt-labs/dbt-bigquery)   
-**dbt Cloud:** Supported   
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C99SNSRTK)      
 
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 ## Authentication Methods
 

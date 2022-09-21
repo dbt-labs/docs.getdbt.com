@@ -1,18 +1,28 @@
 ---
 title: "Layer Profile"
+meta:
+  maintained_by: Layer
+  authors: 'Mehmet Ecevit'
+  github_repo: 'layerai/dbt-layer'
+  min_core_version: 'v1.0.0'
+  cloud_support: Not Supported
+  min_supported_version: 'n/a'
+  slack_channel_name: '#tools-layer'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C03STA39TFE'
 ---
 
 
 ## Overview of dbt-layer
-**Maintained by:** Layer      
-**Authors:** Mehmet Ecevit  
-**Source:** [Github](https://github.com/layerai/dbt-layer)  
-**Core version:** `v1.0` and newer      
-**dbt Cloud:** Not Supported      
-**dbt Slack channel** [#db-layer](https://slack.com)
 
-[![dbt-synapse stars](https://img.shields.io/github/stars/layerai/dbt-adapters?style=for-the-badge)](https://github.com/layerai/dbt-adapters)
-[![latest version on PyPI](https://img.shields.io/pypi/v/dbt-layer-bigquery?style=for-the-badge)](https://pypi.org/project/dbt-layer-bigquery)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 To immediately start using Layer inside your dbt DAG, install the Layer dbt Adapter for BigQuery.
 

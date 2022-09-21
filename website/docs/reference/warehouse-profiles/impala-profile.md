@@ -1,18 +1,28 @@
 ---
 title: "Apache Impala Profile"
 id: "impala-profile"
+meta:
+  maintained_by: Cloudera
+  authors: 'Cloudera'
+  github_repo: 'cloudera/dbt-impala'
+  min_core_version: 'v1.1.0'
+  cloud_support: Not Supported
+  min_supported_version: 'n/a'
+  slack_channel_name: '#db-impala'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
 ---
 
 ## Overview of dbt-impala
 
-**Maintained by:** Cloudera    
-**Author:** Cloudera    
-**Source:** [Github](https://github.com/cloudera/dbt-impala)    
-**dbt Cloud:** Currently un-supported    
-**dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C03K2PTHHTP)     
-
-
-![dbt-impala stars](https://img.shields.io/github/stars/cloudera/dbt-impala?style=for-the-badge)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 ## Connection Methods
 

@@ -3,11 +3,12 @@ title: "Vertica Profile"
 meta:
   maintained_by: Community
   authors: Matthew Carter, Andy Regan, Andrew Hedengren
-  github_repo: 'https://github.com/mpcarter/dbt-vertica'
-  link_text: 'dbt-vertica'
-  core_version: 'v0.21.0 and newer'
+  github_repo: 'mpcarter/dbt-vertica'
+  min_core_version: 'v0.21.0'
   cloud_support: Not Supported
-  supported_version: Vertica 10.0+
+  min_supported_version: 'Vertica 10.0'
+  slack_channel_name: 'n/a'
+  slack_channel_link: 'https://www.getdbt.com/community/'
 
 ---
 
@@ -19,48 +20,15 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 ## Overview of dbt-vertica
 
-- **Maintained by** : <p>{frontMatter.meta.maintained_by}</p>
-- **Authors**: <p>{frontMatter.meta.authors}</p>|
-- **Github Repo**: <p>{frontMatter.meta.github_repo}</p>
-- **Supported dbt Core version**: <p>{frontMatter.meta.core_version}</p>
-- **dbt Cloud support**: <p>{frontMatter.meta.cloud_support}</p>
-- **Supported data platform version**: <p>{frontMatter.meta.supported_version}</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Attribute</th><th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Maintained by</strong></td>
-      <td><p>{frontMatter.meta.maintained_by}</p></td>
-    </tr>
-    <tr>
-      <td><strong>Authors</strong></td>
-      <td><p>{frontMatter.meta.authors}</p></td>
-    </tr>
-    <tr>
-      <td><strong>Github Repo</strong></td>
-      <td><p><a href={frontMatter.meta.github_repo}>{frontMatter.meta.link_text}</a></p></td>
-    </tr>
-    <tr>
-      <td><strong>Supported dbt Core version</strong></td>
-      <td><p>{frontMatter.meta.core_version}</p></td>
-    </tr>
-      <tr><td><strong>dbt Cloud support</strong></td>
-      <td><p>{frontMatter.meta.cloud_support}</p></td>
-    </tr>
-    <tr>
-      <td><strong>Supported data platform version</strong></td>
-      <td><p>{frontMatter.meta.supported_version}</p></td>
-    </tr>
-  </tbody>
-</table>
-
-
-![dbt-vertica stars](https://img.shields.io/github/stars/mpcarter/dbt-vertica)
+<ul>
+    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
+    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
+    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
+    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
+    </ul>
 
 Easiest install is to use pip:
 
