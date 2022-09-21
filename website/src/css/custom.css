@@ -982,6 +982,12 @@ filter: opacity(.75);
       box-shadow: var(--docsearch-searchbox-shadow);
       border: 1px solid var(--ifm-link-color);
     }
+
+    [data-theme='dark'] button.DocSearch-Button:active,
+    [data-theme='dark'] button.DocSearch-Button:focus,
+    [data-theme='dark'] button.DocSearch-Button:hover {
+      background: #ffffff10;
+    }
     
     button .DocSearch-Button-Placeholder {
       font-size: .875rem;
