@@ -1,7 +1,7 @@
 ---
 id: reverse-etl
 title: Reverse ETL
-description:  Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms
+description:  Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms.
 displayText: reverse ETL
 hoverSnippet: Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. 
 ---
