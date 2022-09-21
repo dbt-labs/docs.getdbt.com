@@ -3,6 +3,8 @@ title: "Connecting your database"
 id: "connecting-your-database"
 ---
 
+You can connect to your database in dbt Cloud by clicking the gear  in the top right and then selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
+
 ## IP Restrictions
 
 dbt Cloud will always connect to your warehouse from the following IP addresses.
@@ -34,9 +36,6 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Host Name | The hostname of the Postgres, Redshift, or AlloyDB database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
-
-
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" title="Configuring a Redshift connection"/>
 
 ### Connecting via an SSH Tunnel
@@ -58,7 +57,6 @@ The following fields are required when creating a Snowflake connection:
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
-![Snowflake connection details](/img/docs/dbt-cloud/snowflake-conn-details.png)
 
 **Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of some [example permissions to configure Snowflake access](snowflake-permissions).
 
@@ -72,8 +70,7 @@ username (specifically, the `login_name`) and the corresponding user's Snowflake
 to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowflake user.
 
 **Note**: The schema field in the **Developer Credentials** section is a required field.
-
-![Snowflake username/password auth](/img/docs/dbt-cloud/snowflake-userpass-auth.png)
+<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" title="Snowflake username/password authentication"/>
 
 ### Key Pair
 **Available in:** Development environments,  Deployment environments
@@ -94,25 +91,22 @@ using a key pair.
 
 In order to successfully fill in the Private Key field, you **must** include the commented lines below when you add the passphrase. Leaving the `PRIVATE KEY PASSPHRASE` field empty will return an error - have a look at the examples below:
 
-
 **Example:**
 ```sql
 -----BEGIN ENCRYPTED PRIVATE KEY-----
 < encrypted private key contents here >
 -----END ENCRYPTED PRIVATE KEY-----
 ```
-
-![Snowflake keypair auth](/img/docs/dbt-cloud/snowflake-keypair-auth.png)
+<Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" title="Snowflake keypair authentication"/>
 
 ### Snowflake OAuth
+
 **Available in:** Development environments, Enterprise plans only
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
-more information on configuring a Snowflake OAuth connection in dbt Cloud, please see
-[the docs on setting up Snowflake OAuth](setting-up-enterprise-snowflake-oauth).
-
-![Configuring Snowflake OAuth for a connection](/img/docs/dbt-cloud/dbt-cloud-enterprise/1bd0c42-Screen_Shot_2020-03-10_at_6.20.05_PM.png)
+more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](setting-up-enterprise-snowflake-oauth).
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
 
 ## Connecting to BigQuery
 
@@ -155,7 +149,6 @@ more information on the initial configuration of a BigQuery OAuth connection in 
 [the docs on setting up BigQuery OAuth](cloud-setting-up-bigquery-oauth).
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
-
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Connecting to Databricks
@@ -180,7 +173,7 @@ The following fields are available when creating a Databricks connection:
 | Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 0123456789 |
 | User | Optional | dbt_cloud_user |
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connection.png" title="Configuring a Databricks connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connections.png" title="Configuring a Databricks connection"/>
 
 ## Connecting to Apache Spark
 
