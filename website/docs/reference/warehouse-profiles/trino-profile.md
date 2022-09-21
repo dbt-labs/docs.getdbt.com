@@ -1,6 +1,12 @@
-
 ---
 title: "Starburst & Trino Profile"
+meta:
+  maintained_by: Starburst Data, Inc.
+  authors: Matthew Carter, Andy Regan, Andrew Hedengren
+  github_repo: 'https://github.com/starburstdata/dbt-trino'
+  link_text: 'dbt-trino'
+  core_version: 'v0.20.0 and newer'
+  cloud_support: Not Supported
 ---
 
 :::info Vendor-supported plugin
@@ -11,11 +17,8 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 ## Overview of dbt-trino
 
-**Maintained by:** Starburst Data, Inc.          
-**Source:** [Github](https://github.com/starburstdata/dbt-trino)    
-**Core version:** v0.20.0 and newer      
-**dbt Cloud:** Not Supported      
-**dbt Slack channel:** [Slack](https://getdbt.slack.com/archives/CNNPBQ24R)       
+<Snippet src="adapter-metadata-table" />
+
 
 ![dbt-trino stars](https://img.shields.io/github/stars/starburstdata/dbt-trino?style=for-the-badge)
 
