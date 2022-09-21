@@ -150,7 +150,7 @@ var siteSettings = {
         //   ]
         // },
          {
-          label: 'Create a Free Account',
+          label: 'Create a free account',
           to: 'https://www.getdbt.com/signup/',
           position: 'right',
           className: 'nav-create-account button button--primary',

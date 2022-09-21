@@ -196,7 +196,7 @@ a.code-link:hover {
 
 .navbar__link {
   font-size: .875rem;
-  margin: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal) 0;
+  margin: 0 var(--ifm-navbar-item-padding-horizontal) 0;
   padding: 0;
   border-bottom: 1px solid transparent;
 }
@@ -218,8 +218,16 @@ a.code-link:hover {
   justify-content: center;
 }
 
-.navbar__link.nav-create-account {
+.navbar__items .navbar__link.nav-create-account {
   color: var(--color-white);
+  height: 30px;
+  align-self: auto;
+  padding: 0 12px;
+  margin-top: 0;
+  border: none;
+}
+.navbar__items .navbar__link.nav-create-account:hover {
+  background: var(--color-light-teal);
 }
 
 .dropdown__link:hover {
@@ -638,7 +646,7 @@ div .toggle_src-components-faqs-styles-module {
 }
 
 .card.large .button:hover {
-  background: #fff;
+  background: var(--color-white);
   border-color: var(--color-white);
   color: var(--color-green-blue);
 }
