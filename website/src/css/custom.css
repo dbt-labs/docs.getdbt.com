@@ -218,6 +218,10 @@ a.code-link:hover {
   justify-content: center;
 }
 
+.navbar__link.nav-create-account {
+  color: var(--color-white);
+}
+
 .dropdown__link:hover {
   cursor: pointer;
 }
