@@ -420,7 +420,7 @@ a.navbar__item.navbar__link.btn:hover {
 /* level2 */
 .menu__list .menu__list {
   font-weight: var(--ifm-font-weight-narrow);
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 .menu__list .menu__list .menu__link {
@@ -429,7 +429,7 @@ a.navbar__item.navbar__link.btn:hover {
 }
 
 .menu__list-item .menu__list-item .menu__link {
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 .menu__list-item-collapsible a {
@@ -445,7 +445,7 @@ a.navbar__item.navbar__link.btn:hover {
 }
 
 .theme-doc-sidebar-item-category-level-2.menu__list-item ul {
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 /* color for subtext only */
