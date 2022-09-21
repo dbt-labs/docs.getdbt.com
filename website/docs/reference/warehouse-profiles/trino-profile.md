@@ -17,9 +17,45 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 ## Overview of dbt-trino
 
-<Snippet src="adapter-metadata-table" />
+- **Maintained by** : <p>{frontMatter.meta.maintained_by}</p>
+- **Authors**: <p>{frontMatter.meta.authors}</p>|
+- **Github Repo**: <p>{frontMatter.meta.github_repo}</p>
+- **Supported dbt Core version**: <p>{frontMatter.meta.core_version}</p>
+- **dbt Cloud support**: <p>{frontMatter.meta.cloud_support}</p>
+- **Supported data platform version**: <p>{frontMatter.meta.supported_version}</p>
 
-
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th><th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Maintained by</strong></td>
+      <td><p>{frontMatter.meta.maintained_by}</p></td>
+    </tr>
+    <tr>
+      <td><strong>Authors</strong></td>
+      <td><p>{frontMatter.meta.authors}</p></td>
+    </tr>
+    <tr>
+      <td><strong>Github Repo</strong></td>
+      <td><p><a href={frontMatter.meta.github_repo}>{frontMatter.meta.link_text}</a></p></td>
+    </tr>
+    <tr>
+      <td><strong>Supported dbt Core version</strong></td>
+      <td><p>{frontMatter.meta.core_version}</p></td>
+    </tr>
+      <tr><td><strong>dbt Cloud support</strong></td>
+      <td><p>{frontMatter.meta.cloud_support}</p></td>
+    </tr>
+    <tr>
+      <td><strong>Supported data platform version</strong></td>
+      <td><p>{frontMatter.meta.supported_version}</p></td>
+    </tr>
+  </tbody>
+</table>
 ![dbt-trino stars](https://img.shields.io/github/stars/starburstdata/dbt-trino?style=for-the-badge)
 
 ## Installation and Distribution

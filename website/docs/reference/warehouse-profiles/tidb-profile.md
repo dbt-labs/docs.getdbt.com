@@ -1,5 +1,12 @@
 ---
 title: "TiDB Profile"
+meta:
+  maintained_by: PingCAP
+  authors: Xiang Zhang, Qiang Wu, Yuhang Shi
+  github_repo: 'https://github.com/pingcap/dbt-tidb'
+  link_text: 'dbt-tidb'
+  core_version: 'v1.0.0 and newer'
+  cloud_support: Not Supported
 ---
 
 :::info Vendor-supported plugin
@@ -11,12 +18,12 @@ If you're interested in contributing, check out the source code repository liste
 
 ## Overview of dbt-tidb
 
-**Maintained by:** PingCAP      
-**Author:** Xiang Zhang, Qiang Wu, Yuhang Shi  
-**dbt Slack Channel:** [#db-tidb](https://getdbt.slack.com/archives/C03CC86R1NY)   
-**Source:** [Github](https://github.com/pingcap/dbt-tidb)   
-**Core version:** v1.0.0 and newer   
-**dbt Cloud:** Not Supported
+- **Maintained by** : <p>{frontMatter.meta.maintained_by}</p>
+- **Authors**: <p>{frontMatter.meta.authors}</p>|
+- **Github Repo**: <p>{frontMatter.meta.github_repo}</p>
+- **Supported dbt Core version**: <p>{frontMatter.meta.core_version}</p>
+- **dbt Cloud support**: <p>{frontMatter.meta.cloud_support}</p>
+- **Supported data platform version**: <p>{frontMatter.meta.supported_version}</p>
 
 The easiest way to install it is to use pip:
 
