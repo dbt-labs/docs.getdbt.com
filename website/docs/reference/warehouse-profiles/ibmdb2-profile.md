@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'Rasmus Nyberg (https://github.com/aurany)'
   github_repo: 'dbt-msft/dbt-synapse'
+  pypi_package: 'dbt-synapse'
   min_core_version: 'v1.0.4'
   cloud_support: Not Supported
   min_supported_version: 'IBM DB2 V9fp2'

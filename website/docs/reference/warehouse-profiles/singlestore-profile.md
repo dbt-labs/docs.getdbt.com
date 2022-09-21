@@ -4,6 +4,7 @@ meta:
   maintained_by: SingleStore, Inc.
   authors: 'SingleStore, Inc.'
   github_repo: 'memsql/dbt-singlestore'
+  pypi_package: 'dbt-singlestore'
   min_core_version: 'v1.0.0'
   cloud_support: Supported
   min_supported_version: 'v7.5'

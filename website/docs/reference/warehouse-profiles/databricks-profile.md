@@ -5,6 +5,7 @@ meta:
   maintained_by: Databricks
   authors: 'some dbt loving Bricksters'
   github_repo: 'databricks/dbt-databricks'
+  pypi_package: 'dbt-databricks'
   min_core_version: 'v0.18.0'
   cloud_support: Coming Soon
   min_supported_version: 'n/a'

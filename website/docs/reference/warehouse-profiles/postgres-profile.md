@@ -4,6 +4,7 @@ meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
   github_repo: 'dbt-labs/dbt-postgres'
+  pypi_package: 'dbt-postgres'
   min_core_version: 'v0.4.0'
   cloud_support: Supported
   min_supported_version: 'n/a'

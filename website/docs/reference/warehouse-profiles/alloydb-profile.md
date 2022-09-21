@@ -4,6 +4,7 @@ meta:
   maintained_by: Community?
   authors: 'dbt-labs'
   github_repo: 'dbt-labs/dbt-postgres'
+  pypi_package: 'dbt-postgres'
   min_core_version: 'v1.0.0'
   cloud_support: Not Supported
   min_supported_version: '?'

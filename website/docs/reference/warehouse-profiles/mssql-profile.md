@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'dbt-msft community (https://github.com/dbt-msft)'
   github_repo: 'dbt-msft/dbt-sqlserver'
+  pypi_package: 'dbt-sqlserver'
   min_core_version: 'v0.14.0'
   cloud_support: Not Supported
   min_supported_version: 'SQL Server 2016'

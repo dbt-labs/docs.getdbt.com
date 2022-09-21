@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'Jeff Chiu (https://github.com/codeforkjeff)'
   github_repo: 'codeforkjeff/dbt-sqlite'
+  pypi_package: 'dbt-sqlite'
   min_core_version: 'v1.1.0'
   cloud_support: Not Supported
   min_supported_version: 'SQlite Version 3.0'

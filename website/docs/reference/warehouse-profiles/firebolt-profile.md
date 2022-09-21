@@ -4,6 +4,7 @@ meta:
   maintained_by: Firebolt
   authors: 'Firebolt'
   github_repo: 'firebolt-db/dbt-firebolt'
+  pypi_package: 'dbt-firebolt'
   min_core_version: 'v1.1.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'

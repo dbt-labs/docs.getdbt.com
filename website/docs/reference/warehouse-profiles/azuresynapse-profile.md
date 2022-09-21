@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'dbt-msft community (https://github.com/dbt-msft)'
   github_repo: 'dbt-msft/dbt-synapse'
+  pypi_package: 'dbt-synapse'
   min_core_version: 'v0.18.0'
   cloud_support: Not Supported
   min_supported_version: 'Azure Synapse 10'

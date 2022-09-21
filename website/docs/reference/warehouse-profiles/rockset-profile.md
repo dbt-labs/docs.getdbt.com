@@ -4,6 +4,7 @@ meta:
   maintained_by: Rockset, Inc.
   authors: 'Rockset, Inc.'
   github_repo: 'rockset/dbt-rockset'
+  pypi_package: 'dbt-rockset'
   min_core_version: 'v0.19.2'
   cloud_support: Not Supported
   min_supported_version: '?'

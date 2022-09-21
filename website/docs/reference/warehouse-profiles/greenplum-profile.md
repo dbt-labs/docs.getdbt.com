@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'Mark Poroshin, Dmitry Bevz'
   github_repo: 'markporoshin/dbt-greenplum'
+  pypi_package: 'dbt-greenplum'
   min_core_version: 'v1.0.0'
   cloud_support: Not Supported
   min_supported_version: 'Greenplum 6.0'

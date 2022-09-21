@@ -4,6 +4,7 @@ meta:
   maintained_by: Layer
   authors: 'Mehmet Ecevit'
   github_repo: 'layerai/dbt-layer'
+  pypi_package: 'dbt-layer-bigquery'
   min_core_version: 'v1.0.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'

@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'Geoff Genz'
   github_repo: 'ClickHouse/dbt-clickhouse'
+  pypi_package: 'dbt-clickhouse'
   min_core_version: 'v0.19.0'
   cloud_support: Not Supported
   min_supported_version: '?'

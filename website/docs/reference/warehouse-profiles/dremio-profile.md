@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'Fabrice Etanchaud (Maif-vie)'
   github_repo: 'fabrice-etanchaud/dbt-dremio'
+  pypi_package: 'dbt-dremio'
   min_core_version: 'v0.18.0'
   cloud_support: Not Supported
   min_supported_version: 'Dremio 4.7'

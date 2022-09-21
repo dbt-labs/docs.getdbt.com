@@ -4,6 +4,7 @@ meta:
   maintained_by: iomete
   authors: 'Namig Aliyev'
   github_repo: 'iomete/dbt-iomete'
+  pypi_package: 'dbt-iomete'
   min_core_version: 'v0.18.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'

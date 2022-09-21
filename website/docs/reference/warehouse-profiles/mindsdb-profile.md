@@ -4,6 +4,7 @@ meta:
   maintained_by: MindsDB
   authors: 'MindsDB team'
   github_repo: 'mindsdb/dbt-mindsdb'
+  pypi_package: 'dbt-mindsdb'
   min_core_version: 'v1.0.1'
   cloud_support: Not Supported
   min_supported_version: '?'

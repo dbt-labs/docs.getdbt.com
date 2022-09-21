@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: Matthew Carter, Andy Regan, Andrew Hedengren
   github_repo: 'mpcarter/dbt-vertica'
+  pypi_package: 'dbt-vertica'
   min_core_version: 'v0.21.0'
   cloud_support: Not Supported
   min_supported_version: 'Vertica 10.0'

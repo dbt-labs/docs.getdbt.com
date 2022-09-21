@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'Torsten Glunde, Ilija Kutle'
   github_repo: 'tglunde/dbt-exasol'
+  pypi_package: 'dbt-exasol'
   min_core_version: 'v0.14.0'
   cloud_support: Not Supported
   min_supported_version: 'Exasol 6.x'

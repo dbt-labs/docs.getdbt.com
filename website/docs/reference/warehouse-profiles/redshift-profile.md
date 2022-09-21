@@ -4,6 +4,7 @@ meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
   github_repo: 'dbt-labs/dbt-redshift'
+  pypi_package: 'dbt-redshift'
   min_core_version: 'v0.10.0'
   cloud_support: Supported
   min_supported_version: 'n/a'

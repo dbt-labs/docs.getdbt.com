@@ -4,6 +4,7 @@ meta:
   maintained_by: Teradata
   authors: Doug Beatty and Adam Tworkiewicz
   github_repo: 'Teradata/dbt-teradata'
+  pypi_package: 'dbt-teradata'
   min_core_version: 'v0.21.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'

@@ -4,6 +4,7 @@ meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
   github_repo: 'dbt-labs/dbt-snowflake'
+  pypi_package: 'dbt-snowflake'
   min_core_version: 'v0.8.0'
   cloud_support: Supported
   min_supported_version: 'n/a'

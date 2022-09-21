@@ -4,6 +4,7 @@ meta:
   maintained_by: PingCAP
   authors: Xiang Zhang, Qiang Wu, Yuhang Shi
   github_repo: 'pingcap/dbt-tidb'
+  pypi_package: 'dbt-tidb'
   core_version: 'v1.0.0 and newer'
   cloud_support: Not Supported
   slack_channel_name: '#db-tidb'

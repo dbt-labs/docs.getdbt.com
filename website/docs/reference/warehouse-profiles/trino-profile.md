@@ -4,6 +4,7 @@ meta:
   maintained_by: Starburst Data, Inc.
   authors: Matthew Carter, Andy Regan, Andrew Hedengren
   github_repo: 'starburstdata/dbt-trino'
+  pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a' 

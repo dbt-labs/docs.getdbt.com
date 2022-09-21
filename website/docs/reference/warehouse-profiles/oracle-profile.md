@@ -4,6 +4,7 @@ meta:
   maintained_by: Oracle
   authors: 'Oracle'
   github_repo: 'oracle/dbt-oracle'
+  pypi_package: 'dbt-oracle'
   min_core_version: 'v1.2.1'
   cloud_support: Not Supported
   min_supported_version: 'SQlite Version 3.0'

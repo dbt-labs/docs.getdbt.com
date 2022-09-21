@@ -5,6 +5,7 @@ meta:
   maintained_by: Community
   authors: 'Benjamin Menuet, Moshir Mikael, Armando Segnini and Amine El Mallem'
   github_repo: 'aws-samples/dbt-glue'
+  pypi_package: 'dbt-glue'
   min_core_version: 'v0.24.0'
   cloud_support: Not Supported
   min_supported_version: 'Glue 2.0'

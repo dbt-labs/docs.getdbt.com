@@ -4,6 +4,7 @@ meta:
   maintained_by: Community
   authors: 'Tomme'
   github_repo: 'Tomme/dbt-athena'
+  pypi_package: 'dbt-athena-adapter'
   min_core_version: 'v1.0.1'
   cloud_support: Not Supported
   min_supported_version: 'engine version 2'
