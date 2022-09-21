@@ -1,4 +1,14 @@
-# DAG
+---
+id: dag
+title: DAG
+description: Data extraction is the process by which data is retrieved from multiple sources, often varying in volume and structure.
+displayText: DAG
+hoverSnippet: Data extraction is the process by which data is retrieved from multiple sources, often varying in volume and structure.
+---
+
+<head>
+    <title>What is a DAG and why is it important? - dbt Labs</title>
+</head>
 
 A DAG is a **D**irected **A**cyclic **G**raph, a type of graph whose nodes are directionally related to each other and don’t form a directional closed loop. In the practice of analytics engineering, DAGs are often used to visually represent the relationships between your data models.
 

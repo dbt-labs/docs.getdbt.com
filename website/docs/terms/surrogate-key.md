@@ -1,9 +1,14 @@
 ---
 id: surrogate-key
 title: Surrogate key
+description: A surrogate key is a unique identifier derived from the data itself. It's commonly a hashed value of multiple columns that will create a uniqueness id for each row.
 displayText: surrogate key  
 hoverSnippet: A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row.
 ---
+
+<head>
+  <title>What is a surrogate key in database table? - dbt Labs</title>
+</head>
 
 A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row. You will need to create a surrogate key for every table that doesn't have a natural <Term id="primary-key" />. 
 
