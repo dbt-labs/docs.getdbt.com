@@ -20,16 +20,6 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
-**Maintained by:** Community  
-**Author:** [dbt-msft community](https://github.com/dbt-msft)   
-**Source:** [GitHub](https://github.com/dbt-msft/dbt-synapse)  
-**Core version:** v0.18.0 and newer      
-**dbt Cloud:** Not Supported     
-**dbt Slack channel:** [Link to channel](https://getdbt.slack.com/archives/C01DRQ178LQ)
-**Supported Version:** Azure Synapse 10
-![dbt-synapse stars](https://img.shields.io/github/stars/dbt-msft/dbt-synapse?style=for-the-badge)
-![latest version on PyPI](https://img.shields.io/pypi/v/dbt-synapse?style=for-the-badge)
-
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
     <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
