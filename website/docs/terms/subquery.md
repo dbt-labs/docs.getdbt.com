@@ -7,7 +7,7 @@ hoverSnippet: A subquery is a query within another query. Subqueries are often u
 ---
 
 <head>
-  <title>What is a Subquery in SQL and when they are useful - dbt Labs</title>
+  <title>What is a Subquery in SQL and when are they useful? - dbt Labs</title>
 </head>
 A subquery is what the name suggests: a query within another query. _The true inception of SQL_. Subqueries are often used when you need to process data in several steps. For the majority of subqueries you’ll see in actual practice, the inner query will execute first and pass its result to the outer query it's nested in.
 
