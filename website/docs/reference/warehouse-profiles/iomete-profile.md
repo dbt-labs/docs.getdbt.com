@@ -4,11 +4,11 @@ title: "iomete Profile"
 
 ## Overview of dbt-iomete
 
-**Maintained by:** iomete
-**Author:** Namig Aliyev
-**Source:** [Github](https://github.com/iomete/dbt-iomete)
-**Documentation** [iomete](https://docs.iomete.com/docs/profile-setup)
-**dbt Cloud:** Currently un-supported
+**Maintained by:** iomete  
+**Author:** Namig Aliyev  
+**Source:** [Github](https://github.com/iomete/dbt-iomete)  
+**Documentation** [iomete](https://docs.iomete.com/docs/profile-setup)  
+**dbt Cloud:** Currently un-supported  
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C03JFG22EP9)
 
 
@@ -42,9 +42,10 @@ iomete:
     dev:
       type: iomete
       cluster: cluster_name
-      host: dwh-<account_number>.iomete.com
+      host: <region_name>.iomete.com
       port: 443
       schema: database_name
+      account_number: iomete_account_number
       user: iomete_user_name
       password: iomete_user_password
 ```
@@ -60,6 +61,7 @@ iomete:
 | host     | The host name of the connection. It is a combination of <br/>`account_number` with the prefix `dwh-` <br/>and the suffix `.iomete.com`. | Required | `dwh-12345.iomete.com` |
 | port     | The port to use.                                                                                                                        | Required | `443`                  |
 | schema   | Specify the schema (database) to build models into.                                                                                     | Required | `dbt_finance`          |
+| account_number | The iomete account number with single quotes.                                                                                           | Required | `'1234566789123'`        |
 | username | The iomete username to use to connect to the server.                                                                                    | Required | `dbt_user`             |
 | password | The iomete user password to use to connect to the server.                                                                               | Required | `strong_password`      |
 
