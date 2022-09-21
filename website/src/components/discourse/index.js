@@ -177,7 +177,6 @@ export const DiscourseHelpFeed = ({
 
 // Helpers
 function TopicWrapper({ topic, children }) {
-  console.log('topic', topic)
   if(topic?.slug && topic?.id) {
     return (
       <a href={`https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`} title={topic.title} target="_blank">{children}</a>
