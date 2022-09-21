@@ -218,6 +218,14 @@ a.code-link:hover {
   justify-content: center;
 }
 
+.navbar-sidebar .menu__link.nav-create-account {
+  color: var(--color-white);
+  border: none;
+}
+.navbar-sidebar .menu__link.nav-create-account:hover {
+  color: var(--color-white);
+  background: var(--color-light-teal);
+}
 .navbar__items .navbar__link.nav-create-account {
   color: var(--color-white);
   height: 30px;
@@ -984,6 +992,7 @@ filter: opacity(.75);
     button.DocSearch-Button {
       border: 1px solid #95a0b1;
       border-radius: 5px;
+      height: 30px;
     }
     
     button.DocSearch-Button:active, 
