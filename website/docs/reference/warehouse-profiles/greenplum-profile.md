@@ -12,7 +12,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
 ---
 
-## Overview of dbt-greenplum
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

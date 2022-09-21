@@ -23,7 +23,7 @@ Although this article uses Bitbucket Pipelines as the compute service and Bitbuc
 1. Deploy your product and save the deployment artifacts.
 2. Use the artifacts to allow dbt to determine the stateful changes and run only those (thereby achieving “slimness”).
 
-## Overview of steps
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 To accomplish this, we’ll need to prepare three parts of our pipeline to work together:
 

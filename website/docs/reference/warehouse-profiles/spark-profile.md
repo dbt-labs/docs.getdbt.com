@@ -13,7 +13,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
 ---
 
-## Overview of dbt-spark
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

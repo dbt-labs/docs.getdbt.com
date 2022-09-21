@@ -12,7 +12,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C03JFG22EP9'
 ---
 
-## Overview of dbt-iomete
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

@@ -16,7 +16,7 @@ meta:
 
 The dbt-mindsdb package allows dbt to connect to [MindsDB](https://github.com/mindsdb/mindsdb).
 
-## Overview of dbt-mindsdb
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

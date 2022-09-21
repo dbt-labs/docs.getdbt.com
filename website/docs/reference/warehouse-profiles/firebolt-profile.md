@@ -16,7 +16,7 @@ meta:
 Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.
 
 
-## Overview of dbt-firebolt
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

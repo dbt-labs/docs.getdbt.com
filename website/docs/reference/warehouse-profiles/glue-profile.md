@@ -19,7 +19,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
-## Overview of dbt-glue
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

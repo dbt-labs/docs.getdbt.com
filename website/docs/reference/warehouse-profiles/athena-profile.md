@@ -12,7 +12,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C013MLFR7BQ'
 ---
 
-## Overview of dbt-athena
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
@@ -27,7 +27,7 @@ meta:
 
 The easiest way to install is to use pip:
 
-    pip install dbt-athena-adapter
+<code>pip install {frontMatter.meta.pypi_package}</code>
 
 ## Connecting to Athena with dbt-athena
 

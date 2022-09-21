@@ -18,7 +18,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
-## Overview of dbt-synapse
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 **Maintained by:** Community  
 **Author:** [dbt-msft community](https://github.com/dbt-msft)   

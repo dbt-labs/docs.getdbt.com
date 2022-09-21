@@ -13,7 +13,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
 ---
 
-## Overview of dbt-impala
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

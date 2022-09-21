@@ -8,7 +8,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
-## Overview of dbt-mysql
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 **Maintained by:** Community  
 **Author:** [Doug Beatty](https://github.com/dbeatty10)   

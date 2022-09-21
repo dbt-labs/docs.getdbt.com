@@ -16,7 +16,7 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 :::
 
-## Overview of dbt-trino
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>

@@ -12,7 +12,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
 ---
 
-## Overview of dbt-bigquery
+<h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
