@@ -1,9 +1,9 @@
 ---
 id: dag
 title: DAG
-description: Data extraction is the process by which data is retrieved from multiple sources, often varying in volume and structure.
+description: A DAG is a Directed Acyclic Graph, a type of graph whose nodes are directionally related to each other and don’t form a directional closed loop.
 displayText: DAG
-hoverSnippet: Data extraction is the process by which data is retrieved from multiple sources, often varying in volume and structure.
+hoverSnippet: A DAG is a Directed Acyclic Graph, a type of graph whose nodes are directionally related to each other and don’t form a directional closed loop.
 ---
 
 <head>
