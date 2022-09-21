@@ -8,7 +8,7 @@ function Events() {
     <Layout>
       <Head>
         <title>dbt Discourse</title>
-        <meta name="description" content="Description here" />
+        <meta name="description" content="Recent interesting discussions from across the dbt Forum" />
       </Head>
       <section className='discourse-forum-page'>
         <div className='container'>   
