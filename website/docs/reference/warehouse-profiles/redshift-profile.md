@@ -68,7 +68,7 @@ my-redshift-db:
       iam_profile: data_engineer # optional
       iam_duration_seconds: 900  # optional
       autocreate: true           # optional
-      db_groups: ['analysts']    # optional
+      db_groups: ['ANALYSTS']    # optional
 
       # Other Redshift configs:
       port: 5439
