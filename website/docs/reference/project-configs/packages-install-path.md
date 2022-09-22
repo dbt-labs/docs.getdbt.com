@@ -29,7 +29,7 @@ By default, dbt will install packages in the `dbt_packages` directory, i.e. `pac
 <File name='dbt_project.yml'>
 
 ```yml
-modules-path: packages
+packages-install-path: dbt_packages
 ```
 
 </File>
