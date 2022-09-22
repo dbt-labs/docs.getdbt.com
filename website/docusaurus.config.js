@@ -133,10 +133,10 @@ var siteSettings = {
               label: 'Glossary',
               to: '/glossary',
             },
-            // {
-            //   label: 'Forum',
-            //   to: '/forum',
-            // },
+            {
+              label: 'Forum',
+              to: '/forum',
+            },
           ],
         },
         // {
