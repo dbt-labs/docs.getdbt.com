@@ -1,7 +1,7 @@
 ---
 id: surrogate-key
 title: Surrogate key
-description: A surrogate key is a unique identifier derived from the data itself. It's commonly a hashed value of multiple columns that will create a uniqueness id for each row.
+description: A surrogate key is a unique identifier derived from the data itself. It's commonly a hashed value of multiple columns that will create a unique id for each row.
 displayText: surrogate key  
 hoverSnippet: A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row.
 ---
