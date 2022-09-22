@@ -112,9 +112,14 @@ html[data-theme='dark'] .api-content h1 {
   color: white;
 }
 
-html[data-theme='dark'] .api-content a,
-html[data-theme='dark'] .api-content button {
-  filter: brightness(1.5);
+html[data-theme='dark'] .api-content button,
+html[data-theme='dark'] .api-content a {
+  filter: brightness(1.25);
+}
+
+.redoc-wrap .api-content a,
+.redoc-wrap .api-content a:visited {
+  color: var(--color-green-blue);
 }
 
 .redoc-wrap {
