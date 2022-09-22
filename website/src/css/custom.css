@@ -307,7 +307,7 @@ a.code-link:hover {
 }
 .navbar__items .navbar__link.nav-create-account {
   color: var(--color-white);
-  height: 30px;
+  height: 35px;
   align-self: auto;
   padding: 0 12px;
   margin-top: 0;
@@ -1016,7 +1016,7 @@ filter: opacity(.75);
     button.DocSearch-Button {
       border: 1px solid #95a0b1;
       border-radius: 5px;
-      height: 30px;
+      height: 35px;
     }
     
     button.DocSearch-Button:active, 
