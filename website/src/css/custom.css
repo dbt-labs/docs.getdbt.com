@@ -948,7 +948,11 @@ filter: opacity(.75);
 }
 
 @media (min-width: 997px) and (max-width: 1729px) {
-  .container .row .col {
+  .container > .row .col {
+    padding-left: 2.5rem;
+  }
+  /* for non row divs like on /category/adapter-development  */
+  .container > div:not(.row) {
     padding-left: 2.5rem;
   }
 }
