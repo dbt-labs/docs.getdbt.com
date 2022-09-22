@@ -46,9 +46,10 @@ seeds:
 
 </File>
 
+Or (as of v0.21):
+
 <File name='seeds/properties.yml'>
 
-Or (as of v0.21):
 ```yml
 version: 2
 

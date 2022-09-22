@@ -12,7 +12,7 @@ title: "Athena Profile"
 
 The easiest way to install is to use pip:
 
-    pip install git+https://github.com/Tomme/dbt-athena.git
+    pip install dbt-athena-adapter
 
 ## Connecting to Athena with dbt-athena
 
