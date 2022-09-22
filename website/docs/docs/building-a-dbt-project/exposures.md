@@ -59,7 +59,7 @@ _Expected:_
 - **depends_on**: list of refable nodes (`ref` + `source`)
 
 _Optional:_
-- **url**: will enable the link to "View this exposure" in the documentation
+- **url**:  enables the link to "View this exposure" in the documentation
 - **maturity**: one of `high`, `medium`, `low`
 - **owner**: name
 
