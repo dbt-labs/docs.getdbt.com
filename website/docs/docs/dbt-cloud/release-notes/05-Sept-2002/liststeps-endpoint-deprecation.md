@@ -10,6 +10,6 @@ On October 14th, 2022 we are deprecating the [List Steps](https://docs.getdbt.co
 
 We will continue to maintain the [Get Run](https://docs.getdbt.com/dbt-cloud/api-v2#tag/Runs/operation/getRunById) endpoint, which is a viable alternative depending on the use case. 
 
-You can get run steps for an individual run with a GET request to the following URL:
+You can fetch run steps for an individual run with a GET request to the following URL:
 
 `https://cloud.getdbt.com/api/v2/accounts/{accountId}/runs/{runId}/?include_related=["run_steps"]`
