@@ -99,18 +99,23 @@ export const DiscourseFeed = ({
   const setMinHeight = isError
     ? 'auto'
     : 414
-
+  
   return (
     <div className={feedStyles.discourseTopics} style={{minHeight: setMinHeight, ...styles}}>
       {title && (
         <h2>{title}</h2>
       )}
       {loading ? (
-        <img src="/img/loader-icon.svg" alt="Loading" className={feedStyles.loadingIcon} />
+        <img 
+          src="/img/loader-icon.svg" 
+          alt="Loading" 
+          className={feedStyles.loadingIcon} 
+          data-testid="feed-loader"
+        />
       ) : isError || !topics?.length > 0 ? (
-        <p>Unable to load forum topics at this time.</p>
+        <p data-testid='error-text'>Unable to load forum topics at this time.</p>
       ) : (
-        <ul>
+        <ul data-testid="topics-list">
           {topics.map(topic => (
             <li key={topic.id}>
               {topic?.has_accepted_answer && (
@@ -134,7 +139,7 @@ export const DiscourseFeed = ({
         </ul>
       )}
       {show_cta && (
-        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank">{link_text}</a>
+        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank" data-testid='feed-cta'>{link_text}</a>
       )}
     </div>
   )
