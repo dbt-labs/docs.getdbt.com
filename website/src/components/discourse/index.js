@@ -29,6 +29,8 @@ export const DiscourseFeed = ({
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
+    let isMounted = true
+
     // Get topics from Discourse API
     const fetchData = async () => {
       try {
@@ -75,14 +77,20 @@ export const DiscourseFeed = ({
         if(!data) throw new Error('Unable to get latest topics.')
 
         // Set topics count
-        setTopics(data.slice(0, topic_count))
-        setLoading(false)
+        if(isMounted) {
+          setTopics(data.slice(0, topic_count))
+          setLoading(false)
+        }
       } catch(err) {
         setIsError(true)
         setLoading(false)
       }
     }
     fetchData()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   // Set initial min-height
