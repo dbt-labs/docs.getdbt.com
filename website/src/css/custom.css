@@ -19,7 +19,7 @@
   --ifm-navbar-height: 85px;
   --ifm-navbar-link-hover-color: var(--color-orange);
   --ifm-navbar-link-active-color: var(--color-orange);
-  --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 3.75);
+  --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 1.875);
   --ifm-footer-background-color: #4f5d75;
   --ifm-footer-color: var(--color-white);
   --ifm-link-color: #009999;
