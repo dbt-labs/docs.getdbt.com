@@ -301,40 +301,6 @@ a.code-link:hover {
   justify-content: center;
 }
 
-.navbar-sidebar .menu__link.nav-create-account {
-  color: var(--color-white);
-  border: none;
-}
-.navbar-sidebar .menu__link.nav-create-account:hover {
-  color: var(--color-white);
-  background: var(--color-light-teal);
-}
-.navbar__items .navbar__link.nav-create-account {
-  color: var(--color-white);
-  height: 35px;
-  align-self: auto;
-  padding: 0 12px;
-  margin-top: 0;
-  margin-left: 0;
-  border: none;
-  order: 3;
-}
-.navbar__items .navbar__link.nav-create-account:hover {
-  background: var(--color-light-teal);
-}
-
-/* Reorder search and darkmode toggle */
-.navbar__items.navbar__items--right div[class^="searchBox"] {
-  order: 2;
-}
-.navbar__items.navbar__items--right div[class^="toggle"] {
-  order: 4;
-}
-
-.dropdown__link:hover {
-  cursor: pointer;
-}
-
 /* Search Button Styles */
 .search {
   width: 100%;
