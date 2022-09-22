@@ -18,4 +18,4 @@ Notes:
 - The model timing dashboard is currently only available on multi-tenant Team and Enterprise accounts.
 - The model timing dashboard can only be viewed for jobs that have successfully completed.
 
-<LoomVideo id="28a49a5c511c4063b4a3381cb81a03cf" />
+<Lightbox src="/img/docs/dbt-cloud/Model-timing-tab.png" title="Model timing tab"/>
