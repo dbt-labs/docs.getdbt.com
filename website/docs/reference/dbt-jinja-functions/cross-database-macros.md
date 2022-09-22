@@ -260,7 +260,7 @@ intersect
 __Args__:
 
  * `array` (required): The array to append to.
- * `new_element` (required): The element to be appended. This element must *match the data type of the existing elements* in the array in order to match Postgres functionality and *not null* to match Bigquery functionality.
+ * `new_element` (required): The element to be appended. This element must *match the data type of the existing elements* in the array in order to match PostgreSQL functionality and *not null* to match BigQuery functionality.
 
 This macro appends an element to the end of an array and returns the appended array.
 
@@ -284,7 +284,7 @@ array_append(array_column, 'blue')
 __Args__:
 
  * `array_1` (required): The array to append to.
- * `array_2` (required): The array to be appended to `array_1`. This array must match the data type of `array_1` in order to match Postgres functionality.
+ * `array_2` (required): The array to be appended to `array_1`. This array must match the data type of `array_1` in order to match PostgreSQL functionality.
 
 This macro returns the concatenation of two arrays.
 
@@ -303,7 +303,7 @@ array_cat(array_column_1, array_column_2)
 ### array_construct
 __Args__:
 
- * `inputs` (optional): The list of array contents. If not provided, this macro will create an empty array. All inputs must be the *same data type* in order to match Postgres functionality and *not null* to match BigQuery functionality.
+ * `inputs` (optional): The list of array contents. If not provided, this macro will create an empty array. All inputs must be the *same data type* in order to match PostgreSQL functionality and *not null* to match BigQuery functionality.
  * `data_type` (optional): Specifies the data type of the constructed array. This is only relevant when creating an empty array (will otherwise use the data type of the inputs). If `inputs` are `data_type` are both not provided, this macro will create an empty array of type integer.
 
 This macro returns an array constructed from a set of inputs.
