@@ -117,6 +117,10 @@ html[data-theme='dark'] .api-content a {
   filter: brightness(1.25);
 }
 
+html[data-theme='dark'] .api-content a:hover {
+  filter: brightness(1.25);
+}
+
 .redoc-wrap .api-content a,
 .redoc-wrap .api-content a:visited {
   color: var(--color-green-blue);
@@ -942,6 +946,12 @@ filter: opacity(.75);
   }
 }
 
+@media (min-width: 997px) and (max-width: 1729px) {
+  .container .row .col {
+    padding-left: 2.5rem;
+  }
+}
+
 /* Begin @Media Queries */
 @media (min-width: 997px) and (max-width: 1150px) {
   nav.navbar a.navbar__link {
@@ -1072,11 +1082,12 @@ filter: opacity(.75);
   html.docs-version-current .navbar__brand {
     background-color: var(--ifm-background-color);
     border-right: 1px solid var(--ifm-toc-border-color);
-}
+  }
 
   button.DocSearch-Button {
     min-width: 175px;
   }
+
 }
 
 @media (min-width: 997px) {
@@ -1127,11 +1138,6 @@ filter: opacity(.75);
     width: 100%;
     flex-grow: 1;
     max-width: calc(100% - var(--doc-sidebar-width));
-  }
-
-  .container .row .col {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 
   .table-of-contents::before {
