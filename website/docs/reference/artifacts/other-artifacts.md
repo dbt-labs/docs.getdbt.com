@@ -4,7 +4,7 @@ title: Other Artifacts
 
 ### index.html
 
-_Produced by:_ `dbt docs generate`
+**Produced by:** [`docs generate`](commands/cmd-docs)
 
 This file is the skeleton of the [auto-generated dbt documentation website](documentation). The contents of the site are populated by the [manifest](manifest-json) and [catalog](catalog-json).
 
@@ -12,12 +12,12 @@ Note: the source code for `index.json` comes from the [dbt-docs repo](https://gi
 
 ### partial_parse.msgpack
 
-_Produced by: all commands_
+**Produced by:** [manifest commands](manifest-json) + [`parse`](parse)
 
 This file is used to store a compressed representation of files dbt has parsed. If you have [partial parsing](parsing#partial-parsing) enabled, dbt will use this file to identify the files that have changed and avoid re-parsing the rest.
 
 ### graph.gpickle
 
-_Produced by: all commands_
+**Produced by:** commands supporting [node selection](node-selection/syntax)
 
 Stores the networkx representation of the dbt resource DAG.
