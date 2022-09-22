@@ -14,10 +14,9 @@ To generate documentation in the IDE, run the `dbt docs generate` command in the
 Command Bar in the IDE. This command will generate the Docs
 for your dbt project as it exists in development in your IDE session.
 
-<LoomVideo id="4c2373238b3d474e9239c457411ac458" />
+<Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" title="dbt docs generate"/>
 
 After generating your documentation, you can click the "view docs" button to see
 the latest version of your documentation rendered in a new browser window.
 
-<LoomVideo id="c28ca8dcacae419187b7caa7aa71c7cd" />
-
+<Lightbox src="/img/docs/dbt-cloud/View-docs-in-IDE.png" title="View docs in the IDE"/>

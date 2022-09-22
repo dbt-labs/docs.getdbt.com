@@ -21,21 +21,25 @@ The simplest branching strategy for making code changes to your dbt project repo
 
 ![Basic git workflow](/img/blog/2022-09-13-the-case-against-cherry-picking/1_basic_git_workflow.png)
 
-This approach – often referred to as “continuous deployment” or “direct promotion” – provides many benefits including:
+If you are just getting started in dbt and deciding which branching strategy to use, this approach–often referred to as “continuous deployment” or “direct promotion”–is the way to go. It provides many benefits including:
 
 - Fast promotion process to get new changes into production
 - Simple branching strategy to manage
 
-The main risk, however, is that your `main` branch can become susceptible to bugs that slip through the pull request approval process.
+The main risk, however, is that your `main` branch can become susceptible to bugs that slip through the pull request approval process. In order to have more intensive testing and QA before merging code changes into production, some organizations may decide to **create one or more branches between the feature branches and `main`**. 
 
 <!--truncate-->
 
-In order to have more intensive testing and QA before merging code changes into production, some organizations may decide to **create one or more branches between the feature branches and `main`**. For example, a single dbt project repository might have a hierarchy of 3 primary branches: `dev`, `staging`, and `prod`. To update the prod branch, a developer will:
+:::caution Don't over-engineer your branching strategy
+Before adding additional primary branches, ask yourself - "is this risk *really* worth adding complexity to my developers' workflow"? Most of the time, the answer is no. Organizations that use a simple, single-main-branch strategy are (almost always) more successful long term. This article is for those who *really absolutely must* use a multi-environment dbt project.
+:::
+
+For example, a single dbt project repository might have a hierarchy of 3 primary branches: `dev`, `staging`, and `prod`. To update the prod branch, a developer will:
 
 1. Create a new feature branch directly from the `dev` branch
-1. Make changes on that feature branch
-1. Test locally
-1. When ready, open a pull request to merge their changes back into the `dev` branch
+2. Make changes on that feature branch
+3. Test locally
+4. When ready, open a pull request to merge their changes back into the `dev` branch
 
 In this hierarchical promotion, once a set of feature branches are vetted in `dev`:
 
@@ -86,7 +90,7 @@ If you’ve attempted a branching strategy that involves cherry picking into upp
 
 **What’s the problem?**
 
-In the example above, the team has only ever tested `feature_becca` *in combination with* `feature_alex` —so there’s no guarantee that `feature_becca`’s changes will be successful on their own. What if `feature_becca` were relying on a change included in `feature_alex`? Because testing of branches is not conducted independently, it’s risky to merge independently.
+In the example above, the team has only ever tested `feature_becca` *in combination with* `feature_alex` —so there’s no guarantee that `feature_becca`’s changes will be successful on their own. What if `feature_becca` was relying on a change included in `feature_alex`? Because testing of branches is not conducted independently, it’s risky to merge independently.
 
 ## Feature branches contain more than meets the eye
 
@@ -146,12 +150,12 @@ Instead, if you decide to use a branching strategy that involves multiple primar
 
 ![Hierarchical branching strategy](/img/blog/2022-09-13-the-case-against-cherry-picking/2_multienvironment.png)
 
-If issues arise during testing on the dev or staging branch, the developers should create additional branches as necessary to fix the bugs until the *entire* branch is ready to be promoted.
+If issues arise during testing on the `dev` or `staging` branch, the developers should create additional branches as necessary to fix the bugs until the *entire* branch is ready to be promoted.
 
 As mentioned previously, this approach does have a clear disadvantage—it might take longer to fix all of the bugs found during testing, which can lead to:
 
 - Delayed deployments
-- Code freezes on dev, creating a backup of out-dated feature branches waiting to be merged
+- Code freezes on `dev`, creating a backup of out-dated feature branches waiting to be merged
 
 Thankfully, we can mitigate these delays by doing rigorous testing on the *individual* feature branches, ensuring the team is extremely confident about the change *prior* to merging the feature branch into `dev`.
 
