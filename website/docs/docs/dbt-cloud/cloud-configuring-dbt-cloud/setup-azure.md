@@ -93,13 +93,12 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
     - **Application (client) ID:** Found in the Azure AD App.
     - **Client Secrets:** You need to first create a secret in the Azure AD App under **Client credentials**. Make sure to copy the **Value** field in the Azure AD App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Azure AD app secret expiration and rotation. 
     - **Directory(tenant) ID:** Found in the Azure AD App.
-
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/Azure Devops App in dbt Cloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
-
+        <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
 Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
 
 ## Connecting a service user
+
 Because Azure DevOps forces all authentication to be linked to a user's permissions, we recommend you create a "service user" in Azure DevOps whose permissions will be used to power headless actions in dbt Cloud such as dbt Cloud project repo selection, deployment runs, and CI. A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, dbt Cloud will lose privileges to the dbt Azure DevOps repositories, causing production runs to fail.
 
 ### More on Service Users
@@ -142,7 +141,7 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - PublisherSecurity for access to all projects
-- PublishSecurity/<azure_devops_project_object_id> for tightly scoped access
+- PublisherSecurity/<azure_devops_project_object_id> for per project access
 
 **UI/API:** API only
 
@@ -170,7 +169,7 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - PublisherSecurity for access to all projects
-- PublishSecurity/<azure_devops_project_object_id> for tightly scoped access
+- PublisherSecurity/<azure_devops_project_object_id> for per project access
 
 **UI/API:** API only
 
@@ -200,7 +199,7 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - PublisherSecurity for access to all projects
-- PublishSecurity/<azure_devops_project_object_id> for tightly scoped access
+- PublisherSecurity/<azure_devops_project_object_id> for per project access
 
 **UI/API:** API only
 
@@ -232,8 +231,8 @@ This service user's permissions will also power which repositories a team can se
 
 **Token (where applicable - API only):** 
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for access to a single project at a time
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time
+- repoV2/<azure_devops_project_object_id> for per project access
+- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
 
 
 **UI/API:** UI and API
