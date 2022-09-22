@@ -425,6 +425,7 @@ a.navbar__item.navbar__link.btn:hover {
 
 .menu__list .menu__list a.menu__link.menu__link--sublist {
   font-weight: var(--ifm-font-weight-semibold);
+  margin: 1rem;
 }
 
 .menu__list-item-collapsible .menu__link--active {
