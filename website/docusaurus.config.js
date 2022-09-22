@@ -114,46 +114,64 @@ var siteSettings = {
           activeBasePath: 'reference'
         },
         {
-          label: 'Learn',
+          to: '/dbt-cli/cli-overview',
+          label: 'dbt CLI',
+          position: 'left',
+          activeBasePath: 'dbt-cli'
+        },
+        {
+          to: '/docs/dbt-cloud/cloud-overview',
+          label: 'dbt Cloud',
+          position: 'left',
+          activeBasePath: 'docs/dbt-cloud'
+        },
+        {
+          to: '/guides/getting-started',
+          label: 'Guides',
+          position: 'left',
+          activeBasePath: 'guides'
+        },
+        {
+          to: '/blog/',
+          label: 'Developer Blog',
+          position: 'right',
+          activeBasePath: 'blog'
+        },
+        {
+          label: 'Courses',
           position: 'right',
           items: [
             {
-              label: 'Courses',
+              label: 'Online courses',
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Guides',
-              to: '/guides/getting-started',
-            },
-            {
-              label: 'Developer Blog',
-              to: '/blog',
-            },
-            {
-              label: 'Glossary',
-              to: '/glossary',
-            },
-            // {
-            //   label: 'Forum',
-            //   to: '/forum',
-            // },
+              label: 'Live courses',
+              href: 'https://learn.getdbt.com/public',
+            }
           ],
         },
-        // {
-        //   label: 'Community',
-        //   position: 'right',
-        //   items: [
-        //     {
-        //       label: 'Maintaining a Slack Channel',
-        //       to: '/community/maintaining-a-channel',
-        //     },
-        //   ]
-        // },
-         {
-          label: 'Create a free account',
-          to: 'https://www.getdbt.com/signup/',
+        {
+          label: 'Community',
           position: 'right',
-          className: 'nav-create-account button button--primary',
+          items: [
+            {
+              label: 'Maintaining a Slack Channel',
+              to: '/community/maintaining-a-channel',
+            },
+            {
+              label: 'dbt Slack',
+              href: 'https://community.getdbt.com/',
+            },
+            {
+              label: 'Blog',
+              href: 'https://blog.getdbt.com',
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/dbt-labs/dbt-core',
+            },
+          ]
         },
       ],
     },

@@ -701,7 +701,7 @@ div .toggle_src-components-faqs-styles-module {
 }
 
 .card.large .button:hover {
-  background: var(--color-white);
+  background: #fff;
   border-color: var(--color-white);
   color: var(--color-green-blue);
 }
@@ -1037,12 +1037,6 @@ filter: opacity(.75);
       background: white; 
       box-shadow: var(--docsearch-searchbox-shadow);
       border: 1px solid var(--ifm-link-color);
-    }
-
-    [data-theme='dark'] button.DocSearch-Button:active,
-    [data-theme='dark'] button.DocSearch-Button:focus,
-    [data-theme='dark'] button.DocSearch-Button:hover {
-      background: #ffffff10;
     }
     
     button .DocSearch-Button-Placeholder {
@@ -1478,7 +1472,7 @@ footer #ot-sdk-btn.optanon-show-settings:hover{
   text-decoration: underline;
 }
 
-/* Events Page */
-.events-page section {
+/* Discourse Forum & Events Page */
+.events-page section, section.discourse-forum-page {
   padding: 4rem 0;
 }
