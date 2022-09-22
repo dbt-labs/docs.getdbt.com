@@ -1,9 +1,14 @@
 ---
 id: data-warehouse
 title: Data warehouse
+description: How have data warehouses evolved over the last 40 years? Explore the nuanced changes in use case since Inmon first coined the term.
 displayText: data warehouse
 hoverSnippet: A data warehouse is a data management system used for data storage and computing that allows for analytics activities such as transforming and sharing data.
 ---
+
+<head>
+    <title>Data warehouses in the modern data stack - dbt Labs</title>
+</head>
 
 A data warehouse is a data management system used for data storage and computing that allows for analytics activities such as transforming and sharing data. It helps businesses to capture and store data from external sources. Analytics engineers and data analysts use it to query datasets using SQL, helping to transform them into powerful data models and reports. Data warehouses are the central source of truth for any modern data stack. Data is ingested, transformed, and shared to other tools from the warehouse.
 
