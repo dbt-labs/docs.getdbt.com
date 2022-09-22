@@ -41,6 +41,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [split_part](#split_part)
 - [string_literal](#string_literal)
 - [type_bigint](#type_bigint)
+- [type_boolean](#type_boolean)
 - [type_float](#type_float)
 - [type_int](#type_int)
 - [type_numeric](#type_numeric)
@@ -49,6 +50,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 [**Data type functions**](#data-type-functions)
 - [type_bigint](#type_bigint)
+- [type_boolean](#type_boolean)
 - [type_float](#type_float)
 - [type_int](#type_int)
 - [type_numeric](#type_numeric)
@@ -111,6 +113,25 @@ This macro yields the database-specific data type for a `BIGINT`.
 
 ```sql
 bigint
+```
+
+### type_boolean
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `BOOLEAN`.
+
+**Usage**:
+
+```sql
+{{ type_boolean() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+BOOLEAN
 ```
 
 ### type_float
