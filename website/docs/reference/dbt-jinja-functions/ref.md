@@ -45,7 +45,9 @@ There is also a two-argument variant of the `ref` function. With this variant, y
 select * from {{ ref('package_name', 'model_name') }}
 ```
 
-**Note:** The `package_name` should only include the name of the package, not the maintainer. For example, if using the `fivetran/stripe` package, you'll want to put `stripe` in that argument, rather than `fivetran/stripe`.
+**Note:** The `package_name` should only include the name of the package, not the maintainer. For example, if you use the [`fivetran/stripe`](https://hub.getdbt.com/fivetran/stripe/latest/) package, you'll want to type `stripe` in that argument, and not  `fivetran/stripe`.
+
+`select * from {{ ref('stripe', 'dim_orders') }}`
 
 ### Forcing Dependencies
 
