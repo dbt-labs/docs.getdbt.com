@@ -18,9 +18,11 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 ## All functions (alphabetical)
 - [any_value](#any_value)
+<VersionBlock firstVersion="1.3">
 - [array_append](#array_append)
 - [array_concat](#array_concat)
 - [array_construct](#array_construct)
+</VersionBlock>
 - [bool_or](#bool_or)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [concat](#concat)
@@ -41,7 +43,9 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [split_part](#split_part)
 - [string_literal](#string_literal)
 - [type_bigint](#type_bigint)
+<VersionBlock firstVersion="1.3">
 - [type_boolean](#type_boolean)
+</VersionBlock>
 - [type_float](#type_float)
 - [type_int](#type_int)
 - [type_numeric](#type_numeric)
@@ -50,7 +54,9 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 [**Data type functions**](#data-type-functions)
 - [type_bigint](#type_bigint)
+<VersionBlock firstVersion="1.3">
 - [type_boolean](#type_boolean)
+</VersionBlock>
 - [type_float](#type_float)
 - [type_int](#type_int)
 - [type_numeric](#type_numeric)
@@ -61,10 +67,14 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [except](#except)
 - [intersect](#intersect)
 
+<VersionBlock firstVersion="1.3">
+
 [**Array functions**](#array-functions)
 - [array_append](#array_append)
 - [array_concat](#array_concat)
 - [array_construct](#array_construct)
+
+</VersionBlock>
 
 [**String functions**](#string-functions)
 - [concat](#concat)
@@ -115,6 +125,8 @@ This macro yields the database-specific data type for a `BIGINT`.
 bigint
 ```
 
+<VersionBlock firstVersion="1.3">
+
 ### type_boolean
 __Args__:
 
@@ -133,6 +145,8 @@ This macro yields the database-specific data type for a `BOOLEAN`.
 ```sql
 BOOLEAN
 ```
+
+</VersionBlock>
 
 ### type_float
 __Args__:
@@ -270,10 +284,7 @@ __Args__:
 intersect
 ```
 
-[**Array functions**](#array-functions)
-- [array_append](#array_append)
-- [array_concat](#array_concat)
-- [array_construct](#array_construct)
+<VersionBlock firstVersion="1.3">
 
 ## Array functions
 
@@ -346,6 +357,8 @@ array[]::integer[]
 array[ 1 , 2 , 3 , 4 ]
 array[ 'blue' , 'green' ]
 ```
+
+</VersionBlock>
 
 ## String functions
 
