@@ -16,7 +16,8 @@ First, make sure to configure your sources to [snapshot freshness information](u
 
 <Changelog>
 
-  - **v0.21.0:** Renamed `dbt source snapshot-freshness` to `dbt source freshness`. If using an older version of dbt, the command is `snapshot-freshness`.
+  - **v0.21.0:** Renamed `dbt source snapshot-freshness` to `dbt source freshness`. If using an older version of dbt, the command is `snapshot-freshness`.  
+  To have dbt Cloud display data source freshness as a rendered user interface, you will still need to use the pre-v0.21 syntax of `dbt source snapshot-freshness`.
 
 </Changelog>
 

@@ -1,9 +1,14 @@
 ---
 id: data-lineage
 title: Data lineage
+description: Data lineage provides a holistic view of how data moves through an organization, where it’s transformed and consumed.
 displayText: data lineage
 hoverSnippet: Data lineage provides a holistic view of how data moves through an organization, where it’s transformed and consumed.
 ---
+
+<head>
+    <title>Data lineage: What it is and how to automate it - dbt Labs</title>
+</head>
 
 Data lineage provides a holistic view of how data moves through an organization, where it’s transformed and consumed. Overall, data lineage is a fundamental concept to understand in the practice of analytics engineering and modern data work.
 

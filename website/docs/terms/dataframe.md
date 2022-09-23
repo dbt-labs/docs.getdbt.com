@@ -1,9 +1,14 @@
 ---
 id: dataframe
 title: DataFrame
+description: A DataFrame is a way of storing and manipulating tabular data in Python. They gained popularity first as a part of R and then as a part of pandas.
 displayText: dataframe  
 hoverSnippet: A DataFrame is a two-dimensional data structure (rows and columns). It's the most common way of representing and interacting with large datasets in Python.
 ---
+<head>
+  <title>What is a DataFrame in Python? - dbt Labs</title>
+</head>
+
 A DataFrame is a way of storing and manipulating tabular data in Python. DataFrames are often likened to tables with columns and rows that you could find in any <Term id="data-warehouse" />, Google Sheet, or Excel workbook.
 
 A DataFrame entry in an analytics engineering glossary…what is happening? You’re reading this right. While SQL is the go-to programming language for most analytics engineering work, there are likely inevitable situations where you've found yourself writing some Python and using DataFrames.

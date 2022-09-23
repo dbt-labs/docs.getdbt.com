@@ -1,10 +1,13 @@
 ---
 id: elt
 title: ELT
+description: ELT is the process of first extraction data from different sources, then loading it into a data warehouse, and finally transforming it.
 displayText: ELT  
 hoverSnippet: Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, loading it into a target data warehouse, and finally transforming it.
 ---
-
+<head>
+    <title>ELT: What it is and why it's often better than ETL</title>
+</head>
 Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, then loading it into a target <Term id="data-warehouse" />, and finally transforming it.
 
 ELT has emerged as a paradigm for how to manage information flows in a modern data warehouse. This represents a fundamental shift from how data previously was handled when <Term id="etl">Extract, Transform, Load (ETL)</Term> was the data workflow most companies implemented.
