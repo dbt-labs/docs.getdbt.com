@@ -17,6 +17,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Core version:** v0.24.0 and newer  
 **dbt Cloud:** Not Supported      
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C02R4HSMBAT)     
+**Supported Version:** Glue 2.0+
 
 
 ![dbt-glue stars](https://img.shields.io/github/stars/aws-samples/dbt-glue?style=for-the-badg)
