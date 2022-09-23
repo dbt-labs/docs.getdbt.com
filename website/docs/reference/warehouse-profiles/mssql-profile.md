@@ -65,6 +65,7 @@ your_profile_name:
       driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: database
       schema: schema_name
       user: username
       password: password
@@ -77,6 +78,7 @@ your_profile_name:
 <TabItem value="windows">
 
 <File name='profiles.yml'>
+
 
 ```yaml
 your_profile_name:
