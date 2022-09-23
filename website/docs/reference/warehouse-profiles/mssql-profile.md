@@ -66,7 +66,7 @@ your_profile_name:
       server: server-host-name or ip
       port: 1433
       database: database
-      schema: schemaname
+      schema: schema_name
       user: username
       password: password
 ```
