@@ -85,7 +85,7 @@ tweet['user']['id']
 
 <details>
 <summary>How would you call the unwound url?</summary>
-`tweet['entities']['urls'][0]['unwound']['url']`
+tweet['entities']['urls'][0]['unwound']['url']
 </details>
 
 As you can see, JSON objects can get complex pretty quickly.
