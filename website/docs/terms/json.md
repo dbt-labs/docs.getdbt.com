@@ -80,7 +80,7 @@ Here's a quick quiz to see if you're understanding the file's structure:
 
 <details>
 <summary>How would you call the user ID?</summary>
-`tweet['user']['id']`
+tweet['user']['id']
 </details>
 
 <details>
