@@ -1,4 +1,5 @@
 const axios = require('axios')
+const updateAlgolia = require('./utils/update-algolia')
 
 async function getDiscourseTopics({ body }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
@@ -46,6 +47,11 @@ async function getDiscourseTopics({ body }) {
         return topicsArr
       }, [])
     }
+
+    // TODO: Send Discourse topics to Algolia
+    // THIS SHOULD BE REMOVED HERE 
+    // and separate cronjob created
+    await updateAlgolia(allTopics)
 
     // Return topics 
     return await returnResponse(200, allTopics)
