@@ -8,14 +8,10 @@ keywords:
 
 <Changelog>
 
+* **v1.3.0**: Metrics are considered 
 * **v1.0.0**: Metrics are new and experimental
 
 </Changelog>
-
-
-:::info Metrics are new
-v1.0.0 includes an initial version of metrics, following a [vibrant community discussion](https://github.com/dbt-labs/dbt-core/issues/4071). Try them out, and let us know what you think!
-:::
 
 ## About Metrics 
 
@@ -24,8 +20,6 @@ A metric is a timeseries aggregation over a <Term id="table" /> that supports ze
 - monthly recurring revenue (mrr)
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt docs lineage (DAG) and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
-
-For more information on querying the metrics defined in your dbt project, please reference the readme in the [dbt_metrics package.](https://github.com/dbt-labs/dbt_metrics)
 
 ### Benefits of defining metrics
 
@@ -40,6 +34,8 @@ As with Exposures, you can see everything that rolls up into a metric (`dbt ls -
 ## Declaring a metric
 
 You can define metrics in `.yml` files nested under a `metrics:` key.
+
+### Example definition
 
 <File name='models/<filename>.yml'>
 
@@ -141,25 +137,56 @@ metrics:
 
 
 ### Available properties
+Metrics can have a number of declared **properties**, which define aspects of your metric. More information on [properties and configs can be found here](https://docs.getdbt.com/reference/configs-and-properties).
+
+<VersionBlock firstVersion="1.3">
 
 | Field       | Description                                                 | Example                         | Required? |
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
-| model       | The dbt model that powers this metric                       | dim_customers                   | <VersionBlock firstVersion="1.3">yes (no for `derived` metrics)</VersionBlock><VersionBlock lastVersion="1.2">yes (no for `expression` metrics)</VersionBlock><VersionBlock lastVersion="1.1">yes</VersionBlock> |
+| model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-| <VersionBlock firstVersion="1.3">calculation_method</VersionBlock><VersionBlock lastVersion="1.1">type </VersionBlock> | <VersionBlock firstVersion="1.3">The method of calculation (aggregation or derived) that is applied to the expression</VersionBlock><VersionBlock lastVersion="1.1">The type of calculation to perform when evaluating a metric</VersionBlock>  | count_distinct | yes       |
-| <VersionBlock firstVersion="1.3">expression</VersionBlock><VersionBlock lastVersion="1.1">sql</VersionBlock> | The expression to aggregate/calculate over | user_id | yes       |
+|calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
+| expression | The expression to aggregate/calculate over | user_id | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
-|<VersionBlock firstVersion="1.3"> window </VersionBlock> <VersionBlock lastVersion="1.2">Not yet available - added in v1.3 </VersionBlock>     | <VersionBlock firstVersion="1.3"> Used for rolling/cumulative metrics where the calculation method is applied across a range of time  </VersionBlock> <VersionBlock lastVersion="1.2">Not yet available — added in v1.3</VersionBlock>  | <VersionBlock firstVersion="1.3"> 14 days  </VersionBlock> <VersionBlock lastVersion="1.2">Not yet available — added in v1.3</VersionBlock>   | no |
 
-### Available types
+</VersionBlock>
 
-| Metric Type    |  Description                                                               |
+<VersionBlock lastVersion="1.2">
+
+| Field       | Description                                                 | Example                         | Required? |
+|-------------|-------------------------------------------------------------|---------------------------------|-----------|
+| name        | A unique identifier for the metric                          | new_customers                   | yes       |
+| model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
+| label       | A short for name / label for the metric                     | New Customers                   | no        |
+| description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
+|type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
+| sql | The expression to aggregate/calculate over | user_id | yes       |
+| timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
+| dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
+| filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
+| meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
+
+</VersionBlock>
+
+
+### Available calculation methods
+
+<VersionBlock firstVersion="1.3">
+The method of calculation (aggregation or derived) that is applied to the expression.
+</VersionBlock> 
+<VersionBlock lastVersion="1.2">
+The type of calculation (aggregation or expression) that is applied to the sql property.
+</VersionBlock> 
+ 
+
+|  <VersionBlock firstVersion="1.3">Metric Calculation Method </VersionBlock>  <VersionBlock lastVersion="1.1">Metric Type </VersionBlock>    |  Description                                                               |
 |----------------|----------------------------------------------------------------------------|
 | count          | This metric type will apply the `count` aggregation to the specified field |
 | count_distinct | This metric type will apply the `count` aggregation to the specified field, with an additional distinct statement inside the aggregation |
@@ -167,7 +194,7 @@ metrics:
 | average        | This metric type will apply the `average` aggregation to the specified field |
 | min            | This metric type will apply the `min` aggregation to the specified field |
 | max            | This metric type will apply the `max` aggregation to the specified field |
-|<VersionBlock firstVersion="1.3">derived </VersionBlock> <VersionBlock lastVersion="1.2">expression </VersionBlock>  <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock>   | <VersionBlock firstVersion="1.2"> This metric type is defined as any _non-aggregating_ calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
+|<VersionBlock firstVersion="1.3">derived </VersionBlock> <VersionBlock lastVersion="1.2">expression </VersionBlock>  | <VersionBlock firstVersion="1.2"> This metric type is defined as any _non-aggregating_ calculation of 1 or more metrics </VersionBlock> |
 
 <VersionBlock firstVersion="1.3">
 
@@ -275,11 +302,156 @@ Note that `value` must be defined as a string in YAML, because it will be compil
         value: "'2020-01-01'"
 ```
 
-## Ongoing discussions
+## Querying Your Metric
+If you're interested in querying your metric, you must have the [dbt_metrics package](https://github.com/dbt-labs/dbt_metrics) installed. Information on how to install packages in [your project can be found here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management#how-do-i-add-a-package-to-my-project) - this can be used in conjunction with the code snippet below to ensure you can query metrics in your project. 
 
-- Should metrics be defined on top of more strongly typed **attributes**, rather than columns? [dbt-core#4090](https://github.com/dbt-labs/dbt-core/issues/4090)
-- Should metrics include support for joins? How should dbt know about foreign-key relationships between models? [dbt-core#4125](https://github.com/dbt-labs/dbt-core/issues/4125)
-- Should metrics inherit configurations from the models on which they are defined? Should it be possible to define metrics directly on models/columns, like tests?
+<VersionBlock firstVersion="1.3" lastVersion="1.3">
 
-These are just a start! We welcome you to check out open issues on GitHub, and join the conversation.
+```yml
+packages:
+  - package: dbt-labs/metrics
+    version: [">=0.4.0", "<0.5.0"]
+```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2" lastVersion="1.2">
+
+```yml
+packages:
+  - package: dbt-labs/metrics
+    version: [">=0.3.0", "<0.4.0"]
+```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1" lastVersion="1.1">
+
+```yml
+packages:
+  - package: dbt-labs/metrics
+    version: [">=0.2.0", "<0.3.0"]
+```
+
+</VersionBlock>
+
+### Querying metrics with `metrics.calculate`
+The calculate macro is used in conjunction with defined metrics to generate a sql statement that runs the metric aggregation to return the correct metric dataset. Example below:
+
+<VersionBlock firstVersion="1.2" >
+
+```sql
+select * 
+from {{ metrics.calculate(
+    metric('new_customers'),
+    grain='week',
+    dimensions=['plan', 'country']
+) }}
+``` 
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.1">
+
+```sql
+select * 
+from {{ metrics.calculate(
+    metric_name='new_customers',
+    grain='week',
+    dimensions=['plan', 'country']
+) }}
+``` 
+
+</VersionBlock>
+
+### Supported Inputs
+The example above does not display all of the potential inputs that can be provided to the macro. Certain pieces of functionality, such as secondary calculations, can be complicated to use - we recomemend navigating to the [package README](https://github.com/dbt-labs/dbt_metrics) for more in depth information around each of the inputs that is not covered in the table below.
+
+| Input       | Example     | Description | Required   |
+| ----------- | ----------- | ----------- | -----------|
+| <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, [`metric('some_metric)'`, `metric('some_other_metric)'`]</VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`</VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
+| grain       | `day`, `week`, `month` | The time grain that the metric will be aggregated to in the returned dataset | Required |
+| dimensions  | [`plan`, `country`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
+| start_date  | `2022-01-01` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
+| end_date    | `2022-12-31` | Limits the date range of data used in the metric claculation by not querying data after this date | Optional |
+| where       | `plan='paying_customer'` | A sql statment, or series of sql statements, that alter the **final** CTE in the generated sql. Most often used to limit the data to specific values of dimensions provided | Optional |
+
+
+### Developing metrics with `metrics.develop`
+
+<VersionBlock firstVersion="1.3" >
+
+There may be times when you want to test what a metric might look like before defining it in your project. In these cases you should use the `develop` metric, which allows you to provide metric(s) in a contained yml in order to simulate what the metric might loook like if defined in your project.
+
+```sql
+{% set my_metric_yml -%}
+{% raw %}
+
+metrics:
+  - name: develop_metric
+    model: ref('fact_orders')
+    label: Total Discount ($)
+    timestamp: order_date
+    time_grains: [day, week, month]
+    calculation_method: average
+    expression: discount_total
+    dimensions:
+      - had_discount
+      - order_country
+
+{% endraw %}
+{%- endset %}
+
+select * 
+from {{ metrics.develop(
+        develop_yml=my_metric_yml,
+        metric_list=['develop_metric']
+        grain='month'
+        )
+    }}
+```
+
+**Important Caveat** - The metric list input for this macro takes in the metric names themselves, not the `metric('name')` statement that the `calculate` macro uses.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2" lastVersion="1.2" >
+
+There may be times when you want to test what a metric might look like before defining it in your project. In these cases you should use the `develop` metric, which allows you to provide a single metric in a contained yml in order to simulate what the metric might loook like if defined in your project.
+
+```sql
+{% set my_metric_yml -%}
+{% raw %}
+
+metrics:
+  - name: develop_metric
+    model: ref('fact_orders')
+    label: Total Discount ($)
+    timestamp: order_date
+    time_grains: [day, week, month]
+    type: average
+    sql: discount_total
+    dimensions:
+      - had_discount
+      - order_country
+
+{% endraw %}
+{%- endset %}
+
+select * 
+from {{ metrics.develop(
+        develop_yml=my_metric_yml
+        grain='month'
+        )
+    }}
+```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.1" >
+
+Functionality for `develop` is only supported in v1.2 and greater. Please navigate to those versions for information about this method of metric development.
+
+</VersionBlock>
+
 
