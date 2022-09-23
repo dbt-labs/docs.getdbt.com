@@ -63,7 +63,7 @@ your_profile_name:
     dev:
       type: sqlserver
       driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
-      server: server-host-name or ip
+      server: hostname or IP of your server
       port: 1433
       database: database
       schema: schema_name
