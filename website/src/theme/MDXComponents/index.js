@@ -30,6 +30,7 @@ import LoomVideo from '@site/src/components/loom';
 import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
+import DiscourseTopicList from '@site/src/components/discourseTopicList';
 import VersionBlock from '@site/src/components/versionBlock';
 import Var from '@site/src/components/variable';
 import Term from '@site/src/components/term';
@@ -113,6 +114,7 @@ const MDXComponents = {
   TabItem: TabItem,
   Snippet: Snippet,
   WistiaVideo: WistiaVideo,
+  DiscourseTopicList: DiscourseTopicList,
   WHCode: WHCode,
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
