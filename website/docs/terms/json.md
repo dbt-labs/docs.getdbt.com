@@ -20,7 +20,7 @@ order = {"customer_id":2947, "order_id":4923, "order_items":"cheesecake"}
 
 `order` is the JSON object. `"customer_id":2947` is one of the key-value pairs within this JSON object.
 
-If I wanted to find the `customer_id`, I could return that value with `order[“customer_id”]` or `order.customer_id`. It’s easy for us to simply read the `customer_id` just by looking at the JSON object in this example, but what if your JSON object contains hundreds of key-value pairs or complex nesting? Being aware of how to pull information out of JSON is essential if you’re working with it in the wild.
+If I wanted to find the `customer_id`, I could return that value with `order["customer_id"]` or `order.customer_id`. It’s easy for us to simply read the `customer_id` just by looking at the JSON object in this example, but what if your JSON object contains hundreds of key-value pairs or complex nesting? Being aware of how to pull information out of JSON is essential if you’re working with it in the wild.
 
 A key feature of JSON is that it can contain data types that aren’t normally found in relational databases, namely **dictionaries** and **arrays**. Let’s break down what that means and then we’ll look at an example to pull everything together.
 
