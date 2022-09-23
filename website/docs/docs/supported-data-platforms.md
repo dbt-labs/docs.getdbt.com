@@ -15,12 +15,9 @@ With a few exceptions [^1], all adapters listed below can be installed from PyPI
 
 ### Verified by dbt Labs
 
-We have two tiers for dbt-core adapters: "Verified" and "Community".
+In order to provide a more consistent and reliable experience, dbt Labs now has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience and maintenance. These adapters earn a "Verified" designation so that users can have a certain level of trust and expectation when they use them. To learn more see ["Verifying a new adapter](7-verifying-a-new-adapter")
 
-| Tier      | Relevant adapters                                                                                                                                                                                                                                                                                  |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Verified  | The adapters: <li>maintained by dbt Labs as well as</li><li> partner-maintained adapters that have been verified by dbt Labs</li>                                                                                                                                                                  |
-| Community | <li>All other partner-maintained adapters as well as</li> <li>all community adapters.</li> Community adapters in particular tend to be works-in-progress. Contributions from users are highly encouraged (see ["Contributing to a pre-existing adapter"](#contributing-to-a-pre-existing-adapter)) |
+We also welcome and encourage adapter plugins from the dbt community (see the below ["Contributing to a pre-existing adapter"](#contributing-to-a-pre-existing-adapter)). Please note that these community maintainers are intrepid volunteers who owe you nothing, but give anyway -- so be kind and understanding, and help out where you can!
 
 ### Maintainers
 
