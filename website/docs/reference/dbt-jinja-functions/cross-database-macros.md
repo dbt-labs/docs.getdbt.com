@@ -16,7 +16,7 @@ These macros benefit three different user groups:
 Please make sure to take a look at the [SQL expressions section](#sql-expressions) to understand quoting syntax for string values and date literals.
 :::
 
-<VersionBlock firstVersion="1.2">
+<VersionBlock firstVersion="1.2" lastVersion="1.2">
 
 ## All functions (alphabetical)
 - [any_value](#any_value)
@@ -83,7 +83,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.2">
+<VersionBlock firstVersion="1.2" lastVersion="1.2">
 
 [**Data type functions**](#data-type-functions)
 - [type_bigint](#type_bigint)
