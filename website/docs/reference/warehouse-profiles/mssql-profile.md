@@ -62,10 +62,11 @@ your_profile_name:
   outputs:
     dev:
       type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
-      server: hostname or IP of your server
+      driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
+      server: server-host-name or ip
       port: 1433
-      schema: schema_name
+      database: database
+      schema: schemaname
       user: username
       password: password
 ```
@@ -79,17 +80,9 @@ your_profile_name:
 <File name='profiles.yml'>
 
 
-```yml
-type: sqlserver
-driver: 'ODBC Driver 17 for SQL Server' (The ODBC Driver installed on your system)
-server: server-host-name or ip
-port: 1433
-database: database
-schema: schemaname
-user: username
-password: password
+```
 
-```yaml
+yaml
 your_profile_name:
   target: dev
   outputs:
