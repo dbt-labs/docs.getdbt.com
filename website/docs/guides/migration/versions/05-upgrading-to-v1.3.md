@@ -25,7 +25,9 @@ For users of [state-based selection](understanding-state): This release includes
 The metric spec used to define metrics in dbt has been changed. Those changes are:
 - Renamed `type` to `calculation_method`
 - Renamed `sql` to `expression` 
-- Added `window` as an attribute 
+- Renamed `expression` calculation method metrics to `derived` calculation method metrics
+
+These changes will be backwards compatible for a full minor version - support for them will be deprecated in v1.4.0 of dbt-core. 
 
 ## For maintainers of adapter plugins
 
