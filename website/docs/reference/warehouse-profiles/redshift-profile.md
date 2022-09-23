@@ -83,13 +83,13 @@ my-redshift-db:
     dev:
       type: redshift
       method: iam
-      cluster_id: [cluster_id]
+      cluster_id: CLUSTER_ID
       host: hostname.region.redshift.amazonaws.com
       user: alice
       iam_profile: data_engineer # optional
       iam_duration_seconds: 900  # optional
       autocreate: true           # optional
-      db_groups: ['analysts']    # optional
+      db_groups: ['ANALYSTS']    # optional
 
       # Other Redshift configs:
       port: 5439

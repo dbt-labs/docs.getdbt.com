@@ -28,7 +28,7 @@ function Lightbox({children, src, title, collapsed}) {
                   />
               </a>
           </span>
-          <p className={styles.title}><em>{ title }</em></p>
+          <p className={styles.title}>{ title }</p>
       </div>
     </React.Fragment>
   );

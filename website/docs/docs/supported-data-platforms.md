@@ -9,30 +9,26 @@ To learn more about adapters, check out ["What Are Adapters"](contributing/adapt
 
 ## Adapter Installation
 
-With two exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
+With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
 
 ## Adapter Taxonomy
 
 ### Verified by dbt Labs
 
-We have two tiers for dbt-core adapters: "Verified" and "Community".
+In order to provide a more consistent and reliable experience, dbt Labs now has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience and maintenance. These adapters earn a "Verified" designation so that users can have a certain level of trust and expectation when they use them. To learn more see ["Verifying a new adapter](7-verifying-a-new-adapter")
 
-| Tier      | Relevant adapters                                                                                                                                                                                                                                                                                  |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Verified  | The adapters: <li>maintained by dbt Labs as well as</li><li> partner-maintained adapters that have been verified by dbt Labs</li>                                                                                                                                                                  |
-| Community | <li>All other partner-maintained adapters as well as</li> <li>all community adapters.</li> Community adapters in particular tend to be works-in-progress. Contributions from users are highly encouraged (see ["Contributing to a pre-existing adapter"](#contributing-to-a-pre-existing-adapter)) |
+We also welcome and encourage adapter plugins from the dbt community (see the below ["Contributing to a pre-existing adapter"](#contributing-to-a-pre-existing-adapter)). Please note that these community maintainers are intrepid volunteers who owe you nothing, but give anyway -- so be kind and understanding, and help out where you can!
 
 ### Maintainers
 
 Who made and maintains and adapter is certainly relevant, but we recommend using an adapter's verification status to determine quality and health of an adapter. So far we have three categories of maintainers:
 
-| Supported by | Description                                                                                                                |
+| Supported by | Maintained By                                                                                                                |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| dbt Labs     | dbt Labs maintains a set of adapters for some of the most common databases, warehouses, and platforms.                     |
+| dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](7-verifying-a-new-adapter#why-verify-an-adapter)                 |
 | Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology |
 | Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                       |
 
-Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in the near future.
 
 ## Supported Data Platforms
 
@@ -40,7 +36,7 @@ Note that, while no community plugins are currently supported in dbt Cloud, we e
 
 ### Verified Adapters
 
-| Data Platform     | Adapter Repository                                             | latest verified version  | Cloud support      | Profile Setup                            | Configuration                                                | Slack Channel                                                             | Maintained By |
+| Data Platform     | Adapter Repository                                             | latest verified version  | Enabled in dbt Cloud      | Profile Setup                            | Configuration                                                | dbt Community Slack channel                                                             | Maintained By |
 | ----------------- | -------------------------------------------------------------- | ------------------------ | ------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------- | ------------- |
 | AlloyDB           | [dbt-postgres](https://github.com/dbt-labs/dbt-postgres)       | (same as `dbt-postgres`) | :white_check_mark: | [AlloyDB Profile](alloydb-profile)       |                                                              | [#db-postgres](https://getdbt.slack.com/archives/C0172G2E273)             | n/a           |
 | BigQuery          | [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery)       | 1.2.0                    | :white_check_mark: | [BigQuery Profile](bigquery-profile)     | [BigQuery Configs](bigquery-configs)                         | [#db-bigquery](https://getdbt.slack.com/archives/C99SNSRTK)               | dbt Labs      |
@@ -56,7 +52,7 @@ Note that, while no community plugins are currently supported in dbt Cloud, we e
 | Data Platform          | Adapter Repository                                                                              | Profile Setup                              | Configuration                              | Slack Channel                                                     | Maintained By |
 | ---------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------ | ----------------------------------------------------------------- | ------------- |
 | Athena                 | [dbt-athena](https://github.com/Tomme/dbt-athena)                                               | [Athena Profile](athena-profile)           |                                            | [#db-athena](https://getdbt.slack.com/archives/C013MLFR7BQ)       | Community     |
-| ClickHouse             | [dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse)                                  | [Clickhouse Profile](clickhouse-profile)   | [Clickhouse Configs](clickhouse-configs)   | [#db-redshift](https://getdbt.slack.com/archives/C01DRQ178LQ)     | Clickhouse    |
+| ClickHouse             | [dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse)                                  | [Clickhouse Profile](clickhouse-profile)   | [Clickhouse Configs](clickhouse-configs)   | [#db-clickhouse](https://getdbt.slack.com/archives/C03KVDLMNV6)     | Clickhouse    |
 | IBM DB2                | [dbt-ibmdb2](https://github.com/aurany/dbt-ibmdb2)                                              | [DB2 Profile](ibmdb2-profile)              |                                            | n/a                                                               | Community     |
 | DuckDB                 | [dbt-duckdb](https://github.com/jwills/dbt-duckdb/)                                             | [DuckDB Profile](duckdb-profile)           |                                            | [#db-duckdb](https://getdbt.slack.com/archives/C039D1J1LA2)       | Community     |
 | Dremio                 | [dbt-dremio](https://github.com/fabrice-etanchaud/dbt-dremio/)                                  | [Dremio Profile](dremio-profile)           |                                            | n/a                                                               | Community     |
@@ -67,7 +63,7 @@ Note that, while no community plugins are currently supported in dbt Cloud, we e
 | Hive                   | [dbt-hive](https://github.com/cloudera/dbt-hive)                                                | [Hive Profile](hive-profile)               | [Hive Configs](hive-configs)               | [#db-hive](https://getdbt.slack.com/archives/C0401DTNSKW)         | Cloudera      |
 | Impala                 | [dbt-impala](https://github.com/cloudera/dbt-impala)                                            | [Impala Profile](impala-profile)           | [Impala Configs](impala-configs)           | [#db-impala](https://getdbt.slack.com/archives/C03K2PTHHTP)       | Cloudera      |
 | iomete                 | [dbt-iomete](https://github.com/iomete/dbt-iomete)                                              | [iomete Profile](iomete-profile)           |                                            | [#db-iomete](https://getdbt.slack.com/archives/C03JFG22EP9)       | Iomete        |
-| Layer Bigquery         | [dbt-layer](https://github.com/layerai/dbt-layer)                                               | [Layer Profile](layer-profile)             |                                            | [#tools-layer](https://getdbt.slack.com/archives/C03STA39TFE)     | Layer AI      |
+| Layer         | [dbt-layer](https://github.com/layerai/dbt-layer)                                               | [Layer Profile](layer-profile)             |                                            | [#tools-layer](https://getdbt.slack.com/archives/C03STA39TFE)     | Layer AI      |
 | Materialize            | [dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize) | [Materialize Profile](materialize-profile) | [Materialize Configs](materialize-configs) | [#db-materialize](https://getdbt.slack.com/archives/C01PWAH41A5)  | Materialize   |
 | MindsDB                | [dbt-mindsdb](https://github.com/mindsdb/dbt-mindsdb)                                           | [MindsDB Profile](mindsdb-profile)         | [MindsDB Configs](mindsdb-configs)         | n/a                                                               | MindsDB       |
 | MySQL                  | [dbt-mysql](https://github.com/dbeatty10/dbt-mysql)                                             | [MySQL Profile](mysql-profile)             |                                            | [#db-mysql-family](https://getdbt.slack.com/archives/C03BK0SHC64) | Community     |
