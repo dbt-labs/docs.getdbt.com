@@ -96,7 +96,7 @@ Semi-structured data offers flexibility with the trade-off of being more complex
 
 ## Use cases for JSON
 
-JSON is lightweight and often used to transfer data over a network connection. As we’ve seen, data from social media sites are often stored as JSON objects. JSON is also commonly how data from IoT sensors is formatted. You’ll often see JSON when using an API.
+JSON is lightweight and often used to transfer data over a network connection. As we’ve seen, data from social media sites are often stored as JSON objects. JSON is also commonly how data from IoT sensors is formatted and you’ll often see JSON when using an API.
 
 ## Conclusion
 
