@@ -44,4 +44,4 @@ _GitHub discussion forthcoming_
 
 Docs in progress: [Issues labeled "dbt-core v1.3"](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.3%22+)
 
-- **[`node_color` now a supported `docs` attribute](/docs/reference/resource-configs/docs.md)**: You can add custom colors to the dbt docs lineage(DAG) graph. For the first time, you can physically visualize layers within the DAG, such as bronze, silver, and gold.
+- **[`node_color` now a supported `docs` attribute](/docs/reference/resource-configs/docs.md)**: You can add custom colors to the dbt docs lineage (DAG) graph. For the first time, you can physically visualize layers within the DAG, such as bronze, silver, and gold.

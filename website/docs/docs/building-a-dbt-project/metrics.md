@@ -23,7 +23,7 @@ A metric is a timeseries aggregation over a <Term id="table" /> that supports ze
 - active users
 - monthly recurring revenue (mrr)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt DAG and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt docs lineage (DAG) and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 For more information on querying the metrics defined in your dbt project, please reference the readme in the [dbt_metrics package.](https://github.com/dbt-labs/dbt_metrics)
 
@@ -167,12 +167,14 @@ metrics:
 | average        | This metric type will apply the `average` aggregation to the specified field |
 | min            | This metric type will apply the `min` aggregation to the specified field |
 | max            | This metric type will apply the `max` aggregation to the specified field |
-|<VersionBlock firstVersion="1.3">derived </VersionBlock> <VersionBlock lastVersion="1.2">expression </VersionBlock>  <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock>   | <VersionBlock firstVersion="1.2"> This metric type is defined as any **non-aggregating** calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
+|<VersionBlock firstVersion="1.3">derived </VersionBlock> <VersionBlock lastVersion="1.2">expression </VersionBlock>  <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock>   | <VersionBlock firstVersion="1.2"> This metric type is defined as any _non-aggregating_ calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
 
 <VersionBlock firstVersion="1.3">
 
 ### Derived Metrics
-In v1.2, support was added for `derived` (previously named expression) metrics, which are defined as non-aggregating calculations of 1 or more metrics. By defining these metrics, you are able to create metrics like:
+In v1.2, support was added for `derived` metrics (previously named `expression`), which are defined as non-aggregating calculations of 1 or more metrics. An example of this would be `{{metric('total_revenue')}} / {{metric('count_of_customers')}}`.
+
+ By defining these metrics, you are able to create metrics like:
 - ratios
 - subtractions 
 - any arbitrary calculation
