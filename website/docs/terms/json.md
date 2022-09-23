@@ -26,7 +26,7 @@ A key feature of JSON is that it can contain data types that aren’t normally f
 
 ### Dictionaries and arrays in JSON
 
-JSON inherits its syntax from JavaScript (JS) so dictionaries and arrays are formatted in the same way as they are in JS. Dictionaries are formatted just like JSON objects and consist of key-value pairs. Arrays are lists of values. They’re enclosed in square brackets (`[ ]`) and each value is separated by a comma, like so:
+JSON inherits its syntax from JavaScript (JS) so dictionaries and arrays are formatted in the same way as they are in JS. Dictionaries are formatted just like JSON objects and consist of key-value pairs. Arrays are lists of values and  they’re enclosed in square brackets (`[ ]`) and each value is separated by a comma, like so:
 
 ```json
 menu_items = ["cheesecake", "danish", "coffee"]
