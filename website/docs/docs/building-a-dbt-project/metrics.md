@@ -167,7 +167,7 @@ metrics:
 | average        | This metric type will apply the `average` aggregation to the specified field |
 | min            | This metric type will apply the `min` aggregation to the specified field |
 | max            | This metric type will apply the `max` aggregation to the specified field |
-|<VersionBlock firstVersion="1.3">derived </VersionBlock> <VersionBlock lastVersion="1.2">expression </VersionBlock>  <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock>   | <VersionBlock firstVersion="1.2"> This metric type is defined as any **non-aggregating** calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
+|<VersionBlock firstVersion="1.3">derived </VersionBlock> <VersionBlock lastVersion="1.2">expression </VersionBlock>  <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock>   | <VersionBlock firstVersion="1.2"> This metric type is defined as any _non-aggregating_ calculation of 1 or more metrics </VersionBlock> <VersionBlock lastVersion="1.1">Not yet available — added in v1.2</VersionBlock> |
 
 <VersionBlock firstVersion="1.3">
 
