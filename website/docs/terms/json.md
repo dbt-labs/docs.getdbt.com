@@ -15,7 +15,7 @@ Let’s talk through what that looks like in practice so we can get a better sen
 When looking at data formatted in JSON, we say that the data is stored in **JSON objects**. These are composed of key-value pairs. JSON objects are enclosed in curly brackets (`{ }`) and each key-value pair is separated by a comma. Here’s an example:
 
 ```json
-order = {"customer_id":2947, "order_id":4923, "order_items":"cheesecake"}`
+order = {"customer_id":2947, "order_id":4923, "order_items":"cheesecake"}
 ```
 
 `order` is the JSON object. `"customer_id":2947` is one of the key-value pairs within this JSON object.
