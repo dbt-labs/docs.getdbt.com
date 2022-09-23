@@ -9,6 +9,7 @@ title: "Athena Profile"
 **Source:** [Github](https://github.com/Tomme/dbt-athena)
 **dbt Cloud:** Not Supported  
 **dbt Slack channel** [Link to channel](https://getdbt.slack.com/archives/C013MLFR7BQ)
+**Supported Version:** Athena engine version 2
 
 The easiest way to install is to use pip:
 
