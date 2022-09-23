@@ -80,9 +80,7 @@ your_profile_name:
 <File name='profiles.yml'>
 
 
-```
-
-yaml
+```yaml
 your_profile_name:
   target: dev
   outputs:
@@ -93,7 +91,6 @@ your_profile_name:
       port: 1433
       schema: schema_name
       windows_login: True
-
 ```
 
 </File>
