@@ -16,13 +16,10 @@ These macros benefit three different user groups:
 Please make sure to take a look at the [SQL expressions section](#sql-expressions) to understand quoting syntax for string values and date literals.
 :::
 
+<VersionBlock firstVersion="1.2">
+
 ## All functions (alphabetical)
 - [any_value](#any_value)
-<VersionBlock firstVersion="1.3">
-- [array_append](#array_append)
-- [array_concat](#array_concat)
-- [array_construct](#array_construct)
-</VersionBlock>
 - [bool_or](#bool_or)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [concat](#concat)
@@ -43,25 +40,72 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [split_part](#split_part)
 - [string_literal](#string_literal)
 - [type_bigint](#type_bigint)
-<VersionBlock firstVersion="1.3">
-- [type_boolean](#type_boolean)
-</VersionBlock>
 - [type_float](#type_float)
 - [type_int](#type_int)
 - [type_numeric](#type_numeric)
 - [type_string](#type_string)
 - [type_timestamp](#type_timestamp)
 
-[**Data type functions**](#data-type-functions)
-- [type_bigint](#type_bigint)
-<VersionBlock firstVersion="1.3">
-- [type_boolean](#type_boolean)
 </VersionBlock>
+<VersionBlock firstVersion="1.3">
+
+## All functions (alphabetical)
+- [any_value](#any_value)
+- [array_append](#array_append)
+- [array_concat](#array_concat)
+- [array_construct](#array_construct)
+- [bool_or](#bool_or)
+- [cast_bool_to_text](#cast_bool_to_text)
+- [concat](#concat)
+- [dateadd](#dateadd)
+- [datediff](#datediff)
+- [date_trunc](#date_trunc)
+- [escape_single_quotes](#escape_single_quotes)
+- [except](#except)
+- [hash](#hash)
+- [intersect](#intersect)
+- [last_day](#last_day)
+- [length](#length)
+- [listagg](#listagg)
+- [position](#position)
+- [replace](#replace)
+- [right](#right)
+- [safe_cast](#safe_cast)
+- [split_part](#split_part)
+- [string_literal](#string_literal)
+- [type_bigint](#type_bigint)
+- [type_boolean](#type_boolean)
 - [type_float](#type_float)
 - [type_int](#type_int)
 - [type_numeric](#type_numeric)
 - [type_string](#type_string)
 - [type_timestamp](#type_timestamp)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2">
+
+[**Data type functions**](#data-type-functions)
+- [type_bigint](#type_bigint)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
+
+</VersionBlock>
+<VersionBlock firstVersion="1.3">
+
+[**Data type functions**](#data-type-functions)
+- [type_bigint](#type_bigint)
+- [type_boolean](#type_boolean)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
+
+</VersionBlock>
 
 [**Set functions**](#set-functions)
 - [except](#except)
