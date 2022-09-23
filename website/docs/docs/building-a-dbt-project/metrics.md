@@ -172,7 +172,9 @@ metrics:
 <VersionBlock firstVersion="1.3">
 
 ### Derived Metrics
-In v1.2, support was added for `derived` (previously named expression) metrics, which are defined as non-aggregating calculations of 1 or more metrics. By defining these metrics, you are able to create metrics like:
+In v1.2, support was added for `derived` metrics (previously named `expression`), which are defined as non-aggregating calculations of 1 or more metrics. An example of this would be `{{metric('total_revenue')}} / {{metric('count_of_customers')}}`.
+
+ By defining these metrics, you are able to create metrics like:
 - ratios
 - subtractions 
 - any arbitrary calculation
