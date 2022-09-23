@@ -77,7 +77,7 @@ sources:
 
 <TabItem value="seeds">
 
-<File name='data/schema.yml'>
+<File name='seeds/schema.yml'>
 
 ```yml
 version: 2
@@ -242,7 +242,7 @@ seeds:
 
 ### Override one meta attribute for a single model
 
-<File name='models/my_model.yml'>
+<File name='models/my_model.sql'>
 
 ```sql
 {{ config(meta = {

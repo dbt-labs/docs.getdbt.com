@@ -41,7 +41,7 @@ Role-based access control is a feature of the dbt Cloud Enterprise plan
 
 :::
 
-Role-based access control allows for fine-grained permissioning in the dbt Cloud
+Role-based access control allows for <Term id="grain">fine-grained</Term> permissioning in the dbt Cloud
 application. With role-based access control, users can be assigned varying
 permissions to different projects within a dbt Cloud account. For teams on the
 Enterprise tier, role-based permissions can be generated dynamically from
@@ -88,10 +88,6 @@ groups.
 
 :::
 
-<Lightbox
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-detail.png"
-    title="Users in the 'data-team-dbt-analysts' or 'data-team-dbt-admins' groups will be assigned to the Analysts dbt Cloud group when they log into dbt Cloud"
-/>
 
 ### Permission Sets
 
@@ -108,13 +104,13 @@ For a full list of enterprise permission sets, see [Enterprise Permissions](/doc
 These permission sets are available for assignment to groups and control the ability
 for users in these groups to take specific actions in the dbt Cloud application.
 
-In the following example, the _Analysts_ group is configured with the
-**Analyst** permission set on _All Projects_ and the **Job Admin** permission
-set on the _BQ test_ project.
+In the following example, the _dbt Cloud Owners_ group is configured with the
+**Account Admin** permission set on _All Projects_ and the **Job Admin** permission
+set on the _Internal Analytics_ project.
 
 <Lightbox
     src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-permissions.png"
-    title="Configuring permissions for the Analysts group"
+    title="Configuring permissions for the Admins group"
 />
 
 

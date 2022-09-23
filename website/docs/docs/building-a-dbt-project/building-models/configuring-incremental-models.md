@@ -3,15 +3,17 @@ title: "Configuring incremental models"
 id: "configuring-incremental-models"
 ---
 
-## What is an incremental model?
-Incremental models are built as tables in your data warehouse – the first time a model is run, the table is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the table that has already been built (the target table).
+## About incremental models
+
+Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
 Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time dbt ran. As such, on each dbt run, your model gets built incrementally.
 
 Using an incremental model limits the amount of data that needs to be transformed, vastly reducing the runtime of your transformations. This improves warehouse performance and reduces compute costs.
 
-## How do I use the incremental materialization?
-Like the other materializations built into dbt, incremental models are defined with `select` statements, with the the materialization defined in a config block.
+## Using incremental materializations
+
+Like the other <Term id="materialization">materializations</Term> built into dbt, incremental models are defined with `select` statements, with the materialization defined in a config block.
 ```sql
 {{
     config(
@@ -24,11 +26,12 @@ select ...
 ```
 
 To use incremental models, you also need to tell dbt:
-* how to filter the rows on an incremental run.
-* the uniqueness constraint of the model (if any).
 
+* How to filter the rows on an incremental run.
+* The uniqueness constraint of the model (if any).
 
 ### Filtering rows on an incremental run
+
 To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
 
 Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](this)" variable.
@@ -64,16 +67,46 @@ from raw_app_data.events
 
 :::tip Optimizing your incremental model
 
-For more complex incremental models that make use of CTEs, you should consider the impact of the position of the `is_incremental()` macro on query performance. On some warehouses, filtering your records early can vastly improve the run time of your query!
+For more complex incremental models that make use of Common Table Expressions (CTEs), you should consider the impact of the position of the `is_incremental()` macro on query performance. In some warehouses, filtering your records early can vastly improve the run time of your query!
 
 :::
 
 ### Defining a uniqueness constraint (optional)
-`unique_key` is an optional parameter for incremental models that specifies a field which should be unique within your model. If the unique key of an existing row in your target table matches one of your incrementally transformed rows, the existing row will be updated. This ensures that you don't have multiple rows in your target table for a single row in your source data.
 
-You can define `unique_key` in a configuration block at the top of your model. The `unique_key` should be a single field name that is present in your model definition. While some databases support using expressions (eg. `concat(user_id, session_number)`), this syntax is not universally supported, so is not recommended. If you do not have a single field that is unique, consider first creating such a field in your model.
+A `unique_key` determines whether a record has new values and should be updated. By using `unique_key`, you can ensure that each row from the source table is represented by a single row in your incremental model, without duplicates. Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
-As an example, consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
+<VersionBlock firstVersion="0.20" lastVersion="1.0">
+
+This optional parameter for incremental models specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+This optional parameter for incremental models specifies a field (or combination of fields) that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model, and it can be a list in addition to a single column name.
+
+The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `['col1', 'col2', …])`.
+
+:::tip
+In cases where you need multiple columns in combination to uniquely identify each row, we recommend you pass these columns as a list (`unique_key = ['user_id', 'session_number']`), rather than a string expression (`unique_key = 'concat(user_id, session_number)'`).
+
+By using the first syntax, which is more universal, dbt can ensure that the columns will be templated into your incremental model materialization in a way that's appropriate to your database.
+:::
+
+</VersionBlock>
+
+When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
+
+* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database and [incremental strategy](#about-incremental_strategy).
+* If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
+
+:::info
+While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
+:::
+
+#### `unique_key` example
+
+Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
 
 <File name='models/staging/fct_daily_active_users.sql'>
 
@@ -135,6 +168,7 @@ The `is_incremental()` macro will return `True` if:
 Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
 
 ## How do incremental models work behind the scenes?
+
 dbt's incremental materialization works differently on different databases. Where supported, a `merge` statement is used to insert new records and update existing records.
 
 On warehouses that do not support `merge` statements, a merge is implemented by first using a `delete` statement to delete records in the target table that are to be updated, and then an `insert` statement.
@@ -179,7 +213,7 @@ The possible values for `on_schema_change` are:
 * `ignore`: Default behavior (see below).
 * `fail`: Triggers an error message when the source and target schemas diverge  
 * `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
-* `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full table scan; be mindful of the trade-offs when implementing.
+* `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
 
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
@@ -193,7 +227,7 @@ Similarly, if you remove a column from your incremental model, and execute a `db
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-## What is an incremental_strategy?
+## About incremental_strategy
 
 On some adapters, an optional `incremental_strategy` config controls the code that dbt uses
 to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
@@ -226,7 +260,7 @@ or:
   config(
     materialized='incremental',
     unique_key='date_day',
-    incremental_strategy='insert_overwrite',
+    incremental_strategy='delete+insert',
     ...
   )
 }}

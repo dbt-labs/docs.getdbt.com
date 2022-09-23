@@ -19,7 +19,7 @@ Currently supported features include:
 
 ## Configuration
 
-dbt Cloud supports both single tenant and multitenant Azure Active Directory SSO
+dbt Cloud supports both single tenant and multi-tenant Azure Active Directory SSO
 Connections. For most Enterprise purposes, you will want to use the single
 tenant flow when creating an Azure AD Application.
 
@@ -31,7 +31,7 @@ need to select the appropriate directory and then register a new application.
 1. Under **Manage**, select **App registrations**
 2. Click **+ New Registration** to begin creating a new application
 3. Supply configurations for the **Name** and **Supported account types**
-   fields as shown in the table below.
+   fields as shown in the <Term id="table" /> below.
 
 | Field | Value |
 | ----- | ----- |
@@ -42,11 +42,6 @@ need to select the appropriate directory and then register a new application.
    Redirect URI values for single-tenant and multi-tenant deployments. For most
    enterprise use-cases, you will want to use the single-tenant Redirect URI.
 
-:::note VPC Deployment
-If you are deploying dbt Cloud into a VPC, you should use the hostname where
-the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the **Redirect URI** input.
-:::
 
 | Application Type | Redirect URI |
 | ----- | ----- |
@@ -118,7 +113,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 17. Click **+New client secret**
 18. Name the client secret "dbt Cloud" (or similar) to identify the secret
 19. Select **Never** as the expiration value for this secret
-20. Click **Add** to finish creating the client secret
+20. Click **Add** to finish creating the client secret value (not the client secret ID)
 21. Record the generated client secret somewhere safe. Later in the setup process,
    we'll use this client secret in dbt Cloud to finish configuring the
    integration.
@@ -139,33 +134,25 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 
 To complete setup, follow the steps below in the dbt Cloud application.
 
-### Enable Azure AD Native Auth (beta)
-
-- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
-  gain access to the Azure AD Native auth configuration UI
-- For users accessing dbt Cloud deployed in a VPC, enable the `native_azure`
-  feature flag in the dbt Cloud admin backend.
-
 ### Supplying credentials
 
-24. Navigate to the **Enterprise &gt; Single Sign On** page under Account
-Settings.
+24. Go to [Settings](https://cloud.getdbt.com/next/settings/profile). On the left side, select **Single Sign On** under **Account Settings**.
 25. Click the **Edit** button and supply the following SSO details:
 
 | Field | Value |
 | ----- | ----- |
 | **Log&nbsp;in&nbsp;with** | Azure AD Single Tenant |
 | **Client&nbspID** | Paste the **Application (client) ID** recorded in the steps above |
-| **Client&nbsp;Secret** | Paste the **Client Secret** recorded in the steps above |
+| **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) recorded in the steps above |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) Ensure that the domain(s) match the values configured on user accounts in Azure |
 | **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring credentials in dbt Cloud" />
+<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Azure AD SSO in dbt Cloud" />
 
 26. Click **Save** to complete setup for the Azure AD SSO integration. From
-    here, you can navigate to the URL generated for your account's _slug_ to
+    here, you can navigate to the login URL generated for your account's _slug_ to
     test logging in with Azure AD.
 
 :::success Logging in
@@ -175,7 +162,7 @@ by navigating to the URL:
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
 :::
 
-*Note:* If your dbt account is configured with a single-tenant cloud or on-premise installation, the `cloud.getdbt.com` domain in the URL above will be replaced with a different value.
+*Note:* If your dbt account is a VPC deployment, your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`. 
 
 
 ## Setting up RBAC
@@ -184,7 +171,7 @@ Now you have completed setting up SSO with Azure AD, the next steps will be to s
 
 ## Troubleshooting Tips
 
-Ensure that the domain name under which user accounts exist in Azure matches the domain supplied in the SSO configuration on the dbt side.
+Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
-<Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-domain-in-dbt.png" title="Adding the user domain to dbt cloud" />
+

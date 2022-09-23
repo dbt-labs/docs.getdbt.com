@@ -3,7 +3,7 @@ title: "Configuring repositories"
 id: "cloud-configuring-repositories"
 ---
 
-### Configuring PR template URLs
+## Configure pull request (PR) template URLs
 
 When changes are committed on a branch in the IDE, dbt Cloud can prompt users to
 open a new Pull Request for the code changes. To enable this functionality, ensure
@@ -44,6 +44,14 @@ https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
 </TabItem>
 </Tabs>
 
+## Configure custom branches
+
+By default in Development Environments, dbt Cloud attempts to reference the `main` branch in connected repositories. If you want to use a different default branch name, you can configure dbt Cloud with a custom branch setting. 
+
+For example, you can use the `develop` branch of a connected repository. Edit an environment, then in "General settings" select  **Only run on a custom branch** , and in "Custom branch" type **develop** or the name of your custom branch.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="Configuring a custom base repository branch"/>
+
 ## Example templates
 
 Some common URL templates are provided below, but please note that the exact
@@ -77,5 +85,5 @@ https://console.aws.amazon.com/codesuite/codecommit/repositories/<repo>/pull-req
 
 ### Azure DevOps
 ```
-https://dev.azure.com/<org>/<repo>/_git/dbt/pullrequestcreate?sourceRef={{source}}&targetRef={{destination}}
+https://dev.azure.com/<org>/<project>/_git/<repo>/pullrequestcreate?sourceRef={{source}}&targetRef={{destination}}
 ```

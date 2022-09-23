@@ -1,6 +1,7 @@
 ---
-title: "Dashboard Status Tiles"
+title: "Dashboard status tiles"
 id: "cloud-dashboard-status-tiles"
+description: "Embed Status Tiles in your dashboards to provide consumers with contextual information about the quality and freshness of data."
 ---
 
 ## Overview
@@ -51,3 +52,12 @@ Looker does not allow you to directly embed HTML, and instead requires creating 
 - Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, jobID, and token relevant to that dashboard.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg"/>
+
+### Tableau
+Tableau does not require you to embed an iFrame. You only need to use a Web Page object on your Tableau Dashboard and a URL in the following format:
+
+```
+https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
+```
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/tableau-object.png"/>

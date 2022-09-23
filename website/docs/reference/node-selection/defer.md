@@ -9,18 +9,30 @@ title: "Defer"
 
 </Changelog>
 
-**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/fishtown-analytics/dbt/issues/2968).
+**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/dbt-labs/dbt-core/issues/2968).
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
 Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
-
 ### Usage
+
+<VersionBlock firstVersion="0.21">
 
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
 $ dbt test --select [...] --defer --state path/to/artifacts
 ```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="0.20">
+
+```shell
+$ dbt run --models [...] --defer --state path/to/artifacts
+$ dbt test --models [...] --defer --state path/to/artifacts
+```
+
+</VersionBlock>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
@@ -43,7 +55,6 @@ In my local development environment, I create all models in my target schema, `d
 I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`) from a production run, and copy them into a local directory called `prod-run-artifacts`.
 
 ### run
-
 I've been working on `model_b`:
 
 <File name='models/model_b.sql'>
@@ -53,13 +64,17 @@ select
 
     id,
     count(*)
-    
+
 from {{ ref('model_a') }}
 group by 1
 ```
 
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 
+### test
+:::info
+Before dbt v0.21, use the `--models` flag instead of `--select`.
+:::
 </File>
 
 <Tabs
@@ -80,15 +95,15 @@ $ dbt run --select model_b
 
 ```sql
 create or replace view dev_me.model_b as (
-    
+
     select
 
         id,
         count(*)
-        
+
     from dev_alice.model_a
     group by 1
-    
+
 )
 ```
 
@@ -107,15 +122,15 @@ $ dbt run --select model_b --defer --state prod-run-artifacts
 
 ```sql
 create or replace view dev_me.model_b as (
-    
+
     select
 
         id,
         count(*)
-        
+
     from prod.model_a
     group by 1
-    
+
 )
 ```
 
@@ -125,8 +140,6 @@ Because `model_a` is unselected, dbt will check to see if `dev_alice.model_a` ex
 
 </TabItem>
 </Tabs>
-
-### test
 
 I also have a `relationships` test that establishes referential integrity between `model_a` and `model_b`:
 
@@ -146,6 +159,10 @@ models:
 ```
 
 (A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)
+
+:::info
+Before dbt v0.21, use the `--models` flag instead of `--select`.
+:::
 
 </File>
 

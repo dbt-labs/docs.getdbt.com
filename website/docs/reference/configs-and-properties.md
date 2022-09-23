@@ -20,7 +20,7 @@ For example, you can use resource **properties** to:
 * Define official downstream uses of your data models, in the form of [exposures](exposures)
 
 Whereas you can use **configurations** to:
-* Change how a model will be materialized (table, view, incremental, etc)
+* Change how a model will be materialized (<Term id="table" />, <Term id="view" />, incremental, etc)
 * Declare where a seed will be created in the database (`<database>.<schema>.<alias>`)
 * Declare whether a resource should persist its descriptions as comments in the database
 * Apply tags and "meta" properties
@@ -29,7 +29,7 @@ Whereas you can use **configurations** to:
 
 Depending on the resource type, configurations can be defined:
 
-1. Using a [`config()` Jinja macro](dbt-jinja-functions/config) within a `model`, `snapshot`, or `test` SQL file
+1. Using a [`config()` Jinja macro](/reference/dbt-jinja-functions/config) within a `model`, `snapshot`, or `test` SQL file
 2. Using a [`config` property](resource-properties/config) in a `.yml` file
 3. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
 
@@ -50,19 +50,9 @@ Most configurations are "clobbered" when applied hierarchically. Whenever a more
 
 In dbt, properties are declared in `.yml` files, in the same directory as your resources.
 
-| Resource  | Default directory         | Defined by                   |
-|-----------|---------------------------|------------------------------|
-| models    | `models/`                 | [source-paths](source-paths) |
-| sources   | `models/`                 | [source-paths](source-paths) |
-| exposures | `models/`                 | [source-paths](source-paths) |
-| seeds     | `data/` or `models/`      | [data-paths](data-paths)     |
-| snapshots | `snapshots/` or `models/` | [snapshot-paths](snapshot-paths) |
-| analyses  | `analyses/` or `models/`  | [analysis-paths](analysis-paths) |
-| macros    | `macros/` or `models/`    | [macro-paths](macro-paths) |
-
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
 
-(For backwards compatibility, the `models/` directory also supports seed, snapshot, analysis, and macro properties. We highly recommend that you define properties in dedicated paths alongside the resources they're describing.)
+We highly recommend that you define properties in dedicated paths alongside the resources they're describing.
 
 :::info
 
@@ -173,12 +163,12 @@ You can find an exhaustive list of each supported property and config, broken do
 * Exposure [properties](exposure-properties)
 
 ## FAQs
-<FAQ src="schema-yml-name" />
-<FAQ src="resource-yml-name" />
-<FAQ src="multiple-resource-yml-files" />
-<FAQ src="properties-not-in-config" />
-<FAQ src="why-version-2" />
-<FAQ src="yaml-file-extension" />
+<FAQ src="Project/schema-yml-name" />
+<FAQ src="Project/resource-yml-name" />
+<FAQ src="Project/multiple-resource-yml-files" />
+<FAQ src="Project/properties-not-in-config" />
+<FAQ src="Project/why-version-2" />
+<FAQ src="Project/yaml-file-extension" />
 
 ## Troubleshooting common errors
 

@@ -1,6 +1,7 @@
 ---
 title: "Enterprise Permissions"
 id: "enterprise-permissions"
+description: "Permission sets for Enterprise plans."
 ---
 
 :::info Enterprise Feature
@@ -19,15 +20,17 @@ control (RBAC).
 
 ## Permission Sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They 
-can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group 
+The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They
+can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
 can be associated with more than one permission sets.
 
 ### Account Admin
+
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
 Account Admins have unrestricted access to dbt Cloud accounts. Users with Account Admin permissions can:
+
 - Create, delete and modify all projects in an account
 - Create, delete, and modify Repositories
 - Create, delete, and modify Connections
@@ -42,10 +45,11 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Run and cancel jobs
 
 ### Account Viewer
+
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can: 
+Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can:
 - View all projects in an account
 - View Account Settings
 - View Repositories
@@ -111,6 +115,7 @@ Team Admins can perform the following actions in projects they are assigned to:
 
 Job Admins can perform the following actions in projects they are assigned to:
 - View, edit, and create environments
+- View connections
 - Trigger runs
 - View historical runs
 
@@ -140,6 +145,7 @@ Developers can perform the following actions in projects they are assigned to:
 Analysts can perform the following actions in projects they are assigned to:
 - Use the IDE
 - Configure personal developer credentials
+- View connections
 - View environments
 - View job definitions
 - View historical runs
@@ -157,14 +163,23 @@ Stakeholders can perform the following actions in projects they are assigned to:
 ## Diagram of the Permission Sets
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
-static/
 
 ## How to Set Up RBAC Groups in dbt Cloud
- 
-- **If you are on a Fishtown Hosted dbt Cloud instance:**
-Contact support via the Intercom button or support@getdbt.com to turn on this feature. 
+
+Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
+
+- **If you are on a dbt Labs Hosted dbt Cloud instance:**
+Contact support via the webapp button or support@getdbt.com to turn on this feature.
 - **If you are on a customer deployed dbt Cloud instance:**
 Contact your account manager for instructions on how to turn on this feature.
 
-<LoomVideo id="8e2e00c57bde4fbfa4b519bf35d7632d" />
+Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
 
+<Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
+
+1. Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups). If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group. 
+2. Configure the SSO provider groups you want to add RBAC by clicking **Add** in the **SSO** section. These fields are case sensitive and must match the source group formatting.
+3. Configure the permissions for users within those groups by clicking **Add** in the **Access** section of the window.
+<Lightbox src="/img/docs/dbt-cloud/Configure-SSO-Access.png" title="Configure SSO groups and Access permissions"/>
+
+4. When you've completed your configurations, click **Save**. Users will begin to populate the group automatically once they have signed in to dbt Cloud with their SSO credentials.
