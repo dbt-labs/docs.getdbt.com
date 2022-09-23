@@ -100,4 +100,4 @@ JSON is lightweight and often used to transfer data over a network connection. A
 
 ## Conclusion
 
-The greatest strength of JSON also acts as its weakness— the data it contains informs the shape the object takes, rather than the other way around. Structured data is the bread and butter of data, but a semi-structured format is an alternative option when a tabular format becomes too rigid to describe the relationships between different entities. 
+The greatest strength of JSON also acts as its weakness—the data it contains informs the shape the object takes, rather than the other way around. Structured data is the bread and butter of analytics work, but a semi-structured format is an alternative option when a tabular format becomes too rigid to describe the relationships between different entities. 
