@@ -6,7 +6,7 @@ displayText: JSON
 hoverSnippet: JSON (JavaScript Object Notation) is a minimal format for semi-structured data used to capture relationships between fields and values.
 ---
 
-JSON stands for JavaScript Object Notation. JSON is a minimal format which is great for processing data for applications. It can capture many types of relationships in a concise format. It’s a commonly used format for semi-structured data. The <Term id="table">tables</Term> in your <Term id="data-warehouse" /> contain structured data (as opposed to semi-structured). For each row, each field typically contains one value. Structured data, or tabular data, is intuitive and easy to read, but semi-structured data offers more flexibility.
+JSON stands for JavaScript Object Notation. JSON is a minimal format which is great for processing data for applications. It can capture many types of relationships in a concise format and is a commonly used format for semi-structured data. The <Term id="table">tables</Term> in your <Term id="data-warehouse" /> contain structured data (as opposed to semi-structured) where for each row, each field typically contains one value. Structured data, or tabular data, is intuitive and easy to read, but semi-structured data offers more flexibility.
 
 Let’s talk through what that looks like in practice so we can get a better sense of what we mean.
 
