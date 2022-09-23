@@ -326,7 +326,7 @@ If you apply business logic in a snapshot query, and this logic changes in the f
 
 Basically – keep your query as simple as possible! Some reasonable exceptions to these recommendations include:
 * Selecting specific columns if the table is wide.
-* Doing light transformation to get data into a reasonable shape, for example, unpacking a JSON blob to flatten your source data into columns.
+* Doing light transformation to get data into a reasonable shape, for example, unpacking a <Term id="json" /> blob to flatten your source data into columns.
 
 ## Snapshot meta-fields
 

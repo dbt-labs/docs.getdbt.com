@@ -114,7 +114,7 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 
 :::info Uploading a service account JSON keyfile
 
-While the fields in a BigQuery connection can be specified manually, we recommend uploading a service account JSON keyfile to quickly and accurately configure a connection to BigQuery.
+While the fields in a BigQuery connection can be specified manually, we recommend uploading a service account <Term id="json" /> keyfile to quickly and accurately configure a connection to BigQuery.
 
 :::
 
