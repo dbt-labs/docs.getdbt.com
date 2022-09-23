@@ -14,6 +14,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Source:** https://github.com/tglunde/dbt-exasol    
 **Core version:** v0.14.0 and newer    
 **dbt Cloud:** Not Supported    
+**Supported Version:** Exasol 6.x and later
 
 ![dbt-exasol stars](https://img.shields.io/github/stars/tglunde/dbt-exasol?style=for-the-badge)
 
