@@ -39,7 +39,7 @@ Asking and answering questions. It is tremendously valuable to help answer commu
 #### Sample contributions
 
 - This post on how one analytics engineer uses snapshots to test that the aggregated metrics at the end of their DAG don't shift (who here hasn't had the revenue from last June change in September of this year somehow) [is an excellent example of how to write a great Discourse post.](https://discourse.getdbt.com/t/build-snapshot-based-tests-to-detect-regressions-in-historic-data/1478)
-<!-- TODO find a good Discourse Q&A example -->
+- Here's [an example of the supportive, thorough Q&A](https://discourse.getdbt.com/t/is-it-possible-to-have-multiple-files-with-the-same-name-in-dbt/647) of the Discourse community when you take the time to ask a question well.
 
 #### How to get started
 
