@@ -16,9 +16,10 @@ These macros benefit three different user groups:
 Please make sure to take a look at the [SQL expressions section](#sql-expressions) to understand quoting syntax for string values and date literals.
 :::
 
+## All functions (alphabetical)
+
 <VersionBlock firstVersion="1.2" lastVersion="1.2">
 
-## All functions (alphabetical)
 - [any_value](#any_value)
 - [bool_or](#bool_or)
 - [cast_bool_to_text](#cast_bool_to_text)
@@ -49,7 +50,6 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 </VersionBlock>
 <VersionBlock firstVersion="1.3">
 
-## All functions (alphabetical)
 - [any_value](#any_value)
 - [array_append](#array_append)
 - [array_concat](#array_concat)
