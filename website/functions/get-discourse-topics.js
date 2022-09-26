@@ -1,4 +1,5 @@
 const axios = require('axios')
+const returnResponse = require('./utils/return-response')
 
 async function getDiscourseTopics({ body }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
@@ -55,21 +56,6 @@ async function getDiscourseTopics({ body }) {
     console.log('err', err)
     return await returnResponse(500, { error: 'Unable to get topics from Discourse.'})
   }
-}
-
-async function returnResponse(status, res) {
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS' 
-  }
-  const resObj = {
-    statusCode: status,
-    headers,
-    body: JSON.stringify(res)
-  }
-  return resObj
 }
 
 function buildQueryString(body) {
