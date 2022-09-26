@@ -2,7 +2,7 @@ const algoliasearch = require('algoliasearch')
 const axios = require('axios')
 
 async function updateAlgolia() {
-  const { ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_API_KEY, ALGOLIA_DISCOURSE_INDEX_NAME, URL } = process.env
+  const { ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY, ALGOLIA_DISCOURSE_INDEX_NAME, URL } = process.env
 
   // Get topics up to 30 days back
   let today = new Date();
@@ -19,7 +19,7 @@ async function updateAlgolia() {
   const { data } = await axios.post(`${URL}/.netlify/functions/get-discourse-topics`, topicData)
   console.log('data', data)
 
-  const client = algoliasearch(ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_API_KEY);
+  const client = algoliasearch(ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY);
   const index = client.initIndex(ALGOLIA_DISCOURSE_INDEX_NAME);
   
   const objects = [
