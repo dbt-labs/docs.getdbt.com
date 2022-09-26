@@ -39,9 +39,6 @@ console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
 // console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
-console.log("DEBUG: ALGOLIA_TEST_APP_ID = ", ALGOLIA_TEST_APP_ID);
-console.log("DEBUG: ALGOLIA_TEST_READ_API_KEY = ", ALGOLIA_TEST_READ_API_KEY);
-console.log("DEBUG: ALGOLIA_DISCOURSE_INDEX_NAME = ", ALGOLIA_DISCOURSE_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
 var siteSettings = {
