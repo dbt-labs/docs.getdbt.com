@@ -1,0 +1,51 @@
+/* Topics Section */
+.discourseTopics {
+  margin: 2rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.discourseTopics:last-of-type {
+  margin-bottom: 0;
+}
+.discourseTopics .solvedTopic {
+  font-size: .8rem;
+}
+.discourseTopics .solvedTopic:hover {
+  cursor: default;
+}
+.discourseTopics ul {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  width: 100%;
+}
+.discourseTopics ul li {
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--color-off-white);
+}
+.discourseTopics ul li:last-of-type {
+  border-bottom: none;
+}
+.discourseTopics ul li a {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Cta */
+.discourseCta {
+  font-size: 1.1rem;
+  margin-top: auto;
+  color: #fff;
+}
+.discourseCta:hover {
+  background: var(--color-light-teal);
+  color: #fff;
+}
+
+/* Loading icon */
+.discourseTopics .loadingIcon {
+  max-width: 100px;
+  display: block;
+}
+
