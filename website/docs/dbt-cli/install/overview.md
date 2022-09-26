@@ -14,4 +14,4 @@ You can install dbt Core on the command line by using one of these recommended m
 
 ## About dbt adapters
 
-dbt works with a number of different databases, query engines, and other SQL-speaking technologies. It does this by using a dedicated _adapter_ for each. When you install dbt, you'll also want to install the specific adapter for your database. For more details, see the [list of available adapters](available-adapters).
+dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](supported-data-platforms).

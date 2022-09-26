@@ -15,6 +15,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Source:** [GitHub](https://github.com/dbeatty10/dbt-mysql)  
 **Core version:** v1.0.8   
 **dbt Cloud:** Not Supported     
+**Supported Version:** MySQL 5.7 and 8.0
 
 ![dbt-mysql stars](https://img.shields.io/github/stars/dbeatty10/dbt-mysql?style=for-the-badge)
 ![latest version on PyPI](https://img.shields.io/pypi/v/dbt-mysql?style=for-the-badge)

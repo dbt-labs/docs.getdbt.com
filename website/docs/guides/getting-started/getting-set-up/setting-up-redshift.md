@@ -160,30 +160,39 @@ Congratulations! At this point, you have created a Redshift instance and loaded 
 
 ## Connecting to dbt Cloud
 
+#### Create a dbt Cloud account
+
 <Snippet src="tutorial-create-new-dbt-cloud-account" />
 
-### Connect dbt Cloud to Redshift
+#### Connect dbt Cloud to Redshift
 
 Now let's set up the connection between dbt Cloud and Redshift
 
-For Set up a Database Connection, choose Redshift.
-
 1. Click **Redshift** to set up your connection.
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/redshift_tutorial/images/dbt_cloud_setup_redshift_connection_start.png" title="dbt Cloud - Choose Redshift Connection" />
+    </div>
 
-<Lightbox src="/img/redshift_tutorial/images/setup_redshift_connect.png" title="Setup Redshift Connection" />
+2. For the name, write `Redshift` or another simple title.    
 
-2. For the name, simply choose Redshift or another simple title
 3. Enter your Redshift settings. Reference your credentials you saved from the CloudFormation template.
     - Your hostname is the entire hostname. Make sure to drop the http:// at the beginning and any trailing slashes at the end.
     - The port is `5439`
     - The database is `dbtworkshop`.
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/redshift_tutorial/images/dbt_cloud_redshift_account_settings.png" title="dbt Cloud - Redshift Cluster Settings" />
+    </div>
+
 4. Set your development credentials. These credentials will be used by dbt Cloud to connect to Redshift. Those credentials (as provided in your cloudformation output) will be:
     - Username: `dbtadmin`
     - password: *this was the password that you set earlier in the guide*
-    - schema: This is your sandbox schema where you will build all of your development objects into. We generally use the `dbt_<first_initial><lastname>` naming convention.
+    - Schema: You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/redshift_tutorial/images/dbt_cloud_redshift_development_credentials.png" title="dbt Cloud - Redshift Development Credentials" />
+    </div>
 
-4. Click **Test** at the top. This verifies that dbt Cloud can access your Redshift cluster.
-5. If you see "Connection test Succeeded!" then click **Continue**. If it fails, you might need to go back and check your Redshift settings and development credentials.
+4. Click **Test Connection** at the bottom. This verifies that dbt Cloud can access your Redshift cluster.
+5. If the connection test succeeds, click **Next**. If it fails, you may need to check your Redshift settings and credentials.
 
 ## Initialize your repository and start development
 
