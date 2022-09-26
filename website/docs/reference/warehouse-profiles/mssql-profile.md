@@ -16,6 +16,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Core version:** v0.14.0 and newer     
 **dbt Cloud:** Not Supported     
 **dbt Slack channel:** [Link to channel](https://getdbt.slack.com/archives/CMRMDDQ9W)
+**Supported Version:** SQL Server 2016 and later
 
 ![dbt-sqlserver stars](https://img.shields.io/github/stars/dbt-msft/dbt-sqlserver?style=for-the-badge)
 ![latest version on PyPI](https://img.shields.io/pypi/v/dbt-sqlserver?style=for-the-badge)
@@ -64,6 +65,7 @@ your_profile_name:
       driver: 'ODBC Driver 17 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
       port: 1433
+      database: database
       schema: schema_name
       user: username
       password: password
@@ -76,6 +78,7 @@ your_profile_name:
 <TabItem value="windows">
 
 <File name='profiles.yml'>
+
 
 ```yaml
 your_profile_name:

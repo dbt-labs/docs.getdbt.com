@@ -34,7 +34,7 @@ With every task that dbt performs, it generates events. It records those events 
 
 When `json` [log formatting](global-configs#log-formatting) is enabled, dbt will output produce rich, structured log information which can be piped into monitoring tools for analysis, or to power applications with dbt metadata in real time.
 
-Each log line will have the following JSON properties:
+Each log line will have the following <Term id="json" /> properties:
 
 | Field       | Description   |
 |-------------|---------------|

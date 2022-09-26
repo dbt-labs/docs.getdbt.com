@@ -67,7 +67,7 @@ $ dbt run --vars '{"key": "value"}'
 ```
 
 The `--vars` argument accepts a YAML dictionary as a string on the command line.
-YAML is convenient because it does not require strict quoting as with JSON.
+YAML is convenient because it does not require strict quoting as with <Term id="json" />.
 
 Both of the following are valid and equivalent:
 
