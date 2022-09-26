@@ -1,5 +1,4 @@
 const axios = require('axios')
-const updateAlgolia = require('./utils/update-algolia')
 
 async function getDiscourseTopics({ body }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
@@ -16,6 +15,7 @@ async function getDiscourseTopics({ body }) {
     const query = buildQueryString(body)
     if(!query) throw new Error('Unable to build query string.')
     
+    console.log('endpoint', `${discourse_endpoint}/search?q=${query}`)
     // Get topics from Discourse
     let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
 
@@ -47,11 +47,6 @@ async function getDiscourseTopics({ body }) {
         return topicsArr
       }, [])
     }
-
-    // TODO: Send Discourse topics to Algolia
-    // THIS SHOULD BE REMOVED HERE 
-    // and separate cronjob created
-    await updateAlgolia(allTopics)
 
     // Return topics 
     return await returnResponse(200, allTopics)
