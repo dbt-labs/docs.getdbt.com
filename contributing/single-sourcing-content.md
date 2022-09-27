@@ -1,17 +1,19 @@
-# Managing Available Versions
+# Single-sourcing content
 
-* [Adding a new version](#adding-a-new-version)
-* [Using end-of-life dates](#using-end-of-life-dates)
-* [Versioning entire pages](#versioning-entire-pages)
-* [Versioning blocks of content](#versioning-blocks-of-content)
+* [About versioning](#adding-a-new-version)
+  * [Using end-of-life dates](#using-end-of-life-dates)
+  * [Versioning entire pages](#versioning-entire-pages)
+  * [Versioning blocks of content](#versioning-blocks-of-content)
 * [Using global variables](#using-global-variables)
 * [Reusing snippets of content](#reusing-snippets-of-content)
+
+## About versioning
 
 Versions are managed in the `versions` array located in the `website/dbt-versions.js` file. This array holds all versions which are selectable from the versions dropdown in the navigation.
 
 **The first version in the array is the latest version.** This is the default version when a visitor loads the page.
 
-## Adding a new version
+### Adding a new version
 
 To add a new version to the site, a new object must be added to the `versions` array in the same format as existing versions. This object holds two properties: **version** and **EOLDate (See End of Life Dates below)**. 
 
@@ -28,7 +30,7 @@ exports.versions = [
 
 The **version** property is the value which shows in the nav dropdown. This value is compared to the VersionBlock component on a docs page to determine whether that section should be visible for the current active version (See the **Versioning the Sidebar** section on using the VersionBlock component).
 
-## Using end-of-life dates
+### Using end-of-life dates
 
 The **EOLDate** property determines when a version is no longer supported. A version is supported up until 1 year after its release.
 
@@ -39,11 +41,11 @@ Two different versions of the banner will show depending on the end-of-life date
 - When the version is within 3 months of the **EOLDate.**
 - When the version has passed the **EOLDate.**
 
-### Updating EOL date banner language
+#### Updating EOL date banner language
 
 The content for these two EOLDate banners are located in the `website/src/theme/DocPage/index.js` file, in the `EOLBannerText` property.
 
-## Versioning entire pages
+### Versioning entire pages
 
 If a Docs page should not be available for the selected version, it is possible to version the entire page. This is managed in the `versionedPages` array within the `website/dbt-versions.js` file.
 
