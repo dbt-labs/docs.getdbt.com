@@ -24,15 +24,16 @@ You can use components documented in the [docusaurus library](https://v2.docusau
 
 When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.
 
-## Versioning content
+## Versioning and single-sourcing content
 
-We now provide dynamic versioning in the dbt Labs product documentation. To learn more about how to version the docs for dbt Core, see [Managing available versions](/contributing/versioningdocs.md).
+We now enable you to reuse content between different docs pages, version pages, and establish product variables in the dbt Labs product documentation. To learn more about how to single source content between versions, product variables, and other content, see [Single-sourcing content](/contributing/single-sourcing-content.md).
 
 # Running the Docs site locally
 
 You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
 ## Prerequisites
+
 * (Mac Terminal) Install [Xcode Command Line Tools](https://developer.apple.com/download/more/)
   - Open a terminal window, run `xcode-select --install`, and follow the on-screen prompts in the pop-up window.
 * (Mac and Linux) Install [homebrew](https://brew.sh/)
