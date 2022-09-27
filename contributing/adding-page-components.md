@@ -1,4 +1,43 @@
-## Tabs for configs on multiple resources
+## Using warehouse components
+
+<WHCode>
+
+<div warehouse="BigQuery">
+
+```sql
+select * from `dbt-tutorial.jaffle_shop.customers`
+```
+
+</div>
+
+<div warehouse="Databricks">
+
+```sql
+select * from default.jaffle_shop_customers
+```
+
+</div>
+
+<div warehouse="Redshift">
+
+```sql
+select * from jaffle_shop_customers
+```
+
+</div>
+
+<div warehouse="Snowflake">
+
+```sql
+select * from raw.jaffle_shop.customers
+```
+
+</div>
+
+</WHCode>
+
+
+## Using tabs for multiple resources
 
 <Tabs
   defaultValue="models"
