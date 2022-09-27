@@ -16,6 +16,6 @@ We also provide a [graphical explorer](https://metadata.cloud.getdbt.com/graphiq
 
 ## Retention limits for data
 
-You can query data from the previous 90 days using the Metadata API.
+You can use the Metadata API to query data from the previous 3 months. For example, If today is March 1, you can query data back to January 1st.
 
 *We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at metadata@dbtlabs.com.*
