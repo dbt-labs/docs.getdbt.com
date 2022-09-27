@@ -4,7 +4,7 @@ id: "managing-environments"
 ---
 
 ## What are environments?
-In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software. For netlify
+In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software.
 
 “Production” (or _prod_) refers to the environment that end users interact with, while “development” (or _dev_) is the environment that engineers write code in. This means that engineers can work iteratively when writing and testing new code in _development_, and once they are confident in these changes, deploy their code to _production_.
 
