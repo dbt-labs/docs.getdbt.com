@@ -1,144 +1,87 @@
 ## Using warehouse components
 
-<WHCode>
+You can use the following components to provide code snippets for each supported warehouse. For example, you can see this when you, "[Initialize your database](/guides/getting-started/getting-set-up/setting-up-databricks#initialize-your-dbt-project)."
 
-<div warehouse="BigQuery">
+The following code example uses only identify two warehouse, but you can use more. 
 
-```sql
-select * from `dbt-tutorial.jaffle_shop.customers`
+```js
+    <WHCode>
+
+    <div warehouse="BigQuery">
+
+    ```sql
+    select * from `dbt-tutorial.jaffle_shop.customers`
+    ```
+
+    </div>
+
+    <div warehouse="Databricks">
+
+    ```sql
+    select * from default.jaffle_shop_customers
+    ```
+
+    </div>
+
+    </WHCode>
 ```
-
-</div>
-
-<div warehouse="Databricks">
-
-```sql
-select * from default.jaffle_shop_customers
-```
-
-</div>
-
-<div warehouse="Redshift">
-
-```sql
-select * from jaffle_shop_customers
-```
-
-</div>
-
-<div warehouse="Snowflake">
-
-```sql
-select * from raw.jaffle_shop.customers
-```
-
-</div>
-
-</WHCode>
-
 
 ## Using tabs for multiple resources
 
+You can use the following components to provide code snippets in a tabbed view:
+
+```js
 <Tabs
   defaultValue="models"
   values={[
     { label: 'Models', value: 'models', },
     { label: 'Sources', value:'sources', },
-    { label: 'Seeds', value: 'seeds', },
-    { label: 'Snapshots', value: 'snapshots', },
   ]
 }>
 
-<TabItem value="models">
+    <TabItem value="models">
 
-<File name='models/<modelname>.sql'>
+    <File name='models/<modelname>.sql'>
 
-```sql
+    ```sql
 
-{{ config(
+    {{ config(
 
-) }}
+    ) }}
 
-select ...
+    select ...
 
 
+    ```
+
+    </File>
+
+    <File name='dbt_project.yml'>
+
+    ```yml
+    models:
+    [<resource-path>](resource-path):
+
+
+    ```
+
+    </File>
+
+    </TabItem>
+
+    <TabItem value="sources">
+
+    <File name='dbt_project.yml'>
+
+    ```yml
+    sources:
+    [<resource-path>](resource-path):
+
+    ```
+
+    </File>
+
+    </TabItem>
+
+    </Tabs>
 ```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-models:
-  [<resource-path>](resource-path):
-
-
-```
-
-</File>
-
-</TabItem>
-
-<TabItem value="sources">
-
-<File name='dbt_project.yml'>
-
-```yml
-sources:
-  [<resource-path>](resource-path):
-
-
-```
-
-</File>
-
-</TabItem>
-
-<TabItem value="seeds">
-
-<File name='dbt_project.yml'>
-
-```yml
-seeds:
-  [<resource-path>](resource-path):
-
-
-```
-
-</File>
-
-</TabItem>
-
-<TabItem value="snapshots">
-
-<File name='snapshots/<filename>.sql'>
-
-```sql
-{% snapshot [snapshot_name](snapshot_name) %}
-
-{{ config(
-  
-) }}
-
-select ...
-
-{% endsnapshot %}
-
-```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-snapshots:
-  [<resource-path>](resource-path):
-    enabled: true | false
-
-```
-
-</File>
-
-</TabItem>
-
-</Tabs>
