@@ -25,6 +25,7 @@ const sidebarSettings = {
             "docs/building-a-dbt-project/building-models/python-models",
           ],
         },
+        "docs/building-a-dbt-project/managing-environments",
         "docs/building-a-dbt-project/tests",
         "docs/building-a-dbt-project/documentation",
         "docs/building-a-dbt-project/using-sources",
@@ -65,7 +66,7 @@ const sidebarSettings = {
             type: 'generated-index',
             title: 'Adapter Development',
             description: 'Learn what an adapter is what what\'s required to make one. Also how to build, test, document, promote, and verify your new adapter. Visit the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond this section.',
-            
+
           },
           items: [
             'docs/contributing/adapter-development/1-what-are-adapters',
@@ -742,7 +743,6 @@ const sidebarSettings = {
         "guides/legacy/navigating-the-docs",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
-        "guides/legacy/managing-environments",
         "guides/legacy/writing-custom-generic-tests",
         "guides/legacy/building-packages",
         "guides/legacy/creating-new-materializations",
