@@ -25,6 +25,7 @@ const sidebarSettings = {
             "docs/building-a-dbt-project/building-models/python-models",
           ],
         },
+        "docs/building-a-dbt-project/managing-environments",
         "docs/building-a-dbt-project/tests",
         "docs/building-a-dbt-project/documentation",
         "docs/building-a-dbt-project/using-sources",
