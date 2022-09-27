@@ -28,6 +28,10 @@ When writing content, you should refer to the [style guide](https://github.com/d
 
 We now enable you to reuse content between different docs pages, version pages, and establish product variables in the dbt Labs product documentation. To learn more about how to single source content between versions, product variables, and other content, see [Single-sourcing content](/contributing/single-sourcing-content.md).
 
+## Adding tabbed components to a page
+
+You can add code snippets and other content in a tabbed view. To learn more about adding tabbed components, see [Adding page components](/contributing/adding-page-components.md).
+
 # Running the Docs site locally
 
 You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):

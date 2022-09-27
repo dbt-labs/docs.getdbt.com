@@ -1,6 +1,6 @@
 ## Using warehouse components
 
-You can use the following components to provide code snippets for each supported warehouse. For example, you can see this when you, "[Initialize your database](/guides/getting-started/getting-set-up/setting-up-databricks#initialize-your-dbt-project)."
+You can use the following components to provide code snippets for each supported warehouse. For example, "[Initialize your database](/guides/getting-started/getting-set-up/setting-up-databricks#initialize-your-dbt-project)."
 
 The following code example uses only identify two warehouse, but you can use more. 
 
@@ -28,7 +28,7 @@ The following code example uses only identify two warehouse, but you can use mor
 
 ## Using tabs for multiple resources
 
-You can use the following components to provide code snippets in a tabbed view:
+You can use the following components to provide code snippets in a tabbed view. For example, "[Building models](/docs/building-a-dbt-project/building-models#building-dependencies-between-models)."
 
 ```js
 <Tabs
