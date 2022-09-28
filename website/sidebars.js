@@ -10,6 +10,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Get started with dbt Cloud",
+          collapsed: false,
           link: { type: 'doc', id: 'guides/getting-started/getting-started' },
           items: [
             "docs/develop/dbt-cloud-features",
@@ -18,6 +19,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Get started with dbt Core",
+          collapsed: false,
           link: { type: 'doc', id: 'guides/getting-started/learning-more/getting-started-dbt-core' },
           items: [
             "dbt-cli/install/overview",
@@ -26,6 +28,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "About the CLI",
+          collapsed: false,
           link: { type: 'doc', id: 'docs/running-a-dbt-project/using-the-cli' },
           items: [
             "dbt-cli/configure-your-profile",
