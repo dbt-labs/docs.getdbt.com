@@ -29,7 +29,7 @@ I've reimplemented certain macros from the `dbt_utils` package, and I want my ve
 ```yml
 dispatch:
   - macro_namespace: dbt_utils
-    search_order: 
+    search_order: ['my_project', 'dbt_utils']
   - macro_namespace: packagename
     search_order: [packagename]
 ```
