@@ -9,7 +9,7 @@ Every time that dbt Cloud runs a dbt project, it generates metadata which pertai
 
 ## Prerequisites
 
-The metadata API is available to accounts on the _Team_ and _Enterprise_ plans, for any version >= dbt v0.19.0. Please note that artifacts generated with a version of dbt _less than_ v0.19.0 will not be accessible via the dbt Cloud metadata API.
+The metadata API is available to accounts on the _Team_ and _Enterprise_ plans, for any version >= dbt v0.19.0. Please note that artifacts generated with a version of dbt _less than_ v0.19.0 will not be accessible via the dbt Cloud metadata API. For information on upgrading, see "[Version migration guides](https://docs.getdbt.com/guides/migration/versions)."
 
 ## How to browse the API
 
