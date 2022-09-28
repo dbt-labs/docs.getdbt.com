@@ -1,6 +1,6 @@
 ## Using warehouse components
 
-You can use the following components to provide code snippets for each supported warehouse. You can see a real-life example in the docs page, "[Initialize your database](/guides/getting-started/getting-set-up/setting-up-databricks#initialize-your-dbt-project)."
+You can use the following components to provide code snippets for each supported warehouse. You can see a real-life example in the docs page, "[Initialize your database](https://docs.getdbt.com/guides/getting-started/getting-set-up/setting-up-databricks#initialize-your-dbt-project)."
 
 Identify code by labeling with the warehouse names:
 
@@ -28,11 +28,11 @@ Identify code by labeling with the warehouse names:
 
 ## Using tabs for multiple resources
 
-You can use the following components to provide code snippets in a tabbed view. You can see a real-life example in the docs page, "[Building models](/docs/building-a-dbt-project/building-models#building-dependencies-between-models)."
+You can use the following components to provide code snippets in a tabbed view. You can see a real-life example in the docs page, "[Building models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models#building-dependencies-between-models)."
 
 Identify code and code files by labeling with the component they are describing:
 
-```js
+```code
         <Tabs
         defaultValue="models"
         values={[
