@@ -1,9 +1,37 @@
 const sidebarSettings = {
   docs: [
+    "docs/introduction",
+    "docs/supported-data-platforms",
     {
       type: "category",
-      label: "Introduction",
-      items: ["docs/introduction", "docs/supported-data-platforms", "docs/core-versions"],
+      label: "Develop with dbt",
+      collapsed: true,
+      items: [
+        {
+          type: "category",
+          label: "Get started with dbt Cloud",
+          link: { type: 'doc', id: 'guides/getting-started/getting-started' },
+          items: [
+            "docs/develop/dbt-cloud-features",
+          ],
+        },
+        {
+          type: "category",
+          label: "Get started with dbt Core",
+          link: { type: 'doc', id: 'guides/getting-started/learning-more/getting-started-dbt-core' },
+          items: [
+            "dbt-cli/install/overview",
+          ],
+        },
+        {
+          type: "category",
+          label: "About the CLI",
+          link: { type: 'doc', id: 'docs/running-a-dbt-project/using-the-cli' },
+          items: [
+            "dbt-cli/configure-your-profile",
+          ],
+        },
+      ],
     },
     {
       type: "category",
