@@ -9,11 +9,6 @@ default_value: dbt_packages
 
 </Changelog>
 
-<File name='dbt_project.yml'>
-
-```yml
-packages-install-path: directorypath
-```
 
 </File>
 
@@ -29,7 +24,7 @@ By default, dbt will install packages in the `dbt_packages` directory, i.e. `pac
 <File name='dbt_project.yml'>
 
 ```yml
-module-path: packages
+packages-install-path: packages
 ```
 
 </File>
