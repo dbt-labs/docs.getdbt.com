@@ -26,6 +26,6 @@ When set up, dbt Cloud updates the **Documentation** link in the upper left so i
 
 ### Source Freshness
 
-As with Documentation, configuring a job for the Source Freshness artifact setting also updates the Data Sources link under **Deploy** to point to the latest Source Freshness report for the selected job.
+As with Documentation, configuring a job for the Source Freshness artifact setting also updates the Data Sources link under **Deploy**. The new link points to the latest Source Freshness report for the selected job.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources.png" title="A link to the latest source freshness snapshot for the selected job"/>
