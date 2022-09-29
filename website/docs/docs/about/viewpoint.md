@@ -41,7 +41,7 @@ Bad data can lead to bad analyses, and bad analyses can lead to bad decisions. A
 Your analysis is a software application, and, like every other software application, people are going to have questions about how to use it. Even though it might seem simple, in reality the “Revenue” line you’re showing could mean dozens of things. Your code should come packaged with a basic description of how it should be interpreted, and your team should be able to add to that documentation as additional questions arise.
 
 ### Modularity
-If you build a series of analyses about your company’s revenue, and your colleague does as well, you should use the same input data. Copy-paste is not a good approach here — if the definition of the underlying set changes, it will need to be updated everywhere it was used. Instead, think of the schema of a data set as its public interface. Create tables, views, or other data sets that expose a consistent schema and can be modified if business logic changes.
+If you build a series of analyses about your company’s revenue, and your colleague does as well, you should use the same input data. Copy-paste is not a good approach here — if the definition of the underlying set changes, it will need to be updated everywhere it was used. Instead, think of the schema of a data set as its public interface. Create tables, <Term id="view">views</Term>, or other data sets that expose a consistent schema and can be modified if business logic changes.
 
 ## Analytic code is an asset
 The code, processes, and tooling required to produce that analysis are core organizational investments. We believe a mature analytics organization’s workflow should have the following characteristics so as to protect and grow that investment:

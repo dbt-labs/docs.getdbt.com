@@ -6,7 +6,7 @@ id: "using-sources"
 ## Related reference docs
 * [Source properties](source-properties)
 * [Source configurations](source-configs)
-* [`{{ source() }}` jinja function](dbt-jinja-functions/source)
+* [`{{ source() }}` jinja function](/reference/dbt-jinja-functions/source)
 * [`source freshness` command](commands/source)
 
 ## Using sources
@@ -41,7 +41,7 @@ If you're not already familiar with these files, be sure to check out [the docum
 
 ### Selecting from a source
 
-Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](dbt-jinja-functions/source).
+Once a source has been defined, it can be referenced from a model using the [`{{ source()}}` function](/reference/dbt-jinja-functions/source).
 
 
 <File name='models/orders.sql'>
@@ -58,7 +58,7 @@ left join {{ source('jaffle_shop', 'customers') }} using (customer_id)
 
 </File>
 
-dbt will compile this to the full table name:
+dbt will compile this to the full <Term id="table" /> name:
 
 <File name='target/compiled/jaffle_shop/models/my_model.sql'>
 
@@ -117,11 +117,11 @@ sources:
 You can find more details on the available properties for sources in the [reference section](source-properties).
 
 ### FAQs
-<FAQ src="source-has-bad-name" />
-<FAQ src="source-in-different-database" />
-<FAQ src="source-quotes" />
-<FAQ src="testing-sources" />
-<FAQ src="running-models-downstream-of-source" />
+<FAQ src="Project/source-has-bad-name" />
+<FAQ src="Project/source-in-different-database" />
+<FAQ src="Models/source-quotes" />
+<FAQ src="Tests/testing-sources" />
+<FAQ src="Runs/running-models-downstream-of-source" />
 
 ## Snapshotting source data freshness
 With a couple of extra configs, dbt can optionally snapshot the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
@@ -186,6 +186,6 @@ The results of this query are used to determine whether the source is fresh or n
 
 
 ### FAQs
-<FAQ src="exclude-table-from-freshness" />
-<FAQ src="snapshotting-freshness-for-one-source" />
-<FAQ src="snapshot-freshness-output" />
+<FAQ src="Project/exclude-table-from-freshness" />
+<FAQ src="Snapshots/snapshotting-freshness-for-one-source" />
+<FAQ src="Project/dbt-source-freshness" />

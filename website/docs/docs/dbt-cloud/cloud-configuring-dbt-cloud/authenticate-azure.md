@@ -5,21 +5,21 @@ description: "dbt Cloud developers need to authenticate with Azure DevOps."
 sidebar_label: "Authenticate with Azure DevOps"
 ---
 
-If you are a dbt Cloud developer who contributes code to the dbt Cloud IDE, and you use Azure DevOps for collaborating on code and building and deploying apps, you need to [link your dbt Cloud profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops). Linking these two profiles provides access to your Azure DevOps profile from your dbt Cloud profile by authenticating.
+<Snippet src="available-beta-banner" />
 
-:::info Beta feature
-This feature is currently in Beta. If you are interested in getting access to the beta, please reach out to support@getdbt.com
-:::
+If you use the dbt Cloud IDE to collaborate on your team's Azure DevOps dbt repo, you need to [link your dbt Cloud profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops), which provides an extra layer of authentication.
 
 ## Link your dbt Cloud profile to Azure DevOps
 
 Connect your dbt Cloud profile to Azure DevOps using OAuth:
 
-1. From your profile page, click **Integrations** in the left pane.
-2. Click **Link your Azure DevOps Profile**.
-3. Once you're redirected to Azure DevOps, sign into your account.
-4. When you see the permission request screen from Azure DevOps App, click **Accept**. 
+1. Click the gear icon at the top right and select **Profile settings**.
+2. Click **Linked Accounts**.
+3. Next to  Azure DevOps, click **Link**.
+   <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/LinktoAzure.png" title="Azure DevOps Authorization Screen"/>
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/profile link.gif" title="Linking your Azure DevOps Profile" /> <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/OAuth Acceptance.png" title="Azure DevOps Authorization Screen"/>
+4. Once you're redirected to Azure DevOps, sign into your account.
+5. When you see the permission request screen from Azure DevOps App, click **Accept**. 
+   <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/OAuth Acceptance.png" title="Azure DevOps Authorization Screen"/>
 
-You will be directed back to dbt Cloud, and your profile should be linked. You are now ready for developing in the IDE!
+You will be directed back to dbt Cloud, and your profile should be linked. You are now ready to develop in dbt Cloud!

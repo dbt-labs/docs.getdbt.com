@@ -35,10 +35,12 @@ your_profile_name:
   outputs:
     dev:
       type: databricks
+      catalog: [optional catalog name, if you are using Unity Catalog, only available in dbt-databricks>=1.1.1]
       schema: [schema name]
       host: [yourorg.databrickshost.com]
       http_path: [/sql/your/http/path]
       token: [dapiXXXXXXXXXXXXXXXXXXXXXXX] # Personal Access Token (PAT)
+      threads: [1 or more]  # optional, default 1
 ```
 
 </File>
@@ -59,10 +61,14 @@ Delta-only features:
 
 ### Choosing between dbt-databricks and dbt-spark
 
-While `dbt-spark` can be connect to Databricks, `dbt-databricks` was created to make it
+While `dbt-spark` can be used to connect to Databricks, `dbt-databricks` was created to make it
 even easier to use dbt with the Databricks Lakehouse.
 
 `dbt-databricks` includes:
 - No need to install additional drivers or dependencies for use on the CLI
 - Use of Delta Lake for all models out of the box
 - SQL macros that are optimzed to run with [Photon](https://docs.databricks.com/runtime/photon.html)
+
+### Support for Unity Catalog
+
+The adapter `dbt-databricks>=1.1.1` supports the 3-level namespace of Unity Catalog (catalog / schema / relations) so you can organize and secure your data the way you like.

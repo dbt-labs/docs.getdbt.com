@@ -1,8 +1,2 @@
-# for deployments of prerelease docs
-[context.next]
-  command = "make build-prerelease"
-  
-[context.next.environment]
-  PRERELEASE = "true"
-  ALGOLIA_API_KEY = "044414e92a8b8137a33fd276d4533895"
-  ALGOLIA_INDEX_NAME = "dbt_next"
+[build]
+  functions = "functions"

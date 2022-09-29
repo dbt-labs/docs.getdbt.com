@@ -19,8 +19,8 @@ Where relevant, dbt will display up to date and/or latest versions of packages t
 packages:
   - package: dbt-labs/dbt_utils
     version: 0.7.1
-  - package: tailsdotcom/dbt_artifacts
-    version: 0.5.0-a1
+  - package: brooklyn-data/dbt_artifacts
+    version: 1.2.0
     install-prerelease: true
   - package: dbt-labs/codegen
     version: 0.4.0
@@ -39,9 +39,8 @@ packages:
 Installing dbt-labs/dbt_utils@0.7.1
   Installed from version 0.7.1
   Up to date!
-Installing tailsdotcom/dbt_artifacts@0.5.0a1
-  Installed from version 0.5.0a1
-  Updated version available: 0.5.0
+Installing brooklyn-data/dbt_artifacts@1.2.0
+  Installed from version 1.2.0
 Installing dbt-labs/codegen@0.4.0
   Installed from version 0.4.0
   Up to date!
