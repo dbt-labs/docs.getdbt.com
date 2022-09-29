@@ -40,9 +40,9 @@ const sidebarSettings = {
           type: "category",
           label: "About the CLI",
           collapsed: false,
-          link: { type: 'doc', id: 'docs/running-a-dbt-project/using-the-cli' },
+          link: { type: 'doc', id: 'docs/develop/about-the-cli' },
           items: [
-            "dbt-cli/configure-your-profile",
+            "docs/develop/connection-profiles",
           ],
         },
       ],
@@ -89,7 +89,6 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/running-a-dbt-project/using-the-dbt-ide",
-        "docs/running-a-dbt-project/using-the-cli",
         "docs/running-a-dbt-project/running-dbt-in-production",
       ],
     },
@@ -144,7 +143,6 @@ const sidebarSettings = {
   ],
   "dbt CLI": [
     "dbt-cli/cli-overview",
-    "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
     {

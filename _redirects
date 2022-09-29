@@ -1,3 +1,5 @@
+/dbt-cli/configure-your-profile /docs/develop/connection-profiles 302
+/docs/running-a-dbt-project/using-the-cli /docs/develop/about-the-cli 302
 /dbt-cli/install/from-source /docs/develop/source-install 302
 /dbt-cli/install/docker /docs/develop/docker-install 302
 /dbt-cli/install/pip /docs/develop/pip-install 302
@@ -69,7 +71,7 @@
 /docs/command-line-interface	/reference/dbt-commands	302
 /docs/compile	/reference/commands/compile	302
 /docs/config	/docs/writing-code-in-dbt/jinja-context/config	302
-/docs/configure-your-profile	/dbt-cli/configure-your-profile	302
+/docs/configure-your-profile	/docs/develop/connection-profiles	302
 /docs/configuring-incremental-models	/docs/building-a-dbt-project/building-models/configuring-incremental-models	302
 /docs/configuring-models	/reference/model-configs	302
 /docs/configuring-query-comments	/docs/building-a-dbt-project/dbt-projects/configuring-query-comments	302
@@ -177,7 +179,7 @@
 /docs/running-a-dbt-project/command-line-interface/version	/reference/global-cli-flags#version	302
 /docs/running-a-dbt-project/using-the-command-line-interface	/docs/running-a-dbt-project/using-the-cli	302
 /docs/running-a-dbt-project/using-the-command-line-interface/centos	/dbt-cli/installation-guides/centos	302
-/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile	/dbt-cli/configure-your-profile	302
+/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile	/docs/develop/connection-profiles	302
 /docs/running-a-dbt-project/using-the-command-line-interface/install-from-source	/dbt-cli/installation-guides/install-from-source	302
 /docs/running-a-dbt-project/using-the-command-line-interface/installation	/dbt-cli/installation	302
 /docs/running-a-dbt-project/using-the-command-line-interface/macos	/dbt-cli/installation-guides/macos	302
