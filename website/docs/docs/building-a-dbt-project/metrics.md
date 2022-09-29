@@ -135,6 +135,12 @@ metrics:
 
 </File>   
 
+:::caution
+
+- Metrics cannot be built on [ephemeral models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral). The materialization must have a represention in the data warehouse in order to build a metric.
+
+:::
+
 
 ### Available properties
 Metrics can have many declared **properties**, which define aspects of your metric. More information on [properties and configs can be found here](https://docs.getdbt.com/reference/configs-and-properties).
