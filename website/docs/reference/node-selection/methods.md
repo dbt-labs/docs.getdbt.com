@@ -138,6 +138,32 @@ The `config` method is used to select models that match a specified [node config
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.3">
+
+While most config values are strings, the `config` method can also be used to match boolean configs, dictionary keys, and values in lists.
+
+For example, given a model with the following configurations:
+```
+{{ config(
+  materialized = 'incremental',
+  unique_key = ['column_a', 'column_b'],
+  grants = {'select': ['reporter', 'analysts']},
+  transient = true
+) }}
+
+select ...
+```
+
+It can be selected using any of the following:
+```bash
+$ dbt ls -s config.materialized:incremental
+$ dbt ls -s config.unique_key:column_a
+$ dbt ls -s config.grants.select:reporter
+$ dbt ls -s config.transient:true
+```
+
+</VersionBlock>
+
 ### The "test_type" method
 <Changelog>
 
