@@ -13,7 +13,7 @@ You must be an **Account Admin** to access the audit log and this feature is onl
 
 ## Accessing the audit log
 
-To access audit log, click **Account Settings** and **Audit Log**.
+To access audit log, click the gear icon in the top right, then click **Audit Log**.
 
 <div style={{maxWidth: '150px'}}>
 

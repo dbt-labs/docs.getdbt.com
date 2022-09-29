@@ -1,3 +1,5 @@
+/useful_components https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md 302
+/guides/legacy/managing-environments /docs/building-a-dbt-project/managing-environments 302
 /docs/running-a-dbt-project/dbt-api /docs/introduction 301
 /img/docs/dbt-cloud/dbt-cloud-enterprise/icon.png	https://www.getdbt.com/ui/img/dbt-icon.png	301!
 /dbt-cli/installation-guides/centos		/dbt-cli/install/overview	302
@@ -341,3 +343,4 @@ https://tutorial.getdbt.com/*	https://docs.getdbt.com/:splat	301!
 docs/contributing/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 302
 docs/contributing/testing-a-new-adapter /docs/contributing/adapter-development/4-testing-a-new-adapter 302
 docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-development/5-documenting-a-new-adapter 302
+/docs/building-a-new-adapter  /docs/contributing/adapter-development/3-building-a-new-adapter 301!

@@ -34,6 +34,7 @@ import VersionBlock from '@site/src/components/versionBlock';
 import Var from '@site/src/components/variable';
 import Term from '@site/src/components/term';
 import EventsFeed from '@site/src/components/events';
+import { DiscourseFeed, DiscourseHelpFeed }  from '@site/src/components/discourse';
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
@@ -118,5 +119,7 @@ const MDXComponents = {
   Var: Var,
   Term: Term,
   EventsFeed: EventsFeed,
+  DiscourseFeed: DiscourseFeed,
+  DiscourseHelpFeed: DiscourseHelpFeed,
 };
 export default MDXComponents;

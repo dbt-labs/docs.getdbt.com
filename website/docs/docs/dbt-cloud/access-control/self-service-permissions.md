@@ -2,7 +2,6 @@
 title: "Self-Service Permissions"
 id: "self-service-permissions"
 ---
-
 ## Overview
 
 dbt Cloud supports two different permission sets to manage permissions for self-service accounts: **Member** and **Owner**.  
@@ -25,29 +24,27 @@ Users configured with Read Only license types will experience a restricted set o
 
 ## Owner and Member Groups in dbt Cloud Enterprise  
 
-By default, new users are added to the Member and Owner groups when they onboard to a new dbt Cloud. Member and Owner groups are included with every new dbt Cloud account. They're used to provide access for Administrators to add additional users, groups and apply permission sets. This is necessary for account onboarding but can create confusion when initially setting up SSO and RBAC for dbt Cloud Enterprise accounts as described in the [Enterprise Permissions](enterprise-permissions) guide. Owner and Member groups are **account level** groups, so their permissions override any project-level permissions you wish to apply.
+By default, new users are added to the Member and Owner groups when they onboard to a new dbt Cloud account. Member and Owner groups are included with every new dbt Cloud account because they provide access for administrators to add users and groups, and to apply permission sets. 
 
-After onboarding Administrative users and configuring RBAC/SSO groups, we recommend the following steps for onboarding users to a dbt Cloud Enterprise account.
+You will need owner and member groups to help with account onboarding, but these groups can create confusion when initially setting up SSO and RBAC for dbt Cloud Enterprise accounts as described in the [Enterprise Permissions](enterprise-permissions) guide. Owner and Member groups are **account level** groups, so their permissions override any project-level permissions you wish to apply.
 
-### Create Account Admins Group
+After onboarding administrative users and configuring RBAC/SSO groups, we recommend the following steps for onboarding users to a dbt Cloud Enterprise account.
 
-**Important:** Do this BEFORE proceeding to the next section
+### Prerequisites
 
-1) Create an Account Admins group  
-2) Assign at least one user to the Account Admins
+You need to create an Account Admins group before removing any other groups.
 
-The assigned user will manage future group, SSO mapping and user / group assignment.
+1. Create an Account Admins group.  
+2. Assign at least one user to the Account Admins group. The assigned user can manage future group, SSO mapping, and user or group assignment.
 
 ### Remove the Owner and Member groups
 
-Follow the steps below for each of the Owner and Member groups in turn:
+Follow these steps for both Owner and Member groups:
 
-1) Click the Hamburger icon at the top left of the Cloud Console, then Account Settings >> Groups >> <Owner/Member>  
-2) Click "Edit" in the upper right corner
+1. Log into dbt Cloud.
+2. Click the gear icon at the top right and select **Account settings**.
+3. Select **Groups** then select **OWNER** or **MEMBER**** group.  
+4. Click **Edit**.
+5. At the bottom of the Group page, click **Delete**.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-group.png" title="Editing a Group"/>
-
-3) Scroll to the bottom of the group page  
-4) Click "Delete"
-
-From here, the Account Admin can add additional SSO mapping groups, permission sets and users as needed.
+The Account Admin can add additional SSO mapping groups, permission sets, and users as needed.

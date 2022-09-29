@@ -30,7 +30,7 @@ python -c "from yaml import CLoader"
 
 ## Partial parsing
 
-After parsing your project, dbt stores an internal project manifest in a file called `partial_parse.msgpack`. When partial parsing is enabled, dbt will use that internal manifest to determine which files have been changed (if any) since it last parsed the project. Then, it will _only_ parse the changed files, or files related those changes.
+After parsing your project, dbt stores an internal project manifest in a file called `partial_parse.msgpack`. When partial parsing is enabled, dbt will use that internal manifest to determine which files have been changed (if any) since it last parsed the project. Then, it will _only_ parse the changed files, or files related to those changes.
 
 Starting in v1.0, partial parsing is **on** by default. In development, partial parsing can significantly reduce the time spent waiting at the start of a run, which translates to faster dev cycles and iteration.
 
