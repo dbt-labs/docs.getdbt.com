@@ -96,4 +96,6 @@ When clicking on the `Connect Snowflake Account` successfully redirects you to t
 * You're trying to use a role that is in the [BLOCKED_ROLES_LIST](https://docs.snowflake.com/en/user-guide/oauth-partner.html#blocking-specific-roles-from-using-the-integration), such as `ACCOUNTADMIN`. 
 
 #### Server Error 500
-If you receive a 500 server error when being redirected from Snowflake back to dbt Cloud, double-check that you have whitelisted dbt Cloud's IP addresses listed [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database) on a Snowflake account level. Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
+If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database) on a Snowflake account level. 
+
+Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
