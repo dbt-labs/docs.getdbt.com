@@ -67,7 +67,7 @@ In comparison, your new Analytics Engineer could quickly pivot based on the find
 
 If the business need includes looking at `Active Users` by `Groups A, B, and C`, then that adds an extra layer of complexity. Without an Analytics Engineer, you’ll see extra loops and hand-offs to finalize all the business logic, how to handle NULL values, and even just the final format.
 
-### Model format returned by data engineering
+**Model format returned by data engineering**
 
 | Date       | Active Users Group A | Active Users Group B | Active Users Group C |
 |------------|----------------------|----------------------|----------------------|
@@ -76,7 +76,7 @@ If the business need includes looking at `Active Users` by `Groups A, B, and C`,
 | 2022-08-03 | 71                   | 9                    | 6                    |
 | 2022-08-04 | 63                   | 87                   | 10                   |
 
-### Model format needed for the BI tool
+**Model format needed for the BI tool**
 
 | Date       | Group   | Active Users       |
 |------------|---------|--------------------|
@@ -158,6 +158,6 @@ Here are some next steps to get you started on converting your Analysts to Analy
 1. Start incorporating peer review as part of the dashboard publishing process. Also, consider how you set up your dashboard environments (do you have a local development area, a review area, and a published area?). This will prepare them for learning about Git, development environments, and version control.
 1. Talk to your Analyst about how they decide to create alerts in your BI tool, or any regular reviews that they do of existing dashboards for data accuracy. And what are the current data governance practices that each dashboard follows (Data Dictionary? Style Guide?). This will prepare them for learning about the dbt `.yml` file.
 
-Learn more on how to apply a fresh framework to existing analytics projects to upskill your ***Analyst to an Analytics Engineer*** at my [dbt Coalesce 2022 presentation](https://coalesce.getdbt.com/agenda/analyst-to-analytics-engineer). I hope to see you there!
+Learn more on how to apply a fresh framework to existing analytics projects to upskill your ***Analyst to an Analytics Engineer*** at my [Coalesce 2022 presentation](https://coalesce.getdbt.com/agenda/analyst-to-analytics-engineer). I hope to see you there!
 
 
