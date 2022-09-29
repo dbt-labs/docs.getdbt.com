@@ -337,7 +337,7 @@ packages:
 
 </VersionBlock>
 
-Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_calendar_model` model as this is required for macros used to query metrics. More information on this, and additional calendar functinality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
+Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_calendar_model` model as this is required for macros used to query metrics. More information on this, and additional calendar functionality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
 
 ### Querying metrics with `metrics.calculate`
 Use the `metrics.calculate` macro along with defined metrics to generate a SQL statement that runs the metric aggregation to return the correct metric dataset. Example below:
@@ -368,7 +368,7 @@ from {{ metrics.calculate(
 
 </VersionBlock>
 
-### Supported Inputs
+### Supported inputs
 The example above doesn't display all the potential inputs you can provide to the macro.
 
 You may find some pieces of functionality, like secondary calculations, complicated to use. We recommend reviewing the [package README](https://github.com/dbt-labs/dbt_metrics) for more in-depth information about each of the inputs that are not covered in the table below
