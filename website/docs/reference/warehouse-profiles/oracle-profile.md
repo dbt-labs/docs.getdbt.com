@@ -6,7 +6,7 @@ title: "Oracle Profile"
 
 **Maintained by:** Oracle    
 **Source:** [Github](https://github.com/oracle/dbt-oracle)    
-**Core version:** v1.1.1     
+**Core version:** v1.2.1     
 **dbt Cloud:** Not Supported    
 **dbt Slack channel** [#db-oracle](https://getdbt.slack.com/archives/C01PWH4TXLY)       
 
@@ -316,8 +316,9 @@ The directory location of `tnsnames.ora` file can be specified using `TNS_ADMIN`
 <File name="tnsnames.ora">
 
 ```text
-db2022adb_high = (description = ( 
-                 address=(protocol=tcps)
+db2022adb_high = (description = 
+                 (retry_count=20)(retry_delay=3)
+                 (address=(protocol=tcps)
                  (port=1522)
                  (host=adb.example.oraclecloud.com))
                  (connect_data=(service_name=example_high.adb.oraclecloud.com))
@@ -360,7 +361,7 @@ The connection string identifies which database service to connect to. It can be
 - A Net Service Name mapping to a connect descriptor
 
 ```bash
-export DBT_ORACLE_CONNECT_STRING="(description=(address=(protocol=tcps)(port=1522)
+export DBT_ORACLE_CONNECT_STRING="(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)
                                   (host=adb.example.oraclecloud.com))(connect_data=(service_name=example_high.adb.oraclecloud.com))
                                   (security=(ssl_server_cert_dn=\"CN=adb.example.oraclecloud.com,
                                   OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US\")))"
@@ -397,6 +398,31 @@ export DBT_ORACLE_HOST=adb.example.oraclecloud.com
 export DBT_ORACLE_SERVICE=example_high.adb.oraclecloud.com
 ```
 
+<VersionBlock firstVersion="1.2">
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+dbt_test:
+   target: "{{ env_var('DBT_TARGET', 'dev') }}"
+   outputs:
+      dev:
+         type: oracle
+         user: "{{ env_var('DBT_ORACLE_USER') }}"
+         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         protocol: "tcps"
+         host: "{{ env_var('DBT_ORACLE_HOST') }}"
+         port: 1522
+         service: "{{ env_var('DBT_ORACLE_SERVICE') }}"
+         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
+         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
+         retry_count: 1
+         retry_delay: 3
+         threads: 4
+```
+</File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.1">
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -416,6 +442,7 @@ dbt_test:
          threads: 4
 ```
 </File>
+</VersionBlock>
 </TabItem>
 
 
