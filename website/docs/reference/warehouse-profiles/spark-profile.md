@@ -18,9 +18,19 @@ id: "spark-profile"
 
 dbt-spark can connect to Spark clusters by three different methods:
 
-- `odbc` is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
-- `http` is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
-- `thrift` connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
+- [`odbc`](#odbc) is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
+- [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
+- [`http`](#http) is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
+
+<VersionBlock firstVersion="1.1">
+
+- [`session`](#session) connects to a pySpark session, running locally or on a remote machine.
+
+:::info Advanced functionality
+The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by dbt Cloud.
+:::
+
+</VersionBlock>
 
 ### ODBC
 
@@ -50,7 +60,10 @@ your_profile_name:
       # optional
       port: [port]              # default 443
       user: [user]
-      
+      server_side_parameters:
+        # cluster configuration parameters, otherwise applied via `SET` statements
+        # for example:
+        # "spark.databricks.delta.schema.autoMerge.enabled": True
 ```
 
 </File>
@@ -76,6 +89,7 @@ your_profile_name:
       user: [user]
       auth: [e.g. KERBEROS]
       kerberos_service_name: [e.g. hive]
+      use_ssl: [true|false]   # value of hive.server2.use.SSL, default false
 ```
 
 </File>
@@ -112,6 +126,51 @@ Databricks interactive clusters can take several minutes to start up. You may
 include the optional profile configs `connect_timeout` and `connect_retries`,
 and dbt will periodically retry the connection.
 
+<VersionBlock firstVersion="1.1">
+
+### Session
+
+Use the `session` method if you want to run `dbt` against a pySpark session. 
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: session
+      schema: [database/schema name]
+      host: NA                           # not used, but required by `dbt-core`
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.0">
+
+## Optional configurations
+
+### Retries
+
+Intermittent errors can crop up unexpectedly while running queries against Apache Spark. If `retry_all` is enabled, dbt-spark will naively retry any query that fails, based on the configuration supplied by `connect_timeout` and `connect_retries`. It does not attempt to determine if the query failure was transient or likely to succeed on retry. This configuration is recommended in production environments, where queries ought to be succeeding.
+
+For instance, this will instruct dbt to retry all failed queries up to 3 times, with a 5 second delay between each retry:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+retry_all: true
+connect_timeout: 5
+connect_retries: 3
+```
+
+</File>
+
+</VersionBlock>
+
 ## Installation and Distribution
 
 dbt's adapter for Apache Spark and Databricks is managed in its own repository, [dbt-spark](https://github.com/dbt-labs/dbt-spark). To use it, 
@@ -127,10 +186,20 @@ If connecting to a Spark cluster via the generic thrift or http methods, it requ
 ```
 # odbc connections
 $ pip install "dbt-spark[ODBC]"
-
+```
+```
 # thrift or http connections
 $ pip install "dbt-spark[PyHive]"
 ```
+
+<VersionBlock firstVersion="1.1">
+
+```
+# session connections
+$ pip install "dbt-spark[session]"
+```
+
+</VersionBlock>
 
 ## Caveats
 
@@ -145,6 +214,4 @@ on Delta Lake (Databricks).
 Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
 2. [Snapshots](snapshots)
-
-Some dbt features, available on the core adapters, are not yet supported on Spark:
-1. [Persisting](persist_docs) column-level descriptions as database comments
+3. [Persisting](persist_docs) column-level descriptions as database comments

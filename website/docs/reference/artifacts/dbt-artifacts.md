@@ -2,7 +2,7 @@
 title: Overview
 ---
 
-With every invocation, dbt generates and saves one or more *artifacts*. Several of these are JSON files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
 - [documentation](documentation)
 - [state](understanding-state)
 - [visualizing source freshness](cloud-snapshotting-source-freshness)
@@ -10,7 +10,7 @@ With every invocation, dbt generates and saves one or more *artifacts*. Several 
 They could also be used to:
 - calculate project-level test coverage
 - perform longitudinal analysis of run timing
-- identify historical changes in table structure
+- identify historical changes in <Term id="table" /> structure
 - do much, much more
 
 dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in dbt v0.19.0, we are committing to a stable and sustainable way of versioning, documenting, and validating dbt artifacts.
@@ -18,8 +18,8 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ## When are artifacts produced?
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
-- [manifest](manifest-json): produced by `compile`, `run`, `test`, `docs generate`, `ls`
-- [run results](run-results-json): produced by `run`, `test`, `seed`, `snapshot`, `docs generate`
+- [manifest](manifest-json): produced by `build`, `compile`, `run`, `test`, `docs generate`, `ls`
+- [run results](run-results-json): produced by `build`, `run`, `test`, `seed`, `snapshot`, `docs generate`
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](sources-json): produced by `source freshness`
 
@@ -43,9 +43,4 @@ In the manifest, the `metadata` may also include:
 
 #### Notes:
 - The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at **schemas.getdbt.com**.
-- As of v0.20.0, the current schema for each artifact is:
-    - https://schemas.getdbt.com/dbt/manifest/v4.json
-    - https://schemas.getdbt.com/dbt/run-results/v4.json
-    - https://schemas.getdbt.com/dbt/catalog/v1.json
-    - https://schemas.getdbt.com/dbt/sources/v3.json
-- Artifact versions may change in any minor version of dbt (`v0.x.0`). Each artifact is versioned independently.
+- Artifact versions may change in any minor version of dbt (`v1.x.0`). Each artifact is versioned independently.

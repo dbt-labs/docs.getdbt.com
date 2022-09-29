@@ -17,11 +17,11 @@ Let's get started!
 
 ## Create a connection
 
-dbt Cloud uses this connection to _connect_ to your database when running jobs and transformation queries. Depending on the type of data warehouse you're using, you'll need to supply [different configuration parameters](docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database). dbt Cloud natively supports connections to Snowflake, BigQuery, Redshift, Apache Spark, Databricks, and Postgres.
+dbt Cloud uses this connection to _connect_ to your database when running jobs and transformation queries. Depending on the type of <Term id="data-warehouse" /> you're using, you'll need to supply [different configuration parameters](docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database). dbt Cloud natively supports connections to Snowflake, BigQuery, Redshift, Apache Spark, Databricks, and Postgres.
 
 After picking a data warehouse type, a form will be generated where you can populate your warehouse's credentials. These credentials are encrypted at rest, and dbt Cloud never stores credentials in plaintext.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-connection.png" title="An example connection for a Snowflake data warehouse"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-connection.png" title="Select your data warehouse from the list to get connected"/>
 
 ## Connect a repository
 
@@ -40,13 +40,13 @@ Environments specify the information required to run dbt for your project. New d
 
 Scheduled dbt jobs can be configured in Deployment environments. These deployment environments must be configured with deployment credentials. Unlike Development credentials which run with the permissions of a human being, deployment credentials should be configured with a service account database user. We recommend configuring deployment environments to run as a user named dbt_cloud (or similar) in your database.
 
-To create an Environment, click the hamburger button in the upper left-hand corner of the Cloud UI and select Environments from the menu. You’ll then click the “New Environment” button where you can specify the dbt version and custom branch (if applicable) that dbt Cloud should use to build your project. Additionally, the deployment credentials for the Environment can be configured on this page.
+To create an environment, click **Deploy** in the upper left and select **Environments** from the menu. You can then click **Create Environment** where you can specify the dbt version and custom branch (if applicable) that dbt Cloud should use to build your project. Additionally, the deployment credentials for the environment can be configured on this page.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-environment.png" title="Creating a new deployment environment"/>
 
 ## Create a new job
 
-Now that dbt Cloud is able to clone your dbt repo and connect to your warehouse, you're ready to create a new job! To create a job, navigate to the Jobs page from the left sidebar, then click the "New Job" button. In the job creation interface, you can specify the environment that the job should use, as well as commands and configuration for your new job.
+Now that dbt Cloud is able to clone your dbt repo and connect to your warehouse, you're ready to create a new job! To create a job, click **Deploy** in the upper left and select **Jobs**. On the next page, click **Create Job**. In the Create New Job page, you can specify the environment that the job should use, as well as commands and configuration for your new job.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job.png" title="An example job definition"/>
 
@@ -54,6 +54,8 @@ Job schedules can be configured from the job creation interface. You can either 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job-schedule.png" title="Setting a job schedule"/>
 
-## Alternatives
+## Other ways to quickly connect dbt Cloud 
 
-If you are interested in trialing dbt Cloud with Snowflake, you can use [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to spin up a dbt Cloud account with all of the key objects created (deployment and development environments, git repository, and sample job). All you need is a Snowflake Account with access to the ACCOUNTADMIN role to go into Partner Connect and find the dbt tile to set up a dedicated environment for test driving. 
+You may also jump-start your dbt Cloud onboarding by using one of the following Partner Connect integrations:
+ - [Snowflake Partner Connect](setting-up-snowflake#option-1-connect-dbt-cloud-and-snowflake-with-partner-connect)
+ - [Databricks Partner Connect](setting-up-databricks#option-1-connect-dbt-cloud-and-databricks-with-partner-connect)

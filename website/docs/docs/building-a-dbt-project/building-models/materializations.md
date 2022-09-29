@@ -4,9 +4,11 @@ id: "materializations"
 ---
 
 ## Overview
-Materializations are strategies for persisting dbt models in a warehouse. There are four types of materializations built into dbt. They are:
-- table
-- view
+
+<Term id="materialization">Materializations</Term> are strategies for persisting dbt models in a warehouse. There are four types of materializations built into dbt. They are:
+
+- <Term id="table" />
+- <Term id="view" />
 - incremental
 - ephemeral
 
@@ -69,7 +71,7 @@ When using the `view` materialization, your model is rebuilt as a view on each r
     * Views are best suited for models that do not do significant transformation, e.g. renaming, recasting columns.
 
 ### Table
-When using the `table` materialization, your model is rebuilt as a table on each run, via a `create table as` statement.
+When using the `table` materialization, your model is rebuilt as a <Term id="table" /> on each run, via a `create table as` statement.
 * **Pros:** Tables are fast to query
 * **Cons:**
     * Tables can take a long time to rebuild, especially for complex transformations
@@ -88,10 +90,10 @@ When using the `table` materialization, your model is rebuilt as a table on each
     * Use incremental models when your `dbt run`s are becoming too slow (i.e. don't start with incremental models)
 
 ### Ephemeral
-`ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from this model into dependent models as a common table expression.
+`ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from this model into dependent models as a common <Term id="table" /> expression.
 * **Pros:**
     * You can still write reusable logic
-    * Ephemeral models can help keep your data warehouse clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](using-custom-schemas)).
+    * Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](using-custom-schemas)).
 * **Cons:**
     * You cannot select directly from this model.
     * Operations (e.g. macros called via `dbt run-operation` cannot `ref()` ephemeral nodes)
