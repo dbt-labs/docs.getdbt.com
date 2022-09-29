@@ -35,7 +35,7 @@ Depending on the resource type, configurations can be defined:
 
 ### Config inheritance
 
-Configurations are prioritized in order of specificity, which is generally the order above: an in-file `config()` block takes precedence over properties defied in a `.yml` file, which takes precedence over a config defined in the project file. (Note that generic tests work a little differently when it comes to specificity. See [test configs](test-configs).)
+Configurations are prioritized in order of specificity, which is generally the order above: an in-file `config()` block takes precedence over properties defined in a `.yml` file, which takes precedence over a config defined in the project file. (Note that generic tests work a little differently when it comes to specificity. See [test configs](test-configs).)
 
 Within the project file, configurations are also applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
