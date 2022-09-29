@@ -22,7 +22,18 @@ const sidebarSettings = {
           collapsed: false,
           link: { type: 'doc', id: 'guides/getting-started/learning-more/getting-started-dbt-core' },
           items: [
-            "dbt-cli/install/overview",
+            {
+              type: "category",
+              label: "Installation",
+              collapsed: true,
+              link: { type: 'doc', id: 'docs/develop/installation' },
+              items: [
+                "docs/develop/homebrew-install",
+                "docs/develop/pip-install",
+                "docs/develop/docker-install",
+                "docs/develop/source-install",
+              ],
+            },
           ],
         },
         {
@@ -133,17 +144,6 @@ const sidebarSettings = {
   ],
   "dbt CLI": [
     "dbt-cli/cli-overview",
-    {
-      type: "category",
-      label: "Installing dbt from the command line",
-      items: [
-        "dbt-cli/install/overview",
-        "dbt-cli/install/homebrew",
-        "dbt-cli/install/pip",
-        "dbt-cli/install/docker",
-        "dbt-cli/install/from-source",
-      ],
-    },
     "dbt-cli/configure-your-profile",
   ],
   "dbt Cloud": [
