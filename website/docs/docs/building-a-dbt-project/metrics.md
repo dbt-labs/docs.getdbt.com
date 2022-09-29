@@ -368,7 +368,7 @@ from {{ metrics.calculate(
 
 </VersionBlock>
 
-### Supported Inputs
+### Supported inputs
 The example above doesn't display all the potential inputs you can provide to the macro.
 
 You may find some pieces of functionality, like secondary calculations, complicated to use. We recommend reviewing the [package README](https://github.com/dbt-labs/dbt_metrics) for more in-depth information about each of the inputs that are not covered in the table below
