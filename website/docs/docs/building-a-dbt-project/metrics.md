@@ -8,7 +8,7 @@ keywords:
 
 <Changelog>
 
-* **v1.3.0**: Metrics are considered 
+* **v1.3.0**: Metrics have been moved out of the experimental phase
 * **v1.0.0**: Metrics are new and experimental
 
 </Changelog>
@@ -19,7 +19,7 @@ A metric is a timeseries aggregation over a <Term id="table" /> that supports ze
 - active users
 - monthly recurring revenue (mrr)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics participate in the dbt docs lineage (DAG) and can be expressed in YAML files. By defining metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 ### Benefits of defining metrics
 
@@ -137,7 +137,7 @@ metrics:
 
 
 ### Available properties
-Metrics can have a number of declared **properties**, which define aspects of your metric. More information on [properties and configs can be found here](https://docs.getdbt.com/reference/configs-and-properties).
+Metrics can have many declared **properties**, which define aspects of your metric. More information on [properties and configs can be found here](https://docs.getdbt.com/reference/configs-and-properties).
 
 <VersionBlock firstVersion="1.3">
 
@@ -206,7 +206,7 @@ In v1.2, support was added for `derived` metrics (previously named `expression`)
 - subtractions 
 - any arbitrary calculation
 
-As long as the two+ base metrics (the metrics that comprise the `derived` metric) share the specified `time_grains` and `dimensions`, those attributes can be used in any downstream metrics macro.
+As long as the two (or more) base metrics (metrics that comprise the `derived` metric) share the specified `time_grains` and `dimensions`, those attributes can be used in any downstream metrics macro.
 
 An example definition of an `derived` metric is:
 </VersionBlock>
@@ -303,7 +303,9 @@ Note that `value` must be defined as a string in YAML, because it will be compil
 ```
 
 ## Querying Your Metric
-If you're interested in querying your metric, you must have the [dbt_metrics package](https://github.com/dbt-labs/dbt_metrics) installed. Information on how to install packages in [your project can be found here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management#how-do-i-add-a-package-to-my-project) - this can be used in conjunction with the code snippet below to ensure you can query metrics in your project. 
+You can dynamically query metrics directly in dbt and verify them before running a job in the deployment environment.  To query your defined metric, you must have the [dbt_metrics package](https://github.com/dbt-labs/dbt_metrics) installed. Information on how to [install packages can be found here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management#how-do-i-add-a-package-to-my-project).
+
+Use the following [metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) installation code in your packages.yml file and run `dbt deps` to install the metrics package:
 
 <VersionBlock firstVersion="1.3" lastVersion="1.3">
 
@@ -335,8 +337,10 @@ packages:
 
 </VersionBlock>
 
+Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_calendar_model` model as this is required for macros used to query metrics. More information on this, and additional calendar functinality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
+
 ### Querying metrics with `metrics.calculate`
-The calculate macro is used in conjunction with defined metrics to generate a sql statement that runs the metric aggregation to return the correct metric dataset. Example below:
+Use the `metrics.calculate` macro along with defined metrics to generate a SQL statement that runs the metric aggregation to return the correct metric dataset. Example below:
 
 <VersionBlock firstVersion="1.2" >
 
@@ -365,7 +369,10 @@ from {{ metrics.calculate(
 </VersionBlock>
 
 ### Supported Inputs
-The example above does not display all of the potential inputs that can be provided to the macro. Certain pieces of functionality, such as secondary calculations, can be complicated to use - we recomemend navigating to the [package README](https://github.com/dbt-labs/dbt_metrics) for more in depth information around each of the inputs that is not covered in the table below.
+The example above doesn't display all the potential inputs you can provide to the macro.
+
+You may find some pieces of functionality, like secondary calculations, complicated to use. We recommend reviewing the [package README](https://github.com/dbt-labs/dbt_metrics) for more in-depth information about each of the inputs that are not covered in the table below
+
 
 | Input       | Example     | Description | Required   |
 | ----------- | ----------- | ----------- | -----------|
@@ -381,7 +388,7 @@ The example above does not display all of the potential inputs that can be provi
 
 <VersionBlock firstVersion="1.3" >
 
-There may be times when you want to test what a metric might look like before defining it in your project. In these cases you should use the `develop` metric, which allows you to provide metric(s) in a contained yml in order to simulate what the metric might loook like if defined in your project.
+There may be times you want to test what a metric might look like before defining it in your project. In these cases, use the `develop` metric, which allows you to provide metric(s) in a contained yml so you can simulate what a defined metric might look like in your project.
 
 ```sql
 {% set my_metric_yml -%}
@@ -411,13 +418,17 @@ from {{ metrics.develop(
     }}
 ```
 
-**Important Caveat** - The metric list input for this macro takes in the metric names themselves, not the `metric('name')` statement that the `calculate` macro uses.
+**Important caveat** - The metric list input for the `metrics.develop` macro takes in the metric names themselves, not the `metric('name')` statement that the `calculate` macro uses. Using the example above:
+
+✅ `['develop_metric']`
+❌ `[metric('develop_metric')]`
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.2" lastVersion="1.2" >
 
-There may be times when you want to test what a metric might look like before defining it in your project. In these cases you should use the `develop` metric, which allows you to provide a single metric in a contained yml in order to simulate what the metric might loook like if defined in your project.
+There may be times you want to test what a metric might look like before defining it in your project. In these cases, the `develop` metric, which allows you to provide a single metric in a contained yml so you can simulate what a defined metric might look like in your project.
+
 
 ```sql
 {% set my_metric_yml -%}
@@ -450,7 +461,7 @@ from {{ metrics.develop(
 
 <VersionBlock lastVersion="1.1" >
 
-Functionality for `develop` is only supported in v1.2 and greater. Please navigate to those versions for information about this method of metric development.
+Functionality for `develop` is only supported in v1.2 and higher. Please navigate to those versions for information about this method of metric development.
 
 </VersionBlock>
 

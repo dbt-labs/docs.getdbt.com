@@ -18,7 +18,7 @@ The manifest schema version will be updated to `v7` to reflect three changes ass
 - Renamed `compiled_sql` to `compiled_code`
 - A new top-level node property, `language` (`'sql'` or `'python'`)
 
-For users of [state-based selection](understanding-state): This release includes logic providing backwards and forwards compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0+.
+For users of [state-based selection](understanding-state): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
 
 ### For users of dbt Metrics
 
@@ -40,8 +40,8 @@ _GitHub discussion forthcoming_
 
 - **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
 
-- **[Metrics](building-a-dbt-project/metrics)** have been updated to reflect their new syntax for definition, as well as additional attributes that are now available.
+- Updates made to **[Metrics](building-a-dbt-project/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
 
 Docs in progress: [Issues labeled "dbt-core v1.3"](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.3%22+)
 
-- **[`node_color` now a supported `docs` attribute](/docs/reference/resource-configs/docs.md)**: You can add custom colors to the dbt docs lineage (DAG) graph. For the first time, you can physically visualize layers within the DAG, such as bronze, silver, and gold.
+- **[`node_color` now a supported `docs` attribute](/docs/reference/resource-configs/docs.md)**: You can add custom colors to the DAG. For the first time, you can physically visualize layers within the DAG, such as bronze, silver, and gold.
