@@ -31,7 +31,7 @@ As with Exposures, you can see everything that rolls up into a metric (`dbt ls -
 
 <Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 
-## Declaring a metric
+## Defining a metric
 
 You can define metrics in `.yml` files nested under a `metrics:` key.
 
