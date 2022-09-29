@@ -279,7 +279,7 @@ a.code-link:hover {
 
 .navbar__link {
   font-size: 1rem;
-  margin: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal) 0;
+  margin: 0 var(--ifm-navbar-item-padding-horizontal) 0;
   padding: 0;
   border-bottom: 1px solid transparent;
 }
@@ -299,6 +299,57 @@ a.code-link:hover {
   display: flex;
   align-items: baseline;
   justify-content: center;
+}
+
+.navbar-sidebar .menu__link.nav-create-account {
+  color: var(--color-white);
+  border: none;
+}
+
+.navbar-sidebar .menu__link.nav-create-account:hover {
+  color: var(--color-white);
+  background: var(--color-light-teal);
+}
+
+.navbar__items .navbar__link.nav-create-account {
+  color: var(--color-white);
+  height: 30px;
+  align-self: auto;
+  padding: 0 12px;
+  margin-top: 0;
+  margin-left: 0;
+  border: none;
+  order: 3;
+}
+
+.navbar__items .navbar__link.nav-create-account:hover {
+  background: var(--color-light-teal);
+}
+
+/* Reorder search and darkmode toggle */
+.navbar__items.navbar__items--right div[class^="searchBox"] {
+  order: 2;
+}
+
+.navbar__items.navbar__items--right div[class^="toggle"] {
+  order: 4;
+}
+
+/* moon/sun icons for dark/light mode */
+html[data-theme=light] svg[class^="lightToggleIcon_"] {
+  display: none;
+}
+
+html[data-theme=light] svg[class^="darkToggleIcon_"] {
+  display: block;
+}
+
+html[data-theme=dark] svg[class^="lightToggleIcon_"] {
+  display: block;
+}
+
+html[data-theme=dark] svg[class^="darkToggleIcon_"] {
+  display: none;
 }
 
 /* Search Button Styles */
@@ -667,7 +718,7 @@ div .toggle_src-components-faqs-styles-module {
 }
 
 .card.large .button:hover {
-  background: #fff;
+  background: var(--color-white);
   border-color: var(--color-white);
   color: var(--color-green-blue);
 }
@@ -997,7 +1048,7 @@ filter: opacity(.75);
     button.DocSearch-Button {
       border: 1px solid #95a0b1;
       border-radius: 5px;
-      height: 35px;
+      height: 30px;
     }
     
     button.DocSearch-Button:active, 
@@ -1036,6 +1087,13 @@ filter: opacity(.75);
       font-size: 1.25rem;
       margin-right: 0;
       padding: 4px 4px 2px;
+    }
+
+    /* Add dark background on hover for searchbox */
+    [data-theme='dark'] button.DocSearch-Button:active,
+    [data-theme='dark'] button.DocSearch-Button:focus,
+    [data-theme='dark'] button.DocSearch-Button:hover {
+      background: #ffffff10;
     }
 }
 
@@ -1089,10 +1147,6 @@ filter: opacity(.75);
   .navbar__item.navbar__link {
     display: flex;
     align-self: stretch;
-  }
-
-  .navbar__items.navbar__items--right > div:nth-of-type(3) {
-    order: 1;
   }
 
   .navbar__items--right > :last-child {
