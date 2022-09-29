@@ -1,5 +1,5 @@
 ---
-title: "Query metadata API the previous three months of data"
+title: "Query the previous three months of data in the metadata API"
 id: "metadata-api-data-retention-limits.md"
 description: "Metadata API data retention limits"
 sidebar_label: "Fix: Metadata API data retention limits"
