@@ -48,3 +48,46 @@ This variable is a pointer to the Python [re](https://docs.python.org/3/library/
     ) -%}
 {% endif %}
 ```
+
+<VersionBlock firstVersion="1.2">
+
+## itertools
+This variable is a pointer to the Python [itertools](https://docs.python.org/3/library/itertools.html) module, which includes useful functions for working with iterators (loops, lists, and the like).
+
+The supported functions are:
+- `count`
+- `cycle`
+- `repeat`
+- `accumulate`
+- `chain`
+- `compress`
+- `islice`
+- `starmap`
+- `tee`
+- `zip_longest`
+- `product`
+- `permutations`
+- `combinations`
+- `combinations_with_replacement`
+
+**Usage**
+
+```
+{%- set A = [1, 2] -%}
+{%- set B = ['x', 'y', 'z'] -%}
+{%- set AB_cartesian = modules.itertools.product(A, B) -%}
+
+{%- for item in AB_cartesian %}
+  {{ item }}
+{%- endfor -%}
+```
+```
+  (1, 'x')
+  (1, 'y')
+  (1, 'z')
+  (2, 'x')
+  (2, 'y')
+  (2, 'z')
+```
+
+</VersionBlock>

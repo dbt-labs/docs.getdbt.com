@@ -201,7 +201,7 @@ models:
   - name: dim_customers
     description: >
       One record per customer. Note that a customer must have made a purchase to
-      be included in this table — customer accounts that were created but never
+      be included in this <Term id="table" /> — customer accounts that were created but never
       used have been filtered out.
 
     columns:
@@ -357,7 +357,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt/develop/etc/dbt-logo.svg)"
+    description: "!\[dbt Logo](https://github.com/dbt-labs/dbt-core/blob/main/etc/dbt-core.svg)"
 
     columns:
       - name: customer_id

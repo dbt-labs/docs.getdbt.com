@@ -11,7 +11,7 @@ This is a work in progress document. While this configuration applies to multipl
 ## Definition
 Optionally specify a custom schema for a [model](docs/building-a-dbt-project/building-models) or [seed](docs/building-a-dbt-project/seeds). (To specify a schema for a [snapshot](snapshots), use the [`target_schema` config](target_schema)).
 
-When dbt creates a relation (table/view) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
+When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
 The standard behavior of dbt is:
 * If a custom schema is _not_ specified, the schema of the relation is the target schema (`{{ target.schema }}`).

@@ -13,11 +13,11 @@ is_featured: false
 
 ### Why primary keys are important
 
-We all know one of the most fundamental rules in data is that every table should have a primary key. Primary keys are critical for many reasons:
+We all know one of the most fundamental rules in data is that every <Term id="table" /> should have a <Term id="primary-key" />. Primary keys are critical for many reasons:
 
 * They ensure that you don’t have duplicate rows in your table
 * They help establish relationships to other tables
-* They allow you to quickly identify the grain of the table (ex: the `customers` table with a PK of `customer_id` has one row per customer)
+* They allow you to quickly identify the <Term id="grain" /> of the table (ex: the `customers` table with a PK of `customer_id` has one row per customer)
 * You can test them in dbt, to ensure that your data is complete and unique
 
 <!--truncate-->
@@ -34,7 +34,7 @@ The question is - in this situation, how are you supposed to set a primary key? 
 
 ### What’s a surrogate key?
 
-A surrogate key is a primary key that, instead of existing in your underlying dataset, is _derived in the analytics layer itself._ 
+A <Term id="surrogate-key">surrogate key</Term> is a primary key that, instead of existing in your underlying dataset, is _derived in the analytics layer itself._ 
 
 Learning when to use surrogate keys and bring them into your project is a critical skill for any analytics professional. 
 
@@ -156,14 +156,14 @@ output:
 | `null`  | 123        | \|123          |
 
 
-Let’s take a look at how generating surrogate keys specifically looks in practice across data warehouses, and how you can use one simple dbt macro ([dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)) to abstract away the null value problem.
+Let’s take a look at how generating surrogate keys specifically looks in practice across <Term id="data-warehouse">data warehouses</Term>, and how you can use one simple dbt macro ([dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)) to abstract away the null value problem.
 
 
 ### A surrogate_key macro to the rescue
 
 Thanks to a handy function called [surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) in the [dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/), you can fire yourself from the business of wrapping your columns in `coalesce` every time you want to generate a surrogate key.
 
-Forming your surrogate keys with this macro has the benefit of **elegant + DRY null handling**. 
+Forming your surrogate keys with this macro has the benefit of **elegant + <Term id="dry" /> null handling**. 
 
 Rather than wrapping your columns in a `coalesce` function when concatenating them, the macro loops through your columns and _coalesces_ on your behalf, so that you can avoid repeating yourself.
 

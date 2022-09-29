@@ -85,7 +85,7 @@ Each user can have a specific role on each account. For more information on each
 
 A new version of dbt Cloud will appear on the Version History page in your Configuration Console anytime any of the following happen:
 
-- A new version of the dbt Cloud code is released. This typically happens every two weeks, and each new version will be accompanied by a [changelog](/docs/dbt-cloud/cloud-changelog).
+- A new version of the dbt Cloud code is released. This typically happens every two weeks, and each new version will be accompanied by a [changelog](/docs/dbt-cloud/release-notes).
 - Any configuration change is applied to your application via the Configuration Console.
 - Anytime an edit is applied to your Kubernetes configs via the overlays mechanism built into kots.
 

@@ -152,7 +152,7 @@ This feature is not implemented for analyses.
 
 ## Description
 
-The `tests` property defines assertions about a column, table, or view. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
+The `tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 
@@ -228,7 +228,7 @@ models:
 
 ### `relationships`
 
-This test validates that all of the records in a child table have a corresponding record in a parent table. This property is referred to as "referential integrity".
+This test validates that all of the records in a child <Term id="table" /> have a corresponding record in a parent table. This property is referred to as "referential integrity".
 
 The following example tests that every order's `customer_id` maps back to a valid `customer`.
 
@@ -436,7 +436,7 @@ $ dbt test
 
 ### Alternative format for defining tests
 
-When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
+When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
 
 This example is identical to the one above:
 

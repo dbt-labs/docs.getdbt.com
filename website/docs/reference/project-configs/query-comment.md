@@ -39,7 +39,7 @@ The `query-comment` configuration can also call a macro that returns a string.
 </Changelog>
 
 ## Default
-By default, dbt will insert a JSON comment at the top of your query containing the information including the dbt version, profile and target names, and node ids for the resources it runs. For example:
+By default, dbt will insert a <Term id="json" /> comment at the top of your query containing the information including the dbt version, profile and target names, and node ids for the resources it runs. For example:
 
 ```sql
 /* {"app": "dbt", "dbt_version": "0.15.0rc2", "profile_name": "debug",
@@ -56,7 +56,7 @@ create view analytics.analytics.orders as (
 ## Using the dictionary syntax
 The dictionary syntax includes two keys:
   * `comment` (optional, see above for default): The string to be injected to a query as a comment.
-  * `append` (optional, default=`false`): Whether a comment should be appended (added to the bottom of a query) or not (i.e. added to the top of a comment). By default, comments are added to the top of queries (i.e. `append: false`).
+  * `append` (optional, default=`false`): Whether a comment should be appended (added to the bottom of a query) or not (i.e. added to the top of a query). By default, comments are added to the top of queries (i.e. `append: false`).
 
 This syntax is useful on databases like Snowflake which [remove leading SQL comments](https://docs.snowflake.com/en/release-notes/2017-04.html#queries-leading-comments-removed-during-execution).
 
