@@ -1,5 +1,5 @@
 ---
-title: "Configuring your profile"
+title: "Connection profiles"
 description: "Configure your profile using the command line."
 ---
 
