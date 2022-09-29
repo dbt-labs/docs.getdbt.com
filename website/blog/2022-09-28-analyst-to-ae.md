@@ -1,6 +1,6 @@
 ---
 title: "Analysts make the best analytics engineers"
-description: "You often hear of the disgruntled analyst becoming the analytics engineer..and loving it? In this article, Brittany walks through what makes analysts ripe for best pracitice analytics engineering work."
+description: "You often hear of the disgruntled analyst becoming the analytics engineer..and loving it? In this article, Brittany walks through what makes analysts ripe for analytics engineering."
 slug: analysts-make-the-best-aes
 authors: [brittany_krauth]
 tags: [analytics craft]
