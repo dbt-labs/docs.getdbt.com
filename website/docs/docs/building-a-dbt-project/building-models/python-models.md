@@ -118,7 +118,7 @@ def model(dbt, session):
 
 ### Referencing other models
 
-Python models participate fully in dbt's directed acyclic graph (DAG) of transformations. Use the `dbt.ref()` method within a Python model to read in data from other models (SQL or Python). If you want to read directly from a raw source table, use `dbt. source()`. These methods return DataFrames pointing to the upstream source, model, seed, or snapshot.
+Python models participate fully in dbt's directed acyclic graph (DAG) of transformations. Use the `dbt.ref()` method within a Python model to read in data from other models (SQL or Python). If you want to read directly from a raw source table, use `dbt.source()`. These methods return DataFrames pointing to the upstream source, model, seed, or snapshot.
 
 <File name='models/my_python_model.py'>
 
