@@ -170,7 +170,32 @@ const sidebarSettings = {
       link: { type: 'doc', id: 'docs/dbt-cloud/deployments/deployment-overview' },
       collapsed: true,
       items: [
-        "docs/building-a-dbt-project/managing-environments",
+        {
+          type: "category",
+          label: "dbt Cloud deploy options",
+          items: [
+            "docs/dbt-cloud/deployments/deployment-architecture",
+            "docs/dbt-cloud/deployments/multi-tenant-deployment",
+            "docs/dbt-cloud/deployments/airgapped-deployment",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud production jobs",
+          items: [
+            "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
+            "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
+            {
+              type: "category",
+              label: "Project-level source freshness",
+              link: { type: 'doc', id: 'docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness' },
+              items: [
+                "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
+              ],
+            },
+          ],
+        },
+        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
         "docs/building-a-dbt-project/documentation",
         "docs/running-a-dbt-project/using-the-dbt-ide",
         "docs/running-a-dbt-project/running-dbt-in-production",
@@ -178,38 +203,104 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Contributing",
+      label: "Collaborate",
       items: [
-        "docs/contributing/oss-expectations",
-        "docs/contributing/contributor-license-agreements",
-        "docs/contributing/slack-rules-of-the-road",
-        "docs/contributing/long-lived-discussions-guidelines",
         {
           type: "category",
-          label: "Adapter development",
-          link: {
-            type: 'generated-index',
-            title: 'Adapter Development',
-            description: 'Learn what an adapter is what what\'s required to make one. Also how to build, test, document, promote, and verify your new adapter. Visit the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond this section.',
-
-          },
+          label: "Git version control",
           items: [
-            'docs/contributing/adapter-development/1-what-are-adapters',
-            'docs/contributing/adapter-development/2-prerequisites-for-a-new-adapter',
-            'docs/contributing/adapter-development/3-building-a-new-adapter',
-            'docs/contributing/adapter-development/4-testing-a-new-adapter',
-            'docs/contributing/adapter-development/5-documenting-a-new-adapter',
-            'docs/contributing/adapter-development/6-promoting-a-new-adapter',
-            'docs/contributing/adapter-development/7-verifying-a-new-adapter'
-          ]
-        }
+            "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
+            "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
+            {
+              type: "category",
+              label: "Supported git providers",
+              items: [
+                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
+                "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
+                {
+                  type: "category",
+                  label: "Connecting Azure DevOps",
+                  link: { type: 'doc', id: 'docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops' },
+                  items: [
+                    'docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure',
+                    'docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure',
+                  ],
+                },
+                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
+              ],
+            },
+          ],
+        },
+        "docs/building-a-dbt-project/managing-environments",
+        {
+          type: "category",
+          label: "Document your dbt projects",
+          link: { type: 'doc', id: 'docs/building-a-dbt-project/documentation' },
+          items: [
+            "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
+          ],
+        },
+
+        {
+          type: "category",
+          label: "Manage access",
+          items: [
+            "docs/dbt-cloud/access-control/access-control-overview",
+            "docs/dbt-cloud/access-control/cloud-seats-and-users",
+            {
+              type: "category",
+              label: "Permissions",
+              items: [
+                "docs/dbt-cloud/access-control/self-service-permissions",
+                "docs/dbt-cloud/access-control/enterprise-permissions",
+              ],
+            },
+
+            {
+              type: "category",
+              label: "Single sign-on",
+              link: { type: 'doc', id: 'docs/dbt-cloud/dbt-cloud-enterprise/sso-overview', },
+              items: [
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta",
+              ],
+            }, // SSO
+            {
+              type: "category",
+              label: "OAuth with data platforms",
+              items: [
+                "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
+                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
+              ],
+            }, // oauth
+            "docs/dbt-cloud/dbt-cloud-enterprise/audit-log",
+          ],
+        }, // Manage access
       ],
     },
     {
       type: "category",
-      label: "About",
-      items: ["docs/about/license", "docs/about/viewpoint"],
+      label: "Available dbt versions",
+      items: [
+        "docs/core-versions",
+        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
+        {
+          type: "category",
+          label: "dbt Cloud Release Notes",
+          link: { type: 'doc', id: 'docs/dbt-cloud/release-notes' },
+          items: [
+            {
+              type: "autogenerated",
+              dirName: "docs/dbt-cloud/release-notes",
+            },
+          ],
+        },
+      ],
     },
+    "docs/dbt-cloud/cloud-dbt-cloud-support",
+    "docs/about/viewpoint",
     {
       type: "category",
       label: "Frequently asked questions",
@@ -241,7 +332,6 @@ const sidebarSettings = {
       type: "category",
       label: "dbt Cloud IDE",
       items: [
-        "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
         "docs/dbt-cloud/cloud-ide/the-ide-git-button",
         "docs/dbt-cloud/cloud-ide/ide-beta",
@@ -253,21 +343,7 @@ const sidebarSettings = {
       items: [
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
-        {
-          type: "category",
-          label: "Connecting Azure DevOps",
-          link: { type: 'doc', id: 'docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops' },
-          items: [
-            'docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure',
-            'docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure',
-          ],
-        },
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
       ],
     },
     {
@@ -280,74 +356,9 @@ const sidebarSettings = {
         slug: '/docs/dbt-cloud',
       },
       items: [
-        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness",
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
         "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
-      ],
-    },
-    {
-      type: "category",
-      label: "Access Control",
-      items: [
-        "docs/dbt-cloud/access-control/access-control-overview",
-        "docs/dbt-cloud/access-control/cloud-seats-and-users",
-        "docs/dbt-cloud/access-control/self-service-permissions",
-        "docs/dbt-cloud/access-control/enterprise-permissions",
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud Enterprise",
-      items: [
-        "docs/dbt-cloud/dbt-cloud-enterprise",
-        {
-          type: "category",
-          label: "Single Sign On",
-          items: [
-            "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
-          ],
-        },
-        {
-          type: "category",
-          label: "Database Auth",
-          items: [
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
-            "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
-          ],
-        },
-        "docs/dbt-cloud/dbt-cloud-enterprise/audit-log",
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud Deployments",
-      items: [
-        "docs/dbt-cloud/deployments/deployment-overview",
-        "docs/dbt-cloud/deployments/multi-tenant-deployment",
-        "docs/dbt-cloud/deployments/single-tenant-deployment",
-        "docs/dbt-cloud/deployments/deployment-architecture",
-      ],
-    },
-
-    "docs/dbt-cloud/cloud-dbt-cloud-support",
-    {
-      type: "category",
-      label: "dbt Cloud Release Notes",
-      link: { type: 'doc', id: 'docs/dbt-cloud/release-notes' },
-      items: [
-        {
-          type: "autogenerated",
-          dirName: "docs/dbt-cloud/release-notes",
-        },
       ],
     },
   ],
