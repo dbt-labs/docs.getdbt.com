@@ -343,3 +343,15 @@ yu_ishikawa:
    links:
    - url: https://www.linkedin.com/in/yuishikawa0301
      icon: fa-linkedin
+
+brittany_krauth:
+   name: Brittany Krauth
+   job_title: Manager, Analytics & Insights
+   description: Brittany Krauth works as Manager, Analytics & Insights supporting Degreed's upskilling platform. Brittany is passionate about building a company-wide data-driven culture. She has worked in various analytical roles, from a focus on predictive analytics to data visualization to process improvements. In addition, she holds a BS in Industrial Engineering from Georgia Tech. In her spare time, Brittany competes in dog agility and trains donkeys.
+   organization: Degreed
+   image_url: /img/blog/authors/brittany-krauth.png
+   links:
+   - url: https://www.linkedin.com/in/brittanykrauth
+     icon: fa-linkedin
+
+
