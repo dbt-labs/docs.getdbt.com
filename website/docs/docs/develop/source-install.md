@@ -1,6 +1,5 @@
 ---
-title: "Install dbt from source"
-id: "from-source"
+title: "Install from source"
 description: "You can install dbt Core from its GitHub code source."
 ---
 

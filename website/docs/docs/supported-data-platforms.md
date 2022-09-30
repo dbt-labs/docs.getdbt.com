@@ -1,5 +1,5 @@
 ---
-title: "Supported Data Platforms"
+title: "Supported data platforms"
 id: "supported-data-platforms"
 ---
 
