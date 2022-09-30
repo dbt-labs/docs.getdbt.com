@@ -581,12 +581,14 @@ In their initial launch, Python models are supported on three of the most popula
 **About "sprocs":** dbt submits Python models to run as "stored procedures," which some people call "sprocs" for short. By default, dbt will create a named sproc containing your model's compiled Python code, and then "call" it to execute. Snowpark has a Private Preview feature for "temporary" or "anonymous" stored procedures ([docs](https://docs.snowflake.com/en/LIMITEDACCESS/call-with.html)), which are faster and leave a cleaner query history. If this feature is enabled for your account, you can switch it on for your models by configuring `use_anonymous_sproc: True`. We plan to switch this on for all dbt + Snowpark Python models in a future release.
 
 <File name='dbt_project.yml'>
+
 ```yml
 # I asked Snowflake Support to enable this Private Preview feature,
 # and now my dbt-py models run even faster!
 models:
   use_anonymous_sproc: True
 ```
+
 </File>
 
 **Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
