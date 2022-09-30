@@ -196,9 +196,6 @@ const sidebarSettings = {
           ],
         },
         "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
-        "docs/building-a-dbt-project/documentation",
-        "docs/running-a-dbt-project/using-the-dbt-ide",
-        "docs/running-a-dbt-project/running-dbt-in-production",
       ],
     },
     {
@@ -234,7 +231,7 @@ const sidebarSettings = {
         "docs/building-a-dbt-project/managing-environments",
         {
           type: "category",
-          label: "Document your dbt projects",
+          label: "Document dbt projects",
           link: { type: 'doc', id: 'docs/building-a-dbt-project/documentation' },
           items: [
             "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
