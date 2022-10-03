@@ -1,6 +1,9 @@
 const path = require('path');
+const math = require('remark-math');
+const katex = require('rehype-katex');
 const { versions, versionedPages } = require('./dbt-versions');
 require('dotenv').config()
+
 
 /* Debugging */
 var SITE_URL;
@@ -21,7 +24,7 @@ let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
 let metatags = []
 // If Not Current Branch, do not index site
-if(GIT_BRANCH !== 'current') {
+if (GIT_BRANCH !== 'current') {
   metatags.push({
     tagName: 'meta',
     attributes: {
@@ -40,15 +43,17 @@ console.log("DEBUG: metatags = ", metatags);
 var siteSettings = {
   baseUrl: '/',
   favicon: '/img/favicon.ico',
-  tagline: 'End user documentation, guides and technical reference for dbt (data build tool)',
+  tagline: 'End user documentation, guides and technical reference for dbt',
   title: 'dbt Docs',
   url: SITE_URL,
   onBrokenLinks: 'warn',
-
+  trailingSlash: false,
   themeConfig: {
     image: '/img/avatar.png',
     colorMode: {
-      disableSwitch: true
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
     },
     // Adding non-empty strings for Algolia config
     // allows Docusaurus to run locally without .env file
@@ -58,6 +63,16 @@ var siteSettings = {
       appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : 'dbt'
       //debug: true,
     },
+    announcementBar: {
+      id: "live_qa",
+      content:
+        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
+      backgroundColor: "#047377",
+      textColor: "#fff",
+      isCloseable: true
+    },
+    announcementBarActive: true,
+    announcementBarLink: "https://coalesce.getdbt.com/",
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
@@ -79,8 +94,10 @@ var siteSettings = {
       additionalLanguages: ['bash'],
     },
     navbar: {
+      hideOnScroll: true,
       logo: {
-        src: '/img/dbt-logo-light.svg',
+        src: '/img/dbt-logo.svg',
+        srcDark: 'img/dbt-logo-light.svg',
         alt: 'dbt Logo',
       },
       items: [
@@ -109,10 +126,10 @@ var siteSettings = {
           activeBasePath: 'docs/dbt-cloud'
         },
         {
-          to: '/faqs/all',
-          label: 'FAQs',
+          to: '/guides/getting-started',
+          label: 'Guides',
           position: 'left',
-          activeBasePath: 'faqs'
+          activeBasePath: 'guides'
         },
         {
           to: '/blog/',
@@ -121,13 +138,9 @@ var siteSettings = {
           activeBasePath: 'blog'
         },
         {
-          label: 'Learn',
+          label: 'Courses',
           position: 'right',
           items: [
-            {
-              label: 'Getting started',
-              to: '/tutorial/getting-started',
-            },
             {
               label: 'Online courses',
               href: 'https://courses.getdbt.com',
@@ -163,7 +176,27 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a>`
+      links: [
+        {
+          html: `
+          <div class='footer__items'>
+            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+            <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
+            <a href='https://www.getdbt.com/security/'>Security</a>
+            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+            <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
+          </div>
+
+          <div class='footer__items--right'>
+            <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
+            <a href='https://www.getdbt.com/community/'><i class="fa-brands fa-slack"></i></a>
+            <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
+          </div>
+          `
+        },
+      ],
+
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`
     },
   },
   presets: [
@@ -177,12 +210,14 @@ var siteSettings = {
           path: 'docs',
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
 
           editUrl: 'https://github.com/dbt-labs/docs.getdbt.com/edit/' + GIT_BRANCH + '/website/',
-          showLastUpdateTime: false,
+          showLastUpdateTime: true,
           //showLastUpdateAuthor: false,
 
-          sidebarCollapsible: true,     
+          sidebarCollapsible: true,
         },
         blog: {
           blogTitle: 'dbt Developer Blog',
@@ -190,6 +225,8 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 5,
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
 
       },
@@ -226,19 +263,26 @@ var siteSettings = {
     '/css/search.css',
     '/css/api.css',
     'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap',
-    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap'
+    'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap',
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
 }
 
 // If versions json file found, add versions dropdown to nav
-if(versions) {
+if (versions) {
   siteSettings.themeConfig.navbar.items.push({
     label: 'Versions',
     position: 'left',
     className: 'nav-versioning',
     items: [
       ...versions.reduce((acc, version) => {
-        if(version?.version) {
+        if (version?.version) {
           acc.push({
             label: `${version.version}`,
             href: '#',
@@ -247,7 +291,7 @@ if(versions) {
         return acc
       }, [])
     ]
-  },)
+  })
 }
 
 module.exports = siteSettings;

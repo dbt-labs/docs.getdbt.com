@@ -14,6 +14,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Source:** [Github](https://github.com/mpcarter/dbt-vertica)  
 **Core version:** v0.21.0 and newer      
 **dbt Cloud:** Not Supported      
+**Supported Version:** Vertica 10.0+
 
 ![dbt-vertica stars](https://img.shields.io/github/stars/mpcarter/dbt-vertica)
 

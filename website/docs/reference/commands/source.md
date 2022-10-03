@@ -39,7 +39,7 @@ $ dbt source freshness --select source:snowplow.event
 
 ### Configuring source freshness output
 
-When `dbt source freshness` completes, a JSON file containing information about the freshness of your sources will be saved to `target/sources.json`. An example `sources.json` will look like:
+When `dbt source freshness` completes, a <Term id="json" /> file containing information about the freshness of your sources will be saved to `target/sources.json`. An example `sources.json` will look like:
 
 <File name='target/sources.json'>
 

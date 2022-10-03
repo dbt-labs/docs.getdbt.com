@@ -5,11 +5,11 @@ id: "materialize-configs"
 
 ## Performance optimizations
 
-### Indexes
+### Incremental models
+Materialize, at its core, is a real-time database that delivers incremental view updates without ever compromising on latency or correctness.
+Materialized views are incremental models, defined once. 
 
-:::info Advanced feature
-  Manually creating indexes in Materialize is an advanced feature that most users **do not** need. See the [Materialize documentation](https://materialize.com/docs/sql/create-index/) for more details.
-:::
+### Indexes
 
 Materialized views (`materializedview`), views (`view`) and sources (`source`) may have a list of `indexes` defined. Each [Materialize index](https://materialize.com/docs/sql/create-index/) can have the following components:
 
@@ -46,6 +46,27 @@ models:
     subdirectory:
       +indexes:
         - columns: ['symbol']
+```
+
+</File>
+
+### Tests
+
+<Changelog>
+
+- **v1.1.1:** Provide support for storing the results of a test query in a materialized view, using the `store_failures` config.
+
+</Changelog>
+
+If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view using the test query. This view is a continuously updating representation of failures.
+
+<File name='dbt_project.yml'>
+
+```yaml
+tests:
+  project_name:
+    +store_failures: true
+    +schema: test
 ```
 
 </File>
