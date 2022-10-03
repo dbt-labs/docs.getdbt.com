@@ -154,7 +154,7 @@ For example, given a model with the following configurations:
 select ...
 ```
 
-It can be selected using any of the following:
+ You can select using any of the following:
 ```bash
 $ dbt ls -s config.materialized:incremental
 $ dbt ls -s config.unique_key:column_a
