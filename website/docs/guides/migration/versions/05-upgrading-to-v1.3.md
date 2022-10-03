@@ -22,7 +22,7 @@ We plan to keep backward compatibility for a full minor version. Defining metric
 
 ### For consumers of dbt artifacts (metadata)
 
-The manifest schema version has been updated to `v7`. This includes the changes to metrics described above, and a few other changes related to the addition of Python models:
+We have updated the manifest schema version to `v7`. This includes the changes to metrics described above and a few other changes related to the addition of Python models:
 - Renamed `raw_sql` to `raw_code`
 - Renamed `compiled_sql` to `compiled_code`
 - A new top-level node property, `language` (`'sql'` or `'python'`)
