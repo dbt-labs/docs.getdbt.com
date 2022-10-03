@@ -2,6 +2,8 @@
 <!---
 Describe your changes, and why you're making them. Is this linked to an open
 issue, a pull request on dbt core, etc?
+
+To learn more about the writing conventions used in the dbt Labs docs, see the [Content style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md).
 -->
 
 ## To-do before merge
@@ -25,3 +27,4 @@ If you added new pages (delete if not applicable):
 If you removed existing pages (delete if not applicable):
 - [ ] The page has been removed from `website/sidebars.js`
 - [ ] An entry has been added to `_redirects`
+- [ ] [Run link testing](https://github.com/dbt-labs/docs.getdbt.com#running-the-cypress-tests-locally) to update the links that point to the deleted page

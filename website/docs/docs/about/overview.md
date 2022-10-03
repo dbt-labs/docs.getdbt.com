@@ -48,7 +48,7 @@ While there are a large number of great languages for manipulating data, we’ve
 
 # What databases does dbt currently support?
 
-View the full list of supported databases, warehouses, and query engines [here](available-adapters).
+See [Supported Data Platforms](supported-data-platforms) to view the full list of supported databases, warehouses, and query engines.
 
 # How do I get started?
 
