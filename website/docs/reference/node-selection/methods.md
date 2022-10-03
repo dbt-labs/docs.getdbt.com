@@ -140,7 +140,7 @@ The `config` method is used to select models that match a specified [node config
 
 <VersionBlock firstVersion="1.3">
 
-While most config values are strings, the `config` method can also be used to match boolean configs, dictionary keys, and values in lists.
+While most config values are strings, you can also use the `config` method to match boolean configs, dictionary keys, and values in lists.
 
 For example, given a model with the following configurations:
 ```
