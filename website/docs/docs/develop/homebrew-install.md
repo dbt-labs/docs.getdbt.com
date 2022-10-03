@@ -1,5 +1,5 @@
 ---
-title: "Use Homebrew to install dbt"
+title: "Install with Homebrew"
 description: "You can use Homebrew to install dbt Core and adapter plugins from the command line."
 ---
 
