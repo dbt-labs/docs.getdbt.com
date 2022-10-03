@@ -137,7 +137,7 @@ metrics:
 
 :::caution
 
-- You can not defined metrics on [ephemeral models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral). To define a metric, the materialization must have a represention in the data warehouse.
+- You cannot define metrics on [ephemeral models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral). To define a metric, the materialization must have a representation in the data warehouse.
 
 :::
 
