@@ -1,6 +1,6 @@
 ---
 title: "Metadata API"
-id: "metadata-overview"
+id: "metadata-api"
 ---
 
 ## About the metadata API

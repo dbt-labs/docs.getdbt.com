@@ -1,5 +1,5 @@
 ---
-title: "Querying the Metadata API"
+title: "Query the Metadata API"
 id: "metadata-querying"
 ---
 Accounts on the _Team_ and _Multi-Tenant Enterprise_ plans can query the dbt Metadata API.

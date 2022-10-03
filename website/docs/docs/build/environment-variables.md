@@ -1,6 +1,6 @@
 ---
 title: Environment variables
-id: "env-variables"
+id: "environment-variables"
 description: "Use environment variables to customize the behavior of your dbt project."
 ---
 

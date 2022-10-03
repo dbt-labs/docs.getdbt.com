@@ -1,5 +1,5 @@
 ---
-title: "Hooks & Operations"
+title: "Hooks and operations"
 id: "hooks-operations"
 ---
 
