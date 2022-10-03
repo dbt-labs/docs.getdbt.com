@@ -1,6 +1,6 @@
 ---
-title: "Using variables"
-id: "using-variables"
+title: "Project variables"
+id: "proj-variables"
 ---
 
 dbt provides a mechanism, [variables](reference/dbt-jinja-functions/var), to provide data to models for

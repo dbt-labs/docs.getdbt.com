@@ -1,5 +1,5 @@
 ---
-title: "Jinja & Macros"
+title: "Jinja and macros"
 id: "jinja-macros"
 ---
 

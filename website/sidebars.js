@@ -88,11 +88,11 @@ const sidebarSettings = {
           label: "Enhance your code",
           collapsed: true,
           items: [
-            "docs/building-a-dbt-project/jinja-macros",
-            "docs/building-a-dbt-project/building-models/using-variables",
-            "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
-            "docs/building-a-dbt-project/package-management",
-            "docs/building-a-dbt-project/analyses",
+            "docs/build/jinja-macros",
+            "docs/build/project-variables",
+            "docs/build/environment-variables",
+            "docs/build/packages",
+            "docs/build/analyses",
           ],
         },
         {

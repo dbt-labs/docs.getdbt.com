@@ -1,3 +1,8 @@
+/docs/building-a-dbt-project/analyses /docs/build/analyses 302
+/docs/building-a-dbt-project/package-management /docs/build/packages 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables /docs/build/environment-variables 302
+/docs/building-a-dbt-project/building-models/using-variables /docs/build/project-variables 302
+/docs/building-a-dbt-project/jinja-macros /docs/build/jinja-macros 302
 /docs/building-a-dbt-project/building-models/configuring-incremental-models /docs/build/incremental-models 302
 /docs/building-a-dbt-project/building-models/materializations /docs/build/materializations 302
 /docs/building-a-dbt-project/tests /docs/build/tests 302
