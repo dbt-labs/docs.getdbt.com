@@ -142,7 +142,7 @@ sources:
 
 <VersionBlock lastVersion="1.2">
 
-Support for the `config` property on metrics was added in dbt Core v1.3
+We have added support for the `config` property on sources in dbt Core v1.3
 
 </VersionBlock>
 
