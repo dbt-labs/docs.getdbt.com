@@ -111,7 +111,7 @@ version: 2
 
 <VersionBlock lastVersion="1.0">
 
-Support for the `config` property on sources was added in dbt Core v1.1
+We have added support for the `config` property on sources in dbt Core v1.1
 
 </VersionBlock>
 
