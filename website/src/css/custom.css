@@ -148,6 +148,11 @@ html[data-theme='dark'] .api-content table td p {
   color: var(--color-orange);
 }
 
+html[data-theme='dark'] table td {
+  filter: brightness(1.25);
+  color: white;
+}
+
 html[data-theme='dark'] .api-content table td span {
   color: white;
 }
@@ -452,6 +457,8 @@ a.navbar__item.navbar__link.btn:hover {
 i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__list-item {
   margin-left: 1rem;
 }
+
+
 
 /* color for subtext only */
 .theme-doc-sidebar-item-link :not(.menu__list-item-collapsible .menu__link:first-of-type) {
