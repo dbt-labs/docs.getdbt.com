@@ -116,6 +116,9 @@ Note: A typical setup of Cloudera EDH will involve the following steps to setup 
 - Obtain keytab using kinit (kinit username@YOUR_REALM.YOUR_DOMAIN)
 - The keytab is valid for certain period after which you will need to run kinit again to renew validity of the keytab.
 
+### Instrumentation
+By default, the adapter will collect instrumentation events to help improve functionality and understand bugs. If you want to specifically switch this off, for instance, in a production environment, you can explicitly set the flag `usage_tracking: false` in your `profiles.yml` file. 
+
 ## Installation and Distribution
 
 dbt's adapter for Apache Impala is managed in its own repository, [dbt-impala](https://github.com/cloudera/dbt-impala). To use it, 
