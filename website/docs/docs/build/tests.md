@@ -1,5 +1,6 @@
 ---
 title: "Tests"
+id: "tests"
 ---
 
 ## Related reference docs
@@ -8,7 +9,7 @@ title: "Tests"
 * [Test configurations](test-configs)
 * [Test selection examples](test-selection-examples)
 
-## Getting started
+## Overview
 
 Tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
 

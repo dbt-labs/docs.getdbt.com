@@ -78,9 +78,9 @@ const sidebarSettings = {
           label: "Enhance your models",
           collapsed: true,
           items: [
-            "docs/building-a-dbt-project/tests",
-            "docs/building-a-dbt-project/building-models/materializations",
-            "docs/building-a-dbt-project/building-models/configuring-incremental-models",
+            "docs/build/tests",
+            "docs/build/materializations",
+            "docs/build/incremental-models",
           ],
         },
         {
