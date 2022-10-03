@@ -296,8 +296,8 @@ const sidebarSettings = {
         },
       ],
     },
-    "docs/dbt-cloud/cloud-dbt-cloud-support",
-    "docs/about/viewpoint",
+    "docs/dbt-support",
+    "docs/viewpoint",
     {
       type: "category",
       label: "Frequently asked questions",

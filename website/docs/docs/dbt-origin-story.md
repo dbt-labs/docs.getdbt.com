@@ -1,5 +1,5 @@
 ---
-title: "Viewpoint"
+title: "The dbt origin story"
 id: "viewpoint"
 ---
 
@@ -53,7 +53,7 @@ Analytics requires multiple environments. Analysts need the freedom to work with
 Analytics teams should stand behind the accuracy of all analysis that has been promoted to production. Errors should be treated with the same level of urgency as bugs in a production product. Any code being retired from production should go through a deprecation process.
 
 ### Design for maintainability
-Most of the cost involved in software development is in the maintenance phase. Because of this, software engineers write code with an eye towards maintainability. Analytic code, however, is often fragile. Changes in underlying data break most analytic code in ways that are hard to predict and to fix. 
+Most of the cost involved in software development is in the maintenance phase. Because of this, software engineers write code with an eye towards maintainability. Analytic code, however, is often fragile. Changes in underlying data break most analytic code in ways that are hard to predict and to fix.
 
 Analytic code should be written with an eye towards maintainability. Future changes to the schema and data should be anticipated and code should be written to minimize the corresponding impact.
 

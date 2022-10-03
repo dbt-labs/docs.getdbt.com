@@ -1,6 +1,6 @@
 ---
-title: "dbt Cloud Support"
-id: "cloud-dbt-cloud-support"
+title: "dbt support"
+id: "dbt-support"
 ---
 
 Welcome to dbt Cloud Support!
