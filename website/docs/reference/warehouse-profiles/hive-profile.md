@@ -43,7 +43,7 @@ your_profile_name:
     dev:
       type: hive
       host: localhost
-      port: [port]
+      port: [port] # default value: 10000
       schema: [schema name]
       
 ```
@@ -65,11 +65,11 @@ your_profile_name:
     dev:
      type: hive
      host: [host name]
-     http_path: [optional, http path to Hive]
-     port: [port]
+     http_path: [optional, http path to Hive] # default value: None
+     port: [port] # default value: 10000
      auth_type: ldap
-     use_http_transport: [true / false]
-     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials
+     use_http_transport: [true / false] # default value: true
+     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
      username: [username]
      password: [password]
      schema: [schema name]
@@ -92,12 +92,12 @@ your_profile_name:
     dev:
       type: hive
       host: [hostname]
-      port: [port]
+      port: [port] # default value: 10000
       auth_type: [GSSAPI]
-      kerberos_service_name: [kerberos service name]
-      use_http_transport: true
-      use_ssl: true # TLS should always be used to ensure secure transmission of credentials
-      schema: [schema name]
+      kerberos_service_name: [kerberos service name] # default value: None
+      use_http_transport: true # default value: true
+      use_ssl: true # TLS should always be used to ensure secure transmission of credentials, default value: true
+      schema: [schema name] 
 
 ```
 
