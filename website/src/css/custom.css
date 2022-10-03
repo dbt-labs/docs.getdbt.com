@@ -1542,6 +1542,15 @@ footer #ot-sdk-btn.optanon-show-settings:hover{
   }
 }
 
+/* Page specific  cardwrapper styles */
+
+.home .resource-section .col-4 .cardWrapper_src-components-card-styles-module {
+  height: calc(100% - 41px)
+}
+.cardWrapper_src-components-card-styles-module, .cardWrapper_src-components-card-styles-module article {
+  height: 100%;
+}
+
 /* utilities */
 .pl-0 {
   padding-left: 0 !important;
