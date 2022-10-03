@@ -15,6 +15,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Source:** [GitHub](https://github.com/aurany/dbt-ibmdb2)  
 **Core version:** v1.0.4   
 **dbt Cloud:** Not Supported     
+**Supported Version:**  IBM DB2 V9fp2+
 
 ![dbt-ibmdb2 stars](https://img.shields.io/github/stars/aurany/dbt-ibmdb2?style=for-the-badge)
 ![latest version on PyPI](https://img.shields.io/pypi/v/dbt-ibmdb2?style=for-the-badge)

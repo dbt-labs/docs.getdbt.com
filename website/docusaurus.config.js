@@ -51,7 +51,9 @@ var siteSettings = {
   themeConfig: {
     image: '/img/avatar.png',
     colorMode: {
-      disableSwitch: true
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
     },
     // Adding non-empty strings for Algolia config
     // allows Docusaurus to run locally without .env file
@@ -64,13 +66,13 @@ var siteSettings = {
     announcementBar: {
       id: "live_qa",
       content:
-        "Have questions you want answered live? Join us for a dbt Live: Expert Series session!",
+        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.getdbt.com/events/",
+    announcementBarLink: "https://coalesce.getdbt.com/",
     prism: {
       theme: (() => {
         var theme = require('prism-react-renderer/themes/nightOwl');
@@ -92,8 +94,10 @@ var siteSettings = {
       additionalLanguages: ['bash'],
     },
     navbar: {
+      hideOnScroll: true,
       logo: {
-        src: '/img/dbt-logo-light.svg',
+        src: '/img/dbt-logo.svg',
+        srcDark: 'img/dbt-logo-light.svg',
         alt: 'dbt Logo',
       },
       items: [
@@ -172,7 +176,27 @@ var siteSettings = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved. | <a href="https://www.getdbt.com/cloud/terms/" title="Terms of Service" target="_blank">Terms of Service</a> | <a href="https://www.getdbt.com/cloud/privacy-policy/" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="https://www.getdbt.com/security/" title="Security" target="_blank">Security</a> | <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>`
+      links: [
+        {
+          html: `
+          <div class='footer__items'>
+            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+            <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
+            <a href='https://www.getdbt.com/security/'>Security</a>
+            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+            <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
+          </div>
+
+          <div class='footer__items--right'>
+            <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
+            <a href='https://www.getdbt.com/community/'><i class="fa-brands fa-slack"></i></a>
+            <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
+          </div>
+          `
+        },
+      ],
+
+      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`
     },
   },
   presets: [

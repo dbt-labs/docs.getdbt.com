@@ -97,7 +97,7 @@ claire_carroll:
 
 dave_connors:
   name: Dave Connors
-  job_title: Analytics Engineer
+  job_title: Senior Analytics Engineer
   organization: dbt Labs
   image_url: /img/blog/authors/dconnors.jpeg
   links:
@@ -181,7 +181,7 @@ simon_podhajsky:
   job_title: Data Lead
   organization: iLife Technologies
   description: >
-    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife 
+    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife
     Technologies, a startup that seeks to digitize the life insurance agency.
   image_url: /img/blog/authors/simon-podhajsky.jpeg
   links:
@@ -207,7 +207,7 @@ josh_fell:
   links:
     - url: https://www.linkedin.com/in/josh-fell/
       icon: fa-linkedin
-      
+
 simo_tumelius:
   name: Simo Tumelius
   job_title: Freelance Data and Analytics Engineer
@@ -215,7 +215,7 @@ simo_tumelius:
   links:
     - url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
       icon: fa-linkedin
-     
+
 matt_winkler:
   name: Matt Winkler
   job_title: Senior Solutions Architect
@@ -277,7 +277,7 @@ callum_mccann:
   name: Callum McCann
   job_title: Senior Developer Experience Advocate
   organization: dbt Labs
-  description: Callum works on metrics and is either talking about that or obsessing about his dog. 
+  description: Callum works on metrics and is either talking about that or obsessing about his dog.
   image_url: /img/blog/authors/callum-mccann.jpg
   links:
     - url: https://www.linkedin.com/in/callum-mccann-38628a89/
@@ -293,3 +293,65 @@ benoit_perigaud:
   links:
     - url: https://www.linkedin.com/in/benoit-perigaud/
       icon: fa-linkedin
+
+bennie_regenold:
+  name: Bennie Regenold
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/bennie-regenold.png
+  links:
+    - url: https://www.linkedin.com/in/benjaminregenold/
+      icon: fa-linkedin
+
+barr_yaron:
+  name: Barr Yaron
+  job_title: Product Manager
+  organization: dbt Labs
+  image_url: /img/blog/authors/barr-yaron.png
+  links:
+    - url: https://www.linkedin.com/in/barryaron/
+      icon: fa-linkedin
+
+ian_fahey:
+  name: Ian Fahey
+  job_title: Analytics Engineer
+  organization: dbt Labs
+  image_url: /img/blog/authors/ian-fahey.png
+  links:
+    - url: https://www.linkedin.com/in/ianmfahey/
+      icon: fa-linkedin
+    - url: https://twitter.com/Cavorax
+      icon: fa-twitter
+
+joe_markiewicz:
+  name: Joe Markiewicz
+  job_title: Analytics Engineering Manager (Fivetran dbt package maintainer)
+  description: Joe is a dbt package maintainer/manager at Fivetran by day, and a cat obsessed video game developer by night. Actually, Joe is cat obsessed all day.
+  organization: Fivetran
+  image_url: /img/blog/authors/joe-markiewicz.jpeg
+  links:
+    - url: https://www.linkedin.com/in/joseph-markiewicz-8224a990/
+      icon: fa-linkedin
+    - url: https://twitter.com/JoeMarkiewicz17
+      icon: fa-twitter
+
+yu_ishikawa:
+   name: Yu Ishikawa
+   job_title: Senior Data Privacy Engineer
+   organization: Ubie
+   image_url: /img/blog/authors/yu-ishikawa.jpg
+   links:
+   - url: https://www.linkedin.com/in/yuishikawa0301
+     icon: fa-linkedin
+
+brittany_krauth:
+   name: Brittany Krauth
+   job_title: Manager, Analytics & Insights
+   description: Brittany Krauth works as Manager, Analytics & Insights supporting Degreed's upskilling platform. Brittany is passionate about building a company-wide data-driven culture. She has worked in various analytical roles, from a focus on predictive analytics to data visualization to process improvements. In addition, she holds a BS in Industrial Engineering from Georgia Tech. In her spare time, Brittany competes in dog agility and trains donkeys.
+   organization: Degreed
+   image_url: /img/blog/authors/brittany-krauth.png
+   links:
+   - url: https://www.linkedin.com/in/brittanykrauth
+     icon: fa-linkedin
+
+

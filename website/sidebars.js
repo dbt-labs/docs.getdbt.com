@@ -3,7 +3,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Introduction",
-      items: ["docs/introduction", "docs/available-adapters", "docs/core-versions"],
+      items: ["docs/introduction", "docs/supported-data-platforms", "docs/core-versions"],
     },
     {
       type: "category",
@@ -25,6 +25,7 @@ const sidebarSettings = {
             "docs/building-a-dbt-project/building-models/python-models",
           ],
         },
+        "docs/building-a-dbt-project/managing-environments",
         "docs/building-a-dbt-project/tests",
         "docs/building-a-dbt-project/documentation",
         "docs/building-a-dbt-project/using-sources",
@@ -47,7 +48,6 @@ const sidebarSettings = {
       items: [
         "docs/running-a-dbt-project/using-the-dbt-ide",
         "docs/running-a-dbt-project/using-the-cli",
-        "docs/running-a-dbt-project/dbt-api",
         "docs/running-a-dbt-project/running-dbt-in-production",
       ],
     },
@@ -57,11 +57,27 @@ const sidebarSettings = {
       items: [
         "docs/contributing/oss-expectations",
         "docs/contributing/contributor-license-agreements",
-        "docs/contributing/building-a-new-adapter",
-        "docs/contributing/testing-a-new-adapter",
-        "docs/contributing/documenting-a-new-adapter",
         "docs/contributing/slack-rules-of-the-road",
         "docs/contributing/long-lived-discussions-guidelines",
+        {
+          type: "category",
+          label: "Adapter development",
+          link: {
+            type: 'generated-index',
+            title: 'Adapter Development',
+            description: 'Learn what an adapter is what what\'s required to make one. Also how to build, test, document, promote, and verify your new adapter. Visit the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond this section.',
+
+          },
+          items: [
+            'docs/contributing/adapter-development/1-what-are-adapters',
+            'docs/contributing/adapter-development/2-prerequisites-for-a-new-adapter',
+            'docs/contributing/adapter-development/3-building-a-new-adapter',
+            'docs/contributing/adapter-development/4-testing-a-new-adapter',
+            'docs/contributing/adapter-development/5-documenting-a-new-adapter',
+            'docs/contributing/adapter-development/6-promoting-a-new-adapter',
+            'docs/contributing/adapter-development/7-verifying-a-new-adapter'
+          ]
+        }
       ],
     },
     {
@@ -330,7 +346,6 @@ const sidebarSettings = {
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/description",
-            "reference/resource-properties/docs",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
           ],
@@ -344,6 +359,7 @@ const sidebarSettings = {
             "reference/resource-configs/enabled",
             "reference/resource-configs/full_refresh",
             "reference/resource-configs/grants",
+            "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
@@ -527,6 +543,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/singlestore-profile",
         "reference/warehouse-profiles/spark-profile",
         "reference/warehouse-profiles/databricks-profile",
+        "reference/warehouse-profiles/hive-profile",
         "reference/warehouse-profiles/exasol-profile",
         "reference/warehouse-profiles/oracle-profile",
         "reference/warehouse-profiles/azuresynapse-profile",
@@ -549,6 +566,7 @@ const sidebarSettings = {
         "reference/warehouse-profiles/sqlite-profile",
         "reference/warehouse-profiles/mysql-profile",
         "reference/warehouse-profiles/ibmdb2-profile",
+        "reference/warehouse-profiles/alloydb-profile",
       ],
     },
     {
@@ -561,6 +579,14 @@ const sidebarSettings = {
         "reference/artifacts/catalog-json",
         "reference/artifacts/sources-json",
         "reference/artifacts/other-artifacts",
+      ],
+    },
+    ,
+    {
+      type: "category",
+      label: "Database Permissions",
+      items: [
+        "reference/snowflake-permissions",
       ],
     },
   ],
@@ -717,7 +743,6 @@ const sidebarSettings = {
         "guides/legacy/navigating-the-docs",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
-        "guides/legacy/managing-environments",
         "guides/legacy/writing-custom-generic-tests",
         "guides/legacy/building-packages",
         "guides/legacy/creating-new-materializations",

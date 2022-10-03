@@ -15,6 +15,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 **Source:** [GitHub](https://github.com/codeforkjeff/dbt-sqlite)  
 **Core version:** v1.1.0     
 **dbt Cloud:** Not Supported     
+**Supported Version:** SQlite Version 3.0+
 
 ![dbt-sqlite stars](https://img.shields.io/github/stars/codeforkjeff/dbt-sqlite?style=for-the-badge)
 ![latest version on PyPI](https://img.shields.io/pypi/v/dbt-sqlite?style=for-the-badge)

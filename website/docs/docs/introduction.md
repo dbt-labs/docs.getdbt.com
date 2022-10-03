@@ -29,7 +29,7 @@ Want to check out a sample project? Have a look at our [Jaffle Shop](https://git
 :::
 
 ### Database Connections
-dbt connects to your <Term id="data-warehouse" /> to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [docs](available-adapters)).
+dbt connects to your <Term id="data-warehouse" /> to run data transformation queries. As such, you’ll need a data warehouse with source data loaded in it to use dbt. dbt natively supports connections to Snowflake, BigQuery, Redshift and Postgres data warehouses, and there’s a number of community-supported adapters for other warehouses (see [Supported Data Platforms](supported-data-platforms)).
 
 When you define your connection, you’ll also be able to specify the target schema where dbt should create your models as tables and <Term id="view">views</Term>. See [Managing environments](managing-environments)  for more information on picking target schema names.
 
