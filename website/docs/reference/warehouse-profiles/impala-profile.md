@@ -45,9 +45,9 @@ your_profile_name:
   outputs:
     dev:
       type: impala
-      host: localhost
-      port: 21050
-      dbname: [db name]  # this should be same as schema name provided below
+      host: [host] # default value: localhost
+      port: [port] # default value: 21050
+      dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
       schema: [schema name]
       
 ```
@@ -70,14 +70,16 @@ your_profile_name:
      type: impala
      host: [host name]
      http_path: [optional, http path to Impala]
-     port: [port]
+     port: [port] # default value: 21050
      auth_type: ldap
-     use_http_transport: [true / false]
-     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials
+     use_http_transport: [true / false] # default value: true
+     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
      username: [username]
      password: [password]
      dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
      schema: [schema name]
+     retries: [retries] # number of times impyla attempts retry conneciton to warehouse, default value: 3
+  
 ```
 
 </File>
@@ -97,14 +99,15 @@ your_profile_name:
     dev:
       type: impala
       host: [hostname]
-      port: [port]
+      port: [port] # default value: 21050
       auth_type: [GSSAPI]
-      kerberos_service_name: [kerberos service name]
-      use_http_transport: true
-      use_ssl: true # TLS should always be used with LDAP to ensure secure transmission of credentials
+      kerberos_service_name: [kerberos service name] # default value: None
+      use_http_transport: true # default value: true
+      use_ssl: true # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
       dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
       schema: [schema name]
-
+      retries: [retries] # number of times impyla attempts retry conneciton to warehouse, default value: 3
+  
 ```
 
 </File>
