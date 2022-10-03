@@ -1,5 +1,7 @@
-/docs/dbt-cloud/cloud-dbt-cloud-support /docs/dbt-support
-/docs/about/viewpoint /docs/viewpoint
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions /docs/dbt-versions/upgrade-core-in-cloud 302
+/docs/core-versions /docs/dbt-versions/core 302
+/docs/dbt-cloud/cloud-dbt-cloud-support /docs/dbt-support 302
+/docs/about/viewpoint /docs/viewpoint 302
 /dbt-cli/configure-your-profile /docs/develop/connection-profiles 302
 /docs/running-a-dbt-project/using-the-cli /docs/develop/about-the-cli 302
 /dbt-cli/install/from-source /docs/develop/source-install 302

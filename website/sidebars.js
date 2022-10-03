@@ -281,8 +281,8 @@ const sidebarSettings = {
       type: "category",
       label: "Available dbt versions",
       items: [
-        "docs/core-versions",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
+        "docs/dbt-versions/core",
+        "docs/dbt-versions/upgrade-core-in-cloud",
         {
           type: "category",
           label: "dbt Cloud Release Notes",

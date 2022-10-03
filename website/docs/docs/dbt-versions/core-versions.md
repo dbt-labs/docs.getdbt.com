@@ -1,6 +1,6 @@
 ---
 title: "About dbt Core versions"
-id: "core-versions"
+id: "core"
 description: "Learn about semantic versioning for dbt Core, and how long those versions are supported."
 ---
 
