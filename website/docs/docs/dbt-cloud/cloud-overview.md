@@ -23,9 +23,9 @@ Set up custom schedules to run your production dbt jobs. dbt Cloud's comprehensi
 
 ## Democratize access to logs
 
-dbt Cloud makes it easy to view in-progress and historical logs for your dbt runs. From dbt Cloud, you can view and download the run logs for your dbt invocations. If you're happy ssh'ing into a cron server and running `tail -f` on a logfile, then this feature is *not* for you!
+dbt Cloud makes it easy to view in-progress and historical logs for your dbt runs. From dbt Cloud, you can view and download the run logs for your dbt invocations. If you're happy ssh'ing into a cron server and running `tail -f` on a logfile, then this feature is *not* for you! 
 
-<Lightbox src="/img/docs/dbt-cloud/c3fe800-Screen_Shot_2019-02-08_at_6.53.29_PM.png" title="Viewing logs for a dbt run"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-run-logs.png" title="Viewing logs for a dbt run"/>
 
 ## Generate and distribute documentation
 
