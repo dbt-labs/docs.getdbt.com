@@ -50,27 +50,27 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Build dbt projects",
-      link: { type: 'doc', id: 'docs/building-a-dbt-project/projects' },
       collapsed: true,
       items: [
+        "docs/build/projects",
         {
           type: "category",
           label: "Build your DAG",
           collapsed: true,
           items: [
-            "docs/building-a-dbt-project/using-sources",
+            "docs/build/sources",
             {
               type: "category",
               label: "Models",
               items: [
-                "docs/building-a-dbt-project/building-models",
+                "docs/build/sql-models",
                 "docs/building-a-dbt-project/building-models/python-models",
               ],
             },
-            "docs/building-a-dbt-project/seeds",
-            "docs/building-a-dbt-project/snapshots",
-            "docs/building-a-dbt-project/exposures",
-            "docs/building-a-dbt-project/metrics",
+            "docs/build/seeds",
+            "docs/build/snapshots",
+            "docs/build/exposures",
+            "docs/build/metrics",
           ],
         },
         {

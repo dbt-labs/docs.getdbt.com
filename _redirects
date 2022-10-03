@@ -1,3 +1,10 @@
+/docs/building-a-dbt-project/metrics /docs/build/metrics 302
+/docs/building-a-dbt-project/exposures /docs/build/exposures 302
+/docs/building-a-dbt-project/snapshots /docs/build/snapshots 302
+/docs/building-a-dbt-project/seeds /docs/build/seeds 302
+/docs/building-a-dbt-project/building-models /docs/build/sql-models 302
+/docs/building-a-dbt-project/using-sources /docs/build/sources 302
+/docs/building-a-dbt-project/projects /docs/build/projects 302
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions /docs/dbt-versions/upgrade-core-in-cloud 302
 /docs/core-versions /docs/dbt-versions/core 302
 /docs/dbt-cloud/cloud-dbt-cloud-support /docs/dbt-support 302

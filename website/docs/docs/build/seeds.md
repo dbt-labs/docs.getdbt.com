@@ -7,7 +7,7 @@ id: "seeds"
 * [Seed properties](seed-properties)
 * [`seed` command](seed)
 
-## Getting started
+## Overview
 Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your <Term id="data-warehouse" /> using the `dbt seed` command.
 
 Seeds can be referenced in downstream models the same way as referencing models — by using the [`ref` function](/reference/dbt-jinja-functions/ref).
@@ -21,7 +21,7 @@ Good use-cases for seeds:
 
 Poor use-cases of dbt seeds:
 * Loading raw data that has been exported to CSVs
-* Any kind of production data containing sensitive information. For example 
+* Any kind of production data containing sensitive information. For example
 personal identifiable information (PII) and passwords.
 
 

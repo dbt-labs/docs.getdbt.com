@@ -1,6 +1,6 @@
 ---
 title: "Sources"
-id: "using-sources"
+id: "sources"
 ---
 
 ## Related reference docs

@@ -8,7 +8,7 @@ id: "snapshots"
 * [Snapshot properties](snapshot-properties)
 * [`snapshot` command](snapshot)
 
-## Getting started
+## Overview
 
 ### What are snapshots?
 Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable <Term id="table" /> over time.
@@ -347,7 +347,7 @@ For the `timestamp` strategy, the configured `updated_at` column is used to popu
 <summary>  Details for the timestamp strategy </summary>
 
 <summary>Snapshot query results at `2019-01-01 11:00`</summary>
-    
+
 | id | status  | updated_at       |
 | -- | ------- | ---------------- |
 | 1        | pending | 2019-01-01 10:47 |

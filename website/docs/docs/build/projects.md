@@ -1,5 +1,5 @@
 ---
-title: "Projects"
+title: "About dbt projects"
 id: "projects"
 ---
 

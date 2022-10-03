@@ -1,6 +1,6 @@
 ---
-title: "dbt Models"
-id: "building-models"
+title: "SQL models"
+id: "sql-models"
 ---
 
 ## Related reference docs

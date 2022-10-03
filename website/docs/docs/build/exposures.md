@@ -14,7 +14,7 @@ id: "exposures"
 * [Exposure properties](exposure-properties)
 * [`exposure:` selection method](node-selection/methods#the-exposure-method)
 
-## Getting started
+## Overview
 
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
@@ -28,19 +28,19 @@ Exposures are defined in `.yml` files nested under an `exposures:` key.
 
 ```yaml
 exposures:
-  
+
   - name: weekly_jaffle_metrics
     type: dashboard
     maturity: high
     url: https://bi.tool/dashboards/1
     description: >
       Did someone say "exponential growth"?
-    
+
     depends_on:
       - ref('fct_orders')
       - ref('dim_customers')
       - source('gsheets', 'goals')
-      
+
     owner:
       name: Claire from Data
       email: data@jaffleshop.com
