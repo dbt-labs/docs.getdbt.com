@@ -610,10 +610,6 @@ div .toggle_src-components-faqs-styles-module {
   background-size: 1.25rem 1.25rem;
 }
 
-.home .row .col--4 {
-  margin-bottom: 20px;
-  min-height: 251px;
-}
 
 /* card styles */
 .card.large {
@@ -920,7 +916,7 @@ filter: opacity(.75);
   }
 }
 
-@media (min-width: 997px) and (max-width: 1729px) {
+@media (min-width: 997px) and (max-width: 2560px) {
   .container > .row .col {
     padding-left: 2.5rem;
   }
@@ -974,9 +970,7 @@ filter: opacity(.75);
     text-align: center;
   }
 
-  .container.container--fluid.home .row {
-    margin: calc(2vh) auto !important;
-  }
+
 }
 
 @media  screen and (max-width: 1199px) {
@@ -1452,4 +1446,49 @@ footer #ot-sdk-btn.optanon-show-settings:hover{
 /* Discourse Forum & Events Page */
 .events-page section, section.discourse-forum-page {
   padding: 4rem 0;
+}
+
+/* New Homepage Styles */
+
+.home section {
+  margin: calc(5vh) auto calc(2vh);
+  max-width: var(--ifm-container-width);
+}
+
+@media (min-width: 997px) and (max-width: 2560px) {
+  .home .col .row .col--6 {
+    margin-bottom: 2.5rem;
+  }
+
+.home .col .row:last-of-type .col--6 {
+  margin-bottom: 0;
+}
+}
+
+@media (max-width: 996px) {
+  .home .row .col--6 {
+    margin-bottom: calc(2vh);
+  }
+}
+
+@media (max-width: 750px) {
+  .home .row .col .row .col--6 {
+    padding-left:0;
+    padding-right: 0;
+    }
+    .container.container--fluid.home .row {
+      margin: auto
+    }
+}
+
+
+@media (min-width: 997px) and (max-width: 2560px) {
+  .container.home > .row .col {
+    padding-left: var(--ifm-spacing-horizontal);
+  }
+}
+
+/* utilities */
+.pl-0 {
+  padding-left: 0 !important;
 }

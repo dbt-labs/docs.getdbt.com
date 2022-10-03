@@ -4,8 +4,9 @@
   box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
   padding: 2.5rem;
 }
-
-
+.cardWrapper, .cardWrapper article {
+  height: 100%;
+}
 .cardWrapper a {
   color: inherit;
 }
