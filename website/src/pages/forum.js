@@ -12,11 +12,11 @@ function Events() {
       </Head>
       <section className='discourse-forum-page'>
         <div className='container'>   
-          <h1>dbt Discourse</h1>
-          <p>Recent interesting discussions from across the dbt Community Forum. </p>
-          <DiscourseFeed title='Open topics' category='help' status='unsolved'  link_text='See open topics' link_href='https://discourse.getdbt.com/c/help/19' show_cta={true} />
-          <DiscourseFeed title='Cool Problem Solving' category='show-and-tell' link_text='See more topics' link_href='https://discourse.getdbt.com/c/show-and-tell/22' show_cta={true} />
-          <DiscourseFeed title='Interesting Discussions' category='discussions' link_text='See discussions' link_href='https://discourse.getdbt.com/c/discussions/21' show_cta={true} />
+          <h1>dbt Community Forum</h1>
+          <p>The dbt Community Forum is the platform for getting support with dbt as well as to have long-lived discussions about dbt, analytics engineering, and analytics. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day.</p>
+          <DiscourseFeed title='Unanswered Help Questions' category='help' status='unsolved'  link_text='See open topics' link_href='https://discourse.getdbt.com/c/help/19' show_cta={true} />
+          <DiscourseFeed title='In-Depth Discussions' category='discussions' link_text='See discussions' link_href='https://discourse.getdbt.com/c/discussions/21' show_cta={true} />
+          <DiscourseFeed title='Show and Tell' category='show-and-tell' link_text='See more topics' link_href='https://discourse.getdbt.com/c/show-and-tell/22' show_cta={true} />
         </div>
       </section>
     </Layout>
