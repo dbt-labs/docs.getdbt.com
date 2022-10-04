@@ -42,7 +42,7 @@ See [dbt#2961](https://github.com/dbt-labs/dbt-core/pull/2961) for full implemen
 ## New and changed documentation
 
 ### Core
-- [dbt Artifacts](dbt-artifacts): The JSON artifacts produced by dbt—manifest, catalog, run results, and sources—are simpler to consume and more clearly documented.
+- [dbt Artifacts](dbt-artifacts): The <Term id="json" /> artifacts produced by dbt—manifest, catalog, run results, and sources—are simpler to consume and more clearly documented.
 - [dbt Classes](dbt-classes#result-objects), [on-run-end Context](on-run-end-context#results): The `Result` object has a new schema, in line with changes to `run_results.json`.
 - [Statement blocks](statement-blocks): The `call statement` result `status` string is now a structured object named `response`.
 - [Snapshots](snapshots#invalidate_hard_deletes): If the config `invalidate_hard_deletes` is enabled, `dbt snapshot` will update records whose unique key no longer exist in the snapshot query. Should those uniquely identified records "revive," `dbt snapshot` will re-add them.

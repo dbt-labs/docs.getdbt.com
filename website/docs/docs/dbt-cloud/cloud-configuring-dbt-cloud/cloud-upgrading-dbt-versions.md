@@ -48,7 +48,7 @@ clean-targets:
 
 - Do you select tests using the old names for test types? (`test_type:schema`, `test_type:data`, `--schema`, `--data`)
 - Do you have custom macro code that calls the (undocumented) global macros `column_list`, `column_list_for_create_table`, `incremental_upsert`?
-- Do you have custom scripts that parse dbt JSON artifacts?
+- Do you have custom scripts that parse dbt <Term id="json" /> artifacts?
 - (BigQuery only) Do you use dbt's legacy capabilities around ingestion-time-partitioned tables?
 
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-v1.0).

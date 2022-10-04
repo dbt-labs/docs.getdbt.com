@@ -1,0 +1,18 @@
+.card {
+  border: 1px solid #EFF2F3;
+  border-radius: 5px;
+  box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
+  padding: 2.5rem;
+}
+
+.cardWrapper a {
+  color: inherit;
+}
+.cardWrapper a:hover {
+  text-decoration: none;
+}
+
+.icon {
+  max-width: 50px;
+}
+
