@@ -1,6 +1,6 @@
 ---
-id: deployment-overview
-title: Overview
+title: "About deployments"
+id: "overview"
 ---
 
 :::info Deployments

@@ -1,6 +1,6 @@
 ---
-title: "Using aliases"
-id: "using-custom-aliases"
+title: "Custom aliases"
+id: "custom-aliases"
 ---
 
 ## Overview

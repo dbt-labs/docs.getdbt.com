@@ -167,35 +167,29 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Deploy dbt projects",
-      link: { type: 'doc', id: 'docs/dbt-cloud/deployments/deployment-overview' },
       collapsed: true,
       items: [
+        "docs/deploy/overview",
         {
           type: "category",
           label: "dbt Cloud deploy options",
           items: [
-            "docs/dbt-cloud/deployments/deployment-architecture",
-            "docs/dbt-cloud/deployments/multi-tenant-deployment",
-            "docs/dbt-cloud/deployments/airgapped-deployment",
+            "docs/deploy/architecture",
+            "docs/deploy/single-tenant",
+            "docs/deploy/multi-tenant",
           ],
         },
         {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
-            "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
-            "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
-            {
-              type: "category",
-              label: "Project-level source freshness",
-              link: { type: 'doc', id: 'docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness' },
-              items: [
-                "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
-              ],
-            },
+            "docs/deploy/job-triggers",
+            "docs/deploy/job-notifications",
+            "docs/deploy/source-freshness",
+            "docs/deploy/dashboard-status-tiles",
           ],
         },
-        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
+        "docs/deploy/cloud-ci-job",
       ],
     },
     {

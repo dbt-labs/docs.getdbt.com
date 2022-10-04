@@ -1,6 +1,6 @@
 ---
-id: deployment-architecture
 title: Architecture
+id: architecture
 ---
 
 This page is intended to help both practitioners seeking to understand the architecture and data flow of the hosted dbt Cloud product.
@@ -40,7 +40,7 @@ The following two sections describe the network architectures for dbt Cloud depl
 
 #### Hosted Network Architecture
 
-The following diagram shows the network architecture for the hosted _Multi Tenant_ and _Single Tenant_ deployment types. While many of the specifications differ between the Multi Tenant and Single Tenant offerings the basic types of components illustrated below are mostly the same. Read below for more information on each of the components and how they might differ between the two deployment models. 
+The following diagram shows the network architecture for the hosted _Multi Tenant_ and _Single Tenant_ deployment types. While many of the specifications differ between the Multi Tenant and Single Tenant offerings the basic types of components illustrated below are mostly the same. Read below for more information on each of the components and how they might differ between the two deployment models.
 
 <img src="/img/docs/dbt-cloud/deployment/aws-network-architecture.png" />
 
@@ -50,5 +50,5 @@ The following diagram shows the network architecture for the hosted _Multi Tenan
 - **EC2**: The hosted dbt Cloud deployments leverage a cluster of [AWS EC2](https://aws.amazon.com/ec2/) worker nodes to run the dbt Cloud application.
 - **EBS**: In order to store application data, dbt Cloud leverages [AWS Elastic Block Store](https://aws.amazon.com/ebs/) mounted to the EC2 instances described above.
 - **EFS**: An [AWS Elastic File System](https://aws.amazon.com/efs/) is provisioned for hosted deployments to store and manage local files from the dbt Cloud IDE.
-- **S3**: [AWS Simple Storage Service (S3)](https://aws.amazon.com/s3/) is used to store dbt Cloud application logs and artifacts (such as those generated from dbt job runs). 
+- **S3**: [AWS Simple Storage Service (S3)](https://aws.amazon.com/s3/) is used to store dbt Cloud application logs and artifacts (such as those generated from dbt job runs).
 - **RDS**: The hosted dbt Cloud application leverages [AWS Postgres RDS](https://aws.amazon.com/rds/postgresql/) to store application information such as accounts, users, environments, etc. Note that as explained in the [Data Warehouse Interaction](#data-warehouse-interaction) section above, no data from an associated warehouse is ever stored in this database.

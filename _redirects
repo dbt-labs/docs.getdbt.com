@@ -1,3 +1,13 @@
+/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration /docs/deploy/cloud-ci-job 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles /docs/deploy/dashboard-status-tiles 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness /docs/deploy/source-freshness 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-notifications /docs/deploy/job-notifications 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule /docs/deploy/job-triggers 302
+/docs/dbt-cloud/deployments/airgapped-deployment /docs/deploy/airgapped-deployment 302
+/docs/dbt-cloud/deployments/single-tenant-deployment /docs/deploy/single-tenant 302
+/docs/dbt-cloud/deployments/multi-tenant-deployment /docs/deploy/multi-tenant 302
+/docs/dbt-cloud/deployments/deployment-architecture /docs/deploy/architecture 302
+/docs/dbt-cloud/deployments/deployment-overview /docs/deploy/overview 302
 /docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name /docs/build/custom-target-names 302
 /docs/building-a-dbt-project/building-models/using-custom-aliases /docs/build/custom-aliases 302
 /docs/building-a-dbt-project/building-models/using-custom-databases /docs/build/custom-databases 302

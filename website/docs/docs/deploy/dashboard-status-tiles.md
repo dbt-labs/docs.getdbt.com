@@ -1,6 +1,6 @@
 ---
 title: "Dashboard status tiles"
-id: "cloud-dashboard-status-tiles"
+id: "dashboard-status-tiles"
 description: "Embed Status Tiles in your dashboards to provide consumers with contextual information about the quality and freshness of data."
 ---
 

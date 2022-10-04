@@ -1,6 +1,6 @@
 ---
-title: "Setting a custom target name"
-id: "cloud-setting-a-custom-target-name"
+title: "Custom target names"
+id: "custom-target-names"
 description: "You can define a custom target name for any dbt Cloud job to correspond to settings in your dbt project."
 
 ---

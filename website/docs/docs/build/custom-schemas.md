@@ -1,6 +1,6 @@
 ---
-title: "Using custom schemas"
-id: "using-custom-schemas"
+title: "Custom schemas"
+id: "custom-schemas"
 ---
 
 ## What is a custom schema?
@@ -151,7 +151,7 @@ for more information on these changes.
 </Changelog>
 
 Globally-scoped variables and variables defined on the command line with
-[--vars](using-variables) are accessible in the `generate_schema_name` context. 
+[--vars](using-variables) are accessible in the `generate_schema_name` context.
 
 ## Managing environments
 

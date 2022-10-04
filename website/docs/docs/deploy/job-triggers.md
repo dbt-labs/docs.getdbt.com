@@ -1,6 +1,6 @@
 ---
-title: "Setting custom cron schedules"
-id: "cloud-using-a-custom-cron-schedule"
+title: "Job triggers"
+id: "job-triggers"
 description: "You can use cron syntax to specify when you want to run a job."
 ---
 
@@ -21,7 +21,7 @@ If you need help coming up with the right cron syntax, we recommend using a tool
 
 A custom cron schedule can be specified in the Job Settings page when you edit a job:
 
-1. Select a job. 
+1. Select a job.
 2. Click **Settings**.
 3. Click **Edit**.
 4. In the Triggers section, activate the **Run on schedule** option.
