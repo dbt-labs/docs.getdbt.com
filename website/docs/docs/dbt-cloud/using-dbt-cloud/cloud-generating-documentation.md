@@ -40,3 +40,14 @@ Once you have a job set up to generate documentation for your project, then clic
 ## Easy access
 
 See [Building and Configuring Artifacts](artifacts) for more information on exposing links to the latest Documentation and Source Freshness reports to your team.
+
+## test
+<details>
+  <summary>Toggle me!</summary>
+  <div>
+    <div>This is the detailed content</div>
+    <br/>
+    </div>
+    </details>
+  </div>
+</details>
