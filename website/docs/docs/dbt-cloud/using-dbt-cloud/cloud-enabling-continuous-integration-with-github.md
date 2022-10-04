@@ -146,7 +146,7 @@ To fix this issue, select a production job run to defer to instead of self.
 
 dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository.
 
-If you receive the following error message at the **Clone Git Repository** step of your job run:```
+If you receive the following error message at the **Clone Git Repository** step of your job run:
 
 ```
 Error message:
