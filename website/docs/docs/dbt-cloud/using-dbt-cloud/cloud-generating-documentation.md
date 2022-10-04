@@ -46,8 +46,5 @@ See [Building and Configuring Artifacts](artifacts) for more information on expo
   <summary>Toggle me!</summary>
   <div>
     <div>This is the detailed content</div>
-    <br/>
-    </div>
-    </details>
   </div>
 </details>
