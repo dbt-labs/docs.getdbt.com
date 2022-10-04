@@ -3,6 +3,7 @@ title: "Community Forum Guidelines"
 id: "community-forum-guidelines"
 ---
 
+## What is the dbt Community Forum? 
 [The dbt Community Forum](https://discourse.getdbt.com) is the platform for getting support with dbt as well as to have long-lived discussions about dbt, analytics engineering, and analytics. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day. The forum is different from the dbt Community Slack in a few key ways, most importantly it is:
 
 - **Asynchronous** and **long-lived** - sometimes conversations continue over weeks, months, and beyond.
@@ -32,6 +33,15 @@ The forum is broken down into three categories:
     - This is the place to show off all of the cool things you are doing in dbt. Whether it’s a new macro, design pattern, or package, post here to show the community what you are up to!
 - [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21)
     - Share anything you’re thinking about that has to do with dbt or analytics engineering! This is a great place to jot down some thoughts to share with the community or spark a discussion on a topic that’s currently interesting you.
+
+## Inclusivity Statement
+We are **strongly** committed to building a community where everyone can feel welcome. 
+
+The dbt community started with people who were not traditionally considered “technical”, did not have ownership over technical systems, and were often left out of organizational decision-making. We came together to learn from each other, solve hard problems together, and to help build a new discipline where data folks have greater ownership over our own work. It really matters to us that everyone feels like they can ask questions and engage, no matter their professional or personal background. 
+
+Technical forums have the potential to replicate harmful power structures, and can feel intimidating or hostile. We are working hard to create and sustain an inclusive environment through community-building, technological solutions, inclusive content, and diverse contributors. This is a long-term project, and we will continue to iterate and make improvements.
+
+If you have any ideas or feedback on how to make this space friendlier or more inclusive please let us know, either on the community Slack in the #community-strategy channel or via email at [community@dbtlabs.com](mailto:community@dbtlabs.com). We want to hear from you!
 
 ## Following new and ongoing Discussions
 
