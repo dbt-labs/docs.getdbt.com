@@ -119,6 +119,15 @@ dbt build --select source_status:fresher+
 
 More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
 
+## Limitations
+
+If your temporary PR schemas aren't dropping after a merge or close of the PR, you'll want to make sure:
+
+- You _have not_ used dbt Cloud environment variables in your connection settings page.
+- You _do not_ have an empty/blank default schema.
+- You _have not_ overridden the `generate_schema_name` macro.
+
+If you do have any of the above, make the necessary changes to your project and re-confirm if your temporary PR schemas are dropping or not.
 ## Troubleshooting
 
 ### Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps
@@ -142,6 +151,7 @@ If you receive a schema-related error message referencing a *previous* PR, this 
 
 To fix this issue, select a production job run to defer to instead of self.
 
+
 ### Production job runs failing at the **Clone Git Repository** step
 
 dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository.
@@ -159,3 +169,4 @@ fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
 ```
 
 Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
+
