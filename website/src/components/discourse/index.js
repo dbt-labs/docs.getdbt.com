@@ -138,7 +138,7 @@ export const DiscourseFeed = ({
                 <>
                   {' '}
                   <p>
-                    {topic?.blurb}
+                    {topic.blurb}
                   </p>
                 </>
               )}
