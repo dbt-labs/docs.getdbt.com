@@ -127,6 +127,7 @@ If your temporary PR schemas aren't dropping after a merge or close of the PR, m
 - You _do not_ have an empty/blank default schema.
 - You _have not_ overridden the `generate_schema_name` macro.
 
+If you do have any of the above, make the necessary changes and re-check if you can drop your temporary PR schemas. 
 ## Troubleshooting
 
 ### Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps
