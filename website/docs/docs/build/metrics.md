@@ -327,7 +327,7 @@ Use the following [metrics package](https://hub.getdbt.com/dbt-labs/metrics/late
 ```yml
 packages:
   - package: dbt-labs/metrics
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=1.3.0", "<1.4.0"]
 ```
 
 </VersionBlock>
