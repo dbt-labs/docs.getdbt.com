@@ -45,4 +45,4 @@ Adding [documentation](/docs/building-a-dbt-project/documentation) to your proje
 
     </File>
 
-2. Run `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a json file with rich documentation about your project.
+2. Run `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a <Term id="json" /> file with rich documentation about your project.
