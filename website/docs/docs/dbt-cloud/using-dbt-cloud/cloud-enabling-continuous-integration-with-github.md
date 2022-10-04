@@ -142,7 +142,7 @@ If you receive a schema-related error message referencing a *previous* PR, this 
 
 To fix this issue, select a production job run to defer to instead of self.
 
-### Runs are failing at the "Clone Git Repository" step
+### Production job run failing at the **Clone Git Repository** step
 
 If you receive an error message like the following during the "Clone Git Repository" step:
 
