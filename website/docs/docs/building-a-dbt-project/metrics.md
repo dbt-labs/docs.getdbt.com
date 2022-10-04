@@ -183,7 +183,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-|type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
+| type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
 | sql | The expression to aggregate/calculate over | user_id | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
