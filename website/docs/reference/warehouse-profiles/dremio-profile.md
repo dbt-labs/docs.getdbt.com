@@ -2,48 +2,211 @@
 title: "Dremio Profile"
 ---
 
-:::info Community plugin
-
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
-
-:::
 
 ## Overview of dbt-dremio
-**Maintained by:** Community      
-**Author:** Fabrice Etanchaud (Maif-vie)    
-**Source:** https://github.com/fabrice-etanchaud/dbt-dremio    
-**Core version:** v0.18.0 and newer    
+**Maintained by:** Dremio      
+**Author:**     
+**Source:** https://github.com/dremio/dbt-dremio  
+**Core Version:** 1.2.0 and later   
 **dbt Cloud:** Not Supported    
-**Supported Version:** Dremio 4.7+
+**Supported Version:** Dremio Software 22.0 and later
+**Required Version of Python:** 
 
+<!-- Who is the author going to be?
 ![dbt-dremio stars](https://img.shields.io/github/stars/fabrice-etanchaud/dbt-dremio?style=for-the-badge)
+-->
 
-The easiest way to install it is to use pip:
 
-    pip install dbt-dremio
+## Prerequisites for Dremio Software
 
-Follow the repository's link for os dependencies.
+* Enable these support keys in the Dremio cluster:
+  * `dremio.iceberg.enabled`
+  * `dremio.iceberg.ctas.enabled`
+  * `dremio.execution.support_unlimited_splits`
 
-## Connecting to Dremio with **dbt-dremio**
+  See <a target="_blank" href="https://docs.dremio.com/software/advanced-administration/support-settings/#support-keys">Support Keys</a> in the Dremio documentation for the steps.
+* Configure full wire encryption in the Dremio cluster. For instructions, see <a target="_blank" href="https://docs.dremio.com/software/deployment/wire-encryption-config/">Configuring Wire Encryption</a>.
 
-### Connecting with ZooKeeper
+## Installing
 
-I have no means to test [connection with ZooKeeper](https://docs.dremio.com/drivers/dremio-connector.html#connecting-to-zookeeper). 
-If you do need this, contact me and I will provide you with a branch you can test.
+Install this package from PyPi by running this command:
 
-### Direct connection to a coordinator
+```
+pip install dbt-dremio
+```
 
-```yaml
-my_profile:
+## Configuring the Profile
+
+Set up a Dremio target by using the following configurations in your `profiles.yaml` file:
+
+```
+<project name>:
   outputs:
-    my_target:
+    unmanaged:
       type: dremio
-      threads: 2
-# please replace driver below with the one you gave to your dremio odbc driver installation      
-      driver: Dremio ODBC Driver 64-bit
-      host: [coordinator host]
-      port: 31010
-      schema: [schema]
-      user: [user]
-      password: [password]
-  target: my_target
+      threads: 1
+      host:
+      port:
+      user: 
+      password:
+      pat:
+      use_ssl: true
+  target: unmanaged
+```
+
+
+## Configurations
+
+<table>
+  <tr>
+   <td><strong>Configuration</strong>
+   </td>
+   <td><strong>Required?</strong>
+   </td>
+   <td><strong>Default Value</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td><code>type</code>
+   </td>
+   <td>Yes
+   </td>
+   <td><code>dremio</code>
+   </td>
+   <td>Auto-populated when creating a Dremio project. Value should not be changed.<br><br><b>Question:</b>What does the "auto-populating"?<br><br><b>Question:</b>When who or what creates a Dremio project?<br>
+   </td>
+  </tr>
+  <tr>
+   <td><code>threads</code>
+   </td>
+   <td>Yes
+   </td>
+   <td><code>1</code>
+   </td>
+   <td>The number of threads the dbt project runs on.<br><br><b>Question:</b>Can I create only 1 project per set of Dremio configuration parameters in my <code>profiles.yaml</code> file?<br><br><b>Question:</b>Can I change this number?<br><br><b>Question:</b>If I can change it, what effects should I expect?
+   </td>
+  </tr>
+  <tr>
+   <td><code>host</code>
+   </td>
+   <td>Yes
+   </td>
+   <td>None
+   </td>
+   <td>Dremio Software: The hostname or IP address of coordinator node in the Dremio cluster.
+<p>
+Dremio Cloud:
+<ul>
+<li>US Control Plane
+<p>
+<code>https://api.dremio.cloud</code></li>
+<li>
+EU Control Plane
+<p>
+<code>https://api.eu.dremio.cloud</code></li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td><code>port</code>
+   </td>
+   <td>Dremio Software: Yes
+<p>
+Dremio Cloud: Do not use this configuration.
+   </td>
+   <td><code>9047</code>
+   </td>
+   <td>Port for Dremio Software cluster API endpoints. (<strong>TODO: Can this be changed?</strong>
+   </td>
+  </tr>
+  <tr>
+   <td><code>user</code>
+   </td>
+   <td>Dremio Software: Yes, if you are not using the <code>pat</code> configuration.
+<p>
+Dremio Cloud: Do not use this configuration.
+   </td>
+   <td>None
+   </td>
+   <td>The username of the account to use when logging into the Dremio cluster.
+   </td>
+  </tr>
+  <tr>
+   <td><code>password</code>
+   </td>
+   <td>Dremio Software: Yes, if you are not using the <code>pat</code> configuration.
+<p>
+Dremio Cloud: Do not use this configuration.
+   </td>
+   <td>None
+   </td>
+   <td>The password of the account to use when logging into the Dremio cluster.
+   </td>
+  </tr>
+  <tr>
+   <td><code>pat</code>
+   </td>
+   <td>Dremio Software: Yes, if you are not using the <code>user</code> and <code>password</code> configurations.
+<p>
+Dremio Cloud: Yes
+   </td>
+   <td>None
+   </td>
+   <td>The personal access token to use for authenticating to Dremio.<br>Dremio Software: <ul><li>See <a target="_blank" href="https://docs.dremio.com/software/security/personal-access-tokens">Personal Access Tokens</a> for instructions about obtaining a token.</li><li>The use of a personal access token takes precedence if values for the three configurations <code>user</code>, <code>password</code> and <code>pat</code> are specified.</li></ul>Dremio Cloud: See <a target="_blank" href="https://docs.dremio.com/cloud/security/authentication/personal-access-token/">Personal Access Tokens</a> for instructions about obtaining a token.
+   </td>
+  </tr>
+  <tr>
+   <td><code>use_ssl</code>
+   </td>
+   <td>Yes
+   </td>
+   <td><code>true</code>
+   </td>
+   <td>Acceptable values are <code>true</code> and <code>false</code>.
+<p>
+Value must be <code>true</code> for Dremio Cloud.
+   </td>
+  </tr>
+  <tr>
+   <td><code>database</code>
+   </td>
+   <td>No
+   </td>
+   <td><code>@user</code>
+   </td>
+   <td><strong>TODO</strong>: Info in Fabrice’s README
+   </td>
+  </tr>
+  <tr>
+   <td><code>schema</code>
+   </td>
+   <td>No
+   </td>
+   <td><code>no_schema</code>
+   </td>
+   <td><strong>TODO</strong>: Info in Fabrice’s README. Can also use what Snowflake provides: <em>The schema to build models into by default. Can be overridden with<a href="https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas"> custom schemas</a></em>
+   </td>
+  </tr>
+  <tr>
+   <td><code>datalake</code>
+   </td>
+   <td>No
+   </td>
+   <td><code>$scratch</code>
+   </td>
+   <td><strong>TODO</strong>: Info in Fabrice’s README
+   </td>
+  </tr>
+  <tr>
+   <td><code>root_path</code>
+   </td>
+   <td>No
+   </td>
+   <td><code>no_schema</code>
+   </td>
+   <td><strong>TODO</strong>: Info in Fabrice’s README
+   </td>
+  </tr>
+</table>
