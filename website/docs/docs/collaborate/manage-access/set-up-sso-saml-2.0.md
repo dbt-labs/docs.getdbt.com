@@ -1,6 +1,6 @@
 ---
-title: "Setting up SSO with SAML 2.0"
-id: "setting-up-sso-with-saml-2.0"
+title: "Set up SSO with SAML 2.0"
+id: "set-up-sso-saml-2.0"
 ---
 
 :::info Enterprise Feature
@@ -75,7 +75,7 @@ You may use a restricted group attribute statement to limit the groups set
 to dbt Cloud for each authenticated user. For example, if all of your dbt Cloud groups start
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
 Please contact support if you have any questions.
-::: 
+:::
 
 ### Collect integration secrets
 
@@ -176,8 +176,8 @@ support if you have any questions.
 
 ### Finish Okta setup
 
-1. Select *I'm an Okta customer adding an internal app*. 
-2. Select *This is an internal app that we have created*. 
+1. Select *I'm an Okta customer adding an internal app*.
+2. Select *This is an internal app that we have created*.
 3. Click **Finish** to finish setting up the
 app.
 
@@ -189,7 +189,7 @@ app.
 
 ### View setup instructions
 
-1. On the next page, click **View Setup Instructions**. 
+1. On the next page, click **View Setup Instructions**.
 2. In the steps below, you'll supply these values in your dbt Cloud Account Settings to complete
 the integration between Okta and dbt Cloud.
 
@@ -268,14 +268,14 @@ If you're using Azure Active Directory (Azure AD), the instructions below will h
 
 Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 
-1. Log into your Azure account. 
+1. Log into your Azure account.
 2. In the Azure AD portal, select **Enterprise applications** and click **+ New application**.
 3. Select **Create your own application**.
 4. Name the application "dbt Cloud" or another descriptive name.
 5. Select **Integrate any other application you don't find in the gallery (Non-gallery)** as the application type.
 6. Click **Create**.
 7. You can find the new application by clicking **Enterprise applications** and selecting **All applications**.
-8. Click the application you just created and follow the instructions for configuring it in [Configuring SAML endpoints in AD](#configuring-saml-endpoints-in-ad). 
+8. Click the application you just created and follow the instructions for configuring it in [Configuring SAML endpoints in AD](#configuring-saml-endpoints-in-ad).
 9. Select **Single sign-on** under Manage in the left navigation.
 10. Click **Set up single sign on** under Getting Started.
 11. Click **SAML** in "Select a single sign-on method" section.
@@ -321,7 +321,7 @@ From the Set up Single Sign-On with SAML page:
 To complete setup, follow the steps below in dbt Cloud:
 
 1. Navigate to the **Account Settings** and then click on **Single Sign On**.
-2. Click **Edit** on the upper right corner. 
+2. Click **Edit** on the upper right corner.
 3. Provide the following SSO details:
 
    | Field | Value |
@@ -347,4 +347,3 @@ Users in your IdP will now be able to log into the application by navigating to 
 
 After configuring an identity provider, you will be able to set up [role-based
 access control](/access-control/enterprise-permissions) for your account.
-

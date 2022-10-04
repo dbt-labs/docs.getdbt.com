@@ -1,6 +1,6 @@
 ---
-title: "Setting up SSO with GSuite"
-id: "setting-up-sso-with-google-gsuite"
+title: "Set up SSO with Google GSuite"
+id: "set-up-sso-google-gsuite"
 ---
 
 :::info Enterprise Feature
@@ -13,10 +13,10 @@ dbt Cloud Enterprise supports Single-Sign On (SSO) via Google GSuite. You will n
 permissions to create and manage a new Google OAuth2 application, as well as
 access to enable the Google Admin SDK. Gsuite is a component within Google
 Cloud Platform (GCP), so you will also need access to a login with permissions
-to manage the GSuite application within a GCP account. 
+to manage the GSuite application within a GCP account.
 
 Some customers choose to use different cloud providers for User and Group permission setup
-than for hosting infrastructure. For example, it's certainly possible to use GSuite to 
+than for hosting infrastructure. For example, it's certainly possible to use GSuite to
 manage login information and Multifactor Authentication (MFA) configuration while hosting
 data workloads on AWS.
 

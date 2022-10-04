@@ -1,6 +1,6 @@
 ---
-title: "Setting up SSO with Okta"
-id: "setting-up-sso-with-okta"
+title: "Set up SSO with Okta"
+id: "set-up-sso-okta"
 ---
 
 :::info Enterprise Feature

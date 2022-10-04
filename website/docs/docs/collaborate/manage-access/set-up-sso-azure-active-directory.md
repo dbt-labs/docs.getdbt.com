@@ -1,6 +1,7 @@
 ---
-title: "Setting up SSO with Azure AD"
-id: "setting-up-enterprise-sso-with-azure-active-directory"
+title: "Set up SSO with Azure Active Directory"
+id: "set-up-sso-azure-active-directory"
+sidebar_label: "Set up SSO with Azure AD"
 ---
 
 :::info Enterprise Feature
@@ -71,7 +72,7 @@ the Redirect URI in the steps above, then skip ahead to step 8.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
-### Azure <-> dbt Cloud User and Group mapping 
+### Azure <-> dbt Cloud User and Group mapping
 
 The Azure users and groups you will create in the following steps are mapped to groups created in dbt Cloud based on the group name. Reference the docs on [enterprise permissions](enterprise-permissions) for additional information on how users, groups, and permission sets are configured in dbt Cloud.
 
@@ -89,7 +90,7 @@ Once you've registered the application, the next step is to assign users to it. 
 
 :::info User assignment required?
 Under **Properties** check the toggle setting for **User assignment required?** and confirm it aligns to your requirements. Most customers will want this toggled to **Yes** so that only users/groups explicitly assigned to dbt Cloud will be able to sign in. If this setting is toggled to **No** any user will be able to access the application if they have a direct link to the application per [Azure AD Documentation](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/assign-user-or-group-access-portal#configure-an-application-to-require-user-assignment)
-::: 
+:::
 
 ### Configuring permissions
 
@@ -162,7 +163,7 @@ by navigating to the URL:
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
 :::
 
-*Note:* If your dbt account is a VPC deployment, your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`. 
+*Note:* If your dbt account is a VPC deployment, your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
 
 
 ## Setting up RBAC
@@ -174,4 +175,3 @@ Now you have completed setting up SSO with Azure AD, the next steps will be to s
 Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
-

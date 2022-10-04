@@ -1,6 +1,6 @@
 ---
-title: "Setting up Snowflake OAuth"
-id: "setting-up-enterprise-snowflake-oauth"
+title: "Set up Snowflake OAuth"
+id: "set-up-snowflake-oauth"
 ---
 
 :::info Enterprise Feature
@@ -52,7 +52,7 @@ Additional configuration options may be specified for the security integration a
 The Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
 
 ```
-with 
+with
 
 integration_secrets as (
   select parse_json(system$show_oauth_client_secrets('DBT_CLOUD')) as secrets
@@ -61,11 +61,11 @@ integration_secrets as (
 select
   secrets:"OAUTH_CLIENT_ID"::string     as client_id,
   secrets:"OAUTH_CLIENT_SECRET"::string as client_secret
-from 
+from
   integration_secrets;
 ```
 
-Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection. 
+Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt Cloud" />
 
@@ -82,20 +82,20 @@ Once a user has authorized dbt Cloud with Snowflake via their identity provider,
 **NOTE**: The lifetime of the refresh token is dictated by the OAUTH_REFRESH_TOKEN_VALIDITY parameter supplied in the “create security integration” statement. When a user’s refresh token expires, the user will need to re-authorize with Snowflake to continue development in dbt Cloud.
 
 ### Setting up multiple dbt Cloud projects with Snowflake 0Auth
-If you are planning to set up the same Snowflake account to different dbt Cloud projects, you can use the same security integration for all of the projects. 
+If you are planning to set up the same Snowflake account to different dbt Cloud projects, you can use the same security integration for all of the projects.
 
-### FAQs 
+### FAQs
 #### How do I use the Blocked Roles List with dbt Cloud?
 <LoomVideo id="1ad791f87c024f82b5bcf93eb2047676" />
 
 ### Troubleshooting
 
 #### Invalid consent request
-When clicking on the `Connect Snowflake Account` successfully redirects you to the Snowflake login page, but you receive an `Invalid consent request` error. This could mean: 
-* Your user might not have access to the Snowflake role defined on the development credentials in dbt Cloud. Double-check that you have access to that role and if the role name has been correctly entered in as Snowflake is case sensitive. 
-* You're trying to use a role that is in the [BLOCKED_ROLES_LIST](https://docs.snowflake.com/en/user-guide/oauth-partner.html#blocking-specific-roles-from-using-the-integration), such as `ACCOUNTADMIN`. 
+When clicking on the `Connect Snowflake Account` successfully redirects you to the Snowflake login page, but you receive an `Invalid consent request` error. This could mean:
+* Your user might not have access to the Snowflake role defined on the development credentials in dbt Cloud. Double-check that you have access to that role and if the role name has been correctly entered in as Snowflake is case sensitive.
+* You're trying to use a role that is in the [BLOCKED_ROLES_LIST](https://docs.snowflake.com/en/user-guide/oauth-partner.html#blocking-specific-roles-from-using-the-integration), such as `ACCOUNTADMIN`.
 
 #### Server error 500
-If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database) on a Snowflake account level. 
+If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database) on a Snowflake account level.
 
 Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
