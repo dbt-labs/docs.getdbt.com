@@ -158,4 +158,4 @@ git checkout e845be54e6dc72342d5a8f814c8b3316ee220312
 fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
 ```
 
-Double check that your PR is not trying to merge using a commit that belongs to a fork of the repository attached to your dbt project. dbt Cloud can only checkout commits that belong to the original repository and not commits that belong to a fork of that repository.
+Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
