@@ -27,6 +27,7 @@ async function getDiscourseTopics({ body }) {
       allTopics = topics.reduce((topicsArr, topic) => {
         // Get first post in topic
         const firstTopicPost = posts?.find(post => 
+          post?.post_number === 1 && 
           post?.topic_id === topic?.id
         )
         // If post found
