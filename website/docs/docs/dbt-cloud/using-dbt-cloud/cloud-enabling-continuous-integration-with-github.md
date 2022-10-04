@@ -142,7 +142,7 @@ If you receive a schema-related error message referencing a *previous* PR, this 
 
 To fix this issue, select a production job run to defer to instead of self.
 
-### Production job run failing at the **Clone Git Repository** step
+### Production job runs failing at the **Clone Git Repository** step
 
 dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository.
 
