@@ -19,7 +19,7 @@ To connect GitHub in dbt Cloud:
 If you are the GitHub organization owner tasked with the installation of the dbt Cloud app in step 1, you will also be automatically personally authenticated after completion, so step 2 will be taken care of. This means teams of one only need to complete step 1.
 
 :::info Use GitHub On-Premise?
-If you're using an On-Premise GitHub deployment, this method will not work for your account. Please instead reference our
+If you're using an On-Premises GitHub deployment, this method will not work for your account. Please instead reference our
 docs on [importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#github) to set up your connection. This alternative connection method does not include the benefits of the native integration mentioned above.
 :::
 
