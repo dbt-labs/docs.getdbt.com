@@ -121,7 +121,7 @@ More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.
 
 ## Limitations
 
-If your temporary PR schemas aren't dropping after a merge or close of the PR, make sure:
+If your temporary PR schemas aren't dropping after a merge or close of the PR, you'll want to make sure:
 
 - You _have not_ used dbt Cloud environment variables in your connection settings page.
 - You _do not_ have an empty/blank default schema.
