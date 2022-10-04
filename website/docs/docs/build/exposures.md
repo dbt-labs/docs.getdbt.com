@@ -82,7 +82,3 @@ When we generate our documentation site, you'll see the exposure appear:
 
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-exposures.png" title="Dedicated page in dbt-docs for each exposure"/>
 <Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as orange-y nodes in the DAG"/>
-
-## Exposures are new!
-
-Exposures were introduced in dbt v0.18.1, with a limited set of supported types and properties. If you're interested in requesting or contributing additional properties, check out issue [dbt#2835](https://github.com/dbt-labs/dbt-core/issues/2835).
