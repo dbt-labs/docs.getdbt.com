@@ -149,3 +149,22 @@ If your temporary PR schemas are not dropping after a merge/close of the PR, it 
 - You have used dbt Cloud environment variables in your connection settings page.
 - You have an empty/blank default schema.
 - You have overridden the `generate_schema_name` macro.
+
+### Production job runs failing at the **Clone Git Repository** step
+
+dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository.
+
+If you receive the following error message at the **Clone Git Repository** step of your job run:
+
+```
+Error message:
+Cloning into '/tmp/jobs/123456/target'...
+Successfully cloned repository.
+Checking out to e845be54e6dc72342d5a8f814c8b3316ee220312...
+Failed to checkout to specified revision.
+git checkout e845be54e6dc72342d5a8f814c8b3316ee220312
+fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
+```
+
+Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
+
