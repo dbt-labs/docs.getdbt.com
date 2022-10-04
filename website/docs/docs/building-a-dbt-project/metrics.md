@@ -168,7 +168,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
-| window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average  |  {count: 14, period: day}        | no        |
+| window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`,`year`] |  {count: 14, period: day}        | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | config      | [Optional configurations](https://github.com/dbt-labs/dbt_metrics#accepted-metric-configurations) for calculating this metric         | {treat_null_values_as_zero: true} | no      |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
