@@ -9,6 +9,8 @@ meta:
   cloud_support: Not Supported
   slack_channel_name: '#db-tidb'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03CC86R1NY'
+  platform_name: 'TiDB'
+  config_page: 'no-configs'
 ---
 
 :::info Vendor-supported plugin
@@ -31,19 +33,29 @@ If you're interested in contributing, check out the source code repository liste
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
-### Connecting to TiDB with **dbt-tidb**
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
-#### User / Password Authentication
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+
+
+## Connecting to TiDB with **dbt-tidb**
+
+### User / Password Authentication
 
 Configure your dbt profile for using TiDB:
 
-##### TiDB connection profile
+#### TiDB connection profile
 <File name='profiles.yml'>
 
 ```yaml
@@ -64,7 +76,7 @@ dbt-tidb:
 
 </File>
 
-##### Description of Profile Fields
+#### Description of Profile Fields
 
 | Option   | Description                                          | Required? | Example             |
 |----------|------------------------------------------------------|-----------|---------------------|
@@ -76,7 +88,7 @@ dbt-tidb:
 | password | The password to use for authenticating to the server | Required  | `awesome_password`  |
 | retries  | The retry times after an unsuccessful connection     | Optional  | `default 1`         |
 
-#### Database User Privileges
+## Database User Privileges
 
 Your database user would be able to have some abilities to read or write, such as `SELECT`, `CREATE`, and so on.
 You can find some help [here](https://docs.pingcap.com/tidb/v4.0/privilege-management) with TiDB privileges management.
@@ -93,7 +105,7 @@ You can find some help [here](https://docs.pingcap.com/tidb/v4.0/privilege-manag
 | SHOW VIEW              |
 | SUPER                  |
 
-### Supported features
+## Supported features
 
 | TiDB 4.X | TiDB 5.0 ~ 5.2 | TiDB >= 5.3 |           Feature           |
 |:--------:|:--------------:|:-----------:|:---------------------------:|

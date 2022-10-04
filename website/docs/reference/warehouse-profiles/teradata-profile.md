@@ -10,6 +10,8 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: '#db-teradata'
   slack_channel_link: 'https://getdbt.slack.com/archives/C027B6BHMT3'
+  platform_name: 'Teradata'
+  config_page: 'teradata-configs'
 ---
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.
@@ -28,13 +30,20 @@ Some core functionality may be limited. If you're interested in contributing, ch
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
-For other information including Teradata feature support, see the [GitHub README](https://github.com/Teradata/dbt-teradata/blob/main/README.md).
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
+
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
 
 ### Connecting to Teradata

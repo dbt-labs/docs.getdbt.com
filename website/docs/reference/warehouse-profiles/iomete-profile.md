@@ -10,6 +10,8 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: '##db-iomete'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03JFG22EP9'
+  platform_name: 'iomete'
+  config_page: 'no-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -27,17 +29,21 @@ meta:
 
 ## Installation and Distribution
 
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
-Alternatively, you can install the package from GitHub with:
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
-```zsh
-pip install git+https://github.com/iomete/dbt-iomete.git
-```
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+
 
 Set up a iomete Target
 

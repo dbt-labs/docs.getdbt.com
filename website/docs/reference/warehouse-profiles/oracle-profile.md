@@ -10,6 +10,8 @@ meta:
   min_supported_version: 'SQlite Version 3.0'
   slack_channel_name: '#db-oracle'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWH4TXLY'
+  platform_name: 'Oracle'
+  config_page: 'no-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -27,11 +29,21 @@ meta:
 
 ## Installation
 
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
+
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
+
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+
 
 ### Configure the Python driver mode
 

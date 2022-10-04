@@ -10,6 +10,8 @@ meta:
   min_supported_version: 'Dremio 4.7'
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community'
+  platform_name: 'Dremio'
+  config_page: 'no-configs'
 ---
 
 :::info Community plugin
@@ -31,11 +33,21 @@ Some core functionality may be limited. If you're interested in contributing, ch
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
-<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p> dbt-dremio
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
+
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
+
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+ dbt-dremio
 
 Follow the repository's link for os dependencies.
 

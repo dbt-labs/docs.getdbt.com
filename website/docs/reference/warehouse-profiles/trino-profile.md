@@ -7,7 +7,11 @@ meta:
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
   cloud_support: Not Supported
-  min_supported_version: 'n/a' 
+  min_supported_version: 'n/a'
+  slack_channel_name: '#db-clickhouse'
+  slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
+  platform_name: 'Trino'
+  config_page: 'no-configs'
 ---
 
 :::info Vendor-supported plugin
@@ -29,17 +33,21 @@ Certain core functionality may vary. If you would like to report a bug, request 
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
-## Installation and Distribution
 
-dbt's Trino adapter is managed in its own repository, [dbt-trino](https://github.com/starburstdata/dbt-trino). To use the Trino adapter, you must install the `dbt-trino` plugin:
-
-### Using pip
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
 
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
+
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
+
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+
 
 
 ## Set up a Trino or Starburst Target

@@ -10,6 +10,8 @@ meta:
   min_supported_version: 'v7.5'
   slack_channel_name: 'db-singlestore'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02V2QHFF7U'
+  platform_name: 'SingleStore'
+  config_page: 'no-configs'
 ---
 
 :::info Vendor-supported plugin
@@ -33,19 +35,20 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 ## Installation and Distribution
 
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
-Alternatively, you can install the package from GitHub with:
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
-```zsh
-pip install git+https://github.com/memsql/dbt-singlestore.git
-```
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
 
-For other information including support of dbt features by SingleStore, see the [GitHub README](https://github.com/memsql/dbt-singlestore#readme). 
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
 
 ### Set up a SingleStore Target

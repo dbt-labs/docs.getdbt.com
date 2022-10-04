@@ -11,6 +11,8 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: 'db-databricks-and-spark'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
+  platform_name: 'Spark'
+  config_page: 'spark-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -25,6 +27,41 @@ meta:
     <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
+The easiest way to install the adapter is to use pip:
+
+<code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
+
+If connecting to Databricks via ODBC driver, it requires `pyodbc`. Depending on your system, you can install it seperately or via pip. See the [`pyodbc` wiki](https://github.com/mkleehammer/pyodbc/wiki/Install) for OS-specific installation details.
+
+If connecting to a Spark cluster via the generic thrift or http methods, it requires `PyHive`.
+
+```zsh
+# odbc connections
+$ pip install "dbt-spark[ODBC]"
+
+# thrift or http connections
+$ pip install "dbt-spark[PyHive]"
+```
+
+<VersionBlock firstVersion="1.1">
+
+```zsh
+# session connections
+$ pip install "dbt-spark[session]"
+```
+
+</VersionBlock>
+
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
+
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
 ## Connection Methods
 
@@ -180,41 +217,6 @@ connect_retries: 3
 ```
 
 </File>
-
-</VersionBlock>
-
-## Installation and Distribution
-
-dbt's adapter for Apache Spark and Databricks is managed in its own repository, [dbt-spark](https://github.com/dbt-labs/dbt-spark). To use it, 
-you must install the `dbt-spark` plugin.
-
-### Using pip
-
-The easiest way to install the adapter is to use pip:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
-
-If connecting to Databricks via ODBC driver, it requires `pyodbc`. Depending on your system, you can install it seperately or via pip. See the [`pyodbc` wiki](https://github.com/mkleehammer/pyodbc/wiki/Install) for OS-specific installation details.
-
-If connecting to a Spark cluster via the generic thrift or http methods, it requires `PyHive`.
-
-```
-# odbc connections
-$ pip install "dbt-spark[ODBC]"
-```
-```
-# thrift or http connections
-$ pip install "dbt-spark[PyHive]"
-```
-
-<VersionBlock firstVersion="1.1">
-
-```
-# session connections
-$ pip install "dbt-spark[session]"
-```
 
 </VersionBlock>
 

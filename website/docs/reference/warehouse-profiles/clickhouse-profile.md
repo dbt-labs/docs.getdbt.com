@@ -10,6 +10,8 @@ meta:
   min_supported_version: '?'
   slack_channel_name: '#db-clickhouse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
+  platform_name: 'Clickhouse'
+  config_page: 'clickhouse-configs'
 ---
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
@@ -28,13 +30,20 @@ Some core functionality may be limited. If you're interested in contributing, ch
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
+
+<h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 The easiest way to install the adapter is to use pip:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
-For further info, see the [GitHub README](https://github.com/ClickHouse/dbt-clickhouse#readme)
+<h2> Configuring {frontMatter.meta.pypi_package} </h2>
+
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
 ## Connecting to ClickHouse with **dbt-clickhouse**
 
