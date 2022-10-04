@@ -34,7 +34,7 @@ The forum is broken down into three categories:
 - [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21)
     - Share anything you’re thinking about that has to do with dbt or analytics engineering! This is a great place to jot down some thoughts to share with the community or spark a discussion on a topic that’s currently interesting you.
 
-## Inclusivity Statement
+## Inclusivity on the Community Forum
 We are **strongly** committed to building a community where everyone can feel welcome. 
 
 The dbt community started with people who were not traditionally considered “technical”, did not have ownership over technical systems, and were often left out of organizational decision-making. We came together to learn from each other, solve hard problems together, and to help build a new discipline where data folks have greater ownership over our own work. It really matters to us that everyone feels like they can ask questions and engage, no matter their professional or personal background. 
