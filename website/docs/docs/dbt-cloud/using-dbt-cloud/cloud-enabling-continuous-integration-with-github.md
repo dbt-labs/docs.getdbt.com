@@ -141,3 +141,21 @@ Select the **GitHub**, **GitLab**, or **AzureDevOps** tab and reselect your repo
 If you receive a schema-related error message referencing a *previous* PR, this is usually an indicator that you are not using a production job for your deferral and are instead using *self*.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.
 
 To fix this issue, select a production job run to defer to instead of self.
+
+### Production job runs failing at the **Clone Git Repository** step
+
+dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository.
+
+If you receive the following error message at the **Clone Git Repository** step of your job run:```
+
+```
+Error message:
+Cloning into '/tmp/jobs/123456/target'...
+Successfully cloned repository.
+Checking out to e845be54e6dc72342d5a8f814c8b3316ee220312...
+Failed to checkout to specified revision.
+git checkout e845be54e6dc72342d5a8f814c8b3316ee220312
+fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
+```
+
+Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
