@@ -253,7 +253,7 @@ const sidebarSettings = {
               items: [
                 "docs/collaborate/manage-access/sso-overview",
                 "docs/collaborate/manage-access/set-up-sso-saml-2.0",
-                "docs/collaborate/manage-access/set-up-sso-google-gsuite",
+                "docs/collaborate/manage-access/set-up-sso-google-workspace",
                 "docs/collaborate/manage-access/set-up-sso-azure-active-directory",
               ],
             }, // SSO

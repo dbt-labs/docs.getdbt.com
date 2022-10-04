@@ -1,6 +1,6 @@
 ---
-title: "Set up SSO with Google GSuite"
-id: "set-up-sso-google-gsuite"
+title: "Set up SSO with Google Workspace"
+id: "set-up-sso-google-workspace"
 ---
 
 :::info Enterprise Feature
