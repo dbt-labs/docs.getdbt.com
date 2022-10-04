@@ -166,7 +166,7 @@ Dremio Cloud: Yes
    </td>
    <td>Acceptable values are <code>true</code> and <code>false</code>.
 <p>
-Value must be <code>true</code> for Dremio Cloud.
+Dremio Cloud: The value must be <code>true</code>.
    </td>
   </tr>
   <tr>
