@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 import { useColorMode } from '@docusaurus/theme-common';
 
 
-function Card({ title, body, link, icon }) {
+export default function Card({ title, body, link, icon }) {
   const { isDarkTheme } = useColorMode();
   return (
     <div className={styles.cardWrapper}>
@@ -13,7 +13,7 @@ function Card({ title, body, link, icon }) {
         to={useBaseUrl(link)}>
         <article className={styles.card}>
           <img
-          src={isDarkTheme ? `img/icons/white/${icon}.svg` : `img/icons/${icon}.svg`}
+          src={isDarkTheme ? `/img/icons/white/${icon}_white.png` : `/img/icons/${icon}.png`}
           alt=""
           className={styles.icon}/>
           <h3>{title}</h3>
@@ -25,6 +25,4 @@ function Card({ title, body, link, icon }) {
     </div>
   );
 }
-
-export default Card;
 
