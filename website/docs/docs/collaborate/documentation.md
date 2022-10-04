@@ -1,5 +1,5 @@
 ---
-title: "Documentation"
+title: "About documentation"
 id: "documentation"
 ---
 

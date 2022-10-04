@@ -1,6 +1,6 @@
 ---
-title: "Generating documentation in dbt Cloud"
-id: "cloud-generating-documentation"
+title: "Build and view your docs with dbt Cloud"
+id: "build-and-view-your-docs"
 description: "Automatically generate project documentation as you run jobs."
 ---
 
@@ -26,7 +26,7 @@ You configure project documentation to generate documentation when the job you s
 
 1. Click the gear icon in the top right.
 2. Select **Projects** and click the project that needs documentation.
-3. Click **Edit**. 
+3. Click **Edit**.
 4. Under "Artifacts," select the job that should generate docs when it runs.
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" title="Configuring project documentation"/>
 5. Click **Save**.

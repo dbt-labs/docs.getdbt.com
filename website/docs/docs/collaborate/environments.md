@@ -1,6 +1,6 @@
 ---
-title: "Managing environments"
-id: "managing-environments"
+title: "Environments"
+id: "environments"
 ---
 
 ## What are environments?

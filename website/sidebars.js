@@ -200,35 +200,35 @@ const sidebarSettings = {
           type: "category",
           label: "Git version control",
           items: [
-            "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
-            "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
+            "docs/collaborate/git/pr-template",
+            "docs/collaborate/git/resolve-merge-conflicts",
             {
               type: "category",
               label: "Supported git providers",
               items: [
-                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
-                "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
+                "docs/collaborate/git/connect-github",
+                "docs/collaborate/git/connect-gitlab",
                 {
                   type: "category",
-                  label: "Connecting Azure DevOps",
-                  link: { type: 'doc', id: 'docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops' },
+                  label: "Azure DevOps",
                   items: [
-                    'docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure',
-                    'docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure',
+                    "docs/collaborate/git/connect-azure-devops",
+                    "docs/collaborate/git/setup-azure",
+                    "docs/collaborate/git/authenticate-azure",
                   ],
                 },
-                "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
+                "docs/collaborate/git/import-a-project-by-git-url",
               ],
             },
           ],
         },
-        "docs/building-a-dbt-project/managing-environments",
+        "docs/collaborate/environments",
         {
           type: "category",
-          label: "Document dbt projects",
-          link: { type: 'doc', id: 'docs/building-a-dbt-project/documentation' },
+          label: "Document your dbt projects",
           items: [
-            "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
+            "docs/collaborate/documentation",
+            "docs/collaborate/build-and-view-your-docs",
           ],
         },
 
@@ -236,22 +236,22 @@ const sidebarSettings = {
           type: "category",
           label: "Manage access",
           items: [
-            "docs/dbt-cloud/access-control/access-control-overview",
-            "docs/dbt-cloud/access-control/cloud-seats-and-users",
+            "docs/collaborate/manage-access/licenses-and-groups",
+            "docs/collaborate/manage-access/seats-and-users",
             {
               type: "category",
               label: "Permissions",
               items: [
-                "docs/dbt-cloud/access-control/self-service-permissions",
-                "docs/dbt-cloud/access-control/enterprise-permissions",
+                "docs/collaborate/manage-access/self-service-permissions",
+                "docs/collaborate/manage-access/enterprise-permissions",
               ],
             },
 
             {
               type: "category",
               label: "Single sign-on",
-              link: { type: 'doc', id: 'docs/dbt-cloud/dbt-cloud-enterprise/sso-overview', },
               items: [
+                "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
                 "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",

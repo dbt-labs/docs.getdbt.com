@@ -1,7 +1,6 @@
 ---
-title: "Connecting your GitHub account"
-id: "cloud-installing-the-github-application"
-sidebar_label: "Connecting GitHub"
+title: "Connect to GitHub"
+id: "connect-github"
 ---
 
 ## Overview
@@ -20,7 +19,7 @@ To connect GitHub in dbt Cloud:
 If you are the GitHub organization owner tasked with the installation of the dbt Cloud app in step 1, you will also be automatically personally authenticated after completion, so step 2 will be taken care of. This means teams of one only need to complete step 1.
 
 :::info Use GitHub On-Premise?
-If you're using an On-Premise GitHub deployment, this method will not work for your account. Please instead reference our 
+If you're using an On-Premise GitHub deployment, this method will not work for your account. Please instead reference our
 docs on [importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#github) to set up your connection. This alternative connection method does not include the benefits of the native integration mentioned above.
 :::
 
@@ -28,7 +27,7 @@ docs on [importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cl
 
 A GitHub organization owner needs to connect and configure the dbt Cloud app for their GitHub organization. If you are a team of one or wish to connect your personal GitHub account, then these instructions also apply to you.
 
-To link your dbt Cloud account to your team's GitHub account, navigate to Your Profile settings by clicking the gear icon in the top right. Select **Linked Accounts** in the left menu. 
+To link your dbt Cloud account to your team's GitHub account, navigate to Your Profile settings by clicking the gear icon in the top right. Select **Linked Accounts** in the left menu.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-connect.gif" title="Navigated to Linked Accounts under your profile"/>
 
@@ -43,11 +42,11 @@ The dbt Cloud GitHub App requires the following permissions:
 Once you grant access to the app, you will be redirected back to dbt Cloud and shown a linked account success state. You are now personally authenticated too, and your team members can begin [connecting their profiles](/cloud-installing-the-github-application#personally-authenticate-with-github).
 
 ## Configuring the dbt Cloud app in your GitHub account
-If you are your GitHub organization owner, you can also configure the dbt Cloud GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in dbt Cloud to start this process. 
+If you are your GitHub organization owner, you can also configure the dbt Cloud GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in dbt Cloud to start this process.
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/configure-github.png" title="Configuring the dbt Cloud app"/>
 
 ## Personally authenticate with GitHub
-dbt Cloud developers on the Enterprise plan must each connect their GitHub profiles to dbt Cloud, as every developer's read / write access for the dbt repo is checked in the dbt Cloud IDE. dbt Cloud developers on the Team plan do not need to each connect their profiles to GitHub, but it is still recommended to do so. 
+dbt Cloud developers on the Enterprise plan must each connect their GitHub profiles to dbt Cloud, as every developer's read / write access for the dbt repo is checked in the dbt Cloud IDE. dbt Cloud developers on the Team plan do not need to each connect their profiles to GitHub, but it is still recommended to do so.
 
 To connect a personal GitHub account, dbt Cloud developers should navigate to Your Profile settings by clicking the gear icon in the top right, then select **Linked Accounts** in the left menu.
 

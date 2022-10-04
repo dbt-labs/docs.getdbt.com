@@ -1,7 +1,6 @@
 ---
-title: "Connecting your Azure DevOps Account"
-id: "connecting-azure-devops"
-sidebar_label: "Connecting Azure DevOps"
+title: "Connect to Azure DevOps"
+id: "connect-azure-devops"
 ---
 
 <Snippet src="available-beta-banner" />
@@ -27,5 +26,3 @@ To connect Azure DevOps in dbt Cloud:
 
 1. An account admin needs to [set up an Active Directory application and add it to dbt Cloud](docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure).
 2. dbt Cloud developers need to [personally authenticate with Azure DevOps](docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure) from dbt Cloud.
-
-

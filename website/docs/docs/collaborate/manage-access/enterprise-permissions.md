@@ -1,5 +1,5 @@
 ---
-title: "Enterprise Permissions"
+title: "Enterprise permissions"
 id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 ---
@@ -177,7 +177,7 @@ Click the gear icon to the top right and select **Account Settings**. From the *
 
 <Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
 
-1. Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups). If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group. 
+1. Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups). If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group.
 2. Configure the SSO provider groups you want to add RBAC by clicking **Add** in the **SSO** section. These fields are case sensitive and must match the source group formatting.
 3. Configure the permissions for users within those groups by clicking **Add** in the **Access** section of the window.
 <Lightbox src="/img/docs/dbt-cloud/Configure-SSO-Access.png" title="Configure SSO groups and Access permissions"/>

@@ -1,15 +1,15 @@
 ---
-title: "Handling Merge Conflicts"
-id: "handling-merge-conflicts"
+title: "Resolve merge conflicts"
+id: "resolve-merge-conflicts"
 ---
 
 Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept. The merge conflict process gives users the ability to sort out which lines of code should be kept and committed. Here we'll show you how you'd resolve merge conflicts in the IDE!
 
 ## Running into a merge conflict
 
-In this example we have a column that represents the total number of orders your customer has ever had. It's currently named `number_of_orders` but your stakeholder feels like this could be named better. 
+In this example we have a column that represents the total number of orders your customer has ever had. It's currently named `number_of_orders` but your stakeholder feels like this could be named better.
 
-You and a teammate make changes to the column name, but have gone two separate routes. You rename this column to `total_number_of_orders` and your teammate has renamed it `historical_order_count`. 
+You and a teammate make changes to the column name, but have gone two separate routes. You rename this column to `total_number_of_orders` and your teammate has renamed it `historical_order_count`.
 
 Your teammate has committed their change first, so you encounter a merge conflict when you press commit.
 

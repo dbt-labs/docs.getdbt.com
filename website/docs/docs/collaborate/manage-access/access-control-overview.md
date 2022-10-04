@@ -1,6 +1,6 @@
 ---
-title: "Access Control"
-id: "access-control-overview"
+title: "Licenses and groups"
+id: "licenses-and-groups"
 ---
 
 ## Overview

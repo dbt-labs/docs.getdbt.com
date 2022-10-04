@@ -1,5 +1,5 @@
 ---
-title: "Self-Service Permissions"
+title: "Self-service permissions"
 id: "self-service-permissions"
 ---
 ## Overview
@@ -24,7 +24,7 @@ Users configured with Read Only license types will experience a restricted set o
 
 ## Owner and Member Groups in dbt Cloud Enterprise  
 
-By default, new users are added to the Member and Owner groups when they onboard to a new dbt Cloud account. Member and Owner groups are included with every new dbt Cloud account because they provide access for administrators to add users and groups, and to apply permission sets. 
+By default, new users are added to the Member and Owner groups when they onboard to a new dbt Cloud account. Member and Owner groups are included with every new dbt Cloud account because they provide access for administrators to add users and groups, and to apply permission sets.
 
 You will need owner and member groups to help with account onboarding, but these groups can create confusion when initially setting up SSO and RBAC for dbt Cloud Enterprise accounts as described in the [Enterprise Permissions](enterprise-permissions) guide. Owner and Member groups are **account level** groups, so their permissions override any project-level permissions you wish to apply.
 

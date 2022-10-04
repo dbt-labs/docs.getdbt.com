@@ -1,6 +1,6 @@
 ---
-title: "Importing a project by git URL"
-id: "cloud-import-a-project-by-git-url"
+title: "Import a project by git URL"
+id: "import-a-project-by-git-url"
 ---
 
 In dbt Cloud, you can import a git repository from any valid git URL that points to a dbt project. There are a couple of important considerations to keep in mind when doing this:

@@ -1,6 +1,6 @@
 ---
 title: "Seats and Users"
-id: "cloud-seats-and-users"
+id: "seats-and-users"
 ---
 
 ## Overview

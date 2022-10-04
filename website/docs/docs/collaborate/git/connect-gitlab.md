@@ -1,7 +1,6 @@
 ---
-title: "Connecting your GitLab Account"
-id: "connecting-gitlab"
-sidebar_label: "Connecting GitLab"
+title: "Connect to GitLab"
+id: "connect-gitlab"
 ---
 
 ## Overview
@@ -18,14 +17,14 @@ The steps to integrate GitLab in dbt Cloud depend on your plan. If you are on:
 
 ## For dbt Cloud Developer and Team tiers
 
-To connect your GitLab account: 
-1. Navigate to Your Profile settings by clicking the gear icon in the top right. 
-2. Select **Linked Accounts** in the left menu. 
+To connect your GitLab account:
+1. Navigate to Your Profile settings by clicking the gear icon in the top right.
+2. Select **Linked Accounts** in the left menu.
 3. Click **Link** to the right of your GitLab account.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/gitlab redirect.gif" title="Link your GitLab" />
 
-When you click **Link**, you will be redirected to GitLab and prompted to sign into your account. GitLab will then ask for your explicit authorization: 
+When you click **Link**, you will be redirected to GitLab and prompted to sign into your account. GitLab will then ask for your explicit authorization:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Auth.png" title="GitLab Authorization Screen" />
 
@@ -71,10 +70,10 @@ The application form in GitLab should look as follows when completed:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/gitlab app.png" title="GitLab group owned application form"/>
 
-Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values will be available even if you close the app screen, so this is not the only chance you have to save them. 
+Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values will be available even if you close the app screen, so this is not the only chance you have to save them.
 
 ### Adding the GitLab OAuth application to dbt Cloud
-After you've created your GitLab application, you need to provide dbt Cloud information about the app. In dbt Cloud, account admins should navigate to **Account Settings**, click on the **Integrations** tab, and expand the GitLab section. 
+After you've created your GitLab application, you need to provide dbt Cloud information about the app. In dbt Cloud, account admins should navigate to **Account Settings**, click on the **Integrations** tab, and expand the GitLab section.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Navigation.gif" title="Navigating to the GitLab Integration in dbt Cloud"/>
 
@@ -90,7 +89,7 @@ Note, if you have a special hosted version of GitLab, modify the **GitLab Instan
 
 Once the form is complete in dbt Cloud, click **Save**.
 
-You will then be redirected to GitLab and prompted to sign into your account. GitLab will ask for your explicit authorization: 
+You will then be redirected to GitLab and prompted to sign into your account. GitLab will ask for your explicit authorization:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Auth.png" title="GitLab Authorization Screen" />
 
@@ -117,4 +116,4 @@ If you do not see your repository listed, double-check that:
 If you do see your repository listed, but are unable to import the repository successfully, double-check that:
 - You are a maintainer of that repository. Only users with maintainer permissions can set up repository connections.
 
-If you imported a repository using the dbt Cloud native integration with GitLab, you should be able to see the clone strategy is using a `deploy_token`. If it's relying on an SSH key, this means the repository was not set up using the native GitLab integration, but rather using the generic git clone option. The repository must be reconnected in order to get the benefits described above. 
+If you imported a repository using the dbt Cloud native integration with GitLab, you should be able to see the clone strategy is using a `deploy_token`. If it's relying on an SSH key, this means the repository was not set up using the native GitLab integration, but rather using the generic git clone option. The repository must be reconnected in order to get the benefits described above.
