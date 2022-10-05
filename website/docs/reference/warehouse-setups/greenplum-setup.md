@@ -1,6 +1,6 @@
 ---
 title: "Greenplum setup"
-id: greenplum-setup
+id: "greenplum-setup"
 meta:
   maintained_by: Community
   authors: 'Mark Poroshin, Dmitry Bevz'
