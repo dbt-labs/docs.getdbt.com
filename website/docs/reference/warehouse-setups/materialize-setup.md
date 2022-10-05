@@ -1,5 +1,6 @@
 ---
 title: "Materialize setup"
+id: "materialize-setup"
 meta:
   maintained_by: Materialize  Inc.
   authors: 'Materialize team'
