@@ -36,44 +36,44 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 
 | Data Platform                              | latest verified version  |
 | ------------------------------------------ | ------------------------ |
-| AlloyDB  ([setup](alloydb-profile))        | (same as `dbt-postgres`) |
-| BigQuery ([setup](bigquery-profile))       | 1.2.0                    |
-| Databricks ([setup](databricks-profile))   | 1.2.0 :construction:     |
-| Postgres ([setup](postgres-profile))       | 1.2.0                    |
-| Redshift ([setup](redshift-profile))       | 1.2.0                    |
-| Snowflake ([setup](snowflake-profile))     | 1.2.0                    |
-| Apache Spark ([setup](spark-profile))      | 1.2.0                    |
-| Starburst & Trino ([setup](trino-profile)) | 1.2.0 :construction:     |
+| AlloyDB  ([setup](alloydb-setup))        | (same as `dbt-postgres`) |
+| BigQuery ([setup](bigquery-setup))       | 1.2.0                    |
+| Databricks ([setup](databricks-setup))   | 1.2.0 :construction:     |
+| Postgres ([setup](postgres-setup))       | 1.2.0                    |
+| Redshift ([setup](redshift-setup))       | 1.2.0                    |
+| Snowflake ([setup](snowflake-setup))     | 1.2.0                    |
+| Apache Spark ([setup](spark-setup))      | 1.2.0                    |
+| Starburst & Trino ([setup](trino-setup)) | 1.2.0 :construction:     |
 
 ### Community Adapters
 
 | Data Platform                                   |
 | ----------------------------------------------- |
-| Athena ([setup](athena-profile))                |
-| ClickHouse ([setup](clickhouse-profile))        |
-| IBM DB2 ([setup](ibmdb2-profile))               |
-| DuckDB ([setup](duckdb-profile))                |
-| Dremio ([setup](dremio-profile))                |
-| Exasol Analytics ([setup](exasol-profile))      |
-| Firebolt ([setup](firebolt-profile))            |
-| AWS Glue ([setup](glue-profile))                |
-| Greenplum ([setup](greenplum-profile))          |
-| Hive ([setup](hive-profile))                    |
-| Impala ([setup](impala-profile))                |
-| iomete ([setup](iomete-profile))                |
-| Layer ([setup](layer-profile))                  |
-| Materialize ([setup](materialize-profile))      |
-| MindsDB ([setup](mindsdb-profile))              |
-| MySQL ([setup](mysql-profile))                  |
-| Oracle ([setup](oracle-profile))                |
-| Rockset ([setup](rockset-profile))              |
-| SingleStore ([setup](singlestore-profile))      |
-| SQLite ([setup](sqlite-profile))                |
-| SQL Server & Azure SQL ([setup](mssql-profile)) |
-| AzureSynapse ([setup](azuresynapse-profile))    |
-| Teradata ([setup](teradata-profile))            |
-| TiDB ([setup](tidb-profile))                    |
-| Vertica ([setup](vertica-profile))              |
+| Athena ([setup](athena-setup))                |
+| ClickHouse ([setup](clickhouse-setup))        |
+| IBM DB2 ([setup](ibmdb2-setup))               |
+| DuckDB ([setup](duckdb-setup))                |
+| Dremio ([setup](dremio-setup))                |
+| Exasol Analytics ([setup](exasol-setup))      |
+| Firebolt ([setup](firebolt-setup))            |
+| AWS Glue ([setup](glue-setup))                |
+| Greenplum ([setup](greenplum-setup))          |
+| Hive ([setup](hive-setup))                    |
+| Impala ([setup](impala-setup))                |
+| iomete ([setup](iomete-setup))                |
+| Layer ([setup](layer-setup))                  |
+| Materialize ([setup](materialize-setup))      |
+| MindsDB ([setup](mindsdb-setup))              |
+| MySQL ([setup](mysql-setup))                  |
+| Oracle ([setup](oracle-setup))                |
+| Rockset ([setup](rockset-setup))              |
+| SingleStore ([setup](singlestore-setup))      |
+| SQLite ([setup](sqlite-setup))                |
+| SQL Server & Azure SQL ([setup](mssql-setup)) |
+| AzureSynapse ([setup](azuresynapse-setup))    |
+| Teradata ([setup](teradata-setup))            |
+| TiDB ([setup](tidb-setup))                    |
+| Vertica ([setup](vertica-setup))              |
 
 ## Contributing to dbt-core adapters
 
