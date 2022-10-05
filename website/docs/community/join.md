@@ -1,6 +1,6 @@
 ---
 title: Join the community
-id: join-the-community
+id: join
 ---
 
 import Card from '@site/src/components/Card';
@@ -19,16 +19,16 @@ Want to learn how organizations around the world are tackling the biggest challe
 />
 
 <Card
-    title="Community formus"
+    title="Community forum"
     body="Have a question about how to do something in dbt? Hop into our community forums and work with others to create long lived community knowledge."
-    link="https://discourse.getdbt.com/"
+    link="forums"
     icon="discussion"
 />
 
 <Card
     title="How to contribute"
     body="Want to get involved? This is the place! Learn how to contribute to dbt open source. repositories, write for our blog, speak at a meetup and more."
-    link="http://localhost:3000/community/contributing/contributing-intro" icon="writing"
+    link="community/contributing/contributing-intro" icon="writing"
 />
 
 <Card
@@ -41,7 +41,7 @@ Want to learn how organizations around the world are tackling the biggest challe
 <Card
     title="Upcoming events"
     body="Nothing beats the energy of a meetup or a live event. Join us!"
-    link="https://www.getdbt.com/events/"
+    link="events"
     icon="calendar" />
 
 <Card
