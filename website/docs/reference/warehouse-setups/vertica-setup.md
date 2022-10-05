@@ -1,5 +1,6 @@
 ---
 title: "Vertica setup"
+id: "vertica-setup"
 meta:
   maintained_by: Community
   authors: Matthew Carter, Andy Regan, Andrew Hedengren
