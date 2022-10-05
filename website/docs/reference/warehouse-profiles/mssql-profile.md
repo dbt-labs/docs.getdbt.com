@@ -34,7 +34,8 @@ On Debian/Ubuntu make sure you have the ODBC header files before installing
 sudo apt install unixodbc-dev
 ```
 
-Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
+Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15).
+If you already have ODBC Driver 17 installed, then that one will work as well.
 
 The adapter is tested with SQL Server 2017, SQL Server 2019, SQL Server 2022 and Azure SQL Database. These versions are tested with Microsoft ODBC Driver 17 and Microsoft ODBC Driver 18.
 
