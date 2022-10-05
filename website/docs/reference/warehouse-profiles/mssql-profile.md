@@ -27,6 +27,10 @@ The package can be installed from PyPI with:
 pip install dbt-sqlserver
 ```
 
+:::tip Default settings change in dbt-sqlserver v1.2 / ODBC Driver 18
+Microsoft made several changes related to connection encryption. Read more about the changes [below](#connection-encryption).
+:::
+
 ### Prerequisites
 
 On Debian/Ubuntu make sure you have the ODBC header files before installing
@@ -57,13 +61,12 @@ For all the authentication methods below, the following configuration options ca
 
 ### Connection encryption
 
-:::tip Default settings change for MSFT ODBC Driver 18
-Microsoft made several changes in the release of ODBC Driver 18 that affects how connection encryption is configured. To accommodate these changes, starting in dbt-sqlserver 1.2.0 or newer the default will be to always configure the following: `encrypt=True` and `trust_cert=False` and will always be included in the connection string to the database.
-:::
+Microsoft made several changes in the release of ODBC Driver 18 that affects how connection encryption is configured.
+To accommodate these changes, starting in dbt-sqlserver 1.2.0 or newer the default vallues of `encrypt` and `trust_cert` have changed.
+Both of these settings will now **always** be included in the connection string to the server, regardless if you've left them out of your profile configuration or not.
 
-The default value of `encrypt` is `true`, meaning that connections are encrypted by default.
-
-The default value of `trust_cert` is `false`, meaning that the server certificate will be validated. By setting this to `true`, a self-signed certificate will be accepted.
+* The default value of `encrypt` is `true`, meaning that connections are encrypted by default.
+* The default value of `trust_cert` is `false`, meaning that the server certificate will be validated. By setting this to `true`, a self-signed certificate will be accepted.
 
 More details about how these values affect your connection and how they are used differently in versions of the ODBC driver can be found in the [Microsoft documentation](https://learn.microsoft.com/en-us/sql/connect/odbc/dsn-connection-string-attribute?view=sql-server-ver16#encrypt).
 

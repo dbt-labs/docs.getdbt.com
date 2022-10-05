@@ -44,6 +44,10 @@ sudo apt install unixodbc-dev
 Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15).
 If you already have ODBC Driver 17 installed, then that one will work as well.
 
+:::tip Default settings change in dbt-synapse v1.2 / ODBC Driver 18
+Microsoft made several changes related to connection encryption. Read more about the changes [here](mssql-profile#connection-encryption).
+:::
+
 ### Authentication methods
 
 This adapter is based on the adapter for Microsoft SQL Server.
