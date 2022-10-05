@@ -143,7 +143,13 @@ You can use a different number of threads than the value defined in your target 
 
 ## Advanced: Customizing a profile directory
 
-By default, dbt expects your `profiles.yml` file to be located in the `~/.dbt/` directory. To check the expected location of your `profiles.yml` file for your installation of dbt, you can run the following:
+The parent directory for `profiles.yml` is determined using the following precedence:
+
+1. `--profiles-dir` option
+1. `DBT_PROFILES_DIR` environment variable
+1. `~/.dbt/` directory
+
+To check the expected location of your `profiles.yml` file for your installation of dbt, you can run the following:
 
 ```bash
 $ dbt debug --config-dir
