@@ -1,5 +1,6 @@
 ---
 title: "Rockset setup"
+id: "rockset-setup"
 meta:
   maintained_by: Rockset, Inc.
   authors: 'Rockset, Inc.'
