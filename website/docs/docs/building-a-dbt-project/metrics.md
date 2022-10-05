@@ -33,7 +33,12 @@ As with Exposures, you can see everything that rolls up into a metric (`dbt ls -
 
 ## Defining a metric
 
-You can define metrics in `.yml` files nested under a `metrics:` key.
+You can define metrics in `.yml` files nested under a `metrics:` key. Metric names must:
+- contain only letters, numbers, and underscores (no spaces or special characters)
+- begin with a letter
+- contain no more than 250 characters
+
+For a short human-friendly name with title casing, spaces, and special characters, use the `label` property.
 
 ### Example definition
 
@@ -54,7 +59,7 @@ metrics:
   - name: rolling_new_customers
     label: New Customers
     model: ref('dim_customers')
-    description: "The 14 day rolling count of paying customers using the product"
+    [description](description): "The 14 day rolling count of paying customers using the product"
 
     calculation_method: count_distinct
     expression: user_id # superfluous here, but shown as an example
@@ -66,7 +71,9 @@ metrics:
       - plan
       - country
     
-    window: 14 days
+    window:
+      count: 14
+      period: day
 
     filters:
       - field: is_paying
@@ -81,9 +88,13 @@ metrics:
       - field: signup_date
         operator: '>='
         value: "'2020-01-01'"
+        
+    # general properties
+    [config](resource-properties/config):
+      enabled: true | false
+      treat_null_values_as_zero: true | false
 
-
-    meta: {team: Finance}
+    [meta](resource-configs/meta): {team: Finance}
 ```
 </VersionBlock> 
 
@@ -128,12 +139,17 @@ metrics:
         operator: '>='
         value: "'2020-01-01'"
 
-
     meta: {team: Finance}
 ```
 </VersionBlock> 
 
 </File>   
+
+:::caution
+
+- You cannot define metrics on [ephemeral models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral). To define a metric, the materialization must have a representation in the data warehouse.
+
+:::
 
 
 ### Available properties
@@ -147,12 +163,14 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-|calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| expression | The expression to aggregate/calculate over | user_id | yes       |
+| calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
+| expression  | The expression to aggregate/calculate over | user_id | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
+| window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`,`year`] |  {count: 14, period: day}        | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
+| config      | [Optional configurations](https://github.com/dbt-labs/dbt_metrics#accepted-metric-configurations) for calculating this metric         | {treat_null_values_as_zero: true} | no      |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
 </VersionBlock>
@@ -165,7 +183,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-|type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
+| type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
 | sql | The expression to aggregate/calculate over | user_id | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
@@ -312,7 +330,7 @@ Use the following [metrics package](https://hub.getdbt.com/dbt-labs/metrics/late
 ```yml
 packages:
   - package: dbt-labs/metrics
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=1.3.0", "<1.4.0"]
 ```
 
 </VersionBlock>
@@ -420,8 +438,8 @@ from {{ metrics.develop(
 
 **Important caveat** - The metric list input for the `metrics.develop` macro takes in the metric names themselves, not the `metric('name')` statement that the `calculate` macro uses. Using the example above:
 
-✅ `['develop_metric']`
-❌ `[metric('develop_metric')]`
+- ✅ `['develop_metric']`
+- ❌ `[metric('develop_metric')]`
 
 </VersionBlock>
 
