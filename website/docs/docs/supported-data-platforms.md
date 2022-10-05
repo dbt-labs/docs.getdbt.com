@@ -3,81 +3,98 @@ title: "Supported Data Platforms"
 id: "supported-data-platforms"
 ---
 
-dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
+dbt connects to and runs SQL against your database, warehouse, lake or query engine. To keep things simple, we group all of these SQL-speaking things into one bucket called "data platforms". dbt can be extended to any data platform by means of a dedicated _adapter plugin_. These plugins are built as separate Python modules that dbt Core will discover them if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core.
 
-If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter)  for more information.
+To learn more about adapters, check out [What Are Adapters](contributing/adapter-development/1-what-are-adapters).
 
-### Installation
+## Adapter Installation
 
-Most adapters can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
+With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
 
-Some vendor or community adapters may not exist in PyPi. However, you can still install an adapter hosted on GitHub with `pip install`, by replacing MAINTAINER_NAME with the person or company maintaining the adapter on GitHub and ADAPTER_NAME with the git repository's name (these can be taken directly from the adapter's url):
+## Adapter Taxonomy
 
-```shell
-pip install git+https://github.com/MAINTAINER_NAME/ADAPTER_NAME.git
-```
+### Verified by dbt Labs
 
-### dbt Labs Supported
+In order to provide a more consistent and reliable experience, dbt Labs now has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience and maintenance. These adapters earn a "Verified" designation so that users can have a certain level of trust and expectation when they use them. To learn more see [Verifying a new adapter](docs/contributing/adapter-development/7-verifying-a-new-adapter)
 
-In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) maintains a set of adapters for some of the most common databases, warehouses, and platforms. (✅ indicates "full support.")
+We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please note that these community maintainers are intrepid volunteers who owe you nothing, but give anyway -- so be kind and understanding, and help out where you can!
 
-| Adapter for  | Documentation | Core features | dbt Cloud | Install from PyPi |
-| ------------ | ------------- | ------------- | --------- | ----------------- |
-| Postgres     | [Profile Setup](postgres-profile) | ✅ | ✅  | `pip install dbt-postgres` |
-| Redshift     | [Profile Setup](redshift-profile), [Configuration](redshift-configs) | ✅ | ✅  | `pip install dbt-redshift` |
-| BigQuery     | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅  | ✅  | `pip install dbt-bigquery` |
-| Snowflake    | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ | ✅  | `pip install dbt-snowflake` |
-| Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | ✅ | ✅ | `pip install dbt-spark[PyHive]` |
+### Maintainers
 
-### Vendor Supported
+Who made and maintains and adapter is certainly relevant, but we recommend using an adapter's verification status to determine quality and health of an adapter. So far we have three categories of maintainers:
 
-These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.
+| Supported by | Maintained By                                                                                                                |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see [Why Verify an Adapter](7-verifying-a-new-adapter#why-verify-an-adapter)                 |
+| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology |
+| Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                       |
 
 
-| Adapter for                                                                                                   | Documentation                                                                               | Install from PyPi |
-|---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------| ----------------- |
-| AlloyDB (via [dbt-postgres](https://github.com/dbt-labs/dbt-postgres))                                        | [Profile Setup](alloydb-profile)                                                           | `pip install dbt-postgres` |
-| ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                    | `pip install dbt-clickhouse` |
-| Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
-| Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                        | `pip install dbt-firebolt` |
-| Hive ([dbt-hive](https://github.com/cloudera/dbt-hive))                                                     | [Profile Setup](hive-profile), [Configuration](hive-configs)                                | `pip install dbt-hive` |
-| Impala ([dbt-impala](https://github.com/cloudera/dbt-impala))                                                 | [Profile Setup](impala-profile), [Configuration](impala-configs)                            | `pip install dbt-impala` |
-| iomete ([dbt-iomete](https://github.com/iomete/dbt-iomete))                                                   | [Profile Setup](iomete-profile)                                                             | `pip install dbt-iomete` |
-| Layer Bigquery ([dbt-layer](https://github.com/layerai/dbt-layer))                                            | [Profile Setup](layer-profile)                                                              | `pip install dbt-layer-bigquery` |
-| Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)) | [Profile Setup](materialize-profile), [Configuration](materialize-configs)                  | `pip install dbt-materialize` |
-| MindsDB ([dbt-mindsdb](https://github.com/mindsdb/dbt-mindsdb))                                               | [Profile Setup](mindsdb-profile), [Configuration](mindsdb-configs)                          | `pip install dbt-mindsdb`     |
-| Oracle ([dbt-oracle](https://github.com/oracle/dbt-oracle))                                                   | [Profile Setup](oracle-profile)                                                             | `pip install dbt-oracle`     |
-| Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))                                               | [Profile Setup](rockset-profile)                                                            | `pip install dbt-rockset` |
-| SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore))                                    | [Profile Setup](singlestore-profile)                                                        | `pip install dbt-singlestore` |
-| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino))                                   | [Profile Setup](trino-profile)                                                              | `pip install dbt-trino` |
-| Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata))                                           | [Profile Setup](teradata-profile), [Configuration](teradata-configs)                        | `pip install dbt-teradata` |
-| TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb))                                                        | [Profile Setup](tidb-profile)                                                               | `pip install dbt-tidb` |
+## Supported Data Platforms
 
-### Community Supported
 
-These adapter plugins are contributed and maintained by members of the community 🌱
 
-| Adapter for            | Documentation                                                                | Notes                     | Install with pip             |
-|------------------------|------------------------------------------------------------------------------|---------------------------|------------------------------|
-| SQL Server & Azure SQL | [Profile Setup](mssql-profile), [Configuration](mssql-configs)               | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
-| Azure Synapse          | [Profile Setup](azuresynapse-profile), [Configuration](azuresynapse-configs) | Azure Synapse 10+         | `pip install dbt-synapse`    |
-| Exasol Analytics       | [Profile Setup](exasol-profile)                                              | Exasol 6.x and later      | `pip install dbt-exasol`     |
-| Dremio                 | [Profile Setup](dremio-profile)                                              | Dremio 4.7+               | `pip install dbt-dremio`     |
-| Athena                 | [Profile Setup](athena-profile)                                              | Athena engine version 2   | `pip install dbt-athena-adapter` |
-| Vertica                | [Profile Setup](vertica-profile)                                             | Vertica 10.0+             | `pip install dbt-vertica`    |
-| AWS Glue               | [Profile Setup](glue-profile), [Configuration](glue-configs)                 | Glue 2.0+                 | `pip install dbt-glue`       |
-| Greenplum              | [Profile Setup](greenplum-profile), [Configuration](greenplum-configs)       | Greenplum 6.0+            | `pip install dbt-greenplum`  |
-| DuckDB                 | [Profile Setup](duckdb-profile)                                              | DuckDB 0.3.2              | `pip install dbt-duckdb`     |
-| SQLite                 | [Profile Setup](sqlite-profile)                                              | SQlite Version 3.0+       | `pip install dbt-sqlite`     |
-| MySQL                  | [Profile Setup](mysql-profile)                                               | MySQL 5.7 and 8.0         | `pip install dbt-mysql`      |
-| IBM DB2                | [Profile Setup](ibmdb2-profile)                                              | IBM DB2 V9fp2+            | `pip install dbt-ibmdb2`     |
+### Verified Adapters
+
+| Data Platform     | Adapter Repository                                             | latest verified version  | Enabled in dbt Cloud      | Profile Setup                            | Configuration                                                | dbt Community Slack channel                                                             | Maintained By |
+| ----------------- | -------------------------------------------------------------- | ------------------------ | ------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------- | ------------- |
+| AlloyDB           | [dbt-postgres](https://github.com/dbt-labs/dbt-postgres)       | (same as `dbt-postgres`) | :white_check_mark: | [AlloyDB Profile](alloydb-profile)       |                                                              | [#db-postgres](https://getdbt.slack.com/archives/C0172G2E273)             | n/a           |
+| BigQuery          | [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery)       | 1.2.0                    | :white_check_mark: | [BigQuery Profile](bigquery-profile)     | [BigQuery Configs](bigquery-configs)                         | [#db-bigquery](https://getdbt.slack.com/archives/C99SNSRTK)               | dbt Labs      |
+| Databricks        | [dbt-databricks](https://github.com/databricks/dbt-databricks) | 1.2.0 :construction:     |                    | [Databricks Profile](databricks-profile) | [Databricks Configs](spark-configs#databricks-configuration) | [#db-databricks-and-spark](https://getdbt.slack.com/archives/C01DRQ178LQ) | Databricks    |
+| Postgres          | [dbt-postgres](https://github.com/dbt-labs/dbt-postgres)       | 1.2.0                    | :white_check_mark: | [Postgres Profile](postgres-profile)     |                                                              | [#db-postgres](https://getdbt.slack.com/archives/C0172G2E273)             | dbt Labs      |
+| Redshift          | [dbt-redshift](https://github.com/dbt-labs/dbt-redshift)       | 1.2.0                    | :white_check_mark: | [Redshift Profile](redshift-profile)     | [Redshift Configs](redshift-configs)                         | [#db-redshift](https://getdbt.slack.com/archives/C01DRQ178LQ)             | dbt Labs      |
+| Snowflake         | [dbt-snowflake](https://github.com/dbt-labs/dbt-snowflake)     | 1.2.0                    | :white_check_mark: | [Snowflake Profile](snowflake-profile)   | [Snowflake Configs](snowflake-configs)                       | [#db-snowflake](https://getdbt.slack.com/archives/C01DRQ178LQ)            | dbt Labs      |
+| Apache Spark      | [dbt-spark](https://github.com/dbt-labs/dbt-spark)             | 1.2.0                    | :white_check_mark: | [Spark Profile](spark-profile)           | [Spark Configs](spark-configs)                               | [#db-databricks-and-spark](https://getdbt.slack.com/archives/C01DRQ178LQ) | dbt Labs      |
+| Starburst & Trino | [dbt-trino](https://github.com/starburstdata/dbt-trino)        | 1.2.0 :construction:     |                    | [Trino Profile](trino-profile)           |                                                              | [#db-presto-trino](https://getdbt.slack.com/archives/C013MLFR7BQ)         | Starburst     |
+
+### Community Adapters
+
+| Data Platform          | Adapter Repository                                                                              | Profile Setup                              | Configuration                              | Slack Channel                                                     | Maintained By |
+| ---------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------ | ----------------------------------------------------------------- | ------------- |
+| Athena                 | [dbt-athena](https://github.com/Tomme/dbt-athena)                                               | [Athena Profile](athena-profile)           |                                            | [#db-athena](https://getdbt.slack.com/archives/C013MLFR7BQ)       | Community     |
+| ClickHouse             | [dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse)                                  | [Clickhouse Profile](clickhouse-profile)   | [Clickhouse Configs](clickhouse-configs)   | [#db-clickhouse](https://getdbt.slack.com/archives/C03KVDLMNV6)     | Clickhouse    |
+| IBM DB2                | [dbt-ibmdb2](https://github.com/aurany/dbt-ibmdb2)                                              | [DB2 Profile](ibmdb2-profile)              |                                            | n/a                                                               | Community     |
+| DuckDB                 | [dbt-duckdb](https://github.com/jwills/dbt-duckdb/)                                             | [DuckDB Profile](duckdb-profile)           |                                            | [#db-duckdb](https://getdbt.slack.com/archives/C039D1J1LA2)       | Community     |
+| Dremio                 | [dbt-dremio](https://github.com/fabrice-etanchaud/dbt-dremio/)                                  | [Dremio Profile](dremio-profile)           |                                            | n/a                                                               | Community     |
+| Exasol Analytics       | [dbt-exasol](https://github.com/tglunde/dbt-exasol)                                             | [Exasol Profile](exasol-profile)           |                                            | n/a                                                               | Community     |
+| Firebolt               | [dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt)                                     | [Firebolt Profile](firebolt-profile)       | [Firebolt Configs](firebolt-configs)       | [#db-firebolt](https://getdbt.slack.com/archives/C02PYT5CXN0)     | Firebolt      |
+| AWS Glue               | [dbt-glue](https://github.com/aws-samples/dbt-glue)                                             | [Glue Profile](glue-profile)               | [Glue Configs](glue-configs)               | [#db-glue](https://getdbt.slack.com/archives/C02R4HSMBAT)         | AWS           |
+| Greenplum              | [dbt-greenplum](https://github.com/markporoshin/dbt-greenplum)                                  | [Greenplum Profile](greenplum-profile)     | [Greenplum Configs](greenplum-configs)     | n/a                                                               | Community     |
+| Hive                   | [dbt-hive](https://github.com/cloudera/dbt-hive)                                                | [Hive Profile](hive-profile)               | [Hive Configs](hive-configs)               | [#db-hive](https://getdbt.slack.com/archives/C0401DTNSKW)         | Cloudera      |
+| Impala                 | [dbt-impala](https://github.com/cloudera/dbt-impala)                                            | [Impala Profile](impala-profile)           | [Impala Configs](impala-configs)           | [#db-impala](https://getdbt.slack.com/archives/C03K2PTHHTP)       | Cloudera      |
+| iomete                 | [dbt-iomete](https://github.com/iomete/dbt-iomete)                                              | [iomete Profile](iomete-profile)           |                                            | [#db-iomete](https://getdbt.slack.com/archives/C03JFG22EP9)       | Iomete        |
+| Layer         | [dbt-layer](https://github.com/layerai/dbt-layer)                                               | [Layer Profile](layer-profile)             |                                            | [#tools-layer](https://getdbt.slack.com/archives/C03STA39TFE)     | Layer AI      |
+| Materialize            | [dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize) | [Materialize Profile](materialize-profile) | [Materialize Configs](materialize-configs) | [#db-materialize](https://getdbt.slack.com/archives/C01PWAH41A5)  | Materialize   |
+| MindsDB                | [dbt-mindsdb](https://github.com/mindsdb/dbt-mindsdb)                                           | [MindsDB Profile](mindsdb-profile)         | [MindsDB Configs](mindsdb-configs)         | n/a                                                               | MindsDB       |
+| MySQL                  | [dbt-mysql](https://github.com/dbeatty10/dbt-mysql)                                             | [MySQL Profile](mysql-profile)             |                                            | [#db-mysql-family](https://getdbt.slack.com/archives/C03BK0SHC64) | Community     |
+| Oracle                 | [dbt-oracle](https://github.com/oracle/dbt-oracle)                                              | [Oracle Profile](oracle-profile)           |                                            | [#db-oracle](https://getdbt.slack.com/archives/C01PWH4TXLY)       | Oracle        |
+| Rockset                | [dbt-rockset](https://github.com/rockset/dbt-rockset)                                           | [Rockset Profile](rockset-profile)         |                                            | [#db-rockset](https://getdbt.slack.com/archives/C02J7AZUAMN)      | Rockset       |
+| SingleStore            | [dbt-singlestore](https://github.com/memsql/dbt-singlestore)                                    | [SingleStore Profile](singlestore-profile) |                                            | [#db-singlestore](https://getdbt.slack.com/archives/C02V2QHFF7U)  | Single Store  |
+| SQLite                 | [dbt-sqlite](https://github.com/codeforkjeff/dbt-sqlite)                                        | [SQLite Profile](sqlite-profile)           |                                            | n/a                                                               | Community     |
+| SQL Server & Azure SQL | [dbt-sqlserver](https://github.com/dbt-msft/dbt-sqlserver/)                                     | [SQL Server Profile](mssql-profile)        | [SQL Server Configs](mssql-configs)        | [#db-sqlserver](https://getdbt.slack.com/archives/CMRMDDQ9W)      | Community     |
+| Azure Synapse          | [dbt-synapse](https://github.com/dbt-msft/dbt-synapse)                                          | [Synapse Profile](azuresynapse-profile)    | [Synapse Configs](azuresynapse-configs)    | [#db-synapse](https://getdbt.slack.com/archives/C01DRQ178LQ)      | Community     |
+| Teradata               | [dbt-teradata](https://github.com/teradata/dbt-teradata)                                        | [Teradata Profile](teradata-profile)       | [Teradata Configs](teradata-configs)       | [#db-teradata](https://getdbt.slack.com/archives/C027B6BHMT3)     | Teradata      |
+| TiDB                   | [dbt-tidb](https://github.com/pingcap/dbt-tidb)                                                 | [TiDB Profile](tidb-profile)               |                                            | [#db-tidb](https://getdbt.slack.com/archives/C03CC86R1NY)         | PingCAP       |
+| Vertica                | [dbt-vertica](https://github.com/ahedengren/dbt-vertica)                                        | [Vertica Profile](vertica-profile)         |                                            | n/a                                                               | Community     |
+
+## Contributing to dbt-core adapters
+
+### Contributing to a pre-existing adapter
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
-- Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 
-- Check out the open issues in the plugin's source repository
 
-Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in the near future.
+- Join both the dedicated channel, [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM), in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (see **Slack Channel** column of above tables)
+- Check out the open issues in the plugin's source repository (follow relevant link in **Adapter Repository** column of above tables)
 
-## Creating a new adapter
+### Creating a new adapter
 
-dbt can be extended to any SQL-speaking database, warehouse, data lake, query engine, or analytical platform by means of an _adapter plugin_. These plugins can be built as separate Python modules, and dbt will discover them if they are installed on your system. If you see something missing from the lists above, and you're interested in developing an integration, read more about [building a new adapter](/docs/contributing/adapter-development/3-building-a-new-adapter).
+If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  [Adapter Development](/category/adapter-development) section.
+
+If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter) for more information.
+
+[^1]: Here are the two different adapters. Use the PyPI package name when installing with `pip`
+
+    | Adapter repo name | PyPI package name    |
+    | ----------------- | -------------------- |
+    | `dbt-athena`      | `dbt-athena-adapter` |
+    | `dbt-layer`       | `dbt-layer-bigquery` |

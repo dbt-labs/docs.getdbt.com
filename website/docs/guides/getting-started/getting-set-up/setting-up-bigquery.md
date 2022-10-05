@@ -101,7 +101,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 8. Select **Keys**.
 9. Click **Add Key** then select **Create new key**.
 10. Select **JSON** as the key type then click **Create**.  
-11. You should be prompted to download the JSON file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
+11. You should be prompted to download the <Term id="json" /> file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
 
 ### Create a dbt Cloud account
 

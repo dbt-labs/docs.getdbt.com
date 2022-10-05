@@ -1,9 +1,14 @@
 ---
 id: dry
 title: DRY
+description: DRY is a software development principle that stands for “Don’t Repeat Yourself.” Living by this principle means that your aim is to reduce repetitive patterns and code.
 displayText: DRY  
 hoverSnippet: DRY is a software development principle that stands for “Don’t Repeat Yourself.” Living by this principle means that your aim is to reduce repetitive patterns and duplicate code and logic in favor of modular and referenceable code.
 ---
+
+<head>
+  <title>What is DRY? Hint: It makes for great code - dbt Labs</title>
+</head>
 
 DRY is a software development principle that stands for “Don’t Repeat Yourself.” Living by this principle means that your aim is to reduce repetitive patterns and duplicate code and logic in favor of modular and referenceable code.
 
