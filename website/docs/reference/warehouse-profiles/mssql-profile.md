@@ -406,27 +406,32 @@ Note that principals will not be deleted automatically when they are removed fro
 
 ### Reference of all connection options
 
-* `driver`: The ODBC driver to use. This is required for all databases.
-* `host`: The hostname of the database server. This is required for all databases.
-* `port`: The port of the database server. This defaults to `1433`.
-* `database`: The name of the database to connect to. This is required for all databases.
-* `schema`: The schema to use. This is required for all databases.
-* `authentication`: The authentication method to use. This is not required for Windows authentication. This defaults to `sql`. Valid values are:
-  * `sql`: SQL authentication using username and password
-  * `ActiveDirectoryPassword`: Active Directory authentication using username and password
-  * `ActiveDirectoryInteractive`: Active Directory authentication using a username and MFA prompts
-  * `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
-  * `ServicePrincipal`: Azure Active Directory authentication using a service principal
-  * `CLI`: Azure Active Directory authentication using the account you're logged in with in the Azure CLI
-  * `MSI`: Azure Active Directory authentication using a managed identity available on the system
-  * `environment`: Azure Active Directory authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
-  * `auto`: Azure Active Directory authentication trying the previous authentication methods until it finds one that works
-* `UID`: Username used to authenticate. This can be left out depending on the authentication method.
-* `PWD`: Password used to authenticate. This can be left out depending on the authentication method.
-* `windows_login`: Set this to `true` to use Windows authentication. This is only available for SQL Server.
-* `tenant_id`: The tenant ID of the Azure Active Directory instance. This is only used when connecting to Azure SQL with a service principal.
-* `client_id`: The client ID of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.
-* `client_secret`: The client secret of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.
-* `encrypt`: Set this to `false` to disable the use of encryption. Defaults to `true`. See [above](#connection-encryption).
-* `trust_cert`: Set this to `true` to trust the server certificate. Defaults to `false`. See [above](#connection-encryption).
-* `retries`: The number of times to retry a failed connection. Defaults to `1`.
+| configuration option | description                                                                                                                                     | required           | default value |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|---------------|
+| `driver`             | The ODBC driver to use.                                                                                                                         | :white_check_mark: |               |
+| `host`               | The hostname of the database server.                                                                                                            | :white_check_mark: |               |
+| `port`               | The port of the database server.                                                                                                                |                    | `1433`        |
+| `database`           | The name of the database to connect to.                                                                                                         | :white_check_mark: |               |
+| `schema`             | The schema to use.                                                                                                                              | :white_check_mark: |               |
+| `authentication`     | The authentication method to use. This is not required for Windows authentication.                                           |                    | `'sql'`       |                                                                                    |               |             |
+| `UID`                | Username used to authenticate. This can be left out depending on the authentication method.                                                     |                    |               |
+| `PWD`                | Password used to authenticate. This can be left out depending on the authentication method.                                                     |                    |               |
+| `windows_login`      | Set this to `true` to use Windows authentication. This is only available for SQL Server.                                                        |                    |               |
+| `tenant_id`          | The tenant ID of the Azure Active Directory instance. This is only used when connecting to Azure SQL with a service principal.                  |                    |               |
+| `client_id`          | The client ID of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.    |                    |               |
+| `client_secret`      | The client secret of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal. |                    |               |
+| `encrypt`            | Set this to `false` to disable the use of encryption. See [above](#connection-encryption).                                                      |                    | `true`        |
+| `trust_cert`         | Set this to `true` to trust the server certificate. See [above](#connection-encryption).                                                        |                    | `false`       |
+| `retries`            | The number of times to retry a failed connection.                                                                                               |                    | `1`           |
+
+Valid values for `authentication`:
+
+* `sql`: SQL authentication using username and password
+* `ActiveDirectoryPassword`: Active Directory authentication using username and password
+* `ActiveDirectoryInteractive`: Active Directory authentication using a username and MFA prompts
+* `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
+* `ServicePrincipal`: Azure Active Directory authentication using a service principal
+* `CLI`: Azure Active Directory authentication using the account you're logged in with in the Azure CLI
+* `MSI`: Azure Active Directory authentication using a managed identity available on the system
+* `environment`: Azure Active Directory authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
+* `auto`: Azure Active Directory authentication trying the previous authentication methods until it finds one that works

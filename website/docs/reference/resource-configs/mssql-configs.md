@@ -115,6 +115,26 @@ from ...
 
 </File>
 
+## Grants with auto provisioning
+
+dbt 1.2 introduced the capability to grant/revoke access using the `grants` [configuration option](grants).
+In dbt-sqlserver, you can additionally set `auto_provision_aad_principals` to `true` in your model configuration if you are using Azure Active Directory authentication with an Azure SQL Database or Azure Synapse Dedicated SQL Pool.
+
+This will automatically create the Azure Active Directory principal inside your database if it does not exist yet.
+Note that the principals need to exist in your Azure Active Directory, this just makes them available to use in your database.
+
+Principals are not removed again when they are removed from the grants configuration.
+
+<File name="dbt_project.yml">
+
+```yaml
+models:
+  your_project_name:
+    auto_provision_aad_principals: true
+```
+
+</File>
+
 ## dbt-utils
 
 Many [`dbt-utils`](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) are supported,
