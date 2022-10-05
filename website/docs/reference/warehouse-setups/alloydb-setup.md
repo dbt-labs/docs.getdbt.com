@@ -29,4 +29,4 @@ meta:
 
 ## Profile Configuration
 
-AlloyDB targets are configured exactly the same as [Postgres targets](postgres-profile.md#profile-configuration).
+AlloyDB targets are configured exactly the same as [Postgres targets](postgres-setup#profile-configuration).
