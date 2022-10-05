@@ -49,8 +49,7 @@ pip is the easiest way to install the adapter:
 ### Set up a Databricks Target
 
 dbt-databricks can connect to Databricks all-purpose clusters as well as SQL endpoints.
-The latter provides an opinionated way of running SQL workloads with optimal performance and
-price, the former provides all the flexibility of Spark.
+The latter provides an opinionated way of running SQL workloads with optimal performance and price; the former provides all the flexibility of Spark.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -60,7 +59,7 @@ your_profile_name:
   outputs:
     dev:
       type: databricks
-      catalog: [optional catalog name, if you are using Unity Catalog, only available in dbt-databricks>=1.1.1]
+      catalog: [optional catalog name, if you are using Unity Catalog, is only available in dbt-databricks>=1.1.1]
       schema: [schema name]
       host: [yourorg.databrickshost.com]
       http_path: [/sql/your/http/path]

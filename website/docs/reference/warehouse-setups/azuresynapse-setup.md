@@ -49,14 +49,14 @@ pip is the easiest way to install the adapter:
 
 :::info Dedicated SQL only
 
-Azure Synapse offers both Dedicated SQL Pools and Serverless SQL Pools.
-**Only Dedicated SQL Pools are supported by this adapter. If you really insist on using serverless pools, check out the neglected, experimental project: [dbt-synapse-serverless](https://github.com/dbt-msft/dbt-synapse-serverless)** 
+Azure Synapse offers both Dedicated and Serverless SQL Pools.
+**This adapter supports only Dedicated SQL Pools. If you must use Serverless pools, there is an experimental project that may help, but it has not been updated recently: [dbt-synapse-serverless](https://github.com/dbt-msft/dbt-synapse-serverless)** 
 
 :::
 
 ### Prerequisites
 
-On Ubuntu make sure you have the ODBC header files before installing
+On Ubuntu, make sure you have the ODBC header files before installing:
 
     sudo apt install unixodbc-dev
 
@@ -64,11 +64,10 @@ Download and install the [Microsoft ODBC Driver 17 for SQL Server](https://docs.
 
 ### Authentication methods
 
-This adapter is based on the adapter for Microsoft SQL Server.
-Therefor, the same authentication methods are supported.
+This adapter is based on the adapter for Microsoft SQL Server, and the same authentication methods are supported.
 
-The configuration is the same except for 1 major difference:
-instead of specifying `type: sqlserver`, you specify `type: synapse`.
+The configuration is the same except for one significant difference:
+Specify `type: synapse` rather than `type: sqlserver`. 
 
 Example:
 
@@ -90,4 +89,4 @@ your_profile_name:
 
 </File>
 
-You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](mssql-profile#connecting-to-azure-sql-server-with-dbt-sqlserver).
+You can find all available options, the documentation, and how to configure them on [the documentation page for the dbt-sqlserver adapter](mssql-profile#connecting-to-azure-sql-server-with-dbt-sqlserver).
