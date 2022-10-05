@@ -1,5 +1,6 @@
 ---
 title: "Oracle setup"
+id: "oracle-setup"
 meta:
   maintained_by: Oracle
   authors: 'Oracle'
