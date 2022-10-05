@@ -392,7 +392,7 @@ your_profile_name:
 
 In dbt 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups. This is fully supported in this adapter and comes with an additional feature.
 
-By setting `auto_provision_aad_principals` to `true` in your `profiles.yml` file, you can automatically provision Azure Active Directory (AAD) principals (users or groups) that don't exist yet.
+By setting `auto_provision_aad_principals` to `true` in your model configuration, you can automatically provision Azure Active Directory (AAD) principals (users or groups) that don't exist yet.
 
 In Azure SQL, you can sign in using AAD authentication, but to be able to grant an AAD principal certain permissions, it needs to be linked in the database first. ([Microsoft documentation](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql))
 
@@ -424,4 +424,3 @@ Note that principals will not be deleted automatically when they are removed fro
 * `encrypt`: Set this to `false` to disable the use of encryption. Defaults to `true`. See [above](#connection-encryption).
 * `trust_cert`: Set this to `true` to trust the server certificate. Defaults to `false`. See [above](#connection-encryption).
 * `retries`: The number of times to retry a failed connection. Defaults to `1`.
-* `auto_provision_aad_principals`: Set this to `true` to automatically provision AAD principals for Azure SQL. Defaults to `false`. See [above](#automatic-aad-principal-provisioning-for-grants).
