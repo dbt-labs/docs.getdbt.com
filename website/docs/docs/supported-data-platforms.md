@@ -86,7 +86,7 @@ Community-supported plugins are works in progress, and anyone is welcome to cont
 
 ### Creating a new adapter
 
-If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  ["Adapter Development"](/docs/contributing/adapter-development) section.
+If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  ["Adapter Development"](/category/adapter-development) section.
 
 If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter) for more information.
 
