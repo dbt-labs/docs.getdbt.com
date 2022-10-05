@@ -121,14 +121,51 @@ More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.
 
 ## Limitations
 
-If your temporary PR schemas aren't dropping after a merge or close of the PR, you'll want to make sure:
+If your temporary PR schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
 
-- You _have not_ used dbt Cloud environment variables in your connection settings page.
-- You _do not_ have an empty/blank default schema.
-- You _have not_ overridden the `generate_schema_name` macro such that the temporary PR schema names no longer contain the prefix of `dbt_cloud_pr_`.
-- You _have not_ overridden the `generate_database_name` macro such that a database (e.g. `dev`) different from the connection's default (e.g. `analytics`) is used for CI runs.
+<details>
+  <summary>You used dbt Cloud environment variables in your connection settings page</summary>
+  <div>
+   <br>
+     <div>To resolve this, remove environment variables in your [connections settings](/dbt-cloud/using-dbt-cloud/cloud-environment-variables).</div>
+     <br /> 
+    </div>
+  </div>
+</details>
+<details>
+  <summary>You have an empty/blank default schema</summary>
+  <div>
+  <br>  
+    <div>To change this, edit and fill in your default schema.</div>
+    <br /> 
+    </div>
+  </div>
+</details>
+<details>
+  <summary>You have overridden the `generate_schema_name` macro</summary>
+  <div>
+  <br> 
+    <div>To resolve this, change your macro so that the temporary PR schema name contains the default prefix and rview the guidance below:  <br>
+          <br> - **Use** ✅ Temporary PR schema name contains the prefix `dbt_cloud_pr_` (like `dbt_cloud_pr_123_456_marketing`)  <br /> 
+          <br> - **Avoid** ❌ Temporary PR schema name doesn't contain the prefix `dbt_cloud_pr_` (like `marketing`). </nobr></div>
+    <br /> 
+    </div>
+  </div>
+</details>
+<details>
+  <summary>You have overridden the `generate_database_name` macro</summary>
+  <div>
+  <br>
+    <div>If you assume that the project's default connection is to a database named `analytics`, review the guidance below to resolve this:  <br>
+          <br> - **Use** ✅ Database remains the same as the connection default (like `analytics`)  <br /> 
+          <br> - **Avoid** ❌ Database has changed from the default connection (like `dev`). </nobr></div>
+    <br /> 
+    </div>
+  </div>
+</details>
 
-If you do have any of the above, make the necessary changes to your project and re-confirm if your temporary PR schemas are dropping or not.
+Make the necessary changes to your project and double-check if the temporary PR schemas drop after a merge or close of the PR.
+
 ## Troubleshooting
 
 ### Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps
