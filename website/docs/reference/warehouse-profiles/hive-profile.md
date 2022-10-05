@@ -43,7 +43,7 @@ your_profile_name:
     dev:
       type: hive
       host: localhost
-      port: [port]
+      port: [port] # default value: 10000
       schema: [schema name]
       
 ```
@@ -65,11 +65,11 @@ your_profile_name:
     dev:
      type: hive
      host: [host name]
-     http_path: [optional, http path to Hive]
-     port: [port]
+     http_path: [optional, http path to Hive] # default value: None
+     port: [port] # default value: 10000
      auth_type: ldap
-     use_http_transport: [true / false]
-     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials
+     use_http_transport: [true / false] # default value: true
+     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
      username: [username]
      password: [password]
      schema: [schema name]
@@ -78,6 +78,41 @@ your_profile_name:
 </File>
 
 Note: When creating workload user in CDP, make sure the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If you need the user to execute GRANT statements, you should also configure the appropriate GRANT permissions for them. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. For more information, see [`grants`](/reference/resource-configs/grants) and [on-run-start & on-run-end](/reference/project-configs/on-run-start-on-run-en).
+
+### Kerberos
+
+The Kerberos authentication mechanism uses GSSAPI to share Kerberos credentials when Hive is [configured with Kerberos Auth](https://ambari.apache.org/1.2.5/installing-hadoop-using-ambari/content/ambari-kerb-2-3-3.html).
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: hive
+      host: [hostname]
+      port: [port] # default value: 10000
+      auth_type: [GSSAPI]
+      kerberos_service_name: [kerberos service name] # default value: None
+      use_http_transport: true # default value: true
+      use_ssl: true # TLS should always be used to ensure secure transmission of credentials, default value: true
+      schema: [schema name] 
+
+```
+
+</File>
+
+Note: A typical setup of Cloudera Private Cloud will involve the following steps to setup Kerberos before one can execute dbt commands:
+- Get the correct realm config file for your installation (krb5.conf)
+- Set environment variable to point to the config file (export KRB5_CONFIG=/path/to/krb5.conf)
+- Set correct permissions for config file (sudo chmod 644 /path/to/krb5.conf)
+- Obtain keytab using kinit (kinit username@YOUR_REALM.YOUR_DOMAIN)
+- The keytab is valid for certain period after which you will need to run kinit again to renew validity of the keytab.
+- User will need CREATE, DROP, INSERT permissions on the schema provided in profiles.yml
+
+### Instrumentation
+By default, the adapter will collect instrumentation events to help improve functionality and understand bugs. If you want to specifically switch this off, for instance, in a production environment, you can explicitly set the flag `usage_tracking: false` in your `profiles.yml` file. 
 
 ## Installation and Distribution
 
@@ -106,4 +141,4 @@ pip install dbt-hive
 |Snapshots|No|
 |Documentation|Yes|
 |Authentication: LDAP|Yes|
-|Authentication: Kerberos|No|
+|Authentication: Kerberos|Yes|
