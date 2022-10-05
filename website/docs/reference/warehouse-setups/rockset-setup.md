@@ -36,11 +36,11 @@ Certain core functionality may vary. If you would like to report a bug, request 
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
-The easiest way to install the adapter is to use pip:
+pip is the easiest way to install the adapter:
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
-<p>You don't need to install dbt separately. Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
+<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
