@@ -1,5 +1,6 @@
 ---
 title: "Starburst & Trino setup"
+id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
   authors: Matthew Carter, Andy Regan, Andrew Hedengren
