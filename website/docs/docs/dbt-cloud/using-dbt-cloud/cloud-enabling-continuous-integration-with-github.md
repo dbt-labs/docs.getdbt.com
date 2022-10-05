@@ -125,7 +125,8 @@ If your temporary PR schemas aren't dropping after a merge or close of the PR, y
 
 - You _have not_ used dbt Cloud environment variables in your connection settings page.
 - You _do not_ have an empty/blank default schema.
-- You _have not_ overridden the `generate_schema_name` macro.
+- You _have not_ overridden the `generate_schema_name` macro such that the temporary PR schema names no longer contain the prefix of `dbt_cloud_pr_`.
+- You _have not_ overridden the `generate_database_name` macro such that a database (e.g. `dev`) different from the connection's default (e.g. `analytics`) is used for CI runs.
 
 If you do have any of the above, make the necessary changes to your project and re-confirm if your temporary PR schemas are dropping or not.
 ## Troubleshooting
