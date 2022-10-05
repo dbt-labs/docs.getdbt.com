@@ -38,7 +38,7 @@ import {
   DiscourseFeed,
   DiscourseHelpFeed,
 } from "@site/src/components/discourse";
-import Card from "@site/src/components/Card";
+import Card from "@site/src/components/card";
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
