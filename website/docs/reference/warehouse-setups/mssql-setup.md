@@ -1,5 +1,6 @@
 ---
 title: "Microsoft SQL Server setup"
+id: "mssql-setup"
 meta:
   maintained_by: Community
   authors: 'dbt-msft community (https://github.com/dbt-msft)'
