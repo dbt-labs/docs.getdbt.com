@@ -76,4 +76,4 @@ company-name:
 
 ### Notes
 
-This adapter strongly depends on dbt-postgres, so you can read more about configurations here [Profile Setup](postgres-profile)
+This adapter strongly depends on dbt-postgres, so you can read more about configurations here [Profile Setup](postgres-setup)
