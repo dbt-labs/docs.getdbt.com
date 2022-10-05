@@ -1,5 +1,6 @@
 ---
 title: "SQLite setup"
+id: "sqlite-setup"
 meta:
   maintained_by: Community
   authors: 'Jeff Chiu (https://github.com/codeforkjeff)'
