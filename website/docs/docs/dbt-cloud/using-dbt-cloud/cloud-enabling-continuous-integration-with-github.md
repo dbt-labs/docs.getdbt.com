@@ -123,12 +123,12 @@ More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.
 
 If your temporary PR schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
 
-<<details>
+<details>
   <summary>You used dbt Cloud environment variables in your connection settings page</summary>
   <div>
     <br>
     <div>To resolve this, remove environment variables in your [connections settings](/dbt-cloud/using-dbt-cloud/cloud-environment-variables).</div>
-    <br/>
+    <br />
   </div>
   </div>
 </details>
@@ -137,7 +137,7 @@ If your temporary PR schemas aren't dropping after a merge or close of the PR, i
   <div>
     <br>
     <div>To change this, edit and fill in your default schema.</div>
-    <br/>
+    <br />
   </div>
   </div>
 </details>
@@ -145,11 +145,11 @@ If your temporary PR schemas aren't dropping after a merge or close of the PR, i
   <summary>You have overridden the `generate_schema_name` macro</summary>
   <div>
     <br>
-    <div>To resolve this, change your macro so that the temporary PR schema name contains the default prefix and rview the guidance below: <br/>
-      <br> - **Use** ✅ Temporary PR schema name contains the prefix `dbt_cloud_pr_` (like `dbt_cloud_pr_123_456_marketing`) <br/>
+    <div>To resolve this, change your macro so that the temporary PR schema name contains the default prefix and rview the guidance below: <br />
+      <br> - **Use** ✅ Temporary PR schema name contains the prefix `dbt_cloud_pr_` (like `dbt_cloud_pr_123_456_marketing`) <br />
       <br> - **Avoid** ❌ Temporary PR schema name doesn't contain the prefix `dbt_cloud_pr_` (like `marketing`). </nobr>
     </div>
-    <br/>
+    <br />
   </div>
   </div>
 </details>
@@ -158,11 +158,11 @@ If your temporary PR schemas aren't dropping after a merge or close of the PR, i
   <div>
     <br>
     <div>If you assume that the project's default connection is to a database named `analytics`, review the guidance below to resolve this: <br>
-      <br/>
-      <br> - **Use** ✅ Database remains the same as the connection default (like `analytics`) <br/>
+      <br />
+      <br> - **Use** ✅ Database remains the same as the connection default (like `analytics`) <br />
       <br> - **Avoid** ❌ Database has changed from the default connection (like `dev`). </nobr>
     </div>
-    <br/>
+    <br />
   </div>
   </div>
 </details>
