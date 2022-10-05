@@ -158,7 +158,7 @@ Note that the file always needs to be called `profiles.yml`, regardless of which
 
 There are two ways to direct dbt to a different location for your `profiles.yml` file:
 
-**1. Use the `--profiles-dir` option when executing a dbt command**
+### 1. Use the `--profiles-dir` option when executing a dbt command
 This option can be used as follows:
 
  ```
@@ -167,7 +167,7 @@ $ dbt run --profiles-dir path/to/directory
 
 If using this method, the `--profiles-dir` option needs to be provided every time you run a dbt command.
 
-**2. Use the `DBT_PROFILES_DIR` environment variable to change the default location**
+### 2. Use the `DBT_PROFILES_DIR` environment variable to change the default location
 Specifying this environment variable overrides the directory that dbt looks for your `profiles.yml` file in. You can specify this by running:
 ```
 $ export DBT_PROFILES_DIR=path/to/directory
