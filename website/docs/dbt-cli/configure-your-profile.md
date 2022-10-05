@@ -182,4 +182,4 @@ If the `--profiles-dir` option is used in a dbt command, it will take precedence
 
 ## Advanced: Using environment variables
 
-Credentials can either be placed directly into the `profiles.yml` file, or they can be loaded from environment variables. This is especially useful for production deployments of dbt. You can find more information about using environment variables [here](env_var).
+Credentials can either be placed directly into the `profiles.yml` file, or they can be loaded from environment variables. Using environment variables is especially useful for production deployments of dbt. You can find more information about using environment variables [here](env_var).
