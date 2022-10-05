@@ -1,5 +1,6 @@
 ---
 title: "Layer setup"
+id: "layer-setup"
 meta:
   maintained_by: Layer
   authors: 'Mehmet Ecevit'
