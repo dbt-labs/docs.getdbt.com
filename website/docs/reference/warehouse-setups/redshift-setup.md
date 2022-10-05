@@ -1,5 +1,6 @@
 ---
 title: "Redshift setup"
+id: "redshift-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
