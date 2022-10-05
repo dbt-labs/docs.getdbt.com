@@ -1,5 +1,6 @@
 ---
 title: "iomete setup"
+id: "iomete-setup"
 meta:
   maintained_by: iomete
   authors: 'Namig Aliyev'
