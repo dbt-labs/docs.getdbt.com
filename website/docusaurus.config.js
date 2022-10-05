@@ -138,10 +138,16 @@ var siteSettings = {
           activeBasePath: 'blog'
         },
         {
-          to: '/community/',
+          to: '/community/community-docs/join-the-community',
           label: 'Community',
           position: 'right',
-          activeBasePath: 'community'
+          activeBasePath: 'community',
+          items: [
+            {
+              label: 'dbt Community Slack',
+              href: 'https://www.getdbt.com/community/',
+            }
+          ]
         },
         {
           label: 'Courses',

@@ -53,35 +53,6 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Contributing",
-      items: [
-        "docs/contributing/oss-expectations",
-        "docs/contributing/contributor-license-agreements",
-        "docs/contributing/slack-rules-of-the-road",
-        "docs/contributing/long-lived-discussions-guidelines",
-        {
-          type: "category",
-          label: "Adapter development",
-          link: {
-            type: 'generated-index',
-            title: 'Adapter Development',
-            description: 'Learn what an adapter is what what\'s required to make one. Also how to build, test, document, promote, and verify your new adapter. Visit the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond this section.',
-
-          },
-          items: [
-            'docs/contributing/adapter-development/1-what-are-adapters',
-            'docs/contributing/adapter-development/2-prerequisites-for-a-new-adapter',
-            'docs/contributing/adapter-development/3-building-a-new-adapter',
-            'docs/contributing/adapter-development/4-testing-a-new-adapter',
-            'docs/contributing/adapter-development/5-documenting-a-new-adapter',
-            'docs/contributing/adapter-development/6-promoting-a-new-adapter',
-            'docs/contributing/adapter-development/7-verifying-a-new-adapter'
-          ]
-        }
-      ],
-    },
-    {
-      type: "category",
       label: "About",
       items: ["docs/about/license", "docs/about/viewpoint"],
     },
@@ -756,25 +727,42 @@ guides: [
       type: "category",
       label: "Community",
       link: {
-        type: 'generated-index',
-        title: 'Community resources',
-        description: "Here's stuff about the community",
-        slug: '/community/',
+        type: 'doc',
+        id: 'community/community-docs/join-the-community'
       },
       items: [
+        'community/community-docs/long-lived-discussions-guidelines',
+        'community/community-docs/oss-projects',
+        'community/community-docs/slack-rules-of-the-road',
+        "community/community-docs/maintaining-a-channel",
+      ],
+    },
+    {
+      type: "category",
+      label: "Contributing",
+      link: {
+        type: 'doc',
+        id: 'community/contributing/contributing-intro',
+      },
+      items: [
+        "community/contributing/contributing-writing",
+        "community/contributing/contributing-coding",
+        "community/contributing/contributing-online-community",
+        "community/contributing/contributing-realtime-events",
+        "community/contributing/contributor-license-agreements",
+        "community/contributing/oss-expectations",
         {
           type: "category",
-          label: "Contributing",
-          link: {
-            type: 'doc',
-            id: 'community/contributing/contributing-intro',
-          },
+          label: "Adapter development",
           items: [
-            "community/contributing/contributing-writing",
-            "community/contributing/contributing-coding",
-            "community/contributing/contributing-online-community",
-            "community/contributing/contributing-realtime-events",
-          ],
+            "community/contributing/adapter-development/1-what-are-adapters",
+            "community/contributing/adapter-development/2-prerequisites-for-a-new-adapter",
+            "community/contributing/adapter-development/3-building-a-new-adapter",
+            "community/contributing/adapter-development/4-testing-a-new-adapter",
+            "community/contributing/adapter-development/5-documenting-a-new-adapter",
+            "community/contributing/adapter-development/6-promoting-a-new-adapter",
+            "community/contributing/adapter-development/7-verifying-a-new-adapter",
+          ]
         }
       ],
     }

@@ -16,3 +16,8 @@
   max-width: 50px;
 }
 
+/* Page specific  cardwrapper styles */
+.cardWrapper,
+.cardWrapper article {
+  height: 100%;
+}
