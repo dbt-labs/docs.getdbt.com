@@ -1,5 +1,6 @@
 ---
 title: "IBM DB2 setup"
+id: "ibmdb2-setup"
 meta:
   maintained_by: Community
   authors: 'Rasmus Nyberg (https://github.com/aurany)'
