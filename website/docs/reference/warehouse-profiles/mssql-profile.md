@@ -55,7 +55,9 @@ For all the authentication methods below, the following configuration options ca
 
 ### Connection encryption
 
-Microsoft made several changes in the release of ODBC Driver 18 that affects how connection encryption is configured. To accomodate these changes, dbt-sqlserver 1.2.0 or newer also changed the defaults for the `encrypt` and `trust_cert` configuration options. Both options are now always included in the connection string to the database.
+:::tip Default settings change for MSFT ODBC Driver 18
+Microsoft made several changes in the release of ODBC Driver 18 that affects how connection encryption is configured. To accommodate these changes, starting in dbt-sqlserver 1.2.0 or newer the default will be to always configure the following: `encrypt=True` and `trust_cert=False` and will always be included in the connection string to the database.
+:::
 
 The default value of `encrypt` is `true`, meaning that connections are encrypted by default.
 
