@@ -1,5 +1,6 @@
 ---
 title: "Snowflake setup"
+id: "snowflake-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
