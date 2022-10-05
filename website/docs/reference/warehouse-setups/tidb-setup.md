@@ -1,5 +1,6 @@
 ---
 title: "TiDB setup"
+id: "tidb-setup"
 meta:
   maintained_by: PingCAP
   authors: Xiang Zhang, Qiang Wu, Yuhang Shi
