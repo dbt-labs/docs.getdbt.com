@@ -1,5 +1,6 @@
 ---
 title: "MySQL setup"
+id: "mysql-setup"
 meta:
   maintained_by: Community
   authors: 'Doug Beatty (https://github.com/dbeatty10)'
