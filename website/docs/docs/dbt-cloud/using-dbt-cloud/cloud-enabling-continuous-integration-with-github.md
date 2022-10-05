@@ -176,6 +176,7 @@ If your temporary PR schemas aren't dropping after a merge or close of the PR, i
   </div>
 </details>
 
+
 Make the necessary changes to your project and double-check if the temporary PR schemas drop after a merge or close of the PR.
 
 ## Troubleshooting
