@@ -3,13 +3,22 @@ title: "dbt Cloud features"
 id: "dbt-cloud-features"
 ---
 
+### **dbt Cloud IDE**
 
-:::info Beta Feature
-The revamped dbt Cloud IDE is now in beta! Check out the [IDE features](docs/dbt-cloud/cloud-ide/ide-beta), and [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the new Cloud IDE Beta group.
+The dbt Cloud [integrated development environment (IDE)](/docs/develop/develop-in-ide) is where you can build, test, run, and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project -- no command line required.  Anyone can use the IDE, from new dbt developers to seasoned practitioners.
 
-:::
+With the Cloud IDE, you can:
 
+- Write modular SQL models with `select` statements and the [`ref()`](/docs.getdbt.com/reference/dbt-jinja-functions/ref) function.
+- Compile dbt code into SQL and execute it against your database directly.
+- Test every model before deploying them to production.
+- Generate and view documentation of your dbt project.
+- Leverage [git and version-control your code](/docs/collaboration/version-control-basics) from your browser with a couple of clicks.
+- Create and test Python models.
+- Compile Python models to see the full function that gets executed in the warehouse. You cannot preview python models currently.
+- Visualize a directed acyclic graph (DAG), [and more](/docs/develop/dbt-cloud-tips).
 
+<!--- 
 The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
 
 **Prerequisites**:
@@ -41,4 +50,4 @@ As Ben Franklin once said:
 
 > In matters of principle, stand like a rock; in matters of taste, swim with the current.
 
-<Lightbox src="/img/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/>
+<Lightbox src="/img/docs/dbt-cloud/7adcb15-Screen_Shot_2019-11-05_at_9.35.48_PM.png" title="Now with 205% more Dark"/> ---> 
