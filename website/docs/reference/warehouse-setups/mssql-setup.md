@@ -120,7 +120,6 @@ your_profile_name:
       type: sqlserver
       driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
       server: hostname or IP of your server
-      database: exampledb
       port: 1433
       database: database
       schema: schema_name
