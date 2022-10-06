@@ -15,7 +15,7 @@ function Collapsible({children, header, description, expand}) {
             {header}
             { expanded ?  ' -'  : ' +' }
         </h2>
-        { expanded ? children : <span>{ description }</span> }
+        { expanded ? children : <span>{ description ? description : "Click to expand" }</span> }
     </>
   );
 }
