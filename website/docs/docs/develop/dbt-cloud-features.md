@@ -13,7 +13,7 @@ With the Cloud IDE, you can:
 - Compile dbt code into SQL and execute it against your database directly.
 - Test every model before deploying them to production.
 - Generate and view documentation of your dbt project.
-- Leverage [git and version-control your code](/docs/collaboration/version-control-basics) from your browser with a couple of clicks.
+- Leverage [git and version-control your code](/docs/collaborate/git/version-control-basics) from your browser with a couple of clicks.
 - Create and test Python models.
 - Compile Python models to see the full function that gets executed in the warehouse. You cannot preview python models currently.
 - Visualize a directed acyclic graph (DAG), [and more](/docs/develop/dbt-cloud-tips).
