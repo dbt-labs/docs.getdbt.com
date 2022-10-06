@@ -23,7 +23,7 @@ async function updateAlgolia() {
     // This uses same function as DiscourseFeed component
     const { data } = await axios.post(`${URL}/.netlify/functions/get-discourse-topics`, topicData)
     if(!data) throw new Error('Unable to get Discourse topics.')
-    
+
     // Build array of Discourse data ready for Algolia    
     const discourseTopics = data?.reduce((topicArr, topic, i) => {
       if(topic?.id && topic?.slug) {
