@@ -73,9 +73,7 @@ packages:
 3. You have now installed the dbt metrics package successfully! 
     1. If you have any errors during the run, review the system logs for more information on how to fix them.
 
-![Running dbt deps in the dbt Cloud IDE](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73ed4da8-c79a-40a6-9366-722593ba68e4/Screenshot_2022-09-27_at_12.40.48.png)
-
-Running dbt deps in the dbt Cloud IDE
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_package.png" title="Running dbt deps in the dbt Cloud IDE" />
 
 **Defining metrics in your dbt project** 
 
@@ -135,17 +133,14 @@ The deployment environment ****is only supported for the dbt Semantic Layer at t
 1. Go to **Deploy** and then **Jobs** to re-run the job with the most recent code in the deployment environment.
     1. Your metric should appear as red nodes in the dbt Cloud IDE and dbt directed acyclic graphs (DAG).
 
-[DAG with metrics appearing as red nodes](https://lh5.googleusercontent.com/u4idbFjVgfWWLxz3gSW5olyYUsFJCrtdgWst1dQ3hRa8qIsHLwCSLdU-SpsiZ-QMPNQOfkGDo7lg348svlwxq3uKfLNn477jd4TzOMa09_2HojpPuLn_HMlQNaKoiKZcwU8E0gWa5qAkbZv2705e_HY)
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" title="DAG with metrics appearing as red nodes" />
 
-DAG with metrics appearing as red nodes
-
-<aside>
-📌 **What’s happening internally?**
+:::📌 **What’s happening internally?**
 
 - Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the resulting manifest.json. *CM: builds the definition in the manifest produced by the run.*
 - Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data warehouse. It also makes sure the dbt Metadata is up to date. *It also makes sure that the manifest is up to date.*
 - Your dbt Metadata API reflects these changes and allows your integration tool to pull metric information. *Your dbt Metadata API pulls in the most recent manifest and allows your integration information to extract metadata from it.*
-</aside>
+:::
 
 **Configure dbt Semantic Layer** 
 
