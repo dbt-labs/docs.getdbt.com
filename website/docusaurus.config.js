@@ -139,15 +139,11 @@ var siteSettings = {
           ],
         },
         {
-          label: "Courses",
+          label: "Community",
           position: "right",
           items: [
             {
               label: "Join the Community",
-              to: "/community/join",
-            },
-            {
-              label: "Community Docs",
               to: "/community/join",
             },
             {

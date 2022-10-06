@@ -837,7 +837,7 @@ const sidebarSettings = {
       label: "Contributing",
       link: {
         type: "doc",
-        id: "community/contributing/contributing-intro",
+        id: "community/contribute",
       },
       items: [
         "community/contributing/contributing-writing",
