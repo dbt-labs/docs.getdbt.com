@@ -39,7 +39,7 @@ The Cloud IDE needs explicit action to save your changes and there are three way
 
 ## Set up the **Cloud IDE**
 
-:::📌 New to dbt? Check out our [Getting Started guide](https://docs.getdbt.com/guides/getting-started) to build your first dbt project in the Cloud IDE!
+:::📌 New to dbt? Check out our [Getting Started guide](/docs.getdbt.com/guides/getting-started) to build your first dbt project in the Cloud IDE!
 
 :::
 
@@ -86,9 +86,9 @@ To use the Cloud IDE:
 
 1. **File Tree -** The file tree allows you to organize your project and manage your files and folders. Click the three-dot menu associated with the file or folder to create, rename, or delete it. Note: This function is unavailable if you’re on the **Main** branch. 
 2. **Editor -** This is where you edit your files. You can use the tab for each editor to position it exactly where you need it.
-3. **IDE git button -** The git button in the IDE allows you to apply the concept of [version control](/docs/collaboration/version-control-basics) to your project and you can execute git commands directly in the IDE.
+3. **IDE git button -** The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project and you can execute git commands directly in the IDE.
 4. **Command bar -** You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to execute [dbt commands](/docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History** on the left of the bar**.**
-5. **Status ba**r - This area provides you with useful information about your IDE and project status. You also have additional options like restarting or [recloning your repo](/docs/collaboration/version-control-basics).
+5. **Status ba**r - This area provides you with useful information about your IDE and project status. You also have additional options like restarting or [recloning your repo](/docs/collaborate/git/version-control-basics).
 6. **Format/Preview/Compile/Build -** This is where you can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** feature format your file and is powered by [sqlfmt](http://sqlfmt.com/).
 7. **Lineage tab -** You can see how models are used as building blocks from left to right to transform your data from raw sources, into cleaned-up modular derived pieces and final outputs on the far right of the DAG. You can access files in the **Lineage** tab by double-clicking on a particular model. Expand the DAG into fullscreen to view the DAG view differently. Note: Our default view is `+model+`, however, you can change it to `2+model+2`.
 8. **Generating and viewing documentation -** Generate and view your [documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. 
