@@ -1,3 +1,11 @@
+---
+title: "dbt Semantic Layer quickstart"
+id: quickstart-semantic-layer
+description: "Define metrics and set up the dbt Semantic Layer"
+sidebar_label: "dbt Semantic Layer quickstart"
+---
+
+
 # Quickstart
 
 :::
