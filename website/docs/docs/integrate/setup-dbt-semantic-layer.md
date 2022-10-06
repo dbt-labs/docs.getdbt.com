@@ -46,5 +46,4 @@ You need to set up the **[Metadata API](/docs.getdbt.com/docs/dbt-cloud/dbt-clou
 - An [API service token](/docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens) with job admin and metadata permissions
 - Add the items above to the relevant fields in your integration tool
 
-[https://lh5.googleusercontent.com/I3NH_B-JKxD6Xr-mDL3YGtJC5-iWbq9Xt3NFzgvaZH5rIHkMSx91abT7WWrcwa7UFsTkzurlAh_qZZYmyaNVJrLIaI1UQOEz0mngFWcHzm1_JHlwiC5kifxVzbhjU4cdc1OjlFi_k0rEZNGD4Vh0F6E](https://lh5.googleusercontent.com/I3NH_B-JKxD6Xr-mDL3YGtJC5-iWbq9Xt3NFzgvaZH5rIHkMSx91abT7WWrcwa7UFsTkzurlAh_qZZYmyaNVJrLIaI1UQOEz0mngFWcHzm1_JHlwiC5kifxVzbhjU4cdc1OjlFi_k0rEZNGD4Vh0F6E)
-
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure-sl.png" title="Set up dbt Semantic Layer in dbt Cloud" />
