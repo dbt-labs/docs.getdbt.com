@@ -78,7 +78,7 @@
 /docs/about/viewpoint /docs/viewpoint 301
 /dbt-cli/configure-your-profile /docs/develop/connection-profiles 301
 /docs/running-a-dbt-project/using-the-cli /docs/develop/about-the-cli 302
-/dbt-cli/install/from-source /docs/develop/source-install 302
+/dbt-cli/install/from-source /docs/develop/source-install 301
 /dbt-cli/install/docker /docs/develop/docker-install 302
 /dbt-cli/install/pip /docs/develop/pip-install 302
 /dbt-cli/install/homebrew /docs/develop/homebrew-install 302
