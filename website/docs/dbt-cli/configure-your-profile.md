@@ -24,7 +24,9 @@ profile: 'jaffle_shop'
 
 dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
-This file generally lives outside of your dbt project to avoid sensitive credentials being checked in to version control, but `profiles.yml` can be safely checked in when using [env_var](env_var) to load sensitive credentials via environment variables. By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
+<VersionBlock firstVersion="0.20"  lastVersion="1.2">By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.</VersionBlock><VersionBlock firstVersion="1.3">dbt will search the current working directory for the `profiles.yml` file and will default to the `~/.dbt/` directory if not found.</VersionBlock>
+
+This file generally lives outside of your dbt project to avoid sensitive credentials being checked in to version control, but `profiles.yml` can be safely checked in when [using environment variables](#advanced-using-environment-variables) to load sensitive credentials.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -145,9 +147,21 @@ You can use a different number of threads than the value defined in your target 
 
 The parent directory for `profiles.yml` is determined using the following precedence:
 
+<VersionBlock firstVersion="0.20"  lastVersion="1.2">
+
 1. `--profiles-dir` option
 1. `DBT_PROFILES_DIR` environment variable
 1. `~/.dbt/` directory
+
+</VersionBlock>
+<VersionBlock firstVersion="1.3">
+
+1. `--profiles-dir` option
+1. `DBT_PROFILES_DIR` environment variable
+1. current working directory
+1. `~/.dbt/` directory
+
+</VersionBlock>
 
 To check the expected location of your `profiles.yml` file for your installation of dbt, you can run the following:
 
@@ -158,11 +172,11 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-You may want to have your `profiles.yml` file stored in a different directory – for example, if you are using [environment variables to load your credentials](env_var), you might choose to include this file in your version controlled dbt project.
+You may want to have your `profiles.yml` file stored in a different directory than `~/.dbt/` – for example, if you are [using environment variables](#advanced-using-environment-variables) to load your credentials, you might choose to include this file in the root of your version controlled dbt project.
 
 Note that the file always needs to be called `profiles.yml`, regardless of which directory it is in.
 
-There are two ways to direct dbt to a different location for your `profiles.yml` file:
+There are multiple ways to direct dbt to a different location for your `profiles.yml` file:
 
 ### 1. Use the `--profiles-dir` option when executing a dbt command
 This option can be used as follows:
@@ -178,7 +192,6 @@ Specifying this environment variable overrides the directory that dbt looks for 
 ```
 $ export DBT_PROFILES_DIR=path/to/directory
 ```
-If the `--profiles-dir` option is used in a dbt command, it will take precedence over this environment variable.
 
 ## Advanced: Using environment variables
 
