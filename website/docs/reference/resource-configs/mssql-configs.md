@@ -135,6 +135,15 @@ models:
 
 </File>
 
+## cross-database macros
+
+The following macros are currently not supported:
+
+* `bool_or`
+* `array_construct`
+* `array_concat`
+* `array_append`
+
 ## dbt-utils
 
 Many [`dbt-utils`](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) are supported,
