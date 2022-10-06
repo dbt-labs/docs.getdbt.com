@@ -24,7 +24,16 @@ profile: 'jaffle_shop'
 
 dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
-<VersionBlock firstVersion="0.20"  lastVersion="1.2">By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.</VersionBlock><VersionBlock firstVersion="1.3">dbt will search the current working directory for the `profiles.yml` file and will default to the `~/.dbt/` directory if not found.</VersionBlock>
+<VersionBlock firstVersion="0.20" lastVersion="1.2">
+
+By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
+
+</VersionBlock>
+<VersionBlock firstVersion="1.3">
+
+dbt will search the current working directory for the `profiles.yml` file and will default to the `~/.dbt/` directory if not found.
+
+</VersionBlock>
 
 This file generally lives outside of your dbt project to avoid sensitive credentials being checked in to version control, but `profiles.yml` can be safely checked in when [using environment variables](#advanced-using-environment-variables) to load sensitive credentials.
 
