@@ -181,7 +181,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-You may want to have your `profiles.yml` file stored in a different directory than `~/.dbt/` – for example, if you are [using environment variables](#advanced-using-environment-variables) to load your credentials, you might choose to include this file in the root of your version controlled dbt project.
+You may want to have your `profiles.yml` file stored in a different directory than `~/.dbt/` – for example, if you are [using environment variables](#advanced-using-environment-variables) to load your credentials, you might choose to include this file in the root directory of your dbt project.
 
 Note that the file always needs to be called `profiles.yml`, regardless of which directory it is in.
 
