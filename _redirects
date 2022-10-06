@@ -430,3 +430,10 @@ docs/contributing/building-a-new-adapter /docs/contributing/adapter-development/
 docs/contributing/testing-a-new-adapter /docs/contributing/adapter-development/4-testing-a-new-adapter 302
 docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-development/5-documenting-a-new-adapter 302
 /docs/building-a-new-adapter  /docs/contributing/adapter-development/3-building-a-new-adapter 301!
+
+/docs/dbt-cloud/cloud-ide/the-dbt-ide  /docs/develop/dbt-cloud-features 301!
+/docs/dbt-cloud/cloud-ide/handling-merge-conflicts  /docs/collaborate/version-control-basics 301!
+/dbt-cloud/cloud-ide/viewing-docs-in-the-ide  /docs/develop/develop-in-ide 301!
+/docs/dbt-cloud/cloud-ide/ide-beta  /docs/develop/develop-in-ide 301!
+/docs/running-a-dbt-project/using-the-dbt-ide  /docs/develop/develop-in-ide 301!
+/dbt-cloud/cloud-ide/the-ide-git-button  /docs/collaborate/version-control-basics 301!
