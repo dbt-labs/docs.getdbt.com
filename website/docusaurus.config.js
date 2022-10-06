@@ -65,6 +65,7 @@ var siteSettings = {
       apiKey: ALGOLIA_TEST_READ_API_KEY,
       indexName: ALGOLIA_DISCOURSE_INDEX_NAME,
       appId: ALGOLIA_TEST_APP_ID,
+      externalUrlRegex: 'discourse\\.getdbt\\.com',
       debug: true,
     },
     announcementBar: {
