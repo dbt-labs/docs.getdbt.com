@@ -1,65 +1,294 @@
 const sidebarSettings = {
   docs: [
+    "docs/introduction",
+    "docs/supported-data-platforms",
     {
       type: "category",
-      label: "Introduction",
-      items: [
-        "docs/introduction",
-        "docs/supported-data-platforms",
-        "docs/core-versions",
-      ],
-    },
-    {
-      type: "category",
-      label: "Building a dbt Project",
+      label: "Develop with dbt",
       collapsed: true,
       items: [
-        "docs/building-a-dbt-project/projects",
         {
           type: "category",
-          label: "Models",
+          label: "Get started with dbt Cloud",
+          collapsed: false,
+          link: { type: "doc", id: "guides/getting-started/getting-started" },
+          items: ["docs/develop/dbt-cloud-features"],
+        },
+        {
+          type: "category",
+          label: "Get started with dbt Core",
+          collapsed: false,
+          link: {
+            type: "doc",
+            id: "guides/getting-started/learning-more/getting-started-dbt-core",
+          },
           items: [
-            "docs/building-a-dbt-project/building-models",
-            "docs/building-a-dbt-project/building-models/materializations",
-            "docs/building-a-dbt-project/building-models/configuring-incremental-models",
-            "docs/building-a-dbt-project/building-models/using-custom-aliases",
-            "docs/building-a-dbt-project/building-models/using-custom-schemas",
-            "docs/building-a-dbt-project/building-models/using-custom-databases",
-            "docs/building-a-dbt-project/building-models/using-variables",
-            "docs/building-a-dbt-project/building-models/python-models",
+            {
+              type: "category",
+              label: "Installation",
+              collapsed: true,
+              link: { type: "doc", id: "docs/develop/installation" },
+              items: [
+                "docs/develop/homebrew-install",
+                "docs/develop/pip-install",
+                "docs/develop/docker-install",
+                "docs/develop/source-install",
+              ],
+            },
           ],
         },
-        "docs/building-a-dbt-project/managing-environments",
-        "docs/building-a-dbt-project/tests",
-        "docs/building-a-dbt-project/documentation",
-        "docs/building-a-dbt-project/using-sources",
-        "docs/building-a-dbt-project/seeds",
-        "docs/building-a-dbt-project/snapshots",
-        "docs/building-a-dbt-project/exposures",
-        "docs/building-a-dbt-project/jinja-macros",
-        "docs/building-a-dbt-project/hooks-operations",
-        //"docs/building-a-dbt-project/dont-nest-your-curlies",
-        //"docs/building-a-dbt-project/archival",
-        "docs/building-a-dbt-project/package-management",
-        "docs/building-a-dbt-project/analyses",
-        "docs/building-a-dbt-project/metrics",
+        {
+          type: "category",
+          label: "About the CLI",
+          collapsed: false,
+          link: { type: "doc", id: "docs/develop/about-the-cli" },
+          items: ["docs/develop/connection-profiles"],
+        },
       ],
     },
     {
       type: "category",
-      label: "Running a dbt Project",
+      label: "Build dbt projects",
       collapsed: true,
       items: [
-        "docs/running-a-dbt-project/using-the-dbt-ide",
-        "docs/running-a-dbt-project/using-the-cli",
-        "docs/running-a-dbt-project/running-dbt-in-production",
+        "docs/build/projects",
+        {
+          type: "category",
+          label: "Build your DAG",
+          collapsed: true,
+          items: [
+            "docs/build/sources",
+            {
+              type: "category",
+              label: "Models",
+              items: [
+                "docs/build/sql-models",
+                "docs/building-a-dbt-project/building-models/python-models",
+              ],
+            },
+            "docs/build/seeds",
+            "docs/build/snapshots",
+            "docs/build/exposures",
+            "docs/build/metrics",
+          ],
+        },
+        {
+          type: "category",
+          label: "Enhance your models",
+          collapsed: true,
+          items: [
+            "docs/build/tests",
+            "docs/build/materializations",
+            "docs/build/incremental-models",
+          ],
+        },
+        {
+          type: "category",
+          label: "Enhance your code",
+          collapsed: true,
+          items: [
+            "docs/build/jinja-macros",
+            "docs/build/project-variables",
+            "docs/build/environment-variables",
+            "docs/build/packages",
+            "docs/build/analyses",
+          ],
+        },
+        {
+          type: "category",
+          label: "Advanced workflows",
+          collapsed: true,
+          items: [
+            {
+              type: "category",
+              label: "dbt Cloud APIs",
+              items: [
+                "docs/dbt-cloud-apis/overview",
+                {
+                  type: "category",
+                  label: "Authentication",
+                  items: [
+                    "docs/dbt-cloud-apis/user-tokens",
+                    "docs/dbt-cloud-apis/service-tokens",
+                  ],
+                },
+                "docs/dbt-cloud-apis/admin-cloud-api",
+                {
+                  type: "category",
+                  label: "Metadata API",
+                  items: [
+                    "docs/dbt-cloud-apis/metadata-api",
+                    "docs/dbt-cloud-apis/metadata-querying",
+                    {
+                      type: "category",
+                      label: "Schema",
+                      items: [
+                        "docs/dbt-cloud-apis/metadata-schema-model",
+                        "docs/dbt-cloud-apis/metadata-schema-models",
+                        "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
+                        "docs/dbt-cloud-apis/metadata-schema-metric",
+                        "docs/dbt-cloud-apis/metadata-schema-metrics",
+                        "docs/dbt-cloud-apis/metadata-schema-source",
+                        "docs/dbt-cloud-apis/metadata-schema-sources",
+                        "docs/dbt-cloud-apis/metadata-schema-seed",
+                        "docs/dbt-cloud-apis/metadata-schema-seeds",
+                        "docs/dbt-cloud-apis/metadata-schema-snapshots",
+                        "docs/dbt-cloud-apis/metadata-schema-test",
+                        "docs/dbt-cloud-apis/metadata-schema-tests",
+                        "docs/dbt-cloud-apis/metadata-schema-exposure",
+                        "docs/dbt-cloud-apis/metadata-schema-exposures",
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            "docs/build/hooks-operations",
+          ],
+        },
+        {
+          type: "category",
+          label: "Organize your outputs",
+          collapsed: true,
+          items: [
+            "docs/build/custom-schemas",
+            "docs/build/custom-databases",
+            "docs/build/custom-aliases",
+            "docs/build/custom-target-names",
+          ],
+        },
+        "guides/best-practices/how-we-structure/1-guide-overview",
+        //"docs/building-a-dbt-project/dont-nest-your-curlies",
+        //"docs/building-a-dbt-project/archival",
       ],
     },
     {
       type: "category",
-      label: "About",
-      items: ["docs/about/license", "docs/about/viewpoint"],
+      label: "Deploy dbt projects",
+      collapsed: true,
+      items: [
+        "docs/deploy/overview",
+        {
+          type: "category",
+          label: "dbt Cloud deploy options",
+          items: [
+            "docs/deploy/architecture",
+            "docs/deploy/single-tenant",
+            "docs/deploy/multi-tenant",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud production jobs",
+          items: [
+            "docs/deploy/job-triggers",
+            "docs/deploy/job-notifications",
+            "docs/deploy/source-freshness",
+            "docs/deploy/dashboard-status-tiles",
+          ],
+        },
+        "docs/deploy/cloud-ci-job",
+      ],
     },
+    {
+      type: "category",
+      label: "Collaborate",
+      items: [
+        {
+          type: "category",
+          label: "Git version control",
+          items: [
+            "docs/collaborate/git/pr-template",
+            "docs/collaborate/git/resolve-merge-conflicts",
+            {
+              type: "category",
+              label: "Supported git providers",
+              items: [
+                "docs/collaborate/git/connect-github",
+                "docs/collaborate/git/connect-gitlab",
+                {
+                  type: "category",
+                  label: "Azure DevOps",
+                  items: [
+                    "docs/collaborate/git/connect-azure-devops",
+                    "docs/collaborate/git/setup-azure",
+                    "docs/collaborate/git/authenticate-azure",
+                  ],
+                },
+                "docs/collaborate/git/import-a-project-by-git-url",
+              ],
+            },
+          ],
+        },
+        "docs/collaborate/environments",
+        {
+          type: "category",
+          label: "Document your dbt projects",
+          items: [
+            "docs/collaborate/documentation",
+            "docs/collaborate/build-and-view-your-docs",
+          ],
+        },
+
+        {
+          type: "category",
+          label: "Manage access",
+          items: [
+            "docs/collaborate/manage-access/licenses-and-groups",
+            "docs/collaborate/manage-access/seats-and-users",
+            {
+              type: "category",
+              label: "Permissions",
+              items: [
+                "docs/collaborate/manage-access/self-service-permissions",
+                "docs/collaborate/manage-access/enterprise-permissions",
+              ],
+            },
+
+            {
+              type: "category",
+              label: "Single sign-on",
+              items: [
+                "docs/collaborate/manage-access/sso-overview",
+                "docs/collaborate/manage-access/set-up-sso-saml-2.0",
+                "docs/collaborate/manage-access/set-up-sso-google-workspace",
+                "docs/collaborate/manage-access/set-up-sso-azure-active-directory",
+              ],
+            }, // SSO
+            {
+              type: "category",
+              label: "OAuth with data platforms",
+              items: [
+                "docs/collaborate/manage-access/set-up-snowflake-oauth",
+                "docs/collaborate/manage-access/set-up-bigquery-oauth",
+              ],
+            }, // oauth
+            "docs/collaborate/manage-access/audit-log",
+          ],
+        }, // Manage access
+      ],
+    },
+    {
+      type: "category",
+      label: "Available dbt versions",
+      items: [
+        "docs/dbt-versions/core",
+        "docs/dbt-versions/upgrade-core-in-cloud",
+        {
+          type: "category",
+          label: "dbt Cloud Release Notes",
+          items: [
+            "docs/dbt-versions/dbt-cloud-release-notes",
+            {
+              type: "autogenerated",
+              dirName: "docs/dbt-versions/release-notes",
+            },
+          ],
+        },
+      ],
+    },
+    "docs/dbt-support",
+    "docs/viewpoint",
     {
       type: "category",
       label: "Frequently asked questions",
@@ -78,21 +307,7 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt CLI": [
-    "dbt-cli/cli-overview",
-    {
-      type: "category",
-      label: "Installing dbt from the command line",
-      items: [
-        "dbt-cli/install/overview",
-        "dbt-cli/install/homebrew",
-        "dbt-cli/install/pip",
-        "dbt-cli/install/docker",
-        "dbt-cli/install/from-source",
-      ],
-    },
-    "dbt-cli/configure-your-profile",
-  ],
+  "dbt CLI": ["dbt-cli/cli-overview"],
   "dbt Cloud": [
     {
       type: "category",
@@ -104,8 +319,6 @@ const sidebarSettings = {
       type: "category",
       label: "dbt Cloud IDE",
       items: [
-        "docs/dbt-cloud/cloud-ide/the-dbt-ide",
-        "docs/dbt-cloud/cloud-ide/handling-merge-conflicts",
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
         "docs/dbt-cloud/cloud-ide/the-ide-git-button",
         "docs/dbt-cloud/cloud-ide/ide-beta",
@@ -117,24 +330,7 @@ const sidebarSettings = {
       items: [
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab",
-        {
-          type: "category",
-          label: "Connecting Azure DevOps",
-          link: {
-            type: "doc",
-            id: "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops",
-          },
-          items: [
-            "docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure",
-            "docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure",
-          ],
-        },
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
       ],
     },
     {
@@ -147,119 +343,9 @@ const sidebarSettings = {
         slug: "/docs/dbt-cloud",
       },
       items: [
-        "docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness",
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-using-a-custom-cron-schedule",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-notifications",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
         "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
-      ],
-    },
-    {
-      type: "category",
-      label: "Access Control",
-      items: [
-        "docs/dbt-cloud/access-control/access-control-overview",
-        "docs/dbt-cloud/access-control/cloud-seats-and-users",
-        "docs/dbt-cloud/access-control/self-service-permissions",
-        "docs/dbt-cloud/access-control/enterprise-permissions",
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud Enterprise",
-      items: [
-        "docs/dbt-cloud/dbt-cloud-enterprise",
-        {
-          type: "category",
-          label: "Single Sign On",
-          items: [
-            "docs/dbt-cloud/dbt-cloud-enterprise/sso-overview",
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-saml-2.0",
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite",
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-sso-with-azure-active-directory",
-          ],
-        },
-        {
-          type: "category",
-          label: "Database Auth",
-          items: [
-            "docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth",
-            "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth",
-          ],
-        },
-        "docs/dbt-cloud/dbt-cloud-enterprise/audit-log",
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud Deployments",
-      items: [
-        "docs/dbt-cloud/deployments/deployment-overview",
-        "docs/dbt-cloud/deployments/multi-tenant-deployment",
-        "docs/dbt-cloud/deployments/single-tenant-deployment",
-        "docs/dbt-cloud/deployments/deployment-architecture",
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud APIs",
-      items: [
-        "docs/dbt-cloud/dbt-cloud-api/cloud-apis",
-        {
-          type: "category",
-          label: "Authentication",
-          items: [
-            "docs/dbt-cloud/dbt-cloud-api/user-tokens",
-            "docs/dbt-cloud/dbt-cloud-api/service-tokens",
-          ],
-        },
-        "docs/dbt-cloud/dbt-cloud-api/admin-cloud-api",
-        {
-          type: "category",
-          label: "Metadata API",
-          items: [
-            "docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview",
-            "docs/dbt-cloud/dbt-cloud-api/metadata/metadata-querying",
-            {
-              type: "category",
-              label: "Schema",
-              items: [
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-model",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-models",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-modelByEnv",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metric",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metrics",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-source",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-sources",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seed",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-seeds",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-snapshots",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-test",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-tests",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposure",
-                "docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-exposures",
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    "docs/dbt-cloud/cloud-dbt-cloud-support",
-    {
-      type: "category",
-      label: "dbt Cloud Release Notes",
-      link: { type: "doc", id: "docs/dbt-cloud/release-notes" },
-      items: [
-        {
-          type: "autogenerated",
-          dirName: "docs/dbt-cloud/release-notes",
-        },
       ],
     },
   ],

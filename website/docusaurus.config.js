@@ -113,38 +113,28 @@ var siteSettings = {
           activeBasePath: "reference",
         },
         {
-          to: "/dbt-cli/cli-overview",
-          label: "dbt CLI",
-          position: "left",
-          activeBasePath: "dbt-cli",
-        },
-        {
-          to: "/docs/dbt-cloud/cloud-overview",
-          label: "dbt Cloud",
-          position: "left",
-          activeBasePath: "docs/dbt-cloud",
-        },
-        {
-          to: "/guides/getting-started",
-          label: "Guides",
-          position: "left",
-          activeBasePath: "guides",
-        },
-        {
-          to: "/blog/",
-          label: "Developer Blog",
+          label: "Learn",
           position: "right",
-          activeBasePath: "blog",
-        },
-        {
-          to: "/community/join",
-          label: "Community",
-          position: "right",
-          activeBasePath: "community",
           items: [
             {
-              label: "dbt Community Slack",
-              href: "https://www.getdbt.com/community/",
+              label: "Courses",
+              href: "https://courses.getdbt.com",
+            },
+            {
+              label: "Guides",
+              to: "/guides/getting-started",
+            },
+            {
+              label: "Developer Blog",
+              to: "/blog",
+            },
+            {
+              label: "Glossary",
+              to: "/glossary",
+            },
+            {
+              label: "Forum",
+              to: "/forum",
             },
           ],
         },
@@ -153,14 +143,24 @@ var siteSettings = {
           position: "right",
           items: [
             {
-              label: "Online courses",
-              href: "https://courses.getdbt.com",
+              label: "Join the Community",
+              to: "/community/join",
             },
             {
-              label: "Live courses",
-              href: "https://learn.getdbt.com/public",
+              label: "Community Docs",
+              to: "/community/join",
+            },
+            {
+              label: "Ways to Participate",
+              to: "/community/contribute",
             },
           ],
+        },
+        {
+          label: "Create a free account",
+          to: "https://www.getdbt.com/signup/",
+          position: "right",
+          className: "nav-create-account button button--primary",
         },
       ],
     },

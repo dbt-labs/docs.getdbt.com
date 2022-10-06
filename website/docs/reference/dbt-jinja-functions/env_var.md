@@ -76,6 +76,26 @@ The primary use case of secret env vars is git access tokens for [private packag
 
 Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in [dbt artifacts](dbt-artifacts#common-metadata), in a `metadata.env` dictionary, with its prefix-stripped name as its key.
 
+<VersionBlock firstVersion="1.3">
+
+A dictionary of these prefixed env vars will also be available in a `dbt_metadata_envs` context variable:
+```sql
+-- {{ dbt_metadata_envs }}
+
+select 1 as id
+```
+```shell
+$ DBT_ENV_CUSTOM_ENV_MY_FAVORITE_COLOR=indigo DBT_ENV_CUSTOM_ENV_MY_FAVORITE_NUMBER=6 dbt compile
+```
+Compiles to:
+```sql
+-- {'MY_FAVORITE_COLOR': 'indigo', 'DBT_ENV_CUSTOM_ENV_MY_FAVORITE_NUMBER': '6'}
+
+select 1 as id
+```
+
+</VersionBlock>
+
 :::info dbt Cloud Usage
 If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET_`). Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
