@@ -24,7 +24,7 @@ profile: 'jaffle_shop'
 
 dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
-This file generally lives outside of your dbt project to avoid sensitive credentials being check in to version control. By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
+This file generally lives outside of your dbt project to avoid sensitive credentials being checked in to version control. By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -46,6 +46,7 @@ jaffle_shop:
 
 </File>
 
+The above example shows how to configure your profile for connection to a Postgres warehouse; to configure connections for other types of warehouse, refer to [the `profiles.yml` reference page](reference/profiles.yml.md).
 
 ## About the `profiles.yml` file
 
