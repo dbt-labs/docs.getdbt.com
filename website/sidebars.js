@@ -272,6 +272,18 @@ const sidebarSettings = {
     },
     {
       type: "category",
+      label: "Integrate with data tools",
+      collapsed: true,
+      items: [
+        "docs/integrate/quickstart-semantic-layer",
+        "docs/integrate/dbt-semantic-layer",
+        "docs/integrate/manage-metrics",
+        "docs/integrate/setup-dbt-semantic-layer",
+        "docs/integrate/avail-sl-integrations",
+          ],
+       },    
+    {
+      type: "category",
       label: "Available dbt versions",
       items: [
         "docs/dbt-versions/core",
@@ -348,7 +360,6 @@ const sidebarSettings = {
       items: [
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
       ],
     },
   ],
