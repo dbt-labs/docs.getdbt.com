@@ -1,3 +1,10 @@
+---
+title: "dbt Semantic Layer"
+id: dbt-semantic-layer
+description: "Introducing the dbt Semantic Layer."
+sidebar_label: "dbt Semantic Layer"
+---
+
 ::: 📌 The dbt Semantic Layer is currently available for public preview! Review the info below to see what this means for you:
 
 1. **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Review the [Product architecture](url) section for more information.
