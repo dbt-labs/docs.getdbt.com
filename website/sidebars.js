@@ -14,6 +14,8 @@ const sidebarSettings = {
           link: { type: 'doc', id: 'guides/getting-started/getting-started' },
           items: [
             "docs/develop/dbt-cloud-features",
+            "docs/develop/develop-in-ide",
+            "docs/develop/dbt-cloud-tips",
           ],
         },
         {
