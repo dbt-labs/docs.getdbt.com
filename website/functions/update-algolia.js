@@ -37,6 +37,11 @@ async function updateAlgolia() {
           url: `https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`,
           language: 'en',
           docusaurus_tag: 'docs-default-current',
+          weight: {
+            pageRank: '0',
+            level: 1,
+            position: 99,
+          }
         }
         topicArr.push(topicObj)
       }
