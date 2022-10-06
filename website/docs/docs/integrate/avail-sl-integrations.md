@@ -18,4 +18,4 @@ There are two categories of Partner integrations:
 
  For more information, review [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) for further detail on the different integration partners.
 
-![Screen Shot 2022-09-30 at 8.59.50 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/39f4b918-6f39-4ccc-85c0-887392fd7d20/Screen_Shot_2022-09-30_at_8.59.50_AM.png)
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
