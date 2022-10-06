@@ -1,5 +1,4 @@
-<aside>
-📌 The dbt Semantic Layer is currently available for public preview! Review the info below to see what this means for you:
+::: 📌 The dbt Semantic Layer is currently available for public preview! Review the info below to see what this means for you:
 
 1. **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Review the [Product architecture](url) section for more information.
 
@@ -11,7 +10,7 @@
 
 5. **Why?** Public preview is designed to test the functionality and collect feedback from our community on performance, usability, and documentation.
 
-</aside>
+:::
 
 The dbt Semantic Layer allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project), for consistent self-service within downstream data tools like BI and metadata management solutions. The result? You have less duplicative coding for data teams and more consistency for data consumers.
 
@@ -22,7 +21,8 @@ The Semantic Layer has four main parts:
 - Query your metric data via the dbt Proxy Server
 - Explore and analyze dbt metrics in downstream tools
 
-![Screen Shot 2022-09-30 at 8.59.50 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ee001f1-21bb-4546-99a2-37a6737c5c02/Screen_Shot_2022-09-30_at_8.59.50_AM.png)
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
 
 **What makes the dbt Semantic Layer different?** 
 
@@ -49,8 +49,6 @@ There are some modifications to consider when using the dbt Semantic Layer durin
 ### Product architecture
 
 The dbt Semantic Layer product architecture includes four primary components:
-
-1. 
 
 In practice, dbt Semantic Layer integrations will:
 
