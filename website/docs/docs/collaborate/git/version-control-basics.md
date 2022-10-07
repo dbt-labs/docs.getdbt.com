@@ -5,6 +5,8 @@ description: "Leverage git to version control your code."
 sidebar_label: "Version control basics"
 ---
 
+# Version control basics
+
 :::📌 To use version control, make sure you are connected to a Git repository in the IDE. To use version control, make sure you are connected to a Git repository in the IDE.
 
 :::
