@@ -30,7 +30,7 @@ However, this is still a relatively new part of the dbt tool box and you probabl
 
 ## How to design your metrics
 
-**Pre-reading:** We recommend reading through the [metrics documentation](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties. 
+**Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties. 
 
 ### When to put business logic in the semantic layer vs the modeling layer
 
