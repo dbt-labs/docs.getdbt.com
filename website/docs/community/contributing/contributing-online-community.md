@@ -22,15 +22,15 @@ We’re working on compiling a list of existing channels that could benefit from
 - Read the guide to [Maintaining a Slack Channel](https://docs.getdbt.com/community/maintaining-a-channel)
 - Jump in to threads in #channel-requests for new channels and offer to help maintain or mention that you are interested in helping maintain a channel and we’ll reach out.
 
-### Participating on Discourse
+### Participating on the Community Forum
 
 #### What is it
-[GitHub Discussions](https://github.com/dbt-labs/docs.getdbt.com/discussions) are the dbt community’s platform for long-lived discussions about dbt, analytics engineering, and analytics. They’re a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day.
+[The dbt Community Forum](https://discourse.getdbt.com) is the platform for long-lived discussions about dbt, analytics engineering, and analytics. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day.
 
-#### How is Discourse different from other community platforms?
+#### How is it different from other community platforms?
 
-- Compared to threads in the dbt Community Slack, GitHub Discussions are more asynchronous, long lived and intentional. Conversations on Slack are great for quick back and forths, but are hard to reference over time and not as good at building long-lasting community knowledge.
-- Compared to drafting a blog post for the Developer Blog, GitHub Discussions have a faster iteration loop, require no direct intervention from the dbt Labs team and are more focused around interacting with others’ views on a given topic or question. A good Discussion can be focused around asking a question you’d like feedback on or it can be sharing an idea that you’re not quite ready to turn into a fully fledged blog post.
+- Compared to threads in the dbt Community Slack, Forum posts are more asynchronous, long lived and intentional. Conversations on Slack are great for quick back and forths, but are hard to reference over time and not as good at building long-lasting community knowledge.
+- Compared to drafting a blog post for the Developer Blog, Forum posts have a faster iteration loop, require no direct intervention from the dbt Labs team and are more focused around interacting with others’ views on a given topic or question. A good discussion can be focused around asking a question you’d like feedback on or it can be sharing an idea that you’re not quite ready to turn into a fully fledged blog post.
 
 #### Contribution opportunities
 
@@ -38,10 +38,10 @@ Asking and answering questions. It is tremendously valuable to help answer commu
 
 #### Sample contributions
 
-- This post on how one analytics engineer uses snapshots to test that the aggregated metrics at the end of their DAG don't shift (who here hasn't had the revenue from last June change in September of this year somehow) [is an excellent example of how to write a great Discourse post.](https://discourse.getdbt.com/t/build-snapshot-based-tests-to-detect-regressions-in-historic-data/1478)
-- Here's [an example of the supportive, thorough Q&A](https://discourse.getdbt.com/t/is-it-possible-to-have-multiple-files-with-the-same-name-in-dbt/647) of the Discourse community when you take the time to ask a question well.
+- An analytics engineer wrote about [how they modified dbt to automatically put models into the correct schema](https://discourse.getdbt.com/t/extracting-schema-and-model-names-from-the-filename/575) based on their filename.
+- Here's [an example of the supportive, thorough answers](https://discourse.getdbt.com/t/is-it-possible-to-have-multiple-files-with-the-same-name-in-dbt/647) you can receive when you take the time to ask a question well.
 
 #### How to get started
 
-- Read [Long-Lived Discussions](https://docs.getdbt.com/docs/contributing/long-lived-discussions-guidelines) and why they are important to the dbt Community
-- Head over to the “[I Need Help With](https://github.com/dbt-labs/docs.getdbt.com/discussions/categories/i-need-help-with)” section of the GitHub discussions board and look for areas to hop in! Remember - you don’t need to know the exact answer to a question to be able to provide helpful context.
+- Read [Long-Lived Discussions](/contributing/community-forum-guidelines) and why they are important to the dbt Community
+- Head over to the “[Help](https://discourse.getdbt.com/c/help/19)” section of the forum and look for areas to hop in! Remember - you don’t need to know the exact answer to a question to be able to provide helpful context.
