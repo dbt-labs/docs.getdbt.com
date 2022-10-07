@@ -403,7 +403,9 @@ You may find some pieces of functionality, like secondary calculations, complica
 | where       | `plan='paying_customer'` | A sql statment, or series of sql statements, that alter the **final** CTE in the generated sql. Most often used to limit the data to specific values of dimensions provided | Optional |
 
 #### Secondary Calculations
-Secondary calculations are window functions which can be added to the metric calculation and performed on the primary metric or metrics. You can use them to compare values to an earlier period, calculate year-to-date sums, and return rolling averages. Custom secondary calculations can be added into dbt projects - for more information on this, reference the [package README](https://github.com/dbt-labs/dbt_metrics#secondary-calculations).
+Secondary calculations are window functions you can add to the metric calculation and perform on the primary metric or metrics. 
+
+You can use them to compare values to an earlier period, calculate year-to-date sums, and return rolling averages. You can add custom secondary calculations into dbt projects - for more information on this, reference the [package README](https://github.com/dbt-labs/dbt_metrics#secondary-calculations).
 
 ### Developing metrics with `metrics.develop`
 
