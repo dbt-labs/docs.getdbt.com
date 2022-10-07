@@ -8,17 +8,7 @@ sidebar_label: "Quickstart"
 # dbt Semantic Layer quickstart
 
 :::📌 
-The dbt Semantic Layer is currently available for public preview! Review the info below to see what this means for you:
-
-1. **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Review the [Product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section for more information.
-
-2. **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
-
-3. **When?** Public preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud Team and Enterprise plans.
-
-4. **Where?** Public preview is enabled at the account level so you don’t need to worry about enabling it per user.
-
-5. **Why?** Public preview is designed to test the functionality and collect feedback from the community on performance, usability, and documentation. 
+The dbt Semantic Layer is currently available for public preview! Some of the new features includes removing code duplication and inconsistency when it comes to your business metrics, self-service in downstream tools, and more! Review the [info below]](/docs/integrate/quickstart-semantic-layer#public-preview) to see what public preview means for you.
 :::
 
 Try out the features of the dbt Semantic Layer and follow this guide to learn more.
@@ -217,7 +207,21 @@ In order to query your precise and universally-defined metrics in your integrati
   </div>
 </details>
    
+## Public preview
+    
+The dbt Semantic Layer is currently available for public preview, which means:
+    
+- **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Review the [Product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section for more information.
 
+- **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
+
+- **When?** Public preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud Team and Enterprise plans.
+
+- **Where?** Public preview is enabled at the account level so you don’t need to worry about enabling it per user.
+
+- **Why?** Public preview is designed to test the functionality and collect feedback from the community on performance, usability, and documentation. 
+    
+    
 ## Next steps
 
 dbt Labs provides [example metrics](https://github.com/dbt-labs/jaffle_shop_metrics) that you can use to try out dbt Semantic Layer features. Ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer:
