@@ -89,8 +89,6 @@ To use the Cloud IDE:
 6. **Format/Preview/Compile/Build** -  This is where you can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** feature format your file and is powered by [sqlfmt](http://sqlfmt.com/).
 7. **Lineage tab** -  You can see how models are used as building blocks from left to right to transform your data from raw sources, into cleaned-up modular derived pieces and final outputs on the far right of the DAG. You can access files in the **Lineage** tab by double-clicking on a particular model. Expand the DAG into fullscreen to view the DAG view differently. Note: Our default view is `+model+`, however, you can change it to `2+model+2`.
 8. **Change branches and view documentation** - Change branches in few clicks and focus on developing. You can generate and view your [documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. 
-    1. Run the `dbt docs generate` command in the command bar to generate the docs for your dbt project as it exists in development in your IDE session. 
-    2. Click the documentation menu icon on top of the file tree to see the latest version of your documentation rendered in a new browser window.
  9. **File state indicators** - The file state indicators will indicate and tarack any action or changed made in your project. The indicators **M, U, and  •** appear to the right of your file or folder name, and also under the **Changes** section. 
 
 ## Manage projects
