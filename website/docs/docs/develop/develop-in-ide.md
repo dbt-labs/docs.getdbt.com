@@ -1,16 +1,13 @@
 ---
-title: "Develop in the Cloud IDE"
+title: "Use the Cloud IDE"
 id: develop-in-ide
 description: "Develop, test, run, and build in the Cloud IDE."
-sidebar_label: "Develop in the Cloud IDE"
+sidebar_label: "Use the Cloud IDE"
 ---
 
 
-
-:::📌 The Cloud IDE refresh is now available for General Availability! Join our dedicated [[Cloud IDE slack channel](https://getdbt.slack.com/archives/C03SAHKKG2Z)] for any feedback! 
+:::📌 The Cloud IDE refresh is now available for General Availability! Join our dedicated [Cloud IDE slack channel](https://getdbt.slack.com/archives/C03SAHKKG2Z)] for any feedback! 
 :::
-
-# Develop in the Cloud IDE
 
 The Cloud IDE is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the IDE, you can compile dbt code into SQL and run it against your database directly, and also write, test and compile [Python models](url). The IDE leverages the open-source [dbt-rpc](/docs/reference/commands/rpc) plugin to recompile only the changes made in your project.
 
