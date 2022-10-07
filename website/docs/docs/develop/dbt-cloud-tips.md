@@ -51,16 +51,16 @@ There are default keyboard shortcuts that can help make development more product
 - Press Fn-F1 to view a list of the other editor shortcuts
 - Command-Enter / Control-Enter to Preview
 - Command-Shift-Enter / Control-Shift-Enter to Compile
-- Highlight a portion of code to Preview or Compile code
+- Highlight a portion of code and use the above shortcuts to Preview or Compile code
 - Type double underscore (__) in the IDE to reveal a list of dbt functions
 
 ## Multiple selections
 
 You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
 
-- Option-Command-Down / Option-Control-Down arrow
-- Option-Command-Up / Option-Control-Down arrow
-- Press Option and click on an area
+- Option-Command-Down  arrow
+- Option-Command-Up arrow
+- Press Option and click on an area 
 
 ## Package tips
 
