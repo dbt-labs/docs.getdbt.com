@@ -20,6 +20,28 @@ With the Cloud IDE, you can:
 - Compile Python models to see the full function that gets executed in the warehouse. You cannot preview python models currently.
 - Visualize a directed acyclic graph (DAG), [and more](/docs/develop/dbt-cloud-tips).
 
+## New Cloud IDE features
+
+- **Version control**
+    - [NOT BUILT YET] Git diff view: Ability to see what has been changed in a file before you make a pull request
+    - [NOT BUILT YET] Merge conflict: Improve ways to deal with merge conflict
+- **IDE organization**
+    - **File state indicators:** The indicators **M, U, and •** appear to the right of your file or folder name. They indicate the action performed:
+        - Unsaved (**•)** - The IDE detects unsaved changes to your file/folder
+        - Modification (**M)** - The IDE detects a modification of existing files/folders have saved changes file or folder
+        - Untracked (**U)** - The IDE detects changes made to new files or renamed files
+- **IDE interaction**
+    - Support for Python models
+        - You can `compile` Python models to see what will ultimately get executed
+        - You can see Python models in DAG in dbt version 1.3 and higher
+    - [TESTING] Formatting: Ability to format your file powered by [sqlfmt](http://sqlfmt.com/)
+    - [TESTING] Autocomplete:
+        - [NEW] dbt autocomplete / intellisense: auto-fill model names in {{ ref ('model_name') }} or source or macro
+        - snippet autocomplete: when you type __config, we drop in a snippet of code
+        - text autocomplete: we should be able to reference/autofill anything that exists in the file
+- [NOT BUILT YET] Dark mode for IDE
+
+
 <!--- 
 The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
 
