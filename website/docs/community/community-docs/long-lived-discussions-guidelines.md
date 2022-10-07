@@ -1,6 +1,6 @@
 ---
 title: "Community Forum Guidelines"
-id: "contributing/community-forum-guidelines"
+id: "community-forum-guidelines"
 ---
 
 ## What is the dbt Community Forum? 
