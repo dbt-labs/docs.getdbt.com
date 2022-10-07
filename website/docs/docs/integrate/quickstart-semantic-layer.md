@@ -48,6 +48,7 @@ New to dbt or metrics? Review our [Getting Started guide](https://docs.getdbt.co
 
 1. Install the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) into your dbt project by copying the below code blocks. Make sure you use a dbt metrics package that’s compatible with your dbt environment version. 
 
+<!---
 <File name='packages.yml'>
 
 <VersionBlock firstVersion="1.3">
@@ -69,6 +70,7 @@ packages:
 </VersionBlock> 
 
 </File>
+--->
 
 1. Paste the dbt metrics package code into your `packages.yml` file.
 2. Run the `[dbt deps` command](https://docs.getdbt.com/reference/commands/deps) to install the package.
