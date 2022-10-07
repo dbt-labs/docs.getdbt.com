@@ -169,7 +169,7 @@ I want to also call out that a "feature" to introduce at this stage is engagemen
 
 **Project Appearance**
 
-We can see the major development at [this stage](https://github.com/dbt-labs/dbt-project-maturity/tree/main/4-adolescence) is adding additional models that make our original claims report a lot more flexible -- we had only shown our users a subset of patient and doctor information in our fact model. Now, we have a more Kimball-ish-style marts set-up, and we can leave selecting the dimensions up to our BI tool.
+We can see the major development at [this stage](https://github.com/dbt-labs/dbt-project-maturity/tree/main/4-adolescence) is adding additional models that make our original claims report a lot more flexible -- we had only shown our users a subset of patient and doctor information in our fact model. Now, we have a more Kimball-ish-style marts setup, and we can leave selecting the dimensions up to our BI tool.
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_8.png)
 
