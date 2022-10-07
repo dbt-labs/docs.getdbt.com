@@ -475,7 +475,7 @@ metrics:
 
 select * 
 from {{ metrics.develop(
-        develop_yml=my_metric_yml
+        develop_yml=my_metric_yml,
         grain='month'
         )
     }}
