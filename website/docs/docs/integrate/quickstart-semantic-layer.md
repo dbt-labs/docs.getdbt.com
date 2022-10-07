@@ -184,26 +184,26 @@ In order to query your precise and universally-defined metrics in your integrati
 <details>
     <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized?</summary>
   <div>
-    <div>All metrics queries are dependent on either the <code>dbt_metrics_calendar_table</code> or a custom calendar set in the users <code>dbt_project.yml</code> . If you have not created this model in the database, these queries will fail and you’ll most likely see the following error message:
+    <div>All metrics queries are dependent on either the <code>dbt_metrics_calendar_table</code> or a custom calendar set in the users <code>dbt_project.yml</code>. If you have not created this model in the database, these queries will fail and you’ll most likely see the following error message:
 
-> <code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code>
+<code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code>
 
 <b>Fix</b>
 <span>&#8226;</span> If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code>
-<span>&#8226;</span> If you are using this in production, make sure that you perform a full </code>dbt build` or `dbt run` . If you are running specific `selects` in your production job, then you will not create this required model.<br></br>
+<span>&#8226;</span> If you are using this in production, make sure that you perform a full </code>dbt build</code> or <code>dbt run</code> . If you are running specific <code>selects</code> in your production job, then you will not create this required model.<br></br>
     </div>
   </div>
 </details>
 <details>
   <summary>Ephemeral Models - Object does not exist or is not authorized</summary>
   <div>
-    <div>Metrics cannot be defined on [ephemeral models]/docs/building-a-dbt-project/metrics) and this is because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you’ll likely see this error message:
+    <div>Metrics cannot be defined on <a href="/docs/building-a-dbt-project/metrics">ephemeral models</a> and this is because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you’ll likely see this error message:
 
-    > <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL</code> does not exist or not authorized.</code>
+ <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code>
 
     <b>Fix:</b>
 
-<span>&#8226;</span> You will need to materialize the model that the metric is built on as a table/view/incremental. </div>
+<span>&#8226;</span> You will need to materialize the model that the metric is built on as a table/view/incremental.</div>
   </div>
 </details>
    
