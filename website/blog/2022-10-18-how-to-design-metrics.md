@@ -85,11 +85,11 @@ metrics:
       - customer_status
 			- order_country
     
-		## We don't need this section because we chose option 1
-    ##filters:
-    ##  - field: order_status
-    ##    operator: '='
-    ##    value: 'completed
+    ## We don't need this section because we chose option 1
+    ## filters:
+    ##   - field: order_status
+    ##     operator: '='
+    ##     value: 'completed
 ```
 
 Each of the properties of the above definition are defined [in the metrics documentation](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), but let’s dig into the two that might require some additional explanation. The two in question are `expression` and `dimensions`.
@@ -326,13 +326,7 @@ models:
 
 ### How to structure your metric files
 
-### File Structure
-
 Once you’ve decided ***where*** to put your metrics folder, you can now decide ***how*** you want to structure your metrics within this folder. Choose one of two methods for structuring metrics:
-
- **A. The all-in-one YML method**
-
- **B. The single-metric-per-file method**
 
 **Option A: The all-in-one YML method** 
 This method follows a similar pattern to [dbt’s best practices around model structure](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview). The introduction of the metrics folder is the only change from the standard best practice. 
