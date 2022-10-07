@@ -1621,3 +1621,7 @@ section.discourse-forum-page {
     grid-gap: calc(var(--ifm-spacing-horizontal) * 2);
   }
 }
+
+.justify-content-center {
+  justify-content: center !important;
+}

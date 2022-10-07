@@ -9,19 +9,28 @@ function Card({ title, body, link, icon }) {
   const { isDarkTheme } = useColorMode();
   return (
     <div className={styles.cardWrapper}>
-      <Link
+      {link ? <Link
         to={useBaseUrl(link)}>
         <article className={styles.card}>
-          <img
-          src={isDarkTheme ? `img/icons/white/${icon}.svg` : `img/icons/${icon}.svg`}
-          alt=""
-          className={styles.icon}/>
+          {icon && <img
+            src={isDarkTheme ? `img/icons/white/${icon}.svg` : `img/icons/${icon}.svg`}
+            alt=""
+            className={styles.icon} />}
           <h3>{title}</h3>
           <p>
             {body}
           </p>
         </article>
-      </Link>
+      </Link> : <article className={styles.card}>
+      {icon && <img
+            src={isDarkTheme ? `img/icons/white/${icon}.svg` : `img/icons/${icon}.svg`}
+            alt=""
+            className={styles.icon} />}
+        <h3>{title}</h3>
+        <p>
+          {body}
+        </p>
+      </article>}
     </div>
   );
 }

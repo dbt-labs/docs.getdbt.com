@@ -8,6 +8,12 @@ import classnames from 'classnames';
 import Head from '@docusaurus/Head';
 import Card from '@site/src/components/card';
 import Hero from '@site/src/components/hero';
+import Callout from '@site/src/components/callout';
+// import Swiper JS
+import Swiper from 'swiper';
+// import Swiper styles
+import 'swiper/css';
+
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
@@ -16,16 +22,14 @@ function getBanner() {
 };
 
 function Home() {
-  const context = useDocusaurusContext();
-
   return (
     <>
       <Head>
         <meta name="google-site-verification" content="ex1EMwuCGU33-nOpoOajLXEpMPgUYK5exBWePCu-0l0" />
       </Head>
       <Layout permalink="/">
-        <div className="container container--fluid home" style={{ "padding": "10px 0", "background": "#FFF" }}>
-        <Hero heading="Title here" subheading="subtitle here" />
+        <div className="container container--fluid home" style={{ "padding": "0", "background": "#FFF" }}>
+          <Hero heading="Welcome to the dbt Developer Hub" subheading="Your home base for learning dbt, connecting with the community and contributing to the craft of analytics engineering " showGraphic />
           <section className="resource-section row">
             <div className="popular-header"><h2>Popular resources</h2></div>
             <div className="popular-resources">
@@ -34,7 +38,7 @@ function Home() {
                   <Card
                     title="What is dbt?"
                     body="dbt enables data practitioners to adopt software engineering best practices and deploy modular, reliable analytics code."
-                    link="https://docs.getdbt.com/docs/introduction"
+                    link="/docs/introduction"
                     icon="question-mark"
                   />
                 </div>
@@ -42,24 +46,24 @@ function Home() {
                   <Card
                     title="Getting started guide"
                     body="Learn how to set up dbt and build your first models. You will also test and document your project, and schedule a job."
-                    link="https://docs.getdbt.com/guides/getting-started"
-                    icon="question-mark"
+                    link="/guides/getting-started"
+                    icon="book"
                   />
                 </div>
                 <div>
                   <Card
                     title="Docs"
-                    body="Discover everything dbt has to offer from the basics to advanced concepts"
-                    link="https://docs.getdbt.com/docs/introduction"
-                    icon="question-mark"
+                    body="Discover everything dbt has to offer from the basics to advanced concepts."
+                    link="/docs/introduction"
+                    icon="docs"
                   />
                 </div>
                 <div>
                   <Card
                     title="Supported data platforms"
                     body="dbt connects to most major databases, data warehouses, data lakes, or query engines."
-                    link="https://docs.getdbt.com/docs/available-adapters"
-                    icon="question-mark"
+                    link="/docs/available-adapters"
+                    icon="rocket"
                   />
                 </div>
               </div>
@@ -69,8 +73,7 @@ function Home() {
               <Card
                 title="What is dbt?"
                 body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                link="https://docs.getdbt.com/docs/introduction"
-                icon="question-mark"
+        
               />
             </div>
           </section>
@@ -110,26 +113,26 @@ function Home() {
             <div className="grid--3-col">
               <div>
                 <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
+                  title="Join the community"
+                  body="Connect with data practitioners from around the world."
+                  link="https://www.getdbt.com/community/join"
+                  icon="smiley-face"
                 />
               </div>
               <div>
                 <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
+                  title="How to contribute"
+                  body="Help build the resources the community uses to solve hard problems."
+                  link="/docs/introduction"
+                  icon="pencil-paper"
                 />
               </div>
               <div>
                 <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
+                  title="Open source dbt projects"
+                  body="Take your dbt project to the next level with community built packages."
+                  link="https://hub.getdbt.com/"
+                  icon="packages"
                 />
               </div>
             </div>
@@ -140,30 +143,33 @@ function Home() {
             <div className="grid--3-col">
               <div>
                 <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
+                  title="Guides"
+                  body="Learn battle tested strategies for analytics engineering best practices."
+                  link="/guides/getting-started"
+                  icon="guides"
                 />
               </div>
               <div>
                 <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
+                  title="Community Forum"
+                  body="Get help and swap knowledge in the async forum."
+                  link="/guides/getting-started"
+                  icon="discussions"
                 />
               </div>
               <div>
                 <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
+                  title="Online courses"
+                  body="Structured video courses to give you a deep dive into analytics engineering topics."
+                  link="https://courses.getdbt.com/collections"
+                  icon="computer"
                 />
               </div>
             </div>
           </section>
+
+          <Callout heading="Create a free account to get started" subheading="Start delivering reliable datasets at the pace your business requires with a free-forever developer account. New accounts include access to a 14-day free trial of the Team plan, which allows you to invite up to 40 collaborators, no credit card required." cta="Create a free account" link="https://www.getdbt.com/signup/" />
+
         </div>
 
         <div className="banner-animation" dangerouslySetInnerHTML={getBanner()}></div>

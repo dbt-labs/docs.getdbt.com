@@ -35,6 +35,9 @@ import Var from '@site/src/components/variable';
 import Term from '@site/src/components/term';
 import EventsFeed from '@site/src/components/events';
 import { DiscourseFeed, DiscourseHelpFeed }  from '@site/src/components/discourse';
+import Hero from '@site/src/components/hero'
+import Card from '@site/src/components/card'
+import Callout from '@site/src/components/callout'
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
@@ -100,12 +103,15 @@ const MDXComponents = {
   h5: (props) => <Heading as="h5" {...props} />,
   h6: (props) => <Heading as="h6" {...props} />,
 
+  Callout: Callout,
+  Card: Card,
   Changelog: Changelog,
   CloudCore: CloudCore,
   Collapsible: Collapsible,
   FAQ: FAQ,
   FAQList: FAQList,
   File: File,
+  Hero: Hero,
   Lightbox: Lightbox,
   Link: Link,
   LoomVideo: LoomVideo,

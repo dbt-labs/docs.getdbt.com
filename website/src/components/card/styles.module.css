@@ -5,6 +5,10 @@
   padding: 2.5rem;
 }
 
+.cardWrapper, .cardWrapper article {
+  height: 100%;
+}
+
 .cardWrapper a {
   color: inherit;
 }
@@ -13,5 +17,6 @@
 }
 
 .icon {
+  margin-bottom: 0.5rem;
   max-width: 50px;
 }
