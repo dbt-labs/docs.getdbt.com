@@ -1,7 +1,7 @@
 ---
 title: "dbt Semantic Layer"
 id: dbt-semantic-layer
-description: "Introducing the dbt Semantic Layer."
+description: "Introducing the dbt Semantic Layer"
 sidebar_label: "dbt Semantic Layer"
 ---
 
@@ -122,9 +122,9 @@ The secondary metric calculations use a built-in calendar, which you can use to 
 
 ### Design and define metrics
 
-You can define your metrics in `.yml` files nested under a metrics key.To start designing or defining your own metrics in your dbt project, review the following documents to get started:
+You can define your metrics in `.yml` files nested under a metrics key. To start designing or defining your own metrics in your dbt project, review the following documents to get started:
 
 - [Structuring and designing your metrics](URL) blog to understand best practices for designing and structuring metrics in your dbt project
-- [dbt metrics](/docs.getdbt.com/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, properties, filters, and how to define and query your metrics
+- [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, properties, filters, and how to define and query your metrics
 - [dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer.md#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
 - [Getting started with the Semantic Layer](/docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples
