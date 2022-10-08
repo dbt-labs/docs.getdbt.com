@@ -164,41 +164,32 @@ What’s happening internally?
 
 ## Set up dbt Semantic Layer
 
+:::info 📌
+
+Before you continue with the below steps, you must have a multi tenant dbt Cloud Team or Enterprise plan. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview).
+
+:::
+
 To query your universally-defined metrics in your integration tool, you need to [set up the dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) in dbt Cloud to connect with your integration tool:
 
 1. In your dbt Cloud account, go to **Account Settings** and then **Service Tokens** to create a new [service account API token](/docs/dbt-cloud/dbt-cloud-api/service-tokens). 
 2. You won't be able to see your token again so we recommend you copy it somewhere safe.
 3. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
-4. Io=n the upper right side of the page, click **Settings** and then **Edit**.
+4. In the upper right side of the page, click **Settings** and then **Edit**.
 5. Select dbt Version 1.2 (latest) or higher.
 6. Toggle the Semantic Layer **On.**
 7. Copy the Proxy Server URL to connect to your [integrated tool](https://www.getdbt.com/product/semantic-layer-integrations). 
 8. If supported by your tool, provide an API service token with metadata access. 
 9. You can now run precise and consistent queries with the dbt Semantic Layer.
 
-**Configure dbt Semantic Layer** 
-
-:::info 
-
-Before you continue with the below steps, you must have a multi tenant dbt Cloud Team or Enterprise plan. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview).
-
-:::
-
-In order to query your precise and universally-defined metrics in your integration tool, you need to [`configure the dbt Semantic Layer`](URL) in dbt Cloud to connect with your integration tool:
-
-1. In your dbt Cloud account, go to **Account Settings** and then **Service Tokens** to create a new [service account API token](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens). Save your token somewhere safe.
-2. Go to **Deploy** and then **Environment.** Select your **Deployment** environment.
-3. Click **Settings** and then **Edit** on the upper right side of the page.
-4. Select dbt Version 1.2 (latest) or higher.
-5. Toggle the Semantic Layer **On.**
-6. Copy the Proxy Server URL to connect to your [integrated tool](https://www.getdbt.com/product/semantic-layer-integrations). 
-7. If supported by your tool, provide an API service token with metadata access. 
-8. You can now run precise and consistent queries with the dbt Semantic Layer.
    
 ## Public preview
     
-We're excited to announce the dbt Semantic Layer is currently available for public preview, which means:
-    
+We're so excited to announce the dbt Semantic Layer is currently available for public preview, which means:
+
+
+:::info 📌
+
 &mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. Review our [Product architecture](/docs/integrate/dbt-semantic-layer.md#product-architecture) page for more information on plan availability.
 
 &mdash; **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
@@ -208,6 +199,8 @@ We're excited to announce the dbt Semantic Layer is currently available for publ
 &mdash; **Where?** Public preview is enabled at the account level so you don’t need to worry about enabling it per user.
 
 &mdash; **Why?** Public preview is designed to test the functionality and collect feedback from the community on performance, usability, and documentation. 
+
+:::
     
     
 ## Next steps
