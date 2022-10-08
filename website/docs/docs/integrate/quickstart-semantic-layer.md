@@ -31,9 +31,9 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
    * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.
 - Have both your production and development environments running dbt version 1.2 (latest) or higher
 - Use Snowflake data platfrom 
-- Install the metrics package version 0.3.2 or higher in your dbt project
+- Install the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) version 0.3.2 or higher in your dbt project
 - Set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated tool to import metric definitions
-- Recommended - Review the dbt metrics page and Getting started with the dbt Semantic Layer blog
+- Recommended - Review the [dbt metrics page](/docs/building-a-dbt-project/metrics) and [Getting started with the dbt Semantic Layer](https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog
 
 ## Considerations
 
