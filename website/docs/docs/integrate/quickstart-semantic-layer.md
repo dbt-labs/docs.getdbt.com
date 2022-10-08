@@ -9,7 +9,7 @@ sidebar_label: "Quickstart"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available for public preview! With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! Review the [info below](/docs/integrate/quickstart-semantic-layer#public-preview) to understand what public preview means for you.
+The dbt Semantic Layer is currently available for public preview! With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! Review the [public preview section below](/docs/integrate/quickstart-semantic-layer#public-preview) to understand what public preview means for you.
 
 :::
 
@@ -199,7 +199,7 @@ In order to query your precise and universally-defined metrics in your integrati
     
 We're excited to announce the dbt Semantic Layer is currently available for public preview, which means:
     
-&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
+&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. Review our [Product architecture](/docs/integrate/dbt-semantic-layer.md#product-architecture) page for more information on plan availability.
 
 &mdash; **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
 
