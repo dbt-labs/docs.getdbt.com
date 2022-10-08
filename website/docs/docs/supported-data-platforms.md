@@ -50,7 +50,7 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 | ----------------------------------------------- | --------------------------------| ---------------------------------|
 | [Athena](athena-setup)                | [Hive](hive-setup)                        | [SingleStore](singlestore-setup)  |
 | [Clickhouse](clickhouse-setup)        | [Impala](impala-setup)                    | [SQLite](sqlite-setup)  |
-| [IBM DB2](ibmdb2-setup)               | [iomete](iomete-setup)                    | [SQL Server & Azure SQ](mssql-setup) | 
+| [IBM DB2](ibmdb2-setup)               | [iomete](iomete-setup)                    | [SQL Server & Azure SQL](mssql-setup) | 
 | [DuckDB](duckdb-setup)                | [Layer](layer-setup)                      | [AzureSynapse](azuresynapse-setup) |
 | [Dremio](dremio-setup)                | [Materialize](materialize-setup)          | [Teradata](teradata-setup)|
 | [Exasol Analytics](exasol-setup)      | [MindsDB](mindsdb-setup)                  | [TiDB](tidb-setup)|
