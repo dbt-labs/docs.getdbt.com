@@ -277,7 +277,6 @@ const sidebarSettings = {
       items: [
         "docs/integrate/quickstart-semantic-layer",
         "docs/integrate/dbt-semantic-layer",
-        "docs/integrate/manage-metrics",
         "docs/integrate/setup-dbt-semantic-layer",
         "docs/integrate/avail-sl-integrations",
           ],
