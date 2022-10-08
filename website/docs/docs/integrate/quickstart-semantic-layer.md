@@ -214,7 +214,7 @@ We're excited to announce the dbt Semantic Layer is currently available for publ
 
 Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer: 
 
+- [Structuring and designing your metrics](URL) to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, properties, filters, and how to define and query metrics
-- [`FUTURE BLOG POST`](URL) to understand best practices for designing and structuring metrics in your dbt project
-- [Integrate with dbt](/docs/integrate/setup-dbt-semantic-layer.md#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
+- [dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer.md#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
 - [Getting started with the Semantic Layer](https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples
