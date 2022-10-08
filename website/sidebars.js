@@ -272,7 +272,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Integrate with data tools",
+      label: "Query from anywhere",
       collapsed: true,
       items: [
         "docs/integrate/quickstart-semantic-layer",
