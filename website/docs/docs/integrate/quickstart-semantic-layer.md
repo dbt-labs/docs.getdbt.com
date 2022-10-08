@@ -50,8 +50,7 @@ New to dbt or metrics? Check out our [Getting Started guide](/guides/getting-sta
 :::
 
 ## Installing dbt metrics package
-
-1. You can install the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) into your dbt project by copying the below code blocks. Make sure you use a dbt metrics package that’s compatible with your dbt environment version. 
+The dbt Semantic Layer supports the calculation of metrics by using the dbt-metrics package. You can install the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) into your dbt project by copying the below code blocks. Make sure you use a dbt metrics package that’s compatible with your dbt environment version. 
 
 <!---
 <File name='models/<filename>.yml'>
@@ -80,10 +79,10 @@ packages:
 --->
 
 
-2. Paste the dbt metrics package code in your `packages.yml` file.
-3. Run the [`dbt deps` command](/reference/commands/deps) to install the package.
-4. If you see successful result, you have now installed the dbt metrics package successfully! 
-5. If you have any errors during the `dbt deps` command run, review the system logs for more information on how to resolve them.
+1. Paste the dbt metrics package code in your `packages.yml` file.
+2. Run the [`dbt deps` command](/reference/commands/deps) to install the package.
+3. If you see successful result, you have now installed the dbt metrics package successfully! 
+4. If you have any errors during the `dbt deps` command run, review the system logs for more information on how to resolve them.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_package.png" title="Running dbt deps in the dbt Cloud IDE" />
 
@@ -185,8 +184,7 @@ To query your universally-defined metrics in your integration tool, you need to 
    
 ## Public preview
     
-We're so excited to announce the dbt Semantic Layer is currently available for public preview, which means:
-
+We're excited to announce the dbt Semantic Layer is currently available for public preview, which means:
 
 :::info 📌
 
