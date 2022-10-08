@@ -23,7 +23,7 @@ root-level project macro if one exists.
 
 {% macro vacuum_tables() %}
 
-  {% set root_project = context[project_name] %}
+  {% set root_project = context['project_name'] %}
   {% if root_project.get_tables_to_vacuum %}
     {% set tables = root_project.get_tables_to_vacuum() %}
   {% else %}
