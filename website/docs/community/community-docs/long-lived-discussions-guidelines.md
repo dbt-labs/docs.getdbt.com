@@ -8,7 +8,7 @@ id: "community-forum-guidelines"
 
 - **Asynchronous** and **long-lived** - sometimes conversations continue over weeks, months, and beyond.
 - **Intentional** - we recommend taking at least 5 to 10 minutes thinking about and shaping your initial post and any comments.
-- **Citable** - Slack conversations tend to be great in the moment but get lost in the flow — forum posts can more easily shared and referenced.
+- **Citable** - Slack conversations tend to be great in the moment but get lost in the flow — forum posts can more easily shared and referenced!
 
 **Guidelines for engaging on the Forum**
 
