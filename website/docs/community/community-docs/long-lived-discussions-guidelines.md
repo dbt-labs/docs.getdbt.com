@@ -47,4 +47,4 @@ If you have any ideas or feedback on how to make this space friendlier or more i
 
 The best way to stay up to date is to [browse the forum](https://discourse.getdbt.com/) directly. You can also Track or Watch specific threads or the whole category to receive updates on them without commenting.
 
-Each category also has a companion Slack channel (#help, #show-and-tell and #in-depth-discussions). You can reply to the initial post in Slack and it will be added as a comment on the forum thread, allowing you to participate from inside Slack if you prefer.
+Each category also has a companion Slack channel (#advice-dbt-for-beginners, #show-and-tell and #in-depth-discussions). You can reply to the initial post in Slack and it will be added as a comment on the forum thread, allowing you to participate from inside Slack if you prefer.

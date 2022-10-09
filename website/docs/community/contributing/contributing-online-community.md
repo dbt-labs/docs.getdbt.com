@@ -25,16 +25,13 @@ We’re working on compiling a list of existing channels that could benefit from
 ### Participating on the Community Forum
 
 #### What is it
-[The dbt Community Forum](https://discourse.getdbt.com) is the platform for long-lived discussions about dbt, analytics engineering, and analytics. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day.
-
-#### How is it different from other community platforms?
-
-- Compared to threads in the dbt Community Slack, Forum posts are more asynchronous, long lived and intentional. Conversations on Slack are great for quick back and forths, but are hard to reference over time and not as good at building long-lasting community knowledge.
-- Compared to drafting a blog post for the Developer Blog, Forum posts have a faster iteration loop, require no direct intervention from the dbt Labs team and are more focused around interacting with others’ views on a given topic or question. A good discussion can be focused around asking a question you’d like feedback on or it can be sharing an idea that you’re not quite ready to turn into a fully fledged blog post.
+[The dbt Community Forum](https://discourse.getdbt.com) is the preferred platform for support questions as well as a space for long-lived discussions about dbt, analytics engineering, and the analytics profession. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day.
 
 #### Contribution opportunities
 
-Asking and answering questions. It is tremendously valuable to help answer community questions around dbt, data modeling or analytics in general. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. Remember - it’s a mitzvah to answer a question.
+Participate in the Forum by Asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. Remember - it’s a mitzvah to answer a question.
+
+If you see a great question or answer, be generous with your 💜 reactions. Remember also to click the Solved button when your question is answered, so others can benefit.
 
 #### Sample contributions
 
@@ -44,4 +41,4 @@ Asking and answering questions. It is tremendously valuable to help answer commu
 #### How to get started
 
 - Read the [Community Forum Guidelines](/community/community-docs/community-forum-guidelines) to understand what topics are a good fit and why this space is important in building long-term community knowledge.
-- Head over to the “[Help](https://discourse.getdbt.com/c/help/19)” section of the forum and look for areas to hop in! Remember - you don’t need to know the exact answer to a question to be able to provide helpful context.
+- Head over to the “[Help](https://discourse.getdbt.com/c/help/19)” section of the forum and look for areas to hop in! Remember - you don’t need to know the exact answer to a question to be able to provide a helpful pointer.
