@@ -849,7 +849,7 @@ const sidebarSettings = {
       type: "category",
       label: "Community resources",
       items: [
-        "community/community-docs/community-forum-guidelines",
+        "community/community-docs/forum-guidelines",
         "community/community-docs/oss-projects",
         "community/community-docs/slack-rules-of-the-road",
         "community/community-docs/maintaining-a-channel",
