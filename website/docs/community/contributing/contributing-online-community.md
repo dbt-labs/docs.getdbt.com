@@ -29,7 +29,7 @@ We’re working on compiling a list of existing channels that could benefit from
 
 #### Contribution opportunities
 
-Participate in the Forum by Asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. Remember - it’s a mitzvah to answer a question.
+Participate in the Forum by asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. Remember - it’s a mitzvah to answer a question.
 
 If you see a great question or answer, be generous with your 💜 reactions. Remember also to click the Solved button when your question is answered, so others can benefit.
 
