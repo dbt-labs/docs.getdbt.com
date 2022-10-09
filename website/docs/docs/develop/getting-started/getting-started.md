@@ -1,6 +1,7 @@
 ---
-title: Getting started with dbt Cloud
+title: About getting started with dbt Cloud
 id: getting-started
+sidebar_label: About
 description: "Create your first dbt project using a SQL query."
 ---
 
@@ -24,6 +25,6 @@ If you want a more in-depth learning experience, we recommend taking the dbt Fun
 
 Before you begin, you will need:
 
-* Warehouse with sample data. If you don't have this, you can use the [Big Query project](guides/getting-started/getting-set-up/setting-up-bigquery), which leverages public data sets.
+* Warehouse with sample data. If you don't have this, you can use the [Big Query project](/docs/develop/getting-started/getting-set-up/setting-up-bigquery), which leverages public data sets.
 * Basic understanding of Git.
 * Basic understanding of SQL.

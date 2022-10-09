@@ -1,8 +1,8 @@
 ---
-title: "Learning more"
+title: "About learning more"
 id: learning-more
 description: "Learn more dbt skills and make more impact using dbt."
-sidebar_label: "Learning more"
+sidebar_label: "About"
 ---
 
 After building your first models, testing and documenting your project, and scheduling a job, you can explore different ways to enhance your dbt skills.
