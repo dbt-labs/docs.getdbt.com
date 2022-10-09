@@ -816,7 +816,6 @@ const sidebarSettings = {
       items: [
         "guides/legacy/debugging-errors",
         "guides/legacy/debugging-schema-names",
-        "guides/legacy/navigating-the-docs",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
         "guides/legacy/writing-custom-generic-tests",
@@ -850,7 +849,7 @@ const sidebarSettings = {
       type: "category",
       label: "Community resources",
       items: [
-        "community/community-docs/long-lived-discussions-guidelines",
+        "community/community-docs/forum-guidelines",
         "community/community-docs/oss-projects",
         "community/community-docs/slack-rules-of-the-road",
         "community/community-docs/maintaining-a-channel",
