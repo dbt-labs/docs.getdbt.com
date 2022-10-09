@@ -29,9 +29,9 @@ We’re working on compiling a list of existing channels that could benefit from
 
 #### Contribution opportunities
 
-Participate in the Forum by asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. Remember - it’s a mitzvah to answer a question.
+Participate in the Forum by asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. It’s a mitzvah to answer a question.
 
-If you see a great question or answer, be generous with your 💜 reactions. Remember also to click the Solved button when your question is answered, so others can benefit.
+If you see a great question or answer, be generous with your 💜 reactions. Click the Solved button when your question is answered, so others can benefit.
 
 #### Sample contributions
 
@@ -41,4 +41,4 @@ If you see a great question or answer, be generous with your 💜 reactions. Rem
 #### How to get started
 
 - Read the [Community Forum Guidelines](/community/community-docs/forum-guidelines) to understand what topics are a good fit and why this space is important in building long-term community knowledge.
-- Head over to the “[Help](https://discourse.getdbt.com/c/help/19)” section of the forum and look for areas to hop in! Remember - you don’t need to know the exact answer to a question to be able to provide a helpful pointer.
+- Head over to the “[Help](https://discourse.getdbt.com/c/help/19)” section of the forum and look for areas to hop in! You don’t need to know the exact answer to a question to be able to provide a helpful pointer.
