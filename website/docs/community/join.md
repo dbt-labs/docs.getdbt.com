@@ -12,7 +12,7 @@ Want to learn how organizations around the world are tackling the biggest challe
 <Card
     title="Join us on Slack"
     body="Follow the pulse of the dbt Community! Find the latest articles on analytics engineering, chat with other practitioners about your work or simply share a killer meme."
-    link="https://www.getdbt.com/community/"
+link="https://www.getdbt.com/community/join-the-community/"
     icon="slack"
 />
 
