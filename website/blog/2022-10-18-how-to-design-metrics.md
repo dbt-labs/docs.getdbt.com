@@ -34,7 +34,7 @@ However, this is still a relatively new part of the dbt toolbox and you probably
 
 ### When to put business logic in the semantic layer vs the modeling layer
 
-Our instinct when designing metrics might be to encode as much as possible into the semantic layer. An example of this is case statements - the analytics engineer’s gut instinct might be to mimic tools of the past and provide complicated case statements for the metric `expression` property to try and capture the nuance of how it should be calculated. 
+Our instinct when designing metrics might be to encode as much information as possible into the semantic layer. An example of this is case statements - the analytics engineer’s gut instinct might be to mimic tools of the past and provide complicated case statements for the metric `expression` property to try and capture the nuance of how it should be calculated. 
 
 With the coupling of dbt’s modeling framework, this isn’t necessarily the right answer. In situations with more complicated logic, it might make more sense to keep this logic contained within the model and then reference it in the semantic layer.
 
