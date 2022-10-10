@@ -428,7 +428,6 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 .menu__list-item-collapsible {
   flex-direction: row-reverse;
   background-color: transparent;
-  gap: 1rem;
 }
 
 .menu__list-item--collapsed .menu__link--sublist::after, 
