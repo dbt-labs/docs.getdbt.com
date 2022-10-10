@@ -389,8 +389,8 @@ li.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 .menu
 }
 
 .menu__list .menu__list .menu__link {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 }
 
 .menu__list .menu__list a.menu__link.menu__link--sublist {
