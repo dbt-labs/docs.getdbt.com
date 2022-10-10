@@ -12,7 +12,7 @@ const sidebarSettings = {
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/develop/getting-started/getting-started",
+            "docs/develop/getting-started/getting-started-dbt-cloud",
             {
               type: "category",
               label: "Getting set up",
