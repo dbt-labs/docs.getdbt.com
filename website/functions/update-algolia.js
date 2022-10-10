@@ -41,6 +41,7 @@ async function updateAlgolia() {
 
     // Build array of Discourse data ready for Algolia    
     const discourseTopics = allDiscourseData?.reduce((topicArr, group) => {
+      // These Algolia object properties do not change
       const objConsts = {
         type: 'lvl1',
         language: 'en',
@@ -51,20 +52,33 @@ async function updateAlgolia() {
         }
       }
       if(group?.data?.tags?.length > 0) {
+        // If Discourse Tags, add specific tag-related 
+        // items to Algolia object
         group.data.tags.map(tag => {
           const tagObj = objConsts
 
+          // A unique ID for each item in Algolia index
+          // If objectID found, existing item is updated
+          // Otherwise, new item in index is created
           tagObj.objectID = `discourse-tag-${tag.id}`
+          // lvl0 = Text which shows above each search result
+          // lvl1 = Text which shows within a search result
           tagObj.hierarchy = {
             lvl0: 'dbt Community Forum Tags',
             lvl1: tag?.name ? tag.name : tag.id,
           }
           tagObj.url = `https://discourse.getdbt.com/tag/${tag.id}`
+          // Algolia weight.position is 'Ascending' 0 - ~
+          // Discourse tags should come after all other search results
           tagObj.weight.position = 92
 
           topicArr.push(tagObj)
         })
       } else if(group?.data?.length > 0) {
+        // Otherwise, is Discourse Topic
+        // Category ID: 19 = 'Help' = 'dbt Community Forum Q&A' 
+        // All other categories have lower priority in search ranking
+        // and are under 'dbt Community Forum Discussions'
         group.data.map(topic => {
           if(topic?.id && topic?.slug && topic?.category_id) {
             const topicObj = objConsts
@@ -77,6 +91,8 @@ async function updateAlgolia() {
               lvl1: topic.title,
             }
             topicObj.url = `https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`
+            // Category: 'Help' with 90 position will
+            // be above all other categories which receive 91 position.
             topicObj.weight.position = topic?.category_id === 19 
               ? 90
               : 91
