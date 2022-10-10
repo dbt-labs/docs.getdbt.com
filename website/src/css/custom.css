@@ -1530,7 +1530,7 @@ section.discourse-forum-page {
 /* New Homepage Styles */
 
 .home section {
-  margin: calc(5vh) auto calc(2vh);
+  margin: 6.25rem auto 6.25rem;
   max-width: var(--ifm-container-width-xl);
   padding: 0 var(--ifm-spacing-horizontal);
 }
