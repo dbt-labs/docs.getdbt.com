@@ -3,88 +3,59 @@ title: "About dbt projects"
 id: "projects"
 ---
 
-## Related reference docs
-* [`dbt_project.yml` configurations](reference/dbt_project.yml.md)
-* The [`dbt init` command](init)
+A dbt project is a directory of `.sql` and `.yml` files that dbt uses to transform your data. At a minimum, a dbt project must contain:
 
-## Getting started
-A dbt project is a directory of `.sql` and `.yml` files, which dbt uses to transform your data. At a minimum, a dbt project must contain:
-* A project file: A `dbt_project.yml` file tells dbt that a particular directory is a dbt project, and also contains configurations for your project.
-* [Models](building-models): A model is a single `.sql` file. Each model contains a single select statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
+- A project file — A `dbt_project.yml` file tells dbt that a particular directory is a dbt project, and also contains configurations for your project.
+- [Models] (**get link from mattshaver**) — A model is a single `.sql` file. Each model contains a single select statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
 
-A project may also contain a number of other resources, such as [snapshots](snapshots), [seeds](seeds), [tests](building-a-dbt-project/tests), [macros](jinja-macros#macros), [documentation](documentation), and [sources](using-sources).
+A dbt project may also contain a number of other resources such as:
 
-## Creating a dbt project
+| Resource  | Description  |
+| :--- | :--- |
+| [sources](/docs/build/sources) | A way to name and describe the data loaded into your warehouse by your Extract and Load tools. |
+| [tests](/docs/build/tests) | SQL queries that you can write to test the models and resources in your project. |
+| [documentation](/docs/collaborate/documentation) | Docs for your project that you can build. |
+| [snapshots](/docs/build/snapshots) | A way to capture the state of your mutable tables so you can refer to it later. |
+| [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with dbt. |
+| [macros](/docs/build/jinja-macros) | Blocks of code that you can reuse multiple times. |
+| [exposures](/docs/build/exposures) | A way to define and describe a downstream use of your project. |
+| [metrics](/docs/build/metrics) | A way for you to define metrics for your project. |
+| [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 
-:::info Creating your first dbt project
+## Project configuration
+Every dbt project includes a `dbt_project.yml` file. This is where you can set up common project configurations such as:
 
-If you're new to dbt, we recommend that you check out our [Getting Started guide](/guides/getting-started) to build your first dbt project.
+- project [name](https://docs.getdbt.com/reference/project-configs/name) — Your project’s name in [snake case](https://en.wikipedia.org/wiki/Snake_case).
+- [profile](https://docs.getdbt.com/reference/project-configs/profile) — The profile dbt uses to connect to your data platform.
+- Any other *common or popular* configs we should put here?
 
-:::
+For more details on project configurations, see [dbt_project.yml](https://docs.getdbt.com/reference/dbt_project.yml) .
 
-If you don't yet have a dbt project, follow these instructions to create one. The dbt [starter project](https://github.com/dbt-labs/dbt-starter-project) contains default configurations as well as helpful notes.
+## New projects
 
+You can create new projects. And, you can [share these projects] (**get link for new overview page**) with other people by making them available on a hosted git repository like GitHub, GitLab, or BitBucket.
 
-<Tabs
-  defaultValue="cloud"
-  values={[
-    { label: 'dbt Cloud', value: 'cloud', },
-    { label: 'dbt CLI', value: 'cli', },
-  ]
-}>
-<TabItem value="cloud">
+After you set up a connection with your data platform, you can [initialize your new project](https://docs.getdbt.com/guides/getting-started/getting-set-up/setting-up-bigquery#initialize-your-dbt-project) and start developing. If you are working from the command line, you can run [`dbt init`](/reference/commands/init) to set up your new project.
 
-To create a new dbt project when developing in dbt Cloud:
+With project initialization, dbt creates sample model files in your project to help you start developing quickly.
 
-1. Create a dbt Cloud account [here](https://cloud.getdbt.com/signup/). If your organization already has a dbt Cloud account, ask an admin to add you as a Developer.
-2. If you created a new account, a new project should automatically be created. If you were added to an existing account:
-    * Click the gear icon to the top right, then **Projects** under Account Settings.
-    * Name your project, and click **Continue**. There's no need to fill in the other details.
-3. Complete the project setup flow:
-    * Connect to your <Term id="data-warehouse" />
-    * Add a repository — either choose a managed repository, or connect to an existing, but bare, repository.
+## Existing projects
 
-   <Lightbox src="/img/dbt-cloud-project-setup-flow-next.png" title="dbt Cloud Project Setup flow" />
+You can work on projects that you’ve created or someone else has created. The project must be checked in to a hosted git repository that you have access to.
 
-4. Click **Develop** in the top left.
-5. If this is the first time you are setting up this project, then select **Initialize a project** to create your project. You will see a directory structure with `.sql` and `.yml` files generated by running the `init` command.
+If your organization has a [dbt Cloud](https://www.getdbt.com/product/dbt-cloud-enterprise/) account, ask your admin to add you as a **Developer** so you can start developing with it. If you don’t have access to dbt Cloud, you can clone the repository to your computer and start developing from the command line.
 
-</TabItem>
-<TabItem value="cli">
+## Sample project
 
-To create a new dbt project, run:
+You can `checkout` dbt Lab’s [Jaffle shop repo](https://github.com/dbt-labs/jaffle_shop_duckdb) on GitHub if you want to explore dbt more. It contains default configurations as well as helpful notes.
 
-```bash
-$ dbt init [project_name]
-```
+## Related docs
 
-This will create a new directory in your current path (i.e. at `./[project-name]`.
+- [Best practices for dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+- [Get started with dbt Cloud](https://docs.getdbt.com/guides/getting-started)
+- [Get started with dbt Core](https://docs.getdbt.com/guides/getting-started/learning-more/getting-started-dbt-core)
 
-</TabItem>
-</Tabs>
-
-
-### FAQs
+## FAQs
 
 <FAQ src="Project/project-name" />
 <FAQ src="Project/structure-a-project" />
-
-
-## Using an existing project
-
-<Tabs
-  defaultValue="cloud"
-  values={[
-    { label: 'dbt Cloud', value: 'cloud', },
-    { label: 'dbt CLI', value: 'cli', },
-  ]
-}>
-<TabItem value="cloud">
-If your organization already has a dbt Cloud account, and you wish to develop your project using dbt Cloud, ask an admin to add you as a Developer.
-</TabItem>
-<TabItem value="cli">
-To work on an existing project:
-1. Ensure that the project is checked into a hosted git repository (for example, on GitHub, GitLab or BitBucket) that you have access to.
-2. Clone the repository to your computer.
-</TabItem>
-</Tabs>
