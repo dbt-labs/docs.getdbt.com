@@ -48,6 +48,8 @@ async function getDiscourseTopics({ body }) {
       }, [])
     }
 
+    console.log('allTopics.length', allTopics.length)
+
     // Return topics 
     return await returnResponse(200, allTopics)
   } catch(err) {

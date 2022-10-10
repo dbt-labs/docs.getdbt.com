@@ -3,52 +3,95 @@ const axios = require('axios')
 
 async function updateAlgolia() {
   // Get envs
-  const { ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY, ALGOLIA_DISCOURSE_INDEX_NAME, URL } = process.env
+  const { ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY, ALGOLIA_DISCOURSE_INDEX_NAME, URL, DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
   try {
-    // Get topics up to 30 days back
-    let today = new Date();
-    const relativeDate = new Date(today.setDate(today.getDate() - 30));
-    const afterDate = `${relativeDate.getFullYear()}-${('0'+ (relativeDate.getMonth()+1)).slice(-2)}-${('0'+ relativeDate.getDate()).slice(-2)}`
-    
-    // Get Discourse topics with the following data:
-    const topicData = {
+    const discourseSearchEndpoint = `${URL}/.netlify/functions/get-discourse-topics`
+    const discourseTagsEndpoint = `https://discourse.getdbt.com/tags.json`
+    const discourseHeaders = {
+      'Accept': 'application/json',
+      'Api-Key': DISCOURSE_API_KEY,
+      'Api-Username': DISCOURSE_USER,
+    }
+    // Get Discourse topics from endpoint
+    // This uses same function as DiscourseFeed component
+    const helpTopic = {
       status: 'solved',
       category: 'help',
       order: 'latest_topic'
     }
-    afterDate && (topicData.after = afterDate) 
+    const discussionsTopic = {
+      category: 'discussions',
+      order: 'latest_topic'
+    }
+    const showAndTellTopic = {
+      category: 'show-and-tell',
+      order: 'latest_topic'
+    }
     
-    // Get Discourse topics from endpoint
-    // This uses same function as DiscourseFeed component
-    const { data } = await axios.post(`${URL}/.netlify/functions/get-discourse-topics`, topicData)
-    if(!data) throw new Error('Unable to get Discourse topics.')
+    // Get all data and merge into 1 array
+    const allDiscourseData = await Promise.all([
+      axios.post(discourseSearchEndpoint, helpTopic),
+      axios.post(discourseSearchEndpoint, discussionsTopic),
+      axios.post(discourseSearchEndpoint, showAndTellTopic),
+      axios.get(discourseTagsEndpoint, { discourseHeaders })
+    ])
+    if(!allDiscourseData) throw new Error('Unable to get Discourse topics.')
 
     // Build array of Discourse data ready for Algolia    
-    const discourseTopics = data?.reduce((topicArr, topic, i) => {
-      if(topic?.id && topic?.slug) {
-        const topicObj = {
-          objectID: `discourse-${topic.id}`,
-          type: 'lvl1',
-          hierarchy: {
-            lvl0: 'Discourse',
-            lvl1: topic.title,
-          },
-          url: `https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`,
-          language: 'en',
-          docusaurus_tag: 'docs-default-current',
-          weight: {
-            pageRank: '0',
-            level: 1,
-            position: 99,
-          }
+    const discourseTopics = allDiscourseData?.reduce((topicArr, group) => {
+      const objConsts = {
+        type: 'lvl1',
+        language: 'en',
+        docusaurus_tag: 'docs-default-current',
+        weight: {
+          pageRank: '0',
+          level: 1,
         }
-        topicArr.push(topicObj)
+      }
+      if(group?.data?.tags?.length > 0) {
+        group.data.tags.map(tag => {
+          const tagObj = objConsts
+
+          tagObj.objectID = `discourse-tag-${tag.id}`
+          tagObj.hierarchy = {
+            lvl0: 'dbt Community Forum Tags',
+            lvl1: tag?.name ? tag.name : tag.id,
+          }
+          tagObj.url = `https://discourse.getdbt.com/tag/${tag.id}`
+          tagObj.weight.position = 92
+
+          topicArr.push(tagObj)
+        })
+      } else if(group?.data?.length > 0) {
+        group.data.map(topic => {
+          if(topic?.id && topic?.slug && topic?.category_id) {
+            const topicObj = objConsts
+
+            topicObj.objectID = `discourse-${topic.category_id}-${topic.id}`
+            topicObj.hierarchy = {
+              lvl0: topic?.category_id === 19 
+                ? 'dbt Community Forum Q&A' 
+                : 'dbt Community Forum Discussions',
+              lvl1: topic.title,
+            }
+            topicObj.url = `https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`
+            topicObj.weight.position = topic?.category_id === 19 
+              ? 90
+              : 91
+
+            topicArr.push(topicObj)
+          }
+        })
       }
       return topicArr
     }, [])
 
     if(!discourseTopics) throw new Error('Unable to build topics array from Discourse data.')
+
+    // console.log('discourseTopics', discourseTopics)
+    // const temp = discourseTopics.filter(item => item.objectID.includes('discourse-tag'))
+    // console.log('temp', temp)
 
     // Ready to initialize Algolia
     const client = algoliasearch(ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY);
