@@ -38,7 +38,6 @@ const sidebarSettings = {
               type: "category",
               label: "Learning more",
               items: [
-                "docs/develop/getting-started/learning-more",
                 "docs/develop/getting-started/learning-more/using-jinja",
                 "docs/develop/getting-started/learning-more/refactoring-legacy-sql",
               ],
@@ -51,7 +50,7 @@ const sidebarSettings = {
           label: "Get started with dbt Core",
           collapsed: true,
           items: [
-          "docs/develop/getting-started/learning-more/getting-started-dbt-core",
+          "docs/develop/getting-started/getting-started-dbt-core",
             {
               type: "category",
               label: "Install dbt Core",
