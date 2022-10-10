@@ -1,6 +1,6 @@
 const algoliasearch = require('algoliasearch')
 const axios = require('axios')
-const { schedule } = require('@netlify/functions');
+// const { schedule } = require('@netlify/functions');
 
 async function updateAlgolia() {
   // Get envs
@@ -69,7 +69,7 @@ async function updateAlgolia() {
           if(topic?.id && topic?.slug && topic?.category_id) {
             const topicObj = objConsts
 
-            topicObj.objectID = `discourse-${topic.category_id}-${topic.id}`
+            topicObj.objectID = `discourse-${topic.id}`
             topicObj.hierarchy = {
               lvl0: topic?.category_id === 19 
                 ? 'dbt Community Forum Q&A' 
