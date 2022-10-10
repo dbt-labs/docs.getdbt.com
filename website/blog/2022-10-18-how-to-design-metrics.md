@@ -28,8 +28,6 @@ The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data mo
 
 However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how **exactly** you can do that. This blog contains our early recommendations for how to design and structure metrics, along with examples so that you can apply the same principles to your use cases. We developed these recommendations by combining the overall philosophy of dbt, with our hands-on learning gathered during the beta period and internal testing.
 
-## How to design your metrics
-
 **Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties. 
 
 ### When to put business logic in the semantic layer vs the modeling layer
@@ -42,7 +40,9 @@ Getting the balance  just right is a learning experience and developing communit
 
 To explore this question and begin to develop an intuition, we’ll walk through two examples of handling this divide.
 
-### Basic example - designing your metrics
+## Basic example - revenue
+
+### Designing your metrics
 
 In this example, we’ll cover the basics of defining a metric and a fairly straightforward example of where users can draw the line between the semantic layer and the modeling layer. You should finish this section with a better understanding of dbt metrics and its relationship to the modeling layer.
 
@@ -56,7 +56,7 @@ We begin by taking a look at our end-state marts model called `order_events` tha
 | 2022-10-02 | 3 | Turkey | completed | 20 | Healthy | 80 |
 | 2022-10-03 | 4 | Korea | completed | 14 | Churn Risk | 24 |
 
-### Basic example - logic in the modeling layer vs the semantic layer
+### Logic in the modeling layer vs the semantic layer
 
 We know from our upstream dbt models that the `amount` field represents the revenue from from each order. The inconsistent reporting, however, has arisen because the correct definition of revenue only refers to orders that are completed, not returned. Some teams aren’t familiar with this additional filter and it has led to company wide misreporting.
 
@@ -100,7 +100,7 @@ In plain english, the `expression` property is the sql column (or expression) th
 
 And then there’s `dimensions`.
 
-### Basic example - choosing which dimensions to use with your metric
+### Choosing which dimensions to use with your metric
 
 The `dimensions` attribute is a bit more nuanced than the others because it involves curating the ways through which a user can interact with the metric. To that end …
 
@@ -128,7 +128,9 @@ To quote Cameron Afzal, Product Manager of the dbt Semantic Layer:
 
 To put it another way, **metrics are most useful when every dimension provided can help provide answers to the business.** 
 
-### Advanced example - how to design complex metrics
+## Advanced example - NPS
+
+### Designing a complex metric
 
 Now let’s look at a more complex example of a metric  - one that is built from components that could theoretically themselves be metrics. The metric in question is Net Promoter score, which is used by the dbt Labs internal analytics team to understand the experience that users are having on dbt Cloud.
 
@@ -149,9 +151,9 @@ Given that these surveys come from a few different sources, there is a large amo
 | 2022-10-02 | 5 | nps_tool_2 | developer | team | 9 | promoter |
 | 2022-10-03 | 6 | nps_tool_1 | developer | enterprise | 7 | passive |
 
-The dbt Internal Analytics team ([long may they reign](https://www.linkedin.com/feed/update/urn:li:activity:6962884130569080833/)) took this data and decided to build the NPS Score metric into our repo so that it could be surfaced to stakeholders in multiple tools. This process is where we began to form our opinions on what should live in the modeling layer vs semantic layer.
+The dbt Internal Analytics team ([long may they reign](https://www.linkedin.com/feed/update/urn:li:activity:6962884130569080833/)) took this data and decided to build the NPS Score metric into our repo so that it could be surfaced to stakeholders in multiple tools. This process is where we began to form our opinions on what should live in the modeling layer vs semantic layer - but these are sure to progress as we add in more and more real world use cases.
 
-### Advanced example - putting everything in the semantic layer
+### Option 1 - putting everything in the semantic layer
 
 If we wanted to store all the logic inside metric definitions, we could use the following code in the Semantic Layer section to create 6 different metrics that result in the NPS Score metric. This would allow end users to retrieve the NPS Score they are interested in a version-controlled, standard way across any of their BI tools of choice. Additionally, it allows users to individually slice/dice any of the component metrics by themselves.
 
@@ -214,7 +216,7 @@ metrics:
 
 ```
 
-### Advanced example - keeping logic in the modeling layer
+### Option 2 - keeping logic in the modeling layer
 
 But what if we didn’t want to encode all that information in the metric definitions? If we didn’t need the ability to dig into the component metrics and only wanted to look at the final score? In that case, we could encode most of the logic into the model itself and define the metric on top of that!
 
@@ -281,13 +283,13 @@ But that only gets us to the `promoter_pct` and `detractor_pct` metrics. In orde
 
 **Is this what I should do?**
 
-It depends! There will be times when it might be better to have logic stored in the modeling layer and there will be times when it might be better to have logic stored in the semantic layer. The needs of your business stakeholders should drive your decision on where to keep this logic.
+[It depends!](https://twitter.com/SBinLondon/status/1413113782214266885) There will be times when it might be better to have logic stored in the modeling layer and there will be times when it might be better to have logic stored in the semantic layer. The needs of your business stakeholders should drive your decision on where to keep this logic.
 
 ## How to structure your metrics
 
 Now that we’ve designed our metrics, let's move on to structuring them within our project. We'll examine the different ways to organize metrics  and take a look at the pros and cons of several strategies.
 
-### How to structure your folders
+### Folder structure
 
 If you follow [dbt’s best practices for structuring your project](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview), you will have a folder structure that looks similar to this:
 
@@ -326,7 +328,7 @@ models:
 	metrics: 
 ```
 
-### How to structure your metric files
+### File structure
 
 Once you’ve decided ***where*** to put your metrics folder, you can now decide ***how*** you want to structure your metrics within this folder. Choose one of two methods for structuring metrics:
 
@@ -362,7 +364,7 @@ In the end, all of the structuring information above is just a recommendation. Y
 
 **Metrics are important business objects unto themselves and should live separate from the model definitions.**
 
-## Looking To The Future
+## A call to action
 
 This is just the beginning of dbt Metrics and the Semantic Layer. We have a number of exciting ideas for expanding capabilities that we plan to begin work on in the coming months. However, we can’t do that without you. 
 
