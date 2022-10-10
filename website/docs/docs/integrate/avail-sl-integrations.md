@@ -15,7 +15,7 @@ There are two categories of partner integrations:
 
 &mdash; **dbt metrics ready partners** - This refers to all partners integrating with dbt metrics functionality but do not leverage the dbt Server.
 
-For information on the different integration partners, their documention and more, review our [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
+For information on the different integration partners, their documentation, and more, review our [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
 
