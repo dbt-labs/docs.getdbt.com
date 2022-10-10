@@ -20,13 +20,17 @@ is_featured: true
 
 ## The power of a semantic layer on top of a mature data modeling framework
 
-As a longtime dbt Community member, I knew I had to get involved when I first saw the dbt Semantic Layer. It gave me a vision of a world where metrics and business logic were unified across an entire organization; a world where the data team was no longer bound to a single consuming experience and could enable their stakeholders in dozens of different ways. To me, it felt like the opportunity to contribute to the next step of what dbt could become.
+As a longtime dbt Community member, I knew I had to get involved when I first saw the dbt Semantic Layer in the now infamous [`dbt should know about metrics` Github Issue](https://github.com/dbt-labs/dbt-core/issues/4071). It gave me a vision of a world where metrics and business logic were unified across an entire organization; a world where the data team was no longer bound to a single consuming experience and could enable their stakeholders in dozens of different ways. To me, it felt like the opportunity to contribute to the next step of what dbt could become.
 
 In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own that title! It’s not a surprise - dbt was built to serve data practicioners expand the power of our work with software engineering principles. It gave us flexibility and power to serve our organizations. But I always wondered if there were more folks who could directly benefit from interacting with dbt.
 
 The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practicioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo **while also** serving them to the entire business.
 
-However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how **exactly** you can do that. This blog contains our early recommendations for how to design and structure metrics, along with examples so that you can apply the same principles to your use cases. We developed these recommendations by combining the overall philosophy of dbt, with our hands-on learning gathered during the beta period and internal testing.
+However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how **exactly** you can do that. This blog contains our early recommendations to formulate best practices for metrics in two key areas:
+- **Design**: What logic goes into metrics and how to apply calculations, filters and dimensions
+- **Structure**: Where these metrics will live in your dbt project and how to compose the files that contain your metrics
+
+We developed these recommendations by combining the overall philosophy of dbt, with our hands-on learning gathered during the beta period and internal testing.
 
 **Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties. 
 
@@ -283,7 +287,7 @@ But that only gets us to the `promoter_pct` and `detractor_pct` metrics. In orde
 
 **Is this what I should do?**
 
-[It depends!](https://twitter.com/SBinLondon/status/1413113782214266885) There will be times when it might be better to have logic stored in the modeling layer and there will be times when it might be better to have logic stored in the semantic layer. The needs of your business stakeholders should drive your decision on where to keep this logic.
+[It depends!](https://twitter.com/SBinLondon/status/1413113782214266885) There will be times when it might be better to have logic stored in the modeling layer and there will be times when it might be better to have logic stored in the semantic layer. Our shorthand is to only include logic in the semantic layer if it is needed by our stakeholders - if they don't need to analyze the components, we keep them in the modeling layer. In the end, the needs of your business stakeholders should drive your decision on where to keep this logic.
 
 ## How to structure your metrics
 
@@ -370,6 +374,6 @@ This is just the beginning of dbt Metrics and the Semantic Layer. We have a numb
 
 This semantic layer is a fundamental change to what it means to interact with dbt and ultimately most of the best practices will come from the dbt Community - folks like you. It does not matter if you consider yourself an "expert" on this - we want to talk to you and hear how you are using or would like to use metrics and the semantic layer.  Y’all are going to be our guiding light to help us make sure that all the functionality we add helps **you** serve the needs of your business. 
 
-If your experience with the Semantic Layer match what we’ve written in this post, and especially if they don’t, please share [comments and feedback in this Discourse Discussion](https://discourse.getdbt.com/t/how-to-design-and-structure-metrics-the-discussion/4965)! 
+If your experience with the Semantic Layer match what we’ve written in this post, and especially if they don’t, please share [comments and feedback in this Discourse Discussion](https://discourse.getdbt.com/t/how-to-design-and-structure-metrics/5040)! 
 
 Additionally, I would invite you to join us over at #dbt-core-metrics on the dbt Slack where we’ll be posting updates, answering questions, discussing usage, and hopefully responding with the best emojis.
