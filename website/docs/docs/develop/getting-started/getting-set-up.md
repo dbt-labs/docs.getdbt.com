@@ -2,7 +2,7 @@
 title: Getting set up in dbt Cloud
 id: getting-set-up
 description: "Set up a sample project to get you started using dbt Cloud."
-sidebar_label: "Getting set up"
+sidebar_label: "Overview"
 ---
 
 In this guide, you will learn how to set up dbt Cloud using a sample project and one of the most common data platforms. You can select from [BigQuery](/docs/develop/getting-started/getting-set-up/setting-up-bigquery), [Databricks](/docs/develop/getting-started/getting-set-up/setting-up-databricks), [Redshift](/docs/develop/getting-started/getting-set-up/setting-up-redshift), or [Snowflake](/docs/develop/getting-started/getting-set-up/setting-up-snowflake). If you're not sure, then try [BigQuery](/docs/develop/getting-started/getting-set-up/setting-up-bigquery). 

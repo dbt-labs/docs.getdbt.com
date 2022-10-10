@@ -17,6 +17,7 @@ const sidebarSettings = {
               type: "category",
               label: "Getting set up",
               items: [
+                "docs/develop/getting-started/getting-set-up",
                 "docs/develop/getting-started/getting-set-up/setting-up-bigquery",
                 "docs/develop/getting-started/getting-set-up/setting-up-databricks",
                 "docs/develop/getting-started/getting-set-up/setting-up-redshift",

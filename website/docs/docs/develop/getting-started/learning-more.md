@@ -1,5 +1,5 @@
 ---
-title: "About learning more"
+title: "Learn more about dbt"
 id: learning-more
 description: "Learn more dbt skills and make more impact using dbt."
 sidebar_label: "Overview"
