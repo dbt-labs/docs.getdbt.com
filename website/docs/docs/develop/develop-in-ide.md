@@ -8,7 +8,7 @@ sidebar_label: "Use the Cloud IDE"
 
 :::info📌 
 
-The Cloud IDE refresh is now available for General Availability and includes performance upgrades, ergonomics improvements, and some delightful enhancements! Join the dedicated [Cloud IDE slack channel](https://getdbt.slack.com/archives/C03SAHKKG2Z)] for any feedback! 
+The Cloud IDE refresh is now available for General Availability and includes performance upgrades, ergonomics improvements, and some delightful enhancements! Join the dedicated [Cloud IDE slack channel](https://getdbt.slack.com/archives/C03SAHKKG2Z) for any feedback! 
 
 :::
 
@@ -31,27 +31,29 @@ To develop in the Cloud IDE, make sure you have the following:
 <tr><th>Start up process </th><th>Work retention</th></tr>
 <tr><td>
 
-| Type  |  Info |
-|---|---|
-| Creation start  | This is the state in which you start the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.   |
-| Cold start  | This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.  |
-| Hot start  | This is the state of resuming an existing or active develop session within 3 hours of the last activity.  |
+There are three start-up states when using or launching the Cloud IDE:
+    
+- Creation start - This is the state in which you start the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
+- *Cold start -* This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+- *Hot start* -  This is the state of resuming an existing or active develop session within 3 hours of the last activity. |
+    
+|
 
 </td><td>
     
 
-| Type  |  Info |
-|---|---|
-| Unsaved, local code  | Any code you write is automatically available from your browser’s storage. You can see your changes but will lose them if you switch branches or browsers (another device or browser). |
-| Saved but uncommitted code  | When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.  |
-| Committed code  | This is stored in the branch with git provider and you are able to check out other (remote) branches. |
+The Cloud IDE needs explicit action to save your changes and there are three ways your work is stored:
+
+| - **Unsaved, local code** -- Any code you write is automatically available from your browser’s storage. You can see your changes but will lose them if you switch branches or browsers (another device or browser).
+- **Saved but uncommitted code** -- When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
+- **Committed code** -- This is stored in the branch with git provider and you are able to check out other (remote) branches. |
 
 
 </td></tr> </table>
 
 **Start up process**
 
-There are three start-up states when using or launching the Cloud IDE:
+
 
 - Creation start - This is the state in which you start the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
 - *Cold start -* This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
@@ -119,7 +121,8 @@ The dbt Cloud IDE comes with new features, including snappier performance and ex
 
 3. Make sure you've already initialized your project
 
-4. Use the image and guide below to familiarize yourself with the Cloud IDE and its features:
+
+Use the image and guide below to familiarize yourself with the Cloud IDE and its features:
     
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/refresh-ide.png" title="Cloud IDE overview"/>
 
@@ -130,7 +133,7 @@ The dbt Cloud IDE comes with new features, including snappier performance and ex
 | 3.  | IDE git button  |  The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project and you can execute git commands directly in the IDE. |
 | 4. | Command bar | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to execute [dbt commands](/docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History** on the left of the bar.
 | 5. | Status bar | This area provides you with useful information about your IDE and project status. You also have additional options like restarting or [recloning your repo](/docs/collaborate/git/version-control-basics).|
-| 6. | Format/Preview/Compile/Build |  This is where you can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** feature format your file and is powered by [sqlfmt](http://sqlfmt.com/).|
+| 6. | Format <br></br>Preview <br></br>Compile <br></br>Build |  This is where you can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** feature format your file and is powered by [sqlfmt](http://sqlfmt.com/).|
 | 7. | Lineage tab | You can see how models are used as building blocks from left to right to transform your data from raw sources, into cleaned-up modular derived pieces and final outputs on the far right of the DAG. You can access files in the **Lineage** tab by double-clicking on a particular model. Expand the DAG into fullscreen to view the DAG view differently. Note: Our default view is `+model+`, however, you can change it to `2+model+2`. |
 | 8. |Change branches and view documentation | Change branches in few clicks and focus on developing. You can generate and view your [documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.|
 | 9. | File state indicators | The file state indicators will indicate and tarack any action or changed made in your project. The indicators **M, U, and  •** appear to the right of your file or folder name, and also under the **Changes** section. |
@@ -141,24 +144,21 @@ You can *build*, *compile*, *run* *, and test* dbt projects instantly with a one
 
 You can also use dbt's [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud.
 
-<p float="left">
-  <Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."   width="100" />
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Build, run and test your dbt project"/>
-</p>
+|<Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>| 
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Build, run and test your dbt project"/>
+| <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Build, run and test your dbt project"/> |
 
 
 ## Related docs
 
-To learn more about the dbt, the Cloud IDE, commands and more - refer to the following docs:  
+To learn more about the dbt, the Cloud IDE, commands and more -- refer to the following docs:  
 
 - [What is dbt?](/docs/introduction#what-else-can-dbt-do)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [Version control basics](/docs/collaboration/version-control-basics)
 - [dbt Commands](/docs/reference/dbt-commands)
 - [Syntax overview](/docs/reference/node-selection/syntax)
-- [Getting Started with dbt Cloud](/guides/getting-started) to build your first dbt project and perform some key tasks
+- [Getting Started with dbt Cloud](/guides/getting-started)
 
 ## Related questions
 
