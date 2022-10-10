@@ -13,7 +13,7 @@ The dbt Slack is the place for real time conversations with the dbt Community. S
   
 We’re working on compiling a list of existing channels that could benefit from additional community maintainers. In the meantime, feel free to be on the lookout for opportunities to help maintain new channels that are getting spun up by keeping an eye on #channel-requests in the dbt slack.
 
-#### Sample contributions
+#### Sample contributions:
 
 - Karen Hsieh's [contributions](https://getdbt.slack.com/archives/C02TU2DSKND/p1661483529756289) to the #local-taipei channel are a fantastic example to learn from.
 
