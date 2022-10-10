@@ -96,6 +96,17 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "Organize your outputs",
+          collapsed: true,
+          items: [
+            "docs/build/custom-schemas",
+            "docs/build/custom-databases",
+            "docs/build/custom-aliases",
+            "docs/build/custom-target-names",
+          ],
+        },
+        {
+          type: "category",
           label: "Advanced workflows",
           collapsed: true,
           items: [
@@ -146,18 +157,6 @@ const sidebarSettings = {
             "docs/build/hooks-operations",
           ],
         },
-        {
-          type: "category",
-          label: "Organize your outputs",
-          collapsed: true,
-          items: [
-            "docs/build/custom-schemas",
-            "docs/build/custom-databases",
-            "docs/build/custom-aliases",
-            "docs/build/custom-target-names",
-          ],
-        },
-        "guides/best-practices/how-we-structure/1-guide-overview",
         //"docs/building-a-dbt-project/dont-nest-your-curlies",
         //"docs/building-a-dbt-project/archival",
       ],
