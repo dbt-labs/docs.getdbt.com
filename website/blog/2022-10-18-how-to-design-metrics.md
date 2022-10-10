@@ -36,9 +36,11 @@ However, this is still a relatively new part of the dbt toolbox and you probably
 
 Our instinct when designing metrics might be to encode as much information as possible into the semantic layer. An example of this is case statements - the analytics engineer’s gut instinct might be to mimic tools of the past and provide complicated case statements for the metric `expression` property to try and capture the nuance of how it should be calculated. 
 
-With the coupling of dbt’s modeling framework, this isn’t necessarily the right answer. In situations with more complicated logic, it might make more sense to keep this logic contained within the model and then reference it in the semantic layer.
+But remember - you always have the option of performing this logic _in the modeling layer_. This is the key difference between dbt and other semantic layer offerings - by sitting the semantic layer atop a mature transformation layer, you always have the option to configure and optimize your logic within your models and then _define semantic components with intentionality_. 
 
-Getting the balance right has been a learning experience for our team as well. It’s easy to fall into comfortable patterns that might not be the best solution - it’s important for us to take a step back and think from first principles about the line of separation between what should live in a model and what should live in a metric. To explore this, we’ll walk through two examples of handling this divide.
+Getting the balance  just right is a learning experience and developing community best practices and standards will take time, which is why it’s important for us to think from first principles. What should really be our goal when determining whether logic lives in a model or a metrics? 
+
+To explore this question and begin to develop an intuition, we’ll walk through two examples of handling this divide.
 
 ### Basic example - designing your metrics
 
@@ -126,9 +128,9 @@ To quote Cameron Afzal, Product Manager of the dbt Semantic Layer:
 
 To put it another way, **metrics are most useful when every dimension provided can help provide answers to the business.** 
 
-### Advanced example - how to design complicated metrics
+### Advanced example - how to design complex metrics
 
-Now let’s look at a more complicated example of a metric that is calculated from components that could be metrics unto themselves. The metric in question is Net Promoter score, which is used by the dbt Labs internal analytics team to understand the experience that users are having on dbt Cloud.
+Now let’s look at a more complex example of a metric  - one that is built from components that could theoretically themselves be metrics. The metric in question is Net Promoter score, which is used by the dbt Labs internal analytics team to understand the experience that users are having on dbt Cloud.
 
 For those of you who are unfamiliar with the industry metric of Net Promoter Score, here is a [great article from the folks over at Delighted on how it is calculated.](https://delighted.com/net-promoter-score) The short version of it is `the percentage of promoters - the percentage of detractors`. 
 
@@ -136,7 +138,7 @@ For those of you who are unfamiliar with the industry metric of Net Promoter Sco
 
 Here at dbt Labs we provide users with short surveys where they can provide feedback (as well as in a few other locations). The data is collected from those surveys is used to calculate our NPS Score, which helps us understand user sentiment over time.
 
-Given that these surveys come from a few different sources, there is a substantial amount of upstream modeling performed in order to unify them in a single model, but the end result is something that looks similar to the table below:
+Given that these surveys come from a few different sources, there is a large amount of upstream modeling performed in order to unify them in a single model, but the end result is something that looks like the table below:
 
 | feedback_date | unique_id | feedback_source | user_type | account_plan | score | nps_category |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -283,7 +285,7 @@ It depends! There will be times when it might be better to have logic stored in 
 
 ## How to structure your metrics
 
-Now that we’ve designed our metrics, we move on to structuring them within our project. There are different ways to organize your metrics definitions and each comes with pros and cons.
+Now that we’ve designed our metrics, let's move on to structuring them within our project. We'll examine the different ways to organize metrics  and take a look at the pros and cons of several strategies.
 
 ### How to structure your folders
 
