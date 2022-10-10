@@ -22,7 +22,7 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## YAML and JSON Config
 
-- [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) - powering completion and linting for YAML configuration in dbt projects, eventually automatically through the [JSON schema store](https://www.schemastore.org/json/) and various IDEs and extensions integration with it.
+- [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) - powering completion and linting for YAML configuration in dbt projects.
 
 ## Shell
 
