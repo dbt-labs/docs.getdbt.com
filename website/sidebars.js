@@ -865,13 +865,13 @@ const sidebarSettings = {
     },
     {
       type: "link",
-      label: "Forum",
-      href: "/forum",
+      label: "Community Forum",
+      href: "/community/forum",
     },
     {
       type: "link",
       label: "Events",
-      href: "/events",
+      href: "/community/events",
     },
     {
       type: "category",

@@ -148,11 +148,11 @@ var siteSettings = {
             },
             {
               label: "Community Forum",
-              to: "/forum",
+              to: "/community/forum",
             },
             {
               label: "Events",
-              to: "/events",
+              to: "/community/events",
             },
           ],
         },

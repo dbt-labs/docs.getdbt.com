@@ -12,6 +12,10 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
   - [dbt-redshift](https://github.com/dbt-labs/dbt-redshift)
   - [dbt-spark](https://github.com/dbt-labs/dbt-spark)
 
+## dbt
+
+- [dbt Labs' packages](https://hub.getdbt.com/dbt-labs/) - the dbt pacakges created and supported by dbt Labs. Packages are just dbt projects, so if you know the SQL, Jinja, and YAML necessary to work in dbt, you can contribute to packages.
+
 ## Javascript
 
 - [docs.getdbt.com](http://docs.getdbt.com) - the code and knowledge powering the analytics engineering developer hub.
