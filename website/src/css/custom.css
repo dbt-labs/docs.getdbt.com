@@ -1093,8 +1093,8 @@ filter: opacity(.75);
   }
 
   aside .menu {
-    padding-left: .5rem;
-    padding-right: 1.25rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
   }
 
   .navbar__item {
