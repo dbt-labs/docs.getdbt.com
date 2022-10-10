@@ -35,7 +35,7 @@ Before you continue with the below steps, you **must** have a multi tenant dbt C
 
 :::
 
-You can set up the dbt Semantic Layer in dbt Cloud at the environment level by following the below steps:
+You can set up the dbt Semantic Layer in dbt Cloud at the environment level by following these steps:
 
 1. Login to dbt Cloud and make sure you are using the new user interface (UI) (see example below)
 
