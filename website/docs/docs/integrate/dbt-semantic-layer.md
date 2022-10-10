@@ -124,7 +124,7 @@ The secondary metric calculations use a built-in calendar, which you can use to 
 
 ### Design and define metrics
 
-You can define your metrics in `.yml` files nested under a metrics key. To start designing or defining your own metrics in your dbt project, review the following documents to get started:
+You can define your metrics in `.yml` files nested under a metrics key. To start designing or defining your own metrics in your dbt project, review the following documents:
 
 - [Structuring and designing your metrics](URL) blog to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, properties, filters, and how to define and query your metrics
