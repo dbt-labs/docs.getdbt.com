@@ -41,13 +41,15 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 - Set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated tool to import metric definitions
 - Recommended - Review the dbt metrics page and Getting started with the dbt Semantic Layer blog
 
-### Considerations
+:::info Considerations
 
 Some important considerations to know about during the public preview:
 
 - Support for Snowflake data platform only (_additional data platforms coming soon_)
 - Support for the deployment environment only (_development experience coming soon_)
 - Do not use environment variables for the job/environment (_coming soon_)
+
+:::
 
 ## Public preview
 
@@ -98,35 +100,17 @@ An important business metric should be:
 - Well-defined (the definition is agreed upon throughout the entire organization)
 - Time-bound (able to be compared across time)
 
-A great example of this is **revenue** &mdash it can be aggregated on multiple levels (weekly, monthly, etc) and is key for the broader business to understand:
+A great example of this is **revenue** &mdash; it can be aggregated on multiple levels (weekly, monthly, etc) and is key for the broader business to understand:
 
-✅ `Monthly Recurring Revenue` or `Weekly Active Users` or `Average Order Value`
-❌ `1-off experimental metric`
+- ✅ `Monthly Recurring Revenue` or `Weekly Active Users` or `Average Order Value` 
+- ❌ `1-off experimental metric`
 
-**dbt metrics package**
-
-The dbt Semantic Layer supports the calculation of metrics by using the [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics). This package supports the following primary aggregate metrics:
-
-- Count
-- Count distinct
-- Average
-- Max
-- Min
-- Sum
-
-Additionally, the dbt-metrics package supports secondary metric calculations including:
-
-- Period over Period changes differences and ratios
-- Period to date average, sum, min, and max
-- Rolling average, sum, min, and max
-
-The secondary metric calculations use a built-in calendar, which you can use to define time boundaries for weeks, months, and quarters. The default calendar is applicable for many businesses, and users may supply their own calendars if they use non-standard quarters or other time constructs for reporting.
 
 ### Design and define metrics
 
 You can define your metrics in `.yml` files nested under a metrics key. To start designing or defining your own metrics in your dbt project, review the following documents:
 
 - [Structuring and designing your metrics](URL) blog to understand best practices for designing and structuring metrics in your dbt project
-- [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, properties, filters, and how to define and query your metrics
+- [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, filters, how to define and query your metrics and [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics)
 - [dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer.md#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
 - [Getting started with the Semantic Layer](/docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples
