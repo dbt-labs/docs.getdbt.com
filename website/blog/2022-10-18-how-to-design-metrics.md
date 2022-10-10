@@ -14,7 +14,7 @@ is_featured: true
 
 ---
 
-**IMPORTANT:** This document serves as the temporary location for information on how to design and structure your metrics. It is our intention to take this content and turn it into a Guide, similar to [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) , but we feel that codifying information in a Guide first requires that Metrics be rigorously tested by the community so that best practices can arise. This document contains our early attempts to create best practices. In other words, read these as suggestions for a new paradigm and share in the community where they do (or don’t) match your experiences! More information on where to do this can be found at the end.
+**IMPORTANT:** This document serves as the temporary location for information on how to design and structure your metrics. It is our intention to take this content and turn it into a Guide, like [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview), but we feel that codifying information in a Guide first requires that Metrics be rigorously tested by the community so that best practices can arise. This document contains our early attempts to create best practices. In other words, read these as suggestions for a new paradigm and share in the community where they do (or don’t) match your experiences! You can find more information on where to do this at the end.
 
 ---
 
