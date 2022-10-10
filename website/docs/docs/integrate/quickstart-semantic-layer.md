@@ -9,7 +9,10 @@ sidebar_label: "Quickstart"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available for public preview! With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! Review the [public preview section below](/docs/integrate/quickstart-semantic-layer#public-preview) to understand what public preview means for you.
+The dbt Semantic Layer is currently available for public preview! With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! 
+
+
+For more info on public preview and plan availability, check out the [public preview](/docs/integrate/quickstart-semantic-layer#public-preview) and [product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section.
 
 :::
 
@@ -52,31 +55,36 @@ New to dbt or metrics? Check out our [Getting Started guide](/guides/getting-sta
 ## Installing dbt metrics package
 The dbt Semantic Layer supports the calculation of metrics by using the dbt-metrics package. You can install the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) into your dbt project by copying the below code blocks. Make sure you use a dbt metrics package that’s compatible with your dbt environment version. 
 
-<!---
-<File name='models/<filename>.yml'>
 
-<VersionBlock firstVersion="1.3">
+<VersionBlock firstVersion="1.3" lastVersion="1.3">
 
-```yaml
+```yml
 packages:
-- package: dbt-labs/metrics
-  version: [">=1.3.0", "<1.4.0"]
+  - package: dbt-labs/metrics
+    version: [">=1.3.0", "<1.4.0"]
 ```
-    
-</VersionBlock> 
 
-<VersionBlock lastVersion="1.2">
+</VersionBlock>
 
-```yaml
+<VersionBlock firstVersion="1.2" lastVersion="1.2">
+
+```yml
 packages:
   - package: dbt-labs/metrics
     version: [">=0.3.0", "<0.4.0"]
 ```
-    
-</VersionBlock> 
 
-</File>   
---->
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1" lastVersion="1.1">
+
+```yml
+packages:
+  - package: dbt-labs/metrics
+    version: [">=0.2.0", "<0.3.0"]
+```
+
+</VersionBlock>  
 
 
 1. Paste the dbt metrics package code in your `packages.yml` file.
@@ -93,6 +101,8 @@ Before you define metrics in your dbt project, you'll need to understand how to 
 Now that's you've organized your metrics folder and files, you can define your metrics in `.yml` files nested under a `metrics` key.  
 
 1. Add the metric definitions found in the [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example to your dbt project. For example, to add an Expenses metric, see the below metrics you can define directly in your metrics folder: 
+      
+<VersionBlock firstVersion="1.3">
 
 ```sql
 version: 2
@@ -121,6 +131,38 @@ metrics:
         operator: '='
         value: "'completed'"
 ```
+</VersionBlock> 
+
+<VersionBlock lastVersion="1.2">
+
+```sql
+version: 2
+
+metrics:
+  - name: expenses
+    label: Expenses
+    model: ref('orders')
+    description: "The total expenses of our jaffle business"
+
+    type: sum
+    sql: amount / 4
+
+    timestamp: order_date
+    time_grains: [day, week, month, year]
+
+    dimensions:
+      - customer_status
+      - had_credit_card_payment
+      - had_coupon_payment
+      - had_bank_transfer_payment
+      - had_gift_card_payment
+
+    filters:
+      - field: status
+        operator: '='
+        value: "'completed'"
+```
+</VersionBlock>       
 
 1. Click **Save** and **Compile** the code.
 2. Commit and merge the code changes that contain the metric definitions.
@@ -128,7 +170,7 @@ metrics:
 
     - [dbt metrics](/docs/building-a-dbt-project/metrics) will povide you in-depth detail on attributes, properties, filters, and how to define and query metrics.
    
-    - [`FUTURE BLOG POST`](URL) to understand best practices for designing and structuring metrics in your dbt project.
+    - [Structure and design your metric definition](URL) to understand best practices for designing and structuring metrics in your dbt project.
 
 ## Develop and query metrics
 
@@ -180,6 +222,49 @@ To query your universally-defined metrics in your integration tool, you need to 
 7. Copy the Proxy Server URL to connect to your [integrated tool](https://www.getdbt.com/product/semantic-layer-integrations). 
 8. If supported by your tool, provide an API service token with metadata access. 
 9. You can now run precise and consistent queries with the dbt Semantic Layer.
+      
+## Troubleshooting
+
+If you're encountering some issues when defining your metrics or setting up the dbt Semantic Layer, check out a list of answers to some of the questions or problems you may be experiencing.
+    
+<details>
+  <summary>How are you storing my data?</summary>
+  <div>
+    <div>dbt does not store your data. We temporarily ingest the data from the data warehouse, pass it to connecting tool, and then drop the data.</div>
+  </div>
+</details>
+<details>
+  <summary>Is the dbt Semantic Layer open source?</summary>
+  <div>
+    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not. During public preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div>
+  </div>
+</details>
+<details>
+    <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized?</summary>
+  <div>
+    <div>All metrics queries are dependent on either the <code>dbt_metrics_calendar_table</code> or a custom calendar set in the users <code>dbt_project.yml</code>. If you have not created this model in the database, these queries will fail and you'll most likely see the following error message:
+
+<code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code>
+
+<b>Fix</b>
+      
+<span>&#8226;</span> If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code>
+<span>&#8226;</span> If you are using this in production, make sure that you perform a full </code>dbt build</code> or <code>dbt run</code> . If you are running specific <code>selects</code> in your production job, then you will not create this required model.
+    </div>
+  </div>
+</details>
+<details>
+  <summary>Ephemeral Models - Object does not exist or is not authorized</summary>
+  <div>
+    <div>Metrics cannot be defined on <a href="/docs/building-a-dbt-project/metrics">ephemeral models</a> and this is because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you'll likely see this error message:
+
+ <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code>
+
+<b>Fix:</b>
+
+<span>&#8226;</span> You will need to materialize the model that the metric is built on as a table/view/incremental.</div>
+  </div>
+</details>
 
    
 ## Public preview
@@ -188,7 +273,7 @@ We're excited to announce the dbt Semantic Layer is currently available for publ
 
 :::info 📌
 
-&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. Review our [Product architecture](/docs/integrate/dbt-semantic-layer.md#product-architecture) page for more information on plan availability.
+&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. For more info on plan availability, check out our [product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section.
 
 &mdash; **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
 
