@@ -20,7 +20,8 @@ Give a talk! Meetups are all about sharing your knowledge with other analytics p
 
 #### Get Started
 
-Read [How to Deliver a Fantastic Meetup Talk](https://www.getdbt.com/community/speaking-at-a-meetup/).
+- Read [How to Deliver a Fantastic Meetup Talk](https://www.getdbt.com/community/speaking-at-a-meetup/).
+- Find a [Meetup near you](https://www.meetup.com/pro/dbt/), start attending and let the organizers know you are interested!
 
 ### Speak at Coalesce
 
@@ -33,7 +34,7 @@ Read [How to Deliver a Fantastic Meetup Talk](https://www.getdbt.com/community/s
 - Attend Coalesce:
   - Coalesce is the once a year gathering for analytics engineers. Whether you choose to join online or at one of our in-person events, attending Coalesce is the best way to get an immersive experience of what the dbt Community is like.
 - Speak at Coalesce!
-  - We’d love to hear what you’ve been working on, thinking about and dreaming up in the analytics engineering space. Coalesce talks can be forward looking views on the industry, deep dives into particular technical solutions
+  - We’d love to hear what you’ve been working on, thinking about and dreaming up in the analytics engineering space. Coalesce talks can be forward looking views on the industry, deep dives into particular technical solutions or personal stories about your journey in data.
 
 #### Sample contributions
 
@@ -42,5 +43,5 @@ Read [How to Deliver a Fantastic Meetup Talk](https://www.getdbt.com/community/s
 
 #### Get Started
 
-- If registrations are open register at the [Coalesce Site](https://coalesce.getdbt.com/)
+- If registrations are open register on the [Coalesce website](https://coalesce.getdbt.com/)
 - Join #coalesce-updates on the dbt Community Slack
