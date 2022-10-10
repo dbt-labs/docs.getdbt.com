@@ -857,6 +857,11 @@ const sidebarSettings = {
         id: "community/contribute",
       },
       items: [
+        {
+          type: "doc",
+          label: "Become a contributor",
+          id: "community/contribute",
+        },
         "community/contributing/contributing-writing",
         "community/contributing/contributing-coding",
         "community/contributing/contributing-online-community",
