@@ -43,7 +43,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 ### Considerations
 
-Here are some important considerations to know about during public preview:
+Some important considerations to know about during the public preview:
 
 - Support for Snowflake data platform only (_additional data platforms coming soon_)
 - Support for the deployment environment only (_development experience coming soon_)
