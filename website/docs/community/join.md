@@ -5,7 +5,7 @@ id: join
 
 <section className="community-home">
 
-Want to learn how organizations around the world are tackling the biggest challenges in data while making new friends from the best analytics teams? Join the dbt community — data practitioners’ favorite place to learn new skills, grow your career, and forge connections.
+Want to learn how organizations around the world are tackling the biggest challenges in data while making new friends from the best analytics teams? Join the dbt Community — data practitioners’ favorite place to learn new skills, keep on top of industry trends, and forge connections.
 
 <div className="grid--3-col">
 
