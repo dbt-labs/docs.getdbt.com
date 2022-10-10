@@ -7,11 +7,13 @@ sidebar_label: "Version control basics"
 
 # Version control basics
 
-:::📌 To use version control, make sure you are connected to a Git repository in the IDE. To use version control, make sure you are connected to a Git repository in the IDE.
+:::info 📌 
+
+To use version control, make sure you are connected to a Git repository in the Cloud IDE. To use version control, make sure you are connected to a Git repository in the IDE.
 
 :::
 
-A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the Cloud IDE.
+A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the [Cloud IDE].(/docs/develop/develop-in-ide)
 
 When you develop in the Cloud IDE, you can leverage Git directly to version control your code from your browser. This means you can branch, commit, push, and pull code with a couple of clicks - no command line required!
 
@@ -21,7 +23,7 @@ You can create a separate branch to develop and make changes. The changes you ma
 
 ## Git overview
 
-Below are some common git terms you'll encounter when developing:
+Check out some common git terms below that you may encounter when developing:
 
 | Name | Definition |
 | --- | --- |
@@ -39,6 +41,8 @@ Below are some common git terms you'll encounter when developing:
 ## The git button in the Cloud IDE
 
 The git button in the Cloud IDE allows you to apply the concept of version control to your project. This page provides descriptions of each git button command and what they do:
+
+
 | Name | Actions |
 | --- | --- |
 | Abort merge | This option allows you to cancel a merge that had conflicts. Please note that all the changes will be reset, and this operation cannot be reverted, so make sure to commit or save all your changes before you start a merge. |
@@ -55,12 +59,12 @@ The git button in the Cloud IDE allows you to apply the concept of version contr
 
 ## Handling merge conflicts
 
-Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept. The merge conflict process gives users the ability to sort out which lines of code should be kept and committed. Here we'll show you how you'd resolve merge conflicts in the IDE!
+Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept. 
 
-[https://docs.getdbt.com/docs/dbt-cloud/cloud-ide/handling-merge-conflicts](https://docs.getdbt.com/docs/dbt-cloud/cloud-ide/handling-merge-conflicts)
+Review our [Merge conflicts page](/docs/collaborate/git/pr-template) to learn how to resolve merge conflicts
 
 ## The .gitignore file
 
-It’s a good idea to exclude files from being tracked with Git so that it doesn’t slow down your dbt project. You can do this with a special file named `.gitignore,` which is automatically included in your dbt project after you initialize it in dbt Cloud. The `.gitignore` file must be placed at the root of your dbt project.
+We recommend you exclude files so they're not tracked by Git and they don’t slow down your dbt project. 
 
-Find helpful templates for the `.gitignore` file at [https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore).
+You can do this with a special file named [`.gitignore,`](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) which is automatically included in your dbt project after you initialize it in dbt Cloud.  The `.gitignore` file must be placed at the root of your dbt project.
