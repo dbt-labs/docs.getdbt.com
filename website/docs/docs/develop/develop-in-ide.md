@@ -12,7 +12,7 @@ The Cloud IDE refresh is now available for General Availability and includes per
 
 :::
 
-The Cloud IDE is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the IDE, you can compile dbt code into SQL and run it against your database directly, and also write, test and compile [Python models](/docs/building-a-dbt-project/building-models/python-models). 
+The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly, and also write, test and compile [Python models](/docs/building-a-dbt-project/building-models/python-models). 
 
 The IDE leverages the open-source [dbt-rpc](/docs/reference/commands/rpc) plugin to recompile only the changes made in your project.
 
@@ -147,6 +147,7 @@ To learn more about the dbt, the Cloud IDE, commands and more -- refer to the fo
 
 - [What is dbt?](/docs/introduction#dbt-features)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
+- [dbt Cloud features](/docs/develop/dbt-cloud-features)
 - [Version control basics](/docs/collaboration/version-control-basics)
 - [dbt Commands](/docs/reference/dbt-commands)
 - [Syntax overview](/docs/reference/node-selection/syntax)
