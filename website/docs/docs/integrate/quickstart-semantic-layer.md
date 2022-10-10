@@ -96,7 +96,7 @@ packages:
 
 ## Design and define metrics in your dbt project
 
-Before you define metrics in your dbt project, you'll need to understand how to structure and organize your metrics. For more info on that and to understand the best practices, review our [Structuring and designing your metrics](url) blog post first.
+Before you define metrics in your dbt project, you'll need to understand how to structure and organize your metrics. For more info on that and to understand the best practices, review our [Structuring and designing your metrics](URL) blog post first.
 
 Now that's you've organized your metrics folder and files, you can define your metrics in `.yml` files nested under a `metrics` key.  
 
