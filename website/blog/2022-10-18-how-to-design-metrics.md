@@ -14,7 +14,7 @@ is_featured: true
 
 ---
 
-**IMPORTANT:** This document serves as the temporary location for information on how to design and structure your metrics. It is our intention to take this content and turn it into a Guide, similar to [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) , but we feel that codifying information in a Guide first requires that Metrics be rigorously tested by the community so that best practices can arise. This document contains our early attempts to create best practices. In other words, read these as suggestions for a new paradigm and share in the community where they do (or don’t) match your experiences! More information on where to do this can be found at the end.
+**IMPORTANT:** This document serves as the temporary location for information on how to design and structure your metrics. It is our intention to take this content and turn it into a Guide, like [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview), but we feel that codifying information in a Guide first requires that Metrics be rigorously tested by the community so that best practices can arise. This document contains our early attempts to create best practices. In other words, read these as suggestions for a new paradigm and share in the community where they do (or don’t) match your experiences! You can find more information on where to do this at the end.
 
 ---
 
@@ -26,7 +26,7 @@ In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own
 
 The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practicioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo **while also** serving them to the entire business.
 
-However, this is still a relatively new part of the dbt tool box and you probably have a lot of questions on how **exactly** you can do that. Contained within this blog are our early recommendations for how to design and structure metrics, along with examples so that you can apply the same principles to your use cases. They were developed by combining the overall philosophy of dbt with our hands on learning gathered during the beta period and internal testing.
+However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how **exactly** you can do that. This blog contains our early recommendations for how to design and structure metrics, along with examples so that you can apply the same principles to your use cases. We developed these recommendations by combining the overall philosophy of dbt, with our hands-on learning gathered during the beta period and internal testing.
 
 ## How to design your metrics
 
