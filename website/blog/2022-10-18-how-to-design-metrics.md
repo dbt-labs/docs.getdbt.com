@@ -46,7 +46,7 @@ To explore this question and begin to develop an intuition, we’ll walk through
 
 In this example, we’ll cover the basics of defining a metric and a fairly straightforward example of where users can draw the line between the semantic layer and the modeling layer. You should finish this section with a better understanding of dbt metrics and its relationship to the modeling layer.
 
-We begin by taking a look at our end-state marts model called `order_events` that looks something like the below table, but on the order of millions of rows instead of five. Our finance team uses the below model to better understand revenue but inconsistencies in how its reported have led to requests that the data team centralize the definition in the dbt repo.
+In the past, the `marts` tables were often your end stage layer before data was consumed in another tool or system. Now, the mart is the springboard for the creation of our metric. So we'll begin by looking our end-state `marts` model called `order_events` that looks something like the below table, but on the order of millions of rows instead of five. Our finance team uses the below model to better understand revenue but inconsistencies in how its reported have led to requests that the data team centralize the definition in the dbt repo.
 
 | order_date | order_id | order_country | order_status | customer_id | customer_status | amount |
 | --- | --- | --- | --- | --- | --- | --- |
