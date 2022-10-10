@@ -263,7 +263,10 @@ If you're encountering some issues when defining your metrics or setting up the 
 <span>&#8226;</span> You will need to materialize the model that the metric is built on as a table/view/incremental.</div>
   </div>
 </details>
-   
+      <br></br>   
+
+
+      
 ## Public preview
     
 We're excited to announce the dbt Semantic Layer is currently available for public preview, which means:
