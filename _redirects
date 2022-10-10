@@ -464,7 +464,7 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /reference/warehouse-profiles/mysql-profile /reference/warehouse-setups/mysql-setup 302
 /reference/warehouse-profiles/hive-profile /reference/warehouse-setups/hive-setup 302
 /guides/getting-started/building-your-first-project /docs/develop/getting-started/building-your-first-project 301
-/docs/guides/getting-started/building-your-first-project/build-your-first-models /docs/develop/getting-started/building-your-first-project/build-your-first-models 301
+/guides/getting-started/building-your-first-project/build-your-first-models /docs/develop/getting-started/building-your-first-project/build-your-first-models 301
 /guides/getting-started/building-your-first-project/schedule-a-job /docs/develop/getting-started/building-your-first-project/schedule-a-job 301
 /guides/getting-started/building-your-first-project/test-and-document-your-project /docs/develop/getting-started/building-your-first-project/test-and-document-your-project 301
 /guides/getting-started/create-a-project /docs/develop/getting-started/create-a-project 301
