@@ -5,20 +5,21 @@ title: "Dremio Profile"
 
 ## Overview of dbt-dremio
 **Maintained by:** Dremio      
-**Author:**     
 **Source:** https://github.com/dremio/dbt-dremio  
-**Core Version:** 1.2.0 and later   
+**Core Version:** 1.1.2
 **dbt Cloud:** Not Supported    
-**Supported Version:** Dremio Software 22.0 and later
 **Required Version of Python:** 
 
 <!-- Who is the author going to be?
 ![dbt-dremio stars](https://img.shields.io/github/stars/fabrice-etanchaud/dbt-dremio?style=for-the-badge)
 -->
 
+## Prerequisites for Dremio Cloud
+None.
 
 ## Prerequisites for Dremio Software
 
+* Ensure that you are using version 22.0 or later.
 * Enable these support keys in the Dremio cluster:
   * `dremio.iceberg.enabled`
   * `dremio.iceberg.ctas.enabled`
@@ -35,27 +36,59 @@ Install this package from PyPi by running this command:
 pip install dbt-dremio
 ```
 
-## Configuring the Profile
+## Profiles
 
-Set up a Dremio target by using the following configurations in your `profiles.yaml` file:
+The initialization of a dbt project generates one of these profiles:
 
-```
-<project name>:
+
+### Profile for Dremio Cloud
+```yaml
+[project name]:
   outputs:
-    unmanaged:
+    dev:
+      cloud_host: [cloud host]
+      cloud_project_id: [project id]
+      pat: [personal access token]
+      threads: [integer >= 1]
       type: dremio
-      threads: 1
-      host:
-      port:
-      user: 
-      password:
-      pat:
       use_ssl: true
-  target: unmanaged
+      user: [user email address]
+  target: dev
 ```
 
+### Profile for Dremio Software with Username/Password Authentication
+```yaml
+[project name]:
+  outputs:
+    dev:
+      password: [password]
+      port: [port]
+      software_host: [coordinator node]
+      threads: 1
+      type: dremio
+      use_ssl: [true or false]
+      user: [username]
+  target: dev
+```
+
+### Profile for Dremio Software with Authentication Through a Personal Access Token
+```yaml
+[project name]:
+  outputs:
+    dev:
+      pat: [personal access token]
+      port: [port]
+      software_host: [coordinator node]
+      threads: 1
+      type: dremio
+      use_ssl: [true or false]
+      user: [username]
+  target: dev
+```
 
 ## Configurations
+
+## Configurations Common to Profiles for Dremio Cloud and Dremio Software
 
 <table>
   <tr>
@@ -88,6 +121,20 @@ Set up a Dremio target by using the following configurations in your `profiles.y
    <td>The number of threads the dbt project runs on.<br><br><b>Question:</b>Can I create only 1 project per set of Dremio configuration parameters in my <code>profiles.yaml</code> file?<br><br><b>Question:</b>Can I change this number?<br><br><b>Question:</b>If I can change it, what effects should I expect?
    </td>
   </tr>
+  </table>
+  
+  ### Configurations in Profiles for Dremio Cloud
+  <table>
+    <tr>
+     <td><strong>Configuration</strong>
+     </td>
+     <td><strong>Required?</strong>
+     </td>
+     <td><strong>Default Value</strong>
+     </td>
+     <td><strong>Description</strong>
+     </td>
+    </tr>
   <tr>
    <td><code>host</code>
    </td>
