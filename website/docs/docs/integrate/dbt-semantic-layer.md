@@ -33,7 +33,7 @@ The dbt Semantic Layer removes code duplication and inconsistency regarding your
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-- Have a multi-tenant [dbt Cloud](https://cloud.getdbt.com/) Teams or Enterprise account. 
+- Have a multi-tenant [dbt Cloud](https://cloud.getdbt.com/) Teams or Enterprise account
    * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.
 - Have both your production and development environments running dbt version 1.2 (latest) or higher
 - Use Snowflake data platfrom 
