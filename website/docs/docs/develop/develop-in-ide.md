@@ -161,7 +161,7 @@ You can also use dbt's [rich model selection syntax](/docs.getdbt.com/reference
 
 To learn more about the dbt, the Cloud IDE, commands and more -- refer to the following docs:  
 
-- [What is dbt?](/docs/introduction#what-else-can-dbt-do)
+- [What is dbt?](/docs/introduction#dbt-features)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [Version control basics](/docs/collaboration/version-control-basics)
 - [dbt Commands](/docs/reference/dbt-commands)
