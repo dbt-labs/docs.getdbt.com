@@ -876,7 +876,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Resources",
+      label: "Additional resources",
       items: [
         "community/resources/forum-guidelines",
         "community/resources/oss-expectations",

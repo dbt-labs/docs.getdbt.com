@@ -117,10 +117,6 @@ var siteSettings = {
           position: "right",
           items: [
             {
-              label: "Courses",
-              href: "https://courses.getdbt.com",
-            },
-            {
               label: "Guides",
               to: "/guides/getting-started",
             },
@@ -131,6 +127,10 @@ var siteSettings = {
             {
               label: "Glossary",
               to: "/glossary",
+            },
+            {
+              label: "Courses",
+              href: "https://courses.getdbt.com",
             },
           ],
         },
@@ -143,11 +143,11 @@ var siteSettings = {
               to: "/community/join",
             },
             {
-              label: "How to contribute",
+              label: "Become a contributor",
               to: "/community/contribute",
             },
             {
-              label: "Forum",
+              label: "Community Forum",
               to: "/forum",
             },
             {

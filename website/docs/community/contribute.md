@@ -1,5 +1,5 @@
 ---
-title: Contributing
+title: Become a contributor
 id: contribute
 ---
 
@@ -32,7 +32,7 @@ Below - you’ll find a sampling of the ways to get involved. It might feel comp
 
 <Card
     title="Online community building"
-    body="Getting involved in the Slack and Discourse commmunities is one of the best entry points for contributing to the dbt Community. Learn how to share and learn from community knowledge online."
+    body="Getting involved in the dbt Slack commmunity or Community Forum is one of the best entry points for contributing to the dbt Community. Learn how to share and learn from community knowledge online."
     link="community/contributing/contributing-online-community"
     icon="discussion"
 />
