@@ -10,7 +10,7 @@ function Hero({ heading, subheading, showGraphic = false }) {
       <div className={styles.showGraphic}></div>
       <div className={`container`}>
         <div className="row justify-content-center">
-          <div className="col col--8">
+          <div className="col col--7">
             <h1>{heading}</h1>
             <p>{subheading}</p>
           </div>

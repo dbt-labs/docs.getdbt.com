@@ -1561,7 +1561,7 @@ section.discourse-forum-page {
   .home .resource-section {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    row-gap: 16px;
+    row-gap: 25px;
     column-gap: calc(var(--ifm-spacing-horizontal) * 4);
     grid-template-areas:
       "popH2 featH2"
@@ -1611,21 +1611,20 @@ section.discourse-forum-page {
   height: unset;
 } 
 
-/* .home .swiper {
-  padding-right: 0rem !important;
-  padding-left: 4rem !important;
+.home .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-backface-hidden {
+  padding-right: 3rem;
+  padding-left: 3rem;
 }
 
-
-/* .home .swiper-button-prev:after {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23047377'%2F%3E%3C%2Fsvg%3E") !important;
+.home .swiper-button-next, .home .swiper-button-prev {
+  color: #047377;
+  font-weight: 800;
 }
 
-.home .swiper-button-next:after {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23047377'%2F%3E%3C%2Fsvg%3E") !important;
-} */
-
-
+[data-theme='dark'] .home .swiper-button-next, [data-theme='dark'] .home .swiper-button-prev {
+  color: #fff;
+  font-weight: 800;
+}
 
 /* utilities */
 .grid--3-col {

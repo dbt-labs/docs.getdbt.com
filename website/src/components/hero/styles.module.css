@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   /* position: relative; */
-  min-height: 400px;
+  min-height: 375px;
   margin-bottom: 0;
 }
 
@@ -17,7 +17,7 @@
 
 @media (min-width: 996px) {
   .Hero {
-    margin-bottom: 9rem;
+    margin-bottom: 6rem;
   }
 }
 
@@ -36,7 +36,16 @@
     max-width: 315px;
     height: 428px;
     background-size: contain;
-    background-image: url('/img/hero-graphic.png');
+    background-image: url('/img/hero-graphic-2x.png');
     background-repeat: no-repeat;
+  }
+}
+
+.w60 {
+  width: 100%;
+}
+@media (min-width: 996px) {
+  .w60 {
+    width: 60%;
   }
 }

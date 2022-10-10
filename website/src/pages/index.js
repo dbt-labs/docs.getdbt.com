@@ -1,20 +1,11 @@
 
 import React from 'react';
-import { useState } from 'react';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
-import classnames from 'classnames';
 import Head from '@docusaurus/Head';
 import Card from '@site/src/components/card';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import Hero from '@site/src/components/hero';
-import Callout from '@site/src/components/callout';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
 
 
@@ -99,26 +90,7 @@ function Home() {
 
           <section className="from-the-blog">
             <h2>The latest from the Developer Blog</h2>
-            <Swiper
-              spaceBetween={60}
-              slidesPerView={1}
-              navigation
-              modules={[Navigation]}
-              breakpoints={{
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 60,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 60,
-                },
-              }}
-            >
-              
-              {recentBlogData.map((item) => <SwiperSlide><BlogPostCard postMetaData={item} /></SwiperSlide>)}
-          
-            </Swiper>
+            <PostCarousel blogPostData={recentBlogData} />
           </section>
 
           <section className="from-the-community">
@@ -151,7 +123,7 @@ function Home() {
             </div>
           </section>
 
-          <section className="like-a-pro ">
+          <section className="like-a-pro">
             <h2>Use dbt like a pro</h2>
             <div className="grid--3-col">
               <div>
@@ -180,8 +152,6 @@ function Home() {
               </div>
             </div>
           </section>
-
-          <Callout heading="Create a free account to get started" subheading="Start delivering reliable datasets at the pace your business requires with a free-forever developer account. New accounts include access to a 14-day free trial of the Team plan, which allows you to invite up to 40 collaborators, no credit card required." cta="Create a free account" link="https://www.getdbt.com/signup/" />
 
         </div>
 

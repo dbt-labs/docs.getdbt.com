@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './styles.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
-import { useColorMode } from '@docusaurus/theme-common';
 
 
 function BlogPostCard({ postMetaData }) {
