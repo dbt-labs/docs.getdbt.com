@@ -1,7 +1,7 @@
 ---
 title: Getting started with dbt Cloud
 id: getting-started
-sidebar_label: "Overview"
+sidebar_label: "About getting started"
 description: "Create your first dbt project using a SQL query."
 ---
 
