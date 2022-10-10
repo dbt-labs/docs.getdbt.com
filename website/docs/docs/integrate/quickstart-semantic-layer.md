@@ -100,7 +100,7 @@ Before you define metrics in your dbt project, you'll need to understand how to 
 
 Now that's you've organized your metrics folder and files, you can define your metrics in `.yml` files nested under a `metrics` key.  
 
-1. Add the metric definitions found in the [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example to your dbt project. For example, to add an Expenses metric, see the below metrics you can define directly in your metrics folder: 
+1. Add the metric definitions found in the [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example to your dbt project. For example, to add an Expenses metric, reference the following metrics you can define directly in your metrics folder: 
       
 <VersionBlock firstVersion="1.3">
 
