@@ -36,38 +36,22 @@ To develop in the Cloud IDE, make sure you have the following:
 There are three start-up states when using or launching the Cloud IDE:
     
 - Creation start - This is the state in which you start the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- *Cold start -* This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
-- *Hot start* -  This is the state of resuming an existing or active develop session within 3 hours of the last activity. |
+- Cold start - This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+- Hot start -  This is the state of resuming an existing or active develop session within 3 hours of the last activity. 
     
-|
 
 </td><td>
     
 
 The Cloud IDE needs explicit action to save your changes and there are three ways your work is stored:
 
-| - **Unsaved, local code** -- Any code you write is automatically available from your browser’s storage. You can see your changes but will lose them if you switch branches or browsers (another device or browser).
-- **Saved but uncommitted code** -- When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
-- **Committed code** -- This is stored in the branch with git provider and you are able to check out other (remote) branches. |
+- Unsaved, local code - Any code you write is automatically available from your browser’s storage. You can see your changes but will lose them if you switch branches or browsers (another device or browser).
+- Saved but uncommitted code - When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
+- Committed code - This is stored in the branch with git provider and you are able to check out other (remote) branches. 
 
 
 </td></tr> </table>
 
-**Start up process**
-
-
-
-- Creation start - This is the state in which you start the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- *Cold start -* This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
-- *Hot start* -  This is the state of resuming an existing or active develop session within 3 hours of the last activity.
-
-**Work retention**
-
-The Cloud IDE needs explicit action to save your changes and there are three ways your work is stored:
-
-- **Unsaved, local code** -- Any code you write is automatically available from your browser’s storage. You can see your changes but will lose them if you switch branches or browsers (another device or browser).
-- **Saved but uncommitted code** -- When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
-- **Committed code** -- This is stored in the branch with git provider and you are able to check out other (remote) branches.
 
 ## Set up the Cloud IDE
 
@@ -152,9 +136,9 @@ If a model or test fails, you can review the logs to find and fix the issue.
 
 You can also use dbt's [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud.
 
-|<Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>| 
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
 
-| <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Build, run and test your dbt project"/> |
+ <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Build, run and test your dbt project"/> 
 
 
 ## Related docs
