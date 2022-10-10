@@ -404,7 +404,7 @@ li.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 .menu
 
 .menu__list-item-collapsible .menu__link--active {
   color: inherit;
-  background-color: inh;
+  background-color: inherit;
 }
 
 i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__list-item {
@@ -502,6 +502,10 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 .admonition:not(.admonition-note) .admonition-content,
 .admonition:not(.admonition-note) .admonition-content a {
   color: var(--ifm-color-gray-900);
+}
+
+.markdown .admonition-content p {
+  font-size: 1rem;
 }
 
 /* Shamelessly copy/pasted from our style guide */
@@ -741,9 +745,14 @@ div .toggle_src-components-faqs-styles-module {
 }
 
 /* Font Sizing Adjustments */
+.markdown,
 .markdown > p,
 .markdown li,
-blockquote {
+blockquote,
+th,
+td,
+.faqs,
+.tabs-container {
   font-size: 1.125rem;
   line-height: 1.5;
 }
