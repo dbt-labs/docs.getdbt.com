@@ -11,9 +11,9 @@ The dbt Semantic Layer brings a wide range of partners you can integrate and que
 
 There are two categories of partner integrations: 
 
-&mdash; **dbt Semantic Layer partners** - This refers to a group of dbt Labs partners who have full end-to-end integrations with the dbt Semantic Layer and leverage the dbt Server. 
+-  **dbt Semantic Layer partners** - This refers to a group of dbt Labs partners who have full end-to-end integrations with the dbt Semantic Layer and leverage the dbt Server. 
 
-&mdash; **dbt metrics ready partners** - This refers to all partners integrating with dbt metrics functionality but do not leverage the dbt Server.
+-  **dbt metrics ready partners** - This refers to all partners integrating with dbt metrics functionality but do not leverage the dbt Server.
 
 For information on the different integration partners, their documentation, and more, review our [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
@@ -23,9 +23,6 @@ For information on the different integration partners, their documentation, and 
 ## Related docs
 
 - [Getting started with the Semantic Layer](https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples.
-
 - [dbt Semantic Layer](/docs/integrate/dbt-semantic-layer) to learn more about the dbt Semantic Layer.
-
 - [Product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) page for more information on plan availability.
-
 - [Public preview information](/docs/integrate/quickstart-semantic-layer#public-preview) to understand what public preview means.
