@@ -170,7 +170,7 @@ metrics:
 
     - [dbt metrics](/docs/building-a-dbt-project/metrics) will povide you in-depth detail on attributes, properties, filters, and how to define and query metrics.
    
-    - [Structure and design your metric definition](URL) to understand best practices for designing and structuring metrics in your dbt project.
+    - Visit the [Structure and design your metric definition](URL) page to understand best practices for designing and structuring metrics in your dbt project.
 
 ## Develop and query metrics
 
