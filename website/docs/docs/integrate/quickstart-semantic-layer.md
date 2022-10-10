@@ -180,7 +180,7 @@ To understand when and how to use the macros above, review [dbt metrics](/docs/b
 
 :::info 📌 
 
-Note, you will need access to dbt Cloud and the dbt Semantic Layer from your integrated tool of choice. 
+**Note:** you will need access to dbt Cloud and the dbt Semantic Layer from your integrated tool of choice. 
 
 :::
 
