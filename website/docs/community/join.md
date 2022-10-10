@@ -30,7 +30,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 />
 
 <Card
-    title="dbt Labs OSS projects"
+    title="Open source projects"
     body="From dbt Core to developer tools and more - we’re committed to supporting a vibrant open source ecosystem."
     link="community/resources/oss-projects"
     icon="folder"

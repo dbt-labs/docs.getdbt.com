@@ -1,4 +1,4 @@
-# OSS Projects
+# Open source projects
 
 Looking for a good place to get involved contributing code? dbt Labs supports the following OSS repos, organized by the language primarily needed for contribution:
 
@@ -15,10 +15,6 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 ## dbt
 
 - [dbt Labs' packages](https://hub.getdbt.com/dbt-labs/) - the dbt pacakges created and supported by dbt Labs. Packages are just dbt projects, so if you know the SQL, Jinja, and YAML necessary to work in dbt, you can contribute to packages.
-
-## Javascript
-
-- [docs.getdbt.com](http://docs.getdbt.com) - the code and knowledge powering the analytics engineering developer hub.
 
 ## YAML and JSON Config
 
