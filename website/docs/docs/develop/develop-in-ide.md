@@ -27,7 +27,7 @@ To develop in the Cloud IDE, make sure you have the following:
 - You must have a [**development environment** and **development credentials**](/docs/develop/develop-in-ide#set-up-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
-## Start up and work retention in the IDE
+### Start up and work retention in the IDE
 
 <table>
 <tr><th>Start up process </th><th>Work retention</th></tr>
