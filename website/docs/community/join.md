@@ -11,7 +11,7 @@ Want to learn how organizations around the world are tackling the biggest challe
 
 <Card
     title="Join us on Slack"
-    body="Follow the pulse of the dbt Community! Find the latest articles on analytics engineering, chat with other practitioners about your work or simply share a killer meme."
+    body="Follow the pulse of the dbt Community! Chat with other practitioners in your city, country or worldwide about data work, tech stacks, or simply share a killer meme."
 link="https://www.getdbt.com/community/join-the-community/"
     icon="slack"
 />
@@ -25,7 +25,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 
 <Card
     title="How to contribute"
-    body="Want to get involved? This is the place! Learn how to contribute to dbt open source. repositories, write for our blog, speak at a meetup and more."
+    body="Want to get involved? This is the place! Learn how to contribute to our open source repositories, write for the blog, speak at a meetup and more."
     link="community/contribute" icon="writing"
 />
 
@@ -38,14 +38,14 @@ link="https://www.getdbt.com/community/join-the-community/"
 
 <Card
     title="Upcoming events"
-    body="Nothing beats the energy of a meetup or a live event. Join us!"
+    body="Nothing beats the energy of a meetup or a live event. Whether it's in-person Meetups in your local area, Coalesce – the annual Analytics Engineering Conference – or online Office Hours there are options for everyone."
     link="events"
     icon="calendar" />
 
 <Card
     title="Watch past events"
     body="Get a taste for the energy of our live events, get inspired, or prepare for an upcoming event by watching recordings from our YouTube archives."
-    link="https://www.youtube.com/watch?v=AoQAvtWeq_0&list=PL0QYlrC86xQl1DGKBopQZiZ6tSqrMlD2M"
+    link="https://www.youtube.com/playlist?list=PL0QYlrC86xQl1DGKBopQZiZ6tSqrMlD2M"
     icon="star"
 />
 

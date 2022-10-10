@@ -7,11 +7,13 @@ id: "contributing-online-community"
 
 #### Overview
 
-The dbt Slack is the place for real time conversations with the dbt Community. Slack channels exist to for specific locations, tools, industries and methodologies. In order to make sure that every channel has dedicated attention from a committed community member, we have Community Maintainers who oversee the discussion in particular channels.
+The dbt Slack is the place for real time conversations with the dbt Community. Slack channels exist for specific locations, tools, industries and methodologies. In order to make sure that every channel has dedicated attention from a committed community member, we have Community Maintainers who oversee the discussion in particular channels.
 
 #### Contribution opportunities
 
-We’re working on compiling a list of existing channels that could benefit from additional community maintainers. In the meantime, feel free to be on the lookout for opportunities to help maintain new channels that are getting spun up by keeping an eye on #channel-requests in the dbt slack.
+Every channel can benefit from people who are engaged and committed to making it a more interesting place to hang out! If there's a channel that you're interested in, spend time there.
+
+For new channels that you'd like to create and maintain, post a message in the #channel-requests channel.
 
 #### Sample contributions:
 
@@ -19,7 +21,7 @@ We’re working on compiling a list of existing channels that could benefit from
 
 #### Get started
 
-- Read the guide to [Maintaining a Slack Channel](https://docs.getdbt.com/community/maintaining-a-channel)
+- Read the guide to [Maintaining a Slack Channel](community/resources/maintaining-a-channel)
 - Jump in to threads in #channel-requests for new channels and offer to help maintain or mention that you are interested in helping maintain a channel and we’ll reach out.
 
 ### Participating on the Community Forum
