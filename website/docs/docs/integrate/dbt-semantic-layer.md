@@ -27,7 +27,7 @@ The result? You have less duplicative coding for data teams and more consistency
 
 **What makes the dbt Semantic Layer different?**
 
-The dbt Semantic Layer removes code duplication and inconsistency when it comes to your business metrics. By moving metric definitions out of the BI layer and into the modeling layer, data teams can feel confident that different business units are working from the same data definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications.
+The dbt Semantic Layer removes code duplication and inconsistency regarding your business metrics. By moving metric definitions out of the BI layer and into the modeling layer, data teams can feel confident that different business units are working from the same data definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications.
 
 
 ## Prerequisites
