@@ -233,11 +233,9 @@ If you're encountering some issues when defining your metrics or setting up the 
     <div>dbt does not store your data. We temporarily ingest the data from the data warehouse, pass it to connecting tool, and then drop the data.</div>
   </div>
 </details>
-<details>
-  <summary>Is the dbt Semantic Layer open source?</summary>
+<details><summary>Is the dbt Semantic Layer open source?</summary>
   <div>
-    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not. During public preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div>
-  </div>
+    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not. During public preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
 </details>
 <details>
     <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized?</summary>
@@ -249,7 +247,7 @@ If you're encountering some issues when defining your metrics or setting up the 
 <b>Fix</b>
       
 <span>&#8226;</span> If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code>
-<span>&#8226;</span> If you are using this in production, make sure that you perform a full </code>dbt build</code> or <code>dbt run</code> . If you are running specific <code>selects</code> in your production job, then you will not create this required model.
+<span>&#8226;</span> If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.
     </div>
   </div>
 </details>
@@ -265,7 +263,6 @@ If you're encountering some issues when defining your metrics or setting up the 
 <span>&#8226;</span> You will need to materialize the model that the metric is built on as a table/view/incremental.</div>
   </div>
 </details>
-
    
 ## Public preview
     
