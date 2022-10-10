@@ -36,7 +36,7 @@ However, this is still a relatively new part of the dbt toolbox and you probably
 
 Our instinct when designing metrics might be to encode as much as possible into the semantic layer. An example of this is case statements - the analytics engineer’s gut instinct might be to mimic tools of the past and provide complicated case statements for the metric `expression` property to try and capture the nuance of how it should be calculated. 
 
-With the coupling of dbt’s modeling framework, this isn’t necessarily the right answer. In situations with more complicated logic, it might make more sense to keep this logic contained within the model and then reference it in the semantic layer.
+But remember - you always have the option of performing this logic _in the modeling layer_. This is the key difference between dbt and other semantic layer offerings - by sitting the semantic layer atop a mature transformation layer, you always have the option to configure and optimize your logic within your models and then _define semantic components with intentionality_. 
 
 Getting the balance right has been a learning experience for our team as well. It’s easy to fall into comfortable patterns that might not be the best solution - it’s important for us to take a step back and think from first principles about the line of separation between what should live in a model and what should live in a metric. To explore this, we’ll walk through two examples of handling this divide.
 
