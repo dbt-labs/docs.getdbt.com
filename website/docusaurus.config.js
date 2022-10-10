@@ -20,8 +20,7 @@ if (!process.env.CONTEXT || process.env.CONTEXT == 'production') {
   GIT_BRANCH = process.env.HEAD;
 }
 
-// let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
-let { ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_READ_API_KEY, ALGOLIA_DISCOURSE_INDEX_NAME } = process.env;
+let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
 let metatags = []
 // If Not Current Branch, do not index site
@@ -38,7 +37,7 @@ if (GIT_BRANCH !== 'current') {
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
-// console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
+console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
 
 var siteSettings = {
@@ -59,14 +58,11 @@ var siteSettings = {
     // Adding non-empty strings for Algolia config
     // allows Docusaurus to run locally without .env file
     algolia: {
-      // apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
-      // indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
-      // appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : 'dbt'
-      apiKey: ALGOLIA_TEST_READ_API_KEY,
-      indexName: ALGOLIA_DISCOURSE_INDEX_NAME,
-      appId: ALGOLIA_TEST_APP_ID,
+      apiKey: ALGOLIA_API_KEY ? ALGOLIA_API_KEY : 'dbt',
+      indexName: ALGOLIA_INDEX_NAME ? ALGOLIA_INDEX_NAME : 'dbt',
+      appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : 'dbt',
       externalUrlRegex: 'discourse\\.getdbt\\.com',
-      debug: true,
+      // debug: true,
     },
     announcementBar: {
       id: "live_qa",

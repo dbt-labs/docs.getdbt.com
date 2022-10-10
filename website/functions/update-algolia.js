@@ -1,10 +1,10 @@
 const algoliasearch = require('algoliasearch')
 const axios = require('axios')
-// const { schedule } = require('@netlify/functions');
+const { schedule } = require('@netlify/functions');
 
 async function updateAlgolia() {
   // Get envs
-  const { ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY, ALGOLIA_DISCOURSE_INDEX_NAME, URL, DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
+  const { ALGOLIA_APP_ID, ALGOLIA_WRITE_API_KEY, ALGOLIA_INDEX_NAME, URL, DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
   try {
     const discourseSearchEndpoint = `${URL}/.netlify/functions/get-discourse-topics`
@@ -90,15 +90,20 @@ async function updateAlgolia() {
 
     if(!discourseTopics) throw new Error('Unable to build topics array from Discourse data.')
 
-    // Ready to initialize Algolia
-    const client = algoliasearch(ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY);
-    const index = client.initIndex(ALGOLIA_DISCOURSE_INDEX_NAME);
+    // Test by sending only 1 Discourse topic
+    // into Algolia before sending all.
+    const tempTopicsArr = discourseTopics[0]
+    console.log('tempTopicsArr', tempTopicsArr)
 
-    // Send data to Algolia
-    const { objectIDs } = await index.saveObjects(discourseTopics, {
-      autoGenerateObjectIDIfNotExist: true
-    })
-    console.log('Updated Algolia records:', objectIDs)
+    // // Ready to initialize Algolia
+    // const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_WRITE_API_KEY);
+    // const index = client.initIndex(ALGOLIA_INDEX_NAME);
+
+    // // Send data to Algolia
+    // const { objectIDs } = await index.saveObjects(tempTopicsArr, {
+    //   autoGenerateObjectIDIfNotExist: true
+    // })
+    // console.log('Updated Algolia records:', objectIDs)
  
     return {
       statusCode: 200
@@ -111,5 +116,4 @@ async function updateAlgolia() {
   }
 }
 
-exports.handler = updateAlgolia
-// exports.handler = schedule('@weekly', updateAlgolia)
+exports.handler = schedule('@weekly', updateAlgolia)
