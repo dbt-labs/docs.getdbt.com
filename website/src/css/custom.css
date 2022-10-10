@@ -353,8 +353,8 @@ a.navbar__item.navbar__link.btn:hover {
 /* sidebar menu */
 .menu__link {
   font-size: 1rem;
-  justify-content: flex-end;
-  flex-direction: row-reverse;
+  justify-content: space-between;
+  flex-direction: row;
   padding: 1rem;
 }
 
@@ -422,10 +422,14 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   color: var(--ifm-link-color);
 }
 
-/* set < icon to left side */
+/* set < icon to right side */
 .menu__list-item-collapsible {
-  flex-direction: row-reverse;
+  flex-direction: row;
   background-color: transparent;
+}
+
+.menu__list-item-collapsible button {
+  padding-right: 1rem;
 }
 
 .menu__list-item-collapsible:hover {
@@ -441,7 +445,7 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 .menu__link--sublist::after,
 .menu__caret::before {
   transform: rotate(-90deg);
-  margin-right: 1em;
+  margin-left: 1em;
   background: var(--ifm-breadcrumb-separator) center;
   background-repeat: no-repeat;
   height: 9px;
