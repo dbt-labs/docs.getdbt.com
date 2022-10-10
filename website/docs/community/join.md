@@ -18,7 +18,7 @@ Want to learn how organizations around the world are tackling the biggest challe
 
 <Card
     title="Community forum"
-    body="Have a question about how to do something in dbt? Hop into our community forums and work with others to create long lived community knowledge."
+    body="Have a question about how to do something in dbt? Hop into the Community Forum and work with others to create long lived community knowledge."
     link="forum"
     icon="discussion"
 />
