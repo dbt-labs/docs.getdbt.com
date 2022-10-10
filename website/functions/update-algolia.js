@@ -89,10 +89,6 @@ async function updateAlgolia() {
 
     if(!discourseTopics) throw new Error('Unable to build topics array from Discourse data.')
 
-    // console.log('discourseTopics', discourseTopics)
-    // const temp = discourseTopics.filter(item => item.objectID.includes('discourse-tag'))
-    // console.log('temp', temp)
-
     // Ready to initialize Algolia
     const client = algoliasearch(ALGOLIA_TEST_APP_ID, ALGOLIA_TEST_WRITE_API_KEY);
     const index = client.initIndex(ALGOLIA_DISCOURSE_INDEX_NAME);
