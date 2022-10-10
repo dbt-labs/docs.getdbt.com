@@ -171,7 +171,7 @@ const sidebarSettings = {
       label: "Deploy dbt projects",
       collapsed: true,
       items: [
-        "docs/deploy/overview",
+        "docs/deploy/deployments",
         {
           type: "category",
           label: "dbt Cloud deploy options",
