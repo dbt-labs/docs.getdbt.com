@@ -369,29 +369,28 @@ a.navbar__item.navbar__link.btn:hover {
 
 .menu__caret {
   padding: 0;
+  margin-left: 0;
 }
 
 .menu__caret:hover {
   background: transparent;
 }
 
-.hasHref_src-theme-DocSidebarItem-styles-module {
-  padding-left: 0;
+/* level2 */
+li.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 .menu__list-item-collapsible {
+  font-weight: 600;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
 }
 
-/* level2 */
 .menu__list .menu__list {
   font-weight: var(--ifm-font-weight-narrow);
-  padding-left: 1.5rem;
+  padding-left: 2rem;
 }
 
 .menu__list .menu__list .menu__link {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-}
-
-.menu__list-item-collapsible a {
-  padding-left: 0;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 }
 
 .menu__list .menu__list a.menu__link.menu__link--sublist {
@@ -406,8 +405,6 @@ a.navbar__item.navbar__link.btn:hover {
 i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__list-item {
   margin-left: 1rem;
 }
-
-
 
 /* color for subtext only */
 .theme-doc-sidebar-item-link :not(.menu__list-item-collapsible .menu__link:first-of-type) {
@@ -430,10 +427,6 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 
 .menu__list-item-collapsible button {
   padding-right: 1rem;
-}
-
-.menu__list-item-collapsible:hover {
-  background-color: transparent;
 }
 
 .menu__list-item--collapsed .menu__link--sublist::after, 
@@ -508,6 +501,10 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 .admonition:not(.admonition-note) .admonition-content,
 .admonition:not(.admonition-note) .admonition-content a {
   color: var(--ifm-color-gray-900);
+}
+
+.markdown .admonition-content p {
+  font-size: 1rem;
 }
 
 /* Shamelessly copy/pasted from our style guide */
@@ -747,9 +744,14 @@ div .toggle_src-components-faqs-styles-module {
 }
 
 /* Font Sizing Adjustments */
+.markdown,
 .markdown > p,
 .markdown li,
-blockquote {
+blockquote,
+th,
+td,
+.faqs,
+.tabs-container {
   font-size: 1.125rem;
   line-height: 1.5;
 }
@@ -1089,8 +1091,8 @@ filter: opacity(.75);
   }
 
   aside .menu {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
   }
 
   .navbar__item {
