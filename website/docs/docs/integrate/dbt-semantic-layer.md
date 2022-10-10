@@ -65,7 +65,7 @@ The dbt Semantic Layer is currently available for public preview, which means:
 
 ## Product architecture 
 
-The dbt Semantic Layer product architecture includes four primary components, and you can review that and its plan availability in more detail below:
+The dbt Semantic Layer product architecture includes four primary components:
 
 | Components | Information | Developer plans | Team plans | Enterprise plans | License |
 | --- | --- | :---: | :---: | :---: | --- |
