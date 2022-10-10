@@ -7,7 +7,9 @@ sidebar_label: "dbt Semantic Layer"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available for public preview! With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! Review the [public preview section below](/docs/integrate/quickstart-semantic-layer#public-preview) to understand what public preview means for you.
+The dbt Semantic Layer is currently available for public preview! With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! 
+
+For more info on public preview and plan availability, check out the [public preview](/docs/integrate/dbt-semantic-layer#public-preview) and [product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section.
     
 :::
 
@@ -51,7 +53,7 @@ Here are some important considerations to know about during public preview:
 
 The dbt Semantic Layer is currently available for public preview, which means:
 
-&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. Review our [Product architecture](/docs/integrate/dbt-semantic-layer.md#product-architecture) page for more information on plan availability.
+&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. 
 
 &mdash; **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
 
