@@ -57,7 +57,7 @@ The dbt Semantic Layer is currently available for public preview, which means:
 
 &mdash; **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
 
-&mdash; **When?** Public preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
+&mdash; **When?** Public preview will end once the dbt Semantic Layer is generally available. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
 
 &mdash; **Where?** Public preview is enabled at the account level so you don’t need to worry about enabling it per user.
 
