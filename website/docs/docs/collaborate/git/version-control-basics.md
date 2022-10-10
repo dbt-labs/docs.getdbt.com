@@ -13,7 +13,7 @@ To use version control, make sure you are connected to a Git repository in the C
 
 :::
 
-A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the [Cloud IDE].(/docs/develop/develop-in-ide)
+A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the [Cloud IDE](/docs/develop/develop-in-ide).
 
 When you develop in the Cloud IDE, you can leverage Git directly to version control your code from your browser. This means you can branch, commit, push, and pull code with a couple of clicks - no command line required!
 
@@ -61,7 +61,7 @@ The git button in the Cloud IDE allows you to apply the concept of version contr
 
 Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept. 
 
-Review our [Merge conflicts page](/docs/collaborate/git/pr-template) to learn how to resolve merge conflicts
+Review our [merge conflicts page](/docs/collaborate/git/pr-template) to learn how to resolve merge conflicts
 
 ## The .gitignore file
 
