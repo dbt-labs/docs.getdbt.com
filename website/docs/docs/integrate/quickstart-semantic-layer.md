@@ -174,7 +174,7 @@ metrics:
 
 ## Develop and query metrics
 
-You can dynamically develop and query metrics directly in dbt and verify their accuracy *before* running a job in the deployment environment by using the `metrics.calculate` macro and `metrics.develop` macro.
+You can dynamically develop and query metrics directly in dbt and verify their accuracy *before* running a job in the deployment environment by using the `metrics.calculate` and `metrics.develop` macros.
 
 To understand when and how to use the macros above, review [dbt metrics](/docs/building-a-dbt-project/metrics) and make sure you install the [dbt_metrics package](https://github.com/dbt-labs/dbt_metrics) first before using the above macros.
 
