@@ -230,19 +230,25 @@ If you're encountering some issues when defining your metrics or setting up the 
 <details>
   <summary>How are you storing my data?</summary>
   <div>
-    <div>dbt does not store your data. We temporarily ingest the data from the data warehouse, pass it to connecting tool, and then drop the data.</div>
+    <div>dbt does not store your data, we temporarily ingest the data from the data warehouse, pass it to connecting tool, and then drop the data.</div>
   </div>
 </details>
 <details><summary>Is the dbt Semantic Layer open source?</summary>
   <div>
-    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not. During public preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
+    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not open source. <br></br>
+      
+During public preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). <br></br>
+      
+Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated tool to import metric definition.<br></br> 
+     
+Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
 </details>
 <details>
     <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized?</summary>
   <div>
     <div>All metrics queries are dependent on either the <code>dbt_metrics_calendar_table</code> or a custom calendar set in the users <code>dbt_project.yml</code>. If you have not created this model in the database, these queries will fail and you'll most likely see the following error message:
 
-<code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code>
+<code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code><br></br>
 
 <b>Fix</b>
       
@@ -256,7 +262,7 @@ If you're encountering some issues when defining your metrics or setting up the 
   <div>
     <div>Metrics cannot be defined on <a href="/docs/building-a-dbt-project/metrics">ephemeral models</a> and this is because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you'll likely see this error message:
 
- <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code>
+ <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code><br></br>
 
 <b>Fix:</b>
 
