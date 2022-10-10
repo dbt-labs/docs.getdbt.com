@@ -38,6 +38,7 @@ import { DiscourseFeed, DiscourseHelpFeed }  from '@site/src/components/discours
 import Hero from '@site/src/components/hero'
 import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
+import BlogPostCard from '@site/src/components/blogPostCard';
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
@@ -103,6 +104,7 @@ const MDXComponents = {
   h5: (props) => <Heading as="h5" {...props} />,
   h6: (props) => <Heading as="h6" {...props} />,
 
+  BlogPostCard: BlogPostCard,
   Callout: Callout,
   Card: Card,
   Changelog: Changelog,

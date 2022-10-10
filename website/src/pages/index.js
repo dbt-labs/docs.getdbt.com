@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useState } from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -7,12 +8,15 @@ import Layout from '@theme/Layout';
 import classnames from 'classnames';
 import Head from '@docusaurus/Head';
 import Card from '@site/src/components/card';
+import BlogPostCard from '@site/src/components/blogPostCard';
 import Hero from '@site/src/components/hero';
 import Callout from '@site/src/components/callout';
-// import Swiper JS
-import Swiper from 'swiper';
-// import Swiper styles
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
+
 
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
@@ -22,6 +26,25 @@ function getBanner() {
 };
 
 function Home() {
+  
+  const recentBlogData = allBlogData.blogPosts.slice(0, 6).reduce((accumulator, currentValue) => {
+    let postMetaData = {
+      title: currentValue.metadata.title,
+      date: currentValue.metadata.formattedDate,
+      readingTime: Math.round(currentValue.metadata.readingTime),
+      description: currentValue.metadata.description,
+      link: currentValue.metadata.permalink,
+    }
+    accumulator.push(postMetaData)
+    return accumulator
+  }, [])
+
+  const featuredResource = {
+    title: "How we structure our dbt projects",
+    description: "Our hands-on learnings for how to structure your dbt project for success and gain insights into the principles of analytics engineering.",
+    link: "/guides/best-practices/how-we-structure/1-guide-overview",
+    image: "/img/structure-dbt-projects.png"
+  }
   return (
     <>
       <Head>
@@ -33,7 +56,7 @@ function Home() {
           <section className="resource-section row">
             <div className="popular-header"><h2>Popular resources</h2></div>
             <div className="popular-resources">
-              <div class="grid">
+              <div className="grid">
                 <div>
                   <Card
                     title="What is dbt?"
@@ -70,42 +93,32 @@ function Home() {
             </div>
             <div className="featured-header"><h2>Featured resource</h2></div>
             <div className="featured-resource">
-              <Card
-                title="What is dbt?"
-                body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-        
-              />
+            <BlogPostCard postMetaData={featuredResource} />
             </div>
           </section>
 
           <section className="from-the-blog">
             <h2>The latest from the Developer Blog</h2>
-            <div className="grid--3-col">
-              <div>
-                <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
-                />
-              </div>
-              <div>
-                <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
-                />
-              </div>
-              <div>
-                <Card
-                  title="What is dbt?"
-                  body="Lorem ipsum dolor sit amet, consectetur elit, sed do eiu smod tempor incididunt."
-                  link="https://docs.getdbt.com/docs/introduction"
-                  icon="question-mark"
-                />
-              </div>
-            </div>
+            <Swiper
+              spaceBetween={60}
+              slidesPerView={1}
+              navigation
+              modules={[Navigation]}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 60,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 60,
+                },
+              }}
+            >
+              
+              {recentBlogData.map((item) => <SwiperSlide><BlogPostCard postMetaData={item} /></SwiperSlide>)}
+          
+            </Swiper>
           </section>
 
           <section className="from-the-community">
