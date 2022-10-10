@@ -41,7 +41,7 @@ Give a talk! Meetups are all about sharing your knowledge with other analytics p
 - [Run Your Data Team as a Product Team](https://www.getdbt.com/coalesce-2020/run-your-data-team-as-a-product-team/)
 - [Tailoring dbt's incremental_strategy to Artsy's data needs](https://www.getdbt.com/coalesce-2021/tailoring-dbts-incremental-strategy-to-artsys-data-needs/)
 
-#### Get Started
+#### Get started
 
 - If registrations are open register on the [Coalesce website](https://coalesce.getdbt.com/)
 - Join #coalesce-updates on the dbt Community Slack

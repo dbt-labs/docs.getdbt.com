@@ -19,7 +19,7 @@ id: "contributing-coding"
 - [dbt Expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/)
 - [dbt Artifacts](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/)
 
-#### Get Started
+#### Get started
 
 - Use packages in your own projects! The best way to know how to improve a package is to use it in a production environment then look for ways it can be modified or improved.
 - Read the following resources on package development:
@@ -46,7 +46,7 @@ There are three primary ways to contribute to the dbt OSS projects. We’ll use 
 - Check out [this issue](https://github.com/dbt-labs/dbt-core/issues/3612) about improving error messages and [the PR that the community contributed to fix it](https://github.com/dbt-labs/dbt-core/pull/3703).
 - From the above issue [another issue was generated](https://github.com/dbt-labs/dbt-bigquery/issues/202) to change not just the error message, but improve the behavior. This is the virtuous cycle of open source community development! Bit by bit we, the community, craft the tool to better fit our needs.
 
-#### Get Started
+#### Get started
 
 - Read the dbt Core [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Open Source Software Expectations](https://docs.getdbt.com/docs/contributing/oss-expectations).
 - If contributing to dbt Core, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3Agood_first_issue)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
