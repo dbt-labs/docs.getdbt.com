@@ -26,7 +26,7 @@ In past roles, I’ve been referred to as the `dbt zealot` and I’ll own that t
 
 The Semantic Layer takes this to the next level **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the analytics engineers and stakeholders. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo **while also** serving them to the entire business.
 
-However, this is still a relatively new part of the dbt tool box and you probably have a lot of questions on how **exactly** you can do that. Contained within this blog are our early recommendations for how to design and structure metrics, along with examples so that you can apply the same principles to your use cases. They were developed by combining the overall philosophy of dbt with our hands on learning gathered during the beta period and internal testing.
+However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how **exactly** you can do that. This blog contains our early recommendations for how to design and structure metrics, along with examples so that you can apply the same principles to your use cases. We developed these recommendations by combining the overall philosophy of dbt, with our hands-on learning gathered during the beta period and internal testing.
 
 ## How to design your metrics
 
