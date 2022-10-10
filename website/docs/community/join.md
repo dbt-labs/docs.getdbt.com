@@ -19,20 +19,20 @@ Want to learn how organizations around the world are tackling the biggest challe
 <Card
     title="Community forum"
     body="Have a question about how to do something in dbt? Hop into our community forums and work with others to create long lived community knowledge."
-    link="forums"
+    link="forum"
     icon="discussion"
 />
 
 <Card
     title="How to contribute"
     body="Want to get involved? This is the place! Learn how to contribute to dbt open source. repositories, write for our blog, speak at a meetup and more."
-    link="community/contributing/contributing-intro" icon="writing"
+    link="community/contribute" icon="writing"
 />
 
 <Card
     title="dbt Labs OSS projects"
     body="From dbt Core to developer tools and more - we’re committed to supporting a vibrant open source ecosystem."
-    link="community/community-docs/oss-projects"
+    link="community/resources/oss-projects"
     icon="folder"
 />
 

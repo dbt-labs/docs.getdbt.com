@@ -5,7 +5,7 @@ id: "contributing-realtime-events"
 
 ### Speak at a Meetup
 
-#### What is it
+#### Overview
 
 Meetups are a place to engage and interact with your fellow dbt Community members (in person when possible but sometimes online). We’ve got 21 Meetups in 16 countries.
 
@@ -18,13 +18,13 @@ Give a talk! Meetups are all about sharing your knowledge with other analytics p
 - Take a look at [the slides](https://docs.google.com/presentation/d/1iqVjzxxRggMnRoI40ku88miDKw795djpKV_v4bbLpPE/edit#slide=id.g553a984de0_0_19) and [watch the video](https://www.youtube.com/watch?v=BF7HH8JDUS0) from Kenny Ning's 2020 Meetup talk on predicting customer conversions with dbt and ML for Better.com.
 - Dig into [the deck](https://docs.google.com/presentation/d/1wE8NSkFPLFKGQ8fvFUUKoZFVoUhws_FhFip-9mDhoPU/edit#slide=id.p) and [the video](https://www.youtube.com/watch?v=VhH614WVufM) from Bowery Farmings talk on migrating dbt models from Redshift to Snowflake.
 
-#### How to get started
+#### Get Started
 
 Read [How to Deliver a Fantastic Meetup Talk](https://www.getdbt.com/community/speaking-at-a-meetup/).
 
 ### Speak at Coalesce
 
-#### What is it
+#### Overview
 
 [Coalesce](https://coalesce.getdbt.com/) is the annual analytics engineering conference hosted by dbt Labs. While Meetups are focused on sharing knowledge with a specific local hub of the Community - Coalesce is the way to share ideas with everyone. Each year we gather together, take stock of what we’ve learned and pool our best ideas about analytics.
 
@@ -40,7 +40,7 @@ Read [How to Deliver a Fantastic Meetup Talk](https://www.getdbt.com/community/s
 - [Run Your Data Team as a Product Team](https://www.getdbt.com/coalesce-2020/run-your-data-team-as-a-product-team/)
 - [Tailoring dbt's incremental_strategy to Artsy's data needs](https://www.getdbt.com/coalesce-2021/tailoring-dbts-incremental-strategy-to-artsys-data-needs/)
 
-#### How to get started
+#### Get Started
 
 - If registrations are open register at the [Coalesce Site](https://coalesce.getdbt.com/)
 - Join #coalesce-updates on the dbt Community Slack

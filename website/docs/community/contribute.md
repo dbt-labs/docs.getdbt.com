@@ -3,8 +3,7 @@ title: Contributing
 id: contribute
 ---
 
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+<section className="community-home">
 
 ## Want to get involved? Start here
 
@@ -16,4 +15,33 @@ There are opportunities here for everyone to get involved. Whether you are just 
 
 Below - you’ll find a sampling of the ways to get involved. It might feel complicated or like there are a lot of options - but these are ultimately just variations on the theme of sharing knowledge with the broader community.
 
-<DocCardList items={useCurrentSidebarCategory().items} />
+<div className="grid--3-col">
+
+<Card
+    title="Writing contributions"
+    body="Learn how to share and grow the collective written knowledge of the dbt Community through guides and articles."
+    link="community/contributing/contributing-writing" icon="writing"
+/>
+
+<Card
+    title="Coding contributions"
+    body="The dbt Community supports a wide variety of open source projects, and OSS software is at the heart of everything we do. Learn how to get involved with coding on projects in the dbt ecoystem."
+    link="community/contributing/contributing-coding"
+    icon="folder"
+/>
+
+<Card
+    title="Online community building"
+    body="Getting involved in the Slack and Discourse commmunities is one of the best entry points for contributing to the dbt Community. Learn how to share and learn from community knowledge online."
+    link="community/contributing/contributing-online-community"
+    icon="discussion"
+/>
+
+<Card
+    title="Realtime event participation"
+    body="Want to attend or even speak at a Meetup or conference? This guide will walk you through how."
+    link="community/contributing/contributing-realtime-events"
+    icon="calendar" />
+
+</div>
+</section>

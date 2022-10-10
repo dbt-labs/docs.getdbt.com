@@ -132,10 +132,6 @@ var siteSettings = {
               label: "Glossary",
               to: "/glossary",
             },
-            {
-              label: "Forum",
-              to: "/forum",
-            },
           ],
         },
         {
@@ -147,8 +143,16 @@ var siteSettings = {
               to: "/community/join",
             },
             {
-              label: "Ways to Participate",
+              label: "How to contribute",
               to: "/community/contribute",
+            },
+            {
+              label: "Forum",
+              to: "/forum",
+            },
+            {
+              label: "Events",
+              to: "/events",
             },
           ],
         },
