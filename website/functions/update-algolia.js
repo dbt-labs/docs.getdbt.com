@@ -90,20 +90,20 @@ async function updateAlgolia() {
 
     if(!discourseTopics) throw new Error('Unable to build topics array from Discourse data.')
 
+    // TEMP: DELETE BEFORE TAKE-LIVE
     // Test by sending only 1 Discourse topic
-    // into Algolia before sending all.
-    const tempTopicsArr = discourseTopics[0]
-    console.log('tempTopicsArr', tempTopicsArr)
+    // into Algolia before sending all
+    const tempTopicsArr = discourseTopics.slice(0, 1)
 
-    // // Ready to initialize Algolia
-    // const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_WRITE_API_KEY);
-    // const index = client.initIndex(ALGOLIA_INDEX_NAME);
+    // Ready to initialize Algolia
+    const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_WRITE_API_KEY);
+    const index = client.initIndex(ALGOLIA_INDEX_NAME);
 
-    // // Send data to Algolia
-    // const { objectIDs } = await index.saveObjects(tempTopicsArr, {
-    //   autoGenerateObjectIDIfNotExist: true
-    // })
-    // console.log('Updated Algolia records:', objectIDs)
+    // Send data to Algolia
+    const { objectIDs } = await index.saveObjects(tempTopicsArr, {
+      autoGenerateObjectIDIfNotExist: true
+    })
+    console.log('Updated Algolia records:', objectIDs)
  
     return {
       statusCode: 200
