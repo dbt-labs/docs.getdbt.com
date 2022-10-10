@@ -12,7 +12,9 @@ The Cloud IDE refresh is now available for General Availability and includes per
 
 :::
 
-The Cloud IDE is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the IDE, you can compile dbt code into SQL and run it against your database directly, and also write, test and compile [Python models](/docs/building-a-dbt-project/building-models/python-models). The IDE leverages the open-source [dbt-rpc](/docs/reference/commands/rpc) plugin to recompile only the changes made in your project.
+The Cloud IDE is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the IDE, you can compile dbt code into SQL and run it against your database directly, and also write, test and compile [Python models](/docs/building-a-dbt-project/building-models/python-models). 
+
+The IDE leverages the open-source [dbt-rpc](/docs/reference/commands/rpc) plugin to recompile only the changes made in your project.
 
 ## Prerequisites
 
@@ -77,7 +79,9 @@ New to dbt? Check out our [Getting Started guide](/docs/guides/getting-started)�
 
 In order to start experiencing the great features of the Cloud IDE, you need to first set up your **Development environment** and **Development credentials.** 
 
-If you’re new to dbt, you will automatically add this during the project setup. However, if you have an existing dbt Cloud account, you may need to create a development environment and credentials manually to use the Cloud IDE. Review the steps below to set up your development environment and credentials:
+If you’re new to dbt, you will automatically add this during the project setup. However, if you have an existing dbt Cloud account, you may need to create a development environment and credentials manually to use the Cloud IDE. 
+
+Review the steps below to set up your development environment and credentials:
 
 
 **Development environment**
@@ -97,7 +101,9 @@ If you’re new to dbt, you will automatically add this during the project setup
 
 **Developer credentials**
 
-The IDE uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt. Follow the below steps to set up your developer credentials:
+The IDE uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt. 
+
+Follow the below steps to set up your developer credentials:
 
 1. Go to the [**Credentials**](https://cloud.getdbt.com/next/settings/profile#credentials) section. 
 
@@ -113,7 +119,7 @@ Great job, you should now be able to access the Cloud IDE by clicking **Develop*
 
 ## Access the Cloud IDE
 
-The dbt Cloud IDE comes with new features, including snappier performance and exciting enhancements. The new version of the Cloud IDE makes it easy for you to develop, build, compile, run and test data models!  To use the Cloud IDE:
+The dbt Cloud IDE comes with new features, including snappier performance and exciting enhancements. To use the Cloud IDE:
 
 1. Log in with your [dbt Cloud account](https://cloud.getdbt.com/). If you don't have one, [sign up](https://www.getdbt.com/signup/) for an account for free!
 
@@ -140,7 +146,9 @@ Use the image and guide below to familiarize yourself with the Cloud IDE and its
 
 ## Manage projects
 
-You can *build*, *compile*, *run* *, and test* dbt projects instantly with a one click using the convenient **Build** feature, or by using the command bar. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations. If a model or test fails, you can review the logs to find and fix the issue.
+You can *build*, *compile*, *run* *, and test* dbt projects instantly with a one click using the convenient **Build** feature, or by using the command bar. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations. 
+
+If a model or test fails, you can review the logs to find and fix the issue.
 
 You can also use dbt's [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud.
 
