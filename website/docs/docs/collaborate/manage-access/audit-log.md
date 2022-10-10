@@ -1,5 +1,5 @@
 ---
-title: "Use the audit log for dbt Cloud Enterprise"
+title: "The audit log for dbt Cloud Enterprise"
 id: audit-log
 description: "You can troubleshoot possible issues and provide security audits by reviewing event activity in your organization."
 sidebar_label: "Audit log"
