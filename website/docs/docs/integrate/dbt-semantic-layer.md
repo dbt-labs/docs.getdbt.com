@@ -98,7 +98,7 @@ An important business metric should be:
 - Well-defined (the definition is agreed upon throughout the entire organization)
 - Time-bound (able to be compared across time)
 
-A great example of this is **revenue** - it can be aggregated on multiple levels (weekly, monthly, etc) and is key for the broader business to understand:
+A great example of this is **revenue** &mdash it can be aggregated on multiple levels (weekly, monthly, etc) and is key for the broader business to understand:
 
 ✅ `Monthly Recurring Revenue` or `Weekly Active Users` or `Average Order Value`
 ❌ `1-off experimental metric`
