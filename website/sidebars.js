@@ -170,7 +170,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
-        "docs/deploy/regions"
+        "docs/deploy/regions",
         {
           type: "category",
           label: "dbt Cloud deploy options",
