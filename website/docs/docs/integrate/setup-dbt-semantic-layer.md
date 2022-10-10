@@ -31,7 +31,7 @@ Here are some important considerations to know about during public preview:
 
 :::info 📌
 
-Before you continue with the below steps, you **must** have a multi tenant dbt Cloud Team or Enterprise plan. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
+Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud Team or Enterprise plan. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
 
 :::
 
