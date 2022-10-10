@@ -13,7 +13,7 @@ For more info on public preview and plan availability, check out the [public pre
     
 :::
 
-The dbt Semantic Layer allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project), for consistent self-service within downstream data tools like BI and metadata management solutions. 
+The dbt Semantic Layer allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions.
 
 The result? You have less duplicative coding for data teams and more consistency for data consumers. The dbt Semantic Layer has four main parts:
 
