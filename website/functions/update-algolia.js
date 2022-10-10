@@ -1,5 +1,6 @@
 const algoliasearch = require('algoliasearch')
 const axios = require('axios')
+const { schedule } = require('@netlify/functions');
 
 async function updateAlgolia() {
   // Get envs
@@ -111,4 +112,4 @@ async function updateAlgolia() {
 }
 
 exports.handler = updateAlgolia
-
+// exports.handler = schedule('@weekly', updateAlgolia)
