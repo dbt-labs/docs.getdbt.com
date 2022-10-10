@@ -22,7 +22,6 @@ For new channels that you'd like to create and maintain, post a message in the #
 #### Get started
 
 - Read the guide to [Maintaining a Slack Channel](community/resources/maintaining-a-channel)
-- Jump in to threads in #channel-requests for new channels and offer to help maintain or mention that you are interested in helping maintain a channel and we’ll reach out.
 
 ### Participating on the Community Forum
 
@@ -32,7 +31,7 @@ For new channels that you'd like to create and maintain, post a message in the #
 
 #### Contribution opportunities
 
-Participate in the Forum by asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. It’s a mitzvah to answer a question.
+Participate in the Forum by asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. Remember, it’s a mitzvah to answer a question.
 
 If you see a great question or answer, be generous with your 💜 reactions. Click the Solved button when your question is answered, so others can benefit.
 

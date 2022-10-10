@@ -117,8 +117,12 @@ var siteSettings = {
           position: "right",
           items: [
             {
-              label: "Guides",
-              to: "/guides/getting-started",
+              label: 'Courses',
+              href: 'https://courses.getdbt.com',
+            },
+            {
+              label: 'Guides',
+              to: '/guides/best-practices',
             },
             {
               label: "Developer Blog",
@@ -127,11 +131,7 @@ var siteSettings = {
             {
               label: "Glossary",
               to: "/glossary",
-            },
-            {
-              label: "Courses",
-              href: "https://courses.getdbt.com",
-            },
+            }
           ],
         },
         {
