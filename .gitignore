@@ -15,3 +15,5 @@ website/i18n/*
 .vscode
 # Local Netlify folder
 .netlify
+
+.vscode
