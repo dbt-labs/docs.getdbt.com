@@ -41,7 +41,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 - Set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated tool to import metric definitions
 - Recommended - Review the dbt metrics page and Getting started with the dbt Semantic Layer blog
 
-:::info Considerations
+:::caution Considerations
 
 Some important considerations to know about during the public preview:
 
