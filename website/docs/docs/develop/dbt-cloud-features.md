@@ -26,7 +26,7 @@ With the Cloud IDE, you can:
 - Compile Python models to see the full function that gets executed in the warehouse. You cannot preview python models currently.
 - Visualize a directed acyclic graph (DAG), [and more](/docs/develop/dbt-cloud-tips).
 
-### New Cloud IDE features
+### IDE features
 The dbt Cloud IDE comes with new features, including snappier performance and exciting enhancements to make it easy for you to develop, build, compile, run and test data models!  Check out the new features below to learn more:
 
 
