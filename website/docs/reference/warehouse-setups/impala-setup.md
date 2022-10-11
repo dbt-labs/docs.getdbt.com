@@ -148,8 +148,9 @@ Note: A typical setup of Cloudera EDH will involve the following steps to setup 
 
 ### Instrumentation
 
+By default, the adapter will send instrumentation events to Cloudera to help improve functionality and understand bugs. If you want to specifically switch this off, for instance, in a production environment, you can explicitly set the flag `usage_tracking: false` in your `profiles.yml` file.
 
-By default, the adapter will collect instrumentation events to help improve functionality and understand bugs. If you want to specifically switch this off, for instance, in a production environment, you can explicitly set the flag `usage_tracking: false` in your `profiles.yml` file.
+Relatedly, if you'd like to turn off dbt Lab's anonymous usage tracking, see [YAML Configurations: Send anonymous usage stats](https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats) for more info
 
 ### Supported Functionality
 
