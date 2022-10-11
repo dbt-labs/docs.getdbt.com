@@ -29,7 +29,7 @@ You can quickly search over all files in the IDE on your current project. To sea
 
 **Command bar and status**
 
-You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax]/docs/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**.
+You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/docs/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**.
 
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
