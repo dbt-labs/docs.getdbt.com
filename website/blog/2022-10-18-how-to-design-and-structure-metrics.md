@@ -159,7 +159,7 @@ Given that these surveys come from a few different sources, there is a large amo
 
 The dbt Internal Analytics team ([long may they reign](https://www.linkedin.com/feed/update/urn:li:activity:6962884130569080833/)) took this data and decided to build the NPS Score metric into our repo so that it could be surfaced to stakeholders in multiple tools. This process is where we began to form our opinions on what should live in the modeling layer vs semantic layer - but these are sure to progress as we add in more and more real world use cases.
 
-### Option 1 - putting everything in the semantic layer
+### Option 1: Putting everything in the semantic layer
 
 If we wanted to store all the logic inside metric definitions, we could use the following code in the Semantic Layer section to create 6 different metrics that result in the NPS Score metric. This would allow end users to retrieve the NPS Score they are interested in a version-controlled, standard way across any of their BI tools of choice. Additionally, it allows users to individually slice/dice any of the component metrics by themselves.
 
