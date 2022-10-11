@@ -20,7 +20,7 @@ is_featured: true
 
 ## The power of a semantic layer on top of a mature data modeling framework
 
-As a longtime dbt Community member, I knew I had to get involved when I first saw the dbt Semantic Layer in the now infamous [`dbt should know about metrics` Github Issue](https://github.com/dbt-labs/dbt-core/issues/4071). It gave me a vision of a world where metrics and business logic were unified across an entire organization; a world where the data team was no longer bound to a single consuming experience and could enable their stakeholders in dozens of different ways. To me, it felt like the opportunity to contribute to the next step of what dbt could become.
+As a longtime [dbt Community](https://www.getdbt.com/community/join-the-community/) member, I knew I had to get involved when I first saw the dbt Semantic Layer in the now infamous [`dbt should know about metrics` Github Issue](https://github.com/dbt-labs/dbt-core/issues/4071). It gave me a vision of a world where metrics and business logic were unified across an entire organization; a world where the data team was no longer bound to a single consuming experience and could enable their stakeholders in dozens of different ways. To me, it felt like the opportunity to contribute to the next step of what dbt could become.
 
 In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own that title! It’s not a surprise - dbt was built to serve data practicioners expand the power of our work with software engineering principles. It gave us flexibility and power to serve our organizations. But I always wondered if there were more folks who could directly benefit from interacting with dbt.
 
