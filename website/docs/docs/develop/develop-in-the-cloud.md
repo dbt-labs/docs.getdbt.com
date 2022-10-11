@@ -40,7 +40,7 @@ Review the steps below to set up your development environment and credentials:
 
 1. Create a development environment and choose **Deploy** and then **Environments** from the top left. Click **Create Environment**.
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment.png" title="Creating a new environment for the Analytics project"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/new-environment.png" title="Creating a new environment for the Analytics project"/>
 
 2. Enter an environment name that would help you identify it among your other environments (for example, `Nate's Development Environment`). 
 3. Choose **Development** as the **Environment Type**. 
@@ -48,7 +48,7 @@ Review the steps below to set up your development environment and credentials:
 5. Click **Save** to finish creating your **Development environment**.
 
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" title="Creating a development environment"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/create-new.png" title="Creating a development environment"/>
 
 
 **Developer credentials**
@@ -67,7 +67,7 @@ Follow the below steps to set up your developer credentials:
 
 Great job, you should now be able to access the Cloud IDE by clicking **Develop** on the navigation to start developing! 
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" title="Configure developer credentials in your Profile"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/credentials.png" title="Configure developer credentials in your Profile"/>
 
 ### Access the Cloud IDE
 
