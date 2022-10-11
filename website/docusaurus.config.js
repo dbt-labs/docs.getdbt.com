@@ -123,7 +123,7 @@ var siteSettings = {
             },
             {
               label: 'Guides',
-              to: '/guides/getting-started',
+              to: '/guides/best-practices',
             },
             {
               label: 'Developer Blog',

@@ -3,8 +3,8 @@ title: "Set up and connect Redshift"
 id: setting-up-redshift
 description: "Set up Redshift with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect Redshift"
-pagination_prev: guides/getting-started/getting-set-up
-pagination_next: guides/getting-started/building-your-first-project/build-your-first-models
+pagination_prev: docs/develop/getting-started/getting-set-up
+pagination_next: docs/develop/getting-started/building-your-first-project/build-your-first-models
 ---
 
 ## Introduction
