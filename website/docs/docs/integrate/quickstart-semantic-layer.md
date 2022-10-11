@@ -54,13 +54,16 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 - Set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated tool to import metric definitions
 - Recommended - Review the [dbt metrics page](/docs/building-a-dbt-project/metrics) and [Getting started with the dbt Semantic Layer](https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog
 
-### Considerations
+:::caution Considerations
 
-Here are some important considerations to know about during public preview:
+Some important considerations to know about during the public preview:
 
 - Support for Snowflake data platform only (_additional data platforms coming soon_)
 - Support for the deployment environment only (_development experience coming soon_)
 - Do not use environment variables for the job/environment (_coming soon_)
+
+:::
+
 
 :::info 📌 
 
@@ -209,20 +212,16 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" title="DAG with metrics appearing as red nodes" />
 
-:::info📌 
 
-What’s happening internally?
+**What’s happening internally?**
 
 - Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the manifest produced by the run.
 - Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.
 - Your dbt Metadata API pulls in the most recent manifest and allows your integration information to extract metadata from it.
 
-:::
-
 ## Set up dbt Semantic Layer
 
 Before continuing, you must have a multi-tenant dbt Cloud Team or Enterprise plan. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview).
-
 
 To query your universally-defined metrics in your integration tool, you need to [set up the dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) in dbt Cloud to connect with your integration tool:
 
