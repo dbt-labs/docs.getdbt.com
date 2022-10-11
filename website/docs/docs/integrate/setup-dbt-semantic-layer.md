@@ -69,4 +69,4 @@ Note  - It is *not* recommended that you use your dbt Cloud credentials due to e
 - An [API service token](/docs/dbt-cloud/dbt-cloud-api/service-tokens) with job admin and metadata permissions
 - Add the items above to the relevant fields in your integration tool
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure-sl.png" title="Set up dbt Semantic Layer in dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" title="Set up dbt Semantic Layer in dbt Cloud" />
