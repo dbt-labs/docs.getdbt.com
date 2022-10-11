@@ -1,3 +1,5 @@
+/* comment */
+
 :root {
   --ifm-color-success: #086343 !important;
   --ifm-color-info: #047377 !important;
@@ -1564,6 +1566,7 @@ section.discourse-forum-page {
 }
 .home section.from-the-community {
   margin-top: 0;
+  
 }
 
 .home .resource-section h2 {
