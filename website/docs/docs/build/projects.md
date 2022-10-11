@@ -3,6 +3,27 @@ title: "About dbt projects"
 id: "projects"
 ---
 
+
+I like to tell clients that it enforces the required top-level structure (dbt_project.yml, models, tests, snapshots — these are required so dbt knows how to parse the project. Which .sql files are tests vs models, etc) but lets them organize the underlying directories in whatever way makes the most sense to their organization or data pipeline.
+
+So when they’re deciding on the structure, they should consider how it would impact:
+
+
+
+
+
+
+
+
+By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshops` directory, and so forth. In the top-level's subdirectories, however, you can organize your project in any way that makes sense for your organization or data pipeline. This structure tells dbt the context of your the project and how to transform your data.
+
+Some considerations to think about when deciding on your structure:
+
+- how they run their dbt commands (selecting a path)
+- how they navigate their project (either developers in the IDE or stakeholders from the docs)
+- how they would configure their models (some bulk configs are easier done at the directory level so devs don’t have to remember to do everything in a conifg block with each new model)
+
+
 A dbt project is a directory of `.sql` and `.yml` files, which dbt uses to transform your data. At a minimum, a dbt project must contain:
 * A project file: A `dbt_project.yml` file tells dbt that a particular directory is a dbt project, and also contains configurations for your project.
 * [Models](/docs/build/models): A model is a single `.sql` file. Each model contains a single select statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
