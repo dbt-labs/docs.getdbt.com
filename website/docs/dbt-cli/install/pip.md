@@ -5,7 +5,7 @@ description: "You can use pip to install dbt Core and adapter plugins from the c
 
 You need to use `pip` to install dbt Core on Windows or Linux operating systems. You should use [Homebrew](install/homebrew) for installing dbt Core on a MacOS. 
 
-You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPi](https://pypi.org/project/dbt/).  We recommend using virtual environments when installing with `pip`.
+You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/). We recommend using virtual environments when installing with `pip`.
 
 <FAQ src="Core/install-pip-os-prereqs" />
 <FAQ src="Core/install-python-compatibility" />
@@ -50,7 +50,7 @@ pip install dbt-core
 
 ### `pip install dbt`
 
-Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, the PyPi package named `dbt` was a simple "pass-through" of `dbt-core` and the four original database adapter plugins. For v1, we formalized that split.
+Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, the PyPI package named `dbt` was a simple "pass-through" of `dbt-core` and the four original database adapter plugins. For v1, we formalized that split.
 
 If you have workflows or integrations that relied on installing the package named `dbt`, you can achieve the same behavior going forward by installing the same five packages that it used:
 

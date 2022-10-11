@@ -33,7 +33,12 @@ As with Exposures, you can see everything that rolls up into a metric (`dbt ls -
 
 ## Defining a metric
 
-You can define metrics in `.yml` files nested under a `metrics:` key.
+You can define metrics in `.yml` files nested under a `metrics:` key. Metric names must:
+- contain only letters, numbers, and underscores (no spaces or special characters)
+- begin with a letter
+- contain no more than 250 characters
+
+For a short human-friendly name with title casing, spaces, and special characters, use the `label` property.
 
 ### Example definition
 
@@ -54,19 +59,21 @@ metrics:
   - name: rolling_new_customers
     label: New Customers
     model: ref('dim_customers')
-    description: "The 14 day rolling count of paying customers using the product"
+    [description](description): "The 14 day rolling count of paying customers using the product"
 
     calculation_method: count_distinct
     expression: user_id # superfluous here, but shown as an example
 
     timestamp: signup_date
-    time_grains: [day, week, month]
+    time_grains: [day, week, month, quarter, year]
 
     dimensions:
       - plan
       - country
     
-    window: 14 days
+    window:
+      count: 14
+      period: day
 
     filters:
       - field: is_paying
@@ -81,9 +88,13 @@ metrics:
       - field: signup_date
         operator: '>='
         value: "'2020-01-01'"
+        
+    # general properties
+    [config](resource-properties/config):
+      enabled: true | false
+      treat_null_values_as_zero: true | false
 
-
-    meta: {team: Finance}
+    [meta](resource-configs/meta): {team: Finance}
 ```
 </VersionBlock> 
 
@@ -108,7 +119,7 @@ metrics:
     sql: user_id # superfluous here, but shown as an example
 
     timestamp: signup_date
-    time_grains: [day, week, month]
+    time_grains: [day, week, month, quarter, year]
 
     dimensions:
       - plan
@@ -127,7 +138,6 @@ metrics:
       - field: signup_date
         operator: '>='
         value: "'2020-01-01'"
-
 
     meta: {team: Finance}
 ```
@@ -153,12 +163,14 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-|calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| expression | The expression to aggregate/calculate over | user_id | yes       |
+| calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
+| expression  | The expression to aggregate/calculate over | user_id | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
-| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
+| window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`, `year`] |  {count: 14, period: day}        | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
+| config      | [Optional configurations](https://github.com/dbt-labs/dbt_metrics#accepted-metric-configurations) for calculating this metric         | {treat_null_values_as_zero: true} | no      |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
 
 </VersionBlock>
@@ -171,10 +183,10 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-|type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
+| type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
 | sql | The expression to aggregate/calculate over | user_id | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
-| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month]              | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month, quarter, year]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
@@ -236,7 +248,7 @@ metrics:
     expression: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
 
     timestamp: order_date
-    time_grains: [day, week, month]
+    time_grains: [day, week, month, quarter, year]
     dimensions:
       - had_discount
       - order_country
@@ -277,7 +289,7 @@ metrics:
     sql: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
 
     timestamp: order_date
-    time_grains: [day, week, month]
+    time_grains: [day, week, month, quarter, year]
     dimensions:
       - had_discount
       - order_country
@@ -318,7 +330,7 @@ Use the following [metrics package](https://hub.getdbt.com/dbt-labs/metrics/late
 ```yml
 packages:
   - package: dbt-labs/metrics
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=1.3.0", "<1.4.0"]
 ```
 
 </VersionBlock>
@@ -377,18 +389,23 @@ from {{ metrics.calculate(
 ### Supported inputs
 The example above doesn't display all the potential inputs you can provide to the macro.
 
-You may find some pieces of functionality, like secondary calculations, complicated to use. We recommend reviewing the [package README](https://github.com/dbt-labs/dbt_metrics) for more in-depth information about each of the inputs that are not covered in the table below
+You may find some pieces of functionality, like secondary calculations, complicated to use. We recommend reviewing the [package README](https://github.com/dbt-labs/dbt_metrics) for more in-depth information about each of the inputs that are not covered in the table below.
 
 
 | Input       | Example     | Description | Required   |
 | ----------- | ----------- | ----------- | -----------|
 | <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, [`metric('some_metric)'`, `metric('some_other_metric)'`]</VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`</VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
-| grain       | `day`, `week`, `month` | The time grain that the metric will be aggregated to in the returned dataset | Required |
+| grain       | `day`, `week`, `month`, `quarter`, `year` | The time grain that the metric will be aggregated to in the returned dataset | Required |
 | dimensions  | [`plan`, `country`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
+| secondary_calculations  | [`metrics.period_over_period(comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calcultions, and period to date calculations. | Optional |
 | start_date  | `2022-01-01` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
 | end_date    | `2022-12-31` | Limits the date range of data used in the metric claculation by not querying data after this date | Optional |
 | where       | `plan='paying_customer'` | A sql statment, or series of sql statements, that alter the **final** CTE in the generated sql. Most often used to limit the data to specific values of dimensions provided | Optional |
 
+#### Secondary Calculations
+Secondary calculations are window functions you can add to the metric calculation and perform on the primary metric or metrics. 
+
+You can use them to compare values to an earlier period, calculate year-to-date sums, and return rolling averages. You can add custom secondary calculations into dbt projects - for more information on this, reference the [package README](https://github.com/dbt-labs/dbt_metrics#secondary-calculations).
 
 ### Developing metrics with `metrics.develop`
 
@@ -401,11 +418,12 @@ There may be times you want to test what a metric might look like before definin
 {% raw %}
 
 metrics:
+    -- The name of the metric does not need to be develop_metric
   - name: develop_metric
     model: ref('fact_orders')
     label: Total Discount ($)
     timestamp: order_date
-    time_grains: [day, week, month]
+    time_grains: [day, week, month, quarter, year]
     calculation_method: average
     expression: discount_total
     dimensions:
@@ -426,8 +444,8 @@ from {{ metrics.develop(
 
 **Important caveat** - The metric list input for the `metrics.develop` macro takes in the metric names themselves, not the `metric('name')` statement that the `calculate` macro uses. Using the example above:
 
-✅ `['develop_metric']`
-❌ `[metric('develop_metric')]`
+- ✅ `['develop_metric']`
+- ❌ `[metric('develop_metric')]`
 
 </VersionBlock>
 
@@ -445,7 +463,7 @@ metrics:
     model: ref('fact_orders')
     label: Total Discount ($)
     timestamp: order_date
-    time_grains: [day, week, month]
+    time_grains: [day, week, month, quarter, year]
     type: average
     sql: discount_total
     dimensions:

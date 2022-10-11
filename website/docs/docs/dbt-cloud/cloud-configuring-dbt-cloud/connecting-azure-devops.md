@@ -4,12 +4,6 @@ id: "connecting-azure-devops"
 sidebar_label: "Connecting Azure DevOps"
 ---
 
-<Snippet src="available-beta-banner" />
-
-:::info
-You can still use dbt Cloud with Azure DevOps before this feature is generally available by [following these instructions](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#azure-devops).
-:::
-
 <Snippet src="available-enterprise-tier-only" />
 
 
