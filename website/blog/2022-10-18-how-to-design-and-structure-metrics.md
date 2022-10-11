@@ -46,7 +46,7 @@ Getting the balance  just right is a learning experience and developing communit
 
 To explore this question and begin to develop an intuition, we’ll walk through two examples of handling this divide.
 
-## Basic example - revenue
+## Basic example: Revenue
 
 ### Designing your metrics
 
