@@ -125,7 +125,7 @@ Running the command `dbt init <project_name>` to initialize a Dremio project let
  </td>
  <td><code>1</code>
  </td>
- <td>The number of threads the dbt project runs on.<br><br><b>Question:</b>Why does the sample profile for Dremio Cloud say the value can be >=1, while the other two samples use 1?
+ <td>The number of threads the dbt project runs on.<br><br><b>QUESTION:</b>Why does the sample profile for Dremio Cloud say the value can be >=1, while the other two samples use 1?
  </td>
 </tr>
 </table>
@@ -211,7 +211,7 @@ EU Control Plane<br>
    </td>
    <td>Yes</td>
    <td><code>9047</code></td>
-   <td>Port for Dremio Software cluster API endpoints. (<strong>TODO: Can this be changed?</strong>)
+   <td>Port for Dremio Software cluster API endpoints. (<strong>QUESTION: Can this be changed?</strong>)
    </td>
   </tr>
   <tr>
@@ -248,7 +248,7 @@ EU Control Plane<br>
    </td>
    <td><code>true</code>
    </td>
-   <td>Acceptable values are <code>true</code> and <code>false</code>. If the value is set to <code>true</code>, (<strong>TODO: What is the requirement on the cluster? What is covered in the third bullet point of the prereqs?</strong>)
+   <td>Acceptable values are <code>true</code> and <code>false</code>. If the value is set to <code>true</code>, (<strong>QUESTION: What is the requirement on the cluster? What is covered in the third bullet point of the prereqs?</strong>)
    </td>
   </tr>
 </table>
