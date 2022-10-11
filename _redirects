@@ -473,7 +473,7 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /guides/getting-started/getting-set-up/setting-up-databricks /docs/develop/getting-started/getting-set-up/setting-up-databricks 301
 /guides/getting-started/getting-set-up/setting-up-redshift /docs/develop/getting-started/getting-set-up/setting-up-redshift 301
 /guides/getting-started/getting-set-up/setting-up-snowflake /docs/develop/getting-started/getting-set-up/setting-up-snowflake 301
-/guides/getting-started/getting-started /docs/develop/getting-started-dbt-cloud 301
+/guides/getting-started/getting-started /docs/develop/getting-started/getting-started-dbt-cloud 301
 /guides/getting-started/learning-more /docs/develop/getting-started/getting-started-dbt-core 301
 /guides/getting-started/learning-more/getting-started-dbt-core /docs/develop/getting-started/getting-started-dbt-core 301
 /guides/getting-started/learning-more/refactoring-legacy-sql /docs/develop/getting-started/learning-more/refactoring-legacy-sql 301

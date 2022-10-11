@@ -44,4 +44,4 @@ Found 2 models, 28 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 s
 Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 
-To learn more about building a dbt project, we recommend you complete the [Getting Started guide](/docs/develop/getting-started).
+To learn more about building a dbt project, we recommend you complete the [Getting Started guide](/docs/develop/getting-started/getting-started-dbt-cloud).
