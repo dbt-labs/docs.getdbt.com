@@ -31,8 +31,8 @@ The dbt Cloud IDE comes with new features, including snappier performance and ex
 
 
 - **Version control**
-    - [NOT BUILT YET] Git diff view: Ability to see what has been changed in a file before you make a pull request
-    - [NOT BUILT YET] Merge conflict: Improve ways to deal with merge conflict
+    - Git diff view: Ability to see what has been changed in a file before you make a pull request
+    - Merge conflict: Improve ways to deal with merge conflict
 - **IDE organization**
     - **File state indicators:** We have added file state indicators to make it clear when changes or actions have been made. The indicators **M, U, and •** appear to the right of your file or folder name and indicate the actions performed:
         - Unsaved **(•)** - The IDE detects unsaved changes to your file/folder
@@ -43,8 +43,8 @@ The dbt Cloud IDE comes with new features, including snappier performance and ex
         - You can `compile` Python models to see what will ultimately get executed
         - You can see Python models in DAG in dbt version 1.3 and higher
     - Formatting: Ability to format your file powered by [sqlfmt](http://sqlfmt.com/)
-    - [TESTING] Autocomplete:
-        - [NEW] dbt autocomplete / intellisense: auto-fill model names in {{ ref ('model_name') }} or source or macro
+    - Autocomplete:
+        - dbt autocomplete / intellisense: auto-fill model names in {{ ref ('model_name') }} or source or macro
         - Snippet autocomplete: when you type __config, we drop in a snippet of code
         - Text autocomplete: we should be able to reference/autofill anything that exists in the file
 - [NOT BUILT YET] Dark mode for IDE
