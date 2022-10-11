@@ -348,8 +348,6 @@ const sidebarSettings = {
       label: "dbt Cloud IDE",
       items: [
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
-        "docs/dbt-cloud/cloud-ide/ide-beta",
       ],
     },
     {
