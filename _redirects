@@ -75,7 +75,8 @@
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions /docs/dbt-versions/upgrade-core-in-cloud 301
 /docs/core-versions /docs/dbt-versions/core 301
 /docs/dbt-cloud/cloud-dbt-cloud-support /docs/dbt-support 301
-/docs/about/viewpoint /docs/viewpoint 301
+/docs/about/viewpoint /community/resources/viewpoint 301
+/docs/viewpoint /community/resources/viewpoint 301
 /dbt-cli/configure-your-profile /docs/develop/connection-profiles 301
 /docs/running-a-dbt-project/using-the-cli /docs/develop/about-the-cli 301
 /dbt-cli/install/from-source /docs/develop/source-install 301
@@ -310,7 +311,6 @@
 /docs/var /docs/writing-code-in-dbt/jinja-context/var 302
 /docs/version /reference/global-cli-flags#version 302
 /docs/videos /guides/legacy/videos 302
-/docs/viewpoint /docs/about/viewpoint 302
 /docs/windows /dbt-cli/installation 302
 /docs/writing-code-in-dbt/class-reference /reference/dbt-classes 302
 /docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations /guides/legacy/creating-new-materializations 302
