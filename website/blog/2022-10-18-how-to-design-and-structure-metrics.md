@@ -134,7 +134,7 @@ To quote Cameron Afzal, Product Manager of the dbt Semantic Layer:
 
 To put it another way, **metrics are most useful when every dimension provided can help provide answers to the business.** 
 
-## Advanced example - NPS
+## Advanced example: NPS
 
 ### Designing a complex metric
 
