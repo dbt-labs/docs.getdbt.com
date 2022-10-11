@@ -185,7 +185,7 @@ metrics:
 
 1. Click **Save** and **Compile** the code.
 2. Commit and merge the code changes that contain the metric definitions.
-3. If you'd like to further design and design your own metrics, review the following documentation:
+3. If you'd like to further design and define your own metrics, review the following documentation:
 
     - [dbt metrics](/docs/building-a-dbt-project/metrics) will povide you in-depth detail on attributes, properties, filters, and how to define and query metrics.
    
