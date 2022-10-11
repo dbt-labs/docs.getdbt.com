@@ -311,7 +311,6 @@ const sidebarSettings = {
       ],
     },
     "docs/dbt-support",
-    "docs/viewpoint",
     {
       type: "category",
       label: "Frequently asked questions",
@@ -872,6 +871,7 @@ const sidebarSettings = {
         "community/resources/contributor-license-agreements",
         "community/resources/code-of-conduct",
         "community/resources/speaking-at-a-meetup",
+        "community/resources/viewpoint",
       ],
     },
   ],

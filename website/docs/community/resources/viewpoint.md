@@ -1,9 +1,9 @@
 ---
-title: "The dbt origin story"
+title: "The dbt Viewpoint"
 id: "viewpoint"
 ---
 
-:::info Building a Mature Analytics Workflow: The dbt Viewpoint
+:::info Building a Mature Analytics Workflow: The dbt Viewpoint!
 
 In 2015-2016, a team of folks at RJMetrics had the opportunity to observe, and participate in, a significant evolution of the analytics ecosystem. The seeds of dbt were conceived in this environment, and the viewpoint below was written to reflect what we had learned and how we believed the world should be different. **dbt is our attempt to address the workflow challenges we observed, and as such, this viewpoint is the most foundational statement of the dbt project's goals.**
 
