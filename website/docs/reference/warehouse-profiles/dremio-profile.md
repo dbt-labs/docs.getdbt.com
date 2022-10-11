@@ -15,7 +15,14 @@ title: "Dremio Profile"
 -->
 
 ## Prerequisites for Dremio Cloud
-None.
+Before connecting from project to Dremio Cloud, follow these prerequisite steps:
+* Ensure that you have the ID of the Sonar project that you want to use. See [Obtaining the ID of a Project](https://docs.dremio.com/cloud/cloud-entities/projects/#obtaining-the-id-of-a-project).
+* Ensure that you have a personal access token (PAT) for authenticating to Dremio Cloud. See [Creating a Token](https://docs.dremio.com/cloud/security/authentication/personal-access-token/#creating-a-token).
+* In the `dbt_project.yml` file at the root of your Dremio Cloud dbt project directory, append these lines:
+    ```
+    vars:
+        dremio:reflections_enabled: false
+    ```
 
 ## Prerequisites for Dremio Software
 
@@ -38,7 +45,7 @@ pip install dbt-dremio
 
 ## Profiles
 
-The initialization of a dbt project generates one of these profiles:
+Running the command `dbt init <project_name>` to initialize a Dremio project lets you choose to generate one of these three profiles:
 
 
 ### Profile for Dremio Cloud
@@ -46,13 +53,13 @@ The initialization of a dbt project generates one of these profiles:
 [project name]:
   outputs:
     dev:
-      cloud_host: [cloud host]
-      cloud_project_id: [project id]
+      cloud_host: https://api.dremio.cloud
+      cloud_project_id: [project ID]
       pat: [personal access token]
       threads: [integer >= 1]
       type: dremio
       use_ssl: true
-      user: [user email address]
+      user: [email address]
   target: dev
 ```
 
@@ -63,10 +70,10 @@ The initialization of a dbt project generates one of these profiles:
     dev:
       password: [password]
       port: [port]
-      software_host: [coordinator node]
+      software_host: [hostname or IP address]
       threads: 1
       type: dremio
-      use_ssl: [true or false]
+      use_ssl: [true|false]
       user: [username]
   target: dev
 ```
@@ -78,10 +85,10 @@ The initialization of a dbt project generates one of these profiles:
     dev:
       pat: [personal access token]
       port: [port]
-      software_host: [coordinator node]
+      software_host: [hostname or IP address]
       threads: 1
       type: dremio
-      use_ssl: [true or false]
+      use_ssl: [true|false]
       user: [username]
   target: dev
 ```
@@ -108,7 +115,7 @@ The initialization of a dbt project generates one of these profiles:
  </td>
  <td><code>dremio</code>
  </td>
- <td>Auto-populated when creating a Dremio project. Value should not be changed.<br><br><b>Question:</b>What does the "auto-populating"?<br><br><b>Question:</b>When who or what creates a Dremio project?<br>
+ <td>Auto-populated when creating a Dremio project. Do not change this value.
  </td>
 </tr>
 <tr>
@@ -118,7 +125,7 @@ The initialization of a dbt project generates one of these profiles:
  </td>
  <td><code>1</code>
  </td>
- <td>The number of threads the dbt project runs on.<br><br><b>Question:</b>Can I create only 1 project per set of Dremio configuration parameters in my <code>profiles.yaml</code> file?<br><br><b>Question:</b>Can I change this number?<br><br><b>Question:</b>If I can change it, what effects should I expect?
+ <td>The number of threads the dbt project runs on.<br><br><b>Question:</b>Why does the sample profile for Dremio Cloud say the value can be >=1, while the other two samples use 1?
  </td>
 </tr>
 </table>
