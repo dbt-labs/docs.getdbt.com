@@ -32,6 +32,8 @@ However, this is still a relatively new part of the dbt toolbox and you probably
 
 We developed these recommendations by combining the overall philosophy of dbt, with our hands-on learning gathered during the beta period and internal testing.
 
+<!--truncate-->
+
 **Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties. 
 
 ### When to put business logic in the semantic layer vs the modeling layer
@@ -125,9 +127,9 @@ What do we mean? Well, there is a lot of nuance in what constitutes a useful or 
 To quote Cameron Afzal, Product Manager of the dbt Semantic Layer:
 
 > Thoughtful curation of dimensions is essential for three main reasons:
-- ****Relevance:**** Analysts must include the dimensions most relevant to answering the question.
-- ****Trust****: Curating high-quality dimensions with little to no known errors helps ensure trust in analysis results and the decisions that follow.
-- ****Efficiency****: Curation provides a faster path to high-quality analysis results.
+- **Relevance:** Analysts must include the dimensions most relevant to answering the question.
+- **Trust**: Curating high-quality dimensions with little to no known errors helps ensure trust in analysis results and the decisions that follow.
+- **Efficiency**: Curation provides a faster path to high-quality analysis results.
 > 
 
 To put it another way, **metrics are most useful when every dimension provided can help provide answers to the business.** 
