@@ -184,7 +184,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| sql | The expression to aggregate/calculate over | user_id | yes       |
+| sql | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month, quarter, year]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
