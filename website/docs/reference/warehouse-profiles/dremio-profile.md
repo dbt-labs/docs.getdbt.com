@@ -168,6 +168,15 @@ EU Control Plane<br>
   <td>None</td>
   <td>The ID of the Sonar project in which to run transformations.</td>
   </tr>
+  <tr>
+   <td><code>use_ssl</code>
+   </td>
+   <td>Yes
+   </td>
+   <td><code>true</code>
+   </td>
+   <td>The value must be <code>true</code>.</td>
+  </tr>
   </table>
     
 ### Configurations in Profiles for Dremio Software
@@ -183,24 +192,25 @@ EU Control Plane<br>
  </td>
   </tr>
   <tr>
+   <td><code>software_host</code>
+   </td>
+   <td>Yes</td>
+   <td>None</td>
+   <td>The hostname or IP address of the coordinator node of the Dremio cluster.</strong>
+   </td>
+  </tr>
+  <tr>
    <td><code>port</code>
    </td>
-   <td>Dremio Software: Yes
-<p>
-Dremio Cloud: Do not use this configuration.
-   </td>
-   <td><code>9047</code>
-   </td>
-   <td>Port for Dremio Software cluster API endpoints. (<strong>TODO: Can this be changed?</strong>
+   <td>Yes</td>
+   <td><code>9047</code></td>
+   <td>Port for Dremio Software cluster API endpoints. (<strong>TODO: Can this be changed?</strong>)
    </td>
   </tr>
   <tr>
    <td><code>user</code>
    </td>
-   <td>Dremio Software: Yes, if you are not using the <code>pat</code> configuration.
-<p>
-Dremio Cloud: Do not use this configuration.
-   </td>
+   <td>Yes</td>
    <td>None
    </td>
    <td>The username of the account to use when logging into the Dremio cluster.
@@ -209,10 +219,7 @@ Dremio Cloud: Do not use this configuration.
   <tr>
    <td><code>password</code>
    </td>
-   <td>Dremio Software: Yes, if you are not using the <code>pat</code> configuration.
-<p>
-Dremio Cloud: Do not use this configuration.
-   </td>
+   <td>Yes, if you are not using the <code>pat</code> configuration.</td>
    <td>None
    </td>
    <td>The password of the account to use when logging into the Dremio cluster.
@@ -221,13 +228,10 @@ Dremio Cloud: Do not use this configuration.
   <tr>
    <td><code>pat</code>
    </td>
-   <td>Dremio Software: Yes, if you are not using the <code>user</code> and <code>password</code> configurations.
-<p>
-Dremio Cloud: Yes
-   </td>
+   <td>Yes, if you are not using the <code>user</code> and <code>password</code> configurations.</td>
    <td>None
    </td>
-   <td>The personal access token to use for authenticating to Dremio.<br>Dremio Software: <ul><li>See <a target="_blank" href="https://docs.dremio.com/software/security/personal-access-tokens">Personal Access Tokens</a> for instructions about obtaining a token.</li><li>The use of a personal access token takes precedence if values for the three configurations <code>user</code>, <code>password</code> and <code>pat</code> are specified.</li></ul>Dremio Cloud: See <a target="_blank" href="https://docs.dremio.com/cloud/security/authentication/personal-access-token/">Personal Access Tokens</a> for instructions about obtaining a token.
+   <td>The personal access token to use for authenticating to Dremio.<br><ul><li>See <a target="_blank" href="https://docs.dremio.com/software/security/personal-access-tokens">Personal Access Tokens</a> for instructions about obtaining a token.</li><li>The use of a personal access token takes precedence if values for the three configurations <code>user</code>, <code>password</code> and <code>pat</code> are specified.</li></ul>
    </td>
   </tr>
   <tr>
@@ -237,49 +241,7 @@ Dremio Cloud: Yes
    </td>
    <td><code>true</code>
    </td>
-   <td>Acceptable values are <code>true</code> and <code>false</code>.
-<p>
-Dremio Cloud: The value must be <code>true</code>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>database</code>
-   </td>
-   <td>No
-   </td>
-   <td><code>@user</code>
-   </td>
-   <td><strong>TODO</strong>: Info in Fabrice’s README
-   </td>
-  </tr>
-  <tr>
-   <td><code>schema</code>
-   </td>
-   <td>No
-   </td>
-   <td><code>no_schema</code>
-   </td>
-   <td><strong>TODO</strong>: Info in Fabrice’s README. Can also use what Snowflake provides: <em>The schema to build models into by default. Can be overridden with<a href="https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas"> custom schemas</a></em>
-   </td>
-  </tr>
-  <tr>
-   <td><code>datalake</code>
-   </td>
-   <td>No
-   </td>
-   <td><code>$scratch</code>
-   </td>
-   <td><strong>TODO</strong>: Info in Fabrice’s README
-   </td>
-  </tr>
-  <tr>
-   <td><code>root_path</code>
-   </td>
-   <td>No
-   </td>
-   <td><code>no_schema</code>
-   </td>
-   <td><strong>TODO</strong>: Info in Fabrice’s README
+   <td>Acceptable values are <code>true</code> and <code>false</code>. If the value is set to <code>true</code>, (<strong>TODO: What is the requirement on the cluster? What is covered in the third bullet point of the prereqs?</strong>)
    </td>
   </tr>
 </table>
