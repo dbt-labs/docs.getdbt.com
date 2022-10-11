@@ -17,7 +17,7 @@ To develop in the Cloud IDE, make sure you have the following:
 - You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/dbt-cloud/access-control/cloud-seats-and-users)
 - You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions
 - Your dbt project must be connected to a [data platform](/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database)
-- You must have a [**development environment** and **development credentials**](/docs/develop/develop-in-the-cloud#set-up-the-cloud-ide) set up
+- You must have a [**development environment** and **development credentials**](/docs/develop/develop-in-the-cloud#set-up-and-access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
 
@@ -124,7 +124,7 @@ To develop in dbt Cloud IDE (beta), you need to meet these requirements:
 
 The dbt Cloud IDE beta brings the startup and interaction time for dbt project development down from minutes to seconds, includes reliable performance and delightful enhancements to help you develop more efficiently!
 
-### Start up and work retention in the Cloud IDE beta
+### Start up and work retention
 
 <table>
 <tr><th>Start up process </th><th>Work retention</th></tr>
@@ -149,7 +149,7 @@ The Cloud IDE needs explicit action to save your changes and there are three way
 
 </td></tr> </table>
 
-## New Cloud IDE beta features
+### New Cloud IDE beta features
 
 **Format**
 You can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** button formats your file and is powered by [sqlfmt](http://sqlfmt.com/).
@@ -202,9 +202,9 @@ The status icon on the lower right corner of the IDE gives you an indicator of t
 
 The file state indicators to make it clear when changes or actions have been made. The indicators **M**, **U**, and **•** appear to the right of your file or folder name and indicate the actions performed:
 
-Unsaved (•) - The IDE detects unsaved changes to your file/folder
-Modification (M) - The IDE detects a modification of existing files/folders have saved changes file or folder
-Untracked (U) - The IDE detects changes made to new files or renamed files
+- Unsaved (•) - The IDE detects unsaved changes to your file/folder
+- Modification (M) - The IDE detects a modification of existing files/folders have saved changes file or folder
+- Untracked (U) - The IDE detects changes made to new files or renamed files
 
 
 ## Related docs
@@ -227,7 +227,7 @@ Untracked (U) - The IDE detects changes made to new files or renamed files
 <details>
   <summary>Can I be a contributor to dbt Cloud?</summary>
   <div>
-    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/docs.getdbt.com/docs/contributing/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
+    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/docs/contributing/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
   </div>
 </details>
 <details>
