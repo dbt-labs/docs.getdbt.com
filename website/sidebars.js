@@ -10,38 +10,60 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Get started with dbt Cloud",
-          collapsed: false,
-          link: { type: 'doc', id: 'guides/getting-started/getting-started' },
+          collapsed: true,
           items: [
+            "docs/develop/getting-started/getting-started-dbt-cloud",
+            {
+              type: "category",
+              label: "Getting set up",
+              items: [
+                "docs/develop/getting-started/getting-set-up",
+                "docs/develop/getting-started/getting-set-up/setting-up-bigquery",
+                "docs/develop/getting-started/getting-set-up/setting-up-databricks",
+                "docs/develop/getting-started/getting-set-up/setting-up-redshift",
+                "docs/develop/getting-started/getting-set-up/setting-up-snowflake",
+              ],
+            },
+            {
+              type: "category",
+              label: "Building your first project",
+
+              items: [
+                "docs/develop/getting-started/building-your-first-project/build-your-first-models",
+                "docs/develop/getting-started/building-your-first-project/test-and-document-your-project",
+                "docs/develop/getting-started/building-your-first-project/schedule-a-job",
+              ],
+            },
+            {
+              type: "category",
+              label: "Learning more",
+              items: [
+                "docs/develop/getting-started/learning-more/using-jinja",
+                "docs/develop/getting-started/learning-more/refactoring-legacy-sql",
+              ],
+            },
             "docs/develop/dbt-cloud-features",
           ],
         },
         {
           type: "category",
           label: "Get started with dbt Core",
-          collapsed: false,
-          link: { type: 'doc', id: 'guides/getting-started/learning-more/getting-started-dbt-core' },
+          collapsed: true,
           items: [
+          "docs/develop/getting-started/getting-started-dbt-core",
             {
               type: "category",
-              label: "Installation",
+              label: "Install dbt Core",
               collapsed: true,
-              link: { type: 'doc', id: 'docs/develop/installation' },
               items: [
+                "docs/develop/installation",
                 "docs/develop/homebrew-install",
                 "docs/develop/pip-install",
                 "docs/develop/docker-install",
                 "docs/develop/source-install",
               ],
             },
-          ],
-        },
-        {
-          type: "category",
-          label: "About the CLI",
-          collapsed: false,
-          link: { type: 'doc', id: 'docs/develop/about-the-cli' },
-          items: [
+            "docs/develop/about-the-cli",
             "docs/develop/connection-profiles",
           ],
         },
@@ -98,6 +120,17 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "Organize your outputs",
+          collapsed: true,
+          items: [
+            "docs/build/custom-schemas",
+            "docs/build/custom-databases",
+            "docs/build/custom-aliases",
+            "docs/build/custom-target-names",
+          ],
+        },
+        {
+          type: "category",
           label: "Advanced workflows",
           collapsed: true,
           items: [
@@ -148,18 +181,6 @@ const sidebarSettings = {
             "docs/build/hooks-operations",
           ],
         },
-        {
-          type: "category",
-          label: "Organize your outputs",
-          collapsed: true,
-          items: [
-            "docs/build/custom-schemas",
-            "docs/build/custom-databases",
-            "docs/build/custom-aliases",
-            "docs/build/custom-target-names",
-          ],
-        },
-        "guides/best-practices/how-we-structure/1-guide-overview",
         //"docs/building-a-dbt-project/dont-nest-your-curlies",
         //"docs/building-a-dbt-project/archival",
 
@@ -197,6 +218,7 @@ const sidebarSettings = {
       type: "category",
       label: "Collaborate",
       items: [
+        "docs/collaborate/environments",
         {
           type: "category",
           label: "Git version control",
@@ -223,7 +245,6 @@ const sidebarSettings = {
             },
           ],
         },
-        "docs/collaborate/environments",
         {
           type: "category",
           label: "Document your dbt projects",
@@ -660,45 +681,6 @@ const sidebarSettings = {
     },
   ],
   guides: [
-    {
-      type: "category",
-      label: "Getting Started with dbt Cloud",
-      link: { type: 'doc', id: 'guides/getting-started/getting-started' },
-      items: [
-        {
-          type: "category",
-          label: "Getting set up",
-          link: { type: 'doc', id: 'guides/getting-started/getting-set-up' },
-          items: [
-            "guides/getting-started/getting-set-up/setting-up-bigquery",
-            "guides/getting-started/getting-set-up/setting-up-databricks",
-            "guides/getting-started/getting-set-up/setting-up-redshift",
-            "guides/getting-started/getting-set-up/setting-up-snowflake",
-          ],
-        },
-        {
-          type: "category",
-          label: "Building your first project",
-          link: { type: 'doc', id: 'guides/getting-started/building-your-first-project' },
-
-          items: [
-            "guides/getting-started/building-your-first-project/build-your-first-models",
-            "guides/getting-started/building-your-first-project/test-and-document-your-project",
-            "guides/getting-started/building-your-first-project/schedule-a-job",
-          ],
-        },
-        {
-          type: "category",
-          label: "Learning more",
-          link: { type: 'doc', id: 'guides/getting-started/learning-more' },
-          items: [
-            "guides/getting-started/learning-more/getting-started-dbt-core",
-            "guides/getting-started/learning-more/using-jinja",
-            "guides/getting-started/learning-more/refactoring-legacy-sql",
-          ],
-        }
-      ]
-    },
     {
       type: "category",
       label: "Best practices",
