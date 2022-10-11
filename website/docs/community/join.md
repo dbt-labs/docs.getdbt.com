@@ -19,14 +19,14 @@ link="https://www.getdbt.com/community/join-the-community/"
 <Card
     title="Community Forum"
     body="Have a question about how to do something in dbt? Hop into the Community Forum and work with others to create long lived community knowledge."
-    link="community/forum"
-    icon="discussion"
+    link="/community/forum"
+    icon="discussions"
 />
 
 <Card
     title="How to contribute"
     body="Want to get involved? This is the place! Learn how to contribute to our open source repositories, write for the blog, speak at a meetup and more."
-    link="community/contribute" icon="writing"
+    link="community/contribute" icon="pencil-paper"
 />
 
 <Card

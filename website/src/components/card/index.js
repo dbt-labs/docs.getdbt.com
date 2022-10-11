@@ -13,7 +13,7 @@ function Card({ title, body, link, icon }) {
         to={useBaseUrl(link)}>
         <article className={styles.card}>
           {icon && <img
-            src={isDarkTheme ? `img/icons/white/${icon}.svg` : `img/icons/${icon}.svg`}
+            src={isDarkTheme ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
             alt=""
             className={styles.icon} />}
           <h3>{title}</h3>
@@ -23,7 +23,7 @@ function Card({ title, body, link, icon }) {
         </article>
       </Link> : <article className={styles.card}>
       {icon && <img
-            src={isDarkTheme ? `img/icons/white/${icon}.svg` : `img/icons/${icon}.svg`}
+            src={isDarkTheme ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
             alt=""
             className={styles.icon} />}
         <h3>{title}</h3>
