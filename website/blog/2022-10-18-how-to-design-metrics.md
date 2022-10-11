@@ -24,9 +24,9 @@ As a longtime dbt Community member, I knew I had to get involved when I first sa
 
 In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own that title! It’s not a surprise - dbt was built to serve data practicioners expand the power of our work with software engineering principles. It gave us flexibility and power to serve our organizations. But I always wondered if there were more folks who could directly benefit from interacting with dbt.
 
-The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practicioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo **while also** serving them to the entire business.
+The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practicioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo while also serving them to the entire business.
 
-However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how **exactly** you can do that. This blog contains our early recommendations to formulate best practices for metrics in two key areas:
+However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how exactly you can do that. This blog contains our early recommendations to formulate best practices for metrics in two key areas:
 - **Design**: What logic goes into metrics and how to apply calculations, filters and dimensions
 - **Structure**: Where these metrics will live in your dbt project and how to compose the files that contain your metrics
 
