@@ -5,7 +5,7 @@ description: "Develop, test, run, and build in the Cloud IDE."
 sidebar_label: "Develop in the Cloud"
 ---
 
-The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly, and also write, test and compile [Python models](/docs/building-a-dbt-project/building-models/python-models). 
+The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly.
 
 The IDE leverages the open-source [dbt-rpc](/docs/reference/commands/rpc) plugin to recompile only the changes made in your project.
 
@@ -196,14 +196,15 @@ You can access files in the lineage tab by double clicking on a particular model
 
 You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**. 
 
-:::info Note
-
-For your convenience, dbt Cloud automatically includes ‘`dbt`’ as a prefix to your command so you don’t need to enter it. You can also type the ‘`dbt`’ prefix in your command.
-
-:::
-
-
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
+
+**File state indicators** 
+
+The file state indicators to make it clear when changes or actions have been made. The indicators **M**, **U**, and **•** appear to the right of your file or folder name and indicate the actions performed:
+
+Unsaved (•) - The IDE detects unsaved changes to your file/folder
+Modification (M) - The IDE detects a modification of existing files/folders have saved changes file or folder
+Untracked (U) - The IDE detects changes made to new files or renamed files
 
 
 ## Related docs
