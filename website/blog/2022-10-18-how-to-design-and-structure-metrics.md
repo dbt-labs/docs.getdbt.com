@@ -222,7 +222,7 @@ metrics:
 
 ```
 
-### Option 2 - keeping logic in the modeling layer
+### Option 2: Keeping logic in the modeling layer
 
 But what if we didn’t want to encode all that information in the metric definitions? If we didn’t need the ability to dig into the component metrics and only wanted to look at the final score? In that case, we could encode most of the logic into the model itself and define the metric on top of that!
 
