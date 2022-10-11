@@ -19,7 +19,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 <Card
     title="Community Forum"
     body="Have a question about how to do something in dbt? Hop into the Community Forum and work with others to create long lived community knowledge."
-    link="forum"
+    lin="community/forum"
     icon="discussion"
 />
 
@@ -39,7 +39,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 <Card
     title="Upcoming events"
     body="Nothing beats the energy of a meetup or a live event. Whether it's in-person Meetups in your local area, Coalesce – the annual Analytics Engineering Conference – or online Office Hours there are options for everyone."
-    link="events"
+    link="community/events"
     icon="calendar" />
 
 <Card
