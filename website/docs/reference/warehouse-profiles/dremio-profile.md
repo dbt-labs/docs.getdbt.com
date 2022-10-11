@@ -7,8 +7,9 @@ title: "Dremio Profile"
 **Maintained by:** Dremio      
 **Source:** https://github.com/dremio/dbt-dremio  
 **Core Version:** 1.2.0
+
 **dbt Cloud:** Not Supported    
-**Required Version of Python:** 
+**Required Version of Python:** (<b>QUESTION:</b> What is the required version?)
 
 <!-- Who is the author going to be?
 ![dbt-dremio stars](https://img.shields.io/github/stars/fabrice-etanchaud/dbt-dremio?style=for-the-badge)
