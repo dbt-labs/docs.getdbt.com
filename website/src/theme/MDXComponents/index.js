@@ -15,7 +15,6 @@ import "./styles.css"; // MDX elements are wrapped through the MDX pragma. In so
 /*
  * docs.getdbt.com additions:
  */
-<<<<<<< HEAD
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
 import Changelog from '@site/src/components/changelog';
@@ -41,32 +40,6 @@ import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
 import BlogPostCard from '@site/src/components/blogPostCard';
 import PostCarousel from '@site/src/components/postCarousel';
-=======
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import Changelog from "@site/src/components/changelog";
-import CloudCore from "@site/src/components/cloudcore";
-import WHCode from "@site/src/components/whcode";
-import Collapsible from "@site/src/components/collapsible";
-import FAQ from "@site/src/components/faqs";
-import FAQList from "@site/src/components/faqList";
-import File from "@site/src/components/file";
-import Lightbox from "@site/src/components/lightbox";
-import Link from "@site/src/components/link";
-import LoomVideo from "@site/src/components/loom";
-import Snippet from "@site/src/components/snippet";
-import YoutubeVideo from "@site/src/components/youtube";
-import WistiaVideo from "@site/src/components/wistia";
-import VersionBlock from "@site/src/components/versionBlock";
-import Var from "@site/src/components/variable";
-import Term from "@site/src/components/term";
-import EventsFeed from "@site/src/components/events";
-import {
-  DiscourseFeed,
-  DiscourseHelpFeed,
-} from "@site/src/components/discourse";
-import Card from "@site/src/components/card";
->>>>>>> ba64df3b2ed7649b9ca050cb792f63907795422c
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
