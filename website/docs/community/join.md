@@ -19,7 +19,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 <Card
     title="Community Forum"
     body="Have a question about how to do something in dbt? Hop into the Community Forum and work with others to create long lived community knowledge."
-    lin="community/forum"
+    link="community/forum"
     icon="discussion"
 />
 
