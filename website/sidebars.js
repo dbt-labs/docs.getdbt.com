@@ -67,6 +67,7 @@ const sidebarSettings = {
             "docs/develop/connection-profiles",
           ],
         },
+        "docs/develop/run-your-dbt-projects",
       ],
     },
     {
