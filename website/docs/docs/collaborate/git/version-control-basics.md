@@ -13,7 +13,7 @@ To use version control, make sure you are connected to a Git repository in the C
 
 :::
 
-A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the [Cloud IDE](/docs/develop/develop-in-ide).
+A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the [Cloud IDE](/docs/develop/develop-in-the-cloud).
 
 When you develop in the Cloud IDE, you can leverage Git directly to version control your code from your browser. This means you can branch, commit, push, and pull code with a couple of clicks - no command line required!
 
