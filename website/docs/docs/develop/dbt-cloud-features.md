@@ -9,11 +9,11 @@ id: "dbt-cloud-features"
 
 :::info 📌
 
-The Cloud IDE refresh is now available for General Availability and includes performance upgrades, ergonomics improvements, and some delightful enhancements! Review the [new Cloud IDE features](docs/develop/dbt-cloud-features#new-cloud-ide-features) to learn more.
+The Cloud IDE refresh is now available for General Availability and includes performance upgrades, ergonomics improvements, and some delightful enhancements! Review the [new Cloud IDE features](docs/develop/dbt-cloud-features#ide-features) to learn more.
 
 :::
 
-The dbt Cloud [integrated development environment (IDE)](/docs/develop/develop-in-ide) allows you to build, test, run, and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project -- no command line required.  Anyone can use the IDE, from new dbt developers to seasoned practitioners.
+The dbt Cloud [integrated development environment (IDE)](/docs/develop/develop-in-the-cloud) allows you to build, test, run, and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project -- no command line required.  Anyone can use the IDE, from new dbt developers to seasoned practitioners.
 
 With the Cloud IDE, you can:
 
