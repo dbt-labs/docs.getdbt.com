@@ -4,8 +4,8 @@ id: "hive-setup"
 meta:
   maintained_by: Cloudera
   authors: 'Cloudera'
-  github_repo: 'cloudera/dbt-impala'
-  pypi_package: 'dbt-impala'
+  github_repo: 'cloudera/dbt-hive'
+  pypi_package: 'dbt-hive'
   min_core_version: 'v1.1.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'
