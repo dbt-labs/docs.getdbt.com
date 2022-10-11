@@ -1,5 +1,5 @@
 ---
-title: "How to design and structure dbt metrics: recommendations for getting started"
+title: "How to design and structure dbt metrics: Recommendations for getting started"
 description: "The introduction of the dbt Semantic Layer expands what users can do with dbt but introduces a familiar debate on what logic lives where. Read along as the dbt-labs team talks about best practices through the lens of two different examples!"
 slug: how-to-design-and-structure-metrics
 
