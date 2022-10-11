@@ -1522,3 +1522,23 @@ footer #ot-sdk-btn.optanon-show-settings:hover{
 .events-page section, section.discourse-forum-page {
   padding: 4rem 0;
 }
+
+/* utilities */
+.grid--3-col {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: var(--ifm-spacing-horizontal)
+}
+
+@media(min-width: 996px) {
+  .grid--3-col {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: calc(var(--ifm-spacing-horizontal) * 2);
+  }
+}
+
+.community-home section {
+  margin: calc(5vh) auto calc(2vh);
+  max-width: var(--ifm-container-width-xl);
+  padding: 0 var(--ifm-spacing-horizontal);
+}
