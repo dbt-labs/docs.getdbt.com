@@ -1570,6 +1570,10 @@ section.discourse-forum-page {
   }
 }
 
+section > h2:not(.resource-section) {
+  margin-bottom: 25px;
+}
+
 .home .resource-section {
   display: grid;
   grid-template-columns: 1fr;
@@ -1650,6 +1654,14 @@ section.discourse-forum-page {
   font-weight: 800;
 }
 
+/* Community Home styles */
+.community-home section {
+  margin: calc(5vh) auto calc(2vh);
+  max-width: var(--ifm-container-width-xl);
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
+
 /* utilities */
 .grid--3-col {
   display: grid;
@@ -1666,9 +1678,4 @@ section.discourse-forum-page {
 
 .justify-content-center {
   justify-content: center !important;
-}
-.community-home section {
-  margin: calc(5vh) auto calc(2vh);
-  max-width: var(--ifm-container-width-xl);
-  padding: 0 var(--ifm-spacing-horizontal);
 }
