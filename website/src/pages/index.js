@@ -94,27 +94,27 @@ function Home() {
           </section>
 
           <section className="from-the-community">
-            <h2>From the dbt community</h2>
+            <h2>From the dbt Community</h2>
             <div className="grid--3-col">
               <div>
                 <Card
                   title="Join the community"
                   body="Connect with data practitioners from around the world."
-                  link="https://www.getdbt.com/community/join"
+                  link="/community/join"
                   icon="smiley-face"
                 />
               </div>
               <div>
                 <Card
-                  title="How to contribute"
+                  title="Become a contributor"
                   body="Help build the resources the community uses to solve hard problems."
-                  link="/docs/introduction"
+                  link="/community/contribute"
                   icon="pencil-paper"
                 />
               </div>
               <div>
                 <Card
-                  title="Open source dbt projects"
+                  title="Open source dbt Packages"
                   body="Take your dbt project to the next level with community built packages."
                   link="https://hub.getdbt.com/"
                   icon="packages"
@@ -130,7 +130,7 @@ function Home() {
                 <Card
                   title="Guides"
                   body="Learn battle tested strategies for analytics engineering best practices."
-                  link="/guides/getting-started"
+                  link="/guides/best-practices"
                   icon="guides"
                 />
               </div>
@@ -138,7 +138,7 @@ function Home() {
                 <Card
                   title="Community Forum"
                   body="Get help and swap knowledge in the async forum."
-                  link="/guides/getting-started"
+                  link="/community/forum"
                   icon="discussions"
                 />
               </div>
