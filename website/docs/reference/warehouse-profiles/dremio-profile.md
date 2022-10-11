@@ -6,7 +6,7 @@ title: "Dremio Profile"
 ## Overview of dbt-dremio
 **Maintained by:** Dremio      
 **Source:** https://github.com/dremio/dbt-dremio  
-**Core Version:** 1.1.2
+**Core Version:** 1.2.0
 **dbt Cloud:** Not Supported    
 **Required Version of Python:** 
 
@@ -88,73 +88,99 @@ The initialization of a dbt project generates one of these profiles:
 
 ## Configurations
 
-## Configurations Common to Profiles for Dremio Cloud and Dremio Software
+### Configurations Common to Profiles for Dremio Cloud and Dremio Software
 
 <table>
-  <tr>
-   <td><strong>Configuration</strong>
-   </td>
-   <td><strong>Required?</strong>
-   </td>
-   <td><strong>Default Value</strong>
-   </td>
-   <td><strong>Description</strong>
+<tr>
+ <td><strong>Configuration</strong>
+ </td>
+ <td><strong>Required?</strong>
+ </td>
+ <td><strong>Default Value</strong>
+ </td>
+ <td><strong>Description</strong>
+ </td>
+</tr>
+<tr>
+ <td><code>type</code>
+ </td>
+ <td>Yes
+ </td>
+ <td><code>dremio</code>
+ </td>
+ <td>Auto-populated when creating a Dremio project. Value should not be changed.<br><br><b>Question:</b>What does the "auto-populating"?<br><br><b>Question:</b>When who or what creates a Dremio project?<br>
+ </td>
+</tr>
+<tr>
+ <td><code>threads</code>
+ </td>
+ <td>Yes
+ </td>
+ <td><code>1</code>
+ </td>
+ <td>The number of threads the dbt project runs on.<br><br><b>Question:</b>Can I create only 1 project per set of Dremio configuration parameters in my <code>profiles.yaml</code> file?<br><br><b>Question:</b>Can I change this number?<br><br><b>Question:</b>If I can change it, what effects should I expect?
+ </td>
+</tr>
+</table>
+  
+### Configurations in Profiles for Dremio Cloud
+<table>
+<tr>
+ <td><strong>Configuration</strong>
+ </td>
+ <td><strong>Required?</strong>
+ </td>
+ <td><strong>Default Value</strong>
+ </td>
+ <td><strong>Description</strong>
+ </td>
+</tr>
+<tr>
+<td><code>cloud_host</code>
+</td>
+<td>Yes
+</td>
+<td><code>https://api.dremio.cloud</code>
+</td>
+<td>
+<p>US Control Plane<br>
+<code>https://api.dremio.cloud</code>
+<p>
+EU Control Plane<br>
+<code>https://api.eu.dremio.cloud</code>
    </td>
   </tr>
   <tr>
-   <td><code>type</code>
-   </td>
-   <td>Yes
-   </td>
-   <td><code>dremio</code>
-   </td>
-   <td>Auto-populated when creating a Dremio project. Value should not be changed.<br><br><b>Question:</b>What does the "auto-populating"?<br><br><b>Question:</b>When who or what creates a Dremio project?<br>
-   </td>
+  <td><code>user</code></td>
+  <td>Yes</td>
+  <td>None</td>
+  <td>Email address used as a username in Dremio Cloud
   </tr>
   <tr>
-   <td><code>threads</code>
-   </td>
-   <td>Yes
-   </td>
-   <td><code>1</code>
-   </td>
-   <td>The number of threads the dbt project runs on.<br><br><b>Question:</b>Can I create only 1 project per set of Dremio configuration parameters in my <code>profiles.yaml</code> file?<br><br><b>Question:</b>Can I change this number?<br><br><b>Question:</b>If I can change it, what effects should I expect?
-   </td>
+  <td><code>pat</code></td>
+  <td>Yes</td>
+  <td>None</td>
+  <td>Personal Access Token<br>See <a target="_blank" href="https://docs.dremio.com/cloud/security/authentication/personal-access-token/">Personal Access Tokens</a> for instructions about obtaining a token.</td>
+  </tr>
+  <tr>
+  <td><code>cloud_project_id</code></td>
+  <td>Yes</td>
+  <td>None</td>
+  <td>The ID of the Sonar project in which to run transformations.</td>
   </tr>
   </table>
-  
-  ### Configurations in Profiles for Dremio Cloud
-  <table>
-    <tr>
-     <td><strong>Configuration</strong>
-     </td>
-     <td><strong>Required?</strong>
-     </td>
-     <td><strong>Default Value</strong>
-     </td>
-     <td><strong>Description</strong>
-     </td>
-    </tr>
-  <tr>
-   <td><code>host</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>None
-   </td>
-   <td>Dremio Software: The hostname or IP address of coordinator node in the Dremio cluster.
-<p>
-Dremio Cloud:
-<ul>
-<li>US Control Plane
-<p>
-<code>https://api.dremio.cloud</code></li>
-<li>
-EU Control Plane
-<p>
-<code>https://api.eu.dremio.cloud</code></li>
-</ul>
-   </td>
+    
+### Configurations in Profiles for Dremio Software
+<table>
+<tr>
+ <td><strong>Configuration</strong>
+ </td>
+ <td><strong>Required?</strong>
+ </td>
+ <td><strong>Default Value</strong>
+ </td>
+ <td><strong>Description</strong>
+ </td>
   </tr>
   <tr>
    <td><code>port</code>
