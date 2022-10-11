@@ -16,9 +16,25 @@ For more info on public preview and plan availability, check out the [public pre
 
 :::
 
-Try out the features of the dbt Semantic Layer and follow this guide to learn more.
+
+## Public preview
+    
+We're excited to announce the dbt Semantic Layer is currently available for public preview, which means:
+
+&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. For more info on plan availability, check out our [product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section.
+
+&mdash; **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
+
+&mdash; **When?** Public preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
+
+&mdash; **Where?** Public preview is enabled at the account level so you don’t need to worry about enabling it per user.
+
+&mdash; **Why?** Public preview is designed to test the functionality and collect feedback from the community on performance, usability, and documentation. 
+
 
 ## Introduction
+
+Try out the features of the dbt Semantic Layer and follow this guide to learn more. 
 
 To use the dbt Semantic Layer, you first need to have a dbt project set up. This quickstart guide will lay out the following steps, and recommends a workflow that demonstrates some of its essential features:
 
@@ -205,11 +221,8 @@ What’s happening internally?
 
 ## Set up dbt Semantic Layer
 
-:::info 📌
-
 Before continuing, you must have a multi-tenant dbt Cloud Team or Enterprise plan. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview).
 
-:::
 
 To query your universally-defined metrics in your integration tool, you need to [set up the dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) in dbt Cloud to connect with your integration tool:
 
@@ -271,26 +284,6 @@ Developer accounts will be able to query the Proxy Server using SQL, but will no
 </details>
       <br></br>   
 
-
-      
-## Public preview
-    
-We're excited to announce the dbt Semantic Layer is currently available for public preview, which means:
-
-:::info 📌
-
-&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. For more info on plan availability, check out our [product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section.
-
-&mdash; **What?** Public preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
-
-&mdash; **When?** Public preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
-
-&mdash; **Where?** Public preview is enabled at the account level so you don’t need to worry about enabling it per user.
-
-&mdash; **Why?** Public preview is designed to test the functionality and collect feedback from the community on performance, usability, and documentation. 
-
-:::
-    
     
 ## Next steps
 
