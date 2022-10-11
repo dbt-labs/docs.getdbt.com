@@ -143,7 +143,7 @@ In the end — not as valuable as originally hoped (and that’s ok!). Editor no
 - Materialize your clean dataset to improve collaboration
 - Sell to the business
 
-#### Migrating 387 models from Redshift to Snowflake — Bowery Farming Data Team
+#### Migrating 387 models from Redshift to Snowflake — Bowery Farming Data Team!
 
 *[Video](https://www.youtube.com/watch?v=VhH614WVufM), [slides](https://docs.google.com/presentation/d/1wE8NSkFPLFKGQ8fvFUUKoZFVoUhws_FhFip-9mDhoPU/).*
 
