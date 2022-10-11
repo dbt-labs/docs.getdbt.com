@@ -212,7 +212,7 @@ Untracked (U) - The IDE detects changes made to new files or renamed files
 - [What is dbt?](/docs/introduction#dbt-features)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [dbt Cloud features](/docs/develop/dbt-cloud-features)
-- [Version control basics](/docs/collaboration/version-control-basics)
+- [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/docs/reference/dbt-commands)
 
 
