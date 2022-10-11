@@ -29,10 +29,10 @@ The IDE is a single interface for building, testing, running, and version contro
 
 To use the dbt Cloud IDE, you need to log in with a dbt Cloud account and click  **Develop** at the top of the page.
 
-You can refer to [Getting Started with dbt Cloud](/docs/develop/getting-started/getting-started-dbt-cloud) to quickly get set up and perform some key tasks. For more information, see the following articles.
+You can refer to [Getting Started with dbt Cloud](/docs/get-started/getting-started/getting-started-dbt-cloud) to quickly get set up and perform some key tasks. For more information, see the following articles.
 
 - [What is dbt?](docs/introduction#what-else-can-dbt-do)
-- [Building your first project](/docs/develop/getting-started/building-your-first-project)
+- [Building your first project](/docs/get-started/getting-started/building-your-first-project)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [Using Git](https://docs.github.com/en/github/getting-started-with-github/using-git)
 

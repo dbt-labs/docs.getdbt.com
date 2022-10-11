@@ -21,6 +21,6 @@ description: Let's test and document our models to build trust in our data.
 
 ## Next steps
 
-Once you test and document your project, you're ready to [Schedule a job](/docs/develop/getting-started/building-your-first-project/schedule-a-job).
+Once you test and document your project, you're ready to [Schedule a job](/docs/get-started/getting-started/building-your-first-project/schedule-a-job).
 
 <Snippet src="tutorial-next-steps-tests" />

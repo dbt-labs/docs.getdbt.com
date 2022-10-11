@@ -55,7 +55,7 @@ To get started with a project and connection, follow the onboarding flow. Use th
 To use the CLI:
 
 1. Follow [these instructions](/dbt-cli/install/overview) to install the dbt CLI
-2. [Set up a profile](/docs/develop/connection-profiles) to connect to your data warehouse
+2. [Set up a profile](/docs/get-started/connection-profiles) to connect to your data warehouse
 3. Build your dbt project in a code editor, like Atom or VSCode
 4. Execute commands using your terminal
 
