@@ -7,7 +7,7 @@ sidebar_label: "dbt Semantic Layer"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available for public preview! With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! 
+The dbt Semantic Layer is currently available for public preview. With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! 
 
 For more info on public preview and plan availability, check out the [public preview](/docs/integrate/dbt-semantic-layer#public-preview) and [product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) section.
     
@@ -25,7 +25,7 @@ The result? You have less duplicative coding for data teams and more consistency
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
 
-**What makes the dbt Semantic Layer different?**
+### What makes the dbt Semantic Layer different?
 
 The dbt Semantic Layer removes code duplication and inconsistency regarding your business metrics. By moving metric definitions out of the BI layer and into the modeling layer, data teams can feel confident that different business units are working from the same data definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications.
 
@@ -37,9 +37,9 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
    * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.
 - Have both your production and development environments running dbt version 1.2 (latest) or higher
 - Use Snowflake data platfrom 
-- Install the metrics package version 0.3.2 or higher in your dbt project
+- Install the [metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) version 0.3.2 or higher in your dbt project
 - Set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated tool to import metric definitions
-- Recommended - Review the dbt metrics page and Getting started with the dbt Semantic Layer blog
+- Recommended - Review the [dbt metrics page](/docs/building-a-dbt-project/metrics) and [Getting started with the dbt Semantic Layer blog](/docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer)
 
 :::caution Considerations
 
@@ -112,5 +112,5 @@ You can define your metrics in `.yml` files nested under a metrics key. To start
 
 - [Structuring and designing your metrics](URL) blog to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, filters, how to define and query your metrics and [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics)
-- [dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer.md#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
+- [dbt Semantic Layer](/docs/integrate/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
 - [Getting started with the Semantic Layer](/docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples
