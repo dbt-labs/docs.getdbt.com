@@ -106,7 +106,7 @@ dbt Cloud has a number of pre-defined variables built in. The following environm
 
 **Git details**
 
-_Note: These variables are currently only available for GitHub and GitLab
+_Note: These variables are currently only available for GitHub, GitLab, and Azure DevOps
 PR builds triggered via a webhook_
 
 - `DBT_CLOUD_PR_ID`: The Pull Request ID in the connected version control system

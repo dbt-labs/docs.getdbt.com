@@ -45,8 +45,8 @@ The green checkmark means the dbt builds and tests were successful. Clicking the
 
 ### Azure DevOps pull request example
 
-The green checkmark means the dbt builds and tests were successful. Clicking **pipeline** navigates you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI.png" title="Azure DevOps pull request"/>
+The green checkmark means the dbt builds and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" title="Azure DevOps pull request"/>
 
 ## Configuring a dbt Cloud CI job
 
