@@ -1,5 +1,5 @@
 ---
-title: Join the community
+title: Join the Community
 id: join
 ---
 
@@ -30,9 +30,9 @@ link="https://www.getdbt.com/community/join-the-community/"
 />
 
 <Card
-    title="Open source projects"
-    body="From dbt Core to developer tools and more - we’re committed to supporting a vibrant open source ecosystem."
-    link="community/resources/oss-projects"
+    title="Code of Conduct"
+    body="The dbt Community is diverse, inclusive and vibrant. We are committed to creating a space where everyone can feel welcome and safe to join, contribute and share their ideas. Our Code of Conduct reflects the agreement that all Community members make to each other to uphold these ideals."
+    link="https://www.getdbt.com/community/code-of-conduct/"
     icon="folder"
 />
 
