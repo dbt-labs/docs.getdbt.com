@@ -7,17 +7,17 @@ const sidebarSettings = {
       items: [
         "docs/introduction",
         "docs/supported-data-platforms",
+        "docs/get-started/getting-started/overview",
         {
           type: "category",
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/getting-started-dbt-cloud",
+            "docs/get-started/getting-started/set-up-dbt-cloud",
             {
               type: "category",
               label: "Getting set up",
               items: [
-                "docs/get-started/getting-started/getting-set-up",
                 "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
                 "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
                 "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
@@ -67,7 +67,7 @@ const sidebarSettings = {
             "docs/get-started/connection-profiles",
           ],
         },
-        "docs/develop/run-your-dbt-projects",
+        "docs/get-started/run-your-dbt-projects",
       ],
     },
     {

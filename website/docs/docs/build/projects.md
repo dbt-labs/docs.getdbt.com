@@ -18,7 +18,7 @@ A project may also contain a number of other resources, such as [snapshots](snap
 
 :::info Creating your first dbt project
 
-If you're new to dbt, we recommend that you check out our [Getting Started guide](/docs/get-started/getting-started/getting-started-dbt-cloud) to build your first dbt project.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/docs/get-started/overview) to build your first dbt project.
 
 :::
 
