@@ -103,7 +103,7 @@ You can view the latest version of your documentation rendered in a new browser 
 :::info Join our beta
 
 
-If you’d like to try the dbt Cloud IDE for multi-tenant instances, please [sign up](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the beta. To learn more about the beta features, you can read this section.
+If you’d like to try the dbt Cloud IDE beta, available for multi-tenant instances, please [sign up](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the beta. To learn more about the beta features, you can read this section.
 
 :::
 
