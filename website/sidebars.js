@@ -43,6 +43,8 @@ const sidebarSettings = {
               ],
             },
             "docs/develop/dbt-cloud-features",
+            "docs/develop/develop-in-the-cloud",
+            "docs/develop/dbt-cloud-tips",
           ],
         },
         {
@@ -222,6 +224,8 @@ const sidebarSettings = {
           type: "category",
           label: "Git version control",
           items: [
+            "docs/collaborate/git/git-version-control",
+            "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/pr-template",
             "docs/collaborate/git/resolve-merge-conflicts",
             {
