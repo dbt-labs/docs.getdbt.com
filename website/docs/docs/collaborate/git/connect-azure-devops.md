@@ -3,12 +3,6 @@ title: "Connect to Azure DevOps"
 id: "connect-azure-devops"
 ---
 
-<Snippet src="available-beta-banner" />
-
-:::info
-You can still use dbt Cloud with Azure DevOps before this feature is generally available by [following these instructions](docs/collaborate/git/import-a-project-by-git-url#azure-devops).
-:::
-
 <Snippet src="available-enterprise-tier-only" />
 
 

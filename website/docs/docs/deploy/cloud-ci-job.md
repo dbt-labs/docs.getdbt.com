@@ -1,7 +1,7 @@
 ---
 title: "dbt Cloud CI job"
 id: "cloud-ci-job"
-description: "You can enable CI to test every single change prior to deploying the code to production just like in a software development workflow."
+description: "You can enable continuous integration (CI) to test every single change prior to deploying the code to production just like in a software development workflow."
 ---
 
 ## Overview
@@ -45,8 +45,8 @@ The green checkmark means the dbt builds and tests were successful. Clicking the
 
 ### Azure DevOps pull request example
 
-The green checkmark means the dbt builds and tests were successful. Clicking **pipeline** navigates you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI.png" title="Azure DevOps pull request"/>
+The green checkmark means the dbt builds and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" title="Azure DevOps pull request"/>
 
 ## Configuring a dbt Cloud CI job
 
@@ -138,7 +138,7 @@ If your temporary PR schemas aren't dropping after a merge or close of the PR, i
 <details>
   <summary>You have overridden the <code>generate_schema_name</code> macro</summary>
   <div>
-    <div>To resolve this, change your macro so that the temporary PR schema name contains the default prefix and review the guidance below: 
+    <div>To resolve this, change your macro so that the temporary PR schema name contains the default prefix and review the guidance below:
     <br></br>
       • ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>) <br></br>
       • ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
@@ -200,4 +200,3 @@ fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
 ```
 
 Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
-
