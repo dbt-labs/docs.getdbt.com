@@ -110,7 +110,7 @@ And then there’s `dimensions`.
 
 The `dimensions` attribute is a bit more nuanced than the others because it involves curating the ways through which a user can interact with the metric. To that end …
 
-*❗ **We recommend curating dimensions, not including all columns within the model. Most models contain dimensions that aren’t relevant for end-user analysis.***
+❗ **We recommend curating dimensions, not including all columns within the model. Most models contain dimensions that aren’t relevant for end-user analysis.**
 
 What do we mean? Well, there is a lot of nuance in what constitutes a useful or less useful dimension that is dependent on the shape of the underlying data and the ways with which the metric will be consumed. Continuing with our revenue use case, here are some examples:
 
