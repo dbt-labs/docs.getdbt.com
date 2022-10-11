@@ -3,7 +3,7 @@ title: "dbt Slack: Rules of the Road"
 id: "slack-rules-of-the-road"
 ---
 
-As of February 2022, the dbt Slack community includes 25,000+ data professionals and is growing month-over-month. People genuinely love this community. It’s filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
+As of October 2022, the dbt Slack community includes 35,000+ data professionals and is growing month-over-month. People genuinely love this community. It’s filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
 
 We are committed to maintaining the spirit of this community, and as such have written these rules to help new members understand how to best participate in our community.
 
@@ -24,7 +24,7 @@ It’s important that we make it possible for members of the community to opt-in
 - For questions about data modeling or for SQL help, use **#modeling**
 - For conversations unrelated to dbt or analytics, consider if dbt Slack is an appropriate medium for the conversation. If so, use **#memes-and-off-topic-chatter**.
 
-If you're hitting an error, consider posting to [Stack Overflow](https://stackoverflow.com/questions/ask?tags=dbt) — we're moving more troubleshooting questions to Stack Overflow. A community member might summon Slackbot to let you know that Stack Overflow is a more appropriate medium by posting the words `stack overflow bot` as a reply to your message.
+If you're hitting an error, you should post your question in [the Community Forum](https://discourse.getdbt.com) instead.
 
 ## Rule 3: Put effort into your question
 dbt Slack is a community of volunteers. These are kind, knowledgeable, helpful people who share their time and expertise for free.
