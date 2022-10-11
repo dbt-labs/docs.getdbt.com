@@ -14,7 +14,7 @@ const sidebarSettings = {
           link: { type: 'doc', id: 'guides/getting-started/getting-started' },
           items: [
             "docs/develop/dbt-cloud-features",
-            "docs/develop/develop-in-ide",
+            "docs/develop/develop-in-the-cloud",
             "docs/develop/dbt-cloud-tips",
           ],
         },
@@ -202,9 +202,9 @@ const sidebarSettings = {
           type: "category",
           label: "Git version control",
           items: [
+            "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/pr-template",
             "docs/collaborate/git/resolve-merge-conflicts",
-            "docs/collaborate/git/version-control-basics",
             {
               type: "category",
               label: "Supported git providers",
