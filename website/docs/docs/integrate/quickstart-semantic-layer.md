@@ -34,9 +34,7 @@ We're excited to announce the dbt Semantic Layer is currently available for publ
 
 ## Introduction
 
-Try out the features of the dbt Semantic Layer and follow this guide to learn more. 
-
-To use the dbt Semantic Layer, you first need to have a dbt project set up. This quickstart guide will lay out the following steps, and recommends a workflow that demonstrates some of its essential features:
+To try out the features of the dbt Semantic Layer, you first need to have a dbt project set up. This quickstart guide will lay out the following steps, and recommends a workflow that demonstrates some of its essential features:
 
 - Install dbt metrics package
 - Define metrics
