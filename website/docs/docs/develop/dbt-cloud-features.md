@@ -45,17 +45,30 @@ The dbt Cloud IDE comes with great features to make it easy for you to develop, 
 
 
 **Features available in the Cloud IDE beta**
-  * Format: Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/)
-  * File state indicators: We have added file state indicators to make it clear when changes or actions have been made. The indicators **M, U, and •** appear to the right of your file or folder name and indicate the actions performed:
+
+- Format files with a click of a button
+  * Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/)
+
+- File state indicators
+  * We have added file state indicators to make it clear when changes or actions have been made. The indicators **M, U, and •** appear to the right of your
+  file or folder name and indicate the actions performed:
        *  Unsaved **(•)** - The IDE detects unsaved changes to your file/folder
        *  Modification **(M)** - The IDE detects a modification of existing files/folders have saved changes file or folder
        *  Untracked **(U)** - The IDE detects changes made to new files or renamed files
-  * Build, test and run your project with a click of a button, or using the Cloud IDE command bar.
-  * Drag and drop: You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear
+
+- Build, test and run your project with a click of a button, or using the Cloud IDE command bar.
+
+- Drag and drop
+  * You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear
   navigation. You can access adjacent files in the same file by right clicking on the breadcrumb file.
-  * Organize tabs: You can move your tabs around to reorganize your work in the IDE. You can also right click on a tab to view and select a list of actions
+  
+- Organize tabs
+  * You can move your tabs around to reorganize your work in the IDE. You can also right click on a tab to view and select a list of actions
   to take.
-* Multiple selections: You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
+
+- Multiple selections
+  * You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert
+  cursors below or above with ease.
 
      * Option-Command-Down arrow
      * Option-Command-Up arrow
