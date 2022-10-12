@@ -26,7 +26,7 @@ Some important considerations to know about during the Public Preview:
 
 ## Set up dbt Semantic Layer
 
-Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud account. Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
+Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud account. Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
 
 
 You can set up the dbt Semantic Layer in dbt Cloud at the environment level by following these steps:
@@ -57,7 +57,7 @@ Note  - It is *not* recommended that you use your dbt Cloud credentials due to e
 
 :::
 
-11. You need to set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated partner tool to import the metric definitions. The integrated parnter tool will treat the dbt Server as another data source (like a data platform). This requires:
+11. You need to set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) (Team and Enterprise accounts only) in the integrated partner tool to import the metric definitions. The integrated parnter tool will treat the dbt Server as another data source (like a data platform). This requires:
 
 - The account ID, environment ID, and job ID (visible in the job URL)
 - An [API service token](/docs/dbt-cloud/dbt-cloud-api/service-tokens) with job admin and metadata permissions
