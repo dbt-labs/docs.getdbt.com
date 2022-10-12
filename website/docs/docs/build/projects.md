@@ -36,7 +36,8 @@ Edit `dbt_project.yml` to set up common project configurations such as:
 | YAML key  | Value description  |
 | :--- | :--- |
 | [name](/reference/project-configs/name) | Your project’s name in [snake case](https://en.wikipedia.org/wiki/Snake_case) |
-| [version](/reference/project-configs/version) | The [dbt Core version](/docs/dbt-versions/core) your project is using |
+| [version](/reference/project-configs/version) | Version of your project |
+| [require-dbt-version](/reference/project-configs/require-dbt-version) | Restrict your project to only work with a range of [dbt Core versions](/docs/dbt-versions/core) |
 | [profile](/reference/project-configs/profile) | The profile dbt uses to connect to your data platform |
 | [model-paths](/reference/project-configs/model-paths) | Directories to where your model and source files live  |
 | [seed-paths](/reference/project-configs/seed-paths) | Directories to where your seed files live |
