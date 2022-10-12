@@ -60,7 +60,7 @@ function Home() {
                   <Card
                     title="Getting started guide"
                     body="Learn how to set up dbt and build your first models. You will also test and document your project, and schedule a job."
-                    link="/guides/getting-started"
+                    link="/docs/get-started/overview"
                     icon="book"
                   />
                 </div>
@@ -68,7 +68,7 @@ function Home() {
                   <Card
                     title="Docs"
                     body="Discover everything dbt has to offer from the basics to advanced concepts."
-                    link="/docs/introduction"
+                    link="/docs/build/projects"
                     icon="docs"
                   />
                 </div>
@@ -76,7 +76,7 @@ function Home() {
                   <Card
                     title="Supported data platforms"
                     body="dbt connects to most major databases, data warehouses, data lakes, or query engines."
-                    link="/docs/available-adapters"
+                    link="/docs/supported-data-platforms"
                     icon="rocket"
                   />
                 </div>

@@ -414,8 +414,6 @@ a.navbar__item.navbar__link.btn:hover {
   color: inherit;
 }
 
-.menu__caret,
-.menu__link,
 .menu__list-item-collapsible:hover {
   background: var(--ifm-menu-color-background-hover) !important;
 }
@@ -433,6 +431,7 @@ a.navbar__item.navbar__link.btn:hover {
 .menu__caret:hover {
   background: transparent;
 }
+
 
 /* level2 */
 li.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 .menu__list-item-collapsible {
