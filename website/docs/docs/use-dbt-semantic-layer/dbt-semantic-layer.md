@@ -7,7 +7,9 @@ sidebar_label: "dbt Semantic Layer"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available in Public Preview for North American multi-tenant dbt Cloud accounts. With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more! 
+The dbt Semantic Layer is currently available in Public Preview for North American multi-tenant dbt Cloud accounts. 
+
+With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more! 
 
 For more info on Public Preview and plan availability, check out the [Public Preview](/docs/use-dbt-semantic-layer/dbt-semantic-layer#public-preview) and [product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) section.
     
@@ -52,7 +54,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /> 
 - Have both your production and development environments running dbt version 1.2 (latest) <br />
 - Use Snowflake data platform <br />
-- Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=1.3.0", "<1.4.0"</code> in your dbt project <br />
+- Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=0.3.0", "<0.4.0"</code> in your dbt project <br />
 - Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview">Metadata API</a> in the integrated tool to import metric definitions <br />
 - Recommended - Review the <a href="https://docs.getdbt.com/docs/building-a-dbt-project/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer">Getting started with the dbt Semantic Layer</a> blog <br />
 
