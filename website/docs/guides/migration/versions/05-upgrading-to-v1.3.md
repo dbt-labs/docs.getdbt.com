@@ -4,7 +4,7 @@ title: "Trying out v1.3 (prerelease)"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
-- [CLI Installation guide](/dbt-cli/install/overview)
+- [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
 
 ## Breaking changes

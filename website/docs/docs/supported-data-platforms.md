@@ -9,7 +9,7 @@ To learn more about adapters, check out [What Are Adapters](/contributing/adapte
 
 ## Adapter Installation
 
-With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/dbt-cli/install/overview).
+With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/get-started/installation).
 
 ## Adapter Taxonomy
 
