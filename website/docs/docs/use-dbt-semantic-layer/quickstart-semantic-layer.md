@@ -9,7 +9,7 @@ sidebar_label: "Quickstart"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available for Public Preview. With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more! 
+The dbt Semantic Layer is currently available in Public Preview for North American multi-tenant dbt Cloud accounts. With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more! 
 
 
 For more info on Public Preview and plan availability, check out the [Public Preview](/docs/use-dbt-semantic-layer/quickstart-semantic-layer#public-preview) and [product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) section.
@@ -44,7 +44,8 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 <VersionBlock firstVersion="1.3" >
 
-- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
+- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. 
+  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
 - Have both your production and development environments running dbt version 1.3 or higher <br />
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=1.3.0", "<1.4.0"</code> in your dbt project <br />
@@ -55,7 +56,8 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 <VersionBlock lastVersion="1.2">
 
-- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /> 
+- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. 
+  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /> 
 - Have both your production and development environments running dbt version 1.2 (latest) <br />
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=1.3.0", "<1.4.0"</code> in your dbt project <br />
