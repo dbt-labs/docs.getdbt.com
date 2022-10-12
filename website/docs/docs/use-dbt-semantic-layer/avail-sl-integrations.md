@@ -11,9 +11,9 @@ The dbt Semantic Layer brings a wide range of partners you can integrate and que
 
 There are two categories of partner integrations: 
 
--  **dbt Semantic Layer partners** - This refers to a group of dbt Labs partners who have full end-to-end integrations with the dbt Semantic Layer and leverage the dbt Server. 
+-  **dbt Semantic Layer partners** - Semantic Layer integrations are capable of interactively querying dbt metrics, surfacing the underlying data in partner tools. This refers to a group of dbt Labs partners who have full end-to-end integrations with the dbt Semantic Layer and leverage the dbt Server. 
 
--  **dbt metrics ready partners** - This refers to all partners integrating with dbt metrics functionality but do not leverage the dbt Server.
+-  **Metrics Ready partners** - Metrics Ready integrations facilitate building, discovery, and collaboration on dbt metric definitions.
 
 For information on the different integration partners, their documentation, and more, review our [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
