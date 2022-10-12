@@ -10,7 +10,6 @@ default_value: dbt_packages
 </Changelog>
 
 
-</File>
 
 ## Definition
 Optionally specify a custom directory where [packages](package-management) are installed when you run the `dbt deps` [command](deps). Note that this directory is usually git-ignored.
