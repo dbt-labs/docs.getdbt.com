@@ -11,20 +11,20 @@ There are three things you should do to be a good channel maintainer in the [dbt
 - Keep an eye out in #introductions for folks who might benefit from your new channel. For example if someone works in the space or on  the same problems, then direct them to the channel.
 - Make sure folks follow the [Rules of the Road](https://docs.getdbt.com/docs/contributing/slack-rules-of-the-road) in the channel. If you notice someone is not following one, gently remind them of the rule in thread, and, ideally, provide an example of how they can rephrase their message or where they can redirect it.  If you have a question about how to proceed, just post it in #ask-a-moderator with a screenshot or link to the thread and someone will give you advice.
 
-## Scope of the Role
+## Scope of the role
 
 A maintainer can be a dbt Labs employee, but does not have to be. *Slack channel maintainer* is philosophically similar to OSS maintainer. At the onset, the channel maintainer will help build up this new space in Slack and stir up conversation during the first few weeks of the channel's existence. They are someone who stays on top of feedback and encourages generative contributions. This is not necessarily someone who is the generator of content and contributions, or answers every question. 
 
-## Initial Instructions
+## Initial instructions
 
-1. Review the [Rules of the Road](https://docs.getdbt.com/docs/contributing/slack-rules-of-the-road) and [Code of Conduct](https://www.getdbt.com/community/code-of-conduct) and please let the the folks who created the channel know that you read both documents and you agree to be mindful of them. 
+1. Review the [Rules of the Road](community/resources/slack-rules-of-the-road) and [Code of Conduct](community/resources/code-of-conduct) and please let the the folks who created the channel know that you read both documents and you agree to be mindful of them. 
 2. If you are a vendor, review the [Vendor Guidelines](https://www.getdbt.com/community/vendor-guidelines).
 3. Add the Topic and Description to the channel. @Mention your name in the channel Description, identifying yourself as the maintainer. Ex: *Maintainer: First Last (pronouns).* If you are a vendor, make sure your Handle contains your affiliation.
 4. Complete or update your Slack profile by making sure your Company (in the ‘What I do’ field), Pronouns, and Handle, if you’re a vendor, are up-to-date.
 5. Post initial conversation topics once a few folks get in the channel to help folks get to know each other. Check out this [example introductory post](https://getdbt.slack.com/archives/C02FXAZRRDW/p1632407767005000). 
 6. Stir up conversation during the first few weeks of the channel's existence. As you get started, answer the questions you can or help find someone with answers, seed discussions about once a week, and making sure folks follow the Rules of the Road. 
 
-## Long-term Expectations
+## Long-term expectations
 
 - Maintaining the channel, checking in and being active on a regular basis by answering folks' questions, and seeding discussions. Want an example? Check out [this poll](https://getdbt.slack.com/archives/C022A67TLFL/p1628279819038800).
 - For guidance on how to answer a question, see [Answering Community Questions](https://www.getdbt.com/community/answering-community-questions). If you are not sure how to answer a lingering or unanswered question, you can post about it in #ask-a-moderator or direct it to another channel, if relevant.

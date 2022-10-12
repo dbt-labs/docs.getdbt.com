@@ -40,6 +40,10 @@ async function getDiscourseTopics({ body }) {
           topic.like_count = firstTopicPost.like_count
         }
 
+        if(firstTopicPost?.blurb) {
+          topic.blurb = firstTopicPost.blurb
+        }
+
         // Push updated topic to array
         topicsArr.push(topic)
           
