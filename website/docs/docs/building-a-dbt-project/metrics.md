@@ -38,7 +38,7 @@ You can define metrics in `.yml` files nested under a `metrics:` key. Metric nam
 - begin with a letter
 - contain no more than 250 characters
 
-For a short human-friendly name with title casing, spaces, and special characters, use the `label` property. More examples and guidance on how to [define and structure metrics can be found here](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics).
+For a short human-friendly name with title casing, spaces, and special characters, use the `label` property. More examples and guidance for how to [define and structure metrics can be found here.](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics).
 
 ### Example definition
 
