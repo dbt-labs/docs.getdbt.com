@@ -21,15 +21,13 @@ Before you begin, you will need:
     title="Get started with dbt Cloud"
     body="dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI."
 link="/docs/get-started/getting-started/set-up-dbt-cloud"
-    icon="writing"
-/>
+    icon="pencil-paper"/>
 
 <Card
     title="Getting started with dbt Core"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface"
     link="/docs/get-started/getting-started-dbt-core"
-    icon="writing"
-/>
+    icon="pencil-paper"/>
 
 </div>
 
