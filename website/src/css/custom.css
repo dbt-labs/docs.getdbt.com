@@ -1655,9 +1655,11 @@ section > h2:not(.resource-section) {
   margin-bottom: 0;
 }
 
-.home .swiper-button-next, .home .swiper-button-prev {
+.home .swiper .swiper-button-next, .home .swiper .swiper-button-prev {
   color: #047377;
   font-weight: 800;
+  position: absolute;
+  top: 40%;
 }
 
 [data-theme='dark'] .home .swiper-button-next, [data-theme='dark'] .home .swiper-button-prev {
