@@ -436,7 +436,7 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 
 /docs/building-a-new-adapter  /docs/contributing/adapter-development/3-building-a-new-adapter 301!
 
-/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer        /docs/integrate/dbt-semantic-layer 301!
+/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer        /docs/use-dbt-semantic-layer/dbt-semantic-layer 301!
 
 
 /docs/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 301!
