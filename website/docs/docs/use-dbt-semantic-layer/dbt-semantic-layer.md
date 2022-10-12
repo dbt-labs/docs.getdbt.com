@@ -7,7 +7,7 @@ sidebar_label: "dbt Semantic Layer"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available for Public Preview. With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more! 
+The dbt Semantic Layer is currently available for Public Preview. With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more! 
 
 For more info on Public Preview and plan availability, check out the [Public Preview](/docs/use-dbt-semantic-layer/dbt-semantic-layer#public-preview) and [product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) section.
     
@@ -27,35 +27,13 @@ The result? You have less duplicative coding for data teams and more consistency
 
 ### What makes the dbt Semantic Layer different?
 
-The dbt Semantic Layer removes code duplication and inconsistency regarding your business metrics. By moving metric definitions out of the BI layer and into the modeling layer, data teams can feel confident that different business units are working from the same data definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications.
+The dbt Semantic Layer reduces code duplication and inconsistency regarding your business metrics. By moving metric definitions out of the BI layer and into the modeling layer, data teams can feel confident that different business units are working from the same data definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications.
 
 
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-<VersionBlock firstVersion=“1.3” lastVersion=“1.3">
-                                                  
-<span>&#8226;</span> Have a multi-tenant <a href=“https://cloud.getdbt.com/”>dbt Cloud</a> account.  <br /b>
-   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /b>
-<span>&#8226;</span> Have both your production and development environments running dbt version 1.3 or higher <br /b>
-<span>&#8226;</span> Use Snowflake data platform <br /b>
-<span>&#8226;</span> Install the <a href=“https://hub.getdbt.com/dbt-labs/metrics/latest/”>dbt metrics package</a> version “>=1.3.0”, “<1.4.0" in your dbt project <br /b>
-<span>&#8226;</span> Set up the <a href=”/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview”>Metadata API</a> in the integrated tool to import metric definitions <br /b>
-<span>&#8226;</span> Recommended - Review the <a href=“/docs/building-a-dbt-project/metrics”>dbt metrics page</a> and <a href=“https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer”>Getting started with the dbt Semantic Layer</a> blog <br /b>
-</VersionBlock>
-
-
-<VersionBlock firstVersion=“1.2” lastVersion=“1.2">
-                                                  
-<span>&#8226;</span>Have a multi-tenant <a href=“https://cloud.getdbt.com/”>dbt Cloud</a> account.  <br /b>
-   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /b>
-<span>&#8226;</span> Have both your production and development environments running dbt version 1.2 (latest)  <br /b>
-<span>&#8226;</span>Use Snowflake data platform  <br /b>
-<span>&#8226;</span>Install the <a href=“https://hub.getdbt.com/dbt-labs/metrics/latest/”>dbt metrics package</a> version “>=0.3.0”, “<0.4.0" in your dbt project <br /b>
-<span>&#8226;</span> Set up the <a href=“/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview”>Metadata API</a> in the integrated tool to import metric definitions <br /b>
-<span>&#8226;</span>Recommended - Review the <a href=“/docs/building-a-dbt-project/metrics”>dbt metrics page</a> and  <a href=“https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer”>Getting started with the dbt Semantic Layer</a> blog <br /b>
-
-</VersionBlock>
+<Snippet src=“sl-prerequisites” />
 
 :::caution Considerations
 
@@ -71,15 +49,13 @@ Some important considerations to know about during the Public Preview:
 
 The dbt Semantic Layer is currently available for Public Preview, which means:
 
-&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during Public Preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. 
+&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during Public Preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. For more info on plan availability, check out our [product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) section.
 
-&mdash; **What?** Public Preview provides early access to new features, is supported and production ready, but not priced yet. Pricing for the dbt Semantic Layer will be introduced alongside the General Available (GA) release. There may also still be additions or modifications to product behavior. 
+&mdash; **What?** Public Previews provide early access to new features. The Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to General Availability. We may also introduce new functionality that is not backwards compatible. dbt Labs provides support, and relevant service level objectives (SLOs) apply. We will introduce pricing for the dbt Semantic Layer will alongside the General Available (GA) release.
 
-&mdash; **When?** Public Preview will end once the dbt Semantic Layer is generally available. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
+&mdash; **When?** Public Preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
 
 &mdash; **Where?** Public Preview is enabled at the account level so you don’t need to worry about enabling it per user.
-
-&mdash; **Why?** Public Preview is designed to test the functionality and collect feedback from the community on performance, usability, and documentation. 
 
 ## Product architecture 
 
