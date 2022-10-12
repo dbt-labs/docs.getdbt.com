@@ -27,7 +27,7 @@ When building out the structure of your project, you should consider these impac
 * **How would people configure the models** &mdash; Some bulk configurations are easier done at the directory level so people don’t have to remember to do everything in a config block with each new model
 
 ## Project configuration
-Every dbt project includes a project configuration file, called `dbt_project.yml`. It defines the directory of the dbt project and other project configurations.
+Every dbt project includes a project configuration file called `dbt_project.yml`. It defines the directory of the dbt project and other project configurations.
 
 Edit `dbt_project.yml` to set up common project configurations such as:
 
