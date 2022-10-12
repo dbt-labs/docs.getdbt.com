@@ -18,7 +18,7 @@ Additionally, this list can grow. If you would like to contribute a tip, please 
 
 ## Marketing
 
-- If you are using photos, share images that include community members from underrepresented groups
+- If you are using photos, share images that include community members with a wide range of presentations, including people from underrepresented groups.
 - Put event accessibility information on your event page (i.e. “closed captioning available for all video resources”)
 - In the registration process provide an opportunity for attendees to:
     - share pronouns
