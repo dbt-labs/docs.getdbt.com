@@ -3,79 +3,69 @@ title: "About dbt projects"
 id: "projects"
 ---
 
+A dbt project informs dbt the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
 
-I like to tell clients that it enforces the required top-level structure (dbt_project.yml, models, tests, snapshots — these are required so dbt knows how to parse the project. Which .sql files are tests vs models, etc) but lets them organize the underlying directories in whatever way makes the most sense to their organization or data pipeline.
-
-So when they’re deciding on the structure, they should consider how it would impact:
-
-
-
-
-
-
-
-
-By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshops` directory, and so forth. In the top-level's subdirectories, however, you can organize your project in any way that makes sense for your organization or data pipeline. This structure tells dbt the context of your the project and how to transform your data.
-
-Some considerations to think about when deciding on your structure:
-
-- how they run their dbt commands (selecting a path)
-- how they navigate their project (either developers in the IDE or stakeholders from the docs)
-- how they would configure their models (some bulk configs are easier done at the directory level so devs don’t have to remember to do everything in a conifg block with each new model)
-
-
-A dbt project is a directory of `.sql` and `.yml` files, which dbt uses to transform your data. At a minimum, a dbt project must contain:
-* A project file: A `dbt_project.yml` file tells dbt that a particular directory is a dbt project, and also contains configurations for your project.
-* [Models](/docs/build/models): A model is a single `.sql` file. Each model contains a single select statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
-
-A dbt project may also contain a number of other resources such as:
+At a minimum, all a project needs is the `dbt_project.yml` project configuration file. dbt supports a number of different resources so a project may also include them such as:
 
 | Resource  | Description  |
 | :--- | :--- |
+| [models](/docs/build/models) | Each model lives in a single file and contains logic that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation. |
 | [snapshots](/docs/build/snapshots) | A way to capture the state of your mutable tables so you can refer to it later. |
 | [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with dbt. |
 | [tests](/docs/build/tests) | SQL queries that you can write to test the models and resources in your project. |
 | [macros](/docs/build/jinja-macros) | Blocks of code that you can reuse multiple times. |
-| [documentation](/docs/collaborate/documentation) | Docs for your project that you can build. |
+| [docs](/docs/collaborate/documentation) | Docs for your project that you can build. |
 | [sources](/docs/build/sources) | A way to name and describe the data loaded into your warehouse by your Extract and Load tools. |
 | [exposures](/docs/build/exposures) | A way to define and describe a downstream use of your project. |
 | [metrics](/docs/build/metrics) | A way for you to define metrics for your project. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 
+When building out the structure of your project, you should consider these impacts to your organization's workflow:
+
+* **How would people run dbt commands** &mdash; Selecting a path
+* **How would people navigate within the project** &mdash; Whether as developers in the IDE or stakeholders from the docs
+* **How would people configure the models** &mdash; Some bulk configurations are easier done at the directory level so people don’t have to remember to do everything in a config block with each new model
+
 ## Project configuration
-Every dbt project includes a `dbt_project.yml` file. This is where you can set up common project configurations such as:
+Every dbt project includes a project configuration file, called `dbt_project.yml`. It defines the directory of the dbt project and other project configurations.
 
-- project [name](/reference/project-configs/name) &mdash; Your project’s name in [snake case](https://en.wikipedia.org/wiki/Snake_case).
-- [profile](/reference/project-configs/profile) &mdash; The profile dbt uses to connect to your data platform.
-- Any other *common or popular* configs we should put here?
+Edit `dbt_project.yml` to set up common project configurations such as:
 
-For more details on project configurations, see [dbt_project.yml](/reference/dbt_project.yml).
+<div align="center">
+
+| YAML key  | Value description  |
+| :--- | :--- |
+| [name](/reference/project-configs/name) | Your project’s name in [snake case](https://en.wikipedia.org/wiki/Snake_case) |
+| [version](/reference/project-configs/version) | The [dbt Core version](/docs/dbt-versions/core) your project is using |
+| [profile](/reference/project-configs/profile) | The profile dbt uses to connect to your data platform |
+| [model-paths](/reference/project-configs/model-paths) | Directories to where your model and source files live  |
+| [seed-paths](/reference/project-configs/seed-paths) | Directories to where your seed files live |
+| [test-paths](/reference/project-configs/test-paths) | Directories to where your test files live |
+| [analysis-paths](/reference/project-configs/analysis-paths) | Directories to where your analyses live |
+| [macro-paths](/reference/project-configs/macro-paths) | Directories to where your macros live |
+| [snapshot-paths](/reference/project-configs/snapshot-paths) | Directories to where your snapshots live |
+| [docs-paths](/reference/project-configs/docs-paths) | Directories to where your docs blocks live |
+| [vars](/docs/build/project-variables) | Project variables you want to use for data compilation |
+
+</div>
+
+For complete details on project configurations, see [dbt_project.yml](/reference/dbt_project.yml).
 
 ## New projects
 
-You can create new projects. And, you can [share these projects](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, or BitBucket.
+You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
-After you set up a connection with your data platform, you can [initialize your new project](/docs/develop/getting-started/getting-set-up/setting-up-bigquery#initialize-your-dbt-project) and start developing. If you are working from the command line, you can run [`dbt init`](/reference/commands/init) to set up your new project.
+After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/develop/getting-started/getting-set-up/setting-up-bigquery#initialize-your-dbt-project) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
-During project initialization, dbt creates sample model files in your project to help you start developing quickly.
+During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 
-## Existing projects
+## Sample projects
 
-You can work on projects that you’ve created or someone else has created. The project must be checked in to a hosted git repository that you have access to.
+If you want to explore dbt projects more, you can clone dbt Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop_duckdb) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
 
-If your organization has a [dbt Cloud](https://www.getdbt.com/product/dbt-cloud-enterprise/) account, ask your admin to add you as a **Developer** so you can start developing with it. If you don’t have access to dbt Cloud, you can clone the repository to your computer and start developing from the command line.
-
-## Sample project
-
-If you want to explore dbt projects more, please check out dbt Lab’s [Jaffle shop repo](https://github.com/dbt-labs/jaffle_shop_duckdb) on GitHub. It's a runnable project that contains sample configurations as well as helpful notes.
+If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 
 ## Related docs
-
-- [Best practices for dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
+- [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
 - [Get started with dbt Cloud](/docs/develop/getting-started/getting-started-dbt-cloud)
 - [Get started with dbt Core](/docs/develop/getting-started/getting-started-dbt-core)
-
-## FAQs
-
-<FAQ src="Project/project-name" />
-<FAQ src="Project/structure-a-project" />
