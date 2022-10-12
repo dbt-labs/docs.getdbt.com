@@ -416,5 +416,5 @@ Snapshot results:
 <FAQ src="Snapshots/snapshot-target-schema" />
 <FAQ src="Accounts/configurable-snapshot-path" />
 
-<Snippet src="discourse-help-feed-header" />`
+<Snippet src="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="snapshots"/>
