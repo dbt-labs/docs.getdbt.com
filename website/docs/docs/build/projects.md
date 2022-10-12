@@ -61,7 +61,7 @@ During project initialization, dbt creates sample model files in your project di
 
 ## Sample projects
 
-If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop_duckdb) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
+If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
 
 If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 
