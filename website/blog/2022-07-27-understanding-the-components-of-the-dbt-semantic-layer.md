@@ -1,7 +1,7 @@
 ---
-title: "Getting started with the dbt Semantic Layer"
+title: "Understanding the components of the dbt Semantic Layer"
 description: "Heard about dbt Metrics or the dbt Semantic Layer and curious to give them a try? Callum McCann digs into what they are, walks through an example, and discusses how they all fit together!"
-slug: getting-started-with-the-dbt-semantic-layer
+slug: understanding-the-components-of-the-dbt-semantic-layer
 
 authors: [callum_mccann]
 
