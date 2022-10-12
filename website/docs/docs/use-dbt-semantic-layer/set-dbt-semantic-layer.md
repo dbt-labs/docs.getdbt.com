@@ -26,7 +26,7 @@ Some important considerations to know about during the Public Preview:
 
 ## Set up dbt Semantic Layer
 
-Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud Team or Enterprise plan. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
+Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud account. Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
 
 
 You can set up the dbt Semantic Layer in dbt Cloud at the environment level by following these steps:
@@ -49,7 +49,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment level by f
 
 9. Use the URL in the data source configuration of the integrated partner tool
 
-10. Use the warehouse login credentials that make sense for how the data is consumed
+10. Use the data platform login credentials that make sense for how the data is consumed
 
 :::info📌 
 
