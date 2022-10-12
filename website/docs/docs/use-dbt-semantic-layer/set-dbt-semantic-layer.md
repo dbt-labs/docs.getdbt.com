@@ -14,7 +14,8 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 <VersionBlock firstVersion="1.3" >
 
-- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
+- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. 
+  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
 - Have both your production and development environments running dbt version 1.3 or higher <br />
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=1.3.0", "<1.4.0"</code> in your dbt project <br />
@@ -25,7 +26,8 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 <VersionBlock lastVersion="1.2">
 
-- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /> 
+- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. 
+  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /> 
 - Have both your production and development environments running dbt version 1.2 (latest) <br />
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=1.3.0", "<1.4.0"</code> in your dbt project <br />
@@ -34,9 +36,6 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 </VersionBlock>
 
-<---!
-<Snippet src="sl-prerequisites" />
---->
 
 :::caution Considerations
 
