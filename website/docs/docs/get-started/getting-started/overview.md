@@ -1,23 +1,12 @@
 ---
-title: Getting started overview
+title: About getting started
 id: overview
-sidebar_label: "Overview"
+sidebar_label: "About getting started"
 description: "Create your first dbt project using a SQL query."
 ---
+<section className="community-home">
 
 <Snippet src="what-is-dbt-intro" />
-
-This guide will show you how to set up dbt and perform some key tasks either in dbt Core or dbt Cloud. These tasks will illustrate how dbt establishes standard practices for your work:
-
-* Set up a warehouse with sample data
-* Connect the warehouse to dbt 
-* Add a Git repository to dbt
-* Execute a dbt transformation using `dbt run`
-* Schedule a job or transformation
-
-If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
-
-## Before you begin
 
 Before you begin, you will need:
 
@@ -25,9 +14,23 @@ Before you begin, you will need:
 * Basic understanding of Git.
 * Basic understanding of SQL.
 
-## Next steps
 
-To get started, choose the dbt product that best fits your workflow:
+<div className="grid--3-col">
 
-* [Getting started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud)
-* [Getting started with dbt Core](/docs/get-started/getting-started-dbt-core)
+<Card
+    title="Get started with dbt Cloud"
+    body="dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI."
+link="/docs/get-started/getting-started/set-up-dbt-cloud"
+    icon="writing"
+/>
+
+<Card
+    title="Getting started with dbt Core"
+    body="dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. "
+    link="/docs/get-started/getting-started-dbt-core"
+    icon="writing"
+/>
+
+</div>
+
+</section>

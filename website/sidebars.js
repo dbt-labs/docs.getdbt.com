@@ -1,12 +1,12 @@
 const sidebarSettings = {
   docs: [
+    "docs/introduction",
+    "docs/supported-data-platforms",
     {
       type: "category",
       label: "Get started with dbt",
       collapsed: true,
       items: [
-        "docs/introduction",
-        "docs/supported-data-platforms",
         "docs/get-started/getting-started/overview",
         {
           type: "category",
