@@ -112,8 +112,10 @@ export const DiscourseFeed = ({
           className={feedStyles.loadingIcon} 
           data-testid="feed-loader"
         />
-      ) : isError || !topics?.length > 0 ? (
-        <p data-testid='error-text'>Unable to load forum topics at this time.</p>
+      ) : isError ? (
+        <p data-testid='error-text'>Unable to load forum posts at this time.</p>
+      ) : !topics?.length > 0 ? (
+        <p data-testid='error-text'>No recent forum posts for this topic. Ask a question!</p>
       ) : (
         <ul data-testid="topics-list">
           {topics.map(topic => (
@@ -163,7 +165,7 @@ export const DiscourseHelpFeed = ({
   show_cta = true,
   link_text = 'Ask the Community',
   link_href = `https://discourse.getdbt.com/new-topic${category ? `?category=${category}` : ''}${tags ? (!category ? `?tags=${tags}` : `&tags=${tags}`) : ''}`,
-  after,
+  after = '2000-01-01',
   before,
   inString, 
   min_posts,
