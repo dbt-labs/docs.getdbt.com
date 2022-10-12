@@ -5,23 +5,17 @@ description: "You can set up the dbt Semantic Layer in dbt Cloud."
 sidebar_label: "Set up the dbt Semantic Layer"
 ---
 
-With the dbt Semantic Layer, you'll be able to centrally define business metrics, remove code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integration tool. 
+With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 
 ## Prerequisites
 
 Before you set up the dbt Semantic Layer, make sure you meet the following:
 
-- Have a multi-tenant [dbt Cloud](https://cloud.getdbt.com/) Teams or Enterprise account. 
-   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.
-- Have both your production and development environments running dbt version 1.2 (latest) or higher
-- Use Snowflake data platfrom 
-- Install the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) version 0.3.2 or higher in your dbt project
-- Set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated tool to import metric definitions
-- Recommended - Review the [dbt metrics page](/docs/building-a-dbt-project/metrics) and [Getting started with the dbt Semantic Layer](https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog
+<Snippet src="sl-prerequisites" /> 
 
 :::caution Considerations
 
-Some important considerations to know about during the public preview:
+Some important considerations to know about during the Public Preview:
 
 - Support for Snowflake data platform only (_additional data platforms coming soon_)
 - Support for the deployment environment only (_development experience coming soon_)
@@ -51,9 +45,9 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment level by f
 
 7. Toggle the Semantic Layer **On.**
 
-8. Copy the full proxy server URL (like `https://eagle-hqya7.proxy.cloud.getdbt.com`) to connect to your [integrated tool](https://www.getdbt.com/product/semantic-layer-integrations). 
+8. Copy the full proxy server URL (like `https://eagle-hqya7.proxy.cloud.getdbt.com`) to connect to your [integrated partner tool](https://www.getdbt.com/product/semantic-layer-integrations). 
 
-9. Use the URL in the data source configuration of the integrated tool
+9. Use the URL in the data source configuration of the integrated partner tool
 
 10. Use the warehouse login credentials that make sense for how the data is consumed
 
@@ -63,7 +57,7 @@ Note  - It is *not* recommended that you use your dbt Cloud credentials due to e
 
 :::
 
-11. You need to set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated tool to import the metric definitions. The integrated tool will treat the dbt Server as another data source (like a data platform). This requires:
+11. You need to set up the [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated partner tool to import the metric definitions. The integrated parnter tool will treat the dbt Server as another data source (like a data platform). This requires:
 
 - The account ID, environment ID, and job ID (visible in the job URL)
 - An [API service token](/docs/dbt-cloud/dbt-cloud-api/service-tokens) with job admin and metadata permissions
