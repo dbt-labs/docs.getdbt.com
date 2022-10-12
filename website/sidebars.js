@@ -293,13 +293,13 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Query from anywhere",
+      label: "Use the dbt Semantic Layer",
       collapsed: true,
       items: [
-        "docs/integrate/quickstart-semantic-layer",
-        "docs/integrate/dbt-semantic-layer",
-        "docs/integrate/setup-dbt-semantic-layer",
-        "docs/integrate/avail-sl-integrations",
+        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
+        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/avail-sl-integrations",
           ],
        },    
     {
