@@ -23,6 +23,6 @@ For information on the different integration partners, their documentation, and 
 ## Related docs
 
 - [Getting started with the Semantic Layer](https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples.
-- [dbt Semantic Layer](/docs/integrate/dbt-semantic-layer) to learn more about the dbt Semantic Layer.
-- [Product architecture](/docs/integrate/dbt-semantic-layer#product-architecture) page for more information on plan availability.
-- [Public preview information](/docs/integrate/quickstart-semantic-layer#public-preview) to understand what public preview means.
+- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer) to learn more about the dbt Semantic Layer.
+- [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) page for more information on plan availability.
+- [Public Preview information](/docs/use-dbt-semantic-layer/quickstart-semantic-layer#public-preview) to understand what Public Preview means.
