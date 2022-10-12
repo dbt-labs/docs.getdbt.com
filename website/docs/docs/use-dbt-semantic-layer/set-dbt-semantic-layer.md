@@ -11,7 +11,7 @@ With the dbt Semantic Layer, you'll be able to centrally define business metrics
 
 Before you set up the dbt Semantic Layer, make sure you meet the following:
 
-<VersionBlock firstVersion=“1.3” lastVersion=“1.3">
+<VersionBlock firstVersion=“1.3”>
                                                   
 <span>&#8226;</span> Have a multi-tenant <a href=“https://cloud.getdbt.com/”>dbt Cloud</a> account.  <br />
    * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
@@ -22,7 +22,7 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 <span>&#8226;</span> Recommended - Review the <a href=“/docs/building-a-dbt-project/metrics”>dbt metrics page</a> and <a href=“https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer”>Getting started with the dbt Semantic Layer</a> blog <br />
 </VersionBlock>
 
-<VersionBlock firstVersion=“1.2” lastVersion=“1.2">
+<VersionBlock lastVersion=“1.2">
                                                   
 <span>&#8226;</span>Have a multi-tenant <a href=“https://cloud.getdbt.com/”>dbt Cloud</a> account.  <br />
    * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
