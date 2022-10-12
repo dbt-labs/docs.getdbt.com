@@ -42,7 +42,7 @@ To try out the features of the dbt Semantic Layer, you first need to have a dbt 
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-<VersionBlock firstVersion=“1.3” lastVersion=“1.3">
+<VersionBlock firstVersion=“1.3” >
                                                   
 <span>&#8226;</span> Have a multi-tenant <a href=“https://cloud.getdbt.com/”>dbt Cloud</a> account.  <br />
    * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
@@ -54,7 +54,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 </VersionBlock>
 
-<VersionBlock firstVersion=“1.2” lastVersion=“1.2">
+<VersionBlock lastVersion=“1.2">
                                                   
 <span>&#8226;</span>Have a multi-tenant <a href=“https://cloud.getdbt.com/”>dbt Cloud</a> account.  <br />
    * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
