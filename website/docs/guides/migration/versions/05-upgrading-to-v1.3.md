@@ -11,6 +11,8 @@ title: "Trying out v1.3 (prerelease)"
 
 There are no breaking changes for code in dbt projects and packages. We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
+**Note:** If you have custom code accessing the `raw_sql` property of models (via the [`model`](dbt-jinja-functions/model) or [`graph`](https://docs.getdbt.com/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
+
 ### For users of dbt Metrics
 
 The names of metric properties have changed, with backward compatibility. Those changes are:
