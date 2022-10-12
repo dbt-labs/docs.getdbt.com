@@ -9,7 +9,7 @@ sidebar_label: "Quickstart"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available in Public Preview for North American multi-tenant dbt Cloud accounts. 
+The dbt Semantic Layer is currently available in Public Preview for multi-tenant dbt Cloud accounts hosted in North America. 
 
 With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more! 
 
@@ -129,7 +129,7 @@ packages:
 
 ## Design and define metrics in your dbt project
 
-Before you define metrics in your dbt project, you'll need to understand how to structure and organize your metrics. For more info on that and to understand the best practices, review our [Structuring and designing your metrics](URL) blog post first.
+Before you define metrics in your dbt project, you'll need to understand how to structure and organize your metrics. For more info on that and to understand the best practices, review our [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog post first.
 
 Now that you've organized your metrics folder and files, you can define your metrics in `.yml` files nested under a `metrics` key.  
 
@@ -203,7 +203,7 @@ metrics:
 
     - [dbt metrics](/docs/building-a-dbt-project/metrics) will povide you in-depth detail on attributes, properties, filters, and how to define and query metrics.
    
-    - Visit the [Structure and design your metric definition](URL) page to understand best practices for designing and structuring metrics in your dbt project.
+    - Visit the [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog to understand best practices for designing and structuring metrics in your dbt project.
 
 ## Develop and query metrics
 
@@ -235,7 +235,7 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 
 ## Set up dbt Semantic Layer
 
-Before continuing, you must have a North American multi-tenant dbt Cloud account to set up the dbt Semantic Layer in dbt Cloud.  Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
+Before continuing, you must have a multi-tenant dbt Cloud account hosted in North America to set up the dbt Semantic Layer in dbt Cloud.  Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API.
 
 To query your dbt metrics in an integrated partner tool, you need to [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) in dbt Cloud to connect with your integration tool:
 
@@ -304,7 +304,7 @@ Developer accounts will be able to query the Proxy Server using SQL, but will no
 
 Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer: 
 
-- [Structuring and designing your metrics](URL) to understand best practices for designing and structuring metrics in your dbt project
+- [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, properties, filters, and how to define and query metrics
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
 - [Getting started with the Semantic Layer](https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples
