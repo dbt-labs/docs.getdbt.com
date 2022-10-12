@@ -490,3 +490,5 @@ Functionality for `develop` is only supported in v1.2 and higher. Please navigat
 </VersionBlock>
 
 
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="metrics"/>

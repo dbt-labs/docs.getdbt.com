@@ -179,6 +179,7 @@ export const DiscourseHelpFeed = ({
     order={order}
     status={status}
     category={category}
+    tags={tags}
     link_text={link_text}
     link_href={link_href}
     show_cta={show_cta}
