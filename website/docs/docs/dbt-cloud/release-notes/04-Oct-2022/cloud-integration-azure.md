@@ -2,7 +2,7 @@
 title: "Announcing dbt Cloud’s native integration with Azure DevOps"
 id: "cloud-integration-azure"
 description: "dbt Cloud native integration with Azure DevOps"
-sidebar_label: "Fix: Metadata API data retention limits"
+sidebar_label: "Improvement: Native integration with Azure DevOps"
 tags: [Oct-11-2022]
 ---
 
