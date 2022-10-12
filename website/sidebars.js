@@ -311,7 +311,6 @@ const sidebarSettings = {
       ],
     },
     "docs/dbt-support",
-    "docs/viewpoint",
     {
       type: "category",
       label: "Frequently asked questions",
@@ -870,6 +869,9 @@ const sidebarSettings = {
         "community/resources/slack-rules-of-the-road",
         "community/resources/maintaining-a-channel",
         "community/resources/contributor-license-agreements",
+        "community/resources/code-of-conduct",
+        "community/resources/speaking-at-a-meetup",
+        "community/resources/viewpoint",
       ],
     },
   ],

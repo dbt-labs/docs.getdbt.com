@@ -32,7 +32,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 <Card
     title="Code of Conduct"
     body="The dbt Community is diverse, inclusive and vibrant. We are committed to creating a space where everyone can feel welcome and safe to join, contribute and share their ideas. Our Code of Conduct reflects the agreement that all Community members make to each other to uphold these ideals."
-    link="https://www.getdbt.com/community/code-of-conduct/"
+    link="community/resources/code-of-conduct/"
     icon="folder"
 />
 

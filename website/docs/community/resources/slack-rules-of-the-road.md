@@ -18,7 +18,7 @@ Everyone interacting in dbt Slack, codebase, issue trackers, and mailing lists a
 
 ## Rule 2: Use the right channel
 It’s important that we make it possible for members of the community to opt-in to various types of conversations. Our different Slack channels specifically exist for this purpose. Our members do a wonderful job at making sure messages are posted in the most relevant channel, and you’ll frequently see people (respectfully!) reminding each other about where to post messages. Here's a guide to our channels:
-- If you're new to dbt and unsure where something belongs, feel free to post in **#dbt-beginners** - we'll be able to direct you to the right place
+- If you're new to dbt and unsure where something belongs, feel free to post in **#advice-dbt-for-beginners** - we'll be able to direct you to the right place
 - **For job postings, use #jobs**. If you post a job description outside of #jobs, we will delete it and send you a link to this rule.
 - For database-specific questions, use **#db-snowflake**, **#db-bigquery**, **#db-redshift**, or similar.
 - For questions about data modeling or for SQL help, use **#modeling**
