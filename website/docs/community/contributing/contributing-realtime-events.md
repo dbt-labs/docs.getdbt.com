@@ -20,7 +20,7 @@ Give a talk! Meetups are all about sharing your knowledge with other analytics p
 
 #### Get Started
 
-- Read [How to Deliver a Fantastic Meetup Talk](https://www.getdbt.com/community/speaking-at-a-meetup/).
+- Read [How to Deliver a Fantastic Meetup Talk](/community/resources/speaking-at-a-meetup).
 - Find a [Meetup near you](https://www.meetup.com/pro/dbt/), start attending and let the organizers know you are interested!
 
 ### Speak at Coalesce
