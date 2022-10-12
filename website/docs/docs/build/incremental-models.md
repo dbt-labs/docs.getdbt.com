@@ -300,5 +300,5 @@ select ...
 
 </File>
 
-<Snippet src="discourse-help-feed-header" />`
+<Snippet src="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>
