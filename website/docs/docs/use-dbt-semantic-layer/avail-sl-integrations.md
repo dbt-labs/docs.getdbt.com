@@ -26,3 +26,4 @@ For information on the different integration partners, their documentation, and 
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer) to learn more about the dbt Semantic Layer.
 - [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) page for more information on plan availability.
 - [Public Preview information](/docs/use-dbt-semantic-layer/quickstart-semantic-layer#public-preview) to understand what Public Preview means.
+- [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) to understand best practices for designing and structuring metrics in your dbt project.
