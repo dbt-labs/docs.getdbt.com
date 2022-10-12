@@ -58,7 +58,7 @@ You can improve your dbt skills with these fun exercises:
 * If you want a more in-depth learning experience, we recommend taking the [dbt Fundamentals on our dbt Learn online courses site](https://courses.getdbt.com/courses/fundamentals).
 
 
-Here are some ways to [learn more](learning-more) essential dbt skills:
+Here are some ways to learn more essential dbt skills:
 
 * Learn how to use Jinja in your project by reading the [Jinja tutorial](/docs/get-started/learning-more/using-jinja).
 * Learn how to [connect to dbt Core using the CLI](/docs/get-started/getting-started-dbt-core).
