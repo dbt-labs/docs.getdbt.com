@@ -20,7 +20,7 @@ Below you’ll find a sampling of the ways to get involved. There are a lot of o
 <Card
     title="Writing contributions"
     body="Learn how to share and grow the collective knowledge of the dbt Community through blogs, guides, and documentation."
-    link="community/contributing/contributing-writing" icon="writing"
+    link="community/contributing/contributing-writing" icon="pencil-paper"
 />
 
 <Card
@@ -34,7 +34,7 @@ Below you’ll find a sampling of the ways to get involved. There are a lot of o
     title="Online community building"
     body="Getting involved in the dbt Community  Forum or Slack is one of the best entry points for contributing. Share your knowledge and learn from others."
     link="community/contributing/contributing-online-community"
-    icon="discussion"
+    icon="discussions"
 />
 
 <Card
