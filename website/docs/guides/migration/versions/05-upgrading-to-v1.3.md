@@ -1,15 +1,17 @@
 ---
-title: "Trying out v1.3 (prerelease)"
+title: "Upgrading to v1.3 (latest)"
 ---
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.3.latest/CHANGELOG.md)
 - [CLI Installation guide](/docs/get-started/installation)
-- [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
 ## Breaking changes
 
 There are no breaking changes for code in dbt projects and packages. We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+
+**Note:** If you have custom code accessing the `raw_sql` property of models (via the [`model`](dbt-jinja-functions/model) or [`graph`](/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
 
 ### For users of dbt Metrics
 
