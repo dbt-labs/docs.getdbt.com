@@ -8,33 +8,26 @@ title: "Dremio Profile"
 **Source:** https://github.com/dremio/dbt-dremio  
 **Core Version:** 1.2.0
 
-**dbt Cloud:** Not Supported    
-**Required Version of Python:** (<b>QUESTION:</b> What is the required version?)
+**dbt Cloud:** Supported    
+**Required Version of Python:** 3.9.x
 
-<!-- Who is the author going to be?
-![dbt-dremio stars](https://img.shields.io/github/stars/fabrice-etanchaud/dbt-dremio?style=for-the-badge)
--->
 
 ## Prerequisites for Dremio Cloud
 Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 * Ensure that you have the ID of the Sonar project that you want to use. See [Obtaining the ID of a Project](https://docs.dremio.com/cloud/cloud-entities/projects/#obtaining-the-id-of-a-project).
 * Ensure that you have a personal access token (PAT) for authenticating to Dremio Cloud. See [Creating a Token](https://docs.dremio.com/cloud/security/authentication/personal-access-token/#creating-a-token).
-* In the `dbt_project.yml` file at the root of your Dremio Cloud dbt project directory, append these lines:
-    ```
-    vars:
-        dremio:reflections_enabled: false
-    ```
+
 
 ## Prerequisites for Dremio Software
 
 * Ensure that you are using version 22.0 or later.
-* Enable these support keys in the Dremio cluster:
+* Enable these support keys in your Dremio cluster:
   * `dremio.iceberg.enabled`
   * `dremio.iceberg.ctas.enabled`
   * `dremio.execution.support_unlimited_splits`
 
   See <a target="_blank" href="https://docs.dremio.com/software/advanced-administration/support-settings/#support-keys">Support Keys</a> in the Dremio documentation for the steps.
-* Configure full wire encryption in the Dremio cluster. For instructions, see <a target="_blank" href="https://docs.dremio.com/software/deployment/wire-encryption-config/">Configuring Wire Encryption</a>.
+* If you want to use TLS to secure the connection between dbt and Dremio Software, configure full wire encryption in your Dremio cluster. For instructions, see <a target="_blank" href="https://docs.dremio.com/software/deployment/wire-encryption-config/">Configuring Wire Encryption</a>.
 
 ## Installing
 
@@ -44,11 +37,33 @@ Install this package from PyPi by running this command:
 pip install dbt-dremio
 ```
 
+## Initializing a Project
+
+1. Run the command `dbt init <project_name>`.
+2. Select `dremio` as the database to use.
+3. Select one of these options to generate a profile for your project:
+    * `dremio_cloud` for working with Dremio Cloud
+    * `software_with_username_password` for working with a Dremio Software cluster and authenticating to the cluster with a username and a password
+    * `software_with_pat` for working with a Dremio Software cluster and authenticating to the cluster with a personal access token
+4. Append these lines to the end of the content of the `dbt_project.yml` file at the root of your project directory:
+```
+vars:
+    dremio:reflections_enabled: false
+```
+
+Next, configure the profile for your project.
+
 ## Profiles
 
-Running the command `dbt init <project_name>` to initialize a Dremio project lets you choose to generate one of these three profiles:
+When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
 
+* [Profile for Dremio Cloud](#cloud)
+* [Profile for Dremio Software with Username/Password Authentication](#software_up)
+* [Profile for Dremio Software with Authentication Through a Personal Access Token](#software_pat)
 
+For descriptions of the configurations in these profiles, see [Configurations](#configurations).
+
+<a id="cloud"></a>
 ### Profile for Dremio Cloud
 ```yaml
 [project name]:
@@ -64,6 +79,7 @@ Running the command `dbt init <project_name>` to initialize a Dremio project let
   target: dev
 ```
 
+<a id="software_up"></a>
 ### Profile for Dremio Software with Username/Password Authentication
 ```yaml
 [project name]:
@@ -72,13 +88,14 @@ Running the command `dbt init <project_name>` to initialize a Dremio project let
       password: [password]
       port: [port]
       software_host: [hostname or IP address]
-      threads: 1
+      threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
       user: [username]
   target: dev
 ```
 
+<a id="software_pat"></a>
 ### Profile for Dremio Software with Authentication Through a Personal Access Token
 ```yaml
 [project name]:
@@ -87,7 +104,7 @@ Running the command `dbt init <project_name>` to initialize a Dremio project let
       pat: [personal access token]
       port: [port]
       software_host: [hostname or IP address]
-      threads: 1
+      threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
       user: [username]
@@ -126,7 +143,7 @@ Running the command `dbt init <project_name>` to initialize a Dremio project let
  </td>
  <td><code>1</code>
  </td>
- <td>The number of threads the dbt project runs on.<br><br><b>QUESTION:</b>Why does the sample profile for Dremio Cloud say the value can be >=1, while the other two samples use 1?
+ <td>The number of threads the dbt project runs on.
  </td>
 </tr>
 </table>
@@ -212,7 +229,7 @@ EU Control Plane<br>
    </td>
    <td>Yes</td>
    <td><code>9047</code></td>
-   <td>Port for Dremio Software cluster API endpoints. (<strong>QUESTION: Can this be changed?</strong>)
+   <td>Port for Dremio Software cluster API endpoints.
    </td>
   </tr>
   <tr>
@@ -249,7 +266,7 @@ EU Control Plane<br>
    </td>
    <td><code>true</code>
    </td>
-   <td>Acceptable values are <code>true</code> and <code>false</code>. If the value is set to <code>true</code>, (<strong>QUESTION: What is the requirement on the cluster? What is covered in the third bullet point of the prereqs?</strong>)
+   <td>Acceptable values are <code>true</code> and <code>false</code>. If the value is set to <code>true</code>, ensure that full wire encryption is configured in your Dremio cluster. See [Prerequisites for Dremio Software](#prerequisites-for-dremio-software). 
    </td>
   </tr>
 </table>
