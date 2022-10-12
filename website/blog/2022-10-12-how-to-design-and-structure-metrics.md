@@ -372,7 +372,7 @@ In the end, all of the structuring information above is just a recommendation. Y
 
 ## A call to action
 
-This is just the beginning of dbt Metrics and the Semantic Layer. We have a number of exciting ideas for expanding capabilities that we plan to begin work on in the coming months. However, we can’t do that without you. 
+This is just the beginning of dbt metrics and the Semantic Layer. We have a number of exciting ideas for expanding capabilities that we plan to begin work on in the coming months. However, we can’t do that without you. 
 
 This semantic layer is a fundamental change to what it means to interact with dbt and ultimately most of the best practices will come from the dbt Community - folks like you. It does not matter if you consider yourself an "expert" on this - we want to talk to you and hear how you are using or would like to use metrics and the semantic layer.  Y’all are going to be our guiding light to help us make sure that all the functionality we add helps **you** serve the needs of your business. 
 
