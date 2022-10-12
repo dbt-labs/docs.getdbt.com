@@ -28,10 +28,6 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "docs/building-a-dbt-project/building-models/python-models",
-    "firstVersion": "1.3",
-  },
-  {
     "page": "reference/dbt-jinja-functions/set",
     "firstVersion": "1.2",
   },

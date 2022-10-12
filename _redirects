@@ -72,6 +72,7 @@
 /docs/building-a-dbt-project/building-models /docs/build/sql-models 301
 /docs/building-a-dbt-project/using-sources /docs/build/sources 301
 /docs/building-a-dbt-project/projects /docs/build/projects 301
+/docs/building-a-dbt-project/building-models/python-models /docs/build/python-models 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions /docs/dbt-versions/upgrade-core-in-cloud 301
 /docs/core-versions /docs/dbt-versions/core 301
 /docs/dbt-cloud/cloud-dbt-cloud-support /docs/dbt-support 301

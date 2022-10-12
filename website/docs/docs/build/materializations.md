@@ -102,3 +102,79 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * very light-weight transformations that are early on in your DAG
     * are only used in one or two downstream models, and
     * do not need to be queried directly
+
+## Python materializations
+
+Python models support two materializations:
+- `table`
+- `incremental`
+
+Incremental Python models support all the same [incremental strategies](configuring-incremental-models#about-incremental_strategy) as their SQL counterparts. The specific strategies supported depend on your adapter.
+
+Python models can't be materialized as `view` or `ephemeral`. Python isn't supported for non-model resource types (like tests and snapshots).
+
+For incremental models, like SQL models, you will need to filter incoming tables to only new rows of data:
+
+<WHCode>
+
+<div warehouse="Snowpark">
+
+<File name='models/my_python_model.py'>
+
+```python
+import snowflake.snowpark.functions as F
+
+def model(dbt, session):
+    dbt.config(materialized = "incremental")
+    df = dbt.ref("upstream_table")
+
+    if dbt.is_incremental:
+
+        # only new rows compared to max in current table
+        max_from_this = f"select max(updated_at) from {dbt.this}"
+        df = df.filter(df.updated_at >= session.sql(max_from_this).collect()[0][0])
+
+        # or only rows from the past 3 days
+        df = df.filter(df.updated_at >= F.dateadd("day", F.lit(-3), F.current_timestamp()))
+
+    ...
+
+    return df
+```
+
+</File>
+
+</div>
+
+<div warehouse="PySpark">
+
+<File name='models/my_python_model.py'>
+
+```python
+import pyspark.sql.functions as F
+
+def model(dbt, session):
+    dbt.config(materialized = "incremental")
+    df = dbt.ref("upstream_table")
+
+    if dbt.is_incremental:
+
+        # only new rows compared to max in current table
+        max_from_this = f"select max(updated_at) from {dbt.this}"
+        df = df.filter(df.updated_at >= session.sql(max_from_this).collect()[0][0])
+
+        # or only rows from the past 3 days
+        df = df.filter(df.updated_at >= F.date_add(F.current_timestamp(), F.lit(-3)))
+
+    ...
+
+    return df
+```
+
+</File>
+
+</div>
+
+</WHCode>
+
+**Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
