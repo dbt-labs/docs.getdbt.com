@@ -26,7 +26,7 @@ Any dbt feature will fall into one of the following lifecycle states:
 
 ### dbt Core
 
-- **Unreleased:** We include this functionality in the next minor version prerelease. However, we make no commitments about its behavior or implementation. As maintainers, we reserve the right to change any part of it, or remove it entirely (with an accompanying explanation.)
+- **Unreleased:** We will include this functionality in the next minor version prerelease. However, we make no commitments about its behavior or implementation. As maintainers, we reserve the right to change any part of it, or remove it entirely (with an accompanying explanation.)
 
 - **Prerelease:**
     * **Beta:** The purpose of betas is to provide a first glimpse of the net-new features that will be arriving in this minor version, when it has its
