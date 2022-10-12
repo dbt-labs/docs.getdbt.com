@@ -7,7 +7,7 @@ sidebar_label: "dbt Semantic Layer"
 
 :::info 📌
 
-The dbt Semantic Layer is currently available in Public Preview for North American multi-tenant dbt Cloud accounts. 
+The dbt Semantic Layer is currently available in Public Preview for multi-tenant dbt Cloud accounts hosted in North America. 
 
 With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more! 
 
@@ -35,10 +35,9 @@ The dbt Semantic Layer reduces code duplication and inconsistency regarding your
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-
 <VersionBlock firstVersion="1.3" >
 
-- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. 
+- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America. 
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
 - Have both your production and development environments running dbt version 1.3 or higher <br />
 - Use Snowflake data platform <br />
@@ -50,7 +49,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 <VersionBlock lastVersion="1.2">
 
-- Have a North American multi-tenant <a href="https://cloud.getdbt.com/">dbt Cloud</a> account. 
+- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America. 
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /> 
 - Have both your production and development environments running dbt version 1.2 (latest) <br />
 - Use Snowflake data platform <br />
