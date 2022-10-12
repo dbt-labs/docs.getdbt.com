@@ -1647,7 +1647,7 @@ section > h2:not(.resource-section) {
   height: unset;
 } 
 
-.home .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-backface-hidden {
+.home .swiper.swiper-initialized {
   padding-right: 3rem;
   padding-left: 3rem;
   padding-top: 0rem;
