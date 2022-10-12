@@ -112,11 +112,9 @@ export const DiscourseFeed = ({
           className={feedStyles.loadingIcon} 
           data-testid="feed-loader"
         />
-      ) : isError ? (
-        <p data-testid='error-text'>Unable to load forum posts at this time.</p>
-      ) : !topics?.length > 0 ? (
-        <p data-testid='error-text'>No recent forum posts for this topic. Ask a question!</p>
-      ) : (
+        ) : isError || !topics?.length > 0 ? (
+          <p data-testid='error-text'>No recent forum posts for this topic. Ask a question!</p>
+        ) : (
         <ul data-testid="topics-list">
           {topics.map(topic => (
             <li key={topic.id}>
