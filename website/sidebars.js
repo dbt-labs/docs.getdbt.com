@@ -4,24 +4,24 @@ const sidebarSettings = {
     "docs/supported-data-platforms",
     {
       type: "category",
-      label: "Develop with dbt",
+      label: "Get started with dbt",
       collapsed: true,
       items: [
+        "docs/get-started/getting-started/overview",
         {
           type: "category",
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/develop/getting-started/getting-started-dbt-cloud",
+            "docs/get-started/getting-started/set-up-dbt-cloud",
             {
               type: "category",
               label: "Getting set up",
               items: [
-                "docs/develop/getting-started/getting-set-up",
-                "docs/develop/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/develop/getting-started/getting-set-up/setting-up-databricks",
-                "docs/develop/getting-started/getting-set-up/setting-up-redshift",
-                "docs/develop/getting-started/getting-set-up/setting-up-snowflake",
+                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
+                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
+                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
+                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
               ],
             },
             {
@@ -29,22 +29,22 @@ const sidebarSettings = {
               label: "Building your first project",
 
               items: [
-                "docs/develop/getting-started/building-your-first-project/build-your-first-models",
-                "docs/develop/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/develop/getting-started/building-your-first-project/schedule-a-job",
+                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
+                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
+                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
               ],
             },
             {
               type: "category",
               label: "Learning more",
               items: [
-                "docs/develop/getting-started/learning-more/using-jinja",
-                "docs/develop/getting-started/learning-more/refactoring-legacy-sql",
+                "docs/get-started/learning-more/using-jinja",
+                "docs/get-started/learning-more/refactoring-legacy-sql",
               ],
             },
-            "docs/develop/dbt-cloud-features",
-            "docs/develop/develop-in-the-cloud",
-            "docs/develop/dbt-cloud-tips",
+            “docs/get-started/dbt-cloud-features”,
+            “docs/get-started/develop-in-the-cloud”,
+            “docs/get-started/dbt-cloud-tips”,
           ],
         },
         {
