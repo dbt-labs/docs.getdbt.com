@@ -6,7 +6,7 @@ id: "dbt-cloud-features"
 ## dbt Cloud IDE
 
 :::info Beta Feature
-The revamped dbt Cloud IDE is now in beta! [Submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the new Cloud IDE beta group and review [Develop in the IDE beta](/docs/develop/develop-in-the-cloud#develop-in-the-cloud-ide-beta) to learn more.
+Learn about [what you can do](/docs/develop/develop-in-the-cloud#develop-in-the-cloud-ide-beta) with our Cloud IDE beta. Please [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join our Cloud IDE beta group.
 
 :::
 
