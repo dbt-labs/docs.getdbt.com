@@ -172,7 +172,7 @@ var siteSettings = {
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
             <a href='https://www.getdbt.com/security/'>Security</a>
             <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
-            <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
+            <button id=\"ot-sdk-btn\" onclick="openPreferenceCenter()">Cookie Settings</button>
           </div>
 
           <div class='footer__items--right'>
@@ -239,6 +239,7 @@ var siteSettings = {
       defer: true,
     },
     "/js/gtm.js",
+    "/js/onetrust.js",
     "https://kit.fontawesome.com/7110474d41.js",
   ],
   stylesheets: [
