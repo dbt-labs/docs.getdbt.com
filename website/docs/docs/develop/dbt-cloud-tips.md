@@ -35,7 +35,7 @@ Double-click a node of the directed acyclic graph (DAG) to open that file in a n
 
 There are default keyboard shortcuts that can help make development more productive and easier for everyone. 
 
-- Command-O / Control-O to select a file to open
+- Command-O or Control-O to select a file to open
 - Press Fn-F1 to view a list of the other editor shortcuts
 - Command-Enter / Control-Enter to Preview
 - Command-Shift-Enter or Control-Shift-Enter to Compile
