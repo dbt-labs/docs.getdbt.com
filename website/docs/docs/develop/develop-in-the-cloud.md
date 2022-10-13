@@ -203,7 +203,7 @@ The status icon on the lower right corner of the IDE gives you an indicator of t
 
 The file state indicators to make it clear when changes or actions have been made. The indicators **M**, **U**, and **•** appear to the right of your file or folder name and indicate the actions performed:
 
-- Unsaved (•) - The IDE detects unsaved changes to your file/folder
+- Unsaved (•) &mdash; The IDE detects unsaved changes to your file/folder
 - Modification (M) - The IDE detects a modification of existing files/folders have saved changes file or folder
 - Untracked (U) - The IDE detects changes made to new files or renamed files
 
