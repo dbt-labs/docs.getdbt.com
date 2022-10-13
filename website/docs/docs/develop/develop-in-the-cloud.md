@@ -171,7 +171,7 @@ You can also drag and drop files located in the file explorer. Use the file brea
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/file-explorer.png" title="File Explorer"/> 
 
-**Organize tabs**
+#### Organize tabs
 
 You can move your tabs around to reorganize your work in the IDE. You can also right click on a tab to view and select a list of actions to take.
 
