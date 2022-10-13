@@ -177,7 +177,7 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/tab-options.png" title="Tab options"/>
 
-**Run projects**
+#### Run projects
 
 You can also *build*, *run* *and test* dbt projects directly in the Cloud IDE with a click of a button, using the ‘Build’ feature. You can also use dbt's [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud.
 
