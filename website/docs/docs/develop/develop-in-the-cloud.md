@@ -205,7 +205,7 @@ The file state indicators to make it clear when changes or actions have been mad
 
 - Unsaved (•) &mdash; The IDE detects unsaved changes to your file/folder
 - Modification (M) &mdash; The IDE detects a modification of existing files/folders have saved changes file or folder
-- Untracked (U) - The IDE detects changes made to new files or renamed files
+- Untracked (U) &mdash; The IDE detects changes made to new files or renamed files
 
 
 ## Related docs
