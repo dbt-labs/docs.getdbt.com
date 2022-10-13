@@ -165,7 +165,7 @@ You can make multiple selections for quick and simultaneous edits. The below com
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/multi-selector.gif" title="Multiple Selections"/>
 
-**Drag and drop** 
+#### Drag and drop
 
 You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right clicking on the breadcrumb file.
 
