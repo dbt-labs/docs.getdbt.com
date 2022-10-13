@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
- import React from 'react';
+ import React, { useEffect } from 'react';
  import Seo from '@theme/Seo';
  import Head from '@docusaurus/Head';
  import BlogLayout from '@theme/BlogLayout';
@@ -26,6 +26,21 @@
    } = metadata;
    const {hide_table_of_contents: hideTableOfContents, keywords} = frontMatter;
    const image = assets.image ?? frontMatter.image;
+
+   useEffect(() => {
+      window.DiscourseEmbed = {
+        discourseUrl: 'https://discourse.getdbt.com/',
+        discourseEmbedUrl: `${window.location.href}`
+      }
+
+
+      var d = document.createElement('script');
+      d.type = 'text/javascript';
+      d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+
+    }, [])
    return (
      <BlogLayout
        wrapperClassName={ThemeClassNames.wrapper.blogPages}
@@ -81,6 +96,9 @@
        {(nextItem || prevItem) && (
          <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
        )}
+
+       <div className="commentEmbed" id='discourse-comments'></div>
+       
      </BlogLayout>
    );
  }
