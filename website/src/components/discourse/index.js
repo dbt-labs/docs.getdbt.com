@@ -172,7 +172,7 @@ export const DiscourseHelpFeed = ({
   max_views,
   term,
   title,
-  topic_count = 5,
+  topic_count = 3,
   styles = {}
 }) => {
   return <DiscourseFeed 
