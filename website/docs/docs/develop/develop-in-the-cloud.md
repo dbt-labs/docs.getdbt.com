@@ -134,7 +134,7 @@ There are three start-up states when using or launching the Cloud IDE:
     
 - Creation start &mdash; This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
 - Cold start - This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
-- Hot start -  This is the state of resuming an existing or active develop session within 3 hours of the last activity. 
+- Hot start &mdash; This is the state of resuming an existing or active develop session within three hours of the last activity. 
     
 
 </td><td>
