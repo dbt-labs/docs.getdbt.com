@@ -57,7 +57,7 @@ You can perform git tasks with the git button in the Cloud IDE. The following ar
 | Refresh git state | This enables you to pull new branches from a different remote branch to your local branch with just one command. |
 
 
-## Handling merge conflicts
+## Merge conflicts
 
 Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept. 
 
