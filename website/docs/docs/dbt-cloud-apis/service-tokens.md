@@ -17,7 +17,7 @@ You can assign as many permission sets as needed to one token. For more on permi
 
 ## Generating service account tokens
 
-In the Account Settings view of dbt Cloud, you can click on the Service Account tokens page and generate a new token. Create and save your token somewhere safe.
+In the Account Settings view of dbt Cloud, you can click on the Service Account tokens page and generate a new token. Create and save your token somewhere safe
 
 :::caution Note
 
