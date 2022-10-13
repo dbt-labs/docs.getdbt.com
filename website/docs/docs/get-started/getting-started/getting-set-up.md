@@ -1,5 +1,5 @@
 ---
-title: Set up dbt Cloud
+title: About setting up dbt Cloud
 id: set-up-dbt-cloud
 description: "Set up a sample project to get you started using dbt Cloud."
 sidebar_label: "About set up"
