@@ -37,7 +37,7 @@ There are default keyboard shortcuts that can help make development more product
 
 - Command-O or Control-O to select a file to open
 - Press Fn-F1 to view a list of the other editor shortcuts
-- Command-Enter / Control-Enter to Preview
+- Command-Enter or Control-Enter to Preview
 - Command-Shift-Enter or Control-Shift-Enter to Compile
 
 ## Package tips
