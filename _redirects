@@ -10,7 +10,7 @@
 /docs/dbt-cloud/access-control/enterprise-permissions /docs/collaborate/manage-access/enterprise-permissions 301
 /docs/dbt-cloud/access-control/self-service-permissions /docs/collaborate/manage-access/self-service-permissions 301
 /docs/dbt-cloud/access-control/cloud-seats-and-users /docs/collaborate/manage-access/seats-and-users 301
-/docs/dbt-cloud/access-control/access-control-overview /docs/collaborate/manage-access/licenses-and-groups 301
+/docs/dbt-cloud/access-control/access-control-overview /docs/collaborate/manage-access/manage-access 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation /docs/collaborate/build-and-view-your-docs 301
 /docs/building-a-dbt-project/documentation /docs/collaborate/documentation 301
 /docs/building-a-dbt-project/managing-environments /docs/collaborate/environments 301
@@ -165,6 +165,7 @@
 /docs/dbt-api /docs/running-a-dbt-project/dbt-api 302
 /docs/dbt-cloud-enterprise /docs/dbt-cloud/dbt-cloud-enterprise 302
 /docs/dbt-cloud/cloud-configuring-repositories /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories 302
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version /docs/dbt-versions/upgrade-core-in-cloud 301
 /docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permissions/ /docs/dbt-cloud/access-control/enterprise-permissions 302
 /docs/dbt-cloud/on-premises/architecture /dbt-cloud/on-premises/dependencies 302
 /docs/dbt-projects /docs/building-a-dbt-project/dbt-projects 302

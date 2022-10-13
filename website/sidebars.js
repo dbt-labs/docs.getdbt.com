@@ -258,7 +258,7 @@ const sidebarSettings = {
           type: "category",
           label: "Manage access",
           items: [
-            "docs/collaborate/manage-access/licenses-and-groups",
+            "docs/collaborate/manage-access/manage-access",
             "docs/collaborate/manage-access/seats-and-users",
             {
               type: "category",
