@@ -6,7 +6,6 @@ import Link from '@docusaurus/Link';
 
 function BlogPostCard({ postMetaData }) {
   const { title, date, readingTime, description, link, image } = postMetaData
-  console.log(title)
   return (
     <div className={styles.cardWrapper}>
       <article className={`${image ? styles.imageCard : styles.card}`}>

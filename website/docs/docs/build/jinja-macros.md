@@ -184,3 +184,6 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 ...
 {% endfor %}
 ```
+
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="jinja"/>
