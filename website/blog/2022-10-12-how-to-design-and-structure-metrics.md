@@ -22,9 +22,9 @@ is_featured: true
 
 As a longtime [dbt Community](https://www.getdbt.com/community/join-the-community/) member, I knew I had to get involved when I first saw the dbt Semantic Layer in the now infamous [`dbt should know about metrics` Github Issue](https://github.com/dbt-labs/dbt-core/issues/4071). It gave me a vision of a world where metrics and business logic were unified across an entire organization; a world where the data team was no longer bound to a single consuming experience and could enable their stakeholders in dozens of different ways. To me, it felt like the opportunity to contribute to the next step of what dbt could become.
 
-In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own that title! It’s not a surprise - dbt was built to serve data practicioners expand the power of our work with software engineering principles. It gave us flexibility and power to serve our organizations. But I always wondered if there were more folks who could directly benefit from interacting with dbt.
+In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own that title! It’s not a surprise - dbt was built to serve data practitioners expand the power of our work with software engineering principles. It gave us flexibility and power to serve our organizations. But I always wondered if there were more folks who could directly benefit from interacting with dbt.
 
-The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practicioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo while also serving them to the entire business.
+The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practitioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo while also serving them to the entire business.
 
 However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how exactly you can do that. This blog contains our early best practice recommendations for metrics in two key areas:
 - **Design**: What logic goes into metrics and how to use calculations, filters, dimensions, etc.
@@ -73,7 +73,7 @@ Once we have this field, we reach a diverging path:
 - If we are not interested in seeing the history of `order_events` , we can add a `where` clause **to the model itself**. This would ensure there is only one row per order.
 - If we **are** interested in seeing the history of `order_events` , we can add a `filter` to the metric definition to ensure that these duplicate order rows don’t cause us to misreport revenue
 
-Both of these paths ensure that only the correct orders are included in the metric calculation but one does it at the modeling layer and the other the semantic layer. There is no **best** path here - it depends on your organizations reporting and analytics needs. For this example, we’ll say that our business isn’t interested in understanding orders that have gone from completed to returned and so we’ll use option one moving forward. Now lets define the metric:
+Both of these paths ensure that only the correct orders are included in the metric calculation but one does it at the modeling layer and the other the semantic layer. There is no **best** path here - it depends on your organization's reporting and analytics needs. For this example, we’ll say that our business isn’t interested in understanding orders that have gone from completed to returned and so we’ll use option one moving forward. Now lets define the metric:
 
 ```yaml
 version: 2
@@ -342,6 +342,19 @@ Once you’ve decided ***where*** to put your metrics folder, you can now decide
 This method follows a similar pattern to [dbt’s best practices around model structure](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview). The introduction of the metrics folder is the only change from the standard best practice.
 
 In practice, the all-in-one YML method would look like the following:
+
+```yaml
+## Metrics within Marts
+models:
+	marts: 
+		metrics:
+			- metrics.yml
+------
+## Metrics within Models
+models:
+	metrics:
+		- metrics.yml
+```
 
 **Option B: The single-metric-per-file method**
 In this method, you create *one* yml file for *each* metric*.* Although this is an opinionated stance that differs from [dbt’s best practices](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview), here are some reasons why this **could** be useful:
