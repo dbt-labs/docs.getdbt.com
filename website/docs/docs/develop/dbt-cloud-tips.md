@@ -9,8 +9,6 @@ sidebar_label: "dbt Cloud tips"
 
 The Cloud IDE is fully equipped with keyboard shortcuts, features, and development tips to help you to work like a dbt Cloud power user!  Use this Cloud IDE cheat sheet to help you save time and quickly reference. 
 
-Additionally, review our [Guides](/docs/guides/getting-started) page for more tips and tutorials.
-
 ## Most popular
 
 **Search across files**
@@ -71,3 +69,6 @@ There are default keyboard shortcuts that can help make development more product
 - Use [seeds](/docs/building-a-dbt-project/seeds) to create manual lookup tables, like zip codes to states or marketing UTMs to campaigns. `dbt seed` will build these from CSVs into your warehouse and make them `ref` able in your models.
 - Use [target.name](/docs/building-a-dbt-project/building-models/using-custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.
 
+## Related docs
+- [Guides](/docs/guides/getting-started) 
+- [Develop in the Cloud](/docs/develop/develop-in-the-cloud)
