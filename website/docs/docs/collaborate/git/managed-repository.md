@@ -1,17 +1,17 @@
 ---
-title: "Using a dbt Cloud managed repository"
-id: "cloud-using-a-managed-repository"
+title: "Managed repository"
+id: "managed-repository"
 ---
 
-If you do not already have a git repository for your dbt project, you can let dbt Cloud manage a repository for you. Managed repositories are a great way to trial dbt without needing to create a new repository. 
+If you do not already have a git repository for your dbt project, you can let dbt Cloud manage a repository for you. Managed repositories are a great way to trial dbt without needing to create a new repository.
 
-To set up a project with a managed repository: 
+To set up a project with a managed repository:
 
 1. From your Account settings in dbt Cloud, select the project you want to set up with a managed repository. If the project already has a repository set up, you need to edit the repository settings and disconnect the existing repository.
 2. Click **Edit** for the project.
 3. Under Repository, click **Configure repository**.
 4. Select **Managed**.
-5. Enter a name for the repository. For example, "analytics" or "dbt-models." 
+5. Enter a name for the repository. For example, "analytics" or "dbt-models."
 6. Click **Create**.
    <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/managed-repo.png" title="Adding a managed repository"/>
 
