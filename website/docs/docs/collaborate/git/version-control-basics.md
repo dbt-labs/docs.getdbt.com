@@ -7,19 +7,12 @@ sidebar_label: "Version control basics"
 
 # Version control basics
 
-:::info 📌 
 
-To use version control, make sure you are connected to a Git repository in the Cloud IDE. To use version control, make sure you are connected to a Git repository in the IDE.
-
-:::
-
-A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in the [Cloud IDE](/docs/develop/develop-in-the-cloud).
-
-When you develop in the Cloud IDE, you can leverage Git directly to version control your code from your browser. This means you can branch, commit, push, and pull code with a couple of clicks - no command line required!
+When you develop in the CLI or Cloud IDE, you can leverage Git directly to version control your code. To use version control, make sure you are connected to a Git repository in the CLI or Cloud IDE. 
 
 You can create a separate branch to develop and make changes. The changes you make aren’t merged into the main branch unless it successfully passes tests. This helps keep the code organized and improves productivity by making the development process smooth.
 
-![Git overview](https://docs.getdbt.com/img/docs/dbt-cloud/cloud-ide/git-overview.png)
+You can read more about git terminology below and also check out [GitHub Docs](https://docs.github.com/en) as well.
 
 ## Git overview
 
