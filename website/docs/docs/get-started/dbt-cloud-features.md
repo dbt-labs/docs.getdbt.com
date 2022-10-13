@@ -7,11 +7,11 @@ id: "dbt-cloud-features"
 
 :::info Join our Cloud IDE beta
 
-Learn about [what you can do](/docs/develop/develop-in-the-cloud#develop-in-the-cloud-ide-beta) with our Cloud IDE beta. Please [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join our Cloud IDE beta group.
+Learn about [what you can do](/docs/get-started/develop-in-the-cloud#develop-in-the-cloud-ide-beta) with our Cloud IDE beta. Please [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join our Cloud IDE beta group.
 
 :::
 
-The dbt Cloud [integrated development environment (IDE)](/docs/develop/develop-in-the-cloud) allows you to build, test, run, and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project -- no command line required.  Anyone can use the IDE, from new dbt developers to seasoned practitioners.
+The dbt Cloud [integrated development environment (IDE)](/docs/get-started/develop-in-the-cloud) allows you to build, test, run, and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project -- no command line required.  Anyone can use the IDE, from new dbt developers to seasoned practitioners.
 
 With the Cloud IDE, you can:
 
@@ -20,7 +20,7 @@ With the Cloud IDE, you can:
 - Test every model before deploying them to production.
 - Generate and view documentation of your dbt project.
 - Leverage [git and version-control your code](/docs/collaborate/git/version-control-basics) from your browser with a couple of clicks.
-- Visualize a directed acyclic graph (DAG) [and more](/docs/develop/dbt-cloud-tips)
+- Visualize a directed acyclic graph (DAG) [and more](/docs/get-started/dbt-cloud-tips)
 - Use dark mode when you develop in the Cloud IDE
 
 ## IDE features
@@ -77,7 +77,7 @@ The dbt Cloud IDE includes features that make it easier for you to develop, buil
 
 
 ## Related docs
-- [dbt Cloud tips](/docs/develop/dbt-cloud-tips)
-- [Develop in the Cloud](docs/develop/develop-in-the-cloud)
+- [dbt Cloud tips](/docs/get-started/dbt-cloud-tips)
+- [Develop in the Cloud](docs/get-started/develop-in-the-cloud)
 - [Guides](/docs/get-started/overview)
 
