@@ -5,7 +5,7 @@ id: "dbt-cloud-features"
 
 
 :::info Beta Feature
-The revamped dbt Cloud IDE is now in beta! Check out the [IDE features](docs/dbt-cloud/cloud-ide/ide-beta), and [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the new Cloud IDE Beta group.
+The revamped dbt Cloud IDE is now in beta! Check out the [IDE features](/docs/dbt-cloud/cloud-ide/ide-beta), and [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join the new Cloud IDE Beta group.
 
 :::
 
@@ -14,7 +14,7 @@ The dbt Integrated Development Environment (IDE) provides a realtime editing and
 
 **Prerequisites**:
 
-You must have a dbt Cloud account to use the IDE. Consult the guide on [using the dbt IDE](using-the-dbt-ide). Don't have an account? You can get started for free [here](https://www.getdbt.com/signup).
+You must have a dbt Cloud account to use the IDE. Consult the guide on [using the dbt IDE](/docs/running-a-dbt-project/using-the-dbt-ide). Don't have an account? You can get started for free [here](https://www.getdbt.com/signup).
 
 ## Compiling and Running SQL
 
