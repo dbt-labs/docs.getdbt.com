@@ -7,8 +7,7 @@ sidebar_label: "Version control basics"
 
 # Version control basics
 
-
-When you develop in the CLI or Cloud IDE, you can leverage Git directly to version control your code. To use version control, make sure you are connected to a Git repository in the CLI or Cloud IDE. 
+When you develop in the command line interface (CLI) or Cloud  integrated development environment (IDE), you can leverage Git directly to version control your code. To use version control, make sure you are connected to a Git repository in the CLI or Cloud IDE. 
 
 You can create a separate branch to develop and make changes. The changes you make aren’t merged into the main branch unless it successfully passes tests. This helps keep the code organized and improves productivity by making the development process smooth.
 
