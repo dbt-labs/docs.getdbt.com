@@ -10,3 +10,10 @@ website/build/
 website/yarn.lock
 website/node_modules
 website/i18n/*
+
+# Local vs code 
+.vscode
+# Local Netlify folder
+.netlify
+
+.vscode

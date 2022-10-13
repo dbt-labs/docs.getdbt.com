@@ -11,6 +11,9 @@ default_value: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Sources', value: 'sources', },
+    { label: 'Metrics', value: 'metrics', },
+    { label: 'Exposures', value: 'exposures', },
   ]
 }>
 <TabItem value="models">
@@ -133,6 +136,121 @@ tests:
 
 </TabItem>
 
+<TabItem value="sources">
+
+<File name='dbt_project.yml'>
+
+```yaml
+sources:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)enabled: true | false
+
+```
+
+</File>
+
+<VersionBlock firstVersion="1.1">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+sources:
+  - name: [<source-name>]
+    [config](resource-properties/config):
+      enabled: true | false
+    tables:
+      - name: [<source-table-name>]
+        [config](resource-properties/config):
+          enabled: true | false
+
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="metrics">
+
+<VersionBlock lastVersion="1.2">
+
+Support for disabling metrics was added in dbt Core v1.3
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+<File name='dbt_project.yml'>
+
+```yaml
+metrics:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)enabled: true | false
+
+```
+
+</File>
+
+<File name='models/metrics.yml'>
+
+```yaml
+version: 2
+
+metrics:
+  - name: [<metric-name>]
+    [config](resource-properties/config):
+      enabled: true | false
+
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="exposures">
+
+<VersionBlock lastVersion="1.2">
+
+Support for disabling exposures was added in dbt Core v1.3
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+<File name='dbt_project.yml'>
+
+```yaml
+exposures:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)enabled: true | false
+
+```
+
+</File>
+
+<File name='models/exposures.yml'>
+
+```yaml
+version: 2
+
+exposures:
+  - name: [<exposure-name>]
+    [config](resource-properties/config):
+      enabled: true | false
+
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -148,7 +266,7 @@ If you are disabling models because they are no longer being used, but you want 
 
 ## Examples
 ### Disable a model in a package in order to use your own version of the model.
-This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/dbt-labs/segment/blob/master/models/base/segment_web_page_views.sql)):
+This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/dbt-labs/segment/blob/main/models/base/segment_web_page_views.sql)):
 1. Add a model named `segment_web_page_views` the same name to your own project.
 2. To avoid a compilation error due to duplicate models, disable the segment package's version of the model like so:
 

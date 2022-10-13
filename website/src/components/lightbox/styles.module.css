@@ -1,18 +1,18 @@
 
 :local(.title) {
     text-align: center;
+    font-size: small;
     width: 100%;
 }
 
-
 :local(.docImage) {
-    filter: drop-shadow(1px 4px 10px #aaaaaa33);
+    filter: drop-shadow(4px 4px 6px #aaaaaa33);
     margin: 10px auto;
     display: block;
-    width: 600px;
+    max-width: 400px;
 }
 
 :local(.collapsed) {
-    max-width: 300px !important;
+    max-width: 400px !important;
     display: inline-block;
 }
