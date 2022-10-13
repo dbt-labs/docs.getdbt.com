@@ -23,7 +23,7 @@ With the Cloud IDE, you can:
 - Use dark mode when you develop in the Cloud IDE
 
 ## IDE features
-The dbt Cloud IDE comes with great features to make it easy for you to develop, build, compile, run and test data models!  Check out some of the features below to learn more:
+The dbt Cloud IDE includes features that make it easier for you to develop, build, compile, run, and test your data models.  Check out some of the features below to learn more:
 
 
 - Find and replace
