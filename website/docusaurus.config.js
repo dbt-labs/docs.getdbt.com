@@ -41,7 +41,6 @@ console.log("DEBUG: metatags = ", metatags);
 
 var siteSettings = {
   baseUrl: "/",
-  favicon: "/img/favicon.ico",
   tagline: "End user documentation, guides and technical reference for dbt",
   title: "dbt Developer Hub",
   url: SITE_URL,
@@ -256,6 +255,8 @@ var siteSettings = {
         "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
       crossorigin: "anonymous",
     },
+    {rel: 'icon', href: 'img/favicon.png', type: 'image/png'},
+    {rel: 'icon', href: 'img/favicon.svg', type: 'image/svg+xml'},
   ],
 };
 

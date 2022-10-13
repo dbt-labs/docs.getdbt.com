@@ -1,6 +1,6 @@
 ---
 title: "How to design and structure dbt metrics: Recommendations for getting started"
-description: "The introduction of the dbt Semantic Layer expands what users can do with dbt but introduces a familiar debate on what logic lives where. Read along as the dbt-labs team talks about best practices through the lens of two different examples!"
+description: "The introduction of the dbt Semantic Layer expands what users can do with dbt but introduces a familiar questions around where logic should live. Read along as the dbt Labs team talks about best practices through the lens of two different examples!"
 slug: how-to-design-and-structure-metrics
 
 authors: [callum_mccann]
@@ -22,9 +22,9 @@ is_featured: true
 
 As a longtime [dbt Community](https://www.getdbt.com/community/join-the-community/) member, I knew I had to get involved when I first saw the dbt Semantic Layer in the now infamous [`dbt should know about metrics` Github Issue](https://github.com/dbt-labs/dbt-core/issues/4071). It gave me a vision of a world where metrics and business logic were unified across an entire organization; a world where the data team was no longer bound to a single consuming experience and could enable their stakeholders in dozens of different ways. To me, it felt like the opportunity to contribute to the next step of what dbt could become.
 
-In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own that title! It’s not a surprise - dbt was built to serve data practicioners expand the power of our work with software engineering principles. It gave us flexibility and power to serve our organizations. But I always wondered if there were more folks who could directly benefit from interacting with dbt.
+In past roles, I’ve been referred to as the `dbt zealot` and I’ll gladly own that title! It’s not a surprise - dbt was built to serve data practitioners expand the power of our work with software engineering principles. It gave us flexibility and power to serve our organizations. But I always wondered if there were more folks who could directly benefit from interacting with dbt.
 
-The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practicioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo while also serving them to the entire business.
+The Semantic Layer expands the reach of dbt **by coupling dbt’s mature data modeling framework with semantic definitions.** The result is a first of its kind data experience that serves both the data practitioners writing your analytics code and stakeholders who depend on it. Metrics are the first step towards this vision, allowing users to version control and centrally define their key business metrics in a single repo while also serving them to the entire business.
 
 However, this is still a relatively new part of the dbt toolbox and you probably have a lot of questions on how exactly you can do that. This blog contains our early best practice recommendations for metrics in two key areas:
 - **Design**: What logic goes into metrics and how to use calculations, filters, dimensions, etc.
@@ -34,15 +34,15 @@ We developed these recommendations by combining the overall philosophy of dbt, w
 
 <!--truncate-->
 
-**Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties. 
+**Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties.
 
 ### When to put business logic in the semantic layer vs the modeling layer
 
-Our instinct when designing metrics might be to encode as much information as possible into the semantic layer. An example of this is case statements - the analytics engineer’s gut instinct might be to mimic tools of the past and provide complicated case statements for the metric `expression` property to try and capture the nuance of how it should be calculated. 
+Our instinct when designing metrics might be to encode as much information as possible into the semantic layer. An example of this is case statements - the analytics engineer’s gut instinct might be to mimic tools of the past and provide complicated case statements for the metric `expression` property to try and capture the nuance of how it should be calculated.
 
-But remember - you always have the option of performing this logic _in the modeling layer_. This is the key difference between dbt and other semantic layer offerings - by sitting the semantic layer atop a mature transformation layer, you always have the option to configure and optimize your logic within your models and then _define semantic components with intentionality_. 
+But remember - you always have the option of performing this logic _in the modeling layer_. This is the key difference between dbt and other semantic layer offerings - by sitting the semantic layer atop a mature transformation layer, you always have the option to configure and optimize your logic within your models and then _define semantic components with intentionality_.
 
-Getting the balance  just right is a learning experience and developing community best practices and standards will take time, which is why it’s important for us to think from first principles. What should really be our goal when determining whether logic lives in a model or a metrics? 
+Getting the balance  just right is a learning experience and developing community best practices and standards will take time, which is why it’s important for us to think from first principles. What should really be our goal when determining whether logic lives in a model or a metrics?
 
 To explore this question and begin to develop an intuition, we’ll walk through two examples of handling this divide.
 
@@ -52,9 +52,9 @@ To explore this question and begin to develop an intuition, we’ll walk through
 
 In this example, we’ll cover the basics of defining a metric and a fairly straightforward example of where users can draw the line between the semantic layer and the modeling layer. You should finish this section with a better understanding of dbt metrics and its relationship to the modeling layer.
 
-In the past, the `marts` tables were often your end stage layer before data was consumed in another tool or system. Now, the mart is the springboard for the creation of our metric. So we'll begin by looking our end-state `marts` model called `order_events` that looks something like the below table, but on the order of millions of rows instead of five. Our finance team uses the below model to better understand revenue but inconsistencies in how its reported have led to requests that the data team centralize the definition in the dbt repo.
+In the past, the `marts` tables were often your end stage layer before data was consumed in another tool or system. Now, the mart is the springboard for the creation of our metric. So we'll begin by looking our end-state `marts` model called `order_events` that looks something like the below table, but on the order of millions of rows instead of five. Our finance team uses the below model to better understand revenue but inconsistencies in how it's reported have led to requests that the data team centralize the definition in the dbt repo.
 
-| order_date | order_id | order_country | order_status | customer_id | customer_status | amount |
+| event_date | order_id | order_country | order_status | customer_id | customer_status | amount |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2022-10-01 | 1 | United States | completed | 19 | Healthy | 10 |
 | 2022-10-01 | 2 | France | completed | 36 | Churn Risk | 15 |
@@ -73,7 +73,7 @@ Once we have this field, we reach a diverging path:
 - If we are not interested in seeing the history of `order_events` , we can add a `where` clause **to the model itself**. This would ensure there is only one row per order.
 - If we **are** interested in seeing the history of `order_events` , we can add a `filter` to the metric definition to ensure that these duplicate order rows don’t cause us to misreport revenue
 
-Both of these paths ensure that only the correct orders are included in the metric calculation but one does it at the modeling layer and the other the semantic layer. There is no **best** path here - it depends on your organizations reporting and analytics needs. For this example, we’ll say that our business isn’t interested in understanding orders that have gone from completed to returned and so we’ll use option one moving forward. Now lets define the metric:
+Both of these paths ensure that only the correct orders are included in the metric calculation but one does it at the modeling layer and the other the semantic layer. There is no **best** path here - it depends on your organization's reporting and analytics needs. For this example, we’ll say that our business isn’t interested in understanding orders that have gone from completed to returned and so we’ll use option one moving forward. Now lets define the metric:
 
 ```yaml
 version: 2
@@ -84,15 +84,15 @@ metrics:
     description: "The revenue for our business, as defined by Jerry in Finance"
 
     calculation_method: sum
-    expression: amount 
+    expression: amount
 
-    timestamp: order_date
+    timestamp: event_date
     time_grains: [day, week, month, all_time]
 
     dimensions:
       - customer_status
 			- order_country
-    
+
     ## We don't need this section because we chose option 1
     ## filters:
     ##   - field: order_status
@@ -130,9 +130,9 @@ To quote Cameron Afzal, Product Manager of the dbt Semantic Layer:
 - **Relevance:** Analysts must include the dimensions most relevant to answering the question.
 - **Trust**: Curating high-quality dimensions with little to no known errors helps ensure trust in analysis results and the decisions that follow.
 - **Efficiency**: Curation provides a faster path to high-quality analysis results.
-> 
+>
 
-To put it another way, **metrics are most useful when every dimension provided can help provide answers to the business.** 
+To put it another way, **metrics are most useful when every dimension provided can help provide answers to the business.**
 
 ## Advanced example: NPS
 
@@ -140,7 +140,7 @@ To put it another way, **metrics are most useful when every dimension provided c
 
 Now let’s look at a more complex example of a metric  - one that is built from components that could theoretically themselves be metrics. The metric in question is Net Promoter score, which is used by the dbt Labs internal analytics team to understand the experience that users are having on dbt Cloud.
 
-For those of you who are unfamiliar with the industry metric of Net Promoter Score, here is a [great article from the folks over at Delighted on how it is calculated.](https://delighted.com/net-promoter-score) The short version of it is `the percentage of promoters - the percentage of detractors`. 
+For those of you who are unfamiliar with the industry metric of Net Promoter Score, here is a [great article from the folks over at Delighted on how it is calculated.](https://delighted.com/net-promoter-score) The short version of it is `the percentage of promoters - the percentage of detractors`.
 
 ---
 
@@ -166,7 +166,7 @@ If we wanted to store all the logic inside metric definitions, we could use the 
 ```yaml
 metrics:
   - name: total_respondents
-    label: Total of NPS Respondents 
+    label: Total of NPS Respondents
     model: ref('customer_nps')
     description: 'The count of users responding to NPS surveys in dbt Cloud.'
     calculation_method: count
@@ -196,7 +196,7 @@ metrics:
 	    label: Percent Promoters (Cloud)
 	    description: 'The percent of dbt Cloud users in the promoters segment.'
 	    calculation_method: expression
-	    expression: "{{metric('total_promoter_respondents')}} / {{metric('total_respondents')}}" 
+	    expression: "{{metric('total_promoter_respondents')}} / {{metric('total_respondents')}}"
 	    timestamp: created_at
 	    time_grains: [day, month, quarter, year]
 	    dimensions:
@@ -206,11 +206,11 @@ metrics:
 
 	- name: detractor_pct
 			... ##same as promoters_pct
-	    expression: "{{metric('total_detractor_respondents')}} / {{metric('total_respondents')}}" 
+	    expression: "{{metric('total_detractor_respondents')}} / {{metric('total_respondents')}}"
 
 	- name: nps_score
-	    label: Net Promoter Score 
-	    description: 'The NPS (-1 to 1) of all dbt Cloud users.'	
+	    label: Net Promoter Score
+	    description: 'The NPS (-1 to 1) of all dbt Cloud users.'
 	    calculation_method: expression
 	    expression: "{{metric('promoters_pct')}} - {{metric('detractors_pct')}}"
 	    timestamp: created_at
@@ -231,7 +231,7 @@ Thinking through this, we know that our NPS Score is a series of ratios dependen
 So in order to reduce the complexity of metric code, we can add a new field into the model that assigns an `nps_value` to each survey received. The logic for this field would assign a value of 100, 0, or -100 depending on the survey’s `nps_category`. Example code below:
 
 ```sql
-case 
+case
 	when nps_category = 'detractor' then -100
 	when nps_category = 'promoter' then 100
 	else 0
@@ -265,7 +265,7 @@ metrics:
       - account_plan
       - user_type
 ```
-    
+
 <details>
   <summary>Why does this work?</summary>
 
@@ -283,7 +283,7 @@ This is a slightly different way of calculating NPS from the usually provided fo
 
 The underlying principle of why this works is based on the fact that averages divide the sum of the values in the set by their number. In more dbt friendly terms, what it really means is that average is creating the following equation: `sum(value)/count(*)`. In the first example implementation, we were doing roughly the same thing with multiple metric definitions - the only difference was our numerator was a count that assigned each row a value of 1. So if we duplicate that logic and give each row a value of 1 then we can create far fewer metrics.
 
-But that only gets us to the `promoter_pct` and `detractor_pct` metrics. In order to combine these both into a single metric definition, we needed to change the value that we assign. Given that the total range of values that the metric could output is -100 (all detractors) to 100 (all promoters) we can assign each of those categories that peak value, along with 0 for passives. This means that when the numerator is aggregated, it nets out promoters against detractors just like the documented equation does `promoter score - detractor score` . 
+But that only gets us to the `promoter_pct` and `detractor_pct` metrics. In order to combine these both into a single metric definition, we needed to change the value that we assign. Given that the total range of values that the metric could output is -100 (all detractors) to 100 (all promoters) we can assign each of those categories that peak value, along with 0 for passives. This means that when the numerator is aggregated, it nets out promoters against detractors just like the documented equation does `promoter score - detractor score` .
 
 </details>
 
@@ -303,12 +303,12 @@ If you follow [dbt’s best practices for structuring your project](https://docs
 models:
 	staging:
 	intermediate:
-	marts: 
+	marts:
 ```
 
-Your marts folder would most likely contain your end-state models ready for business consumption. Given that metrics are meant for business consumption, we are presented with two options - staying within the same framework or representing metrics as their own level. 
+Your marts folder would most likely contain your end-state models ready for business consumption. Given that metrics are meant for business consumption, we are presented with two options - staying within the same framework or representing metrics as their own level.
 
-We recommend Option A (metrics within marts) but recognize that some people might prefer Option B (metrics within models). 
+We recommend Option A (metrics within marts) but recognize that some people might prefer Option B (metrics within models).
 
 **A. Metrics within marts**
 
@@ -316,10 +316,10 @@ Create a metrics folder within marts and use this to contain all of your metric 
 
 ```yaml
 models:
-	staging: 
+	staging:
 	intermediate:
 	marts:
-		metrics: 
+		metrics:
 ```
 
 **B. Metrics within models**
@@ -328,20 +328,33 @@ Create a metrics folder within models and use this to contain all of your metric
 
 ```yaml
 models:
-	staging: 
+	staging:
 	intermediate:
 	marts:
-	metrics: 
+	metrics:
 ```
 
 ### File structure
 
 Once you’ve decided ***where*** to put your metrics folder, you can now decide ***how*** you want to structure your metrics within this folder. Choose one of two methods for structuring metrics:
 
-**Option A: The all-in-one YML method** 
-This method follows a similar pattern to [dbt’s best practices around model structure](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview). The introduction of the metrics folder is the only change from the standard best practice. 
+**Option A: The all-in-one YML method**
+This method follows a similar pattern to [dbt’s best practices around model structure](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview). The introduction of the metrics folder is the only change from the standard best practice.
 
-In practice, the all-in-one YML method would look like the following: 
+In practice, the all-in-one YML method would look like the following:
+
+```yaml
+## Metrics within Marts
+models:
+	marts: 
+		metrics:
+			- metrics.yml
+------
+## Metrics within Models
+models:
+	metrics:
+		- metrics.yml
+```
 
 **Option B: The single-metric-per-file method**
 In this method, you create *one* yml file for *each* metric*.* Although this is an opinionated stance that differs from [dbt’s best practices](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview), here are some reasons why this **could** be useful:
@@ -349,18 +362,18 @@ In this method, you create *one* yml file for *each* metric*.* Although this is 
 - Individual files are more easily discovered by new analytics engineers as your organization expands
 - Individual files can more easily define specific code owners that may not be part of the data team.
 
-For example, Jerry from the Finance department is the code owner for the `revenue` metric definition and oversees it for the business. So, any change to this specific file would need Jerry’s sign-off. 
+For example, Jerry from the Finance department is the code owner for the `revenue` metric definition and oversees it for the business. So, any change to this specific file would need Jerry’s sign-off.
 
 This can be tricky for code owners who aren’t familiar with your git flow, but it brings them into the chain of responsibility for the metric definition. It also helps them take ownership for reporting on this metric and creates a responsible party when definitions need to change.
 
 The single-file-code-owner method would look like this:
 
 ```yaml
-models: 
+models:
 	metrics:
 		marts:
-			- revenue.yml	
-			- average_order_value.yml	
+			- revenue.yml
+			- average_order_value.yml
 			- some_other_metric_name.yml
 ```
 
@@ -372,10 +385,10 @@ In the end, all of the structuring information above is just a recommendation. Y
 
 ## A call to action
 
-This is just the beginning of dbt metrics and the Semantic Layer. We have a number of exciting ideas for expanding capabilities that we plan to begin work on in the coming months. However, we can’t do that without you. 
+This is just the beginning of dbt metrics and the Semantic Layer. We have a number of exciting ideas for expanding capabilities that we plan to begin work on in the coming months. However, we can’t do that without you.
 
-This semantic layer is a fundamental change to what it means to interact with dbt and ultimately most of the best practices will come from the dbt Community - folks like you. It does not matter if you consider yourself an "expert" on this - we want to talk to you and hear how you are using or would like to use metrics and the semantic layer.  Y’all are going to be our guiding light to help us make sure that all the functionality we add helps **you** serve the needs of your business. 
+This semantic layer is a fundamental change to what it means to interact with dbt and ultimately most of the best practices will come from the dbt Community - folks like you. It does not matter if you consider yourself an "expert" on this - we want to talk to you and hear how you are using or would like to use metrics and the semantic layer.  Y’all are going to be our guiding light to help us make sure that all the functionality we add helps **you** serve the needs of your business.
 
-If your experience with the Semantic Layer match what we’ve written in this post, and especially if they don’t, please share [comments and feedback in this Discourse Discussion](https://discourse.getdbt.com/t/how-to-design-and-structure-metrics/5040)! 
+If your experience with the Semantic Layer match what we’ve written in this post, and especially if they don’t, please share [comments and feedback in this Discourse Discussion](https://discourse.getdbt.com/t/how-to-design-and-structure-metrics/5040)!
 
 Additionally, I would invite you to join us over at #dbt-core-metrics on the dbt Slack where we’ll be posting updates, answering questions, discussing usage, and hopefully responding with the best emojis.
