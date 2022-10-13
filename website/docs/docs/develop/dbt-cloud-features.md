@@ -5,7 +5,7 @@ id: "dbt-cloud-features"
 
 ## dbt Cloud IDE
 
-:::info Beta Feature
+:::info Join our Cloud IDE beta
 Learn about [what you can do](/docs/develop/develop-in-the-cloud#develop-in-the-cloud-ide-beta) with our Cloud IDE beta. Please [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join our Cloud IDE beta group.
 
 :::
