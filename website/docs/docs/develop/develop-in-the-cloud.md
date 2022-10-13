@@ -181,7 +181,7 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 You can also build, run, and test dbt projects directly in the Cloud IDE with a click of a button, using the **Build** feature. You can also use dbt's [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud.
 
-The IDE updates in real-time as models, tests, seeds, and operations are run. If a model or test fails, you can review  the logs to find and fix the issue.
+The IDE updates in real time as models, tests, seeds, and operations are run. If a model or test fails, you can review  the logs to find and fix the issue.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Building"/>
 
