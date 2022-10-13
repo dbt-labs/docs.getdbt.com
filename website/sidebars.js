@@ -89,8 +89,9 @@ const sidebarSettings = {
               type: "category",
               label: "Models",
               items: [
+                "docs/build/models",
                 "docs/build/sql-models",
-                "docs/building-a-dbt-project/building-models/python-models",
+                "docs/build/python-models",
               ],
             },
             "docs/build/seeds",
