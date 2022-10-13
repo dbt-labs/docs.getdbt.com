@@ -114,7 +114,7 @@ To develop in dbt Cloud IDE (beta), you need to meet these requirements:
 - Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
 - You must have a [Developer License](/docs/dbt-cloud/access-control/cloud-seats-and-users)
 - - Your dbt project must be connected to a [data platform](/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database)
-- You must have a [development environment and development credentials](/docs/develop/develop-in-the-cloud#set-up-the-cloud-ide) set up
+- You must have a [development environment and development credentials](#set-up-and-access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 - Currently only multi-tenant instances of dbt Cloud can develop in the updated beta version of the Cloud IDE
     * Single-tenant instances will soon be able to opt into this Beta release.
