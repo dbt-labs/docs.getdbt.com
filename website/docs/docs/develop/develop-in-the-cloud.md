@@ -93,7 +93,7 @@ The dbt Cloud IDE makes it possible to view documentation for your dbt project w
 
 To generate your project’s documentation (docs) in the IDE, run `dbt docs generate` in the command bar. This command generates the docs for your dbt project as it currently exists in development.
 
-After you generate a successful run, you can view your documentation for your dbt project in real time by clicking **View Docs** or the **Book** icon on above the file tree. 
+After you generate a successful run, you can view your documentation for your dbt project in real time by clicking **View Docs** or the book icon on above the file tree. 
 
 You can view the latest version of your documentation rendered in a new browser window, and inspect and verify what your project's documentation will look like before you deploy your changes to production.
 
