@@ -23,7 +23,7 @@ For more info on Public Preview and plan availability, check out the [Public Pre
     
 We're excited to announce the dbt Semantic Layer is currently available for Public Preview, which means:
 
-&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during Public Preview. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. For more info on plan availability, check out our [product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) section.
+&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during Public Preview. Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview) in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Metadata API. For more info on plan availability, check out our [product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) section.
 
 &mdash; **What?** Public Previews provide early access to new features. The Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to General Availability. We may also introduce new functionality that is not backwards compatible. dbt Labs provides support, and relevant service level objectives (SLOs) apply. We will introduce pricing for the dbt Semantic Layer will alongside the General Available (GA) release.
 
@@ -44,29 +44,7 @@ To try out the features of the dbt Semantic Layer, you first need to have a dbt 
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-<VersionBlock firstVersion="1.3" >
-
-- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America. 
-  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
-- Have both your production and development environments running dbt version 1.3 or higher <br />
-- Use Snowflake data platform <br />
-- Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=1.3.0", "<1.4.0"</code> in your dbt project <br />
-- Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview">Metadata API</a> in the integrated tool to import metric definitions <br />
-- Recommended - Review the <a href="https://docs.getdbt.com/docs/building-a-dbt-project/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer">Getting started with the dbt Semantic Layer</a> blog <br />
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.2">
-
-- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America. 
-  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br /> 
-- Have both your production and development environments running dbt version 1.2 (latest) <br />
-- Use Snowflake data platform <br />
-- Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=0.3.0", "<0.4.0"</code> in your dbt project <br />
-- Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-overview">Metadata API</a> in the integrated tool to import metric definitions <br />
-- Recommended - Review the <a href="https://docs.getdbt.com/docs/building-a-dbt-project/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer">Getting started with the dbt Semantic Layer</a> blog <br />
-
-</VersionBlock>
+<Snippet src=“sl-prerequisites” />
 
 :::caution Considerations
 
@@ -270,7 +248,7 @@ Team and Enterprise accounts will be able to set up the Semantic Layer and Metad
 Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
 </details>
 <details>
-    <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized?</summary>
+    <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized? </summary>
   <div>
     <div>All metrics queries are dependent on either the <code>dbt_metrics_calendar_table</code> or a custom calendar set in the users <code>dbt_project.yml</code>. If you have not created this model in the database, these queries will fail and you'll most likely see the following error message:
 
@@ -297,9 +275,27 @@ Developer accounts will be able to query the Proxy Server using SQL, but will no
 </div>
   </div>
 </details>
+        
+<details>
+  <summary>Mismatched Versions - metric type is ‘’</summary>
+  <div>
+    <div>If you’re running <code>dbt_metrics </code> ≥v0.3.2 but have <code>dbt-core</code> version ≥1.3.0, you’ll likely see these error messages:
+
+- Error message 1: <code>The metric NAME also references ... but its type is ''. Only metrics of type expression can reference other metrics.</code>
+- Error message 2: <code>Unknown aggregation style:   > in macro default__gen_primary_metric_aggregate (macros/sql_gen/gen_primary_metric_aggregate.sql)</code>
+
+The reason you're experiencing this error is because we changed the <code>type</code> property of the metric spec in dbt-core v1.3.0. The new name is <code>calculation_method</code> and the package reflects that new name, so it isn’t finding any <code>type</code> when we try and run outdated code on it.**
+
+<b>Fix:</b>
+
+ - Upgrade your <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt_metrics</a> package to v1.3.0
+
+</div>
+  </div>
+</details>        
       <br></br>   
 
-    
+   
 ## Next steps
 
 Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer: 
