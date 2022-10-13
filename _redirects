@@ -21,6 +21,7 @@
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab /docs/collaborate/git/connect-gitlab 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application /docs/collaborate/git/connect-github 301
 /docs/dbt-cloud/cloud-ide/handling-merge-conflicts /docs/collaborate/git/resolve-merge-conflicts 301
+/docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide /docs/collaborate/cloud-build-and-view-your-docs 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories /docs/collaborate/git/pr-template 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration /docs/deploy/cloud-ci-job 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles /docs/deploy/dashboard-status-tiles 301
