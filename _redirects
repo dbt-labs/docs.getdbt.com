@@ -503,3 +503,5 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /guides/getting-started/learning-more/getting-started-dbt-core /docs/develop/getting-started/getting-started-dbt-core 301
 /guides/getting-started/learning-more/refactoring-legacy-sql /docs/develop/getting-started/learning-more/refactoring-legacy-sql 301
 /guides/getting-started/learning-more/using-jinja /docs/develop/getting-started/using-jinja 301
+
+/docs/develop/develop-in-the-cloud  /docs/get-started/develop-in-the-cloud 301!
