@@ -43,6 +43,9 @@ const sidebarSettings = {
               ],
             },
             "docs/get-started/dbt-cloud-features",
+            "docs/get-started/connect-your-database",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
@@ -223,6 +226,9 @@ const sidebarSettings = {
           type: "category",
           label: "Git version control",
           items: [
+            "docs/collaborate/git-version-control",
+            "docs/collaborate/git/version-control-basics",
+            "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
             "docs/collaborate/git/resolve-merge-conflicts",
             {
@@ -344,16 +350,12 @@ const sidebarSettings = {
       label: "dbt Cloud IDE",
       items: [
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
-        "docs/dbt-cloud/cloud-ide/ide-beta",
       ],
     },
     {
       type: "category",
       label: "Configuring dbt Cloud",
       items: [
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
       ],
     },
