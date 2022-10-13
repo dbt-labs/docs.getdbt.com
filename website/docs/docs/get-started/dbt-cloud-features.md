@@ -62,7 +62,8 @@ Build, test, and run your project with a click of a button, or using the Cloud I
 **Drag and drop**
 
 You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right clicking on the breadcrumb file.
-Organize tabs
+
+**Organize tabs**
 
 You can move your tabs around to reorganize your work in the IDE. You can also right click on a tab to view and select a list of actions to take.
 
