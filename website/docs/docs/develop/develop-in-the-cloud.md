@@ -155,7 +155,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 You can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** button formats your file and is powered by [sqlfmt](http://sqlfmt.com/).
 
-**Multiple selections** 
+#### Multiple selections
 
 You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
 
