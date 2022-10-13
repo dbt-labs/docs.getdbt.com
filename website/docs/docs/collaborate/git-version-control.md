@@ -9,11 +9,12 @@ A [version control](https://en.wikipedia.org/wiki/Version_control) system allows
 
 In a distributed version control system, every developer has a full copy of the project and project history. Git is one of the most popular distributed version control systems and is commonly used for both open source and commercial software development, with great benefits for individuals, teams and businesses.
 
+![Git overview](https://docs.getdbt.com/img/docs/dbt-cloud/cloud-ide/git-overview.png)
+
+
 Git allows developers see the entire timeline of their changes, decisions, and progression of any project in one place. From the moment they access the history of a project, the developer has all the context they need to understand it and start contributing.
 
-When you develop in the Cloud IDE, you can leverage Git directly to version control your code from your browser. This means you can branch, commit, push, and pull code with a couple of clicks.
-
-You can create a separate branch to develop and make changes. The changes you make aren’t merged into the main branch unless it successfully passes tests. This helps keep the code organized and improves productivity by making the development process smooth.
+When you develop in the command line interface (CLI) or Cloud  integrated development environment (IDE), you can leverage Git directly to version control your code. To use version control, make sure you are connected to a Git repository in the CLI or Cloud IDE. 
 
 
 ## Related docs
