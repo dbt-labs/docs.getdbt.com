@@ -18,7 +18,7 @@ Any dbt feature will fall into one of the following lifecycle states:
 
 - **Preview (Private or Public):**  Preview features are stable and can be considered for production deployments. There may still be some planned additions and modifications to product behaviors before moving to General Availability. We may also introduce new functionality to Preview features that is not backward compatible. Preview features include documentation, technical support, and include service level objectives (SLOs). Features in Preview are generally provided at no extra cost, although they may become paid features in their Generally Available state.
 
-- **Generally Available(GA):** Generally Available features are stable and can be considered for production deployments. GA features include documentation, technical support, and service level agreements (SLAs) apply.
+- **Generally Available(GA):** Generally Available features provide stable features that can be considered for production deployments. Service level agreements (SLAs) apply to GA features, and these features include documentation and technical support.
 
 - **Deprecated:** Features in this state are not actively worked on or enhanced by dbt Labs and will continue to function as-is until their removal date. 
 
