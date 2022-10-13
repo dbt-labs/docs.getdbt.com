@@ -55,7 +55,7 @@ There are default keyboard shortcuts that can help make development more product
 - Use your folder structure as your primary selector method. `dbt build marts.marketing` is simpler and more resilient than relying on tagging every model.
 - Think about jobs in terms of build cadences and SLAs. Run models that have hourly, daily, or weekly build cadences together.
 - Use the [`where` config](/docs/reference/resource-configs/where) for tests to test an assertion on a subset of records.
-- [`store_failures`](/docs/reference/resource-configs/store_failures) lets you examine records that cause tests to fail, so you can either repair the data or change the test as needed.
+- [store_failures](/docs/reference/resource-configs/store_failures) lets you examine records that cause tests to fail, so you can either repair the data or change the test as needed.
 - Use [severity](/docs/reference/resource-configs/severity) thresholds to set an acceptable number of failures for a test.
 - Use [incremental_strategy](/docs/building-a-dbt-project/building-models/configuring-incremental-models#configuring-incremental-strategy) in your incremental model config to implement the most effective behavior depending on the volume of your data and reliability of your unique keys.
 - Set `vars` in your `dbt_project.yml` to define global defaults for certain conditions, which you can then override using the `--vars` flag in your commands.
