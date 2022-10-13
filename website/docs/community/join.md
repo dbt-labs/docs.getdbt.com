@@ -31,7 +31,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 
 <Card
     title="Code of Conduct"
-    body="We are committed to creating a space where everyone can feel welcome and safe to join and contribute. Our Code of Conduct reflects the agreement that all Community members make to uphold these ideals."
+    body="We are committed to creating a space where everyone can feel welcome and safe. Our Code of Conduct reflects the agreement that all Community members make to uphold these ideals."
     link="community/resources/code-of-conduct/"
     icon="folder"
 />
