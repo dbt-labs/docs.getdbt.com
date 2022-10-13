@@ -337,13 +337,12 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt CLI": ["dbt-cli/cli-overview"],
   "dbt Cloud": [
     {
       type: "category",
       label: "Overview",
       link: { type: "doc", id: "docs/dbt-cloud/cloud-overview" },
-      items: ["docs/dbt-cloud/cloud-quickstart"],
+      items: [],
     },
     {
       type: "category",
