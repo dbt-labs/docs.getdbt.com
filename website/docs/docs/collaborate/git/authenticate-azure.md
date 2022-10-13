@@ -5,7 +5,6 @@ description: "dbt Cloud developers need to authenticate with Azure DevOps."
 sidebar_label: "Authenticate with Azure DevOps"
 ---
 
-<Snippet src="available-beta-banner" />
 
 If you use the dbt Cloud IDE to collaborate on your team's Azure DevOps dbt repo, you need to [link your dbt Cloud profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops), which provides an extra layer of authentication.
 

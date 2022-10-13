@@ -5,8 +5,6 @@ description: "You can set up your Azure DevOps by creating an Azure AD app and a
 sidebar_label: "Set up Azure DevOps"
 ---
 
-<Snippet src="available-beta-banner" />
-
 <Snippet src="available-enterprise-tier-only" />
 
 ## Overview
@@ -27,7 +25,7 @@ Once the Azure AD app is added to dbt Cloud and the service user is connected, t
 
 ## Register an Azure AD app
 
-1. Sign into you Azure portal and click **Azure Active Directory** under Azure services.
+1. Sign into your Azure portal and click **Azure Active Directory** under Azure services.
 2. Select **App registrations** in the left panel.
 3. Select **New registration**. The form for creating a new Active Directory app opens.
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".

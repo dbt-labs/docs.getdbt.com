@@ -10,7 +10,7 @@ The setup below shows how to call the dbt Cloud API to run a job every time ther
 
 ### 1. Get your dbt Cloud API key
 
-When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
+When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
 
 - Login to your dbt Cloud account
 - In the upper left, click the menu button, then *Account Settings*

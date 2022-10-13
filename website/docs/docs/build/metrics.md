@@ -38,7 +38,7 @@ You can define metrics in `.yml` files nested under a `metrics:` key. Metric nam
 - begin with a letter
 - contain no more than 250 characters
 
-For a short human-friendly name with title casing, spaces, and special characters, use the `label` property.
+For a short human-friendly name with title casing, spaces, and special characters, use the `label` property. More examples and guidance for how to [define and structure metrics can be found here.](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics).
 
 ### Example definition
 
@@ -62,7 +62,7 @@ metrics:
     [description](description): "The 14 day rolling count of paying customers using the product"
 
     calculation_method: count_distinct
-    expression: user_id # superfluous here, but shown as an example
+    expression: user_id 
 
     timestamp: signup_date
     time_grains: [day, week, month, quarter, year]
@@ -116,7 +116,7 @@ metrics:
     description: "The 14 day rolling count of paying customers using the product"
 
     type: count_distinct
-    sql: user_id # superfluous here, but shown as an example
+    sql: user_id 
 
     timestamp: signup_date
     time_grains: [day, week, month, quarter, year]
@@ -164,7 +164,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| expression  | The expression to aggregate/calculate over | user_id | yes       |
+| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
@@ -184,7 +184,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | label       | A short for name / label for the metric                     | New Customers                   | no        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| sql | The expression to aggregate/calculate over | user_id | yes       |
+| sql | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month, quarter, year]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
@@ -490,3 +490,5 @@ Functionality for `develop` is only supported in v1.2 and higher. Please navigat
 </VersionBlock>
 
 
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="metrics"/>
