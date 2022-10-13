@@ -1,4 +1,13 @@
 /docs/running-a-dbt-project/running-dbt-in-production /docs/deploy/deployments 301
+/docs/running-a-dbt-project/profile /docs/get-started/connection-profiles 301
+/docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications /docs/deploy/job-notifications 301
+/docs/dbt-cloud/using-dbt-cloud /docs/develop/develop-in-the-cloud 301
+/docs/dbt-cloud/january-2020-pricing-updates https://www.getdbt.com/pricing/  301
+/docs/dbt-cloud/dbt-cloud-enterprise https://www.getdbt.com/pricing/  301
+/docs/dbt-cloud/cloud-quickstart /docs/get-started/getting-started/set-up-dbt-cloud 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud /docs/develop/getting-started/getting-set-up 301
+/docs/building-a-dbt-project/archival /docs/build/snapshots 301
+/docs/about/license /community/resources/contributor-license-agreements 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository /docs/collaborate/git/managed-repository 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database /docs/get-started/connect-your-database 301
 /docs/dbt-cloud/release-notes /docs/dbt-versions/dbt-cloud-release-notes 301
@@ -75,6 +84,7 @@
 /docs/building-a-dbt-project/building-models /docs/build/sql-models 301
 /docs/building-a-dbt-project/using-sources /docs/build/sources 301
 /docs/building-a-dbt-project/projects /docs/build/projects 301
+/docs/building-a-dbt-project/building-models/python-models /docs/build/python-models 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions /docs/dbt-versions/upgrade-core-in-cloud 301
 /docs/core-versions /docs/dbt-versions/core 301
 /docs/dbt-cloud/cloud-dbt-cloud-support /docs/dbt-support 301

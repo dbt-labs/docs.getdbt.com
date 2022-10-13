@@ -89,8 +89,9 @@ const sidebarSettings = {
               type: "category",
               label: "Models",
               items: [
+                "docs/build/models",
                 "docs/build/sql-models",
-                "docs/building-a-dbt-project/building-models/python-models",
+                "docs/build/python-models",
               ],
             },
             "docs/build/seeds",
@@ -337,13 +338,12 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt CLI": ["dbt-cli/cli-overview"],
   "dbt Cloud": [
     {
       type: "category",
       label: "Overview",
       link: { type: "doc", id: "docs/dbt-cloud/cloud-overview" },
-      items: ["docs/dbt-cloud/cloud-quickstart"],
+      items: [],
     },
     {
       type: "category",
