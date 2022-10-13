@@ -23,7 +23,7 @@ You can create a separate branch to develop and make changes. The changes you ma
 
 ## Git overview
 
-Check out some common git terms below that you may encounter when developing:
+Check out some common git terms below that you might encounter when developing:
 
 | Name | Definition |
 | --- | --- |
