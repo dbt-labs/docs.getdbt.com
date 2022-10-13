@@ -1,7 +1,7 @@
 ---
 title: "Version control basics"
 id: version-control-basics
-description: "Leverage git to version control your code."
+description: "Leverage Git to version control your code."
 sidebar_label: "Version control basics"
 ---
 
