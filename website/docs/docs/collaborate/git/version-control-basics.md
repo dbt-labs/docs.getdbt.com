@@ -53,7 +53,7 @@ You can perform git tasks with the git button in the Cloud IDE. The following ar
 | Open pull request | This allows you to open a pull request in Git for peers to review changes before merging into the base branch. |
 | Pull changes from master/main | This option is available if you are on any local branch that is behind the remote version of the base branch or the remote version of the branch that you're currently on. |
 | Pull from remote | This option is available if you’re on the local base branch and changes have recently been pushed to the remote version of the branch. Pulling in changes from the remote repo allows you to pull in the most recent version of the base branch. |
-| Reclone Your Repository | Reclone your repository directly from the dbt IDE and your browser. You can reset your repository back to a fresh clone from your remote, you will want to click on the bottom right-hand side green **Ready** text, then click on the **Reclone Repo** selection.  |
+| Reclone Your Repository | Reclone your repository directly from the Cloud IDE. You can reset your repository back to a fresh clone from your remote. To do this, click on the bottom right-hand side green **Ready** text, then click **Reclone Repo**.  |
 | Refresh git state | This enables you to pull new branches from a different remote branch to your local branch with just one command. |
 
 
