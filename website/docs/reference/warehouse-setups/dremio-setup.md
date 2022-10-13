@@ -88,14 +88,30 @@ Next, configure the profile for your project.
 
 When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
 
-* [Profile for Dremio Cloud](#cloud)
-* [Profile for Dremio Software with Username/Password Authentication](#software_up)
-* [Profile for Dremio Software with Authentication Through a Personal Access Token](#software_pat)
+## Profiles
+
+When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
+
+* Profile for Dremio Cloud
+* Profile for Dremio Software with Username/Password Authentication
+* Profile for Dremio Software with Authentication Through a Personal Access Token
 
 For descriptions of the configurations in these profiles, see [Configurations](#configurations).
 
-<a id="cloud"></a>
-### Profile for Dremio Cloud
+<Tabs
+  defaultValue="cloud"
+  values={[
+    {label: 'Cloud',
+  value: 'cloud'},
+    {label: 'Software (Username/Password)',
+  value: 'software1'},
+    {label: 'Software (Personal Access Token)',
+  value: 'software2'}
+    ]}
+>
+
+<TabItem value="cloud">
+
 ```yaml
 [project name]:
   outputs:
@@ -110,8 +126,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
   target: dev
 ```
 
-<a id="software_up"></a>
-### Profile for Dremio Software with Username/Password Authentication
+</TabItem>
+
+<TabItem value="software1">
+
 ```yaml
 [project name]:
   outputs:
@@ -126,8 +144,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
   target: dev
 ```
 
-<a id="software_pat"></a>
-### Profile for Dremio Software with Authentication Through a Personal Access Token
+</TabItem>
+
+<TabItem value="software2">
+
 ```yaml
 [project name]:
   outputs:
@@ -141,6 +161,9 @@ For descriptions of the configurations in these profiles, see [Configurations](#
       user: [username]
   target: dev
 ```
+
+</TabItem>
+</Tabs>
 
 ## Configurations
 
