@@ -69,5 +69,5 @@ There are default keyboard shortcuts that can help make development more product
 - Use [`state and deferral`](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration#deferral-and-state-comparison) to create a slim CI setup.
 - Use the [`--full-refresh`](/docs/reference/commands/run#refresh-incremental-models) flag to rebuild an incremental model from scratch.
 - Use [`seeds`](/docs/building-a-dbt-project/seeds) to create manual lookup tables, like zip codes to states or marketing UTMs to campaigns. `dbt seed` will build these from CSVs into your warehouse and make them `ref` able in your models.
-- Use [`target.name`](/docs/building-a-dbt-project/building-models/using-custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.
+- Use [target.name](/docs/building-a-dbt-project/building-models/using-custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.
 
