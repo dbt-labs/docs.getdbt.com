@@ -17,7 +17,7 @@ To develop in the Cloud IDE, make sure you have the following:
 - You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/dbt-cloud/access-control/cloud-seats-and-users)
 - You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions
 - Your dbt project must be connected to a [data platform](/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database)
-- You must have a [**development environment** and **development credentials**](/docs/develop/develop-in-the-cloud#set-up-and-access-the-cloud-ide) set up
+- You must have a [**development environment** and **development credentials**](/docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
 
@@ -25,7 +25,7 @@ To develop in the Cloud IDE, make sure you have the following:
 
 :::info📌 
 
-New to dbt? Check out our [Getting Started guide](/docs/guides/getting-started) to build your first dbt project in the Cloud IDE!
+New to dbt? Check out our [Getting Started guide](/docs/get-started/overview) to build your first dbt project in the Cloud IDE!
 
 :::
 
@@ -179,7 +179,7 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 #### Run projects
 
-You can also build, run, and test dbt projects directly in the Cloud IDE with a click of a button, using the **Build** feature. You can also use dbt's [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud.
+You can also build, run, and test dbt projects directly in the Cloud IDE with a click of a button, using the **Build** feature. You can also use dbt's [rich model selection syntax](reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
 
 The IDE updates in real time as models, tests, seeds, and operations are run. If a model or test fails, you can review  the logs to find and fix the issue.
 
@@ -195,7 +195,7 @@ You can access files in the lineage tab by double clicking on a particular model
 
 #### Command bar + status
 
-You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**. 
+You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**. 
 
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
@@ -212,7 +212,7 @@ The file state indicators to make it clear when changes or actions have been mad
 
 - [What is dbt?](/docs/introduction#dbt-features)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
-- [dbt Cloud features](/docs/develop/dbt-cloud-features)
+- [dbt Cloud features](/docs/get-started/dbt-cloud-features)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/docs/reference/dbt-commands)
 
