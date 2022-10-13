@@ -9,7 +9,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/). The policie
 ### Further reading
 
 - To learn how you can use dbt Core versions in dbt Cloud, see "[Choosing a dbt Core version](cloud-choosing-a-dbt-version)."
-- To learn about installing dbt Core, see "[How to install dbt Core](dbt-cli/install/overview)."
+- To learn about installing dbt Core, see "[How to install dbt Core](/docs/get-started/installation)."
 - To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](require-dbt-version) and [`dbt_version`](dbt_version).
 
 ## Version support prior to v1.0

@@ -68,7 +68,7 @@ cd airflow-dbt-cloud
 
 ## 5. Create a dbt Cloud service token
 
-Create a service token from within dbt Cloud using the instructions [found here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens). Ensure that you save a copy of the token, as you won’t be able to access this later. In this example we use `Account Admin`, but you can also use `Job Admin` instead for token permissions.
+Create a service token from within dbt Cloud using the instructions [found here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). Ensure that you save a copy of the token, as you won’t be able to access this later. In this example we use `Account Admin`, but you can also use `Job Admin` instead for token permissions.
 
 <WistiaVideo id="amubh6qmwq" />
 

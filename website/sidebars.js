@@ -4,24 +4,24 @@ const sidebarSettings = {
     "docs/supported-data-platforms",
     {
       type: "category",
-      label: "Develop with dbt",
+      label: "Get started with dbt",
       collapsed: true,
       items: [
+        "docs/get-started/getting-started/overview",
         {
           type: "category",
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/develop/getting-started/getting-started-dbt-cloud",
+            "docs/get-started/getting-started/set-up-dbt-cloud",
             {
               type: "category",
               label: "Getting set up",
               items: [
-                "docs/develop/getting-started/getting-set-up",
-                "docs/develop/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/develop/getting-started/getting-set-up/setting-up-databricks",
-                "docs/develop/getting-started/getting-set-up/setting-up-redshift",
-                "docs/develop/getting-started/getting-set-up/setting-up-snowflake",
+                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
+                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
+                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
+                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
               ],
             },
             {
@@ -29,20 +29,22 @@ const sidebarSettings = {
               label: "Building your first project",
 
               items: [
-                "docs/develop/getting-started/building-your-first-project/build-your-first-models",
-                "docs/develop/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/develop/getting-started/building-your-first-project/schedule-a-job",
+                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
+                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
+                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
               ],
             },
             {
               type: "category",
               label: "Learning more",
               items: [
-                "docs/develop/getting-started/learning-more/using-jinja",
-                "docs/develop/getting-started/learning-more/refactoring-legacy-sql",
+                "docs/get-started/learning-more/using-jinja",
+                "docs/get-started/learning-more/refactoring-legacy-sql",
               ],
             },
-            "docs/develop/dbt-cloud-features",
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
@@ -50,24 +52,24 @@ const sidebarSettings = {
           label: "Get started with dbt Core",
           collapsed: true,
           items: [
-          "docs/develop/getting-started/getting-started-dbt-core",
+          "docs/get-started/getting-started-dbt-core",
             {
               type: "category",
               label: "Install dbt Core",
               collapsed: true,
               items: [
-                "docs/develop/installation",
-                "docs/develop/homebrew-install",
-                "docs/develop/pip-install",
-                "docs/develop/docker-install",
-                "docs/develop/source-install",
+                "docs/get-started/installation",
+                "docs/get-started/homebrew-install",
+                "docs/get-started/pip-install",
+                "docs/get-started/docker-install",
+                "docs/get-started/source-install",
               ],
             },
-            "docs/develop/about-the-cli",
-            "docs/develop/connection-profiles",
+            "docs/get-started/about-the-cli",
+            "docs/get-started/connection-profiles",
           ],
         },
-        "docs/develop/run-your-dbt-projects",
+        "docs/get-started/run-your-dbt-projects",
       ],
     },
     {
@@ -191,6 +193,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
+        "docs/deploy/regions",
         {
           type: "category",
           label: "dbt Cloud deploy options",
@@ -222,6 +225,8 @@ const sidebarSettings = {
           type: "category",
           label: "Git version control",
           items: [
+            "docs/collaborate/git-version-control",
+            "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/pr-template",
             "docs/collaborate/git/resolve-merge-conflicts",
             {
@@ -297,6 +302,7 @@ const sidebarSettings = {
       items: [
         "docs/dbt-versions/core",
         "docs/dbt-versions/upgrade-core-in-cloud",
+        "docs/dbt-versions/product-lifecycles",
         {
           type: "category",
           label: "dbt Cloud Release Notes",
@@ -342,8 +348,6 @@ const sidebarSettings = {
       label: "dbt Cloud IDE",
       items: [
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
-        "docs/dbt-cloud/cloud-ide/ide-beta",
       ],
     },
     {

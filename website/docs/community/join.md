@@ -19,26 +19,26 @@ link="https://www.getdbt.com/community/join-the-community/"
 <Card
     title="Community Forum"
     body="Have a question about how to do something in dbt? Hop into the Community Forum and work with others to create long lived community knowledge."
-    link="community/forum"
-    icon="discussion"
+    link="/community/forum"
+    icon="discussions"
 />
 
 <Card
     title="How to contribute"
     body="Want to get involved? This is the place! Learn how to contribute to our open source repositories, write for the blog, speak at a meetup and more."
-    link="community/contribute" icon="writing"
+    link="community/contribute" icon="pencil-paper"
 />
 
 <Card
     title="Code of Conduct"
-    body="The dbt Community is diverse, inclusive and vibrant. We are committed to creating a space where everyone can feel welcome and safe to join, contribute and share their ideas. Our Code of Conduct reflects the agreement that all Community members make to each other to uphold these ideals."
+    body="We are committed to creating a space where everyone can feel welcome and safe. Our Code of Conduct reflects the agreement that all Community members make to uphold these ideals."
     link="community/resources/code-of-conduct/"
     icon="folder"
 />
 
 <Card
     title="Upcoming events"
-    body="Nothing beats the energy of a meetup or a live event. Whether it's in-person Meetups in your local area, Coalesce – the annual Analytics Engineering Conference – or online Office Hours there are options for everyone."
+    body="Whether it's in-person Meetups in your local area, Coalesce – the annual Analytics Engineering Conference – or online Office Hours there are options for everyone."
     link="community/events"
     icon="calendar" />
 
