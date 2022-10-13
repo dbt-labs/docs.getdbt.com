@@ -15,7 +15,7 @@ Additionally, review our [Guides](/docs/guides/getting-started) page for more ti
 
 **Search across files**
 
-You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O to find text across all files in your current project. and write your file name. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view them in the IDE.
+You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O to find text across all files in your current project and write your filename. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view them in the IDE.
 
 **Command bar and status**
 
