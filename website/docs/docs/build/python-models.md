@@ -8,8 +8,6 @@ id: "python-models"
 - [Limitations](#limitations)
 - [Supported data platforms](#supported-data-platforms)
 
-:::info
-
 dbt Core v1.3 adds support for Python models. Note that only [specific data platforms](#specific-data-platforms) support dbt-py models.
 
 We encourage you to:
@@ -21,7 +19,6 @@ We encourage you to:
 In the following article, you'll see a section titled "❓ **dbt questions**." We are excited to release the first set of functionality in v1.3, which will solve real use cases. We also know this is the first step toward a much wider field of possibility. We don't pretend to have all the answers.
 
 We're excited to keep developing our opinionated recommendations and next steps for product development, and we want your help. Comment in the GitHub discussions; leave thoughts in Slack; bring up dbt + Python in casual conversation with colleagues and friends.
-:::
 
 ## Overview
 
