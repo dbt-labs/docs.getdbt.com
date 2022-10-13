@@ -65,7 +65,7 @@ There are default keyboard shortcuts that can help make development more product
 - Use the `+` operator on the left of a model `dbt build +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build model_name+` to run a model and everything downstream that depends on it.
 - Use `dir_name` to run all models in a package or directory.
 - Use the `@` operator on the left of a model in a non-state-aware CI setup to test it. This operator runs all of a selection’s parents and children, and also runs the parents of its children, which in a fresh CI schema will likely not exist yet.
-- Use the [`--exclude` flag](/docs/reference/node-selection/exclude) to remove a subset of models out of a selection.
+- Use the [--exclude flag](/docs/reference/node-selection/exclude) to remove a subset of models out of a selection.
 - Use [state and deferral](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration#deferral-and-state-comparison) to create a slim CI setup.
 - Use the [--full-refresh](/docs/reference/commands/run#refresh-incremental-models) flag to rebuild an incremental model from scratch.
 - Use [seeds](/docs/building-a-dbt-project/seeds) to create manual lookup tables, like zip codes to states or marketing UTMs to campaigns. `dbt seed` will build these from CSVs into your warehouse and make them `ref` able in your models.
