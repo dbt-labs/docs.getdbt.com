@@ -6,7 +6,7 @@
 /docs/dbt-cloud/cloud-quickstart /docs/get-started/getting-started/set-up-dbt-cloud 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud /docs/develop/getting-started/getting-set-up 301
 /docs/building-a-dbt-project/archival /docs/build/snapshots 301
-/docs/about/license https://www.getdbt.com/pricing/  301
+/docs/about/license /community/resources/contributor-license-agreements 301
 /docs/dbt-cloud/release-notes /docs/dbt-versions/dbt-cloud-release-notes 301
 /docs/dbt-cloud/dbt-cloud-enterprise/audit-log /docs/collaborate/manage-access/audit-log 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth /docs/collaborate/manage-access/set-up-bigquery-oauth 301
