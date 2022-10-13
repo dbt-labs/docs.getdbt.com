@@ -15,7 +15,7 @@ Before you begin, you will need:
 * Basic understanding of SQL.
 
 
-<div className="grid--3-col">
+<div className="grid--2-col">
 
 <Card
     title="Get started with dbt Cloud"
