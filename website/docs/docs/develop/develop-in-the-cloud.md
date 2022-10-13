@@ -199,7 +199,7 @@ You can enter and run commands from the command bar at the bottom of the IDE.  U
 
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
-**File state indicators** 
+#### File state indicators
 
 The file state indicators to make it clear when changes or actions have been made. The indicators **M**, **U**, and **•** appear to the right of your file or folder name and indicate the actions performed:
 
