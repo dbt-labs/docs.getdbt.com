@@ -38,6 +38,7 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 | AlloyDB  ([setup](alloydb-setup))        | (same as `dbt-postgres`) |
 | BigQuery ([setup](bigquery-setup))       | 1.2.0                    |
 | Databricks ([setup](databricks-setup))   | 1.2.0 :construction:     |
+| Dremio ([setup](dremio-setup))           | 1.3.0 :construction:     |
 | Postgres ([setup](postgres-setup))       | 1.2.0                    |
 | Redshift ([setup](redshift-setup))       | 1.2.0                    |
 | Snowflake ([setup](snowflake-setup))     | 1.2.0                    |
