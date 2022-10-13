@@ -61,7 +61,7 @@ There are default keyboard shortcuts that can help make development more product
 - Set `vars` in your `dbt_project.yml` to define global defaults for certain conditions, which you can then override using the `--vars` flag in your commands.
 - Use [`for loops`](/docs/guides/getting-started/learning-more/using-jinja#use-a-for-loop-in-models-for-repeated-sql) in Jinja to [DRY](/docs.getdbt.com/terms/dry) up repetitive logic, such as selecting a series of columns that all require the same transformations and naming patterns to be applied.
 - Instead of relying on post-hooks, use the [`grants` config](/docs/reference/resource-configs/grants) to apply permission grants in the warehouse resiliently.
-- Define [`source-freshness`](/docs/building-a-dbt-project/using-sources#snapshotting-source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
+- Define [source-freshness](/docs/building-a-dbt-project/using-sources#snapshotting-source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
 - Use the `+` operator on the left of a model `dbt build +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build model_name+` to run a model and everything downstream that depends on it.
 - Use `dir_name` to run all models in a package or directory.
 - Use the `@` operator on the left of a model in a non-state-aware CI setup to test it. This operator runs all of a selection’s parents and children, and also runs the parents of its children, which in a fresh CI schema will likely not exist yet.
