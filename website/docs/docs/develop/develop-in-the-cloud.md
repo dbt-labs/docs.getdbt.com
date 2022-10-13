@@ -151,7 +151,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 ### New Cloud IDE beta features
 
-**Format**
+#### Format
 
 You can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** button formats your file and is powered by [sqlfmt](http://sqlfmt.com/).
 
