@@ -14,13 +14,13 @@ The dbt Cloud [integrated development environment (IDE)](/docs/get-started/devel
 
 With the Cloud IDE, you can:
 
-- Write modular SQL models with select statements and the [ref()](/reference/dbt-jinja-functions/ref)
+- Write modular SQL models with select statements and the [ref()](/reference/dbt-jinja-functions/ref).
 - Compile dbt code into SQL and execute it against your database directly.
 - Test every model before deploying them to production.
 - Generate and view documentation of your dbt project.
 - Leverage [git and version-control your code](/docs/collaborate/git/version-control-basics) from your browser with a couple of clicks.
 - Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips)
-- Use dark mode when you develop in the Cloud IDE
+- Use dark mode when you develop in the Cloud IDE.
 
 
 ### IDE features
@@ -41,11 +41,12 @@ There are default keyboard shortcuts that can help make development more product
 **File explorer**
 
 The File explorer on the left side of the IDE allows you to organize your project and manage your files and folders. Click the three dot menu associated with the file or folder to create, rename, and delete it.
-Features available in the Cloud IDE beta.
+
+### Features available in the Cloud IDE beta
 
 **Format files**
 
-Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/)
+Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/).
 
 **File state indicators**
 
