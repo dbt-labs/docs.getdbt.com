@@ -1,3 +1,5 @@
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository /docs/collaborate/git/managed-repository 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database /docs/get-started/connect-your-database 301
 /docs/dbt-cloud/release-notes /docs/dbt-versions/dbt-cloud-release-notes 301
 /docs/dbt-cloud/dbt-cloud-enterprise/audit-log /docs/collaborate/manage-access/audit-log 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth /docs/collaborate/manage-access/set-up-bigquery-oauth 301
@@ -502,4 +504,3 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /community/maintaining-a-channel /community/resources/maintaining-a-channel 301
 /docs/contributing/oss-expectations /community/resources/oss-expectations 301
 /docs/contributing/slack-rules-of-the-road /community/resources/slack-rules-of-the-road 301
-
