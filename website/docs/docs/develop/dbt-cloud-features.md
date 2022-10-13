@@ -14,7 +14,7 @@ The dbt Cloud [integrated development environment (IDE)](/docs/develop/develop-i
 
 With the Cloud IDE, you can:
 
-- Write modular SQL models with `select` statements and the [`ref()`](/docs.getdbt.com/reference/dbt-jinja-functions/ref) function.
+- Write modular SQL models with `select` statements and the [ref()](/docs.getdbt.com/reference/dbt-jinja-functions/ref) function.
 - Compile dbt code into SQL and execute it against your database directly.
 - Test every model before deploying them to production.
 - Generate and view documentation of your dbt project.
@@ -73,4 +73,10 @@ The dbt Cloud IDE includes features that make it easier for you to develop, buil
      * Option-Command-Down arrow
      * Option-Command-Up arrow
      * Press Option and click on an area
+
+
+## Related docs
+- [dbt Cloud tips](/docs/develop/dbt-cloud-tips)
+- [Develop in the Cloud](docs/develop/develop-in-the-cloud)
+- [Guides](/docs/get-started/overview)
 
