@@ -1,6 +1,6 @@
 ---
-title: "Manage access"
-id: "manage-access"
+title: "About access"
+id: "about-access"
 ---
 
 ## Overview
