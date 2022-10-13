@@ -1,6 +1,6 @@
 ---
-title: "Connecting your database"
-id: "connecting-your-database"
+title: "Connect your database"
+id: "connect-your-database"
 ---
 
 You can connect to your database in dbt Cloud by clicking the gear  in the top right and then selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
@@ -12,7 +12,7 @@ Be sure to allow traffic from these IPs in your firewall, and include them in an
 
 <Changelog>
 
-- November 2020 &mdash; add the IPs `54.81.134.249` and `52.22.161.231` 
+- November 2020 &mdash; add the IPs `54.81.134.249` and `52.22.161.231`
 - September 2022 &mdash; Add EMEA IPs
 
 </Changelog>
@@ -149,7 +149,7 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 ### ODBC
 
 dbt Cloud supports connecting to Databricks using
-[a Cluster](https://docs.databricks.com/clusters/index.html) or 
+[a Cluster](https://docs.databricks.com/clusters/index.html) or
 [a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html).
 Depending on how you connect to Databricks, either one of the `Cluster` or
 `Endpoint` configurations must be provided, but setting _both_ values is not
