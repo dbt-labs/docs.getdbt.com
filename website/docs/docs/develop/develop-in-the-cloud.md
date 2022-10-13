@@ -185,7 +185,7 @@ The IDE updates in real-time as models, tests, seeds, and operations are run. If
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Building"/>
 
-**Lineage tab**
+#### Lineage tab
 
 The visual in the Lineage tab adds more context to your dependencies and directional flow. 
 
