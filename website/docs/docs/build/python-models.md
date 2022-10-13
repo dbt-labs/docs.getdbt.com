@@ -30,7 +30,7 @@ dbt Python ("dbt-py") models will help you solve use cases that can't be solved 
 
 Python models are supported in dbt Core 1.3 and higher.  Learn more about [upgrading your version in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions) and [upgrading dbt Core versions](https://docs.getdbt.com/docs/core-versions#upgrading-to-new-patch-versions).
 
-To read more about Python models, change the [docs version to 1.3](/docs/building-a-dbt-project/building-models/python-models?version=1.3) (or higher) in the menu bar.
+To read more about Python models, change the [docs version to 1.3](/docs/build/python-models?version=1.3) (or higher) in the menu bar.
 
 </VersionBlock>
 
