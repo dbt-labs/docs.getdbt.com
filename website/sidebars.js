@@ -191,6 +191,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
+        "docs/deploy/regions",
         {
           type: "category",
           label: "dbt Cloud deploy options",
@@ -297,6 +298,7 @@ const sidebarSettings = {
       items: [
         "docs/dbt-versions/core",
         "docs/dbt-versions/upgrade-core-in-cloud",
+        "docs/dbt-versions/product-lifecycles",
         {
           type: "category",
           label: "dbt Cloud Release Notes",
