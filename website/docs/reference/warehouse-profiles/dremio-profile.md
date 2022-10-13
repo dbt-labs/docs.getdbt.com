@@ -115,158 +115,26 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 
 ### Configurations Common to Profiles for Dremio Cloud and Dremio Software
 
-<table>
-<tr>
- <td><strong>Configuration</strong>
- </td>
- <td><strong>Required?</strong>
- </td>
- <td><strong>Default Value</strong>
- </td>
- <td><strong>Description</strong>
- </td>
-</tr>
-<tr>
- <td><code>type</code>
- </td>
- <td>Yes
- </td>
- <td><code>dremio</code>
- </td>
- <td>Auto-populated when creating a Dremio project. Do not change this value.
- </td>
-</tr>
-<tr>
- <td><code>threads</code>
- </td>
- <td>Yes
- </td>
- <td><code>1</code>
- </td>
- <td>The number of threads the dbt project runs on.
- </td>
-</tr>
-</table>
+| Configuration | Required? | Default Value | Description |
+| --- | --- | --- | --- |
+| `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
+| `threads` | Yes | 1 | The number of threads the dbt project runs on. |
   
 ### Configurations in Profiles for Dremio Cloud
-<table>
-<tr>
- <td><strong>Configuration</strong>
- </td>
- <td><strong>Required?</strong>
- </td>
- <td><strong>Default Value</strong>
- </td>
- <td><strong>Description</strong>
- </td>
-</tr>
-<tr>
-<td><code>cloud_host</code>
-</td>
-<td>Yes
-</td>
-<td><code>https://api.dremio.cloud</code>
-</td>
-<td>
-<p>US Control Plane<br>
-<code>https://api.dremio.cloud</code>
-<p>
-EU Control Plane<br>
-<code>https://api.eu.dremio.cloud</code>
-   </td>
-  </tr>
-  <tr>
-  <td><code>user</code></td>
-  <td>Yes</td>
-  <td>None</td>
-  <td>Email address used as a username in Dremio Cloud
-  </tr>
-  <tr>
-  <td><code>pat</code></td>
-  <td>Yes</td>
-  <td>None</td>
-  <td>Personal Access Token<br>See <a target="_blank" href="https://docs.dremio.com/cloud/security/authentication/personal-access-token/">Personal Access Tokens</a> for instructions about obtaining a token.</td>
-  </tr>
-  <tr>
-  <td><code>cloud_project_id</code></td>
-  <td>Yes</td>
-  <td>None</td>
-  <td>The ID of the Sonar project in which to run transformations.</td>
-  </tr>
-  <tr>
-   <td><code>use_ssl</code>
-   </td>
-   <td>Yes
-   </td>
-   <td><code>true</code>
-   </td>
-   <td>The value must be <code>true</code>.</td>
-  </tr>
-  </table>
+| Configuration | Required? | Default Value | Description |
+| --- | --- | --- | --- |
+| `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br><br>EU Control Plane: `https://api.eu.dremio.cloud` |
+| `user` | Yes | None | Email address used as a username in Dremio Cloud | 
+| `pat` | Yes | None | Personal Access TokenSee Personal Access Tokens for instructions about obtaining a token. | 
+| `cloud_project_id` | Yes | None | The ID of the Sonar project in which to run transformations. | 
+| `use_ssl` | Yes | `true` | The value must be `true`. |
     
 ### Configurations in Profiles for Dremio Software
-<table>
-<tr>
- <td><strong>Configuration</strong>
- </td>
- <td><strong>Required?</strong>
- </td>
- <td><strong>Default Value</strong>
- </td>
- <td><strong>Description</strong>
- </td>
-  </tr>
-  <tr>
-   <td><code>software_host</code>
-   </td>
-   <td>Yes</td>
-   <td>None</td>
-   <td>The hostname or IP address of the coordinator node of the Dremio cluster.</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>port</code>
-   </td>
-   <td>Yes</td>
-   <td><code>9047</code></td>
-   <td>Port for Dremio Software cluster API endpoints.
-   </td>
-  </tr>
-  <tr>
-   <td><code>user</code>
-   </td>
-   <td>Yes</td>
-   <td>None
-   </td>
-   <td>The username of the account to use when logging into the Dremio cluster.
-   </td>
-  </tr>
-  <tr>
-   <td><code>password</code>
-   </td>
-   <td>Yes, if you are not using the <code>pat</code> configuration.</td>
-   <td>None
-   </td>
-   <td>The password of the account to use when logging into the Dremio cluster.
-   </td>
-  </tr>
-  <tr>
-   <td><code>pat</code>
-   </td>
-   <td>Yes, if you are not using the <code>user</code> and <code>password</code> configurations.</td>
-   <td>None
-   </td>
-   <td>The personal access token to use for authenticating to Dremio.<br><ul><li>See <a target="_blank" href="https://docs.dremio.com/software/security/personal-access-tokens">Personal Access Tokens</a> for instructions about obtaining a token.</li><li>The use of a personal access token takes precedence if values for the three configurations <code>user</code>, <code>password</code> and <code>pat</code> are specified.</li></ul>
-   </td>
-  </tr>
-  <tr>
-   <td><code>use_ssl</code>
-   </td>
-   <td>Yes
-   </td>
-   <td><code>true</code>
-   </td>
-   <td>Acceptable values are <code>true</code> and <code>false</code>. If the value is set to <code>true</code>, ensure that full wire encryption is configured in your Dremio cluster. See [Prerequisites for Dremio Software](#prerequisites-for-dremio-software). 
-   </td>
-  </tr>
-</table>
+| Configuration | Required? | Default Value | Description | 
+| ---  | ---  | ---  | ---  | 
+| `software_host` | Yes | None | The hostname or IP address of the coordinator node of the Dremio cluster. | 
+| `port` | Yes | `9047` | Port for Dremio Software cluster API endpoints. | 
+| `user` | Yes | None | The username of the account to use when logging into the Dremio cluster. | 
+| `password` | Yes, if you are not using the pat configuration. | None | The password of the account to use when logging into the Dremio cluster. | 
+| `pat` | Yes, if you are not using the user and password configurations. | None | The personal access token to use for authenticating to Dremio.See Personal Access Tokens for instructions about obtaining a token.The use of a personal access token takes precedence if values for the three configurations user, password and pat are specified. | 
+| `use_ssl` | Yes | `true` | Acceptable values are `true` and `false`. If the value is set to true, ensure that full wire encryption is configured in your Dremio cluster. See [Prerequisites for Dremio Software](#prerequisites-for-dremio-software). | 
