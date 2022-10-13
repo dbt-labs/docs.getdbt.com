@@ -34,7 +34,7 @@ Check out some common git terms below that you might encounter when developing:
 | main | The primary, base branch of all repositories. All committed and accepted changes should be on the main branch. In the Cloud IDE, the main branch is read-only. This is because any changes/edits to code cannot and should not be made directly in the base branch. A new branch should be created in order to make any changes to your project |
 | Merge | Merge takes the changes from one branch and adds them into another (usually main) branch. These commits are usually first requested via pull request before being merged by a maintainer. |
 | Pull Request | If someone has changed code on a separate branch of a project and wants it to be reviewed to add to the main branch, they can submit a pull request. Pull requests ask the repo maintainers to review the commits made, and then, if acceptable, merge the changes upstream. A pull happens when adding the changes to the main branch. |
-| Push | A push updates a remote branch with the commits made to the current branch. You are literally “pushing” your changes onto the remote. |
+| Push | A `push` updates a remote branch with the commits made to the current branch. You are literally _pushing_ your changes into the remote. |
 | Remote | This is the version of a repository or branch that is hosted on a server. Remote versions can be connected to local clones so that changes can be synced. |
 
 
