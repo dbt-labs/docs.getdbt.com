@@ -1,15 +1,17 @@
 ---
-title: "Trying out v1.3 (prerelease)"
+title: "Upgrading to v1.3 (latest)"
 ---
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.3.latest/CHANGELOG.md)
 - [CLI Installation guide](/dbt-cli/install/overview)
 - [Cloud upgrade guide](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version)
 
 ## Breaking changes
 
 There are no breaking changes for code in dbt projects and packages. We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+
+**Note:** If you have custom code accessing the `raw_sql` property of models (via the [`model`](dbt-jinja-functions/model) or [`graph`](https://docs.getdbt.com/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
 
 ### For users of dbt Metrics
 
@@ -42,6 +44,7 @@ _GitHub discussion forthcoming_
 - Updates made to **[Metrics](building-a-dbt-project/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
 - Plus, a few related updates to **[exposure properties](exposure-properties)**: `config`, `label`, and `name` validation.
 - **[Custom `node_color`](/docs/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
+- Search for **[`Profiles.yml`](/docs/dbt-cli/configure-your-profile#advanced-customizing-a-profile-directory)** in the current working directory before `~/.dbt`
 
 ### Quick hits
 - **["Full refresh"](full_refresh)** flag supports a short name, `-f`.
