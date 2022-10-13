@@ -335,7 +335,6 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt CLI": ["dbt-cli/cli-overview"],
   "dbt Cloud": [
     {
       type: "category",
