@@ -1522,7 +1522,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 }
 
 /* OneTrust Cookies Settings Btn in Footer */
-footer #ot-sdk-btn.ot-sdk-show-settings,
+footer #ot-sdk-btn,
 footer #ot-sdk-btn.optanon-show-settings {
   background: none;
   border: none;
@@ -1536,7 +1536,7 @@ footer #ot-sdk-btn.optanon-show-settings {
   font-weight: 400;
   cursor: pointer;
 }
-footer #ot-sdk-btn.ot-sdk-show-settings:hover,
+footer #ot-sdk-btn:hover,
 footer #ot-sdk-btn.optanon-show-settings:hover {
   background: none;
   border: none;
