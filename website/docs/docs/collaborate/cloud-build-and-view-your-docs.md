@@ -41,7 +41,7 @@ Once you have a job set up to generate documentation for your project, then clic
 
 Before the documentation can be generated, you need to select the job to create the artifacts.  Read more in [Building and Configuring Artifacts](artifacts).
 
-## Viewing docs in the IDE
+## Viewing docs
 
 The dbt Cloud IDE makes it possible to view [documentation](/building-a-dbt-project/documentation)
 for your dbt project while your code is still in development. With this
