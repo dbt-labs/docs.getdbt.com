@@ -4,7 +4,7 @@ id: build-your-first-models
 description: "Now that you've set up the starter project, you can get to the fun part — building models!"
 ---
 
-Now that you set up your sample project and had a successful run, you can get to the fun part — [building models](building-models)! You will take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+Now that you set up your sample project and had a successful run, you can get to the fun part — [building models](/docs/build/sql-models)! You will take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 
 ## Checkout a new git branch
 
@@ -53,6 +53,6 @@ In the future, you would connect your business intelligence (BI) tools to these 
 
 ## Next steps
 
-Once you build your first model, you're ready to [test and document your project](/docs/develop/getting-started/building-your-first-project/test-and-document-your-project).
+Once you build your first model, you're ready to [test and document your project](/docs/get-started/getting-started/building-your-first-project/test-and-document-your-project).
 
 <Snippet src="tutorial-next-steps-1st-model" />

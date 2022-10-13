@@ -5,17 +5,17 @@ id: "supported-data-platforms"
 
 dbt connects to and runs SQL against your database, warehouse, lake or query engine. To keep things simple, we group all of these SQL-speaking things into one bucket called "data platforms". dbt can be extended to any data platform by means of a dedicated _adapter plugin_. These plugins are built as separate Python modules that dbt Core will discover them if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core.
 
-To learn more about adapters, check out [What Are Adapters](contributing/adapter-development/1-what-are-adapters).
+To learn more about adapters, check out [What Are Adapters](/contributing/adapter-development/1-what-are-adapters).
 
 ## Adapter Installation
 
-With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
+With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/get-started/installation).
 
 ## Adapter Taxonomy
 
 ### Verified by dbt Labs
 
-In order to provide a more consistent and reliable experience, dbt Labs now has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience and maintenance. These adapters earn a "Verified" designation so that users can have a certain level of trust and expectation when they use them. To learn more see [Verifying a new adapter](docs/contributing/adapter-development/7-verifying-a-new-adapter)
+In order to provide a more consistent and reliable experience, dbt Labs now has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience and maintenance. These adapters earn a "Verified" designation so that users can have a certain level of trust and expectation when they use them. To learn more see [Verifying a new adapter](/docs/contributing/adapter-development/7-verifying-a-new-adapter)
 
 We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please note that these community maintainers are intrepid volunteers who owe you nothing, but give anyway -- so be kind and understanding, and help out where you can!
 
