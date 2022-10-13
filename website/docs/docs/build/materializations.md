@@ -102,3 +102,6 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * very light-weight transformations that are early on in your DAG
     * are only used in one or two downstream models, and
     * do not need to be queried directly
+
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="materialization"/>

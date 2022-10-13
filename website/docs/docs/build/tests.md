@@ -267,8 +267,3 @@ Note that, if you elect to store test failures:
 <FAQ src="Tests/testing-sources" />
 <FAQ src="Tests/custom-test-thresholds" />
 <FAQ src="Tests/uniqueness-two-columns" />
-
-<!--
-Additional FAQs that need Discourse articles:
-- How can I run my tests before a model is created?
--->
