@@ -16,9 +16,11 @@ We encourage you to:
 - Weigh in on [next steps for Python models, beyond v1.3](https://github.com/dbt-labs/dbt-core/discussions/5742).
 - Join the **#beta-feedback-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 
+<VersionBlock firstVersion="1.3">
 In the following article, you'll see a section titled "❓ **dbt questions**." We are excited to release the first set of functionality in v1.3, which will solve real use cases. We also know this is the first step toward a much wider field of possibility. We don't pretend to have all the answers.
 
 We're excited to keep developing our opinionated recommendations and next steps for product development, and we want your help. Comment in the GitHub discussions; leave thoughts in Slack; bring up dbt + Python in casual conversation with colleagues and friends.
+</VersionBlock>
 
 ## Overview
 
