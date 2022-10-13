@@ -19,7 +19,7 @@ With the Cloud IDE, you can:
 - Test every model before deploying them to production.
 - Generate and view documentation of your dbt project.
 - Leverage [git and version-control your code](/docs/collaborate/git/version-control-basics) from your browser with a couple of clicks.
-- Visualize a directed acyclic graph (DAG), [and more](/docs/develop/dbt-cloud-tips)
+- Visualize a directed acyclic graph (DAG) [and more](/docs/develop/dbt-cloud-tips)
 - Use dark mode when you develop in the Cloud IDE
 
 ## IDE features
