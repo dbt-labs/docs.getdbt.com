@@ -3,40 +3,22 @@ title: "About deployments"
 id: "deployments"
 ---
 
-## dbt Cloud deployment types
-
-In general, the dbt Cloud application deployment models fall into two categories: **Multi Tenant** and **Single Tenant**. These deployments are hosted on infrastructure managed by dbt Labs. Both models leverage AWS infrastructure as described in the [Architecture](deployment-architecture) section.
-
-For more information on these deployment models, refer to:
-
-- [Multi Tenant](multi-tenant-deployment)
-- [Single Tenant](single-tenant-deployment)
-
-If you’re interested in learning more about an Enterprise plan, please [contact us](mailto:sales@getdbt.com).
-
-## dbt Core
-
-Running dbt in production means **setting up a system to run a dbt job on a schedule**, rather than running dbt commands manually from the command line. These production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](managing-environments).
-
-:::info dbt commands in production
-
-We've written a guide for the dbt commands we run in production, over on [Discourse](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366).
-
-:::
+Running dbt in production means setting up a system to run a _dbt job on a schedule_, rather than running dbt commands manually from the command line. Your production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments).
 
 In addition to setting up a schedule, there are other considerations when setting up dbt to run in production:
 
 * The complexity involved in creating a new dbt job, or editing an existing one.
-* Setting up notifications if a step within your job returns an error code (e.g. a model cannot be built, or a test fails).
+* Setting up notifications if a step within your job returns an error code (for example, a model can't be built or a test fails).
 * Accessing logs to help debug any issues.
-* Pulling the latest version of your git repo before running dbt (i.e. continuous deployment).
-* Running your dbt project before merging code into master (i.e. continuous integration).
+* Pulling the latest version of your git repo before running dbt (that is, continuous deployment).
+* Running your dbt project before merging code into master (that is, continuous integration).
 * Allowing access for team members that need to collaborate on your dbt project.
 
-## Ways to run dbt in production
+## Run dbt in production
 
-If you don't want to run dbt commands manually on the command line, you can use dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron to run dbt jobs on a schedule.
-### dbt Cloud
+If you want to run dbt jobs on a schedule, you can use dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.
+
+## dbt Cloud
 
 We've built [dbt Cloud](https://www.getdbt.com/signup/) to empower data teams to easily run dbt in production. If you're interested in trying out dbt Cloud, you can [sign up for an account](https://cloud.getdbt.com/signup/).
 
@@ -46,7 +28,16 @@ dbt Cloud enables you to:
 - configure error notifications
 - render your project's documentation
 
-### Airflow
+In general, the dbt Cloud application deployment models fall into two categories: **Multi Tenant** and **Single Tenant**. These deployments are hosted on infrastructure managed by dbt Labs. Both models leverage AWS infrastructure as described in the [Architecture](/docs/deploy/architecture) section.
+
+For more information on these deployment models, refer to:
+
+- [Multi Tenant](/docs/deploy/multi-tenant)
+- [Single Tenant](/docs/deploy/single-tenant)
+
+If you’re interested in learning more about an Enterprise plan, please [contact us](mailto:sales@getdbt.com).
+
+## Airflow
 
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
 
@@ -59,7 +50,7 @@ If your organization is using [Airflow](https://airflow.apache.org/), there are 
 
 For more details on both of these methods, including example implementations, check out [this guide](https://www.astronomer.io/guides/airflow-dbt).
 
-### Prefect
+## Prefect
 
 If your organization is using [Prefect](https://www.prefect.io), use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute and monitor your dbt runs.
 
@@ -67,15 +58,15 @@ Alternatively, you can use the supported [ShellTask](https://docs.prefect.io/api
 
 You can also trigger dbt Cloud jobs with the [DbtCloudRunJob](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtcloudrunjob) task. Running this task will generate a markdown artifact viewable in the Prefect UI. The artifact will contain links to the dbt artifacts generate as a result of the job run.
 
-### Dagster
+## Dagster
 
 If your organization is using [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. This library supports the execution of dbt through dbt Cloud, dbt CLI and the dbt RPC server. Running dbt from Dagster automatically aggregates metadata about your dbt runs. Check out the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
 
-### Automation servers
+## Automation servers
 
 Automation servers, like CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-XBIIY2pFpc?t=1301)), Bamboo and Jenkins, can be used to schedule bash commands for dbt. They also provide a UI to view logging to the command line, and integrate with your git repository.
 
-### Cron
+## Cron
 
 Cron is a decent way to schedule bash commands. However, while it may seem like an easy route to schedule a job, writing code to take care of all of the additional features associated with a production deployment often makes this route more complex compared to other options listed here.
 
