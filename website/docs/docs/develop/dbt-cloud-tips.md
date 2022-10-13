@@ -29,7 +29,7 @@ Press Command-F or Control-F to open the find-and-replace bar in the upper right
 
 **DAG in the IDE**
 
-Double-click a node of the directed acyclic graph (DAG) to open that file in a new tab. Click to **Expand** on the upper right side of the DAG and use node selection syntax (`select` or `exclude`) to view a subset of your DAG.
+Double-click a node in the directed acyclic graph (DAG) to open that file in a new tab. Click **Expand** on the upper right side of the DAG and use node selection syntax (`select` or `exclude`) to view a subset of your DAG.
 
 ## IDE Keyboard shortcuts
 
