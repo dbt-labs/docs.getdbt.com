@@ -43,6 +43,7 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 | Snowflake ([setup](snowflake-setup))     | 1.2.0                    |
 | Apache Spark ([setup](spark-setup))      | 1.2.0                    |
 | Starburst & Trino ([setup](trino-setup)) | 1.2.0 :construction:     |
+| Dremio ([setup](dremio-setup))           | 1.3.0 :construction:     |
 
 ### Community Adapters
 
