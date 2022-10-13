@@ -3,7 +3,11 @@ title: "dbt support"
 id: "dbt-support"
 ---
 
-Welcome to dbt Cloud Support!
+## dbt Core support
+
+If you're developing in the command line (CLI) and have questions or need some help &mdash; reach out to the helpful dbt community through [the Community Forum](https://discourse.getdbt.com/) or [dbt Community slack](getdbt.slack.com).
+
+## dbt Cloud support
 
 Our purpose is to assist dbt Cloud users as they work through implementing and utilizing dbt Cloud at their organizations. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? dbt Support is here to `dbt help` you!
 Check out our guide on [getting help](/guides/legacy/getting-help) - half of the problem is often knowing where to look... and how to ask good questions!
@@ -32,7 +36,7 @@ Types of questions dbt Support will assist you with:
         error near line 9`
 
 
-**For dbt Cloud Enterprise accounts**
+### dbt Cloud Enterprise accounts
 
 Types of questions you should ask your Solutions Architect and Sales Director:
 - How should we think about setting up our dbt projects, environments, and jobs based on our company structure and needs?
