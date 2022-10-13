@@ -9,7 +9,7 @@ If you're developing in the command line (CLI) and have questions or need some h
 
 ## dbt Cloud support
 
-Our purpose is to assist dbt Cloud users as they work through implementing and utilizing dbt Cloud at their organizations. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? dbt Support is here to `dbt help` you!
+We want to help you work through implementing and utilizing dbt Cloud at your organization. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? dbt Support is here to `dbt help` you!
 Check out our guide on [getting help](/guides/legacy/getting-help) - half of the problem is often knowing where to look... and how to ask good questions!
 Types of questions dbt Support will assist you with:
 - **How do I...**
