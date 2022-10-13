@@ -265,6 +265,3 @@ Note that, if you elect to store test failures:
 <FAQ src="Tests/testing-sources" />
 <FAQ src="Tests/custom-test-thresholds" />
 <FAQ src="Tests/uniqueness-two-columns" />
-
-<Snippet src="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="testing"/>

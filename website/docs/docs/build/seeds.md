@@ -87,6 +87,3 @@ You can document and test seeds in yaml by declaring properties — check out th
 <FAQ src="Seeds/leading-zeros-in-seed" />
 <FAQ src="Seeds/build-one-seed" />
 <FAQ src="Seeds/seed-hooks" />
-
-<Snippet src="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="seeds"/>
