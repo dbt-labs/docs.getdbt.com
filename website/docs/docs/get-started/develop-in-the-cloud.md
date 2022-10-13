@@ -2,7 +2,7 @@
 title: "Develop in the Cloud"
 id: develop-in-the-cloud
 description: "Develop, test, run, and build in the Cloud IDE."
-sidebar_label: Develop in the Cloud"
+sidebar_label: Develop in the Cloud
 ---
 
 
