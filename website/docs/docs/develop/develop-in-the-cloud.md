@@ -87,7 +87,7 @@ If a model or test fails, you can review the logs to find and fix the issue.
 
 You can also use dbt's [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud.
 
-## Generate and view documentation
+## Build and view your project's docs 
 
 The dbt Cloud IDE makes it possible to view documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
