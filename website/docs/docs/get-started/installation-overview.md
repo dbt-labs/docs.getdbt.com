@@ -6,10 +6,10 @@ description: "You can install dbt Core using a few different tested methods."
 
 You can install dbt Core on the command line by using one of these recommended methods:
 
-- [Use Homebrew to install dbt](install/homebrew) (recommended for MacOS + most popular plugins)
-- [Use pip to install dbt](install/pip)
-- [Use a Docker image to install dbt](install/docker)
-- [Install dbt from source](install/from-source)
+- [Use Homebrew to install dbt](/docs/get-started/homebrew-install) (recommended for MacOS + most popular plugins)
+- [Use pip to install dbt](/docs/get-started/pip-install)
+- [Use a Docker image to install dbt](/docs/get-started/docker-install)
+- [Install dbt from source](/docs/get-started/source-install)
 
 
 ## About dbt adapters

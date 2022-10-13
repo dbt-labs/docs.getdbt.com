@@ -134,6 +134,14 @@ export const DiscourseFeed = ({
                   </span>
                 </>
               )}
+              {(topic?.blurb) && (
+                <>
+                  {' '}
+                  <blockquote>
+                    {topic.blurb}
+                  </blockquote>
+                </>
+              )}
             </li>
           ))}
         </ul>

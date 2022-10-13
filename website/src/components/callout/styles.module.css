@@ -1,0 +1,39 @@
+.Callout {
+  background: #262A38;
+  padding-top:3rem;
+  padding-bottom:3rem;
+  text-align: center;
+  padding-top:6rem;
+  padding-bottom: 6rem;
+  margin-top:6rem;
+}
+
+[data-theme='light'] .Callout, [data-theme='dark'] .button {
+  color: #fff;
+}
+
+.button {
+  background-color: #047377;
+  border-color: #047377;
+  border-radius: var(--ifm-button-border-radius);
+  border-style: solid;
+  border-width: var(--ifm-button-border-width);
+  color: var(--ifm-button-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: calc(0.875rem * var(--ifm-button-size-multiplier));
+  font-weight: var(--ifm-button-font-weight);
+  line-height: 1.5;
+  padding: 0.8rem 1.5rem;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition-property: color, background, border-color;
+  transition-duration: var(--ifm-button-transition-duration);
+  transition-timing-function: var(--ifm-transition-timing-default);
+}
+
+.button:hover {
+  color: #ffffff;
+}
