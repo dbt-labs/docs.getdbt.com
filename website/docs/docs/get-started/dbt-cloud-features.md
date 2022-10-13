@@ -7,7 +7,7 @@ id: "dbt-cloud-features"
 
 :::info 📌
 
-The new Cloud IDE will be available for General Availability by end of October 2022. The new Cloud IDE and includes performance upgrades, ergonomics improvements, and some delightful enhancements! Review the [new Cloud IDE features](#ide-features) and check out [what what](URL) to stay up to date with any new enhancements.
+The new Cloud IDE will be available for General Availability by end of October 2022. The new Cloud IDE and includes performance upgrades, ergonomics improvements, and some delightful enhancements! Review the [new Cloud IDE features](#ide-features) and check out [Nate's blog link](URL) to stay up to date with any new enhancements.
 
 :::
 
@@ -30,11 +30,10 @@ With the Cloud IDE, you can:
 The dbt Cloud IDE comes with new features, including snappier performance and exciting enhancements to make it easy for you to develop, build, compile, run and test data models!  Check out the new features below to learn more:
 
 - File state indicators
-  * We have added file state indicators to make it clear when changes or actions have been made. The indicators **M, U, and •** appear to the right of your
-  file or folder name and indicate the actions performed:
-       *  Unsaved **(•)** - The IDE detects unsaved changes to your file/folder
-       *  Modification **(M)** - The IDE detects a modification of existing files/folders have saved changes file or folder
-       *  Untracked **(U)** - The IDE detects changes made to new files or renamed files
+  * We have added file state indicators to make it clear when changes or actions have been made. The indicators **M, U,** and **•** appear to the right of your file or folder name and indicate the actions performed:
+    *  Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder
+    *  Modification **(M)** &mdash; The IDE detects a modification of existing files/folders have saved changes file or folder
+    *  Untracked **(U)** &mdash; The IDE detects changes made to new files or renamed files
 
 - Build, test, and run your project with a click of a button, or using the Cloud IDE command bar.
 
