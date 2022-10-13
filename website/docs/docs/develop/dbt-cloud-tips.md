@@ -70,5 +70,5 @@ There are default keyboard shortcuts that can help make development more product
 - Use [target.name](/docs/building-a-dbt-project/building-models/using-custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.
 
 ## Related docs
-- [Guides](/docs/guides/getting-started) 
+- [Guides](/docs/get-started/overview) 
 - [Develop in the Cloud](/docs/develop/develop-in-the-cloud)
