@@ -27,7 +27,7 @@ After picking a data warehouse type, a form will be generated where you can popu
 
 dbt Cloud plugs directly into your version control system (GitHub, GitLab, BitBucket, etc) to pull the latest version of your dbt project.
 
-If you've [installed the dbt Cloud application in your GitHub account](cloud-installing-the-github-application), then you will be able to select a repo from your GitHub org using this interface. If you're not using GitHub, or if you haven't installed the integration yet, you can optionally connect a git repository by [providing a git URL](cloud-import-a-project-by-git-url) from the "Git URL" tab.
+If you've [installed the dbt Cloud application in your GitHub account](/docs/collaborate/git/connect-github), then you will be able to select a repo from your GitHub org using this interface. If you're not using GitHub, or if you haven't installed the integration yet, you can optionally connect a git repository by [providing a git URL](/docs/collaborate/git/import-a-project-by-git-url) from the "Git URL" tab.
 
 You’ll find the “Managed” tab useful if you do not already have a git repository for your dbt project. With this option, you can let [dbt Cloud manage a repository](cloud-using-a-managed-repository) for you.
 
@@ -54,7 +54,7 @@ Job schedules can be configured from the job creation interface. You can either 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-quickstart-new-job-schedule.png" title="Setting a job schedule"/>
 
-## Other ways to quickly connect dbt Cloud 
+## Other ways to quickly connect dbt Cloud
 
 You may also jump-start your dbt Cloud onboarding by using one of the following Partner Connect integrations:
  - [Snowflake Partner Connect](setting-up-snowflake#option-1-connect-dbt-cloud-and-snowflake-with-partner-connect)

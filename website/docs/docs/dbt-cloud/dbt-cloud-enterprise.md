@@ -8,12 +8,12 @@ This section describes features of the dbt Cloud Enterprise plan. If you’re in
 :::
 
 ### SSO
--  [Setting up SSO with SAML 2.0](setting-up-sso-with-saml-2.0) 
--  [Setting up SSO with Azure Active Directory](setting-up-enterprise-sso-with-azure-active-directory)
--  [Setting up SSO with Google GSuite](setting-up-sso-with-google-gsuite)
+-  [Setting up SSO with SAML 2.0](/docs/collaborate/manage-access/set-up-sso-saml-2.0)
+-  [Setting up SSO with Azure Active Directory](/docs/collaborate/manage-access/set-up-sso-azure-active-directory)
+-  [Setting up SSO with Google GSuite](/docs/collaborate/manage-access/set-up-sso-google-workspace)
 
 ### Authentication
--  [Setting up Snowflake OAuth](setting-up-enterprise-snowflake-oauth)
+-  [Setting up Snowflake OAuth](/docs/collaborate/manage-access/set-up-snowflake-oauth)
 
 ### Permissions
 -  [Access Control](/docs/dbt-cloud/access-control/access-control-overview)
