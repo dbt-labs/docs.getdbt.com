@@ -131,7 +131,7 @@ packages:
     
 If you're new or curious about metrics, review our [Get started with metrics] intro video, which  explains what metrics are, why they're important and how you can get started with them.
     
-<div style="position: relative; padding-bottom: 59.227467811158796%; height: 0;"><iframe src="https://www.loom.com/embed/b120ca9d042d46abad1d873a676bf20a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div><br />
+https://www.loom.com/share/b120ca9d042d46abad1d873a676bf20a
     
 ### Design metrics
     
