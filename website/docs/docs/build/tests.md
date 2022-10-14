@@ -13,6 +13,8 @@ id: "tests"
 
 Tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
 
+You can use tests to improve the integrity of the SQL in each model by making assertions about the results generated. Out of the box, you can test whether a specified column in a model only contains non-null values, unique values, or values that have a corresponding value in another model (for example, a `customer_id` for an `order` corresponds to an `id` in the `customers` model), and values from a specified list. You can extend tests to suit business logic specific to your organization – any assertion that you can make about your model in the form of a select query can be turned into a test.
+
 <Changelog>
 
 * `v0.20.0`: Both types of tests return a set of failing records. Previously, generic/schema tests returned a numeric value representing failures. Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`.
@@ -265,8 +267,3 @@ Note that, if you elect to store test failures:
 <FAQ src="Tests/testing-sources" />
 <FAQ src="Tests/custom-test-thresholds" />
 <FAQ src="Tests/uniqueness-two-columns" />
-
-<!--
-Additional FAQs that need Discourse articles:
-- How can I run my tests before a model is created?
--->

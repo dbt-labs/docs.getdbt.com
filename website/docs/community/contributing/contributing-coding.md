@@ -31,7 +31,7 @@ id: "contributing-coding"
 
 #### Overview
 
-dbt Core, adapters, tooling, and the sites powering the Package Hub and Developer Hub are all vibrant open source projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of open source development in these projects, detailed below. You can find a curated list of the most active OSS projects that dbt Labs supports [here](https://www.notion.so/OSS-Projects-3c4755bb3d6c4315bd7d000d5f47d2bc).
+dbt Core, adapters, tooling, and the sites powering the Package Hub and Developer Hub are all vibrant open source projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of open source development in these projects, detailed below. You can find a curated list of the most active OSS projects that dbt Labs supports [here](/community/resources/oss-projects).
 
 #### Contribution opportunities
 
