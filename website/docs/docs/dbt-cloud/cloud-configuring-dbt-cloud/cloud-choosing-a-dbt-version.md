@@ -66,7 +66,7 @@ Additionally upgrading to more recent versions of dbt Core will enable better pe
 
 | dbt Cloud Feature | dbt Core Version Needed |
 | ------------- | -------------- |
-| [Environment variable secret scrubbing](/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#handling-secrets)| v1.0+ |
+| [Environment variable secret scrubbing](/docs/build/environment-variables#handling-secrets)| v1.0+ |
 | DAG in the IDE | v0.20.0+|
 | [Metadata API](/docs/dbt-cloud-apis/metadata-api) |v0.19.0+|
 | [Dashboard status tiles](/docs/deploy/dashboard-status-tiles) | v0.19.0+ |
