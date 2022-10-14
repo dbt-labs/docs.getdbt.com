@@ -23,7 +23,7 @@ Using Jinja turns your dbt project into a programming environment for SQL, givin
 In fact, if you've used the [`{{ ref() }}` function](ref), you're already using Jinja!
 
 
-Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](analyses), [tests](building-a-dbt-project/tests), and even [hooks](hooks-operations).
+Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](analyses), [tests](/docs/build/tests), and even [hooks](hooks-operations).
 
 
 
@@ -128,7 +128,7 @@ from app_data.payments
 
 
 ### Using a macro from a package
-A number of useful macros have also been grouped together into [packages](package-management) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
+A number of useful macros have also been grouped together into [packages](docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
 
 After installing a package into your project, you can use any of the macros in your own project — make sure you qualify the macro by prefixing it with the [package name](project-configs/name):
 
