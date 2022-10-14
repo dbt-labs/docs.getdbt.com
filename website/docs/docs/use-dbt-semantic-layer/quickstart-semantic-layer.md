@@ -131,8 +131,10 @@ packages:
     
 If you're new or curious about metrics, review our [Get started with metrics] intro video, which  explains what metrics are, why they're important and how you can get started with them.
     
-https://www.loom.com/share/b120ca9d042d46abad1d873a676bf20a
     
+<LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />
+    
+
 ### Design metrics
     
 To understand how to structure and organize your metrics, and best practices, review our [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog post first.
