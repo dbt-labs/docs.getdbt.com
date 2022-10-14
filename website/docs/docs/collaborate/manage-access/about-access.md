@@ -100,7 +100,7 @@ assigned to groups. Some examples of existing permission sets are:
  - Job Viewer
  - ...and more
 
-For a full list of enterprise permission sets, see [Enterprise Permissions](/docs/dbt-cloud/access-control/enterprise-permissions).
+For a full list of enterprise permission sets, see [Enterprise Permissions](/docs/collaborate/manage-access/enterprise-permissions).
 These permission sets are available for assignment to groups and control the ability
 for users in these groups to take specific actions in the dbt Cloud application.
 
