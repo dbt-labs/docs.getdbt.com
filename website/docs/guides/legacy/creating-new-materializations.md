@@ -152,7 +152,7 @@ To explicitly remove a relation from the cache, use [adapter.drop_relation](/ref
 
 ## Materialization Configuration
 
-Materializations support custom configuration. You might be familiar with some of these configs from materializations like `unique_key` in [incremental models](configuring-incremental-models)  or `strategy` in [snapshots](snapshots) .
+Materializations support custom configuration. You might be familiar with some of these configs from materializations like `unique_key` in [incremental models](/docs/build/incremental-models)  or `strategy` in [snapshots](snapshots) .
 
 ### Specifying configuration options
 
