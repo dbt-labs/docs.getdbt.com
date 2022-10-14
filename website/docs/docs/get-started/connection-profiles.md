@@ -137,7 +137,7 @@ In development, a pattern we’ve found to work well is to name the schema in yo
 
 Note that there’s no need to create your target schema beforehand – dbt will check if the schema already exists when it runs, and create it if it doesn’t.
 
-While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](using-custom-schemas).
+While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](/docs/build/custom-schemas).
 
 ## Understanding threads
 

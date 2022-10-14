@@ -84,7 +84,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 ### Incremental
 `incremental` models allow dbt to insert or update records into a table since the last time that dbt was run.
 * **Pros:** You can significantly reduce the build time by just transforming new records
-* **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](configuring-incremental-models).
+* **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](/docs/build/incremental-models).
 * **Advice:**
     * Incremental models are best for event-style data
     * Use incremental models when your `dbt run`s are becoming too slow (i.e. don't start with incremental models)
@@ -93,7 +93,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 `ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from this model into dependent models as a common <Term id="table" /> expression.
 * **Pros:**
     * You can still write reusable logic
-    * Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](using-custom-schemas)).
+  - Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](/docs/build/custom-schemas)).
 * **Cons:**
     * You cannot select directly from this model.
     * Operations (e.g. macros called via `dbt run-operation` cannot `ref()` ephemeral nodes)

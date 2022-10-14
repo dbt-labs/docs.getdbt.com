@@ -17,7 +17,7 @@ Be sure to allow traffic from these IPs in your firewall, and include them in an
 
 </Changelog>
 
-Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](deployment-architecture)."
+Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](/docs/deploy/architecture)."
 
 
 ## Connecting to Postgres, Redshift, and AlloyDB
@@ -45,7 +45,7 @@ The following fields are required when creating a Snowflake connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Account | The Snowflake account to connect to. Take a look [here](snowflake-profile#account) to determine what the account field should look like based on your region.| <Snippet src="snowflake-acct-name" /> |
+| Account | The Snowflake account to connect to. Take a look [here](/reference/warehouse-setups/snowflake-setup#account) to determine what the account field should look like based on your region.| <Snippet src="snowflake-acct-name" /> |
 | Role | A mandatory field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
@@ -98,7 +98,7 @@ In order to successfully fill in the Private Key field, you **must** include the
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
-more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](setting-up-enterprise-snowflake-oauth).
+more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/collaborate/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
 
 ## Connecting to BigQuery
