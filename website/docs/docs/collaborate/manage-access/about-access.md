@@ -29,7 +29,7 @@ to access. dbt Cloud's two license types are:
  - **Developer**
 
 For more information on these license types, see [Seats & Users](cloud-seats-and-users).
-At a high-level, Developers may be granted _any_ permissions, whereas Read Only
+At a high level, Developers may be granted _any_ permissions, whereas Read Only
 users will have read-only permissions applied to all dbt Cloud resources
 regardless of the role-based permissions that the user is assigned.
 
