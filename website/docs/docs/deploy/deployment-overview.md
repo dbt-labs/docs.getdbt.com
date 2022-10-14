@@ -10,7 +10,7 @@ In addition to setting up a schedule, there are other considerations when settin
 * The complexity involved in creating a new dbt job or editing an existing one.
 * Setting up notifications if a step within your job returns an error code (for example, a model can't be built or a test fails).
 * Accessing logs to help debug any issues.
-* Pulling the latest version of your git repo before running dbt (that is, continuous deployment).
+* Pulling the latest version of your git repo before running dbt (continuous deployment).
 * Running your dbt project before merging code into master (that is, continuous integration).
 * Allowing access for team members that need to collaborate on your dbt project.
 
