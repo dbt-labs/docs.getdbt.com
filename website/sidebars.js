@@ -88,8 +88,9 @@ const sidebarSettings = {
               type: "category",
               label: "Models",
               items: [
+                "docs/build/models",
                 "docs/build/sql-models",
-                "docs/building-a-dbt-project/building-models/python-models",
+                "docs/build/python-models",
               ],
             },
             "docs/build/seeds",
@@ -225,7 +226,9 @@ const sidebarSettings = {
           type: "category",
           label: "Git version control",
           items: [
+            "docs/collaborate/git-version-control",
             "docs/collaborate/git/version-control-basics",
+            "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
             "docs/collaborate/git/resolve-merge-conflicts",
             {
@@ -261,7 +264,7 @@ const sidebarSettings = {
           type: "category",
           label: "Manage access",
           items: [
-            "docs/collaborate/manage-access/licenses-and-groups",
+            "docs/collaborate/manage-access/about-access",
             "docs/collaborate/manage-access/seats-and-users",
             {
               type: "category",
@@ -334,29 +337,24 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt CLI": ["dbt-cli/cli-overview"],
   "dbt Cloud": [
     {
       type: "category",
       label: "Overview",
       link: { type: "doc", id: "docs/dbt-cloud/cloud-overview" },
-      items: ["docs/dbt-cloud/cloud-quickstart"],
+      items: [],
     },
     {
       type: "category",
       label: "dbt Cloud IDE",
       items: [
         "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
-        "docs/dbt-cloud/cloud-ide/ide-beta",
       ],
     },
     {
       type: "category",
       label: "Configuring dbt Cloud",
       items: [
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
       ],
     },

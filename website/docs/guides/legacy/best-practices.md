@@ -16,7 +16,7 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 :::
 
 ### Use separate development and production environments
-dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments](managing-environments).
+dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments](/docs/collaborate/environments).
 
 ### Use a style guide and for your project
 SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.
@@ -87,7 +87,8 @@ Our [style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md)
 
 ### Consider the information architecture of your data warehouse
 When a user connects to a <Term id="data-warehouse" /> via a SQL client, they often rely on the names of schemas, relations, and columns, to understand the data they are presented with. To improve the information architecture of a data warehouse, we:
-* Use [custom schemas](using-custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file.
+
+* Use [custom schemas](/docs/build/custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file.
 * Use prefixes in <Term id="table" /> names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
 
 ### Choose your materializations wisely

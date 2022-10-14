@@ -84,7 +84,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 ### Incremental
 `incremental` models allow dbt to insert or update records into a table since the last time that dbt was run.
 * **Pros:** You can significantly reduce the build time by just transforming new records
-* **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](configuring-incremental-models).
+* **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](/docs/build/incremental-models).
 * **Advice:**
     * Incremental models are best for event-style data
     * Use incremental models when your `dbt run`s are becoming too slow (i.e. don't start with incremental models)
@@ -93,7 +93,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 `ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from this model into dependent models as a common <Term id="table" /> expression.
 * **Pros:**
     * You can still write reusable logic
-    * Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](using-custom-schemas)).
+  - Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](/docs/build/custom-schemas)).
 * **Cons:**
     * You cannot select directly from this model.
     * Operations (e.g. macros called via `dbt run-operation` cannot `ref()` ephemeral nodes)
@@ -102,3 +102,83 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * very light-weight transformations that are early on in your DAG
     * are only used in one or two downstream models, and
     * do not need to be queried directly
+
+## Python materializations
+
+Python models support two materializations:
+- `table`
+- `incremental`
+
+Incremental Python models support all the same [incremental strategies](/docs/build/incremental-models#about-incremental_strategy) as their SQL counterparts. The specific strategies supported depend on your adapter.
+
+Python models can't be materialized as `view` or `ephemeral`. Python isn't supported for non-model resource types (like tests and snapshots).
+
+For incremental models, like SQL models, you will need to filter incoming tables to only new rows of data:
+
+<WHCode>
+
+<div warehouse="Snowpark">
+
+<File name='models/my_python_model.py'>
+
+```python
+import snowflake.snowpark.functions as F
+
+def model(dbt, session):
+    dbt.config(materialized = "incremental")
+    df = dbt.ref("upstream_table")
+
+    if dbt.is_incremental:
+
+        # only new rows compared to max in current table
+        max_from_this = f"select max(updated_at) from {dbt.this}"
+        df = df.filter(df.updated_at >= session.sql(max_from_this).collect()[0][0])
+
+        # or only rows from the past 3 days
+        df = df.filter(df.updated_at >= F.dateadd("day", F.lit(-3), F.current_timestamp()))
+
+    ...
+
+    return df
+```
+
+</File>
+
+</div>
+
+<div warehouse="PySpark">
+
+<File name='models/my_python_model.py'>
+
+```python
+import pyspark.sql.functions as F
+
+def model(dbt, session):
+    dbt.config(materialized = "incremental")
+    df = dbt.ref("upstream_table")
+
+    if dbt.is_incremental:
+
+        # only new rows compared to max in current table
+        max_from_this = f"select max(updated_at) from {dbt.this}"
+        df = df.filter(df.updated_at >= session.sql(max_from_this).collect()[0][0])
+
+        # or only rows from the past 3 days
+        df = df.filter(df.updated_at >= F.date_add(F.current_timestamp(), F.lit(-3)))
+
+    ...
+
+    return df
+```
+
+</File>
+
+</div>
+
+</WHCode>
+
+**Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
+
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="materialization"/>
+

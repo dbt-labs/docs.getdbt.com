@@ -10,6 +10,8 @@ To use the CLI, your workflow generally looks like:
 * **Run your project from the command line:**
   * macOS ships with a default Terminal program, however you can also use iTerm or the command line prompt within a code editor to execute dbt commands
 
+The CLI is also available for dbt Cloud.  Additional components must be installed for the CLI to communicate via dbt Cloud APIs.  For more information, visit the [dbt Cloud CLI GitHub repository](https://github.com/data-mie/dbt-cloud-cli)
+
 :::info How we set up our computers for working on dbt projects
 
 We've written a [guide](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243) for our recommended setup when running dbt projects using the CLI.

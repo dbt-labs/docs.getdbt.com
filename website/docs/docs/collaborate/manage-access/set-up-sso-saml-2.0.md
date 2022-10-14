@@ -17,7 +17,7 @@ Currently supported features include:
 * Just-in-time provisioning
 
 This document details the steps to integrate dbt Cloud with an identity
-provider in order to configure Single Sign On and [role-based access control](access-control-overview#role-based-access-control).
+provider in order to configure Single Sign On and [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control).
 
 ## Generic SAML 2.0 integrations
 
@@ -60,7 +60,7 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 | first_name | Unspecified | ${user.first_name} | The user's first name |
 | last_name | Unspecified | ${user.last_name} | The user's last name |
 
-dbt Cloud's [role-based access control](access-control-overview#role-based-access-control) relies
+dbt Cloud's [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
 use role-based access control in dbt Cloud, also configure your identity
 provider to provide group membership information in user attribute called
@@ -346,4 +346,4 @@ Users in your IdP will now be able to log into the application by navigating to 
 ### Setting up RBAC
 
 After configuring an identity provider, you will be able to set up [role-based
-access control](/access-control/enterprise-permissions) for your account.
+access control](/docs/collaborate/manage-access/enterprise-permissions) for your account.

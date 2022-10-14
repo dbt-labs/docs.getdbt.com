@@ -1,23 +1,24 @@
 ---
-title: "Connecting your database"
-id: "connecting-your-database"
+title: "Connect your database"
+id: "connect-your-database"
 ---
 
 You can connect to your database in dbt Cloud by clicking the gear  in the top right and then selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
 
 ## IP Restrictions
 
-dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions](/docs/deploy/regions) page
+dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions](/docs/deploy/regions) page.
+
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
 <Changelog>
 
-- November 2020 &mdash; add the IPs `54.81.134.249` and `52.22.161.231` 
+- November 2020 &mdash; add the IPs `54.81.134.249` and `52.22.161.231`
 - September 2022 &mdash; Add EMEA IPs
 
 </Changelog>
 
-Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](deployment-architecture)."
+Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see [Deployment architecture](/docs/deploy/architecture).
 
 
 ## Connecting to Postgres, Redshift, and AlloyDB
@@ -45,7 +46,7 @@ The following fields are required when creating a Snowflake connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Account | The Snowflake account to connect to. Take a look [here](snowflake-profile#account) to determine what the account field should look like based on your region.| <Snippet src="snowflake-acct-name" /> |
+| Account | The Snowflake account to connect to. Take a look [here](/reference/warehouse-setups/snowflake-setup#account) to determine what the account field should look like based on your region.| <Snippet src="snowflake-acct-name" /> |
 | Role | A mandatory field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
@@ -98,7 +99,7 @@ In order to successfully fill in the Private Key field, you **must** include the
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
-more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](setting-up-enterprise-snowflake-oauth).
+more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/collaborate/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
 
 ## Connecting to BigQuery
@@ -139,7 +140,7 @@ In addition to these fields, there are two other optional fields that can be con
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a BigQuery user without the configuration of BigQuery service account keyfile in dbt Cloud. For
 more information on the initial configuration of a BigQuery OAuth connection in dbt Cloud, please see
-[the docs on setting up BigQuery OAuth](cloud-setting-up-bigquery-oauth).
+[the docs on setting up BigQuery OAuth](/docs/collaborate/manage-access/set-up-bigquery-oauth.
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
@@ -149,7 +150,7 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 ### ODBC
 
 dbt Cloud supports connecting to Databricks using
-[a Cluster](https://docs.databricks.com/clusters/index.html) or 
+[a Cluster](https://docs.databricks.com/clusters/index.html) or
 [a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html).
 Depending on how you connect to Databricks, either one of the `Cluster` or
 `Endpoint` configurations must be provided, but setting _both_ values is not

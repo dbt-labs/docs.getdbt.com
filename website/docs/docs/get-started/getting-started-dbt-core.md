@@ -25,7 +25,7 @@ The following steps use [GitHub](https://github.com/) as the Git provider for th
 1. [Create a new GitHub repository](https://github.com/new) named `dbt-tutorial`.
 2. Select **Public** so the repository can be shared with others. You can always make it private later.
 3. Leave the default values for all other settings.
-4. Click **Create repository**. 
+4. Click **Create repository**.
 5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](#commit-your-changes).
 
 ### Create a project
@@ -87,7 +87,7 @@ To create your dbt project:
 
 ### Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/dbt-cli/configure-your-profile), which is a yaml file with all the connection details to your warehouse.
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/get-started/connection-profiles), which is a yaml file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
@@ -117,7 +117,7 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 
     ```terminal
    $ dbt debug
-   > Connection test: OK connection ok 
+   > Connection test: OK connection ok
     ```
 
     <div style={{maxWidth: '400px'}}>
@@ -166,14 +166,14 @@ Commit your changes so that the repository contains the latest code.
 
 ## Build your first models
 
-Now that you set up your sample project, you can get to the fun part — [building models](building-models)! You will take a sample query and turn it into a model in your dbt project.
+Now that you set up your sample project, you can get to the fun part — [building models](/docs/build/sql-models)! You will take a sample query and turn it into a model in your dbt project.
 
 ### Checkout a new git branch
 
 Check out a new git branch to work on new code:
 
 1. Create a new branch by using the `checkout` command and passing the `-b` flag:
-  
+
     ```terminal
     $ git checkout -b add-customers-model
     >  Switched to a new branch `add-customer-model`
@@ -258,4 +258,4 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using dbt Cloud to schedule a job. For more information about using dbt Core to schedule a job, see [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post or [Running a dbt project](/docs/running-a-dbt-project/running-dbt-in-production).
+We recommend using dbt Cloud to schedule a job. For more information about using dbt Core to schedule a job, see [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post or [deployments](/docs/deploy/deployments).

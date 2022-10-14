@@ -4,11 +4,11 @@ id: "core"
 description: "Learn about semantic versioning for dbt Core, and how long those versions are supported."
 ---
 
-dbt Core releases follow [semantic versioning](https://semver.org/). The policies and expectations on this page assume prior familiarity with semantic versions. For more on how we use semantic versions, see "[How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning)."
+dbt Core releases follow [semantic versioning](https://semver.org/). The policies and expectations on this page assume prior familiarity with semantic versions. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning).
 
 ### Further reading
 
-- To learn how you can use dbt Core versions in dbt Cloud, see "[Choosing a dbt Core version](cloud-choosing-a-dbt-version)."
+- To learn how you can use dbt Core versions in dbt Cloud, see [Choosing a dbt Core version](/docs/dbt-versions/upgrade-core-in-cloud).
 - To learn about installing dbt Core, see "[How to install dbt Core](/docs/get-started/installation)."
 - To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](require-dbt-version) and [`dbt_version`](dbt_version).
 
@@ -25,7 +25,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/). The policie
 Minor versions include new features and capabilities. They will be supported for one year (12 months) from the date of their initial release. _This is a definite commitment._ Our mechanism for continuing to support a minor version is by releasing new patches: small, targeted bug fixes. Whenever we refer to a minor version, such as v1.0, we always mean its latest available patch release (v1.0.x).
 
 While a minor version is officially supported:
-- You can use it in dbt Cloud. For more on dbt Cloud versioning, see "[Choosing a dbt version](cloud-choosing-a-dbt-version)."
+- You can use it in dbt Cloud. For more on dbt Cloud versioning, see [Choosing a dbt version](cloud-choosing-a-dbt-version).
 - You can select it from the version dropdown on this website, to see documentation that is accurate for use with that minor version.
 
 ### Ongoing patches
@@ -73,7 +73,7 @@ Like many software projects, dbt Core releases follow [semantic versioning](http
 - **Patch versions**, also called "bugfix" or "security" releases, include **fixes _only_**. These fixes could be needed to restore previous (documented) behavior, fix obvious shortcomings of new features, or offer critical fixes for security or installation issues. We are judicious about which fixes are included in patch releases, to minimize the surface area of changes.
 
 We are committed to avoiding breaking changes in minor versions for end users of dbt. There are two types of breaking changes that may be included in minor versions:
-- Changes to the [Python interface for adapter plugins](building-a-new-adapter). These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes.
+- Changes to the [Python interface for adapter plugins](/guides/advanced/adapter-development/3-building-a-new-adapter). These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes.
 - Changes to metadata interfaces, including [artifacts](dbt-artifacts) and [logging](events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](understanding-state).
 
 ### How we version adapter plugins

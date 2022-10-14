@@ -7,7 +7,7 @@ sidebar_label: "dbt Cloud tips"
 
 # dbt Cloud tips
 
-The Cloud IDE is fully equipped with keyboard shortcuts, features, and development tips to help you to work like a dbt Cloud power user!  Use this Cloud IDE cheat sheet to help you save time and quickly reference. 
+The Cloud IDE is fully equipped with keyboard shortcuts, features, and development tips to help you to work like a dbt Cloud power user!  Use this Cloud IDE cheat sheet to help you save time and quickly reference.
 
 ## Most popular
 
@@ -15,7 +15,7 @@ The Cloud IDE is fully equipped with keyboard shortcuts, features, and developme
 
 You can move your tabs around to reorganize your work in the IDE. You can also right-click on a tab to close multiple tabs or view and select a list of actions to take. Right click in the editor to access other options, including text wrap.
 
-**Drag and drop** 
+**Drag and drop**
 
 You can also drag and drop files in the file tree or in the editor. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right-clicking on the breadcrumb file.
 
@@ -39,9 +39,7 @@ Double-click a node in the directed acyclic graph (DAG) to open that file in a n
 
 ## IDE Keyboard shortcuts
 
-There are default keyboard shortcuts that can help make development more productive and easier for everyone. 
-
-There are default keyboard shortcuts that can help make development more productive and easier for everyone. 
+There are default keyboard shortcuts that can help make development more productive and easier for everyone.
 
 - Command-O or Control-O to select a file to open
 - Command-P or Control-P to see command palette
@@ -92,5 +90,6 @@ You can make multiple selections for quick and simultaneous edits. The below com
 - Use [target.name](/docs/build/custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.
 
 ## Related docs
-- [Guides](/docs/get-started/overview) 
+
+- [Guides](/docs/get-started/getting-started/overview)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)

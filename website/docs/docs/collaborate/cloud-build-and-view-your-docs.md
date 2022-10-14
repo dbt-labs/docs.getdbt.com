@@ -4,7 +4,7 @@ id: "build-and-view-your-docs"
 description: "Automatically generate project documentation as you run jobs."
 ---
 
-dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/building-a-dbt-project/documentation).
+dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
 
 ## Set up a documentation job
 
@@ -31,12 +31,20 @@ You configure project documentation to generate documentation when the job you s
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" title="Configuring project documentation"/>
 5. Click **Save**.
 
+## Generating documentation
+
+To generate documentation in the IDE, run the `dbt docs generate` command in the
+Command Bar in the IDE. This command will generate the Docs for your dbt project as it exists in development in your IDE session.
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" title="dbt docs generate"/>
+
+After generating your documentation, you can click the **Book** icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
+
 ## Viewing documentation
 
-Once you have a job set up to generate documentation for your project, then click **Documentation** in the top left. Your project's documentation should open. This link will always navigate you to the most recent version of your project's documentation in dbt Cloud.
+Once you set up a job to generate documentation for your project, you can click **Documentation** in the top left. Your project's documentation should open. This link will always navigate you to the most recent version of your project's documentation in dbt Cloud.
+
+The dbt Cloud IDE makes it possible to view [documentation](/docs/collaborate/documentation)
+for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" title="Project documentation"/>
-
-## Easy access
-
-See [Building and Configuring Artifacts](artifacts) for more information on exposing links to the latest Documentation and Source Freshness reports to your team.
