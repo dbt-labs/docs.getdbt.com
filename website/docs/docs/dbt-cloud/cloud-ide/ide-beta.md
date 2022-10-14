@@ -108,7 +108,7 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 ## Development in the dbt Cloud IDE Beta
 
-With the IDE, you can compile dbt code into SQL and run it against your database directly. It leverages the open-source [dbt-rpc](https://docs.getdbt.com/reference/commands/rpc) plugin to intelligently recompile only the changes  in your project.
+With the IDE, you can compile dbt code into SQL and run it against your database directly. It leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to intelligently recompile only the changes  in your project.
 
 The dbt Cloud IDE Beta brings the startup and interaction time for dbt project development down from minutes to seconds.
 
