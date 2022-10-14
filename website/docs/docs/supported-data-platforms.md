@@ -5,7 +5,7 @@ id: "supported-data-platforms"
 
 dbt connects to and runs SQL against your database, warehouse, lake or query engine. To keep things simple, we group all of these SQL-speaking things into one bucket called "data platforms". dbt can be extended to any data platform by means of a dedicated _adapter plugin_. These plugins are built as separate Python modules that dbt Core will discover them if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core.
 
-To learn more about adapters, check out [What Are Adapters](/contributing/adapter-development/1-what-are-adapters).
+To learn more about adapters, check out [What Are Adapters](/docs/contributing/adapter-development/1-what-are-adapters).
 
 ## Adapter Installation
 
