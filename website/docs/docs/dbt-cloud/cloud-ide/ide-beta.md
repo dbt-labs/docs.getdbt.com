@@ -21,7 +21,7 @@ To develop in dbt Cloud IDE (beta), you need to meet these requirements:
 - Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc) which was overhauled in dbt v0.15.0.
 - You must have a [Developer License](/docs/collaborate/manage-access/seats-and-users).  
 - Currently only multi-tenant instances of dbt Cloud can develop in the updated beta version of the Cloud IDE. Single-tenant instances will soon be able to opt into this Beta release.
-- Your dbt repository (in dbt Cloud) must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions.
+- Your dbt repository (in dbt Cloud) must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions.
 
 
 The IDE is a single interface for building, testing, running, and version controlling dbt projects from your browser. Anyone can use the IDE, from new dbt developers to seasoned practitioners.
