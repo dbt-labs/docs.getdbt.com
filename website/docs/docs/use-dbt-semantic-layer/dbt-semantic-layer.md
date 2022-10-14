@@ -125,9 +125,13 @@ A great example of this is **revenue** &mdash; it can be aggregated on multiple 
 
 ### Design and define metrics
 
-You can define your metrics in `.yml` files nested under a metrics key. To start designing or defining your own metrics in your dbt project, review the following documents:
+If you're new or curious about metrics, our helpful metrics video below will explain what metrics are, why they're important and how you can get started:
+    
+<LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />    
+    
+You can define your metrics in `.yml` files nested under a metrics key and to design or define your own metrics in your dbt project, review the following documents:
 
 - [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](/docs/building-a-dbt-project/metrics) for in-depth detail on attributes, filters, how to define and query your metrics and [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics)
-- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) to learn about the dbt Semantic Layer
+- [dbt Semantic Layer quickstart](/docs/use-dbt-semantic-layer/quickstart-semantic-layer) to learn about the dbt Semantic Layer
 - [Getting started with the Semantic Layer](/docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer) blog post to see further examples
