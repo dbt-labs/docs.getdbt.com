@@ -111,7 +111,7 @@ You can use _configurations_ to change any of these behaviors — more on that b
 ## Configuring models
 Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
 * Change the [materialization](materializations) that a model uses — a <Term id="materialization" /> determines the SQL that dbt uses to create the model in your warehouse.
-* Build models into separate [schemas](using-custom-schemas).
+* Build models into separate [schemas](/docs/build/custom-schemas).
 * Apply [tags](resource-configs/tags) to a model.
 
 Here's an example of model configuration:
@@ -259,7 +259,7 @@ dbt uses the `ref` function to:
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 
 ## Testing and documenting models
-You can also document and test models — skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
+You can also document and test models — skip ahead to the section on [testing](/docs/build/tests) and [documentation](documentation) for more information.
 
 
 ## Additional FAQs
