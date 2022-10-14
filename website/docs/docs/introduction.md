@@ -33,7 +33,7 @@ You can access dbt using dbt Core or dbt Cloud. dbt Cloud is built around dbt Co
 - Hosted environment so it’s faster to get up and running
 - Differentiated features, such as metadata, in-app job scheduler, observability, integrations with other tools, integrated development environment (IDE), and more.
 
-You can learn about plans and pricing on [www.getdbt.com]([https://www.getdbt.com/pricing/](https://www.getdbt.com/pricing/)).
+You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com/pricing/).
 
 ### dbt Cloud
 
