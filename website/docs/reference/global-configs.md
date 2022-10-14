@@ -214,7 +214,7 @@ FailFast Error in model model_1 (models/model_1.sql)
 
 ### Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `DBT_LOG_FORMAT` environment variable specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 
@@ -307,7 +307,7 @@ config:
   send_anonymous_usage_stats: False
 ```
 
-You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/docs/build/environment-variables).
+You can also use the DO_NOT_TRACK environment variable to enable or disable sending anonymous data. For more information, see [Environment variables](/docs/build/environment-variables).
 
 `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
 `DO_NOT_TRACK=0` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`
