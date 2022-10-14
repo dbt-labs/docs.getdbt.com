@@ -16,11 +16,11 @@ In addition to setting up a schedule, there are other considerations when settin
 
 ## Run dbt in production
 
-If you want to run dbt jobs on a schedule, you can use dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.
+If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.
 
 ## dbt Cloud
 
-We've built [dbt Cloud](https://www.getdbt.com/signup/) to empower data teams to easily run dbt in production. If you're interested in trying out dbt Cloud, you can [sign up for an account](https://cloud.getdbt.com/signup/).
+We've built dbt Cloud to empower data teams to easily run dbt in production. If you're interested in trying out dbt Cloud, you can [sign up for an account](https://cloud.getdbt.com/signup/).
 
 dbt Cloud enables you to:
 - run your jobs on a schedule
