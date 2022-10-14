@@ -24,7 +24,7 @@ To develop in the Cloud IDE, make sure you have the following:
 - Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
 - You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
 - You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
-- Your dbt project must be connected to a [data platform](/docs/get-started/connect-your-database)
+- Your dbt project must be connected to a [data platform](https://docs.getdbt.com/docs/get-started/connect-your-database)
 - You must have a [**development environment** and **development credentials**](/docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
@@ -37,7 +37,7 @@ To develop in the Cloud IDE, make sure you have the following:
 There are three start-up states when using or launching the Cloud IDE:
     
 - Creation start &mdash; This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- Cold start - This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+- Cold start &mdash; This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
 - Hot start &mdash; This is the state of resuming an existing or active develop session within three hours of the last activity. 
     
 
