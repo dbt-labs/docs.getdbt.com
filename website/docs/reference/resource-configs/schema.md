@@ -17,7 +17,7 @@ The standard behavior of dbt is:
 * If a custom schema is _not_ specified, the schema of the relation is the target schema (`{{ target.schema }}`).
 * If a custom schema is specified, by default, the schema of the relation is `{{ target.schema }}_{{ schema }}`.
 
-To learn more about changing the way that dbt generates a relation's `schema`, read [Using Custom Schemas](/docs/building-a-dbt-project/building-models/using-custom-schemas)
+To learn more about changing the way that dbt generates a relation's `schema`, read [Using Custom Schemas](/docs/build/custom-schemas)
 
 ## Usage
 

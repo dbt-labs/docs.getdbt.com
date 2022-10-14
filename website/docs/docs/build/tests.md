@@ -30,7 +30,7 @@ There are two ways of defining tests in dbt:
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
 :::tip Creating your first tests
-If you're new to dbt, we recommend that you check out our [Getting Started guide](/docs/get-started/overview) to build your first dbt project with models and tests.
+If you're new to dbt, we recommend that you check out our [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project with models and tests.
 :::
 
 ## Singular tests
@@ -115,7 +115,7 @@ You can find more information about these tests, and additional configurations (
 Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](custom-generic-tests) for more information.
 
 :::info
-There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](package-management) to learn more!
+There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](/docs/build/packages) to learn more!
 :::
 
 ### Example
@@ -254,7 +254,7 @@ This workflow allows you to query and examine failing records much more quickly 
 <Lightbox src="/img/docs/building-a-dbt-project/test-store-failures.gif" title="Store test failures in the database for faster development-time debugging."/>
 
 Note that, if you elect to store test failures:
-- Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](using-custom-schemas).)
+* Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
 
 ## FAQs
