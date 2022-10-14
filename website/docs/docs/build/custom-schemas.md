@@ -151,15 +151,16 @@ for more information on these changes.
 </Changelog>
 
 Globally-scoped variables and variables defined on the command line with
-[--vars](using-variables) are accessible in the `generate_schema_name` context.
+[--vars](/docs/build/project-variables) are accessible in the `generate_schema_name` context.
 
 ## Managing environments
 
 In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
  - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.
- - **ci**:  A [continuous integration](cloud-enabling-continuous-integration-with-github) environment running on Pull Requests in GitHub, GitLab, etc.
+* **ci**:  A [continuous integration](/docs/collaborate/git/connect-github) environment running on Pull Requests in GitHub, GitLab, etc.
  - **prod**: The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
+>>>>>>> next
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.
 
-For more information, consult the [Managing environments](managing-environments) guide.
+For more information, consult the [Managing environments](/docs/collaborate/environments) guide.

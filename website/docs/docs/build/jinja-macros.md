@@ -22,7 +22,9 @@ Using Jinja turns your dbt project into a programming environment for SQL, givin
 
 In fact, if you've used the [`{{ ref() }}` function](ref), you're already using Jinja!
 
-Jinja can be used in any SQL in a dbt project, including [models](building-models), [analyses](analyses), [tests](/docs/build/tests), and even [hooks](hooks-operations).
+
+Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](analyses), [tests](building-a-dbt-project/tests), and even [hooks](hooks-operations).
+
 
 
 :::info Ready to get started with Jinja and macros?
