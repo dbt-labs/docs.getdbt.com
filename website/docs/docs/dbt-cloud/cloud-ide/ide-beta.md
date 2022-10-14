@@ -153,7 +153,7 @@ You can access files in the lineage tab by double clicking on a particular model
 
 **Command bar + status**
 
-You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**.
+You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**.
 
 :::info Note
 
