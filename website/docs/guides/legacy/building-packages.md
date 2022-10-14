@@ -5,7 +5,7 @@ id: "building-packages"
 
 ## Assumed knowledge
 This article assumes you are familiar with:
-- [packages](package-management)
+- [packages](/docs/build/packages)
 - administering a repository on GitHub
 - [semantic versioning](https://semver.org/)
 
@@ -50,7 +50,7 @@ _Modeling packages only_
 
 Not every user of your package is going to store their Mailchimp data in a schema named `mailchimp`. As such, you'll need to make the location of raw data configurable.
 
-We recommend using [sources](using-sources) and [variables](using-variables) to achieve this. Check out [this package](https://github.com/fivetran/dbt_facebook_ads_source/blob/main/models/src_facebook_ads.yml#L5-L6) for an example — notably, the README [includes instructions](https://github.com/fivetran/dbt_facebook_ads_source#configuration) on how to override the default schema from a `dbt_project.yml` file.
+We recommend using [sources](/docs/build/sources) and [variables](/docs/build/project-variables) to achieve this. Check out [this package](https://github.com/fivetran/dbt_facebook_ads_source/blob/main/models/src_facebook_ads.yml#L5-L6) for an example — notably, the README [includes instructions](https://github.com/fivetran/dbt_facebook_ads_source#configuration) on how to override the default schema from a `dbt_project.yml` file.
 
 ### Install upstream packages from hub.getdbt.com
 
