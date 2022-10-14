@@ -346,4 +346,4 @@ Users in your IdP will now be able to log into the application by navigating to 
 ### Setting up RBAC
 
 After configuring an identity provider, you will be able to set up [role-based
-access control](/access-control/enterprise-permissions) for your account.
+access control](/docs/collaborate/manage-access/enterprise-permissions) for your account.

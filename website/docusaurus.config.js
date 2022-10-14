@@ -172,12 +172,12 @@ var siteSettings = {
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
             <a href='https://www.getdbt.com/security/'>Security</a>
             <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
-            <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
+            <button id=\"ot-sdk-btn\" onclick="openPreferenceCenter()">Cookie Settings</button>
           </div>
 
           <div class='footer__items--right'>
             <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
-            <a href='https://www.getdbt.com/community/'><i class="fa-brands fa-slack"></i></a>
+            <a href='https://www.getdbt.com/community/join-the-community/'><i class="fa-brands fa-slack"></i></a>
             <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
           </div>
           `,
@@ -239,6 +239,7 @@ var siteSettings = {
       defer: true,
     },
     "/js/gtm.js",
+    "/js/onetrust.js",
     "https://kit.fontawesome.com/7110474d41.js",
   ],
   stylesheets: [
@@ -255,8 +256,8 @@ var siteSettings = {
         "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
       crossorigin: "anonymous",
     },
-    {rel: 'icon', href: 'img/favicon.png', type: 'image/png'},
-    {rel: 'icon', href: 'img/favicon.svg', type: 'image/svg+xml'},
+    {rel: 'icon', href: '/img/favicon.png', type: 'image/png'},
+    {rel: 'icon', href: '/img/favicon.svg', type: 'image/svg+xml'},
   ],
 };
 

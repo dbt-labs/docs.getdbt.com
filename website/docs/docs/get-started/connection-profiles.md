@@ -97,7 +97,7 @@ Use the [debug](debug) command to check whether you can successfully connect to 
 
 ## Understanding targets in profiles
 
-dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [Managing Environments](managing-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [Managing Environments](/docs/collaborate/environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 
@@ -137,7 +137,7 @@ In development, a pattern we’ve found to work well is to name the schema in yo
 
 Note that there’s no need to create your target schema beforehand – dbt will check if the schema already exists when it runs, and create it if it doesn’t.
 
-While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](using-custom-schemas).
+While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](/docs/build/custom-schemas).
 
 ## Understanding threads
 

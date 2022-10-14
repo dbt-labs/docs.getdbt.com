@@ -1522,7 +1522,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 }
 
 /* OneTrust Cookies Settings Btn in Footer */
-footer #ot-sdk-btn.ot-sdk-show-settings,
+footer #ot-sdk-btn,
 footer #ot-sdk-btn.optanon-show-settings {
   background: none;
   border: none;
@@ -1536,7 +1536,7 @@ footer #ot-sdk-btn.optanon-show-settings {
   font-weight: 400;
   cursor: pointer;
 }
-footer #ot-sdk-btn.ot-sdk-show-settings:hover,
+footer #ot-sdk-btn:hover,
 footer #ot-sdk-btn.optanon-show-settings:hover {
   background: none;
   border: none;
@@ -1684,6 +1684,19 @@ section > h2:not(.resource-section) {
 @media(min-width: 996px) {
   .grid--3-col {
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: calc(var(--ifm-spacing-horizontal) * 2);
+  }
+}
+
+.grid--2-col {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: var(--ifm-spacing-horizontal)
+}
+
+@media(min-width: 996px) {
+  .grid--2-col {
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: calc(var(--ifm-spacing-horizontal) * 2);
   }
 }

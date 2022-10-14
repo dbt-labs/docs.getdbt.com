@@ -28,7 +28,7 @@ information on the change.
 ### One-argument generate_schema_name deprecation
 Support for the one-argument variant of `generate_schema_name` macros (deprecated
 in a previous release) are no longer supported. If you are using the one-argument
-variant of `generate_schema_name`, see [the docs on custom schemas](using-custom-schemas)
+variant of `generate_schema_name`, see [the docs on custom schemas](/docs/build/custom-schemas)
 for an example of how to use the two-argument variant of `generate_schema_name`.
 
 ### BigQuery partition_by syntax

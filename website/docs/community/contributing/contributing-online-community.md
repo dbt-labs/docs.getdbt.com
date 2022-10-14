@@ -42,5 +42,5 @@ If you see a great question or answer, be generous with your 💜 reactions. Cli
 
 #### Get started
 
-- Read the [Community Forum Guidelines](/community/community-docs/forum-guidelines) to understand what topics are a good fit and why this space is important in building long-term community knowledge.
+- Read the [Community Forum Guidelines](/community/resources/forum-guidelines) to understand what topics are a good fit and why this space is important in building long-term community knowledge.
 - Head over to the “[Help](https://discourse.getdbt.com/c/help/19)” section of the forum and look for areas to hop in! You don’t need to know the exact answer to a question to be able to provide a helpful pointer.
