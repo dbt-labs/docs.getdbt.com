@@ -38,7 +38,7 @@ Your dbt project will depend on raw data stored in your database. Since this dat
 
 :::info Using sources for raw data references
 
-As of v0.13.0, we recommend defining your raw data as [sources](using-sources), and selecting from the source rather than using the direct relation reference. Our dbt projects no longer contain any direct relation references in any models.
+As of v0.13.0, we recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our dbt projects no longer contain any direct relation references in any models.
 
 :::
 
@@ -108,7 +108,7 @@ We often:
 When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](node-selection/syntax).
 
 ### Run only modified models to test changes ("slim CI")
-To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](cloud-enabling-continuous-integration-with-github).)
+To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
