@@ -7,7 +7,7 @@ sidebar_label: Develop in the Cloud
 
 :::info 📌
 
-The new Cloud IDE will be available for General Availability by end of October 2022. The new Cloud IDE and includes performance upgrades, ergonomics improvements, and some delightful enhancements! 
+The new and refreshed Cloud IDE will be open to General Availability by end of October 2022. The new Cloud IDE and includes performance upgrades, ergonomics improvements, and some delightful enhancements! 
 
 Review the [new Cloud IDE features](/get-started/dbt-cloud-features#ide-features) to learn more.
 
@@ -15,16 +15,16 @@ Review the [new Cloud IDE features](/get-started/dbt-cloud-features#ide-features
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly.
 
-The IDE leverages the open-source [dbt-rpc](/docs/reference/commands/rpc) plugin to recompile only the changes made in your project.
+The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
 
 ## Prerequisites
 
 To develop in the Cloud IDE, make sure you have the following:
 
-- Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/docs/reference/commands/rpc) which was overhauled in dbt v0.15.0
-- You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/dbt-cloud/access-control/cloud-seats-and-users)
-- You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions
-- Your dbt project must be connected to a [data platform](/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database)
+- Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
+- You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
+- You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
+- Your dbt project must be connected to a [data platform](/docs/get-started/connect-your-database)
 - You must have a [**development environment** and **development credentials**](/docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
@@ -57,7 +57,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 :::info📌 
 
-New to dbt? Check out our [Getting Started guide](/docs/get-started/overview) to build your first dbt project in the Cloud IDE!
+New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project in the Cloud IDE!
 
 :::
 
@@ -72,7 +72,7 @@ Review the steps below to set up your development environment and credentials:
 
 1. Create a development environment and choose **Deploy** and then **Environments** from the top left. Click **Create Environment**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/new-environment.png" title="Creating a new environment for the Analytics project"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment.png" width="100" height="100" title="Creating a new environment for the Analytics project"/>
 
 2. Enter an environment name that would help you identify it among your other environments (for example, `Nate's Development Environment`). 
 3. Choose **Development** as the **Environment Type**. 
@@ -80,7 +80,7 @@ Review the steps below to set up your development environment and credentials:
 5. Click **Save** to finish creating your **Development environment**.
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/create-new.png" title="Creating a development environment"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="100" height="100" title="Creating a development environment"/>
 
 
 **Developer credentials**
@@ -99,7 +99,7 @@ Follow the below steps to set up your developer credentials:
 
 Great job, you should now be able to access the Cloud IDE by clicking **Develop** on the navigation to start developing! 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/credentials.png" title="Configure developer credentials in your Profile"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="100" height="100" title="Configure developer credentials in your Profile"/>
 
 ### Access the Cloud IDE
 
@@ -110,14 +110,14 @@ Now that you've set up your development environment and credentails, you should 
 3. Make sure you've already initialized your project
 4. Start developing and use the image and guide below to familiarize yourself with the Cloud IDE and its features:
     
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/refresh-ide.png" title="Cloud IDE overview"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/refresh-ide.png" width="100" height="100" title="Cloud IDE overview"/>
 
 | Number  | Feature  | Info  |
 |---|---|---|
 | 1.  | File Tree  | The file tree allows you to organize your project and manage your files and folders. Click the three-dot menu associated with the file or folder to create, rename, or delete it. Note: This function is unavailable if you’re on the **Main** branch.   |
 | 2.  | Editor  | This is where you edit your files. You can use the tab for each editor to position it exactly where you need it.  |
 | 3.  | IDE git button  |  The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project and you can execute git commands directly in the IDE. |
-| 4. | Command bar | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to execute [dbt commands](/docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History** on the left of the bar.
+| 4. | Command bar | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History** on the left of the bar.
 | 5. | Status bar | This area provides you with useful information about your IDE and project status. You also have additional options like restarting or [recloning your repo](/docs/collaborate/git/version-control-basics).|
 | 6. | Format <br></br>Preview <br></br>Compile <br></br>Build |  This is where you can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** feature format your file and is powered by [sqlfmt](http://sqlfmt.com/).|
 | 7. | Lineage tab | You can see how models are used as building blocks from left to right to transform your data from raw sources, into cleaned-up modular derived pieces and final outputs on the far right of the DAG. You can access files in the **Lineage** tab by double-clicking on a particular model. Expand the DAG into fullscreen to view the DAG view differently. Note: Our default view is `+model+`, however, you can change it to `2+model+2`. |
@@ -130,7 +130,7 @@ You can *build*, *compile*, *run* *, and test* dbt projects by using the command
 
 If a model or test fails, you can review the logs to find and fix the issue.
 
-You can also use dbt's [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud.
+You can also use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
 
@@ -153,7 +153,7 @@ You can view the latest version of your documentation rendered in a new browser 
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [dbt Cloud features](/docs/get-started/dbt-cloud-features)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
-- [dbt Commands](/docs/reference/dbt-commands)
+- [dbt Commands](/reference/dbt-commands)
 
 
 ## Related questions
