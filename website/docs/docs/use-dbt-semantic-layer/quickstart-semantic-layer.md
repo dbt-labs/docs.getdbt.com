@@ -127,10 +127,9 @@ packages:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_package.png" title="Running dbt deps in the dbt Cloud IDE" />
 
-## Design and define metrics in your dbt project
+## Design and define metrics
     
-If you're new or curious about metrics, review our [Get started with metrics] intro video, which  explains what metrics are, why they're important and how you can get started with them.
-    
+If you're new or curious about metrics, our helpful metrics video below will explain what metrics are, why they're important and how you can get started:
     
 <LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />
     
