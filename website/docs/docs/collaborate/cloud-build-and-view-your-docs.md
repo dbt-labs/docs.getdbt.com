@@ -4,7 +4,7 @@ id: "build-and-view-your-docs"
 description: "Automatically generate project documentation as you run jobs."
 ---
 
-dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/building-a-dbt-project/documentation).
+dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
 
 ## Set up a documentation job
 
@@ -38,9 +38,7 @@ Command Bar in the IDE. This command will generate the Docs for your dbt project
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" title="dbt docs generate"/>
 
-After generating your documentation, you can click the "view docs" button to see the latest version of your documentation rendered in a new browser window.
-
-<Lightbox src="/img/docs/dbt-cloud/View-docs-in-IDE.png" title="View docs in the IDE"/>
+After generating your documentation, you can click the **Book** icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 
 ## Viewing documentation
 
