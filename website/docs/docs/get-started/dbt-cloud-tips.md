@@ -15,8 +15,6 @@ The Cloud IDE is fully equipped with keyboard shortcuts, features, and developme
 
 You can move your tabs around to reorganize your work in the IDE. You can also right-click on a tab to close multiple tabs or view and select a list of actions to take. Right click in the editor to access other options, including text wrap.
 
-Tab options
-
 **Drag and drop** 
 
 You can also drag and drop files in the file tree or in the editor. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right-clicking on the breadcrumb file.
@@ -27,7 +25,7 @@ You can quickly search over all files in the IDE on your current project. To sea
 
 **Command bar and status**
 
-You can run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/docs/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **Runs**.
+You can run commands from the command bar at the bottom of the IDE or using the **Build** button. Use the [rich model selection syntax](/docs/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **Runs**.
 
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
@@ -79,19 +77,19 @@ You can make multiple selections for quick and simultaneous edits. The below com
 - Use the [where config](/docs/reference/resource-configs/where) for tests to test an assertion on a subset of records.
 - [store_failures](/docs/reference/resource-configs/store_failures) lets you examine records that cause tests to fail, so you can either repair the data or change the test as needed.
 - Use [severity](/docs/reference/resource-configs/severity) thresholds to set an acceptable number of failures for a test.
-- Use [incremental_strategy](/docs/building-a-dbt-project/building-models/configuring-incremental-models#configuring-incremental-strategy) in your incremental model config to implement the most effective behavior depending on the volume of your data and reliability of your unique keys.
+- Use [incremental_strategy](/docs/build/incremental-models#about-incremental_strategy) in your incremental model config to implement the most effective behavior depending on the volume of your data and reliability of your unique keys.
 - Set `vars` in your `dbt_project.yml` to define global defaults for certain conditions, which you can then override using the `--vars` flag in your commands.
-- Use [for loops](/docs/guides/getting-started/learning-more/using-jinja#use-a-for-loop-in-models-for-repeated-sql) in Jinja to [DRY](/docs.getdbt.com/terms/dry) up repetitive logic, such as selecting a series of columns that all require the same transformations and naming patterns to be applied.
+- Use [for loops](/docs/get-started/learning-more/using-jinja#use-a-for-loop-in-models-for-repeated-sql) in Jinja to [DRY](https://docs.getdbt.com/terms/dry) up repetitive logic, such as selecting a series of columns that all require the same transformations and naming patterns to be applied.
 - Instead of relying on post-hooks, use the [grants config](/docs/reference/resource-configs/grants) to apply permission grants in the warehouse resiliently.
-- Define [source-freshness](/docs/building-a-dbt-project/using-sources#snapshotting-source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
+- Define [source-freshness](/docs/build/sources#snapshotting-source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
 - Use the `+` operator on the left of a model `dbt build +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build model_name+` to run a model and everything downstream that depends on it.
 - Use `dir_name` to run all models in a package or directory.
 - Use the `@` operator on the left of a model in a non-state-aware CI setup to test it. This operator runs all of a selection’s parents and children, and also runs the parents of its children, which in a fresh CI schema will likely not exist yet.
 - Use the [--exclude flag](/docs/reference/node-selection/exclude) to remove a subset of models out of a selection.
-- Use [state and deferral](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration#deferral-and-state-comparison) to create a slim CI setup.
+- Use [state and deferral](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) to create a slim CI setup.
 - Use the [--full-refresh](/docs/reference/commands/run#refresh-incremental-models) flag to rebuild an incremental model from scratch.
-- Use [seeds](/docs/building-a-dbt-project/seeds) to create manual lookup tables, like zip codes to states or marketing UTMs to campaigns. `dbt seed` will build these from CSVs into your warehouse and make them `ref` able in your models.
-- Use [target.name](/docs/building-a-dbt-project/building-models/using-custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.
+- Use [seeds](/docs/build/seeds) to create manual lookup tables, like zip codes to states or marketing UTMs to campaigns. `dbt seed` will build these from CSVs into your warehouse and make them `ref` able in your models.
+- Use [target.name](/docs/build/custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.
 
 ## Related docs
 - [Guides](/docs/get-started/overview) 
