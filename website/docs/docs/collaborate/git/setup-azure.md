@@ -9,7 +9,7 @@ sidebar_label: "Set up Azure DevOps"
 
 ## Overview
 
-To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Azure Active Directory (Azure AD) app. We recommend setting up a separate [Azure AD application than used for SSO](/setting-up-enterprise-sso-with-azure-active-directory).
+To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Azure Active Directory (Azure AD) app. We recommend setting up a separate [Azure AD application than used for SSO](/docs/collaborate/manage-access/set-up-sso-azure-active-directory).
 
 1. [Register an Azure AD app](#register-an-azure-ad-app).
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
@@ -21,7 +21,7 @@ Once the the Azure AD app is added to dbt Cloud, an account admin must also conn
 1. [Connecting a Service User](#connecting-a-service-user).
 
 
-Once the Azure AD app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
+Once the Azure AD app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/collaborate/git/authenticate-azure).
 
 ## Register an Azure AD app
 
@@ -29,7 +29,7 @@ Once the Azure AD app is added to dbt Cloud and the service user is connected, t
 2. Select **App registrations** in the left panel.
 3. Select **New registration**. The form for creating a new Active Directory app opens.
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
-5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types. 
+5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Azure Active Directory as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
 6. Add a redirect URI by selecting **Web** and typing in `https://cloud.getdbt.com/complete/azure_active_directory`. If you have a custom dbt Cloud URL be sure to use the appropriate domain.
 7. Click **Register**.
@@ -53,7 +53,7 @@ Provide your new app access to Azure DevOps:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" title="Adding permissions to the app"/>
 
-## Add another redirect URI 
+## Add another redirect URI
 
 You also need to add another redirect URI to your Azure AD application. This redirect URI will be used to authenticate the service user for headless actions in deployment environments.
 
@@ -89,11 +89,11 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
 4. Complete the form:
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly.
     - **Application (client) ID:** Found in the Azure AD App.
-    - **Client Secrets:** You need to first create a secret in the Azure AD App under **Client credentials**. Make sure to copy the **Value** field in the Azure AD App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Azure AD app secret expiration and rotation. 
+    - **Client Secrets:** You need to first create a secret in the Azure AD App under **Client credentials**. Make sure to copy the **Value** field in the Azure AD App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Azure AD app secret expiration and rotation.
     - **Directory(tenant) ID:** Found in the Azure AD App.
         <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
-Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure).
+Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](/docs/collaborate/git/authenticate-azure).
 
 ## Connecting a service user
 
@@ -101,12 +101,12 @@ Because Azure DevOps forces all authentication to be linked to a user's permissi
 
 ### More on Service Users
 
-A service user account must have the following Azure DevOps permissions for all Azure DevOps projects and repos you want accessible in dbt Cloud. Read more about how dbt Cloud uses each permission in the following paragraphs. 
+A service user account must have the following Azure DevOps permissions for all Azure DevOps projects and repos you want accessible in dbt Cloud. Read more about how dbt Cloud uses each permission in the following paragraphs.
 
  - **Project Reader**
  - **ViewSubscriptions**
  - **EditSubscriptions**
- - **DeleteSubscriptions** * 
+ - **DeleteSubscriptions** *
  - **PullRequestContribute**
  - **GenericContribute**
 
@@ -127,17 +127,17 @@ This service user's permissions will also power which repositories a team can se
 **Namespace:** ServiceHooks
 
 **Permission:**
-```json 
-{ 
-    "bit": 1, 
-    "displayName": "View Subscriptions", 
+```json
+{
+    "bit": 1,
+    "displayName": "View Subscriptions",
     "name": "ViewSubscriptions"
-} 
+}
 ```
 
 **Uses:** To view existing Azure DevOps service hooks subscriptions
 
-**Token (where applicable - API only):** 
+**Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
@@ -154,7 +154,7 @@ This service user's permissions will also power which repositories a team can se
 **Namespace:** ServiceHooks
 
 **Permission:**
-```json 
+```json
 {
     "bit": 2,
     "displayName": "Edit Subscription",
@@ -165,7 +165,7 @@ This service user's permissions will also power which repositories a team can se
 
 **Uses:** To add or update existing Azure DevOps service hooks subscriptions
 
-**Token (where applicable - API only):** 
+**Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
@@ -182,7 +182,7 @@ This service user's permissions will also power which repositories a team can se
 **Namespace:** ServiceHooks
 
 **Permission:**
-```json 
+```json
 {
     "bit": 4,
     "displayName": "Delete Subscriptions",
@@ -195,7 +195,7 @@ This service user's permissions will also power which repositories a team can se
 **Uses:** To delete any redundant Azure DevOps service hooks subscriptions
 
 
-**Token (where applicable - API only):** 
+**Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
@@ -215,7 +215,7 @@ This service user's permissions will also power which repositories a team can se
 **Namespace:** Git Repositories
 
 **Permission:**
-```json 
+```json
 { 	
     "bit": 16384,  
     "displayName": "Contribute to pull requests",
@@ -227,7 +227,7 @@ This service user's permissions will also power which repositories a team can se
 **Uses:** To post Pull Request statuses to Azure DevOps
 
 
-**Token (where applicable - API only):** 
+**Token (where applicable - API only):**
 - repoV2 for access to all projects
 - repoV2/<azure_devops_project_object_id> for per project access
 - repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
@@ -249,7 +249,7 @@ This service user's permissions will also power which repositories a team can se
 **Namespace:** Git Repositories
 
 **Permission:**
-```json 
+```json
 {
     "bit": 4,
     "displayName": "Contribute",
@@ -262,7 +262,7 @@ This service user's permissions will also power which repositories a team can se
 **Uses:** To post commit statuses to Azure DevOps
 
 
-**Token (where applicable - API only):** 
+**Token (where applicable - API only):**
 - repoV2 for access to all projects
 - repoV2/<azure_devops_project_object_id> for access to a single project at a time
 - repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time

@@ -96,5 +96,5 @@ Usage notes:
 ## Granular permissioning
 
 The dbt Cloud Enterprise plan supports Role-Based access controls for
-configuring granular in-app permissions. See [access control](access-control-overview)
+configuring granular in-app permissions. See [access control](/docs/collaborate/manage-access/about-access)
 for more information on Enterprise permissioning.
