@@ -10,7 +10,7 @@ different types of seat licenses in dbt Cloud: _Developer_ and _Read Only_.
 
 The type of license a user is assigned controls which capabilities of dbt
 Cloud the user is permitted to access. Users with a Developer license can be
-granted access to the Deployment and [Development](the-dbt-ide) functionality
+granted access to the Deployment and [Development](/docs/get-started/develop-in-the-cloud) functionality
 in dbt Cloud, whereas users with Read Only licenses are intended to view the
 [artifacts](docs/dbt-cloud/using-dbt-cloud/artifacts) created in a dbt Cloud account.
 
@@ -20,8 +20,8 @@ in dbt Cloud, whereas users with Read Only licenses are intended to view the
 | Use Jobs | ✅ | ❌ |
 | Manage Account | ✅ | ❌ |
 | API Access | ✅ | ❌ |
-| Use [Source Freshness](cloud-snapshotting-source-freshness) | ✅ | ✅ |
-| Use [Docs](cloud-generating-documentation) | ✅ | ✅ |
+| Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ |
+| Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ |
 
 ## Included seats
 
@@ -66,7 +66,7 @@ change.
 **Note:** This feature is only available on the Enterprise plan.
 
 If your account is connected to an Identity Provider (IdP) for [Single Sign
-On](dbt-cloud-enterprise/sso-overview), you can automatically map IdP user
+On](/docs/collaborate/manage-access/sso-overview), you can automatically map IdP user
 groups to specific license types in dbt Cloud. To configure license mappings,
 navigate to the Account Settings &gt; Team &gt; License Mappings page. From
 here, you can create or edit SSO mappings for both Read Only and Developer
