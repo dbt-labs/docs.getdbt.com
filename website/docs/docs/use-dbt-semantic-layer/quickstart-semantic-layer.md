@@ -128,9 +128,16 @@ packages:
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_package.png" title="Running dbt deps in the dbt Cloud IDE" />
 
 ## Design and define metrics in your dbt project
+    
+If you're new or curious about metrics, review our [Get started with metrics] intro video, which  explains what metrics are, why they're important and how you can get started with them.
+    
+<div style="position: relative; padding-bottom: 59.227467811158796%; height: 0;"><iframe src="https://www.loom.com/embed/b120ca9d042d46abad1d873a676bf20a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div><br />
+    
+### Design metrics
+    
+To understand how to structure and organize your metrics, and best practices, review our [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog post first.
 
-Before you define metrics in your dbt project, you'll need to understand how to structure and organize your metrics. For more info on that and to understand the best practices, review our [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog post first.
-
+### Define metrics
 Now that you've organized your metrics folder and files, you can define your metrics in `.yml` files nested under a `metrics` key.  
 
 1. Add the metric definitions found in the [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example to your dbt project. For example, to add an expenses metric, reference the following metrics you can define directly in your metrics folder: 
