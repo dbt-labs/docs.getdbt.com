@@ -7,7 +7,7 @@ Running dbt in production means setting up a system to run a _dbt job on a sched
 
 In addition to setting up a schedule, there are other considerations when setting up dbt to run in production:
 
-* The complexity involved in creating a new dbt job, or editing an existing one.
+* The complexity involved in creating a new dbt job or editing an existing one.
 * Setting up notifications if a step within your job returns an error code (for example, a model can't be built or a test fails).
 * Accessing logs to help debug any issues.
 * Pulling the latest version of your git repo before running dbt (that is, continuous deployment).
