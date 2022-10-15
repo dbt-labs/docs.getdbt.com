@@ -4,7 +4,7 @@ id: "build-and-view-your-docs"
 description: "Automatically generate project documentation as you run jobs."
 ---
 
-dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/building-a-dbt-project/documentation).
+dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
 
 ## Set up a documentation job
 
@@ -19,7 +19,6 @@ To set up a job to generate docs:
 
 4. Click **Save**. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.
 
-
 ## Configure project documentation
 
 You configure project documentation to generate documentation when the job you set up in the previous section runs. In the project settings, specify the job that generates documentation artifacts for that project. Once you configure this setting, subsequent runs of the job will automatically include a step to generate documentation.
@@ -31,16 +30,14 @@ You configure project documentation to generate documentation when the job you s
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" title="Configuring project documentation"/>
 5. Click **Save**.
 
-## Generating documentation
+## Generating documentation 
 
 To generate documentation in the IDE, run the `dbt docs generate` command in the
 Command Bar in the IDE. This command will generate the Docs for your dbt project as it exists in development in your IDE session.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" title="dbt docs generate"/>
 
-After generating your documentation, you can click the "view docs" button to see the latest version of your documentation rendered in a new browser window.
-
-<Lightbox src="/img/docs/dbt-cloud/View-docs-in-IDE.png" title="View docs in the IDE"/>
+After generating your documentation, you can click the **Book** icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 
 ## Viewing documentation
 

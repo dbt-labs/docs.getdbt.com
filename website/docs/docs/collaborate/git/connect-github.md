@@ -1,6 +1,7 @@
 ---
-title: "Connect to GitHub"
-id: "connect-github"
+title: "Connecting your GitHub account"
+id: "cloud-installing-the-github-application"
+sidebar_label: "Connecting GitHub"
 ---
 
 ## Overview
@@ -9,18 +10,17 @@ Connecting your GitHub account to dbt Cloud provides convenience and another lay
 - Log into dbt Cloud using OAuth through GitHub.
 - Import new GitHub repositories with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
-- Trigger [Continuous integration](cloud-enabling-continuous-integration-with-github) builds when pull requests are opened in GitHub.
+- Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when pull requests are opened in GitHub.
 
 
 To connect GitHub in dbt Cloud:
-1. A GitHub organization owner must first [install the dbt Cloud application](/cloud-installing-the-github-application#installing-dbt-cloud-in-your-github-account) in your team's GitHub account.
-2. All other dbt Cloud developers on the account need to [personally authenticate with GitHub](/cloud-installing-the-github-application#personally-authenticate-with-github) from dbt Cloud.
+1. A GitHub organization owner must first [install the dbt Cloud application](/docs/collaborate/git/connect-github#installing-dbt-cloud-in-your-github-account) in your team's GitHub account.
+2. All other dbt Cloud developers on the account need to [personally authenticate with GitHub](/docs/collaborate/git/connect-github#personally-authenticate-with-github) from dbt Cloud.
 
 If you are the GitHub organization owner tasked with the installation of the dbt Cloud app in step 1, you will also be automatically personally authenticated after completion, so step 2 will be taken care of. This means teams of one only need to complete step 1.
 
 :::info Use GitHub On-Premise?
-If you're using an On-Premises GitHub deployment, this method will not work for your account. Please instead reference our
-docs on [importing a project by git URL](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url#github) to set up your connection. This alternative connection method does not include the benefits of the native integration mentioned above.
+If you're using an On-Premises GitHub deployment, this method will not work for your account. Please instead reference our docs on [importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) to set up your connection. This alternative connection method does not include the benefits of the native integration mentioned above.
 :::
 
 ## Installing dbt Cloud in your GitHub account
@@ -39,7 +39,7 @@ The dbt Cloud GitHub App requires the following permissions:
 - Read access to metadata
 - Read and write access to checks, code, commit statuses, pull requests, and workflows
 
-Once you grant access to the app, you will be redirected back to dbt Cloud and shown a linked account success state. You are now personally authenticated too, and your team members can begin [connecting their profiles](/cloud-installing-the-github-application#personally-authenticate-with-github).
+Once you grant access to the app, you will be redirected back to dbt Cloud and shown a linked account success state. You are now personally authenticated too, and your team members can begin [connecting their profiles](/docs/collaborate/git/connect-github#personally-authenticate-with-github).
 
 ## Configuring the dbt Cloud app in your GitHub account
 If you are your GitHub organization owner, you can also configure the dbt Cloud GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in dbt Cloud to start this process.

@@ -14,9 +14,9 @@ The IDE leverages the open-source [dbt-rpc](/docs/reference/commands/rpc) plugin
 To develop in the Cloud IDE, make sure you have the following:
 
 - Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/docs/reference/commands/rpc) which was overhauled in dbt v0.15.0
-- You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/dbt-cloud/access-control/cloud-seats-and-users)
-- You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions
-- Your dbt project must be connected to a [data platform](/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database)
+- You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
+- You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
+- Your dbt project must be connected to a [data platform](/docs/get-started/connect-your-database)
 - You must have a [**development environment** and **development credentials**](/docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
@@ -85,7 +85,7 @@ You can *build*, *compile*, *run* *, and test* dbt projects by using the command
 
 If a model or test fails, you can review the logs to find and fix the issue.
 
-You can also use dbt's [rich model selection syntax](/docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud.
+You can also use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud.
 
 ## Build and view your project's docs 
 

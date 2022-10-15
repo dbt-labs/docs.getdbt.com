@@ -52,7 +52,7 @@ Congratulations! Now that you've got a working dbt project, you can read about d
 
 You can improve your dbt skills with these fun exercises:
 
-* Turn your raw data references (for example, turn `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
+* Turn your raw data references (for example, turn `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/build/sources).
 * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
 * Reorganize your project into [how we structure dbt projects](/blog/how-we-structure-our-dbt-projects).
 * If you want a more in-depth learning experience, we recommend taking the [dbt Fundamentals on our dbt Learn online courses site](https://courses.getdbt.com/courses/fundamentals).

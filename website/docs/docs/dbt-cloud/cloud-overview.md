@@ -8,12 +8,12 @@ id: "cloud-overview"
 
 dbt Cloud’s generous Developer (free) plan and deep integration with dbt Core make it well suited for data teams small and large alike.  
 
-You can get started with dbt Cloud by [Signing up](https://www.getdbt.com/signup/).
+You can [sign up](https://www.getdbt.com/signup/) to get started with dbt Cloud.
 
 
 ## Develop dbt projects
 
-You can use the [dbt IDE](the-dbt-ide) to develop, run, and version control dbt projects on the web.
+You can use the [dbt Cloud IDE](/docs/get-started/develop-in-the-cloud) to develop, run, and version control dbt projects on the web.
 
 ## Schedule and run dbt jobs in production
 

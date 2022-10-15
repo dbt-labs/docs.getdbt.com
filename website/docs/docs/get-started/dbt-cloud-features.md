@@ -4,9 +4,6 @@ id: "dbt-cloud-features"
 ---
 
 
-The dbt Integrated Development Environment (IDE) provides a realtime editing and execution environment for your dbt project. In the dbt IDE, you can write, run, test, and version control the code in your dbt project from your browser -- no command line use required.
-
-
 :::info Join our Cloud IDE beta
 
 Learn about what you can do with our [Cloud IDE beta](/docs/docs/get-started/develop-in-the-cloud#develop-in-the-cloud-ide-beta). Please [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join our Cloud IDE beta group.
@@ -25,8 +22,8 @@ With the Cloud IDE, you can:
 - Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips)
 - Use dark mode when you develop in the Cloud IDE.
 
-
 ### IDE features
+
 The dbt Cloud IDE includes features that make it easier for you to develop, build, compile, run, and test your data models. Check out some of the features below to learn more:
 
 **Find and replace**
@@ -43,7 +40,6 @@ There are default keyboard shortcuts that can help make development more product
 
 **File explorer**
 
-
 The File explorer on the left side of the IDE allows you to organize your project and manage your files and folders. Click the three dot menu associated with the file or folder to create, rename, and delete it.
 
 ### Features available in the Cloud IDE beta
@@ -55,9 +51,10 @@ Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.co
 **File state indicators**
 
 We have added file state indicators to make it clear when changes or actions have been made. The indicators M, U, and • appear to the right of your file or folder name and indicate the actions performed:
-   * Unsaved (•) &mdash; The IDE detects unsaved changes to your file/folder
-  * Modification (M) &mdash; The IDE detects a modification of existing files/folders have saved changes file or folder
-  * Untracked (U) &mdash; The IDE detects changes made to new files or renamed files
+
+- Unsaved (•) &mdash; The IDE detects unsaved changes to your file/folder
+- Modification (M) &mdash; The IDE detects a modification of existing files/folders have saved changes file or folder
+- Untracked (U) &mdash; The IDE detects changes made to new files or renamed files
   
 **Build, test, and run code**
 
@@ -75,11 +72,12 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
 
-  * Option-Command-Down arrow
-  * Option-Command-Up arrow
-  * Press Option and click on an area
+- Option-Command-Down arrow
+- Option-Command-Up arrow
+- Press Option and click on an area
 
 ## Related docs
+
 - [dbt Cloud tips](/docs/get-started/dbt-cloud-tips)
 - [Develop in the Cloud](docs/get-started/develop-in-the-cloud)
 - [Guides](/docs/get-started/getting-started/overview)

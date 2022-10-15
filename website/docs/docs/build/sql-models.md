@@ -260,12 +260,8 @@ dbt uses the `ref` function to:
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 
 ## Testing and documenting models
-<<<<<<< HEAD
-You can also document and test models — skip ahead to the section on [testing](/docs/build/tests) and [documentation](documentation) for more information.
-=======
-You can also document and test models &mdash; skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
->>>>>>> next
 
+You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for more information.
 
 ## Additional FAQs
 <FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />

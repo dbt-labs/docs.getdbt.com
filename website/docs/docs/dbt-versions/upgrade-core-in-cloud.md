@@ -11,7 +11,7 @@ In dbt Cloud, both jobs and environments are configured to use a specific versio
 
 Navigate to the settings page of an environment, then click **edit**. Click the **dbt Version** dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/Environment-settings.png" title="Settings of a dbt Cloud environment"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/Environment-settings.png" title="Settings of a dbt Cloud environment"/> 
 
 Be sure to save your changes before navigating away.
 
@@ -64,20 +64,17 @@ Refactoring code is much easier when you're updating a well-defined, constrained
 
 Additionally upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
 
-
-
 | dbt Cloud Feature | dbt Core Version Needed |
 | ------------- | -------------- |
-| [Environment variable secret scrubbing](/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#handling-secrets)| v1.0+ |
+| [Environment variable secret scrubbing](/docs/build/environment-variables#handling-secrets)| v1.0+ |
 | DAG in the IDE | v0.20.0+|
 | [Metadata API](/docs/dbt-cloud-apis/metadata-api) |v0.19.0+|
-| [Dashboard status tiles](/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) | v0.19.0+ |
-| [Slim CI](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github#slim-ci) | v0.18.0+ |
+| [Dashboard status tiles](/docs/deploy/dashboard-status-tiles) | v0.19.0+ |
+| [Slim CI](/docs/deploy/cloud-ci-job) | v0.18.0+ |
 
 #### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/guides/migration/versions/) and our [upgrading Q&A page](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions).
-
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/guides/migration/versions/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-core-in-cloud#upgrading-legacy-versions-under-10).
 
 ## Upgrading legacy versions under 1.0
 

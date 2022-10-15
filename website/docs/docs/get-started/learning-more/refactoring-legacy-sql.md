@@ -38,7 +38,7 @@ To get going, you'll copy your legacy SQL query into your dbt project, by saving
 
 Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
-> If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [Getting Started guide](/docs/get-started/getting-started/) before diving into refactoring.
+If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [Getting Started guide](/docs/get-started/getting-started/overview) before diving into refactoring.
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 
@@ -52,14 +52,14 @@ If you're not migrating data warehouses at the moment, then you can keep your SQ
 
 <WistiaVideo id="m1a5p32rny" />
 
-To query from your data warehouse, we recommend creating [sources in dbt](/docs/building-a-dbt-project/using-sources) rather than querying the database table directly.
+To query from your data warehouse, we recommend creating [sources in dbt](/docs/build/sources) rather than querying the database table directly.
 
 This allows you to call the same table in multiple places with `{{ src('my_source', 'my_table') }}` rather than `my_database.my_schema.my_table`.
 
 We start here for several reasons:
 
 #### Source freshness reporting
-Using sources unlocks the ability to run [source freshness reporting](/docs/building-a-dbt-project/using-sources#snapshotting-source-data-freshness) to make sure your raw data isn't stale.
+Using sources unlocks the ability to run [source freshness reporting](docs/build/sources#snapshotting-source-data-freshness) to make sure your raw data isn't stale.
 
 #### Easy dependency tracing
 If you're migrating multiple stored procedures into dbt, with sources you can see which queries depend on the same raw tables. 
