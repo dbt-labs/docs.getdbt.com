@@ -30,7 +30,7 @@ You configure project documentation to generate documentation when the job you s
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" title="Configuring project documentation"/>
 5. Click **Save**.
 
-## Generating documentation 
+## Generating documentation
 
 To generate documentation in the IDE, run the `dbt docs generate` command in the
 Command Bar in the IDE. This command will generate the Docs for your dbt project as it exists in development in your IDE session.
