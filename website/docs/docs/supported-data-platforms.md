@@ -35,15 +35,16 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 
 | Data Platform (click to view setup guide) | latest verified version  |
 | ----------------------------------------- | ------------------------ |
-| [AlloyDB](alloydb-setup))                 | (same as `dbt-postgres`) |
-| [BigQuery](bigquery-setup))               | 1.2.0                    |
-| [Databricks](databricks-setup))           | 1.2.0 :construction:     |
-| [Dremio](dremio-setup))                   | 1.3.0 :construction:     |
-| [Postgres](postgres-setup))               | 1.2.0                    |
-| [Redshift](redshift-setup))               | 1.2.0                    |
-| [Snowflake](snowflake-setup))             | 1.2.0                    |
-| [Apache Spark](spark-setup))              | 1.2.0                    |
-| [Starburst & Trino](trino-setup))         | 1.2.0 :construction:     |
+| [AlloyDB](alloydb-setup)                  | (same as `dbt-postgres`) |
+| [Azure Synapse](azuresynapse-setup)       | 1.3.0 :construction:     |
+| [BigQuery](bigquery-setup)                | 1.2.0                    |
+| [Databricks](databricks-setup)            | 1.2.0 :construction:     |
+| [Dremio](dremio-setup)                    | 1.3.0 :construction:     |
+| [Postgres](postgres-setup)                | 1.2.0                    |
+| [Redshift](redshift-setup)                | 1.2.0                    |
+| [Snowflake](snowflake-setup)              | 1.2.0                    |
+| [Spark](spark-setup)                      | 1.2.0                    |
+| [Starburst & Trino](trino-setup)          | 1.2.0 :construction:     |
 
 ### Community Adapters
 
@@ -52,10 +53,10 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 | [Athena](athena-setup)                     | [Hive](hive-setup)               | [SingleStore](singlestore-setup)     |
 | [Clickhouse](clickhouse-setup)             | [Impala](impala-setup)           | [SQLite](sqlite-setup)               |
 | [IBM DB2](ibmdb2-setup)                    | [iomete](iomete-setup)           | [SQL Server & Azure SQ](mssql-setup) |
-| [DuckDB](duckdb-setup)                     | [Layer](layer-setup)             | [Azure Synapse](azuresynapse-setup)   |
-| [Dremio](dremio-setup)                     | [Materialize](materialize-setup) | [Teradata](teradata-setup)           |
-| [Exasol Analytics](exasol-setup)           | [MindsDB](mindsdb-setup)         | [TiDB](tidb-setup)                   |
-| [Firebolt](firebolt-setup)                 | [MySQL](mysql-setup)             | [Vertica](vertica-setup)             |
+| [DuckDB](duckdb-setup)                     | [Layer](layer-setup)             | [Teradata](teradata-setup)           |
+| [Dremio](dremio-setup)                     | [Materialize](materialize-setup) | [TiDB](tidb-setup)                   |
+| [Exasol Analytics](exasol-setup)           | [MindsDB](mindsdb-setup)         | [Vertica](vertica-setup)             |
+| [Firebolt](firebolt-setup)                 | [MySQL](mysql-setup)             |                                      |
 | [AWS Glue](glue-setup)                     | [Oracle](oracle-setup)           |                                      |
 | [Greenplum](greenplum-setup)               | [Rockset](rockset-setup)         |                                      |
 
