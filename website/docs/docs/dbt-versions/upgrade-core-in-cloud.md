@@ -11,7 +11,7 @@ In dbt Cloud, both jobs and environments are configured to use a specific versio
 
 Navigate to the settings page of an environment, then click **edit**. Click the **dbt Version** dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/Environment-settings.png" title="Settings of a dbt Cloud environment"/> 
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/Environment-settings.png" title="Settings of a dbt Cloud environment"/>
 
 Be sure to save your changes before navigating away.
 
