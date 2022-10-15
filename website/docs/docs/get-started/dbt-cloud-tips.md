@@ -7,7 +7,7 @@ sidebar_label: "dbt Cloud tips"
 
 # dbt Cloud tips
 
-The Cloud IDE is fully equipped with keyboard shortcuts, features, and development tips to help you to work like a dbt Cloud power user!  Use this Cloud IDE cheat sheet to help you save time and quickly reference.
+The Cloud IDE is fully equipped with keyboard shortcuts, features, and development tips to help you to work like a dbt Cloud power user!  Use this Cloud IDE cheat sheet to help you save time and quickly reference. 
 
 ## Most popular
 
@@ -31,7 +31,7 @@ Double-click a node in the directed acyclic graph (DAG) to open that file in a n
 
 ## IDE Keyboard shortcuts
 
-There are default keyboard shortcuts that can help make development more productive and easier for everyone.
+There are default keyboard shortcuts that can help make development more productive and easier for everyone. 
 
 - Command-O or Control-O to select a file to open
 - Press Fn-F1 to view a list of the other editor shortcuts
@@ -71,4 +71,5 @@ There are default keyboard shortcuts that can help make development more product
 
 ## Related docs
 
-- [Guides](/docs/get-started/getting-started/overview)
+- [Getting started](/docs/get-started/getting-started/overview)
+- [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
