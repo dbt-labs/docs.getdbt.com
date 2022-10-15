@@ -9,7 +9,11 @@ title: "Upgrading to v1.3 (latest)"
 
 ## Breaking changes
 
-There are no breaking changes for code in dbt projects and packages. We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+There is one notable change that may be considered breaking: with the introduction of Python models in v1.3, dbt will parse and attempt to execute `.py` files in the `models/` directory (or other directories for models per `dbt_project.yml`), likely causing an error.
+
+Use a [`.dbtignore` file](/reference/dbtignore) to have dbt ignore non-model `.py` files or move them out of the model directories.
+
+We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 **Note:** If you have custom code accessing the `raw_sql` property of models (with the [model](dbt-jinja-functions/model) or [graph](/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
 
