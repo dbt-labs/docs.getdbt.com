@@ -67,6 +67,6 @@ If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Ja
 If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 
 ## Related docs
-- [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
+* [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
 * [Get started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud)
 * [Get started with dbt Core](/docs/get-started/getting-started-dbt-core)
