@@ -5,7 +5,6 @@ description: "Embed Status Tiles in your dashboards to provide consumers with co
 ---
 
 ## Overview
-
 In dbt Cloud, the [Metadata API](/docs/dbt-cloud-apis/metadata-api) can power Dashboard Status Tiles.  A Dashboard Status Tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
 
 ## Functionality
