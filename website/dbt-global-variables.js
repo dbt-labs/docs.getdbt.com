@@ -16,5 +16,17 @@ exports.dbtVariables = {
         "version": "0.21"
       }
     ]
-  } 
+  },
+    dbt: {
+    name: "dbt"
+  },
+    dbtCore: {
+    name: "dbt Core"
+  },
+    dbtCloud: {
+    name: "dbt Cloud"
+  },
+    dbtIDE: {
+    name: "dbt IDE"
+  },
 }
