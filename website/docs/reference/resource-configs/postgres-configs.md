@@ -95,3 +95,26 @@ models:
 ```
 
 </File>
+
+### Columnar
+
+"Columnar" tables can be faster than ordinary tables for analytical queries, and they also allow more compression of the data as the are stored in a column-oriented manner. It can be slower when you are doing a lot of read / write of individual transactions. For this functionality you need to [enable the Citus Columnar extension for your Postgres installation](https://www.citusdata.com/updates/v11-1/#citus-columnar). See [Citus docs](https://docs.citusdata.com/en/stable/admin_guide/table_management.html#columnar-storage) for more details and [Columnar README](https://github.com/citusdata/citus/blob/main/src/backend/columnar/README.md) for limitations of this table type.
+
+<File name='my_table.sql'>
+
+```sql
+{{ config(materialized='table', columnar=True) }}
+
+select ...
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  +columnar: true
+```
+
+</File>
