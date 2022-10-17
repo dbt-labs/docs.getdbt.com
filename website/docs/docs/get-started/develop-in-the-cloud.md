@@ -154,6 +154,7 @@ You can view the latest version of your documentation rendered in a new browser 
 - [dbt Cloud features](/docs/get-started/dbt-cloud-features)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/reference/dbt-commands)
+- [New and improved Cloud IDE](www.getdbt.com/blog/new-improved-cloud-ide) blog
 
 
 ## Related questions
