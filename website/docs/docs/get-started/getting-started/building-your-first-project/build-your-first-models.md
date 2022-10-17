@@ -11,9 +11,9 @@ Now that you set up your sample project and had a successful run, you can get to
 1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
 
 2. Click **Create branch**, and name your branch `add-customers-model`.
-    <div style={{maxWidth: '400px'}}>
+  
     <Lightbox src="/img/create-branch-new-ide.png" title="Checkout a new branch" />
-    </div>
+
 
 ## Build your first model
 
