@@ -378,6 +378,7 @@ const sidebarSettings = {
       label: "Project configs",
       items: [
         "reference/dbt_project.yml",
+        "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
         "reference/project-configs/clean-targets",
