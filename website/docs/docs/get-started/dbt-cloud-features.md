@@ -10,7 +10,7 @@ id: "dbt-cloud-features"
 
 The new and refreshed Cloud IDE will be open to General Availability by end of October 2022. The new Cloud IDE and includes performance upgrades, ergonomics improvements, and some delightful enhancements! 
 
-Review the [new Cloud IDE features](#ide-features) and check out [Nate's blog link](URL) to stay up to date with any new enhancements.
+Review the [new Cloud IDE features](#ide-features) and check out the [New and improved Cloud IDE](www.getdbt.com/blog/new-improved-cloud-ide) blog for more info!
 
 :::
 
@@ -53,3 +53,4 @@ The dbt Cloud IDE comes with features, including snappier performance and exciti
 - [dbt Cloud tips](/docs/get-started/dbt-cloud-tips)
 - [Develop in the Cloud](docs/get-started/develop-in-the-cloud)
 - [Guides](/docs/get-started/getting-started/overview)
+- [New and improved Cloud IDE](www.getdbt.com/blog/new-improved-cloud-ide)
