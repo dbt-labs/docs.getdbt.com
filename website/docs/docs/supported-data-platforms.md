@@ -27,23 +27,24 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](7-verifying-a-new-adapter#why-verify-an-adapter) |
 | Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology                                                                                                                     |
-| Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                                                                                                                                            |
+| Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                                                                                                                                           |
 
 ## Supported Data Platforms
 
 ### Verified Adapters
 
-| Data Platform                              | latest verified version  |
-| ------------------------------------------ | ------------------------ |
-| AlloyDB  ([setup](alloydb-setup))        | (same as `dbt-postgres`) |
-| BigQuery ([setup](bigquery-setup))       | 1.2.0                    |
-| Databricks ([setup](databricks-setup))   | 1.2.0 :construction:     |
-| Dremio ([setup](dremio-setup))           | 1.3.0 :construction:     |
-| Postgres ([setup](postgres-setup))       | 1.2.0                    |
-| Redshift ([setup](redshift-setup))       | 1.2.0                    |
-| Snowflake ([setup](snowflake-setup))     | 1.2.0                    |
-| Apache Spark ([setup](spark-setup))      | 1.2.0                    |
-| Starburst & Trino ([setup](trino-setup)) | 1.2.0 :construction:     |
+| Data Platform (click to view setup guide) | latest verified version  |
+| ----------------------------------------- | ------------------------ |
+| [AlloyDB](alloydb-setup)                  | (same as `dbt-postgres`) |
+| [Azure Synapse](azuresynapse-setup)       | 1.3.0 :construction:     |
+| [BigQuery](bigquery-setup)                | 1.2.0                    |
+| [Databricks](databricks-setup)            | 1.2.0 :construction:     |
+| [Dremio](dremio-setup)                    | 1.3.0 :construction:     |
+| [Postgres](postgres-setup)                | 1.2.0                    |
+| [Redshift](redshift-setup)                | 1.2.0                    |
+| [Snowflake](snowflake-setup)              | 1.2.0                    |
+| [Spark](spark-setup)                      | 1.2.0                    |
+| [Starburst & Trino](trino-setup)          | 1.2.0 :construction:     |
 
 ### Community Adapters
 
@@ -58,6 +59,7 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 | [Firebold](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
 | [AWS Glue](glue-setup)                | [Oracle](oracle-setup)                    |
 | [Greenplum](greenplum-setup)          | [Rockset](rockset-setup)   
+
 
 ## Contributing to dbt-core adapters
 
