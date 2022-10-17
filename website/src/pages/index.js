@@ -2,19 +2,15 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-<<<<<<< HEAD
-import pythonScript from '../python/main.py';
-console.log('pythonScript', pythonScript)
-=======
 import Card from '@site/src/components/card';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
 
+import pythonScript from '../python/main.py';
+console.log('pythonScript', pythonScript)
 
-
->>>>>>> current
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
 function getBanner() {
@@ -61,71 +57,7 @@ function Home() {
         <meta name="google-site-verification" content="ex1EMwuCGU33-nOpoOajLXEpMPgUYK5exBWePCu-0l0" />
       </Head>
       <Layout permalink="/">
-<<<<<<< HEAD
-        <button onClick={() => test()}>Wee</button>
-        <div className="container container--fluid home" style={{ "padding": "10px 0" }}>
-          <div className="row" style={{ "maxWidth": "var(--ifm-container-width)", "margin": "calc(5vh) auto calc(2vh)" }}>
-            <div className="col">
-              <h1>Get started</h1>
-              <p>If you’re new to dbt&trade;, start here. These resources will get you off to a strong start:</p>
-            </div>
-          </div>
-          <div className="row" style={{ "maxWidth": "var(--ifm-container-width)", "margin": "calc(2vh) auto calc(2vh)" }}>
-            <div className="col col--4">
-              <div className="card large dark">
-                <div className="card__header">
-                  <h3>What is dbt?</h3>
-                </div>
-                <div className="card__body">
-                  <p>
-                    Some of the very first questions a new user has are covered in this introduction.
-                  </p>
-                </div>
-                <div className="card__footer">
-                  <Link
-                    className="button button--primary"
-                    to="/docs/introduction">
-                    Learn More
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col col--4">
-              <div className="card large dark darker">
-                <div className="card__header">
-                  <h3>Getting started guide</h3>
-                </div>
-                <div className="card__body">
-                  <p>
-                    Read this guide to learn how to build, test, and deploy a new dbt project.
-                  </p>
-                </div>
-                <div className="card__footer">
-                  <Link
-                    className="button button--primary"
-                    to={useBaseUrl('guides/getting-started')}>
-                    Learn More
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col col--4">
-              <div className="card large dark darkest">
-                <div className="card__header">
-                  <h3>dbt Learn</h3>
-                </div>
-                <div className="card__body">
-                  <p>
-                    Learn dbt on your own time with our on demand course or sign up for an upcoming, live public course.
-                  </p>
-                </div>
-                <div className="card__footer">
-                  <Link
-                    className="button button--primary"
-                    to="https://learn.getdbt.com">
-                    Learn Now
-                  </Link>
-=======
+        <button onClick={() => test()}>Test Pyodide</button>
         <div className="container container--fluid home" style={{ "padding": "0", "background": "#FFF" }}>
           <Hero heading="Welcome to the dbt Developer Hub" subheading="Your home base for learning dbt, connecting with the community and contributing to the craft of analytics engineering " showGraphic />
           <section className="resource-section row">
@@ -163,7 +95,6 @@ function Home() {
                     link="/docs/supported-data-platforms"
                     icon="rocket"
                   />
->>>>>>> current
                 </div>
               </div>
             </div>
