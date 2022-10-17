@@ -124,10 +124,10 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
 - union:
     - method: fqn
       value: model_a
-      greedy: eager  # default: will include all tests that touch model_a
+      indirect_selection: eager  # default: will include all tests that touch model_a
     - method: fqn
       value: model_b
-      greedy: cautious  # will not include tests touching model_b
+      indirect_selection: cautious  # will not include tests touching model_b
                         # if they have other unselected parents
 ```
 
