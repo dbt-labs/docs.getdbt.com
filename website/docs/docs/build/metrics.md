@@ -436,7 +436,7 @@ metrics:
 select * 
 from {{ metrics.develop(
         develop_yml=my_metric_yml,
-        metric_list=['develop_metric']
+        metric_list=['develop_metric'],
         grain='month'
         )
     }}
@@ -475,7 +475,7 @@ metrics:
 
 select * 
 from {{ metrics.develop(
-        develop_yml=my_metric_yml
+        develop_yml=my_metric_yml,
         grain='month'
         )
     }}
