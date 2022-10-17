@@ -89,7 +89,7 @@ The optional `unique_key` parameter specifies a field that can uniquely identify
 
 The optional `unique_key` parameter specifies a field (or combination of fields) that define the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
-The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model run may fail. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`), or define a single-column [surrogate key](https://docs.getdbt.com/terms/surrogate-key) (for example with [`dbt_utils.surrogate_key`](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)).
+The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model run may fail. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`), or define a single-column [surrogate key](/terms/surrogate-key) (for example with [`dbt_utils.surrogate_key`](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)).
 
 :::tip
 In cases where you need multiple columns in combination to uniquely identify each row, we recommend you pass these columns as a list (`unique_key = ['user_id', 'session_number']`), rather than a string expression (`unique_key = 'concat(user_id, session_number)'`).
@@ -98,7 +98,7 @@ By using the first syntax, which is more universal, dbt can ensure that the colu
     
 When you pass a list in this way, please ensure that each column does not contain any nulls, or the incremental model run may fail.
    
-Alternatively, you can define a single-column [surrogate key](https://docs.getdbt.com/terms/surrogate-key), for example with [`dbt_utils.surrogate_key`](https://github.com/dbt-labs/dbt-utils#surrogate_key-source).
+Alternatively, you can define a single-column [surrogate key](/terms/surrogate-key), for example with [`dbt_utils.surrogate_key`](https://github.com/dbt-labs/dbt-utils#surrogate_key-source).
 :::
 
 </VersionBlock>
@@ -108,7 +108,7 @@ When you define a `unique_key`, you'll see this behavior for each row of "new" d
 * If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](#about-incremental_strategy), and [strategy specific configs](#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a `unique_key` with more than one row in either the existing target table or the new incremental rows, the incremental model run will fail. Your database and [incremental strategy](#about-incremental_strategy) will determine the specific error that you see, so if you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](https://docs.getdbt.com/terms/surrogate-key).
+Please note that if there's a `unique_key` with more than one row in either the existing target table or the new incremental rows, the incremental model run will fail. Your database and [incremental strategy](#about-incremental_strategy) will determine the specific error that you see, so if you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
 
 :::info
 While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
