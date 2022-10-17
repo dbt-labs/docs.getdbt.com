@@ -253,3 +253,18 @@ select 1 as id
 ```
 
 </File>
+  
+### Assign owner in the dbt_project.yml
+
+<File name='models/my_model.sql'>
+
+```yml
+models:
+  jaffle_shop:
+      materialized: table
+      config:
+        meta:
+          owner: "@alice"
+```
+
+</File>
