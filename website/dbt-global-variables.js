@@ -27,6 +27,6 @@ exports.dbtVariables = {
     name: "dbt Cloud"
   },
     dbtIDE: {
-    name: "dbt IDE"
+    name: "dbt Cloud IDE"
   },
 }
