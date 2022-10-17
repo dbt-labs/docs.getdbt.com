@@ -27,8 +27,8 @@ select ...
 
 To use incremental models, you also need to tell dbt:
 
-* How to filter the rows on an incremental run.
-* The uniqueness constraint of the model (if any).
+* How to filter the rows on an incremental run
+* The unique key of the model (if any)
 
 ### Filtering rows on an incremental run
 
@@ -73,7 +73,9 @@ For more complex incremental models that make use of Common Table Expressions (C
 
 ### Defining a unique key (optional)
 
-A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, some or all of the columns for that row can be updated. If a duplicate row arrives, it can be ignored. Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
+A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
+
+Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
 <VersionBlock firstVersion="0.20" lastVersion="1.0">
 
@@ -83,9 +85,9 @@ This optional parameter for incremental models specifies a field that can unique
 
 <VersionBlock firstVersion="1.1">
 
-This optional parameter for incremental models specifies a field (or combination of fields) that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model, and it can be a list in addition to a single column name.
+This optional parameter for incremental models specifies a field (or combination of fields) that define the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
-The `unique_key` should be supplied in your model definition as a string representing a simple column or a list of single quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls. Nulls in these columns may cause the incremental table update to fail. Either ensure that each column has no nulls, or define a single-column surrogate key, for example with `[dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)`
+The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental table update may fail. Either ensure that each column has no nulls, or define a single-column surrogate key, for example with `[dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)`
 
 :::tip
 In cases where you need multiple columns in combination to uniquely identify each row, we recommend you pass these columns as a list (`unique_key = ['user_id', 'session_number']`), rather than a string expression (`unique_key = 'concat(user_id, session_number)'`).
@@ -101,10 +103,10 @@ Alternatively, you can define a single-column surrogate key first, for example w
 
 When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
 
-* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database and [incremental strategy](#about-incremental_strategy).
+* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database and [incremental strategy](#about-incremental_strategy) and [strategy specific configs](#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a `unique_key` with more than one row in either the existing database table or the new incremental rows, the incremental table update will fail. Your database and [incremental strategy](#about-incremental_strategy) will determine the specific error that you see, so if you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows.
+Please note that if there's a `unique_key` with more than one row in either the existing target table or the new incremental rows, the incremental model update will fail. Your database and [incremental strategy](#about-incremental_strategy) will determine the specific error that you see, so if you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows.
 
 :::info
 While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
