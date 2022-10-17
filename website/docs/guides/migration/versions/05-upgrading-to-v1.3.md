@@ -41,7 +41,7 @@ _GitHub discussion forthcoming_
 ## New and changed documentation
 
 - **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
-- Updates made to **[Metrics](building-a-dbt-project/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
+- Updates made to **[Metrics](build/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
 - Plus, a few related updates to **[exposure properties](exposure-properties)**: `config`, `label`, and `name` validation.
 - **[Custom `node_color`](/docs/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
 - Search for **[`Profiles.yml`](/docs/dbt-cli/configure-your-profile#advanced-customizing-a-profile-directory)** in the current working directory before `~/.dbt`
