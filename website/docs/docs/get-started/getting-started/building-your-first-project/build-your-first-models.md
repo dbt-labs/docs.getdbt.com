@@ -12,7 +12,7 @@ Now that you set up your sample project and had a successful run, you can get to
 
 2. Click **Create branch**, and name your branch `add-customers-model`.
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="img/create-branch-new-ide.png" title="Checkout a new branch" />
+    <Lightbox src="/img/create-branch-new-ide.png" title="Checkout a new branch" />
     </div>
 
 ## Build your first model
