@@ -19,7 +19,7 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=1.3.0", "<1.4.0"</code> in your dbt project <br />
 - Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api">Metadata API</a> in the integrated tool to import metric definitions <br />
-- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer">Getting started with the dbt Semantic Layer</a> blog <br />
+- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer">Understanding the components of the dbt Semantic Layer</a> blog <br />
 
 </VersionBlock>
 
@@ -31,7 +31,7 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=0.3.0", "<0.4.0"</code> in your dbt project <br />
 - Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api">Metadata API</a> in the integrated tool to import metric definitions <br />
-- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/getting-started-with-the-dbt-semantic-layer">Getting started with the dbt Semantic Layer</a> blog <br />
+- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer">Understanding the components of the dbt Semantic Layer</a> blog <br />
 
 </VersionBlock>
 
