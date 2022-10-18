@@ -41,7 +41,7 @@ We are _strongly_ committed to building a community where everyone can feel welc
 
 The dbt community started with people who weren't traditionally considered “technical”, didn't have ownership over technical systems, and were often left out of organizational decision-making. We came together to learn from each other, solve hard problems together, and to help build a new discipline where data folks have greater ownership over our own work. It really matters to us that everyone feels like they can ask questions and engage, no matter their professional or personal background.
 
-Technical forums have the potential to replicate harmful power structures, and can feel intimidating or hostile. We are working hard to create and sustain an inclusive environment through community-building, technological solutions, inclusive content, and diverse contributors. This is a long-term project, and we will continue to iterate and make improvements.
+Technical forums have the potential to replicate harmful power structures, and can feel intimidating or hostile. We're working hard to create and sustain an inclusive environment through community-building, technological solutions, inclusive content, and diverse contributors. This is a long-term project, and we'll continue to iterate and make improvements.
 
 If you have any ideas or feedback on how to make this space friendlier or more inclusive please let us know, either on the community Slack in the #community-strategy channel or via email at [community@dbtlabs.com](mailto:community@dbtlabs.com). We want to hear from you!
 
