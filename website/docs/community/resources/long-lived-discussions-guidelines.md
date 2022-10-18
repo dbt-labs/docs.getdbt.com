@@ -5,7 +5,7 @@ id: "forum-guidelines"
 
 ## What is the dbt Community Forum?
 
-[The dbt Community Forum](https://discourse.getdbt.com) is the platform for getting support with dbt as well as to have long-lived discussions about dbt, analytics engineering, and analytics. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day. The forum is different from the dbt Community Slack in a few key ways, most importantly it is:
+[The dbt Community Forum](https://discourse.getdbt.com) is the platform for getting support with dbt as well as to have long-lived discussions about dbt, analytics engineering, and analytics. It's a place for all of us to build a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day. The forum is different from the dbt Community Slack in a few key ways, most importantly it is:
 
 - **Asynchronous** and **long-lived** - sometimes conversations continue over weeks, months, and beyond.
 - **Intentional** - we recommend taking at least 5 to 10 minutes thinking about and shaping your initial post and any comments.
