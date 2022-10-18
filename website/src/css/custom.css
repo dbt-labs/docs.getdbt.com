@@ -1563,7 +1563,7 @@ section.discourse-forum-page {
 }
 .home section.from-the-community {
   margin-top: 0;
-  
+
 }
 
 .home .resource-section h2 {
@@ -1644,7 +1644,7 @@ section > h2:not(.resource-section) {
 
 .home .swiper .swiper-slide {
   height: unset;
-} 
+}
 
 .home .swiper.swiper-initialized {
   padding-right: 3rem;

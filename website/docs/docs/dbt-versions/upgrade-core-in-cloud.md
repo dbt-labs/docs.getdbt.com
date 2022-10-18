@@ -147,7 +147,7 @@ If you believe your project might be affected, read more details in the migratio
 <br></br>
 
 - Does your project define any custom schema tests?
-- Does your project use `adapter.dispatch` or the `spark_utils` package?
+- Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
 
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).

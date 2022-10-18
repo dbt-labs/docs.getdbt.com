@@ -7,7 +7,7 @@ sidebar_label: "Version control basics"
 
 # Version control basics
 
-When you develop in the command line interface (CLI) or Cloud  integrated development environment (IDE), you can leverage Git directly to version control your code. To use version control, make sure you are connected to a Git repository in the CLI or Cloud IDE. 
+When you develop in the command line interface (CLI) or Cloud integrated development environment (IDE), you can leverage Git directly to version control your code. To use version control, make sure you are connected to a Git repository in the CLI or Cloud IDE.
 
 You can create a separate branch to develop and make changes. The changes you make aren’t merged into the main branch unless it successfully passes tests. This helps keep the code organized and improves productivity by making the development process smooth.
 
@@ -51,12 +51,12 @@ You can perform git tasks with the git button in the Cloud IDE. The following ar
 
 ## Merge conflicts
 
-Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept. 
+Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept.
 
 Refer to [resolve merge conflicts](/docs/collaborate/git/resolve-merge-conflicts) to learn how to resolve merge conflicts.
 
 ## The .gitignore file
 
-dbt Labs recommends that you exclude files so they're not tracked by Git and won't slow down your dbt project. 
+dbt Labs recommends that you exclude files so they're not tracked by Git and won't slow down your dbt project.
 
 You can do this with a special file named [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) which is automatically included in your dbt project after you initialize it in dbt Cloud.  The `.gitignore` file must be placed at the root of your dbt project.

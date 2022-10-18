@@ -48,17 +48,18 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 
 ### Community Adapters
 
-| Data Platforms (click to view setup guide) |                                  |                                      |
-| ------------------------------------------ | -------------------------------- | ------------------------------------ |
-| [Athena](athena-setup)                     | [Hive](hive-setup)               | [SingleStore](singlestore-setup)     |
-| [Clickhouse](clickhouse-setup)             | [Impala](impala-setup)           | [SQLite](sqlite-setup)               |
-| [IBM DB2](ibmdb2-setup)                    | [iomete](iomete-setup)           | [SQL Server & Azure SQ](mssql-setup) |
-| [DuckDB](duckdb-setup)                     | [Layer](layer-setup)             | [Teradata](teradata-setup)           |
-| [Dremio](dremio-setup)                     | [Materialize](materialize-setup) | [TiDB](tidb-setup)                   |
-| [Exasol Analytics](exasol-setup)           | [MindsDB](mindsdb-setup)         | [Vertica](vertica-setup)             |
-| [Firebolt](firebolt-setup)                 | [MySQL](mysql-setup)             |                                      |
-| [AWS Glue](glue-setup)                     | [Oracle](oracle-setup)           |                                      |
-| [Greenplum](greenplum-setup)               | [Rockset](rockset-setup)         |                                      |
+| Data Platforms (click to view setup guide)      |                                 |                                   |                                                                   
+| ----------------------------------------------- | --------------------------------| ---------------------------------|
+| [Athena](athena-setup)                | [Hive](hive-setup)                        | [SingleStore](singlestore-setup)  |
+| [Clickhouse](clickhouse-setup)        | [Impala](impala-setup)                    | [SQLite](sqlite-setup)  |
+| [IBM DB2](ibmdb2-setup)               | [iomete](iomete-setup)                    | [SQL Server & Azure SQ](mssql-setup) |
+| [DuckDB](duckdb-setup)                | [Layer](layer-setup)                      | [AzureSynapse](azuresynapse-setup) |
+| [Dremio](dremio-setup)                | [Materialize](materialize-setup)          | [Teradata](teradata-setup)|
+| [Exasol Analytics](exasol-setup)      | [MindsDB](mindsdb-setup)                  | [TiDB](tidb-setup)|
+| [Firebold](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
+| [AWS Glue](glue-setup)                | [Oracle](oracle-setup)                    |
+| [Greenplum](greenplum-setup)          | [Rockset](rockset-setup)   
+
 
 ## Contributing to dbt-core adapters
 
