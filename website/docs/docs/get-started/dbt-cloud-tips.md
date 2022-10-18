@@ -17,7 +17,7 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 **Drag and drop**
 
-You can also drag and drop files in the file tree or in the editor. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right-clicking on the breadcrumb file.
+You can also drag and drop files in the file tree or in the editor. Use the file breadcrumb on the top of the IDE for quicker navigation. You can access adjacent files in the same file by right-clicking on the breadcrumb file.
 
 **Search across files**
 
