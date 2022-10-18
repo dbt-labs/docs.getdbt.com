@@ -43,7 +43,7 @@ The dbt community started with people who weren't traditionally considered “te
 
 Technical forums have the potential to replicate harmful power structures, and can feel intimidating or hostile. We're working hard to create and sustain an inclusive environment through community-building, technological solutions, inclusive content, and diverse contributors. This is a long-term project, and we'll continue to iterate and make improvements.
 
-If you have any ideas or feedback on how to make this space friendlier or more inclusive please let us know, either on the community Slack in the #community-strategy channel or via email at [community@dbtlabs.com](mailto:community@dbtlabs.com). We want to hear from you!
+If you have any ideas or feedback on how to make this space friendlier or more inclusive please let us know, either on the community Slack in the [#community-strategy](https://getdbt.slack.com/archives/C0171LNRS6S) channel or with [email](mailto:community@dbtlabs.com). We want to hear from you! 
 
 ## Following new and ongoing Discussions
 
