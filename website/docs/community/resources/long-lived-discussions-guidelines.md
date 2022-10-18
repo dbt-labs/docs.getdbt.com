@@ -45,7 +45,7 @@ Technical forums have the potential to replicate harmful power structures, and c
 
 If you have any ideas or feedback on how to make this space friendlier or more inclusive please let us know, either on the community Slack in the [#community-strategy](https://getdbt.slack.com/archives/C0171LNRS6S) channel or with [email](mailto:community@dbtlabs.com). We want to hear from you! 
 
-## Following new and ongoing Discussions
+## Following new and ongoing discussions
 
 The best way to stay up to date is to [browse the forum](https://discourse.getdbt.com/) directly. You can also Track or Watch specific threads or the whole category to receive updates on them without commenting.
 
