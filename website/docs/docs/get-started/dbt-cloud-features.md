@@ -30,7 +30,7 @@ With the Cloud IDE, you can:
 - Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips).
 
 ## IDE features
-The dbt Cloud IDE comes with features, including snappier performance and exciting enhancements to make it easy for you to develop, build, compile, run and test data models!  Check out the some of the features below to learn more:
+The dbt Cloud IDE comes with features, including better performance and exciting enhancements, making it easier for you to develop, build, compile, run and test data models. Check out the some of the features below to learn more:
 
 
 | Feature  |  Info | Available in the IDE  |
