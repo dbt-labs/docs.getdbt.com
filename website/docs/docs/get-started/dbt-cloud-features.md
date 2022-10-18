@@ -42,7 +42,7 @@ The dbt Cloud IDE comes with features, including better performance and exciting
 | **Multiple selections**  | You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.<br /><br /> - Option-Command-Down arrow<br /> - Option-Command-Up arrow<br /> - Press Option and click on an area  |  ✅ |
 | **Formatting** | Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/). | _Coming soon &mdash; November 2022_  |
 | **Git diff view**  | Ability to see what has been changed in a file before you make a pull request  | _Coming soon &mdash; November 2022_  |
-| **dbt autocomplete**  |  There are four brand new types of autocomplete features to help you develop faster:<br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var  |  _Coming soon &mdash; November 2022_   |
+| **dbt autocomplete**  |  There are four new types of autocomplete features to help you develop faster:<br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var  |  _Coming soon &mdash; November 2022_   |
 | **Dark mode**  | Use dark mode in the Cloud IDE for a great viewing experience in low-light environments. | _Coming soon &mdash; November 2022_    |
 
 **Note**: Cloud IDE beta users may have these features made available earlier and to stay up to date with any new features, check out our [what what](URL).
