@@ -31,7 +31,7 @@ The forum is broken down into three categories:
     - ✅ How do I set up CI in dbt Cloud on GitHub?
     - ❌ What is the best way to do marketing attribution? More general Discussions like this are perfect for the [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21) category
 - [Show and Tell](https://discourse.getdbt.com/c/show-and-tell/22)
-  - This is the place to show off all of the cool things you are doing in dbt. Whether it’s a new macro, design pattern, or package, post here to show the community what you are up to!
+  - This is the place to show off all the cool things you are doing in dbt. Whether it’s a new macro, design pattern, or package, post here to show the community what you are up to!
 - [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21)
   - Share anything you’re thinking about that has to do with dbt or analytics engineering! This is a great place to jot down some thoughts to share with the community or spark a discussion on a topic that’s currently interesting you.
 
