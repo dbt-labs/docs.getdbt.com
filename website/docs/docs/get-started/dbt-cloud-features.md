@@ -26,7 +26,7 @@ With the Cloud IDE, you can:
 - Create and test Python models:
     * You can `compile` Python models to see the full function that gets executed in your data platform
     * You can see Python models in DAG in dbt version 1.3 and higher
-       * You cannot preview python models currently.
+    * You can't preview python models, currently
 - Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips).
 
 ## IDE features
