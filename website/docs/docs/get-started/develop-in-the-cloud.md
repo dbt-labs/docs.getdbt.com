@@ -48,7 +48,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 - Unsaved, local code &mdash; Any code you write is automatically available from your browser’s storage. You can see your changes but will lose them if you switch branches or browsers (another device or browser).
 - Saved but uncommitted code &mdash; When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
-- Committed code &mdash; This is stored in the branch with git provider and you are able to check out other (remote) branches.
+- Committed code &mdash; This is stored in the branch with your git provider and you can check out other (remote) branches.
 
 
 </td></tr> </table>
