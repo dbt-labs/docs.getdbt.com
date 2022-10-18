@@ -126,7 +126,7 @@ Now that you've set up your development environment and credentails, you should 
 
 ## Build, compile, and run projects
 
-You can *build*, *compile*, *run* *, and test* dbt projects by using the command bar. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations.
+You can *build*, *compile*, *run* *, and test* dbt projects by using the command bar. The Cloud IDE will update in real time when you run models, tests, seeds, and operations.
 
 If a model or test fails, you can review the logs to find and fix the issue.
 
