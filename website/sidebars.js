@@ -43,6 +43,7 @@ const sidebarSettings = {
               ],
             },
             "docs/get-started/dbt-cloud-features",
+            "docs/get-started/connect-your-database",
             "docs/get-started/develop-in-the-cloud",
             "docs/get-started/dbt-cloud-tips",
           ],
