@@ -301,6 +301,17 @@ const sidebarSettings = {
     },
     {
       type: "category",
+      label: "Use the dbt Semantic Layer",
+      collapsed: true,
+      items: [
+        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
+        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/avail-sl-integrations",
+      ],
+    }, 
+    {
+      type: "category",
       label: "Available dbt versions",
       items: [
         "docs/dbt-versions/core",
