@@ -143,3 +143,30 @@ You can define your metrics in `.yml` files nested under a metrics key and to de
 Review our helpful metrics video below, which explains what metrics are, why they're important and how you can get started:
     
 <LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />    
+
+## Related questions
+    
+<details>
+  <summary>How are you storing my data?</summary>
+  <div>
+    <div>The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.</div>
+  </div>
+</details>
+<details><summary>Is the dbt Semantic Layer open source?</summary>
+  <div>
+    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not open source. <br></br><br></br>
+      
+During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). <br></br><br></br>
+      
+Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition.<br></br><br></br>
+     
+Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
+</details>
+<details>
+    <summary>Is there a dbt Semantic Layer discusssion hub?</summary>
+  <div>
+    <div>Yes absolutely! Join the <a href="https://getdbt.slack.com/archives/C046L0VTVR6">#dbt-cloud-semantic-layer</a> slack channel and <a href="getdbt.slack.com">dbt Slack community</a> for all things related to the dbt Semantic Layer. 
+    </div>
+  </div>
+</details>
+      <br></br>   
