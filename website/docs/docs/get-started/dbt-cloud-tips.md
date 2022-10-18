@@ -7,7 +7,7 @@ sidebar_label: "dbt Cloud tips"
 
 # dbt Cloud tips
 
-The Cloud IDE is fully equipped with keyboard shortcuts, features, and development tips to help you to work like a dbt Cloud power user!  Use this Cloud IDE cheat sheet to help you save time and quickly reference.
+The Cloud IDE provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. Use this Cloud IDE cheat sheet to help you quickly reference some common operations.
 
 ## Most popular
 
