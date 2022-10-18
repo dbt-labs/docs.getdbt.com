@@ -16,6 +16,6 @@ Some of the improvements include:
 
 - Improved Cloud IDE startup time (starting the IDE), interaction time (saving and committing), and reliability.
 - Better organization and navigation with features like drag and drop of files, breadcrumb, build button drop-down, and more.
-- You can use new features like auto-format your file, auto-complete model names, and git diff view to see changes made before you make a pull request.
+- You can use new features like auto-format your file, auto-complete model names, and git diff view to see your changes before making a pull request.
 
 Read more about the new [Cloud IDE features](/docs/get-started/dbt-cloud-features) and check out [New and improved Cloud IDE](www.getdbt.com/blog/new-improved-cloud-ide) blog for more info!
