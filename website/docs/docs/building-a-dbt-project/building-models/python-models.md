@@ -10,7 +10,7 @@ We encourage you to:
 - Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.
 - Contribute to [best practices for developing Python models in dbt](https://github.com/dbt-labs/docs.getdbt.com/discussions/1811).
 - Weigh in on [next steps for Python models, beyond v1.3](https://github.com/dbt-labs/dbt-core/discussions/5742).
-- Join the **#beta-feedback-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
+- Join the **#dbt-core-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 
 Below, you'll see sections entitled "❓ **Our questions**." We are excited to have released a first narrow set of functionality in v1.3, which will solve real use cases. We also know this is a first step into a much wider field of possibility. We don't pretend to have all the answers. We're excited to keep developing our opinionated recommendations and next steps for product development—and we want your help. Comment in the GitHub discussions; leave thoughts in Slack; bring up dbt + Python in casual conversation with colleagues and friends.
 :::
