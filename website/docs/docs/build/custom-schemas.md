@@ -140,7 +140,6 @@ The following context methods _are_ available in the `generate_schema_name` macr
 | Other macros in your project | Macro | ✅ |
 | Other macros in your packages | Macro | ✅ |
 
-
 #### Which vars are available in generate_schema_name?
 
 <Changelog>

@@ -263,7 +263,6 @@ Additionally, the `ref` function encourages you to write modular transformations
 
 You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for more information.
 
-
 ## Additional FAQs
 <FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />
 <FAQ src="Models/configurable-model-path" />

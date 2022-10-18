@@ -91,5 +91,5 @@ You can make multiple selections for small and simultaneous edits. The below com
 
 ## Related docs
 
-- [Guides](/docs/get-started/getting-started/overview)
+- [Getting started](/docs/get-started/getting-started/overview)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
