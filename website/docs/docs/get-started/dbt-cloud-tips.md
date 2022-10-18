@@ -48,7 +48,7 @@ There are default keyboard shortcuts that can help make development more product
 - Command-Enter or Control-Enter to Preview
 - Command-Shift-Enter or Control-Shift-Enter to Compile
 - Highlight a portion of code and use the above shortcuts to Preview or Compile code
-- Type double underscore (__) in the IDE to reveal a list of dbt functions
+- Enter two underscores (__) in the IDE to reveal a list of dbt functions
 
 ## Multiple selections
 
