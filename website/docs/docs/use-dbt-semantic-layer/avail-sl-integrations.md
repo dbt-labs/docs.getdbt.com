@@ -7,7 +7,7 @@ sidebar_label: "Available integrations"
 
 # Available integrations
 
-A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer and dbt metrics, from Business Intelligence tools to notebooks, data catalogs, and more.
+A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer and dbt metrics &mdash; from Business Intelligence tools to notebooks, data catalogs, and more.
 
 There are two categories of partner integrations: 
 
