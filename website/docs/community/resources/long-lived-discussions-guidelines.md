@@ -29,7 +29,7 @@ The forum is broken down into three categories:
   - This category is for questions which can plausibly have a _single correct answer_.
     - ✅ How do I debug this Jinja error?
     - ✅ How do I set up CI in dbt Cloud on GitHub?
-    - ❌ What is the best way to do marketing attribution? (More general Discussions like this are perfect for the [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21) category)
+    - ❌ What is the best way to do marketing attribution? More general Discussions like this are perfect for the [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21) category
 - [Show and Tell](https://discourse.getdbt.com/c/show-and-tell/22)
   - This is the place to show off all of the cool things you are doing in dbt. Whether it’s a new macro, design pattern, or package, post here to show the community what you are up to!
 - [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21)
