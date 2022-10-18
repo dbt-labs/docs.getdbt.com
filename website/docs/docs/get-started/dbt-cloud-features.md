@@ -8,7 +8,7 @@ id: "dbt-cloud-features"
 
 :::info 📌
 
-The new and refreshed Cloud IDE will be open to General Availability by end of October 2022. The new Cloud IDE and includes performance upgrades, ergonomics improvements, and some delightful enhancements!
+The new and refreshed Cloud IDE will be open to General Availability by end of October 2022. The new Cloud IDE includes performance upgrades, ergonomics improvements, and some delightful enhancements!
 
 Review the [new Cloud IDE features](#ide-features) for more info!
 
