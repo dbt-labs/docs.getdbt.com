@@ -66,7 +66,7 @@ Some important considerations to know about using the dbt Semantic Layer during 
 
 - Support for Snowflake data platform only (_additional data platforms coming soon_)
 - Support for the deployment environment only (_development experience coming soon_)
-- No support if using environment variables for job/environment (_coming soon_)
+- No support for jobs/environments using environment variables (_coming soon_)
 
 :::
 
