@@ -9,7 +9,7 @@ sidebar_label: Develop in the Cloud
 
 The new and refreshed Cloud IDE will be open to General Availability by end of October 2022. The new Cloud IDE and includes performance upgrades, ergonomics improvements, and some delightful enhancements!
 
-Review the [new Cloud IDE features](/docs/get-started/dbt-cloud-features#ide-features) and [our release blog](www.getdbt.com/blog/new-improved-cloud-ide) to learn more.
+Review the [new Cloud IDE features](/docs/get-started/dbt-cloud-features#ide-features) to learn more.
 
 :::
 
@@ -108,9 +108,9 @@ Now that you've set up your development environment and credentails, you should 
 1. Log in with your [dbt Cloud account](https://cloud.getdbt.com/). If you don't have one, [sign up](https://www.getdbt.com/signup/) for an account for free.
 2. Click **Develop** at the top of the page
 3. Make sure you've already initialized your project
-4. Start developing and use the image and guide below to familiarize yourself with the Cloud IDE and its features:
+4. Start developing and use the image and guide below to familiarize yourself with the Cloud IDE and its [features](/docs/get-started/dbt-cloud-features#ide-features):
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/refresh-ide.png" width="100" height="100" title="Cloud IDE overview"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/refresh-ide.png" width="200" height="200" title="Cloud IDE overview"/>
 
 | Number  | Feature  | Info  |
 |---|---|---|
@@ -119,10 +119,11 @@ Now that you've set up your development environment and credentails, you should 
 | 3.  | IDE git button  |  The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project and you can execute git commands directly in the IDE. |
 | 4. | Command bar | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History** on the left of the bar.
 | 5. | Status bar | This area provides you with useful information about your IDE and project status. You also have additional options like restarting or [recloning your repo](/docs/collaborate/git/version-control-basics).|
-| 6. | Format <br></br>Preview <br></br>Compile <br></br>Build |  This is where you can format/preview/compile or build your dbt project, as well as see the DAG. The new **Format** feature format your file and is powered by [sqlfmt](http://sqlfmt.com/).|
+| 6. | Preview <br></br>Compile <br></br>Build |  This is where you can preview, compile or build your dbt project, as well as see the results and the DAG. |
 | 7. | Lineage tab | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. You can access files in the **Lineage** tab by double-clicking on a particular model. Expand the DAG into fullscreen to view the DAG view differently. Note: The default view is `+model+`, however, you can change it to `2+model+2`. |
-| 8. |Change branches and view documentation | Change branches in fewer clicks and focus on developing. You can generate and view your [documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.|
+| 8. | Change branches and view documentation | Change branches in fewer clicks and focus on developing. You can generate and view your [documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.|
 | 9. | File state indicators | The file state indicators will indicate and track any action or changed made in your project. The indicators **M, U, and  •** appear to the right of your file or folder name, and also under the **Changes** section. |
+| 10. | Format button | This is where you can format your dbt project code. The new **Format** button formats your file and is powered by [sqlfmt](http://sqlfmt.com/).|
 
 ## Build, compile, and run projects
 
