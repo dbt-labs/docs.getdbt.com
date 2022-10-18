@@ -46,7 +46,7 @@ With a few exceptions [^1], all adapters listed below can be installed from PyPI
 
 ### Verified by dbt Labs
 
-In order to provide a more consistent and reliable experience, dbt Labs now has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience and maintenance. These adapters earn a "Verified" designation so that users can have a certain level of trust and expectation when they use them. To learn more see [Verifying a new adapter](/guides/advanced/adapter-development/7-verifying-a-new-adapter).
+In order to provide a more consistent and reliable experience, dbt Labs has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience, and maintenance. These adapters earn a **Verified** designation so that users can have a certain level of trust and expectation when they use them. To learn more, see [Verifying a new adapter](/guides/advanced/adapter-development/7-verifying-a-new-adapter).
 
 We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please note that these community maintainers are intrepid volunteers who donate their time and effort &mdash; so be kind, understanding, and help out where you can!
 
