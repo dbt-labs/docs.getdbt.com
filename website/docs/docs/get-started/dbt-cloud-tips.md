@@ -71,5 +71,5 @@ There are default keyboard shortcuts that can help make development more product
 
 ## Related docs
 
-- [Guides](/docs/get-started/getting-started/overview)
+- [Getting started](/docs/get-started/getting-started/overview)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
