@@ -48,17 +48,17 @@ With a few exceptions [^1], all adapters listed below can be installed from PyPI
 
 In order to provide a more consistent and reliable experience, dbt Labs has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience, and maintenance. These adapters earn a **Verified** designation so that users can have a certain level of trust and expectation when they use them. To learn more, see [Verifying a new adapter](/guides/advanced/adapter-development/7-verifying-a-new-adapter).
 
-We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please note that these community maintainers are intrepid volunteers who donate their time and effort &mdash; so be kind, understanding, and help out where you can!
+We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please be mindful that these community maintainers are intrepid volunteers who donate their time and effort &mdash; so be kind, understanding, and help out where you can!
 
 ### Maintainers
 
-Who made and maintains and adapter is certainly relevant, but we recommend using an adapter's verification status to determine quality and health of an adapter. So far we have three categories of maintainers:
+Who made and maintains an adapter is certainly relevant, but we recommend using an adapter's verification status to determine the quality and health of an adapter. So far there are three categories of maintainers:
 
 | Supported by | Maintained By                                                                                                                                                                                                                                  |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](7-verifying-a-new-adapter#why-verify-an-adapter) |
-| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology                                                                                                                     |
-| Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                                                                                                                                           |
+| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.                                                                                                                     |
+| Community    | These adapter plugins are contributed and maintained by members of the community. 🌱                                                                                                                                                           |
 
 
 ## Contributing to dbt-core adapters
