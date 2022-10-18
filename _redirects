@@ -519,3 +519,6 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /community/maintaining-a-channel /community/resources/maintaining-a-channel 301
 /docs/contributing/oss-expectations /community/resources/oss-expectations 301
 /docs/contributing/slack-rules-of-the-road /community/resources/slack-rules-of-the-road 301
+
+/blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
+
