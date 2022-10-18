@@ -22,8 +22,8 @@ With the Cloud IDE, you can:
 - Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips)
 - Use dark mode when you develop in the Cloud IDE.
 
-
 ### IDE features
+
 The dbt Cloud IDE includes features that make it easier for you to develop, build, compile, run, and test your data models. Check out some of the features below to learn more:
 
 **Find and replace**
@@ -51,9 +51,10 @@ Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.co
 **File state indicators**
 
 We have added file state indicators to make it clear when changes or actions have been made. The indicators M, U, and • appear to the right of your file or folder name and indicate the actions performed:
-   * Unsaved (•) &mdash; The IDE detects unsaved changes to your file/folder
-  * Modification (M) &mdash; The IDE detects a modification of existing files/folders have saved changes file or folder
-  * Untracked (U) &mdash; The IDE detects changes made to new files or renamed files
+
+- Unsaved (•) &mdash; The IDE detects unsaved changes to your file/folder
+- Modification (M) &mdash; The IDE detects a modification of existing files/folders have saved changes file or folder
+- Untracked (U) &mdash; The IDE detects changes made to new files or renamed files
   
 **Build, test, and run code**
 
@@ -71,11 +72,12 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
 
-  * Option-Command-Down arrow
-  * Option-Command-Up arrow
-  * Press Option and click on an area
+- Option-Command-Down arrow
+- Option-Command-Up arrow
+- Press Option and click on an area
 
 ## Related docs
+
 - [dbt Cloud tips](/docs/get-started/dbt-cloud-tips)
 - [Develop in the Cloud](docs/get-started/develop-in-the-cloud)
 - [Guides](/docs/get-started/getting-started/overview)
