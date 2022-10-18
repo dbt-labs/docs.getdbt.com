@@ -53,4 +53,4 @@ The dbt Cloud IDE comes with features, including better performance and exciting
 - [dbt Cloud tips](/docs/get-started/dbt-cloud-tips)
 - [Develop in the Cloud](docs/get-started/develop-in-the-cloud)
 - [Guides](/docs/get-started/getting-started/overview)
-- [New and improved Cloud IDE](www.getdbt.com/blog/new-improved-cloud-ide)
+
