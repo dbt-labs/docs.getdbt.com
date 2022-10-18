@@ -18,16 +18,16 @@ The dbt Cloud [integrated development environment (IDE)](/docs/get-started/devel
 
 With the Cloud IDE, you can:
 
-- Write modular SQL models with `select` statements and the [ref()](/reference/dbt-jinja-functions/ref) function.
-- Compile dbt code into SQL and execute it against your database directly.
-- Test every model before deploying them to production.
-- Generate and view documentation of your dbt project.
-- Leverage [git and version-control your code](/docs/collaborate/git/version-control-basics) from your browser with a couple of clicks.
+- Write modular SQL models with `select` statements and the [ref()](/reference/dbt-jinja-functions/ref) function
+- Compile dbt code into SQL and execute it against your database directly
+- Test every model before deploying them to production
+- Generate and view documentation of your dbt project
+- Leverage [git and version-control your code](/docs/collaborate/git/version-control-basics) from your browser with a couple of clicks
 - Create and test Python models:
     * You can `compile` Python models to see the full function that gets executed in your data platform
     * You can see Python models in DAG in dbt version 1.3 and higher
     * You can't preview python models, currently
-- Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips).
+- Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips)
 
 ## IDE features
 The dbt Cloud IDE comes with features, including better performance and exciting enhancements, making it easier for you to develop, build, compile, run and test data models. Check out the some of the features below to learn more:
