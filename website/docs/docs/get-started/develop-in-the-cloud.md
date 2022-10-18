@@ -114,7 +114,7 @@ Now that you've set up your development environment and credentails, you should 
 
 | Number  | Feature  | Info  |
 |---|---|---|
-| 1.  | File Tree  | The file tree allows you to organize your project and manage your files and folders. Click the three-dot menu associated with the file or folder to create, rename, or delete it. Note: This function is unavailable if you’re on the **Main** branch.   |
+| 1.  | File Tree  | The file tree allows you to organize your project and manage your files and folders. Click the three-dot menu associated with the file or folder to create, rename, or delete it. Note: This function is unavailable if you’re on the **main** branch.   |
 | 2.  | Editor  | This is where you edit your files. You can use the tab for each editor to position it exactly where you need it.  |
 | 3.  | IDE git button  |  The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project and you can execute git commands directly in the IDE. |
 | 4. | Command bar | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History** on the left of the bar.
