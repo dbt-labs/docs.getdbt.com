@@ -45,7 +45,7 @@ The dbt Cloud IDE comes with features, including better performance and exciting
 | **dbt autocomplete**  |  There are four new types of autocomplete features to help you develop faster:<br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var  |  _Coming soon &mdash; November 2022_   |
 | **Dark mode**  | Use dark mode in the Cloud IDE for a great viewing experience in low-light environments. | _Coming soon &mdash; November 2022_    |
 
-**Note**: Cloud IDE beta users may have these features made available earlier and to stay up to date with any new features, check out the [our release blog](www.getdbt.com/blog/new-improved-cloud-ide).
+**Note**: Cloud IDE beta users may have these features made available earlier.
 
 
 
