@@ -52,7 +52,7 @@ There are default keyboard shortcuts that can help make development more product
 
 ## Multiple selections
 
-You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
+You can make multiple selections for small and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
 
 - Option-Command-Down  arrow
 - Option-Command-Up arrow
