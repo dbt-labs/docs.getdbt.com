@@ -13,7 +13,7 @@ The Cloud IDE provides keyboard shortcuts, features, and development tips to hel
 
 **Organize tabs**
 
-You can move your tabs around to reorganize your work in the IDE. You can also right-click on a tab to close multiple tabs or view and select a list of actions to take. Right click in the editor to access other options, including text wrap.
+You can move your tabs around to reorganize your work in the IDE. You can also right-click on a tab to close multiple tabs or view and select a list of actions to take. Right-click in the editor to access other options, including text wrap.
 
 **Drag and drop**
 
