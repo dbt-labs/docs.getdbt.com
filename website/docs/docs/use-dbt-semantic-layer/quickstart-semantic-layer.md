@@ -264,7 +264,7 @@ If you're encountering some issues when defining your metrics or setting up the 
 <details>
   <summary>How are you storing my data?</summary>
   <div>
-    <div>dbt does not store or cache your data &mdash; it temporarily ingests the data from the cloud data platform, passes it to the connecting tool, and then drops the data.</div>
+    <div>The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.</div>
   </div>
 </details>
 <details><summary>Is the dbt Semantic Layer open source?</summary>
