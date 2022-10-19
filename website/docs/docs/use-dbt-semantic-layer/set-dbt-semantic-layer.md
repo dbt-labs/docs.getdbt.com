@@ -11,7 +11,7 @@ With the dbt Semantic Layer, you'll be able to centrally define business metrics
 
 Before you set up the dbt Semantic Layer, make sure you meet the following:
 
-<VersionBlock firstVersion="1.3" >
+<VersionBlock firstVersion="1.3">
 
 - Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America <br />
 - Have both your production and development environments running dbt version 1.3 or higher <br />
@@ -89,9 +89,12 @@ Note  - It is _not_ recommended that you use your dbt Cloud credentials due to e
 - Add the items above to the relevant fields in your integration tool
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" title="Set up dbt Semantic Layer in dbt Cloud" />
+
  
+
 ## Related docs
- 
+
+
 - [Integrated partner tools](https://www.getdbt.com/product/semantic-layer-integrations) for info on the different integration partners and their documentation
 - [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) page for more information on plan availability
 - [dbt metrics](/docs/build/metrics) for in-depth detail on attributes, properties, filters, and how to define and query metrics
