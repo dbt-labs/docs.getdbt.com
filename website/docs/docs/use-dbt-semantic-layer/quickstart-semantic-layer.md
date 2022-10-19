@@ -294,7 +294,7 @@ Developer accounts will be able to query the Proxy Server using SQL, but will no
 <details>
   <summary>Ephemeral Models - Object does not exist or is not authorized</summary>
   <div>
-    <div>Metrics cannot be defined on <a href="https://docs.getdbt.com/docs/build/metrics">ephemeral models</a> because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you'll likely see this error message:
+    <div>Metrics cannot be defined on <a href="https://docs.getdbt.com/docs/build/materializations#ephemeral">ephemeral models</a> because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you'll likely see this error message:
 
  <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code><br></br>
 
