@@ -502,6 +502,7 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /guides/getting-started/learning-more/getting-started-dbt-core /docs/get-started/getting-started-dbt-core 301
 /guides/getting-started/learning-more/refactoring-legacy-sql /docs/get-started/learning-more/refactoring-legacy-sql 301
 /guides/getting-started/learning-more/using-jinja /docs/get-started/learning-more/using-jinja 301
+
 # ide ia redirects
 /docs/dbt-cloud/cloud-ide/the-dbt-ide  /docs/getting-started/dbt-cloud-features 301!
 /docs/dbt-cloud/cloud-ide/handling-merge-conflicts  /docs/collaborate/git/resolve-merge-conflicts 301!
@@ -521,4 +522,5 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /docs/contributing/slack-rules-of-the-road /community/resources/slack-rules-of-the-road 301
 
 /blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
+/docs/getting-started/develop-in-the-cloud#creating-a-development-environment  /docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide 301
 
