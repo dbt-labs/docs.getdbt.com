@@ -163,20 +163,20 @@ git --version
 Assuming both are availble in your system, then you can clone the example repository using your method of choice:
 
 <details open>
-<summary>SSH</summary>
+<summary>HTTPS</summary>
 
 ```shell
-git clone git@github.com:dbt-labs/demo-python-blog.git
+git clone https://github.com/dbt-labs/demo-python-blog.git
 cd demo-python-blog
 ```
 
 </details>
 
 <details>
-<summary>HTTPS</summary>
+<summary>SSH</summary>
 
 ```shell
-git clone https://github.com/dbt-labs/demo-python-blog.git
+git clone git@github.com:dbt-labs/demo-python-blog.git
 cd demo-python-blog
 ```
 
