@@ -243,11 +243,17 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 
 ## Set up dbt Semantic Layer
 
-Before continuing, you must have a multi-tenant dbt Cloud account hosted in North America to set up the dbt Semantic Layer in dbt Cloud.  Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access to the Metadata API.
+Before continuing, you must have a multi-tenant dbt Cloud account hosted in North America to set up the dbt Semantic Layer in dbt Cloud. 
+
+  * Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated
+    partner tool to import metric definition. 
+  * Developer accounts will be able to query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access
+    to the Metadata API.
 
 To query your dbt metrics in an integrated partner tool, you need to [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) in dbt Cloud to connect with your integration tool:
 
 1. In your dbt Cloud account, go to **Account Settings** and then **Service Tokens** to create a new [service account API token](docs/dbt-cloud-apis/service-tokens). 
+    * Permissions for service account tokens depend on your integration tool of choice. Review the [integration partners documentation](https://www.getdbt.com/product/semantic-layer-integrations) to clarify what permission sets you need.
 2. You won't be able to see your token again so we recommend you copy it somewhere safe.
 3. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
 4. In the upper right of the page, click **Settings** and then **Edit**.
