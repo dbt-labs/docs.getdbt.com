@@ -1,7 +1,7 @@
 ---
 title: "Stronger together: Python, dataframes, and SQL"
 description: "Going polyglot is a major next step in the journey of dbt Core. It expands possibilities and also the potential for confusion right along with it. SQL, dataframes, and Python are stronger together and polyglot dbt allows informed practitioners to choose when to use each."
-slug: polyglot-dbt-python-dataframes-and-sql
+slug: polyglot-dbt-python-dataframes-sql
 
 authors: [doug_beatty]
 
@@ -18,7 +18,7 @@ For years working in data and analytics engineering roles, I treasured the daily
 
 So I couldn’t be more excited about dbt’s polyglot capabilities arriving in dbt Core 1.3. This release brings Python dataframe libraries that are crucial to data scientists and enables general-purpose Python but still uses a shared database for reading and writing data sets. Analytics engineers and data scientists are stronger together, and I can’t wait to work side-by-side in the same repo with all my data scientist friends.
 
-Going polyglot is a major next step in the journey of dbt Core. While it expands possibilities, we  also recognize the potential for confusion. When combined with intentionality SQL, dataframes, and Python are also stronger together. Polyglot dbt allows informed practitioners to choose the language that best fits your use case.
+Going polyglot is a major next step in the journey of dbt Core. While it expands possibilities, we  also recognize the potential for confusion. When combined in an intentional manner, SQL, dataframes, and Python are also stronger together. Polyglot dbt allows informed practitioners to choose the language that best fits your use case.
 
 In this post, we’ll give you your hands-on experience and seed your imagination with potential applications. We’ll walk you through a [demo](https://github.com/dbt-labs/demo-python-blog) that showcases string parsing - one simple way that Python can be folded into a dbt project.
 
