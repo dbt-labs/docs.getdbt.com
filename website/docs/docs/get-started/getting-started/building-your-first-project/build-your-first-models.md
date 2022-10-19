@@ -11,9 +11,9 @@ Now that you set up your sample project and had a successful run, you can get to
 1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
 
 2. Click **Create branch**, and name your branch `add-customers-model`.
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/checkout-branch-dbt-cloud.png" title="Checkout a new branch" />
-    </div>
+  
+    <Lightbox src="/img/create-branch-new-ide.png" title="Checkout a new branch" />
+
 
 ## Build your first model
 
@@ -24,10 +24,7 @@ Now that you set up your sample project and had a successful run, you can get to
 
     <Snippet src="tutorial-sql-query" />
 
-5. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see three models under DETAILS:
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/first-model-dbt-cloud.png" title="A successful run with dbt Cloud" />
-    </div>
+5. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see three models under DETAILS.
 
 In the future, you would connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 

@@ -53,7 +53,7 @@ const sidebarSettings = {
           label: "Get started with dbt Core",
           collapsed: true,
           items: [
-          "docs/get-started/getting-started-dbt-core",
+            "docs/get-started/getting-started-dbt-core",
             {
               type: "category",
               label: "Install dbt Core",
@@ -301,6 +301,17 @@ const sidebarSettings = {
     },
     {
       type: "category",
+      label: "Use the dbt Semantic Layer",
+      collapsed: true,
+      items: [
+        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
+        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/avail-sl-integrations",
+      ],
+    }, 
+    {
+      type: "category",
       label: "Available dbt versions",
       items: [
         "docs/dbt-versions/core",
@@ -348,9 +359,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "dbt Cloud IDE",
-      items: [
-        "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-      ],
+      items: ["docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide"],
     },
     {
       type: "category",
@@ -381,6 +390,7 @@ const sidebarSettings = {
       label: "Project configs",
       items: [
         "reference/dbt_project.yml",
+        "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
         "reference/project-configs/clean-targets",
@@ -792,23 +802,23 @@ const sidebarSettings = {
             },
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Advanced",
+      items: [
         {
           type: "category",
-          label: "Advanced",
+          label: "Adapter development",
           items: [
-            {
-              type: "category",
-              label: "Adapter development",
-              items: [
-                "guides/advanced/adapter-development/1-what-are-adapters",
-                "guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter",
-                "guides/advanced/adapter-development/3-building-a-new-adapter",
-                "guides/advanced/adapter-development/4-testing-a-new-adapter",
-                "guides/advanced/adapter-development/5-documenting-a-new-adapter",
-                "guides/advanced/adapter-development/6-promoting-a-new-adapter",
-                "guides/advanced/adapter-development/7-verifying-a-new-adapter",
-              ],
-            },
+            "guides/advanced/adapter-development/1-what-are-adapters",
+            "guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter",
+            "guides/advanced/adapter-development/3-building-a-new-adapter",
+            "guides/advanced/adapter-development/4-testing-a-new-adapter",
+            "guides/advanced/adapter-development/5-documenting-a-new-adapter",
+            "guides/advanced/adapter-development/6-promoting-a-new-adapter",
+            "guides/advanced/adapter-development/7-verifying-a-new-adapter",
           ],
         },
       ],

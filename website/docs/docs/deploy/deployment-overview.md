@@ -41,7 +41,7 @@ If you’re interested in learning more about an Enterprise plan, please [contac
 
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
 
-* Installing the [dbt Cloud Provider](https://registry.astronomer.io/providers/dbt-cloud) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud. See an [example airflow DAG](https://registry.astronomer.io/dags/example-dbt-cloud) to get started!
+* Installing the [dbt Cloud Provider](https://registry.astronomer.io/providers/dbt-cloud) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud.
 
 <Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
 <Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
@@ -72,4 +72,3 @@ Cron is a decent way to schedule bash commands. However, while it may seem like 
 
 ## Related docs
 - [What are the dbt commands you run in your production deployment of dbt?](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366)
->>>>>>> next
