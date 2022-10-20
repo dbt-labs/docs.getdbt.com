@@ -3,7 +3,7 @@ title: Merges
 id: 5-merges
 ---
 
-dbt has a concept called [materialization](/docs/building-a-dbt-project/building-models/materializations), which determines how a model is physically or logically represented in the warehouse. `INSERT`s, `UPDATE`s, and `DELETE`s will typically be accomplished using <Term id='table'>table</Term> or <Term id='view'>view</Term> materializations. For incremental workloads accomplished via commands like `MERGE` or `UPSERT`, dbt has a particular materialization called [incremental](/docs/building-a-dbt-project/building-models/configuring-incremental-models). The incremental materialization is specifically used to handle incremental loads and updates to a table without recreating the entire table from scratch on every run.
+dbt has a concept called [materialization](/docs/build/materializations), which determines how a model is physically or logically represented in the warehouse. `INSERT`s, `UPDATE`s, and `DELETE`s will typically be accomplished using <Term id='table'>table</Term> or <Term id='view'>view</Term> materializations. For incremental workloads accomplished via commands like `MERGE` or `UPSERT`, dbt has a particular materialization called [incremental](/docs/build/incremental-models). The incremental materialization is specifically used to handle incremental loads and updates to a table without recreating the entire table from scratch on every run.
 
 ## Step 1: Map the MERGE like an INSERT/UPDATE to start
 
@@ -108,7 +108,7 @@ The three configuration fields in this example are the most important ones.
 
 - Setting `materialized='incremental'` tells dbt to apply UPSERT logic to the target table.
 - The `unique_key` should be a primary key of the target table. This is used to match records with the existing table.
-- `incremental_strategy` here is set to MERGE any existing rows in the target table with a value for the `unique_key` which matches the incoming batch of data. There are [various incremental strategies](docs/building-a-dbt-project/building-models/configuring-incremental-models#about-incremental_strategy) for different situations and warehouses.
+- `incremental_strategy` here is set to MERGE any existing rows in the target table with a value for the `unique_key` which matches the incoming batch of data. There are [various incremental strategies](/docs/build/incremental-models#about-incremental_strategy) for different situations and warehouses.
 
 The bulk of the work in converting a model to an incremental materialization comes in determining how the logic should change for incremental loads versus full backfills or initial loads. dbt offers a special macro, `is_incremental()`, which evaluates false for initial loads or for backfills (called full refreshes in dbt parlance), but true for incremental loads.
 
