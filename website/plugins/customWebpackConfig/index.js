@@ -25,7 +25,7 @@ module.exports = function customWebpackConfigPlugin(context, options) {
         ],
         module: {
           rules: [
-            { test: /\.py$/, loader: 'ignore-loader' }
+            { test: /\.py$/, loader: 'raw-loader' }
           ]
         }
       }

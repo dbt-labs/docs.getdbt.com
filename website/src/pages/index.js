@@ -8,28 +8,11 @@ import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
 
-import pythonScript from '../python/main.py';
-console.log('pythonScript', pythonScript)
-
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
 function getBanner() {
   return { __html: bannerAnimation };
 };
-
-console.log('window.loadPyodide', window.loadPyodide)
-async function test() {
-  let pyodide = await window.loadPyodide();
-  console.log('pyodide', pyodide)
-  console.log(await pyodide.runPythonAsync(`
-    import sys
-    sys.version
-  `));
-  await pyodide.runPythonAsync("print(1 + 2)");
-  const codeText = await (await fetch(pythonScript)).text();
-  console.log('codeText', codeText)
-  await pyodide.runPythonAsync(pythonScript);
-}
 
 function Home() {
   
@@ -57,7 +40,6 @@ function Home() {
         <meta name="google-site-verification" content="ex1EMwuCGU33-nOpoOajLXEpMPgUYK5exBWePCu-0l0" />
       </Head>
       <Layout permalink="/">
-        <button onClick={() => test()}>Test Pyodide</button>
         <div className="container container--fluid home" style={{ "padding": "0", "background": "#FFF" }}>
           <Hero heading="Welcome to the dbt Developer Hub" subheading="Your home base for learning dbt, connecting with the community and contributing to the craft of analytics engineering " showGraphic />
           <section className="resource-section row">
