@@ -8,6 +8,8 @@ import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
 
+
+
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
 function getBanner() {
