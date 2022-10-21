@@ -163,7 +163,7 @@ Team and Enterprise accounts will be able to set up the Semantic Layer and Metad
 Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
 </details>
 <details>
-    <summary>Is there a dbt Semantic Layer discusssion hub?</summary>
+    <summary>Is there a dbt Semantic Layer discussion hub?</summary>
   <div>
     <div>Yes absolutely! Join the <a href="https://getdbt.slack.com">#dbt-cloud-semantic-layer</a> slack channel and <a href="getdbt.slack.com">dbt Slack community</a> for all things related to the dbt Semantic Layer. 
     </div>
