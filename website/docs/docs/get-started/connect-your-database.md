@@ -30,6 +30,9 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Host Name | The hostname of the Postgres, Redshift, or AlloyDB database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
+
+**Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs.
+
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" title="Configuring a Redshift connection"/>
 
 ### Connecting via an SSH Tunnel
