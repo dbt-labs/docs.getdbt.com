@@ -284,18 +284,18 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
     
 - Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.<br></br>
 
-- Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition.</div></div>
+- Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition</div></div>
 </details>
 <details>
-    <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized? </summary>
+    <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized?</summary>
   <div>
     <div>All metrics queries are dependent on either the <code>dbt_metrics_calendar_table</code> or a custom calendar set in the users <code>dbt_project.yml</code>. If you have not created this model in the database, these queries will fail and you'll most likely see the following error message:
 
 <code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code><br></br>
 
-<b>Fix:</b><br></br>
+<b>Fix:</b>
       
- - If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code>
+ - If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code><br></br>
  - If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.
     </div>
   </div>
