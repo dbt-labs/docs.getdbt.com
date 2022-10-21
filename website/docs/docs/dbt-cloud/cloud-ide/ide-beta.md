@@ -56,7 +56,7 @@ There are two main ways to develop with dbt: using the web-based IDE in dbt Clou
 
 The global dbt Support team is available to help dbt Cloud users by email or in-product live chat. Developer and Team accounts offer 24x5 support, while Enterprise customers have priority access and options for custom coverage.
 
-If you have project-related or modeling questions, you can use our dedicated [Community Forum](/forum) to get help as well.
+If you have project-related or modeling questions, you can use our dedicated [Community Forum](/community/forum) to get help as well.
 
 ## dbt Cloud IDE features
 

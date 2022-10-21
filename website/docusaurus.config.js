@@ -64,13 +64,13 @@ var siteSettings = {
     announcementBar: {
       id: "live_qa",
       content:
-        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
+        "Got opinions on analytics engineering? Tell us in the 5-minute dbt Community Survey.",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://coalesce.getdbt.com/",
+    announcementBarLink: "https://www.surveymonkey.com/r/XP2N8Z3",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");

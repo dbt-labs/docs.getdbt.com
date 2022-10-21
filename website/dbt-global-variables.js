@@ -17,7 +17,7 @@ exports.dbtVariables = {
       }
     ]
   },
-    "dbt-the-product": {
+    dbtTheProduct: {
     name: "dbt"
   },
     dbtCore: {
