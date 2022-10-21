@@ -280,9 +280,9 @@ If you're encountering some issues when defining your metrics or setting up the 
 
 During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise).<br></br><br></br>
     
-- dbt Core CLI users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, you will need to have a dbt Cloud account.<br></br><br></br>
-- Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.<br></br><br></br>
-- Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definitions.</div>
+&mdash; dbt Core CLI users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, you will need to have a dbt Cloud account.<br></br><br></br>
+&mdash; Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.<br></br><br></br>
+&mdash; Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definitions.</div>
     </div>
 </details>
 <details>
@@ -294,8 +294,8 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
 
 <b>Fix:</b>
       
- - If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code><br></br>
- - If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.
+&mdash; If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code><br></br>
+&mdash; If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.
     </div>
   </div>
 </details>
@@ -308,7 +308,7 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
 
 <b>Fix:</b>
 
-- You will need to materialize the model that the metric is built on as a table/view/incremental.
+&mdash; You will need to materialize the model that the metric is built on as a table/view/incremental.
 
 </div>
   </div>
@@ -319,14 +319,14 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
   <div>
     <div>If you’re running <code>dbt_metrics </code> ≥v0.3.2 but have <code>dbt-core</code> version ≥1.3.0, you’ll likely see these error messages:
 
-- Error message 1: <code>The metric NAME also references ... but its type is ''. Only metrics of type expression can reference other metrics.</code>
-- Error message 2: <code>Unknown aggregation style:   > in macro default__gen_primary_metric_aggregate (macros/sql_gen/gen_primary_metric_aggregate.sql)</code>
+&mdash; Error message 1: <code>The metric NAME also references ... but its type is ''. Only metrics of type expression can reference other metrics.</code>
+&mdash; Error message 2: <code>Unknown aggregation style:   > in macro default__gen_primary_metric_aggregate (macros/sql_gen/gen_primary_metric_aggregate.sql)</code>
 
 The reason you're experiencing this error is because we changed the <code>type</code> property of the metric spec in dbt-core v1.3.0. The new name is <code>calculation_method</code> and the package reflects that new name, so it isn’t finding any <code>type</code> when we try and run outdated code on it.
 
 <b>Fix:</b>
 
- - Upgrade your <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt_metrics</a> package to v1.3.0
+&mdash; Upgrade your <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt_metrics</a> package to v1.3.0
 
 </div>
   </div>
