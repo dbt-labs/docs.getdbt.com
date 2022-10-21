@@ -5,7 +5,7 @@ title: Debugging schema names
 If a model uses the [`schema` config](resource-configs/schema) but builds under an unexpected schema, here are some steps for debugging the issue.
 
 :::info 
-The full explanation on custom schemas can be found [here](using-custom-schemas).
+The full explanation on custom schemas can be found [here](/docs/build/custom-schemas).
 :::
 
 You can also follow along via this video:

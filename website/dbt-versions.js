@@ -1,8 +1,7 @@
 exports.versions = [
   {
     version: "1.3",
-    EOLDate: "2023-10-07",  // TODO estimated for now
-    isPrerelease: true,
+    EOLDate: "2023-10-12",
   },
   {
     version: "1.2",
@@ -27,10 +26,6 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
-  {
-    "page": "docs/building-a-dbt-project/building-models/python-models",
-    "firstVersion": "1.3",
-  },
   {
     "page": "reference/dbt-jinja-functions/set",
     "firstVersion": "1.2",
