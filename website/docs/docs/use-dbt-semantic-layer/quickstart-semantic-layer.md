@@ -273,7 +273,8 @@ If you're encountering some issues when defining your metrics or setting up the 
     <div>The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.</div>
   </div>
 </details>
-<details><summary>Is the dbt Semantic Layer open source?</summary>
+<details>
+    <summary>Is the dbt Semantic Layer open source?</summary>
   <div>
     <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not open source. <br></br>
       
