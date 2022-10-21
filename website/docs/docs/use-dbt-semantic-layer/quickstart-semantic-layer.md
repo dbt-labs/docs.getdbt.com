@@ -279,10 +279,12 @@ If you're encountering some issues when defining your metrics or setting up the 
     <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not open source. <br></br><br></br>
 
 During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise).<br></br><br></br>
-    
-&mdash; dbt Core CLI users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, you will need to have a dbt Cloud account.<br></br><br></br>
-&mdash; Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.<br></br><br></br>
-&mdash; Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definitions.</div>
+<ul>    
+<li>dbt Core CLI users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, you will need to have a dbt Cloud account.</li><br></br><br></br>
+<li>Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</li><br></br><br></br>
+<li>Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definitions.</li>
+    </ul>
+    </div>
     </div>
 </details>
 <details>
@@ -293,9 +295,11 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
 <code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code><br></br>
 
 <b>Fix:</b>
-      
-&mdash; If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code><br></br>
-&mdash; If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.
+    
+<ul>      
+    <li>If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code></li><br></br>
+    <li> If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.</li>
+    </ul>
     </div>
   </div>
 </details>
@@ -307,9 +311,9 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
  <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code><br></br>
 
 <b>Fix:</b>
-
-&mdash; You will need to materialize the model that the metric is built on as a table/view/incremental.
-
+    <ul>
+<li>You will need to materialize the model that the metric is built on as a table/view/incremental.</li>
+    </ul>
 </div>
   </div>
 </details>
@@ -319,14 +323,17 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
   <div>
     <div>If you’re running <code>dbt_metrics </code> ≥v0.3.2 but have <code>dbt-core</code> version ≥1.3.0, you’ll likely see these error messages:
 
-&mdash; Error message 1: <code>The metric NAME also references ... but its type is ''. Only metrics of type expression can reference other metrics.</code>
-&mdash; Error message 2: <code>Unknown aggregation style:   > in macro default__gen_primary_metric_aggregate (macros/sql_gen/gen_primary_metric_aggregate.sql)</code>
-
+<ul>
+<li>Error message 1: <code>The metric NAME also references ... but its type is ''. Only metrics of type expression can reference other metrics.</code></li>
+<li>Error message 2: <code>Unknown aggregation style:   > in macro default__gen_primary_metric_aggregate (macros/sql_gen/gen_primary_metric_aggregate.sql)</code></li>
+    </ul>
 The reason you're experiencing this error is because we changed the <code>type</code> property of the metric spec in dbt-core v1.3.0. The new name is <code>calculation_method</code> and the package reflects that new name, so it isn’t finding any <code>type</code> when we try and run outdated code on it.
 
 <b>Fix:</b>
 
-&mdash; Upgrade your <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt_metrics</a> package to v1.3.0
+<ul>
+    <li>Upgrade your <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt_metrics</a> package to v1.3.0</li>
+    </ul>
 
 </div>
   </div>
