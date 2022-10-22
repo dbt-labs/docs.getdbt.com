@@ -1,4 +1,4 @@
-Adding [documentation](/docs/building-a-dbt-project/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
+Adding [documentation](/docs/collaborate/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
 
 1. Update your `models/schema.yml` file to include some descriptions, such as those below.
 

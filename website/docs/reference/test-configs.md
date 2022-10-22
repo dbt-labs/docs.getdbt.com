@@ -3,7 +3,8 @@ title: Test configurations
 ---
 
 ## Related documentation
-* [Tests](building-a-dbt-project/tests)
+
+* [Tests](/docs/build/tests)
 
 <Changelog>
 

@@ -6,7 +6,7 @@ keywords:
   - dbt metrics layer
 ---
 
-[dbt metrics](/docs/building-a-dbt-project/metrics) ensure metric consistency and provide a way to standardize metrics under version control in dbt projects. By abstracting metrics calculations out of pre-aggregated tables or specific business intelligence tools (BI tools), dbt metrics can be defined once and used everywhere. Defining metrics in one place ensures consistent reporting of key business metrics especially in an environment where metric definitions and dimensions are changing along with your business.
+[dbt metrics](/docs/build/metrics) ensure metric consistency and provide a way to standardize metrics under version control in dbt projects. By abstracting metrics calculations out of pre-aggregated tables or specific business intelligence tools (BI tools), dbt metrics can be defined once and used everywhere. Defining metrics in one place ensures consistent reporting of key business metrics especially in an environment where metric definitions and dimensions are changing along with your business.
 
 The data models that power these metrics already exist in your dbt project. You can use dbt metrics in different ways:
   

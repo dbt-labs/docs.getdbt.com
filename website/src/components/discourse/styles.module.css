@@ -31,6 +31,9 @@
   font-weight: 600;
   font-size: 18px;
 }
+.discourseTopics blockquote {
+  margin-bottom: 0;
+}
 
 /* Cta */
 .discourseCta {
