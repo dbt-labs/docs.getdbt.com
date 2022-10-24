@@ -354,4 +354,11 @@ brittany_krauth:
    - url: https://www.linkedin.com/in/brittanykrauth
      icon: fa-linkedin
 
-
+charlie_summers:
+   name: Charlie Summers
+   job_title: Staff Software Engineer
+   organization: Merit
+   image_url: /img/blog/authors/charlie-summers.jpeg
+   links:
+   - url: https://www.linkedin.com/in/charliesummers
+     icon: fa-linkedin
