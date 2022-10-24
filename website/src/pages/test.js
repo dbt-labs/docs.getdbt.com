@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 
 import pythonScript from '../../python/main.py'
+import dbowserScript from '../../python/dbowser.py'
+import initialScript from '../../python/initial.py'
 
 function Test() {
   const [ pyodide, setPyodide ] = useState()
@@ -12,6 +14,7 @@ function Test() {
     let pyodideObject = await window.loadPyodide();
     setPyodide(pyodideObject)
 
+    pyodideObject.runPythonAsync(initialScript);
     // Show python details
     // console.log(await pyodide.runPythonAsync(`
     //   import sys
@@ -20,7 +23,7 @@ function Test() {
   }, [])
   
   const runPython = async () => {
-    const out = await pyodide.runPythonAsync(pythonScript);
+    const out = await pyodide.runPythonAsync(dbowserScript);
     setOutput(out)
   }
 
