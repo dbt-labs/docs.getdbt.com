@@ -45,6 +45,7 @@ var siteSettings = {
   title: "dbt Developer Hub",
   url: SITE_URL,
   onBrokenLinks: "warn",
+  onBrokenMarkdownLinks" "throw",
   trailingSlash: false,
   themeConfig: {
     image: "/img/avatar.png",
