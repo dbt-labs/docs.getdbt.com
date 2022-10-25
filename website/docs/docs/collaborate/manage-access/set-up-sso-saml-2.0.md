@@ -21,7 +21,7 @@ provider in order to configure Single Sign On and [role-based access control](/d
 
 ## Generic SAML 2.0 integrations
 
-You can use the instructions in this section to configure an identity provider besides Okta.
+You can use the instructions in this section to configure an identity provider that isn't listed below.
 
 ### Configure your identity provider
 
