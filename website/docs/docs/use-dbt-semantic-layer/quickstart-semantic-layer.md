@@ -308,7 +308,7 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
   <div>
     <div>Metrics cannot be defined on <a href="https://docs.getdbt.com/docs/build/materializations#ephemeral">ephemeral models</a> because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you'll likely see this error message:
 
- <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code><br></br>
+ <code>Object 'DATABASE.SCHEMA.METRIC_MODEL_TABLE' does not exist or not authorized.</code><br></br>
 
 <b>Fix:</b>
     <ul>
