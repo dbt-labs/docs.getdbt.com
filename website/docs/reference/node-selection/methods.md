@@ -196,7 +196,7 @@ The `test_type` method is used to select tests based on their type, `singular` o
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](building-a-dbt-project/tests).
+[tests](/docs/build/tests).
 
 <VersionBlock firstVersion="0.21">
 

@@ -56,8 +56,8 @@ See [dbt#2961](https://github.com/dbt-labs/dbt-core/pull/2961) for full implemen
 - [RPC](rpc): Added `state` and `defer` as arguments to RPC methods for which it is supported on the CLI.
 
 ### BigQuery
-- [BigQuery profile](bigquery-profile): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
+- [BigQuery profile](/reference/warehouse-setups/bigquery-setup): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
 - [Hourly, monthly and yearly partitions](bigquery-configs#partitioning-by-a-date-or-timestamp): With a new `granularity` attribute of the `partition_by` config, dbt can materialize models as tables partitioned by hour, month, or year.
 
 ### Spark
-- [Spark profile](spark-profile): The `thrift` and `http` connection methods require installation of a `PyHive` extra.
+- [Spark profile](/reference/warehouse-setups/spark-setup): The `thrift` and `http` connection methods require installation of a `PyHive` extra.

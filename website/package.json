@@ -11,8 +11,8 @@
     "@docusaurus/preset-classic": "2.0.0-beta.17",
     "@docusaurus/theme-search-algolia": "2.0.0-beta.17",
     "@mdx-js/react": "^1.6.21",
-    "axios": "^0.27.2",
     "@svgr/webpack": "^6.0.0",
+    "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "clsx": "^1.1.1",
     "color": "^3.1.2",
@@ -34,6 +34,7 @@
     "remark-math": "^3.0.1",
     "slugify": "^1.6.1",
     "styled-components": "5.3.3",
+    "swiper": "^8.4.3",
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
@@ -62,7 +63,9 @@
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.js"
     ],
-    "moduleNameMapper": { "\\.css$": "<rootDir>/static/css/__mocks__/styleMock.js" }
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/static/css/__mocks__/styleMock.js"
+    }
   },
   "version": "0.0.0"
 }

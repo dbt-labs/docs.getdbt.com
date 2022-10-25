@@ -106,7 +106,7 @@ Each staging directory contains at a minimum:
 *   A `src_<source>.yml` file which contains:
     *   [Source](/docs/building-a-dbt-project/using-sources) definitions, tests, and documentation
 *   A `stg_<source>.yml` file which contains
-    *   [Tests](/docs/building-a-dbt-project/tests) and [documentation](/docs/building-a-dbt-project/documentation) for models in the same directory
+  * [Tests](/docs/build/tests) and [documentation](/docs/building-a-dbt-project/documentation) for models in the same directory
 
 ```
     ├── dbt_project.yml

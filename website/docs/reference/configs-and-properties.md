@@ -15,7 +15,7 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
-* Assert "truths" about a model, in the form of [tests](building-a-dbt-project/tests), e.g. "this `id` column is unique"
+- Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
 * Define pointers to existing tables that contain raw data, in the form of [sources](using-sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](exposures)
 
