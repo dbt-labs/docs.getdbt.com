@@ -151,6 +151,7 @@ html[data-theme="dark"] .api-content table td p {
 
 table td {
   vertical-align: top;
+  width: 20%;
 }
 
 html[data-theme="dark"] table td {
