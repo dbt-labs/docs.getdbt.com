@@ -174,7 +174,7 @@ Plenty more to make but the foundation was there, and now it was time to enroll 
 
 This topic also deserves its own blog post, but I’ll attempt to quickly describe what we changed. As described in the problem statement, analysts could only ship code every 1-2 weeks and the process was incredibly painful. It was more than 16 steps with multiple ‘gotchas’ where analysts would get stuck and waste time.
 
-The process is now six steps, with massive time savings for the analytics team both in the creation and testing of their script along with how long it takes for new data to get into the data warehouse.This is on top of all of dbt’s benefits such as data definitions, lineage, automatic testing, macros…the list goes on.
+The process is now six steps, with massive time savings for the analytics team both in the creation and testing of their script along with how long it takes for new data to get into the data warehouse.This is on top of all of dbt’s benefits such as data definitions, <Term id="data-lineage">lineage</Term>, automatic testing, macros…the list goes on.
 
 ![Graphic depicting Smartsheet's new and improved code production process that outlines 6 steps](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/completed-process.png)
 

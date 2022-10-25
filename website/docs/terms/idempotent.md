@@ -1,9 +1,14 @@
 ---
 id: idempotent
 title: Idempotent
+description: Idempotent is an adjective to describe a process that gives you the same result no matter how many times you run it.
 displayText: idempotent
 hoverSnippet: Idempotent describes a process that gives you the same result no matter how many times you run it.
 ---
+
+<head>
+    <title>What is idempotency and why is the concept important in data?</title>
+</head>
 
 Idempotent is an adjective to describe a process that gives you the same result no matter how many times you run it.
 

@@ -46,9 +46,9 @@ cd airflow-dbt-cloud
 
     ```bash
     Airflow is starting up! This might take a few minutes…
-        
+
     Project is running! All components are now available.
-        
+
     Airflow Webserver: http://localhost:8080
     Postgres Database: localhost:5432/postgres
     The default Airflow UI credentials are: admin:admin
@@ -68,13 +68,13 @@ cd airflow-dbt-cloud
 
 ## 5. Create a dbt Cloud service token
 
-Create a service token from within dbt Cloud using the instructions [found here](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens). Ensure that you save a copy of the token, as you won’t be able to access this later. In this example we use `Account Admin`, but you can also use `Job Admin` instead for token permissions.
+Create a service token from within dbt Cloud using the instructions [found here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). Ensure that you save a copy of the token, as you won’t be able to access this later. In this example we use `Account Admin`, but you can also use `Job Admin` instead for token permissions.
 
 <WistiaVideo id="amubh6qmwq" />
 
 ## 6. Create a dbt Cloud job
 
-In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart/#create-a-new-job).
+In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/schedule-a-job).
 
 - Configure the job with the commands that you want to include when this job kicks off, as Airflow will be referring to the job’s configurations for this rather than being explicitly coded in the Airflow DAG. This job will run a set of commands rather than a single command.
 - Ensure that the schedule is turned **off** since we’ll be using Airflow to kick things off.
