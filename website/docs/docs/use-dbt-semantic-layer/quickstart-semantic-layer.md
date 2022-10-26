@@ -242,26 +242,9 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 - Your dbt Metadata API pulls in the most recent manifest and allows your integration information to extract metadata from it.
 
 ## Set up dbt Semantic Layer
+    
+<Snippet src="sl-set-up-steps" />
 
-Before continuing, you must have a multi-tenant dbt Cloud account hosted in North America to set up the dbt Semantic Layer in dbt Cloud. 
-
-  * **Team and Enterprise accounts:** You can set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated
-    partner tool to import metric definition. 
-  * Developer accounts will be able to query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access
-    to the Metadata API.
-
-To query your dbt metrics in an integrated partner tool, you need to [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) in dbt Cloud to connect with your integration tool:
-
-1. In your dbt Cloud account, go to **Account Settings** and then **Service Tokens** to create a new [service account API token](docs/dbt-cloud-apis/service-tokens). 
-    * Assign permissions to service account tokens depending on the integration tool you choose. You can review the [integration partner documentation](https://www.getdbt.com/product/semantic-layer-integrations) to determine the permission sets you need to assign.
-2. You won't be able to see your token again so we recommend you copy it somewhere safe.
-3. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
-4. In the upper right of the page, click **Settings** and then **Edit**.
-5. Select dbt Version 1.2 (latest) or higher.
-6. Toggle the Semantic Layer **On.**
-7. Copy the Proxy Server URL to connect to your [integrated partner tool](https://www.getdbt.com/product/semantic-layer-integrations). 
-8. If supported by your tool, provide an API service token with metadata access. 
-9. You can now run precise and consistent queries with the dbt Semantic Layer. 
       
 ## Troubleshooting
 
