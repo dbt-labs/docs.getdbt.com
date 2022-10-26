@@ -107,6 +107,6 @@ The data lake is the younger data management platform compared to its data wareh
 
 ## Additional reading
 - [Glossary: Data warehouse](/terms/data-warehouse) 
-- [Glossary: ETL](https://docs.getdbt.com/terms/etl)
-- [Glossary: ELT](https://docs.getdbt.com/terms/elt)
-- [Glossary: EDW](https://docs.getdbt.com/terms/edw) 
+- [Glossary: ETL](/terms/etl)
+- [Glossary: ELT](/terms/elt)
+- [Glossary: EDW](/terms/edw) 
