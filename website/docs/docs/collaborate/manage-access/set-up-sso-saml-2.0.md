@@ -340,7 +340,7 @@ separated with dashes. For example, the login slug for dbt Labs would be `dbt-la
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
 ✅ `your-company-name`
 ❌ `Your-Company-Name`
-Under the **Configuration tab**, input the following values:
+4. Under the **Configuration tab**, input the following values:
 
    - **RelayState:** `<login slug>`
    - **Audience (EntityID):** https://cloud.getdbt.com/
