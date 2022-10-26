@@ -366,7 +366,6 @@ use role-based access control in dbt Cloud, also configure OneLogin to provide g
 | ---- | ----------- | ----- | ----------- |
 | groups | Unspecified | Series of groups to be used for your organization | The groups a user belongs to in the IdP |
 
-:::
 
 ### Collect integration secrets
 
