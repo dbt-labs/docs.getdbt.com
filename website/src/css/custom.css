@@ -149,12 +149,6 @@ html[data-theme="dark"] .api-content table td p {
   color: var(--color-orange);
 }
 
-table {
-  width: 100%;
-  table-layout: fixed;
-  display: table;
-}
-
 table td {
   vertical-align: top;
 }
