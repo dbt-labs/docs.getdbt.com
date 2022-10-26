@@ -338,7 +338,8 @@ To complete this section, you will need to create a login slug. This slug contro
 can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
-
+✅ `your-company-name`
+❌ `Your-Company-Name`
 Under the **Configuration tab**, input the following values:
 
    - **RelayState:** `<login slug>`
