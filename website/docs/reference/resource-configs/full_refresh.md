@@ -79,8 +79,8 @@ This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-la
 
 ### Incremental models
 
-* [How do I rebuild an incremental model?](configuring-incremental-models#how-do-i-rebuild-an-incremental-model)
-* [What if the columns of my incremental model change?](configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change)
+* [How do I rebuild an incremental model?](/docs/build/incremental-models#how-do-i-rebuild-an-incremental-model)
+* [What if the columns of my incremental model change?](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change)
 
 ### Seeds
 
