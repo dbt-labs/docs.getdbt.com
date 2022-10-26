@@ -18,7 +18,7 @@ seed-paths: [directorypath]
 </File>
 
 ## Definition
-Optionally specify a custom list of directories where [seed](docs/building-a-dbt-project/seeds.md) files are located.
+Optionally specify a custom list of directories where [seed](/docs/build/seeds) files are located.
 
 ## Default
 

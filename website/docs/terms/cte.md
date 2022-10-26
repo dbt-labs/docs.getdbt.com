@@ -66,7 +66,7 @@ When people talk about how CTEs can simplify your queries, they specifically mea
 
 #### Establish Structure
 
-In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](guides/getting-started/learning-more/refactoring-legacy-sql#implement-cte-groupings) for CTEs which creates a predictable and organized structure to your dbt models.
+In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](/docs/get-started/learning-more/refactoring-legacy-sql#implement-cte-groupings) for CTEs which creates a predictable and organized structure to your dbt models.
 
 #### Easily identify dependencies
 
@@ -177,11 +177,11 @@ CTEs are likely to be supported across most, if not all, [modern data warehouses
 
 CTEs are essentially temporary views that can be used throughout a query. They are a great way to give your SQL more structure and readability, and offer simplified ways to debug your code. You can leverage appropriately-named CTEs to easily identify upstream dependencies and code functionality. CTEs also support recursiveness and reusability in the same query. Overall, CTEs can be an effective way to level-up your SQL to be more organized and understandable.
 
-## Futher Reading
+## Further Reading
 
 If you’re interested in reading more about CTE best practices, check out some of our favorite content around model refactoring and style:
 
-- [Refactoring Legacy SQL to dbt](guides/getting-started/learning-more/refactoring-legacy-sql#implement-cte-groupings)
+- [Refactoring Legacy SQL to dbt](/docs/get-started/learning-more/refactoring-legacy-sql#implement-cte-groupings)
 - [dbt Labs Style Guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md#ctes)
 - [Modular Data Modeling Technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 
