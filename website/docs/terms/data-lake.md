@@ -106,7 +106,7 @@ Because you don’t need to impose a formal structure for how data is organized 
 The data lake is the younger data management platform compared to its data warehouse counterpart. Because of its unique ability to hold large amounts of data in its native, raw format, it has allowed organizations to store all its data in a centralized place, even if sometimes they don’t have a definitive use case for the data yet. In addition, it serves as a great buffer and landing zone for data before it is ultimately transformed and aggregated in a data warehouse. Lastly, it has unlocked a world of new possibilities by enabling organizations to build data science and machine learning use cases on top of it. The data lake is an integral pillar in the Modern Data Stack and the practice of analytics engineering.
 
 ## Additional reading
-- [Glossary: Data warehouse](https://docs.getdbt.com/terms/data-warehouse) 
+- [Glossary: Data warehouse](/terms/data-warehouse) 
 - [Glossary: ETL](https://docs.getdbt.com/terms/etl)
 - [Glossary: ELT](https://docs.getdbt.com/terms/elt)
 - [Glossary: EDW](https://docs.getdbt.com/terms/edw) 
