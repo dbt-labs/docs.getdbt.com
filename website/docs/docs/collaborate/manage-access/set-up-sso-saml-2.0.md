@@ -378,7 +378,7 @@ the new integration. Keep these values somewhere safe, as you will need them to 
 
 ### Finish setup
 
-After creating the OneLogin application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+7. After creating the OneLogin application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
 ## dbt Cloud Setup
