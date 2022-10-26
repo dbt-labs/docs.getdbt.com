@@ -34,7 +34,7 @@ To learn more about adapters, check out [What Are Adapters](/guides/advanced/ada
 | [DuckDB](duckdb-setup)                | [Layer](layer-setup)                      | [AzureSynapse](azuresynapse-setup) |
 | [Dremio](dremio-setup)                | [Materialize](materialize-setup)          | [Teradata](teradata-setup)|
 | [Exasol Analytics](exasol-setup)      | [MindsDB](mindsdb-setup)                  | [TiDB](tidb-setup)|
-| [Firebold](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
+| [Firebolt](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
 | [AWS Glue](glue-setup)                | [Oracle](oracle-setup)                    |
 | [Greenplum](greenplum-setup)          | [Rockset](rockset-setup)   
 
