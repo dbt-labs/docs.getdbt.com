@@ -56,7 +56,7 @@ Edit the connection manager at `myadapter/dbt/adapters/myadapter/connections.py`
 
 #### The Credentials class
 
-The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need in the [connection profile](configure-your-profile) for your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
+The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need in the [connection profile](/docs/supported-data-platforms) for your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
 
 Note that the base class includes required database and schema fields, as dbt uses those values internally.
 

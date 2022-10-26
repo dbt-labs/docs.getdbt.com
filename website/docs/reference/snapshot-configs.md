@@ -173,7 +173,7 @@ Snapshot configurations are applied hierarchically in the order above.
 
 ### Examples
 #### Apply the `target_schema` configuration to all snapshots
-To apply a configuration to all snapshots, including those in any installed [packages](package-management), nest the configuration directly under the `snapshots` key:
+To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
 
 <File name='dbt_project.yml'>
 
