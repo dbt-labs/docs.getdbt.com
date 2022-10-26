@@ -92,16 +92,18 @@ You will learn how to connect dbt Cloud to Google BigQuery so that you can lever
 In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other <Term id="data-warehouse">data warehouses</Term>.
 
 1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify your are using the correct email account.
-2. Select **+ Create Credentials** then select **Service account**.
-3. Type `dbt-user` in the Service account name field, then click **Create and Continue**.
-4. Type and select **BigQuery Admin** in the Role field.
-5. Click **Continue**.
-6. Leave fields blank in the "Grant users access to this service account" section and click **Done**.
-7. Click the service account that you just created.
-8. Select **Keys**.
-9. Click **Add Key** then select **Create new key**.
-10. Select **JSON** as the key type then click **Create**.  
-11. You should be prompted to download the <Term id="json" /> file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
+2. From the "Select an API" dropdown, select **BigQuery API**
+3. Select the **Application data** option for "What data will you be accessing?"
+4. Select the **No, I'm not using them** option for "Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?" then click **Next**.
+5. Type `dbt-user` in the Service account name field, then click **Create and Continue**.
+6. Type and select **BigQuery Admin** in the Role field.
+7. Click **Continue**.
+8. Leave fields blank in the "Grant users access to this service account" section and click **Done**.
+9. Click the service account that you just created.
+10. Select **Keys**.
+11. Click **Add Key** then select **Create new key**.
+12. Select **JSON** as the key type then click **Create**.  
+13. You should be prompted to download the <Term id="json" /> file. Save it locally to an easy-to-remember spot, with a clear filename. For example, `dbt-user-creds.json`.
 
 ### Create a dbt Cloud account
 
