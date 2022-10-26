@@ -319,7 +319,7 @@ From the Set up Single Sign-On with SAML page:
 
 Use this section if you are configuring OneLogin as your identity provider.
 
-You'll need administrator access to configure OneLogin.
+To configure OneLogin, you will need **Administrator** access.
 
 ### Configure the OneLogin application
 
