@@ -90,7 +90,7 @@ Because you don’t need to impose a formal structure for how data is organized 
 | Data stored in  | Folders and files in raw format | Schemas and tabular data format |
 | Schema/schema definition | Store data in its raw format, transform the data later | Must know upfront |
 | Intended users | Data engineers, analytics engineers, data analysts,  data scientists | Analytics engineers, data analysts,  business analysts |
-| Common use cases | Data archiving and storage, data science and machine learning,exploratory data analysis | Business intelligence,dashboarding,reporting and analytics  |
+| Common use cases | Data archiving and storage, data science and machine learning, exploratory data analysis | Business intelligence, dashboarding, reporting and analytics  |
 
 ## Data platforms that support data lake workloads
 
