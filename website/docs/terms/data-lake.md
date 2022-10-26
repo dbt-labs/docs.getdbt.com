@@ -99,7 +99,7 @@ Because you don’t need to impose a formal structure for how data is organized 
 | Cloudera | Cloudera Open Data Lakehouse is a platform that provides data lake flexibility and data warehouse performance in a single platform.  | Structured  |
 | Databricks | Databricks is a cloud-based collaborative data science, data engineering, and data analytics platform that brings the best of data warehouses and data lakes into a single unified platform.  | Schemas and tabular data format |
 | Dremio | Dremio is the data lakehouse platform built for SQL and built on open source technologies that both data engineers and data analysts love. Dremio powers BI dashboards and analytics directly on data lake storage. | Must know upfront |
-| Snowflake | Snowflake is a fully-managed platform for data warehousing, data lakes, data engineering, data science, and data application development. | Analytics engineers, Data analysts,  Business analysts |
+| Snowflake | Snowflake is a fully-managed platform for data warehousing, data lakes, data engineering, data science, and data application development. | Analytics engineers, data analysts,  business analysts |
 
 ## Conclusion
 
