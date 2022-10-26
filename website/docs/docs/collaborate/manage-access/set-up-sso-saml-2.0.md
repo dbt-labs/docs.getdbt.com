@@ -369,7 +369,7 @@ use role-based access control in dbt Cloud, also configure OneLogin to provide g
 
 ### Collect integration secrets
 
-After confirming your details, go to the **SSO tab**. OneLogin should show you the following values for
+6. After confirming your details, go to the **SSO tab**. OneLogin should show you the following values for
 the new integration. Keep these values somewhere safe, as you will need them to complete setup in dbt Cloud.
 
 - Issuer URL
