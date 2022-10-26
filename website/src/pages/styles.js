@@ -38,11 +38,11 @@ function Styles() {
                 <h1>Linked Markdown Code Blocks</h1>
 <pre>{`
 \`\`\`
-[view the intro](introduction)
+[view the intro](docs/introduction)
 \`\`\`
 `}</pre>
             <CodeBlock>
-[view the intro](introduction)
+[view the intro](docs/introduction)
             </CodeBlock>
             <br/>
             <p>Use a backslash to escape linking:</p>
