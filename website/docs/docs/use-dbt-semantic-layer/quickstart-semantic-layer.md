@@ -245,7 +245,7 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 
 Before continuing, you must have a multi-tenant dbt Cloud account hosted in North America to set up the dbt Semantic Layer in dbt Cloud. 
 
-  * Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated
+  * **Team and Enterprise accounts:** You can set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated
     partner tool to import metric definition. 
   * Developer accounts will be able to query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access
     to the Metadata API.
