@@ -484,6 +484,7 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /reference/warehouse-profiles/firebolt-profile /reference/warehouse-setups/firebolt-setup 302
 /reference/warehouse-profiles/mysql-profile /reference/warehouse-setups/mysql-setup 302
 /reference/warehouse-profiles/hive-profile /reference/warehouse-setups/hive-setup 302
+/reference/using-sources /docs/build/sources 302
 
 # getting started guide
 /guides/getting-started /docs/get-started/getting-started/overview 301
