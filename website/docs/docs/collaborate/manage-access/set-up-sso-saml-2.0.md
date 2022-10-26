@@ -334,7 +334,7 @@ To configure OneLogin, you will need **Administrator** access.
 
 The following steps assume your dbt Cloud deployment instance uses `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions) uses a different URL, then substitute ` cloud.getdbt.com` with the URL of your instance.
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
+3. To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
