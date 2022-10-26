@@ -147,7 +147,7 @@ This can be perfectly ok, in the event your data team is structured for data eng
 
 Once the data has been ingested, dbt Core can be used to model it for consumption. Most of the time, users choose to either:
 Use the dbt CLI+ [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator) with Airflow (If you take this route, you can use an external secrets manager to manage credentials externally), or
-Use the [KubernetesPodOperator](https://registry.astronomer.io/providers/kubernetes/modules/kubernetespodoperator) for each dbt job, as data teams have at places like [Gitlab](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_trusted_data.py#L72) and [Snowflake](https://www.snowflake.com/blog/migrating-airflow-from-amazon-ec2-to-kubernetes/). 
+Use the [KubernetesPodOperator](https://registry.astronomer.io/providers/kubernetes/modules/kubernetespodoperator) for each dbt job, as data teams have at places like [Gitlab](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_trusted_data.py#L72) and [Snowflake](https://www.snowflake.com/blog/migrating-airflow-from-amazon-ec2-to-kubernetes/).
 
 Both approaches are equally valid; the right one will depend on the team and use case at hand.
 
@@ -213,7 +213,7 @@ If the operator fails, it’s an Airflow problem. If the dbt run returns a model
 
 With the new dbt Cloud Provider, you can use Airflow to orchestrate and monitor your dbt Cloud jobs without any of the overhead of dbt Core. Out of the box, the dbt Cloud provider comes with:
 
-An operator that allows you to both [run a predefined job in dbt Cloud and download an artifact from a dbt Cloud job](https://registry.astronomer.io/dags/example-dbt-cloud).
+An operator that allows you to both run a predefined job in dbt Cloud and download an artifact from a dbt Cloud job.
 A hook that gives you a secure way to leverage Airflow’s connection manager to connect to dbt Cloud. The Operator leverages the hook, but you can also [use the hook directly in a Taskflow function or PythonOperator](https://registry.astronomer.io/dags/dbt-cloud-operational-check) if there’s custom logic you need that isn’t covered in the Operator.
 
 A sensor that allows you to poll for a job completion. You can use this [for workloads where you want to ensure your dbt job has run before continuing on with your DAG](https://registry.astronomer.io/dags/fivetran-dbt-cloud-census).
@@ -232,7 +232,7 @@ To set up Airflow and dbt Cloud, you can:
 
 ![airflow dbt run select](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/airflow-connection-ID.png)
 
-3. Set up your Airflow DAG similar to [this example](https://github.com/apache/airflow/blob/main/airflow/providers/dbt/cloud/example_dags/example_dbt_cloud.py).
+3. ~Set up your Airflow DAG similar to this example.~
 
 4. You can use Airflow to call the dbt Cloud API via the new `DbtCloudRunJobOperator` to run the job and monitor it in real time through the dbt Cloud interface.
 
