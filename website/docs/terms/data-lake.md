@@ -42,7 +42,7 @@ For all of the advantages of data lakes listed above such as cost-effectiveness 
 
 Query performance and speed is one capability area where data warehouses typically trump data lakes. While structuring data first may seem inflexible and rigid at times, it is the right approach to implement when you have analyses and reports that you want to run frequently. The following are several query performance techniques that can only be applied to data warehouses:
 
-| Performance Technique | Description | Practical scenario |
+| Performance technique | Description | Practical scenario |
 |:---:|:---:|:---:|
 | Columnar storage | Data is physically organized in columns in a data warehouse rather than rows (in a database) or files (in a data lake)  | Most analysis and reports require pulling only a subset of columns from an entire <Term id="table" />. Columnar storage makes your queries run faster by retrieving only the relevant columns for your analysis |
 | Query caching | When a query is executed, the result is temporarily stored for a period of time  | When someone executes a query on a table, the results of that table will be made available right away to the next user who executes the same query, significantly reducing computation time |
