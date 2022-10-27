@@ -1,13 +1,40 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Editor from "@monaco-editor/react";
 import styles from './styles.module.css';
+// import manifest from './manifest.json'
 
 const editorOptions = {
   readOnly: false,
   minimap: { enabled: false },
 };
 
-function dbtEditor() {
+function dbtEditor({ project }) {
+
+  useEffect(() => {
+    // const { nodes } = manifest
+    // console.log('nodes', nodes)
+    // const packages = []
+    // const resourceTypes = []
+    // for(let node in nodes) {
+    //   console.log('node', node)
+    //   const thisNode = nodes[node]
+    //   if(!packages.includes(thisNode.package_name)) {
+    //     packages.push(thisNode.package_name)
+    //   }
+    // } 
+    // console.log('packages', packages)
+    async function fetchData() {
+      try {
+        const test = await axios(`/dbt_projects/${project}/manifest.json`)
+        console.log('test', test)
+      } catch(err) {
+
+      }
+    }
+    fetchData()
+  }, [])  
+
   return (
     <div className={styles.dbtEditor}>
       <div className={styles.dbtEditorSidebar}>
