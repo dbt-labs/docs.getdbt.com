@@ -78,7 +78,7 @@ The Model Timing tab in dbt Cloud highlights models taking particularly long to 
     At the Future Data Conference last week Tristan noted that data workflows borrow much from software engineering, but haven't really crossed the DevOps chasm. What's missing? Spreadsheets? Actually... *maybe.* 😅 Okay you had to be there. Luckily you still can! Check out the [recording](https://futuredata.brighttalk.live/talk/19069-506932/?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ).
 -   [Modeling behavioral data with Snowplow and dbt](https://get.snowplowanalytics.com/wbn/dbt-and-snowplow/data-modeling/?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ) (coming up on 10/27).
     Our own Sanjana Sen joins the Snowplow team to talk modeling Snowplow event data in dbt -- including how to structure your data models, best practices to follow, and key pitfalls to avoid.
--   ~How Blend Eliminated Data Silos with dbt and Hightouch (coming up 10/28).~
+- How Blend Eliminated Data Silos with dbt and Hightouch.
     Fin-tech behemoth, Blend, processes trillions of dollars in loans (and recently IPO'd). Join this talk with William Tsu (Customer Success Operations at Blend) to learn how adopting dbt and Hightouch has helped them overcome data silos to keep kicking a$$.
 
 
