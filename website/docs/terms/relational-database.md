@@ -1,13 +1,13 @@
 ---
 id: relational-database
 title: Relational database
-description: A primary key is a non-null column in a database object that uniquely identifies each row. Primary keys take the form of a natural or surrogate key.
+description: A relational database provides a structured way to store data into tables consisting of rows and columns. Different tables in a relational database can be joined together using common columns from each table, forming relationships.
 displayText: relational database
-hoverSnippet: A primary key is a non-null column in a database object that uniquely identifies each row.
+hoverSnippet: A relational database provides a structured way to store data into tables consisting of rows and columns. Different tables in a relational database can be joined together using common columns from each table, forming relationships.
 ---
 
 <head>
-  <title>Primary key in SQL (AKA Constraints) — dbt Labs</title>
+  <title>Relational database: A way to get order out of data chaos </title>
 </head>
 
 A relational database provides a structured way to store data into <Term id="table">tables</Term> consisting of rows and columns. Different tables in a relational database can be joined together using common columns from each table, forming relationships.
