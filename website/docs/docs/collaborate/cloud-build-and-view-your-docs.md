@@ -17,6 +17,12 @@ To set up a job to generate docs:
 3. Under "Execution Settings," select **Generate docs on run**.
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-job-execution-settings.png" title="Setting up a job to generate documentation"/>
 
+:::📌 Tip
+
+To create and execute a documentation-only job, add the `dbt compile` command under **Commands**
+
+:::
+
 4. Click **Save**. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.
 
 ## Configure project documentation
