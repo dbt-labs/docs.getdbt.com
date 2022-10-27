@@ -1,0 +1,109 @@
+.dbtEditor {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  color: #111827;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+}
+
+/* Sidebar */
+.dbtEditorSidebar {
+  flex: 1 1 256px;
+  background: #F9FAFB;
+  border-right: 1px solid #E5E7EB;
+  padding: 20px;
+  font-size: 14px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.dbtEditorSidebar .sidebarHeader {
+  font-weight: 600;
+}
+.dbtEditorSidebar .sidebarList {
+  font-weight: 400;
+  list-style: none;
+  padding-left: 0;
+}
+.dbtEditorSidebar .sidebarList li {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.dbtEditorSidebar .sidebarList li img {
+  margin-right: 5px;
+}
+
+/* Main editor */
+.dbtEditorMain {
+  flex: 1 1 calc(100% - 256px);
+}
+
+/* CLI */
+.dbtEditorCli {
+  padding: 20px;
+}
+
+/* Actions */
+.dbtEditorActions {
+  display: flex;
+  background: #F9FAFB;
+  padding: 5px 20px;
+}
+.editorAction {
+  margin-right: 15px;
+  background: #fff;
+  border: 1px solid #D1D5DB;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 7px 11px;
+  transition: 100ms all ease-in-out;
+  cursor: pointer;
+}
+.editorAction:hover {
+  background: #047377;
+  border: 1px solid #047377;
+  color: #fff;
+}
+.editorAction:last-of-type {
+  margin-right: 0;
+}
+
+/* Results */
+.resultsHeader {
+  color: #1F2937;
+  padding: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+.resultsHeader span {
+  color: #4B5563;
+}
+.resultsHeader img {
+  margin-left: 5px;
+}
+
+.dbtEditorResults table {
+  display: table;
+  color: #111827;
+}
+.dbtEditorResults table, .dbtEditorResults table thead, .dbtEditorResults table tbody {
+  width: 100%;
+}
+.dbtEditorResults tr {
+  border-bottom: 1px solid #E5E7EB;
+}
+.dbtEditorResults table th {
+  text-align: left;
+  color: #4B5563;
+  font-weight: 600;
+}
+.dbtEditorResults table th, .dbtEditorResults table td {
+  font-size: 14px;
+  border: none;
+  color: #111827;
+}
+.dbtEditorResults table tr:nth-child(2n) {
+  background: #fff;
+}

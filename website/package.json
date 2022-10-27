@@ -11,6 +11,7 @@
     "@docusaurus/preset-classic": "2.0.0-beta.17",
     "@docusaurus/theme-search-algolia": "2.0.0-beta.17",
     "@mdx-js/react": "^1.6.21",
+    "@monaco-editor/react": "^4.4.6",
     "@svgr/webpack": "^6.0.0",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
