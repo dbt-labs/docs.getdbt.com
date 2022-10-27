@@ -165,7 +165,7 @@ Developer accounts will be able to query the Proxy Server using SQL, but will no
 <details>
     <summary>Is there a dbt Semantic Layer discusssion hub?</summary>
   <div>
-    <div>Yes absolutely! Join the <a href="https://getdbt.slack.com">#dbt-cloud-semantic-layer</a> slack channel and <a href="getdbt.slack.com">dbt Slack community</a> for all things related to the dbt Semantic Layer. 
+    <div>Yes absolutely! Join the <a href="https://getdbt.slack.com">#dbt-cloud-semantic-layer</a> slack channel and <a href="https://getdbt.slack.com">dbt Slack community</a> for all things related to the dbt Semantic Layer. 
     </div>
   </div>
 </details>
