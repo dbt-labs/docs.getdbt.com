@@ -19,7 +19,7 @@ To set up a job to generate docs:
 
 :::📌 Tip
 
-To create and execute a documentation-only job, add the `dbt compile` command under **Commands**
+To create and schedule a documentation-only job at the end of your production jobs, add the `dbt compile` command under **Commands**. 
 
 :::
 
