@@ -2,7 +2,7 @@
 title: "October 2021 dbt Update: Metrics and Hat Tricks 🎩"
 description: "Also flagging that Coalesce is less than 3 weeks away! 😱"
 slug: dbt-product-update-2021-october
-authors: [lauren_craigie] 
+authors: [lauren_craigie]
 
 tags: [dbt updates]
 hide_table_of_contents: false
@@ -53,7 +53,7 @@ I've got three really exciting things to share this month!
 
 -   [Model bottlenecks beta](https://getdbt.slack.com/archives/C02GUTGK73N?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ): Identify long-running models ripe for refactoring (or re-scheduling). The new model timing dashboard in the run detail page helps you quickly assess job composition, order, and duration to optimize your workflows and cut costs💰
 
- ![image-1](https://hs-8698602.f.hubspotemail.net/hub/8698602/hubfs/image-1.png?upscale=true&width=1120&upscale=true&name=image-1.png) 
+ ![image-1](https://hs-8698602.f.hubspotemail.net/hub/8698602/hubfs/image-1.png?upscale=true&width=1120&upscale=true&name=image-1.png)
 
 The Model Timing tab in dbt Cloud highlights models taking particularly long to run.
 
@@ -78,10 +78,10 @@ The Model Timing tab in dbt Cloud highlights models taking particularly long to 
     At the Future Data Conference last week Tristan noted that data workflows borrow much from software engineering, but haven't really crossed the DevOps chasm. What's missing? Spreadsheets? Actually... *maybe.* 😅 Okay you had to be there. Luckily you still can! Check out the [recording](https://futuredata.brighttalk.live/talk/19069-506932/?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ).
 -   [Modeling behavioral data with Snowplow and dbt](https://get.snowplowanalytics.com/wbn/dbt-and-snowplow/data-modeling/?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ) (coming up on 10/27).
     Our own Sanjana Sen joins the Snowplow team to talk modeling Snowplow event data in dbt -- including how to structure your data models, best practices to follow, and key pitfalls to avoid.
--   [How Blend Eliminated Data Silos with dbt and Hightouch](https://hightouch.io/dbt-hightouch-blend-event/?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ) (coming up 10/28).
+- How Blend Eliminated Data Silos with dbt and Hightouch.
     Fin-tech behemoth, Blend, processes trillions of dollars in loans (and recently IPO'd). Join this talk with William Tsu (Customer Success Operations at Blend) to learn how adopting dbt and Hightouch has helped them overcome data silos to keep kicking a$$.
 
- 
+
 That's all for now! Thanks for reading, and as always, *let me know if there's anything else you want to see in these updates!*
 
 *Lauren Craigie*  
