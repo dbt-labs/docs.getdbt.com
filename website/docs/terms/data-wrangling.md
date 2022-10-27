@@ -1,13 +1,13 @@
 ---
 id: data-wrangling
 title: Data wrangling
-description: How have data warehouses evolved over the last 40 years? Explore the nuanced changes in use case since Inmon first coined the term.
+description: Data wrangling describes the different processes used to transform raw data into a consistent and easily usable format. The ultimate goal of data wrangling is to work in a way that allows you to dive right into analysis on a dataset or build upon that data.
 displayText: data wrangling
-hoverSnippet: A data warehouse is a data management system used for data storage and computing that allows for analytics activities such as transforming and sharing data.
+hoverSnippet: Data wrangling describes the different processes used to transform raw data into a consistent and easily usable format. The ultimate goal of data wrangling is to work in a way that allows you to dive right into analysis on a dataset or build upon that data.
 ---
 
 <head>
-    <title>Data warehouses in the modern data stack - dbt Labs</title>
+    <title>Data wrangling: the workflow that bred analytics engineers</title>
 </head>
 
 Data wrangling describes the different processes used to transform raw data into a consistent and easily usable format. For analytics engineers, you may know this better by the name of data cleaning. In data science or machine learning, "wrangling" often refers to prepping the data for model creation.
@@ -103,7 +103,7 @@ By first wrangling or cleaning data, you get to learn about the data’s intrica
 
 SQL is the most common language for data wrangling. While you can wrangle data using other languages, such as Python, SQL is the most common (and straightforward) language used for data wrangling and transformation in relational databases. Let’s look at some of the most common SQL functions for each of the data wrangling steps. 
 
-### SQL Cleaning
+### SQL cleaning
 
 CAST( <column_name> AS date) is commonly used to cast values in a column to a date datatype, or whatever other datatype you specify.
 
@@ -144,7 +144,7 @@ If you can’t find what you need with the generic tests, you can download an ad
 
 You could argue that data wrangling is one of the most important parts of an analytics engineer's job. It increases data quality, makes your data usable, standardizes it, increases your understanding, and improves performance. None of this would be possible without data discovery, structuring, cleaning, enriching, validating, and publishing steps that make up the wrangling process. 
 
-## Futher Reading
+## Futher reading
 
 - [Our favorite SQL functions](https://www.getdbt.com/sql-foundations/top-sql-functions/)
 - [Glossary: Data warehouse](/terms/data-warehouse)
