@@ -44,6 +44,29 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Use the IDE
 - Run and cancel jobs
 
+### Project Creator
+- **Has permissions on:** Authorized projects, account-level settings
+- **License restrictions:** must have a developer license
+
+Project Creators have write and read only access to dbt Cloud accounts, but do not have permissions to modify SSO settings and account integrations. 
+
+Users with Project Creator permissions can:
+
+- View Account Settings
+- View and modify project users
+- Create, delete and modify all projects in an account
+- Create, delete, and modify Repositories
+- Create, delete, and modify Connections
+- Create, delete, and modify Environments
+- Create, delete, and modify Jobs
+- Use the IDE
+- Run and cancel jobs
+
+<!-- not sure if the below is correct -->
+- View Groups
+- Create, delete, and modify Group Memberships
+- Manage notification settings
+
 ### Account Viewer
 
 - **Has permissions on:** Authorized projects, account-level settings
