@@ -149,6 +149,10 @@ html[data-theme="dark"] .api-content table td p {
   color: var(--color-orange);
 }
 
+table td {
+  vertical-align: top;
+}
+
 html[data-theme="dark"] table td {
   filter: brightness(1.25);
   color: white;
@@ -442,7 +446,7 @@ li.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 .menu
 
 .menu__list .menu__list {
   font-weight: var(--ifm-font-weight-narrow);
-  padding-left: 2rem;
+  padding-left: 1rem;
 }
 
 .menu__list .menu__list .menu__link {
@@ -451,7 +455,6 @@ li.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 .menu
 }
 
 .menu__list-item-collapsible a {
-  padding-left: 0;
   padding-top: .75rem;
   padding-bottom: .75rem;
 }
