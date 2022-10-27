@@ -10,39 +10,58 @@ const editorOptions = {
 };
 
 function dbtEditor({ project }) {
-
+  const [sidebar, setSidebar] = useState([])
   useEffect(() => {
-    // const { nodes } = manifest
-    // console.log('nodes', nodes)
-    // const packages = []
-    // const resourceTypes = []
-    // for(let node in nodes) {
-    //   console.log('node', node)
-    //   const thisNode = nodes[node]
-    //   if(!packages.includes(thisNode.package_name)) {
-    //     packages.push(thisNode.package_name)
-    //   }
-    // } 
-    // console.log('packages', packages)
-    async function fetchData() {
+    async function buildData() {
       try {
-        const test = await axios(`/dbt_projects/${project}/manifest.json`)
-        console.log('test', test)
-      } catch(err) {
+        const res = await axios(`/dbt_projects/${project}/manifest.json`)
+        if(!res?.data || !res?.data?.nodes) throw new Error('unable to find project data.')
 
+        const { nodes } = res.data
+        const sidebarData = buildSidebar(nodes)
+        if(!sidebarData) throw new Error('Unable to get sidebar data.')
+
+        setSidebar(sidebarData)
+      } catch(err) {
+        console.log('Error getting project data.', err)
       }
     }
-    fetchData()
+    buildData()
   }, [])  
 
+  console.log('sidebar', sidebar)
   return (
     <div className={styles.dbtEditor}>
       <div className={styles.dbtEditorSidebar}>
         <span className={styles.sidebarHeader}>File Explorer</span>
         <ul className={styles.sidebarList}>
-          <li>
-            <img src="/img/folder-open.svg" /> my_dbt_project
-          </li>
+          {sidebar && sidebar.map(project => (
+            <li>
+              <span className={styles.listItem}>
+                <img src="/img/folder-open.svg" /> {project.project}
+              </span>
+              {project?.resources && project.resources.map(resource => (
+                <ul className={styles.sidebarNestedList}>
+                  <li>
+                    <span className={styles.listItem}>
+                      <img src="/img/folder.svg" /> {resource.name}
+                    </span>
+                    {resource?.nodes && (
+                      <ul className={styles.sidebarNestedList}>
+                        {resource.nodes.map(node => (
+                          <li>
+                            <span className={styles.listItem}>
+                              <img src="/img/file-icon.svg" /> {node.name}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                </ul>
+              ))}
+            </li>
+          ))}
         </ul>
       </div>
       <div className={styles.dbtEditorMain}>
@@ -50,7 +69,7 @@ function dbtEditor({ project }) {
           <Editor
             height="400px"
             defaultLanguage="sql"
-            defaultValue={`"/*\n    Welcome to your first dbt model!\n    Did you know that you can also configure models directly within SQL files?\n    This will override configurations stated in dbt_project.yml\n\n    Try changing \"table\" to \"view\" below\n*/\n\n{{ config(materialized='table') }}\n\nwith source_data as (\n\n    select 1 as id\n    union all\n    select null as id\n\n)\n\nselect *\nfrom source_data\n\n/*\n    Uncomment the line below to remove records with null \`id\` values\n*/\n\n-- where id is not null",`}
+            defaultValue={``}
             options={editorOptions}
           />
         </div>
@@ -99,6 +118,51 @@ function dbtEditor({ project }) {
       </div>
     </div>
   );
+}
+
+// Get packages
+function buildSidebar(nodes) {
+  const projectData = []
+  for(let node in nodes) {
+    const thisNode = nodes[node]
+    const nodePath = thisNode?.path?.split('/')
+    // If path not available in node, skip item in loop
+    if(!nodePath) continue
+    const filename = nodePath[nodePath.length - 1]
+
+    // Set top-level directories
+    let thisPackage = projectData.find(project => project?.project === thisNode.package_name)
+    if(!thisPackage) {
+      // Create new top-level package if not found
+      thisPackage = {
+        project: thisNode.package_name,
+        resources: [],
+      }
+      projectData.push(thisPackage)
+    }
+
+    // Set resources
+    let packagesResources = thisPackage?.resources?.find(resource => resource?.name === thisNode.resource_type)
+    if(!packagesResources) {
+      packagesResources = {
+        name: thisNode.resource_type,
+        nodes: [],
+      }
+      thisPackage.resources.push(packagesResources)
+    }
+
+    // Set nodes
+    let packageNodes = thisPackage?.resources?.nodes?.find(node => node.name === filename)
+    if(!packageNodes) {
+      packageNodes = {
+        name: filename,
+        sql: thisNode.raw_sql,
+      }
+      packagesResources.nodes.push(packageNodes)
+    }
+  } 
+
+  return projectData
 }
 
 export default dbtEditor;

@@ -10,6 +10,8 @@
 /* Sidebar */
 .dbtEditorSidebar {
   flex: 1 1 256px;
+  max-width: 256px;
+  overflow-x: auto;
   background: #F9FAFB;
   border-right: 1px solid #E5E7EB;
   padding: 20px;
@@ -19,14 +21,22 @@
 }
 .dbtEditorSidebar .sidebarHeader {
   font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
 }
 .dbtEditorSidebar .sidebarList {
   font-weight: 400;
   list-style: none;
   padding-left: 0;
 }
+.dbtEditorSidebar .sidebarNestedList {
+  list-style: none;
+  padding-left: 10px;
+}
 .dbtEditorSidebar .sidebarList li {
-  font-size: 14px;
+  font-size: 12px;
+}
+.listItem {
   display: flex;
   align-items: center;
 }
