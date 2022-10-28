@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Editor from "@monaco-editor/react";
 import SubMenu from './sub-menu';
+import { buildSidebar } from './utils/build-sidebar';
+import { parseCsv } from './utils/parse-csv';
 import styles from './styles.module.css';
 
 const editorOptions = {
@@ -17,13 +19,16 @@ const editorOptions = {
 }
 
 const defaultEditorValue = "/*\n  Welcome to the dbt editor!\n  Select a file on the left to get started.\n*/"
+const errorEditorValue = "/*\n  Unable to get CSV data. \n Try selecting another seed.\n*/"
 
 function dbtEditor({ project }) {
   const [manifest, setManifest] = useState({})
   const [sidebar, setSidebar] = useState([])
+  const [csvData, setCsvData] = useState()
   const [currentSql, setCurrentSql] = useState()
   const [error, setError] = useState(false)
   const [packageOpen, setPackageOpen] = useState(true)
+
   useEffect(() => {
     setError(false)
     async function buildData() {
@@ -46,11 +51,14 @@ function dbtEditor({ project }) {
   }, [])  
 
   // Get selected node from sidebar
-  const handleFileSelect = (e) => {
-    const { node_name, resource_type } = e?.target?.dataset
-    console.log('resource_type', resource_type)
-    console.log('node_name', node_name)
-    if(!node_name) {
+  const handleFileSelect = async (e) => {
+    const { 
+      package_name, 
+      resource_type, 
+      node_name, 
+      file_name 
+    } = e?.target?.dataset
+    if(!package_name || !resource_type || !node_name) {
       setError(true)
       return
     }
@@ -61,13 +69,22 @@ function dbtEditor({ project }) {
       return
     }
 
-    let thisSql = ""
-    if(thisNode?.raw_sql) {
-      thisSql = thisNode.raw_sql
-    } else if(thisNode?.raw_code) {
-      thisSql = thisNode.raw_code
+    if(resource_type === 'seed') {
+      // Show CSV seed data
+      const csvRes = await parseCsv(project, file_name)
+      if(!csvRes) {
+        setCurrentSql(errorEditorValue)
+      }
+    } else {
+      // Show SQL code in editor
+      let thisSql = ""
+      if(thisNode?.raw_sql) {
+        thisSql = thisNode.raw_sql
+      } else if(thisNode?.raw_code) {
+        thisSql = thisNode.raw_code
+      }
+      setCurrentSql(thisSql)
     }
-    setCurrentSql(thisSql)
   }
 
   return (
@@ -94,6 +111,7 @@ function dbtEditor({ project }) {
                     <>
                       {project?.resources && project.resources.map(resource => (
                         <SubMenu 
+                          project={project.project}
                           resource={resource} 
                           handleFileSelect={handleFileSelect}
                           key={resource.name}
@@ -165,51 +183,6 @@ function dbtEditor({ project }) {
       )}
     </>
   );
-}
-
-// Util: Get packages
-function buildSidebar(nodes) {
-  const projectData = []
-  for(let node in nodes) {
-    const thisNode = nodes[node]
-    const nodePath = thisNode?.path?.split('/')
-    // If path not available in node, skip item in loop
-    if(!nodePath) continue
-    const filename = nodePath[nodePath.length - 1]
-
-    // Set top-level directories
-    let thisPackage = projectData.find(project => project?.project === thisNode.package_name)
-    if(!thisPackage) {
-      // Create new top-level package if not found
-      thisPackage = {
-        project: thisNode.package_name,
-        resources: [],
-      }
-      projectData.push(thisPackage)
-    }
-
-    // Set resources
-    let packagesResources = thisPackage?.resources?.find(resource => resource?.name === thisNode.resource_type)
-    if(!packagesResources) {
-      packagesResources = {
-        name: thisNode.resource_type,
-        nodes: [],
-      }
-      thisPackage.resources.push(packagesResources)
-    }
-
-    // Set nodes
-    let packageNodes = thisPackage?.resources?.nodes?.find(node => node.name === thisNode.name)
-    if(!packageNodes) {
-      packageNodes = {
-        node,
-        name: thisNode.name,
-      }
-      packagesResources.nodes.push(packageNodes)
-    }
-  } 
-
-  return projectData
 }
 
 export default dbtEditor;

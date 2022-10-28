@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.css';
 
-export default function SubMenu({ resource, handleFileSelect }) {
+export default function SubMenu({ project, resource, handleFileSelect }) {
   const [subMenuOpen, setSubMenuOpen] = useState(false)
   return (
     <ul 
       className={styles.sidebarNestedList} 
       key={resource.name}
     >
-      <li title={resource.name}>
+      <li title={`${resource.name}s`}>
         <span 
           className={styles.listItem} 
           onClick={() => setSubMenuOpen(!subMenuOpen)}
@@ -27,8 +27,10 @@ export default function SubMenu({ resource, handleFileSelect }) {
                 <span 
                   className={styles.listItem}
                   onClick={(e) => handleFileSelect(e)} 
-                  data-node_name={node.node}
+                  data-package_name={project}
                   data-resource_type={resource.name}
+                  data-node_name={node.node}
+                  data-file_name={node.name}
                 >
                   <img src={resource.name === 'seed'
                     ? `/img/seed-icon.svg`
