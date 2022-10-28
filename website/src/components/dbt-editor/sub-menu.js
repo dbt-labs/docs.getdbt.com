@@ -8,7 +8,7 @@ export default function SubMenu({ resource, handleFileSelect }) {
       className={styles.sidebarNestedList} 
       key={resource.name}
     >
-      <li>
+      <li title={resource.name}>
         <span 
           className={styles.listItem} 
           onClick={() => setSubMenuOpen(!subMenuOpen)}
@@ -23,13 +23,16 @@ export default function SubMenu({ resource, handleFileSelect }) {
             ${!subMenuOpen ? styles.hideItem : ''}
           `}>
             {resource.nodes.map(node => (
-              <li key={node.name}>
+              <li key={node.name} title={node.name}>
                 <span 
                   className={styles.listItem}
                   onClick={(e) => handleFileSelect(e)} 
                   data-nodeName={node.node}
                 >
-                  <img src="/img/file-icon.svg" /> {node.name}
+                  <img src={resource.name === 'seed'
+                    ? `/img/seed-icon.svg`
+                    : `/img/file-icon.svg`} 
+                  /> {node.name}
                 </span>
               </li>
             ))}

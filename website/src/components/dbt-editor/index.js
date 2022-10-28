@@ -7,6 +7,13 @@ import styles from './styles.module.css';
 const editorOptions = {
   readOnly: false,
   minimap: { enabled: false },
+  scrollbar: {
+    vertical: 'hidden'
+  },
+  overviewRulerBorder: false,
+  wordWrap: 'on',
+  overviewRulerLanes: 0,
+  hideCursorInOverviewRuler: true,
 }
 
 const defaultEditorValue = "/*\n  Welcome to the dbt editor!\n  Select a file on the left to get started.\n*/"
@@ -65,7 +72,7 @@ function dbtEditor({ project }) {
             <span className={styles.sidebarHeader}>File Explorer</span>
             <ul className={styles.sidebarList}>
               {sidebar && sidebar.map(project => (
-                <li key={project.project}>
+                <li key={project.project} title={project.project}>
                   <span 
                     className={styles.listItem}
                     onClick={() => setPackageOpen(!packageOpen)}
@@ -90,14 +97,15 @@ function dbtEditor({ project }) {
             </ul>
           </div>
           <div className={styles.dbtEditorMain}>
-            <div className="editorCli">
+            <div className={styles.dbtEditorCli}>
               <Editor
-                height="400px"
+                height="300px"
                 width="100%"
                 defaultLanguage="sql"
                 defaultValue={defaultEditorValue}
                 value={currentSql}
                 options={editorOptions}
+                className='overflow-hidden'
               />
             </div>
             <div className={styles.dbtEditorActions}>
@@ -182,11 +190,11 @@ function buildSidebar(nodes) {
     }
 
     // Set nodes
-    let packageNodes = thisPackage?.resources?.nodes?.find(node => node.name === filename)
+    let packageNodes = thisPackage?.resources?.nodes?.find(node => node.name === thisNode.name)
     if(!packageNodes) {
       packageNodes = {
         node,
-        name: filename,
+        name: thisNode.name,
         sql: thisNode.raw_sql,
       }
       packagesResources.nodes.push(packageNodes)

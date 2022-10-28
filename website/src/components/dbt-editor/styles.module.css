@@ -19,7 +19,8 @@
 .dbtEditorSidebar {
   flex: 1 0 100%;
   max-height: 200px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: #F9FAFB;
   border-right: 1px solid #E5E7EB;
   padding: 20px;
@@ -32,7 +33,6 @@
     flex: 1 0 256px;
     max-width: 256px;
     max-height: initial;
-    overflow-y: hidden;
   }
 }
 .dbtEditorSidebar .sidebarHeader {
@@ -76,14 +76,14 @@
 
 /* CLI */
 .dbtEditorCli {
-  padding: 20px;
+  padding: 20px 0;
 }
 
 /* Actions */
 .dbtEditorActions {
   display: flex;
   background: #F9FAFB;
-  padding: 5px 20px;
+  padding: 5px 20px 5px 24px;
 }
 .editorAction {
   margin-right: 15px;
@@ -109,7 +109,7 @@
 .resultsHeader {
   color: #1F2937;
   background: #fff;
-  padding: 5px;
+  padding: 10px;
   font-size: 12px;
   display: flex;
   align-items: center;
@@ -147,4 +147,8 @@
 }
 .dbtEditorResults table tr:nth-child(2n) {
   background: #fff;
+}
+.dbtEditorResults table tr th:first-of-type,
+.dbtEditorResults table tr td:first-of-type {
+  padding-left: 24px;
 }
