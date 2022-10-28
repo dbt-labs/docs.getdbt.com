@@ -162,7 +162,7 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
     </ul></div> </div>
 </details>
 <details>
-    <summary>Is there a dbt Semantic Layer discusssion hub?</summary>
+    <summary>Is there a dbt Semantic Layer discussion hub?</summary>
   <div>
     <div>Yes absolutely! Join the <a href="https://getdbt.slack.com">dbt Slack community</a> and <a href="https://getdbt.slack.com/archives/C046L0VTVR6">#dbt-cloud-semantic-layer slack channel</a> for all things related to the dbt Semantic Layer. 
     </div>
