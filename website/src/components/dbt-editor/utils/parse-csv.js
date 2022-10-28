@@ -17,24 +17,6 @@ export const parseCsv = async (project, filename) => {
       complete: (results) => {
         const { data } = results
         csvData = data
-
-        // // Set CSV headers
-        // csvHeaders = data[0]
-
-        // // Get all other rows
-        // const dataWithoutHeaders = data.slice(1);
-
-        // // Build array of objects from CSV data
-        // csvData = dataWithoutHeaders.reduce((acc, cur) => {
-        //   let rowObj = {}
-        //   cur.map((column, i) => {
-        //     rowObj[csvHeaders[i].toLowerCase()] = column
-        //   })
-        //   if(rowObj) {
-        //     acc.push(rowObj)
-        //   }
-        //   return acc
-        // }, []);
       },
       error: (err) => {
         console.log(err)
