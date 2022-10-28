@@ -165,7 +165,7 @@ function dbtEditor({ project }) {
                     {csvData.map((row, i) => (
                       i === 0
                         ? (
-                          <thead>
+                          <thead key={i}>
                             <tr>
                               {row.map(col => (
                                 <th>{col}</th>
@@ -173,7 +173,7 @@ function dbtEditor({ project }) {
                             </tr>
                           </thead>
                         ) : (
-                          <tbody>
+                          <tbody key={i}>
                             <tr>
                               {row.map(col => (
                                 <td>{col}</td>

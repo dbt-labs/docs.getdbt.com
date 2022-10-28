@@ -24,19 +24,42 @@ export const buildSidebar = (nodes) => {
     if(!packagesResources) {
       packagesResources = {
         name: thisNode.resource_type,
-        nodes: [],
+        directories: [],
+        nodes: []
       }
       thisPackage.resources.push(packagesResources)
     }
 
-    // Set nodes
-    let packageNodes = thisPackage?.resources?.nodes?.find(node => node.name === thisNode.name)
-    if(!packageNodes) {
-      packageNodes = {
-        node,
-        name: thisNode.name,
+    // Set directories
+    const directory = thisNode.path.substr(0, thisNode.path.indexOf('/'))
+    if(!directory) {
+      // Add node to top level
+      let packageNodes = packagesResources?.nodes?.find(node => node.name === thisNode.name)
+      if(!packageNodes) {
+        packageNodes = {
+          node,
+          name: thisNode.name,
+        }
+        packagesResources.nodes.push(packageNodes)
       }
-      packagesResources.nodes.push(packageNodes)
+    } else {
+      // Add node to directory
+      let directoryNode = packagesResources?.directories?.find(dir => {
+          if(dir.name === directory) return true
+        }
+      )
+      if(!directoryNode && directory) {
+        directoryNode = {
+          name: directory,
+          nodes: []
+        }
+        packagesResources.directories.push(directoryNode)
+      } else {
+        directoryNode.nodes.push({
+          node,
+          name: thisNode.name,
+        })
+      }
     }
   } 
 
