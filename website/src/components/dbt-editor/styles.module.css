@@ -7,6 +7,7 @@
   color: #111827;
   border-radius: 10px;
   border: 1px solid #E5E7EB;
+  background: #fff;
 }
 @media (min-width: 1200px) {
   .dbtEditor {
@@ -88,6 +89,7 @@
   margin-right: 15px;
   background: #fff;
   border: 1px solid #D1D5DB;
+  color: #111827;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   padding: 7px 11px;
@@ -106,6 +108,7 @@
 /* Results */
 .resultsHeader {
   color: #1F2937;
+  background: #fff;
   padding: 5px;
   font-size: 12px;
   display: flex;
@@ -121,12 +124,16 @@
 .dbtEditorResults table {
   display: table;
   color: #111827;
+  background: #fff;
 }
 .dbtEditorResults table, .dbtEditorResults table thead, .dbtEditorResults table tbody {
   width: 100%;
 }
 .dbtEditorResults tr {
   border-bottom: 1px solid #E5E7EB;
+}
+.dbtEditorResults table thead tr {
+  border-top: 1px solid #E5E7EB;
 }
 .dbtEditorResults table th {
   text-align: left;
@@ -136,7 +143,7 @@
 .dbtEditorResults table th, .dbtEditorResults table td {
   font-size: 14px;
   border: none;
-  color: #111827;
+  color: #111827 !important;
 }
 .dbtEditorResults table tr:nth-child(2n) {
   background: #fff;

@@ -108,7 +108,7 @@ function dbtEditor({ project }) {
             </div>
             <div className={styles.dbtEditorResults}>
               <div className={styles.resultsHeader}>
-                <span>17.0sec</span> | Results limited to 500 rows. <img src="/img/info-icon.svg" />
+                <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
               </div>
               <table>
                 <thead>
