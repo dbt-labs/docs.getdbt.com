@@ -27,7 +27,8 @@ export default function SubMenu({ resource, handleFileSelect }) {
                 <span 
                   className={styles.listItem}
                   onClick={(e) => handleFileSelect(e)} 
-                  data-nodeName={node.node}
+                  data-node_name={node.node}
+                  data-resource_type={resource.name}
                 >
                   <img src={resource.name === 'seed'
                     ? `/img/seed-icon.svg`

@@ -47,13 +47,15 @@ function dbtEditor({ project }) {
 
   // Get selected node from sidebar
   const handleFileSelect = (e) => {
-    const { nodename } = e?.target?.dataset
-    if(!nodename) {
+    const { node_name, resource_type } = e?.target?.dataset
+    console.log('resource_type', resource_type)
+    console.log('node_name', node_name)
+    if(!node_name) {
       setError(true)
       return
     }
 
-    const thisNode = manifest?.nodes[nodename]
+    const thisNode = manifest?.nodes[node_name]
     if(!thisNode) {
       setError(true)
       return
@@ -94,6 +96,7 @@ function dbtEditor({ project }) {
                         <SubMenu 
                           resource={resource} 
                           handleFileSelect={handleFileSelect}
+                          key={resource.name}
                         />
                       ))}
                     </>
@@ -115,10 +118,10 @@ function dbtEditor({ project }) {
               />
             </div>
             <div className={styles.dbtEditorActions}>
-              <button class={styles.editorAction}>Preview</button>
-              <button class={styles.editorAction}>Save</button>
-              <button class={styles.editorAction}>Run</button>
-              <button class={styles.editorAction}>Test</button>
+              <button className={styles.editorAction}>Preview</button>
+              <button className={styles.editorAction}>Save</button>
+              <button className={styles.editorAction}>Run</button>
+              <button className={styles.editorAction}>Test</button>
             </div>
             <div className={styles.dbtEditorResults}>
               <div className={styles.resultsHeader}>
