@@ -32,7 +32,7 @@ For the sake of this tutorial, we’re loading in our sources as [seeds](https:/
 
 Use this first IDE to explore these raw data sources, perform some exploratory data analysis (EDA), and get familiar with your dbt project. No wrong answers here 🙂
 
-<dbtEditor project="hackathon" />
+<dbtEditor project="hackathon-email-step1" />
 
 ## Step 2: Build your staging models
 
@@ -52,6 +52,7 @@ How would you go about ensuring columns are named properly across models? Which 
 
 Use the IDE below to create the staging models listed above. Remember: simpler is better (when it comes to most things in SQL and definitely in staging models 😉).
 
+<dbtEditor project="hackathon-email-step2" />
 
 ## Step 3: Develop intermediate models
 Getting to the good stuff! [Intermediate models](https://docs.getdbt.com/guides/best-practices/how-we-structure/3-intermediate) are low-key the powerhouse of many dbt projects. These are your atomic building blocks that may be used across different fact and dimensional models and should offer a high-level of flexibility. You’ll be joining, adding in some aggregates and case statements, and really leveraging your SQL skills.
@@ -64,6 +65,8 @@ By the end of this stage, you should come out with 4 new models:
 - `hubspot__email_sends.sql`: Leverage the newly created `int_hubspot__email_event_aggregates` model to tag on aggregate metrics to `hubspot__email_event_sent` model. Optionally create booleans based off aggregates to create more user-friendly fields (`if count_opens > 1 then 'was_opened'`) for relevant metrics.
 
 Use the IDE below with the already populated new files to fill out what you think should be in them.
+
+<dbtEditor project="hackathon-email-step3" />
 
 ## Step 4: Bringing it all together with a final mart model
 
@@ -78,3 +81,5 @@ Given all that you’ve accomplished leading up to this, your final `fct_hubspot
 - Optionally creating a new `status` column that determines the highest status (click, open, delivered, sent) an email has based off of the booleans you created in `hubspot__email_sends` .
 
 Use the IDE below to create your final model using the guidance from above. (Note that if you were to take this code tutorial into your own dbt project, you should have your final model here materialized as a table).
+
+<dbtEditor project="hackathon-email-step4" />
