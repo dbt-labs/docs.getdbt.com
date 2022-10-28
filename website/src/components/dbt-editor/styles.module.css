@@ -1,7 +1,8 @@
 .dbtEditor {
   width: 100%;
   max-width: 100%;
-  overflow-x: auto;
+  max-height: 770px;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   color: #111827;
@@ -67,6 +68,7 @@
 /* Main editor */
 .dbtEditorMain {
   flex: 1 1 100%;
+  overflow: auto;
 }
 @media (min-width: 1200px) {
   .dbtEditorMain {
@@ -125,12 +127,16 @@
   display: table;
   color: #111827;
   background: #fff;
+  margin: 0;
 }
 .dbtEditorResults table, .dbtEditorResults table thead, .dbtEditorResults table tbody {
   width: 100%;
 }
 .dbtEditorResults tr {
   border-bottom: 1px solid #E5E7EB;
+}
+.dbtEditorResults tr:last-of-type {
+  border-bottom: none;
 }
 .dbtEditorResults table thead tr {
   border-top: 1px solid #E5E7EB;

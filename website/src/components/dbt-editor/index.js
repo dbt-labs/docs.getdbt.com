@@ -25,7 +25,7 @@ function dbtEditor({ project }) {
   const [manifest, setManifest] = useState({})
   const [sidebar, setSidebar] = useState([])
   const [csvData, setCsvData] = useState()
-  const [currentSql, setCurrentSql] = useState()
+  const [currentSql, setCurrentSql] = useState(defaultEditorValue)
   const [error, setError] = useState(false)
   const [packageOpen, setPackageOpen] = useState(true)
 
@@ -72,9 +72,16 @@ function dbtEditor({ project }) {
     if(resource_type === 'seed') {
       // Show CSV seed data
       const csvRes = await parseCsv(project, file_name)
+      // If CSV data not found, show message in editor
       if(!csvRes) {
         setCurrentSql(errorEditorValue)
+        setCsvData(undefined)
+        return
       }
+
+      // Show seed data from CSV
+      setCurrentSql("")
+      setCsvData(csvRes)
     } else {
       // Show SQL code in editor
       let thisSql = ""
@@ -84,6 +91,7 @@ function dbtEditor({ project }) {
         thisSql = thisNode.raw_code
       }
       setCurrentSql(thisSql)
+      setCsvData(undefined)
     }
   }
 
@@ -124,57 +132,90 @@ function dbtEditor({ project }) {
             </ul>
           </div>
           <div className={styles.dbtEditorMain}>
-            <div className={styles.dbtEditorCli}>
-              <Editor
-                height="300px"
-                width="100%"
-                defaultLanguage="sql"
-                defaultValue={defaultEditorValue}
-                value={currentSql}
-                options={editorOptions}
-                className='overflow-hidden'
-              />
-            </div>
-            <div className={styles.dbtEditorActions}>
-              <button className={styles.editorAction}>Preview</button>
-              <button className={styles.editorAction}>Save</button>
-              <button className={styles.editorAction}>Run</button>
-              <button className={styles.editorAction}>Test</button>
-            </div>
+            {currentSql && (
+              <>
+                <div className={styles.dbtEditorCli}>
+                  <Editor
+                    height="300px"
+                    width="100%"
+                    defaultLanguage="sql"
+                    defaultValue={defaultEditorValue}
+                    value={currentSql}
+                    options={editorOptions}
+                    className='overflow-hidden'
+                  />
+                </div>
+                <div className={styles.dbtEditorActions}>
+                  <button className={styles.editorAction}>Preview</button>
+                  <button className={styles.editorAction}>Save</button>
+                  <button className={styles.editorAction}>Run</button>
+                  <button className={styles.editorAction}>Test</button>
+                </div>
+              </>
+            )}
             <div className={styles.dbtEditorResults}>
-              <div className={styles.resultsHeader}>
-                <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
-              </div>
+              {!csvData && (
+                <div className={styles.resultsHeader}>
+                  <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
+                </div>
+              )}
               <table>
-                <thead>
-                  <tr>
-                    <th>customer_id</th>
-                    <th>orders</th>
-                    <th>payments</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>21532</td>
-                    <td>12</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td>49823</td>
-                    <td>4</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>89234</td>
-                    <td>2</td>
-                    <td>2</td>
-                  </tr>
-                  <tr>
-                    <td>12546</td>
-                    <td>11</td>
-                    <td>11</td>
-                  </tr>
-                </tbody>
+                {csvData && csvData.length > 0 ? (
+                  <>
+                    {csvData.map((row, i) => (
+                      i === 0
+                        ? (
+                          <thead>
+                            <tr>
+                              {row.map(col => (
+                                <th>{col}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                        ) : (
+                          <tbody>
+                            <tr>
+                              {row.map(col => (
+                                <td>{col}</td>
+                              ))}
+                            </tr>
+                          </tbody>
+                        )
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <thead>
+                      <tr>
+                        <th>customer_id</th>
+                        <th>orders</th>
+                        <th>payments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>21532</td>
+                        <td>12</td>
+                        <td>12</td>
+                      </tr>
+                      <tr>
+                        <td>49823</td>
+                        <td>4</td>
+                        <td>3</td>
+                      </tr>
+                      <tr>
+                        <td>89234</td>
+                        <td>2</td>
+                        <td>2</td>
+                      </tr>
+                      <tr>
+                        <td>12546</td>
+                        <td>11</td>
+                        <td>11</td>
+                      </tr>
+                    </tbody>
+                  </>
+                )}
               </table>
             </div>
           </div>

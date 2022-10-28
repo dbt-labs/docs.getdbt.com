@@ -11,29 +11,30 @@ export const parseCsv = async (project, filename) => {
     if (!file) return setError("Enter a valid file")
 
     let csvData = []
-    let csvHeaders
+    // let csvHeaders
     Papa.parse(file.data, {
       header: false,
       complete: (results) => {
         const { data } = results
-        // Set CSV headers
-        csvHeaders = data[0]
+        csvData = data
 
-        // Get all other rows
-        const dataWithoutHeaders = data.slice(1);
+        // // Set CSV headers
+        // csvHeaders = data[0]
 
-        // Build array of objects from CSV data
-        csvData = dataWithoutHeaders.reduce((acc, cur) => {
-          let rowObj = {}
-          cur.map((column, i) => {
-            rowObj[csvHeaders[i].toLowerCase()] = column
-          })
-          if(rowObj) {
-            acc.push(rowObj)
-          }
-          return acc
-        }, []);
+        // // Get all other rows
+        // const dataWithoutHeaders = data.slice(1);
 
+        // // Build array of objects from CSV data
+        // csvData = dataWithoutHeaders.reduce((acc, cur) => {
+        //   let rowObj = {}
+        //   cur.map((column, i) => {
+        //     rowObj[csvHeaders[i].toLowerCase()] = column
+        //   })
+        //   if(rowObj) {
+        //     acc.push(rowObj)
+        //   }
+        //   return acc
+        // }, []);
       },
       error: (err) => {
         console.log(err)
