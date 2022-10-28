@@ -30,6 +30,9 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Host Name | The hostname of the Postgres, Redshift, or AlloyDB database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
+
+**Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs.
+
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" title="Configuring a Redshift connection"/>
 
 ### Connecting via an SSH Tunnel
@@ -140,7 +143,7 @@ In addition to these fields, there are two other optional fields that can be con
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a BigQuery user without the configuration of BigQuery service account keyfile in dbt Cloud. For
 more information on the initial configuration of a BigQuery OAuth connection in dbt Cloud, please see
-[the docs on setting up BigQuery OAuth](/docs/collaborate/manage-access/set-up-bigquery-oauth.
+[the docs on setting up BigQuery OAuth](/docs/collaborate/manage-access/set-up-bigquery-oauth).
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
