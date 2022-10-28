@@ -32,7 +32,7 @@ For the sake of this tutorial, we’re loading in our sources as [seeds](https:/
 
 Use this first IDE to explore these raw data sources, perform some exploratory data analysis (EDA), and get familiar with your dbt project. No wrong answers here 🙂
 
-<dbtEditor project="jaffle_shop" />
+<dbtEditor project="hackathon-email-playbook-kf-add-models" />
 
 ## Step 2: Build your staging models
 
@@ -52,7 +52,6 @@ How would you go about ensuring columns are named properly across models? Which 
 
 Use the IDE below to create the staging models listed above. Remember: simpler is better (when it comes to most things in SQL and definitely in staging models 😉).
 
-<dbtEditor project="dbt_sample_project" />
 
 ## Step 3: Develop intermediate models
 Getting to the good stuff! [Intermediate models](https://docs.getdbt.com/guides/best-practices/how-we-structure/3-intermediate) are low-key the powerhouse of many dbt projects. These are your atomic building blocks that may be used across different fact and dimensional models and should offer a high-level of flexibility. You’ll be joining, adding in some aggregates and case statements, and really leveraging your SQL skills.

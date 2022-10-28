@@ -59,7 +59,13 @@ function dbtEditor({ project }) {
       return
     }
 
-    setCurrentSql(thisNode.raw_sql)
+    let thisSql = ""
+    if(thisNode?.raw_sql) {
+      thisSql = thisNode.raw_sql
+    } else if(thisNode?.raw_code) {
+      thisSql = thisNode.raw_code
+    }
+    setCurrentSql(thisSql)
   }
 
   return (
@@ -195,7 +201,6 @@ function buildSidebar(nodes) {
       packageNodes = {
         node,
         name: thisNode.name,
-        sql: thisNode.raw_sql,
       }
       packagesResources.nodes.push(packageNodes)
     }
