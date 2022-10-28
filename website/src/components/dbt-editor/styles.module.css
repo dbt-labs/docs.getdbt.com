@@ -35,6 +35,7 @@
 }
 .dbtEditorSidebar .sidebarList li {
   font-size: 12px;
+  cursor: pointer;
 }
 .listItem {
   display: flex;

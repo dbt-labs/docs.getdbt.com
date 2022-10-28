@@ -34,6 +34,8 @@ Use this first IDE to explore these raw data sources, perform some exploratory d
 
 <dbtEditor project="jaffle_shop" />
 
+<dbtEditor project="dbt_sample_project" />
+
 ## Step 2: Build your staging models
 
 As with any new modeling project in dbt, we always recommend by creating a 1-1 mapping of raw sources with new [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging). These models are meant to perform relatively simple cleanup (type recasting, column renaming, rounding, etc.); they’re not meant to be performing any joins or complex logic.
