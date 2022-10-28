@@ -1,23 +1,38 @@
 .dbtEditor {
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   color: #111827;
   border-radius: 10px;
   border: 1px solid #E5E7EB;
 }
+@media (min-width: 1200px) {
+  .dbtEditor {
+    flex-wrap: nowrap;
+  }
+}
 
 /* Sidebar */
 .dbtEditorSidebar {
-  flex: 1 1 256px;
-  max-width: 256px;
-  overflow-x: auto;
+  flex: 1 0 100%;
+  max-height: 200px;
+  overflow: auto;
   background: #F9FAFB;
   border-right: 1px solid #E5E7EB;
   padding: 20px;
   font-size: 14px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+@media (min-width: 1200px) {
+  .dbtEditorSidebar {
+    flex: 1 0 256px;
+    max-width: 256px;
+    max-height: initial;
+    overflow-y: hidden;
+  }
 }
 .dbtEditorSidebar .sidebarHeader {
   font-weight: 600;
@@ -44,10 +59,18 @@
 .dbtEditorSidebar .sidebarList li img {
   margin-right: 5px;
 }
+.hideItem {
+  display: none;
+}
 
 /* Main editor */
 .dbtEditorMain {
-  flex: 1 1 calc(100% - 256px);
+  flex: 1 1 100%;
+}
+@media (min-width: 1200px) {
+  .dbtEditorMain {
+    flex: 11 calc(100% - 256px);
+  }
 }
 
 /* CLI */

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Editor from "@monaco-editor/react";
+import SubMenu from './sub-menu';
 import styles from './styles.module.css';
 
 const editorOptions = {
@@ -15,6 +16,7 @@ function dbtEditor({ project }) {
   const [sidebar, setSidebar] = useState([])
   const [currentSql, setCurrentSql] = useState()
   const [error, setError] = useState(false)
+  const [packageOpen, setPackageOpen] = useState(true)
   useEffect(() => {
     setError(false)
     async function buildData() {
@@ -36,18 +38,15 @@ function dbtEditor({ project }) {
     buildData()
   }, [])  
 
-  console.log('sidebar', sidebar)
-
   // Get selected node from sidebar
   const handleFileSelect = (e) => {
-    const { packagename, nodename } = e?.target?.dataset
-    if(!packagename || !nodename) {
+    const { nodename } = e?.target?.dataset
+    if(!nodename) {
       setError(true)
       return
     }
 
     const thisNode = manifest?.nodes[nodename]
-    console.log('thisNode', thisNode)
     if(!thisNode) {
       setError(true)
       return
@@ -56,7 +55,6 @@ function dbtEditor({ project }) {
     setCurrentSql(thisNode.raw_sql)
   }
 
-  console.log('currentSql', currentSql)
   return (
     <>
       {error ? (
@@ -67,34 +65,26 @@ function dbtEditor({ project }) {
             <span className={styles.sidebarHeader}>File Explorer</span>
             <ul className={styles.sidebarList}>
               {sidebar && sidebar.map(project => (
-                <li>
-                  <span className={styles.listItem}>
-                    <img src="/img/folder-open.svg" /> {project.project}
+                <li key={project.project}>
+                  <span 
+                    className={styles.listItem}
+                    onClick={() => setPackageOpen(!packageOpen)}
+                  >
+                    <img src={`${packageOpen
+                      ? `/img/folder-open.svg`
+                      : `/img/folder.svg`
+                    }`} />{project.project}
                   </span>
-                  {project?.resources && project.resources.map(resource => (
-                    <ul className={styles.sidebarNestedList}>
-                      <li>
-                        <span className={styles.listItem}>
-                          <img src="/img/folder.svg" /> {resource.name}
-                        </span>
-                        {resource?.nodes && (
-                          <ul className={styles.sidebarNestedList}>
-                            {resource.nodes.map(node => (
-                              <li>
-                                <span 
-                                  className={styles.listItem}
-                                  onClick={(e) => handleFileSelect(e)} data-nodeName={node.node}
-                                  data-packageName={project.project}
-                                >
-                                  <img src="/img/file-icon.svg" /> {node.name}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    </ul>
-                  ))}
+                  {packageOpen && (
+                    <>
+                      {project?.resources && project.resources.map(resource => (
+                        <SubMenu 
+                          resource={resource} 
+                          handleFileSelect={handleFileSelect}
+                        />
+                      ))}
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
@@ -103,6 +93,7 @@ function dbtEditor({ project }) {
             <div className="editorCli">
               <Editor
                 height="400px"
+                width="100%"
                 defaultLanguage="sql"
                 defaultValue={defaultEditorValue}
                 value={currentSql}
@@ -159,7 +150,7 @@ function dbtEditor({ project }) {
   );
 }
 
-// Get packages
+// Util: Get packages
 function buildSidebar(nodes) {
   const projectData = []
   for(let node in nodes) {

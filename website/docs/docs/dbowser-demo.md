@@ -34,8 +34,6 @@ Use this first IDE to explore these raw data sources, perform some exploratory d
 
 <dbtEditor project="jaffle_shop" />
 
-<dbtEditor project="dbt_sample_project" />
-
 ## Step 2: Build your staging models
 
 As with any new modeling project in dbt, we always recommend by creating a 1-1 mapping of raw sources with new [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging). These models are meant to perform relatively simple cleanup (type recasting, column renaming, rounding, etc.); they’re not meant to be performing any joins or complex logic.
@@ -53,6 +51,8 @@ At the end of this modeling stage, you should have 5 new models (downstream from
 How would you go about ensuring columns are named properly across models? Which columns do you think you need selected to perform downstream joins?
 
 Use the IDE below to create the staging models listed above. Remember: simpler is better (when it comes to most things in SQL and definitely in staging models 😉).
+
+<dbtEditor project="dbt_sample_project" />
 
 ## Step 3: Develop intermediate models
 Getting to the good stuff! [Intermediate models](https://docs.getdbt.com/guides/best-practices/how-we-structure/3-intermediate) are low-key the powerhouse of many dbt projects. These are your atomic building blocks that may be used across different fact and dimensional models and should offer a high-level of flexibility. You’ll be joining, adding in some aggregates and case statements, and really leveraging your SQL skills.
