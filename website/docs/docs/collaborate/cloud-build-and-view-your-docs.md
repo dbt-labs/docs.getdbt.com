@@ -21,7 +21,7 @@ To set up a job to generate docs:
 
 :::tip Tip &mdash; Documentation-only jobs 
 
-To create and schedule a documentation-only job at the end of your production jobs, add the `dbt compile` command in the **Commands** section.
+To create and schedule documentation-only jobs at the end of your production jobs, add the `dbt compile` command in the **Commands** section.
 
 :::
 
