@@ -19,7 +19,7 @@ To set up a job to generate docs:
 
 4. Click **Save**. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.
 
-:::tip Tip &mdash; For documentation-only jobs 
+:::tip Tip &mdash; Documentation-only jobs 
 
 To create and schedule a documentation-only job at the end of your production jobs, add the `dbt compile` command in the **Commands** section.
 
