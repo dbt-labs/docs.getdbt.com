@@ -21,7 +21,7 @@ provider in order to configure Single Sign On and [role-based access control](/d
 
 ## Generic SAML 2.0 integrations
 
-You can use the instructions in this section to configure an identity provider besides Okta.
+You can use the instructions in this section to configure an identity provider that isn't listed below.
 
 ### Configure your identity provider
 
@@ -313,6 +313,73 @@ From the Set up Single Sign-On with SAML page:
 
 
 9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration.
+
+
+## OneLogin integration
+
+Use this section if you are configuring OneLogin as your identity provider.
+
+To configure OneLogin, you will need **Administrator** access.
+
+### Configure the OneLogin application
+
+1. Log into OneLogin, and add a new SAML 2.0 Application.
+2. Configure the application with the following details:
+   - **Platform:** Web
+   - **Sign on method:** SAML 2.0
+   - **App name:** dbt Cloud
+   - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
+
+### Configure SAML settings
+
+The following steps assume your dbt Cloud deployment instance uses `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions) uses a different URL, then substitute ` cloud.getdbt.com` with the URL of your instance.
+
+3. To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
+can log into your application. Login slugs are typically the lowercased name of your organization
+separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
+Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. <br /><br />
+✅ Use: `your-company-name`<br />
+❌ Avoid: `Your-Company-Name`
+4. Under the **Configuration tab**, input the following values:
+
+   - **RelayState:** `<login slug>`
+   - **Audience (EntityID):** https://cloud.getdbt.com/
+   - **ACS (Consumer) URL Validator:** https://cloud.getdbt.com/complete/saml
+   - **ACS (Consumer) URL:** https://cloud.getdbt.com/complete/saml
+
+5. Next, go to the **Parameters tab**. You must have a parameter for the Email, First Name, and Last Name attributes and include all parameters in the SAML assertions. When you add the custom parameters, make sure you check the **Include in SAML assertion** checkbox.
+
+We recommend using the following values:
+
+| name | name format | value |
+| ---- | ----------- | ----- |
+| email | Unspecified | Email |
+| first_name | Unspecified | First Name |
+| last_name | Unspecified | Last Name |
+
+dbt Cloud's [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control) relies
+on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
+use role-based access control in dbt Cloud, also configure OneLogin to provide group membership information in user attribute called
+`groups`:
+
+| name | name format | value | description |
+| ---- | ----------- | ----- | ----------- |
+| groups | Unspecified | Series of groups to be used for your organization | The groups a user belongs to in the IdP |
+
+
+### Collect integration secrets
+
+6. After confirming your details, go to the **SSO tab**. OneLogin should show you the following values for
+the new integration. Keep these values somewhere safe, as you will need them to complete setup in dbt Cloud.
+
+- Issuer URL
+- SAML 2.0 Endpoint (HTTP)
+- X.509 Certificate
+
+### Finish setup
+
+7. After creating the OneLogin application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+section to complete the integration.
 
 ## dbt Cloud Setup
 
