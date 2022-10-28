@@ -47,7 +47,7 @@ _GitHub discussion forthcoming_
 - Updates made to **[Metrics](build/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
 - Plus, a few related updates to **[exposure properties](exposure-properties)**: `config`, `label`, and `name` validation.
 
-- **[Custom `node_color`](/docs/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
+- **[Custom `node_color`](/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
 - **[`Profiles.yml`](/docs/get-started/connection-profiles#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
 
 
