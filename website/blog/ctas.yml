@@ -9,4 +9,4 @@
   header: "Just Getting Started?"
   subheader: Check out guides on getting your warehouse set up and connected to dbt Cloud.
   button_text: Learn more
-  url: https://docs.getdbt.com/guides/getting-started/getting-set-up
+  url: https://docs.getdbt.com/docs/get-started/getting-started/overview
