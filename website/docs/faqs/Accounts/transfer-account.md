@@ -6,7 +6,8 @@ id: transfer-account
 
 ---
 
-If you'd like to transfer [access control](/docs/collaborate/manage-access/about-access) to another user, the table below details what steps you need to take depending on your account plan:
+
+Depending on your account plan, review the steps below if you want to transfer [access control](/docs/collaborate/manage-access/about-access) to another user.
 
 | Account plan| Steps |
 | ------ | ----------- |
