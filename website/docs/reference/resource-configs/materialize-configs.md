@@ -13,7 +13,7 @@ id: "materialize-configs"
 
 </Changelog>
 
-The [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that dbt uses to maintain materialized views or indexes can be configured in your [profile](/reference/profiles.yml) for Materialize connections. To override the cluster that is used for specific models (or groups of models), use the `cluster` model configuration.
+The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that is used to maintain materialized views or indexes can be configured in your [profile](/reference/profiles.yml) using the `cluster` connection parameter. To override the cluster that is used for specific models (or groups of models), use the `cluster` configuration parameter.
 
 <File name='my_view_cluster.sql'>
 
@@ -37,7 +37,6 @@ models:
 </File>
 
 
-**Recommendation** Create a cluster to use for anything built by dbt. This will leave Materialize's default cluster free for responding quickly to `SHOW MATERIALIZED VIEWS` and other diagnostic queries.
 
 ### Incremental models: Materialized Views
 
@@ -51,7 +50,7 @@ Materialize, at its core, is a real-time database that delivers incremental view
 
 </Changelog>
 
-Indexes assemble and maintain a query’s results in memory within a cluster, which provides future queries the data they need in a format they can immediately use.
+Like in any standard relational database, you can use [indexes](https://materialize.com/docs/overview/key-concepts/#indexes) to optimize query performance in Materialize. Improvements can be significant, reducing response times down to single-digit milliseconds.
 
 Materialized views (`materializedview`), views (`view`) and sources (`source`) may have a list of `indexes` defined. Each [Materialize index](https://materialize.com/docs/sql/create-index/) can have the following components:
 
@@ -64,6 +63,7 @@ Materialized views (`materializedview`), views (`view`) and sources (`source`) m
 
 ```sql
 {{ config(materialized='view',
+          indexes=[{'columns': ['col_a'], 'cluster': 'cluster_a'}]) }}
           indexes=[{'columns': ['symbol']}]) }}
 
 select ...

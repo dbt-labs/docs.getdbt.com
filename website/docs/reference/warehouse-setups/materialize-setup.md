@@ -49,7 +49,7 @@ pip is the easiest way to install the adapter:
 
 ## Connecting to Materialize
 
-Once you have created a Materialize instance, adapt your `profiles.yml` to connect to your instance using the following reference profile configuration:
+Once you have set up a [Materialize account](https://materialize.com/register/), adapt your `profiles.yml` to connect to your instance using the following reference profile configuration:
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -67,7 +67,7 @@ dbt-materialize:
       cluster: [cluster] # default 'default'
       schema: [dbt schema]
       sslmode: require
-      keepalives_idle: 0 # default 0, indicating the system default. See below.
+      keepalives_idle: 0 # default 0, indicating the system default
       connect_timeout: 10 # default 10 seconds
       retries: 1 # default 1 retry on error/timeout when opening connections
 ```
@@ -76,7 +76,7 @@ dbt-materialize:
 
 ### Configurations
 
-`cluster`: The Materialize [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that dbt will use to maintain indexes and materialized views. A `default` cluster exists in every environment, but we recommend creating dbt specific clusters to isolate the resources needed to build dbt projects.
+`cluster`: The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) is used to maintain materialized views or indexes. A [`default` cluster](https://materialize.com/docs/sql/show-clusters/#default-cluster) is pre-installed in every environment, but we recommend creating dedicated clusters to isolate the workloads in your dbt project (for example, `staging` and `data_mart`).
 
 `keepalives_idle`: The number of seconds before sending a ping to keep the Materialize connection active. If you are encountering `SSL SYSCALL error: EOF detected`, you may want to lower the [keepalives_idle](https://docs.getdbt.com/reference/warehouse-setups/postgres-setup#keepalives_idle) value to prevent the database from closing its connection.
 
