@@ -1,9 +1,15 @@
 ---
 id: materialization
 title: Materialization
+description: A materialization is the exact Data Definition Language (DDL) that dbt will use when creating the model’s equivalent in a data warehouse.
 displayText: materialization 
 hoverSnippet: The exact Data Definition Language (DDL) that dbt will use when creating the model’s equivalent in a data warehouse. 
 ---
+
+<head>
+    <title> What does materialization mean in the context of dbt?</title>
+</head>
+
 :::important This page could use some love
 This term would benefit from additional depth and examples. Have knowledge to contribute? [Create a discussion in the docs.getdbt.com GitHub repository](https://github.com/dbt-labs/docs.getdbt.com/discussions) to begin the process of becoming a glossary contributor!
 :::

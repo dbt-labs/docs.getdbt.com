@@ -323,6 +323,18 @@ ian_fahey:
     - url: https://twitter.com/Cavorax
       icon: fa-twitter
 
+joe_markiewicz:
+  name: Joe Markiewicz
+  job_title: Analytics Engineering Manager (Fivetran dbt package maintainer)
+  description: Joe is a dbt package maintainer/manager at Fivetran by day, and a cat obsessed video game developer by night. Actually, Joe is cat obsessed all day.
+  organization: Fivetran
+  image_url: /img/blog/authors/joe-markiewicz.jpeg
+  links:
+    - url: https://www.linkedin.com/in/joseph-markiewicz-8224a990/
+      icon: fa-linkedin
+    - url: https://twitter.com/JoeMarkiewicz17
+      icon: fa-twitter
+
 yu_ishikawa:
    name: Yu Ishikawa
    job_title: Senior Data Privacy Engineer
@@ -331,3 +343,15 @@ yu_ishikawa:
    links:
    - url: https://www.linkedin.com/in/yuishikawa0301
      icon: fa-linkedin
+
+brittany_krauth:
+   name: Brittany Krauth
+   job_title: Manager, Analytics & Insights
+   description: Brittany Krauth works as Manager, Analytics & Insights supporting Degreed's upskilling platform. Brittany is passionate about building a company-wide data-driven culture. She has worked in various analytical roles, from a focus on predictive analytics to data visualization to process improvements. In addition, she holds a BS in Industrial Engineering from Georgia Tech. In her spare time, Brittany competes in dog agility and trains donkeys.
+   organization: Degreed
+   image_url: /img/blog/authors/brittany-krauth.png
+   links:
+   - url: https://www.linkedin.com/in/brittanykrauth
+     icon: fa-linkedin
+
+

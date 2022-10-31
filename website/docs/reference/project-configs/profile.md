@@ -15,7 +15,7 @@ The profile your dbt project should use to connect to your <Term id="data-wareho
 * If you are developing locally: This configuration is required, unless a command-line option (i.e. `--profile`) is supplied.
 
 ## Related guides
-* [Connecting to your warehouse](dbt-cli/configure-your-profile)
+* [Connecting to your warehouse using the command line](/docs/get-started/connection-profiles#connecting-to-your-warehouse-using-the-command-line)
 
 ## Recommendation
 Often an organization has only one <Term id="data-warehouse" />, so it is sensible to use your organization's name as a profile name, in `snake_case`. For example:

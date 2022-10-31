@@ -18,6 +18,12 @@
     font-size: 12px;
 }
 
+:local(html[data-theme='dark'] .title) {
+    background-color: var(--ifm-menu-color-background-active);
+    border: 1px solid var(--ifm-menu-color-background-active);
+    color: white;
+}
+
 :local(.titleInner) {
     margin: 4px 8px;
 }
