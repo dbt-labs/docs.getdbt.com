@@ -85,7 +85,7 @@ function BlogPostItem(props) {
           )}
         </TitleHeading>
         <div className={clsx(styles.blogPostData, 'margin-vert--md')}>
-          <time dateTime={date} itemProp="datePublished">
+          <time id='sp-blog-date' dateTime={date} itemProp="datePublished">
             {formattedDate}
           </time>
 
@@ -97,6 +97,15 @@ function BlogPostItem(props) {
           )}
         </div>
         <BlogPostAuthors authors={authors} assets={assets} />
+        {authors && authors.length > 0 && (
+          <span id="sp-blog-author" style={{display: 'none'}}>
+            {authors.map((author, i) => (
+              <>
+                {author.name}{i !== authors.length - 1 && ', '}
+              </>
+            ))}
+          </span>
+        )}
       </header>
     );
   };
@@ -139,6 +148,15 @@ function BlogPostItem(props) {
                   'col--9': !isBlogPostPage,
                 })}>
                 <TagsListInline tags={tags} />
+                {tags && tags.length > 0 && (
+                  <span id="sp-blog-category" style={{display: 'none'}}>
+                    {tags.map((tag, i) => (
+                      <>
+                        {tag.label}{i !== tags.length - 1 && ', '}
+                      </>
+                    ))}
+                  </span>
+                )}
               </div>
             )}
 
