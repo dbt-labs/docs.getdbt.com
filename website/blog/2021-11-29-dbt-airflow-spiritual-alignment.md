@@ -22,7 +22,7 @@ In my experience, these are false dichotomies, that sound great as hot takes but
 
 <!--truncate-->
 
-In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the API](https://docs.getdbt.com/dbt-cloud/api-v2)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
+In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the official provider](https://registry.astronomer.io/providers/dbt-cloud?type=Operators&utm_campaign=Monthly+Product+Updates&utm_medium=email&_hsmi=208603877&utm_content=208603877&utm_source=hs_email)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
 
 More fundamentally, I think it’s important to call out that Airflow + dbt are **spiritually aligned** in purpose. They both exist to facilitate clear communication across data teams, in service of producing trustworthy data.
 
