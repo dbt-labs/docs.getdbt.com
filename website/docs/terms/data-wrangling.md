@@ -125,7 +125,7 @@ SQL is the most common language for data wrangling. While you can wrangle data u
 
 - `CAST` is commonly used to cast values in a column to a specified data type.
 
-- `CONVERT_TZ()` can be used to convert values in a column to a specific timezone.
+- `CONVERT_TZ` can be used to convert values in a column to a specific timezone.
 
 - `LOWER()`/`UPPER()` is used to capitalize or lowercase string values.
 
