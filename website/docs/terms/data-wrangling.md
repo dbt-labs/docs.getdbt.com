@@ -63,7 +63,7 @@ If you're struggling to do all the cleaning on your own, remember that dbt packa
 Enriching your data means enhancing it by supplementing incomplete or missing data. This could involve basic case or coalesce statements that use an already existing column in order to produce a new column. It could also look like joining an already existing date column with a date table that contains more extensive information about a certain date. Keep in mind that you don’t want to go overboard with enriching or joining here—you only want to add what will be repeatedly used in modeling and analysis.
 
 :::tip Python for enrichment?
-With the new capability of [Python in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models), will folks start using Python to help enrich their data? Only time will tell, but we’re eager to hear how you want to be using Python in dbt. Please join the [#beta-feedback-python-models channel](https://www.getdbt.com/community/join-the-community/) and join in the [GitHub discussions](https://github.com/dbt-labs/dbt-core/discussions/5261) happening around it.
+With the new capability of [Python in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models), will folks start using Python to help enrich their data? Only time will tell, but we’re eager to hear how you want to be using Python in dbt. Please join the [#dbt-core-python-models channel](https://www.getdbt.com/community/join-the-community/) to join in on the discussions happening around them.
 :::
 
 ### Validating
