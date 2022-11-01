@@ -69,7 +69,7 @@ Enterprise data catalogs are different from open source in that they are complet
 
 The biggest things to keep in mind with enterprise data catalogs is your budget, use cases, and greater data culture. Can your organization afford to pay for a data catalog tool? While they require fewer engineering resources to maintain, they do come with a price tag. When considering if it is worth spending your money on an enterprise tool, make sure you consider where your business and data teams stand. Is your business at a place where it respects the initiatives put in place by the data team? Are the initiatives big enough where having one would make sense?
 
-Does the data team fully understand the data and its lineage? If they don’t, it is probably still too confusing to put this in front of business users. You want to make sure they are set up for success when being trained to use a new tool.
+Does the data team fully understand the data and its lineage? If they don’t, it's probably too early to put this in front of business users. You want to make sure they are set up for success when being trained to use a new tool.
 
 Do you have sophisticated data models and sources that the business knows how to use? If not, it may be worth focusing on building out the right metrics and models to be used first.
 
