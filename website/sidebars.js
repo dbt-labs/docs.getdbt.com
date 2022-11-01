@@ -220,7 +220,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Collaborate",
+      label: "Collaborate with others",
       items: [
         "docs/collaborate/environments",
         {
@@ -309,7 +309,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
         "docs/use-dbt-semantic-layer/avail-sl-integrations",
       ],
-    }, 
+    },
     {
       type: "category",
       label: "Available dbt versions",
