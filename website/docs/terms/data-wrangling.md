@@ -35,7 +35,8 @@ Oftentimes, data warehouses have a preview capability so data team members can e
 
 Structuring your data is a type of transformation that involves reformatting and reorganizing your data so that it is stored in a way that makes the values usable. This could mean rearranging how the data is displayed in columns and rows. Chances are you are using an <Term id="etl" /> tool to ingest your data, so the data is likely in a tabular format and you won’t need to do that much restructuring. If your data is structured, you really only need to worry about nested data types such as <Term id="json" /> data. When structuring your data, you want to ask yourself these questions:
 
-- Is your data in the format you need to perform analysis on it? Does your data potentially need to be unnested? *Should you nest or objectize columns together?*
+- Is your data in the format you need to perform analysis on it? Does your data need to be potentially unnested? *Should you nest or objectize columns together?*
+- Do the column names and values look correct for your use case?
 Do the column names and values look correct for your use case?
 
 If your data is not in a format that is usable, you can look into different solutions such as pivoting or using different functions to unpack lists and JSON files so that they are in a tabular format. Pivoting is helpful because it allows you to change the way your dataset is structured by rearranging the way columns, rows, and their values are displayed. dbt has a [pre-built macro](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/pivot.sql) that makes pivoting less of a headache and more of a breeze.
