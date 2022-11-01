@@ -105,24 +105,29 @@ function BlogPostItem(props) {
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
 
+    // Only send to datalayer if blog post page
     let blogContext = {
       blogAuthor: '',
       blogCategory: '',
-      blogDate: formattedDate
+      blogDate: (formattedDate && isBlogPostPage) ? formattedDate : undefined
     }
 
-    if(authors && authors.length > 0) {
+    if(authors && authors.length > 0 && isBlogPostPage) {
       authors.map((author, i) => {
         blogContext.blogAuthor += 
           `${author.name}${i !== authors.length - 1 ? ', ' : ''}`
       })
+    } else {
+      blogContext.blogAuthor = undefined
     }
     
-    if(tags && tags.length > 0) {
+    if(tags && tags.length > 0 && isBlogPostPage) {
       tags.map((tag, i) => {
         blogContext.blogCategory += 
           `${tag.label}${i !== tags.length - 1 ? ', ' : ''}`
       })
+    } else {
+      blogContext.blogCategory = undefined
     }
     
     console.log('blogContext', blogContext)
