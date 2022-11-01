@@ -123,7 +123,7 @@ SQL is the most common language for data wrangling. While you can wrangle data u
 
 `REPLACE()` replaces a specified character in column values.
 
-You can also use custom built macros, such as those from a free dbt package called re_data, to clean columns using SQL. 
+You can also use custom built macros, such as those from a free dbt package called [re_data](https://hub.getdbt.com/re-data/re_data/latest/), to clean columns using SQL. 
 
 ### Enriching
 
