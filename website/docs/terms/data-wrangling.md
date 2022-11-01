@@ -123,7 +123,7 @@ SQL is the most common language for data wrangling. While you can wrangle data u
 
 ### SQL cleaning
 
-- `CAST( <column_name> AS date)` is commonly used to cast values in a column to a date datatype, or whatever other datatype you specify.
+- `CAST( <column_name> AS <data_type>)` is commonly used to cast values in a column to a specified data type.
 
 - `CONVERT_TZ()` can be used to convert values in a column to a specific timezone.
 
