@@ -103,6 +103,7 @@ When data is wrangled, it is matched with a standard set that your data team est
 ### Deeper understanding of data
 
 By first wrangling or cleaning data, you get to learn about the data’s intricacies in the process. Though manual, this process allows you to find issues in the data and understand them deeply before using them in downstream processes. This minimzes potential problems that can go unnoticed because you’ve already explored and validated the datasets. It also helps you understand how tables can be joined together downstream.
+
 Additionally, this initial data exploration and transformation helps you collaborate better with [backend application developers](https://docs.getdbt.com/blog/when-backend-devs-spark-joy) or data engineers to work on formatting the raw data in a format that is most appropriate for analytics work.
 
 ### Potential performance improvements on downstream models
