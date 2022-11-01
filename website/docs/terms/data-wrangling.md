@@ -119,7 +119,7 @@ SQL is the most common language for data wrangling. While you can wrangle data u
 
 - `LOWER()`/`UPPER() `is used to capitalize or lowercase string values.
 
-TRIM() eliminates white spaces in strings, making string functions easier to use downstream.
+`TRIM()` can remove leading or trailing characters in strings, making string functions easier to use downstream or more consistent across tables.
 
 REPLACE() replaces a specified character in column values.
 
