@@ -3,7 +3,7 @@ id: installation
 title: On-Premises Installation (dbt Cloud)
 ---
 
-:::note
+:::note 📌
 
 We no longer support new on-premises deployments, and instead have moved to a [Single Tenant](/docs/deploy/single-tenant) model hosted in the cloud
 
