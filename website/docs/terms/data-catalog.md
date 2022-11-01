@@ -61,7 +61,7 @@ Open source tools also require maintenance. Oftentimes, settings will change in 
 
 In addition, with open source tools, you often need to host them yourself on a cloud provider of choice if your catalog will see broad use across the team. Depending on what you prefer, you may have to deploy multiple microservices on a platform like AWS or Azure. 
 
-Lastly, you want to keep in mind your end user. Is this data catalog meant to be utilized by the data team or the larger business teams? Business users may have a harder time navigating an open source tool because it’s usually not as easy as logging in with an account. It requires more technical expertise to use effectively. If a business user has trouble with the catalog, it could cause a potential lag in important processes. 
+Lastly, you want to keep in mind your end user: Is this data catalog meant to be utilized by the data team or the larger business teams? Business users may have a harder time navigating an open source tool because it’s usually not as easy as logging in with an account. It requires more technical expertise to use effectively. If a business user has trouble with the catalog, it could cause a potential lag in important processes. 
 
 ### Enterprise data catalog software
 
