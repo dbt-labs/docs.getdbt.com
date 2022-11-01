@@ -47,7 +47,7 @@ Data catalogs can also be used to identify specific datasets and columns that co
 
 ### Integrations
 
-Data catalogs are compatible with many other tools in your modern data stack. They allow the documentation of your data warehouse, transformation tool, and business intelligence tool to all sit in one central location. This helps to build transparency across the stack and creates a single source of truth for the organization to depend on.
+Data catalogs are compatible with many other tools in your modern data stack. They typically allow the documentation of your data warehouse, transformation tool, and business intelligence tool to all sit in one central location. This helps to build transparency across the stack and creates a single source of truth for the organization to depend on.
 
 ## Types of data catalogs
 
