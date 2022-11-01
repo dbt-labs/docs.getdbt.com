@@ -57,7 +57,7 @@ Like most data tools, there are two different types: an open-source data catalog
 
 Open source data catalogs are free for you to use and often provide a great level of flexibility. You can build a custom solution that meets your exact needs and security requirements. But because they are free, you will be expected to manage the entire platform and set it up. Oftentimes, it’s not as simple as plugging in your various credentials to each tool in your modern data stack. It requires careful reading through the provided documentation and setting up each tool on its own, which often requires a certain threshold of technical skill. This makes for a typically more intense and potentially lengthy set-up process because there may not be experienced people to help you along the way and walk you through the steps.
 
-Open source tools also require maitenance. Oftentimes, settings will change in the connected platforms and it's up to your team to ensure compatibility and fix any breaking changes.
+Open source tools also require maintenance. Oftentimes, settings will change in the connected platforms and it's up to your team to ensure compatibility and fix any breaking changes.
 
 In addition, with open source tools, you often need to host them yourself on a cloud provider of choice if your catalog will see broad use across the team. Depending on what you prefer, you may have to deploy multiple microservices on a platform like AWS or Azure. 
 
