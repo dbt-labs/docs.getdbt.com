@@ -26,6 +26,12 @@ profile:
 
 If the `DBT_USER` and `DBT_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
 
+:::info Integer Environment Variables
+If passing an environment variable for a property that uses an integer type (for example, `port`, `threads`), be sure to add a filter to the Jinja expression, as shown here. Otherwise, dbt will raise an `['threads']: '1' is not of type 'integer'` error.
+`{{ env_var('DBT_THREADS') | int }}` or `{{ env_var('DB_PORT') | as_number }}` 
+
+:::
+
 :::caution Quoting, Curly Brackets, & You
 
 Be sure to quote the entire jinja string (as shown above), or else the yaml parser will be confused by the Jinja curly brackets.
