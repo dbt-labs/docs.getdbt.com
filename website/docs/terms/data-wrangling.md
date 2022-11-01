@@ -102,7 +102,11 @@ When data is wrangled, it is matched with a standard set that your data team est
 ### Deeper understanding of data
 
 By first wrangling or cleaning data, you get to learn about the data’s intricacies in the process. Though manual, this process allows you to find issues in the data and understand them deeply before using them in downstream processes. This minimzes potential problems that can go unnoticed because you’ve already explored and validated the datasets. It also helps you understand how tables can be joined together downstream.
+Additionally, this initial data exploration and transformation helps you collaborate better with [backend application developers](https://docs.getdbt.com/blog/when-backend-devs-spark-joy) or data engineers to work on formatting the raw data in a format that is most appropriate for analytics work.
 
+### Potential performance improvements on downstream models
+
+Lastly, data wrangling allows for potential improvements in performance in downstream models. Because you’ve cleaned the data and potentially removed duplicates and null values, models will be quicker to run.
 ## Data wrangling in SQL
 
 SQL is the most common language for data wrangling. While you can wrangle data using other languages, such as Python, SQL is the most common (and straightforward) language used for data wrangling and transformation in relational databases. Let’s look at some of the most common SQL functions for each of the data wrangling steps. 
