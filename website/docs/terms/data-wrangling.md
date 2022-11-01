@@ -140,7 +140,7 @@ You can also use custom built macros, such as those from a dbt package called [r
 Enriching data using SQL can often involve the use of functions, such as:
 
 - CASE statements allow you to replace values using  “when-then” statements. They end with an “else” statement to catch the values that don’t fall in any of the “when-then” statements. 
-- `IFNULL()` replaces any NULL values in a column with whatever value you specify.
+- `IFNULL` replaces any null values in a column with whatever value you specify.
 - `COALESCE()` returns the first non-null value from a list or column that you give it. This function is useful for replacing null values with one that you specify or coalescing multiple column values together.
 
 ### Structuring
