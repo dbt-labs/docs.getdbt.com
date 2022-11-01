@@ -129,7 +129,8 @@ function BlogPostItem(props) {
     } else {
       blogContext.blogCategory = undefined
     }
-    
+
+    console.log('isBlogPostPage', isBlogPostPage)
     console.log('blogContext', blogContext)
     dataLayer && dataLayer.push(blogContext)
   }, [])
