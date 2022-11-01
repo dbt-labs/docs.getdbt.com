@@ -3,31 +3,9 @@ title: "Supported data platforms"
 id: "supported-data-platforms"
 ---
 
-dbt connects to and runs SQL against your database, warehouse, lake or query engine. To keep things simple, we group all of these SQL-speaking things into one bucket called "data platforms". dbt can be extended to any data platform by means of a dedicated _adapter plugin_. These plugins are built as separate Python modules that dbt Core will discover them if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core.
+dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. dbt can be extended to any data platform using a dedicated _adapter plugin_. These plugins are built as Python modules that dbt Core discovers if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core.
 
 To learn more about adapters, check out [What Are Adapters](/guides/advanced/adapter-development/1-what-are-adapters).
-
-## Adapter Installation
-
-With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/get-started/installation).
-
-## Adapter Taxonomy
-
-### Verified by dbt Labs
-
-In order to provide a more consistent and reliable experience, dbt Labs now has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience and maintenance. These adapters earn a "Verified" designation so that users can have a certain level of trust and expectation when they use them. To learn more see [Verifying a new adapter](/guides/advanced/adapter-development/7-verifying-a-new-adapter)
-
-We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please note that these community maintainers are intrepid volunteers who owe you nothing, but give anyway -- so be kind and understanding, and help out where you can!
-
-### Maintainers
-
-Who made and maintains and adapter is certainly relevant, but we recommend using an adapter's verification status to determine quality and health of an adapter. So far we have three categories of maintainers:
-
-| Supported by | Maintained By                                                                                                                                                                                                                                  |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](7-verifying-a-new-adapter#why-verify-an-adapter) |
-| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology                                                                                                                     |
-| Community    | These adapter plugins are contributed and maintained by members of the community 🌱                                                                                                                                                           |
 
 ## Supported Data Platforms
 
@@ -45,20 +23,45 @@ Who made and maintains and adapter is certainly relevant, but we recommend using
 | [Snowflake](snowflake-setup)              | 1.2.0                    |
 | [Spark](spark-setup)                      | 1.2.0                    |
 | [Starburst & Trino](trino-setup)          | 1.2.0 :construction:     |
+:construction:: Verification in progress
 
 ### Community Adapters
 
-| Data Platforms (click to view setup guide) |                                  |                                      |
-| ------------------------------------------ | -------------------------------- | ------------------------------------ |
-| [Athena](athena-setup)                     | [Hive](hive-setup)               | [SingleStore](singlestore-setup)     |
-| [Clickhouse](clickhouse-setup)             | [Impala](impala-setup)           | [SQLite](sqlite-setup)               |
-| [IBM DB2](ibmdb2-setup)                    | [iomete](iomete-setup)           | [SQL Server & Azure SQ](mssql-setup) |
-| [DuckDB](duckdb-setup)                     | [Layer](layer-setup)             | [Teradata](teradata-setup)           |
-| [Dremio](dremio-setup)                     | [Materialize](materialize-setup) | [TiDB](tidb-setup)                   |
-| [Exasol Analytics](exasol-setup)           | [MindsDB](mindsdb-setup)         | [Vertica](vertica-setup)             |
-| [Firebolt](firebolt-setup)                 | [MySQL](mysql-setup)             |                                      |
-| [AWS Glue](glue-setup)                     | [Oracle](oracle-setup)           |                                      |
-| [Greenplum](greenplum-setup)               | [Rockset](rockset-setup)         |                                      |
+| Data Platforms (click to view setup guide)      |                                 |                                   |                                                                   
+| ----------------------------------------------- | --------------------------------| ---------------------------------|
+| [Athena](athena-setup)                | [Hive](hive-setup)                        | [SingleStore](singlestore-setup)  |
+| [Clickhouse](clickhouse-setup)        | [Impala](impala-setup)                    | [SQLite](sqlite-setup)  |
+| [IBM DB2](ibmdb2-setup)               | [iomete](iomete-setup)                    | [SQL Server & Azure SQ](mssql-setup) |
+| [DuckDB](duckdb-setup)                | [Layer](layer-setup)                      | [AzureSynapse](azuresynapse-setup) |
+| [Dremio](dremio-setup)                | [Materialize](materialize-setup)          | [Teradata](teradata-setup)|
+| [Exasol Analytics](exasol-setup)      | [MindsDB](mindsdb-setup)                  | [TiDB](tidb-setup)|
+| [Firebolt](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
+| [AWS Glue](glue-setup)                | [Oracle](oracle-setup)                    |
+| [Greenplum](greenplum-setup)          | [Rockset](rockset-setup)   
+
+
+## Adapter Installation
+
+With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/get-started/installation).
+
+## Adapter Taxonomy
+
+### Verified by dbt Labs
+
+In order to provide a more consistent and reliable experience, dbt Labs has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience, and maintenance. These adapters earn a **Verified** designation so that users can have a certain level of trust and expectation when they use them. To learn more, see [Verifying a new adapter](/guides/advanced/adapter-development/7-verifying-a-new-adapter).
+
+We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please be mindful that these community maintainers are intrepid volunteers who donate their time and effort &mdash; so be kind, understanding, and help out where you can!
+
+### Maintainers
+
+Who made and maintains an adapter is certainly relevant, but we recommend using an adapter's verification status to determine the quality and health of an adapter. So far there are three categories of maintainers:
+
+| Supported by | Maintained By                                                                                                                                                                                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](7-verifying-a-new-adapter#why-verify-an-adapter) |
+| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.                                                                                                                     |
+| Community    | These adapter plugins are contributed and maintained by members of the community. 🌱                                                                                                                                                           |
+
 
 ## Contributing to dbt-core adapters
 

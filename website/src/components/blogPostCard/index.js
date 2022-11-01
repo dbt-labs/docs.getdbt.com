@@ -24,4 +24,3 @@ function BlogPostCard({ postMetaData }) {
 }
 
 export default BlogPostCard;
-

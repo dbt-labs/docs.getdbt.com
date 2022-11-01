@@ -31,7 +31,7 @@ docker pull ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>
 The `ENTRYPOINT` for dbt Docker images is the command `dbt`. You can bind-mount your project to `/usr/app` and use dbt as normal:
 ```
 docker run \
---network=host
+--network=host \
 --mount type=bind,source=path/to/project,target=/usr/app \
 --mount type=bind,source=path/to/profiles.yml,target=/root/.dbt/ \
 <dbt_image_name> \

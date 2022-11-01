@@ -220,7 +220,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Collaborate",
+      label: "Collaborate with others",
       items: [
         "docs/collaborate/environments",
         {
@@ -297,6 +297,17 @@ const sidebarSettings = {
             "docs/collaborate/manage-access/audit-log",
           ],
         }, // Manage access
+      ],
+    },
+    {
+      type: "category",
+      label: "Use the dbt Semantic Layer",
+      collapsed: true,
+      items: [
+        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
+        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/avail-sl-integrations",
       ],
     },
     {
