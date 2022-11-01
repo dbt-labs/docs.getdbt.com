@@ -129,7 +129,7 @@ You can also use custom built macros, such as those from a free dbt package call
 
 Enriching data using SQL often involves the following three functions:
 
-CASE statements allow you to replace values using  “when-then” statements. They end with an “else” statement to catch the values that don’t fall in any of the “when-then” statements. 
+- CASE statements allow you to replace values using  “when-then” statements. They end with an “else” statement to catch the values that don’t fall in any of the “when-then” statements. 
 
 IFNULL() replaces any NULL values in a column with whatever value you specify.
 
