@@ -16,7 +16,7 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
 - Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
-* Define pointers to existing tables that contain raw data, in the form of [sources](using-sources), and assert the expected "freshness" of this raw data
+* Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](exposures)
 
 Whereas you can use **configurations** to:
@@ -79,7 +79,7 @@ Certain properties are special, because:
 These properties are:
 - [`description`](resource-properties/description)
 - [`tests`](resource-properties/tests)
-- [`docs`](resource-properties/docs)
+- [`docs`](/reference/resource-configs/docs)
 - [`columns`](resource-properties/columns)
 - [`quote`](resource-properties/quote)
 - [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
