@@ -65,7 +65,7 @@ Lastly, you want to keep in mind your end user: Is this data catalog meant to be
 
 ### Enterprise data catalog software
 
-Enterprise data catalogs are different from open source in that they are completely managed by the company that creates them. You pay a fee to use them and are paying for the ongoing support, quick set-up process, and the minimal maintenance that comes with it. You are walked through it entirely by a customer success team, and the integrations with external tools are usually a lot smoother because the vendor has whole teams dedicated to maintaining them. 
+Enterprise data catalogs are different from open source in that they are completely managed by the company that creates them. You pay a fee to use them and are paying for the ongoing support, quick set-up process, and the minimal maintenance that comes with it. You are typically walked through it with a dedicated resource, and the integrations with external tools can be smoother because the vendor has teams dedicated to maintaining those relationships. 
 
 The biggest things to keep in mind with enterprise data catalogs is your budget, use cases, and greater data culture. Can your organization afford to pay for a data catalog tool? While they require fewer engineering resources to maintain, they do come with a price tag. When considering if it is worth spending your money on an enterprise tool, make sure you consider where your business and data teams stand. Is your business at a place where it respects the initiatives put in place by the data team? Are the initiatives big enough where having one would make sense?
 
