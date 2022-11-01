@@ -29,7 +29,7 @@ Data discovery involves getting to know the data that you are working with. This
 - Number of duplicate rows
 - Number of nulls
 
-Oftentimes, data warehouses have a preview capability so data team members can easily see a table’s makeup (column name, type, row count, etc.), but functions such as SUM() and COUNT() will come in handy for finding these values. You can use the GROUP BY statement with these functions to find the counts of certain rows for different categories of data. In addition, you’ll want to identify primary keys, check for duplicates of primary keys, and ensure every row of data has a column that can act as a primary key!
+Oftentimes, data warehouses have a preview capability so data team members can easily see a table’s makeup (column name, type, row count, etc.), but functions such as `SUM()` and `COUNT()` will come in handy for finding these values. You can use the `GROUP BY` statement with these functions to find the counts of certain rows for different categories of data. In addition, you’ll want to identify <Term id = "primary-key">primary keys</Term>, check for duplicates of primary keys, and ensure every row of data has a column that can act as a primary key!
 
 ### Structuring
 
