@@ -121,7 +121,7 @@ SQL is the most common language for data wrangling. While you can wrangle data u
 
 `TRIM()` can remove leading or trailing characters in strings, making string functions easier to use downstream or more consistent across tables.
 
-REPLACE() replaces a specified character in column values.
+`REPLACE()` replaces a specified character in column values.
 
 You can also use custom built macros, such as those from a free dbt package called re_data, to clean columns using SQL. 
 
