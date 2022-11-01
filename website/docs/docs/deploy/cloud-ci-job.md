@@ -6,7 +6,7 @@ description: "You can enable continuous integration (CI) to test every single ch
 
 ## Overview
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](cloud-installing-the-github-application), [GitLab account](connecting-gitlab), or [Azure DevOps account](connecting-azure-devops), you can configure jobs to run when new pull requests are opened against your dbt repo.
+dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure jobs to run when new pull requests are opened against your dbt repo.
 
 dbt Cloud will build the models affected by the new pull request code change in a temp schema, which acts as a quasi-staging environment, and will also run the tests that you've written for these models as a check. When the continuous integration (CI) job completes, the run status will be shown directly in the pull request. This makes it possible to deploy new code to production with confidence.
 
@@ -23,11 +23,11 @@ GitLab Webhooks are available to only GitLab users who have a paid or self-hoste
 :::
 
 :::info Common Errors
-If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to [reconfigure the project](cloud-enabling-continuous-integration#reconnecting-your-dbt-project-to-use-dbt-clouds-native-integration-with-github-gitlab-or-azure-devops) to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead.
+If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to [reconfigure the project](/docs/deploy/cloud-ci-job#reconnecting-your-dbt-project-to-use-dbt-clouds-native-integration-with-github-gitlab-or-azure-devops) to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead.
 :::
 
 ## Understanding dbt Cloud Slim CI
-When a [dbt Cloud CI job is set up](cloud-enabling-continuous-integration#configuring-a-dbt-cloud-ci-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. Crucially, this run will build into a temporary schema using the prefix `dbt_cloud_pr_`. This schema isolation acts as a quasi-staging environment, so that you can see the builds resulting from the code associated with the PR's commit sha. The unique schema name can be found in the run details for the given run, as shown below.
+When a [dbt Cloud CI job is set up](/docs/deploy/cloud-ci-job#configuring-a-dbt-cloud-ci-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. Crucially, this run will build into a temporary schema using the prefix `dbt_cloud_pr_`. This schema isolation acts as a quasi-staging environment, so that you can see the builds resulting from the code associated with the PR's commit sha. The unique schema name can be found in the run details for the given run, as shown below.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
@@ -165,7 +165,7 @@ Make the necessary changes to your project and double-check if the temporary PR 
 
 If your dbt project relies the generic git clone method that clones using SSH and deploy keys to connect to your dbt repo, you need to disconnect your repo and reconnect it using the native GitHub, GitLab, or Azure DevOps integration in order to enable dbt Cloud Slim CI.
 
-First, make sure you have the [native GitHub authentication](cloud-installing-the-github-application), [native GitLab authentication](connecting-gitlab), or [native Azure DevOps authentication](connecting-azure-devops) set up depending on which git provider you use. After you have gone through those steps, head to **Account Settings**, select **Projects** and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.
+First, make sure you have the [native GitHub authentication](/docs/collaborate/git/connect-github), [native GitLab authentication](/docs/collaborate/git/connect-gitlab), or [native Azure DevOps authentication](/docs/collaborate/git/connect-azure-devops) set up depending on which git provider you use. After you have gone through those steps, head to **Account Settings**, select **Projects** and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.
 
 Once you're in the repository page, click **Edit** and then click **Disconnect Repository** at the bottom.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" title="Disconnect repo"/>

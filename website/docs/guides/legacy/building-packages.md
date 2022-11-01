@@ -92,7 +92,7 @@ dbt makes it possible for users of your package to override your model <Term id=
 
 The major exception to this is when working with data sources that benefit from incremental modeling (for example, web page views). Implementing incremental logic on behalf of your end users is likely to be helpful in this case.
 ### Test and document your package
-It's critical that you [test](building-a-dbt-project/tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
+It's critical that you [test](/docs/build/tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
 
 Further, adding [documentation](documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
 ### Include useful GitHub artifacts

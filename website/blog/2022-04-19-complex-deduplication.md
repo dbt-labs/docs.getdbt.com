@@ -152,7 +152,7 @@ select * from filter_real_diffs
 
 > *What happens in this step? You check your data because you are thorough!*
 
-Good thing dbt has already built this for you. Add a [unique test](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-tests) to your YAML model block for your `grain_id` in this de-duped staging model, and give it a dbt test!
+Good thing dbt has already built this for you. Add a [unique test](/docs/build/tests#generic-tests) to your YAML model block for your `grain_id` in this de-duped staging model, and give it a dbt test!
 
 ```yaml
 models:

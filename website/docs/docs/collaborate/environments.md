@@ -17,7 +17,7 @@ dbt makes it easy to maintain separate production and development environments t
 
 :::info Running dbt in production
 
-You can learn more about different ways to run dbt in production in [this article](running-dbt-in-production)
+You can learn more about different ways to run dbt in production in [this article](/docs/deploy/deployments).
 
 :::
 
