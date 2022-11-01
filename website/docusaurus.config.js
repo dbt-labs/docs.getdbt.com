@@ -45,6 +45,7 @@ var siteSettings = {
   title: "dbt Developer Hub",
   url: SITE_URL,
   onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
     image: "/img/avatar.png",
@@ -64,13 +65,13 @@ var siteSettings = {
     announcementBar: {
       id: "live_qa",
       content:
-        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
+        "Take the 5-minute dbt Community Survey!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://coalesce.getdbt.com/",
+    announcementBarLink: "https://www.surveymonkey.com/r/XP2N8Z3",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -171,7 +172,6 @@ var siteSettings = {
             <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
             <a href='https://www.getdbt.com/security/'>Security</a>
-            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
             <button id=\"ot-sdk-btn\" onclick="openPreferenceCenter()">Cookie Settings</button>
           </div>
 
