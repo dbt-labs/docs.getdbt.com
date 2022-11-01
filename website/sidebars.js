@@ -380,7 +380,6 @@ const sidebarSettings = {
       items: [
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
       ],
     },
   ],
