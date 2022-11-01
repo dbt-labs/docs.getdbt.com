@@ -29,7 +29,7 @@ Metadata is the data that describes data; this refers to characteristics like wh
 
 ### Business glossary
 
-Business glosseries within a data catalog are helpful for understanding how a dataset and its columns relate back to their specific organization. It lists the business description and purpose of a dataset or model, and it displays the business definitions of columns and logic within a dataset. Business glossaries are particularly helpful for knowing which dataset and column to use in your logic when writing models.
+Business glossaries within a data catalog are helpful for understanding how a dataset and its columns relate back to their specific organization. It lists the business description and purpose of a dataset or model, and it displays the business definitions of columns and logic within a dataset. Business glossaries are particularly helpful for knowing which dataset and column to use in your logic when writing models.
 
 ### Data lineage
 
