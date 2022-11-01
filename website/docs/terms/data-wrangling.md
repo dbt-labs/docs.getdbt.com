@@ -127,7 +127,7 @@ You can also use custom built macros, such as those from a free dbt package call
 
 ### Enriching
 
-Enriching data using SQL often involves the following three functions:
+Enriching data using SQL can often involve the use of functions, such as:
 
 - CASE statements allow you to replace values using  “when-then” statements. They end with an “else” statement to catch the values that don’t fall in any of the “when-then” statements. 
 
