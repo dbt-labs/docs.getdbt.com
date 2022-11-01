@@ -68,7 +68,15 @@ With the new capability of [Python in dbt](https://docs.getdbt.com/docs/building
 
 ### Validating
 
-Validating data consists of comparing your cleaned data to the original raw data table in order to confirm no important data values were lost in the wrangling process. Rather than cleaning, you aren’t changing the resultant dataset here, instead you are comparing it to the original. With validation, you can use the same data discovery queries you use on the original dataset, on the resultant dataset, to ensure counts of values, non-nulls, and non-duplicates match. The goal is to have the same summary statistics as the original when certain filters are applied. For example, you want to have the same number of primary keys in the data set after wrangling as you did before. 
+Validating data is the process of ensuring that the changes you just made to a dataset during your transformation are accurate. At this stage, you may be asking yourself:
+- Are the primary keys still unique? Are there the same number of primary keys in this transformed table than in my upstream sources?
+- Has the relationship with the upstream table(s) changed at all, or is it still 1-1? If not, is that expected behavior?
+- Has the distribution of column values changed at all? Are column values even correct?
+- Did I select the correct columns I want present at this stage?
+
+To answer these questions, you'll likely find yourself looking for and counting nulls, rows, duplicates, and primary keys. You'll likely reference upstream models regularly in this phase to ensure your transformation code is accurate and performing what you intended it to do. 
+
+Validation is always a little manual, but [dbt tests, macros, and packages](#validating-1) can help make your data validation a little easier 😉 .
 
 ### Publishing
 
