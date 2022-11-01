@@ -12,7 +12,6 @@ function Root({children}) {
       !window.location.pathname.includes('/blog') ||
       window.location.pathname.includes('/blog/tags')
     ) {
-      console.log('pushing undefined datalayer')
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({
         blogAuthor: undefined,
