@@ -12,7 +12,7 @@
  * - Add image above title for blog posts
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import {MDXProvider} from '@mdx-js/react';
 import Translate, {translate} from '@docusaurus/Translate';
@@ -85,7 +85,7 @@ function BlogPostItem(props) {
           )}
         </TitleHeading>
         <div className={clsx(styles.blogPostData, 'margin-vert--md')}>
-          <time id='sp-blog-date' dateTime={date} itemProp="datePublished">
+          <time dateTime={date} itemProp="datePublished">
             {formattedDate}
           </time>
 
@@ -97,18 +97,37 @@ function BlogPostItem(props) {
           )}
         </div>
         <BlogPostAuthors authors={authors} assets={assets} />
-        {authors && authors.length > 0 && (
-          <span id="sp-blog-author" style={{display: 'none'}}>
-            {authors.map((author, i) => (
-              <>
-                {author.name}{i !== authors.length - 1 && ', '}
-              </>
-            ))}
-          </span>
-        )}
       </header>
     );
   };
+
+  // dbt custom - send blog context to datalayer to send to snowplow
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+
+    let blogContext = {
+      blogAuthor: '',
+      blogCategory: '',
+      blogDate: formattedDate
+    }
+
+    if(authors && authors.length > 0) {
+      authors.map((author, i) => {
+        blogContext.blogAuthor += 
+          `${author.name}${i !== authors.length - 1 ? ', ' : ''}`
+      })
+    }
+    
+    if(tags && tags.length > 0) {
+      tags.map((tag, i) => {
+        blogContext.blogCategory += 
+          `${tag.label}${i !== tags.length - 1 ? ', ' : ''}`
+      })
+    }
+    
+    console.log('blogContext', blogContext)
+    dataLayer && dataLayer.push(blogContext)
+  }, [])
 
   return (
     <>
@@ -148,15 +167,6 @@ function BlogPostItem(props) {
                   'col--9': !isBlogPostPage,
                 })}>
                 <TagsListInline tags={tags} />
-                {tags && tags.length > 0 && (
-                  <span id="sp-blog-category" style={{display: 'none'}}>
-                    {tags.map((tag, i) => (
-                      <>
-                        {tag.label}{i !== tags.length - 1 && ', '}
-                      </>
-                    ))}
-                  </span>
-                )}
               </div>
             )}
 
