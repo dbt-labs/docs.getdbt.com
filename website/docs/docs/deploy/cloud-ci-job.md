@@ -54,7 +54,7 @@ Setting up a CI job is very similiar to setting up a normal production job that 
 
 There are a few components that define a Slim CI job.
 - The Slim CI job must defer to a production job.
-- The Slim CI job commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job seleted to compare state to.
+- The Slim CI job commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to.
 - The Slim CI job must be triggered by pull request.
 
 #### Deferral and State Comparison  
