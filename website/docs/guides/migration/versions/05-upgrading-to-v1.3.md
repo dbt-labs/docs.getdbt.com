@@ -20,7 +20,7 @@ There are three changes in dbt Core v1.3 that may require action from some users
 
 The names of metric properties have changed, with backward compatibility. Those changes are:
 - Renamed `type` to `calculation_method`
-- Renamed `sql` to `expression` 
+- Renamed `sql` to `expression`
 - Renamed `expression` calculation method metrics to `derived` calculation method metrics
 
 We plan to keep backward compatibility for a full minor version. Defining metrics with the old names will raise an error in dbt Core v1.4.
@@ -46,8 +46,10 @@ _GitHub discussion forthcoming_
 - **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
 - Updates made to **[Metrics](build/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
 - Plus, a few related updates to **[exposure properties](exposure-properties)**: `config`, `label`, and `name` validation.
-- **[Custom `node_color`](/reference/resource-configs/docs)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
-- **[`Profiles.yml`](connection-profiles/advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
+
+- **[Custom `node_color`](/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
+- **[`Profiles.yml`](/docs/get-started/connection-profiles#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
+
 
 ### Quick hits
 - **["Full refresh"](full_refresh)** flag supports a short name, `-f`.

@@ -70,7 +70,7 @@ You can make multiple selections for small and simultaneous edits. The below com
 
 ## Advanced tips
 
-- Use your folder structure as your primary selector method. `dbt build marts.marketing` is simpler and more resilient than relying on tagging every model.
+- Use your folder structure as your primary selector method. `dbt build --select marts.marketing` is simpler and more resilient than relying on tagging every model.
 - Think about jobs in terms of build cadences and SLAs. Run models that have hourly, daily, or weekly build cadences together.
 - Use the [where config](/docs/reference/resource-configs/where) for tests to test an assertion on a subset of records.
 - [store_failures](/docs/reference/resource-configs/store_failures) lets you examine records that cause tests to fail, so you can either repair the data or change the test as needed.
@@ -80,7 +80,7 @@ You can make multiple selections for small and simultaneous edits. The below com
 - Use [for loops](/docs/get-started/learning-more/using-jinja#use-a-for-loop-in-models-for-repeated-sql) in Jinja to [DRY](https://docs.getdbt.com/terms/dry) up repetitive logic, such as selecting a series of columns that all require the same transformations and naming patterns to be applied.
 - Instead of relying on post-hooks, use the [grants config](/docs/reference/resource-configs/grants) to apply permission grants in the warehouse resiliently.
 - Define [source-freshness](/docs/build/sources#snapshotting-source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
-- Use the `+` operator on the left of a model `dbt build +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build model_name+` to run a model and everything downstream that depends on it.
+- Use the `+` operator on the left of a model `dbt build --select +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build --select model_name+` to run a model and everything downstream that depends on it.
 - Use `dir_name` to run all models in a package or directory.
 - Use the `@` operator on the left of a model in a non-state-aware CI setup to test it. This operator runs all of a selection’s parents and children, and also runs the parents of its children, which in a fresh CI schema will likely not exist yet.
 - Use the [--exclude flag](/docs/reference/node-selection/exclude) to remove a subset of models out of a selection.
