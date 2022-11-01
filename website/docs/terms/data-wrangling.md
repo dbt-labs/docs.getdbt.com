@@ -133,7 +133,6 @@ Enriching data using SQL can often involve the use of functions, such as:
 `IFNULL()` replaces any NULL values in a column with whatever value you specify.
 `COALESCE()` returns the first non-null value from a list or column that you give it. This function is useful for replacing null values with one that you specify or coalescing multiple column values together.
 
-
 ### Structuring
 
 Pivot tables come in handy when restructuring your data. You can use them to make your column names your values and vice versa. Dbt has a [macro](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/pivot.sql) built out that allows you to completely customize and pivot your tables without having to write crazy complicated code.
