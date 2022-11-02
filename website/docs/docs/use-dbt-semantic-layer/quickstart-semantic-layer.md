@@ -318,4 +318,4 @@ Are you ready to define your own metrics and bring consistency to data consumers
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer) to learn about the dbt Semantic Layer
 - [Understanding the components of the dbt Semantic Layer](https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer) blog post to see further examples
 - [Integrated partner tools](https://www.getdbt.com/product/semantic-layer-integrations) for info on the different integration partners and their documentation
-- [dbt Server](https://github.com/dbt-labs/dbt-server) repo which allows you to compile metric queries per environment using dbt project code
+- [dbt Server repo](https://github.com/dbt-labs/dbt-server), which allows you to compile metric queries per environment using dbt project code
