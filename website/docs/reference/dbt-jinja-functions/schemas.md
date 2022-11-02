@@ -5,7 +5,7 @@ id: "schemas"
 
 `schemas` is a variable available in an `on-run-end` hook, representing a list of schemas that dbt built objects in on this run. 
 
-If you do not use [custom schemas](using-custom-schemas), `schemas` will evaluate to your target schema, e.g. `['dbt_alice']`. If you use custom schemas, it will include these as well, e.g. `['dbt_alice', 'dbt_alice_marketing', 'dbt_alice_finance']`.
+If you do not use [custom schemas](/docs/build/custom-schemas), `schemas` will evaluate to your target schema, e.g. `['dbt_alice']`. If you use custom schemas, it will include these as well, e.g. `['dbt_alice', 'dbt_alice_marketing', 'dbt_alice_finance']`.
 
 The `schemas`  variable is useful for granting privileges to all schemas that dbt builds relations in, like so (note this is Redshift specific syntax):
 

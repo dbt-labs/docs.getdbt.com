@@ -10,10 +10,10 @@ To really break it down, let’s consider a simple example:
 ```sql
 INSERT INTO returned_orders (order_id, order_date, total_return)
 
-SELECT order_id, order_date, total FROM orders WHERE type = ‘return’
+SELECT order_id, order_date, total FROM orders WHERE type = 'return'
 ```
 
-Converting this with a first pass to a [dbt model](docs/building-a-dbt-project/building-models) (in a file called returned_orders.sql) might look something like:
+Converting this with a first pass to a [dbt model](/docs/get-started/getting-started/building-your-first-project/build-your-first-models) (in a file called returned_orders.sql) might look something like:
 
 ```sql
 SELECT
@@ -21,16 +21,16 @@ SELECT
     order_date as order_date,
     total as total_return
 
-FROM {{ ref(‘orders’) }}
+FROM {{ ref('orders') }}
 
-WHERE type = ‘return’
+WHERE type = 'return'
 ```
 
 Functionally, this would create a model (which could be materialized as a table or view depending on needs) called `returned_orders` that contains three columns: `order_id`, `order_date`, `total_return`) predicated on the type column. It achieves the same end as the `INSERT`, just in a declarative fashion, using dbt.
 
 ## **A note on `FROM` clauses**
 
-In dbt, using a hard-coded table or view name in a `FROM` clause is one of the most serious mistakes new users make. dbt uses the ref and source macros to discover the ordering that transformations need to execute in, and if you don’t use them, you’ll be unable to benefit from dbt’s built-in lineage generation and pipeline execution. In the sample code throughout the remainder of this article, we’ll use ref statements in the dbt-converted versions of SQL statements, but it is an exercise for the reader to ensure that those models exist in their dbt projects.
+In dbt, using a hard-coded table or view name in a `FROM` clause is one of the most serious mistakes new users make. dbt uses the ref and source macros to discover the ordering that transformations need to execute in, and if you don’t use them, you’ll be unable to benefit from dbt’s built-in <Term id="data-lineage">lineage</Term> generation and pipeline execution. In the sample code throughout the remainder of this article, we’ll use ref statements in the dbt-converted versions of SQL statements, but it is an exercise for the reader to ensure that those models exist in their dbt projects.
 
 ## **Sequential `INSERT`s to an existing table can be `UNION ALL`’ed together**
 
@@ -47,11 +47,11 @@ INSERT INTO all_customers SELECT * FROM eu_customers
 The dbt-ified version of this would end up looking something like:
 
 ```sql
-SELECT * FROM {{ ref(‘us_customers’) }}
+SELECT * FROM {{ ref('us_customers') }}
 
 UNION ALL
 
-SELECT * FROM {{ ref(‘eu_customers’) }}
+SELECT * FROM {{ ref('eu_customers') }}
 ```
 
 The logic is functionally equivalent. So if there’s another statement that `INSERT`s into a model that I’ve already created, I can just add that logic into a second `SELECT` statement that is just `UNION ALL`'ed with the first. Easy!

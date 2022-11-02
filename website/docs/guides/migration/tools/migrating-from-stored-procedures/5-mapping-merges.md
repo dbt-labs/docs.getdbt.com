@@ -3,7 +3,7 @@ title: Merges
 id: 5-merges
 ---
 
-dbt has a concept called [materialization](/docs/building-a-dbt-project/building-models/materializations), which determines how a model is physically or logically represented in the warehouse. `INSERT`s, `UPDATE`s, and `DELETE`s will typically be accomplished using <Term id='table'>table</Term> or <Term id='view'>view</Term> materializations. For incremental workloads accomplished via commands like `MERGE` or `UPSERT`, dbt has a particular materialization called [incremental](/docs/building-a-dbt-project/building-models/configuring-incremental-models). The incremental materialization is specifically used to handle incremental loads and updates to a table without recreating the entire table from scratch on every run.
+dbt has a concept called [materialization](/docs/build/materializations), which determines how a model is physically or logically represented in the warehouse. `INSERT`s, `UPDATE`s, and `DELETE`s will typically be accomplished using <Term id='table'>table</Term> or <Term id='view'>view</Term> materializations. For incremental workloads accomplished via commands like `MERGE` or `UPSERT`, dbt has a particular materialization called [incremental](/docs/build/incremental-models). The incremental materialization is specifically used to handle incremental loads and updates to a table without recreating the entire table from scratch on every run.
 
 ## Step 1: Map the MERGE like an INSERT/UPDATE to start
 
@@ -17,15 +17,15 @@ MERGE INTO ride_details USING (
         ride_id,
         subtotal,
         tip
-    
-    FROM rides_to_load AS rtl 
-    
+
+    FROM rides_to_load AS rtl
+
     ON ride_details.ride_id = rtl.ride_id
-    
+
     WHEN MATCHED THEN UPDATE
-    
+
     SET ride_details.tip = rtl.tip
-    
+
     WHEN NOT MATCHED THEN INSERT (ride_id, subtotal, tip)
     VALUES (rtl.ride_id, rtl.subtotal, NVL(rtl.tip, 0, rtl.tip)
 );
@@ -49,7 +49,7 @@ using_clause AS (
         subtotal,
         tip
 
-    FROM {{ ref(‘rides_to_load’) }}
+    FROM {{ ref('rides_to_load') }}
 
 ),
 
@@ -75,9 +75,9 @@ inserts AS (
 
 )
 
-SELECT * 
+SELECT *
 
-FROM updates 
+FROM updates
 
 UNION inserts
 ```
@@ -97,18 +97,18 @@ We can add the following `config()` block to the top of our model to specify how
 ```sql
 {{
     config(
-        materialized=‘incremental’,
-        unique_key=‘ride_id’,
-        incremental_strategy=‘merge’
+        materialized='incremental',
+        unique_key='ride_id',
+        incremental_strategy='merge'
     )
 }}
 ```
 
 The three configuration fields in this example are the most important ones.
 
-- Setting `materialized=’incremental’` tells dbt to apply UPSERT logic to the target table.
+- Setting `materialized='incremental'` tells dbt to apply UPSERT logic to the target table.
 - The `unique_key` should be a primary key of the target table. This is used to match records with the existing table.
-- `incremental_strategy` here is set to MERGE any existing rows in the target table with a value for the `unique_key` which matches the incoming batch of data. There are [various incremental strategies](docs/building-a-dbt-project/building-models/configuring-incremental-models#about-incremental_strategy) for different situations and warehouses.
+- `incremental_strategy` here is set to MERGE any existing rows in the target table with a value for the `unique_key` which matches the incoming batch of data. There are [various incremental strategies](/docs/build/incremental-models#about-incremental_strategy) for different situations and warehouses.
 
 The bulk of the work in converting a model to an incremental materialization comes in determining how the logic should change for incremental loads versus full backfills or initial loads. dbt offers a special macro, `is_incremental()`, which evaluates false for initial loads or for backfills (called full refreshes in dbt parlance), but true for incremental loads.
 
@@ -122,7 +122,7 @@ In the first case, the work is essentially done already. Since the source table 
 Taking the converted `MERGE` statement that we’d put together previously, we’d augment it to add this additional logic:
 
 ```sql
-WITH 
+WITH
 
 using_clause AS (
 
@@ -131,9 +131,9 @@ using_clause AS (
         subtotal,
         tip,
         max(load_timestamp) as load_timestamp
-    
-    FROM {{ ref(‘rides_to_load’) }}
- 
+
+    FROM {{ ref('rides_to_load') }}
+
 
     {% if is_incremental() %}
 
@@ -144,13 +144,13 @@ using_clause AS (
 ),
 
 updates AS (
-    
+
     SELECT
         ride_id,
         subtotal,
         tip,
         load_timestamp
-    
+
     FROM using_clause
 
     {% if is_incremental() %}
@@ -165,8 +165,8 @@ inserts AS (
 
     SELECT
         ride_id,
-        subtotal, 
-        NVL(tip, 0, tip), 
+        subtotal,
+        NVL(tip, 0, tip),
         load_timestamp
 
     FROM using_clause

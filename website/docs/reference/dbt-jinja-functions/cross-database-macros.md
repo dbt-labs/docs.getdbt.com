@@ -3,14 +3,23 @@ title: "cross-database macros"
 id: "cross-database-macros"
 ---
 
-# Overview
+# Cross-database macros
+
+## Overview
 
 These macros benefit three different user groups:
 - If you maintain a package, your package is more likely to work on other adapters by using these macros (rather than a specific database's SQL syntax)
 - If you maintain an adapter, your adapter is more likely to support more packages by implementing (and testing) these macros.
 - If you're an end user, more packages and adapters are likely to "just work" for you (without you having to do anything).
 
+:::note Note
+Please make sure to take a look at the [SQL expressions section](#sql-expressions) to understand quoting syntax for string values and date literals.
+:::
+
 ## All functions (alphabetical)
+
+<VersionBlock firstVersion="1.2" lastVersion="1.2">
+
 - [any_value](#any_value)
 - [bool_or](#bool_or)
 - [cast_bool_to_text](#cast_bool_to_text)
@@ -31,10 +40,85 @@ These macros benefit three different user groups:
 - [safe_cast](#safe_cast)
 - [split_part](#split_part)
 - [string_literal](#string_literal)
+- [type_bigint](#type_bigint)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
+
+</VersionBlock>
+<VersionBlock firstVersion="1.3">
+
+- [any_value](#any_value)
+- [array_append](#array_append)
+- [array_concat](#array_concat)
+- [array_construct](#array_construct)
+- [bool_or](#bool_or)
+- [cast_bool_to_text](#cast_bool_to_text)
+- [concat](#concat)
+- [dateadd](#dateadd)
+- [datediff](#datediff)
+- [date_trunc](#date_trunc)
+- [escape_single_quotes](#escape_single_quotes)
+- [except](#except)
+- [hash](#hash)
+- [intersect](#intersect)
+- [last_day](#last_day)
+- [length](#length)
+- [listagg](#listagg)
+- [position](#position)
+- [replace](#replace)
+- [right](#right)
+- [safe_cast](#safe_cast)
+- [split_part](#split_part)
+- [string_literal](#string_literal)
+- [type_bigint](#type_bigint)
+- [type_boolean](#type_boolean)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2" lastVersion="1.2">
+
+[**Data type functions**](#data-type-functions)
+- [type_bigint](#type_bigint)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
+
+</VersionBlock>
+<VersionBlock firstVersion="1.3">
+
+[**Data type functions**](#data-type-functions)
+- [type_bigint](#type_bigint)
+- [type_boolean](#type_boolean)
+- [type_float](#type_float)
+- [type_int](#type_int)
+- [type_numeric](#type_numeric)
+- [type_string](#type_string)
+- [type_timestamp](#type_timestamp)
+
+</VersionBlock>
 
 [**Set functions**](#set-functions)
 - [except](#except)
 - [intersect](#intersect)
+
+<VersionBlock firstVersion="1.3">
+
+[**Array functions**](#array-functions)
+- [array_append](#array_append)
+- [array_concat](#array_concat)
+- [array_construct](#array_construct)
+
+</VersionBlock>
 
 [**String functions**](#string-functions)
 - [concat](#concat)
@@ -64,9 +148,149 @@ These macros benefit three different user groups:
 - [date_trunc](#date_trunc)
 - [last_day](#last_day)
 
-# Set functions
+## Data type functions
 
-## except
+### type_bigint
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `BIGINT`.
+
+**Usage**:
+
+```sql
+{{ dbt.type_bigint() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+bigint
+```
+
+<VersionBlock firstVersion="1.3">
+
+### type_boolean
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `BOOLEAN`.
+
+**Usage**:
+
+```sql
+{{ dbt.type_boolean() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+BOOLEAN
+```
+
+</VersionBlock>
+
+### type_float
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `FLOAT`.
+
+**Usage**:
+
+```sql
+{{ dbt.type_float() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+FLOAT
+```
+
+### type_int
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for an `INT`.
+
+**Usage**:
+
+```sql
+{{ dbt.type_int() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+INT
+```
+
+### type_numeric
+
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `NUMERIC`.
+
+**Usage**:
+
+```sql
+{{ dbt.type_numeric() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+numeric(28,6)
+```
+
+### type_string
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for `TEXT`.
+
+**Usage**:
+
+```sql
+{{ dbt.type_string() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+TEXT
+```
+
+### type_timestamp
+__Args__:
+
+ * None
+
+This macro yields the database-specific data type for a `TIMESTAMP` (which may or may not match the behavior of `TIMESTAMP WITHOUT TIMEZONE` from ANSI SQL-92).
+
+**Usage**:
+
+```sql
+{{ dbt.type_timestamp() }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+TIMESTAMP
+```
+
+## Set functions
+
+### except
 __Args__:
 
  * None
@@ -76,7 +300,7 @@ __Args__:
 **Usage**:
 
 ```sql
-{{ except() }}
+{{ dbt.except() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -85,7 +309,7 @@ __Args__:
 except
 ```
 
-## intersect
+### intersect
 __Args__:
 
  * None
@@ -95,7 +319,7 @@ __Args__:
 **Usage**:
 
 ```sql
-{{ intersect() }}
+{{ dbt.intersect() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -104,9 +328,85 @@ __Args__:
 intersect
 ```
 
-# String functions
+<VersionBlock firstVersion="1.3">
 
-## concat
+## Array functions
+
+### array_append
+__Args__:
+
+ * `array` (required): The array to append to.
+ * `new_element` (required): The element to be appended. This element must *match the data type of the existing elements* in the array in order to match PostgreSQL functionality and *not null* to match BigQuery functionality.
+
+This macro appends an element to the end of an array and returns the appended array.
+
+**Usage**:
+
+```sql
+{{ dbt.array_append("array_column", "element_column") }}
+{{ dbt.array_append("array_column", "5") }}
+{{ dbt.array_append("array_column", "'blue'") }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+array_append(array_column, element_column)
+array_append(array_column, 5)
+array_append(array_column, 'blue')
+```
+
+### array_concat
+__Args__:
+
+ * `array_1` (required): The array to append to.
+ * `array_2` (required): The array to be appended to `array_1`. This array must match the data type of `array_1` in order to match PostgreSQL functionality.
+
+This macro returns the concatenation of two arrays.
+
+**Usage**:
+
+```sql
+{{ dbt.array_concat("array_column_1", "array_column_2") }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+array_cat(array_column_1, array_column_2)
+```
+
+### array_construct
+__Args__:
+
+ * `inputs` (optional): The list of array contents. If not provided, this macro will create an empty array. All inputs must be the *same data type* in order to match PostgreSQL functionality and *not null* to match BigQuery functionality.
+ * `data_type` (optional): Specifies the data type of the constructed array. This is only relevant when creating an empty array (will otherwise use the data type of the inputs). If `inputs` are `data_type` are both not provided, this macro will create an empty array of type integer.
+
+This macro returns an array constructed from a set of inputs.
+
+**Usage**:
+
+```sql
+{{ dbt.array_construct(["column_1", "column_2", "column_3"]) }}
+{{ dbt.array_construct([], "integer") }}
+{{ dbt.array_construct([1, 2, 3, 4]) }}
+{{ dbt.array_construct(["'blue'", "'green'"]) }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+array[ column_1 , column_2 , column_3 ]
+array[]::integer[]
+array[ 1 , 2 , 3 , 4 ]
+array[ 'blue' , 'green' ]
+```
+
+</VersionBlock>
+
+## String functions
+
+### concat
 __Args__:
 
  * `fields`: Jinja array of [attribute names or expressions](#sql-expressions).
@@ -116,10 +416,10 @@ This macro combines a list of strings together.
 **Usage**:
 
 ```sql
-{{ concat(["column_1", "column_2"]) }}
-{{ concat(["year_column", "'-'" , "month_column", "'-'" , "day_column"]) }}
-{{ concat(["first_part_column", "'.'" , "second_part_column"]) }}
-{{ concat(["first_part_column", "','" , "second_part_column"]) }}
+{{ dbt.concat(["column_1", "column_2"]) }}
+{{ dbt.concat(["year_column", "'-'" , "month_column", "'-'" , "day_column"]) }}
+{{ dbt.concat(["first_part_column", "'.'" , "second_part_column"]) }}
+{{ dbt.concat(["first_part_column", "','" , "second_part_column"]) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -131,7 +431,7 @@ first_part_column || '.' || second_part_column
 first_part_column || ',' || second_part_column
 ```
 
-## hash
+### hash
 __Args__:
 
  * `field`: [attribute name or expression](#sql-expressions).
@@ -141,8 +441,8 @@ This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of
 **Usage**:
 
 ```sql
-{{ hash("column") }}
-{{ hash("'Pennsylvania'") }}
+{{ dbt.hash("column") }}
+{{ dbt.hash("'Pennsylvania'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -156,7 +456,7 @@ md5(cast('Pennsylvania' as
 ))
 ```
 
-## length
+### length
 __Args__:
 
  * `expression`: string [expression](#sql-expressions).
@@ -167,7 +467,7 @@ This macro calculates the number of characters in a string.
 **Usage**:
 
 ```sql
-{{ length("column") }}
+{{ dbt.length("column") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -178,7 +478,7 @@ This macro calculates the number of characters in a string.
     )
 ```
 
-## position
+### position
 __Args__:
 
  * `substring_text`: [attribute name or expression](#sql-expressions).
@@ -189,8 +489,8 @@ This macro searches for the first occurrence of `substring_text` within `string_
 **Usage**:
 
 ```sql
-{{ position("substring_column", "text_column") }}
-{{ position("'-'", "text_column") }}
+{{ dbt.position("substring_column", "text_column") }}
+{{ dbt.position("'-'", "text_column") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -205,7 +505,7 @@ This macro searches for the first occurrence of `substring_text` within `string_
     )
 ```
 
-## replace
+### replace
 __Args__:
 
  * `field`: [attribute name or expression](#sql-expressions).
@@ -217,8 +517,8 @@ This macro updates a string and replaces all occurrences of one substring with a
 **Usage**:
 
 ```sql
-{{ replace("string_text_column", "old_chars_column", "new_chars_column") }}
-{{ replace("string_text_column", "'-'", "'_'") }}
+{{ dbt.replace("string_text_column", "old_chars_column", "new_chars_column") }}
+{{ dbt.replace("string_text_column", "'-'", "'_'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -237,7 +537,7 @@ This macro updates a string and replaces all occurrences of one substring with a
     )
 ```
 
-## right
+### right
 __Args__:
 
  * `string_text`: [attribute name or expression](#sql-expressions).
@@ -248,8 +548,8 @@ This macro returns the N rightmost characters from a string.
 **Usage**:
 
 ```sql
-{{ right("string_text_column", "length_column") }}
-{{ right("string_text_column", "3") }}
+{{ dbt.right("string_text_column", "length_column") }}
+{{ dbt.right("string_text_column", "3") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -266,9 +566,43 @@ This macro returns the N rightmost characters from a string.
     )
 ```
 
-# String literal functions
+### split_part
+__Args__:
 
-## escape_single_quotes
+* `string_text` (required): Text to be split into parts.
+* `delimiter_text` (required): Text representing the delimiter to split by.
+* `part_number` (required): Requested part of the split (1-based). If the value is negative, the parts are counted backward from the end of the string.
+
+This macro splits a string of text using the supplied delimiter and returns the supplied part number (1-indexed).
+
+**Usage**:
+
+When referencing a column, use one pair of quotes. When referencing a string, use single quotes enclosed in double quotes.
+
+```sql
+{{ dbt.split_part(string_text='column_to_split', delimiter_text='delimiter_column', part_number=1) }}
+{{ dbt.split_part(string_text="'1|2|3'", delimiter_text="'|'", part_number=1) }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+    split_part(
+        column_to_split,
+        delimiter_column,
+        1
+        )
+
+    split_part(
+        '1|2|3',
+        '|',
+        1
+        )
+```
+
+## String literal functions
+
+### escape_single_quotes
 __Args__:
 
  * `value`: Jinja string literal value
@@ -280,8 +614,8 @@ To escape quotes for column values, consider a macro like [replace](#replace) or
 **Usage**:
 
 ```sql
-{{ escape_single_quotes("they're") }}
-{{ escape_single_quotes("ain't ain't a word") }}
+{{ dbt.escape_single_quotes("they're") }}
+{{ dbt.escape_single_quotes("ain't ain't a word") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -291,7 +625,7 @@ they''re
 ain''t ain''t a word
 ```
 
-## string_literal
+### string_literal
 __Args__:
 
  * `value`: Jinja string value
@@ -303,7 +637,7 @@ To cast column values to a string, consider a macro like [safe_cast](#safe_cast)
 **Usage**:
 
 ```sql
-select {{ string_literal("Pennsylvania") }}
+select {{ dbt.string_literal("Pennsylvania") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -312,9 +646,9 @@ select {{ string_literal("Pennsylvania") }}
 select 'Pennsylvania'
 ```
 
-# Aggregate and window functions
+## Aggregate and window functions
 
-## any_value
+### any_value
 __Args__:
 
  * `expression`: an [expression](#sql-expressions).
@@ -324,7 +658,7 @@ This macro returns some value of the expression from the group. The selected val
 **Usage**:
 
 ```sql
-{{ any_value("column_name") }}
+{{ dbt.any_value("column_name") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -333,7 +667,7 @@ This macro returns some value of the expression from the group. The selected val
 any(column_name)
 ```
 
-## bool_or
+### bool_or
 __Args__:
 
  * `expression`: [attribute name or expression](#sql-expressions).
@@ -343,10 +677,10 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 **Usage**:
 
 ```sql
-{{ bool_or("boolean_column") }}
-{{ bool_or("integer_column = 3") }}
-{{ bool_or("string_column = 'Pennsylvania'") }}
-{{ bool_or("column1 = column2") }}
+{{ dbt.bool_or("boolean_column") }}
+{{ dbt.bool_or("integer_column = 3") }}
+{{ dbt.bool_or("string_column = 'Pennsylvania'") }}
+{{ dbt.bool_or("column1 = column2") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -358,7 +692,7 @@ bool_or(string_column = 'Pennsylvania')
 bool_or(column1 = column2)
 ```
 
-## listagg
+### listagg
 __Args__:
 
  * `measure` (required): The [attribute name or expression](#sql-expressions) that determines the values to be concatenated. To only include distinct values add keyword `DISTINCT` to beginning of expression (example: 'DISTINCT column_to_agg').
@@ -373,7 +707,7 @@ This macro returns the concatenated input values from a group of rows separated 
 Note: If there are instances of `delimiter_text` within your `measure`, you cannot include a `limit_num`.
 
 ```sql
-{{ listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
+{{ dbt.listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -388,9 +722,9 @@ array_to_string(
         )
 ```
 
-# Cast functions
+## Cast functions
 
-## cast_bool_to_text
+### cast_bool_to_text
 __Args__:
 
  * `field`: boolean [attribute name or expression](#sql-expressions).
@@ -400,12 +734,12 @@ This macro casts a boolean value to a string.
 **Usage**:
 
 ```sql
-{{ cast_bool_to_text("boolean_column_name") }}
-{{ cast_bool_to_text("false") }}
-{{ cast_bool_to_text("true") }}
-{{ cast_bool_to_text("0 = 1") }}
-{{ cast_bool_to_text("1 = 1") }}
-{{ cast_bool_to_text("null") }}
+{{ dbt.cast_bool_to_text("boolean_column_name") }}
+{{ dbt.cast_bool_to_text("false") }}
+{{ dbt.cast_bool_to_text("true") }}
+{{ dbt.cast_bool_to_text("0 = 1") }}
+{{ dbt.cast_bool_to_text("1 = 1") }}
+{{ dbt.cast_bool_to_text("null") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -436,7 +770,7 @@ This macro casts a boolean value to a string.
 )
 ```
 
-## safe_cast
+### safe_cast
 __Args__:
 
  * `field`: [attribute name or expression](#sql-expressions).
@@ -447,9 +781,9 @@ For databases that support it, this macro will return `NULL` when the cast fails
 **Usage**:
 
 ```sql
-{{ safe_cast("column_1", api.Column.translate_type("string")) }}
-{{ safe_cast("column_2", api.Column.translate_type("integer")) }}
-{{ safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
+{{ dbt.safe_cast("column_1", api.Column.translate_type("string")) }}
+{{ dbt.safe_cast("column_2", api.Column.translate_type("integer")) }}
+{{ dbt.safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -460,9 +794,9 @@ For databases that support it, this macro will return `NULL` when the cast fails
     cast('2016-03-09' as date)
 ```
 
-# Date and time functions
+## Date and time functions
 
-## dateadd
+### dateadd
 __Args__:
 
  * `datepart`: [date or time part](#date-and-time-parts).
@@ -474,8 +808,8 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 **Usage**:
 
 ```sql
-{{ dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
-{{ dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
+{{ dbt.dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
+{{ dbt.dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -485,7 +819,7 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
     '2016-03-09' + ((interval '10 month') * (-2))
 ```
 
-## datediff
+### datediff
 __Args__:
 
  * `first_date`: date/time [expression](#sql-expressions).
@@ -497,9 +831,9 @@ This macro calculates the difference between two dates.
 **Usage**:
 
 ```sql
-{{ datediff("column_1", "column_2", "day") }}
-{{ datediff("column", "'2016-03-09'", "month") }}
-{{ datediff("'2016-03-09'", "column", "year") }}
+{{ dbt.datediff("column_1", "column_2", "day") }}
+{{ dbt.datediff("column", "'2016-03-09'", "month") }}
+{{ dbt.datediff("'2016-03-09'", "column", "year") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -513,7 +847,7 @@ This macro calculates the difference between two dates.
         (date_part('year', (column)::date) - date_part('year', ('2016-03-09')::date))
 ```
 
-## date_trunc
+### date_trunc
 __Args__:
 
  * `datepart`: [date or time part](#date-and-time-parts).
@@ -524,9 +858,9 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 **Usage**:
 
 ```sql
-{{ date_trunc("day", "updated_at") }}
-{{ date_trunc("month", "updated_at") }}
-{{ date_trunc("year", "'2016-03-09'") }}
+{{ dbt.date_trunc("day", "updated_at") }}
+{{ dbt.date_trunc("month", "updated_at") }}
+{{ dbt.date_trunc("year", "'2016-03-09'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -537,7 +871,7 @@ date_trunc('month', updated_at)
 date_trunc('year', '2016-03-09')
 ```
 
-## last_day
+### last_day
 __Args__:
 
  * `date`: date/time [expression](#sql-expressions).
@@ -550,8 +884,8 @@ This macro gets the last day for a given date and datepart.
 - This macro currently only supports dateparts of `month` and `quarter`.
 
 ```sql
-{{ last_day("created_at", "month") }}
-{{ last_day("'2016-03-09'", "year") }}
+{{ dbt.last_day("created_at", "month") }}
+{{ dbt.last_day("'2016-03-09'", "year") }}
 ```
 
 **Sample Output (PostgreSQL)**:
