@@ -61,11 +61,8 @@ Users with Project Creator permissions can:
 - Create, delete, and modify Jobs
 - Use the IDE
 - Run and cancel jobs
-
-<!-- not sure if the below is correct -->
 - View Groups
-- Create, delete, and modify Group Memberships
-- Manage notification settings
+- View notification settings
 
 ### Account Viewer
 
