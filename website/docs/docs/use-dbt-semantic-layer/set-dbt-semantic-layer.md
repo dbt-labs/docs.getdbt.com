@@ -51,3 +51,4 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 - [Integrated partner tools](https://www.getdbt.com/product/semantic-layer-integrations) for info on the different integration partners and their documentation
 - [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) page for more information on plan availability
 - [dbt metrics](/docs/build/metrics) for in-depth detail on attributes, properties, filters, and how to define and query metrics
+- [dbt Server](https://github.com/dbt-labs/dbt-server) repo which allows you to compile metric queries per environment using dbt project code
