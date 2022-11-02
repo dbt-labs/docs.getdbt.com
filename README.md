@@ -85,27 +85,7 @@ The right-hand TOC is created automatically when you add headings to a page.
 
 ## Filenaming
 
-If you are adding a new file, it must be named following our naming conventions. The file name should always start with the feature type (such as dbt-cloud, ide, or job-scheduler). Depending on the content type, it typically also includes a secondary descriptor and a verb. Verbs are used when you are creating a task topic.
-
-Because we author content using Markdown, you must add the `.md` the file extension to the file name.
-
-If you are adding a new page to an existing feature category, follow the existing naming convention for that category.
-
-**Example: Concept file**
-
-`snapshots-backup-hooks.md`
-
-**Example: Reference file**
-
-`snapshots-backup-hooks.md`
-
-**Example: Task file**
-
-`releases-creating-customer.md`
-
-**Example: Tutorial file**
-
-`tutorial-ha-cluster-deploying.md`
+If you are adding a new file, it must be named following our naming conventions. MORE TO ADD
 
 ## Images
 
@@ -137,6 +117,8 @@ docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markd
 
 
 ### Callouts
+Callouts highlight important or high-value information that readers need to know and we [use them sparingly](https://github.com/dbt-labs/product-docs-team/blob/main/content-style-guide.md#callouts). Below are the typical callout formats we use:
+
 
 Note callouts are formatted as follows:
 
@@ -158,6 +140,7 @@ text
 
 :::
 
+```
 
 Tip callouts, typically used for tips, are formatted as follows:
 
