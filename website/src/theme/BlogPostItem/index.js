@@ -103,35 +103,32 @@ function BlogPostItem(props) {
 
   // dbt custom - send blog context to datalayer to send to snowplow
   useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-
-    // Only send to datalayer if blog post page
     let blogContext = {
       event: 'blogContext',
       blogAuthor: '',
       blogCategory: '',
-      blogDate: (formattedDate && isBlogPostPage) ? formattedDate : undefined
+      blogDate: formattedDate ? formattedDate : undefined
     }
 
-    if(authors && authors.length > 0 && isBlogPostPage) {
+    if(authors && authors.length > 0) {
       authors.map((author, i) => {
         blogContext.blogAuthor += 
           `${author.name}${i !== authors.length - 1 ? ', ' : ''}`
       })
-    } else {
-      blogContext.blogAuthor = undefined
     }
     
-    if(tags && tags.length > 0 && isBlogPostPage) {
+    if(tags && tags.length > 0) {
       tags.map((tag, i) => {
         blogContext.blogCategory += 
           `${tag.label}${i !== tags.length - 1 ? ', ' : ''}`
       })
-    } else {
-      blogContext.blogCategory = undefined
     }
 
-    dataLayer && dataLayer.push(blogContext)
+    // Only send to datalayer if blog post page
+    if(isBlogPostPage) {
+      window.dataLayer = window.dataLayer || [];
+      dataLayer && dataLayer.push(blogContext)
+    }
   }, [])
 
   return (
