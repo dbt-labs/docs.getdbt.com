@@ -7,7 +7,7 @@ title: Model configurations
 </Changelog>
 
 ## Related documentation
-* [Models](building-models)
+* [Models](/docs/build/models)
 * [`run` command](run)
 
 ## Available configurations

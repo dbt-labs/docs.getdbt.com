@@ -186,7 +186,7 @@ config:
 
 ### Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
+Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
@@ -307,7 +307,7 @@ config:
   send_anonymous_usage_stats: False
 ```
 
-You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
+You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/docs/build/environment-variables).
 
 `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
 `DO_NOT_TRACK=0` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`

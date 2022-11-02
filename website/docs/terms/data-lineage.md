@@ -87,7 +87,7 @@ The biggest challenges around data lineage become more apparent as your data, sy
 
 ### **Scaling data pipelines**
 
-As dbt projects scale with data and organization growth, the number of sources, models, macros, seeds, and [exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures) invariably grow. And with an increasing number of nodes in your DAG, it can become harder to audit your DAG for WET code or inefficiencies.
+As dbt projects scale with data and organization growth, the number of sources, models, macros, seeds, and [exposures](https://docs.getdbt.com/docs/build/exposures) invariably grow. And with an increasing number of nodes in your DAG, it can become harder to audit your DAG for WET code or inefficiencies.
 
 Working with dbt projects with thousands of models and nodes can feel overwhelming, but remember: your DAG and data lineage are meant to help you, not be your enemy. Tackle DAG audits in chunks, document all models, and [leverage strong structure conventions](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
 
@@ -101,7 +101,7 @@ Is your DAG keeping up with best practices? Instead of manually auditing your DA
 
 Complex workflows also add to the difficulties a data lineage system will encounter. For example, consider the challenges in describing a data source's movement through a pipeline as it's filtered, pivoted, and joined with other tables. These challenges increase when the granularity of the data lineage shifts from the table to the column level.
 
-As data lineage graphs mature and grow, it becomes clear that column or field-level lineage is often a needed layer of specificity that is not typically built-in to data lineage systems. [Some of the third party tooling](#third---party-tooling) from above can support column-level lineage.
+As data lineage graphs mature and grow, it becomes clear that column or field-level lineage is often a needed layer of specificity that is not typically built-in to data lineage systems. [Some of the third party tooling](#third-party-tooling) from above can support column-level lineage.
 
 ## **Conclusion**
 
