@@ -107,6 +107,7 @@ function BlogPostItem(props) {
 
     // Only send to datalayer if blog post page
     let blogContext = {
+      event: 'blogContext',
       blogAuthor: '',
       blogCategory: '',
       blogDate: (formattedDate && isBlogPostPage) ? formattedDate : undefined

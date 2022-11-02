@@ -14,6 +14,7 @@ function Root({children}) {
     ) {
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({
+        event: 'blogContext',
         blogAuthor: undefined,
         blogCategory: undefined,
         blogDate: undefined
