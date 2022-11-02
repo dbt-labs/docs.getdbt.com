@@ -185,18 +185,14 @@ text
 
 We use traditional markdown for tables, which can be a useful way of presenting complex or comparative information. 
 
-For more guidelines on markdown tables, review the [docs.getdbt.com style guide](https://github.com/dbt-labs/product-docs-team/blob/27c3a6264b0bc3610e958a1fb18f1077067958d3/content-style-guide.md).
+For more guidelines on markdown tables, review the [docs.getdbt.com style guide](https://github.com/dbt-labs/product-docs-team/tree/main).
 
 ## Style Guidelines
 
-Whether you are editing existing content or adding a new topic, our goal is to make it task-based. The `procedure.md` template provides the formatting guidelines that you need. You can also see a published example of a task [here](https://docs.replicated.com/vendor/releases-creating-customer).
-
-Replicated product documentation has in-house style guidelines that the Documentation team uses when reviewing your PR. Please feel free to just add the content you need, knowing that our team will be there to assist with editorial reviews and information architecture, such as TOC placement, whether to create a task, and so on. The Documentation team will actively write content, not just give editorial reviews, so we take the heavy burden off of you. We encourage your contributions in the true open-source spirit.
-
-Replicated employees can review more information in the Documentation Style Guide in the employee handbook.
+The docs.getdbt.com product documentation has in-house style guidelines that the Docs team uses when reviewing your PR. Feel free to just add the content you need or make change, knowing that our team will be there to help with editorial reviews and information architecture, such as TOC placement, and so on. The Docs team will actively edit or write content, not just give editorial reviews and we highly encourage your contributions in the true open-source spirit.
 
 ## SME and Editorial Reviews
 
-All PRs that are submitted are reviewed by the Replicated Docs team for editorial review.
+All PRs that are submitted are reviewed by the dbt Labs Docs team for editorial review.
 
-Content that is submitted by our customers and the open-source community are also reviewed by our Replicated subject matter experts (SMEs) to help ensure technical accuracy.
+Content that is submitted by our users, and the open-source community are also reviewed by our dbt Labs subject matter experts (SMEs) to help ensure technical accuracy.
