@@ -30,12 +30,15 @@ dbt Cloud enables you to:
 
 In general, the dbt Cloud application deployment models fall into two categories: **Multi Tenant** and **Single Tenant**. These deployments are hosted on infrastructure managed by dbt Labs. Both models leverage AWS infrastructure as described in the [Architecture](/docs/deploy/architecture) section.
 
+The single tenant model can be deployed to AWS or Azure infrastructure managed by dbt Labs. The single tenant model is only available with dbt Labs' Virtual Private dbt plan. All other plans leverage the multi tenant model. Contact us at sales@getdbt.com to discuss the best plan for your requirements.
+
+
 For more information on these deployment models, refer to:
 
 - [Multi Tenant](/docs/deploy/multi-tenant)
 - [Single Tenant](/docs/deploy/single-tenant)
 
-If you’re interested in learning more about an Enterprise plan, please [contact us](mailto:sales@getdbt.com).
+If you’re interested in learning more about an Enterprise plan, please contact [dbt Labs sales](mailto:sales@getdbt.com).
 
 ## Airflow
 
