@@ -5,7 +5,7 @@ meta:
   authors: 'Dremio (formerly Fabrice Etanchaud)'
   github_repo: 'dremio/dbt-dremio'
   pypi_package: 'dbt-dremio'
-  min_core_version: 'v1.1.0'
+  min_core_version: 'v1.3.0'
   cloud_support: Not Supported
   min_supported_version: 'Dremio 22.0'
   slack_channel_name: 'n/a'
@@ -118,6 +118,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
     dev:
       cloud_host: https://api.dremio.cloud
       cloud_project_id: [project ID]
+      object_storage_source: [name of object storage space]
+      object_storage_root_path: [root path used in object storage statements]
+      dremio_space: [name of dremio space]
+      space_root_folder: [root folder used in dremio space statements]
       pat: [personal access token]
       threads: [integer >= 1]
       type: dremio
@@ -137,6 +141,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
       password: [password]
       port: [port]
       software_host: [hostname or IP address]
+      object_storage_source: [name of object storage space]
+      object_storage_root_path: [root path used in object storage statements]
+      dremio_space: [name of dremio space]
+      space_root_folder: [root folder used in dremio space statements]
       threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
@@ -155,6 +163,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
       pat: [personal access token]
       port: [port]
       software_host: [hostname or IP address]
+      object_storage_source: [name of object storage space]
+      object_storage_root_path: [root path used in object storage statements]
+      dremio_space: [name of dremio space]
+      space_root_folder: [root folder used in dremio space statements]
       threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
@@ -173,13 +185,18 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | --- | --- | --- | --- |
 | `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
 | `threads` | Yes | 1 | The number of threads the dbt project runs on. |
+| `object_storage_source` | No | $scratch | Name of the object storage where tables, materialized views, tests, etc. are created. An alternative name for this configuration is `datalake`. |
+| `object_storage_root_path` | No | no_schema | Path under with objects are created. An alternative name for this configuration is `root_path`. Nested paths are separated with periods. Example: `path_one.path_two.path_three` |
+| `dremio_space` | No | @\<username> | Name of the space where views are created. An alternative name for this configuration is `database`. |
+| `space_root_folder` | No | no_schema | Folder under which views are created. An alternative name for this configuration is `schema`. Nested folders are separated with periods. Example: `folder_one.folder_two.folder_three` |
+
   
 ### Configurations in Profiles for Dremio Cloud
 | Configuration | Required? | Default Value | Description |
 | --- | --- | --- | --- |
 | `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br></br>EU Control Plane: `https://api.eu.dremio.cloud` |
 | `user` | Yes | None | Email address used as a username in Dremio Cloud | 
-| `pat` | Yes | None | Personal Access TokenSee Personal Access Tokens for instructions about obtaining a token. | 
+| `pat` | Yes | None | The personal access token to use for authentication. See [Personal Access Tokens](https://docs.dremio.com/cloud/security/authentication/personal-access-token/) for instructions about obtaining a token. | 
 | `cloud_project_id` | Yes | None | The ID of the Sonar project in which to run transformations. | 
 | `use_ssl` | Yes | `true` | The value must be `true`. |
     
@@ -190,5 +207,5 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | `port` | Yes | `9047` | Port for Dremio Software cluster API endpoints. | 
 | `user` | Yes | None | The username of the account to use when logging into the Dremio cluster. | 
 | `password` | Yes, if you are not using the pat configuration. | None | The password of the account to use when logging into the Dremio cluster. | 
-| `pat` | Yes, if you are not using the user and password configurations. | None | The personal access token to use for authenticating to Dremio.See Personal Access Tokens for instructions about obtaining a token.The use of a personal access token takes precedence if values for the three configurations user, password and pat are specified. | 
+| `pat` | Yes, if you are not using the user and password configurations. | None | The personal access token to use for authenticating to Dremio. See [Personal Access Tokens](https://docs.dremio.com/software/security/personal-access-tokens/) for instructions about obtaining a token. The use of a personal access token takes precedence if values for the three configurations user, password and pat are specified. | 
 | `use_ssl` | Yes | `true` | Acceptable values are `true` and `false`. If the value is set to true, ensure that full wire encryption is configured in your Dremio cluster. See [Prerequisites for Dremio Software](#prerequisites-for-dremio-software). | 
