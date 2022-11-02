@@ -13,7 +13,7 @@ INSERT INTO returned_orders (order_id, order_date, total_return)
 SELECT order_id, order_date, total FROM orders WHERE type = 'return'
 ```
 
-Converting this with a first pass to a [dbt model](docs/building-a-dbt-project/building-models) (in a file called returned_orders.sql) might look something like:
+Converting this with a first pass to a [dbt model](/docs/get-started/getting-started/building-your-first-project/build-your-first-models) (in a file called returned_orders.sql) might look something like:
 
 ```sql
 SELECT
@@ -30,7 +30,7 @@ Functionally, this would create a model (which could be materialized as a table 
 
 ## **A note on `FROM` clauses**
 
-In dbt, using a hard-coded table or view name in a `FROM` clause is one of the most serious mistakes new users make. dbt uses the ref and source macros to discover the ordering that transformations need to execute in, and if you don’t use them, you’ll be unable to benefit from dbt’s built-in lineage generation and pipeline execution. In the sample code throughout the remainder of this article, we’ll use ref statements in the dbt-converted versions of SQL statements, but it is an exercise for the reader to ensure that those models exist in their dbt projects.
+In dbt, using a hard-coded table or view name in a `FROM` clause is one of the most serious mistakes new users make. dbt uses the ref and source macros to discover the ordering that transformations need to execute in, and if you don’t use them, you’ll be unable to benefit from dbt’s built-in <Term id="data-lineage">lineage</Term> generation and pipeline execution. In the sample code throughout the remainder of this article, we’ll use ref statements in the dbt-converted versions of SQL statements, but it is an exercise for the reader to ensure that those models exist in their dbt projects.
 
 ## **Sequential `INSERT`s to an existing table can be `UNION ALL`’ed together**
 

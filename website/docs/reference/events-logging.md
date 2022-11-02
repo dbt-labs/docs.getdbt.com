@@ -34,7 +34,7 @@ With every task that dbt performs, it generates events. It records those events 
 
 When `json` [log formatting](global-configs#log-formatting) is enabled, dbt will output produce rich, structured log information which can be piped into monitoring tools for analysis, or to power applications with dbt metadata in real time.
 
-Each log line will have the following JSON properties:
+Each log line will have the following <Term id="json" /> properties:
 
 | Field       | Description   |
 |-------------|---------------|
@@ -43,10 +43,10 @@ Each log line will have the following JSON properties:
 | [`invocation_id`](invocation_id) | A unique identifier for this invocation of dbt |
 | `level` | A string representation of the log level (`debug`, `info`, `warn`, `error`) |
 | `log_version` | Integer indicating version |
-| `msg` | The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are bject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`. |
+| `msg` | The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are subject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`. |
 | `node_info` | If applicable, a dictionary of human- and machine-friendly information about a currently running resource |
 | `pid` | The process ID for the running dbt invocation which produced this log message |
-| `thread_name` | The thread in which the log message was produced, helpful for tracking queries when dbt is run with ltiple threads |
+| `thread_name` | The thread in which the log message was produced, helpful for tracking queries when dbt is run with multiple threads |
 | `ts` | When the log line was printed |
 | `type` | Always `log_line` |
 
@@ -90,7 +90,7 @@ If available, `node_info` will include:
 		"resource_type": "model",
 		"type": "node_status",
 		"unique_id": "model.jaffle_shop.name_list"
-	}, 
+	},
 	"pid": 81915,
 	"thread_name": "Thread-4",
 	"ts": "2021-12-02T21:47:03.480384Z",
@@ -99,8 +99,6 @@ If available, `node_info` will include:
 ```
 
 ## Python interface
-
-**Be warned:** While dbt-core v1 represents a significant step forward in the stability of the core framework, dbt-core's [python API](dbt-api) is still unstable and liable to change, with the exception of a few specific interfaces.
 
 `dbt-core` makes available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object:
 
