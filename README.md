@@ -23,7 +23,7 @@ You can use components documented in the [docusaurus library](https://v2.docusau
 
 # Writing content
 
-When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.
+We author content using Markdown and sometimes HTML. When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.
 
 ## Versioning and single-sourcing content
 
@@ -70,3 +70,133 @@ Method 2: Running the Cypress E2E tests headlessly
 2. `cd` into the `website` subdirectory: `cd website`
 3. Install the required node packages: `npm install`
 4. Run `npx cypress run`
+
+## Folder Structure and TOC
+
+The folder structure is broken into several high-level categories under the main `website` folder: blog, cypress, docs, functions, plugins, snippets, src, static.
+
+Images are under the `static` > `img` folder.
+
+The TOC is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. The `sidebar.js` file is the one that causes most of the merge conflicts because many technical writers are working on content daily. You will need to accept the changes from other contributors if you are committing a PR.
+
+Don't worry if you're not sure where in the TOC a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
+
+The right-hand TOC is created automatically when you add headings to a page.
+
+## Filenaming
+
+If you are adding a new file, it must be named following our naming conventions. The file name should always start with the feature type (such as dbt-cloud, ide, or job-scheduler). Depending on the content type, it typically also includes a secondary descriptor and a verb. Verbs are used when you are creating a task topic.
+
+Because we author content using Markdown, you must add the `.md` the file extension to the file name.
+
+If you are adding a new page to an existing feature category, follow the existing naming convention for that category.
+
+**Example: Concept file**
+
+`snapshots-backup-hooks.md`
+
+**Example: Reference file**
+
+`snapshots-backup-hooks.md`
+
+**Example: Task file**
+
+`releases-creating-customer.md`
+
+**Example: Tutorial file**
+
+`tutorial-ha-cluster-deploying.md`
+
+## Images
+
+- Screenshots are use sparingly to minimize the maintenance of out-of-date content. However, we do include some screenshots to provide context.
+- Use a focused area of the UI, unless the entire screen is truly needed for context. 
+- We only use PNG format, which renders a better quality and lossless compression.
+- For privacy and legal purposes, do your best to not reveal personal information, IP addresses, domain information, login credentials and so on in screenshots, code blocks, or text.
+- Add *title=""* for all images to write a consice title of the image. For accessibility, it's important to use succinct text that is clear and complete. For more information about images formatting, see the following section.
+- For images that are difficult to see, you can click on the image to enlarge it on the same page.
+
+## Using Markdown with our Docusaurus CSS
+
+docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. The following table provides an overview of the supported syntax elements.
+
+| Element                                     | Syntax                                                |
+|---------------------------------------------|-------------------------------------------------------|
+| Headings                                    | `# H1`, `## H2`, `### H3`                             |
+| Bold                                        | `**bold text**`                                       |
+| Italic                                      | `_italicized text_`                                    |
+| Ordered List                                | `1.` First item (use `1.` for each item)              |
+| Unordered List                              | `-` or `*` (for each item)                            |
+| Code or command in a sentence               | ``code``                                              |
+| Link - external site                        | `[Title](https://www.example.com)`                    |
+| Link - topic in same folder                 | `[Title](/folder/file-name) without file extension`            |
+| Link - topic in different folder            | `[Title](/folder/file-name) without file extension` |
+| Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`                     |
+| Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`           |
+| Image                                       | `<Lightbox src="/img/docs/<image-name>.png" title="Concise description of image"/>()`      |
+
+
+### Callouts
+
+Note callouts are formatted as follows:
+
+```
+:::note
+
+text
+
+:::
+
+```
+
+Info callouts are formatted as follows:
+
+```
+:::info
+
+text
+
+:::
+
+
+Tip callouts, typically used for tips, are formatted as follows:
+
+```
+:::tip
+
+text
+
+:::
+
+```
+
+Caution callouts, typically used for warnings/considerations, are formatted as follows:
+
+```
+:::caution
+
+text
+
+:::
+
+```
+
+### Tables
+
+We use traditional markdown for tables, which can be a useful way of presenting complex or comparative information. 
+
+For more guidelines on markdown tables, review the [docs.getdbt.com style guide](https://github.com/dbt-labs/product-docs-team/blob/27c3a6264b0bc3610e958a1fb18f1077067958d3/content-style-guide.md).
+
+## Style Guidelines
+
+Whether you are editing existing content or adding a new topic, our goal is to make it task-based. The `procedure.md` template provides the formatting guidelines that you need. You can also see a published example of a task [here](https://docs.replicated.com/vendor/releases-creating-customer).
+
+Replicated product documentation has in-house style guidelines that the Documentation team uses when reviewing your PR. Please feel free to just add the content you need, knowing that our team will be there to assist with editorial reviews and information architecture, such as TOC placement, whether to create a task, and so on. The Documentation team will actively write content, not just give editorial reviews, so we take the heavy burden off of you. We encourage your contributions in the true open-source spirit.
+
+Replicated employees can review more information in the Documentation Style Guide in the employee handbook.
+
+## SME and Editorial Reviews
+
+All PRs that are submitted are reviewed by the Replicated Docs team for editorial review.
+
+Content that is submitted by our customers and the open-source community are also reviewed by our Replicated subject matter experts (SMEs) to help ensure technical accuracy.
