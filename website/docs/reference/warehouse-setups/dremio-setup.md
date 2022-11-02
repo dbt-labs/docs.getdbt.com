@@ -185,10 +185,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | --- | --- | --- | --- |
 | `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
 | `threads` | Yes | 1 | The number of threads the dbt project runs on. |
-| `object_storage_source` | No | $scratch | Name of the object storage where tables, materialized views, tests, etc. are created. An alternative name for this configuration is `datalake`. |
-| `object_storage_root_path` | No | no_schema | Path under with objects are created. An alternative name for this configuration is `root_path`. Nested paths are separated with periods. Example: `path_one.path_two.path_three` |
-| `dremio_space` | No | @\<username> | Name of the space where views are created. An alternative name for this configuration is `database`. |
-| `space_root_folder` | No | no_schema | Folder under which views are created. An alternative name for this configuration is `schema`. Nested folders are separated with periods. Example: `folder_one.folder_two.folder_three` |
+| `object_storage_source` | No | $scratch | The name of the object storage where tables, materialized views, tests, etc. are created. An alternative name for this configuration is `datalake`. |
+| `object_storage_root_path` | No | no_schema | The path in which objects are created. An alternative name for this configuration is `root_path`. Nested paths are separated with periods. Example: `path_one.path_two.path_three` |
+| `dremio_space` | No | @\<username> | The name of the space where views are created. An alternative name for this configuration is `database`. |
+| `space_root_folder` | No | no_schema | The folder in which views are created. An alternative name for this configuration is `schema`. Nested folders are separated with periods. Example: `folder_one.folder_two.folder_three` |
 
   
 ### Configurations in Profiles for Dremio Cloud
