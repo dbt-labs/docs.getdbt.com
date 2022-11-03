@@ -1,6 +1,6 @@
 ---
 title: "Demystifying event streams: Transforming events into tables with dbt"
-description: ""
+description: "Pulling data directly out of application databases is commonplace in the MDS, but also risky. Apps change quickly, and application teams might update database schemas in unexpected ways, leading to pipeline failures, data quality issues, data delivery slow-downs. There is a better way. In this blog post, Charlie Summers (Merit) describes how their organization transforms application event streams into analytics-ready tables, more resilient to event scheme changes."
 slug: demystifying-event-streams
 
 authors: [charlie_summers]
@@ -8,15 +8,15 @@ authors: [charlie_summers]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2022-10-24
+date: 2022-11-04
 is_featured: true
 ---
 
 Let’s discuss how to convert events from an event-driven microservice architecture into relational tables in a <Term id="data-warehouse">warehouse</Term> like Snowflake. Here are a few things we’ll address:
 
-- Why you may want to use an architecture like this.
-- How to structure your event messages.
-- How to use dbt macros to make it easy to ingest new event streams.
+- Why you may want to use an architecture like this
+- How to structure your event messages
+- How to use dbt macros to make it easy to ingest new event streams
 
 <!--truncate-->
 
