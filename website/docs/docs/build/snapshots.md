@@ -375,7 +375,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 
 <br/>
 
-For the `check` strategy, the current timestamp is used to populate each column
+For the `check` strategy, the current timestamp is used to populate each column. If configured, the `updated_at` column is used instead, as with the timestamp strategy. 
 
 <details>
 <summary>  Details for the check strategy </summary>
