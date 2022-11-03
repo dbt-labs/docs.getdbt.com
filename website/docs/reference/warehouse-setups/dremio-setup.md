@@ -118,10 +118,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
     dev:
       cloud_host: https://api.dremio.cloud
       cloud_project_id: [project ID]
-      object_storage_source: [name of the object storage connected to Dremio]
-      object_storage_path: [root path to use when referencing objects]
-      dremio_space: [name of the space in Dremio]
-      dremio_space_folder: [root folder to use when referencing tables and views]
+      object_storage_source: [name
+      object_storage_path: [path]
+      dremio_space: [name]
+      dremio_space_folder: [path]
       pat: [personal access token]
       threads: [integer >= 1]
       type: dremio
@@ -141,10 +141,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
       password: [password]
       port: [port]
       software_host: [hostname or IP address]
-      object_storage_source: [name of the object storage connected to Dremio]
-      object_storage_path: [root path to use when referencing objects]
-      dremio_space: [name of the space in Dremio]
-      dremio_space_folder: [root folder to use when referencing tables and views]
+      object_storage_source: [name
+      object_storage_path: [path]
+      dremio_space: [name]
+      dremio_space_folder: [path]
       threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
@@ -163,10 +163,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
       pat: [personal access token]
       port: [port]
       software_host: [hostname or IP address]
-      object_storage_source: [name of the object storage connected to Dremio]
-      object_storage_path: [root path to use when referencing objects]
-      dremio_space: [name of the space in Dremio]
-      dremio_space_folder: [root folder to use when referencing tables and views]
+      object_storage_source: [name
+      object_storage_path: [path]
+      dremio_space: [name]
+      dremio_space_folder: [path]
       threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
@@ -185,10 +185,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | --- | --- | --- | --- |
 | `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
 | `threads` | Yes | 1 | The number of threads the dbt project runs on. |
-| `object_storage_source` | No | $scratch | The name of the object storage where tables, materialized views, tests, etc. are created. An alternative name for this configuration is `datalake`. |
-| `object_storage_path` | No | no_schema | The path in which objects are created. An alternative name for this configuration is `root_path`. Nested paths are separated with periods. Example: `path_one.path_two.path_three` |
-| `dremio_space` | No | @\<username> | The name of the space where views are created. An alternative name for this configuration is `database`. |
-| `dremio_space_folder` | No | no_schema | The folder in which views are created. An alternative name for this configuration is `schema`. Nested folders are separated with periods. Example: `folder_one.folder_two.folder_three` |
+| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. This name appears in the **Object Storage** section of the Datasets page in Dremio. The dbt alias is `datalake`. |
+| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods. Example: `folder_one.folder_two.folder_three` |
+| `dremio_space` | No | @\<username> | The name of the Dremio space in which to create views. The dbt alias is `database`. |
+| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods. Example: `folder_one.folder_two.folder_three` |
 
   
 ### Configurations in Profiles for Dremio Cloud
