@@ -101,7 +101,7 @@ We now can run obvious model generation streams processing on all data that comp
 
 ![](/img/blog/2022-10-24-demystifying-event-streams/omg-contract.png)
 
-## Generic table pipelines via dbt Macros 
+## Generic table pipelines via dbt macros 
 
 After solidifying the OMG contract, we built the macros to execute obvious model generation. We wanted to make these as generic as possible while also following good engineering practices. We ended up building three macros that together process event streams into tables. All three macros take in `streams_var` - a list of all the event stream tables related to this domain model. We pull streams_var in from dbt_project.yml. We also take in `streams_schema` which defaults to ‘streams’ but allows overriding for our internal testing.
 
