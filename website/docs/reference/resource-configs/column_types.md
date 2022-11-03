@@ -4,7 +4,7 @@ datatype: {column_name: datatype}
 ---
 
 ## Description
-Optionally specify the database type of columns in a [seed](docs/building-a-dbt-project/seeds.md), by providing a dictionary where the keys are the column names, and the values are a valid datatype (this varies across databases).
+Optionally specify the database type of columns in a [seed](/docs/build/seeds), by providing a dictionary where the keys are the column names, and the values are a valid datatype (this varies across databases).
 
 Without specifying this, dbt will infer the datatype based on the column values in your seed file.
 
