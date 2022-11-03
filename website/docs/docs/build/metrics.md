@@ -21,6 +21,10 @@ A metric is a timeseries aggregation over a <Term id="table" /> that supports ze
 
 In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
+Review the video below to learn more about metrics, why they're important, and how to get started:
+    
+<LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />    
+
 ### Benefits of defining metrics
 
 **Use metric specifications in downstream tools**  
@@ -395,11 +399,11 @@ You may find some pieces of functionality, like secondary calculations, complica
 | Input       | Example     | Description | Required   |
 | ----------- | ----------- | ----------- | -----------|
 | <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, <br />[`metric('some_metric)'`, <br />`metric('some_other_metric)'`]<br /></VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`<br /></VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
-| grain       | `day`, `week`, <br />`month`, `quarter`, <br />`year`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Required |
-| dimensions  | [`plan`,<br /> `country`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
+| grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Required |
+| dimensions  | [`'plan'`,<br /> `'country'`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
 | secondary_calculations  | [`metrics.period_over_period( comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calcultions, and period to date calculations. | Optional |
-| start_date  | `2022-01-01` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
-| end_date    | `2022-12-31` | Limits the date range of data used in the metric claculation by not querying data after this date | Optional |
+| start_date  | `'2022-01-01'` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
+| end_date    | `'2022-12-31'` | Limits the date range of data used in the metric claculation by not querying data after this date | Optional |
 | where       | `plan='paying_customer'` | A sql statment, or series of sql statements, that alter the **final** CTE in the generated sql. Most often used to limit the data to specific values of dimensions provided | Optional |
 
 #### Secondary Calculations
