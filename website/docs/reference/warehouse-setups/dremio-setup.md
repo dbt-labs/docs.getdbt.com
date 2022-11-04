@@ -54,11 +54,14 @@ Follow the repository's link for os dependencies.
 Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 * Ensure that you have the ID of the Sonar project that you want to use. See [Obtaining the ID of a Project](https://docs.dremio.com/cloud/cloud-entities/projects/#obtaining-the-id-of-a-project).
 * Ensure that you have a personal access token (PAT) for authenticating to Dremio Cloud. See [Creating a Token](https://docs.dremio.com/cloud/security/authentication/personal-access-token/#creating-a-token).
+* Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
+
 
 
 ## Prerequisites for Dremio Software
 
 * Ensure that you are using version 22.0 or later.
+* Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
 * Enable these support keys in your Dremio cluster:
   * `dremio.iceberg.enabled`
   * `dremio.iceberg.ctas.enabled`
@@ -183,7 +186,7 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. The dbt alias is `datalake`.<br>This name corresponds to the name of a source in the **Object Storage** section of the Datasets page in Dremio:  <img src="/img/dbt-Samples.png"/> |
 | `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SamplesPath.png" alt="'samples.dremio.com'.'Dremio University'"/> |
 | `dremio_space` | No | @\<username> | The value of the Dremio space in which to create views. The dbt alias is `database`.<br>This value corresponds to the name in this location in the **Spaces** section of the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Spaces1"/> |
-| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Folder1.Folder2" alt="Folder1.Folder2"/> |
+| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SpacesPath.png" alt="Folder1.Folder2" alt="Folder1.Folder2"/> |
 
   
 ### Configurations in Profiles for Dremio Cloud
