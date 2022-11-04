@@ -2,12 +2,12 @@
 title: "Databricks setup"
 id: "databricks-setup"
 meta:
-  maintained_by: Databricks
-  authors: 'some dbt loving Bricksters'
+  maintained_by: 'dbt-loving Bricksters'
+  authors: Databricks
   github_repo: 'databricks/dbt-databricks'
   pypi_package: 'dbt-databricks'
   min_core_version: 'v0.18.0'
-  cloud_support: Coming Soon
+  cloud_support: Supported
   min_supported_version: 'n/a'
   slack_channel_name: '#db-databricks-and-spark'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
