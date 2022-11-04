@@ -134,4 +134,4 @@ The most important aspect of marts is that they contain all of the useful data a
   - Reverse ETL
   - Reporting and dashboards
   - Data science and ML
-  - [Exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures) (how we tie our dbt DAG into all of the above)
+  - [Exposures](https://docs.getdbt.com/docs/build/exposures) (how we tie our dbt DAG into all of the above)

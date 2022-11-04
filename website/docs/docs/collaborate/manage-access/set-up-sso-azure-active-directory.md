@@ -168,7 +168,7 @@ by navigating to the URL:
 
 ## Setting up RBAC
 Now you have completed setting up SSO with Azure AD, the next steps will be to set up
-[RBAC groups](/docs/dbt-cloud/access-control/enterprise-permissions) to complete your access control configuration.
+[RBAC groups](/docs/collaborate/manage-access/enterprise-permissions) to complete your access control configuration.
 
 ## Troubleshooting Tips
 

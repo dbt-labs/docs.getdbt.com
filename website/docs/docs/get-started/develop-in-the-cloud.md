@@ -25,7 +25,7 @@ To develop in the Cloud IDE, make sure you have the following:
 
 :::info📌 
 
-New to dbt? Check out our [Getting Started guide](/docs/get-started/overview) to build your first dbt project in the Cloud IDE!
+New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project in the Cloud IDE!
 
 :::
 
