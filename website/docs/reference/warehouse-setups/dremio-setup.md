@@ -76,11 +76,6 @@ Before connecting from project to Dremio Cloud, follow these prerequisite steps:
     * `dremio_cloud` for working with Dremio Cloud
     * `software_with_username_password` for working with a Dremio Software cluster and authenticating to the cluster with a username and a password
     * `software_with_pat` for working with a Dremio Software cluster and authenticating to the cluster with a personal access token
-4. Append these lines to the end of the content of the `dbt_project.yml` file at the root of your project directory:
-```
-vars:
-    dremio:reflections_enabled: false
-```
 
 Next, configure the profile for your project.
 
@@ -118,7 +113,7 @@ For descriptions of the configurations in these profiles, see [Configurations](#
     dev:
       cloud_host: https://api.dremio.cloud
       cloud_project_id: [project ID]
-      object_storage_source: [name
+      object_storage_source: [name]
       object_storage_path: [path]
       dremio_space: [name]
       dremio_space_folder: [path]
@@ -185,10 +180,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | --- | --- | --- | --- |
 | `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
 | `threads` | Yes | 1 | The number of threads the dbt project runs on. |
-| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. This name appears in the **Object Storage** section of the Datasets page in Dremio. The dbt alias is `datalake`. |
-| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods. Example: `folder_one.folder_two.folder_three` |
-| `dremio_space` | No | @\<username> | The name of the Dremio space in which to create views. The dbt alias is `database`. |
-| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods. Example: `folder_one.folder_two.folder_three` |
+| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. The dbt alias is `datalake`.<br>This name corresponds to the name of a source in the **Object Storage** section of the Datasets page in Dremio:  <img src="/img/dbt-Samples.png"/> |
+| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SamplesPath.png" alt="'samples.dremio.com'.'Dremio University'"/> |
+| `dremio_space` | No | @\<username> | The value of the Dremio space in which to create views. The dbt alias is `database`.<br>This value corresponds to the name in this location in the **Spaces** section of the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Spaces1"/> |
+| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Folder1.Folder2" alt="Folder1.Folder2"/> |
 
   
 ### Configurations in Profiles for Dremio Cloud
