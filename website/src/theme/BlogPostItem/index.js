@@ -12,7 +12,7 @@
  * - Add image above title for blog posts
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import {MDXProvider} from '@mdx-js/react';
 import Translate, {translate} from '@docusaurus/Translate';
@@ -100,6 +100,36 @@ function BlogPostItem(props) {
       </header>
     );
   };
+
+  // dbt custom - send blog context to datalayer to send to snowplow
+  useEffect(() => {
+    let blogContext = {
+      event: 'blogContext',
+      blogAuthor: '',
+      blogCategory: '',
+      blogDate: formattedDate ? formattedDate : undefined
+    }
+
+    if(authors && authors.length > 0) {
+      authors.map((author, i) => {
+        blogContext.blogAuthor += 
+          `${author.name}${i !== authors.length - 1 ? ', ' : ''}`
+      })
+    }
+    
+    if(tags && tags.length > 0) {
+      tags.map((tag, i) => {
+        blogContext.blogCategory += 
+          `${tag.label}${i !== tags.length - 1 ? ', ' : ''}`
+      })
+    }
+
+    // Only send to datalayer if blog post page
+    if(isBlogPostPage) {
+      window.dataLayer = window.dataLayer || [];
+      dataLayer && dataLayer.push(blogContext)
+    }
+  }, [])
 
   return (
     <>
