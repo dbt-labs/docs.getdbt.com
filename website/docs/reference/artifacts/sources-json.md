@@ -6,7 +6,7 @@ _Current schema_: [`v3`](https://schemas.getdbt.com/dbt/sources/v3/index.html)
 
 _Produced by:_ `dbt source freshness`
 
-This file contains information about [sources with freshness checks](using-sources#snapshotting-source-data-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](cloud-snapshotting-source-freshness).
+This file contains information about [sources with freshness checks](/docs/build/sources#checking-source-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](/docs/build/sources#snapshotting-source-data-freshness).
 
 ### Top-level keys
 

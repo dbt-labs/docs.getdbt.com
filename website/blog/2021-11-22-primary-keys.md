@@ -16,7 +16,7 @@ We’ve all done it: fanned out data during a join to produce duplicate records 
 
 That time when historical revenue numbers doubled on Monday? Classic fanout. 
 
-Could it have been avoided? Yes, very simply: by defining the uniqueness grain for a <Term id="table" /> with a primary key and enforcing it with a dbt test.
+Could it have been avoided? Yes, very simply: by defining the uniqueness <Term id="grain" /> for a <Term id="table" /> with a primary key and enforcing it with a dbt test.
 
 So let’s dive deep into: what primary keys are, which cloud analytics warehouses support them, and how you can test them in your warehouse to enforce uniqueness.
 
@@ -26,7 +26,7 @@ So let’s dive deep into: what primary keys are, which cloud analytics warehous
 
 ## What’s a primary key?
 
-A primary key is a column in your database that exists to uniquely identify a single row.
+A <Term id="primary-key" /> is a column in your database that exists to uniquely identify a single row.
 
 Primary keys are _critical_ to data modeling. Without a primary key, you’ll find yourself constantly struggling to identify duplicate rows and define the expected grain of your tables. 
 
@@ -51,7 +51,7 @@ In the days before testing your data was commonplace, you often found out that y
 
 ## How to test primary keys with dbt
 
-Today, you can add two simple [dbt tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data. 
+Today, you can add two simple [dbt tests](/docs/build/tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data.
 
 Not surprisingly, these two tests correspond to the two most common errors found on your primary keys, and are usually the first tests that teams testing data with dbt implement:
 
@@ -89,7 +89,7 @@ Having tests configured and running in production using the [`dbt test`](https:/
 
 Does your warehouse even _support_ primary keys at all? If it does, how can you actually find out if a table has a primary key set, and what that primary key is?
 
-Let’s walk through primary key support + access across the major cloud data warehouse platforms.
+Let’s walk through primary key support + access across the major cloud <Term id="data-warehouse" /> platforms.
 
 
 ### TL;DR on primary key support across warehouses
@@ -110,7 +110,7 @@ BigQuery does not have a concept of primary key constraints for tables, so inste
 
 Databricks Delta SQL does not support primary keys in a classic SQL sense, and instead offers what they call [constraints](https://docs.databricks.com/delta/delta-constraints.html) for fields (`not null` being one of them).  
 
-Similarly to BigQuery, surrogate keys can be used to get around this limitation.
+Similarly to BigQuery, <Term id="surrogate-key">surrogate keys</Term> can be used to get around this limitation.
 
 
 ### Redshift primary keys
@@ -126,7 +126,7 @@ It’s ultimately up to you to check for uniqueness + not null-ness in your data
 
 Snowflake supports a command of [SHOW PRIMARY KEYS](https://docs.snowflake.com/en/sql-reference/sql/show-primary-keys.html), which allows you to query out primary keys for your tables.
 
-Note that Snowflake primary keys enforce a `not null` constraint, but not uniqueness - so you’ll still want to test whether your primary key column values are actually unique (see testing section at the bottom).
+Note that Snowflake primary keys are purely declarative--neither uniqueness nor non-nullness constraints are enforced. However, Snowflake supports a separate `not null` constraint that can be applied to column that is enforced. Regardless, you'll still want to ensure your primary key column values are actually unique (see testing section at the bottom.)
 
 
 ### Postgres primary keys
