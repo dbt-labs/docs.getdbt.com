@@ -149,8 +149,35 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Connecting to Databricks
+We have two supported adapters to connect to Databricks: [dbt-databricks](/connect-your-database#dbt-databricks) and [dbt-spark](/connect-your-database#dbt-spark). For accounts on dbt 1.0 or later, we recommend using the dbt-databricks adapter. The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks.
 
-### ODBC
+### dbt-databricks Adapter
+dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality.
+
+| Feature | dbt Versions |
+| ----- | ----------- | 
+| dbt-databricks | Available starting with dbt 1.0 in dbt Cloud|
+| Unity Catalog | Available starting with dbt 1.1 | 
+| Python models | Available starting with dbt 1.3 |
+
+The dbt-databricks adapter offers:
+- **Easier set up**
+- **Better defaults:**
+The dbt-databricks is more opinionated, guiding users to an improved experience with less effort. Design choices of the dbt-databricks adapter include defaulting to Delta file format, using merge for incremental models, and running expensive queries with Photon.
+- **Support for Unity Catalog:**
+Unity Catalog allows Databricks users to centrally manage all data assets, simplifying access management and improving search and query performance. Databricks users can now get three-part data hierarchies – catalog, schema, model name – which solves a longstanding friction point in data organization and governance.
+
+
+To set up the Databricks connection, supply the following fields:
+
+| Field | Description | Examples |
+| ----- | ----------- | -------- |
+| Server Hostname | The hostname of the Databricks account to connect to | dbc-a2c61234-1234.cloud.databricks.com |
+| Port | The HTTP path of the Databricks cluster or SQL warehouse | /sql/1.0/warehouses/1a23b4596cd7e8fg |
+| Catalog | Name of Databricks Catalog (optional) | Production |
+
+
+### dbt-spark Adapter
 
 dbt Cloud supports connecting to Databricks using
 [a Cluster](https://docs.databricks.com/clusters/index.html) or
@@ -163,7 +190,7 @@ The following fields are available when creating a Databricks connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the Databricks account to connect to | `avc-def1234ghi-9999.cloud.databricks.com` |
+| Host Name | The hostname of the Databricks account to connect to | `dbc-a2c61234-1234.cloud.databricks.com` |
 | Port | The port to connect to Databricks for this connection | 443 |
 | Organization | Optional (default: 0) | 0123456789 |
 | Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
