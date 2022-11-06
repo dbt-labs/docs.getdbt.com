@@ -48,7 +48,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Project Creators have write and read only access to dbt Cloud accounts, but do not have permissions to modify SSO settings and account integrations. 
+Project Creators have write and read-only access to dbt Cloud accounts, but do not have the permissions required to modify SSO settings and account integrations. 
 
 Users with Project Creator permissions can:
 
