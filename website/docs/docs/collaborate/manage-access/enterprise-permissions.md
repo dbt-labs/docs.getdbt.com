@@ -38,7 +38,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Create, delete, and modify Jobs
 - Create, delete, and modify Groups
 - Create, delete, and modify Group Memberships
-- Manage notification settings
+- Manage Notification Settings
 - Manage account-level [artifacts](dbt-cloud/using-dbt-cloud/artifacts)
 - View and modify Account Settings
 - Use the IDE
@@ -62,7 +62,7 @@ Users with Project Creator permissions can:
 - Use the IDE
 - Run and cancel jobs
 - View Groups
-- View notification settings
+- View Notification Settings
 
 ### Account Viewer
 
@@ -78,7 +78,7 @@ Account Viewers have read only access to dbt Cloud accounts. Users with Account 
 - View Jobs
 - View Groups
 - View Group Memberships
-- View notification settings
+- View Notification Settings
 - View account-level artifacts
 
 ### Admin
