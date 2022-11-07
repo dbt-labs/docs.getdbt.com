@@ -50,6 +50,10 @@ export default function DocItem(props) {
   // If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
 
+  // dbt Custom
+  // If the page has a searchWeight value, apply that value
+  const searchWeight = frontMatter?.searchWeight && frontMatter.searchWeight
+
   // This hides any TOC items not in
   // html markdown headings for current version. 
   const { version: dbtVersion } = useContext(VersionContext)
@@ -149,7 +153,7 @@ export default function DocItem(props) {
                 )}
 
                 <DocContent />
-                <CustomSearchWeight weight={frontMatter.searchWeight} />
+                <CustomSearchWeight weight={searchWeight} />
               </div>
 
               <DocItemFooter {...props} />
