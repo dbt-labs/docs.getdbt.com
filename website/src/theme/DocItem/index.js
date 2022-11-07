@@ -77,12 +77,14 @@ export default function DocItem(props) {
             let level;
             if (heading.nodeName === "H2") {
               level = 2
+            } else if (heading.nodeName === "H3") {
+              level = 3
             } else {
               level = null
             }
 
             return {
-              value: heading.textContent,
+              value: heading.innerHTML,
               id: heading.id,
               level: level && level
             }
