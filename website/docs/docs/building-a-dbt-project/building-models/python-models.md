@@ -10,7 +10,7 @@ We encourage you to:
 - Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.
 - Contribute to [best practices for developing Python models in dbt](https://discourse.getdbt.com/t/dbt-python-model-dbt-py-best-practices/5204 ).
 - Weigh in on [next steps for Python models, beyond v1.3](https://github.com/dbt-labs/dbt-core/discussions/5742).
-- Join the **#beta-feedback-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
+- Join the **#dbt-core-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 
 Below, you'll see sections entitled "❓ **Our questions**." We are excited to have released a first narrow set of functionality in v1.3, which will solve real use cases. We also know this is a first step into a much wider field of possibility. We don't pretend to have all the answers. We're excited to keep developing our opinionated recommendations and next steps for product development—and we want your help. Comment in the GitHub discussions; leave thoughts in Slack; bring up dbt + Python in casual conversation with colleagues and friends.
 :::
@@ -660,7 +660,7 @@ Use the `cluster` submission method with dedicated Dataproc clusters you or your
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-connector-initialization.png" title="Add the Spark BigQuery connector as an initialization action"/>
 
-The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](bigquery-profile), or configure them on specific Python models:
+The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/reference/warehouse-setups/bigquery-setup#running-python-models-on-dataproc), or configure them on specific Python models:
 - `gcs_bucket`: Storage bucket to which dbt will upload your model's compiled PySpark code.
 - `dataproc_region`: GCP region in which you have enabled Dataproc (for example `us-central1`)
 - `dataproc_cluster_name`: Name of Dataproc cluster to use for running Python model (executing PySpark job). Only required if `submission_method: cluster`.
