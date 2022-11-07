@@ -1,5 +1,11 @@
 As a best practice in SQL, you should separate logic that cleans up your data from logic that transforms your data. You have already started doing this in the existing query by using common table expressions (CTEs).
 
+## Test section H2.
+Testing more things.
+
+## Another test, very important.
+Testing things.
+
 Now you can experiment by separating the logic out into separate models and using the [ref](ref) function to build models on top of other models:
 
 <div style={{maxWidth: '400px'}}>
