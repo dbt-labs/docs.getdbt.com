@@ -58,9 +58,6 @@ export default function DocItem(props) {
     async function fetchElements() {
       // get html elements
       const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
-      // // Get all of the h2 headings in a Snippet component on the page.
-      // const snippetHeadings = await getElements(".snippet_src-components-snippet-styles-module h2")
-
       // if headings exist on page
       // compare against toc
       if (DocContent.toc && headings && headings.length) {
