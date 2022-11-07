@@ -17,7 +17,6 @@ export default function AnnouncementBar() {
       style={{backgroundColor, color: textColor}}
       role="banner">
       {isCloseable && <div className={styles.announcementBarPlaceholder} />}
-      {/* <AnnouncementBarContent className={styles.announcementBarContent} /> */}
       {announcementBarLink ? (
         <a 
           target="_blank" 
