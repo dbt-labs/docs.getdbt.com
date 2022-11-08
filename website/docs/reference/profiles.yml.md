@@ -4,7 +4,7 @@
 
 If you're using the dbt CLI, you'll need to set up a `profiles.yml` file.
 
-You can learn more about this in the article on [Connecting to your warehouse](configure-your-profile).
+You can learn more about this in the article on [Connecting to your warehouse](/docs/get-started/connection-profiles).
 
 This article lists the parts of your `profiles.yml` which are _not_ database specific. Check out the article for your database for exact connection details.
 
@@ -26,7 +26,7 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
   [static_parser](global-configs#static-parser): <true | false>
 
 <profile-name>:
-  target: <target-name>
+  target: <target-name> # this is the default target
   outputs:
     <target-name>:
       type: <bigquery | postgres | redshift | snowflake | other>

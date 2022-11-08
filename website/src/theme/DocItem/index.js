@@ -165,6 +165,7 @@ export default function DocItem(props) {
                 maxHeadingLevel={tocMaxHeadingLevel}
                 className={ThemeClassNames.docs.docTocDesktop}
                 featured_cta={termCTA && termCTA}
+                editUrl={metadata?.editUrl && metadata.editUrl}
               />
             ) : (
               <img

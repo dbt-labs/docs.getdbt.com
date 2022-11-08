@@ -1,9 +1,14 @@
 ---
 id: dimensional-modeling
 title: Dimensional modeling
+description: Dimensional modeling is a data modeling technique where you break data up into “facts” and “dimensions” to organize and describe entities in your data warehouse
 displayText: dimensional modeling
 hoverSnippet: Dimensional modeling is a data modeling technique where you break data up into “facts” and “dimensions” to organize and describe entities within your data warehouse.
 ---
+
+<head>
+    <title>Dimensional modeling: An essential concept in data modeling</title>
+</head>
 
 Dimensional modeling is a data modeling technique where you break data up into “facts” and “dimensions” to organize and describe entities within your data warehouse. The result is a staging layer in the data warehouse that cleans and organizes the data into the business end of the warehouse that is more accessible to data consumers.
 

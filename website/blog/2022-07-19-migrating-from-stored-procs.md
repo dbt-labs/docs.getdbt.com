@@ -12,7 +12,7 @@ date: 2022-07-20
 is_featured: true
 ---
 
-Stored procedures are widely used throughout the data warehousing world. They’re great for encapsulating complex transformations into units that can be scheduled and respond to conditional logic via parameters. However, as team’s continue building their transformation logic using the stored procedure approach, we see more data downtime, increased data warehouse costs, and incorrect / unavailable data in production. All of this leads to more stressed and unhappy developers, and consumers who have a hard time trusting their data.
+Stored procedures are widely used throughout the data warehousing world. They’re great for encapsulating complex transformations into units that can be scheduled and respond to conditional logic via parameters. However, as teams continue building their transformation logic using the stored procedure approach, we see more data downtime, increased data warehouse costs, and incorrect / unavailable data in production. All of this leads to more stressed and unhappy developers, and consumers who have a hard time trusting their data.
 
 If your team works heavily with stored procedures, and you ever find yourself with the following or related issues:
 
@@ -24,7 +24,7 @@ It’s worth considering if an alternative approach with dbt might help.
 
 <!--truncate-->
 
-## Why use dbt instead of stored procedures?
+## Why use modular dbt models instead of stored procedures?
 
 We work with many analytics teams to refactor their stored procedure code into dbt. Many of them come in thinking that the upfront effort to modernize their approach to data transformation will be too much to justify. However, we see that in the long term this isn’t the case. 
 
@@ -35,7 +35,7 @@ For example, a dbt Cloud user achieved the following results when moving away fr
 Before migrating to dbt, the team was spending 6 - 8 hours per day on pipeline refreshes, making their investment in their data warehouse essentially worthless during that downtime. After migration, their uptime increased from 65% to 99.9%. This also has a drastic impact on data consumers’ confidence in the underlying pipelines.
 
 ### Tackling New Use Cases
-The team was able to support new mission-critical use cases, such as real time data reporting using a modeling technique called [lambda views](https://docs.getdbt.com/blog/how-to-create-near-real-time-models-with-just-dbt-sql#what-are-lambda-views). This simply wouldn’t have been possible had the team continued using the same techniques they had historically.
+Further, the team was able to support new mission-critical use cases, which simply wouldn’t have been possible had the team continued using the same techniques they had historically.
 
 Now that we’ve discussed why moving from stored procs to dbt can make sense for many analytics teams, let’s discuss how the process works in a bit more detail.
 
@@ -60,7 +60,7 @@ Tight [version control integration](https://docs.getdbt.com/docs/guides/best-pra
 
 Whether you’re working with T-SQL, PL/SQL, BTEQ, or some other SQL dialect, the process of migrating from the stored procedure approach to the dbt approach can typically be broken down into similar steps. Over the years, we’ve worked with many customers to convert confusing and hard-to-manage stored procedure code into modular dbt pipelines. Through our work, we’ve arrived at a few key best practices in undertaking this process, which we present below.
 
-We provide a simple illustrative example of how this process works below. If you’re interested in diving into further detail on this topic, please visit our [companion guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-stored-procedures/4-deletes) on the refactoring process.
+If you’re interested in diving into further detail on this topic, please visit our [companion guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures) to learn more in-depth information about the refactoring process.
 
 ### Step 0: Understand a bit about how dbt works
 

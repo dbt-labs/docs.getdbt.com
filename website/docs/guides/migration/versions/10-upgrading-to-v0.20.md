@@ -23,7 +23,8 @@ dbt Core v0.20 has reached the end of critical support. No new patch versions wi
 ## New and changed documentation
 
 ### Tests
-- [Building a dbt Project: tests](building-a-dbt-project/tests)
+
+- [Building a dbt Project: tests](/docs/build/tests)
 - [Test Configs](test-configs)
 - [Test properties](resource-properties/tests)
 - [Node Selection](node-selection/syntax) (with updated [test selection examples](test-selection-examples))
@@ -32,12 +33,12 @@ dbt Core v0.20 has reached the end of critical support. No new patch versions wi
 ### Elsewhere in Core
 - [Parsing](parsing): rework of partial parsing, introduction of experimental parser
 - The [graph](graph) Jinja context variable includes `exposures`
-- [Packages](package-management) can now be installed from git with a specific commit hash as the revision, or via sparse checkout if the dbt project is located in a `subdirectory`.
+- [Packages](/docs/build/packages) can now be installed from git with a specific commit hash as the revision, or via sparse checkout if the dbt project is located in a `subdirectory`.
 - [adapter.dispatch](dispatch) supports new arguments, a new [project-level config](project-configs/dispatch-config), and includes parent adapters when searching for macro implementations.
 - [Exposures](exposure-properties) support `tags` and `meta` properties
 
 ### Plugins
 - New partition-related [BigQuery configs](bigquery-configs#additional-partition-configs): `require_partition_filter` and `partition_expiration_days`
 - On BigQuery, dbt can now add [query comment](query-comment) items as job labels
-- Snowflake and BigQuery [incremental models](configuring-incremental-models#strategy-specific-configs) using the `merge` strategy accept a new optional config, `merge_update_columns`.
+- Snowflake and BigQuery [incremental models](/docs/build/incremental-models#strategy-specific-configs) using the `merge` strategy accept a new optional config, `merge_update_columns`.
 - [Postgres configs](postgres-configs) now include first-class support for `indexes`

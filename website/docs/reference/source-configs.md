@@ -66,13 +66,13 @@ sources:
 
 <VersionBlock firstVersion="1.1">
 
-Sources can be configured via a `config:` block within their `.yml` definitions, or from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](using-sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
+Sources can be configured via a `config:` block within their `.yml` definitions, or from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](/docs/build/packages). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.0">
 
-Sources can be configured from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](using-sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
+Sources can be configured from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
 
 Unlike other resource types, sources do not yet support a `config` property. It is not possible to (re)define source configs hierarchically across multiple yaml files.
 
@@ -80,7 +80,7 @@ Unlike other resource types, sources do not yet support a `config` property. It 
 
 ### Examples
 #### Disable all sources imported from a package
-To apply a configuration to all sources included from a [package](package-management),
+To apply a configuration to all sources included from a [package](/docs/build/packages),
 state your configuration under the [project name](project-configs/name.md) in the
 `sources:` config as a part of the resource path.
 
