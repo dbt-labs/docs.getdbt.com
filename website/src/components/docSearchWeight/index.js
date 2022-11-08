@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-function CustomSearchWeight({ weight }) {
+function DocSearchWeight({ weight }) {
 
 const searchWeight = weight ? weight : 0
 
@@ -10,4 +10,4 @@ const searchWeight = weight ? weight : 0
   );
 }
 
-export default CustomSearchWeight;
+export default DocSearchWeight;

@@ -17,7 +17,7 @@ import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import {ThemeClassNames, useWindowSize} from '@docusaurus/theme-common';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
-import CustomSearchWeight from '@site/src/components/customSearchWeight';
+import DocSearchWeight from '@site/src/components/docSearchWeight';
 
 // dbt Custom
 import VersionContext from '../../stores/VersionContext'
@@ -153,7 +153,8 @@ export default function DocItem(props) {
                 )}
 
                 <DocContent />
-                <CustomSearchWeight weight={searchWeight} />
+                
+                <DocSearchWeight weight={searchWeight} />
               </div>
 
               <DocItemFooter {...props} />
