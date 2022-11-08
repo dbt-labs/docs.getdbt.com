@@ -1,12 +1,12 @@
 As a best practice in SQL, you should separate logic that cleans up your data from logic that transforms your data. You have already started doing this in the existing query by using common table expressions (CTEs).
 
+Now you can experiment by separating the logic out into separate models and using the [ref](ref) function to build models on top of other models:
+
 ## Test section H2.
 Testing more things.
 
 ## Another test, very important.
 Testing things.
-
-Now you can experiment by separating the logic out into separate models and using the [ref](ref) function to build models on top of other models:
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
@@ -201,7 +201,8 @@ Now you can experiment by separating the logic out into separate models and usin
 
 This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
-### FAQs
+
+### FAQs {#faq-2}
 
 <FAQ src="Runs/run-one-model" />
 <FAQ src="Models/unique-model-names" />

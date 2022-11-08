@@ -68,7 +68,6 @@ export default function DocItem(props) {
           let found = DocContent.toc.find(heading =>
             heading.id.includes(item.id)
           )
-          console.log('found', found)
           // If toc item is not in headings
           // do not include in toc
           // This means heading is versioned
@@ -91,10 +90,8 @@ export default function DocItem(props) {
           }
 
           if (found) {
-            console.log('item found!')
             acc.push(makeToc(item))
           } else if (!found) {
-            console.log('not found!', item)
             acc.push(makeToc(item))
           } else {
             null
