@@ -505,13 +505,13 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 
 .menu__list-item--collapsed .menu__link--sublist::after,
 .menu__list-item--collapsed .menu__caret::before {
-  transform: rotateZ(90deg);
+  transform: rotateZ(0deg);
 }
 
 /* < icon */
 .menu__link--sublist::after,
 .menu__caret::before {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
   margin-left: 1em;
   background: var(--ifm-breadcrumb-separator) center;
   background-repeat: no-repeat;
