@@ -7,10 +7,9 @@ import BlogSidebar from '@theme/BlogSidebar';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import {usePluginData} from '@docusaurus/useGlobalData';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function BlogLayout(props) {
-  console.log('props', props)
-
   const {sidebar, toc, children, title, description, ...layoutProps} = props;
   const hasSidebar = sidebar && sidebar.items.length > 0;
 
@@ -18,6 +17,15 @@ export default function BlogLayout(props) {
   const [isBlogPost, setIsBlogPost] = useState(false)
   const [isBlogList, setIsBlogList] = useState(false)
   const { blogMeta, tagData } = usePluginData('docusaurus-build-global-data-plugin');
+  const { siteConfig: { presets } } = useDocusaurusContext()
+
+  // Get blog data from docusaurus config
+  const blogData = presets && presets.reduce((acc, preset) => {
+    const context = preset?.find(item => item['blog'])
+    if(context) acc = context['blog']
+    return acc
+  }, {})
+
   const { 
     featured_image, 
     featured_cta, 
@@ -53,13 +61,13 @@ export default function BlogLayout(props) {
       }
 
       {isBlogList &&
-         ((show_title || show_description) && (title || description)) && (
+         ((show_title || show_description) && (blogData?.blogTitle || blogData?.blogDescription)) && (
            <div className="blog-index-header">
              <div className="container margin-vert--lg">
                <div className="card large light blog-hero-card">
                  <div className="blog-hero-card-content">
-                   {title && show_title && <h1>{title}</h1>}
-                   {description && show_description && <p>{description}</p>}
+                   {blogData.blogTitle && show_title && <h1>{blogData.blogTitle}</h1>}
+                   {blogData.blogDescription && show_description && <p>{blogData.blogDescription}</p>}
                    {(hero_button_text !== "" && hero_button_text !== "") && (
                      hero_button_new_tab ? (
                        <a 
