@@ -18,7 +18,6 @@ export default function BlogLayout(props) {
   const [isBlogList, setIsBlogList] = useState(false)
   const { blogMeta, tagData } = usePluginData('docusaurus-build-global-data-plugin');
   const { siteConfig: { presets } } = useDocusaurusContext()
-  console.log('tagData', tagData)
   // Get blog data from docusaurus config
   const blogData = presets && presets.reduce((acc, preset) => {
     const context = preset?.find(item => item['blog'])

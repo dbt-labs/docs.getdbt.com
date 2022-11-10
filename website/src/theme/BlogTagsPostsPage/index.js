@@ -60,7 +60,6 @@ function BlogTagsPostsPageMetadata({tag}) {
   );
 }
 function BlogTagsPostsPageContent({tag, items, sidebar, listMetadata}) {
-  console.log('tag', tag)
   const title = useBlogTagsPostsPageTitle(tag);
 
   const { tagData } = usePluginData('docusaurus-build-global-data-plugin');
