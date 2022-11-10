@@ -24,7 +24,7 @@ function Author(props) {
   )
 
   return (
-    <BlogLayout blogPageTitle={name}>
+    <BlogLayout title={name}>
       <Head>
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle && blogData.blogTitle}`} />
