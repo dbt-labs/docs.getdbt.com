@@ -1,5 +1,5 @@
 # Set custom blog metadata
-featured_image: ""
+featured_image: "https://www.getdbt.com/ui/img/blog/dbt-card.jpg"
 
 # This CTA lives in right sidebar on blog index
 featured_cta: "staging"
