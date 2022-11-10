@@ -56,7 +56,6 @@ export default function BlogLayout(props) {
     `${breadcrumbTitle} | dbt Developer Blog`
   }
 
-  console.log('metaTitle', metaTitle)
   return (
     <Layout {...layoutProps}>
 
