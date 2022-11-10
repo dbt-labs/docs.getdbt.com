@@ -48,16 +48,40 @@ export default function BlogLayout(props) {
     breadcrumbTitle = title
   }
 
+  // Set custom meta title for blog list and blog post pages
+  const metaTitle = undefined
+  if(isBlogList) {
+    blogData.blogTitle
+  } else if(breadcrumbTitle) {
+    `${breadcrumbTitle} | dbt Developer Blog`
+  }
+
+  console.log('metaTitle', metaTitle)
   return (
     <Layout {...layoutProps}>
 
       {/* Set Custom Metadata */}
-      {featured_image && featured_image !== "" &&
-        <Head> 
-          <meta property="og:image" content={featured_image} />
-          <meta property="twitter:image" content={featured_image} />
-        </Head>
-      }
+       {featured_image && featured_image !== "" &&
+         <Head> 
+           <meta property="og:image" content={featured_image} />
+           <meta property="twitter:image" content={featured_image} />
+         </Head>
+       }
+ 
+       {metaTitle &&
+         <Head>
+           <title>{metaTitle}</title>
+           <meta property="og:title" content={metaTitle} />
+         </Head>
+       }
+ 
+       {description &&
+         <Head>
+           <meta name="description" content={description} />
+           <meta property="og:description" content={description} />
+         </Head>
+       }
+       {/* End Custom Metadata */}
 
       {isBlogList &&
          ((show_title || show_description) && (blogData?.blogTitle || blogData?.blogDescription)) && (
