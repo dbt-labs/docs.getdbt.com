@@ -1,5 +1,5 @@
 # Set custom blog metadata
-featured_image: "https://www.getdbt.com/ui/img/blog/dbt-card.jpg"
+featured_image: ""
 
 # This CTA lives in right sidebar on blog index
 featured_cta: "staging"
@@ -19,6 +19,3 @@ show_description: true
 hero_button_url: "/blog/welcome"
 hero_button_text: "Start here"
 hero_button_new_tab: false
-
-# Show or hide sidebar on blog post page
-show_left_sidebar: false

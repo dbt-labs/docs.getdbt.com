@@ -34,7 +34,6 @@ export default function BlogLayout(props) {
     hero_button_url,
     hero_button_text,
     hero_button_new_tab,
-    show_left_sidebar
   } = blogMeta
   
   useEffect(() => {    
