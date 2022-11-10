@@ -3,6 +3,12 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 import styles from './styles.module.css';
+
+/* dbt Customizations:
+ * Brings in tagData prop
+ * If tagData available, add 'Categories' section to sidebar
+*/
+
 export default function BlogSidebarDesktop({sidebar, tagData}) {
   return (
     <aside className="col col--3">

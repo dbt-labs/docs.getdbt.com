@@ -7,6 +7,13 @@ import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
 import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
+
+/* dbt Customizations:
+ * Gets authors, tags, formattedDate from metadata
+ * Send authors, tags, formattedDate to snowplow
+ * Passes post title prop BlogLayout to display in breadcrumbs 
+*/
+
 function BlogPostPageContent({sidebar, children}) {
   const {metadata, toc} = useBlogPost();
   const {nextItem, prevItem, frontMatter, authors, tags, formattedDate} = metadata;

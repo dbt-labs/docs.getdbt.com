@@ -9,9 +9,9 @@ function MaybeLink(props) {
 }
 
 /* dbt Customizations:
-  - Gets 'key' from author props
-  - Does not use 'MaybeLink', instead
-  - always uses link and sets url to /author/{key}
+ * Gets 'key' from author props
+ * Does not use 'MaybeLink', instead
+ * always uses link and sets url to /author/{key}
 */
 
 export default function BlogPostItemHeaderAuthor({author, className}) {

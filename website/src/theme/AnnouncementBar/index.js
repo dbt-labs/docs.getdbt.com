@@ -4,6 +4,11 @@ import {useAnnouncementBar} from '@docusaurus/theme-common/internal';
 import AnnouncementBarCloseButton from '@theme/AnnouncementBar/CloseButton';
 import AnnouncementBarContent from '@theme/AnnouncementBar/Content';
 import styles from './styles.module.css';
+
+/* dbt Customizations:
+ * Wrap entire AnnouncementBar in link to make whole banner clickable
+*/
+
 export default function AnnouncementBar() {
   const {announcementBar, announcementBarActive, announcementBarLink} = useThemeConfig();
   const {isActive, close} = useAnnouncementBar();

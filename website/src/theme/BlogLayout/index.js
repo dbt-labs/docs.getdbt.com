@@ -3,7 +3,17 @@ import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import BlogSidebar from '@theme/BlogSidebar';
 
-// dbt Custom 
+/* dbt Customizations:
+ * Import Head, Link, plugin & context hooks
+ * Sets states for checking if blog post or blog list page
+ * Get blogMeta and tagData global data from plugin
+ * Get blogData from docusaurus.config.js
+ * Set custom breadcrumb and meta titles
+ * Set custom featured image from website/blog/metadata.yml
+ * Show hero card section if blog list page
+ * Adds breadcrumbs section
+ * Hide sidebar if blog post page and adjusts column sizing 
+*/
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import {usePluginData} from '@docusaurus/useGlobalData';
@@ -13,7 +23,6 @@ export default function BlogLayout(props) {
   const {sidebar, toc, children, title, description, ...layoutProps} = props;
   const hasSidebar = sidebar && sidebar.items.length > 0;
 
-  // dbt Custom
   const [isBlogPost, setIsBlogPost] = useState(false)
   const [isBlogList, setIsBlogList] = useState(false)
   const { blogMeta, tagData } = usePluginData('docusaurus-build-global-data-plugin');
@@ -35,6 +44,7 @@ export default function BlogLayout(props) {
     hero_button_new_tab,
   } = blogMeta
   
+  // dbt Custom
   useEffect(() => {    
     document?.querySelector('.blog-post-page') && setIsBlogPost(true)
     document?.querySelector('.blog-list-page') && setIsBlogList(true)
@@ -54,6 +64,7 @@ export default function BlogLayout(props) {
   } else if(breadcrumbTitle) {
     `${breadcrumbTitle} | dbt Developer Blog`
   }
+  // end dbtCustom
 
   return (
     <Layout {...layoutProps}>
