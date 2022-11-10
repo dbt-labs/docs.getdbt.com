@@ -36,7 +36,7 @@ function BlogPostPageContent({sidebar, children}) {
     
     if(tags && tags.length > 0) {
       tags.map((tag, i) => {
-        tag?.label (
+        tag?.label && (
           blogContext.blogCategory += 
             `${tag.label}${i !== tags.length - 1 ? ', ' : ''}`
         )
