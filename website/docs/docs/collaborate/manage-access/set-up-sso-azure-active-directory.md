@@ -49,7 +49,7 @@ need to select the appropriate directory and then register a new application.
 | Single-Tenant _(recommended)_ | `https://cloud.getdbt.com/complete/azure_single_tenant` |
 | Multi-Tenant | `https://cloud.getdbt.com/complete/azure_multi_tenant` |
 
-*Note:* If your dbt account is a VPC deployment or is based outside the US, your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
+*Note:* If your dbt account instance is a VPC deployment or is based [outside the US](/docs/deploy/regions), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
 
 5. Save the App registration to continue setting up Azure AD SSO
 
