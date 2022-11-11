@@ -15,6 +15,7 @@ import NavbarItem from '@theme/NavbarItem';
  * Custom state to handle version dropdown on click
  * Show version dropdown on version state change
  * Pass versionContext to Comp
+ * 
 */
 // import VersionsNavbarItem from './VersionsNavItem';
 import VersionContext from '../../stores/VersionContext';
@@ -107,9 +108,10 @@ function DropdownNavbarItemDesktop({
           <NavbarItem
             isDropdownItem
             onKeyDown={className === "nav-versioning"
-              ? (
-                (e) => versionContext.updateVersion(e)
-              ) : (
+              ? ((e) => {
+                handleVersionMenuClick()
+                versionContext.updateVersion(e)
+              }) : (
                 (e) => {
                   if (i === items.length - 1 && e.key === 'Tab') {
                     e.preventDefault();
