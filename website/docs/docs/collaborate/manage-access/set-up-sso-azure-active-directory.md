@@ -165,7 +165,7 @@ by navigating to the URL:
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
 :::
 
-*Note:* If your dbt account is a VPC deployment or is based outside the US, your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
+*Note:* If your dbt account instance is a VPC deployment or is [based outside the US](/docs/deploy/regions), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
 
 
 ## Setting up RBAC
