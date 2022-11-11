@@ -36,9 +36,10 @@ cd airflow-dbt-cloud
 
 ## 4. Start the Docker container
 
-1. Run the following command to spin up the Docker container and start your local Airflow deployment:
+1. Run the following commands to turn your directory into an Astronomer project and spin up the Docker container and start your local Airflow deployment:
 
     ```bash
+    astrocloud dev init
     astrocloud dev start
     ```
 
