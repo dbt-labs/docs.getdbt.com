@@ -436,6 +436,12 @@ a.navbar__item.navbar__link.btn:hover {
   background: transparent;
 }
 
+/* Prevent layout shift when sidebar gets vertical overflow */
+@media(min-width: 996px) {
+  .theme-doc-sidebar-menu.menu__list {
+    max-width: 260px;
+  }
+}
 
 /* level2 */
 li.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 .menu__list-item-collapsible {
