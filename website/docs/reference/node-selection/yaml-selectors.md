@@ -289,3 +289,5 @@ selectors:
 ```
 
 </VersionBlock>
+
+**Note:** While selector inheritance allows the logic from another selector to be _reused_, it does not allow the logic from that selector to be _modified_ by means of `parents`, `children`, `indirect_selection`, etc. The `selector` method simply returns the complete set of nodes returned by the named selector.
