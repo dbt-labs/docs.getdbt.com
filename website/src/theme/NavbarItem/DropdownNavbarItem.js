@@ -181,7 +181,9 @@ function DropdownNavbarItemMobile({
         onClick={(e) => {
           e.preventDefault();
           toggleCollapsed();
-        }}>
+        }}
+        label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+      >
         {props.children ?? props.label}
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
@@ -189,7 +191,10 @@ function DropdownNavbarItemMobile({
           <NavbarItem
             mobile
             isDropdownItem
-            onClick={onClick}
+            onClick={className === "nav-versioning" 
+              ? (e) => versionContext.updateVersion(e)
+              : onClick
+            }
             activeClassName="menu__link--active"
             {...childItemProps}
             key={i}
