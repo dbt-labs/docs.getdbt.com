@@ -2,16 +2,7 @@
 featured_image: ""
 
 # This CTA lives in right sidebar on blog index
-featured_cta: "staging"
-
-# How many featured posts to show on blog index
-featured_posts_count: 4
-
-# How many featured posts by tag to show on blog index
-featured_tag_posts_count: 3
-
-# How many posts which aren't in featured post section should show
-regular_posts_count: 15
+featured_cta: "setup"
 
 # Show or hide hero title, description, cta from blog index
 show_title: true
