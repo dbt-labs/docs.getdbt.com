@@ -514,6 +514,14 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   transform: rotateZ(0deg);
 }
 
+/* Mobile ToC caret */
+.docs-doc-page .theme-doc-toc-mobile .clean-btn:after {
+  transform: rotate(90deg);
+}
+.docs-doc-page .theme-doc-toc-mobile[class*="Expanded"] .clean-btn:after {
+  transform: rotate(180deg);
+}
+
 /* < icon */
 .menu__link--sublist::after,
 .menu__caret::before {
