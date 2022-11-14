@@ -6,7 +6,7 @@ id: "migrating-from-spark-to-databricks"
 
 ## Pre-requisites
 
-In order to migrate to dbt-databricks, your project must be compatible with `dbt 1.0` or greater as dbt-databricks is not supported pre `dbt 1.0`.
+In order to migrate to dbt-databricks, your project must be compatible with `dbt 1.0` or greater as dbt-databricks is not supported pre `dbt 1.0`. [This guide](https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.0) will help you upgrade your project if necessary.
 
 ## Why change to dbt-databricks?
 
@@ -14,9 +14,9 @@ The Databricks team, in collaboration with dbt Labs, built on top of the foundat
 
 ### Authentication Simplification
 
-Previously users had to provide a `cluster` or `endpoint` ID which was hard to parse out of the http_path provided in the Databricks UI. Now the dbt-databricks profile requires the same inputs regardless if you are using a Cluster or a SQL endpoint. All you need to provide is:
+Previously users had to provide a `cluster` or `endpoint` ID which was hard to parse out of the http_path provided in the Databricks UI. Now the [dbt-databricks profile](https://docs.getdbt.com/reference/warehouse-setups/databricks-setup) requires the same inputs regardless if you are using a Cluster or a SQL endpoint. All you need to provide is:
 - the hostname of the Databricks workspace
-- the HTTP path of the Databricks SQL endpoint or cluster
+- the HTTP path of the Databricks SQL warehouse or cluster
 - an appropriate credential
 
 
