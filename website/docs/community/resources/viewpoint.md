@@ -68,3 +68,11 @@ Here’s one example of an automated workflow:
 - code is deployed.
 
 Workflows like this should be built to execute with a single command.
+
+## The orchestration and control flow of analytics pipelines are configured declaratively 
+
+A data professional should maximize the time spent working with data. The configuration of where, how frequently, and in what order the transformations are executed should therefore be declartive, in order to minimize time operationalizing and maintaining workflows.
+
+Pipelines should be deterministic, and not execute different set of transformstions based upsteam conditionals.
+
+Though our data transformations (data plane) may at times contain imperative code, the orchestration thereof (control plane) should not. Two exceptions are the usage of environment variables and only running the necessary subset of transformations.
