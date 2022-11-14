@@ -11,7 +11,7 @@ import NavbarItem from '@theme/NavbarItem';
 
 /* dbt Customizations:
  * Import VersionsNavbarItem component and context
- * Pass versionContext prop into DropdownNavbarItemDesktop
+ * Pass versionContext prop into DropdownNavbarItemDesktop or DropdownNavbarItemMobile
  * Custom state to handle version dropdown on click
  * Show version dropdown on version state change
  * Pass versionContext to Comp
@@ -77,8 +77,7 @@ function DropdownNavbarItemDesktop({
   useEffect(() => {
     setShowVersionDropdown(true)
   }, [showVersionDropdown])
-
-  console.log('versionContext', versionContext)
+  
   return (
     <div
       ref={dropdownRef}
@@ -100,19 +99,28 @@ function DropdownNavbarItemDesktop({
             e.preventDefault();
             setShowDropdown(!showDropdown);
           }
-        }}>
-        {className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+        }}
+        label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+      >
+        {props.children ?? props.label}
       </NavbarNavLink>
       <ul className="dropdown__menu">
         {items.map((childItemProps, i) => (
-          <NavbarItem
-            isDropdownItem
-            onKeyDown={className === "nav-versioning"
-              ? ((e) => {
-                handleVersionMenuClick()
-                versionContext.updateVersion(e)
-              }) : (
-                (e) => {
+          <React.Fragment key={i}>
+            {className === "nav-versioning" ? (
+              <li>
+                <a 
+                  className='dropdown__link nav-versioning-dropdown__link' 
+                  onClick={(e) => {
+                    handleVersionMenuClick()
+                    versionContext.updateVersion(e)}
+                  } 
+                >{childItemProps.label}</a>
+              </li>
+            ) : (
+              <NavbarItem
+                isDropdownItem
+                onKeyDown={(e) => {
                   if (i === items.length - 1 && e.key === 'Tab') {
                     e.preventDefault();
                     setShowDropdown(false);
@@ -127,12 +135,13 @@ function DropdownNavbarItemDesktop({
                       targetItem.focus();
                     }
                   }
-                }
+                }}
+                activeClassName="dropdown__link--active"
+                {...childItemProps}
+                key={i}
+              />
             )}
-            activeClassName="dropdown__link--active"
-            {...childItemProps}
-            key={i}
-          />
+          </React.Fragment>
         ))}
       </ul>
     </div>
@@ -173,7 +182,7 @@ function DropdownNavbarItemMobile({
           e.preventDefault();
           toggleCollapsed();
         }}>
-        {className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+        {props.children ?? props.label}
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
         {items.map((childItemProps, i) => (
