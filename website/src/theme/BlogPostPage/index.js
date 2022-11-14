@@ -9,10 +9,13 @@ import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
 
 /* dbt Customizations:
+ * Import global data from plugin
  * Gets authors, tags, formattedDate from metadata
  * Send authors, tags, formattedDate to snowplow
  * Passes post title prop BlogLayout to display in breadcrumbs 
+ * Get featured_cta from global data and pass to TOC
 */
+import {usePluginData} from '@docusaurus/useGlobalData';
 
 function BlogPostPageContent({sidebar, children}) {
   const {metadata, toc} = useBlogPost();
@@ -54,6 +57,9 @@ function BlogPostPageContent({sidebar, children}) {
     dataLayer && dataLayer.push(blogContext)
   }, [])
 
+  const { blogMeta } = usePluginData('docusaurus-build-global-data-plugin');
+  const { featured_cta } = blogMeta
+
   return (
     <BlogLayout
       sidebar={sidebar}
@@ -65,6 +71,7 @@ function BlogPostPageContent({sidebar, children}) {
             toc={toc}
             minHeadingLevel={tocMinHeadingLevel}
             maxHeadingLevel={tocMaxHeadingLevel}
+            featured_cta={featured_cta} 
           />
         ) : undefined
       }>

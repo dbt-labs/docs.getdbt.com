@@ -147,7 +147,7 @@ export default function BlogLayout(props) {
             itemType="http://schema.org/Blog">
             {children}
           </main>
-          {toc && <div className="col col--2">{toc}</div>}
+          {toc && <div className="col col--3">{toc}</div>}
         </div>
       </div>
     </Layout>
