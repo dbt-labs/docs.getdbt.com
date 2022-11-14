@@ -149,7 +149,7 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Connecting to Databricks
-We have two supported adapters to connect to Databricks: [dbt-databricks](/connect-your-database#dbt-databricks) and [dbt-spark](/connect-your-database#dbt-spark). For accounts on dbt 1.0 or later, we recommend using the dbt-databricks adapter. The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks.
+You can connect to Databricks by using one of two supported adapters: [dbt-databricks](/connect-your-database#dbt-databricks) and [dbt-spark](/connect-your-database#dbt-spark). For accounts on dbt 1.0 or later, we recommend using the dbt-databricks adapter. The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark will be deprecated in the future.
 
 ### dbt-databricks Adapter
 dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality.
@@ -163,7 +163,7 @@ dbt-databricks is compatible with the following versions of dbt Core in dbt Clou
 The dbt-databricks adapter offers:
 - **Easier set up**
 - **Better defaults:**
-The dbt-databricks is more opinionated, guiding users to an improved experience with less effort. Design choices of the dbt-databricks adapter include defaulting to Delta format, using merge for incremental models, and running expensive queries with Photon.
+The dbt-databricks adapter is more opinionated, guiding users to an improved experience with less effort. Design choices of this adapter include defaulting to Delta format, using merge for incremental models, and running expensive queries with Photon.
 - **Support for Unity Catalog:**
 Unity Catalog allows Databricks users to centrally manage all data assets, simplifying access management and improving search and query performance. Databricks users can now get three-part data hierarchies – catalog, schema, model name – which solves a longstanding friction point in data organization and governance.
 
