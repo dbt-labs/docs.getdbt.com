@@ -79,3 +79,6 @@ seeds:
 
 ## Recommendation
 Use this configuration only when required, i.e. when the type inference is not working as expected. Otherwise you can omit this configuration.
+
+## Troubleshooting
+Note that column type configuration is case sensitive, so a column called Country_Name in your Seed, should be referenced by Country_Name, not country_name. This is irregardless of quoting configuration. 
