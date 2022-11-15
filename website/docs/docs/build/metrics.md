@@ -69,7 +69,7 @@ metrics:
     expression: user_id 
 
     timestamp: signup_date
-    time_grains: [day, week, month, quarter, year]
+    time_grains: [day, week, month, quarter, year, all_time]
 
     dimensions:
       - plan
