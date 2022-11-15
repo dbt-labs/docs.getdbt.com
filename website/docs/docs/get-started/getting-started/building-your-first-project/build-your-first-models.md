@@ -6,6 +6,8 @@ description: "Now that you've set up the starter project, you can get to the fun
 
 <!-- Import all Snippets you will use here  -->
 import ModelsOnTop from '@site/snippets/tutorial-build-models-atop-other-models.md'
+import DelExampleModels from '@site/snippets/tutorial-delete-example-models.md'
+
 
 Now that you set up your sample project and had a successful run, you can get to the fun part — [building models](/docs/build/sql-models)! You will take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 
@@ -45,7 +47,7 @@ In the future, you would connect your business intelligence (BI) tools to these 
 
 ## Delete the example models
 
-<Snippet src="tutorial-delete-example-models" />
+<DelExampleModels components={{wrapper: ({...props}) => <NewSnippet {...props} />}} />
 
 ## Build models on top of other models
 

@@ -56,36 +56,16 @@ export default function DocItem(props) {
   const { version: dbtVersion } = useContext(VersionContext)
   const [currentToc, setCurrentToc] = useState(DocContent.toc)
   const [tocReady, setTocReady] = useState(true)
+  let updated;
   useEffect(() => {
     async function fetchElements() {
       // get html elements
       const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
       // if headings exist on page
       // compare against toc
-      if (DocContent.toc && headings && headings.length) {
-        // make new TOC object 
-        // let updated = Array.from(headings).reduce((acc, item) => {
-        //   // If heading id and toc item id match found
-        //   // include in updated toc
-        //   let found = currentToc.find(heading =>
-        //     heading.id.includes(item.id)
-        //   )
-        //   console.log(currentToc)
-        //   // If toc item is not in headings
-        //   // do not include in toc
-        //   // This means heading is versioned
-
-
-        //   if (found) {
-        //     acc.push(item)
-        //   } else if (!found) {
-        //     null
-        //   }
-
-        //   return acc
-        // }, [])
-        
-        let updated = Array.from(headings).reduce((acc, item) => {
+      //TODO: Make sure TOC order updates and re-renders toc component every time a snippet loads. Right now, second snippet is being placed at the bottom.
+      if (DocContent.toc && headings && headings.length) {        
+        updated = Array.from(headings).reduce((acc, item) => {
           // If heading id and toc item id match found
           // include in updated toc
           let found = currentToc.find(tocItem =>
@@ -125,7 +105,8 @@ export default function DocItem(props) {
       }
     }
     fetchElements()
-  }, [DocContent, dbtVersion])
+  }, [DocContent, dbtVersion, updated])
+
   // end dbt Custom
 
   return (
