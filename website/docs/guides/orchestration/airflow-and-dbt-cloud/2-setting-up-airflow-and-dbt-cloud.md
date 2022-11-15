@@ -36,6 +36,8 @@ cd airflow-dbt-cloud
 
 ## 4. Start the Docker container
 
+You can initialize an Astronomer project in an empty local directory using a Docker container, and then run your project locally using the `start` command.
+
 1. Run the following commands to turn your directory into an Astronomer project and spin up the Docker container and start your local Airflow deployment:
 
     ```bash
