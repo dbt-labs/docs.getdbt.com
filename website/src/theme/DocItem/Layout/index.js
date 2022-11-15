@@ -6,13 +6,12 @@ import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
 import DocItemFooter from '@theme/DocItem/Footer';
-import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
 import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import styles from './styles.module.css';
 
 /* dbt Customizations:
- * Import TOC component, ThemeClassNames, VersionContext & getElements util
+ * Import TOC & TOCCollapsible components, ThemeClassNames, VersionContext & getElements util
  * Get metadata from useDoc()
  * Replace DocItemTOCDesktop with TOC component
  * to avoid swizzling DocItemTOCDesktop component.
@@ -22,6 +21,7 @@ import styles from './styles.module.css';
  * Add tocLoader styles
 */ 
 import TOC from '@theme/TOC';
+import TOCCollapsible from '@theme/TOCCollapsible';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import VersionContext from '../../../stores/VersionContext'
 import getElements from '../../../utils/get-html-elements';
@@ -88,7 +88,12 @@ function useDocTOC() {
   const windowSize = useWindowSize();
   const hidden = frontMatter.hide_table_of_contents;
   const canRender = !hidden && toc.length > 0;
-  const mobile = canRender ? <DocItemTOCMobile /> : undefined;
+  const mobile = canRender ? <TOCCollapsible
+    toc={currentToc}
+    minHeadingLevel={frontMatter.toc_min_heading_level}
+    maxHeadingLevel={frontMatter.toc_max_heading_level}
+    className={clsx(ThemeClassNames.docs.docTocMobile, styles.tocMobile)}
+  /> : undefined;
   const desktop =
     canRender && (windowSize === 'desktop' || windowSize === 'ssr') ? (
       <>
