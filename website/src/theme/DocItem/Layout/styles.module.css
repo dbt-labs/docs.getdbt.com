@@ -1,0 +1,16 @@
+.docItemContainer header + *,
+.docItemContainer article > *:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 997px) {
+  .docItemCol {
+    max-width: 75% !important;
+  }
+}
+
+.tocLoader {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto;
+}
