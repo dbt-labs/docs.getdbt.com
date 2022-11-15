@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import clsx from 'clsx';
 import DocPaginator from '@theme/DocPaginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
@@ -21,6 +21,8 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 // dbt Custom
 import VersionContext from '../../stores/VersionContext'
 import getElements from '../../utils/get-html-elements';
+import { MenuItems } from 'redoc';
+export const tocContext = createContext()
 
 export default function DocItem(props) {
   const { content: DocContent } = props;
@@ -62,47 +64,51 @@ export default function DocItem(props) {
       // compare against toc
       if (DocContent.toc && headings && headings.length) {
         // make new TOC object 
+        // let updated = Array.from(headings).reduce((acc, item) => {
+        //   // If heading id and toc item id match found
+        //   // include in updated toc
+        //   let found = currentToc.find(heading =>
+        //     heading.id.includes(item.id)
+        //   )
+        //   console.log(currentToc)
+        //   // If toc item is not in headings
+        //   // do not include in toc
+        //   // This means heading is versioned
+
+
+        //   if (found) {
+        //     acc.push(item)
+        //   } else if (!found) {
+        //     null
+        //   }
+
+        //   return acc
+        // }, [])
+        
         let updated = Array.from(headings).reduce((acc, item) => {
           // If heading id and toc item id match found
           // include in updated toc
-          let found = DocContent.toc.find(heading =>
-            heading.id.includes(item.id)
+          let found = currentToc.find(tocItem =>
+            item.id.includes(tocItem.id)
           )
           // If toc item is not in headings
           // do not include in toc
           // This means heading is versioned
 
-          let makeToc = (heading) => {
-            let level;
-            if (heading.nodeName === "H2") {
-              level = 2
-            } else if (heading.nodeName === "H3") {
-              level = 3
-            } else {
-              level = null
-            }
-
-            return {
-              value: heading.innerHTML,
-              id: heading.id,
-              level: level && level
-            }
-          }
-
           if (found) {
-            acc.push(makeToc(item))
+            acc.push(found)
           } else if (!found) {
-            acc.push(makeToc(item))
-          } else {
             null
           }
 
           return acc
         }, [])
 
+        console.log('updatd var', updated)
+
         // If updated toc different than current
         // If so, show loader and update toc 
-        if (currentToc.length !== updated.length) {
+        if (currentToc.length !== DocContent.toc.length) {
           setTocReady(false)
           // This timeout provides enough time to show the loader
           // Otherwise the content updates immediately
@@ -170,7 +176,10 @@ export default function DocItem(props) {
                   </header>
                 )}
 
-                <DocContent />
+                <tocContext.Provider value={{currentToc, setCurrentToc}}>
+                  <DocContent />
+                </tocContext.Provider>
+
               </div>
 
               <DocItemFooter {...props} />

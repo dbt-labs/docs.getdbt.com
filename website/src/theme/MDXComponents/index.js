@@ -28,6 +28,7 @@ import Lightbox from '@site/src/components/lightbox';
 import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import Snippet from '@site/src/components/snippet';
+import NewSnippet from "../../components/newsnippet";
 import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
 import VersionBlock from '@site/src/components/versionBlock';
@@ -132,5 +133,6 @@ const MDXComponents = {
   DiscourseFeed: DiscourseFeed,
   DiscourseHelpFeed: DiscourseHelpFeed,
   Card: Card,
+  NewSnippet: NewSnippet,
 };
 export default MDXComponents;
