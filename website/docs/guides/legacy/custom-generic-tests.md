@@ -184,7 +184,7 @@ models:
 
 To change the way a built-in generic test works—whether to add additional parameters, re-write the SQL, or for any other reason—you simply add a test block named `<test_name>` to your own project. dbt will favor your version over the global implementation!
 
-<File name='tests/generic/<filename>.yml'>
+<File name='tests/generic/<filename>.sql'>
 
 ```sql
 {% test unique(model, column_name) %}
