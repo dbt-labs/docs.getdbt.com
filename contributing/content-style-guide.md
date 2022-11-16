@@ -18,11 +18,51 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Images](#Images)
 * [Talk to us](#Talk-to-us)
 
+## Folder Structure and TOC
+
+The folder structure for the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository is organized into several high-level categories under the main `website` folder: blog, cypress, docs, functions, plugins, snippets, src, static.
+
+The table of contents (TOC) is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. The `sidebar.js` file is the one that causes most of the merge conflicts because many technical writers are working on content daily. You will need to accept the changes from other contributors if you are committing a PR.
+
+Don't worry if you're not sure where in the TOC a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
+
+The right-hand TOC is created automatically when you add headings to a page.
+
+## Filenaming
+
+If you are adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository, it must be named following our naming conventions. MORE TO ADD
+
+## Using Markdown
+
+docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. The following table provides an overview of the supported syntax elements.
+
+| Element                                     | Syntax                                                |
+|---------------------------------------------|-------------------------------------------------------|
+| Headings                                    | `# H1`, `## H2`, `### H3`                             |
+| Bold                                        | `**bold text**`                                       |
+| Italic                                      | `_italicized text_`                                    |
+| Ordered List                                | `1.` First item (use `1.` for each item)              |
+| Unordered List                              | `-` or `*` (for each item)                            |
+| Code or command in a sentence               | ``code``                                              |
+| Link - external site                        | `[Title](https://www.example.com)`                    |
+| Link - topic in same folder                 | `[Title](/folder/file-name) without file extension`            |
+| Link - topic in different folder            | `[Title](/folder/file-name) without file extension` |
+| Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`                     |
+| Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`           |
+| Image                                       | `<Lightbox src="/img/docs/<image-name>.png" title="Concise description of image"/>`      |
+
 ## Callouts
 
 Callouts highlight important or high-value information that readers need to know. We want callouts to stand out, so we should keep their content to a minimum, avoiding general information, permissions, or prerequisites. Too much information can make it difficult to absorb. Imagine driving down one block with five stop signs!?!
 
-Use callouts sparingly for high-value information &mdash; avoid including general information, permissions, or prerequisites in callouts.
+Use callouts sparingly for high-value information &mdash; avoid including general information, permissions, or prerequisites in callouts. Below are the some of the typical callout formats we use:
+
+| Types of callouts | Callout formats |
+| ---- | ------ |
+| Note callouts are used for notices| ```:::note``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Info callouts are used to highlight info |```:::info``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Tip callouts are used for tips |```:::tip``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Caution callouts are used for warnings/considerations |```:::caution``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
 
 ## Text formatting
 You consider many elements when designing technical docs, and the way you format text can help you achieve a well-articulated design. With consistency of use, well-formatted text creates a single voice when there are multiple authors/contributors, increases the readability of the content, and further establishes an organization's branding.
@@ -402,7 +442,12 @@ Once you have determined that a screenshot will add value to the document where 
 
 * Use screenshots to highlight navigation, on-screen elements, and other noteworthy product visuals.
 * Avoid using screenshots to demonstrate inputs and outputs. All code snippets and sample results should be in the documents as text fields.
+* Add images are under the `static` -> `img` folder.
 * Use concise filenames that are relevant to the content contained within. Enumerate them if they are part of a sequence.
+* Use PNG or JPEG format, which renders a better quality and lossless compression.
+* Add *title=""* for all images to write a consice title of the image. For accessibility, it's important to use succinct text that is clear and complete. 
+
+For more information about images formatting, see the following section.
 
   :x: screenshot-august0822.jpg
 
