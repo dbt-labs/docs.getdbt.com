@@ -23,7 +23,7 @@ You can use components documented in the [docusaurus library](https://v2.docusau
 
 # Writing content
 
-We author content using Markdown and sometimes HTML. When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation. The dbt Labs Docs team will actively edit or write content, not just give editorial reviews and we highly encourage your contributions in the true open-source spirit.
+We author content using Markdown and sometimes HTML. When writing content, refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation. The dbt Labs Docs team will actively edit or write content, not just give editorial reviews, and we highly encourage your contributions in the true open-source spirit.
 
 ## SME and editorial reviews
 
