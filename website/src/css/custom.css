@@ -933,6 +933,11 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
   line-height: 1.25;
 }
 
+/* BlogPostItem header h2 size */
+article[itemprop="blogPost"] h2 {
+  font-size: 2rem;
+}
+
 /* footer styles */
 .footer {
   font-weight: var(--ifm-font-weight-narrow);
