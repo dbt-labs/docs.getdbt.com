@@ -20,11 +20,18 @@ import {usePluginData} from '@docusaurus/useGlobalData';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function BlogLayout(props) {
-  const {sidebar, toc, children, title, description, ...layoutProps} = props;
+  const {
+    sidebar, 
+    toc, 
+    children, 
+    title, 
+    description, 
+    isBlogList, 
+    isBlogPost, 
+    ...layoutProps
+  } = props;
   const hasSidebar = sidebar && sidebar.items.length > 0;
 
-  const [isBlogPost, setIsBlogPost] = useState(false)
-  const [isBlogList, setIsBlogList] = useState(false)
   const { blogMeta, tagData } = usePluginData('docusaurus-build-global-data-plugin');
   const { siteConfig: { presets } } = useDocusaurusContext()
   // Get blog data from docusaurus config
@@ -36,7 +43,6 @@ export default function BlogLayout(props) {
 
   const { 
     featured_image, 
-    featured_cta, 
     show_title, 
     show_description,
     hero_button_url,
@@ -44,12 +50,6 @@ export default function BlogLayout(props) {
     hero_button_new_tab,
   } = blogMeta
   
-  // dbt Custom
-  useEffect(() => {    
-    document?.querySelector('.blog-post-page') && setIsBlogPost(true)
-    document?.querySelector('.blog-list-page') && setIsBlogList(true)
-  }, [])
-
   // The pageTitle variable sets the final item in breadcrumbs
   let breadcrumbTitle = undefined
   if(title) {
@@ -58,11 +58,11 @@ export default function BlogLayout(props) {
   }
 
   // Set custom meta title for blog list and blog post pages
-  const metaTitle = undefined
+  let metaTitle = undefined
   if(isBlogList) {
-    blogData.blogTitle
+    metaTitle = blogData.blogTitle
   } else if(breadcrumbTitle) {
-    `${breadcrumbTitle} | dbt Developer Blog`
+    metaTitle = `${breadcrumbTitle} | dbt Developer Blog`
   }
   // end dbtCustom
 

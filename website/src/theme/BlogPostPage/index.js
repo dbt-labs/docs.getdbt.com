@@ -73,8 +73,9 @@ function BlogPostPageContent({sidebar, children}) {
             maxHeadingLevel={tocMaxHeadingLevel}
             featured_cta={featured_cta} 
           />
-        ) : undefined
-      }>
+        ) : undefined }
+      isBlogPost={true}
+      >
       <BlogPostItem>{children}</BlogPostItem>
 
       {(nextItem || prevItem) && (
