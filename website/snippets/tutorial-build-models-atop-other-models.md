@@ -2,12 +2,6 @@ As a best practice in SQL, you should separate logic that cleans up your data fr
 
 Now you can experiment by separating the logic out into separate models and using the [ref](ref) function to build models on top of other models:
 
-## Test section H2.
-Testing more things.
-
-## Another test, very important.
-Testing things.
-
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/dbt-dag.png" title="The DAG we want for our dbt project" />
 </div>
