@@ -45,17 +45,15 @@ When an admin changes the dbt Cloud's connection to use the dbt-databricks adapt
 
 An admin of the dbt Cloud project running on Databricks should take the following steps to migrate from using the generic Spark adapter to the Databricks-specfic adapter. This should not cause any downtime for production jobs, but we recommend that you schedule the connection change when there is not heavy IDE usage for your team to avoid disruption.
 
-1. Select Account Settings in the main navigation bar.
+1. Select **Account Settings** in the main navigation bar.
 2. On the Projects tab, scroll until you find the project you'd like to migrate to the new dbt-databricks adapter.
 3. Click the hyperlinked Connection for the project.
 4. Click the "Edit" button in the top right corner.
-5. Click "Delete Connection" at the bottom of the page, and then confirm ythat you'd like to delete the connection.
-
-    > :warning:, the only information that will be deleted is the cluster or endpoint host and id. Your credential will still be saved. See above note.
-5. After being brought back to the project overview page, click "Configure a connection" so that you can start the connection flow for the new dbt-databricks adapter.
-6. Select the Databricks adapter that is not listed as "to be depecated", and enter:
+5. Select Databricks for the warehouse
+6. Select Databricks (dbt-databricks) for the adapter and enter:
     1. the `hostname`
-    2. `http_path`, and
+    2. the `http_path`
+    3. optionally the catalog name
 7. Click save.
 
 After the above steps have been performed, all users will have to refresh their IDE before being able to start working again. It should complete in less than a minute. 
