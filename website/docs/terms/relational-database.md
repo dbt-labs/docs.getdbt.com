@@ -82,7 +82,7 @@ Often starting off with unorganized and chaotic data, analytics engineers levera
 
 Relational databases also have a strong record of transactional consistency. While some companies are racing to embrace non-relational databases in order to handle the big volume of unstructured data, most of their workloads likely remain transactional and analytical in nature which is why relational databases are very common. 
 
-## Additional reading
+## Further reading
 
 - [Glossary: Primary key](/terms/primary-key)
 - [Glossary: Data warehouse](/terms/data-warehouse)
