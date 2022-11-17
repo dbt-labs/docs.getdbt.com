@@ -165,7 +165,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
-| label       | A short for name / label for the metric                     | New Customers                   | no        |
+| label       | A short for name / label for the metric                     | New Customers                   | yes        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
 | expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
@@ -185,7 +185,7 @@ Metrics can have many declared **properties**, which define aspects of your metr
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
-| label       | A short for name / label for the metric                     | New Customers                   | no        |
+| label       | A short for name / label for the metric                     | New Customers                   |yes        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
 | sql | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
