@@ -35,7 +35,7 @@ selectors:
 ## Definitions
 
 Each `definition` is comprised of one or more arguments, which can be one of the following:
-* **CLI-style:** strings, representing CLI-style) arguments
+* **CLI-style:** strings, representing CLI-style arguments
 * **Key-value:** pairs in the form `method: value`
 * **Full YAML:** fully specified dictionaries with items for `method`, `value`, operator-equivalent keywords, and support for `exclude`
 
