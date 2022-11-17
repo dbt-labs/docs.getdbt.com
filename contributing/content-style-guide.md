@@ -444,7 +444,7 @@ Once you have determined that a screenshot will add value to the document where 
 * Avoid using screenshots to demonstrate inputs and outputs. All code snippets and sample results should be in the documents as text fields.
 * Add images are under the `static` -> `img` folder.
 * Use concise filenames that are relevant to the content contained within. Enumerate them if they are part of a sequence.
-* Use JPEG format, which renders a better quality and lossless compression. JPEG uses a white background, and makes it visible in light and dark mode. 
+* Use JPEG format, which renders a better quality and lossless compression. JPEG format has a white background and is accessible in light and dark mode. 
 * Add *title=""* for all images to write a concise title of the image. For accessibility, it's important to use succinct text that is clear and complete. 
 
 For more information about images formatting, see the following section.
