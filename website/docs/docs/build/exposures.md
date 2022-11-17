@@ -27,6 +27,8 @@ Exposures are defined in `.yml` files nested under an `exposures:` key.
 <File name='models/<filename>.yml'>
 
 ```yaml
+version: 2
+
 exposures:
 
   - name: weekly_jaffle_metrics

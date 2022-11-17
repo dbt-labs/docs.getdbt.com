@@ -90,7 +90,7 @@ If available, `node_info` will include:
 		"resource_type": "model",
 		"type": "node_status",
 		"unique_id": "model.jaffle_shop.name_list"
-	}, 
+	},
 	"pid": 81915,
 	"thread_name": "Thread-4",
 	"ts": "2021-12-02T21:47:03.480384Z",
@@ -99,8 +99,6 @@ If available, `node_info` will include:
 ```
 
 ## Python interface
-
-**Be warned:** While dbt-core v1 represents a significant step forward in the stability of the core framework, dbt-core's [python API](dbt-api) is still unstable and liable to change, with the exception of a few specific interfaces.
 
 `dbt-core` makes available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object:
 

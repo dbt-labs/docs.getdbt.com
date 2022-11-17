@@ -195,7 +195,8 @@ Now you can experiment by separating the logic out into separate models and usin
 
 This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
-### FAQs
+
+### FAQs {#faq-2}
 
 <FAQ src="Runs/run-one-model" />
 <FAQ src="Models/unique-model-names" />

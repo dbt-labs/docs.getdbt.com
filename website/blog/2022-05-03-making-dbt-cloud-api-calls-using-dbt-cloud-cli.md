@@ -12,9 +12,9 @@ date: 2022-05-03
 is_featured: true
 ---
 
-dbt Cloud is a hosted service that many organizations use for their dbt deployments. Among other things, it provides an interface for creating and managing deployment jobs. When triggered (e.g., cron schedule, API trigger), the jobs generate various artifacts that contain valuable metadata related to the dbt project and the run results. 
+dbt Cloud is a hosted service that many organizations use for their dbt deployments. Among other things, it provides an interface for creating and managing deployment jobs. When triggered (e.g., cron schedule, API trigger), the jobs generate various artifacts that contain valuable metadata related to the dbt project and the run results.
 
-dbt Cloud provides a REST API for managing jobs, run artifacts and other dbt Cloud resources. Data/analytics engineers would often write custom scripts for issuing automated calls to the API using tools [cURL](https://curl.se/) or [Python Requests](https://docs.python-requests.org/en/latest/).  In some cases, the engineers would go on and copy/rewrite them between projects that need to interact with the API. Now, they have a bunch of scripts on their hands that they need to maintain and develop further if business requirements change. If only there was a dedicated tool for interacting with the dbt Cloud API that abstracts away the complexities of the API calls behind an easy-to-use interface… Oh wait, there is: [the dbt-cloud-cli](https://github.com/data-mie/dbt-cloud-cli)!
+dbt Cloud provides a REST API for managing jobs, run artifacts and other dbt Cloud resources. Data/analytics engineers would often write custom scripts for issuing automated calls to the API using tools [cURL](https://curl.se/) or [Python Requests](https://requests.readthedocs.io/en/latest/).  In some cases, the engineers would go on and copy/rewrite them between projects that need to interact with the API. Now, they have a bunch of scripts on their hands that they need to maintain and develop further if business requirements change. If only there was a dedicated tool for interacting with the dbt Cloud API that abstracts away the complexities of the API calls behind an easy-to-use interface… Oh wait, there is: [the dbt-cloud-cli](https://github.com/data-mie/dbt-cloud-cli)!
 
 <!--truncate-->
 
@@ -78,7 +78,7 @@ Now we had exactly what we wanted and our CI workflow in GitHub actions looked s
     dbt-cloud job run --job-id $DBT_CLOUD_JOB_ID
 ```
 
-Fast forward a month or two and there was another client that needed something similar. I felt that this was an opportunity to open source the project not just to benefit me and my clients but also [the broader dbt community](https://www.getdbt.com/community/) (❤️). So, I moved the project to a public github repository with a goal of eventually covering all of the dbt Cloud API endpoints. 
+Fast forward a month or two and there was another client that needed something similar. I felt that this was an opportunity to open source the project not just to benefit me and my clients but also [the broader dbt community](https://www.getdbt.com/community/) (❤️). So, I moved the project to a public github repository with a goal of eventually covering all of the dbt Cloud API endpoints.
 
 While working with the initial 0.1.0 release that included only the `dbt-cloud job run` command I decided to have some fun and try how well pydantic (Python dataclasses on steroids!) and `click` worked together. I’m a big fan of `pydantic`, and I’ve used it in a wide variety of projects including machine learning models and automated testing software for a medical device. Even though Python has had built-in dataclasses since version 3.7, they fall short when it comes to data validation and general developer ergonomics (IMO) and that’s where `pydantic` comes in; among other things, `pydantic` implements a validator decorator that is used to define custom validations for model fields (e.g., CLI arguments).
 
@@ -87,15 +87,15 @@ I refactored the `dbt-cloud-cli` code so that the CLI commands were now implemen
 ```python
 import click
 from dbt_cloud.command import DbtCloudJobGetCommand
- 
+
 @click.group()
 def dbt_cloud():
     pass
- 
+
 @dbt_cloud.group()
 def job():
     pass
- 
+
 @job.command(help=DbtCloudJobGetCommand.get_description())
 @DbtCloudJobGetCommand.click_options
 def get(**kwargs):
@@ -121,7 +121,7 @@ Next, we use the `dbt-cloud get-artifact` command to download the `catalog.json`
 dbt-cloud run get-artifact --run-id $latest_run_id --path catalog.json -f catalog.json
 ```
 
-To explore the downloaded catalog file we’ll write a simple CLI application. The [catalog.json](https://schemas.getdbt.com/dbt/catalog/v1.json) has four top level properties: metadata, nodes, sources and errors. In this example we explore the nodes and sources only and leave the metadata and errors out. 
+To explore the downloaded catalog file we’ll write a simple CLI application. The [catalog.json](https://schemas.getdbt.com/dbt/catalog/v1.json) has four top level properties: metadata, nodes, sources and errors. In this example we explore the nodes and sources only and leave the metadata and errors out.
 
 First, we need a `Catalog` abstraction that reflects the catalog JSON schema:
 
@@ -197,7 +197,7 @@ class Catalog(BaseModel):
     errors: Optional[Dict]
 ```
 
-The four abstractions (`Stats`,`Column`, `Node `and `Catalog`) all inherit [the pydantic BaseModel](https://pydantic-docs.helpmanual.io/usage/models/) which implements various methods for parsing files and other python objects into model instances. We’ll leave the parsing to pydantic (i.e., `BaseModel.parse_file` classmethod) so that we can focus solely on the app logic. 
+The four abstractions (`Stats`,`Column`, `Node `and `Catalog`) all inherit [the pydantic BaseModel](https://pydantic-docs.helpmanual.io/usage/models/) which implements various methods for parsing files and other python objects into model instances. We’ll leave the parsing to pydantic (i.e., `BaseModel.parse_file` classmethod) so that we can focus solely on the app logic.
 
 The `CatalogExploreCommand` abstraction implements the CLI app which is then wrapped in a `click.command` that implements the CLI entry point. The `CatalogExploreCommand` class inherits `ClickBaseModel` that implements a `click_options` classmethod which we’ll use to decorate the entry point. This method is where the pydantic to click translation magic happens (i.e., pydantic model fields are translated [into click options](https://click.palletsprojects.com/en/8.0.x/options/)). Note that the app [uses inquirer](https://github.com/magmax/python-inquirer) in addition to `click` to create interactive “select option from a list” CLI prompts.
 
@@ -317,7 +317,7 @@ dbt-cloud demo data-catalog --file catalog.json
 
 ## Parting thoughts
 
-To summarize, the `dbt-cloud-cli`I implements an easy-to-use command line interface for the dbt Cloud API which abstracts away the complexities of the API calls. The CLI has interfaces to many of the API endpoints and covering all of the endpoints is on the project’s roadmap. For a list of all the covered API endpoints and implemented CLI commands, see https://github.com/data-mie/dbt-cloud-cli. 
+To summarize, the `dbt-cloud-cli`I implements an easy-to-use command line interface for the dbt Cloud API which abstracts away the complexities of the API calls. The CLI has interfaces to many of the API endpoints and covering all of the endpoints is on the project’s roadmap. For a list of all the covered API endpoints and implemented CLI commands, see https://github.com/data-mie/dbt-cloud-cli.
 
 In addition to commands that interact with a single dbt Cloud API endpoint there are composite helper commands that call one or more API endpoints and perform more complex operations (e.g., `dbt-cloud job export` and `dbt-cloud job import`).
 
