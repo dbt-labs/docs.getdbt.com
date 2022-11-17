@@ -80,7 +80,7 @@ Relational databases store data in a systematic way, and support querying multip
 
 Often starting off with unorganized and chaotic data, analytics engineers leverage relational databases to bring structure and consistency to their data. 
 
-Relational databases also have a strong record of transactional consistency. While companies race to embrace non-relational databases in order to handle the big volume of unstructured data, most of their workloads remain transactional and analytical in nature which is why relational databases are very common. 
+Relational databases also have a strong record of transactional consistency. While some companies are racing to embrace non-relational databases in order to handle the big volume of unstructured data, most of their workloads likely remain transactional and analytical in nature which is why relational databases are very common. 
 
 ## Additional reading
 
