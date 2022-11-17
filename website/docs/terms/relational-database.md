@@ -42,7 +42,7 @@ As mentioned earlier, relational databases are a great fit for transaction-orien
 
 ### Modeling data and organizing it for analysis
 
-Relational databases support common data modeling techniques such as <Term id = "dimensional modeling"/>, Data Vault, or sometimes hybrid approaches that combine different modeling techniques. Such methodologies allow teams to organize their data into useful data structures. 
+Relational databases support common data modeling techniques such as <Term id = "dimensional modeling" />, Data Vault, or sometimes hybrid approaches that combine different modeling techniques. Such methodologies allow teams to organize their data into useful data structures. 
 
 A data model is the overarching conceptual layer that organizes data entities and their relationships. The specific physical implementation of that data model including the definitions of data types and constraints constitutes the database schema. 
 
