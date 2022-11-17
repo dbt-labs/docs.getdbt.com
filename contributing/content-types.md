@@ -102,7 +102,7 @@ Procedural content should include troubleshooting tips as frequently as possible
 
 ## Guide
 
-Guides (formerly called long-form procedural articles) are highly-approachable articles that group information in context to help readers complete a complex task or set of related tasks. Guides eliminate duplication and ensure the customer finds contextual content in the right place.  Guides may be a set of tasks within the reader’s larger workflow, such as including use cases.
+Guides are highly-approachable articles that group information in context to help readers complete a complex task or set of related tasks. Guides eliminate duplication and ensure people find contextual content in the right place.  Guides may be a set of tasks within the reader’s larger workflow, such as including use cases.
 
 Guides combine the content types within a single article to illustrate an entire workflow within a single page, rather than splitting the workflow out into separate pieces. Guides containing multiple procedures help us scale as more options are added to the product. Users may need to complete different procedures within the guide at different times, or refer back to the guide for conceptual content or to complete a followup task. 
 Example usage: If there is a large number of the same type of setting, use a guide that gathers all of the tasks in context. 
