@@ -71,7 +71,7 @@ The below table summarizes the main differences between a relational and a non-r
 | Data storage | Data is stored in tables. | Data is stored in document files, graph stores, key-value stores, or wide-column stores. |
 | Data format | Data is structured. | Data is mainly unstructured. |
 | Usage | Mainly used for recording transactions, data modeling, and data analysis. | Mainly used to ingest large volume real-time data streams. |
-| Data Integrity | The relationships and constraints defined ensure high data integrity.  | Non-relational databases do not guarantee data integrity. |
+| Data Integrity | The relationships and constraints defined help ensure higher data integrity.  | Non-relational databases do not guarantee data integrity. |
 | Scalability | Scalable at a high price tag. | Highly scalable. |
 
 ## Conclusion
