@@ -60,8 +60,6 @@ We use [Avro](https://avro.apache.org/) to encode all of our event schemas. We a
 
 Event schema design (what should the data contract be?) is a deep topic that we can only touch on briefly here. At a high level, we must design for change. A schema will almost always be tweaked and tuned over time as your product changes.
 
-Event schema design (what should the data contract be?) is a deep topic that we can only touch on briefly here. At a high level, we must design for change. A schema will almost always be tweaked and tuned over time as your product changes.
-
 As an example, consider a LicenseCreated event. The internal License data model might have several boolean fields in its schema such as IsValid, IsCurrent, IsRestricted, etc. We would recommend instead modeling a License with a single Status field that has a VARCHAR representing the status of the License. New values are easier to add to a VARCHAR than adding or removing boolean fields.
 
 One very useful feature of the Kafka Schema Registry is it can restrict changes that aren’t compatible with old schema versions. For example, if a data type is changed from an INT to a VARCHAR it will throw an error as the new schema is added. This can be an extra line of defense as schemas change. [Read more about this awesome feature here](https://docs.confluent.io/platform/current/schema-registry/avro.html).
