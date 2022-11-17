@@ -318,6 +318,11 @@ A table following an H3 heading:
 > | `-file` | Print output to file instead of stdout. | Name of the file. |
 
 ## Word choice & terminology
+Use active voice instead of passive. Active voice is clearer and more direct, making it easier to translate. 
+
+✅ Use: The contributor writes the documentation.
+
+❌ Avoid: The documentation is written by contributors.
 
 ### Abbreviations
 
@@ -355,7 +360,7 @@ Product names, trademarks, services, and tools should be written as proper nouns
 
 ### Terms to use or avoid
 
-Use industry-specific terms and research new/improved terminology. Also refer to the Inclusive Language section of this style guide for inclusive and accessible language and style.
+Use industry-specific terms and research new/improved terminology. Also refer to the Inclusive Language section of this style guide for inclusive and accessible language and style. 
 
 **DO NOT** use jargon or language familiar to a small subset of readers or assume that your readers understand ALL technical terms.
 
