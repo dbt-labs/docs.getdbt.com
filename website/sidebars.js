@@ -799,6 +799,7 @@ const sidebarSettings = {
                 "guides/migration/tools/migrating-from-stored-procedures/6-migrating-from-stored-procedures-conclusion",
               ],
             },
+            "guides/migration/tools/migrating-from-spark-to-databricks",
           ],
         },
       ],
@@ -820,7 +821,6 @@ const sidebarSettings = {
             "guides/advanced/adapter-development/7-verifying-a-new-adapter",
           ],
         },
-        "guides/migration/tools/migrating-from-spark-to-databricks",
       ],
     },
     {
