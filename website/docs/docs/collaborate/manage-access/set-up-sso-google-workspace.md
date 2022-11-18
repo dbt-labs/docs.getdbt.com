@@ -90,13 +90,6 @@ and ensure that the API is enabled.
 
 To complete setup, follow the steps below in the dbt Cloud application.
 
-### Enable GSuite Native Auth (beta)
-
-- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
-  gain access to the GSuite Native auth configuration UI
-- For users accessing dbt Cloud deployed in a VPC, enable the `native_gsuite`
-  feature flag in the dbt Cloud admin backend.
-
 ### Supply your OAuth Client ID and Client Secret
 
 1. Navigate to the **Enterprise &gt; Single Sign On** page under Account

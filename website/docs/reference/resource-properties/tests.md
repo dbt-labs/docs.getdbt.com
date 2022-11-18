@@ -196,7 +196,7 @@ models:
     columns:
       - name: order_id
         tests:
-          - unique
+          - unique:
               config:
                 where: "order_id > 21"
 ```
