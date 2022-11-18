@@ -157,7 +157,7 @@ models:
 
 <File name='macros/custom_get_where_subquery.sql'>
 
-```
+```sql
 {% macro get_where_subquery(relation) -%}
     {% set where = config.get('where', '') %}
     {% if "__three_days_ago__" in where %}
@@ -176,4 +176,4 @@ models:
 {%- endmacro %}
 ```
 
-</File
+</File>
