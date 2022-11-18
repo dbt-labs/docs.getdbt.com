@@ -9,7 +9,7 @@ The most important thing here is recognizing that people are successful in the c
 
 What does authentic engagement look like? It’s challenging to define explicit rules. One good rule of thumb is to treat people with dignity and respect. 
 
-Contributors to the community should think of contribution *as the end itself,* not a means toward other business KPIs (leads, community members, etc.). [We believe that profits are exhaust.](https://www.getdbt.com/dbt-labs/values/#:~:text=Profits%20are%20exhaust.) Some ways to know if you’re authentically engaging:
+Contributors to the community should think of contribution *as the end itself,* not a means toward other business KPIs (leads, community members, etc.). [We are a mission-driven company.](https://www.getdbt.com/dbt-labs/values/) Some ways to know if you’re authentically engaging:
 
 - Is an engagement’s *primary* purpose of sharing knowledge and resources or building brand engagement?
 - Imagine you didn’t work at the org you do &mdash; can you imagine yourself still writing this?
