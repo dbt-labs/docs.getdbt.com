@@ -5,16 +5,16 @@ function DocSearchWeight({ weight }) {
 
   let searchWeight = 0
 
-  let allowedValues = ['none', 'low', 'medium', 'high']
+  let allowedValues = ['light', 'medium', 'heavy']
 
   // Intercept the value from frontmatter and set it to the correct value
-  if (weight == "none" || !weight) {
+  if (!weight) {
     searchWeight = 0
-  } else if (weight == "low") {
+  } else if (weight == "light") {
     searchWeight = 25
   } else if (weight == "medium") {
     searchWeight = 50
-  } else if (weight == "high") {
+  } else if (weight == "heavy") {
     searchWeight = 100
   }
 
