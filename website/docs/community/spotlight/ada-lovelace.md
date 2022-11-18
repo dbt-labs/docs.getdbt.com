@@ -6,14 +6,8 @@ jobTitle: Job Title
 companyName: Company Name
 dateCreated: 2022-11-18
 hide_table_of_contents: true
+wrapperClassName: wee-fun
 ---
-
-<img src={frontMatter.image} />
-
-<!-- 
-  Please do not edit above this line.
-  Add body copy for community spotlight member below.
--->
 
 ## Some cool deets
 

@@ -1,0 +1,48 @@
+.spotlightMemberCard {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+header.spotlightMemberCard {
+  padding: 1rem 0 3rem;
+}
+
+.spotlightMemberCard .spotlightMemberImgContainer {
+  flex: 0 0 100%;
+}
+
+.spotlightMemberCard .spotlightMemberImgContainer img {
+  max-width: 346px;
+  width: 100%;
+  margin: 0 0 2rem;
+  display: block;
+}
+
+.spotlightMemberContent {
+  padding: 0;
+}
+
+.spotlightMemberContent .spotlightMemberHeader {
+  font-size: 2rem !important;
+  margin-bottom: .5rem !important;
+}
+
+@media (min-width: 556px) {
+  header.spotlightMemberCard {
+      padding: 3rem 0;
+    }
+  .spotlightMemberCard .spotlightMemberImgContainer {
+    margin-right: 2rem;
+    flex: 0 0 346px;
+  }
+  .spotlightMemberCard .spotlightMemberImgContainer img {
+    margin: 0;
+  }
+  .spotlightMemberContent .spotlightMemberHeader {
+    font-size: 2.813rem !important;
+  }
+}
+
+
+
+

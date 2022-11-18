@@ -21,6 +21,7 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 // dbt Custom
 import VersionContext from '../../stores/VersionContext'
 import getElements from '../../utils/get-html-elements';
+import { CommunitySpotlightCard } from '../../components/community';
 
 export default function DocItem(props) {
   const { content: DocContent } = props;
@@ -165,9 +166,15 @@ export default function DocItem(props) {
                  See https://github.com/facebook/docusaurus/pull/4882#issuecomment-853021120
                  */}
                 {shouldAddTitle && (
-                  <header>
-                    <Heading as="h1">{title}</Heading>
-                  </header>
+                  <>
+                    {metadata?.id?.includes('community/spotlight/') ? (
+                      <CommunitySpotlightCard frontMatter={frontMatter} isSpotlightMember={true} />
+                    ) : (
+                      <header>
+                        <Heading as="h1">{title}</Heading>
+                      </header>
+                    )}
+                  </>
                 )}
 
                 <DocContent />
