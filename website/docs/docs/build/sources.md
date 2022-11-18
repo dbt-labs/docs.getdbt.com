@@ -1,7 +1,7 @@
 ---
 title: "Sources"
 id: "sources"
-searchWeight: 100
+search_weight: "high"
 ---
 
 ## Related reference docs

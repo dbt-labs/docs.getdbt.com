@@ -52,7 +52,8 @@ export default function DocItem(props) {
 
   // dbt Custom
   // If the page has a searchWeight value, apply that value
-  const searchWeight = frontMatter?.searchWeight && frontMatter.searchWeight
+  
+  const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
 
   // This hides any TOC items not in
   // html markdown headings for current version. 
