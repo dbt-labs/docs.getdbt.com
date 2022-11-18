@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 
 function DocSearchWeight({ weight }) {
 
-  let searchWeight = 0
+  let searchWeight
 
   let allowedValues = ['light', 'medium', 'heavy']
 
