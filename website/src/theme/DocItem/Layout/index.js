@@ -48,17 +48,41 @@ function useDocTOC() {
       // if headings exist on page
       // compare against toc
       if(toc && headings && headings.length) {
-        let updated = toc.reduce((acc, item) => {
+        // make new TOC object 
+        let updated = Array.from(headings).reduce((acc, item) => {
           // If heading id and toc item id match found
           // include in updated toc
-          let found = Array.from(headings).find(heading => 
+          let found = toc.find(heading =>
             heading.id.includes(item.id)
           )
           // If toc item is not in headings
           // do not include in toc
           // This means heading is versioned
-          if(found)
-            acc.push(item)
+
+          let makeToc = (heading) => {
+            let level;
+            if (heading.nodeName === "H2") {
+              level = 2
+            } else if (heading.nodeName === "H3") {
+              level = 3
+            } else {
+              level = null
+            }
+
+            return {
+              value: heading.innerHTML,
+              id: heading.id,
+              level: level && level
+            }
+          }
+
+          if (found) {
+            acc.push(makeToc(item))
+          } else if (!found) {
+            acc.push(makeToc(item))
+          } else {
+            null
+          }
 
           return acc
         }, [])
