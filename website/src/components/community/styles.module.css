@@ -2,29 +2,28 @@
   display: flex;
   flex-flow: row wrap;
 }
-
 header.spotlightMemberCard {
   padding: 1rem 0 3rem;
 }
-
 .spotlightMemberCard .spotlightMemberImgContainer {
   flex: 0 0 100%;
 }
-
 .spotlightMemberCard .spotlightMemberImgContainer img {
   max-width: 346px;
   width: 100%;
   margin: 0 0 2rem;
   display: block;
 }
-
 .spotlightMemberContent {
   padding: 0;
 }
-
 .spotlightMemberContent .spotlightMemberHeader {
   font-size: 2rem !important;
   margin-bottom: .5rem !important;
+  color: #009999;
+}
+.spotlightMemberContent .spotlightMemberInfo span {
+  font-size: 1.125rem;  
 }
 
 @media (min-width: 556px) {
@@ -40,6 +39,9 @@ header.spotlightMemberCard {
   }
   .spotlightMemberContent .spotlightMemberHeader {
     font-size: 2.813rem !important;
+  }
+  .spotlightMemberContent .spotlightMemberInfo span {
+    font-size: 1.25rem;
   }
 }
 
