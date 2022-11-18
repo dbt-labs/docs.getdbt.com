@@ -10,8 +10,8 @@ function BlogPostCard({ postMetaData }) {
   return (
     <div className={styles.cardWrapper}>
       <article className={`${image ? styles.imageCard : styles.card}`}>
-        {image && <div className={styles.imageContainer} style={{ "background": `no-repeat center/100% url(${image})` }}></div>}
-        <div className={`${styles.contentContainer} ${image && styles.imageContentContainer}`}>
+        {image && <div className={styles.imageContentContainer} style={{ "background": `no-repeat center/100% url(${image})` }}></div>}
+        <div className={`${styles.contentContainer} ${image ? styles.imageContentContainer : null}`}>
           <Link to={useBaseUrl(link)}><h3>{title}</h3></Link>
           {readingTime && <span>{date} · {readingTime} minute read</span>}
           <p>
