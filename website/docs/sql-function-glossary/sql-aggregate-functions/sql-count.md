@@ -1,7 +1,7 @@
 ---
 id: sql-count
-title: SQL Count
-description: The AVG function is used to straightforwardly calculate the average of a numeric column, but you may also see it used in a window function to calculate rolling averages.
+title: SQL COUNT
+description: COUNT is an aggregate function that is used to return the count of rows of a specified field or all rows in a dataset. It is commonly used to get baseline statistical information of a dataset, help ensure primary keys are unique, and calculate business metrics.
 ---
 
 <head>
