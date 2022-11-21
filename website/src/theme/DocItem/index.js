@@ -51,8 +51,7 @@ export default function DocItem(props) {
   const termCTA = frontMatter?.cta && frontMatter.cta
 
   // dbt Custom
-  // If the page has a searchWeight value, apply that value
-  
+  // If the page has a search_weight value, apply that value
   const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
 
   // This hides any TOC items not in
