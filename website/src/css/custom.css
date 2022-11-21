@@ -1478,6 +1478,10 @@ article[itemprop="blogPost"] h2 {
 .docs-cta .docs-cta-btn:hover {
   background: var(--ifm-menu-color-active);
 }
+/* CTA dark-mode styles */
+[data-theme='dark'] .docs-cta {
+  background: var(--ifm-navbar-background-color);
+}
 
 @media (max-width: 996px) {
   .docs-cta {
