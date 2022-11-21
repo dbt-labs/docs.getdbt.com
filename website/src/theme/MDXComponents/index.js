@@ -1,7 +1,6 @@
 import React from 'react';
 import MDXHead from '@theme/MDXComponents/Head';
 import MDXCode from '@theme/MDXComponents/Code';
-import MDXA from '@theme/MDXComponents/A';
 import MDXPre from '@theme/MDXComponents/Pre';
 import MDXDetails from '@theme/MDXComponents/Details';
 import MDXHeading from '@theme/MDXComponents/Heading';
@@ -42,7 +41,7 @@ import PostCarousel from '@site/src/components/postCarousel';
 const MDXComponents = {
   head: MDXHead,
   code: MDXCode,
-  a: MDXA,
+  a: (props) => <Link {...props} />,
   pre: MDXPre,
   details: MDXDetails,
   ul: MDXUl,
