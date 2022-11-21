@@ -48,6 +48,6 @@ The first project I worked on was a solutions review on a client’s project, wh
 
 ## Post-Foundry
 
-Once the foundry wrapped up, I was offered a permanent position on the professional service’s team! I continue to benefit from [the knowledge loop](https://github.com/dbt-labs/corp/blob/main/values.md#we-contribute-to-the-knowledge-loop), but now I’m also able to contribute to it. I’ve worked on more dbt projects. I’ve made package contributions. I’ve gone from being a starry-eyed Coalesce attendee to being a starry-eyed Coalesce attendee *and* co-facilitating workshops at [Coalesce](https://www.youtube.com/playlist?list=PL0QYlrC86xQlj9UDGiEwhXQuSjuSyPJHl). Over a year later, I can happily say that the Foundry program brought me where I wanted to be.
+Once the foundry wrapped up, I was offered a permanent position on the professional service’s team! I continue to benefit from [the knowledge loop](https://github.com/dbt-labs/corp/blob/main/values.md#we-contribute-to-the-knowledge-loop), but now I’m also able to contribute to it. I’ve worked on more dbt projects. I’ve made package contributions. I’ve gone from being a starry-eyed Coalesce attendee to being a starry-eyed Coalesce attendee *and* [co-facilitating workshops at Coalesce](https://www.youtube.com/watch?v=W3CyTmVYro8). Over a year later, I can happily say that the Foundry program brought me where I wanted to be.
 
 If you’re looking for resources to help a hopeful analytics engineer (whether you are one or a manager of one), feel free to reach out to me on the community Slack (@Wasila)!
