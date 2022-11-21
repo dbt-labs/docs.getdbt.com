@@ -7,9 +7,12 @@ import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
 import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
+import TOCCollapsible from '@theme/TOCCollapsible';
+import styles from './styles.module.css';
 
 /* dbt Customizations:
  * Import global data from plugin
+ * Import TOCCollapsible and custom styles
  * Gets authors, tags, formattedDate from metadata
  * Send authors, tags, formattedDate to snowplow
  * Passes post title prop BlogLayout to display in breadcrumbs 
@@ -25,7 +28,7 @@ function BlogPostPageContent({sidebar, children}) {
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel
   } = frontMatter;
-
+  
   // dbt Custom - send blog post context to datalayer to send to snowplow
   useEffect(() => {
     let blogContext = {
@@ -76,6 +79,16 @@ function BlogPostPageContent({sidebar, children}) {
         ) : undefined }
       isBlogPost={true}
       >
+      
+      {!hideTableOfContents && toc.length > 0 && (
+        <TOCCollapsible
+          toc={toc}
+          minHeadingLevel={tocMinHeadingLevel}
+          maxHeadingLevel={tocMaxHeadingLevel}
+          className={clsx(ThemeClassNames.docs.docTocMobile, styles.tocMobile)}
+        />
+      )}
+
       <BlogPostItem>{children}</BlogPostItem>
 
       {(nextItem || prevItem) && (
