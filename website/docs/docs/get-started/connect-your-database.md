@@ -43,6 +43,38 @@ Once the connection is saved, a public key will be generated and displayed for t
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" title="A generated public key for a Redshift connection"/>
 
+#### About the Bastion server in AWS:
+
+A bastion server is really just a host that dbt Cloud can open up an SSH connection to, and given that dbt Cloud is generally only sending queries, and not transmitting large data volumes, you can safely assume that the bastion server can run on a small AWS instance. I'd offer the following recommendations:
+
+- A t2.small instance is likely sufficiently sized for this purpose (even a t2.micro will probably suffice, in all honesty)
+- Make sure the instance is located in the same VPC as the Redshift instance, and configure the security group for the bastion server to ensure that it is able to connect to the warehouse port
+
+#### Configuring the Bastion Server in AWS:
+
+When you configure the tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, as well as a username and port, of your choosing, that dbt Cloud will connect to:
+
+- Make sure that the bastion server has its network security rules set up properly to accept connections from the dbt Cloud IP addresses on whatever port you configure for the bastion server in dbt Cloud
+- You'll need to set up the user account (I'm using the username dbtcloud below) via the bastion servers instance's CLI:
+    
+    `sudo groupadd dbtcloud`
+    
+    `sudo useradd -m -g dbtcloud dbtcloud`
+    
+    `sudo su - dbtcloud`
+    
+    `mkdir ~/.ssh`
+    
+    `chmod 700 ~/.ssh`
+    
+    `touch ~/.ssh/authorized_keys`
+    
+    `chmod 600 ~/.ssh/authorized_keys`
+    
+- You'll need to copy-paste the generated public key from dbt Cloud into the authorized_keys file
+
+With the Bastion EC2 instance in place, and the user properly configured, you should be able to successfully connect to the Redshift environment.
+
 ## Connecting to Snowflake
 
 The following fields are required when creating a Snowflake connection:
