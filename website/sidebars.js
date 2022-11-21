@@ -1058,7 +1058,7 @@ const sidebarSettings = {
     {
       type: "doc",
       label: "SQL Comments",
-      id: "sql-functions-glossary/sql-comments",
+      id: "sql-function-glossary/sql-comments",
     },
     {
       type: "category",
