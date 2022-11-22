@@ -8,7 +8,7 @@ tags: [Nov-29-2022]
 
 ---
 
-## Introducting Extra features in new IDE
+## Extra features in new and refreshed IDE
 
 The new and refreshed version of the Cloud IDE has launched four brand-new additional features, making it easier and faster for you to develop in the IDE.
 
