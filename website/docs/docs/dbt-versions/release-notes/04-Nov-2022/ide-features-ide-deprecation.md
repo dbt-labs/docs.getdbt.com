@@ -1,14 +1,14 @@
 ---
 
-title: "Enhancement and Deprecation: More features in new IDE, and classic IDE deprecation"
+title: "Extra features in new IDE, and classic IDE deprecation"
 id: "ide-features-ide-deprecation"
-description: "Enhancement and Deprecation: More features in new IDE, and classic IDE deprecation"
-sidebar_label: "More features in new IDE, and classic IDE deprecation"
+description: "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation"
+sidebar_label: "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation"
 tags: [Nov-29-2022]
 
 ---
 
-## Introducing more IDE features 
+## Introducting Extra features in new IDE
 
 The new and refreshed version of the Cloud IDE has launched four brand-new additional features, making it easier and faster for you to develop in the IDE.
 
