@@ -1,14 +1,14 @@
 ---
 
-title: "Enhancement and Deprecation: New IDE features and classic IDE deprecation"
+title: "Enhancement and Deprecation: More features in new IDE, and classic IDE deprecation"
 id: "ide-features-ide-deprecation"
-description: "Enhancement and Deprecation: New IDE features and classic IDE deprecation"
-sidebar_label: "Extra IDE features and classic IDE deprecation notice"
+description: "Enhancement and Deprecation: More features in new IDE, and classic IDE deprecation"
+sidebar_label: "More features in new IDE, and classic IDE deprecation"
 tags: [Nov-29-2022]
 
 ---
 
-## Introducing extra IDE features 
+## Introducing more IDE features 
 
 The new and refreshed version of the Cloud IDE has launched four brand-new additional features, making it easier and faster for you to develop in the IDE.
 
@@ -24,7 +24,6 @@ The new features are:
 - **Dark mode**	&mdash;  Use dark mode in the Cloud IDE for a great viewing experience in low-light environments.
 
 Read more about all the [Cloud IDE features](/docs/get-started/dbt-cloud-features).
-
 
 ## Classic IDE deprecation notice
 
