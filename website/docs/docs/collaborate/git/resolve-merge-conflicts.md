@@ -3,12 +3,11 @@ title: "Resolve merge conflicts in the Cloud IDE"
 id: "resolve-merge-conflicts"
 ---
 
-## About merge conflicts
 [Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) often occur when multiple users are concurrently making edits to the same section in the same file. 
 
 This makes it difficult for Git to decide what changes to incorporate in the final merge.  The Cloud IDE merge conflict process gives you the ability to decide which lines of code to keep and commit. This document will show you how you can resolve merge conflicts in the Cloud IDE.
 
-## Identifying a merge conflict
+## Identify merge conflicts
 
 You can experience a merge conflict in two possible ways:
 
@@ -39,12 +38,8 @@ For example, if you and a teammate make changes to the same file and commit, you
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-without-resolve.jpg" title="Pop up box when you commit without resolving the conflict"/>
 
 
-## Resolving conflicts
-You can seamlessly resolve merge conflicts that involve competing line changes in the Cloud IDE. 
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/resolve-conflict.jpg" title="Choosing lines to keep"/>
-
-<!--- <Lightbox src="/img/docs/dbt-cloud/cloud-ide/resolve-section.png" title="Choosing lines to keep"/> --->
+## Resolve merge conflicts
+You can seamlessly resolve merge conflicts that involve competing line changes in the Cloud IDE.
 
 1. In the Cloud IDE, you can edit the right-side view and choose which lines of code you'd like to preserve and delete the rest. 
     * Note: The left view editor is read-only and you cannot make changes.
@@ -53,15 +48,19 @@ You can seamlessly resolve merge conflicts that involve competing line changes i
 5. Press **Save**. You will notice the line highlights disappear and return to a plain background. This means that you've resolved the conflict successfully.
 6. Repeat this process for every file that has a merge conflict.
 
-## Completing the process
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/resolve-conflict.jpg" title="Choosing lines to keep"/>
+
+<!--- <Lightbox src="/img/docs/dbt-cloud/cloud-ide/resolve-section.png" title="Choosing lines to keep"/> --->
+
+## Commit changes
 
 When you've resolved all the merge conflicts, the last step would be to commit the changes you've made.
 
-1. Click the git action bar **Commit and resolve**. The **Commit changes** pop up box will confirm that all conflicts have been resolved. 
-2. Write  your commit message and press **Commit changes**
+1. Click the git action bar **Commit and resolve**. 
+2. The **Commit Changes** pop up box will confirm that all conflicts have been resolved. Write  your commit message and press **Commit changes**
 3. The Cloud IDE will return to its normal state and you can continue developing! 
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-resolve.jpg" title="Conflict has been resolved!"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-resolve.jpg" title="Conflict has been resolved"/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-changes.jpg" title="Clean commit modal that's ready to be committed"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-changes.jpg" title="Commit Changes pop up box to commit your changes"/>
