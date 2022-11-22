@@ -27,6 +27,6 @@ Read more about all the [Cloud IDE features](/docs/get-started/dbt-cloud-feature
 
 ### Classic IDE deprecation notice
 
-In December 2022, dbt Labs will deprecate the classic IDE in favor of the [new and refreshed IDE](/docs/get-started/develop-in-the-cloud) for _all_ dbt Cloud users. You will no longer be able to use the classic IDE and dbt Labs may introduce changes that break the classic IDE.
+In December 2022, dbt Labs will deprecate the classic IDE in favor of the [new and refreshed IDE](/docs/get-started/develop-in-the-cloud) for _all_ dbt Cloud users. You will no longer be able to access the classic IDE and dbt Labs may introduce changes that break the classic IDE.
 
-ADD SOMETHING ABOUT SUPPORT _IF_ THEY WANT SOMETHING ADDED
+The dbt Labs Support team will support and resolve any issues related to the new and refreshed IDE. 
