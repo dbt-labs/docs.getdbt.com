@@ -225,6 +225,7 @@ export default function Navbar() {
   const hasSearchNavbarItem = items.some((item) => item.type === 'search');
   const {leftItems, rightItems} = splitNavItemsByPosition(items);
 
+  // dbt Custom
   let hasSidebar = true
   const thisDocContext = useActiveDocContext()
   console.log('thisDocContext', thisDocContext)
