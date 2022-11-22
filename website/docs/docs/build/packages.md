@@ -35,7 +35,7 @@ packages:
     version: 0.7.0
 
   - git: "https://github.com/dbt-labs/dbt-utils.git"
-    revision: 0.1.21
+    revision: 0.9.2
 
   - local: /opt/dbt/redshift
 ```
@@ -119,7 +119,7 @@ Packages stored on a Git server can be installed using the `git` syntax, like so
 ```yaml
 packages:
   - git: "https://github.com/dbt-labs/dbt-utils.git" # git URL
-    revision: 0.1.21 # tag or branch name
+    revision: 0.9.2 # tag or branch name
 ```
 
 </File>
