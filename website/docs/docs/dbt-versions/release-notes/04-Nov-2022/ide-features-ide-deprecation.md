@@ -17,7 +17,7 @@ The new features are:
 - **Formatting** &mdash; Format your files with a click of a button, powered by sqlfmt.
 - **Git diff view** &mdash; Ability to see what you've changed in a file before you make a pull request.
 - **dbt autocomplete** &mdash; There are four new types of autocomplete features to help you develop faster:
-    - Use ref to autocomplete your model names
+    - Use `ref` to autocomplete your model names
     - Use source to autocomplete your source name + table name
     - Use macro to autocomplete your arguments
     - Use env var to autocomplete env var
