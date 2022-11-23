@@ -574,7 +574,7 @@ In their initial launch, Python models are supported on three of the most popula
 
 <div warehouse="Snowflake">
 
-**Additional setup:** Snowpark Python is in Public Preview - Open and enabled by default for all accounts. You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) to use Anaconda packages.
+**Additional setup:** You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) to use Anaconda packages.
 
 **Installing packages:** Snowpark supports several popular packages via Anaconda. The complete list is at https://repo.anaconda.com/pkgs/snowflake/. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
 
