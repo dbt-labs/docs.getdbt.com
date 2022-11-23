@@ -49,6 +49,7 @@ export default function DocItem(props) {
   // dbt Custom
   // If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
+  const isSpotlightMember = metadata?.id?.includes('community/spotlight/')
 
   // This hides any TOC items not in
   // html markdown headings for current version. 
@@ -167,7 +168,7 @@ export default function DocItem(props) {
                  */}
                 {shouldAddTitle && (
                   <>
-                    {metadata?.id?.includes('community/spotlight/') ? (
+                    {isSpotlightMember ? (
                       <CommunitySpotlightCard frontMatter={frontMatter} isSpotlightMember={true} />
                     ) : (
                       <header>

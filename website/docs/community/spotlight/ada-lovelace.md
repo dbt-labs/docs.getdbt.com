@@ -4,9 +4,13 @@ id: ada-lovelace
 image: /img/community/spotlight/placeholder-img-1.jpg
 jobTitle: Job Title
 companyName: Company Name
+socialLinks:
+  - name: Twitter
+    link: https://twitter.com
+  - name: LinkedIn
+    link: https://linkedin.com
 dateCreated: 2022-11-18
 hide_table_of_contents: true
-wrapperClassName: wee-fun
 ---
 
 ## Some cool deets
