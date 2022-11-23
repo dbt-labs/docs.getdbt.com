@@ -172,7 +172,7 @@ Each of the major data warehouses also has native integrations to import spreads
 
 ### Snowflake
 
-Snowflake’s offerings are the most robust and user-friendly, offering both a [web-based loader](https://docs.snowflake.com/en/user-guide/data-load-web-ui.html) as well as [a bulk importer](https://docs.snowflake.com/en/user-guide/data-load-bulk.html). The web loader is suitable for small to medium files (up to 50MB) and can be used for specific files, all files in a folder, or files in a folder that match a given pattern. It’s also the most provider-agnostic, with support for Amazon S3, Google Cloud Storage, Azure and the local file system.
+Snowflake’s options are robust and user-friendly, offering both a [web-based loader](https://docs.snowflake.com/en/user-guide/data-load-web-ui.html) as well as [a bulk importer](https://docs.snowflake.com/en/user-guide/data-load-bulk.html). The web loader is suitable for small to medium files (up to 50MB) and can be used for specific files, all files in a folder, or files in a folder that match a given pattern. It’s also the most provider-agnostic, with support for Amazon S3, Google Cloud Storage, Azure and the local file system.
 
 <Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/snowflake-uploader.png" title="Snowflake’s web-based Load Data Wizard via the Snowflake Blog https://www.snowflake.com/blog/tech-tip-getting-data-snowflake/" />
 
@@ -183,6 +183,10 @@ BigQuery only supports importing data from external sources hosted by Google suc
 ### Redshift
 
 Unsurprisingly for an AWS product, Redshift prefers to [import CSV files from S3](https://docs.aws.amazon.com/redshift/latest/dg/tutorial-loading-data.html). As with Snowflake, this is achieved with the COPY command, and you can easily control which file(s) are imported from the source bucket. Using S3 as a source compared to a web-based loader or Google Drive means this option isn’t as user-friendly for non-technical folks, but is still a great option to sync files that are automatically generated from other tools.
+
+### Databricks
+
+Databricks also supports [pulling in data, such as spreadsheets, from external cloud sources](https://docs.databricks.com/external-data/index.html) like Amazon S3 and Google Cloud Storage. In addition, the ability to [load data via a simple UI](https://docs.databricks.com/ingestion/add-data/index.html) within Databricks is currently in public preview.
 
 ## Conclusion
 
