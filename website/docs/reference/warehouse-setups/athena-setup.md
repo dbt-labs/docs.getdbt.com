@@ -2,10 +2,10 @@
 title: "Athena setup"
 meta:
   maintained_by: Community
-  authors: 'Tomme'
-  github_repo: 'Tomme/dbt-athena'
-  pypi_package: 'dbt-athena-adapter'
-  min_core_version: 'v1.0.1'
+  authors: Community
+  github_repo: 'dbt-athena/dbt-athena'
+  pypi_package: 'dbt-athena-community'
+  min_core_version: 'v1.3.0'
   cloud_support: Not Supported
   min_supported_version: 'engine version 2'
   slack_channel_name: '#db-athena'
