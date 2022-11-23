@@ -20,7 +20,7 @@ The new features are:
     - Use `ref` to autocomplete your model names
     - Use `source` to autocomplete your source name + table name
     - Use macro to autocomplete your arguments
-    - Use env var to autocomplete env var
+    - Use `env var` to autocomplete env var
 - **Dark mode**	&mdash;  Use dark mode in the Cloud IDE for a great viewing experience in low-light environments.
 
 Read more about all the [Cloud IDE features](/docs/get-started/dbt-cloud-features).
