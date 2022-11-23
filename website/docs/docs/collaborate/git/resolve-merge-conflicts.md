@@ -16,7 +16,7 @@ You can experience a merge conflict in two possible ways:
 
 The way to [resolve](#resolve-merge-conflicts) either scenario will be exactly the same. 
 
-For example, if you and a teammate make changes to the same file and commit, you will encounter a merge conflict as soon as you **Commit and push**. The Cloud IDE will display:
+For example, if you and a teammate make changes to the same file and commit, you will encounter a merge conflict as soon as you **Commit and push**. The dbt Cloud IDE will display:
 
 
 - The git action bar will display **Commit and resolve** under **Version Control**  instead of `Commit`. This indicates that the Cloud IDE has detected some conflicts that you need to address.
@@ -41,7 +41,7 @@ For example, if you and a teammate make changes to the same file and commit, you
 ## Resolve merge conflicts
 You can seamlessly resolve merge conflicts that involve competing line changes in the Cloud IDE.
 
-1. In the Cloud IDE, you can edit the right-side of the conflict file, choose which lines of code you'd like to preserve, and delete the rest. 
+1. In the dbt Cloud IDE, you can edit the right-side of the conflict file, choose which lines of code you'd like to preserve, and delete the rest. 
     * Note: The left view editor is read-only and you cannot make changes.
 3. Delete the special flags or conflict markers `<<<<<<<`, `=======`, `>>>>>>>` that highlight the merge conflict, and also choose which lines of code to preserve.
 4. If you have more than one merge conflict in your file, scroll down to the next set of conflict markers and repeat steps one and two to resolve your merge conflict.
