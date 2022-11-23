@@ -18,7 +18,7 @@ The new features are:
 - **Git diff view** &mdash; Ability to see what you've changed in a file before you make a pull request.
 - **dbt autocomplete** &mdash; There are four new types of autocomplete features to help you develop faster:
     - Use `ref` to autocomplete your model names
-    - Use source to autocomplete your source name + table name
+    - Use `source` to autocomplete your source name + table name
     - Use macro to autocomplete your arguments
     - Use env var to autocomplete env var
 - **Dark mode**	&mdash;  Use dark mode in the Cloud IDE for a great viewing experience in low-light environments.
