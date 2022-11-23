@@ -3,7 +3,7 @@
 title: "Extra features in new IDE, and classic IDE deprecation"
 id: "ide-features-ide-deprecation"
 description: "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation"
-sidebar_label: "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation"
+sidebar_label: "Enhancement and deprecation: Extra features in the new IDE and classic IDE deprecation"
 tags: [Nov-29-2022]
 
 ---
