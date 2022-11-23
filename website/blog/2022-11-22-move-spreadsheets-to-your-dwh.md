@@ -33,9 +33,9 @@ Let’s have a look at some of the offerings to help you get your spreadsheets i
 
 ## dbt seeds
 
-If you’re using [dbt](https://www.getdbt.com/) to manage your data transformations, it comes with an inbuilt csv loader ([seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds)) to populate your data warehouse with any files you put inside of your project’s `seeds` folder. It will automatically infer data types from your file’s contents, but you can always override it by [providing explicit instructions in your dbt_project.yml](https://docs.getdbt.com/reference/resource-configs/column_types) file.
+dbt comes with an inbuilt csv loader ([seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds)) to populate your data warehouse with any files you put inside of your project’s `seeds` folder. It will automatically infer data types from your file’s contents, but you can always override it by [providing explicit instructions in your dbt_project.yml](https://docs.getdbt.com/reference/resource-configs/column_types) file.
 
-However, since dbt creates these tables by inserting rows one at a time, it doesn’t perform well at scale (there’s no hard limit but syncing a hundred rows should be fine, as opposed to a few thousand). [The dbt docs](https://docs.getdbt.com/docs/building-a-dbt-project/seeds#faqs) suggest using seeds for “files that contain business-specific logic, for example, a list of country codes or user IDs of employees.”
+However, since dbt creates these tables by inserting rows one at a time, it doesn’t perform well at scale (there’s no hard limit but aim for hundreds of rows rather than thousands). [The dbt docs](https://docs.getdbt.com/docs/building-a-dbt-project/seeds#faqs) suggest using seeds for “files that contain business-specific logic, for example, a list of country codes or user IDs of employees.”
 
 A big benefit of using seeds is that your file will be checked into source control, allowing you to easily see when the file was updated and retrieve deleted data if necessary.
 
@@ -53,18 +53,18 @@ A big benefit of using seeds is that your file will be checked into source contr
 
 ## ETL tools
 
-An obvious choice if you have data to load into your warehouse would be your existing [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/) such as Fivetran or Stitch, which we'll dive into in this section. Below is a summary table highlighting the core benefits and drawbacks of certain ETL tooling options for getting spreadsheet data in your data warehouse.
+An obvious choice if you have data to load into your warehouse would be your existing [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/) such as Fivetran or Stitch, which I'll dive into in this section. Below is a summary table highlighting the core benefits and drawbacks of certain ETL tooling options for getting spreadsheet data in your data warehouse.
 
 ### Summary table
 
-| Option/connector | Good for frequently updated data | Good for change tracking | Configurable data types |
-| --- | --- | --- | --- |
-| dbt seeds | ❌ | ✅ | ✅ |
-| Fivetran Browser Upload | ✅ | ❌ | ✅ |
-| Fivetran Google Sheets connector | ✅ | ❌ | ❌ |
-| Fivetran Google Drive connector | ❌ | ❌ | ❌ |
-| Stitch Google Sheets integration | ✅ | ❌ | ❌ |
-| Airbyte Google Sheets connector | ✅ | ❌ | ❌ |
+| Option/connector | Data updatable after load |  Configurable data types | Multiple tables per schema | Good for large datasets |
+| --- | --- | --- | --- | --- |
+| dbt seeds | ✅ | ✅ | ✅ | ❌ |
+| Fivetran Browser Upload | ✅ | ✅ | ✅ | ✅ |
+| Fivetran Google Sheets connector | ✅ | ❌ | ❌ | ✅ |
+| Fivetran Google Drive connector | ❌ | ❌ | ✅ | ✅ |
+| Stitch Google Sheets integration | ✅ | ❌ | ❌ | ✅ |
+| Airbyte Google Sheets connector | ✅ | ❌ | ❌ | ✅ |
 
 ### Fivetran browser upload
 
@@ -96,7 +96,7 @@ Also, Fivetran won’t delete records once they’re created, so the only way to
 
 ### Fivetran Google Sheets connector
 
-The main benefit of connecting to Google Sheets instead of a static spreadsheet should be obvious—teammates all over the world can change the sheet and new records will be loaded into your warehouse automatically. [Fivetran’s Google Sheets connector](https://fivetran.com/docs/files/google-sheets) requires some additional implementation details, but collaborative editing can make the additional configuration effort worthwhile.
+The main benefit of connecting to Google Sheets instead of a static spreadsheet should be obvious—teammates can change the sheet from anywhere and new records will be loaded into your warehouse automatically. [Fivetran’s Google Sheets connector](https://fivetran.com/docs/files/google-sheets) requires some additional initial configuration, but collaborative editing can make the effort worthwhile.
 
 Instead of syncing all cells in a sheet, you create a [named range](https://fivetran.com/docs/files/google-sheets/google-sheets-setup-guide) and connect Fivetran to that range. Each Fivetran connector can only read a single range—if you have multiple tabs then you’ll need to create multiple connectors, each with its own schema and table in the target warehouse. When a sync takes place, it will [truncate](https://docs.getdbt.com/terms/ddl#truncate) and reload the table from scratch as there is no primary key to use for matching.
 
@@ -123,7 +123,7 @@ I’m a big fan of [Fivetran’s Google Drive connector](https://fivetran.com/do
 
 Like the Google Sheets connector, the data types of the columns are determined automatically. Dates, in particular, are finicky though—if you can control your input data, try to get it into [ISO 8601 format](https://xkcd.com/1179/) to minimize the amount of cleanup you have to do on the other side.
 
-We use two macros in the dbt_utils package ([get_relations_by_pattern](https://github.com/dbt-labs/dbt-utils#get_relations_by_pattern-source) and [union_relations](https://github.com/dbt-labs/dbt-utils#union_relations-source)) to combine weekly exports from other tools into a single [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models) for easy cleanup in a staging model. Make sure you grant your transformer account permission to access all tables in the schema (including future ones) to avoid having to manually intervene after every new file is uploaded.
+I used two macros in the dbt_utils package ([get_relations_by_pattern](https://github.com/dbt-labs/dbt-utils#get_relations_by_pattern-source) and [union_relations](https://github.com/dbt-labs/dbt-utils#union_relations-source)) to combine weekly exports from other tools into a single [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models) for easy cleanup in a staging model. Make sure you grant your transformer account permission to access all tables in the schema (including future ones) to avoid having to manually intervene after every new file is uploaded.
 
 #### Good fit for:
 
@@ -178,7 +178,7 @@ Snowflake’s offerings are the most robust and user-friendly, offering both a [
 
 ### BigQuery
 
-BigQuery only supports importing data from external sources hosted by Google such as Google Drive and Google Cloud Storage (as BigQuery and Sheets are both Google products, BigQuery is the only platform on this list that has a native integration that doesn't require 3rd-party tooling). The data it references isn’t copied into BigQuery but can be referenced in queries as though it was. If needed, you can write a copy to BigQuery or just leave it as an external source. The team at supercooldata has written [a great primer on using Google Sheets with BigQuery](https://blog.supercooldata.com/working-with-sheets-in-bigquery/).
+BigQuery only supports importing data from external sources hosted by Google such as Google Drive and Google Cloud Storage (as BigQuery and Sheets are both Google products, BigQuery is the only platform on this list that has a native integration that doesn't require 3rd-party tooling). The data it references isn’t copied into BigQuery but can be referenced in queries as though it was. If needed, you can write a copy to BigQuery or just leave it as an external source. The team at supercooldata has written [a great how-to guide on setting up Google Sheets with BigQuery](https://blog.supercooldata.com/working-with-sheets-in-bigquery/).
 
 ### Redshift
 
@@ -186,6 +186,6 @@ Unsurprisingly for an AWS product, Redshift prefers to [import CSV files from S3
 
 ## Conclusion
 
-Beyond the options we’ve already covered, there’s an entire world of other tools that can load data from your spreadsheets into your data warehouse.
+Beyond the options we’ve already covered, there’s an entire world of other tools that can load data from your spreadsheets into your data warehouse. This is a living document, so if your preferred method isn't listed then please [open a PR](https://github.com/dbt-labs/docs.getdbt.com) and I'll check it out.
 
 The most important things to consider are your files’ origins and formats—if you need your colleagues to upload files on a regular basis then try to provide them with a more user-friendly process; but if you just need two computers to talk to each other, or it’s a one-off file that will hardly ever change, then a more technical integration is totally appropriate.
