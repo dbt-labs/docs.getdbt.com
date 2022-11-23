@@ -29,7 +29,7 @@ The dbt Labs docs are written in Markdown and sometimes HTML. When writing conte
 
 All PRs that are submitted will be reviewed by the dbt Labs Docs team for editorial review.
 
-Content that is submitted by our users, and the open-source community are also reviewed by our dbt Labs subject matter experts (SMEs) to help ensure technical accuracy.
+Content that is submitted by our users and the open-source community are also reviewed by our dbt Labs subject matter experts (SMEs) to help ensure technical accuracy.
 
 
 ## Versioning and single-sourcing content
