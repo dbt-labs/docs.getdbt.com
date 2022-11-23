@@ -49,7 +49,9 @@ You can seamlessly resolve merge conflicts that involve competing line changes i
 6. Repeat this process for every file that has a merge conflict.
 
 :::info 📌
-If you open the conflict file from under **Changes**, the file name will display something like `model.sql (last commit)` and is fully read-only. If you open it from uner **File Explorer**, that file is editable in the right view.
+If you open the conflict file from under **Changes**, the file name will display something like `model.sql (last commit)` and is fully read-only. <br />
+
+If you open it from uner **File Explorer**, that file is editable in the right view.
 :::
 
 
