@@ -2,6 +2,7 @@
 id: sql-count
 title: SQL COUNT
 description: COUNT is an aggregate function that is used to return the count of rows of a specified field or all rows in a dataset. It is commonly used to get baseline statistical information of a dataset, help ensure primary keys are unique, and calculate business metrics.
+slug: /sql-function-glossary/sql-count
 ---
 
 <head>

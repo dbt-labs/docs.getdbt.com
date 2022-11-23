@@ -2,6 +2,7 @@
 id: sql-min 
 title: SQL MIN 
 description: The MIN aggregate function allows you to compute the minimum value from a column or across a set of rows for a column.
+slug: /sql-function-glossary/sql-min
 ---
 
 <head>

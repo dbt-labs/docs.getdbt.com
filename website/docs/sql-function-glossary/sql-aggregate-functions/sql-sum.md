@@ -2,6 +2,7 @@
 id: sql-sum
 title: SQL SUM 
 description: The SUM aggregate function allows you to calculate the sum of a numeric column or across a set of rows for a column.
+slug: /sql-function-glossary/sql-sum
 ---
 
 <head>
