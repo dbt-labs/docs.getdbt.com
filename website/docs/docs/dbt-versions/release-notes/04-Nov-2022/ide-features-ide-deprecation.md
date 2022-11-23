@@ -10,7 +10,7 @@ tags: [Nov-29-2022]
 
 ### Extra features in new and refreshed IDE
 
-The new and refreshed version of the Cloud IDE has launched four brand-new additional features, making it easier and faster for you to develop in the IDE.
+The refreshed version of the dbt Cloud IDE has launched four brand-new additional features, making it easier and faster for you to develop in the IDE.
 
 The new features are:
 
