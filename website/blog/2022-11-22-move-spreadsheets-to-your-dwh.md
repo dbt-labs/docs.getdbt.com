@@ -1,6 +1,6 @@
 ---
 title: "How to move data from spreadsheets into your data warehouse"
-description: "A thankless, humble, and inevitable task: getting spreadsheet data into your data warehouse. In this Developer Blog post, Joel walks through the different options for getting spreadsheet data into your data warehouse, and the pros and cons of each option."
+description: "A thankless, humble, and inevitable task: getting spreadsheet data into your data warehouse. Let's look at some of the different options, and the pros and cons of each."
 slug: moving-spreadsheet-data
 
 authors: [joel_labes]
