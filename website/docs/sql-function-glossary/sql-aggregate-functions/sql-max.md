@@ -1,7 +1,7 @@
 ---
 id: sql-max
 title: SQL MAX
-description: The SQL MAX aggregate function allows you to compute the maximum value from a column. This kind of measure is useful for understanding the distribution of column values, determining the most recent timestamps of key events, and creating booleans from CASE WHEN statements.
+description: The SQL MAX aggregate function allows you to compute the maximum value from a column.
 ---
 
 <head>
