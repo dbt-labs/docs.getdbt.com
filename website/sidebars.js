@@ -231,7 +231,7 @@ const sidebarSettings = {
             "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/resolve-merge-conflicts",
+            "docs/collaborate/git/merge-conflicts",
             {
               type: "category",
               label: "Supported git providers",
