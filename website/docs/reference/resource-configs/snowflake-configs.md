@@ -182,7 +182,43 @@ models:
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. The following config changes the warehouse for a single model with a config() block.
+  
+<File name='models/events/sessions.sql'>
+
+```sql
+{{
+  config(
+    materialized='table',
+    snowflake_warehouse='EXTRA_LARGE'
+  )
+}}
+with
+
+aggregated_page_events as (
+    select
+        session_id,
+        min(event_time) as session_start,
+        max(event_time) as session_end,
+        count(*) as count_page_views
+    from {{ source('snowplow', 'event') }}
+    group by 1
+),
+
+index_sessions as (
+    select
+        *,
+        row_number() over (
+            partition by session_id
+            order by session_start
+        ) as page_view_in_session_index
+    from aggregated_page_events
+)
+
+select * from index_sessions
+```
+
+</File>
 
 The following config uses the `EXTRA_SMALL` warehouse for all models in the project, except for the models in the `clickstream` folder, which are configured to use the `EXTRA_LARGE` warehouse. In this example, all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 
