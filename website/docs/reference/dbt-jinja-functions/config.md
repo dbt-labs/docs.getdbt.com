@@ -24,6 +24,10 @@ is responsible for handling model code that looks like this:
 }}
 ```
 
+For more information about valid arguments to use, see:
+https://docs.getdbt.com/reference/model-configs
+
+
 ## config.get
 __Args__:
 
