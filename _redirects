@@ -525,3 +525,4 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
 /docs/getting-started/develop-in-the-cloud#creating-a-development-environment  /docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide 301
 
+/docs/collaborate/git/resolve-merge-conflicts  /docs/collaborate/git/merge-conflicts 301
