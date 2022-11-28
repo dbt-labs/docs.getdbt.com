@@ -5,9 +5,9 @@ description: "You can troubleshoot possible issues and provide security audits b
 sidebar_label: "Audit log"
 ---
 
-To review actions performed by people in your organization, dbt provides logs of audited user and system events. The dbt Cloud audit log lists events triggered in your organization within the last 90 days.
+To review actions performed by people in your organization, dbt provides logs of audited user and system events. Use the audit log to quickly review the actions performed by members of your organization. The audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events.
 
-Use the audit log to quickly review the actions performed by members of your organization. The audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events.
+The dbt Cloud audit log has a selectable date range that lists events triggered in your organization within the last 90 days. To review actions beyond 90 days, **Account Admins** can export all events by selecting **Export All** on the upper right corner. 
 
 You must be an **Account Admin** to access the audit log and this feature is only available on Enterprise plans.
 
@@ -166,10 +166,13 @@ You can search the audit log to find a specific event or actor, which is limited
 
 ## Exporting logs
 
-You can use the audit log to export historical audit results for security, compliance, and analysis purposes. You can export data for up to the last 90 days. Click the **Export CSV** button to download a CSV file of all the events that occurred in your organization over the last 90 days.
+You can use the audit log to export all historical audit results for security, compliance, and analysis purposes:
+
+- Export audit log events within the 90 days selectable date range &mdash; Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
+- Export actions beyond 90 days &mdash; Select **Export All**. The Account Admin will receive an email where they can download a CSV file of all the events that occurred in your organization.
 
 <div style={{maxWidth: '200px'}}>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-export-csv.png" title="Download a CSV file"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" title="View audit log export options"/>
 
 </div>
