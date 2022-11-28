@@ -1,57 +1,36 @@
-import React from 'react'
-import styles from './styles.module.css';
+import { CommunitySpotlightCard as SpotlightCard } from "./CommunitySpotLightCard";
 
-const SpotlightWrapper = ({ isSpotlightMember, children }) => {
-  return isSpotlightMember ? (
-    <header className={styles.spotlightMemberCard}>
-      {children}
-    </header>
-  ) : (
-    <div className={styles.spotlightMemberCard}>
-      {children}
-    </div>
-  )
-} 
+import React from 'react';
+import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import BlogLayout from '@theme/BlogLayout';
 
-export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false }) => {
-  const { title, image, jobTitle, companyName, socialLinks } = frontMatter
+export const SpotlightList = (props) => {
+  // const { authorData } = props
+  
+  // const { name, job_title, image_url, organization, description, links, slug } = authorData
 
-  return (  
-    <SpotlightWrapper isSpotlightMember={isSpotlightMember}>
-      {image && (
-        <div className={styles.spotlightMemberImgContainer}>
-          <img 
-            src={image} 
-            alt={title} 
-          />
-        </div>
-      )}
-      <div className={styles.spotlightMemberContent}>
-        <h1 className={styles.spotlightMemberHeader}>{title}</h1>
-        {(jobTitle || companyName) && (
-          <div className={styles.spotlightMemberInfo}>
-            <span>
-              {jobTitle && jobTitle}
-              {jobTitle && companyName && ', '}
-              {companyName && companyName}
-            </span>
-          </div>
-        )}
-        {socialLinks && socialLinks?.length > 0 && (
-          <div className={styles.spotlightMemberSocial}>
-            {socialLinks.map((item, i) => (
-              <>
-                {item?.name && item?.link && (
-                  <>
-                    {i !== 0 && ' | '}
-                    <a href={item.link} title="#">{item.name}</a>
-                  </>
-                )}
-              </>
-            ))}
-          </div>
-        )}
-      </div>
-    </SpotlightWrapper>
+
+  return (
+    <BlogLayout>
+      {/* <Head>
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle && blogData.blogTitle}`} />
+        {description &&
+          <meta property="og:description" content={`${description}`} />
+        }
+      </Head> */}
+
+      <main
+        itemScope
+        itemType="http://schema.org/Person">
+        <section className="author-header row align-items-center">
+         
+        </section>
+      </main>
+    </BlogLayout>
   )
 }
+
+export const CommunitySpotlightCard = SpotlightCard
