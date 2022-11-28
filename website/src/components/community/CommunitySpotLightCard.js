@@ -14,7 +14,7 @@ const SpotlightWrapper = ({ isSpotlightMember, children }) => {
 } 
 
 export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false }) => {
-  const { title, image, jobTitle, companyName, socialLinks } = frontMatter
+  const { title, description, image, jobTitle, companyName, socialLinks } = frontMatter
 
   return (  
     <SpotlightWrapper isSpotlightMember={isSpotlightMember}>
@@ -36,6 +36,9 @@ export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false 
               {companyName && companyName}
             </span>
           </div>
+        )}
+        {description && !isSpotlightMember && (
+          <p className={styles.spotlightMemberDescription}>{description}</p>
         )}
         {socialLinks && socialLinks?.length > 0 && (
           <div className={styles.spotlightMemberSocial}>

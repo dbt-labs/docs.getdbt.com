@@ -1,6 +1,7 @@
 ---
-title: Ada Lovelace
 id: ada-lovelace
+title: Ada Lovelace
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum urna ipsum, pulvinar iaculis libero varius id. In ut massa id sem feugiat maximus eget faucibus nulla. Nullam blandit, ante vel rhoncus aliquet.
 image: /img/community/spotlight/placeholder-img-1.jpg
 jobTitle: Job Title
 companyName: Company Name
