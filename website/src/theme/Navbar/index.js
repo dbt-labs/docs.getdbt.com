@@ -228,7 +228,6 @@ export default function Navbar() {
   // dbt Custom
   let hasSidebar = true
   const thisDocContext = useActiveDocContext()
-  console.log('thisDocContext', thisDocContext)
   if(!thisDocContext?.activeDoc?.sidebar) {
     hasSidebar = false
   }
