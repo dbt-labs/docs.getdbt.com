@@ -22,14 +22,27 @@ export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false 
     <SpotlightWrapper isSpotlightMember={isSpotlightMember}>
       {image && (
         <div className={styles.spotlightMemberImgContainer}>
-          <img 
-            src={image} 
-            alt={title} 
-          />
+          {id && isSpotlightMember ? (
+            <img 
+              src={image} 
+              alt={title} 
+            />
+          ) : (
+            <Link to={`/community/spotlight/${id}`} className={styles.spotlightMemberHeader}>
+              <img 
+                src={image} 
+                alt={title} 
+              />
+            </Link>
+          )}
         </div>
       )}
       <div className={styles.spotlightMemberContent}>
-        <h1 className={styles.spotlightMemberHeader}>{title}</h1>
+        {!isSpotlightMember && id ? (
+          <Link to={`/community/spotlight/${id}`} className={styles.spotlightMemberHeader}>{title}</Link>
+          ) : (
+          <h1 className={styles.spotlightMemberHeader}>{title}</h1>
+        )}
         {(jobTitle || companyName) && (
           <div className={styles.spotlightMemberInfo}>
             <span>

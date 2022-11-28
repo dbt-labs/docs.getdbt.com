@@ -21,6 +21,7 @@ header.spotlightMemberCard {
   font-size: 2rem !important;
   margin-bottom: .5rem !important;
   color: #009999;
+  font-weight: 700;
 }
 .spotlightMemberContent .spotlightMemberDescription {
   margin-top: 1rem;
