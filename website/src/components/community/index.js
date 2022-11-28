@@ -3,7 +3,7 @@ import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Hero from '@site/src/components/hero';
-import { CommunitySpotlightCard } from './CommunitySpotlightCard'
+import { CommunitySpotlightCard } from '@site/src/components/community/CommunitySpotlightCard'
 
 const communityTitle = 'Community spotlight'
 const communityDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
