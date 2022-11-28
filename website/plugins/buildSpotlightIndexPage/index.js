@@ -1,5 +1,4 @@
 const fs = require('fs')
-const yaml = require('js-yaml')
 
 module.exports = function buildSpotlightIndexPagePlugin(context, options) {
   return {
@@ -26,7 +25,7 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
       //   // Add the author routes, and ensure it receives the author's data as props
       //   addRoute({
       //     path: `/author/${authorJson.slug}`,
-      //     component: '@site/src/components/author/index.js',
+      //     component: '@site/src/components/community/index.js',
       //     modules: {
       //       // propName -> JSON file path
       //       authorData,

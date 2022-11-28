@@ -1,5 +1,3 @@
-import { CommunitySpotlightCard as SpotlightCard } from "./CommunitySpotLightCard";
-
 import React from 'react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -32,5 +30,3 @@ export const SpotlightList = (props) => {
     </BlogLayout>
   )
 }
-
-export const CommunitySpotlightCard = SpotlightCard

@@ -40,7 +40,6 @@ import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
 import BlogPostCard from '@site/src/components/blogPostCard';
 import PostCarousel from '@site/src/components/postCarousel';
-import { CommunitySpotlightCard }  from '@site/src/components/community';
 
 function unwrapMDXElement(element) {
   if (element?.props?.mdxType && element?.props?.originalType) {
@@ -133,6 +132,5 @@ const MDXComponents = {
   DiscourseFeed: DiscourseFeed,
   DiscourseHelpFeed: DiscourseHelpFeed,
   Card: Card,
-  CommunitySpotlightCard: CommunitySpotlightCard
 };
 export default MDXComponents;
