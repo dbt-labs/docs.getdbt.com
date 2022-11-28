@@ -11,8 +11,8 @@ function CommunitySpotlightList({ spotlightData }) {
 
   return (
     <Layout>
-     <section id='community-spotlight-page'>
-        <Hero heading="Welcome to the dbt Developer Hub" subheading="Your home base for learning dbt, connecting with the community and contributing to the craft of analytics engineering " showGraphic={false} />
+      <Hero heading="Community spotlight" subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam." showGraphic={false} customStyles={{marginBottom: 0}} />
+      <section id='spotlight-members-section'>
         <div className='container'>   
           {spotlightData.map(member => (
             <CommunitySpotlightCard frontMatter={member.data} />

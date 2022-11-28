@@ -1729,3 +1729,6 @@ section > h2:not(.resource-section) {
 }
 
 /* Community Spotlight Page */
+#spotlight-members-section {
+  padding: 6rem 0;
+}
