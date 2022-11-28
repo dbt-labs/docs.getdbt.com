@@ -41,7 +41,6 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
           JSON.stringify(content),
         );
           
-        console.log('spotlightData', spotlightData)
         // Add the author routes, and ensure it receives the author's data as props
         addRoute({
           path: `/community/spotlight`,
@@ -50,7 +49,7 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
             // propName -> JSON file path
             spotlightData,
           },
-          exact: false,
+          exact: true,
         });
 
     },
