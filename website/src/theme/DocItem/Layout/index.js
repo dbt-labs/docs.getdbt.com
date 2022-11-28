@@ -36,10 +36,6 @@ function useDocTOC() {
   // dbt Custom: If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
 
-  // dbt Custom
-  // If the page has a search_weight value, apply that value
-  const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
-
   // This hides any TOC items not in
   // html markdown headings for current version. 
   const { version: dbtVersion } = useContext(VersionContext)
@@ -153,6 +149,12 @@ function useDocTOC() {
 }
 export default function DocItemLayout({children}) {
   const docTOC = useDocTOC();
+
+  // dbt Custom
+  // If the page has a search_weight value, apply that value
+  const {frontMatter} = useDoc();
+  const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
+
   return (
     <div className="row">
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
