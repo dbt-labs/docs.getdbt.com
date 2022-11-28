@@ -11,7 +11,6 @@ const communityDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing
 
 
 function CommunitySpotlightList({ spotlightData }) {
-  console.log('spotlightData', spotlightData)
   const { siteConfig } = useDocusaurusContext()
 
   // Build meta title from communityTitle and docusaurus config site title

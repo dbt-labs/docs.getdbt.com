@@ -17,7 +17,6 @@ const SpotlightWrapper = ({ isSpotlightMember, children }) => {
 export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false }) => {
   const { id, title, description, image, jobTitle, companyName, socialLinks } = frontMatter
 
-  console.log('id', id)
   return (  
     <SpotlightWrapper isSpotlightMember={isSpotlightMember}>
       {image && (
