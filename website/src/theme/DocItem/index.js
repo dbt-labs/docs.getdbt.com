@@ -21,7 +21,7 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 // dbt Custom
 import VersionContext from '../../stores/VersionContext'
 import getElements from '../../utils/get-html-elements';
-import { CommunitySpotlightCard } from '@site/src/components/community/CommunitySpotlightCard';
+import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard';
 
 export default function DocItem(props) {
   const { content: DocContent } = props;

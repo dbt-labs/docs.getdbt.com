@@ -14,7 +14,7 @@ const SpotlightWrapper = ({ isSpotlightMember, children }) => {
   )
 } 
 
-export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false }) => {
+function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
   const { id, title, description, image, jobTitle, companyName, socialLinks } = frontMatter
 
   return (  
@@ -78,3 +78,5 @@ export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false 
     </SpotlightWrapper>
   )
 }
+
+export default CommunitySpotlightCard
