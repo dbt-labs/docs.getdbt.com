@@ -29,6 +29,15 @@ header.spotlightMemberCard {
 .spotlightMemberContent .spotlightMemberInfo span {
   font-size: 1.125rem;  
 }
+.spotlightMemberContent .spotlightMemberSocial {
+  margin-top: 1rem;  
+}
+
+.spotlightMemberContent .spotlightReadMore {
+  margin-top: 1rem;  
+  font-weight: 600;
+  font-size: 1rem;
+}
 
 @media (min-width: 778px) {
   header.spotlightMemberCard {

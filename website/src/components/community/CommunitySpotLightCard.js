@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 const SpotlightWrapper = ({ isSpotlightMember, children }) => {
@@ -14,8 +15,9 @@ const SpotlightWrapper = ({ isSpotlightMember, children }) => {
 } 
 
 export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false }) => {
-  const { title, description, image, jobTitle, companyName, socialLinks } = frontMatter
+  const { id, title, description, image, jobTitle, companyName, socialLinks } = frontMatter
 
+  console.log('id', id)
   return (  
     <SpotlightWrapper isSpotlightMember={isSpotlightMember}>
       {image && (
@@ -40,7 +42,7 @@ export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false 
         {description && !isSpotlightMember && (
           <p className={styles.spotlightMemberDescription}>{description}</p>
         )}
-        {socialLinks && socialLinks?.length > 0 && (
+        {socialLinks && isSpotlightMember && socialLinks?.length > 0 && (
           <div className={styles.spotlightMemberSocial}>
             {socialLinks.map((item, i) => (
               <>
@@ -53,6 +55,12 @@ export const CommunitySpotlightCard = ({ frontMatter, isSpotlightMember = false 
               </>
             ))}
           </div>
+        )}
+        {id && !isSpotlightMember && (
+          <Link 
+            to={`/community/spotlight/${id}`} 
+            className={styles.spotlightReadMore}
+          >Read More</Link>
         )}
       </div>
     </SpotlightWrapper>
