@@ -33,7 +33,6 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
 
        
     async contentLoaded({content, actions}) {
-      console.log('content', content)
       const {createData, addRoute} = actions;
 
         // Create json with spotlight member data
@@ -41,11 +40,12 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
           `spotlight-page-data.json`,
           JSON.stringify(content),
         );
-        
+          
+        console.log('spotlightData', spotlightData)
         // Add the author routes, and ensure it receives the author's data as props
         addRoute({
           path: `/community/spotlight`,
-          component: '@site/src/components/community/CommunitySpotlightList.js',
+          component: '@site/src/components/community/index.js',
           modules: {
             // propName -> JSON file path
             spotlightData,
