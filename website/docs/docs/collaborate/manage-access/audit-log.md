@@ -9,11 +9,10 @@ To review actions performed by people in your organization, dbt provides logs of
 
 You must be an **Account Admin** to access the audit log and this feature is only available on Enterprise plans.
 
-You can view The dbt Cloud audit log events within the 90 days or beyond 90 days:
+The dbt Cloud audit log stores all the events that occurred in your organization:
 
-- To review events with 90 days, the dbt Cloud audit log has a selectable date range that lists events triggered.
-- To review events beyond 90 days, **Account Admins** can export all events by selecting **Export All** on the upper right corner. 
-
+- For events within 90 days, the dbt Cloud audit log has a selectable date range that lists events triggered.
+- For events beyond 90 days, **Account Admins** can [export](#exporting-logs) all events by selecting **Export All** on the upper right corner. 
 
 ## Accessing the audit log
 
