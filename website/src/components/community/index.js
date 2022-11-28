@@ -2,17 +2,24 @@ import React from 'react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import BlogLayout from '@theme/BlogLayout';
+import Layout from '@theme/Layout';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import { CommunitySpotlightCard } from './CommunitySpotlightCard'
 
-function CommunitySpotlightList(props) {
-  console.log('props', props)
-  // const { authorData } = props
-  
-  // const { name, job_title, image_url, organization, description, links, slug } = authorData
-
+function CommunitySpotlightList({ spotlightData }) {
+  console.log('spotlightData', spotlightData)
 
   return (
-    <p>wee</p>
+    <Layout
+      wrapperClassName={ThemeClassNames.wrapper.docsPages}
+      pageClassName={ThemeClassNames.page.docsDocPage}
+    >
+      <>
+        {spotlightData.map(member => (
+          <CommunitySpotlightCard frontMatter={member.data} />
+        ))}
+      </>
+    </Layout>
   )
 }
 
