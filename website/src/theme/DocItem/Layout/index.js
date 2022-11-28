@@ -20,6 +20,7 @@ import styles from './styles.module.css';
  * Show ToC if tocReady = true 
  * Add tocLoader styles
 */ 
+import DocSearchWeight from '@site/src/components/docSearchWeight';
 import TOC from '@theme/TOC';
 import TOCCollapsible from '@theme/TOCCollapsible';
 import {ThemeClassNames} from '@docusaurus/theme-common';
@@ -34,6 +35,10 @@ function useDocTOC() {
 
   // dbt Custom: If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
+
+  // dbt Custom
+  // If the page has a search_weight value, apply that value
+  const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
 
   // This hides any TOC items not in
   // html markdown headings for current version. 
@@ -158,6 +163,7 @@ export default function DocItemLayout({children}) {
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
+            <DocSearchWeight weight={searchWeight} />
             <DocItemFooter />
           </article>
           <DocItemPaginator />
