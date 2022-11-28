@@ -5,11 +5,15 @@ description: "You can troubleshoot possible issues and provide security audits b
 sidebar_label: "Audit log"
 ---
 
-To review actions performed by people in your organization, dbt provides logs of audited user and system events. Use the audit log to quickly review the actions performed by members of your organization. The audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events.
-
-The dbt Cloud audit log has a selectable date range that lists events triggered in your organization within the last 90 days. To review actions beyond 90 days, **Account Admins** can export all events by selecting **Export All** on the upper right corner. 
+To review actions performed by people in your organization, dbt provides logs of audited user and system events. You can use the audit log to quickly review the actions performed by members of your organization. The audit log includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
 
 You must be an **Account Admin** to access the audit log and this feature is only available on Enterprise plans.
+
+You can view The dbt Cloud audit log events within the 90 days or beyond 90 days:
+
+- To review events with 90 days, the dbt Cloud audit log has a selectable date range that lists events triggered.
+- To review events beyond 90 days, **Account Admins** can export all events by selecting **Export All** on the upper right corner. 
+
 
 ## Accessing the audit log
 
