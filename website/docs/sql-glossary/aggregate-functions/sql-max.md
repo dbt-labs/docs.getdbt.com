@@ -9,7 +9,7 @@ slug: /sql-glossary/max
     <title>Working with the SQL MAX function</title>
 </head>
 
-The SQL MAX aggregate function allows you to compute the maximum value from a column. This kind of measure is useful for understanding the distribution of column values, determining the most recent timestamps of key events, and creating booleans from CASE WHEN statements.
+The SQL MAX aggregate function allows you to compute the maximum value from a column. This kind of measure is useful for understanding the distribution of column values, determining the most recent timestamps of key events, and creating booleans from CASE WHEN statements to flatten semi-structured data.
 
 ## How to use the SQL MAX function in a query
 
@@ -55,8 +55,8 @@ All modern data warehouses support the ability to use the MAX function (and foll
 We most commonly see queries using MAX to:
 
 - Perform initial data exploration on a dataset to understand the distribution of column values.
-- Identify the most recent timestamp for key events (ex. `max(login_timestamp_utc) as last_login`) using a MAX window function.
-- Create descriptive boolean values from case when statements (ex. `max(case when status = ‘complete’ then 1 else 0 end) as has_complete_order`).
+- Identify the most recent timestamp for key events (ex. `max(login_timestamp_utc) as last_login`).
+- Create descriptive boolean values from case when statements (ex. `max(case when status = 'complete' then 1 else 0 end) as has_complete_order`).
 - Establish the most recent timestamp from a table to filter on rows appropriately for [incremental model builds](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models).
 
 This isn’t an extensive list of where your team may be using MAX throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

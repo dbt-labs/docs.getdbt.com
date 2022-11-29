@@ -28,8 +28,8 @@ Let’s take a look at a practical example using COUNT, DISTINCT, and GROUP BY b
 ```sql
 select
 	date_part('month', order_date) as order_month,
-	count(order_id) as cnt_all_orders,
-	count(distinct customer_id) as cnt_distinct_customers
+	count(order_id) as count_all_orders,
+	count(distinct(customer_id)) as count_distinct_customers
 from {{ ref('orders') }}
 group by 1
 ```
@@ -40,7 +40,7 @@ This example is querying from a sample dataset created by dbt Labs called [jaffl
 
 This simple query is something you may do while doing initial exploration of your data; it will return the count of `order_ids` and count of distinct `customer_ids` per order month that appear in the Jaffle Shop’s `orders` table:
 
-| order_month | cnt_all_orders | cnt_distinct_customers |
+| order_month | count_all_orders | count_distinct_customers |
 |:---:|:---:|:---:|
 | 1 | 29 | 24 |
 | 2 | 27 | 25 |

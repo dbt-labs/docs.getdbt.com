@@ -11,7 +11,7 @@ slug: /sql-glossary/sum
 
 The SQL SUM function is handy and ever-present in data work. Let’s unpack what it is, how to use it, and why it's valuable.
 
-Jumping into it, the SUM aggregate function allows you to calculate the sum of a numeric column or across a set of rows for a column. Ultimately, the SUM function is incredibly useful for calculating meaningful business metrics, such as LTV, and creating key numeric fields in `fct_` and `dim_` models.
+Jumping into it, the SUM aggregate function allows you to calculate the sum of a numeric column or across a set of rows for a column. Ultimately, the SUM function is incredibly useful for calculating meaningful business metrics, such as Lifetime Value (LTV), and creating key numeric fields in [`fct_` and `dim_` models](/terms/dimensional-modeling).
 
 ## How to use the SUM function in a query
 
@@ -57,8 +57,8 @@ All modern data warehouses support the ability to use the SUM function (and foll
 We most commonly see queries using SUM to:
 
 - Calculate the cumulative sum of a metric across a customer/user id using a CASE WHEN statement (ex. `sum(case when order_array is not null then 1 else 0 end) as count_orders`)
-- Create [dbt metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) for key business values, such as LTV/CLV
-- Calculate the total of a field across a dimension (ex. Total session time, total time spent per ticket) that you typically use in `fct_` or `dim_` models
+- Create [dbt metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) for key business values, such as LTV
+- Calculate the total of a field across a dimension (ex. total session time, total time spent per ticket) that you typically use in `fct_` or `dim_` models
 - Summing clicks, spend, impressions, and other key ad reporting metrics in tables from ad platforms
 
 This isn’t an extensive list of where your team may be using SUM throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

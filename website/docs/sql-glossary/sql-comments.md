@@ -1,7 +1,7 @@
 ---
 id: comments
 title: SQL Comments
-description: A CTE is a temporary result set that can be used in a SQL query. You can think of a CTE as a separate, smaller query within the larger query you’re building up.
+description: Inline SQL comments will begin with two dashes (--) in front of them in a query or dbt model; any text following these dashes is therefore what you’d call “commented out.” For longer, multi-line comments, you’ll typically see this syntax `/* your multi-line comment here */` used.
 slug: /sql-glossary/comments
 ---
 

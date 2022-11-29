@@ -9,9 +9,9 @@ slug: /sql-glossary/min
     <title>Working with SQL MIN</title>
 </head>
 
-SQL MIN, MAX, SUM… the aggregate functions that you’ll live and die by as an analytics practitioner. In this post, we’re going to unpack the SQL MIN function, how to use it, and why it's valuable in data work.
+SQL MIN, MAX, SUM…the aggregate functions that you’ll live and die by as an analytics practitioner. In this post, we’re going to unpack the SQL MIN function, how to use it, and why it's valuable in data work.
 
-To get into it, the MIN aggregate function allows you to compute the minimum value from a column or across a set of rows for a column. The results from the MIN function are useful for understanding the distribution of column values and determining the first timestamps of key events.
+The MIN aggregate function allows you to compute the minimum value from a column or across a set of rows for a column. The results from the MIN function are useful for understanding the distribution of column values and determining the first timestamps of key events.
 
 ## How to use the MIN function in a query
 
@@ -57,6 +57,6 @@ All modern data warehouses support the ability to use the MIN function (and foll
 
 We most commonly see queries using MIN to:
 - Perform initial data exploration on a dataset to understand the distribution of column values.
-- Identify the first timestamp for key events (ex. `min(login_timestamp_utc) as first_login`) using a MIN window function.
+- Identify the first timestamp for key events (ex. `min(login_timestamp_utc) as first_login`).
 
 This isn’t an extensive list of where your team may be using MIN throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
