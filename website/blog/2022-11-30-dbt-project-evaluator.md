@@ -1,6 +1,6 @@
 ---
 title: "Introducing the dbt_project_evaluator: Automatically evaluate your dbt project for alignment with best practices "
-description: "The dbt_project_evaluator is a dbt package created by Grace Goheen and other dbt Labs team members to help analytics engineers automatically audit their dbt projects for bad practices. Goodbye auditing nightmares, hello beautiful DAG."
+description: "The dbt_project_evaluator is a dbt package created by the Professional Services team at dbt Labs to help analytics engineers automatically audit their dbt projects for bad practices. Goodbye auditing nightmares, hello beautiful DAG."
 slug: align-with-dbt-project-evaluator
 
 authors: [grace_goheen]
