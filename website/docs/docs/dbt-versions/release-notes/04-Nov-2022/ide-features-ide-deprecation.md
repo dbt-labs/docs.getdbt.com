@@ -15,7 +15,7 @@ The refreshed version of the dbt Cloud IDE has launched four brand-new additiona
 The new features are:
 
 - **Formatting** &mdash; Format your files with a click of a button, powered by sqlfmt.
-- **Git diff view** &mdash; Ability to see what you've changed in a file before you make a pull request.
+- **Git diff view** &mdash; Highlights the changes in a file before opening a pull request.
 - **dbt autocomplete** &mdash; There are four new types of autocomplete features to help you develop faster:
     - Use `ref` to autocomplete your model names
     - Use `source` to autocomplete your source name + table name
