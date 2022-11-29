@@ -26,7 +26,11 @@ where status not in ('returned', 'return_pending')
 group by 1
 ```
 
-This query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table will return the rounded order amount per each order month:
+:::info
+This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop). You can play around with it to your heart's content!
+:::
+
+This query using the Jaffle Shop’s `orders` table will return the rounded order amount per each order month:
 
 | order_month | avg_order_amount |
 |:---:|:---:|

@@ -33,6 +33,7 @@ select
 from {{ ref('orders') }}
 group by 1
 ```
+
 :::info
 This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop). You can play around with it to your heart's content!
 :::

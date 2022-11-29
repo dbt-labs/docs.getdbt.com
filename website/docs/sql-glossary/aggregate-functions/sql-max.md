@@ -33,7 +33,11 @@ from {{ ref('orders') }}
 group by 1
 ```
 
-This simple query is something you may do while doing initial exploration of your data; it will return the maximum order `amount` per order month that appear in the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table:
+:::info
+This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop). You can play around with it to your heart's content!
+:::
+
+This simple query is something you may do while doing initial exploration of your data; it will return the maximum order `amount` per order month that appear in the Jaffle Shop’s `orders` table:
 
 | order_month | max_amount |
 |:---:|:---:|

@@ -36,7 +36,11 @@ group by 1
 limit 3
 ```
 
-This simple query is returning the summed amount of all orders for a customer in the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table:
+:::info
+This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop). You can play around with it to your heart's content!
+:::
+
+This simple query is returning the summed amount of all orders for a customer in the Jaffle Shop’s `orders` table:
 
 | customer_id | all_orders_amount |
 |:---:|:---:|
