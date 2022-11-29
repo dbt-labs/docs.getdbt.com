@@ -26,8 +26,8 @@ where status not in ('returned', 'return_pending')
 group by 1
 ```
 
-:::info
-This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop). You can play around with it to your heart's content!
+:::note What dataset is this?
+This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop).
 :::
 
 This query using the Jaffle Shop’s `orders` table will return the rounded order amount per each order month:
