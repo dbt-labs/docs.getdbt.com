@@ -43,7 +43,7 @@ The AVG function, like many other mathematical functions, is an aggregate functi
 
 ## SQL AVG function syntax in Snowflake, Databricks, BigQuery, and Redshift
 
-Snowflake, Databricks, Google BigQuery, and Amazon Redshift all support the ability to take the average of a column value and the syntax for the AVG functions looks the same across all of those data platforms.
+Snowflake, Databricks, Google BigQuery, and Amazon Redshift all support the ability to take the average of a column value and the syntax for the AVG functions is the same across all of those data platforms.
 
 ## AVG function use cases
 
