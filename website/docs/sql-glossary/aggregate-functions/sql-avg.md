@@ -19,7 +19,7 @@ The AVG function is a part of the group of mathematical or aggregate functions (
 
 ```sql
 select
-	date_trunc('month, order_date) as order_month,
+	date_trunc('month, order_date') as order_month,
 	round(avg(amount)) as avg_order_amount
 from {{ ref('orders') }}
 where status not in ('returned', 'return_pending')
