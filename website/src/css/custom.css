@@ -321,6 +321,11 @@ a.code-link:hover {
   color: var(--color-white);
   border: none;
 }
+@media(max-width: 996px) {
+  .navbar-sidebar .menu__link.nav-create-account {
+    width: fit-content;
+  }
+}
 
 .navbar-sidebar .menu__link.nav-create-account:hover {
   color: var(--color-white);
