@@ -1,5 +1,5 @@
 ---
-id: sql-avg
+id: avg
 title: SQL AVG
 description: The AVG function is used to straightforwardly calculate the average of a numeric column, but you may also see it used in a window function to calculate rolling averages.
 slug: /sql-function-glossary/sql-avg

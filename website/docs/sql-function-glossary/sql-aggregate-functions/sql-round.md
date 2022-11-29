@@ -1,5 +1,5 @@
 ---
-id: sql-round 
+id: round 
 title: SQL ROUND 
 description: The ROUND aggregate function allows you to round numeric fields or values in SQL to the number of decimal places of your choosing.
 slug: /sql-function-glossary/sql-round
