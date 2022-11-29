@@ -2,7 +2,7 @@
 id: max
 title: SQL MAX
 description: The SQL MAX aggregate function allows you to compute the maximum value from a column.
-slug: /sql-function-glossary/sql-max
+slug: /sql-glossary/max
 ---
 
 <head>
