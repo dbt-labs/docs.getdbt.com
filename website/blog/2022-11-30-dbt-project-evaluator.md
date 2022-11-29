@@ -12,7 +12,7 @@ date: 2022-11-30
 is_featured: true
 ---
 
-## Why we built this: A brief history of the professional services team at dbt Labs
+## Why we built this: A brief history of the dbt Labs Professional Services team
 
 If you attended [Coalesce 2022](https://www.youtube.com/watch?v=smbRwmcM1Ok), you’ll know that the secret is out — the dbt Labs Professional Services team is not just [a group of experienced data consultants](https://www.getdbt.com/dbt-labs/services/); we’re also an intergalactic group of aliens traveling the Milky Way on a mission to enable analytics engineers to successfully adopt and manage dbt throughout the galaxy.
 
