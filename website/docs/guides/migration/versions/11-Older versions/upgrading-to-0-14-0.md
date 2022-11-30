@@ -118,7 +118,7 @@ alter table archived.orders_archived rename "scd_id" to dbt_scd_id;
 
 ## Upgrading the generate_schema_name signature
 
-In dbt v0.14.0, the `generate_schema_name` macro signature was changed to accept a second argument, `node`. For more information on the new `node` argument, consulting the documentation for [using custom schemas](using-custom-schemas).
+In dbt v0.14.0, the `generate_schema_name` macro signature was changed to accept a second argument, `node`. For more information on the new `node` argument, consulting the documentation for [using custom schemas](/docs/build/custom-schemas).
 
 Existing one-argument implementations of `generate_schema_name` macros are still supported, but support for this form of the macro will be dropped in a future release. If you currently have a one-argument version of this macro, you will see a warning when you run your dbt project.
 

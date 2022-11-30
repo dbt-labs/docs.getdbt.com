@@ -354,4 +354,19 @@ brittany_krauth:
    - url: https://www.linkedin.com/in/brittanykrauth
      icon: fa-linkedin
 
+charlie_summers:
+   name: Charlie Summers
+   job_title: Staff Software Engineer
+   description: Charlie is the Data Engineer Tech Lead at Merit. He introduced Merit to dbt and it's been a fantastic fit for a wide variety of data pipelines. He likes thinking about the future of data - integrating event streams, analyzing encrypted data, capturing fine-grained lineage, and making it easy to build simple apps on top of data warehouses/lakes.
+   organization: Merit
+   image_url: /img/blog/authors/charlie-summers.jpeg
+   links:
+   - url: https://www.linkedin.com/in/charliesummers
+     icon: fa-linkedin
 
+wasila_quader:
+   name: Wasila Quader
+   job_title: Associate Analytics Engineer
+   description: After a winding road through healthcare spreadsheets and data science projects, Wasila discovered analytics engineering as an apprentice of dbt Labs' Foundry Program. She now works as an analytics engineer on dbt Labs' professional services team.
+   organization: dbt Labs
+   image_url: /img/blog/authors/wasila-quader.png

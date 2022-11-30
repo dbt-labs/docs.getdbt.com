@@ -4,8 +4,8 @@ id: "hive-setup"
 meta:
   maintained_by: Cloudera
   authors: 'Cloudera'
-  github_repo: 'cloudera/dbt-impala'
-  pypi_package: 'dbt-impala'
+  github_repo: 'cloudera/dbt-hive'
+  pypi_package: 'dbt-hive'
   min_core_version: 'v1.1.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'
@@ -107,7 +107,7 @@ your_profile_name:
 
 </File>
 
-Note: When creating workload user in CDP, make sure the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If you need the user to execute GRANT statements, you should also configure the appropriate GRANT permissions for them. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. For more information, see [`grants`](/reference/resource-configs/grants) and [on-run-start & on-run-end](/reference/project-configs/on-run-start-on-run-en).
+Note: When creating workload user in CDP, make sure the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If you need the user to execute GRANT statements, you should also configure the appropriate GRANT permissions for them. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. For more information, see [`grants`](/reference/resource-configs/grants) and [on-run-start & on-run-end](/reference/project-configs/on-run-start-on-run-end).
 
 ### Kerberos
 

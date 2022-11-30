@@ -4,7 +4,7 @@ id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
 ---
 
-When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of dbt Cloud, namely: [dbt Docs](documentation) and [source freshness reporting](cloud-snapshotting-source-freshness).
+When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of dbt Cloud, namely: [dbt Docs](documentation) and [source freshness reporting](/docs/build/sources#snapshotting-source-data-freshness).
 
 ## Create dbt Cloud Artifacts
 

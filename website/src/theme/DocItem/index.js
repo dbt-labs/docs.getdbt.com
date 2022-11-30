@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import clsx from 'clsx';
 import DocPaginator from '@theme/DocPaginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
@@ -15,16 +15,17 @@ import TOC from '@theme/TOC';
 import TOCCollapsible from '@theme/TOCCollapsible';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
-import {ThemeClassNames, useWindowSize} from '@docusaurus/theme-common';
+import { ThemeClassNames, useWindowSize } from '@docusaurus/theme-common';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+import DocSearchWeight from '@site/src/components/docSearchWeight';
 
 // dbt Custom
 import VersionContext from '../../stores/VersionContext'
 import getElements from '../../utils/get-html-elements';
 
 export default function DocItem(props) {
-  const {content: DocContent} = props;
-  const {metadata, frontMatter, assets} = DocContent;
+  const { content: DocContent } = props;
+  const { metadata, frontMatter, assets } = DocContent;
   const {
     keywords,
     hide_title: hideTitle,
@@ -32,7 +33,7 @@ export default function DocItem(props) {
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel,
   } = frontMatter;
-  const {description, title} = metadata;
+  const { description, title } = metadata;
   const image = assets.image ?? frontMatter.image; // We only add a title if:
   // - user asks to hide it with front matter
   // - the markdown content does not already contain a top-level h1 heading
@@ -49,6 +50,10 @@ export default function DocItem(props) {
   // If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
 
+  // dbt Custom
+  // If the page has a search_weight value, apply that value
+  const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
+
   // This hides any TOC items not in
   // html markdown headings for current version. 
   const { version: dbtVersion } = useContext(VersionContext)
@@ -58,28 +63,51 @@ export default function DocItem(props) {
     async function fetchElements() {
       // get html elements
       const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
-      
       // if headings exist on page
       // compare against toc
-      if(DocContent.toc && headings && headings.length) {
-        let updated = DocContent.toc.reduce((acc, item) => {
+      if (DocContent.toc && headings && headings.length) {
+        // make new TOC object 
+        let updated = Array.from(headings).reduce((acc, item) => {
           // If heading id and toc item id match found
           // include in updated toc
-          let found = Array.from(headings).find(heading => 
+          let found = DocContent.toc.find(heading =>
             heading.id.includes(item.id)
           )
           // If toc item is not in headings
           // do not include in toc
           // This means heading is versioned
-          if(found)
-            acc.push(item)
+
+          let makeToc = (heading) => {
+            let level;
+            if (heading.nodeName === "H2") {
+              level = 2
+            } else if (heading.nodeName === "H3") {
+              level = 3
+            } else {
+              level = null
+            }
+
+            return {
+              value: heading.innerHTML,
+              id: heading.id,
+              level: level && level
+            }
+          }
+
+          if (found) {
+            acc.push(makeToc(item))
+          } else if (!found) {
+            acc.push(makeToc(item))
+          } else {
+            null
+          }
 
           return acc
         }, [])
 
         // If updated toc different than current
         // If so, show loader and update toc 
-        if(currentToc.length !== updated.length) {
+        if (currentToc.length !== updated.length) {
           setTocReady(false)
           // This timeout provides enough time to show the loader
           // Otherwise the content updates immediately
@@ -136,11 +164,11 @@ export default function DocItem(props) {
               <div
                 className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
                 {/*
-                Title can be declared inside md content or declared through
-                front matter and added manually. To make both cases consistent,
-                the added title is added under the same div.markdown block
-                See https://github.com/facebook/docusaurus/pull/4882#issuecomment-853021120
-                */}
+                 Title can be declared inside md content or declared through
+                 front matter and added manually. To make both cases consistent,
+                 the added title is added under the same div.markdown block
+                 See https://github.com/facebook/docusaurus/pull/4882#issuecomment-853021120
+                 */}
                 {shouldAddTitle && (
                   <header>
                     <Heading as="h1">{title}</Heading>
@@ -148,6 +176,8 @@ export default function DocItem(props) {
                 )}
 
                 <DocContent />
+                
+                <DocSearchWeight weight={searchWeight} />
               </div>
 
               <DocItemFooter {...props} />
@@ -169,10 +199,10 @@ export default function DocItem(props) {
               />
             ) : (
               <img
-                className={styles.tocLoader} 
-                src="/img/loader-icon.svg" 
-                alt="Loading" 
-                title="Loading" 
+                className={styles.tocLoader}
+                src="/img/loader-icon.svg"
+                alt="Loading"
+                title="Loading"
               />
             )}
           </div>
