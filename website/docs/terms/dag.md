@@ -89,7 +89,7 @@ The DAG is also [available in the dbt Cloud IDE](https://www.getdbt.com/blog/on-
 
 :::tip Leverage exposures
 
-One of the newer features of dbt is [exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures), which allow you to define downstream use of your data models outside of your dbt project *within your dbt project*. What does this mean? This means you can add key dashboards, machine learning or data science pipelines, reverse ETL syncs, or other downstream use cases to your dbt project’s DAG.
+One of the newer features of dbt is [exposures](https://docs.getdbt.com/docs/build/exposures), which allow you to define downstream use of your data models outside of your dbt project *within your dbt project*. What does this mean? This means you can add key dashboards, machine learning or data science pipelines, reverse ETL syncs, or other downstream use cases to your dbt project’s DAG.
 
 This level of interconnectivity and transparency can help boost data governance (who has access to and who [owns](https://docs.getdbt.com/reference/resource-configs/meta#designate-a-model-owner) this data) and transparency (what are the data sources and models affecting your key reports).
 
@@ -108,4 +108,4 @@ Ready to restructure (or create your first) DAG? Check out some of the resources
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 - [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
 - [How to audit your DAG](https://www.youtube.com/watch?v=5W6VrnHVkCA)
-- [Refactoring legacy SQL to dbt](https://docs.getdbt.com/guides/getting-started/learning-more/refactoring-legacy-sql)
+- [Refactoring legacy SQL to dbt](/docs/get-started/learning-more/refactoring-legacy-sql)

@@ -148,11 +148,12 @@ This feature is not implemented for analyses.
 </Tabs>
 
 ## Related documentation
-* [Testing guide](building-a-dbt-project/tests)
+
+* [Testing guide](/docs/build/tests)
 
 ## Description
 
-The `tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
+The `tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic tests](/docs/build/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 
@@ -182,6 +183,8 @@ models:
 ### `unique`
 
 This test validates that there are no duplicate values present in a field.
+                
+The config and where clause are optional.
 
 <File name='models/<filename>.yml'>
 
@@ -193,7 +196,9 @@ models:
     columns:
       - name: order_id
         tests:
-          - unique
+          - unique:
+              config:
+                where: "order_id > 21"
 ```
 
 </File>
