@@ -1,10 +1,14 @@
 ---
 id: ddl
 title: DDL
+description: Data Definition Language (DDL) is a group of SQL statements that you can execute to manage database objects, including tables, views, and more.
 displayText: DDL  
 hoverSnippet: Data Definition Language (DDL) is a group of SQL statements that you can execute to manage database objects, including tables, views, and more.
-cta: staging
 ---
+
+<head>
+	<title>What is Data Definition Language (DDL) in SQL?</title>
+</head>
 
 Data Definition Language (DDL) is a group of SQL statements that you can execute to manage database objects, including <Term id="table">tables</Term>, <Term id="view">views</Term>, and more. Using DDL statements, you can perform powerful commands in your database such as creating, modifying, and dropping objects. DDL commands are usually executed in a SQL browser or stored procedure.
 

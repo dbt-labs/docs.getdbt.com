@@ -11,7 +11,7 @@ dbt Core v0.21 has reached the end of critical support. No new patch versions wi
 
 - [Discourse](https://discourse.getdbt.com/t/3077)
 - [Release notes](https://github.com/dbt-labs/dbt-core/releases/tag/v0.21.0)
-- [Full changelog](https://github.com/fishtown-analytics/dbt/blob/0.21.latest/CHANGELOG.md)
+- [Full changelog](https://github.com/dbt-labs/dbt-core/blob/0.21.latest/CHANGELOG.md)
 
 ## Breaking changes
 
@@ -39,12 +39,12 @@ dbt Core v0.21 has reached the end of critical support. No new patch versions wi
 
 ### Elsewhere in Core
 - [Resource configs and properties](configs-and-properties) docs have been consolidated and reconciled. New `config` property that makes it possible to configure models, seeds, snapshots, and tests in all yaml files.
-- [Configuring incremental models](configuring-incremental-models): New optional configuration for incremental models, `on_schema_change`.
+- [Configuring incremental models](/docs/build/incremental-models): New optional configuration for incremental models, `on_schema_change`.
 - [Environment variables](env_var): Add a log-scrubbing prefix, `DBT_ENV_SECRET_`
 - [Test `where` config](where) has been reimplemented as a macro (`get_where_subquery`) that you can optionally reimplement, too
 - [`dispatch`](dispatch) now supports reimplementing global macros residing in the `dbt` macro namespace with versions from installed packages, by leveraging `search_order` in the [`dispatch` project config](project-configs/dispatch-config)
 
 ### Plugins
-- **Postgres** [profile](postgres-profile) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
-- **Redshift**: [profile](redshift-profile) property `ra3_node: true` to support cross-database source definitions and read-only querying
-- **BigQuery**: [profile](bigquery-profile) property `execution_project` now configurable. [Snapshots](snapshots) support `target_project` and `target_dataset` config aliases.
+- **Postgres** [profile](/reference/warehouse-setups/postgres-setup) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
+- **Redshift**: [profile](/reference/warehouse-setups/redshift-setup) property `ra3_node: true` to support cross-database source definitions and read-only querying
+- **BigQuery**: [profile](/reference/warehouse-setups/bigquery-setup) property `execution_project` now configurable. [Snapshots](snapshots) support `target_project` and `target_dataset` config aliases.

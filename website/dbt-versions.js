@@ -1,5 +1,9 @@
 exports.versions = [
   {
+    version: "1.3",
+    EOLDate: "2023-10-12",
+  },
+  {
     version: "1.2",
     EOLDate: "2023-07-26",
   },
@@ -9,7 +13,7 @@ exports.versions = [
   },
   {
     version: "1.0",
-    EOLDate: "2023-12-03"
+    EOLDate: "2022-12-03"
   },
   {
     version: "0.21",
@@ -39,15 +43,7 @@ exports.versionedPages = [
     "firstVersion": "1.2",
   },
   {
-    "page": "guides/migration/versions/upgrading-to-v1.2",
-    "firstVersion": "1.2",
-  },
-  {
     "page": "docs/contributing/testing-a-new-adapter",
-    "firstVersion": "1.1",
-  },
-  {
-    "page": "guides/migration/versions/upgrading-to-v1.1",
     "firstVersion": "1.1",
   },
   {

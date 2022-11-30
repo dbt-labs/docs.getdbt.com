@@ -28,7 +28,7 @@ information on the change.
 ### One-argument generate_schema_name deprecation
 Support for the one-argument variant of `generate_schema_name` macros (deprecated
 in a previous release) are no longer supported. If you are using the one-argument
-variant of `generate_schema_name`, see [the docs on custom schemas](using-custom-schemas)
+variant of `generate_schema_name`, see [the docs on custom schemas](/docs/build/custom-schemas)
 for an example of how to use the two-argument variant of `generate_schema_name`.
 
 ### BigQuery partition_by syntax
@@ -104,12 +104,12 @@ please be mindful of the following changes to dbt's Python dependencies:
 ## New and changed documentation
 - [BigQuery partitioning configs](bigquery-configs)
 - [Select specific seeds to run with `--select`](seed)
-- [New `generate_database_name` macro](using-custom-databases)
+- [New `generate_database_name` macro](/docs/build/custom-databases#generate_database_name)
 - [New `dbt_project.yml context`](dbt-project-yml-context)
 - [New configurations for schema.yml files](configs-and-properties)
-- [New configurations for Source declarations](using-sources)
-- [New Postgres connection configs](postgres-profile)
-- [New Snowflake KeyPair auth configs](snowflake-profile)
+- [New configurations for Source declarations](/docs/build/sources)
+- [New Postgres connection configs](/reference/warehouse-setups/postgres-setup)
+- [New Snowflake KeyPair auth configs](/reference/warehouse-setups/snowflake-setup)
 - [New `builtins` jinja context variable](builtins)
 - [New `fromyaml` context method](fromyaml)
 - [New `toyaml` context method](toyaml)
