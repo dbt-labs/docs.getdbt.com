@@ -69,7 +69,7 @@ metrics:
     expression: user_id 
 
     timestamp: signup_date
-    time_grains: [day, week, month, quarter, year]
+    time_grains: [day, week, month, quarter, year, all_time]
 
     dimensions:
       - plan
@@ -123,7 +123,7 @@ metrics:
     sql: user_id 
 
     timestamp: signup_date
-    time_grains: [day, week, month, quarter, year]
+    time_grains: [day, week, month, quarter, year, all_time]
 
     dimensions:
       - plan
@@ -165,14 +165,14 @@ Metrics can have many declared **properties**, which define aspects of your metr
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
-| label       | A short for name / label for the metric                     | New Customers                   | no        |
+| label       | A short for name / label for the metric                     | New Customers                   | yes        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
 | expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
 | time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
-| window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`, `year`] |  {count: 14, period: day}        | no        |
+| window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`, `year`, `all_time`] |  {count: 14, period: day}        | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | config      | [Optional configurations](https://github.com/dbt-labs/dbt_metrics#accepted-metric-configurations) for calculating this metric         | {treat_null_values_as_zero: true} | no      |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
@@ -185,12 +185,12 @@ Metrics can have many declared **properties**, which define aspects of your metr
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
 | name        | A unique identifier for the metric                          | new_customers                   | yes       |
 | model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
-| label       | A short for name / label for the metric                     | New Customers                   | no        |
+| label       | A short for name / label for the metric                     | New Customers                   |yes        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | type | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
 | sql | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
 | timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
-| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month, quarter, year]              | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated   | [day, week, month, quarter, year, all_time]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
 | meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
@@ -252,7 +252,7 @@ metrics:
     expression: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
 
     timestamp: order_date
-    time_grains: [day, week, month, quarter, year]
+    time_grains: [day, week, month, quarter, year, all_time]
     dimensions:
       - had_discount
       - order_country
@@ -293,7 +293,7 @@ metrics:
     sql: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
 
     timestamp: order_date
-    time_grains: [day, week, month, quarter, year]
+    time_grains: [day, week, month, quarter, year, all_time]
     dimensions:
       - had_discount
       - order_country
@@ -399,7 +399,7 @@ You may find some pieces of functionality, like secondary calculations, complica
 | Input       | Example     | Description | Required   |
 | ----------- | ----------- | ----------- | -----------|
 | <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, <br />[`metric('some_metric)'`, <br />`metric('some_other_metric)'`]<br /></VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`<br /></VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
-| grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Required |
+| grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`, `'all_time'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Required |
 | dimensions  | [`'plan'`,<br /> `'country'`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
 | secondary_calculations  | [`metrics.period_over_period( comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calcultions, and period to date calculations. | Optional |
 | start_date  | `'2022-01-01'` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
@@ -427,7 +427,7 @@ metrics:
     model: ref('fact_orders')
     label: Total Discount ($)
     timestamp: order_date
-    time_grains: [day, week, month, quarter, year]
+    time_grains: [day, week, month, quarter, year, all_time]
     calculation_method: average
     expression: discount_total
     dimensions:
@@ -467,7 +467,7 @@ metrics:
     model: ref('fact_orders')
     label: Total Discount ($)
     timestamp: order_date
-    time_grains: [day, week, month, quarter, year]
+    time_grains: [day, week, month, quarter, year, all_time]
     type: average
     sql: discount_total
     dimensions:

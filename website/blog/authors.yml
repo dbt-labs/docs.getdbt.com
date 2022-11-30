@@ -363,3 +363,10 @@ charlie_summers:
    links:
    - url: https://www.linkedin.com/in/charliesummers
      icon: fa-linkedin
+
+wasila_quader:
+   name: Wasila Quader
+   job_title: Associate Analytics Engineer
+   description: After a winding road through healthcare spreadsheets and data science projects, Wasila discovered analytics engineering as an apprentice of dbt Labs' Foundry Program. She now works as an analytics engineer on dbt Labs' professional services team.
+   organization: dbt Labs
+   image_url: /img/blog/authors/wasila-quader.png

@@ -149,12 +149,40 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Connecting to Databricks
+You can connect to Databricks by using one of two supported adapters: [dbt-databricks](/connect-your-database#dbt-databricks) and [dbt-spark](/connect-your-database#dbt-spark). For accounts on dbt 1.0 or later, we recommend using the dbt-databricks adapter. The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark will be deprecated in the future.
 
-### ODBC
+### dbt-databricks Adapter
+dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality.
+
+| Feature | dbt Versions |
+| ----- | ----------- | 
+| dbt-databricks | Available starting with dbt 1.0 in dbt Cloud|
+| Unity Catalog | Available starting with dbt 1.1 | 
+| Python models | Available starting with dbt 1.3 |
+
+The dbt-databricks adapter offers:
+- **Easier set up**
+- **Better defaults:**
+The dbt-databricks adapter is more opinionated, guiding users to an improved experience with less effort. Design choices of this adapter include defaulting to Delta format, using merge for incremental models, and running expensive queries with Photon.
+- **Support for Unity Catalog:**
+Unity Catalog allows Databricks users to centrally manage all data assets, simplifying access management and improving search and query performance. Databricks users can now get three-part data hierarchies – catalog, schema, model name – which solves a longstanding friction point in data organization and governance.
+
+
+To set up the Databricks connection, supply the following fields:
+
+| Field | Description | Examples |
+| ----- | ----------- | -------- |
+| Server Hostname | The hostname of the Databricks account to connect to | dbc-a2c61234-1234.cloud.databricks.com |
+| HTTP Path | The HTTP path of the Databricks cluster or SQL warehouse | /sql/1.0/warehouses/1a23b4596cd7e8fg |
+| Catalog | Name of Databricks Catalog (optional) | Production |
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dbt-databricks.png" title="Configuring a Databricks connection using the dbt-databricks adapter"/>
+
+### dbt-spark Adapter
 
 dbt Cloud supports connecting to Databricks using
 [a Cluster](https://docs.databricks.com/clusters/index.html) or
-[a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+[a SQL Warehouse (formerly called SQL endpoints)](https://docs.databricks.com/sql/admin/sql-endpoints.html).
 Depending on how you connect to Databricks, either one of the `Cluster` or
 `Endpoint` configurations must be provided, but setting _both_ values is not
 allowed.
@@ -163,14 +191,14 @@ The following fields are available when creating a Databricks connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the Databricks account to connect to | `avc-def1234ghi-9999.cloud.databricks.com` |
+| Hostname | The hostname of the Databricks account to connect to | dbc-a2c61234-1234.cloud.databricks.com |
 | Port | The port to connect to Databricks for this connection | 443 |
-| Organization | Optional (default: 0) | 0123456789 |
+| Organization | Optional (default: 0) | 1123456677899012 |
 | Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
-| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 0123456789 |
+| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 1a23b4596cd7e8fg |
 | User | Optional | dbt_cloud_user |
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connections.png" title="Configuring a Databricks connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dbt-spark.png" title="Configuring a Databricks connection using the dbt-spark adapter"/>
 
 ## Connecting to Apache Spark
 
