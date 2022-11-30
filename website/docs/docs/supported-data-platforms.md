@@ -23,6 +23,7 @@ To learn more about adapters, check out [What Are Adapters](/guides/advanced/ada
 | [Snowflake](snowflake-setup)              | 1.2.0                    |
 | [Spark](spark-setup)                      | 1.2.0                    |
 | [Starburst & Trino](trino-setup)          | 1.2.0 :construction:     |
+:construction:: Verification in progress
 
 ### Community Adapters
 
@@ -34,7 +35,7 @@ To learn more about adapters, check out [What Are Adapters](/guides/advanced/ada
 | [DuckDB](duckdb-setup)                | [Layer](layer-setup)                      | [AzureSynapse](azuresynapse-setup) |
 | [Dremio](dremio-setup)                | [Materialize](materialize-setup)          | [Teradata](teradata-setup)|
 | [Exasol Analytics](exasol-setup)      | [MindsDB](mindsdb-setup)                  | [TiDB](tidb-setup)|
-| [Firebold](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
+| [Firebolt](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
 | [AWS Glue](glue-setup)                | [Oracle](oracle-setup)                    |
 | [Greenplum](greenplum-setup)          | [Rockset](rockset-setup)   
 
