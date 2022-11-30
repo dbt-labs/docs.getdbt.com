@@ -21,7 +21,7 @@ snapshots:
   - name: <snapshot name>
     [description](description): <markdown_string>
     [meta](meta): {<dictionary>}
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
       [<snapshot_config>](snapshot-configs): <config_value>

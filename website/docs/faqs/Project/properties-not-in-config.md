@@ -17,7 +17,7 @@ Certain properties are special, because:
 These properties are:
 - [`description`](resource-properties/description)
 - [`tests`](resource-properties/tests)
-- [`docs`](resource-properties/docs)
+- [`docs`](/reference/resource-configs/docs)
 - `columns`
 - [`quote`](resource-properties/quote)
 - [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
