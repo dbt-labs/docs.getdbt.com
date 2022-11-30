@@ -3,7 +3,8 @@ title: Test configurations
 ---
 
 ## Related documentation
-* [Tests](building-a-dbt-project/tests)
+
+* [Tests](/docs/build/tests)
 
 <Changelog>
 
@@ -140,6 +141,10 @@ tests:
     [+](plus-prefix)[enabled](enabled): true | false
     [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
     [+](plus-prefix)[meta](resource-configs/meta): {dictionary}
+    # relevant for [store_failures](resource-configs/store_failures) only
+    [+](plus-prefix)[database](resource-configs/database): <string>
+    [+](plus-prefix)[schema](resource-configs/schema): <string>
+    [+](plus-prefix)[alias](resource-configs/alias): <string>
 ```
 </File>
 
@@ -153,7 +158,10 @@ tests:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](resource-configs/tags)="<string>" | ["<string>"]
-    [meta](resource-configs/meta)={dictionary}
+    [meta](resource-configs/meta)={dictionary},
+    [database](resource-configs/database)="<string>",
+    [schema](resource-configs/schema)="<string>",
+    [alias](resource-configs/alias)="<string>",
 ) }}
 
 ```
@@ -174,6 +182,10 @@ version: 2
             [enabled](enabled): true | false
             [tags](resource-configs/tags): <string> | [<string>]
             [meta](resource-configs/meta): {dictionary}
+            # relevant for [store_failures](resource-configs/store_failures) only
+            [database](resource-configs/database): <string>
+            [schema](resource-configs/schema): <string>
+            [alias](resource-configs/alias): <string>
 
     [columns](columns):
       - name: <column_name>
@@ -184,6 +196,10 @@ version: 2
                 [enabled](enabled): true | false
                 [tags](resource-configs/tags): <string> | [<string>]
                 [meta](resource-configs/meta): {dictionary}
+                # relevant for [store_failures](resource-configs/store_failures) only
+                [database](resource-configs/database): <string>
+                [schema](resource-configs/schema): <string>
+                [alias](resource-configs/alias): <string>
 ```
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.

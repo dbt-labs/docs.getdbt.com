@@ -12,12 +12,13 @@ The following functions are available:
 - [adapter.dispatch](dispatch)
 - [adapter.get_missing_columns](#get_missing_columns)
 - [adapter.expand_target_column_types](#expand_target_column_types)
-- [adapter.get_relation](#get_relation)
+- [adapter.get_relation](#get_relation) or [load_relation](#load_relation)
 - [adapter.get_columns_in_relation](#get_columns_in_relation)
 - [adapter.create_schema](#create_schema)
 - [adapter.drop_schema](#drop_schema)
 - [adapter.drop_relation](#drop_relation)
 - [adapter.rename_relation](#rename_relation)
+- [adapter.quote](#quote)
 
 ### Deprecated adapter functions
 
@@ -38,7 +39,7 @@ __Args__:
 
 Returns a list of [Columns](dbt-classes#column) that is the difference of the columns in the `from_table`
 and the columns in the `to_table`, i.e. (`set(from_relation.columns) - set(to_table.columns)`).
-Useful for detecting new columns in a source table.
+Useful for detecting new columns in a source <Term id="table" />.
 
 **Usage**:
 
@@ -52,7 +53,7 @@ Useful for detecting new columns in a source table.
 
 
 {% for col in adapter.get_missing_columns(target_relation, this) %}
-  alter table {{this}} add column "{{col.name}}" {{col.data_type}};
+  alter <Term id="table" /> {{this}} add column "{{col.name}}" {{col.data_type}};
 {% endfor %}
 ```
 
@@ -64,7 +65,7 @@ __Args__:
  * `from_relation`: The source [Relation](dbt-classes#relation) to use as a template
  * `to_relation`: The [Relation](dbt-classes#relation) to mutate
 
-Expand the `to_relation` table's column types to match the schema of `from_relation`. Column expansion is constrained to string and numeric types on supported databases. Typical usage involves expanding column types (from eg. `varchar(16)` to `varchar(32)`) to support insert statements.
+Expand the `to_relation` <Term id="table" />'s column types to match the schema of `from_relation`. Column expansion is constrained to string and numeric types on supported databases. Typical usage involves expanding column types (from eg. `varchar(16)` to `varchar(32)`) to support insert statements.
 
 **Usage**:
 
@@ -74,7 +75,7 @@ Expand the `to_relation` table's column types to match the schema of `from_relat
 {% set tmp_relation = adapter.get_relation(...) %}
 {% set target_relation = adapter.get_relation(...) %}
 
-{% do adapter.expand_target_column_types(tmp_realtion, target_relation) %}
+{% do adapter.expand_target_column_types(tmp_relation, target_relation) %}
 ```
 
 </File>
@@ -87,7 +88,7 @@ __Args__:
  * `schema`: The schema of the relation to fetch
  * `identifier`: The identifier of the relation to fetch
 
-Returns a [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
+Returns a cached [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
 
 **Usage**:
 
@@ -106,13 +107,37 @@ Returns a [Relation](dbt-classes#relation) object identified by the `database.sc
 
 </File>
 
+## load_relation
+__Args__:
+
+ * `relation`: The [Relation](dbt-classes#relation) to try to load
+
+A convenience wrapper for [get_relation](#get_relation). Returns the cached version of the [Relation](dbt-classes#relation) object, or `None` if the relation does not exist.
+
+**Usage**:
+
+<File name='example.sql'>
+
+```sql
+
+{% set relation_exists = (load_relation(ref('my_model')) is not none %}
+{% if relation_exists %}
+      {{ log("my_model has already been built", info=true) }}
+{% else %}
+      {{ log("my_model doesn't exist in the warehouse. Maybe it was dropped?", info=true) }}
+{% endif %}
+
+```
+
+</File>
+
 
 ## get_columns_in_relation
 __Args__:
 
  * `relation`: The [Relation](dbt-classes#relation) to find the columns for
 
-Returns a list of [Columns](dbt-classes#column) in a table.
+Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
 
 **Usage**:
 
@@ -171,7 +196,7 @@ __Args__:
 
  * `relation`: The Relation to drop
 
-Drops a Relation in the database. If the target relation does not exist, then this method is a no-op. The specific implementation is adapter-dependent, but adapters should implement a cascading drop, such that bound views downstream of the dropped relation are also dropped. **Note**: this adapter method is destructive, so please use it with care!
+Drops a Relation in the database. If the target relation does not exist, then this method is a no-op. The specific implementation is adapter-dependent, but adapters should implement a cascading drop, such that bound <Term id="view">views</Term> downstream of the dropped relation are also dropped. **Note**: this adapter method is destructive, so please use it with care!
 
 The `drop_relation` method will remove the specified relation from dbt's relation cache.
 
@@ -215,6 +240,26 @@ Renames a Relation the database.  The `rename_relation` method will rename the s
 
 </File>
 
+
+## quote
+__Args__:
+
+ * `identifier`: A string to quote
+
+Encloses `identifier` in the correct quotes for the adapter when escaping reserved column names etc.
+
+**Usage:**
+
+<File name='example.sql'>
+
+```sql
+select 
+      'abc' as {{ adapter.quote('table_name') }},
+      'def' as {{ adapter.quote('group by') }} 
+```
+
+</File>
+
 ## get_columns_in_table
 
 :::danger Deprecated
@@ -226,9 +271,9 @@ This method is deprecated and will be removed in a future release. Please use [g
 __Args__:
 
  * `schema_name`: The schema to test
- * `table_name`: The table (or view) from which to select columns
+ * `table_name`: The <Term id="table" /> (or view) from which to select columns
 
-Returns a list of [Columns](dbt-classes#column) in a table.
+Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
 
 <File name='models/example.sql'>
 
@@ -255,9 +300,9 @@ This method is deprecated and will be removed in a future release. Please use [g
 __Args__:
 
  * `schema`: The schema to test
- * `table`: The relation to look for
+ * `<Term id="table" />`: The relation to look for
 
-Returns true if a relation named like `table` exists in schema `schema`, false otherwise.
+Returns true if a relation named like `<Term id="table" />` exists in schema `schema`, false otherwise.
 
 <File name='models/example.sql'>
 

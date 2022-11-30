@@ -22,7 +22,7 @@ In my experience, these are false dichotomies, that sound great as hot takes but
 
 <!--truncate-->
 
-In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the API](https://docs.getdbt.com/dbt-cloud/api-v2)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
+In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the official provider](https://registry.astronomer.io/providers/dbt-cloud?type=Operators&utm_campaign=Monthly+Product+Updates&utm_medium=email&_hsmi=208603877&utm_content=208603877&utm_source=hs_email)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
 
 More fundamentally, I think it’s important to call out that Airflow + dbt are **spiritually aligned** in purpose. They both exist to facilitate clear communication across data teams, in service of producing trustworthy data.
 
@@ -43,7 +43,7 @@ A client has 100 data pipelines running via a cron job in a GCP (Google Cloud Pl
 It was simple to set up, but then the conversation started flowing:
 
 * “Where am I going to put logs?”  In a Google Cloud Storage bucket.
-* “Where can I view history in a table format?”  Let’s export log events into BigQuery.
+* “Where can I view history in a <Term id="table" /> format?”  Let’s export log events into BigQuery.
 * “I have to create log alerts to notify people of failures.”  Let’s use GCP’s logging alerts to send emails.
 * “When something fails, how do you rerun from the point of failure?”  Let’s mangle the production script.
 
@@ -59,7 +59,7 @@ That pipeline above included a plethora of data transformation jobs, built in va
 
 They were often written in naked python scripts that only ran a SQL query + wrote data to BigQuery. These stored procedure-like SQL scripts required:
 
-* Writing boilerplate DDL (`CREATE TABLE` etc * 1000)
+* Writing boilerplate <Term id="ddl" /> (`CREATE TABLE` etc * 1000)
 * Managing schema names between production and dev environments
 * Manually managing dependencies between scripts
 
@@ -90,8 +90,8 @@ So instead of getting bogged down in defining roles, let’s focus on hard skill
 The common skills needed for implementing any flavor of dbt (Core or Cloud) are:
 
 * SQL: ‘nuff said
-* YAML: required to generate config files for [writing tests on data models](/docs/building-a-dbt-project/tests)
-* [Jinja](/tutorial/using-jinja): allows you to write DRY code (using [macros](/docs/building-a-dbt-project/jinja-macros), for loops, if statements, etc)
+* YAML: required to generate config files for [writing tests on data models](/docs/build/tests)
+* [Jinja](/guides/getting-started/learning-more/using-jinja): allows you to write DRY code (using [macros](/docs/building-a-dbt-project/jinja-macros), for loops, if statements, etc)
 
 YAML + Jinja can be learned pretty quickly, but SQL is the non-negotiable you’ll need to get started.
 
@@ -123,13 +123,13 @@ When a dbt run fails within an Airflow pipeline, an engineer monitoring the over
 
 dbt provides common programmatic interfaces (the [dbt Cloud Admin + Metadata APIs](/docs/dbt-cloud/dbt-cloud-api/cloud-apis), and [.json-based artifacts](/reference/artifacts/dbt-artifacts) in the case of dbt Core) that provide the context needed for the engineer to self-serve—either by rerunning from a point of failure or reaching out to the owner.
 
-![dbt run log](/img/blog/airflow-dbt-run-log.png "dbt run log")
-
 ## Why I ❤️ dbt Cloud + Airflow
 
 dbt Core is a fantastic framework for developing data transformation + testing logic. It is less fantastic as a shared interface for data analysts + engineers to collaborate **_on production runs of transformation jobs_**.
 
-dbt Cloud picks up that baton, and provides a common interface where teams can configure runs + debug issues in production jobs.
+dbt Labs and the Astronomer team has been hard at work with co-developing some options for dbt Core, and [a new dbt Cloud Provider](https://registry.astronomer.io/providers/dbt-cloud) for those using dbt Cloud that's ready for use by all OSS Airflow users. The best choice for you will depend on things like the resources available to your team, the complexity of your use case, and how long your implementation might need to be supported.
+
+This tool picks up that baton, and provides a common interface where teams can configure runs + debug issues in production jobs.
 
 If you productionalize your dbt runs in Airflow using the dbt Core operator, you run into the same `SQL wrapped in Python` communication challenge I mentioned at the top: the analyst who built the transformation logic is in the dark about the production run workflow, which is spiritually the thing we’re trying to avoid here.
 
@@ -143,25 +143,67 @@ An analyst will be in the dark when attempting to debug this, and will need to r
 
 This can be perfectly ok, in the event your data team is structured for data engineers to exclusively own dbt modeling duties, but that’s a quite uncommon org structure pattern from what I’ve seen. And if you have easy solutions for this analyst-blindness problem, I’d love to hear them.
 
+Once the data has been ingested, dbt Core can be used to model it for consumption. Most of the time, users choose to either:
+Use the dbt CLI+ [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator) with Airflow (If you take this route, you can use an external secrets manager to manage credentials externally), or
+Use the [KubernetesPodOperator](https://registry.astronomer.io/providers/kubernetes/modules/kubernetespodoperator) for each dbt job, as data teams have at places like [Gitlab](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_trusted_data.py#L72) and [Snowflake](https://www.snowflake.com/blog/migrating-airflow-from-amazon-ec2-to-kubernetes/).
+
+Both approaches are equally valid; the right one will depend on the team and use case at hand.
+
+|  | Dependency management | Overhead | Flexibility | Infrastructure Overhead |
+|---|---|---|---|---|
+| dbt CLI + BashOperator | Medium | Low | Medium | Low |
+| Kubernetes Pod Operator | Very Easy | Medium | High | Medium |
+|  |  |  |  |  |
+
+If you have DevOps resources available to you, and your team is comfortable with concepts like Kubernetes pods and containers, you can use the KubernetesPodOperator to run each job in a Docker image so that you never have to think about Python dependencies. Furthermore, you’ll create a library of images containing your dbt models that can be run on any containerized environment. However, setting up development environments, CI/CD, and managing the arrays of containers can mean a lot of overhead for some teams. Tools like the [astro-cli](https://github.com/astronomer/astro-cli) can make this easier, but at the end of the day, there’s no getting around the need for Kubernetes resources for the Gitlab approach.
+
+If you’re just looking to get started or just don’t want to deal with containers, using the BashOperator to call the dbt CLI can be a great way to begin scheduling your dbt workloads with Airflow.
+
+It’s important to note that whichever approach you choose, this is just a first step; your actual production needs may have more requirements. If you need granularity and dependencies between your dbt models, like the team at [Updater does, you may need to deconstruct the entire dbt DAG in Airflow.](https://www.astronomer.io/guides/airflow-dbt#use-case-2-dbt-airflow-at-the-model-level) If you’re okay managing some extra dependencies, but want to maximize control over what abstractions you expose to your end users, you may want to use the [GoCardlessProvider](https://github.com/gocardless/airflow-dbt), which wraps the BashOperator and dbt CLI.
+
+#### Rerunning jobs from failure
+
+Until recently, one of the biggest drawbacks of any of the approaches above was the inability to rerun a job from the point of failure — there was no simple way to do it. As of dbt 1.0, however, dbt now supports the ability to rerun jobs from failure, which should provide a significant quality-of-life improvement.
+
+In the past, if you ran 100 dbt models and 1 of them failed, it’d be cumbersome. You’d either have to rerun all 100 or hard-code rerunning the failed model.
+
+
+One example of this is ‘dbt run –select `<manually-selected-failed-model>`.
+
+
+Instead you can now use the following command:
+
+`dbt build –select result:error+ –defer –state <previous_state_artifacts>` … and that’s it!
+
+
+You can see more examples [here](https://docs.getdbt.com/docs/guides/best-practices#run-only-modified-models-to-test-changes-slim-ci).
+
+
+This means that whether you’re actively developing or you simply want to rerun a scheduled job (because of, say, permission errors or timeouts in your database), you now have a unified approach to doing both.
+
+![airflow dbt run select](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/airflow-dbt-run-select.png)
+
+[In an Airflow context](https://registry.astronomer.io/dags/dbt-core-run-from-failure-pattern), you can use this command with TriggerRules to make it so that, in the event that your initial model fails, you can keep rerunning it from the point of failure without leaving the Airflow UI. This can be especially convenient when the reason your model fails isn't related to the model code itself (permissions for certain schemas, bad data, etc.)
+
+![airflow dbt run select](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/dbt-airflow-tree-graph.png)
+
 ### dbt Cloud + Airflow
 
-With dbt Cloud and its aforementioned [APIs](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/cloud-apis), any dbt user can configure dbt runs from the UI.
+#### Using the dbt Cloud Provider
 
-In Airflow, engineers can then call the API, and everyone can move on with their lives. This allows the API to be a programmatic interface between analysts and data engineers, vs relying on the human interface.
+With the new dbt Cloud Provider, you can use Airflow to orchestrate and monitor your dbt Cloud jobs without any of the overhead of dbt Core. Out of the box, the dbt Cloud provider comes with:
 
-If you look at what this practically looks like in code (my [airflow-toolkit repo is here](https://github.com/sungchun12/airflow-toolkit/blob/demo-sung/dags/examples/dbt_cloud_example.py)), just a few settings need to be configured after you create the initial python API call: [here](https://github.com/sungchun12/airflow-toolkit/blob/95d40ac76122de337e1b1cdc8eed35ba1c3051ed/dags/dbt_cloud_utils.py)
+An operator that allows you to both run a predefined job in dbt Cloud and download an artifact from a dbt Cloud job.
+A hook that gives you a secure way to leverage Airflow’s connection manager to connect to dbt Cloud. The Operator leverages the hook, but you can also [use the hook directly in a Taskflow function or PythonOperator](https://registry.astronomer.io/dags/dbt-cloud-operational-check) if there’s custom logic you need that isn’t covered in the Operator.
 
-```
+A sensor that allows you to poll for a job completion. You can use this [for workloads where you want to ensure your dbt job has run before continuing on with your DAG](https://registry.astronomer.io/dags/fivetran-dbt-cloud-census).
+TL;DR - This combines the end-to-end visibility of everything (from ingestion through data modeling) that you know and love in Airflow with the rich and intuitive interface of dbt Cloud.
 
-dbt_cloud_job_runner_config = dbt_cloud_job_runner(
+#### Setting up Airflow and dbt Cloud
 
-    account_id=4238, project_id=12220, job_id=12389, cause=dag_file_name
+To set up Airflow and dbt Cloud, you can follow the step by step instructions: [here](https://docs.getdbt.com/guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud)
 
-)
-
-```
-
-If the operator fails, it’s an Airflow problem. If the dbt run returns a model or test failure, it’s a dbt problem and the analyst can be notified to hop into the dbt Cloud UI to debug.
+If your task errors or fails in any of the above use cases, you can view the logs within dbt Cloud (think: data engineers can trust analytics engineers to resolve errors).
 
 This creates a much more natural baton pass, and clarity on who needs to fix what.
 

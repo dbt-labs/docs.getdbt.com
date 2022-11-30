@@ -53,14 +53,7 @@ The `--select` flag accepts one or more arguments. Each argument can be one of:
 
 Examples:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select my_dbt_project_name   # runs all models in your project
@@ -72,9 +65,8 @@ Examples:
   $ dbt run --select path/to/my_model.sql  # run a specific model by its path
   ```
 
-</TabItem>
-
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models my_dbt_project_name   # runs all models in your project
@@ -86,21 +78,11 @@ Examples:
   $ dbt run --models path/to/my_model.sql  # run a specific model by its path
   ```
 
-</TabItem>
-
-</Tabs>
+</VersionBlock>
 
 dbt supports a shorthand language for defining subsets of nodes. This language uses the characters `+`, `@`, `*`, and `,`.
 
-
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   # multiple arguments can be provided to --select
@@ -112,9 +94,9 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
   # use methods and intersections for more complex selectors
   $ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
   ```
-</TabItem>
 
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   # multiple arguments can be provided to --select
@@ -126,10 +108,12 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
   # use methods and intersections for more complex selectors
   $ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
   ```
-</TabItem>
 
-</Tabs>
+</VersionBlock>
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](yaml-selectors). You can use a predefined definition with the `--selector` flag.
 Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
+
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="node-selection"/>

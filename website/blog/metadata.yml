@@ -2,7 +2,7 @@
 featured_image: ""
 
 # This CTA lives in right sidebar on blog index
-featured_cta: "coalesce"
+featured_cta: "staging"
 
 # How many featured posts to show on blog index
 featured_posts_count: 4
