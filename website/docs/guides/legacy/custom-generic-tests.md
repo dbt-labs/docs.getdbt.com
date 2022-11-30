@@ -143,7 +143,7 @@ models:
 
 It is possible to include a `config()` block in a generic test definition. Values set there will set defaults for all specific instances of that generic test, unless overridden within the specific instance's `.yml` properties.
 
-<File name='tests/generic/warn_if_null.sql'>
+<File name='tests/generic/warn_if_odd.sql'>
 
 ```sql
 {% test warn_if_odd(model, column_name) %}
@@ -184,7 +184,7 @@ models:
 
 To change the way a built-in generic test works—whether to add additional parameters, re-write the SQL, or for any other reason—you simply add a test block named `<test_name>` to your own project. dbt will favor your version over the global implementation!
 
-<File name='tests/generic/<filename>.yml'>
+<File name='tests/generic/<filename>.sql'>
 
 ```sql
 {% test unique(model, column_name) %}

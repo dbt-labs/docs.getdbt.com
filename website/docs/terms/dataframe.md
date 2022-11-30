@@ -1,9 +1,14 @@
 ---
 id: dataframe
 title: DataFrame
+description: A DataFrame is a way of storing and manipulating tabular data in Python. They gained popularity first as a part of R and then as a part of pandas.
 displayText: dataframe  
 hoverSnippet: A DataFrame is a two-dimensional data structure (rows and columns). It's the most common way of representing and interacting with large datasets in Python.
 ---
+<head>
+  <title>What is a DataFrame in Python? - dbt Labs</title>
+</head>
+
 A DataFrame is a way of storing and manipulating tabular data in Python. DataFrames are often likened to tables with columns and rows that you could find in any <Term id="data-warehouse" />, Google Sheet, or Excel workbook.
 
 A DataFrame entry in an analytics engineering glossary…what is happening? You’re reading this right. While SQL is the go-to programming language for most analytics engineering work, there are likely inevitable situations where you've found yourself writing some Python and using DataFrames.
@@ -14,7 +19,7 @@ While DataFrames are also used in other languages for data processing, such as R
 
 DataFrames have a long history ([going back to 1990](https://towardsdatascience.com/preventing-the-death-of-the-dataframe-8bca1c0f83c8#:~:text=The%20earliest%20%E2%80%9Cdataframe%E2%80%9D%2C%20originally,Hastie%20in%201992%20%5B1%5D)!), but gained popularity first as a part of R and then as a part of [pandas](https://pandas.pydata.org/), an open source Python library of useful data analysis and manipulation tools. To work with DataFrames in Python, folks typically need to import the pandas library in the beginning of their script, `.py` file, or Python notebook with the conventional `import pandas as pd`.
 
-One of the strengths of DataFrames lies in its ability to take data in its original form (ex. array, list, JSON, parquet, dictionary) and form a tabular (rows and columns) format out of it. Once this data is in a tabular format, you can apply functions and packages to that data to clean, transform, and enrich it.
+One of the strengths of DataFrames lies in its ability to take data in its original form (ex. array, list, <Term id="json" />, parquet, dictionary) and form a tabular (rows and columns) format out of it. Once this data is in a tabular format, you can apply functions and packages to that data to clean, transform, and enrich it.
 
 Below is an example creation of a Python DataFrame from a list and some light enrichment on it:
 

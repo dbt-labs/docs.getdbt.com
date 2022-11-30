@@ -1,9 +1,14 @@
 ---
 id: primary-key
 title: Primary key
+description: A primary key is a non-null column in a database object that uniquely identifies each row. Primary keys take the form of a natural or surrogate key.
 displayText: primary key  
 hoverSnippet: A primary key is a non-null column in a database object that uniquely identifies each row.
 ---
+
+<head>
+  <title>Primary key in SQL (AKA Constraints) — dbt Labs</title>
+</head>
 
 A primary key is a non-null column in a database object that uniquely identifies each row. Primary keys take the form of a natural or <Term id="surrogate-key" />. It’s important to note that for each <Term id="table" /> or <Term id="view" /> in your database, there must only be one primary key column per database object.
 
@@ -103,7 +108,7 @@ In general for Redshift, it’s still good practice to define your primary keys 
 
 ### Google BigQuery
 
-BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid testing](https://docs.getdbt.com/docs/building-a-dbt-project/tests) in place to ensure your primary key fields are unique and non-null.
+BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid testing](/docs/build/tests) in place to ensure your primary key fields are unique and non-null.
 
 ### Databricks
 
@@ -136,7 +141,7 @@ If you don't have a field in your table that would act as a natural primary key,
 If your data warehouse doesn’t provide out-of-the box support and enforcement for primary keys, it’s important to clearly label and put your own constraints on primary key fields. This could look like:
 
 * **Creating a consistent naming convention for your primary keys**: You may see an `id` field or fields prefixed with `pk_` (ex. `pk_order_id`) to identify primary keys. You may also see the primary key be named as the obvious table grain (ex. In the jaffle shop’s `orders` table, the primary key is called `order_id`).
-* **Adding automated [tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
+* **Adding automated [tests](/docs/build/tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
 
 ## Testing primary keys
 

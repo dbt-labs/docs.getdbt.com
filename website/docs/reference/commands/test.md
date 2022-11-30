@@ -27,4 +27,4 @@ dbt test --select one_specific_model,test_type:singular
 dbt test --select one_specific_model,test_type:generic
 ```
 
-For more information on writing tests, see the [Testing Documentation](building-a-dbt-project/tests).
+For more information on writing tests, see the [Testing Documentation](/docs/build/tests).
