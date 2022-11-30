@@ -11,7 +11,7 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
     - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
-    - **dbt CLI users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> ([Atom help](https://discuss.atom.io/t/all-gitignored-files-are-hidden-now-atom-1-15/39238), [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
+    - **dbt CLI users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
 
 
@@ -319,7 +319,7 @@ Your dbt DAG is not acyclic, and needs to be fixed!
 
 ## Database Errors
 
-The thorniest errors of all! These errors come from your data warehouse, and dbt passes the message on. You may need to use your warehouse docs (i.e. the Snowflake docs, or BigQuery docs) to debug these.
+The thorniest errors of all! These errors come from your <Term id="data-warehouse" />, and dbt passes the message on. You may need to use your warehouse docs (i.e. the Snowflake docs, or BigQuery docs) to debug these.
 
 ```
 $ dbt run

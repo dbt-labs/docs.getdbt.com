@@ -24,11 +24,11 @@ It’s important to note that **this is not the only, or the objectively best, w
 
 *   our views on data model design; which in turn are influenced by:
 *   the kinds of analytics problems we are solving for clients
-*   the data stack we typically work within, in which multiple data sources are loaded by third party tools, and the data warehouse is optimized for analytical queries (therefore we aren’t tightly bounded by performance optimization considerations).
+*   the data stack we typically work within, in which multiple data sources are loaded by third party tools, and the <Term id="data-warehouse" /> is optimized for analytical queries (therefore we aren’t tightly bounded by performance optimization considerations).
 
 Our opinions are **almost guaranteed to change over time** as we update our views on modeling, are exposed to more analytics problems, and data stacks evolve. It’s also worth clearly stating here: the way we structure dbt projects makes sense for our projects, but may not be the best fit for yours! This article exists on Discourse so that we can have a conversation – I would love to know how others in the community are structuring their projects.
 
-In comparison, the (recently updated) [best practices](/docs/guides/best-practices) reflect principles that we believe to be true for any dbt project. Of course, these two documents go hand in hand – our projects are structured in such a way that makes the those principles easy to observe, in particular:
+In comparison, the (recently updated) [best practices](/guides/best-practices) reflect principles that we believe to be true for any dbt project. Of course, these two documents go hand in hand – our projects are structured in such a way that makes the those principles easy to observe, in particular:
 
 *   Limit references to raw data
 *   Rename and recast fields once
@@ -36,8 +36,6 @@ In comparison, the (recently updated) [best practices](/docs/guides/best-practic
 *   Add tests to your models
 *   Consider the information architecture of your data warehouse
 *   Separate source-centric and business-centric transformations
-
-If you want to see what the code for one of our projects looks like, check out [this demonstration dbt project](https://github.com/dbt-labs/dbt-learn-demo/tree/day2-dbt-training/models).
 
 We also recently held (and recorded) an office hours on this topic – this article provides a high level outline, but there’s a lot more detail and discussion in the [video](https://youtu.be/xzKLh342s08).
 
@@ -69,7 +67,7 @@ In our dbt projects, this leads us to our first split in our `models/` directory
     └── models
         ├── marts
         └── staging
-    
+
 ```
 
 ## Staging raw data
@@ -106,7 +104,7 @@ Each staging directory contains at a minimum:
 *   A `src_<source>.yml` file which contains:
     *   [Source](/docs/building-a-dbt-project/using-sources) definitions, tests, and documentation
 *   A `stg_<source>.yml` file which contains
-    *   [Tests](/docs/building-a-dbt-project/tests) and [documentation](/docs/building-a-dbt-project/documentation) for models in the same directory
+  * [Tests](/docs/build/tests) and [documentation](/docs/building-a-dbt-project/documentation) for models in the same directory
 
 ```
     ├── dbt_project.yml
@@ -119,7 +117,7 @@ Each staging directory contains at a minimum:
                 ├── stg_braintree__customers.sql
                 └── stg_braintree__payments.sql
 ```        
-    
+
 
 Some dbt users prefer to have one `.yml` file per model (e.g. `stg_braintree__customers.yml`). This is a completely reasonable choice, and we recommend implementing it if your `.yml` files start to become unwieldy.
 
@@ -127,29 +125,29 @@ Some dbt users prefer to have one `.yml` file per model (e.g. `stg_braintree__cu
 
 Earlier versions of the dbt documentation recommended implementing “base models” as the first layer of transformation – and we used to organize and name our models in this way, for example `models/braintree/base/base_payments.sql`.
 
-We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/docs/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
+We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
 
 That being said, in our dbt projects every source flows through exactly one model of the following form:
 
 ```
     with source as (
-        
+
         select * from {{ source('braintree', 'payments') }}
-        
+
     ),
-    
+
     renamed as (
-        
+
         select
             id as payment_id,
             order_id,
             convert_timezone('America/New_York', 'UTC', createdat) as created_at,
             ...
-        
+
         from source
-    
+
     )
-    
+
     select * from renamed
 ```    
 
@@ -175,7 +173,7 @@ In our dbt projects, we place these base models in a nested `base` subdirectory.
                 ├── stg_braintree.yml
                 ├── stg_braintree__customers.sql
                 └── stg_braintree__payments.sql
-``` 
+```
 
 In our projects, base models:
 

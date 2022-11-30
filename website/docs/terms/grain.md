@@ -1,9 +1,14 @@
 ---
 id: grain
 title: Data grain
+description: Grain is the combination of columns at which records in a table are unique. Ideally, this is captured in a single column or a unique primary key.
 displayText: grain  
 hoverSnippet: Your data's grain is the combination of columns at which records in a table are unique. Ideally, this is captured in a single column and a unique primary key.
 ---
+
+<head>
+    <title>Data grain: What granularity means in terms of data modeling</title>
+</head>
 
 Grain is the combination of columns at which records in a table are unique. Ideally, this is captured in a single column, a unique <Term id="primary-key" />, but even then, there is descriptive grain behind that unique id. Let’s look at some examples to better understand this concept.
 

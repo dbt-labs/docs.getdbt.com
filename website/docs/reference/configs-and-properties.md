@@ -15,8 +15,8 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
-* Assert "truths" about a model, in the form of [tests](building-a-dbt-project/tests), e.g. "this `id` column is unique"
-* Define pointers to existing tables that contain raw data, in the form of [sources](using-sources), and assert the expected "freshness" of this raw data
+- Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
+* Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](exposures)
 
 Whereas you can use **configurations** to:
@@ -35,7 +35,9 @@ Depending on the resource type, configurations can be defined:
 
 ### Config inheritance
 
-Configurations are prioritized in order of specificity, which is generally the order above: an in-file `config()` block takes precedence over properties defied in a `.yml` file, which takes precedence over a config defined in the project file. (Note that generic tests work a little differently when it comes to specificity. See [test configs](test-configs).)
+dbt prioritizes configurations in order of specificity, from most specificity to least specificity. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
+
+Note - Generic tests work a little differently when it comes to specificity. See [test configs](test-configs).
 
 Within the project file, configurations are also applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
@@ -77,7 +79,7 @@ Certain properties are special, because:
 These properties are:
 - [`description`](resource-properties/description)
 - [`tests`](resource-properties/tests)
-- [`docs`](resource-properties/docs)
+- [`docs`](/reference/resource-configs/docs)
 - [`columns`](resource-properties/columns)
 - [`quote`](resource-properties/quote)
 - [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
@@ -163,12 +165,12 @@ You can find an exhaustive list of each supported property and config, broken do
 * Exposure [properties](exposure-properties)
 
 ## FAQs
-<FAQ src="schema-yml-name" />
-<FAQ src="resource-yml-name" />
-<FAQ src="multiple-resource-yml-files" />
-<FAQ src="properties-not-in-config" />
-<FAQ src="why-version-2" />
-<FAQ src="yaml-file-extension" />
+<FAQ src="Project/schema-yml-name" />
+<FAQ src="Project/resource-yml-name" />
+<FAQ src="Project/multiple-resource-yml-files" />
+<FAQ src="Project/properties-not-in-config" />
+<FAQ src="Project/why-version-2" />
+<FAQ src="Project/yaml-file-extension" />
 
 ## Troubleshooting common errors
 

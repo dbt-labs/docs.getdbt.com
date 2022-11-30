@@ -2,7 +2,7 @@
 title: "Your Essential dbt Project Checklist"
 description: "A checklist created to guide our internal work, which you can use to clean up your own dbt project."
 slug: essential-dbt-project-checklist
-canonical_url: https://discourse.getdbt.com/t/your-essential-dbt-project-checklist/1377 
+canonical_url: https://discourse.getdbt.com/t/your-essential-dbt-project-checklist/1377
 
 authors: [amy_chen, dave_connors]
 
@@ -15,7 +15,7 @@ is_featured: true
 
 If you’ve been using dbt for over a year, your project is out-of-date. This is natural.  
 
-New functionalities have been released. Warehouses change. Best practices are updated. Over the last year, I and others on the Fishtown Analytics (now dbt Labs!) team have conducted seven audits for clients who have been using dbt for a minimum of 2 months. 
+New functionalities have been released. Warehouses change. Best practices are updated. Over the last year, I and others on the Fishtown Analytics (now dbt Labs!) team have conducted seven audits for clients who have been using dbt for a minimum of 2 months.
 
 <!--truncate-->
 
@@ -87,7 +87,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 ## ✅ Project structure
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-*   If you are using dimensional modeling techniques, do you have staging and marts models?
+*   If you are using <Term id="dimensional-modeling" /> techniques, do you have staging and marts models?
     *   Do they use table prefixes like ‘fct\_’ and ‘dim\_’?
 *   Is the code modular? Is it one transformation per one model?
 *   Are you filtering as early as possible?
@@ -119,7 +119,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 *   Do you use refs and sources for everything?
     *   Make sure nothing is querying off of raw tables, etc.
         ![no querying raw tables](/img/blog/checklist-8ddc2f76de24c98690ef986dcc7974bff09adb59.png)
-        
+
 *   Do you regularly run `dbt test` as part of your workflow and production jobs?
 *   Do you use Jinja & Macros for repeated code?
     *   If you do, is the balance met where it’s not being overused to the point code is not readable?
@@ -156,7 +156,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**
 
-*   [Version control](/docs/guides/best-practices/#version-control-your-dbt-project)
+*   [Version control](/guides/legacy/best-practices#version-control-your-dbt-project)
 *   [dbt Labs' PR Template](/blog/analytics-pull-request-template)
 
 ## ✅ Documentation
@@ -200,7 +200,7 @@ Are you using the IDE and if so, how well?
 
 **Useful links**
 
-*   [dbt Cloud as a CI tool](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github)
+*   [dbt Cloud as a CI tool](/docs/deploy/cloud-ci-job)
 
 
 ## ✅ DAG Auditing
@@ -210,41 +210,41 @@ _Note: diagrams in this section show what NOT to do!_
 
 *   Does your DAG have any common modeling pitfalls?
     *   Are there any direct joins from sources into an intermediate model?
-        
+
         *   All sources should have a corresponding staging model to clean and standardize the data structure. They should not look like the image below.  
-            
+
             ![bad dag](/img/blog/checklist-28c75101367e272fbc2db2ebb1a1ec030517bb5e_2_517x250.jpeg)
-            
+
     *   Do sources join directly together?
-        
+
         *   All sources should have a corresponding staging model to clean and standardize the data structure. They should not look like the image below.  
-            
+
             ![bad dag 2](/img/blog/checklist-5d8ad45deb695eb6771003e010b242c0a3c122b9_2_517x220.jpeg)
-            
+
     *   Are there any rejoining of upstream concepts?
-        
+
         *   This may indicate:
             *   a model may need to be expanded so all the necessary data is available downstream
             *   a new intermediate model is necessary to join the concepts for use in both places  
-                
+
                 ![bad dag 2](/img/blog/checklist-acd57c0e781b1eaf75a65b5063f97ac3ddc5c493_2_517x136.jpeg)
-                
+
     *   Are there any “bending connections”?
-        
+
         *   Are models in the same layer dependent on each other?
         *   This may indicate a change in naming is necessary, or the model should reference further upstream models  
-            
+
             ![bad dag 3](/img/blog/checklist-0532fd13a7d63e3e5df71d025700c4d9c158a7ff_2_517x155.jpeg)
-            
+
     *   Are there model fan outs of intermediate/dimension/fact models?
-        
+
         *   This might indicate some transformations should move to the BI layer, or transformations should be moved upstream
         *   Your dbt project needs a defined end point!  
-            
+
             [![bad dag 4](/img/blog/checklist-33fcd7c4922233412d1364b39227c876d0cb8215_2_517x111.jpeg)
-            
+
     *   Is there repeated logic found in multiple models?
-        
+
         *   This indicates an opportunity to move logic into upstream models or create specific intermediate models to make that logic reusable
         *   One common place to look for this is complex join logic. For example, if you’re checking multiple fields for certain specific values in a join, these can likely be condensed into a single field in an upstream model to create a clean, simple join.
 

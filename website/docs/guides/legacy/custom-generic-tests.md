@@ -20,7 +20,7 @@ There are tons of generic tests defined in open source packages, such as [dbt-ut
 
 Generic tests are defined in SQL files. Those files can live in two places:
 - `tests/generic/`: that is, a special subfolder named `generic` within your [test paths](test-paths) (`tests/` by default)
-- `macros/`: Why? Generic tests work work a lot like macros, and historically, this was the only place they could be defined. If your generic test depends on complex macro logic, you may find it more convenient to define the macros and the generic test in the same file.
+- `macros/`: Why? Generic tests work a lot like macros, and historically, this was the only place they could be defined. If your generic test depends on complex macro logic, you may find it more convenient to define the macros and the generic test in the same file.
 
 To define your own generic tests, simply create a `test` block called `<test_name>`. All generic tests should accept one or both of the standard arguments:
 - `model`: The resource on which the test is defined, templated out to its relation name. (Note that the argument is always named `model`, even when the resource is a source, seed, or snapshot.)
@@ -143,7 +143,7 @@ models:
 
 It is possible to include a `config()` block in a generic test definition. Values set there will set defaults for all specific instances of that generic test, unless overridden within the specific instance's `.yml` properties.
 
-<File name='tests/generic/warn_if_null.sql'>
+<File name='tests/generic/warn_if_odd.sql'>
 
 ```sql
 {% test warn_if_odd(model, column_name) %}
@@ -184,7 +184,7 @@ models:
 
 To change the way a built-in generic test works—whether to add additional parameters, re-write the SQL, or for any other reason—you simply add a test block named `<test_name>` to your own project. dbt will favor your version over the global implementation!
 
-<File name='tests/generic/<filename>.yml'>
+<File name='tests/generic/<filename>.sql'>
 
 ```sql
 {% test unique(model, column_name) %}

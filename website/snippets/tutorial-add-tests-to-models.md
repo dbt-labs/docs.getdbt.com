@@ -1,4 +1,4 @@
-Adding [tests](/docs/building-a-dbt-project/tests) to a project helps validate that your models are working correctly. 
+Adding [tests](/docs/build/tests) to a project helps validate that your models are working correctly.
 
 To add tests to your project:
 
@@ -52,11 +52,10 @@ When you run `dbt test`, dbt iterates through your YAML files, and constructs a 
 
 #### FAQs
 
-<FAQ src="available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
-<FAQ src="test-one-model" />
-<FAQ src="failed-tests" />
-<FAQ src="schema-yml-name" alt_header="Does my test file need to be named `schema.yml`?" />
-<FAQ src="multiple-test-files" />
-<FAQ src="why-version-2" />
-<FAQ src="recommended-tests" />
-<FAQ src="when-to-test" />
+<FAQ src="Tests/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
+<FAQ src="Tests/test-one-model" />
+<FAQ src="Runs/failed-tests" />
+<FAQ src="Project/schema-yml-name" alt_header="Does my test file need to be named `schema.yml`?" />
+<FAQ src="Project/why-version-2" />
+<FAQ src="Tests/recommended-tests" />
+<FAQ src="Tests/when-to-test" />

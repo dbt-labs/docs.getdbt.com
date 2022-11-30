@@ -2,10 +2,10 @@
 title: Overview
 ---
 
-With every invocation, dbt generates and saves one or more *artifacts*. Several of these are JSON files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
 - [documentation](documentation)
 - [state](understanding-state)
-- [visualizing source freshness](cloud-snapshotting-source-freshness)
+- [visualizing source freshness](/docs/build/sources#snapshotting-source-data-freshness)
 
 They could also be used to:
 - calculate project-level test coverage
@@ -43,9 +43,4 @@ In the manifest, the `metadata` may also include:
 
 #### Notes:
 - The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at **schemas.getdbt.com**.
-- As of v0.20.0, the current schema for each artifact is:
-    - https://schemas.getdbt.com/dbt/manifest/v4.json
-    - https://schemas.getdbt.com/dbt/run-results/v4.json
-    - https://schemas.getdbt.com/dbt/catalog/v1.json
-    - https://schemas.getdbt.com/dbt/sources/v3.json
-- Artifact versions may change in any minor version of dbt (`v0.x.0`). Each artifact is versioned independently.
+- Artifact versions may change in any minor version of dbt (`v1.x.0`). Each artifact is versioned independently.

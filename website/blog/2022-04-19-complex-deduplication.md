@@ -15,7 +15,7 @@ Let’s get rid of these dupes and send you on your way to do the rest of the *s
 
 <!--truncate-->
 
-You’re here because your duplicates are *special* duplicates. These special dupes are not the basic ones that have same exact values in every column and duplicate <Term id="primary-key">primary keys</Term> that can be easily fixed by haphazardly throwing in a `distinct` (yeah that’s right, I called using `distinct` haphazard!). These are *partial* duplicates, meaning your entity of concern's primary key is not unique *on purpose* (or perhaps you're just dealing with some less than ideal data syncing). You may be capturing historical, type-two slowly changing dimensional data, or incrementally building a table with an append-only strategy, because you actually want to capture some change over time for the entity your recording. (Or, as mentioned, your loader may just be appending data indiscriminately on a schedule without much care for your time and sanity.) Whatever has brought you here, you now have a table where the <Term id="grain" /> is not your entity’s primary key, but instead the entity’s primary key + the column values that you’re tracking. Confused? Let’s look at an example.
+You’re here because your duplicates are *special* duplicates. These special dupes are not the basic ones that have same exact values in every column and duplicate <Term id="primary-key">primary keys</Term> that can be easily fixed by haphazardly throwing in a `distinct` (yeah that’s right, I called using `distinct` haphazard!). These are *partial* duplicates, meaning your entity of concern's primary key is not unique *on purpose* (or perhaps you're just dealing with some less than ideal data syncing). You may be capturing historical, type-two slowly changing <Term id="dimensional-modeling">dimensional</Term> data, or incrementally building a table with an append-only strategy, because you actually want to capture some change over time for the entity your recording. (Or, as mentioned, your loader may just be appending data indiscriminately on a schedule without much care for your time and sanity.) Whatever has brought you here, you now have a table where the <Term id="grain" /> is not your entity’s primary key, but instead the entity’s primary key + the column values that you’re tracking. Confused? Let’s look at an example.
 
 Here’s your raw table:
 
@@ -152,7 +152,7 @@ select * from filter_real_diffs
 
 > *What happens in this step? You check your data because you are thorough!*
 
-Good thing dbt has already built this for you. Add a [unique test](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-tests) to your YAML model block for your `grain_id` in this de-duped staging model, and give it a dbt test!
+Good thing dbt has already built this for you. Add a [unique test](/docs/build/tests#generic-tests) to your YAML model block for your `grain_id` in this de-duped staging model, and give it a dbt test!
 
 ```yaml
 models:
