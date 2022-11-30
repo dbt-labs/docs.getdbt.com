@@ -17,16 +17,16 @@ dbt encourages you to use grants as resource configs whenever possible in Core v
 * Apply grants on other database objects besides views and tables.
 * Take advantage of more-advanced permission capabilities offered by your data platform, for which dbt does not (yet!) offer out-of-the-box support using resource configuration.
 * Create more granular row- and column-level access, use masking policies, or apply future grants.
- 
-For more information on hooks, see [Hooks & operations](/building-a-dbt-project/hooks-operations).
+
+For more information on hooks, see [Hooks & operations](/docs/build/hooks-operations).
 
 ## Definition
 
 You can use the `grants` field to set permissions or grants for a resource. When you run a model, seed or seed, or snapshot a snapshot, dbt will run `grant` and/or `revoke` statements to ensure that the permissions on the database object match the `grants` you have configured on the resource.
 
-Like all configurations, `grants` will be included in dbt project metadata, including [the manifest artifact](dbt-artifacts/manifest-json).
+Like all configurations, `grants` will be included in dbt project metadata, including [the manifest artifact](/reference/artifacts/manifest-json).
 
-### Common syntax 
+### Common syntax
 
 Grants have two key components:
 
@@ -113,7 +113,7 @@ See [configs and properties](configs-and-properties) for details.
 
 ### Grant config inheritance
 
-When you set `grants` for the same model in multiple places, such as in `dbt_project.yml` and in a more-specific `.sql` or `.yml` file, dbt's default behavior replaces the less-specific set of grantees with the more-specific set of grantees.  This "merge and clobber" behavior updates each privilege when dbt parses your project. 
+When you set `grants` for the same model in multiple places, such as in `dbt_project.yml` and in a more-specific `.sql` or `.yml` file, dbt's default behavior replaces the less-specific set of grantees with the more-specific set of grantees.  This "merge and clobber" behavior updates each privilege when dbt parses your project.
 
 For example:
 

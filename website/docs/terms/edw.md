@@ -1,9 +1,14 @@
 ---
 id: edw
 title: EDW
+description: The primary difference between an EDW and a regular data warehouse is, well, semantics and perspective. An EDW like any other data warehouse, is a collection of databases that centralize a business's data
 displayText: EDW  
 hoverSnippet: An Enterprise Data Warehouse (EDW), like any other data warehouse, is a collection of databases that centralize a business's information from multiple sources and applications.
 ---
+
+<head>
+    <title>What does an EDW (Enterprise Data Warehouse) really mean?</title>
+</head>
 
 An Enterprise Data Warehouse (EDW), like any other <Term id="data-warehouse" />, is a collection of databases that centralize a business's information from multiple sources and applications. The primary difference between an EDW and a regular data warehouse is, well, semantics and perspective.
 
