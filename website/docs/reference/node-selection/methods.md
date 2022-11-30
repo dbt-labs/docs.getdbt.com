@@ -24,7 +24,7 @@ The `tag:` method is used to select models that match a specified [tag](resource
 </VersionBlock>
 
 ### The "source" method
-The `source` method is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
+The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
 
 <VersionBlock firstVersion="0.21">
 
@@ -196,7 +196,7 @@ The `test_type` method is used to select tests based on their type, `singular` o
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](building-a-dbt-project/tests).
+[tests](/docs/build/tests).
 
 <VersionBlock firstVersion="0.21">
 
