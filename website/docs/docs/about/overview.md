@@ -5,7 +5,7 @@ id: "overview"
 
 # What is dbt?
 
-dbt (data build tool) is a productivity tool that helps analysts get more done and produce higher quality results.
+dbt is a productivity tool that helps analysts get more done and produce higher quality results.
 
 Analysts commonly spend 50-80% of their time modeling raw data—cleaning, reshaping, and applying fundamental business logic to it. dbt empowers analysts to do this work better and faster.
 
@@ -48,7 +48,7 @@ While there are a large number of great languages for manipulating data, we’ve
 
 # What databases does dbt currently support?
 
-View the full list of supported databases, warehouses, and query engines [here](available-adapters).
+See [Supported Data Platforms](supported-data-platforms) to view the full list of supported databases, warehouses, and query engines.
 
 # How do I get started?
 
