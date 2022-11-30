@@ -1,9 +1,14 @@
 ---
 id: data-warehouse
 title: Data warehouse
+description: How have data warehouses evolved over the last 40 years? Explore the nuanced changes in use case since Inmon first coined the term.
 displayText: data warehouse
 hoverSnippet: A data warehouse is a data management system used for data storage and computing that allows for analytics activities such as transforming and sharing data.
 ---
+
+<head>
+    <title>Data warehouses in the modern data stack - dbt Labs</title>
+</head>
 
 A data warehouse is a data management system used for data storage and computing that allows for analytics activities such as transforming and sharing data. It helps businesses to capture and store data from external sources. Analytics engineers and data analysts use it to query datasets using SQL, helping to transform them into powerful data models and reports. Data warehouses are the central source of truth for any modern data stack. Data is ingested, transformed, and shared to other tools from the warehouse.
 
@@ -66,7 +71,7 @@ Because all of your data is located in the same place, it allows for faster repo
 | Databricks | Databricks is a cloud-based collaborative data science, data engineering, and data analytics platform that combines the best of data warehouses and data lakes into a lakehouse architecture. |
 | Google BigQuery | Google BigQuery is a serverless, highly scalable data warehouse that comes with a built-in query engine. |
 | Amazon Redshift | Amazon Redshift is a fully-managed petabyte-scale cloud-based data warehouse designed for large scale data set storage and analysis. |
-| Postgres | PostgreSQL is an advanced, enterprise class open source relational database that supports both SQL (relational) and JSON (non-relational) querying. |
+| Postgres | PostgreSQL is an advanced, enterprise class open source relational database that supports both SQL (relational) and <Term id="json" /> (non-relational) querying. |
 
 ## Data warehouse vs data lake
 
