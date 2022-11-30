@@ -18,23 +18,10 @@ dispatch:
 
 ## Definition
 
-Optionally override the [dispatch](dispatch) search locations for macros in certain namespaces.
+Optionally override the [dispatch](dispatch) search locations for macros in certain namespaces. If not specified, `dispatch` will look in your root project _first_, by default, and then look for implementations in the package named by `macro_namespace`.
 
 ## Examples
 
-I've reimplemented certain macros from the `dbt_utils` package, and I want my versions to take precedence. Otherwise, fall back to the versions in `dbt_utils`.
-
-<File name='dbt_project.yml'>
-
-```yml
-dispatch:
-  - macro_namespace: dbt_utils
-    search_order: 
-  - macro_namespace: packagename
-    search_order: [packagename]
-```
-
-</File>
 
 I want to "shim" the `dbt_utils` package with the `spark_utils` compatibility package.
 
@@ -42,10 +29,22 @@ I want to "shim" the `dbt_utils` package with the `spark_utils` compatibility pa
 
 ```yml
 dispatch:
-  - macro_namespace: packagename
-    search_order: [packagename]
-  - macro_namespace: packagename
-    search_order: [packagename]
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
+```
+
+</File>
+
+I've reimplemented certain macros from the `dbt_utils` package in my root project (`'my_root_project'`), and I want my versions to take precedence. Otherwise, fall back to the versions in `dbt_utils`.
+
+_Note: As of v0.21.1, this is the default behavior. You may optionally choose to express that search order explicitly as:_
+
+<File name='dbt_project.yml'>
+
+```yml
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['my_root_project', 'dbt_utils']
 ```
 
 </File>

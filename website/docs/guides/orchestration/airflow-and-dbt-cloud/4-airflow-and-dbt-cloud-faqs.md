@@ -34,7 +34,7 @@ Our friends at Astronomer answer this question with this example: [here](https:/
 
 Check out these two resources for accomplishing your own CI/CD pipeline:
 
-- [Continuous Integration with dbt Cloud](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration#overview)
+- [Continuous Integration with dbt Cloud](/docs/deploy/cloud-ci-job)
 - [Astronomer's CI/CD Example](https://docs.astronomer.io/software/ci-cd/#example-cicd-workflow)
 
 ## 6. Can dbt dynamically create tasks in the DAG like Airflow can?
@@ -43,7 +43,7 @@ We prefer to keep models bundled vs. unbundled. You can go this route, but if yo
 
 ## 7. Can you trigger notifications if a dbt job fails with Airflow? Is there any way to access the status of the dbt Job to do that?
 
-Yes, either through [Airflow's email/slack](https://www.astronomer.io/guides/error-notifications-in-airflow/) functionality by itself or combined with [dbt Cloud's notifications](/docs/dbt-cloud/using-dbt-cloud/cloud-notifications), which support email and slack notifications.
+Yes, either through [Airflow's email/slack](https://www.astronomer.io/guides/error-notifications-in-airflow/) functionality by itself or combined with [dbt Cloud's notifications](/docs/deploy/job-notifications), which support email and slack notifications.
 
 ## 8. Are there decision criteria for how to best work with dbt Cloud and airflow?
 

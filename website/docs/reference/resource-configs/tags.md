@@ -84,6 +84,7 @@ These tags can be used as part of the [resource selection syntax](node-selection
 - `dbt run --select tag:my_tag`
 - `dbt seed --select tag:my_tag`
 - `dbt snapshot --select tag:my_tag`
+- `dbt test --select tag:my_tag` (indirectly runs all tests accociated with the models that are tagged)
 
 ## Examples
 ### Use tags to run parts of your project

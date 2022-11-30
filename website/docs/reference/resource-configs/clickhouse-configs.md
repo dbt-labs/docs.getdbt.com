@@ -204,6 +204,13 @@ dbt snapshots allow a record to be made of changes to a mutable model over time.
 
 If you encounter issues connecting to ClickHouse from dbt with one of the above engines, please report an issue [here](https://github.com/ClickHouse/dbt-clickhouse/issues).
 
+## Cross Database Macro Support
+
+dbt-clickhouse supports most of the cross database macros now included in dbt-core, with the following exceptions:
+* The `listagg` SQL function (and therefore the corresponding dbt macro) is not supported by ClickHouse.  You can achieve similar results with the ClickHouse `groupArray` function but in some cases subqueries may be required to achieve the desired ordering.
+* The `split_part` SQL function is implemented in ClickHouse using the splitByChar function.  This function requires using a constant string for the "split" delimiter, so the `delimeter` parameter used for this macro will be interpreted as a string, not a column name
+* Similarly, the `replace` SQL function in ClickHouse requires constant strings for the `old_chars` and `new_chars` parameters, so those parameters will be interpreted as strings rather than column names when invoking this macro. 
+
 ## Setting `quote_columns`
 
 To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
