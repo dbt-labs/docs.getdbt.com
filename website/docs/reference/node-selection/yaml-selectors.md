@@ -288,7 +288,9 @@ selectors:
               value: buzz
 ```
 
-**Note:** While selector inheritance allows the logic from another selector to be _reused_, it does not allow the logic from that selector to be _modified_ by means of `parents`, `children`, `indirect_selection`, etc. The `selector` method simply returns the complete set of nodes returned by the named selector.
+**Note:** While selector inheritance allows the logic from another selector to be _reused_, it doesn't allow the logic from that selector to be _modified_ by means of `parents`, `children`, `indirect_selection`, and so on. 
+
+The `selector` method returns the complete set of nodes returned by the named selector.
 
 
 </VersionBlock>
