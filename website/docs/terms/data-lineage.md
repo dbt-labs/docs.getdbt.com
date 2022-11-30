@@ -101,7 +101,7 @@ Is your DAG keeping up with best practices? Instead of manually auditing your DA
 
 Complex workflows also add to the difficulties a data lineage system will encounter. For example, consider the challenges in describing a data source's movement through a pipeline as it's filtered, pivoted, and joined with other tables. These challenges increase when the granularity of the data lineage shifts from the table to the column level.
 
-As data lineage graphs mature and grow, it becomes clear that column or field-level lineage is often a needed layer of specificity that is not typically built-in to data lineage systems. [Some of the third party tooling](#third---party-tooling) from above can support column-level lineage.
+As data lineage graphs mature and grow, it becomes clear that column or field-level lineage is often a needed layer of specificity that is not typically built-in to data lineage systems. [Some of the third party tooling](#third-party-tooling) from above can support column-level lineage.
 
 ## **Conclusion**
 

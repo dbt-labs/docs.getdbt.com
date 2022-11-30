@@ -62,7 +62,7 @@ tests:
   [<test-configs>](test-configs)
 
 vars:
-  [<variables>](using-variables)
+  [<variables>](/docs/build/project-variables)
 
 [on-run-start](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 [on-run-end](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]

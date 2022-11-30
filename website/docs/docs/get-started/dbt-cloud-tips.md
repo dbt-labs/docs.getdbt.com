@@ -7,9 +7,17 @@ sidebar_label: "dbt Cloud tips"
 
 # dbt Cloud tips
 
-The Cloud IDE is fully equipped with keyboard shortcuts, features, and development tips to help you to work like a dbt Cloud power user!  Use this Cloud IDE cheat sheet to help you save time and quickly reference. 
+The Cloud IDE provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. Use this Cloud IDE cheat sheet to help you quickly reference some common operations.
 
 ## Most popular
+
+**Organize tabs**
+
+You can move your tabs around to reorganize your work in the IDE. You can also right-click on a tab to close multiple tabs or view and select a list of actions to take. Right-click in the editor to access other options, including text wrap.
+
+**Drag and drop**
+
+You can also drag and drop files in the file tree or in the editor. Use the file breadcrumb on the top of the IDE for quicker navigation. You can access adjacent files in the same file by right-clicking on the breadcrumb file.
 
 **Search across files**
 
@@ -17,7 +25,7 @@ You can quickly search over all files in the IDE on your current project. To sea
 
 **Command bar and status**
 
-You can run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/docs/reference/node-selection/syntax) to [run dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **Runs**.
+You can run commands from the command bar at the bottom of the IDE or by using the **Build** button. Use the [rich model selection syntax](/docs/reference/node-selection/syntax) to run [dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **Runs**.
 
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
@@ -31,12 +39,24 @@ Double-click a node in the directed acyclic graph (DAG) to open that file in a n
 
 ## IDE Keyboard shortcuts
 
-There are default keyboard shortcuts that can help make development more productive and easier for everyone. 
+There are default keyboard shortcuts that can help make development more productive and easier for everyone.
 
 - Command-O or Control-O to select a file to open
+- Command-P or Control-P to see command palette
+- Hold Option-click-on-an-area to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
 - Press Fn-F1 to view a list of the other editor shortcuts
-- Command-Enter or Control-Enter to Preview
+-  Command-Enter or Control-Enter to Preview your code
 - Command-Shift-Enter or Control-Shift-Enter to Compile
+- Highlight a portion of code and use the above shortcuts to Preview or Compile code
+- Enter two underscores (__) in the IDE to reveal a list of dbt functions
+
+## Multiple selections
+
+You can make multiple selections for small and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
+
+- Option-Command-Down  arrow
+- Option-Command-Up arrow
+- Press Option and click on an area
 
 ## Package tips
 
@@ -50,7 +70,7 @@ There are default keyboard shortcuts that can help make development more product
 
 ## Advanced tips
 
-- Use your folder structure as your primary selector method. `dbt build marts.marketing` is simpler and more resilient than relying on tagging every model.
+- Use your folder structure as your primary selector method. `dbt build --select marts.marketing` is simpler and more resilient than relying on tagging every model.
 - Think about jobs in terms of build cadences and SLAs. Run models that have hourly, daily, or weekly build cadences together.
 - Use the [where config](/docs/reference/resource-configs/where) for tests to test an assertion on a subset of records.
 - [store_failures](/docs/reference/resource-configs/store_failures) lets you examine records that cause tests to fail, so you can either repair the data or change the test as needed.
@@ -60,7 +80,7 @@ There are default keyboard shortcuts that can help make development more product
 - Use [for loops](/docs/get-started/learning-more/using-jinja#use-a-for-loop-in-models-for-repeated-sql) in Jinja to [DRY](https://docs.getdbt.com/terms/dry) up repetitive logic, such as selecting a series of columns that all require the same transformations and naming patterns to be applied.
 - Instead of relying on post-hooks, use the [grants config](/docs/reference/resource-configs/grants) to apply permission grants in the warehouse resiliently.
 - Define [source-freshness](/docs/build/sources#snapshotting-source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
-- Use the `+` operator on the left of a model `dbt build +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build model_name+` to run a model and everything downstream that depends on it.
+- Use the `+` operator on the left of a model `dbt build --select +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build --select model_name+` to run a model and everything downstream that depends on it.
 - Use `dir_name` to run all models in a package or directory.
 - Use the `@` operator on the left of a model in a non-state-aware CI setup to test it. This operator runs all of a selection’s parents and children, and also runs the parents of its children, which in a fresh CI schema will likely not exist yet.
 - Use the [--exclude flag](/docs/reference/node-selection/exclude) to remove a subset of models out of a selection.

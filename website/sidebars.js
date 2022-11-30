@@ -220,7 +220,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Collaborate",
+      label: "Collaborate with others",
       items: [
         "docs/collaborate/environments",
         {
@@ -231,7 +231,7 @@ const sidebarSettings = {
             "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/resolve-merge-conflicts",
+            "docs/collaborate/git/merge-conflicts",
             {
               type: "category",
               label: "Supported git providers",
@@ -309,7 +309,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
         "docs/use-dbt-semantic-layer/avail-sl-integrations",
       ],
-    }, 
+    },
     {
       type: "category",
       label: "Available dbt versions",
@@ -380,7 +380,6 @@ const sidebarSettings = {
       items: [
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
       ],
     },
   ],
@@ -800,6 +799,7 @@ const sidebarSettings = {
                 "guides/migration/tools/migrating-from-stored-procedures/6-migrating-from-stored-procedures-conclusion",
               ],
             },
+            "guides/migration/tools/migrating-from-spark-to-databricks",
           ],
         },
       ],

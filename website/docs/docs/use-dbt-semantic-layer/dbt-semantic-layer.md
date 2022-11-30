@@ -5,13 +5,7 @@ description: "Introducing the dbt Semantic Layer"
 sidebar_label: "dbt Semantic Layer"
 ---
 
-:::info 📌
-
-The dbt Semantic Layer is currently available in Public Preview for multi-tenant dbt Cloud accounts hosted in North America. 
-
-For more info, review the [Prerequisites](/docs/use-dbt-semantic-layer/dbt-semantic-layer#prerequisites), [Public Preview](/docs/use-dbt-semantic-layer/quickstart-semantic-layer#public-preview), and [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) sections below.
-    
-:::
+<Snippet src="sl-public-preview-banner" />
 
 The dbt Semantic Layer allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions.
 
@@ -59,16 +53,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 </VersionBlock>
 
-
-:::caution Considerations
-
-Some important considerations to know about using the dbt Semantic Layer during the Public Preview:
-
-- Support for Snowflake data platform only (_additional data platforms coming soon_)
-- Support for the deployment environment only (_development experience coming soon_)
-- No support for jobs/environments using environment variables (_coming soon_)
-
-:::
+<Snippet src="sl-considerations-banner" />
 
 ## Public Preview
 
@@ -92,10 +77,12 @@ The dbt Semantic Layer product architecture includes four primary components:
 
 | Components | Information | Developer plans | Team plans | Enterprise plans | License |
 | --- | --- | :---: | :---: | :---: | --- |
-| **dbt metrics** | Allows you to define metrics in dbt Core. | ✅ | ✅ |  ✅  | Open source, Core |
-| **dbt Server**| HTTP server that is able to quickly compile metric queries per environment using dbt project code. | ✅ | ✅ | ✅ | BSL |
+| **[dbt metrics](/docs/build/metrics)** | Allows you to define metrics in dbt Core. | ✅ | ✅ |  ✅  | Open source, Core |
+| **[dbt Server](https://github.com/dbt-labs/dbt-server)**| A persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations. | ✅ | ✅ | ✅ | BSL |
 | **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja like query models and metrics, use macros), compiles the query into pure SQL, and executes the query against the data platform. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
-| **Metadata API**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise |
+| **[Metadata API](/docs/dbt-cloud-apis/metadata-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise |
+    
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture-flow.png" title="dbt Semantic components" />
 
 dbt Semantic Layer integrations will:
 
@@ -152,20 +139,23 @@ Review our helpful metrics video below, which explains what metrics are, why the
     <div>The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.</div>
   </div>
 </details>
-<details><summary>Is the dbt Semantic Layer open source?</summary>
+<details>
+  <summary>Is the dbt Semantic Layer open source?</summary>
   <div>
     <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not open source. <br></br><br></br>
       
-During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). <br></br><br></br>
-      
-Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition.<br></br><br></br>
-     
-Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
+During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise).<br></br><br></br>
+
+<ul>
+<li>dbt Core users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, users will need to have a dbt Cloud account.</li><br></br>
+<li>Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</li><br></br>
+<li>Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition.</li>
+    </ul></div> </div>
 </details>
 <details>
-    <summary>Is there a dbt Semantic Layer discusssion hub?</summary>
+    <summary>Is there a dbt Semantic Layer discussion hub?</summary>
   <div>
-    <div>Yes absolutely! Join the <a href="https://getdbt.slack.com/archives/C046L0VTVR6">#dbt-cloud-semantic-layer</a> slack channel and <a href="getdbt.slack.com">dbt Slack community</a> for all things related to the dbt Semantic Layer. 
+    <div>Yes absolutely! Join the <a href="https://getdbt.slack.com">dbt Slack community</a> and <a href="https://getdbt.slack.com/archives/C046L0VTVR6">#dbt-cloud-semantic-layer slack channel</a> for all things related to the dbt Semantic Layer. 
     </div>
   </div>
 </details>

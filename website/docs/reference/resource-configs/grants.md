@@ -24,7 +24,7 @@ For more information on hooks, see [Hooks & operations](/docs/build/hooks-operat
 
 You can use the `grants` field to set permissions or grants for a resource. When you run a model, seed or seed, or snapshot a snapshot, dbt will run `grant` and/or `revoke` statements to ensure that the permissions on the database object match the `grants` you have configured on the resource.
 
-Like all configurations, `grants` will be included in dbt project metadata, including [the manifest artifact](dbt-artifacts/manifest-json).
+Like all configurations, `grants` will be included in dbt project metadata, including [the manifest artifact](/reference/artifacts/manifest-json).
 
 ### Common syntax
 

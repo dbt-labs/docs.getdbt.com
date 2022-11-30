@@ -26,11 +26,11 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 ## New and changed functionality
 
 - **[Grants](resource-configs/grants)** are natively supported in `dbt-core` for the first time. That support extends to all standard materializations, and the most popular adapters. If you already use hooks to apply simple grants, we encourage you to use built-in `grants` to configure your models, seeds, and snapshots instead. This will enable you to [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) up your duplicated or boilerplate code.
-- **[Metrics](building-a-dbt-project/metrics)** now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information on how to use expression metrics, check out the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
+- **[Metrics](/docs/build/metrics)** now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information on how to use expression metrics, check out the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
 - **[dbt-Jinja functions](/reference/dbt-jinja-functions)** now include the [`itertools` Python module](dbt-jinja-functions/modules#itertools), as well as the [set](dbt-jinja-functions/set) and [zip](dbt-jinja-functions/zip) functions.
 - **[Node selection](node-selection/syntax)** includes a [file selection method](node-selection/methods#the-file-method) (`-s model.sql`), and [yaml selector](node-selection/yaml-selectors) inheritance.
 - **[Global configs](global-configs)** now include CLI flag and environment variable settings for [`target-path`](target-path) and [`log-path`](log-path), which can be used to override the values set in `dbt_project.yml`
 
 ### Specific adapters
 
-- [Postgres](postgres-profile) and [Redshift](redshift-profile) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.
+- [Postgres](/reference/warehouse-setups/postgres-setup) and [Redshift](/reference/warehouse-setups/redshift-setup) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.

@@ -32,7 +32,7 @@ Your goal in this initial step is simply to use dbt to run your existing SQL tra
 
 While refactoring you'll be **moving around** a lot of logic, but ideally you won't be **changing** the logic. More changes = more auditing work, so if you come across anything you'd like to fix, try your best to card that up for another task after refactoring! We'll save the bulk of our auditing for the end when we've finalized our legacy-to-dbt model restructuring.
 
-To get going, you'll copy your legacy SQL query into your dbt project, by saving it in a `.sql` file under the `/models` directory of your project. 
+To get going, you'll copy your legacy SQL query into your dbt project, by saving it in a `.sql` file under the `/models` directory of your project.
 
 <Lightbox src="/img/tutorial/refactoring/legacy-query-model.png" title="Your dbt project's folder structure" />
 
@@ -44,7 +44,7 @@ This step may sound simple, but if you're porting over an existing set of SQL tr
 
 This will commonly happen if you're migrating from a [stored procedure workflow on a legacy database](https://getdbt.com/analytics-engineering/case-for-elt-workflow/) into dbt + a cloud <Term id="data-warehouse" />.
 
-Functions that you were using previously may not exist, or their syntax may shift slightly between SQL dialects. 
+Functions that you were using previously may not exist, or their syntax may shift slightly between SQL dialects.
 
 If you're not migrating data warehouses at the moment, then you can keep your SQL syntax the same. You have access to the exact same SQL dialect inside of dbt that you have querying directly from your warehouse.
 
@@ -62,9 +62,9 @@ We start here for several reasons:
 Using sources unlocks the ability to run [source freshness reporting](docs/build/sources#snapshotting-source-data-freshness) to make sure your raw data isn't stale.
 
 #### Easy dependency tracing
-If you're migrating multiple stored procedures into dbt, with sources you can see which queries depend on the same raw tables. 
+If you're migrating multiple stored procedures into dbt, with sources you can see which queries depend on the same raw tables.
 
-This allows you to consolidate modeling work on those base tables, rather than calling them separately in multiple places. 
+This allows you to consolidate modeling work on those base tables, rather than calling them separately in multiple places.
 
 <Lightbox src="/img/docs/building-a-dbt-project/sources-dag.png" title="Sources appear in green in your DAG in dbt docs" />
 
@@ -113,7 +113,7 @@ Means that you will copy your model to a `/marts` folder, and work on changes on
 - You can decide when the old model is ready to be deprecated.
 
 **Cons**:
-- You'll have the old file(s) in your project until you can deprecate them - running side-by-side like this can feel duplicative, and may be a headache to manage if you're migrating a number of queries in bulk. 
+- You'll have the old file(s) in your project until you can deprecate them - running side-by-side like this can feel duplicative, and may be a headache to manage if you're migrating a number of queries in bulk.
 
 We generally recommend the **alongside** approach, which we'll follow in this tutorial.
 
@@ -123,7 +123,7 @@ Once you choose your refactoring strategy, you'll want to do some cosmetic clean
 <WistiaVideo id="di9jovovdv" />
 
 ### What's a CTE?
-CTE stands for “Common Table Expression”, which is a temporary result set available for use until the end of SQL script execution. Using the `with` keyword at the top of a query allows us to use CTEs in our code. 
+CTE stands for “Common Table Expression”, which is a temporary result set available for use until the end of SQL script execution. Using the `with` keyword at the top of a query allows us to use CTEs in our code.
 
 Inside of the model we're refactoring, we’re going to use a 4-part layout:
 1. 'Import' CTEs
@@ -135,7 +135,7 @@ In practice this looks like:
 
 ```sql
 
-with 
+with
 
 import_orders as (
 
@@ -164,7 +164,7 @@ final_cte as (
     -- join together logical_cte_1 and logical_cte_2
 )
 
-select * from final_cte 
+select * from final_cte
 ```
 
 Notice there are no nested queries here, which makes reading our logic much more straightforward. If a query needs to be nested, it's just a new CTE that references the previous CTE.
@@ -177,15 +177,15 @@ Let's start with our components, and identify raw data that is being used in our
 - jaffle_shop.orders
 - stripe.payment
 
-Let's make a CTE for each of these under the `Import CTEs` comment. These import CTEs should be only simple `select *` statements, but can have filters if necessary. 
+Let's make a CTE for each of these under the `Import CTEs` comment. These import CTEs should be only simple `select *` statements, but can have filters if necessary.
 
 We'll cover that later - for now, just use `select * from {{ source('schema', 'table') }}` for each, with the appropriate reference. Then, we will switch out all hard-coded references with our import CTE names.
 
 #### 2. Logical CTEs
 
-Logical CTEs contain unique transformations used to generate the final product, and we want to separate these into logical blocks. To identify our logical CTEs, we will follow subqueries in order. 
+Logical CTEs contain unique transformations used to generate the final product, and we want to separate these into logical blocks. To identify our logical CTEs, we will follow subqueries in order.
 
-If a <Term id="subquery" /> has nested subqueries, we will want to continue moving down until we get to the first layer, then pull out the subqueries in order as CTEs, making our way back to the final select statement. 
+If a <Term id="subquery" /> has nested subqueries, we will want to continue moving down until we get to the first layer, then pull out the subqueries in order as CTEs, making our way back to the final select statement.
 
 Name these CTEs as the alias that the subquery was given - you can rename it later, but for now it is best to make as few changes as possible.
 
@@ -195,7 +195,7 @@ If the script is particularly complicated, it's worth it to go through once you'
 
 The previous process usually results in a select statement that is left over at the end - this select statement can be moved into its own CTE called the final CTE, or can be named something that is inherent for others to understand. This CTE determines the final product of the model.
 
-#### 4. Simple SELECT statement 
+#### 4. Simple SELECT statement
 
 After you have moved everything into CTEs, you'll want to write a `select * from final` (or something similar, depending on your final CTE name) at the end of the model.
 
@@ -214,7 +214,7 @@ We'll follow those structures in this walkthrough, but your team's conventions m
 
 <WistiaVideo id="f3nqj8tsde" />
 
-To identify our [staging models](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/#staging-models), we want to look at the things we've imported in our import CTEs. 
+To identify our [staging models](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/#staging-models), we want to look at the things we've imported in our import CTEs.
 
 For us, that's customers, orders, and payments. We want to look at the transformations that can occur within each of these sources without needing to be joined to each other, and then we want to make components out of those so they can be our building blocks for further development.
 
@@ -222,9 +222,9 @@ For us, that's customers, orders, and payments. We want to look at the transform
 
 <WistiaVideo id="9cu4hoiw0w" />
 
-Our left-over logic can then be split into steps that are more easily understandable. 
+Our left-over logic can then be split into steps that are more easily understandable.
 
-We'll start by using CTEs, but when a model becomes complex or can be divided out into reusable components you may consider an intermediate model. 
+We'll start by using CTEs, but when a model becomes complex or can be divided out into reusable components you may consider an intermediate model.
 
 Intermediate models are optional and are not always needed, but do help when you have large data flows coming together.
 
@@ -237,7 +237,7 @@ Our final model accomplishes the result set we want, and it uses the components 
 
 <WistiaVideo id="dymp75cwh6" />
 
-We'll want to audit our results using the dbt [audit_helper package](https://hub.getdbt.com/dbt-labs/audit_helper/latest/). 
+We'll want to audit our results using the dbt [audit_helper package](https://hub.getdbt.com/dbt-labs/audit_helper/latest/).
 
 Under the hood, it generates comparison queries between our before and after states, so that we can compare our original query results to our refactored results to identify differences.
 
