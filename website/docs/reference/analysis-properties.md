@@ -14,7 +14,7 @@ version: 2
 analyses:
   - name: <analysis_name> # required
     [description](description): <markdown_string>
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     config:
       [tags](resource-configs/tags): <string> | [<string>]

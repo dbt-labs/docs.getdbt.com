@@ -19,7 +19,7 @@ version: 2
 seeds:
   - name: <string>
     [description](description): <markdown_string>
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
       [<seed_config>](seed-configs): <config_value>
