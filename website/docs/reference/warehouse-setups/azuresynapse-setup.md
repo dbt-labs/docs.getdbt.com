@@ -66,7 +66,7 @@ Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.
 If you already have ODBC Driver 17 installed, then that one will work as well.
 
 :::tip Default settings change in dbt-synapse v1.2 / ODBC Driver 18
-Microsoft made several changes related to connection encryption. Read more about the changes [here](mssql-profile#connection-encryption).
+Microsoft made several changes related to connection encryption. Read more about the changes [here](/reference/warehouse-setups/mssql-setup).
 :::
 
 ### Authentication methods
@@ -98,4 +98,4 @@ your_profile_name:
 
 </File>
 
-You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](mssql-profile).
+You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](/reference/warehouse-setups/mssql-setup).

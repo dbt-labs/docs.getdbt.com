@@ -64,8 +64,6 @@ Refactoring code is much easier when you're updating a well-defined, constrained
 
 Additionally upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
 
-
-
 | dbt Cloud Feature | dbt Core Version Needed |
 | ------------- | -------------- |
 | [Environment variable secret scrubbing](/docs/build/environment-variables#handling-secrets)| v1.0+ |
@@ -77,7 +75,6 @@ Additionally upgrading to more recent versions of dbt Core will enable better pe
 #### Need help upgrading?
 
 If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/guides/migration/versions/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-core-in-cloud#upgrading-legacy-versions-under-10).
-
 
 ## Upgrading legacy versions under 1.0
 
@@ -150,7 +147,7 @@ If you believe your project might be affected, read more details in the migratio
 <br></br>
 
 - Does your project define any custom schema tests?
-- Does your project use `adapter.dispatch` or the `spark_utils` package?
+- Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
 
 If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
