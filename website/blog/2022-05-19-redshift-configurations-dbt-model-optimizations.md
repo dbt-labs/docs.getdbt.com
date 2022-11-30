@@ -234,17 +234,17 @@ I won’t get into our modeling methodology at dbt Labs in this article, but the
 
 ### Staggered joins
 
-![Staggered-Joins.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Staggered-Joins.png)
+![Staggered-Joins.png](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Staggered-Joins.jpg)
 
 In this method, you piece out your joins based on the main table they’re joining to. For example, if you had five tables that were all joined using `person_id`, then you would stage your data (doing your clean up too, of course), distribute those by using `dist='person_id'`, and then marry them up in some table downstream. Now with that new table, you can choose the next distribution key you’ll need for the next process that will happen. In our example above, the next step is joining to the `anonymous_visitor_profiles` table which is distributed by `mask_id`, so the results of our join should also distribute by `mask_id`.
 
 ### Resolve to a single key
 
-![Resolve-to-single-key](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Resolve-to-single-key.png)
+![Resolve-to-single-key](/img/blog/2022-05-19-redshift-configurations-dbt-model-optimizations/Resolve-to-single-key.jpg)
 
 This method takes some time to think about, and it may not make sense to do it depending on what you need. This is definitely balance between coherence, usability, and performance.
 
-The main point here is that you’re resolving the various keys and grains before the details are joined in. Because we’re not joining until the end, this means that only our intermediate tables get distributed based on the resolved keys and finally joined up in `dim_all_visitors`.
+The main point here is that you’re resolving the various keys and <Term id="grain">grains</Term> before the details are joined in. Because we’re not joining until the end, this means that only our intermediate tables get distributed based on the resolved keys and finally joined up in `dim_all_visitors`.
 
 Sometimes the work you’re doing downstream is much easier to do when you do some complex modeling up front! When you want or need it, you’ll know.
 

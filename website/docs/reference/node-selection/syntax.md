@@ -114,3 +114,6 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](yaml-selectors). You can use a predefined definition with the `--selector` flag.
 Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
+
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="node-selection"/>

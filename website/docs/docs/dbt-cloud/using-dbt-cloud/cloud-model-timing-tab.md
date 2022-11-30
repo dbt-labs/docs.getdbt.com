@@ -14,6 +14,8 @@ Accessed via the "run detail" page in dbt Cloud, the model timing dashboard disp
 
 This is a very visual way to explore your run and surface model bottlenecks. Longest running models *may* be ripe for further exploration -- which can lead to refactoring or reducing run cadence.
 
-Note that this is currently only available on multi-tenant Team and Enterprise accounts.
+Notes:
+- The model timing dashboard is currently only available on multi-tenant Team and Enterprise accounts.
+- The model timing dashboard can only be viewed for jobs that have successfully completed.
 
-<LoomVideo id="28a49a5c511c4063b4a3381cb81a03cf" />
+<Lightbox src="/img/docs/dbt-cloud/Model-timing-tab.png" title="Model timing tab"/>

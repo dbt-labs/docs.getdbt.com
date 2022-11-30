@@ -126,7 +126,7 @@ as (
 #### Partitioning with integer buckets
 
 If the `data_type` is specified as `int64`, then a `range` key must also
-be provied in the `partition_by` dict. dbt will use the values provided in
+be provided in the `partition_by` dict. dbt will use the values provided in
 the `range` dict to generate the partitioning clause for the table.
 
 <Tabs
@@ -294,6 +294,10 @@ models:
 dbt supports the specification of BigQuery labels for the tables and <Term id="view">views</Term> that it creates. These labels can be specified using the `labels` model config.
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
+  
+:::info Note
+BigQuery requires that both key-value pair entries for labels have a maximum length of 63 characters.
+:::
 
 **Configuring labels in a model file**
 
@@ -376,7 +380,7 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -442,7 +446,7 @@ declare dbt_partitions_for_replacement array<date>;
 set (dbt_partitions_for_replacement) = (
     select as struct
         array_agg(distinct date(max_tstamp))
-    from `my_project`.`my_dataset`.`sessions`
+    from `my_project`.`my_dataset`.{{ model_name }}__dbt_tmp
 );
 
 /*
@@ -594,12 +598,15 @@ select ...
 </File>
 
 ## Authorized Views
+
 <Changelog>New in v0.18.0</Changelog>
 
 If the `grant_access_to` config is specified for a model materialized as a
 view, dbt will grant the view model access to select from the list of datasets
 provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
 for more details.
+
+<Snippet src="grants-vs-access-to" />
 
 <File name='dbt_project.yml'>
 
@@ -629,10 +636,8 @@ models:
 
 </File>
 
-Views with this configuration will be able to select from objects in 
-`project_1.dataset_1` and `project_2.dataset_2`, even when they are located
-elsewhere and queried by users who do not otherwise have
-access to `project_1.dataset_1` and `project_2.dataset_2`.
+Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
 #### Limitations
+
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.

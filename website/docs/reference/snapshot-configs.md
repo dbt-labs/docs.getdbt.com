@@ -113,7 +113,7 @@ snapshots:
     [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[persist_docs](persist_docs): {<dict>}
-
+    [+](plus-prefix)[grants](grants): {<dict>}
 ```
 </File>
 
@@ -134,6 +134,7 @@ snapshots:
       [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](persist_docs): {<dict>}
+      [grants](grants): {<dictionary>}
 ```
 
 </File>
@@ -151,6 +152,7 @@ snapshots:
     [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
     [persist_docs](persist_docs)={<dict>}
+    [grants](grants)={<dict>}
 ) }}
 
 ```
@@ -171,7 +173,7 @@ Snapshot configurations are applied hierarchically in the order above.
 
 ### Examples
 #### Apply the `target_schema` configuration to all snapshots
-To apply a configuration to all snapshots, including those in any installed [packages](package-management), nest the configuration directly under the `snapshots` key:
+To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
 
 <File name='dbt_project.yml'>
 
@@ -250,7 +252,7 @@ You can also define some common configs in a snapshot's `config` block. We don't
 version: 2
 
 snapshots:
-  - name: orders_snapshot:
+  - name: orders_snapshot
     config:
       persist_docs:
         relation: true
