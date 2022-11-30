@@ -9,7 +9,7 @@ title: "dispatch"
 - **v0.20.0:** Parent adapters' macro implementations are included in search order. Formalized supported arguments.
 - **v0.21.0:** All dispatched macros in the dbt global project include `dbt` namespace
 - **v1.0.0:** The 'packages' argument is fully deprecated. Use `macro_namespace` and project-level `dispatch` config instead.
-    
+
 </Changelog>
 
 dbt can extend functionality across [Supported Data Platforms](supported-data-platforms) through a system of [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). Because SQL syntax, data types, and <Term id="ddl" />/<Term id="dml" /> support vary across adapters, dbt can define and call generic functional macros, and then "dispatch" that macro to the appropriate implementation for the current adapter.
@@ -83,7 +83,7 @@ Below that macro, I've defined three possible implementations of the `concat` ma
 
 ### A more complex example
 
-I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in [`dbt_utils.concat`](https://github.com/dbt-labs/dbt-utils/blob/main/macros/cross_db_utils/concat.sql).
+I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in `dbt_utils.concat`.
 
 <File name='macros/concat.sql'>
 

@@ -87,7 +87,7 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
 2. Select **Integrations**.
 3. Scroll to the Azure DevOps section.
 4. Complete the form:
-    - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly.
+    - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-devops-org` ❌ Avoid `dev.azure.com/my-devops-org`
     - **Application (client) ID:** Found in the Azure AD App.
     - **Client Secrets:** You need to first create a secret in the Azure AD App under **Client credentials**. Make sure to copy the **Value** field in the Azure AD App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Azure AD app secret expiration and rotation.
     - **Directory(tenant) ID:** Found in the Azure AD App.

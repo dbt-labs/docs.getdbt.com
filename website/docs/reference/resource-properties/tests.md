@@ -183,6 +183,8 @@ models:
 ### `unique`
 
 This test validates that there are no duplicate values present in a field.
+                
+The config and where clause are optional.
 
 <File name='models/<filename>.yml'>
 
@@ -194,7 +196,9 @@ models:
     columns:
       - name: order_id
         tests:
-          - unique
+          - unique:
+              config:
+                where: "order_id > 21"
 ```
 
 </File>

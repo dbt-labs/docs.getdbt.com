@@ -5,13 +5,7 @@ description: "Develop, test, run, and build in the Cloud IDE."
 sidebar_label: Develop in the Cloud
 ---
 
-:::info 📌
-
-The new and refreshed Cloud IDE will be open to General Availability by end of October 2022. The new Cloud IDE includes performance upgrades, ergonomics improvements, and some delightful enhancements!
-
-Review the [new Cloud IDE features](/docs/get-started/dbt-cloud-features#ide-features) to learn more.
-
-:::
+<Snippet src="ide-ga-banner" />
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly.
 

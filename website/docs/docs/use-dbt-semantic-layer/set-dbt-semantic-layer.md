@@ -36,15 +36,7 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 </VersionBlock>
 
 
-:::caution Considerations
-
-Some important considerations to know about during the Public Preview:
-
-- Support for Snowflake data platform only (_additional data platforms coming soon_)
-- Support for the deployment environment only (_development experience coming soon_)
-- No support for jobs/environments using environment variables (_coming soon_)
-
-:::
+<Snippet src="sl-considerations-banner" />
 
 
 ## Set up dbt Semantic Layer
@@ -59,3 +51,4 @@ Some important considerations to know about during the Public Preview:
 - [Integrated partner tools](https://www.getdbt.com/product/semantic-layer-integrations) for info on the different integration partners and their documentation
 - [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) page for more information on plan availability
 - [dbt metrics](/docs/build/metrics) for in-depth detail on attributes, properties, filters, and how to define and query metrics
+- [dbt Server repo](https://github.com/dbt-labs/dbt-server), which is a persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations
