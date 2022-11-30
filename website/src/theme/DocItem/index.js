@@ -17,6 +17,7 @@ import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import { ThemeClassNames, useWindowSize } from '@docusaurus/theme-common';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+import DocSearchWeight from '@site/src/components/docSearchWeight';
 
 // dbt Custom
 import VersionContext from '../../stores/VersionContext'
@@ -48,6 +49,10 @@ export default function DocItem(props) {
   // dbt Custom
   // If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
+
+  // dbt Custom
+  // If the page has a search_weight value, apply that value
+  const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
 
   // This hides any TOC items not in
   // html markdown headings for current version. 
@@ -171,6 +176,8 @@ export default function DocItem(props) {
                 )}
 
                 <DocContent />
+                
+                <DocSearchWeight weight={searchWeight} />
               </div>
 
               <DocItemFooter {...props} />
