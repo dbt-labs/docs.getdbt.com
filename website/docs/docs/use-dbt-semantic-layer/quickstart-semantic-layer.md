@@ -7,14 +7,7 @@ sidebar_label: "Quickstart"
 
 # dbt Semantic Layer quickstart
 
-:::info 📌
-
-The dbt Semantic Layer is currently available in Public Preview for multi-tenant dbt Cloud accounts hosted in North America. 
-
-For more info, review the [Prerequisites](/docs/use-dbt-semantic-layer/dbt-semantic-layer#prerequisites), [Public Preview](/docs/use-dbt-semantic-layer/quickstart-semantic-layer#public-preview), and [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) sections below.
-
-:::
-
+<Snippet src="sl-public-preview-banner" />
 
 ## Public Preview 
     
@@ -69,15 +62,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 </VersionBlock>
 
-:::caution Considerations
-
-Some important considerations to know about using the dbt Semantic Layer during the Public Preview:
-
-- Support for Snowflake data platform only (_additional data platforms coming soon_)
-- Support for the deployment environment only (_development experience coming soon_)
-- No support for jobs/environments using environment variables (_coming soon_)
-
-:::
+<Snippet src="sl-considerations-banner" />
 
 
 :::info 📌 
@@ -242,20 +227,9 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 - Your dbt Metadata API pulls in the most recent manifest and allows your integration information to extract metadata from it.
 
 ## Set up dbt Semantic Layer
+    
+<Snippet src="sl-set-up-steps" />
 
-Before continuing, you must have a multi-tenant dbt Cloud account hosted in North America to set up the dbt Semantic Layer in dbt Cloud.  Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated partner tool to import metric definition. Developer accounts will be able to query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access to the Metadata API.
-
-To query your dbt metrics in an integrated partner tool, you need to [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer#set-up-dbt-semantic-layer) in dbt Cloud to connect with your integration tool:
-
-1. In your dbt Cloud account, go to **Account Settings** and then **Service Tokens** to create a new [service account API token](docs/dbt-cloud-apis/service-tokens). 
-2. You won't be able to see your token again so we recommend you copy it somewhere safe.
-3. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
-4. In the upper right of the page, click **Settings** and then **Edit**.
-5. Select dbt Version 1.2 (latest) or higher.
-6. Toggle the Semantic Layer **On.**
-7. Copy the Proxy Server URL to connect to your [integrated partner tool](https://www.getdbt.com/product/semantic-layer-integrations). 
-8. If supported by your tool, provide an API service token with metadata access. 
-9. You can now run precise and consistent queries with the dbt Semantic Layer. 
       
 ## Troubleshooting
 
@@ -267,41 +241,47 @@ If you're encountering some issues when defining your metrics or setting up the 
     <div>The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.</div>
   </div>
 </details>
-<details><summary>Is the dbt Semantic Layer open source?</summary>
+<details>
+    <summary>Is the dbt Semantic Layer open source?</summary>
   <div>
     <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not open source. <br></br><br></br>
-      
-During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise). <br></br><br></br>
-      
-Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition.<br></br><br></br>
-     
-Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</div></div>
+
+During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise).<br></br><br></br>
+<ul>    
+<li>dbt Core users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, you will need to have a dbt Cloud account.</li><br></br><br></br>
+<li>Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</li><br></br><br></br>
+<li>Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definitions.</li>
+    </ul>
+    </div>
+    </div>
 </details>
 <details>
-    <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized? </summary>
+    <summary>The <code>dbt_metrics_calendar_table</code> does not exist or is not authorized?</summary>
   <div>
     <div>All metrics queries are dependent on either the <code>dbt_metrics_calendar_table</code> or a custom calendar set in the users <code>dbt_project.yml</code>. If you have not created this model in the database, these queries will fail and you'll most likely see the following error message:
 
 <code>Object DATABASE.SCHEMA.DBT_METRICS_DEFAULT_CALENDAR does not exist or not authorized.</code><br></br>
 
-<b>Fix</b>
-      
-- If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code>
-- If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.
+<b>Fix:</b>
+    
+<ul>      
+    <li>If developing locally, run <code>dbt run --select dbt_metrics_default_calendar</code></li><br></br>
+    <li> If you are using this in production, make sure that you perform a full <code>dbt build</code> or <code>dbt run</code>. If you are running specific <code>selects</code> in your production job, then you will not create this required model.</li>
+    </ul>
     </div>
   </div>
 </details>
 <details>
   <summary>Ephemeral Models - Object does not exist or is not authorized</summary>
   <div>
-    <div>Metrics cannot be defined on <a href="https://docs.getdbt.com/docs/build/materializations#ephemeral">ephemeral models</a> because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you'll likely see this error message:
+    <div>Metrics cannot be defined on <a href="https://docs.getdbt.com/docs/build/materializations#ephemeral">ephemeral models</a> because we reference the underlying table in the query that generates the metric so we need the table/view to exist in the database. If your table/view does not exist in your database, you might see this error message:
 
- <code>Object 'DATABASE.SCHEMA.TESTING_EPHEMERAL does not exist or not authorized.</code><br></br>
+ <code>Object 'DATABASE.SCHEMA.METRIC_MODEL_TABLE' does not exist or not authorized.</code><br></br>
 
 <b>Fix:</b>
-
-- You will need to materialize the model that the metric is built on as a table/view/incremental.
-
+    <ul>
+<li>You will need to materialize the model that the metric is built on as a table/view/incremental.</li>
+    </ul>
 </div>
   </div>
 </details>
@@ -311,14 +291,17 @@ Developer accounts will be able to query the Proxy Server using SQL, but will no
   <div>
     <div>If you’re running <code>dbt_metrics </code> ≥v0.3.2 but have <code>dbt-core</code> version ≥1.3.0, you’ll likely see these error messages:
 
-- Error message 1: <code>The metric NAME also references ... but its type is ''. Only metrics of type expression can reference other metrics.</code>
-- Error message 2: <code>Unknown aggregation style:   > in macro default__gen_primary_metric_aggregate (macros/sql_gen/gen_primary_metric_aggregate.sql)</code>
-
-The reason you're experiencing this error is because we changed the <code>type</code> property of the metric spec in dbt-core v1.3.0. The new name is <code>calculation_method</code> and the package reflects that new name, so it isn’t finding any <code>type</code> when we try and run outdated code on it.
+<ul>
+<li>Error message 1: <code>The metric NAME also references ... but its type is ''. Only metrics of type expression can reference other metrics.</code></li>
+<li>Error message 2: <code>Unknown aggregation style:   > in macro default__gen_primary_metric_aggregate (macros/sql_gen/gen_primary_metric_aggregate.sql)</code></li>
+    </ul>
+The reason you're experiencing this error is because we changed the <code>type</code> property of the metric spec in dbt-core v1.3.0. The new name is <code>calculation_method</code> and the package reflects that new name, so it isn’t finding any <code>type</code> when we try and run outdated code on it.<br></br>
 
 <b>Fix:</b>
 
- - Upgrade your <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt_metrics</a> package to v1.3.0
+<ul>
+    <li>Upgrade your <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt_metrics</a> package to v1.3.0</li>
+    </ul>
 
 </div>
   </div>
@@ -335,3 +318,4 @@ Are you ready to define your own metrics and bring consistency to data consumers
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer) to learn about the dbt Semantic Layer
 - [Understanding the components of the dbt Semantic Layer](https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer) blog post to see further examples
 - [Integrated partner tools](https://www.getdbt.com/product/semantic-layer-integrations) for info on the different integration partners and their documentation
+- [dbt Server repo](https://github.com/dbt-labs/dbt-server), which is a persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations.
