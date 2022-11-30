@@ -11,7 +11,7 @@ export default function Snippet({ src }) {
   const contents = file.default({});
   return (
     <div className={styles.snippet}>
-      { contents }
+        { contents }
     </div>
   )
 }

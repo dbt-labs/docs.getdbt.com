@@ -30,7 +30,7 @@ In short, a jaffle is:
 
 *See above: Tasty, tasty jaffles.*
 
-Jaffle Shop is a demo repo referenced in [dbt’s Getting Started tutorial](https://docs.getdbt.com/tutorial/setting-up), and its jaffles hold a special place in the dbt community’s hearts, as well as on Data Twitter™.
+Jaffle Shop is a demo repo referenced in [dbt’s Getting Started Guide](/docs/get-started/getting-started/overview), and its jaffles hold a special place in the dbt community’s hearts, as well as on Data Twitter™.
 
 ![jaffles on data twitter](/img/blog/2022-02-08-customer-360-view/image_1.png)
 
@@ -75,7 +75,7 @@ JaffleGaggle has to keep track of information about their interactions with thei
 
 All of these questions require aggregating + syncing data from application usage, workspace information, and orders into the CRM for the sales team to have at their fingertips.
 
-This aggregation process requires an analytics warehouse, as all of these things need to be synced together outside of the application database itself to incorporate other data sources (billing / events information, past touchpoints in the CRM, etc). Thus, we can create our fancy customer 360 within JaffleGaggle’s data warehouse, which is a standard project for a B2B company’s data team.
+This aggregation process requires an analytics warehouse, as all of these things need to be synced together outside of the application database itself to incorporate other data sources (billing / events information, past touchpoints in the CRM, etc). Thus, we can create our fancy customer 360 within JaffleGaggle’s <Term id="data-warehouse" />, which is a standard project for a B2B company’s data team.
 
 **Diving into data modeling**
 
@@ -190,7 +190,7 @@ iff(users.email_domain in {{ personal_emails }}, null, users.email_domain)
 
 > Builder beware! Not all of these treatments are exhaustive. You might encounter country suffixes on email domains or other domains entirely. Be sure to check for your own use case, and add the columns that make the most sense in your scenario.
 
-The other aspects to this users model are related to the event data we reference in the event stream. For example, the `order_placed` event is broken out in a CTE because it’s important to our use case at JaffleGaggle (it’s the basis for getting that dough 💰).
+The other aspects to this users model are related to the event data we reference in the event stream. For example, the `order_placed` event is broken out in a <Term id="cte" /> because it’s important to our use case at JaffleGaggle (it’s the basis for getting that dough 💰).
 
 ```
 order_events as (
@@ -209,7 +209,7 @@ order_events as (
 ),
 ```
 
-By the end of the `jafflegaggle_contacts` model, we have a unified view of events by user email, with personal email domains filtered out.
+By the end of the `jafflegaggle_contacts` model, we have a unified <Term id="view" /> of events by user email, with personal email domains filtered out.
 
 ### Step 2.4: Merging duplicate contacts
 
@@ -285,7 +285,7 @@ gaggle_total_facts as (
 ),
 ```
 
-I know, that’s a ton of code. Check out the dbt docs for the project for an explanation of the fields. Here’s the output of final `jafflegaggle_facts` table:
+I know, that’s a ton of code. Check out the dbt docs for the project for an explanation of the fields. Here’s the output of final `jafflegaggle_facts` <Term id="table" />:
 
 ![jafflegaggle facts query output screenshot](/img/blog/2022-02-08-customer-360-view/image_7.png)
 
@@ -392,7 +392,7 @@ In terms of data architecture, there are four things you need to do to get this 
 
 1. Use [reverse ETL](https://www.getdbt.com/analytics-engineering/use-cases/operational-analytics/#what-is-reverse-etl) to get these fact tables synced to the CRM
 2. Track payment or subscription information for which accounts are currently paying
-3. Leverage ETL/ELT to get CRM data back into the data warehouse
+3. Leverage <Term id="etl" />/<Term id="elt" /> to get CRM data back into the data warehouse
 4. Design for how you can extend the current merging solution
 
 ![customer 360 view architecture diagram](/img/blog/2022-02-08-customer-360-view/image_11.png)

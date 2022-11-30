@@ -79,13 +79,13 @@ After logging in, you can create a new account and invite members of your team, 
 
 Accounts and Users are separate constructs that can have a many-to-many relationship. When creating a new Account, you can add either existing or new users to the account. If one user has access to multiple accounts, they will be able to switch accounts from the dbt Cloud frontend upon login.
 
-Each user can have a specific role on each account. For more information on each role, please see the docs on [managing permissions](access-control-overview)
+Each user can have a specific role on each account. For more information on each role, please see the docs on [managing permissions](/docs/collaborate/manage-access/about-access)
 
 ### Deploying Application Updates
 
 A new version of dbt Cloud will appear on the Version History page in your Configuration Console anytime any of the following happen:
 
-- A new version of the dbt Cloud code is released. This typically happens every two weeks, and each new version will be accompanied by a [changelog](/docs/dbt-cloud/cloud-changelog).
+- A new version of the dbt Cloud code is released. This typically happens every two weeks, and each new version will be accompanied by a [changelog](/docs/dbt-versions/dbt-cloud-release-notes).
 - Any configuration change is applied to your application via the Configuration Console.
 - Anytime an edit is applied to your Kubernetes configs via the overlays mechanism built into kots.
 
@@ -124,4 +124,4 @@ kubectl patch deployment app -p \
   "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}"
 ```
 
-After these steps, you are ready to manage your Github integration. Your users can log into dbt Cloud, and navigate to Profile > Integrations to start connecting your Github account to dbt Cloud. See [Github](cloud-installing-the-github-application) for more details on how your users can start using the integration.
+After these steps, you are ready to manage your Github integration. Your users can log into dbt Cloud, and navigate to Profile > Integrations to start connecting your GitHub account to dbt Cloud. See [GitHub](/docs/collaborate/git/connect-github) for more details on how your users can start using the integration.

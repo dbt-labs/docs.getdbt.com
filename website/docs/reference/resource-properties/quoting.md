@@ -27,7 +27,7 @@ sources:
 ## Definition
 Optionally configure whether dbt should quote databases, schemas, and identifiers when resolving a `{{ source() }}` function to a direct relation reference.
 
-This config can be specified for all tables in a source, or for a specific source table. Quoting configs defined for a specific source table override the quoting configs specified for the top-level source.
+This config can be specified for all tables in a source, or for a specific source <Term id="table" />. Quoting configs defined for a specific source table override the quoting configs specified for the top-level source.
 
 :::info BigQuery Terminology
 
@@ -37,8 +37,15 @@ Note that for BigQuery quoting configuration, `database` and `schema` should be 
 
 
 ## Default
+The default values vary by database. 
 
-By default, dbt will _not_ quote the database, schema, or identifier.
+For most adapters, quoting is set to _true_ by default.
+
+Why? It's equally easy to select from relations with quoted or unquoted identifiers. Quoting allows you to use reserved words and special characters in those identifiers, though we recommend avoiding this whenever possible.
+
+On Snowflake, quoting is set to _false_ by default.
+
+Creating relations with quoted identifiers also makes those identifiers case sensitive. It's much more difficult to select from them. You can re-enable quoting for relations identifiers that are case sensitive, reserved words, or contain special characters, but we recommend you avoid this as much as possible.
 
 ## Example
 
