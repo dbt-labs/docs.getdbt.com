@@ -2,7 +2,7 @@
 title: Manifest
 ---
 
-_Current schema_: [`v6`](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
+_Current schema_: [`v7`](https://schemas.getdbt.com/dbt/manifest/v7/index.html)
 
 _Produced by:_
 - `dbt compile`

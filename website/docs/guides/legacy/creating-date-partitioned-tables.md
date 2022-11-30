@@ -6,7 +6,7 @@ id: "creating-date-partitioned-tables"
 
 :::caution Deprecated
 
-The functionality described below was introduced in dbt Core v0.10 (March 2018). In v1.0 (December 2021), it was deprecated in favor of [column-based partitioning](bigquery-configs#partition-clause) and [incremental modeling](configuring-incremental-models).
+The functionality described below was introduced in dbt Core v0.10 (March 2018). In v1.0 (December 2021), it was deprecated in favor of [column-based partitioning](bigquery-configs#partition-clause) and [incremental modeling](/docs/build/incremental-models).
 
 :::
 
@@ -69,7 +69,7 @@ from `snowplow`.`{{ date_sharded_table('events_') }}`
 
 </File>
 
-Finally, it's frequently desirable to only update a date partitioned table for the last day of received data. This can be implemented using the above configurations in conjunction with a clever macro and some [command line variables](using-variables).
+Finally, it's frequently desirable to only update a date partitioned table for the last day of received data. This can be implemented using the above configurations in conjunction with a clever macro and some [command line variables](/docs/build/project-variables).
 
 First, the macro:
 
