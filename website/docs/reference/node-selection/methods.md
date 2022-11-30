@@ -24,7 +24,7 @@ The `tag:` method is used to select models that match a specified [tag](resource
 </VersionBlock>
 
 ### The "source" method
-The `source` method is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
+The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
 
 <VersionBlock firstVersion="0.21">
 

@@ -3,7 +3,7 @@ title: Source properties
 ---
 
 ## Related documentation
-- [Using sources](using-sources)
+- [Using sources](/docs/build/sources)
 - [Declaring resource properties](configs-and-properties)
 
 ## Overview
