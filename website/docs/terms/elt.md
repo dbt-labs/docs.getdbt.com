@@ -47,7 +47,7 @@ In the final transformation step, the raw data that has been loaded into your da
 - Some columns are potentially the incorrect data type
 - Tables are not joined to other tables
 - Timestamps may be in the incorrect timezone for your reporting
-- JSON fields may need to be unnested
+- <Term id="json" /> fields may need to be unnested
 - Tables may be missing <Term id="primary-key">primary keys</Term>
 - And more!
 

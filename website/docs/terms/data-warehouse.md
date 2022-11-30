@@ -71,7 +71,7 @@ Because all of your data is located in the same place, it allows for faster repo
 | Databricks | Databricks is a cloud-based collaborative data science, data engineering, and data analytics platform that combines the best of data warehouses and data lakes into a lakehouse architecture. |
 | Google BigQuery | Google BigQuery is a serverless, highly scalable data warehouse that comes with a built-in query engine. |
 | Amazon Redshift | Amazon Redshift is a fully-managed petabyte-scale cloud-based data warehouse designed for large scale data set storage and analysis. |
-| Postgres | PostgreSQL is an advanced, enterprise class open source relational database that supports both SQL (relational) and JSON (non-relational) querying. |
+| Postgres | PostgreSQL is an advanced, enterprise class open source relational database that supports both SQL (relational) and <Term id="json" /> (non-relational) querying. |
 
 ## Data warehouse vs data lake
 
