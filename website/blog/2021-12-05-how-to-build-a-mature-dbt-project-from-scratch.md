@@ -69,7 +69,7 @@ In addition to learning the basic pieces of dbt, we're familiarizing ourselves w
 
 If we decide not to do this, we end up missing out on what the dbt workflow has to offer. If you want to learn more about why we think analytics engineering with dbt is the way to go, I  encourage you to read the [dbt Viewpoint](/docs/about/viewpoint)!
 
-In order to learn the basics, we’re going to [port over the SQL file](/guides/getting-started/learning-more/refactoring-legacy-sql) that powers our existing "patient_claim_summary" report that we use in our KPI dashboard in parallel to our old transformation process. We’re not ripping out the old plumbing just yet. In doing so, we're going to try dbt on for size and get used to interfacing with a dbt project.
+In order to learn the basics, we’re going to [port over the SQL file](/docs/get-started/learning-more/refactoring-legacy-sql) that powers our existing "patient_claim_summary" report that we use in our KPI dashboard in parallel to our old transformation process. We’re not ripping out the old plumbing just yet. In doing so, we're going to try dbt on for size and get used to interfacing with a dbt project.
 
 **Project Appearance**
 
@@ -87,7 +87,7 @@ The most important thing we’re introducing when your project is an infant is t
 
 * Introduce modularity with [{{ ref() }}](/reference/dbt-jinja-functions/ref) and [{{ source() }}](/reference/dbt-jinja-functions/source)
 
-* [Document](/docs/building-a-dbt-project/documentation) and [test](/docs/building-a-dbt-project/tests) your first models
+* [Document](/docs/building-a-dbt-project/documentation) and [test](/docs/build/tests) your first models
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_3.png)
 
@@ -179,7 +179,7 @@ We've spent this level focused on deepening and optimizing our feature set — w
 
 **Key Outcomes**
 
-* Formalize dbt’s relationship to BI with [exposures](/docs/building-a-dbt-project/exposures)!
+* Formalize dbt’s relationship to BI with [exposures](/docs/build/exposures)!
 
 * Advanced use of metadata
 
@@ -193,7 +193,7 @@ At this point, like we started to do in adolescence, we are going to focus on th
 
 We see the biggest jump from the previous stage in the [macros folder](https://github.com/dbt-labs/dbt-project-maturity/tree/main/5-adulthood/macros). By introducing advanced macros that go beyond simple SQL templating, we’re able to have dbt deepen its relationship to our warehouse. Now we can have dbt manage things like custom schema behavior, run post hooks to drop retired models and dynamically orchestrate object permission controls; dbt itself can become your command post for warehouse management.
 
-Additionally, we’ve added an exposures file to formally define the use of our marts models in our BI tool. Exposures are the most mature way to declare the data team's contracts with data consumers. We now have close to end-to-end awareness of the data lineage — we know what data our project depends on, whether it's fresh, how it is transformed in our dbt models, and finally where it’s consumed in reports. Now, we can also know which of our key reports are impacted if and when we hit an error at any point in this flow.
+Additionally, we’ve added an exposures file to formally define the use of our marts models in our BI tool. Exposures are the most mature way to declare the data team's contracts with data consumers. We now have close to end-to-end awareness of the <Term id="data-lineage">data lineage</Term> — we know what data our project depends on, whether it's fresh, how it is transformed in our dbt models, and finally where it’s consumed in reports. Now, we can also know which of our key reports are impacted if and when we hit an error at any point in this flow.
 
 That end to end awareness is visible on the DAG too — we can see the dashboard we declared in our exposures file here in orange!
 

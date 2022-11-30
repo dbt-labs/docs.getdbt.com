@@ -66,7 +66,7 @@ snapshots:
 
 ### Use the same schema-naming behavior as models
 
-Leverage the [`generate_schema_name` macro](using-custom-schemas) to build snapshots in schemas that follow the same naming behavior as your models.
+Leverage the [`generate_schema_name` macro](/docs/build/custom-schemas) to build snapshots in schemas that follow the same naming behavior as your models.
 
 Notes:
 * This macro is not available when configuring from the `dbt_project.yml` file, so must be configured in a snapshot config block.

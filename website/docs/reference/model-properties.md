@@ -18,7 +18,7 @@ version: 2
 models:
   - [name](model_name): <model name>
     [description](description): <markdown_string>
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
       [<model_config>](model-configs): <config_value>

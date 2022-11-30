@@ -17,7 +17,7 @@ and `snapshots:` keys in the `dbt_project.yml` file.
 **Available context variables:**
 - [target](target)
 - [env_var](env_var)
-- [vars](var) (_Note: only variables defined with `--vars` are availabe_)
+- [vars](var) (_Note: only variables defined with `--vars` are available_)
 - [builtins](builtins)
 - [dbt_version](dbt_version)
 

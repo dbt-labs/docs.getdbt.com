@@ -17,13 +17,19 @@ Exposures are defined in `.yml` files nested under an `exposures:` key. You may 
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
+<VersionBlock firstVersion="1.3">
+
+Exposure names must contain only letters, numbers, and underscores (no spaces or special characters). For a short human-friendly name with title casing, spaces, and special characters, use the `label` property.
+
+</VersionBlock>
+
 <File name='models/<filename>.yml'>
 
 ```yml
 version: 2
 
 exposures:
-  - name: <string>
+  - name: <string_with_underscores>
     [description](description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
@@ -38,6 +44,11 @@ exposures:
       - ref('model')
       - ref('seed')
       - source('name', 'table')
+      
+    # added in dbt Core v1.3
+    label: "Human-Friendly Name for this Exposure!"
+    [config](resource-properties/config):
+      enabled: true | false
 
   - name: ... # declare properties of additional exposures
 ```
@@ -52,6 +63,7 @@ exposures:
 exposures:
   
   - name: weekly_jaffle_metrics
+    label: Jaffles by the Week              # optional, new in dbt Core v1.3
     type: dashboard                         # required
     maturity: high                          # optional
     url: https://bi.tool/dashboards/1       # optional

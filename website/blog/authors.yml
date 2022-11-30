@@ -323,6 +323,18 @@ ian_fahey:
     - url: https://twitter.com/Cavorax
       icon: fa-twitter
 
+joe_markiewicz:
+  name: Joe Markiewicz
+  job_title: Analytics Engineering Manager (Fivetran dbt package maintainer)
+  description: Joe is a dbt package maintainer/manager at Fivetran by day, and a cat obsessed video game developer by night. Actually, Joe is cat obsessed all day.
+  organization: Fivetran
+  image_url: /img/blog/authors/joe-markiewicz.jpeg
+  links:
+    - url: https://www.linkedin.com/in/joseph-markiewicz-8224a990/
+      icon: fa-linkedin
+    - url: https://twitter.com/JoeMarkiewicz17
+      icon: fa-twitter
+
 yu_ishikawa:
    name: Yu Ishikawa
    job_title: Senior Data Privacy Engineer
@@ -331,3 +343,30 @@ yu_ishikawa:
    links:
    - url: https://www.linkedin.com/in/yuishikawa0301
      icon: fa-linkedin
+
+brittany_krauth:
+   name: Brittany Krauth
+   job_title: Manager, Analytics & Insights
+   description: Brittany Krauth works as Manager, Analytics & Insights supporting Degreed's upskilling platform. Brittany is passionate about building a company-wide data-driven culture. She has worked in various analytical roles, from a focus on predictive analytics to data visualization to process improvements. In addition, she holds a BS in Industrial Engineering from Georgia Tech. In her spare time, Brittany competes in dog agility and trains donkeys.
+   organization: Degreed
+   image_url: /img/blog/authors/brittany-krauth.png
+   links:
+   - url: https://www.linkedin.com/in/brittanykrauth
+     icon: fa-linkedin
+
+charlie_summers:
+   name: Charlie Summers
+   job_title: Staff Software Engineer
+   description: Charlie is the Data Engineer Tech Lead at Merit. He introduced Merit to dbt and it's been a fantastic fit for a wide variety of data pipelines. He likes thinking about the future of data - integrating event streams, analyzing encrypted data, capturing fine-grained lineage, and making it easy to build simple apps on top of data warehouses/lakes.
+   organization: Merit
+   image_url: /img/blog/authors/charlie-summers.jpeg
+   links:
+   - url: https://www.linkedin.com/in/charliesummers
+     icon: fa-linkedin
+
+wasila_quader:
+   name: Wasila Quader
+   job_title: Associate Analytics Engineer
+   description: After a winding road through healthcare spreadsheets and data science projects, Wasila discovered analytics engineering as an apprentice of dbt Labs' Foundry Program. She now works as an analytics engineer on dbt Labs' professional services team.
+   organization: dbt Labs
+   image_url: /img/blog/authors/wasila-quader.png
