@@ -14,7 +14,7 @@ version: 2
 macros:
   - name: <macro name>
     [description](description): <markdown_string>
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     arguments:
       - name: <arg name>

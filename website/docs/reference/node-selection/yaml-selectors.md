@@ -35,7 +35,7 @@ selectors:
 ## Definitions
 
 Each `definition` is comprised of one or more arguments, which can be one of the following:
-* **CLI-style:** strings, representing CLI-style) arguments
+* **CLI-style:** strings, representing CLI-style arguments
 * **Key-value:** pairs in the form `method: value`
 * **Full YAML:** fully specified dictionaries with items for `method`, `value`, operator-equivalent keywords, and support for `exclude`
 
@@ -124,10 +124,10 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
 - union:
     - method: fqn
       value: model_a
-      greedy: eager  # default: will include all tests that touch model_a
+      indirect_selection: eager  # default: will include all tests that touch model_a
     - method: fqn
       value: model_b
-      greedy: cautious  # will not include tests touching model_b
+      indirect_selection: cautious  # will not include tests touching model_b
                         # if they have other unselected parents
 ```
 
@@ -261,3 +261,31 @@ selectors:
     default: "{{ target.name == 'prod' | as_bool }}"
     definition: ...
 ```
+
+<VersionBlock firstVersion="1.2">
+
+### Selector inheritance
+
+Selectors can reuse and extend definitions from other selectors, via the `selector` method.
+
+```yml
+selectors:
+  - name: foo_and_bar
+    definition:
+      intersection:
+        - tag: foo
+        - tag: bar
+
+  - name: foo_bar_less_buzz
+    definition:
+      intersection:
+        # reuse the definition from above
+        - method: selector
+          value: foo_and_bar
+        # with a modification!
+        - exclude:
+            - method: tag
+              value: buzz
+```
+
+</VersionBlock>

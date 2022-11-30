@@ -1,14 +1,24 @@
-name: Add size label to PR
-on:
-  pull_request_target
+name: labeler
+
+on: [pull_request_target]
 
 jobs:
-  build:
-    name: Add Size Label to PR
+  labeler:
     runs-on: ubuntu-latest
+    name: Label the PR size
     steps:
-    - name: Add Size Label to PR
-      uses: WizardOhio24/label-pr-size-action@v1.0.1
-      with:
+      - uses: codelytv/pr-size-labeler@v1.8.1
+        with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          size-label-color: '10, size: x-small | 50, size: small | 250, size: medium | 500, size: large | 100000, size: x-large'
+          xs_label: 'size: x-small'
+          xs_max_size: '10'
+          s_label: 'size: small'
+          s_max_size: '50'
+          m_label: 'size: medium'
+          m_max_size: '250'
+          l_label: 'size: large'
+          l_max_size: '100000'
+          xl_label: 'size: x-large'
+          fail_if_xl: 'false'
+          files_to_ignore: ''
+      
