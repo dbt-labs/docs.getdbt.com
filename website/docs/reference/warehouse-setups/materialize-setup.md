@@ -11,7 +11,7 @@ meta:
   slack_channel_name: '#db-materialize'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Materialize'
-  config_page: 'no-configs'
+  config_page: 'materialize-configs'
 ---
 
 :::info Vendor-supported plugin
@@ -49,7 +49,7 @@ pip is the easiest way to install the adapter:
 
 ## Connecting to Materialize
 
-Once you have Materialize [installed and running](https://materialize.com/docs/install/), adapt your `profiles.yml` to connect to your instance using the following reference profile configuration:
+Once you have set up a [Materialize account](https://materialize.com/register/), adapt your `profiles.yml` to connect to your instance using the following reference profile configuration:
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -59,16 +59,26 @@ dbt-materialize:
   outputs:
     dev:
       type: materialize
-      threads: 1
       host: [host]
       port: [port]
-      user: [user]
+      user: [user@domain.com]
       pass: [password]
       dbname: [database]
-      schema: [name of your dbt schema]
+      cluster: [cluster] # default 'default'
+      schema: [dbt schema]
+      sslmode: require
+      keepalives_idle: 0 # default 0, indicating the system default
+      connect_timeout: 10 # default 10 seconds
+      retries: 1 # default 1 retry on error/timeout when opening connections
 ```
 
 </File>
+
+### Configurations
+
+`cluster`: The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) is used to maintain materialized views or indexes. A [`default` cluster](https://materialize.com/docs/sql/show-clusters/#default-cluster) is pre-installed in every environment, but we recommend creating dedicated clusters to isolate the workloads in your dbt project (for example, `staging` and `data_mart`).
+
+`keepalives_idle`: The number of seconds before sending a ping to keep the Materialize connection active. If you are encountering `SSL SYSCALL error: EOF detected`, you may want to lower the [keepalives_idle](https://docs.getdbt.com/reference/warehouse-setups/postgres-setup#keepalives_idle) value to prevent the database from closing its connection.
 
 To test the connection to Materialize, run:
 
@@ -90,14 +100,17 @@ Type | Supported? | Details
 `view` | YES | Creates a [view](https://materialize.com/docs/sql/create-view/#main).
 `materializedview` | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main).
 `table` | YES | Creates a [materialized view](https://materialize.com/docs/sql/create-materialized-view/#main). (Actual table support pending [#5266](https://github.com/MaterializeInc/materialize/issues/5266))
-`index` | YES | (Deprecated) Creates an index. Use the [`indexes` config](materialize-configs#indexes) to create indexes on `materializedview`, `view` or `source` relations instead.
 `sink` | YES | Creates a [sink](https://materialize.com/docs/sql/create-sink/#main).
 `ephemeral` | YES | Executes queries using <Term id="cte">CTEs</Term>.
 `incremental` | NO | Use the `materializedview` <Term id="materialization" /> instead. Materialized views will always return up-to-date results without manual or configured refreshes. For more information, check out [Materialize documentation](https://materialize.com/docs/).
 
+### Indexes
+
+Materialized views (`materializedview`), views (`view`) and sources (`source`) may have a list of [`indexes`](resource-configs/materialize-configs/indexes) defined.
+
 ### Seeds
 
-Running [`dbt seed`](commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created. If you want to rerun `dbt seed`, you must first drop existing views manually with `drop view`.
+Running [`dbt seed`](commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created.
 
 ### Tests
 
@@ -106,4 +119,3 @@ Running [`dbt test`](commands/test) with the optional `--store-failures` flag or
 ## Resources
 
 - [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/)
-- [Get started](https://github.com/MaterializeInc/demos/tree/main/dbt-get-started) using dbt and Materialize together
