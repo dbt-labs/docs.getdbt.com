@@ -13,7 +13,6 @@ date: 2020-07-01
 is_featured: false
 ---
 
-
 Before I dive into how to create this, I have to say this. **You probably don’t need this**. I, along with my other Fishtown colleagues, have spent countless hours working with clients that ask for near-real-time streaming data. However, when we start digging into the project, it is often realized that the use case is not there. There are a variety of reasons why near real-time streaming is not a good fit. Two key ones are:
 
 1.  The source data isn’t updating frequently enough.
@@ -28,7 +27,7 @@ So when presented with a near-real-time modeling request, I (and you as well!) h
 
 Recently I was working on a JetBlue project and was presented with a legitimate use case: operational data. JetBlue’s Crewmembers need to make real-time decisions on when to close the door to a flight or rebook a flight. If you have ever been to an airport when there is a flight delay, you know how high the tension is in the room for airline employees to make the right decisions. They literally cannot do their jobs without real-time data.
 
-If possible, the best thing to do is to query data as close to the source as possible. You don’t want to hit your production database unless you want to frighten and likely anger your DBA. Instead, the preferred approach is to replicate the source data to your analytics warehouse, which would provide a suitable environment for analytic queries. In JetBlue’s case, the data arrives in JSON blobs, which then need to be unnested, transformed, and joined before the data becomes useful for analysis. There was no way to just query from the source to get the information people required.
+If possible, the best thing to do is to query data as close to the source as possible. You don’t want to hit your production database unless you want to frighten and likely anger your DBA. Instead, the preferred approach is to replicate the source data to your analytics warehouse, which would provide a suitable environment for analytic queries. In JetBlue’s case, the data arrives in <Term id="json" /> blobs, which then need to be unnested, transformed, and joined before the data becomes useful for analysis. There was no way to just query from the source to get the information people required.
 
 Tldr: If you need transformed, operational data to make in-the-moment decisions then you probably need real-time data.
 
@@ -115,7 +114,7 @@ As you start to implement lambda views with more sources, creating a macro for t
 You need to filter often and intentionally on your current view flow. This is because there is usually a lot of data being transformed and you want to transform only what is necessary. There are two main places that filters should be considered.
 
 *   **At the beginning of the current view flow**: This is usually happening at Transformation 1. This filter takes into account how often the historical table is run. If it’s being run every hour, then I filter for only the last 2 hours of “current rows”. The overlap is assurance that if there are any issues with the job run, we don’t miss out on rows.
-*   **At the unioned model**: If you have late-arriving facts, you will want to include a primary key filter to assure that there are no fanouts.
+*   **At the unioned model**: If you have late-arriving facts, you will want to include a <Term id="primary-key" /> filter to assure that there are no fanouts.
 
 As you start to create more lambda views, you will want to make the filter into a macro for drier code. Here is a sample macro for you to use:
 
@@ -146,7 +145,7 @@ As you start to create more lambda views, you will want to make the filter into 
 ```    
     
 
-\*\* Note for the macro above, the timestamp is `var(lambda_timestamp, run_started_at)`. We want to default to the last time the historical models were run but allow for flexibility depending on the situation. It would be useful to note that we used [run\_started\_at timestamp](https://docs.getdbt.com/reference/dbt-jinja-functions/run_started_at/) rather than `current_timestamp()` to avoid any situations where there is a job failure and the historical table hasn’t been updated for the last 5 hours.
+\*\* Note for the macro above, the timestamp is `var(lambda_timestamp, run_started_at)`. We want to default to the last time the historical models were run but allow for flexibility depending on the situation. It would be useful to note that we used [run\_started\_at timestamp](/reference/dbt-jinja-functions/run_started_at/) rather than `current_timestamp()` to avoid any situations where there is a job failure and the historical table hasn’t been updated for the last 5 hours.
 
 ### Write idempotent models
 

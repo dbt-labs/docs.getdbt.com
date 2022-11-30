@@ -5,7 +5,7 @@ id: "list"
 
 ## Overview
 
-The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](run). `dbt list` is an alias for `dbt ls`.
+The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](run). `dbt list` is an alias for `dbt ls`. While `dbt ls` will read your [connection profile](/docs/get-started/connection-profiles) to resolve [`target`](dbt-jinja-functions/target)-specific logic, this command will not connect to your database or run any queries.
 
 ### Usage
 ```

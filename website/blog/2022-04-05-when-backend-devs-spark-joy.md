@@ -16,7 +16,7 @@ is_featured: true
 
 *“Hmm, I’m actually not super sure why `customer_id` is passed as an int and not a string.”*
 
-*“The primary key for that <Term id="table" /> is actually the `order_id`, not the `id` field.”*
+*“The <Term id="primary-key" /> for that <Term id="table" /> is actually the `order_id`, not the `id` field.”*
 
 I think many analytics engineers, including myself, have been on the receiving end of some of these comments from their backend application developers. 
 
