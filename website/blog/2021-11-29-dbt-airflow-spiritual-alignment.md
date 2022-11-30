@@ -22,7 +22,7 @@ In my experience, these are false dichotomies, that sound great as hot takes but
 
 <!--truncate-->
 
-In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the API](https://docs.getdbt.com/dbt-cloud/api-v2)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
+In my days as a data consultant and now as a member of the dbt Labs Solutions Architecture team, I’ve frequently seen Airflow, dbt Core & dbt Cloud ([via the official provider](https://registry.astronomer.io/providers/dbt-cloud?type=Operators&utm_campaign=Monthly+Product+Updates&utm_medium=email&_hsmi=208603877&utm_content=208603877&utm_source=hs_email)) blended as needed, based on the needs of a specific data pipeline, or a team’s structure and skillset.
 
 More fundamentally, I think it’s important to call out that Airflow + dbt are **spiritually aligned** in purpose. They both exist to facilitate clear communication across data teams, in service of producing trustworthy data.
 
@@ -123,8 +123,6 @@ When a dbt run fails within an Airflow pipeline, an engineer monitoring the over
 
 dbt provides common programmatic interfaces (the [dbt Cloud Admin + Metadata APIs](/docs/dbt-cloud/dbt-cloud-api/cloud-apis), and [.json-based artifacts](/reference/artifacts/dbt-artifacts) in the case of dbt Core) that provide the context needed for the engineer to self-serve—either by rerunning from a point of failure or reaching out to the owner.
 
-![dbt run log](/img/blog/airflow-dbt-run-log.png "dbt run log")
-
 ## Why I ❤️ dbt Cloud + Airflow
 
 dbt Core is a fantastic framework for developing data transformation + testing logic. It is less fantastic as a shared interface for data analysts + engineers to collaborate **_on production runs of transformation jobs_**.
@@ -147,7 +145,7 @@ This can be perfectly ok, in the event your data team is structured for data eng
 
 Once the data has been ingested, dbt Core can be used to model it for consumption. Most of the time, users choose to either:
 Use the dbt CLI+ [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator) with Airflow (If you take this route, you can use an external secrets manager to manage credentials externally), or
-Use the [KubernetesPodOperator](https://registry.astronomer.io/providers/kubernetes/modules/kubernetespodoperator) for each dbt job, as data teams have at places like [Gitlab](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_trusted_data.py#L72) and [Snowflake](https://www.snowflake.com/blog/migrating-airflow-from-amazon-ec2-to-kubernetes/). 
+Use the [KubernetesPodOperator](https://registry.astronomer.io/providers/kubernetes/modules/kubernetespodoperator) for each dbt job, as data teams have at places like [Gitlab](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_trusted_data.py#L72) and [Snowflake](https://www.snowflake.com/blog/migrating-airflow-from-amazon-ec2-to-kubernetes/).
 
 Both approaches are equally valid; the right one will depend on the team and use case at hand.
 
@@ -191,29 +189,11 @@ This means that whether you’re actively developing or you simply want to rerun
 
 ### dbt Cloud + Airflow
 
-With dbt Cloud and its aforementioned [APIs](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/cloud-apis), any dbt user can configure dbt runs from the UI.
-
-In Airflow, engineers can then call the API, and everyone can move on with their lives. This allows the API to be a programmatic interface between analysts and data engineers, vs relying on the human interface.
-
-If you look at what this practically looks like in code (my [airflow-toolkit repo is here](https://github.com/sungchun12/airflow-toolkit/blob/demo-sung/dags/examples/dbt_cloud_example.py)), just a few settings need to be configured after you create the initial python API call: [here](https://github.com/sungchun12/airflow-toolkit/blob/95d40ac76122de337e1b1cdc8eed35ba1c3051ed/dags/dbt_cloud_utils.py)
-
-```
-
-dbt_cloud_job_runner_config = dbt_cloud_job_runner(
-
-    account_id=4238, project_id=12220, job_id=12389, cause=dag_file_name
-
-)
-
-```
-
-If the operator fails, it’s an Airflow problem. If the dbt run returns a model or test failure, it’s a dbt problem and the analyst can be notified to hop into the dbt Cloud UI to debug.
-
-#### Using the new dbt Cloud Provider
+#### Using the dbt Cloud Provider
 
 With the new dbt Cloud Provider, you can use Airflow to orchestrate and monitor your dbt Cloud jobs without any of the overhead of dbt Core. Out of the box, the dbt Cloud provider comes with:
 
-An operator that allows you to both [run a predefined job in dbt Cloud and download an artifact from a dbt Cloud job](https://registry.astronomer.io/dags/example-dbt-cloud).
+An operator that allows you to both run a predefined job in dbt Cloud and download an artifact from a dbt Cloud job.
 A hook that gives you a secure way to leverage Airflow’s connection manager to connect to dbt Cloud. The Operator leverages the hook, but you can also [use the hook directly in a Taskflow function or PythonOperator](https://registry.astronomer.io/dags/dbt-cloud-operational-check) if there’s custom logic you need that isn’t covered in the Operator.
 
 A sensor that allows you to poll for a job completion. You can use this [for workloads where you want to ensure your dbt job has run before continuing on with your DAG](https://registry.astronomer.io/dags/fivetran-dbt-cloud-census).
@@ -221,26 +201,7 @@ TL;DR - This combines the end-to-end visibility of everything (from ingestion th
 
 #### Setting up Airflow and dbt Cloud
 
-To set up Airflow and dbt Cloud, you can:
-
-
-1. Set up a dbt Cloud job, as in the example below.
-
-![job settings](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/job-settings.png)
-
-2. Set up an Airflow Connection ID
-
-![airflow dbt run select](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/airflow-connection-ID.png)
-
-3. Set up your Airflow DAG similar to [this example](https://github.com/apache/airflow/blob/main/airflow/providers/dbt/cloud/example_dags/example_dbt_cloud.py).
-
-4. You can use Airflow to call the dbt Cloud API via the new `DbtCloudRunJobOperator` to run the job and monitor it in real time through the dbt Cloud interface.
-
-![dbt Cloud API graph](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/dbt-Cloud-API-graph.png)
-
-![Monitor Job Runs](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/Monitor-Job-Runs.png)
-
-![run number](/img/blog/2021-11-29-dbt-airflow-spiritual-alignment/run-number.png)
+To set up Airflow and dbt Cloud, you can follow the step by step instructions: [here](https://docs.getdbt.com/guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud)
 
 If your task errors or fails in any of the above use cases, you can view the logs within dbt Cloud (think: data engineers can trust analytics engineers to resolve errors).
 

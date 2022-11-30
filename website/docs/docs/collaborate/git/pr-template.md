@@ -11,7 +11,7 @@ that a PR Template URL is configured in the Repository details page in your
 Account Settings. **Note:** If this template URL is unset, then the IDE will
 instead show a prompt to merge the changes directly into the `master` branch.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url.png" title="Open a PR in the IDE"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url-new-ide.png" title="Open a PR in the IDE"/>
 
 The PR template URL supports two variables which can be used to build a URL string.
 These variables, `{{source}}` and `{{destination}}` return branch names based on the

@@ -140,7 +140,6 @@ The following context methods _are_ available in the `generate_schema_name` macr
 | Other macros in your project | Macro | ✅ |
 | Other macros in your packages | Macro | ✅ |
 
-
 #### Which vars are available in generate_schema_name?
 
 <Changelog>
@@ -159,7 +158,6 @@ In the `generate_schema_name` macro examples shown above, the `target.name` cont
  - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.
 * **ci**:  A [continuous integration](/docs/collaborate/git/connect-github) environment running on Pull Requests in GitHub, GitLab, etc.
  - **prod**: The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
->>>>>>> next
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.
 

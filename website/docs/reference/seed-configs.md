@@ -130,7 +130,7 @@ Seed configurations, like model configurations, are applied hierarchically — c
 
 ### Examples
 #### Apply the `schema` configuration to all seeds
-To apply a configuration to all seeds, including those in any installed [packages](package-management), nest the configuration directly under the `seeds` key:
+To apply a configuration to all seeds, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `seeds` key:
 
 <File name='dbt_project.yml'>
 
