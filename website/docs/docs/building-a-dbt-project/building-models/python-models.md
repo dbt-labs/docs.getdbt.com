@@ -521,8 +521,8 @@ def model(dbt, session):
 
 #### Code reuse
 
-Currently, Python functions defined in one dbt model cannot be imported and reused in other models. This is something we'd like dbt to support. There are two patterns we're considering:
-1. Creating and registering **"named" UDFs**. This process is different across data platforms and has some performance limitations. (Snowpark does support ["vectorized" UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html): Pandas-like functions that can be executed in parallel.)
+Currently, you cannot import or reuse Python functions defined in one dbt model, in other models.  This is something we'd like dbt to support. There are two patterns we're considering:
+1. Creating and registering **"named" UDFs**. This process is different across data platforms and has some performance limitations. (Snowpark does support ["vectorized" UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html): pandas-like functions that you can execute in parallel.)
 2. Using **private Python packages**. In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
 
 :::note ❓ Our questions
@@ -544,16 +544,16 @@ That's about where the agreement ends. There are numerous frameworks with their 
 
 When developing a Python model, you will find yourself asking these questions:
 
-**Why Pandas?** It's the most common API for DataFrames. It makes it easy to explore sampled data and develop transformations locally. You can “promote” your code as-is into dbt models and run it in production for small datasets.
+**Why pandas?** It's the most common API for DataFrames. It makes it easy to explore sampled data and develop transformations locally. You can “promote” your code as-is into dbt models and run it in production for small datasets.
 
-**Why _not_ Pandas?** Performance. Pandas runs "single-node" transformations, which cannot benefit from the parallelism and distributed computing offered by modern data warehouses. This quickly becomes a problem as you operate on larger datasets. Some data platforms support optimizations for code written using Pandas' DataFrame API, preventing the need for major refactors. For example, ["Pandas on PySpark"](https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_ps.html) offers support for 95% of Pandas functionality, using the same API while still leveraging parallel processing.
+**Why _not_ pandas?** Performance. pandas runs "single-node" transformations, which cannot benefit from the parallelism and distributed computing offered by modern data warehouses. This quickly becomes a problem as you operate on larger datasets. Some data platforms support optimizations for code written using pandas' DataFrame API, preventing the need for major refactors. For example, ["pandas on PySpark"](https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_ps.html) offers support for 95% of pandas functionality, using the same API while still leveraging parallel processing.
 
 :::note ❓ Our questions
-- When developing a new dbt Python model, should we recommend Pandas-style syntax for rapid iteration and then refactor?
+- When developing a new dbt Python model, should we recommend pandas-style syntax for rapid iteration and then refactor?
 - Which open source libraries provide compelling abstractions across different data engines and vendor-specific APIs?
 - Should dbt attempt to play a longer-term role in standardizing across them?
 
-💬 Discussion: ["Python models: the Pandas problem (and a possible solution)"](https://github.com/dbt-labs/dbt-core/discussions/5738)
+💬 Discussion: ["Python models: the pandas problem (and a possible solution)"](https://github.com/dbt-labs/dbt-core/discussions/5738)
 :::
 
 ### Limitations
