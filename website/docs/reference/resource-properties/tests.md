@@ -148,11 +148,12 @@ This feature is not implemented for analyses.
 </Tabs>
 
 ## Related documentation
-* [Testing guide](building-a-dbt-project/tests)
+
+* [Testing guide](/docs/build/tests)
 
 ## Description
 
-The `tests` property defines assertions about a column, table, or view. The property contains a list of [generic tests](building-a-dbt-project/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
+The `tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic tests](/docs/build/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 
@@ -182,6 +183,8 @@ models:
 ### `unique`
 
 This test validates that there are no duplicate values present in a field.
+                
+The config and where clause are optional.
 
 <File name='models/<filename>.yml'>
 
@@ -193,7 +196,9 @@ models:
     columns:
       - name: order_id
         tests:
-          - unique
+          - unique:
+              config:
+                where: "order_id > 21"
 ```
 
 </File>
@@ -228,7 +233,7 @@ models:
 
 ### `relationships`
 
-This test validates that all of the records in a child table have a corresponding record in a parent table. This property is referred to as "referential integrity".
+This test validates that all of the records in a child <Term id="table" /> have a corresponding record in a parent table. This property is referred to as "referential integrity".
 
 The following example tests that every order's `customer_id` maps back to a valid `customer`.
 
@@ -292,9 +297,9 @@ models:
 
 Check out the guide on writing a [custom generic test](custom-generic-tests) for more information.
 
-### Define a custom name for one test
-
 <VersionBlock firstVersion="1.1">
+
+### Define a custom name for one test
 
 By default, dbt will synthesize a name for your generic test by concatenating:
 - test name (`not_null`, `unique`, etc)
@@ -432,17 +437,11 @@ $ dbt test
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.0">
-
-Only supported by v1.1 or newer.
-
-</VersionBlock>
+<VersionBlock firstVersion="1.1">
 
 ### Alternative format for defining tests
 
-<VersionBlock firstVersion="1.1">
-
-When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
+When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
 
 This example is identical to the one above:
 
@@ -468,11 +467,5 @@ models:
 ```
 
 </File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-Only supported by v1.1 or newer.
 
 </VersionBlock>

@@ -5,9 +5,8 @@
   subheader: The annual conference dedicated to the advancement of analytics engineering wrapped up on December 10th.
   button_text: Watch the talks
   url: https://getdbt.com/coalesce-2021/
-- name: staging
-  header: "Staging: dbt Demo Day"
-  subheader: Is back April 19th! Learn what's new and coming soon to dbt.
-  button_text: Register
-  url: https://www.getdbt.com/resources/staging-dbt-demo-days-april-2022/?utm_medium=internal&utm_source=blog&utm_campaign=q1-2023_staging-demo-days_awareness&utm_content=connect
-
+- name: setup
+  header: "Just Getting Started?"
+  subheader: Check out guides on getting your warehouse set up and connected to dbt Cloud.
+  button_text: Learn more
+  url: https://docs.getdbt.com/docs/get-started/getting-started/overview

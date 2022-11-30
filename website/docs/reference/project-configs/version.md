@@ -7,7 +7,7 @@ dbt projects have two distinct types of the `version` tags. This field has a dif
 
 ## `dbt_project.yml` versions
 
-The version tag in a `dbt_project` file represents the version of your dbt project. Although **this is a required parameter**, it is not currently meaningfully used by dbt. The version must be in a [semantic version](https://semver.org/) format, e.g. `1.0.0`. For more on Core versions, see "[About dbt Core versions](/docs/core-versions)."
+The version tag in a `dbt_project` file represents the version of your dbt project. Although **this is a required parameter**, it is not currently meaningfully used by dbt. The version must be in a [semantic version](https://semver.org/) format, e.g. `1.0.0`. For more on Core versions, see [About dbt Core versions](/docs/dbt-versions/core).
 <File name='dbt_project.yml'>
 
 ```yml
@@ -29,7 +29,5 @@ For more on property files, see their general [documentation](reference/configs-
 ```yml
 version: 2  # Only 2 is accepted by current and recent versions of dbt.
 ```
- 
+
 </File>
-
-

@@ -26,7 +26,7 @@ snapshots:
 </File>
 
 ## Description
-The database that dbt should build a [snapshot](snapshots) table into.
+The database that dbt should build a [snapshot](snapshots) <Term id="table" /> into.
 
 Notes:
 - The specified database must already exist
@@ -72,7 +72,7 @@ snapshots:
 
 ### Use the same database-naming behavior as models
 
-Leverage the [`generate_database_name` macro](using-custom-databases) to build snapshots in databases that follow the same naming behavior as your models.
+Leverage the [`generate_database_name` macro](/docs/build/custom-databases) to build snapshots in databases that follow the same naming behavior as your models.
 
 Notes:
 * This macro is not available when configuring from the `dbt_project.yml` file, so must be configured in a snapshot config block.
