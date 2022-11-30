@@ -26,7 +26,6 @@ The example job seen in the screenshot above belongs to the environment "Prod". 
 We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
 
 
-
  > **Starting with v1.0, any subsequent minor versions will be supported in dbt Cloud for 1 year post release. At the end of the 1 year window, accounts must upgrade to a supported version of dbt or risk service disruption.**
 
 We will continue to update this table so that customers know when we plan to stop supporting different versions of Core in dbt Cloud.
@@ -61,8 +60,6 @@ Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v0
 Refactoring code is much easier when you're updating a well-defined, constrained surface area. Doing things incrementally is the way to go.
 
 Additionally upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
-
-
 
 | dbt Cloud Feature | dbt Core Version Needed |
 | ------------- | -------------- |
