@@ -28,7 +28,7 @@ Vars supplied to package_name.my_model = {
 ```
 
 To define a variable in your project, add the `vars:` config to your `dbt_project.yml` file.
-See the docs on [using variables](using-variables) for more information on
+See the docs on [using variables](/docs/build/project-variables) for more information on
 defining variables in your dbt project.
 
 <File name='dbt_project.yml'>

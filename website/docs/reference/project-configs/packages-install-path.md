@@ -12,7 +12,7 @@ default_value: dbt_packages
 
 
 ## Definition
-Optionally specify a custom directory where [packages](package-management) are installed when you run the `dbt deps` [command](deps). Note that this directory is usually git-ignored.
+Optionally specify a custom directory where [packages](/docs/build/packages) are installed when you run the `dbt deps` [command](deps). Note that this directory is usually git-ignored.
 
 ## Default
 By default, dbt will install packages in the `dbt_packages` directory, i.e. `packages-install-path: dbt_packages`

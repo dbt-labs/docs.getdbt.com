@@ -5,7 +5,7 @@ id: "mssql-configs"
 
 ## Materializations
 
-Ephemeral materialization is not supported.
+Ephemeral materialization is not supported due to T-SQL not supporting nested CTEs. It may work in some cases when you're working with very simple ephemeral models.
 
 ### Tables
 
@@ -98,7 +98,7 @@ Some examples:
 ```sql
 {{
     config({
-        "as_columnstore": false, 
+        "as_columnstore": false,
         "materialized": 'table',
         "post-hook": [
             "{{ create_clustered_index(columns = ['row_id', 'row_id_complement'], unique=True) }}",
@@ -106,7 +106,7 @@ Some examples:
             "{{ create_nonclustered_index(columns = ['row_id'], includes = ['modified_date']) }}",
         ]
     })
-    
+
 }}
 
 select *
@@ -114,6 +114,35 @@ from ...
 ```
 
 </File>
+
+## Grants with auto provisioning
+
+dbt 1.2 introduced the capability to grant/revoke access using the `grants` [configuration option](grants).
+In dbt-sqlserver, you can additionally set `auto_provision_aad_principals` to `true` in your model configuration if you are using Azure Active Directory authentication with an Azure SQL Database or Azure Synapse Dedicated SQL Pool.
+
+This will automatically create the Azure Active Directory principal inside your database if it does not exist yet.
+Note that the principals need to exist in your Azure Active Directory, this just makes them available to use in your database.
+
+Principals are not removed again when they are removed from the grants configuration.
+
+<File name="dbt_project.yml">
+
+```yaml
+models:
+  your_project_name:
+    auto_provision_aad_principals: true
+```
+
+</File>
+
+## cross-database macros
+
+The following macros are currently not supported:
+
+* `bool_or`
+* `array_construct`
+* `array_concat`
+* `array_append`
 
 ## dbt-utils
 

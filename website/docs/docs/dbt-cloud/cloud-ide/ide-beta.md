@@ -19,9 +19,9 @@ To develop in dbt Cloud IDE (beta), you need to meet these requirements:
 
 
 - Your dbt project must be compatible with dbt v0.15.0. The dbt IDE is powered by the [dbt-rpc](reference/commands/rpc) which was overhauled in dbt v0.15.0.
-- You must have a [Developer License](dbt-cloud/access-control/cloud-seats-and-users).  
+- You must have a [Developer License](/docs/collaborate/manage-access/seats-and-users).  
 - Currently only multi-tenant instances of dbt Cloud can develop in the updated beta version of the Cloud IDE. Single-tenant instances will soon be able to opt into this Beta release.
-- Your dbt repository (in dbt Cloud) must have `write` access enabled. See [Connecting your GitHub Account](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application) and [Importing a project by git URL](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) for detailed setup instructions.
+- Your dbt repository (in dbt Cloud) must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions.
 
 
 The IDE is a single interface for building, testing, running, and version controlling dbt projects from your browser. Anyone can use the IDE, from new dbt developers to seasoned practitioners.
@@ -29,18 +29,18 @@ The IDE is a single interface for building, testing, running, and version contro
 
 To use the dbt Cloud IDE, you need to log in with a dbt Cloud account and click  **Develop** at the top of the page.
 
-You can refer to [Getting Started with dbt Cloud](https://docs.getdbt.com/guides/getting-started) to quickly get set up and perform some key tasks. For more information, see the following articles.
+You can refer to [Getting Started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud) to quickly get set up and perform some key tasks. For more information, see the following articles:
 
 - [What is dbt?](docs/introduction#what-else-can-dbt-do)
-- [Building your first project](guides/getting-started/building-your-first-project)
+- [Building your first project](/docs/get-started/getting-started/building-your-first-project)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [Using Git](https://docs.github.com/en/github/getting-started-with-github/using-git)
 
-**Is there a cost to using the dbt Cloud IDE?** 
+**Is there a cost to using the dbt Cloud IDE?**
 
 Not at all! You can use dbt Cloud when you sign up for the Free [Developer plan](https://www.getdbt.com/pricing/), which comes with one developer seat. If you’d like to access more features or have more developer seats, you can upgrade your account to the Team or Enterprise plan. See dbt [Pricing plans](https://www.getdbt.com/pricing/) for more details.
 
-**Can I be a contributor to dbt Cloud?** 
+**Can I be a contributor to dbt Cloud?**
 
 Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See [Contributing](/docs/contributing/oss-expectations) for details on what to expect when contributing to the dbt open source software (OSS).
 
@@ -52,11 +52,11 @@ There are two main ways to develop with dbt: using the web-based IDE in dbt Clou
 
 - **dbt Core CLI** - The CLI uses [dbt Core](docs/introduction), an [open-source](https://github.com/dbt-labs/dbt) software that’s freely available. You can build your dbt project in a code editor, like Jetbrains or VSCode, and run dbt commands from the command line.
 
-**What type of support is provided with dbt Cloud?** 
+**What type of support is provided with dbt Cloud?**
 
 The global dbt Support team is available to help dbt Cloud users by email or in-product live chat. Developer and Team accounts offer 24x5 support, while Enterprise customers have priority access and options for custom coverage.
 
-If you have project-related or modeling questions, you can use our dedicated [GitHub Discussions](https://docs.getdbt.com/docs/contributing/long-lived-discussions-guidelines) or [dbt Community Slack](http://getdbt.slack.com) to get help as well. 
+If you have project-related or modeling questions, you can use our dedicated [Community Forum](/community/forum) to get help as well.
 
 ## dbt Cloud IDE features
 
@@ -68,19 +68,19 @@ With dbt Cloud IDE, you can:
 - Deploy safely using development environments like how git-enabled version control enables collaboration and a return to previous states
 
 
-**Find and replace** 
+**Find and replace**
 
 Press Command-F or Ctrl-F to open the find and replace bar in the upper right corner of the current file in the IDE.  The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow.
 
-**Search across files** 
+**Search across files**
 
 You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O or Ctrl-O to find text across all files in your current project. and write your file name. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view it in the IDE.
 
-**Keyboard shortcuts** 
+**Keyboard shortcuts**
 
 There are default keyboard shortcuts that can help make development more productive and easier for everyone. Press Fn-F1 to view a list of all of them.
 
-**Multiple selections** 
+**Multiple selections**
 
 You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
 
@@ -90,15 +90,15 @@ You can make multiple selections for quick and simultaneous edits. The below com
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/multi-selector.gif" title="Multiple Selections"/>
 
-**File explorer** 
+**File explorer**
 
 The File explorer on the left side of the IDE allows you to organize your project and manage your files and folders. Click the three dot menu associated with the file or folder to  create, rename, and delete it.  
 
-**Drag and drop** 
+**Drag and drop**
 
 You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right clicking on the breadcrumb file.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/file-explorer.png" title="File Explorer"/> 
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/file-explorer.png" title="File Explorer"/>
 
 **Organize tabs**
 
@@ -108,7 +108,7 @@ You can move your tabs around to reorganize your work in the IDE. You can also r
 
 ## Development in the dbt Cloud IDE Beta
 
-With the IDE, you can compile dbt code into SQL and run it against your database directly. It leverages the open-source [dbt-rpc](https://docs.getdbt.com/reference/commands/rpc) plugin to intelligently recompile only the changes  in your project. 
+With the IDE, you can compile dbt code into SQL and run it against your database directly. It leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to intelligently recompile only the changes  in your project.
 
 The dbt Cloud IDE Beta brings the startup and interaction time for dbt project development down from minutes to seconds.
 
@@ -118,13 +118,13 @@ You can invoke dbt commands, compile jinja into query, preview data from the war
 
 **Hot and cold start**
 
-You can launch the dbt Cloud IDE from a cold start or a hot start. 
+You can launch the dbt Cloud IDE from a cold start or a hot start.
 
 - **Cold start** -- The process of starting an IDE session for the first time. Cold starting the IDE can take about 30 seconds to load. Behind the scene, dbt is provisioning a dedicated server for you to build a dbt project. After this step finishes, the IDE is ready for use. In the meantime, dbt is also starting up the dbt-rpc container to interact with dbt-core. You don’t need to wait for this to finish before the IDE is ready for editing.
 
 - **Hot start** -- The process of resuming an existing IDE session (within 3 hours of the last activity). Hot starting is faster and takes less than 3 seconds to load. This is because the environment is already available and you’re simply resuming your session.
 
-dbt Labs closely monitors these two start modes as key performance metrics to help ensure consistent and reliable experiences. 
+dbt Labs closely monitors these two start modes as key performance metrics to help ensure consistent and reliable experiences.
 
 **Work retention**
 
@@ -145,15 +145,15 @@ The IDE updates in real-time as models, tests, seeds, and operations are run. If
 
 **Lineage tab**
 
-The visual in the Lineage tab adds more context to your dependencies and directional flow. 
+The visual in the Lineage tab adds more context to your dependencies and directional flow.
 
 You get to see how models are used as building blocks from left to right to transform your data from crude or normalized raw sources, into cleaned-up modular derived pieces, and finally into the final outputs on the far right of the DAG, ready to be used by the analyst in infinite combinations to present it in ways to help clients, customers, and organizations make better decisions.
 
 You can access files in the lineage tab by double clicking on a particular model.
 
-**Command bar + status** 
+**Command bar + status**
 
-You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](https://docs.getdbt.com/reference/node-selection/syntax) to [run dbt commands](https://docs.getdbt.com/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**. 
+You can enter and run commands from the command bar at the bottom of the IDE.  Use the [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **History**.
 
 :::info Note
 
@@ -163,7 +163,7 @@ For your convenience, dbt Cloud automatically includes ‘`dbt`’ as a prefix t
 
 The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
 
-**Generating and viewing documentation** 
+**Generating and viewing documentation**
 
 To generate your project’s documentation (docs) in the IDE, enter `docs generate` or `dbt docs generate` in the command bar.  This command generates the docs for your dbt project as it currently exists in development.
 
@@ -179,7 +179,7 @@ A [version control](https://en.wikipedia.org/wiki/Version_control) system allow
 
 When you develop in the dbt Cloud IDE, you can leverage Git directly to version control your code from your browser. This means you can branch, commit, push, and pull code with a couple of clicks - no command line required!
 
-You can create a separate branch to develop and make changes. The changes you make aren’t merged into the main branch unless it successfully passes tests. This helps keep the code organized and improves productivity by making the development process smooth. 
+You can create a separate branch to develop and make changes. The changes you make aren’t merged into the main branch unless it successfully passes tests. This helps keep the code organized and improves productivity by making the development process smooth.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/git-overview.png" title="Git overview"/>
 
@@ -187,8 +187,8 @@ You can create a separate branch to develop and make changes. The changes you ma
 To use version control, make sure you are connected to a Git repository in the IDE.
 :::
 
-**Common git terms** 
- 
+**Common git terms**
+
 
 | Name | Definition |
 | --- | --- |
