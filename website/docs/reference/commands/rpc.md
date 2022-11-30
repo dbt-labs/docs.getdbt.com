@@ -238,7 +238,7 @@ All RPC requests accept the following parameters in addition to the parameters l
 ```
 
 Several of the following request types accept these additional parameters:
-- `threads`: The number of [threads](configure-your-profile#understanding-threads) to use when compiling (optional)
+- `threads`: The number of [threads](/docs/get-started/connection-profiles#understanding-threads) to use when compiling (optional)
 - `select`: The space-delimited set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
 - `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
@@ -326,7 +326,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run snapshots ([docs](seed))
+### Run snapshots ([docs](/docs/build/snapshots))
 
 ```json
 {

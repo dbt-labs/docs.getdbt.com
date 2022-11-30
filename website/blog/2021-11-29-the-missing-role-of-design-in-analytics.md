@@ -12,18 +12,18 @@ date: 2021-11-29
 is_featured: false
 ---
 
-If you’ve spoken to me lately, follow me on [Twitter](https://twitter.com/sethrosen), or have taken my order at [Wendy’s](https://i.ytimg.com/vi/_oMc4eD9-XM/maxresdefault.jpg), you probably know how much I hate traditional dashboards. My dad, a psychotherapist, has been working with me to get to the root of my upbringing that led to this deep-rooted feeling. 
+If you’ve spoken to me lately, follow me on [Twitter](https://twitter.com/sethrosen), or have taken my order at [Wendy’s](https://i.ytimg.com/vi/_oMc4eD9-XM/maxresdefault.jpg), you probably know how much I hate traditional dashboards. My dad, a psychotherapist, has been working with me to get to the root of my upbringing that led to this deep-rooted feeling.
 
 <!--truncate-->
 
-As it turns out, the cause of my feelings towards traditional dashboarding are actually quite obvious. Before entering the field of data, I spent my entire career as a product manager working alongside user experience designers and engineers on cross-functional product teams. 
+As it turns out, the cause of my feelings towards traditional dashboarding are actually quite obvious. Before entering the field of data, I spent my entire career as a product manager working alongside user experience designers and engineers on cross-functional product teams.
 
-When building software, getting users to actually use the product is no easy feat. The smallest amount of friction can cause a user to abandon the flow. Add enough friction to any product and users and engagement will drop dramatically.  As analysts, we know this intuitively. We are constantly measuring retention, cohorts, and engagement within our business. 
+When building software, getting users to actually use the product is no easy feat. The smallest amount of friction can cause a user to abandon the flow. Add enough friction to any product and users and engagement will drop dramatically.  As analysts, we know this intuitively. We are constantly measuring retention, cohorts, and engagement within our business.
 
-These principles also apply to analytics. The more friction there is in analytics and the less we focus on the user, the less our output will be used. So it makes me wonder why, within the field of data, is design thinking often so absent? 
+These principles also apply to analytics. The more friction there is in analytics and the less we focus on the user, the less our output will be used. So it makes me wonder why, within the field of data, is design thinking often so absent?
 
 
-## Why are we lacking design thinking in analytics? 
+## Why are we lacking design thinking in analytics?
 
 Painting with broad strokes, design is generally not something that is a top priority for data teams. There are a few primary reasons that I see off the top:
 
@@ -35,7 +35,7 @@ Painting with broad strokes, design is generally not something that is a top pri
 
 These more or less boil down to data teams running like service teams rather than [product teams](https://locallyoptimistic.com/post/run-your-data-team-like-a-product-team/)—when you always give the squeakiest wheel the grease, it’s impossible to put in the strategic effort that design thinking requires.
 
-One solution I proposed back in 2019 is hiring a [data product manager](https://www.linkedin.com/pulse/why-your-organization-may-need-data-product-manager-seth-rosen/), which seems to be picking up a bit of steam. But what would that person actually do?
+One solution I proposed back in 2019 is hiring a [data product manager](https://www.hashpath.com/2019/11/why-your-organization-may-need-a-data-product-manager/), which seems to be picking up a bit of steam. But what would that person actually do?
 
  I have attempted to sum the solutions to these complex issues into a table of overly-simplified do’s and don’ts:
 
@@ -85,9 +85,9 @@ An analyst who can gather the necessary data, transform it into the analytics-re
 If you think about the workflow for an analyst, a simple process might go something like this:
 
 1. Initial exploratory analysis and ad-hoc queries
-2. Model data in dbt 
+2. Model data in dbt
 3. Build out data visualizations
-4. Write tests/monitor performance 
+4. Write tests/monitor performance
 
 But, you might also consider adding the following to your workflow.
 
@@ -140,7 +140,7 @@ Here are a few examples:
    </td>
   </tr>
   <tr>
-   <td>Minimal software development lifecycle 
+   <td>Minimal software development lifecycle
    </td>
    <td>Strong SDLC to promote user trust
    </td>
@@ -176,17 +176,17 @@ While the data being presented in the weather app could technically be presented
 
 When it is done right, the user has everything they need to make quick decisions and take appropriate actions.
 
-It’s worth noting this simple weather app is purpose-built for everyday weather situations. There are some use cases where highly specific information may be needed by a particular subset of users. 
+It’s worth noting this simple weather app is purpose-built for everyday weather situations. There are some use cases where highly specific information may be needed by a particular subset of users.
 
 For example, surfers want different information. Ultimately, they may want an overall "Surf or don't surf" recommendation. Additionally, pilots could never simply rely on AccuWeather. These use cases warrant their own user-centered, purpose-built experiences.
 
 
 ## The missing piece of the puzzle
 
-While a design process can help you build better analytics output, there is still a missing part of the analytics stack to enable true user-centered design. 
+While a design process can help you build better analytics output, there is still a missing part of the analytics stack to enable true user-centered design.
 
-How would you, today, build out a weather-like application? 
+How would you, today, build out a weather-like application?
 
-Traditional dashboarding tools limit the user experience and prevent purpose-built applications from being created. Luckily our tools are evolving to meet the needs of the data consumer. 
+Traditional dashboarding tools limit the user experience and prevent purpose-built applications from being created. Luckily our tools are evolving to meet the needs of the data consumer.
 
 I encourage you to explore these new tools as much as possible and to work design into your analytics workflows. I’m always up for chatting, especially about this - my DMs are always open on [Twitter](https://twitter.com/sethrosen).

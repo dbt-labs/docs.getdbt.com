@@ -37,8 +37,6 @@ In comparison, the (recently updated) [best practices](/guides/best-practices) r
 *   Consider the information architecture of your data warehouse
 *   Separate source-centric and business-centric transformations
 
-If you want to see what the code for one of our projects looks like, check out [this demonstration dbt project](https://github.com/dbt-labs/dbt-learn-demo/tree/day2-dbt-training/models).
-
 We also recently held (and recorded) an office hours on this topic – this article provides a high level outline, but there’s a lot more detail and discussion in the [video](https://youtu.be/xzKLh342s08).
 
 Lastly, before I dive in, a huge thank you to Jeremy Cohen for not only teaching me a lot of the material in this article, but also for doing a lot of the groundwork that went into this article – entire sections of this article are in fact lifted from his work.
@@ -69,7 +67,7 @@ In our dbt projects, this leads us to our first split in our `models/` directory
     └── models
         ├── marts
         └── staging
-    
+
 ```
 
 ## Staging raw data
@@ -106,7 +104,7 @@ Each staging directory contains at a minimum:
 *   A `src_<source>.yml` file which contains:
     *   [Source](/docs/building-a-dbt-project/using-sources) definitions, tests, and documentation
 *   A `stg_<source>.yml` file which contains
-    *   [Tests](/docs/building-a-dbt-project/tests) and [documentation](/docs/building-a-dbt-project/documentation) for models in the same directory
+  * [Tests](/docs/build/tests) and [documentation](/docs/building-a-dbt-project/documentation) for models in the same directory
 
 ```
     ├── dbt_project.yml
@@ -119,7 +117,7 @@ Each staging directory contains at a minimum:
                 ├── stg_braintree__customers.sql
                 └── stg_braintree__payments.sql
 ```        
-    
+
 
 Some dbt users prefer to have one `.yml` file per model (e.g. `stg_braintree__customers.yml`). This is a completely reasonable choice, and we recommend implementing it if your `.yml` files start to become unwieldy.
 
@@ -133,23 +131,23 @@ That being said, in our dbt projects every source flows through exactly one mode
 
 ```
     with source as (
-        
+
         select * from {{ source('braintree', 'payments') }}
-        
+
     ),
-    
+
     renamed as (
-        
+
         select
             id as payment_id,
             order_id,
             convert_timezone('America/New_York', 'UTC', createdat) as created_at,
             ...
-        
+
         from source
-    
+
     )
-    
+
     select * from renamed
 ```    
 
@@ -175,7 +173,7 @@ In our dbt projects, we place these base models in a nested `base` subdirectory.
                 ├── stg_braintree.yml
                 ├── stg_braintree__customers.sql
                 └── stg_braintree__payments.sql
-``` 
+```
 
 In our projects, base models:
 

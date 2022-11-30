@@ -73,7 +73,7 @@ models:
 
 #### 3. Use the `dbt_utils.unique_combination_of_columns` test
 
-This is especially useful for large datasets since it is more performant. Check out the docs on [packages](package-management) for more information.
+This is especially useful for large datasets since it is more performant. Check out the docs on [packages](/docs/build/packages) for more information.
 
 <File name='models/orders.yml'>
 

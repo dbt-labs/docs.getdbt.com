@@ -3,7 +3,7 @@ title: "dbt Command reference"
 ---
 
 dbt is typically run one of two ways:
-* In [dbt Cloud](the-dbt-ide)
+* In [dbt Cloud](/docs/get-started/develop-in-the-cloud)
 * On the command line
 
 The following sections outline the commands supported by dbt and their relevant flags. Note that some commands are only supported when using the CLI.
