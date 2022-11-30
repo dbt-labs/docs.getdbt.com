@@ -1,9 +1,14 @@
 ---
 id: reverse-etl
 title: Reverse ETL
+description:  Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms.
 displayText: reverse ETL
 hoverSnippet: Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. 
 ---
+
+<head>
+    <title>Reverse ETL, demystified: What it is in plain english</title>
+</head>
 
 Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. Once in an end platform, that data is often used to drive meaningful business actions, such as creating custom audiences in ad platforms, personalizing email campaigns, or supplementing data in a sales CRM. You may also hear about reverse ETL referred to as operational analytics or data activation.
 

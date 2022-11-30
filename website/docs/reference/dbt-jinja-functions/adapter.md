@@ -18,6 +18,7 @@ The following functions are available:
 - [adapter.drop_schema](#drop_schema)
 - [adapter.drop_relation](#drop_relation)
 - [adapter.rename_relation](#rename_relation)
+- [adapter.quote](#quote)
 
 ### Deprecated adapter functions
 
@@ -74,7 +75,7 @@ Expand the `to_relation` <Term id="table" />'s column types to match the schema 
 {% set tmp_relation = adapter.get_relation(...) %}
 {% set target_relation = adapter.get_relation(...) %}
 
-{% do adapter.expand_target_column_types(tmp_realtion, target_relation) %}
+{% do adapter.expand_target_column_types(tmp_relation, target_relation) %}
 ```
 
 </File>
@@ -235,6 +236,26 @@ Renames a Relation the database.  The `rename_relation` method will rename the s
       identifier=this.identifier ~ "__dbt_backup") -%}
 
 {% do adapter.rename_relation(old_relation, backup_relation) %}
+```
+
+</File>
+
+
+## quote
+__Args__:
+
+ * `identifier`: A string to quote
+
+Encloses `identifier` in the correct quotes for the adapter when escaping reserved column names etc.
+
+**Usage:**
+
+<File name='example.sql'>
+
+```sql
+select 
+      'abc' as {{ adapter.quote('table_name') }},
+      'def' as {{ adapter.quote('group by') }} 
 ```
 
 </File>

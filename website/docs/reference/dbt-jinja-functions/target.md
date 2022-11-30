@@ -7,8 +7,8 @@ id: "target"
 
 * **dbt CLI:** These values are based on the target defined in your [`profiles.yml` file](reference/profiles.yml.md)
 * **dbt Cloud Scheduler:**
-    * `target.name` is defined per job as described [here](cloud-setting-a-custom-target-name).
-    * For all other attributes, the values are defined by the deployment connection. To check any of these values, head to `Environments` (via the hamburger menu), select the relevant deployment environment, and select settings.
+    * `target.name` is defined per job as described [here](/docs/build/custom-target-names).
+    * For all other attributes, the values are defined by the deployment connection. To check these values, click **Deploy** from the upper left and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
 * **dbt Cloud IDE:** The values are defined by your connection and credentials. To check any of these values, head to your account (via your profile image in the top right hand corner), and select the project under "Credentials".
 
 
@@ -20,7 +20,7 @@ Some configs are shared between all adapters, while others are adapter-specific.
 | `target.profile_name` | jaffle_shop | The name of the active profile |
 | `target.name` | dev | Name of the active target |
 | `target.schema` | dbt_alice | Name of the dbt schema (or, dataset on BigQuery) |
-| `target.type` | postgres | The active adapter being used. One of "postgres", "snowflake", "bigquery", "redshift" |
+| `target.type` | postgres | The active adapter being used. One of "postgres", "snowflake", "bigquery", "redshift", "databricks" |
 | `target.threads` | 4 | The number of threads in use by dbt |
 
 
