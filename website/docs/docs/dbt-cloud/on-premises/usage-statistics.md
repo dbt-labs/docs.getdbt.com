@@ -21,7 +21,7 @@ Usage statistics are tracked once weekly, and include the following information:
  - The number of developer and read only licenses utilized in each account
  - The version of dbt Cloud installed in the on-premises environment
 
-This information is sent as a JSON payload to usage.getdbt.com. A typical
+This information is sent as a <Term id="json" /> payload to usage.getdbt.com. A typical
 payload looks like:
 
 ```json

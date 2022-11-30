@@ -1,10 +1,14 @@
 ---
 id: dml
 title: DML
+description: Data Manipulation Language (DML) is a class of SQL statements that are used to query, edit, add and delete row-level data from database tables or views.
 displayText: DML  
 hoverSnippet: Data Manipulation Language (DML) is a class of SQL statements that are used to query, edit, add and delete row-level data from database tables or views. The main DML statements are SELECT, INSERT, DELETE, and UPDATE. 
-
 ---
+
+<head>
+	<title>DML: The SQL statements that make the data world go 'round</title>
+</head>
 
 Data Manipulation Language (DML) is a class of SQL statements that are used to query, edit, add and delete row-level data from database <Term id="table">tables</Term> or <Term id="view">views</Term>. The main DML statements are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`.
 

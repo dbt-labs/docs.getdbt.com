@@ -71,13 +71,13 @@ can override schema test definitions
 - [project-level overviews](documentation#custom-project-level-overviews)
 
 **Redshift**
-- [`iam_profile`](redshift-profile#specifying-an-iam-profile)
+- [`iam_profile`](/reference/warehouse-setups/redshift-setup#specifying-an-iam-profile)
 
 **Snowflake**
-- `query_tag` in [profile](snowflake-profile), [model config](snowflake-configs#query-tags)
+- `query_tag` in [profile](/reference/warehouse-setups/snowflake-setup), [model config](snowflake-configs#query-tags)
 - automatic SSO [session caching](snowflake-configs#sso-authentication) support
 
 **BigQuery**
-- [`impersonate_service_account`](bigquery-profile#service-account-impersonation)
+- [`impersonate_service_account`]/reference/warehouse-setups/bigquery-setup#service-account-impersonation)
 - [`policy_tags`](bigquery-configs#policy-tags)
 - [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)

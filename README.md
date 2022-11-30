@@ -1,6 +1,7 @@
 _We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https://docs.getdbt.com/)._
 
 #### Table of Contents
+
 * [Code of Conduct](#Code-of-conduct)
 * [Contributing](#contributing)  
 * [Writing content](#writing-content)
@@ -22,17 +23,29 @@ You can use components documented in the [docusaurus library](https://v2.docusau
 
 # Writing content
 
-When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.
+The dbt Labs docs are written in Markdown and sometimes HTML. When writing content, refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation. 
 
-## Versioning content
+## SME and editorial reviews
 
-We now provide dynamic versioning in the dbt Labs product documentation. To learn more about how to version the docs for dbt Core, see [Managing available versions](/contributing/versioningdocs.md).
+All PRs that are submitted will be reviewed by the dbt Labs Docs team for editorial review.
+
+Content that is submitted by our users and the open-source community are also reviewed by our dbt Labs subject matter experts (SMEs) to help ensure technical accuracy.
+
+
+## Versioning and single-sourcing content
+
+We now enable you to reuse content between different docs pages, version pages, and establish product variables in the dbt Labs product documentation. To learn more about how to single source content between versions, product variables, and other content, see [Single-sourcing content](/contributing/single-sourcing-content.md).
+
+## Adding tabbed components to a page
+
+You can add code snippets and other content in a tabbed view. To learn more about adding tabbed components, see [Adding page components](/contributing/adding-page-components.md).
 
 # Running the Docs site locally
 
 You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
 ## Prerequisites
+
 * (Mac Terminal) Install [Xcode Command Line Tools](https://developer.apple.com/download/more/)
   - Open a terminal window, run `xcode-select --install`, and follow the on-screen prompts in the pop-up window.
 * (Mac and Linux) Install [homebrew](https://brew.sh/)
