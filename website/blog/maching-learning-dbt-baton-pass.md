@@ -106,7 +106,7 @@ Also, I would create a data app (in Hex) where users plug in different input sce
 
 #### What are the tradeoffs?
 
-I’d still have to export my predictive results back to the database and configure them as sources for dbt docs(depends if Modelbit is involved). People wouldn’t know at a glance the data lineage to power this notebook. But my gut tells me the tradeoff would be worth it because the ML engineer knows where to start problem solving even if the solution wasn’t readily available through SQL.
+I’d still have to export my predictive results back to the database and configure them as sources for dbt docs(depends if Modelbit is involved). People wouldn’t know at a glance the <Term id="data-lineage">data lineage</Term> to power this notebook. But my gut tells me the tradeoff would be worth it because the ML engineer knows where to start problem solving even if the solution wasn’t readily available through SQL.
 
 ### Bring machine learning to the SQL workflow
 

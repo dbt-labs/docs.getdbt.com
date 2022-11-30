@@ -1,9 +1,14 @@
 ---
 id: data-extraction
 title: Data extraction
+description: Data extraction is the process by which data is retrieved from multiple sources, often varying in volume and structure.
 displayText: data extraction
 hoverSnippet: Data extraction is the process by which data is retrieved from multiple sources, often varying in volume and structure.
 ---
+
+<head>
+    <title>Data extraction: The first step of the ELT process</title>
+</head>
 
 There is no data work without data. So how do data teams get the data they need? Data extraction is the process by which data is retrieved from multiple sources, often varying in volume and structure. Most data extraction processes are followed by a loading process, where that extracted data is loaded into a central <Term id="data-warehouse" />.
 

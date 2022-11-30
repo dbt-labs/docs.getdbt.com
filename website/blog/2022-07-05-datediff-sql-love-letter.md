@@ -23,7 +23,7 @@ The DATEDIFF function will return the difference in specified units (ex. days, w
 <!--truncate-->
 
 > **What is a SQL function?**
-> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://getdbt.com/sql-foundations/coalesce-sql-love-letter/), [LOWER](https://getdbt.com/sql-foundations/lower-sql-love-letter/), and [EXTRACT](https://getdbt.com/sql-foundation/extract-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
+> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://getdbt.com/sql-foundations/coalesce-sql-love-letter/), [LOWER](https://getdbt.com/sql-foundations/lower-sql-love-letter/), and [EXTRACT](https://getdbt.com/sql-foundations/extract-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
 
 DATEDIFF is a little bit like your favorite pair of socks; you’ll usually find the first one easily and feel like the day is going to be great. But for some reason, the matching sock requires a little digging in the drawer. DATEDIFF is this pair of socks—you’ll inevitably find yourself Googling the syntax almost every time you use it, but you can’t go through your day without using it. 
 
@@ -70,7 +70,7 @@ You may be able to memorize the syntax for the DATEDIFF function for the primary
 
 Luckily, [dbt-core](https://github.com/dbt-labs/dbt-core) has your back! dbt Core is the open source dbt product that helps data folks write their data transformations following software engineering best practices.
 
-With dbt v1.2, [adapters](https://docs.getdbt.com/docs/available-adapters) now support [cross-database macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like [DATE_TRUNC](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#date_trunc) and [DATEDIFF](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#datediff), without having to memorize sticky function syntax.
+With dbt v1.2, [adapters](https://docs.getdbt.com/docs/supported-data-platforms) now support [cross-database macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like [DATE_TRUNC](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#date_trunc) and [DATEDIFF](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#datediff), without having to memorize sticky function syntax.
 
 > **Note:**
 > Previously, [dbt_utils](https://github.com/dbt-labs/dbt-utils), a package of macros and tests that data folks can use to help write more DRY code in their dbt project, powered cross-database macros. Now, cross-database macros are available **regardless if dbt utils is installed or not.**

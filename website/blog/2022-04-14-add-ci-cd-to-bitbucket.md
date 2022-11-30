@@ -183,7 +183,7 @@ Reading the file over, you can see that we:
 3. Specify that this pipeline is a two-step process
 4. Specify that in the first step called “Deploy to production”, we want to:
     1. Use whatever pip cache is available, if any
-    2. Keep whatever JSON files are generated in this step in target/
+    2. Keep whatever <Term id="json" /> files are generated in this step in target/
     3. Run the dbt setup by first installing dbt as defined in requirements.txt, then adding `profiles.yml` to the location dbt expects them in, and finally running `dbt deps` to install any dbt packages
     4. Run `dbt seed`, `run`, and `snapshot`, all with `prod` as specified target
 5. Specify that in the first step called “Upload artifacts for slim CI runs”, we want to use the Bitbucket “pipe” (pre-defined action) to authenticate with environment variables and upload all files that match the glob `target/*.json`.

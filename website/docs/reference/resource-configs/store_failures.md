@@ -10,7 +10,7 @@ datatype: boolean
 
 </Changelog>
 
-The configured test(s) will never store their failures when `dbt test --store-failures` is invoked.
+The configured test(s) will store their failures when `dbt test --store-failures` is invoked.
 
 ## Description
 Optionally set a test to always or never store its failures in the database.

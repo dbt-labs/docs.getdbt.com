@@ -15,7 +15,7 @@ is_featured: true
 >This is for advanced users of dbt Cloud that are interested in expanding their knowledge of the dbt API via an interactive Postman Collection. We only suggest diving into this once you have a strong knowledge of dbt + dbt Cloud. You have a couple of options to review the collection:
 >
 >* get a live version of the collection via [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/14183654-892ae7dc-e6a2-4165-8b57-1545dd69e4aa?action=collection%2Ffork&collection-url=entityId%3D14183654-892ae7dc-e6a2-4165-8b57-1545dd69e4aa%26entityType%3Dcollection%26workspaceId%3D048d09df-b9b5-4794-ad11-d0453ec3ecc4).
->* check out the [collection documentation](https://documenter.getpostman.com/view/14183654/UVsSNiXC#auth-info-7ad22661-8807-406b-aec0-34a46b671aac) to learn how to use it.
+>* check out the [collection documentation](https://documenter.getpostman.com/view/14183654/UyxohieD#93c57cbf-3cb9-4c14-8c9a-278c19c5d6f1) to learn how to use it.
 
 The dbt Cloud API has well-documented endpoints for creating, triggering and managing dbt Cloud jobs. But there are other endpoints that aren’t well documented yet, and they’re extremely useful for end-users. These endpoints exposed by the API enable organizations not only to orchestrate jobs, but to manage their dbt Cloud accounts programmatically. This creates some really interesting capabilities for organizations to scale their dbt Cloud implementations.
 

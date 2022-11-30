@@ -11,4 +11,4 @@ The `dbt source freshness` command will output a pass/warning/error status for e
 
 Additionally, dbt will write the freshness results to a file in the `target/` directory called `sources.json` by default. You can also override this destination, use the `-o` flag to the `dbt source freshness` command.
 
-Lastly, after enabling source freshness within a job, configure [Artifacts](docs/dbt-cloud/using-dbt-cloud/artifacts) in your account settings to enable 'Data Sources' to appear as a new dropdown in the hamburger menu, where you can see current status for source freshness.
+After enabling source freshness within a job, configure [Artifacts](docs/dbt-cloud/using-dbt-cloud/artifacts) in your **Project Details** page, which you can find by clicking the gear icon and then selecting **Account settings**. You can see the current status for source freshness by clicking **View Sources** in the job page.
