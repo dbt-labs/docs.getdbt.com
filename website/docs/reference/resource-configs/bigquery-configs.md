@@ -3,11 +3,6 @@ title: "BigQuery configurations"
 id: "bigquery-configs"
 ---
 
-:::caution Heads up!
-These docs are a work in progress.
-
-:::
-
 <!----
 To-do:
 - use the reference doc structure for this article/split into separate articles
@@ -45,15 +40,15 @@ Example usage for versions of dbt < 0.16.0:
 
 </Changelog>
 
-BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a table by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#pruning_limiting_partitions) when partitions are filtered using literal values (so selecting partitions using a subquery won't improve performance).
+BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a <Term id="table" /> by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#pruning_limiting_partitions) when partitions are filtered using literal values (so selecting partitions using a <Term id="subquery" /> won't improve performance).
 
 The `partition_by` config can be supplied as a dictionary with the following format:
 
 ```python
 {
-  "field": "<field name",
-  "data_type": "<timestamp | date | datetime | int64 >",
-  "granularity": "< hour | day | month | year >"
+  "field": "<field name>",
+  "data_type": "<timestamp | date | datetime | int64>",
+  "granularity": "<hour | day | month | year>"
 
   # Only required if data_type is "int64"
   "range": {
@@ -131,7 +126,7 @@ as (
 #### Partitioning with integer buckets
 
 If the `data_type` is specified as `int64`, then a `range` key must also
-be provied in the `partition_by` dict. dbt will use the values provided in
+be provided in the `partition_by` dict. dbt will use the values provided in
 the `range` dict to generate the partitioning clause for the table.
 
 <Tabs
@@ -196,6 +191,38 @@ as (
 
 </TabItem>
 </Tabs>
+
+#### Additional partition configs
+
+<Changelog>
+
+  - **v0.20.0:** Introduced `require_partition_filter` and `partition_expiration_days`
+
+</Changelog>
+
+If your model has `partition_by` configured, you may optionally specify two additional configurations:
+
+- `require_partition_filter` (boolean): If set to `true`, anyone querying this model _must_ specify a partition filter, otherwise their query will fail. This is recommended for very large tables with obvious partitioning schemes, such as event streams grouped by day. Note that this will affect other dbt models or tests that try to select from this model, too.
+
+- `partition_expiration_days` (integer): If set for date- or timestamp-type partitions, the partition will expire that many days after the date it represents. E.g. A partition representing `2021-01-01`, set to expire after 7 days, will no longer be queryable as of `2021-01-08`, its storage costs zeroed out, and its contents will eventually be deleted. Note that [table expiration](#controlling-table-expiration) will take precedence if specified.
+
+<File name='bigquery_table.sql'>
+
+```sql
+{{ config(
+    materialized = 'table',
+    partition_by = {
+      "field": "created_at",
+      "data_type": "timestamp",
+      "granularity": "day"
+    },
+    require_partition_filter = true,
+    partition_expiration_days = 7
+)}}
+
+```
+
+</File>
 
 ### Clustering Clause
 
@@ -264,9 +291,13 @@ models:
 
 ### Specifying labels
 
-dbt supports the specification of BigQuery labels for the tables and views that it creates. These labels can be specified using the `labels` model config.
+dbt supports the specification of BigQuery labels for the tables and <Term id="view">views</Term> that it creates. These labels can be specified using the `labels` model config.
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
+  
+:::info Note
+BigQuery requires that both key-value pair entries for labels have a maximum length of 63 characters.
+:::
 
 **Configuring labels in a model file**
 
@@ -345,9 +376,11 @@ models:
 
 </File>
 
+Please note that in order for policy tags to take effect, [column-level `persist_docs`](https://docs.getdbt.com/reference/resource-configs/persist_docs) must be enabled for the model, seed, or snapshot.
+
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -385,11 +418,11 @@ strategy is selected.
 
 ### The `insert_overwrite` strategy
 
-:::info New in dbt v0.16.0
+<Changelog>
 
-This functionality is new in dbt v0.16.0. For upgrading instructions, check out [the docs](upgrading-to-0-16-0)
+  - **v0.16.0:** Introduced `insert_overwrite` incremental strategy
 
-:::
+</Changelog>
 
 The `insert_overwrite` strategy generates a merge statement that replaces entire partitions
 in the destination table. **Note:** this configuration requires that the model is configured
@@ -413,7 +446,7 @@ declare dbt_partitions_for_replacement array<date>;
 set (dbt_partitions_for_replacement) = (
     select as struct
         array_agg(distinct date(max_tstamp))
-    from `my_project`.`my_dataset`.`sessions`
+    from `my_project`.`my_dataset`.{{ model_name }}__dbt_tmp
 );
 
 /*
@@ -443,14 +476,14 @@ will reduce costs by eliminating multiple queries in the model build script.
 
 #### Static partitions
 
-To supply a static list of partitions to overwrite, use the `partitions` configuration:
+To supply a static list of partitions to overwrite, use the `partitions` configuration.
 
 <File name="models/session.sql">
 
 ```sql
 {% set partitions_to_replace = [
-  'current_date',
-  'date_sub(current_date, interval 1 day)'
+  'timestamp(current_date)',
+  'timestamp(date_sub(current_date, interval 1 day))'
 ] %}
 
 {{
@@ -480,7 +513,16 @@ with events as (
 
 This example model serves to replace the data in the destination table for both
 _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
-way to incrementally update a table using dbt.
+way to incrementally update a table using dbt. If we wanted this to run more dynamically—
+let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
+
+<Changelog>
+
+  - **v0.19.0:** With the advent of truncated timestamp partitions in BigQuery, `timestamp`-type partitions are now treated as timestamps instead of dates for the purposes of filtering. Update `partitions_to_replace` accordingly.
+
+</Changelog>
+
+Think of this as "full control" mode. You must ensure that expressions or literal values in the the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.
 
 #### Dynamic partitions
 
@@ -515,7 +557,7 @@ with events as (
 
     -- recalculate latest day's data + previous
     -- NOTE: The _dbt_max_partition variable is used to introspect the destination table
-    where date(event_timestamp) >= date_sub(date(_dbt_max_partition, interval 1 day))
+    where date(event_timestamp) >= date_sub(date(_dbt_max_partition), interval 1 day)
 
 {% endif %}
 
@@ -556,12 +598,15 @@ select ...
 </File>
 
 ## Authorized Views
+
 <Changelog>New in v0.18.0</Changelog>
 
 If the `grant_access_to` config is specified for a model materialized as a
 view, dbt will grant the view model access to select from the list of datasets
 provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
 for more details.
+
+<Snippet src="grants-vs-access-to" />
 
 <File name='dbt_project.yml'>
 
@@ -591,7 +636,8 @@ models:
 
 </File>
 
-Views with this configuration will be able to select from objects in 
-`project_1.dataset_1` and `project_2.dataset_2`, even when they are located
-elsewhere and queried by users who do not otherwise have
-access to `project_1.dataset_1` and `project_2.dataset_2`.
+Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
+
+#### Limitations
+
+The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.

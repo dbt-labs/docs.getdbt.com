@@ -1,7 +1,13 @@
 ---
 id: installation
-title: Installation
+title: On-Premises Installation (dbt Cloud)
 ---
+
+:::note 📌
+
+We no longer support new on-premises deployments, and instead have moved to a [Single Tenant](/docs/deploy/single-tenant) model hosted in the cloud
+
+:::
 
 Before proceeding with installation, please make sure to review the [prerequisites](/docs/dbt-cloud/on-premises/prerequisites) and [system requirements](/docs/dbt-cloud/on-premises/system-requirements).
 

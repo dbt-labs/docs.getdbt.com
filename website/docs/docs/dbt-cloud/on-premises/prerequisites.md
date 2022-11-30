@@ -3,6 +3,12 @@ id: prerequisites
 title: Prerequisites
 ---
 
+:::note
+
+We no longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+
+:::
+
 There are a number of prerequisites that must be in place before starting the installation process. There are also some optional prerequisites that will need to be completed to enable optional features of dbt Cloud.
 
 ## Required

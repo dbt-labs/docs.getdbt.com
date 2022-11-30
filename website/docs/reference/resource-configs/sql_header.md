@@ -102,7 +102,7 @@ This uses the config block syntax:
 
 ```sql
 {{ config(
-  sql_header="alter session set timezone = 'Australia/Sydney'"
+  sql_header="alter session set timezone = 'Australia/Sydney';"
 ) }}
 
 select * from {{ ref('other_model') }}
@@ -118,7 +118,7 @@ select * from {{ ref('other_model') }}
 config-version: 2
 
 models:
-  +sql_header: "alter session set timezone = 'Australia/Sydney'"
+  +sql_header: "alter session set timezone = 'Australia/Sydney';"
 ```
 
 </File>

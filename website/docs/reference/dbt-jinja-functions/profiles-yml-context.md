@@ -22,7 +22,7 @@ jaffle_shop:
       type: redshift
       host: "{{ env_var('DBT_HOST') }}"
       user: "{{ env_var('DBT_USER') }}"
-      pass: "{{ env_var('DBT_PASS') }}"
+      password: "{{ env_var('DBT_PASS') }}"
       port: 5439
       dbname: analytics
       schema: dbt_dbanin

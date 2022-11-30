@@ -16,13 +16,14 @@ Parts of a snapshot:
 
 <Tabs
   groupId="config-languages"
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
-    { label: 'YAML', value: 'yaml', },
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
     { label: 'Config block', value: 'config', },
   ]
 }>
-<TabItem value="yaml">
+<TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
 
@@ -42,6 +43,30 @@ snapshots:
 
 </TabItem>
 
+<TabItem value="property-yaml">
+
+<File name='snapshots/properties.yml'>
+
+**Note:** Required snapshot properties may not work when defined in `config` yaml blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+
+```yaml
+version: 2
+
+snapshots:
+  - name: [<snapshot-name>]
+    config:
+      [target_schema](target_schema): <string>
+      [target_database](target_database): <string>
+      [unique_key](unique_key): <column_name_or_expression>
+      [strategy](strategy): timestamp | check
+      [updated_at](updated_at): <column_name>
+      [check_cols](check_cols): [<column_name>] | all
+
+```
+
+</File>
+
+</TabItem>
 
 <TabItem value="config">
 
@@ -69,14 +94,14 @@ snapshots:
 
 <Tabs
   groupId="config-languages"
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
-    { label: 'YAML', value: 'yaml', },
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
     { label: 'Config block', value: 'config', },
   ]
 }>
-<TabItem value="yaml">
-
+<TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
 
@@ -88,8 +113,30 @@ snapshots:
     [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[persist_docs](persist_docs): {<dict>}
-
+    [+](plus-prefix)[grants](grants): {<dict>}
 ```
+</File>
+
+</TabItem>
+
+<TabItem value="property-yaml">
+
+<File name='snapshots/properties.yml'>
+
+```yaml
+version: 2
+
+snapshots:
+  - name: [<snapshot-name>]
+    config:
+      [enabled](enabled): true | false
+      [tags](resource-configs/tags): <string> | [<string>]
+      [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [persist_docs](persist_docs): {<dict>}
+      [grants](grants): {<dictionary>}
+```
+
 </File>
 
 </TabItem>
@@ -105,6 +152,7 @@ snapshots:
     [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
     [persist_docs](persist_docs)={<dict>}
+    [grants](grants)={<dict>}
 ) }}
 
 ```
@@ -115,16 +163,17 @@ snapshots:
 
 
 ## Configuring snapshots
-Snapshots can be configured in one of two ways:
+Snapshots can be configured in one of three ways:
 
-1. Using a `config` block within a snapshot, or
-2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
+1. Using a `config` block within a snapshot
+2. Using a `config` [resource property](model-properties) in a `.yml` file
+3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 
-Snapshot configurations, like model configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project.
+Snapshot configurations are applied hierarchically in the order above.
 
 ### Examples
 #### Apply the `target_schema` configuration to all snapshots
-To apply a configuration to all snapshots, including those in any installed [packages](package-management), nest the configuration directly under the `snapshots` key:
+To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
 
 <File name='dbt_project.yml'>
 
@@ -191,6 +240,23 @@ snapshots:
         +unique_key: id
         +strategy: timestamp
         +updated_at: updated_at
+```
+
+</File>
+
+You can also define some common configs in a snapshot's `config` block. We don't recommend this for a snapshot's required configuration, however.
+
+<File name='dbt_project.yml'>
+
+```yml
+version: 2
+
+snapshots:
+  - name: orders_snapshot
+    config:
+      persist_docs:
+        relation: true
+        columns: true
 ```
 
 </File>

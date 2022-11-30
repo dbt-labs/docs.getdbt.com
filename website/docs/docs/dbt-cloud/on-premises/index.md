@@ -3,6 +3,12 @@ id: index
 title: Overview
 ---
 
+:::note
+
+We longer support new on-premises deployments, and instead have moved to a [Single Tenant](single-tenant) model hosted in the cloud
+
+:::
+
 The Customer Managed deployment environment is configured and managed by the customer. While this deployment model allows for the greatest level of customization and ownership of the dbt Cloud infrastructure, it may not be ideal for most customers as it also comes with the greatest level of troubleshooting and maintenance costs.
 
 dbt Cloud is a bundled Kubernetes appliance that can be automatically installed into a standalone Kubernetes cluster.

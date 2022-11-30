@@ -3,11 +3,11 @@ title: Source properties
 ---
 
 ## Related documentation
-- [Using sources](using-sources)
-- [Declaring resource properties](declaring-properties)
+- [Using sources](/docs/build/sources)
+- [Declaring resource properties](configs-and-properties)
 
 ## Overview
-Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`source-paths` config](source-paths)).
+Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](model-paths)).
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
@@ -24,7 +24,11 @@ sources:
     [loader](loader): <string>
     [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
     [meta](meta): {<dictionary>}
-    [tags](resource-properties/tags): [<string>]
+    [tags](resource-configs/tags): [<string>]
+    
+    # requires v1.1+
+    [config](resource-properties/config):
+      [<source_config>](source-configs): <config_value>
 
     [overrides](resource-properties/overrides): <string>
 
@@ -51,7 +55,7 @@ sources:
         [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
-        [tags](resource-properties/tags): [<string>]
+        [tags](resource-configs/tags): [<string>]
         [freshness](resource-properties/freshness):
           warn_after:
             [count](resource-properties/freshness#count): <positive_integer>
@@ -65,6 +69,7 @@ sources:
           database: true | false
           schema: true | false
           identifier: true | false
+        [external](resource-properties/external): {<dictionary>}
         columns:
           - name: <column_name> # required
             [description](description): <markdown_string>
@@ -73,7 +78,7 @@ sources:
             [tests](resource-properties/tests):
               - <test>
               - ... # declare additional tests
-            [tags](resource-properties/tags): [<string>]
+            [tags](resource-configs/tags): [<string>]
           - name: ... # declare properties of additional columns
 
       - name: ... # declare properties of additional source tables
