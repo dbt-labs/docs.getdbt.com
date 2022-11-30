@@ -23,7 +23,14 @@ You can use components documented in the [docusaurus library](https://v2.docusau
 
 # Writing content
 
-When writing content, you should refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.
+The dbt Labs docs are written in Markdown and sometimes HTML. When writing content, refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation. 
+
+## SME and editorial reviews
+
+All PRs that are submitted will be reviewed by the dbt Labs Docs team for editorial review.
+
+Content that is submitted by our users and the open-source community are also reviewed by our dbt Labs subject matter experts (SMEs) to help ensure technical accuracy.
+
 
 ## Versioning and single-sourcing content
 

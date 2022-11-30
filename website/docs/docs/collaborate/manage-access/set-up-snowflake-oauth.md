@@ -41,7 +41,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
 | ENABLED  | Required |
 | OAUTH_CLIENT  | Required |
 | OAUTH_CLIENT_TYPE  | Required |
-| OAUTH_REDIRECT_URI  | Required. If dbt Cloud is deployed on-premises, use the domain name of your application instead of `cloud.getdbt.com` |
+| OAUTH_REDIRECT_URI  | Required. Use the access URL that corresponds to your server [region](/docs/deploy/regions). If dbt Cloud is deployed on-premises, use the domain name of your application instead of the access URL. |
 | OAUTH_ISSUE_REFRESH_TOKENS  | Required |
 | OAUTH_REFRESH_TOKEN_VALIDITY  | Required. This configuration dictates the number of seconds that a refresh token is valid for. Use a smaller value to force users to re-authenticate with Snowflake more frequently. |
 
