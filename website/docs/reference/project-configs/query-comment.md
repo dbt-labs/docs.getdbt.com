@@ -156,7 +156,7 @@ select ...
 
 </Changelog>
 
-If `query-comment.job-label` is set to true, dbt will include the query comment items, if a dictionary, or the comment string, as job labels on the query it executes. These will be included in addition to labels specified in the [BigQuery-specific config](bigquery-configs).
+If `query-comment.job-label` is set to true, dbt will include the query comment items, if a dictionary, or the comment string, as job labels on the query it executes. These will be included in addition to labels specified in the [BigQuery-specific config](/reference/project-configs/query-comment#bigquery-include-query-comment-items-as-job-labels).
 
 <File name='dbt_project.yml'>
 
@@ -167,8 +167,6 @@ query-comment:
 ```
 
 </File>
-
-<Lightbox src="/img/docs/bigquery-query-comment-job-labels" title=""/>
 
 ### Append a custom comment
 The following example uses the dictionary syntax to append (rather than prepend) a comment that varies based on the configured `user` specified in the active dbt target.

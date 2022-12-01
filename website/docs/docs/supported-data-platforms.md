@@ -23,6 +23,7 @@ To learn more about adapters, check out [What Are Adapters](/guides/advanced/ada
 | [Snowflake](snowflake-setup)              | 1.2.0                    |
 | [Spark](spark-setup)                      | 1.2.0                    |
 | [Starburst & Trino](trino-setup)          | 1.2.0 :construction:     |
+:construction:: Verification in progress
 
 ### Community Adapters
 

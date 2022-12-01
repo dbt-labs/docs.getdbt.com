@@ -68,6 +68,8 @@ Ways to demonstrate this value:
 - Share things you have learned on Discourse
 - Host events
 
+Be mindful that others may not want their image or name on social media, and when attending or hosting an in-person event, ask permission prior to posting about another person.
+
 ### Be curious.
 
 Always ask yourself “why?” and strive to be continually learning.
