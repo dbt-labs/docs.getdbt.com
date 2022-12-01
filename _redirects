@@ -1,3 +1,4 @@
+/docs/collaborate/git/resolve-merge-conflicts  /docs/collaborate/git/merge-conflicts 301
 /docs/running-a-dbt-project/running-dbt-in-production /docs/deploy/deployments 301
 /docs/running-a-dbt-project/profile /docs/get-started/connection-profiles 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications /docs/deploy/job-notifications 301
@@ -524,4 +525,5 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 
 /blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
 /docs/getting-started/develop-in-the-cloud#creating-a-development-environment  /docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide 301
+
 
