@@ -23,7 +23,7 @@ Note  - It is _not_ recommended that you use your dbt Cloud credentials due to e
 
 :::
 
-12. Set up the [Metadata API](docs/dbt-cloud-apis/metadata-api) (Team and Enterprise accounts only) in the integrated partner tool to import the metric definitions. The [integrated parnter tool](https://www.getdbt.com/product/semantic-layer-integrations) will treat the dbt Server as another data source (like a data platform). This requires:
+12. Set up the [Metadata API](docs/dbt-cloud-apis/metadata-api) (Team and Enterprise accounts only) in the integrated partner tool to import the metric definitions. The [integrated partner tool](https://www.getdbt.com/product/semantic-layer-integrations) will treat the dbt Server as another data source (like a data platform). This requires:
 
 - The account ID, environment ID, and job ID (visible in the job URL)
 - An [API service token](/docs/dbt-cloud-apis/service-tokens) with job admin and metadata permissions
