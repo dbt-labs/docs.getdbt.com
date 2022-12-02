@@ -154,6 +154,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
+            {
+              label: "Spotlight",
+              to: "/community/spotlight",
+            },
           ],
         },
         {
