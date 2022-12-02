@@ -447,12 +447,33 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/guides/getting-help /guides/legacy/getting-help 302
 /docs/guides/migration-guide/_ /guides/migration/versions/:splat 301!
 /docs/guides/_ /guides/legacy/:splat 301!
-docs/contributing/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 302
-docs/contributing/testing-a-new-adapter /docs/contributing/adapter-development/4-testing-a-new-adapter 302
-docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-development/5-documenting-a-new-adapter 302
+
+# adapter development docs
+
+/docs/contributing/what-are-adapters /guides/advanced/adapter-development/1-what-are-adapters 302
+/docs/contributing/adapter-development/1-what-are-adapters  /guides/advanced/adapter-development/1-what-are-adapters 302
+/docs/contributing/prerequisites-for-a-new-adapter /guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter 302
+
+/docs/contributing/adapter-development/2-prerequisites-for-a-new-adapter  /guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter 302
+/docs/contributing/building-a-new-adapter  /guides/advanced/adapter-development/3-building-a-new-adapter 302
+
+/docs/contributing/adapter-development/3-building-a-new-adapter  /guides/advanced/adapter-development/3-building-a-new-adapter 302
+/docs/building-a-new-adapter  /guides/advanced/adapter-development/3-building-a-new-adapter302
+
+/docs/contributing/testing-a-new-adapter  /guides/advanced/adapter-development/4-testing-a-new-adapter 302
+/docs/contributing/adapter-development/4-testing-a-new-adapter  /guides/advanced/adapter-development/4-testing-a-new-adapter 302
+
+/docs/contributing/documenting-a-new-adapter  /guides/advanced/adapter-development/5-documenting-a-new-adapter 302
+/docs/contributing/adapter-development/5-documenting-a-new-adapter  /guides/advanced/adapter-development/5-documenting-a-new-adapter 302
+
+/docs/contributing/promoting-a-new-adapter /guides/advanced/adapter-development/6-promoting-a-new-adapter 302
+/docs/contributing/adapter-development/6-promoting-a-new-adapter  /guides/advanced/adapter-development/6-promoting-a-new-adapter 302
+
+/docs/contributing/verifying-a-new-adapter  /guides/advanced/adapter-development/7-verifying-a-new-adapter 302
+/docs/contributing/adapter-development/7-verifying-a-new-adapter  /guides/advanced/adapter-development/7-verifying-a-new-adapter 302
+
 
 /docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer        /docs/use-dbt-semantic-layer/dbt-semantic-layer 301!
-/docs/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 301!
 /reference/warehouse-profiles/impala-profile /reference/warehouse-setups/impala-setup 302
 /reference/warehouse-profiles/exasol-profile /reference/warehouse-setups/exasol-setup 302
 /reference/warehouse-profiles/layer-profile /reference/warehouse-setups/layer-setup 302
