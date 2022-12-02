@@ -1,5 +1,5 @@
 ---
-title: "Migrating dbt utils 1.0"
+title: "Migrating to dbt utils 1.0"
 ---
 
 # dbt utils 1.0 Migration Guide
