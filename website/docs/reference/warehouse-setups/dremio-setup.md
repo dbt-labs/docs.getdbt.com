@@ -5,7 +5,7 @@ meta:
   authors: 'Dremio (formerly Fabrice Etanchaud)'
   github_repo: 'dremio/dbt-dremio'
   pypi_package: 'dbt-dremio'
-  min_core_version: 'v1.3.0'
+  min_core_version: 'v1.1.0'
   cloud_support: Not Supported
   min_supported_version: 'Dremio 22.0'
   slack_channel_name: 'n/a'
