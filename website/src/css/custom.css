@@ -1172,7 +1172,7 @@ article[itemprop="blogPost"] h2 {
     max-width: inherit;
   }
 
-  html.docs-version-current .navbar__brand {
+  .dbt__brand {
     background-color: var(--ifm-background-color);
     border-right: 1px solid var(--ifm-toc-border-color);
   }
@@ -1183,7 +1183,7 @@ article[itemprop="blogPost"] h2 {
 }
 
 @media (min-width: 997px) {
-  html.docs-version-current .navbar__brand {
+  .dbt__brand {
     padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
     min-height: var(--ifm-navbar-height);
     max-height: var(--ifm-navbar-height);
