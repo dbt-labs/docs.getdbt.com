@@ -1746,3 +1746,6 @@ section > h2:not(.resource-section) {
 #spotlight-members-section {
   padding: 3rem 0;
 }
+.community-spotlight-hero p {
+  font-size: 1.25rem;
+}

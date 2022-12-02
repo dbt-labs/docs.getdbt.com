@@ -3,10 +3,10 @@ import styles from './styles.module.css';
 import { useColorMode } from '@docusaurus/theme-common';
 
 
-function Hero({ heading, subheading, showGraphic = false, customStyles = {} }) {
+function Hero({ heading, subheading, showGraphic = false, customStyles = {}, classNames = '' }) {
   const { isDarkTheme } = useColorMode();
   return (
-    <header className={` ${styles.Hero} container-fluid`} style={customStyles && customStyles}>
+    <header className={` ${styles.Hero} container-fluid ${classNames ? classNames : ''}`} style={customStyles && customStyles}>
       {showGraphic && (
         <div className={styles.showGraphic}></div>
       )}

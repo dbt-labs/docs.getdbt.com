@@ -28,6 +28,7 @@ function CommunitySpotlightList({ spotlightData }) {
         subheading={communityDescription} 
         showGraphic={false} 
         customStyles={{marginBottom: 0}} 
+        classNames='community-spotlight-hero'
       />
       <section id='spotlight-members-section'>
         <div className='container'>   
