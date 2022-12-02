@@ -2,7 +2,7 @@
 title: "The dbt Cloud + Databricks experience is getting even better"
 id: "cloud-databricks-unitycatalog"
 description: "The dbt-databricks adapter is now available for use with dbt Cloud"
-sidebar_label: "Enhancement: Support for Databricks Unity Catalog via dbt-databricks"
+sidebar_label: "Enhancement: Support for Databricks Unity Catalog with dbt-databricks"
 tags: [Nov-17-2022, v1.1.66.15]
 ---
 
