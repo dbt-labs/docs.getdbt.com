@@ -27,7 +27,7 @@ select * from default.jaffle_shop_customers
 <div warehouse="Redshift">
 
 ```sql
-select * from jaffle_shop_customers
+select * from jaffle_shop.customers
 ```
 
 </div>
