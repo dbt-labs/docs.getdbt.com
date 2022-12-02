@@ -7,7 +7,7 @@ import BlogPostCard from '@site/src/components/blogPostCard';
 import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
-
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
@@ -29,6 +29,15 @@ function Home() {
     accumulator.push(postMetaData)
     return accumulator
   }, [])
+
+  // Check if featured community spotlight member set in Docusaurus config
+  // otherwise, default to latest spotlight member
+  const { siteConfig } = useDocusaurusContext()
+  let spotlightMember = siteConfig?.themeConfig?.communitySpotlightMember || null
+  console.log('spotlightMember', spotlightMember)
+  if(!spotlightMember) {
+    
+  }
 
   const featuredResource = {
     title: "How we structure our dbt projects",
