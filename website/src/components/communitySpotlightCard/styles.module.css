@@ -1,3 +1,10 @@
+.spotlightBreadcrumbs {
+  background: none;
+  padding: 0;
+}
+.spotlightBreadcrumbs > .spotlightBreadcrumbsContainer {
+  padding-left: 0;
+}
 .spotlightMemberCard {
   display: flex;
   flex-flow: row wrap;

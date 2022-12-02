@@ -2,11 +2,32 @@ import React from 'react'
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
-const SpotlightWrapper = ({ isSpotlightMember, children }) => {
+const SpotlightWrapper = ({ isSpotlightMember, frontMatter, children }) => {
   return isSpotlightMember ? (
-    <header className={styles.spotlightMemberCard}>
-      {children}
-    </header>
+    <>
+      <div className={`blog-breadcrumbs ${styles.spotlightBreadcrumbs}`}>
+        <div className={`container ${styles.spotlightBreadcrumbsContainer}`}>
+          <Link to="/" title="Home">Home</Link>
+          <Link 
+            to="/community/spotlight" 
+            title="Community spotlight"
+          >
+            Community spotlight
+          </Link>
+          {frontMatter?.title && frontMatter?.id && 
+            <Link 
+              to={`/community/spotlight/${frontMatter.id}`} 
+              title={frontMatter.title}
+            >
+              {frontMatter.title}
+            </Link>
+          }
+        </div>
+      </div>
+      <header className={styles.spotlightMemberCard}>
+        {children}
+      </header>
+    </>
   ) : (
     <div className={styles.spotlightMemberCard}>
       {children}
@@ -18,7 +39,7 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
   const { id, title, description, image, jobTitle, companyName, socialLinks } = frontMatter
 
   return (  
-    <SpotlightWrapper isSpotlightMember={isSpotlightMember}>
+    <SpotlightWrapper isSpotlightMember={isSpotlightMember} frontMatter={frontMatter}>
       {image && (
         <div className={styles.spotlightMemberImgContainer}>
           {id && isSpotlightMember ? (
