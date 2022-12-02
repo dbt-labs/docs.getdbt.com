@@ -20,7 +20,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 Sources are defined in `.yml` files nested under a `sources:` key.
 
-<File name='models/<filename>.yml'>
+<File name='models/schema.yml'>
 
 ```yaml
 version: 2
@@ -87,7 +87,7 @@ You can also:
 
 These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/tests) and [documentation](documentation)).
 
-<File name='models/<filename>.yml'>
+<File name='models/schema.yml'>
 
 ```yaml
 version: 2
@@ -130,7 +130,7 @@ With a couple of extra configs, dbt can optionally snapshot the "freshness" of t
 ### Declaring source freshness
 To configure sources to snapshot freshness information, add a `freshness` block to your source and `loaded_at_field` to your table declaration:
 
-<File name='models/<filename>.yml'>
+<File name='models/schema.yml'>
 
 ```yaml
 version: 2
