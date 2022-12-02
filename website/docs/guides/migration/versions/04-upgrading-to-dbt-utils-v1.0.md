@@ -1,3 +1,7 @@
+---
+title: "dbt utils 1.0 Migration Guide"
+---
+
 # dbt utils 1.0 Migration Guide
 
 For the first time, dbt utils is crossing the major version boundary. From [last month’s blog post](https://www.getdbt.com/blog/announcing-dbt-v1.3-and-utils/): 
