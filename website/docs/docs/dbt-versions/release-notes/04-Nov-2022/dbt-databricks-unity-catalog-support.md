@@ -10,4 +10,4 @@ dbt Cloud is the easiest and most reliable way to develop and deploy a dbt proje
 
 For all the Databricks customers already using dbt Cloud with the dbt-spark adapter, you can now [migrate](https://docs.getdbt.com/guides/migration/tools/migrating-from-spark-to-databricks#migration) your connection to the [dbt-databricks adapter](https://docs.getdbt.com/reference/warehouse-setups/databricks-setup) to get the benefits. [Databricks](https://www.databricks.com/blog/2022/11/17/introducing-native-high-performance-integration-dbt-cloud.html) is committed to maintaining and improving the adapter, so this integrated experience will continue to provide the best of dbt and Databricks.
 
-Check out our [live blog post](https://www.getdbt.com/blog/dbt-cloud-databricks-experience/) to learn more!
+Check out our [live blog post](https://www.getdbt.com/blog/dbt-cloud-databricks-experience/) to learn more.
