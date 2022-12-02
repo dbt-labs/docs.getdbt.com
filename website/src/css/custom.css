@@ -321,6 +321,11 @@ a.code-link:hover {
   color: var(--color-white);
   border: none;
 }
+@media(max-width: 996px) {
+  .navbar-sidebar .menu__link.nav-create-account {
+    width: fit-content;
+  }
+}
 
 .navbar-sidebar .menu__link.nav-create-account:hover {
   color: var(--color-white);
@@ -953,6 +958,11 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
   line-height: 1.25;
 }
 
+/* BlogPostItem header h2 size */
+article[itemprop="blogPost"] h2 {
+  font-size: 2rem;
+}
+
 /* footer styles */
 .footer {
   font-weight: var(--ifm-font-weight-narrow);
@@ -1472,6 +1482,10 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 }
 .docs-cta .docs-cta-btn:hover {
   background: var(--ifm-menu-color-active);
+}
+/* CTA dark-mode styles */
+[data-theme='dark'] .docs-cta {
+  background: var(--ifm-navbar-background-color);
 }
 
 @media (max-width: 996px) {
