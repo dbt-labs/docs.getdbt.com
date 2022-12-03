@@ -196,6 +196,8 @@ The default warehouse that dbt uses can be configured in your [Profile](/referen
 
 <File name='dbt_project.yml'>
 
+The example config below changes the warehouse for a group of models with a config argument in the yml.
+
 ```yaml
 name: my_project
 version: 1.0.0
@@ -219,7 +221,7 @@ snapshots:
 
 <File name='models/events/sessions.sql'>
 
-The example config below changes the warehouse for a single model with a config() block.
+The example config below changes the warehouse for a single model with a config() block in the sql model.
 
 ```sql
 {{
@@ -252,7 +254,7 @@ index_sessions as (
             order by session_start
         ) as page_view_in_session_index
     from aggregated_page_events
-    
+
 )
 
 select * from index_sessions
