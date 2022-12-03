@@ -241,7 +241,7 @@ var siteSettings = {
     "/js/gtm.js",
     "/js/onetrust.js",
     "https://kit.fontawesome.com/7110474d41.js",
-    'https://cdn.jsdelivr.net/pyodide/v0.21.2/full/pyodide.js'
+    'https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js'
   ],
   stylesheets: [
     "/css/fonts.css",
