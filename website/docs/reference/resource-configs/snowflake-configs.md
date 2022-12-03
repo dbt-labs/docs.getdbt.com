@@ -194,9 +194,9 @@ The default warehouse that dbt uses can be configured in your [Profile](/referen
 
 <TabItem value="dbt_project.yml">
 
-<File name='dbt_project.yml'>
-
 The example config below changes the warehouse for a group of models with a config argument in the yml.
+
+<File name='dbt_project.yml'>
 
 ```yaml
 name: my_project
@@ -219,9 +219,9 @@ snapshots:
 
 <TabItem value="models/events/sessions.sql">
 
-<File name='models/events/sessions.sql'>
-
 The example config below changes the warehouse for a single model with a config() block in the sql model.
+
+<File name='models/events/sessions.sql'>
 
 ```sql
 {{
