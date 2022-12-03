@@ -184,9 +184,43 @@ models:
 
 The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. 
 
-The example config below changes the warehouse for a single model with a config() block.
-  
+<Tabs
+  defaultValue="dbt_project.yml"
+  values={[
+    { label: 'yml code', value: 'dbt_project.yml', },
+    { label: 'sql code', value: 'models/events/sessions.sql', },
+    ]}
+>
+
+<TabItem value="dbt_project.yml">
+
+<File name='dbt_project.yml'>
+The following config uses the `EXTRA_SMALL` warehouse for all models in the project, except for the models in the `clickstream` folder, which are configured to use the `EXTRA_LARGE` warehouse. In this example, all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
+
+```yaml
+name: my_project
+version: 1.0.0
+
+...
+
+models:
+  +snowflake_warehouse: "EXTRA_SMALL"
+  my_project:
+    clickstream:
+      +snowflake_warehouse: "EXTRA_LARGE"
+
+snapshots:
+  +snowflake_warehouse: "EXTRA_LARGE"
+```
+
+</File>
+</TabItem>
+
+<TabItem value="sessions.sql">
+
 <File name='models/events/sessions.sql'>
+
+The example config below changes the warehouse for a single model with a config() block.
 
 ```sql
 {{
@@ -221,28 +255,8 @@ select * from index_sessions
 ```
 
 </File>
-
-The following config uses the `EXTRA_SMALL` warehouse for all models in the project, except for the models in the `clickstream` folder, which are configured to use the `EXTRA_LARGE` warehouse. In this example, all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
-
-<File name='dbt_project.yml'>
-
-```yaml
-name: my_project
-version: 1.0.0
-
-...
-
-models:
-  +snowflake_warehouse: "EXTRA_SMALL"
-  my_project:
-    clickstream:
-      +snowflake_warehouse: "EXTRA_LARGE"
-
-snapshots:
-  +snowflake_warehouse: "EXTRA_LARGE"
-```
-
-</File>
+</TabItem>
+</Tabs>
 
 ## Copying grants
 
