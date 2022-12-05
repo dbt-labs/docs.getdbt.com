@@ -2,11 +2,6 @@
 title: "Python models"
 id: "python-models"
 ---
-- [Overview](#overview)
-- [Configuring Python Models](#configuring-python-models)
-- [Python Specific Functionality](#configuring-python-models)
-- [Limitations](#limitations)
-- [Supported data platforms](#supported-data-platforms)
 
 dbt Core v1.3 adds support for Python models. Note that only [specific data platforms](#specific-data-platforms) support dbt-py models.
 
