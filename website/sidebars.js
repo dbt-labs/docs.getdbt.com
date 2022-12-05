@@ -815,10 +815,10 @@ guides: [
       label: "dbt Ecosystem",
       link: {
         type: "generated-index",
-        title: "dbt ecosystem guides",
+        title: "dbt Ecosystem guides",
         description:
           "Learn about the dbt ecosystem and how to use build with dbt",
-        slug: "/guides/dbt-ecosystem",
+        slug: "/guides/dbt-ecosystem/",
       },
       items: [
         {
@@ -826,7 +826,6 @@ guides: [
           label: "Adapter development",
           link: {
             type: "doc",
-            id: "guides/",
           },
           items: [
             "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
