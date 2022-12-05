@@ -54,7 +54,7 @@ For more details on both of these methods, including example implementations, ch
 
 If your organization is using [Prefect]([url](https://www.prefect.io/)), the way you will run your jobs depends on the version you are on, and whether you are orchestrating dbt Cloud or core jobs. A variety of options are described below.
 
-<Lightbox src="https://user-images.githubusercontent.com/12350579/186269036-01f1090f-1887-433d-8331-ee7c8b315dd5.png" title="Prefect DAG using a dbt Cloud job run flow"/> 
+<Lightbox src="/img/docs/running-a-dbt-project/prefect_dag_dbt_cloud.jpg" title="Prefect DAG using a dbt Cloud job run flow"/> 
 
 ### On Prefect 2
 
