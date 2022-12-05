@@ -900,7 +900,7 @@ const sidebarSettings = {
           title: "Analytics Engineering Glossary",
           description:
             "The Analytics Engineering Glossary is a living collection of terms & concepts commonly used in the data industry. You can use and contribute to this resource to educate yourself, your team, and your stakeholders.",
-          slug: "/glossary",
+          slug: "/ae-glossary",
         },
         items: [
           {
@@ -910,33 +910,33 @@ const sidebarSettings = {
         ],
       },
   ],
-  SQLGlossary: [
+  SQLReference: [
       {
         type: "category",
-        label: "SQL Glossary",
+        label: "SQL Reference",
         link: {
           type: "generated-index",
-          title: "SQL Glossary",
-          description: "The SQL Glossary is a collection of SQL syntaxes that you can use as a reference during your daily work.",
-          slug: "/sql-glossary",
+          title: "SQL Reference",
+          description: "The SQL Reference is a collection of SQL syntaxes that you can use and reference during your daily data work.",
+          slug: "/sql-reference",
         },
         items: [
           {
             type: "category",
             label: "Aggregate Functions",
             items: [
-              "sql-glossary/aggregate-functions/avg",
-              "sql-glossary/aggregate-functions/count",
-              "sql-glossary/aggregate-functions/max",
-              "sql-glossary/aggregate-functions/min",
-              "sql-glossary/aggregate-functions/round",
-              "sql-glossary/aggregate-functions/sum",
+              "sql-reference/aggregate-functions/avg",
+              "sql-reference/aggregate-functions/count",
+              "sql-reference/aggregate-functions/max",
+              "sql-reference/aggregate-functions/min",
+              "sql-reference/aggregate-functions/round",
+              "sql-reference/aggregate-functions/sum",
             ],
           },
           {
             type: "doc",
             label: "Comments", 
-            id: "sql-glossary/comments",
+            id: "sql-reference/comments",
           },
         ],
       },

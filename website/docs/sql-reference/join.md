@@ -1,7 +1,7 @@
 ---
 title: Glossaries and References
 id: glossary-directory
-slug: /glossaries
+slug: /glossary
 ---
 
 <section className="community-home">
@@ -13,15 +13,15 @@ This is a collection of handy technical glossaries and references that you can u
 <Card
     title="Analytics Engineering Glossary"
     body="This is a living collection of terms & concepts commonly used in the data industry that are super relevant for Analytics Engineers."
-    link="/glossary"
-    icon="star"
+    link="/ae-glossary"
+    icon="book"
 />
 
 <Card
-    title="SQL Glossary"
+    title="SQL Reference"
     body="Can't remember the different DATEADD syntaxes for each data warehouse or platform? This handy reference guide is great for SQL experts and beginners alike."
-    link="/sql-glossary"
-    icon="discussions"
+    link="/sql-reference"
+    icon="computer"
 />
 
 </div>
