@@ -1,5 +1,5 @@
 ---
-title: "Understanding state"
+title: "Understand state"
 ---
 
 <Changelog>
