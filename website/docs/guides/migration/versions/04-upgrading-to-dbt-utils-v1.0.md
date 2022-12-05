@@ -98,45 +98,43 @@ packages:
 
 ## Resolving error messages
 After upgrading, these are common error messages you may encounter, along with their resolutions.
-
 <details>
-  <summary><code>dict object’ has no attribute MACRO_NAME</code></summary>
-  <div>
-    <p><b>Cause</b>: No macro called <code>MACRO_NAME</code> exists. This is most likely because the macro has moved to the <code>dbt</code> namespace (see above). It could also be because you haven’t run dbt deps or have misspelled a macro’s name.</p>
-<p><b>Resolution</b>: For <a href=“https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros”>cross-database macros</a>, change <code>dbt_utils.MACRO_NAME()</code> to <code>dbt.MACRO_NAME()</code>.</p>
-  </div>
+	<summary><code>dict object has no attribute MACRO_NAME</code></summary>
+	<div>
+		<p><b>Cause</b>: No macro called <code>MACRO_NAME</code> exists. This is most likely because the macro has moved to the <code>dbt</code> namespace (see above). It could also be because you haven't run dbt deps or have misspelled a macro's name.</p>
+		<p><b>Resolution</b>: For <a href="/reference/dbt-jinja-functions/cross-database-macros">cross-database macros</a>, change <code>dbt_utils.MACRO_NAME()</code> to <code>dbt.MACRO_NAME()</code>.</p>
+	</div>
 </details>
 <details>
-    <summary><code>macro ‘dbt_macro__generate_surrogate_key’ takes not more than 1 argument(s)</code>
-</summary>
-  <div>
-    <p><b>Cause</b>: <code>generate_surrogate_key()</code> requires a single argument containing a list of columns, not a set of varargs.</p> 
-<p><b>Resolution</b>: Change to <code>{{ dbt_utils.generate_surrogate_key([‘column_1’, ‘column_2’]) }}</code> - note the square brackets.
-    </p>
-    </div>
+	<summary><code>macro 'dbt_macro__generate_surrogate_key' takes not more than 1 argument(s)</code> </summary>
+	<div>
+		<p><b>Cause</b>: <code>generate_surrogate_key()</code> requires a single argument containing a list of columns, not a set of varargs.</p>
+		<p><b>Resolution</b>: Change to <code>{{ dbt_utils.generate_surrogate_key(['column_1', 'column_2']) }}</code> - note the square brackets. </p>
+	</div>
 </details>
 <details>
-    <summary>The <code>dbt_utils.surrogate_key</code> has been replaced by <code>dbt_utils.generate_surrogate_key</code></summary>
-  <div>
-    <p><b>Cause</b>: <code>surrogate_key()</code> has been replaced. </p>
-<p><b>Resolution</b>: <ol><li>Decide whether you need to enable backwards compatibility <a href="#breaking-changes">as detailed above</a>.</li> <li>Find and replace <code>dbt_utils.surrogate_key</code> with <code>dbt_utils.generate_surrogate_key</code>.</li></ol>
-    </p>
-  </div>
+	<summary>The <code>dbt_utils.surrogate_key</code> has been replaced by <code>dbt_utils.generate_surrogate_key</code></summary>
+	<div>
+		<p><b>Cause</b>: <code>surrogate_key()</code> has been replaced. </p>
+		<p><b>Resolution</b>:
+			<ol>
+				<li>Decide whether you need to enable backwards compatibility <a href="#breaking-changes">as detailed above</a>.</li>
+				<li>Find and replace <code>dbt_utils.surrogate_key</code> with <code>dbt_utils.generate_surrogate_key</code>.</li>
+			</ol>
+		</p>
+	</div>
 </details>
 <details>
-  <summary>macro <code>dbt_macro__test_expression_is_true</code> takes no keyword argument <code>condition</code></summary>
-  <div>
-    <p><b>Cause</b>: <code>condition</code> has been removed from the <code>expression_is_true</code> test, now that <code>where</code> is available on all tests automatically.</p>
-<p><b>Resolution</b>: Replace <code>condition</code> with <code>where</code>.
-</p>
-  </div>
+	<summary>macro <code>dbt_macro__test_expression_is_true</code> takes no keyword argument <code>condition</code></summary>
+	<div>
+		<p><b>Cause</b>: <code>condition</code> has been removed from the <code>expression_is_true</code> test, now that <code>where</code> is available on all tests automatically.</p>
+		<p><b>Resolution</b>: Replace <code>condition</code> with <code>where</code>. </p>
+	</div>
 </details>
-        
 <details>
-  <summary>No materialization <code>insert_by_period</code> was found for adapter</summary>
-  <div>
-    <p><b>Cause</b>: <code>insert_by_period</code> has moved to the experimental features repo (see above).</p>
-<p><b>Resolution</b>: Install the package as <a href="#breaking-changes">described above</a>.
-</p>
-  </div>
-</details>        
+	<summary>No materialization <code>insert_by_period</code> was found for adapter</summary>
+	<div>
+		<p><b>Cause</b>: <code>insert_by_period</code> has moved to the experimental features repo (see above).</p>
+		<p><b>Resolution</b>: Install the package as <a href="#breaking-changes">described above</a>. </p>
+	</div>
+</details>
