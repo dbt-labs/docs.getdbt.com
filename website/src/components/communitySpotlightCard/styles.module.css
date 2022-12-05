@@ -12,6 +12,9 @@
 header.spotlightMemberCard {
   padding: 2rem 0;
 }
+div.spotlightMemberCard {
+  margin-bottom: 2.5rem;
+}
 .spotlightMemberCard .spotlightMemberImgContainer {
   flex: 0 0 100%;
 }
@@ -49,8 +52,11 @@ header.spotlightMemberCard {
 
 @media (min-width: 778px) {
   .spotlightMemberCard {
-      padding: 3rem 0;
-    }
+    padding: 3rem 0;
+  }
+  div.spotlightMemberCard {
+    margin-bottom: 0;
+  }
   .spotlightMemberCard .spotlightMemberImgContainer {
     flex: 0 0 346px;
     margin-right: 2rem;
