@@ -1,9 +1,9 @@
 ---
 
-title: "Extra features in new IDE, and classic IDE deprecation"
+title: "New IDE features and classic IDE deprecation"
 id: "ide-features-ide-deprecation"
 description: "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation"
-sidebar_label: "Enhancement and deprecation: Extra features in the new IDE and classic IDE deprecation"
+sidebar_label: "Enhancement and deprecation: New IDE features and classic IDE deprecation"
 tags: [Nov-29-2022, v1.1.67.0]
 
 ---
