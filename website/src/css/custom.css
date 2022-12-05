@@ -99,7 +99,6 @@ html[data-theme="dark"] {
 
   /* admonition icon */
   --ifm-color-info-contrast-foreground: var(--ifm-color-gray-900);
-
   --ifm-table-cell-color: var(--color-green-blue);
 }
 
@@ -149,12 +148,17 @@ html[data-theme="dark"] .api-content table td p {
   color: var(--color-orange);
 }
 
+
+html[data-theme="dark"] details table td {
+  color: inherit;
+}
+
 table td {
   vertical-align: top;
 }
 
 html[data-theme="dark"] table td {
-  filter: brightness(1.25);
+  filter: brightness(1.5);
   color: white;
 }
 
@@ -653,6 +657,10 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   color: var(--ifm-color-gray-900);
 }
 
+html[data-theme="dark"] .alert * {
+  --ifm-alert-foreground-color: var(--ifm-color-gray-900);
+}
+
 /* for dark mode */
 .alert--info a,
 .alert--success a,
@@ -852,6 +860,9 @@ td,
   font-size: 1.125rem;
   line-height: 1.5;
 }
+.faqs > div {
+  margin: 1em 0;
+}
 .pagination-nav__link {
   font-size: 1rem;
 }
@@ -1038,7 +1049,7 @@ article[itemprop="blogPost"] h2 {
 }
 
 @media (min-width: 997px) and (max-width: 2560px) {
-  .container > .row .col {
+  .container > .row > .col {
     padding-left: 2.5rem;
   }
   /* for non row divs like on /category/adapter-development  */
