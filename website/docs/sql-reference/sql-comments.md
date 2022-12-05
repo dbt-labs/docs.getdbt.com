@@ -2,7 +2,7 @@
 id: comments
 title: SQL Comments
 description: Inline SQL comments will begin with two dashes (--) in front of them in a query or dbt model; any text following these dashes is therefore what you’d call “commented out.” For longer, multi-line comments, you’ll typically see this syntax `/* your multi-line comment here */` used.
-slug: /sql-glossary/comments
+slug: /sql-reference/comments
 ---
 
 <head>
