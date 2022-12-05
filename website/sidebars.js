@@ -806,7 +806,7 @@ guides: [
     },
     {
       type: "category",
-      label: "dbt ecosystem",
+      label: "dbt Ecosystem",
       link: {
         type: "generated-index",
         title: "dbt ecosystem guides",
