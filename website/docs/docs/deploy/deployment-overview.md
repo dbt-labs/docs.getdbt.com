@@ -80,7 +80,7 @@ For details on both of these methods, see [prefect-dbt docs](https://prefecthq.g
 Trigger dbt Cloud jobs with the [DbtCloudRunJob](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtcloudrunjob) task. Running this task will generate a markdown artifact viewable in the Prefect UI. The artifact will contain links to the dbt artifacts generated as a result of the job run.
 
 #### dbt Core
-Use the [DbtShellTask]([url](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask)) to schedule, execute and monitor your dbt runs. Use the supported [ShellTask]([url](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask)) to execute dbt commands through the shell.
+Use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute, and monitor your dbt runs. Use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.
 
 
 ## Dagster
