@@ -187,8 +187,8 @@ The default warehouse that dbt uses can be configured in your [Profile](/referen
 <Tabs
   defaultValue="dbt_project.yml"
   values={[
-    { label: 'yml code', value: 'dbt_project.yml', },
-    { label: 'sql code', value: 'models/events/sessions.sql', },
+    { label: 'YAML code', value: 'dbt_project.yml', },
+    { label: 'SQL code', value: 'models/events/sessions.sql', },
     ]}
 >
 
