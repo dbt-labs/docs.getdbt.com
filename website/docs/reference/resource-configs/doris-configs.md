@@ -1,5 +1,5 @@
 ---
-title: "Doris configurations"
+title: "Doris/SelectDB configurations"
 id: "doris-configs"
 ---
 

@@ -4,13 +4,13 @@ id: "Doris-setup"
 meta:
   maintained_by: SelectDB
   authors: long2ice,catpineapple
-  github_repo: 'selectdb/dbt-doris'
+  github_repo: 'selectdb/dbt-selectdb'
   pypi_package: 'dbt-doris'
-  core_version: 'v1.3.0 and newer'
+  min_core_version: 'v1.3.0'
   cloud_support: Not Supported
   slack_channel_name: '#db-doris'
-  slack_channel_link: 'https://getdbt.slack.com/archives/*****'
-  platform_name: 'Apache Doris'
+  slack_channel_link: 'https://www.getdbt.com/community'
+  platform_name: 'Apache Doris / SelectDB'
   config_page: 'doris-configs'
 ---
 
@@ -43,7 +43,7 @@ pip is the easiest way to install the adapter:
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
 
-## Connecting to Doris with **dbt-doris**
+## Connecting to Doris/SelectDB with **dbt-doris**
 
 ### User / Password Authentication
 
@@ -81,7 +81,7 @@ dbt-doris:
 
 ## Database User Privileges
 
-Your Doris database user would be able to have some abilities to read or write.
+Your Doris/SelectDB database user would be able to have some abilities to read or write.
 You can find some help [here](https://doris.apache.org/docs/admin-manual/privilege-ldap/user-privilege) with Doris privileges management.
 
 | Required Privilege |
