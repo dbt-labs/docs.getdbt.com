@@ -826,7 +826,7 @@ guides: [
           label: "Adapter development",
           link: {
             type: "doc",
-            id: "/guides/",
+            id: "guides/",
           },
           items: [
             "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
