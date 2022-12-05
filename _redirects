@@ -453,9 +453,9 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/guides/getting-help /guides/legacy/getting-help 302
 /docs/guides/migration-guide/_ /guides/migration/versions/:splat 301!
 /docs/guides/_ /guides/legacy/:splat 301!
-docs/contributing/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 302
-docs/contributing/testing-a-new-adapter /docs/contributing/adapter-development/4-testing-a-new-adapter 302
-docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-development/5-documenting-a-new-adapter 302
+/docs/contributing/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 302
+/docs/contributing/testing-a-new-adapter /docs/contributing/adapter-development/4-testing-a-new-adapter 302
+/docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-development/5-documenting-a-new-adapter 302
 
 /docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer        /docs/use-dbt-semantic-layer/dbt-semantic-layer 301!
 /docs/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 301!
