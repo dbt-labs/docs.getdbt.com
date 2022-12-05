@@ -70,8 +70,8 @@ var siteSettings = {
       textColor: "#fff",
       isCloseable: true,
     },
-    announcementBarActive: true,
-    announcementBarLink: "https://www.surveymonkey.com/r/XP2N8Z3",
+    announcementBarActive: false,
+    announcementBarLink: "",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "ada-lovelace",
