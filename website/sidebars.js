@@ -829,21 +829,22 @@ guides: [
             id: "/guides/dbt-ecosystem/adapter-development",
           },
           items: [
-            “guides/dbt-ecosystem/adapter-development/1-what-are-adapters”,
-            “guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter”,
-            “guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter”,
-            “guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter”,
-            “guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter”,
-            “guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter”,
-            “guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter”,
+            "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+            "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
-       ],
+        }
+      ],
     },
     {
       type: "category",
       label: "Advanced",
       items: [
-         “guides/advanced/creating-new-materializations”,
+         "guides/advanced/creating-new-materializations",
       ],
     },
     {
