@@ -68,7 +68,7 @@ Use the [trigger_dbt_cloud_job_run_and_wait_for_completion](https://prefecthq.gi
 
 Use the [trigger_dbt_cli_command]([url](https://prefecthq.github.io/prefect-dbt/cli/commands/#prefect_dbt.cli.commands.trigger_dbt_cli_command)) task.
 
-For details on both of these methods, see [prefect-dbt docs]([url](https://prefecthq.github.io/prefect-dbt/)).
+For details on both of these methods, see [prefect-dbt docs](https://prefecthq.github.io/prefect-dbt/).
 
 ### On Prefect 1
 
