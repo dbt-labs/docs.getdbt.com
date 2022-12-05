@@ -711,12 +711,8 @@ guides: [
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
-        {
-          items: [
-            "guides/best-practices/debugging-errors",
-            "guides/best-practices/writing-custom-generic-tests",
-          ],
-        },
+        "guides/best-practices/debugging-errors",
+        "guides/best-practices/writing-custom-generic-tests",
       ],
     },
     {
