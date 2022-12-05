@@ -62,7 +62,8 @@ Review a variety of options described below.
 
 #### dbt Cloud
 
-Use the [trigger_dbt_cloud_job_run_and_wait_for_completion](https://prefecthq.github.io/prefect-dbt/cloud/jobs/#prefect_dbt.cloud.jobs.trigger_dbt_cloud_job_run_and_wait_for_completion) flow. As jobs are executing, you can poll dbt to see whether or not the job completes without failures, through the [Prefect UI](https://docs.prefect.io/ui/overview/).
+Use the [trigger_dbt_cloud_job_run_and_wait_for_completion](https://prefecthq.github.io/prefect-dbt/cloud/jobs/#prefect_dbt.cloud.jobs.trigger_dbt_cloud_job_run_and_wait_for_completion) flow. As jobs are executing, you can poll dbt to see whether or not the job completes without failures, through the [Prefect user interface (UI)](https://docs.prefect.io/ui/overview/).
+
 
 <Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_job_prefect.jpg" title="dbt Cloud job triggered by Prefect"/> 
 
