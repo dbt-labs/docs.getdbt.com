@@ -109,7 +109,7 @@ After upgrading, these are common error messages you may encounter, along with t
 	<summary><code>macro 'dbt_macro__generate_surrogate_key' takes not more than 1 argument(s)</code> </summary>
 	<div>
 		<p><b>Cause</b>: <code>generate_surrogate_key()</code> requires a single argument containing a list of columns, not a set of varargs.</p>
-		<p><b>Resolution</b>: Change to <code>{{ dbt_utils.generate_surrogate_key(['column_1', 'column_2']) }}</code> - note the square brackets. </p>
+		<p><b>Resolution</b>: Change to <code>dbt_utils.generate_surrogate_key(['column_1', 'column_2'])</code> - note the square brackets. </p>
 	</div>
 </details>
 <details>
