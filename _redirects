@@ -1,3 +1,4 @@
+
 /guides/advanced/adapter-development/1-what-are-adapters  /guides/dbt-ecosystem/adapter-development/1-what-are-adapters 301
 /guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter  /guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter 301
 /guides/advanced/adapter-development/3-building-a-new-adapter  /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
@@ -5,6 +6,7 @@
 /guides/advanced/adapter-development/5-documenting-a-new-adapter  /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301
 /guides/advanced/adapter-development/6-promoting-a-new-adapter /guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter 301
 /guides/advanced/adapter-development/7-verifying-a-new-adapter /guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter 301/docs/collaborate/git/resolve-merge-conflicts  /docs/collaborate/git/merge-conflicts 301
+
 /docs/running-a-dbt-project/running-dbt-in-production /docs/deploy/deployments 301
 /docs/running-a-dbt-project/profile /docs/get-started/connection-profiles 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications /docs/deploy/job-notifications 301
