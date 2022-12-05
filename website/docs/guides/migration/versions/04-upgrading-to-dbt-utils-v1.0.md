@@ -28,6 +28,7 @@ Just like the switch to dbt Core 1.0 last year, there are some breaking changes 
 - The `expression_is_true` test doesn’t output `*` unless storing failures, a cost improvement for BigQuery.
 
 ## Breaking Changes
+### Changes to `surrogate_key()`:
 
 - `surrogate_key()` has been replaced by `generate_surrogate_key()`. The original treated null values and blank strings the same, which could lead to duplicate keys being created.  `generate_surrogate_key()` does not have this flaw. Compare the [surrogate keys calculated for these columns](https://docs.google.com/spreadsheets/d/1qWfdbieUOSgkzdY0kmJ9iCgdqyWccA0R-6EW0EgaMQc/edit#gid=0):
 
@@ -53,6 +54,8 @@ By creating a new macro instead of updating the behaviour of the old one, we are
 You can not assume one behaviour or the other, as each project can customise their behaviour.
 
 :::
+
+### Functionality now native to dbt Core:
 - The `expression_is_true` test no longer has a dedicated `condition` argument. Instead, use `where` which is [now available natively to all tests](https://docs.getdbt.com/reference/resource-configs/where):
 
 ```yaml
@@ -79,6 +82,7 @@ models:
   - Note that Postgres and Snowflake’s implementation of `dbt.current_timestamp()` differs from the old `dbt_utils` one ([full details here](https://github.com/dbt-labs/dbt-utils/pull/597#issuecomment-1231074577)). If you use Postgres or Snowflake and need identical backwards-compatible behaviour, use `dbt.current_timestamp_backcompat()`. This discrepancy will hopefully be reconciled in a future version of dbt Core.
 - All other cross-db macros have moved to the dbt namespace, with no changes necessary other than replacing `dbt_utils.` with `dbt.`. Review the [cross database macros documentation](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) for the full list.
     - In your code editor, you can do a global find and replace with regex: `\{\{\s*dbt_utils\.(any_value|bool_or|cast_bool_to_text|concat|dateadd|datediff|date_trunc|escape_single_quotes|except|hash|intersect|last_day|length|listagg|position|replace|right|safe_cast|split_part|string_literal|type_bigint|type_float|type_int|type_numeric|type_string|type_timestamp|type_bigint|type_float|type_int|type_numeric|type_string|type_timestamp|except|intersect|concat|hash|length|position|replace|right|split_part|escape_single_quotes|string_literal|any_value|bool_or|listagg|cast_bool_to_text|safe_cast|dateadd|datediff|date_trunc|last_day)` → `{{ dbt.$1`
+### Removal of `insert_by_period` materialization
 - The `insert_by_period` materialization has been moved to the [experimental-features repo](https://github.com/dbt-labs/dbt-labs-experimental-features/tree/main/insert_by_period). To continue to use it, add the below to your packages.yml file:
 
 ```yaml
@@ -87,7 +91,7 @@ packages:
     subdirectory: insert_by_period
     revision: XXXX #optional but highly recommended. Provide a full git sha hash, e.g. 1c0bfacc49551b2e67d8579cf8ed459d68546e00. If not provided, uses the current HEAD.
 ```
-
+### Removal of deprecated legacy behavior:
 - `safe_add()` only works with a list of arguments; use `{{ dbt_utils.safe_add(['column_1', 'column_2']) }}` instead of varargs `{{ dbt_utils.safe_add('column_1', 'column_2') }}`.
 - Several long-promised deprecations to `deduplicate()` have been applied:
     - The `group_by` argument is replaced by `partition_by`.
@@ -118,7 +122,7 @@ After upgrading, these are common error messages you may encounter, along with t
 		<p><b>Cause</b>: <code>surrogate_key()</code> has been replaced. </p>
 		<p><b>Resolution</b>:
 			<ol>
-				<li>Decide whether you need to enable backwards compatibility <a href="#breaking-changes">as detailed above</a>.</li>
+				<li>Decide whether you need to enable backwards compatibility <a href="#changes-to-surrogate_key">as detailed above</a>.</li>
 				<li>Find and replace <code>dbt_utils.surrogate_key</code> with <code>dbt_utils.generate_surrogate_key</code>.</li>
 			</ol>
 		</p>
@@ -135,6 +139,6 @@ After upgrading, these are common error messages you may encounter, along with t
 	<summary><code>No materialization insert_by_period was found for adapter</code></summary>
 	<div>
 		<p><b>Cause</b>: <code>insert_by_period</code> has moved to the experimental features repo (see above).</p>
-		<p><b>Resolution</b>: Install the package as <a href="#breaking-changes">described above</a>. </p>
+		<p><b>Resolution</b>: Install the package as <a href="#removal-of-insert_by_period-materialization">described above</a>. </p>
 	</div>
 </details>
