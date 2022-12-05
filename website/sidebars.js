@@ -900,7 +900,7 @@ const sidebarSettings = {
           title: "Analytics Engineering Glossary",
           description:
             "The Analytics Engineering Glossary is a living collection of terms & concepts commonly used in the data industry. You can use and contribute to this resource to educate yourself, your team, and your stakeholders.",
-          slug: "/ae-glossary",
+          slug: "/analytics-engineering-glossary",
         },
         items: [
           {
