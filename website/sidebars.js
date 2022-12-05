@@ -711,6 +711,12 @@ guides: [
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
+        {
+          items: [
+            "guides/legacy/debugging-errors",
+            "guides/legacy/writing-custom-generic-tests",
+          ],
+        },
       ],
     },
     {
@@ -831,18 +837,23 @@ guides: [
             “guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter”,
             “guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter”,
           ],
-        },
+       ],
+    },
+    {
+      type: "category",
+      label: "Advanced",
+      items: [
+         “guides/legacy/creating-new-materializations”,
+      ],
+    },
     {
       type: "category",
       label: "Legacy",
       items: [
-        "guides/legacy/debugging-errors",
         "guides/legacy/debugging-schema-names",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
-        "guides/legacy/writing-custom-generic-tests",
         "guides/legacy/building-packages",
-        "guides/legacy/creating-new-materializations",
         "guides/legacy/understanding-state",
         "guides/legacy/videos",
       ],
