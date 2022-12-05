@@ -200,3 +200,9 @@ fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
 ```
 
 Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
+
+### CI job not triggering for Virtual Private dbt users ###
+
+To trigger jobs on dbt Cloud using the [API](/docs/dbt-cloud-apis/admin-cloud-api), your Git provider needs to connect to your dbt Cloud account.  
+
+If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently. 
