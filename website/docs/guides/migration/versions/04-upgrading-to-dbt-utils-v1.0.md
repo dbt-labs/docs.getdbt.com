@@ -6,7 +6,7 @@ title: "Upgrading to dbt utils v1.0"
 
 For the first time, [dbt utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) is crossing the major version boundary. From [last month’s blog post](https://www.getdbt.com/blog/announcing-dbt-v1.3-and-utils/): 
 
-> It’s time to formalise what was already unofficial policy: you can rely on dbt utils in the same way as you do dbt Core, with stable interfaces and consistent and intuitive naming.
+> It’s time to formalize what was already unofficial policy: you can rely on dbt utils in the same way as you do dbt Core, with stable interfaces and consistent and intuitive naming.
 
 Just like the switch to dbt Core 1.0 last year, there are some breaking changes as we standardized and prepared for the future. Most changes can be handled with find-and-replace. If you need help, post on the [Community Forum](https://discourse.getdbt.com) or in [#package-ecosystem](https://getdbt.slack.com/archives/CU4MRJ7QB) channel on Slack. 
 
