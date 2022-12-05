@@ -713,8 +713,8 @@ guides: [
         },
         {
           items: [
-            "guides/legacy/debugging-errors",
-            "guides/legacy/writing-custom-generic-tests",
+            "guides/best-practices/debugging-errors",
+            "guides/best-practices/writing-custom-generic-tests",
           ],
         },
       ],
@@ -843,7 +843,7 @@ guides: [
       type: "category",
       label: "Advanced",
       items: [
-         “guides/legacy/creating-new-materializations”,
+         “guides/advanced/creating-new-materializations”,
       ],
     },
     {
