@@ -471,8 +471,6 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/contributing/testing-a-new-adapter  /guides/advanced/adapter-development/4-testing-a-new-adapter 302
 /docs/contributing/adapter-development/4-testing-a-new-adapter  /guides/advanced/adapter-development/4-testing-a-new-adapter 302
 
-/docs/contributing/documenting-a-new-adapter  /guides/advanced/adapter-development/5-documenting-a-new-adapter 302
-/docs/contributing/adapter-development/5-documenting-a-new-adapter  /guides/advanced/adapter-development/5-documenting-a-new-adapter 302
 
 /docs/contributing/promoting-a-new-adapter /guides/advanced/adapter-development/6-promoting-a-new-adapter 302
 /docs/contributing/adapter-development/6-promoting-a-new-adapter  /guides/advanced/adapter-development/6-promoting-a-new-adapter 302
