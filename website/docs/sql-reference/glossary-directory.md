@@ -13,7 +13,7 @@ This is a collection of handy technical glossaries and references that you can u
 <Card
     title="Analytics Engineering Glossary"
     body="This is a living collection of terms & concepts commonly used in the data industry that are super relevant for Analytics Engineers."
-    link="/ae-glossary"
+    link="/analytics-engineering-glossary"
     icon="book"
 />
 
