@@ -13,6 +13,6 @@ jobs:
       - uses: actions/add-to-project@RELEASE_VERSION
         with:
           project-url: https://github.com/orgs/dbt-labs/projects/14
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          github-token: ${{ secrets.PROJECT_NEXT }}
           labeled: content, developer blog, guides
           label-operator: OR
