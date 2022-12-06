@@ -9,7 +9,7 @@ slug: /sql-glossary/round
     <title>Working with SQL ROUND</title>
 </head>
 
-If you’re reading this, that probably means you’re a data person. And as a data person who’s likely modeling data for analytics use cases or analysis, you’re going to need to round data from time to time. For the unacquainted, "rounding" is making a number simpler so that it's easier to understand while keeping it close to its original value. In data, a common use case for rounding is to decrease the number of decimal places a numeric record has.
+If you’re reading this, that probably means you’re a data person. And as a data person who’s likely modeling data for analytics use cases, you’re going to need to round data from time to time. For the unacquainted, "rounding" is making a number simpler so that it's easier to understand while keeping it close to its original value. In data, a common use case for rounding is to decrease the number of decimal places a numeric record has.
 
 To round numeric fields or values in SQL, you’re going to use the handy ROUND function.
 
