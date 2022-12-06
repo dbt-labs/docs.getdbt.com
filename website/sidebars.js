@@ -215,7 +215,7 @@ const sidebarSettings = {
             "docs/deploy/dashboard-status-tiles",
           ],
         },
-        "docs/deploy/understanding-state",
+        "docs/deploy/about-state",
         "docs/deploy/cloud-ci-job",
       ],
     },
