@@ -19,7 +19,8 @@ Just like the switch to dbt Core 1.0 last year, there are some breaking changes 
 ## Enhancements
 
 - Many tests are more meaningful when you run them against subgroups of a table. For example, you may need to validate that recent data exists for every turnstile instead of a single data source being sufficient. Add the new `group_by_columns` argument to your tests to do so. Review [this article](https://www.emilyriederer.com/post/grouping-data-quality/) by the test's author for more information.
-- With the addition of an on-by-default `quote_identifiers` flag in the `star()` macro, you can now disable quoting if necessary.
+- With the addition of an on-by-default `quote_identifiers` argument in the `star()` macro, you can now disable quoting if necessary.
+- The `recency` test now has an optional `ignore_time_component` argument which can be used when testing against a date column. This prevents the time of day the test runs from causing false negatives/positives.
 
 ## Fixes
 
