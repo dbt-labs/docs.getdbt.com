@@ -53,7 +53,7 @@ You can perform git tasks with the git button in the Cloud IDE. The following ar
 
 Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for Git to determine which change should be kept.
 
-Refer to [resolve merge conflicts](/docs/collaborate/git/resolve-merge-conflicts) to learn how to resolve merge conflicts.
+Refer to [resolve merge conflicts](/docs/collaborate/git/merge-conflicts) to learn how to resolve merge conflicts.
 
 ## The .gitignore file
 
