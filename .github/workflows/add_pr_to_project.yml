@@ -1,4 +1,4 @@
-name: Add needs-review and size/XL pull requests to projects
+name: Adds content, developer blog, guides labeled pull requests to projects
 
 on:
   pull_request:
