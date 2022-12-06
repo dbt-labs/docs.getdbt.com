@@ -289,7 +289,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
    | **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
 14. Click **Save** at the top of the form.
 
-#### Creating SAML Attributes in AD
+### Creating SAML Settings
 
 From the Set up Single Sign-On with SAML page:
 
@@ -311,6 +311,7 @@ From the Set up Single Sign-On with SAML page:
 
 **Note:** Keep in mind that the Group ID in Azure AD maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
 
+### Finish setup
 
 9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration.
 
