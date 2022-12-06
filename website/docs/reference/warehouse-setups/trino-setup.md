@@ -3,14 +3,14 @@ title: "Starburst & Trino setup"
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
-  authors: Matthew Carter, Andy Regan, Andrew Hedengren
+  authors: Marius Grama, Przemek Denkiewicz, Michiel de Smet
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'
-  slack_channel_name: '#db-clickhouse'
-  slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
+  slack_channel_name: '#db-presto-trino'
+  slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
   platform_name: 'Trino'
   config_page: 'no-configs'
 ---
