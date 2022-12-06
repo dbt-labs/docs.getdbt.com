@@ -933,11 +933,6 @@ const sidebarSettings = {
               "sql-reference/aggregate-functions/sum",
             ],
           },
-          {
-            type: "doc",
-            label: "Comments", 
-            id: "sql-reference/comments",
-          },
         ],
       },
     ],
