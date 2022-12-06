@@ -9,7 +9,7 @@ slug: /sql-glossary/avg
     <title>Working with the SQL AVG function</title>
 </head>
 
-You’re a data person, so we assume you’re going to be calculating averages of some metrics \**waves hands airly*\* at some point in your career. And the way to calculate averages of a numeric column in SQL is by using the AVG function.
+You’re a data person, so we assume you’re going to be calculating averages of some metrics \**waves hands airily*\* at some point in your career. And the way to calculate averages of a numeric column in SQL is by using the AVG function.
 
 ## How to use the AVG function
 
@@ -19,7 +19,7 @@ The AVG function is a part of the group of mathematical or aggregate functions (
 
 ```sql
 select
-	date_trunc('month, order_date') as order_month,
+	date_trunc('month', order_date) as order_month,
 	round(avg(amount)) as avg_order_amount
 from {{ ref('orders') }}
 where status not in ('returned', 'return_pending')
