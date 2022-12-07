@@ -70,7 +70,14 @@ For certain configurations, you can use "secret" env vars. Any env var named wit
 
 The primary use case of secret env vars is git access tokens for [private packages](/docs/build/packages#private-packages).
 
-**Note:** When dbt is loading profile credentials and package configuration, secret env vars will be replaced with the string value of the environment variable. You cannot modify secrets using Jinja filters, including type-casting filters such as [`as_number`](as_number) or [`as_bool`](as_bool), or pass them as arguments into other Jinja macros.
+**Note:** When dbt is loading profile credentials and package configuration, secret env vars will be replaced with the string value of the environment variable. You cannot modify secrets using Jinja filters, including type-casting filters such as [`as_number`](as_number) or [`as_bool`](as_bool), or pass them as arguments into other Jinja macros. You can only use one secret per configuration:
+```yml
+# works
+host: "{{ env_var('DBT_ENV_SECRET_HOST') }}"
+
+# does not work
+host: "www.{{ env_var('DBT_ENV_SECRET_HOST_DOMAIN') }}.com/{{ env_var('DBT_ENV_SECRET_HOST_PATH') }}"
+```
 
 ### Custom metadata
 
