@@ -1,4 +1,5 @@
 
+
 /guides/legacy/debugging-errors /guides/best-practices/debugging-errors 301!
 /guides/legacy/writing-custom-generic-tests /guides/best-practices/writing-custom-generic-tests 301!
 /guides/legacy/creating-new-materializations /guides/advanced/creating-new-materializations 301!
@@ -10,6 +11,10 @@
 /guides/advanced/adapter-development/5-documenting-a-new-adapter  /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301!
 /guides/advanced/adapter-development/6-promoting-a-new-adapter /guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter 301!
 /guides/advanced/adapter-development/7-verifying-a-new-adapter /guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter 301!
+
+
+/guides/legacy/understanding-state  /docs/deploy/about-state 301!
+/guides/migration/versions/Older%20versions/understanding-state /docs/deploy/about-state 301!
 
 /docs/collaborate/git/resolve-merge-conflicts  /docs/collaborate/git/merge-conflicts 301
 /docs/running-a-dbt-project/running-dbt-in-production /docs/deploy/deployments 301
