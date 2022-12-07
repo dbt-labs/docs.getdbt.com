@@ -1,6 +1,12 @@
 ---
-title: Debugging errors
+title: "Debugging errors"
+id: "debugging-errors"
+description: Learn about errors and the art of debugging those errors.
+displayText: Debugging errors
+hoverSnippet: Learn about errors and the art of debugging those errors.
 ---
+
+
 ## General process of debugging
 Learning how to debug is a skill, and one that will make you great at your role!
 1. Read the error message — when writing the code behind dbt, we try our best to make error messages as useful as we can. The error message dbt produces will normally contain the type of error (more on these error types below), and the file where the error occurred.
