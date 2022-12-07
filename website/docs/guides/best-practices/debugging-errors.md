@@ -1,7 +1,7 @@
 ---
 title: "Debugging errors"
 id: "debugging-errors"
-description: Learn about errors and the art of debugging those errors.
+description: Learn about errors and the art of debugging them.
 displayText: Debugging errors
 hoverSnippet: Learn about errors and the art of debugging those errors.
 ---
