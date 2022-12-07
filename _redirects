@@ -1,7 +1,7 @@
 # add new redirects to the top because they will override later ones
 # getting started guide
 /guides/getting-started /docs/get-started/getting-started/overview 301
-/docs/get-started/getting-started/create-a-project  /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
+/docs/get-started/getting-started/create-a-project  /docs/get-started/getting-started/set-up-dbt-cloud 301
 /guides/getting-started/building-your-first-project /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
 /guides/getting-started/building-your-first-project/build-your-first-models /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
 /guides/getting-started/building-your-first-project/schedule-a-job /docs/get-started/getting-started/building-your-first-project/schedule-a-job 301
