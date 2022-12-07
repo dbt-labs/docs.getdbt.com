@@ -52,7 +52,7 @@ We expect users to upgrade to patches as soon as they're available. When we refe
 
 ### Upgrading to new minor versions
 
-During the official support window period, minor versions will remain available in dbt Cloud, and in the version dropdown on the docs site. While we do not expect users to immediately upgrade to newer minor versions as soon as they're available, there will always be some features and fixes that are only available for users of the latest minor version.
+During the official support period, minor versions will remain available in dbt Cloud and the version dropdown on the docs site. While we do not expect users to immediately upgrade to newer minor versions as soon as they're available, there will always be some features and fixes only available for users of the latest minor version.
 
 ### Trying prereleases
 
