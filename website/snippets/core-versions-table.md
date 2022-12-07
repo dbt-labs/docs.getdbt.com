@@ -1,6 +1,6 @@
 | dbt Core                        | Initial Release | Active Support Until | Critical Support Until  | dbt Cloud Until | Status      |
 |---------------------------------|-----------------|----------------------|-------------------------|-----------------|-------------|
-| [**v0.X**]                      | (Various dates) | v1.0 release         | Deprecated              | Deprecated      |  Deprecated |
+|  **v0.X**                      | (Various dates) | v1.0 release         | Deprecated              | Deprecated      |  Deprecated |
 | [**v1.0**](upgrading-to-v1.0)   | Dec 3, 2021     | v1.1.0 release       | Dec 3, 2022             | Dec 2022        |  EOL        |
 | [**v1.1**](upgrading-to-v1.1)   | Apr 28, 2022    | v1.2.0 release       | Apr 28, 2023            | Apr 2023        |  GA         |
 | [**v1.2**](upgrading-to-v1.2)   | Jul 26, 2022    | v1.3.0 release       | Jul 26, 2023            | Jul 2023        |  GA         |
