@@ -1,3 +1,4 @@
+
 ## adapter redirects using diff formats
 
 /advanced/adapter-development/1-what-are-adapters  /guides/dbt-ecosystem/adapter-development/1-what-are-adapters 301!
@@ -20,6 +21,8 @@
 /guides/legacy/writing-custom-generic-tests /guides/best-practices/writing-custom-generic-tests 301!
 /guides/legacy/creating-new-materializations /guides/advanced/creating-new-materializations 301!
 
+
+/docs/deploy/understanding-state  /docs/deploy/about-state 301!
 /guides/legacy/understanding-state  /docs/deploy/about-state 301!
 /guides/migration/versions/Older%20versions/understanding-state /docs/deploy/about-state 301!
 
