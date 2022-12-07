@@ -1,6 +1,9 @@
 ---
 title: "Marts: Business-defined entities"
 id: 4-marts
+description: Marts: Business-defined entities.
+displayText: Marts: Business-defined entities.
+hoverSnippet: Marts: Business-defined entities.
 ---
 
 This is the layer where everything comes together and we start to arrange all of our atoms (staging models) and molecules (intermediate models) into full-fledged cells that have identity and purpose. We sometimes like to call this the *entity* *layer* or *concept layer*, to emphasize that all our marts are meant to represent a specific entity or concept at its unique grain. For instance, an order, a customer, a territory, a click event, a payment — each of these would be represented with a distinct mart, and each row would represent a discrete instance of these concepts. Unlike in a traditional Kimball star schema though, in modern data warehousing — where storage is cheap and compute is expensive — we’ll happily borrow and add any and all data from other concepts that are relevant to answering questions about the mart’s core entity. Building the same data in multiple places, as we do with `orders` in our `customers` mart example below, is more efficient in this paradigm than repeatedly rejoining these concepts (this is a basic definition of denormalization in this context). Let’s take a look at how we approach this first layer intended expressly for exposure to end users.
