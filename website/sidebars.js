@@ -665,6 +665,7 @@ const sidebarSettings = {
         "reference/warehouse-setups/mysql-setup",
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
+        "reference/warehouse-setups/infer-setup",
       ],
     },
     {
