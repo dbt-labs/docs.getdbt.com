@@ -1,0 +1,34 @@
+
+- name: string
+
+- name: [string]
+  description: An array of strings
+
+- name: version
+  description: A valid semantic version number, for example, 0.0.1
+
+- name: directorypath
+  description: A valid path to a directory, relative to the `dbt_project.yml` file. For example, `seeds` would point to a subdirectory named `seeds`
+
+- name: [directorypath]
+  description: An array of directory paths
+
+- name: boolean
+  render_as: "true | false" # where `render_as` is not specified, it should be rendered in a dbt_project.yml as the name
+
+- name: version-range
+  description: A valid version range, e.g. `0.1.0`, or `>=0.1.0` or `>=0.1.0<0.2.0`
+
+- name: sql-statement
+  description: A SQL statement that can be executed against a warehouse.
+
+- name: [sql-statements]
+  description: An array of sql-statements
+
+- name: column_name
+  description: The identifier of a column that can be selected from a relation.
+
+- name: column_name_or_expression # this is for like the loaded_at field, but I'll fill it in when we get there. Is it bad that this is snake_case whereas others are kebab-case?
+
+- name: datatype
+  description: A valid datatype according for a data warehouse, e.g. `varchar`

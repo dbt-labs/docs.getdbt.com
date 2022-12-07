@@ -3,7 +3,8 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "test": "npx jest --watch"
+    "test": "npx jest --watch",
+    "versioning": "docusaurus docs:version 1.1.0"
   },
   "dependencies": {
     "@docusaurus/core": "2.2.0",
