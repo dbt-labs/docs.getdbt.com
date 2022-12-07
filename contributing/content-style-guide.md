@@ -314,7 +314,7 @@ license | licence
 color | colour
 </div></b>
 
-Although non-US readers may find it difficult to have to type US spelling. For example, if your documentation tells a reader who's used to spelling `colour` to type `color`, they may mistype it. So when you use filenames or data parameters in examples, do your best to avoid words that are spelled differently by different groups of English speakers.
+Avoid regional idiomatic phrases as well.  For example, a common saying amongst English speakers in India is "do the needful," but this phrase may be unrecognizable to English speakers from other regions. 
 
 ### Abbreviations
 
