@@ -1,6 +1,9 @@
 ---
 title: "Intermediate: Purpose-built transformation steps"
 id: 3-intermediate
+description: Purpose-built transformation steps.
+displayText: Purpose-built transformation steps.
+hoverSnippet: Purpose-built transformation steps.
 ---
 
 Once we’ve got our atoms ready to work with, we’ll set about bringing them together into more intricate, connected molecular shapes. The intermediate layer is where these molecules live, creating varied forms with specific purposes on the way towards the more complex proteins and cells we’ll use to breathe life into our data products.
