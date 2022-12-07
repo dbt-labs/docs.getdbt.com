@@ -58,8 +58,7 @@ models:
 
 <Changelog>
 
-  - **v0.21.0:** Introduced `DBT_ENV_SECRET_` and log scrubbing
-  - **v1.0.0:** Restricted use of secret env vars to `profiles.yml` and `packages.yml`
+  **v1.0.0:** Restricted use of secret env vars to `profiles.yml` and `packages.yml`
 
 </Changelog>
 

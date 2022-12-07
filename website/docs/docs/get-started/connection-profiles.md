@@ -25,7 +25,7 @@ profile: 'jaffle_shop'
 
 dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
-<VersionBlock firstVersion="0.20" lastVersion="1.2">
+<VersionBlock lastVersion="1.2">
 
 By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
 
@@ -157,7 +157,7 @@ You can use a different number of threads than the value defined in your target 
 
 The parent directory for `profiles.yml` is determined using the following precedence:
 
-<VersionBlock firstVersion="0.20"  lastVersion="1.2">
+<VersionBlock lastVersion="1.2">
 
 1. `--profiles-dir` option
 1. `DBT_PROFILES_DIR` environment variable

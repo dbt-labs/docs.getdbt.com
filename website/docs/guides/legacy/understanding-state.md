@@ -41,7 +41,7 @@ Another element of job state is the `result` of a prior dbt invocation. After ex
 The following dbt commands produce `run_results.json` artifacts whose results can be referenced in subsequent dbt invocations:  
 - `dbt run`
 - `dbt test`
-- `dbt build` (new in dbt version v0.21.0)
+- `dbt build`
 - `dbt seed` 
 
 After issuing one of the above commands, you can reference the results by adding a selector to a subsequent command as follows: 

@@ -75,7 +75,7 @@ For more complex incremental models that make use of Common Table Expressions (C
 
 A `unique_key` determines whether a record has new values and should be updated. By using `unique_key`, you can ensure that each row from the source table is represented by a single row in your incremental model, without duplicates. Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
-<VersionBlock firstVersion="0.20" lastVersion="1.0">
+<VersionBlock lastVersion="1.0">
 
 This optional parameter for incremental models specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
 
@@ -271,13 +271,6 @@ select ...
 </File>
 
 ### Strategy-specific configs
-
-<Changelog>
-
-  - **v0.20.0:** Introduced `merge_update_columns`
-  - **v0.21.0:** Introduced `on_schema_change`
-
-</Changelog>
 
 If you are using the `merge` strategy and have specified a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
 

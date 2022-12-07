@@ -12,11 +12,7 @@ If a seed file is >1 MB in size, dbt cannot compare its contents and will raise 
 
 ### Macros
 
-<Changelog>
-
-- New in v0.21.0: dbt will mark modified any resource that depends on a changed macro, or on a macro that depends on a changed macro.
-
-</Changelog>
+dbt will mark modified any resource that depends on a changed macro, or on a macro that depends on a changed macro.
 
 ### Vars
 
