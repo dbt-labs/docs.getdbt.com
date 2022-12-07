@@ -30,7 +30,7 @@ While a minor version is officially supported:
 
 ### Ongoing patches
 
-During the 12 month support window, we will continue to release new patch versions that include fixes.
+During the 12-month support window, we will continue to release new patch versions that include fixes.
 
 **Active Support:** In the first few months after a minor version's initial release, we will patch it with "bugfix" releases. These will include fixes for regressions and net-new bugs that were present in the minor version's original release.
 
