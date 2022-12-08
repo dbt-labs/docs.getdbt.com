@@ -54,11 +54,14 @@ Follow the repository's link for os dependencies.
 Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 * Ensure that you have the ID of the Sonar project that you want to use. See [Obtaining the ID of a Project](https://docs.dremio.com/cloud/cloud-entities/projects/#obtaining-the-id-of-a-project).
 * Ensure that you have a personal access token (PAT) for authenticating to Dremio Cloud. See [Creating a Token](https://docs.dremio.com/cloud/security/authentication/personal-access-token/#creating-a-token).
+* Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
+
 
 
 ## Prerequisites for Dremio Software
 
 * Ensure that you are using version 22.0 or later.
+* Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
 * Enable these support keys in your Dremio cluster:
   * `dremio.iceberg.enabled`
   * `dremio.iceberg.ctas.enabled`
@@ -76,11 +79,6 @@ Before connecting from project to Dremio Cloud, follow these prerequisite steps:
     * `dremio_cloud` for working with Dremio Cloud
     * `software_with_username_password` for working with a Dremio Software cluster and authenticating to the cluster with a username and a password
     * `software_with_pat` for working with a Dremio Software cluster and authenticating to the cluster with a personal access token
-4. Append these lines to the end of the content of the `dbt_project.yml` file at the root of your project directory:
-```
-vars:
-    dremio:reflections_enabled: false
-```
 
 Next, configure the profile for your project.
 
@@ -118,6 +116,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
     dev:
       cloud_host: https://api.dremio.cloud
       cloud_project_id: [project ID]
+      object_storage_source: [name]
+      object_storage_path: [path]
+      dremio_space: [name]
+      dremio_space_folder: [path]
       pat: [personal access token]
       threads: [integer >= 1]
       type: dremio
@@ -137,6 +139,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
       password: [password]
       port: [port]
       software_host: [hostname or IP address]
+      object_storage_source: [name
+      object_storage_path: [path]
+      dremio_space: [name]
+      dremio_space_folder: [path]
       threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
@@ -155,6 +161,10 @@ For descriptions of the configurations in these profiles, see [Configurations](#
       pat: [personal access token]
       port: [port]
       software_host: [hostname or IP address]
+      object_storage_source: [name
+      object_storage_path: [path]
+      dremio_space: [name]
+      dremio_space_folder: [path]
       threads: [integer >= 1]
       type: dremio
       use_ssl: [true|false]
@@ -173,13 +183,18 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | --- | --- | --- | --- |
 | `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
 | `threads` | Yes | 1 | The number of threads the dbt project runs on. |
+| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. The dbt alias is `datalake`.<br>This name corresponds to the name of a source in the **Object Storage** section of the Datasets page in Dremio:  <img src="/img/dbt-Samples.png"/> |
+| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SamplesPath.png" alt="'samples.dremio.com'.'Dremio University'"/> |
+| `dremio_space` | No | @\<username> | The value of the Dremio space in which to create views. The dbt alias is `database`.<br>This value corresponds to the name in this location in the **Spaces** section of the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Spaces1"/> |
+| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SpacesPath.png" alt="Folder1.Folder2" alt="Folder1.Folder2"/> |
+
   
 ### Configurations in Profiles for Dremio Cloud
 | Configuration | Required? | Default Value | Description |
 | --- | --- | --- | --- |
 | `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br></br>EU Control Plane: `https://api.eu.dremio.cloud` |
 | `user` | Yes | None | Email address used as a username in Dremio Cloud | 
-| `pat` | Yes | None | Personal Access TokenSee Personal Access Tokens for instructions about obtaining a token. | 
+| `pat` | Yes | None | The personal access token to use for authentication. See [Personal Access Tokens](https://docs.dremio.com/cloud/security/authentication/personal-access-token/) for instructions about obtaining a token. | 
 | `cloud_project_id` | Yes | None | The ID of the Sonar project in which to run transformations. | 
 | `use_ssl` | Yes | `true` | The value must be `true`. |
     
@@ -190,5 +205,5 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | `port` | Yes | `9047` | Port for Dremio Software cluster API endpoints. | 
 | `user` | Yes | None | The username of the account to use when logging into the Dremio cluster. | 
 | `password` | Yes, if you are not using the pat configuration. | None | The password of the account to use when logging into the Dremio cluster. | 
-| `pat` | Yes, if you are not using the user and password configurations. | None | The personal access token to use for authenticating to Dremio.See Personal Access Tokens for instructions about obtaining a token.The use of a personal access token takes precedence if values for the three configurations user, password and pat are specified. | 
+| `pat` | Yes, if you are not using the user and password configurations. | None | The personal access token to use for authenticating to Dremio. See [Personal Access Tokens](https://docs.dremio.com/software/security/personal-access-tokens/) for instructions about obtaining a token. The use of a personal access token takes precedence if values for the three configurations user, password and pat are specified. | 
 | `use_ssl` | Yes | `true` | Acceptable values are `true` and `false`. If the value is set to true, ensure that full wire encryption is configured in your Dremio cluster. See [Prerequisites for Dremio Software](#prerequisites-for-dremio-software). | 

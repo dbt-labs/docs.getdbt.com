@@ -1,5 +1,5 @@
 ---
-title: "Understanding state"
+title: "About state"
 ---
 
 <Changelog>
@@ -13,7 +13,7 @@ One of the greatest underlying assumptions about dbt is that its operations shou
 
 That said, dbt does store "state"—a detailed, point-in-time view of project resources, database objects, and invocation results—in the form of its [artifacts](dbt-artifacts). If you choose, dbt can use these artifacts to inform certain  operations. Crucially, the operations themselves are still stateless and <Term id="idempotent" />: given the same manifest and the same raw data, dbt will produce the same transformed result.
 
-dbt can leverage artifacts from a prior invocation as long as their file path is passed to the `--state` flag. This is a prerequsite for:
+dbt can leverage artifacts from a prior invocation as long as their file path is passed to the `--state` flag. This is a prerequisite for:
 - [The `state:` selector](methods#the-state-method), whereby dbt can identify resources that are new or modified
 by comparing code in the current project against the state manifest.
 - [Deferring](defer) to another environment, whereby dbt can identify upstream, unselected resources that don't exist in your current environment and instead "defer" their references to the environment provided by the state manifest.
