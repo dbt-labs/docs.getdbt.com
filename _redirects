@@ -443,6 +443,11 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /tutorial/refactoring-legacy-sql /guides/getting-started/learning-more/refactoring-legacy-sql 302
 /blog/change-data-capture-metrics /blog/change-data-capture 301
 /blog/model-timing-tab /blog/how-we-shaved-90-minutes-off-model 301
+/reference/warehouse-setups/resource-configs/materialize-configs/indexes /reference/resource-configs/materialize-configs#indexes 301
+/docs/build/building-models /docs/build/models 301
+/docs/build/bigquery-profile /reference/resource-configs/bigquery-configs 301
+/reference/warehouse-profiles/bigquery-setup /reference/warehouse-setups/bigquery-setup 301
+/date-trunc-sql /blog/date-trunc-sql 301
 
 # supported data platforms page
 
