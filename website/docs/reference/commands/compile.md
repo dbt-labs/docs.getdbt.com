@@ -9,6 +9,6 @@ The `compile` command is useful for:
 
 1. Visually inspecting the compiled output of model files. This is useful for validating complex jinja logic or macro usage.
 2. Manually running compiled SQL. While debugging a model or schema test, it's often useful to execute the underlying `select` statement to find the source of the bug.
-3. Compiling `analysis` files. Read more about analysis files [here](analyses).
+3. Compiling `analysis` files. Read more about analysis files [here](/docs/build/analyses).
 
 It is _not_ a pre-requisite of `dbt run`.
