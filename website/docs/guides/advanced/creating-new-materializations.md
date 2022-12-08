@@ -1,6 +1,9 @@
 ---
 title: "Creating new materializations"
 id: "creating-new-materializations"
+description: Learn how to create your own materializations.
+displayText: Creating new materializations
+hoverSnippet: Learn how to create your own materializations.
 ---
 
 ## Overview
