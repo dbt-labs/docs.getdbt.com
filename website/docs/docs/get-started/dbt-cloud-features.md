@@ -29,7 +29,7 @@ The dbt Cloud IDE comes with features, including better performance and exciting
 
 | Feature  |  Info |
 |---|---|
-| **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects changes made to new files or renamed files 
+| **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files.
 | **Build, test, and run code**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the IDE for quick, linear navigation. Access adjacent files in the same file by right clicking on the breadcrumb file.  
 | **Organize tabs**  | You can: <br /> - Move your tabs around to reorganize your work in the IDE <br /> - Right-click on a tab to view and select a list of actions to take <br /> - Close multiple, unsaved tabs to batch save your work
