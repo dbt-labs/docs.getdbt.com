@@ -6,3 +6,5 @@ guides:
 
 content:
 - website/docs/**/*
+- website/snippets/**/*
+- website/static/**/*

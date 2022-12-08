@@ -501,7 +501,7 @@ with events as (
 
     {% if is_incremental() %}
         -- recalculate yesterday + today
-        where date(event_timestamp) in ({{ partitions_to_replace | join(',') }})
+        where timestamp_trunc(event_timestamp, day) in ({{ partitions_to_replace | join(',') }})
     {% endif %}
 
 ),
