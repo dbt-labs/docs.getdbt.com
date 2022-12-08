@@ -1,6 +1,9 @@
 ---
 title: "Staging: Preparing our atomic building blocks"
 id: 2-staging
+description: Preparing our atomic building blocks.
+displayText: Preparing our atomic building blocks.
+hoverSnippet: Preparing our atomic building blocks.
 ---
 
 The staging layer is where our journey begins. This is the foundation of our project, where we bring all the individual components we're going to use to build our more complex and useful models into the project.
