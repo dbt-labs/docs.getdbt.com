@@ -1,6 +1,7 @@
 ---
 title: "Maintaining a Slack channel"
 id: "maintaining-a-channel"
+description: There are three things you should do to be a good channel maintainer in the dbt Slack community
 ---
 
 ## TL;DR
