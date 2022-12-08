@@ -88,6 +88,10 @@ Next, configure the profile for your project.
 
 When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
 
+## Profiles
+
+When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
+
 * Profile for Dremio Cloud
 * Profile for Dremio Software with Username/Password Authentication
 * Profile for Dremio Software with Authentication Through a Personal Access Token
