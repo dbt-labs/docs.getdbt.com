@@ -289,7 +289,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
    | **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
 14. Click **Save** at the top of the form.
 
-### Creating SAML Settings
+### Creating SAML settings
 
 From the Set up Single Sign-On with SAML page:
 
