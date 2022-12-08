@@ -1,4 +1,4 @@
-name: Adds content, developer blog, guides labeled pull requests to projects
+name: Add to projects
 
 on:
   pull_request:
@@ -10,9 +10,9 @@ jobs:
     name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@RELEASE_VERSION
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/dbt-labs/projects/14
-          github-token: ${{ secrets.PROJECT_NEXT }}
+          github-token: ${{ secrets.DOCS_SECRET }}
           labeled: content, developer blog, guides
           label-operator: OR
