@@ -177,7 +177,7 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 ### Configurations in Profiles for Dremio Cloud
 | Configuration | Required? | Default Value | Description |
 | --- | --- | --- | --- |
-| `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br/>EU Control Plane: `https://api.eu.dremio.cloud` |
+| `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br></br>EU Control Plane: `https://api.eu.dremio.cloud` |
 | `user` | Yes | None | Email address used as a username in Dremio Cloud | 
 | `pat` | Yes | None | Personal Access TokenSee Personal Access Tokens for instructions about obtaining a token. | 
 | `cloud_project_id` | Yes | None | The ID of the Sonar project in which to run transformations. | 
