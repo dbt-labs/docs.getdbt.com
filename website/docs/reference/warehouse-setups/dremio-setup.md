@@ -86,10 +86,6 @@ Next, configure the profile for your project.
 
 When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
 
-## Profiles
-
-When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
-
 * Profile for Dremio Cloud
 * Profile for Dremio Software with Username/Password Authentication
 * Profile for Dremio Software with Authentication Through a Personal Access Token
@@ -183,16 +179,16 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 | --- | --- | --- | --- |
 | `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
 | `threads` | Yes | 1 | The number of threads the dbt project runs on. |
-| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. The dbt alias is `datalake`.<br>This name corresponds to the name of a source in the **Object Storage** section of the Datasets page in Dremio:  <img src="/img/dbt-Samples.png"/> |
-| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SamplesPath.png" alt="'samples.dremio.com'.'Dremio University'"/> |
-| `dremio_space` | No | @\<username> | The value of the Dremio space in which to create views. The dbt alias is `database`.<br>This value corresponds to the name in this location in the **Spaces** section of the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Spaces1"/> |
-| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SpacesPath.png" alt="Folder1.Folder2" alt="Folder1.Folder2"/> |
+| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. The dbt alias is `datalake`.<br/>This name corresponds to the name of a source in the **Object Storage** section of the Datasets page in Dremio:  <img src="/img/dbt-Samples.png"/> |
+| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods.<br/>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SamplesPath.png" alt="'samples.dremio.com'.'Dremio University'"/> |
+| `dremio_space` | No | @\<username> | The value of the Dremio space in which to create views. The dbt alias is `database`.<br/>This value corresponds to the name in this location in the **Spaces** section of the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Spaces1"/> |
+| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods.<br/>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SpacesPath.png" alt="Folder1.Folder2" alt="Folder1.Folder2"/> |
 
   
 ### Configurations in Profiles for Dremio Cloud
 | Configuration | Required? | Default Value | Description |
 | --- | --- | --- | --- |
-| `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br></br>EU Control Plane: `https://api.eu.dremio.cloud` |
+| `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br/>EU Control Plane: `https://api.eu.dremio.cloud` |
 | `user` | Yes | None | Email address used as a username in Dremio Cloud | 
 | `pat` | Yes | None | The personal access token to use for authentication. See [Personal Access Tokens](https://docs.dremio.com/cloud/security/authentication/personal-access-token/) for instructions about obtaining a token. | 
 | `cloud_project_id` | Yes | None | The ID of the Sonar project in which to run transformations. | 
