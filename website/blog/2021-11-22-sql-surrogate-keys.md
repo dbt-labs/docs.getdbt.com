@@ -67,7 +67,7 @@ You could also separate your columns with pipes (`||`) rather than using the con
 
 #### Surrogate keys in Postgres
 
-Postgres’ `concat` function ignores nulls, which saves you from having to wrap each column in a `coalesce` function to default nulls to a different value (at the risk of running afoul of identical keys for differing inputs).  
+Postgres’ `concat` function ignores nulls, which saves you from having to wrap each column in a `coalesce` function to default nulls to a different value (but this has the same drawback shown in the table above, where you can get the same key from different inputs).  
 
 If you used `||` instead of `concat`, one _null_ column would cause the entire statement would return a null, breaking your concatenation.
 
