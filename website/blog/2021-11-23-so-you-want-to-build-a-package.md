@@ -25,7 +25,7 @@ If you’re considering making a package, you probably already know what one is 
 
 Packages are a way to share code in dbt without ever having to copy and paste (or *email* :screaming face:).
 
-Let’s break down the [dateadd macro](https://github.com/dbt-labs/dbt-utils/blob/main/macros/cross_db_utils/dateadd.sql) from the dbt_utils macro to show you the process that created this fantastic macro.
+Let’s break down the [dateadd macro](https://github.com/dbt-labs/dbt-utils/blob/0.1.20/macros/cross_db_utils/dateadd.sql) from the dbt_utils macro to show you the process that created this fantastic macro.
 
 The problem: Analysts often need to add an interval to a timestamp/date. To make this cross-database and standardized across a project, a macro is needed.
 

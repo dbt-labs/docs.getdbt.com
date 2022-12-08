@@ -35,7 +35,7 @@ selectors:
 ## Definitions
 
 Each `definition` is comprised of one or more arguments, which can be one of the following:
-* **CLI-style:** strings, representing CLI-style) arguments
+* **CLI-style:** strings, representing CLI-style arguments
 * **Key-value:** pairs in the form `method: value`
 * **Full YAML:** fully specified dictionaries with items for `method`, `value`, operator-equivalent keywords, and support for `exclude`
 
@@ -287,5 +287,10 @@ selectors:
             - method: tag
               value: buzz
 ```
+
+**Note:** While selector inheritance allows the logic from another selector to be _reused_, it doesn't allow the logic from that selector to be _modified_ by means of `parents`, `children`, `indirect_selection`, and so on. 
+
+The `selector` method returns the complete set of nodes returned by the named selector.
+
 
 </VersionBlock>

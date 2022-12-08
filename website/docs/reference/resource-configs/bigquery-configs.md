@@ -126,7 +126,7 @@ as (
 #### Partitioning with integer buckets
 
 If the `data_type` is specified as `int64`, then a `range` key must also
-be provied in the `partition_by` dict. dbt will use the values provided in
+be provided in the `partition_by` dict. dbt will use the values provided in
 the `range` dict to generate the partitioning clause for the table.
 
 <Tabs
@@ -380,7 +380,7 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -501,7 +501,7 @@ with events as (
 
     {% if is_incremental() %}
         -- recalculate yesterday + today
-        where date(event_timestamp) in ({{ partitions_to_replace | join(',') }})
+        where timestamp_trunc(event_timestamp, day) in ({{ partitions_to_replace | join(',') }})
     {% endif %}
 
 ),
