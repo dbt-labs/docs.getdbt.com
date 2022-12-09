@@ -53,6 +53,7 @@ function Author(props) {
                     href={link.url} 
                     title={`${name} - Social`} 
                     target="_blank"
+                    rel="noopener noreferrer"
                     key={i}
                   >
                     <i className={`fab ${link.icon}`}></i>
