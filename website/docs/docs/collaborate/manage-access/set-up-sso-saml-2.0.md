@@ -238,14 +238,18 @@ dbt Cloud expects.
 7. Click **Add another mapping** to map additional attributes.
 
 Expected **Attributes**:
-
 | Name           | Name format | Value                | Description                |
 | -------------- | ----------- | -------------------- | -------------------------- |
 | `First name`   | Unspecified | `first_name`         | The user's first name.  |
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
+8. To use role-based access control in dbt Cloud,enter the groups in the **Group membership** field during configuration:
 
-8. Click **Finish** to continue.
+| Google groups  | App attributes |
+| -------------- | -------------- |
+| Name of groups | `MemberOf` |
+
+9. Click **Finish** to continue.
 
 
 ### Finish Google setup
