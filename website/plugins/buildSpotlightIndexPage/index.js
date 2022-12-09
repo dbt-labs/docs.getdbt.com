@@ -42,15 +42,15 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
         );
           
         // Build the spotlight index page
-        // addRoute({
-        //   path: `/community/spotlight`,
-        //   component: '@site/src/components/communitySpotlightList/index.js',
-        //   modules: {
-        //     // propName -> JSON file path
-        //     spotlightData,
-        //   },
-        //   exact: true,
-        // });
+        addRoute({
+          path: `/community/spotlight`,
+          component: '@site/src/components/communitySpotlightList/index.js',
+          modules: {
+            // propName -> JSON file path
+            spotlightData,
+          },
+          exact: true,
+        });
 
     },
   };
