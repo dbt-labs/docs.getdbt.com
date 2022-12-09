@@ -177,7 +177,11 @@ In GitHub:
 
 ```yaml
 packages:
+  # use this format when accessing your repository via a github application token
   - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+
+  # use this format when accessing your repository via a personal access token
+  - git: "https://{{env_var('DBT_ENV_SECRET_GITHUB_USERNAME')}}:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
