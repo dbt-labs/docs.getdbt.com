@@ -16,7 +16,7 @@ description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, 
 You can use the `dbt-rpc` plugin to run a Remote Procedure Call (rpc) dbt server. This server compiles and runs queries in the context of a dbt project. Additionally, the RPC server provides methods that enable you to list and terminate running processes. We recommend running an rpc server from a directory containing a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
 
 :::caution Deprecation
-**The dbt-rpc plugin will be fully deprecated by the end of 2022.**
+**The dbt-rpc plugin will be fully deprecated by the second half of 2023.**
 
 For now, dbt Labs actively maintains and uses `dbt-rpc` to enable interactive dbt development. Once we announce the next-generation dbt Server is available for general release, we will deprecate the legacy plugin and only fix critical issues for a period of six months. After six months, we will archive this repository for read-only use.
 :::
