@@ -929,6 +929,32 @@ guides: [
       ],
     },
   ],
+  SQLReference: [
+    {
+      type: "category",
+      label: "SQL Reference",
+      link: {
+        type: "generated-index",
+        title: "SQL Reference",
+        description: "The SQL Reference is a collection of SQL syntaxes that you can use and reference during your daily data work.",
+        slug: "/sql-reference",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Aggregate Functions",
+          items: [
+            "sql-reference/aggregate-functions/avg",
+            "sql-reference/aggregate-functions/count",
+            "sql-reference/aggregate-functions/max",
+            "sql-reference/aggregate-functions/min",
+            "sql-reference/aggregate-functions/round",
+            "sql-reference/aggregate-functions/sum",
+          ],
+        },
+      ],
+    },
+  ],
 };
 
 module.exports = sidebarSettings;
