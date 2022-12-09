@@ -45,13 +45,10 @@ pipelines:
     '**':
       - step:
           name: 'Run dbt Cloud PR Job'
-          caches:
-            - pip
           script:
             # Check to only build if PR destination is master (or other branch). 
             # Comment or remove line below if you want to run on all PR's regardless of destination branch.
             - if [ "${BITBUCKET_PR_DESTINATION_BRANCH}" != "main" ]; then printf 'PR Destination is not master, exiting.'; exit; fi
-            - pip install requests
             - export DBT_URL="https://cloud.getdbt.com"
             - export DBT_JOB_CAUSE="Bitbucket Pipeline CI Job"
             - export DBT_JOB_BRANCH=$BITBUCKET_BRANCH
