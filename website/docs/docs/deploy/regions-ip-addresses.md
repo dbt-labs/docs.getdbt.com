@@ -1,6 +1,6 @@
 ---
-title: "“Regions & IP addresses"
-id: "regions-ip-addresses.md"
+title: "Regions & IP addresses"
+id: "regions-ip-addresses"
 description: "Available regions and ip addresses"
 ---
 
