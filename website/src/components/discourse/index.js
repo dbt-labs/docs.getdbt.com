@@ -147,7 +147,7 @@ export const DiscourseFeed = ({
         </ul>
       )}
       {show_cta && (
-        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank" data-testid='feed-cta'>{link_text}</a>
+        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank" rel="noopener noreferrer" data-testid='feed-cta'>{link_text}</a>
       )}
     </div>
   )
@@ -201,7 +201,7 @@ export const DiscourseHelpFeed = ({
 function TopicWrapper({ topic, children }) {
   if(topic?.slug && topic?.id) {
     return (
-      <a href={`https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`} title={topic.title} target="_blank">{children}</a>
+      <a href={`https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`} title={topic.title} target="_blank" rel="noopener noreferrer">{children}</a>
     )
   } else {
     return (
