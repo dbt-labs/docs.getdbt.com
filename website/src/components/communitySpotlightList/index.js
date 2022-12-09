@@ -30,9 +30,15 @@ function CommunitySpotlightList({ spotlightData }) {
       />
       <section id='spotlight-members-section'>
         <div className='container'>   
-          {spotlightData.map((member, i) => (
-            <CommunitySpotlightCard frontMatter={member.data} key={i} />
-          ))}
+          {spotlightData && spotlightData.length > 0 ? (
+            <>
+              {spotlightData.map((member, i) => (
+                <CommunitySpotlightCard frontMatter={member.data} key={i} />
+              ))}
+            </>
+          ) : 
+            <p>No community spotlight members are available at this time. 😕</p>
+          }
         </div>
       </section>
     </Layout>
