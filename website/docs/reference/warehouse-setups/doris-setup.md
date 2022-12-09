@@ -1,6 +1,6 @@
 ---
 title: "Doris setup"
-id: "Doris-setup"
+id: "doris-setup"
 meta:
   maintained_by: SelectDB
   authors: long2ice,catpineapple
