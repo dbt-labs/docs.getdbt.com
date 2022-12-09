@@ -74,7 +74,7 @@ var siteSettings = {
     announcementBarLink: "",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "ada-lovelace",
+    communitySpotlightMember: "",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -157,10 +157,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
-            {
-              label: "Spotlight",
-              to: "/community/spotlight",
-            },
+            // {
+            //   label: "Spotlight",
+            //   to: "/community/spotlight",
+            // },
           ],
         },
         {

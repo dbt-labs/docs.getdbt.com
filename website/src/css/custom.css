@@ -1640,12 +1640,25 @@ section > h2:not(.resource-section) {
     "popResources";
 }
 
+.home .resource-section.has-spotlight-member {
+  grid-template-areas:
+    "popH2"
+    "popResources"
+    "featH2"
+    "featResource";
+}
+
 @media (min-width: 996px) {
   .home .resource-section {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 25px;
     column-gap: calc(var(--ifm-spacing-horizontal) * 4);
+    grid-template-areas:
+      "popH2 featH2"
+      "popResources  featResource";
+  }
+  .home .resource-section.has-spotlight-member {
     grid-template-areas:
       "popH2 featH2"
       "popResources  featResource";

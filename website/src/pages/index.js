@@ -63,7 +63,7 @@ function Home() {
       <Layout permalink="/">
         <div className="container container--fluid home" style={{ "padding": "0", "background": "#FFF" }}>
           <Hero heading="Welcome to the dbt Developer Hub" subheading="Your home base for learning dbt, connecting with the community and contributing to the craft of analytics engineering " showGraphic />
-          <section className="resource-section row">
+          <section className={`resource-section row ${spotlightMember ? 'has-spotlight-member' : ''}`}>
             <div className="popular-header"><h2>Popular resources</h2></div>
             <div className="popular-resources">
               <div className="grid">
