@@ -80,7 +80,7 @@ By including a screenshot of your dbt test run here, you are confirming that you
 
 #### Changes to existing models:
 
-This is a place to leave post-merge instructions. Maybe you updated your existing [incremental model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) with an additional column and need to run a [full refresh](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-i-rebuild-an-incremental-model). 
+This is a place to leave post-merge instructions. Maybe you updated your existing [incremental model](https://docs.getdbt.com/docs/build/incremental-models) with an additional column and need to run a [full refresh](https://docs.getdbt.com/docs/build/incremental-models#how-do-i-rebuild-an-incremental-model). 
 
 Or, maybe you have a corresponding PR for your BI tool that needs to be merged to accommodate your dbt modeling changes.
 

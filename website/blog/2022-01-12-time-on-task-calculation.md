@@ -35,7 +35,7 @@ This piece will provide an overview of how and critically *why* to calculate Tim
 
 1. One size fits all with nested macros
 
-This solution allowed us to create a one-line [dbt macro](/docs/building-a-dbt-project/jinja-macros#macros) to account for most common Time On Task use cases by having a series of nested macros behind the scenes.
+This solution allowed us to create a one-line [dbt macro](/docs/build/jinja-macros) to account for most common Time On Task use cases by having a series of nested macros behind the scenes.
 
 This strategy does a great job in being able to account for nights, weekends and custom holidays, but lacks the flexibility to accommodate changes in business hours, so we've transitioned off of it to the 2nd option:
 

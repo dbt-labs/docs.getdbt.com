@@ -125,7 +125,7 @@ The two window functions (`row_number()` and `mode()` in the `diffed` <Term id="
 
 ### Attempt #2: Moving to an incremental model
 
-The final strategy we tried, which ended up being the solution we implemented, was to swap the ephemeral model (`dbt_model_summary`) to an [incremental model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models). Since we’re calculating metrics based on historical events (**first** model run, most frequent model run **today**), an incremental model let us perform the calculation for all of history once in an initial build, then every subsequent build only needs to look at a much smaller subset of the data to run it’s calculations.
+The final strategy we tried, which ended up being the solution we implemented, was to swap the ephemeral model (`dbt_model_summary`) to an [incremental model](https://docs.getdbt.com/docs/build/incremental-models). Since we’re calculating metrics based on historical events (**first** model run, most frequent model run **today**), an incremental model let us perform the calculation for all of history once in an initial build, then every subsequent build only needs to look at a much smaller subset of the data to run it’s calculations.
 
 One of the biggest problems with the ephemeral model was remote spillage due to lack of memory, so having a smaller dataset to run the calculation against made a massive impact. Snowflake can easily calculate a daily mode or a first model run when we only had to look at a sliver of the data each time.
 

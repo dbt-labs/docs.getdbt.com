@@ -139,7 +139,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 *   [Sources](/docs/building-a-dbt-project/using-sources/)
 *   [Refs](/reference/dbt-jinja-functions/ref/)
 *   [tags](/reference/resource-configs/tags/)
-*   [Jinja docs](/docs/building-a-dbt-project/jinja-macros)
+* [Jinja docs](/docs/get-started/learning-more/using-jinja)
 
 ## ✅ Testing & Continuous Integration
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -26,7 +26,7 @@ from {{ ref('table_a') }}
 
 At this point, you realize your will to continue typing out the next 52 columns has essentially dwindled down to nothing and you’re probably questioning the life choices that led you here.
 
-But what if there was a way to make these 56+ lines of code come down to a handful? Well, that’s where a handy [dbt macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) comes into play.
+But what if there was a way to make these 56+ lines of code come down to a handful? Well, that’s where a handy [dbt macro](/docs/build/jinja-macros) comes into play.
 
 <!--truncate-->
 

@@ -48,7 +48,7 @@ There are three primary ways to contribute to the dbt OSS projects. We’ll use 
 
 #### Get started
 
-- Read the dbt Core [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Open Source Software Expectations](https://docs.getdbt.com/docs/contributing/oss-expectations).
+- Read the dbt Core [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Open Source Software Expectations](/community/resources/oss-expectations).
 - If contributing to dbt Core, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3Agood_first_issue)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
 
 #### Need help?

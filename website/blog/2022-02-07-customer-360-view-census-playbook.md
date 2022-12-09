@@ -89,7 +89,7 @@ The data structure breaks down as follows:
 
 Let’s get rolling.
 
-> Builder Beware! If this was an actual event stream, it would be much better to leverage [incremental models based on timestamp](/docs/building-a-dbt-project/building-models/configuring-incremental-models), but because it’s a playground project, I did not.
+> Builder Beware! If this was an actual event stream, it would be much better to leverage [incremental models based on timestamp](/docs/build/incremental-models), but because it’s a playground project, I did not.
 
 ## Step 1: Define our entities
 
@@ -141,7 +141,7 @@ For this step, take a look at a snippet from [`models/staging/stg_users.sql`](ht
     from source
 ```
 
-We defined the email domain extraction as a [macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) called [`extract_email_domain`](https://github.com/dflynn20/jaffle_gaggle/blob/main/macros/extract_email_domain.sql), which we call in line 18 (which you can find in the pullout below).
+We defined the email domain extraction as a [macro](/docs/build/jinja-macros) called [`extract_email_domain`](https://github.com/dflynn20/jaffle_gaggle/blob/main/macros/extract_email_domain.sql), which we call in line 18 (which you can find in the pullout below).
 
 This uses a regex to capture the text to the right of the ‘@’ character and makes sure to only use the lowercase email parameter before extracting the domain. This is because email domains aren’t case sensitive, but SQL is (see users 2954 and 3140 in the [seed data](https://github.com/dflynn20/jaffle_gaggle/blob/main/data/raw_user.csv) for an example).
 

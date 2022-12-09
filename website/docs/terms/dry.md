@@ -80,7 +80,7 @@ To make any subsequent references to this view DRY-er, you simply reference the 
 
 ### dbt macros and packages
 
-dbt also supports the use of [macros](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) and [packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) to help data folks write DRY code in their dbt projects. Macros are Jinja-supported functions that can be reused and applied throughout a dbt project. Packages are libraries of dbt code, typically models, macros, and/or tests, that can be referenced and used in a dbt project. They are a great way to use transformations for common data sources (like [ad platforms](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/)) or use more [custom tests for your data models](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) _without having to write out the code yourself_. At the end of the day, is there really anything more DRY than that?
+dbt also supports the use of [macros](/docs/build/jinja-macros) and [packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) to help data folks write DRY code in their dbt projects. Macros are Jinja-supported functions that can be reused and applied throughout a dbt project. Packages are libraries of dbt code, typically models, macros, and/or tests, that can be referenced and used in a dbt project. They are a great way to use transformations for common data sources (like [ad platforms](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/)) or use more [custom tests for your data models](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) _without having to write out the code yourself_. At the end of the day, is there really anything more DRY than that?
 
 ## Conclusion
 

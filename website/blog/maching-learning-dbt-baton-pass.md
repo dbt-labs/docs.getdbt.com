@@ -97,7 +97,7 @@ Gluing together notebooks and dbt isnâ€™t the most elegant experience today. Itâ
 #### How would this change my story?
 
 My ML engineer would know the quality of input data created by dbt before starting machine learning development. I could schedule this notebook in sync with my dbt jobs and know instantly if my **ML model drift is caused by data quality vs. model logic.** 
-Also, I would create a data app (in Hex) where users plug in different input scenarios that feed into the predictive model. Even better, I could track versions of my ML models deployed over time in Modelbit + Hex and deploy ML external functions as [dbt macros](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros/#macros)
+Also, I would create a data app (in Hex) where users plug in different input scenarios that feed into the predictive model. Even better, I could track versions of my ML models deployed over time in Modelbit + Hex and deploy ML external functions as [dbt macros](/docs/build/jinja-macros)
  (by the way: how is this not more normal?!).
 
 ![Image showing the notebook and dbt synchronization](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/notebook-dbt-sync.png)

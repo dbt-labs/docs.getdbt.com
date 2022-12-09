@@ -91,7 +91,7 @@ The common skills needed for implementing any flavor of dbt (Core or Cloud) are:
 
 * SQL: ‘nuff said
 * YAML: required to generate config files for [writing tests on data models](/docs/build/tests)
-* [Jinja](/guides/getting-started/learning-more/using-jinja): allows you to write DRY code (using [macros](/docs/building-a-dbt-project/jinja-macros), for loops, if statements, etc)
+* [Jinja](/docs/get-started/learning-more/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
 
 YAML + Jinja can be learned pretty quickly, but SQL is the non-negotiable you’ll need to get started.
 

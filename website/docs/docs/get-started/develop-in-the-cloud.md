@@ -162,7 +162,7 @@ You can view the latest version of your documentation rendered in a new browser 
 <details>
   <summary>Can I be a contributor to dbt Cloud?</summary>
   <div>
-    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/docs/contributing/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
+    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
   </div>
 </details>
 <details>

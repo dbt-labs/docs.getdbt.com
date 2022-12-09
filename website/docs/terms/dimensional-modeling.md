@@ -137,7 +137,7 @@ The benefits and drawbacks of dimensional modeling are pretty straightforward. G
 
 * **More accessibility**: Since the output of good dimensional modeling is a [data mart](https://docs.getdbt.com/guides/best-practices/how-we-structure/4-marts), the tables created are easier to understand and more accessible to end consumers.
 * **More flexibility**: Easy to slice, dice, filter, and view your data in whatever way suits your purpose.
-* **Performance**: Fact and dimension models are typically materialized as tables or [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models). Since these often form the core understanding of a business, they are queried often. Materializing them as tables allows them to be more performant in downstream BI platforms.
+* **Performance**: Fact and dimension models are typically materialized as tables or [incremental models](https://docs.getdbt.com/docs/build/incremental-models). Since these often form the core understanding of a business, they are queried often. Materializing them as tables allows them to be more performant in downstream BI platforms.
 
 The disadvantages include:
 * **Navigating ambiguity**: You need to rely on your understanding of your data and stakeholder wants to model your data in a comprehensible and useful way. What you know about your data and what people really need out of the data are two of the most fundamental and difficult things to understand and balance as a data person.
