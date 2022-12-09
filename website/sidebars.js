@@ -195,7 +195,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
-        "docs/deploy/regions",
+        "docs/deploy/regions-ip-addresses",
         {
           type: "category",
           label: "dbt Cloud deploy options",

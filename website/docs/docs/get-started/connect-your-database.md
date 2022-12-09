@@ -7,7 +7,7 @@ You can connect to your database in dbt Cloud by clicking the gear  in the top r
 
 ## IP Restrictions
 
-dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions](/docs/deploy/regions) page.
+dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions](/docs/deploy/regions-ip-addresses) page.
 
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
