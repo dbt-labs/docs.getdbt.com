@@ -53,8 +53,8 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**:
 
-*   [.yml files](/docs/building-a-dbt-project/using-sources/#testing-and-documenting-sources)
-*   [Materializations](/docs/building-a-dbt-project/building-models/materializations/#configuring-materializations)
+* [.yml files](/docs/build/sources#testing-and-documenting-sources)
+*   [Materializations](/docs/build/materializations/#configuring-materializations)
 *   [YAML selectors](/reference/node-selection/yaml-selectors/)
 
 ## ✅ Package Management
@@ -67,7 +67,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**
 
-*   [Packages Docs](/docs/building-a-dbt-project/package-management/)
+*   [Packages Docs](/docs/build/packages/)
 *   [Package Hub](https://hub.getdbt.com/)
 *   [dbt utils package](https://github.com/dbt-labs/dbt-utils)
 
@@ -136,7 +136,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 **Useful links**
 
 *   [dbt release version](https://github.com/dbt-labs/dbt/releases)
-*   [Sources](/docs/building-a-dbt-project/using-sources/)
+*   [Sources](/docs/build/sources/)
 *   [Refs](/reference/dbt-jinja-functions/ref/)
 *   [tags](/reference/resource-configs/tags/)
 * [Jinja docs](/docs/get-started/learning-more/using-jinja)
@@ -173,8 +173,8 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 Useful Links
 
-*   [FAQs for documentation](/docs/building-a-dbt-project/documentation/#faqs)
-*   [Doc blocks](/docs/building-a-dbt-project/documentation/#using-docs-blocks)
+*   [FAQs for documentation](/docs/collaborate/documentation#faqs)
+*   [Doc blocks](/docs/collaborate/documentation#using-docs-blocks)
 
 ## ✅ dbt Cloud specifics
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -255,6 +255,6 @@ Thanks to Christine Berger for her DAG diagrams!
 *   [How Fishtown Structures our dbt Project](/blog/how-we-structure-our-dbt-projects/)
 *   [Coalesce DAG Audit Talk](https://www.youtube.com/watch?v=5W6VrnHVkCA&t=2s)
 *   [Modular Data Modeling Technique](https://getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-*   [Understanding Threads](/dbt-cli/configure-your-profile/#understanding-threads)
+*   [Understanding Threads](/docs/get-started/connection-profiles#understanding-threads)
 
 This is a quick overview of things to think about in your project.  We’ll keep this post updated as we continue to refine our best practices! Happy modeling!

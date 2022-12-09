@@ -7,7 +7,7 @@ id: "contributing-coding"
 
 #### Overview
 
-[dbt Packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) are the easiest way for analytics engineers to get involved with contributing code to the dbt Community, because dbt Packages are just standard [dbt Projects](https://docs.getdbt.com/docs/building-a-dbt-project/projects). If you can create a dbt Project, write a macro, and ref a model: you can make a dbt Package. Packages function much like libraries do in other programming languages. They allow for prewritten, modularized development of code to solve common problems in analytics engineering. You can view all dbt Packages on the [dbt Package Hub](https://hub.getdbt.com/).
+[dbt Packages](https://docs.getdbt.com/docs/build/packages) are the easiest way for analytics engineers to get involved with contributing code to the dbt Community, because dbt Packages are just standard [dbt Projects](/docs/build/projects). If you can create a dbt Project, write a macro, and ref a model: you can make a dbt Package. Packages function much like libraries do in other programming languages. They allow for prewritten, modularized development of code to solve common problems in analytics engineering. You can view all dbt Packages on the [dbt Package Hub](https://hub.getdbt.com/).
 
 #### Contribution opportunities
 

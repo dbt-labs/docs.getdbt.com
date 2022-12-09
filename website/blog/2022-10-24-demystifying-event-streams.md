@@ -266,7 +266,7 @@ models:
 
 We learned a lot from both working with event streams and building these macros.
 
-One consideration that we haven’t discussed yet is [materialization](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations) strategy. Since event stream tables are append-only, this is a natural fit for incremental models. At Merit, we haven’t worked much with incremental models, so we’re opting to start with views. As we roll this out to production models we’ll be doing a ton of performance testing to figure out the perfect materialization strategy for us.
+One consideration that we haven’t discussed yet is [materialization](https://docs.getdbt.com/docs/build/materializations) strategy. Since event stream tables are append-only, this is a natural fit for incremental models. At Merit, we haven’t worked much with incremental models, so we’re opting to start with views. As we roll this out to production models we’ll be doing a ton of performance testing to figure out the perfect materialization strategy for us.
 
 We also plan on adding a dbt test that alerts whenever the columns of any domain model table changes. This may indicate that an unexpected change has happened to an event schema, which could affect dashboards.
 

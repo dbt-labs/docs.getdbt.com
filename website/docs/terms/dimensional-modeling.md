@@ -71,7 +71,7 @@ Following the example from above, a dimension table for this business would look
 In this table, each account only has one row. If an account’s name or status were to be updated, new values would overwrite existing records versus appending new rows.
 
 :::tip Snapshots
-For fact tables you want to keep track of changes to, folks can leverage [dbt snapshots](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots).
+For fact tables you want to keep track of changes to, folks can leverage [dbt snapshots](/docs/build/snapshots).
 :::
 
 ### Facts and dimensions at play with each other

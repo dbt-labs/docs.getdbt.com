@@ -103,7 +103,7 @@ To layer on Airflow, you’ll need more software or infrastructure engineering-y
 
 Knowing that this toolbelt (Airflow + dbt) provides sustenance to the same spiritual needs (public observability, configuration as code, version control etc), how might one decide when and where to deploy them?
 
-> This is the same sensibility expressed in the [dbt viewpoint](/docs/about/viewpoint) in 2016, the closest thing to a founding blog post as exists for dbt. ]
+> This is the same sensibility expressed in the [dbt viewpoint](/community/resources/viewpoint) in 2016, the closest thing to a founding blog post as exists for dbt. ]
 
 I usually think in terms of how I want my job to look when things go wrong—am I equipped to do the debugging, and is it clear who to pass the baton to, to fix the issue (if it’s not me)?
 
@@ -111,7 +111,7 @@ A couple examples:
 
 ### Pipeline observability for analysts
 
-If your team’s dbt users are analysts rather than engineers, they still may need to be able to dig into the root cause of a failing dbt [source freshness test](/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
+If your team’s dbt users are analysts rather than engineers, they still may need to be able to dig into the root cause of a failing dbt [source freshness test](/docs/build/sources).
 
 Having your upstream extract + load jobs configured in Airflow means that analysts can pop open the Airflow UI to monitor for issues (as they would a GUI-based [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)), rather than opening a ticket or bugging an engineer in Slack. The Airflow UI provides the common interface that analysts need to self-serve, up to the point of action needing to be taken.
 
@@ -121,7 +121,7 @@ Having your upstream extract + load jobs configured in Airflow means that analys
 
 When a dbt run fails within an Airflow pipeline, an engineer monitoring the overall pipeline will likely not have the business context to understand why the individual model or test failed—they were probably not the one who built it.
 
-dbt provides common programmatic interfaces (the [dbt Cloud Admin + Metadata APIs](/docs/dbt-cloud/dbt-cloud-api/cloud-apis), and [.json-based artifacts](/reference/artifacts/dbt-artifacts) in the case of dbt Core) that provide the context needed for the engineer to self-serve—either by rerunning from a point of failure or reaching out to the owner.
+dbt provides common programmatic interfaces (the [dbt Cloud Admin + Metadata APIs](/docs/dbt-cloud-apis/overview), and [.json-based artifacts](/reference/artifacts/dbt-artifacts) in the case of dbt Core) that provide the context needed for the engineer to self-serve—either by rerunning from a point of failure or reaching out to the owner.
 
 ## Why I ❤️ dbt Cloud + Airflow
 

@@ -32,7 +32,7 @@ But what if there was a way to make these 56+ lines of code come down to a handf
 
 ## The `star` dbt macro
 
-dbt supports [dbt_utils](https://github.com/dbt-labs/dbt-utils), a [package of macros and tests](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) that data folks can use to help them write more <Term id="dry" /> code in their dbt project. One of the macros dbt utils offers is the `star` generator.
+dbt supports [dbt_utils](https://github.com/dbt-labs/dbt-utils), a [package of macros and tests](https://docs.getdbt.com/docs/build/packages) that data folks can use to help them write more <Term id="dry" /> code in their dbt project. One of the macros dbt utils offers is the `star` generator.
 
 This macro:
 

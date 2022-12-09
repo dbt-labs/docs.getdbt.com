@@ -94,7 +94,7 @@ So for any timestamp that is already in business hours like the above example, t
 
 ### What about holidays?
 
-We maintain a [seed file](/docs/building-a-dbt-project/seeds) in our project that has the dates of holidays for the next 5 years or so - we join this to our hour-level date_dim table, and incorporate holidays into the boolean column mentioned above. This way, any ticket that comes in on a holiday gets fast forwarded to the beginning of the next working day. Not a perfect solution, so curious to hear how this is handled elsewhere!
+We maintain a [seed file](/docs/build/seeds) in our project that has the dates of holidays for the next 5 years or so - we join this to our hour-level date_dim table, and incorporate holidays into the boolean column mentioned above. This way, any ticket that comes in on a holiday gets fast forwarded to the beginning of the next working day. Not a perfect solution, so curious to hear how this is handled elsewhere!
 
 ## The customizable option: a bespoke calendar + subquery
 

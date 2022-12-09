@@ -167,7 +167,7 @@ The status icon on the lower right corner of the IDE gives you an indicator of t
 
 To generate your project’s documentation (docs) in the IDE, enter `docs generate` or `dbt docs generate` in the command bar.  This command generates the docs for your dbt project as it currently exists in development.
 
-After you generate a successful run, you can view your [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.
+After you generate a successful run, you can view your [documentation](https://docs.getdbt.com/docs/collaborate/documentation) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.
 
 Click **View Docs** on top of the file explorer to see the latest version of your documentation rendered in a new browser window.
 

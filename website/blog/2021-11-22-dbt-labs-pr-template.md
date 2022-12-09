@@ -111,7 +111,7 @@ By default, all new models should have _at least_ unique and not null tests on t
 
 Documentation follows the same reasoning as the PR description. You will know more **right now** about the intricacies of these models than you will after you’ve developed 50 more models in the coming months.
 
-**I have [materialized my models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations) appropriately.**
+**I have [materialized my models](https://docs.getdbt.com/docs/build/materializations) appropriately.**
 
 This is all about performance. Our ultimate goal is to model data such that end users can easily and efficiently query the resulting database objects.
 

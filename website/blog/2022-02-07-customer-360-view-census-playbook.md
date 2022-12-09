@@ -14,7 +14,7 @@ is_featured: true
 
 *Editor's note: In this tutorial, Donny walks through the fictional story of a SaaS company called JaffleGaggle, who needs to group their freemium individual users into company accounts (aka a customer 360 view) in order to drive their product-led growth efforts.*
 
-*You can follow along with Donny's data modeling technique for identity resolution in [this dbt project repo](https://github.com/dflynn20/jaffle_gaggle). It includes a set of demo CSV files, which you can use as [dbt seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds) to test Donny's project for yourself.*
+*You can follow along with Donny's data modeling technique for identity resolution in [this dbt project repo](https://github.com/dflynn20/jaffle_gaggle). It includes a set of demo CSV files, which you can use as [dbt seeds](https://docs.getdbt.com/docs/build/seeds) to test Donny's project for yourself.*
 
 <!--truncate-->
 
