@@ -1,5 +1,5 @@
 ---
-title: "What are adapters? Why do we need them?"
+title: "What are adapters? Why do we need them?" 
 id: "1-what-are-adapters"
 ---
 

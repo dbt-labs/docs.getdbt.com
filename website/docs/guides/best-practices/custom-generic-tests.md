@@ -1,6 +1,9 @@
 ---
 title: "Writing custom generic tests"
 id: "writing-custom-generic-tests"
+description: Learn how to define your own custom generic tests.
+displayText: Writing custom generic tests
+hoverSnippet: Learn how to define your own custom generic tests.
 ---
 
 <Changelog>

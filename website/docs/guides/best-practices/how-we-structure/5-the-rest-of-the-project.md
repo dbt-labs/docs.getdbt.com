@@ -1,6 +1,9 @@
 ---
 title: "The rest of the project"
-id: 5-the-rest-of-the-project
+id: "5-the-rest-of-the-project"
+description: The rest of the project.
+displayText: The rest of the project.
+hoverSnippet: The rest of the project.
 ---
 
 ### Project structure review
