@@ -29,7 +29,9 @@ Before starting this tutorial, you will need the following:
 
 1. Use your existing account or sign up for a Databricks account at [Try Databricks](https://databricks.com/). Complete the form with your user information.
     
-  <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" alignment="wee" />
+  <div style={{maxWidth: '400px'}}>
+  <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
+  </div>
 
 2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar.
 3. Check your email to complete the verification process.
