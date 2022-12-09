@@ -42,15 +42,15 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
         );
           
         // Add the author routes, and ensure it receives the author's data as props
-        addRoute({
-          path: `/community/spotlight`,
-          component: '@site/src/components/communitySpotlightList/index.js',
-          modules: {
-            // propName -> JSON file path
-            spotlightData,
-          },
-          exact: true,
-        });
+        // addRoute({
+        //   path: `/community/spotlight`,
+        //   component: '@site/src/components/communitySpotlightList/index.js',
+        //   modules: {
+        //     // propName -> JSON file path
+        //     spotlightData,
+        //   },
+        //   exact: true,
+        // });
 
     },
   };
