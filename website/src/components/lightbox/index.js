@@ -3,16 +3,30 @@ import styles from './styles.module.css';
 
 function Lightbox({
   src, 
-  collapsed = false, 
+  collapsed = false,
+  alignment = "center", 
   alt = undefined, 
   title = undefined, 
-  width = undefined
+  width = undefined,
 }) {
+
+  // Set alignment class if alignment prop used
+  let imageAlignment = ''
+  if(alignment === "left") {
+    imageAlignment = styles.leftAlignLightbox
+  } else if(alignment === "right") {
+    imageAlignment = styles.rightAlignLightbox
+  }
+
   return (
     <>
       <link href="/css/featherlight-styles.css" type="text/css" rel="stylesheet" />
       <div 
-        className={`${styles.docImage} ${collapsed ? styles.collapsed : ''}`}
+        className={`
+          ${styles.docImage} 
+          ${collapsed ? styles.collapsed : ''}
+          ${imageAlignment}
+        `}
         style={width && {maxWidth: width}}
       >
         <span>
