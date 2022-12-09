@@ -2,18 +2,10 @@
 title: Manifest
 ---
 
-_Current schema_: [`v7`](https://schemas.getdbt.com/dbt/manifest/v7/index.html)
+**Current schema**: [`v6`](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
 
-_Produced by:_
-- `dbt compile`
-- `dbt run`
-- `dbt test`
-- `dbt seed`
-- `dbt snapshot`
-- `dbt docs generate`
-- `dbt source freshness`
-- `dbt ls`
-- `dbt build`
+**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](commands/list) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`source freshness`](commands/source) [`test`](commands/test) [`run`](commands/run) [`run-operation`](commands/run-operation)
+
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
