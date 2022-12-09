@@ -34,6 +34,7 @@ function Lightbox({
             <img
               data-toggle="lightbox"
               alt={alt ? alt : title ? title : ''}
+              title={title ? title : ''}
               src={src}
             />
           </a>
