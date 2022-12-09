@@ -179,17 +179,18 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 
 ### Configurations Common to Profiles for Dremio Cloud and Dremio Software
 
+
 | Configuration | Required? | Default Value | Description |
 | --- | --- | --- | --- |
 | `type` | Yes | dremio | Auto-populated when creating a Dremio project. Do not change this value.  |
 | `threads` | Yes | 1 | The number of threads the dbt project runs on. |
-| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. The dbt alias is `datalake`.<br>This name corresponds to the name of a source in the **Object Storage** section of the Datasets page in Dremio:  <img src="/img/dbt-Samples.png"/> |
-| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SamplesPath.png" alt="'samples.dremio.com'.'Dremio University'"/> |
-| `dremio_space` | No | @\<username> | The value of the Dremio space in which to create views. The dbt alias is `database`.<br>This value corresponds to the name in this location in the **Spaces** section of the Datasets page in Dremio:  <img src="/img/dbt-Spaces.png" alt="Spaces1"/> |
-| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods.<br>This value corresponds to the path in this location in the Datasets page in Dremio:  <img src="/img/dbt-SpacesPath.png" alt="Folder1.Folder2" alt="Folder1.Folder2"/> |
+| `object_storage_source` | No | $scratch | The name of the filesystem in which to create tables, materialized views, tests, and other objects. The dbt alias is `datalake`. This name corresponds to the name of a source in the **Object Storage** section of the Datasets page in Dremio, which is "Samples" in the following image:  ![dbt samples path](/img/reference/dremio-setup/dbt-Samples.png) |
+| `object_storage_path` | No | `no_schema` | The path in the filesystem in which to create objects. The default is the root level of the filesystem. The dbt alias is `root_path`. Nested folders in the path are separated with periods. This value corresponds to the path in this location in the Datasets page in Dremio, which is "samples.dremio.com.Dremio University" in the following image: ![dbt samples path](/img/reference/dremio-setup/dbt-SamplesPath.png) |
+| `dremio_space` | No | `@\<username>` | The value of the Dremio space in which to create views. The dbt alias is `database`. This value corresponds to the name in this location in the **Spaces** section of the Datasets page in Dremio:  ![dbt spaces](/img/reference/dremio-setup/dbt-Spaces.png) |
+| `dremio_space_folder` | No | `no_schema` | The folder in the Dremio space in which to create views. The default is the top level in the space. The dbt alias is `schema`. Nested folders are separated with periods. This value corresponds to the path in this location in the Datasets page in Dremio, which is `Folder1.Folder2` in the following image:  ![Folder1.Folder2](/img/reference/dremio-setup/dbt-SpacesPath.png) |
 
-  
 ### Configurations in Profiles for Dremio Cloud
+
 | Configuration | Required? | Default Value | Description |
 | --- | --- | --- | --- |
 | `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br></br>EU Control Plane: `https://api.eu.dremio.cloud` |
