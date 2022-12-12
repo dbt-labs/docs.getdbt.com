@@ -107,6 +107,7 @@ export default function BlogLayout(props) {
                          href={hero_button_url} 
                          title={hero_button_text}
                          target="_blank"
+                         rel="noopener noreferrer"
                        >{hero_button_text}</a>
                      ) : (
                        <Link 
