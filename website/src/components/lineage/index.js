@@ -1,16 +1,23 @@
 import React from 'react'
-import '@dbt-labs/react-dbt-dag/dag.css';
-import '@dbt-labs/react-dbt-dag/dag.standalone.css';
+
+import('@dbt-labs/react-dbt-dag/dag.css');
+import('@dbt-labs/react-dbt-dag/dag.standalone.css');
 
 /** As a private package, not every devleoper will have access to this repo. */
-const DagExports = require('@dbt-labs/react-dbt-dag');
+const DagExports = import('@dbt-labs/react-dbt-dag');
+
+let Dag = null;
+
+DagExports.then((resolved) => {
+    Dag = resolved.Dag;
+});
 
 export const Lineage = ({ dagNodes, currentNodeId }) => {
-    if (!DagExports) {
+    if (!Dag) {
         return <div>Lineage Not Available!</div>
     }
 
-    return <DagExports.Dag 
+    return <Dag 
         nodes={dagNodes}
         toolbarItems={[]}
         primaryNodeId={currentNodeId} />
