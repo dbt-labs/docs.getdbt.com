@@ -7,7 +7,6 @@ import { Lineage } from '../lineage';
 import { buildSidebar } from './utils/build-sidebar';
 import { parseCsv } from './utils/parse-csv';
 import styles from './styles.module.css';
-import './tailwindStyles.css' 
 
 const editorOptions = {
   readOnly: false,
