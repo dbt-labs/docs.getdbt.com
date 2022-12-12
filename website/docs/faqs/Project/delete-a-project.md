@@ -16,6 +16,4 @@ From the cloud console:
 4. Select **Delete** and then confirm the action.  
   * Note that on the confirmation screen there will be no account password prompt, and the project will be deleted immediately after confirmation.  Once you delete a project, this action cannot be reversed. 
 
-<Lightbox src="/img/docs/dbt-cloud/Edit The Project.png" title="Edit the project" />
-<Lightbox src="/img/docs/dbt-cloud/Select Delete A Project.png" title="Edit the project" />
-<Lightbox src="/img/docs/dbt-cloud/Confirm Delete.png" title="Confirm project deletion" />
+<Lightbox src="/img/docs/dbt-cloud/delete_projects_from_dbt_cloud_20221023.gif" title="Delete projects" />
