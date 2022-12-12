@@ -19,7 +19,7 @@ async function getDiscourseTopics({ body }) {
     let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
 
     if(!topics || topics?.length <= 0)
-      throw new Error('Unable to get results from api request.')
+      return returnResponse(200, [])
 
     // Set author and like_count for topics if not querying by specific term
     let allTopics = topics
