@@ -44,7 +44,7 @@ var siteSettings = {
   tagline: "End user documentation, guides and technical reference for dbt",
   title: "dbt Developer Hub",
   url: SITE_URL,
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
