@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to dbt utils v1.0"
+description: New features and breaking changes to consider as you upgrade to dbt utils v1.0.
 ---
 
 # Upgrading to dbt utils v1.0
