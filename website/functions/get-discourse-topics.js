@@ -20,8 +20,12 @@ async function getDiscourseTopics({ body }) {
 
     // Return empty array if no topics found for search query
     // 200 status is used to prevent triggering Datadog alerts
-    if(!topics || topics?.length <= 0)
+    if(!topics || topics?.length <= 0) {
+      // Log message with encoded query and end function
+      console.log('Unable to get results from api request.')
+      console.log(`Search query: ${query}`)
       return returnResponse(200, [])
+    }
 
     // Set author and like_count for topics if not querying by specific term
     let allTopics = topics
