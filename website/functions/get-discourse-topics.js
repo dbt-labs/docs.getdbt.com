@@ -18,6 +18,8 @@ async function getDiscourseTopics({ body }) {
     // Get topics from Discourse
     let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
 
+    // Return empty array if no topics found for search query
+    // 200 status is used to prevent triggering Datadog alerts
     if(!topics || topics?.length <= 0)
       return returnResponse(200, [])
 
