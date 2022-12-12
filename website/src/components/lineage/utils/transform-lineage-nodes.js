@@ -8,7 +8,8 @@ export const transformLineageNodes = (nodes) => {
         return {
             id: nodeId,
             parents: node.depends_on?.nodes || [],
-            label: node.name
+            label: node.name,
+            resourceType: node.resource_type,
         }
     });
 
