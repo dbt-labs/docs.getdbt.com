@@ -1,5 +1,5 @@
 ---
-title: How do I delete a project?
+title: How do I delete a project in dbt Cloud?
 description: "Deleting a project in dbt Cloud"
 sidebar_label: 'How to delete a project'
 id: delete-a-project
