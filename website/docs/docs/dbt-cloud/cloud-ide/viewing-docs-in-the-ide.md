@@ -3,7 +3,7 @@ title: Viewing Docs in the IDE
 id: viewing-docs-in-the-ide
 ---
 
-The dbt Cloud IDE makes it possible to view [documentation](/building-a-dbt-project/documentation)
+The dbt Cloud IDE makes it possible to view [documentation](/docs/collaborate/documentation)
 for your dbt project while your code is still in development. With this
 workflow, you can inspect and verify what your project's generated documentation
 will look like before your changes are released to production.

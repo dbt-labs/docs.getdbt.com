@@ -81,7 +81,7 @@ on Delta Lake.
 
 Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
-2. [Snapshots](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots)
+2. [Snapshots](/docs/build/snapshots)
 
 ### Choosing between dbt-databricks and dbt-spark
 
@@ -91,7 +91,7 @@ even easier to use dbt with the Databricks Lakehouse.
 `dbt-databricks` includes:
 - No need to install additional drivers or dependencies for use on the CLI
 - Use of Delta Lake for all models out of the box
-- SQL macros that are optimzed to run with [Photon](https://docs.databricks.com/runtime/photon.html)
+- SQL macros that are optimized to run with [Photon](https://docs.databricks.com/runtime/photon.html)
 
 ### Support for Unity Catalog
 

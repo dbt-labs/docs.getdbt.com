@@ -79,7 +79,7 @@ Instead of manually auditing your DAG for best practices, the [dbt project evalu
 
 ## dbt and DAGs
 
-The marketing team at dbt Labs would be upset with us if we told you we think dbt actually stood for “dag build tool,” but one of the key elements of dbt is its ability to generate documentation and infer relationships between models. And one of the hallmark features of [dbt Docs](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) is the Lineage Graph (DAG) of your dbt project.
+The marketing team at dbt Labs would be upset with us if we told you we think dbt actually stood for “dag build tool,” but one of the key elements of dbt is its ability to generate documentation and infer relationships between models. And one of the hallmark features of [dbt Docs](https://docs.getdbt.com/docs/collaborate/documentation) is the Lineage Graph (DAG) of your dbt project.
 
 Whether you’re using dbt Core or Cloud, dbt docs and the Lineage Graph are available to all dbt developers. The Lineage Graph in dbt Docs can show a model or source’s entire lineage, all within a visual frame. Clicking within a model, you can view the Lineage Graph and adjust selectors to only show certain models within the DAG. Analyzing the DAG here is a great way to diagnose potential inefficiencies or lack of modularity in your dbt project.
 
@@ -89,7 +89,7 @@ The DAG is also [available in the dbt Cloud IDE](https://www.getdbt.com/blog/on-
 
 :::tip Leverage exposures
 
-One of the newer features of dbt is [exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures), which allow you to define downstream use of your data models outside of your dbt project *within your dbt project*. What does this mean? This means you can add key dashboards, machine learning or data science pipelines, reverse ETL syncs, or other downstream use cases to your dbt project’s DAG.
+One of the newer features of dbt is [exposures](https://docs.getdbt.com/docs/build/exposures), which allow you to define downstream use of your data models outside of your dbt project *within your dbt project*. What does this mean? This means you can add key dashboards, machine learning or data science pipelines, reverse ETL syncs, or other downstream use cases to your dbt project’s DAG.
 
 This level of interconnectivity and transparency can help boost data governance (who has access to and who [owns](https://docs.getdbt.com/reference/resource-configs/meta#designate-a-model-owner) this data) and transparency (what are the data sources and models affecting your key reports).
 
@@ -108,4 +108,4 @@ Ready to restructure (or create your first) DAG? Check out some of the resources
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 - [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
 - [How to audit your DAG](https://www.youtube.com/watch?v=5W6VrnHVkCA)
-- [Refactoring legacy SQL to dbt](https://docs.getdbt.com/guides/getting-started/learning-more/refactoring-legacy-sql)
+- [Refactoring legacy SQL to dbt](/docs/get-started/learning-more/refactoring-legacy-sql)
