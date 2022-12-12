@@ -11,7 +11,7 @@ id: delete-users
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" title="Navigate to account settings" />
 
 2. From the left side menu, expand **Teams** and select **Users**
-3. Select the user you would like to delete and select **Edit** at the bottom of their information pane. 
+3. Select the user you would like to delete, then select **Edit** at the bottom of the information pane. 
 4. Choose the **Delete** option and then confirm the action to complete the deletion.
  * Note that there will be no account password prompt and the user will be deleted immediately after confirmation. Once you delete a user, this action cannot be undone. However, you can create a new user with the same information if the deletion was in error. 
 
