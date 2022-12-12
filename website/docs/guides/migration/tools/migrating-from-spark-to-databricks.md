@@ -86,7 +86,7 @@ Anyone who's using your project must also make these changes in their environmen
 
 ### Examples
 
-Below are examples of the `profiles.yml` file. It shows what authentication setup is like with `dbt-spark` and how much simpler is it with `dbt-databricks` when connecting to an SQL endpoint. A cluster example is also effectively the same.
+You an use the following examples of the `profiles.yml` file to see the authentication setup with `dbt-spark` compared to the simpler setup with `dbt-databricks` when connecting to an SQL endpoint. A cluster example would look similar.
 
 
 An example of what authentication looks like with `dbt-spark`:

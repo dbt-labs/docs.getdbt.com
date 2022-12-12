@@ -215,6 +215,7 @@ const sidebarSettings = {
             "docs/deploy/dashboard-status-tiles",
           ],
         },
+        "docs/deploy/about-state",
         "docs/deploy/cloud-ci-job",
       ],
     },
@@ -685,7 +686,7 @@ const sidebarSettings = {
       items: ["reference/snowflake-permissions"],
     },
   ],
-  guides: [
+guides: [
     {
       type: "category",
       label: "Best practices",
@@ -711,6 +712,8 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
+        "guides/best-practices/debugging-errors",
+        "guides/best-practices/writing-custom-generic-tests",
       ],
     },
     {
@@ -806,35 +809,49 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Advanced",
+      label: "dbt Ecosystem",
+      link: {
+        type: "generated-index",
+        title: "dbt Ecosystem guides",
+        description:
+          "Learn about the dbt ecosystem and how to use build with dbt",
+        slug: "/guides/dbt-ecosystem/",
+      },
       items: [
         {
           type: "category",
           label: "Adapter development",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+          },
           items: [
-            "guides/advanced/adapter-development/1-what-are-adapters",
-            "guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter",
-            "guides/advanced/adapter-development/3-building-a-new-adapter",
-            "guides/advanced/adapter-development/4-testing-a-new-adapter",
-            "guides/advanced/adapter-development/5-documenting-a-new-adapter",
-            "guides/advanced/adapter-development/6-promoting-a-new-adapter",
-            "guides/advanced/adapter-development/7-verifying-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+            "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
-        },
+        }
+      ],
+    },
+    {
+      type: "category",
+      label: "Advanced",
+      items: [
+         "guides/advanced/creating-new-materializations",
       ],
     },
     {
       type: "category",
       label: "Legacy",
       items: [
-        "guides/legacy/debugging-errors",
         "guides/legacy/debugging-schema-names",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
-        "guides/legacy/writing-custom-generic-tests",
         "guides/legacy/building-packages",
-        "guides/legacy/creating-new-materializations",
-        "guides/legacy/understanding-state",
         "guides/legacy/videos",
       ],
     },

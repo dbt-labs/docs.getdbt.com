@@ -71,7 +71,7 @@ A profile consists of _targets_, and a specified _default target_.
 
 Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
-The credentials you need to provide in your target varies across warehouses &mdash sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
+The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
 
 **Pro Tip:** You may need to surround your password in quotes if it contains special characters. More details [here](https://stackoverflow.com/a/37015689/10415173).
 
