@@ -17,3 +17,7 @@ id: delete-users
 
 
 <Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" title="Delete users" />
+
+If you are delting users to reduce the number of billable seats in your environment, and you are on a `Teams` plan, you will need to take additional steps. In the **Account Settings** pane, select the **Billing** option. Enter the desired number of developer seats and select **Save**.
+
+<Lightbox src="/img/docs/dbt-cloud/change-developer-seats.png" title="Developer seats" />
