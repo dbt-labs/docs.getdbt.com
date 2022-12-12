@@ -79,7 +79,7 @@ Instead of manually auditing your DAG for best practices, the [dbt project evalu
 
 ## dbt and DAGs
 
-The marketing team at dbt Labs would be upset with us if we told you we think dbt actually stood for “dag build tool,” but one of the key elements of dbt is its ability to generate documentation and infer relationships between models. And one of the hallmark features of [dbt Docs](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) is the Lineage Graph (DAG) of your dbt project.
+The marketing team at dbt Labs would be upset with us if we told you we think dbt actually stood for “dag build tool,” but one of the key elements of dbt is its ability to generate documentation and infer relationships between models. And one of the hallmark features of [dbt Docs](https://docs.getdbt.com/docs/collaborate/documentation) is the Lineage Graph (DAG) of your dbt project.
 
 Whether you’re using dbt Core or Cloud, dbt docs and the Lineage Graph are available to all dbt developers. The Lineage Graph in dbt Docs can show a model or source’s entire lineage, all within a visual frame. Clicking within a model, you can view the Lineage Graph and adjust selectors to only show certain models within the DAG. Analyzing the DAG here is a great way to diagnose potential inefficiencies or lack of modularity in your dbt project.
 
