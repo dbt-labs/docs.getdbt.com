@@ -77,7 +77,7 @@ dbt build --select state:modified+
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](understanding-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
 
 #### Using a webhook trigger
 
