@@ -17,3 +17,4 @@ website/i18n/*
 .netlify
 
 .vscode
+.npmrc
