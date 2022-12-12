@@ -1,8 +1,8 @@
 ---
-title: "Threads default value increased from 1 to 4"
-id: "default-thread"
+title: "Threads default value changed to 4"
+id: "default-thread-value"
 description: "Threads now default to 4 users' profile."
-sidebar_label: "Enhancement: Threads default value increased from 1 to 4 "
+sidebar_label: "Enhancement: Threads default value changed to 4 "
 tags: [Dec-12-2022]
 ---
 
