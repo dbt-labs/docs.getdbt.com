@@ -32,7 +32,7 @@ We have updated the manifest schema version to `v7`. This includes the changes t
 - Renamed `compiled_sql` to `compiled_code`
 - A new top-level node property, `language` (`'sql'` or `'python'`)
 
-For users of [state-based selection](understanding-state): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
+For users of [state-based selection](/docs/deploy/about-state): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
 
 ### For maintainers of adapter plugins
 
@@ -43,7 +43,7 @@ _GitHub discussion forthcoming_
 
 ## New and changed documentation
 
-- **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
+- **[Python models](/docs/build/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
 - Updates made to **[Metrics](build/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
 - Plus, a few related updates to **[exposure properties](exposure-properties)**: `config`, `label`, and `name` validation.
 
