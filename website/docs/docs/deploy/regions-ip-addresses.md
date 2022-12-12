@@ -1,7 +1,7 @@
 ---
-title: "Regions"
-id: "regions"
-description: "Available regions"
+title: "Regions & IP addresses"
+id: "regions-ip-addresses"
+description: "Available regions and ip addresses"
 ---
 
 dbt Cloud is hosted in the multiple regions and will always connect to your data platform from the below IP addresses. Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
