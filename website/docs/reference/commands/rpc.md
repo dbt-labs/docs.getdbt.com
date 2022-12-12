@@ -18,7 +18,7 @@ You can use the `dbt-rpc` plugin to run a Remote Procedure Call (rpc) dbt server
 :::caution Deprecation
 **The dbt-rpc plugin will be fully deprecated by the second half of 2023.**
 
-For now, dbt Labs actively maintains and uses `dbt-rpc` to enable interactive dbt development. Once we announce the next-generation dbt Server is available for general release, we will deprecate the legacy plugin and only fix critical issues for a period of six months. After six months, we will archive this repository for read-only use.
+dbt Labs is actively maintaining `dbt-rpc` up to dbt v1.4. Starting in v1.5, we intend to break `dbt-rpc` compatibility in favor of [the new dbt Server](https://github.com/dbt-labs/dbt-server). dbt Labs will perform critical maintenance only, until the last compatible version of dbt has reached end of official support (12 months after release; [see Core version policies](/docs/dbt-versions/core)).
 :::
 
 :::caution Running on Windows
