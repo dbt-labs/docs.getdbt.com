@@ -752,7 +752,8 @@ guides: [
           items: [
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
-            "guides/orchestration/custom-cicd-pipelines/4-something-to-consider",
+            "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
       ],
