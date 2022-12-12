@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Editor from "@monaco-editor/react";
-import { Dag } from '@dbt-labs/react-dbt-dag';
 import SubMenu from './sub-menu';
-import { transformLineageNodes } from './utils/transform-lineage-nodes'
+import { transformLineageNodes } from '../lineage/utils/transform-lineage-nodes';
+import { Lineage } from '../lineage';
 import { buildSidebar } from './utils/build-sidebar';
 import { parseCsv } from './utils/parse-csv';
 import styles from './styles.module.css';
@@ -229,10 +229,7 @@ function dbtEditor({ project }) {
               </table>
             </div>}
             {showLineage && <div className={styles.dbtLineageContainer}>
-              <Dag 
-                nodes={dagNodes}
-                toolbarItems={[]}
-                primaryNodeId={currentNodeId} />
+              <Lineage dagNodes={dagNodes} currentNodeId={currentNodeId} />
             </div>}
           </div>
         </div>
