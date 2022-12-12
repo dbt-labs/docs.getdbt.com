@@ -56,7 +56,8 @@ The final group is where non-slack community engagement becomes important. Twitt
 Tell a story that engages dbt users and the community. Highlight new use cases and functionality unlocked by the adapter in a way that will resonate with each segment. 
 
 ### Existing users of your technology who are new to dbt
-  - Provide a general overview of the value dbt will deliver to your users. This can lean on dbt's messaging and talking points which are laid out in the [dbt viewpoint.](https://docs.getdbt.com/docs/about/viewpoint)
+
+- Provide a general overview of the value dbt will deliver to your users. This can lean on dbt's messaging and talking points which are laid out in the [dbt viewpoint.](/community/resources/viewpoint)
   - Give examples of a rollout that speaks to the overall value of dbt and your product.
 
 ### Users who are already familiar with dbt and the community
