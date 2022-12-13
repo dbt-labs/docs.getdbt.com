@@ -60,13 +60,13 @@ Everyone in your organization who uses dbt Cloud must refresh the IDE before sta
 
 #### About your credentials
 
-If you can connect to Databricks using the dbt-spark ODBC method, it means:
+When you update the Databricks connection in dbt Cloud for the migration, your team will not lose their credentials. This makes migrating easier since it only requires you to delete the Databricks connection and re-add the cluster or endpoint information.
 
-- You already supplied your credentials to dbt Cloud.
-- You already added your personal access token (PAT) in your dbt Cloud profile to develop in the IDE for a given project.
-- Someone with admin privileges already added an access token for each deployment environment so dbt Cloud can connect to Databricks during production jobs.
+With a successful connection to Databricks using the `dbt-spark` ODBC method, the following credentials will not get lost:
 
-Because of this, people will not lose their credentials when migrating to the `dbt-databricks` adapter. This makes the migration easier as it only requires deleting the connection and re-adding the cluster or endpoint information. No one needs to reenter their personal access tokens for the project.
+- The credentials you supplied to dbt Cloud to connect to your Databricks workspace.
+- The personal access tokens your team added in their dbt Cloud profile to develop in the IDE for a given project.
+- The access token you added for each deployment environment so dbt Cloud can connect to Databricks during production jobs.
 
 </TabItem>
 
@@ -86,7 +86,7 @@ Anyone who's using your project must also make these changes in their environmen
 
 ### Examples
 
-You an use the following examples of the `profiles.yml` file to see the authentication setup with `dbt-spark` compared to the simpler setup with `dbt-databricks` when connecting to an SQL endpoint. A cluster example would look similar.
+You can use the following examples of the `profiles.yml` file to see the authentication setup with `dbt-spark` compared to the simpler setup with `dbt-databricks` when connecting to an SQL endpoint. A cluster example would look similar.
 
 
 An example of what authentication looks like with `dbt-spark`:
