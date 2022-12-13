@@ -40,6 +40,9 @@
     "swiper": "^8.4.3",
     "url-loader": "^4.1.1"
   },
+  "optionalDependencies": {
+    "@dbt-labs/react-dbt-dag": "0.7.10"
+  },
   "devDependencies": {
     "@swc/core": "^1.2.174",
     "@swc/jest": "^0.2.20",

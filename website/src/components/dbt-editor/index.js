@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Editor from "@monaco-editor/react";
 import SubMenu from './sub-menu';
+import { Lineage } from '../lineage';
 import { buildSidebar } from './utils/build-sidebar';
 import { parseCsv } from './utils/parse-csv';
 import styles from './styles.module.css';
@@ -23,11 +24,13 @@ const errorEditorValue = "/*\n  Unable to get CSV data. \n Try selecting another
 
 function dbtEditor({ project }) {
   const [manifest, setManifest] = useState({})
+  const [showLineage, setShowLineage] = useState(false);
   const [sidebar, setSidebar] = useState([])
   const [csvData, setCsvData] = useState()
   const [currentSql, setCurrentSql] = useState(defaultEditorValue)
   const [error, setError] = useState(false)
   const [packageOpen, setPackageOpen] = useState(true)
+  const [currentNodeId, setCurrentNodeId] = useState(null);
 
   useEffect(() => {
     setError(false)
@@ -38,6 +41,7 @@ function dbtEditor({ project }) {
 
         const { nodes } = res.data
         setManifest(res.data)
+
         const sidebarData = buildSidebar(nodes)
         if(!sidebarData) throw new Error('Unable to get sidebar data.')
 
@@ -58,11 +62,13 @@ function dbtEditor({ project }) {
       node_name, 
       file_name 
     } = e?.target?.dataset
+
     if(!package_name || !resource_type || !node_name) {
       setError(true)
       return
     }
 
+    setCurrentNodeId(node_name)
     const thisNode = manifest?.nodes[node_name]
     if(!thisNode) {
       setError(true)
@@ -150,10 +156,14 @@ function dbtEditor({ project }) {
                   <button className={styles.editorAction}>Save</button>
                   <button className={styles.editorAction}>Run</button>
                   <button className={styles.editorAction}>Test</button>
+                  <button className={styles.editorAction}
+                          onClick={() => setShowLineage((isShowing) => !isShowing)}>
+                    Lineage
+                  </button>
                 </div>
               </>
             )}
-            <div className={styles.dbtEditorResults}>
+            {!showLineage && <div className={styles.dbtEditorResults}>
               {!csvData && (
                 <div className={styles.resultsHeader}>
                   <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
@@ -217,7 +227,15 @@ function dbtEditor({ project }) {
                   </>
                 )}
               </table>
-            </div>
+            </div>}
+            {showLineage && <div className={styles.dbtLineageContainer}>
+              <Lineage
+                nodes={manifest.nodes}
+                currentNodeId={currentNodeId}
+                onNodeSelect={(node) => {
+                  handleFileSelect({target: { dataset : node.data }})
+                }} />
+            </div>}
           </div>
         </div>
 
