@@ -53,7 +53,7 @@ Let’s pretend that we are an analytics engineer at Seeq Wellness, a hypothetic
 
 **Key Outcomes**
 
-* Create your first [model](/docs/building-a-dbt-project/building-models)
+* Create your first [model](/docs/build/sql-models)
 
 * Execute your first [dbt run](/reference/commands/run)
 
@@ -67,7 +67,7 @@ The goal here is to learn the very basics of interacting with a dbt project; fee
 
 In addition to learning the basic pieces of dbt, we're familiarizing ourselves with the modern, version-controlled analytics engineering workflow, and experimenting with how it feels to use it at our organization.
 
-If we decide not to do this, we end up missing out on what the dbt workflow has to offer. If you want to learn more about why we think analytics engineering with dbt is the way to go, I  encourage you to read the [dbt Viewpoint](/docs/about/viewpoint)!
+If we decide not to do this, we end up missing out on what the dbt workflow has to offer. If you want to learn more about why we think analytics engineering with dbt is the way to go, I  encourage you to read the [dbt Viewpoint](/community/resources/viewpoint#analytics-is-collaborative)!
 
 In order to learn the basics, we’re going to [port over the SQL file](/docs/get-started/learning-more/refactoring-legacy-sql) that powers our existing "patient_claim_summary" report that we use in our KPI dashboard in parallel to our old transformation process. We’re not ripping out the old plumbing just yet. In doing so, we're going to try dbt on for size and get used to interfacing with a dbt project.
 
@@ -83,11 +83,11 @@ The most important thing we’re introducing when your project is an infant is t
 
 **Key Outcomes**
 
-* Configure your first [sources](/docs/building-a-dbt-project/using-sources)
+* Configure your first [sources](/docs/build/sources)
 
 * Introduce modularity with [{{ ref() }}](/reference/dbt-jinja-functions/ref) and [{{ source() }}](/reference/dbt-jinja-functions/source)
 
-* [Document](/docs/building-a-dbt-project/documentation) and [test](/docs/build/tests) your first models
+* [Document](/docs/collaborate/documentation) and [test](/docs/build/tests) your first models
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_3.png)
 
@@ -125,7 +125,7 @@ Leveling up from infant to toddler is a huge jump in terms of feature completene
 
 * Create a PR template to ensure quality and consistency
 
-* [Deploy your project](/docs/running-a-dbt-project/running-dbt-in-production)!
+* [Deploy your project](/docs/deploy/deployments)!
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_5.png)
 
@@ -151,11 +151,11 @@ Even though we haven't changed the function of a lot of our features *codifying 
 
 **Key Outcomes**
 
-* Leverage code from dbt [packages](/docs/building-a-dbt-project/package-management)
+* Leverage code from dbt [packages](/docs/build/packages)
 
 * Increase model flexibility and scope of project
 
-* Reduce dbt production build times with [advanced materializations](/docs/building-a-dbt-project/building-models/materializations)
+* Reduce dbt production build times with [advanced materializations](/docs/build/materializations)
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_7.png)
 
