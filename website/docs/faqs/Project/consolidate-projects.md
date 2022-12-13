@@ -20,12 +20,12 @@ Another option would be to use an external code editor to drag and drop folders 
 
 ### Manual migration with multiple browser tabs
 
-If you only have a couple of models or macros that you want to move over, grab the raw file contents from your git provider in `Smaller Subset Project` and paste the contents into a new file in your `Main Project`, within the dbt Cloud IDE.
+If you only have a couple of models or macros that you want to consolidate, copy the raw file contents from your git provider in `Smaller Subset Project`. Then, in the dbt Cloud IDE, paste the contents into a new file in your `Main Project`.
 
 Alternatively, you can download those files from your git provider (`Smaller Subset Project` repo) and upload them back to your other repository (`Main Project` repo). This doesn’t scale well and could bypass change controls, so it might only be a viable solution for organizations with only a few files.
 
 ## Production jobs
-If you have multiple projects with deployment environments deploying jobs, this poses another challenge. Assuming we can bring all the models from `Smaller Subset Project` into `Main Project`, your commands within your jobs will take on a new meaning. In lieu of refactoring your global job strategy at the same time, you can add tags to the incoming project models and utilize that in your job command syntax, with the help of node selection syntax.
+If you have multiple projects with deployment environments deploying jobs, this poses another challenge. Assuming all the models from `Smaller Subset Project` can be consolidated into `Main Project`, your commands within your jobs will take on a new meaning. In lieu of refactoring your global job strategy at the same time, you can add tags to the incoming project models and utilize that in your job command syntax, with the help of node selection syntax.
 
 Main Project job command example: `dbt build --exclude tag:smaller_subset_project`
 
