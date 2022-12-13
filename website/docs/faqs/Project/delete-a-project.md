@@ -5,6 +5,7 @@ sidebar_label: 'How to delete a project'
 id: delete-a-project
 
 ---
+This article outlines the steps for deleting a project in dbt Cloud. The action can only be performed by the account owner or an admin. 
 
 From the cloud console:
 1. Navigate to the settings icon and select **Account Settings**
@@ -13,7 +14,6 @@ From the cloud console:
 
 2. In the **Projects** pane, select the project to delete.  
 3. Select the edit icon in the lower right-hand corner. Once in edit mode, a **Delete** option will appear on the left-hand side of the project information pane. 
-4. Select **Delete** and then confirm the action.  
-  * Note that on the confirmation screen there will be no account password prompt, and the project will be deleted immediately after confirmation.  Once you delete a project, this action cannot be undone. 
+4. Select **Delete** and then confirm the action. There will be no account password prompt, and the project will be deleted immediately after confirmation.  Once a project is deleted, this action cannot be undone. 
 
 <Lightbox src="/img/docs/dbt-cloud/delete_projects_from_dbt_cloud_20221023.gif" title="Delete projects" />
