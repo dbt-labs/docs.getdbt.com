@@ -371,12 +371,12 @@ models:
   columns:
     - name: field
       policy_tags:
-        - 'need_to_know'
+        - 'projects/<gcp-project>/locations/<location>/taxonomies/<organization>/policyTags/<tag>'
 ```
 
 </File>
 
-Please note that in order for policy tags to take effect, [column-level `persist_docs`](https://docs.getdbt.com/reference/resource-configs/persist_docs) must be enabled for the model, seed, or snapshot.
+Please note that in order for policy tags to take effect, [column-level `persist_docs`](/reference/resource-configs/persist_docs) must be enabled for the model, seed, or snapshot. Consider using [variables](/docs/build/project-variables) to manage taxonomies and make sure to add the required security [roles](https://cloud.google.com/bigquery/docs/column-level-security-intro#roles) to your BigQuery service account key.
 
 ## Merge behavior (incremental models)
 
