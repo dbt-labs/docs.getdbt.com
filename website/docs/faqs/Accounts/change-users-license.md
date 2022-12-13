@@ -1,6 +1,6 @@
 ---
-title: How do I change a user's license type to read-only in dbt Cloud?
-description: "Changing a user's license type to read-only in dbt Cloud"
+title: How do I change a user\'s license type to read-only in dbt Cloud?
+description: "Changing a user\'s license type to read-only in dbt Cloud"
 sidebar_label: 'How to change a user\'s license type to read-only'
 id: change-users-license
 
