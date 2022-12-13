@@ -2,39 +2,26 @@
 title: "Python models"
 id: "python-models"
 ---
-- [Overview](#overview)
-- [Configuring Python Models](#configuring-python-models)
-- [Python Specific Functionality](#configuring-python-models)
-- [Limitations](#limitations)
-- [Supported data platforms](#supported-data-platforms)
 
 dbt Core v1.3 adds support for Python models. Note that only [specific data platforms](#specific-data-platforms) support dbt-py models.
 
 We encourage you to:
 - Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.
 - Contribute to [best practices for developing Python models in dbt](https://github.com/dbt-labs/docs.getdbt.com/discussions/1811).
-- Weigh in on [next steps for Python models, beyond v1.3](https://github.com/dbt-labs/dbt-core/discussions/5742).
+- Share your thoughts and ideas on [next steps for Python models](https://github.com/dbt-labs/dbt-core/discussions/5742).
 - Join the **#beta-feedback-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 
-<VersionBlock firstVersion="1.3">
-In the following article, you'll see a section titled "❓ **dbt questions**." We are excited to release the first set of functionality in v1.3, which will solve real use cases. We also know this is the first step toward a much wider field of possibility. We don't pretend to have all the answers.
 
-We're excited to keep developing our opinionated recommendations and next steps for product development, and we want your help. Comment in the GitHub discussions; leave thoughts in Slack; bring up dbt + Python in casual conversation with colleagues and friends.
-</VersionBlock>
+
 
 ## Overview
 
-dbt Python ("dbt-py") models will help you solve use cases that can't be solved with SQL. You can perform analyses using tools available in the open-source Python ecosystem, including state-of-the-art packages for data science and statistics. Before, you would have needed separate infrastructure and orchestration to run Python transformations in production. Python transformations defined in dbt are models in your project with all the same capabilities around testing, documentation, and lineage.
+dbt Python (`dbt-py`) models can help you solve use cases that can't be solved with SQL. You can perform analyses using tools available in the open-source Python ecosystem, including state-of-the-art packages for data science and statistics. Before, you would have needed separate infrastructure and orchestration to run Python transformations in production. Python transformations defined in dbt are models in your project with all the same capabilities around testing, documentation, and lineage.
 
-<VersionBlock firstVersion="1.0" lastVersion="1.2">
 
 Python models are supported in dbt Core 1.3 and higher.  Learn more about [upgrading your version in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions) and [upgrading dbt Core versions](https://docs.getdbt.com/docs/core-versions#upgrading-to-new-patch-versions).
 
 To read more about Python models, change the [docs version to 1.3](/docs/build/python-models?version=1.3) (or higher) in the menu bar.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 
 <File name='models/my_python_model.py'>
@@ -88,7 +75,7 @@ models:
 
 The prerequisites for dbt Python models include using an adapter for a data platform that supports a fully featured Python runtime. In a dbt Python model, all Python code is executed remotely on the platform. None of it is run by dbt locally. We believe in clearly separating _model definition_ from _model execution_. In this and many other ways, you'll find that dbt's approach to Python models mirrors its longstanding approach to modeling data in SQL.
 
-We've written this guide assuming that you have some familiarity with dbt. If you've never before written a dbt model, we encourage you to start by first reading [dbt Models](building-models). Throughout, we'll be drawing connections between Python models and SQL models, as well as making clear their differences.
+We've written this guide assuming that you have some familiarity with dbt. If you've never before written a dbt model, we encourage you to start by first reading [dbt Models](/docs/build/models). Throughout, we'll be drawing connections between Python models and SQL models, as well as making clear their differences.
 
 ### What is a Python model?
 
@@ -595,7 +582,7 @@ Use the `cluster` submission method with dedicated Dataproc clusters you or your
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-connector-initialization.png" title="Add the Spark BigQuery connector as an initialization action"/>
 
-The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](bigquery-profile) or configure them on specific Python models:
+The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/reference/warehouse-setups/bigquery-setup) or configure them on specific Python models:
 - `gcs_bucket`: Storage bucket to which dbt will upload your model's compiled PySpark code
 - `dataproc_region`: GCP region in which you have enabled Dataproc (for example `us-central1`)
 - `dataproc_cluster_name`: Name of Dataproc cluster to use for running Python model (executing PySpark job). Only required if `submission_method: cluster`
@@ -644,5 +631,3 @@ You can also install packages at cluster creation time by [defining cluster prop
 </div>
 
 </WHCode>
-
-</VersionBlock>
