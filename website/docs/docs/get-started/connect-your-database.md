@@ -60,7 +60,7 @@ Make sure the location of the instance is the same Virtual Private Cloud (VPC) a
 
 #### Configuring the Bastion Server in AWS:
 
-When you configure the tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, as well as a username and port, of your choosing, that dbt Cloud will connect to:
+To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that dbt Cloud will connect to. Review the following steps:
 
 - Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/deploy/regions-ip-addresses) on whatever port you configured.
 - You'll need to set up the user account (I'm using the username dbtcloud below) via the bastion servers instance's CLI:
