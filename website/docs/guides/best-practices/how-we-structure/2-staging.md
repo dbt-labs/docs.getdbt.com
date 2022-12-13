@@ -44,7 +44,7 @@ models/staging
 
 Now that we’ve got a feel for how the files and folders fit together, let’s look inside one of these files and dig into what makes for a well-structured staging model.
 
-Below, is an example of a standard staging model (from our `stg_stripe__payments` model) that illustrates the common patterns within the staging layer. We’ve organized our model into two <Term id='cte'>CTEs</Term>: one pulling in a source table via the [source macro](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources#selecting-from-a-source) and the other applying our transformations.
+Below, is an example of a standard staging model (from our `stg_stripe__payments` model) that illustrates the common patterns within the staging layer. We’ve organized our model into two <Term id='cte'>CTEs</Term>: one pulling in a source table via the [source macro](https://docs.getdbt.com/docs/build/sources#selecting-from-a-source) and the other applying our transformations.
 
 While our later layers of transformation will vary greatly from model to model, every one of our staging models will follow this exact same pattern. As such, we need to make sure the pattern we’ve established is rock solid and consistent.
 
