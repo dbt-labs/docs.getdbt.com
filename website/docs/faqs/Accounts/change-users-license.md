@@ -12,7 +12,7 @@ This article outlines the steps for changing the license type for a user from `d
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" title="Navigate to account settings" />
 
-2. Select **Users** in the left menu.
+2. In **Account Settings**, select **Users** under **Teams**.
 3. Select the user you want to remove, and click **Edit** in the bottom of their profile.
 4. Under License, change from "Developer" to "Read-only", and click **Save**.
 
