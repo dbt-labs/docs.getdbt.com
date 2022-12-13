@@ -43,7 +43,7 @@ Once the connection is saved, a public key will be generated and displayed for t
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" title="A generated public key for a Redshift connection"/>
 
-#### About the Bastion server in AWS:
+#### About the Bastion server in AWS
 
 A bastion server is really just a host that dbt Cloud can open up an SSH connection to, and given that dbt Cloud is generally only sending queries, and not transmitting large data volumes, you can safely assume that the bastion server can run on a small AWS instance. I'd offer the following recommendations:
 
