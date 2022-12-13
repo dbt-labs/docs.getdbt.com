@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Editor from "@monaco-editor/react";
 import SubMenu from './sub-menu';
-import { transformLineageNodes } from '../lineage/utils/transform-lineage-nodes';
 import { Lineage } from '../lineage';
 import { buildSidebar } from './utils/build-sidebar';
 import { parseCsv } from './utils/parse-csv';
@@ -25,7 +24,6 @@ const errorEditorValue = "/*\n  Unable to get CSV data. \n Try selecting another
 
 function dbtEditor({ project }) {
   const [manifest, setManifest] = useState({})
-  const [dagNodes, setDagNodes] = useState([]);
   const [showLineage, setShowLineage] = useState(false);
   const [sidebar, setSidebar] = useState([])
   const [csvData, setCsvData] = useState()
@@ -43,8 +41,6 @@ function dbtEditor({ project }) {
 
         const { nodes } = res.data
         setManifest(res.data)
-        const transformedNodes = transformLineageNodes(nodes);
-        setDagNodes(transformedNodes)
 
         const sidebarData = buildSidebar(nodes)
         if(!sidebarData) throw new Error('Unable to get sidebar data.')
@@ -234,7 +230,7 @@ function dbtEditor({ project }) {
             </div>}
             {showLineage && <div className={styles.dbtLineageContainer}>
               <Lineage
-                dagNodes={dagNodes}
+                nodes={manifest.nodes}
                 currentNodeId={currentNodeId}
                 onNodeSelect={(node) => {
                   handleFileSelect({target: { dataset : node.data }})

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { transformLineageNodes } from './utils/transform-lineage-nodes';
 
 let Dag = null;
 
@@ -16,15 +17,14 @@ try {
      */
 }
 
-/**
- * This can be used to hide the lineage button or
- * for whatever purpose makes sense!
- * 
- * Currently, this function is unused.
- */
-export const canShowLineage = () => Dag !== null;
+export const Lineage = ({ nodes, currentNodeId, onNodeSelect }) => {
+    const [dagNodes, setDagNodes] = useState([])
 
-export const Lineage = ({ dagNodes, currentNodeId, onNodeSelect }) => {
+    useEffect(() => {
+        const transformedNodes = transformLineageNodes(nodes);
+        setDagNodes(transformedNodes)
+    }, [nodes])
+
     if (!Dag) {
         return <div>Lineage Not Available!</div>
     }
