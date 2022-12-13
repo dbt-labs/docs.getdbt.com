@@ -79,7 +79,7 @@ To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP
     
     `chmod 600 ~/.ssh/authorized_keys`
     
-- You'll need to copy-paste the generated public key from dbt Cloud into the authorized_keys file
+- Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
 
 With the Bastion EC2 instance in place, and the user properly configured, you should be able to successfully connect to the Redshift environment.
 
