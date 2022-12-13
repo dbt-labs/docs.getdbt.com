@@ -57,7 +57,6 @@ Make sure the location of the instance is the same Virtual Private Cloud (VPC) a
   </div>
 </details>
 
-- Make sure the instance is located in the same VPC as the Redshift instance, and configure the security group for the bastion server to ensure that it is able to connect to the warehouse port
 
 #### Configuring the Bastion Server in AWS:
 
