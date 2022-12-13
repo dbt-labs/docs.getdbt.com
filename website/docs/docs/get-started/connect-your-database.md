@@ -62,7 +62,7 @@ Make sure the location of the instance is the same Virtual Private Cloud (VPC) a
 
 When you configure the tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, as well as a username and port, of your choosing, that dbt Cloud will connect to:
 
-- Make sure that the bastion server has its network security rules set up properly to accept connections from the dbt Cloud IP addresses on whatever port you configure for the bastion server in dbt Cloud
+- Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/deploy/regions-ip-addresses) on whatever port you configured.
 - You'll need to set up the user account (I'm using the username dbtcloud below) via the bastion servers instance's CLI:
     
     `sudo groupadd dbtcloud`
