@@ -6,7 +6,7 @@ id: consolidate-projects
 
 ---
 
-Consolidating projects can be an enormous task, and there is no universal solution, but there are a few options to consider when determining the scope of the work that needs to be done. This article outlines some common approaches to project consolidation in dbt Cloud.
+Consolidating your dbt projects can be an enormous task, and there is no universal solution. But, there are some common approaches to project consolidation in dbt Cloud that you can follow, depending on the scope of the work that needs to be done.
 
 If you have multiple projects that contain production-worthy code, there are rarely straightforward solutions to merging them. Let's suppose you have `Main Project` and `Smaller Subset Project`.
 
