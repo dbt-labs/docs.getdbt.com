@@ -16,7 +16,7 @@ This article outlines the steps for deleting a user in dbt Cloud. If the user ha
 3. Select the user you want to delete, then click **Edit**. 
 4. Click **Delete** in the bottom left, and click **Confirm Delete** to complete the action. The user will be deleted immediately after confirmation without additional password prompts. Once you delete a user, this action cannot be undone. However, you can re-invite a user with the same information if the deletion was made in error. 
 
-<Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" title="Delete users" />
+<Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" title="Deleting a user" />
 
 If you are on a **Teams** plan and you are deleting users to reduce the number of billable seats, you also need to take these steps to lower the license count:
 1. In the Account Settings pane, click **Billing**. 
