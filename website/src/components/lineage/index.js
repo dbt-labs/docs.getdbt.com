@@ -16,7 +16,15 @@ try {
      */
 }
 
-export const Lineage = ({ dagNodes, currentNodeId }) => {
+/**
+ * This can be used to hide the lineage button or
+ * for whatever purpose makes sense!
+ * 
+ * Currently, this function is unused.
+ */
+export const canShowLineage = () => Dag !== null;
+
+export const Lineage = ({ dagNodes, currentNodeId, onNodeSelect }) => {
     if (!Dag) {
         return <div>Lineage Not Available!</div>
     }
@@ -24,5 +32,8 @@ export const Lineage = ({ dagNodes, currentNodeId }) => {
     return <Dag 
         nodes={dagNodes}
         toolbarItems={[]}
-        primaryNodeId={currentNodeId} />
+        primaryNodeId={currentNodeId}
+        onNodeInteraction={({ targetNode }) => {
+            onNodeSelect(targetNode)
+        }} />
 }

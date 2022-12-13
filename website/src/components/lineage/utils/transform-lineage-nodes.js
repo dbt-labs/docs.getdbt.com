@@ -10,6 +10,12 @@ export const transformLineageNodes = (nodes) => {
             parents: node.depends_on?.nodes || [],
             label: node.name,
             resourceType: node.resource_type,
+            data: {
+                package_name: node.package_name,
+                resource_type: node.resource_type,
+                node_name: nodeId,
+                file_name: node.name,
+            },
         }
     });
 

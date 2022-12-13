@@ -66,6 +66,7 @@ function dbtEditor({ project }) {
       node_name, 
       file_name 
     } = e?.target?.dataset
+
     if(!package_name || !resource_type || !node_name) {
       setError(true)
       return
@@ -229,7 +230,12 @@ function dbtEditor({ project }) {
               </table>
             </div>}
             {showLineage && <div className={styles.dbtLineageContainer}>
-              <Lineage dagNodes={dagNodes} currentNodeId={currentNodeId} />
+              <Lineage
+                dagNodes={dagNodes}
+                currentNodeId={currentNodeId}
+                onNodeSelect={(node) => {
+                  handleFileSelect({target: { dataset : node.data }})
+                }} />
             </div>}
           </div>
         </div>
