@@ -6,6 +6,8 @@ id: delete-users
 
 ---
 
+This article outlines the steps for deleting a user in dbt Cloud. If the user has a 'developer' license-type, this will open up their seat for another user or allow the admins to lower the total number of billable seats. You must be an account owner/admin to perform these actions.
+
 1. From  dbt cloud, click the gear icon and select **Account Settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" title="Navigate to account settings" />
