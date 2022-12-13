@@ -1,8 +1,8 @@
 ---
-title: How do I change a seat license type to read-only in dbt Cloud?
-description: "Changing a seat license type to read-only in dbt Cloud"
-sidebar_label: 'How to change a seat license type to read-only'
-id: change-seat-license
+title: How do I change a user license type to read-only in dbt Cloud?
+description: "Changing a user license type to read-only in dbt Cloud"
+sidebar_label: 'How to change a user license type to read-only'
+id: change-user-license
 
 ---
 
