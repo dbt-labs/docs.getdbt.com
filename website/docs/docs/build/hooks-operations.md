@@ -231,7 +231,7 @@ Privileges granted
 
 ```
 
-Full usage docs can for the `run-operation` command can be found [here](run-operation).
+Full usage docs for the `run-operation` command can be found [here](run-operation).
 
 
 ## Additional examples
