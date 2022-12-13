@@ -64,7 +64,7 @@ When you update the Databricks connection in dbt Cloud for the migration, your t
 
 With a successful connection to Databricks using the `dbt-spark` ODBC method, the following credentials will not get lost:
 
-- The credentials you supplied to dbt Cloud to connect to your Databricks workspace.
+- The credentials you supplied in dbt Cloud to connect to your Databricks workspace.
 - The personal access tokens your team added in their dbt Cloud profile to develop in the IDE for a given project.
 - The access token you added for each deployment environment so dbt Cloud can connect to Databricks during production jobs.
 
