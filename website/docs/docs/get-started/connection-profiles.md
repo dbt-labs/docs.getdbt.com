@@ -71,7 +71,7 @@ A profile consists of _targets_, and a specified _default target_.
 
 Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
-The credentials you need to provide in your target varies across warehouses &mdash sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
+The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
 
 **Pro Tip:** You may need to surround your password in quotes if it contains special characters. More details [here](https://stackoverflow.com/a/37015689/10415173).
 
@@ -141,7 +141,7 @@ While the target schema represents the default schema that dbt will use, it may 
 
 ## Understanding threads
 
-When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
+When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is [4 threads](/docs/dbt-versions/release-notes/Dec-2022/default-thread-value).
 
 For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
 
