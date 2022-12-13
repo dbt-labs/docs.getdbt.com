@@ -160,7 +160,10 @@ function dbtEditor({ project }) {
                   <button className={styles.editorAction}>Save</button>
                   <button className={styles.editorAction}>Run</button>
                   <button className={styles.editorAction}>Test</button>
-                  <button className={styles.editorAction} onClick={() => setShowLineage((isShowing) => !isShowing)}>Lineage</button>
+                  <button className={styles.editorAction}
+                          onClick={() => setShowLineage((isShowing) => !isShowing)}>
+                    Lineage
+                  </button>
                 </div>
               </>
             )}

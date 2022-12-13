@@ -31,7 +31,6 @@ export const Lineage = ({ dagNodes, currentNodeId, onNodeSelect }) => {
 
     return <Dag 
         nodes={dagNodes}
-        toolbarItems={[]}
         primaryNodeId={currentNodeId}
         onNodeInteraction={({ targetNode }) => {
             onNodeSelect(targetNode)
