@@ -28,4 +28,5 @@ Alternatively, you can download those files from your git provider (`Smaller Sub
 If you have multiple projects with deployment environments deploying jobs, this poses another challenge. Assuming we can bring all the models from `Smaller Subset Project` into `Main Project`, your commands within your jobs will take on a new meaning. In lieu of refactoring your global job strategy at the same time, you can add tags to the incoming project models and utilize that in your job command syntax, with the help of node selection syntax.
 
 Main Project job command example: `dbt build --exclude tag:smaller_subset_project`
+
 Smaller Subset Project commands: `dbt build --select tag:smaller_subset_project`
