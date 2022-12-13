@@ -238,14 +238,18 @@ dbt Cloud expects.
 7. Click **Add another mapping** to map additional attributes.
 
 Expected **Attributes**:
-
 | Name           | Name format | Value                | Description                |
 | -------------- | ----------- | -------------------- | -------------------------- |
 | `First name`   | Unspecified | `first_name`         | The user's first name.  |
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
+8. To use role-based access control in dbt Cloud,enter the groups in the **Group membership** field during configuration:
 
-8. Click **Finish** to continue.
+| Google groups  | App attributes |
+| -------------- | -------------- |
+| Name of groups | `MemberOf` |
+
+9. Click **Finish** to continue.
 
 
 ### Finish Google setup
@@ -332,7 +336,7 @@ To configure OneLogin, you will need **Administrator** access.
 
 ### Configure SAML settings
 
-The following steps assume your dbt Cloud deployment instance uses `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions) uses a different URL, then substitute ` cloud.getdbt.com` with the URL of your instance.
+The following steps assume your dbt Cloud deployment instance uses `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions-ip-addresses) uses a different URL, then substitute ` cloud.getdbt.com` with the URL of your instance.
 
 3. To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization

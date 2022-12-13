@@ -195,7 +195,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
-        "docs/deploy/regions",
+        "docs/deploy/regions-ip-addresses",
         {
           type: "category",
           label: "dbt Cloud deploy options",
@@ -215,6 +215,7 @@ const sidebarSettings = {
             "docs/deploy/dashboard-status-tiles",
           ],
         },
+        "docs/deploy/about-state",
         "docs/deploy/cloud-ci-job",
       ],
     },
@@ -231,7 +232,7 @@ const sidebarSettings = {
             "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/resolve-merge-conflicts",
+            "docs/collaborate/git/merge-conflicts",
             {
               type: "category",
               label: "Supported git providers",
@@ -432,6 +433,7 @@ const sidebarSettings = {
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
+        "reference/resource-configs/doris-configs",
       ],
     },
     {
@@ -664,6 +666,7 @@ const sidebarSettings = {
         "reference/warehouse-setups/mysql-setup",
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
+        "reference/warehouse-setups/doris-setup",
       ],
     },
     {
@@ -685,7 +688,7 @@ const sidebarSettings = {
       items: ["reference/snowflake-permissions"],
     },
   ],
-  guides: [
+guides: [
     {
       type: "category",
       label: "Best practices",
@@ -711,6 +714,8 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
+        "guides/best-practices/debugging-errors",
+        "guides/best-practices/writing-custom-generic-tests",
       ],
     },
     {
@@ -747,7 +752,8 @@ const sidebarSettings = {
           items: [
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
-            "guides/orchestration/custom-cicd-pipelines/4-something-to-consider",
+            "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
       ],
@@ -799,41 +805,56 @@ const sidebarSettings = {
                 "guides/migration/tools/migrating-from-stored-procedures/6-migrating-from-stored-procedures-conclusion",
               ],
             },
+            "guides/migration/tools/migrating-from-spark-to-databricks",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "dbt Ecosystem",
+      link: {
+        type: "generated-index",
+        title: "dbt Ecosystem guides",
+        description:
+          "Learn about the dbt ecosystem and how to use build with dbt",
+        slug: "/guides/dbt-ecosystem/",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Adapter development",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+          },
+          items: [
+            "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+            "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
+          ],
+        }
       ],
     },
     {
       type: "category",
       label: "Advanced",
       items: [
-        {
-          type: "category",
-          label: "Adapter development",
-          items: [
-            "guides/advanced/adapter-development/1-what-are-adapters",
-            "guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter",
-            "guides/advanced/adapter-development/3-building-a-new-adapter",
-            "guides/advanced/adapter-development/4-testing-a-new-adapter",
-            "guides/advanced/adapter-development/5-documenting-a-new-adapter",
-            "guides/advanced/adapter-development/6-promoting-a-new-adapter",
-            "guides/advanced/adapter-development/7-verifying-a-new-adapter",
-          ],
-        },
+         "guides/advanced/creating-new-materializations",
       ],
     },
     {
       type: "category",
       label: "Legacy",
       items: [
-        "guides/legacy/debugging-errors",
         "guides/legacy/debugging-schema-names",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
-        "guides/legacy/writing-custom-generic-tests",
         "guides/legacy/building-packages",
-        "guides/legacy/creating-new-materializations",
-        "guides/legacy/understanding-state",
         "guides/legacy/videos",
       ],
     },
@@ -905,6 +926,32 @@ const sidebarSettings = {
         {
           type: "autogenerated",
           dirName: "terms",
+        },
+      ],
+    },
+  ],
+  SQLReference: [
+    {
+      type: "category",
+      label: "SQL Reference",
+      link: {
+        type: "generated-index",
+        title: "SQL Reference",
+        description: "The SQL Reference is a collection of SQL syntaxes that you can use and reference during your daily data work.",
+        slug: "/sql-reference",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Aggregate Functions",
+          items: [
+            "sql-reference/aggregate-functions/avg",
+            "sql-reference/aggregate-functions/count",
+            "sql-reference/aggregate-functions/max",
+            "sql-reference/aggregate-functions/min",
+            "sql-reference/aggregate-functions/round",
+            "sql-reference/aggregate-functions/sum",
+          ],
         },
       ],
     },
