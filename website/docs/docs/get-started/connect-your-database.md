@@ -45,7 +45,17 @@ Once the connection is saved, a public key will be generated and displayed for t
 
 #### About the Bastion server in AWS
 
-A bastion server is really just a host that dbt Cloud can open up an SSH connection to, and given that dbt Cloud is generally only sending queries, and not transmitting large data volumes, you can safely assume that the bastion server can run on a small AWS instance. I'd offer the following recommendations:
+<details>
+  <summary>What is a Bastion server?</summary>
+  <div>
+    <div>A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows dbt Cloud to open an SSH connection. <br></br>
+    
+dbt Cloud only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br>
+    
+Make sure the location of the instance is the same Virtual Private Cloud (VPC) as the Redshift instance, and configure the security group for the bastion server to ensure that it's able to connect to the warehouse port.
+    </div>
+  </div>
+</details>
 
 - A t2.small instance is likely sufficiently sized for this purpose (even a t2.micro will probably suffice, in all honesty)
 - Make sure the instance is located in the same VPC as the Redshift instance, and configure the security group for the bastion server to ensure that it is able to connect to the warehouse port
