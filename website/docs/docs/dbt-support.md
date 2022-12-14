@@ -30,7 +30,7 @@ Types of dbt Cloud-related questions our Support team can assist you with, regar
 
 ### dbt Cloud Enterprise accounts
 
-For customers on a dbt Cloud Enterprise plan, we **also** offer basic assistance in troubleshooting issues with your dbt Project.  
+For customers on a dbt Cloud Enterprise plan, we **also** offer basic assistance in troubleshooting issues with your dbt project.  
 - **Something isn't working the way I would expect it to...**
     - in a macro I created...
     - in an incremental model I'm building...
