@@ -21,7 +21,7 @@ export const DiscourseBlogComments = (
 
         const endpoint = window?.location?.hostname?.includes('localhost')
         ? `http://localhost:8888/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
-        : '/.netlify/functions/get-discourse-comments'
+        : `/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
 
           const { data } = await axios.get(endpoint)
   

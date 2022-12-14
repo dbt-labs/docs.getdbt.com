@@ -23,7 +23,6 @@ async function getDiscourseTopics( event ) {
 
     if(!postTitle) throw new Error('Unable to query Discourse API.')
 
-
     // Check if we have a topic from Discourse that matches the dev blog post title
     let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${postTitleEncoded}&in:title`, { headers })
     let allTopics = topics
