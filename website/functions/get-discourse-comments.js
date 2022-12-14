@@ -13,11 +13,13 @@ async function getDiscourseTopics( event ) {
     'Api-Username': DISCOURSE_USER_SYSTEM,
   }    
 
-  let postTitle = event.queryStringParameters.title.trim()
-  let postSlug = event.queryStringParameters.slug
-  let postTitleEncoded = encodeURIComponent(postTitle)
+
 
   try {
+
+    let postTitle = event.queryStringParameters.title.trim() || ''
+    let postSlug = event.queryStringParameters.slug || ''
+    let postTitleEncoded = encodeURIComponent(postTitle)
 
     if(!postTitle) throw new Error('Unable to query Discourse API.')
 
