@@ -26,7 +26,7 @@ You can also add `dbt docs generate` to the list of commands in the job run step
 
 <TabItem value="checkbox" label="Generate docs on run checkbox">
 
-Selecting **Generate docs on run** means if the step your job fails, the job can still be successful. 
+- Selecting **Generate docs on run** means if the step your job fails, the job can still be successful. 
 
 </TabItem>
 
