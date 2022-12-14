@@ -24,7 +24,7 @@ What ultimately motivated me to apply for the Foundry Program was the logical ex
 
 > The [Foundry Program](https://www.getdbt.com/blog/announcing-the-foundry-program/) is an apprenticeship designed to turn data newbies into fully-fledged analytics engineers over the course of six months. As one of the inaugural Foundry apprentices, I’m here to share my journey into analytics engineering along with the takeaways I picked up along the way. We’re continuing to improve the program with each iteration but the curriculum for my cohort was split into two parts—three months of training followed by three months of hands-on work.
 
-### **Getting started**
+### Getting started
 
 So as I got started with the apprenticeship, did my expectations play out into reality? Of course, the answer to that is going to be “yes and no”, but maybe not for reasons you expect.
 
