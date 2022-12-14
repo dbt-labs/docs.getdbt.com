@@ -3,9 +3,8 @@ title: "adapter"
 id: "adapter"
 ---
 
-## Overview
 
-dbt implements database communication using an internal database adapter object (e.g. BaseAdapter, SnowflakeAdapter). The Jinja object `adapter` is a wrapper around this internal database adapter object.
+dbt implements database communication using an internal database adapter object. For example, BaseAdapter and SnowflakeAdapter. The Jinja object `adapter` is a wrapper around this internal database adapter object.
 
 `adapter` grants the ability to invoke adapter methods of that internal class via:
 * `{% do adapter.<method name> %}` -- invoke internal adapter method 
