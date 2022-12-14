@@ -65,19 +65,19 @@ To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP
 - Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/deploy/regions-ip-addresses) on whatever port you configured.
 - Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud:`
     
-    `sudo groupadd dbtcloud`<br></br>
+    `sudo groupadd dbtcloud`<br/>
     
-    `sudo useradd -m -g dbtcloud dbtcloud`
+    `sudo useradd -m -g dbtcloud dbtcloud`<br/>
     
-    `sudo su - dbtcloud`
+    `sudo su - dbtcloud`<br/>
     
-    `mkdir ~/.ssh`
+    `mkdir ~/.ssh`<br/>
     
-    `chmod 700 ~/.ssh`
+    `chmod 700 ~/.ssh`<br/>
     
-    `touch ~/.ssh/authorized_keys`
+    `touch ~/.ssh/authorized_keys`<br/>
     
-    `chmod 600 ~/.ssh/authorized_keys`
+    `chmod 600 ~/.ssh/authorized_keys`<br/>
     
 - Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
 
