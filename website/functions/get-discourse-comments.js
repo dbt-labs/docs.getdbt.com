@@ -47,7 +47,7 @@ async function getDiscourseTopics( event ) {
     // If it does not exist in Discourse, create a new topic
     if(!topicExists) {
 
-        console.log('No topics found. Creating a new topic', postTitleEncoded)
+        console.log('No topics found. Creating a new topic', postTitle)
         
         axios.post(`${discourse_endpoint}/posts`, {
             title: postTitle,

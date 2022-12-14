@@ -9,10 +9,6 @@ export const DiscourseBlogComments = (
     }
   ) => {
   
-    const endpoint = window?.location?.hostname?.includes('localhost')
-    ? `http://localhost:8888/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
-    : '/.netlify/functions/get-discourse-comments'
-  
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true)
     const [isError, setIsError] = useState(false)
@@ -20,8 +16,13 @@ export const DiscourseBlogComments = (
     useEffect(() => {
       let isMounted = true
   
-      async function fetchData() {
+      const fetchData = async () => {
         try {
+
+        const endpoint = window?.location?.hostname?.includes('localhost')
+        ? `http://localhost:8888/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
+        : '/.netlify/functions/get-discourse-comments'
+
           const { data } = await axios.get(endpoint)
   
           // Set error state if data not available
