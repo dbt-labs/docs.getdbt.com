@@ -33,9 +33,9 @@ Let’s have a look at some of the offerings to help you get your spreadsheets i
 
 ## dbt seeds
 
-dbt comes with an inbuilt csv loader ([seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds)) to populate your data warehouse with any files you put inside of your project’s `seeds` folder. It will automatically infer data types from your file’s contents, but you can always override it by [providing explicit instructions in your dbt_project.yml](https://docs.getdbt.com/reference/resource-configs/column_types) file.
+dbt comes with an inbuilt csv loader ([seeds](https://docs.getdbt.com/docs/build/seeds)) to populate your data warehouse with any files you put inside of your project’s `seeds` folder. It will automatically infer data types from your file’s contents, but you can always override it by [providing explicit instructions in your dbt_project.yml](https://docs.getdbt.com/reference/resource-configs/column_types) file.
 
-However, since dbt creates these tables by inserting rows one at a time, it doesn’t perform well at scale (there’s no hard limit but aim for hundreds of rows rather than thousands). [The dbt docs](https://docs.getdbt.com/docs/building-a-dbt-project/seeds#faqs) suggest using seeds for “files that contain business-specific logic, for example, a list of country codes or user IDs of employees.”
+However, since dbt creates these tables by inserting rows one at a time, it doesn’t perform well at scale (there’s no hard limit but aim for hundreds of rows rather than thousands). [The dbt docs](https://docs.getdbt.com/docs/build/seeds#faqs) suggest using seeds for “files that contain business-specific logic, for example, a list of country codes or user IDs of employees.”
 
 A big benefit of using seeds is that your file will be checked into source control, allowing you to easily see when the file was updated and retrieve deleted data if necessary.
 
@@ -123,7 +123,7 @@ I’m a big fan of [Fivetran’s Google Drive connector](https://fivetran.com/do
 
 Like the Google Sheets connector, the data types of the columns are determined automatically. Dates, in particular, are finicky though—if you can control your input data, try to get it into [ISO 8601 format](https://xkcd.com/1179/) to minimize the amount of cleanup you have to do on the other side.
 
-I used two macros in the dbt_utils package ([get_relations_by_pattern](https://github.com/dbt-labs/dbt-utils#get_relations_by_pattern-source) and [union_relations](https://github.com/dbt-labs/dbt-utils#union_relations-source)) to combine weekly exports from other tools into a single [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models) for easy cleanup in a staging model. Make sure you grant your transformer account permission to access all tables in the schema (including future ones) to avoid having to manually intervene after every new file is uploaded.
+I used two macros in the dbt_utils package ([get_relations_by_pattern](https://github.com/dbt-labs/dbt-utils#get_relations_by_pattern-source) and [union_relations](https://github.com/dbt-labs/dbt-utils#union_relations-source)) to combine weekly exports from other tools into a single [model](/docs/build/models) for easy cleanup in a staging model. Make sure you grant your transformer account permission to access all tables in the schema (including future ones) to avoid having to manually intervene after every new file is uploaded.
 
 #### Good fit for:
 
