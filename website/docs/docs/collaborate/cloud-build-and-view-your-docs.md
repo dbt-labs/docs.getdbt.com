@@ -32,7 +32,7 @@ You can also add `dbt docs generate` to the list of commands in the job run step
 
 <TabItem value="run_steps" label="dbt docs generate run step">
 
-- Adding `dbt docs generate` to the list of commands in the job run steps means if the step in your job fails, the job will fail and all subsequent steps will be skipped.  
+- Adding `dbt docs generate` to the list of commands in the job run steps means if that particular step in your job fails, the job will fail and all subsequent steps will be skipped.  
 
 </TabItem>
 
