@@ -21,7 +21,7 @@ One question we hear time and time again is this - what does it look like to pro
 
 When Will posed this question on Slack, it got me thinking about what it would take to create a framework for dbt project maturity.
 <!--truncate-->
-As an analytics engineer on the professional services team at dbt Labs, my teammates and I have had the unique opportunity to work on an unusually high number dbt projects at organizations ranging from tiny startups to Fortune 500 companies and everything in between. From this vantage point, we have gained a unique understanding of the dbt adoption curve - how companies actually implement and expand their usage of dbt.
+As an analytics engineer on the professional services team at dbt Labs, my teammates and I have had the unique opportunity to work on an unusually high number of dbt projects at organizations ranging from tiny startups to Fortune 500 companies and everything in between. From this vantage point, we have gained a unique understanding of the dbt adoption curve - how companies actually implement and expand their usage of dbt.
 
 With every new engagement, we find ourselves working in a project with a unique mix of data challenges. With the explosion in popularity of dbt, and the constant release of new features and capabilities available in the tool, it’s really easy for data teams to go down the rabbit hole of dbt’s shiniest new features before prioritizing the simple ones that will likely be the most immediately impactful to their organization.
 
@@ -107,7 +107,7 @@ We’re going to:
 
 **Project Appearance**
 
-Let's check in on the growth of [our projec](https://github.com/dbt-labs/dbt-project-maturity/tree/main/2-toddlerhood)t. We've broken some of our logic into its own model — our original script had repetitive logic in <Term id="subquery">subqueries</Term>, now it's following a key principle of analytics engineering: <Term id="dry">Don't Repeat Yourself (DRY)</Term>. For more information on how to refactor your SQL queries for Modularity - check out our [free on-demand course](https://courses.getdbt.com/courses/refactoring-sql-for-modularity).
+Let's check in on the growth of [our project](https://github.com/dbt-labs/dbt-project-maturity/tree/main/2-toddlerhood). We've broken some of our logic into its own model — our original script had repetitive logic in <Term id="subquery">subqueries</Term>, now it's following a key principle of analytics engineering: <Term id="dry">Don't Repeat Yourself (DRY)</Term>. For more information on how to refactor your SQL queries for Modularity - check out our [free on-demand course](https://courses.getdbt.com/courses/refactoring-sql-for-modularity).
 
 We also added our first [YML files](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/). Here, we have one yml file to [configure our sources](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/source.yml), and one one yml file to [describe our models](https://github.com/dbt-labs/dbt-project-maturity/blob/main/2-toddlerhood/models/schema.yml). We're just starting with basic declarations of our sources, <Term id="primary-key" /> testing using dbt built in tests, and a model-level description -- these are the first steps of a project just learning to walk!
 
@@ -131,7 +131,9 @@ Leveling up from infant to toddler is a huge jump in terms of feature completene
 
 **Themes and Goals**
 
-We made a huge jump in our feature completeness in the last stage - now it’s time to think about getting the project ready to be used by multiple developers and even deployed into production. The best way to ensure consistency as we start collaborating is to define standards for how we write code and model data then enforce them in the review process. From the data team's perspective, we shouldn't be able to infer who wrote what line of code because one of our teammates uses the dreaded leading comma. Analytics code is an asset, and should be treated as production grade software. Project Appearance
+We made a huge jump in our feature completeness in the last stage - now it’s time to think about getting the project ready to be used by multiple developers and even deployed into production. The best way to ensure consistency as we start collaborating is to define standards for how we write code and model data then enforce them in the review process. From the data team's perspective, we shouldn't be able to infer who wrote what line of code because one of our teammates uses the dreaded leading comma. Analytics code is an asset, and should be treated as production grade software. 
+
+**Project Appearance**
 
 We've added project-level documentation to [our repo](https://github.com/dbt-labs/dbt-project-maturity/tree/main/3-childhood) for developers to review as they get started in this project. This generally includes:
 
@@ -141,7 +143,7 @@ We've added project-level documentation to [our repo](https://github.com/dbt-lab
 
 3. A [pull request template](https://github.com/dbt-labs/dbt-project-maturity/blob/main/3-childhood/.github/pull_request_template.md) to make sure we're checking new code against these guidelines every time we want to add new modeling work!
 
-Let's look at our models — we went from a eary stage DAG, starting to get a feel for modularity, to a clean, standardized and logically organized DAG — we can now see logical layers of modeling that correspond the file tree structure we saw before — we can even see the model naming conventions lining up with these layers (stg, int, fct). Defining the standards in how we organize our models in our project level has resulted in a cleaner, easier to understand DAG too!
+Let's look at our models — we went from a early stage DAG, starting to get a feel for modularity, to a clean, standardized and logically organized DAG — we can now see logical layers of modeling that correspond to the file tree structure we saw before — we can even see the model naming conventions lining up with these layers (stg, int, fct). Defining the standards in how we organize our models in our project level has resulted in a cleaner, easier to understand DAG too!
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_6.png)
 
@@ -167,7 +169,7 @@ I want to also call out that a "feature" to introduce at this stage is engagemen
 
 **Project Appearance**
 
-We can see the major development at [this stage](https://github.com/dbt-labs/dbt-project-maturity/tree/main/4-adolescence) is adding additional models that make our original claims report a lot more flexible -- we had only shown our users a subset of patient and doctor information in our fact model. Now, we have a more Kimball-ish-style marts set up, and we can leave selecting the dimensions up to our BI tool.
+We can see the major development at [this stage](https://github.com/dbt-labs/dbt-project-maturity/tree/main/4-adolescence) is adding additional models that make our original claims report a lot more flexible -- we had only shown our users a subset of patient and doctor information in our fact model. Now, we have a more Kimball-ish-style marts setup, and we can leave selecting the dimensions up to our BI tool.
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_8.png)
 
@@ -183,7 +185,9 @@ We've spent this level focused on deepening and optimizing our feature set — w
 
 * Advanced use of metadata
 
-![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_9.png)Themes and Goals
+![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_9.png)
+
+**Themes and Goals**
 
 In adulthood, we're turning our gaze even further inward. Our dbt project itself is independent enough to start asking itself the big questions! What does it mean to be a dbt project in the year 2021? How have I been changing? How am I relating to my peers?
 
