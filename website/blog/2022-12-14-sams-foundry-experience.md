@@ -1,5 +1,5 @@
 ---
-title: "Making the leap from account to analytics engineer"
+title: "Making the leap from accountant to analytics engineer"
 description: "The Foundry Program is an apprenticeship at dbt Labs designed to turn data newbies into fully-fledged analytics engineers over the course of six months. As one of the inaugural foundry apprentices, Sam shares his journey into the practice of analytics engineering."
 slug: sam-foundry-experience
 
