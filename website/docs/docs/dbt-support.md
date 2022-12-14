@@ -30,7 +30,7 @@ Types of dbt Cloud-related questions our Support team can assist you with, regar
 
 ### dbt Cloud Enterprise accounts
 
-For customers on a dbt Cloud Enterprise plan, we **also** offer assistance in troubleshooting issues with your dbt Project.  While this 
+For customers on a dbt Cloud Enterprise plan, we **also** offer basic assistance in troubleshooting issues with your dbt Project.  
 - **Something isn't working the way I would expect it to...**
     - in a macro I created...
     - in an incremental model I'm building...
@@ -49,4 +49,4 @@ Types of questions you should ask your Solutions Architect and Sales Director:
 - It is time for our contract renewal, what options do I have?
 
 
-When you need help writing SQL or want someone to actually help build your dbt Project, check out our list of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/) or our [Services](https://www.fishtownanalytics.com/professional-services/) page!
+When you need help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt Project, check out our list of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/) or our [Services](https://www.fishtownanalytics.com/professional-services/) page!
