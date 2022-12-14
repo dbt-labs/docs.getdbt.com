@@ -114,7 +114,7 @@ sources:
 
 </File>
 
-The value of the `schema` parameter will be resolved by the Jinja compiler prior to dbt reading the `.yml` file itself. For information on the `target` environment variable, check out [this document](https://docs.getdbt.com/reference/dbt-jinja-functions/target/).
+The value of the `schema` parameter will be resolved by the Jinja compiler prior to dbt reading the `.yml` file itself. For information on the `target` environment variable, check out [this document](/reference/dbt-jinja-functions/target).
 
 ## Related documentation
 You can find an exhaustive list of each property for a resource in the following docs:
