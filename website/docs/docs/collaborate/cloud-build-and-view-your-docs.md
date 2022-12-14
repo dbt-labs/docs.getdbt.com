@@ -19,20 +19,20 @@ To set up a job to generate docs:
 
 4. Click **Save**. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.
 
-You can also include `dbt docs generate` to the list of commands in the job run steps. There are different outcomes when you configure a job using the **Generate docs on run** selection or when you add the command to the run steps.  
+You can also add `dbt docs generate` to the list of commands in the job run steps. Expect different outcomes and behaviors when you configure a job using the **Generate docs on run** selection, compared to when you add the command to the run steps.  
 
 <!-- tabs for runs teps and command -->
 <Tabs>
 
 <TabItem value="checkbox" label="Generate docs on run checkbox">
 
-Selecting **Generate docs on run** indicates that if run step in your job fails, the job can still be successful.
+Selecting **Generate docs on run** means if the step your job fails, the job can still be successful. 
 
 </TabItem>
 
 <TabItem value="run_steps" label="`dbt docs generate` job run step">
 
-If you add dbt docs generate to the list of commands and the step fails, this means the job will fail and all subsequent steps will be skipped.  
+Adding `dbt docs generate` to the list of commands in the job run steps means if the the step in your job fails, the job will fail and all subsequent steps will be skipped.  
 
 </TabItem>
 
