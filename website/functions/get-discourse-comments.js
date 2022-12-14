@@ -1,19 +1,18 @@
 const axios = require('axios')
 
+const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
+const DEVBLOG_URL = 'https://docs.getdbt.com/blog/'
+
+// Set API endpoint and headers
+let discourse_endpoint = `https://discourse.getdbt.com`
+let headers = {
+  'Accept': 'application/json',
+  'Api-Key': DISCOURSE_DEVBLOG_API_KEY,
+  'Api-Username': DISCOURSE_USER_SYSTEM,
+}    
+
+
 async function getDiscourseTopics( event ) {
-  const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
-
-  const DEVBLOG_URL = 'https://docs.getdbt.com/blog/'
-
-  // Set API endpoint and headers
-  let discourse_endpoint = `https://discourse.getdbt.com`
-  let headers = {
-    'Accept': 'application/json',
-    'Api-Key': DISCOURSE_DEVBLOG_API_KEY,
-    'Api-Username': DISCOURSE_USER_SYSTEM,
-  }    
-
-
 
   try {
 
@@ -23,11 +22,13 @@ async function getDiscourseTopics( event ) {
 
     if(!postTitle) throw new Error('Unable to query Discourse API.')
 
-    // Check if we have a topic from Discourse that matches the dev blog post title
-    let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${postTitleEncoded}&in:title`, { headers })
+    let topics = await searchDiscourseTopics(postTitleEncoded)
+    
     let allTopics = topics
     let allTopicTitles = []
     let topicExists = false
+    
+    let topicId
 
     // Return all the topic titles from Discourse
     if(topics && topics.length > 0 ) {
@@ -47,42 +48,61 @@ async function getDiscourseTopics( event ) {
 
     // If it does not exist in Discourse, create a new topic
     if(!topicExists) {
-
-        console.log('No topics found. Creating a new topic', postTitle)
-        
-        axios.post(`${discourse_endpoint}/posts`, {
-            title: postTitle,
-            raw: `This is a companion discussion topic for the original entry at ${DEVBLOG_URL}${postSlug}`,
-            category: 2
-        }, { headers })
-
-        return await returnResponse(200, { message: 'No topics found. Creating a new topic in Discourse.' })
+        createDiscourseTopic(postTitle, postSlug)
+    
+        return await returnResponse(200, { comments: [] })
 
     } else {
         // Else return the posts for that specific topic
-        let topicId 
-        
-        // set topicId to the result from allTopics that matches the postTitle
+
+        // Set topicId to the result from allTopics that matches the postTitle
         allTopics.forEach(topic => {
             if(topic.title === postTitle) {
                 topicId = topic.id
             }
         })
 
-        console.log(`Topic found setting topic id - ${topicId}`,)
-
-        // Get the comments for the specific topic via the topicId
-        let { data: { post_stream } } = await axios.get(`${discourse_endpoint}/t/${topicId}.json`, { headers })
+        let comments = await getDiscourseTopicbyID(topicId)
         
         // Return comments
-        return await returnResponse(200, post_stream.posts)
+        return await returnResponse(200, comments)
     }
 
   } catch(err) {
-    // Log and return the error
     console.log('err', err)
     return await returnResponse(500, { error: 'Unable to get topics from Discourse.'})
   }
+}
+
+async function createDiscourseTopic(title, slug) {
+    console.log(`No topics found. Creating a new topic in Discourse - ${title}`)
+
+    try  {
+        axios.post(`${discourse_endpoint}/posts`, {
+            title: title,
+            raw: `This is a companion discussion topic for the original entry at ${DEVBLOG_URL}${slug}`,
+            category: 2
+        }, { headers })
+    
+    } catch(err) {
+        console.log('err', err)
+        return await returnResponse(500, { error: 'Unable to create Discourse topic.'})
+    }
+
+}
+
+async function getDiscourseTopicbyID(topicId) {
+    console.log(`Topic found setting topic id - ${topicId}`)
+
+    let { data: { post_stream } } = await axios.get(`${discourse_endpoint}/t/${topicId}.json`, { headers })
+    return post_stream.posts
+}
+
+async function searchDiscourseTopics(title) {
+    console.log(`Searching for topic in Discourse - ${title}`)
+
+    let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${title}&in:title`, { headers })
+    return topics
 }
 
 async function returnResponse(status, res) {
