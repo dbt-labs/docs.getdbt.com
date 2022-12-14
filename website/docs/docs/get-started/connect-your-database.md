@@ -81,7 +81,7 @@ To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP
     
 - Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
 
-With the Bastion EC2 instance in place, and the user properly configured, you should be able to successfully connect to the Redshift environment.
+The Bastion server should now be ready for dbt Cloud to use as a tunnel into the Redshift environment.
 
 ## Connecting to Snowflake
 
