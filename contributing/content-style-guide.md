@@ -30,7 +30,16 @@ The right-hand TOC is created automatically when you add headings to a page.
 
 ## Filenaming
 
-If you are adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository, it must be named following our naming conventions. MORE TO ADD
+If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository, review the following file name guidance and examples: 
+
+- Keep the file name as short as possible since it becomes part of the URL and leave out any unnecessary words. Long URLs are hard to read and prone to errors.
+- Think about where you want to locate the file in the leftbar. This will help catch and avoid redundancy. Remain consistent with the surrounding leftbar items.
+- Be as descriptive as possible so readers have an idea as to what they’re about to read.
+
+| ✅ User | ❌ Avoid|
+|:-------:|:-------:|
+|`/docs/deploy/architecture` | `/docs/deploy/about-architecture`|
+
 
 ## Using Markdown
 
@@ -49,7 +58,7 @@ docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markd
 | Link - topic in different folder            | `[Title](/folder/file-name) without file extension` |
 | Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`                     |
 | Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`           |
-| Image                                       | `<Lightbox src="/img/docs/<image-name>.png" title="Concise description of image"/>`      |
+| Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" title="Concise description of image"/>`      |
 
 ## Callouts
 
