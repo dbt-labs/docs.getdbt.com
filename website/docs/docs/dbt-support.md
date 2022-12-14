@@ -49,4 +49,4 @@ Types of questions you should ask your Solutions Architect and Sales Director:
 - It is time for our contract renewal, what options do I have?
 
 
-When you need help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt Project, check out our list of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/) or our [Services](https://www.fishtownanalytics.com/professional-services/) page!
+When you need help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt project, check out our list of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/) or our [Services](https://www.getdbt.com/dbt-labs/services/) page!
