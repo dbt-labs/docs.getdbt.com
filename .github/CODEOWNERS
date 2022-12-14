@@ -1,27 +1,20 @@
 # Lower entries on this list take precedence
 
 # Anything unmatched by selectors below
-*                                     @runleonarun
+*      @dbt-labs/product-docs
 
-# Cloud docs and images are assigned to Leona
-/website/docs/docs/dbt-cloud/dbt-cloud-changelog.md    @runleonarun 
-/website/docs/docs/dbt-cloud/                          @runleonarun 
-/website/src/pages/dbt-cloud/                          @runleonarun 
-/website/static/img/docs/dbt-cloud/                    @runleonarun 
-
-# Blog content assigned to Developer experience team
-/website/blog/                       @runleonarun
-
+# The blog 
+/website/blog @KiraFuruichi
 
 
 # Adapter & Package Development Docs
-/website/docs/docs/supported-data-platforms.md/                       @runleonarun @dataders
-/website/docs/reference/warehouse-profiles/                     @runleonarun @dataders
-/website/docs/reference/resource-configs/                       @runleonarun @dataders
-/website/docs/guides/building-packages                          @runleonarun @amychen1776 @dataders @dbeatty10
-/website/docs/contributing/building-a-new-adapter               @runleonarun @dataders @dbeatty10
-/website/docs/contributing/testing-a-new-adapter                @runleonarun @dataders @dbeatty10
-/website/docs/guides/creating-new-materializations              @runleonarun @dataders @dbeatty10
-/website/docs/docs/dbt-cloud/cloud-configuring-dbt-cloud/       @runleonarun @dataders @dbeatty10
+/website/docs/docs/supported-data-platforms.md                @dbt-labs/product-docs @dataders
+/website/docs/reference/warehouse-setups                      @dbt-labs/product-docs @dataders
+# `resource-configs` contains more than just warehouse setups
+/website/docs/reference/resource-configs/*-configs.md           @dbt-labs/product-docs @dataders
+/website/docs/guides/advanced/adapter-development              @dbt-labs/product-docs @dataders @dbeatty10
+
+/website/docs/guides/building-packages                          @dbt-labs/product-docs @amychen1776 @dataders @dbeatty10
+/website/docs/guides/creating-new-materializations              @dbt-labs/product-docs @dataders @dbeatty10
 
 
