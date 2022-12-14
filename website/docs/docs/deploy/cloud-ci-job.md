@@ -183,3 +183,41 @@ Double-check that your PR isn't trying to merge using a commit that belongs to a
     </div>
   </div>
 </details>
+
+
+### Limitation on temporary PR schemas
+
+If your temporary PR schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
+
+<details>
+  <summary>You used dbt Cloud environment variables in your connection settings page </summary>
+  <div>
+    <div>To resolve this, remove environment variables in your <a href="https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables">connections settings</a>.</div>
+  </div>
+</details>
+<details>
+  <summary>You have an empty/blank default schema</summary>
+  <div>
+    <div>To change this, edit and fill in your default schema.</div>
+  </div>
+</details>
+<details>
+  <summary>You have overridden the <code>generate_schema_name</code> macro</summary>
+  <div>
+    <div>To resolve this, change your macro so that the temporary PR schema name contains the default prefix and review the guidance below:
+    <br></br>
+      • ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>) <br></br>
+      • ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
+    </div>
+  </div>
+</details>
+<details>
+  <summary>You have overridden the <code>generate_database_name</code> macro</summary>
+  <div>
+    <div>If you assume that the project's default connection is to a database named <code>analytics</code>, review the guidance below to resolve this:
+      <br></br>
+       • ✅ Database remains the same as the connection default (like <code>analytics</code>) <br></br>
+       • ❌ Database has changed from the default connection (like <code>dev</code>). <br></br>
+    </div>
+  </div>
+</details>
