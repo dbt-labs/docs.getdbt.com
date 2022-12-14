@@ -20,7 +20,7 @@ Configuring incremental strategy: The incremental strategy config can either be 
 
 **`The append Stratagy`** (default): 
 
-Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the is_incremental() conditional block. 
+Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block. 
 
 How can I run the Append incremental strategy?
 
@@ -64,7 +64,7 @@ insert into "VMart"."public"."append_data" ("id", "name", "some_date")
 
 **`The merge strategy`**:
 
- Match records based on a unique_key; update old records, insert new ones. (If no unique_key is specified, all new data is inserted, similar to append.) 
+ Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to append.) 
 
 How can I run the Merge incremental strategy? 
 
@@ -108,7 +108,7 @@ values(  DBT_INTERNAL_SOURCE."id", DBT_INTERNAL_SOURCE."name", DBT_INTERNAL_SOUR
 
 **`The delete+insert strategy`**: 
 
-Through the delete+insert incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured is_incremental() block and re-insert them. Like the other materializations built into dbt, incremental models are defined with select statements, with the materialization defined in a config block.
+Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and re-insert them. Like the other materializations built into dbt, incremental models are defined with select statements, with the materialization defined in a config block.
 
 How can I run the delete+insert incremental strategy? 
 
@@ -146,7 +146,7 @@ insert into "VMart"."public"."delete" ("id", "name", "some_date")
 
 **`The insert_overwrite strategy`**: 
 
-If partition_by is specified, overwrite partitions in the table with new data. If 	no partition_by is specified, overwrite the entire table with new data. 
+If `partition_by` is specified, overwrite partitions in the table with new data. If 	no `partition_by` is specified, overwrite the entire table with new data. 
 
 <Tabs
   defaultValue="source"
@@ -186,7 +186,7 @@ insert into "VMart"."public"."delete" ("id", "name", "some_date")
 
  **`Order-By clause`** – 
 
- Invalid for external tables, specifies columns from the SELECT list on which to sort the super projection that is automatically created for this table. The ORDER BY clause cannot include qualifiers ASC or DESC. Vertica always stores projection data in ascending sort order. If you omit the ORDER BY clause, Vertica uses the SELECT list order as the projection sort order. 
+ Invalid for external tables, specifies columns from the `SELECT` list on which to sort the super projection that is automatically created for this table. The `ORDER BY` clause cannot include qualifiers ASC.  Vertica always stores projection data in ascending sort order. If you omit the `ORDER BY`clause, Vertica uses the `SELECT` list order as the projection sort order. 
 
 How can I run the Order_by for table materialization? 
 
@@ -222,7 +222,7 @@ create  table  "VMart"."public"."order_s__dbt_tmp" as
 
 **`segmentation clause`** – 
 
-Invalid for external tables, specifies how to distribute data for auto-projections of this table. Supply one of the following clauses: hash‑segmentation‑clause: Specifies to segment data evenly and distribute across cluster nodes. Vertica recommends segmenting large tables. Unsegmented‑clause: Specifies to create an unsegmented projection. If this clause is omitted, Vertica generates auto-projections with default hash segmentation.  
+Invalid for external tables, specifies how to distribute data for `auto-projections` of this table. Supply one of the following clauses: `hash‑segmentation‑clause`: Specifies to segment data evenly and distribute across cluster nodes. Vertica recommends segmenting large tables. `Unsegmented‑clause`: Specifies to create an unsegmented projection. If this clause is omitted, Vertica generates `auto-projections` with default hash segmentation.  
 
 Segmentation is further classified as: 
 
@@ -302,7 +302,7 @@ segmented by product_key  ALL NODES;
 
 **`Partition Clause`** - 
 
-Invalid for external tables, logically divides table data storage through a PARTITION BY clause. Partition clause are further classified as: 
+Invalid for external tables, logically divides table data storage through a `PARTITION BY` clause. Partition clause are further classified as: 
 
 **`partition_by_string`** : 
 
@@ -429,7 +429,7 @@ create  table "VMart"."public"."test_partition__dbt_tmp" as
 
 **`KSafe`** - 
 
-Invalid for external tables, specifies K-safety of auto-projections created for this table, where k num must be equal to or greater than system K safety. If you omit this option, the projection uses the system K-safety level. 
+Invalid for external tables, specifies `K-safety` of auto-projections created for this table, where k num must be equal to or greater than system K safety. If you omit this option, the projection uses the system `K-safety` level. 
 
   How can I run the KSafe? 
 
