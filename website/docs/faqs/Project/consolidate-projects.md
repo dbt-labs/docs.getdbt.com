@@ -16,7 +16,7 @@ If you have multiple projects that contain production-worthy code, there are rar
 
 Reference the [merge git commands](https://gist.github.com/msrose/2feacb303035d11d2d05) to help complete the migration plan. Using the commands will help retain git commit history, but you might result in duplicate folders called `models`, `tests`, etc. You will most likely still have to move files around manually.
 
-Another option would be to use an external code editor (for example, VS Code) to move and files from the `Smaller Subset Project` to the `Main Project`. This is what internal dbt Labs experts recommend to stay informed about what comes over to the main project and also allows you to be more aware of the incoming files, with the ability to make any minor tweaks to folder hierarchy that you might want to do at the same time.
+Another option would be to use an external code editor (for example, VS Code) to move files from the `Smaller Subset Project` to the `Main Project`. This is what internal dbt Labs experts recommend to stay informed about what comes over to the main project and also allows you to be more aware of the incoming files, with the ability to make any minor tweaks to folder hierarchy that you might want to do at the same time.
 
 ### Manual migration with multiple browser tabs
 
