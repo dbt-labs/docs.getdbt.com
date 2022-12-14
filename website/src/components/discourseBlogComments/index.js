@@ -4,7 +4,6 @@ import axios from 'axios'
 
 export const DiscourseBlogComments = (
     {
-      topic_id,
       title,
       slug
     }
@@ -34,8 +33,6 @@ export const DiscourseBlogComments = (
             setLoading(false)
           }
   
-          
-          console.log(data)
         } catch(err) {
           setIsError(true)
           setLoading(false)
