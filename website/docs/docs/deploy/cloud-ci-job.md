@@ -77,7 +77,7 @@ dbt build --select state:modified+
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](understanding-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
 
 #### Using a webhook trigger
 
@@ -200,3 +200,9 @@ fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
 ```
 
 Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
+
+### CI job not triggering for Virtual Private dbt users ###
+
+To trigger jobs on dbt Cloud using the [API](/docs/dbt-cloud-apis/admin-cloud-api), your Git provider needs to connect to your dbt Cloud account.  
+
+If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently. 

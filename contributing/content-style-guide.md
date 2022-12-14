@@ -324,6 +324,43 @@ Use active voice instead of passive. Active voice is clearer and more direct, ma
 
 ❌ Avoid: The documentation is written by contributors.
 
+### Active voice
+
+Use the active voice most of the time. Use the passive voice sparingly. 
+
+- Passive voice: _Files are added by developers._
+- Active voice: _Developers add files._
+
+Active voice provides the following advantages:
+
+- Active voice is generally shorter than passive voice.
+- Active voice is easier for users to understand and often results in shorter content.
+- Most readers mentally convert passive voice to active voice. Why subjects readers to extra processing time? By sticking to active voice, you enable readers to skip the preprocessor stage and go straight to compilation.
+- Passive voice confuses your ideas and reports action indirectly.
+- Some passive voice sentences omit an actor altogether, which forces the reader to guess the actor's identity.
+
+
+Sometimes, using passive voice is appropriate. Make sure it’s an intentional choice that communicates the idea clearer than active voice would. For example, when the system is the actor, rather than a person.
+
+
+✅ Use |	❌ Avoid
+--- | ---|
+(Active voice) Ask someone with access to dbt Cloud to transform the data. | This data transformation can be done by someone with access to dbt Cloud. |
+(Passive voice &mdash; exceptions) The open-sourced rpc plugin is used by the Cloud IDE to recompile changes made in your project. |  We are using the open-sourced rpc plugin for the Cloud IDE to recompile changes made in your project. |
+
+### Spelling
+
+In general, when the spelling of English words varies by locale &mdash; use the US spelling. For example:
+
+✅ Use | ❌ Avoid
+-- | --
+standardize  | standardise 
+license | licence
+color | colour
+</div></b>
+
+Avoid regional idiomatic phrases as well.  For example, a common saying amongst English speakers in India is "do the needful," but this phrase may be unrecognizable to English speakers from other regions. 
+
 ### Abbreviations
 
 According to The American Heritage Dictionary, an abbreviation is "[a] shortened form of a word or phrase used chiefly in writing to represent the complete form" but, unlike the acronym, it's letters aren't pronounced together as one full word.
@@ -348,7 +385,6 @@ Some common Latin abbreviations and other words to use instead:
 | i.e.               |  that is    | Use incremental models when your dbt runs are becoming too slow (that is, don't start with incremental models) |
 | e.g.               | <ul><li>for example</li><li>like</li></ul> | <ul><li>Join both the dedicated #adapter-ecosystem channel in dbt Slack and the channel for your adapter's data store (for example, #db-sqlserver and #db-athena)</li><li>Using Jinja in SQL provides a way to use control structures (like `if` statements and `for` loops) in your queries </li></ul> |
 | etc.               | <ul><li>and more</li><li>and so forth</li></ul> | <ul><li>A continuous integration environment running pull requests in GitHub, GitLab, and more</li><li>While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, and so forth), you might need to override one or more macros when building a new adapter</li></ul> |
-
 
 ### Prepositions
 

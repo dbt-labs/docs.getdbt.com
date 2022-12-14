@@ -116,7 +116,7 @@ Now that you've set up your development environment and credentails, you should 
 | 6. | Preview <br></br>Compile <br></br>Build |  This is where you can preview, compile or build your dbt project, as well as see the results and the DAG. |
 | 7. | Lineage tab | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. You can access files in the **Lineage** tab by double-clicking on a particular model. Expand the DAG into fullscreen to view the DAG view differently. Note: The default view is `+model+`, however, you can change it to `2+model+2`. |
 | 8. | Change branches and view documentation | Change branches in fewer clicks and focus on developing. You can generate and view your [documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.|
-| 9. | File state indicators | The file state indicators will indicate and track any action or changed made in your project. The indicators **M, U, and  •** appear to the right of your file or folder name, and also under the **Changes** section. |
+| 9. | File state indicators | The file state indicators will indicate and track any action or change in your project. The indicators **M, D, A, and  •** appear to the right of your file or folder name, and also appear under the **Changes** section. |
 | 10. | Format button | This is where you can format your dbt project code. The new **Format** button formats your file and is powered by [sqlfmt](http://sqlfmt.com/).|
 
 ## Build, compile, and run projects
@@ -162,7 +162,7 @@ You can view the latest version of your documentation rendered in a new browser 
 <details>
   <summary>Can I be a contributor to dbt Cloud?</summary>
   <div>
-    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/docs/contributing/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
+    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
   </div>
 </details>
 <details>
