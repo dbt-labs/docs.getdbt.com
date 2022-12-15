@@ -25,7 +25,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
           if(!data) throw new Error('Unable to get latest topics.')
   
           // Set topics count
-          if(isMounted) {
+          if(isMounted && data) {
             setComments(data.comments)
             setTopicId(data.topicId)
             setLoading(false)
@@ -45,7 +45,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
         isMounted = false
       }
       
-    }, [])
+    }, [topicId])
 
     console.log(topicId)
     console.log('comments', comments)
