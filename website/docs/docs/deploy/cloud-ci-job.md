@@ -144,7 +144,7 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
    <summary>Error messages that refer to schemas from previous PRs</summary>
    <div>
-      <div>If you receive a schema-related error message referencing a *previous* PR, this is usually an indicator that you are not using a production job for your deferral and are instead using *self*.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br><br></br>
+      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br><br></br>
       
       To fix this issue, select a production job run to defer to instead of self.
       </div>
