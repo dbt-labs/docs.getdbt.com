@@ -25,7 +25,7 @@ async function getDiscourseComments( event ) {
     let allTopicTitles = []
     let topicExists = false
     
-    let topicId
+    let topicId = null
     let comments = []
 
     // Return all the topic titles from Discourse
