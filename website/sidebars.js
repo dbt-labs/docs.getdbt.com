@@ -941,6 +941,13 @@ guides: [
         slug: "/sql-reference",
       },
       items: [
+      {
+          type: "category",
+          label: "Statements",
+          items: [
+            "sql-reference/statements/select",
+          ],
+        },
         {
           type: "category",
           label: "Aggregate Functions",
