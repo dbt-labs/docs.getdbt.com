@@ -9,7 +9,7 @@ slug: /sql-reference/where
     <title>Working with the SQL WHERE clause</title>
 </head>
 
-If the humble SELECT statement is an analytics engineer kitchen knife, the WHERE clause is the corresponding knife sharpener: no (good) cooking (or data) is happening without it.
+If the humble [SELECT statement](/sql-reference/select) is an analytics engineer kitchen knife, the WHERE clause is the corresponding knife sharpener: no (good) cooking (or data) is happening without it.
 
 The WHERE clause is a fundamental SQL statement—it allows you to appropriately filter your data models and queries, so you can create datasets that make sense and look at specific subsets of data based on your requirements.
 
