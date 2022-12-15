@@ -41,7 +41,7 @@
     "url-loader": "^4.1.1"
   },
   "optionalDependencies": {
-    "@dbt-labs/react-dbt-dag": "0.7.10"
+    "@dbt-labs/react-dbt-dag": "0.7.14"
   },
   "devDependencies": {
     "@swc/core": "^1.2.174",
