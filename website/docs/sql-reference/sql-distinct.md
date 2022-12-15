@@ -9,7 +9,7 @@ slug: /sql-reference/distinct
     <title>Working with the SQL DISTINCT</title>
 </head>
 
-Let’s just put it out there: at one point in your data work, you’ll encounter duplicates in your data. They may be introduced from a faulty data source (less likely) or created during the joining and transforming of data (more likely). You may need a more sophisticated or refactored solution for the latter scenario, but it never hurts to know how to use DISTINCT in a query.
+Let’s just put it out there: at one point in your data work, you’ll encounter duplicates in your data. They may be introduced from a faulty data source or created during the joining and transforming of data. You may need a more sophisticated or refactored solution for the latter scenario, but it never hurts to know how to use DISTINCT in a query.
 
 Using DISTINCT in a SELECT statement will force a query to only return non-duplicate rows. You may commonly see a DISTINCT clause in COUNT functions to get counts of distinct rows.
 
