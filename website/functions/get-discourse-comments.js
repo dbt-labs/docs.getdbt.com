@@ -11,11 +11,8 @@ let headers = {
   'Api-Username': DISCOURSE_USER_SYSTEM,
 }    
 
-
 async function getDiscourseComments( event ) {
-
   try {
-
     let postTitle = event.queryStringParameters.title.trim()
     let postSlug = event.queryStringParameters.slug
     let postTitleEncoded = encodeURIComponent(postTitle)
@@ -44,15 +41,26 @@ async function getDiscourseComments( event ) {
 
     console.log('topicExists', topicExists)
 
-    console.log('allTopics', allTopicTitles)
-
-
     // If it does not exist in Discourse, create a new topic
     if(!topicExists) {
         createDiscourseTopic(postTitle, postSlug)
-    
-        return await returnResponse(200, { comments: [] })
 
+        // Once the topic is created, search for the topic again
+        topics = await searchDiscourseTopics(postTitleEncoded)
+
+        if(topics && topics.length > 0 ) {
+            topicId = await getTopicId(topics, postTitle)
+        }
+
+        comments = await getDiscourseTopicbyID(topicId)
+     
+        // Remove the the first post of the comments array since it is not a comment
+        if (comments.length) {
+            comments.shift()
+            comments = { topicId, comments }
+        }
+
+        return await returnResponse(200, comments)
     } else {
         // Else return the posts for that specific topic
         // Set topicId to the result from allTopics that matches the postTitle
@@ -63,9 +71,9 @@ async function getDiscourseComments( event ) {
         // Remove the the first post of the comments array since it is not a comment
         if (comments.length) {
             comments.shift()
+            comments = { topicId, comments }
         }
-        
-        // Return comments
+
         return await returnResponse(200, comments)
     }
 
