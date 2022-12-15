@@ -370,3 +370,10 @@ wasila_quader:
    description: After a winding road through healthcare spreadsheets and data science projects, Wasila discovered analytics engineering as an apprentice of dbt Labs' Foundry Program. She now works as an analytics engineer on dbt Labs' professional services team.
    organization: dbt Labs
    image_url: /img/blog/authors/wasila-quader.png
+
+sam_harting:
+   name: Samuel Harting
+   job_title: Associate Analytics Engineer
+   description: Sam is a graduate of the inaugural Foundry Program. When Sam isn't helping clients build out their project, he is usually playing video games or making bad jokes to his friends, family, and coworkers.
+   organization: dbt Labs
+   image_url: /img/blog/authors/sam-harting.png
