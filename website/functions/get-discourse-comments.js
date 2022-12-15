@@ -62,7 +62,6 @@ async function getDiscourseComments( event ) {
 
         return await returnResponse(200, comments)
     } else {
-        // Else return the posts for that specific topic
         // Set topicId to the result from allTopics that matches the postTitle
         topicId = await getTopicId(allTopics, postTitle)
 
@@ -104,7 +103,6 @@ async function getDiscourseTopicbyID(topicId) {
 
     try {
         let { data: { post_stream } } = await axios.get(`${discourse_endpoint}/t/${topicId}.json`, { headers })
-
         return post_stream.posts
     } catch(err) {
         console.log('err', err)
@@ -117,7 +115,6 @@ async function searchDiscourseTopics(title) {
 
     try {
         let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${title}&in:title`, { headers })
-
         return topics
     } catch(err) {
         console.log('err', err)

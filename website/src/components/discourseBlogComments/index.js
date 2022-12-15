@@ -66,7 +66,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
         return (
           <div>
             <p data-testid='no-comments-text'>No recent comments.</p>
-            <a href={discourseTopicURL} target='_blank' className='button button--primary'>Start a discussion</a>
+            <a href={discourseTopicURL} target="_blank" rel="noopener noreferrer" className='button button--primary'>Start a discussion</a>
           </div>
         )
       } else {
