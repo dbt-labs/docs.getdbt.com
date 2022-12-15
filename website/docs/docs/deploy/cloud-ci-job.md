@@ -27,7 +27,7 @@ If you previously configured your dbt project by providing a generic git URL tha
 :::
 
 ## Understanding dbt Cloud Slim CI
-When a [dbt Cloud CI job is set up](/docs/deploy/cloud-ci-job#configuring-a-dbt-cloud-ci-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. Crucially, this run will build into a temporary schema using the prefix `dbt_cloud_pr_`. This schema isolation acts as a quasi-staging environment, so that you can see the builds resulting from the code associated with the PR's commit sha. The unique schema name can be found in the run details for the given run, as shown below.
+When a [dbt Cloud CI job is set up](/docs/deploy/cloud-ci-job#configuring-a-dbt-cloud-ci-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. Crucially, this run will build into a temporary schema using the prefix `dbt_cloud_pr_`. This schema isolation acts as a quasi-staging environment, so that you can see the builds resulting from the code associated with the PR's commit. The unique schema name can be found in the run details for the given run, as shown below.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
