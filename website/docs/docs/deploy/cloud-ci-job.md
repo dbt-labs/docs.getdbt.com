@@ -140,8 +140,6 @@ Make the necessary changes to your project and double-check if the temporary PR 
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" alt="Configure repo"/><br></br>
 
    Select the <b>GitHub</b>, <b>GitLab</b>, or <b>AzureDevOps</b> tab and reselect your repository. That should complete the setup of the project and enable you to set up a dbt Cloud CI job.
-
-   </div>
   </div>
 </details>
 <details>
