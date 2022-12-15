@@ -21,7 +21,7 @@ Optionally specify a custom list of directories to copy to the `target` director
 </Changelog>
 
 ## Default
-By default, dbt will not compile any additional files as part of `docs generate`, i.e. `asset-paths: []`
+By default, dbt will not copy any additional files as part of docs generate (for example `asset-paths: []`). 
 
 ## Examples
 ### Compile files in the `assets` subdirectory as part of `docs generate`
