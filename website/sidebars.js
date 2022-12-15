@@ -941,12 +941,10 @@ guides: [
         slug: "/sql-reference",
       },
       items: [
-      {
-          type: "category",
-          label: "Statements",
-          items: [
-            "sql-reference/statements/select",
-          ],
+        {
+          type: "doc",
+          label: "SELECT",
+          id: "sql-reference/select"
         },
         {
           type: "category",
