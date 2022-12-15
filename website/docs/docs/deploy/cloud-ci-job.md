@@ -138,8 +138,7 @@ If you're experiencing any issues, review some of the common questions and answe
          Confirm that you'd like to disconnect your repository. You should then see a new Configure a repository link in your old repository's place. Click through to the configuration page:<br></br>
          <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/repo-config.png" alt="Configure repo"/>
          <br></br>
-         Select the <b>GitHub</b>, <b>GitLab</b>, or <b>AzureDevOps</b> tab and reselect your repository. That should complete the setup of the project and enable you to set up a dbt Cloud CI job.
-      </div>
+         Select the <b>GitHub</b>, <b>GitLab</b>, or <b>AzureDevOps</b> tab and reselect your repository. That should complete the setup of the project and enable you to set up a dbt Cloud CI job.</div>
    </div>
 </details>
 <details>
@@ -163,16 +162,14 @@ If you're experiencing any issues, review some of the common questions and answe
          git checkout e845be54e6dc72342d5a8f814c8b3316ee220312
          fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
          </code><br></br>
-         Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
-      </div>
+         Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.</div>
    </div>
 </details>
 <details>
    <summary>CI job not triggering for Virtual Private dbt users</summary>
    <div>
       <div>To trigger jobs on dbt Cloud using the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api">API</a>, your Git provider needs to connect to your dbt Cloud account.<br></br>
-         If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently. 
-      </div>
+         If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.</div>
    </div>
 </details>
 
