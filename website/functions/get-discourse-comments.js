@@ -12,12 +12,12 @@ let headers = {
 }    
 
 
-async function getDiscourseTopics( event ) {
+async function getDiscourseComments( event ) {
 
   try {
 
-    let postTitle = event.queryStringParameters.title.trim() || ''
-    let postSlug = event.queryStringParameters.slug || ''
+    let postTitle = event.queryStringParameters.title.trim()
+    let postSlug = event.queryStringParameters.slug
     let postTitleEncoded = encodeURIComponent(postTitle)
 
     if(!postTitle) throw new Error('Unable to query Discourse API.')
@@ -29,6 +29,7 @@ async function getDiscourseTopics( event ) {
     let topicExists = false
     
     let topicId
+    let comments = []
 
     // Return all the topic titles from Discourse
     if(topics && topics.length > 0 ) {
@@ -54,15 +55,15 @@ async function getDiscourseTopics( event ) {
 
     } else {
         // Else return the posts for that specific topic
-
         // Set topicId to the result from allTopics that matches the postTitle
-        allTopics.forEach(topic => {
-            if(topic.title === postTitle) {
-                topicId = topic.id
-            }
-        })
+        topicId = await getTopicId(allTopics, postTitle)
 
-        let comments = await getDiscourseTopicbyID(topicId)
+        comments = await getDiscourseTopicbyID(topicId)
+
+        // Remove the the first post of the comments array since it is not a comment
+        if (comments.length) {
+            comments.shift()
+        }
         
         // Return comments
         return await returnResponse(200, comments)
@@ -88,21 +89,32 @@ async function createDiscourseTopic(title, slug) {
         console.log('err', err)
         return await returnResponse(500, { error: 'Unable to create Discourse topic.'})
     }
-
 }
 
 async function getDiscourseTopicbyID(topicId) {
     console.log(`Topic found setting topic id - ${topicId}`)
 
-    let { data: { post_stream } } = await axios.get(`${discourse_endpoint}/t/${topicId}.json`, { headers })
-    return post_stream.posts
+    try {
+        let { data: { post_stream } } = await axios.get(`${discourse_endpoint}/t/${topicId}.json`, { headers })
+
+        return post_stream.posts
+    } catch(err) {
+        console.log('err', err)
+        return await returnResponse(500, { error: 'Unable to get Discourse topic by ID.'})
+    }
 }
 
 async function searchDiscourseTopics(title) {
     console.log(`Searching for topic in Discourse - ${title}`)
 
-    let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${title}&in:title`, { headers })
-    return topics
+    try {
+        let { data: { topics } } = await axios.get(`${discourse_endpoint}/search?q=${title}&in:title`, { headers })
+
+        return topics
+    } catch(err) {
+        console.log('err', err)
+        return await returnResponse(500, { error: 'Unable to search Discourse topics.'})
+    }
 }
 
 async function returnResponse(status, res) {
@@ -120,4 +132,15 @@ async function returnResponse(status, res) {
   return resObj
 }
 
-exports.handler = getDiscourseTopics
+// make the forEach above a reusuable function
+async function getTopicId(allTopics, postTitle) {
+    allTopics.forEach(topic => {
+        if(topic.title === postTitle) {
+            topicId = topic.id
+        }
+    })
+
+    return topicId
+}
+
+exports.handler = getDiscourseComments
