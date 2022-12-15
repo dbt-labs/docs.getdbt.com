@@ -129,8 +129,10 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
    <summary>Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps</summary>
    <div>
-      <div>If your dbt project relies the generic git clone method that clones using SSH and deploy keys to connect to your dbt repo, you need to disconnect your repo and reconnect it using the native GitHub, GitLab, or Azure DevOps integration in order to enable dbt Cloud Slim CI.<br></br>First, make sure you have the <a href="https://docs.getdbt.com/docs/collaborate/git/connect-github">native GitHub authentication</a>, <a href="https://docs.getdbt.com/docs/collaborate/git/connect-gitlab">native GitLab authentication</a>, or <a href="https://docs.getdbt.com/docs/collaborate/git/connect-azure-devops">native Azure DevOps authentication</a> set up depending on which git provider you use. After you have gone through those steps, go to <strong>Account Settings</strong>, select <strong>Projects</strong> and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.<br></br>
-         Once you're in the repository page, select <strong>Edit</strong> and then <strong>Disconnect Repository</strong> at the bottom.<br></br>
+      <div>If your dbt project relies the generic git clone method that clones using SSH and deploy keys to connect to your dbt repo, you need to disconnect your repo and reconnect it using the native GitHub, GitLab, or Azure DevOps integration in order to enable dbt Cloud Slim CI.<br></br><br></br>
+      First, make sure you have the <a href="https://docs.getdbt.com/docs/collaborate/git/connect-github">native GitHub authentication</a>, <a href="https://docs.getdbt.com/docs/collaborate/git/connect-gitlab">native GitLab authentication</a>, or <a href="https://docs.getdbt.com/docs/collaborate/git/connect-azure-devops">native Azure DevOps authentication</a> set up depending on which git provider you use. After you have gone through those steps, go to <strong>Account Settings</strong>, select <strong>Projects</strong> and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.<br></br><br></br>
+      
+      Once you're in the repository page, select <strong>Edit</strong> and then <strong>Disconnect Repository</strong> at the bottom.<br></br>
          <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" alt="Disconnect repo"/>
          <br></br>
          Confirm that you'd like to disconnect your repository. You should then see a new Configure a repository link in your old repository's place. Click through to the configuration page:<br></br>
@@ -142,32 +144,37 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
    <summary>Error messages that refer to schemas from previous PRs</summary>
    <div>
-      <div>If you receive a schema-related error message referencing a *previous* PR, this is usually an indicator that you are not using a production job for your deferral and are instead using *self*.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br> 
-         To fix this issue, select a production job run to defer to instead of self.
+      <div>If you receive a schema-related error message referencing a *previous* PR, this is usually an indicator that you are not using a production job for your deferral and are instead using *self*.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br><br></br>
+      
+      To fix this issue, select a production job run to defer to instead of self.
       </div>
    </div>
 </details>
 <details>
    <summary>Production job runs failing at the <b>Clone Git Repository</b> step</summary>
    <div>
-      <div>dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository. If you receive the following error message at the <b>Clone Git Repository</b> step of your job run:<br></br>
+      <div>dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository.<br></br><br></br>
+      
+      If you receive the following error message at the <b>Clone Git Repository</b> step of your job run:<br></br>
          <code>
-         Error message:
-         Cloning into '/tmp/jobs/123456/target'...
-         Successfully cloned repository.
-         Checking out to e845be54e6dc72342d5a8f814c8b3316ee220312...
-         Failed to checkout to specified revision.
-         git checkout e845be54e6dc72342d5a8f814c8b3316ee220312
-         fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
-         </code><br></br>
+         Error message:<br></br>
+         Cloning into '/tmp/jobs/123456/target'...<br></br>
+         Successfully cloned repository.<br></br>
+         Checking out to e845be54e6dc72342d5a8f814c8b3316ee220312...<br></br>
+         Failed to checkout to specified revision.<br></br>
+         git checkout e845be54e6dc72342d5a8f814c8b3316ee220312<br></br>
+         fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312<br></br>
+         </code><br></br><br></br>
+         
          Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.</div>
    </div>
 </details>
 <details>
    <summary>CI job not triggering for Virtual Private dbt users</summary>
    <div>
-      <div>To trigger jobs on dbt Cloud using the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api">API</a>, your Git provider needs to connect to your dbt Cloud account.<br></br>
-         If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.</div>
+      <div>To trigger jobs on dbt Cloud using the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api">API</a>, your Git provider needs to connect to your dbt Cloud account.<br></br><br></br>
+      
+      If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.</div>
    </div>
 </details>
 
