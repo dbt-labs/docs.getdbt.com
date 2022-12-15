@@ -124,6 +124,8 @@ Make the necessary changes to your project and double-check if the temporary PR 
 
 ## Troubleshooting
 
+If you're experiencing any issues, review some of the common questions and answers below.
+
 <details>
   <summary>Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps</summary>
   <div>
