@@ -48,11 +48,13 @@ async function getDiscourseComments( event ) {
         // Once the topic is created, search for the topic again
         topics = await searchDiscourseTopics(postTitleEncoded)
 
-        if(topics && topics.length > 0 ) {
+        if(topics && topics?.length > 0 ) {
             topicId = await getTopicId(topics, postTitle)
         }
 
-        comments = await getDiscourseTopicbyID(topicId)
+        if(topicId) {
+            comments = await getDiscourseTopicbyID(topicId)
+        }
      
         // Remove the the first post of the comments array since it is not a comment
         if (comments.length) {
@@ -65,7 +67,9 @@ async function getDiscourseComments( event ) {
         // Set topicId to the result from allTopics that matches the postTitle
         topicId = await getTopicId(allTopics, postTitle)
 
-        comments = await getDiscourseTopicbyID(topicId)
+        if(topicId) {
+            comments = await getDiscourseTopicbyID(topicId)
+        }
 
         // Remove the the first post of the comments array since it is not a comment
         if (comments.length) {
