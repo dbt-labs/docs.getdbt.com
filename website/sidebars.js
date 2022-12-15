@@ -817,7 +817,7 @@ guides: [
         type: "generated-index",
         title: "dbt Ecosystem guides",
         description:
-          "Learn about the dbt ecosystem and how to use build with dbt",
+          "Learn about the dbt ecosystem and how to build with dbt",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
