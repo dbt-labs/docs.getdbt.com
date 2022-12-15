@@ -126,7 +126,7 @@ Make the necessary changes to your project and double-check if the temporary PR 
 
 If you're experiencing any issues, review some of the common questions and answers below.
 
-<<details>
+<details>
    <summary>Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps</summary>
    <div>
       <div>If your dbt project relies the generic git clone method that clones using SSH and deploy keys to connect to your dbt repo, you need to disconnect your repo and reconnect it using the native GitHub, GitLab, or Azure DevOps integration in order to enable dbt Cloud Slim CI.<br></br>First, make sure you have the <a href="https://docs.getdbt.com/docs/collaborate/git/connect-github">native GitHub authentication</a>, <a href="https://docs.getdbt.com/docs/collaborate/git/connect-gitlab">native GitLab authentication</a>, or <a href="https://docs.getdbt.com/docs/collaborate/git/connect-azure-devops">native Azure DevOps authentication</a> set up depending on which git provider you use. After you have gone through those steps, go to <strong>Account Settings</strong>, select <strong>Projects</strong> and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.<br></br>
