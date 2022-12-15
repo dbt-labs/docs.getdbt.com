@@ -56,7 +56,7 @@ You could limit your data used for development by manually adding a LIMIT statem
 
 ## LIMIT syntax in Snowflake, Databricks, BigQuery, and Redshift
 
-Most, if not all, modern data warehouses support the ability to LIMIT a query and the syntax is also the same across them. Use the table below to read more on the documentation for limiting query results in your data warehouse.
+All modern data warehouses support the ability to LIMIT a query and the syntax is also the same across them. Use the table below to read more on the documentation for limiting query results in your data warehouse.
 
 | Data warehouse | LIMIT support? |
 |:---:|:---:|
