@@ -952,6 +952,20 @@ guides: [
             "sql-reference/aggregate-functions/sum",
           ],
         },
+        {
+          type: "category",
+          label: "Clauses",
+          items: [
+            "sql-reference/clauses/limit",
+            "sql-reference/clauses/order-by",
+            "sql-reference/clauses/where",
+          ],
+        },
+        {
+          type: "doc",
+          label: "DISTINCT",
+          id: "sql-reference/distinct",
+        },
       ],
     },
   ],
