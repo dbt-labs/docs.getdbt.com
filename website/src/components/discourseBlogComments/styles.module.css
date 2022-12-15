@@ -1,0 +1,22 @@
+.commentContainer {
+
+}
+
+.commentContainer h4 {
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+
+
+/* Cta */
+.discourseCta {
+    font-size: 1.1rem;
+    margin-top: auto;
+    color: #fff;
+    border: none;
+  }
+.discourseCta:hover {
+  background: var(--color-light-teal);
+  color: #fff;
+}
+

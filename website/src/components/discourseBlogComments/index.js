@@ -64,29 +64,33 @@ export const DiscourseBlogComments = ({title,slug}) => {
         return (
           <div>
             <p data-testid='no-comments-text'>No recent comments.</p>
-            <a href={`https://discourse.getdbt.com/t/${topicId}`} target="_blank" rel="noopener noreferrer" title='Start a discussion' className='button button--primary'>Start a discussion</a>
+            <a href={`https://discourse.getdbt.com/t/${topicId}`} target="_blank" rel="noopener noreferrer" title='Start a discussion' className={`button button--primary ${styles.discourseCta}`}>Start a discussion</a>
           </div>
         )
       } else {
         return (
-          <ul data-testid="topics-list">
-            {comments.map(comment => (
-              <li key={comment.id} className={styles.discourseComments} >
-                {' '}
-                <span>
-                  by {comment.username}
-                </span>
-                <div dangerouslySetInnerHTML={{__html: comment.cooked}} />
-              </li>
-            ))}
-          </ul>
+          <div>
+            <ul data-testid="topics-list">
+              {comments.map(comment => (
+                <li key={comment.id} className={styles.discourseComments} >
+                  {' '}
+                  <span>
+                    by {comment.username}
+                  </span>
+                  <div dangerouslySetInnerHTML={{__html: comment.cooked}} />
+                </li>
+              ))}
+               <a href={`https://discourse.getdbt.com/t/${topicId}`} target="_blank" rel="noopener noreferrer" title='Continnue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
+            </ul>
+           
+          </div>
         )
       }
     }
 
     return (
-      <div>
-        <h2>Comments</h2>
+      <div className={styles.commentContainer}>
+        <h4 className='mt-4'>Comments</h4>
         {resultData()}
       </div>
     )
