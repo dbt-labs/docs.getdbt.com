@@ -51,7 +51,7 @@ The green checkmark means the dbt builds and tests were successful. Clicking on 
 
 ## Configuring a dbt Cloud CI job
 
-Setting up a CI job is very similiar to setting up a normal production job that runs on a schedule; however, a CI job has some noteable differences.
+Setting up a CI job is very similiar to setting up a normal production job that runs on a schedule; however, a CI job has some notable differences.
 
 There are a few components that define a Slim CI job.
 
