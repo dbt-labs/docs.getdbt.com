@@ -5,7 +5,7 @@ import axios from 'axios'
 export const DiscourseBlogComments = ({title,slug}) => {
 
     const [comments, setComments] = useState([])
-    const [topicId, setTopicId] = useState('')
+    const [topicId, setTopicId] = useState(null)
     const [loading, setLoading] = useState(true)
     const [isError, setIsError] = useState(false)
   
