@@ -76,7 +76,6 @@ Use callouts sparingly for high-value information &mdash; avoid including genera
 | Tip callouts are used for tips |```:::tip``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
 | Caution callouts are used for warnings/considerations |```:::caution``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
 
-Note: If you add text after the first code, like this `:::note This is a note title`, it will show up as a title for the note.
 
 ## Text formatting
 You consider many elements when designing technical docs, and the way you format text can help you achieve a well-articulated design. With consistency of use, well-formatted text creates a single voice when there are multiple authors/contributors, increases the readability of the content, and further establishes an organization's branding.
