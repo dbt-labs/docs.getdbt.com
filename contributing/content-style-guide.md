@@ -38,7 +38,7 @@ If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs
 
 | ✅ User | ❌ Avoid|
 |:-------:|:-------:|
-|`/docs/deploy/architecture` | `/docs/deploy/about-architecture`|
+|`/docs/deploy/architecture` | `/docs/deploy/how-we-think-about-architecture`|
 
 
 ## Using Markdown
