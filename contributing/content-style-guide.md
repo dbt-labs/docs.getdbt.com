@@ -5,6 +5,9 @@ Welcome to the content style guide for docs.getdbt.com! We aim to provide docs t
 This guide includes standards we want to emphasize, likely because we've made deliberate decisions about them. You can refer to [_The Microsoft Writing Style Guide_](https://docs.microsoft.com/en-us/style-guide/welcome/) and the [_Chicago Manual of Style_](https://www.chicagomanualofstyle.org/home.html) for those nagging questions like, "[Should I use an Em dash, En dash or hyphen?](https://docs.microsoft.com/en-us/style-guide/punctuation/dashes-hyphens/)"
 
 ### Table of Contents
+* [Folder Structure and TOC](#folder-structure-and-toc)
+* [Filenaming](#filenaming)
+* [Using Markdown](#using-markdown)
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
@@ -72,6 +75,8 @@ Use callouts sparingly for high-value information &mdash; avoid including genera
 | Info callouts are used to highlight info |```:::info``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
 | Tip callouts are used for tips |```:::tip``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
 | Caution callouts are used for warnings/considerations |```:::caution``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+
+Note: If you add text after the first code, like this `:::note This is a note title`, it will show up as a title for the note.
 
 ## Text formatting
 You consider many elements when designing technical docs, and the way you format text can help you achieve a well-articulated design. With consistency of use, well-formatted text creates a single voice when there are multiple authors/contributors, increases the readability of the content, and further establishes an organization's branding.
