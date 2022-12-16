@@ -493,7 +493,7 @@ Both macOS and Windows include tools that allow you to capture and manipulate sc
 
 #### Screenshot guidelines
 
-Once you have determined that a screenshot will add value to the document where words alone can't, refer to these guidelines for capturing the information:
+Once you have determined that a screenshot will add value to the document where words alone can't, use the [Lightbox component](/contributing/lightbox) and the following guidelines to capture the information:
 
 * Use screenshots to highlight navigation, on-screen elements, and other noteworthy product visuals.
 * Avoid using screenshots to demonstrate inputs and outputs. All code snippets and sample results should be in the documents as text fields.
@@ -502,7 +502,7 @@ Once you have determined that a screenshot will add value to the document where 
 * Use JPEG format, which renders a better quality and lossless compression. JPEG format has a white background and is accessible in light and dark mode. 
 * Add *title=""* for all images to write a concise title of the image. For accessibility, it's important to use succinct text that is clear and complete. 
 
-For more information about images formatting, see the following section.
+For more information about image-formatting, review the [Lightbox guidance](/contributing/lightbox), and the following examples:
 
   :x: screenshot-august0822.jpg
 
