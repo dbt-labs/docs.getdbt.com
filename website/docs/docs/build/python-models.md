@@ -245,7 +245,7 @@ Currently, Python functions defined in one dbt model can't be imported and reuse
 
 ### Using PyPI packages
 
-You can also define functions that depend on third-party packages so long as those packages are installed and available to the Python runtime on your data platform. See notes on "Installing Packages" for [specific data warehouses](#specific-data-warehouses).
+You can also define functions that depend on third-party packages so long as those packages are installed and available to the Python runtime on your data platform. See notes on "Installing Packages" for [supported data platforms](#supported-data-platforms).
 
 In this example, we use the `holidays` package to determine if a given date is a holiday in France. The code below uses the pandas API for simplicity and consistency across platforms. The exact syntax, and the need to refactor for multi-node processing, still vary.
 
