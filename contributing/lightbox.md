@@ -26,14 +26,14 @@ The Lightbox component allows clickable images, which are expanded when clicked.
 
 ## Example usage
 
-<code><Lightbox<br>
-src="/img/hamburger-icon.png"<br>
-lt="Alt text"<br>
-title="This text is visible"<br> 
-collapsed={true}<br>
-width="600px"<br>
-alignment="left"<br>
-/></code>
+<code><Lightbox</code><br>
+<code>src="/img/hamburger-icon.jpg"</code><br>
+<code>lt="Alt text"</code><br>
+<code>title="This text is visible"</code><br> 
+<code>collapsed={true}</code><br>
+<code>width="600px"</code><br>
+<code>alignment="left"</code><br>
+<code>/></code>
 
 
 <LoomVideo id="2b64dbd47a2d46dbafa5b43ed52a91e0" />   
