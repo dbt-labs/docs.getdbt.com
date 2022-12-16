@@ -13,12 +13,12 @@ The `init` command is interactive and responsive like never before.
 
 If this is your first time ever using the tool, it will:
 - ask you to name your project
-- ask you which database adapter you're using (or to [install the one you need](available-adapters))
+- ask you which database adapter you're using (or to [Supported Data Platforms](supported-data-platforms))
 - prompt you for each piece of information that dbt needs to connect to that database: things like `account`, `user`, `password`, etc
 
 Then, it will:
 - Create a new folder with your project name and sample files, enough to get you started with dbt
-- Create a connection profile on your local machine. The default location is `~/.dbt/profiles.yml`. Read more in [configuring your profile](configure-your-profile).
+- Create a connection profile on your local machine. The default location is `~/.dbt/profiles.yml`. Read more in [configuring your profile](/docs/get-started/connection-profiles).
 
 ## Existing project
 
@@ -28,7 +28,7 @@ If you've just cloned or downloaded an existing dbt project, `dbt init` can stil
 
 `dbt init` knows how to prompt for connection information by looking for a file named `profile_template.yml`. It will look for this file in two places:
 
-- **Adapter plugin:** What's the bare minumum Postgres profile? What's the type of each field, what are its defaults? This information is stored in a file called [`dbt/include/postgres/profile_template.yml`](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml). If you're the maintainer of an adapter plugin, we highly recommend that you add a `profile_template.yml` to your plugin, too. See more details in [building-a-new-adapter](building-a-new-adapter).
+- **Adapter plugin:** What's the bare minumum Postgres profile? What's the type of each field, what are its defaults? This information is stored in a file called [`dbt/include/postgres/profile_template.yml`](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml). If you're the maintainer of an adapter plugin, we highly recommend that you add a `profile_template.yml` to your plugin, too. See more details in [building-a-new-adapter](/guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter).
 
 - **Existing project:** If you're the maintainer of an existing project, and you want to help new users get connected to your database quickly and easily, you can include your own custom `profile_template.yml` in the root of your project, alongside `dbt_project.yml`. For common connection attributes, set the values in `fixed`; leave user-specific attributes in `prompts`, but with custom hints and defaults as you'd like.
 

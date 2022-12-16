@@ -14,8 +14,8 @@ We recommend using [virtual environments](https://docs.python-guide.org/dev/virt
 ```shell
 
 python3 -m venv dbt-env				# create the environment
-source dbt-env/bin/activate			# activate the environment
-
+source dbt-env/bin/activate			# activate the environment for Mac and Linux
+dbt-env\Scripts\activate			# activate the environment for Windows
 ```
 
 If you install `dbt` in a virtual environment, you need to reactivate that same virtual environment each time you create a shell window or session.

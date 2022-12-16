@@ -1,5 +1,5 @@
 ---
-resource_types: [models, seeds, snapshots, tests]
+resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
 ---
 
@@ -14,6 +14,9 @@ datatype: "{dictionary}"
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Sources', value: 'sources', },
+    { label: 'Metrics', value: 'metrics', },
+    { label: 'Exposures', value: 'exposures', },
   ]
 }>
 
@@ -101,6 +104,91 @@ version: 2
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="sources">
+
+<VersionBlock lastVersion="1.0">
+
+We have added support for the `config` property on sources in dbt Core v1.1
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+sources:
+  - name: <source_name>
+    config:
+      [<source_config>](source-configs): <config_value>
+    tables:
+      - name: <table_name>
+        config:
+          [<source_config>](source-configs): <config_value>
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="metrics">
+
+<VersionBlock lastVersion="1.2">
+
+We have added support for the `config` property on sources in dbt Core v1.3
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+metrics:
+  - name: <metric_name>
+    config:
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="exposures">
+
+<VersionBlock lastVersion="1.2">
+
+Support for the `config` property on `metrics` was added in dbt Core v1.3
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+exposures:
+  - name: <exposure_name>
+    config:
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
 
 </TabItem>
 

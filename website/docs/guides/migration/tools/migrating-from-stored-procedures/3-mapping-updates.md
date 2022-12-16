@@ -8,7 +8,7 @@ id: 3-updates
 ```sql
 UPDATE orders
 
-SET type = ‘return’
+SET type = 'return'
 
 WHERE total < 0
 ```
@@ -25,14 +25,14 @@ If I were building an intermediate transformation from the above query would tra
 ```sql
 SELECT
     CASE
-        WHEN total < 0 THEN ‘return’
+        WHEN total < 0 THEN 'return'
         ELSE type
     END AS type,
-    
+
     order_id,
     order_date
 
-FROM {{ ref(‘stg_orders’) }}
+FROM {{ ref('stg_orders') }}
 ```
 
 Since the `UPDATE` statement doesn’t modify every value of the type column, we use a `CASE` statement to apply the contents’ `WHERE` clause. We still want to select all of the columns that should end up in the target table. If we left one of the columns out, it wouldn’t be passed through to the target table at all due to dbt’s declarative approach.
@@ -43,13 +43,13 @@ Another way I could have written the model a bit more dynamically might be:
 
 ```sql
 SELECT
-    {{ dbt_utils.star(from=ref(‘stg_orders’), except=[‘type’]) }},
+    {{ dbt_utils.star(from=ref('stg_orders'), except=['type']) }},
     CASE
-        WHEN total < 0 THEN ‘return’
+        WHEN total < 0 THEN 'return'
         ELSE type
     END AS type,
 
-FROM {{ ref(‘stg_orders’) }}
+FROM {{ ref('stg_orders') }}
 ```
 
-The `dbt_utils.star()` macro (TODO add links) will print out the full list of columns in the table, but skip the ones I’ve listed in the except list, which allows me to perform the same logic while writing fewer lines of code. This is a simple example of using dbt macros to simplify and shorten your code, and dbt can get a lot more sophisticated as you learn more techniques.
+The `dbt_utils.star()` macro will print out the full list of columns in the table, but skip the ones I’ve listed in the except list, which allows me to perform the same logic while writing fewer lines of code. This is a simple example of using dbt macros to simplify and shorten your code, and dbt can get a lot more sophisticated as you learn more techniques. Read more about the [dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and the [star macro](https://github.com/dbt-labs/dbt-utils/tree/0.8.6/#star-source).

@@ -5,13 +5,11 @@ id: "global-configs"
 
 ## About Global Configs
 
-Global configs enable you to fine-tune how dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. They differ from [project configs](reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
+Global configs enable you to fine-tune _how_ dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. In general, they differ from most [project configs](reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
 
-Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model.
+Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model. These configs are "global" because they are available for all dbt commands, and because they can be set for all projects running on the same machine or in the same environment.
 
-These configs are "global" because they are available for all dbt commands, and because they apply across all projects run on the same machine.
-
-Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last profile configs.
+Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last yaml configs (usually `profiles.yml`).
 
 ## Command line flags
 
@@ -88,9 +86,9 @@ $ dbt run
 
 </File>
 
-## Profile (or user) configurations
+## Yaml configurations
 
-You can set profile (or user) configurations in the `config:` block of `profiles.yml`. You would use the profile config to set defaults for all projects running on your local machine.
+For most global configurations, you can set "user profile" configurations in the `config:` block of `profiles.yml`. This style of configuration sets default values for all projects using this profile directory—usually, all projects running on your local machine.
 
 <File name='profiles.yml'>
 
@@ -102,6 +100,12 @@ config:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.2">
+
+The exception: Some global configurations are actually set in `dbt_project.yml`, instead of `profiles.yml`, because they control where dbt places logs and artifacts. Those file paths are always relative to the location of `dbt_project.yml`. For more details, see ["Log and target paths"](#log-and-target-paths) below.
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.1">
 
@@ -151,7 +155,7 @@ Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 
 ### Debug-level logging
 
-The `DEBUG` config redirects dbt's debug logs to standard out. The has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
+The `DEBUG` config redirects dbt's debug logs to standard output. This has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
 
 The `--debug` flag is also available via shorthand as `-d`.
 
@@ -182,7 +186,7 @@ config:
 
 ### Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
+Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
@@ -210,7 +214,7 @@ FailFast Error in model model_1 (models/model_1.sql)
 
 ### Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in JSON format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 
@@ -269,11 +273,32 @@ config:
 
 </File>
 
+<VersionBlock firstVersion="1.2">
+
+### Log and target paths
+
+By default, dbt will write logs to a directory named `logs/`, and all other artifacts to a directory named `target/`. Both of those directories are located relative to `dbt_project.yml` of the active project—that is, the root directory from which dbt is run.
+
+Just like other global configs, it is possible to override these values for your environment or invocation by using CLI flags (`--target-path`, `--log-path`) or environment variables (`DBT_TARGET_PATH`, `DBT_LOG_PATH`).
+
+Unlike the other global configs documented on this page, which can be set in `profiles.yml`, the project paths are configured in `dbt_project.yml`. This is because `profiles.yml` and `dbt_project.yml` are most often located in separate file systems on your machine, and the log and artifact paths are always defined relative to the location of `dbt_project.yml`.
+
+<File name='dbt_project.yml'>
+
+```yaml
+[target-path](target-path): "other-target"
+[log-path](log-path): "other-logs"
+```
+
+</File>
+
+</VersionBlock>
+
 ### Send anonymous usage stats
 
-We want to build the best version of dbt possible, and a crucial part of that is understanding how users work with dbt. To this end, we've added some simple event tracking to dbt (using Snowplow). We do not track credentials, model contents or model names (we consider these private, and frankly none of our business).
+We want to build the best version of dbt possible, and a crucial part of that is understanding how users work with dbt. To this end, we've added some simple event tracking to dbt (using Snowplow). We do not track credentials, raw model contents or model names (we consider these private, and frankly none of our business).
 
-Usage statistics are fired when dbt is invoked and when models are run. These events contain basic platform information (OS + python version). You can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
+Usage statistics are fired when dbt is invoked and when models are run. These events contain basic platform information (OS + python version) and metadata such as whether the invocation succeeded, how long it took, an anonymized hash key representing the raw model content, and number of nodes that were run. You can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
 
 By default this is turned on – you can opt out of event tracking at any time by adding the following to your `profiles.yml` file:
 
@@ -282,7 +307,7 @@ config:
   send_anonymous_usage_stats: False
 ```
 
-You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
+You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/docs/build/environment-variables).
 
 `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
 `DO_NOT_TRACK=0` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`
