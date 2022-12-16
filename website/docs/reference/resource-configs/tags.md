@@ -201,7 +201,7 @@ sources:
 
     tables:
       - name: table_name
-        tags: [<string>]
+        tags: ['table_level']
 
         columns:
           - name: column_name
@@ -213,9 +213,10 @@ sources:
 
 </File>
 
-In the example above, the `unique` test would be selected by any of the three tags:
+In the example above, the `unique` test would be selected by any of these four tags:
 ```bash
 $ dbt test --select tag:top_level
+$ dbt test --select tag:table_level
 $ dbt test --select tag:column_level
 $ dbt test --select tag:test_level
 ```
