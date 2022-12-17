@@ -10,7 +10,7 @@ This is a work in progress document. While this configuration applies to multipl
 
 ## Definition
 
-Optionally specify a custom database for a [model](docs/building-a-dbt-project/building-models) or [seed](docs/building-a-dbt-project/seeds). (To specify a database for a [snapshot](snapshots), use the [`target_database` config](target_database)).
+Optionally specify a custom database for a [model](docs/build/models) or [seed](/docs/build/seeds). (To specify a database for a [snapshot](snapshots), use the [`target_database` config](target_database)).
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
@@ -18,7 +18,7 @@ The standard behavior of dbt is:
 * If a custom database is _not_ specified, the database of the relation is the target database (`{{ target.database }}`).
 * If a custom database is specified, the database of the relation is the `{{ database }}` value.
 
-To learn more about changing the way that dbt generates a relation's `database`, read [Using Custom Databases](using-custom-databases)
+To learn more about changing the way that dbt generates a relation's `database`, read [Using Custom Databases](/docs/build/custom-databases)
 
 <Changelog>
 

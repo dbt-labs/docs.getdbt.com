@@ -15,7 +15,7 @@ Let’s get rid of these dupes and send you on your way to do the rest of the *s
 
 <!--truncate-->
 
-You’re here because your duplicates are *special* duplicates. These special dupes are not the basic ones that have same exact values in every column and duplicate <Term id="primary-key">primary keys</Term> that can be easily fixed by haphazardly throwing in a `distinct` (yeah that’s right, I called using `distinct` haphazard!). These are *partial* duplicates, meaning your entity of concern's primary key is not unique *on purpose* (or perhaps you're just dealing with some less than ideal data syncing). You may be capturing historical, type-two slowly changing dimensional data, or incrementally building a table with an append-only strategy, because you actually want to capture some change over time for the entity your recording. (Or, as mentioned, your loader may just be appending data indiscriminately on a schedule without much care for your time and sanity.) Whatever has brought you here, you now have a table where the <Term id="grain" /> is not your entity’s primary key, but instead the entity’s primary key + the column values that you’re tracking. Confused? Let’s look at an example.
+You’re here because your duplicates are *special* duplicates. These special dupes are not the basic ones that have same exact values in every column and duplicate <Term id="primary-key">primary keys</Term> that can be easily fixed by haphazardly throwing in a `distinct` (yeah that’s right, I called using `distinct` haphazard!). These are *partial* duplicates, meaning your entity of concern's primary key is not unique *on purpose* (or perhaps you're just dealing with some less than ideal data syncing). You may be capturing historical, type-two slowly changing <Term id="dimensional-modeling">dimensional</Term> data, or incrementally building a table with an append-only strategy, because you actually want to capture some change over time for the entity your recording. (Or, as mentioned, your loader may just be appending data indiscriminately on a schedule without much care for your time and sanity.) Whatever has brought you here, you now have a table where the <Term id="grain" /> is not your entity’s primary key, but instead the entity’s primary key + the column values that you’re tracking. Confused? Let’s look at an example.
 
 Here’s your raw table:
 
@@ -68,20 +68,20 @@ Here’s a brief overview of the steps we’ll take:
 
 > Step 1 walks you through how to build a hashed entity id from column values using a macro. You’ll use this key in Step 2 to find the true duplicates and clean them out.
 
-The idea in this step is to enable checking for duplicates in the data by attaching a unique key to the hashed values of the columns that make up the entity grain you want to track. It’s important to note here that the *[dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/0.8.2/macros/sql/surrogate_key.sql)* will not create a unique key yet! Instead, it will create a key that will be the same as the key of another row, as long as the column values we’ve selected for our entity grain are the same. *This is intentional and critical!*  The specific non-uniqueness is how we’ll catch our sneaky duplicates.
+The idea in this step is to enable checking for duplicates in the data by attaching a unique key to the hashed values of the columns that make up the entity grain you want to track. It’s important to note here that the *[dbt_utils.generate_surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/generate_surrogate_key.sql)* will not create a unique key yet! Instead, it will create a key that will be the same as the key of another row, as long as the column values we’ve selected for our entity grain are the same. *This is intentional and critical!*  The specific non-uniqueness is how we’ll catch our sneaky duplicates.
 
 In our example, you can see that the <Term id="surrogate-key">`surrogate_key`</Term> function builds the same `grain_id` or the two rows we know are duplicates, rows 2 and 3, with row 3 being the most recent row.
 
 | grain_id                         | entity_grain | entity_id | unimportant_value | important_status | updated_at_date |
 |----------------------------------|--------------|-----------|-------------------|------------------|-----------------|
 | 8e0bd4a0e4a6e3a4ad3f28f13a3d5e51 | 1_pending    | 1         | cool              | pending          | 2022-02-24      |
-| c8b91b84808caaf5870d707866b59c   | 1_submitted  | 1         | lame              | submitted        | 2022-03-01      |
+| c8b91b84808caaf5870d707866b59c   | 1_submitted  | 1         | boring              | submitted        | 2022-03-01      |
 | c8b91b84808caaf5870d707866b59c   | 1_submitted  | 1         | cool              | submitted        | 2022-03-03      |
 | 283ff22afb622dcc6a7da373ae1a0fb  | 2_pending    | 2         | cool              | pending          | 2022-02-27      |
 
 Remember, it’s important to only look for duplicate rows for the values that indicate a *true* difference between the rows of data the data; e.g., in type-two data, `updated_at_date` doesn’t mean that the other columns that we’ve decided we’re concerned with have changed since the previous time it was loaded, so that column doesn’t necessarily indicate a true difference between rows (though it usually indicates that something has changed, but that change may be outside our scope of concern in this case). But a change in `important_status`, for our purposes, would indicate a change in the data that you’d probably want to track. If you aren’t applying this technique to type-two data, but instead wanting to remove everything except the most recent data, you may have just a few columns that indicate a true difference between rows (an id at the right grain, and/or an id at a larger grain + timestamp).
 
-To build our `grain_id` key, we use the pure gold of the *[dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/0.8.0/)*. If you’re unsure of what this package is, stop reading right now and make sure this is installed in your dbt project. It will bring joy to your life and ease to your struggling!
+To build our `grain_id` key, we use the pure gold of the *[dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)*. If you’re unsure of what this package is, stop reading right now and make sure this is installed in your dbt project. It will bring joy to your life and ease to your struggling!
 
 `dbt_utils.star` is the *star* [Editor’s note: 🤦‍♀️] of the show here, which allows you to grab all the columns, *except* the ones you list. If you only have a couple columns, it may be easier just to list them for the `cols` variable instead of using the `star` function.
 
@@ -152,7 +152,7 @@ select * from filter_real_diffs
 
 > *What happens in this step? You check your data because you are thorough!*
 
-Good thing dbt has already built this for you. Add a [unique test](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-tests) to your YAML model block for your `grain_id` in this de-duped staging model, and give it a dbt test!
+Good thing dbt has already built this for you. Add a [unique test](/docs/build/tests#generic-tests) to your YAML model block for your `grain_id` in this de-duped staging model, and give it a dbt test!
 
 ```yaml
 models:

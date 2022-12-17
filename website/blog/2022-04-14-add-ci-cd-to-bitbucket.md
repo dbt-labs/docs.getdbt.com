@@ -183,7 +183,7 @@ Reading the file over, you can see that we:
 3. Specify that this pipeline is a two-step process
 4. Specify that in the first step called “Deploy to production”, we want to:
     1. Use whatever pip cache is available, if any
-    2. Keep whatever JSON files are generated in this step in target/
+    2. Keep whatever <Term id="json" /> files are generated in this step in target/
     3. Run the dbt setup by first installing dbt as defined in requirements.txt, then adding `profiles.yml` to the location dbt expects them in, and finally running `dbt deps` to install any dbt packages
     4. Run `dbt seed`, `run`, and `snapshot`, all with `prod` as specified target
 5. Specify that in the first step called “Upload artifacts for slim CI runs”, we want to use the Bitbucket “pipe” (pre-defined action) to authenticate with environment variables and upload all files that match the glob `target/*.json`.
@@ -300,7 +300,7 @@ You’re all done! Now it’s time to test that things work:
 
 ## Conclusion
 
-It’s important to remember that CI/CD is a convenience, not a panacea. You must still devise the model logic and determine the appropriate tests. Some things it can do, though: catch more mistakes early, make sure that the database always reflects the most up-to-date code, and decrease the friction in collaboration. By automating the steps that should *always* be taken, it frees you up to think about the unusual steps required (e.g., do your changes to [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) require an additional deployment with `--full-refresh`?) and reduces the amount of review that others’ actions necessitate.
+It’s important to remember that CI/CD is a convenience, not a panacea. You must still devise the model logic and determine the appropriate tests. Some things it can do, though: catch more mistakes early, make sure that the database always reflects the most up-to-date code, and decrease the friction in collaboration. By automating the steps that should *always* be taken, it frees you up to think about the unusual steps required (e.g., do your changes to [incremental models](https://docs.getdbt.com/docs/build/incremental-models) require an additional deployment with `--full-refresh`?) and reduces the amount of review that others’ actions necessitate.
 
 Plus, it’s a good time, and it’s fun to watch the test lights turn green. Ding!
 

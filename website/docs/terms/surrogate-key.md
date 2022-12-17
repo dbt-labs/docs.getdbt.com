@@ -1,9 +1,14 @@
 ---
 id: surrogate-key
 title: Surrogate key
+description: A surrogate key is a unique identifier derived from the data itself. It's commonly a hashed value of multiple columns that will create a unique id for each row.
 displayText: surrogate key  
 hoverSnippet: A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row.
 ---
+
+<head>
+  <title>What is a surrogate key in database table? - dbt Labs</title>
+</head>
 
 A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row. You will need to create a surrogate key for every table that doesn't have a natural <Term id="primary-key" />. 
 
@@ -19,7 +24,7 @@ Primary keys can be established two ways: naturally or derived through the data 
 * A __surrogate key__ is a hashed value of multiple fields in a dataset that create a uniqueness constraint on that dataset. You’ll essentially need to make a surrogate key in every table that lacks a natural key.
 
 :::note Note
-You may also hear about primary keys being a form of a _constraint_ on a database object. Column constraints are specified in the <Term id="ddl" /> to create or alter a database object. For data warehouses that support the enforcement of primary key constraints, this means that an error would be raised if a field's uniqueness or non-nullness was broken upon an `INSERT` or `UPDATE` statement. Most modern data warehouses don’t support _and_ enforce [primary key constraints](https://docs.getdbt.com/terms/primary-key#Data-warehouse-support-for-primary-keys), so it’s important to have [automated testing](https://docs.getdbt.com/blog/primary-key-testing#how-to-test-primary-keys-with-dbt) in-place to ensure your primary keys are unique and not null.
+You may also hear about primary keys being a form of a _constraint_ on a database object. Column constraints are specified in the <Term id="ddl" /> to create or alter a database object. For <Term id="data-warehouse">data warehouses</Term> that support the enforcement of primary key constraints, this means that an error would be raised if a field's uniqueness or non-nullness was broken upon an `INSERT` or `UPDATE` statement. Most modern data warehouses don’t support _and_ enforce [primary key constraints](https://docs.getdbt.com/terms/primary-key#Data-warehouse-support-for-primary-keys), so it’s important to have [automated testing](https://docs.getdbt.com/blog/primary-key-testing#how-to-test-primary-keys-with-dbt) in-place to ensure your primary keys are unique and not null.
 :::
 
 ## How surrogate keys are created
@@ -30,17 +35,17 @@ Let’s take this to an example. Below, there is a table you pull from an ad pla
 
 <table>
   <tr>
-   <td>calendar_date
+   <td><b>calendar_date</b>
    </td>
-   <td>ad_id
+   <td><b>ad_id</b>
    </td>
-   <td>impressions
+   <td><b>impressions</b>
    </td>
-   <td>spend
+   <td><b>spend</b>
    </td>
-   <td>clicks
+   <td><b>clicks</b>
    </td>
-   <td>conversions
+   <td><b>conversions</b>
    </td>
   </tr>
   <tr>
@@ -103,19 +108,19 @@ After executing this, the table would now have the `unique_id` field now uniquel
 
 <table>
   <tr>
-   <td>unique_id
+   <td><b>unique_id</b>
    </td>
-   <td>calendar_date
+   <td><b>calendar_date</b>
    </td>
-   <td>ad_id
+   <td><b>ad_id</b>
    </td>
-   <td>impressions
+   <td><b>impressions</b>
    </td>
-   <td>spend
+   <td><b>spend</b>
    </td>
-   <td>clicks
+   <td><b>clicks</b>
    </td>
-   <td>conversions
+   <td><b>conversions</b>
    </td>
   </tr>
   <tr>
@@ -172,7 +177,7 @@ After executing this, the table would now have the `unique_id` field now uniquel
 
 Amazing, you just made a surrogate key! You can just move on to the next data model, right? No!! It’s  critically important to test your surrogate keys for uniqueness and non-null values to ensure that the correct fields were chosen to create the surrogate key.
 
-In order to test for null and unique values you can utilize code-based tests like [dbt tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests), that can check fields for nullness and uniqueness. You can additionally utilize simple SQL queries or unit tests to check if surrogate key count and non-nullness is correct.
+In order to test for null and unique values you can utilize code-based tests like [dbt tests](/docs/build/tests), that can check fields for nullness and uniqueness. You can additionally utilize simple SQL queries or unit tests to check if surrogate key count and non-nullness is correct.
 
 ## A note on hashing algorithms
 
@@ -239,7 +244,7 @@ dbt supports several macros to help data folks write DRY (don’t repeat yoursel
 
 ## Performance concerns for surrogate keys
 
-In the past, you may have seen surrogate keys take the form of monotonically increasing integers (ex. 1, 2, 3, 4). These surrogate keys were often limited to 4-bit integers that could be indexed quickly. However, in the practice of analytics engineering, surrogate keys derived from the data often take the form of a hashed string value. Given this form, these surrogate keys are not necessarily optimized for performance for large table scans and complex joins. For large data models (millions, billions, trillions of rows) that have surrogate keys, you should materialize them as tables or [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) to help make joining entities more efficient.
+In the past, you may have seen surrogate keys take the form of monotonically increasing integers (ex. 1, 2, 3, 4). These surrogate keys were often limited to 4-bit integers that could be indexed quickly. However, in the practice of analytics engineering, surrogate keys derived from the data often take the form of a hashed string value. Given this form, these surrogate keys are not necessarily optimized for performance for large table scans and complex joins. For large data models (millions, billions, trillions of rows) that have surrogate keys, you should materialize them as tables or [incremental models](https://docs.getdbt.com/docs/build/incremental-models) to help make joining entities more efficient.
 
 ## Conclusion
 

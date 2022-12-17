@@ -29,6 +29,11 @@ A SQL statement (or list of SQL statements) to be run at the start, or end, of t
 * The `on-run-end` hook has additional jinja variables available in the context — check out the [docs](on-run-end-context).
 
 ## Examples
+
+<Snippet src="hooks-to-grants" />
+
+<VersionBlock lastVersion="1.1">
+
 ### Grant privileges at the end of a run
 
 <File name='dbt_project.yml'>
@@ -52,6 +57,8 @@ on-run-end:
 ```
 
 </File>
+
+</VersionBlock>
 
 ### Grant privileges on all schemas that dbt uses at the end of a run
 This leverages the [schemas](schemas) variable that is only available in an `on-run-end` hook.

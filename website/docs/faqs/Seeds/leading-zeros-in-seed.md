@@ -1,7 +1,7 @@
 ---
 title: How do I preserve leading zeros in a seed?
 description: "Use column types to include leading zeros in seed"
-sidebar_label: 'include leading zeroes in your seed file'
+sidebar_label: 'Include leading zeroes in your seed file'
 id: leading-zeros-in-seed
 
 ---

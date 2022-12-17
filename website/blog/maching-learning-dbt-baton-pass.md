@@ -42,13 +42,13 @@ This happens because the “normal” way of doing things lacks long-term & expl
 
 ### Here’s what happened
 
-After some initial planning, I knew we had this raw data living somewhere in our data warehouse. It was easy to make sense of this starting point for our work together. I wrote dbt transformations to massage this raw data and joined a couple <Term id="table">tables</Term> together based on intuition of what variables mattered: daily active usage, number of users, amount paid, historical usage, etc.
+After some initial planning, I knew we had this raw data living somewhere in our <Term id="data-warehouse" />. It was easy to make sense of this starting point for our work together. I wrote dbt transformations to massage this raw data and joined a couple <Term id="table">tables</Term> together based on intuition of what variables mattered: daily active usage, number of users, amount paid, historical usage, etc.
 
 The ML engineer stepped in from here. She was used to doing her statistics and preprocessing in python [pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/index.html). Before she opened up her Jupyter notebook, we had a heart-to-heart conversation and realized the same work could be done through dbt. Preprocessing could be done through this [open source dbt package](https://github.com/omnata-labs/dbt-ml-preprocessing/tree/1.1.0/#dbt-ml-preprocessing) and there were plenty of others like it in the [package registry](https://hub.getdbt.com/).
 
 ![image of table with macro names and connector compatibility](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/macro-names.png)
 
-The ML engineer got the preprocessing steps (think: one-hot encoding, feature scaling, imputation) finalized. She used SQL to read the dbt models (tables) into a Jupyter notebook to perform model training. After iterating on the machine learning models and tracking model fit (think: AUC/Precision/Recall (for classification)), she ran the model over dbt-created tables and output the predicted results as a table in the database. To keep documentation clean, she [configured a source](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources/) within the dbt project to reflect this predicted results table. It wasn’t intuitive, but it was better than leaving it out of dbt docs.
+The ML engineer got the preprocessing steps (think: one-hot encoding, feature scaling, imputation) finalized. She used SQL to read the dbt models (tables) into a Jupyter notebook to perform model training. After iterating on the machine learning models and tracking model fit (think: AUC/Precision/Recall (for classification)), she ran the model over dbt-created tables and output the predicted results as a table in the database. To keep documentation clean, she [configured a source](/docs/build/sources) within the dbt project to reflect this predicted results table. It wasn’t intuitive, but it was better than leaving it out of dbt docs.
 
 Finally, she created a dashboard on top of this table to publicize model accuracy over time to end users. To schedule this, we went to the data engineer to string together the above in [Airflow](https://discourse.getdbt.com/t/orchestrating-fivetran-and-dbt-with-airflow/2079) everyday at 8am and called it done.
 
@@ -97,7 +97,7 @@ Gluing together notebooks and dbt isn’t the most elegant experience today. It�
 #### How would this change my story?
 
 My ML engineer would know the quality of input data created by dbt before starting machine learning development. I could schedule this notebook in sync with my dbt jobs and know instantly if my **ML model drift is caused by data quality vs. model logic.** 
-Also, I would create a data app (in Hex) where users plug in different input scenarios that feed into the predictive model. Even better, I could track versions of my ML models deployed over time in Modelbit + Hex and deploy ML external functions as [dbt macros](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros/#macros)
+Also, I would create a data app (in Hex) where users plug in different input scenarios that feed into the predictive model. Even better, I could track versions of my ML models deployed over time in Modelbit + Hex and deploy ML external functions as [dbt macros](/docs/build/jinja-macros)
  (by the way: how is this not more normal?!).
 
 ![Image showing the notebook and dbt synchronization](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/notebook-dbt-sync.png)
@@ -106,7 +106,7 @@ Also, I would create a data app (in Hex) where users plug in different input sce
 
 #### What are the tradeoffs?
 
-I’d still have to export my predictive results back to the database and configure them as sources for dbt docs(depends if Modelbit is involved). People wouldn’t know at a glance the data lineage to power this notebook. But my gut tells me the tradeoff would be worth it because the ML engineer knows where to start problem solving even if the solution wasn’t readily available through SQL.
+I’d still have to export my predictive results back to the database and configure them as sources for dbt docs(depends if Modelbit is involved). People wouldn’t know at a glance the <Term id="data-lineage">data lineage</Term> to power this notebook. But my gut tells me the tradeoff would be worth it because the ML engineer knows where to start problem solving even if the solution wasn’t readily available through SQL.
 
 ### Bring machine learning to the SQL workflow
 
