@@ -54,7 +54,7 @@ models:
 
 </File>
 
-The `grants` config can also be defined:
+The `constraints_enabled` config can also be defined:
 
 - under the `models` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a model's SQL file
