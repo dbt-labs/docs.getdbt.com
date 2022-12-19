@@ -434,7 +434,7 @@ const sidebarSettings = {
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/vertica-configs",
-        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/doris-configs"
       ],
     },
     {
