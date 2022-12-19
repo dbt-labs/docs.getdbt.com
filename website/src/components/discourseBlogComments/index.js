@@ -32,7 +32,6 @@ export const DiscourseBlogComments = ({title,slug}) => {
             setTopicId(data.topicId)
             setLoading(false)
           }
-  
           
         } catch(err) {
           setIsError(true)
@@ -63,8 +62,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
       } else if (!comments?.length && !isError) {
         return (
           <div>
-            <p data-testid='no-comments-text'>No recent comments.</p>
-            <a href={`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`} target="_blank" rel="noopener noreferrer" title='Start a discussion' className={`button button--primary ${styles.discourseCta}`}>Start a discussion</a>
+            <a data-testid='no-comments-text' href={`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`} target="_blank" rel="noopener noreferrer" title='Start a discussion' className={`button button--primary ${styles.discourseCta}`}>Start a discussion</a>
           </div>
         )
       } else {
@@ -80,7 +78,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
                   <div dangerouslySetInnerHTML={{__html: comment.cooked}} />
                 </li>
               ))}
-               <a href={`https://discourse.getdbt.com/t/${topicId}`} target="_blank" rel="noopener noreferrer" title='Continnue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
+               <a href={`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`} target="_blank" rel="noopener noreferrer" title='Continnue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
             </ul>
            
           </div>
@@ -90,7 +88,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
 
     return (
       <div className={styles.commentContainer}>
-        <h4 className='mt-4'>Comments</h4>
+        <h4 className='mt-4'>Comments</h4> 
         {resultData()}
       </div>
     )
