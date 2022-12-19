@@ -50,12 +50,6 @@ export const DiscourseBlogComments = ({title,slug}) => {
       
     }, [postSlug, topicId])
 
-    
-    console.log(topicId)
-    console.log('comments', comments)
-    console.log('slug', postSlug)
-
-
     const resultData = () => {
       if (loading) {
         return <img
