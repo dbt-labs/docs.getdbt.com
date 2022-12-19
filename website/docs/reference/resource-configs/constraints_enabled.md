@@ -8,7 +8,55 @@ id: "constraints_enabled"
 
 # Definition
 
+You can manage data type constraints on your models using the `constraints_enabled` configuration. This configuration is available on all models, and is disabled by default. When enabled, dbt will automatically add constraints to your models based on the data types of the columns in your model's schema. This is a great way to ensure that your data is always in the correct format. For example, if you have a column in your model that is defined as a `date` data type, dbt will automatically add a data type constraint to that column to ensure that the data in that column is always a valid date. Also, if you want to add a not null constraint to a column, you can do so by adding the `not_null` value to the column definition in your model's schema: `constraints: ['not_null']`.
+
 ## Configuring Constraints
+
+You can configure `constraints_enabled` in `dbt_project.yml` to apply constraints to many resources at once—all models in your project, a package, or a subfolder—and you can also configure grants one-by-one for specific resources, in yaml config: blocks or right within their .sql files.
+
+<Tabs
+  defaultValue="models"
+  values={[
+    { label: 'Models', value: 'models', },
+  ]
+}>
+
+<TabItem value="models">
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: constraints_example
+    docs:
+      node_color: black
+    config:
+      constraints_enabled: true
+    columns:
+      - name: id
+        data_type: integer
+        description: hello
+        constraints: ['not null','primary key']
+        check: (id > 0)
+        tests:
+          - unique
+      - name: color
+        data_type: string
+      - name: date_day
+        data_type: date
+```
+
+</File>
+
+The `grants` config can also be defined:
+
+- under the `models` config block in `dbt_project.yml`
+- in a `config()` Jinja macro within a model's SQL file
+
+See [configs and properties](configs-and-properties) for details.
+
+</TabItem>
+</Tabs>
 
 ## Constraints Enabled Inheritance
 
