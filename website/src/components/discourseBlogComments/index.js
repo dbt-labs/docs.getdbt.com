@@ -47,6 +47,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
       
     }, [topicId])
 
+    
     console.log(topicId)
     console.log('comments', comments)
 
