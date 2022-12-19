@@ -125,7 +125,103 @@ models:
 
 <div warehouse="PostgreSQL">
 
-* dbt accounts for the [`copy_grants` configuration](/reference/resource-configs/snowflake-configs#copying-grants) when calculating which grants need to be added or removed.
+* PostgreSQL constraints documentation: [here](https://www.postgresql.org/docs/current/ddl-constraints.html#id-1.5.4.6.6)
+
+<File name='models/constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select 
+  1 as id, 
+  'blue' as color, 
+  cast('2019-01-01' as date) as date_day
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: constraints_example
+    docs:
+      node_color: black
+    config:
+      constraints_enabled: true
+    columns:
+      - name: id
+        data_type: integer
+        description: hello
+        constraints: ['not null','primary key']
+        check: (id > 0)
+        tests:
+          - unique
+      - name: color
+        data_type: string
+      - name: date_day
+        data_type: date
+```
+
+</File>
+
+<File name='target/run/.../constraints_example.sql'>
+
+Expected DDL to enforce constraints:
+
+```sql
+  create  table "sungwonchung3/constraints"."dbt_sung"."constraints_example__dbt_tmp"
+  
+    
+  (
+    
+      
+      
+      
+      id integer  not null  primary key  check (id > 0) ,
+    
+      
+      
+      
+      color text   ,
+    
+      
+      
+      
+      date_day date   
+    
+  )
+ ;
+    insert into "sungwonchung3/constraints"."dbt_sung"."constraints_example__dbt_tmp" 
+  (
+    
+      
+      id ,
+    
+      
+      color ,
+    
+      
+      date_day 
+    
+  )
+
+    
+    (
+    
+
+select 
+  null as id, 
+  'blue' as color, 
+  cast('2019-01-01' as date) as date_day
+  );
+```
+
+</File>
 
 </div>
 
