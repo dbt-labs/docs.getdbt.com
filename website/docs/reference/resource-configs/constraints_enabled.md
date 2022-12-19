@@ -168,7 +168,7 @@ models:
         tests:
           - unique
       - name: color
-        data_type: string
+        data_type: text
       - name: date_day
         data_type: date
 ```
