@@ -7,6 +7,24 @@
     margin-top: 3rem;
 }
 
+.commentContainer ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.commentContainer ul li {
+    margin-bottom: 2rem;
+}
+
+.commentContainer .username {
+    font-weight: 700;
+}
+
+.commentContainer .userTitle {
+    opacity: .7;
+} 
+
 
 /* Cta */
 .discourseCta {

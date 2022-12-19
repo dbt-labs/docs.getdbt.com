@@ -4,6 +4,8 @@ import axios from 'axios'
 
 export const DiscourseBlogComments = ({title,slug}) => {
 
+    const DISCOURSE_TOPIC_ENDPOINT = `https://discourse.getdbt.com/t/`
+
     const [comments, setComments] = useState([])
     const [topicId, setTopicId] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -39,8 +41,6 @@ export const DiscourseBlogComments = ({title,slug}) => {
       }
       fetchData()
 
-     
-  
       return () => {
         isMounted = false
       }
@@ -64,7 +64,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
         return (
           <div>
             <p data-testid='no-comments-text'>No recent comments.</p>
-            <a href={`https://discourse.getdbt.com/t/${topicId}`} target="_blank" rel="noopener noreferrer" title='Start a discussion' className={`button button--primary ${styles.discourseCta}`}>Start a discussion</a>
+            <a href={`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`} target="_blank" rel="noopener noreferrer" title='Start a discussion' className={`button button--primary ${styles.discourseCta}`}>Start a discussion</a>
           </div>
         )
       } else {
@@ -74,9 +74,9 @@ export const DiscourseBlogComments = ({title,slug}) => {
               {comments.map(comment => (
                 <li key={comment.id} className={styles.discourseComments} >
                   {' '}
-                  <span>
-                    by {comment.username}
-                  </span>
+                  <div>
+                    <span className={styles.username}>{comment.username}</span> <span className={styles.userTitle}>{comment.user_title}</span>
+                  </div>
                   <div dangerouslySetInnerHTML={{__html: comment.cooked}} />
                 </li>
               ))}
