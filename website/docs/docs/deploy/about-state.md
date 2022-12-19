@@ -64,7 +64,7 @@ The available options depend on the node type:
 
 ### Combining `state` and `result` selectors
 
-The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run AND any new or modified models.
+The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run OR any new or modified models.
 
 ```bash
 $ dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
