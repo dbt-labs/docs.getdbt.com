@@ -7,6 +7,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
 
     const DISCOURSE_TOPIC_ENDPOINT = `https://discourse.getdbt.com/t/`
 
+    const [postSlug, setPostSlug] = useState(slug)
     const [comments, setComments] = useState([])
     const [topicId, setTopicId] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -14,6 +15,8 @@ export const DiscourseBlogComments = ({title,slug}) => {
   
     useEffect(() => {
       let isMounted = true
+      
+      setPostSlug(slug)
   
       const fetchData = async () => {
         try {
@@ -45,11 +48,13 @@ export const DiscourseBlogComments = ({title,slug}) => {
         isMounted = false
       }
       
-    }, [topicId])
+    }, [postSlug, topicId])
 
     
     console.log(topicId)
     console.log('comments', comments)
+    console.log('slug', postSlug)
+
 
     const resultData = () => {
       if (loading) {
