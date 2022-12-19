@@ -433,6 +433,7 @@ const sidebarSettings = {
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
+        "reference/resource-configs/vertica-configs",
       ],
     },
     {
