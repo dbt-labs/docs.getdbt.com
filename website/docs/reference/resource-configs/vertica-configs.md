@@ -489,7 +489,7 @@ select * from  public.product_dimension
 ```
 </File>
 </TabItem>
-</tabs>
+</Tabs>
 
 
 
