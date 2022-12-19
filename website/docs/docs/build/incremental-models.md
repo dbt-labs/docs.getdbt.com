@@ -160,10 +160,10 @@ It's often desirable to build models as tables in your data warehouse since down
 Like many things in programming, incremental models are a trade-off between complexity and performance. While they are not as straightforward as the `view` and `table` materializations, they can lead to significantly better performance of your dbt runs.
 
 ## Understanding the is_incremental() macro
-The `is_incremental()` macro will return `True` if:
-* the destination table already exists in the database
-* dbt is _not_ running in full-refresh mode
-* the running model is configured with `materialized='incremental'`
+The `is_incremental()` macro will return `False` if:
+* the destination table does not exist in the database
+* dbt is running in full-refresh mode
+* the running model is _not_ configured with `materialized='incremental'` 
 
 Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
 
