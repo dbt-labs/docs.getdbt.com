@@ -4,7 +4,7 @@ datatype: "{<dictionary>}"
 default_value: {constraints_enabled: false}
 id: "constraints_enabled"
 ---
-<VersionBlock firstVersion="1.4">
+<!-- <VersionBlock firstVersion="1.4"> -->
 
 # Definition
 
@@ -83,4 +83,4 @@ models:
 
 </WHCode>
 
-</VersionBlock> 
+<!-- </VersionBlock>  -->
