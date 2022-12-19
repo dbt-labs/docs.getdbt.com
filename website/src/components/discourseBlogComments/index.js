@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.css'
 import axios from 'axios'
+import DOMPurify from 'isomorphic-dompurify';
 
 export const DiscourseBlogComments = ({title,slug}) => {
 
@@ -62,7 +63,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
       } else if (!comments?.length && !isError) {
         return (
           <div>
-            <a data-testid='no-comments-text' href={`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`} target="_blank" rel="noopener noreferrer" title='Start a discussion' className={`button button--primary ${styles.discourseCta}`}>Start a discussion</a>
+            <a data-testid='no-comments-text' href={DOMPurify.sanitize(`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`)} target="_blank" rel="noopener noreferrer" title='Start a discussion' className={`button button--primary ${styles.discourseCta}`}>Start a discussion</a>
           </div>
         )
       } else {
@@ -78,7 +79,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
                   <div dangerouslySetInnerHTML={{__html: comment.cooked}} />
                 </li>
               ))}
-               <a href={`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`} target="_blank" rel="noopener noreferrer" title='Continnue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
+               <a href={DOMPurify.sanitize(`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`)} target="_blank" rel="noopener noreferrer" title='Continnue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
             </ul>
            
           </div>

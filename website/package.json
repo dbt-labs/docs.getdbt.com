@@ -21,6 +21,7 @@
     "fs": "0.0.2",
     "gray-matter": "^4.0.3",
     "hast-util-is-element": "^1.1.0",
+    "isomorphic-dompurify": "^0.24.0",
     "js-yaml": "^4.1.0",
     "mobx": "^6.3.9",
     "node-polyfill-webpack-plugin": "^1.1.4",
