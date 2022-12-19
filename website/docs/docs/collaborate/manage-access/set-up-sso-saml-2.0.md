@@ -238,11 +238,13 @@ dbt Cloud expects.
 7. Click **Add another mapping** to map additional attributes.
 
 Expected **Attributes**:
+
 | Name           | Name format | Value                | Description                |
 | -------------- | ----------- | -------------------- | -------------------------- |
 | `First name`   | Unspecified | `first_name`         | The user's first name.  |
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
+
 8. To use role-based access control in dbt Cloud,enter the groups in the **Group membership** field during configuration:
 
 | Google groups  | App attributes |
@@ -293,7 +295,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
    | **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
 14. Click **Save** at the top of the form.
 
-#### Creating SAML Attributes in AD
+### Creating SAML settings
 
 From the Set up Single Sign-On with SAML page:
 
@@ -315,6 +317,7 @@ From the Set up Single Sign-On with SAML page:
 
 **Note:** Keep in mind that the Group ID in Azure AD maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
 
+### Finish setup
 
 9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration.
 
@@ -336,7 +339,7 @@ To configure OneLogin, you will need **Administrator** access.
 
 ### Configure SAML settings
 
-The following steps assume your dbt Cloud deployment instance uses `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions) uses a different URL, then substitute ` cloud.getdbt.com` with the URL of your instance.
+The following steps assume your dbt Cloud deployment instance uses `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions-ip-addresses) uses a different URL, then substitute ` cloud.getdbt.com` with the URL of your instance.
 
 3. To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization

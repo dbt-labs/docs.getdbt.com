@@ -27,18 +27,17 @@ To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosyste
 
 ### Community Adapters
 
-| Data Platforms (click to view setup guide)      |                                 |                                   |                                                                   
-| ----------------------------------------------- | --------------------------------| ---------------------------------|
-| [Athena](athena-setup)                | [Hive](hive-setup)                        | [SingleStore](singlestore-setup)  |
-| [Clickhouse](clickhouse-setup)        | [Impala](impala-setup)                    | [SQLite](sqlite-setup)  |
-| [IBM DB2](ibmdb2-setup)               | [iomete](iomete-setup)                    | [SQL Server & Azure SQ](mssql-setup) |
-| [DuckDB](duckdb-setup)                | [Layer](layer-setup)                      | [AzureSynapse](azuresynapse-setup) |
-| [Dremio](dremio-setup)                | [Materialize](materialize-setup)          | [Teradata](teradata-setup)|
-| [Exasol Analytics](exasol-setup)      | [MindsDB](mindsdb-setup)                  | [TiDB](tidb-setup)|
-| [Firebolt](firebolt-setup)            | [MySQL](mysql-setup)                      | [Vertica](vertica-setup)|
-| [AWS Glue](glue-setup)                | [Oracle](oracle-setup)                    |
-| [Greenplum](greenplum-setup)          | [Rockset](rockset-setup)   
-
+| Data Platforms (click to view setup guide) |                                  |                                      |                                                                   
+|--------------------------------------------|----------------------------------|--------------------------------------|
+| [Athena](athena-setup)                     | [Greenplum](greenplum-setup)     | [Oracle](oracle-setup)               |
+| [Clickhouse](clickhouse-setup)             | [Hive](hive-setup)               | [Rockset](rockset-setup)             |
+| [IBM DB2](ibmdb2-setup)                    | [Impala](impala-setup)           | [SingleStore](singlestore-setup)     |
+| [Doris & SelectDB](doris-setup)            | [Infer](infer-setup)             | [SQLite](sqlite-setup)               |
+| [DuckDB](duckdb-setup)                     | [iomete](iomete-setup)           | [SQL Server & Azure SQ](mssql-setup) |
+| [Dremio](dremio-setup)                     | [Layer](layer-setup)             | [AzureSynapse](azuresynapse-setup)   |
+| [Exasol Analytics](exasol-setup)           | [Materialize](materialize-setup) | [Teradata](teradata-setup)           |
+| [Firebolt](firebolt-setup)                 | [MindsDB](mindsdb-setup)         | [TiDB](tidb-setup).                  |
+| [AWS Glue](glue-setup)                     | [MySQL](mysql-setup)             | [Vertica](vertica-setup)             |
 
 ## Adapter Installation
 
@@ -74,7 +73,7 @@ Community-supported plugins are works in progress, and anyone is welcome to cont
 
 ### Creating a new adapter
 
-If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  [Adapter Development](/guides/advanced/adapter-development/1-what-are-adapters) section.
+If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  [Adapter Development](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) section.
 
 If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter) for more information.
 
