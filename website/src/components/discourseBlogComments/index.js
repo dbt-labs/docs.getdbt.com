@@ -76,7 +76,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
                   <div>
                     <span className={styles.username}>{comment.username}</span> <span className={styles.userTitle}>{comment.user_title}</span>
                   </div>
-                  <div dangerouslySetInnerHTML={{__html: comment.cooked}} />
+                  <div dangerouslySetInnerHTML={{__html: sanitizeHtml(comment.cooked)}} />
                 </li>
               ))}
                <a href={sanitizeHtml(`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`)} target="_blank" rel="noopener noreferrer" title='Continnue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
