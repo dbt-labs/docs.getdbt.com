@@ -43,9 +43,8 @@ async function getDiscourseComments( event ) {
 
     // If it does not exist in Discourse, create a new topic
     if(!topicExists) {
-        createDiscourseTopic(postTitle, postSlug)
+        await createDiscourseTopic(postTitle, postSlug)
 
-        // Once the topic is created, search for the topic again
         topics = await searchDiscourseTopics(postTitleEncoded)
 
         if(topics && topics?.length > 0 ) {
