@@ -1,5 +1,8 @@
 ---
 title: How do I write long-form explanations in my descriptions?
+description: "Write long descriptions in your documentation"
+sidebar_label: 'Write long descriptions'
+id: long-descriptions
 ---
 If you need more than a sentence to explain a model, you can:
 1. Split your description over multiple lines using `>`. Interior line breaks are removed and Markdown can be used. This method is recommended for simple, single-paragraph descriptions:
