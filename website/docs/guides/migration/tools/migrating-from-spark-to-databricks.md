@@ -3,7 +3,7 @@ title: "Migrating from dbt-spark to dbt-databricks"
 id: "migrating-from-spark-to-databricks"
 ---
 
-You can use the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks) to establish a dbt connection with Databricks, instead of the `dbt-spark` adapter. In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features through the Delta table format.
+You can use the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks) to establish a dbt connection with Databricks, instead of the `dbt-spark` adapter. In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
 
 ## Simpler authentication
 
@@ -14,7 +14,7 @@ Previously, you had to provide a `cluster` or `endpoint` ID which was hard to pa
 
 ## Better defaults
 
-The `dbt-databricks` adapter provides better defaults than `dbt-spark` does. The defaults help optimize your translation workflow so you can get the fast performance and cost-effectiveness of Databricks. They are:
+The `dbt-databricks` adapter provides better defaults than `dbt-spark` does. The defaults help optimize your workflow so you can get the fast performance and cost-effectiveness of Databricks. They are:
 
 - The dbt models use the [Delta](https://docs.databricks.com/delta/index.html) table format. You can remove any declared configurations of `file_format = 'delta'` since they're now redundant.
 - Accelerate your expensive queries with the [Photon engine](https://docs.databricks.com/runtime/photon.html).
