@@ -147,7 +147,7 @@ Your results from running this query look a little like this:
 
 :::tip Tip
 If you are finding yourself using the same code for a certain CTE across multiple 
-queries or models, that’s probably a good sign that CTE should be its own [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models) or view.
+queries or models, that’s probably a good sign that CTE should be its own [model](https://docs.getdbt.com/docs/build/models) or view.
 :::
 
 ## CTE vs Subquery
