@@ -15,7 +15,7 @@ models:
     consequat.
 ```
 
-2. Split your description over multiple lines using `|`. Interior linebreaks are maintained, and Markdown can be used:
+2. Split your description over multiple lines using `|`. Interior line breaks are maintained and Markdown can be used. This method is recommended for more complex descriptions:
 ```yml
 version: 2
 
