@@ -243,7 +243,7 @@ This is actually an [Agate table](https://agate.readthedocs.io/page/api/table.ht
 {% set payment_methods_query %}
 select distinct
 payment_method
-from app_data.payments
+from {{ ref('raw_payments') }}
 order by 1
 {% endset %}
 

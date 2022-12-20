@@ -158,7 +158,7 @@ You will thank yourself later for building in a global variable. Adding importan
 Step 4 walks you through how to do your first join, in which you need to fan out the data spine to the finest grain possible and to include all the id onto which we will join the rest of the data. This step is crucial to joining the snapshots in subsequent steps.
 :::
 
-Let’s look at how we’d do this with an example. You may have many events associated with a single `product_id`. Each `product_id` may have several `order_ids`, and each `order_id` may have another id associated with it. Which means that the grain of each table needs to be identified. The point here is that we need to build in an id at the finest grain. To do so, we’ll add in a [dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/surrogate_key.sql) in the staging models that live on top of the snapshot tables. 
+Let’s look at how we’d do this with an example. You may have many events associated with a single `product_id`. Each `product_id` may have several `order_ids`, and each `order_id` may have another id associated with it. Which means that the grain of each table needs to be identified. The point here is that we need to build in an id at the finest grain. To do so, we’ll add in a [dbt_utils.generate_surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/generate_surrogate_key.sql) in the staging models that live on top of the snapshot tables. 
 
 Then, in your joining model, let’s add a CTE to build out our spine with all of our ids. 
 
