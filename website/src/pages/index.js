@@ -7,7 +7,8 @@ import BlogPostCard from '@site/src/components/blogPostCard';
 import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
-
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+// import { getSpotlightMember } from '../utils/get-spotlight-member';
 
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
@@ -34,8 +35,27 @@ function Home() {
     title: "How we structure our dbt projects",
     description: "Our hands-on learnings for how to structure your dbt project for success and gain insights into the principles of analytics engineering.",
     link: "/guides/best-practices/how-we-structure/1-guide-overview",
-    image: "/img/structure-dbt-projects.png"
+    image: "/img/structure-dbt-projects.png",
+    sectionTitle: 'Featured resource'
   }
+  
+  // Set spotlightSection to featuredResource by default
+  let spotlightSection = featuredResource
+
+  // Check if featured community spotlight member set in Docusaurus config
+  const { siteConfig } = useDocusaurusContext()
+  let communitySpotlightMember = 
+    siteConfig?.themeConfig?.communitySpotlightMember || null
+
+  // Get spotlight member by ID or date if available
+  // If found, update section to show community spotlight member
+  // Otherwise, show featured resource
+  const spotlightMember = undefined
+  // const spotlightMember = getSpotlightMember(communitySpotlightMember)
+  if(spotlightMember) {
+    spotlightSection = spotlightMember
+  }
+  
   return (
     <>
       <Head>
@@ -44,7 +64,7 @@ function Home() {
       <Layout permalink="/">
         <div className="container container--fluid home" style={{ "padding": "0", "background": "#FFF" }}>
           <Hero heading="Welcome to the dbt Developer Hub" subheading="Your home base for learning dbt, connecting with the community and contributing to the craft of analytics engineering " showGraphic />
-          <section className="resource-section row">
+          <section className={`resource-section row ${spotlightMember ? 'has-spotlight-member' : ''}`}>
             <div className="popular-header"><h2>Popular resources</h2></div>
             <div className="popular-resources">
               <div className="grid">
@@ -82,9 +102,9 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className="featured-header"><h2>Featured resource</h2></div>
+            <div className="featured-header"><h2>{spotlightSection?.sectionTitle ? spotlightSection.sectionTitle : 'Featured resource'}</h2></div>
             <div className="featured-resource">
-            <BlogPostCard postMetaData={featuredResource} />
+            <BlogPostCard postMetaData={spotlightSection} />
             </div>
           </section>
 

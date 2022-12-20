@@ -49,7 +49,7 @@ pip is the easiest way to install the adapter:
 
 ### Connecting to Teradata
 
-To connect to Teradata Vantage from dbt, you'll need to add a [profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) to your `profiles.yml` file. A Teradata profile conforms to the following syntax:
+To connect to Teradata Vantage from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/get-started/connection-profiles) to your `profiles.yml` file. A Teradata profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 
