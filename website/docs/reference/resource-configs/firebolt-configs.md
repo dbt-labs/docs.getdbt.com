@@ -315,7 +315,7 @@ $ dbt run-operation stage_external_sources --vars "ext_full_refresh: true"
 
 ## Incremental models
 
-The [`incremental_strategy` configuration](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Firebolt currently supports the `append` configuration. You can specify `incremental_strategy` in `dbt_project.yml` or within a model file's `config()` block. The `append` configuration is the default. Specifying this configuration is optional.
+The [`incremental_strategy` configuration](https://docs.getdbt.com/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Firebolt currently supports the `append` configuration. You can specify `incremental_strategy` in `dbt_project.yml` or within a model file's `config()` block. The `append` configuration is the default. Specifying this configuration is optional.
 
 The `append` strategy performs an `INSERT INTO` statement with all the new data based on the model definition. This strategy doesn't update or delete existing rows, so if you do not filter the data to the most recent records only, it is likely that duplicate records will be inserted.
 
