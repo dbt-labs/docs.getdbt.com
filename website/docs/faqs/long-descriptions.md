@@ -2,7 +2,7 @@
 title: How do I write long-form explanations in my descriptions?
 ---
 If you need more than a sentence to explain a model, you can:
-1. Split your description over multiple lines using `>`. Interior linebreaks are removed, so this is often best for simple, single-paragraph text. Markdown can be used:
+1. Split your description over multiple lines using `>`. Interior line breaks are removed and Markdown can be used. This method is recommended for simple, single-paragraph descriptions:
 ```yml
 version: 2
 
