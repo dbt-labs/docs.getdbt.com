@@ -43,13 +43,7 @@ async function getDiscourseComments( event ) {
 
     // If it does not exist in Discourse, create a new topic
     if(!topicExists) {
-        await createDiscourseTopic(postTitle, postSlug)
-
-        topics = await searchDiscourseTopics(postTitleEncoded)
-
-        if(topics && topics?.length > 0 ) {
-            topicId = await getTopicId(topics, postTitle)
-        }
+        topicId = await createDiscourseTopic(postTitle, postSlug)
 
         if(topicId) {
             comments = await getDiscourseTopicbyID(topicId)
@@ -89,11 +83,17 @@ async function createDiscourseTopic(title, slug) {
     console.log(`No topics found. Creating a new topic in Discourse - ${title}`)
 
     try  {
-        axios.post(`${discourse_endpoint}/posts`, {
+        const response = await axios.post(`${discourse_endpoint}/posts`, {
             title: title,
             raw: `This is a companion discussion topic for the original entry at ${DEVBLOG_URL}${slug}`,
             category: 2
         }, { headers })
+
+        const topicId = response?.data?.topic_id
+
+        console.log('Topic successfully created with topic_id', topicId)
+
+        return topicId
     
     } catch(err) {
         console.log('err', err)
@@ -140,7 +140,6 @@ async function returnResponse(status, res) {
   return resObj
 }
 
-// make the forEach above a reusuable function
 async function getTopicId(allTopics, postTitle) {
     allTopics.forEach(topic => {
         if(topic.title === postTitle) {

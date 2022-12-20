@@ -48,7 +48,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
         isMounted = false
       }
       
-    }, [postSlug, topicId])
+    }, [postSlug])
 
     const resultData = () => {
       if (loading) {
