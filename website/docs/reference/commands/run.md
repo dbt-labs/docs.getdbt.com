@@ -65,6 +65,8 @@ dbt will also allow you select which specific models you'd like to materialize. 
 
 For more information, see the [Model Selection Syntax Documentation](node-selection/syntax).
 
+For more information on running parents or children of specific models, see the [Graph Operators Documentation](node-selection/graph-operators).
+
 ## Treat warnings as errors
 
 <Changelog>
