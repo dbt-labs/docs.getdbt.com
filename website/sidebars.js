@@ -433,7 +433,8 @@ const sidebarSettings = {
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
-        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/vertica-configs",
+        "reference/resource-configs/doris-configs"
       ],
     },
     {
@@ -667,6 +668,7 @@ const sidebarSettings = {
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
+        "reference/warehouse-setups/infer-setup"
       ],
     },
     {
