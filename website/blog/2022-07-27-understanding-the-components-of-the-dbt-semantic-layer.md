@@ -49,7 +49,7 @@ The dbt Semantic layer is comprised of the following components[^2]:
 
 **Available Today**
 
-- **[`metric` node in dbt Core :](https://docs.getdbt.com/docs/building-a-dbt-project/metrics)** Similar to `models` or `sources` , this is a specific node type in dbt Core. It is the definition of a time-series aggregation over a table that supports zero or more dimensions. The resulting node is stored in the `manifest.json` just like `models` and referenced in the DAG.
+- **[`metric` node in dbt Core :](/docs/build/metrics)** Similar to `models` or `sources` , this is a specific node type in dbt Core. It is the definition of a time-series aggregation over a table that supports zero or more dimensions. The resulting node is stored in the `manifest.json` just like `models` and referenced in the DAG.
 - **[`dbt_metrics` package:](https://github.com/dbt-labs/dbt_metrics)** this package provides macros that combine the version-controlled metric definition and query-time parameters (like dimensions, a time grain, and secondary calculations) to generate a SQL query which calculates the metric value.
 - **[dbt Cloud Metadata API](https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api):** a GraphQL API which supports arbitrary queries over the metadata produced by dbt Cloud jobs. Contains metadata related to the accuracy, recency, configuration, and structure of the views and tables in the warehouse, as well as much more.
 
@@ -143,7 +143,7 @@ Additionally, integration partners will have built out experiences around Metric
 
 ### So what is publicly available now?
 
-Right now, the two main open-source components that are publicly available are the [`metric` node](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) within dbt Core and the `dbt_metrics` package. Combined, these two can operate an introductory semantic layer experience by allowing analytics engineers to define metrics and then query that metric via the metrics package. 
+Right now, the two main open-source components that are publicly available are the [`metric` node](/docs/build/metrics) within dbt Core and the `dbt_metrics` package. Combined, these two can operate an introductory semantic layer experience by allowing analytics engineers to define metrics and then query that metric via the metrics package.
 
 These two components are a static experience that have to be defined in the dbt project (as the selected dimensions are defined at model creation) but are useful for those who want to ensure that metrics remain consistent across every BI tool. If you identify with any of the following conditions, you could be a good fit for implementing this as it exists today:
 

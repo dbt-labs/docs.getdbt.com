@@ -16,9 +16,9 @@ description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, 
 You can use the `dbt-rpc` plugin to run a Remote Procedure Call (rpc) dbt server. This server compiles and runs queries in the context of a dbt project. Additionally, the RPC server provides methods that enable you to list and terminate running processes. We recommend running an rpc server from a directory containing a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
 
 :::caution Deprecation
-**The dbt-rpc plugin will be fully deprecated by the end of 2022.**
+**The dbt-rpc plugin will be fully deprecated by the second half of 2023.**
 
-For now, dbt Labs actively maintains and uses `dbt-rpc` to enable interactive dbt development. Once we announce the next-generation dbt Server is available for general release, we will deprecate the legacy plugin and only fix critical issues for a period of six months. After six months, we will archive this repository for read-only use.
+dbt Labs is actively maintaining `dbt-rpc` up to dbt v1.4. Starting in v1.5, we intend to break `dbt-rpc` compatibility in favor of [the new dbt Server](https://github.com/dbt-labs/dbt-server). dbt Labs will perform critical maintenance only on `dbt-rpc`, until the last compatible version of dbt has reached the end of official support (thus 12 months after release of v1.4; [see Core version policies](/docs/dbt-versions/core)).
 :::
 
 :::caution Running on Windows
@@ -242,7 +242,7 @@ Several of the following request types accept these additional parameters:
 - `select`: The space-delimited set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
 - `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
-- `state`: The filepath of artifacts to use when establishing [state](understanding-state) (optional)
+- `state`: The filepath of artifacts to use when establishing [state](/docs/deploy/about-state) (optional)
 
 ### Compile a project ([docs](compile))
 
@@ -447,9 +447,9 @@ This query executes the sql `select {{ 1 + 1 }} as id` (bas64-encoded) against t
 
 The resulting response will include a key called `table` with a value of `{'column_names': ['?column?'], 'rows': [[2.0]]}`
 
-## Reloading the Server
+## Reloading the RPC Server
 
-When the dbt Server starts, it will load the dbt project into memory using the files present on disk at startup. If the files in the dbt project should change (either during development or in a deployment),  the dbt Server can be updated live without cycling the server process. To reload the files present on disk, send a "hangup" signal to the running server process using the Process ID (pid) of the running process.
+When the dbt RPC Server starts, it will load the dbt project into memory using the files present on disk at startup. If the files in the dbt project should change (either during development or in a deployment),  the dbt RPC Server can be updated live without cycling the server process. To reload the files present on disk, send a "hangup" signal to the running server process using the Process ID (pid) of the running process.
 
 ### Finding the server PID
 
