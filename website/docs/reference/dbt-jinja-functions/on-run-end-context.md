@@ -60,7 +60,7 @@ on-run-end:
 
 ## database_schemas
 
-The `database_schemas` context variable can be used to reference the databases _and_ schemas that dbt has built models into during a run of dbt. This variable is similar to the `schemas` variable, and should be used if a dbt run builds resources into multiple different database.
+The `database_schemas` context variable can be used to reference the databases _and_ schemas that dbt has built models into during a run of dbt. This variable is similar to the `schemas` variable, and should be used if a dbt run builds resources into multiple different databases.
 
 Example:
 

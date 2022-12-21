@@ -182,9 +182,19 @@ models:
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. 
 
-The following config uses the `EXTRA_SMALL` warehouse for all models in the project, except for the models in the `clickstream` folder, which are configured to use the `EXTRA_LARGE` warehouse. In this example, all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
+<Tabs
+  defaultValue="dbt_project.yml"
+  values={[
+    { label: 'YAML code', value: 'dbt_project.yml', },
+    { label: 'SQL code', value: 'models/events/sessions.sql', },
+    ]}
+>
+
+<TabItem value="dbt_project.yml">
+
+The example config below changes the warehouse for a group of models with a config argument in the yml.
 
 <File name='dbt_project.yml'>
 
@@ -195,16 +205,64 @@ version: 1.0.0
 ...
 
 models:
-  +snowflake_warehouse: "EXTRA_SMALL"
+  +snowflake_warehouse: "EXTRA_SMALL"    # use the `EXTRA_SMALL` warehouse for all models in the project...
   my_project:
     clickstream:
-      +snowflake_warehouse: "EXTRA_LARGE"
+      +snowflake_warehouse: "EXTRA_LARGE"    # ...except for the models in the `clickstream` folder, which will use the `EXTRA_LARGE` warehouse.
 
 snapshots:
-  +snowflake_warehouse: "EXTRA_LARGE"
+  +snowflake_warehouse: "EXTRA_LARGE"    # all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 ```
 
 </File>
+</TabItem>
+
+<TabItem value="models/events/sessions.sql">
+
+The example config below changes the warehouse for a single model with a config() block in the sql model.
+
+<File name='models/events/sessions.sql'>
+
+```sql
+{{
+  config(
+    materialized='table',
+    snowflake_warehouse='EXTRA_LARGE'
+  )
+}}
+
+with
+
+aggregated_page_events as (
+
+    select
+        session_id,
+        min(event_time) as session_start,
+        max(event_time) as session_end,
+        count(*) as count_page_views
+    from {{ source('snowplow', 'event') }}
+    group by 1
+
+),
+
+index_sessions as (
+
+    select
+        *,
+        row_number() over (
+            partition by session_id
+            order by session_start
+        ) as page_view_in_session_index
+    from aggregated_page_events
+
+)
+
+select * from index_sessions
+```
+
+</File>
+</TabItem>
+</Tabs>
 
 ## Copying grants
 

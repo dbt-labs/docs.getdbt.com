@@ -74,10 +74,10 @@ You could probably write hundreds of pages on DataFrame use cases and examples, 
 
 Let’s just say it: there’s a lot of things you can do in Python that could do in SQL and vice versa, but Python packages typically win out when it comes to data enrichment. A typical use case for Python DataFrames is the ability to apply Python libraries or functions to data in the DataFrame.
 
-In practice, this could look like applying an [IP parser](https://pypi.org/project/ipparser/) to an IP address column, using a package to determine whether a [date falls on a holiday](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models#using-pypi-packages), or leveraging [numpy](https://numpy.org/) for performant and complex mathematical computations.
+In practice, this could look like applying an [IP parser](https://pypi.org/project/ipparser/) to an IP address column, using a package to determine whether a [date falls on a holiday](/docs/build/python-models#using-pypi-packages), or leveraging [numpy](https://numpy.org/) for performant and complex mathematical computations.
 
 :::tip dbt x Python DataFrames
-With v1.3, dbt now supports the use of beta [Python models in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models). What does this mean exactly? This means that Python-defined data transformations can be created and used in a dbt project in the same vein as a classic dbt SQL model. These Python models are incredibly new and the team is eagerly looking for feedback in how folks want to use and ritualize them.
+With v1.3, dbt now supports the use of beta [Python models in dbt](/docs/build/python-models). What does this mean exactly? This means that Python-defined data transformations can be created and used in a dbt project in the same vein as a classic dbt SQL model. These Python models are incredibly new and the team is eagerly looking for feedback in how folks want to use and ritualize them.
 :::
 
 ### Manipulation of data during extraction and loading scripts
@@ -102,6 +102,6 @@ A DataFrame is a tabular data storage format in Python that is widely used acros
 
 Are you ready to dip your toes in DataFrames, Python, and dbt? Check out some of the resources below to learn more about how dbt is embracing Python:
 
-- [Python models in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models)
+- [Python models in dbt](/docs/build/python-models)
 - #beta-feedback-python-models Slack channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/)
 - [Best practices for developing Python models in dbt discussion](https://github.com/dbt-labs/docs.getdbt.com/discussions/1811)
