@@ -139,36 +139,34 @@ function dbtEditor({ project }) {
           </div>
           <div className={styles.dbtEditorMain}>
             {currentSql && (
-              <>
-                <div className={styles.dbtEditorCli}>
-                  <Editor
-                    height="300px"
-                    width="100%"
-                    defaultLanguage="sql"
-                    defaultValue={defaultEditorValue}
-                    value={currentSql}
-                    options={editorOptions}
-                    className='overflow-hidden'
-                  />
-                </div>
-                <div className={styles.dbtEditorActions}>
-                  <button className={styles.editorAction}>Preview</button>
-                  <button className={styles.editorAction}>Save</button>
-                  <button className={styles.editorAction}>Run</button>
-                  <button className={styles.editorAction}>Test</button>
-                  <button className={styles.editorAction}
-                          onClick={() => setShowLineage((isShowing) => !isShowing)}>
-                    Lineage
-                  </button>
-                </div>
-              </>
+              <div className={styles.dbtEditorCli}>
+                <Editor
+                  height="300px"
+                  width="100%"
+                  defaultLanguage="sql"
+                  defaultValue={defaultEditorValue}
+                  value={currentSql}
+                  options={editorOptions}
+                  className='overflow-hidden'
+                />
+              </div>
             )}
+            <div className={styles.dbtEditorActions}>
+              {/* <button className={styles.editorAction}>Preview</button>
+              <button className={styles.editorAction}>Save</button>
+              <button className={styles.editorAction}>Run</button>
+              <button className={styles.editorAction}>Test</button> */}
+              <button className={styles.editorAction}
+                      onClick={() => setShowLineage((isShowing) => !isShowing)}>
+                Lineage
+              </button>
+            </div>
             {!showLineage && <div className={styles.dbtEditorResults}>
-              {!csvData && (
+              {/* {!csvData && (
                 <div className={styles.resultsHeader}>
                   <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
                 </div>
-              )}
+              )} */}
               <table>
                 {csvData && csvData.length > 0 ? (
                   <>
