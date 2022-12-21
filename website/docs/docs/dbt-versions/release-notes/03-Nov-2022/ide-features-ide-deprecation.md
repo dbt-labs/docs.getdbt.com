@@ -31,4 +31,4 @@ In December 2022, dbt Labs will deprecate the classic IDE. The [new and refreshe
 
 With deprecation, dbt Labs will only support the refreshed version of the dbt Cloud IDE.
 
-Virtual Private Cloud (VPC) customers with questions about when this change will affect their account, should check with their account team or support contact.
+Virtual Private Cloud (VPC) customers with questions about when this change will affect your account can contact your account team or support contact for assistance.
