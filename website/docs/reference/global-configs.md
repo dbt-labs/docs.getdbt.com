@@ -214,7 +214,7 @@ FailFast Error in model model_1 (models/model_1.sql)
 
 ### Log Formatting
 
-The `DBT_LOG_FORMAT` environment variable specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 
