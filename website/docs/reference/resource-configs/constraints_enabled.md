@@ -125,7 +125,83 @@ models:
 
 <div warehouse="Snowflake">
 
-* dbt accounts for the [`copy_grants` configuration](/reference/resource-configs/snowflake-configs#copying-grants) when calculating which grants need to be added or removed.
+- Snowflake constraints documentation: [here](https://docs.snowflake.com/en/sql-reference/constraints-overview.html)
+- Snowflake data types: [here](https://docs.snowflake.com/en/sql-reference/intro-summary-data-types.html)
+
+Snowflake suppports four types of constraints: `unique`, `not null`, `primary key` and `foreign key`.
+
+It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked today.
+There rest of the constraints are purely metadata, not verified when inserting data.
+
+Currently, Snowflake doesn't support the `check` syntax and dbt will skip the `check` config and raise a warning message if it is set on some models in the dbt project.
+
+<File name='models/constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select 
+  1 as id, 
+  'blue' as color, 
+  cast('2019-01-01' as date) as date_day
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: constraints_example
+    docs:
+      node_color: black
+    config:
+      constraints_enabled: true
+    columns:
+      - name: id
+        data_type: integer
+        description: hello
+        constraints: ['not null','primary key']
+        tests:
+          - unique
+      - name: color
+        data_type: text
+      - name: date_day
+        data_type: date
+```
+
+</File>
+
+Expected DDL to enforce constraints:
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+        create or replace transient table AD_HOC.dbt_bperigaud.constraints_model
+        
+  
+  (
+    
+      id integer  not null  primary key  ,
+      color text  ,
+      date_day date  
+  )
+  
+
+         as
+        (
+
+select 
+  1 as id, 
+  'blue' as color, 
+  cast('2019-01-01' as date) as date_day
+        );
+```
+
+</File>
 
 </div>
 
@@ -164,7 +240,6 @@ models:
         data_type: integer
         description: hello
         constraints: ['not null','primary key']
-        check: (id > 0)
         tests:
           - unique
       - name: color
