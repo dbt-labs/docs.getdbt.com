@@ -6,6 +6,7 @@ import { Lineage } from '../lineage';
 import { buildSidebar } from './utils/build-sidebar';
 import { parseCsv } from './utils/parse-csv';
 import styles from './styles.module.css';
+import MenuItem from './menu-item';
 
 const editorOptions = {
   readOnly: false,
@@ -100,7 +101,7 @@ function dbtEditor({ project }) {
       setCsvData(undefined)
     }
   }
-
+  
   return (
     <>
       {error ? (
@@ -110,30 +111,13 @@ function dbtEditor({ project }) {
           <div className={styles.dbtEditorSidebar}>
             <span className={styles.sidebarHeader}>File Explorer</span>
             <ul className={styles.sidebarList}>
-              {sidebar && sidebar.map(project => (
-                <li key={project.project} title={project.project}>
-                  <span 
-                    className={styles.listItem}
-                    onClick={() => setPackageOpen(!packageOpen)}
-                  >
-                    <img src={`${packageOpen
-                      ? `/img/folder-open.svg`
-                      : `/img/folder.svg`
-                    }`} />{project.project}
-                  </span>
-                  {packageOpen && (
-                    <>
-                      {project?.resources && project.resources.map(resource => (
-                        <SubMenu 
-                          project={project.project}
-                          resource={resource} 
-                          handleFileSelect={handleFileSelect}
-                          key={resource.name}
-                        />
-                      ))}
-                    </>
-                  )}
-                </li>
+              {sidebar && sidebar.map((project, i) => (
+                <MenuItem 
+                  item={project.project} 
+                  subItems={project.resources} 
+                  defaultOpen={true} 
+                  key={i}
+                />
               ))}
             </ul>
           </div>
