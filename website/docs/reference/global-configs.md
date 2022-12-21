@@ -155,7 +155,7 @@ Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 
 ### Debug-level logging
 
-The `DEBUG` config redirects dbt's debug logs to standard out. The has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
+The `DEBUG` config redirects dbt's debug logs to standard output. This has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
 
 The `--debug` flag is also available via shorthand as `-d`.
 

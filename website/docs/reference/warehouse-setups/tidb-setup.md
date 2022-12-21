@@ -6,8 +6,10 @@ meta:
   authors: Xiang Zhang, Qiang Wu, Yuhang Shi
   github_repo: 'pingcap/dbt-tidb'
   pypi_package: 'dbt-tidb'
+  min_core_version: 'v1.0.0'
   core_version: 'v1.0.0 and newer'
   cloud_support: Not Supported
+  min_supported_version: 'n/a'
   slack_channel_name: '#db-tidb'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03CC86R1NY'
   platform_name: 'TiDB'
