@@ -12,7 +12,7 @@ You can manage data type constraints on your models using the `constraints_enabl
 
 ## Configuring Constraints
 
-You can configure `constraints_enabled` in `dbt_project.yml` to apply constraints to many resources at once—all models in your project, a package, or a subfolder—and you can also configure grants one-by-one for specific resources, in yaml config: blocks or right within their .sql files. You'll receive dynamic error messages if you do not configure constraints based on the criteria below.
+You can configure `constraints_enabled` in `dbt_project.yml` to apply constraints to many resources at once—all models in your project, a package, or a subfolder—and you can also configure grants one-by-one for specific resources, in yaml config: blocks or right within their `.sql` files. You'll receive dynamic error messages if you do not configure constraints based on the criteria below.
 
 Constraints must be defined in a `yml` schema configuration file like `schema.yml`.
 
@@ -119,7 +119,82 @@ models:
 
 <div warehouse="Redshift">
 
-* No special requirements at this time.
+Redshift currently only enforces `not null` constraints; all other constraints are metadata only. Additionally, Redshift does not allow column checks at the time of table creation. See more in the Redshift documentation [here](https://docs.aws.amazon.com/redshift/latest/dg/t_Defining_constraints.html).
+
+<File name='models/constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select 
+  1 as id, 
+  'blue' as color, 
+  cast('2019-01-01' as date) as date_day
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: constraints_example
+    docs:
+      node_color: black
+    config:
+      constraints_enabled: true
+    columns:
+      - name: id
+        data_type: integer
+        description: hello
+        constraints: ['not null','primary key']
+        check: (id > 0)
+        tests:
+          - unique
+      - name: color
+        data_type: varchar
+      - name: date_day
+        data_type: date
+```
+
+</File>
+
+Expected DDL to enforce constraints:
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+
+create  table
+    "database_name"."schema_name"."my_model__dbt_tmp"
+    
+    (
+        id integer not null,
+        color varchar,
+        date_day date,
+        primary key(id)
+    )
+    
+    
+    
+  ;
+  insert into "database_name"."schema_name"."my_model__dbt_tmp"
+    (
+      
+select
+  1 as id,
+  'blue' as color,
+  cast('2019-01-01' as date) as date_day
+    )
+  ;
+  
+```
+
+</File>
+
 
 </div>
 
