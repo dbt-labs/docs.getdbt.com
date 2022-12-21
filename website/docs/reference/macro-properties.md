@@ -2,11 +2,9 @@
 title: Macro properties
 ---
 
-Macro properties can be declared in `.yml` files in:
-- your `macros/` directory (as defined by the [`macro-paths` config](macro-paths))
-- your `models/` directory (as defined by the [`source-paths` config](source-paths))
+Macro properties can be declared in `.yml` files.
 
-You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `macros/` or `models/` directory.
+You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders.
 
 <File name='macros/<filename>.yml'>
 
@@ -16,7 +14,7 @@ version: 2
 macros:
   - name: <macro name>
     [description](description): <markdown_string>
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     arguments:
       - name: <arg name>

@@ -1,10 +1,20 @@
 # Lower entries on this list take precedence
 
 # Anything unmatched by selectors below
-*                                     @annafil
+*      @dbt-labs/product-docs
 
-# Cloud docs and images are assigned to Drew
-/website/docs/docs/dbt-cloud/dbt-cloud-changelog.md    @drewbanin @alexbethea22
-/website/docs/docs/dbt-cloud/                          @drewbanin
-/website/src/pages/dbt-cloud/                          @drewbanin
-/website/static/img/docs/dbt-cloud/                    @drewbanin
+# The blog 
+/website/blog @KiraFuruichi
+
+
+# Adapter & Package Development Docs
+/website/docs/docs/supported-data-platforms.md                @dbt-labs/product-docs @dataders
+/website/docs/reference/warehouse-setups                      @dbt-labs/product-docs @dataders
+# `resource-configs` contains more than just warehouse setups
+/website/docs/reference/resource-configs/*-configs.md           @dbt-labs/product-docs @dataders
+/website/docs/guides/advanced/adapter-development              @dbt-labs/product-docs @dataders @dbeatty10
+
+/website/docs/guides/building-packages                          @dbt-labs/product-docs @amychen1776 @dataders @dbeatty10
+/website/docs/guides/creating-new-materializations              @dbt-labs/product-docs @dataders @dbeatty10
+
+

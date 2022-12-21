@@ -3,7 +3,14 @@ title: "seed"
 id: "seed"
 ---
 
-The `dbt seed` command will load `csv` files located in the `data-paths` directory of your dbt project into your data warehouse.
+<Changelog>
+
+- **v1.0.0:** The default config for this command will now be `seed-paths` instead of `data-paths`.
+
+</Changelog>
+
+
+The `dbt seed` command will load `csv` files located in the `seed-paths` directory of your dbt project into your <Term id="data-warehouse" />.
 
 
 ### Selecting seeds to run

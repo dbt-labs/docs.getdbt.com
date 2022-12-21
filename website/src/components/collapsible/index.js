@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import styles from './styles.module.css';
 
-function Collapsible({children, header, expand}) {
+function Collapsible({children, header, description, expand}) {
 
   const [expanded, setExpanded] = useState(expand);
   const toggleExpanded = function() {
@@ -12,10 +12,10 @@ function Collapsible({children, header, expand}) {
   return (
     <>
         <h2 onClick={toggleExpanded}>
-            { expanded ?  '➖'  : '➕' }
             {header}
+            { expanded ?  ' -'  : ' +' }
         </h2>
-        { expanded ? children : <span>Click to expand</span> }
+        { expanded ? children : <span>{ description ? description : "Click to expand" }</span> }
     </>
   );
 }

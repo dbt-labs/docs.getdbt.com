@@ -1,3 +1,9 @@
+<Changelog>
+
+- **v1.0.0:** The default config name for `data-paths` is now [`seed-paths`](seed-paths), `source-paths` is now [`model-paths`](model-paths) and `modules-path` is now [`packages-install-path`](packages-install-path).
+
+</Changelog>
+
 Every [dbt project](projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
 
 The following is a list of all available configurations in the `dbt_project.yml` file.
@@ -16,8 +22,8 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 
 [profile](project-configs/profile): profilename
 
-[source-paths](project-configs/source-paths): [directorypath]
-[data-paths](project-configs/data-paths): [directorypath]
+[model-paths](project-configs/model-paths): [directorypath]
+[seed-paths](project-configs/seed-paths): [directorypath]
 [test-paths](project-configs/test-paths): [directorypath]
 [analysis-paths](project-configs/analysis-paths): [directorypath]
 [macro-paths](project-configs/macro-paths): [directorypath]
@@ -27,7 +33,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 
 [target-path](project-configs/target-path): directorypath
 [log-path](project-configs/log-path): directorypath
-[modules-path](project-configs/modules-path): directorypath
+[packages-install-path](project-configs/packages-install-path): directorypath
 
 [clean-targets](project-configs/clean-targets): [directorypath]
 
@@ -56,7 +62,7 @@ tests:
   [<test-configs>](test-configs)
 
 vars:
-  [<variables>](using-variables)
+  [<variables>](/docs/build/project-variables)
 
 [on-run-start](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 [on-run-end](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]

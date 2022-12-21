@@ -9,18 +9,30 @@ title: "Defer"
 
 </Changelog>
 
-**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/fishtown-analytics/dbt/issues/2968).
+**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/dbt-labs/dbt-core/issues/2968).
 
-Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
+Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
-Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
-
+Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/docs/deploy/about-state).
 ### Usage
+
+<VersionBlock firstVersion="0.21">
+
+```shell
+$ dbt run --select [...] --defer --state path/to/artifacts
+$ dbt test --select [...] --defer --state path/to/artifacts
+```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="0.20">
 
 ```shell
 $ dbt run --models [...] --defer --state path/to/artifacts
 $ dbt test --models [...] --defer --state path/to/artifacts
 ```
+
+</VersionBlock>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
@@ -34,7 +46,7 @@ When using defer, you may be selecting from production datasets, development dat
 - if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
-Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](cloud-enabling-continuous-integration-with-github).
+Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
 
 ### Example
 
@@ -43,7 +55,6 @@ In my local development environment, I create all models in my target schema, `d
 I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`) from a production run, and copy them into a local directory called `prod-run-artifacts`.
 
 ### run
-
 I've been working on `model_b`:
 
 <File name='models/model_b.sql'>
@@ -53,13 +64,17 @@ select
 
     id,
     count(*)
-    
+
 from {{ ref('model_a') }}
 group by 1
 ```
 
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 
+### test
+:::info
+Before dbt v0.21, use the `--models` flag instead of `--select`.
+:::
 </File>
 
 <Tabs
@@ -73,22 +88,22 @@ I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 <TabItem value="no_defer">
 
 ```shell
-$ dbt run --models model_b
+$ dbt run --select model_b
 ```
 
 <File name='target/run/my_project/model_b.sql'>
 
 ```sql
 create or replace view dev_me.model_b as (
-    
+
     select
 
         id,
         count(*)
-        
+
     from dev_alice.model_a
     group by 1
-    
+
 )
 ```
 
@@ -100,22 +115,22 @@ Unless I had previously run `model_a` into this development environment, `dev_al
 <TabItem value="yes_defer">
 
 ```shell
-$ dbt run --models model_b --defer --state prod-run-artifacts
+$ dbt run --select model_b --defer --state prod-run-artifacts
 ```
 
 <File name='target/run/my_project/model_b.sql'>
 
 ```sql
 create or replace view dev_me.model_b as (
-    
+
     select
 
         id,
         count(*)
-        
+
     from prod.model_a
     group by 1
-    
+
 )
 ```
 
@@ -125,8 +140,6 @@ Because `model_a` is unselected, dbt will check to see if `dev_alice.model_a` ex
 
 </TabItem>
 </Tabs>
-
-### test
 
 I also have a `relationships` test that establishes referential integrity between `model_a` and `model_b`:
 
@@ -147,6 +160,10 @@ models:
 
 (A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)
 
+:::info
+Before dbt v0.21, use the `--models` flag instead of `--select`.
+:::
+
 </File>
 
 <Tabs
@@ -160,7 +177,7 @@ models:
 <TabItem value="no_defer">
 
 ```shell
-dbt test --models model_b
+dbt test --select model_b
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>
@@ -185,7 +202,7 @@ The `relationships` test requires both `model_a` and `model_b`. Because I did no
 <TabItem value="yes_defer">
 
 ```shell
-dbt test --models model_b --defer --state prod-run-artifacts
+dbt test --select model_b --defer --state prod-run-artifacts
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>

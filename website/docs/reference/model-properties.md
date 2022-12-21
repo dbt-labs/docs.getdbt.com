@@ -2,7 +2,11 @@
 title: Model properties
 ---
 
-Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`source-paths` config](source-paths)).
+<Changelog>
+    - **v0.21.0** introduced the `config` property, thereby allowing you to configure models in all `.yml` files
+</Changelog>
+
+Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](model-paths)).
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
@@ -14,9 +18,10 @@ version: 2
 models:
   - [name](model_name): <model name>
     [description](description): <markdown_string>
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
-    [meta](meta): {<dictionary>}
+    [config](resource-properties/config):
+      [<model_config>](model-configs): <config_value>
     [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests
@@ -28,7 +33,7 @@ models:
         [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
-        [tags](resource-properties/tags): [<string>]
+        [tags](resource-configs/tags): [<string>]
 
       - name: ... # declare properties of additional columns
 

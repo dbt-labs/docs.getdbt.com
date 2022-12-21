@@ -1,0 +1,24 @@
+name: labeler
+
+on: [pull_request_target]
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    name: Label the PR size
+    steps:
+      - uses: codelytv/pr-size-labeler@v1.8.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_label: 'size: x-small'
+          xs_max_size: '10'
+          s_label: 'size: small'
+          s_max_size: '50'
+          m_label: 'size: medium'
+          m_max_size: '250'
+          l_label: 'size: large'
+          l_max_size: '100000'
+          xl_label: 'size: x-large'
+          fail_if_xl: 'false'
+          files_to_ignore: ''
+      

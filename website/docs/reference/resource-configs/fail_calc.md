@@ -6,6 +6,7 @@ datatype: string
 <Changelog>
 
 * `v0.20.0`: Introduced `fail_calc` config
+* `v0.21.0`: Introduced `config` property for tests
 
 </Changelog>
 
@@ -42,7 +43,8 @@ models:
       - name: my_columns
         tests:
           - unique:
-              fail_calc: "sum(n_records)"
+              config:
+                fail_calc: "sum(n_records)"
 ```
 
 </File>

@@ -1,0 +1,12 @@
+# name property should not be changed once set
+# or references to CTA will break
+- name: coalesce
+  header: Missed Coalesce?
+  subheader: The annual conference dedicated to the advancement of analytics engineering wrapped up on December 10th.
+  button_text: Watch the talks
+  url: https://getdbt.com/coalesce-2021/
+- name: setup
+  header: "Just Getting Started?"
+  subheader: Check out guides on getting your warehouse set up and connected to dbt Cloud.
+  button_text: Learn more
+  url: https://docs.getdbt.com/docs/get-started/getting-started/overview

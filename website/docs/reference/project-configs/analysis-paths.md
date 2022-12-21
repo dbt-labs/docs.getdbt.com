@@ -17,27 +17,26 @@ Specify a custom list of directories where [analyses](analyses) are located.
 ## Default
 Without specifying this config, dbt will not compile any `.sql` files as analyses.
 
-However, the [`dbt init` command](init) populates this value as `analysis` ([source](https://github.com/dbt-labs/dbt-starter-project/blob/master/dbt_project.yml#L15))
+However, the [`dbt init` command](init) populates this value as `analyses` ([source](https://github.com/dbt-labs/dbt-starter-project/blob/HEAD/dbt_project.yml#L15))
 
 ## Examples
-### Use a subdirectory named `analysis`
+### Use a subdirectory named `analyses`
 This is the value populated by the [`dbt init` command](init).
 
 <File name='dbt_project.yml'>
 
 ```yml
-analysis-paths: ["analysis"]
+analysis-paths: ["analyses"]
 ```
 
 </File>
 
-### Use a subdirectory named `analyses`
-A good idea if you want to be consistent in your use of plural directory names.
+### Use a subdirectory named `custom_analyses`
 
 <File name='dbt_project.yml'>
 
 ```yml
-analysis-paths: ["analyses"]
+analysis-paths: ["custom_analyses"]
 ```
 
 </File>

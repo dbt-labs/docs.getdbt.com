@@ -5,26 +5,26 @@ id: "test"
 
 `dbt test` runs tests defined on models, sources, snapshots, and seeds. It expects that you have already created those resources through the appropriate commands.
 
-The tests to run can be selected using the `--models` flag discussed [here](node-selection/syntax).
+The tests to run can be selected using the `--select` flag discussed [here](node-selection/syntax).
 
 ```bash
 # run tests for one_specific_model
-dbt test --models one_specific_model
+dbt test --select one_specific_model
 
 # run tests for all models in package
-dbt test --models some_package.*
+dbt test --select some_package.*
 
-# run only custom data tests
-dbt test --data
+# run only tests defined singularly
+dbt test --select test_type:singular
 
-# run only schema tests
-dbt test --schema
+# run only tests defined generically
+dbt test --select test_type:generic
 
-# run custom data tests for one_specific_model
-dbt test --data --models one_specific_model
+# run singular tests limited to one_specific_model
+dbt test --select one_specific_model,test_type:singular
 
-# run schema tests for one_specific_model
-dbt test --schema --models one_specific_model
+# run generic tests limited to one_specific_model
+dbt test --select one_specific_model,test_type:generic
 ```
 
-For more information on writing tests, see the [Testing Documentation](building-a-dbt-project/tests).
+For more information on writing tests, see the [Testing Documentation](/docs/build/tests).

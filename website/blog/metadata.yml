@@ -1,0 +1,12 @@
+# Set custom blog metadata
+featured_image: ""
+
+# This CTA lives in right sidebar on blog index
+featured_cta: "staging"
+
+# Show or hide hero title, description, cta from blog index
+show_title: true
+show_description: true
+hero_button_url: "/blog/welcome"
+hero_button_text: "Start here"
+hero_button_new_tab: false
