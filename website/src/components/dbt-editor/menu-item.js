@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SubMenu from './sub-menu';
 import styles from './styles.module.css';
 
-export default function MenuItem({ item, subItems, defaultOpen = false, isNode = false, handleFileSelect }) {
+export default function MenuItem({ item, subItems, defaultOpen = false, isNode = false, isResource = false, handleFileSelect }) {
   const [itemOpen, setItemOpen] = useState(defaultOpen)
   return (
     <li key={item} title={item}>
@@ -26,13 +26,18 @@ export default function MenuItem({ item, subItems, defaultOpen = false, isNode =
       </span>
       {itemOpen && (
         <>
-          {subItems && subItems.map((subItem, i) => (
-            <SubMenu 
-              item={subItem}
-              handleFileSelect={handleFileSelect}
-              key={i}
-            />
-          ))}
+          {subItems && (
+            <ul className={styles.sidebarNestedList}>
+              {subItems.map((subItem, i) => (
+                <SubMenu 
+                  item={subItem}
+                  isResource={isResource}
+                  handleFileSelect={handleFileSelect}
+                  key={i}
+                />
+              ))}
+            </ul>
+          )}
         </>
       )}
     </li>

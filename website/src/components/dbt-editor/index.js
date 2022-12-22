@@ -102,6 +102,8 @@ function dbtEditor({ project }) {
     }
   }
   
+  console.log('sidebar', sidebar)
+
   return (
     <>
       {error ? (
@@ -115,6 +117,7 @@ function dbtEditor({ project }) {
                 <MenuItem 
                   item={project.project} 
                   subItems={project.resources} 
+                  isResource={true}
                   defaultOpen={true} 
                   key={i}
                 />
