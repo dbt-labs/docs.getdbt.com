@@ -119,6 +119,7 @@ function dbtEditor({ project }) {
                   subItems={project.resources} 
                   isResource={true}
                   defaultOpen={true} 
+                  handleFileSelect={handleFileSelect}
                   key={i}
                 />
               ))}

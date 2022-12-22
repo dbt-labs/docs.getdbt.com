@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SubMenu from './sub-menu';
 import styles from './styles.module.css';
 
-export default function MenuItem({ item, subItems, defaultOpen = false, isResource = false, handleFileSelect }) {
+export default function MenuItem({ item, subItems, defaultOpen = false, isResource = false, isNode = false, handleFileSelect }) {
   const [itemOpen, setItemOpen] = useState(defaultOpen)
   return (
     <li key={item} title={item}>

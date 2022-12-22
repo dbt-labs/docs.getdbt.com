@@ -39,6 +39,7 @@ export const buildSidebar = (nodes) => {
         packageNodes = {
           node,
           name: thisNode.name,
+          isNode: true
         }
         packagesResources.nodes.push(packageNodes)
       }
@@ -58,6 +59,7 @@ export const buildSidebar = (nodes) => {
         directoryNode.nodes.push({
           node,
           name: thisNode.name,
+          isNode: true
         })
       }
     }
