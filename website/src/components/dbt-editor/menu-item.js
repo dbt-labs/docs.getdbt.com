@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styles from './styles.module.css';
 
+// Build submenu for each menu item
+// This self-invokes the MenuItem component from within itself
 const buildSubItems = (thisSubItem, isResource, handleFileSelect) => {
   // Group all directories & nodes for items
   const subItems = []
@@ -9,6 +11,7 @@ const buildSubItems = (thisSubItem, isResource, handleFileSelect) => {
   thisSubItem?.nodes?.length &&
     subItems.push(...thisSubItem.nodes)
 
+  // Return each submenu item as its own menu item
   return <MenuItem 
     item={thisSubItem}
     name={isResource ? `${thisSubItem.name}s` : thisSubItem.name}
