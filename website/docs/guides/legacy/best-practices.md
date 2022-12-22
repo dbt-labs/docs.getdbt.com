@@ -57,7 +57,7 @@ All subsequent data models should be built on top of these models, reducing the 
 
 Earlier versions of this documentation recommended implementing “base models” as the first layer of transformation, and gave advice on the SQL within these models. We realized that while the reasons behind this convention were valid, the specific advice around "base models" represented an opinion, so we moved it out of the official documentation.
 
-You can instead find our opinions on how we structure our dbt projects in [this Discourse article](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355).
+You can instead find our opinions on [how we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
 
 :::
 
@@ -190,7 +190,7 @@ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 
 </VersionBlock>
 
-To learn more, read the docs on [state](understanding-state).
+To learn more, read the docs on [state](/docs/deploy/about-state).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development
