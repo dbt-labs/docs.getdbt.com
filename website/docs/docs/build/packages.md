@@ -160,7 +160,7 @@ packages:
 
 </File>
 
-If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/building-a-dbt-project/package-management#git-token-method).
+If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
 
 
 #### Git Token Method
@@ -177,7 +177,11 @@ In GitHub:
 
 ```yaml
 packages:
+  # use this format when accessing your repository via a github application token
   - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+
+  # use this format when accessing your repository via a personal access token
+  - git: "https://{{env_var('DBT_ENV_SECRET_GITHUB_USERNAME')}}:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
