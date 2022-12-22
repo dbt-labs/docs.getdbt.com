@@ -102,8 +102,6 @@ function dbtEditor({ project }) {
       setCsvData(undefined)
     }
   }
-  
-  console.log('sidebar', sidebar)
 
   return (
     <>

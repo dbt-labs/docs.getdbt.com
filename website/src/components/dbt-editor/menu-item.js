@@ -20,7 +20,6 @@ const buildSubItems = (thisSubItem, isResource, handleFileSelect) => {
 }
 
 export default function MenuItem({ item, name, subItems, defaultOpen = false, isResource = false, isNode, handleFileSelect }) {
-  console.log('item', item)
   const [itemOpen, setItemOpen] = useState(defaultOpen)
   return (
     <li key={name} title={name}>
@@ -33,10 +32,17 @@ export default function MenuItem({ item, name, subItems, defaultOpen = false, is
         data-node_name={item?.isNode && item.node}
         data-file_name={item?.name}
       >
-        <img src={`${itemOpen
-          ? `/img/folder-open.svg`
-          : `/img/folder.svg`
-        }`} />
+        {item?.isNode ? (
+          <img src={item?.resourceType === 'seed'
+            ? `/img/seed-icon.svg`
+            : `/img/file-icon.svg`} 
+          />
+        ) : (
+          <img src={`${itemOpen
+            ? `/img/folder-open.svg`
+            : `/img/folder.svg`
+          }`} />
+        )}
         {name}
       </span>
       {itemOpen && (
@@ -44,7 +50,9 @@ export default function MenuItem({ item, name, subItems, defaultOpen = false, is
           {subItems && (
             <ul className={styles.sidebarNestedList}>
               {subItems.map(subItem => (
-                buildSubItems(subItem, isResource, handleFileSelect)
+                <React.Fragment key={subItem.name}>
+                  {buildSubItems(subItem, isResource, handleFileSelect)}
+                </React.Fragment>
               ))}
             </ul>
           )}
