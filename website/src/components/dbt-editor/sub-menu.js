@@ -9,7 +9,6 @@ export default function SubMenu({ item, isResource = false, handleFileSelect }) 
       subItems={item?.directories?.length 
         ? item.directories 
         : item?.nodes?.length ? item.nodes : '' } 
-      // isNode={item?.nodes?.length && true}
     />
   )
 }
