@@ -1,6 +1,7 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 const slugify = require('slugify')
+const { getDirectoryFiles } = require('./get-directory-files')
 
 // Pass custom data to blog
 module.exports = function buildGlobalDataPlugin(context, options) {
@@ -17,22 +18,27 @@ module.exports = function buildGlobalDataPlugin(context, options) {
 
       // Get custom blog metadata
       const blogMeta = yaml.load(fs.readFileSync(`blog/metadata.yml`, { encoding: 'utf8' }))
-      
+
       // Get CTA data
       const CTAData = yaml.load(fs.readFileSync(`blog/ctas.yml`, { encoding: 'utf8' }))
-      
+
       // Get versionedPages param
       // This controls versioning for sidebar
       const { versionedPages } = options
-      
+
+      // Get all FAQ doc ids
+      // FAQ component uses these to pull file
+      const faqFiles = getDirectoryFiles(`docs/faqs`)
+
       return {
         tagData,
         blogMeta,
         CTAData,
-        versionedPages
+        versionedPages,
+        faqFiles
       }
     },
-    async contentLoaded({content, actions}) {
+    async contentLoaded({ content, actions }) {
       const { setGlobalData } = actions;
       setGlobalData(content);
     },

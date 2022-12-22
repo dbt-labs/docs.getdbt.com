@@ -26,8 +26,10 @@ export default function VersionBlock({ firstVersion = 0, lastVersion = undefined
       || (currentVersionVal < firstVersionVal))
         return null
     } else {
-      if(currentVersionVal < firstVersionVal)
+      if(currentVersionVal < firstVersionVal) {
         return null
+      }
+      
     }
   }
 

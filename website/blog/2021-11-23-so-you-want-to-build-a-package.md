@@ -25,7 +25,7 @@ If you’re considering making a package, you probably already know what one is 
 
 Packages are a way to share code in dbt without ever having to copy and paste (or *email* :screaming face:).
 
-Let’s break down the [dateadd macro](https://github.com/dbt-labs/dbt-utils/blob/main/macros/cross_db_utils/dateadd.sql) from the dbt_utils macro to show you the process that created this fantastic macro.
+Let’s break down the [dateadd macro](https://github.com/dbt-labs/dbt-utils/blob/0.1.20/macros/cross_db_utils/dateadd.sql) from the dbt_utils macro to show you the process that created this fantastic macro.
 
 The problem: Analysts often need to add an interval to a timestamp/date. To make this cross-database and standardized across a project, a macro is needed.
 
@@ -39,7 +39,7 @@ The problem: Analysts often need to add an interval to a timestamp/date. To make
 
 ```
 
-In this section, we are using the [dispatch](https://docs.getdbt.com/reference/dbt-jinja-functions/dispatch) Jinja reference to enable the right macro from the rest of the file is called (since they are specific to the adapter) when a user called the macro. This means the user doesn’t have to think about what to call based on the adapter, they just need to call one macro, dbt handles it all behind the scene.
+In this section, we are using the [dispatch](/reference/dbt-jinja-functions/dispatch) Jinja reference to enable the right macro from the rest of the file is called (since they are specific to the adapter) when a user called the macro. This means the user doesn’t have to think about what to call based on the adapter, they just need to call one macro, dbt handles it all behind the scene.
 
 ```sql
 

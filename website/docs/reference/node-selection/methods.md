@@ -24,7 +24,7 @@ The `tag:` method is used to select models that match a specified [tag](resource
 </VersionBlock>
 
 ### The "source" method
-The `source` method is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
+The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
 
 <VersionBlock firstVersion="0.21">
 
@@ -70,6 +70,19 @@ selectors unambiguous.
   dbt run --models path:models/staging/github/stg_issues.sql
   dbt run --models models/staging/github/stg_issues.sql
   ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2">
+
+### The "file" method
+The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
+
+```bash
+# These are equivalent
+dbt run --select some_model.sql
+dbt run --select some_model
+```
 
 </VersionBlock>
 
@@ -125,6 +138,32 @@ The `config` method is used to select models that match a specified [node config
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.3">
+
+While most config values are strings, you can also use the `config` method to match boolean configs, dictionary keys, and values in lists.
+
+For example, given a model with the following configurations:
+```
+{{ config(
+  materialized = 'incremental',
+  unique_key = ['column_a', 'column_b'],
+  grants = {'select': ['reporter', 'analysts']},
+  transient = true
+) }}
+
+select ...
+```
+
+ You can select using any of the following:
+```bash
+$ dbt ls -s config.materialized:incremental
+$ dbt ls -s config.unique_key:column_a
+$ dbt ls -s config.grants.select:reporter
+$ dbt ls -s config.transient:true
+```
+
+</VersionBlock>
+
 ### The "test_type" method
 <Changelog>
 
@@ -157,7 +196,7 @@ The `test_type` method is used to select tests based on their type, `singular` o
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](building-a-dbt-project/tests).
+[tests](/docs/build/tests).
 
 <VersionBlock firstVersion="0.21">
 
