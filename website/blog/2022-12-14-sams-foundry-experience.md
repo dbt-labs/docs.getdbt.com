@@ -26,7 +26,7 @@ What ultimately motivated me to apply for the Foundry Program was the logical ex
 
 ### Getting started
 
-As I got started with the apprenticeship, did my expectations play out into reality? The answer to that is "yes and no," but maybe not for reasons you expect.
+As I got started with the apprenticeship, did my expectations play out into reality? The answer to that is yes and no, but maybe not for reasons you expect.
 
 I was able to enjoy coding like I thought I would. I was definitely challenged logically, and I got to build things without a clear right answer in mind. In addition, the company and culture were better than I had anticipated. This manifested itself quickly when listening to the company talk about profits; of course, profits are important to dbt Labs, but they aren't the **only** [way we measure our success](https://github.com/dbt-labs/corp/blob/main/values.md). Spend five minutes in a CPA firm and you will find out how untrue that is for that industry.
 
