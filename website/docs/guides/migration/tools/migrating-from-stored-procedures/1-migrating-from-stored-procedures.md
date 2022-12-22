@@ -9,7 +9,7 @@ One of the more common situations that new dbt adopters encounter is a historica
 
 Before getting into the meat of conversion, it’s worth noting that DML statements will not always illustrate a comprehensive set of columns and column types that an original table might contain. Without knowing the DDL to create the table, it’s impossible to know precisely if your conversion effort is apples-to-apples, but you can generally get close.
 
-If your data warehouse supports `SHOW CREATE TABLE`, that can be a quick way to get a comprehensive set of columns you’ll want to recreate. If you don’t have the DDL, but are working on a substantial stored procedure, one approach that can work is to pull column lists out of any DML statements that modify the table, and build up a full set of the columns that appear.
+If your <Term id="data-warehouse" /> supports `SHOW CREATE TABLE`, that can be a quick way to get a comprehensive set of columns you’ll want to recreate. If you don’t have the DDL, but are working on a substantial stored procedure, one approach that can work is to pull column lists out of any DML statements that modify the table, and build up a full set of the columns that appear.
 
 As for ensuring that you have the right column types, since models materialized by dbt generally use `CREATE TABLE AS SELECT` or `CREATE VIEW AS SELECT` as the driver for object creation, tables can end up with unintended column types if the queries aren’t explicit. For example, if you care about `INT` versus `DECIMAL` versus `NUMERIC`, it’s generally going to be best to be explicit. The good news is that this is easy with dbt: you just cast the column to the type you intend.
 

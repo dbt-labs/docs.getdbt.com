@@ -21,7 +21,6 @@ When materializing a model as `table`, you may include several optional configs 
 | cache_pool | cache pool name to use if is_cached is set to true | No |  |
 | replication_factor | cache replication factor to use if is_cached is set to true  | No | |  
 | external | is this an external table - true / false | No | external=true |
-|---------|----------------------------------------------------|-------------------------|--------------------------|
 
 For Cloudera specific options for above parameters see documentation of CREATE TABLE (https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/impala_create_table.html)
 
@@ -29,7 +28,7 @@ For Cloudera specific options for above parameters see documentation of CREATE T
 
 Supported modes for incremental model:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
- - **`insert_overwrite`**: On new data, insert records. If data is updated or deleted, overwrite the entire table. 
+ - **`insert_overwrite`**: For new records, insert data. When used along with partition clause, update data for changed record and insert data for new records. 
 
 
 Unsupported modes:

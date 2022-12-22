@@ -1,7 +1,7 @@
 ---
 title: How do I run one snapshot at a time?
 description: "Use select flags to run one snapshot at a time"
-sidebar_label: 'run one snapshot at a time'
+sidebar_label: 'Run one snapshot at a time'
 id: run-one-snapshot
 
 ---

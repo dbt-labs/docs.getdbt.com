@@ -51,7 +51,7 @@ In the days before testing your data was commonplace, you often found out that y
 
 ## How to test primary keys with dbt
 
-Today, you can add two simple [dbt tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data. 
+Today, you can add two simple [dbt tests](/docs/build/tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data.
 
 Not surprisingly, these two tests correspond to the two most common errors found on your primary keys, and are usually the first tests that teams testing data with dbt implement:
 
@@ -89,7 +89,7 @@ Having tests configured and running in production using the [`dbt test`](https:/
 
 Does your warehouse even _support_ primary keys at all? If it does, how can you actually find out if a table has a primary key set, and what that primary key is?
 
-Let’s walk through primary key support + access across the major cloud data warehouse platforms.
+Let’s walk through primary key support + access across the major cloud <Term id="data-warehouse" /> platforms.
 
 
 ### TL;DR on primary key support across warehouses
