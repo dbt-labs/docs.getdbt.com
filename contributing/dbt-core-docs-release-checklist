@@ -18,3 +18,5 @@ Here are the details of the dbt Core docs release in checklist form. We can copy
 - [ ] Remove the prerelease banner:
       > You are currently viewing v1.1, which is a prerelease of dbt Core. The latest stable version is v1.0
 - [ ] Make sure all version-specific docs changes are reflected in the migration guide. This doc should serve as a high-level overview of what's changed, more easily digestible than the GitHub repo changelog. You can use a [GitHub search](https://github.com/dbt-labs/docs.getdbt.com/pulls?q=is%3Apr+is%3Aclosed+label%3A%22dbt-core+v1.1.x%22) to find applicable changes.
+- [ ] Remove the "release candidate" `:::info` callout
+- [ ] Update changelog link to point to release branch: https://github.com/dbt-labs/dbt-core/blob/1.1.latest/CHANGELOG.md (1.1.latest instead of HEAD)
