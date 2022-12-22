@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Editor from "@monaco-editor/react";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { Lineage } from '../lineage';
 import { buildSidebar } from './utils/build-sidebar';
 import { parseCsv } from './utils/parse-csv';
@@ -31,7 +32,8 @@ function dbtEditor({ project }) {
   const [error, setError] = useState(false)
   const [packageOpen, setPackageOpen] = useState(true)
   const [currentNodeId, setCurrentNodeId] = useState(null);
-
+  const handle = useFullScreenHandle();
+  console.log('handle', handle)
   useEffect(() => {
     setError(false)
     async function buildData() {
@@ -106,123 +108,136 @@ function dbtEditor({ project }) {
       {error ? (
         <p>Unable to load editor at this time.</p>
       ) : (
-        <div className={styles.dbtEditor}>
-          <div className={styles.dbtEditorSidebar}>
-            <span className={styles.sidebarHeader}>File Explorer</span>
-            <ul className={styles.sidebarList}>
-              {sidebar && sidebar.map((project, i) => (
-                <MenuItem 
-                  item={project} 
-                  name={project.project}
-                  subItems={project.resources} 
-                  isResource={true}
-                  defaultOpen={true} 
-                  handleFileSelect={handleFileSelect}
-                  key={i}
-                />
-              ))}
-            </ul>
-          </div>
-          <div className={styles.dbtEditorMain}>
-            {currentSql && (
-              <div className={styles.dbtEditorCli}>
-                <Editor
-                  height="300px"
-                  width="100%"
-                  defaultLanguage="sql"
-                  defaultValue={defaultEditorValue}
-                  value={currentSql}
-                  options={editorOptions}
-                  className='overflow-hidden'
-                />
-              </div>
-            )}
-            <div className={styles.dbtEditorActions}>
-              {/* <button className={styles.editorAction}>Preview</button>
-              <button className={styles.editorAction}>Save</button>
-              <button className={styles.editorAction}>Run</button>
-              <button className={styles.editorAction}>Test</button> */}
-              <button className={styles.editorAction}
-                      onClick={() => setShowLineage((isShowing) => !isShowing)}>
-                Lineage
-              </button>
-            </div>
-            {!showLineage && <div className={styles.dbtEditorResults}>
-              {/* {!csvData && (
-                <div className={styles.resultsHeader}>
-                  <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
-                </div>
-              )} */}
-              <table>
-                {csvData && csvData.length > 0 ? (
-                  <>
-                    {csvData.map((row, i) => (
-                      i === 0
-                        ? (
-                          <thead key={i}>
-                            <tr>
-                              {row.map(col => (
-                                <th>{col}</th>
-                              ))}
-                            </tr>
-                          </thead>
-                        ) : (
-                          <tbody key={i}>
-                            <tr>
-                              {row.map(col => (
-                                <td>{col}</td>
-                              ))}
-                            </tr>
-                          </tbody>
-                        )
-                    ))}
-                  </>
+        <>
+          <FullScreen handle={handle}>
+            <div className={`
+              ${styles.dbtEditor} 
+              ${handle?.active ? styles.fullHeight : ''}`
+            }>
+              <div className={styles.expandIcon}>
+                {handle?.active ? (
+                  <i className='fa fa-xmark' onClick={handle.exit} />
                 ) : (
-                  <>
-                    <thead>
-                      <tr>
-                        <th>customer_id</th>
-                        <th>orders</th>
-                        <th>payments</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>21532</td>
-                        <td>12</td>
-                        <td>12</td>
-                      </tr>
-                      <tr>
-                        <td>49823</td>
-                        <td>4</td>
-                        <td>3</td>
-                      </tr>
-                      <tr>
-                        <td>89234</td>
-                        <td>2</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>12546</td>
-                        <td>11</td>
-                        <td>11</td>
-                      </tr>
-                    </tbody>
-                  </>
+                  <i className='fa fa-expand' onClick={handle.enter} />
                 )}
-              </table>
-            </div>}
-            {showLineage && <div className={styles.dbtLineageContainer}>
-              <Lineage
-                nodes={manifest.nodes}
-                currentNodeId={currentNodeId}
-                onNodeSelect={(node) => {
-                  handleFileSelect({target: { dataset : node.data }})
-                }} />
-            </div>}
-          </div>
-        </div>
-
+              </div>
+              <div className={styles.dbtEditorSidebar}>
+                <span className={styles.sidebarHeader}>File Explorer</span>
+                <ul className={styles.sidebarList}>
+                  {sidebar && sidebar.map((project, i) => (
+                    <MenuItem 
+                      item={project} 
+                      name={project.project}
+                      subItems={project.resources} 
+                      isResource={true}
+                      defaultOpen={true} 
+                      handleFileSelect={handleFileSelect}
+                      key={i}
+                    />
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.dbtEditorMain}>
+                {currentSql && (
+                  <div className={styles.dbtEditorCli}>
+                    <Editor
+                      height="300px"
+                      width="100%"
+                      defaultLanguage="sql"
+                      defaultValue={defaultEditorValue}
+                      value={currentSql}
+                      options={editorOptions}
+                      className='overflow-hidden'
+                    />
+                  </div>
+                )}
+                <div className={styles.dbtEditorActions}>
+                  {/* <button className={styles.editorAction}>Preview</button>
+                  <button className={styles.editorAction}>Save</button>
+                  <button className={styles.editorAction}>Run</button>
+                  <button className={styles.editorAction}>Test</button> */}
+                  <button className={styles.editorAction}
+                          onClick={() => setShowLineage((isShowing) => !isShowing)}>
+                    Lineage
+                  </button>
+                </div>
+                {!showLineage && <div className={styles.dbtEditorResults}>
+                  {/* {!csvData && (
+                    <div className={styles.resultsHeader}>
+                      <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
+                    </div>
+                  )} */}
+                  <table>
+                    {csvData && csvData.length > 0 ? (
+                      <>
+                        {csvData.map((row, i) => (
+                          i === 0
+                            ? (
+                              <thead key={i}>
+                                <tr>
+                                  {row.map(col => (
+                                    <th>{col}</th>
+                                  ))}
+                                </tr>
+                              </thead>
+                            ) : (
+                              <tbody key={i}>
+                                <tr>
+                                  {row.map(col => (
+                                    <td>{col}</td>
+                                  ))}
+                                </tr>
+                              </tbody>
+                            )
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        <thead>
+                          <tr>
+                            <th>customer_id</th>
+                            <th>orders</th>
+                            <th>payments</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>21532</td>
+                            <td>12</td>
+                            <td>12</td>
+                          </tr>
+                          <tr>
+                            <td>49823</td>
+                            <td>4</td>
+                            <td>3</td>
+                          </tr>
+                          <tr>
+                            <td>89234</td>
+                            <td>2</td>
+                            <td>2</td>
+                          </tr>
+                          <tr>
+                            <td>12546</td>
+                            <td>11</td>
+                            <td>11</td>
+                          </tr>
+                        </tbody>
+                      </>
+                    )}
+                  </table>
+                </div>}
+                {showLineage && <div className={styles.dbtLineageContainer}>
+                  <Lineage
+                    nodes={manifest.nodes}
+                    currentNodeId={currentNodeId}
+                    onNodeSelect={(node) => {
+                      handleFileSelect({target: { dataset : node.data }})
+                    }} />
+                </div>}
+              </div>
+            </div>
+          </FullScreen>
+        </>
       )}
     </>
   );
