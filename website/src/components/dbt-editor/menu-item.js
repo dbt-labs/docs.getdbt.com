@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import SubMenu from './sub-menu';
+import React, { useState } from 'react'
 import styles from './styles.module.css';
 
 const buildSubItems = (thisSubItem, isResource, handleFileSelect) => {

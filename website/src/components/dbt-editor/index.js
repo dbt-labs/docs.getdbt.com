@@ -48,6 +48,7 @@ function dbtEditor({ project }) {
 
         setSidebar(sidebarData)
       } catch(err) {
+        console.log('ERROR failed try catch')
         setError(true)
         console.log('Error getting project data.', err)
       }
@@ -57,15 +58,13 @@ function dbtEditor({ project }) {
 
   // Get selected node from sidebar
   const handleFileSelect = async (e) => {
-    console.log('handleFileSelect hit', e)
     const { 
-      package_name, 
       resource_type, 
       node_name, 
       file_name 
     } = e?.target?.dataset
 
-    if(!package_name || !resource_type || !node_name) {
+    if(!resource_type || !node_name) {
       setError(true)
       return
     }
