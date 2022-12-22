@@ -81,7 +81,7 @@ One of the many benefits this consistent approach to project structure confers t
 ```yaml
 jaffle_shop
 ├── analysis
-├── data
+├── seeds
 │   └── employees.csv
 ├── macros
 │   ├── _macros.yml
