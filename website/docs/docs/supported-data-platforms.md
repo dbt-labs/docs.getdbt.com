@@ -29,15 +29,15 @@ To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosyste
 
 | Data Platforms (click to view setup guide) |                                  |                                      |                                                                   
 |--------------------------------------------|----------------------------------|--------------------------------------|
-| [Athena](athena-setup)                     | [Greenplum](greenplum-setup)     | [Rockset](rockset-setup)
-| [Clickhouse](clickhouse-setup)             | [Hive](hive-setup)               | [SingleStore](singlestore-setup)     |
-| [IBM DB2](ibmdb2-setup)                    | [Impala](impala-setup)           | [SQLite](sqlite-setup)               |
-| [Doris & SelectDB](doris-setup)            | [iomete](iomete-setup)           | [SQL Server & Azure SQ](mssql-setup) |
-| [DuckDB](duckdb-setup)                     | [Layer](layer-setup)             | [AzureSynapse](azuresynapse-setup)   |
-| [Dremio](dremio-setup)                     | [Materialize](materialize-setup) | [Teradata](teradata-setup)           |
-| [Exasol Analytics](exasol-setup)           | [MindsDB](mindsdb-setup)         | [TiDB](tidb-setup)                   |
-| [Firebolt](firebolt-setup)                 | [MySQL](mysql-setup)             | [Vertica](vertica-setup)             |
-| [AWS Glue](glue-setup)                     | [Oracle](oracle-setup)
+| [Athena](athena-setup)                     | [Greenplum](greenplum-setup)     | [Oracle](oracle-setup)               |
+| [Clickhouse](clickhouse-setup)             | [Hive](hive-setup)               | [Rockset](rockset-setup)             |
+| [IBM DB2](ibmdb2-setup)                    | [Impala](impala-setup)           | [SingleStore](singlestore-setup)     |
+| [Doris & SelectDB](doris-setup)            | [Infer](infer-setup)             | [SQLite](sqlite-setup)               |
+| [DuckDB](duckdb-setup)                     | [iomete](iomete-setup)           | [SQL Server & Azure SQ](mssql-setup) |
+| [Dremio](dremio-setup)                     | [Layer](layer-setup)             | [AzureSynapse](azuresynapse-setup)   |
+| [Exasol Analytics](exasol-setup)           | [Materialize](materialize-setup) | [Teradata](teradata-setup)           |
+| [Firebolt](firebolt-setup)                 | [MindsDB](mindsdb-setup)         | [TiDB](tidb-setup).                  |
+| [AWS Glue](glue-setup)                     | [MySQL](mysql-setup)             | [Vertica](vertica-setup)             |
 
 ## Adapter Installation
 
