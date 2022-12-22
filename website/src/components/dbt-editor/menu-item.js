@@ -20,6 +20,7 @@ const buildSubItems = (thisSubItem, isResource, handleFileSelect) => {
 }
 
 export default function MenuItem({ item, name, subItems, defaultOpen = false, isResource = false, isNode, handleFileSelect }) {
+  console.log('item', item)
   const [itemOpen, setItemOpen] = useState(defaultOpen)
   return (
     <li key={name} title={name}>
@@ -28,9 +29,9 @@ export default function MenuItem({ item, name, subItems, defaultOpen = false, is
         onClick={isNode
           ? e => handleFileSelect(e)
           : () => setItemOpen(!itemOpen)}
-        data-resource_type={item?.name && item.name}
-        // data-node_name={isNode && item.node}
-        // data-file_name={node.name}
+        data-resource_type={item?.resourceType && item.resourceType}
+        data-node_name={item?.isNode && item.node}
+        data-file_name={item?.name}
       >
         <img src={`${itemOpen
           ? `/img/folder-open.svg`
