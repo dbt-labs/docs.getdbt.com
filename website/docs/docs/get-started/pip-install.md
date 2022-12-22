@@ -42,7 +42,7 @@ To upgrade a specific adapter plugin:
 pip install --upgrade dbt-<adapter>
 ```
 
-### Install dbt Core only
+### Install dbt-core only
 
 If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool.
 
