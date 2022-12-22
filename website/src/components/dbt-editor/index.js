@@ -57,6 +57,7 @@ function dbtEditor({ project }) {
 
   // Get selected node from sidebar
   const handleFileSelect = async (e) => {
+    console.log('handleFileSelect hit', e)
     const { 
       package_name, 
       resource_type, 
@@ -115,7 +116,8 @@ function dbtEditor({ project }) {
             <ul className={styles.sidebarList}>
               {sidebar && sidebar.map((project, i) => (
                 <MenuItem 
-                  item={project.project} 
+                  item={project} 
+                  name={project.project}
                   subItems={project.resources} 
                   isResource={true}
                   defaultOpen={true} 

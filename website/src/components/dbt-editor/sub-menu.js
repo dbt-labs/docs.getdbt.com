@@ -10,12 +10,12 @@ export default function SubMenu({ item, isResource = false, handleFileSelect }) 
   item?.nodes?.length &&
     subItems.push(...item.nodes)
 
-  console.log('item', item)
   return (
     <MenuItem 
-      item={isResource ? `${item.name}s` : item.name}
-      isNode={item?.isNode}
+      item={item}
+      name={isResource ? `${item.name}s` : item.name}
       subItems={subItems} 
+      handleFileSelect={handleFileSelect}
     />
   )
 }
