@@ -5,7 +5,7 @@ sidebar_label: "Deprecation: Private packages must be cloned using access tokens
 tags: [Dec-23-2022]
 ---
 
-The supported way for cloning private GitHub packages is to use the [git token method](/docs/build/packages#git-token-method), where an appropriate access token is passed into the package repository URL with an environment variable. 
+The supported method for cloning private GitHub packages is the [git token method](/docs/build/packages#git-token-method), where an appropriate access token is passed into the package repository URL with an environment variable. 
 
 There is a small number of people that has been able to clone private packages using dbt's native GitHub application without explicitly providing an access token. This functionality is being deprecated as it’s limited in flexibility. 
 
