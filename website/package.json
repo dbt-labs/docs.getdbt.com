@@ -22,7 +22,6 @@
     "gray-matter": "^4.0.3",
     "hast-util-is-element": "^1.1.0",
     "js-yaml": "^4.1.0",
-    "latest": "^0.2.0",
     "mobx": "^6.3.9",
     "n": "^9.0.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
