@@ -33,7 +33,6 @@
     "rehype-katex": "^5.0.0",
     "remark-math": "^3.0.1",
     "slugify": "^1.6.1",
-    "stable": "^0.1.8",
     "styled-components": "5.3.3",
     "swiper": "^8.4.3",
     "url-loader": "^4.1.1"
