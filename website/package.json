@@ -23,7 +23,6 @@
     "hast-util-is-element": "^1.1.0",
     "js-yaml": "^4.1.0",
     "mobx": "^6.3.9",
-    "n": "^9.0.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
