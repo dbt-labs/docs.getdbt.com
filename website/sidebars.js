@@ -195,7 +195,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
-        "docs/deploy/regions",
+        "docs/deploy/regions-ip-addresses",
         {
           type: "category",
           label: "dbt Cloud deploy options",
@@ -433,7 +433,8 @@ const sidebarSettings = {
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
-        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/vertica-configs",
+        "reference/resource-configs/doris-configs"
       ],
     },
     {
@@ -667,6 +668,7 @@ const sidebarSettings = {
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
+        "reference/warehouse-setups/infer-setup"
       ],
     },
     {
@@ -752,7 +754,8 @@ guides: [
           items: [
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
-            "guides/orchestration/custom-cicd-pipelines/4-something-to-consider",
+            "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
       ],
@@ -816,7 +819,7 @@ guides: [
         type: "generated-index",
         title: "dbt Ecosystem guides",
         description:
-          "Learn about the dbt ecosystem and how to use build with dbt",
+          "Learn about the dbt ecosystem and how to build with dbt",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
@@ -941,6 +944,11 @@ guides: [
       },
       items: [
         {
+          type: "doc",
+          label: "SELECT",
+          id: "sql-reference/select"
+        },
+        {
           type: "category",
           label: "Aggregate Functions",
           items: [
@@ -951,6 +959,20 @@ guides: [
             "sql-reference/aggregate-functions/round",
             "sql-reference/aggregate-functions/sum",
           ],
+        },
+        {
+          type: "category",
+          label: "Clauses",
+          items: [
+            "sql-reference/clauses/limit",
+            "sql-reference/clauses/order-by",
+            "sql-reference/clauses/where",
+          ],
+        },
+        {
+          type: "doc",
+          label: "DISTINCT",
+          id: "sql-reference/distinct",
         },
       ],
     },

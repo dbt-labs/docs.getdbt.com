@@ -96,7 +96,7 @@ export const DiscourseFeed = ({
   // Set initial min-height
   // This is to avoid layout shifts
   // which affects Lighthouse performance scores
-  const setMinHeight = isError
+  const setMinHeight = isError || !topics?.length > 0
     ? 'auto'
     : 414
   

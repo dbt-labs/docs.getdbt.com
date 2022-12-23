@@ -307,7 +307,7 @@ config:
   send_anonymous_usage_stats: False
 ```
 
-You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/docs/build/environment-variables).
+You can also use the DO_NOT_TRACK environment variable to enable or disable sending anonymous data. For more information, see [Environment variables](/docs/build/environment-variables).
 
 `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
 `DO_NOT_TRACK=0` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`
