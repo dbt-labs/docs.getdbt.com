@@ -20,6 +20,22 @@ This guide will walk you through:
 
 Before beginning this guide, make sure that you have access to [new or existing Google account](https://support.google.com/accounts/answer/27441?hl=en). You can use a personal or work account to set up BigQuery through [Google Cloud Platform (GCP)](https://cloud.google.com/free).
 
+## Set up and connect Big Query
+
+Intro text
+
+<details>
+  <summary>Set up</summary>
+  <div>
+    <div>This is a video</div>
+    <div>
+    <WistiaVideo id="668fnsit1t" paddingTweak="62.5%" />
+    </div>
+    <br/>
+  </div>
+</details>
+
+
 ## Setting up
 
 <WistiaVideo id="668fnsit1t" paddingTweak="62.5%" />
