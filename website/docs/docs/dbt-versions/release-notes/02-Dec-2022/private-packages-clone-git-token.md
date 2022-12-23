@@ -1,15 +1,19 @@
 ---
-title: "Private packages must be cloned using tokens provided by environment variables"
-description: "Private packages must be cloned using tokens provided by environment variables."
-sidebar_label: "Deprecation: Private packages must be cloned using tokens provided by environment variables"
+title: "Private packages must be cloned using access tokens provided by environment variables"
+description: "Private GitHub packages must be cloned using access tokens provided by environment variables."
+sidebar_label: "Deprecation: Private packages must be cloned using access tokens"
 tags: [Dec-23-2022]
 ---
 
-The supported way for cloning private packages is using the [git clone method](/docs/build/packages#git-token-method), in which an appropriate token is passed into the package repository URL via an environment variable. 
+The supported way for cloning private GitHub packages is to use the [git token method](/docs/build/packages#git-token-method), where an appropriate access token is passed into the package repository URL with an environment variable. 
 
-There is a small user base that has been able to clone private GitHub packages using our native GitHub application without explicitly providing an access token. We are deprecating this functionality, as it’s limited in flexibility. 
+There is a small number of people that has been able to clone private packages using dbt's native GitHub application without explicitly providing an access token. This functionality is being deprecated as it’s limited in flexibility. 
 
-If you have been using a package hosted in a private repository on GitHub, you must explicitly pass as access token into the URL going forward. See below for sample usage.
+If you have been using a package hosted in a private repository on GitHub, you must start passing an access token into the URL. 
+
+An example of passing an access token:
+
+<File name='packages.yml'>
 
 ```yaml
 
@@ -17,3 +21,5 @@ packages:
 - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git"
 
 ```
+
+</File>
