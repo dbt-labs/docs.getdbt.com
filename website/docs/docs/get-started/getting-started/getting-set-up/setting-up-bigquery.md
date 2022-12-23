@@ -22,19 +22,54 @@ Before beginning this guide, make sure that you have access to [new or existing 
 
 ## Set up and connect Big Query
 
-Intro text
+Introduction
 
 <details>
   <summary>Set up</summary>
   <div>
-    <div>This is a video</div>
     <div>
     <WistiaVideo id="668fnsit1t" paddingTweak="62.5%" />
+    </div>
+    <div>
+    Before jumping into the steps below, login to your Google account.
+    <br/>
+    <ol> 
+    <li> Navigate to the <a href="https://console.cloud.google.com/bigquery">BigQuery Console</a>. </li>
+    <ul>
+        <li>If you don't have a Google Cloud Platform account you will be asked to create one. </li>
+        <li>If you do have one (or multiple) it will likely log you into your oldest account. Click your profile picture to the right and verify your are using the correct email account. </li>
+    </ul>
+    <li>Create a new project for this tutorial:</li>
+    <ul>
+        <li>If you've just created a BigQuery account, you'll be prompted to create a new project straight away. </li>
+        <li>If you already have an existing organization, you can select the project drop down in the header bar, and create a new project from there. </li>
+        <div style={{maxWidth: '400px'}}>
+        <Lightbox src="/img/bigquery/project-dropdown.png" title="Bigquery Project Dropdown" />
+        </div>
+    </ul>
+    <li>Select <b>NEW PROJECT</b>. You should see a project name automatically populate. You can change the name to something more relevant, for example "dbt Learn - Bigquery Setup."</li>
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/bigquery/new-project-creation.png" title="Bigquery New Project Creation" />
+    </div>
+    <li>Click <b>Create</b>.</li>
+    </ol>
     </div>
     <br/>
   </div>
 </details>
 
+<details>
+  <summary>Load data</summary>
+  <div>
+    <div>BigQuery supports public data sets that can be directly queried, so we will show you how to access those datasets via select statements. Additionally, we will show you how to populate your own database objects with that data.</div>
+  </div>
+</details>
+
+## Build your first models
+
+Introduction
+
+More `details` components here
 
 ## Setting up
 
