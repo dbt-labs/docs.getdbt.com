@@ -1,28 +1,108 @@
 ---
-title: "DBT-VERTICA-CONFIGS"
+title: "Vertica configurations"
 id: "vertica-configs"
 ---
-**`Incremental models`**
+## Configuration of Incremental Models
 
-dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and materializations.
+### Using the on_schema_change config parameter
 
-When should I use an incremental model?  
+You can use `on_schema_change` parameter with values `ignore` and `fail`.  Values `append_new_columns` and `sync_all_columns` are not supported at this time.
 
-It's often desirable to build models as tables in your data warehouse since downstream queries are more performant. While the table materialization also creates your models as tables, it rebuilds the table on each dbt run. These runs can become problematic in that they use a lot of computes when either: 
+#### Configuring the `ignore` (default) parameter
 
-source data tables have millions, or even billions, of rows. 
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+  ]
+}>
 
-the transformations on the source data are computationally expensive (that is, take a long time to execute), for example, complex Regex functions, or UDFs are being used to transform data. 
+<TabItem value="source">
 
-Like many things in programming, incremental models are a trade-off between complexity and performance. While they are not as straightforward as the view and table materializations, they can lead to significantly better performance of your dbt runs. 
+<File name='vertica_incremental.sql'>
 
-Configuring incremental strategy: The incremental strategy config can either be specified in specific models, or for all models in your dbt_project.yml file: 
+```sql
+    {{config(materialized = 'incremental',on_schema_change='ignore')}} 
+    
+    select * from {{ ref('seed_added') }}
 
-**`The append Stratagy`** (default): 
 
-Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block. 
+```
 
-How can I run the Append incremental strategy?
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+    
+      insert into "VMart"."public"."merge" ("id", "name", "some_date")
+    (
+        select "id", "name", "some_date"
+        from "merge__dbt_tmp"
+    )
+
+```
+</File>
+</TabItem>
+</Tabs>
+
+
+#### Configuring the `fail` parameter
+
+ <Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+  ]
+}>
+
+
+<TabItem value="source">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+      {{config(materialized = 'incremental',on_schema_change='fail')}} 
+      
+      
+      select * from {{ ref('seed_added') }}
+
+
+```
+
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='vertica_incremental.sql'>
+
+```text
+    
+            The source and target schemas on this incremental model are out of sync!
+              They can be reconciled in several ways:
+                - set the `on_schema_change` config to either append_new_columns or sync_all_columns, depending on your situation.
+                - Re-run the incremental model with `full_refresh: True` to update the target schema.
+                - update the schema manually and re-run the process.
+
+              Additional troubleshooting context:
+                 Source columns not in target: {{ schema_changes_dict['source_not_in_target'] }}
+                 Target columns not in source: {{ schema_changes_dict['target_not_in_source'] }}
+                 New column types: {{ schema_changes_dict['new_target_types'] }}
+```
+</File>
+</TabItem>
+</Tabs>
+
+
+### Using the `incremental_strategy` config ​parameter
+
+**`Append strategy (Default)`**
+
+Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block.
 
 <Tabs
   defaultValue="source"
@@ -39,10 +119,16 @@ How can I run the Append incremental strategy?
 
 ```sql
 {{ config(  materialized='incremental',     incremental_strategy='append'  ) }} 
-select * from {{ ref('seed_added') }} 
-{% if is_incremental() %} 
-where id > (select max(id) from {{this }}) 
-{% endif %} 
+
+
+    select * from {{ ref('seed_added') }} 
+
+
+    {% if is_incremental() %} 
+
+        where id > (select max(id) from {{this }}) 
+
+    {% endif %} 
 ```
 
 </File>
@@ -52,21 +138,25 @@ where id > (select max(id) from {{this }})
 <File name='vertica_incremental.sql'>
 
 ```sql
-insert into "VMart"."public"."append_data" ("id", "name", "some_date")
-(
-  select "id", "name", "some_date"
-  from "append_data__dbt_tmp"
-)
+    
+    insert into "VMart"."public"."append_data" ("id", "name", "some_date")
+    ( 
+
+        select "id", "name", "some_date"
+            
+            from "append_data__dbt_tmp"
+    
+    )
 ```
 </File>
 </TabItem>
 </Tabs>
 
-**`The merge strategy`**:
+### Merge strategy 
 
- Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to append.) 
+**`Merge strategy`**:
 
-How can I run the Merge incremental strategy? 
+Match records based on a unique_key; update old records, insert new ones. (If no unique_key is specified, all new data is inserted, similar to append.)
 
 <Tabs
   defaultValue="source"
@@ -82,8 +172,13 @@ How can I run the Merge incremental strategy?
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config( materialized = "incremental", incremental_strategy = 'merge',  unique_key='id'   )  }}
-select * FROM {{ ref('seed') }}
+
+{{ config( materialized = 'incremental', incremental_strategy = 'merge',  unique_key='id'   )  }}
+
+
+    select * FROM {{ ref('seed') }}
+
+
 ```
 </File>
 </TabItem>
@@ -92,25 +187,28 @@ select * FROM {{ ref('seed') }}
 <File name='vertica_incremental.sql'>
 
 ```sql
-merge into "VMart"."public"."merge" as DBT_INTERNAL_DEST
-using "merge__dbt_tmp" as DBT_INTERNAL_SOURCE   on 
-DBT_INTERNAL_DEST."id" = DBT_INTERNAL_SOURCE."id"
-when matched then update set
-"id" = DBT_INTERNAL_SOURCE."id", "name" = DBT_INTERNAL_SOURCE."name", "some_date" = DBT_INTERNAL_SOURCE."some_date"
-when not matched then insert
-("id", "name", "some_date")
-values(  DBT_INTERNAL_SOURCE."id", DBT_INTERNAL_SOURCE."name", DBT_INTERNAL_SOURCE."some_date"
-)
+        merge into "VMart"."public"."merge" as DBT_INTERNAL_DEST
+        
+        using "merge__dbt_tmp" as DBT_INTERNAL_SOURCE   on  DBT_INTERNAL_DEST."id" =DBT_INTERNAL_SOURCE."id"  
+
+        when matched then update set
+      
+        "id" = DBT_INTERNAL_SOURCE."id", "name" = DBT_INTERNAL_SOURCE."name", "some_date" = DBT_INTERNAL_SOURCE."some_date"
+
+        when not matched then insert
+     
+        ("id", "name", "some_date")
+        values(  DBT_INTERNAL_SOURCE."id", DBT_INTERNAL_SOURCE."name", DBT_INTERNAL_SOURCE."some_date"
+        )
 ```
 </File>
 </TabItem>
 </Tabs>
 
-**`The delete+insert strategy`**: 
 
-Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and re-insert them. Like the other materializations built into dbt, incremental models are defined with select statements, with the materialization defined in a config block.
 
-How can I run the delete+insert incremental strategy? 
+#### Using the `merge_update_columns` config parameter
+
 
 <Tabs
   defaultValue="source"
@@ -126,8 +224,11 @@ How can I run the delete+insert incremental strategy?
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config( materialized = "incremental", incremental_strategy = 'delete+insert', unique_key='id') }}
-select  * from  {{ ref('seed') }}
+
+    {{ config( materialized = 'incremental', incremental_strategy='merge', unique_key = 'id', merge_update_columns = ["id","name","salary"] )}}
+    
+        select * from {{ref('seed_tc1')}}
+
 ```
 </File>
 </TabItem>
@@ -136,15 +237,66 @@ select  * from  {{ ref('seed') }}
 <File name='vertica_incremental.sql'>
 
 ```sql
-delete from "VMart"."public"."delete"   where ( id) in (  select (id)  from "delete__dbt_tmp" );
-insert into "VMart"."public"."delete" ("id", "name", "some_date")   
-( select "id", "name", "some_date" from "delete__dbt_tmp" );
+        merge into "VMart"."public"."test_merge" as DBT_INTERNAL_DEST using "test_merge__dbt_tmp" as DBT_INTERNAL_SOURCE on  DBT_INTERNAL_DEST."id" = DBT_INTERNAL_SOURCE."id"
+        
+        when matched then update set
+          "id" = DBT_INTERNAL_SOURCE."id", "names" = DBT_INTERNAL_SOURCE."names", "salary" = DBT_INTERNAL_SOURCE."salary"
+        
+        when not matched then insert
+        ("id", "names", "salary")
+        values
+        (
+          DBT_INTERNAL_SOURCE."id", DBT_INTERNAL_SOURCE."names", DBT_INTERNAL_SOURCE."salary"
+        )
+```
+</File>
+</TabItem>
+</Tabs>
+
+
+**`delete+insert strategy`**: 
+
+Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and re-insert them. 
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+  ]
+}>
+
+
+<TabItem value="source">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+
+      {{ config( materialized = 'incremental', incremental_strategy = 'delete+insert', unique_key='id') }}
+
+        select  * from  {{ ref('seed') }}
+
+```
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+        delete from "VMart"."public"."delete"   where ( id) in (  select (id)  from "delete__dbt_tmp" );
+    
+        insert into "VMart"."public"."delete" ("id", "name", "some_date")   
+    
+        ( select "id", "name", "some_date" from "delete__dbt_tmp" );
+
   ```
   </File>
 </TabItem>
 </Tabs>
 
-**`The insert_overwrite strategy`**: 
+**`insert_overwrite strategy`** 
 
 If `partition_by` is specified, overwrite partitions in the table with new data. If 	no `partition_by` is specified, overwrite the entire table with new data. 
 
@@ -162,7 +314,7 @@ If `partition_by` is specified, overwrite partitions in the table with new data.
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config( materialized = "incremental", incremental_strategy = 'delete+insert', unique_key='id') }}
+{{ config( materialized = 'incremental', incremental_strategy = 'delete+insert', unique_key='id') }}
 select  * from  {{ ref('seed') }}
 ```
 </File>
@@ -173,22 +325,32 @@ select  * from  {{ ref('seed') }}
 <File name='vertica_incremental.sql'>
 
 ```sql
-delete from "VMart"."public"."delete"   where ( id) in (  select (id)  from "delete__dbt_tmp" );
-insert into "VMart"."public"."delete" ("id", "name", "some_date")   
- ( select "id", "name", "some_date" from "delete__dbt_tmp" );
+
+        delete from "VMart"."public"."delete"   where ( id) in (  select (id)  from "delete__dbt_tmp" );
+        
+        insert into "VMart"."public"."delete" ("id", "name", "some_date")   
+        
+        ( select "id", "name", "some_date" from "delete__dbt_tmp" );
   ```
  </File>
 </TabItem>
 </Tabs>
 
 
-**`Table Materialization -`** 
 
- **`Order-By clause`** – 
+## Optimization options for table materialization
 
- Invalid for external tables, specifies columns from the `SELECT` list on which to sort the super projection that is automatically created for this table. The `ORDER BY` clause cannot include qualifiers ASC.  Vertica always stores projection data in ascending sort order. If you omit the `ORDER BY`clause, Vertica uses the `SELECT` list order as the projection sort order. 
+There are multiple optimizations that can be used when materializing models as tables. Each config parameter applies a Vertica specific clause in the generated `CREATE TABLE` DDL. 
 
-How can I run the Order_by for table materialization? 
+For more information see [Vertica](https://www.vertica.com/docs/12.0.x/HTML/Content/Authoring/SQLReferenceManual/Statements/CREATETABLE.htm) options for table optimization.]
+
+You can configure these optimizations in your model SQL file as described in the examples below: 
+
+ ### Configuring the `ORDER BY` clause
+
+ To leverage the `ORDER BY` clause of the `CREATE TABLE` statement use the `order_by` config param in your model. 
+
+ #### Using the `order_by` config parameter
 
 <Tabs
   defaultValue="source"
@@ -203,71 +365,37 @@ How can I run the Order_by for table materialization?
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config(  materialized='table',  order_by='product_key') }} 
-select * from public.product_dimension
-```
-</File>
-</TabItem>
-<TabItem value="run">
-
-<File name='vertica_incremental.sql'>
-
-```sql
-create  table  "VMart"."public"."order_s__dbt_tmp" as 
-( select * from public.product_dimension) order by product_key;
-  ```
- </File>
-</TabItem>
-</Tabs>
-
-**`segmentation clause`** – 
-
-Invalid for external tables, specifies how to distribute data for `auto-projections` of this table. Supply one of the following clauses: `hash‑segmentation‑clause`: Specifies to segment data evenly and distribute across cluster nodes. Vertica recommends segmenting large tables. `Unsegmented‑clause`: Specifies to create an unsegmented projection. If this clause is omitted, Vertica generates `auto-projections` with default hash segmentation.  
-
-Segmentation is further classified as: 
-
-**`segmented_by_string`** :  
-
-  How can I run the segmented_by_string? 
-
-<Tabs
-  defaultValue="source"
-  values={[
-    { label: 'Source code', value: 'source', },
-    { label: 'Run code', value: 'run', },
-  ]
-}>
-
-
-<TabItem value="source">
-
-<File name='vertica_incremental.sql'>
-
-```sql
-{{ config( materialized='table', segmented_by_string='product_key'  )  }}  
-select * from public.product_dimension
-```
-</File>
-</TabItem>
-<TabItem value="run">
-
-<File name='vertica_incremental.sql'>
-
-```sql
-create  table
-"VMart"."public"."segmented_by__dbt_tmp"
-as (select * from public.product_dimension) segmented by product_key  ALL NODES;
-  ```
+        {{ config(  materialized='table',  order_by='product_key') }} 
     
+        select * from public.product_dimension
+
+
+```
 </File>
+</TabItem>
+<TabItem value="run">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+
+        create  table  "VMart"."public"."order_s__dbt_tmp" as 
+            
+             ( select * from public.product_dimension)
+              
+                 order by product_key;
+
+  ```
+ </File>
 </TabItem>
 </Tabs>
 
+### Configuring the `SEGMENTED BY` clause
 
-**`Segmented_By_all_nodes`** :  
+To leverage the `SEGMENTED BY` clause of the `CREATE TABLE` statement, use the `segmented_by_string` or `segmented_by_all_nodes` config parameters in your model. 
 
-How can I run the segmented_by_all_nodes? 
- 
+#### Using the `segmented_by_string` config parameter
+
 <Tabs
   defaultValue="source"
   values={[
@@ -282,8 +410,12 @@ How can I run the segmented_by_all_nodes?
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config( materialized='table', segmented_by_string='product_key' ,segmented_by_all_nodes='True' )  }}  
-select * from public.product_dimension
+   
+        {{ config( materialized='table', segmented_by_string='product_key'  )  }}  
+        
+        
+        select * from public.product_dimension
+
 ```
 </File>
 </TabItem>
@@ -292,21 +424,66 @@ select * from public.product_dimension
 <File name='vertica_incremental.sql'>
 
 ```sql
-create  table   "VMart"."public"."segmented_by__dbt_tmp" as
-(select * from public.product_dimension)
-segmented by product_key  ALL NODES;
+      create  table
+        
+        "VMart"."public"."segmented_by__dbt_tmp"
+        
+        as (select * from public.product_dimension)
+          
+             segmented by product_key  ALL NODES;
+
+  ```
+
+</File>
+</TabItem>
+</Tabs>
+
+#### Using the `segmented_by_all_nodes` config  parameter
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+  ]
+}>
+
+
+<TabItem value="source">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+        {{ config( materialized='table', segmented_by_string='product_key' ,segmented_by_all_nodes='True' )  }}  
+        
+            select * from public.product_dimension
+
+
+```
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+          
+        create  table   "VMart"."public"."segmented_by__dbt_tmp" as
+              
+          (select * from public.product_dimension)
+                  
+            segmented by product_key  ALL NODES;
+
   ```
    </File>
 </TabItem>
 </Tabs>
 
-**`Partition Clause`** - 
+### Configuring the UNSEGMENTED ALL NODES clause
 
-Invalid for external tables, logically divides table data storage through a `PARTITION BY` clause. Partition clause are further classified as: 
+To leverage the`UNSEGMENTED ALL NODES` clause of the `CREATE TABLE` statement, use the `no_segmentation` config parameters in your model.
 
-**`partition_by_string`** : 
-
-How can I run the partition_by_string? 
+#### Using the `no_segmentation` config parameter
 
 <Tabs
   defaultValue="source"
@@ -322,8 +499,41 @@ How can I run the partition_by_string?
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config( materialized='table', partition_by_string='employee_age' )}} 
-select * FROM public.employee_dimension
+        {{  config(  materialized='table',   no_segmentation='True'  ) }} 
+
+        select * from  public.product_dimension
+```
+</File>
+</TabItem>
+</Tabs>
+
+
+### Configuring the `PARTITION BY` clause
+
+To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the partition_by_string, `partition_by_active_count` or the `partition_by_group_by_string` config parameters in your model. 
+
+#### Using the `partition_by_string` config parameter
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+  ]
+}>
+
+
+<TabItem value="source">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+      
+      {{ config( materialized='table', partition_by_string='employee_age' )}} 
+    
+      
+        select * FROM public.employee_dimension
+
 ```
 </File>
 </TabItem>
@@ -332,18 +542,22 @@ select * FROM public.employee_dimension
 <File name='vertica_incremental.sql'>
 
 ```sql
-create table "VMart"."public"."test_partition__dbt_tmp" as 
-( select * FROM public.employee_dimension); 
-alter table "VMart"."public"."test_partition__dbt_tmp" partition BY employee_age
+        create table "VMart"."public"."test_partition__dbt_tmp" as 
+        
+        ( select * FROM public.employee_dimension); 
+        
+        alter table "VMart"."public"."test_partition__dbt_tmp"
+         
+        partition BY employee_age
+
+
  ```
-    
+
 </File>
 </TabItem>
 </Tabs>
 
-**`partition_by_active_count`** 
-
-How can I run the partition_by_active_count? 
+#### Using the `partition_by_active_count` config parameter
 
 <Tabs
   defaultValue="source"
@@ -359,11 +573,19 @@ How can I run the partition_by_active_count?
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config( materialized='table', partition_by_string='employee_age',partition_by_group_by_string="""CASE WHEN employee_age < 5 THEN 1
-WHEN employee_age>50 THEN 2
-ELSE 3 END""",
-partition_by_active_count = 2,) }}
-select * FROM public.employee_dimension
+    {{ config( materialized='table', 
+    partition_by_string='employee_age',    
+    partition_by_group_by_string="""
+                                  CASE WHEN employee_age < 5 THEN 1
+                                  WHEN employee_age>50 THEN 2
+                                  ELSE 3 END""",
+    
+    partition_by_active_count = 2) }}
+
+
+      select * FROM public.employee_dimension
+ 
+ 
  ```
 </File>
 </TabItem>
@@ -372,20 +594,27 @@ select * FROM public.employee_dimension
 <File name='vertica_incremental.sql'>
 
 ```sql
-create  table "VMart"."public"."test_partition__dbt_tmp" as
-( select * FROM public.employee_dimension );
-alter table "VMart"."public"."test_partition__dbt_tmp" partition BY employee_ag    group by CASE WHEN employee_age < 5 THEN 1
-WHEN employee_age>50 THEN 2
-ELSE 3 END
-SET ACTIVEPARTITIONCOUNT 2  ;
+    
+    create  table "VMart"."public"."test_partition__dbt_tmp" as
+      
+      ( select * FROM public.employee_dimension );
+          
+          alter table "VMart"."public"."test_partition__dbt_tmp" partition BY employee_ag  
+          
+            group by CASE WHEN employee_age < 5 THEN 1
+        
+        WHEN employee_age>50 THEN 2
+        
+        ELSE 3 END
+        
+        SET ACTIVEPARTITIONCOUNT 2  ;
    ```
 </File>
 </TabItem>
 </Tabs>
 
- **`partition_by_group_by_string`** 
+#### Using the `partition_by_group_by_string` config parameter
 
-  How can I run the partition_by_group_by_String? 
 
 <Tabs
   defaultValue="source"
@@ -402,11 +631,12 @@ SET ACTIVEPARTITIONCOUNT 2  ;
 
 ```sql
 
-{{ config( materialized='table', partition_by_string='employee_age',partition_by_group_by_string="""CASE WHEN employee_age < 5 THEN 1
-WHEN employee_age>50 THEN 2
-ELSE 3 END""",
-partition_by_active_count = 2,) }}
-select * FROM public.employee_dimension
+    {{config(materialized='table',
+    partition_by_string='number_of_children', 
+    partition_by_group_by_string="""
+                                  CASE WHEN number_of_children <= 2 THEN 'small_family'
+                                  ELSE 'big_family' END""")}}
+select * from public.customer_dimension
 ```
 </File>
 </TabItem>
@@ -415,29 +645,29 @@ select * FROM public.employee_dimension
 <File name='vertica_incremental.sql'>
 
 ```sql
-create  table "VMart"."public"."test_partition__dbt_tmp" as
- ( select * FROM public.employee_dimension );
- alter table "VMart"."public"."test_partition__dbt_tmp" partition BY employee_ag    group by CASE WHEN employee_age < 5 THEN 1
- WHEN employee_age>50 THEN 2
- ELSE 3 END
- SET ACTIVEPARTITIONCOUNT 2  ;
-  ```
+      create  table "VMart"."public"."test_partition__dbt_tmp"  INCLUDE SCHEMA PRIVILEGES as 
     
+        ( select * from public.customer_dimension ) ; 
+        
+      alter table "VMart"."public"."test_partition__dbt_tmp" 
+      partition BY number_of_children
+      group by CASE WHEN number_of_children <= 2 THEN 'small_family'
+                                             ELSE 'big_family' END  ;
+  ```
+
 </File>
 </TabItem>
 </Tabs>
 
-**`KSafe`** - 
+### Configuring the KSAFE clause
 
-Invalid for external tables, specifies `K-safety` of auto-projections created for this table, where k num must be equal to or greater than system K safety. If you omit this option, the projection uses the system `K-safety` level. 
-
-  How can I run the KSafe? 
+To leverage the `KSAFE` clause of the `CREATE TABLE` statement, use the `ksafe` config parameter in your model.
 
 <Tabs
   defaultValue="source"
   values={[
     { label: 'Source code', value: 'source', },
-    { label: 'Run code', value: 'run', },
+    { label: 'Run code', value: 'run', },+
   ]
 }>
 
@@ -448,7 +678,10 @@ Invalid for external tables, specifies `K-safety` of auto-projections created fo
 
 ```sql
 {{  config(  materialized='table',    ksafe='1'   ) }} 
-select * from  public.product_dimension
+        
+          select * from  public.product_dimension
+
+
 ```
 </File>
 </TabItem>
@@ -457,39 +690,16 @@ select * from  public.product_dimension
 <File name='vertica_incremental.sql'>
 
 ```sql
- create  table "VMart"."public"."segmented_by__dbt_tmp" as 
-  (select * from  public.product_dimension ) ksafe 1;
+        create  table "VMart"."public"."segmented_by__dbt_tmp" as 
+  
+        (select * from  public.product_dimension ) 
+            ksafe 1;
 ```
 </File>
 </TabItem>
 </Tabs>
 
 
-**`No-Segmentation Clause`** – Specifies to distribute identical copies of table or projection data 	across the cluster. Use this clause to facilitate distributed query execution on tables and 	projections that are too small to benefit from segmentation. 
-
-How can I run the No-Segmentation?
-
-<Tabs
-  defaultValue="source"
-  values={[
-    { label: 'Source code', value: 'source', },
-    { label: 'Run code', value: 'run', },
-  ]
-}>
-
-
-<TabItem value="source">
-
-<File name='vertica_incremental.sql'>
-
-```sql
-{{  config(  materialized='table',   no_segmentation='True'  ) }} 
-select * from  public.product_dimension
-
-```
-</File>
-</TabItem>
-</Tabs>
 
 
 

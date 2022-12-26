@@ -12,12 +12,19 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
+  config_page: 'no-configs'
+
   config_page: 'vertica-configs'
 ---
+
 :::info Community plugin
+
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+
 :::
+
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
+
 <ul>
     <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
     <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
@@ -28,20 +35,34 @@ Some core functionality may be limited. If you're interested in contributing, ch
     <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
+
+
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
+
 pip is the easiest way to install the adapter:
+
 <code>pip install {frontMatter.meta.pypi_package}</code>
+
+<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
+
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> , <code>dbt-tests-adapter</code> and any other dependencies.</p>
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
+
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+
 <p>For dbt-vertica-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+
+
 ### Connecting to Vertica with **dbt-vertica**
+
 #### Username / password authentication
+
 Configure your dbt profile for using Vertica:
+
 ##### Vertica connection information
 
 <File name='profiles.yml'>
-
 ```yaml
 your-profile:
   outputs:
@@ -55,7 +76,6 @@ your-profile:
       schema: your-default-schema
       connection_load_balance: True
       backup_server_node: ['123.123.123.123','www.abc.com',('123.123.123.123',5433)]
-
   target: dev
 ```
 
@@ -73,4 +93,5 @@ Format of  passing backup server node in profiles.yml is  below:
 `backup_server_node: ['123.123.123.123','www.abc.com',('123.123.123.123',5433)]`
 
 There are three options for SSL: `ssl`, `ssl_env_cafile`, and `ssl_uri`.
+See their use in the code [here](https://github.com/mpcarter/dbt-vertica/blob/d15f925049dabd2833b4d88304edd216e3f654ed/dbt/adapters/vertica/connections.py#L72-L87).
 See their use in the code [here](https://github.com/mpcarter/dbt-vertica/blob/d15f925049dabd2833b4d88304edd216e3f654ed/dbt/adapters/vertica/connections.py#L72-L87).
