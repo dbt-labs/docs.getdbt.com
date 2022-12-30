@@ -23,7 +23,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 
 ## Folder Structure and TOC
 
-The folder structure for the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository is organized into several high-level categories under the main `website` folder: blog, cypress, docs, functions, plugins, snippets, src, static.
+The folder structure for the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository is organized into several high-level categories under the main `website` folder such as `blog`, `cypress`, `docs`, `functions`, `plugins`, `snippets`, `src`, `static`, and so on.
 
 The table of contents (TOC) is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. The `sidebar.js` file is the one that causes most of the merge conflicts because many technical writers are working on content daily. You will need to accept the changes from other contributors if you are committing a PR.
 
