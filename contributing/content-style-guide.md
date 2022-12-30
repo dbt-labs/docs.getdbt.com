@@ -67,7 +67,7 @@ docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markd
 
 Callouts highlight important or high-value information that readers need to know. We want callouts to stand out, so we should keep their content to a minimum, avoiding general information, permissions, or prerequisites. Too much information can make it difficult to absorb. Imagine driving down one block with five stop signs!?!
 
-Use callouts sparingly for high-value information &mdash; avoid including general information, permissions, or prerequisites in callouts. Below are the some of the typical callout formats we use:
+Callout formats include:
 
 | Types of callouts | Callout formats |
 | ---- | ------ |
