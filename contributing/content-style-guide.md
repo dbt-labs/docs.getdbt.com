@@ -29,7 +29,7 @@ The left sidebar (leftbar) is managed in the `sidebar.js` file. You only need to
 
 Don't worry if you're not sure where in the leftbar a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
 
-The right-hand TOC is created automatically when you add headings to a page.
+The right sidebar (rightbar), also known as the page TOC, is created automatically for all the H2 and H3 headings on a page. For details, see [Headings and Table of contents](https://docusaurus.io/docs/markdown-features/toc) in Docusaurus. 
 
 ## Filenaming
 
