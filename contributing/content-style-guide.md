@@ -67,6 +67,8 @@ docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markd
 
 Callouts highlight important or high-value information that readers need to know. We want callouts to stand out, so we should keep their content to a minimum, avoiding general information, permissions, or prerequisites. Too much information can make it difficult to absorb. Imagine driving down one block with five stop signs!?!
 
+If you add text after the first code, like this `:::note This is a note title`, it shows up as a title for the note.
+
 Callout formats include:
 
 | Types of callouts | Callout formats |
