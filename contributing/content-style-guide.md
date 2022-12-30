@@ -27,7 +27,7 @@ The folder structure for the [docs.getdbt.com](https://github.com/dbt-labs/docs.
 
 The left sidebar (leftbar) is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. Editing the `sidebar.js` file can cause merge conflicts as it's updated often because content is being worked on daily. You will need to accept the changes from other contributors if you are committing a PR.
 
-Don't worry if you're not sure where in the TOC a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
+Don't worry if you're not sure where in the leftbar a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
 
 The right-hand TOC is created automatically when you add headings to a page.
 
