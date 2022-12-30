@@ -1,5 +1,5 @@
 
-The Lightbox component allows clickable images, which are expanded when clicked.
+You can use the Lightbox component to add an image or screenshot to your page. It supports clickable images that expand when clicked.
 
 ## Available Props:
 
