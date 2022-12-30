@@ -25,7 +25,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 
 The folder structure for the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository is organized into several high-level categories under the main `website` folder such as `blog`, `cypress`, `docs`, `functions`, `plugins`, `snippets`, `src`, `static`, and so on.
 
-The table of contents (TOC) is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. The `sidebar.js` file is the one that causes most of the merge conflicts because many technical writers are working on content daily. You will need to accept the changes from other contributors if you are committing a PR.
+The left sidebar (leftbar) is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. Editing the `sidebar.js` file can cause merge conflicts as it's updated often because content is being worked on daily. You will need to accept the changes from other contributors if you are committing a PR.
 
 Don't worry if you're not sure where in the TOC a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
 
