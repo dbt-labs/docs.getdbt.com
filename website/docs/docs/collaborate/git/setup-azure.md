@@ -124,7 +124,7 @@ The service user's permissions will also power which repositories a team can sel
 
 <TabItem value="mfa" label="Turn off MFA for service user">
 
-While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
+While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
 </TabItem>
 
 </Tabs>
