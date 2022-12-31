@@ -41,7 +41,7 @@ GB,United Kingdom
 
 </File>
 
-2. Run the `dbt seed` [command](seed) command — a new <Term id="table" /> will be created in your warehouse in your target schema, named `country_codes`
+2. Run the `dbt seed` [command](seed) — a new <Term id="table" /> will be created in your warehouse in your target schema, named `country_codes`
 ```
 $ dbt seed
 
