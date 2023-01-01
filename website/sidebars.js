@@ -668,7 +668,8 @@ const sidebarSettings = {
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
-        "reference/warehouse-setups/infer-setup"
+        "reference/warehouse-setups/infer-setup",
+        "reference/warehouse-setups/databend-setup"
       ],
     },
     {
@@ -690,7 +691,7 @@ const sidebarSettings = {
       items: ["reference/snowflake-permissions"],
     },
   ],
-guides: [
+  guides: [
     {
       type: "category",
       label: "Best practices",
@@ -846,7 +847,7 @@ guides: [
       type: "category",
       label: "Advanced",
       items: [
-         "guides/advanced/creating-new-materializations",
+        "guides/advanced/creating-new-materializations",
       ],
     },
     {
