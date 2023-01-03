@@ -359,7 +359,7 @@ packages:
 
 </VersionBlock>
 
-Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_calendar_model` model as this is required for macros used to query metrics. More information on this, and additional calendar functionality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
+Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_default_calendar` model as this is required for macros used to query metrics. More information on this, and additional calendar functionality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
 
 ### Querying metrics with `metrics.calculate`
 Use the `metrics.calculate` macro along with defined metrics to generate a SQL statement that runs the metric aggregation to return the correct metric dataset. Example below:
