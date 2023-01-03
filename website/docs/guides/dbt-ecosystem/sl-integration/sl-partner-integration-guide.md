@@ -421,7 +421,7 @@ from {{ metrics.calculate(
 
 </Tabs>
 
-<!--- End tabs for running models and running metrics --->	
+<!-- end tabs for running models and running metrics -->	
 
 ## Product Roadmap
 
