@@ -8,7 +8,7 @@ id: "constraints_enabled"
 
 # Definition
 
-You can manage data type constraints on your models using the `constraints_enabled` configuration. This configuration is available on all models, and is disabled by default. When enabled, dbt will automatically add constraints to your models based on the data types of the columns in your model's schema. This is a great way to ensure that your data is always in the correct format. For example, if you have a column in your model that is defined as a `date` data type, dbt will automatically add a data type constraint to that column to ensure that the data in that column is always a valid date. Also, if you want to add a not null constraint to a column, you can do so by adding the `not_null` value to the column definition in your model's schema: `constraints: ['not_null']`.
+You can manage data type constraints on your models using the `constraints_enabled` configuration. This configuration is available on all models, and is disabled by default. When enabled, dbt will automatically add constraints to your models based on the data types of the columns in your model's schema. This is a great way to ensure that your data is always in the correct format. For example, if you have a column in your model that is defined as a `date` data type, dbt will automatically add a data type constraint to that column to ensure that the data in that column is always a valid date. Also, if you want to add a not null constraint to a column, you can do so by adding the `not null` value to the column definition in your model's schema: `constraints: ['not null']`.
 
 ## Configuring Constraints
 
