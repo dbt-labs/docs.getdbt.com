@@ -109,6 +109,7 @@ models:
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
     [+](plus-prefix)[grants](grants): {<dictionary>}
+    [+](plus-prefix)[constraints_enabled](constraints_enabled): true | false
 
 ```
 
@@ -138,6 +139,7 @@ models:
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
       [grants](grants): {<dictionary>}
+      [constraints_enabled](constraints_enabled): true | false
 ```
 
 </File>
@@ -161,8 +163,9 @@ models:
     [schema](resource-configs/schema)="<string>",
     [alias](resource-configs/alias)="<string>",
     [persist_docs](persist_docs)={<dict>},
-    [meta](meta)={<dict>}
-    [grants](grants)={<dict>}
+    [meta](meta)={<dict>},
+    [grants](grants)={<dict>},
+    [constraints_enabled](constraints_enabled)=true | false
 ) }}
 
 ```
