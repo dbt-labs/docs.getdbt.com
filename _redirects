@@ -1,4 +1,4 @@
-
+/docs/deploy/regions  /docs/deploy/regions-ip-addresses 301
 
 ## adapter redirects using diff formats
 
@@ -436,6 +436,7 @@
 /reference/resource-configs/post-hook /reference/resource-configs/pre-hook-post-hook 302
 /reference/resource-configs/pre-hook /reference/resource-configs/pre-hook-post-hook 302
 /reference/resource-properties/tags /reference/resource-configs/tags 302
+/reference/resource-properties/meta /reference/resource-configs/meta 302
 /reference/runs /dbt-cloud/api 302
 /reference/using-the-dbt-cloud-api /dbt-cloud/api 302
 https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
