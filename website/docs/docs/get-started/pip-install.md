@@ -49,7 +49,7 @@ If you're building a tool that integrates with dbt Core, you may want to install
 ```shell
 pip install dbt-core
 ```
-### Upgrade or downgrade dbt Core versions
+### Change dbt Core versions
 
 You can upgrade or downgrade versions of dbt Core by using the `--upgrade` option on the command line (CLI). For more information, see [Best practices for upgrading in Core versions](/docs/dbt-versions/core#best-practices-for-upgrading).
 
@@ -65,7 +65,6 @@ To downgrade to an older version, specify the version you want to use. This comm
 pip install --upgrade dbt-core==0.19.0
 ```
 
-The `upgrade` flag is used to change versions of dbt, regardless of whether you're upgrading or downgrading via pip.
 ### `pip install dbt`
 
 Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, the PyPI package named `dbt` was a simple "pass-through" of `dbt-core` and the four original database adapter plugins. For v1, we formalized that split.
