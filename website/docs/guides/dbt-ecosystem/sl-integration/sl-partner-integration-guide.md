@@ -91,7 +91,8 @@ Fetch and query models, or details about a specific model, for a project from a 
 
 This is an example of fetching all models that utilize the schema, “analytics” from a given job.
 
-```{  
+```
+{  
  models(jobId: 181329, schema: "analytics") {
    name
    status
@@ -130,7 +131,8 @@ This is an example of fetching all models that utilize the schema, “analytics�
            }
        ]
    }
-}`
+}
+```
 
 </TabItem>
 
@@ -138,7 +140,8 @@ This is an example of fetching all models that utilize the schema, “analytics�
 
 This is an example of fetching details about a specific model, “model.jaffle_shop.customers” from a given job.
 
-`{
+```
+{
  model(jobId: 181329, uniqueId: "model.jaffle_shop.customers") {
    parentsModels {
      runId
@@ -164,7 +167,8 @@ This is an example of fetching details about a specific model, “model.jaffle_s
            ]
        }
    }
-}```
+}
+```
 
 </TabItem>
 
@@ -188,7 +192,8 @@ Listing metrics
 
 This is an example listing metrics from a given job.
 
-```{
+```
+{
   metrics(jobId: 123) {
     // the backing model for this metric
     // can be explored via GraphQL selectors for models
@@ -245,7 +250,8 @@ This is an example listing metrics from a given job.
     // meaningful to dbt
     meta
   }
-}```
+}
+```
 
 </TabItem>
 
@@ -255,7 +261,8 @@ As a note, all metric properties shown displayed above are supported in this `me
 
 This is an example of fetching details about a specific metric, “metric.jaffle_shop.new_customers” from a given job.
 
-```{
+```
+{
   metric(jobId: 123,uniqueId: “metric.jaffle_shop.new_customers”) {
     label
     description
@@ -264,13 +271,15 @@ This is an example of fetching details about a specific metric, “metric.jaffle
     timeGrains
     dimensions
   }
-}```
+}
+```
 
 </TabItem>
 
 <TabItem value="example" label="Example metric definition">
 
-```metrics:
+```
+metrics:
   - name: total_claim_charges
     label: Total Claim Charges
     description: total amount charged to the insurance provider
@@ -288,13 +297,15 @@ This is an example of fetching details about a specific metric, “metric.jaffle
     calculation_method: count_distinct
     expression: diagnosis_id
     timestamp: created_at
-    time_grains: [day, week, month]```
+    time_grains: [day, week, month]
+  ```
 
 </TabItem>
 
 <TabItem value="queryapi" label="Query the Metadata API for metrics">
 
-```{
+```
+{
   metrics(jobId: 123) {
     uniqueId
     name
@@ -314,12 +325,14 @@ This is an example of fetching details about a specific metric, “metric.jaffle
       …
     }
   }
-}```
+}
+```
 </TabItem>
 
 <TabItem value="exampleapi" label="Example Metadata API response with metrics">
 
-```{
+```
+{
   "data": {
     "metrics": [
       {
@@ -366,7 +379,8 @@ This is an example of fetching details about a specific metric, “metric.jaffle
       }
      ]
   }
-}```
+}
+```
 </TabItem>
 </Tabs>
 
@@ -393,8 +407,10 @@ In this way, the JDBC shim is a drop-in replacement for an existing Snowflake co
 
 Model queries allow users to query models and use macros from their dbt project.
 
-```select cents_to_dollars('amount_cents') as amount_dollars 
-from {{ ref('orders') }}```
+```
+select cents_to_dollars('amount_cents') as amount_dollars 
+from {{ ref('orders') }}
+```
 
 </TabItem>
 
@@ -405,7 +421,8 @@ Users can compile and execute metric queries using macros defined in the [dbt-me
 * supplies helper macros for derived calculations (like month over month, year to date, and so on) time series operations
 
 
-```select * 
+```
+select * 
 from {{ metrics.calculate(
     metric_list=[metric('customers'), metric(‘revenue’)],
     grain='week',
@@ -416,7 +433,8 @@ from {{ metrics.calculate(
     ],
     start_date='2020-01-01',
     end_date="date_trunc('day', getdate())"
-) }}```
+) }}
+```
 
 </TabItem>
 
@@ -449,7 +467,8 @@ insert image 2 (see toggle below)
 
 Define entities-add-link-here in your dbt project 
 
-```entities: ## The top level node path of the new node
+```
+entities: ## The top level node path of the new node
   - name: [Required] ## The name of the entity
     model: [Required] ## The name of the model that the entity is depdent on
     description: [Optional] ## The description of the entity
@@ -463,7 +482,8 @@ Define entities-add-link-here in your dbt project
 		description: [Optional] ## Description of the dimension
 		default_timestamp: [Optional] ## Setting datetime dimension as default for metrics
 		time_grains: [Optional] ## Acceptable time grains for the datetime dimension
-		primary_key: [Optional] ## Whether this dimension is part of the PK```
+		primary_key: [Optional] ## Whether this dimension is part of the PK
+    ```
 
 </TabItem>
 
@@ -471,7 +491,8 @@ Define entities-add-link-here in your dbt project
 
 Model queries allow users to query models and use macros from their dbt project.
 
-```"entity.project_name.entity_name": {
+```
+"entity.project_name.entity_name": {
       "fqn": [ "same behavior as metric"],
       "unique_id": "entity.project_name.entity_name",
       "package_name": "project_name",
@@ -516,7 +537,8 @@ Model queries allow users to query models and use macros from their dbt project.
 					]
 			],
       "created_at": 1669653016.522599
-  },```
+  },
+  ```
 
 </TabItem>
 
@@ -524,7 +546,8 @@ Model queries allow users to query models and use macros from their dbt project.
 
 How to define new [metrics](/docs/build/metrics) in your dbt project.
 
-```metrics: 
+```
+metrics: 
 		## Always required
 	     - name: [Required] ## The name of the metric
 		label: [Required] ## The human-readable name of the metric
@@ -540,17 +563,18 @@ How to define new [metrics](/docs/build/metrics) in your dbt project.
 		window: [Optional] ## The ability to make a metric cumulative over a time period
 		config: [Optional] ## Additional information for configuring the output
 		
-		## Either or
-		dimensions:
+		## Either or dimensions:
 			include: [Optional] ## The list of dimensions to be included. Either * or list
-			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list```
+			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list
+      ```
 
 </TabItem>
 
 <TabItem value="newmetricapi" label="New metric metadata API response">
 
 
-```"metric.project_name.metric_name": {
+```
+"metric.project_name.metric_name": {
       "fqn": [
           "project_name",
           "folder_name",
@@ -603,7 +627,8 @@ How to define new [metrics](/docs/build/metrics) in your dbt project.
 			],
       "metrics": ["used for derived metrics"],
       "created_at": 1669653027.290001
-  },```
+  },
+  ```
 
 </TabItem>
 
@@ -611,13 +636,15 @@ How to define new [metrics](/docs/build/metrics) in your dbt project.
 
 How to query an entity using SQL
 
-```select *
+```
+select *
 from {{ entities.calculate(
 	entity_list=[...], [Required, one to start]
        dimensions: [...], [Optional, default is all]
        metrics: [...], [Optional, default is all at finest grain]
        filters: ...
-	)}}```
+	)}}
+  ```
 
 </TabItem>
 
@@ -654,7 +681,6 @@ Please [reach out](mailto:semantic-layer@dbtlabs.com) if you are interested in t
 ## Contact us
 
 - If you have any questions or are interested in becoming a formal partner, please contact the [Partnerships team](mailto:partnerships@dbtlabs.com). 
-
 - If you have product feedback please contact the [Product team](mailto:cameron.afzal@dbtlabs.com). 
 
 ## Related docs
@@ -666,4 +692,3 @@ Please [reach out](mailto:semantic-layer@dbtlabs.com) if you are interested in t
 
 
 ## Troubleshooting
-- 
