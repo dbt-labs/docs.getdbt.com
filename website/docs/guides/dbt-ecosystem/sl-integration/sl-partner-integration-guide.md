@@ -172,7 +172,7 @@ This is an example of fetching details about a specific model, “model.jaffle_s
 
 ### Fetching metrics for a project
 
-Fetch and query metrics for a project from a given job. To fetch the full list of metrics defined in a user’s project via the dbt Cloud Metadata API, use the [Metrics query](/docs/dbt-cloud/dbt-cloud-api/metadata/schema/metadata-schema-metrics). 
+Fetch and query metrics for a project from a given job. To fetch the full list of metrics defined in a user’s project via the dbt Cloud Metadata API, use the [Metrics query](docs/dbt-cloud-apis/metadata-schema-metrics). 
 
 Test out the API using the [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql). 
 
