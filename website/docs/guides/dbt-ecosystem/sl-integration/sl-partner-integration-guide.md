@@ -624,7 +624,7 @@ from {{ entities.calculate(
 
 </Tabs>
 
-<!--- End tabs for running entity def, entity metadata response, metric def, metric metadata response, entity queries --->
+<!-- end tabs for running entity def, entity metadata response, metric def, metric metadata response, entity queries -->
 
 ### Semantic Layer Connector 
 _Estimated early-mid 2023_
