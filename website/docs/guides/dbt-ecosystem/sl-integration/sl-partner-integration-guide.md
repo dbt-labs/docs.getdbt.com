@@ -448,7 +448,7 @@ insert image 2 (see toggle below)
 
 <TabItem value="entitydef" label="Entity definition">
 
-Define <!---[entities](add-link-here) ---> in your dbt project 
+Define entities-add-link-here in your dbt project 
 
 `entities: ## The top level node path of the new node
   - name: [Required] ## The name of the entity
