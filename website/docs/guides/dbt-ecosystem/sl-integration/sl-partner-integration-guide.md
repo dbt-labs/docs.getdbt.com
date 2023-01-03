@@ -77,7 +77,7 @@ Test out the API using the [GraphQL sandbox](https://studio.apollographql.com/sa
 
 Fetch and query models, or details about a specific model, for a project from a given job.
 
-<!-- tabs for listing models and fetching details about specific model -->
+<!--- tabs for listing models and fetching details about specific model --->
 <Tabs>
 
 <TabItem value="list" label="Listing models">
@@ -163,7 +163,7 @@ This is an example of fetching details about a specific model, “model.jaffle_s
 
 </Tabs>
 
-<!-- End tabs for listing models and fetching details about specific model -->
+<!--- End tabs for listing models and fetching details about specific model --->
 
 ### Fetching metrics for a project
 
@@ -174,7 +174,7 @@ Test out the API using the [GraphQL sandbox](https://studio.apollographql.com/sa
 
 Listing metrics
 
-<!-- tabs for listing, fetching, example, and querying metrics -->
+<!--- tabs for listing, fetching, example, and querying metrics --->
 <Tabs>
 
 <TabItem value="list" label="Listing metrics">
@@ -364,7 +364,7 @@ This is an example of fetching details about a specific metric, “metric.jaffle
 </TabItem>
 </Tabs>
 
-<!-- End tabs for listing, fetching, example, and querying metrics -->
+<!--- End tabs for listing, fetching, example, and querying metrics --->
 
 
 ## Querying the Semantic Layer
@@ -380,7 +380,7 @@ When the dbt Semantic Layer is configured, dbt Cloud exposes an endpoint (abc123
 In this way, the JDBC shim is a drop-in replacement for an existing Snowflake connection in your product. Replace the Snowflake account name with the relevant dbt Cloud Proxy URL, and all queries submitted through the endpoint will be compiled en route to Snowflake. 
 
 
-<!-- tabs for running models and running metrics -->
+<!--- tabs for running models and running metrics --->
 <Tabs>
 
 <TabItem value="models" label="Model queries">
@@ -413,10 +413,9 @@ from {{ metrics.calculate(
 ) }}`
 
 </TabItem>
-
 </Tabs>
 
-<!-- End tabs for running models and running metrics -->	
+<!--- End tabs for running models and running metrics --->	
 
 ## Product Roadmap
 
@@ -437,7 +436,7 @@ This information will be available alongside the Metadata API and entities can b
 
 insert image 2 (see toggle below)
 
-<!-- tabs for running entity def, entity metadata response, metric def, metric metadata response, entity queries -->
+<!--- tabs for running entity def, entity metadata response, metric def, metric metadata response, entity queries --->
 
 <Tabs>
 
@@ -619,7 +618,7 @@ from {{ entities.calculate(
 
 </Tabs>
 
-<!-- End tabs for running entity def, entity metadata response, metric def, metric metadata response, entity queries -->-->	
+<!--- End tabs for running entity def, entity metadata response, metric def, metric metadata response, entity queries --->
 
 ### Semantic Layer Connector 
 _Estimated early-mid 2023_
