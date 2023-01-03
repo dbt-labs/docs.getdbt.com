@@ -10,8 +10,6 @@ The `debug` macro is new in dbt v0.14.1, and is only intended to be used in a de
 
 :::
 
-## Overview
-
 The `{{ debug() }}` macro will open an iPython debugger in the context of a compiled dbt macro. The `DBT_MACRO_DEBUGGING` environment value must be set to use the debugger.
 
 ## Usage
