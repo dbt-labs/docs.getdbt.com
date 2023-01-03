@@ -413,6 +413,7 @@ from {{ metrics.calculate(
 ) }}`
 
 </TabItem>
+
 </Tabs>
 
 <!-- End tabs for running models and running metrics -->	
