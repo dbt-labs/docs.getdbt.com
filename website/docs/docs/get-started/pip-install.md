@@ -59,7 +59,7 @@ To upgrade dbt to the latest version:
 pip install --upgrade dbt-core
 ```
 
-To downgrade to an older version, you'll want to use the command above while specifying the version you want to use. As an example:
+To downgrade to an older version, specify the version you want to use. This command can be useful when you're resolving package dependencies. As an example:
 
 ```
 pip install --upgrade dbt-core==0.19.0
