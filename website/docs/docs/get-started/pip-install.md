@@ -51,7 +51,7 @@ pip install dbt-core
 ```
 ### Upgrade or downgrade dbt Core versions
 
-You can upgrade or downgrade versions of dbt Core by using an upgrade command on the Command line (CLI). For more information, see [Best practices for upgrading in Core versions](/docs/dbt-versions/core#best-practices-for-upgrading).
+You can upgrade or downgrade versions of dbt Core by using the `--upgrade` option on the command line (CLI). For more information, see [Best practices for upgrading in Core versions](/docs/dbt-versions/core#best-practices-for-upgrading).
 
 To upgrade dbt to the latest version:
 
