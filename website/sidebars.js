@@ -839,7 +839,18 @@ guides: [
             "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
-        }
+        },
+        {
+          type: "category",
+          label: "dbt Semantic Layer partner integration guide",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/sl-integration/sl-partner-integration-guide",
+          },
+          items: [
+            "guides/dbt-ecosystem/sl-integration/sl-partner-integration-guide",
+          ],
+        },
       ],
     },
     {
