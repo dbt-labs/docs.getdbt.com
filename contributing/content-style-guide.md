@@ -46,22 +46,16 @@ If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs
 
 ## Using Markdown
 
-docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. The following table provides an overview of the supported syntax elements.
+docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. Review the basic Markdown syntax[document](https://www.markdownguide.org/basic-syntax/) for the supported syntax elements. For custom syntaxes, review the table below: 
 
 | Element                                     | Syntax                                                |
 |---------------------------------------------|-------------------------------------------------------|
-| Headings                                    | `# H1`, `## H2`, `### H3`                             |
-| Bold                                        | `**bold text**`                                       |
-| Italic                                      | `_italicized text_`                                    |
-| Ordered List                                | `1.` First item (use `1.` for each item)              |
-| Unordered List                              | `-` or `*` (for each item)                            |
-| Code or command in a sentence               | ``code``                                              |
 | Link - external site                        | `[Title](https://www.example.com)`                    |
-| Link - topic in same folder                 | `[Title](/folder/file-name) without file extension`            |
-| Link - topic in different folder            | `[Title](/folder/file-name) without file extension` |
-| Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`                     |
-| Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`           |
-| Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" title="Concise description of image"/>`      |
+| Link - topic in same folder                 | `[Title](/docs/file-name) without file extension`   |
+| Link - topic in different folder            | `[Title](/docs/file-name) without file extension`   |
+| Link - section in topic in same folder      | `[Title](/docs/file-name#section-name)`             |
+| Link - section in topic in different folder | `[Title](/docs/file-name#section-name)`             |
+| Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" title="Concise description of image"/>`|
 
 ## Callouts
 
