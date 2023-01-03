@@ -1,5 +1,5 @@
 ---
-title: "dbt Semantic Layer partner integration guide" 
+title: "Semantic Layer integration" 
 id: "sl-partner-integration-guide"
 ---
 
@@ -20,7 +20,7 @@ The dbt Semantic Layer is unopinionated about specific tools, use cases, or appl
 * Governance and privacy
 * Data discovery and cataloging
 
-Contact the [dbt Labs team](mailto:semantic-layer@dbtlabs.com) to share other potential use cases for the dbt Semantic Layer.
+To share other use cases for the dbt Semantic Layer, contact the [dbt Labs team](mailto:semantic-layer@dbtlabs.com).
 
 
 ## Product overview
@@ -49,12 +49,12 @@ Generally, integration partners approach their roadmap as follows:
 
 | Feature  |  Info | Availability |
 |----------|-------|:------------:|
-|1. **Model metadata**  |  Import/sync model metadata (descriptions, dimensions, test, freshness, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
-|2. ** Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
-|3. **dbt Semantic Layer as a data source**  | Connect to the dbt Semantic Layer as a data source (for example, the Snowflake Proxy Server). Users can execute dbt-SQL to query metrics or models and use macros.* | ✅ |
-|4. **Query metrics**  | Query the imported metrics via a metric-centric UI (for example, a user can select a metric, time grain, and dimensions of interest). | ✅ |
-|5. **Entity definitions**  | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _Coming soon, review the [Product Roadmap](#product-roadmap) for more details_ |
-|*6. **dbt Semantic Layer connector**  | A dedicated Semantic Layer connector with the ability to query any data platform supported in dbt Cloud. | _Coming soon, review the [Product Roadmap](#product-roadmap) for more details_ |
+| **Model metadata**  |  Import/sync model metadata (descriptions, dimensions, test, freshness, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
+| ** Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
+| **dbt Semantic Layer as a data source**  | Connect to the dbt Semantic Layer as a data source (for example, the Snowflake Proxy Server). Users can execute dbt-SQL to query metrics or models and use macros.* | ✅ |
+| **Query metrics**  | Query the imported metrics via a metric-centric UI (for example, a user can select a metric, time grain, and dimensions of interest). | ✅ |
+| **Entity definitions**  | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _Coming soon, review the [Product Roadmap](#product-roadmap) for more details_ |
+|**dbt Semantic Layer connector** * | A dedicated Semantic Layer connector with the ability to query any data platform supported in dbt Cloud. | _Coming soon, review the [Product Roadmap](#product-roadmap) for more details_ |
 
 The _coming soon_ features above are expected to launch in 2023. Review the [Product Roadmap](#product-roadmap) for more details and timelines.
 
@@ -69,6 +69,8 @@ A dbt Semantic Layer integration should include the following:
 
 
 ## Getting started
+
+Add conceptual content here (more to come)
 
 ### Use the Metadata API
 
@@ -89,7 +91,7 @@ Fetch and query models, or details about a specific model, for a project from a 
 
 This is an example of fetching all models that utilize the schema, “analytics” from a given job.
 
-`{
+```{  
  models(jobId: 181329, schema: "analytics") {
    name
    status
@@ -162,7 +164,7 @@ This is an example of fetching details about a specific model, “model.jaffle_s
            ]
        }
    }
-}`
+}```
 
 </TabItem>
 
@@ -172,7 +174,7 @@ This is an example of fetching details about a specific model, “model.jaffle_s
 
 ### Fetching metrics for a project
 
-Fetch and query metrics for a project from a given job. To fetch the full list of metrics defined in a user’s project via the dbt Cloud Metadata API, use the [Metrics query](docs/dbt-cloud-apis/metadata-schema-metrics). 
+Fetch and query metrics for a project from a given job. To fetch the full list of metrics defined in a user’s project via the dbt Cloud Metadata API, use the [Metrics query](/docs/dbt-cloud-apis/metadata-schema-metrics). 
 
 Test out the API using the [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql). 
 
@@ -186,7 +188,7 @@ Listing metrics
 
 This is an example listing metrics from a given job.
 
-`{
+```{
   metrics(jobId: 123) {
     // the backing model for this metric
     // can be explored via GraphQL selectors for models
@@ -195,7 +197,6 @@ This is an example listing metrics from a given job.
       unique_id
       description
     }
-
     // the name of the metric
     name
 
@@ -244,7 +245,7 @@ This is an example listing metrics from a given job.
     // meaningful to dbt
     meta
   }
-}`
+}```
 
 </TabItem>
 
@@ -254,7 +255,7 @@ As a note, all metric properties shown displayed above are supported in this `me
 
 This is an example of fetching details about a specific metric, “metric.jaffle_shop.new_customers” from a given job.
 
-`{
+```{
   metric(jobId: 123,uniqueId: “metric.jaffle_shop.new_customers”) {
     label
     description
@@ -263,13 +264,13 @@ This is an example of fetching details about a specific metric, “metric.jaffle
     timeGrains
     dimensions
   }
-}`
+}```
 
 </TabItem>
 
 <TabItem value="example" label="Example metric definition">
 
-`metrics:
+```metrics:
   - name: total_claim_charges
     label: Total Claim Charges
     description: total amount charged to the insurance provider
@@ -287,13 +288,13 @@ This is an example of fetching details about a specific metric, “metric.jaffle
     calculation_method: count_distinct
     expression: diagnosis_id
     timestamp: created_at
-    time_grains: [day, week, month]`
+    time_grains: [day, week, month]```
 
 </TabItem>
 
 <TabItem value="queryapi" label="Query the Metadata API for metrics">
 
-`{
+```{
   metrics(jobId: 123) {
     uniqueId
     name
@@ -313,12 +314,12 @@ This is an example of fetching details about a specific metric, “metric.jaffle
       …
     }
   }
-}`
+}```
 </TabItem>
 
 <TabItem value="exampleapi" label="Example Metadata API response with metrics">
 
-`{
+```{
   "data": {
     "metrics": [
       {
@@ -365,7 +366,7 @@ This is an example of fetching details about a specific metric, “metric.jaffle
       }
      ]
   }
-}`
+}```
 </TabItem>
 </Tabs>
 
@@ -392,8 +393,8 @@ In this way, the JDBC shim is a drop-in replacement for an existing Snowflake co
 
 Model queries allow users to query models and use macros from their dbt project.
 
-`select cents_to_dollars('amount_cents') as amount_dollars 
-from {{ ref('orders') }}`
+```select cents_to_dollars('amount_cents') as amount_dollars 
+from {{ ref('orders') }}```
 
 </TabItem>
 
@@ -404,7 +405,7 @@ Users can compile and execute metric queries using macros defined in the [dbt-me
 * supplies helper macros for derived calculations (like month over month, year to date, and so on) time series operations
 
 
-`select * 
+```select * 
 from {{ metrics.calculate(
     metric_list=[metric('customers'), metric(‘revenue’)],
     grain='week',
@@ -415,20 +416,18 @@ from {{ metrics.calculate(
     ],
     start_date='2020-01-01',
     end_date="date_trunc('day', getdate())"
-) }}`
+) }}```
 
 </TabItem>
 
 </Tabs>
-
-	
 
 ## Product Roadmap
 
 The dbt Semantic Layer product roadmap details what features are coming soon and the timelines associated with them. 
 
 ### Entities 
-_Estimated early 2023_
+Estimated launch &mdash; early 2023
 
 dbt Labs is introducing a new node type, [the entity](https://github.com/dbt-labs/dbt-core/issues/6379), when dbt Core version 1.5 launches. This introduces a new and efficient way to define metrics by reusing logic, for example, `time_grains`.  Entities are semantic objects made up of curated dimensions from models with more metadata defined. Over time, users can standardize metric and entity definitions with packages to speed up development. 
 
@@ -450,7 +449,7 @@ insert image 2 (see toggle below)
 
 Define entities-add-link-here in your dbt project 
 
-`entities: ## The top level node path of the new node
+```entities: ## The top level node path of the new node
   - name: [Required] ## The name of the entity
     model: [Required] ## The name of the model that the entity is depdent on
     description: [Optional] ## The description of the entity
@@ -464,7 +463,7 @@ Define entities-add-link-here in your dbt project
 		description: [Optional] ## Description of the dimension
 		default_timestamp: [Optional] ## Setting datetime dimension as default for metrics
 		time_grains: [Optional] ## Acceptable time grains for the datetime dimension
-		primary_key: [Optional] ## Whether this dimension is part of the PK`
+		primary_key: [Optional] ## Whether this dimension is part of the PK```
 
 </TabItem>
 
@@ -472,7 +471,7 @@ Define entities-add-link-here in your dbt project
 
 Model queries allow users to query models and use macros from their dbt project.
 
-`"entity.project_name.entity_name": {
+```"entity.project_name.entity_name": {
       "fqn": [ "same behavior as metric"],
       "unique_id": "entity.project_name.entity_name",
       "package_name": "project_name",
@@ -517,7 +516,7 @@ Model queries allow users to query models and use macros from their dbt project.
 					]
 			],
       "created_at": 1669653016.522599
-  },`
+  },```
 
 </TabItem>
 
@@ -525,7 +524,7 @@ Model queries allow users to query models and use macros from their dbt project.
 
 How to define new [metrics](/docs/build/metrics) in your dbt project.
 
-`metrics: 
+```metrics: 
 		## Always required
 	     - name: [Required] ## The name of the metric
 		label: [Required] ## The human-readable name of the metric
@@ -544,14 +543,14 @@ How to define new [metrics](/docs/build/metrics) in your dbt project.
 		## Either or
 		dimensions:
 			include: [Optional] ## The list of dimensions to be included. Either * or list
-			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list`
+			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list```
 
 </TabItem>
 
 <TabItem value="newmetricapi" label="New metric metadata API response">
 
 
-`"metric.project_name.metric_name": {
+```"metric.project_name.metric_name": {
       "fqn": [
           "project_name",
           "folder_name",
@@ -604,7 +603,7 @@ How to define new [metrics](/docs/build/metrics) in your dbt project.
 			],
       "metrics": ["used for derived metrics"],
       "created_at": 1669653027.290001
-  },`
+  },```
 
 </TabItem>
 
@@ -612,13 +611,13 @@ How to define new [metrics](/docs/build/metrics) in your dbt project.
 
 How to query an entity using SQL
 
-`select *
+```select *
 from {{ entities.calculate(
 	entity_list=[...], [Required, one to start]
        dimensions: [...], [Optional, default is all]
        metrics: [...], [Optional, default is all at finest grain]
        filters: ...
-	)}}`
+	)}}```
 
 </TabItem>
 
@@ -627,9 +626,9 @@ from {{ entities.calculate(
 <!-- end tabs for running entity def, entity metadata response, metric def, metric metadata response, entity queries -->
 
 ### Semantic Layer Connector 
-_Estimated early-mid 2023_
+Estimated launch &mdash; early-mid 2023
 
-To support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/get-started/connect-your-database)with the dbt Semantic Layer. Integration partners will need to install the Arrow FlightSQL JDBC/ODBC driver which will authenticate with dbt Cloud and the data platform that’s queried. 
+To support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/get-started/connect-your-database) with the dbt Semantic Layer. Integration partners will need to install the Arrow FlightSQL JDBC/ODBC driver which will authenticate with dbt Cloud and the data platform that’s queried. 
 
 
 New architecture envisioned 
@@ -638,7 +637,7 @@ insert image 3 (see toggle below)
 
 
 ### Semantic Layer API 
-_Estimated mid-2023_
+Estimated launch &mdash; mid 2023
 
 dbt Cloud will provide a REST-based API that supports:
 
