@@ -31,13 +31,13 @@ To enable source freshness snapshots, make sure to configure your sources to [sn
 <!-- tabs for checkbox and command -->
 <Tabs>
 
-<TabItem value="checkbox" label="Selecting checkbox">
+<TabItem value="checkbox" label="Select checkbox">
 
 The **Run source freshness** checkbox in your execution settings will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. If you wanted your job dedicated *exclusively* to running freshness checks, you still need to include at least one placeholder step, such as `dbt compile`.
 
 </TabItem>
 
-<TabItem value="run_steps" label="Add to run step">
+<TabItem value="run_steps" label="Add as a run step">
 
 Add the `dbt source freshness` command to a job in whatever run step order. But if your source data is out of date &mdash; this step will "fail', and subsequent steps will not run. dbt Cloud will trigger email notifications (if configured) based on the end state of this step. <br />
   
