@@ -14,11 +14,9 @@ You can manage data type constraints on your models using the `constraints_enabl
 
 You can configure `constraints_enabled` in `dbt_project.yml` to apply constraints to many resources at once—all models in your project, a package, or a subfolder—and you can also configure grants one-by-one for specific resources, in yaml config: blocks or right within their `.sql` files. You'll receive dynamic error messages if you do not configure constraints based on the criteria below.
 
-Constraints must be defined in a `yml` schema configuration file like `schema.yml`.
-
-Only the `SQL` **table** materialization is supported for constraints.
-
-`data_type` values must be defined for all columns and NOT be null or blank.
+- Constraints must be defined in a `yml` schema configuration file like `schema.yml`.
+- Only the `SQL` **table** materialization is supported for constraints.
+- `data_type` values must be defined for all columns and NOT be null or blank.
 
 <Tabs
   defaultValue="models"
@@ -108,7 +106,7 @@ models:
 
 </div>
 
-<div warehouse="Databricks">
+<div warehouse="Spark">
 
 - OSS Apache Spark / Delta Lake do not support `grants`.
 - Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
