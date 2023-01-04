@@ -85,7 +85,7 @@ This is similar to the role of <Term id="cte">CTEs</Term> in dbt SQL models. We 
 
 Instead of a final `select` statement, each Python model returns a final DataFrame. Each DataFrame operation is "lazily evaluated." In development, you can preview its data, using methods like `.show()` or `.head()`. When you run a Python model, the full result of the final DataFrame will be saved as a table in your data warehouse.
 
-dbt Python models have access to almost all of the same configuration options as SQL models. You can test them, document them, add `tags` and `meta` properties to them, grant access to their results to other users, and so on. You can select them by their name, their file path, their configurations, whether they are upstream or downstream of another model, or whether they have been modified compared to a previous project state.
+dbt Python models have access to almost all of the same configuration options as SQL models. You can test and document them, add `tags` and `meta` properties, and grant access to their results to other users. You can select them by their name, file path, configurations, whether they are upstream or downstream of another model, or if they have been modified compared to a previous project state.
 
 ### Defining a Python model
 
