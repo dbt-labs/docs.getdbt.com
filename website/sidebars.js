@@ -944,9 +944,11 @@ guides: [
       },
       items: [
         {
-          type: "doc",
-          label: "SELECT",
-          id: "sql-reference/select"
+          type: "category",
+          label: "Statements",
+          items: [
+            "sql-reference/statements/select",
+          ],
         },
         {
           type: "category",
@@ -970,9 +972,28 @@ guides: [
           ],
         },
         {
+          type: "category",
+          label: "Date Functions",
+          items: [
+            "sql-reference/date-functions/dateadd",
+            "sql-reference/date-functions/datediff",
+            "sql-reference/date-functions/datepart",
+          ],
+        },
+        {
           type: "doc",
           label: "DISTINCT",
           id: "sql-reference/distinct",
+        },
+        {
+          type: "doc",
+          label: "Comments",
+          id: "sql-reference/comments",
+        },
+        {
+          type: "doc",
+          label: "Cast",
+          id: "sql-reference/cast",
         },
       ],
     },
