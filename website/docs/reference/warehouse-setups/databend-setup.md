@@ -1,8 +1,8 @@
 ---
 title: "Databend Cloud setup"
-id: "databend-cloud-setup"
+id: "databend-setup"
 meta:
-  maintained_by: Databend
+  maintained_by: Databend Cloud
   authors: Shanjie Han
   github_repo: 'databendcloud/dbt-databend'
   pypi_package: 'dbt-databend-cloud'
