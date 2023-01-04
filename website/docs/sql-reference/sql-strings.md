@@ -1,7 +1,7 @@
 ---
 id: strings
 title: SQL Strings
-description: Using DISTINCT in a SELECT statement will force a query to only return non-duplicate rows. You may commonly see a DISTINCT clause in COUNT functions to get counts of distinct rows.
+description: Strings in SQL are words or combination of characters that you’ll typically see encased in single quotes (ex. 'Jaffle Shop', '1234 Shire Lane', 'Plan A').
 slug: /sql-reference/strings
 ---
 
