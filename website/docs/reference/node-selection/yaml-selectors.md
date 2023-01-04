@@ -60,7 +60,7 @@ This simple syntax does not support any operators or `exclude`.
 
 ### Full YAML
 
-This is the most thorough syntax, which can include graph and set operators.
+This is the most thorough syntax, which can include graph and set operators. Checkout the list of available [methods](methods).
 
 ```yml
 definition:
