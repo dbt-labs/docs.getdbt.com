@@ -18,6 +18,8 @@ You can configure `constraints_enabled` in `dbt_project.yml` to apply constraint
 - Only the `SQL` **table** materialization is supported for constraints.
 - `data_type` values must be defined for all columns and NOT be null or blank.
 
+> Note: constraints and data type inheritance across downstream tables depends on database-specific functionality. Bias towards defining constraints for all tables in scope where desired.
+
 <Tabs
   defaultValue="models"
   values={[
@@ -55,18 +57,51 @@ models:
 The `constraints_enabled` config can also be defined:
 
 - under the `models` config block in `dbt_project.yml`
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  tpch:
+    staging:
+      +materialized: view
+      +docs:
+        node_color: "#cd7f32"
+
+    marts:
+      core:
+        +constraints_enabled: true # enforce data type constraints across all models in the "/marts/core" subfolder
+        materialized: table
+```
+
+</File>
+
+<File name='models/constraints_example.sql'>
+
 - in a `config()` Jinja macro within a model's SQL file
+
+```sql
+{{
+  config(
+    materialized = "table",
+    constraints_enabled = true
+  )
+}}
+
+select 
+  1 as id, 
+  'blue' as color, 
+  cast('2019-01-01' as date) as date_day
+```
+
+</File>
 
 See [configs and properties](configs-and-properties) for details.
 
 </TabItem>
 </Tabs>
 
-## Constraints Enabled Inheritance
-
-### General Examples
-
-### Database-specific Requirements and Notes
+### Database-specific Examples and Notes
 
 <WHCode>
 
