@@ -313,7 +313,7 @@ def model(dbt, session):
 
 </File>
 
-Currently, Python functions defined in one dbt model can't be imported and reused in other models. Refer to [Code reuse](#code-reuse) for the potential patterns we're considering.
+Currently, Python functions defined in one dbt model can't be imported and reused in other models. Refer to [Code reuse](#code-reuse) for the potential patterns being considered.
 
 ### Using PyPI packages
 
