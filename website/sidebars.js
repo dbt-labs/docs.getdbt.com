@@ -960,6 +960,7 @@ guides: [
             "sql-reference/aggregate-functions/min",
             "sql-reference/aggregate-functions/round",
             "sql-reference/aggregate-functions/sum",
+            "sql-reference/aggregate-functions/array-agg",
           ],
         },
         {
@@ -987,6 +988,15 @@ guides: [
             "sql-reference/string-functions/upper",
             "sql-reference/string-functions/lower",
             "sql-reference/string-functions/concat",
+            "sql-reference/string-functions/trim",
+          ],
+        },
+        {
+          type: "category",
+          label: "Window Functions",
+          items: [
+            "sql-reference/window-functions/rank",
+            "sql-reference/window-functions/row-number",
           ],
         },
         {
@@ -1011,6 +1021,11 @@ guides: [
           type: "doc",
           label: "Cast",
           id: "sql-reference/cast",
+        },
+        {
+          type: "doc",
+          label: "Strings",
+          id: "sql-reference/strings",
         },
       ],
     },
