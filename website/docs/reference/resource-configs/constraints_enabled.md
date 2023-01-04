@@ -76,9 +76,9 @@ models:
 
 </File>
 
-<File name='models/constraints_example.sql'>
-
 - in a `config()` Jinja macro within a model's SQL file
+
+<File name='models/constraints_example.sql'>
 
 ```sql
 {{
