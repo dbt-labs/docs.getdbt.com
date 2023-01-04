@@ -981,6 +981,23 @@ guides: [
           ],
         },
         {
+          type: "category",
+          label: "String Functions",
+          items: [
+            "sql-reference/string-functions/upper",
+            "sql-reference/string-functions/lower",
+            "sql-reference/string-functions/concat",
+          ],
+        },
+        {
+          type: "category",
+          label: "Operators",
+          items: [
+            "sql-reference/operators/in",
+            "sql-reference/operators/or",
+          ],
+        },
+        {
           type: "doc",
           label: "DISTINCT",
           id: "sql-reference/distinct",
