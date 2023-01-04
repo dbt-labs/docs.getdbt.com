@@ -1,7 +1,7 @@
 ---
 id: in
 title: SQL IN
-description: Use the OR operator in a WHERE clause to filter on multiple field values or perform more advanced joins on multiple fields.
+description: The IN operator allows you to specify multiple values in a WHERE clause, so you can easily filter your query on multiple options.
 slug: /sql-reference/in
 ---
 
