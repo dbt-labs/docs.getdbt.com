@@ -19,7 +19,7 @@ dbt Cloud provides a helpful interface around dbt's [source data freshness](/doc
 
 <Lightbox src="/img/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
 
-To enable source freshness snapshots, make sure to configure your sources to [snapshot freshness information](/docs/build/sources#snapshotting-source-data-freshness) and review the different options below:
+To enable source freshness snapshots, make sure to configure your sources to [snapshot freshness information](/docs/build/sources#snapshotting-source-data-freshness) and review the following options:
 
 <Changelog>
 
