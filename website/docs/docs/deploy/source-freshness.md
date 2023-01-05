@@ -14,7 +14,7 @@ dbt Cloud provides a helpful interface around dbt's [source data freshness](/doc
 
 `dbt build` does _not_ include source freshness checks when it builds and tests resources in your DAG. As such, here's a common pattern for defining jobs:
 - `dbt build` as the run step
-- check box for generating docs
+- checkbox for generating docs
 - check box for source freshness
 
 <Lightbox src="/img/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
