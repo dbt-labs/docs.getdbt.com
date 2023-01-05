@@ -21,7 +21,7 @@ The syntax for using TRIM function looks like the following:
 trim(<field_name> [, <characters_to_remove>])
 ```
 
-Like we said earlier, the default `<characters_to_remove>` is a blank space, such that if you were to `trim(' string with extra leading space')` it would return 'string with extra leading space'`. You can explicitly specify single characters or a pattern to trim from your strings.
+Like we said earlier, the default `<characters_to_remove>` is a blank space, such that if you were to `trim(' string with extra leading space')` it would return `'string with extra leading space'`. You can explicitly specify single characters or a pattern to trim from your strings.
 
 ### SQL TRIM function example
 
