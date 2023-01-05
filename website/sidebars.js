@@ -840,11 +840,7 @@ guides: [
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
         },
-        {
-          type: "category",
-          label: "dbt Semantic Layer",
-          items: [
-            "guides/dbt-ecosystem/sl-partner-integration-guide",
+        "guides/dbt-ecosystem/sl-partner-integration-guide",
           ],
         },
       ],
