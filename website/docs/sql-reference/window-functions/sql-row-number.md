@@ -13,7 +13,7 @@ In this page, let’s go deep into the ROW_NUMBER function and talk about what i
 
 The ROW_NUMBER window function is an effective way to create a ranked column or filter a query based on rankings. More specifically, the ROW_NUMBER function returns the *unique* row number of a row in an ordered group or dataset. 
 
-Unlike the RANK and DENSE_RANK functions, ROW_NUMBER is non-deterministic, meaning that a *unique* number is assigned arbitrarily for rows with duplicate values.
+Unlike the [RANK](/sql-reference/rank) and DENSE_RANK functions, ROW_NUMBER is non-deterministic, meaning that a *unique* number is assigned arbitrarily for rows with duplicate values.
 
 ## How to use the ROW_NUMBER function
 
