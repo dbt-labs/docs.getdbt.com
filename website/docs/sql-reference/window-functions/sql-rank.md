@@ -32,7 +32,7 @@ Let’s take a look at a practical example using the RANK function below.
 select
 	order_id,
 	order_date,
-	rank() over (order by order_date) as order_rnk
+	rank() over (order by order_date) as order_rank
 from {{ ref('orders') }}
 ```
 
