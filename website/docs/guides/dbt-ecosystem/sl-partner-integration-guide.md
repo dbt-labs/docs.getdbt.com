@@ -94,7 +94,7 @@ You can fetch and query models, or details about a specific model, for a project
 
 <TabItem value="list" label="Listing models">
 
-This is an example of fetching all models that utilize the schema, “analytics” from a given job.
+This is an example of fetching all models that utilize the schema,`analytics` from a given job.
 
 ```
 {  
@@ -143,7 +143,7 @@ This is an example of fetching all models that utilize the schema, “analytics�
 
 <TabItem value="details" label="Fetch details about a specific model">
 
-This is an example of fetching details about a specific model, “model.jaffle_shop.customers” from a given job.
+This is an example of fetching details about a specific model, `model.jaffle_shop.customers` from a given job.
 
 ```
 {
@@ -219,7 +219,7 @@ This is an example listing metrics from a given job.
 
 As a note, all metric properties shown displayed above are supported in this `metric` query, however, an abbreviated query is used here as an example.
 
-This is an example of fetching details about a specific metric "new_customers" from a given job "123".
+This is an example of fetching details about a specific metric `new_customers` from a given job `123`.
 
 ```
 {
@@ -339,7 +339,7 @@ When the dbt Semantic Layer is configured, dbt Cloud provides a Proxy Server end
 2. Execute that compiled SQL against the Snowflake data platform
 3. Return the results to the client
 
-Replace the hostname in your existing Snowflake connection with the relevant dbt Cloud Proxy Server URL (for example, abc123.proxy.cloud.getdbt.com), and all queries submitted through the endpoint will be compiled en route to the data platform. 
+Replace the hostname in your existing Snowflake connection with the relevant dbt Cloud Proxy Server URL (for example, `abc123.proxy.cloud.getdbt.com`), and all queries submitted through the endpoint will be compiled en route to the data platform. 
 
 _Note: This approach will change with the new Semantic Layer connection, which will be able to query all data platforms supported in dbt Cloud via dedicated JDBC/ODBC drivers (and eventually an API)._
 
@@ -389,7 +389,7 @@ The dbt Semantic Layer product roadmap details what features are coming soon and
 | Product | Estimated launch |
 | ------- | ---------------- |
 | [Entities](#entities) | Estimated launch &mdash; early 2023 |
-| [dbt Semantic Layer connector](##dbt-semantic-layer-connector) | Estimated launch &mdash; early-mid 2023 |
+| [dbt Semantic Layer connector](#dbt-semantic-layer-connector) | Estimated launch &mdash; early-mid 2023 |
 | [dbt Semantic Layer API](#dbt-semantic-layer-api) | Estimated launch &mdash; mid 2023 |
 
 ### Entities 
@@ -408,7 +408,7 @@ This information will be available alongside the Metadata API and entities can b
 
 :::caution 🚧
 
-Note this is a work in progress and you can exoect continuous changes and improvements.
+Note this is a work in progress and anticipate continuous changes and improvements.
 
 :::
 
