@@ -843,16 +843,10 @@ guides: [
         {
           type: "category",
           label: "dbt Semantic Layer",
-          link: {
-            type: "doc",
-            id: "guides/dbt-ecosystem/sl-partner-integration-guide",
-          },
           items: [
             "guides/dbt-ecosystem/sl-partner-integration-guide",
           ],
         },
-      ],
-    },
     {
       type: "category",
       label: "Advanced",
