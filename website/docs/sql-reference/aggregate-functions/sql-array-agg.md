@@ -17,7 +17,7 @@ To create an array of multiple data values in SQL, you’ll likely leverage the 
 
 The ARRAY_AGG function has the following syntax:
 
-`array_agg( [distinct] <field_name>) [within group (<order_by field>) over ( [partition by <field>])`
+`array_agg( [distinct] <field_name>) [within group (<order_by field>) over ([partition by <field>])`
 
 A few notes on the functionality of this function:
 - Most of the example syntax from above is optional, meaning the ARRAY_AGG function can be as simple as `array_agg(<field_name>)` or used as a more complex as a window function
