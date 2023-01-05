@@ -36,7 +36,7 @@ select
     array_agg(distinct status) as status_array
 from  {{ ref('orders') }}
 group by 1
-order  by 1
+order by 1
 ```
 
 This simple query using the sample dataset [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table is returning a new column of distinct order statuses by order month:
