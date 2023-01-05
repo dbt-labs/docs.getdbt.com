@@ -53,7 +53,7 @@ Some notes on these results:
 - Order 6’s `order_rank` is 6 (if you wanted the rank to execute to 5, you would use the DENSE_RANK function).
 
 :::tip Ranking functions to know
-RANK is just one of the ranking functions that analytics engineering practitioners will use throughout their data models. There’s also DENSE_RANK and ROW_NUMBER which rank rows differently than RANK.
+RANK is just one of the ranking functions that analytics engineering practitioners will use throughout their data models. There’s also DENSE_RANK and [ROW_NUMBER](/sql-reference/row-number) which rank rows differently than RANK.
 :::
 
 ## RANK syntax in Snowflake, Databricks, BigQuery, and Redshift
