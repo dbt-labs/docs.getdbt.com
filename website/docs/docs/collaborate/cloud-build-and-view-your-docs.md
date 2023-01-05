@@ -25,7 +25,6 @@ You can also add `dbt docs generate` to the list of commands in the job run step
 - Add `dbt docs generate` to the list of commands in the job run steps, in whatever order you prefer. If that particular step in your job fails, the job will fail and all subsequent steps will be skipped.    
 
 
-Review the different options and outcomes below:
 
 <!-- tabs for runs teps and command -->
 <Tabs>
