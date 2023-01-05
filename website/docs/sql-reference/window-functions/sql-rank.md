@@ -9,7 +9,7 @@ slug: /sql-reference/rank
     <title>Working with the SQL RANK</title>
 </head>
 
-There are many different ranking window functions…ROW_NUMBER, DENSE_RANK, RANK. Let’s start off with the most basic (RANK) and talk about what it is, how to use it, and why it’s important in analytics engineering work.
+There are many different ranking window functions…[ROW_NUMBER](/sql-reference/row-number), DENSE_RANK, RANK. Let’s start off with the most basic (RANK) and talk about what it is, how to use it, and why it’s important in analytics engineering work.
 
 The RANK function is an effective way to create a ranked column or filter a query based on rankings. More specifically, the RANK function returns the rank of a value (starting at 1) in an ordered group or dataset. It's important to note that if multiple values executed by the rank function are the same, they’ll have the same rank.
 
