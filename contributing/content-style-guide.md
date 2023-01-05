@@ -437,6 +437,9 @@ Hyperlinks should be text only, please avoid image-based links. The text should 
   :x: For more information, [_Click Here_](https://docs.getdbt.com/)
 
   ✅ For more information, visit the [_dbt Labs doc site_](https://docs.getdbt.com/).
+  
+  ✅ For more information, read the [_dbt Labs doc site_](https://docs.getdbt.com/).
+
 
 ### Link destinations
 
