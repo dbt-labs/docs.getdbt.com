@@ -642,6 +642,7 @@ Please [reach out](mailto:semantic-layer@dbtlabs.com) if you:
 - Review the [dbt Semantic Layer intro blog](https://www.getdbt.com/blog/dbt-semantic-layer/) and [launch blog](https://www.getdbt.com/blog/frontiers-of-the-dbt-semantic-layer/) to learn more about the product vision and purpose. 
 - Review the [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations). 
 
+
 ## Troubleshooting
 
 This is a troubleshooting section - tbd
