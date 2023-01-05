@@ -949,9 +949,11 @@ guides: [
       },
       items: [
         {
-          type: "doc",
-          label: "SELECT",
-          id: "sql-reference/select"
+          type: "category",
+          label: "Statements",
+          items: [
+            "sql-reference/statements/select",
+          ],
         },
         {
           type: "category",
@@ -963,6 +965,7 @@ guides: [
             "sql-reference/aggregate-functions/min",
             "sql-reference/aggregate-functions/round",
             "sql-reference/aggregate-functions/sum",
+            "sql-reference/aggregate-functions/array-agg",
           ],
         },
         {
@@ -975,9 +978,59 @@ guides: [
           ],
         },
         {
+          type: "category",
+          label: "Date Functions",
+          items: [
+            "sql-reference/date-functions/dateadd",
+            "sql-reference/date-functions/datediff",
+            "sql-reference/date-functions/datepart",
+          ],
+        },
+        {
+          type: "category",
+          label: "String Functions",
+          items: [
+            "sql-reference/string-functions/upper",
+            "sql-reference/string-functions/lower",
+            "sql-reference/string-functions/concat",
+            "sql-reference/string-functions/trim",
+          ],
+        },
+        {
+          type: "category",
+          label: "Window Functions",
+          items: [
+            "sql-reference/window-functions/rank",
+            "sql-reference/window-functions/row-number",
+          ],
+        },
+        {
+          type: "category",
+          label: "Operators",
+          items: [
+            "sql-reference/operators/in",
+            "sql-reference/operators/or",
+          ],
+        },
+        {
           type: "doc",
           label: "DISTINCT",
           id: "sql-reference/distinct",
+        },
+        {
+          type: "doc",
+          label: "Comments",
+          id: "sql-reference/comments",
+        },
+        {
+          type: "doc",
+          label: "CAST",
+          id: "sql-reference/cast",
+        },
+        {
+          type: "doc",
+          label: "Strings",
+          id: "sql-reference/strings",
         },
       ],
     },
