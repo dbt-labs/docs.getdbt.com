@@ -539,8 +539,7 @@ Model queries allow users to query models and use macros from their dbt project.
       "created_at": 1669653016.522599
   },
   ```
-
-</TabItem>
+  </TabItem>
 
 <TabItem value="newmetricdef" label="New metric definition">
 
@@ -567,11 +566,9 @@ metrics:
 			include: [Optional] ## The list of dimensions to be included. Either * or list
 			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list
       ```
-
-</TabItem>
+      </TabItem>
 
 <TabItem value="newmetricapi" label="New metric metadata API response">
-
 
 ```
 "metric.project_name.metric_name": {
