@@ -34,7 +34,7 @@ Woah woah woah, what is a `not in`? This is exactly what it sounds like: return 
 You can additionally use the IN/NOT IN operator for a subquery, to remove/include rows from a subquery’s result:
 
 ```sql
-where status in (select ….)
+where status in (select …)
 ```
 
 :::tip Compare columns against appropriate data types
