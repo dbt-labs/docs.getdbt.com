@@ -51,7 +51,7 @@ This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle
 | 3 | 24 | 2018-01-27 | 2 |
 | 3 | 69 | 2018-03-11 | 3 |
 
-Because ROW_NUMBER is non-deterministic, orders per customer that have the same `order_date` would have unique `rnk` values (unlike if you used the RANK or DENSE_RANK functions).
+Because ROW_NUMBER is non-deterministic, orders per customer that have the same `order_date` would have unique `row_n` values (unlike if you used the RANK or DENSE_RANK functions).
 
 ## ROW_NUMBER syntax in Snowflake, Databricks, BigQuery, and Redshift
 
