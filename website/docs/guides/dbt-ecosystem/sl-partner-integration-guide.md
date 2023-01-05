@@ -604,8 +604,8 @@ from {{ entities.calculate(
        filters: ...
 	)}}
 	```
-	</TabItem>
-	</Tabs>
+</TabItem>
+</Tabs>
 
 ### dbt Semantic Layer Connector 
 
