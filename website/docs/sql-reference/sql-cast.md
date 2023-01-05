@@ -1,6 +1,6 @@
 ---
 id: cast
-title: SQL Cast
+title: SQL CAST
 description: Executing the CAST function in a SELECT statement will return the column you specified as the newly specified data type.
 slug: /sql-reference/cast
 ---
