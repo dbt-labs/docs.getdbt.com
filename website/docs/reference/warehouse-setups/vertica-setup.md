@@ -2,8 +2,8 @@
 title: "Vertica setup"
 id: "vertica-setup"
 meta:
-  maintained_by: Community
-  authors: Matthew Carter, Andy Regan, Andrew Hedengren
+  maintained_by: Vertica
+  authors: Vertica
   github_repo: 'mpcarter/dbt-vertica'
   pypi_package: 'dbt-vertica'
   min_core_version: 'v0.21.0'
@@ -12,12 +12,12 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
-  config_page: 'no-configs'
+  
 
   config_page: 'vertica-configs'
 ---
 
-:::info Community plugin
+:::info VENDOR-SUPPORTED PLUGIN
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
