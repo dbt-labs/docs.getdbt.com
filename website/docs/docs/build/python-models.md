@@ -12,8 +12,6 @@ We encourage you to:
 - Join the **#dbt-core-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 
 
-
-
 ## Overview
 
 dbt Python (`dbt-py`) models can help you solve use cases that can't be solved with SQL. You can perform analyses using tools available in the open-source Python ecosystem, including state-of-the-art packages for data science and statistics. Before, you would have needed separate infrastructure and orchestration to run Python transformations in production. Python transformations defined in dbt are models in your project with all the same capabilities around testing, documentation, and lineage.
@@ -220,7 +218,7 @@ Python models support these materializations:
 - `table`
 - `incremental`
 
-Incremental Python models support all the same [incremental strategies](/docs/build/incremental-models#about-incremental_strategy) as their SQL counterparts. The specific strategies supported depend on your adapter.
+Incremental Python models support all the same [incremental strategies](/docs/build/incremental-models#about-incremental_strategy) as their SQL counterparts. The specific strategies supported depend on your adapter. As an example, incremental models are supported on BigQuery with Dataproc for the `merge` incremental strategy; the `insert_overwrite` strategy is not yet supported.
 
 Python models can't be materialized as `view` or `ephemeral`. Python isn't supported for non-model resource types (like tests and snapshots).
 
@@ -287,8 +285,6 @@ def model(dbt, session):
 </div>
 
 </WHCode>
-
-Incremental models are supported on BigQuery with Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
 
 ## Python-specific functionality
 
@@ -515,7 +511,7 @@ def model(dbt, session):
 
 #### Code reuse
 
-Currently, you can't import or reuse Python functions defined in one dbt model in other models. This is something dbt Labs would like to support, so there are two patterns we're considering:
+Currently, Python functions defined in one dbt model can't be imported and reused in other models. This is something dbt Labs would like to support, so there are two patterns we're considering:
 
 - Creating and registering **"named" UDFs** &mdash; This process is different across data platforms and has some performance limitations. For example, Snowpark supports [vectorized UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html) for pandas-like functions that you can execute in parallel.
 - **Private Python packages** &mdash; In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
