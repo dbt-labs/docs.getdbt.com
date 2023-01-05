@@ -25,27 +25,6 @@ You can also add `dbt docs generate` to the list of commands in the job run step
 - Add `dbt docs generate` to the list of commands in the job run steps, in whatever order you prefer. If that particular step in your job fails, the job will fail and all subsequent steps will be skipped.    
 
 
-
-<!-- tabs for runs teps and command -->
-<Tabs>
-
-<TabItem value="checkbox" label="Select checkbox">
-
-- Select the **Generate docs on run** checkbox to automatically generate updated project docs each time your job runs. If that particular step in your job fails, the job can still be successful if all subsequent steps are successful. 
-
-</TabItem>
-
-<TabItem value="run_steps" label="Add as a run step">
-
-- Add `dbt docs generate` to the list of commands in the job run steps, in whatever order you prefer. If that particular step in your job fails, the job will fail and all subsequent steps will be skipped.   
-
-</TabItem>
-
-</Tabs>
-
-<!-- End tabs for checkbox and command -->
-
-
 :::tip Tip &mdash; Documentation-only jobs 
 
 To create and schedule documentation-only jobs at the end of your production jobs, add the `dbt compile` command in the **Commands** section.
