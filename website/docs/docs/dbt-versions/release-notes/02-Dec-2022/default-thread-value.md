@@ -12,4 +12,4 @@ Previously, the thread value defaulted to 1, which can increase the runtime of y
 
 You can supply a custom thread count if you'd prefer more or less parallelization. 
 
-For more information, see [Understanding threads](/docs/get-started/connection-profiles#understanding-threads). 
+For more information, read [Understanding threads](/docs/get-started/connection-profiles#understanding-threads). 
