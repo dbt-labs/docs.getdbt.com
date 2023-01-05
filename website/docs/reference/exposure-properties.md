@@ -2,12 +2,6 @@
 title: Exposure properties
 ---
 
-<Changelog>
-
-* Exposures are new in `v0.18.1`
-
-</Changelog>
-
 ## Related documentation
 - [Using exposures](exposures)
 - [Declaring resource properties](configs-and-properties)
@@ -22,6 +16,44 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 Exposure names must contain only letters, numbers, and underscores (no spaces or special characters). For a short human-friendly name with title casing, spaces, and special characters, use the `label` property.
 
 </VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+exposures:
+  - name: <string_with_underscores>
+    [description](description): <markdown_string>
+    type: {dashboard, notebook, analysis, ml, application}
+    url: <string>
+    maturity: {high, medium, low}
+    [tags](resource-configs/tags): [<string>]
+    [meta](resource-configs/meta): {<dictionary>}
+    owner:
+      name: <string>
+      email: <string>
+    
+    depends_on:
+      - ref('model')
+      - ref('seed')
+      - source('name', 'table')
+      - metric('metric_name')
+      
+    # added in dbt Core v1.3
+    label: "Human-Friendly Name for this Exposure!"
+    [config](resource-properties/config):
+      enabled: true | false
+
+  - name: ... # declare properties of additional exposures
+```
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.3">
 
 <File name='models/<filename>.yml'>
 
@@ -54,6 +86,7 @@ exposures:
 ```
 </File>
 
+</VersionBlock>
 
 ## Example
 

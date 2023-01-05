@@ -24,6 +24,39 @@ Exposures make it possible to define and describe a downstream use of your dbt p
 
 Exposures are defined in `.yml` files nested under an `exposures:` key.
 
+<VersionBlock firstVersion="1.4">
+
+<File name='models/<filename>.yml'>
+
+```yaml
+version: 2
+
+exposures:
+
+  - name: weekly_jaffle_metrics
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/1
+    description: >
+      Did someone say "exponential growth"?
+
+    depends_on:
+      - ref('fct_orders')
+      - ref('dim_customers')
+      - source('gsheets', 'goals')
+      - metric('example_metric_name')
+
+    owner:
+      name: Claire from Data
+      email: data@jaffleshop.com
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.3">
+
 <File name='models/<filename>.yml'>
 
 ```yaml
@@ -50,6 +83,8 @@ exposures:
 
 </File>
 
+</VersionBlock>
+
 ### Available properties
 
 _Required:_
@@ -57,8 +92,19 @@ _Required:_
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
 - **owner**: email
 
+<VersionBlock firstVersion="1.4">
+
 _Expected:_
-- **depends_on**: list of refable nodes (`ref` + `source`)
+- **depends_on**: list of refable nodes, including `ref`, `source`, and `metric` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.3">
+
+_Expected:_
+- **depends_on**: list of refable nodes, including `ref` and `source` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
+
+</VersionBlock>
 
 _Optional:_
 - **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
