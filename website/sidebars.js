@@ -1035,6 +1035,6 @@ guides: [
       ],
     },
   ],
-};
+}
 
 module.exports = sidebarSettings;
