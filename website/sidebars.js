@@ -842,7 +842,7 @@ guides: [
         },
         {
           type: "category",
-          label: "Semantic Layer partner integration",
+          label: "Semantic Layer",
           link: {
             type: "doc",
             id: "guides/dbt-ecosystem/sl-integration/sl-partner-integration-guide",
