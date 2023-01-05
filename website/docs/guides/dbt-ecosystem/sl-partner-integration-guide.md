@@ -643,6 +643,6 @@ Please [reach out](mailto:semantic-layer@dbtlabs.com) if you:
 - Review the [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations). 
 
 
-## Troubleshooting
+### Troubleshooting
 
 This is a troubleshooting section - tbd
