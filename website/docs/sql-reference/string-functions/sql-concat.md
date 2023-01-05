@@ -2,7 +2,7 @@
 id: concat
 title: SQL CONCAT
 description: The CONCAT function allows analytics engineers to join multiple string values in a query.
-slug: /sql-reference/lower
+slug: /sql-reference/concat
 ---
 
 <head>
