@@ -641,10 +641,9 @@ from {{ entities.calculate(
        metrics: [...], [Optional, default is all at finest grain]
        filters: ...
 	)}}
-  ```
-
-</TabItem>
-</Tabs>
+	```
+	</TabItem>
+	</Tabs>
 
 ### Semantic Layer Connector 
 Estimated launch &mdash; early-mid 2023
