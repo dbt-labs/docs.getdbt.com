@@ -11,7 +11,7 @@ slug: /sql-reference/cast
 
 Let’s set the scene: You are knee-deep in a new data model and cannot figure out why the join between `user_id` in` table a` is not successfully joining with the `user_id` in `table b`. You dig a little deeper and discover that `user_id` in `table a` is an integer and `user_id` in `table b` is a string. 
 
-*Cue throwing hands in the air*
+*Cue throwing hands in the air.*
 
 It *will* happen: You’ll find column types in your source data or upstream models that will likely need to be cast into different data types; perhaps to make joins easier, calculations more intuitive, or data more readable. Regardless of the reason, you’ll find yourself inevitably casting some data as an analytics engineer and using the SQL CAST function to help you out.
 
