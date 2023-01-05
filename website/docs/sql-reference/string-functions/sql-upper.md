@@ -33,7 +33,7 @@ select
 	customer_id,
 	upper(first_name) as first_name,
 	last_name
-from {{ ref(‘customers’) }}
+from {{ ref('customers') }}
 ```
 
 After running this query, the `customers` table will look a little something like this:
