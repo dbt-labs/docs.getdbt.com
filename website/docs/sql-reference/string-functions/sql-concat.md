@@ -39,7 +39,7 @@ This query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) 
 
 ## CONCAT function syntax in Snowflake, Databricks, BigQuery, and Redshift
 
-Snowflake, Databricks, Google BigQuery, and Amazon Redshift all support the CONCAT function with the syntax looking the same in each platform. You may additionally see the CONCAT function represented by the `||` operator (ex. `select first_name || last_name AS full_name from {{ ref(‘customers’) }}`) which has the same functionality as the CONCAT function in these data platforms.
+Snowflake, Databricks, Google BigQuery, and Amazon Redshift all support the CONCAT function with the syntax looking the same in each platform. You may additionally see the CONCAT function represented by the `||` operator (ex. `select first_name || last_name AS full_name from {{ ref('customers') }}`) which has the same functionality as the CONCAT function in these data platforms.
 
 ## CONCAT use cases
 
