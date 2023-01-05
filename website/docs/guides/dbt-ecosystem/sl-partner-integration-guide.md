@@ -355,7 +355,6 @@ Model queries allow users to query models and use macros from their dbt project.
 select cents_to_dollars('amount_cents') as amount_dollars 
 from {{ ref('orders') }}
 ```
-
 </TabItem>
 
 <TabItem value="metrics" label="Metric queries">
@@ -630,7 +629,5 @@ Please [reach out](mailto:semantic-layer@dbtlabs.com) if you:
 
 
 ## Troubleshooting
-
-<!-- would really want to add common questions or troubleshooting -->
 
 This is a troubleshooting section - tbd
