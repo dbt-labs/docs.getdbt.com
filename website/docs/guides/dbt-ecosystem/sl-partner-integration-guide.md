@@ -483,7 +483,7 @@ entities: ## The top level node path of the new node
 		default_timestamp: [Optional] ## Setting datetime dimension as default for metrics
 		time_grains: [Optional] ## Acceptable time grains for the datetime dimension
 		primary_key: [Optional] ## Whether this dimension is part of the PK
-    ```
+		```
 
 </TabItem>
 
