@@ -49,7 +49,7 @@ This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle
 
 Some notes on these results:
 
-- Orders that have the same `order_date`(ex. Orders 4 and 5) that they have the same `order_rnk` (4). 
+- Orders that have the same `order_date`(ex. Orders 4 and 5) have the same `order_rank` (4). 
 - Order 6’s `order_rank` is 6 (if you wanted the rank to execute to 5, you would use the DENSE_RANK function).
 
 :::tip Ranking functions to know
