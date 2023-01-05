@@ -1,5 +1,5 @@
 ---
-title: "Semantic Layer integration" 
+title: "dbt Semantic Layer integration" 
 id: "sl-partner-integration-guide"
 ---
 
