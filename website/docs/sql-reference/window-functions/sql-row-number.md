@@ -69,6 +69,6 @@ Most, if not all, modern data warehouses support ROW_NUMBER and other similar ra
 We most commonly see the ROW_NUMBER function used in data work to:
 
 - In [SELECT statements](/sql-reference/select) to add explicit and unique row numbers in a group of data or across an entire table
-- Paired with QUALIFY statement, filter CTEs, queries, or models to capture one unique row per specified partition with the ROW_NUMBER function. This is particularly useful when you need to remove duplicate rows from a dataset (but use this wisely!).
+- Paired with QUALIFY statement, filter <Term id="cte">CTEs</Term>, queries, or models to capture one unique row per specified partition with the ROW_NUMBER function. This is particularly useful when you need to remove duplicate rows from a dataset (but use this wisely!).
 
 This isn’t an extensive list of where your team may be using the ROW_NUMBER function throughout your dbt models, but contains some common scenarios analytics engineers face day-to-day.
