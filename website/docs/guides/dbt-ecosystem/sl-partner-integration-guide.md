@@ -176,7 +176,6 @@ This is an example of fetching details about a specific model, “model.jaffle_s
 ```
 
 </TabItem>
-
 </Tabs>
 
 <!--- End tabs for listing models and fetching details about specific model --->
@@ -214,7 +213,6 @@ This is an example listing metrics from a given job.
   }
 }
 ```
-
 </TabItem>
 
 <TabItem value="fetch" label="Fetch details about a specific metric">
@@ -383,7 +381,6 @@ from {{ metrics.calculate(
 ```
 
 </TabItem>
-
 </Tabs>
 
 ## Product Roadmap
@@ -519,7 +516,7 @@ metrics:
 			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list
       ```
 </TabItem>      
-      
+
 <TabItem value="newmetricapi" label="New metric metadata API response">
 
 ```
