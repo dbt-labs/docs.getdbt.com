@@ -609,7 +609,7 @@ from {{ entities.calculate(
 
 ### dbt Semantic Layer Connector 
 
-To support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/get-started/connect-your-database)with the dbt Semantic Layer. Integration partners will need to install the [Arrow FlightSQL](https://arrow.apache.org/docs/format/FlightSql.html) JDBC/ODBC driver which will authenticate with dbt Cloud and the data platform that it queries. 
+To support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/get-started/connect-your-database) with the dbt Semantic Layer. Integration partners will need to install the [Arrow FlightSQL](https://arrow.apache.org/docs/format/FlightSql.html) JDBC/ODBC driver which will authenticate with dbt Cloud and the data platform that it queries. 
 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/connection-architectyre.jpg" title="New architecture envisioned " />
@@ -643,6 +643,6 @@ Please [reach out](mailto:semantic-layer@dbtlabs.com) if you:
 - Review the [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations). 
 
 
-### Troubleshooting
+## Troubleshooting
 
 This is a troubleshooting section - tbd
