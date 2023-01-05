@@ -30,7 +30,7 @@ limit 3
 
 Woah woah woah! That is not the typical FROM statement you’re probably used to seeing! 
 
-Most FROM statements in the non-dbt world, such as when you’re running ad-hoc queries directly in your data warehouse, will follow the `FROM database.schema.table_name` syntax. In dbt projects, analytics engineers leverage [the ref statement] to refer to other data models and sources to automatically build a <Term id=“dag”>dependency graph</Term> and avoid having to hard-code schema names. This flexibility is valuable as analytics engineers develop in their own development environments (schemas) without having to rename tables in their FROM statements.
+Most FROM statements in the non-dbt world, such as when you’re running ad-hoc queries directly in your data warehouse, will follow the `FROM database.schema.table_name` syntax. In dbt projects, analytics engineers leverage [the ref statement] to refer to other data models and sources to automatically build a <Term id="dag">dependency graph</Term> and avoid having to hard-code schema names. This flexibility is valuable as analytics engineers develop in their own development environments (schemas) without having to rename tables in their FROM statements.
 
 This basic query is selecting three columns from the [jaffle shop’s](https://github.com/dbt-labs/jaffle_shop/blob/main/models/orders.sql) `orders` table and returning three rows. If you execute this query in your data warehouse, it will return a result looking like this:
 
