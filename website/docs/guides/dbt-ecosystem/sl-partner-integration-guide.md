@@ -3,7 +3,7 @@ title: "Semantic Layer integration"
 id: "sl-partner-integration-guide"
 ---
 
-# dbt Semantic Layer partner integration guide
+# dbt Semantic Layer partner integration
 
 The dbt Semantic Layer allows users to dynamically generate and query datasets in downstream tools based on their dbt governed assets, like metrics, models, and entities. It helps organizations manage complexities like data, tools, and teams to make more efficient and trustworthy decisions.
 
