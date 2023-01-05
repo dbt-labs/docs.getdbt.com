@@ -23,7 +23,7 @@ The ROW_NUMBER function has a pretty simple syntax, with an optional partition f
 
 Some notes on this function’s syntax:
 
-- The `partition by` field is optional; if you want to get the row numbers of your entire dataset by certain fields (compared to partitioning *and grabbing row number* within a dataset), you would simply omit the `partition by` from the function call (see the example below for this).
+- The `partition by` field is optional; if you want to get the row numbers of your entire dataset (compared to grabbing row number within a group of rows in your dataset), you would simply omit the `partition by` from the function call (see the example below for this).
 - By default, the ordering of a ROW_NUMBER function is set to ascending. To explicitly make the resulting order descending, you’ll need to pass in `desc` to the `order by` part of the function.
 
 Let’s take a look at a practical example using the ROW_NUMBER function below.
