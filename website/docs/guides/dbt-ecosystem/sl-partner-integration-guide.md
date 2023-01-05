@@ -528,8 +528,8 @@ metrics:
 		## Either or dimensions:
 			include: [Optional] ## The list of dimensions to be included. Either * or list
 			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list
-      ```
-      </TabItem>
+			```
+			</TabItem>
 
 <TabItem value="newmetricapi" label="New metric metadata API response">
 
