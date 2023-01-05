@@ -14,7 +14,7 @@ dbt Cloud provides a helpful interface around dbt's [source data freshness](/doc
 
 `dbt build` does _not_ include source freshness checks when it builds and tests resources in your DAG. As such, here's a common pattern for defining jobs:
 - `dbt build` as the run step
-- checkbox for [generating docs](docs/collaborate/build-and-view-your-docs#set-up-a-documentation-job)
+- checkbox for [generating docs](/docs/collaborate/build-and-view-your-docs#set-up-a-documentation-job)
 - checkbox for [source freshness](#checkbox)
 
 <Lightbox src="/img/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
@@ -32,7 +32,7 @@ Review the following options and outcomes:
 
 | Options | Outcomes |
 |--------| ------- |
-| **1. Select <a name="checkbox">checkbox</a>** | The **Run source freshness** checkbox in your execution settings will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. If you wanted your job dedicated *exclusively* to running freshness checks, you still need to include at least one placeholder step, such as `dbt compile`. |
+| **1. Select checkbox<a id="checkbox"></a>** | The **Run source freshness** checkbox in your execution settings will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. If you wanted your job dedicated *exclusively* to running freshness checks, you still need to include at least one placeholder step, such as `dbt compile`. |
 | **2. Add as a run step** | Add the `dbt source freshness` command to a job in whatever run step order. But if your source data is out of date &mdash; this step will "fail', and subsequent steps will not run. dbt Cloud will trigger email notifications (if configured) based on the end state of this step. <br /><br /> You can create a new job to snapshot source freshness. **Note:** If you're using an older version of dbt Core (before v0.21), you'll need to use the old name of this command instead: `dbt source snapshot-freshness`. See [`source` command docs](commands/source) for details.<br /><br /> If you *do not* want your models to run if your source data is out of date, then it could be a good idea to run `dbt source freshness` as the first step in your job. Otherwise, we recommend adding `dbt source freshness` as the last step in the job, or creating a separate job just for this task.  |
 
 
