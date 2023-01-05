@@ -50,7 +50,7 @@ The syntax for using the DATEDIFF function in [Google BigQuery](https://cloud.go
 
 - Unlike in Snowflake, Amazon Redshift, and Databricks where the `<date part>` is passed as the first argument, the `<date part>` is passed in as the last argument in Google BigQuery.
 - Google BigQuery also calls the function DATETIME_DIFF with an additional underscore separating the function name. This is on par with [Google BigQuery’s preference to have underscores in function names](https://cloud.google.com/bigquery/docs/reference/standard-sql/date_functions).
-- The DATETIME_DIFF arguments are datetimes, not dates; Snowflake, Redshift, and Databricks’ DATEDIFF functions support multiple date types such as dates and timestamps. BigQuery also supports a separate [DATE_DIFF function](https://cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date_diff) that will return the difference between two date types, unlike the DATETIME_DIFF that only supports the datetime type.
+- The DATETIME_DIFF arguments are datetimes, not dates; Snowflake, Redshift, and Databricks’ DATEDIFF functions support multiple [date types](/sql-reference/data-types) such as dates and timestamps. BigQuery also supports a separate [DATE_DIFF function](https://cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date_diff) that will return the difference between two date types, unlike the DATETIME_DIFF that only supports the datetime type.
 
 ## A hero in the shadows: The DATEDIFF dbt macro!​
 
