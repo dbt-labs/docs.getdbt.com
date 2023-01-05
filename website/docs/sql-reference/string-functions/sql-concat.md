@@ -47,6 +47,6 @@ We most commonly see concatenation in SQL for strings to:
 
 - Join together address/geo columns into one field
 - Add hard-coded string values to columns to create clearer column values
-- Create surrogate keys using a hashing method and multiple column values (ex. `md5(column_1 || column_2) as unique_id`
+- Create <Term id="surrogate-key">surrogate keys</Term> using a hashing method and multiple column values (ex. `md5(column_1 || column_2) as unique_id`
 
 This isn’t an extensive list of where your team may be using CONCAT throughout your data work, but it contains some common scenarios analytics engineers face day-to-day.
