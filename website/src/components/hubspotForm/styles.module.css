@@ -8,6 +8,13 @@
     border-radius: 24px;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
     padding: 50px;
+    font: var(--ifm-font-size-base) / var(--ifm-line-height-base) var(--ifm-font-family-base)
+}
+
+@media(max-width: 996px) {
+    :global(.hs-form) {
+        padding: 30px 20px;
+    }
 }
 
 [data-theme='dark'] :global(.hs-form) {
@@ -48,6 +55,7 @@
 
 textarea:global(.hs-input) {
     height: 7rem;
+    font-family: var(--ifm-font-family-base);
 }
 
 :global(.hs-recaptcha) {
@@ -56,5 +64,17 @@ textarea:global(.hs-input) {
 
 :global(.hs-submit) {
     margin-top: 3rem;
+    text-align: center;
+}
+
+:global(.hs-submit .hs-button) {
+    color: var(--color-white);
+}
+
+:global(.hs-submit .hs-button:hover) {
+    background: var(--color-light-teal);
+}
+
+:global(.submitted-message) {
     text-align: center;
 }
