@@ -388,9 +388,9 @@ The dbt Semantic Layer product roadmap details what features are coming soon and
 
 | Product | Estimated launch |
 | ------- | ---------------- |
-| [Entities](#entities) | Estimated launch &mdash; early 2023 |
-| [dbt Semantic Layer connector](#dbt-semantic-layer-connector) | Estimated launch &mdash; early-mid 2023 |
-| [dbt Semantic Layer API](#dbt-semantic-layer-api) | Estimated launch &mdash; mid 2023 |
+| [Entities](#entities) | Early 2023 |
+| [dbt Semantic Layer connector](#dbt-semantic-layer-connector) | Early-mid 2023 |
+| [dbt Semantic Layer API](#dbt-semantic-layer-api) | Mid 2023 |
 
 ### Entities 
 <!-- rewrite a little and include a summary for each tab entry -->
