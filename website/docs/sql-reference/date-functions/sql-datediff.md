@@ -2,7 +2,7 @@
 id: datediff
 title: SQL DATEDIFF
 description: The DATEDIFF function will return the difference in specified units (ex. days, weeks, years) between a start date/time and an end date/time.
-slug: /sql-reference/dateadd
+slug: /sql-reference/datediff
 ---
 
 <head>
