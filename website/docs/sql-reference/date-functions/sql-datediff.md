@@ -28,7 +28,7 @@ For the DATEDIFF function, there are three elements, or arguments, passed in:
 - The first (start) date/time
 - The second (end) date/time
 
-The DATEDIFF function can be used in SELECT statements and WHERE clauses.
+The DATEDIFF function can be used in [SELECT](/sql-reference/select) statements and WHERE clauses.
 
 Most, if not all, modern cloud data warehouses support some type of the DATEDIFF function. There may be some minor differences between the argument order and function name for DATEDIFF across data warehouses, but the functionality very much remains the same.
 
