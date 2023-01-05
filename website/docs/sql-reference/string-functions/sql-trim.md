@@ -9,7 +9,7 @@ slug: /sql-reference/trim
     <title>Working with the SQL TRIM function</title>
 </head>
 
-We’ve been there: pesky blank spaces, weird, inconsistent formats, or unaccountable asterisks hiding at the end of your column value—strings are one of the most variable data types in your datasets. They likely lack a uniform casing, vary in length, and will inevitably have characters you need to trim from them.
+We’ve been there: pesky blank spaces, weird, inconsistent formats, or unaccountable asterisks hiding at the end of your column value—[strings](/sql-reference/strings) are one of the most variable data types in your datasets. They likely lack a uniform casing, vary in length, and will inevitably have characters you need to trim from them.
 
 Introducing: the SQL TRIM function, which removes the leading and trailing characters of a string. By default, it removes the blank space character from the beginning and end of a string.
 
