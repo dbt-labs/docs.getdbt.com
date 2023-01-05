@@ -35,7 +35,7 @@ select
     customer_id,
     order_id,
     order_date,
-    row_number() over (partition by customer_id order by order_date) as rnk
+    row_number() over (partition by customer_id order by order_date) as row_n
 from {{ ref('orders') }}
 order by 1
 ```
