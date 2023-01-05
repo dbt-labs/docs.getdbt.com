@@ -441,7 +441,6 @@ entities: ## The top-level path of the new node
 		time_grains: [Optional] ## Acceptable time grains for the datetime dimension
 		primary_key: [Optional] ## Whether this dimension is part of the primary key
 ```
-
 </TabItem>
 
 <TabItem value="entityapi" label="Entity metadata API response">
@@ -579,7 +578,7 @@ metrics:
       "created_at": 1669653027.290001
   },
   ```
-  </TabItem>
+</TabItem>
 
 <TabItem value="entityquery" label="Entity queries">
 
@@ -594,8 +593,8 @@ from {{ entities.calculate(
        filters: ...
 	)}}
   ```
-  </TabItem>
-  </Tabs>
+</TabItem>
+</Tabs>
 
 ### dbt Semantic Layer Connector 
 
