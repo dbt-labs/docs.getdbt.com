@@ -845,10 +845,10 @@ guides: [
           label: "dbt Semantic Layer",
           link: {
             type: "doc",
-            id: "guides/dbt-ecosystem/sl-integration/sl-partner-integration-guide",
+            id: "guides/dbt-ecosystem/sl-partner-integration-guide",
           },
           items: [
-            "guides/dbt-ecosystem/sl-integration/sl-partner-integration-guide",
+            "guides/dbt-ecosystem/sl-partner-integration-guide",
           ],
         },
       ],
