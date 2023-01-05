@@ -39,7 +39,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. Read more about [Getting started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud) and [dbt Cloud features](/docs/get-started/dbt-cloud-features).
 
-### dbt Core
+### dbt Core 
 
 dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. You can install and use dbt Core on the command line. Read more about [Getting started with dbt Core](/docs/get-started/getting-started-dbt-core).
 
