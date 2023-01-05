@@ -841,11 +841,11 @@ guides: [
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
-          ],
-        },
       ],
     },
-    {
+   ],
+  },
+  {
       type: "category",
       label: "Advanced",
       items: [
