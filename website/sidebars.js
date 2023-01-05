@@ -209,6 +209,7 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
+            "docs/deploy/webhooks",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
             "docs/deploy/source-freshness",
