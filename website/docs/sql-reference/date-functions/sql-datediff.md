@@ -9,7 +9,7 @@ slug: /sql-reference/datediff
     <title>What is the SQL DATEDIFF Function?</title>
 </head>
 
-*“How long has it been since this customer last ordered with us?”*
+*“How long has it been since this customer last ordered with us?”*<br />
 *“What is the average number of days to conversion?”*
 
 Business users will have these questions, data people will have to answer these questions, and the only way to solve them is by calculating the time between two different dates. Luckily, there’s a handy DATEDIFF function that can do that for you.
