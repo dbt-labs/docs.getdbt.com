@@ -685,9 +685,9 @@ Please [reach out](mailto:semantic-layer@dbtlabs.com) if you are interested in t
 
 ## Related docs
 
-- Review the [dbt Semantic Layer intro blog](https://www.getdbt.com/blog/dbt-semantic-layer/) and [launch blog](https://www.getdbt.com/blog/frontiers-of-the-dbt-semantic-layer/) to learn more about the product vision and purpose. 
 - Review the [dbt Semantic Layer docs](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-semantic-layer) to learn about the product.
 - Review the [dbt Metrics docs](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) for more information about its components.
+- Review the [dbt Semantic Layer intro blog](https://www.getdbt.com/blog/dbt-semantic-layer/) and [launch blog](https://www.getdbt.com/blog/frontiers-of-the-dbt-semantic-layer/) to learn more about the product vision and purpose. 
 - Review the [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations). 
 
 
