@@ -493,8 +493,8 @@ Fetch entities via the Metadata API.
 
 How to define new [metrics](/docs/build/metrics) in your dbt project. The metric definition and metadata response will change accordingly once entities are introduced, notably with metrics referencing entities instead of models and inheriting entity dimensions. 
 
-```
-metrics: 
+    ```
+    metrics: 
 		## Always required
 	     - name: [Required] ## The name of the metric
 		label: [Required] ## The human-readable name of the metric
@@ -513,7 +513,8 @@ metrics:
 		## Either or dimensions:
 			include: [Optional] ## The list of dimensions to be included. Either * or list
 			exclude: [Optional] ## The list of dimensions to be excluded from the inherited list
-      ```
+    ```
+    
 </TabItem>      
 
 <TabItem value="newmetricapi" label="New metric metadata API response">
