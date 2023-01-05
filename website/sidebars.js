@@ -1019,7 +1019,7 @@ guides: [
         },
         {
           type: "doc",
-          label: "Cast",
+          label: "CAST",
           id: "sql-reference/cast",
         },
         {
