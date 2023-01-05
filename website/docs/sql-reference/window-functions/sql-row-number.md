@@ -42,7 +42,7 @@ order by 1
 
 This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table will return the unique row number per customer by their `order_date`:
 
-| customer_id | order_id | order_date | rnk |
+| customer_id | order_id | order_date | row_n |
 |:---:|:---:|:---:|:---:|
 | 1 | 1 | 2018-01-01 | 1 |
 | 1 | 37 | 2018-02-10 | 2 |
