@@ -5,9 +5,15 @@ sidebar_label: 'Python version'
 id: install-python-compatibility
 ---
 
-<VersionBlock firstVersion="1.1">
+<VersionBlock firstVersion="1.4">
 
-The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, and 3.10.
+The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10, and 3.11.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1" lastVersion="1.3">
+
+The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, and 3.10
 
 </VersionBlock>
 
