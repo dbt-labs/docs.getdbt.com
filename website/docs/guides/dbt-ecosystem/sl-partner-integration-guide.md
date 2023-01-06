@@ -106,7 +106,7 @@ You can fetch and query models, or details about a specific model, for a project
 <!--- tabs for listing models and fetching details about specific model --->
 <Tabs>
 
-<TabItem value="list" label="Listing models">
+<TabItem value="list" label="Listing models for a job">
 
 This is an example of fetching all models that utilize the schema,`analytics` from a given job.
 
@@ -121,6 +121,12 @@ This is an example of fetching all models that utilize the schema,`analytics` fr
    runGeneratedAt
    }
 }
+```
+</TabItem>
+
+<TabItem value="exampleresponse" label="Example response with models">
+
+```
 {
    "data": {
        "models": [
@@ -152,7 +158,6 @@ This is an example of fetching all models that utilize the schema,`analytics` fr
    }
 }
 ```
-
 </TabItem>
 
 <TabItem value="details" label="Fetch details about a specific model">
@@ -213,14 +218,14 @@ This is an example listing metrics from a given job.
     name
     label
     description
-		model
-		dependsOn
+    model
+    dependsOn
     calculation_method
     expression
     timestamp
-		timeGrains
+    timeGrains
     dimensions
-		window
+    window
     filters
     tags
     meta
@@ -247,45 +252,6 @@ This is an example of fetching details about a specific metric `new_customers` f
 }
 ```
 
-</TabItem>
-
-<TabItem value="example" label="Example metric definition">
-
-```
-metrics:
-  - name: total_claim_charges
-    label: Total Claim Charges
-    model: ref('fct_billed_patient_claims')
-    calculation_method: sum
-    expression: total_charge_amount
-    timestamp: created_at
-    time_grains: [day, week, month, all_time]
-
-
-  - name: total_billed_diagnoses
-    label: Total Billed Diagnoses
-    model: ref('fct_billed_patient_claims')
-    calculation_method: count_distinct
-    expression: diagnosis_id
-    timestamp: created_at
-    time_grains: [day, week, month]
-```
-
-</TabItem>
-
-<TabItem value="queryapi" label="Query the Metadata API for metrics">
-
-```
-{
-  metric(jobId: 123) {
-    label
-    calculation_method
-    timestamp
-    timeGrains
-    dimensions
-  }
-}
-```
 </TabItem>
 
 <TabItem value="exampleapi" label="Example Metadata API response with metrics">
@@ -338,6 +304,31 @@ metrics:
 ```
 
 </TabItem>
+
+<TabItem value="example" label="Example metric definition">
+
+```
+metrics:
+  - name: total_claim_charges
+    label: Total Claim Charges
+    model: ref('fct_billed_patient_claims')
+    calculation_method: sum
+    expression: total_charge_amount
+    timestamp: created_at
+    time_grains: [day, week, month, all_time]
+
+
+  - name: total_billed_diagnoses
+    label: Total Billed Diagnoses
+    model: ref('fct_billed_patient_claims')
+    calculation_method: count_distinct
+    expression: diagnosis_id
+    timestamp: created_at
+    time_grains: [day, week, month]
+```
+
+</TabItem>
+
 </Tabs>
 
 <!--- End tabs for listing, fetching, example, and querying metrics --->
@@ -360,16 +351,6 @@ _Note: This approach will change with the new Semantic Layer connection, which w
 
 <!--- tabs for running models and running metrics --->
 <Tabs>
-
-<TabItem value="models" label="Model queries">
-
-Model queries allow users to query models and use macros from their dbt project.
-
-```
-select cents_to_dollars('amount_cents') as amount_dollars 
-from {{ ref('orders') }}
-```
-</TabItem>
 
 <TabItem value="metrics" label="Metric queries">
 
@@ -394,6 +375,16 @@ from {{ metrics.calculate(
 ) }}
 ```
 
+</TabItem>
+
+<TabItem value="models" label="Model queries">
+
+Model queries allow users to query models and use macros from their dbt project.
+
+```
+select cents_to_dollars('amount_cents') as amount_dollars 
+from {{ ref('orders') }}
+```
 </TabItem>
 </Tabs>
 
