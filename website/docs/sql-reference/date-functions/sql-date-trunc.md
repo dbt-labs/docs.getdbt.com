@@ -24,7 +24,7 @@ For the DATE_TRUNC function, there are two arguments you must pass in:
 - The date part: This is the days/months/weeks/years (level) you want your field to be truncated out to
 - The date/time you want to be truncated
 
-The DATE_TRUNC function can be used in SELECT statements and WHERE clauses.
+The DATE_TRUNC function can be used in [SELECT](/sql-reference/select) statements and [WHERE](/sql-reference/where) clauses.
 
 Most, if not all, modern cloud data warehouses support some type of the DATE_TRUNC function. There may be some minor differences between the argument order for DATE_TRUNC across data warehouses, but the functionality very much remains the same.
 

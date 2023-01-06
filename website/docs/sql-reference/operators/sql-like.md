@@ -9,11 +9,11 @@ slug: /sql-reference/like
     <title>Working with the SQL LIKE operator</title>
 </head>
 
-The LIKE operator helps you easily match, find, and filter out string values of a specified pattern by using SQL wildcards. Important to note that the pattern passed into the LIKE operator is case-sensitive, unlike its case-insensitive cousin, ILIKE.
+The LIKE operator helps you easily match, find, and filter out string values of a specified pattern by using SQL wildcards. Important to note that the pattern passed into the LIKE operator is case-sensitive, unlike its case-insensitive cousin, [ILIKE](/sql-reference/ilike).
 
 ## How to use the SQL LIKE operator
 
-The LIKE operator has a simple syntax, with the ability to have it utilized in WHERE clauses or case statements:
+The LIKE operator has a simple syntax, with the ability to have it utilized in [WHERE clauses](/sql-reference/where) or case statements:
 
 `where <field_name> like '<pattern>'` or `case when <field_name> like '<pattern>'`
 
@@ -24,7 +24,7 @@ Some notes on this operator’s syntax and functionality:
     - Ex. 'J%L' = any string that starts with a capital J and ends with a capital L
     - Ex. '_J%' = any string that has a capital J in the second position
 - Majority of use cases for the LIKE operator will likely involve the `%` wildcard
-- The LIKE operator is case-sensitive, meaning that the casing in the` <pattern>` you want to filter for should match the same-case in your column values; for columns with varied casing, leverage the case-insensitive ILIKE operator
+- The LIKE operator is case-sensitive, meaning that the casing in the `<pattern>` you want to filter for should match the same-case in your column values; for columns with varied casing, leverage the case-insensitive ILIKE operator
 - The LIKE operator can be paired with the NOT operator, to filter on rows that are not like a specified pattern
 
 Let’s dive into a practical example using the LIKE operator now.
@@ -47,7 +47,7 @@ This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle
 | 1 | Julia |
 | 4 | Jeremy |
 
-Because LIKE is case-sensitive, it would not return results in this query for customers with lowercase J-names. If you have a mix of uppercase and lowercase strings in your data, consider standardizing casing for strings using the UPPER and LOWER functions or use the more flexible [ILIKE operator](/sql-reference/ilike).
+Because LIKE is case-sensitive, it would not return results in this query for customers with lowercase J-names. If you have a mix of uppercase and lowercase strings in your data, consider standardizing casing for strings using the [UPPER](/sql-reference/upper) and [LOWER](/sql-reference/lower) functions or use the more flexible [ILIKE operator](/sql-reference/ilike).
 
 ## LIKE syntax in Snowflake, Databricks, BigQuery, and Redshift
 

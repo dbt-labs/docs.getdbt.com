@@ -17,7 +17,7 @@ In this page, we’ll dive into how to use the NOT operator, demonstrate an exam
 
 ## How to use the SQL NOT operator
 
-The NOT boolean is kind of similar to an adjective—it’s often put in front of another operator, such as BETWEEN, LIKE/ILIKE, IS, and IN, to return rows that do not meet the specified criteria. Below is an example of how to use NOT in front of a LIKE operator:
+The NOT boolean is kind of similar to an adjective—it’s often put in front of another operator, such as [BETWEEN](/sql-reference/between), [LIKE](sql-reference/like)/[ILIKE](/sql-reference/ilike), IS, and [IN](/sql-reference/in), to return rows that do not meet the specified criteria. Below is an example of how to use NOT in front of a LIKE operator:
 
 `where <field_name> not like <value>`
 
@@ -25,7 +25,7 @@ This syntax can be easily modified for other operators:
 - `where not between <value_1> and <value_2>`
 - `where <field_name> is not null`
 - `where <field_name> is not in (array_of_options)`
-- …or placed altogether in a different place, such as a case statement (ex. `case when <field_name> is not null then1 else 0 end`)
+- …or placed altogether in a different place, such as a case statement (ex. `case when <field_name> is not null then 1 else 0 end`)
 
 Let’s dive into a practical example using the NOT operator.
 
