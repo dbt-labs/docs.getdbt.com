@@ -7,7 +7,9 @@ id: "sl-partner-integration-guide"
 
 :::info Contact us
 
-This guide describes dbt Semantic Layer guidelines, product roadmap, and connectivity.  If you're interested in becoming a formal partner, would like to integrate via the API, or have questions/feedback, [contact us](mailto:semantic-layer@dbtlabs.com) for more info.
+This guide describes dbt Semantic Layer guidelines, product roadmap, and connectivity.  <br />
+
+To become a formal partner, integrate via the API, or if you have questions or feedback &mdash; **[contact us](mailto:semantic-layer@dbtlabs.com)** for more info.
 
 :::
 
@@ -47,14 +49,16 @@ The dbt Semantic Layer product architecture includes four primary components:
 | **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja-like query models and metrics, use macros), compiles the query into pure SQL, executes the query in the data platform, and returns the data. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary in dbt Cloud |
 | **[Metadata API](/docs/dbt-cloud-apis/metadata-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, and metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary in dbt Cloud |
     
-Review the current architecture below to understand how the components work together:
+Review the following current architecture to understand how the components work together:
   
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture-flow.png" title="Current product architecture" />
 
 
 ## Integration guidelines
 
-In collaboration with dbt Labs, partners and users can build dbt Semantic Layer integrations that can import model metadata and metric definitions, query metrics, use macros, and more. For more details, review the Partner integration roadmap and [Integration best practices](#integration-best-practice) guidance.
+In collaboration with dbt Labs, partners and users can build dbt Semantic Layer integrations that can import model metadata and metric definitions, query metrics, use macros, and more. 
+
+For more details, review the [Partner integration roadmap](#partner-integration-roadmap) and [Integration best practices](#integration-best-practice) guidance.
 
 ### Partner integration roadmap
 
@@ -66,10 +70,10 @@ Integration partners generally build and approach their roadmap in the following
 |2. **Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
 |3. **dbt Semantic Layer as a data source**  | Connect to the dbt Semantic Layer as a data source (for example, the Snowflake Proxy Server). Users can execute dbt-SQL to query metrics or models and use macros.* | ✅ |
 |4. **Query metrics**  | Query the imported metrics via a metric-centric UI (for example, a user can select a metric, time grain, and dimensions of interest). | ✅ |
-|5. **Entity definitions** *  | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
-|6. **dbt Semantic Layer connector** *  | A dedicated Semantic Layer connector with the ability to query any data platform supported in dbt Cloud. (Will replace (3).) | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
+|5. **Entity definitions**   | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
+|6. **dbt Semantic Layer Connector**   | A dedicated connector with the ability to query any data platform supported in dbt Cloud. (Will replace (3).) | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
 
-The _coming soon_ features above are expected to launch in 2023. Review the [Product Roadmap](#product-roadmap) for more details and timelines.
+_*The coming soon features above are expected to launch in 2023. Review the [Product Roadmap](#product-roadmap) for more details and timelines._
 
 ### Integration best practice
 
@@ -85,11 +89,11 @@ To build a successful and seamless dbt Semantic Layer integration, it should exp
 
 To get started, you must meet the dbt Semantic Layer [prerequisites](/docs/use-dbt-semantic-layer/dbt-semantic-layer#prerequisites). This section will explain how to connect to and query the [Metadata API](/docs/dbt-cloud-apis/metadata-api) for model and metric definitions.
 
-### Metadata API authorization
+**Metadata API authorization**
 
 To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/metadata-querying#authorization) for more details. Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to fetch model metadata will work perfectly in the context of metrics. 
 
-### Query the Metadata API
+**Query the Metadata API**
 
 Test out the Metadata API by using the [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql) and use this [Python client](https://github.com/transform-data/dbt-metadata-client) as a starting point to develop. 
 
@@ -399,7 +403,7 @@ The dbt Semantic Layer product roadmap details what features are coming soon and
 | Product | Estimated launch |
 | ------- | ---------------- |
 | [Entities](#entities) | Early 2023 |
-| [dbt Semantic Layer connector](#dbt-semantic-layer-connector) | Early-mid 2023 |
+| [dbt Semantic Layer Connector](#dbt-semantic-layer-connector) | Early-mid 2023 |
 | [dbt Semantic Layer API](#dbt-semantic-layer-api) | Mid 2023 |
 
 ### Entities 
@@ -418,7 +422,7 @@ This information will be available alongside the Metadata API and entities can b
 
 :::caution 🚧
 
-This is a work in progress and you can anticipate continuous improvements. P
+This is a work in progress and you can anticipate continuous improvements. 
 
 :::
 
