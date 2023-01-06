@@ -949,6 +949,7 @@ guides: [
           label: "Statements",
           items: [
             "sql-reference/statements/select",
+            "sql-reference/statements/from",
           ],
         },
         {
@@ -1004,9 +1005,16 @@ guides: [
           type: "category",
           label: "Operators",
           items: [
+            "sql-reference/operators/between",
             "sql-reference/operators/in",
             "sql-reference/operators/or",
+            "sql-reference/operators/ilike",
           ],
+        },
+        {
+          type: "doc",
+          label: "Data types",
+          id: "sql-reference/data-types",
         },
         {
           type: "doc",
