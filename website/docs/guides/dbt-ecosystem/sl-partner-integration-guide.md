@@ -8,7 +8,7 @@ description: Learn about partner integration guidelines, roadmap, and connectivi
 
 :::info Contact us
 
-This guide describes dbt Semantic Layer guidelines, product roadmap, and connectivity.  <br />
+This guide describes dbt Semantic Layer integration guidelines, product roadmap, and connectivity.  <br />
 
 To become a formal partner, integrate via the API, or if you have questions or feedback &mdash; **[contact us](mailto:semantic-layer@dbtlabs.com)** for more info.
 
