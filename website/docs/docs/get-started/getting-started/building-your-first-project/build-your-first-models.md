@@ -7,7 +7,6 @@ keywords: [projects, create a project, dbt project, get started with Cloud]
 
 After setting up a sample project with a successful run, you can get to the fun part — [building models](/docs/build/sql-models)! You will learn how to take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 
-
 ## Checkout a new git branch
 
 1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
