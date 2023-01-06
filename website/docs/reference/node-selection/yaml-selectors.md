@@ -62,7 +62,7 @@ This simple syntax does not support any operators or `exclude`.
 
 This is the most thorough syntax, which can include graph and set operators. 
 
-Review [methods](/reference/node-selection/methods) for the entire list of available.  
+Review [methods](/reference/node-selection/methods) for the available list.
 
 ```yml
 definition:
