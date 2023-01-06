@@ -57,7 +57,7 @@ Typically, you’ll see `True` or `False` as the actual boolean values in a colu
 
 ## Semi-structured data types
 
-Semi-structured data types are a great way to combine or aggregate data across multiple fields; you may also find yourself in the inverse situation where you need to unpack semi-structured data, such as a [JSON](/terms/json) object, and unnest it into its individual key-value pair. The two primary semi-structured data types you’ll see across data warehouses are JSON and arrays. 
+Semi-structured data types are a great way to combine or aggregate data across multiple fields; you may also find yourself in the inverse situation where you need to unpack semi-structured data, such as a <Term id="json">JSON</Term> object, and unnest it into its individual key-value pair. The two primary semi-structured data types you’ll see across data warehouses are JSON and arrays. 
 
 Below, we’ll unpack what the difference is between the two and provide an example of each one.
 

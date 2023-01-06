@@ -24,7 +24,7 @@ Some notes on this operator’s syntax and functionality:
     - Ex. 'j%l' = any string that starts with a the letter j and ends with a letter l
     - Ex. '_j%' = any string that has a letter j in the second position
 - Majority of use cases for the ILIKE operator will likely involve the `%` wildcard
-- The ILIKE operator is case-insensitive, meaning that the casing in the` <pattern>` you want to filter does not need to match the same-case in your column values
+- The ILIKE operator is case-insensitive, meaning that the casing in the `<pattern>` you want to filter does not need to match the same-case in your column values
 - The ILIKE operator can be paired with the NOT operator, to filter on rows that are not like a specified pattern
 
 Let’s dive into a practical example using the ILIKE operator now.
@@ -36,7 +36,7 @@ select
    payment_id,
    order_id,
    payment_method,
-   case when payment_method ilike  '%card' then 'card_payment' else 'non_card_payment' end as      was_card
+   case when payment_method ilike '%card' then 'card_payment' else 'non_card_payment' end as was_card
 from {{ ref('payments') }}
 ```
 
