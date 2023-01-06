@@ -5,7 +5,7 @@ default_value: false
 ---
 
 ## Definition
-An optional seed configuration, used to determine whether column names in the seed file should be quoted when the table is created.
+An optional seed configuration, used to determine whether column names in the seed file should be quoted when the <Term id="table" /> is created.
 
 * When `True`, dbt will quote the column names defined in the seed file when building a table for the seed, preserving casing.
 * (Default) When `False`, dbt will not quote the column names defined in the seed file.
@@ -46,9 +46,10 @@ seeds:
 
 </File>
 
+Or (as of v0.21):
+
 <File name='seeds/properties.yml'>
 
-Or (as of v0.21):
 ```yml
 version: 2
 

@@ -9,107 +9,74 @@ included in the final set.
 
 Run snowplow_sessions, all ancestors of snowplow_sessions, fct_orders, and all ancestors of fct_orders:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select +snowplow_sessions +fct_orders
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models +snowplow_sessions +fct_orders
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### Intersections
 <Changelog>New in v0.18.0</Changelog>
 
-If multiple arguments to `--select`, `--exclude`, and `--select` can be comma-separated (with no whitespace in between),
+If multiple arguments to `--select`, `--exclude`, and `--selector` can be comma-separated (with no whitespace in between),
 dbt will select only resources which satisfy _all_ arguments.
 
 Run all the common ancestors of snowplow_sessions and fct_orders:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select +snowplow_sessions,+fct_orders
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models +snowplow_sessions,+fct_orders
   ```
 
-</TabItem>
-</Tabs>
-
+</VersionBlock>
 
 Run all the common descendents of stg_invoices and stg_accounts:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select stg_invoices+,stg_accounts+
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models stg_invoices+,stg_accounts+
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 Run models that are in the marts/finance subdirectory *and* tagged nightly:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select marts.finance,tag:nightly
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models marts.finance,tag:nightly
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>

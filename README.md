@@ -1,37 +1,79 @@
-A [docusaurus](https://v2.docusaurus.io/) site that powers [docs.getdbt.com](https://docs.getdbt.com/).
+_We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https://docs.getdbt.com/)._
 
-## Branching
+#### Table of Contents
 
-There are two long-lived branches in this repo:
-- `current`: This branch is what is reflected at at [docs.getdbt.com](https://docs.getdbt.com/)
-- `next`: This branch represent the next release of dbt, and is deployed [next.docs.getdbt.com](https://next.docs.getdbt.com/)
+* [Code of Conduct](#Code-of-conduct)
+* [Contributing](#contributing)  
+* [Writing content](#writing-content)
+* [Running the docs site locally](#running-the-docs-site-locally)
 
-## Contributing
+# Code of conduct
+
+Please review the dbt docs contributors [code of conduct](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/contributor-code-of-conduct.md).
+Creating an inclusive and equitable environment for our documents is more important than any other aspect.  Syntax errors can be corrected, but trust, once lost, is difficult to gain back.
+
+# Contributing
+
 We welcome contributions from community members to this repo:
-- **Fixes**: If you notice an error (there are likely many), use the `Edit this page` button at the bottom of each page to suggest a change. We recommend you contribute small changes directly from the GitHub interface.
-- **New documentation**: If you contributed code in [dbt-core](https://github.com/fishtown-analytics/dbt), we encourage you to also write the docs here!
-- **Refactors**: At this time, we are unable to support community members who wish to re-write sections of docs.getdbt.com. We hope to change this in the future!
+- **Fixes**: When you notice an error, you can use the `Edit this page` button at the bottom of each page to suggest a change.
+- **New documentation**: If you contributed code in [dbt-core](https://github.com/dbt-labs/dbt-core), we encourage you to also write the docs here! Please reach out in the dbt community if you need help finding a place for these docs.
+- **Major rewrites**: You can [file an issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new?assignees=&labels=content%2Cimprovement&template=improve-docs.yml) or [start a discussion](https://github.com/dbt-labs/docs.getdbt.com/discussions) to propose ideas for a content area that requires attention.
 
-### Running the Docs site locally
+You can use components documented in the [docusaurus library](https://v2.docusaurus.io/docs/markdown-features/).
 
-We recommend locally rendering changes made to the docs site so you can review your proposed modifications. Our setup instructions use [homebrew](https://brew.sh/):
+# Writing content
 
-0. If applicable, install [Xcode Command Line Tools](https://developer.apple.com/download/more/); you'll likely need an AppleID for this. You will also need [homebrew](https://brew.sh/). 
-2. Install `node`: `brew install node`
-3. Clone this repo: `git clone git@github.com:fishtown-analytics/docs.getdbt.com.git`
-4. `cd` into the repo: `cd docs.getdbt.com`
-5. `cd` into the `website` subdirectory: `cd website`
-6. Install the required node packages: `npm install`
-7. Build the website: `npm start`
-8. Before pushing your changes to a branch, check that all links work by using the `make build` script.
+The dbt Labs docs are written in Markdown and sometimes HTML. When writing content, refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation. 
 
-Advisory: 
-- Currently an `npm install` produces a number of dependency warnings, in particular several claiming that `docusaurus/core` is missing. Rest assured, this message is a red herring. As of writing this, no 2.0.0 package exists, so you won't have much luck trying to install it. Feel free to ignore those warnings.
+## SME and editorial reviews
+
+All PRs that are submitted will be reviewed by the dbt Labs Docs team for editorial review.
+
+Content that is submitted by our users and the open-source community are also reviewed by our dbt Labs subject matter experts (SMEs) to help ensure technical accuracy.
+
+
+## Versioning and single-sourcing content
+
+We now enable you to reuse content between different docs pages, version pages, and establish product variables in the dbt Labs product documentation. To learn more about how to single source content between versions, product variables, and other content, see [Single-sourcing content](/contributing/single-sourcing-content.md).
+
+## Adding tabbed components to a page
+
+You can add code snippets and other content in a tabbed view. To learn more about adding tabbed components, see [Adding page components](/contributing/adding-page-components.md).
+
+# Running the Docs site locally
+
+You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
+
+## Prerequisites
+
+* (Mac Terminal) Install [Xcode Command Line Tools](https://developer.apple.com/download/more/)
+  - Open a terminal window, run `xcode-select --install`, and follow the on-screen prompts in the pop-up window.
+* (Mac and Linux) Install [homebrew](https://brew.sh/)
+  - Copy and paste `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` in to a terminal window and follow the prompts.  Once the installation has completed, follow the **Next Steps** instructions listed in terminal.
+* (Windows) Install [Node.js](https://nodejs.org/en/download/)
+
+1. (Mac and Linux only) Install `node`: `brew install node`
+2. Clone this repo: `git clone https://github.com/dbt-labs/docs.getdbt.com.git`
+3. `cd` into the repo: `cd docs.getdbt.com`
+4. `cd` into the `website` subdirectory: `cd website`
+5. Install the required node packages: `npm install` (optional &mdash; install any updates)
+6. Build the website: `npm start`
+7. Before pushing your changes to a branch, check that all links work by using the `make build` script.
+
+Advisory:
 - If you run into an `fatal error: 'vips/vips8' file not found` error when you run `npm install`, you may need to run `brew install vips`. Warning: this one will take a while -- go ahead and grab some coffee!
 
-You can also check out [this Loom video](https://www.loom.com/share/7037780b86eb4f16953664b8f15f1e21) that I recorded for co-workers — it covers setting up docs.getdbt.com locally, and adding a page with links and images. Heads up — this was very much something I did on the fly, so is not super polished!
+## Running the Cypress tests locally
 
-## Custom components
-Check out [docs.getdbt.com/styles](https://docs.getdbt.com/styles) for examples of different components that can be used in these docs.
+Method 1: Utilizing the Cypress GUI
+1. `cd` into the repo: `cd docs.getdbt.com`
+2. `cd` into the `website` subdirectory: `cd website`
+3. Install the required node packages: `npm install`
+4. Run `npx cypress open` to open the Cypress GUI, and choose `E2E Testing` as the Testing Type, before finally selecting your browser and clicking `Start E2E testing in {broswer}`
+5. Click on a test and watch it run!
 
-You can also use components directly from the [docusaurus library](https://v2.docusaurus.io/docs/markdown-features/).
+Method 2: Running the Cypress E2E tests headlessly
+1. `cd` into the repo: `cd docs.getdbt.com`
+2. `cd` into the `website` subdirectory: `cd website`
+3. Install the required node packages: `npm install`
+4. Run `npx cypress run`

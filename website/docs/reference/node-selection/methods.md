@@ -8,95 +8,83 @@ syntax `method:value`.
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select tag:nightly    # run all models with the `nightly` tag
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models tag:nightly    # run all models with the `nightly` tag
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### The "source" method
-The `source` method is used to select models that select from a specified [source](using-sources). Use in conjunction with the `+` operator.
+The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models source:snowplow+    # run all models that select from Snowplow sources
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### The "path" method
 The `path` method is used to select models located at or under a specific path.
 While the `path` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
+  ```bash
+  # These two selectors are equivalent
+  dbt run --select path:models/staging/github
+  dbt run --select models/staging/github
+
+  # These two selectors are equivalent
+  dbt run --select path:models/staging/github/stg_issues.sql
+  dbt run --select models/staging/github/stg_issues.sql
+  ```
+
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
+
+  ```bash
+  # These two selectors are equivalent
+  dbt run --models path:models/staging/github
+  dbt run --models models/staging/github
+
+  # These two selectors are equivalent
+  dbt run --models path:models/staging/github/stg_issues.sql
+  dbt run --models models/staging/github/stg_issues.sql
+  ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2">
+
+### The "file" method
+The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
-# These two selectors are equivalent
-dbt run --select path:models/staging/github
-dbt run --select models/staging/github
-
-# These two selectors are equivalent
-dbt run --select path:models/staging/github/stg_issues.sql
-dbt run --select models/staging/github/stg_issues.sql
+# These are equivalent
+dbt run --select some_model.sql
+dbt run --select some_model
 ```
 
-</TabItem>
-<TabItem value="legacy">
-
-
-```bash
-# These two selectors are equivalent
-dbt run --models path:models/staging/github
-dbt run --models models/staging/github
-
-# These two selectors are equivalent
-dbt run --models path:models/staging/github/stg_issues.sql
-dbt run --models models/staging/github/stg_issues.sql
-```
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### The "package" method
 <Changelog>New in v0.18.0</Changelog>
@@ -105,14 +93,7 @@ The `package` method is used to select models defined within the root project
 or an installed dbt package. While the `package:` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   # These three selectors are equivalent
@@ -121,9 +102,8 @@ selectors unambiguous.
   dbt run --select snowplow.*
   ```
 
-</TabItem>
-<TabItem value="legacy">
-
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   # These three selectors are equivalent
@@ -132,22 +112,14 @@ selectors unambiguous.
   dbt run --models snowplow.*
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### The "config" method
 <Changelog>New in v0.18.0</Changelog>
 
 The `config` method is used to select models that match a specified [node config](configs-and-properties).
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select config.materialized:incremental    # run all models that are materialized incrementally
@@ -155,8 +127,8 @@ The `config` method is used to select models that match a specified [node config
   $ dbt run --select config.cluster_by:geo_country      # run all models clustered by `geo_country`
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models config.materialized:incremental    # run all models that are materialized incrementally
@@ -164,8 +136,33 @@ The `config` method is used to select models that match a specified [node config
   $ dbt run --models config.cluster_by:geo_country      # run all models clustered by `geo_country`
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+While most config values are strings, you can also use the `config` method to match boolean configs, dictionary keys, and values in lists.
+
+For example, given a model with the following configurations:
+```
+{{ config(
+  materialized = 'incremental',
+  unique_key = ['column_a', 'column_b'],
+  grants = {'select': ['reporter', 'analysts']},
+  transient = true
+) }}
+
+select ...
+```
+
+ You can select using any of the following:
+```bash
+$ dbt ls -s config.materialized:incremental
+$ dbt ls -s config.unique_key:column_a
+$ dbt ls -s config.grants.select:reporter
+$ dbt ls -s config.transient:true
+```
+
+</VersionBlock>
 
 ### The "test_type" method
 <Changelog>
@@ -177,46 +174,31 @@ The `config` method is used to select models that match a specified [node config
 
 The `test_type` method is used to select tests based on their type, `singular` or `generic`:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select test_type:generic        # run all generic tests
   $ dbt test --select test_type:singular       # run all singular tests
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models test_type:schema        # run all schema tests
   $ dbt test --models test_type:data          # run all data tests
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### The "test_name" method
 <Changelog>New in v0.18.0</Changelog>
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](building-a-dbt-project/tests).
+[tests](/docs/build/tests).
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select test_name:unique            # run all instances of the `unique` test
@@ -224,9 +206,8 @@ that defines it. For more information about how generic tests are defined, read 
   $ dbt test --select test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
   ```
 
-</TabItem>
-<TabItem value="legacy">
-
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models test_name:unique            # run all instances of the `unique` test
@@ -234,8 +215,7 @@ that defines it. For more information about how generic tests are defined, read 
   $ dbt test --models test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### The "state" method
 <Changelog>
@@ -251,14 +231,7 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 `state:modified`: All new nodes, plus any changes to existing nodes.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt test --select state:new            # run all tests on new models + and new tests on old models
@@ -266,8 +239,8 @@ The `state` method is used to select nodes by comparing them against a previous 
   $ dbt ls --select state:modified         # list all modified nodes (not just models)
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt test --models state:new            # run all tests on new models + and new tests on old models
@@ -275,8 +248,7 @@ The `state` method is used to select nodes by comparing them against a previous 
   $ dbt ls --select state:modified         # This really is still --select! list all modified nodes (not just models)
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
 - `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
@@ -285,21 +257,14 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
 
-Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as changes to a source's `freshness` property or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
+Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
 ### The "exposure" method
 <Changelog>New in v0.18.1</Changelog>
 
 The `exposure` method is used to select parent resources of a specified [exposure](exposures). Use in conjunction with the `+` operator.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
@@ -307,8 +272,8 @@ The `exposure` method is used to select parent resources of a specified [exposur
   $ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
@@ -316,8 +281,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
   $ dbt ls --select +exposure:* --resource-type source    # This really is still --select! list all sources upstream of all exposures
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 ### The "metric" method
 <Changelog>New in v1.0.0</Changelog>
@@ -340,3 +304,32 @@ $ dbt test --select result:fail # run all tests that failed on the prior invocat
 $ dbt build --select 1+result:fail # run all the models associated with failed tests from the prior invocation of dbt build
 $ dbt seed --select result:error # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
+
+### The "source_status" method
+<VersionBlock lastVersion="1.0">
+
+Only supported by v1.1 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+Only supported by v1.1 or newer.
+
+:::caution Experimental functionality
+The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
+:::
+
+Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/docs/reference/artifacts/sources-json) page. 
+
+The following dbt commands produce `sources.json` artifacts whose results can be referenced in subsequent dbt invocations:  
+- `dbt source freshness`
+
+After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
+
+```bash
+# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
+$ dbt source freshness # must be run again to compare current to previous state
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+```
+</VersionBlock>

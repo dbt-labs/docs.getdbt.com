@@ -10,7 +10,7 @@ datatype: boolean
 
 </Changelog>
 
-The configured test(s) will never store their failures when `dbt test --store-failures` is invoked.
+The configured test(s) will store their failures when `dbt test --store-failures` is invoked.
 
 ## Description
 Optionally set a test to always or never store its failures in the database.
@@ -18,13 +18,13 @@ Optionally set a test to always or never store its failures in the database.
 `store_failures` config will take precedence over the presence or absence of the `--store-failures` flag.
 - If the `store_failures` config is `none` or omitted, the resource will use the value of the `--store-failures` flag.
 
-This logic is encoded in the [`should_store_failures()`](https://github.com/fishtown-analytics/dbt/blob/98c015b7754779793e44e056905614296c6e4527/core/dbt/include/global_project/macros/materializations/helpers.sql#L77) macro.
+This logic is encoded in the [`should_store_failures()`](https://github.com/dbt-labs/dbt-core/blob/98c015b7754779793e44e056905614296c6e4527/core/dbt/include/global_project/macros/materializations/helpers.sql#L77) macro.
 
 <Tabs
   defaultValue="specific"
   values={[
     { label: 'Specific test', value: 'specific', },
-    { label: 'One-off test', value: 'one_off', },
+    { label: 'Singular test', value: 'singular', },
     { label: 'Generic test block', value: 'generic', },
     { label: 'Project level', value: 'project', },
   ]
@@ -49,16 +49,16 @@ models:
                 store_failures: true  # always store failures
           - not_null:
               config:
-                store_failures: fail  # never store failures
+                store_failures: false  # never store failures
 ```
 
 </File>
 
 </TabItem>
 
-<TabItem value="one_off">
+<TabItem value="singular">
 
-Configure a one-off (data) test:
+Configure a singular (data) test:
 
 <File name='tests/<filename>.sql'>
 

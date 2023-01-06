@@ -35,7 +35,7 @@ selectors:
 ## Definitions
 
 Each `definition` is comprised of one or more arguments, which can be one of the following:
-* **CLI-style:** strings, representing CLI-style) arguments
+* **CLI-style:** strings, representing CLI-style arguments
 * **Key-value:** pairs in the form `method: value`
 * **Full YAML:** fully specified dictionaries with items for `method`, `value`, operator-equivalent keywords, and support for `exclude`
 
@@ -124,10 +124,10 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
 - union:
     - method: fqn
       value: model_a
-      greedy: eager  # default: will include all tests that touch model_a
+      indirect_selection: eager  # default: will include all tests that touch model_a
     - method: fqn
       value: model_b
-      greedy: cautious  # will not include tests touching model_b
+      indirect_selection: cautious  # will not include tests touching model_b
                         # if they have other unselected parents
 ```
 
@@ -139,28 +139,20 @@ See [test selection examples](test-selection-examples) for more details about in
 
 Here are two ways to represent:
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
+<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
-</TabItem>
-<TabItem value="legacy">
+</VersionBlock>
+<VersionBlock lastVersion="0.20">
 
   ```bash
   $ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
-</TabItem>
-</Tabs>
+</VersionBlock>
 
 <Tabs
   defaultValue="cli_style"
@@ -241,7 +233,7 @@ selectors:
         Excludes resources defined in installed packages.
     default: true
     definition:
-      method: project
+      method: package
       value: <my_root_project_name>
 ```
 
@@ -269,3 +261,36 @@ selectors:
     default: "{{ target.name == 'prod' | as_bool }}"
     definition: ...
 ```
+
+<VersionBlock firstVersion="1.2">
+
+### Selector inheritance
+
+Selectors can reuse and extend definitions from other selectors, via the `selector` method.
+
+```yml
+selectors:
+  - name: foo_and_bar
+    definition:
+      intersection:
+        - tag: foo
+        - tag: bar
+
+  - name: foo_bar_less_buzz
+    definition:
+      intersection:
+        # reuse the definition from above
+        - method: selector
+          value: foo_and_bar
+        # with a modification!
+        - exclude:
+            - method: tag
+              value: buzz
+```
+
+**Note:** While selector inheritance allows the logic from another selector to be _reused_, it doesn't allow the logic from that selector to be _modified_ by means of `parents`, `children`, `indirect_selection`, and so on. 
+
+The `selector` method returns the complete set of nodes returned by the named selector.
+
+
+</VersionBlock>
